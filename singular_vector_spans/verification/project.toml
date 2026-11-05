@@ -1,0 +1,16 @@
+name = "segreVerification"
+version = "1.0.0"
+defaultTargets = ["SegreVerified"]
+moreLeanArgs = [
+  "-t0", "-j1", "-M24576",
+  "-DElab.async=false", "-Ddebug.skipKernelTC=false", "-Dlinter.all=false",
+  "-DmaxRecDepth=2048", "-DsynthInstance.maxHeartbeats=200000"
+]
+
+[[lean_lib]]
+name = "SegreVerified"
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "1626233321dc564d20355d8f9d4f22e114d68600"

@@ -1,0 +1,5 @@
+Original work: Copyright 2026 Caius Folkerts. Licensed under Apache License 2.0. The paper retains its existing copyright.
+
+Supporting Tau Ceti material is derived from revision 06d5bb4e3ebb737dc6538567f5c53bf8800b9362. Original author and copyright notices remain in the source; its Apache 2.0 license is retained under licenses/.
+
+Publication preparation uses lowercase source paths and a generated local build workspace. Original Lean module identities, source text, proof bodies and verification guards are preserved byte for byte.

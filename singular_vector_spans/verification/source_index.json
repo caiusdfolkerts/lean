@@ -1,0 +1,454 @@
+{
+  "entries": [
+    {
+      "module": "SegreVerified.Stage001",
+      "path": "source/segre/stage001.lean",
+      "source_sha256": "fa7f5692fc3dd9ead2aaa5ae64f01b139850ff28a12ef2a5f47421e78475c0f7"
+    },
+    {
+      "module": "SegreVerified.Stage002",
+      "path": "source/segre/stage002.lean",
+      "source_sha256": "f040a9c15b612021b9bc7373ecff7c6db12cb08fb8d75ae9b03fcb92c418faa2"
+    },
+    {
+      "module": "SegreVerified.Stage003",
+      "path": "source/segre/stage003.lean",
+      "source_sha256": "749425a1310fd3134a4935e7c6baccc50db37b4ae9ce94a7a5eecfda8e09d42e"
+    },
+    {
+      "module": "SegreVerified.Stage004",
+      "path": "source/segre/stage004.lean",
+      "source_sha256": "4f48633016abb03d27fb490250a6c950a3f3a555ed6182fb4b67aff4be36ad35"
+    },
+    {
+      "module": "SegreVerified.Stage005",
+      "path": "source/segre/stage005.lean",
+      "source_sha256": "91c44c06b8a4e6b90bc80f7e3542f1ceef863b76ec2a550c0249d974214fad2b"
+    },
+    {
+      "module": "SegreVerified.Stage006",
+      "path": "source/segre/stage006.lean",
+      "source_sha256": "5748489b9832627603c8fefcbc05b010be70982464e7dc1e12e6f16afe70dda3"
+    },
+    {
+      "module": "SegreVerified.Stage007",
+      "path": "source/segre/stage007.lean",
+      "source_sha256": "740e09e92da396dfdbd116233827014d476b0ac6d644297ddad7483fa0214609"
+    },
+    {
+      "module": "SegreVerified.Stage008",
+      "path": "source/segre/stage008.lean",
+      "source_sha256": "c8a80658997a4d68e621aba8f9deebb4f78daf0c7d02a583709eeb6451b83ffd"
+    },
+    {
+      "module": "SegreVerified.Stage009",
+      "path": "source/segre/stage009.lean",
+      "source_sha256": "f84ad8f28ac219ef816e055a1304cd6cba10b576f167c1b45fccb4e042f0e577"
+    },
+    {
+      "module": "SegreVerified.Stage010",
+      "path": "source/segre/stage010.lean",
+      "source_sha256": "f3610ceabf31adfc75351959f0dd20c3304b02d969d08eb0757403bf81aef94c"
+    },
+    {
+      "module": "SegreVerified.Stage011",
+      "path": "source/segre/stage011.lean",
+      "source_sha256": "5a36489aa289e20382921959f935a626132c51ced0328ab273324c8146ab23ac"
+    },
+    {
+      "module": "SegreVerified.Stage012",
+      "path": "source/segre/stage012.lean",
+      "source_sha256": "aea02079af25fdcef4575eccdcb986fe48cfaf1c4d8b42f797b96de84a4ffe71"
+    },
+    {
+      "module": "SegreVerified.Stage013",
+      "path": "source/segre/stage013.lean",
+      "source_sha256": "ce903f37fdfadddadfb60fe1cd2cd21858147efeba84156451f3c408f7fdefea"
+    },
+    {
+      "module": "SegreVerified.Stage014",
+      "path": "source/segre/stage014.lean",
+      "source_sha256": "be297b763848e40c37df182a22c801cd60a22db1b4b86bd247b832f25f99bde0"
+    },
+    {
+      "module": "SegreVerified.Stage015.ExtAdjunction",
+      "path": "source/segre/stage015/ext_adjunction.lean",
+      "source_sha256": "5261eeedc071ec048b2e2963653c27766bb2888e068b03243133f5cba8786540"
+    },
+    {
+      "module": "SegreVerified.Stage015.CohomologyInfrastructure",
+      "path": "source/segre/stage015/cohomology_infrastructure.lean",
+      "source_sha256": "d196fdc1a53aa7c0d2a4b729f989678d2e905538a7ef61050971839a2cab589e"
+    },
+    {
+      "module": "SegreVerified.Stage015.LerayComparison",
+      "path": "source/segre/stage015/leray_comparison.lean",
+      "source_sha256": "9762f1ba083acf73a09d222367cb263e25bb96103e715b71850f8b8feddfb2cc"
+    },
+    {
+      "module": "SegreVerified.Stage015.CohomologyApplications",
+      "path": "source/segre/stage015/cohomology_applications.lean",
+      "source_sha256": "541ef57ccf8e72f4519b9842b6e52077d6ce40f6fa4ae2bdadbeca9434ed5e20"
+    },
+    {
+      "module": "SegreVerified.Stage015",
+      "path": "source/segre/stage015.lean",
+      "source_sha256": "bfd9e03274dcf336a3e9f2354be803a59e1e1be4219aa4e3a0b0efdd0ec818f6"
+    },
+    {
+      "module": "SegreVerified.Stage016",
+      "path": "source/segre/stage016.lean",
+      "source_sha256": "0d8809ce515f999c692df044cc9d7ad00725f7b5d865eae0121e576d5c184dc0"
+    },
+    {
+      "module": "SegreVerified.Stage017",
+      "path": "source/segre/stage017.lean",
+      "source_sha256": "1d6558b2164416b793faef7ad15934fa24943706a2771a90f49b10601a25e727"
+    },
+    {
+      "module": "SegreVerified.Stage018",
+      "path": "source/segre/stage018.lean",
+      "source_sha256": "8b9899914f7bbd801b16352fb566d81d8e5a6636ebf7dc063aa88c07b02cb576"
+    },
+    {
+      "module": "SegreVerified.Stage019",
+      "path": "source/segre/stage019.lean",
+      "source_sha256": "f863df794ada3620b8117b10b24ae262ff65ae3af2c800ee71ad544883f9deeb"
+    },
+    {
+      "module": "SegreVerified.Stage020",
+      "path": "source/segre/stage020.lean",
+      "source_sha256": "80cab119d8a37316ec3318148628fb283eae51962b531870477c9de3e1b34cbb"
+    },
+    {
+      "module": "SegreVerified.Stage021",
+      "path": "source/segre/stage021.lean",
+      "source_sha256": "3a48e00dbcbac55b7e473f397a67176d468dabeecac1be39911a68a4af3ccf37"
+    },
+    {
+      "module": "SegreVerified.Stage022",
+      "path": "source/segre/stage022.lean",
+      "source_sha256": "e376fefcaf046db45b850a8589bbe64dcb69f9bc776e29ef41d22fef60ac4e7b"
+    },
+    {
+      "module": "SegreVerified.Stage023",
+      "path": "source/segre/stage023.lean",
+      "source_sha256": "d310561383b883c331b3286e5646e7d068cde83046dbfc629e3d35c12d42314b"
+    },
+    {
+      "module": "SegreVerified.Stage024",
+      "path": "source/segre/stage024.lean",
+      "source_sha256": "db0a7e5ccf4a6aa37c3061287c932064cd39c8e19e8c48b9c84ad452d0dc45d8"
+    },
+    {
+      "module": "SegreVerified.Stage025.ProjectiveCech",
+      "path": "source/segre/stage025/projective_cech.lean",
+      "source_sha256": "e092b40b65a6a83bcef61728ee1938bd09043cb1a124fc334e1fed1f70d0454f"
+    },
+    {
+      "module": "SegreVerified.Stage025.ProjectiveSections",
+      "path": "source/segre/stage025/projective_sections.lean",
+      "source_sha256": "8d548065fb6de23c9add48032f9504feca0a4995ff035f6bec1ffcd5b9358393"
+    },
+    {
+      "module": "SegreVerified.Stage025.ProjectiveSpace",
+      "path": "source/segre/stage025/projective_space.lean",
+      "source_sha256": "30d4f2fe29160f9428a669642fe7c333d5a9260ef57138ddf20a847bf8dce24b"
+    },
+    {
+      "module": "SegreVerified.Stage025.Euler",
+      "path": "source/segre/stage025/euler.lean",
+      "source_sha256": "179360a039f03eea27b4a8d0fe5cc2ff361c1f05202ca605dedaa77b396cfd31"
+    },
+    {
+      "module": "SegreVerified.Stage025.ExteriorKernelCore",
+      "path": "source/segre/stage025/exterior_kernel_core.lean",
+      "source_sha256": "b3305214f0b93c31b7d73421ecfa8774f15ff14d41a8fcb0eaaab059d9b63a87"
+    },
+    {
+      "module": "SegreVerified.Stage025.ExteriorKernel",
+      "path": "source/segre/stage025/exterior_kernel.lean",
+      "source_sha256": "3fe4532b713e66365bc280177fec0f57050cbe29c5b8cfab882c4f27d7507013"
+    },
+    {
+      "module": "SegreVerified.Stage025.ExteriorTwist",
+      "path": "source/segre/stage025/exterior_twist.lean",
+      "source_sha256": "79af95485381376eaa1793edad71dfcd2061126b4bc02b1a8363cc954dc98026"
+    },
+    {
+      "module": "SegreVerified.Stage025.ExteriorVanishing",
+      "path": "source/segre/stage025/exterior_vanishing.lean",
+      "source_sha256": "88804e0a26e681b16ae664d3ad5a8cb3c430a9023e9506e257466b1e191a5726"
+    },
+    {
+      "module": "SegreVerified.Stage025.AffineChartAlgebra",
+      "path": "source/segre/stage025/affine_chart_algebra.lean",
+      "source_sha256": "8f106a696818692156aceeac7951112f38994ed9b7d638e23b865c01d687c8f6"
+    },
+    {
+      "module": "SegreVerified.Stage025.ChartCoordinates",
+      "path": "source/segre/stage025/chart_coordinates.lean",
+      "source_sha256": "1e12811240737795a5cd8b1a63ac9757e5742b78365b8f175b139436ace4d701"
+    },
+    {
+      "module": "SegreVerified.Stage025.EulerCoordinates",
+      "path": "source/segre/stage025/euler_coordinates.lean",
+      "source_sha256": "bdc66f992c5a748622dbc8d96ea3cac7e55a88d74c6f7f1acfd63442d2908525"
+    },
+    {
+      "module": "SegreVerified.Stage025",
+      "path": "source/segre/stage025.lean",
+      "source_sha256": "6d92812c4c4f3832ac07d9479b40236b1ed319df04af639c5a511416598877d6"
+    },
+    {
+      "module": "SegreVerified.Stage026",
+      "path": "source/segre/stage026.lean",
+      "source_sha256": "a8f5fa46bb5a676ca2719a30f91409686ff61df4690610a8d0fafc813d9c7802"
+    },
+    {
+      "module": "SegreVerified.Stage027.ExteriorCoordinates",
+      "path": "source/segre/stage027/exterior_coordinates.lean",
+      "source_sha256": "c476d748771736c640914fa6e8e723ce9020e10543553bda4fcefa942b5a47b8"
+    },
+    {
+      "module": "SegreVerified.Stage027.CriticalCharts",
+      "path": "source/segre/stage027/critical_charts.lean",
+      "source_sha256": "243cffbbe9b6b3f7786e25c373ac57a21ea9d509802b4e6633449a016a0248ee"
+    },
+    {
+      "module": "SegreVerified.Stage027.CriticalEuler",
+      "path": "source/segre/stage027/critical_euler.lean",
+      "source_sha256": "aeb5a0c33aca09f8906a759c5a9c331a25f8e5dc12f034368121a6aad58fc97e"
+    },
+    {
+      "module": "SegreVerified.Stage027.ExteriorComparison",
+      "path": "source/segre/stage027/exterior_comparison.lean",
+      "source_sha256": "edab39b9e83da8edfe7cab184d686432ab363199c003a38e56e54eb414eb866e"
+    },
+    {
+      "module": "SegreVerified.Stage027.TensorSections",
+      "path": "source/segre/stage027/tensor_sections.lean",
+      "source_sha256": "822f8322103ccfa14a220b717855f4da598cf2e9abed6953d792dad5210923f3"
+    },
+    {
+      "module": "SegreVerified.Stage027.KoszulTerms",
+      "path": "source/segre/stage027/koszul_terms.lean",
+      "source_sha256": "e5669479db9f0c78c0cc55d963a3a5e05ae7fb540bd5969eb380b68cb6da0991"
+    },
+    {
+      "module": "SegreVerified.Stage027.ProductTerms",
+      "path": "source/segre/stage027/product_terms.lean",
+      "source_sha256": "3d4bd51baa18c4eb2375a94267e27f39c647e205c04d914975bda18a8b0865d3"
+    },
+    {
+      "module": "SegreVerified.Stage027.GraphCriticalMap",
+      "path": "source/segre/stage027/graph_critical_map.lean",
+      "source_sha256": "0f2c1c4b168675d2c6679fbb313ad910f94d1a6f7571f58acc44d48b8671f155"
+    },
+    {
+      "module": "SegreVerified.Stage027.ProductFrames",
+      "path": "source/segre/stage027/product_frames.lean",
+      "source_sha256": "7cc580a5235f4cade7a968a7c579904eea4840dde1277dccaae20b82f7c29bcd"
+    },
+    {
+      "module": "SegreVerified.Stage027.WeightedComplex",
+      "path": "source/segre/stage027/weighted_complex.lean",
+      "source_sha256": "97505ddf853332f8c0153dba490259e9b014a22eb6f60ef9faeae02570aaf385"
+    },
+    {
+      "module": "SegreVerified.Stage027.CriticalCoordinates",
+      "path": "source/segre/stage027/critical_coordinates.lean",
+      "source_sha256": "e45e05df2ab7f8a3af2c5f38d0f2e653f923780e977a824af6dd223bbb361e44"
+    },
+    {
+      "module": "SegreVerified.Stage027.Resolution",
+      "path": "source/segre/stage027/resolution.lean",
+      "source_sha256": "5267616188c7a3921866754e3160b9acdbaf1f9de13e2c6efeb991ded22d4fd7"
+    },
+    {
+      "module": "SegreVerified.Stage027",
+      "path": "source/segre/stage027.lean",
+      "source_sha256": "a9e8452affae3a6eae7e63f2fef5875aaf8355106c9d0a9c45765b8dd1e45097"
+    },
+    {
+      "module": "SegreVerified.Stage028.GraphElimination",
+      "path": "source/segre/stage028/graph_elimination.lean",
+      "source_sha256": "cb1751bc14fd2e84e41a76fa40a5e777e5e8f5ab97e79c6c0965ff6cf957be05"
+    },
+    {
+      "module": "SegreVerified.Stage028.CriticalPolynomials",
+      "path": "source/segre/stage028/critical_polynomials.lean",
+      "source_sha256": "5bb5b6caf0e1356bdb7ccc8cd980b0f33743caf5de6d9ac847881522b1c88693"
+    },
+    {
+      "module": "SegreVerified.Stage028.GraphGenericity",
+      "path": "source/segre/stage028/graph_genericity.lean",
+      "source_sha256": "6ab57b8f6e7974faa4a609a5c8b66381faf8265f9fc03d09aa26d0be3468ff78"
+    },
+    {
+      "module": "SegreVerified.Stage028.CriticalExactness",
+      "path": "source/segre/stage028/critical_exactness.lean",
+      "source_sha256": "c633a3b7f72cc7be8a56962bc4871eeb8ee8b907151f83d2880341c11fff6603"
+    },
+    {
+      "module": "SegreVerified.Stage028.ExternalSections",
+      "path": "source/segre/stage028/external_sections.lean",
+      "source_sha256": "7447bfee7ca8ef7c10dcdc8207bd4d705d55c09e2ec6ca94ea6e5b5bbef0b1a1"
+    },
+    {
+      "module": "SegreVerified.Stage028.HomogeneousSections",
+      "path": "source/segre/stage028/homogeneous_sections.lean",
+      "source_sha256": "29fba7f7f80f7a8865eaed0a6b5834bead762c7a6370cc80f901335b52d0db13"
+    },
+    {
+      "module": "SegreVerified.Stage028.PullbackSections",
+      "path": "source/segre/stage028/pullback_sections.lean",
+      "source_sha256": "3dd0836f1ab92dd8a4776d6681497e8d286a7451d49ed7f2cc573cfdc580415a"
+    },
+    {
+      "module": "SegreVerified.Stage028.LineSections",
+      "path": "source/segre/stage028/line_sections.lean",
+      "source_sha256": "ce3a8baff814c841ab325e9fbe666389229523495022f13dd699b2e376e2a6f1"
+    },
+    {
+      "module": "SegreVerified.Stage028.GlobalWedges",
+      "path": "source/segre/stage028/global_wedges.lean",
+      "source_sha256": "0968f6f0533baf85929da13ec3c989ef27acea9ef338cb208ae348903a8f102d"
+    },
+    {
+      "module": "SegreVerified.Stage028.GlobalImage",
+      "path": "source/segre/stage028/global_image.lean",
+      "source_sha256": "1b1842c44c52afd6bb0bec22daae3362fe578c2fac676a22b1fe2ca9e7ef3bb3"
+    },
+    {
+      "module": "SegreVerified.Stage028",
+      "path": "source/segre/stage028.lean",
+      "source_sha256": "7d0ca9efa38490134365ff6bf9441c86192245f3f85708ec4c97f575a68f8f08"
+    },
+    {
+      "module": "SegreVerified.Stage029",
+      "path": "source/segre/stage029.lean",
+      "source_sha256": "79c0d205a4a2fb3a20c716c51a5551d49245171f226ca0f7b47e0e405f27d904"
+    },
+    {
+      "module": "SegreVerified.Stage030.TensorCoordinates",
+      "path": "source/segre/stage030/tensor_coordinates.lean",
+      "source_sha256": "14d96cbe932346ebfa6ef000e67574fc87edc00f4fcedf5769f15f33c0c0a955"
+    },
+    {
+      "module": "SegreVerified.Stage030.ActualTensor",
+      "path": "source/segre/stage030/actual_tensor.lean",
+      "source_sha256": "ae264cc63a69e2ed3ae4c9a0aa9d0b4a1b1c2c8767f757e9c571c1a5a1ea32d4"
+    },
+    {
+      "module": "SegreVerified.Stage030.FormatReduction",
+      "path": "source/segre/stage030/format_reduction.lean",
+      "source_sha256": "5546566a0adffe8d24f3feeca42e99dffbcff920c1b470b0129c013135fcdbaa"
+    },
+    {
+      "module": "SegreVerified.Stage030.RankAndOpen",
+      "path": "source/segre/stage030/rank_and_open.lean",
+      "source_sha256": "9dcf1281221a1c679294fe3b834d59193f67b4cc45d9215ccbbb74c54b75cc88"
+    },
+    {
+      "module": "SegreVerified.Stage030.TensorSpan",
+      "path": "source/segre/stage030/tensor_span.lean",
+      "source_sha256": "07372805a05f5435f491edec15383039646b64fd887a1af39467b78d7ae2bdd6"
+    },
+    {
+      "module": "SegreVerified.Stage030.QuantitativeBounds",
+      "path": "source/segre/stage030/quantitative_bounds.lean",
+      "source_sha256": "666075410a0ec6b6c1136e0de0d3754c992596252e3bfb8efb422dc79680a5f0"
+    },
+    {
+      "module": "SegreVerified.Stage030",
+      "path": "source/segre/stage030.lean",
+      "source_sha256": "23e34b17b6af2ff7da1c75c93cf16ad9e2bdaee99203bb0217bbe8f11011e2f2"
+    },
+    {
+      "module": "SegreVerified.Stage031.SectionZeroScheme",
+      "path": "source/segre/stage031/section_zero_scheme.lean",
+      "source_sha256": "0ace6dc96c65f063eb3c3c9946a1f37e10aaffaf8743770365d51d8e2f4424e2"
+    },
+    {
+      "module": "SegreVerified.Stage031.CriticalFactorReindex",
+      "path": "source/segre/stage031/critical_factor_reindex.lean",
+      "source_sha256": "c885c527b237def4f8a55597f1bbcf14dfd4e4c6cdff28ca92e291b7d4686d64"
+    },
+    {
+      "module": "SegreVerified.Stage031.ProjectiveReduction",
+      "path": "source/segre/stage031/projective_reduction.lean",
+      "source_sha256": "fe8522cc4724a89bd12c6436cf95326b5e19712e5b4e7778f641990a54cfbfcf"
+    },
+    {
+      "module": "SegreVerified.Stage031.ActualCriticalSpace",
+      "path": "source/segre/stage031/actual_critical_space.lean",
+      "source_sha256": "5a75904bab4d2fbaa8251ab97b41118c9653ecf5c7b5c0097f717be86327bd49"
+    },
+    {
+      "module": "SegreVerified.Stage031.IntrinsicScheme",
+      "path": "source/segre/stage031/intrinsic_scheme.lean",
+      "source_sha256": "3cb3c9dd94e713dceac58e211f4978ce799019e21d8e8c26bef471d993c39cd3"
+    },
+    {
+      "module": "SegreVerified.Stage031.PrincipalScheme",
+      "path": "source/segre/stage031/principal_scheme.lean",
+      "source_sha256": "2d778341294a25576986310dd5eccf476042a872f716f5bccb6c9540d253cff8"
+    },
+    {
+      "module": "SegreVerified.Stage031.SegreCharts",
+      "path": "source/segre/stage031/segre_charts.lean",
+      "source_sha256": "4ff600abbc944ea4d453869298d02c55edc8dca1c5651183f268724fdcbf334b"
+    },
+    {
+      "module": "SegreVerified.Stage031.SegreEmbedding",
+      "path": "source/segre/stage031/segre_embedding.lean",
+      "source_sha256": "1c144119d94a16e3962427167da3abefe7adf00dfc7cf1a43791db2f695704ea"
+    },
+    {
+      "module": "SegreVerified.Stage031.ClosedEmbedding",
+      "path": "source/segre/stage031/closed_embedding.lean",
+      "source_sha256": "036da531f2b6c6941655f3d72ff0e118209a9f98fc901d00b09f382204f4c754"
+    },
+    {
+      "module": "SegreVerified.Stage031.EmbeddedScheme",
+      "path": "source/segre/stage031/embedded_scheme.lean",
+      "source_sha256": "fa9a20cf05a07664925e4b8d7aecc49dad3fa4535680b6eb7c14219a1c57e94f"
+    },
+    {
+      "module": "SegreVerified.Stage031.ProjectiveSpan",
+      "path": "source/segre/stage031/projective_span.lean",
+      "source_sha256": "67deabb0cbf4f1549fca6cf91616078326e5149750d9776f39bcfa5a24c02408"
+    },
+    {
+      "module": "SegreVerified.Stage031.ProjectiveConclusions",
+      "path": "source/segre/stage031/projective_conclusions.lean",
+      "source_sha256": "0a5ce2b8f4f8e95a62c67dbef067ba1b64f101cae0b1a4e839c893a4849fdceb"
+    },
+    {
+      "module": "SegreVerified.Stage031",
+      "path": "source/segre/stage031.lean",
+      "source_sha256": "07c5d6ac23584610a1c0daf12eb8ac49d2d0f63414f196fe0716ca8ea7574ed4"
+    },
+    {
+      "module": "SegreVerified.Stage032.Rigidity",
+      "path": "source/segre/stage032/rigidity.lean",
+      "source_sha256": "c95c8b6f328d92338fb2b682cdd22b2e3d6e195bb2fd79a777a50fbaf7b3c183"
+    },
+    {
+      "module": "SegreVerified.Stage032.AsymptoticGrowth",
+      "path": "source/segre/stage032/asymptotic_growth.lean",
+      "source_sha256": "61c5092f6b405f120431ddfca87964bfc037151c427203602acc25c31b25becf"
+    },
+    {
+      "module": "SegreVerified.Stage032",
+      "path": "source/segre/stage032.lean",
+      "source_sha256": "a90b13545ac9d13f867f501a8b0cbb1439c37f9aca66050968fbf54144223d03"
+    },
+    {
+      "module": "SegreVerified",
+      "path": "source/verification/complete.lean",
+      "source_sha256": "c9373e61ee3aa58e1ccbb5a9b2ea3d6786cbf74a2bbcb92e75736cf09455dd38"
+    }
+  ]
+}

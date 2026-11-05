@@ -30,3 +30,4 @@ Install Elan and a recent version of Git before following the verification comma
 | `sublattice_resolutions` | Sublattice resolutions and Betti preservation in all powers |
 | `cubical_indecomposability` | A counterexample to Smilansky’s conjecture |
 | `unimodular` | Unimodular configurations and complete fans |
+| `singular_vector_spans` | Singular-vector spans beyond boundary format |
