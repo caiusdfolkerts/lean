@@ -27,3 +27,4 @@ Install Elan and a recent version of Git before following the verification comma
 | `symmetric_rank_conditions` | Gröbner bases for symmetric rank conditions |
 | `volume_polynomials` | Volume polynomials and the Heine–Shephard problem |
 | `graphical_zonotopes` | Sharp bounds for indecomposable summands of graphical zonotopes |
+| `sublattice_resolutions` | Sublattice resolutions and Betti preservation in all powers |

@@ -1,0 +1,2 @@
+module
+public import shared_results.part018_linear_lifts_equivalence

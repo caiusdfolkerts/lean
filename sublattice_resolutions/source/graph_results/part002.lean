@@ -1,0 +1,16 @@
+module
+public import graph_results.grading_foundations
+public import shared_results.part025
+public import graph_results.part001
+public import graph_results.closed_graph_integral_model
+public import graph_results.closed_graph_transferred_grading
+public import graph_results.closed_graph_ideal_base_change
+public import graph_results.augmented_chain_contraction
+public import graph_results.projected_resolution_base_change
+public import graph_results.closed_graph_universal_resolution
+public import graph_results.closed_graph_internal_grading
+public import graph_results.closed_graph_specialized_resolution
+public import graph_results.closed_graph_specialized_integer_grading
+public import graph_results.theorem91
+
+/- Exact accepted source providers; this module only re-exports their proofs. -/

@@ -1,0 +1,27 @@
+module
+public import shared_results.part023
+public import paper_results.part005
+public import graph_homology
+public import Mathlib.LinearAlgebra.FiniteDimensional.Lemmas
+public import Mathlib.Data.Finset.Powerset
+public import graph_results.closed_graph_integer_betti
+public import graph_results.finer_ideal_rename
+public import graph_results.canonical_finer_monomial_homology
+public import graph_results.closed_graph_natural_grading
+public import graph_results.weighted_monomial_coarsening
+public import graph_results.closed_graph_characteristic
+public import graph_results.filtered_homology_ranks
+public import graph_results.filtered_homology_dimension
+public import graph_results.quotient_diagonal
+public import graph_results.graph_paper_linear_variables
+public import graph_results.closed_graph_linear_strand
+public import graph_results.closed_graph_ideal_leading
+public import graph_results.closed_graph_power_cycle_generation
+public import graph_results.closed_graph_rees_generation
+public import graph_results.filtered_lifts_equivalence
+public import graph_results.ideal_power_filtered_coordinate_transport
+public import graph_results.closed_graph_multiplicative_lifting
+public import graph_results.closed_graph_power_leading_bridge
+public import graph_results.closed_graph_power_homology
+
+/- Exact accepted source providers; this module only re-exports their proofs. -/

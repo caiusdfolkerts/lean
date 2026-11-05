@@ -1,0 +1,3 @@
+Copyright 2026 Caius Folkerts. Original code and documentation are licensed under the Apache License, Version 2.0. The included paper retains its existing copyright. Third-party source headers and license terms remain in force.
+
+Publication preparation, 5 November 2026: module filenames and imports were normalised, audit module selectors were updated to the renamed modules, generated audit output was moved under .lake/reports, and the mathematical exposition was adapted to Markdown. Original mathematical namespaces and proof bodies are unchanged.
