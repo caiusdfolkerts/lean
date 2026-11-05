@@ -1,0 +1,3 @@
+Copyright 2026 Caius Folkerts. Original code and documentation are licensed under Apache-2.0. The paper retains its existing copyright. Adapted convex-polytope foundations: Copyright 2026 Daniele Cappello, Apache-2.0, lean-eval-platonic-classification commit 3cd00dfd965e5b9639cbf1011beea553001a290a. Original attribution headers are retained.
+
+Publication changes: lowercase module paths and imports; generated audit output under .lake/reports; mathematical namespaces and proof bodies unchanged. All three original audit bodies run in the default build.

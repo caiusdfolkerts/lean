@@ -28,3 +28,4 @@ Install Elan and a recent version of Git before following the verification comma
 | `volume_polynomials` | Volume polynomials and the Heine–Shephard problem |
 | `graphical_zonotopes` | Sharp bounds for indecomposable summands of graphical zonotopes |
 | `sublattice_resolutions` | Sublattice resolutions and Betti preservation in all powers |
+| `cubical_indecomposability` | A counterexample to Smilansky’s conjecture |
