@@ -1,0 +1,528 @@
+module
+prelude
+public import BundledChecks.RootedSixBase01GrowthCacheRidgeSupport832Batch000
+public import RawMaskAppend
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSixBase01
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open RawGrowthCacheCertificate RawNatGrowthSoundness
+theorem ridgeSupport832_suffix_decode_100 : PackedRawNatGrowth.readList 14 0 ridgeSupport832_rest_100 =
+    (ridgeSupport832_suffix_100, ridgeSupport832_rest_100) := by rfl
+theorem ridgeSupport832_suffix_decode_099 : PackedRawNatGrowth.readList 14 7 ridgeSupport832_rest_099 =
+    (ridgeSupport832_suffix_099, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 7 0
+    ridgeSupport832_rest_099 ridgeSupport832_rest_100 ridgeSupport832_rest_100
+    ridgeSupport832_099 ridgeSupport832_suffix_100 ridgeSupport832_099_decode ridgeSupport832_suffix_decode_100
+theorem ridgeSupport832_suffix_decode_098 : PackedRawNatGrowth.readList 14 39 ridgeSupport832_rest_098 =
+    (ridgeSupport832_suffix_098, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 7
+    ridgeSupport832_rest_098 ridgeSupport832_rest_099 ridgeSupport832_rest_100
+    ridgeSupport832_098 ridgeSupport832_suffix_099 ridgeSupport832_098_decode ridgeSupport832_suffix_decode_099
+theorem ridgeSupport832_suffix_decode_097 : PackedRawNatGrowth.readList 14 71 ridgeSupport832_rest_097 =
+    (ridgeSupport832_suffix_097, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 39
+    ridgeSupport832_rest_097 ridgeSupport832_rest_098 ridgeSupport832_rest_100
+    ridgeSupport832_097 ridgeSupport832_suffix_098 ridgeSupport832_097_decode ridgeSupport832_suffix_decode_098
+theorem ridgeSupport832_suffix_decode_096 : PackedRawNatGrowth.readList 14 103 ridgeSupport832_rest_096 =
+    (ridgeSupport832_suffix_096, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 71
+    ridgeSupport832_rest_096 ridgeSupport832_rest_097 ridgeSupport832_rest_100
+    ridgeSupport832_096 ridgeSupport832_suffix_097 ridgeSupport832_096_decode ridgeSupport832_suffix_decode_097
+theorem ridgeSupport832_suffix_decode_095 : PackedRawNatGrowth.readList 14 135 ridgeSupport832_rest_095 =
+    (ridgeSupport832_suffix_095, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 103
+    ridgeSupport832_rest_095 ridgeSupport832_rest_096 ridgeSupport832_rest_100
+    ridgeSupport832_095 ridgeSupport832_suffix_096 ridgeSupport832_095_decode ridgeSupport832_suffix_decode_096
+theorem ridgeSupport832_suffix_decode_094 : PackedRawNatGrowth.readList 14 167 ridgeSupport832_rest_094 =
+    (ridgeSupport832_suffix_094, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 135
+    ridgeSupport832_rest_094 ridgeSupport832_rest_095 ridgeSupport832_rest_100
+    ridgeSupport832_094 ridgeSupport832_suffix_095 ridgeSupport832_094_decode ridgeSupport832_suffix_decode_095
+theorem ridgeSupport832_suffix_decode_093 : PackedRawNatGrowth.readList 14 199 ridgeSupport832_rest_093 =
+    (ridgeSupport832_suffix_093, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 167
+    ridgeSupport832_rest_093 ridgeSupport832_rest_094 ridgeSupport832_rest_100
+    ridgeSupport832_093 ridgeSupport832_suffix_094 ridgeSupport832_093_decode ridgeSupport832_suffix_decode_094
+theorem ridgeSupport832_suffix_decode_092 : PackedRawNatGrowth.readList 14 231 ridgeSupport832_rest_092 =
+    (ridgeSupport832_suffix_092, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 199
+    ridgeSupport832_rest_092 ridgeSupport832_rest_093 ridgeSupport832_rest_100
+    ridgeSupport832_092 ridgeSupport832_suffix_093 ridgeSupport832_092_decode ridgeSupport832_suffix_decode_093
+theorem ridgeSupport832_suffix_decode_091 : PackedRawNatGrowth.readList 14 263 ridgeSupport832_rest_091 =
+    (ridgeSupport832_suffix_091, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 231
+    ridgeSupport832_rest_091 ridgeSupport832_rest_092 ridgeSupport832_rest_100
+    ridgeSupport832_091 ridgeSupport832_suffix_092 ridgeSupport832_091_decode ridgeSupport832_suffix_decode_092
+theorem ridgeSupport832_suffix_decode_090 : PackedRawNatGrowth.readList 14 295 ridgeSupport832_rest_090 =
+    (ridgeSupport832_suffix_090, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 263
+    ridgeSupport832_rest_090 ridgeSupport832_rest_091 ridgeSupport832_rest_100
+    ridgeSupport832_090 ridgeSupport832_suffix_091 ridgeSupport832_090_decode ridgeSupport832_suffix_decode_091
+theorem ridgeSupport832_suffix_decode_089 : PackedRawNatGrowth.readList 14 327 ridgeSupport832_rest_089 =
+    (ridgeSupport832_suffix_089, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 295
+    ridgeSupport832_rest_089 ridgeSupport832_rest_090 ridgeSupport832_rest_100
+    ridgeSupport832_089 ridgeSupport832_suffix_090 ridgeSupport832_089_decode ridgeSupport832_suffix_decode_090
+theorem ridgeSupport832_suffix_decode_088 : PackedRawNatGrowth.readList 14 359 ridgeSupport832_rest_088 =
+    (ridgeSupport832_suffix_088, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 327
+    ridgeSupport832_rest_088 ridgeSupport832_rest_089 ridgeSupport832_rest_100
+    ridgeSupport832_088 ridgeSupport832_suffix_089 ridgeSupport832_088_decode ridgeSupport832_suffix_decode_089
+theorem ridgeSupport832_suffix_decode_087 : PackedRawNatGrowth.readList 14 391 ridgeSupport832_rest_087 =
+    (ridgeSupport832_suffix_087, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 359
+    ridgeSupport832_rest_087 ridgeSupport832_rest_088 ridgeSupport832_rest_100
+    ridgeSupport832_087 ridgeSupport832_suffix_088 ridgeSupport832_087_decode ridgeSupport832_suffix_decode_088
+theorem ridgeSupport832_suffix_decode_086 : PackedRawNatGrowth.readList 14 423 ridgeSupport832_rest_086 =
+    (ridgeSupport832_suffix_086, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 391
+    ridgeSupport832_rest_086 ridgeSupport832_rest_087 ridgeSupport832_rest_100
+    ridgeSupport832_086 ridgeSupport832_suffix_087 ridgeSupport832_086_decode ridgeSupport832_suffix_decode_087
+theorem ridgeSupport832_suffix_decode_085 : PackedRawNatGrowth.readList 14 455 ridgeSupport832_rest_085 =
+    (ridgeSupport832_suffix_085, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 423
+    ridgeSupport832_rest_085 ridgeSupport832_rest_086 ridgeSupport832_rest_100
+    ridgeSupport832_085 ridgeSupport832_suffix_086 ridgeSupport832_085_decode ridgeSupport832_suffix_decode_086
+theorem ridgeSupport832_suffix_decode_084 : PackedRawNatGrowth.readList 14 487 ridgeSupport832_rest_084 =
+    (ridgeSupport832_suffix_084, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 455
+    ridgeSupport832_rest_084 ridgeSupport832_rest_085 ridgeSupport832_rest_100
+    ridgeSupport832_084 ridgeSupport832_suffix_085 ridgeSupport832_084_decode ridgeSupport832_suffix_decode_085
+theorem ridgeSupport832_suffix_decode_083 : PackedRawNatGrowth.readList 14 519 ridgeSupport832_rest_083 =
+    (ridgeSupport832_suffix_083, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 487
+    ridgeSupport832_rest_083 ridgeSupport832_rest_084 ridgeSupport832_rest_100
+    ridgeSupport832_083 ridgeSupport832_suffix_084 ridgeSupport832_083_decode ridgeSupport832_suffix_decode_084
+theorem ridgeSupport832_suffix_decode_082 : PackedRawNatGrowth.readList 14 551 ridgeSupport832_rest_082 =
+    (ridgeSupport832_suffix_082, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 519
+    ridgeSupport832_rest_082 ridgeSupport832_rest_083 ridgeSupport832_rest_100
+    ridgeSupport832_082 ridgeSupport832_suffix_083 ridgeSupport832_082_decode ridgeSupport832_suffix_decode_083
+theorem ridgeSupport832_suffix_decode_081 : PackedRawNatGrowth.readList 14 583 ridgeSupport832_rest_081 =
+    (ridgeSupport832_suffix_081, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 551
+    ridgeSupport832_rest_081 ridgeSupport832_rest_082 ridgeSupport832_rest_100
+    ridgeSupport832_081 ridgeSupport832_suffix_082 ridgeSupport832_081_decode ridgeSupport832_suffix_decode_082
+theorem ridgeSupport832_suffix_decode_080 : PackedRawNatGrowth.readList 14 615 ridgeSupport832_rest_080 =
+    (ridgeSupport832_suffix_080, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 583
+    ridgeSupport832_rest_080 ridgeSupport832_rest_081 ridgeSupport832_rest_100
+    ridgeSupport832_080 ridgeSupport832_suffix_081 ridgeSupport832_080_decode ridgeSupport832_suffix_decode_081
+theorem ridgeSupport832_suffix_decode_079 : PackedRawNatGrowth.readList 14 647 ridgeSupport832_rest_079 =
+    (ridgeSupport832_suffix_079, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 615
+    ridgeSupport832_rest_079 ridgeSupport832_rest_080 ridgeSupport832_rest_100
+    ridgeSupport832_079 ridgeSupport832_suffix_080 ridgeSupport832_079_decode ridgeSupport832_suffix_decode_080
+theorem ridgeSupport832_suffix_decode_078 : PackedRawNatGrowth.readList 14 679 ridgeSupport832_rest_078 =
+    (ridgeSupport832_suffix_078, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 647
+    ridgeSupport832_rest_078 ridgeSupport832_rest_079 ridgeSupport832_rest_100
+    ridgeSupport832_078 ridgeSupport832_suffix_079 ridgeSupport832_078_decode ridgeSupport832_suffix_decode_079
+theorem ridgeSupport832_suffix_decode_077 : PackedRawNatGrowth.readList 14 711 ridgeSupport832_rest_077 =
+    (ridgeSupport832_suffix_077, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 679
+    ridgeSupport832_rest_077 ridgeSupport832_rest_078 ridgeSupport832_rest_100
+    ridgeSupport832_077 ridgeSupport832_suffix_078 ridgeSupport832_077_decode ridgeSupport832_suffix_decode_078
+theorem ridgeSupport832_suffix_decode_076 : PackedRawNatGrowth.readList 14 743 ridgeSupport832_rest_076 =
+    (ridgeSupport832_suffix_076, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 711
+    ridgeSupport832_rest_076 ridgeSupport832_rest_077 ridgeSupport832_rest_100
+    ridgeSupport832_076 ridgeSupport832_suffix_077 ridgeSupport832_076_decode ridgeSupport832_suffix_decode_077
+theorem ridgeSupport832_suffix_decode_075 : PackedRawNatGrowth.readList 14 775 ridgeSupport832_rest_075 =
+    (ridgeSupport832_suffix_075, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 743
+    ridgeSupport832_rest_075 ridgeSupport832_rest_076 ridgeSupport832_rest_100
+    ridgeSupport832_075 ridgeSupport832_suffix_076 ridgeSupport832_075_decode ridgeSupport832_suffix_decode_076
+theorem ridgeSupport832_suffix_decode_074 : PackedRawNatGrowth.readList 14 807 ridgeSupport832_rest_074 =
+    (ridgeSupport832_suffix_074, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 775
+    ridgeSupport832_rest_074 ridgeSupport832_rest_075 ridgeSupport832_rest_100
+    ridgeSupport832_074 ridgeSupport832_suffix_075 ridgeSupport832_074_decode ridgeSupport832_suffix_decode_075
+theorem ridgeSupport832_suffix_decode_073 : PackedRawNatGrowth.readList 14 839 ridgeSupport832_rest_073 =
+    (ridgeSupport832_suffix_073, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 807
+    ridgeSupport832_rest_073 ridgeSupport832_rest_074 ridgeSupport832_rest_100
+    ridgeSupport832_073 ridgeSupport832_suffix_074 ridgeSupport832_073_decode ridgeSupport832_suffix_decode_074
+theorem ridgeSupport832_suffix_decode_072 : PackedRawNatGrowth.readList 14 871 ridgeSupport832_rest_072 =
+    (ridgeSupport832_suffix_072, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 839
+    ridgeSupport832_rest_072 ridgeSupport832_rest_073 ridgeSupport832_rest_100
+    ridgeSupport832_072 ridgeSupport832_suffix_073 ridgeSupport832_072_decode ridgeSupport832_suffix_decode_073
+theorem ridgeSupport832_suffix_decode_071 : PackedRawNatGrowth.readList 14 903 ridgeSupport832_rest_071 =
+    (ridgeSupport832_suffix_071, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 871
+    ridgeSupport832_rest_071 ridgeSupport832_rest_072 ridgeSupport832_rest_100
+    ridgeSupport832_071 ridgeSupport832_suffix_072 ridgeSupport832_071_decode ridgeSupport832_suffix_decode_072
+theorem ridgeSupport832_suffix_decode_070 : PackedRawNatGrowth.readList 14 935 ridgeSupport832_rest_070 =
+    (ridgeSupport832_suffix_070, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 903
+    ridgeSupport832_rest_070 ridgeSupport832_rest_071 ridgeSupport832_rest_100
+    ridgeSupport832_070 ridgeSupport832_suffix_071 ridgeSupport832_070_decode ridgeSupport832_suffix_decode_071
+theorem ridgeSupport832_suffix_decode_069 : PackedRawNatGrowth.readList 14 967 ridgeSupport832_rest_069 =
+    (ridgeSupport832_suffix_069, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 935
+    ridgeSupport832_rest_069 ridgeSupport832_rest_070 ridgeSupport832_rest_100
+    ridgeSupport832_069 ridgeSupport832_suffix_070 ridgeSupport832_069_decode ridgeSupport832_suffix_decode_070
+theorem ridgeSupport832_suffix_decode_068 : PackedRawNatGrowth.readList 14 999 ridgeSupport832_rest_068 =
+    (ridgeSupport832_suffix_068, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 967
+    ridgeSupport832_rest_068 ridgeSupport832_rest_069 ridgeSupport832_rest_100
+    ridgeSupport832_068 ridgeSupport832_suffix_069 ridgeSupport832_068_decode ridgeSupport832_suffix_decode_069
+theorem ridgeSupport832_suffix_decode_067 : PackedRawNatGrowth.readList 14 1031 ridgeSupport832_rest_067 =
+    (ridgeSupport832_suffix_067, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 999
+    ridgeSupport832_rest_067 ridgeSupport832_rest_068 ridgeSupport832_rest_100
+    ridgeSupport832_067 ridgeSupport832_suffix_068 ridgeSupport832_067_decode ridgeSupport832_suffix_decode_068
+theorem ridgeSupport832_suffix_decode_066 : PackedRawNatGrowth.readList 14 1063 ridgeSupport832_rest_066 =
+    (ridgeSupport832_suffix_066, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1031
+    ridgeSupport832_rest_066 ridgeSupport832_rest_067 ridgeSupport832_rest_100
+    ridgeSupport832_066 ridgeSupport832_suffix_067 ridgeSupport832_066_decode ridgeSupport832_suffix_decode_067
+theorem ridgeSupport832_suffix_decode_065 : PackedRawNatGrowth.readList 14 1095 ridgeSupport832_rest_065 =
+    (ridgeSupport832_suffix_065, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1063
+    ridgeSupport832_rest_065 ridgeSupport832_rest_066 ridgeSupport832_rest_100
+    ridgeSupport832_065 ridgeSupport832_suffix_066 ridgeSupport832_065_decode ridgeSupport832_suffix_decode_066
+theorem ridgeSupport832_suffix_decode_064 : PackedRawNatGrowth.readList 14 1127 ridgeSupport832_rest_064 =
+    (ridgeSupport832_suffix_064, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1095
+    ridgeSupport832_rest_064 ridgeSupport832_rest_065 ridgeSupport832_rest_100
+    ridgeSupport832_064 ridgeSupport832_suffix_065 ridgeSupport832_064_decode ridgeSupport832_suffix_decode_065
+theorem ridgeSupport832_suffix_decode_063 : PackedRawNatGrowth.readList 14 1159 ridgeSupport832_rest_063 =
+    (ridgeSupport832_suffix_063, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1127
+    ridgeSupport832_rest_063 ridgeSupport832_rest_064 ridgeSupport832_rest_100
+    ridgeSupport832_063 ridgeSupport832_suffix_064 ridgeSupport832_063_decode ridgeSupport832_suffix_decode_064
+theorem ridgeSupport832_suffix_decode_062 : PackedRawNatGrowth.readList 14 1191 ridgeSupport832_rest_062 =
+    (ridgeSupport832_suffix_062, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1159
+    ridgeSupport832_rest_062 ridgeSupport832_rest_063 ridgeSupport832_rest_100
+    ridgeSupport832_062 ridgeSupport832_suffix_063 ridgeSupport832_062_decode ridgeSupport832_suffix_decode_063
+theorem ridgeSupport832_suffix_decode_061 : PackedRawNatGrowth.readList 14 1223 ridgeSupport832_rest_061 =
+    (ridgeSupport832_suffix_061, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1191
+    ridgeSupport832_rest_061 ridgeSupport832_rest_062 ridgeSupport832_rest_100
+    ridgeSupport832_061 ridgeSupport832_suffix_062 ridgeSupport832_061_decode ridgeSupport832_suffix_decode_062
+theorem ridgeSupport832_suffix_decode_060 : PackedRawNatGrowth.readList 14 1255 ridgeSupport832_rest_060 =
+    (ridgeSupport832_suffix_060, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1223
+    ridgeSupport832_rest_060 ridgeSupport832_rest_061 ridgeSupport832_rest_100
+    ridgeSupport832_060 ridgeSupport832_suffix_061 ridgeSupport832_060_decode ridgeSupport832_suffix_decode_061
+theorem ridgeSupport832_suffix_decode_059 : PackedRawNatGrowth.readList 14 1287 ridgeSupport832_rest_059 =
+    (ridgeSupport832_suffix_059, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1255
+    ridgeSupport832_rest_059 ridgeSupport832_rest_060 ridgeSupport832_rest_100
+    ridgeSupport832_059 ridgeSupport832_suffix_060 ridgeSupport832_059_decode ridgeSupport832_suffix_decode_060
+theorem ridgeSupport832_suffix_decode_058 : PackedRawNatGrowth.readList 14 1319 ridgeSupport832_rest_058 =
+    (ridgeSupport832_suffix_058, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1287
+    ridgeSupport832_rest_058 ridgeSupport832_rest_059 ridgeSupport832_rest_100
+    ridgeSupport832_058 ridgeSupport832_suffix_059 ridgeSupport832_058_decode ridgeSupport832_suffix_decode_059
+theorem ridgeSupport832_suffix_decode_057 : PackedRawNatGrowth.readList 14 1351 ridgeSupport832_rest_057 =
+    (ridgeSupport832_suffix_057, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1319
+    ridgeSupport832_rest_057 ridgeSupport832_rest_058 ridgeSupport832_rest_100
+    ridgeSupport832_057 ridgeSupport832_suffix_058 ridgeSupport832_057_decode ridgeSupport832_suffix_decode_058
+theorem ridgeSupport832_suffix_decode_056 : PackedRawNatGrowth.readList 14 1383 ridgeSupport832_rest_056 =
+    (ridgeSupport832_suffix_056, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1351
+    ridgeSupport832_rest_056 ridgeSupport832_rest_057 ridgeSupport832_rest_100
+    ridgeSupport832_056 ridgeSupport832_suffix_057 ridgeSupport832_056_decode ridgeSupport832_suffix_decode_057
+theorem ridgeSupport832_suffix_decode_055 : PackedRawNatGrowth.readList 14 1415 ridgeSupport832_rest_055 =
+    (ridgeSupport832_suffix_055, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1383
+    ridgeSupport832_rest_055 ridgeSupport832_rest_056 ridgeSupport832_rest_100
+    ridgeSupport832_055 ridgeSupport832_suffix_056 ridgeSupport832_055_decode ridgeSupport832_suffix_decode_056
+theorem ridgeSupport832_suffix_decode_054 : PackedRawNatGrowth.readList 14 1447 ridgeSupport832_rest_054 =
+    (ridgeSupport832_suffix_054, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1415
+    ridgeSupport832_rest_054 ridgeSupport832_rest_055 ridgeSupport832_rest_100
+    ridgeSupport832_054 ridgeSupport832_suffix_055 ridgeSupport832_054_decode ridgeSupport832_suffix_decode_055
+theorem ridgeSupport832_suffix_decode_053 : PackedRawNatGrowth.readList 14 1479 ridgeSupport832_rest_053 =
+    (ridgeSupport832_suffix_053, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1447
+    ridgeSupport832_rest_053 ridgeSupport832_rest_054 ridgeSupport832_rest_100
+    ridgeSupport832_053 ridgeSupport832_suffix_054 ridgeSupport832_053_decode ridgeSupport832_suffix_decode_054
+theorem ridgeSupport832_suffix_decode_052 : PackedRawNatGrowth.readList 14 1511 ridgeSupport832_rest_052 =
+    (ridgeSupport832_suffix_052, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1479
+    ridgeSupport832_rest_052 ridgeSupport832_rest_053 ridgeSupport832_rest_100
+    ridgeSupport832_052 ridgeSupport832_suffix_053 ridgeSupport832_052_decode ridgeSupport832_suffix_decode_053
+theorem ridgeSupport832_suffix_decode_051 : PackedRawNatGrowth.readList 14 1543 ridgeSupport832_rest_051 =
+    (ridgeSupport832_suffix_051, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1511
+    ridgeSupport832_rest_051 ridgeSupport832_rest_052 ridgeSupport832_rest_100
+    ridgeSupport832_051 ridgeSupport832_suffix_052 ridgeSupport832_051_decode ridgeSupport832_suffix_decode_052
+theorem ridgeSupport832_suffix_decode_050 : PackedRawNatGrowth.readList 14 1575 ridgeSupport832_rest_050 =
+    (ridgeSupport832_suffix_050, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1543
+    ridgeSupport832_rest_050 ridgeSupport832_rest_051 ridgeSupport832_rest_100
+    ridgeSupport832_050 ridgeSupport832_suffix_051 ridgeSupport832_050_decode ridgeSupport832_suffix_decode_051
+theorem ridgeSupport832_suffix_decode_049 : PackedRawNatGrowth.readList 14 1607 ridgeSupport832_rest_049 =
+    (ridgeSupport832_suffix_049, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1575
+    ridgeSupport832_rest_049 ridgeSupport832_rest_050 ridgeSupport832_rest_100
+    ridgeSupport832_049 ridgeSupport832_suffix_050 ridgeSupport832_049_decode ridgeSupport832_suffix_decode_050
+theorem ridgeSupport832_suffix_decode_048 : PackedRawNatGrowth.readList 14 1639 ridgeSupport832_rest_048 =
+    (ridgeSupport832_suffix_048, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1607
+    ridgeSupport832_rest_048 ridgeSupport832_rest_049 ridgeSupport832_rest_100
+    ridgeSupport832_048 ridgeSupport832_suffix_049 ridgeSupport832_048_decode ridgeSupport832_suffix_decode_049
+theorem ridgeSupport832_suffix_decode_047 : PackedRawNatGrowth.readList 14 1671 ridgeSupport832_rest_047 =
+    (ridgeSupport832_suffix_047, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1639
+    ridgeSupport832_rest_047 ridgeSupport832_rest_048 ridgeSupport832_rest_100
+    ridgeSupport832_047 ridgeSupport832_suffix_048 ridgeSupport832_047_decode ridgeSupport832_suffix_decode_048
+theorem ridgeSupport832_suffix_decode_046 : PackedRawNatGrowth.readList 14 1703 ridgeSupport832_rest_046 =
+    (ridgeSupport832_suffix_046, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1671
+    ridgeSupport832_rest_046 ridgeSupport832_rest_047 ridgeSupport832_rest_100
+    ridgeSupport832_046 ridgeSupport832_suffix_047 ridgeSupport832_046_decode ridgeSupport832_suffix_decode_047
+theorem ridgeSupport832_suffix_decode_045 : PackedRawNatGrowth.readList 14 1735 ridgeSupport832_rest_045 =
+    (ridgeSupport832_suffix_045, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1703
+    ridgeSupport832_rest_045 ridgeSupport832_rest_046 ridgeSupport832_rest_100
+    ridgeSupport832_045 ridgeSupport832_suffix_046 ridgeSupport832_045_decode ridgeSupport832_suffix_decode_046
+theorem ridgeSupport832_suffix_decode_044 : PackedRawNatGrowth.readList 14 1767 ridgeSupport832_rest_044 =
+    (ridgeSupport832_suffix_044, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1735
+    ridgeSupport832_rest_044 ridgeSupport832_rest_045 ridgeSupport832_rest_100
+    ridgeSupport832_044 ridgeSupport832_suffix_045 ridgeSupport832_044_decode ridgeSupport832_suffix_decode_045
+theorem ridgeSupport832_suffix_decode_043 : PackedRawNatGrowth.readList 14 1799 ridgeSupport832_rest_043 =
+    (ridgeSupport832_suffix_043, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1767
+    ridgeSupport832_rest_043 ridgeSupport832_rest_044 ridgeSupport832_rest_100
+    ridgeSupport832_043 ridgeSupport832_suffix_044 ridgeSupport832_043_decode ridgeSupport832_suffix_decode_044
+theorem ridgeSupport832_suffix_decode_042 : PackedRawNatGrowth.readList 14 1831 ridgeSupport832_rest_042 =
+    (ridgeSupport832_suffix_042, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1799
+    ridgeSupport832_rest_042 ridgeSupport832_rest_043 ridgeSupport832_rest_100
+    ridgeSupport832_042 ridgeSupport832_suffix_043 ridgeSupport832_042_decode ridgeSupport832_suffix_decode_043
+theorem ridgeSupport832_suffix_decode_041 : PackedRawNatGrowth.readList 14 1863 ridgeSupport832_rest_041 =
+    (ridgeSupport832_suffix_041, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1831
+    ridgeSupport832_rest_041 ridgeSupport832_rest_042 ridgeSupport832_rest_100
+    ridgeSupport832_041 ridgeSupport832_suffix_042 ridgeSupport832_041_decode ridgeSupport832_suffix_decode_042
+theorem ridgeSupport832_suffix_decode_040 : PackedRawNatGrowth.readList 14 1895 ridgeSupport832_rest_040 =
+    (ridgeSupport832_suffix_040, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1863
+    ridgeSupport832_rest_040 ridgeSupport832_rest_041 ridgeSupport832_rest_100
+    ridgeSupport832_040 ridgeSupport832_suffix_041 ridgeSupport832_040_decode ridgeSupport832_suffix_decode_041
+theorem ridgeSupport832_suffix_decode_039 : PackedRawNatGrowth.readList 14 1927 ridgeSupport832_rest_039 =
+    (ridgeSupport832_suffix_039, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1895
+    ridgeSupport832_rest_039 ridgeSupport832_rest_040 ridgeSupport832_rest_100
+    ridgeSupport832_039 ridgeSupport832_suffix_040 ridgeSupport832_039_decode ridgeSupport832_suffix_decode_040
+theorem ridgeSupport832_suffix_decode_038 : PackedRawNatGrowth.readList 14 1959 ridgeSupport832_rest_038 =
+    (ridgeSupport832_suffix_038, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1927
+    ridgeSupport832_rest_038 ridgeSupport832_rest_039 ridgeSupport832_rest_100
+    ridgeSupport832_038 ridgeSupport832_suffix_039 ridgeSupport832_038_decode ridgeSupport832_suffix_decode_039
+theorem ridgeSupport832_suffix_decode_037 : PackedRawNatGrowth.readList 14 1991 ridgeSupport832_rest_037 =
+    (ridgeSupport832_suffix_037, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1959
+    ridgeSupport832_rest_037 ridgeSupport832_rest_038 ridgeSupport832_rest_100
+    ridgeSupport832_037 ridgeSupport832_suffix_038 ridgeSupport832_037_decode ridgeSupport832_suffix_decode_038
+theorem ridgeSupport832_suffix_decode_036 : PackedRawNatGrowth.readList 14 2023 ridgeSupport832_rest_036 =
+    (ridgeSupport832_suffix_036, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 1991
+    ridgeSupport832_rest_036 ridgeSupport832_rest_037 ridgeSupport832_rest_100
+    ridgeSupport832_036 ridgeSupport832_suffix_037 ridgeSupport832_036_decode ridgeSupport832_suffix_decode_037
+theorem ridgeSupport832_suffix_decode_035 : PackedRawNatGrowth.readList 14 2055 ridgeSupport832_rest_035 =
+    (ridgeSupport832_suffix_035, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2023
+    ridgeSupport832_rest_035 ridgeSupport832_rest_036 ridgeSupport832_rest_100
+    ridgeSupport832_035 ridgeSupport832_suffix_036 ridgeSupport832_035_decode ridgeSupport832_suffix_decode_036
+theorem ridgeSupport832_suffix_decode_034 : PackedRawNatGrowth.readList 14 2087 ridgeSupport832_rest_034 =
+    (ridgeSupport832_suffix_034, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2055
+    ridgeSupport832_rest_034 ridgeSupport832_rest_035 ridgeSupport832_rest_100
+    ridgeSupport832_034 ridgeSupport832_suffix_035 ridgeSupport832_034_decode ridgeSupport832_suffix_decode_035
+theorem ridgeSupport832_suffix_decode_033 : PackedRawNatGrowth.readList 14 2119 ridgeSupport832_rest_033 =
+    (ridgeSupport832_suffix_033, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2087
+    ridgeSupport832_rest_033 ridgeSupport832_rest_034 ridgeSupport832_rest_100
+    ridgeSupport832_033 ridgeSupport832_suffix_034 ridgeSupport832_033_decode ridgeSupport832_suffix_decode_034
+theorem ridgeSupport832_suffix_decode_032 : PackedRawNatGrowth.readList 14 2151 ridgeSupport832_rest_032 =
+    (ridgeSupport832_suffix_032, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2119
+    ridgeSupport832_rest_032 ridgeSupport832_rest_033 ridgeSupport832_rest_100
+    ridgeSupport832_032 ridgeSupport832_suffix_033 ridgeSupport832_032_decode ridgeSupport832_suffix_decode_033
+theorem ridgeSupport832_suffix_decode_031 : PackedRawNatGrowth.readList 14 2183 ridgeSupport832_rest_031 =
+    (ridgeSupport832_suffix_031, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2151
+    ridgeSupport832_rest_031 ridgeSupport832_rest_032 ridgeSupport832_rest_100
+    ridgeSupport832_031 ridgeSupport832_suffix_032 ridgeSupport832_031_decode ridgeSupport832_suffix_decode_032
+theorem ridgeSupport832_suffix_decode_030 : PackedRawNatGrowth.readList 14 2215 ridgeSupport832_rest_030 =
+    (ridgeSupport832_suffix_030, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2183
+    ridgeSupport832_rest_030 ridgeSupport832_rest_031 ridgeSupport832_rest_100
+    ridgeSupport832_030 ridgeSupport832_suffix_031 ridgeSupport832_030_decode ridgeSupport832_suffix_decode_031
+theorem ridgeSupport832_suffix_decode_029 : PackedRawNatGrowth.readList 14 2247 ridgeSupport832_rest_029 =
+    (ridgeSupport832_suffix_029, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2215
+    ridgeSupport832_rest_029 ridgeSupport832_rest_030 ridgeSupport832_rest_100
+    ridgeSupport832_029 ridgeSupport832_suffix_030 ridgeSupport832_029_decode ridgeSupport832_suffix_decode_030
+theorem ridgeSupport832_suffix_decode_028 : PackedRawNatGrowth.readList 14 2279 ridgeSupport832_rest_028 =
+    (ridgeSupport832_suffix_028, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2247
+    ridgeSupport832_rest_028 ridgeSupport832_rest_029 ridgeSupport832_rest_100
+    ridgeSupport832_028 ridgeSupport832_suffix_029 ridgeSupport832_028_decode ridgeSupport832_suffix_decode_029
+theorem ridgeSupport832_suffix_decode_027 : PackedRawNatGrowth.readList 14 2311 ridgeSupport832_rest_027 =
+    (ridgeSupport832_suffix_027, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2279
+    ridgeSupport832_rest_027 ridgeSupport832_rest_028 ridgeSupport832_rest_100
+    ridgeSupport832_027 ridgeSupport832_suffix_028 ridgeSupport832_027_decode ridgeSupport832_suffix_decode_028
+theorem ridgeSupport832_suffix_decode_026 : PackedRawNatGrowth.readList 14 2343 ridgeSupport832_rest_026 =
+    (ridgeSupport832_suffix_026, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2311
+    ridgeSupport832_rest_026 ridgeSupport832_rest_027 ridgeSupport832_rest_100
+    ridgeSupport832_026 ridgeSupport832_suffix_027 ridgeSupport832_026_decode ridgeSupport832_suffix_decode_027
+theorem ridgeSupport832_suffix_decode_025 : PackedRawNatGrowth.readList 14 2375 ridgeSupport832_rest_025 =
+    (ridgeSupport832_suffix_025, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2343
+    ridgeSupport832_rest_025 ridgeSupport832_rest_026 ridgeSupport832_rest_100
+    ridgeSupport832_025 ridgeSupport832_suffix_026 ridgeSupport832_025_decode ridgeSupport832_suffix_decode_026
+theorem ridgeSupport832_suffix_decode_024 : PackedRawNatGrowth.readList 14 2407 ridgeSupport832_rest_024 =
+    (ridgeSupport832_suffix_024, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2375
+    ridgeSupport832_rest_024 ridgeSupport832_rest_025 ridgeSupport832_rest_100
+    ridgeSupport832_024 ridgeSupport832_suffix_025 ridgeSupport832_024_decode ridgeSupport832_suffix_decode_025
+theorem ridgeSupport832_suffix_decode_023 : PackedRawNatGrowth.readList 14 2439 ridgeSupport832_rest_023 =
+    (ridgeSupport832_suffix_023, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2407
+    ridgeSupport832_rest_023 ridgeSupport832_rest_024 ridgeSupport832_rest_100
+    ridgeSupport832_023 ridgeSupport832_suffix_024 ridgeSupport832_023_decode ridgeSupport832_suffix_decode_024
+theorem ridgeSupport832_suffix_decode_022 : PackedRawNatGrowth.readList 14 2471 ridgeSupport832_rest_022 =
+    (ridgeSupport832_suffix_022, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2439
+    ridgeSupport832_rest_022 ridgeSupport832_rest_023 ridgeSupport832_rest_100
+    ridgeSupport832_022 ridgeSupport832_suffix_023 ridgeSupport832_022_decode ridgeSupport832_suffix_decode_023
+theorem ridgeSupport832_suffix_decode_021 : PackedRawNatGrowth.readList 14 2503 ridgeSupport832_rest_021 =
+    (ridgeSupport832_suffix_021, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2471
+    ridgeSupport832_rest_021 ridgeSupport832_rest_022 ridgeSupport832_rest_100
+    ridgeSupport832_021 ridgeSupport832_suffix_022 ridgeSupport832_021_decode ridgeSupport832_suffix_decode_022
+theorem ridgeSupport832_suffix_decode_020 : PackedRawNatGrowth.readList 14 2535 ridgeSupport832_rest_020 =
+    (ridgeSupport832_suffix_020, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2503
+    ridgeSupport832_rest_020 ridgeSupport832_rest_021 ridgeSupport832_rest_100
+    ridgeSupport832_020 ridgeSupport832_suffix_021 ridgeSupport832_020_decode ridgeSupport832_suffix_decode_021
+theorem ridgeSupport832_suffix_decode_019 : PackedRawNatGrowth.readList 14 2567 ridgeSupport832_rest_019 =
+    (ridgeSupport832_suffix_019, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2535
+    ridgeSupport832_rest_019 ridgeSupport832_rest_020 ridgeSupport832_rest_100
+    ridgeSupport832_019 ridgeSupport832_suffix_020 ridgeSupport832_019_decode ridgeSupport832_suffix_decode_020
+theorem ridgeSupport832_suffix_decode_018 : PackedRawNatGrowth.readList 14 2599 ridgeSupport832_rest_018 =
+    (ridgeSupport832_suffix_018, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2567
+    ridgeSupport832_rest_018 ridgeSupport832_rest_019 ridgeSupport832_rest_100
+    ridgeSupport832_018 ridgeSupport832_suffix_019 ridgeSupport832_018_decode ridgeSupport832_suffix_decode_019
+theorem ridgeSupport832_suffix_decode_017 : PackedRawNatGrowth.readList 14 2631 ridgeSupport832_rest_017 =
+    (ridgeSupport832_suffix_017, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2599
+    ridgeSupport832_rest_017 ridgeSupport832_rest_018 ridgeSupport832_rest_100
+    ridgeSupport832_017 ridgeSupport832_suffix_018 ridgeSupport832_017_decode ridgeSupport832_suffix_decode_018
+theorem ridgeSupport832_suffix_decode_016 : PackedRawNatGrowth.readList 14 2663 ridgeSupport832_rest_016 =
+    (ridgeSupport832_suffix_016, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2631
+    ridgeSupport832_rest_016 ridgeSupport832_rest_017 ridgeSupport832_rest_100
+    ridgeSupport832_016 ridgeSupport832_suffix_017 ridgeSupport832_016_decode ridgeSupport832_suffix_decode_017
+theorem ridgeSupport832_suffix_decode_015 : PackedRawNatGrowth.readList 14 2695 ridgeSupport832_rest_015 =
+    (ridgeSupport832_suffix_015, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2663
+    ridgeSupport832_rest_015 ridgeSupport832_rest_016 ridgeSupport832_rest_100
+    ridgeSupport832_015 ridgeSupport832_suffix_016 ridgeSupport832_015_decode ridgeSupport832_suffix_decode_016
+theorem ridgeSupport832_suffix_decode_014 : PackedRawNatGrowth.readList 14 2727 ridgeSupport832_rest_014 =
+    (ridgeSupport832_suffix_014, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2695
+    ridgeSupport832_rest_014 ridgeSupport832_rest_015 ridgeSupport832_rest_100
+    ridgeSupport832_014 ridgeSupport832_suffix_015 ridgeSupport832_014_decode ridgeSupport832_suffix_decode_015
+theorem ridgeSupport832_suffix_decode_013 : PackedRawNatGrowth.readList 14 2759 ridgeSupport832_rest_013 =
+    (ridgeSupport832_suffix_013, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2727
+    ridgeSupport832_rest_013 ridgeSupport832_rest_014 ridgeSupport832_rest_100
+    ridgeSupport832_013 ridgeSupport832_suffix_014 ridgeSupport832_013_decode ridgeSupport832_suffix_decode_014
+theorem ridgeSupport832_suffix_decode_012 : PackedRawNatGrowth.readList 14 2791 ridgeSupport832_rest_012 =
+    (ridgeSupport832_suffix_012, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2759
+    ridgeSupport832_rest_012 ridgeSupport832_rest_013 ridgeSupport832_rest_100
+    ridgeSupport832_012 ridgeSupport832_suffix_013 ridgeSupport832_012_decode ridgeSupport832_suffix_decode_013
+theorem ridgeSupport832_suffix_decode_011 : PackedRawNatGrowth.readList 14 2823 ridgeSupport832_rest_011 =
+    (ridgeSupport832_suffix_011, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2791
+    ridgeSupport832_rest_011 ridgeSupport832_rest_012 ridgeSupport832_rest_100
+    ridgeSupport832_011 ridgeSupport832_suffix_012 ridgeSupport832_011_decode ridgeSupport832_suffix_decode_012
+theorem ridgeSupport832_suffix_decode_010 : PackedRawNatGrowth.readList 14 2855 ridgeSupport832_rest_010 =
+    (ridgeSupport832_suffix_010, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2823
+    ridgeSupport832_rest_010 ridgeSupport832_rest_011 ridgeSupport832_rest_100
+    ridgeSupport832_010 ridgeSupport832_suffix_011 ridgeSupport832_010_decode ridgeSupport832_suffix_decode_011
+theorem ridgeSupport832_suffix_decode_009 : PackedRawNatGrowth.readList 14 2887 ridgeSupport832_rest_009 =
+    (ridgeSupport832_suffix_009, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2855
+    ridgeSupport832_rest_009 ridgeSupport832_rest_010 ridgeSupport832_rest_100
+    ridgeSupport832_009 ridgeSupport832_suffix_010 ridgeSupport832_009_decode ridgeSupport832_suffix_decode_010
+theorem ridgeSupport832_suffix_decode_008 : PackedRawNatGrowth.readList 14 2919 ridgeSupport832_rest_008 =
+    (ridgeSupport832_suffix_008, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2887
+    ridgeSupport832_rest_008 ridgeSupport832_rest_009 ridgeSupport832_rest_100
+    ridgeSupport832_008 ridgeSupport832_suffix_009 ridgeSupport832_008_decode ridgeSupport832_suffix_decode_009
+theorem ridgeSupport832_suffix_decode_007 : PackedRawNatGrowth.readList 14 2951 ridgeSupport832_rest_007 =
+    (ridgeSupport832_suffix_007, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2919
+    ridgeSupport832_rest_007 ridgeSupport832_rest_008 ridgeSupport832_rest_100
+    ridgeSupport832_007 ridgeSupport832_suffix_008 ridgeSupport832_007_decode ridgeSupport832_suffix_decode_008
+theorem ridgeSupport832_suffix_decode_006 : PackedRawNatGrowth.readList 14 2983 ridgeSupport832_rest_006 =
+    (ridgeSupport832_suffix_006, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2951
+    ridgeSupport832_rest_006 ridgeSupport832_rest_007 ridgeSupport832_rest_100
+    ridgeSupport832_006 ridgeSupport832_suffix_007 ridgeSupport832_006_decode ridgeSupport832_suffix_decode_007
+theorem ridgeSupport832_suffix_decode_005 : PackedRawNatGrowth.readList 14 3015 ridgeSupport832_rest_005 =
+    (ridgeSupport832_suffix_005, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 2983
+    ridgeSupport832_rest_005 ridgeSupport832_rest_006 ridgeSupport832_rest_100
+    ridgeSupport832_005 ridgeSupport832_suffix_006 ridgeSupport832_005_decode ridgeSupport832_suffix_decode_006
+theorem ridgeSupport832_suffix_decode_004 : PackedRawNatGrowth.readList 14 3047 ridgeSupport832_rest_004 =
+    (ridgeSupport832_suffix_004, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 3015
+    ridgeSupport832_rest_004 ridgeSupport832_rest_005 ridgeSupport832_rest_100
+    ridgeSupport832_004 ridgeSupport832_suffix_005 ridgeSupport832_004_decode ridgeSupport832_suffix_decode_005
+theorem ridgeSupport832_suffix_decode_003 : PackedRawNatGrowth.readList 14 3079 ridgeSupport832_rest_003 =
+    (ridgeSupport832_suffix_003, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 3047
+    ridgeSupport832_rest_003 ridgeSupport832_rest_004 ridgeSupport832_rest_100
+    ridgeSupport832_003 ridgeSupport832_suffix_004 ridgeSupport832_003_decode ridgeSupport832_suffix_decode_004
+theorem ridgeSupport832_suffix_decode_002 : PackedRawNatGrowth.readList 14 3111 ridgeSupport832_rest_002 =
+    (ridgeSupport832_suffix_002, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 3079
+    ridgeSupport832_rest_002 ridgeSupport832_rest_003 ridgeSupport832_rest_100
+    ridgeSupport832_002 ridgeSupport832_suffix_003 ridgeSupport832_002_decode ridgeSupport832_suffix_decode_003
+theorem ridgeSupport832_suffix_decode_001 : PackedRawNatGrowth.readList 14 3143 ridgeSupport832_rest_001 =
+    (ridgeSupport832_suffix_001, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 3111
+    ridgeSupport832_rest_001 ridgeSupport832_rest_002 ridgeSupport832_rest_100
+    ridgeSupport832_001 ridgeSupport832_suffix_002 ridgeSupport832_001_decode ridgeSupport832_suffix_decode_002
+theorem ridgeSupport832_suffix_decode_000 : PackedRawNatGrowth.readList 14 3175 ridgeSupport832_rest_000 =
+    (ridgeSupport832_suffix_000, ridgeSupport832_rest_100) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 3143
+    ridgeSupport832_rest_000 ridgeSupport832_rest_001 ridgeSupport832_rest_100
+    ridgeSupport832_000 ridgeSupport832_suffix_001 ridgeSupport832_000_decode ridgeSupport832_suffix_decode_001
+theorem ridgeSupport832_eq : candidateRows 832 = ridgeSupport832_suffix_000 := by
+  rw [ridgeSupport832_source]
+  exact congrArg Prod.fst ridgeSupport832_suffix_decode_000
+theorem ridgeTest_large_832 : ridgeTest 832 = true := by
+  apply Bool.and_eq_true_iff.mpr
+  constructor
+  · apply decide_eq_true
+    rw [ridgeSupport832_eq]
+    simp only [ridgeSupport832_suffix_000, ridgeSupport832_suffix_001, ridgeSupport832_suffix_002, ridgeSupport832_suffix_003, ridgeSupport832_suffix_004, ridgeSupport832_suffix_005, ridgeSupport832_suffix_006, ridgeSupport832_suffix_007, ridgeSupport832_suffix_008, ridgeSupport832_suffix_009, ridgeSupport832_suffix_010, ridgeSupport832_suffix_011, ridgeSupport832_suffix_012, ridgeSupport832_suffix_013, ridgeSupport832_suffix_014, ridgeSupport832_suffix_015, ridgeSupport832_suffix_016, ridgeSupport832_suffix_017, ridgeSupport832_suffix_018, ridgeSupport832_suffix_019, ridgeSupport832_suffix_020, ridgeSupport832_suffix_021, ridgeSupport832_suffix_022, ridgeSupport832_suffix_023, ridgeSupport832_suffix_024, ridgeSupport832_suffix_025, ridgeSupport832_suffix_026, ridgeSupport832_suffix_027, ridgeSupport832_suffix_028, ridgeSupport832_suffix_029, ridgeSupport832_suffix_030, ridgeSupport832_suffix_031, ridgeSupport832_suffix_032, ridgeSupport832_suffix_033, ridgeSupport832_suffix_034, ridgeSupport832_suffix_035, ridgeSupport832_suffix_036, ridgeSupport832_suffix_037, ridgeSupport832_suffix_038, ridgeSupport832_suffix_039, ridgeSupport832_suffix_040, ridgeSupport832_suffix_041, ridgeSupport832_suffix_042, ridgeSupport832_suffix_043, ridgeSupport832_suffix_044, ridgeSupport832_suffix_045, ridgeSupport832_suffix_046, ridgeSupport832_suffix_047, ridgeSupport832_suffix_048, ridgeSupport832_suffix_049, ridgeSupport832_suffix_050, ridgeSupport832_suffix_051, ridgeSupport832_suffix_052, ridgeSupport832_suffix_053, ridgeSupport832_suffix_054, ridgeSupport832_suffix_055, ridgeSupport832_suffix_056, ridgeSupport832_suffix_057, ridgeSupport832_suffix_058, ridgeSupport832_suffix_059, ridgeSupport832_suffix_060, ridgeSupport832_suffix_061, ridgeSupport832_suffix_062, ridgeSupport832_suffix_063, ridgeSupport832_suffix_064, ridgeSupport832_suffix_065, ridgeSupport832_suffix_066, ridgeSupport832_suffix_067, ridgeSupport832_suffix_068, ridgeSupport832_suffix_069, ridgeSupport832_suffix_070, ridgeSupport832_suffix_071, ridgeSupport832_suffix_072, ridgeSupport832_suffix_073, ridgeSupport832_suffix_074, ridgeSupport832_suffix_075, ridgeSupport832_suffix_076, ridgeSupport832_suffix_077, ridgeSupport832_suffix_078, ridgeSupport832_suffix_079, ridgeSupport832_suffix_080, ridgeSupport832_suffix_081, ridgeSupport832_suffix_082, ridgeSupport832_suffix_083, ridgeSupport832_suffix_084, ridgeSupport832_suffix_085, ridgeSupport832_suffix_086, ridgeSupport832_suffix_087, ridgeSupport832_suffix_088, ridgeSupport832_suffix_089, ridgeSupport832_suffix_090, ridgeSupport832_suffix_091, ridgeSupport832_suffix_092, ridgeSupport832_suffix_093, ridgeSupport832_suffix_094, ridgeSupport832_suffix_095, ridgeSupport832_suffix_096, ridgeSupport832_suffix_097, ridgeSupport832_suffix_098, ridgeSupport832_suffix_099, ridgeSupport832_suffix_100, RawMaskAppend.mask_append, RawMaskAppend.mask_nil, ridgeSupport832_000_mask, ridgeSupport832_001_mask, ridgeSupport832_002_mask, ridgeSupport832_003_mask, ridgeSupport832_004_mask, ridgeSupport832_005_mask, ridgeSupport832_006_mask, ridgeSupport832_007_mask, ridgeSupport832_008_mask, ridgeSupport832_009_mask, ridgeSupport832_010_mask, ridgeSupport832_011_mask, ridgeSupport832_012_mask, ridgeSupport832_013_mask, ridgeSupport832_014_mask, ridgeSupport832_015_mask, ridgeSupport832_016_mask, ridgeSupport832_017_mask, ridgeSupport832_018_mask, ridgeSupport832_019_mask, ridgeSupport832_020_mask, ridgeSupport832_021_mask, ridgeSupport832_022_mask, ridgeSupport832_023_mask, ridgeSupport832_024_mask, ridgeSupport832_025_mask, ridgeSupport832_026_mask, ridgeSupport832_027_mask, ridgeSupport832_028_mask, ridgeSupport832_029_mask, ridgeSupport832_030_mask, ridgeSupport832_031_mask, ridgeSupport832_032_mask, ridgeSupport832_033_mask, ridgeSupport832_034_mask, ridgeSupport832_035_mask, ridgeSupport832_036_mask, ridgeSupport832_037_mask, ridgeSupport832_038_mask, ridgeSupport832_039_mask, ridgeSupport832_040_mask, ridgeSupport832_041_mask, ridgeSupport832_042_mask, ridgeSupport832_043_mask, ridgeSupport832_044_mask, ridgeSupport832_045_mask, ridgeSupport832_046_mask, ridgeSupport832_047_mask, ridgeSupport832_048_mask, ridgeSupport832_049_mask, ridgeSupport832_050_mask, ridgeSupport832_051_mask, ridgeSupport832_052_mask, ridgeSupport832_053_mask, ridgeSupport832_054_mask, ridgeSupport832_055_mask, ridgeSupport832_056_mask, ridgeSupport832_057_mask, ridgeSupport832_058_mask, ridgeSupport832_059_mask, ridgeSupport832_060_mask, ridgeSupport832_061_mask, ridgeSupport832_062_mask, ridgeSupport832_063_mask, ridgeSupport832_064_mask, ridgeSupport832_065_mask, ridgeSupport832_066_mask, ridgeSupport832_067_mask, ridgeSupport832_068_mask, ridgeSupport832_069_mask, ridgeSupport832_070_mask, ridgeSupport832_071_mask, ridgeSupport832_072_mask, ridgeSupport832_073_mask, ridgeSupport832_074_mask, ridgeSupport832_075_mask, ridgeSupport832_076_mask, ridgeSupport832_077_mask, ridgeSupport832_078_mask, ridgeSupport832_079_mask, ridgeSupport832_080_mask, ridgeSupport832_081_mask, ridgeSupport832_082_mask, ridgeSupport832_083_mask, ridgeSupport832_084_mask, ridgeSupport832_085_mask, ridgeSupport832_086_mask, ridgeSupport832_087_mask, ridgeSupport832_088_mask, ridgeSupport832_089_mask, ridgeSupport832_090_mask, ridgeSupport832_091_mask, ridgeSupport832_092_mask, ridgeSupport832_093_mask, ridgeSupport832_094_mask, ridgeSupport832_095_mask, ridgeSupport832_096_mask, ridgeSupport832_097_mask, ridgeSupport832_098_mask, ridgeSupport832_099_mask]
+    decide +kernel
+  · rw [ridgeSupport832_eq]
+    simp only [ridgeSupport832_suffix_000, ridgeSupport832_suffix_001, ridgeSupport832_suffix_002, ridgeSupport832_suffix_003, ridgeSupport832_suffix_004, ridgeSupport832_suffix_005, ridgeSupport832_suffix_006, ridgeSupport832_suffix_007, ridgeSupport832_suffix_008, ridgeSupport832_suffix_009, ridgeSupport832_suffix_010, ridgeSupport832_suffix_011, ridgeSupport832_suffix_012, ridgeSupport832_suffix_013, ridgeSupport832_suffix_014, ridgeSupport832_suffix_015, ridgeSupport832_suffix_016, ridgeSupport832_suffix_017, ridgeSupport832_suffix_018, ridgeSupport832_suffix_019, ridgeSupport832_suffix_020, ridgeSupport832_suffix_021, ridgeSupport832_suffix_022, ridgeSupport832_suffix_023, ridgeSupport832_suffix_024, ridgeSupport832_suffix_025, ridgeSupport832_suffix_026, ridgeSupport832_suffix_027, ridgeSupport832_suffix_028, ridgeSupport832_suffix_029, ridgeSupport832_suffix_030, ridgeSupport832_suffix_031, ridgeSupport832_suffix_032, ridgeSupport832_suffix_033, ridgeSupport832_suffix_034, ridgeSupport832_suffix_035, ridgeSupport832_suffix_036, ridgeSupport832_suffix_037, ridgeSupport832_suffix_038, ridgeSupport832_suffix_039, ridgeSupport832_suffix_040, ridgeSupport832_suffix_041, ridgeSupport832_suffix_042, ridgeSupport832_suffix_043, ridgeSupport832_suffix_044, ridgeSupport832_suffix_045, ridgeSupport832_suffix_046, ridgeSupport832_suffix_047, ridgeSupport832_suffix_048, ridgeSupport832_suffix_049, ridgeSupport832_suffix_050, ridgeSupport832_suffix_051, ridgeSupport832_suffix_052, ridgeSupport832_suffix_053, ridgeSupport832_suffix_054, ridgeSupport832_suffix_055, ridgeSupport832_suffix_056, ridgeSupport832_suffix_057, ridgeSupport832_suffix_058, ridgeSupport832_suffix_059, ridgeSupport832_suffix_060, ridgeSupport832_suffix_061, ridgeSupport832_suffix_062, ridgeSupport832_suffix_063, ridgeSupport832_suffix_064, ridgeSupport832_suffix_065, ridgeSupport832_suffix_066, ridgeSupport832_suffix_067, ridgeSupport832_suffix_068, ridgeSupport832_suffix_069, ridgeSupport832_suffix_070, ridgeSupport832_suffix_071, ridgeSupport832_suffix_072, ridgeSupport832_suffix_073, ridgeSupport832_suffix_074, ridgeSupport832_suffix_075, ridgeSupport832_suffix_076, ridgeSupport832_suffix_077, ridgeSupport832_suffix_078, ridgeSupport832_suffix_079, ridgeSupport832_suffix_080, ridgeSupport832_suffix_081, ridgeSupport832_suffix_082, ridgeSupport832_suffix_083, ridgeSupport832_suffix_084, ridgeSupport832_suffix_085, ridgeSupport832_suffix_086, ridgeSupport832_suffix_087, ridgeSupport832_suffix_088, ridgeSupport832_suffix_089, ridgeSupport832_suffix_090, ridgeSupport832_suffix_091, ridgeSupport832_suffix_092, ridgeSupport832_suffix_093, ridgeSupport832_suffix_094, ridgeSupport832_suffix_095, ridgeSupport832_suffix_096, ridgeSupport832_suffix_097, ridgeSupport832_suffix_098, ridgeSupport832_suffix_099, ridgeSupport832_suffix_100, List.all_append, List.all_nil, ridgeSupport832_000_checked, ridgeSupport832_001_checked, ridgeSupport832_002_checked, ridgeSupport832_003_checked, ridgeSupport832_004_checked, ridgeSupport832_005_checked, ridgeSupport832_006_checked, ridgeSupport832_007_checked, ridgeSupport832_008_checked, ridgeSupport832_009_checked, ridgeSupport832_010_checked, ridgeSupport832_011_checked, ridgeSupport832_012_checked, ridgeSupport832_013_checked, ridgeSupport832_014_checked, ridgeSupport832_015_checked, ridgeSupport832_016_checked, ridgeSupport832_017_checked, ridgeSupport832_018_checked, ridgeSupport832_019_checked, ridgeSupport832_020_checked, ridgeSupport832_021_checked, ridgeSupport832_022_checked, ridgeSupport832_023_checked, ridgeSupport832_024_checked, ridgeSupport832_025_checked, ridgeSupport832_026_checked, ridgeSupport832_027_checked, ridgeSupport832_028_checked, ridgeSupport832_029_checked, ridgeSupport832_030_checked, ridgeSupport832_031_checked, ridgeSupport832_032_checked, ridgeSupport832_033_checked, ridgeSupport832_034_checked, ridgeSupport832_035_checked, ridgeSupport832_036_checked, ridgeSupport832_037_checked, ridgeSupport832_038_checked, ridgeSupport832_039_checked, ridgeSupport832_040_checked, ridgeSupport832_041_checked, ridgeSupport832_042_checked, ridgeSupport832_043_checked, ridgeSupport832_044_checked, ridgeSupport832_045_checked, ridgeSupport832_046_checked, ridgeSupport832_047_checked, ridgeSupport832_048_checked, ridgeSupport832_049_checked, ridgeSupport832_050_checked, ridgeSupport832_051_checked, ridgeSupport832_052_checked, ridgeSupport832_053_checked, ridgeSupport832_054_checked, ridgeSupport832_055_checked, ridgeSupport832_056_checked, ridgeSupport832_057_checked, ridgeSupport832_058_checked, ridgeSupport832_059_checked, ridgeSupport832_060_checked, ridgeSupport832_061_checked, ridgeSupport832_062_checked, ridgeSupport832_063_checked, ridgeSupport832_064_checked, ridgeSupport832_065_checked, ridgeSupport832_066_checked, ridgeSupport832_067_checked, ridgeSupport832_068_checked, ridgeSupport832_069_checked, ridgeSupport832_070_checked, ridgeSupport832_071_checked, ridgeSupport832_072_checked, ridgeSupport832_073_checked, ridgeSupport832_074_checked, ridgeSupport832_075_checked, ridgeSupport832_076_checked, ridgeSupport832_077_checked, ridgeSupport832_078_checked, ridgeSupport832_079_checked, ridgeSupport832_080_checked, ridgeSupport832_081_checked, ridgeSupport832_082_checked, ridgeSupport832_083_checked, ridgeSupport832_084_checked, ridgeSupport832_085_checked, ridgeSupport832_086_checked, ridgeSupport832_087_checked, ridgeSupport832_088_checked, ridgeSupport832_089_checked, ridgeSupport832_090_checked, ridgeSupport832_091_checked, ridgeSupport832_092_checked, ridgeSupport832_093_checked, ridgeSupport832_094_checked, ridgeSupport832_095_checked, ridgeSupport832_096_checked, ridgeSupport832_097_checked, ridgeSupport832_098_checked, ridgeSupport832_099_checked, Bool.and_self]
+
+end Papers.RationalityTen.RootedCaches.RootedSixBase01

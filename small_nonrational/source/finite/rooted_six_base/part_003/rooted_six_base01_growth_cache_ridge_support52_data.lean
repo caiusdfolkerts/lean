@@ -1,0 +1,121 @@
+module
+prelude
+public import RootedSixBase01GrowthCacheData
+public import PackedListAppend
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSixBase01
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open RawGrowthCacheCertificate RawNatGrowthSoundness
+def ridgeSupport52_000 : List Nat := [0,71,72,73,74,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144]
+def ridgeSupport52_001 : List Nat := [1145,1146,1147,1148,1149,1150,1151,1152,1153,1154,1155,1156,1157,1158,1159,1160,1161,1162,1163,1164,1165,1166,1167,1168,1169,1170,1171,1172,1173,1174,1175,1176]
+def ridgeSupport52_002 : List Nat := [1177,1178,1179,1180,1181,1182,1183,1184,1185,1186,1187,1188,1189,6690,6691,6692,6693,6694,6695,6696,6697,6698,6699,6700,6701,6702,6703,6704,6705,6706,6707,6708]
+def ridgeSupport52_003 : List Nat := [6709,6710,6711,6712,6713,6714,6715,6716,6717,6718,6719,6720,6721,6722,6723,6724,6725,6726,6727,6728,6729,6730,6731,6732,6733,6734,6735,6736,6737,6738,6739,6740]
+def ridgeSupport52_004 : List Nat := [6741,6742,6743,6744,6745,6746,6747,6748,6749,6750,6751,6752,6753,6754,6755,6756,6757,6758,6759,6760,6761,6762,6763,6764,6765,6766,6767,6768,6769,6770,6771,6772]
+def ridgeSupport52_005 : List Nat := [6773,6774,6775,6776,6777,6778,6779,6780,6781,6782,6783,6784,6785,6786,6787,6788,6789,6790,6791,6792,6793,6794,6795,6796,6797,6798,6799,6800,6801,6802,6803,6804]
+def ridgeSupport52_006 : List Nat := [6805,6806,6807,6808,6809,6810,6811,6812,6813,6814,6815,6816,6817,6818,6819,6820,6821,6822,6823,6824,6825,6826,6827,6828,6829,6830,6831,6832,6833,6834,6835,6836]
+def ridgeSupport52_007 : List Nat := [6837,6838,6839,6840,6841,6842,6843,6844,6845,6846,6847,6848,6849,6850,6851,6852,6853,6854,6855,6856,6857,6858,6859,6860,6861,6862,6863,6864,6865,6866,6867,6868]
+def ridgeSupport52_008 : List Nat := [6869,6870,6871,6872,6873,6874,6875,6876,6877,6878,6879,6880,6881,6882,6883,6884,6885,6886,6887,6888,6889,6890,6891,6892,6893,6894,6895,6896,6897,6898,6899,6900]
+def ridgeSupport52_009 : List Nat := [6901,6902,6903,6904,6905,6906,6907,6908,6909,6910,6911,6912,6913,6914,6915,6916,6917,6918,6919,6920,6921,6922,6923,6924,6925,6926,6927,6928,6929,6930,6931,6932]
+def ridgeSupport52_010 : List Nat := [6933,6934,6935,6936,6937,6938,6939,6940,6941,6942,6943,6944,6945,6946,6947,6948,6949,6950,6951,6952,6953,6954,6955,6956,6957,6958,6959,6960,6961,6962,6963,6964]
+def ridgeSupport52_011 : List Nat := [6965,6966,6967,6968,6969,6970,6971,6972,6973,6974,6975,6976,6977,6978,6979,6980,6981,6982,6983,6984,6985,6986,6987,6988,6989,6990,6991,6992,6993,6994,6995,6996]
+def ridgeSupport52_012 : List Nat := [6997,6998,6999,7000,7001,7002,7003,7004,7005,7006,7007,7008,7009,7010,7011,7012,7013,7014,7015,7016,7017,7018,7019,7020,7021,7022,7023,7024,7025,7026,7027,7028]
+def ridgeSupport52_013 : List Nat := [7029,7030,7031,7032,7033,7034,7035,7036,7037,7038,7039,7040,7041,7042,7043,7044,7045,7046,7047,7048,7049,7050,7051,7052,7053,7054,7055,7056,7057,7058,7059,7060]
+def ridgeSupport52_014 : List Nat := [7061,7062,7063,7064,7065,7066,7067,7068,7069,7070,7071,7072,7073,7074,7075,7076,7077,7078,7079,7080,7081,7082,7083,7084,7085,7086,7087,7088,7089,7090,7091,7092]
+def ridgeSupport52_015 : List Nat := [7093,7094,7095,7096,7097,7098,7099,7100,7101,7102,7103,7104,7105,7106,7107,7108,7109,7110,7111,7112,7113,7114,7115,7116,7117,7118,7119,7120,7121,11250,11251,11252]
+def ridgeSupport52_016 : List Nat := [11253,11254,11255,11256,11257,11258,11259,11260,11261,11262,11263,11264,11265,11266,11267,11268,11269,11270,11271,11272,11273,11274,11275,11276,11277,11278,11279,11280,11281,11282,11283,11284]
+def ridgeSupport52_017 : List Nat := [11285,11286,11287,11288,11289,11290,11291,11292,11293,11294,11295,11296,11297,11298,11299,11300,11301,11302,11303,11304,11305,11306,11307,11308,11309,11310,11311,11312,11313,11314,11315,11316]
+def ridgeSupport52_018 : List Nat := [11317,11318,11319,11320,11321,11322,11323,11324,11325,11326,11327,11328,11329,11330,11331,11332,11333,11334,11335,11336,11337,11338,11339,11340,11341,11342,11343,11344,11345,11346,11347,11348]
+def ridgeSupport52_019 : List Nat := [11349,11350,11351,11352,11353,11354,11355,11356,11357,11358,11359,11360,11361,11362,11363,11364,11365,11366,11367,11368,11369,11370,11371,11372,11373,11374,11375,11376,11377,11378,11379,11380]
+def ridgeSupport52_020 : List Nat := [11381,11382,11383,11384,11385,11386,11387,11388,11389,11390,11391,11392,11393,11394,11395,11396,11397,11398,11399,11400,11401,11402,11403,11404,11405,11406,11407,11408,11409,11410,11411,11412]
+def ridgeSupport52_021 : List Nat := [11413,11414,11415,11416,11417,11418,11419,11420,11421,11422,11423,11424,11425,11426,11427,11428,11429,11430,11431,11432,11433,11434,11435,11436,11437,11438,11439,11440,11441,11442,11443,11444]
+def ridgeSupport52_022 : List Nat := [11445,11446,11447,11448,11449,11450,11451,11452,11453,11454,11455,11456,11457,11458,11459,11460,11461,11462,11463,11464,11465,11466,11467,11468,11469,11470,11471,11472,11473,11474,11475,11476]
+def ridgeSupport52_023 : List Nat := [11477,11478,11479,11480,11481,11482,11483,11484,11485,11486,11487,11488,11489,11490,11491,11492,11493,11494,11495,11496,11497,11498,11499,11500,11501,11502,11503,11504,11505,11506,11507,11508]
+def ridgeSupport52_024 : List Nat := [11509,11510,11511,11512,11513,11514,11515,11516,11517,11518,11519,11520,11521,11522,11523,11524,11525,11526,11527,11528,11529,11530,11531,11532,11533,11534,11535,11536,11537,14166,14167,14168]
+def ridgeSupport52_025 : List Nat := [14169,14170,14171,14172,14173,14174,14175,14176,14177,14178,14179,14180,14181,14182,14183,14184,14185,14186,14187,14188,14189,14190,14191,14192,14193,14194,14195,14196,14197,14198,14199,14200]
+def ridgeSupport52_026 : List Nat := [14201,14202,14203,14204,14205,14206,14207,14208,14209,14210,14211,14212,14213,14214,14215,14216,14217,14218,14219,14220,14221,14222,14223,14224,14225,14226,14227,14228,14229,14230,14231,14232]
+def ridgeSupport52_027 : List Nat := [14233,14234,14235,14236,14237,14238,14239,14240,14241,14242,14243,14244,14245,14246,14247,14248,14249,14250,14251,14252,14253,14254,14255,14256,14257,14258,14259,14260,14261,14262,14263,14264]
+def ridgeSupport52_028 : List Nat := [14265,14266,14267,14268,14269,14270,14271,14272,14273,14274,14275,14276,14277,14278,14279,14280,14281,14282,14283,14284,14285,14286,14287,14288,14289,14290,14291,14292,14293,14294,14295,14296]
+def ridgeSupport52_029 : List Nat := [14297,14298,14299,14300,14301,14302,14303,14304,14305,14306,14307,14308,14309,14310,14311,14312,14313,14314,14315,14316,14317,14318,14319,14320,14321,14322,14323,14324,14325,14326,14327,14328]
+def ridgeSupport52_030 : List Nat := [14329,14330,14331,14332,14333,14334,14335,14336,14337,14338,14339,14340,14341,14342,14343,14344,14345,14346,14347,14348,14349,14350,14351,14352,14353,14354,14355,14356,14357,14358,14359,14360]
+def ridgeSupport52_031 : List Nat := [14361,14362,14363,14364,14365,14366,14367,14368,14369,14370,14371,14372,14373,14374,14375,14376,14377,14378,14379,14380,14381,14658,14659,14660,14661,14662,14663,14664,14665,14666,14667,14668]
+def ridgeSupport52_032 : List Nat := [14669,14670,14671,14672,14673,14674,14675,14676,14677,14678,14679,14680,14681,15198,15199,15200,15201,15202,15203,15204,15205,15206,15207,15208,15209,15210,15211,15212,15213,15214,15215,15216]
+def ridgeSupport52_033 : List Nat := [15217,15218,15219,15220,15221]
+def ridgeSupport52_code : Nat := 0x3b75edd3b73edcbb71edc3b6fedbbb6dedb3b6bedabb69eda3b67ed9bb65ed93b63ed8bb61ed83b5fed7b959e563957e55b955e553953e54b951e54394fe53b94de53394be52b949e523947e51b945e513943e50b82de0b382be0ab829e0a3827e09b825e093823e08b821e08381fe07b81de07381be06b819e063817e05b815e053813e04b811e04380fe03b80de03380be02b809e023807e01b805e013803e00b801e0037ffdffb7fddff37fbdfeb7f9dfe37f7dfdb7f5dfd37f3dfcb7f1dfc37efdfbb7eddfb37ebdfab7e9dfa37e7df9b7e5df937e3df8b7e1df837dfdf7b7dddf737dbdf6b7d9df637d7df5b7d5df537d3df4b7d1df437cfdf3b7cddf337cbdf2b7c9df237c7df1b7c5df137c3df0b7c1df037bfdefb7bddef37bbdeeb7b9dee37b7dedb7b5ded37b3decb7b1dec37afdebb7addeb37abdeab7a9dea37a7de9b7a5de937a3de8b7a1de8379fde7b79dde7379bde6b799de63797de5b795de53793de4b791de4378fde3b78dde3378bde2b789de23787de1b785de13783de0b781de0377fddfb77dddf377bddeb779dde3777dddb775ddd3773ddcb771ddc376fddbb76dddb376bddab769dda3767dd9b765dd93763dd8b761dd8375fdd7b75ddd7375bdd6b759dd63757dd5ad11b442d0fb43ad0db432d0bb42ad09b422d07b41ad05b412d03b40ad01b402cffb3facfdb3f2cfbb3eacf9b3e2cf7b3dacf5b3d2cf3b3cacf1b3c2cefb3bacedb3b2cebb3aace9b3a2ce7b39ace5b392ce3b38ace1b382cdfb37acddb372cdbb36acd9b362cd7b35acd5b352cd3b34acd1b342ccfb33accdb332ccbb32acc9b322cc7b31acc5b312cc3b30acc1b302cbfb2facbdb2f2cbbb2eacb9b2e2cb7b2dacb5b2d2cb3b2cacb1b2c2cafb2bacadb2b2cabb2aaca9b2a2ca7b29aca5b292ca3b28aca1b282c9fb27ac9db272c9bb26ac99b262c97b25ac95b252c93b24ac91b242c8fb23ac8db232c8bb22ac89b222c87b21ac85b212c83b20ac81b202c7fb1fac7db1f2c7bb1eac79b1e2c77b1dac75b1d2c73b1cac71b1c2c6fb1bac6db1b2c6bb1aac69b1a2c67b19ac65b192c63b18ac61b182c5fb17ac5db172c5bb16ac59b162c57b15ac55b152c53b14ac51b142c4fb13ac4db132c4bb12ac49b122c47b11ac45b112c43b10ac41b102c3fb0fac3db0f2c3bb0eac39b0e2c37b0dac35b0d2c33b0cac31b0c2c2fb0bac2db0b2c2bb0aac29b0a2c27b09ac25b092c23b08ac21b082c1fb07ac1db072c1bb06ac19b062c17b05ac15b052c13b04ac11b042c0fb03ac0db032c0bb02ac09b022c07b01ac05b012c03b00ac01b002bffaffabfdaff2bfbafeabf9afe2bf7afdabf5afd2bf3afc9bd16f41bcf6f39bcd6f31bcb6f29bc96f21bc76f19bc56f11bc36f09bc16f01bbf6ef9bbd6ef1bbb6ee9bb96ee1bb76ed9bb56ed1bb36ec9bb16ec1baf6eb9bad6eb1bab6ea9ba96ea1ba76e99ba56e91ba36e89ba16e81b9f6e79b9d6e71b9b6e69b996e61b976e59b956e51b936e49b916e41b8f6e39b8d6e31b8b6e29b896e21b876e19b856e11b836e09b816e01b7f6df9b7d6df1b7b6de9b796de1b776dd9b756dd1b736dc9b716dc1b6f6db9b6d6db1b6b6da9b696da1b676d99b656d91b636d89b616d81b5f6d79b5d6d71b5b6d69b596d61b576d59b556d51b536d49b516d41b4f6d39b4d6d31b4b6d29b496d21b476d19b456d11b436d09b416d01b3f6cf9b3d6cf1b3b6ce9b396ce1b376cd9b356cd1b336cc9b316cc1b2f6cb9b2d6cb1b2b6ca9b296ca1b276c99b256c91b236c89b216c81b1f6c79b1d6c71b1b6c69b196c61b176c59b156c51b136c49b116c41b0f6c39b0d6c31b0b6c29b096c21b076c19b056c11b036c09b016c01aff6bf9afd6bf1afb6be9af96be1af76bd9af56bd1af36bc9af16bc1aef6bb9aed6bb1aeb6ba9ae96ba1ae76b99ae56b91ae36b89ae16b81adf6b79add6b71adb6b69ad96b61ad76b59ad56b51ad36b49ad16b41acf6b39acd6b31acb6b29ac96b21ac76b19ac56b11ac36b09ac16b01abf6af9abd6af1abb6ae9ab96ae1ab76ad9ab56ad1ab36ac9ab16ac1aaf6ab9aad6ab1aab6aa9aa96aa1aa76a99aa56a91aa36a89aa16a81a9f6a79a9d6a71a9b6a69a996a61a976a59a956a51a936a49a916a41a8f6a39a8d6a31a8b6a29a896a21a876a19a856a11a836a09a816a01a7f69f9a7d69f1a7b69e9a7969e1a7769d9a7569d1a7369c9a7169c1a6f69b9a6d69b1a6b69a9a6969a1a676999a656991a636989a616981a5f6979a5d6971a5b6969a596961a576959a556951a536949a516941a4f6939a4d6931a4b6929a496921a476919a456911a436909a416901a3f68f9a3d68f1a3b68e9a3968e1a3768d9a3568d1a3368c9a3168c1a2f68b9a2d68b1a2b68a9a2968a1a276899a256891a2368884a512904a312884a1128049f127849d127049b12684991260497125849512504931248491124048f123848d123048b12284891220487121848512104831208481120047f11f847d11f047b11e847911e047711d847511d047311c847111c046f11b846d11b046b11a846911a0467119846511904631188461118045f117804a0124048011c000
+def ridgeSupport52_rest_000 : Nat := PackedRawNatGrowth.drop 0 ridgeSupport52_code
+def ridgeSupport52_rest_001 : Nat := PackedRawNatGrowth.drop 448 ridgeSupport52_code
+def ridgeSupport52_rest_002 : Nat := PackedRawNatGrowth.drop 896 ridgeSupport52_code
+def ridgeSupport52_rest_003 : Nat := PackedRawNatGrowth.drop 1344 ridgeSupport52_code
+def ridgeSupport52_rest_004 : Nat := PackedRawNatGrowth.drop 1792 ridgeSupport52_code
+def ridgeSupport52_rest_005 : Nat := PackedRawNatGrowth.drop 2240 ridgeSupport52_code
+def ridgeSupport52_rest_006 : Nat := PackedRawNatGrowth.drop 2688 ridgeSupport52_code
+def ridgeSupport52_rest_007 : Nat := PackedRawNatGrowth.drop 3136 ridgeSupport52_code
+def ridgeSupport52_rest_008 : Nat := PackedRawNatGrowth.drop 3584 ridgeSupport52_code
+def ridgeSupport52_rest_009 : Nat := PackedRawNatGrowth.drop 4032 ridgeSupport52_code
+def ridgeSupport52_rest_010 : Nat := PackedRawNatGrowth.drop 4480 ridgeSupport52_code
+def ridgeSupport52_rest_011 : Nat := PackedRawNatGrowth.drop 4928 ridgeSupport52_code
+def ridgeSupport52_rest_012 : Nat := PackedRawNatGrowth.drop 5376 ridgeSupport52_code
+def ridgeSupport52_rest_013 : Nat := PackedRawNatGrowth.drop 5824 ridgeSupport52_code
+def ridgeSupport52_rest_014 : Nat := PackedRawNatGrowth.drop 6272 ridgeSupport52_code
+def ridgeSupport52_rest_015 : Nat := PackedRawNatGrowth.drop 6720 ridgeSupport52_code
+def ridgeSupport52_rest_016 : Nat := PackedRawNatGrowth.drop 7168 ridgeSupport52_code
+def ridgeSupport52_rest_017 : Nat := PackedRawNatGrowth.drop 7616 ridgeSupport52_code
+def ridgeSupport52_rest_018 : Nat := PackedRawNatGrowth.drop 8064 ridgeSupport52_code
+def ridgeSupport52_rest_019 : Nat := PackedRawNatGrowth.drop 8512 ridgeSupport52_code
+def ridgeSupport52_rest_020 : Nat := PackedRawNatGrowth.drop 8960 ridgeSupport52_code
+def ridgeSupport52_rest_021 : Nat := PackedRawNatGrowth.drop 9408 ridgeSupport52_code
+def ridgeSupport52_rest_022 : Nat := PackedRawNatGrowth.drop 9856 ridgeSupport52_code
+def ridgeSupport52_rest_023 : Nat := PackedRawNatGrowth.drop 10304 ridgeSupport52_code
+def ridgeSupport52_rest_024 : Nat := PackedRawNatGrowth.drop 10752 ridgeSupport52_code
+def ridgeSupport52_rest_025 : Nat := PackedRawNatGrowth.drop 11200 ridgeSupport52_code
+def ridgeSupport52_rest_026 : Nat := PackedRawNatGrowth.drop 11648 ridgeSupport52_code
+def ridgeSupport52_rest_027 : Nat := PackedRawNatGrowth.drop 12096 ridgeSupport52_code
+def ridgeSupport52_rest_028 : Nat := PackedRawNatGrowth.drop 12544 ridgeSupport52_code
+def ridgeSupport52_rest_029 : Nat := PackedRawNatGrowth.drop 12992 ridgeSupport52_code
+def ridgeSupport52_rest_030 : Nat := PackedRawNatGrowth.drop 13440 ridgeSupport52_code
+def ridgeSupport52_rest_031 : Nat := PackedRawNatGrowth.drop 13888 ridgeSupport52_code
+def ridgeSupport52_rest_032 : Nat := PackedRawNatGrowth.drop 14336 ridgeSupport52_code
+def ridgeSupport52_rest_033 : Nat := PackedRawNatGrowth.drop 14784 ridgeSupport52_code
+def ridgeSupport52_rest_034 : Nat := PackedRawNatGrowth.drop 14854 ridgeSupport52_code
+def ridgeSupport52_suffix_034 : List Nat := []
+def ridgeSupport52_suffix_033 : List Nat := ridgeSupport52_033 ++ ridgeSupport52_suffix_034
+def ridgeSupport52_suffix_032 : List Nat := ridgeSupport52_032 ++ ridgeSupport52_suffix_033
+def ridgeSupport52_suffix_031 : List Nat := ridgeSupport52_031 ++ ridgeSupport52_suffix_032
+def ridgeSupport52_suffix_030 : List Nat := ridgeSupport52_030 ++ ridgeSupport52_suffix_031
+def ridgeSupport52_suffix_029 : List Nat := ridgeSupport52_029 ++ ridgeSupport52_suffix_030
+def ridgeSupport52_suffix_028 : List Nat := ridgeSupport52_028 ++ ridgeSupport52_suffix_029
+def ridgeSupport52_suffix_027 : List Nat := ridgeSupport52_027 ++ ridgeSupport52_suffix_028
+def ridgeSupport52_suffix_026 : List Nat := ridgeSupport52_026 ++ ridgeSupport52_suffix_027
+def ridgeSupport52_suffix_025 : List Nat := ridgeSupport52_025 ++ ridgeSupport52_suffix_026
+def ridgeSupport52_suffix_024 : List Nat := ridgeSupport52_024 ++ ridgeSupport52_suffix_025
+def ridgeSupport52_suffix_023 : List Nat := ridgeSupport52_023 ++ ridgeSupport52_suffix_024
+def ridgeSupport52_suffix_022 : List Nat := ridgeSupport52_022 ++ ridgeSupport52_suffix_023
+def ridgeSupport52_suffix_021 : List Nat := ridgeSupport52_021 ++ ridgeSupport52_suffix_022
+def ridgeSupport52_suffix_020 : List Nat := ridgeSupport52_020 ++ ridgeSupport52_suffix_021
+def ridgeSupport52_suffix_019 : List Nat := ridgeSupport52_019 ++ ridgeSupport52_suffix_020
+def ridgeSupport52_suffix_018 : List Nat := ridgeSupport52_018 ++ ridgeSupport52_suffix_019
+def ridgeSupport52_suffix_017 : List Nat := ridgeSupport52_017 ++ ridgeSupport52_suffix_018
+def ridgeSupport52_suffix_016 : List Nat := ridgeSupport52_016 ++ ridgeSupport52_suffix_017
+def ridgeSupport52_suffix_015 : List Nat := ridgeSupport52_015 ++ ridgeSupport52_suffix_016
+def ridgeSupport52_suffix_014 : List Nat := ridgeSupport52_014 ++ ridgeSupport52_suffix_015
+def ridgeSupport52_suffix_013 : List Nat := ridgeSupport52_013 ++ ridgeSupport52_suffix_014
+def ridgeSupport52_suffix_012 : List Nat := ridgeSupport52_012 ++ ridgeSupport52_suffix_013
+def ridgeSupport52_suffix_011 : List Nat := ridgeSupport52_011 ++ ridgeSupport52_suffix_012
+def ridgeSupport52_suffix_010 : List Nat := ridgeSupport52_010 ++ ridgeSupport52_suffix_011
+def ridgeSupport52_suffix_009 : List Nat := ridgeSupport52_009 ++ ridgeSupport52_suffix_010
+def ridgeSupport52_suffix_008 : List Nat := ridgeSupport52_008 ++ ridgeSupport52_suffix_009
+def ridgeSupport52_suffix_007 : List Nat := ridgeSupport52_007 ++ ridgeSupport52_suffix_008
+def ridgeSupport52_suffix_006 : List Nat := ridgeSupport52_006 ++ ridgeSupport52_suffix_007
+def ridgeSupport52_suffix_005 : List Nat := ridgeSupport52_005 ++ ridgeSupport52_suffix_006
+def ridgeSupport52_suffix_004 : List Nat := ridgeSupport52_004 ++ ridgeSupport52_suffix_005
+def ridgeSupport52_suffix_003 : List Nat := ridgeSupport52_003 ++ ridgeSupport52_suffix_004
+def ridgeSupport52_suffix_002 : List Nat := ridgeSupport52_002 ++ ridgeSupport52_suffix_003
+def ridgeSupport52_suffix_001 : List Nat := ridgeSupport52_001 ++ ridgeSupport52_suffix_002
+def ridgeSupport52_suffix_000 : List Nat := ridgeSupport52_000 ++ ridgeSupport52_suffix_001
+theorem ridgeSupport52_source : candidateRows 52 =
+    (PackedRawNatGrowth.readList 14 1061 ridgeSupport52_code).1 := by rfl
+
+end Papers.RationalityTen.RootedCaches.RootedSixBase01
