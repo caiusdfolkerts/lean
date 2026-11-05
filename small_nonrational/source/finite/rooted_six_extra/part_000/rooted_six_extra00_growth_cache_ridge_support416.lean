@@ -1,0 +1,80 @@
+module
+prelude
+public import RootedSixExtra00GrowthCacheRidgeSupport416Part000
+public import RootedSixExtra00GrowthCacheRidgeSupport416Part001
+public import RawMaskAppend
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSixExtra00
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open RawGrowthCacheCertificate RawNatGrowthSoundness
+theorem ridgeSupport416_suffix_decode_010 : PackedRawNatGrowth.readList 14 0 ridgeSupport416_rest_010 =
+    (ridgeSupport416_suffix_010, ridgeSupport416_rest_010) := by rfl
+theorem ridgeSupport416_suffix_decode_009 : PackedRawNatGrowth.readList 14 17 ridgeSupport416_rest_009 =
+    (ridgeSupport416_suffix_009, ridgeSupport416_rest_010) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 17 0
+    ridgeSupport416_rest_009 ridgeSupport416_rest_010 ridgeSupport416_rest_010
+    ridgeSupport416_009 ridgeSupport416_suffix_010 ridgeSupport416_009_decode ridgeSupport416_suffix_decode_010
+theorem ridgeSupport416_suffix_decode_008 : PackedRawNatGrowth.readList 14 49 ridgeSupport416_rest_008 =
+    (ridgeSupport416_suffix_008, ridgeSupport416_rest_010) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 17
+    ridgeSupport416_rest_008 ridgeSupport416_rest_009 ridgeSupport416_rest_010
+    ridgeSupport416_008 ridgeSupport416_suffix_009 ridgeSupport416_008_decode ridgeSupport416_suffix_decode_009
+theorem ridgeSupport416_suffix_decode_007 : PackedRawNatGrowth.readList 14 81 ridgeSupport416_rest_007 =
+    (ridgeSupport416_suffix_007, ridgeSupport416_rest_010) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 49
+    ridgeSupport416_rest_007 ridgeSupport416_rest_008 ridgeSupport416_rest_010
+    ridgeSupport416_007 ridgeSupport416_suffix_008 ridgeSupport416_007_decode ridgeSupport416_suffix_decode_008
+theorem ridgeSupport416_suffix_decode_006 : PackedRawNatGrowth.readList 14 113 ridgeSupport416_rest_006 =
+    (ridgeSupport416_suffix_006, ridgeSupport416_rest_010) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 81
+    ridgeSupport416_rest_006 ridgeSupport416_rest_007 ridgeSupport416_rest_010
+    ridgeSupport416_006 ridgeSupport416_suffix_007 ridgeSupport416_006_decode ridgeSupport416_suffix_decode_007
+theorem ridgeSupport416_suffix_decode_005 : PackedRawNatGrowth.readList 14 145 ridgeSupport416_rest_005 =
+    (ridgeSupport416_suffix_005, ridgeSupport416_rest_010) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 113
+    ridgeSupport416_rest_005 ridgeSupport416_rest_006 ridgeSupport416_rest_010
+    ridgeSupport416_005 ridgeSupport416_suffix_006 ridgeSupport416_005_decode ridgeSupport416_suffix_decode_006
+theorem ridgeSupport416_suffix_decode_004 : PackedRawNatGrowth.readList 14 177 ridgeSupport416_rest_004 =
+    (ridgeSupport416_suffix_004, ridgeSupport416_rest_010) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 145
+    ridgeSupport416_rest_004 ridgeSupport416_rest_005 ridgeSupport416_rest_010
+    ridgeSupport416_004 ridgeSupport416_suffix_005 ridgeSupport416_004_decode ridgeSupport416_suffix_decode_005
+theorem ridgeSupport416_suffix_decode_003 : PackedRawNatGrowth.readList 14 209 ridgeSupport416_rest_003 =
+    (ridgeSupport416_suffix_003, ridgeSupport416_rest_010) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 177
+    ridgeSupport416_rest_003 ridgeSupport416_rest_004 ridgeSupport416_rest_010
+    ridgeSupport416_003 ridgeSupport416_suffix_004 ridgeSupport416_003_decode ridgeSupport416_suffix_decode_004
+theorem ridgeSupport416_suffix_decode_002 : PackedRawNatGrowth.readList 14 241 ridgeSupport416_rest_002 =
+    (ridgeSupport416_suffix_002, ridgeSupport416_rest_010) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 209
+    ridgeSupport416_rest_002 ridgeSupport416_rest_003 ridgeSupport416_rest_010
+    ridgeSupport416_002 ridgeSupport416_suffix_003 ridgeSupport416_002_decode ridgeSupport416_suffix_decode_003
+theorem ridgeSupport416_suffix_decode_001 : PackedRawNatGrowth.readList 14 273 ridgeSupport416_rest_001 =
+    (ridgeSupport416_suffix_001, ridgeSupport416_rest_010) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 241
+    ridgeSupport416_rest_001 ridgeSupport416_rest_002 ridgeSupport416_rest_010
+    ridgeSupport416_001 ridgeSupport416_suffix_002 ridgeSupport416_001_decode ridgeSupport416_suffix_decode_002
+theorem ridgeSupport416_suffix_decode_000 : PackedRawNatGrowth.readList 14 305 ridgeSupport416_rest_000 =
+    (ridgeSupport416_suffix_000, ridgeSupport416_rest_010) :=
+  PackedRawNatGrowth.readList_append_of_eq 14 32 273
+    ridgeSupport416_rest_000 ridgeSupport416_rest_001 ridgeSupport416_rest_010
+    ridgeSupport416_000 ridgeSupport416_suffix_001 ridgeSupport416_000_decode ridgeSupport416_suffix_decode_001
+theorem ridgeSupport416_eq : candidateRows 416 = ridgeSupport416_suffix_000 := by
+  change candidateSupports 416 = ridgeSupport416_suffix_000
+  rw [ridgeSupport416_source]
+  exact congrArg Prod.fst ridgeSupport416_suffix_decode_000
+theorem ridgeTest_large_416 : ridgeTest 416 = true := by
+  apply Bool.and_eq_true_iff.mpr
+  constructor
+  · apply decide_eq_true
+    rw [ridgeSupport416_eq]
+    simp only [ridgeSupport416_suffix_000, ridgeSupport416_suffix_001, ridgeSupport416_suffix_002, ridgeSupport416_suffix_003, ridgeSupport416_suffix_004, ridgeSupport416_suffix_005, ridgeSupport416_suffix_006, ridgeSupport416_suffix_007, ridgeSupport416_suffix_008, ridgeSupport416_suffix_009, ridgeSupport416_suffix_010, RawMaskAppend.mask_append, RawMaskAppend.mask_nil, ridgeSupport416_000_mask, ridgeSupport416_001_mask, ridgeSupport416_002_mask, ridgeSupport416_003_mask, ridgeSupport416_004_mask, ridgeSupport416_005_mask, ridgeSupport416_006_mask, ridgeSupport416_007_mask, ridgeSupport416_008_mask, ridgeSupport416_009_mask]
+    decide +kernel
+  · rw [ridgeSupport416_eq]
+    simp only [ridgeSupport416_suffix_000, ridgeSupport416_suffix_001, ridgeSupport416_suffix_002, ridgeSupport416_suffix_003, ridgeSupport416_suffix_004, ridgeSupport416_suffix_005, ridgeSupport416_suffix_006, ridgeSupport416_suffix_007, ridgeSupport416_suffix_008, ridgeSupport416_suffix_009, ridgeSupport416_suffix_010, List.all_append, List.all_nil, ridgeSupport416_000_checked, ridgeSupport416_001_checked, ridgeSupport416_002_checked, ridgeSupport416_003_checked, ridgeSupport416_004_checked, ridgeSupport416_005_checked, ridgeSupport416_006_checked, ridgeSupport416_007_checked, ridgeSupport416_008_checked, ridgeSupport416_009_checked, Bool.and_self]
+
+end Papers.RationalityTen.RootedCaches.RootedSixExtra00

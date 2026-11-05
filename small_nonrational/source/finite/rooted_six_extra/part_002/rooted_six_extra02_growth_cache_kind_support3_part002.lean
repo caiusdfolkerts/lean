@@ -1,0 +1,55 @@
+module
+prelude
+public import RootedSixExtra02GrowthCacheKindSupport3Data
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSixExtra02
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open RawGrowthCacheCertificate RawNatGrowthSoundness
+theorem kindSupport3_016_decode :
+    PackedRawNatGrowth.readList 13 32 kindSupport3_rest_016 =
+      (kindSupport3_016, kindSupport3_rest_017) := by decide +kernel
+theorem kindSupport3_016_mask : RawNatGrowthCheck.mask kindSupport3_016 = 0x1ffc01f81f81f81c000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 := by decide +kernel
+theorem kindSupport3_016_checked :
+    (kindSupport3_016.all (fun c => decide ((rawCells c).kind = 3))) = true := by decide +kernel
+theorem kindSupport3_017_decode :
+    PackedRawNatGrowth.readList 13 32 kindSupport3_rest_017 =
+      (kindSupport3_017, kindSupport3_rest_018) := by decide +kernel
+theorem kindSupport3_017_mask : RawNatGrowthCheck.mask kindSupport3_017 = 0xfe00fff007ff802000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 := by decide +kernel
+theorem kindSupport3_017_checked :
+    (kindSupport3_017.all (fun c => decide ((rawCells c).kind = 3))) = true := by decide +kernel
+theorem kindSupport3_018_decode :
+    PackedRawNatGrowth.readList 13 32 kindSupport3_rest_018 =
+      (kindSupport3_018, kindSupport3_rest_019) := by decide +kernel
+theorem kindSupport3_018_mask : RawNatGrowthCheck.mask kindSupport3_018 = 0x7007ff803ffc01f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 := by decide +kernel
+theorem kindSupport3_018_checked :
+    (kindSupport3_018.all (fun c => decide ((rawCells c).kind = 3))) = true := by decide +kernel
+theorem kindSupport3_019_decode :
+    PackedRawNatGrowth.readList 13 32 kindSupport3_rest_019 =
+      (kindSupport3_019, kindSupport3_rest_020) := by decide +kernel
+theorem kindSupport3_019_mask : RawNatGrowthCheck.mask kindSupport3_019 = 0x3ff801ffe00ff800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 := by decide +kernel
+theorem kindSupport3_019_checked :
+    (kindSupport3_019.all (fun c => decide ((rawCells c).kind = 3))) = true := by decide +kernel
+theorem kindSupport3_020_decode :
+    PackedRawNatGrowth.readList 13 32 kindSupport3_rest_020 =
+      (kindSupport3_020, kindSupport3_rest_021) := by decide +kernel
+theorem kindSupport3_020_mask : RawNatGrowthCheck.mask kindSupport3_020 = 0x1e00fff007ff803c000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 := by decide +kernel
+theorem kindSupport3_020_checked :
+    (kindSupport3_020.all (fun c => decide ((rawCells c).kind = 3))) = true := by decide +kernel
+theorem kindSupport3_021_decode :
+    PackedRawNatGrowth.readList 13 32 kindSupport3_rest_021 =
+      (kindSupport3_021, kindSupport3_rest_022) := by decide +kernel
+theorem kindSupport3_021_mask : RawNatGrowthCheck.mask kindSupport3_021 = 0xfff003ffc01fe000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 := by decide +kernel
+theorem kindSupport3_021_checked :
+    (kindSupport3_021.all (fun c => decide ((rawCells c).kind = 3))) = true := by decide +kernel
+theorem kindSupport3_022_decode :
+    PackedRawNatGrowth.readList 13 18 kindSupport3_rest_022 =
+      (kindSupport3_022, kindSupport3_rest_023) := by decide +kernel
+theorem kindSupport3_022_mask : RawNatGrowthCheck.mask kindSupport3_022 = 0xfffe0070000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 := by decide +kernel
+theorem kindSupport3_022_checked :
+    (kindSupport3_022.all (fun c => decide ((rawCells c).kind = 3))) = true := by decide +kernel
+
+end Papers.RationalityTen.RootedCaches.RootedSixExtra02
