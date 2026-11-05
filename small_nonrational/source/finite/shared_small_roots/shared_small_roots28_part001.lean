@@ -1,0 +1,659 @@
+module
+prelude
+public import SharedSmallRootReplay
+public import Graph13Level10
+
+@[expose] public section
+namespace Papers.RationalityTen.SharedSmallRootCertificates.Row28.Part001
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+noncomputable def quota (j : Nat) : Nat := ([0,5,10,0,0] : List Nat).getD j 0
+noncomputable def records : Table (Nat × Nat) :=
+(.branch 384
+ (.branch 320
+ (.branch 288
+ (.branch 272
+ (.branch 264
+ (.branch 260
+ (.branch 258
+ (.branch 257
+ (.leaf (583,1490067333380597105280745472))
+ (.leaf (584,1528696291786931572586905856)))
+ (.branch 259
+ (.leaf (585,1529905217030085449995059200))
+ (.leaf (588,1570094917559008335737454848))))
+ (.branch 262
+ (.branch 261
+ (.leaf (589,1570560070081110243694149632))
+ (.leaf (593,1654434021759818801885544704)))
+ (.branch 263
+ (.leaf (594,1655623911692470867938247424))
+ (.leaf (595,1655642947002972679293698048)))))
+ (.branch 268
+ (.branch 266
+ (.branch 265
+ (.leaf (596,99088731197210880))
+ (.leaf (599,1683136565242700518240878848)))
+ (.branch 267
+ (.leaf (600,1760356701970584991067865344))
+ (.leaf (602,1963909586848198268754657536))))
+ (.branch 270
+ (.branch 269
+ (.leaf (603,1965118512091352146162810880))
+ (.leaf (605,99088868636131584)))
+ (.branch 271
+ (.leaf (607,1992621501277069429566374144))
+ (.leaf (608,1994127935608644094755110912))))))
+ (.branch 280
+ (.branch 276
+ (.branch 274
+ (.branch 273
+ (.leaf (609,99088907089510656))
+ (.leaf (611,2224579420549143635827917056)))
+ (.branch 275
+ (.leaf (612,2653292451933716557310525696))
+ (.leaf (613,2732484176668199107889791232))))
+ (.branch 278
+ (.branch 277
+ (.leaf (615,2807281739390371452183183616))
+ (.leaf (617,99089243705475328)))
+ (.branch 279
+ (.leaf (619,2893261719522948035165291264))
+ (.leaf (620,2893280754833449846520741888)))))
+ (.branch 284
+ (.branch 282
+ (.branch 281
+ (.leaf (621,2902673468557362032487203072))
+ (.leaf (622,2902697042919827481001213952)))
+ (.branch 283
+ (.leaf (623,2911405197971164305203200256))
+ (.leaf (624,99089281355677696))))
+ (.branch 286
+ (.branch 285
+ (.leaf (626,2921076604528081342895816960))
+ (.leaf (627,2922583038859656008084553728)))
+ (.branch 287
+ (.leaf (628,2969291966318180441939575040))
+ (.leaf (629,2988625334699048778030186752)))))))
+ (.branch 304
+ (.branch 296
+ (.branch 292
+ (.branch 290
+ (.branch 289
+ (.leaf (633,20468478964065282540504645760))
+ (.leaf (634,3201547394678675435981701376)))
+ (.branch 291
+ (.leaf (635,3202142266434485926473237248))
+ (.leaf (636,3202161301744987737828687872))))
+ (.branch 294
+ (.branch 293
+ (.leaf (637,99089410204696576))
+ (.leaf (639,99089418257727744)))
+ (.branch 295
+ (.leaf (640,99089418794598400))
+ (.leaf (642,3232063180037602447607202368)))))
+ (.branch 300
+ (.branch 298
+ (.branch 297
+ (.leaf (643,99089452550357248))
+ (.leaf (645,3307776954923851857400987904)))
+ (.branch 299
+ (.leaf (646,3813263859403678070039707904))
+ (.leaf (650,3820290740730188105238249728))))
+ (.branch 302
+ (.branch 301
+ (.leaf (653,4066906811778113401914425600))
+ (.leaf (654,4110971287216746375810187520)))
+ (.branch 303
+ (.leaf (656,4198013946228999715043737856))
+ (.leaf (657,4236076515228834251722129664))))))
+ (.branch 312
+ (.branch 308
+ (.branch 306
+ (.branch 305
+ (.leaf (658,4236699571880207113510780928))
+ (.leaf (660,4420446852305125842679300352)))
+ (.branch 307
+ (.leaf (661,4468501653058346621411065856))
+ (.leaf (662,4545561451263203163047624960))))
+ (.branch 310
+ (.branch 309
+ (.leaf (664,4729941306282976035834232832))
+ (.leaf (670,333061461957876240132096256)))
+ (.branch 311
+ (.leaf (672,5445162600155976351954829568))
+ (.leaf (674,99090414623031552)))))
+ (.branch 316
+ (.branch 314
+ (.branch 313
+ (.leaf (676,5474172023673268300547129600))
+ (.leaf (678,5677427399462460790453338368)))
+ (.branch 315
+ (.leaf (679,5678031935582783647843942400))
+ (.leaf (681,99090509716291584))))
+ (.branch 318
+ (.branch 317
+ (.leaf (682,5678933833794035455642075136))
+ (.leaf (683,94586918141984896)))
+ (.branch 319
+ (.leaf (684,5706436896478498657732165760))
+ (.leaf (685,94586952434614400))))))))
+ (.branch 352
+ (.branch 336
+ (.branch 328
+ (.branch 324
+ (.branch 322
+ (.branch 321
+ (.leaf (686,94586956727484544))
+ (.leaf (687,99090848616087808)))
+ (.branch 323
+ (.leaf (691,99090913040597248))
+ (.leaf (692,99090921634725888))))
+ (.branch 326
+ (.branch 325
+ (.leaf (694,99090930220466176))
+ (.leaf (697,99091050479517952)))
+ (.branch 327
+ (.leaf (698,99091067659386880))
+ (.leaf (700,94587506414223488)))))
+ (.branch 332
+ (.branch 330
+ (.branch 329
+ (.leaf (701,99091123493994496))
+ (.leaf (704,7176183997562918891868536960)))
+ (.branch 331
+ (.leaf (714,7670039455429250507398512896))
+ (.leaf (715,7689391712699589569774944256))))
+ (.branch 334
+ (.branch 333
+ (.leaf (719,7718094256182471286130278400))
+ (.leaf (723,7897015278061897235747111168)))
+ (.branch 335
+ (.leaf (725,7935700903713104634214154240))
+ (.leaf (727,8133964664919388364377981184))))))
+ (.branch 344
+ (.branch 340
+ (.branch 338
+ (.branch 337
+ (.leaf (737,99091906251784448))
+ (.leaf (745,8977794960797376197897027840)))
+ (.branch 339
+ (.leaf (755,9129855161545778841306333440))
+ (.leaf (764,99092179804258560))))
+ (.branch 342
+ (.branch 341
+ (.leaf (766,9594077880124337486066385152))
+ (.leaf (772,9989061408905013951631261952)))
+ (.branch 343
+ (.leaf (773,9989080297794484677917081600))
+ (.leaf (774,86442992833223560236400896)))))
+ (.branch 348
+ (.branch 346
+ (.branch 345
+ (.leaf (780,10003561435190665203699220736))
+ (.leaf (785,10011720374754234720873619712)))
+ (.branch 347
+ (.leaf (794,10160436088568353452541935872))
+ (.leaf (795,10161625978501005518594638592))))
+ (.branch 350
+ (.branch 349
+ (.leaf (796,10161645013811507329950089216))
+ (.leaf (797,99092508620947712)))
+ (.branch 351
+ (.leaf (800,10193823219602241859029631232))
+ (.leaf (801,291955586662769793060307488)))))))
+ (.branch 368
+ (.branch 360
+ (.branch 356
+ (.branch 354
+ (.branch 353
+ (.leaf (802,10195478408478026918108659712))
+ (.leaf (803,10229327022284868068957495552)))
+ (.branch 355
+ (.leaf (804,10235221845374318622180180224))
+ (.leaf (807,92337134275404032))))
+ (.branch 358
+ (.branch 357
+ (.leaf (814,10257434547590908209751662848))
+ (.leaf (818,10319560949575129088328270080)))
+ (.branch 359
+ (.leaf (819,10334209730404990734286520576))
+ (.leaf (820,10334804602160801224778056448)))))
+ (.branch 364
+ (.branch 362
+ (.branch 361
+ (.leaf (821,10334823637471303036133507072))
+ (.leaf (824,92337179845525760)))
+ (.branch 363
+ (.leaf (825,20244067313582609756835545632))
+ (.leaf (827,10425929893418526459181465856))))
+ (.branch 366
+ (.branch 365
+ (.leaf (829,10629036514663508555197382912))
+ (.leaf (830,10630691703539293614276411392)))
+ (.branch 367
+ (.leaf (836,99092716725502208))
+ (.leaf (838,10658045938180800503789682944))))))
+ (.branch 376
+ (.branch 372
+ (.branch 370
+ (.branch 369
+ (.leaf (839,92337355936006400))
+ (.leaf (846,11472857143871141012612120832)))
+ (.branch 371
+ (.leaf (848,11472857145600523270050808576))
+ (.leaf (849,11472876180911025081406259200))))
+ (.branch 374
+ (.branch 373
+ (.leaf (852,31260564552206770434058813696))
+ (.leaf (857,11470366243701840632806965504)))
+ (.branch 375
+ (.leaf (858,99093116363014400))
+ (.leaf (861,11547659872258114764520227072)))))
+ (.branch 380
+ (.branch 378
+ (.branch 377
+ (.leaf (864,30968487236705695207025811712))
+ (.leaf (865,99093228900352256)))
+ (.branch 379
+ (.leaf (868,31006607414887271938659483904))
+ (.leaf (870,11276860414877461671986757888))))
+ (.branch 382
+ (.branch 381
+ (.leaf (871,11897643454891153032115913216))
+ (.leaf (872,99093350434537728)))
+ (.branch 383
+ (.leaf (873,11470288490675570221890281728))
+ (.leaf (876,12392172181157995770704625920)))))))))
+ (.branch 448
+ (.branch 416
+ (.branch 400
+ (.branch 392
+ (.branch 388
+ (.branch 386
+ (.branch 385
+ (.leaf (880,12464337024565968286085349632))
+ (.leaf (883,12556073715862194054745882880)))
+ (.branch 387
+ (.leaf (886,12536721458015394257245896960))
+ (.leaf (887,12577059765586632524060164640))))
+ (.branch 390
+ (.branch 389
+ (.leaf (888,12577062273118847449915523072))
+ (.leaf (889,12699804713599226841743761664)))
+ (.branch 391
+ (.leaf (894,12737320502657972553359884544))
+ (.leaf (895,12776551562214412148394754304)))))
+ (.branch 396
+ (.branch 394
+ (.branch 393
+ (.leaf (896,12796498837661592786332352512))
+ (.leaf (898,12775928356836165209502712064)))
+ (.branch 395
+ (.leaf (899,99093679003729920))
+ (.leaf (901,12824606362967632927126519808))))
+ (.branch 398
+ (.branch 397
+ (.leaf (902,12849087111391289931089379584))
+ (.leaf (903,12901826499695517399953506304)))
+ (.branch 399
+ (.leaf (905,12408492679722793546688823552))
+ (.leaf (906,13039629802821621035596546304))))))
+ (.branch 408
+ (.branch 404
+ (.branch 402
+ (.branch 401
+ (.leaf (907,13040383093486154286877442048))
+ (.leaf (911,32234876047615735725621805312)))
+ (.branch 403
+ (.leaf (914,99093799258620160))
+ (.leaf (915,12485786308279067678402085120))))
+ (.branch 406
+ (.branch 405
+ (.leaf (916,99093807852748800))
+ (.leaf (919,32312169676172009857335066880)))
+ (.branch 407
+ (.leaf (923,99093831470874880))
+ (.leaf (924,13172456044692968580912914688)))))
+ (.branch 412
+ (.branch 410
+ (.branch 409
+ (.leaf (927,13313002949935438343612465408))
+ (.leaf (928,13366039847328086600257175552)))
+ (.branch 411
+ (.leaf (929,13792049250690701106119508224))
+ (.leaf (930,14102138722845392874835607552))))
+ (.branch 414
+ (.branch 413
+ (.leaf (931,14140824201499108435929595904))
+ (.leaf (932,99094387673333760)))
+ (.branch 415
+ (.leaf (935,14545842833419319949171687680))
+ (.leaf (936,14556090368110686331532804096)))))))
+ (.branch 432
+ (.branch 424
+ (.branch 420
+ (.branch 418
+ (.branch 417
+ (.leaf (937,14603824343667437905903812608))
+ (.leaf (939,29887224821124553263550628096)))
+ (.branch 419
+ (.leaf (943,20139797461640850143235277344))
+ (.leaf (944,30043320283456107268283629568))))
+ (.branch 422
+ (.branch 421
+ (.leaf (949,10425776582528532058053157120))
+ (.leaf (952,25419030195387194507947704448)))
+ (.branch 423
+ (.leaf (954,25426205831257914937036537984))
+ (.leaf (955,25435877200921343827310035072)))))
+ (.branch 428
+ (.branch 426
+ (.branch 425
+ (.leaf (956,15580636332705543170323284224))
+ (.leaf (957,15582449353076544393002877440)))
+ (.branch 427
+ (.leaf (959,25503499459814189068749799552))
+ (.leaf (960,5706130200911533560637309056))))
+ (.branch 430
+ (.branch 429
+ (.leaf (961,20638781906344689087258173568))
+ (.leaf (964,6518528020524870019812688388)))
+ (.branch 431
+ (.leaf (971,17411261478429033065858793728))
+ (.leaf (982,17437546327070010149322232064))))))
+ (.branch 440
+ (.branch 436
+ (.branch 434
+ (.branch 433
+ (.leaf (983,17437640617025882163433766912))
+ (.leaf (989,7592668202973918603904090368)))
+ (.branch 435
+ (.leaf (990,12611561522035914609671602432))
+ (.leaf (992,290142197870300752244638212))))
+ (.branch 438
+ (.branch 437
+ (.leaf (993,12669543032284032566403727360))
+ (.leaf (996,12703487107414994411921145856)))
+ (.branch 439
+ (.leaf (1001,32621654759203872530178965504))
+ (.leaf (1012,18027544397755994354028151040)))))
+ (.branch 444
+ (.branch 442
+ (.branch 441
+ (.leaf (1014,8356137840838961059457958144))
+ (.leaf (1016,1162790059552801284)))
+ (.branch 443
+ (.leaf (1017,8414124036560073738418274304))
+ (.leaf (1024,85585436461826304))))
+ (.branch 446
+ (.branch 445
+ (.leaf (1027,99096235578818816))
+ (.leaf (1044,13926864549635286713984680192)))
+ (.branch 447
+ (.leaf (1057,38376180251734570985843097856))
+ (.leaf (1062,13926825742297441922376141056))))))))
+ (.branch 480
+ (.branch 464
+ (.branch 456
+ (.branch 452
+ (.branch 450
+ (.branch 449
+ (.leaf (1070,85545816988459020132090112))
+ (.leaf (1071,85555187934448464588472576)))
+ (.branch 451
+ (.leaf (1073,85559873407443186816663808))
+ (.leaf (1074,84931835558709671688700160))))
+ (.branch 454
+ (.branch 453
+ (.leaf (1076,89932896315736050939003520))
+ (.leaf (1077,89942266397034366940250368)))
+ (.branch 455
+ (.leaf (1079,90230404539465710264451328))
+ (.leaf (1080,90239775485455154720833792)))))
+ (.branch 460
+ (.branch 458
+ (.branch 457
+ (.leaf (1083,90844238395262469576622336))
+ (.leaf (1085,99911145148884044994330880)))
+ (.branch 459
+ (.leaf (1087,100506163325725620555497728))
+ (.leaf (1093,247235218143338053761171712))))
+ (.branch 462
+ (.branch 461
+ (.leaf (1094,247244589089327498217554176))
+ (.leaf (1096,247537154450336531836109056)))
+ (.branch 463
+ (.leaf (1097,247849051999134813073342720))
+ (.leaf (1098,248443848815047504119791872))))))
+ (.branch 472
+ (.branch 468
+ (.branch 466
+ (.branch 465
+ (.leaf (1101,252120100441497082293928192))
+ (.leaf (1103,252715118618338657855095040)))
+ (.branch 467
+ (.leaf (1106,257218005740219308823347456))
+ (.leaf (1107,257813023917060884384514304))))
+ (.branch 470
+ (.branch 469
+ (.leaf (1110,258110533005481672165097728))
+ (.leaf (1111,262641569858818803921617152)))
+ (.branch 471
+ (.leaf (1112,277155763243918664931508480))
+ (.leaf (1114,277453272332339452712091904)))))
+ (.branch 476
+ (.branch 474
+ (.branch 473
+ (.leaf (1116,92341514202530048))
+ (.leaf (1118,332629346545610626535792704)))
+ (.branch 475
+ (.leaf (1120,351367696749637387065237568))
+ (.leaf (1121,412550806461250617819070720))))
+ (.branch 478
+ (.branch 477
+ (.leaf (1124,417235394012257307951431936))
+ (.leaf (1127,431893545788108398366064896)))
+ (.branch 479
+ (.leaf (1130,96845176107974912))
+ (.leaf (1131,437029082444740992397492480)))))))
+ (.branch 496
+ (.branch 488
+ (.branch 484
+ (.branch 482
+ (.branch 481
+ (.leaf (1132,509113682515992871193051392))
+ (.leaf (1134,741378555321223228378087552)))
+ (.branch 483
+ (.leaf (1136,746514091977855822409515136))
+ (.leaf (1137,96845319988330560))))
+ (.branch 486
+ (.branch 485
+ (.leaf (1138,1240492663125904999389937792))
+ (.leaf (1140,1405536973913699966813012224)))
+ (.branch 487
+ (.leaf (1141,1406587626669162168501436672))
+ (.leaf (1142,1415956801771175548766159104)))))
+ (.branch 492
+ (.branch 490
+ (.branch 489
+ (.leaf (1143,1485174962280813699063152896))
+ (.leaf (1146,1490020409475368402681006080)))
+ (.branch 491
+ (.leaf (1147,1490038851607756093821878528))
+ (.leaf (1148,1490057889800561666685993472))))
+ (.branch 494
+ (.branch 493
+ (.leaf (1149,1489443981581327860769030400))
+ (.leaf (1150,1470119909785263730396758017)))
+ (.branch 495
+ (.leaf (1151,1489462870470798587054850048))
+ (.leaf (1152,1495753062625980956736028672))))))
+ (.branch 504
+ (.branch 500
+ (.branch 498
+ (.branch 497
+ (.leaf (1153,1499691516849154994896699648))
+ (.leaf (1154,1509995646727800270490730752)))
+ (.branch 499
+ (.leaf (1155,1510014535617270996776550400))
+ (.leaf (1156,1519024885230023330987311360))))
+ (.branch 502
+ (.branch 501
+ (.leaf (1157,1520233810473177208395464704))
+ (.leaf (1159,1528696291786940368679928064)))
+ (.branch 503
+ (.leaf (1160,1490001073828814658958525184))
+ (.leaf (1161,1529905217030094246088081408)))))
+ (.branch 508
+ (.branch 506
+ (.branch 505
+ (.leaf (1163,1568034655621311167996633152))
+ (.leaf (1164,332473803599581657283305536)))
+ (.branch 507
+ (.leaf (1165,1569341700104999423621267712))
+ (.leaf (1166,1570569367242383989219000321))))
+ (.branch 510
+ (.branch 509
+ (.leaf (1167,1570569514814084779081793536))
+ (.leaf (1168,1571683993880502768687448320)))
+ (.branch 511
+ (.leaf (1169,1572911808589588124147974144))
+ (.leaf (1170,1589307717446410749748445185))))))))))
+noncomputable def lookup (i : Nat) : Nat × Nat := records.get i
+noncomputable def test (i : Nat) : Bool :=
+  let r := lookup i
+  decide (r.1 < GraphCatalogue.Generated.Graph13.Level10.count) &&
+  (decide (SharedSmallRootReplay.complement r.2 =
+    (GraphCatalogue.Generated.Graph13.Level10.lookup r.1).mask) &&
+  SharedSmallRootReplay.check quota 10 r.2)
+theorem checked_256 : Interval test 256 264 :=
+  interval_of_check test 256 8 (by decide +kernel)
+theorem checked_264 : Interval test 264 272 :=
+  interval_of_check test 264 8 (by decide +kernel)
+theorem checked_272 : Interval test 272 280 :=
+  interval_of_check test 272 8 (by decide +kernel)
+theorem checked_280 : Interval test 280 288 :=
+  interval_of_check test 280 8 (by decide +kernel)
+theorem checked_288 : Interval test 288 296 :=
+  interval_of_check test 288 8 (by decide +kernel)
+theorem checked_296 : Interval test 296 304 :=
+  interval_of_check test 296 8 (by decide +kernel)
+theorem checked_304 : Interval test 304 312 :=
+  interval_of_check test 304 8 (by decide +kernel)
+theorem checked_312 : Interval test 312 320 :=
+  interval_of_check test 312 8 (by decide +kernel)
+theorem checked_320 : Interval test 320 328 :=
+  interval_of_check test 320 8 (by decide +kernel)
+theorem checked_328 : Interval test 328 336 :=
+  interval_of_check test 328 8 (by decide +kernel)
+theorem checked_336 : Interval test 336 344 :=
+  interval_of_check test 336 8 (by decide +kernel)
+theorem checked_344 : Interval test 344 352 :=
+  interval_of_check test 344 8 (by decide +kernel)
+theorem checked_352 : Interval test 352 360 :=
+  interval_of_check test 352 8 (by decide +kernel)
+theorem checked_360 : Interval test 360 368 :=
+  interval_of_check test 360 8 (by decide +kernel)
+theorem checked_368 : Interval test 368 376 :=
+  interval_of_check test 368 8 (by decide +kernel)
+theorem checked_376 : Interval test 376 384 :=
+  interval_of_check test 376 8 (by decide +kernel)
+theorem checked_384 : Interval test 384 392 :=
+  interval_of_check test 384 8 (by decide +kernel)
+theorem checked_392 : Interval test 392 400 :=
+  interval_of_check test 392 8 (by decide +kernel)
+theorem checked_400 : Interval test 400 408 :=
+  interval_of_check test 400 8 (by decide +kernel)
+theorem checked_408 : Interval test 408 416 :=
+  interval_of_check test 408 8 (by decide +kernel)
+theorem checked_416 : Interval test 416 424 :=
+  interval_of_check test 416 8 (by decide +kernel)
+theorem checked_424 : Interval test 424 432 :=
+  interval_of_check test 424 8 (by decide +kernel)
+theorem checked_432 : Interval test 432 440 :=
+  interval_of_check test 432 8 (by decide +kernel)
+theorem checked_440 : Interval test 440 448 :=
+  interval_of_check test 440 8 (by decide +kernel)
+theorem checked_448 : Interval test 448 456 :=
+  interval_of_check test 448 8 (by decide +kernel)
+theorem checked_456 : Interval test 456 464 :=
+  interval_of_check test 456 8 (by decide +kernel)
+theorem checked_464 : Interval test 464 472 :=
+  interval_of_check test 464 8 (by decide +kernel)
+theorem checked_472 : Interval test 472 480 :=
+  interval_of_check test 472 8 (by decide +kernel)
+theorem checked_480 : Interval test 480 488 :=
+  interval_of_check test 480 8 (by decide +kernel)
+theorem checked_488 : Interval test 488 496 :=
+  interval_of_check test 488 8 (by decide +kernel)
+theorem checked_496 : Interval test 496 504 :=
+  interval_of_check test 496 8 (by decide +kernel)
+theorem checked_504 : Interval test 504 512 :=
+  interval_of_check test 504 8 (by decide +kernel)
+theorem checked : Interval test 256 512 :=
+  (interval_append test 256 384 512
+ (interval_append test 256 320 384
+ (interval_append test 256 288 320
+ (interval_append test 256 272 288
+ (interval_append test 256 264 272
+ checked_256
+ checked_264)
+ (interval_append test 272 280 288
+ checked_272
+ checked_280))
+ (interval_append test 288 304 320
+ (interval_append test 288 296 304
+ checked_288
+ checked_296)
+ (interval_append test 304 312 320
+ checked_304
+ checked_312)))
+ (interval_append test 320 352 384
+ (interval_append test 320 336 352
+ (interval_append test 320 328 336
+ checked_320
+ checked_328)
+ (interval_append test 336 344 352
+ checked_336
+ checked_344))
+ (interval_append test 352 368 384
+ (interval_append test 352 360 368
+ checked_352
+ checked_360)
+ (interval_append test 368 376 384
+ checked_368
+ checked_376))))
+ (interval_append test 384 448 512
+ (interval_append test 384 416 448
+ (interval_append test 384 400 416
+ (interval_append test 384 392 400
+ checked_384
+ checked_392)
+ (interval_append test 400 408 416
+ checked_400
+ checked_408))
+ (interval_append test 416 432 448
+ (interval_append test 416 424 432
+ checked_416
+ checked_424)
+ (interval_append test 432 440 448
+ checked_432
+ checked_440)))
+ (interval_append test 448 480 512
+ (interval_append test 448 464 480
+ (interval_append test 448 456 464
+ checked_448
+ checked_456)
+ (interval_append test 464 472 480
+ checked_464
+ checked_472))
+ (interval_append test 480 496 512
+ (interval_append test 480 488 496
+ checked_480
+ checked_488)
+ (interval_append test 496 504 512
+ checked_496
+ checked_504)))))
+end Papers.RationalityTen.SharedSmallRootCertificates.Row28.Part001
