@@ -1,0 +1,21 @@
+name = "two_fermion_coinvariants"
+version = "0.1.0"
+defaultTargets = ["proof", "verification"]
+moreLeanArgs = ["-j1", "-DElab.async=false", "-Ddebug.skipKernelTC=false"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "428aa8288d061ec3ae75c1b85ac178e2cb9def23"
+
+[[lean_lib]]
+name = "proof"
+srcDir = "source"
+roots = ["two_fermion"]
+allowImportAll = true
+
+[[lean_lib]]
+name = "verification"
+srcDir = "source"
+roots = ["verification.check_1"]
+allowImportAll = true

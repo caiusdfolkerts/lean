@@ -1,0 +1,51 @@
+import CommAlg
+import CommAlg.AuditSupport
+
+/-! Complete audits of actual projective dimensions, module generation, exact intervals, total support, and Tor foundations. -/
+
+set_option maxHeartbeats 0
+set_option maxRecDepth 10000
+
+audit_standard_axioms CommAlg.ProjectiveDimension.rankIdeal_projectiveDimension
+audit_standard_axioms CommAlg.ProjectiveDimension.polymatroidal_power_projectiveDimension
+audit_standard_axioms CommAlg.ProjectiveDimension.polymatroidal_power_projectiveDimension_eventual
+audit_standard_axioms CommAlg.homologicalPowerIdeal_generated_le
+audit_standard_axioms CommAlg.homologicalMultiIdeal_generated_in_box
+audit_standard_axioms CommAlg.homologicalPowerIdeal_eq_bot_of_above
+audit_standard_axioms CommAlg.homologicalShift_power_nonzero_iff
+audit_standard_axioms CommAlg.homologicalPower_minimal_degree_iff
+audit_standard_axioms CommAlg.homologicalPower_generation_bound_iff
+audit_standard_axioms CommAlg.homologicalPowerIdeal_eq_span_minimal
+audit_standard_axioms CommAlg.homologicalPower_minimal_iff_rank_violation
+audit_standard_axioms CommAlg.Polymatroid.powerShift_generator_endpoints
+audit_standard_axioms CommAlg.Polymatroid.powerThreshold_eq_rationalCeiling
+audit_standard_axioms CommAlg.Polymatroid.homological_homogenization
+audit_standard_axioms CommAlg.Polymatroid.homological_homogenization_exists_rank
+audit_standard_axioms CommAlg.Koszul.gradedTor_isInternal
+audit_standard_axioms CommAlg.Koszul.derivedTor_nonzero_iff
+audit_standard_axioms CommAlg.Koszul.finitePolynomialTorCoefficientIso
+audit_standard_axioms CommAlg.Koszul.bettiNumber_pos_iff
+audit_standard_axioms CommAlg.Koszul.finitePolynomialTor_nonzero_le_projectiveDimension
+
+export_proof_dependencies ".lake/reports/audit/consequences_dependencies.json" [
+  CommAlg.ProjectiveDimension.rankIdeal_projectiveDimension,
+  CommAlg.ProjectiveDimension.polymatroidal_power_projectiveDimension,
+  CommAlg.ProjectiveDimension.polymatroidal_power_projectiveDimension_eventual,
+  CommAlg.homologicalPowerIdeal_generated_le,
+  CommAlg.homologicalMultiIdeal_generated_in_box,
+  CommAlg.homologicalPowerIdeal_eq_bot_of_above,
+  CommAlg.homologicalShift_power_nonzero_iff,
+  CommAlg.homologicalPower_minimal_degree_iff,
+  CommAlg.homologicalPower_generation_bound_iff,
+  CommAlg.homologicalPowerIdeal_eq_span_minimal,
+  CommAlg.homologicalPower_minimal_iff_rank_violation,
+  CommAlg.Polymatroid.powerShift_generator_endpoints,
+  CommAlg.Polymatroid.powerThreshold_eq_rationalCeiling,
+  CommAlg.Polymatroid.homological_homogenization,
+  CommAlg.Polymatroid.homological_homogenization_exists_rank,
+  CommAlg.Koszul.gradedTor_isInternal,
+  CommAlg.Koszul.derivedTor_nonzero_iff,
+  CommAlg.Koszul.finitePolynomialTorCoefficientIso,
+  CommAlg.Koszul.bettiNumber_pos_iff,
+  CommAlg.Koszul.finitePolynomialTor_nonzero_le_projectiveDimension
+]

@@ -1,0 +1,10 @@
+Formal verification of Characterizations of polymatroidal ideals by Caius Folkerts.
+
+This release assembles the checked-source mathematical development into one
+compilation unit. Original copyright and license headers remain in the source.
+The shared commutative-algebra foundation includes work attributed to the Tau
+Ceti contributors, Nailin Guan, Jingting Wang, Yi Yuan, and Yongle Hu.
+
+Original project notices, exact vendored-source provenance and the TauCeti
+Apache 2.0 license are retained in licenses/. Source assembly, visibility-only
+compatibility changes and the explicit import repair are recorded under audit/.

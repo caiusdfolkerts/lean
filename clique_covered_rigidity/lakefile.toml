@@ -1,0 +1,21 @@
+name = "clique_covered_rigidity"
+version = "0.1.0"
+defaultTargets = ["proof", "verification"]
+moreLeanArgs = ["-t0", "-j1", "-s65536", "-DElab.async=false", "-Ddebug.skipKernelTC=false"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "56a005855ea17e0b0958f73ec801ae140b0a1679"
+
+[[lean_lib]]
+name = "proof"
+srcDir = "source"
+roots = ["rigidity", "verification.internal.extract", "consolidated.pair_pin_progress01", "verification.internal.checkpoint", "consolidated.pair_pin_progress02", "papers.rigidity_mode_splitting", "consolidated.rigidity_generic_tools", "consolidated.rigidity_foundations01", "consolidated.rigidity_foundations02", "consolidated.rigidity_combined_prepared", "consolidated.rigidity_combined02", "consolidated.rigidity_combined03", "consolidated.rigidity_combined04", "consolidated.rigidity_combined05", "consolidated.rigidity_combined06", "consolidated.rigidity_combined07", "consolidated.rigidity_main_recovery01", "consolidated.rigidity_priority_expectation01"]
+allowImportAll = true
+
+[[lean_lib]]
+name = "verification"
+srcDir = "source"
+roots = ["verification.check_1"]
+allowImportAll = true

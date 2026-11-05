@@ -1,0 +1,21 @@
+name = "volume_polynomials"
+version = "0.1.0"
+defaultTargets = ["proof", "verification"]
+moreLeanArgs = ["-j1", "-DElab.async=false", "-Ddebug.skipKernelTC=false"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "2cabef97b63d3275776b8b060d802de6a6fa1055"
+
+[[lean_lib]]
+name = "proof"
+srcDir = "source"
+roots = ["volume_polynomials", "volume_polynomials.all", "verification.internal.axioms", "verification.internal.executable_rational_smoke"]
+allowImportAll = true
+
+[[lean_lib]]
+name = "verification"
+srcDir = "source"
+roots = ["verification.check_1", "verification.check_2"]
+allowImportAll = true

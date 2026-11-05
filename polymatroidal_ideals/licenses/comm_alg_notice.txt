@@ -1,0 +1,6 @@
+Formal verification of Rank formulas for homological shifts of polymatroidal ideals by Caius Folkerts.
+
+New verification source: generated collaboratively for this task, 2026.
+Vendored TauCeti source: Copyright 2026 The Tau Ceti contributors.
+Adapted Koszul/exterior source: Nailin Guan, Jingting Wang, Yi Yuan, and Yongle Hu.
+All original source copyright headers are retained. See VENDORED_SOURCES.md for exact commits and licenses/.

@@ -1,0 +1,173 @@
+module
+
+public import VolumePolynomials.MixedFacetIdentity
+public import VolumePolynomials.MixedVolumeMultilinear
+public import VolumePolynomials.BodyCentering
+public import VolumePolynomials.FiniteBodyApproximation
+public import Mathlib.LinearAlgebra.Basis.Basic
+
+@[expose] public section
+set_option autoImplicit false
+
+/-! # Monotonicity of genuine mixed volume for arbitrary convex bodies
+
+The finite-polytope first-variation formula is extended first by a positive
+finite-simplex thickening, then by finite-hull approximation and continuity.
+All reference bodies and approximations are constructed in the actual space.
+-/
+
+noncomputable section
+open Set Filter MeasureTheory Module
+open scoped BigOperators Pointwise Topology
+
+namespace VolumePolynomials
+
+open PolytopeGeometry
+
+variable {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+  [FiniteDimensional ℝ E]
+
+theorem exists_finiteHull_with_zero_interior :
+    ∃ P : ConvexBody E, IsFiniteHull (P : Set E) ∧ (0 : E) ∈ interior (P : Set E) := by
+  first
+  | classical
+    let b := Module.finBasis ℝ E
+    let V : Set E := insert 0 (Set.range b)
+    have hV : V.Finite := (Set.finite_range b).insert 0
+    have hVne : V.Nonempty := ⟨0, Set.mem_insert _ _⟩
+    let Q := finiteHullBody V hV hVne
+    have hspan : affineSpan ℝ (Q : Set E) = ⊤ := by
+      first
+      | change affineSpan ℝ (convexHull ℝ (insert 0 (Set.range b))) = ⊤
+        rw [affineSpan_convexHull, affineSpan_insert_zero, b.span_eq]
+        ext x <;> rfl
+    obtain ⟨q, hq⟩ := Q.convex.interior_nonempty_iff_affineSpan_eq_top.mpr hspan
+    refine ⟨translateBody (-q) Q,
+      isFiniteHull_translateBody (finiteHullBody_isFiniteHull V hV hVne) (-q), ?_⟩
+    rw [coe_translateBody, interior_vadd]
+    exact ⟨q, hq, neg_add_cancel q⟩
+
+section Measure
+
+variable [Nontrivial E] [MeasurableSpace E] [BorelSpace E]
+  (μ : Measure E) [Measure.IsAddHaarMeasure μ]
+
+theorem mixedVolume_mono_first_finite_background {n : ℕ}
+    (K : Fin n → ConvexBody E) (hn : 0 < n)
+    (hK : ∀ i, IsFiniteHull (K i : Set E))
+    (A B : ConvexBody E) (hAB : A ≤ B) :
+    mixedVolume μ (Fin.cons A K) ≤ mixedVolume μ (Fin.cons B K) := by
+  first
+  | classical
+    letI : MeasureSpace E := ⟨μ⟩
+    letI : Measure.IsAddHaarMeasure (volume : Measure E) := inferInstanceAs (Measure.IsAddHaarMeasure μ)
+    choose p hp using fun i => (K i).nonempty
+    let L : Fin n → ConvexBody E := fun i => translateBody (-p i) (K i)
+    have hL0 : ∀ i, (0 : E) ∈ L i := fun i => zero_mem_translateBody_neg (hp i)
+    have hLpoly : ∀ i, IsFiniteHull (L i : Set E) :=
+      fun i => isFiniteHull_translateBody (hK i) (-p i)
+    obtain ⟨P, hPpoly, hPint⟩ := exists_finiteHull_with_zero_interior (E := E)
+    have hP0 : (0 : E) ∈ P := interior_subset hPint
+    let Q : ℝ → Fin n → ConvexBody E := fun r i => L i + r • P
+    have hQ0 (r : ℝ) (i : Fin n) : (0 : E) ∈ Q r i :=
+      ⟨0, hL0 i, 0, ⟨0, hP0, by simp⟩, zero_add 0⟩
+    have hQpoly (r : ℝ) (i : Fin n) : IsFiniteHull (Q r i : Set E) :=
+      (hLpoly i).add (hPpoly.smul r)
+    have hQint {r : ℝ} (hr : 0 < r) :
+        (0 : E) ∈ interior (∑ i, (Q r i : Set E)) := by
+      first
+      | have hsmall : (0 : E) ∈ interior (r • (P : Set E)) := by
+          rw [interior_smul₀ hr.ne']
+          exact ⟨0, hPint, by simp⟩
+        have hsub : r • (P : Set E) ⊆ (↑(∑ i, Q r i) : Set E) := by
+          intro x hx
+          apply body_le_sum_of_zero_mem (Q r) (hQ0 r) (⟨0, hn⟩ : Fin n)
+          exact ⟨0, hL0 _, x, hx, zero_add x⟩
+        simpa only [coe_sum_body] using interior_mono hsub hsmall
+    have hmono : ∀ᶠ r : ℝ in 𝓝[>] 0,
+        mixedVolume μ (Fin.cons A (Q r)) ≤ mixedVolume μ (Fin.cons B (Q r)) := by
+      first
+      | filter_upwards [self_mem_nhdsWithin] with r hr
+        exact mixedVolume_mono_first_of_finite_polytopes (Q r) (hQpoly r)
+          (hQ0 r) (hQint hr) A B hAB
+    have hcont (C : ConvexBody E) :
+        Continuous (fun r : ℝ => mixedVolume μ (Fin.cons C (Q r))) := by
+      first
+      | apply (continuous_mixedVolume μ (n + 1)).comp
+        apply continuous_pi
+        intro i
+        refine Fin.cases ?_ (fun j => ?_) i
+        · simpa only [Fin.cons_zero] using (continuous_const : Continuous (fun _ : ℝ => C))
+        · simp only [Fin.cons_succ, Q]
+          fun_prop
+    have hlim (C : ConvexBody E) :
+        Tendsto (fun r : ℝ => mixedVolume μ (Fin.cons C (Q r)))
+          (𝓝[>] 0) (𝓝 (mixedVolume μ (Fin.cons C L))) := by
+      first
+      | simpa only [Q, body_zero_smul, add_zero] using
+          ((hcont C).tendsto 0).mono_left nhdsWithin_le_nhds
+    have hL := le_of_tendsto_of_tendsto (hlim A) (hlim B) hmono
+    have htranslate (C : ConvexBody E) :
+        mixedVolume μ (Fin.cons C L) = mixedVolume μ (Fin.cons C K) := by
+      first
+      | have h := mixedVolume_translate μ (Fin.cons C K) (Fin.cons (0 : E) (fun i => -p i))
+        have he : (fun i : Fin (n + 1) =>
+            (translateBody ((Fin.cons (0 : E) (fun j : Fin n => -p j) :
+                Fin (n + 1) → E) i)
+              ((Fin.cons C K : Fin (n + 1) → ConvexBody E) i) : ConvexBody E)) =
+            (Fin.cons C L : Fin (n + 1) → ConvexBody E) := by
+          funext i
+          refine Fin.cases ?_ (fun j => rfl) i
+          simp only [Fin.cons_zero, translateBody_zero]
+        rwa [he] at h
+    simpa only [htranslate] using hL
+
+/-- Monotonicity in a genuine argument of dimension-matched mixed volume.
+There is no full-dimensional, polytope, smoothness, or centering restriction
+on any of the bodies. The background is nonempty, as in every dimension at
+least two. -/
+theorem mixedVolume_mono_first {n : ℕ}
+    (K : Fin n → ConvexBody E) (hn : 0 < n) (_hdim : finrank ℝ E = n + 1)
+    (A B : ConvexBody E) (hAB : A ≤ B) :
+    mixedVolume μ (Fin.cons A K) ≤ mixedVolume μ (Fin.cons B K) := by
+  first
+  | let S : Set (Fin n → ConvexBody E) :=
+      {L | mixedVolume μ (Fin.cons A L) ≤ mixedVolume μ (Fin.cons B L)}
+    have hcont (C : ConvexBody E) :
+        Continuous (fun L : Fin n → ConvexBody E => mixedVolume μ (Fin.cons C L)) := by
+      first
+      | apply (continuous_mixedVolume μ (n + 1)).comp
+        apply continuous_pi
+        intro i
+        refine Fin.cases ?_ (fun j => ?_) i
+        · exact continuous_const
+        · exact continuous_apply j
+    have hclosed : IsClosed S := isClosed_le (hcont A) (hcont B)
+    have hsub : {L : Fin n → ConvexBody E | ∀ i, IsFiniteHull (L i : Set E)} ⊆ S := by
+      first
+      | intro L hL
+        exact mixedVolume_mono_first_finite_background μ L hn hL A B hAB
+    exact closure_minimal hsub hclosed (dense_finiteHullBodyTuples (E := E) n K)
+
+/-- The dimension-matched monotonicity theorem also includes the one-dimensional
+case, where there are no background bodies and mixed volume is ordinary Haar
+length. -/
+theorem mixedVolume_mono_first_all {n : ℕ}
+    (K : Fin n → ConvexBody E) (hdim : finrank ℝ E = n + 1)
+    (A B : ConvexBody E) (hAB : A ≤ B) :
+    mixedVolume μ (Fin.cons A K) ≤ mixedVolume μ (Fin.cons B K) := by
+  first
+  | cases n with
+    | zero =>
+        have hcons (C : ConvexBody E) : Fin.cons C K = fun _ : Fin 1 => C := by
+          first
+          | funext i
+            exact Fin.cases rfl (fun j => Fin.elim0 j) i
+        rw [hcons A, hcons B, mixedVolume_diagonal μ hdim A,
+          mixedVolume_diagonal μ hdim B]
+        exact measureReal_mono hAB B.isCompact.measure_ne_top
+    | succ n =>
+        exact mixedVolume_mono_first μ K (Nat.succ_pos n) hdim A B hAB
+
+end Measure
+end VolumePolynomials

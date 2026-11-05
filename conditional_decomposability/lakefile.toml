@@ -1,0 +1,21 @@
+name = "conditional_decomposability"
+version = "0.1.0"
+defaultTargets = ["proof", "verification"]
+moreLeanArgs = ["-j1", "-s65536", "-DElab.async=false", "-Ddebug.skipKernelTC=false"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "56a005855ea17e0b0958f73ec801ae140b0a1679"
+
+[[lean_lib]]
+name = "proof"
+srcDir = "source"
+roots = ["main", "consolidated_dev.conditional_complete_integration", "consolidated.all_rigid_cover_cases", "consolidated.low_dimensional_rigid_covers", "consolidated.nonsimple_rigid_covers", "consolidated.four_tail_rigid_cover", "consolidated.actual_four_tail_geometry", "consolidated.actual_rigid_seeds", "consolidated.rigid_tail_sets", "consolidated.deletion_fields", "consolidated.deletion_geometry", "consolidated.root_graph", "consolidated.root_generic", "consolidated_dev.intrinsic_figure_geometry", "consolidated_dev.actual_geometry", "consolidated_dev.no_simple_ten_intrinsic", "consolidated_dev.simple_vertex_duality", "consolidated_dev.simple_four_ridges", "consolidated_dev.abstract_lower_bound", "consolidated_dev.simple_four_combinatorics", "papers.simple_four_finite_obstruction", "consolidated_dev.simple_four_no_ten", "consolidated.actual_rigid_five_seeds", "consolidated.actual_sigma_tail", "consolidated.actual_facet_hitting", "consolidated.homothety_uniform_cover", "consolidated.homothety_shared_central_impossible", "consolidated.homothety_fiber_comparison", "consolidated.homothety_fiber_rows", "consolidated.dense_cone_rigidity", "consolidated.small_order_rigidity", "consolidated.homothety_unowned_facet", "consolidated.homothety_unowned_class", "consolidated.homothety_central_clique", "consolidated.homothety_minimum_class", "consolidated_dev.minkowski_map_core", "consolidated.three_dimensional_incidences", "consolidated.incidence_core_geometry", "consolidated.relative_facet_halfspaces", "consolidated.homothety_shared_class_neighbors", "consolidated.homothety_boundary_cover", "consolidated.universal_shephard", "consolidated_dev.exact_shephard_criterion", "consolidated_dev.codim_two_extra_base", "consolidated_dev.minkowski_homothetic_core", "consolidated_dev.minkowski_fiber_geometry", "papers.finite_fiber_saturation", "consolidated_dev.affine_interpolation", "consolidated_dev.projective_crossing_geometry", "consolidated.minkowski_codimension_two_deletion", "consolidated.minkowski_deletion_summand", "consolidated.proper_image_exact_summand", "consolidated_dev.conditional_upper_canonical", "supplementary.dense_matching_concurrence", "supplementary.proper_image_map", "supplementary.two_homotheties", "supplementary.intrinsic_small_order_covers", "supplementary.paper_interfaces", "conditional_decomposability", "conditional_decomposability_audit", "verification.internal.extract"]
+allowImportAll = true
+
+[[lean_lib]]
+name = "verification"
+srcDir = "source"
+roots = ["verification.check_1", "verification.check_2"]
+allowImportAll = true

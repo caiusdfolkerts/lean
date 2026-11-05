@@ -1,0 +1,25 @@
+module
+import all normal_projective
+public meta import Lean.Util.CollectAxioms
+public meta import Lean.Elab.Command
+public meta import Lean.Meta.Basic
+open Lean Elab Command
+run_cmd do
+  let env := (← getEnv).setExporting false
+  let localModules := #[`normal_projective, `normal_projective.complete, `normal_projective.control, `normal_projective.stable_incidence, `normal_projective.simple_stability, `normal_projective.uniform_bound, `normal_projective.admissible_projectivity, `normal_projective.geometry, `normal_projective.simple_vertices, `normal_projective.halfspace_faces, `normal_projective.face_correspondence, `normal_projective.unit_normalization, `normal_projective.canonical_model, `normal_projective.normalization_topology, `normal_projective.elementary_projectivity, `normal_projective.local_control, `normal_projective.connected_classes, `normal_projective.rank_obstruction, `normal_projective.polar_correction, `cor2_complete, `cap_extraction_geometry, `cap_polarity_geometry, `planar_tools, `dirichlet, `harmonic_adjacent, `face_separation, `polygon_local, `graph_polygon, `subfaces, `triangulation, `closed_cover, `region_barrier, `dirichlet_strong, `tau_ceti.geometry.polygon.simple, `tau_ceti.geometry.polygon.basic, `tau_ceti.data.fin.basic, `tau_ceti.topology.jordan_curve.basic, `tau_ceti.analysis.complex.circle, `tau_ceti.topology.locally_connected, `tau_ceti.analysis.convex.between, `tau_ceti.analysis.complex.plane_separation.local_separation, `tau_ceti.analysis.complex.plane_separation.jordan_curve, `tau_ceti.analysis.complex.plane_separation.basic, `tau_ceti.analysis.complex.continuous_log.basic, `tau_ceti.analysis.normed.module.filled_hull, `tau_ceti.analysis.normed.module.convex, `tau_ceti.topology.filled_hull, `tau_ceti.topology.connected_components, `tau_ceti.topology.path_component, `tau_ceti.topology.homotopy.path, `tau_ceti.topology.unit_interval, `tau_ceti.topology.frontier, `tau_ceti.analysis.normed.module.ball.exterior, `tau_ceti.analysis.normed.module.ball, `tau_ceti.topology.jordan_curve.small_arc, `tau_ceti.topology.circle.arc, `tau_ceti.topology.circle.metric, `tau_ceti.analysis.special_functions.trigonometric.arccos, `tau_ceti.topology.jordan_curve.separation, `tau_ceti.topology.jordan_curve.subcontinuum, `tau_ceti.analysis.complex.continuous_log.path, `tau_ceti.analysis.contour.winding.separation, `tau_ceti.analysis.contour.winding.number.segment.jump, `tau_ceti.analysis.contour.winding.number.segment.formula, `tau_ceti.analysis.contour.winding.number.affine, `tau_ceti.analysis.contour.winding.number.scale, `tau_ceti.analysis.contour.null_homologous, `tau_ceti.analysis.contour.winding.number.basic, `tau_ceti.analysis.contour.cauchy.principal_value.basic, `tau_ceti.analysis.contour.winding.number.translate, `tau_ceti.analysis.contour.log_deriv_ftc, `tau_ceti.analysis.complex.upper_log_continuity, `tau_ceti.analysis.contour.curve.integrability, `tau_ceti.analysis.contour.piecewise_c1_on, `tau_ceti.analysis.contour.winding.continuity, `tau_ceti.analysis.contour.curve.distance, `tau_ceti.analysis.contour.winding.number.reverse, `tau_ceti.analysis.contour.winding.integer, `tau_ceti.analysis.contour.winding.endpoint_ratio, `tau_ceti.analysis.contour.argument.lift, `tau_ceti.analysis.contour.winding.segment_sum, `tau_ceti.analysis.contour.winding.locally_constant, `tau_ceti.analysis.contour.winding.number.concat, `tau_ceti.analysis.contour.curve.approximation, `triangle_sides, `exterior_path, `cycle_barrier, `triangular_disk, `boundary_corners, `falling_paths, `walk_cycle, `planar_geometry, `maxwell_development, `maxwell_core, `face_graph, `punctured_convex, `harmonic_embedding, `interval_chain]
+  let mut count : Nat := 0
+  for (name, info) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    let some owner := env.header.moduleNames[idx.toNat]? | continue
+    unless localModules.contains owner do continue
+    let shouldCheck ← match info with
+      | .thmInfo _ | .axiomInfo _ => pure true
+      | _ => liftTermElabM <| Lean.Meta.isProp info.type
+    unless shouldCheck do continue
+    let axioms ← Lean.collectAxioms name
+    for ax in axioms do
+      unless #[``propext, ``Classical.choice, ``Quot.sound].contains ax do
+        throwError "Unexpected axiom {ax} in {name}"
+    count := count + 1
+  if count == 0 then throwError "No local theorems were checked"
+  logInfo m!"Checked axiom dependencies of {count} local theorems."

@@ -1,0 +1,22 @@
+module
+
+public import PaperVerification.AlternatingFormsHilbertSeries
+public import PaperVerification.AlternatingFormsSectionPrincipal
+public import PaperVerification.AlternatingFormsTopRepresentation
+public import PaperVerification.AlternatingFormsQuadraticDualPrincipal
+public import PaperVerification.AlternatingFormsKoszulClassification
+public import PaperVerification.AlternatingFormsOddIntegralRingHom
+public import PaperVerification.AlternatingFormsOddCharacteristicCutoff
+public import PaperVerification.AlternatingFormsOddCharacteristicBoundary
+public import PaperVerification.AlternatingFormsBigradedPrincipal
+public import PaperVerification.AlternatingFormsBettiOrigin
+public import PaperVerification.AlternatingFormsCharacteristicPrincipal
+public import PaperVerification.AlternatingFormsChernDimension
+public import PaperVerification.GenericVectorSectionEmptiness
+public import PaperVerification.LocalJacobianCriterion
+public import PaperVerification.ChernPresentationCriterion
+public import PaperVerification.BorelLinearAlgebraBatch
+public import PaperVerification.FiniteTriangularDecomposition
+
+/-! Verified principal results recovered from the exact accepted closures.
+Further geometric statements are tracked separately. -/

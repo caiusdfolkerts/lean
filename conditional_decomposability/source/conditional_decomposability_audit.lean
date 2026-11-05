@@ -1,0 +1,184 @@
+module
+import all consolidated.deletion_geometry
+import all consolidated.deletion_fields
+import all consolidated.root_generic
+import all consolidated.root_graph
+import all consolidated_dev.intrinsic_figure_geometry
+import all consolidated.rigid_tail_sets
+import all consolidated_dev.actual_geometry
+import all consolidated.actual_rigid_seeds
+import all consolidated.actual_four_tail_geometry
+import all consolidated_dev.simple_vertex_duality
+import all consolidated_dev.simple_four_ridges
+import all consolidated_dev.abstract_lower_bound
+import all papers.simple_four_finite_obstruction
+import all consolidated_dev.simple_four_combinatorics
+import all consolidated_dev.simple_four_no_ten
+import all consolidated_dev.no_simple_ten_intrinsic
+import all consolidated.four_tail_rigid_cover
+import all consolidated.actual_rigid_five_seeds
+import all consolidated.nonsimple_rigid_covers
+import all consolidated.actual_sigma_tail
+import all consolidated.low_dimensional_rigid_covers
+import all consolidated.actual_facet_hitting
+import all consolidated.all_rigid_cover_cases
+import all consolidated.small_order_rigidity
+import all consolidated.homothety_minimum_class
+import all consolidated.homothety_central_clique
+import all consolidated.homothety_unowned_class
+import all consolidated.homothety_unowned_facet
+import all consolidated.incidence_core_geometry
+import all consolidated.three_dimensional_incidences
+import all consolidated.relative_facet_halfspaces
+import all consolidated_dev.minkowski_map_core
+import all consolidated.dense_cone_rigidity
+import all consolidated.homothety_fiber_rows
+import all consolidated.homothety_fiber_comparison
+import all consolidated.homothety_shared_class_neighbors
+import all consolidated.homothety_shared_central_impossible
+import all consolidated.homothety_boundary_cover
+import all consolidated.homothety_uniform_cover
+import all consolidated_dev.exact_shephard_criterion
+import all consolidated.universal_shephard
+import all papers.finite_fiber_saturation
+import all consolidated_dev.minkowski_fiber_geometry
+import all consolidated_dev.affine_interpolation
+import all consolidated_dev.minkowski_homothetic_core
+import all consolidated_dev.projective_crossing_geometry
+import all consolidated_dev.codim_two_extra_base
+import all consolidated.minkowski_deletion_summand
+import all consolidated.minkowski_codimension_two_deletion
+import all consolidated.proper_image_exact_summand
+import all consolidated_dev.conditional_upper_canonical
+import all consolidated_dev.conditional_complete_integration
+import all supplementary.dense_matching_concurrence
+import all supplementary.proper_image_map
+import all supplementary.two_homotheties
+import all supplementary.intrinsic_small_order_covers
+import all supplementary.paper_interfaces
+import verification.internal.extract
+
+-- Create directories for generated verification output.
+run_cmd Lean.Elab.Command.liftIO do
+  IO.FS.createDirAll ".lake/reports/audit"
+
+
+#check @Papers.Polytopes.conditional_decomposability_sharp
+#print axioms Papers.Polytopes.conditional_decomposability_sharp
+#export_proof_audit Papers.Polytopes.conditional_decomposability_sharp to ".lake/reports/audit/sharp_theorem.json"
+
+#check @Papers.Polytopes.conditional_decomposability_claim
+#print axioms Papers.Polytopes.conditional_decomposability_claim
+#export_proof_audit Papers.Polytopes.conditional_decomposability_claim to ".lake/reports/audit/specified_target.json"
+
+#check @Papers.Polytopes.conditional_vertex_count_isLeast
+#print axioms Papers.Polytopes.conditional_vertex_count_isLeast
+#export_proof_audit Papers.Polytopes.conditional_vertex_count_isLeast to ".lake/reports/audit/least_vertex_count.json"
+
+#check @Papers.Polytopes.decomposability_determined_by_face_lattice_below_threshold
+#print axioms Papers.Polytopes.decomposability_determined_by_face_lattice_below_threshold
+#export_proof_audit Papers.Polytopes.decomposability_determined_by_face_lattice_below_threshold to ".lake/reports/audit/universal_lower_bound.json"
+
+#check @Papers.Polytopes.conditional_decomposability_attainment
+#print axioms Papers.Polytopes.conditional_decomposability_attainment
+#export_proof_audit Papers.Polytopes.conditional_decomposability_attainment to ".lake/reports/audit/all_dimension_attainment.json"
+
+#check @Papers.Polytopes.decomposable_iff_of_face_iso_below_threshold
+#print axioms Papers.Polytopes.decomposable_iff_of_face_iso_below_threshold
+#export_proof_audit Papers.Polytopes.decomposable_iff_of_face_iso_below_threshold to ".lake/reports/audit/face_lattice_invariance.json"
+
+#check @Papers.Polytopes.decomposable_after_iso_of_at_most_three_homotheties
+#print axioms Papers.Polytopes.decomposable_after_iso_of_at_most_three_homotheties
+#export_proof_audit Papers.Polytopes.decomposable_after_iso_of_at_most_three_homotheties to ".lake/reports/audit/proposition_11.json"
+
+#check @Papers.Polytopes.decomposable_after_iso_of_weak_summand
+#print axioms Papers.Polytopes.decomposable_after_iso_of_weak_summand
+#export_proof_audit Papers.Polytopes.decomposable_after_iso_of_weak_summand to ".lake/reports/audit/proposition_7.json"
+
+#check @Papers.Polytopes.HomothetyParameters.uniform_cover_positive_projectivity_or_shephard
+#print axioms Papers.Polytopes.HomothetyParameters.uniform_cover_positive_projectivity_or_shephard
+#export_proof_audit Papers.Polytopes.HomothetyParameters.uniform_cover_positive_projectivity_or_shephard to ".lake/reports/audit/proposition_12.json"
+
+#check @Papers.Polytopes.nontrivial_parallel_map_iff_vertex_domain
+#print axioms Papers.Polytopes.nontrivial_parallel_map_iff_vertex_domain
+#export_proof_audit Papers.Polytopes.nontrivial_parallel_map_iff_vertex_domain to ".lake/reports/audit/vertex_domain_equivalence.json"
+
+#check @Papers.Polytopes.SimplexReconstructionZeroCounterexample.lemma6_zero_counterexample
+#print axioms Papers.Polytopes.SimplexReconstructionZeroCounterexample.lemma6_zero_counterexample
+#export_proof_audit Papers.Polytopes.SimplexReconstructionZeroCounterexample.lemma6_zero_counterexample to ".lake/reports/audit/positive_simplex_dimension.json"
+
+#check @Papers.CorrectedSimplexReconstruction.corrected_simplex_reconstruction
+#print axioms Papers.CorrectedSimplexReconstruction.corrected_simplex_reconstruction
+#export_proof_audit Papers.CorrectedSimplexReconstruction.corrected_simplex_reconstruction to ".lake/reports/audit/corrected_simplex_reconstruction.json"
+
+
+/-! Standalone paper statements and representation equivalences. -/
+
+#check Papers.Polytopes.dense_graph_parallel_rigid
+#print axioms Papers.Polytopes.dense_graph_parallel_rigid
+#export_proof_audit Papers.Polytopes.dense_graph_parallel_rigid to ".lake/reports/audit/lemma_2_rigidity.json"
+
+#check Papers.Polytopes.DenseMatchingConcurrence.concurrent_of_dense_cofacial_matching
+#print axioms Papers.Polytopes.DenseMatchingConcurrence.concurrent_of_dense_cofacial_matching
+#export_proof_audit Papers.Polytopes.DenseMatchingConcurrence.concurrent_of_dense_cofacial_matching to ".lake/reports/audit/lemma_2_concurrence.json"
+
+#check Papers.PaperInterfaces.shephard_property_of_given_rigid_complement
+#print axioms Papers.PaperInterfaces.shephard_property_of_given_rigid_complement
+#export_proof_audit Papers.PaperInterfaces.shephard_property_of_given_rigid_complement to ".lake/reports/audit/lemma_3.json"
+
+#check Papers.ProperImageMap.proper_image_signed_weak_summand_map
+#print axioms Papers.ProperImageMap.proper_image_signed_weak_summand_map
+#export_proof_audit Papers.ProperImageMap.proper_image_signed_weak_summand_map to ".lake/reports/audit/lemma_4.json"
+
+#check Papers.Polytopes.decomposable_after_face_iso_of_at_most_two_homotheties
+#print axioms Papers.Polytopes.decomposable_after_face_iso_of_at_most_two_homotheties
+#export_proof_audit Papers.Polytopes.decomposable_after_face_iso_of_at_most_two_homotheties to ".lake/reports/audit/lemma_5.json"
+
+#check Papers.Polytopes.decomposable_after_face_iso_of_segment_weak_summand
+#print axioms Papers.Polytopes.decomposable_after_face_iso_of_segment_weak_summand
+#export_proof_audit Papers.Polytopes.decomposable_after_face_iso_of_segment_weak_summand to ".lake/reports/audit/lemma_5_segment.json"
+
+#check Papers.Polytopes.HomothetyParameters.class_bound
+#print axioms Papers.Polytopes.HomothetyParameters.class_bound
+#export_proof_audit Papers.Polytopes.HomothetyParameters.class_bound to ".lake/reports/audit/lemma_8.json"
+
+#check Papers.Polytopes.HomothetyParameters.minimumClass_fiber_faces
+#print axioms Papers.Polytopes.HomothetyParameters.minimumClass_fiber_faces
+#export_proof_audit Papers.Polytopes.HomothetyParameters.minimumClass_fiber_faces to ".lake/reports/audit/lemma_9.json"
+
+#check Papers.Polytopes.HomothetyParameters.common_central_class_shephard
+#print axioms Papers.Polytopes.HomothetyParameters.common_central_class_shephard
+#export_proof_audit Papers.Polytopes.HomothetyParameters.common_central_class_shephard to ".lake/reports/audit/lemma_10.json"
+
+#check Papers.Polytopes.decomposable_after_face_iso_of_at_most_three_homotheties
+#print axioms Papers.Polytopes.decomposable_after_face_iso_of_at_most_three_homotheties
+#export_proof_audit Papers.Polytopes.decomposable_after_face_iso_of_at_most_three_homotheties to ".lake/reports/audit/proposition_11_all_dimensions.json"
+
+#check Papers.PaperInterfaces.decomposable_after_iso_of_boundary_cover_four
+#print axioms Papers.PaperInterfaces.decomposable_after_iso_of_boundary_cover_four
+#export_proof_audit Papers.PaperInterfaces.decomposable_after_iso_of_boundary_cover_four to ".lake/reports/audit/lemma_13_dimension_four.json"
+
+#check Papers.PaperInterfaces.decomposable_after_iso_of_boundary_cover_five
+#print axioms Papers.PaperInterfaces.decomposable_after_iso_of_boundary_cover_five
+#export_proof_audit Papers.PaperInterfaces.decomposable_after_iso_of_boundary_cover_five to ".lake/reports/audit/lemma_13_dimension_five.json"
+
+#check Papers.IntrinsicSmallOrderCovers.intrinsicGraphCover_three_of_min_three_card_le_seven
+#print axioms Papers.IntrinsicSmallOrderCovers.intrinsicGraphCover_three_of_min_three_card_le_seven
+#export_proof_audit Papers.IntrinsicSmallOrderCovers.intrinsicGraphCover_three_of_min_three_card_le_seven to ".lake/reports/audit/lemma_14_seven.json"
+
+#check Papers.IntrinsicSmallOrderCovers.intrinsicGraphCover_two_of_min_three_card_le_six
+#print axioms Papers.IntrinsicSmallOrderCovers.intrinsicGraphCover_two_of_min_three_card_le_six
+#export_proof_audit Papers.IntrinsicSmallOrderCovers.intrinsicGraphCover_two_of_min_three_card_le_six to ".lake/reports/audit/lemma_14_six.json"
+
+#check Papers.PaperInterfaces.decomposability_determined_by_face_lattice_below_threshold_all_dimensions
+#print axioms Papers.PaperInterfaces.decomposability_determined_by_face_lattice_below_threshold_all_dimensions
+#export_proof_audit Papers.PaperInterfaces.decomposability_determined_by_face_lattice_below_threshold_all_dimensions to ".lake/reports/audit/lower_bound_all_dimensions.json"
+
+#check Papers.Polytopes.combinatoriallyEquivalent_iff_complete_face_iso
+#print axioms Papers.Polytopes.combinatoriallyEquivalent_iff_complete_face_iso
+#export_proof_audit Papers.Polytopes.combinatoriallyEquivalent_iff_complete_face_iso to ".lake/reports/audit/complete_face_lattice_equivalence.json"
+
+#check Papers.Polytopes.minkowski_decomposable_iff_parallel_map
+#print axioms Papers.Polytopes.minkowski_decomposable_iff_parallel_map
+#export_proof_audit Papers.Polytopes.minkowski_decomposable_iff_parallel_map to ".lake/reports/audit/minkowski_parallel_equivalence.json"
+

@@ -1,0 +1,26 @@
+name = "mixed_volume_realization"
+version = "0.1.0"
+defaultTargets = ["proof", "verification"]
+moreLeanArgs = ["-j1", "-DElab.async=false", "-Ddebug.skipKernelTC=false"]
+
+[[require]]
+name = "TauCeti"
+git = "https://github.com/TauCetiProject/TauCeti"
+rev = "06d5bb4e3ebb737dc6538567f5c53bf8800b9362"
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "2cabef97b63d3275776b8b060d802de6a6fa1055"
+
+[[lean_lib]]
+name = "proof"
+srcDir = "source"
+roots = ["mixed_volume", "mixed_volume.verification_all", "volume_polynomials.mixed_volume_basis", "volume_polynomials.mixed_volume_basis_part03", "volume_polynomials.mixed_volume_basis_part02", "volume_polynomials.mixed_volume_basis_part01", "mixed_volume.general.rejection_arithmetic", "mixed_volume.computability.rational_primrec", "mixed_volume.computability.rational_code", "matrix_mortality.computability", "mixed_volume.computability.fractional_words", "mixed_volume.general.geometry_arithmetic", "mixed_volume.general.quadratic_moments", "mixed_volume.general.moment_geometry", "mixed_volume.general.automaton_moments", "mixed_volume.general.series_mixed_area", "mixed_volume.general.automaton_recurrence", "mixed_volume.general.automaton_zonoids", "mixed_volume.general.automaton_words", "mixed_volume.general.indexed_series", "mixed_volume.all", "mixed_volume.general.series_support", "mixed_volume.general.body_contraction", "mixed_volume.general.rational_systems", "mixed_volume.general.realization_forward", "mixed_volume.general.deficit_forcing", "mixed_volume.general.target_tests", "mixed_volume.general.projected_forcing", "mixed_volume.general.canonical_geometry", "mixed_volume.general.reference_normalization", "mixed_volume.general.labels", "mixed_volume.general.reference_calibration", "mixed_volume.general.planar_restriction", "mixed_volume.general.target_polynomial", "mixed_volume.computability.effective_pfa", "mixed_volume.computability.prefix_pfa", "mixed_volume.computability.uniform_mix", "mixed_volume.computability.seven_state", "mixed_volume.computability.quadratic_encoding", "matrix_mortality.matrix_semigroup", "matrix_mortality.word_morphism", "mixed_volume.computability.prefix_source", "matrix_mortality.undecidability.universal_mortality35", "matrix_mortality.undecidability.neary_problems", "matrix_mortality.neary_encoding", "matrix_mortality.marked_terminal", "matrix_mortality.terminal_source", "matrix_mortality.word_discrepancy", "matrix_mortality.tag_queue", "matrix_mortality.indexed_execution", "matrix_mortality.terminal_reduction", "matrix_mortality.pcp_encoding", "matrix_mortality.ternary_encoding", "matrix_mortality.terminal_tile", "matrix_mortality.rank_one", "matrix_mortality.undecidability.problems", "matrix_mortality.undecidability.universal_neary_source", "matrix_mortality.undecidability.neary_source", "matrix_mortality.undecidability.neary_converse", "matrix_mortality.undecidability.neary_execution", "matrix_mortality.undecidability.neary_data", "matrix_mortality.undecidability.neary_simulation", "matrix_mortality.undecidability.neary_compiler", "matrix_mortality.undecidability.cyclic_tag", "matrix_mortality.undecidability.tag_execution", "matrix_mortality.undecidability.tracks", "matrix_mortality.undecidability.two_tag_source", "matrix_mortality.undecidability.cyclic_tag_avoidance", "matrix_mortality.undecidability.universal_two_tag", "matrix_mortality.undecidability.cocke_minsky_avoidance", "matrix_mortality.undecidability.cocke_minsky", "matrix_mortality.undecidability.tm0_to_read", "matrix_mortality.undecidability.universal_tm0", "matrix_mortality.undecidability.finite_tm0", "matrix_mortality.undecidability.seeded_tm2", "matrix_mortality.undecidability.universal_machine", "mixed_volume.all.padding", "mixed_volume.general.automaton_bridge", "mixed_volume.computability.fixed_automata_all", "mixed_volume.all.neighborhood"]
+allowImportAll = true
+
+[[lean_lib]]
+name = "verification"
+srcDir = "source"
+roots = ["verification.check_1"]
+allowImportAll = true

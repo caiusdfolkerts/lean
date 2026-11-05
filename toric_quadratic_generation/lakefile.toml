@@ -1,0 +1,21 @@
+name = "toric_quadratic_generation"
+version = "0.1.0"
+defaultTargets = ["proof", "verification"]
+moreLeanArgs = ["-t", "0", "-j", "1", "-DElab.async=false", "-DmaxHeartbeats=0", "-DmaxRecDepth=100000", "-DmaxErrors=400", "-j1", "-Ddebug.skipKernelTC=false"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "56a005855ea17e0b0958f73ec801ae140b0a1679"
+
+[[lean_lib]]
+name = "proof"
+srcDir = "source"
+roots = ["toric_quadratic", "paper_verification.toric028", "paper_verification.toric001", "paper_verification.toric002", "paper_verification.toric009", "paper_verification.toric005", "paper_verification.toric017", "paper_verification.toric018", "paper_verification.toric019", "paper_verification.toric020", "paper_verification.toric021", "paper_verification.toric013", "paper_verification.toric010", "paper_verification.toric022", "paper_verification.toric029", "paper_verification.toric023", "paper_verification.toric016", "paper_verification.toric024", "paper_verification.toric025", "paper_verification.toric030", "paper_verification.toric032", "paper_verification.toric033", "paper_verification.toric026", "paper_verification.toric040", "paper_verification.toric027", "paper_verification.toric038", "paper_verification.toric031", "paper_verification.toric037", "paper_verification.toric034", "paper_verification.toric035", "paper_verification.toric036", "paper_verification.toric039", "paper_verification.toric042", "paper_verification.toric041", "paper_verification.toric043", "toric_quadratic.real_slices", "toric_quadratic.real_support", "toric_quadratic.fan_basics"]
+allowImportAll = true
+
+[[lean_lib]]
+name = "verification"
+srcDir = "source"
+roots = ["verification.check_1"]
+allowImportAll = true

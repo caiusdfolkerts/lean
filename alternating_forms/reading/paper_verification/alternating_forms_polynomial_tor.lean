@@ -1,0 +1,109 @@
+module
+
+public import PaperVerification.AlternatingFormsPolynomialKoszul
+public import Mathlib.Algebra.Category.ModuleCat.Monoidal.Basic
+
+/-!
+# Ordinary polynomial Tor from the full variable Koszul resolution
+
+Tensoring the actual variable resolution with the actual augmentation
+residue makes every differential zero, because each contraction
+coefficient lies in the coordinate ideal.  Thus ordinary Tor is the
+corresponding tensor of the actual exterior-power term.  This is not yet
+the internal-degree comparison needed for the one-plane Koszul clause.
+-/
+
+@[expose] public section
+set_option autoImplicit false
+noncomputable section
+open scoped BigOperators TensorProduct
+
+namespace PaperVerification.AlternatingForms.PolynomialKoszul
+
+open MvPolynomial CategoryTheory CategoryTheory.Limits
+
+universe u
+variable (K : Type u) [Field K] (n : ℕ)
+
+local notation "P" => PolynomialRing K n
+local notation "Q" => Residue K n
+local notation "J" => Ideal.span (Set.range (X : Fin n → P))
+
+theorem residue_smul_eq_zero (p : P) (hp : p∈J) (a : Q) : p • a=0 := by
+  change Ideal.Quotient.mk J p*a=0
+  rw [Ideal.Quotient.eq_zero_iff_mem.mpr hp,zero_mul]
+
+theorem variableFunctional_mem_coordinateIdeal (v : Fin n → P) :
+    variableFunctional K n v∈J := by
+  change variableFunctional K n v∈
+    Submodule.span P (Set.range (fun i : Fin n ↦ X (R := K) i))
+  rw [←Fintype.range_linearCombination P (fun i : Fin n ↦ X (R := K) i)]
+  exact LinearMap.mem_range_self _ v
+
+def residueTensorComplex : ChainComplex (ModuleCat P) ℕ :=
+  ((((CategoryTheory.MonoidalCategory.tensoringLeft (ModuleCat P)).obj
+    (ModuleCat.of P Q)).mapHomologicalComplex (ComplexShape.down ℕ)).obj
+      (resolution K n).complex)
+
+theorem residue_tmul_differential_zero (r : ℕ) (a : Q)
+    (z : ⋀[P]^(r+1) (Fin n → P)) :
+    a ⊗ₜ[P] TauCeti.koszulDifferential (variableFunctional K n) r z=0 := by
+  let T : (⋀[P]^r (Fin n → P)) →ₗ[P] Q ⊗[P] (⋀[P]^r (Fin n → P)) :=
+    TensorProduct.mk P Q _ a
+  have he : T.comp (TauCeti.koszulDifferential (variableFunctional K n) r)=0 := by
+    apply exteriorPower.linearMap_ext
+    apply AlternatingMap.ext
+    intro v
+    change T (TauCeti.koszulDifferential (variableFunctional K n) r
+      (exteriorPower.ιMulti P (r+1) v))=0
+    rw [TauCeti.koszulDifferential_ιMulti,map_sum]
+    simp only [map_smul]
+    apply Finset.sum_eq_zero
+    intro i hi
+    change ((-1 : P)^i.val*variableFunctional K n (v i)) •
+      (a ⊗ₜ[P] exteriorPower.ιMulti P r (i.removeNth v))=0
+    rw [TensorProduct.smul_tmul',residue_smul_eq_zero K n _
+      (Ideal.mul_mem_left _ _ (variableFunctional_mem_coordinateIdeal K n (v i))),
+      TensorProduct.zero_tmul]
+  exact LinearMap.congr_fun he z
+
+set_option backward.isDefEq.respectTransparency false in
+theorem residueTensorComplex_d_succ (r : ℕ) :
+    (residueTensorComplex K n).d (r+1) r=0 := by
+  apply ModuleCat.hom_ext
+  apply LinearMap.ext
+  intro z
+  simp only [ModuleCat.hom_zero,LinearMap.zero_apply]
+  refine TensorProduct.inductionOn z ?_ ?_
+  · intro a w
+    change (CategoryTheory.MonoidalCategory.whiskerLeft (ModuleCat.of P Q)
+      ((complex K n).d (r+1) r)) (a ⊗ₜ[P] w)=0
+    rw [ModuleCat.MonoidalCategory.whiskerLeft_apply]
+    change a ⊗ₜ[P] ((TauCeti.koszulComplex (variableFunctional K n)).d
+      (r+1) r).hom w=0
+    rw [TauCeti.koszulComplex_d_apply]
+    exact residue_tmul_differential_zero K n r a w
+  · intro x y hx hy
+    rw [map_add,hx,hy,add_zero]
+
+theorem residueTensorComplex_d (i j : ℕ) :
+    (residueTensorComplex K n).d i j=0 := by
+  by_cases h : j+1=i
+  · subst i
+    exact residueTensorComplex_d_succ K n j
+  · exact (residueTensorComplex K n).shape i j h
+
+/-- Every ordinary homology group is its actual exterior-power tensor
+term because both adjacent maps were proved zero. -/
+def residueTensorHomologyIso (r : ℕ) :
+    (residueTensorComplex K n).homology r ≅ (residueTensorComplex K n).X r :=
+  (ShortComplex.HomologyData.ofZeros ((residueTensorComplex K n).sc r)
+    (residueTensorComplex_d K n _ _) (residueTensorComplex_d K n _ _)).left.homologyIso
+
+/-- The actual polynomial Tor group, in every homological degree. -/
+def residueTorIso (r : ℕ) :
+    (((Tor (ModuleCat P) r).obj (ModuleCat.of P Q)).obj (ModuleCat.of P Q)) ≅
+      ModuleCat.of P (Q ⊗[P] (⋀[P]^r (Fin n → P))) :=
+  torIso K n (ModuleCat.of P Q) r ≪≫ residueTensorHomologyIso K n r
+
+end PaperVerification.AlternatingForms.PolynomialKoszul

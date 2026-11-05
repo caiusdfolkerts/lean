@@ -1,0 +1,26 @@
+name = "rank_three_projection_volumes"
+version = "0.1.0"
+defaultTargets = ["proof", "verification"]
+moreLeanArgs = ["-t0", "-j1", "-DElab.async=false", "-Ddebug.skipKernelTC=false"]
+
+[[require]]
+name = "TauCeti"
+git = "https://github.com/TauCetiProject/TauCeti"
+rev = "06d5bb4e3ebb737dc6538567f5c53bf8800b9362"
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "2cabef97b63d3275776b8b060d802de6a6fa1055"
+
+[[lean_lib]]
+name = "proof"
+srcDir = "source"
+roots = ["rank_three_projection", "development.combined", "development.analytic_rigidity", "development.alexandrov_fenchel", "development.compactification", "volume_polynomials.mixed_volume_basis_part01", "volume_polynomials.mixed_volume_basis_part02", "development.finite_obstruction"]
+allowImportAll = true
+
+[[lean_lib]]
+name = "verification"
+srcDir = "source"
+roots = ["verification.check_1"]
+allowImportAll = true

@@ -1,0 +1,4 @@
+Copyright 2026 Caius Folkerts. Original code and documentation are licensed under the Apache License, Version 2.0. The included paper retains its existing copyright. Third-party source headers and license terms remain in force.
+
+
+Publication preparation, 5 November 2026: module filenames and imports were normalised, verification output paths were moved under .lake, and the documentation was adapted to Markdown. Existing third-party copyright and attribution notices are retained in the source and licenses directory.

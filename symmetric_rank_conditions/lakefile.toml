@@ -1,0 +1,21 @@
+name = "symmetric_rank_conditions"
+version = "0.1.0"
+defaultTargets = ["proof", "verification"]
+moreLeanArgs = ["-j1", "-DElab.async=false", "-Ddebug.skipKernelTC=false"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "56a005855ea17e0b0958f73ec801ae140b0a1679"
+
+[[lean_lib]]
+name = "proof"
+srcDir = "source"
+roots = ["symmetric_local", "symmetric_next", "matching_row_bump", "matching_insertion_core", "matching_median_audit", "matching_foundation", "paper_verification", "combinatorics_verification", "verified_theorems", "obstruction_verification", "applications_verification", "schur_tableau_bridge", "schur_quotient_count", "schur_row_counts", "schur_theory", "rank_stratum_verification", "ideal_integrality_foundation", "ideal_integral_closure", "determinantal_transfer", "determinantal_transfer_scores", "rational_polyhedra", "rational_polytope_certificates", "ideal_real_weight", "integral_closure_theory", "gram_assignment", "gram_foundation", "gram_bitableaux", "corollary_seven_two", "supplementary_verification", "complete_verification", "extension_dependency_audit", "foundation_dependency_audit", "paper_statements", "reader_dependency_audit", "symmetric_rank_verification"]
+allowImportAll = true
+
+[[lean_lib]]
+name = "verification"
+srcDir = "source"
+roots = ["verification.check_1", "verification.check_2", "verification.check_3", "verification.check_4"]
+allowImportAll = true

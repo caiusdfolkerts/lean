@@ -1,0 +1,55 @@
+import CommAlg.AuditSupport
+import CommAlg.Polymatroid.HomologicalRankTheorem
+import CommAlg.Polymatroid.HomologicalStabilization
+import CommAlg.Polymatroid.HomologicalSharpness
+import CommAlg.Polymatroid.HomologicalHomogenization
+import CommAlg.IntegralClosure.HomologicalRees
+
+/-! Kernel-environment audits of the main rank, stabilization, sharpness, homogenization, and normalization theorems. -/
+
+set_option maxHeartbeats 0
+set_option maxRecDepth 10000
+
+audit_standard_axioms CommAlg.Polymatroid.homologicalShiftIdeal_partitionFormula
+audit_standard_axioms CommAlg.Polymatroid.homologicalShiftIdeal_canonicalRank
+audit_standard_axioms CommAlg.Polymatroid.bettiNumber_ideal_pos_iff
+audit_standard_axioms CommAlg.Polymatroid.homologicalShift_powers
+audit_standard_axioms CommAlg.Polymatroid.homologicalShift_twistedPowers
+audit_standard_axioms CommAlg.Polymatroid.homologicalShift_severalColors
+audit_standard_axioms CommAlg.Polymatroid.homologicalShiftIdeal_mul_le
+audit_standard_axioms CommAlg.Polymatroid.squarefreeVeronese_shift_below
+audit_standard_axioms CommAlg.Polymatroid.squarefreeVeronese_shift_at_threshold
+audit_standard_axioms CommAlg.Polymatroid.squarefreeVeronese_shift_at_threshold_ne_bot
+audit_standard_axioms CommAlg.Polymatroid.homogenizedHomologicalIdeal_eq_rankIdeal
+audit_standard_axioms CommAlg.Polymatroid.homogenized_rankBase_iff_actualBetti
+audit_standard_axioms CommAlg.Polymatroid.homogenizedHomologicalIdeal_polymatroidal
+audit_standard_axioms CommAlg.Polymatroid.homogenizedHomologicalIdeal_degree
+audit_standard_axioms CommAlg.Polymatroid.homogenizedHomologicalIdeal_canonicalRank
+audit_standard_axioms CommAlg.Polymatroid.homogenizedShiftRank_on_original
+audit_standard_axioms CommAlg.Polymatroid.homogenizedShiftRank_with_new_variable
+audit_standard_axioms CommAlg.Polymatroid.gradedBettiNonzero_rankBases_field_independent
+audit_standard_axioms CommAlg.homologicalPowerIdeal_integrallyClosed
+audit_standard_axioms CommAlg.homologicalMultiIdeal_integrallyClosed
+
+export_proof_dependencies ".lake/reports/audit/core_dependencies.json" [
+  CommAlg.Polymatroid.homologicalShiftIdeal_partitionFormula,
+  CommAlg.Polymatroid.homologicalShiftIdeal_canonicalRank,
+  CommAlg.Polymatroid.bettiNumber_ideal_pos_iff,
+  CommAlg.Polymatroid.homologicalShift_powers,
+  CommAlg.Polymatroid.homologicalShift_twistedPowers,
+  CommAlg.Polymatroid.homologicalShift_severalColors,
+  CommAlg.Polymatroid.homologicalShiftIdeal_mul_le,
+  CommAlg.Polymatroid.squarefreeVeronese_shift_below,
+  CommAlg.Polymatroid.squarefreeVeronese_shift_at_threshold,
+  CommAlg.Polymatroid.squarefreeVeronese_shift_at_threshold_ne_bot,
+  CommAlg.Polymatroid.homogenizedHomologicalIdeal_eq_rankIdeal,
+  CommAlg.Polymatroid.homogenized_rankBase_iff_actualBetti,
+  CommAlg.Polymatroid.homogenizedHomologicalIdeal_polymatroidal,
+  CommAlg.Polymatroid.homogenizedHomologicalIdeal_degree,
+  CommAlg.Polymatroid.homogenizedHomologicalIdeal_canonicalRank,
+  CommAlg.Polymatroid.homogenizedShiftRank_on_original,
+  CommAlg.Polymatroid.homogenizedShiftRank_with_new_variable,
+  CommAlg.Polymatroid.gradedBettiNonzero_rankBases_field_independent,
+  CommAlg.homologicalPowerIdeal_integrallyClosed,
+  CommAlg.homologicalMultiIdeal_integrallyClosed
+]

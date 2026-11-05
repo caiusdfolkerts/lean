@@ -1,0 +1,107 @@
+module
+
+public import toric_quadratic
+
+@[expose] public section
+
+/-!
+# Compiler-visible endpoint signatures and axiom closures
+
+These ordinary commands are placed at the end of the generated public module.
+They introduce no declarations and perform no custom elaboration or environment
+mutation. The compiler log records the actual elaborated endpoint types and the
+axioms reported by Lean, alongside the ordinary kernel check of their proofs.
+-/
+
+#check ToricQuadratic.normal_and_quadratic
+#print axioms ToricQuadratic.normal_and_quadratic
+
+#check ToricQuadratic.prescribed_parity
+#print axioms ToricQuadratic.prescribed_parity
+
+#check ToricQuadratic.adjoint_decomposition
+#print axioms ToricQuadratic.adjoint_decomposition
+
+#check ToricQuadratic.toric_paper_theorem_1_2
+#print axioms ToricQuadratic.toric_paper_theorem_1_2
+
+#check ToricQuadratic.toric_paper_theorem_1_3
+#print axioms ToricQuadratic.toric_paper_theorem_1_3
+
+#check ToricQuadratic.proposition2_1_finite_lattice_hull
+#print axioms ToricQuadratic.proposition2_1_finite_lattice_hull
+
+#check PaperVerification.ToricGeometry.LatticePolytope.unitCornerBoxes_iff_all_edge_bases
+#print axioms PaperVerification.ToricGeometry.LatticePolytope.unitCornerBoxes_iff_all_edge_bases
+
+#check PaperVerification.ToricGeometry.LatticePolytope.UnitCornerBoxes.face_chart
+#print axioms PaperVerification.ToricGeometry.LatticePolytope.UnitCornerBoxes.face_chart
+
+#check PaperVerification.ToricGeometry.LatticePolytope.lemma4_2_unit_corner_boxes
+#print axioms PaperVerification.ToricGeometry.LatticePolytope.lemma4_2_unit_corner_boxes
+
+#check PaperVerification.ToricGeometry.SmoothCompleteFan.containsCornerBoxes_iff_contractible_degrees
+#print axioms PaperVerification.ToricGeometry.SmoothCompleteFan.containsCornerBoxes_iff_contractible_degrees
+
+#check PaperVerification.ToricGeometry.SmoothCompleteFan.containsCornerBoxes_iff_extremal_degrees
+#print axioms PaperVerification.ToricGeometry.SmoothCompleteFan.containsCornerBoxes_iff_extremal_degrees
+
+#check ToricQuadratic.real_corner_boxes_iff_contractible_degrees
+#print axioms ToricQuadratic.real_corner_boxes_iff_contractible_degrees
+
+#check ToricQuadratic.real_corner_boxes_iff_extremal_degrees
+#print axioms ToricQuadratic.real_corner_boxes_iff_extremal_degrees
+
+#check PaperVerification.ToricGeometry.SmoothCompleteFan.isPure_of_complete
+#print axioms PaperVerification.ToricGeometry.SmoothCompleteFan.isPure_of_complete
+
+#check PaperVerification.ToricGeometry.SmoothCompleteFan.exists_integral_strictSupport_of_real
+#print axioms PaperVerification.ToricGeometry.SmoothCompleteFan.exists_integral_strictSupport_of_real
+
+#check ToricQuadratic.RealSupport.wall_degree_displacement
+#print axioms ToricQuadratic.RealSupport.wall_degree_displacement
+
+#check ToricQuadratic.RealSupport.wallDegreesAtLeast_integral_iff
+#print axioms ToricQuadratic.RealSupport.wallDegreesAtLeast_integral_iff
+
+#check ToricQuadratic.RealSupport.proposition_5_2
+#print axioms ToricQuadratic.RealSupport.proposition_5_2
+
+#check ToricQuadratic.RealSlices.displacedSupport_wallDegreesAtLeast
+#print axioms ToricQuadratic.RealSlices.displacedSupport_wallDegreesAtLeast
+
+#check ToricQuadratic.RealSlices.displacedSupport_convexity
+#print axioms ToricQuadratic.RealSlices.displacedSupport_convexity
+
+#check PaperVerification.ToricGeometry.SmoothCompleteFan.selected_positive_card_bound
+#print axioms PaperVerification.ToricGeometry.SmoothCompleteFan.selected_positive_card_bound
+
+#check PaperVerification.ToricGeometry.SmoothCompleteFan.selected_two_positive_full_bound
+#print axioms PaperVerification.ToricGeometry.SmoothCompleteFan.selected_two_positive_full_bound
+
+#check ToricQuadratic.normal_and_quadratic_over_ring
+#print axioms ToricQuadratic.normal_and_quadratic_over_ring
+
+#check ToricQuadratic.normal_and_quadratic_in_lattice
+#print axioms ToricQuadratic.normal_and_quadratic_in_lattice
+
+#check ToricQuadratic.real_correction_bounds
+#print axioms ToricQuadratic.real_correction_bounds
+
+#check ToricQuadratic.nonnegative_zero_budget
+#print axioms ToricQuadratic.nonnegative_zero_budget
+
+#check PaperVerification.ToricGeometry.displacedSupport_eq_of_zero_budget
+#print axioms PaperVerification.ToricGeometry.displacedSupport_eq_of_zero_budget
+
+#check ToricQuadratic.nonintegral_simplex_scaling_parity_obstruction
+#print axioms ToricQuadratic.nonintegral_simplex_scaling_parity_obstruction
+
+#check PaperVerification.ToricGeometry.Examples.interval_idp_and_quadrics
+#print axioms PaperVerification.ToricGeometry.Examples.interval_idp_and_quadrics
+
+#check PaperVerification.ToricGeometry.Examples.interval_prescribed_parity
+#print axioms PaperVerification.ToricGeometry.Examples.interval_prescribed_parity
+
+#check PaperVerification.ToricGeometry.Examples.interval_adjoint_equality
+#print axioms PaperVerification.ToricGeometry.Examples.interval_adjoint_equality

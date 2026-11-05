@@ -1,0 +1,21 @@
+name = "three_sunlet_models"
+version = "0.1.0"
+defaultTargets = ["proof", "verification"]
+moreLeanArgs = ["--trust=0", "-j1", "-DElab.async=false", "-Ddebug.skipKernelTC=false"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "56a005855ea17e0b0958f73ec801ae140b0a1679"
+
+[[lean_lib]]
+name = "proof"
+srcDir = "source"
+roots = ["sunlet", "sunlet.modular_final_audit", "sunlet.all_loop_contact_supports", "sunlet.generic_pair_geometry", "sunlet.contact_development", "sunlet.latin_orbits", "sunlet.permutation_families", "sunlet.punctured_differences", "sunlet.ordinary_edge_rigidity", "sunlet.punctured_both_endpoints", "sunlet.two_ratio_rigidity", "sunlet.normalized_variations", "sunlet.toric_differential", "sunlet.contact_coefficient", "sunlet.sparse_tangent_pair", "sunlet.one_hole_field", "sunlet.matrix_specialization", "sunlet.rational_partials", "sunlet.etale_derivations", "sunlet.contact_equations", "sunlet.ratio_correction", "sunlet.ratio_solution_spaces", "sunlet.invariant_functions", "sunlet.contact_linear", "sunlet.jacobian_finite", "sunlet.sparse_contact", "sunlet.contact_completion", "sunlet.contact_torus", "sunlet.latin_sparse_contact", "sunlet.exceptional_contact_transport", "sunlet.support_transport", "sunlet.contact_exceptions", "sunlet.sparse_contact_entries", "sunlet.arbitrary_orbit_classification", "sunlet.fine_invariant_kernel", "sunlet.fine_odd_kernel", "sunlet.coarse_selection", "sunlet.orbit_models", "sunlet.partition_subgroups", "sunlet.one_level_obstructions", "sunlet.height_obstructions", "sunlet.orbit_height_completion", "sunlet.orbit_height", "sunlet.height_elimination", "sunlet.class_dimension", "sunlet.class_kernel", "sunlet.class_selection", "sunlet.identified_normalization", "sunlet.group_coordinates", "sunlet.polynomial_image", "sunlet.basic", "sunlet.dimension_upper_bound", "sunlet.normalized_algebra", "sunlet.normalization", "sunlet.dimension_algebra", "sunlet.weighted_initial", "sunlet.selected_exponents", "sunlet.selected_relations", "sunlet.exponent_independence", "sunlet.initial_independence", "sunlet.exponent_rank", "sunlet.dimension_lower_bound", "sunlet.main_dimension", "sunlet.latin_split", "sunlet.generated_action", "sunlet.negation_coarsening", "sunlet.index_two_orbit_rigidity", "sunlet.cyclic_orbit_models", "sunlet.cyclic_sparse_witness", "sunlet.distinct_derangements", "sunlet.paper_statements", "sunlet.extended_rational_derivations", "sunlet.generic_toric_embeddings", "sunlet.loop_field_actions", "sunlet.loop_point_fibers", "sunlet.rational_diagonal_actions", "sunlet.verified_complex_statements", "sunlet.verified_cyclic_paper", "sunlet.verified_cyclic_field", "sunlet.verified_generic_open", "sunlet.verified_field_core", "sunlet.verified_normalized_model", "sunlet.verified_generic_conclusions", "sunlet.verified_model_fibers", "sunlet.verified_fiber_geometry", "sunlet.verified_toric_geometry", "sunlet.verified_network_conclusion", "sunlet.verified_network_algebra", "sunlet.verified_network_graph", "sunlet.verified_normalized_generic_fiber"]
+allowImportAll = true
+
+[[lean_lib]]
+name = "verification"
+srcDir = "source"
+roots = ["verification.check_1"]
+allowImportAll = true

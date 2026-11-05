@@ -1,0 +1,138 @@
+module
+import verification.internal.extract
+public import consolidated.pair_pin_progress01
+import all consolidated.pair_pin_progress01
+public import consolidated.pair_pin_progress02
+import all consolidated.pair_pin_progress02
+public import papers.rigidity_mode_splitting
+import all papers.rigidity_mode_splitting
+public import consolidated.rigidity_generic_tools
+import all consolidated.rigidity_generic_tools
+public import consolidated.rigidity_foundations01
+import all consolidated.rigidity_foundations01
+public import consolidated.rigidity_foundations02
+import all consolidated.rigidity_foundations02
+public import consolidated.rigidity_combined_prepared
+import all consolidated.rigidity_combined_prepared
+public import consolidated.rigidity_combined02
+import all consolidated.rigidity_combined02
+public import consolidated.rigidity_combined03
+import all consolidated.rigidity_combined03
+public import consolidated.rigidity_combined04
+import all consolidated.rigidity_combined04
+public import consolidated.rigidity_combined05
+import all consolidated.rigidity_combined05
+public import consolidated.rigidity_combined06
+import all consolidated.rigidity_combined06
+public import consolidated.rigidity_combined07
+import all consolidated.rigidity_combined07
+public import consolidated.rigidity_main_recovery01
+import all consolidated.rigidity_main_recovery01
+public import consolidated.rigidity_priority_expectation01
+import all consolidated.rigidity_priority_expectation01
+
+/-!
+# Clique-covered rigidity: public entry point
+
+The imported canonical modules contain the exact mathematical bodies of the
+readable originals under `Papers/`; the source-correspondence manifest records
+each original's unique location. The final commands below recheck the actual
+principal statements, transitive axioms, and availability of all local proofs.
+They introduce no mathematical declarations or assumptions.
+-/
+
+set_option maxHeartbeats 0
+
+#print axioms Papers.Rigidity.pairPin_defect_theorem
+#export_proof_audit Papers.Rigidity.pairPin_defect_theorem to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_pairPin_defect_theorem.json"
+
+#print axioms Papers.Rigidity.PairPinGraph.defect_theorem_at_algebraicallyGeneric_pins
+#export_proof_audit Papers.Rigidity.PairPinGraph.defect_theorem_at_algebraicallyGeneric_pins to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_PairPinGraph_defect_theorem_at_algebraicallyGeneric_pins.json"
+
+#print axioms Papers.Rigidity.QuantitativeHeight.genericIncidencePrime_height_ge_active_add_sparse
+#export_proof_audit Papers.Rigidity.QuantitativeHeight.genericIncidencePrime_height_ge_active_add_sparse to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_QuantitativeHeight_genericIncidencePrime_height_ge_active_add_sparse.json"
+
+#print axioms Papers.Rigidity.NullHeight.coefficientMinimalPrime_height_eq_edgeCard
+#export_proof_audit Papers.Rigidity.NullHeight.coefficientMinimalPrime_height_eq_edgeCard to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_NullHeight_coefficientMinimalPrime_height_eq_edgeCard.json"
+
+#print axioms Papers.Rigidity.PairPinGraph.genericPinRank_eq_genericMotionMatrix_rank
+#export_proof_audit Papers.Rigidity.PairPinGraph.genericPinRank_eq_genericMotionMatrix_rank to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_PairPinGraph_genericPinRank_eq_genericMotionMatrix_rank.json"
+
+#print axioms Papers.Rigidity.PairPinGraph.defect_at_maximal_rank_pins
+#export_proof_audit Papers.Rigidity.PairPinGraph.defect_at_maximal_rank_pins to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_PairPinGraph_defect_at_maximal_rank_pins.json"
+
+#print axioms Papers.Rigidity.minimalCounterexample_false
+#export_proof_audit Papers.Rigidity.minimalCounterexample_false to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_minimalCounterexample_false.json"
+
+#print axioms Papers.Rigidity.theorem_one_one
+#export_proof_audit Papers.Rigidity.theorem_one_one to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_theorem_one_one.json"
+
+#print axioms Papers.Rigidity.sixConnected_k4Covered_rigid
+#export_proof_audit Papers.Rigidity.sixConnected_k4Covered_rigid to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_sixConnected_k4Covered_rigid.json"
+
+#print axioms Papers.Rigidity.corollary_one_two_rigid_subgraph_cover
+#export_proof_audit Papers.Rigidity.corollary_one_two_rigid_subgraph_cover to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_corollary_one_two_rigid_subgraph_cover.json"
+
+#print axioms Papers.Rigidity.corollary_one_two_rigid_cluster_completion
+#export_proof_audit Papers.Rigidity.corollary_one_two_rigid_cluster_completion to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_corollary_one_two_rigid_cluster_completion.json"
+
+#print axioms Papers.Rigidity.sixConnected_rigidSubgraphCovered_rigid
+#export_proof_audit Papers.Rigidity.sixConnected_rigidSubgraphCovered_rigid to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_sixConnected_rigidSubgraphCovered_rigid.json"
+
+#print axioms Papers.Rigidity.rigidCluster_completion_sixConnected_rigid
+#export_proof_audit Papers.Rigidity.rigidCluster_completion_sixConnected_rigid to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_rigidCluster_completion_sixConnected_rigid.json"
+
+#print axioms Papers.Rigidity.sixConnected_k4Covered_locallyDistanceRigid
+#export_proof_audit Papers.Rigidity.sixConnected_k4Covered_locallyDistanceRigid to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_sixConnected_k4Covered_locallyDistanceRigid.json"
+
+#print axioms Papers.Rigidity.sixConnected_rigidSubgraphCovered_locallyDistanceRigid
+#export_proof_audit Papers.Rigidity.sixConnected_rigidSubgraphCovered_locallyDistanceRigid to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_sixConnected_rigidSubgraphCovered_locallyDistanceRigid.json"
+
+#print axioms Papers.Rigidity.rigidCluster_completion_sixConnected_locallyDistanceRigid
+#export_proof_audit Papers.Rigidity.rigidCluster_completion_sixConnected_locallyDistanceRigid to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_rigidCluster_completion_sixConnected_locallyDistanceRigid.json"
+
+#print axioms Papers.Rigidity.sixConnected_k4Covered_motionKernel_eq_globalTwists
+#export_proof_audit Papers.Rigidity.sixConnected_k4Covered_motionKernel_eq_globalTwists to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_sixConnected_k4Covered_motionKernel_eq_globalTwists.json"
+
+#print axioms Papers.Rigidity.fiveConnected_k4Covered_flexible_exists
+#export_proof_audit Papers.Rigidity.fiveConnected_k4Covered_flexible_exists to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_fiveConnected_k4Covered_flexible_exists.json"
+
+#print axioms Papers.Rigidity.SupportedCode.exists_code_attaining_bound
+#export_proof_audit Papers.Rigidity.SupportedCode.exists_code_attaining_bound to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_SupportedCode_exists_code_attaining_bound.json"
+
+#print axioms Papers.Rigidity.BodyLoads.duplicate_loads_prefix_identity
+#export_proof_audit Papers.Rigidity.BodyLoads.duplicate_loads_prefix_identity to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_BodyLoads_duplicate_loads_prefix_identity.json"
+
+#print axioms Papers.Rigidity.generic_alternating_space_center_defined_over_coefficients
+#export_proof_audit Papers.Rigidity.generic_alternating_space_center_defined_over_coefficients to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_generic_alternating_space_center_defined_over_coefficients.json"
+
+#print axioms Papers.Rigidity.BodyLoads.TwoBodyPin.lemma_three_seven
+#export_proof_audit Papers.Rigidity.BodyLoads.TwoBodyPin.lemma_three_seven to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_BodyLoads_TwoBodyPin_lemma_three_seven.json"
+
+#print axioms Papers.Rigidity.SupportedCode.sum_priorityDimension_relabel
+#export_proof_audit Papers.Rigidity.SupportedCode.sum_priorityDimension_relabel to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_SupportedCode_sum_priorityDimension_relabel.json"
+
+#print axioms Papers.Rigidity.BarJoint.localRigidity_iff_rank_at_algebraicallyGeneric
+#export_proof_audit Papers.Rigidity.BarJoint.localRigidity_iff_rank_at_algebraicallyGeneric to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_BarJoint_localRigidity_iff_rank_at_algebraicallyGeneric.json"
+
+#print axioms Papers.Rigidity.sixConnected_k4Covered_locallyDistanceRigid_of_algebraicIndependent
+#export_proof_audit Papers.Rigidity.sixConnected_k4Covered_locallyDistanceRigid_of_algebraicIndependent to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_sixConnected_k4Covered_locallyDistanceRigid_of_algebraicIndependent.json"
+
+#print axioms Papers.Rigidity.sixConnected_rigidSubgraphCovered_locallyDistanceRigid_of_algebraicIndependent
+#export_proof_audit Papers.Rigidity.sixConnected_rigidSubgraphCovered_locallyDistanceRigid_of_algebraicIndependent to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_sixConnected_rigidSubgraphCovered_locallyDistanceRigid_of_algebraicIndependent.json"
+
+#print axioms Papers.Rigidity.rigidCluster_completion_sixConnected_locallyDistanceRigid_of_algebraicIndependent
+#export_proof_audit Papers.Rigidity.rigidCluster_completion_sixConnected_locallyDistanceRigid_of_algebraicIndependent to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_rigidCluster_completion_sixConnected_locallyDistanceRigid_of_algebraicIndependent.json"
+
+#print axioms Papers.Rigidity.sixConnected_k4Covered_rigidityRank_of_algebraicIndependent
+#export_proof_audit Papers.Rigidity.sixConnected_k4Covered_rigidityRank_of_algebraicIndependent to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_sixConnected_k4Covered_rigidityRank_of_algebraicIndependent.json"
+
+#print axioms Papers.Rigidity.SupportedCode.integral_priorityDimension_eq_precedingMean
+#export_proof_audit Papers.Rigidity.SupportedCode.integral_priorityDimension_eq_precedingMean to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_SupportedCode_integral_priorityDimension_eq_precedingMean.json"
+
+#print axioms Papers.Rigidity.SupportedCode.uniform_priority_expectation_le_bound
+#export_proof_audit Papers.Rigidity.SupportedCode.uniform_priority_expectation_le_bound to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_SupportedCode_uniform_priority_expectation_le_bound.json"
+
+#print axioms Papers.Rigidity.SupportedCode.exists_code_attaining_uniform_priority_bound
+#export_proof_audit Papers.Rigidity.SupportedCode.exists_code_attaining_uniform_priority_bound to ".lake/reports/audit/final/endpoint_audits/Papers_Rigidity_SupportedCode_exists_code_attaining_uniform_priority_bound.json"
+

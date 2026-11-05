@@ -1,0 +1,17 @@
+Explicit nonpolytopal Bier spheres — Lean 4 formalization
+
+New project proof sources and audit tooling are supplied under the Apache License,
+Version 2.0, except where an individual source file carries a different notice.
+
+Bier/Forster/CauchyBinet.lean adapts a proof by Chokmah LLC, 2026, from
+https://github.com/chokmah-me/catalan-sun-lean at commit
+2d1890b21e946d5d61f364497b37a9fbb8790709. It remains licensed under Creative
+Commons Attribution 4.0 International. Its header records the modifications;
+the complete license is in vendor/CatalanSun_LICENSE.
+
+The sibling cubical_lean project includes separately attributed Apache-2.0
+convex and piecewise-linear geometry sources. Its original notices and audit
+records are retained. See VENDORED_SOURCES.md.
+
+The supplied paper.pdf is the user's mathematical source document. The licenses
+for this formalization do not change the rights in that paper.

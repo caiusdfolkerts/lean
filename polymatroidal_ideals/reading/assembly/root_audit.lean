@@ -1,0 +1,317 @@
+import Characterizations.Complete
+import Lean.Elab.Command
+import Lean.Util.CollectAxioms
+import Lean.Util.FoldConsts
+
+/-! # Reproducible transitive proof audits
+
+These elaborator commands inspect the checked Lean environment. They do
+not introduce mathematical declarations or axioms. The axiom guard fails
+if any audited result uses anything beyond Lean's three standard axioms.
+-/
+
+open Lean Elab Command
+
+elab "audit_characterizations_complete_axioms " n:ident : command => do
+  let name ← liftCoreM <| realizeGlobalConstNoOverloadWithInfo n
+  let axs ← Lean.collectAxioms name
+  let allowed := #[``propext, ``Classical.choice, ``Quot.sound]
+  for ax in axs do
+    unless allowed.contains ax do
+      throwError "Unapproved transitive axiom {ax} in {name}"
+  logInfo m!"AXIOM AUDIT PASSED: {name}: {axs}"
+
+private meta def consolidatedDependencyModule (env : Environment) (name : Name) : Name :=
+  match env.getModuleIdxFor? name with
+  | some idx => env.header.moduleNames[idx.toNat]!
+  | none => env.mainModule
+
+private meta def consolidatedIsProjectModule (name : Name) : Bool :=
+  let s := name.toString
+  (s.startsWith "Characterizations." || s.startsWith "characterizations.") || s == "Characterizations" ||
+    s.startsWith "CommAlg." || s == "CommAlg" || s.startsWith "TauCeti." ||
+    s == "FourPapers.Homological.Complete"
+
+/-- Export the exact transitive declaration graph through every locally
+proved module, stopping only at the pinned Lean/Mathlib library boundary. -/
+elab "export_characterizations_complete_dependencies " path:str "[" ns:ident,* "]" : command => do
+  let roots ← ns.getElems.mapM fun n => liftCoreM <| realizeGlobalConstNoOverloadWithInfo n
+  let env := (← getEnv).setExporting false
+  let mut todo := roots
+  let mut cursor := 0
+  let mut seen : NameSet := {}
+  let mut nodes : Array Json := #[]
+  let mut rootInfo : Array Json := #[]
+  for name in roots do
+    let axs ← Lean.collectAxioms name
+    let some info := env.checked.get.find? name | throwError "Missing checked root {name}"
+    let ty ← liftTermElabM <| Meta.ppExpr info.type
+    rootInfo := rootInfo.push <| Json.mkObj
+      [("name", toJson name.toString), ("type", toJson ty.pretty),
+       ("axioms", toJson (axs.map Name.toString))]
+  while cursor < todo.size do
+    let name := todo[cursor]!
+    cursor := cursor + 1
+    if seen.contains name then continue
+    seen := seen.insert name
+    let modName := consolidatedDependencyModule env name
+    let boundary := !consolidatedIsProjectModule modName
+    let some info := env.checked.get.find? name | throwError "Missing checked dependency {name}"
+    let deps := if boundary then #[] else info.getUsedConstantsAsSet.toArray.qsort Name.lt
+    todo := todo ++ deps
+    nodes := nodes.push <| Json.mkObj
+      [("name", toJson name.toString), ("module", toJson modName.toString),
+       ("library_boundary", toJson boundary), ("dependencies", toJson (deps.map Name.toString))]
+  let document := Json.mkObj
+    [("format", toJson "Lean checked-environment dependency graph, version 1"),
+     ("boundary", toJson "All Characterizations and consolidated FourPapers.Homological.Complete declarations, including their CommAlg/TauCeti foundations, are expanded; pinned Lean/Mathlib declarations are leaves."),
+     ("roots", Json.arr rootInfo), ("nodes", Json.arr nodes)]
+  let target : System.FilePath := path.getString
+  if let some parent := target.parent then liftIO <| IO.FS.createDirAll parent
+  liftIO <| IO.FS.writeFile target (document.pretty ++ "\n")
+  logInfo m!"DEPENDENCY GRAPH: {nodes.size} checked declarations written to {path.getString}"
+
+/-! All historical audited roots and the zero-inclusive paper endpoints. -/
+
+audit_characterizations_complete_axioms Characterizations.monomialIdeal_polymatroidal_iff_local_linear
+audit_characterizations_complete_axioms Characterizations.monomialIdeal_polymatroidal_iff_universal_quotients
+audit_characterizations_complete_axioms Characterizations.IsMonomialIdeal.exists_antichain
+audit_characterizations_complete_axioms Characterizations.mem_monomialGenerators_iff
+audit_characterizations_complete_axioms Characterizations.polymatroidal_iff_local_linearResolutions
+audit_characterizations_complete_axioms Characterizations.local_linearResolutions_field_independent
+audit_characterizations_complete_axioms Characterizations.monomialIdeal_local_linearResolutions_field_independent_all
+audit_characterizations_complete_axioms Characterizations.polymatroidal_iff_local_socles
+audit_characterizations_complete_axioms Characterizations.localFamily_polymatroidal
+audit_characterizations_complete_axioms Characterizations.linearResolution_of_linearQuotients
+audit_characterizations_complete_axioms Characterizations.LinearResolution.socleConcentrated
+audit_characterizations_complete_axioms Characterizations.convexHull_generators_eq_lowerRankPolytope
+audit_characterizations_complete_axioms Characterizations.integralOverIdeal_iff_mem_canonicalLowerBases
+audit_characterizations_complete_axioms Characterizations.integralClosure_set_eq
+audit_characterizations_complete_axioms Characterizations.monomialIdeal_integralClosure
+audit_characterizations_complete_axioms Characterizations.canonicalLowerBases_polymatroidal
+audit_characterizations_complete_axioms Characterizations.integralClosure_eq_primePower_intersection
+audit_characterizations_complete_axioms Characterizations.coordinatePrime_isPrime
+audit_characterizations_complete_axioms Characterizations.polymatroidal_iff_integrallyClosed_localEquigenerated
+audit_characterizations_complete_axioms Characterizations.monomialIdeal_polymatroidal_iff_integrallyClosed
+audit_characterizations_complete_axioms Characterizations.polymatroidal_iff_intersectionType_localEquigenerated
+audit_characterizations_complete_axioms Characterizations.Presentation.finiteLinearPresentation_iff_boxConnected
+audit_characterizations_complete_axioms Characterizations.Presentation.polymatroidal_iff_linearPresentation_distanceFour
+audit_characterizations_complete_axioms Characterizations.TermOrders.polymatroidal_termOrder_linearQuotients
+audit_characterizations_complete_axioms Characterizations.polymatroidal_iff_all_termOrder_linearQuotients
+audit_characterizations_complete_axioms Characterizations.DependencyInterfaces.boundedHomologicalPolynomial_span_eq_monomials
+audit_characterizations_complete_axioms Characterizations.DependencyInterfaces.homologicalPower_polynomial_generation_bound_iff
+audit_characterizations_complete_axioms Characterizations.polymatroidal_iff_universal_revlex
+audit_characterizations_complete_axioms Characterizations.polymatroidal_iff_universal_pure_revlex
+audit_characterizations_complete_axioms Characterizations.universal_pure_revlex_localization
+audit_characterizations_complete_axioms Characterizations.exchange_of_order_coverage
+audit_characterizations_complete_axioms Characterizations.universalOrderTests_iff_coverage
+audit_characterizations_complete_axioms Characterizations.degreeOrderTests_iff_coverage
+audit_characterizations_complete_axioms Characterizations.universalTestNumber_ge_four
+audit_characterizations_complete_axioms Characterizations.universalTestNumber_one
+audit_characterizations_complete_axioms Characterizations.universalTestNumber_two
+audit_characterizations_complete_axioms Characterizations.universalTestNumber_three
+audit_characterizations_complete_axioms Characterizations.orderTestNumber_small_degree
+audit_characterizations_complete_axioms Characterizations.orderTestNumber_small_dimension
+audit_characterizations_complete_axioms Characterizations.orderTestNumber_two
+audit_characterizations_complete_axioms Characterizations.orderTestNumber_three
+audit_characterizations_complete_axioms Characterizations.orderTestNumber_high_degree
+audit_characterizations_complete_axioms Characterizations.orderTestNumber_logarithmic_upper
+audit_characterizations_complete_axioms Characterizations.orderTestNumber_counting_lower
+audit_characterizations_complete_axioms Characterizations.orderTestNumber_signature_bound
+audit_characterizations_complete_axioms Characterizations.orderTestNumber_isTheta_log
+audit_characterizations_complete_axioms Characterizations.rejection_fraction_displayed
+audit_characterizations_complete_axioms Characterizations.exists_sharp_rejection_displayed
+audit_characterizations_complete_axioms Characterizations.rejection_fraction_three
+audit_characterizations_complete_axioms Characterizations.exists_sharp_rejection_three
+audit_characterizations_complete_axioms Characterizations.rejection_fraction_two
+audit_characterizations_complete_axioms Characterizations.exists_sharp_rejection_two
+audit_characterizations_complete_axioms Characterizations.independent_tests_miss_bound
+audit_characterizations_complete_axioms Characterizations.minimal_local_closure_finiteLength
+audit_characterizations_complete_axioms Characterizations.minimal_local_obstruction
+audit_characterizations_complete_axioms Characterizations.least_polymatroidal_power_eq_regularity_difference
+audit_characterizations_complete_axioms Characterizations.torRegularity_iff_total
+audit_characterizations_complete_axioms Characterizations.thickening_ideal_eq
+audit_characterizations_complete_axioms Characterizations.polymatroidal_iff_degree_tests_totalTor
+audit_characterizations_complete_axioms Characterizations.polymatroidal_iff_degree_dimension_tests_totalTor
+audit_characterizations_complete_axioms Characterizations.polymatroidal_iff_triangular_totalTor
+audit_characterizations_complete_axioms Characterizations.retainedLinearThrough_iff_totalTor
+audit_characterizations_complete_axioms Characterizations.iSup_totalDegreeTor
+audit_characterizations_complete_axioms Characterizations.Strands.finrank_totalDegreeTor
+audit_characterizations_complete_axioms Characterizations.tensorBraidingDerivedIso_eq_homology
+audit_characterizations_complete_axioms Characterizations.paperTotalDegreeTor_finrank
+audit_characterizations_complete_axioms Characterizations.iSup_paperTotalDegreeTor
+audit_characterizations_complete_axioms Characterizations.polymatroidal_iff_degree_tests_paperTor
+audit_characterizations_complete_axioms Characterizations.polymatroidal_iff_degree_dimension_tests_paperTor
+audit_characterizations_complete_axioms Characterizations.polymatroidal_iff_triangular_paperTor
+audit_characterizations_complete_axioms Characterizations.deleted_generator_paperTor_finrank
+audit_characterizations_complete_axioms Characterizations.deleted_generator_paperGradedTor_finrank
+audit_characterizations_complete_axioms Characterizations.LinearResolution.descendAlong
+audit_characterizations_complete_axioms Characterizations.maximal_obstruction_degree_cost
+audit_characterizations_complete_axioms Characterizations.maximal_pure_nonlinear_rank_cost
+audit_characterizations_complete_axioms Characterizations.exists_low_nonlinear_localization
+audit_characterizations_complete_axioms Characterizations.LinearResolution.bettiNumber_eq_zero_off_linear
+audit_characterizations_complete_axioms Characterizations.Strands.deleted_generator_nonlinear_strand
+audit_characterizations_complete_axioms Characterizations.Strands.deletedVeronese_first_nonlinear
+audit_characterizations_complete_axioms Characterizations.Strands.deletedVeronese_full_support
+audit_characterizations_complete_axioms Characterizations.polymatroidal_iff_localization_band
+audit_characterizations_complete_axioms Characterizations.polymatroidal_iff_pure_localization_band
+audit_characterizations_complete_axioms Characterizations.Isolators.localizationTestSufficient_iff
+audit_characterizations_complete_axioms Characterizations.Isolators.pureLocalizationTestSufficient_iff
+audit_characterizations_complete_axioms Characterizations.Isolators.localizationTest_minimum
+audit_characterizations_complete_axioms Characterizations.Isolators.pureLocalizationTest_minimum
+audit_characterizations_complete_axioms Characterizations.Isolators.exists_pure_isolator
+audit_characterizations_complete_axioms Characterizations.Isolators.exists_mixed_isolator
+audit_characterizations_complete_axioms Characterizations.Isolators.unique_bad_degree_lower_bound
+audit_characterizations_complete_axioms Characterizations.Isolators.pure_unique_bad_degree_lower_bound
+audit_characterizations_complete_axioms Characterizations.Isolators.unboundedLocalizationTestSufficient_iff
+audit_characterizations_complete_axioms Characterizations.Isolators.unboundedLocalization_minimum
+audit_characterizations_complete_axioms Characterizations.Isolators.exists_sharp_isolator
+audit_characterizations_complete_axioms Characterizations.Isolators.exists_outer_band_isolator
+audit_characterizations_complete_axioms Characterizations.localize_restriction
+audit_characterizations_complete_axioms Characterizations.restriction_lowerRank
+audit_characterizations_complete_axioms Characterizations.restriction_mixedMinor
+audit_characterizations_complete_axioms Characterizations.mixedMinor_polymatroidal
+audit_characterizations_complete_axioms Characterizations.localLinearThrough_iff_retained
+audit_characterizations_complete_axioms Characterizations.retainedLinearThrough_iff_totalBetti
+audit_characterizations_complete_axioms Characterizations.totalDegreeTor_eq_bot_iff
+audit_characterizations_complete_axioms Characterizations.monomialIdeal_polymatroidal_iff_localization_band
+audit_characterizations_complete_axioms Characterizations.monomialIdeal_polymatroidal_iff_pure_localization_band
+audit_characterizations_complete_axioms Characterizations.polymatroidal_iff_localization_band_all
+audit_characterizations_complete_axioms Characterizations.polymatroidal_iff_pure_localization_band_all
+audit_characterizations_complete_axioms Characterizations.Isolators.localizationTestSufficientAll_coverage
+audit_characterizations_complete_axioms Characterizations.Isolators.pureLocalizationTestSufficientAll_coverage
+audit_characterizations_complete_axioms Characterizations.Isolators.unboundedLocalizationTestSufficientAll_iff
+audit_characterizations_complete_axioms Characterizations.zero_family_polymatroidal
+audit_characterizations_complete_axioms Characterizations.empty_family_equigenerated_two
+audit_characterizations_complete_axioms Characterizations.empty_family_betti_zero
+audit_characterizations_complete_axioms Characterizations.zero_ideal_no_torRegularity
+audit_characterizations_complete_axioms Characterizations.zero_ideal_least_polymatroidal_power
+audit_characterizations_complete_axioms Characterizations.zero_ideal_integralClosure
+audit_characterizations_complete_axioms Characterizations.zero_ideal_closure_quotient_finiteLength
+audit_characterizations_complete_axioms Characterizations.zero_ideal_all_actual_powers_polymatroidal
+audit_characterizations_complete_axioms Characterizations.zero_ideal_extended_regularity
+audit_characterizations_complete_axioms Characterizations.unrestricted_proposition41_extended_regularity_false
+audit_characterizations_complete_axioms Characterizations.unrestricted_proposition41_regularity_false
+audit_characterizations_complete_axioms Characterizations.monomialIdeal_polymatroidal_iff_integrallyClosed_all
+
+export_characterizations_complete_dependencies ".lake/reports/audit/current_complete_dependencies.json" [
+  Characterizations.monomialIdeal_polymatroidal_iff_local_linear,
+  Characterizations.monomialIdeal_polymatroidal_iff_universal_quotients,
+  Characterizations.IsMonomialIdeal.exists_antichain,
+  Characterizations.mem_monomialGenerators_iff,
+  Characterizations.polymatroidal_iff_local_linearResolutions,
+  Characterizations.local_linearResolutions_field_independent,
+  Characterizations.monomialIdeal_local_linearResolutions_field_independent_all,
+  Characterizations.polymatroidal_iff_local_socles,
+  Characterizations.localFamily_polymatroidal,
+  Characterizations.linearResolution_of_linearQuotients,
+  Characterizations.LinearResolution.socleConcentrated,
+  Characterizations.convexHull_generators_eq_lowerRankPolytope,
+  Characterizations.integralOverIdeal_iff_mem_canonicalLowerBases,
+  Characterizations.integralClosure_set_eq,
+  Characterizations.monomialIdeal_integralClosure,
+  Characterizations.canonicalLowerBases_polymatroidal,
+  Characterizations.integralClosure_eq_primePower_intersection,
+  Characterizations.coordinatePrime_isPrime,
+  Characterizations.polymatroidal_iff_integrallyClosed_localEquigenerated,
+  Characterizations.monomialIdeal_polymatroidal_iff_integrallyClosed,
+  Characterizations.polymatroidal_iff_intersectionType_localEquigenerated,
+  Characterizations.Presentation.finiteLinearPresentation_iff_boxConnected,
+  Characterizations.Presentation.polymatroidal_iff_linearPresentation_distanceFour,
+  Characterizations.TermOrders.polymatroidal_termOrder_linearQuotients,
+  Characterizations.polymatroidal_iff_all_termOrder_linearQuotients,
+  Characterizations.DependencyInterfaces.boundedHomologicalPolynomial_span_eq_monomials,
+  Characterizations.DependencyInterfaces.homologicalPower_polynomial_generation_bound_iff,
+  Characterizations.polymatroidal_iff_universal_revlex,
+  Characterizations.polymatroidal_iff_universal_pure_revlex,
+  Characterizations.universal_pure_revlex_localization,
+  Characterizations.exchange_of_order_coverage,
+  Characterizations.universalOrderTests_iff_coverage,
+  Characterizations.degreeOrderTests_iff_coverage,
+  Characterizations.universalTestNumber_ge_four,
+  Characterizations.universalTestNumber_one,
+  Characterizations.universalTestNumber_two,
+  Characterizations.universalTestNumber_three,
+  Characterizations.orderTestNumber_small_degree,
+  Characterizations.orderTestNumber_small_dimension,
+  Characterizations.orderTestNumber_two,
+  Characterizations.orderTestNumber_three,
+  Characterizations.orderTestNumber_high_degree,
+  Characterizations.orderTestNumber_logarithmic_upper,
+  Characterizations.orderTestNumber_counting_lower,
+  Characterizations.orderTestNumber_signature_bound,
+  Characterizations.orderTestNumber_isTheta_log,
+  Characterizations.rejection_fraction_displayed,
+  Characterizations.exists_sharp_rejection_displayed,
+  Characterizations.rejection_fraction_three,
+  Characterizations.exists_sharp_rejection_three,
+  Characterizations.rejection_fraction_two,
+  Characterizations.exists_sharp_rejection_two,
+  Characterizations.independent_tests_miss_bound,
+  Characterizations.minimal_local_closure_finiteLength,
+  Characterizations.minimal_local_obstruction,
+  Characterizations.least_polymatroidal_power_eq_regularity_difference,
+  Characterizations.torRegularity_iff_total,
+  Characterizations.thickening_ideal_eq,
+  Characterizations.polymatroidal_iff_degree_tests_totalTor,
+  Characterizations.polymatroidal_iff_degree_dimension_tests_totalTor,
+  Characterizations.polymatroidal_iff_triangular_totalTor,
+  Characterizations.retainedLinearThrough_iff_totalTor,
+  Characterizations.iSup_totalDegreeTor,
+  Characterizations.Strands.finrank_totalDegreeTor,
+  Characterizations.tensorBraidingDerivedIso_eq_homology,
+  Characterizations.paperTotalDegreeTor_finrank,
+  Characterizations.iSup_paperTotalDegreeTor,
+  Characterizations.polymatroidal_iff_degree_tests_paperTor,
+  Characterizations.polymatroidal_iff_degree_dimension_tests_paperTor,
+  Characterizations.polymatroidal_iff_triangular_paperTor,
+  Characterizations.deleted_generator_paperTor_finrank,
+  Characterizations.deleted_generator_paperGradedTor_finrank,
+  Characterizations.LinearResolution.descendAlong,
+  Characterizations.maximal_obstruction_degree_cost,
+  Characterizations.maximal_pure_nonlinear_rank_cost,
+  Characterizations.exists_low_nonlinear_localization,
+  Characterizations.LinearResolution.bettiNumber_eq_zero_off_linear,
+  Characterizations.Strands.deleted_generator_nonlinear_strand,
+  Characterizations.Strands.deletedVeronese_first_nonlinear,
+  Characterizations.Strands.deletedVeronese_full_support,
+  Characterizations.polymatroidal_iff_localization_band,
+  Characterizations.polymatroidal_iff_pure_localization_band,
+  Characterizations.Isolators.localizationTestSufficient_iff,
+  Characterizations.Isolators.pureLocalizationTestSufficient_iff,
+  Characterizations.Isolators.localizationTest_minimum,
+  Characterizations.Isolators.pureLocalizationTest_minimum,
+  Characterizations.Isolators.exists_pure_isolator,
+  Characterizations.Isolators.exists_mixed_isolator,
+  Characterizations.Isolators.unique_bad_degree_lower_bound,
+  Characterizations.Isolators.pure_unique_bad_degree_lower_bound,
+  Characterizations.Isolators.unboundedLocalizationTestSufficient_iff,
+  Characterizations.Isolators.unboundedLocalization_minimum,
+  Characterizations.Isolators.exists_sharp_isolator,
+  Characterizations.Isolators.exists_outer_band_isolator,
+  Characterizations.localize_restriction,
+  Characterizations.restriction_lowerRank,
+  Characterizations.restriction_mixedMinor,
+  Characterizations.mixedMinor_polymatroidal,
+  Characterizations.localLinearThrough_iff_retained,
+  Characterizations.retainedLinearThrough_iff_totalBetti,
+  Characterizations.totalDegreeTor_eq_bot_iff,
+  Characterizations.monomialIdeal_polymatroidal_iff_localization_band,
+  Characterizations.monomialIdeal_polymatroidal_iff_pure_localization_band,
+  Characterizations.polymatroidal_iff_localization_band_all,
+  Characterizations.polymatroidal_iff_pure_localization_band_all,
+  Characterizations.Isolators.localizationTestSufficientAll_coverage,
+  Characterizations.Isolators.pureLocalizationTestSufficientAll_coverage,
+  Characterizations.Isolators.unboundedLocalizationTestSufficientAll_iff,
+  Characterizations.zero_family_polymatroidal,
+  Characterizations.empty_family_equigenerated_two,
+  Characterizations.empty_family_betti_zero,
+  Characterizations.zero_ideal_no_torRegularity,
+  Characterizations.zero_ideal_least_polymatroidal_power,
+  Characterizations.zero_ideal_integralClosure,
+  Characterizations.zero_ideal_closure_quotient_finiteLength,
+  Characterizations.zero_ideal_all_actual_powers_polymatroidal,
+  Characterizations.zero_ideal_extended_regularity,
+  Characterizations.unrestricted_proposition41_extended_regularity_false,
+  Characterizations.unrestricted_proposition41_regularity_false,
+  Characterizations.monomialIdeal_polymatroidal_iff_integrallyClosed_all]

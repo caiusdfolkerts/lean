@@ -1,0 +1,7 @@
+Formal verification of Characterizations of polymatroidal ideals by Caius Folkerts.
+
+New verification source: generated collaboratively for this task, 2026.
+The adjacent commalg_lean project supplies checked mathematical dependencies.
+Its original source headers, NOTICE, VENDORED_SOURCES.md, and licenses are retained.
+No external source is accepted merely on provenance; all imported local proof
+sources are compiled and their transitive dependencies are audited.
