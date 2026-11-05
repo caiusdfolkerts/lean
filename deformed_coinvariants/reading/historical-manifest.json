@@ -1,0 +1,1438 @@
+{
+  "paper": "The Hivert\u2013Thi\u00e9ry conjecture and differential normal forms",
+  "source_archive": "paper_verification_checkpoint.zip",
+  "source_archive_sha256": "3edcacd20ffd2f43d7f3aed219438ef934345a441e8abb0fcaf1124a0806f09f",
+  "roots": [
+    "PaperVerification.PolynomialDivergence",
+    "PaperVerification.DivergenceCocycleComplex",
+    "PaperVerification.PolynomialHomogeneousDerivations",
+    "PaperVerification.WeightedPolynomialPieces",
+    "PaperVerification.DivergenceDegreeSpaces",
+    "PaperVerification.DivergenceDegreeMatrices",
+    "PaperVerification.AffineMatrixComplex",
+    "PaperVerification.DivergenceAffineFamily",
+    "PaperVerification.DivergenceDegreeQuotient",
+    "PaperVerification.ProjectedComplexWithoutDomainAction",
+    "PaperVerification.EquivariantComparisonFromArbitraryRelations",
+    "PaperVerification.FilteredComplexExactness",
+    "PaperVerification.FilteredComplexNormalForms",
+    "PaperVerification.FilteredBasisTransfer",
+    "PaperVerification.FilteredBasisNormalForm"
+  ],
+  "dependency_order": [
+    "PaperVerification.PolynomialDivergence",
+    "TauCeti.Algebra.Homology.HomologicalComplex.Basic",
+    "TauCeti.Algebra.Homology.Homotopy",
+    "TauCeti.Algebra.Homology.Linear",
+    "TauCeti.LinearAlgebra.CliffordAlgebra.Grading",
+    "TauCeti.LinearAlgebra.CliffordAlgebra.Contraction",
+    "TauCeti.LinearAlgebra.ExteriorPower.Basic",
+    "TauCeti.LinearAlgebra.ExteriorAlgebra.Contraction",
+    "TauCeti.RingTheory.KoszulComplex.Basic",
+    "TauCeti.RingTheory.KoszulComplex.Regular",
+    "PaperVerification.KoszulSyzygies",
+    "PaperVerification.DivergenceCocycleComplex",
+    "PaperVerification.PolynomialHomogeneousDerivations",
+    "TauCeti.RingTheory.MvPolynomial.RestrictSupport",
+    "PaperVerification.WeightedPolynomialPieces",
+    "PaperVerification.DivergenceDegreeSpaces",
+    "TauCeti.LinearAlgebra.Matrix.Rank",
+    "PaperVerification.MatrixRank",
+    "PaperVerification.RankSpecialization",
+    "PaperVerification.DivergenceDegreeMatrices",
+    "PaperVerification.AffineMatrixComplex",
+    "PaperVerification.DivergenceAffineFamily",
+    "PaperVerification.DivergenceDegreeQuotient",
+    "PaperVerification.ProjectedRankSpecialization",
+    "PaperVerification.ProjectedComplexWithoutDomainAction",
+    "PaperVerification.EquivariantHomExact",
+    "PaperVerification.EquivariantHomMatrices",
+    "PaperVerification.EquivariantHomSpecialization",
+    "PaperVerification.EquivariantHomRank",
+    "PaperVerification.EquivariantCokernelSpecialization",
+    "PaperVerification.EquivariantCokernelGenericSpecialization",
+    "PaperVerification.EquivariantComparisonFromArbitraryRelations",
+    "PaperVerification.FermionFilteredModuleSpanning",
+    "PaperVerification.FermionFilteredInitial",
+    "PaperVerification.FilteredComplexExactness",
+    "PaperVerification.FilteredComplexNormalForms",
+    "PaperVerification.FilteredBasisTransfer",
+    "PaperVerification.FilteredBasisNormalForm"
+  ],
+  "module_count": 38,
+  "additional_module_count": 17,
+  "authored_module_count": 27,
+  "vendored_module_count": 11,
+  "import_headers_validated": true,
+  "local_missing_imports": [],
+  "external_missing_imports": [],
+  "external_imports": {
+    "Mathlib.Algebra.MvPolynomial.PDeriv": {
+      "source": "Mathlib/Algebra/MvPolynomial/PDeriv.lean",
+      "available": true
+    },
+    "Mathlib.RingTheory.Derivation.Lie": {
+      "source": "Mathlib/RingTheory/Derivation/Lie.lean",
+      "available": true
+    },
+    "Mathlib.Tactic.Ring": {
+      "source": "Mathlib/Tactic/Ring.lean",
+      "available": true
+    },
+    "Mathlib.RingTheory.Regular.RegularSequence": {
+      "source": "Mathlib/RingTheory/Regular/RegularSequence.lean",
+      "available": true
+    },
+    "Mathlib.Algebra.Homology.ShortComplex.ModuleCat": {
+      "source": "Mathlib/Algebra/Homology/ShortComplex/ModuleCat.lean",
+      "available": true
+    },
+    "Mathlib.Algebra.BigOperators.Pi": {
+      "source": "Mathlib/Algebra/BigOperators/Pi.lean",
+      "available": true
+    },
+    "Mathlib.Algebra.Category.ModuleCat.Basic": {
+      "source": "Mathlib/Algebra/Category/ModuleCat/Basic.lean",
+      "available": true
+    },
+    "Mathlib.Algebra.Homology.Homotopy": {
+      "source": "Mathlib/Algebra/Homology/Homotopy.lean",
+      "available": true
+    },
+    "Mathlib.Algebra.Homology.HomotopyCategory.HomComplexSingle": {
+      "source": "Mathlib/Algebra/Homology/HomotopyCategory/HomComplexSingle.lean",
+      "available": true
+    },
+    "Mathlib.CategoryTheory.Limits.Shapes.Kernels": {
+      "source": "Mathlib/CategoryTheory/Limits/Shapes/Kernels.lean",
+      "available": true
+    },
+    "Mathlib.Algebra.Homology.HomologicalComplex": {
+      "source": "Mathlib/Algebra/Homology/HomologicalComplex.lean",
+      "available": true
+    },
+    "Mathlib.Algebra.Homology.HomologicalComplexLimits": {
+      "source": "Mathlib/Algebra/Homology/HomologicalComplexLimits.lean",
+      "available": true
+    },
+    "Mathlib.Algebra.Homology.ShortComplex.HomologicalComplex": {
+      "source": "Mathlib/Algebra/Homology/ShortComplex/HomologicalComplex.lean",
+      "available": true
+    },
+    "Mathlib.Algebra.Homology.ShortComplex.PreservesHomology": {
+      "source": "Mathlib/Algebra/Homology/ShortComplex/PreservesHomology.lean",
+      "available": true
+    },
+    "Mathlib.Algebra.Homology.ShortComplex.Preadditive": {
+      "source": "Mathlib/Algebra/Homology/ShortComplex/Preadditive.lean",
+      "available": true
+    },
+    "Mathlib.Algebra.Homology.ShortComplex.ShortExact": {
+      "source": "Mathlib/Algebra/Homology/ShortComplex/ShortExact.lean",
+      "available": true
+    },
+    "Mathlib.Algebra.Homology.Linear": {
+      "source": "Mathlib/Algebra/Homology/Linear.lean",
+      "available": true
+    },
+    "Mathlib.Algebra.Homology.ShortComplex.Linear": {
+      "source": "Mathlib/Algebra/Homology/ShortComplex/Linear.lean",
+      "available": true
+    },
+    "Mathlib.LinearAlgebra.CliffordAlgebra.Contraction": {
+      "source": "Mathlib/LinearAlgebra/CliffordAlgebra/Contraction.lean",
+      "available": true
+    },
+    "Mathlib.LinearAlgebra.ExteriorAlgebra.Basis": {
+      "source": "Mathlib/LinearAlgebra/ExteriorAlgebra/Basis.lean",
+      "available": true
+    },
+    "Mathlib.GroupTheory.Perm.Fin": {
+      "source": "Mathlib/GroupTheory/Perm/Fin.lean",
+      "available": true
+    },
+    "Mathlib.Order.Fin.Tuple": {
+      "source": "Mathlib/Order/Fin/Tuple.lean",
+      "available": true
+    },
+    "Mathlib.LinearAlgebra.CliffordAlgebra.Grading": {
+      "source": "Mathlib/LinearAlgebra/CliffordAlgebra/Grading.lean",
+      "available": true
+    },
+    "Mathlib.LinearAlgebra.CliffordAlgebra.Conjugation": {
+      "source": "Mathlib/LinearAlgebra/CliffordAlgebra/Conjugation.lean",
+      "available": true
+    },
+    "Mathlib.Tactic.LinearCombination": {
+      "source": "Mathlib/Tactic/LinearCombination.lean",
+      "available": true
+    },
+    "Mathlib.Algebra.Module.Projective": {
+      "source": "Mathlib/Algebra/Module/Projective.lean",
+      "available": true
+    },
+    "Mathlib.Data.Fintype.Perm": {
+      "source": "Mathlib/Data/Fintype/Perm.lean",
+      "available": true
+    },
+    "Mathlib.LinearAlgebra.ExteriorPower.Basis": {
+      "source": "Mathlib/LinearAlgebra/ExteriorPower/Basis.lean",
+      "available": true
+    },
+    "Mathlib.Algebra.BigOperators.Group.Finset.Sigma": {
+      "source": "Mathlib/Algebra/BigOperators/Group/Finset/Sigma.lean",
+      "available": true
+    },
+    "Mathlib.Algebra.LieRinehartAlgebra.Subalgebra": {
+      "source": "Mathlib/Algebra/LieRinehartAlgebra/Subalgebra.lean",
+      "available": true
+    },
+    "Mathlib.LinearAlgebra.Pi": {
+      "source": "Mathlib/LinearAlgebra/Pi.lean",
+      "available": true
+    },
+    "Mathlib.RingTheory.MvPolynomial.EulerIdentity": {
+      "source": "Mathlib/RingTheory/MvPolynomial/EulerIdentity.lean",
+      "available": true
+    },
+    "Mathlib.RingTheory.MvPolynomial.Basic": {
+      "source": "Mathlib/RingTheory/MvPolynomial/Basic.lean",
+      "available": true
+    },
+    "Mathlib.GroupTheory.GroupAction.ConjAct": {
+      "source": "Mathlib/GroupTheory/GroupAction/ConjAct.lean",
+      "available": true
+    },
+    "Mathlib.LinearAlgebra.Matrix.GeneralLinearGroup.Defs": {
+      "source": "Mathlib/LinearAlgebra/Matrix/GeneralLinearGroup/Defs.lean",
+      "available": true
+    },
+    "Mathlib.LinearAlgebra.Matrix.Hermitian": {
+      "source": "Mathlib/LinearAlgebra/Matrix/Hermitian.lean",
+      "available": true
+    },
+    "Mathlib.LinearAlgebra.Matrix.Rank": {
+      "source": "Mathlib/LinearAlgebra/Matrix/Rank.lean",
+      "available": true
+    },
+    "Mathlib.Data.Matrix.ColumnRowPartitioned": {
+      "source": "Mathlib/Data/Matrix/ColumnRowPartitioned.lean",
+      "available": true
+    },
+    "Mathlib.FieldTheory.Finiteness": {
+      "source": "Mathlib/FieldTheory/Finiteness.lean",
+      "available": true
+    },
+    "Mathlib.LinearAlgebra.LinearIndependent.BaseChange": {
+      "source": "Mathlib/LinearAlgebra/LinearIndependent/BaseChange.lean",
+      "available": true
+    },
+    "Mathlib.Algebra.MvPolynomial.Eval": {
+      "source": "Mathlib/Algebra/MvPolynomial/Eval.lean",
+      "available": true
+    },
+    "Mathlib.RingTheory.Localization.FractionRing": {
+      "source": "Mathlib/RingTheory/Localization/FractionRing.lean",
+      "available": true
+    },
+    "Lean.Elab.Tactic.Omega": {
+      "source": "Lean/Elab/Tactic/Omega.lean",
+      "available": true
+    },
+    "Mathlib.Algebra.Polynomial.Roots": {
+      "source": "Mathlib/Algebra/Polynomial/Roots.lean",
+      "available": true
+    },
+    "Mathlib.FieldTheory.RatFunc.Basic": {
+      "source": "Mathlib/FieldTheory/RatFunc/Basic.lean",
+      "available": true
+    },
+    "Mathlib.RingTheory.Ideal.Span": {
+      "source": "Mathlib/RingTheory/Ideal/Span.lean",
+      "available": true
+    },
+    "Mathlib.Tactic.Abel": {
+      "source": "Mathlib/Tactic/Abel.lean",
+      "available": true
+    },
+    "Mathlib.RepresentationTheory.Invariants": {
+      "source": "Mathlib/RepresentationTheory/Invariants.lean",
+      "available": true
+    },
+    "Mathlib.LinearAlgebra.FiniteDimensional.Lemmas": {
+      "source": "Mathlib/LinearAlgebra/FiniteDimensional/Lemmas.lean",
+      "available": true
+    },
+    "Mathlib.LinearAlgebra.Matrix.ToLin": {
+      "source": "Mathlib/LinearAlgebra/Matrix/ToLin.lean",
+      "available": true
+    },
+    "Mathlib.LinearAlgebra.Basis.Basic": {
+      "source": "Mathlib/LinearAlgebra/Basis/Basic.lean",
+      "available": true
+    },
+    "Mathlib.LinearAlgebra.Basis.Defs": {
+      "source": "Mathlib/LinearAlgebra/Basis/Defs.lean",
+      "available": true
+    },
+    "Mathlib.LinearAlgebra.Span.Basic": {
+      "source": "Mathlib/LinearAlgebra/Span/Basic.lean",
+      "available": true
+    },
+    "Mathlib.Data.Finsupp.SMul": {
+      "source": "Mathlib/Data/Finsupp/SMul.lean",
+      "available": true
+    },
+    "Mathlib.Data.Finset.Lattice.Fold": {
+      "source": "Mathlib/Data/Finset/Lattice/Fold.lean",
+      "available": true
+    },
+    "Mathlib.LinearAlgebra.LinearIndependent.Basic": {
+      "source": "Mathlib/LinearAlgebra/LinearIndependent/Basic.lean",
+      "available": true
+    },
+    "Mathlib.LinearAlgebra.Projection": {
+      "source": "Mathlib/LinearAlgebra/Projection.lean",
+      "available": true
+    },
+    "Mathlib.LinearAlgebra.LinearIndependent.Lemmas": {
+      "source": "Mathlib/LinearAlgebra/LinearIndependent/Lemmas.lean",
+      "available": true
+    },
+    "Mathlib.LinearAlgebra.Finsupp.LinearCombination": {
+      "source": "Mathlib/LinearAlgebra/Finsupp/LinearCombination.lean",
+      "available": true
+    }
+  },
+  "files": [
+    {
+      "module": "PaperVerification.PolynomialDivergence",
+      "relative_path": "PaperVerification/PolynomialDivergence.lean",
+      "source_archive_relative_path": "verification/PaperVerification/PolynomialDivergence.lean",
+      "sha256": "dbc641b9cb8cde2a71b84694180c4221f14ebd6319f5d712cda6cc26cd933fc1",
+      "bytes": 5670,
+      "lines": 147,
+      "additional_to_working_project": true,
+      "role": "Supporting source for paper result 3.1",
+      "imports": [
+        "Mathlib.Algebra.MvPolynomial.PDeriv",
+        "Mathlib.RingTheory.Derivation.Lie",
+        "Mathlib.Tactic.Ring"
+      ],
+      "historical_status": "No matching standalone successful compilation attestation found in the selected archive; source presence alone is not verification."
+    },
+    {
+      "module": "TauCeti.Algebra.Homology.HomologicalComplex.Basic",
+      "relative_path": "vendor/TauCeti/TauCeti/Algebra/Homology/HomologicalComplex/Basic.lean",
+      "source_archive_relative_path": "verification/vendor/TauCeti/TauCeti/Algebra/Homology/HomologicalComplex/Basic.lean",
+      "sha256": "4f37ad5e2d0ea31157cc01c72b0c1ac5e363a0670561036bfac62e55fba3bfb9",
+      "bytes": 17349,
+      "lines": 360,
+      "additional_to_working_project": false,
+      "role": "Transitive local dependency",
+      "imports": [
+        "Mathlib.Algebra.Homology.HomologicalComplex",
+        "Mathlib.Algebra.Homology.HomologicalComplexLimits",
+        "Mathlib.Algebra.Homology.ShortComplex.HomologicalComplex",
+        "Mathlib.Algebra.Homology.ShortComplex.PreservesHomology",
+        "Mathlib.Algebra.Homology.ShortComplex.Preadditive",
+        "Mathlib.Algebra.Homology.ShortComplex.ShortExact"
+      ],
+      "historical_status": "Identical mathematical namespace body occurs in a later accepted compiled literal bundle; source and companion export hashes match its receipt. This is not a fresh standalone compilation of this file.",
+      "working_project_sha256": "4f37ad5e2d0ea31157cc01c72b0c1ac5e363a0670561036bfac62e55fba3bfb9",
+      "working_project_source_identical": true,
+      "accepted_bundle_evidence": {
+        "module": "TauCeti.Algebra.Homology.HomologicalComplex.Basic",
+        "bundle": "Literal004",
+        "literal_section": "TAF_LiteralSource_0283",
+        "mathematical_namespace_body_identical": true,
+        "bundle_source_sha256": "07e0542c49c92189d1793c92395ecf39b3a952a181c00c73424bdff14f571cd3",
+        "accepted_receipt": "evidence/accepted_filtered_support/Literal004.receipt.json",
+        "source_hash_matches_receipt": true,
+        "all_export_hashes_match_receipt": true,
+        "fresh_standalone_compilation_claimed": false
+      }
+    },
+    {
+      "module": "TauCeti.Algebra.Homology.Homotopy",
+      "relative_path": "vendor/TauCeti/TauCeti/Algebra/Homology/Homotopy.lean",
+      "source_archive_relative_path": "verification/vendor/TauCeti/TauCeti/Algebra/Homology/Homotopy.lean",
+      "sha256": "8db2f820a499c7a58d2daa2f8eb1304d3ccbde127bb177c9e98c1d8d16c1c65f",
+      "bytes": 14833,
+      "lines": 307,
+      "additional_to_working_project": false,
+      "role": "Transitive local dependency",
+      "imports": [
+        "Mathlib.Algebra.BigOperators.Pi",
+        "Mathlib.Algebra.Category.ModuleCat.Basic",
+        "Mathlib.Algebra.Homology.Homotopy",
+        "Mathlib.Algebra.Homology.HomotopyCategory.HomComplexSingle",
+        "Mathlib.CategoryTheory.Limits.Shapes.Kernels",
+        "TauCeti.Algebra.Homology.HomologicalComplex.Basic"
+      ],
+      "historical_status": "Identical mathematical namespace body occurs in a later accepted compiled literal bundle; source and companion export hashes match its receipt. This is not a fresh standalone compilation of this file.",
+      "working_project_sha256": "8db2f820a499c7a58d2daa2f8eb1304d3ccbde127bb177c9e98c1d8d16c1c65f",
+      "working_project_source_identical": true,
+      "accepted_bundle_evidence": {
+        "module": "TauCeti.Algebra.Homology.Homotopy",
+        "bundle": "Literal004",
+        "literal_section": "TAF_LiteralSource_0284",
+        "mathematical_namespace_body_identical": true,
+        "bundle_source_sha256": "07e0542c49c92189d1793c92395ecf39b3a952a181c00c73424bdff14f571cd3",
+        "accepted_receipt": "evidence/accepted_filtered_support/Literal004.receipt.json",
+        "source_hash_matches_receipt": true,
+        "all_export_hashes_match_receipt": true,
+        "fresh_standalone_compilation_claimed": false
+      }
+    },
+    {
+      "module": "TauCeti.Algebra.Homology.Linear",
+      "relative_path": "vendor/TauCeti/TauCeti/Algebra/Homology/Linear.lean",
+      "source_archive_relative_path": "verification/vendor/TauCeti/TauCeti/Algebra/Homology/Linear.lean",
+      "sha256": "4b7cd070e4949051d3a9ef5e2d69c1468b9f29da3b8b193169fb6e3c330f4948",
+      "bytes": 2248,
+      "lines": 53,
+      "additional_to_working_project": false,
+      "role": "Transitive local dependency",
+      "imports": [
+        "Mathlib.Algebra.Homology.Linear",
+        "Mathlib.Algebra.Homology.ShortComplex.HomologicalComplex",
+        "Mathlib.Algebra.Homology.ShortComplex.Linear"
+      ],
+      "historical_status": "Identical mathematical namespace body occurs in a later accepted compiled literal bundle; source and companion export hashes match its receipt. This is not a fresh standalone compilation of this file.",
+      "working_project_sha256": "4b7cd070e4949051d3a9ef5e2d69c1468b9f29da3b8b193169fb6e3c330f4948",
+      "working_project_source_identical": true,
+      "accepted_bundle_evidence": {
+        "module": "TauCeti.Algebra.Homology.Linear",
+        "bundle": "Literal004",
+        "literal_section": "TAF_LiteralSource_0285",
+        "mathematical_namespace_body_identical": true,
+        "bundle_source_sha256": "07e0542c49c92189d1793c92395ecf39b3a952a181c00c73424bdff14f571cd3",
+        "accepted_receipt": "evidence/accepted_filtered_support/Literal004.receipt.json",
+        "source_hash_matches_receipt": true,
+        "all_export_hashes_match_receipt": true,
+        "fresh_standalone_compilation_claimed": false
+      }
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.CliffordAlgebra.Grading",
+      "relative_path": "vendor/TauCeti/TauCeti/LinearAlgebra/CliffordAlgebra/Grading.lean",
+      "source_archive_relative_path": "verification/vendor/TauCeti/TauCeti/LinearAlgebra/CliffordAlgebra/Grading.lean",
+      "sha256": "e22939248273faa79081ec499531c54011b9685d3dfb03cd91d68f7ea48fbb99",
+      "bytes": 12815,
+      "lines": 234,
+      "additional_to_working_project": false,
+      "role": "Transitive local dependency",
+      "imports": [
+        "Mathlib.LinearAlgebra.CliffordAlgebra.Conjugation",
+        "Mathlib.LinearAlgebra.ExteriorAlgebra.Basis",
+        "Mathlib.Tactic.LinearCombination"
+      ],
+      "historical_status": "Identical mathematical namespace body occurs in a later accepted compiled literal bundle; source and companion export hashes match its receipt. This is not a fresh standalone compilation of this file.",
+      "working_project_sha256": "e22939248273faa79081ec499531c54011b9685d3dfb03cd91d68f7ea48fbb99",
+      "working_project_source_identical": true,
+      "accepted_bundle_evidence": {
+        "module": "TauCeti.LinearAlgebra.CliffordAlgebra.Grading",
+        "bundle": "Literal003",
+        "literal_section": "TAF_LiteralSource_0207",
+        "mathematical_namespace_body_identical": true,
+        "bundle_source_sha256": "d0b0e7ea5d11040e42220046dacf2ea5363e14eacb5cd2b77b28f6d965fbdf4d",
+        "accepted_receipt": "evidence/accepted_filtered_support/Literal003.receipt.json",
+        "source_hash_matches_receipt": true,
+        "all_export_hashes_match_receipt": true,
+        "fresh_standalone_compilation_claimed": false
+      }
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.CliffordAlgebra.Contraction",
+      "relative_path": "vendor/TauCeti/TauCeti/LinearAlgebra/CliffordAlgebra/Contraction.lean",
+      "source_archive_relative_path": "verification/vendor/TauCeti/TauCeti/LinearAlgebra/CliffordAlgebra/Contraction.lean",
+      "sha256": "1815894cfdfabdb5501337d719fdd60e9d7979a82e2631075162d0a849cc5ad9",
+      "bytes": 17036,
+      "lines": 322,
+      "additional_to_working_project": false,
+      "role": "Transitive local dependency",
+      "imports": [
+        "Mathlib.LinearAlgebra.CliffordAlgebra.Contraction",
+        "Mathlib.LinearAlgebra.CliffordAlgebra.Grading",
+        "TauCeti.LinearAlgebra.CliffordAlgebra.Grading"
+      ],
+      "historical_status": "No matching standalone successful compilation attestation found in the selected archive; source presence alone is not verification.",
+      "working_project_sha256": "1815894cfdfabdb5501337d719fdd60e9d7979a82e2631075162d0a849cc5ad9",
+      "working_project_source_identical": true
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.ExteriorPower.Basic",
+      "relative_path": "vendor/TauCeti/TauCeti/LinearAlgebra/ExteriorPower/Basic.lean",
+      "source_archive_relative_path": "verification/vendor/TauCeti/TauCeti/LinearAlgebra/ExteriorPower/Basic.lean",
+      "sha256": "d52d970a528f989d5a9097d2f40bdf033a3b0991af89b36752fc2b4abb5b3762",
+      "bytes": 17259,
+      "lines": 362,
+      "additional_to_working_project": false,
+      "role": "Transitive local dependency",
+      "imports": [
+        "Mathlib.Algebra.Module.Projective",
+        "Mathlib.Data.Fintype.Perm",
+        "Mathlib.LinearAlgebra.ExteriorPower.Basis"
+      ],
+      "historical_status": "Identical mathematical namespace body occurs in a later accepted compiled literal bundle; source and companion export hashes match its receipt. This is not a fresh standalone compilation of this file.",
+      "working_project_sha256": "d52d970a528f989d5a9097d2f40bdf033a3b0991af89b36752fc2b4abb5b3762",
+      "working_project_source_identical": true,
+      "accepted_bundle_evidence": {
+        "module": "TauCeti.LinearAlgebra.ExteriorPower.Basic",
+        "bundle": "Literal003",
+        "literal_section": "TAF_LiteralSource_0209",
+        "mathematical_namespace_body_identical": true,
+        "bundle_source_sha256": "d0b0e7ea5d11040e42220046dacf2ea5363e14eacb5cd2b77b28f6d965fbdf4d",
+        "accepted_receipt": "evidence/accepted_filtered_support/Literal003.receipt.json",
+        "source_hash_matches_receipt": true,
+        "all_export_hashes_match_receipt": true,
+        "fresh_standalone_compilation_claimed": false
+      }
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.ExteriorAlgebra.Contraction",
+      "relative_path": "vendor/TauCeti/TauCeti/LinearAlgebra/ExteriorAlgebra/Contraction.lean",
+      "source_archive_relative_path": "verification/vendor/TauCeti/TauCeti/LinearAlgebra/ExteriorAlgebra/Contraction.lean",
+      "sha256": "54c59d29ff1636abea34ce509816b4f9aa1fdffd1fbf4511db0432b0cac21255",
+      "bytes": 35584,
+      "lines": 674,
+      "additional_to_working_project": false,
+      "role": "Transitive local dependency",
+      "imports": [
+        "Mathlib.LinearAlgebra.CliffordAlgebra.Contraction",
+        "Mathlib.LinearAlgebra.ExteriorAlgebra.Basis",
+        "Mathlib.GroupTheory.Perm.Fin",
+        "Mathlib.Order.Fin.Tuple",
+        "TauCeti.LinearAlgebra.CliffordAlgebra.Contraction",
+        "TauCeti.LinearAlgebra.ExteriorPower.Basic"
+      ],
+      "historical_status": "Identical mathematical namespace body occurs in a later accepted compiled literal bundle; source and companion export hashes match its receipt. This is not a fresh standalone compilation of this file.",
+      "working_project_sha256": "54c59d29ff1636abea34ce509816b4f9aa1fdffd1fbf4511db0432b0cac21255",
+      "working_project_source_identical": true,
+      "accepted_bundle_evidence": {
+        "module": "TauCeti.LinearAlgebra.ExteriorAlgebra.Contraction",
+        "bundle": "Literal003",
+        "literal_section": "TAF_LiteralSource_0210",
+        "mathematical_namespace_body_identical": true,
+        "bundle_source_sha256": "d0b0e7ea5d11040e42220046dacf2ea5363e14eacb5cd2b77b28f6d965fbdf4d",
+        "accepted_receipt": "evidence/accepted_filtered_support/Literal003.receipt.json",
+        "source_hash_matches_receipt": true,
+        "all_export_hashes_match_receipt": true,
+        "fresh_standalone_compilation_claimed": false
+      }
+    },
+    {
+      "module": "TauCeti.RingTheory.KoszulComplex.Basic",
+      "relative_path": "vendor/TauCeti/TauCeti/RingTheory/KoszulComplex/Basic.lean",
+      "source_archive_relative_path": "verification/vendor/TauCeti/TauCeti/RingTheory/KoszulComplex/Basic.lean",
+      "sha256": "60e9d4459c0c013a522726b1cc7eabb84e00af87378572cc8e3cf95e5c7e1c05",
+      "bytes": 20084,
+      "lines": 403,
+      "additional_to_working_project": false,
+      "role": "Transitive local dependency",
+      "imports": [
+        "Mathlib.Algebra.Homology.ShortComplex.ModuleCat",
+        "TauCeti.Algebra.Homology.Homotopy",
+        "TauCeti.Algebra.Homology.Linear",
+        "TauCeti.LinearAlgebra.ExteriorAlgebra.Contraction",
+        "TauCeti.LinearAlgebra.ExteriorPower.Basic"
+      ],
+      "historical_status": "No matching standalone successful compilation attestation found in the selected archive; source presence alone is not verification.",
+      "working_project_sha256": "60e9d4459c0c013a522726b1cc7eabb84e00af87378572cc8e3cf95e5c7e1c05",
+      "working_project_source_identical": true
+    },
+    {
+      "module": "TauCeti.RingTheory.KoszulComplex.Regular",
+      "relative_path": "vendor/TauCeti/TauCeti/RingTheory/KoszulComplex/Regular.lean",
+      "source_archive_relative_path": "verification/vendor/TauCeti/TauCeti/RingTheory/KoszulComplex/Regular.lean",
+      "sha256": "96481f7205bd091be3364609a0500d51837d659b7740007905f3960736f21cb7",
+      "bytes": 9829,
+      "lines": 185,
+      "additional_to_working_project": false,
+      "role": "Transitive local dependency",
+      "imports": [
+        "Mathlib.RingTheory.Regular.RegularSequence",
+        "TauCeti.RingTheory.KoszulComplex.Basic"
+      ],
+      "historical_status": "Identical mathematical namespace body occurs in a later accepted compiled literal bundle; source and companion export hashes match its receipt. This is not a fresh standalone compilation of this file.",
+      "working_project_sha256": "96481f7205bd091be3364609a0500d51837d659b7740007905f3960736f21cb7",
+      "working_project_source_identical": true,
+      "accepted_bundle_evidence": {
+        "module": "TauCeti.RingTheory.KoszulComplex.Regular",
+        "bundle": "Literal004",
+        "literal_section": "TAF_LiteralSource_0287",
+        "mathematical_namespace_body_identical": true,
+        "bundle_source_sha256": "07e0542c49c92189d1793c92395ecf39b3a952a181c00c73424bdff14f571cd3",
+        "accepted_receipt": "evidence/accepted_filtered_support/Literal004.receipt.json",
+        "source_hash_matches_receipt": true,
+        "all_export_hashes_match_receipt": true,
+        "fresh_standalone_compilation_claimed": false
+      }
+    },
+    {
+      "module": "PaperVerification.KoszulSyzygies",
+      "relative_path": "PaperVerification/KoszulSyzygies.lean",
+      "source_archive_relative_path": "verification/PaperVerification/KoszulSyzygies.lean",
+      "sha256": "fea83976bee0d531281f3a80c9d0715d2b9f25b6550f3712e330f28329c540fd",
+      "bytes": 5584,
+      "lines": 132,
+      "additional_to_working_project": false,
+      "role": "Transitive local dependency",
+      "imports": [
+        "TauCeti.RingTheory.KoszulComplex.Regular",
+        "Mathlib.Algebra.BigOperators.Group.Finset.Sigma",
+        "Mathlib.Tactic.Ring"
+      ],
+      "historical_status": "No matching standalone successful compilation attestation found in the selected archive; source presence alone is not verification.",
+      "working_project_sha256": "fea83976bee0d531281f3a80c9d0715d2b9f25b6550f3712e330f28329c540fd",
+      "working_project_source_identical": true
+    },
+    {
+      "module": "PaperVerification.DivergenceCocycleComplex",
+      "relative_path": "PaperVerification/DivergenceCocycleComplex.lean",
+      "source_archive_relative_path": "verification/PaperVerification/DivergenceCocycleComplex.lean",
+      "sha256": "0852c8216b61679595ec792bf528f0352c96c73e8dd79e4f1c7dc297bb700e15",
+      "bytes": 9535,
+      "lines": 218,
+      "additional_to_working_project": true,
+      "role": "Supporting source for paper result 3.1",
+      "imports": [
+        "PaperVerification.PolynomialDivergence",
+        "PaperVerification.KoszulSyzygies",
+        "Mathlib.Algebra.LieRinehartAlgebra.Subalgebra",
+        "Mathlib.LinearAlgebra.Pi"
+      ],
+      "historical_status": "No matching standalone successful compilation attestation found in the selected archive; source presence alone is not verification."
+    },
+    {
+      "module": "PaperVerification.PolynomialHomogeneousDerivations",
+      "relative_path": "PaperVerification/PolynomialHomogeneousDerivations.lean",
+      "source_archive_relative_path": "verification/PaperVerification/PolynomialHomogeneousDerivations.lean",
+      "sha256": "e489e54b781b817b655032405277789e418cfff18df16f9049cf5fac3dabf749",
+      "bytes": 4588,
+      "lines": 117,
+      "additional_to_working_project": true,
+      "role": "Supporting source for paper result 3.1",
+      "imports": [
+        "PaperVerification.PolynomialDivergence",
+        "Mathlib.RingTheory.MvPolynomial.EulerIdentity"
+      ],
+      "historical_status": "No matching standalone successful compilation attestation found in the selected archive; source presence alone is not verification."
+    },
+    {
+      "module": "TauCeti.RingTheory.MvPolynomial.RestrictSupport",
+      "relative_path": "vendor/TauCeti/TauCeti/RingTheory/MvPolynomial/RestrictSupport.lean",
+      "source_archive_relative_path": "verification/vendor/TauCeti/TauCeti/RingTheory/MvPolynomial/RestrictSupport.lean",
+      "sha256": "6b0b1bda92060c9bd74218cbb40adb8e461ad9ff93a8ba368b8c33f4f22e6038",
+      "bytes": 1601,
+      "lines": 42,
+      "additional_to_working_project": false,
+      "role": "Transitive local dependency",
+      "imports": [
+        "Mathlib.RingTheory.MvPolynomial.Basic"
+      ],
+      "historical_status": "No matching standalone successful compilation attestation found in the selected archive; source presence alone is not verification.",
+      "working_project_sha256": "6b0b1bda92060c9bd74218cbb40adb8e461ad9ff93a8ba368b8c33f4f22e6038",
+      "working_project_source_identical": true
+    },
+    {
+      "module": "PaperVerification.WeightedPolynomialPieces",
+      "relative_path": "PaperVerification/WeightedPolynomialPieces.lean",
+      "source_archive_relative_path": "verification/PaperVerification/WeightedPolynomialPieces.lean",
+      "sha256": "9e33a6f042221303c55147e6891597b576d50625615dda10a775faef3862491e",
+      "bytes": 4942,
+      "lines": 129,
+      "additional_to_working_project": true,
+      "role": "Supporting source for paper result 3.1",
+      "imports": [
+        "PaperVerification.PolynomialHomogeneousDerivations",
+        "TauCeti.RingTheory.MvPolynomial.RestrictSupport"
+      ],
+      "historical_status": "No matching standalone successful compilation attestation found in the selected archive; source presence alone is not verification."
+    },
+    {
+      "module": "PaperVerification.DivergenceDegreeSpaces",
+      "relative_path": "PaperVerification/DivergenceDegreeSpaces.lean",
+      "source_archive_relative_path": "verification/PaperVerification/DivergenceDegreeSpaces.lean",
+      "sha256": "9fa24d130c7e67f13ec1f000d25f771c0af5ff3267fed2ada633d76efa6c8137",
+      "bytes": 6776,
+      "lines": 155,
+      "additional_to_working_project": true,
+      "role": "Supporting source for paper result 3.1",
+      "imports": [
+        "PaperVerification.DivergenceCocycleComplex",
+        "PaperVerification.WeightedPolynomialPieces"
+      ],
+      "historical_status": "No matching standalone successful compilation attestation found in the selected archive; source presence alone is not verification."
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.Matrix.Rank",
+      "relative_path": "vendor/TauCeti/TauCeti/LinearAlgebra/Matrix/Rank.lean",
+      "source_archive_relative_path": "verification/vendor/TauCeti/TauCeti/LinearAlgebra/Matrix/Rank.lean",
+      "sha256": "1c1f61c652af88d7a7cfbaf3ce79bf7fbf343449abb8320a8e7277b99814e804",
+      "bytes": 22238,
+      "lines": 423,
+      "additional_to_working_project": false,
+      "role": "Transitive local dependency",
+      "imports": [
+        "Mathlib.GroupTheory.GroupAction.ConjAct",
+        "Mathlib.LinearAlgebra.Matrix.GeneralLinearGroup.Defs",
+        "Mathlib.LinearAlgebra.Matrix.Hermitian",
+        "Mathlib.LinearAlgebra.Matrix.Rank",
+        "Mathlib.Data.Matrix.ColumnRowPartitioned",
+        "Mathlib.FieldTheory.Finiteness",
+        "Mathlib.LinearAlgebra.LinearIndependent.BaseChange"
+      ],
+      "historical_status": "No matching standalone successful compilation attestation found in the selected archive; source presence alone is not verification.",
+      "working_project_sha256": "1c1f61c652af88d7a7cfbaf3ce79bf7fbf343449abb8320a8e7277b99814e804",
+      "working_project_source_identical": true,
+      "old_isolated_receipt": {
+        "path": "TauCeti.LinearAlgebra.Matrix.Rank/latest.json",
+        "status": "verified",
+        "source_hash_matches": true
+      }
+    },
+    {
+      "module": "PaperVerification.MatrixRank",
+      "relative_path": "PaperVerification/MatrixRank.lean",
+      "source_archive_relative_path": "verification/PaperVerification/MatrixRank.lean",
+      "sha256": "8cc0b85b9089aa170e9553cacec8feba4639a2d66a564190219d495b1d54d640",
+      "bytes": 559,
+      "lines": 16,
+      "additional_to_working_project": false,
+      "role": "Transitive local dependency",
+      "imports": [
+        "TauCeti.LinearAlgebra.Matrix.Rank"
+      ],
+      "historical_status": "No matching standalone successful compilation attestation found in the selected archive; source presence alone is not verification.",
+      "working_project_sha256": "8cc0b85b9089aa170e9553cacec8feba4639a2d66a564190219d495b1d54d640",
+      "working_project_source_identical": true,
+      "old_isolated_receipt": {
+        "path": "PaperVerification.MatrixRank/latest.json",
+        "status": "verified",
+        "source_hash_matches": true
+      }
+    },
+    {
+      "module": "PaperVerification.RankSpecialization",
+      "relative_path": "PaperVerification/RankSpecialization.lean",
+      "source_archive_relative_path": "verification/PaperVerification/RankSpecialization.lean",
+      "sha256": "2087d2d3aa45269e17830f31706f1930fdc8e874e9465ec28b424fc495691420",
+      "bytes": 6057,
+      "lines": 135,
+      "additional_to_working_project": false,
+      "role": "Transitive local dependency",
+      "imports": [
+        "PaperVerification.MatrixRank",
+        "Mathlib.Algebra.MvPolynomial.Eval",
+        "Mathlib.RingTheory.Localization.FractionRing",
+        "Lean.Elab.Tactic.Omega"
+      ],
+      "historical_status": "No matching standalone successful compilation attestation found in the selected archive; source presence alone is not verification.",
+      "working_project_sha256": "2087d2d3aa45269e17830f31706f1930fdc8e874e9465ec28b424fc495691420",
+      "working_project_source_identical": true,
+      "old_isolated_receipt": {
+        "path": "PaperVerification.RankSpecialization/latest.json",
+        "status": "verified",
+        "source_hash_matches": true
+      }
+    },
+    {
+      "module": "PaperVerification.DivergenceDegreeMatrices",
+      "relative_path": "PaperVerification/DivergenceDegreeMatrices.lean",
+      "source_archive_relative_path": "verification/PaperVerification/DivergenceDegreeMatrices.lean",
+      "sha256": "39f2237fbeddf5331a6e8b2ea292d33aea6495f4965227b96ec4f44dd6beea5f",
+      "bytes": 9026,
+      "lines": 209,
+      "additional_to_working_project": true,
+      "role": "Supporting source for paper result 3.1",
+      "imports": [
+        "PaperVerification.DivergenceDegreeSpaces",
+        "PaperVerification.RankSpecialization"
+      ],
+      "historical_status": "No matching standalone successful compilation attestation found in the selected archive; source presence alone is not verification."
+    },
+    {
+      "module": "PaperVerification.AffineMatrixComplex",
+      "relative_path": "PaperVerification/AffineMatrixComplex.lean",
+      "source_archive_relative_path": "verification/PaperVerification/AffineMatrixComplex.lean",
+      "sha256": "c44ca46ba20e0dca316a24b84e93204c9d71a1f824c9eaff2bb238cdef868d9b",
+      "bytes": 4020,
+      "lines": 92,
+      "additional_to_working_project": true,
+      "role": "Supporting source for paper result 3.1",
+      "imports": [
+        "PaperVerification.RankSpecialization",
+        "Mathlib.Algebra.Polynomial.Roots",
+        "Mathlib.FieldTheory.RatFunc.Basic"
+      ],
+      "historical_status": "No matching standalone successful compilation attestation found in the selected archive; source presence alone is not verification."
+    },
+    {
+      "module": "PaperVerification.DivergenceAffineFamily",
+      "relative_path": "PaperVerification/DivergenceAffineFamily.lean",
+      "source_archive_relative_path": "verification/PaperVerification/DivergenceAffineFamily.lean",
+      "sha256": "4f783adaa08c353f8df531156f23dd675e56ae6bdda8d3a1e762dc422220ad2d",
+      "bytes": 4794,
+      "lines": 114,
+      "additional_to_working_project": true,
+      "role": "Supporting source for paper result 3.1",
+      "imports": [
+        "PaperVerification.DivergenceDegreeMatrices",
+        "PaperVerification.AffineMatrixComplex"
+      ],
+      "historical_status": "No matching standalone successful compilation attestation found in the selected archive; source presence alone is not verification."
+    },
+    {
+      "module": "PaperVerification.DivergenceDegreeQuotient",
+      "relative_path": "PaperVerification/DivergenceDegreeQuotient.lean",
+      "source_archive_relative_path": "verification/PaperVerification/DivergenceDegreeQuotient.lean",
+      "sha256": "1cda5e13a1e25701fc814af864b8becfd54cbd35094df7be02ab5f06f7566c67",
+      "bytes": 6465,
+      "lines": 156,
+      "additional_to_working_project": true,
+      "role": "Supporting source for paper result 3.1",
+      "imports": [
+        "PaperVerification.DivergenceAffineFamily",
+        "Mathlib.RingTheory.Ideal.Span"
+      ],
+      "historical_status": "No matching standalone successful compilation attestation found in the selected archive; source presence alone is not verification."
+    },
+    {
+      "module": "PaperVerification.ProjectedRankSpecialization",
+      "relative_path": "PaperVerification/ProjectedRankSpecialization.lean",
+      "source_archive_relative_path": "verification/PaperVerification/ProjectedRankSpecialization.lean",
+      "sha256": "354a9bced79449fcb5772f93d2bd09646032d95d4c718a221482b27ad38d3ad0",
+      "bytes": 4971,
+      "lines": 117,
+      "additional_to_working_project": false,
+      "role": "Transitive local dependency",
+      "imports": [
+        "PaperVerification.RankSpecialization",
+        "Mathlib.Data.Matrix.ColumnRowPartitioned",
+        "Mathlib.Tactic.Abel"
+      ],
+      "historical_status": "No matching standalone successful compilation attestation found in the selected archive; source presence alone is not verification.",
+      "working_project_sha256": "354a9bced79449fcb5772f93d2bd09646032d95d4c718a221482b27ad38d3ad0",
+      "working_project_source_identical": true
+    },
+    {
+      "module": "PaperVerification.ProjectedComplexWithoutDomainAction",
+      "relative_path": "PaperVerification/ProjectedComplexWithoutDomainAction.lean",
+      "source_archive_relative_path": "verification/PaperVerification/ProjectedComplexWithoutDomainAction.lean",
+      "sha256": "aacf1900c211308aa417a5c1bc495cb35b362b2d200e233236f275e8d1845d36",
+      "bytes": 4636,
+      "lines": 114,
+      "additional_to_working_project": true,
+      "role": "Supporting source for paper result 3.1",
+      "imports": [
+        "PaperVerification.ProjectedRankSpecialization"
+      ],
+      "historical_status": "No matching standalone successful compilation attestation found in the selected archive; source presence alone is not verification."
+    },
+    {
+      "module": "PaperVerification.EquivariantHomExact",
+      "relative_path": "PaperVerification/EquivariantHomExact.lean",
+      "source_archive_relative_path": "verification/PaperVerification/EquivariantHomExact.lean",
+      "sha256": "011695a879ead3cbeac09ac3e331dd04b466286788b2bb63b7b09efd7cd697e5",
+      "bytes": 7207,
+      "lines": 163,
+      "additional_to_working_project": false,
+      "role": "Transitive local dependency",
+      "imports": [
+        "Mathlib.RepresentationTheory.Invariants",
+        "Mathlib.LinearAlgebra.FiniteDimensional.Lemmas",
+        "Mathlib.Algebra.Module.Projective"
+      ],
+      "historical_status": "No matching standalone successful compilation attestation found in the selected archive; source presence alone is not verification.",
+      "working_project_sha256": "011695a879ead3cbeac09ac3e331dd04b466286788b2bb63b7b09efd7cd697e5",
+      "working_project_source_identical": true
+    },
+    {
+      "module": "PaperVerification.EquivariantHomMatrices",
+      "relative_path": "PaperVerification/EquivariantHomMatrices.lean",
+      "source_archive_relative_path": "verification/PaperVerification/EquivariantHomMatrices.lean",
+      "sha256": "1a3f70de42b54f47bdf5e7d907b5f8bf4a4597f572b3e8a695ce0e598185068c",
+      "bytes": 7238,
+      "lines": 174,
+      "additional_to_working_project": false,
+      "role": "Transitive local dependency",
+      "imports": [
+        "PaperVerification.EquivariantHomExact",
+        "PaperVerification.ProjectedRankSpecialization",
+        "Mathlib.LinearAlgebra.Matrix.ToLin"
+      ],
+      "historical_status": "No matching standalone successful compilation attestation found in the selected archive; source presence alone is not verification.",
+      "working_project_sha256": "1a3f70de42b54f47bdf5e7d907b5f8bf4a4597f572b3e8a695ce0e598185068c",
+      "working_project_source_identical": true
+    },
+    {
+      "module": "PaperVerification.EquivariantHomSpecialization",
+      "relative_path": "PaperVerification/EquivariantHomSpecialization.lean",
+      "source_archive_relative_path": "verification/PaperVerification/EquivariantHomSpecialization.lean",
+      "sha256": "9a803b7f55c54f8a67232f3fe8f08776a350c5e127e90ae3f2a0659c25b57eae",
+      "bytes": 5310,
+      "lines": 141,
+      "additional_to_working_project": false,
+      "role": "Transitive local dependency",
+      "imports": [
+        "PaperVerification.EquivariantHomMatrices",
+        "Mathlib.Tactic.Ring"
+      ],
+      "historical_status": "No matching standalone successful compilation attestation found in the selected archive; source presence alone is not verification.",
+      "working_project_sha256": "9a803b7f55c54f8a67232f3fe8f08776a350c5e127e90ae3f2a0659c25b57eae",
+      "working_project_source_identical": true
+    },
+    {
+      "module": "PaperVerification.EquivariantHomRank",
+      "relative_path": "PaperVerification/EquivariantHomRank.lean",
+      "source_archive_relative_path": "verification/PaperVerification/EquivariantHomRank.lean",
+      "sha256": "6cf5c54499668156a18904ca27cda9333b25a9de3e734ad3a141f810a27db255",
+      "bytes": 6039,
+      "lines": 129,
+      "additional_to_working_project": false,
+      "role": "Transitive local dependency",
+      "imports": [
+        "PaperVerification.EquivariantHomSpecialization",
+        "Mathlib.LinearAlgebra.Matrix.Rank"
+      ],
+      "historical_status": "No matching standalone successful compilation attestation found in the selected archive; source presence alone is not verification.",
+      "working_project_sha256": "6cf5c54499668156a18904ca27cda9333b25a9de3e734ad3a141f810a27db255",
+      "working_project_source_identical": true
+    },
+    {
+      "module": "PaperVerification.EquivariantCokernelSpecialization",
+      "relative_path": "PaperVerification/EquivariantCokernelSpecialization.lean",
+      "source_archive_relative_path": "verification/PaperVerification/EquivariantCokernelSpecialization.lean",
+      "sha256": "594d132ad233d8c0d04894096ff589fb4ab1b3f27736fc62d1570536c78e4adb",
+      "bytes": 8129,
+      "lines": 170,
+      "additional_to_working_project": false,
+      "role": "Transitive local dependency",
+      "imports": [
+        "PaperVerification.EquivariantHomRank",
+        "Lean.Elab.Tactic.Omega"
+      ],
+      "historical_status": "No matching standalone successful compilation attestation found in the selected archive; source presence alone is not verification.",
+      "working_project_sha256": "63706d14002c06f51dfdf276aa72ba845b20b4a57af92713fc40124507476264",
+      "working_project_source_identical": false
+    },
+    {
+      "module": "PaperVerification.EquivariantCokernelGenericSpecialization",
+      "relative_path": "PaperVerification/EquivariantCokernelGenericSpecialization.lean",
+      "source_archive_relative_path": "verification/PaperVerification/EquivariantCokernelGenericSpecialization.lean",
+      "sha256": "50c42c4037fbc8325169e124add8a5b6cf887209dd57a825b8cd2ce1e63088fd",
+      "bytes": 2839,
+      "lines": 60,
+      "additional_to_working_project": false,
+      "role": "Transitive local dependency",
+      "imports": [
+        "PaperVerification.EquivariantCokernelSpecialization"
+      ],
+      "historical_status": "No matching standalone successful compilation attestation found in the selected archive; source presence alone is not verification.",
+      "working_project_sha256": "0aa76a55d811502db2fbc15cadc59481cb5481a5c89719b0924b10380f06d824",
+      "working_project_source_identical": false
+    },
+    {
+      "module": "PaperVerification.EquivariantComparisonFromArbitraryRelations",
+      "relative_path": "PaperVerification/EquivariantComparisonFromArbitraryRelations.lean",
+      "source_archive_relative_path": "verification/PaperVerification/EquivariantComparisonFromArbitraryRelations.lean",
+      "sha256": "702d8ba78c6b446e4d0016d123fd2fa940e0114513b5da7d2ce414e240aa909e",
+      "bytes": 6187,
+      "lines": 118,
+      "additional_to_working_project": true,
+      "role": "Supporting source for paper result 3.1",
+      "imports": [
+        "PaperVerification.ProjectedComplexWithoutDomainAction",
+        "PaperVerification.EquivariantCokernelGenericSpecialization"
+      ],
+      "historical_status": "No matching standalone successful compilation attestation found in the selected archive; source presence alone is not verification."
+    },
+    {
+      "module": "PaperVerification.FermionFilteredModuleSpanning",
+      "relative_path": "PaperVerification/FermionFilteredModuleSpanning.lean",
+      "source_archive_relative_path": "verification/PaperVerification/FermionFilteredModuleSpanning.lean",
+      "sha256": "314faa2ea439058b42051884364e443862a0062582899bac38738586130c1dee",
+      "bytes": 10185,
+      "lines": 250,
+      "additional_to_working_project": true,
+      "role": "Transitive local dependency",
+      "imports": [
+        "Mathlib.LinearAlgebra.Basis.Defs",
+        "Mathlib.LinearAlgebra.Span.Basic",
+        "Mathlib.Data.Finsupp.SMul",
+        "Mathlib.Data.Finset.Lattice.Fold",
+        "Mathlib.Tactic.Abel",
+        "Lean.Elab.Tactic.Omega"
+      ],
+      "historical_status": "Identical mathematical namespace body occurs in a later accepted compiled literal bundle; source and companion export hashes match its receipt. This is not a fresh standalone compilation of this file.",
+      "accepted_bundle_evidence": {
+        "module": "PaperVerification.FermionFilteredModuleSpanning",
+        "bundle": "Literal003",
+        "literal_section": "TAF_LiteralSource_0198",
+        "mathematical_namespace_body_identical": true,
+        "bundle_source_sha256": "d0b0e7ea5d11040e42220046dacf2ea5363e14eacb5cd2b77b28f6d965fbdf4d",
+        "accepted_receipt": "evidence/accepted_filtered_support/Literal003.receipt.json",
+        "source_hash_matches_receipt": true,
+        "all_export_hashes_match_receipt": true,
+        "fresh_standalone_compilation_claimed": false
+      }
+    },
+    {
+      "module": "PaperVerification.FermionFilteredInitial",
+      "relative_path": "PaperVerification/FermionFilteredInitial.lean",
+      "source_archive_relative_path": "verification/PaperVerification/FermionFilteredInitial.lean",
+      "sha256": "1e9b8358534f103ad4a8a4ee3dee1d4dfb20ca86d9b80875800ec7eba03d5a19",
+      "bytes": 5869,
+      "lines": 138,
+      "additional_to_working_project": true,
+      "role": "Transitive local dependency",
+      "imports": [
+        "PaperVerification.FermionFilteredModuleSpanning",
+        "Mathlib.LinearAlgebra.LinearIndependent.Basic"
+      ],
+      "historical_status": "Identical mathematical namespace body occurs in a later accepted compiled literal bundle; source and companion export hashes match its receipt. This is not a fresh standalone compilation of this file.",
+      "accepted_bundle_evidence": {
+        "module": "PaperVerification.FermionFilteredInitial",
+        "bundle": "Literal003",
+        "literal_section": "TAF_LiteralSource_0199",
+        "mathematical_namespace_body_identical": true,
+        "bundle_source_sha256": "d0b0e7ea5d11040e42220046dacf2ea5363e14eacb5cd2b77b28f6d965fbdf4d",
+        "accepted_receipt": "evidence/accepted_filtered_support/Literal003.receipt.json",
+        "source_hash_matches_receipt": true,
+        "all_export_hashes_match_receipt": true,
+        "fresh_standalone_compilation_claimed": false
+      }
+    },
+    {
+      "module": "PaperVerification.FilteredComplexExactness",
+      "relative_path": "PaperVerification/FilteredComplexExactness.lean",
+      "source_archive_relative_path": "verification/PaperVerification/FilteredComplexExactness.lean",
+      "sha256": "57a2f784013067ee68c7dc6ad3b848dce730f045fb87059cc1cf768bff4f90ba",
+      "bytes": 9805,
+      "lines": 216,
+      "additional_to_working_project": true,
+      "role": "Supporting source for paper result 5.1",
+      "imports": [
+        "Mathlib.LinearAlgebra.Basis.Basic",
+        "PaperVerification.FermionFilteredInitial"
+      ],
+      "historical_status": "Identical mathematical namespace body occurs in a later accepted compiled literal bundle; source and companion export hashes match its receipt. This is not a fresh standalone compilation of this file.",
+      "accepted_bundle_evidence": {
+        "module": "PaperVerification.FilteredComplexExactness",
+        "bundle": "Literal004",
+        "literal_section": "TAF_LiteralSource_0271",
+        "mathematical_namespace_body_identical": true,
+        "bundle_source_sha256": "07e0542c49c92189d1793c92395ecf39b3a952a181c00c73424bdff14f571cd3",
+        "accepted_receipt": "evidence/accepted_filtered_support/Literal004.receipt.json",
+        "source_hash_matches_receipt": true,
+        "all_export_hashes_match_receipt": true,
+        "fresh_standalone_compilation_claimed": false
+      }
+    },
+    {
+      "module": "PaperVerification.FilteredComplexNormalForms",
+      "relative_path": "PaperVerification/FilteredComplexNormalForms.lean",
+      "source_archive_relative_path": "verification/PaperVerification/FilteredComplexNormalForms.lean",
+      "sha256": "532e07b50a32ac9594758dafcfc26c833b0637bfbff452aa1694b2134f2383ec",
+      "bytes": 7627,
+      "lines": 174,
+      "additional_to_working_project": true,
+      "role": "Supporting source for paper result 5.1",
+      "imports": [
+        "PaperVerification.FilteredComplexExactness",
+        "Mathlib.LinearAlgebra.Projection"
+      ],
+      "historical_status": "No matching standalone successful compilation attestation found in the selected archive; source presence alone is not verification."
+    },
+    {
+      "module": "PaperVerification.FilteredBasisTransfer",
+      "relative_path": "PaperVerification/FilteredBasisTransfer.lean",
+      "source_archive_relative_path": "verification/PaperVerification/FilteredBasisTransfer.lean",
+      "sha256": "301684c3d7ac8446e3c9679a903992556a072268d816a2f81bec12b65788e07b",
+      "bytes": 7926,
+      "lines": 178,
+      "additional_to_working_project": true,
+      "role": "Shared filtered quotient-basis and normal-form infrastructure",
+      "imports": [
+        "PaperVerification.FermionFilteredInitial",
+        "Mathlib.LinearAlgebra.Basis.Basic",
+        "Mathlib.LinearAlgebra.LinearIndependent.Lemmas"
+      ],
+      "historical_status": "Identical mathematical namespace body occurs in a later accepted compiled literal bundle; source and companion export hashes match its receipt. This is not a fresh standalone compilation of this file.",
+      "accepted_bundle_evidence": {
+        "module": "PaperVerification.FilteredBasisTransfer",
+        "bundle": "Literal003",
+        "literal_section": "TAF_LiteralSource_0200",
+        "mathematical_namespace_body_identical": true,
+        "bundle_source_sha256": "d0b0e7ea5d11040e42220046dacf2ea5363e14eacb5cd2b77b28f6d965fbdf4d",
+        "accepted_receipt": "evidence/accepted_filtered_support/Literal003.receipt.json",
+        "source_hash_matches_receipt": true,
+        "all_export_hashes_match_receipt": true,
+        "fresh_standalone_compilation_claimed": false
+      }
+    },
+    {
+      "module": "PaperVerification.FilteredBasisNormalForm",
+      "relative_path": "PaperVerification/FilteredBasisNormalForm.lean",
+      "source_archive_relative_path": "verification/PaperVerification/FilteredBasisNormalForm.lean",
+      "sha256": "661f0cbe9de7fb94ea0873992ef87f79412e76c266fda23ac84345b14b120c3e",
+      "bytes": 7958,
+      "lines": 174,
+      "additional_to_working_project": true,
+      "role": "Shared filtered quotient-basis and normal-form infrastructure",
+      "imports": [
+        "PaperVerification.FilteredBasisTransfer",
+        "Mathlib.LinearAlgebra.Finsupp.LinearCombination"
+      ],
+      "historical_status": "Identical mathematical namespace body occurs in a later accepted compiled literal bundle; source and companion export hashes match its receipt. This is not a fresh standalone compilation of this file.",
+      "accepted_bundle_evidence": {
+        "module": "PaperVerification.FilteredBasisNormalForm",
+        "bundle": "Literal004",
+        "literal_section": "TAF_LiteralSource_0239",
+        "mathematical_namespace_body_identical": true,
+        "bundle_source_sha256": "07e0542c49c92189d1793c92395ecf39b3a952a181c00c73424bdff14f571cd3",
+        "accepted_receipt": "evidence/accepted_filtered_support/Literal004.receipt.json",
+        "source_hash_matches_receipt": true,
+        "all_export_hashes_match_receipt": true,
+        "fresh_standalone_compilation_claimed": false
+      }
+    }
+  ],
+  "historical_evidence_files": [
+    {
+      "archive_entry": "verification/audit/DeformedCoinvariants_dependency_audit.md",
+      "saved_path": "evidence/archive/audit/DeformedCoinvariants_dependency_audit.md",
+      "sha256": "1b67256c988b5dec800750caa17a14d00d96b637c03ab05fee64510c0f6259a4",
+      "bytes": 8567
+    },
+    {
+      "archive_entry": "verification/audit/DeformedCoinvariants_principal_coverage.json",
+      "saved_path": "evidence/archive/audit/DeformedCoinvariants_principal_coverage.json",
+      "sha256": "3217a01d5c56bd3e54684b36a11e53f8967c37a313f5a12ac764c9c2fc3efa76",
+      "bytes": 10677
+    },
+    {
+      "archive_entry": "verification/audit/FilteredComplexExactness_independent_fermion_review.json",
+      "saved_path": "evidence/archive/audit/FilteredComplexExactness_independent_fermion_review.json",
+      "sha256": "b47083d1694f627397c88b80483dd753881ad77a44f579ea965fb57b6d800d90",
+      "bytes": 3797
+    },
+    {
+      "archive_entry": "verification/audit/GenericMatrixRank_build1.exit",
+      "saved_path": "evidence/archive/audit/GenericMatrixRank_build1.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    {
+      "archive_entry": "verification/audit/GenericMatrixRank_build1.log",
+      "saved_path": "evidence/archive/audit/GenericMatrixRank_build1.log",
+      "sha256": "68884a66b58049ac1df472911973394ce9504898e9a90c020af322de3bbf4254",
+      "bytes": 353
+    },
+    {
+      "archive_entry": "verification/audit/MatrixRank_build1.exit",
+      "saved_path": "evidence/archive/audit/MatrixRank_build1.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    {
+      "archive_entry": "verification/audit/MatrixRank_build1.log",
+      "saved_path": "evidence/archive/audit/MatrixRank_build1.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "archive_entry": "verification/audit/RankSpecialization_build1.exit",
+      "saved_path": "evidence/archive/audit/RankSpecialization_build1.exit",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "bytes": 2
+    },
+    {
+      "archive_entry": "verification/audit/RankSpecialization_build1.log",
+      "saved_path": "evidence/archive/audit/RankSpecialization_build1.log",
+      "sha256": "8ef9551ba5abef49deeb2316557a25a9554b515a74b535a521363b56401b4b36",
+      "bytes": 230
+    },
+    {
+      "archive_entry": "verification/audit/alternating/odd_v2_repairs/root/FilteredBasisTransfer.diff",
+      "saved_path": "evidence/archive/audit/alternating/odd_v2_repairs/root/FilteredBasisTransfer.diff",
+      "sha256": "88113c6d7024a68efd95a70f7d4eb82f5155822099de3887976352ec76095a1a",
+      "bytes": 1506
+    },
+    {
+      "archive_entry": "verification/audit/alternating/odd_v2_repairs/root/FilteredBasisTransfer.lean",
+      "saved_path": "evidence/archive/audit/alternating/odd_v2_repairs/root/FilteredBasisTransfer.lean",
+      "sha256": "301684c3d7ac8446e3c9679a903992556a072268d816a2f81bec12b65788e07b",
+      "bytes": 7926
+    },
+    {
+      "archive_entry": "verification/audit/alternating/odd_v2_repairs/root/FilteredBasisTransfer.original.lean",
+      "saved_path": "evidence/archive/audit/alternating/odd_v2_repairs/root/FilteredBasisTransfer.original.lean",
+      "sha256": "c70e3ea78fc8799a86e9ee11b1aa0eeb9cb50a9d5c29b4eab1c2d0c5387cd4d0",
+      "bytes": 7859
+    },
+    {
+      "archive_entry": "verification/audit/alternating/odd_v2_repairs/root/FilteredComplexExactness.diff",
+      "saved_path": "evidence/archive/audit/alternating/odd_v2_repairs/root/FilteredComplexExactness.diff",
+      "sha256": "3ccefe541cccacc13f40588b886b57d5c74db48a48d06fe8c67afbf7fb100ecd",
+      "bytes": 239
+    },
+    {
+      "archive_entry": "verification/audit/alternating/odd_v2_repairs/root/FilteredComplexExactness.lean",
+      "saved_path": "evidence/archive/audit/alternating/odd_v2_repairs/root/FilteredComplexExactness.lean",
+      "sha256": "57a2f784013067ee68c7dc6ad3b848dce730f045fb87059cc1cf768bff4f90ba",
+      "bytes": 9805
+    },
+    {
+      "archive_entry": "verification/audit/alternating/odd_v2_repairs/root/FilteredComplexExactness.original.lean",
+      "saved_path": "evidence/archive/audit/alternating/odd_v2_repairs/root/FilteredComplexExactness.original.lean",
+      "sha256": "9dee26a59a16e1bd766b3ac4503805988d58dd72123e1c2236d1dd61b609640e",
+      "bytes": 9756
+    },
+    {
+      "archive_entry": "verification/audit/alternating/odd_v3_repairs/root/FilteredBasisNormalForm.before.lean",
+      "saved_path": "evidence/archive/audit/alternating/odd_v3_repairs/root/FilteredBasisNormalForm.before.lean",
+      "sha256": "722ab2f435cfcb90bf2f08247b46136f73ccb2c89cc21f89a2ac7cba907401b2",
+      "bytes": 8042
+    },
+    {
+      "archive_entry": "verification/audit/alternating/odd_v3_repairs/root/FilteredBasisNormalForm.diff",
+      "saved_path": "evidence/archive/audit/alternating/odd_v3_repairs/root/FilteredBasisNormalForm.diff",
+      "sha256": "5ee8b6db3d049ae84e491679aa09e0e62f10701e9e0f5b9e33a222fa91b26e9a",
+      "bytes": 1420
+    },
+    {
+      "archive_entry": "verification/audit/alternating/odd_v3_repairs/root/FilteredBasisNormalForm.lean",
+      "saved_path": "evidence/archive/audit/alternating/odd_v3_repairs/root/FilteredBasisNormalForm.lean",
+      "sha256": "7bc78b7913f827d082f8f3491691eb835b971351629ac3f65e782ef5f3fdf02e",
+      "bytes": 7994
+    },
+    {
+      "archive_entry": "verification/audit/alternating/odd_v3_repairs/root/FilteredBasisNormalForm.lean.applied.diff",
+      "saved_path": "evidence/archive/audit/alternating/odd_v3_repairs/root/FilteredBasisNormalForm.lean.applied.diff",
+      "sha256": "841c824f7647cb6e645e2aa15be5b60b0c70a58b7ffd9af6056ef72a170a1365",
+      "bytes": 1427
+    },
+    {
+      "archive_entry": "verification/audit/alternating/odd_v4_repairs/root/FilteredBasisNormalForm.before.lean",
+      "saved_path": "evidence/archive/audit/alternating/odd_v4_repairs/root/FilteredBasisNormalForm.before.lean",
+      "sha256": "7bc78b7913f827d082f8f3491691eb835b971351629ac3f65e782ef5f3fdf02e",
+      "bytes": 7994
+    },
+    {
+      "archive_entry": "verification/audit/alternating/odd_v4_repairs/root/FilteredBasisNormalForm.diff",
+      "saved_path": "evidence/archive/audit/alternating/odd_v4_repairs/root/FilteredBasisNormalForm.diff",
+      "sha256": "dc504f8726809f2cbf0e1e776db4672b9b2d3564dd4829869a1d36a350063467",
+      "bytes": 449
+    },
+    {
+      "archive_entry": "verification/audit/alternating/odd_v4_repairs/root/FilteredBasisNormalForm.lean",
+      "saved_path": "evidence/archive/audit/alternating/odd_v4_repairs/root/FilteredBasisNormalForm.lean",
+      "sha256": "a6272bbcc071f5f3d46208448140acb58faa2904ffd89e57d4d0dbf26f1c7256",
+      "bytes": 7894
+    },
+    {
+      "archive_entry": "verification/audit/alternating/odd_v5_repairs/root/FilteredBasisNormalForm.diff",
+      "saved_path": "evidence/archive/audit/alternating/odd_v5_repairs/root/FilteredBasisNormalForm.diff",
+      "sha256": "6345c511820c5094d1a6f64ca322f8a50890f7a86490c5ddfc2d6eac60604624",
+      "bytes": 407
+    },
+    {
+      "archive_entry": "verification/audit/alternating/odd_v5_repairs/root/FilteredBasisNormalForm.lean",
+      "saved_path": "evidence/archive/audit/alternating/odd_v5_repairs/root/FilteredBasisNormalForm.lean",
+      "sha256": "661f0cbe9de7fb94ea0873992ef87f79412e76c266fda23ac84345b14b120c3e",
+      "bytes": 7958
+    },
+    {
+      "archive_entry": "verification/audit/cli_snapshots/fermion_focus_v4/mapped/FermionFilteredInitial.json",
+      "saved_path": "evidence/archive/audit/cli_snapshots/fermion_focus_v4/mapped/FermionFilteredInitial.json",
+      "sha256": "afa846871c9a3cf94ed4d686b8cf9159347136479d0764e5e94365e62ea7fdc3",
+      "bytes": 1119
+    },
+    {
+      "archive_entry": "verification/audit/cli_snapshots/fermion_main_v5/mapped/FermionFilteredInitial.json",
+      "saved_path": "evidence/archive/audit/cli_snapshots/fermion_main_v5/mapped/FermionFilteredInitial.json",
+      "sha256": "9634266583c5c6a4213f1f91e511baa0221ef35a2aa16ae3a08f0a9334a4fc44",
+      "bytes": 696
+    },
+    {
+      "archive_entry": "verification/audit/cli_snapshots/recovered_v2/mapped/MatrixRank.json",
+      "saved_path": "evidence/archive/audit/cli_snapshots/recovered_v2/mapped/MatrixRank.json",
+      "sha256": "bb6936b657d1aa9fec0d04a98dc899397b4711e284e34086ec295f146f5be5df",
+      "bytes": 1591
+    },
+    {
+      "archive_entry": "verification/audit/fresh_checks/restored_principal/20261101T235058Z/PaperVerification.FermionFilteredModuleSpanning.log",
+      "saved_path": "evidence/archive/audit/fresh_checks/restored_principal/20261101T235058Z/PaperVerification.FermionFilteredModuleSpanning.log",
+      "sha256": "21a2002c5f0856357bf16e3c2874a889c8cf4a63558de25baf435a9d4793d550",
+      "bytes": 6117
+    },
+    {
+      "archive_entry": "verification/audit/fresh_checks/restored_principal/20261101T235058Z/PaperVerification.KoszulSyzygies.log",
+      "saved_path": "evidence/archive/audit/fresh_checks/restored_principal/20261101T235058Z/PaperVerification.KoszulSyzygies.log",
+      "sha256": "e8293f9f48cd2795854df63adf71a1839ccc36ddc4e5f5fd835a553a5aeb0f40",
+      "bytes": 104
+    }
+  ],
+  "accepted_filtered_support": [
+    {
+      "module": "TauCeti.LinearAlgebra.CliffordAlgebra.Grading",
+      "bundle": "Literal003",
+      "literal_section": "TAF_LiteralSource_0207",
+      "mathematical_namespace_body_identical": true,
+      "bundle_source_sha256": "d0b0e7ea5d11040e42220046dacf2ea5363e14eacb5cd2b77b28f6d965fbdf4d",
+      "accepted_receipt": "evidence/accepted_filtered_support/Literal003.receipt.json",
+      "source_hash_matches_receipt": true,
+      "all_export_hashes_match_receipt": true,
+      "fresh_standalone_compilation_claimed": false
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.CliffordAlgebra.Contraction",
+      "bundle": "Literal003",
+      "literal_section": "TAF_LiteralSource_0208",
+      "mathematical_namespace_body_identical": false,
+      "bundle_source_sha256": "d0b0e7ea5d11040e42220046dacf2ea5363e14eacb5cd2b77b28f6d965fbdf4d",
+      "accepted_receipt": "evidence/accepted_filtered_support/Literal003.receipt.json",
+      "source_hash_matches_receipt": true,
+      "all_export_hashes_match_receipt": true,
+      "fresh_standalone_compilation_claimed": false
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.ExteriorPower.Basic",
+      "bundle": "Literal003",
+      "literal_section": "TAF_LiteralSource_0209",
+      "mathematical_namespace_body_identical": true,
+      "bundle_source_sha256": "d0b0e7ea5d11040e42220046dacf2ea5363e14eacb5cd2b77b28f6d965fbdf4d",
+      "accepted_receipt": "evidence/accepted_filtered_support/Literal003.receipt.json",
+      "source_hash_matches_receipt": true,
+      "all_export_hashes_match_receipt": true,
+      "fresh_standalone_compilation_claimed": false
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.ExteriorAlgebra.Contraction",
+      "bundle": "Literal003",
+      "literal_section": "TAF_LiteralSource_0210",
+      "mathematical_namespace_body_identical": true,
+      "bundle_source_sha256": "d0b0e7ea5d11040e42220046dacf2ea5363e14eacb5cd2b77b28f6d965fbdf4d",
+      "accepted_receipt": "evidence/accepted_filtered_support/Literal003.receipt.json",
+      "source_hash_matches_receipt": true,
+      "all_export_hashes_match_receipt": true,
+      "fresh_standalone_compilation_claimed": false
+    },
+    {
+      "module": "PaperVerification.FermionFilteredModuleSpanning",
+      "bundle": "Literal003",
+      "literal_section": "TAF_LiteralSource_0198",
+      "mathematical_namespace_body_identical": true,
+      "bundle_source_sha256": "d0b0e7ea5d11040e42220046dacf2ea5363e14eacb5cd2b77b28f6d965fbdf4d",
+      "accepted_receipt": "evidence/accepted_filtered_support/Literal003.receipt.json",
+      "source_hash_matches_receipt": true,
+      "all_export_hashes_match_receipt": true,
+      "fresh_standalone_compilation_claimed": false
+    },
+    {
+      "module": "PaperVerification.FermionFilteredInitial",
+      "bundle": "Literal003",
+      "literal_section": "TAF_LiteralSource_0199",
+      "mathematical_namespace_body_identical": true,
+      "bundle_source_sha256": "d0b0e7ea5d11040e42220046dacf2ea5363e14eacb5cd2b77b28f6d965fbdf4d",
+      "accepted_receipt": "evidence/accepted_filtered_support/Literal003.receipt.json",
+      "source_hash_matches_receipt": true,
+      "all_export_hashes_match_receipt": true,
+      "fresh_standalone_compilation_claimed": false
+    },
+    {
+      "module": "PaperVerification.FilteredBasisTransfer",
+      "bundle": "Literal003",
+      "literal_section": "TAF_LiteralSource_0200",
+      "mathematical_namespace_body_identical": true,
+      "bundle_source_sha256": "d0b0e7ea5d11040e42220046dacf2ea5363e14eacb5cd2b77b28f6d965fbdf4d",
+      "accepted_receipt": "evidence/accepted_filtered_support/Literal003.receipt.json",
+      "source_hash_matches_receipt": true,
+      "all_export_hashes_match_receipt": true,
+      "fresh_standalone_compilation_claimed": false
+    },
+    {
+      "module": "TauCeti.Algebra.Homology.HomologicalComplex.Basic",
+      "bundle": "Literal004",
+      "literal_section": "TAF_LiteralSource_0283",
+      "mathematical_namespace_body_identical": true,
+      "bundle_source_sha256": "07e0542c49c92189d1793c92395ecf39b3a952a181c00c73424bdff14f571cd3",
+      "accepted_receipt": "evidence/accepted_filtered_support/Literal004.receipt.json",
+      "source_hash_matches_receipt": true,
+      "all_export_hashes_match_receipt": true,
+      "fresh_standalone_compilation_claimed": false
+    },
+    {
+      "module": "TauCeti.Algebra.Homology.Homotopy",
+      "bundle": "Literal004",
+      "literal_section": "TAF_LiteralSource_0284",
+      "mathematical_namespace_body_identical": true,
+      "bundle_source_sha256": "07e0542c49c92189d1793c92395ecf39b3a952a181c00c73424bdff14f571cd3",
+      "accepted_receipt": "evidence/accepted_filtered_support/Literal004.receipt.json",
+      "source_hash_matches_receipt": true,
+      "all_export_hashes_match_receipt": true,
+      "fresh_standalone_compilation_claimed": false
+    },
+    {
+      "module": "TauCeti.Algebra.Homology.Linear",
+      "bundle": "Literal004",
+      "literal_section": "TAF_LiteralSource_0285",
+      "mathematical_namespace_body_identical": true,
+      "bundle_source_sha256": "07e0542c49c92189d1793c92395ecf39b3a952a181c00c73424bdff14f571cd3",
+      "accepted_receipt": "evidence/accepted_filtered_support/Literal004.receipt.json",
+      "source_hash_matches_receipt": true,
+      "all_export_hashes_match_receipt": true,
+      "fresh_standalone_compilation_claimed": false
+    },
+    {
+      "module": "TauCeti.RingTheory.KoszulComplex.Basic",
+      "bundle": "Literal004",
+      "literal_section": "TAF_LiteralSource_0286",
+      "mathematical_namespace_body_identical": false,
+      "bundle_source_sha256": "07e0542c49c92189d1793c92395ecf39b3a952a181c00c73424bdff14f571cd3",
+      "accepted_receipt": "evidence/accepted_filtered_support/Literal004.receipt.json",
+      "source_hash_matches_receipt": true,
+      "all_export_hashes_match_receipt": true,
+      "fresh_standalone_compilation_claimed": false
+    },
+    {
+      "module": "TauCeti.RingTheory.KoszulComplex.Regular",
+      "bundle": "Literal004",
+      "literal_section": "TAF_LiteralSource_0287",
+      "mathematical_namespace_body_identical": true,
+      "bundle_source_sha256": "07e0542c49c92189d1793c92395ecf39b3a952a181c00c73424bdff14f571cd3",
+      "accepted_receipt": "evidence/accepted_filtered_support/Literal004.receipt.json",
+      "source_hash_matches_receipt": true,
+      "all_export_hashes_match_receipt": true,
+      "fresh_standalone_compilation_claimed": false
+    },
+    {
+      "module": "PaperVerification.FilteredComplexExactness",
+      "bundle": "Literal004",
+      "literal_section": "TAF_LiteralSource_0271",
+      "mathematical_namespace_body_identical": true,
+      "bundle_source_sha256": "07e0542c49c92189d1793c92395ecf39b3a952a181c00c73424bdff14f571cd3",
+      "accepted_receipt": "evidence/accepted_filtered_support/Literal004.receipt.json",
+      "source_hash_matches_receipt": true,
+      "all_export_hashes_match_receipt": true,
+      "fresh_standalone_compilation_claimed": false
+    },
+    {
+      "module": "PaperVerification.FilteredBasisNormalForm",
+      "bundle": "Literal004",
+      "literal_section": "TAF_LiteralSource_0239",
+      "mathematical_namespace_body_identical": true,
+      "bundle_source_sha256": "07e0542c49c92189d1793c92395ecf39b3a952a181c00c73424bdff14f571cd3",
+      "accepted_receipt": "evidence/accepted_filtered_support/Literal004.receipt.json",
+      "source_hash_matches_receipt": true,
+      "all_export_hashes_match_receipt": true,
+      "fresh_standalone_compilation_claimed": false
+    }
+  ],
+  "theorem_5_1_endpoint_found": false,
+  "theorem_5_1_status": "No direct candidate. Conditional abstract finite-descent results do not instantiate the actual noncommutative Lie\u2013Rinehart differential or establish all conclusions of Theorem 5.1.",
+  "evidence_location": "Historical evidence paths identify records retained in the recovered archives; the large accepted bundles are not duplicated in this package."
+}

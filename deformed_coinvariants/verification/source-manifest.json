@@ -1,0 +1,1425 @@
+{
+  "roots": [
+    "PaperVerification.PowerTheoremOneOne",
+    "PaperVerification.PowerTheoremTwoTwo",
+    "PaperVerification.EulerParameters",
+    "PaperVerification.HypersurfaceTheoremSixThree",
+    "PaperVerification.CompleteIntersectionCodimensionFull"
+  ],
+  "lean": "4.36.0-rc1",
+  "mathlib_revision": "2cabef97b63d3275776b8b060d802de6a6fa1055",
+  "authored_modules": 139,
+  "vendored_modules": 96,
+  "files": [
+    {
+      "module": "PaperVerification.PowerOperators",
+      "path": "source/PaperVerification/PowerOperators.lean",
+      "sha256": "d08d07a3ec9ccb172789c2829b7198ef2bb671f5f3bdbda30bc507c5166a5fe0",
+      "bytes": 6418
+    },
+    {
+      "module": "PaperVerification.FermionMomentRecurrence",
+      "path": "source/PaperVerification/FermionMomentRecurrence.lean",
+      "sha256": "9bd97fbdf9bbc08ebb80854a5204cc4d22cbd8ba351002831ba11d69ba1f1aab",
+      "bytes": 3833
+    },
+    {
+      "module": "PaperVerification.PowerRecurrence",
+      "path": "source/PaperVerification/PowerRecurrence.lean",
+      "sha256": "ac757766fc1a763f29033821cf4a81f8f5d2a96d6acb81a3daf865c87978a1d5",
+      "bytes": 3140
+    },
+    {
+      "module": "PaperVerification.PowerParameters",
+      "path": "source/PaperVerification/PowerParameters.lean",
+      "sha256": "038db3a1368e6c745fef3e8dd026c6791a462ea7afe2a54c4c39b8100b8e8646",
+      "bytes": 4557
+    },
+    {
+      "module": "PaperVerification.PowerFullSupport",
+      "path": "source/PaperVerification/PowerFullSupport.lean",
+      "sha256": "de3762def973ec3fdd2f03bee784135e80d6d3327fd8a7aa8ad6c06872f346b0",
+      "bytes": 7828
+    },
+    {
+      "module": "PaperVerification.PowerBoundary",
+      "path": "source/PaperVerification/PowerBoundary.lean",
+      "sha256": "17fe117fd5fa7da9e8d8b6ea3217a95cd1651d19e3cb937a9e1f5226564c07dc",
+      "bytes": 6173
+    },
+    {
+      "module": "PaperVerification.PowerArtin",
+      "path": "source/PaperVerification/PowerArtin.lean",
+      "sha256": "bf0be376bb955a2778c8c2e7f7077840c2f08b97f59310676b21b6181a434803",
+      "bytes": 5115
+    },
+    {
+      "module": "PaperVerification.PowerSpanning",
+      "path": "source/PaperVerification/PowerSpanning.lean",
+      "sha256": "dc49479d5e7b430cafee05e428f499f824d1290e6082fed51f5b5d84e83a5c10",
+      "bytes": 8932
+    },
+    {
+      "module": "PaperVerification.PowerConjugation",
+      "path": "source/PaperVerification/PowerConjugation.lean",
+      "sha256": "bb93bc48037445f2d44e87a6d7d371867594dea540d6bda5624b71c4ea34e6cd",
+      "bytes": 9124
+    },
+    {
+      "module": "PaperVerification.PowerCoordinateRestriction",
+      "path": "source/PaperVerification/PowerCoordinateRestriction.lean",
+      "sha256": "83a0952216942d863ccccd5b37879605d78944a1473340438702be4882d6dbca",
+      "bytes": 6434
+    },
+    {
+      "module": "TauCeti.RingTheory.RootsOfUnity.Basic",
+      "path": "source/TauCeti/RingTheory/RootsOfUnity/Basic.lean",
+      "sha256": "dcb86489f5e6e38ecaec7ef018a725ce062a85b2d3d8dc8f5de964e4456e3232",
+      "bytes": 16032
+    },
+    {
+      "module": "TauCeti.RingTheory.MvPolynomial.Homogeneous",
+      "path": "source/TauCeti/RingTheory/MvPolynomial/Homogeneous.lean",
+      "sha256": "675111511eb43cd3e020ca0a9741100f87d539e0dee6589534c6f99227a96a12",
+      "bytes": 19606
+    },
+    {
+      "module": "PaperVerification.PowerHomogeneity",
+      "path": "source/PaperVerification/PowerHomogeneity.lean",
+      "sha256": "25f3172c65a26ecf2ef67b8943da90141994de89ccbf40c7e4a11542ec66bf20",
+      "bytes": 4672
+    },
+    {
+      "module": "TauCeti.Algebra.Homology.HomologicalComplex.Basic",
+      "path": "source/TauCeti/Algebra/Homology/HomologicalComplex/Basic.lean",
+      "sha256": "4f37ad5e2d0ea31157cc01c72b0c1ac5e363a0670561036bfac62e55fba3bfb9",
+      "bytes": 17349
+    },
+    {
+      "module": "TauCeti.Algebra.Homology.Homotopy",
+      "path": "source/TauCeti/Algebra/Homology/Homotopy.lean",
+      "sha256": "8db2f820a499c7a58d2daa2f8eb1304d3ccbde127bb177c9e98c1d8d16c1c65f",
+      "bytes": 14833
+    },
+    {
+      "module": "TauCeti.Algebra.Homology.Linear",
+      "path": "source/TauCeti/Algebra/Homology/Linear.lean",
+      "sha256": "4b7cd070e4949051d3a9ef5e2d69c1468b9f29da3b8b193169fb6e3c330f4948",
+      "bytes": 2248
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.CliffordAlgebra.Grading",
+      "path": "source/TauCeti/LinearAlgebra/CliffordAlgebra/Grading.lean",
+      "sha256": "e22939248273faa79081ec499531c54011b9685d3dfb03cd91d68f7ea48fbb99",
+      "bytes": 12815
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.CliffordAlgebra.Contraction",
+      "path": "source/TauCeti/LinearAlgebra/CliffordAlgebra/Contraction.lean",
+      "sha256": "1815894cfdfabdb5501337d719fdd60e9d7979a82e2631075162d0a849cc5ad9",
+      "bytes": 17036
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.ExteriorPower.Basic",
+      "path": "source/TauCeti/LinearAlgebra/ExteriorPower/Basic.lean",
+      "sha256": "d52d970a528f989d5a9097d2f40bdf033a3b0991af89b36752fc2b4abb5b3762",
+      "bytes": 17259
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.ExteriorAlgebra.Contraction",
+      "path": "source/TauCeti/LinearAlgebra/ExteriorAlgebra/Contraction.lean",
+      "sha256": "54c59d29ff1636abea34ce509816b4f9aa1fdffd1fbf4511db0432b0cac21255",
+      "bytes": 35584
+    },
+    {
+      "module": "TauCeti.RingTheory.KoszulComplex.Basic",
+      "path": "source/TauCeti/RingTheory/KoszulComplex/Basic.lean",
+      "sha256": "60e9d4459c0c013a522726b1cc7eabb84e00af87378572cc8e3cf95e5c7e1c05",
+      "bytes": 20084
+    },
+    {
+      "module": "TauCeti.RingTheory.KoszulComplex.Regular",
+      "path": "source/TauCeti/RingTheory/KoszulComplex/Regular.lean",
+      "sha256": "96481f7205bd091be3364609a0500d51837d659b7740007905f3960736f21cb7",
+      "bytes": 9829
+    },
+    {
+      "module": "PaperVerification.KoszulSyzygies",
+      "path": "source/PaperVerification/KoszulSyzygies.lean",
+      "sha256": "fea83976bee0d531281f3a80c9d0715d2b9f25b6550f3712e330f28329c540fd",
+      "bytes": 5584
+    },
+    {
+      "module": "PaperVerification.PowerComplex",
+      "path": "source/PaperVerification/PowerComplex.lean",
+      "sha256": "9336c89b9286ad8523a668df83e6f9779ca702c03543bdeb9797b7cb1b315c77",
+      "bytes": 6885
+    },
+    {
+      "module": "PaperVerification.PowerDegreeSpaces",
+      "path": "source/PaperVerification/PowerDegreeSpaces.lean",
+      "sha256": "c8f388bdcb41e3a8d4bf439a7ef042ddeb6d2cccdfb08d6183429d9a80a1c2c4",
+      "bytes": 8192
+    },
+    {
+      "module": "PaperVerification.PowerCoefficientMap",
+      "path": "source/PaperVerification/PowerCoefficientMap.lean",
+      "sha256": "1aed986fa281bd4582f63096f868bf138b7419ac1d64b97441ddd3157788afed",
+      "bytes": 4774
+    },
+    {
+      "module": "PaperVerification.FermionSupport",
+      "path": "source/PaperVerification/FermionSupport.lean",
+      "sha256": "a69a50e6415a642e67817ce02e61786c7c63982859163ea615d73c1fcddc9df6",
+      "bytes": 5957
+    },
+    {
+      "module": "PaperVerification.FermionRadical",
+      "path": "source/PaperVerification/FermionRadical.lean",
+      "sha256": "279d594bacf98c4a97ac5e3a3a71350daa337a0c5d594eaba0ba7aa75240c23f",
+      "bytes": 8017
+    },
+    {
+      "module": "PaperVerification.HomogeneousLocalization",
+      "path": "source/PaperVerification/HomogeneousLocalization.lean",
+      "sha256": "4c4d437e929ca8ee8310556b8a4527aca133c2c9b6b2906beaae4ea67e8c7540",
+      "bytes": 7041
+    },
+    {
+      "module": "TauCeti.RingTheory.Ideal.Colon",
+      "path": "source/TauCeti/RingTheory/Ideal/Colon.lean",
+      "sha256": "3e0ab9ea1b49010546a7b0a247d6195ebd8174bdcb28268d1aa0aaa911995b08",
+      "bytes": 2826
+    },
+    {
+      "module": "TauCeti.RingTheory.Ideal.AssociatedPrime.Basic",
+      "path": "source/TauCeti/RingTheory/Ideal/AssociatedPrime/Basic.lean",
+      "sha256": "f1838d9c9edf00f5e42807c2925a52eb0f33adab58f6b61054d7631d120bfc9c",
+      "bytes": 7852
+    },
+    {
+      "module": "TauCeti.RingTheory.Ideal.AssociatedPrime.Localization",
+      "path": "source/TauCeti/RingTheory/Ideal/AssociatedPrime/Localization.lean",
+      "sha256": "3e967f10bc370f6ea04571dd886ca03359e61512bd74f50f90bf0e9ca8819cfc",
+      "bytes": 1760
+    },
+    {
+      "module": "TauCeti.Topology.KrullDimension.Basic",
+      "path": "source/TauCeti/Topology/KrullDimension/Basic.lean",
+      "sha256": "ae82186891b277f9fa15df216b0ce8d4e4110e823c9ae999a2c681cd0118fb14",
+      "bytes": 6654
+    },
+    {
+      "module": "TauCeti.Topology.KrullDimension.Local",
+      "path": "source/TauCeti/Topology/KrullDimension/Local.lean",
+      "sha256": "7b8fafc74146666e51b148db1f5f6ed4b80a8dbf7ce91d186de80a2d320006d3",
+      "bytes": 5490
+    },
+    {
+      "module": "TauCeti.Topology.PureDimension",
+      "path": "source/TauCeti/Topology/PureDimension.lean",
+      "sha256": "10cbb1273544604ce0a6b049c13ee841e430e8ae287654bc3b2226add1fda2f7",
+      "bytes": 7351
+    },
+    {
+      "module": "TauCeti.Order.Catenary",
+      "path": "source/TauCeti/Order/Catenary.lean",
+      "sha256": "215613fe251190a8bd33574a91a3e7a590821c579b661739ee35c091037c2ff1",
+      "bytes": 16664
+    },
+    {
+      "module": "TauCeti.RingTheory.Catenary",
+      "path": "source/TauCeti/RingTheory/Catenary.lean",
+      "sha256": "587e948e600de213501ec6c01c1707a81ebcfde195ca5dc65fbeda9b84e0cb19",
+      "bytes": 11595
+    },
+    {
+      "module": "TauCeti.Topology.KrullDimension.Irreducible",
+      "path": "source/TauCeti/Topology/KrullDimension/Irreducible.lean",
+      "sha256": "6ed163d9de4e43913dad182b04454435c88bc5b276d8dd03b0fe49a71b1acf8a",
+      "bytes": 7978
+    },
+    {
+      "module": "TauCeti.Topology.KrullDimension.ClosedCover",
+      "path": "source/TauCeti/Topology/KrullDimension/ClosedCover.lean",
+      "sha256": "a45f61b8c1831c8deff2a06a094e3372d94d10a003637f5ee8dc45a204232853",
+      "bytes": 6751
+    },
+    {
+      "module": "TauCeti.RingTheory.KrullDimension.Quotient",
+      "path": "source/TauCeti/RingTheory/KrullDimension/Quotient.lean",
+      "sha256": "de0cd86603848e75b428d09659f7bda167a59dba0efcdd563405274ba6931052",
+      "bytes": 19382
+    },
+    {
+      "module": "TauCeti.Algebra.Ring.Subgroup",
+      "path": "source/TauCeti/Algebra/Ring/Subgroup.lean",
+      "sha256": "ffd04f13126372068893464e45dda7c716469044705cb63bb3245af24e61f16f",
+      "bytes": 4680
+    },
+    {
+      "module": "TauCeti.RingTheory.Ideal.Operations",
+      "path": "source/TauCeti/RingTheory/Ideal/Operations.lean",
+      "sha256": "e9d1da6a26cd3f1f59ddef40bde4a7df26925129ec7caeecc6a4de48064e2f6c",
+      "bytes": 20283
+    },
+    {
+      "module": "TauCeti.Algebra.Module.Projective.LinearMap",
+      "path": "source/TauCeti/Algebra/Module/Projective/LinearMap.lean",
+      "sha256": "d120892c7939802dd71421e072e9a6465bcf294e5350ae9b8607a6506beb58d2",
+      "bytes": 8957
+    },
+    {
+      "module": "TauCeti.RingTheory.Regular.LinearMap",
+      "path": "source/TauCeti/RingTheory/Regular/LinearMap.lean",
+      "sha256": "746f33e86d330a9621fc1e102cd493df4fb881b9fc198c637a626dec9578723e",
+      "bytes": 4012
+    },
+    {
+      "module": "TauCeti.Algebra.Category.ModuleCat.Ext.Basic",
+      "path": "source/TauCeti/Algebra/Category/ModuleCat/Ext/Basic.lean",
+      "sha256": "809f06e954a5fe0bab4311afe386f3a09629e2866e29db8a836650649ffc05c8",
+      "bytes": 4933
+    },
+    {
+      "module": "TauCeti.Data.ENat.Basic",
+      "path": "source/TauCeti/Data/ENat/Basic.lean",
+      "sha256": "99b36c37565392da7fcb966ea8deed04c5a4fafb9326be6565ff8ce409367ac5",
+      "bytes": 1628
+    },
+    {
+      "module": "TauCeti.RingTheory.Localization.Module",
+      "path": "source/TauCeti/RingTheory/Localization/Module.lean",
+      "sha256": "c26d55b55950e24b63e2b22f807f237649bf4447141bddccef4c34a81df57e1a",
+      "bytes": 8136
+    },
+    {
+      "module": "TauCeti.RingTheory.Depth.Basic",
+      "path": "source/TauCeti/RingTheory/Depth/Basic.lean",
+      "sha256": "77fc064148b1989af7ec98ba669fa0cc698cdc7f64c782c026cc204cfc5ead8f",
+      "bytes": 37318
+    },
+    {
+      "module": "TauCeti.RingTheory.Localization.Annihilator",
+      "path": "source/TauCeti/RingTheory/Localization/Annihilator.lean",
+      "sha256": "b356b87c858169dc593b3c7c578a8a2d03813dcea58ae2336abcf6cb8145b6be",
+      "bytes": 5857
+    },
+    {
+      "module": "TauCeti.RingTheory.KrullDimension.Module",
+      "path": "source/TauCeti/RingTheory/KrullDimension/Module.lean",
+      "sha256": "6c2675cd5715defd92e3359f0b8955deb1a6e31f04e44d5ceb6b8cb62ea731c6",
+      "bytes": 5600
+    },
+    {
+      "module": "TauCeti.RingTheory.CohenMacaulay.Basic",
+      "path": "source/TauCeti/RingTheory/CohenMacaulay/Basic.lean",
+      "sha256": "51d417c1bab29832722115b86b6e316b78043a12aa23f955e4f966a12809e49b",
+      "bytes": 13549
+    },
+    {
+      "module": "TauCeti.RingTheory.KrullDimension.Regular",
+      "path": "source/TauCeti/RingTheory/KrullDimension/Regular.lean",
+      "sha256": "63ebcdab101dea2945adb9791e39fe9cd7060e3aac851f0be94819e5d39a0f35",
+      "bytes": 6809
+    },
+    {
+      "module": "TauCeti.Data.ENat.Monoid",
+      "path": "source/TauCeti/Data/ENat/Monoid.lean",
+      "sha256": "a377a9bc52f650bbc0b94c655af1ac38f3e0808a2559adf344bb5fce4e4dc0ef",
+      "bytes": 1017
+    },
+    {
+      "module": "TauCeti.RingTheory.LocalRing.MaximalIdeal.Generator",
+      "path": "source/TauCeti/RingTheory/LocalRing/MaximalIdeal/Generator.lean",
+      "sha256": "15712f0c543c0d3897ec64c71bb02a341a54cc19db5861020d27ba30f01495b0",
+      "bytes": 5623
+    },
+    {
+      "module": "TauCeti.RingTheory.Ideal.Quotient.Colon",
+      "path": "source/TauCeti/RingTheory/Ideal/Quotient/Colon.lean",
+      "sha256": "545f5290b3bd9bf21326674b2149dbbdd6761cbf718e081c7e2f71bf24496294",
+      "bytes": 1300
+    },
+    {
+      "module": "TauCeti.RingTheory.CohenMacaulay.Normal",
+      "path": "source/TauCeti/RingTheory/CohenMacaulay/Normal.lean",
+      "sha256": "bb7d1f4e4700f1dec34125c063584e6c0ba0a82dc13c5d31eb9a259965436805",
+      "bytes": 10169
+    },
+    {
+      "module": "TauCeti.RingTheory.IntegralClosure.GoingDown",
+      "path": "source/TauCeti/RingTheory/IntegralClosure/GoingDown.lean",
+      "sha256": "6155fb2f2263352cc112d7692c2d033ac4c60ff2ae448adcde43aace84aa0406",
+      "bytes": 4407
+    },
+    {
+      "module": "TauCeti.RingTheory.KrullDimension.Fiber",
+      "path": "source/TauCeti/RingTheory/KrullDimension/Fiber.lean",
+      "sha256": "1504d100c5e0024125036bb1637f3e09bdca7b8f766507577d4d65acc02a40f6",
+      "bytes": 14433
+    },
+    {
+      "module": "TauCeti.RingTheory.LocalRing.Quotient",
+      "path": "source/TauCeti/RingTheory/LocalRing/Quotient.lean",
+      "sha256": "856aab433a73b267b5e7da9d09cb8d6f059c3183a9c2239d333378053b32d584",
+      "bytes": 8164
+    },
+    {
+      "module": "TauCeti.RingTheory.CohenMacaulay.RegularSequence",
+      "path": "source/TauCeti/RingTheory/CohenMacaulay/RegularSequence.lean",
+      "sha256": "ed25f55c6890c9b66488171a05529d4637b301b4b426019862bcb3baa9acbc4a",
+      "bytes": 23337
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.Span.Basic",
+      "path": "source/TauCeti/LinearAlgebra/Span/Basic.lean",
+      "sha256": "79884fde50280d80801e96ea59cab2eadfaa902e075823a9593f4d9bb32c6a06",
+      "bytes": 5699
+    },
+    {
+      "module": "TauCeti.RingTheory.LocalRing.MaximalIdeal.Square",
+      "path": "source/TauCeti/RingTheory/LocalRing/MaximalIdeal/Square.lean",
+      "sha256": "0f712d1a590c1636d69a4a0cf7b7b5b43dc58617323bc288cce65fee259aa3bd",
+      "bytes": 13184
+    },
+    {
+      "module": "TauCeti.RingTheory.RegularLocalRing.Basic",
+      "path": "source/TauCeti/RingTheory/RegularLocalRing/Basic.lean",
+      "sha256": "d0b99478f80b4f71f0c8899a032b48e84c87b4b6d26b906c18d8281781ad4c17",
+      "bytes": 15115
+    },
+    {
+      "module": "TauCeti.Algebra.Module.SpanRank",
+      "path": "source/TauCeti/Algebra/Module/SpanRank.lean",
+      "sha256": "8be040175ebc7ab5942caaad2c27243aab839f07b9a98dbe9782f63eba3ae370",
+      "bytes": 6676
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.Matrix.Adjugate.Basic",
+      "path": "source/TauCeti/LinearAlgebra/Matrix/Adjugate/Basic.lean",
+      "sha256": "915cd347fc7dc98a368584242fbaa2cc1fb2112c667c6295a396a99ce53f90eb",
+      "bytes": 3625
+    },
+    {
+      "module": "TauCeti.RingTheory.Spectrum.Prime.Point",
+      "path": "source/TauCeti/RingTheory/Spectrum/Prime/Point.lean",
+      "sha256": "34fe3837cd2f7db8bcf322d5037b0a54abf8a027105c8f6e12a43a2ce0d2434c",
+      "bytes": 10916
+    },
+    {
+      "module": "TauCeti.RingTheory.Finiteness.Nakayama",
+      "path": "source/TauCeti/RingTheory/Finiteness/Nakayama.lean",
+      "sha256": "9d91bffddba758068dff7fca250afee8958dc7d394cb3e897c646d72fca3ff0a",
+      "bytes": 11029
+    },
+    {
+      "module": "TauCeti.RingTheory.Regular.RegularSequence",
+      "path": "source/TauCeti/RingTheory/Regular/RegularSequence.lean",
+      "sha256": "32e94ac1e00d138abac8edd28d2f1f95c38a02959d396fe90dcc76d6a71d3506",
+      "bytes": 12261
+    },
+    {
+      "module": "TauCeti.RingTheory.Depth.WeaklyRegular",
+      "path": "source/TauCeti/RingTheory/Depth/WeaklyRegular.lean",
+      "sha256": "eacea559e931c123dbc093252b4996b569ee9e684b61ebbbd734542131ff3c2a",
+      "bytes": 8529
+    },
+    {
+      "module": "TauCeti.RingTheory.CohenMacaulay.Height",
+      "path": "source/TauCeti/RingTheory/CohenMacaulay/Height.lean",
+      "sha256": "487d3fbb0438f7768a8f09f0d04a41feccc05771306a85386af8b81ab076b378",
+      "bytes": 5149
+    },
+    {
+      "module": "TauCeti.RingTheory.RegularLocalRing.CohenMacaulay",
+      "path": "source/TauCeti/RingTheory/RegularLocalRing/CohenMacaulay.lean",
+      "sha256": "8655bbe5868500106e8671d49bd04740d2ee5480a4d24fb57d75e3243fac0dad",
+      "bytes": 6881
+    },
+    {
+      "module": "TauCeti.RingTheory.KrullDimension.Integral",
+      "path": "source/TauCeti/RingTheory/KrullDimension/Integral.lean",
+      "sha256": "709480b83ac3d400aae3723e2aba7a9cbc3496f0bf0d830c2cd65f54db43131c",
+      "bytes": 6868
+    },
+    {
+      "module": "TauCeti.RingTheory.KrullDimension.Basic",
+      "path": "source/TauCeti/RingTheory/KrullDimension/Basic.lean",
+      "sha256": "14962ad4f21e7d27e4e8d73fb509ff614bc9becb5f37c78341dfd72d7d0fb7c4",
+      "bytes": 2259
+    },
+    {
+      "module": "TauCeti.RingTheory.KrullDimension.FiniteType",
+      "path": "source/TauCeti/RingTheory/KrullDimension/FiniteType.lean",
+      "sha256": "20016a39bed53eea9c57d8ee7c187428c1eb86f0b4129773f7470046f1215203",
+      "bytes": 31534
+    },
+    {
+      "module": "TauCeti.RingTheory.KrullDimension.Polynomial",
+      "path": "source/TauCeti/RingTheory/KrullDimension/Polynomial.lean",
+      "sha256": "27a25a6e850e326dcd4c60d05eb416c64eeade096a838d6fbf8a3d01002fa905",
+      "bytes": 3586
+    },
+    {
+      "module": "PaperVerification.HomogeneousRegularSequence",
+      "path": "source/PaperVerification/HomogeneousRegularSequence.lean",
+      "sha256": "c1be07e97e6e942a716e49ee8da58d369ab9de969150fb4ee51da310fa526560",
+      "bytes": 3922
+    },
+    {
+      "module": "PaperVerification.FermionOrdinaryParameters",
+      "path": "source/PaperVerification/FermionOrdinaryParameters.lean",
+      "sha256": "2e7d5f364e547c38099d9f0bcc21ee9083e4a915920c85499137480cc208b2b8",
+      "bytes": 9423
+    },
+    {
+      "module": "PaperVerification.PowerGenericParameters",
+      "path": "source/PaperVerification/PowerGenericParameters.lean",
+      "sha256": "4cd30fd7db4417d8d2ca6405a3c9c4aed01ea7f6d7f5637180f3f68b0141a869",
+      "bytes": 4769
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.Matrix.Rank",
+      "path": "source/TauCeti/LinearAlgebra/Matrix/Rank.lean",
+      "sha256": "1c1f61c652af88d7a7cfbaf3ce79bf7fbf343449abb8320a8e7277b99814e804",
+      "bytes": 22238
+    },
+    {
+      "module": "PaperVerification.MatrixRank",
+      "path": "source/PaperVerification/MatrixRank.lean",
+      "sha256": "8cc0b85b9089aa170e9553cacec8feba4639a2d66a564190219d495b1d54d640",
+      "bytes": 559
+    },
+    {
+      "module": "PaperVerification.RankSpecialization",
+      "path": "source/PaperVerification/RankSpecialization.lean",
+      "sha256": "2087d2d3aa45269e17830f31706f1930fdc8e874e9465ec28b424fc495691420",
+      "bytes": 6057
+    },
+    {
+      "module": "TauCeti.RingTheory.MvPolynomial.RestrictSupport",
+      "path": "source/TauCeti/RingTheory/MvPolynomial/RestrictSupport.lean",
+      "sha256": "6b0b1bda92060c9bd74218cbb40adb8e461ad9ff93a8ba368b8c33f4f22e6038",
+      "bytes": 1601
+    },
+    {
+      "module": "PaperVerification.PowerDegreeMatrices",
+      "path": "source/PaperVerification/PowerDegreeMatrices.lean",
+      "sha256": "665465d4e589ebad088504b0da6d22221b6c6032a7cce5eb21f17f648f5e6917",
+      "bytes": 13589
+    },
+    {
+      "module": "PaperVerification.PowerDegreeQuotient",
+      "path": "source/PaperVerification/PowerDegreeQuotient.lean",
+      "sha256": "ed495e0bdc1d1f862c75850671e5abde4af42f3d9c85dddffbed83d3ffeaeb04",
+      "bytes": 6937
+    },
+    {
+      "module": "PaperVerification.PowerStabilizerCharacteristic",
+      "path": "source/PaperVerification/PowerStabilizerCharacteristic.lean",
+      "sha256": "9b88cfe318518bef24bc91599a087cb705002f2ce28353839faeb54076e39d7a",
+      "bytes": 4635
+    },
+    {
+      "module": "PaperVerification.PowerGroupedParameters",
+      "path": "source/PaperVerification/PowerGroupedParameters.lean",
+      "sha256": "84695f0049bbe9c66f226626baef0a1329f0f75654c58eaaf6c11673630c2b38",
+      "bytes": 4565
+    },
+    {
+      "module": "PaperVerification.QuotientLinearAction",
+      "path": "source/PaperVerification/QuotientLinearAction.lean",
+      "sha256": "920226fcedc7b6e7ffc2aae23a65450ae3a345e3c1eea1db9f1dcff611f6b928",
+      "bytes": 1607
+    },
+    {
+      "module": "PaperVerification.PowerPermutationAction",
+      "path": "source/PaperVerification/PowerPermutationAction.lean",
+      "sha256": "08c328a5aed331194b11725dcb96da8037348472972b8205c9d60b96ce2cd000",
+      "bytes": 8660
+    },
+    {
+      "module": "PaperVerification.EquivariantHomExact",
+      "path": "source/PaperVerification/EquivariantHomExact.lean",
+      "sha256": "011695a879ead3cbeac09ac3e331dd04b466286788b2bb63b7b09efd7cd697e5",
+      "bytes": 7207
+    },
+    {
+      "module": "PaperVerification.ProjectedRankSpecialization",
+      "path": "source/PaperVerification/ProjectedRankSpecialization.lean",
+      "sha256": "354a9bced79449fcb5772f93d2bd09646032d95d4c718a221482b27ad38d3ad0",
+      "bytes": 4971
+    },
+    {
+      "module": "PaperVerification.EquivariantHomMatrices",
+      "path": "source/PaperVerification/EquivariantHomMatrices.lean",
+      "sha256": "1a3f70de42b54f47bdf5e7d907b5f8bf4a4597f572b3e8a695ce0e598185068c",
+      "bytes": 7238
+    },
+    {
+      "module": "PaperVerification.EquivariantHomSpecialization",
+      "path": "source/PaperVerification/EquivariantHomSpecialization.lean",
+      "sha256": "9a803b7f55c54f8a67232f3fe8f08776a350c5e127e90ae3f2a0659c25b57eae",
+      "bytes": 5310
+    },
+    {
+      "module": "PaperVerification.EquivariantHomRank",
+      "path": "source/PaperVerification/EquivariantHomRank.lean",
+      "sha256": "6cf5c54499668156a18904ca27cda9333b25a9de3e734ad3a141f810a27db255",
+      "bytes": 6039
+    },
+    {
+      "module": "PaperVerification.EquivariantCokernelSpecialization",
+      "path": "source/PaperVerification/EquivariantCokernelSpecialization.lean",
+      "sha256": "63706d14002c06f51dfdf276aa72ba845b20b4a57af92713fc40124507476264",
+      "bytes": 8364
+    },
+    {
+      "module": "PaperVerification.PowerDegreeActions",
+      "path": "source/PaperVerification/PowerDegreeActions.lean",
+      "sha256": "a7aa86a2843759beea6cf93e8e5d358c6dc4c31e72ddc38d26348ca8c4c18209",
+      "bytes": 11459
+    },
+    {
+      "module": "PaperVerification.PowerOriginalDegreeMatrices",
+      "path": "source/PaperVerification/PowerOriginalDegreeMatrices.lean",
+      "sha256": "9798729df9b6e1aba064dc2a9e8f6465b23351723bacd4b7e9672cb0217bbf95",
+      "bytes": 11661
+    },
+    {
+      "module": "PaperVerification.PowerArtinBasis",
+      "path": "source/PaperVerification/PowerArtinBasis.lean",
+      "sha256": "ab8346b8f77f4d3bdb947db6bf1dabaefe4e94d775613b32543e01d18494cf23",
+      "bytes": 6410
+    },
+    {
+      "module": "TauCeti.Algebra.DirectSum.Internal",
+      "path": "source/TauCeti/Algebra/DirectSum/Internal.lean",
+      "sha256": "45963701ec69a06ff3b6a1a255609cb4601fb3b1b36950f142d9ea367ef46898",
+      "bytes": 27478
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.Graded.LinearMap",
+      "path": "source/TauCeti/LinearAlgebra/Graded/LinearMap.lean",
+      "sha256": "c41e294634274fcf04abf82e3e01c9274a5af1410e700abd6b7ed191ee6ca425",
+      "bytes": 7415
+    },
+    {
+      "module": "TauCeti.Order.CompactlyGenerated",
+      "path": "source/TauCeti/Order/CompactlyGenerated.lean",
+      "sha256": "3e93b2db178a1ec7405805e8c44586d3f72ea96a56160499f13ada61cde5983f",
+      "bytes": 4797
+    },
+    {
+      "module": "TauCeti.Algebra.Module.Submodule.Finite",
+      "path": "source/TauCeti/Algebra/Module/Submodule/Finite.lean",
+      "sha256": "5df7767f5312f9fda15b38fc53cae4a62ce0441f45f33eb93d5e54df68678593",
+      "bytes": 5157
+    },
+    {
+      "module": "TauCeti.Algebra.Module.GradedModule.Internal",
+      "path": "source/TauCeti/Algebra/Module/GradedModule/Internal.lean",
+      "sha256": "3fbc490d719f155b2a31064f03393ed21373e3cfd46d27365dcfdca8a5100b3e",
+      "bytes": 37899
+    },
+    {
+      "module": "TauCeti.Algebra.Module.GradedModule.Quotient",
+      "path": "source/TauCeti/Algebra/Module/GradedModule/Quotient.lean",
+      "sha256": "97681b24a5a5c96207f98d9d1649b39844ff7d8b0d8ffa3a72d37d4c1167d8c8",
+      "bytes": 9558
+    },
+    {
+      "module": "PaperVerification.FermionGradedHilbert",
+      "path": "source/PaperVerification/FermionGradedHilbert.lean",
+      "sha256": "fe83f9eaa8a217eefb5f4dc0caea359738b6fcbe5b3f90596b9b1ab0e8650019",
+      "bytes": 10982
+    },
+    {
+      "module": "PaperVerification.FermionFiniteGrading",
+      "path": "source/PaperVerification/FermionFiniteGrading.lean",
+      "sha256": "516b798204abc348f2a607d8ef8c3fa0cd407712a6c0cdce5a96fa98ca32869e",
+      "bytes": 3058
+    },
+    {
+      "module": "PaperVerification.GradedDimensionComparison",
+      "path": "source/PaperVerification/GradedDimensionComparison.lean",
+      "sha256": "a4e792354136695a41d847d6140af6b76176b4cb60f789c99dd03290d1ef55cd",
+      "bytes": 1667
+    },
+    {
+      "module": "PaperVerification.HilbertTowerCount",
+      "path": "source/PaperVerification/HilbertTowerCount.lean",
+      "sha256": "c1a9349c0abdc117f38ba7bdb081fad559b252cfaa2fe1b37e86b29affbb95e8",
+      "bytes": 5530
+    },
+    {
+      "module": "PaperVerification.FermionPolynomialHilbert",
+      "path": "source/PaperVerification/FermionPolynomialHilbert.lean",
+      "sha256": "e0ace279d94059cfb656e42eddf71cc33f66573d39c980f7dad05e5923dd19f4",
+      "bytes": 6370
+    },
+    {
+      "module": "PaperVerification.FermionIdealHilbert",
+      "path": "source/PaperVerification/FermionIdealHilbert.lean",
+      "sha256": "1adf7010cd0adeb73b356cc13d53665dec18dcb83236c683ccb8ff3883a96941",
+      "bytes": 16668
+    },
+    {
+      "module": "PaperVerification.FermionCompleteIntersectionLength",
+      "path": "source/PaperVerification/FermionCompleteIntersectionLength.lean",
+      "sha256": "afe8b82e7d6efbc47dd17d9eef12a7827f096513d2ca8af3a4f8cdfb43a62fbd",
+      "bytes": 4705
+    },
+    {
+      "module": "PaperVerification.FermionOrdinaryLength",
+      "path": "source/PaperVerification/FermionOrdinaryLength.lean",
+      "sha256": "7451cc96b1c773dd791d56bf0b5abeb19dc5278fc6fd196756f5df57f8b21a38",
+      "bytes": 2993
+    },
+    {
+      "module": "PaperVerification.PowerBasisTheorem",
+      "path": "source/PaperVerification/PowerBasisTheorem.lean",
+      "sha256": "a7412da5b278796d6dc6c38acdad741988a07606c2f730431a207b595b74cdfd",
+      "bytes": 5151
+    },
+    {
+      "module": "PaperVerification.PowerOriginalBasis",
+      "path": "source/PaperVerification/PowerOriginalBasis.lean",
+      "sha256": "c3455b27954ab13d73c9d7de48b17377cb6e69e1d154057a1239b78fc8fb7027",
+      "bytes": 4026
+    },
+    {
+      "module": "PaperVerification.PowerOriginalAction",
+      "path": "source/PaperVerification/PowerOriginalAction.lean",
+      "sha256": "47b6d88fbad34581f3fdb317e49072b30b03ed0b3d9de9055760d3365c13fa10",
+      "bytes": 9769
+    },
+    {
+      "module": "PaperVerification.PowerOriginalDegreePresentation",
+      "path": "source/PaperVerification/PowerOriginalDegreePresentation.lean",
+      "sha256": "942c8875c11c3c5ebff754208352391d79f03d7dbee1d00ef1cd433abe3cf34e",
+      "bytes": 5390
+    },
+    {
+      "module": "PaperVerification.PowerHarmonicWitness",
+      "path": "source/PaperVerification/PowerHarmonicWitness.lean",
+      "sha256": "34d7fb31be5cc78f96b91f48f081e83d633c7c3e02eaa6ac4f303eb2e66c11a8",
+      "bytes": 8459
+    },
+    {
+      "module": "PaperVerification.PowerFischerPairing",
+      "path": "source/PaperVerification/PowerFischerPairing.lean",
+      "sha256": "0459450ff7a802c49cb4be3381ded72317b9912a77211be54cd84466876c76cf",
+      "bytes": 8506
+    },
+    {
+      "module": "PaperVerification.PowerHarmonicQuotient",
+      "path": "source/PaperVerification/PowerHarmonicQuotient.lean",
+      "sha256": "bd54b56a03b0b7bc147e634e072c5bd406b025ff2c22d56838872d43306f21c4",
+      "bytes": 3313
+    },
+    {
+      "module": "PaperVerification.PowerStandardHarmonics",
+      "path": "source/PaperVerification/PowerStandardHarmonics.lean",
+      "sha256": "747e098e19aba495d635ea6df60dd37ac8e77246e89a73a81e2da3c8f24266fe",
+      "bytes": 10398
+    },
+    {
+      "module": "PaperVerification.PowerStandardDual",
+      "path": "source/PaperVerification/PowerStandardDual.lean",
+      "sha256": "371f9455c0f3bfbad99999561e692199d545a1b45e8fc77dee6110df6a432cfe",
+      "bytes": 5195
+    },
+    {
+      "module": "PaperVerification.EquivariantSection",
+      "path": "source/PaperVerification/EquivariantSection.lean",
+      "sha256": "964db04f82839c75f5d43b2db263fe8f205027e0902987b9df88336961972a7c",
+      "bytes": 3939
+    },
+    {
+      "module": "PaperVerification.SelfDualSubrepresentation",
+      "path": "source/PaperVerification/SelfDualSubrepresentation.lean",
+      "sha256": "4d5e94e5040b28fafb51a50d194b7525e4f39f6b38fe446850f773e19b76a603",
+      "bytes": 2571
+    },
+    {
+      "module": "PaperVerification.PowerResonantStandard",
+      "path": "source/PaperVerification/PowerResonantStandard.lean",
+      "sha256": "737e36bfc04311ea19b2fcad98f0b69abab052c3c51de987d8a69730c81ce58e",
+      "bytes": 2936
+    },
+    {
+      "module": "TauCeti.RingTheory.MvPolynomial.Symmetric.Homogeneous",
+      "path": "source/TauCeti/RingTheory/MvPolynomial/Symmetric/Homogeneous.lean",
+      "sha256": "4e704faf495cc28fba49e670dae46848494cf7b49cee3f612d5f97645b14bbd2",
+      "bytes": 4271
+    },
+    {
+      "module": "TauCeti.Data.Sym.Basic",
+      "path": "source/TauCeti/Data/Sym/Basic.lean",
+      "sha256": "697125458a8956fdd53b94617936970ad004cbd38e0ec6a7749be9fe41c13b10",
+      "bytes": 9611
+    },
+    {
+      "module": "TauCeti.RingTheory.MvPolynomial.Symmetric.Complete.Basic",
+      "path": "source/TauCeti/RingTheory/MvPolynomial/Symmetric/Complete/Basic.lean",
+      "sha256": "dcaddad40c187ec2e3f1b66a0c4b27aa65fa2e679b41f57a416db3d467f25edd",
+      "bytes": 11214
+    },
+    {
+      "module": "TauCeti.RingTheory.PowerSeries.Rescale",
+      "path": "source/TauCeti/RingTheory/PowerSeries/Rescale.lean",
+      "sha256": "0123689f7d2ca9179df8e52cec70ae36c0bdd337214f77d7b4eab2c39733bf37",
+      "bytes": 777
+    },
+    {
+      "module": "TauCeti.RingTheory.MvPolynomial.Symmetric.Elementary",
+      "path": "source/TauCeti/RingTheory/MvPolynomial/Symmetric/Elementary.lean",
+      "sha256": "c59fb1dc600e332424c3856ea3df2e17305856de0d2e6189a0d40ca18da04da4",
+      "bytes": 8565
+    },
+    {
+      "module": "TauCeti.Algebra.BigOperators.Finset.Range",
+      "path": "source/TauCeti/Algebra/BigOperators/Finset/Range.lean",
+      "sha256": "9ddabc368624d4e5b7a524785fe410cbe3e58ff0172ba3bc2f9dee7e40b6b777",
+      "bytes": 31270
+    },
+    {
+      "module": "TauCeti.RingTheory.PowerSeries.Geometric",
+      "path": "source/TauCeti/RingTheory/PowerSeries/Geometric.lean",
+      "sha256": "ba67ee51121ee013b51f04802bb15f5083ab73c324a3724f3f92a83d5fbcb8e6",
+      "bytes": 5435
+    },
+    {
+      "module": "TauCeti.RingTheory.MvPolynomial.Symmetric.Complete.Elementary",
+      "path": "source/TauCeti/RingTheory/MvPolynomial/Symmetric/Complete/Elementary.lean",
+      "sha256": "e54e44c54e8507a4ea7b6d7df0703105feabe87fd4f5feeb0b38034a5ab7b0f4",
+      "bytes": 13763
+    },
+    {
+      "module": "PaperVerification.PowerCoinvariantComparator",
+      "path": "source/PaperVerification/PowerCoinvariantComparator.lean",
+      "sha256": "0406930c769f3507ba3eb4a83c6d81de615b709c4c920d8bee6353da95a90849",
+      "bytes": 3797
+    },
+    {
+      "module": "PaperVerification.PowerCoinvariantStabilizer",
+      "path": "source/PaperVerification/PowerCoinvariantStabilizer.lean",
+      "sha256": "89ef16111efb3f1dceba24421e9fa1c16e498727ca6ae0e916a49d78f4e04848",
+      "bytes": 12534
+    },
+    {
+      "module": "PaperVerification.PowerCoinvariantAction",
+      "path": "source/PaperVerification/PowerCoinvariantAction.lean",
+      "sha256": "04f25b0f121a6d33dc6f69676bce104b6c2fa02e9e85a6208efa477598a4f822",
+      "bytes": 5738
+    },
+    {
+      "module": "PaperVerification.PowerCoinvariantStandard",
+      "path": "source/PaperVerification/PowerCoinvariantStandard.lean",
+      "sha256": "c7b42cad21847e4c9ec159a9616bdaba94cdfefaa657a8bbc6e16964752ca713",
+      "bytes": 5072
+    },
+    {
+      "module": "PaperVerification.PowerDegreePresentation",
+      "path": "source/PaperVerification/PowerDegreePresentation.lean",
+      "sha256": "bcd016ee8c90a3baafe826a6a6cb9e0a27b2bf8af44ddaaf326ce7be6de3f779",
+      "bytes": 4240
+    },
+    {
+      "module": "PaperVerification.PowerEquivariantSpecialization",
+      "path": "source/PaperVerification/PowerEquivariantSpecialization.lean",
+      "sha256": "e4f6d1ba7292dfe68b8e6d9a5c72a4b507188003e2bbdf754daa9c3fe3490ab6",
+      "bytes": 10366
+    },
+    {
+      "module": "PaperVerification.HomogeneousNullstellensatz",
+      "path": "source/PaperVerification/HomogeneousNullstellensatz.lean",
+      "sha256": "f4bd4f39a3b2b81f6e49e7b76a0d47fde7fd0b05570324ce3d9e08d754be2b0c",
+      "bytes": 2527
+    },
+    {
+      "module": "PaperVerification.AlternatingFormsFieldDescent",
+      "path": "source/PaperVerification/AlternatingFormsFieldDescent.lean",
+      "sha256": "1b758b80d9de65a4949fd2531cacc11dbdda08062021325c3d784960609b1512",
+      "bytes": 3887
+    },
+    {
+      "module": "PaperVerification.PowerCompleteHomogeneousRegular",
+      "path": "source/PaperVerification/PowerCompleteHomogeneousRegular.lean",
+      "sha256": "7daa8a64e4094ad6ee80f2a2a3e120f28531b89060a24da338f1620b858d9e08",
+      "bytes": 6546
+    },
+    {
+      "module": "PaperVerification.HomogeneousKoszulMatrices",
+      "path": "source/PaperVerification/HomogeneousKoszulMatrices.lean",
+      "sha256": "7535ef91a3b66c53d3212668f7e76232277846602cbaa9fade69b46b59ac82e2",
+      "bytes": 11711
+    },
+    {
+      "module": "PaperVerification.HomogeneousKoszulRepresentation",
+      "path": "source/PaperVerification/HomogeneousKoszulRepresentation.lean",
+      "sha256": "43f86f844f5c3baf1913742523053c983b3b833adedcf02923bfd8324a4f718c",
+      "bytes": 10527
+    },
+    {
+      "module": "PaperVerification.HomogeneousKoszulSpecialization",
+      "path": "source/PaperVerification/HomogeneousKoszulSpecialization.lean",
+      "sha256": "142c76c17605f4706da3db037d177d23ec275f2e3830a5f130334416b3bba09d",
+      "bytes": 6127
+    },
+    {
+      "module": "PaperVerification.PowerRegularComparator",
+      "path": "source/PaperVerification/PowerRegularComparator.lean",
+      "sha256": "98c8f06c69193dfef6430b332a832e016b707ca37ccc50f92cda4f6dcd436abd",
+      "bytes": 11691
+    },
+    {
+      "module": "PaperVerification.PowerEquivariantLowerBound",
+      "path": "source/PaperVerification/PowerEquivariantLowerBound.lean",
+      "sha256": "ac468b2266df277c8677eee208b02e7208ae8e46bb1e71244109945482f1c20c",
+      "bytes": 4163
+    },
+    {
+      "module": "PaperVerification.PowerComparatorLength",
+      "path": "source/PaperVerification/PowerComparatorLength.lean",
+      "sha256": "e4641650da91311a77ec4a290b347129dabc3a4c49ced45462d4e13e23e64507",
+      "bytes": 3928
+    },
+    {
+      "module": "TauCeti.RingTheory.SimpleModule.Isotypic",
+      "path": "source/TauCeti/RingTheory/SimpleModule/Isotypic.lean",
+      "sha256": "0983d55a0f36220f2d01886bd9195f1536935913b258b810f3fcbb8ef01c55ea",
+      "bytes": 13938
+    },
+    {
+      "module": "TauCeti.Algebra.Module.Submodule.Quotient",
+      "path": "source/TauCeti/Algebra/Module/Submodule/Quotient.lean",
+      "sha256": "0591e7c12576ded682a9d92dfe2bbf2962b0133f671e72a4df5749137b701c1e",
+      "bytes": 19505
+    },
+    {
+      "module": "TauCeti.RingTheory.CompositionSeries.Basic",
+      "path": "source/TauCeti/RingTheory/CompositionSeries/Basic.lean",
+      "sha256": "84e5ac807b2e9925aec5a01df592f77ab545c0f99e95cf9dda795a8dc6b3df69",
+      "bytes": 5950
+    },
+    {
+      "module": "TauCeti.RingTheory.CompositionSeries.Multiplicity",
+      "path": "source/TauCeti/RingTheory/CompositionSeries/Multiplicity.lean",
+      "sha256": "215e3183927a3d2f8dd1c98b909cfdd312587c4be0939e58ef794e1ec82a2d11",
+      "bytes": 23591
+    },
+    {
+      "module": "TauCeti.RingTheory.CompositionSeries.Additivity",
+      "path": "source/TauCeti/RingTheory/CompositionSeries/Additivity.lean",
+      "sha256": "0262b9925efe748d3c107f895a76c03d056ee63f1df8310d91e464792de4c734",
+      "bytes": 11994
+    },
+    {
+      "module": "TauCeti.Algebra.Module.Equiv.Basic",
+      "path": "source/TauCeti/Algebra/Module/Equiv/Basic.lean",
+      "sha256": "68d9c7da276778cd7f2086186626fb7186fff1d0cf5fa0c3788a1780e8f942c3",
+      "bytes": 9126
+    },
+    {
+      "module": "TauCeti.RingTheory.Semisimple.Schur",
+      "path": "source/TauCeti/RingTheory/Semisimple/Schur.lean",
+      "sha256": "94934a9473f3a080068364ebe2de33b40fb66e0d5428f6e738db2144758e32f4",
+      "bytes": 13493
+    },
+    {
+      "module": "TauCeti.RingTheory.Semisimple.RegularIsotypicComponent",
+      "path": "source/TauCeti/RingTheory/Semisimple/RegularIsotypicComponent.lean",
+      "sha256": "daac95473e81831b296ab3c119e9d2bdff9021632d74932e61bfc5cd5d343f52",
+      "bytes": 14513
+    },
+    {
+      "module": "TauCeti.RingTheory.Semisimple.Multiplicity",
+      "path": "source/TauCeti/RingTheory/Semisimple/Multiplicity.lean",
+      "sha256": "1fdf30ac5628410f28d67689446b8537f5ab29139ca6a01d03cc3c9bddeb96ef",
+      "bytes": 43631
+    },
+    {
+      "module": "PaperVerification.SemisimpleHomComparison",
+      "path": "source/PaperVerification/SemisimpleHomComparison.lean",
+      "sha256": "2163e072197995c1ff9751ee117c1cc9221b7cd7d0ef5b2399f6bd5f1e1fabda",
+      "bytes": 3432
+    },
+    {
+      "module": "TauCeti.Algebra.MonoidAlgebra.MapDomain",
+      "path": "source/TauCeti/Algebra/MonoidAlgebra/MapDomain.lean",
+      "sha256": "7268b3c922d266b4c9a05a8aed0e1a521501695375675327e29efb63e8491c0a",
+      "bytes": 4771
+    },
+    {
+      "module": "TauCeti.RepresentationTheory.Intertwining",
+      "path": "source/TauCeti/RepresentationTheory/Intertwining.lean",
+      "sha256": "1f1f7b7728a78782ca87a6f5db4cf33b57de2699711277e9ed99b7af49eadba5",
+      "bytes": 12484
+    },
+    {
+      "module": "TauCeti.RepresentationTheory.Subrepresentation",
+      "path": "source/TauCeti/RepresentationTheory/Subrepresentation.lean",
+      "sha256": "49b39488f4520bc506e8f8c234ba13e801d89af0b84f4c1ef3450cb5b5398fe6",
+      "bytes": 21423
+    },
+    {
+      "module": "TauCeti.RepresentationTheory.FDRep.Basic",
+      "path": "source/TauCeti/RepresentationTheory/FDRep/Basic.lean",
+      "sha256": "9a3444e162167994ebbcaba1816bdc0921b2a163fa17c9b507a7ef2975f389f5",
+      "bytes": 26187
+    },
+    {
+      "module": "TauCeti.RepresentationTheory.AsModule",
+      "path": "source/TauCeti/RepresentationTheory/AsModule.lean",
+      "sha256": "b2c2849c4d0ed0c07a8958d97b1dc010a27138055aa9db280f7c49ce31752b37",
+      "bytes": 15814
+    },
+    {
+      "module": "PaperVerification.RepresentationHomComparison",
+      "path": "source/PaperVerification/RepresentationHomComparison.lean",
+      "sha256": "46684b5455aed98619e5a828bda9959e43db26f40fbd222eb377e9553a6c7be2",
+      "bytes": 6419
+    },
+    {
+      "module": "PaperVerification.GradedDimensionEquality",
+      "path": "source/PaperVerification/GradedDimensionEquality.lean",
+      "sha256": "7a0ca93dc023cf293edb1521f5c478351f488f07399fa41a829c55a020fd2762",
+      "bytes": 2371
+    },
+    {
+      "module": "PaperVerification.PowerGradedRepresentation",
+      "path": "source/PaperVerification/PowerGradedRepresentation.lean",
+      "sha256": "3c1ffa3bfc4e2b071c7b4e32bb6aaf78f94a07901b82f01f093df37c748deb9f",
+      "bytes": 3469
+    },
+    {
+      "module": "PaperVerification.GradedRepresentationAssembly",
+      "path": "source/PaperVerification/GradedRepresentationAssembly.lean",
+      "sha256": "6b57a2ffb06e8d55dfeddf7d07559a7df9e321f59556a6ae55fdcc29e270ce00",
+      "bytes": 3796
+    },
+    {
+      "module": "PaperVerification.PowerRepresentationTheorem",
+      "path": "source/PaperVerification/PowerRepresentationTheorem.lean",
+      "sha256": "7251ef8a02b3e00ebbb1d1229901ae212a3708488700dc1c0611120449750199",
+      "bytes": 5476
+    },
+    {
+      "module": "PaperVerification.PowerOriginalRepresentation",
+      "path": "source/PaperVerification/PowerOriginalRepresentation.lean",
+      "sha256": "5af0c4a4c1aa19490b80f0bc856b6bb847680f508164975e074b44d1f1888a9e",
+      "bytes": 1793
+    },
+    {
+      "module": "PaperVerification.PowerOriginalDegreeEquiv",
+      "path": "source/PaperVerification/PowerOriginalDegreeEquiv.lean",
+      "sha256": "d84b30e15e5feb750e27bff95b27af0c62d28209826f729ae586b96e300df583",
+      "bytes": 2674
+    },
+    {
+      "module": "PaperVerification.EquivariantCokernelGenericSpecialization",
+      "path": "source/PaperVerification/EquivariantCokernelGenericSpecialization.lean",
+      "sha256": "0aa76a55d811502db2fbc15cadc59481cb5481a5c89719b0924b10380f06d824",
+      "bytes": 3142
+    },
+    {
+      "module": "PaperVerification.PowerUniversalSlope",
+      "path": "source/PaperVerification/PowerUniversalSlope.lean",
+      "sha256": "936aff2f7626f8dc0d4e2c7031e7ebf0ec2945f6db1f4337299cd2a7d5918fb2",
+      "bytes": 11677
+    },
+    {
+      "module": "TauCeti.Algebra.Module.GradedModule.HomogeneousPart",
+      "path": "source/TauCeti/Algebra/Module/GradedModule/HomogeneousPart.lean",
+      "sha256": "eedd69ebff834a49ba888dd87a0fd895577c5fc5f6d7e6c9681676f0b937cf23",
+      "bytes": 15365
+    },
+    {
+      "module": "TauCeti.Algebra.Module.GradedModule.Polynomial",
+      "path": "source/TauCeti/Algebra/Module/GradedModule/Polynomial.lean",
+      "sha256": "bfbf35c8685f4cfb3534d452dd3e191e64b2f3e88bdd7114a3d45700e379a98c",
+      "bytes": 20143
+    },
+    {
+      "module": "PaperVerification.GradedComponentBasis",
+      "path": "source/PaperVerification/GradedComponentBasis.lean",
+      "sha256": "5fd6e56ecf6b4f9c52e98d22b66bed76d394ff45fb6365d31a37934ef19e4846",
+      "bytes": 5331
+    },
+    {
+      "module": "PaperVerification.PowerHilbertSeries",
+      "path": "source/PaperVerification/PowerHilbertSeries.lean",
+      "sha256": "c98154e5e054fa123474822434f6a0ad1f4282de024376e5f05cde1fe89df97c",
+      "bytes": 5178
+    },
+    {
+      "module": "PaperVerification.PowerSumComparator",
+      "path": "source/PaperVerification/PowerSumComparator.lean",
+      "sha256": "b6e4cb2c10dbde8debc3adb2e791f26b13fea8c0f40c866dd57315e18228f97a",
+      "bytes": 8180
+    },
+    {
+      "module": "PaperVerification.GradedHilbertTransport",
+      "path": "source/PaperVerification/GradedHilbertTransport.lean",
+      "sha256": "01b4e24f4135428ae580f56b6eb296878b468e3dc485c58f826885647409c244",
+      "bytes": 672
+    },
+    {
+      "module": "PaperVerification.PowerOriginalHilbert",
+      "path": "source/PaperVerification/PowerOriginalHilbert.lean",
+      "sha256": "9da258136935c06c61875a90c3ad11d7723b3bdcb86c3768e3b00d7561325854",
+      "bytes": 2226
+    },
+    {
+      "module": "PaperVerification.PowerTheoremTwoTwo",
+      "path": "source/PaperVerification/PowerTheoremTwoTwo.lean",
+      "sha256": "27725fad588dc4d7e161523bb1d90745cf390b78967b98302a530953583489c6",
+      "bytes": 5354
+    },
+    {
+      "module": "PaperVerification.PowerTheoremOneOneSufficiency",
+      "path": "source/PaperVerification/PowerTheoremOneOneSufficiency.lean",
+      "sha256": "a0bc4fadd4ab50809b51f92a690599d9e22fc82ac2a7e416dff065b264978ec7",
+      "bytes": 6601
+    },
+    {
+      "module": "PaperVerification.PowerOriginalArtinSpanning",
+      "path": "source/PaperVerification/PowerOriginalArtinSpanning.lean",
+      "sha256": "3b5ea3fc461747fe16a5b44aead3f88512b35aea67773cbd9008e475637d923b",
+      "bytes": 9953
+    },
+    {
+      "module": "PaperVerification.PowerCoinvariantStandardBridge",
+      "path": "source/PaperVerification/PowerCoinvariantStandardBridge.lean",
+      "sha256": "4b7cc451818f06ef446ef685e94b27a0df2c53065a8774355ceb1ebbc25f83bf",
+      "bytes": 2998
+    },
+    {
+      "module": "PaperVerification.PowerExceptionalArtin",
+      "path": "source/PaperVerification/PowerExceptionalArtin.lean",
+      "sha256": "93987f283dbda477979002ffd02ddc3f95979c09f742f06204c1b79e30662f87",
+      "bytes": 3700
+    },
+    {
+      "module": "PaperVerification.PowerTheoremOneOne",
+      "path": "source/PaperVerification/PowerTheoremOneOne.lean",
+      "sha256": "1a2366a7f4726512593427dc6e13c58ee9f9a57c7b64ae075514edf7995c4b47",
+      "bytes": 1437
+    },
+    {
+      "module": "PaperVerification.EulerJacobian",
+      "path": "source/PaperVerification/EulerJacobian.lean",
+      "sha256": "45d40b24358a738d0ec2e544fb88ef65005f75cce7b3e13b3c0db09d44690fd4",
+      "bytes": 9317
+    },
+    {
+      "module": "PaperVerification.EulerParameters",
+      "path": "source/PaperVerification/EulerParameters.lean",
+      "sha256": "72c93f6be6ca3a12512df6fa7b7e5d89db3be9fbdeca20e4c02a94605792c45f",
+      "bytes": 5338
+    },
+    {
+      "module": "PaperVerification.JacobianDivergence",
+      "path": "source/PaperVerification/JacobianDivergence.lean",
+      "sha256": "1b89cef1069114fba1d6d6113c4cf479f7d8e8f7b4af2a88ec1a3d0de5a367f1",
+      "bytes": 5827
+    },
+    {
+      "module": "PaperVerification.JacobianIsolatedOrigin",
+      "path": "source/PaperVerification/JacobianIsolatedOrigin.lean",
+      "sha256": "62eaf6fd764666a94cc4b36b98cfbbda21b842ec6e3b12b67d948bc952ed6e86",
+      "bytes": 5413
+    },
+    {
+      "module": "PaperVerification.Eigencomponents",
+      "path": "source/PaperVerification/Eigencomponents.lean",
+      "sha256": "91f8fa45d7394a8362f168e399e221476c4635c21b510dc57f8b88d8cc73229a",
+      "bytes": 2844
+    },
+    {
+      "module": "PaperVerification.JacobianTorsion",
+      "path": "source/PaperVerification/JacobianTorsion.lean",
+      "sha256": "875eb0f8ed751504fb15415782a5219db045d683301dec2f6d9b082289ee8c82",
+      "bytes": 3118
+    },
+    {
+      "module": "PaperVerification.JacobianGrading",
+      "path": "source/PaperVerification/JacobianGrading.lean",
+      "sha256": "cd7a034c7e98214f75e7d46fe1dfcccd8293a3357862a6066f830317ba1e729b",
+      "bytes": 8058
+    },
+    {
+      "module": "PaperVerification.JacobianMilnorReduction",
+      "path": "source/PaperVerification/JacobianMilnorReduction.lean",
+      "sha256": "70c980f1720b1f46a6a08553c13cecb83fdf7bf564c450f694c147b1d919a032",
+      "bytes": 7680
+    },
+    {
+      "module": "PaperVerification.JacobianHamiltonian",
+      "path": "source/PaperVerification/JacobianHamiltonian.lean",
+      "sha256": "e3bc65eaa37b21374c1bc399a650660c6190f10c2c5a3a83b853156a8e0eb05e",
+      "bytes": 5623
+    },
+    {
+      "module": "PaperVerification.JacobianPolynomialModule",
+      "path": "source/PaperVerification/JacobianPolynomialModule.lean",
+      "sha256": "973aab8f91a41fc3ed51b3c62f6d876b826defe2bfe8c890f598fad2eba2fb94",
+      "bytes": 5276
+    },
+    {
+      "module": "PaperVerification.NegativeWeightedGrading",
+      "path": "source/PaperVerification/NegativeWeightedGrading.lean",
+      "sha256": "5eacc8f44216d2ce45bab124a68ae20d4c0aa353b32eae6ef740201b6f086de9",
+      "bytes": 4016
+    },
+    {
+      "module": "PaperVerification.PolynomialBasisLifting",
+      "path": "source/PaperVerification/PolynomialBasisLifting.lean",
+      "sha256": "a469f4fc9829076b73bf2b6a0fe74911a580ddaf6e29ad6e74ff3f76e1cda1b4",
+      "bytes": 3966
+    },
+    {
+      "module": "PaperVerification.GradedBasisLifting",
+      "path": "source/PaperVerification/GradedBasisLifting.lean",
+      "sha256": "0e2c215078799db4bd6580fe030956752afd17db978901f4bede1a299de2b6c6",
+      "bytes": 5476
+    },
+    {
+      "module": "PaperVerification.JacobianFreeness",
+      "path": "source/PaperVerification/JacobianFreeness.lean",
+      "sha256": "f7d4265f5250822795ac010f568e2f779581a4c47d3c1976ed6425124ffd5155",
+      "bytes": 4634
+    },
+    {
+      "module": "PaperVerification.JacobianParameter",
+      "path": "source/PaperVerification/JacobianParameter.lean",
+      "sha256": "225c4dd30471081aa8874b338454dfa56aed504ff6df55cb713036940ed3d18a",
+      "bytes": 5276
+    },
+    {
+      "module": "PaperVerification.HypersurfaceFreeness",
+      "path": "source/PaperVerification/HypersurfaceFreeness.lean",
+      "sha256": "3446690aa5bfdc3c54ddc5f47df35d64b5917412f6e9fbd9765d352d249490aa",
+      "bytes": 4150
+    },
+    {
+      "module": "PaperVerification.HomogeneousSection",
+      "path": "source/PaperVerification/HomogeneousSection.lean",
+      "sha256": "3f896ad057f7fd573b78754276135a58f03fa19fe72d00994479f5239670a7c9",
+      "bytes": 3255
+    },
+    {
+      "module": "PaperVerification.EulerReduction",
+      "path": "source/PaperVerification/EulerReduction.lean",
+      "sha256": "04e5a4f9204a938f6b38bc27be70923471bfddc94b6969736c5a8b91b0ff84aa",
+      "bytes": 5014
+    },
+    {
+      "module": "PaperVerification.ProjectionQuotient",
+      "path": "source/PaperVerification/ProjectionQuotient.lean",
+      "sha256": "4d4290b9a30f413c79b66fd29690906a0f748585980420144fcdd844ffea1e41",
+      "bytes": 1931
+    },
+    {
+      "module": "PaperVerification.EulerResonance",
+      "path": "source/PaperVerification/EulerResonance.lean",
+      "sha256": "3becdeebe36facf4a67f338ba60c91aa6e0c3cf17ab38d497fb47bd84007e5b7",
+      "bytes": 5838
+    },
+    {
+      "module": "PaperVerification.JacobianDefect",
+      "path": "source/PaperVerification/JacobianDefect.lean",
+      "sha256": "910931c6e46e797d1cf7d37349613fa6c55121a19872212c44f82b38cf0bc6c9",
+      "bytes": 12740
+    },
+    {
+      "module": "PaperVerification.JacobianDegree",
+      "path": "source/PaperVerification/JacobianDegree.lean",
+      "sha256": "c4f54286445efd048bd2e2a6a4cddda7004a6826d9fc0839cadaa7ad2e934dba",
+      "bytes": 7762
+    },
+    {
+      "module": "PaperVerification.HomogeneousQuotientBasis",
+      "path": "source/PaperVerification/HomogeneousQuotientBasis.lean",
+      "sha256": "5ae5d2b88fdcdbcdbba58893db1f4ec3ea74ff1e83c32082999e99990c9c0518",
+      "bytes": 4529
+    },
+    {
+      "module": "PaperVerification.JacobianEquivariantSection",
+      "path": "source/PaperVerification/JacobianEquivariantSection.lean",
+      "sha256": "d2f042c4eef37f865b21465bc0e74279c96fc746e3cc402d0d7f8fcd287ae830",
+      "bytes": 3197
+    },
+    {
+      "module": "TauCeti.Algebra.MvPolynomial.PDeriv",
+      "path": "source/TauCeti/Algebra/MvPolynomial/PDeriv.lean",
+      "sha256": "82aea3164242199a493a023e68c99abd4532dc4cf233a7c01e8c4c09d44127e8",
+      "bytes": 2611
+    },
+    {
+      "module": "TauCeti.RingTheory.MvPolynomial.LinearSubst",
+      "path": "source/TauCeti/RingTheory/MvPolynomial/LinearSubst.lean",
+      "sha256": "dc358a84f69b1c0c58580336b3451bd67f61686ea22e7da46f1226c5db77e63d",
+      "bytes": 12521
+    },
+    {
+      "module": "TauCeti.RingTheory.MvPolynomial.WeightedHomogeneous",
+      "path": "source/TauCeti/RingTheory/MvPolynomial/WeightedHomogeneous.lean",
+      "sha256": "91ef4c8d9b0dd63ce86fde49f3f7bd1dadd2f5482b63e637d43eefcaf8c36afc",
+      "bytes": 16427
+    },
+    {
+      "module": "PaperVerification.JacobianLinearAction",
+      "path": "source/PaperVerification/JacobianLinearAction.lean",
+      "sha256": "1c0a8029673c6342cdf76a6d6fd9aaa3b937995600d7fdbf8d1bc493579e5288",
+      "bytes": 19945
+    },
+    {
+      "module": "PaperVerification.EquivariantTowers",
+      "path": "source/PaperVerification/EquivariantTowers.lean",
+      "sha256": "1810178a532a09e8150f7cef7063d118684fb5981dc5e6888cb713c2d77a6b06",
+      "bytes": 4487
+    },
+    {
+      "module": "TauCeti.Algebra.Module.GradedModule.DirectSum",
+      "path": "source/TauCeti/Algebra/Module/GradedModule/DirectSum.lean",
+      "sha256": "db6aa5fef2e5a38a97c8e0a2c51c75feadc0a041ae1658e3a51f28ffd6e1dcce",
+      "bytes": 12031
+    },
+    {
+      "module": "TauCeti.Algebra.Module.GradedModule.Shift",
+      "path": "source/TauCeti/Algebra/Module/GradedModule/Shift.lean",
+      "sha256": "71285bb5b11966ce951b7eddc620a0f52b7793747872d5892ffd4a21bebdf9bd",
+      "bytes": 5394
+    },
+    {
+      "module": "PaperVerification.GradedTowers",
+      "path": "source/PaperVerification/GradedTowers.lean",
+      "sha256": "e2606a397f30eeea7ab185111aa1e551b4138d77ece72c57cb1c4a116efc6549",
+      "bytes": 10151
+    },
+    {
+      "module": "PaperVerification.NegativeQuotientGrading",
+      "path": "source/PaperVerification/NegativeQuotientGrading.lean",
+      "sha256": "239e4f22b7fe02c30e9f499ea4822b535924df96a93af0e50a313a23e73310bf",
+      "bytes": 5198
+    },
+    {
+      "module": "PaperVerification.JacobianEquivariantTowers",
+      "path": "source/PaperVerification/JacobianEquivariantTowers.lean",
+      "sha256": "e506487207f81e74cafcdd08b928b1b3a2ed589fa25609e863a9861b725ba201",
+      "bytes": 7927
+    },
+    {
+      "module": "PaperVerification.JacobianHilbertBasis",
+      "path": "source/PaperVerification/JacobianHilbertBasis.lean",
+      "sha256": "1d5a68b5bc7949edb32127b574c05d0b3bfedf9c31bab89a1482b242933b7a9d",
+      "bytes": 6066
+    },
+    {
+      "module": "PaperVerification.JacobianEquivariantDefect",
+      "path": "source/PaperVerification/JacobianEquivariantDefect.lean",
+      "sha256": "1ea3bf62b66dd790c788530acad8456d6b1cc72d7c964e21ddb9c4795a080612",
+      "bytes": 11498
+    },
+    {
+      "module": "PaperVerification.JacobianHilbertDefect",
+      "path": "source/PaperVerification/JacobianHilbertDefect.lean",
+      "sha256": "2b03f0841947b05688995f3d57a69154952b61b2791e77396a08cbb92dc44ee3",
+      "bytes": 4752
+    },
+    {
+      "module": "PaperVerification.JacobianHilbertFormula",
+      "path": "source/PaperVerification/JacobianHilbertFormula.lean",
+      "sha256": "61603a7a98d4faac61a9104ba06699719d3a752026957efd24b6e110b349a2c9",
+      "bytes": 6983
+    },
+    {
+      "module": "PaperVerification.JacobianEquivariantFormula",
+      "path": "source/PaperVerification/JacobianEquivariantFormula.lean",
+      "sha256": "12f8df0d0b6741e681f640575cb80f56ca0e81982e7f6f7eda443391cf6b9c87",
+      "bytes": 8236
+    },
+    {
+      "module": "PaperVerification.JacobianEquivariantExactSequence",
+      "path": "source/PaperVerification/JacobianEquivariantExactSequence.lean",
+      "sha256": "b5e4bb9535bd77b53d5a5315f11d7566f3dc18687dd63a3b4704b39c6793ec06",
+      "bytes": 7379
+    },
+    {
+      "module": "PaperVerification.HypersurfaceTheoremSixThree",
+      "path": "source/PaperVerification/HypersurfaceTheoremSixThree.lean",
+      "sha256": "8ff371abc9378f19236a33220b053de51f68dabe2dd5c34a1101081a01b4ae75",
+      "bytes": 6716
+    },
+    {
+      "module": "PaperVerification.HomogeneousFiniteParameters",
+      "path": "source/PaperVerification/HomogeneousFiniteParameters.lean",
+      "sha256": "9fad9d302c40105beb5667fe9c5e8b5d4b1f167a8408ee692501918512fd5839",
+      "bytes": 6595
+    },
+    {
+      "module": "PaperVerification.HomogeneousModuleFinite",
+      "path": "source/PaperVerification/HomogeneousModuleFinite.lean",
+      "sha256": "039d98028b8db2a259c216709260aa89124ca216c96eb82ed113fc1e17901e6c",
+      "bytes": 7001
+    },
+    {
+      "module": "TauCeti.RingTheory.Derivation.Ideal",
+      "path": "source/TauCeti/RingTheory/Derivation/Ideal.lean",
+      "sha256": "6719c2ee9bb6eb085643d96e65f64266298b2526c2f7268dceab04d80cd2296a",
+      "bytes": 3812
+    },
+    {
+      "module": "TauCeti.RingTheory.Derivation.Localization",
+      "path": "source/TauCeti/RingTheory/Derivation/Localization.lean",
+      "sha256": "0206b6e1a5105d4bd9cfb45cff73c38f78dcae47b4d0356afc26d36746bf1398",
+      "bytes": 5287
+    },
+    {
+      "module": "PaperVerification.DerivationFiniteConstants",
+      "path": "source/PaperVerification/DerivationFiniteConstants.lean",
+      "sha256": "3d57d4ab936c3115779bfa6d11248212baa614c9f5a074be515df1a3438af0d9",
+      "bytes": 6705
+    },
+    {
+      "module": "PaperVerification.VectorJacobianKernel",
+      "path": "source/PaperVerification/VectorJacobianKernel.lean",
+      "sha256": "e9319bfed0da1067fdca6e49a189f4d1393f449c1885080dae340f12c41e8570",
+      "bytes": 4406
+    },
+    {
+      "module": "PaperVerification.EulerInjective",
+      "path": "source/PaperVerification/EulerInjective.lean",
+      "sha256": "a72272bd72fd7ec58c9d58c179ed18be1d0aa7cb466c4afabac5b43ac06838e7",
+      "bytes": 5859
+    },
+    {
+      "module": "PaperVerification.VectorEulerBasic",
+      "path": "source/PaperVerification/VectorEulerBasic.lean",
+      "sha256": "e55ccba4f0bda3372420a67bc6d76653f03c5053973859e69cdcd00ea29e4613",
+      "bytes": 15487
+    },
+    {
+      "module": "PaperVerification.VectorEulerGrading",
+      "path": "source/PaperVerification/VectorEulerGrading.lean",
+      "sha256": "bef8f5a593cfdf350540954c3db358c8bd5c7151fcd26f534ac477a01239d8a1",
+      "bytes": 20707
+    },
+    {
+      "module": "PaperVerification.VectorEulerAction",
+      "path": "source/PaperVerification/VectorEulerAction.lean",
+      "sha256": "46cc3dda0d79820bea6aa9ab25b38e6372bbfd6a3514f02c593b4cadb8039971",
+      "bytes": 9165
+    },
+    {
+      "module": "PaperVerification.CompleteIntersectionCodimensionFull",
+      "path": "source/PaperVerification/CompleteIntersectionCodimensionFull.lean",
+      "sha256": "2226e5c873a59aba6c5b62975d21ba457dfdef018d42d8e0a73d38d9f12ac5ea",
+      "bytes": 8704
+    }
+  ]
+}

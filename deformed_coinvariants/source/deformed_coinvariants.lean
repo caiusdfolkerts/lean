@@ -1,0 +1,7 @@
+module
+
+public import PaperVerification.PowerTheoremOneOne
+public import PaperVerification.PowerTheoremTwoTwo
+public import PaperVerification.EulerParameters
+public import PaperVerification.HypersurfaceTheoremSixThree
+public import PaperVerification.CompleteIntersectionCodimensionFull

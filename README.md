@@ -12,6 +12,7 @@ Install Elan and a recent version of Git before following the verification comma
 | `cold_spots` | Universal cold spots of E8 and related lattices |
 | `conditional_decomposability` | The sharp vertex bound for conditional decomposability |
 | `cubical_lower_bound` | The cubical lower bound theorem |
+| `deformed_coinvariants` | The Hivert–Thiéry conjecture and differential normal forms |
 | `ellipsoid_intrinsic_volumes` | Ellipsoids are determined by their intrinsic volumes |
 | `two_fermion_coinvariants` | Monomial bases for two-fermion coinvariants |
 | `homological_shifts` | Rank formulas for homological shifts of polymatroidal ideals |

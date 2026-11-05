@@ -1,0 +1,2495 @@
+{
+  "checkpoint": "paper_verification_checkpoint.zip",
+  "checkpoint_sha256": "3edcacd20ffd2f43d7f3aed219438ef934345a441e8abb0fcaf1124a0806f09f",
+  "checkpoint_bytes": 198044778,
+  "initial_module_count": 234,
+  "historical_receipts": [
+    {
+      "module": "PaperVerification.Eigencomponents",
+      "status": "failed",
+      "source_sha256": "af4d4fc317ef490fe30f6b5f9f4e7d82f1a6cbc41c795032782b16548e96ea06",
+      "log": "verification/build/PaperVerification.Eigencomponents/20261105T104626Z-932578/compiler.log",
+      "elapsed_seconds": 2.047
+    },
+    {
+      "module": "PaperVerification.EulerJacobian",
+      "status": "verified",
+      "source_sha256": "45d40b24358a738d0ec2e544fb88ef65005f75cce7b3e13b3c0db09d44690fd4",
+      "log": "verification/build/PaperVerification.EulerJacobian/20261105T104422Z-919901/compiler.log",
+      "elapsed_seconds": 3.586
+    },
+    {
+      "module": "PaperVerification.EulerParameters",
+      "status": "verified",
+      "source_sha256": "72c93f6be6ca3a12512df6fa7b7e5d89db3be9fbdeca20e4c02a94605792c45f",
+      "log": "verification/build/PaperVerification.EulerParameters/20261105T104511Z-041614/compiler.log",
+      "elapsed_seconds": 3.843
+    },
+    {
+      "module": "PaperVerification.EulerReduction",
+      "status": "verified",
+      "source_sha256": "04e5a4f9204a938f6b38bc27be70923471bfddc94b6969736c5a8b91b0ff84aa",
+      "log": "verification/build/PaperVerification.EulerReduction/20261105T104529Z-622082/compiler.log",
+      "elapsed_seconds": 2.65
+    },
+    {
+      "module": "PaperVerification.FermionMomentRecurrence",
+      "status": "verified",
+      "source_sha256": "9bd97fbdf9bbc08ebb80854a5204cc4d22cbd8ba351002831ba11d69ba1f1aab",
+      "log": "verification/build/PaperVerification.FermionMomentRecurrence/20261105T104521Z-407244/compiler.log",
+      "elapsed_seconds": 1.92
+    },
+    {
+      "module": "PaperVerification.HomogeneousLocalization",
+      "status": "verified",
+      "source_sha256": "4c4d437e929ca8ee8310556b8a4527aca133c2c9b6b2906beaae4ea67e8c7540",
+      "log": "verification/build/PaperVerification.HomogeneousLocalization/20261105T104348Z-772485/compiler.log",
+      "elapsed_seconds": 6.211
+    },
+    {
+      "module": "PaperVerification.HomogeneousNullstellensatz",
+      "status": "verified",
+      "source_sha256": "f4bd4f39a3b2b81f6e49e7b76a0d47fde7fd0b05570324ce3d9e08d754be2b0c",
+      "log": "verification/build/PaperVerification.HomogeneousNullstellensatz/20261105T104643Z-263061/compiler.log",
+      "elapsed_seconds": 2.222
+    },
+    {
+      "module": "PaperVerification.HomogeneousRegularSequence",
+      "status": "verified",
+      "source_sha256": "c1be07e97e6e942a716e49ee8da58d369ab9de969150fb4ee51da310fa526560",
+      "log": "verification/build/PaperVerification.HomogeneousRegularSequence/20261105T104640Z-757942/compiler.log",
+      "elapsed_seconds": 3.286
+    },
+    {
+      "module": "PaperVerification.MatrixRank",
+      "status": "verified",
+      "source_sha256": "8cc0b85b9089aa170e9553cacec8feba4639a2d66a564190219d495b1d54d640",
+      "log": "verification/build/PaperVerification.MatrixRank/20261105T104320Z-568071/compiler.log",
+      "elapsed_seconds": 2.631
+    },
+    {
+      "module": "PaperVerification.PowerArtin",
+      "status": "verified",
+      "source_sha256": "bf0be376bb955a2778c8c2e7f7077840c2f08b97f59310676b21b6181a434803",
+      "log": "verification/build/PaperVerification.PowerArtin/20261105T104343Z-784559/compiler.log",
+      "elapsed_seconds": 10.39
+    },
+    {
+      "module": "PaperVerification.PowerArtinBasis",
+      "status": "verified",
+      "source_sha256": "ab8346b8f77f4d3bdb947db6bf1dabaefe4e94d775613b32543e01d18494cf23",
+      "log": "verification/build/PaperVerification.PowerArtinBasis/20261105T104508Z-745083/compiler.log",
+      "elapsed_seconds": 2.732
+    },
+    {
+      "module": "PaperVerification.PowerBoundary",
+      "status": "verified",
+      "source_sha256": "17fe117fd5fa7da9e8d8b6ea3217a95cd1651d19e3cb937a9e1f5226564c07dc",
+      "log": "verification/build/PaperVerification.PowerBoundary/20261105T104248Z-388956/compiler.log",
+      "elapsed_seconds": 4.082
+    },
+    {
+      "module": "PaperVerification.PowerConjugation",
+      "status": "verified",
+      "source_sha256": "bb93bc48037445f2d44e87a6d7d371867594dea540d6bda5624b71c4ea34e6cd",
+      "log": "verification/build/PaperVerification.PowerConjugation/20261105T104511Z-396677/compiler.log",
+      "elapsed_seconds": 5.156
+    },
+    {
+      "module": "PaperVerification.PowerHomogeneity",
+      "status": "verified",
+      "source_sha256": "25f3172c65a26ecf2ef67b8943da90141994de89ccbf40c7e4a11542ec66bf20",
+      "log": "verification/build/PaperVerification.PowerHomogeneity/20261105T104534Z-288735/compiler.log",
+      "elapsed_seconds": 2.626
+    },
+    {
+      "module": "PaperVerification.PowerOperators",
+      "status": "verified",
+      "source_sha256": "d08d07a3ec9ccb172789c2829b7198ef2bb671f5f3bdbda30bc507c5166a5fe0",
+      "log": "verification/build/PaperVerification.PowerOperators/20261105T104517Z-960054/compiler.log",
+      "elapsed_seconds": 4.391
+    },
+    {
+      "module": "PaperVerification.PowerRecurrence",
+      "status": "verified",
+      "source_sha256": "ac757766fc1a763f29033821cf4a81f8f5d2a96d6acb81a3daf865c87978a1d5",
+      "log": "verification/build/PaperVerification.PowerRecurrence/20261105T104523Z-675078/compiler.log",
+      "elapsed_seconds": 2.134
+    },
+    {
+      "module": "PaperVerification.PowerSpanning",
+      "status": "verified",
+      "source_sha256": "dc49479d5e7b430cafee05e428f499f824d1290e6082fed51f5b5d84e83a5c10",
+      "log": "verification/build/PaperVerification.PowerSpanning/20261105T104353Z-634028/compiler.log",
+      "elapsed_seconds": 3.742
+    },
+    {
+      "module": "PaperVerification.RankSpecialization",
+      "status": "verified",
+      "source_sha256": "2087d2d3aa45269e17830f31706f1930fdc8e874e9465ec28b424fc495691420",
+      "log": "verification/build/PaperVerification.RankSpecialization/20261105T104322Z-853884/compiler.log",
+      "elapsed_seconds": 7.151
+    },
+    {
+      "module": "PaperVerification.RepresentationHomComparison",
+      "status": "failed",
+      "source_sha256": "c678462c7a8c040518d160e0c5dc06c5ca1de152c6119379733e02a62b778f28",
+      "log": "verification/build/PaperVerification.RepresentationHomComparison/20261105T104705Z-065610/compiler.log",
+      "elapsed_seconds": 3.237
+    },
+    {
+      "module": "PaperVerification.SemisimpleHomComparison",
+      "status": "verified",
+      "source_sha256": "2163e072197995c1ff9751ee117c1cc9221b7cd7d0ef5b2399f6bd5f1e1fabda",
+      "log": "verification/build/PaperVerification.SemisimpleHomComparison/20261105T104643Z-537692/compiler.log",
+      "elapsed_seconds": 2.026
+    },
+    {
+      "module": "TauCeti.Algebra.Category.ModuleCat.Ext.Basic",
+      "status": "verified",
+      "source_sha256": "809f06e954a5fe0bab4311afe386f3a09629e2866e29db8a836650649ffc05c8",
+      "log": "verification/build/TauCeti.Algebra.Category.ModuleCat.Ext.Basic/20261105T104434Z-748906/compiler.log",
+      "elapsed_seconds": 10.098
+    },
+    {
+      "module": "TauCeti.Algebra.Module.Equiv.Basic",
+      "status": "verified",
+      "source_sha256": "68d9c7da276778cd7f2086186626fb7186fff1d0cf5fa0c3788a1780e8f942c3",
+      "log": "verification/build/TauCeti.Algebra.Module.Equiv.Basic/20261105T104620Z-925495/compiler.log",
+      "elapsed_seconds": 2.988
+    },
+    {
+      "module": "TauCeti.Algebra.Module.Projective.LinearMap",
+      "status": "verified",
+      "source_sha256": "d120892c7939802dd71421e072e9a6465bcf294e5350ae9b8607a6506beb58d2",
+      "log": "verification/build/TauCeti.Algebra.Module.Projective.LinearMap/20261105T104427Z-123674/compiler.log",
+      "elapsed_seconds": 4.649
+    },
+    {
+      "module": "TauCeti.Algebra.Module.SpanRank",
+      "status": "verified",
+      "source_sha256": "8be040175ebc7ab5942caaad2c27243aab839f07b9a98dbe9782f63eba3ae370",
+      "log": "verification/build/TauCeti.Algebra.Module.SpanRank/20261105T104557Z-400287/compiler.log",
+      "elapsed_seconds": 2.139
+    },
+    {
+      "module": "TauCeti.Algebra.Module.Submodule.Quotient",
+      "status": "verified",
+      "source_sha256": "0591e7c12576ded682a9d92dfe2bbf2962b0133f671e72a4df5749137b701c1e",
+      "log": "verification/build/TauCeti.Algebra.Module.Submodule.Quotient/20261105T104606Z-261936/compiler.log",
+      "elapsed_seconds": 4.189
+    },
+    {
+      "module": "TauCeti.Algebra.MonoidAlgebra.MapDomain",
+      "status": "verified",
+      "source_sha256": "7268b3c922d266b4c9a05a8aed0e1a521501695375675327e29efb63e8491c0a",
+      "log": "verification/build/TauCeti.Algebra.MonoidAlgebra.MapDomain/20261105T104645Z-108554/compiler.log",
+      "elapsed_seconds": 1.721
+    },
+    {
+      "module": "TauCeti.Algebra.Ring.Subgroup",
+      "status": "verified",
+      "source_sha256": "ffd04f13126372068893464e45dda7c716469044705cb63bb3245af24e61f16f",
+      "log": "verification/build/TauCeti.Algebra.Ring.Subgroup/20261105T104421Z-972636/compiler.log",
+      "elapsed_seconds": 1.725
+    },
+    {
+      "module": "TauCeti.Data.ENat.Basic",
+      "status": "verified",
+      "source_sha256": "99b36c37565392da7fcb966ea8deed04c5a4fafb9326be6565ff8ce409367ac5",
+      "log": "verification/build/TauCeti.Data.ENat.Basic/20261105T104444Z-048094/compiler.log",
+      "elapsed_seconds": 2.301
+    },
+    {
+      "module": "TauCeti.Data.ENat.Monoid",
+      "status": "verified",
+      "source_sha256": "a377a9bc52f650bbc0b94c655af1ac38f3e0808a2559adf344bb5fce4e4dc0ef",
+      "log": "verification/build/TauCeti.Data.ENat.Monoid/20261105T104520Z-284015/compiler.log",
+      "elapsed_seconds": 1.325
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.Matrix.Adjugate.Basic",
+      "status": "verified",
+      "source_sha256": "915cd347fc7dc98a368584242fbaa2cc1fb2112c667c6295a396a99ce53f90eb",
+      "log": "verification/build/TauCeti.LinearAlgebra.Matrix.Adjugate.Basic/20261105T104559Z-538190/compiler.log",
+      "elapsed_seconds": 2.184
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.Matrix.Rank",
+      "status": "verified",
+      "source_sha256": "1c1f61c652af88d7a7cfbaf3ce79bf7fbf343449abb8320a8e7277b99814e804",
+      "log": "verification/build/TauCeti.LinearAlgebra.Matrix.Rank/20261105T104314Z-205676/compiler.log",
+      "elapsed_seconds": 5.755
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.Span.Basic",
+      "status": "verified",
+      "source_sha256": "79884fde50280d80801e96ea59cab2eadfaa902e075823a9593f4d9bb32c6a06",
+      "log": "verification/build/TauCeti.LinearAlgebra.Span.Basic/20261105T104545Z-070467/compiler.log",
+      "elapsed_seconds": 2.477
+    },
+    {
+      "module": "TauCeti.Order.Catenary",
+      "status": "verified",
+      "source_sha256": "215613fe251190a8bd33574a91a3e7a590821c579b661739ee35c091037c2ff1",
+      "log": "verification/build/TauCeti.Order.Catenary/20261105T104407Z-346707/compiler.log",
+      "elapsed_seconds": 2.532
+    },
+    {
+      "module": "TauCeti.RepresentationTheory.AsModule",
+      "status": "verified",
+      "source_sha256": "b2c2849c4d0ed0c07a8958d97b1dc010a27138055aa9db280f7c49ce31752b37",
+      "log": "verification/build/TauCeti.RepresentationTheory.AsModule/20261105T104700Z-780138/compiler.log",
+      "elapsed_seconds": 5.137
+    },
+    {
+      "module": "TauCeti.RepresentationTheory.FDRep.Basic",
+      "status": "verified",
+      "source_sha256": "9a3444e162167994ebbcaba1816bdc0921b2a163fa17c9b507a7ef2975f389f5",
+      "log": "verification/build/TauCeti.RepresentationTheory.FDRep.Basic/20261105T104653Z-710071/compiler.log",
+      "elapsed_seconds": 6.498
+    },
+    {
+      "module": "TauCeti.RepresentationTheory.Intertwining",
+      "status": "verified",
+      "source_sha256": "1f1f7b7728a78782ca87a6f5db4cf33b57de2699711277e9ed99b7af49eadba5",
+      "log": "verification/build/TauCeti.RepresentationTheory.Intertwining/20261105T104647Z-888383/compiler.log",
+      "elapsed_seconds": 3.024
+    },
+    {
+      "module": "TauCeti.RepresentationTheory.Subrepresentation",
+      "status": "verified",
+      "source_sha256": "49b39488f4520bc506e8f8c234ba13e801d89af0b84f4c1ef3450cb5b5398fe6",
+      "log": "verification/build/TauCeti.RepresentationTheory.Subrepresentation/20261105T104650Z-845825/compiler.log",
+      "elapsed_seconds": 3.782
+    },
+    {
+      "module": "TauCeti.RingTheory.Catenary",
+      "status": "verified",
+      "source_sha256": "587e948e600de213501ec6c01c1707a81ebcfde195ca5dc65fbeda9b84e0cb19",
+      "log": "verification/build/TauCeti.RingTheory.Catenary/20261105T104410Z-161858/compiler.log",
+      "elapsed_seconds": 3.126
+    },
+    {
+      "module": "TauCeti.RingTheory.CohenMacaulay.Basic",
+      "status": "verified",
+      "source_sha256": "51d417c1bab29832722115b86b6e316b78043a12aa23f955e4f966a12809e49b",
+      "log": "verification/build/TauCeti.RingTheory.CohenMacaulay.Basic/20261105T104510Z-634271/compiler.log",
+      "elapsed_seconds": 6.043
+    },
+    {
+      "module": "TauCeti.RingTheory.CohenMacaulay.Height",
+      "status": "verified",
+      "source_sha256": "487d3fbb0438f7768a8f09f0d04a41feccc05771306a85386af8b81ab076b378",
+      "log": "verification/build/TauCeti.RingTheory.CohenMacaulay.Height/20261105T104617Z-950386/compiler.log",
+      "elapsed_seconds": 2.863
+    },
+    {
+      "module": "TauCeti.RingTheory.CohenMacaulay.Normal",
+      "status": "verified",
+      "source_sha256": "bb7d1f4e4700f1dec34125c063584e6c0ba0a82dc13c5d31eb9a259965436805",
+      "log": "verification/build/TauCeti.RingTheory.CohenMacaulay.Normal/20261105T104525Z-843648/compiler.log",
+      "elapsed_seconds": 4.074
+    },
+    {
+      "module": "TauCeti.RingTheory.CohenMacaulay.RegularSequence",
+      "status": "verified",
+      "source_sha256": "ed25f55c6890c9b66488171a05529d4637b301b4b426019862bcb3baa9acbc4a",
+      "log": "verification/build/TauCeti.RingTheory.CohenMacaulay.RegularSequence/20261105T104539Z-956604/compiler.log",
+      "elapsed_seconds": 5.555
+    },
+    {
+      "module": "TauCeti.RingTheory.CompositionSeries.Additivity",
+      "status": "verified",
+      "source_sha256": "0262b9925efe748d3c107f895a76c03d056ee63f1df8310d91e464792de4c734",
+      "log": "verification/build/TauCeti.RingTheory.CompositionSeries.Additivity/20261105T104617Z-403431/compiler.log",
+      "elapsed_seconds": 2.867
+    },
+    {
+      "module": "TauCeti.RingTheory.CompositionSeries.Basic",
+      "status": "verified",
+      "source_sha256": "84e5ac807b2e9925aec5a01df592f77ab545c0f99e95cf9dda795a8dc6b3df69",
+      "log": "verification/build/TauCeti.RingTheory.CompositionSeries.Basic/20261105T104610Z-721301/compiler.log",
+      "elapsed_seconds": 2.58
+    },
+    {
+      "module": "TauCeti.RingTheory.CompositionSeries.Multiplicity",
+      "status": "verified",
+      "source_sha256": "215e3183927a3d2f8dd1c98b909cfdd312587c4be0939e58ef794e1ec82a2d11",
+      "log": "verification/build/TauCeti.RingTheory.CompositionSeries.Multiplicity/20261105T104613Z-972680/compiler.log",
+      "elapsed_seconds": 4.419
+    },
+    {
+      "module": "TauCeti.RingTheory.Depth.Basic",
+      "status": "verified",
+      "source_sha256": "77fc064148b1989af7ec98ba669fa0cc698cdc7f64c782c026cc204cfc5ead8f",
+      "log": "verification/build/TauCeti.RingTheory.Depth.Basic/20261105T104453Z-531719/compiler.log",
+      "elapsed_seconds": 10.717
+    },
+    {
+      "module": "TauCeti.RingTheory.Depth.WeaklyRegular",
+      "status": "verified",
+      "source_sha256": "eacea559e931c123dbc093252b4996b569ee9e684b61ebbbd734542131ff3c2a",
+      "log": "verification/build/TauCeti.RingTheory.Depth.WeaklyRegular/20261105T104613Z-158675/compiler.log",
+      "elapsed_seconds": 4.059
+    },
+    {
+      "module": "TauCeti.RingTheory.Finiteness.Nakayama",
+      "status": "verified",
+      "source_sha256": "9d91bffddba758068dff7fca250afee8958dc7d394cb3e897c646d72fca3ff0a",
+      "log": "verification/build/TauCeti.RingTheory.Finiteness.Nakayama/20261105T104605Z-894434/compiler.log",
+      "elapsed_seconds": 4.316
+    },
+    {
+      "module": "TauCeti.RingTheory.Ideal.AssociatedPrime.Basic",
+      "status": "verified",
+      "source_sha256": "f1838d9c9edf00f5e42807c2925a52eb0f33adab58f6b61054d7631d120bfc9c",
+      "log": "verification/build/TauCeti.RingTheory.Ideal.AssociatedPrime.Basic/20261105T104357Z-513837/compiler.log",
+      "elapsed_seconds": 3.532
+    },
+    {
+      "module": "TauCeti.RingTheory.Ideal.AssociatedPrime.Localization",
+      "status": "verified",
+      "source_sha256": "3e967f10bc370f6ea04571dd886ca03359e61512bd74f50f90bf0e9ca8819cfc",
+      "log": "verification/build/TauCeti.RingTheory.Ideal.AssociatedPrime.Localization/20261105T104400Z-149612/compiler.log",
+      "elapsed_seconds": 2.186
+    },
+    {
+      "module": "TauCeti.RingTheory.Ideal.Colon",
+      "status": "verified",
+      "source_sha256": "3e0ab9ea1b49010546a7b0a247d6195ebd8174bdcb28268d1aa0aaa911995b08",
+      "log": "verification/build/TauCeti.RingTheory.Ideal.Colon/20261105T104355Z-861426/compiler.log",
+      "elapsed_seconds": 1.989
+    },
+    {
+      "module": "TauCeti.RingTheory.Ideal.Operations",
+      "status": "verified",
+      "source_sha256": "e9d1da6a26cd3f1f59ddef40bde4a7df26925129ec7caeecc6a4de48064e2f6c",
+      "log": "verification/build/TauCeti.RingTheory.Ideal.Operations/20261105T104423Z-309732/compiler.log",
+      "elapsed_seconds": 4.165
+    },
+    {
+      "module": "TauCeti.RingTheory.Ideal.Quotient.Colon",
+      "status": "verified",
+      "source_sha256": "545f5290b3bd9bf21326674b2149dbbdd6761cbf718e081c7e2f71bf24496294",
+      "log": "verification/build/TauCeti.RingTheory.Ideal.Quotient.Colon/20261105T104523Z-357290/compiler.log",
+      "elapsed_seconds": 1.68
+    },
+    {
+      "module": "TauCeti.RingTheory.IntegralClosure.GoingDown",
+      "status": "verified",
+      "source_sha256": "6155fb2f2263352cc112d7692c2d033ac4c60ff2ae448adcde43aace84aa0406",
+      "log": "verification/build/TauCeti.RingTheory.IntegralClosure.GoingDown/20261105T104529Z-417458/compiler.log",
+      "elapsed_seconds": 3.011
+    },
+    {
+      "module": "TauCeti.RingTheory.KrullDimension.Basic",
+      "status": "verified",
+      "source_sha256": "14962ad4f21e7d27e4e8d73fb509ff614bc9becb5f37c78341dfd72d7d0fb7c4",
+      "log": "verification/build/TauCeti.RingTheory.KrullDimension.Basic/20261105T104627Z-282966/compiler.log",
+      "elapsed_seconds": 1.976
+    },
+    {
+      "module": "TauCeti.RingTheory.KrullDimension.Fiber",
+      "status": "verified",
+      "source_sha256": "1504d100c5e0024125036bb1637f3e09bdca7b8f766507577d4d65acc02a40f6",
+      "log": "verification/build/TauCeti.RingTheory.KrullDimension.Fiber/20261105T104532Z-976555/compiler.log",
+      "elapsed_seconds": 3.749
+    },
+    {
+      "module": "TauCeti.RingTheory.KrullDimension.FiniteType",
+      "status": "verified",
+      "source_sha256": "20016a39bed53eea9c57d8ee7c187428c1eb86f0b4129773f7470046f1215203",
+      "log": "verification/build/TauCeti.RingTheory.KrullDimension.FiniteType/20261105T104629Z-408936/compiler.log",
+      "elapsed_seconds": 8.089
+    },
+    {
+      "module": "TauCeti.RingTheory.KrullDimension.Integral",
+      "status": "verified",
+      "source_sha256": "709480b83ac3d400aae3723e2aba7a9cbc3496f0bf0d830c2cd65f54db43131c",
+      "log": "verification/build/TauCeti.RingTheory.KrullDimension.Integral/20261105T104624Z-452815/compiler.log",
+      "elapsed_seconds": 2.743
+    },
+    {
+      "module": "TauCeti.RingTheory.KrullDimension.Module",
+      "status": "verified",
+      "source_sha256": "6c2675cd5715defd92e3359f0b8955deb1a6e31f04e44d5ceb6b8cb62ea731c6",
+      "log": "verification/build/TauCeti.RingTheory.KrullDimension.Module/20261105T104507Z-552499/compiler.log",
+      "elapsed_seconds": 2.986
+    },
+    {
+      "module": "TauCeti.RingTheory.KrullDimension.Polynomial",
+      "status": "verified",
+      "source_sha256": "27a25a6e850e326dcd4c60d05eb416c64eeade096a838d6fbf8a3d01002fa905",
+      "log": "verification/build/TauCeti.RingTheory.KrullDimension.Polynomial/20261105T104637Z-359700/compiler.log",
+      "elapsed_seconds": 3.092
+    },
+    {
+      "module": "TauCeti.RingTheory.KrullDimension.Quotient",
+      "status": "verified",
+      "source_sha256": "de0cd86603848e75b428d09659f7bda167a59dba0efcdd563405274ba6931052",
+      "log": "verification/build/TauCeti.RingTheory.KrullDimension.Quotient/20261105T104417Z-095001/compiler.log",
+      "elapsed_seconds": 4.078
+    },
+    {
+      "module": "TauCeti.RingTheory.KrullDimension.Regular",
+      "status": "verified",
+      "source_sha256": "63ebcdab101dea2945adb9791e39fe9cd7060e3aac851f0be94819e5d39a0f35",
+      "log": "verification/build/TauCeti.RingTheory.KrullDimension.Regular/20261105T104517Z-148012/compiler.log",
+      "elapsed_seconds": 3.233
+    },
+    {
+      "module": "TauCeti.RingTheory.LocalRing.MaximalIdeal.Generator",
+      "status": "verified",
+      "source_sha256": "15712f0c543c0d3897ec64c71bb02a341a54cc19db5861020d27ba30f01495b0",
+      "log": "verification/build/TauCeti.RingTheory.LocalRing.MaximalIdeal.Generator/20261105T104521Z-256720/compiler.log",
+      "elapsed_seconds": 2.275
+    },
+    {
+      "module": "TauCeti.RingTheory.LocalRing.MaximalIdeal.Square",
+      "status": "verified",
+      "source_sha256": "0f712d1a590c1636d69a4a0cf7b7b5b43dc58617323bc288cce65fee259aa3bd",
+      "log": "verification/build/TauCeti.RingTheory.LocalRing.MaximalIdeal.Square/20261105T104547Z-572781/compiler.log",
+      "elapsed_seconds": 4.961
+    },
+    {
+      "module": "TauCeti.RingTheory.LocalRing.Quotient",
+      "status": "verified",
+      "source_sha256": "856aab433a73b267b5e7da9d09cb8d6f059c3183a9c2239d333378053b32d584",
+      "log": "verification/build/TauCeti.RingTheory.LocalRing.Quotient/20261105T104536Z-650031/compiler.log",
+      "elapsed_seconds": 3.191
+    },
+    {
+      "module": "TauCeti.RingTheory.Localization.Annihilator",
+      "status": "verified",
+      "source_sha256": "b356b87c858169dc593b3c7c578a8a2d03813dcea58ae2336abcf6cb8145b6be",
+      "log": "verification/build/TauCeti.RingTheory.Localization.Annihilator/20261105T104504Z-608207/compiler.log",
+      "elapsed_seconds": 3.45
+    },
+    {
+      "module": "TauCeti.RingTheory.Localization.Module",
+      "status": "verified",
+      "source_sha256": "c26d55b55950e24b63e2b22f807f237649bf4447141bddccef4c34a81df57e1a",
+      "log": "verification/build/TauCeti.RingTheory.Localization.Module/20261105T104446Z-870017/compiler.log",
+      "elapsed_seconds": 6.778
+    },
+    {
+      "module": "TauCeti.RingTheory.MvPolynomial.Homogeneous",
+      "status": "verified",
+      "source_sha256": "675111511eb43cd3e020ca0a9741100f87d539e0dee6589534c6f99227a96a12",
+      "log": "verification/build/TauCeti.RingTheory.MvPolynomial.Homogeneous/20261105T104528Z-199348/compiler.log",
+      "elapsed_seconds": 5.298
+    },
+    {
+      "module": "TauCeti.RingTheory.Regular.LinearMap",
+      "status": "verified",
+      "source_sha256": "746f33e86d330a9621fc1e102cd493df4fb881b9fc198c637a626dec9578723e",
+      "log": "verification/build/TauCeti.RingTheory.Regular.LinearMap/20261105T104432Z-430599/compiler.log",
+      "elapsed_seconds": 2.43
+    },
+    {
+      "module": "TauCeti.RingTheory.Regular.RegularSequence",
+      "status": "verified",
+      "source_sha256": "32e94ac1e00d138abac8edd28d2f1f95c38a02959d396fe90dcc76d6a71d3506",
+      "log": "verification/build/TauCeti.RingTheory.Regular.RegularSequence/20261105T104609Z-357757/compiler.log",
+      "elapsed_seconds": 4.293
+    },
+    {
+      "module": "TauCeti.RingTheory.RegularLocalRing.Basic",
+      "status": "verified",
+      "source_sha256": "d0b99478f80b4f71f0c8899a032b48e84c87b4b6d26b906c18d8281781ad4c17",
+      "log": "verification/build/TauCeti.RingTheory.RegularLocalRing.Basic/20261105T104552Z-676140/compiler.log",
+      "elapsed_seconds": 4.386
+    },
+    {
+      "module": "TauCeti.RingTheory.RegularLocalRing.CohenMacaulay",
+      "status": "verified",
+      "source_sha256": "8655bbe5868500106e8671d49bd04740d2ee5480a4d24fb57d75e3243fac0dad",
+      "log": "verification/build/TauCeti.RingTheory.RegularLocalRing.CohenMacaulay/20261105T104620Z-744931/compiler.log",
+      "elapsed_seconds": 4.072
+    },
+    {
+      "module": "TauCeti.RingTheory.RootsOfUnity.Basic",
+      "status": "verified",
+      "source_sha256": "dcb86489f5e6e38ecaec7ef018a725ce062a85b2d3d8dc8f5de964e4456e3232",
+      "log": "verification/build/TauCeti.RingTheory.RootsOfUnity.Basic/20261105T104525Z-038826/compiler.log",
+      "elapsed_seconds": 3.233
+    },
+    {
+      "module": "TauCeti.RingTheory.Semisimple.Multiplicity",
+      "status": "verified",
+      "source_sha256": "1fdf30ac5628410f28d67689446b8537f5ab29139ca6a01d03cc3c9bddeb96ef",
+      "log": "verification/build/TauCeti.RingTheory.Semisimple.Multiplicity/20261105T104630Z-475867/compiler.log",
+      "elapsed_seconds": 13.064
+    },
+    {
+      "module": "TauCeti.RingTheory.Semisimple.RegularIsotypicComponent",
+      "status": "verified",
+      "source_sha256": "daac95473e81831b296ab3c119e9d2bdff9021632d74932e61bfc5cd5d343f52",
+      "log": "verification/build/TauCeti.RingTheory.Semisimple.RegularIsotypicComponent/20261105T104627Z-604338/compiler.log",
+      "elapsed_seconds": 2.627
+    },
+    {
+      "module": "TauCeti.RingTheory.Semisimple.Schur",
+      "status": "verified",
+      "source_sha256": "94934a9473f3a080068364ebe2de33b40fb66e0d5428f6e738db2144758e32f4",
+      "log": "verification/build/TauCeti.RingTheory.Semisimple.Schur/20261105T104623Z-802993/compiler.log",
+      "elapsed_seconds": 4.105
+    },
+    {
+      "module": "TauCeti.RingTheory.SimpleModule.Isotypic",
+      "status": "verified",
+      "source_sha256": "0983d55a0f36220f2d01886bd9195f1536935913b258b810f3fcbb8ef01c55ea",
+      "log": "verification/build/TauCeti.RingTheory.SimpleModule.Isotypic/20261105T104602Z-244125/compiler.log",
+      "elapsed_seconds": 4.003
+    },
+    {
+      "module": "TauCeti.RingTheory.Spectrum.Prime.Point",
+      "status": "verified",
+      "source_sha256": "34fe3837cd2f7db8bcf322d5037b0a54abf8a027105c8f6e12a43a2ce0d2434c",
+      "log": "verification/build/TauCeti.RingTheory.Spectrum.Prime.Point/20261105T104601Z-536160/compiler.log",
+      "elapsed_seconds": 3.684
+    },
+    {
+      "module": "TauCeti.Topology.KrullDimension.Basic",
+      "status": "verified",
+      "source_sha256": "ae82186891b277f9fa15df216b0ce8d4e4110e823c9ae999a2c681cd0118fb14",
+      "log": "verification/build/TauCeti.Topology.KrullDimension.Basic/20261105T104402Z-853065/compiler.log",
+      "elapsed_seconds": 1.52
+    },
+    {
+      "module": "TauCeti.Topology.KrullDimension.ClosedCover",
+      "status": "verified",
+      "source_sha256": "a45f61b8c1831c8deff2a06a094e3372d94d10a003637f5ee8dc45a204232853",
+      "log": "verification/build/TauCeti.Topology.KrullDimension.ClosedCover/20261105T104415Z-847163/compiler.log",
+      "elapsed_seconds": 2.229
+    },
+    {
+      "module": "TauCeti.Topology.KrullDimension.Irreducible",
+      "status": "verified",
+      "source_sha256": "6ed163d9de4e43913dad182b04454435c88bc5b276d8dd03b0fe49a71b1acf8a",
+      "log": "verification/build/TauCeti.Topology.KrullDimension.Irreducible/20261105T104413Z-961207/compiler.log",
+      "elapsed_seconds": 1.811
+    },
+    {
+      "module": "TauCeti.Topology.KrullDimension.Local",
+      "status": "verified",
+      "source_sha256": "7b8fafc74146666e51b148db1f5f6ed4b80a8dbf7ce91d186de80a2d320006d3",
+      "log": "verification/build/TauCeti.Topology.KrullDimension.Local/20261105T104404Z-120125/compiler.log",
+      "elapsed_seconds": 1.777
+    },
+    {
+      "module": "TauCeti.Topology.PureDimension",
+      "status": "verified",
+      "source_sha256": "10cbb1273544604ce0a6b049c13ee841e430e8ae287654bc3b2226add1fda2f7",
+      "log": "verification/build/TauCeti.Topology.PureDimension/20261105T104406Z-705010/compiler.log",
+      "elapsed_seconds": 1.729
+    }
+  ],
+  "historical_receipt_source": "Pre-publication isolated recovery; paths refer to its retained archive.",
+  "pre_existing_repairs": [
+    {
+      "module": "EulerParameters",
+      "archived_sha256": "eba33f57807555e5ee6ecfba05b6bca42d9a25e2e09cf2c35edc31c124a5fdf3",
+      "recovered_sha256": "72c93f6be6ca3a12512df6fa7b7e5d89db3be9fbdeca20e4c02a94605792c45f",
+      "archived_bytes": 5335,
+      "recovered_bytes": 5338
+    },
+    {
+      "module": "PowerArtinBasis",
+      "archived_sha256": "5109ec4b18ff20bd3f2fbdf509f9c21a0008ad3d8c7653fc4921964209a8b714",
+      "recovered_sha256": "ab8346b8f77f4d3bdb947db6bf1dabaefe4e94d775613b32543e01d18494cf23",
+      "archived_bytes": 6356,
+      "recovered_bytes": 6410
+    },
+    {
+      "module": "SemisimpleHomComparison",
+      "archived_sha256": "0dbdad69cd869ba90d4d768a2d4ed1bcd61bd22cdef23065d46bf662846fafd3",
+      "recovered_sha256": "2163e072197995c1ff9751ee117c1cc9221b7cd7d0ef5b2399f6bd5f1e1fabda",
+      "archived_bytes": 3423,
+      "recovered_bytes": 3432
+    }
+  ],
+  "source_comparison": [
+    {
+      "module": "PaperVerification.PowerOperators",
+      "recovered_path": "PaperVerification/PowerOperators.lean",
+      "recovered_sha256": "d08d07a3ec9ccb172789c2829b7198ef2bb671f5f3bdbda30bc507c5166a5fe0",
+      "publication_sha256": "d08d07a3ec9ccb172789c2829b7198ef2bb671f5f3bdbda30bc507c5166a5fe0",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.FermionMomentRecurrence",
+      "recovered_path": "PaperVerification/FermionMomentRecurrence.lean",
+      "recovered_sha256": "9bd97fbdf9bbc08ebb80854a5204cc4d22cbd8ba351002831ba11d69ba1f1aab",
+      "publication_sha256": "9bd97fbdf9bbc08ebb80854a5204cc4d22cbd8ba351002831ba11d69ba1f1aab",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerRecurrence",
+      "recovered_path": "PaperVerification/PowerRecurrence.lean",
+      "recovered_sha256": "ac757766fc1a763f29033821cf4a81f8f5d2a96d6acb81a3daf865c87978a1d5",
+      "publication_sha256": "ac757766fc1a763f29033821cf4a81f8f5d2a96d6acb81a3daf865c87978a1d5",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerParameters",
+      "recovered_path": "PaperVerification/PowerParameters.lean",
+      "recovered_sha256": "038db3a1368e6c745fef3e8dd026c6791a462ea7afe2a54c4c39b8100b8e8646",
+      "publication_sha256": "038db3a1368e6c745fef3e8dd026c6791a462ea7afe2a54c4c39b8100b8e8646",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerFullSupport",
+      "recovered_path": "PaperVerification/PowerFullSupport.lean",
+      "recovered_sha256": "de3762def973ec3fdd2f03bee784135e80d6d3327fd8a7aa8ad6c06872f346b0",
+      "publication_sha256": "de3762def973ec3fdd2f03bee784135e80d6d3327fd8a7aa8ad6c06872f346b0",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerBoundary",
+      "recovered_path": "PaperVerification/PowerBoundary.lean",
+      "recovered_sha256": "17fe117fd5fa7da9e8d8b6ea3217a95cd1651d19e3cb937a9e1f5226564c07dc",
+      "publication_sha256": "17fe117fd5fa7da9e8d8b6ea3217a95cd1651d19e3cb937a9e1f5226564c07dc",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerArtin",
+      "recovered_path": "PaperVerification/PowerArtin.lean",
+      "recovered_sha256": "bf0be376bb955a2778c8c2e7f7077840c2f08b97f59310676b21b6181a434803",
+      "publication_sha256": "bf0be376bb955a2778c8c2e7f7077840c2f08b97f59310676b21b6181a434803",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerSpanning",
+      "recovered_path": "PaperVerification/PowerSpanning.lean",
+      "recovered_sha256": "dc49479d5e7b430cafee05e428f499f824d1290e6082fed51f5b5d84e83a5c10",
+      "publication_sha256": "dc49479d5e7b430cafee05e428f499f824d1290e6082fed51f5b5d84e83a5c10",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerConjugation",
+      "recovered_path": "PaperVerification/PowerConjugation.lean",
+      "recovered_sha256": "bb93bc48037445f2d44e87a6d7d371867594dea540d6bda5624b71c4ea34e6cd",
+      "publication_sha256": "bb93bc48037445f2d44e87a6d7d371867594dea540d6bda5624b71c4ea34e6cd",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerCoordinateRestriction",
+      "recovered_path": "PaperVerification/PowerCoordinateRestriction.lean",
+      "recovered_sha256": "83a0952216942d863ccccd5b37879605d78944a1473340438702be4882d6dbca",
+      "publication_sha256": "83a0952216942d863ccccd5b37879605d78944a1473340438702be4882d6dbca",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.RootsOfUnity.Basic",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/RootsOfUnity/Basic.lean",
+      "recovered_sha256": "dcb86489f5e6e38ecaec7ef018a725ce062a85b2d3d8dc8f5de964e4456e3232",
+      "publication_sha256": "dcb86489f5e6e38ecaec7ef018a725ce062a85b2d3d8dc8f5de964e4456e3232",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.MvPolynomial.Homogeneous",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/MvPolynomial/Homogeneous.lean",
+      "recovered_sha256": "675111511eb43cd3e020ca0a9741100f87d539e0dee6589534c6f99227a96a12",
+      "publication_sha256": "675111511eb43cd3e020ca0a9741100f87d539e0dee6589534c6f99227a96a12",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerHomogeneity",
+      "recovered_path": "PaperVerification/PowerHomogeneity.lean",
+      "recovered_sha256": "25f3172c65a26ecf2ef67b8943da90141994de89ccbf40c7e4a11542ec66bf20",
+      "publication_sha256": "25f3172c65a26ecf2ef67b8943da90141994de89ccbf40c7e4a11542ec66bf20",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Algebra.Homology.HomologicalComplex.Basic",
+      "recovered_path": "vendor/TauCeti/TauCeti/Algebra/Homology/HomologicalComplex/Basic.lean",
+      "recovered_sha256": "4f37ad5e2d0ea31157cc01c72b0c1ac5e363a0670561036bfac62e55fba3bfb9",
+      "publication_sha256": "4f37ad5e2d0ea31157cc01c72b0c1ac5e363a0670561036bfac62e55fba3bfb9",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Algebra.Homology.Homotopy",
+      "recovered_path": "vendor/TauCeti/TauCeti/Algebra/Homology/Homotopy.lean",
+      "recovered_sha256": "8db2f820a499c7a58d2daa2f8eb1304d3ccbde127bb177c9e98c1d8d16c1c65f",
+      "publication_sha256": "8db2f820a499c7a58d2daa2f8eb1304d3ccbde127bb177c9e98c1d8d16c1c65f",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Algebra.Homology.Linear",
+      "recovered_path": "vendor/TauCeti/TauCeti/Algebra/Homology/Linear.lean",
+      "recovered_sha256": "4b7cd070e4949051d3a9ef5e2d69c1468b9f29da3b8b193169fb6e3c330f4948",
+      "publication_sha256": "4b7cd070e4949051d3a9ef5e2d69c1468b9f29da3b8b193169fb6e3c330f4948",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.CliffordAlgebra.Grading",
+      "recovered_path": "vendor/TauCeti/TauCeti/LinearAlgebra/CliffordAlgebra/Grading.lean",
+      "recovered_sha256": "e22939248273faa79081ec499531c54011b9685d3dfb03cd91d68f7ea48fbb99",
+      "publication_sha256": "e22939248273faa79081ec499531c54011b9685d3dfb03cd91d68f7ea48fbb99",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.CliffordAlgebra.Contraction",
+      "recovered_path": "vendor/TauCeti/TauCeti/LinearAlgebra/CliffordAlgebra/Contraction.lean",
+      "recovered_sha256": "1815894cfdfabdb5501337d719fdd60e9d7979a82e2631075162d0a849cc5ad9",
+      "publication_sha256": "1815894cfdfabdb5501337d719fdd60e9d7979a82e2631075162d0a849cc5ad9",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.ExteriorPower.Basic",
+      "recovered_path": "vendor/TauCeti/TauCeti/LinearAlgebra/ExteriorPower/Basic.lean",
+      "recovered_sha256": "d52d970a528f989d5a9097d2f40bdf033a3b0991af89b36752fc2b4abb5b3762",
+      "publication_sha256": "d52d970a528f989d5a9097d2f40bdf033a3b0991af89b36752fc2b4abb5b3762",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.ExteriorAlgebra.Contraction",
+      "recovered_path": "vendor/TauCeti/TauCeti/LinearAlgebra/ExteriorAlgebra/Contraction.lean",
+      "recovered_sha256": "54c59d29ff1636abea34ce509816b4f9aa1fdffd1fbf4511db0432b0cac21255",
+      "publication_sha256": "54c59d29ff1636abea34ce509816b4f9aa1fdffd1fbf4511db0432b0cac21255",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.KoszulComplex.Basic",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/KoszulComplex/Basic.lean",
+      "recovered_sha256": "60e9d4459c0c013a522726b1cc7eabb84e00af87378572cc8e3cf95e5c7e1c05",
+      "publication_sha256": "60e9d4459c0c013a522726b1cc7eabb84e00af87378572cc8e3cf95e5c7e1c05",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.KoszulComplex.Regular",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/KoszulComplex/Regular.lean",
+      "recovered_sha256": "96481f7205bd091be3364609a0500d51837d659b7740007905f3960736f21cb7",
+      "publication_sha256": "96481f7205bd091be3364609a0500d51837d659b7740007905f3960736f21cb7",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.KoszulSyzygies",
+      "recovered_path": "PaperVerification/KoszulSyzygies.lean",
+      "recovered_sha256": "fea83976bee0d531281f3a80c9d0715d2b9f25b6550f3712e330f28329c540fd",
+      "publication_sha256": "fea83976bee0d531281f3a80c9d0715d2b9f25b6550f3712e330f28329c540fd",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerComplex",
+      "recovered_path": "PaperVerification/PowerComplex.lean",
+      "recovered_sha256": "9336c89b9286ad8523a668df83e6f9779ca702c03543bdeb9797b7cb1b315c77",
+      "publication_sha256": "9336c89b9286ad8523a668df83e6f9779ca702c03543bdeb9797b7cb1b315c77",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerDegreeSpaces",
+      "recovered_path": "PaperVerification/PowerDegreeSpaces.lean",
+      "recovered_sha256": "c8f388bdcb41e3a8d4bf439a7ef042ddeb6d2cccdfb08d6183429d9a80a1c2c4",
+      "publication_sha256": "c8f388bdcb41e3a8d4bf439a7ef042ddeb6d2cccdfb08d6183429d9a80a1c2c4",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerCoefficientMap",
+      "recovered_path": "PaperVerification/PowerCoefficientMap.lean",
+      "recovered_sha256": "1aed986fa281bd4582f63096f868bf138b7419ac1d64b97441ddd3157788afed",
+      "publication_sha256": "1aed986fa281bd4582f63096f868bf138b7419ac1d64b97441ddd3157788afed",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.FermionSupport",
+      "recovered_path": "PaperVerification/FermionSupport.lean",
+      "recovered_sha256": "a69a50e6415a642e67817ce02e61786c7c63982859163ea615d73c1fcddc9df6",
+      "publication_sha256": "a69a50e6415a642e67817ce02e61786c7c63982859163ea615d73c1fcddc9df6",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.FermionRadical",
+      "recovered_path": "PaperVerification/FermionRadical.lean",
+      "recovered_sha256": "279d594bacf98c4a97ac5e3a3a71350daa337a0c5d594eaba0ba7aa75240c23f",
+      "publication_sha256": "279d594bacf98c4a97ac5e3a3a71350daa337a0c5d594eaba0ba7aa75240c23f",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.HomogeneousLocalization",
+      "recovered_path": "PaperVerification/HomogeneousLocalization.lean",
+      "recovered_sha256": "4c4d437e929ca8ee8310556b8a4527aca133c2c9b6b2906beaae4ea67e8c7540",
+      "publication_sha256": "4c4d437e929ca8ee8310556b8a4527aca133c2c9b6b2906beaae4ea67e8c7540",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.Ideal.Colon",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/Ideal/Colon.lean",
+      "recovered_sha256": "3e0ab9ea1b49010546a7b0a247d6195ebd8174bdcb28268d1aa0aaa911995b08",
+      "publication_sha256": "3e0ab9ea1b49010546a7b0a247d6195ebd8174bdcb28268d1aa0aaa911995b08",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.Ideal.AssociatedPrime.Basic",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/Ideal/AssociatedPrime/Basic.lean",
+      "recovered_sha256": "f1838d9c9edf00f5e42807c2925a52eb0f33adab58f6b61054d7631d120bfc9c",
+      "publication_sha256": "f1838d9c9edf00f5e42807c2925a52eb0f33adab58f6b61054d7631d120bfc9c",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.Ideal.AssociatedPrime.Localization",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/Ideal/AssociatedPrime/Localization.lean",
+      "recovered_sha256": "3e967f10bc370f6ea04571dd886ca03359e61512bd74f50f90bf0e9ca8819cfc",
+      "publication_sha256": "3e967f10bc370f6ea04571dd886ca03359e61512bd74f50f90bf0e9ca8819cfc",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Topology.KrullDimension.Basic",
+      "recovered_path": "vendor/TauCeti/TauCeti/Topology/KrullDimension/Basic.lean",
+      "recovered_sha256": "ae82186891b277f9fa15df216b0ce8d4e4110e823c9ae999a2c681cd0118fb14",
+      "publication_sha256": "ae82186891b277f9fa15df216b0ce8d4e4110e823c9ae999a2c681cd0118fb14",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Topology.KrullDimension.Local",
+      "recovered_path": "vendor/TauCeti/TauCeti/Topology/KrullDimension/Local.lean",
+      "recovered_sha256": "7b8fafc74146666e51b148db1f5f6ed4b80a8dbf7ce91d186de80a2d320006d3",
+      "publication_sha256": "7b8fafc74146666e51b148db1f5f6ed4b80a8dbf7ce91d186de80a2d320006d3",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Topology.PureDimension",
+      "recovered_path": "vendor/TauCeti/TauCeti/Topology/PureDimension.lean",
+      "recovered_sha256": "10cbb1273544604ce0a6b049c13ee841e430e8ae287654bc3b2226add1fda2f7",
+      "publication_sha256": "10cbb1273544604ce0a6b049c13ee841e430e8ae287654bc3b2226add1fda2f7",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Order.Catenary",
+      "recovered_path": "vendor/TauCeti/TauCeti/Order/Catenary.lean",
+      "recovered_sha256": "215613fe251190a8bd33574a91a3e7a590821c579b661739ee35c091037c2ff1",
+      "publication_sha256": "215613fe251190a8bd33574a91a3e7a590821c579b661739ee35c091037c2ff1",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.Catenary",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/Catenary.lean",
+      "recovered_sha256": "587e948e600de213501ec6c01c1707a81ebcfde195ca5dc65fbeda9b84e0cb19",
+      "publication_sha256": "587e948e600de213501ec6c01c1707a81ebcfde195ca5dc65fbeda9b84e0cb19",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Topology.KrullDimension.Irreducible",
+      "recovered_path": "vendor/TauCeti/TauCeti/Topology/KrullDimension/Irreducible.lean",
+      "recovered_sha256": "6ed163d9de4e43913dad182b04454435c88bc5b276d8dd03b0fe49a71b1acf8a",
+      "publication_sha256": "6ed163d9de4e43913dad182b04454435c88bc5b276d8dd03b0fe49a71b1acf8a",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Topology.KrullDimension.ClosedCover",
+      "recovered_path": "vendor/TauCeti/TauCeti/Topology/KrullDimension/ClosedCover.lean",
+      "recovered_sha256": "a45f61b8c1831c8deff2a06a094e3372d94d10a003637f5ee8dc45a204232853",
+      "publication_sha256": "a45f61b8c1831c8deff2a06a094e3372d94d10a003637f5ee8dc45a204232853",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.KrullDimension.Quotient",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/KrullDimension/Quotient.lean",
+      "recovered_sha256": "de0cd86603848e75b428d09659f7bda167a59dba0efcdd563405274ba6931052",
+      "publication_sha256": "de0cd86603848e75b428d09659f7bda167a59dba0efcdd563405274ba6931052",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Algebra.Ring.Subgroup",
+      "recovered_path": "vendor/TauCeti/TauCeti/Algebra/Ring/Subgroup.lean",
+      "recovered_sha256": "ffd04f13126372068893464e45dda7c716469044705cb63bb3245af24e61f16f",
+      "publication_sha256": "ffd04f13126372068893464e45dda7c716469044705cb63bb3245af24e61f16f",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.Ideal.Operations",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/Ideal/Operations.lean",
+      "recovered_sha256": "e9d1da6a26cd3f1f59ddef40bde4a7df26925129ec7caeecc6a4de48064e2f6c",
+      "publication_sha256": "e9d1da6a26cd3f1f59ddef40bde4a7df26925129ec7caeecc6a4de48064e2f6c",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Algebra.Module.Projective.LinearMap",
+      "recovered_path": "vendor/TauCeti/TauCeti/Algebra/Module/Projective/LinearMap.lean",
+      "recovered_sha256": "d120892c7939802dd71421e072e9a6465bcf294e5350ae9b8607a6506beb58d2",
+      "publication_sha256": "d120892c7939802dd71421e072e9a6465bcf294e5350ae9b8607a6506beb58d2",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.Regular.LinearMap",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/Regular/LinearMap.lean",
+      "recovered_sha256": "746f33e86d330a9621fc1e102cd493df4fb881b9fc198c637a626dec9578723e",
+      "publication_sha256": "746f33e86d330a9621fc1e102cd493df4fb881b9fc198c637a626dec9578723e",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Algebra.Category.ModuleCat.Ext.Basic",
+      "recovered_path": "vendor/TauCeti/TauCeti/Algebra/Category/ModuleCat/Ext/Basic.lean",
+      "recovered_sha256": "809f06e954a5fe0bab4311afe386f3a09629e2866e29db8a836650649ffc05c8",
+      "publication_sha256": "809f06e954a5fe0bab4311afe386f3a09629e2866e29db8a836650649ffc05c8",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Data.ENat.Basic",
+      "recovered_path": "vendor/TauCeti/TauCeti/Data/ENat/Basic.lean",
+      "recovered_sha256": "99b36c37565392da7fcb966ea8deed04c5a4fafb9326be6565ff8ce409367ac5",
+      "publication_sha256": "99b36c37565392da7fcb966ea8deed04c5a4fafb9326be6565ff8ce409367ac5",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.Localization.Module",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/Localization/Module.lean",
+      "recovered_sha256": "c26d55b55950e24b63e2b22f807f237649bf4447141bddccef4c34a81df57e1a",
+      "publication_sha256": "c26d55b55950e24b63e2b22f807f237649bf4447141bddccef4c34a81df57e1a",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.Depth.Basic",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/Depth/Basic.lean",
+      "recovered_sha256": "77fc064148b1989af7ec98ba669fa0cc698cdc7f64c782c026cc204cfc5ead8f",
+      "publication_sha256": "77fc064148b1989af7ec98ba669fa0cc698cdc7f64c782c026cc204cfc5ead8f",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.Localization.Annihilator",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/Localization/Annihilator.lean",
+      "recovered_sha256": "b356b87c858169dc593b3c7c578a8a2d03813dcea58ae2336abcf6cb8145b6be",
+      "publication_sha256": "b356b87c858169dc593b3c7c578a8a2d03813dcea58ae2336abcf6cb8145b6be",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.KrullDimension.Module",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/KrullDimension/Module.lean",
+      "recovered_sha256": "6c2675cd5715defd92e3359f0b8955deb1a6e31f04e44d5ceb6b8cb62ea731c6",
+      "publication_sha256": "6c2675cd5715defd92e3359f0b8955deb1a6e31f04e44d5ceb6b8cb62ea731c6",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.CohenMacaulay.Basic",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/CohenMacaulay/Basic.lean",
+      "recovered_sha256": "51d417c1bab29832722115b86b6e316b78043a12aa23f955e4f966a12809e49b",
+      "publication_sha256": "51d417c1bab29832722115b86b6e316b78043a12aa23f955e4f966a12809e49b",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.KrullDimension.Regular",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/KrullDimension/Regular.lean",
+      "recovered_sha256": "63ebcdab101dea2945adb9791e39fe9cd7060e3aac851f0be94819e5d39a0f35",
+      "publication_sha256": "63ebcdab101dea2945adb9791e39fe9cd7060e3aac851f0be94819e5d39a0f35",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Data.ENat.Monoid",
+      "recovered_path": "vendor/TauCeti/TauCeti/Data/ENat/Monoid.lean",
+      "recovered_sha256": "a377a9bc52f650bbc0b94c655af1ac38f3e0808a2559adf344bb5fce4e4dc0ef",
+      "publication_sha256": "a377a9bc52f650bbc0b94c655af1ac38f3e0808a2559adf344bb5fce4e4dc0ef",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.LocalRing.MaximalIdeal.Generator",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/LocalRing/MaximalIdeal/Generator.lean",
+      "recovered_sha256": "15712f0c543c0d3897ec64c71bb02a341a54cc19db5861020d27ba30f01495b0",
+      "publication_sha256": "15712f0c543c0d3897ec64c71bb02a341a54cc19db5861020d27ba30f01495b0",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.Ideal.Quotient.Colon",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/Ideal/Quotient/Colon.lean",
+      "recovered_sha256": "545f5290b3bd9bf21326674b2149dbbdd6761cbf718e081c7e2f71bf24496294",
+      "publication_sha256": "545f5290b3bd9bf21326674b2149dbbdd6761cbf718e081c7e2f71bf24496294",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.CohenMacaulay.Normal",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/CohenMacaulay/Normal.lean",
+      "recovered_sha256": "bb7d1f4e4700f1dec34125c063584e6c0ba0a82dc13c5d31eb9a259965436805",
+      "publication_sha256": "bb7d1f4e4700f1dec34125c063584e6c0ba0a82dc13c5d31eb9a259965436805",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.IntegralClosure.GoingDown",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/IntegralClosure/GoingDown.lean",
+      "recovered_sha256": "6155fb2f2263352cc112d7692c2d033ac4c60ff2ae448adcde43aace84aa0406",
+      "publication_sha256": "6155fb2f2263352cc112d7692c2d033ac4c60ff2ae448adcde43aace84aa0406",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.KrullDimension.Fiber",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/KrullDimension/Fiber.lean",
+      "recovered_sha256": "1504d100c5e0024125036bb1637f3e09bdca7b8f766507577d4d65acc02a40f6",
+      "publication_sha256": "1504d100c5e0024125036bb1637f3e09bdca7b8f766507577d4d65acc02a40f6",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.LocalRing.Quotient",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/LocalRing/Quotient.lean",
+      "recovered_sha256": "856aab433a73b267b5e7da9d09cb8d6f059c3183a9c2239d333378053b32d584",
+      "publication_sha256": "856aab433a73b267b5e7da9d09cb8d6f059c3183a9c2239d333378053b32d584",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.CohenMacaulay.RegularSequence",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/CohenMacaulay/RegularSequence.lean",
+      "recovered_sha256": "ed25f55c6890c9b66488171a05529d4637b301b4b426019862bcb3baa9acbc4a",
+      "publication_sha256": "ed25f55c6890c9b66488171a05529d4637b301b4b426019862bcb3baa9acbc4a",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.Span.Basic",
+      "recovered_path": "vendor/TauCeti/TauCeti/LinearAlgebra/Span/Basic.lean",
+      "recovered_sha256": "79884fde50280d80801e96ea59cab2eadfaa902e075823a9593f4d9bb32c6a06",
+      "publication_sha256": "79884fde50280d80801e96ea59cab2eadfaa902e075823a9593f4d9bb32c6a06",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.LocalRing.MaximalIdeal.Square",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/LocalRing/MaximalIdeal/Square.lean",
+      "recovered_sha256": "0f712d1a590c1636d69a4a0cf7b7b5b43dc58617323bc288cce65fee259aa3bd",
+      "publication_sha256": "0f712d1a590c1636d69a4a0cf7b7b5b43dc58617323bc288cce65fee259aa3bd",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.RegularLocalRing.Basic",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/RegularLocalRing/Basic.lean",
+      "recovered_sha256": "d0b99478f80b4f71f0c8899a032b48e84c87b4b6d26b906c18d8281781ad4c17",
+      "publication_sha256": "d0b99478f80b4f71f0c8899a032b48e84c87b4b6d26b906c18d8281781ad4c17",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Algebra.Module.SpanRank",
+      "recovered_path": "vendor/TauCeti/TauCeti/Algebra/Module/SpanRank.lean",
+      "recovered_sha256": "8be040175ebc7ab5942caaad2c27243aab839f07b9a98dbe9782f63eba3ae370",
+      "publication_sha256": "8be040175ebc7ab5942caaad2c27243aab839f07b9a98dbe9782f63eba3ae370",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.Matrix.Adjugate.Basic",
+      "recovered_path": "vendor/TauCeti/TauCeti/LinearAlgebra/Matrix/Adjugate/Basic.lean",
+      "recovered_sha256": "915cd347fc7dc98a368584242fbaa2cc1fb2112c667c6295a396a99ce53f90eb",
+      "publication_sha256": "915cd347fc7dc98a368584242fbaa2cc1fb2112c667c6295a396a99ce53f90eb",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.Spectrum.Prime.Point",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/Spectrum/Prime/Point.lean",
+      "recovered_sha256": "34fe3837cd2f7db8bcf322d5037b0a54abf8a027105c8f6e12a43a2ce0d2434c",
+      "publication_sha256": "34fe3837cd2f7db8bcf322d5037b0a54abf8a027105c8f6e12a43a2ce0d2434c",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.Finiteness.Nakayama",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/Finiteness/Nakayama.lean",
+      "recovered_sha256": "9d91bffddba758068dff7fca250afee8958dc7d394cb3e897c646d72fca3ff0a",
+      "publication_sha256": "9d91bffddba758068dff7fca250afee8958dc7d394cb3e897c646d72fca3ff0a",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.Regular.RegularSequence",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/Regular/RegularSequence.lean",
+      "recovered_sha256": "32e94ac1e00d138abac8edd28d2f1f95c38a02959d396fe90dcc76d6a71d3506",
+      "publication_sha256": "32e94ac1e00d138abac8edd28d2f1f95c38a02959d396fe90dcc76d6a71d3506",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.Depth.WeaklyRegular",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/Depth/WeaklyRegular.lean",
+      "recovered_sha256": "eacea559e931c123dbc093252b4996b569ee9e684b61ebbbd734542131ff3c2a",
+      "publication_sha256": "eacea559e931c123dbc093252b4996b569ee9e684b61ebbbd734542131ff3c2a",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.CohenMacaulay.Height",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/CohenMacaulay/Height.lean",
+      "recovered_sha256": "487d3fbb0438f7768a8f09f0d04a41feccc05771306a85386af8b81ab076b378",
+      "publication_sha256": "487d3fbb0438f7768a8f09f0d04a41feccc05771306a85386af8b81ab076b378",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.RegularLocalRing.CohenMacaulay",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/RegularLocalRing/CohenMacaulay.lean",
+      "recovered_sha256": "8655bbe5868500106e8671d49bd04740d2ee5480a4d24fb57d75e3243fac0dad",
+      "publication_sha256": "8655bbe5868500106e8671d49bd04740d2ee5480a4d24fb57d75e3243fac0dad",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.KrullDimension.Integral",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/KrullDimension/Integral.lean",
+      "recovered_sha256": "709480b83ac3d400aae3723e2aba7a9cbc3496f0bf0d830c2cd65f54db43131c",
+      "publication_sha256": "709480b83ac3d400aae3723e2aba7a9cbc3496f0bf0d830c2cd65f54db43131c",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.KrullDimension.Basic",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/KrullDimension/Basic.lean",
+      "recovered_sha256": "14962ad4f21e7d27e4e8d73fb509ff614bc9becb5f37c78341dfd72d7d0fb7c4",
+      "publication_sha256": "14962ad4f21e7d27e4e8d73fb509ff614bc9becb5f37c78341dfd72d7d0fb7c4",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.KrullDimension.FiniteType",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/KrullDimension/FiniteType.lean",
+      "recovered_sha256": "20016a39bed53eea9c57d8ee7c187428c1eb86f0b4129773f7470046f1215203",
+      "publication_sha256": "20016a39bed53eea9c57d8ee7c187428c1eb86f0b4129773f7470046f1215203",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.KrullDimension.Polynomial",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/KrullDimension/Polynomial.lean",
+      "recovered_sha256": "27a25a6e850e326dcd4c60d05eb416c64eeade096a838d6fbf8a3d01002fa905",
+      "publication_sha256": "27a25a6e850e326dcd4c60d05eb416c64eeade096a838d6fbf8a3d01002fa905",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.HomogeneousRegularSequence",
+      "recovered_path": "PaperVerification/HomogeneousRegularSequence.lean",
+      "recovered_sha256": "c1be07e97e6e942a716e49ee8da58d369ab9de969150fb4ee51da310fa526560",
+      "publication_sha256": "c1be07e97e6e942a716e49ee8da58d369ab9de969150fb4ee51da310fa526560",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.FermionOrdinaryParameters",
+      "recovered_path": "PaperVerification/FermionOrdinaryParameters.lean",
+      "recovered_sha256": "2e7d5f364e547c38099d9f0bcc21ee9083e4a915920c85499137480cc208b2b8",
+      "publication_sha256": "2e7d5f364e547c38099d9f0bcc21ee9083e4a915920c85499137480cc208b2b8",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerGenericParameters",
+      "recovered_path": "PaperVerification/PowerGenericParameters.lean",
+      "recovered_sha256": "4cd30fd7db4417d8d2ca6405a3c9c4aed01ea7f6d7f5637180f3f68b0141a869",
+      "publication_sha256": "4cd30fd7db4417d8d2ca6405a3c9c4aed01ea7f6d7f5637180f3f68b0141a869",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.Matrix.Rank",
+      "recovered_path": "vendor/TauCeti/TauCeti/LinearAlgebra/Matrix/Rank.lean",
+      "recovered_sha256": "1c1f61c652af88d7a7cfbaf3ce79bf7fbf343449abb8320a8e7277b99814e804",
+      "publication_sha256": "1c1f61c652af88d7a7cfbaf3ce79bf7fbf343449abb8320a8e7277b99814e804",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.MatrixRank",
+      "recovered_path": "PaperVerification/MatrixRank.lean",
+      "recovered_sha256": "8cc0b85b9089aa170e9553cacec8feba4639a2d66a564190219d495b1d54d640",
+      "publication_sha256": "8cc0b85b9089aa170e9553cacec8feba4639a2d66a564190219d495b1d54d640",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.RankSpecialization",
+      "recovered_path": "PaperVerification/RankSpecialization.lean",
+      "recovered_sha256": "2087d2d3aa45269e17830f31706f1930fdc8e874e9465ec28b424fc495691420",
+      "publication_sha256": "2087d2d3aa45269e17830f31706f1930fdc8e874e9465ec28b424fc495691420",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.MvPolynomial.RestrictSupport",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/MvPolynomial/RestrictSupport.lean",
+      "recovered_sha256": "6b0b1bda92060c9bd74218cbb40adb8e461ad9ff93a8ba368b8c33f4f22e6038",
+      "publication_sha256": "6b0b1bda92060c9bd74218cbb40adb8e461ad9ff93a8ba368b8c33f4f22e6038",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerDegreeMatrices",
+      "recovered_path": "PaperVerification/PowerDegreeMatrices.lean",
+      "recovered_sha256": "10c3034af53a97050e043f11714ba61150428d9eb6e8b077c78d3c4f530bb72b",
+      "publication_sha256": "665465d4e589ebad088504b0da6d22221b6c6032a7cce5eb21f17f648f5e6917",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerDegreeQuotient",
+      "recovered_path": "PaperVerification/PowerDegreeQuotient.lean",
+      "recovered_sha256": "ed495e0bdc1d1f862c75850671e5abde4af42f3d9c85dddffbed83d3ffeaeb04",
+      "publication_sha256": "ed495e0bdc1d1f862c75850671e5abde4af42f3d9c85dddffbed83d3ffeaeb04",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerStabilizerCharacteristic",
+      "recovered_path": "PaperVerification/PowerStabilizerCharacteristic.lean",
+      "recovered_sha256": "b6bbc7b4851931642e06e84d34e2afc0b26a56eb6d1e2b0d41d1989021500b85",
+      "publication_sha256": "9b88cfe318518bef24bc91599a087cb705002f2ce28353839faeb54076e39d7a",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerGroupedParameters",
+      "recovered_path": "PaperVerification/PowerGroupedParameters.lean",
+      "recovered_sha256": "84695f0049bbe9c66f226626baef0a1329f0f75654c58eaaf6c11673630c2b38",
+      "publication_sha256": "84695f0049bbe9c66f226626baef0a1329f0f75654c58eaaf6c11673630c2b38",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.QuotientLinearAction",
+      "recovered_path": "PaperVerification/QuotientLinearAction.lean",
+      "recovered_sha256": "920226fcedc7b6e7ffc2aae23a65450ae3a345e3c1eea1db9f1dcff611f6b928",
+      "publication_sha256": "920226fcedc7b6e7ffc2aae23a65450ae3a345e3c1eea1db9f1dcff611f6b928",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerPermutationAction",
+      "recovered_path": "PaperVerification/PowerPermutationAction.lean",
+      "recovered_sha256": "0584dc49663374a7cfab6d9aad0cb472c08c812172d3d441bc9c6bdf7bef540b",
+      "publication_sha256": "08c328a5aed331194b11725dcb96da8037348472972b8205c9d60b96ce2cd000",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.EquivariantHomExact",
+      "recovered_path": "PaperVerification/EquivariantHomExact.lean",
+      "recovered_sha256": "011695a879ead3cbeac09ac3e331dd04b466286788b2bb63b7b09efd7cd697e5",
+      "publication_sha256": "011695a879ead3cbeac09ac3e331dd04b466286788b2bb63b7b09efd7cd697e5",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.ProjectedRankSpecialization",
+      "recovered_path": "PaperVerification/ProjectedRankSpecialization.lean",
+      "recovered_sha256": "354a9bced79449fcb5772f93d2bd09646032d95d4c718a221482b27ad38d3ad0",
+      "publication_sha256": "354a9bced79449fcb5772f93d2bd09646032d95d4c718a221482b27ad38d3ad0",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.EquivariantHomMatrices",
+      "recovered_path": "PaperVerification/EquivariantHomMatrices.lean",
+      "recovered_sha256": "1a3f70de42b54f47bdf5e7d907b5f8bf4a4597f572b3e8a695ce0e598185068c",
+      "publication_sha256": "1a3f70de42b54f47bdf5e7d907b5f8bf4a4597f572b3e8a695ce0e598185068c",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.EquivariantHomSpecialization",
+      "recovered_path": "PaperVerification/EquivariantHomSpecialization.lean",
+      "recovered_sha256": "9a803b7f55c54f8a67232f3fe8f08776a350c5e127e90ae3f2a0659c25b57eae",
+      "publication_sha256": "9a803b7f55c54f8a67232f3fe8f08776a350c5e127e90ae3f2a0659c25b57eae",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.EquivariantHomRank",
+      "recovered_path": "PaperVerification/EquivariantHomRank.lean",
+      "recovered_sha256": "6cf5c54499668156a18904ca27cda9333b25a9de3e734ad3a141f810a27db255",
+      "publication_sha256": "6cf5c54499668156a18904ca27cda9333b25a9de3e734ad3a141f810a27db255",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.EquivariantCokernelSpecialization",
+      "recovered_path": "PaperVerification/EquivariantCokernelSpecialization.lean",
+      "recovered_sha256": "594d132ad233d8c0d04894096ff589fb4ab1b3f27736fc62d1570536c78e4adb",
+      "publication_sha256": "63706d14002c06f51dfdf276aa72ba845b20b4a57af92713fc40124507476264",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerDegreeActions",
+      "recovered_path": "PaperVerification/PowerDegreeActions.lean",
+      "recovered_sha256": "77cc591bac381e47225b1040543ec1ac810cb191354929ac6e5f2a2178e2cd66",
+      "publication_sha256": "a7aa86a2843759beea6cf93e8e5d358c6dc4c31e72ddc38d26348ca8c4c18209",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerOriginalDegreeMatrices",
+      "recovered_path": "PaperVerification/PowerOriginalDegreeMatrices.lean",
+      "recovered_sha256": "2e91e34353808c0b8251ad7eb15e027444a1cfaa4e5fad1591a203916f84785f",
+      "publication_sha256": "9798729df9b6e1aba064dc2a9e8f6465b23351723bacd4b7e9672cb0217bbf95",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerArtinBasis",
+      "recovered_path": "PaperVerification/PowerArtinBasis.lean",
+      "recovered_sha256": "ab8346b8f77f4d3bdb947db6bf1dabaefe4e94d775613b32543e01d18494cf23",
+      "publication_sha256": "ab8346b8f77f4d3bdb947db6bf1dabaefe4e94d775613b32543e01d18494cf23",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Algebra.DirectSum.Internal",
+      "recovered_path": "vendor/TauCeti/TauCeti/Algebra/DirectSum/Internal.lean",
+      "recovered_sha256": "45963701ec69a06ff3b6a1a255609cb4601fb3b1b36950f142d9ea367ef46898",
+      "publication_sha256": "45963701ec69a06ff3b6a1a255609cb4601fb3b1b36950f142d9ea367ef46898",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.Graded.LinearMap",
+      "recovered_path": "vendor/TauCeti/TauCeti/LinearAlgebra/Graded/LinearMap.lean",
+      "recovered_sha256": "c41e294634274fcf04abf82e3e01c9274a5af1410e700abd6b7ed191ee6ca425",
+      "publication_sha256": "c41e294634274fcf04abf82e3e01c9274a5af1410e700abd6b7ed191ee6ca425",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Order.CompactlyGenerated",
+      "recovered_path": "vendor/TauCeti/TauCeti/Order/CompactlyGenerated.lean",
+      "recovered_sha256": "3e93b2db178a1ec7405805e8c44586d3f72ea96a56160499f13ada61cde5983f",
+      "publication_sha256": "3e93b2db178a1ec7405805e8c44586d3f72ea96a56160499f13ada61cde5983f",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Algebra.Module.Submodule.Finite",
+      "recovered_path": "vendor/TauCeti/TauCeti/Algebra/Module/Submodule/Finite.lean",
+      "recovered_sha256": "5df7767f5312f9fda15b38fc53cae4a62ce0441f45f33eb93d5e54df68678593",
+      "publication_sha256": "5df7767f5312f9fda15b38fc53cae4a62ce0441f45f33eb93d5e54df68678593",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Algebra.Module.GradedModule.Internal",
+      "recovered_path": "vendor/TauCeti/TauCeti/Algebra/Module/GradedModule/Internal.lean",
+      "recovered_sha256": "3fbc490d719f155b2a31064f03393ed21373e3cfd46d27365dcfdca8a5100b3e",
+      "publication_sha256": "3fbc490d719f155b2a31064f03393ed21373e3cfd46d27365dcfdca8a5100b3e",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Algebra.Module.GradedModule.Quotient",
+      "recovered_path": "vendor/TauCeti/TauCeti/Algebra/Module/GradedModule/Quotient.lean",
+      "recovered_sha256": "97681b24a5a5c96207f98d9d1649b39844ff7d8b0d8ffa3a72d37d4c1167d8c8",
+      "publication_sha256": "97681b24a5a5c96207f98d9d1649b39844ff7d8b0d8ffa3a72d37d4c1167d8c8",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.FermionGradedHilbert",
+      "recovered_path": "PaperVerification/FermionGradedHilbert.lean",
+      "recovered_sha256": "fe83f9eaa8a217eefb5f4dc0caea359738b6fcbe5b3f90596b9b1ab0e8650019",
+      "publication_sha256": "fe83f9eaa8a217eefb5f4dc0caea359738b6fcbe5b3f90596b9b1ab0e8650019",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.FermionFiniteGrading",
+      "recovered_path": "PaperVerification/FermionFiniteGrading.lean",
+      "recovered_sha256": "516b798204abc348f2a607d8ef8c3fa0cd407712a6c0cdce5a96fa98ca32869e",
+      "publication_sha256": "516b798204abc348f2a607d8ef8c3fa0cd407712a6c0cdce5a96fa98ca32869e",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.GradedDimensionComparison",
+      "recovered_path": "PaperVerification/GradedDimensionComparison.lean",
+      "recovered_sha256": "18494bb4c87f5d1c6b22541e146b6dd91de4ac21ec78f3a67be3a38c62cde7d4",
+      "publication_sha256": "a4e792354136695a41d847d6140af6b76176b4cb60f789c99dd03290d1ef55cd",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.HilbertTowerCount",
+      "recovered_path": "PaperVerification/HilbertTowerCount.lean",
+      "recovered_sha256": "c1a9349c0abdc117f38ba7bdb081fad559b252cfaa2fe1b37e86b29affbb95e8",
+      "publication_sha256": "c1a9349c0abdc117f38ba7bdb081fad559b252cfaa2fe1b37e86b29affbb95e8",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.FermionPolynomialHilbert",
+      "recovered_path": "PaperVerification/FermionPolynomialHilbert.lean",
+      "recovered_sha256": "e0ace279d94059cfb656e42eddf71cc33f66573d39c980f7dad05e5923dd19f4",
+      "publication_sha256": "e0ace279d94059cfb656e42eddf71cc33f66573d39c980f7dad05e5923dd19f4",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.FermionIdealHilbert",
+      "recovered_path": "PaperVerification/FermionIdealHilbert.lean",
+      "recovered_sha256": "1adf7010cd0adeb73b356cc13d53665dec18dcb83236c683ccb8ff3883a96941",
+      "publication_sha256": "1adf7010cd0adeb73b356cc13d53665dec18dcb83236c683ccb8ff3883a96941",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.FermionCompleteIntersectionLength",
+      "recovered_path": "PaperVerification/FermionCompleteIntersectionLength.lean",
+      "recovered_sha256": "afe8b82e7d6efbc47dd17d9eef12a7827f096513d2ca8af3a4f8cdfb43a62fbd",
+      "publication_sha256": "afe8b82e7d6efbc47dd17d9eef12a7827f096513d2ca8af3a4f8cdfb43a62fbd",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.FermionOrdinaryLength",
+      "recovered_path": "PaperVerification/FermionOrdinaryLength.lean",
+      "recovered_sha256": "7451cc96b1c773dd791d56bf0b5abeb19dc5278fc6fd196756f5df57f8b21a38",
+      "publication_sha256": "7451cc96b1c773dd791d56bf0b5abeb19dc5278fc6fd196756f5df57f8b21a38",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerBasisTheorem",
+      "recovered_path": "PaperVerification/PowerBasisTheorem.lean",
+      "recovered_sha256": "e30fd39d6134f38379f01bfd03a6cc1b0dfeb4abd8f7602ebac29afd93411f5a",
+      "publication_sha256": "a7412da5b278796d6dc6c38acdad741988a07606c2f730431a207b595b74cdfd",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerOriginalBasis",
+      "recovered_path": "PaperVerification/PowerOriginalBasis.lean",
+      "recovered_sha256": "6d012de97bb8367e4e109caa86b2dd8e53d1700fa4b6d3f0d510027f19c53f8e",
+      "publication_sha256": "c3455b27954ab13d73c9d7de48b17377cb6e69e1d154057a1239b78fc8fb7027",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerOriginalAction",
+      "recovered_path": "PaperVerification/PowerOriginalAction.lean",
+      "recovered_sha256": null,
+      "publication_sha256": "47b6d88fbad34581f3fdb317e49072b30b03ed0b3d9de9055760d3365c13fa10",
+      "changed": true,
+      "new_source": true
+    },
+    {
+      "module": "PaperVerification.PowerOriginalDegreePresentation",
+      "recovered_path": "PaperVerification/PowerOriginalDegreePresentation.lean",
+      "recovered_sha256": "968d4ddbe74313518b0dede94efb217d82f1ccb4616107f6e28569094efd59a5",
+      "publication_sha256": "942c8875c11c3c5ebff754208352391d79f03d7dbee1d00ef1cd433abe3cf34e",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerHarmonicWitness",
+      "recovered_path": "PaperVerification/PowerHarmonicWitness.lean",
+      "recovered_sha256": "34d7fb31be5cc78f96b91f48f081e83d633c7c3e02eaa6ac4f303eb2e66c11a8",
+      "publication_sha256": "34d7fb31be5cc78f96b91f48f081e83d633c7c3e02eaa6ac4f303eb2e66c11a8",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerFischerPairing",
+      "recovered_path": "PaperVerification/PowerFischerPairing.lean",
+      "recovered_sha256": "0459450ff7a802c49cb4be3381ded72317b9912a77211be54cd84466876c76cf",
+      "publication_sha256": "0459450ff7a802c49cb4be3381ded72317b9912a77211be54cd84466876c76cf",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerHarmonicQuotient",
+      "recovered_path": "PaperVerification/PowerHarmonicQuotient.lean",
+      "recovered_sha256": "bd54b56a03b0b7bc147e634e072c5bd406b025ff2c22d56838872d43306f21c4",
+      "publication_sha256": "bd54b56a03b0b7bc147e634e072c5bd406b025ff2c22d56838872d43306f21c4",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerStandardHarmonics",
+      "recovered_path": "PaperVerification/PowerStandardHarmonics.lean",
+      "recovered_sha256": "747e098e19aba495d635ea6df60dd37ac8e77246e89a73a81e2da3c8f24266fe",
+      "publication_sha256": "747e098e19aba495d635ea6df60dd37ac8e77246e89a73a81e2da3c8f24266fe",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerStandardDual",
+      "recovered_path": "PaperVerification/PowerStandardDual.lean",
+      "recovered_sha256": "371f9455c0f3bfbad99999561e692199d545a1b45e8fc77dee6110df6a432cfe",
+      "publication_sha256": "371f9455c0f3bfbad99999561e692199d545a1b45e8fc77dee6110df6a432cfe",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.EquivariantSection",
+      "recovered_path": "PaperVerification/EquivariantSection.lean",
+      "recovered_sha256": "964db04f82839c75f5d43b2db263fe8f205027e0902987b9df88336961972a7c",
+      "publication_sha256": "964db04f82839c75f5d43b2db263fe8f205027e0902987b9df88336961972a7c",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.SelfDualSubrepresentation",
+      "recovered_path": "PaperVerification/SelfDualSubrepresentation.lean",
+      "recovered_sha256": "4d5e94e5040b28fafb51a50d194b7525e4f39f6b38fe446850f773e19b76a603",
+      "publication_sha256": "4d5e94e5040b28fafb51a50d194b7525e4f39f6b38fe446850f773e19b76a603",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerResonantStandard",
+      "recovered_path": "PaperVerification/PowerResonantStandard.lean",
+      "recovered_sha256": "75b94976290434c16484192d38ad4d9a16ecada2d5a1b1462edd08b773017ee4",
+      "publication_sha256": "737e36bfc04311ea19b2fcad98f0b69abab052c3c51de987d8a69730c81ce58e",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.MvPolynomial.Symmetric.Homogeneous",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/MvPolynomial/Symmetric/Homogeneous.lean",
+      "recovered_sha256": "4e704faf495cc28fba49e670dae46848494cf7b49cee3f612d5f97645b14bbd2",
+      "publication_sha256": "4e704faf495cc28fba49e670dae46848494cf7b49cee3f612d5f97645b14bbd2",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Data.Sym.Basic",
+      "recovered_path": "vendor/TauCeti/TauCeti/Data/Sym/Basic.lean",
+      "recovered_sha256": "697125458a8956fdd53b94617936970ad004cbd38e0ec6a7749be9fe41c13b10",
+      "publication_sha256": "697125458a8956fdd53b94617936970ad004cbd38e0ec6a7749be9fe41c13b10",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.MvPolynomial.Symmetric.Complete.Basic",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/MvPolynomial/Symmetric/Complete/Basic.lean",
+      "recovered_sha256": "dcaddad40c187ec2e3f1b66a0c4b27aa65fa2e679b41f57a416db3d467f25edd",
+      "publication_sha256": "dcaddad40c187ec2e3f1b66a0c4b27aa65fa2e679b41f57a416db3d467f25edd",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.PowerSeries.Rescale",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/PowerSeries/Rescale.lean",
+      "recovered_sha256": "0123689f7d2ca9179df8e52cec70ae36c0bdd337214f77d7b4eab2c39733bf37",
+      "publication_sha256": "0123689f7d2ca9179df8e52cec70ae36c0bdd337214f77d7b4eab2c39733bf37",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.MvPolynomial.Symmetric.Elementary",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/MvPolynomial/Symmetric/Elementary.lean",
+      "recovered_sha256": "c59fb1dc600e332424c3856ea3df2e17305856de0d2e6189a0d40ca18da04da4",
+      "publication_sha256": "c59fb1dc600e332424c3856ea3df2e17305856de0d2e6189a0d40ca18da04da4",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Algebra.BigOperators.Finset.Range",
+      "recovered_path": "vendor/TauCeti/TauCeti/Algebra/BigOperators/Finset/Range.lean",
+      "recovered_sha256": "9ddabc368624d4e5b7a524785fe410cbe3e58ff0172ba3bc2f9dee7e40b6b777",
+      "publication_sha256": "9ddabc368624d4e5b7a524785fe410cbe3e58ff0172ba3bc2f9dee7e40b6b777",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.PowerSeries.Geometric",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/PowerSeries/Geometric.lean",
+      "recovered_sha256": "ba67ee51121ee013b51f04802bb15f5083ab73c324a3724f3f92a83d5fbcb8e6",
+      "publication_sha256": "ba67ee51121ee013b51f04802bb15f5083ab73c324a3724f3f92a83d5fbcb8e6",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.MvPolynomial.Symmetric.Complete.Elementary",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/MvPolynomial/Symmetric/Complete/Elementary.lean",
+      "recovered_sha256": "e54e44c54e8507a4ea7b6d7df0703105feabe87fd4f5feeb0b38034a5ab7b0f4",
+      "publication_sha256": "e54e44c54e8507a4ea7b6d7df0703105feabe87fd4f5feeb0b38034a5ab7b0f4",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerCoinvariantComparator",
+      "recovered_path": "PaperVerification/PowerCoinvariantComparator.lean",
+      "recovered_sha256": "0406930c769f3507ba3eb4a83c6d81de615b709c4c920d8bee6353da95a90849",
+      "publication_sha256": "0406930c769f3507ba3eb4a83c6d81de615b709c4c920d8bee6353da95a90849",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerCoinvariantStabilizer",
+      "recovered_path": "PaperVerification/PowerCoinvariantStabilizer.lean",
+      "recovered_sha256": "99213aacc86da558c3c423628016a37ba741180dee85478a4eef432e5f9e9ee2",
+      "publication_sha256": "89ef16111efb3f1dceba24421e9fa1c16e498727ca6ae0e916a49d78f4e04848",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerCoinvariantAction",
+      "recovered_path": "PaperVerification/PowerCoinvariantAction.lean",
+      "recovered_sha256": "afde26b443d5b9dfbc483da2e7355f8cba227df019705850d1ce1684f2a5672c",
+      "publication_sha256": "04f25b0f121a6d33dc6f69676bce104b6c2fa02e9e85a6208efa477598a4f822",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerCoinvariantStandard",
+      "recovered_path": "PaperVerification/PowerCoinvariantStandard.lean",
+      "recovered_sha256": "a3a93d0d1b1147b1a2ca496f43f062c493cf1aebd26ce4e430d7c157b82fc93d",
+      "publication_sha256": "c7b42cad21847e4c9ec159a9616bdaba94cdfefaa657a8bbc6e16964752ca713",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerDegreePresentation",
+      "recovered_path": "PaperVerification/PowerDegreePresentation.lean",
+      "recovered_sha256": "c67e6311e97cd8b485530093c5363297db61be7b4c481e35a8416874113f9a6f",
+      "publication_sha256": "bcd016ee8c90a3baafe826a6a6cb9e0a27b2bf8af44ddaaf326ce7be6de3f779",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerEquivariantSpecialization",
+      "recovered_path": "PaperVerification/PowerEquivariantSpecialization.lean",
+      "recovered_sha256": "207d920487c94f8421cf050fb21e598ac70627b9dc6c353f14e3c37430866287",
+      "publication_sha256": "e4f6d1ba7292dfe68b8e6d9a5c72a4b507188003e2bbdf754daa9c3fe3490ab6",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.HomogeneousNullstellensatz",
+      "recovered_path": "PaperVerification/HomogeneousNullstellensatz.lean",
+      "recovered_sha256": "f4bd4f39a3b2b81f6e49e7b76a0d47fde7fd0b05570324ce3d9e08d754be2b0c",
+      "publication_sha256": "f4bd4f39a3b2b81f6e49e7b76a0d47fde7fd0b05570324ce3d9e08d754be2b0c",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.AlternatingFormsFieldDescent",
+      "recovered_path": "PaperVerification/AlternatingFormsFieldDescent.lean",
+      "recovered_sha256": "6af0a8eb93fa6986b9cec36b39b51a583dc1df8a14464e93128e5ff86bd699fa",
+      "publication_sha256": "1b758b80d9de65a4949fd2531cacc11dbdda08062021325c3d784960609b1512",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerCompleteHomogeneousRegular",
+      "recovered_path": "PaperVerification/PowerCompleteHomogeneousRegular.lean",
+      "recovered_sha256": "7f68f3d66f714472186c8fcb28464267369d6b8677747328805e594248e2437b",
+      "publication_sha256": "7daa8a64e4094ad6ee80f2a2a3e120f28531b89060a24da338f1620b858d9e08",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.HomogeneousKoszulMatrices",
+      "recovered_path": "PaperVerification/HomogeneousKoszulMatrices.lean",
+      "recovered_sha256": "f272e78e4e5763ee74ad78db70528250345e1ac9f0bd9efec4b9efea9dd47ba9",
+      "publication_sha256": "7535ef91a3b66c53d3212668f7e76232277846602cbaa9fade69b46b59ac82e2",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.HomogeneousKoszulRepresentation",
+      "recovered_path": "PaperVerification/HomogeneousKoszulRepresentation.lean",
+      "recovered_sha256": "fdc7a4fb7cf411682e0c891e177fac48cc1d2e1750fe85db7d786f32dc53d8a9",
+      "publication_sha256": "43f86f844f5c3baf1913742523053c983b3b833adedcf02923bfd8324a4f718c",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.HomogeneousKoszulSpecialization",
+      "recovered_path": "PaperVerification/HomogeneousKoszulSpecialization.lean",
+      "recovered_sha256": "142c76c17605f4706da3db037d177d23ec275f2e3830a5f130334416b3bba09d",
+      "publication_sha256": "142c76c17605f4706da3db037d177d23ec275f2e3830a5f130334416b3bba09d",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerRegularComparator",
+      "recovered_path": "PaperVerification/PowerRegularComparator.lean",
+      "recovered_sha256": "787fd0786258110cd74f0d83963135b11c56fe9c3d61eb629cf304e66166b362",
+      "publication_sha256": "98c8f06c69193dfef6430b332a832e016b707ca37ccc50f92cda4f6dcd436abd",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerEquivariantLowerBound",
+      "recovered_path": "PaperVerification/PowerEquivariantLowerBound.lean",
+      "recovered_sha256": "ac468b2266df277c8677eee208b02e7208ae8e46bb1e71244109945482f1c20c",
+      "publication_sha256": "ac468b2266df277c8677eee208b02e7208ae8e46bb1e71244109945482f1c20c",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerComparatorLength",
+      "recovered_path": "PaperVerification/PowerComparatorLength.lean",
+      "recovered_sha256": "4dd11b41d013b3fba296e0211a3229c2593b01a9b4652294e08fb2e679ee61bb",
+      "publication_sha256": "e4641650da91311a77ec4a290b347129dabc3a4c49ced45462d4e13e23e64507",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.SimpleModule.Isotypic",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/SimpleModule/Isotypic.lean",
+      "recovered_sha256": "0983d55a0f36220f2d01886bd9195f1536935913b258b810f3fcbb8ef01c55ea",
+      "publication_sha256": "0983d55a0f36220f2d01886bd9195f1536935913b258b810f3fcbb8ef01c55ea",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Algebra.Module.Submodule.Quotient",
+      "recovered_path": "vendor/TauCeti/TauCeti/Algebra/Module/Submodule/Quotient.lean",
+      "recovered_sha256": "0591e7c12576ded682a9d92dfe2bbf2962b0133f671e72a4df5749137b701c1e",
+      "publication_sha256": "0591e7c12576ded682a9d92dfe2bbf2962b0133f671e72a4df5749137b701c1e",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.CompositionSeries.Basic",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/CompositionSeries/Basic.lean",
+      "recovered_sha256": "84e5ac807b2e9925aec5a01df592f77ab545c0f99e95cf9dda795a8dc6b3df69",
+      "publication_sha256": "84e5ac807b2e9925aec5a01df592f77ab545c0f99e95cf9dda795a8dc6b3df69",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.CompositionSeries.Multiplicity",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/CompositionSeries/Multiplicity.lean",
+      "recovered_sha256": "215e3183927a3d2f8dd1c98b909cfdd312587c4be0939e58ef794e1ec82a2d11",
+      "publication_sha256": "215e3183927a3d2f8dd1c98b909cfdd312587c4be0939e58ef794e1ec82a2d11",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.CompositionSeries.Additivity",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/CompositionSeries/Additivity.lean",
+      "recovered_sha256": "0262b9925efe748d3c107f895a76c03d056ee63f1df8310d91e464792de4c734",
+      "publication_sha256": "0262b9925efe748d3c107f895a76c03d056ee63f1df8310d91e464792de4c734",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Algebra.Module.Equiv.Basic",
+      "recovered_path": "vendor/TauCeti/TauCeti/Algebra/Module/Equiv/Basic.lean",
+      "recovered_sha256": "68d9c7da276778cd7f2086186626fb7186fff1d0cf5fa0c3788a1780e8f942c3",
+      "publication_sha256": "68d9c7da276778cd7f2086186626fb7186fff1d0cf5fa0c3788a1780e8f942c3",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.Semisimple.Schur",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/Semisimple/Schur.lean",
+      "recovered_sha256": "94934a9473f3a080068364ebe2de33b40fb66e0d5428f6e738db2144758e32f4",
+      "publication_sha256": "94934a9473f3a080068364ebe2de33b40fb66e0d5428f6e738db2144758e32f4",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.Semisimple.RegularIsotypicComponent",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/Semisimple/RegularIsotypicComponent.lean",
+      "recovered_sha256": "daac95473e81831b296ab3c119e9d2bdff9021632d74932e61bfc5cd5d343f52",
+      "publication_sha256": "daac95473e81831b296ab3c119e9d2bdff9021632d74932e61bfc5cd5d343f52",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.Semisimple.Multiplicity",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/Semisimple/Multiplicity.lean",
+      "recovered_sha256": "1fdf30ac5628410f28d67689446b8537f5ab29139ca6a01d03cc3c9bddeb96ef",
+      "publication_sha256": "1fdf30ac5628410f28d67689446b8537f5ab29139ca6a01d03cc3c9bddeb96ef",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.SemisimpleHomComparison",
+      "recovered_path": "PaperVerification/SemisimpleHomComparison.lean",
+      "recovered_sha256": "2163e072197995c1ff9751ee117c1cc9221b7cd7d0ef5b2399f6bd5f1e1fabda",
+      "publication_sha256": "2163e072197995c1ff9751ee117c1cc9221b7cd7d0ef5b2399f6bd5f1e1fabda",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Algebra.MonoidAlgebra.MapDomain",
+      "recovered_path": "vendor/TauCeti/TauCeti/Algebra/MonoidAlgebra/MapDomain.lean",
+      "recovered_sha256": "7268b3c922d266b4c9a05a8aed0e1a521501695375675327e29efb63e8491c0a",
+      "publication_sha256": "7268b3c922d266b4c9a05a8aed0e1a521501695375675327e29efb63e8491c0a",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RepresentationTheory.Intertwining",
+      "recovered_path": "vendor/TauCeti/TauCeti/RepresentationTheory/Intertwining.lean",
+      "recovered_sha256": "1f1f7b7728a78782ca87a6f5db4cf33b57de2699711277e9ed99b7af49eadba5",
+      "publication_sha256": "1f1f7b7728a78782ca87a6f5db4cf33b57de2699711277e9ed99b7af49eadba5",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RepresentationTheory.Subrepresentation",
+      "recovered_path": "vendor/TauCeti/TauCeti/RepresentationTheory/Subrepresentation.lean",
+      "recovered_sha256": "49b39488f4520bc506e8f8c234ba13e801d89af0b84f4c1ef3450cb5b5398fe6",
+      "publication_sha256": "49b39488f4520bc506e8f8c234ba13e801d89af0b84f4c1ef3450cb5b5398fe6",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RepresentationTheory.FDRep.Basic",
+      "recovered_path": "vendor/TauCeti/TauCeti/RepresentationTheory/FDRep/Basic.lean",
+      "recovered_sha256": "9a3444e162167994ebbcaba1816bdc0921b2a163fa17c9b507a7ef2975f389f5",
+      "publication_sha256": "9a3444e162167994ebbcaba1816bdc0921b2a163fa17c9b507a7ef2975f389f5",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RepresentationTheory.AsModule",
+      "recovered_path": "vendor/TauCeti/TauCeti/RepresentationTheory/AsModule.lean",
+      "recovered_sha256": "b2c2849c4d0ed0c07a8958d97b1dc010a27138055aa9db280f7c49ce31752b37",
+      "publication_sha256": "b2c2849c4d0ed0c07a8958d97b1dc010a27138055aa9db280f7c49ce31752b37",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.RepresentationHomComparison",
+      "recovered_path": "PaperVerification/RepresentationHomComparison.lean",
+      "recovered_sha256": "c678462c7a8c040518d160e0c5dc06c5ca1de152c6119379733e02a62b778f28",
+      "publication_sha256": "46684b5455aed98619e5a828bda9959e43db26f40fbd222eb377e9553a6c7be2",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.GradedDimensionEquality",
+      "recovered_path": "PaperVerification/GradedDimensionEquality.lean",
+      "recovered_sha256": "aada86cdd2ce97fb2918f435ae09a6cdc870809e6ba748c4490bd4138c3feafa",
+      "publication_sha256": "7a0ca93dc023cf293edb1521f5c478351f488f07399fa41a829c55a020fd2762",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerGradedRepresentation",
+      "recovered_path": "PaperVerification/PowerGradedRepresentation.lean",
+      "recovered_sha256": "19f0889e754669c10d5b050282efc730c43911ad3b6329f644f388eedf8c8286",
+      "publication_sha256": "3c1ffa3bfc4e2b071c7b4e32bb6aaf78f94a07901b82f01f093df37c748deb9f",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.GradedRepresentationAssembly",
+      "recovered_path": "PaperVerification/GradedRepresentationAssembly.lean",
+      "recovered_sha256": "a0924c7a3c9dea24190473c7f626aea54ee545797936451c489b4c3fe80cb84d",
+      "publication_sha256": "6b57a2ffb06e8d55dfeddf7d07559a7df9e321f59556a6ae55fdcc29e270ce00",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerRepresentationTheorem",
+      "recovered_path": "PaperVerification/PowerRepresentationTheorem.lean",
+      "recovered_sha256": "9cd37988b32685bb328917a82ddc69e3dde37cf3bf95544e58e8ec60c9123fda",
+      "publication_sha256": "7251ef8a02b3e00ebbb1d1229901ae212a3708488700dc1c0611120449750199",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerOriginalRepresentation",
+      "recovered_path": "PaperVerification/PowerOriginalRepresentation.lean",
+      "recovered_sha256": "4d7452684022eacdd99f6aa17dfab288bb277a2924cf63d5066fc9801b79f108",
+      "publication_sha256": "5af0c4a4c1aa19490b80f0bc856b6bb847680f508164975e074b44d1f1888a9e",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerOriginalDegreeEquiv",
+      "recovered_path": "PaperVerification/PowerOriginalDegreeEquiv.lean",
+      "recovered_sha256": "717243ba6d24f36257a4b382a2805a946c56bb839acd5812e6b7c4830250951e",
+      "publication_sha256": "d84b30e15e5feb750e27bff95b27af0c62d28209826f729ae586b96e300df583",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.EquivariantCokernelGenericSpecialization",
+      "recovered_path": "PaperVerification/EquivariantCokernelGenericSpecialization.lean",
+      "recovered_sha256": "50c42c4037fbc8325169e124add8a5b6cf887209dd57a825b8cd2ce1e63088fd",
+      "publication_sha256": "0aa76a55d811502db2fbc15cadc59481cb5481a5c89719b0924b10380f06d824",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerUniversalSlope",
+      "recovered_path": "PaperVerification/PowerUniversalSlope.lean",
+      "recovered_sha256": "27a4c3650e0c12947f242bc577f24caa6fd8efa11b8ba762ea4fb26db3565a44",
+      "publication_sha256": "936aff2f7626f8dc0d4e2c7031e7ebf0ec2945f6db1f4337299cd2a7d5918fb2",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Algebra.Module.GradedModule.HomogeneousPart",
+      "recovered_path": "vendor/TauCeti/TauCeti/Algebra/Module/GradedModule/HomogeneousPart.lean",
+      "recovered_sha256": "eedd69ebff834a49ba888dd87a0fd895577c5fc5f6d7e6c9681676f0b937cf23",
+      "publication_sha256": "eedd69ebff834a49ba888dd87a0fd895577c5fc5f6d7e6c9681676f0b937cf23",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Algebra.Module.GradedModule.Polynomial",
+      "recovered_path": "vendor/TauCeti/TauCeti/Algebra/Module/GradedModule/Polynomial.lean",
+      "recovered_sha256": "bfbf35c8685f4cfb3534d452dd3e191e64b2f3e88bdd7114a3d45700e379a98c",
+      "publication_sha256": "bfbf35c8685f4cfb3534d452dd3e191e64b2f3e88bdd7114a3d45700e379a98c",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.GradedComponentBasis",
+      "recovered_path": "PaperVerification/GradedComponentBasis.lean",
+      "recovered_sha256": "5fd6e56ecf6b4f9c52e98d22b66bed76d394ff45fb6365d31a37934ef19e4846",
+      "publication_sha256": "5fd6e56ecf6b4f9c52e98d22b66bed76d394ff45fb6365d31a37934ef19e4846",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerHilbertSeries",
+      "recovered_path": "PaperVerification/PowerHilbertSeries.lean",
+      "recovered_sha256": "4d7b50226d51cdb32918adf0fe3696692ac4c9ca9963b931d6d751af3723eb8c",
+      "publication_sha256": "c98154e5e054fa123474822434f6a0ad1f4282de024376e5f05cde1fe89df97c",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerSumComparator",
+      "recovered_path": "PaperVerification/PowerSumComparator.lean",
+      "recovered_sha256": "57fa4d6be8768a86ba3931904e9a80d19fc178017e434c696ed569288650be57",
+      "publication_sha256": "b6e4cb2c10dbde8debc3adb2e791f26b13fea8c0f40c866dd57315e18228f97a",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.GradedHilbertTransport",
+      "recovered_path": "PaperVerification/GradedHilbertTransport.lean",
+      "recovered_sha256": "01b4e24f4135428ae580f56b6eb296878b468e3dc485c58f826885647409c244",
+      "publication_sha256": "01b4e24f4135428ae580f56b6eb296878b468e3dc485c58f826885647409c244",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerOriginalHilbert",
+      "recovered_path": "PaperVerification/PowerOriginalHilbert.lean",
+      "recovered_sha256": "ecd5545510b6157da64d016113ec1675b875f08e9c11b9d1496d8bd68c45154e",
+      "publication_sha256": "9da258136935c06c61875a90c3ad11d7723b3bdcb86c3768e3b00d7561325854",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerTheoremTwoTwo",
+      "recovered_path": "PaperVerification/PowerTheoremTwoTwo.lean",
+      "recovered_sha256": "f65e0d9452943383611fe6ec86d1fce2c527f4fdc82a784c7f5a3b66cef16886",
+      "publication_sha256": "27725fad588dc4d7e161523bb1d90745cf390b78967b98302a530953583489c6",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerTheoremOneOneSufficiency",
+      "recovered_path": "PaperVerification/PowerTheoremOneOneSufficiency.lean",
+      "recovered_sha256": "54b96aae560f4ebe0d8cf11a2c100a0ecf1a78784e5711c55d8545f1e967ff54",
+      "publication_sha256": "a0bc4fadd4ab50809b51f92a690599d9e22fc82ac2a7e416dff065b264978ec7",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerOriginalArtinSpanning",
+      "recovered_path": "PaperVerification/PowerOriginalArtinSpanning.lean",
+      "recovered_sha256": "e3deb3b88c4d1459de1cc9f79ded226eeb985e1730039be418bdf1aaaf54fe83",
+      "publication_sha256": "3b5ea3fc461747fe16a5b44aead3f88512b35aea67773cbd9008e475637d923b",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerCoinvariantStandardBridge",
+      "recovered_path": "PaperVerification/PowerCoinvariantStandardBridge.lean",
+      "recovered_sha256": "e1f95e0e1c6cb914de5262607dd3bba04c5eeab72e3ca1f25f51b3bb20207692",
+      "publication_sha256": "4b7cc451818f06ef446ef685e94b27a0df2c53065a8774355ceb1ebbc25f83bf",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerExceptionalArtin",
+      "recovered_path": "PaperVerification/PowerExceptionalArtin.lean",
+      "recovered_sha256": "8f2e02464a11068dff134cf09cb6dabfda5f8f7b59520a725610b538cb77918e",
+      "publication_sha256": "93987f283dbda477979002ffd02ddc3f95979c09f742f06204c1b79e30662f87",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PowerTheoremOneOne",
+      "recovered_path": "PaperVerification/PowerTheoremOneOne.lean",
+      "recovered_sha256": "1a2366a7f4726512593427dc6e13c58ee9f9a57c7b64ae075514edf7995c4b47",
+      "publication_sha256": "1a2366a7f4726512593427dc6e13c58ee9f9a57c7b64ae075514edf7995c4b47",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.EulerJacobian",
+      "recovered_path": "PaperVerification/EulerJacobian.lean",
+      "recovered_sha256": "45d40b24358a738d0ec2e544fb88ef65005f75cce7b3e13b3c0db09d44690fd4",
+      "publication_sha256": "45d40b24358a738d0ec2e544fb88ef65005f75cce7b3e13b3c0db09d44690fd4",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.EulerParameters",
+      "recovered_path": "PaperVerification/EulerParameters.lean",
+      "recovered_sha256": "72c93f6be6ca3a12512df6fa7b7e5d89db3be9fbdeca20e4c02a94605792c45f",
+      "publication_sha256": "72c93f6be6ca3a12512df6fa7b7e5d89db3be9fbdeca20e4c02a94605792c45f",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.JacobianDivergence",
+      "recovered_path": "PaperVerification/JacobianDivergence.lean",
+      "recovered_sha256": "1b89cef1069114fba1d6d6113c4cf479f7d8e8f7b4af2a88ec1a3d0de5a367f1",
+      "publication_sha256": "1b89cef1069114fba1d6d6113c4cf479f7d8e8f7b4af2a88ec1a3d0de5a367f1",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.JacobianIsolatedOrigin",
+      "recovered_path": "PaperVerification/JacobianIsolatedOrigin.lean",
+      "recovered_sha256": "b88bc76ffebb324a5db448a2645c4f5384bb9676a522991cf57bad2e81a5912d",
+      "publication_sha256": "62eaf6fd764666a94cc4b36b98cfbbda21b842ec6e3b12b67d948bc952ed6e86",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.Eigencomponents",
+      "recovered_path": "PaperVerification/Eigencomponents.lean",
+      "recovered_sha256": "af4d4fc317ef490fe30f6b5f9f4e7d82f1a6cbc41c795032782b16548e96ea06",
+      "publication_sha256": "91f8fa45d7394a8362f168e399e221476c4635c21b510dc57f8b88d8cc73229a",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.JacobianTorsion",
+      "recovered_path": "PaperVerification/JacobianTorsion.lean",
+      "recovered_sha256": "875eb0f8ed751504fb15415782a5219db045d683301dec2f6d9b082289ee8c82",
+      "publication_sha256": "875eb0f8ed751504fb15415782a5219db045d683301dec2f6d9b082289ee8c82",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.JacobianGrading",
+      "recovered_path": "PaperVerification/JacobianGrading.lean",
+      "recovered_sha256": "cd7a034c7e98214f75e7d46fe1dfcccd8293a3357862a6066f830317ba1e729b",
+      "publication_sha256": "cd7a034c7e98214f75e7d46fe1dfcccd8293a3357862a6066f830317ba1e729b",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.JacobianMilnorReduction",
+      "recovered_path": "PaperVerification/JacobianMilnorReduction.lean",
+      "recovered_sha256": "8303abfb5bfd1ff681f16f02eb9fdd4541731d3ae6846c2083a580b0c755121f",
+      "publication_sha256": "70c980f1720b1f46a6a08553c13cecb83fdf7bf564c450f694c147b1d919a032",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.JacobianHamiltonian",
+      "recovered_path": "PaperVerification/JacobianHamiltonian.lean",
+      "recovered_sha256": "374e987096123feff71aeba182c817e6a9eadf9543b9e8afc47b60d2d8796e4e",
+      "publication_sha256": "e3bc65eaa37b21374c1bc399a650660c6190f10c2c5a3a83b853156a8e0eb05e",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.JacobianPolynomialModule",
+      "recovered_path": "PaperVerification/JacobianPolynomialModule.lean",
+      "recovered_sha256": "973aab8f91a41fc3ed51b3c62f6d876b826defe2bfe8c890f598fad2eba2fb94",
+      "publication_sha256": "973aab8f91a41fc3ed51b3c62f6d876b826defe2bfe8c890f598fad2eba2fb94",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.NegativeWeightedGrading",
+      "recovered_path": "PaperVerification/NegativeWeightedGrading.lean",
+      "recovered_sha256": "5eacc8f44216d2ce45bab124a68ae20d4c0aa353b32eae6ef740201b6f086de9",
+      "publication_sha256": "5eacc8f44216d2ce45bab124a68ae20d4c0aa353b32eae6ef740201b6f086de9",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.PolynomialBasisLifting",
+      "recovered_path": "PaperVerification/PolynomialBasisLifting.lean",
+      "recovered_sha256": "a469f4fc9829076b73bf2b6a0fe74911a580ddaf6e29ad6e74ff3f76e1cda1b4",
+      "publication_sha256": "a469f4fc9829076b73bf2b6a0fe74911a580ddaf6e29ad6e74ff3f76e1cda1b4",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.GradedBasisLifting",
+      "recovered_path": "PaperVerification/GradedBasisLifting.lean",
+      "recovered_sha256": "0e2c215078799db4bd6580fe030956752afd17db978901f4bede1a299de2b6c6",
+      "publication_sha256": "0e2c215078799db4bd6580fe030956752afd17db978901f4bede1a299de2b6c6",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.JacobianFreeness",
+      "recovered_path": "PaperVerification/JacobianFreeness.lean",
+      "recovered_sha256": "f7d4265f5250822795ac010f568e2f779581a4c47d3c1976ed6425124ffd5155",
+      "publication_sha256": "f7d4265f5250822795ac010f568e2f779581a4c47d3c1976ed6425124ffd5155",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.JacobianParameter",
+      "recovered_path": "PaperVerification/JacobianParameter.lean",
+      "recovered_sha256": "225c4dd30471081aa8874b338454dfa56aed504ff6df55cb713036940ed3d18a",
+      "publication_sha256": "225c4dd30471081aa8874b338454dfa56aed504ff6df55cb713036940ed3d18a",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.HypersurfaceFreeness",
+      "recovered_path": "PaperVerification/HypersurfaceFreeness.lean",
+      "recovered_sha256": "3446690aa5bfdc3c54ddc5f47df35d64b5917412f6e9fbd9765d352d249490aa",
+      "publication_sha256": "3446690aa5bfdc3c54ddc5f47df35d64b5917412f6e9fbd9765d352d249490aa",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.HomogeneousSection",
+      "recovered_path": "PaperVerification/HomogeneousSection.lean",
+      "recovered_sha256": "3f896ad057f7fd573b78754276135a58f03fa19fe72d00994479f5239670a7c9",
+      "publication_sha256": "3f896ad057f7fd573b78754276135a58f03fa19fe72d00994479f5239670a7c9",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.EulerReduction",
+      "recovered_path": "PaperVerification/EulerReduction.lean",
+      "recovered_sha256": "04e5a4f9204a938f6b38bc27be70923471bfddc94b6969736c5a8b91b0ff84aa",
+      "publication_sha256": "04e5a4f9204a938f6b38bc27be70923471bfddc94b6969736c5a8b91b0ff84aa",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.ProjectionQuotient",
+      "recovered_path": "PaperVerification/ProjectionQuotient.lean",
+      "recovered_sha256": "b5ba11c6b6e3b39ea195e170d0f09ab4faf8f08fd3972660375a2ddfee78dfd4",
+      "publication_sha256": "4d4290b9a30f413c79b66fd29690906a0f748585980420144fcdd844ffea1e41",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.EulerResonance",
+      "recovered_path": "PaperVerification/EulerResonance.lean",
+      "recovered_sha256": "f6bf568f5a76bfe61dc748908e3823fdc3edcd526d7093d0b43a3b049e953107",
+      "publication_sha256": "3becdeebe36facf4a67f338ba60c91aa6e0c3cf17ab38d497fb47bd84007e5b7",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.JacobianDefect",
+      "recovered_path": "PaperVerification/JacobianDefect.lean",
+      "recovered_sha256": "84a4f58d2028d7361d07c6aea0746c1c8c474ef89800b70a5e6c0837a8935100",
+      "publication_sha256": "910931c6e46e797d1cf7d37349613fa6c55121a19872212c44f82b38cf0bc6c9",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.JacobianDegree",
+      "recovered_path": "PaperVerification/JacobianDegree.lean",
+      "recovered_sha256": "c4f54286445efd048bd2e2a6a4cddda7004a6826d9fc0839cadaa7ad2e934dba",
+      "publication_sha256": "c4f54286445efd048bd2e2a6a4cddda7004a6826d9fc0839cadaa7ad2e934dba",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.HomogeneousQuotientBasis",
+      "recovered_path": "PaperVerification/HomogeneousQuotientBasis.lean",
+      "recovered_sha256": "5ae5d2b88fdcdbcdbba58893db1f4ec3ea74ff1e83c32082999e99990c9c0518",
+      "publication_sha256": "5ae5d2b88fdcdbcdbba58893db1f4ec3ea74ff1e83c32082999e99990c9c0518",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.JacobianEquivariantSection",
+      "recovered_path": "PaperVerification/JacobianEquivariantSection.lean",
+      "recovered_sha256": "d2f042c4eef37f865b21465bc0e74279c96fc746e3cc402d0d7f8fcd287ae830",
+      "publication_sha256": "d2f042c4eef37f865b21465bc0e74279c96fc746e3cc402d0d7f8fcd287ae830",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Algebra.MvPolynomial.PDeriv",
+      "recovered_path": "vendor/TauCeti/TauCeti/Algebra/MvPolynomial/PDeriv.lean",
+      "recovered_sha256": "82aea3164242199a493a023e68c99abd4532dc4cf233a7c01e8c4c09d44127e8",
+      "publication_sha256": "82aea3164242199a493a023e68c99abd4532dc4cf233a7c01e8c4c09d44127e8",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.MvPolynomial.LinearSubst",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/MvPolynomial/LinearSubst.lean",
+      "recovered_sha256": "dc358a84f69b1c0c58580336b3451bd67f61686ea22e7da46f1226c5db77e63d",
+      "publication_sha256": "dc358a84f69b1c0c58580336b3451bd67f61686ea22e7da46f1226c5db77e63d",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.MvPolynomial.WeightedHomogeneous",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/MvPolynomial/WeightedHomogeneous.lean",
+      "recovered_sha256": "91ef4c8d9b0dd63ce86fde49f3f7bd1dadd2f5482b63e637d43eefcaf8c36afc",
+      "publication_sha256": "91ef4c8d9b0dd63ce86fde49f3f7bd1dadd2f5482b63e637d43eefcaf8c36afc",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.JacobianLinearAction",
+      "recovered_path": "PaperVerification/JacobianLinearAction.lean",
+      "recovered_sha256": "67cb5d31fc81cb14ca72c7f2d8050b155e91e8d45e908f63e4230403ddc18a17",
+      "publication_sha256": "1c0a8029673c6342cdf76a6d6fd9aaa3b937995600d7fdbf8d1bc493579e5288",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.EquivariantTowers",
+      "recovered_path": "PaperVerification/EquivariantTowers.lean",
+      "recovered_sha256": "2aba59ca6c14686494392c7b132cd0264cbec0ce443f55a80f7856b733ac71e4",
+      "publication_sha256": "1810178a532a09e8150f7cef7063d118684fb5981dc5e6888cb713c2d77a6b06",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Algebra.Module.GradedModule.DirectSum",
+      "recovered_path": "vendor/TauCeti/TauCeti/Algebra/Module/GradedModule/DirectSum.lean",
+      "recovered_sha256": "db6aa5fef2e5a38a97c8e0a2c51c75feadc0a041ae1658e3a51f28ffd6e1dcce",
+      "publication_sha256": "db6aa5fef2e5a38a97c8e0a2c51c75feadc0a041ae1658e3a51f28ffd6e1dcce",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.Algebra.Module.GradedModule.Shift",
+      "recovered_path": "vendor/TauCeti/TauCeti/Algebra/Module/GradedModule/Shift.lean",
+      "recovered_sha256": "71285bb5b11966ce951b7eddc620a0f52b7793747872d5892ffd4a21bebdf9bd",
+      "publication_sha256": "71285bb5b11966ce951b7eddc620a0f52b7793747872d5892ffd4a21bebdf9bd",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.GradedTowers",
+      "recovered_path": "PaperVerification/GradedTowers.lean",
+      "recovered_sha256": "018ddef67eff578b29fdc88da852a7084f017a68078cbee5543de02697bc1c18",
+      "publication_sha256": "e2606a397f30eeea7ab185111aa1e551b4138d77ece72c57cb1c4a116efc6549",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.NegativeQuotientGrading",
+      "recovered_path": "PaperVerification/NegativeQuotientGrading.lean",
+      "recovered_sha256": "239e4f22b7fe02c30e9f499ea4822b535924df96a93af0e50a313a23e73310bf",
+      "publication_sha256": "239e4f22b7fe02c30e9f499ea4822b535924df96a93af0e50a313a23e73310bf",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.JacobianEquivariantTowers",
+      "recovered_path": "PaperVerification/JacobianEquivariantTowers.lean",
+      "recovered_sha256": "e506487207f81e74cafcdd08b928b1b3a2ed589fa25609e863a9861b725ba201",
+      "publication_sha256": "e506487207f81e74cafcdd08b928b1b3a2ed589fa25609e863a9861b725ba201",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.JacobianHilbertBasis",
+      "recovered_path": "PaperVerification/JacobianHilbertBasis.lean",
+      "recovered_sha256": "1d5a68b5bc7949edb32127b574c05d0b3bfedf9c31bab89a1482b242933b7a9d",
+      "publication_sha256": "1d5a68b5bc7949edb32127b574c05d0b3bfedf9c31bab89a1482b242933b7a9d",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.JacobianEquivariantDefect",
+      "recovered_path": "PaperVerification/JacobianEquivariantDefect.lean",
+      "recovered_sha256": "99af32c80358aa32567123c86cd7fee73f0d3f29effb4c4922764e9918e09c95",
+      "publication_sha256": "1ea3bf62b66dd790c788530acad8456d6b1cc72d7c964e21ddb9c4795a080612",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.JacobianHilbertDefect",
+      "recovered_path": "PaperVerification/JacobianHilbertDefect.lean",
+      "recovered_sha256": "2b03f0841947b05688995f3d57a69154952b61b2791e77396a08cbb92dc44ee3",
+      "publication_sha256": "2b03f0841947b05688995f3d57a69154952b61b2791e77396a08cbb92dc44ee3",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.JacobianHilbertFormula",
+      "recovered_path": "PaperVerification/JacobianHilbertFormula.lean",
+      "recovered_sha256": "3125b76d71636252d26d260a6476d48154e25e833a08f9a50152e2f30b05f622",
+      "publication_sha256": "61603a7a98d4faac61a9104ba06699719d3a752026957efd24b6e110b349a2c9",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.JacobianEquivariantFormula",
+      "recovered_path": "PaperVerification/JacobianEquivariantFormula.lean",
+      "recovered_sha256": "12f8df0d0b6741e681f640575cb80f56ca0e81982e7f6f7eda443391cf6b9c87",
+      "publication_sha256": "12f8df0d0b6741e681f640575cb80f56ca0e81982e7f6f7eda443391cf6b9c87",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.JacobianEquivariantExactSequence",
+      "recovered_path": "PaperVerification/JacobianEquivariantExactSequence.lean",
+      "recovered_sha256": "b5e4bb9535bd77b53d5a5315f11d7566f3dc18687dd63a3b4704b39c6793ec06",
+      "publication_sha256": "b5e4bb9535bd77b53d5a5315f11d7566f3dc18687dd63a3b4704b39c6793ec06",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.HypersurfaceTheoremSixThree",
+      "recovered_path": "PaperVerification/HypersurfaceTheoremSixThree.lean",
+      "recovered_sha256": "8aa074da4de6973662f90fbd60b773e7124c49096294ea4c212c45fce8b932cb",
+      "publication_sha256": "8ff371abc9378f19236a33220b053de51f68dabe2dd5c34a1101081a01b4ae75",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.HomogeneousFiniteParameters",
+      "recovered_path": "PaperVerification/HomogeneousFiniteParameters.lean",
+      "recovered_sha256": "61ca415f615501259bcfb9f973ce98a59c5fd2df62a0b78a21a80431240b76ff",
+      "publication_sha256": "9fad9d302c40105beb5667fe9c5e8b5d4b1f167a8408ee692501918512fd5839",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.HomogeneousModuleFinite",
+      "recovered_path": "PaperVerification/HomogeneousModuleFinite.lean",
+      "recovered_sha256": "43a30131d2fb2ffef31c0b9ababbaef4d805602c9aab014cafb6de116fc48fa5",
+      "publication_sha256": "039d98028b8db2a259c216709260aa89124ca216c96eb82ed113fc1e17901e6c",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.Derivation.Ideal",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/Derivation/Ideal.lean",
+      "recovered_sha256": "6719c2ee9bb6eb085643d96e65f64266298b2526c2f7268dceab04d80cd2296a",
+      "publication_sha256": "6719c2ee9bb6eb085643d96e65f64266298b2526c2f7268dceab04d80cd2296a",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "TauCeti.RingTheory.Derivation.Localization",
+      "recovered_path": "vendor/TauCeti/TauCeti/RingTheory/Derivation/Localization.lean",
+      "recovered_sha256": "0206b6e1a5105d4bd9cfb45cff73c38f78dcae47b4d0356afc26d36746bf1398",
+      "publication_sha256": "0206b6e1a5105d4bd9cfb45cff73c38f78dcae47b4d0356afc26d36746bf1398",
+      "changed": false,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.DerivationFiniteConstants",
+      "recovered_path": "PaperVerification/DerivationFiniteConstants.lean",
+      "recovered_sha256": "20240568a4c86aec8bf79cb6c2a87be944cc1ae695616824385b04e817e88710",
+      "publication_sha256": "3d57d4ab936c3115779bfa6d11248212baa614c9f5a074be515df1a3438af0d9",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.VectorJacobianKernel",
+      "recovered_path": "PaperVerification/VectorJacobianKernel.lean",
+      "recovered_sha256": "c0c5cc877e85100f67edf90039b2acb85680d05b2acd0ee3e7592fc6eda63974",
+      "publication_sha256": "e9319bfed0da1067fdca6e49a189f4d1393f449c1885080dae340f12c41e8570",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.EulerInjective",
+      "recovered_path": "PaperVerification/EulerInjective.lean",
+      "recovered_sha256": "84d331f957751f75399ac2a38b68b8e6a0cf45aca683033392d782fb5ceffbe4",
+      "publication_sha256": "a72272bd72fd7ec58c9d58c179ed18be1d0aa7cb466c4afabac5b43ac06838e7",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.VectorEulerBasic",
+      "recovered_path": "PaperVerification/VectorEulerBasic.lean",
+      "recovered_sha256": "51efaca1487453c171b97554417e8dcc7fc0924a53ba51f61739172bcb600791",
+      "publication_sha256": "e55ccba4f0bda3372420a67bc6d76653f03c5053973859e69cdcd00ea29e4613",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.VectorEulerGrading",
+      "recovered_path": "PaperVerification/VectorEulerGrading.lean",
+      "recovered_sha256": "f11ad7ab35bc1728a52dc0449d4a01be2eeef24f56c6b7cc9f6864aaa3fa64a0",
+      "publication_sha256": "bef8f5a593cfdf350540954c3db358c8bd5c7151fcd26f534ac477a01239d8a1",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.VectorEulerAction",
+      "recovered_path": "PaperVerification/VectorEulerAction.lean",
+      "recovered_sha256": "cca1632ac95e879a00d3adbe70846f58e0a1545aea7f826f6d446b10bb29f046",
+      "publication_sha256": "46cc3dda0d79820bea6aa9ab25b38e6372bbfd6a3514f02c593b4cadb8039971",
+      "changed": true,
+      "new_source": false
+    },
+    {
+      "module": "PaperVerification.CompleteIntersectionCodimensionFull",
+      "recovered_path": "PaperVerification/CompleteIntersectionCodimensionFull.lean",
+      "recovered_sha256": "5ddb9b432f525117b4275831967c38aac6249b9e5310e6afdfc9b47d6943bb45",
+      "publication_sha256": "2226e5c873a59aba6c5b62975d21ba457dfdef018d42d8e0a73d38d9f12ac5ea",
+      "changed": true,
+      "new_source": false
+    }
+  ]
+}

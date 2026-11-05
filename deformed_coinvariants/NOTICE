@@ -1,0 +1,12 @@
+Copyright 2026 Caius Folkerts.
+
+Original code and documentation in this project are licensed under the Apache
+License, Version 2.0. The accompanying mathematical paper retains its existing
+copyright. Third-party source headers, authorship, and license terms remain in
+force; see licenses/source_notices.md.
+
+Prepared for publication on 5 November 2026. The historical development was
+recovered, its principal coinvariant dependency closure was compiled, and
+elaboration and integration errors were repaired without weakening its
+mathematical statements. Source files retain their original module names.
+The default build also executes the supplied kernel dependency audit.

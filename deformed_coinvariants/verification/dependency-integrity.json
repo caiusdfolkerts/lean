@@ -1,0 +1,59 @@
+{
+  "checked_at_utc": "2026-11-05",
+  "dependencies": [
+    {
+      "package": "mathlib",
+      "expected_revision": "2cabef97b63d3275776b8b060d802de6a6fa1055",
+      "actual_revision": "2cabef97b63d3275776b8b060d802de6a6fa1055",
+      "tracked_files_clean": true
+    },
+    {
+      "package": "plausible",
+      "expected_revision": "c2d7840c65673533e15b499f25beecdc6227f7d8",
+      "actual_revision": "c2d7840c65673533e15b499f25beecdc6227f7d8",
+      "tracked_files_clean": true
+    },
+    {
+      "package": "LeanSearchClient",
+      "expected_revision": "9d39f9bb0c30aa2f6200808805ff16e6ce950890",
+      "actual_revision": "9d39f9bb0c30aa2f6200808805ff16e6ce950890",
+      "tracked_files_clean": true
+    },
+    {
+      "package": "importGraph",
+      "expected_revision": "b3cc36c295aa5e3e3c0197b09a6556298e710447",
+      "actual_revision": "b3cc36c295aa5e3e3c0197b09a6556298e710447",
+      "tracked_files_clean": true
+    },
+    {
+      "package": "proofwidgets",
+      "expected_revision": "17137fad38a2cc782ff00b323a13c3a991d085ab",
+      "actual_revision": "17137fad38a2cc782ff00b323a13c3a991d085ab",
+      "tracked_files_clean": true
+    },
+    {
+      "package": "aesop",
+      "expected_revision": "29c64c56cc38211d39b306db2df11701e3d3de11",
+      "actual_revision": "29c64c56cc38211d39b306db2df11701e3d3de11",
+      "tracked_files_clean": true
+    },
+    {
+      "package": "Qq",
+      "expected_revision": "6d26f8bb4b2bb78f929ad160feac508866821316",
+      "actual_revision": "6d26f8bb4b2bb78f929ad160feac508866821316",
+      "tracked_files_clean": true
+    },
+    {
+      "package": "batteries",
+      "expected_revision": "30691c775364967184547c94468bf6b5f25400fb",
+      "actual_revision": "30691c775364967184547c94468bf6b5f25400fb",
+      "tracked_files_clean": true
+    },
+    {
+      "package": "Cli",
+      "expected_revision": "34d2efffcb6dc8d5f3537cf6a7f88bfaa999ec49",
+      "actual_revision": "34d2efffcb6dc8d5f3537cf6a7f88bfaa999ec49",
+      "tracked_files_clean": true
+    }
+  ]
+}
