@@ -1,0 +1,123 @@
+module
+prelude
+public import RootedSubsumedForest0724Leaves000
+public import RootedSubsumedForest0724Leaves001
+public import RootedSubsumedForest0724Leaves002
+public import RootedSubsumedForest0724Leaves003
+public import RootedSubsumedForest0724Leaves004
+public import RootedSubsumedForest0724Leaves005
+public import RootedSubsumedForest0724Leaves006
+public import RootedSubsumedForest0724Leaves007
+public import RootedSubsumedForest0724Leaves008
+public import RootedSubsumedForest0724Leaves009
+public import RootedSubsumedForest0724Leaves010
+public import RootedSubsumedForest0724Leaves011
+public import RootedSubsumedForest0724Leaves012
+public import RootedSubsumedForest0724Leaves013
+public import RootedSubsumedForest0724Leaves014
+public import RootedSubsumedForest0724Leaves015
+public import RootedSubsumedForest0724Leaves016
+public import RootedSubsumedForest0724Leaves017
+public import RootedSubsumedForest0724Leaves018
+public import RootedSubsumedForest0724Leaves019
+public import RootedSubsumedForest0724Leaves020
+public import RootedSubsumedForest0724Leaves021
+public import RootedSubsumedForest0724Leaves022
+public import RootedSubsumedForest0724Leaves023
+public import RootedSubsumedForest0724Leaves024
+public import RootedSubsumedForest0724Leaves025
+public import RootedSubsumedForest0724Leaves026
+public import RootedSubsumedForest0724Leaves027
+public import RootedSubsumedForest0724Leaves028
+public import RootedSubsumedForest0724Leaves029
+public import RootedSubsumedForest0724Leaves030
+public import RootedSubsumedForest0724Leaves031
+public import RootedSubsumedForest0724Leaves032
+public import RootedSubsumedForest0724Leaves033
+public import RootedSubsumedForest0724Leaves034
+public import RootedSubsumedForest0724Leaves035
+public import RootedSubsumedForest0724Leaves036
+public import RootedSubsumedForest0724Leaves037
+public import RootedSubsumedForest0724Leaves038
+public import RootedSubsumedForest0724Leaves039
+public import RootedSubsumedForest0724Leaves040
+public import RootedSubsumedForest0724Leaves041
+public import RootedSubsumedForest0724Leaves042
+public import RootedSubsumedForest0724Leaves043
+public import RootedSubsumedForest0724Leaves044
+public import RootedSubsumedForest0724Leaves045
+public import RootedSubsumedForest0724Leaves046
+public import RootedSubsumedForest0724Leaves047
+public import RootedSubsumedForest0724Leaves048
+public import RootedSubsumedForest0724Leaves049
+public import RootedSubsumedForest0724Leaves050
+public import RootedSubsumedForest0724Leaves051
+public import RootedSubsumedForest0724Leaves052
+public import RootedSubsumedForest0724Leaves053
+public import RootedSubsumedForest0724Leaves054
+public import RootedSubsumedForest0724Leaves055
+public import RootedSubsumedForest0724Leaves056
+public import RootedSubsumedForest0724Leaves057
+public import RootedSubsumedForest0724Leaves058
+public import RootedSubsumedForest0724Leaves059
+public import RootedSubsumedForest0724Leaves060
+public import RootedSubsumedForest0724Leaves061
+public import RootedSubsumedForest0724Leaves062
+public import RootedSubsumedForest0724Leaves063
+public import RootedSubsumedForest0724Leaves064
+public import RootedSubsumedForest0724Leaves065
+public import RootedSubsumedForest0724Leaves066
+public import RootedSubsumedForest0724Leaves067
+public import RootedSubsumedForest0724Leaves068
+public import RootedSubsumedForest0724Leaves069
+public import RootedSubsumedForest0724Leaves070
+public import RootedSubsumedForest0724Leaves071
+public import RootedSubsumedForest0724Leaves072
+public import RootedSubsumedForest0724Leaves073
+public import RootedSubsumedForest0724Leaves074
+public import RootedSubsumedForest0724Leaves075
+public import RootedSubsumedForest0724Leaves076
+public import RootedSubsumedForest0724Leaves077
+public import RootedSubsumedForest0724Leaves078
+public import RootedSubsumedForest0724Leaves079
+public import RootedSubsumedForest0724Leaves080
+public import RootedSubsumedForest0724Leaves081
+public import RootedSubsumedForest0724Leaves082
+public import RootedSubsumedForest0724Leaves083
+public import RootedSubsumedForest0724Leaves084
+public import RootedSubsumedForest0724Leaves085
+public import RootedSubsumedForest0724Leaves086
+public import RootedSubsumedForest0724Leaves087
+public import RootedSubsumedForest0724Leaves088
+public import RootedSubsumedForest0724Leaves089
+public import RootedSubsumedForest0724Leaves090
+public import RootedSubsumedForest0724Leaves091
+public import RootedSubsumedForest0724Leaves092
+public import RootedSubsumedForest0724Leaves093
+public import RootedSubsumedForest0724Leaves094
+public import RootedSubsumedForest0724Leaves095
+public import RootedSubsumedForest0724Leaves096
+public import RootedSubsumedForest0724Leaves097
+public import RootedSubsumedForest0724Leaves098
+public import RootedSubsumedForest0724Leaves099
+public import RootedSubsumedForest0724Leaves100
+public import RootedSubsumedForest0724Leaves101
+public import RootedSubsumedForest0724Leaves102
+public import RootedSubsumedForest0724Leaves103
+public import RootedSubsumedForest0724Leaves104
+public import RootedSubsumedForest0724Leaves105
+public import RootedSubsumedForest0724Leaves106
+public import RootedSubsumedForest0724Leaves107
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedForests.RootedSubsumedForest0724
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open GrowthDAG SparseGrowthDAG GrowthPruning GrowthRenaming
+open GrowthBitsets BatchedGrowthPruning BatchedOrbitGrowth
+open RawNatGrowthSoundness RawNatGrowthCompleteness
+theorem leafTest_complete : Interval leafTest 0 3428 := (interval_append leafTest 0 1728 3428 (interval_append leafTest 0 864 1728 (interval_append leafTest 0 416 864 (interval_append leafTest 0 192 416 (interval_append leafTest 0 96 192 (interval_append leafTest 0 32 96 leafInterval0 (interval_append leafTest 32 64 96 leafInterval32 leafInterval64)) (interval_append leafTest 96 128 192 leafInterval96 (interval_append leafTest 128 160 192 leafInterval128 leafInterval160))) (interval_append leafTest 192 288 416 (interval_append leafTest 192 224 288 leafInterval192 (interval_append leafTest 224 256 288 leafInterval224 leafInterval256)) (interval_append leafTest 288 352 416 (interval_append leafTest 288 320 352 leafInterval288 leafInterval320) (interval_append leafTest 352 384 416 leafInterval352 leafInterval384)))) (interval_append leafTest 416 640 864 (interval_append leafTest 416 512 640 (interval_append leafTest 416 448 512 leafInterval416 (interval_append leafTest 448 480 512 leafInterval448 leafInterval480)) (interval_append leafTest 512 576 640 (interval_append leafTest 512 544 576 leafInterval512 leafInterval544) (interval_append leafTest 576 608 640 leafInterval576 leafInterval608))) (interval_append leafTest 640 736 864 (interval_append leafTest 640 672 736 leafInterval640 (interval_append leafTest 672 704 736 leafInterval672 leafInterval704)) (interval_append leafTest 736 800 864 (interval_append leafTest 736 768 800 leafInterval736 leafInterval768) (interval_append leafTest 800 832 864 leafInterval800 leafInterval832))))) (interval_append leafTest 864 1280 1728 (interval_append leafTest 864 1056 1280 (interval_append leafTest 864 960 1056 (interval_append leafTest 864 896 960 leafInterval864 (interval_append leafTest 896 928 960 leafInterval896 leafInterval928)) (interval_append leafTest 960 992 1056 leafInterval960 (interval_append leafTest 992 1024 1056 leafInterval992 leafInterval1024))) (interval_append leafTest 1056 1152 1280 (interval_append leafTest 1056 1088 1152 leafInterval1056 (interval_append leafTest 1088 1120 1152 leafInterval1088 leafInterval1120)) (interval_append leafTest 1152 1216 1280 (interval_append leafTest 1152 1184 1216 leafInterval1152 leafInterval1184) (interval_append leafTest 1216 1248 1280 leafInterval1216 leafInterval1248)))) (interval_append leafTest 1280 1504 1728 (interval_append leafTest 1280 1376 1504 (interval_append leafTest 1280 1312 1376 leafInterval1280 (interval_append leafTest 1312 1344 1376 leafInterval1312 leafInterval1344)) (interval_append leafTest 1376 1440 1504 (interval_append leafTest 1376 1408 1440 leafInterval1376 leafInterval1408) (interval_append leafTest 1440 1472 1504 leafInterval1440 leafInterval1472))) (interval_append leafTest 1504 1600 1728 (interval_append leafTest 1504 1536 1600 leafInterval1504 (interval_append leafTest 1536 1568 1600 leafInterval1536 leafInterval1568)) (interval_append leafTest 1600 1664 1728 (interval_append leafTest 1600 1632 1664 leafInterval1600 leafInterval1632) (interval_append leafTest 1664 1696 1728 leafInterval1664 leafInterval1696)))))) (interval_append leafTest 1728 2592 3428 (interval_append leafTest 1728 2144 2592 (interval_append leafTest 1728 1920 2144 (interval_append leafTest 1728 1824 1920 (interval_append leafTest 1728 1760 1824 leafInterval1728 (interval_append leafTest 1760 1792 1824 leafInterval1760 leafInterval1792)) (interval_append leafTest 1824 1856 1920 leafInterval1824 (interval_append leafTest 1856 1888 1920 leafInterval1856 leafInterval1888))) (interval_append leafTest 1920 2016 2144 (interval_append leafTest 1920 1952 2016 leafInterval1920 (interval_append leafTest 1952 1984 2016 leafInterval1952 leafInterval1984)) (interval_append leafTest 2016 2080 2144 (interval_append leafTest 2016 2048 2080 leafInterval2016 leafInterval2048) (interval_append leafTest 2080 2112 2144 leafInterval2080 leafInterval2112)))) (interval_append leafTest 2144 2368 2592 (interval_append leafTest 2144 2240 2368 (interval_append leafTest 2144 2176 2240 leafInterval2144 (interval_append leafTest 2176 2208 2240 leafInterval2176 leafInterval2208)) (interval_append leafTest 2240 2304 2368 (interval_append leafTest 2240 2272 2304 leafInterval2240 leafInterval2272) (interval_append leafTest 2304 2336 2368 leafInterval2304 leafInterval2336))) (interval_append leafTest 2368 2464 2592 (interval_append leafTest 2368 2400 2464 leafInterval2368 (interval_append leafTest 2400 2432 2464 leafInterval2400 leafInterval2432)) (interval_append leafTest 2464 2528 2592 (interval_append leafTest 2464 2496 2528 leafInterval2464 leafInterval2496) (interval_append leafTest 2528 2560 2592 leafInterval2528 leafInterval2560))))) (interval_append leafTest 2592 3008 3428 (interval_append leafTest 2592 2784 3008 (interval_append leafTest 2592 2688 2784 (interval_append leafTest 2592 2624 2688 leafInterval2592 (interval_append leafTest 2624 2656 2688 leafInterval2624 leafInterval2656)) (interval_append leafTest 2688 2720 2784 leafInterval2688 (interval_append leafTest 2720 2752 2784 leafInterval2720 leafInterval2752))) (interval_append leafTest 2784 2880 3008 (interval_append leafTest 2784 2816 2880 leafInterval2784 (interval_append leafTest 2816 2848 2880 leafInterval2816 leafInterval2848)) (interval_append leafTest 2880 2944 3008 (interval_append leafTest 2880 2912 2944 leafInterval2880 leafInterval2912) (interval_append leafTest 2944 2976 3008 leafInterval2944 leafInterval2976)))) (interval_append leafTest 3008 3232 3428 (interval_append leafTest 3008 3104 3232 (interval_append leafTest 3008 3040 3104 leafInterval3008 (interval_append leafTest 3040 3072 3104 leafInterval3040 leafInterval3072)) (interval_append leafTest 3104 3168 3232 (interval_append leafTest 3104 3136 3168 leafInterval3104 leafInterval3136) (interval_append leafTest 3168 3200 3232 leafInterval3168 leafInterval3200))) (interval_append leafTest 3232 3328 3428 (interval_append leafTest 3232 3264 3328 leafInterval3232 (interval_append leafTest 3264 3296 3328 leafInterval3264 leafInterval3296)) (interval_append leafTest 3328 3392 3428 (interval_append leafTest 3328 3360 3392 leafInterval3328 leafInterval3360) (interval_append leafTest 3392 3424 3428 leafInterval3392 leafInterval3424)))))))
+
+end Papers.RationalityTen.RootedForests.RootedSubsumedForest0724

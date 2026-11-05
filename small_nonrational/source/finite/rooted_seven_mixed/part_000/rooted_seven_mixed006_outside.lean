@@ -1,0 +1,27 @@
+module
+prelude
+public import RootedSevenMixed006OutsideVerifiedCheck0
+public import RootedSevenMixed006OutsideVerifiedCheck1
+
+@[expose] public section
+namespace Papers.RationalityTen.FacetUniverses.RootedSevenMixed006.Outside.Verified
+open Papers.RationalityTen FiniteChecks
+open Papers.RationalityTen.FacetUniverses.RootedSevenMixed006.Outside
+theorem fast_checked (g : Fin generatorCount) (i : Fin 556) :
+    fastCellTest g.val i.val = true := by
+  have hg : g.val < 2 := g.isLt
+  have hc : g.val = 0 ∨ g.val = 1 := by omega
+  rcases hc with h | h
+  · have hg : g = (⟨0, by decide⟩ : Fin generatorCount) := Fin.ext h
+    subst g
+    exact fastGenerator0_complete i.val (Nat.zero_le _) i.isLt
+  · have hg : g = (⟨1, by decide⟩ : Fin generatorCount) := Fin.ext h
+    subst g
+    exact fastGenerator1_complete i.val (Nat.zero_le _) i.isLt
+end Papers.RationalityTen.FacetUniverses.RootedSevenMixed006.Outside.Verified
+namespace Papers.RationalityTen.FacetUniverses.RootedSevenMixed006.Outside
+theorem cell_checked (g : Fin generatorCount) (i : Fin 556) :
+    cellTest g.val i.val = true := by
+  rw [← Papers.RationalityTen.FacetUniverses.RootedSevenMixed006.Outside.Verified.fastCellTest_eq]
+  exact Papers.RationalityTen.FacetUniverses.RootedSevenMixed006.Outside.Verified.fast_checked g i
+end Papers.RationalityTen.FacetUniverses.RootedSevenMixed006.Outside

@@ -1,0 +1,5 @@
+module
+public import Consolidated.RankFourCharts22Part0
+public import Consolidated.RankFourCharts22Part1
+public import Consolidated.RankFourCharts22Part2
+public import Consolidated.RankFourCharts22Part3

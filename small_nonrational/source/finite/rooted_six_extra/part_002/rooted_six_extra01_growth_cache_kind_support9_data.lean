@@ -1,0 +1,73 @@
+module
+prelude
+public import RootedSixExtra01GrowthCacheData
+public import PackedListAppend
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSixExtra01
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open RawGrowthCacheCertificate RawNatGrowthSoundness
+def kindSupport9_000 : List Nat := [1626,1627,1628,1629,1630,1631,1632,1633,1634,1635,1636,1637,1638,1639,1640,1641,1642,1643,1644,1645,1646,1647,1648,1649,1650,1651,1652,1653,1654,1655,1656,1657]
+def kindSupport9_001 : List Nat := [1658,1659,1660,1661,1662,1663,1664,1665,1666,1667,1668,1669,1670,1671,1672,1673,1674,1675,1676,1677,1678,1679,1680,1681,1682,1683,1684,1685,1686,1687,1688,1689]
+def kindSupport9_002 : List Nat := [1690,1691,1692,1693,1694,1695,1696,1697,1698,1699,1700,1701,1702,1703,1704,1705,1706,1707,1708,1709,1710,1711,1712,1713,1714,1715,1716,1717,1718,1719,1720,1721]
+def kindSupport9_003 : List Nat := [1722,1723,1724,1725,1726,1727,1728,1729,1730,1731,1732,1733,1734,1735,1736,1737,1738,1739,1740,1741,1742,1743,1744,1745,1746,1747,1748,1749,1750,1751,1752,1753]
+def kindSupport9_004 : List Nat := [1754,1755,1756,1757,1758,1759,1760,1761,1762,1763,1764,1765,1766,1767,1768,1769,1770,1771,1772,1773,1774,1775,1776,1777,1778,1779,1780,1781,1782,1783,1784,1785]
+def kindSupport9_005 : List Nat := [1786,1787,1788,1789,1790,1791,1792,1793,1794,1795,1796,1797,1798,1799,1800,1801,1802,1803,1804,1805,1806,1807,1808,1809,1810,1811,1812,1813,1814,1815,1816,1817]
+def kindSupport9_006 : List Nat := [1818,1819,1820,1821,1822,1823,1824,1825,1826,1827,1828,1829,1830,1831,1832,1833,1834,1835,1836,1837,1838,1839,1840,1841,1842,1843,1844,1845,1846,1847,1848,1849]
+def kindSupport9_007 : List Nat := [1850,1851,1852,1853,1854,1855,1856,1857,1858,1859,1860,1861,1862,1863,1864,1865,1866,1867,1868,1869,1870,1871,1872,1873,1874,1875,1876,1877,1878,1879,1880,1881]
+def kindSupport9_008 : List Nat := [1882,1883,1884,1885,1886,1887,1888,1889,1890,1891,1892,1893,1894,1895,1896,1897,1898,1899,1900,1901,1902,1903,1904,1905,1906,1907,1908,1909,1910,1911,1912,1913]
+def kindSupport9_009 : List Nat := [1914,1915,1916,1917,1918,1919,1920,1921,1922,1923,1924,1925,1926,1927,1928,1929,1930,1931,1932,1933,1934,1935,1936,1937,1938,1939,1940,1941,1942,1943,1944,1945]
+def kindSupport9_010 : List Nat := [1946,1947,1948,1949,1950,1951,1952,1953,1954,1955,1956,1957,1958,1959,1960,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977]
+def kindSupport9_011 : List Nat := [1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009]
+def kindSupport9_012 : List Nat := [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,2040,2041]
+def kindSupport9_013 : List Nat := [2042,2043,2044,2045,2046,2047,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073]
+def kindSupport9_014 : List Nat := [2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100,2101,2102,2103,2104,2105]
+def kindSupport9_015 : List Nat := [2106,2107,2108,2109,2110,2111,2112,2113,2114,2115,2116,2117,2118,2119,2120,2121,2122,2123,2124,2125,2126,2127,2128,2129,2130,2131,2132,2133,2134,2135,2136,2137]
+def kindSupport9_016 : List Nat := [2138,2139,2140,2141,2142,2143,2144,2145,2146,2147,2148,2149,2150,2151,2152,2153,2154,2155,2156,2157,2158,2159,2160,2161,2162,2163,2164,2165,2166,2167,2168,2169]
+def kindSupport9_017 : List Nat := [2170,2171,2172,2173,2174,2175,2176,2177,2178,2179,2180,2181,2182,2183,2184,2185,2186,2187,2188,2189]
+def kindSupport9_code : Nat := 0x88d88c88b88a88988888788688588488388288188087f87e87d87c87b87a87987887787687587487387287187086f86e86d86c86b86a86986886786686586486386286186085f85e85d85c85b85a85985885785685585485385285185084f84e84d84c84b84a84984884784684584484384284184083f83e83d83c83b83a83983883783683583483383283183082f82e82d82c82b82a82982882782682582482382282182081f81e81d81c81b81a81981881781681581481381281181080f80e80d80c80b80a8098088078068058048038028018007ff7fe7fd7fc7fb7fa7f97f87f77f67f57f47f37f27f17f07ef7ee7ed7ec7eb7ea7e97e87e77e67e57e47e37e27e17e07df7de7dd7dc7db7da7d97d87d77d67d57d47d37d27d17d07cf7ce7cd7cc7cb7ca7c97c87c77c67c57c47c37c27c17c07bf7be7bd7bc7bb7ba7b97b87b77b67b57b47b37b27b17b07af7ae7ad7ac7ab7aa7a97a87a77a67a57a47a37a27a17a079f79e79d79c79b79a79979879779679579479379279179078f78e78d78c78b78a78978878778678578478378278178077f77e77d77c77b77a77977877777677577477377277177076f76e76d76c76b76a76976876776676576476376276176075f75e75d75c75b75a75975875775675575475375275175074f74e74d74c74b74a74974874774674574474374274174073f73e73d73c73b73a73973873773673573473373273173072f72e72d72c72b72a72972872772672572472372272172071f71e71d71c71b71a71971871771671571471371271171070f70e70d70c70b70a7097087077067057047037027017006ff6fe6fd6fc6fb6fa6f96f86f76f66f56f46f36f26f16f06ef6ee6ed6ec6eb6ea6e96e86e76e66e56e46e36e26e16e06df6de6dd6dc6db6da6d96d86d76d66d56d46d36d26d16d06cf6ce6cd6cc6cb6ca6c96c86c76c66c56c46c36c26c16c06bf6be6bd6bc6bb6ba6b96b86b76b66b56b46b36b26b16b06af6ae6ad6ac6ab6aa6a96a86a76a66a56a46a36a26a16a069f69e69d69c69b69a69969869769669569469369269169068f68e68d68c68b68a68968868768668568468368268168067f67e67d67c67b67a67967867767667567467367267167066f66e66d66c66b66a66966866766666566466366266166065f65e65d65c65b65a
+def kindSupport9_rest_000 : Nat := PackedRawNatGrowth.drop 0 kindSupport9_code
+def kindSupport9_rest_001 : Nat := PackedRawNatGrowth.drop 384 kindSupport9_code
+def kindSupport9_rest_002 : Nat := PackedRawNatGrowth.drop 768 kindSupport9_code
+def kindSupport9_rest_003 : Nat := PackedRawNatGrowth.drop 1152 kindSupport9_code
+def kindSupport9_rest_004 : Nat := PackedRawNatGrowth.drop 1536 kindSupport9_code
+def kindSupport9_rest_005 : Nat := PackedRawNatGrowth.drop 1920 kindSupport9_code
+def kindSupport9_rest_006 : Nat := PackedRawNatGrowth.drop 2304 kindSupport9_code
+def kindSupport9_rest_007 : Nat := PackedRawNatGrowth.drop 2688 kindSupport9_code
+def kindSupport9_rest_008 : Nat := PackedRawNatGrowth.drop 3072 kindSupport9_code
+def kindSupport9_rest_009 : Nat := PackedRawNatGrowth.drop 3456 kindSupport9_code
+def kindSupport9_rest_010 : Nat := PackedRawNatGrowth.drop 3840 kindSupport9_code
+def kindSupport9_rest_011 : Nat := PackedRawNatGrowth.drop 4224 kindSupport9_code
+def kindSupport9_rest_012 : Nat := PackedRawNatGrowth.drop 4608 kindSupport9_code
+def kindSupport9_rest_013 : Nat := PackedRawNatGrowth.drop 4992 kindSupport9_code
+def kindSupport9_rest_014 : Nat := PackedRawNatGrowth.drop 5376 kindSupport9_code
+def kindSupport9_rest_015 : Nat := PackedRawNatGrowth.drop 5760 kindSupport9_code
+def kindSupport9_rest_016 : Nat := PackedRawNatGrowth.drop 6144 kindSupport9_code
+def kindSupport9_rest_017 : Nat := PackedRawNatGrowth.drop 6528 kindSupport9_code
+def kindSupport9_rest_018 : Nat := PackedRawNatGrowth.drop 6768 kindSupport9_code
+def kindSupport9_suffix_018 : List Nat := []
+def kindSupport9_suffix_017 : List Nat := kindSupport9_017 ++ kindSupport9_suffix_018
+def kindSupport9_suffix_016 : List Nat := kindSupport9_016 ++ kindSupport9_suffix_017
+def kindSupport9_suffix_015 : List Nat := kindSupport9_015 ++ kindSupport9_suffix_016
+def kindSupport9_suffix_014 : List Nat := kindSupport9_014 ++ kindSupport9_suffix_015
+def kindSupport9_suffix_013 : List Nat := kindSupport9_013 ++ kindSupport9_suffix_014
+def kindSupport9_suffix_012 : List Nat := kindSupport9_012 ++ kindSupport9_suffix_013
+def kindSupport9_suffix_011 : List Nat := kindSupport9_011 ++ kindSupport9_suffix_012
+def kindSupport9_suffix_010 : List Nat := kindSupport9_010 ++ kindSupport9_suffix_011
+def kindSupport9_suffix_009 : List Nat := kindSupport9_009 ++ kindSupport9_suffix_010
+def kindSupport9_suffix_008 : List Nat := kindSupport9_008 ++ kindSupport9_suffix_009
+def kindSupport9_suffix_007 : List Nat := kindSupport9_007 ++ kindSupport9_suffix_008
+def kindSupport9_suffix_006 : List Nat := kindSupport9_006 ++ kindSupport9_suffix_007
+def kindSupport9_suffix_005 : List Nat := kindSupport9_005 ++ kindSupport9_suffix_006
+def kindSupport9_suffix_004 : List Nat := kindSupport9_004 ++ kindSupport9_suffix_005
+def kindSupport9_suffix_003 : List Nat := kindSupport9_003 ++ kindSupport9_suffix_004
+def kindSupport9_suffix_002 : List Nat := kindSupport9_002 ++ kindSupport9_suffix_003
+def kindSupport9_suffix_001 : List Nat := kindSupport9_001 ++ kindSupport9_suffix_002
+def kindSupport9_suffix_000 : List Nat := kindSupport9_000 ++ kindSupport9_suffix_001
+theorem kindSupport9_source : kindSupports 9 =
+    (PackedRawNatGrowth.readList 12 564 kindSupport9_code).1 := by rfl
+
+end Papers.RationalityTen.RootedCaches.RootedSixExtra01

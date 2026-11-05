@@ -1,0 +1,61 @@
+module
+prelude
+public import RootedSevenTwoSix13GrowthCacheRidgeSupport896Data
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSevenTwoSix13
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open RawGrowthCacheCertificate RawNatGrowthSoundness
+theorem ridgeSupport896_008_decode :
+    PackedRawNatGrowth.readList 11 32 ridgeSupport896_rest_008 =
+      (ridgeSupport896_008, ridgeSupport896_rest_009) := by decide +kernel
+theorem ridgeSupport896_008_mask : RawNatGrowthCheck.mask ridgeSupport896_008 = 0x3fffffffc000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 := by decide +kernel
+theorem ridgeSupport896_008_checked :
+    (ridgeSupport896_008.all (fun c => hasNat (rawCells c).ridgeMasks 896)) = true := by decide +kernel
+theorem ridgeSupport896_009_decode :
+    PackedRawNatGrowth.readList 11 32 ridgeSupport896_rest_009 =
+      (ridgeSupport896_009, ridgeSupport896_rest_010) := by decide +kernel
+theorem ridgeSupport896_009_mask : RawNatGrowthCheck.mask ridgeSupport896_009 = 0x3fff000000000000000000ffffc00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 := by decide +kernel
+theorem ridgeSupport896_009_checked :
+    (ridgeSupport896_009.all (fun c => hasNat (rawCells c).ridgeMasks 896)) = true := by decide +kernel
+theorem ridgeSupport896_010_decode :
+    PackedRawNatGrowth.readList 11 32 ridgeSupport896_rest_010 =
+      (ridgeSupport896_010, ridgeSupport896_rest_011) := by decide +kernel
+theorem ridgeSupport896_010_mask : RawNatGrowthCheck.mask ridgeSupport896_010 = 0x3ff000000000000000000ffffc000000000000000003c0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 := by decide +kernel
+theorem ridgeSupport896_010_checked :
+    (ridgeSupport896_010.all (fun c => hasNat (rawCells c).ridgeMasks 896)) = true := by decide +kernel
+theorem ridgeSupport896_011_decode :
+    PackedRawNatGrowth.readList 11 32 ridgeSupport896_rest_011 =
+      (ridgeSupport896_011, ridgeSupport896_rest_012) := by decide +kernel
+theorem ridgeSupport896_011_mask : RawNatGrowthCheck.mask ridgeSupport896_011 = 0x3f000000000000000000ffffffc000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 := by decide +kernel
+theorem ridgeSupport896_011_checked :
+    (ridgeSupport896_011.all (fun c => hasNat (rawCells c).ridgeMasks 896)) = true := by decide +kernel
+theorem ridgeSupport896_012_decode :
+    PackedRawNatGrowth.readList 11 32 ridgeSupport896_rest_012 =
+      (ridgeSupport896_012, ridgeSupport896_rest_013) := by decide +kernel
+theorem ridgeSupport896_012_mask : RawNatGrowthCheck.mask ridgeSupport896_012 = 0x3000000000000000000fffffffc00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 := by decide +kernel
+theorem ridgeSupport896_012_checked :
+    (ridgeSupport896_012.all (fun c => hasNat (rawCells c).ridgeMasks 896)) = true := by decide +kernel
+theorem ridgeSupport896_013_decode :
+    PackedRawNatGrowth.readList 11 32 ridgeSupport896_rest_013 =
+      (ridgeSupport896_013, ridgeSupport896_rest_014) := by decide +kernel
+theorem ridgeSupport896_013_mask : RawNatGrowthCheck.mask ridgeSupport896_013 = 0x3fffffffc0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 := by decide +kernel
+theorem ridgeSupport896_013_checked :
+    (ridgeSupport896_013.all (fun c => hasNat (rawCells c).ridgeMasks 896)) = true := by decide +kernel
+theorem ridgeSupport896_014_decode :
+    PackedRawNatGrowth.readList 11 32 ridgeSupport896_rest_014 =
+      (ridgeSupport896_014, ridgeSupport896_rest_015) := by decide +kernel
+theorem ridgeSupport896_014_mask : RawNatGrowthCheck.mask ridgeSupport896_014 = 0x3fffffffc000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 := by decide +kernel
+theorem ridgeSupport896_014_checked :
+    (ridgeSupport896_014.all (fun c => hasNat (rawCells c).ridgeMasks 896)) = true := by decide +kernel
+theorem ridgeSupport896_015_decode :
+    PackedRawNatGrowth.readList 11 32 ridgeSupport896_rest_015 =
+      (ridgeSupport896_015, ridgeSupport896_rest_016) := by decide +kernel
+theorem ridgeSupport896_015_mask : RawNatGrowthCheck.mask ridgeSupport896_015 = 0xfffff00000000000003ffc00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 := by decide +kernel
+theorem ridgeSupport896_015_checked :
+    (ridgeSupport896_015.all (fun c => hasNat (rawCells c).ridgeMasks 896)) = true := by decide +kernel
+
+end Papers.RationalityTen.RootedCaches.RootedSevenTwoSix13

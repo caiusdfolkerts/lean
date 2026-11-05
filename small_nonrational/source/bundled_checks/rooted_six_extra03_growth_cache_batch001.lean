@@ -1,0 +1,2246 @@
+module
+prelude
+public import RootedSixExtra03GrowthCacheData
+
+/- RootedSixExtra03GrowthCacheBad003 -/
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSixExtra03
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+def badTest_768 (i : Nat) := badTest (i+768)
+theorem badTest_768_block_0 : Interval badTest_768 0 8 :=
+  interval_of_check badTest_768 0 8 (by decide +kernel)
+
+theorem badTest_768_block_1 : Interval badTest_768 8 16 :=
+  interval_of_check badTest_768 8 8 (by decide +kernel)
+
+theorem badTest_768_block_2 : Interval badTest_768 16 24 :=
+  interval_of_check badTest_768 16 8 (by decide +kernel)
+
+theorem badTest_768_block_3 : Interval badTest_768 24 32 :=
+  interval_of_check badTest_768 24 8 (by decide +kernel)
+
+theorem badTest_768_block_4 : Interval badTest_768 32 40 :=
+  interval_of_check badTest_768 32 8 (by decide +kernel)
+
+theorem badTest_768_block_5 : Interval badTest_768 40 48 :=
+  interval_of_check badTest_768 40 8 (by decide +kernel)
+
+theorem badTest_768_block_6 : Interval badTest_768 48 56 :=
+  interval_of_check badTest_768 48 8 (by decide +kernel)
+
+theorem badTest_768_block_7 : Interval badTest_768 56 64 :=
+  interval_of_check badTest_768 56 8 (by decide +kernel)
+
+theorem badTest_768_block_8 : Interval badTest_768 64 72 :=
+  interval_of_check badTest_768 64 8 (by decide +kernel)
+
+theorem badTest_768_block_9 : Interval badTest_768 72 80 :=
+  interval_of_check badTest_768 72 8 (by decide +kernel)
+
+theorem badTest_768_block_10 : Interval badTest_768 80 88 :=
+  interval_of_check badTest_768 80 8 (by decide +kernel)
+
+theorem badTest_768_block_11 : Interval badTest_768 88 96 :=
+  interval_of_check badTest_768 88 8 (by decide +kernel)
+
+theorem badTest_768_block_12 : Interval badTest_768 96 104 :=
+  interval_of_check badTest_768 96 8 (by decide +kernel)
+
+theorem badTest_768_block_13 : Interval badTest_768 104 112 :=
+  interval_of_check badTest_768 104 8 (by decide +kernel)
+
+theorem badTest_768_block_14 : Interval badTest_768 112 120 :=
+  interval_of_check badTest_768 112 8 (by decide +kernel)
+
+theorem badTest_768_block_15 : Interval badTest_768 120 128 :=
+  interval_of_check badTest_768 120 8 (by decide +kernel)
+
+theorem badTest_768_block_16 : Interval badTest_768 128 136 :=
+  interval_of_check badTest_768 128 8 (by decide +kernel)
+
+theorem badTest_768_block_17 : Interval badTest_768 136 144 :=
+  interval_of_check badTest_768 136 8 (by decide +kernel)
+
+theorem badTest_768_block_18 : Interval badTest_768 144 152 :=
+  interval_of_check badTest_768 144 8 (by decide +kernel)
+
+theorem badTest_768_block_19 : Interval badTest_768 152 160 :=
+  interval_of_check badTest_768 152 8 (by decide +kernel)
+
+theorem badTest_768_block_20 : Interval badTest_768 160 168 :=
+  interval_of_check badTest_768 160 8 (by decide +kernel)
+
+theorem badTest_768_block_21 : Interval badTest_768 168 176 :=
+  interval_of_check badTest_768 168 8 (by decide +kernel)
+
+theorem badTest_768_block_22 : Interval badTest_768 176 184 :=
+  interval_of_check badTest_768 176 8 (by decide +kernel)
+
+theorem badTest_768_block_23 : Interval badTest_768 184 192 :=
+  interval_of_check badTest_768 184 8 (by decide +kernel)
+
+theorem badTest_768_block_24 : Interval badTest_768 192 200 :=
+  interval_of_check badTest_768 192 8 (by decide +kernel)
+
+theorem badTest_768_block_25 : Interval badTest_768 200 208 :=
+  interval_of_check badTest_768 200 8 (by decide +kernel)
+
+theorem badTest_768_block_26 : Interval badTest_768 208 216 :=
+  interval_of_check badTest_768 208 8 (by decide +kernel)
+
+theorem badTest_768_block_27 : Interval badTest_768 216 224 :=
+  interval_of_check badTest_768 216 8 (by decide +kernel)
+
+theorem badTest_768_block_28 : Interval badTest_768 224 232 :=
+  interval_of_check badTest_768 224 8 (by decide +kernel)
+
+theorem badTest_768_block_29 : Interval badTest_768 232 240 :=
+  interval_of_check badTest_768 232 8 (by decide +kernel)
+
+theorem badTest_768_block_30 : Interval badTest_768 240 248 :=
+  interval_of_check badTest_768 240 8 (by decide +kernel)
+
+theorem badTest_768_block_31 : Interval badTest_768 248 256 :=
+  interval_of_check badTest_768 248 8 (by decide +kernel)
+
+theorem badTest_768_complete : Interval badTest_768 0 256 :=
+  (interval_append badTest_768 0 128 256
+  (interval_append badTest_768 0 64 128
+  (interval_append badTest_768 0 32 64
+  (interval_append badTest_768 0 16 32
+  (interval_append badTest_768 0 8 16
+  badTest_768_block_0
+  badTest_768_block_1)
+  (interval_append badTest_768 16 24 32
+  badTest_768_block_2
+  badTest_768_block_3))
+  (interval_append badTest_768 32 48 64
+  (interval_append badTest_768 32 40 48
+  badTest_768_block_4
+  badTest_768_block_5)
+  (interval_append badTest_768 48 56 64
+  badTest_768_block_6
+  badTest_768_block_7)))
+  (interval_append badTest_768 64 96 128
+  (interval_append badTest_768 64 80 96
+  (interval_append badTest_768 64 72 80
+  badTest_768_block_8
+  badTest_768_block_9)
+  (interval_append badTest_768 80 88 96
+  badTest_768_block_10
+  badTest_768_block_11))
+  (interval_append badTest_768 96 112 128
+  (interval_append badTest_768 96 104 112
+  badTest_768_block_12
+  badTest_768_block_13)
+  (interval_append badTest_768 112 120 128
+  badTest_768_block_14
+  badTest_768_block_15))))
+  (interval_append badTest_768 128 192 256
+  (interval_append badTest_768 128 160 192
+  (interval_append badTest_768 128 144 160
+  (interval_append badTest_768 128 136 144
+  badTest_768_block_16
+  badTest_768_block_17)
+  (interval_append badTest_768 144 152 160
+  badTest_768_block_18
+  badTest_768_block_19))
+  (interval_append badTest_768 160 176 192
+  (interval_append badTest_768 160 168 176
+  badTest_768_block_20
+  badTest_768_block_21)
+  (interval_append badTest_768 176 184 192
+  badTest_768_block_22
+  badTest_768_block_23)))
+  (interval_append badTest_768 192 224 256
+  (interval_append badTest_768 192 208 224
+  (interval_append badTest_768 192 200 208
+  badTest_768_block_24
+  badTest_768_block_25)
+  (interval_append badTest_768 208 216 224
+  badTest_768_block_26
+  badTest_768_block_27))
+  (interval_append badTest_768 224 240 256
+  (interval_append badTest_768 224 232 240
+  badTest_768_block_28
+  badTest_768_block_29)
+  (interval_append badTest_768 240 248 256
+  badTest_768_block_30
+  badTest_768_block_31)))))
+theorem badTestInterval768 : Interval badTest 768 1024 := by
+  intro i hlo hhi
+  have h := badTest_768_complete (i-768) (Nat.zero_le _) (by omega)
+  simpa only [badTest_768, Nat.sub_add_cancel hlo] using h
+
+end Papers.RationalityTen.RootedCaches.RootedSixExtra03
+
+end
+end
+/- RootedSixExtra03GrowthCacheBad004 -/
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSixExtra03
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+def badTest_1024 (i : Nat) := badTest (i+1024)
+theorem badTest_1024_block_0 : Interval badTest_1024 0 8 :=
+  interval_of_check badTest_1024 0 8 (by decide +kernel)
+
+theorem badTest_1024_block_1 : Interval badTest_1024 8 16 :=
+  interval_of_check badTest_1024 8 8 (by decide +kernel)
+
+theorem badTest_1024_block_2 : Interval badTest_1024 16 24 :=
+  interval_of_check badTest_1024 16 8 (by decide +kernel)
+
+theorem badTest_1024_block_3 : Interval badTest_1024 24 32 :=
+  interval_of_check badTest_1024 24 8 (by decide +kernel)
+
+theorem badTest_1024_block_4 : Interval badTest_1024 32 40 :=
+  interval_of_check badTest_1024 32 8 (by decide +kernel)
+
+theorem badTest_1024_block_5 : Interval badTest_1024 40 48 :=
+  interval_of_check badTest_1024 40 8 (by decide +kernel)
+
+theorem badTest_1024_block_6 : Interval badTest_1024 48 56 :=
+  interval_of_check badTest_1024 48 8 (by decide +kernel)
+
+theorem badTest_1024_block_7 : Interval badTest_1024 56 64 :=
+  interval_of_check badTest_1024 56 8 (by decide +kernel)
+
+theorem badTest_1024_block_8 : Interval badTest_1024 64 72 :=
+  interval_of_check badTest_1024 64 8 (by decide +kernel)
+
+theorem badTest_1024_block_9 : Interval badTest_1024 72 80 :=
+  interval_of_check badTest_1024 72 8 (by decide +kernel)
+
+theorem badTest_1024_block_10 : Interval badTest_1024 80 88 :=
+  interval_of_check badTest_1024 80 8 (by decide +kernel)
+
+theorem badTest_1024_block_11 : Interval badTest_1024 88 96 :=
+  interval_of_check badTest_1024 88 8 (by decide +kernel)
+
+theorem badTest_1024_block_12 : Interval badTest_1024 96 104 :=
+  interval_of_check badTest_1024 96 8 (by decide +kernel)
+
+theorem badTest_1024_block_13 : Interval badTest_1024 104 112 :=
+  interval_of_check badTest_1024 104 8 (by decide +kernel)
+
+theorem badTest_1024_block_14 : Interval badTest_1024 112 120 :=
+  interval_of_check badTest_1024 112 8 (by decide +kernel)
+
+theorem badTest_1024_block_15 : Interval badTest_1024 120 128 :=
+  interval_of_check badTest_1024 120 8 (by decide +kernel)
+
+theorem badTest_1024_block_16 : Interval badTest_1024 128 136 :=
+  interval_of_check badTest_1024 128 8 (by decide +kernel)
+
+theorem badTest_1024_block_17 : Interval badTest_1024 136 144 :=
+  interval_of_check badTest_1024 136 8 (by decide +kernel)
+
+theorem badTest_1024_block_18 : Interval badTest_1024 144 152 :=
+  interval_of_check badTest_1024 144 8 (by decide +kernel)
+
+theorem badTest_1024_block_19 : Interval badTest_1024 152 160 :=
+  interval_of_check badTest_1024 152 8 (by decide +kernel)
+
+theorem badTest_1024_block_20 : Interval badTest_1024 160 168 :=
+  interval_of_check badTest_1024 160 8 (by decide +kernel)
+
+theorem badTest_1024_block_21 : Interval badTest_1024 168 176 :=
+  interval_of_check badTest_1024 168 8 (by decide +kernel)
+
+theorem badTest_1024_block_22 : Interval badTest_1024 176 184 :=
+  interval_of_check badTest_1024 176 8 (by decide +kernel)
+
+theorem badTest_1024_block_23 : Interval badTest_1024 184 192 :=
+  interval_of_check badTest_1024 184 8 (by decide +kernel)
+
+theorem badTest_1024_block_24 : Interval badTest_1024 192 200 :=
+  interval_of_check badTest_1024 192 8 (by decide +kernel)
+
+theorem badTest_1024_block_25 : Interval badTest_1024 200 208 :=
+  interval_of_check badTest_1024 200 8 (by decide +kernel)
+
+theorem badTest_1024_block_26 : Interval badTest_1024 208 216 :=
+  interval_of_check badTest_1024 208 8 (by decide +kernel)
+
+theorem badTest_1024_block_27 : Interval badTest_1024 216 224 :=
+  interval_of_check badTest_1024 216 8 (by decide +kernel)
+
+theorem badTest_1024_block_28 : Interval badTest_1024 224 232 :=
+  interval_of_check badTest_1024 224 8 (by decide +kernel)
+
+theorem badTest_1024_block_29 : Interval badTest_1024 232 240 :=
+  interval_of_check badTest_1024 232 8 (by decide +kernel)
+
+theorem badTest_1024_block_30 : Interval badTest_1024 240 248 :=
+  interval_of_check badTest_1024 240 8 (by decide +kernel)
+
+theorem badTest_1024_block_31 : Interval badTest_1024 248 256 :=
+  interval_of_check badTest_1024 248 8 (by decide +kernel)
+
+theorem badTest_1024_complete : Interval badTest_1024 0 256 :=
+  (interval_append badTest_1024 0 128 256
+  (interval_append badTest_1024 0 64 128
+  (interval_append badTest_1024 0 32 64
+  (interval_append badTest_1024 0 16 32
+  (interval_append badTest_1024 0 8 16
+  badTest_1024_block_0
+  badTest_1024_block_1)
+  (interval_append badTest_1024 16 24 32
+  badTest_1024_block_2
+  badTest_1024_block_3))
+  (interval_append badTest_1024 32 48 64
+  (interval_append badTest_1024 32 40 48
+  badTest_1024_block_4
+  badTest_1024_block_5)
+  (interval_append badTest_1024 48 56 64
+  badTest_1024_block_6
+  badTest_1024_block_7)))
+  (interval_append badTest_1024 64 96 128
+  (interval_append badTest_1024 64 80 96
+  (interval_append badTest_1024 64 72 80
+  badTest_1024_block_8
+  badTest_1024_block_9)
+  (interval_append badTest_1024 80 88 96
+  badTest_1024_block_10
+  badTest_1024_block_11))
+  (interval_append badTest_1024 96 112 128
+  (interval_append badTest_1024 96 104 112
+  badTest_1024_block_12
+  badTest_1024_block_13)
+  (interval_append badTest_1024 112 120 128
+  badTest_1024_block_14
+  badTest_1024_block_15))))
+  (interval_append badTest_1024 128 192 256
+  (interval_append badTest_1024 128 160 192
+  (interval_append badTest_1024 128 144 160
+  (interval_append badTest_1024 128 136 144
+  badTest_1024_block_16
+  badTest_1024_block_17)
+  (interval_append badTest_1024 144 152 160
+  badTest_1024_block_18
+  badTest_1024_block_19))
+  (interval_append badTest_1024 160 176 192
+  (interval_append badTest_1024 160 168 176
+  badTest_1024_block_20
+  badTest_1024_block_21)
+  (interval_append badTest_1024 176 184 192
+  badTest_1024_block_22
+  badTest_1024_block_23)))
+  (interval_append badTest_1024 192 224 256
+  (interval_append badTest_1024 192 208 224
+  (interval_append badTest_1024 192 200 208
+  badTest_1024_block_24
+  badTest_1024_block_25)
+  (interval_append badTest_1024 208 216 224
+  badTest_1024_block_26
+  badTest_1024_block_27))
+  (interval_append badTest_1024 224 240 256
+  (interval_append badTest_1024 224 232 240
+  badTest_1024_block_28
+  badTest_1024_block_29)
+  (interval_append badTest_1024 240 248 256
+  badTest_1024_block_30
+  badTest_1024_block_31)))))
+theorem badTestInterval1024 : Interval badTest 1024 1280 := by
+  intro i hlo hhi
+  have h := badTest_1024_complete (i-1024) (Nat.zero_le _) (by omega)
+  simpa only [badTest_1024, Nat.sub_add_cancel hlo] using h
+
+end Papers.RationalityTen.RootedCaches.RootedSixExtra03
+
+end
+end
+/- RootedSixExtra03GrowthCacheBad005 -/
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSixExtra03
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+def badTest_1280 (i : Nat) := badTest (i+1280)
+theorem badTest_1280_block_0 : Interval badTest_1280 0 8 :=
+  interval_of_check badTest_1280 0 8 (by decide +kernel)
+
+theorem badTest_1280_block_1 : Interval badTest_1280 8 16 :=
+  interval_of_check badTest_1280 8 8 (by decide +kernel)
+
+theorem badTest_1280_block_2 : Interval badTest_1280 16 24 :=
+  interval_of_check badTest_1280 16 8 (by decide +kernel)
+
+theorem badTest_1280_block_3 : Interval badTest_1280 24 32 :=
+  interval_of_check badTest_1280 24 8 (by decide +kernel)
+
+theorem badTest_1280_block_4 : Interval badTest_1280 32 40 :=
+  interval_of_check badTest_1280 32 8 (by decide +kernel)
+
+theorem badTest_1280_block_5 : Interval badTest_1280 40 48 :=
+  interval_of_check badTest_1280 40 8 (by decide +kernel)
+
+theorem badTest_1280_block_6 : Interval badTest_1280 48 56 :=
+  interval_of_check badTest_1280 48 8 (by decide +kernel)
+
+theorem badTest_1280_block_7 : Interval badTest_1280 56 64 :=
+  interval_of_check badTest_1280 56 8 (by decide +kernel)
+
+theorem badTest_1280_block_8 : Interval badTest_1280 64 72 :=
+  interval_of_check badTest_1280 64 8 (by decide +kernel)
+
+theorem badTest_1280_block_9 : Interval badTest_1280 72 80 :=
+  interval_of_check badTest_1280 72 8 (by decide +kernel)
+
+theorem badTest_1280_block_10 : Interval badTest_1280 80 88 :=
+  interval_of_check badTest_1280 80 8 (by decide +kernel)
+
+theorem badTest_1280_block_11 : Interval badTest_1280 88 96 :=
+  interval_of_check badTest_1280 88 8 (by decide +kernel)
+
+theorem badTest_1280_block_12 : Interval badTest_1280 96 104 :=
+  interval_of_check badTest_1280 96 8 (by decide +kernel)
+
+theorem badTest_1280_block_13 : Interval badTest_1280 104 112 :=
+  interval_of_check badTest_1280 104 8 (by decide +kernel)
+
+theorem badTest_1280_block_14 : Interval badTest_1280 112 120 :=
+  interval_of_check badTest_1280 112 8 (by decide +kernel)
+
+theorem badTest_1280_block_15 : Interval badTest_1280 120 128 :=
+  interval_of_check badTest_1280 120 8 (by decide +kernel)
+
+theorem badTest_1280_block_16 : Interval badTest_1280 128 136 :=
+  interval_of_check badTest_1280 128 8 (by decide +kernel)
+
+theorem badTest_1280_block_17 : Interval badTest_1280 136 144 :=
+  interval_of_check badTest_1280 136 8 (by decide +kernel)
+
+theorem badTest_1280_block_18 : Interval badTest_1280 144 152 :=
+  interval_of_check badTest_1280 144 8 (by decide +kernel)
+
+theorem badTest_1280_block_19 : Interval badTest_1280 152 160 :=
+  interval_of_check badTest_1280 152 8 (by decide +kernel)
+
+theorem badTest_1280_block_20 : Interval badTest_1280 160 168 :=
+  interval_of_check badTest_1280 160 8 (by decide +kernel)
+
+theorem badTest_1280_block_21 : Interval badTest_1280 168 176 :=
+  interval_of_check badTest_1280 168 8 (by decide +kernel)
+
+theorem badTest_1280_block_22 : Interval badTest_1280 176 184 :=
+  interval_of_check badTest_1280 176 8 (by decide +kernel)
+
+theorem badTest_1280_block_23 : Interval badTest_1280 184 192 :=
+  interval_of_check badTest_1280 184 8 (by decide +kernel)
+
+theorem badTest_1280_block_24 : Interval badTest_1280 192 200 :=
+  interval_of_check badTest_1280 192 8 (by decide +kernel)
+
+theorem badTest_1280_block_25 : Interval badTest_1280 200 208 :=
+  interval_of_check badTest_1280 200 8 (by decide +kernel)
+
+theorem badTest_1280_block_26 : Interval badTest_1280 208 216 :=
+  interval_of_check badTest_1280 208 8 (by decide +kernel)
+
+theorem badTest_1280_block_27 : Interval badTest_1280 216 224 :=
+  interval_of_check badTest_1280 216 8 (by decide +kernel)
+
+theorem badTest_1280_block_28 : Interval badTest_1280 224 232 :=
+  interval_of_check badTest_1280 224 8 (by decide +kernel)
+
+theorem badTest_1280_block_29 : Interval badTest_1280 232 240 :=
+  interval_of_check badTest_1280 232 8 (by decide +kernel)
+
+theorem badTest_1280_block_30 : Interval badTest_1280 240 248 :=
+  interval_of_check badTest_1280 240 8 (by decide +kernel)
+
+theorem badTest_1280_block_31 : Interval badTest_1280 248 256 :=
+  interval_of_check badTest_1280 248 8 (by decide +kernel)
+
+theorem badTest_1280_complete : Interval badTest_1280 0 256 :=
+  (interval_append badTest_1280 0 128 256
+  (interval_append badTest_1280 0 64 128
+  (interval_append badTest_1280 0 32 64
+  (interval_append badTest_1280 0 16 32
+  (interval_append badTest_1280 0 8 16
+  badTest_1280_block_0
+  badTest_1280_block_1)
+  (interval_append badTest_1280 16 24 32
+  badTest_1280_block_2
+  badTest_1280_block_3))
+  (interval_append badTest_1280 32 48 64
+  (interval_append badTest_1280 32 40 48
+  badTest_1280_block_4
+  badTest_1280_block_5)
+  (interval_append badTest_1280 48 56 64
+  badTest_1280_block_6
+  badTest_1280_block_7)))
+  (interval_append badTest_1280 64 96 128
+  (interval_append badTest_1280 64 80 96
+  (interval_append badTest_1280 64 72 80
+  badTest_1280_block_8
+  badTest_1280_block_9)
+  (interval_append badTest_1280 80 88 96
+  badTest_1280_block_10
+  badTest_1280_block_11))
+  (interval_append badTest_1280 96 112 128
+  (interval_append badTest_1280 96 104 112
+  badTest_1280_block_12
+  badTest_1280_block_13)
+  (interval_append badTest_1280 112 120 128
+  badTest_1280_block_14
+  badTest_1280_block_15))))
+  (interval_append badTest_1280 128 192 256
+  (interval_append badTest_1280 128 160 192
+  (interval_append badTest_1280 128 144 160
+  (interval_append badTest_1280 128 136 144
+  badTest_1280_block_16
+  badTest_1280_block_17)
+  (interval_append badTest_1280 144 152 160
+  badTest_1280_block_18
+  badTest_1280_block_19))
+  (interval_append badTest_1280 160 176 192
+  (interval_append badTest_1280 160 168 176
+  badTest_1280_block_20
+  badTest_1280_block_21)
+  (interval_append badTest_1280 176 184 192
+  badTest_1280_block_22
+  badTest_1280_block_23)))
+  (interval_append badTest_1280 192 224 256
+  (interval_append badTest_1280 192 208 224
+  (interval_append badTest_1280 192 200 208
+  badTest_1280_block_24
+  badTest_1280_block_25)
+  (interval_append badTest_1280 208 216 224
+  badTest_1280_block_26
+  badTest_1280_block_27))
+  (interval_append badTest_1280 224 240 256
+  (interval_append badTest_1280 224 232 240
+  badTest_1280_block_28
+  badTest_1280_block_29)
+  (interval_append badTest_1280 240 248 256
+  badTest_1280_block_30
+  badTest_1280_block_31)))))
+theorem badTestInterval1280 : Interval badTest 1280 1536 := by
+  intro i hlo hhi
+  have h := badTest_1280_complete (i-1280) (Nat.zero_le _) (by omega)
+  simpa only [badTest_1280, Nat.sub_add_cancel hlo] using h
+
+end Papers.RationalityTen.RootedCaches.RootedSixExtra03
+
+end
+end
+/- RootedSixExtra03GrowthCacheBad006 -/
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSixExtra03
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+def badTest_1536 (i : Nat) := badTest (i+1536)
+theorem badTest_1536_block_0 : Interval badTest_1536 0 8 :=
+  interval_of_check badTest_1536 0 8 (by decide +kernel)
+
+theorem badTest_1536_block_1 : Interval badTest_1536 8 16 :=
+  interval_of_check badTest_1536 8 8 (by decide +kernel)
+
+theorem badTest_1536_block_2 : Interval badTest_1536 16 24 :=
+  interval_of_check badTest_1536 16 8 (by decide +kernel)
+
+theorem badTest_1536_block_3 : Interval badTest_1536 24 32 :=
+  interval_of_check badTest_1536 24 8 (by decide +kernel)
+
+theorem badTest_1536_block_4 : Interval badTest_1536 32 40 :=
+  interval_of_check badTest_1536 32 8 (by decide +kernel)
+
+theorem badTest_1536_block_5 : Interval badTest_1536 40 48 :=
+  interval_of_check badTest_1536 40 8 (by decide +kernel)
+
+theorem badTest_1536_block_6 : Interval badTest_1536 48 56 :=
+  interval_of_check badTest_1536 48 8 (by decide +kernel)
+
+theorem badTest_1536_block_7 : Interval badTest_1536 56 64 :=
+  interval_of_check badTest_1536 56 8 (by decide +kernel)
+
+theorem badTest_1536_block_8 : Interval badTest_1536 64 72 :=
+  interval_of_check badTest_1536 64 8 (by decide +kernel)
+
+theorem badTest_1536_block_9 : Interval badTest_1536 72 80 :=
+  interval_of_check badTest_1536 72 8 (by decide +kernel)
+
+theorem badTest_1536_block_10 : Interval badTest_1536 80 88 :=
+  interval_of_check badTest_1536 80 8 (by decide +kernel)
+
+theorem badTest_1536_block_11 : Interval badTest_1536 88 96 :=
+  interval_of_check badTest_1536 88 8 (by decide +kernel)
+
+theorem badTest_1536_block_12 : Interval badTest_1536 96 104 :=
+  interval_of_check badTest_1536 96 8 (by decide +kernel)
+
+theorem badTest_1536_block_13 : Interval badTest_1536 104 112 :=
+  interval_of_check badTest_1536 104 8 (by decide +kernel)
+
+theorem badTest_1536_block_14 : Interval badTest_1536 112 120 :=
+  interval_of_check badTest_1536 112 8 (by decide +kernel)
+
+theorem badTest_1536_block_15 : Interval badTest_1536 120 128 :=
+  interval_of_check badTest_1536 120 8 (by decide +kernel)
+
+theorem badTest_1536_block_16 : Interval badTest_1536 128 136 :=
+  interval_of_check badTest_1536 128 8 (by decide +kernel)
+
+theorem badTest_1536_block_17 : Interval badTest_1536 136 144 :=
+  interval_of_check badTest_1536 136 8 (by decide +kernel)
+
+theorem badTest_1536_block_18 : Interval badTest_1536 144 152 :=
+  interval_of_check badTest_1536 144 8 (by decide +kernel)
+
+theorem badTest_1536_block_19 : Interval badTest_1536 152 160 :=
+  interval_of_check badTest_1536 152 8 (by decide +kernel)
+
+theorem badTest_1536_block_20 : Interval badTest_1536 160 168 :=
+  interval_of_check badTest_1536 160 8 (by decide +kernel)
+
+theorem badTest_1536_block_21 : Interval badTest_1536 168 176 :=
+  interval_of_check badTest_1536 168 8 (by decide +kernel)
+
+theorem badTest_1536_block_22 : Interval badTest_1536 176 184 :=
+  interval_of_check badTest_1536 176 8 (by decide +kernel)
+
+theorem badTest_1536_block_23 : Interval badTest_1536 184 192 :=
+  interval_of_check badTest_1536 184 8 (by decide +kernel)
+
+theorem badTest_1536_block_24 : Interval badTest_1536 192 200 :=
+  interval_of_check badTest_1536 192 8 (by decide +kernel)
+
+theorem badTest_1536_block_25 : Interval badTest_1536 200 208 :=
+  interval_of_check badTest_1536 200 8 (by decide +kernel)
+
+theorem badTest_1536_block_26 : Interval badTest_1536 208 216 :=
+  interval_of_check badTest_1536 208 8 (by decide +kernel)
+
+theorem badTest_1536_block_27 : Interval badTest_1536 216 224 :=
+  interval_of_check badTest_1536 216 8 (by decide +kernel)
+
+theorem badTest_1536_block_28 : Interval badTest_1536 224 232 :=
+  interval_of_check badTest_1536 224 8 (by decide +kernel)
+
+theorem badTest_1536_block_29 : Interval badTest_1536 232 240 :=
+  interval_of_check badTest_1536 232 8 (by decide +kernel)
+
+theorem badTest_1536_block_30 : Interval badTest_1536 240 248 :=
+  interval_of_check badTest_1536 240 8 (by decide +kernel)
+
+theorem badTest_1536_block_31 : Interval badTest_1536 248 256 :=
+  interval_of_check badTest_1536 248 8 (by decide +kernel)
+
+theorem badTest_1536_complete : Interval badTest_1536 0 256 :=
+  (interval_append badTest_1536 0 128 256
+  (interval_append badTest_1536 0 64 128
+  (interval_append badTest_1536 0 32 64
+  (interval_append badTest_1536 0 16 32
+  (interval_append badTest_1536 0 8 16
+  badTest_1536_block_0
+  badTest_1536_block_1)
+  (interval_append badTest_1536 16 24 32
+  badTest_1536_block_2
+  badTest_1536_block_3))
+  (interval_append badTest_1536 32 48 64
+  (interval_append badTest_1536 32 40 48
+  badTest_1536_block_4
+  badTest_1536_block_5)
+  (interval_append badTest_1536 48 56 64
+  badTest_1536_block_6
+  badTest_1536_block_7)))
+  (interval_append badTest_1536 64 96 128
+  (interval_append badTest_1536 64 80 96
+  (interval_append badTest_1536 64 72 80
+  badTest_1536_block_8
+  badTest_1536_block_9)
+  (interval_append badTest_1536 80 88 96
+  badTest_1536_block_10
+  badTest_1536_block_11))
+  (interval_append badTest_1536 96 112 128
+  (interval_append badTest_1536 96 104 112
+  badTest_1536_block_12
+  badTest_1536_block_13)
+  (interval_append badTest_1536 112 120 128
+  badTest_1536_block_14
+  badTest_1536_block_15))))
+  (interval_append badTest_1536 128 192 256
+  (interval_append badTest_1536 128 160 192
+  (interval_append badTest_1536 128 144 160
+  (interval_append badTest_1536 128 136 144
+  badTest_1536_block_16
+  badTest_1536_block_17)
+  (interval_append badTest_1536 144 152 160
+  badTest_1536_block_18
+  badTest_1536_block_19))
+  (interval_append badTest_1536 160 176 192
+  (interval_append badTest_1536 160 168 176
+  badTest_1536_block_20
+  badTest_1536_block_21)
+  (interval_append badTest_1536 176 184 192
+  badTest_1536_block_22
+  badTest_1536_block_23)))
+  (interval_append badTest_1536 192 224 256
+  (interval_append badTest_1536 192 208 224
+  (interval_append badTest_1536 192 200 208
+  badTest_1536_block_24
+  badTest_1536_block_25)
+  (interval_append badTest_1536 208 216 224
+  badTest_1536_block_26
+  badTest_1536_block_27))
+  (interval_append badTest_1536 224 240 256
+  (interval_append badTest_1536 224 232 240
+  badTest_1536_block_28
+  badTest_1536_block_29)
+  (interval_append badTest_1536 240 248 256
+  badTest_1536_block_30
+  badTest_1536_block_31)))))
+theorem badTestInterval1536 : Interval badTest 1536 1792 := by
+  intro i hlo hhi
+  have h := badTest_1536_complete (i-1536) (Nat.zero_le _) (by omega)
+  simpa only [badTest_1536, Nat.sub_add_cancel hlo] using h
+
+end Papers.RationalityTen.RootedCaches.RootedSixExtra03
+
+end
+end
+/- RootedSixExtra03GrowthCacheBad007 -/
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSixExtra03
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+def badTest_1792 (i : Nat) := badTest (i+1792)
+theorem badTest_1792_block_0 : Interval badTest_1792 0 8 :=
+  interval_of_check badTest_1792 0 8 (by decide +kernel)
+
+theorem badTest_1792_block_1 : Interval badTest_1792 8 16 :=
+  interval_of_check badTest_1792 8 8 (by decide +kernel)
+
+theorem badTest_1792_block_2 : Interval badTest_1792 16 24 :=
+  interval_of_check badTest_1792 16 8 (by decide +kernel)
+
+theorem badTest_1792_block_3 : Interval badTest_1792 24 32 :=
+  interval_of_check badTest_1792 24 8 (by decide +kernel)
+
+theorem badTest_1792_block_4 : Interval badTest_1792 32 40 :=
+  interval_of_check badTest_1792 32 8 (by decide +kernel)
+
+theorem badTest_1792_block_5 : Interval badTest_1792 40 48 :=
+  interval_of_check badTest_1792 40 8 (by decide +kernel)
+
+theorem badTest_1792_block_6 : Interval badTest_1792 48 56 :=
+  interval_of_check badTest_1792 48 8 (by decide +kernel)
+
+theorem badTest_1792_block_7 : Interval badTest_1792 56 64 :=
+  interval_of_check badTest_1792 56 8 (by decide +kernel)
+
+theorem badTest_1792_block_8 : Interval badTest_1792 64 72 :=
+  interval_of_check badTest_1792 64 8 (by decide +kernel)
+
+theorem badTest_1792_block_9 : Interval badTest_1792 72 80 :=
+  interval_of_check badTest_1792 72 8 (by decide +kernel)
+
+theorem badTest_1792_block_10 : Interval badTest_1792 80 88 :=
+  interval_of_check badTest_1792 80 8 (by decide +kernel)
+
+theorem badTest_1792_block_11 : Interval badTest_1792 88 96 :=
+  interval_of_check badTest_1792 88 8 (by decide +kernel)
+
+theorem badTest_1792_block_12 : Interval badTest_1792 96 104 :=
+  interval_of_check badTest_1792 96 8 (by decide +kernel)
+
+theorem badTest_1792_block_13 : Interval badTest_1792 104 112 :=
+  interval_of_check badTest_1792 104 8 (by decide +kernel)
+
+theorem badTest_1792_block_14 : Interval badTest_1792 112 120 :=
+  interval_of_check badTest_1792 112 8 (by decide +kernel)
+
+theorem badTest_1792_block_15 : Interval badTest_1792 120 128 :=
+  interval_of_check badTest_1792 120 8 (by decide +kernel)
+
+theorem badTest_1792_block_16 : Interval badTest_1792 128 136 :=
+  interval_of_check badTest_1792 128 8 (by decide +kernel)
+
+theorem badTest_1792_block_17 : Interval badTest_1792 136 144 :=
+  interval_of_check badTest_1792 136 8 (by decide +kernel)
+
+theorem badTest_1792_block_18 : Interval badTest_1792 144 152 :=
+  interval_of_check badTest_1792 144 8 (by decide +kernel)
+
+theorem badTest_1792_block_19 : Interval badTest_1792 152 160 :=
+  interval_of_check badTest_1792 152 8 (by decide +kernel)
+
+theorem badTest_1792_block_20 : Interval badTest_1792 160 168 :=
+  interval_of_check badTest_1792 160 8 (by decide +kernel)
+
+theorem badTest_1792_block_21 : Interval badTest_1792 168 176 :=
+  interval_of_check badTest_1792 168 8 (by decide +kernel)
+
+theorem badTest_1792_block_22 : Interval badTest_1792 176 184 :=
+  interval_of_check badTest_1792 176 8 (by decide +kernel)
+
+theorem badTest_1792_block_23 : Interval badTest_1792 184 192 :=
+  interval_of_check badTest_1792 184 8 (by decide +kernel)
+
+theorem badTest_1792_block_24 : Interval badTest_1792 192 200 :=
+  interval_of_check badTest_1792 192 8 (by decide +kernel)
+
+theorem badTest_1792_block_25 : Interval badTest_1792 200 208 :=
+  interval_of_check badTest_1792 200 8 (by decide +kernel)
+
+theorem badTest_1792_block_26 : Interval badTest_1792 208 216 :=
+  interval_of_check badTest_1792 208 8 (by decide +kernel)
+
+theorem badTest_1792_block_27 : Interval badTest_1792 216 224 :=
+  interval_of_check badTest_1792 216 8 (by decide +kernel)
+
+theorem badTest_1792_block_28 : Interval badTest_1792 224 232 :=
+  interval_of_check badTest_1792 224 8 (by decide +kernel)
+
+theorem badTest_1792_block_29 : Interval badTest_1792 232 240 :=
+  interval_of_check badTest_1792 232 8 (by decide +kernel)
+
+theorem badTest_1792_block_30 : Interval badTest_1792 240 248 :=
+  interval_of_check badTest_1792 240 8 (by decide +kernel)
+
+theorem badTest_1792_block_31 : Interval badTest_1792 248 256 :=
+  interval_of_check badTest_1792 248 8 (by decide +kernel)
+
+theorem badTest_1792_complete : Interval badTest_1792 0 256 :=
+  (interval_append badTest_1792 0 128 256
+  (interval_append badTest_1792 0 64 128
+  (interval_append badTest_1792 0 32 64
+  (interval_append badTest_1792 0 16 32
+  (interval_append badTest_1792 0 8 16
+  badTest_1792_block_0
+  badTest_1792_block_1)
+  (interval_append badTest_1792 16 24 32
+  badTest_1792_block_2
+  badTest_1792_block_3))
+  (interval_append badTest_1792 32 48 64
+  (interval_append badTest_1792 32 40 48
+  badTest_1792_block_4
+  badTest_1792_block_5)
+  (interval_append badTest_1792 48 56 64
+  badTest_1792_block_6
+  badTest_1792_block_7)))
+  (interval_append badTest_1792 64 96 128
+  (interval_append badTest_1792 64 80 96
+  (interval_append badTest_1792 64 72 80
+  badTest_1792_block_8
+  badTest_1792_block_9)
+  (interval_append badTest_1792 80 88 96
+  badTest_1792_block_10
+  badTest_1792_block_11))
+  (interval_append badTest_1792 96 112 128
+  (interval_append badTest_1792 96 104 112
+  badTest_1792_block_12
+  badTest_1792_block_13)
+  (interval_append badTest_1792 112 120 128
+  badTest_1792_block_14
+  badTest_1792_block_15))))
+  (interval_append badTest_1792 128 192 256
+  (interval_append badTest_1792 128 160 192
+  (interval_append badTest_1792 128 144 160
+  (interval_append badTest_1792 128 136 144
+  badTest_1792_block_16
+  badTest_1792_block_17)
+  (interval_append badTest_1792 144 152 160
+  badTest_1792_block_18
+  badTest_1792_block_19))
+  (interval_append badTest_1792 160 176 192
+  (interval_append badTest_1792 160 168 176
+  badTest_1792_block_20
+  badTest_1792_block_21)
+  (interval_append badTest_1792 176 184 192
+  badTest_1792_block_22
+  badTest_1792_block_23)))
+  (interval_append badTest_1792 192 224 256
+  (interval_append badTest_1792 192 208 224
+  (interval_append badTest_1792 192 200 208
+  badTest_1792_block_24
+  badTest_1792_block_25)
+  (interval_append badTest_1792 208 216 224
+  badTest_1792_block_26
+  badTest_1792_block_27))
+  (interval_append badTest_1792 224 240 256
+  (interval_append badTest_1792 224 232 240
+  badTest_1792_block_28
+  badTest_1792_block_29)
+  (interval_append badTest_1792 240 248 256
+  badTest_1792_block_30
+  badTest_1792_block_31)))))
+theorem badTestInterval1792 : Interval badTest 1792 2048 := by
+  intro i hlo hhi
+  have h := badTest_1792_complete (i-1792) (Nat.zero_le _) (by omega)
+  simpa only [badTest_1792, Nat.sub_add_cancel hlo] using h
+
+end Papers.RationalityTen.RootedCaches.RootedSixExtra03
+
+end
+end
+/- RootedSixExtra03GrowthCacheBad008 -/
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSixExtra03
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+def badTest_2048 (i : Nat) := badTest (i+2048)
+theorem badTest_2048_block_0 : Interval badTest_2048 0 8 :=
+  interval_of_check badTest_2048 0 8 (by decide +kernel)
+
+theorem badTest_2048_block_1 : Interval badTest_2048 8 16 :=
+  interval_of_check badTest_2048 8 8 (by decide +kernel)
+
+theorem badTest_2048_block_2 : Interval badTest_2048 16 24 :=
+  interval_of_check badTest_2048 16 8 (by decide +kernel)
+
+theorem badTest_2048_block_3 : Interval badTest_2048 24 32 :=
+  interval_of_check badTest_2048 24 8 (by decide +kernel)
+
+theorem badTest_2048_block_4 : Interval badTest_2048 32 40 :=
+  interval_of_check badTest_2048 32 8 (by decide +kernel)
+
+theorem badTest_2048_block_5 : Interval badTest_2048 40 48 :=
+  interval_of_check badTest_2048 40 8 (by decide +kernel)
+
+theorem badTest_2048_block_6 : Interval badTest_2048 48 56 :=
+  interval_of_check badTest_2048 48 8 (by decide +kernel)
+
+theorem badTest_2048_block_7 : Interval badTest_2048 56 64 :=
+  interval_of_check badTest_2048 56 8 (by decide +kernel)
+
+theorem badTest_2048_block_8 : Interval badTest_2048 64 72 :=
+  interval_of_check badTest_2048 64 8 (by decide +kernel)
+
+theorem badTest_2048_block_9 : Interval badTest_2048 72 80 :=
+  interval_of_check badTest_2048 72 8 (by decide +kernel)
+
+theorem badTest_2048_block_10 : Interval badTest_2048 80 88 :=
+  interval_of_check badTest_2048 80 8 (by decide +kernel)
+
+theorem badTest_2048_block_11 : Interval badTest_2048 88 96 :=
+  interval_of_check badTest_2048 88 8 (by decide +kernel)
+
+theorem badTest_2048_block_12 : Interval badTest_2048 96 104 :=
+  interval_of_check badTest_2048 96 8 (by decide +kernel)
+
+theorem badTest_2048_block_13 : Interval badTest_2048 104 112 :=
+  interval_of_check badTest_2048 104 8 (by decide +kernel)
+
+theorem badTest_2048_block_14 : Interval badTest_2048 112 120 :=
+  interval_of_check badTest_2048 112 8 (by decide +kernel)
+
+theorem badTest_2048_block_15 : Interval badTest_2048 120 128 :=
+  interval_of_check badTest_2048 120 8 (by decide +kernel)
+
+theorem badTest_2048_block_16 : Interval badTest_2048 128 136 :=
+  interval_of_check badTest_2048 128 8 (by decide +kernel)
+
+theorem badTest_2048_block_17 : Interval badTest_2048 136 144 :=
+  interval_of_check badTest_2048 136 8 (by decide +kernel)
+
+theorem badTest_2048_block_18 : Interval badTest_2048 144 152 :=
+  interval_of_check badTest_2048 144 8 (by decide +kernel)
+
+theorem badTest_2048_block_19 : Interval badTest_2048 152 160 :=
+  interval_of_check badTest_2048 152 8 (by decide +kernel)
+
+theorem badTest_2048_block_20 : Interval badTest_2048 160 168 :=
+  interval_of_check badTest_2048 160 8 (by decide +kernel)
+
+theorem badTest_2048_block_21 : Interval badTest_2048 168 176 :=
+  interval_of_check badTest_2048 168 8 (by decide +kernel)
+
+theorem badTest_2048_block_22 : Interval badTest_2048 176 184 :=
+  interval_of_check badTest_2048 176 8 (by decide +kernel)
+
+theorem badTest_2048_block_23 : Interval badTest_2048 184 192 :=
+  interval_of_check badTest_2048 184 8 (by decide +kernel)
+
+theorem badTest_2048_block_24 : Interval badTest_2048 192 200 :=
+  interval_of_check badTest_2048 192 8 (by decide +kernel)
+
+theorem badTest_2048_block_25 : Interval badTest_2048 200 208 :=
+  interval_of_check badTest_2048 200 8 (by decide +kernel)
+
+theorem badTest_2048_block_26 : Interval badTest_2048 208 216 :=
+  interval_of_check badTest_2048 208 8 (by decide +kernel)
+
+theorem badTest_2048_block_27 : Interval badTest_2048 216 224 :=
+  interval_of_check badTest_2048 216 8 (by decide +kernel)
+
+theorem badTest_2048_block_28 : Interval badTest_2048 224 232 :=
+  interval_of_check badTest_2048 224 8 (by decide +kernel)
+
+theorem badTest_2048_block_29 : Interval badTest_2048 232 240 :=
+  interval_of_check badTest_2048 232 8 (by decide +kernel)
+
+theorem badTest_2048_block_30 : Interval badTest_2048 240 248 :=
+  interval_of_check badTest_2048 240 8 (by decide +kernel)
+
+theorem badTest_2048_block_31 : Interval badTest_2048 248 256 :=
+  interval_of_check badTest_2048 248 8 (by decide +kernel)
+
+theorem badTest_2048_complete : Interval badTest_2048 0 256 :=
+  (interval_append badTest_2048 0 128 256
+  (interval_append badTest_2048 0 64 128
+  (interval_append badTest_2048 0 32 64
+  (interval_append badTest_2048 0 16 32
+  (interval_append badTest_2048 0 8 16
+  badTest_2048_block_0
+  badTest_2048_block_1)
+  (interval_append badTest_2048 16 24 32
+  badTest_2048_block_2
+  badTest_2048_block_3))
+  (interval_append badTest_2048 32 48 64
+  (interval_append badTest_2048 32 40 48
+  badTest_2048_block_4
+  badTest_2048_block_5)
+  (interval_append badTest_2048 48 56 64
+  badTest_2048_block_6
+  badTest_2048_block_7)))
+  (interval_append badTest_2048 64 96 128
+  (interval_append badTest_2048 64 80 96
+  (interval_append badTest_2048 64 72 80
+  badTest_2048_block_8
+  badTest_2048_block_9)
+  (interval_append badTest_2048 80 88 96
+  badTest_2048_block_10
+  badTest_2048_block_11))
+  (interval_append badTest_2048 96 112 128
+  (interval_append badTest_2048 96 104 112
+  badTest_2048_block_12
+  badTest_2048_block_13)
+  (interval_append badTest_2048 112 120 128
+  badTest_2048_block_14
+  badTest_2048_block_15))))
+  (interval_append badTest_2048 128 192 256
+  (interval_append badTest_2048 128 160 192
+  (interval_append badTest_2048 128 144 160
+  (interval_append badTest_2048 128 136 144
+  badTest_2048_block_16
+  badTest_2048_block_17)
+  (interval_append badTest_2048 144 152 160
+  badTest_2048_block_18
+  badTest_2048_block_19))
+  (interval_append badTest_2048 160 176 192
+  (interval_append badTest_2048 160 168 176
+  badTest_2048_block_20
+  badTest_2048_block_21)
+  (interval_append badTest_2048 176 184 192
+  badTest_2048_block_22
+  badTest_2048_block_23)))
+  (interval_append badTest_2048 192 224 256
+  (interval_append badTest_2048 192 208 224
+  (interval_append badTest_2048 192 200 208
+  badTest_2048_block_24
+  badTest_2048_block_25)
+  (interval_append badTest_2048 208 216 224
+  badTest_2048_block_26
+  badTest_2048_block_27))
+  (interval_append badTest_2048 224 240 256
+  (interval_append badTest_2048 224 232 240
+  badTest_2048_block_28
+  badTest_2048_block_29)
+  (interval_append badTest_2048 240 248 256
+  badTest_2048_block_30
+  badTest_2048_block_31)))))
+theorem badTestInterval2048 : Interval badTest 2048 2304 := by
+  intro i hlo hhi
+  have h := badTest_2048_complete (i-2048) (Nat.zero_le _) (by omega)
+  simpa only [badTest_2048, Nat.sub_add_cancel hlo] using h
+
+end Papers.RationalityTen.RootedCaches.RootedSixExtra03
+
+end
+end
+/- RootedSixExtra03GrowthCacheBad009 -/
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSixExtra03
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+def badTest_2304 (i : Nat) := badTest (i+2304)
+theorem badTest_2304_block_0 : Interval badTest_2304 0 8 :=
+  interval_of_check badTest_2304 0 8 (by decide +kernel)
+
+theorem badTest_2304_block_1 : Interval badTest_2304 8 16 :=
+  interval_of_check badTest_2304 8 8 (by decide +kernel)
+
+theorem badTest_2304_block_2 : Interval badTest_2304 16 24 :=
+  interval_of_check badTest_2304 16 8 (by decide +kernel)
+
+theorem badTest_2304_block_3 : Interval badTest_2304 24 32 :=
+  interval_of_check badTest_2304 24 8 (by decide +kernel)
+
+theorem badTest_2304_block_4 : Interval badTest_2304 32 40 :=
+  interval_of_check badTest_2304 32 8 (by decide +kernel)
+
+theorem badTest_2304_block_5 : Interval badTest_2304 40 48 :=
+  interval_of_check badTest_2304 40 8 (by decide +kernel)
+
+theorem badTest_2304_block_6 : Interval badTest_2304 48 56 :=
+  interval_of_check badTest_2304 48 8 (by decide +kernel)
+
+theorem badTest_2304_block_7 : Interval badTest_2304 56 64 :=
+  interval_of_check badTest_2304 56 8 (by decide +kernel)
+
+theorem badTest_2304_block_8 : Interval badTest_2304 64 72 :=
+  interval_of_check badTest_2304 64 8 (by decide +kernel)
+
+theorem badTest_2304_block_9 : Interval badTest_2304 72 80 :=
+  interval_of_check badTest_2304 72 8 (by decide +kernel)
+
+theorem badTest_2304_block_10 : Interval badTest_2304 80 88 :=
+  interval_of_check badTest_2304 80 8 (by decide +kernel)
+
+theorem badTest_2304_block_11 : Interval badTest_2304 88 96 :=
+  interval_of_check badTest_2304 88 8 (by decide +kernel)
+
+theorem badTest_2304_block_12 : Interval badTest_2304 96 104 :=
+  interval_of_check badTest_2304 96 8 (by decide +kernel)
+
+theorem badTest_2304_block_13 : Interval badTest_2304 104 112 :=
+  interval_of_check badTest_2304 104 8 (by decide +kernel)
+
+theorem badTest_2304_block_14 : Interval badTest_2304 112 120 :=
+  interval_of_check badTest_2304 112 8 (by decide +kernel)
+
+theorem badTest_2304_block_15 : Interval badTest_2304 120 128 :=
+  interval_of_check badTest_2304 120 8 (by decide +kernel)
+
+theorem badTest_2304_block_16 : Interval badTest_2304 128 136 :=
+  interval_of_check badTest_2304 128 8 (by decide +kernel)
+
+theorem badTest_2304_block_17 : Interval badTest_2304 136 144 :=
+  interval_of_check badTest_2304 136 8 (by decide +kernel)
+
+theorem badTest_2304_block_18 : Interval badTest_2304 144 152 :=
+  interval_of_check badTest_2304 144 8 (by decide +kernel)
+
+theorem badTest_2304_block_19 : Interval badTest_2304 152 160 :=
+  interval_of_check badTest_2304 152 8 (by decide +kernel)
+
+theorem badTest_2304_block_20 : Interval badTest_2304 160 168 :=
+  interval_of_check badTest_2304 160 8 (by decide +kernel)
+
+theorem badTest_2304_block_21 : Interval badTest_2304 168 176 :=
+  interval_of_check badTest_2304 168 8 (by decide +kernel)
+
+theorem badTest_2304_block_22 : Interval badTest_2304 176 184 :=
+  interval_of_check badTest_2304 176 8 (by decide +kernel)
+
+theorem badTest_2304_block_23 : Interval badTest_2304 184 192 :=
+  interval_of_check badTest_2304 184 8 (by decide +kernel)
+
+theorem badTest_2304_block_24 : Interval badTest_2304 192 200 :=
+  interval_of_check badTest_2304 192 8 (by decide +kernel)
+
+theorem badTest_2304_block_25 : Interval badTest_2304 200 208 :=
+  interval_of_check badTest_2304 200 8 (by decide +kernel)
+
+theorem badTest_2304_block_26 : Interval badTest_2304 208 216 :=
+  interval_of_check badTest_2304 208 8 (by decide +kernel)
+
+theorem badTest_2304_block_27 : Interval badTest_2304 216 224 :=
+  interval_of_check badTest_2304 216 8 (by decide +kernel)
+
+theorem badTest_2304_block_28 : Interval badTest_2304 224 232 :=
+  interval_of_check badTest_2304 224 8 (by decide +kernel)
+
+theorem badTest_2304_block_29 : Interval badTest_2304 232 240 :=
+  interval_of_check badTest_2304 232 8 (by decide +kernel)
+
+theorem badTest_2304_block_30 : Interval badTest_2304 240 248 :=
+  interval_of_check badTest_2304 240 8 (by decide +kernel)
+
+theorem badTest_2304_block_31 : Interval badTest_2304 248 256 :=
+  interval_of_check badTest_2304 248 8 (by decide +kernel)
+
+theorem badTest_2304_complete : Interval badTest_2304 0 256 :=
+  (interval_append badTest_2304 0 128 256
+  (interval_append badTest_2304 0 64 128
+  (interval_append badTest_2304 0 32 64
+  (interval_append badTest_2304 0 16 32
+  (interval_append badTest_2304 0 8 16
+  badTest_2304_block_0
+  badTest_2304_block_1)
+  (interval_append badTest_2304 16 24 32
+  badTest_2304_block_2
+  badTest_2304_block_3))
+  (interval_append badTest_2304 32 48 64
+  (interval_append badTest_2304 32 40 48
+  badTest_2304_block_4
+  badTest_2304_block_5)
+  (interval_append badTest_2304 48 56 64
+  badTest_2304_block_6
+  badTest_2304_block_7)))
+  (interval_append badTest_2304 64 96 128
+  (interval_append badTest_2304 64 80 96
+  (interval_append badTest_2304 64 72 80
+  badTest_2304_block_8
+  badTest_2304_block_9)
+  (interval_append badTest_2304 80 88 96
+  badTest_2304_block_10
+  badTest_2304_block_11))
+  (interval_append badTest_2304 96 112 128
+  (interval_append badTest_2304 96 104 112
+  badTest_2304_block_12
+  badTest_2304_block_13)
+  (interval_append badTest_2304 112 120 128
+  badTest_2304_block_14
+  badTest_2304_block_15))))
+  (interval_append badTest_2304 128 192 256
+  (interval_append badTest_2304 128 160 192
+  (interval_append badTest_2304 128 144 160
+  (interval_append badTest_2304 128 136 144
+  badTest_2304_block_16
+  badTest_2304_block_17)
+  (interval_append badTest_2304 144 152 160
+  badTest_2304_block_18
+  badTest_2304_block_19))
+  (interval_append badTest_2304 160 176 192
+  (interval_append badTest_2304 160 168 176
+  badTest_2304_block_20
+  badTest_2304_block_21)
+  (interval_append badTest_2304 176 184 192
+  badTest_2304_block_22
+  badTest_2304_block_23)))
+  (interval_append badTest_2304 192 224 256
+  (interval_append badTest_2304 192 208 224
+  (interval_append badTest_2304 192 200 208
+  badTest_2304_block_24
+  badTest_2304_block_25)
+  (interval_append badTest_2304 208 216 224
+  badTest_2304_block_26
+  badTest_2304_block_27))
+  (interval_append badTest_2304 224 240 256
+  (interval_append badTest_2304 224 232 240
+  badTest_2304_block_28
+  badTest_2304_block_29)
+  (interval_append badTest_2304 240 248 256
+  badTest_2304_block_30
+  badTest_2304_block_31)))))
+theorem badTestInterval2304 : Interval badTest 2304 2560 := by
+  intro i hlo hhi
+  have h := badTest_2304_complete (i-2304) (Nat.zero_le _) (by omega)
+  simpa only [badTest_2304, Nat.sub_add_cancel hlo] using h
+
+end Papers.RationalityTen.RootedCaches.RootedSixExtra03
+
+end
+end
+/- RootedSixExtra03GrowthCacheBad010 -/
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSixExtra03
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+def badTest_2560 (i : Nat) := badTest (i+2560)
+theorem badTest_2560_block_0 : Interval badTest_2560 0 8 :=
+  interval_of_check badTest_2560 0 8 (by decide +kernel)
+
+theorem badTest_2560_block_1 : Interval badTest_2560 8 16 :=
+  interval_of_check badTest_2560 8 8 (by decide +kernel)
+
+theorem badTest_2560_block_2 : Interval badTest_2560 16 24 :=
+  interval_of_check badTest_2560 16 8 (by decide +kernel)
+
+theorem badTest_2560_block_3 : Interval badTest_2560 24 32 :=
+  interval_of_check badTest_2560 24 8 (by decide +kernel)
+
+theorem badTest_2560_block_4 : Interval badTest_2560 32 40 :=
+  interval_of_check badTest_2560 32 8 (by decide +kernel)
+
+theorem badTest_2560_block_5 : Interval badTest_2560 40 48 :=
+  interval_of_check badTest_2560 40 8 (by decide +kernel)
+
+theorem badTest_2560_block_6 : Interval badTest_2560 48 56 :=
+  interval_of_check badTest_2560 48 8 (by decide +kernel)
+
+theorem badTest_2560_block_7 : Interval badTest_2560 56 64 :=
+  interval_of_check badTest_2560 56 8 (by decide +kernel)
+
+theorem badTest_2560_block_8 : Interval badTest_2560 64 72 :=
+  interval_of_check badTest_2560 64 8 (by decide +kernel)
+
+theorem badTest_2560_block_9 : Interval badTest_2560 72 80 :=
+  interval_of_check badTest_2560 72 8 (by decide +kernel)
+
+theorem badTest_2560_block_10 : Interval badTest_2560 80 88 :=
+  interval_of_check badTest_2560 80 8 (by decide +kernel)
+
+theorem badTest_2560_block_11 : Interval badTest_2560 88 96 :=
+  interval_of_check badTest_2560 88 8 (by decide +kernel)
+
+theorem badTest_2560_block_12 : Interval badTest_2560 96 104 :=
+  interval_of_check badTest_2560 96 8 (by decide +kernel)
+
+theorem badTest_2560_block_13 : Interval badTest_2560 104 112 :=
+  interval_of_check badTest_2560 104 8 (by decide +kernel)
+
+theorem badTest_2560_block_14 : Interval badTest_2560 112 120 :=
+  interval_of_check badTest_2560 112 8 (by decide +kernel)
+
+theorem badTest_2560_block_15 : Interval badTest_2560 120 128 :=
+  interval_of_check badTest_2560 120 8 (by decide +kernel)
+
+theorem badTest_2560_block_16 : Interval badTest_2560 128 136 :=
+  interval_of_check badTest_2560 128 8 (by decide +kernel)
+
+theorem badTest_2560_block_17 : Interval badTest_2560 136 144 :=
+  interval_of_check badTest_2560 136 8 (by decide +kernel)
+
+theorem badTest_2560_block_18 : Interval badTest_2560 144 152 :=
+  interval_of_check badTest_2560 144 8 (by decide +kernel)
+
+theorem badTest_2560_block_19 : Interval badTest_2560 152 160 :=
+  interval_of_check badTest_2560 152 8 (by decide +kernel)
+
+theorem badTest_2560_block_20 : Interval badTest_2560 160 168 :=
+  interval_of_check badTest_2560 160 8 (by decide +kernel)
+
+theorem badTest_2560_block_21 : Interval badTest_2560 168 176 :=
+  interval_of_check badTest_2560 168 8 (by decide +kernel)
+
+theorem badTest_2560_block_22 : Interval badTest_2560 176 184 :=
+  interval_of_check badTest_2560 176 8 (by decide +kernel)
+
+theorem badTest_2560_block_23 : Interval badTest_2560 184 192 :=
+  interval_of_check badTest_2560 184 8 (by decide +kernel)
+
+theorem badTest_2560_block_24 : Interval badTest_2560 192 200 :=
+  interval_of_check badTest_2560 192 8 (by decide +kernel)
+
+theorem badTest_2560_block_25 : Interval badTest_2560 200 208 :=
+  interval_of_check badTest_2560 200 8 (by decide +kernel)
+
+theorem badTest_2560_block_26 : Interval badTest_2560 208 216 :=
+  interval_of_check badTest_2560 208 8 (by decide +kernel)
+
+theorem badTest_2560_block_27 : Interval badTest_2560 216 224 :=
+  interval_of_check badTest_2560 216 8 (by decide +kernel)
+
+theorem badTest_2560_block_28 : Interval badTest_2560 224 232 :=
+  interval_of_check badTest_2560 224 8 (by decide +kernel)
+
+theorem badTest_2560_block_29 : Interval badTest_2560 232 240 :=
+  interval_of_check badTest_2560 232 8 (by decide +kernel)
+
+theorem badTest_2560_block_30 : Interval badTest_2560 240 248 :=
+  interval_of_check badTest_2560 240 8 (by decide +kernel)
+
+theorem badTest_2560_block_31 : Interval badTest_2560 248 256 :=
+  interval_of_check badTest_2560 248 8 (by decide +kernel)
+
+theorem badTest_2560_complete : Interval badTest_2560 0 256 :=
+  (interval_append badTest_2560 0 128 256
+  (interval_append badTest_2560 0 64 128
+  (interval_append badTest_2560 0 32 64
+  (interval_append badTest_2560 0 16 32
+  (interval_append badTest_2560 0 8 16
+  badTest_2560_block_0
+  badTest_2560_block_1)
+  (interval_append badTest_2560 16 24 32
+  badTest_2560_block_2
+  badTest_2560_block_3))
+  (interval_append badTest_2560 32 48 64
+  (interval_append badTest_2560 32 40 48
+  badTest_2560_block_4
+  badTest_2560_block_5)
+  (interval_append badTest_2560 48 56 64
+  badTest_2560_block_6
+  badTest_2560_block_7)))
+  (interval_append badTest_2560 64 96 128
+  (interval_append badTest_2560 64 80 96
+  (interval_append badTest_2560 64 72 80
+  badTest_2560_block_8
+  badTest_2560_block_9)
+  (interval_append badTest_2560 80 88 96
+  badTest_2560_block_10
+  badTest_2560_block_11))
+  (interval_append badTest_2560 96 112 128
+  (interval_append badTest_2560 96 104 112
+  badTest_2560_block_12
+  badTest_2560_block_13)
+  (interval_append badTest_2560 112 120 128
+  badTest_2560_block_14
+  badTest_2560_block_15))))
+  (interval_append badTest_2560 128 192 256
+  (interval_append badTest_2560 128 160 192
+  (interval_append badTest_2560 128 144 160
+  (interval_append badTest_2560 128 136 144
+  badTest_2560_block_16
+  badTest_2560_block_17)
+  (interval_append badTest_2560 144 152 160
+  badTest_2560_block_18
+  badTest_2560_block_19))
+  (interval_append badTest_2560 160 176 192
+  (interval_append badTest_2560 160 168 176
+  badTest_2560_block_20
+  badTest_2560_block_21)
+  (interval_append badTest_2560 176 184 192
+  badTest_2560_block_22
+  badTest_2560_block_23)))
+  (interval_append badTest_2560 192 224 256
+  (interval_append badTest_2560 192 208 224
+  (interval_append badTest_2560 192 200 208
+  badTest_2560_block_24
+  badTest_2560_block_25)
+  (interval_append badTest_2560 208 216 224
+  badTest_2560_block_26
+  badTest_2560_block_27))
+  (interval_append badTest_2560 224 240 256
+  (interval_append badTest_2560 224 232 240
+  badTest_2560_block_28
+  badTest_2560_block_29)
+  (interval_append badTest_2560 240 248 256
+  badTest_2560_block_30
+  badTest_2560_block_31)))))
+theorem badTestInterval2560 : Interval badTest 2560 2816 := by
+  intro i hlo hhi
+  have h := badTest_2560_complete (i-2560) (Nat.zero_le _) (by omega)
+  simpa only [badTest_2560, Nat.sub_add_cancel hlo] using h
+
+end Papers.RationalityTen.RootedCaches.RootedSixExtra03
+
+end
+end
+/- RootedSixExtra03GrowthCacheBad011 -/
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSixExtra03
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+def badTest_2816 (i : Nat) := badTest (i+2816)
+theorem badTest_2816_block_0 : Interval badTest_2816 0 8 :=
+  interval_of_check badTest_2816 0 8 (by decide +kernel)
+
+theorem badTest_2816_block_1 : Interval badTest_2816 8 16 :=
+  interval_of_check badTest_2816 8 8 (by decide +kernel)
+
+theorem badTest_2816_block_2 : Interval badTest_2816 16 24 :=
+  interval_of_check badTest_2816 16 8 (by decide +kernel)
+
+theorem badTest_2816_block_3 : Interval badTest_2816 24 32 :=
+  interval_of_check badTest_2816 24 8 (by decide +kernel)
+
+theorem badTest_2816_block_4 : Interval badTest_2816 32 40 :=
+  interval_of_check badTest_2816 32 8 (by decide +kernel)
+
+theorem badTest_2816_block_5 : Interval badTest_2816 40 48 :=
+  interval_of_check badTest_2816 40 8 (by decide +kernel)
+
+theorem badTest_2816_block_6 : Interval badTest_2816 48 56 :=
+  interval_of_check badTest_2816 48 8 (by decide +kernel)
+
+theorem badTest_2816_block_7 : Interval badTest_2816 56 64 :=
+  interval_of_check badTest_2816 56 8 (by decide +kernel)
+
+theorem badTest_2816_block_8 : Interval badTest_2816 64 72 :=
+  interval_of_check badTest_2816 64 8 (by decide +kernel)
+
+theorem badTest_2816_block_9 : Interval badTest_2816 72 80 :=
+  interval_of_check badTest_2816 72 8 (by decide +kernel)
+
+theorem badTest_2816_block_10 : Interval badTest_2816 80 88 :=
+  interval_of_check badTest_2816 80 8 (by decide +kernel)
+
+theorem badTest_2816_block_11 : Interval badTest_2816 88 96 :=
+  interval_of_check badTest_2816 88 8 (by decide +kernel)
+
+theorem badTest_2816_block_12 : Interval badTest_2816 96 104 :=
+  interval_of_check badTest_2816 96 8 (by decide +kernel)
+
+theorem badTest_2816_block_13 : Interval badTest_2816 104 112 :=
+  interval_of_check badTest_2816 104 8 (by decide +kernel)
+
+theorem badTest_2816_block_14 : Interval badTest_2816 112 120 :=
+  interval_of_check badTest_2816 112 8 (by decide +kernel)
+
+theorem badTest_2816_block_15 : Interval badTest_2816 120 128 :=
+  interval_of_check badTest_2816 120 8 (by decide +kernel)
+
+theorem badTest_2816_block_16 : Interval badTest_2816 128 136 :=
+  interval_of_check badTest_2816 128 8 (by decide +kernel)
+
+theorem badTest_2816_block_17 : Interval badTest_2816 136 144 :=
+  interval_of_check badTest_2816 136 8 (by decide +kernel)
+
+theorem badTest_2816_block_18 : Interval badTest_2816 144 152 :=
+  interval_of_check badTest_2816 144 8 (by decide +kernel)
+
+theorem badTest_2816_block_19 : Interval badTest_2816 152 160 :=
+  interval_of_check badTest_2816 152 8 (by decide +kernel)
+
+theorem badTest_2816_block_20 : Interval badTest_2816 160 168 :=
+  interval_of_check badTest_2816 160 8 (by decide +kernel)
+
+theorem badTest_2816_block_21 : Interval badTest_2816 168 176 :=
+  interval_of_check badTest_2816 168 8 (by decide +kernel)
+
+theorem badTest_2816_block_22 : Interval badTest_2816 176 184 :=
+  interval_of_check badTest_2816 176 8 (by decide +kernel)
+
+theorem badTest_2816_block_23 : Interval badTest_2816 184 192 :=
+  interval_of_check badTest_2816 184 8 (by decide +kernel)
+
+theorem badTest_2816_block_24 : Interval badTest_2816 192 200 :=
+  interval_of_check badTest_2816 192 8 (by decide +kernel)
+
+theorem badTest_2816_block_25 : Interval badTest_2816 200 208 :=
+  interval_of_check badTest_2816 200 8 (by decide +kernel)
+
+theorem badTest_2816_block_26 : Interval badTest_2816 208 216 :=
+  interval_of_check badTest_2816 208 8 (by decide +kernel)
+
+theorem badTest_2816_block_27 : Interval badTest_2816 216 224 :=
+  interval_of_check badTest_2816 216 8 (by decide +kernel)
+
+theorem badTest_2816_block_28 : Interval badTest_2816 224 232 :=
+  interval_of_check badTest_2816 224 8 (by decide +kernel)
+
+theorem badTest_2816_block_29 : Interval badTest_2816 232 240 :=
+  interval_of_check badTest_2816 232 8 (by decide +kernel)
+
+theorem badTest_2816_block_30 : Interval badTest_2816 240 248 :=
+  interval_of_check badTest_2816 240 8 (by decide +kernel)
+
+theorem badTest_2816_block_31 : Interval badTest_2816 248 256 :=
+  interval_of_check badTest_2816 248 8 (by decide +kernel)
+
+theorem badTest_2816_complete : Interval badTest_2816 0 256 :=
+  (interval_append badTest_2816 0 128 256
+  (interval_append badTest_2816 0 64 128
+  (interval_append badTest_2816 0 32 64
+  (interval_append badTest_2816 0 16 32
+  (interval_append badTest_2816 0 8 16
+  badTest_2816_block_0
+  badTest_2816_block_1)
+  (interval_append badTest_2816 16 24 32
+  badTest_2816_block_2
+  badTest_2816_block_3))
+  (interval_append badTest_2816 32 48 64
+  (interval_append badTest_2816 32 40 48
+  badTest_2816_block_4
+  badTest_2816_block_5)
+  (interval_append badTest_2816 48 56 64
+  badTest_2816_block_6
+  badTest_2816_block_7)))
+  (interval_append badTest_2816 64 96 128
+  (interval_append badTest_2816 64 80 96
+  (interval_append badTest_2816 64 72 80
+  badTest_2816_block_8
+  badTest_2816_block_9)
+  (interval_append badTest_2816 80 88 96
+  badTest_2816_block_10
+  badTest_2816_block_11))
+  (interval_append badTest_2816 96 112 128
+  (interval_append badTest_2816 96 104 112
+  badTest_2816_block_12
+  badTest_2816_block_13)
+  (interval_append badTest_2816 112 120 128
+  badTest_2816_block_14
+  badTest_2816_block_15))))
+  (interval_append badTest_2816 128 192 256
+  (interval_append badTest_2816 128 160 192
+  (interval_append badTest_2816 128 144 160
+  (interval_append badTest_2816 128 136 144
+  badTest_2816_block_16
+  badTest_2816_block_17)
+  (interval_append badTest_2816 144 152 160
+  badTest_2816_block_18
+  badTest_2816_block_19))
+  (interval_append badTest_2816 160 176 192
+  (interval_append badTest_2816 160 168 176
+  badTest_2816_block_20
+  badTest_2816_block_21)
+  (interval_append badTest_2816 176 184 192
+  badTest_2816_block_22
+  badTest_2816_block_23)))
+  (interval_append badTest_2816 192 224 256
+  (interval_append badTest_2816 192 208 224
+  (interval_append badTest_2816 192 200 208
+  badTest_2816_block_24
+  badTest_2816_block_25)
+  (interval_append badTest_2816 208 216 224
+  badTest_2816_block_26
+  badTest_2816_block_27))
+  (interval_append badTest_2816 224 240 256
+  (interval_append badTest_2816 224 232 240
+  badTest_2816_block_28
+  badTest_2816_block_29)
+  (interval_append badTest_2816 240 248 256
+  badTest_2816_block_30
+  badTest_2816_block_31)))))
+theorem badTestInterval2816 : Interval badTest 2816 3072 := by
+  intro i hlo hhi
+  have h := badTest_2816_complete (i-2816) (Nat.zero_le _) (by omega)
+  simpa only [badTest_2816, Nat.sub_add_cancel hlo] using h
+
+end Papers.RationalityTen.RootedCaches.RootedSixExtra03
+
+end
+end
+/- RootedSixExtra03GrowthCacheBad012 -/
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSixExtra03
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+def badTest_3072 (i : Nat) := badTest (i+3072)
+theorem badTest_3072_block_0 : Interval badTest_3072 0 8 :=
+  interval_of_check badTest_3072 0 8 (by decide +kernel)
+
+theorem badTest_3072_block_1 : Interval badTest_3072 8 16 :=
+  interval_of_check badTest_3072 8 8 (by decide +kernel)
+
+theorem badTest_3072_block_2 : Interval badTest_3072 16 24 :=
+  interval_of_check badTest_3072 16 8 (by decide +kernel)
+
+theorem badTest_3072_block_3 : Interval badTest_3072 24 32 :=
+  interval_of_check badTest_3072 24 8 (by decide +kernel)
+
+theorem badTest_3072_block_4 : Interval badTest_3072 32 40 :=
+  interval_of_check badTest_3072 32 8 (by decide +kernel)
+
+theorem badTest_3072_block_5 : Interval badTest_3072 40 48 :=
+  interval_of_check badTest_3072 40 8 (by decide +kernel)
+
+theorem badTest_3072_block_6 : Interval badTest_3072 48 56 :=
+  interval_of_check badTest_3072 48 8 (by decide +kernel)
+
+theorem badTest_3072_block_7 : Interval badTest_3072 56 64 :=
+  interval_of_check badTest_3072 56 8 (by decide +kernel)
+
+theorem badTest_3072_block_8 : Interval badTest_3072 64 72 :=
+  interval_of_check badTest_3072 64 8 (by decide +kernel)
+
+theorem badTest_3072_block_9 : Interval badTest_3072 72 78 :=
+  interval_of_check badTest_3072 72 6 (by decide +kernel)
+
+theorem badTest_3072_complete : Interval badTest_3072 0 78 :=
+  (interval_append badTest_3072 0 40 78
+  (interval_append badTest_3072 0 16 40
+  (interval_append badTest_3072 0 8 16
+  badTest_3072_block_0
+  badTest_3072_block_1)
+  (interval_append badTest_3072 16 24 40
+  badTest_3072_block_2
+  (interval_append badTest_3072 24 32 40
+  badTest_3072_block_3
+  badTest_3072_block_4)))
+  (interval_append badTest_3072 40 56 78
+  (interval_append badTest_3072 40 48 56
+  badTest_3072_block_5
+  badTest_3072_block_6)
+  (interval_append badTest_3072 56 64 78
+  badTest_3072_block_7
+  (interval_append badTest_3072 64 72 78
+  badTest_3072_block_8
+  badTest_3072_block_9))))
+theorem badTestInterval3072 : Interval badTest 3072 3150 := by
+  intro i hlo hhi
+  have h := badTest_3072_complete (i-3072) (Nat.zero_le _) (by omega)
+  simpa only [badTest_3072, Nat.sub_add_cancel hlo] using h
+
+end Papers.RationalityTen.RootedCaches.RootedSixExtra03
+
+end
+end
+/- RootedSixExtra03GrowthCacheRidges000 -/
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSixExtra03
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+def ridgeTest_0 (i : Nat) := ridgeTest (i+0)
+theorem ridgeTest_0_block_0 : Interval ridgeTest_0 0 8 :=
+  interval_of_check ridgeTest_0 0 8 (by decide +kernel)
+
+theorem ridgeTest_0_block_1 : Interval ridgeTest_0 8 16 :=
+  interval_of_check ridgeTest_0 8 8 (by decide +kernel)
+
+theorem ridgeTest_0_block_2 : Interval ridgeTest_0 16 24 :=
+  interval_of_check ridgeTest_0 16 8 (by decide +kernel)
+
+theorem ridgeTest_0_block_3 : Interval ridgeTest_0 24 32 :=
+  interval_of_check ridgeTest_0 24 8 (by decide +kernel)
+
+theorem ridgeTest_0_block_4 : Interval ridgeTest_0 32 40 :=
+  interval_of_check ridgeTest_0 32 8 (by decide +kernel)
+
+theorem ridgeTest_0_block_5 : Interval ridgeTest_0 40 48 :=
+  interval_of_check ridgeTest_0 40 8 (by decide +kernel)
+
+theorem ridgeTest_0_block_6 : Interval ridgeTest_0 48 56 :=
+  interval_of_check ridgeTest_0 48 8 (by decide +kernel)
+
+theorem ridgeTest_0_block_7 : Interval ridgeTest_0 56 64 :=
+  interval_of_check ridgeTest_0 56 8 (by decide +kernel)
+
+theorem ridgeTest_0_block_8 : Interval ridgeTest_0 64 72 :=
+  interval_of_check ridgeTest_0 64 8 (by decide +kernel)
+
+theorem ridgeTest_0_block_9 : Interval ridgeTest_0 72 80 :=
+  interval_of_check ridgeTest_0 72 8 (by decide +kernel)
+
+theorem ridgeTest_0_block_10 : Interval ridgeTest_0 80 88 :=
+  interval_of_check ridgeTest_0 80 8 (by decide +kernel)
+
+theorem ridgeTest_0_block_11 : Interval ridgeTest_0 88 96 :=
+  interval_of_check ridgeTest_0 88 8 (by decide +kernel)
+
+theorem ridgeTest_0_block_12 : Interval ridgeTest_0 96 104 :=
+  interval_of_check ridgeTest_0 96 8 (by decide +kernel)
+
+theorem ridgeTest_0_block_13 : Interval ridgeTest_0 104 112 :=
+  interval_of_check ridgeTest_0 104 8 (by decide +kernel)
+
+theorem ridgeTest_0_block_14 : Interval ridgeTest_0 112 120 :=
+  interval_of_check ridgeTest_0 112 8 (by decide +kernel)
+
+theorem ridgeTest_0_block_15 : Interval ridgeTest_0 120 128 :=
+  interval_of_check ridgeTest_0 120 8 (by decide +kernel)
+
+theorem ridgeTest_0_complete : Interval ridgeTest_0 0 128 :=
+  (interval_append ridgeTest_0 0 64 128
+  (interval_append ridgeTest_0 0 32 64
+  (interval_append ridgeTest_0 0 16 32
+  (interval_append ridgeTest_0 0 8 16
+  ridgeTest_0_block_0
+  ridgeTest_0_block_1)
+  (interval_append ridgeTest_0 16 24 32
+  ridgeTest_0_block_2
+  ridgeTest_0_block_3))
+  (interval_append ridgeTest_0 32 48 64
+  (interval_append ridgeTest_0 32 40 48
+  ridgeTest_0_block_4
+  ridgeTest_0_block_5)
+  (interval_append ridgeTest_0 48 56 64
+  ridgeTest_0_block_6
+  ridgeTest_0_block_7)))
+  (interval_append ridgeTest_0 64 96 128
+  (interval_append ridgeTest_0 64 80 96
+  (interval_append ridgeTest_0 64 72 80
+  ridgeTest_0_block_8
+  ridgeTest_0_block_9)
+  (interval_append ridgeTest_0 80 88 96
+  ridgeTest_0_block_10
+  ridgeTest_0_block_11))
+  (interval_append ridgeTest_0 96 112 128
+  (interval_append ridgeTest_0 96 104 112
+  ridgeTest_0_block_12
+  ridgeTest_0_block_13)
+  (interval_append ridgeTest_0 112 120 128
+  ridgeTest_0_block_14
+  ridgeTest_0_block_15))))
+theorem ridgeTestInterval0 : Interval ridgeTest 0 128 := by
+  intro i hlo hhi
+  have h := ridgeTest_0_complete (i-0) (Nat.zero_le _) (by omega)
+  simpa only [ridgeTest_0, Nat.sub_add_cancel hlo] using h
+
+end Papers.RationalityTen.RootedCaches.RootedSixExtra03
+
+end
+end
+/- RootedSixExtra03GrowthCacheRidges001 -/
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSixExtra03
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+def ridgeTest_128 (i : Nat) := ridgeTest (i+128)
+theorem ridgeTest_128_block_0 : Interval ridgeTest_128 0 8 :=
+  interval_of_check ridgeTest_128 0 8 (by decide +kernel)
+
+theorem ridgeTest_128_block_1 : Interval ridgeTest_128 8 16 :=
+  interval_of_check ridgeTest_128 8 8 (by decide +kernel)
+
+theorem ridgeTest_128_block_2 : Interval ridgeTest_128 16 24 :=
+  interval_of_check ridgeTest_128 16 8 (by decide +kernel)
+
+theorem ridgeTest_128_block_3 : Interval ridgeTest_128 24 32 :=
+  interval_of_check ridgeTest_128 24 8 (by decide +kernel)
+
+theorem ridgeTest_128_block_4 : Interval ridgeTest_128 32 40 :=
+  interval_of_check ridgeTest_128 32 8 (by decide +kernel)
+
+theorem ridgeTest_128_block_5 : Interval ridgeTest_128 40 48 :=
+  interval_of_check ridgeTest_128 40 8 (by decide +kernel)
+
+theorem ridgeTest_128_block_6 : Interval ridgeTest_128 48 56 :=
+  interval_of_check ridgeTest_128 48 8 (by decide +kernel)
+
+theorem ridgeTest_128_block_7 : Interval ridgeTest_128 56 64 :=
+  interval_of_check ridgeTest_128 56 8 (by decide +kernel)
+
+theorem ridgeTest_128_block_8 : Interval ridgeTest_128 64 72 :=
+  interval_of_check ridgeTest_128 64 8 (by decide +kernel)
+
+theorem ridgeTest_128_block_9 : Interval ridgeTest_128 72 80 :=
+  interval_of_check ridgeTest_128 72 8 (by decide +kernel)
+
+theorem ridgeTest_128_block_10 : Interval ridgeTest_128 80 88 :=
+  interval_of_check ridgeTest_128 80 8 (by decide +kernel)
+
+theorem ridgeTest_128_block_11 : Interval ridgeTest_128 88 96 :=
+  interval_of_check ridgeTest_128 88 8 (by decide +kernel)
+
+theorem ridgeTest_128_block_12 : Interval ridgeTest_128 96 104 :=
+  interval_of_check ridgeTest_128 96 8 (by decide +kernel)
+
+theorem ridgeTest_128_block_13 : Interval ridgeTest_128 104 112 :=
+  interval_of_check ridgeTest_128 104 8 (by decide +kernel)
+
+theorem ridgeTest_128_block_14 : Interval ridgeTest_128 112 120 :=
+  interval_of_check ridgeTest_128 112 8 (by decide +kernel)
+
+theorem ridgeTest_128_block_15 : Interval ridgeTest_128 120 128 :=
+  interval_of_check ridgeTest_128 120 8 (by decide +kernel)
+
+theorem ridgeTest_128_complete : Interval ridgeTest_128 0 128 :=
+  (interval_append ridgeTest_128 0 64 128
+  (interval_append ridgeTest_128 0 32 64
+  (interval_append ridgeTest_128 0 16 32
+  (interval_append ridgeTest_128 0 8 16
+  ridgeTest_128_block_0
+  ridgeTest_128_block_1)
+  (interval_append ridgeTest_128 16 24 32
+  ridgeTest_128_block_2
+  ridgeTest_128_block_3))
+  (interval_append ridgeTest_128 32 48 64
+  (interval_append ridgeTest_128 32 40 48
+  ridgeTest_128_block_4
+  ridgeTest_128_block_5)
+  (interval_append ridgeTest_128 48 56 64
+  ridgeTest_128_block_6
+  ridgeTest_128_block_7)))
+  (interval_append ridgeTest_128 64 96 128
+  (interval_append ridgeTest_128 64 80 96
+  (interval_append ridgeTest_128 64 72 80
+  ridgeTest_128_block_8
+  ridgeTest_128_block_9)
+  (interval_append ridgeTest_128 80 88 96
+  ridgeTest_128_block_10
+  ridgeTest_128_block_11))
+  (interval_append ridgeTest_128 96 112 128
+  (interval_append ridgeTest_128 96 104 112
+  ridgeTest_128_block_12
+  ridgeTest_128_block_13)
+  (interval_append ridgeTest_128 112 120 128
+  ridgeTest_128_block_14
+  ridgeTest_128_block_15))))
+theorem ridgeTestInterval128 : Interval ridgeTest 128 256 := by
+  intro i hlo hhi
+  have h := ridgeTest_128_complete (i-128) (Nat.zero_le _) (by omega)
+  simpa only [ridgeTest_128, Nat.sub_add_cancel hlo] using h
+
+end Papers.RationalityTen.RootedCaches.RootedSixExtra03
+
+end
+end
+/- RootedSixExtra03GrowthCacheRidges002 -/
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSixExtra03
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+def ridgeTest_256 (i : Nat) := ridgeTest (i+256)
+theorem ridgeTest_256_block_0 : Interval ridgeTest_256 0 8 :=
+  interval_of_check ridgeTest_256 0 8 (by decide +kernel)
+
+theorem ridgeTest_256_block_1 : Interval ridgeTest_256 8 16 :=
+  interval_of_check ridgeTest_256 8 8 (by decide +kernel)
+
+theorem ridgeTest_256_block_2 : Interval ridgeTest_256 16 24 :=
+  interval_of_check ridgeTest_256 16 8 (by decide +kernel)
+
+theorem ridgeTest_256_block_3 : Interval ridgeTest_256 24 32 :=
+  interval_of_check ridgeTest_256 24 8 (by decide +kernel)
+
+theorem ridgeTest_256_block_4 : Interval ridgeTest_256 32 40 :=
+  interval_of_check ridgeTest_256 32 8 (by decide +kernel)
+
+theorem ridgeTest_256_block_5 : Interval ridgeTest_256 40 48 :=
+  interval_of_check ridgeTest_256 40 8 (by decide +kernel)
+
+theorem ridgeTest_256_block_6 : Interval ridgeTest_256 48 56 :=
+  interval_of_check ridgeTest_256 48 8 (by decide +kernel)
+
+theorem ridgeTest_256_block_7 : Interval ridgeTest_256 56 64 :=
+  interval_of_check ridgeTest_256 56 8 (by decide +kernel)
+
+theorem ridgeTest_256_block_8 : Interval ridgeTest_256 64 72 :=
+  interval_of_check ridgeTest_256 64 8 (by decide +kernel)
+
+theorem ridgeTest_256_block_9 : Interval ridgeTest_256 72 80 :=
+  interval_of_check ridgeTest_256 72 8 (by decide +kernel)
+
+theorem ridgeTest_256_block_10 : Interval ridgeTest_256 80 88 :=
+  interval_of_check ridgeTest_256 80 8 (by decide +kernel)
+
+theorem ridgeTest_256_block_11 : Interval ridgeTest_256 88 96 :=
+  interval_of_check ridgeTest_256 88 8 (by decide +kernel)
+
+theorem ridgeTest_256_block_12 : Interval ridgeTest_256 96 104 :=
+  interval_of_check ridgeTest_256 96 8 (by decide +kernel)
+
+theorem ridgeTest_256_block_13 : Interval ridgeTest_256 104 112 :=
+  interval_of_check ridgeTest_256 104 8 (by decide +kernel)
+
+theorem ridgeTest_256_block_14 : Interval ridgeTest_256 112 120 :=
+  interval_of_check ridgeTest_256 112 8 (by decide +kernel)
+
+theorem ridgeTest_256_block_15 : Interval ridgeTest_256 120 128 :=
+  interval_of_check ridgeTest_256 120 8 (by decide +kernel)
+
+theorem ridgeTest_256_complete : Interval ridgeTest_256 0 128 :=
+  (interval_append ridgeTest_256 0 64 128
+  (interval_append ridgeTest_256 0 32 64
+  (interval_append ridgeTest_256 0 16 32
+  (interval_append ridgeTest_256 0 8 16
+  ridgeTest_256_block_0
+  ridgeTest_256_block_1)
+  (interval_append ridgeTest_256 16 24 32
+  ridgeTest_256_block_2
+  ridgeTest_256_block_3))
+  (interval_append ridgeTest_256 32 48 64
+  (interval_append ridgeTest_256 32 40 48
+  ridgeTest_256_block_4
+  ridgeTest_256_block_5)
+  (interval_append ridgeTest_256 48 56 64
+  ridgeTest_256_block_6
+  ridgeTest_256_block_7)))
+  (interval_append ridgeTest_256 64 96 128
+  (interval_append ridgeTest_256 64 80 96
+  (interval_append ridgeTest_256 64 72 80
+  ridgeTest_256_block_8
+  ridgeTest_256_block_9)
+  (interval_append ridgeTest_256 80 88 96
+  ridgeTest_256_block_10
+  ridgeTest_256_block_11))
+  (interval_append ridgeTest_256 96 112 128
+  (interval_append ridgeTest_256 96 104 112
+  ridgeTest_256_block_12
+  ridgeTest_256_block_13)
+  (interval_append ridgeTest_256 112 120 128
+  ridgeTest_256_block_14
+  ridgeTest_256_block_15))))
+theorem ridgeTestInterval256 : Interval ridgeTest 256 384 := by
+  intro i hlo hhi
+  have h := ridgeTest_256_complete (i-256) (Nat.zero_le _) (by omega)
+  simpa only [ridgeTest_256, Nat.sub_add_cancel hlo] using h
+
+end Papers.RationalityTen.RootedCaches.RootedSixExtra03
+
+end
+end
+/- RootedSixExtra03GrowthCacheRidges004 -/
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSixExtra03
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+def ridgeTest_512 (i : Nat) := ridgeTest (i+512)
+theorem ridgeTest_512_block_0 : Interval ridgeTest_512 0 8 :=
+  interval_of_check ridgeTest_512 0 8 (by decide +kernel)
+
+theorem ridgeTest_512_block_1 : Interval ridgeTest_512 8 16 :=
+  interval_of_check ridgeTest_512 8 8 (by decide +kernel)
+
+theorem ridgeTest_512_block_2 : Interval ridgeTest_512 16 24 :=
+  interval_of_check ridgeTest_512 16 8 (by decide +kernel)
+
+theorem ridgeTest_512_block_3 : Interval ridgeTest_512 24 32 :=
+  interval_of_check ridgeTest_512 24 8 (by decide +kernel)
+
+theorem ridgeTest_512_block_4 : Interval ridgeTest_512 32 40 :=
+  interval_of_check ridgeTest_512 32 8 (by decide +kernel)
+
+theorem ridgeTest_512_block_5 : Interval ridgeTest_512 40 48 :=
+  interval_of_check ridgeTest_512 40 8 (by decide +kernel)
+
+theorem ridgeTest_512_block_6 : Interval ridgeTest_512 48 56 :=
+  interval_of_check ridgeTest_512 48 8 (by decide +kernel)
+
+theorem ridgeTest_512_block_7 : Interval ridgeTest_512 56 64 :=
+  interval_of_check ridgeTest_512 56 8 (by decide +kernel)
+
+theorem ridgeTest_512_block_8 : Interval ridgeTest_512 64 72 :=
+  interval_of_check ridgeTest_512 64 8 (by decide +kernel)
+
+theorem ridgeTest_512_block_9 : Interval ridgeTest_512 72 80 :=
+  interval_of_check ridgeTest_512 72 8 (by decide +kernel)
+
+theorem ridgeTest_512_block_10 : Interval ridgeTest_512 80 88 :=
+  interval_of_check ridgeTest_512 80 8 (by decide +kernel)
+
+theorem ridgeTest_512_block_11 : Interval ridgeTest_512 88 96 :=
+  interval_of_check ridgeTest_512 88 8 (by decide +kernel)
+
+theorem ridgeTest_512_block_12 : Interval ridgeTest_512 96 104 :=
+  interval_of_check ridgeTest_512 96 8 (by decide +kernel)
+
+theorem ridgeTest_512_block_13 : Interval ridgeTest_512 104 112 :=
+  interval_of_check ridgeTest_512 104 8 (by decide +kernel)
+
+theorem ridgeTest_512_block_14 : Interval ridgeTest_512 112 120 :=
+  interval_of_check ridgeTest_512 112 8 (by decide +kernel)
+
+theorem ridgeTest_512_block_15 : Interval ridgeTest_512 120 128 :=
+  interval_of_check ridgeTest_512 120 8 (by decide +kernel)
+
+theorem ridgeTest_512_complete : Interval ridgeTest_512 0 128 :=
+  (interval_append ridgeTest_512 0 64 128
+  (interval_append ridgeTest_512 0 32 64
+  (interval_append ridgeTest_512 0 16 32
+  (interval_append ridgeTest_512 0 8 16
+  ridgeTest_512_block_0
+  ridgeTest_512_block_1)
+  (interval_append ridgeTest_512 16 24 32
+  ridgeTest_512_block_2
+  ridgeTest_512_block_3))
+  (interval_append ridgeTest_512 32 48 64
+  (interval_append ridgeTest_512 32 40 48
+  ridgeTest_512_block_4
+  ridgeTest_512_block_5)
+  (interval_append ridgeTest_512 48 56 64
+  ridgeTest_512_block_6
+  ridgeTest_512_block_7)))
+  (interval_append ridgeTest_512 64 96 128
+  (interval_append ridgeTest_512 64 80 96
+  (interval_append ridgeTest_512 64 72 80
+  ridgeTest_512_block_8
+  ridgeTest_512_block_9)
+  (interval_append ridgeTest_512 80 88 96
+  ridgeTest_512_block_10
+  ridgeTest_512_block_11))
+  (interval_append ridgeTest_512 96 112 128
+  (interval_append ridgeTest_512 96 104 112
+  ridgeTest_512_block_12
+  ridgeTest_512_block_13)
+  (interval_append ridgeTest_512 112 120 128
+  ridgeTest_512_block_14
+  ridgeTest_512_block_15))))
+theorem ridgeTestInterval512 : Interval ridgeTest 512 640 := by
+  intro i hlo hhi
+  have h := ridgeTest_512_complete (i-512) (Nat.zero_le _) (by omega)
+  simpa only [ridgeTest_512, Nat.sub_add_cancel hlo] using h
+
+end Papers.RationalityTen.RootedCaches.RootedSixExtra03
+
+end
+end
+/- RootedSixExtra03GrowthCacheWellFormed000 -/
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSixExtra03
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+def wellFormedTest_0 (i : Nat) := wellFormedTest (i+0)
+theorem wellFormedTest_0_block_0 : Interval wellFormedTest_0 0 16 :=
+  interval_of_check wellFormedTest_0 0 16 (by decide +kernel)
+
+theorem wellFormedTest_0_block_1 : Interval wellFormedTest_0 16 32 :=
+  interval_of_check wellFormedTest_0 16 16 (by decide +kernel)
+
+theorem wellFormedTest_0_block_2 : Interval wellFormedTest_0 32 48 :=
+  interval_of_check wellFormedTest_0 32 16 (by decide +kernel)
+
+theorem wellFormedTest_0_block_3 : Interval wellFormedTest_0 48 64 :=
+  interval_of_check wellFormedTest_0 48 16 (by decide +kernel)
+
+theorem wellFormedTest_0_block_4 : Interval wellFormedTest_0 64 80 :=
+  interval_of_check wellFormedTest_0 64 16 (by decide +kernel)
+
+theorem wellFormedTest_0_block_5 : Interval wellFormedTest_0 80 96 :=
+  interval_of_check wellFormedTest_0 80 16 (by decide +kernel)
+
+theorem wellFormedTest_0_block_6 : Interval wellFormedTest_0 96 112 :=
+  interval_of_check wellFormedTest_0 96 16 (by decide +kernel)
+
+theorem wellFormedTest_0_block_7 : Interval wellFormedTest_0 112 128 :=
+  interval_of_check wellFormedTest_0 112 16 (by decide +kernel)
+
+theorem wellFormedTest_0_block_8 : Interval wellFormedTest_0 128 144 :=
+  interval_of_check wellFormedTest_0 128 16 (by decide +kernel)
+
+theorem wellFormedTest_0_block_9 : Interval wellFormedTest_0 144 160 :=
+  interval_of_check wellFormedTest_0 144 16 (by decide +kernel)
+
+theorem wellFormedTest_0_block_10 : Interval wellFormedTest_0 160 176 :=
+  interval_of_check wellFormedTest_0 160 16 (by decide +kernel)
+
+theorem wellFormedTest_0_block_11 : Interval wellFormedTest_0 176 192 :=
+  interval_of_check wellFormedTest_0 176 16 (by decide +kernel)
+
+theorem wellFormedTest_0_block_12 : Interval wellFormedTest_0 192 208 :=
+  interval_of_check wellFormedTest_0 192 16 (by decide +kernel)
+
+theorem wellFormedTest_0_block_13 : Interval wellFormedTest_0 208 224 :=
+  interval_of_check wellFormedTest_0 208 16 (by decide +kernel)
+
+theorem wellFormedTest_0_block_14 : Interval wellFormedTest_0 224 240 :=
+  interval_of_check wellFormedTest_0 224 16 (by decide +kernel)
+
+theorem wellFormedTest_0_block_15 : Interval wellFormedTest_0 240 256 :=
+  interval_of_check wellFormedTest_0 240 16 (by decide +kernel)
+
+theorem wellFormedTest_0_complete : Interval wellFormedTest_0 0 256 :=
+  (interval_append wellFormedTest_0 0 128 256
+  (interval_append wellFormedTest_0 0 64 128
+  (interval_append wellFormedTest_0 0 32 64
+  (interval_append wellFormedTest_0 0 16 32
+  wellFormedTest_0_block_0
+  wellFormedTest_0_block_1)
+  (interval_append wellFormedTest_0 32 48 64
+  wellFormedTest_0_block_2
+  wellFormedTest_0_block_3))
+  (interval_append wellFormedTest_0 64 96 128
+  (interval_append wellFormedTest_0 64 80 96
+  wellFormedTest_0_block_4
+  wellFormedTest_0_block_5)
+  (interval_append wellFormedTest_0 96 112 128
+  wellFormedTest_0_block_6
+  wellFormedTest_0_block_7)))
+  (interval_append wellFormedTest_0 128 192 256
+  (interval_append wellFormedTest_0 128 160 192
+  (interval_append wellFormedTest_0 128 144 160
+  wellFormedTest_0_block_8
+  wellFormedTest_0_block_9)
+  (interval_append wellFormedTest_0 160 176 192
+  wellFormedTest_0_block_10
+  wellFormedTest_0_block_11))
+  (interval_append wellFormedTest_0 192 224 256
+  (interval_append wellFormedTest_0 192 208 224
+  wellFormedTest_0_block_12
+  wellFormedTest_0_block_13)
+  (interval_append wellFormedTest_0 224 240 256
+  wellFormedTest_0_block_14
+  wellFormedTest_0_block_15))))
+theorem wellFormedTestInterval0 : Interval wellFormedTest 0 256 := by
+  intro i hlo hhi
+  have h := wellFormedTest_0_complete (i-0) (Nat.zero_le _) (by omega)
+  simpa only [wellFormedTest_0, Nat.sub_add_cancel hlo] using h
+
+end Papers.RationalityTen.RootedCaches.RootedSixExtra03
+
+end
+end
+/- RootedSixExtra03GrowthCacheWellFormed001 -/
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSixExtra03
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+def wellFormedTest_256 (i : Nat) := wellFormedTest (i+256)
+theorem wellFormedTest_256_block_0 : Interval wellFormedTest_256 0 16 :=
+  interval_of_check wellFormedTest_256 0 16 (by decide +kernel)
+
+theorem wellFormedTest_256_block_1 : Interval wellFormedTest_256 16 32 :=
+  interval_of_check wellFormedTest_256 16 16 (by decide +kernel)
+
+theorem wellFormedTest_256_block_2 : Interval wellFormedTest_256 32 48 :=
+  interval_of_check wellFormedTest_256 32 16 (by decide +kernel)
+
+theorem wellFormedTest_256_block_3 : Interval wellFormedTest_256 48 64 :=
+  interval_of_check wellFormedTest_256 48 16 (by decide +kernel)
+
+theorem wellFormedTest_256_block_4 : Interval wellFormedTest_256 64 80 :=
+  interval_of_check wellFormedTest_256 64 16 (by decide +kernel)
+
+theorem wellFormedTest_256_block_5 : Interval wellFormedTest_256 80 96 :=
+  interval_of_check wellFormedTest_256 80 16 (by decide +kernel)
+
+theorem wellFormedTest_256_block_6 : Interval wellFormedTest_256 96 112 :=
+  interval_of_check wellFormedTest_256 96 16 (by decide +kernel)
+
+theorem wellFormedTest_256_block_7 : Interval wellFormedTest_256 112 128 :=
+  interval_of_check wellFormedTest_256 112 16 (by decide +kernel)
+
+theorem wellFormedTest_256_block_8 : Interval wellFormedTest_256 128 144 :=
+  interval_of_check wellFormedTest_256 128 16 (by decide +kernel)
+
+theorem wellFormedTest_256_block_9 : Interval wellFormedTest_256 144 160 :=
+  interval_of_check wellFormedTest_256 144 16 (by decide +kernel)
+
+theorem wellFormedTest_256_block_10 : Interval wellFormedTest_256 160 176 :=
+  interval_of_check wellFormedTest_256 160 16 (by decide +kernel)
+
+theorem wellFormedTest_256_block_11 : Interval wellFormedTest_256 176 192 :=
+  interval_of_check wellFormedTest_256 176 16 (by decide +kernel)
+
+theorem wellFormedTest_256_block_12 : Interval wellFormedTest_256 192 208 :=
+  interval_of_check wellFormedTest_256 192 16 (by decide +kernel)
+
+theorem wellFormedTest_256_block_13 : Interval wellFormedTest_256 208 224 :=
+  interval_of_check wellFormedTest_256 208 16 (by decide +kernel)
+
+theorem wellFormedTest_256_block_14 : Interval wellFormedTest_256 224 240 :=
+  interval_of_check wellFormedTest_256 224 16 (by decide +kernel)
+
+theorem wellFormedTest_256_block_15 : Interval wellFormedTest_256 240 256 :=
+  interval_of_check wellFormedTest_256 240 16 (by decide +kernel)
+
+theorem wellFormedTest_256_complete : Interval wellFormedTest_256 0 256 :=
+  (interval_append wellFormedTest_256 0 128 256
+  (interval_append wellFormedTest_256 0 64 128
+  (interval_append wellFormedTest_256 0 32 64
+  (interval_append wellFormedTest_256 0 16 32
+  wellFormedTest_256_block_0
+  wellFormedTest_256_block_1)
+  (interval_append wellFormedTest_256 32 48 64
+  wellFormedTest_256_block_2
+  wellFormedTest_256_block_3))
+  (interval_append wellFormedTest_256 64 96 128
+  (interval_append wellFormedTest_256 64 80 96
+  wellFormedTest_256_block_4
+  wellFormedTest_256_block_5)
+  (interval_append wellFormedTest_256 96 112 128
+  wellFormedTest_256_block_6
+  wellFormedTest_256_block_7)))
+  (interval_append wellFormedTest_256 128 192 256
+  (interval_append wellFormedTest_256 128 160 192
+  (interval_append wellFormedTest_256 128 144 160
+  wellFormedTest_256_block_8
+  wellFormedTest_256_block_9)
+  (interval_append wellFormedTest_256 160 176 192
+  wellFormedTest_256_block_10
+  wellFormedTest_256_block_11))
+  (interval_append wellFormedTest_256 192 224 256
+  (interval_append wellFormedTest_256 192 208 224
+  wellFormedTest_256_block_12
+  wellFormedTest_256_block_13)
+  (interval_append wellFormedTest_256 224 240 256
+  wellFormedTest_256_block_14
+  wellFormedTest_256_block_15))))
+theorem wellFormedTestInterval256 : Interval wellFormedTest 256 512 := by
+  intro i hlo hhi
+  have h := wellFormedTest_256_complete (i-256) (Nat.zero_le _) (by omega)
+  simpa only [wellFormedTest_256, Nat.sub_add_cancel hlo] using h
+
+end Papers.RationalityTen.RootedCaches.RootedSixExtra03
+
+end
+end

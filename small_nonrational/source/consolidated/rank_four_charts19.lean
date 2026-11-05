@@ -1,0 +1,5 @@
+module
+public import Consolidated.RankFourCharts19Part0
+public import Consolidated.RankFourCharts19Part1
+public import Consolidated.RankFourCharts19Part2
+public import Consolidated.RankFourCharts19Part3

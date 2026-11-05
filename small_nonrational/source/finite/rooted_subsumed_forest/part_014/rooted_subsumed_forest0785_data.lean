@@ -1,0 +1,75 @@
+module
+prelude
+public import RootedSixExtra04GrowthCacheData
+public import RootedSixExtra04FastWordsData
+public import CounterGrowthReplay
+public import RawNatGrowthCompleteness
+public import FiniteChecks
+public import SubsumedClassification
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedForests.RootedSubsumedForest0785
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open GrowthDAG SparseGrowthDAG GrowthPruning GrowthRenaming
+open GrowthBitsets BatchedGrowthPruning BatchedOrbitGrowth
+open RawNatGrowthSoundness RawNatGrowthCompleteness
+
+abbrev cellCount : Nat := 3640
+abbrev nodeCount : Nat := 52
+abbrev leafCount : Nat := 1
+def widths : PackedRawNatGrowth.Widths := ⟨12,6,11,1⟩
+def blocks : Table PackedRawNatGrowth.Block :=
+(.leaf ⟨0xfee551e7ef2a8e3f995469facaa30fce55167e32a8a69b9544b4bcaa21a66550ed2b2a866939542b48caa11cae5506e4f2a827299540b92caa01c8e54fee432a7e417953ea05ca9f105654f68132a7a3ff953c9feca9e1ade54eed572a766b5953ab54ca9d1a7e54e6d3b2a727479538b9dca9c1d1654dee732a6e72f9536b96ca9b107654d68232a6a4199534a06ca9a101654ce8032a666bd9532b58ca991ae654c6d5b2a626a59530b50ca981d3654bee832a5e749952eb9eca971cd654b6e632a5a41f952ca09ca96106e54ae81f2a56407952aa01ca951afe54a6d672a526bb9528b57ca941a9e549ed472a4e74f9526ba1ca931d2e5496e7f2a4a7379524b99ca9215c60f96aeb07ca57383e4abbc1f215e60f8eaf707c657d83e2ac4c1f115fe0f86b1707c259583e0acbc1f016060f7eb1b07be58583deac8c1ef16660f76b3b07ba58383dcac7c1ee161e0f6eb2707b659b83daacfc1ed15ce2192ae310c85d38863ae8c431a1ce218b0e310c47527861ba83c309bc9e182de0f0c0572785fab83c2f95e6217aaeb10bc5d9885daeac42ea1e621730eb10b8758785bbaa3c2d9be1e16ade8f0b45787859aba3c2c95ee2162aef10b05db8857aebc42ba1ee215b0ef10ac75a7855bab3c2a9be9e152decf0a857a7853abb3c299656214ab1310a45f58851af4c428a256214311310a0774784fbb43c279c51e13ae10f09c594784dac43c26965e2132b1710985f7884baf5c425a25e212b11710947767849bb53c249c59e122e14f0905967847ac53c239676211ab23108c5fd8845af8c422a2762113123108877c7843bb83c219c71e10ae20f08459c7841ac83c20802a00000007800053562312d53118782878c13e43c6014d1e2fe000a000000af7a8000491308c34a5845ea50b62b12b5b15005ab8970215c48804a993c0954c7460282440009005ffc62bfe00024b979220000800000339b70001245b831400040000007c929e98000d269e41c0002000000cc6b43e00006336c1a07c478cca8a3c658000c0000015cc225b0000c0000000002acc318a8000c0000000000bc4d00008c05244a6ca92237fc790f3cc3c871291e436000aca6bcecc008000336535e70001a424c61400040000015b8a2f1a6980011974f76aca27bb465125d7b2e92eb86046342362019f6a078cd3e03c661491e32e31a31891bd00c3b563c609f31e300a70f17f18eb0b88c1585c06faa2de365516e60ea0b6b01505b0c3082d6600416a30e88b4981445a063a02ce3050166001a00000056bf69e4000300136f5000080000069e3231400018019461e0a1e304a68f17f000300000057bd4628000300000000001fbd66282f6000400000000002fc52760000300110be9fc585edab9e2ec4e8417428488b980028000002b5fc4f33460002240842e433c212e00040000003d7f13ccd185f4000a00000077aa553d0ef4d344142f4a001f34400010000009abf89e67c0000477ef525bbf769285438160e0cf0a958278530a86c264b52a1305b97097720d04ac773c249c69e122e1cf0902b08047ac73c238553211a249808b77278433893c2117f9e10600260000003d7f13ccf80d10000a0000000000af8d035000060000000000af8d435000060000000000ad7c139cfb0d408b8000c0000000000ad7c139cfb0d4085c000c0000000000ad310d0c32400080000000000ad7f13ccf80d1085c000c00000000003d7f13ccf80d105f4000c000000bae34575cf58400000062a3257ecc54400000075e3457ecebc4025355f000134f000098052e0e4a5c1f59a7800100324130e34f0915ea784700018000000f59e4dc3c832c00028000000000175894c43e03440b000030000001859455fd30b10000001858c95fb30b12563b0b5281d858958dc274a06e13244308f52210476948c2254a44111a560c8352806418958220b4a01105256048252802410001c000000cd7d400040000000000cf8b12c800060000000000af8992c80006a74817d49858bd80010000002b5ff4d600018002a6d400040000038a731e898780011f8121be00020000005e6d4f44c3c00080000000001353082080006930722549821118001000000335fd4d60001bc01867400040000015b0027598780010000a1ea00020000005d3ac91420800080000000001353ac3d4208000800000061e5157f8c3c40000009645857fd2c840000009645857f52c8490001a0000100000056bf696400030000000000e29ea7c461e0004,0x1f4a00001e6d00001d1c00001cb300001c3e00001bc900001b1a00001ac200001a760000196b000018ea000015a00000152b0000147c00001418000013c0000012cb00001221000011b10000113000000e9900000e4100000de900000d6d00000cf100000c8d00000c1100000b9500000b4900000afd00000ab100000a0e00000947000008cb0000087f0000083300000651000005f9000005a10000050f0000048e0000040d000003b500000323000002a200000221000001bd0000017100000125000000d90000006400000000⟩)
+def counterTable : Table Nat :=
+(.leaf 0x21000000000000400000000040008020000000000100400000010002000000000400040100000004000802000000080010040000000000200000000040004000000000c000800000000100010800000001000210000000020004200000000800084000000008001000000000300020000000008000400000000140000000000001800100000000040002100000000200042000000004000800000000280010000000005000200000000060004000000001400080000000028001000000000200000000000004000000000000080000000000001800100000000040002000000000a00040000000004200000000000084000000000000080210000000001004200000000020080000000008401000000000208020080000002100400000000042008000000000840100000000020802000000000410040000000008200800000000084000000000001080000000000021000000000000420080000000010401)
+def codes (i : Nat) : Nat :=
+  let b := blocks.get (i / 128)
+  PackedRawNatGrowth.drop
+    (PackedRawNatGrowth.take 32 (PackedRawNatGrowth.drop (32*(i%128)) b.offsets)) b.payload
+def counters (i : Nat) : Nat :=
+  PackedRawNatGrowth.take 55 (PackedRawNatGrowth.drop (55*(i%128)) (counterTable.get (i/128)))
+def rawNodes (i : Nat) := PackedRawNatGrowth.decodeNode widths (codes i)
+
+def leafTable : Table (List Nat) :=
+(.leaf [])
+def rawLeaves := leafTable.get
+
+def leaves : Fin leafCount → List (Fin cellCount) := decodedLeaves rawLeaves
+def quota : Nat → Nat
+  | 0 => 1
+  | 1 => 0
+  | 2 => 1
+  | 3 => 5
+  | 4 => 0
+  | 5 => 0
+  | 6 => 0
+  | 7 => 0
+  | 8 => 0
+  | 9 => 1
+  | 10 => 2
+  | _ => 0
+
+def nodeTest (i : Nat) : Bool :=
+  SubsumedCounterReplay.check widths cellCount 1024 1152 leafCount nodeCount
+    Papers.RationalityTen.RootedCaches.RootedSixExtra04.candidateMasks Papers.RationalityTen.RootedCaches.RootedSixExtra04.badMasks
+    Papers.RationalityTen.RootedCaches.RootedSixExtra04.kindMasks Papers.RationalityTen.RootedCaches.RootedSixExtra04.keys Papers.RationalityTen.RootedCaches.RootedSixExtra04.fastKind quota
+    Papers.RationalityTen.FacetUniverses.RootedSixExtra04.Generators.FastWords.rawMaps rawLeaves codes counters i
+theorem nodeTest_sound (i : Nat) (h : nodeTest i = true) :
+    nodeBounds cellCount 1024 1152 leafCount nodeCount (rawNodes i) = true ∧
+      SubsumedRawGrowth.nodeCheck Papers.RationalityTen.RootedCaches.RootedSixExtra04.candidateMasks Papers.RationalityTen.RootedCaches.RootedSixExtra04.badMasks
+        Papers.RationalityTen.RootedCaches.RootedSixExtra04.kindMasks Papers.RationalityTen.RootedCaches.RootedSixExtra04.keys Papers.RationalityTen.RootedCaches.RootedSixExtra04.fastKind quota
+        Papers.RationalityTen.FacetUniverses.RootedSixExtra04.Generators.FastWords.rawMaps rawLeaves rawNodes i = true :=
+  SubsumedCounterReplay.check_sound widths cellCount 1024 1152 leafCount nodeCount
+    Papers.RationalityTen.RootedCaches.RootedSixExtra04.candidateMasks Papers.RationalityTen.RootedCaches.RootedSixExtra04.badMasks
+    Papers.RationalityTen.RootedCaches.RootedSixExtra04.kindMasks Papers.RationalityTen.RootedCaches.RootedSixExtra04.keys Papers.RationalityTen.RootedCaches.RootedSixExtra04.fastKind quota
+    Papers.RationalityTen.FacetUniverses.RootedSixExtra04.Generators.FastWords.rawMaps rawLeaves codes counters i h
+def leafTest (i : Nat) : Bool :=
+  listBounds cellCount (rawLeaves i) &&
+    (WitnessGrowthDAG.closedCheck FacetUniverses.RootedSixExtra04.ridgeList
+      ((rawLeaves i).map (Fin.ofNat cellCount)) &&
+      decide (((rawLeaves i).map (Fin.ofNat cellCount)).Nodup))
+
+end Papers.RationalityTen.RootedForests.RootedSubsumedForest0785

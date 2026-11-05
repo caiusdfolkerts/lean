@@ -1,0 +1,22 @@
+module
+prelude
+public import RootedSubsumedForest0360Dispositions000
+public import RootedSubsumedForest0360Dispositions001
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedForests.RootedSubsumedForest0360
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open GrowthDAG SparseGrowthDAG GrowthPruning GrowthRenaming
+open GrowthBitsets BatchedGrowthPruning BatchedOrbitGrowth
+open RawNatGrowthSoundness RawNatGrowthCompleteness
+
+theorem dispositionTest_complete : Interval dispositionTest 0 leafCount := (interval_append dispositionTest 0 27 55 (interval_append dispositionTest 0 13 27 (interval_append dispositionTest 0 6 13 (interval_append dispositionTest 0 3 6 (interval_append dispositionTest 0 1 3 disposition_interval_0 (interval_append dispositionTest 1 2 3 disposition_interval_1 disposition_interval_2)) (interval_append dispositionTest 3 4 6 disposition_interval_3 (interval_append dispositionTest 4 5 6 disposition_interval_4 disposition_interval_5))) (interval_append dispositionTest 6 9 13 (interval_append dispositionTest 6 7 9 disposition_interval_6 (interval_append dispositionTest 7 8 9 disposition_interval_7 disposition_interval_8)) (interval_append dispositionTest 9 11 13 (interval_append dispositionTest 9 10 11 disposition_interval_9 disposition_interval_10) (interval_append dispositionTest 11 12 13 disposition_interval_11 disposition_interval_12)))) (interval_append dispositionTest 13 20 27 (interval_append dispositionTest 13 16 20 (interval_append dispositionTest 13 14 16 disposition_interval_13 (interval_append dispositionTest 14 15 16 disposition_interval_14 disposition_interval_15)) (interval_append dispositionTest 16 18 20 (interval_append dispositionTest 16 17 18 disposition_interval_16 disposition_interval_17) (interval_append dispositionTest 18 19 20 disposition_interval_18 disposition_interval_19))) (interval_append dispositionTest 20 23 27 (interval_append dispositionTest 20 21 23 disposition_interval_20 (interval_append dispositionTest 21 22 23 disposition_interval_21 disposition_interval_22)) (interval_append dispositionTest 23 25 27 (interval_append dispositionTest 23 24 25 disposition_interval_23 disposition_interval_24) (interval_append dispositionTest 25 26 27 disposition_interval_25 disposition_interval_26))))) (interval_append dispositionTest 27 41 55 (interval_append dispositionTest 27 34 41 (interval_append dispositionTest 27 30 34 (interval_append dispositionTest 27 28 30 disposition_interval_27 (interval_append dispositionTest 28 29 30 disposition_interval_28 disposition_interval_29)) (interval_append dispositionTest 30 32 34 (interval_append dispositionTest 30 31 32 disposition_interval_30 disposition_interval_31) (interval_append dispositionTest 32 33 34 disposition_interval_32 disposition_interval_33))) (interval_append dispositionTest 34 37 41 (interval_append dispositionTest 34 35 37 disposition_interval_34 (interval_append dispositionTest 35 36 37 disposition_interval_35 disposition_interval_36)) (interval_append dispositionTest 37 39 41 (interval_append dispositionTest 37 38 39 disposition_interval_37 disposition_interval_38) (interval_append dispositionTest 39 40 41 disposition_interval_39 disposition_interval_40)))) (interval_append dispositionTest 41 48 55 (interval_append dispositionTest 41 44 48 (interval_append dispositionTest 41 42 44 disposition_interval_41 (interval_append dispositionTest 42 43 44 disposition_interval_42 disposition_interval_43)) (interval_append dispositionTest 44 46 48 (interval_append dispositionTest 44 45 46 disposition_interval_44 disposition_interval_45) (interval_append dispositionTest 46 47 48 disposition_interval_46 disposition_interval_47))) (interval_append dispositionTest 48 51 55 (interval_append dispositionTest 48 49 51 disposition_interval_48 (interval_append dispositionTest 49 50 51 disposition_interval_49 disposition_interval_50)) (interval_append dispositionTest 51 53 55 (interval_append dispositionTest 51 52 53 disposition_interval_51 disposition_interval_52) (interval_append dispositionTest 53 54 55 disposition_interval_53 disposition_interval_54))))))
+theorem disposition_checked (j : Fin leafCount) :
+    RawLeafCertificate.check quota ((rawLeaves j.val).map Papers.RationalityTen.RootedCaches.RootedSixBase02.rawCells)
+      (disposition j) = true :=
+  dispositionTest_complete j.val (Nat.zero_le _) j.isLt
+
+end Papers.RationalityTen.RootedForests.RootedSubsumedForest0360

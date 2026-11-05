@@ -33,3 +33,4 @@ Install Elan and a recent version of Git before following the verification comma
 | `unimodular` | Unimodular configurations and complete fans |
 | `singular_vector_spans` | Singular-vector spans beyond boundary format |
 | `stress_flex` | Stress–flex orthogonality on spheres and a torus obstruction |
+| `small_nonrational` | Small nonrational four-polytopes |
