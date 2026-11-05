@@ -1,0 +1,69 @@
+module
+prelude
+public import RootedSevenTwoSix13GrowthCacheData
+public import RootedSevenTwoSix13FastWordsData
+public import CounterGrowthReplay
+public import RawNatGrowthCompleteness
+public import FiniteChecks
+public import SubsumedClassification
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedForests.RootedSubsumedForest0477
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open GrowthDAG SparseGrowthDAG GrowthPruning GrowthRenaming
+open GrowthBitsets BatchedGrowthPruning BatchedOrbitGrowth
+open RawNatGrowthSoundness RawNatGrowthCompleteness
+
+abbrev cellCount : Nat := 2038
+abbrev nodeCount : Nat := 67
+abbrev leafCount : Nat := 1
+def widths : PackedRawNatGrowth.Widths := ⟨11,7,6,1⟩
+def blocks : Table PackedRawNatGrowth.Block :=
+(.leaf ⟨0x9c1f96941f949bdf9293df90b41f8ea41f8cb3df8aa3df88bc1f86ac1f84bbdf82abdf80f3bd02fbbd00939cfe9b9cfc93bcfa9bbcf8f39cf6fb9cf4f36cf2fb6cf0934cee9b4cec936cea9b6ce8f34ce6fb4ce503bce313bce0a39cdeb39cdca3bcdab3bcd9039cd7139cd5036cd3136cd0a34cceb34ccca36ccab36cc9034cc7134cc50bbcc31bbcc0ab9cbebb9cbcabbcbabbbcb90b9cb71b9cb50b6cb31b6cb0ab4caebb4cacab6caabb6ca90b4ca71b4ca4fb1a0ef31a0c9b1a0a931a09131a07031a04b31a02a31a011b19ff0b19fcbb19faab19f892f6729af670f2e66efae66c92e66a9ae66892c6669ac664a2f662b2f66102e65f12e65ca2e65ab2e658a2c656b2c654aaf652baf6510ae64f1ae64caae64abae648aac646bac64492a04e9aa04cb2a04a00c6000001b800081005b00fc5a00f859809859000200000163f5800080000005b381fac2d8402804c0002000001bfd6168000600000000070fd6166000603c01833c01400040000007fd400020000000000dfea00c000318f80c19d00a00020000003f58800100801380008000006fab406000182e07c8e907b8001000001a3aac000806e09800040000037d543b4000c00000076b41d543b4130c16a0607300580008000000fd4a000400000003184ea401820598181d901600020000003f53800100000000006fa98060001a0a81e8000800000d7a8806000180c0060c540500010000001f440000800000006309a20030401301831301400040000007b5100020568181c801600020000003da6800100000000c612d3006081560607560580008000000f6960004000000d2924b4a01827d4fca894fc67d2e7e7d0e7d7cf67b7cde797cd6777cce74892e6e890e6d88f66b88de6988d66788ce647cbd077cb50488bd0388b5007ca3397c93377c8b344c2b3388a33188932f888b2c582b2b2078961878954c689058688e4c508d58508b1840270021000d905436000100a05a009859000100000163f58130001809c33000080026447f585a0260004000000000387eb0660003000000000347eb0b200030520f90518f7000200000347578260003000000000387570ed000319103e0001000001af570eb04e000800000009911eaa07e09860a003009f02c00040000007eac04c000600000009e11ead04e030600000000035ead014000601d16801c16400040000058eaa04c000600b1da00020000068eaa168000600000000068eaa164000600000000007ea404c000600000000007ea204c000609803038602c00040000007ea904c0006000001aa124ea8018200000000003e88026000304a8181c301600020000003e898260003000000a249268900c1024c0c0e180b00010000001ed4013000180000000c612d4406080000000000f698098000c12006070c0580008000000f69e098000c000001a724969c030410e1f2000200000688aa0d8000600000000070905156000600c2760002000f9308a507c000660b1640002000005893b14a0006000000000708ed16800060090160002000f9058a207c20000000164345100b1261d9ca61599ac1d98ac159590104b0c104a900c480c0c471008468c084580041380058006c82a1b01f800182180c0e180b00010000001ed401f0260004000007e000350101842c1f80c000300000000003da503e000300000000003c55027000300001461b2240104f08c5186c04e300000004f01c5002710400060000059000050c0004b4000430000380030000001e1b01f827000400000d80002e010164343600b0003,0x1eaf00001e0600001dbd00001d5100001cfd00001c8400001c3000001bb700001b4b00001ad200001a6600001a120000199900001950000018d700001883000018170000179e00001755000016dc000016630000161a000015a100001558000011f700001173000010fc000010a80000105400000fd000000f7c00000f0500000eb100000e2d00000dd900000d8500000d0100000c9500000c4100000bed00000b9900000b1500000acc00000a78000009f4000009ab00000927000008de0000088a00000806000007bd00000751000006fd0000069100000625000005d10000057000000527000003cb0000033c000002c80000027400000220000001ac000001630000007400000000⟩)
+def counterTable : Table Nat :=
+(.leaf 0x420000210800008400084200042000021080010800008420004200002108001088000040000421000010000108400084200042000021080000800008400004210000100001084000002000421000211000108400084200042100021080010880008440000210002110000084000842000421000210800108400084200042100021080000840008420004210000108001084000042000421000210800000800080400040200020100010080008040000020000010001088000804000421000201000100c0000040000030002010001)
+def codes (i : Nat) : Nat :=
+  let b := blocks.get (i / 128)
+  PackedRawNatGrowth.drop
+    (PackedRawNatGrowth.take 32 (PackedRawNatGrowth.drop (32*(i%128)) b.offsets)) b.payload
+def counters (i : Nat) : Nat :=
+  PackedRawNatGrowth.take 25 (PackedRawNatGrowth.drop (25*(i%128)) (counterTable.get (i/128)))
+def rawNodes (i : Nat) := PackedRawNatGrowth.decodeNode widths (codes i)
+
+def leafTable : Table (List Nat) :=
+(.leaf [])
+def rawLeaves := leafTable.get
+
+def leaves : Fin leafCount → List (Fin cellCount) := decodedLeaves rawLeaves
+def quota : Nat → Nat
+  | 0 => 1
+  | 1 => 0
+  | 2 => 0
+  | 3 => 7
+  | 4 => 2
+  | _ => 0
+
+def nodeTest (i : Nat) : Bool :=
+  SubsumedCounterReplay.check widths cellCount 1024 36 leafCount nodeCount
+    Papers.RationalityTen.RootedCaches.RootedSevenTwoSix13.candidateMasks Papers.RationalityTen.RootedCaches.RootedSevenTwoSix13.badMasks
+    Papers.RationalityTen.RootedCaches.RootedSevenTwoSix13.kindMasks Papers.RationalityTen.RootedCaches.RootedSevenTwoSix13.keys Papers.RationalityTen.RootedCaches.RootedSevenTwoSix13.fastKind quota
+    Papers.RationalityTen.FacetUniverses.RootedSevenTwoSix13.Generators.FastWords.rawMaps rawLeaves codes counters i
+theorem nodeTest_sound (i : Nat) (h : nodeTest i = true) :
+    nodeBounds cellCount 1024 36 leafCount nodeCount (rawNodes i) = true ∧
+      SubsumedRawGrowth.nodeCheck Papers.RationalityTen.RootedCaches.RootedSevenTwoSix13.candidateMasks Papers.RationalityTen.RootedCaches.RootedSevenTwoSix13.badMasks
+        Papers.RationalityTen.RootedCaches.RootedSevenTwoSix13.kindMasks Papers.RationalityTen.RootedCaches.RootedSevenTwoSix13.keys Papers.RationalityTen.RootedCaches.RootedSevenTwoSix13.fastKind quota
+        Papers.RationalityTen.FacetUniverses.RootedSevenTwoSix13.Generators.FastWords.rawMaps rawLeaves rawNodes i = true :=
+  SubsumedCounterReplay.check_sound widths cellCount 1024 36 leafCount nodeCount
+    Papers.RationalityTen.RootedCaches.RootedSevenTwoSix13.candidateMasks Papers.RationalityTen.RootedCaches.RootedSevenTwoSix13.badMasks
+    Papers.RationalityTen.RootedCaches.RootedSevenTwoSix13.kindMasks Papers.RationalityTen.RootedCaches.RootedSevenTwoSix13.keys Papers.RationalityTen.RootedCaches.RootedSevenTwoSix13.fastKind quota
+    Papers.RationalityTen.FacetUniverses.RootedSevenTwoSix13.Generators.FastWords.rawMaps rawLeaves codes counters i h
+def leafTest (i : Nat) : Bool :=
+  listBounds cellCount (rawLeaves i) &&
+    (WitnessGrowthDAG.closedCheck FacetUniverses.RootedSevenTwoSix13.ridgeList
+      ((rawLeaves i).map (Fin.ofNat cellCount)) &&
+      decide (((rawLeaves i).map (Fin.ofNat cellCount)).Nodup))
+
+end Papers.RationalityTen.RootedForests.RootedSubsumedForest0477
