@@ -29,7 +29,7 @@ Four companion results complete Theorem 1.1 and its immediate extensions:
 | `signed_degree_independent` | The degree of every signed integral boundary cycle is independent of the generic direction. |
 | `theorem_3_1_any_orientation` | The characterization is independent of the chosen orientation convention. |
 
-The definitions can be read in `AllowedBlocks.lean` and `FanGluing.lean`. The principal statements are in `MainFanTheorems.lean` and `FanConnectivity.lean`.
+The definitions can be read in `source/unimodular/allowed_blocks.lean` and `source/unimodular/fan_gluing.lean`. The principal statements are in `source/unimodular/main_fan_theorems.lean` and `source/unimodular/fan_connectivity.lean`.
 
 ## Deep monotonicity and the exact minor class
 
@@ -55,7 +55,7 @@ It quantifies over every Mathlib matroid on an arbitrary label type. A matroid i
 
 The constructive refinement `groundSeriesParallel_cubical_realization` gives dimension `m` for a nonempty series-parallel matroid with `m` ground elements. Its polytope is a combinatorial cube with `2m` facets and `2^m` vertices; its fan has `2m` rays and `2^m` maximal cones. The integral graphic realization also retains the original signed vectors and excludes an ordinary `K₄` graph minor. These results establish Theorem 6.6 and Proposition 6.7 as well.
 
-Start with `OriginalPolytopeNetworks.lean`, `OriginalPolytopeMatroid.lean`, and `SeriesParallelClassification.lean`.
+Start with `source/continuation/geometry/original_polytope_networks.lean`, `source/continuation/geometry/original_polytope_matroid.lean`, and `source/unimodular/series_parallel_classification.lean`.
 
 ## Correspondence with further paper results
 
