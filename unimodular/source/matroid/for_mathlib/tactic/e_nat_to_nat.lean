@@ -1,0 +1,253 @@
+module
+
+public meta import Mathlib.Tactic.Ineq
+public meta import Mathlib.Tactic.ENatToNat
+public import Mathlib.Data.Nat.Cast.Order.Basic
+
+public meta section
+
+open Lean Meta Mathlib.Tactic Qq
+
+partial def findENatAtoms (e : Q(ENat)) : AtomM Unit := do
+  match e with
+  | ~q($a + $b) => findENatAtoms a; findENatAtoms b
+  | ~q($a - $b) => findENatAtoms a; findENatAtoms b
+  | ~q($a * $b) => findENatAtoms a; findENatAtoms b
+  | ~q(@OfNat.ofNat _ $n $_i) => return ()
+  | ~q(Nat.cast $n) => return ()
+  | ~q(⊤) => return ()
+  | _ => let _ ← AtomM.addAtom e
+
+@[inline] def Lean.Expr.or? (p : Expr) : Option (Expr × Expr) :=
+  p.app2? ``Or
+
+-- Parse an expr that is a logical combination of (in)equalities
+partial def parse (e : Expr) : AtomM Unit := do
+  try
+    let (_, _, α, a, b) ← e.ineqOrNotIneq?
+    if (← isDefEq α q(ENat)) then
+      findENatAtoms a
+      findENatAtoms b
+  catch _ =>
+  let e' ← whnfR e
+  match e'.and? with
+  | some (a,b) => parse a; parse b; return
+  | none =>
+  match e'.or? with
+  | some (a,b) => parse a; parse b; return
+  | none =>
+  match e'.not? with
+  | some a => parse a; return
+  | none =>
+  match e'.arrow? with
+  | some (a,b) => parse a; parse b; return
+  | none =>
+  match e'.iff? with
+  | some (a,b) => parse a; parse b; return
+  | none =>
+  return
+
+-- def parseIneq (e : Expr) : AtomM Unit := do
+--   try
+--     let (_, α, a, b) ← e.ineq?
+--     if (← isDefEq α q(ENat)) then
+--       findENatAtoms a
+--       findENatAtoms b
+--   catch _ =>
+--     let some e := (← whnfR e).not? | return ()
+--     try
+--       let (_, α, a, b) ← e.ineq?
+--       if (← isDefEq α q(ENat)) then
+--         findENatAtoms a
+--         findENatAtoms b
+--     catch _ => return
+--   return
+
+def atoms (g : MVarId) : AtomM (Array Expr) := g.withContext do
+  for hyp in (← getLCtx) do
+    parse (← inferType hyp.toExpr)
+  -- let g' ← g.getType
+  -- logInfo m!"{g'}"
+  parse (← g.getType)
+  let r ← get
+  return r.atoms
+
+-- this should exist in the library
+def Array.zipLeft {α : Type} (l : Array α) (ns : Array Name) : Array (α × Option Name) :=
+  let out := l.toList.zipLeft ns.toList
+  out.toArray
+
+def generalizeAtoms (ns : Array Name) (g : MVarId) : MetaM MVarId := do
+  let atoms ← AtomM.run .reducible (atoms g)
+  let atoms₀ := atoms.filter fun e ↦ !e.isFVar
+  let atomsWithNames := atoms₀.zipLeft ns
+  let args : Array GeneralizeArg := atomsWithNames.map fun (e, n) ↦ { expr := e, xName? := n }
+  let (_, _, g') ← g.generalizeHyp args ((← getLocalHyps).map (·.fvarId!))
+  return g'
+
+elab "generalize_enats" " with" e:(ppSpace colGt ident)* : tactic => do
+  let names := e.map TSyntax.getId
+  Elab.Tactic.liftMetaTactic' (generalizeAtoms names)
+
+elab "generalize_enats" : tactic => do
+  Elab.Tactic.liftMetaTactic' (generalizeAtoms #[])
+
+-- this might give weird errors if the `generalize_enats` fails
+macro "enat_to_nat!": tactic =>
+  `(tactic | (generalize_enats; enat_to_nat))
+
+macro "eomega": tactic =>
+  `(tactic | (generalize_enats; enat_to_nat <;> omega))
+
+-- this might give weird errors if the `generalize_enats` fails
+macro "enat_to_nat!" " with" e:(ppSpace colGt ident)* : tactic =>
+  `(tactic | (generalize_enats with $e*; enat_to_nat))
+
+-- Missing lemmas from the `enat_to_nat` simpset.
+attribute [enat_to_nat_top] not_true add_top and_true true_and or_false false_or imp_false
+  false_iff true_iff iff_true iff_false true_or or_true Nat.cast_le Nat.cast_lt false_imp_iff
+  true_imp_iff false_and and_false
+
+-- /-! ### Tests -/
+variable {f : ℤ → ℕ∞}
+
+example {a : ℤ} (h : 3 ≤ f a) : f a ≠ 0 := by
+  enat_to_nat!; omega
+
+example {a b c : ℕ∞} {x : ℤ} (h : 2 * (f x + b) < f x) : a ≠ ⊤ := by
+  enat_to_nat! <;> omega
+
+example {f : ℤ → ℕ∞} {a b e : ℤ} (h : 2 * f e + f a + f b ≤ f a) : 2 * f a ≤ 3 * f a + f b := by
+  enat_to_nat!; omega
+
+example {P : ℕ∞ → Prop} {a b c : ℕ∞} (ha : ¬ P a) (hab : a ≤ b) (hbc : b ≤ c) : a ≤ c := by
+  enat_to_nat!
+  omega
+
+example (a b c d : ℕ∞) (x : ℤ) (hab : a ≤ b) (hbc : 2 * f x + d < c) : f x ≠ ⊤ := by
+  enat_to_nat!
+
+example {a : ℤ} : 0 ≤ f a := by
+  enat_to_nat!
+  omega
+
+example {a b : ℤ} (h1 : ¬ (f a ≠ 0 ∧ 1 ≤ f a)): 0 ≤ f b := by
+  enat_to_nat!
+  omega
+
+/-! ### Replacing `enat_to_nat`. -/
+
+
+-- open Qq Lean Elab Tactic Term Meta in
+-- elab "foo" : tactic => do
+--   let g ← getMainGoal
+--   g.withContext do
+--     _
+
+-- open Qq Lean Elab Tactic Term Meta in
+-- /-- Finds the first `ENat` in the context and applies the `cases` tactic to it.
+-- Then simplifies expressions involving `⊤` using the `enat_to_nat_top` simp set. -/
+-- elab "cases_first_enat" : tactic => focus do
+--   let g ← getMainGoal
+--   g.withContext do
+--     let ctx ← getLCtx
+--     let decl? ← ctx.findDeclM? fun decl => do
+--       if ← (isExprDefEq (← inferType decl.toExpr) q(ENat)) then
+--         return Option.some decl
+--       else
+--         return Option.none
+--     let some decl := decl? | throwError "No ENats"
+--     let isInaccessible := ctx.inaccessibleFVars.find? (·.fvarId == decl.fvarId) |>.isSome
+--     if isInaccessible then
+--       let name : Name := `enat_to_nat_aux
+--       setGoals [← g.rename decl.fvarId name]
+--       let x := mkIdent name
+--       evalTactic (← `(tactic| cases $x:ident using ENat.recTopCoe))
+--     else
+--       let x := mkIdent decl.userName
+--       evalTactic
+--         (← `(tactic| cases $x:ident using ENat.recTopCoe with | top => _ | coe $x:ident => _))
+--     evalTactic (← `(tactic| all_goals try simp only [enat_to_nat_top] at *))
+-- /-
+-- `enat_to_nat` shifts all `ENat`s in the context to `Nat`, rewriting propositions about them.
+-- A typical use case is `enat_to_nat; omega`. -/
+-- macro "enat_to_nat" : tactic => `(tactic| focus (
+--     (repeat' cases_first_enat) <;>
+--     (try simp only [enat_to_nat_top, enat_to_nat_coe] at *)
+--   )
+-- )
+--
+
+/-! ### Tinkering -/
+
+
+-- open Qq Lean Elab Tactic Term Meta in
+-- def foo (toRecurse : List Expr) (g : MVarId) : TacticM MVarId := g.withContext do
+--   Lean.logInfo m!"input : {toRecurse}"
+--   match toRecurse with
+--   | [] => return g
+--   | a :: vars =>
+--     Lean.logInfo m!"now : {a}, {vars}"
+--     let some n := a.name? | return g
+--     let x := mkIdent n
+--     evalTactic
+--       (← `(tactic | have h : 0 = 0 := rfl))
+--     evalTactic
+--       (← `(tactic| cases $x:ident using ENat.recTopCoe with | top => _ | coe $x:ident => _))
+--     foo vars g
+
+-- open Qq Lean Elab Tactic Term Meta in
+-- def bar (g : MVarId) : TacticM MVarId := g.withContext do
+--   let atoms ← AtomM.run .reducible (atoms g)
+--   -- Lean.logInfo m!"{atoms}"
+--   let atoms₁ := atoms.filter Expr.isFVar
+--   let g' ← foo atoms₁.toList g
+--   return g'
+
+-- open Qq Lean Elab Tactic Term Meta in
+-- elab "test'" : tactic => do
+--   let g ← getMainGoal
+--   g.withContext do
+--     let g' ← bar g
+
+
+--   evalTactic (← `(tactic| have h : 0 = 0 := rfl))
+
+
+
+-- example {a b : ℕ∞} (hab : a ≤ b)  : 0 ≤ a := by
+--   test'
+
+
+/-! ### Oddities -/
+
+-- WTF : from `Matroid.Connectivity.Higher`. Look into this.
+
+-- lemma TutteConnected.contract {C : Set α} (h : M.TutteConnected (k + M.eRk C + 1))
+--     (hnt : 2 * (k + M.eRk C) < M.E.encard + 1) (e : α) : (M ／ C).TutteConnected (k + 1) := by
+--   obtain rfl | hne := eq_or_ne k 0
+--   · simp
+--   wlog hCE : C ⊆ M.E generalizing C with aux
+--   · specialize aux (C := C ∩ M.E)
+--     grw [M.eRk_mono inter_subset_left, imp_iff_right inter_subset_right,
+--       contract_inter_ground_eq] at aux
+--     exact aux h hnt
+--   have hnt' := Order.le_of_lt_add_one hnt
+--   have hgirth := h.le_girth hnt'
+--   have hC : M.Indep C := by
+--     apply indep_of_eRk_add_one_lt_girth _ hCE
+--     enat_to_nat! <;> omega
+--   rw [tutteConnected_iff_verticallyConnected_girth]
+--   refine ⟨(h.verticallyConnected.mono ?_).contract, ?_⟩
+--   · grw [add_right_comm]
+--   · have hle := hgirth.trans (M.girth_le_girth_contract_add C)
+--     · rwa [add_right_comm, WithTop.add_le_add_iff_right] at hle
+--       generalize M.eRk C = x at *
+--       clear h hle hC hgirth hnt' hCE hne e C
+--       generalize M.E.encard = y at *
+--       enat_to_nat
+--       -- enat_to_nat is behaving absurdly here : `extract_goal` makes it work fine.
+--       Something fishy.
+--       sorry
+--       sorry
+--   sorry

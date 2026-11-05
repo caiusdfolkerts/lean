@@ -1,6 +1,6 @@
 # Barycentric invariance and universal parameters for face rings
 
-This project formalises the principal results of Caius Folkerts’s *Barycentric invariance and universal parameters for face rings*. It covers Theorems 1.1–1.3 and 9.4. The stronger naturality assertion in Theorem 9.1 is outside this formalisation.
+This project formalises the principal results of Caius Folkerts’s *Barycentric invariance and universal parameters for face rings*. It covers Theorems 1.1–1.3 and 9.4.
 
 ## Verification
 
@@ -23,3 +23,5 @@ Unless otherwise qualified, declaration names use the namespace `FourPapers.Univ
 | Theorem 1.2 | Actual derived Tor, absolute and relative filtrations, both products, equivariance and field representation classes; `source/theorem12.lean`. |
 | Theorem 1.3 | Both directions of the factorial-unit criterion, including nonisomorphism without that hypothesis; `source/theorem13.lean`. |
 | Theorem 9.4 | The exact factorial scalar ideal, coherent comparison module and first-cohomology obstruction; `source/theorem94.lean`. |
+
+I’m still working on formalising the stronger naturality assertion in Theorem 9.1. I plan to release this addition in the next few days.

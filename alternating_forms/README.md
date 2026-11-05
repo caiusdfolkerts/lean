@@ -1,6 +1,6 @@
 # Hilbert series of exterior algebras modulo two quadrics
 
-This project formalises selected results of Caius Folkerts’s *Hilbert series of exterior algebras modulo two quadrics*. Theorems 1.1 and 1.3 and the specified algebraic results in Sections 5 and 7 are included. The general geometric statement of Theorem 1.2, the ring identifications of Theorem 4.1, and the sheaf-cohomology assertions of Section 6 remain incomplete.
+This project formalises selected results of Caius Folkerts’s *Hilbert series of exterior algebras modulo two quadrics*. Theorems 1.1 and 1.3 and the specified algebraic results in Sections 5 and 7 are included.
 
 ## Verification
 
@@ -21,7 +21,7 @@ Unless otherwise qualified, declaration names use `PaperVerification.Alternating
 | --- | --- |
 | Theorem 1.1, pp. 1–2 | `paper_theorem_1_1`, `paper_theorem_1_1_hilbertSeries` |
 | Theorem 1.1, combined reader-facing form | `PaperVerification.MainStatements.genericHilbertSeriesAndVanishing` |
-| Theorem 1.3, complete combined statement | `paper_theorem_1_3_fully_graded` |
+| Theorem 1.3, combined statement | `paper_theorem_1_3_fully_graded` |
 | Theorem 1.3, exterior basis, p. 3 | `paper_theorem_1_3_exterior_basis` |
 | Theorem 1.3, algebraic and section-ring clauses | `paper_theorem_1_3`, `paper_theorem_1_3_complete_section_ring` |
 | Proposition 5.1, p. 16 | `paper_proposition_5_1` |
@@ -33,3 +33,5 @@ Unless otherwise qualified, declaration names use `PaperVerification.Alternating
 | Theorem 7.1, p. 20 | `paper_theorem_7_1_exterior_basis`, `paper_theorem_7_1_initial_ideal`, `paper_theorem_7_1_initial_ideal_one_plane`, `paper_theorem_7_1_full_hilbert` |
 | Integral extension after Theorem 7.1, p. 20 | `IntegralOdd.paper_theorem_7_1_integral_full_basis`, `IntegralOdd.paper_theorem_7_1_integral_arbitrary_base_change`, `IntegralOdd.paper_theorem_7_1_integral_arbitrary_base_change_apply` |
 | Theorem 7.2, pp. 20–21 | `paper_theorem_7_2` |
+
+I’m still working on formalising the general geometric statement of Theorem 1.2, the ring identifications of Theorem 4.1, and the sheaf-cohomology assertions of Section 6. I plan to release these additions in the next few days.

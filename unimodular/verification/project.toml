@@ -1,0 +1,24 @@
+name = "unimodular_verification"
+version = "0.1.0"
+defaultTargets = ["Verified", "Audit"]
+moreLeanArgs = ["-j1", "-M8192", "-DElab.async=false", "-DElab.inServer=false", "-Ddebug.skipKernelTC=false", "-DmaxErrors=40"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "1626233321dc564d20355d8f9d4f22e114d68600"
+
+# Register the supporting project modules.
+# Mathlib is supplied by the pinned upstream dependency.
+[[lean_lib]]
+name = "SupportingSources"
+roots = ["Unimodular", "Matroid", "BondalThomsen", "TauCeti", "Continuation", "Recovery"]
+
+# Verified theorem interface and its statement/axiom audit.
+[[lean_lib]]
+name = "Verified"
+globs = ["Verified"]
+
+[[lean_lib]]
+name = "Audit"
+globs = ["Audit"]
