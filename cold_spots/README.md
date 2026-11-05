@@ -1,6 +1,6 @@
 # Universal cold spots of E8 and related lattices
 
-This project formalises the principal results of Caius Folkerts’s *Universal cold spots of E8 and related lattices*. The supplementary affine-isometry and Weyl-orbit remarks are outside its scope.
+This project formalises the principal results of Caius Folkerts’s *Universal cold spots of E8 and related lattices*. It also proves the affine-isometry orbit claims for $D_n^+$ and $E_7^*$ and the affine Weyl orbit claim for $E_8$.
 
 ## Verification
 
@@ -11,7 +11,7 @@ lake exe cache get
 lake build
 ```
 
-The default build includes the mathematical source and checks that the imported project theorems depend only on `propext`, `Classical.choice`, and `Quot.sound`. Downloading the library cache is not itself a proof check.
+The default build includes the mathematical source and checks all project declarations, including private definitions, for proof placeholders, project axioms and unsafe or partial code. The permitted transitive axioms are `propext`, `Classical.choice`, and `Quot.sound`. Downloading the library cache is not itself a proof check.
 
 ## Main results
 
@@ -32,3 +32,5 @@ Unless qualified otherwise, the lattice declarations use `PaperVerification.Cold
 | Section 8.3 and (32) | `e6_gaussian_minimum`; `e6_cold_spot_description`; `e6_deep_hole_description` |
 | Introduction tables | `lattice_covering_radius_table`; `lattice_translation_class_table` |
 | Corollary 1.2 | `lattice_corollary_1_2`; `lattice_corollary_1_2_extended` |
+| Affine-isometry orbits | `dn_deep_holes_single_affine_orbit`; `e7_deep_holes_single_affine_orbit` |
+| Affine Weyl orbit of E8 holes | `e8_deep_holes_single_affine_weyl_orbit` |

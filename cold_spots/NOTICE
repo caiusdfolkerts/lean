@@ -2,3 +2,5 @@ Copyright 2026 Caius Folkerts. Original code and documentation are licensed unde
 
 
 Publication preparation, 5 November 2026: module filenames and imports were normalised, verification output paths were moved under .lake, and the documentation was adapted to Markdown. Existing third-party copyright and attribution notices are retained in the source and licenses directory.
+
+The release also includes proofs of the Dn+ and E7* affine-isometry orbit statements and the E8 affine Weyl orbit statement. These extensions and their full declaration check are in source/; the original base proof modules are unchanged.

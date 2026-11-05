@@ -11,11 +11,11 @@ rev = "56a005855ea17e0b0958f73ec801ae140b0a1679"
 [[lean_lib]]
 name = "proof"
 srcDir = "source"
-roots = ["paper_verification", "paper_verification.lattice001", "paper_verification.lattice002", "paper_verification.lattice003", "paper_verification.lattice004", "paper_verification.lattice005", "paper_verification.lattice006", "paper_verification.lattice007", "paper_verification.lattice008"]
+roots = ["release_all", "e7_orbits", "coordinate_orbits", "e8_orbits", "paper_verification", "paper_verification.lattice001", "paper_verification.lattice002", "paper_verification.lattice003", "paper_verification.lattice004", "paper_verification.lattice005", "paper_verification.lattice006", "paper_verification.lattice007", "paper_verification.lattice008"]
 allowImportAll = true
 
 [[lean_lib]]
 name = "verification"
 srcDir = "source"
-roots = ["verification.check_1"]
+roots = ["verification"]
 allowImportAll = true
