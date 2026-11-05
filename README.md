@@ -31,3 +31,4 @@ Install Elan and a recent version of Git before following the verification comma
 | `cubical_indecomposability` | A counterexample to Smilansky’s conjecture |
 | `unimodular` | Unimodular configurations and complete fans |
 | `singular_vector_spans` | Singular-vector spans beyond boundary format |
+| `stress_flex` | Stress–flex orthogonality on spheres and a torus obstruction |
