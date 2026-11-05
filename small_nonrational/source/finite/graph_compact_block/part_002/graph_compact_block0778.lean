@@ -1,0 +1,57 @@
+module
+prelude
+import GraphInputsRow30Part00050Cases
+public import GraphCompactBlocks
+
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0778
+open Papers.RationalityTen ConcreteGrowth GraphCaseCertificate GraphFiniteDispatch FiniteChecks
+
+private def results : Table {key : GraphRouteSelector.Key // Result key} :=
+(.branch 9
+ (.branch 4
+ (.branch 2
+ (.branch 1
+ (.leaf ⟨(30, 30516027851280), Papers.RationalityTen.CompactReplay.GraphInputsRow30Part00050.record000_result⟩)
+ (.leaf ⟨(30, 30717606234120), Papers.RationalityTen.CompactReplay.GraphInputsRow30Part00050.record001_result⟩))
+ (.branch 3
+ (.leaf ⟨(30, 30717623011328), Papers.RationalityTen.CompactReplay.GraphInputsRow30Part00050.record002_result⟩)
+ (.leaf ⟨(30, 30717623271424), Papers.RationalityTen.CompactReplay.GraphInputsRow30Part00050.record003_result⟩)))
+ (.branch 6
+ (.branch 5
+ (.leaf ⟨(30, 30787452838144), Papers.RationalityTen.CompactReplay.GraphInputsRow30Part00050.record004_result⟩)
+ (.leaf ⟨(30, 30787452895264), Papers.RationalityTen.CompactReplay.GraphInputsRow30Part00050.record005_result⟩))
+ (.branch 7
+ (.leaf ⟨(30, 30787485868288), Papers.RationalityTen.CompactReplay.GraphInputsRow30Part00050.record006_result⟩)
+ (.branch 8
+ (.leaf ⟨(30, 30787485925408), Papers.RationalityTen.CompactReplay.GraphInputsRow30Part00050.record007_result⟩)
+ (.leaf ⟨(30, 30787555106848), Papers.RationalityTen.CompactReplay.GraphInputsRow30Part00050.record008_result⟩)))))
+ (.branch 13
+ (.branch 11
+ (.branch 10
+ (.leaf ⟨(30, 30788628844576), Papers.RationalityTen.CompactReplay.GraphInputsRow30Part00050.record009_result⟩)
+ (.leaf ⟨(30, 30789649597184), Papers.RationalityTen.CompactReplay.GraphInputsRow30Part00050.record010_result⟩))
+ (.branch 12
+ (.leaf ⟨(30, 30789658050560), Papers.RationalityTen.CompactReplay.GraphInputsRow30Part00050.record011_result⟩)
+ (.leaf ⟨(30, 30789685415968), Papers.RationalityTen.CompactReplay.GraphInputsRow30Part00050.record012_result⟩)))
+ (.branch 15
+ (.branch 14
+ (.leaf ⟨(30, 30789724110848), Papers.RationalityTen.CompactReplay.GraphInputsRow30Part00050.record013_result⟩)
+ (.leaf ⟨(30, 30790126682240), Papers.RationalityTen.CompactReplay.GraphInputsRow30Part00050.record014_result⟩))
+ (.branch 16
+ (.leaf ⟨(30, 30790126714880), Papers.RationalityTen.CompactReplay.GraphInputsRow30Part00050.record015_result⟩)
+ (.branch 17
+ (.leaf ⟨(30, 30790230478880), Papers.RationalityTen.CompactReplay.GraphInputsRow30Part00050.record016_result⟩)
+ (.leaf ⟨(30, 30792005722368), Papers.RationalityTen.CompactReplay.GraphInputsRow30Part00050.record017_result⟩))))))
+
+private theorem keys_checked : Interval (fun i => decide ((results.get i).val =
+    GraphRoutes.compactKeys.entry (25139 + i))) 0 18 :=
+  interval_of_check _ 0 18 (by decide +kernel)
+
+public theorem complete : Block 25139 25157 :=
+  block_of_table results 25139 18 keys_checked
+
+#print axioms complete
+end Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0778

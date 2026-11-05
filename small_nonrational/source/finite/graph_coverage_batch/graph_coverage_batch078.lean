@@ -1,0 +1,412 @@
+module
+prelude
+public import IncreasingEmbedding
+
+@[expose] public section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.GraphCoverageDescriptions.GraphCoverageBatch078
+open Papers.RationalityTen GraphCandidateCoverage
+
+def candidate07800 : Description := ⟨99, ⟨13, 0xa3650867ed0fe859c231edcf3c7853bc5d7ee9872c3899c1addb6e13685ad2d5069baa854449d7454a2490c082e40a9f8cf0475039b9c14dd86cb3509a00cce64e29513e098c4ad23d916888a4141f10f2472e37e1a68c585fa2e415b0a7450826b12908e44402070e8867c30c16d09e84902160f206e82bc13606e034017c08003601980c80620300138098048023011006c02400b00500240100060028010006002⟩⟩
+theorem candidate07800_checked : Checked candidate07800 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17532593506304 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07801 : Description := ⟨102, ⟨13, 0x519a8373fa87dc2c211ef907b8bcfde1aef47613a5dd26e5e716384dbc2dc86ceb5a9aa2d38512a7693728a9449218105c8153f19ec0efe74d39a1c08dd26833351944a7c52727a930c95447822290507c43c91cb8df86302ff1730b285722a014389b84aa23c11188283d21d00df867830a16c0ad84e8242108077837813609103c01b8080036018009c04c024011808804001f00f0074036012008803c01c00d0058028012008⟩⟩
+theorem candidate07801_checked : Checked candidate07801 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17532610150912 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07802 : Description := ⟨103, ⟨13, 0xa31d0621f10ad786bb09d2ee7e73bb979c8ae2c709b7e9bc2dc86ceb659afad5269cb4814569e04daa0b8fc67a93cf1e14ed875339d1c84e106ef3641af4d4867d332192c98647821f10cc8344011f40f3c76c39d1c20d746a43391890be45c02ca15c8a8050e26e12a88f044620a0f4876037e19e0c285b02cc14d09a046c2040e9057826c134091047023411807803b81b80d606a0348100060027012008c04401b009003c01c00d⟩⟩
+theorem candidate07802_checked : Checked candidate07802 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17549236371972 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07803 : Description := ⟨112, ⟨13, 0x14eea6552628cd44da0dd00a30114688a43ee1930b084bbe25e08eb97503a3dc14dbf6d33649aecd596a0349d534a89538295d47ca2550627cd3b49c1453a2490c082e40a9f8cf947ad3cc1d98e6871b3749b40d6a6a034199a8ca253d287137098649123c117c8864141f10f2472e37e1b28d3866231817f8b985a225210387b83a41bb0aa84f81b605c02d81680ae05602a812407e026012008c04402100f807803a010007803801a00b00500240100040018008002000⟩⟩
+theorem candidate07803_checked : Checked candidate07803 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17557847343104 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07804 : Description := ⟨107, ⟨13, 0xa33506e80515f896c3ee1c50b084bbe0de08eb97503a11caae237053761b7eda66c7b565a80d27544a95d44aa0c4ed270515a82e3f19f28f5c77f3a69cd0e046e93681ae4d0666a32894f8a4e4f526192a88f045f21690507f63e21e48ec072e37e1b28d286302ff1730b3853a26b129088040e1ee0ea06f02ae0db03b81700b605a02c015c0ac05501f8090046022010007c03c01d00d804401e00e006803001600a004802000a0040018008002000⟩⟩
+theorem candidate07804_checked : Checked candidate07804 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17566441406464 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07805 : Description := ⟨105, ⟨13, 0x28cd41ba0143ee1610977bfbda1e6cf04775bae5d40e8672ab88dc14dd86dfb699ab2d40693a8953b49c1454a2490c082e40a9f8cf947b03bf9d34e687023749b40d0666a32894f8a4e4f526192a88f045f22290507c43c91cb8df86ca31817f8b9856c29d14209ac4a4239110081c3dc1bc0ac036c0d005e02e016c0b405802b81580aa0300130090046022010007c03c01d00d804401e00e006802c014009004001800a0040018008002000⟩⟩
+theorem candidate07805_checked : Checked candidate07805 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17566969888768 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07806 : Description := ⟨107, ⟨13, 0xa3650868110f8856c251e08eb97503a09ce2e5871fb899c1adf46edb709b52d906bbb559a7ad24511275d37c82e3f19f28f5879b3c11da4ea073738f1c14dd86d335d1a84d00667327130c8f045f21690507f63e21e48ec072e37e1b28d306662b614e8a104d625211c888040e1ee0ea86f02ac13d092042c1e40d903b81ac0d406903401700b605a01f80cc064031018009004602200d803c01c00d006002c014009004001c00c005002000c004001⟩⟩
+theorem candidate07806_checked : Checked candidate07806 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17583596240896 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07807 : Description := ⟨102, ⟨13, 0x519a83740287dc2c212ef0475cba81cdce5571e388dc14df16ec36fdb4cd596a0349d44a9da4e0a0b8fc67ca3cc1dfcecc74d39a1c6ce046e93681a0ccd465126191e08be42d20a0fec7c43c91d80e5c6fc36518c0bfc5cc2b614e8a104d625211c888040e1ee0ea86f01b609a03b81a00b805b02d01640b005702b015407e030012008c044021010007c03c01d00d803c01c00d006002c014009004001800a0040018008002000⟩⟩
+theorem candidate07807_checked : Checked candidate07807 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17583612887040 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07808 : Description := ⟨77, ⟨13, 0x304f530a8a526a889342978c91638b164897c3ea1b30387dc3c19b4cd42636306d7feb6f577ab4d51ca59512280d2ac8db43d20c0ff674c3809b40cd85ec2d315d09824781e40d9463230114f89a04a221d0f706883140b204601a40b405602a81500a003101600a404401e00e807002c00f00680240100070018008002000⟩⟩
+theorem candidate07808_checked : Checked candidate07808 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17706415915264 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07809 : Description := ⟨72, ⟨13, 0x17d3bdbd676965430919451e18afb1768b885ae8c5c60a2d6563cb08541a8193ae96247c23890c48304091e1cea473637e1a08bee58d2bb93dc98a4a720e0f9c79639118b89944341ee0c504e421a09304601c00d206403081680b005502a014409004301980c404401d00e00340100070018008002000⟩⟩
+theorem candidate07809_checked : Checked candidate07809 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17706617225344 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07810 : Description := ⟨78, ⟨13, 0x61d7047778b7f5ab2c034c6a0b4e2662f2938e4465a2951008594259fa8fa27ab3c31d7cea26f5b6e5aaad29659b10577aaf256029d14549dc4e023f919888041b1fa0f9871537199fcca657122e8d9066430017407b43761890b883381920bd054826412809204701f40aa0540228074038017009004001c0080038008002000⟩⟩
+theorem candidate07810_checked : Checked candidate07810 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17748219478336 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07811 : Description := ⟨88, ⟨13, 0x1875c11dde2dff6a9aff56daaad527a80d32e92d46ba0ed00671931694b47b22810ab8033e85e48f0b75dba95cecdeb6de3561a52cb3620aef55e4ac053a28a93b89c04782110f9076b38a9b3ccd66532fe96a0ae6561283936099647d23090606f033218a0ba04d81eb0dd861c2e20ce06482f414e09403f81bc0d605502a011404e02300e80700200080038008002000⟩⟩
+theorem candidate07811_checked : Checked candidate07811 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17748220518720 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07812 : Description := ⟨73, ⟨13, 0x3117827be3d4c29354448e2c4be1b2e226d335099a0c6c6082dbd648aef55d2a394b2a24501a7512ac91046321e90607e03a61b40cd85eb2d2956ca1e4c523a8f846ca30111007b837818a09f831c16408c03481900b405602a81500a004101880b004401e00e807002e00d004802000e0050018008002000⟩⟩
+theorem candidate07812_checked : Checked candidate07812 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17775135375616 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07813 : Description := ⟨78, ⟨13, 0x6422f4362aa3dcffe74d33f97a4afe51522c8c84252070f9c7503875b4cd1963730496b6b0452da8fd40c967488219d0968123a31c08d3c66630917e4b7452927e131c94e47720b0fa479a37d17d8a7c4e4256103061027810704b023411806a034816c0b405602a815009c043018808804001d00e004c01a0080038008002000⟩⟩
+theorem candidate07813_checked : Checked candidate07813 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17777551310880 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07814 : Description := ⟨78, ⟨13, 0x622efab714b2f54a689332c96bc716226fd178fb8d9bd6da66a13341886bfc5b7ac915deaba51ea8913a897b49823ed18c8494181f80ec071536819b0bd65a52ad94289b44c524891d47c23651990c044d41ee0dd862812e09404601a40b405602a81500a004702080c404401e00e807002e01000680240100070018008002000⟩⟩
+theorem candidate07814_checked : Checked candidate07814 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17783721115904 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07815 : Description := ⟨79, ⟨13, 0xc45df56d2f642a9851fa74d329922c7ea38b19087d42aa070f9c7abbc89e0ceb66d33509a2ccd362b3075802ae851ea8211f08453fe1d8ce987183681a74cd860f2fb1710b1a55e28a93789904721fc0eb46ca30113407b837218a04601e40d205a02b01540a803c01c80c4058025011007803a01c00680240100070018008002000⟩⟩
+theorem candidate07815_checked : Checked candidate07815 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17783725326400 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07816 : Description := ⟨73, ⟨13, 0x272d3268f744ae232ffa79bbc95b1ad6e694b341888b2458228dd2609104219c54e0465330117b0b6e5902ab94409b24c221910588003e41d50df46603001740aec53e28913688cc40c1b90c485c42a413c04a023c11208603881880b205502a014008a034012808003a01c00b004c01c0080038008002000⟩⟩
+theorem candidate07816_checked : Checked candidate07816 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17786737819904 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07817 : Description := ⟨78, ⟨13, 0x633ab8f44b9cb48e64591168703fe9dd4e38715b7bdb1ad6e69433417fcb6f5a528e52609103fe1db8e927203291808bd85b72c8155ca204de23b90c882c3f51ef8f2076a3301808b9c57629f14489b44662060dc854827810c07a023c11208603a01880b405902a0140076034012808804001c00b004c01a0090038008002000⟩⟩
+theorem candidate07817_checked : Checked candidate07817 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17787778007296 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07818 : Description := ⟨76, ⟨13, 0x159da18c8be3e915e8a44372070fce79c3c89dd0e5d7143831adcb49535a7c12ac8453fe1dece967363811808bd85c22c814b0a204fa26f12908223e41e38df866031a14f89a04a21ee0dc8628278125086823c11808903d81a40b405502a014007a03401880b004a022010007403801600680280100070018008002000⟩⟩
+theorem candidate07818_checked : Checked candidate07818 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17839761162496 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07819 : Description := ⟨81, ⟨13, 0x31a3757a2b50ea47122f8f845221bd04581c3f29e44eea6f63641afed245b92d25642a6b4f825ed2ac8fb4229ff0e4c70534c9938c045ec2e11640a204de21390448003e41e38ea86fc33018d0aec53e27e13409444661ee0dc86282ba141079036411207603881a40ca06202d014007a03401880b004a02200b0034014008003800c004001⟩⟩
+theorem candidate07819_checked : Checked candidate07819 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17856395903232 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07820 : Description := ⟨87, ⟨13, 0xc68dd5e8ad43a92448be3ef148828c0e1fa2f226fe35fda48d105ccae0d6c4b4958d29ad4109f04d426312de95647a21150287fc3da1c58e0a6ba34c9938c0a5ec2df9634a204de21510447fa3e41e38eb46fc33018d0ae053e281134094446c1ee0dc86282b414107903640d205a028814007c03d01c80d006202d01600a804a02200b0034014008003800c004001⟩⟩
+theorem candidate07820_checked : Checked candidate07820 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17856395968512 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07821 : Description := ⟨72, ⟨13, 0x1449863410e05b0037e8bd45e3ee7372bb905c4adeb6b8a7c12da957496a3ed0f68493ce9e04ed674f38a9a6ca184da24890487c039714e09a840e1ee0dd868c31413e093043415809404602200d806903181680aa05402800d006202b011007403801900b805802000d005802000e0040018008002000⟩⟩
+theorem candidate07821_checked : Checked candidate07821 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17856532119808 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07822 : Description := ⟨79, ⟨13, 0xaced0c645f1f48a440e1f9cf2272eb8a1c18d6e6882d2563ca6b4f825591f08453fe1dece9673638117b0b76589288137895242c2088f9078e3af1bf0cc063429f14189a04a22380f706e431413c092843411e08c04481a40b405502a01440a003d01a00c4058025011008003a01c00d006002c01500680280100070018008002000⟩⟩
+theorem candidate07822_checked : Checked candidate07822 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17856941031424 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07823 : Description := ⟨76, ⟨13, 0x10c6821c0b6006fd17a8bc7dcaee256b8b4413e095749323d10f684940a1e04e9e71a34d9814b7e58d28613689224121f00e5c56629c14089a846c2070f706ec34618a09f049821a0ac04602200d806903181680aa054028814006803101780b405602a011007403801900b805802000d005802000e0040018008002000⟩⟩
+theorem candidate07823_checked : Checked candidate07823 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17857068990464 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07824 : Description := ⟨79, ⟨13, 0x9f3431a08d02d8003f39ea2f1f72bb895ae2d104f825c12ae92a47c21ed0927813a79a6cc746212dd9624a184da25492448243e01d78e5c56a29c14189a84702070f706ec34618a09f049821a08c04482200d806903181680aa0540288140068031015808803a01c00d006403001700b005402000d005802000e0040018008002000⟩⟩
+theorem candidate07824_checked : Checked candidate07824 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17857077313536 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07825 : Description := ⟨74, ⟨13, 0x50ba47115a86fc0e1f70f387913b31c7ce0c6c52dc960aa8b537a7b52ac8db4229e00e6c70134e9808bd85a62ba14b0a204fa26f123884e4001e38df868c31a14f89a04a221d0f706e4314125086827411808903b01b40d205a02a81500a004201880b0052025011007403801600680280100070018008002000⟩⟩
+theorem candidate07825_checked : Checked candidate07825 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17976931680512 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07826 : Description := ⟨72, ⟨13, 0x159d917c77a2bd14886040e1f70f387913b31cbae287063749adcb595842a214e49ea4b123890c484c3fb1e1cea473637e1a60a4a4f325510b078e37e1a58c685062510f7075031412508682c413a093047823011206902d01540a8051018808803a01c00d006002c01100680280100070018008002000⟩⟩
+theorem candidate07826_checked : Checked candidate07826 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17977200115840 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07827 : Description := ⟨70, ⟨13, 0x50ae180e6c71d37c5b1a96d4aba4451be87b4249fe4f3a7813b59d3cdfe69b30117b0b4c574288137891c43220b10007c83941980ac04fc2070f7068c31415209304341620ac04602240d2067032818c0b405902a81500a004201c00d006202b0110074038016006802000e0040018008002000⟩⟩
+theorem candidate07827_checked : Checked candidate07827 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17993971040512 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07828 : Description := ⟨73, ⟨13, 0x28570c082339c1c7cd105ce2e0d2e0957488a37d0f68493fc9e68f027683a79bfcd365ec2d315d0a204de24710ac82c3f91f20ec072834c1980ad45062070f7068c314157093043416208c04481a40c605a02a81500a205002100e0068031015808803a01c00d006002c00d006002000e0040018008002000⟩⟩
+theorem candidate07828_checked : Checked candidate07828 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17993979428864 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07829 : Description := ⟨79, ⟨13, 0xbabd6da85d238822c0e1f70f2276639a9c74e0c6f8b6356e4b05537a7b52f695646da114f407803b59cd8e0269d30117b0b4c574288137891c4272000f1c6fc31a15d8a7c4fc26812888743dc1b90c5054824a10d04e823011207603481940b405902a81500a004201880b0052025011007403801600680280100070018008002000⟩⟩
+theorem candidate07829_checked : Checked candidate07829 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17994103161088 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07830 : Description := ⟨79, ⟨13, 0xadb49223b7145861c145f6af1f767b9d9c82e0c6882d8960aa6f4f6a5bd1be8493fc9e50ec873638d9adcc0a5a22b814309b442a2098ff478e3961bf0cc86342b814089a84a221f0f706ec314155092843411808803d01a40b405502a01440a004201f00c405a022010807403801900b805802801000680280100070018008002000⟩⟩
+theorem candidate07830_checked : Checked candidate07830 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17994107387904 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07831 : Description := ⟨74, ⟨13, 0x50ba4710387dc3c89d98e3e70634416c4b05537a7b52ac8db4229e00ed07363809a74bd85a62ba14409bc48e1fc8f1c76037e1a60c6853e283134094443a1ee0dc86282ae125086827411808903b01a40b405502a01440a004201f00c4058029012808803a01c00d006002c00d00600280100070018008002000⟩⟩
+theorem candidate07831_checked : Checked candidate07831 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17994111549440 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07832 : Description := ⟨73, ⟨13, 0x2eaf59d917c77a2910c0822c0e1f70f2276639bdcbae287063749adcb5958429c93d496f4b123890987f63cc9e1cea473637e1a608583c71bf0c6856825111c87b83aa18a0ac049421a0b104e824c11e08c04481a40ca05a02a81500a2031016808803a01c00d006002c00d005002000e0060018008002000⟩⟩
+theorem candidate07832_checked : Checked candidate07832 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17994371596416 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07833 : Description := ⟨81, ⟨13, 0x2eb55b2accd51a96142e9f649124571a9889c30e10306582bc0f9ce4e5971eb891c24dd76b9ad912dc96548a21f8fec7973b39cc0dd268530217dcaee4e124590b87f43c61b28c045642a514109c04a823910d075436c158091843013a08c03d01a40c205d02d01540a805101d00c405e02200f807403801800680240100070030008002000⟩⟩
+theorem candidate07833_checked : Checked candidate07833 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17994571858048 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07834 : Description := ⟨76, ⟨13, 0x14308aec0e1f70f0671f38a1ba4d105ffae71706a8753727bd2ac8db43d20c0ff67683a59a78bd85a62ba149898247821590587f23e41d80e5069831914f8a0c4d025110e87b834418a0ab84f021a09304602240d205a02a81500a205001c00c4058029011008003a01c00d006002c00f00680300100070018008002000⟩⟩
+theorem candidate07834_checked : Checked candidate07834 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 17998272299008 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07835 : Description := ⟨71, ⟨13, 0xa18cbb63e70df81c3e71e70f2271f38a1b14d6e5ff2c113e0956488231908a7fc3a59c08c045ec2ab94b0a204fa26f11dc8644162000f906fa3461980a7c4d025110307b837218a09e043411e08c04481b40d205a02a81500a003401880b004a022010007403801600980340100070018008002000⟩⟩
+theorem candidate07835_checked : Checked candidate07835 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18045516939520 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07836 : Description := ⟨77, ⟨13, 0x2fb353da5951f683b1d28a3c44a164fb178e3885ae8d41694b17d822b1957eaa0d4169d548ba3e11c485d40b9f94f0e75237e1b98d0466b32996b0b1a57727912b08f441c1f38e446f63171800ba04ca21a0f705c427210d05e024c0e0064030816c0b005502a013809004601b80cc04601d00e00380100070018008002000⟩⟩
+theorem candidate07836_checked : Checked candidate07836 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18186579820672 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07837 : Description := ⟨82, ⟨13, 0x58e6acb483a19d06a5c31c58d4c43a190fde7a43c65da0ebe712375dae6d3f694b18d89ac0858c2ba150ea534eca495212873427a004fc279a38c1ba0d0866932996b0b1a57728b135892c47a1fc0eb46ca2e815289c04342040db068031217108602a014407d03501840ba05502a013807803901900a004801d00e00380120080038008002000⟩⟩
+theorem candidate07837_checked : Checked candidate07837 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18194967380096 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07838 : Description := ⟨82, ⟨13, 0x529e8f142f99ccc8e3e91de89ec466196fce7dc3d5de2eed772eb8a1ba4d6e6ac3505a52c63626ac79610a67521a7d51f08e2440a1050027873a91bf0d30682335994cc0c5bb2c494989e84c32160ebc6fc3001740a0c4701ee0d105c424a10d05b028012608f035816c0aa054019808c03a01c00d006002a00f00700280100070018008002000⟩⟩
+theorem candidate07838_checked : Checked candidate07838 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18263889182848 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07839 : Description := ⟨90, ⟨13, 0x54b6a2f4b6a40d0da3851ac8a5c45a1970477fe3f29ecee3b6f83699ab4d42694ab3d4d2a394f725e12b892d488a3ed1be8764249ff8f0274a37f9b40d36684336194cc1a5f12e11698b2057428593789264161ef8e506ca33018c8c045d02b013f09484662070f706282e212603381940c405c02b01540a804701d80e006802400f007403800f004802000e0040018008002000⟩⟩
+theorem candidate07839_checked : Checked candidate07839 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18266097484032 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07840 : Description := ⟨93, ⟨13, 0x2a2f4b6a40d0da3851ac8a5c45a19704b8003f39b4cd5a6a134a5a26cfa670abb159ea6951ca7b92ea95c49524451f08df43b2124ffc7813a51bfcda069b34219b0ca66062f896ecb4c5892ba1498a164de24990587f43df1d78e506ca33018c8c045d02b514189484702070f706282e212602e01580aa05402380ec070034012007803a01c00d006002a00f004802000e0040018008002000⟩⟩
+theorem candidate07840_checked : Checked candidate07840 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18266105872384 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07841 : Description := ⟨93, ⟨13, 0x2a5b1a9889c32209d032801bf9dfa2fb57a63c7dda8da66ad3509a52d1367d33855d8ad351ea7c92e295c49324451e88df448a1d90927fe3b29c68da0684336194cc145ed2df9688b1a57026d123c7c23961b28cc86323011740acc538281135094846c21f10387b837618a0b884980fe05c02b01540a804701780b405402400f007403801900b805002000f004802000e0040018008002000⟩⟩
+theorem candidate07841_checked : Checked candidate07841 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18266365952000 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07842 : Description := ⟨99, ⟨13, 0x9f4cf4276f1c28d4c44e19104b8194001fcefce7dabd31e3eed46d33569a84d29689b3e99c2aec569a8f53e49754ae24a92228f846fa1d90927fe3681a10cd865331d1884c0c5ed2eb16ecb445892b814989b448f1fd0f8475e3961b28cc86323011740ad4538283135094847021f10387b837618a0b884980fe05c02b01540a8047012007803a01c00d006403001700a805002000f004802000e0040018008002000⟩⟩
+theorem candidate07842_checked : Checked candidate07842 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18266374275072 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07843 : Description := ⟨85, ⟨13, 0x296547d99cc7d23bcfce7dc3975c50dd26ac3505a52d1367d33858c6c4a58f2c054d8a3c47c236d0f48463bd9d2cd3c682335994cc0c5f12dd9698b1257429313d098642c2088f9075e3941bf0c005d029f14189a047021d0f706882e213c092843412606b02d81540a803d01c00cc058029011808003a01c00d006002a00f00700280100070018008002000⟩⟩
+theorem candidate07843_checked : Checked candidate07843 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18272479117312 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07844 : Description := ⟨85, ⟨13, 0x31f1882c335dced4f68bafcd6369ff466a1350365671ef8e3c2a213ef6579ebad5d50e4f6ddb6b9ab2d47695af7960ead04f126e50fa8463f59f18ef06f13661a28cd46552c993f494847222e106c6f036218f8c0c5cc2a410607c033a1870b804f024010a079836c18e0c504c025810c08003d81e40de05c02b8100076036016008c04001e0068020002000⟩⟩
+theorem candidate07844_checked : Checked candidate07844 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18288533348672 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07845 : Description := ⟨91, ⟨13, 0xc84df66ccb620ab2533a89941da00cb163bb1a88a3c44a1650967e33cc1de0e9e712b695a82d2966532b98ccc4a610afbd76ab0256929b14789d54e024c11e089a42d2068fca7c83a79b98d9e682335994cb4a571287936c8f445d2080f8072e37b1b20ccc62e30017409a82e213e086829c14205f02d81540a803d01b80cc04e02300e807002e012007002c0100070018008002000⟩⟩
+theorem candidate07845_checked : Checked candidate07845 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18289654841600 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07846 : Description := ⟨81, ⟨13, 0x2aad527a65d25a83b4018e4452a1650967e33c69d3ce416f5b695a82d2966532b988cbb558b2bc94d49d54e024c11e08443f29f20f4076b38a9b98d9e682335994cb4a57128511e88ba4151bd8d906643171800ba04d41bb0b8843417a0a704a01f40be05b02a815008e04501b80cc04e02300e807002e01200800380100070018008002000⟩⟩
+theorem candidate07846_checked : Checked candidate07846 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18297976340736 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07847 : Description := ⟨77, ⟨13, 0x2a914788f7c57a291119870bf39e66f17776b975c50dbc6b73505a52b02535a8dd22077b3a59c08dcc66b3299834be25b72c814b0a204ef26c92bc8223e41980c686002e814f89a040c1ee0dc85c4278125086828011e08603f01bc0b605502a011407a03701a00b004a023010007403801300700280100070018008002000⟩⟩
+theorem candidate07847_checked : Checked candidate07847 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18319723757824 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07848 : Description := ⟨80, ⟨13, 0x17d6b1555228fb2e895c47be2bd0dc8563f39e66ee87503975c50dbc6a0b0797d2b0251e27592208463e51dece967023731a78cd660d2f896dcb2052c27792908ee45f2088f9063430014f89a040c1ee09e049421a08c04301f80f606f034816c0b405502a00f406e031016008c04402000e807002600e00680280100070018008002000⟩⟩
+theorem candidate07848_checked : Checked candidate07848 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18327239950592 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07849 : Description := ⟨81, ⟨13, 0x2fab642a9851fa3f51c58553d5de44eb66d33509a26c135fe2c615d0a8751ea8213a891047c21d508a7fc3f01d8ce987183681a74cd860a2f896e8b1a50b26f10bc7f03ad1be8d9463230114f89a040c1ee0dc868831408c03c81a40b405602a815009c04702080f0072031016009404401e00e807002600f00680240100070018008002000⟩⟩
+theorem candidate07849_checked : Checked candidate07849 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18333481140224 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07850 : Description := ⟨84, ⟨13, 0x147a8e1452e22d0af7e73d5de44ebb70eb699adcd42694b44d608aec534a8e53b291047c21d508a7e53811b40cd865330317c4b1252628593788ec4161fd0f7c75e37d1b28cc06323011740a7c50626811c08183dc1b90d106282e213c04b023c10c05602a815009c04701d80d0058025010007803a01c00d006002a01300780240100070018008002000⟩⟩
+theorem candidate07850_checked : Checked candidate07850 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18334823251968 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07851 : Description := ⟨75, ⟨13, 0xaf05712578f3578bbbb1cd4e5d71d38a1bdad79695aff962cb024f99e80ef676b3a59c8cd3865530697c4b6e59028813648ee45f21390448003e41d50cd45cc2bb14f89f84d023e0dc85c02a413c09284341e60db05e828010c07603881bc0ca05b02c811407a0370160094046020009803801a00a004000c002000⟩⟩
+theorem candidate07851_checked : Checked candidate07851 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18335301927168 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07852 : Description := ⟨73, ⟨13, 0x229112b88cbfe9f94f3578bb7b1b20d7f6962c59604a6b51ba4c12208fb3931c14d3265630697c4b6e590288136484e4112000f9075433018d0c005d02bb14f89f84d023310307b83721710ae85041e40d905e828010c07603881bc0ca06202d811407a03701a00b004a0230098038014008003800c004001⟩⟩
+theorem candidate07852_checked : Checked candidate07852 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18336358498560 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07853 : Description := ⟨79, ⟨13, 0x8f645222330067e8bc5dbf8d7f696344d732b8358129ad4aaa374d4263124891047a217cf687163829ae8d3265630517c4b7458d28813648544111fe8f9075a33018d0c005d02b814f8a044d023610307b83721710ad05041e40d905e82800de05b027011407c03d01c80dc06802d01600a804a0230098038014008003800c004001⟩⟩
+theorem candidate07853_checked : Checked candidate07853 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18336358563840 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07854 : Description := ⟨80, ⟨13, 0x1548a3c47be2911197e73c5dcbae286de35b9a82d29689ac65604a6b51ba4411f077b3a59c08dcc66b3299818be258928813d09b242c2088f9075e33018d0c005d029f14189a04702060f706e42e213c092843414008f04301bc0b605502a013808a03d01b80d0058025011808003a01c00d006002a01300700280100070018008002000⟩⟩
+theorem candidate07854_checked : Checked candidate07854 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18336903626752 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07855 : Description := ⟨85, ⟨13, 0x29091da886c13a064ff87e8bd45e34e57712b6f9ae2d41694b44d608a374b8a5711e887b42fa110f0274f38d1ba0d3666b3299828bda5ba2d19634a184121f00e5c6fa3001740acc538281135094846c1ee0dd868c2e213e093043415207d03601800b605502a013808a03401780b4054028011807403801900b804c02000e005802000e0040018008002000⟩⟩
+theorem candidate07855_checked : Checked candidate07855 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18337031585792 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07856 : Description := ⟨88, ⟨13, 0x14849f4c76a21b04b8193fedf9cf5178d395dc4adbe6b8b505a52d1358228dd2ea95c492a3e10f68443c09d3cdd069b335994cc7462130317b4b4658928613d08243e01d78e5c6fa3001740ad453828313509484701ee0dd868c2e213e093043410c07d03601800b605502a013808a034014008c03a01c00d006403001700a804c02000e005802000e0040018008002000⟩⟩
+theorem candidate07856_checked : Checked candidate07856 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18337039908864 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07857 : Description := ⟨91, ⟨13, 0xa53d1e28633e9996c7d227711e86642cdf9cf5c78abb61d4ce51710b761adad626a334898c6c4d60c2f9963ca67521a75d1f08814209f28f0e75234c1a08cd66062fa16ecb1251927393188f646221610387ce3af1bf0cec62c3021720a8850626511c07b83881a40c305b4272125086836016c0a004782300ea06402c0154066031011808803a01c00d006002a00a004000c004000⟩⟩
+theorem candidate07857_checked : Checked candidate07857 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18400254363776 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07858 : Description := ⟨87, ⟨13, 0xb2cd4b619304e819400dfa2f4c78fbae5caee206d335d9a4ed1360c2bb13e69714ae24991e889143b21250287e33c09d94e9471a3681a80ca260a2f696fcb1a4da24891e08243971b28cc45cc2b314e0a044d425211b081c3dc1bb0c504f824c0db03f81cc0b805a02b015408e03b01780b4054024011007803a01900b804001e00d00580240100040018008002000⟩⟩
+theorem candidate07858_checked : Checked candidate07858 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18402479505408 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07859 : Description := ⟨90, ⟨13, 0x4fa65dd1c2864c12e0650007e73d31e3eeb972bb881b4cd76693b44d830aec4f9a5d52b892a47c21d90927e33c09d28da06a032898e8c426062f696ecb1252626d12a49224782090fe875e3971b28cc45cc2b514e0a0c4d425211c081c3dc1bb0c504f824c0db03f81cc0b805a02b015408e03b012008803c01d00d006403001700a804001e00d00580240100040018008002000⟩⟩
+theorem candidate07859_checked : Checked candidate07859 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18402487828480 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07860 : Description := ⟨92, ⟨13, 0x15a6aadd4a689324291347de38b145889c13a0650037e8bd45e3ee6871b3829bd6dbf6d3356da84b6c5a82c855dea6f51ea5e12b892d47da1ed0927923b01cd0e2a6e93681a14cd85ed28613689224131f08f246fc3651990c6860229c135094840e1ee0dd868c31409904b825011806902d015c0ac05502a00c404401f00f007403801900b804001a00a004802000e0040018008002000⟩⟩
+theorem candidate07860_checked : Checked candidate07860 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18406355042560 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07861 : Description := ⟨90, ⟨13, 0x490a44d1f78e2c51622702e7a6bc6dda4e0d6e136a5abcd45692344d6cab5058d2ba14dea3d50425d52b092a47c21dd08a7fc39b9bb0da66883379938c145ed2df9634a184da24890a88263f81f08f2475a37e1b28cc8634301129088040e1ee0d1862824810b07903640d206603201740b403e01e00e406202e016009404401900b804001a00a004802000e005002000c004001⟩⟩
+theorem candidate07861_checked : Checked candidate07861 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18406359367680 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07862 : Description := ⟨99, ⟨13, 0xbaa567a97b48ba1d48fe4531f48e1452222d04781abff1f94f547913ba9cc0e2e706b709b52d7f6af3515a48b4c535a8e53e09784ac24b51f68774229ff0ef474839b9c14dd86d334c9a20cde64e30697c4b8459028813788223df1e48df86ca33018d0c0456029a13f09a04a423310387b83721a30c5050424810b07903640d206703281880b403d01d80d006202e016009404400d0050024010007002000c004001⟩⟩
+theorem candidate07862_checked : Checked candidate07862 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18406619382016 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07863 : Description := ⟨105, ⟨13, 0x2b3d4bda45d0ea47f2298fa470a291116825c0d6000fce7aa3c89cc0e2e706b709b52d7f6af3515a48d135b4ad3163caec535a8e53e09754ac24a91f08774229ff0ef474839b9c14dd86d334c9a20cde64e30317c4b76589288137895242c2088fe87be3c91d78df86ca33018d0c0456a29a14189a04a423810387b83721a30c5050424810b07903640d205a01e80ec06803101700b004a02200d006002a00d0050024010007002000c004001⟩⟩
+theorem candidate07863_checked : Checked candidate07863 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18406627770368 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07864 : Description := ⟨102, ⟨13, 0x56529674819f4c8ce2a5120867c12e0650007e73d45e3ee5f716b841b8adac6bf3585a90d21689ada5698b1e57629ad4729f04baa5712548f843da124ef874a39a1ba4da069b34299b0c7462130317b4b7658928613689524912078f7479839a1c08da065c31d1820b8c56a29c14189a84a423810387b83761a30c50500244109078035c11805a01e80ec068031011007c03c01d00e006803201800b805402000d002000c004001⟩⟩
+theorem candidate07864_checked : Checked candidate07864 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18406631801856 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07865 : Description := ⟨93, ⟨13, 0x2b5555fa96c89a28b11382740ca006fd17a8bc7dc14dbf6d3356da84d135b4ad4163caec537a8f52e295c49323d10f684940a1e5ceca73438d1ba4da06853361828bda5bf2c694309b44912098f8479237e1b28cc86343011598a7050226a12908d840e1ee0dd868c31408c03481680ae05602a815006202f01680a804401f00f007403801900b804001a00a004802000e0040018008002000⟩⟩
+theorem candidate07865_checked : Checked candidate07865 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18406891913216 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07866 : Description := ⟨96, ⟨13, 0x13e991fc89a3e91c28a2c44e0970328003f39ea2f1f70536fdb4cd5b6a1344d6d2b5058f2bb14dea3d4baa5712548f843da124e686e93681a14cd863a3109818bda5bb2c494309b44a924890b08263fa1f08f2475e37e1b28cc863430115a8a7050626a12908e040e1ee0dd868c31408c03481680ae05602a815006202200f807803a01c00d006403001700a804001a00a004802000e0040018008002000⟩⟩
+theorem candidate07866_checked : Checked candidate07866 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18406900236288 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07867 : Description := ⟨84, ⟨13, 0x1659a96c51209d032801bf45d72e577103699ab4d42689b0615d8a6e4b8a57124c8f4448a050fc67813b29d28e346d034219b0c145ed2df9634a1a4782090e5c6ca33318c8c0456629c14089a84a423610387b831413e09302300e606902e01680ac05502a00ec06202f01680a804802200f007403801900b803c01a00b004802000e0040018008002000⟩⟩
+theorem candidate07867_checked : Checked candidate07867 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18411052662784 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07868 : Description := ⟨87, ⟨13, 0x9f4cbba385144825c0ca000fce75cb95dc40da66ad3509a26c1857629b92ea95c49523e0fc67813a51b40d0866c31d1884c0c5ed2dd9624a4c50d25491e08243fa1d78e5c6ca33318c8c0456a29c14189a84a423810387b831413e09302300e606902e01680ac05502a00ec062024011007803a01c00d006403001700a803c01a00b004802000e0040018008002000⟩⟩
+theorem candidate07868_checked : Checked candidate07868 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18411060985856 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07869 : Description := ⟨85, ⟨13, 0x27d32ee8e1412e05d0007e73d39d72e226d33569a84d1360c2bb12ea95849523e10f07e33a61b40d0866c31d1884c0c5ed2dd9624a4c50d25491e07f43e11d78d9463230115a8a0c4a4238110081c3dc1bc0c504fc24c08c03481980c805c02d01580aa05401880b8058024011007803a01c00d006403001700a803c01a009004001c00a0040018008002000⟩⟩
+theorem candidate07869_checked : Checked candidate07869 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18411325227008 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07870 : Description := ⟨87, ⟨13, 0xbe1d932a2147aa17cb7a3c31ac8a5c4b222d0cb857bfb5f70f5779c3c89daeebb70eb749b4cd6e6a134a5810b0b56b29d54aca404faa76522e8e2440a1890988013f29d1cdf86d034c19b0ca66062de13cc8ec3fa1be8d946963191808ba05062060f7075034418a0b8825812608f04001580aa054024007803a01c00d006002601100780240100070018008002000⟩⟩
+theorem candidate07870_checked : Checked candidate07870 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18455082336384 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07871 : Description := ⟨79, ⟨13, 0xaa5d2768671f18ad4499fdafb8799bc5ddaee3e6de3629a82d295802a2d4dea5c4f9242d1b67fa3c01c04dcc69d335994cc1a5f12d095d0a5851027793649264272000d186343001740a7c4d021d10307b8372171092843414007e03b01bc0da05b02a815009a04501b80b0052025011807403801300700280100070018008002000⟩⟩
+theorem candidate07871_checked : Checked candidate07871 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18456894275840 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07872 : Description := ⟨77, ⟨13, 0x2a7b478a17c74e2bd14888cc32dfdafb8799bc5ddaee5d7143749b78d6e6a0b4a55faa88539290d3ea91747121750828013c39d48df86e634c19acca66062de149485834b18d0c005d028310307b83a817109284341780a0049823c0fc06f02d81540a804601b808c03a01c00d006002601100700280100070018008002000⟩⟩
+theorem candidate07872_checked : Checked candidate07872 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18457162711168 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07873 : Description := ⟨85, ⟨13, 0x293b47d99ac7ce3c315889342bdfdafb8799baedc7ce286e93629a82d2963331295fea8e53729714789d9485a36d0f48463f29d2cd3c66b3299834be25a12ba14849de4c323b10c882c4001f20e506fa34618c8c005d029f134087440c1ee0d105c427810d04982000fc06d02d81540a804d01c00b0052023010007403801300780380100070018008002000⟩⟩
+theorem candidate07873_checked : Checked candidate07873 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18461055025408 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07874 : Description := ⟨92, ⟨13, 0x164ca8a51fa8672de8f9c57615efed7dc3d5de44ed775db8e5b4cd42694b44d7f0b1d569aa1d47a9f24eca42d1b68754229fe8fca7633a61c04da069d336194cc0c5f12de1684ae852628593789264762158ec06fa3651a60c646022e814f8a0c4d021d10307b83721a20c505c42ae07402b01540a804d02380f0058029012807803a01c00d006002600f00600240100070018008002000⟩⟩
+theorem candidate07874_checked : Checked candidate07874 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18471993769984 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07875 : Description := ⟨90, ⟨13, 0x5f0ec99510a3d50be5bd1e18d6452e22d0cb857bffdfdafb87b4bd5de44ed775db8edc3add26d335b9a84d296042c2d5aca7552027d53b292948ba3891268814262004fca7653a39bf0da0698336194cc0c5bc29311d87f437d1b28c646022e815a08e440c1ee0ea86883141710ac025812608f03281580aa054016807803a01c00d006002600f004802000e0060018008002000⟩⟩
+theorem candidate07875_checked : Checked candidate07875 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18472253816960 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07876 : Description := ⟨87, ⟨13, 0xaaf553292d484a1b47ce3c312b88cc32e08effd79ab9b1c74df16df3635a82d2957fa8dd3dc9784ae24311be87b4221ff8f3a7813b59d3cdfe6e834d99acca660d2f89684ae851026c924c8644162000f9072837d1980c005d02b013f09483dc1a30b8854824c10d03381940c005b02c81540a804d02280e00680280118074038013007002000e0040018008002000⟩⟩
+theorem candidate07876_checked : Checked candidate07876 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18473933635840 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07877 : Description := ⟨90, ⟨13, 0x55329094368f9c786257119865c12dce0e3e6df3505a52d135ce2e0d63aaff52aa8dd3dc9754ae24311be87b4221ff8f347813b41d3cdfe6e834d99acca66062f896f0b4257428813d09b249321590587f23e41d80e506fa34c1980c005d02b514189483dc1a30b8855c24c10d030016c0aa0540268114070034014008c03a01c00d006002600e006002000e0040018008002000⟩⟩
+theorem candidate07877_checked : Checked candidate07877 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18473942024192 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07878 : Description := ⟨82, ⟨13, 0x5586a97496a19c7c6256fff7f6bee1e6af1776bb9a9c74df16de3635a82d2958029bd3e490b46d9fe8f407803b59c04dcc69d335994cc1a5f12d095d0a204d9249909c80031a1800ba057629f13f09a043a2060f706e42e2152092843414007603781940b605902a815009a04501b80b0052025011807403801300700280100070018008002000⟩⟩
+theorem candidate07878_checked : Checked candidate07878 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18474065756416 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07879 : Description := ⟨82, ⟨13, 0x558692d1d68a2c321f6af1a76a39d9c82dbc6a0b4a5a26b1b58029bd4aa9f2494a37d0be8443ff1e50ec871b3731adccd665330517b4ae050c24790a88263fd1cb0cc86343001740ae050226a10f88183dc1bb0b8855424a10d04281f40de05b02a815009a04501f00dc05a023010807403801900b805002601000700280100070018008002000⟩⟩
+theorem candidate07879_checked : Checked candidate07879 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18474069983232 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07880 : Description := ⟨81, ⟨13, 0x2a974338f8c4adfdafb878bbb5dc7cdbc6a0b4a5a26b1b58029bd4aa9f2485a36cff47803b41c04dcc69d335994cc0c5f12de1684ae851027a13649263f91d80d306343001740a7c50626810e88183dc1b90b8855c24a10d05001d80de05b02a815009a04501f00dc058029012808c03a01c00d006002600e00600280100070018008002000⟩⟩
+theorem candidate07880_checked : Checked candidate07880 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18474074144768 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07881 : Description := ⟨80, ⟨13, 0x153da3c50be3a714888cc32dffefed7dc3cd5e2eed7737b975c50dd26de35b9a82d2957ea9c94869f5494a45d1c485f420a004f327873a91bf0dcc698335994cc0c5bc27a10b06343001740ad04722060f707542e215809284341780a0049823c0de06502d81540a8037016808c03a01c00d006002600e005002000e0060018008002000⟩⟩
+theorem candidate07881_checked : Checked candidate07881 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18474334191744 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07882 : Description := ⟨84, ⟨13, 0x154ca4250da3c3119865c11dffaf356df3505a52d1357fa8dd3dc9714ae249d2188df43da17d0887fe3c09d3cdfe6e834d99acca66062f896f0b4257428813d09b249320b0f9072837d1980c005d025211c87b83aa1a30b8856024c10d03381940c005b02a815009a04501c00d005e02d014008c03a01c00d006002600e004001c00c0040018008002000⟩⟩
+theorem candidate07882_checked : Checked candidate07882 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18474470506496 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07883 : Description := ⟨84, ⟨13, 0x1541a58520e8671e08d4c43a191081832c009fbcf3778cbb41ce4e5971eb891baedb96b9b4fda52b69493a4250fc861427a004f2e76734299a4ca65be2d615dc9e84d624b10b87f437b1b28ba05642a514109c047221a102075436c1890b8856024610c05402480fa06a03081740aa05401b80c805e02800f807403801800700240100070030008002000⟩⟩
+theorem candidate07883_checked : Checked candidate07883 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18474534453376 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07884 : Description := ⟨91, ⟨13, 0xa3ecce63e71e18aec4ae15efed7dc3aedc7ce286e93505a52d13631b129738b8358eabfd50ea6e52aa8f13b290b46da1e908c7e53b41d2cd3c66b3299818be25bc2d095d0a4c4f426191d88564161fc8f907603941be8d306323001740a7c50626810e88183dc1a20b8855c27810d049816c0aa05402680e0058029011808003a01c00d006002600f00700300100070018008002000⟩⟩
+theorem candidate07884_checked : Checked candidate07884 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18478234894336 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07885 : Description := ⟨91, ⟨13, 0xb07554a8fb4328f244ae15cfed7dc3a81cbae3e7143775b82d41694344d79ab995c1abf94aaa3c4f8a7612168db4231fecf9477b3b41d2ce006eb34f19acca46062f896f0b4257427a11dc8be4111fc8f9073237c1a60c686002e714f8a0c4d021d10307b82ae13c09284341e807602d81680a804d01f00f4058029011808804001c00d006002600e00680300140070018008002000⟩⟩
+theorem candidate07885_checked : Checked candidate07885 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18481355456512 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07886 : Description := ⟨95, ⟨13, 0xaa8d1f686b1f38f0c4ae0970357f83ae9ce0e5a71f38a1bc0dc06a0b499a26bcd5ce2e0d63aaff52aa8f13de9754ac242908c7fd3f21e68efa7683a59bf8dd469e3359940c0c5f12de1684ae84f423b917c8564161fc8f907603941be8d306002b514d0a0c4d025211108143461700ab84f024c10d07981a40b605402680e006202e016008c04001c00d006002600e0068030010007002000c002000⟩⟩
+theorem candidate07886_checked : Checked candidate07886 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18481454546944 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07887 : Description := ⟨81, ⟨13, 0x2a9351aa5450da6df3538d1c58e2790c47d83dbdeacf3878fbb51cb8e256eab695ae2d55694ac215b2a83533a7d52ea88f4311ba4d9e6532c515b0a46516279938492c42e20e0f9c7223641a58cb462e2e815b8a0c3a81a00c505c424610d05b0238106070036017c0aa05402400cc04e02400f807403801800900440100070018008002000⟩⟩
+theorem candidate07887_checked : Checked candidate07887 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18489377046656 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07888 : Description := ⟨78, ⟨13, 0x550a95b1a38b1c51e2250967d7bdbdea6f1e7513939ae8d55694b17d610ad9541a7012288e54479f30ef26fc374994cb1456c291917485c41c1f38e446c834b18b8c005d02b715289c04341ed0ea068031217109c848c130093047020c0fc07003081600aa054024011806602400f8074038018009004401c0080038008002000⟩⟩
+theorem candidate07888_checked : Checked candidate07888 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18495816351872 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07889 : Description := ⟨87, ⟨13, 0xb20548295b43295dc68a2c7147896431e12afaf7b7bd4dda2e4e70fb759b50d746aab4a17cab695a9ab71506a564dfa4511ca88f3f19de4eaa7073691948b1456c29193cc95445e21710707f43dc1ce0d8c6963171808b9c56e2a513808683da1d40d004e424610c07a026011c08303981840b405802a0120066024011007c038018009004401a0090038008002000⟩⟩
+theorem candidate07889_checked : Checked candidate07889 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18496856539264 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07890 : Description := ⟨80, ⟨13, 0x14b2a19456df5ae9f72eb8f9c50ddd6ac34a1a26bff5ccae0d50aa6c4f8a1e8ff67c93bd9da0e9670034f1a08ca46062f89698b1456f29311e08bc4111fc8f9073234c1738a7c50626810e868831415709e049421a0f405301d80d605f02d015009603e01e80cc058029013808804001c00d006002400f00680300140070018008002000⟩⟩
+theorem candidate07890_checked : Checked candidate07890 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18513567711232 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07891 : Description := ⟨82, ⟨13, 0x535689b2d1921489a3b71a98b3c2c1f6af7079dbc7dd9ee7671b3699b24d5d693afed6d8b50582ab4d5229da46fa2690ca8493fc9e80ec06d035e1a1cca25ed2d115c09b44782098f847923961bf0d946302e6135087c3dc1bb0d1062824a0db04b81fc0f405a02b015408e042011007803a01900b805002000f00680280120080018008002000⟩⟩
+theorem candidate07891_checked : Checked candidate07891 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18522338033920 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07892 : Description := ⟨82, ⟨13, 0x54525b123b8abc38a160fb87abbce1e44ecc71cb699b1ed5d693afed6d8b50582ab4d5229da46da1d508a7803a61c04da06873289834be25a62ba1484a164fa26f12388f04271fa8f246fc3651a88c605cc29f13408743dc1b90d1062824a0db04e82000ec07402d01580aa04702100b0052025011007803a00f00680280120080018008002000⟩⟩
+theorem candidate07892_checked : Checked candidate07892 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18522342195456 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07893 : Description := ⟨85, ⟨13, 0x2a292d8921459e160fb87abbc89d98da66aeb49da26c9363eafed6cab50582ab4d502a0c4ed236d0ea8624229e00ec674c3809b40d726873289828be25a62ba1490a164f726f12388f042a1fc0f246fc3651a70c605cc29f13408743dc1b90d1062824a0db04e81680ac055024011c08403e01e00b0052025011007803a00f00680280120080018008002000⟩⟩
+theorem candidate07893_checked : Checked candidate07893 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18522342260736 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07894 : Description := ⟨86, ⟨13, 0x5f12a2f43c96c48fe4531de8d6453a1a30b07b23cd1dd6e6f71db699abad275fdad31602acf53427ad3b48df44d21950927f93a51bfcda06a03439944c1a5f12d315d0a4250b27d137891c4782088f7c7923941bf0d9466a3181730aec4fc1ee0e7868831412506d82000ca05e02d01580aa04702100f4076038011007803a00f00680280120080018008002000⟩⟩
+theorem candidate07894_checked : Checked candidate07894 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18522606436608 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07895 : Description := ⟨89, ⟨13, 0x2f89517a1e4b624531de8d6453a1a30b07b83cedb4cd5d693b44d926c7d5fdada5698b01567a9a13d69da46fa2390bc84940a9fe4f327653a51bfcda06a03439944c145f12d315d0a4850b27b937891c4782088f7c7923941bf0d9466a3181730ae05021ee0e9068831412506d81680ac055024011c08403d01d80e005a026011007803a00f00680280120080018008002000⟩⟩
+theorem candidate07895_checked : Checked candidate07895 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18522606501888 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07896 : Description := ⟨84, ⟨13, 0x17c4a8852f28592d891fc8a63bd1ac8a74346160fb87abbce1e44ecc72eb875ba4da66bcb575a4ec025b4ad4d610ad653c27ed3b48e2440a1890987f63c39d1cdf86d03519a1cca260627992a88f042c1fd0f246fc36518c0b985061ee0ea068831412506d827412c09304001680ac055024008803c01d00d006002200f00680280120080018008002000⟩⟩
+theorem candidate07896_checked : Checked candidate07896 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18522610630784 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07897 : Description := ⟨94, ⟨13, 0x60a2c81546a69506e5471a989ac25dea6f1e768b965c48dd76b03511a4ed1362fb1297febcd5b2ad4160aad3540a93d44aa0c4ed270521a88f43c2120ff67e33ca9df8e9c7013749ae4d0666e32895c0a1e4f226d92408be4151fc0f8472c3651a70c705fe2e614c89a43781a00c484fc24610c06d81840b4055024011807c03c01700a404802200f807402e01400700340120080028008002000⟩⟩
+theorem candidate07897_checked : Checked candidate07897 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18528783646720 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07898 : Description := ⟨85, ⟨13, 0x2c1d49d9f4cd1a3b715489bc396166fb17a03a99cace3e6ebb651ac4d466913199894bff5e6ac15500a5c4eba36d0f48463fd9f28f0070134119acc1a5ed2d115c0a6450026311ec8c4427209900072c37e1aa0c586042e414d87b83481860b684fc24a10d06c02dc11807603201840aa03301880b0052023011007403801900b8050014008002800c004000⟩⟩
+theorem candidate07898_checked : Checked candidate07898 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18528834947328 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+def candidate07899 : Description := ⟨81, ⟨13, 0x2a9341b951c69612ef3e72e3755ac0d44693b44d8bec4a5ffaf356d2b4c580ab3d44a9da4e0a4450b88153f19e5cef876737f9ba4d0666e32895c0a1e4f226d92408be4101b28c705fe2e614f0a1843e1d20d0062427c123086036c14607303801680aa04802300f4076038017809804802200f807402e01400700340160090040008002000⟩⟩
+theorem candidate07899_checked : Checked candidate07899 SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (quota 14)) 18529047887872 := ⟨nodup_of_increasing _ (by decide +kernel), by decide +kernel⟩
+
+#print axioms candidate07899_checked
+end Papers.RationalityTen.GraphCoverageDescriptions.GraphCoverageBatch078

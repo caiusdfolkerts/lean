@@ -1,0 +1,33 @@
+module
+prelude
+import GraphInputsRow31Part00162Cases
+public import GraphCompactBlocks
+
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0950
+open Papers.RationalityTen ConcreteGrowth GraphCaseCertificate GraphFiniteDispatch FiniteChecks
+
+private def results : Table {key : GraphRouteSelector.Key // Result key} :=
+(.branch 3
+ (.branch 1
+ (.leaf ⟨(31, 31774168195072), Papers.RationalityTen.CompactReplay.GraphInputsRow31Part00162.record000_result⟩)
+ (.branch 2
+ (.leaf ⟨(31, 31964295921664), Papers.RationalityTen.CompactReplay.GraphInputsRow31Part00162.record001_result⟩)
+ (.leaf ⟨(31, 31972881661952), Papers.RationalityTen.CompactReplay.GraphInputsRow31Part00162.record002_result⟩)))
+ (.branch 4
+ (.leaf ⟨(31, 31973616648192), Papers.RationalityTen.CompactReplay.GraphInputsRow31Part00162.record003_result⟩)
+ (.branch 5
+ (.leaf ⟨(31, 32024419172608), Papers.RationalityTen.CompactReplay.GraphInputsRow31Part00162.record004_result⟩)
+ (.leaf ⟨(31, 32041599041536), Papers.RationalityTen.CompactReplay.GraphInputsRow31Part00162.record005_result⟩))))
+
+private theorem keys_checked : Interval (fun i => decide ((results.get i).val =
+    GraphRoutes.compactKeys.entry (26712 + i))) 0 6 :=
+  interval_of_check _ 0 6 (by decide +kernel)
+
+public theorem complete : Block 26712 26718 :=
+  block_of_table results 26712 6 keys_checked
+
+#print axioms complete
+end Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0950

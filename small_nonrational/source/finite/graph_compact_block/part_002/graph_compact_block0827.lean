@@ -1,0 +1,39 @@
+module
+prelude
+import GraphInputsRow31Part00039Cases
+public import GraphCompactBlocks
+
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0827
+open Papers.RationalityTen ConcreteGrowth GraphCaseCertificate GraphFiniteDispatch FiniteChecks
+
+private def results : Table {key : GraphRouteSelector.Key // Result key} :=
+(.branch 4
+ (.branch 2
+ (.branch 1
+ (.leaf ⟨(31, 7771277819904), Papers.RationalityTen.CompactReplay.GraphInputsRow31Part00039.record000_result⟩)
+ (.leaf ⟨(31, 7771781136640), Papers.RationalityTen.CompactReplay.GraphInputsRow31Part00039.record001_result⟩))
+ (.branch 3
+ (.leaf ⟨(31, 7783760068608), Papers.RationalityTen.CompactReplay.GraphInputsRow31Part00039.record002_result⟩)
+ (.leaf ⟨(31, 7821135610112), Papers.RationalityTen.CompactReplay.GraphInputsRow31Part00039.record003_result⟩)))
+ (.branch 6
+ (.branch 5
+ (.leaf ⟨(31, 7821412335616), Papers.RationalityTen.CompactReplay.GraphInputsRow31Part00039.record004_result⟩)
+ (.leaf ⟨(31, 8027969159168), Papers.RationalityTen.CompactReplay.GraphInputsRow31Part00039.record005_result⟩))
+ (.branch 7
+ (.leaf ⟨(31, 8045891420160), Papers.RationalityTen.CompactReplay.GraphInputsRow31Part00039.record006_result⟩)
+ (.branch 8
+ (.leaf ⟨(31, 8134668206336), Papers.RationalityTen.CompactReplay.GraphInputsRow31Part00039.record007_result⟩)
+ (.leaf ⟨(31, 8251743731968), Papers.RationalityTen.CompactReplay.GraphInputsRow31Part00039.record008_result⟩)))))
+
+private theorem keys_checked : Interval (fun i => decide ((results.get i).val =
+    GraphRoutes.compactKeys.entry (25803 + i))) 0 9 :=
+  interval_of_check _ 0 9 (by decide +kernel)
+
+public theorem complete : Block 25803 25812 :=
+  block_of_table results 25803 9 keys_checked
+
+#print axioms complete
+end Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0827
