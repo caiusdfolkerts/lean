@@ -1,21 +1,19 @@
 # Universal cold spots of E8 and related lattices
 
-This project formalises the principal results of Caius Folkerts’s *Universal cold spots of E8 and related lattices*. It also proves the affine-isometry orbit claims for $D_n^+$ and $E_7^*$ and the affine Weyl orbit claim for $E_8$.
+This project contains the full Lean4 formalisation for all principal results in my paper *Universal cold spots of E8 and related lattices*.
 
 ## Verification
 
-With Elan and Git installed, run these commands from this directory. The toolchain and dependency revisions are pinned in the supplied configuration.
+If you have Elan and Git installed, run below commands from this directory.
 
 ```sh
 lake exe cache get
 lake build
 ```
 
-The default build includes the mathematical source and checks all project declarations, including private definitions, for proof placeholders, project axioms and unsafe or partial code. The permitted transitive axioms are `propext`, `Classical.choice`, and `Quot.sound`. Downloading the library cache is not itself a proof check.
-
 ## Main results
 
-Unless qualified otherwise, the lattice declarations use `PaperVerification.ColdSpots`; the hyperbolic declarations use `PaperVerification.Hyperbolic`.
+Here's a guide to help you navigate this repo! All verified theorems/propositions/corollaries are linked to their corresponding Lean4 declarations in the table below.
 
 | Manuscript result | Lean declarations |
 |:---|:---|

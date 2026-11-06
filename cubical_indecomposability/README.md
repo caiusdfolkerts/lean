@@ -1,22 +1,19 @@
 # A counterexample to Smilansky’s conjecture
 
-This project formalises Caius Folkerts’s counterexample to cubical Minkowski decomposability: a full-dimensional rational four-polytope with 144 vertices, cubical facets, and no nontrivial Minkowski summand. It also proves the auxiliary 32-vertex block and the general redrawing criterion used in the paper.
+This project contains the full Lean4 formalisation for all principal results in my paper *A counterexample to Smilansky’s conjecture*.
 
 ## Verification
 
-With Elan and Git installed, run these commands from this directory. The compiler and dependency revisions are pinned.
+If you have Elan and Git installed, run below commands from this directory.
 
 ```sh
 lake exe cache get
 lake build
 ```
 
-The default build checks the proof and the original three verification stages: declaration-wide axiom inspection, principal dependency analysis, and kernel-body replay. It permits only `propext`, `Classical.choice`, and `Quot.sound`. Downloading the dependency cache is not a proof check. The four assembled source modules are large; compilation may require substantial memory.
-
-
 ## Main results
 
-Declaration names below use the namespace `CubicalIndecomposability` unless shown in full.
+Here's a guide to help you navigate this repo! All verified theorems/propositions/corollaries are linked to their corresponding Lean4 declarations in the table below. Note declaration names use `CubicalIndecomposability`.
 
 | Paper result | Lean statement |
 | --- | --- |
