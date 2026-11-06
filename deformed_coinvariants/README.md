@@ -1,23 +1,19 @@
 # The Hivert–Thiéry conjecture and differential normal forms
 
-This project formalises the principal coinvariant results of Caius Folkerts’s *The Hivert–Thiéry conjecture and differential normal forms*: the full Hivert–Thiéry theorem, the sharp Artin-basis criterion, and the weighted tail theorem over arbitrary fields. It also proves the weighted Jacobian theorem, the complete isolated-hypersurface theorem, and the complete-intersection statement in full codimension, including the exact resonant defects and their equivariance. The source contains the supporting polynomial, grading, representation-theoretic, and commutative-algebra constructions needed for these statements.
+This project contains the full Lean4 formalisation of the principal coinvariant theorems and most algebraic results in my paper *The Hivert–Thiéry conjecture and differential normal forms*. I’m still working on the remaining results, which I expect to be ready in a few days.
 
 ## Verification
 
-With Elan and Git installed, run these commands from this directory. The toolchain and dependency revisions are pinned in the supplied configuration.
+If you have Elan and Git installed, run below commands from this directory.
 
 ```sh
 lake exe cache get
 lake build
 ```
 
-The default build includes the mathematical source and checks that the imported project theorems depend only on `propext`, `Classical.choice`, and `Quot.sound`. Downloading the library cache is not itself a proof check.
-
-The [publication build record](verification/build-result.json) records the successful build, exact source and dependency hashes, and the combined audit of all eight selected theorem statements.
-
 ## Main results
 
-Unless otherwise qualified, declaration names use the namespace `PaperVerification.PowerOperators`. The mathematical objects, proof dependencies, and correspondence with the paper are explained in [formalisation.md](formalisation.md).
+Here's a guide to help you navigate this repo! All verified theorems/propositions/corollaries are linked to their corresponding Lean4 declarations in the table below. Note declaration names use `PaperVerification.PowerOperators`.
 
 | Paper result | Lean statement |
 | --- | --- |
@@ -43,9 +39,3 @@ Unless otherwise qualified, declaration names use the namespace `PaperVerificati
 | **Proposition 6.5: all scalar conclusions, the exact exceptional set, and every integer-degree Hilbert coefficient** | `PaperVerification.VectorEuler.paper_proposition_6_5_scalar` |
 | Proposition 6.5: equivariance for every linear group preserving the weights and each equation | `PaperVerification.VectorEuler.paper_proposition_6_5_equivariant` |
 | Proposition 6.5: canonical equivalence from the actual polynomial degree piece to the literal defect | `PaperVerification.VectorEuler.regularDefectEquiv`, `PaperVerification.VectorEuler.regularDefectEquiv_canonical` |
-
-The coinvariant quotients are formed from the actual vector-space sums of operator images. The basis statements identify each basis vector with its stated monomial class, and the representation statements supply equivalences of the actual actions that preserve every homogeneous piece. For the isolated-hypersurface theorem, the critical-point hypothesis supplies gradient regularity internally; the defect is the literal quotient `J(F)/H_t(F)` and is placed in its actual target degree `h + d`.
-
-The recovered source, historical verification record, and completion changes are documented in [recovery.md](recovery.md).
-
-The general normal-form results in §§3–5, including the noncommutative theorem (Theorem 5.1), and the positive-dimensional complete-intersection theorem (Theorem 6.4) are not yet formalised; I am working on these over the next few days.

@@ -1,21 +1,19 @@
 # Sharp bounds for indecomposable summands of graphical zonotopes
 
-This project formalises the principal results of Caius Folkerts’s *Sharp bounds for indecomposable summands of graphical zonotopes*. The source includes the supporting mathematics needed for the stated results.
+This project contains the full Lean4 formalisation for all principal results in my paper *Sharp bounds for indecomposable summands of graphical zonotopes*.
 
 ## Verification
 
-With Elan and Git installed, run these commands from this directory. The toolchain and dependency revisions are pinned in the supplied configuration.
+If you have Elan and Git installed, run below commands from this directory.
 
 ```sh
 lake exe cache get
 lake build
 ```
 
-The default build includes the mathematical source and checks that the imported project theorems depend only on `propext`, `Classical.choice`, and `Quot.sound`. Downloading the library cache is not itself a proof check.
-
 ## Main results
 
-Unless otherwise qualified, declaration names use the namespace `GraphicalZonotopes`.
+Here's a guide to help you navigate this repo! All verified theorems/propositions/corollaries are linked to their corresponding Lean4 declarations in the table below. Note declaration names use `GraphicalZonotopes`.
 
 | Paper result | Lean statement |
 | --- | --- |
