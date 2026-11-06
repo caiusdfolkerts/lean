@@ -1,19 +1,19 @@
 # Unimodular configurations and complete fans
 
-This project formalises the positive degree-one characterisation of complete fans and the series-parallel classification of normal matroids of deeply monotone polytopes, together with the associated lattice, toric and enumeration results described in `formalisation.md`.
+This project contains the full Lean4 formalisation for the principal results in my paper *Unimodular configurations and complete fans*. I’m still working on the remaining results, which I expect to be ready in a few days.
 
 ## Verification
 
-With Elan, Git and Python 3 installed, run these commands from this directory. Lean and dependency revisions are pinned in the supplied configuration.
+If you have Elan and Git installed, run below commands from this directory.
 
 ```sh
 lake exe cache get
 lake build
 ```
 
-The default build compiles all 800 source modules in dependency order with kernel checking enabled and checks the transitive axioms of the 191 advertised declarations. It rejects proof placeholders and axioms beyond `propext`, `Classical.choice`, and `Quot.sound`. The build uses up to eight compiler processes; allow 64 GB of memory.
-
 ## Main results
+
+Here's a guide to help you navigate this repo! All verified theorems/propositions/corollaries are linked to their corresponding Lean4 declarations in the table below.
 
 | Paper result | Lean statement |
 | --- | --- |
@@ -24,7 +24,3 @@ The default build compiles all 800 source modules in dependency order with kerne
 | Proposition 6.10: graphic section rings over arbitrary fields | `Unimodular.GraphicSectionRing.OriginalLattice.AllFields.theorem_6_10_arbitrary_lattice` |
 | Theorem 7.1: sharp ray bound and equality | `Unimodular.ActualFanTheorems.theorem_7_1_bound_and_equality` |
 | A₃ enumeration: 729 complete fans, 603 projective and 126 nonprojective | `Unimodular.LiteralRootCoordinates.a3_literal_complete_fan_count`, `Unimodular.LiteralA3Projectivity.literal_lattice_projective_fan_count`, `literal_nonprojective_fan_count` |
-
-The public theorem interface is `source/verified.lean`. The source is arranged by mathematical topic under `source/unimodular` and `source/continuation`, with the necessary supporting developments alongside them. The build preserves the verified Lean module identities in a generated local workspace.
-
-I’m still working on formalising the construction classification in Theorem 3.4 and the higher-Nₚ assertion in Corollary 6.11. I plan to release these additions in the next few days.
