@@ -1,0 +1,74 @@
+--- archive/source/wishart/verified/field_residual09.lean
++++ recovered/source/wishart/verified/field_residual09.lean
+@@ -104,7 +104,10 @@
+       (Matrix.PosDef.one.posSemidef.smul hc)
+   have h := realDeterminant_congruence hS K
+   rw [hgram] at h
+-  rw [unnormalize_shiftedCompression hSigma B hB X c] at h
++  have hu := unnormalize_shiftedCompression hSigma B hB X c
++  change Kᴴ * (S : Matrix (Fin k) (Fin k) _) * K =
++    Bᴴ * (X : Matrix (Fin p) (Fin p) _) * B + c • C at hu
++  rw [hu] at h
+   exact h
+ 
+ theorem shiftedCompressionDeterminant_eq_covariance_eigenproduct
+@@ -118,8 +121,10 @@
+         ∏ j, FieldSpectral.orderedValues (WishartVerification.hermitian_matrix_coe
+           (normalizedCompression B Sigma X + c •
+             (⟨1, Matrix.isHermitian_one⟩ : Hermitian k))) j := by
+-  rw [shiftedCompressionDeterminant_eq_covariance_mul hSigma B hB X hX hc,
+-    realDeterminant_eq_prod_orderedValues]
++  rw [shiftedCompressionDeterminant_eq_covariance_mul hSigma B hB X hX hc]
++  exact congrArg (fun q => realDeterminant (compressionCovariance B Sigma) * q)
++    (realDeterminant_eq_prod_orderedValues (normalizedCompression B Sigma X + c •
++      (⟨1, Matrix.isHermitian_one⟩ : Hermitian k)))
+ 
+ end Wishart.ComplexMatrix
+ 
+@@ -151,7 +156,7 @@
+ theorem shiftedCompressionDeterminant_eq_covariance_mul
+     {Sigma : Matrix (Fin p) (Fin p) ℍ[ℝ]} (hSigma : PosDef Sigma)
+     (B : Matrix (Fin p) (Fin k) ℍ[ℝ]) (hB : FullColumnRank B)
+-    (X : Hermitian p) (hX : PosSemidef X) {c : ℝ} (hc : 0 ≤ c) :
++    (X : Hermitian p) (hX : PosSemidef (X : Matrix (Fin p) (Fin p) ℍ[ℝ])) {c : ℝ} (hc : 0 ≤ c) :
+     positiveDeterminant (Bᴴ * (X : Matrix (Fin p) (Fin p) ℍ[ℝ]) * B +
+       c • compressionCovariance B Sigma) =
+       positiveDeterminant (compressionCovariance B Sigma) *
+@@ -165,26 +170,30 @@
+   have hgram : Kᴴ * K = C := by
+     rw [hK.isHermitian.eq]
+     exact sqrt_mul_self hC.posSemidef
+-  have hS : PosSemidef S := (normalizedCompression_posSemidef B Sigma X hX).add
++  have hS : PosSemidef (S : Matrix (Fin k) (Fin k) ℍ[ℝ]) := (normalizedCompression_posSemidef B Sigma X hX).add
+     (posDef_one.posSemidef.smul hc)
+   have h := positiveDeterminant_congruence hS K
+   rw [hgram] at h
+-  rw [unnormalize_shiftedCompression hSigma B hB X c] at h
++  have hu := unnormalize_shiftedCompression hSigma B hB X c
++  change Kᴴ * (S : Matrix (Fin k) (Fin k) _) * K =
++    Bᴴ * (X : Matrix (Fin p) (Fin p) _) * B + c • C at hu
++  rw [hu] at h
+   exact h
+ 
+ theorem shiftedCompressionDeterminant_eq_covariance_eigenproduct
+     {Sigma : Matrix (Fin p) (Fin p) ℍ[ℝ]} (hSigma : PosDef Sigma)
+     (B : Matrix (Fin p) (Fin k) ℍ[ℝ]) (hB : FullColumnRank B)
+-    (X : Hermitian p) (hX : PosSemidef X) {c : ℝ} (hc : 0 ≤ c) :
++    (X : Hermitian p) (hX : PosSemidef (X : Matrix (Fin p) (Fin p) ℍ[ℝ])) {c : ℝ} (hc : 0 ≤ c) :
+     positiveDeterminant (Bᴴ * (X : Matrix (Fin p) (Fin p) ℍ[ℝ]) * B +
+       c • compressionCovariance B Sigma) =
+       positiveDeterminant (compressionCovariance B Sigma) *
+         ∏ j, orderedValues (normalizedCompression B Sigma X + c •
+           (⟨1, Matrix.isHermitian_one⟩ : Hermitian k)) j := by
+-  rw [shiftedCompressionDeterminant_eq_covariance_mul hSigma B hB X hX hc,
+-    positiveDeterminant_eq_mooreDeterminant _
+-      ((normalizedCompression_posSemidef B Sigma X hX).add (posDef_one.posSemidef.smul hc))]
+-  rfl
++  rw [shiftedCompressionDeterminant_eq_covariance_mul hSigma B hB X hX hc]
++  exact congrArg (fun q => positiveDeterminant (compressionCovariance B Sigma) * q)
++    (positiveDeterminant_eq_mooreDeterminant
++      (normalizedCompression B Sigma X + c • (⟨1, Matrix.isHermitian_one⟩ : Hermitian k))
++      ((normalizedCompression_posSemidef B Sigma X hX).add (posDef_one.posSemidef.smul hc)))
+ 
+ end Wishart.QuaternionMatrix
+ end

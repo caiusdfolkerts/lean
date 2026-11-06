@@ -1,0 +1,1943 @@
+{
+  "source_repository": "https://github.com/TauCetiProject/TauCeti.git",
+  "source_commit": "06d5bb4e3ebb737dc6538567f5c53bf8800b9362",
+  "provenance_basis": "Recorded checkpoint provenance; no new upstream authenticity claim. Imported module paths were normalized in publication source.",
+  "module_count": 215,
+  "modules": [
+    {
+      "path": "source/tau_ceti/algebra/module/equiv/basic.lean",
+      "current_sha256": "68d9c7da276778cd7f2086186626fb7186fff1d0cf5fa0c3788a1780e8f942c3",
+      "checkpoint_path": "TauCeti/Algebra/Module/Equiv/Basic.lean",
+      "checkpoint_sha256": "68d9c7da276778cd7f2086186626fb7186fff1d0cf5fa0c3788a1780e8f942c3",
+      "recorded_upstream_sha256": "68d9c7da276778cd7f2086186626fb7186fff1d0cf5fa0c3788a1780e8f942c3",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/algebra/order/field/basic.lean",
+      "current_sha256": "a6559339d4dd616480866d637ecf54601115dc2f492d002d6e34dd7edb74b571",
+      "checkpoint_path": "TauCeti/Algebra/Order/Field/Basic.lean",
+      "checkpoint_sha256": "a6559339d4dd616480866d637ecf54601115dc2f492d002d6e34dd7edb74b571",
+      "recorded_upstream_sha256": "a6559339d4dd616480866d637ecf54601115dc2f492d002d6e34dd7edb74b571",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/algebra/quaternion/complex_matrix.lean",
+      "current_sha256": "05cb44872bd0ded13c734d1b362f57850428db0fee49e106c5ba9ab0f459520a",
+      "checkpoint_path": "TauCeti/Algebra/Quaternion/ComplexMatrix.lean",
+      "checkpoint_sha256": "94374a0ee3b42d8fe93e5954313ca1f1212eb9f8c4d3c5a4e9841e61b7efebcc",
+      "recorded_upstream_sha256": "94374a0ee3b42d8fe93e5954313ca1f1212eb9f8c4d3c5a4e9841e61b7efebcc",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/algebra/quaternion/norm_form.lean",
+      "current_sha256": "f3d0295cf2f704eef7552ae6fa54f63382c1cab5988e2e409a291fe518bdacce",
+      "checkpoint_path": "TauCeti/Algebra/Quaternion/NormForm.lean",
+      "checkpoint_sha256": "f3d0295cf2f704eef7552ae6fa54f63382c1cab5988e2e409a291fe518bdacce",
+      "recorded_upstream_sha256": "f3d0295cf2f704eef7552ae6fa54f63382c1cab5988e2e409a291fe518bdacce",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/algebra/ring/invertible.lean",
+      "current_sha256": "5a9902595b1071d513a8f66fbf7b7f064332b9df65c7ef80aa43ce6de35674f4",
+      "checkpoint_path": "TauCeti/Algebra/Ring/Invertible.lean",
+      "checkpoint_sha256": "5a9902595b1071d513a8f66fbf7b7f064332b9df65c7ef80aa43ce6de35674f4",
+      "recorded_upstream_sha256": "5a9902595b1071d513a8f66fbf7b7f064332b9df65c7ef80aa43ce6de35674f4",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/analytic/of_scalars.lean",
+      "current_sha256": "0c6a5ad23c99fe8775ad2af264e936e90655eca65819dd0b805bd3b4b0579158",
+      "checkpoint_path": "TauCeti/Analysis/Analytic/OfScalars.lean",
+      "checkpoint_sha256": "0c6a5ad23c99fe8775ad2af264e936e90655eca65819dd0b805bd3b4b0579158",
+      "recorded_upstream_sha256": "0c6a5ad23c99fe8775ad2af264e936e90655eca65819dd0b805bd3b4b0579158",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/c_star_algebra/continuous_functional_calculus/continuity.lean",
+      "current_sha256": "851829b20d28562c7e698426b29a48268692e2fb27a2de7d9baf71a4898a3b0b",
+      "checkpoint_path": "TauCeti/Analysis/CStarAlgebra/ContinuousFunctionalCalculus/Continuity.lean",
+      "checkpoint_sha256": "851829b20d28562c7e698426b29a48268692e2fb27a2de7d9baf71a4898a3b0b",
+      "recorded_upstream_sha256": "851829b20d28562c7e698426b29a48268692e2fb27a2de7d9baf71a4898a3b0b",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/calculus/cont_diff/translation.lean",
+      "current_sha256": "88b820ccccd06a8b14d6074907fa5ccba2658544320866d864a7ec206ba172cb",
+      "checkpoint_path": "TauCeti/Analysis/Calculus/ContDiff/Translation.lean",
+      "checkpoint_sha256": "88b820ccccd06a8b14d6074907fa5ccba2658544320866d864a7ec206ba172cb",
+      "recorded_upstream_sha256": "88b820ccccd06a8b14d6074907fa5ccba2658544320866d864a7ec206ba172cb",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/calculus/deriv/second.lean",
+      "current_sha256": "266a9b459694aa91bdab9267b5e304cb82055c82520a74f8d720b80d8260fb48",
+      "checkpoint_path": "TauCeti/Analysis/Calculus/Deriv/Second.lean",
+      "checkpoint_sha256": "266a9b459694aa91bdab9267b5e304cb82055c82520a74f8d720b80d8260fb48",
+      "recorded_upstream_sha256": "266a9b459694aa91bdab9267b5e304cb82055c82520a74f8d720b80d8260fb48",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/calculus/derivative_test.lean",
+      "current_sha256": "7e400714aaea18b40f51c501e6a3eb1af89a1bb26ce87b58019a876590b96df2",
+      "checkpoint_path": "TauCeti/Analysis/Calculus/DerivativeTest.lean",
+      "checkpoint_sha256": "96677f47b4fe052848d2f1d579ff32f3ab4615e3c9e39bef7041fc6bd3b9e965",
+      "recorded_upstream_sha256": "96677f47b4fe052848d2f1d579ff32f3ab4615e3c9e39bef7041fc6bd3b9e965",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/calculus/f_deriv/continuous_linear_map.lean",
+      "current_sha256": "9a74d6a8e3e5b89bbef18c64981dd37a8aaf8309190c32ee8e3fcfcc0ee2a6c5",
+      "checkpoint_path": "TauCeti/Analysis/Calculus/FDeriv/ContinuousLinearMap.lean",
+      "checkpoint_sha256": "9a74d6a8e3e5b89bbef18c64981dd37a8aaf8309190c32ee8e3fcfcc0ee2a6c5",
+      "recorded_upstream_sha256": "9a74d6a8e3e5b89bbef18c64981dd37a8aaf8309190c32ee8e3fcfcc0ee2a6c5",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/calculus/f_deriv/det.lean",
+      "current_sha256": "83e21f35bb0318222df1cfe6979be7e36d1095d05981a4b0665612896b0e35ad",
+      "checkpoint_path": "TauCeti/Analysis/Calculus/FDeriv/Det.lean",
+      "checkpoint_sha256": "83e21f35bb0318222df1cfe6979be7e36d1095d05981a4b0665612896b0e35ad",
+      "recorded_upstream_sha256": "83e21f35bb0318222df1cfe6979be7e36d1095d05981a4b0665612896b0e35ad",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/calculus/f_deriv/prod.lean",
+      "current_sha256": "982167eeac13b1e10c10ac72d38c7770c9a541ee674561518f01767d2bb4c0ee",
+      "checkpoint_path": "TauCeti/Analysis/Calculus/FDeriv/Prod.lean",
+      "checkpoint_sha256": "982167eeac13b1e10c10ac72d38c7770c9a541ee674561518f01767d2bb4c0ee",
+      "recorded_upstream_sha256": "982167eeac13b1e10c10ac72d38c7770c9a541ee674561518f01767d2bb4c0ee",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/calculus/gradient.lean",
+      "current_sha256": "79f40e92f8183b860822a0d101ee70b6defb322c6ac415b71219bde66c0f4f09",
+      "checkpoint_path": "TauCeti/Analysis/Calculus/Gradient.lean",
+      "checkpoint_sha256": "9054cb42ba13fd79100150c723e958c801325cc56072f5033363ede2c37a4c20",
+      "recorded_upstream_sha256": "9054cb42ba13fd79100150c723e958c801325cc56072f5033363ede2c37a4c20",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/calculus/line_deriv/basic.lean",
+      "current_sha256": "d70b618ac12bc8e7eb9d2a88393641929a8c6f15c0381b8bc3ecf333877f82c6",
+      "checkpoint_path": "TauCeti/Analysis/Calculus/LineDeriv/Basic.lean",
+      "checkpoint_sha256": "d70b618ac12bc8e7eb9d2a88393641929a8c6f15c0381b8bc3ecf333877f82c6",
+      "recorded_upstream_sha256": "d70b618ac12bc8e7eb9d2a88393641929a8c6f15c0381b8bc3ecf333877f82c6",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/calculus/parametric_integral.lean",
+      "current_sha256": "4ced831b068ac897d8c7a43818ce90ae89ddbcd849469e501dee09549e2eafa1",
+      "checkpoint_path": "TauCeti/Analysis/Calculus/ParametricIntegral.lean",
+      "checkpoint_sha256": "0688bff5629ae4da88f7d938cb86444b0ba8b3fa808f905c3a1bce263429b4d6",
+      "recorded_upstream_sha256": "0688bff5629ae4da88f7d938cb86444b0ba8b3fa808f905c3a1bce263429b4d6",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/calculus/second_derivative.lean",
+      "current_sha256": "c3de7fb0e342b95b25011f054baf4ad435d100b2bd7bcc0bca80596d272e2484",
+      "checkpoint_path": "TauCeti/Analysis/Calculus/SecondDerivative.lean",
+      "checkpoint_sha256": "ba8978ee4870557a181dc5bbe4bb1f196cd24b5b5c423261237859d30811a78a",
+      "recorded_upstream_sha256": "ba8978ee4870557a181dc5bbe4bb1f196cd24b5b5c423261237859d30811a78a",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/calculus/taylor_integral.lean",
+      "current_sha256": "890d77f1aa9330d0d185433c0f80d7292d30a4cd0d19b5d9d7b848e4749d57ce",
+      "checkpoint_path": "TauCeti/Analysis/Calculus/TaylorIntegral.lean",
+      "checkpoint_sha256": "890d77f1aa9330d0d185433c0f80d7292d30a4cd0d19b5d9d7b848e4749d57ce",
+      "recorded_upstream_sha256": "890d77f1aa9330d0d185433c0f80d7292d30a4cd0d19b5d9d7b848e4749d57ce",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/distribution/du_bois_reymond.lean",
+      "current_sha256": "cf1ee672614cc335fba0f3254b6340af7dad0d19e0073103f9d726dafdc40428",
+      "checkpoint_path": "TauCeti/Analysis/Distribution/DuBoisReymond.lean",
+      "checkpoint_sha256": "cf1ee672614cc335fba0f3254b6340af7dad0d19e0073103f9d726dafdc40428",
+      "recorded_upstream_sha256": "cf1ee672614cc335fba0f3254b6340af7dad0d19e0073103f9d726dafdc40428",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/distribution/test_function/line_deriv.lean",
+      "current_sha256": "3103964a696188e7b50378ed37921d31127191b67379128c909141dc0dcaeb3f",
+      "checkpoint_path": "TauCeti/Analysis/Distribution/TestFunction/LineDeriv.lean",
+      "checkpoint_sha256": "3103964a696188e7b50378ed37921d31127191b67379128c909141dc0dcaeb3f",
+      "recorded_upstream_sha256": "3103964a696188e7b50378ed37921d31127191b67379128c909141dc0dcaeb3f",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/inner_product_space/basis_span.lean",
+      "current_sha256": "5235ba0d25c6c08aab3b88ec2de244d5f0546d24a9814c619f446063be672fca",
+      "checkpoint_path": "TauCeti/Analysis/InnerProductSpace/BasisSpan.lean",
+      "checkpoint_sha256": "5235ba0d25c6c08aab3b88ec2de244d5f0546d24a9814c619f446063be672fca",
+      "recorded_upstream_sha256": "5235ba0d25c6c08aab3b88ec2de244d5f0546d24a9814c619f446063be672fca",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/inner_product_space/complete_square.lean",
+      "current_sha256": "6aa24154abe593e0102fdaf119121bc39e5c1ce45d9f42e97a4179fade7ccc72",
+      "checkpoint_path": "TauCeti/Analysis/InnerProductSpace/CompleteSquare.lean",
+      "checkpoint_sha256": "6aa24154abe593e0102fdaf119121bc39e5c1ce45d9f42e97a4179fade7ccc72",
+      "recorded_upstream_sha256": "6aa24154abe593e0102fdaf119121bc39e5c1ce45d9f42e97a4179fade7ccc72",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/inner_product_space/courant_fischer.lean",
+      "current_sha256": "14c24079cbe6d5d9e25c699811a15345843b3d8f2fd2c37a440093423f816e21",
+      "checkpoint_path": "TauCeti/Analysis/InnerProductSpace/CourantFischer.lean",
+      "checkpoint_sha256": "62d35ded0fb5370caea3932912982616d88de38a112ea32f368698d698a1f0ca",
+      "recorded_upstream_sha256": "62d35ded0fb5370caea3932912982616d88de38a112ea32f368698d698a1f0ca",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/inner_product_space/euclidean/space.lean",
+      "current_sha256": "8d66ac2b653a2f00b00c7fb09053c69811ee11e503483fc57a3849fcb08b11c0",
+      "checkpoint_path": "TauCeti/Analysis/InnerProductSpace/Euclidean/Space.lean",
+      "checkpoint_sha256": "8d66ac2b653a2f00b00c7fb09053c69811ee11e503483fc57a3849fcb08b11c0",
+      "recorded_upstream_sha256": "8d66ac2b653a2f00b00c7fb09053c69811ee11e503483fc57a3849fcb08b11c0",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/inner_product_space/gram_schmidt_ortho.lean",
+      "current_sha256": "054f5fb35504c89750b9cea05edddf83d3dbacab336be4e03a6805334ed32439",
+      "checkpoint_path": "TauCeti/Analysis/InnerProductSpace/GramSchmidtOrtho.lean",
+      "checkpoint_sha256": "054f5fb35504c89750b9cea05edddf83d3dbacab336be4e03a6805334ed32439",
+      "recorded_upstream_sha256": "054f5fb35504c89750b9cea05edddf83d3dbacab336be4e03a6805334ed32439",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/inner_product_space/harmonic/ball.lean",
+      "current_sha256": "4218c35e7c0ab912a20df3019727378c7cebf037a38475797115d611082680b4",
+      "checkpoint_path": "TauCeti/Analysis/InnerProductSpace/Harmonic/Ball.lean",
+      "checkpoint_sha256": "9b87db848c4fa70c21c3a8f449f4b452641b424b576a855dc9a25c77cbdbe0fd",
+      "recorded_upstream_sha256": "9b87db848c4fa70c21c3a8f449f4b452641b424b576a855dc9a25c77cbdbe0fd",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/inner_product_space/harmonic/dilation.lean",
+      "current_sha256": "d26e7122087db73c674fbdac0137d48e70675d825d2da6b49a7f7d757e1008bd",
+      "checkpoint_path": "TauCeti/Analysis/InnerProductSpace/Harmonic/Dilation.lean",
+      "checkpoint_sha256": "a9c581a1500976d01fab531dcc3e604223a4204083944b2866efcbff19dca0b4",
+      "recorded_upstream_sha256": "a9c581a1500976d01fab531dcc3e604223a4204083944b2866efcbff19dca0b4",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/inner_product_space/harmonic/isometry.lean",
+      "current_sha256": "e52ec2edd34104f57519cee3fcdd876ae927baba8c2aa258a5ac507d2763e2fc",
+      "checkpoint_path": "TauCeti/Analysis/InnerProductSpace/Harmonic/Isometry.lean",
+      "checkpoint_sha256": "59eadf2e5320e87e5bd78511ffbdb66ce3e2e348903b7baec27b77a72021f949",
+      "recorded_upstream_sha256": "59eadf2e5320e87e5bd78511ffbdb66ce3e2e348903b7baec27b77a72021f949",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/inner_product_space/harmonic/mean_value/basic.lean",
+      "current_sha256": "4851569dd3a02dde0dd6ea3f3a6330b58ace9bc07fcab0ae0c9425a77b026ac5",
+      "checkpoint_path": "TauCeti/Analysis/InnerProductSpace/Harmonic/MeanValue/Basic.lean",
+      "checkpoint_sha256": "075a849332d3bfdbe39b930e4f384c7d1ec0792e9bbbc55c754af1e0601f29e1",
+      "recorded_upstream_sha256": "075a849332d3bfdbe39b930e4f384c7d1ec0792e9bbbc55c754af1e0601f29e1",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/inner_product_space/harmonic/mean_value/converse.lean",
+      "current_sha256": "afe00aaa9dab533b0085d0e1e949d199603776dfe62fd18c5eaa7dd3c80e7788",
+      "checkpoint_path": "TauCeti/Analysis/InnerProductSpace/Harmonic/MeanValue/Converse.lean",
+      "checkpoint_sha256": "39f1a7e214f4502a4c59a9315837e46fead7f2deb0fd98f32e32e6cf06a43303",
+      "recorded_upstream_sha256": "39f1a7e214f4502a4c59a9315837e46fead7f2deb0fd98f32e32e6cf06a43303",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/inner_product_space/harmonic/subharmonic.lean",
+      "current_sha256": "82142601c6b4ca3e45191b39e7915dbf71e0b7a83ea05af5316fbdae3b821079",
+      "checkpoint_path": "TauCeti/Analysis/InnerProductSpace/Harmonic/Subharmonic.lean",
+      "checkpoint_sha256": "a7e0163ebdd59a55fea20816129a29581a8fb48e2b7a7bf6454b7947ee47f5c4",
+      "recorded_upstream_sha256": "a7e0163ebdd59a55fea20816129a29581a8fb48e2b7a7bf6454b7947ee47f5c4",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/inner_product_space/hilbert_basis/basic.lean",
+      "current_sha256": "a67be884d9de4e9357b9904ac8b5b850ba2a06abcf86e92b2d0944e05b2c3eb6",
+      "checkpoint_path": "TauCeti/Analysis/InnerProductSpace/HilbertBasis/Basic.lean",
+      "checkpoint_sha256": "a67be884d9de4e9357b9904ac8b5b850ba2a06abcf86e92b2d0944e05b2c3eb6",
+      "recorded_upstream_sha256": "a67be884d9de4e9357b9904ac8b5b850ba2a06abcf86e92b2d0944e05b2c3eb6",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/inner_product_space/laplacian/barrier_maximizer.lean",
+      "current_sha256": "657578cf9009d84523cd536456858368d60bb5ae3e13c49b6c198caf9c16901a",
+      "checkpoint_path": "TauCeti/Analysis/InnerProductSpace/Laplacian/BarrierMaximizer.lean",
+      "checkpoint_sha256": "3a0c6eb20f874bc42678e00e2a0fe21e44c854217a1eeb462e81dea1cc4c3fca",
+      "recorded_upstream_sha256": "3a0c6eb20f874bc42678e00e2a0fe21e44c854217a1eeb462e81dea1cc4c3fca",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/inner_product_space/laplacian/basic.lean",
+      "current_sha256": "0aceb3590f52568a2f4216ecce5259a289dd77e56e02221e269ccbb1fb8e9dad",
+      "checkpoint_path": "TauCeti/Analysis/InnerProductSpace/Laplacian/Basic.lean",
+      "checkpoint_sha256": "d0681e9b7f686039b960c74fd681f05fc36aebccca92361966a119f10e685615",
+      "recorded_upstream_sha256": "d0681e9b7f686039b960c74fd681f05fc36aebccca92361966a119f10e685615",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/inner_product_space/laplacian/comparison.lean",
+      "current_sha256": "9ed2d62ba1b302bb148390010e7805362119e6805f93b5a0829b71abeda7ba0d",
+      "checkpoint_path": "TauCeti/Analysis/InnerProductSpace/Laplacian/Comparison.lean",
+      "checkpoint_sha256": "900efb5aab9cf9079b941938c904cce28d832a0af8e91829ce7b424734c17072",
+      "recorded_upstream_sha256": "900efb5aab9cf9079b941938c904cce28d832a0af8e91829ce7b424734c17072",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/inner_product_space/laplacian/drift_maximum_principle.lean",
+      "current_sha256": "54a2fa7057ebadbc95131d8494e10b07e998cd854366788fddbbc91d70fc2552",
+      "checkpoint_path": "TauCeti/Analysis/InnerProductSpace/Laplacian/DriftMaximumPrinciple.lean",
+      "checkpoint_sha256": "1dc99da3b69fba1431a303727e2f99bd04ceee45a8cb46f2f5eab5966f9a8cbc",
+      "recorded_upstream_sha256": "1dc99da3b69fba1431a303727e2f99bd04ceee45a8cb46f2f5eab5966f9a8cbc",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/inner_product_space/laplacian/hopf_lemma.lean",
+      "current_sha256": "f435673dcc93468bf26afc164f8e5c7ce3149faad14a2e6e847b945137a90987",
+      "checkpoint_path": "TauCeti/Analysis/InnerProductSpace/Laplacian/HopfLemma.lean",
+      "checkpoint_sha256": "7b1884c1c410da17736f0a27b5344149d0d76c0d789cc998fea9a9cd496a95df",
+      "recorded_upstream_sha256": "7b1884c1c410da17736f0a27b5344149d0d76c0d789cc998fea9a9cd496a95df",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/inner_product_space/laplacian/local_extr.lean",
+      "current_sha256": "782ff4c2f284314784b3cf6d5473bbb8d70aac8d24cefbb73094b83a47273108",
+      "checkpoint_path": "TauCeti/Analysis/InnerProductSpace/Laplacian/LocalExtr.lean",
+      "checkpoint_sha256": "8d8e39723648dcf676c42b619680b59dbfd5cdf5dbf457ba3eebcac49548209c",
+      "recorded_upstream_sha256": "8d8e39723648dcf676c42b619680b59dbfd5cdf5dbf457ba3eebcac49548209c",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/inner_product_space/laplacian/lower_order_maximum_principle.lean",
+      "current_sha256": "2acee46a75ded556f842d2561c7a4aba8cb098fa7348170a3beb1e0350816d77",
+      "checkpoint_path": "TauCeti/Analysis/InnerProductSpace/Laplacian/LowerOrderMaximumPrinciple.lean",
+      "checkpoint_sha256": "4eed600530bb5921841cbf170eaff2c33d6f47c723f59575da256709dde0e0d6",
+      "recorded_upstream_sha256": "4eed600530bb5921841cbf170eaff2c33d6f47c723f59575da256709dde0e0d6",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/inner_product_space/laplacian/maximum_principle.lean",
+      "current_sha256": "11ebc6646fe51010a55bceb10bf8952b2300b2a5d8e1b68305571a1d30d97e0b",
+      "checkpoint_path": "TauCeti/Analysis/InnerProductSpace/Laplacian/MaximumPrinciple.lean",
+      "checkpoint_sha256": "ba30dcf0176ef7002bbdf7677ebacad74e3f87f4377c6a6018d0b38fc760d075",
+      "recorded_upstream_sha256": "ba30dcf0176ef7002bbdf7677ebacad74e3f87f4377c6a6018d0b38fc760d075",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/inner_product_space/laplacian/parametric_integral.lean",
+      "current_sha256": "4776a17fc7607b5eb098617196639e8bc4afc109b20effe48ad4de4b41481267",
+      "checkpoint_path": "TauCeti/Analysis/InnerProductSpace/Laplacian/ParametricIntegral.lean",
+      "checkpoint_sha256": "3979e74a58906305466f6c54dfe51e90ebe82fc08cbd05c967696939a9eafccd",
+      "recorded_upstream_sha256": "3979e74a58906305466f6c54dfe51e90ebe82fc08cbd05c967696939a9eafccd",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/inner_product_space/laplacian/strong_maximum_principle.lean",
+      "current_sha256": "30f4c0d1e7f0e9ccc02ac3cd7c437c13a785f48cfd0397233c83a748338524c7",
+      "checkpoint_path": "TauCeti/Analysis/InnerProductSpace/Laplacian/StrongMaximumPrinciple.lean",
+      "checkpoint_sha256": "8a55798599b8c232e5efa636787b53b39d0a9b269477ad686c5c431a897d275d",
+      "recorded_upstream_sha256": "8a55798599b8c232e5efa636787b53b39d0a9b269477ad686c5c431a897d275d",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/inner_product_space/laplacian/weak_maximum_principle.lean",
+      "current_sha256": "e4cd726cdeec5e49ea29c7e2e9b9f88bf73eec9c7cf5a80be7f848ad9b51aeef",
+      "checkpoint_path": "TauCeti/Analysis/InnerProductSpace/Laplacian/WeakMaximumPrinciple.lean",
+      "checkpoint_sha256": "13214c042938260c6a07d6fc8c08101bcb418b1be26f5582aa5f16b0dfa02042",
+      "recorded_upstream_sha256": "13214c042938260c6a07d6fc8c08101bcb418b1be26f5582aa5f16b0dfa02042",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/inner_product_space/norm_pow.lean",
+      "current_sha256": "36418ca311e87aac800ac4c4916f5790da87b2976a0a15cfc96d68fb83e0237f",
+      "checkpoint_path": "TauCeti/Analysis/InnerProductSpace/NormPow.lean",
+      "checkpoint_sha256": "d6d32d211dad86a761774521c06c8ed0f261f71434d8df4545d66aa7892a3503",
+      "recorded_upstream_sha256": "d6d32d211dad86a761774521c06c8ed0f261f71434d8df4545d66aa7892a3503",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/inner_product_space/point_spectrum.lean",
+      "current_sha256": "900c03909f55dc821d5d7b6d917bf004bf3753c082714039a27388ea4c29101c",
+      "checkpoint_path": "TauCeti/Analysis/InnerProductSpace/PointSpectrum.lean",
+      "checkpoint_sha256": "fd6249bf03651fb8484cc73b9eb0bd967be96b8a943c0ae51454b3f2798b36c7",
+      "recorded_upstream_sha256": "fd6249bf03651fb8484cc73b9eb0bd967be96b8a943c0ae51454b3f2798b36c7",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/inner_product_space/spectrum.lean",
+      "current_sha256": "24badfeeedf7040d00045a802ffc48b7584fdff4297aa821febfd8d70fe43507",
+      "checkpoint_path": "TauCeti/Analysis/InnerProductSpace/Spectrum.lean",
+      "checkpoint_sha256": "66edca14f699adf7166968ac595bf4eb07b14fe3959239c984cfd7306b8dd679",
+      "recorded_upstream_sha256": "66edca14f699adf7166968ac595bf4eb07b14fe3959239c984cfd7306b8dd679",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/inner_product_space/symmetric/functional_calculus.lean",
+      "current_sha256": "83b7af3df2325eaef93474471c15914effa3a65e70deb459a1cf5c219fb83cf5",
+      "checkpoint_path": "TauCeti/Analysis/InnerProductSpace/Symmetric/FunctionalCalculus.lean",
+      "checkpoint_sha256": "83b7af3df2325eaef93474471c15914effa3a65e70deb459a1cf5c219fb83cf5",
+      "recorded_upstream_sha256": "83b7af3df2325eaef93474471c15914effa3a65e70deb459a1cf5c219fb83cf5",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/matrix/eigenvalues.lean",
+      "current_sha256": "e1920ace2cbb1ff4ef3fb62bcfa67f272a800bdb26345f12dadfa65df12cc342",
+      "checkpoint_path": "TauCeti/Analysis/Matrix/Eigenvalues.lean",
+      "checkpoint_sha256": "7ab39a12785bba3cf3a39295f5769a08c4992eb7f8a5703fd07928359efed077",
+      "recorded_upstream_sha256": "7ab39a12785bba3cf3a39295f5769a08c4992eb7f8a5703fd07928359efed077",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/matrix/entrywise_op_norm.lean",
+      "current_sha256": "68ab8b35677a6c2abb1cc2e152d48a783961bc0110b40e95ea356562bab7f729",
+      "checkpoint_path": "TauCeti/Analysis/Matrix/EntrywiseOpNorm.lean",
+      "checkpoint_sha256": "e21f8c6fd0138f00d3c596417fd36f80b6b2a78cd49856f826bf13bec2c27d9f",
+      "recorded_upstream_sha256": "e21f8c6fd0138f00d3c596417fd36f80b6b2a78cd49856f826bf13bec2c27d9f",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/matrix/euclidean_lin.lean",
+      "current_sha256": "dfc4d61be12eb27e166216c41d649efaff145fbf1f6784b1813c0898ff51c5f9",
+      "checkpoint_path": "TauCeti/Analysis/Matrix/EuclideanLin.lean",
+      "checkpoint_sha256": "dfc4d61be12eb27e166216c41d649efaff145fbf1f6784b1813c0898ff51c5f9",
+      "recorded_upstream_sha256": "dfc4d61be12eb27e166216c41d649efaff145fbf1f6784b1813c0898ff51c5f9",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/matrix/frobenius.lean",
+      "current_sha256": "29beb3e44f0eaae4d8c74599f0f49228f9f73ede288aeb6178fe01b27a0b6a10",
+      "checkpoint_path": "TauCeti/Analysis/Matrix/Frobenius.lean",
+      "checkpoint_sha256": "29beb3e44f0eaae4d8c74599f0f49228f9f73ede288aeb6178fe01b27a0b6a10",
+      "recorded_upstream_sha256": "29beb3e44f0eaae4d8c74599f0f49228f9f73ede288aeb6178fe01b27a0b6a10",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/matrix/functional_calculus.lean",
+      "current_sha256": "d133703ea49a828f363593644609e6511c612fa5dc55744e57aa6aaee8ae536d",
+      "checkpoint_path": "TauCeti/Analysis/Matrix/FunctionalCalculus.lean",
+      "checkpoint_sha256": "13769968b05eb84a5b661732c3425ea6b7d93801a0062fd921215a93ecdeeb79",
+      "recorded_upstream_sha256": "13769968b05eb84a5b661732c3425ea6b7d93801a0062fd921215a93ecdeeb79",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/matrix/l2_op_norm.lean",
+      "current_sha256": "9d0fadee3d3f5f5c8be50bfc5c19513249403971be59f037680bc6a47d9ddd32",
+      "checkpoint_path": "TauCeti/Analysis/Matrix/L2OpNorm.lean",
+      "checkpoint_sha256": "9d0fadee3d3f5f5c8be50bfc5c19513249403971be59f037680bc6a47d9ddd32",
+      "recorded_upstream_sha256": "9d0fadee3d3f5f5c8be50bfc5c19513249403971be59f037680bc6a47d9ddd32",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/matrix/ldl.lean",
+      "current_sha256": "cb563b8d7b80ffe6418da9fd5dea4f5db985ae0670244ee13a6f2ea6f3c88890",
+      "checkpoint_path": "TauCeti/Analysis/Matrix/LDL.lean",
+      "checkpoint_sha256": "f9135b5ff7223bf200e781c1bb2566e8a213abdac1b4545d7f76f122f187bb0c",
+      "recorded_upstream_sha256": "f9135b5ff7223bf200e781c1bb2566e8a213abdac1b4545d7f76f122f187bb0c",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/matrix/measurable_space.lean",
+      "current_sha256": "b8169ab6878a2d5908dd75fa3816d24c7cc8c25d27f8bb157cda4bff58679e2c",
+      "checkpoint_path": "TauCeti/Analysis/Matrix/MeasurableSpace.lean",
+      "checkpoint_sha256": "e9c88b848dbbbda5af40a5d1385d9b7bced0a1f5f9814f64a33204cb146eca9c",
+      "recorded_upstream_sha256": "e9c88b848dbbbda5af40a5d1385d9b7bced0a1f5f9814f64a33204cb146eca9c",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/matrix/orthogonal_rows.lean",
+      "current_sha256": "525af384846225e0e8f142f398b670b6160391d4210bcf73befa5235cdd2b1c7",
+      "checkpoint_path": "TauCeti/Analysis/Matrix/OrthogonalRows.lean",
+      "checkpoint_sha256": "525af384846225e0e8f142f398b670b6160391d4210bcf73befa5235cdd2b1c7",
+      "recorded_upstream_sha256": "525af384846225e0e8f142f398b670b6160391d4210bcf73befa5235cdd2b1c7",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/matrix/pos_def.lean",
+      "current_sha256": "16be6e199d7ec2cc589666fa2f9f987538480f089a98088cca3183b4a9a215a8",
+      "checkpoint_path": "TauCeti/Analysis/Matrix/PosDef.lean",
+      "checkpoint_sha256": "16be6e199d7ec2cc589666fa2f9f987538480f089a98088cca3183b4a9a215a8",
+      "recorded_upstream_sha256": "16be6e199d7ec2cc589666fa2f9f987538480f089a98088cca3183b4a9a215a8",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/matrix/pos_semidef/basic.lean",
+      "current_sha256": "7bbdb694bc4c10c041c8ca29d9fb82c070c579adc9c88d23e5f77279cc1a2ddb",
+      "checkpoint_path": "TauCeti/Analysis/Matrix/PosSemidef/Basic.lean",
+      "checkpoint_sha256": "eeccd377a18aa5f45fbf6130eb3531f57f169a11a9dbfc1c77046f93e4d4273b",
+      "recorded_upstream_sha256": "eeccd377a18aa5f45fbf6130eb3531f57f169a11a9dbfc1c77046f93e4d4273b",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/matrix/spectrum.lean",
+      "current_sha256": "453e8adb754550f0fc4c5cc643861892bc1fdd345e60fa09434feac9898eb1d4",
+      "checkpoint_path": "TauCeti/Analysis/Matrix/Spectrum.lean",
+      "checkpoint_sha256": "453e8adb754550f0fc4c5cc643861892bc1fdd345e60fa09434feac9898eb1d4",
+      "recorded_upstream_sha256": "453e8adb754550f0fc4c5cc643861892bc1fdd345e60fa09434feac9898eb1d4",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/matrix/sqrt.lean",
+      "current_sha256": "f96e968cf8e15ec07506bf1d9f940f02fd171f3c869d68507f260a00e31cc0ac",
+      "checkpoint_path": "TauCeti/Analysis/Matrix/Sqrt.lean",
+      "checkpoint_sha256": "39bf70c37920e16b0d1247f0dab06bf7825114fd40b08ea8b4b1465344f189cc",
+      "recorded_upstream_sha256": "39bf70c37920e16b0d1247f0dab06bf7825114fd40b08ea8b4b1465344f189cc",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/normed/lp/pi_lp.lean",
+      "current_sha256": "765bb3c045058a8e71bfbb904a2fbe385c0f9403d59f37617e834643720f3e02",
+      "checkpoint_path": "TauCeti/Analysis/Normed/Lp/PiLp.lean",
+      "checkpoint_sha256": "765bb3c045058a8e71bfbb904a2fbe385c0f9403d59f37617e834643720f3e02",
+      "recorded_upstream_sha256": "765bb3c045058a8e71bfbb904a2fbe385c0f9403d59f37617e834643720f3e02",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/normed/module/ball.lean",
+      "current_sha256": "4147a80c4c321586dfd3da81faec2be8174e038ec2ff8efe550a12ca3ac01a72",
+      "checkpoint_path": "TauCeti/Analysis/Normed/Module/Ball.lean",
+      "checkpoint_sha256": "a568f8d7127b14d80e98a4620fb91baa30b40c535479e8ec15a59f386a3ece87",
+      "recorded_upstream_sha256": "a568f8d7127b14d80e98a4620fb91baa30b40c535479e8ec15a59f386a3ece87",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/normed/module/rc_like/real.lean",
+      "current_sha256": "af93da289b296f6cc9dff036f8dd6da1d1af472ab2d4933770bd3e3ece543329",
+      "checkpoint_path": "TauCeti/Analysis/Normed/Module/RCLike/Real.lean",
+      "checkpoint_sha256": "af93da289b296f6cc9dff036f8dd6da1d1af472ab2d4933770bd3e3ece543329",
+      "recorded_upstream_sha256": "af93da289b296f6cc9dff036f8dd6da1d1af472ab2d4933770bd3e3ece543329",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/normed/operator/basic.lean",
+      "current_sha256": "d7605232c56e917f675041b54c02097857dfa9c6bb061b88ddf2ba28835f34ac",
+      "checkpoint_path": "TauCeti/Analysis/Normed/Operator/Basic.lean",
+      "checkpoint_sha256": "d7605232c56e917f675041b54c02097857dfa9c6bb061b88ddf2ba28835f34ac",
+      "recorded_upstream_sha256": "d7605232c56e917f675041b54c02097857dfa9c6bb061b88ddf2ba28835f34ac",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/pde/fundamental_solution/euclidean/basic.lean",
+      "current_sha256": "f6ac5b973030fe1d4b2d29e0cfc9e4d79fba0ad11f94b0f38260d4c60382739d",
+      "checkpoint_path": "TauCeti/Analysis/PDE/FundamentalSolution/Euclidean/Basic.lean",
+      "checkpoint_sha256": "b85ae32b713f1039ab72a8e8d767ec7a85286cf08181fb7a4c5c495c62802fa0",
+      "recorded_upstream_sha256": "b85ae32b713f1039ab72a8e8d767ec7a85286cf08181fb7a4c5c495c62802fa0",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/pde/green_function/ball.lean",
+      "current_sha256": "d7c312355296e807fb29e8482ff6e3ed5d8d5e2b1e8ab6c3d5096626104326f6",
+      "checkpoint_path": "TauCeti/Analysis/PDE/GreenFunction/Ball.lean",
+      "checkpoint_sha256": "240a08623c3b3268bc5ba9a1040714011152683789b7168054e199822d523459",
+      "recorded_upstream_sha256": "240a08623c3b3268bc5ba9a1040714011152683789b7168054e199822d523459",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/pde/green_function/boundary_concentration.lean",
+      "current_sha256": "c1967a8d22548b65d4cb0dcaa09b52b668864759c96ef004000432b4f8ee93c1",
+      "checkpoint_path": "TauCeti/Analysis/PDE/GreenFunction/BoundaryConcentration.lean",
+      "checkpoint_sha256": "1b04e40bc9f47c34e3b738f7f12facd29d06cc16b3d9f48ec0b494976a3f9594",
+      "recorded_upstream_sha256": "1b04e40bc9f47c34e3b738f7f12facd29d06cc16b3d9f48ec0b494976a3f9594",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/pde/poisson_integral/ball.lean",
+      "current_sha256": "3585a05e90aefea4793c0bdece0d926d399c09c116dc559a1ea2b5f2bc70709b",
+      "checkpoint_path": "TauCeti/Analysis/PDE/PoissonIntegral/Ball.lean",
+      "checkpoint_sha256": "02ce97bab3bab5586e4bc29a386977bc793b726b992615042d057b630d364441",
+      "recorded_upstream_sha256": "02ce97bab3bab5586e4bc29a386977bc793b726b992615042d057b630d364441",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/sobolev/weak_deriv/basic.lean",
+      "current_sha256": "4561874e670dcb0eca00beafa940aacac3297bc149bea25bb91120dd303e60b8",
+      "checkpoint_path": "TauCeti/Analysis/Sobolev/WeakDeriv/Basic.lean",
+      "checkpoint_sha256": "6473b902418f104ac3a9fad1743d36546a34daedfb56ec86d1762d0923fd0075",
+      "recorded_upstream_sha256": "6473b902418f104ac3a9fad1743d36546a34daedfb56ec86d1762d0923fd0075",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/sobolev/weak_deriv/laplacian.lean",
+      "current_sha256": "82f3f31f1513cee0fed7aeb22505e19852ea4440aa2d08e2fc0081d945c45659",
+      "checkpoint_path": "TauCeti/Analysis/Sobolev/WeakDeriv/Laplacian.lean",
+      "checkpoint_sha256": "a774c002059e9a3b68ad9b8a7896f1fdc6c50060f1068e99a0faee31726c9e19",
+      "recorded_upstream_sha256": "a774c002059e9a3b68ad9b8a7896f1fdc6c50060f1068e99a0faee31726c9e19",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/special_functions/erf.lean",
+      "current_sha256": "f0ed0ac452d92bb95362e1a77f4c2d6a2f24dd5c1c2f35ed1d95443d831ed91f",
+      "checkpoint_path": "TauCeti/Analysis/SpecialFunctions/Erf.lean",
+      "checkpoint_sha256": "f0ed0ac452d92bb95362e1a77f4c2d6a2f24dd5c1c2f35ed1d95443d831ed91f",
+      "recorded_upstream_sha256": "f0ed0ac452d92bb95362e1a77f4c2d6a2f24dd5c1c2f35ed1d95443d831ed91f",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/special_functions/gamma.lean",
+      "current_sha256": "dcaf99abe775bcc29acf45c05ef154baa770eadfc9b4b6285bdb4b34887b01a8",
+      "checkpoint_path": "TauCeti/Analysis/SpecialFunctions/Gamma.lean",
+      "checkpoint_sha256": "dcaf99abe775bcc29acf45c05ef154baa770eadfc9b4b6285bdb4b34887b01a8",
+      "recorded_upstream_sha256": "dcaf99abe775bcc29acf45c05ef154baa770eadfc9b4b6285bdb4b34887b01a8",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/special_functions/incomplete_gamma.lean",
+      "current_sha256": "46a2035ff196bedaf0f520227496ab14b83b0e11ed760954add421a3e79e89c6",
+      "checkpoint_path": "TauCeti/Analysis/SpecialFunctions/IncompleteGamma.lean",
+      "checkpoint_sha256": "8896a9555f92a58b32f9b79682d6e9d10fdd5cf87a667cd8904108fca3af0ea1",
+      "recorded_upstream_sha256": "8896a9555f92a58b32f9b79682d6e9d10fdd5cf87a667cd8904108fca3af0ea1",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/special_functions/log/sum_log_one_sub.lean",
+      "current_sha256": "6b6b87edca0ad0880664c05e5da01cdf290c72ead756288d3aa4a245f549c39a",
+      "checkpoint_path": "TauCeti/Analysis/SpecialFunctions/Log/SumLogOneSub.lean",
+      "checkpoint_sha256": "6b6b87edca0ad0880664c05e5da01cdf290c72ead756288d3aa4a245f549c39a",
+      "recorded_upstream_sha256": "6b6b87edca0ad0880664c05e5da01cdf290c72ead756288d3aa4a245f549c39a",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/special_functions/multivariate_gamma/basic.lean",
+      "current_sha256": "e400eeee32784bc2ee01d4288aedcbe7349d20170919b963d8d98d840758b3b2",
+      "checkpoint_path": "TauCeti/Analysis/SpecialFunctions/MultivariateGamma/Basic.lean",
+      "checkpoint_sha256": "4a1f97e06ba5d7a252932ddec9143ff94a7a95b50a75c65a2861ba41a00746db",
+      "recorded_upstream_sha256": "4a1f97e06ba5d7a252932ddec9143ff94a7a95b50a75c65a2861ba41a00746db",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/special_functions/multivariate_gamma/cholesky.lean",
+      "current_sha256": "345244bdfc8388672c65d18996717b666619f5d1f47b4254575aab239970dba4",
+      "checkpoint_path": "TauCeti/Analysis/SpecialFunctions/MultivariateGamma/Cholesky.lean",
+      "checkpoint_sha256": "1827df8f522525ee0203179de815a1daaf0d6cee8973555060ccce13930aaad1",
+      "recorded_upstream_sha256": "1827df8f522525ee0203179de815a1daaf0d6cee8973555060ccce13930aaad1",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/special_functions/multivariate_gamma/divergence.lean",
+      "current_sha256": "44e532c40f6d2208bebe2e7e6b9dfba92f2bd1772db23c228d534e4151c93b59",
+      "checkpoint_path": "TauCeti/Analysis/SpecialFunctions/MultivariateGamma/Divergence.lean",
+      "checkpoint_sha256": "368b810522972ca7aebb7e7a7459cd5f48544f6bd1a97335de102b8bbda9bc29",
+      "recorded_upstream_sha256": "368b810522972ca7aebb7e7a7459cd5f48544f6bd1a97335de102b8bbda9bc29",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/special_functions/multivariate_gamma/integral.lean",
+      "current_sha256": "35bafa62f4812c3aec74bf245a4418f4dbb09026297256ce31ae6f91d7c4b858",
+      "checkpoint_path": "TauCeti/Analysis/SpecialFunctions/MultivariateGamma/Integral.lean",
+      "checkpoint_sha256": "17d06bab61de69e2df68ed25e1eb62f07a9604bed77693fce062e5c6bbf5e5c0",
+      "recorded_upstream_sha256": "17d06bab61de69e2df68ed25e1eb62f07a9604bed77693fce062e5c6bbf5e5c0",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/special_functions/pow/real.lean",
+      "current_sha256": "cf4e50c4a88ff8dd848d4fcee9a725a9cae57e68c4ab14133df10a302d516f01",
+      "checkpoint_path": "TauCeti/Analysis/SpecialFunctions/Pow/Real.lean",
+      "checkpoint_sha256": "cf4e50c4a88ff8dd848d4fcee9a725a9cae57e68c4ab14133df10a302d516f01",
+      "recorded_upstream_sha256": "cf4e50c4a88ff8dd848d4fcee9a725a9cae57e68c4ab14133df10a302d516f01",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/analysis/specific_limits/sq_le_mul_doubling.lean",
+      "current_sha256": "dbcce654714fa018c6e182ed1a381eb0784bf546349ed282ee91beb18f01720c",
+      "checkpoint_path": "TauCeti/Analysis/SpecificLimits/SqLeMulDoubling.lean",
+      "checkpoint_sha256": "dbcce654714fa018c6e182ed1a381eb0784bf546349ed282ee91beb18f01720c",
+      "recorded_upstream_sha256": "dbcce654714fa018c6e182ed1a381eb0784bf546349ed282ee91beb18f01720c",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/combinatorics/enumerative/partition/basic.lean",
+      "current_sha256": "5682174af161536cd16631ea367e7e3577af43a8e0146f24af51b8751707f038",
+      "checkpoint_path": "TauCeti/Combinatorics/Enumerative/Partition/Basic.lean",
+      "checkpoint_sha256": "5682174af161536cd16631ea367e7e3577af43a8e0146f24af51b8751707f038",
+      "recorded_upstream_sha256": "5682174af161536cd16631ea367e7e3577af43a8e0146f24af51b8751707f038",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/combinatorics/enumerative/partition/conjugate.lean",
+      "current_sha256": "c1b304257941f3dee7522401760f46e7be78a7d8075a0c2dfe851161b0b01307",
+      "checkpoint_path": "TauCeti/Combinatorics/Enumerative/Partition/Conjugate.lean",
+      "checkpoint_sha256": "65200230d99d780851b4f5fd3ceba38a9596e7dea9c71de826565ed5f56ef486",
+      "recorded_upstream_sha256": "65200230d99d780851b4f5fd3ceba38a9596e7dea9c71de826565ed5f56ef486",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/combinatorics/enumerative/partition/dominance.lean",
+      "current_sha256": "f190c17a74c562c6000b09030a50bdd3ff48499eb56bac5ded2db66866143ef8",
+      "checkpoint_path": "TauCeti/Combinatorics/Enumerative/Partition/Dominance.lean",
+      "checkpoint_sha256": "61e3f1099909394d7084f5a4a59886230aedba13fcbf4b0d3b9978512383d199",
+      "recorded_upstream_sha256": "61e3f1099909394d7084f5a4a59886230aedba13fcbf4b0d3b9978512383d199",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/combinatorics/young/bender_knuth.lean",
+      "current_sha256": "c94574d8c8389911046763fd5bfc93a0f7ced85be1382cdf2d01e35237cde2ba",
+      "checkpoint_path": "TauCeti/Combinatorics/Young/BenderKnuth.lean",
+      "checkpoint_sha256": "deb488bde28190715886a89311ccf5df8f7a36f28ab3133e26d1b23104f906f6",
+      "recorded_upstream_sha256": "deb488bde28190715886a89311ccf5df8f7a36f28ab3133e26d1b23104f906f6",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/combinatorics/young/diagram.lean",
+      "current_sha256": "9b39863c01abc682ed15b5cbf89ab1c57c6c17715252d9b1edb442d90f8b7f29",
+      "checkpoint_path": "TauCeti/Combinatorics/Young/Diagram.lean",
+      "checkpoint_sha256": "9b39863c01abc682ed15b5cbf89ab1c57c6c17715252d9b1edb442d90f8b7f29",
+      "recorded_upstream_sha256": "9b39863c01abc682ed15b5cbf89ab1c57c6c17715252d9b1edb442d90f8b7f29",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/combinatorics/young/kostka.lean",
+      "current_sha256": "553013c1d7cd9c6aeaa14d02ad4c06a65b8eb45b299f9854e59b62d8d746ff8f",
+      "checkpoint_path": "TauCeti/Combinatorics/Young/Kostka.lean",
+      "checkpoint_sha256": "8d9b312861d842acb86b7dce4677ed1f7dab12e7d77b651b320efdcb433f056d",
+      "recorded_upstream_sha256": "8d9b312861d842acb86b7dce4677ed1f7dab12e7d77b651b320efdcb433f056d",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/combinatorics/young/partitions.lean",
+      "current_sha256": "7adc4b1234c195174d627092a5ce07a3b487e1fa2a56e71b3dbbd69e603bf395",
+      "checkpoint_path": "TauCeti/Combinatorics/Young/Partitions.lean",
+      "checkpoint_sha256": "141332f14bd6e94ec4b72852dff51e97e199998594d6f99a994a4cd51dbf2c32",
+      "recorded_upstream_sha256": "141332f14bd6e94ec4b72852dff51e97e199998594d6f99a994a4cd51dbf2c32",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/combinatorics/young/semistandard_tableau.lean",
+      "current_sha256": "7a5ad760cbb2ec67fa509017c333889d983d5d45c18b0a23debfcdaede5ba6be",
+      "checkpoint_path": "TauCeti/Combinatorics/Young/SemistandardTableau.lean",
+      "checkpoint_sha256": "7a5ad760cbb2ec67fa509017c333889d983d5d45c18b0a23debfcdaede5ba6be",
+      "recorded_upstream_sha256": "7a5ad760cbb2ec67fa509017c333889d983d5d45c18b0a23debfcdaede5ba6be",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/data/fin/tuple/sort.lean",
+      "current_sha256": "3445e4f75c62855eb9f4d5330e83dc3a586b92430bd39718a808d9b53dfbe18e",
+      "checkpoint_path": "TauCeti/Data/Fin/Tuple/Sort.lean",
+      "checkpoint_sha256": "3445e4f75c62855eb9f4d5330e83dc3a586b92430bd39718a808d9b53dfbe18e",
+      "recorded_upstream_sha256": "3445e4f75c62855eb9f4d5330e83dc3a586b92430bd39718a808d9b53dfbe18e",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/data/list/lex.lean",
+      "current_sha256": "29c3241ab71eeb900c2d4d10610a1d6a13367ff6fa05f08bfcc5980690124c9d",
+      "checkpoint_path": "TauCeti/Data/List/Lex.lean",
+      "checkpoint_sha256": "29c3241ab71eeb900c2d4d10610a1d6a13367ff6fa05f08bfcc5980690124c9d",
+      "recorded_upstream_sha256": "29c3241ab71eeb900c2d4d10610a1d6a13367ff6fa05f08bfcc5980690124c9d",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/linear_algebra/dimension/submodule.lean",
+      "current_sha256": "240593832f44f05dd418c29d35539bbe0aa99c2ea9c5c088413097593d09718a",
+      "checkpoint_path": "TauCeti/LinearAlgebra/Dimension/Submodule.lean",
+      "checkpoint_sha256": "2765bd0fd51cbe14a82f4564a1ef4da84d5186a58f9ed07996ddec9128f5a8e4",
+      "recorded_upstream_sha256": "2765bd0fd51cbe14a82f4564a1ef4da84d5186a58f9ed07996ddec9128f5a8e4",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/linear_algebra/eigenspace/anticommute.lean",
+      "current_sha256": "259cbca1b8cb2c45e4c5ef5c10551d0981ed2bd578d45ee8c2111a34a0ac7897",
+      "checkpoint_path": "TauCeti/LinearAlgebra/Eigenspace/Anticommute.lean",
+      "checkpoint_sha256": "259cbca1b8cb2c45e4c5ef5c10551d0981ed2bd578d45ee8c2111a34a0ac7897",
+      "recorded_upstream_sha256": "259cbca1b8cb2c45e4c5ef5c10551d0981ed2bd578d45ee8c2111a34a0ac7897",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/linear_algebra/matrix/alternating.lean",
+      "current_sha256": "bf328728a5407412ada355aec6d7b9c8e59770b9c28c5a5ecb7ef3713d7bb8e5",
+      "checkpoint_path": "TauCeti/LinearAlgebra/Matrix/Alternating.lean",
+      "checkpoint_sha256": "fbd955a91a5c358a08758d2b1a41127c21df78f44367a22a2661e37d1a5de1a0",
+      "recorded_upstream_sha256": "fbd955a91a5c358a08758d2b1a41127c21df78f44367a22a2661e37d1a5de1a0",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/linear_algebra/matrix/block_succ.lean",
+      "current_sha256": "09937a19d89f9db646c58da6196c1d56e993ccc2212a5e4ef15015797f2ec0a8",
+      "checkpoint_path": "TauCeti/LinearAlgebra/Matrix/BlockSucc.lean",
+      "checkpoint_sha256": "09937a19d89f9db646c58da6196c1d56e993ccc2212a5e4ef15015797f2ec0a8",
+      "recorded_upstream_sha256": "09937a19d89f9db646c58da6196c1d56e993ccc2212a5e4ef15015797f2ec0a8",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/linear_algebra/matrix/cholesky/basic.lean",
+      "current_sha256": "514aa7a622cb98a653f0edd83d4a21cf7ce8efe88aa526fd696350bd9dbe9dc3",
+      "checkpoint_path": "TauCeti/LinearAlgebra/Matrix/Cholesky/Basic.lean",
+      "checkpoint_sha256": "5a515623e1a725af36e261bbad8b0292d2b39770272940302b97e083a543724f",
+      "recorded_upstream_sha256": "5a515623e1a725af36e261bbad8b0292d2b39770272940302b97e083a543724f",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/linear_algebra/matrix/cholesky/coordinates.lean",
+      "current_sha256": "a16a9b0ba0551207c717c4183f69de0fabce0edab215d10060641d39b0804da9",
+      "checkpoint_path": "TauCeti/LinearAlgebra/Matrix/Cholesky/Coordinates.lean",
+      "checkpoint_sha256": "94418f892899391976d0639b2abcadfb187febd58d5a741a83af93fd45dbfdc4",
+      "recorded_upstream_sha256": "94418f892899391976d0639b2abcadfb187febd58d5a741a83af93fd45dbfdc4",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/linear_algebra/matrix/cholesky/equiv.lean",
+      "current_sha256": "7fe942391b4ccf76d122a775418a40a5f5e54ca71b8aecc9b619573bdf1db9cb",
+      "checkpoint_path": "TauCeti/LinearAlgebra/Matrix/Cholesky/Equiv.lean",
+      "checkpoint_sha256": "62344919779f30bdbe87d9bab5dc50aa4d2fa7934abe4c6d0ba293a6efb578e7",
+      "recorded_upstream_sha256": "62344919779f30bdbe87d9bab5dc50aa4d2fa7934abe4c6d0ba293a6efb578e7",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/linear_algebra/matrix/cholesky/jacobian.lean",
+      "current_sha256": "be32dddd4258d09586aebc5c3c2e07a823b0531ab49c24d6e54e487096637353",
+      "checkpoint_path": "TauCeti/LinearAlgebra/Matrix/Cholesky/Jacobian.lean",
+      "checkpoint_sha256": "cb79697644f7bc77bfa7298a3d84129e3ddbdb167144a9094300c33d69998206",
+      "recorded_upstream_sha256": "cb79697644f7bc77bfa7298a3d84129e3ddbdb167144a9094300c33d69998206",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/linear_algebra/matrix/cholesky/topology.lean",
+      "current_sha256": "6292c65855e69b5de820cec084e304c381970612ec26cedc3f9b2342ac3de6fe",
+      "checkpoint_path": "TauCeti/LinearAlgebra/Matrix/Cholesky/Topology.lean",
+      "checkpoint_sha256": "8e4fc1ab3e8c0cd31d856caa62d25417d2cbfde048586d204c349ef3e24122fb",
+      "recorded_upstream_sha256": "8e4fc1ab3e8c0cd31d856caa62d25417d2cbfde048586d204c349ef3e24122fb",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/linear_algebra/matrix/congruence.lean",
+      "current_sha256": "40a229a626aeaa4360883994e7ca570f80dbcccd48ca81c0b5b103b4d108ff08",
+      "checkpoint_path": "TauCeti/LinearAlgebra/Matrix/Congruence.lean",
+      "checkpoint_sha256": "40a229a626aeaa4360883994e7ca570f80dbcccd48ca81c0b5b103b4d108ff08",
+      "recorded_upstream_sha256": "40a229a626aeaa4360883994e7ca570f80dbcccd48ca81c0b5b103b4d108ff08",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/linear_algebra/matrix/general_linear_group/special_unitary.lean",
+      "current_sha256": "03e48da59577c14008562b9bfeae17a48d4d224f8c5b1eb0055bafde0c18169a",
+      "checkpoint_path": "TauCeti/LinearAlgebra/Matrix/GeneralLinearGroup/SpecialUnitary.lean",
+      "checkpoint_sha256": "03e48da59577c14008562b9bfeae17a48d4d224f8c5b1eb0055bafde0c18169a",
+      "recorded_upstream_sha256": "03e48da59577c14008562b9bfeae17a48d4d224f8c5b1eb0055bafde0c18169a",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/linear_algebra/matrix/inv_sub.lean",
+      "current_sha256": "64cb1bbdd7f9d006c7237bb2093f10bb5a48337d0c87d628c5d2926e59a5593c",
+      "checkpoint_path": "TauCeti/LinearAlgebra/Matrix/InvSub.lean",
+      "checkpoint_sha256": "64cb1bbdd7f9d006c7237bb2093f10bb5a48337d0c87d628c5d2926e59a5593c",
+      "recorded_upstream_sha256": "64cb1bbdd7f9d006c7237bb2093f10bb5a48337d0c87d628c5d2926e59a5593c",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/linear_algebra/matrix/mv_polynomial.lean",
+      "current_sha256": "be2dd7eba26a57f7a8221c5db5cc561603c17f083760fcc450679bf2e183bde5",
+      "checkpoint_path": "TauCeti/LinearAlgebra/Matrix/MvPolynomial.lean",
+      "checkpoint_sha256": "be2dd7eba26a57f7a8221c5db5cc561603c17f083760fcc450679bf2e183bde5",
+      "recorded_upstream_sha256": "be2dd7eba26a57f7a8221c5db5cc561603c17f083760fcc450679bf2e183bde5",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/linear_algebra/matrix/pos_semidef.lean",
+      "current_sha256": "41ee8583b280d53363f887fb8b063cbe789fa51264ce8f17e5b90b259da4a991",
+      "checkpoint_path": "TauCeti/LinearAlgebra/Matrix/PosSemidef.lean",
+      "checkpoint_sha256": "41ee8583b280d53363f887fb8b063cbe789fa51264ce8f17e5b90b259da4a991",
+      "recorded_upstream_sha256": "41ee8583b280d53363f887fb8b063cbe789fa51264ce8f17e5b90b259da4a991",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/linear_algebra/matrix/rank/closed.lean",
+      "current_sha256": "a1d6480cd21ae0a779ed0b6b33931a24d213b3db06e4a13f1cdfd10c84cf304e",
+      "checkpoint_path": "TauCeti/LinearAlgebra/Matrix/Rank/Closed.lean",
+      "checkpoint_sha256": "be07f2bfcd13d0eaef3fb4455d1df414979b39406d3b86b03f18468da173d3aa",
+      "recorded_upstream_sha256": "be07f2bfcd13d0eaef3fb4455d1df414979b39406d3b86b03f18468da173d3aa",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/linear_algebra/matrix/rank.lean",
+      "current_sha256": "1c1f61c652af88d7a7cfbaf3ce79bf7fbf343449abb8320a8e7277b99814e804",
+      "checkpoint_path": "TauCeti/LinearAlgebra/Matrix/Rank.lean",
+      "checkpoint_sha256": "1c1f61c652af88d7a7cfbaf3ce79bf7fbf343449abb8320a8e7277b99814e804",
+      "recorded_upstream_sha256": "1c1f61c652af88d7a7cfbaf3ce79bf7fbf343449abb8320a8e7277b99814e804",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/linear_algebra/matrix/trace/basic.lean",
+      "current_sha256": "0bf5a095ed0ea6d72a2ad5659fc942bf925409cfe3843355e77ab675aee7b8d0",
+      "checkpoint_path": "TauCeti/LinearAlgebra/Matrix/Trace/Basic.lean",
+      "checkpoint_sha256": "0bf5a095ed0ea6d72a2ad5659fc942bf925409cfe3843355e77ab675aee7b8d0",
+      "recorded_upstream_sha256": "0bf5a095ed0ea6d72a2ad5659fc942bf925409cfe3843355e77ab675aee7b8d0",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/linear_algebra/matrix/triangular.lean",
+      "current_sha256": "7931fc69ce1365a14354ca2809a34bfdd7555fbd6dba8906f8d7882182d85dcc",
+      "checkpoint_path": "TauCeti/LinearAlgebra/Matrix/Triangular.lean",
+      "checkpoint_sha256": "7931fc69ce1365a14354ca2809a34bfdd7555fbd6dba8906f8d7882182d85dcc",
+      "recorded_upstream_sha256": "7931fc69ce1365a14354ca2809a34bfdd7555fbd6dba8906f8d7882182d85dcc",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/linear_algebra/unitary_group.lean",
+      "current_sha256": "60157956b8fef9b89145cc6c90c64976b021e898897fab21cb160f1b34edc4cc",
+      "checkpoint_path": "TauCeti/LinearAlgebra/UnitaryGroup.lean",
+      "checkpoint_sha256": "60157956b8fef9b89145cc6c90c64976b021e898897fab21cb160f1b34edc4cc",
+      "recorded_upstream_sha256": "60157956b8fef9b89145cc6c90c64976b021e898897fab21cb160f1b34edc4cc",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/constructions/haar_to_sphere.lean",
+      "current_sha256": "f28f7429aaad16cc9d66654a1633da0c7ef5b047d134676e90f95cdbdeace3c2",
+      "checkpoint_path": "TauCeti/MeasureTheory/Constructions/HaarToSphere.lean",
+      "checkpoint_sha256": "f28f7429aaad16cc9d66654a1633da0c7ef5b047d134676e90f95cdbdeace3c2",
+      "recorded_upstream_sha256": "f28f7429aaad16cc9d66654a1633da0c7ef5b047d134676e90f95cdbdeace3c2",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/constructions/pi.lean",
+      "current_sha256": "3699b72165c925cc3283dd84534f7f245698dc87a3a17adec2f89fe5d9e971cd",
+      "checkpoint_path": "TauCeti/MeasureTheory/Constructions/Pi.lean",
+      "checkpoint_sha256": "3699b72165c925cc3283dd84534f7f245698dc87a3a17adec2f89fe5d9e971cd",
+      "recorded_upstream_sha256": "3699b72165c925cc3283dd84534f7f245698dc87a3a17adec2f89fe5d9e971cd",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/function/l1_space/integrable.lean",
+      "current_sha256": "f3380b0b50ea96a88886dee66799951159a1160253521c5185f8260d1f9bd5f0",
+      "checkpoint_path": "TauCeti/MeasureTheory/Function/L1Space/Integrable.lean",
+      "checkpoint_sha256": "f3380b0b50ea96a88886dee66799951159a1160253521c5185f8260d1f9bd5f0",
+      "recorded_upstream_sha256": "f3380b0b50ea96a88886dee66799951159a1160253521c5185f8260d1f9bd5f0",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/function/lp/l_integral_rpow.lean",
+      "current_sha256": "6954ce124fb51025e4afe01c0992d2afedfb83740ee5f2835471f09f6f9c4c77",
+      "checkpoint_path": "TauCeti/MeasureTheory/Function/Lp/LIntegralRpow.lean",
+      "checkpoint_sha256": "6954ce124fb51025e4afe01c0992d2afedfb83740ee5f2835471f09f6f9c4c77",
+      "recorded_upstream_sha256": "6954ce124fb51025e4afe01c0992d2afedfb83740ee5f2835471f09f6f9c4c77",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/function/monotone.lean",
+      "current_sha256": "ff0e2af1d860ee4875179d9b4a3968c29213bda790b945c9635fc891655b4c4a",
+      "checkpoint_path": "TauCeti/MeasureTheory/Function/Monotone.lean",
+      "checkpoint_sha256": "ff0e2af1d860ee4875179d9b4a3968c29213bda790b945c9635fc891655b4c4a",
+      "recorded_upstream_sha256": "ff0e2af1d860ee4875179d9b4a3968c29213bda790b945c9635fc891655b4c4a",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/group/integral.lean",
+      "current_sha256": "7fee9e43fefb509b720323108853aa1b9b7525f2fa8f545fa260156c9903b724",
+      "checkpoint_path": "TauCeti/MeasureTheory/Group/Integral.lean",
+      "checkpoint_sha256": "7fee9e43fefb509b720323108853aa1b9b7525f2fa8f545fa260156c9903b724",
+      "recorded_upstream_sha256": "7fee9e43fefb509b720323108853aa1b9b7525f2fa8f545fa260156c9903b724",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/group/measure.lean",
+      "current_sha256": "c05c03ef7a44675161760f758a922d461b90baee8788b983c57cbbd8a1ac8f83",
+      "checkpoint_path": "TauCeti/MeasureTheory/Group/Measure.lean",
+      "checkpoint_sha256": "c05c03ef7a44675161760f758a922d461b90baee8788b983c57cbbd8a1ac8f83",
+      "recorded_upstream_sha256": "c05c03ef7a44675161760f758a922d461b90baee8788b983c57cbbd8a1ac8f83",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/integral/odd_symmetric.lean",
+      "current_sha256": "09c76dffccb295759ae66c1365385ce8652713f18f905a5298a27dde04d25975",
+      "checkpoint_path": "TauCeti/MeasureTheory/Integral/OddSymmetric.lean",
+      "checkpoint_sha256": "09c76dffccb295759ae66c1365385ce8652713f18f905a5298a27dde04d25975",
+      "recorded_upstream_sha256": "09c76dffccb295759ae66c1365385ce8652713f18f905a5298a27dde04d25975",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/integral/pi.lean",
+      "current_sha256": "dedac077d33d7f1f797f2846be35843646f1ec0599df24d8a08f9608e49d53df",
+      "checkpoint_path": "TauCeti/MeasureTheory/Integral/Pi.lean",
+      "checkpoint_sha256": "8593daa1577a87266f95abc39926d241dedf0379016895af14238d4996952494",
+      "recorded_upstream_sha256": "8593daa1577a87266f95abc39926d241dedf0379016895af14238d4996952494",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/integral/sub_mean_value.lean",
+      "current_sha256": "fa88acaaee32ad033c22f8f936b27ea0ad47d9101373c2b21f7dd483bfe27d1c",
+      "checkpoint_path": "TauCeti/MeasureTheory/Integral/SubMeanValue.lean",
+      "checkpoint_sha256": "fa88acaaee32ad033c22f8f936b27ea0ad47d9101373c2b21f7dd483bfe27d1c",
+      "recorded_upstream_sha256": "fa88acaaee32ad033c22f8f936b27ea0ad47d9101373c2b21f7dd483bfe27d1c",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/measure/dirac.lean",
+      "current_sha256": "bc283f414fd07902f1dedf2318da238154f96e26ad4d0e022b32063c076f439c",
+      "checkpoint_path": "TauCeti/MeasureTheory/Measure/Dirac.lean",
+      "checkpoint_sha256": "bc283f414fd07902f1dedf2318da238154f96e26ad4d0e022b32063c076f439c",
+      "recorded_upstream_sha256": "bc283f414fd07902f1dedf2318da238154f96e26ad4d0e022b32063c076f439c",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/measure/haar/of_basis.lean",
+      "current_sha256": "9c15a4d4a0b226a9627ed55b34e67659b198e0485c17b4348178b6ce0dde0770",
+      "checkpoint_path": "TauCeti/MeasureTheory/Measure/Haar/OfBasis.lean",
+      "checkpoint_sha256": "9c15a4d4a0b226a9627ed55b34e67659b198e0485c17b4348178b6ce0dde0770",
+      "recorded_upstream_sha256": "9c15a4d4a0b226a9627ed55b34e67659b198e0485c17b4348178b6ce0dde0770",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/measure/lower_semicontinuous_lintegral.lean",
+      "current_sha256": "5bd68cdce6d6894e0f810c4bc87675308a6c94b39b3a12d9637df22c2bba4297",
+      "checkpoint_path": "TauCeti/MeasureTheory/Measure/LowerSemicontinuousLintegral.lean",
+      "checkpoint_sha256": "c6a9a4aeea3640ee353ccc449ced7c274af9f2532daae2b4200c7234cf5dc832",
+      "recorded_upstream_sha256": "c6a9a4aeea3640ee353ccc449ced7c274af9f2532daae2b4200c7234cf5dc832",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/measure/measurability.lean",
+      "current_sha256": "8a697245047dfa9db6cda3e11b9b776e92873eb908dd20153fcc404841cd24c4",
+      "checkpoint_path": "TauCeti/MeasureTheory/Measure/Measurability.lean",
+      "checkpoint_sha256": "8a697245047dfa9db6cda3e11b9b776e92873eb908dd20153fcc404841cd24c4",
+      "recorded_upstream_sha256": "8a697245047dfa9db6cda3e11b9b776e92873eb908dd20153fcc404841cd24c4",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/measure/mod0_measure_iso.lean",
+      "current_sha256": "5716375e5c6039dca0ca2a9d4252baa67ded0b5f7ed311d218477f2ffaf7278f",
+      "checkpoint_path": "TauCeti/MeasureTheory/Measure/Mod0MeasureIso.lean",
+      "checkpoint_sha256": "5716375e5c6039dca0ca2a9d4252baa67ded0b5f7ed311d218477f2ffaf7278f",
+      "recorded_upstream_sha256": "5716375e5c6039dca0ca2a9d4252baa67ded0b5f7ed311d218477f2ffaf7278f",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/measure/mv_polynomial_zero_locus.lean",
+      "current_sha256": "a0162aa9923c959256972e7dab50c39deff9e8b6d2ac53e941216ae75e6269de",
+      "checkpoint_path": "TauCeti/MeasureTheory/Measure/MvPolynomialZeroLocus.lean",
+      "checkpoint_sha256": "a0162aa9923c959256972e7dab50c39deff9e8b6d2ac53e941216ae75e6269de",
+      "recorded_upstream_sha256": "a0162aa9923c959256972e7dab50c39deff9e8b6d2ac53e941216ae75e6269de",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/measure/pi_with_density.lean",
+      "current_sha256": "06be94135d348017e986fbed7dcca3388236c36128ce1b16ca6f6122f032b435",
+      "checkpoint_path": "TauCeti/MeasureTheory/Measure/PiWithDensity.lean",
+      "checkpoint_sha256": "61327d00783c36e856420f61463fae1b76c8460ca05f0c796b9a4411c649f614",
+      "recorded_upstream_sha256": "61327d00783c36e856420f61463fae1b76c8460ca05f0c796b9a4411c649f614",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/measure/probability_measure/map.lean",
+      "current_sha256": "54503a659cbb4374bb5aac862a4df08154d0c7675489d4f4ab4a5e1016c8f96e",
+      "checkpoint_path": "TauCeti/MeasureTheory/Measure/ProbabilityMeasure/Map.lean",
+      "checkpoint_sha256": "54503a659cbb4374bb5aac862a4df08154d0c7675489d4f4ab4a5e1016c8f96e",
+      "recorded_upstream_sha256": "54503a659cbb4374bb5aac862a4df08154d0c7675489d4f4ab4a5e1016c8f96e",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/measure/prod.lean",
+      "current_sha256": "058a743dfc4bc8465c2daa62e060b331532a36ea112bd285f565e0fcb3ef044a",
+      "checkpoint_path": "TauCeti/MeasureTheory/Measure/Prod.lean",
+      "checkpoint_sha256": "058a743dfc4bc8465c2daa62e060b331532a36ea112bd285f565e0fcb3ef044a",
+      "recorded_upstream_sha256": "058a743dfc4bc8465c2daa62e060b331532a36ea112bd285f565e0fcb3ef044a",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/measure/product_kernel.lean",
+      "current_sha256": "83ebfd6ed67573a53a4ddd1a5e58cef7f3c4e368ad967590f83129b4a9f8605d",
+      "checkpoint_path": "TauCeti/MeasureTheory/Measure/ProductKernel.lean",
+      "checkpoint_sha256": "83ebfd6ed67573a53a4ddd1a5e58cef7f3c4e368ad967590f83129b4a9f8605d",
+      "recorded_upstream_sha256": "83ebfd6ed67573a53a4ddd1a5e58cef7f3c4e368ad967590f83129b4a9f8605d",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/measure/real.lean",
+      "current_sha256": "b14772e7febb8b20d47cf50da54a6fc8dfc17fe35cc55cbb24b508b0fb3464c3",
+      "checkpoint_path": "TauCeti/MeasureTheory/Measure/Real.lean",
+      "checkpoint_sha256": "b14772e7febb8b20d47cf50da54a6fc8dfc17fe35cc55cbb24b508b0fb3464c3",
+      "recorded_upstream_sha256": "b14772e7febb8b20d47cf50da54a6fc8dfc17fe35cc55cbb24b508b0fb3464c3",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/measure/support.lean",
+      "current_sha256": "0547fb815faeb7caea35d2798b95967ced87cab2b0bf0772c7ed16872bd65c6e",
+      "checkpoint_path": "TauCeti/MeasureTheory/Measure/Support.lean",
+      "checkpoint_sha256": "0547fb815faeb7caea35d2798b95967ced87cab2b0bf0772c7ed16872bd65c6e",
+      "recorded_upstream_sha256": "0547fb815faeb7caea35d2798b95967ced87cab2b0bf0772c7ed16872bd65c6e",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/measure/symmetric_matrix/basic.lean",
+      "current_sha256": "a1fab1fbc956705fc31f002575ee55c17923edab7db982d870d30904540cb3db",
+      "checkpoint_path": "TauCeti/MeasureTheory/Measure/SymmetricMatrix/Basic.lean",
+      "checkpoint_sha256": "f9f7f6fcd29f5a1763216651b899252d5e59c85443c48d74122f0f9ae1614f66",
+      "recorded_upstream_sha256": "f9f7f6fcd29f5a1763216651b899252d5e59c85443c48d74122f0f9ae1614f66",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/measure/symmetric_matrix/cholesky.lean",
+      "current_sha256": "8eae556f124426f116ecba8cd7fb3d7edbba375a79546db5bd25eeaa837e8812",
+      "checkpoint_path": "TauCeti/MeasureTheory/Measure/SymmetricMatrix/Cholesky.lean",
+      "checkpoint_sha256": "d8f2192c01fccd1e5f47ac4f665b8d4ffb0e0dd65383c39c29aac9cb73b49897",
+      "recorded_upstream_sha256": "d8f2192c01fccd1e5f47ac4f665b8d4ffb0e0dd65383c39c29aac9cb73b49897",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/measure/symmetric_matrix/congruence.lean",
+      "current_sha256": "ebc71ef0c31d65638aea3ac0870abca050562ddd7b84d7ea3a6a36f6ce8673cd",
+      "checkpoint_path": "TauCeti/MeasureTheory/Measure/SymmetricMatrix/Congruence.lean",
+      "checkpoint_sha256": "416b0bb566048f455bf1e781012220865a9c4400f022e26bbeb86f0ad5a3af2e",
+      "recorded_upstream_sha256": "416b0bb566048f455bf1e781012220865a9c4400f022e26bbeb86f0ad5a3af2e",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/measure/symmetric_matrix/determinant.lean",
+      "current_sha256": "2fafbe67e9b747c7af1e9f1d77c63edf7d42fa4ad9cda11e94fc79caaf643f9e",
+      "checkpoint_path": "TauCeti/MeasureTheory/Measure/SymmetricMatrix/Determinant.lean",
+      "checkpoint_sha256": "39d22f8e17100ef423a26e170a4d4adec4f94846c533ac3e16964b83221880ce",
+      "recorded_upstream_sha256": "39d22f8e17100ef423a26e170a4d4adec4f94846c533ac3e16964b83221880ce",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/measure/symmetric_matrix/integrable.lean",
+      "current_sha256": "f9eeaa8ba322b404abcaa3b9b7d42240e98b35f77be21fea6e2b50ef96b7c3ac",
+      "checkpoint_path": "TauCeti/MeasureTheory/Measure/SymmetricMatrix/Integrable.lean",
+      "checkpoint_sha256": "3d37f951faeb954268b05eb6b13a0a972528598d72eabcaf3ea788e8847f35ce",
+      "recorded_upstream_sha256": "3d37f951faeb954268b05eb6b13a0a972528598d72eabcaf3ea788e8847f35ce",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/measure/symmetric_matrix/inv.lean",
+      "current_sha256": "b5c66129b030d89729c12f74c0fc455d314c20b9d1d7260b7bce8a98c8bc5dcc",
+      "checkpoint_path": "TauCeti/MeasureTheory/Measure/SymmetricMatrix/Inv.lean",
+      "checkpoint_sha256": "206a4bcc3d1e89a5f81f4a3b6b6a767b64e08a8c0493e9d46a567d51e2a02a75",
+      "recorded_upstream_sha256": "206a4bcc3d1e89a5f81f4a3b6b6a767b64e08a8c0493e9d46a567d51e2a02a75",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/measure/symmetric_matrix/lebesgue.lean",
+      "current_sha256": "6c44493cf0cf59f3a4f52c616a6f0c810e83ec98deb33a9a87f8abe391ac3205",
+      "checkpoint_path": "TauCeti/MeasureTheory/Measure/SymmetricMatrix/Lebesgue.lean",
+      "checkpoint_sha256": "b7decd67c7a21847975bc425167c1fcc272d53ae1ea66b376da6761a111ef7bb",
+      "recorded_upstream_sha256": "b7decd67c7a21847975bc425167c1fcc272d53ae1ea66b376da6761a111ef7bb",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/measure/symmetric_matrix/pos_def.lean",
+      "current_sha256": "0fd9b4fc2f307c972aa6258521dc2de36a86be58cb0fa14a68526798dfa59c96",
+      "checkpoint_path": "TauCeti/MeasureTheory/Measure/SymmetricMatrix/PosDef.lean",
+      "checkpoint_sha256": "00974fd2ea3c0a567f77e581c459695ea7e42b37b31b38ab10259e6962ecd56c",
+      "recorded_upstream_sha256": "00974fd2ea3c0a567f77e581c459695ea7e42b37b31b38ab10259e6962ecd56c",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/measure/symmetric_matrix/rank.lean",
+      "current_sha256": "a54c2b07bd512589e5f82afb8d15079e2a1161af7e7b9a4126834b878d0228b9",
+      "checkpoint_path": "TauCeti/MeasureTheory/Measure/SymmetricMatrix/Rank.lean",
+      "checkpoint_sha256": "cb3871dbe9f1260a07a8d9656536a99da2615a30981e1fac77fe6092c1141f66",
+      "recorded_upstream_sha256": "cb3871dbe9f1260a07a8d9656536a99da2615a30981e1fac77fe6092c1141f66",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/measure/with_density.lean",
+      "current_sha256": "c1efbd12413ff7790153e732ca527d0fcece02d7178d71fb5e0205b7e1cae25a",
+      "checkpoint_path": "TauCeti/MeasureTheory/Measure/WithDensity.lean",
+      "checkpoint_sha256": "67a441dc7920b02c7497a27c2a3087a46034a19dd6261fc1f13b3b1753c08c56",
+      "recorded_upstream_sha256": "67a441dc7920b02c7497a27c2a3087a46034a19dd6261fc1f13b3b1753c08c56",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/optimal_transport/compactness.lean",
+      "current_sha256": "0765a6eb3da3a8e8741acf51c6cbe11ac161ba827d4296c10b684104a7f70ea1",
+      "checkpoint_path": "TauCeti/MeasureTheory/OptimalTransport/Compactness.lean",
+      "checkpoint_sha256": "2fad324319ea8824bafff95915c6061f5d7f528e7bee702eec2a8a821ca07ca9",
+      "recorded_upstream_sha256": "2fad324319ea8824bafff95915c6061f5d7f528e7bee702eec2a8a821ca07ca9",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/optimal_transport/cost/basic.lean",
+      "current_sha256": "1f56cc43b968885a30a3559db8e0a95159acb028b6084976833d867267987b5b",
+      "checkpoint_path": "TauCeti/MeasureTheory/OptimalTransport/Cost/Basic.lean",
+      "checkpoint_sha256": "744cea5e64ed6211f466c4a4caad699124a879044cd647e2b7727392f892014c",
+      "recorded_upstream_sha256": "744cea5e64ed6211f466c4a4caad699124a879044cd647e2b7727392f892014c",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/optimal_transport/coupling.lean",
+      "current_sha256": "4f2378a5ae8eeff522ca1e956d8e94d49112c290d9c548b18b2143b634a61661",
+      "checkpoint_path": "TauCeti/MeasureTheory/OptimalTransport/Coupling.lean",
+      "checkpoint_sha256": "4f2378a5ae8eeff522ca1e956d8e94d49112c290d9c548b18b2143b634a61661",
+      "recorded_upstream_sha256": "4f2378a5ae8eeff522ca1e956d8e94d49112c290d9c548b18b2143b634a61661",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/optimal_transport/existence/basic.lean",
+      "current_sha256": "2af397d34014b800e3730f28dd213b1159525f4b229e904c54ef9b88ee6ed250",
+      "checkpoint_path": "TauCeti/MeasureTheory/OptimalTransport/Existence/Basic.lean",
+      "checkpoint_sha256": "9da86f0befcc74652e322585d78b6cdd2c4dd96698393340d4a7145fdec6dd81",
+      "recorded_upstream_sha256": "9da86f0befcc74652e322585d78b6cdd2c4dd96698393340d4a7145fdec6dd81",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/optimal_transport/gluing.lean",
+      "current_sha256": "a93fc70d7dfad804e750e4ddcf455ee9e2f206c44cff18271d9c14c2a0b9d35c",
+      "checkpoint_path": "TauCeti/MeasureTheory/OptimalTransport/Gluing.lean",
+      "checkpoint_sha256": "4be516d72b38855fefde837018e6b73ee97c1987097442f1f4241b37ee968b5e",
+      "recorded_upstream_sha256": "4be516d72b38855fefde837018e6b73ee97c1987097442f1f4241b37ee968b5e",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/optimal_transport/graph_plan/basic.lean",
+      "current_sha256": "2589dca36b3d293f9d2fb2a87d02b328e7fd64cc2361deaf22f8a5323a330765",
+      "checkpoint_path": "TauCeti/MeasureTheory/OptimalTransport/GraphPlan/Basic.lean",
+      "checkpoint_sha256": "65aa557f603fc07485834724948e9c2aaf0f8afa7a83301a134825f5588641c7",
+      "recorded_upstream_sha256": "65aa557f603fc07485834724948e9c2aaf0f8afa7a83301a134825f5588641c7",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/optimal_transport/wasserstein/basic.lean",
+      "current_sha256": "fb4e372aab88fb1369fbc5958ffdb008ebea112e603aab0edd6a1317bef1f5f5",
+      "checkpoint_path": "TauCeti/MeasureTheory/OptimalTransport/Wasserstein/Basic.lean",
+      "checkpoint_sha256": "e98a43b442ce9c721dab91a7389054eb3b447eb627ae9e7542e876e626bec073",
+      "recorded_upstream_sha256": "e98a43b442ce9c721dab91a7389054eb3b447eb627ae9e7542e876e626bec073",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/measure_theory/optimal_transport/wasserstein/quantile/basic.lean",
+      "current_sha256": "825157670ae14666398b84c5a1c98bc94ac2dca36506286b74579ccd9fc375eb",
+      "checkpoint_path": "TauCeti/MeasureTheory/OptimalTransport/Wasserstein/Quantile/Basic.lean",
+      "checkpoint_sha256": "1764ef333c97d82a0566f0cb74387011828f9e629a774d774484f33135218f24",
+      "recorded_upstream_sha256": "1764ef333c97d82a0566f0cb74387011828f9e629a774d774484f33135218f24",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/cdf/density.lean",
+      "current_sha256": "8aa4712712021f1c721e56f469d691c35dccfe299edda82fcb93e00b19e765d4",
+      "checkpoint_path": "TauCeti/Probability/Cdf/Density.lean",
+      "checkpoint_sha256": "7914f63950898ba879132fa865b0a82cdde2aed10623ca057c3d536f00f16c82",
+      "recorded_upstream_sha256": "7914f63950898ba879132fa865b0a82cdde2aed10623ca057c3d536f00f16c82",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/cdf.lean",
+      "current_sha256": "2917e960935ac0eba6b3e9aae6abcd28acf5798715945f797792d8ee62721e07",
+      "checkpoint_path": "TauCeti/Probability/Cdf.lean",
+      "checkpoint_sha256": "19232b53f35295f46da8672dc7269d3f617905b4b9b3fc6f1f7e910908fecd28",
+      "recorded_upstream_sha256": "19232b53f35295f46da8672dc7269d3f617905b4b9b3fc6f1f7e910908fecd28",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/density.lean",
+      "current_sha256": "7190cd4d2d95a70503ac667d72f0302a482cdce91344e6f68435c415587faf08",
+      "checkpoint_path": "TauCeti/Probability/Density.lean",
+      "checkpoint_sha256": "7190cd4d2d95a70503ac667d72f0302a482cdce91344e6f68435c415587faf08",
+      "recorded_upstream_sha256": "7190cd4d2d95a70503ac667d72f0302a482cdce91344e6f68435c415587faf08",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/chi_squared/basic.lean",
+      "current_sha256": "adc28c3c16f5976945aa3ff29d79d6bb30a085b08e40d9de690bc0d2d707a9ab",
+      "checkpoint_path": "TauCeti/Probability/Distributions/ChiSquared/Basic.lean",
+      "checkpoint_sha256": "7528f298e131bfccdd6ef5585019e77084955bd8c20ad70128fff09804090c39",
+      "recorded_upstream_sha256": "7528f298e131bfccdd6ef5585019e77084955bd8c20ad70128fff09804090c39",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/chi_squared/support.lean",
+      "current_sha256": "7adb982f0c183579fdcf40ee94ecbb33dfcfd3874fef05f993dd57b5220d395a",
+      "checkpoint_path": "TauCeti/Probability/Distributions/ChiSquared/Support.lean",
+      "checkpoint_sha256": "9c7249918e973e3e3433a1e56b69c70e1c8e8b351e4c0889abf22b7e6becf46e",
+      "recorded_upstream_sha256": "9c7249918e973e3e3433a1e56b69c70e1c8e8b351e4c0889abf22b7e6becf46e",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/dirac.lean",
+      "current_sha256": "b52bb067b6f6127821fe0fcb6970c985e9096d57c867602bbc885e03ebbe6357",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Dirac.lean",
+      "checkpoint_sha256": "634673e155ef4f56e35d480c162591116d9f7d19dfb8d0c8de373e7fac62cacc",
+      "recorded_upstream_sha256": "634673e155ef4f56e35d480c162591116d9f7d19dfb8d0c8de373e7fac62cacc",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/gamma/basic.lean",
+      "current_sha256": "3d3b9983e414e41d53019a24d0036b42d84033ebc17eaedd331cb7984fa469cf",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Gamma/Basic.lean",
+      "checkpoint_sha256": "78b3ad790ba3e8eca97ec687343486116235f9d72d0d1980713e6ed02b313444",
+      "recorded_upstream_sha256": "78b3ad790ba3e8eca97ec687343486116235f9d72d0d1980713e6ed02b313444",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/gamma/cdf.lean",
+      "current_sha256": "d438770229088063e0fd1e8a8801e5b557d8961ffb542486015ea0566445dbad",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Gamma/Cdf.lean",
+      "checkpoint_sha256": "c7f8d2421ed6791d07f12a55af7c7b1964bbcaec8ece8ab44c1ee5e4f354d6be",
+      "recorded_upstream_sha256": "c7f8d2421ed6791d07f12a55af7c7b1964bbcaec8ece8ab44c1ee5e4f354d6be",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/gamma/char_fun.lean",
+      "current_sha256": "2ac7ad90b340b203d33c3eab449140170d444b065c056416d070a0465a76f7e8",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Gamma/CharFun.lean",
+      "checkpoint_sha256": "9b32868d5781a1242ea5adb8fe1bb44bfd53138354a3a864324392d726c8f618",
+      "recorded_upstream_sha256": "9b32868d5781a1242ea5adb8fe1bb44bfd53138354a3a864324392d726c8f618",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/gamma/measurability.lean",
+      "current_sha256": "dba9d79d217204967c978a578254da461818b2ceee0d42e54e7be044a4873e60",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Gamma/Measurability.lean",
+      "checkpoint_sha256": "05dd178c96e284fe5f11d1f2455938c2cf9ffc1ea172bd8574aa67390fbc9ea1",
+      "recorded_upstream_sha256": "05dd178c96e284fe5f11d1f2455938c2cf9ffc1ea172bd8574aa67390fbc9ea1",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/gamma/pdf.lean",
+      "current_sha256": "003d5a67411da83ff53e435c2b8282bdd15b29b5d00a25d19b8dc82dc088647e",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Gamma/PDF.lean",
+      "checkpoint_sha256": "27ecaba6f689d62334db81ee7de5af5df39dc6187c1f98de35a30f5716fee20c",
+      "recorded_upstream_sha256": "27ecaba6f689d62334db81ee7de5af5df39dc6187c1f98de35a30f5716fee20c",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/gamma/sqrt.lean",
+      "current_sha256": "a67cf3346bbc8bdac8e88e565b566bcb589ad2fccbf498ff66738d6f62c15e2f",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Gamma/Sqrt.lean",
+      "checkpoint_sha256": "51f8f8fd6ae417519450d60c850c1a3a740f581052a3d23c9c065e3d34009a5e",
+      "recorded_upstream_sha256": "51f8f8fd6ae417519450d60c850c1a3a740f581052a3d23c9c065e3d34009a5e",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/gamma/support.lean",
+      "current_sha256": "83c354894814d8c1aa3184ab77398c66941347934f2280412764a1267c0719c1",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Gamma/Support.lean",
+      "checkpoint_sha256": "8eb652a53e006c2cf6b42f676fa9e9d37810110ecbc4baa32c4097f5df832b35",
+      "recorded_upstream_sha256": "8eb652a53e006c2cf6b42f676fa9e9d37810110ecbc4baa32c4097f5df832b35",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/gaussian/affine.lean",
+      "current_sha256": "d83ba37ac636d9a5b40b4126f25eb9193aaba139eeff575688b2c8ea61c345c3",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Gaussian/Affine.lean",
+      "checkpoint_sha256": "d286bbdf3b448fc729859db8bc6370f1a25c155fd428943c6a10fd3c59f6e797",
+      "recorded_upstream_sha256": "d286bbdf3b448fc729859db8bc6370f1a25c155fd428943c6a10fd3c59f6e797",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/gaussian/basic.lean",
+      "current_sha256": "a13b3f458f64393c3e11b247cc311844b22fe061b638dd004ab8a4988e8484ec",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Gaussian/Basic.lean",
+      "checkpoint_sha256": "a13b3f458f64393c3e11b247cc311844b22fe061b638dd004ab8a4988e8484ec",
+      "recorded_upstream_sha256": "a13b3f458f64393c3e11b247cc311844b22fe061b638dd004ab8a4988e8484ec",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/gaussian/cdf.lean",
+      "current_sha256": "8e4dd9dca7fb7ab1cffb02a0cf474aceabe6b9bbf2b97479f762ba3f19e048df",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Gaussian/Cdf.lean",
+      "checkpoint_sha256": "ab062366c6289ff61c82598132388c90cf0fea3ab2bddb4bd9cd3922a4a52e43",
+      "recorded_upstream_sha256": "ab062366c6289ff61c82598132388c90cf0fea3ab2bddb4bd9cd3922a4a52e43",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/gaussian/chi_squared.lean",
+      "current_sha256": "060894dc401d82fa957422f0e697e1b5a66427f92089669fddca810682286c42",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Gaussian/ChiSquared.lean",
+      "checkpoint_sha256": "446848bf83a01525e8df7a53be8a4104cf320659abd4b0a20b572b70c5e874a1",
+      "recorded_upstream_sha256": "446848bf83a01525e8df7a53be8a4104cf320659abd4b0a20b572b70c5e874a1",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/gaussian/density.lean",
+      "current_sha256": "e0e768e603fc20ac730589bf578a748ab5a6b571c3ca249379c5cbe8f6174700",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Gaussian/Density.lean",
+      "checkpoint_sha256": "f53d1cac1b6c5af07b98f904a6b0fe49641bf65469b737f79c7cd846eac06f61",
+      "recorded_upstream_sha256": "f53d1cac1b6c5af07b98f904a6b0fe49641bf65469b737f79c7cd846eac06f61",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/gaussian/multivariate.lean",
+      "current_sha256": "2198ffec5780f22069337a5599cb55a356f1e8a55e85f0b993a2bcf06fa4ad67",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Gaussian/Multivariate.lean",
+      "checkpoint_sha256": "24d14dcb1c24941200c08ae978db5745206bb164bf89e04a6976c3d5941e1f61",
+      "recorded_upstream_sha256": "24d14dcb1c24941200c08ae978db5745206bb164bf89e04a6976c3d5941e1f61",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/gaussian/pi.lean",
+      "current_sha256": "806e62390243af4fdf3dd7542b0e481abc7cea34c50338cbe35f1ba27c9219a5",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Gaussian/Pi.lean",
+      "checkpoint_sha256": "58074a68c2ce187a2e0474521e5d7da68e46ef45ad8c2ed72b356808f968f4fb",
+      "recorded_upstream_sha256": "58074a68c2ce187a2e0474521e5d7da68e46ef45ad8c2ed72b356808f968f4fb",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/gaussian/quadratic_form.lean",
+      "current_sha256": "155be93f50354ba0b0c8efb6dea09e23c1c1193e63ea2f7dbf14d46d61dc616b",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Gaussian/QuadraticForm.lean",
+      "checkpoint_sha256": "43d61d50f68132b5f747344970855f84f77fb6539f7fe39137e812d1e81afbed",
+      "recorded_upstream_sha256": "43d61d50f68132b5f747344970855f84f77fb6539f7fe39137e812d1e81afbed",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/inverse_gamma/basic.lean",
+      "current_sha256": "b3ca79700f7ba9b8568f1fd5e505f0b84ba42c867ce389ec8495134cbea560f5",
+      "checkpoint_path": "TauCeti/Probability/Distributions/InverseGamma/Basic.lean",
+      "checkpoint_sha256": "cd65292b17225677d88cb5525f8db20fcf6035edbe4072268371c67f74274dce",
+      "recorded_upstream_sha256": "cd65292b17225677d88cb5525f8db20fcf6035edbe4072268371c67f74274dce",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/inverse_gamma/moments.lean",
+      "current_sha256": "39c49f528b05470a2a0d16f364ef722ab33202e8bc7dd6a7cb6af63c616077be",
+      "checkpoint_path": "TauCeti/Probability/Distributions/InverseGamma/Moments.lean",
+      "checkpoint_sha256": "64d982f549c382e8056ab26e0e0f5f67163a317073e2cf530339c5b6d35a4392",
+      "recorded_upstream_sha256": "64d982f549c382e8056ab26e0e0f5f67163a317073e2cf530339c5b6d35a4392",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/noncentral_chi_squared/basic.lean",
+      "current_sha256": "500fefa89d28efc6c3342951694fe3e55ef67ae7b9e1ba18cdb7e2f7ad3cb1f5",
+      "checkpoint_path": "TauCeti/Probability/Distributions/NoncentralChiSquared/Basic.lean",
+      "checkpoint_sha256": "3c93c6af67294f2845176151661d3dad58fdb806f15f5df23c0a056851319717",
+      "recorded_upstream_sha256": "3c93c6af67294f2845176151661d3dad58fdb806f15f5df23c0a056851319717",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/noncentral_chi_squared/convolution.lean",
+      "current_sha256": "d964890cdc43518fc628358dfe3e9368b5167eedc1154aa0794dc6fcbfe39224",
+      "checkpoint_path": "TauCeti/Probability/Distributions/NoncentralChiSquared/Convolution.lean",
+      "checkpoint_sha256": "1bd0c8a9c8c0d3be5a88b5933f0042f4801fe89beb38de7fb06bb49bbbc51c45",
+      "recorded_upstream_sha256": "1bd0c8a9c8c0d3be5a88b5933f0042f4801fe89beb38de7fb06bb49bbbc51c45",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/noncentral_chi_squared/gaussian.lean",
+      "current_sha256": "600ccabb508309c38efdfc3bacdd0d38beb65535eecb8ca526c347d3b77b1332",
+      "checkpoint_path": "TauCeti/Probability/Distributions/NoncentralChiSquared/Gaussian.lean",
+      "checkpoint_sha256": "a4b9f4904911716a0d19bfd34639dd4abab3e8ee7e70f6a4e23ae8c2ad74ba48",
+      "recorded_upstream_sha256": "a4b9f4904911716a0d19bfd34639dd4abab3e8ee7e70f6a4e23ae8c2ad74ba48",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/noncentral_chi_squared/moments.lean",
+      "current_sha256": "f5070deae97dde48a15ee0ed22ac50f333f35e54973ab2ab49eaf3499c4ccf64",
+      "checkpoint_path": "TauCeti/Probability/Distributions/NoncentralChiSquared/Moments.lean",
+      "checkpoint_sha256": "0b4728572b1e8d4cb4236b1c89be56284f0ba45a6ee24e3b73c15d6d871c51ac",
+      "recorded_upstream_sha256": "0b4728572b1e8d4cb4236b1c89be56284f0ba45a6ee24e3b73c15d6d871c51ac",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/noncentral_chi_squared/stochastic_order.lean",
+      "current_sha256": "6aa7b17a2e6c1db5b236f6542d20417672632ef1c19553deb79795156deb4aa4",
+      "checkpoint_path": "TauCeti/Probability/Distributions/NoncentralChiSquared/StochasticOrder.lean",
+      "checkpoint_sha256": "51b9ab6a5c9060ff71c57702ebc69548287b28c564d38742980c82ebdc174b2b",
+      "recorded_upstream_sha256": "51b9ab6a5c9060ff71c57702ebc69548287b28c564d38742980c82ebdc174b2b",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/noncentral_chi_squared/transforms.lean",
+      "current_sha256": "ee11fe286e5213fd9520074b47261af920d21cab7248859aa999c58e874a06af",
+      "checkpoint_path": "TauCeti/Probability/Distributions/NoncentralChiSquared/Transforms.lean",
+      "checkpoint_sha256": "3e722f41f18e52a98ef67f81a2a3137b43ceadeaae3c9da925190bd42f057b83",
+      "recorded_upstream_sha256": "3e722f41f18e52a98ef67f81a2a3137b43ceadeaae3c9da925190bd42f057b83",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/poisson/basic.lean",
+      "current_sha256": "97588a2ae1f22871c01ee4c36711b7a81a6a6f6e5d8bcf4efa1fe6a8610de351",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Poisson/Basic.lean",
+      "checkpoint_sha256": "7d1fcb1e2f9f20489a4e37f0293edebaeb171d3f880009bee8fa2c1e3aba1a32",
+      "recorded_upstream_sha256": "7d1fcb1e2f9f20489a4e37f0293edebaeb171d3f880009bee8fa2c1e3aba1a32",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/poisson/measurability.lean",
+      "current_sha256": "48722b87286258187a63bd3f1744520b816b07896af6c204b047f00cbee25e67",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Poisson/Measurability.lean",
+      "checkpoint_sha256": "05e7b0576896a7e540dda951da317c74ac66380345d3faf8f5a10d94ffede4a1",
+      "recorded_upstream_sha256": "05e7b0576896a7e540dda951da317c74ac66380345d3faf8f5a10d94ffede4a1",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/wishart/agreement.lean",
+      "current_sha256": "eb477abdc9de0add51f34b9eba3626902e3cd8d681936520e6c9b48d07a52716",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Wishart/Agreement.lean",
+      "checkpoint_sha256": "deb1a0924ff17e466f6b6569e41cb92cb9f31300809e6762fd28f736e3bfb177",
+      "recorded_upstream_sha256": "deb1a0924ff17e466f6b6569e41cb92cb9f31300809e6762fd28f736e3bfb177",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/wishart/bartlett.lean",
+      "current_sha256": "2d54349d6bb2cc7fedbfde5b93f50ad29738981669bc1c4f6fd9faacfa738f74",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Wishart/Bartlett.lean",
+      "checkpoint_sha256": "9ce103c5850576dbda02f265388b37d022de6a021b3ab8e74ba2d633370e7b79",
+      "recorded_upstream_sha256": "9ce103c5850576dbda02f265388b37d022de6a021b3ab8e74ba2d633370e7b79",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/wishart/basic.lean",
+      "current_sha256": "18a261ac00f54f2941c3f8ddba4e983bd264a39325c2340dcc1c4f197508e293",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Wishart/Basic.lean",
+      "checkpoint_sha256": "999ac0c1e7ec8769c0af065c4aa2cba477195d1cf07f0aefd4f5dbabb7c0f562",
+      "recorded_upstream_sha256": "999ac0c1e7ec8769c0af065c4aa2cba477195d1cf07f0aefd4f5dbabb7c0f562",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/wishart/char_fun.lean",
+      "current_sha256": "23f11e52198213eec2a07c9c304926aa5d3dbebd081c329e6d6b208aa79e43d0",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Wishart/CharFun.lean",
+      "checkpoint_sha256": "358844500330a37100717beee038c11207de79efd0e946e5c4092ad14b85eabb",
+      "recorded_upstream_sha256": "358844500330a37100717beee038c11207de79efd0e946e5c4092ad14b85eabb",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/wishart/congruence.lean",
+      "current_sha256": "450cd340e5db7b1560da62ef225e8d164be13e1b0996ffeb1232fd78f2a7a7d2",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Wishart/Congruence.lean",
+      "checkpoint_sha256": "c05549a777934ff6b71086f0559e2c2249b07e5b651f8099a7a5ba4a831636fb",
+      "recorded_upstream_sha256": "c05549a777934ff6b71086f0559e2c2249b07e5b651f8099a7a5ba4a831636fb",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/wishart/inverse/basic.lean",
+      "current_sha256": "7cf4b56cef063be42881b9dd5414968f5111e12a37657c14607aeb2668f78f9c",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Wishart/Inverse/Basic.lean",
+      "checkpoint_sha256": "6de18a4fbcd990664a398f01532ee9928fe39358f8deebe19dbc26a1213ac336",
+      "recorded_upstream_sha256": "6de18a4fbcd990664a398f01532ee9928fe39358f8deebe19dbc26a1213ac336",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/wishart/inverse/measurability.lean",
+      "current_sha256": "f34e443a4241b609ae14104fdcfaae244a8179dab537650c3816198e763ba017",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Wishart/Inverse/Measurability.lean",
+      "checkpoint_sha256": "099c0cd25d08f9d27cc37072b2bffc17e9222d68f488ef7bf7bf57edd5acb334",
+      "recorded_upstream_sha256": "099c0cd25d08f9d27cc37072b2bffc17e9222d68f488ef7bf7bf57edd5acb334",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/wishart/inverse/moments.lean",
+      "current_sha256": "bf3be4799285bb6d1931a5d91b0925340f88598142d6f6ceb2b5560087e42a29",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Wishart/Inverse/Moments.lean",
+      "checkpoint_sha256": "6b86656dba43c18c4f2bcca34b5f6528fe518fe557d0e470228f4ab4c3f01bc5",
+      "recorded_upstream_sha256": "6b86656dba43c18c4f2bcca34b5f6528fe518fe557d0e470228f4ab4c3f01bc5",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/wishart/low_dimension.lean",
+      "current_sha256": "7449a42f7babeaf004881f828304da45a95f478b4a3e240ef26c557ff36e9426",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Wishart/LowDimension.lean",
+      "checkpoint_sha256": "bedb117ee627acdefe4542500afb0b0808a6404018fabf025f1247da1cfde8da",
+      "recorded_upstream_sha256": "bedb117ee627acdefe4542500afb0b0808a6404018fabf025f1247da1cfde8da",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/wishart/marginal.lean",
+      "current_sha256": "517aaa9ef16b8fd388254b37c03f8945312863afdb6d0457232e7007ba1fab2b",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Wishart/Marginal.lean",
+      "checkpoint_sha256": "ff70d9eeb242c3b9eb76614ce4e76b26b23595a525ff36550e6a5dbf3854e10a",
+      "recorded_upstream_sha256": "ff70d9eeb242c3b9eb76614ce4e76b26b23595a525ff36550e6a5dbf3854e10a",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/wishart/moments.lean",
+      "current_sha256": "5c246f9eaf1008f2372aa3f6e27efa913258036eb0709ad79d2de310899ae3cd",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Wishart/Moments.lean",
+      "checkpoint_sha256": "31dd6f470aaf2d7828fe0a9e320914886e11c5d84e2c973829ca4fd2199d4160",
+      "recorded_upstream_sha256": "31dd6f470aaf2d7828fe0a9e320914886e11c5d84e2c973829ca4fd2199d4160",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/wishart/nonsingular.lean",
+      "current_sha256": "5444d1fac5415009cc15f9f878a876e1fb3347a79236839d85b11e4560088aa8",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Wishart/Nonsingular.lean",
+      "checkpoint_sha256": "2957d45e807effc6d30e9bbc381e0c0126d340925fc69945e9dadaac403a19f8",
+      "recorded_upstream_sha256": "2957d45e807effc6d30e9bbc381e0c0126d340925fc69945e9dadaac403a19f8",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/distributions/wishart/transforms.lean",
+      "current_sha256": "5487438b178024665c2e19bd277110088da47ecda109541c96bc9a32ebf9fc57",
+      "checkpoint_path": "TauCeti/Probability/Distributions/Wishart/Transforms.lean",
+      "checkpoint_sha256": "cdb416e552f986a82e5feb192f99bf24ab522c846662503441f0ac4b10d22905",
+      "recorded_upstream_sha256": "cdb416e552f986a82e5feb192f99bf24ab522c846662503441f0ac4b10d22905",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/generating_function.lean",
+      "current_sha256": "7ee4c621c349deac86af5df8f54772e566deff2cbad15ded2d201acf09048d5e",
+      "checkpoint_path": "TauCeti/Probability/GeneratingFunction.lean",
+      "checkpoint_sha256": "1ea98fcb7e2e9531f089c6df4c70a29526a327e78332603461b370e7f46572dc",
+      "recorded_upstream_sha256": "1ea98fcb7e2e9531f089c6df4c70a29526a327e78332603461b370e7f46572dc",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/kernel/composition/measure_comp_prod.lean",
+      "current_sha256": "712c6fd2ba591c88f6cb080c4656351f81469009cb939da54f5fad78cd1fa06d",
+      "checkpoint_path": "TauCeti/Probability/Kernel/Composition/MeasureCompProd.lean",
+      "checkpoint_sha256": "712c6fd2ba591c88f6cb080c4656351f81469009cb939da54f5fad78cd1fa06d",
+      "recorded_upstream_sha256": "712c6fd2ba591c88f6cb080c4656351f81469009cb939da54f5fad78cd1fa06d",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/kernel/disintegration/countable.lean",
+      "current_sha256": "7102b4d51418e565165bccb350bb6ca0d7b41821a860a1184119bb00f2c72f0e",
+      "checkpoint_path": "TauCeti/Probability/Kernel/Disintegration/Countable.lean",
+      "checkpoint_sha256": "af8a4d1ed531ad09c8028bec967c6b3ada644fa1a9bf3736f51495922c9f8d8f",
+      "recorded_upstream_sha256": "af8a4d1ed531ad09c8028bec967c6b3ada644fa1a9bf3736f51495922c9f8d8f",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/moments/basic.lean",
+      "current_sha256": "73d2b0dabf823f677bd9ac0c560eab2aa6ee8370407d41048a083c3d6fa6ee6c",
+      "checkpoint_path": "TauCeti/Probability/Moments/Basic.lean",
+      "checkpoint_sha256": "73d2b0dabf823f677bd9ac0c560eab2aa6ee8370407d41048a083c3d6fa6ee6c",
+      "recorded_upstream_sha256": "73d2b0dabf823f677bd9ac0c560eab2aa6ee8370407d41048a083c3d6fa6ee6c",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/moments/complex_mgf.lean",
+      "current_sha256": "4b06e3251569a62da29800c628f526bb8b8b6f75357546cad92f49b39a2d657e",
+      "checkpoint_path": "TauCeti/Probability/Moments/ComplexMGF.lean",
+      "checkpoint_sha256": "4b06e3251569a62da29800c628f526bb8b8b6f75357546cad92f49b39a2d657e",
+      "recorded_upstream_sha256": "4b06e3251569a62da29800c628f526bb8b8b6f75357546cad92f49b39a2d657e",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/moments/covariance.lean",
+      "current_sha256": "090292267b3cc6bc1d88a4ddc9eea889525bb36cd0519ee1fff39552617fead0",
+      "checkpoint_path": "TauCeti/Probability/Moments/Covariance.lean",
+      "checkpoint_sha256": "fe0634c4dd3a044d52c57d4797b6b0531fc4de7c74c6a02b1a3db80b22873416",
+      "recorded_upstream_sha256": "fe0634c4dd3a044d52c57d4797b6b0531fc4de7c74c6a02b1a3db80b22873416",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/moments/determinacy.lean",
+      "current_sha256": "055f7b186723300d54db24d10068b13b2c7450bc65508f45c1beb9630ba3b25e",
+      "checkpoint_path": "TauCeti/Probability/Moments/Determinacy.lean",
+      "checkpoint_sha256": "1310af6ac0355fff433983be1c43be3eb87cd1e212dba07082ccfc76a2de9832",
+      "recorded_upstream_sha256": "1310af6ac0355fff433983be1c43be3eb87cd1e212dba07082ccfc76a2de9832",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/moments/integrable_exp_mul.lean",
+      "current_sha256": "635faa30ce5713deef08fae352d43709e26221dfbe4e1978163b1288f7b4df88",
+      "checkpoint_path": "TauCeti/Probability/Moments/IntegrableExpMul.lean",
+      "checkpoint_sha256": "635faa30ce5713deef08fae352d43709e26221dfbe4e1978163b1288f7b4df88",
+      "recorded_upstream_sha256": "635faa30ce5713deef08fae352d43709e26221dfbe4e1978163b1288f7b4df88",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/moments/pi.lean",
+      "current_sha256": "f18a95efada80f707f1b0608c13a6375b07369ae32dffa6397dbd87f88c5a855",
+      "checkpoint_path": "TauCeti/Probability/Moments/Pi.lean",
+      "checkpoint_sha256": "f18a95efada80f707f1b0608c13a6375b07369ae32dffa6397dbd87f88c5a855",
+      "recorded_upstream_sha256": "f18a95efada80f707f1b0608c13a6375b07369ae32dffa6397dbd87f88c5a855",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/quantile.lean",
+      "current_sha256": "acf1dfe4b4c93ae3e65aad36bb593bd16cd84cdfdc3c6970b6b78fbde0fe135a",
+      "checkpoint_path": "TauCeti/Probability/Quantile.lean",
+      "checkpoint_sha256": "f6c2f3fd65ebf7381dea8e9408e8d6daf334948b66962109d44fa30d0cc9f3d0",
+      "recorded_upstream_sha256": "f6c2f3fd65ebf7381dea8e9408e8d6daf334948b66962109d44fa30d0cc9f3d0",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/probability/stochastic_order.lean",
+      "current_sha256": "b530cd33f8e633e51174b8ead6c4152e6e0b9684d61406a7bfb48e434474edb4",
+      "checkpoint_path": "TauCeti/Probability/StochasticOrder.lean",
+      "checkpoint_sha256": "f07df8378f2b4a1c231ddecf62a1872aaf62bc7dd9916f8ec3303f26511adc41",
+      "recorded_upstream_sha256": "f07df8378f2b4a1c231ddecf62a1872aaf62bc7dd9916f8ec3303f26511adc41",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/representation_theory/compact/haar.lean",
+      "current_sha256": "88e51587989763767f1340d552350420cde82f693814ff86396975eeb5e5b9e0",
+      "checkpoint_path": "TauCeti/RepresentationTheory/Compact/Haar.lean",
+      "checkpoint_sha256": "88e51587989763767f1340d552350420cde82f693814ff86396975eeb5e5b9e0",
+      "recorded_upstream_sha256": "88e51587989763767f1340d552350420cde82f693814ff86396975eeb5e5b9e0",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/ring_theory/mv_polynomial/symmetric/schur/basic.lean",
+      "current_sha256": "cc972024c82e14f084306b872643833b469a253cdccf3058e7bda9d956d8ad0c",
+      "checkpoint_path": "TauCeti/RingTheory/MvPolynomial/Symmetric/Schur/Basic.lean",
+      "checkpoint_sha256": "ddd6aaba22feed682f8b1a54d6ca018490d13e36f671c4f2d2d911a37163c08a",
+      "recorded_upstream_sha256": "ddd6aaba22feed682f8b1a54d6ca018490d13e36f671c4f2d2d911a37163c08a",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/ring_theory/mv_polynomial/symmetric/schur/symmetric.lean",
+      "current_sha256": "024d4f5b3d584a20d0c89fdcddf83bd4eaac4712d4ce3b4f7f21ef4a6899a1c4",
+      "checkpoint_path": "TauCeti/RingTheory/MvPolynomial/Symmetric/Schur/Symmetric.lean",
+      "checkpoint_sha256": "eda51aa7cbc29a487fae9538df67e05b612b2378a79465677c6ba49ab3131ded",
+      "recorded_upstream_sha256": "eda51aa7cbc29a487fae9538df67e05b612b2378a79465677c6ba49ab3131ded",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/topology/algebra/mv_polynomial/zero_locus.lean",
+      "current_sha256": "1f85a53e19af6065f72344e88149a21a2ee7523e89e892ae97093a2bd4f8ed59",
+      "checkpoint_path": "TauCeti/Topology/Algebra/MvPolynomial/ZeroLocus.lean",
+      "checkpoint_sha256": "1f85a53e19af6065f72344e88149a21a2ee7523e89e892ae97093a2bd4f8ed59",
+      "recorded_upstream_sha256": "1f85a53e19af6065f72344e88149a21a2ee7523e89e892ae97093a2bd4f8ed59",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/topology/algebra/star/unitary.lean",
+      "current_sha256": "216a9b9ce0c075b49245a9f7016c7dc77f5d2ef2c538fe4895356b369c8ef826",
+      "checkpoint_path": "TauCeti/Topology/Algebra/Star/Unitary.lean",
+      "checkpoint_sha256": "216a9b9ce0c075b49245a9f7016c7dc77f5d2ef2c538fe4895356b369c8ef826",
+      "recorded_upstream_sha256": "216a9b9ce0c075b49245a9f7016c7dc77f5d2ef2c538fe4895356b369c8ef826",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/topology/algebra/unitary_group.lean",
+      "current_sha256": "96c96c172b8715f11ced2b195193edcc54603dbe8c070f79b573dabe715f729a",
+      "checkpoint_path": "TauCeti/Topology/Algebra/UnitaryGroup.lean",
+      "checkpoint_sha256": "da494c04dc05d86d6f0dfb41fa66da68d1014da31b7b996f4f8cf8fe36545312",
+      "recorded_upstream_sha256": "da494c04dc05d86d6f0dfb41fa66da68d1014da31b7b996f4f8cf8fe36545312",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/topology/compactness/normed.lean",
+      "current_sha256": "f43bca8524ac4ae01c271cfb0c3f796ac08468f9bd0fd3e618ca5b7cf120ce47",
+      "checkpoint_path": "TauCeti/Topology/Compactness/Normed.lean",
+      "checkpoint_sha256": "f43bca8524ac4ae01c271cfb0c3f796ac08468f9bd0fd3e618ca5b7cf120ce47",
+      "recorded_upstream_sha256": "f43bca8524ac4ae01c271cfb0c3f796ac08468f9bd0fd3e618ca5b7cf120ce47",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/topology/e_metric_space/rpow.lean",
+      "current_sha256": "e111cba7954fae85b6e303f6f24b008fa965273092e744771b6e95a0cb6a96e4",
+      "checkpoint_path": "TauCeti/Topology/EMetricSpace/Rpow.lean",
+      "checkpoint_sha256": "e111cba7954fae85b6e303f6f24b008fa965273092e744771b6e95a0cb6a96e4",
+      "recorded_upstream_sha256": "e111cba7954fae85b6e303f6f24b008fa965273092e744771b6e95a0cb6a96e4",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/topology/instances/matrix.lean",
+      "current_sha256": "df2301ffd97662723ccd6430e2d5abb0c6631e36b17ec112a2e62011cbecf3d8",
+      "checkpoint_path": "TauCeti/Topology/Instances/Matrix.lean",
+      "checkpoint_sha256": "df2301ffd97662723ccd6430e2d5abb0c6631e36b17ec112a2e62011cbecf3d8",
+      "recorded_upstream_sha256": "df2301ffd97662723ccd6430e2d5abb0c6631e36b17ec112a2e62011cbecf3d8",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/topology/order/compact.lean",
+      "current_sha256": "e366b3fc65329cdf34f8aa7675f25a721576ed18c7d988b2f216820e84ff3ed9",
+      "checkpoint_path": "TauCeti/Topology/Order/Compact.lean",
+      "checkpoint_sha256": "e366b3fc65329cdf34f8aa7675f25a721576ed18c7d988b2f216820e84ff3ed9",
+      "recorded_upstream_sha256": "e366b3fc65329cdf34f8aa7675f25a721576ed18c7d988b2f216820e84ff3ed9",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    },
+    {
+      "path": "source/tau_ceti/topology/semicontinuity/approximation.lean",
+      "current_sha256": "c0d2706f172281290f6d9494e819b5f1ac77bab647d4641b7919cee793961c43",
+      "checkpoint_path": "TauCeti/Topology/Semicontinuity/Approximation.lean",
+      "checkpoint_sha256": "c0d2706f172281290f6d9494e819b5f1ac77bab647d4641b7919cee793961c43",
+      "recorded_upstream_sha256": "c0d2706f172281290f6d9494e819b5f1ac77bab647d4641b7919cee793961c43",
+      "checkpoint_matches_recorded_hash": true,
+      "changes_only_import_spelling": true
+    }
+  ]
+}

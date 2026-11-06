@@ -1,0 +1,10 @@
+--- archive/source/wishart/verified/field_frontier03.lean
++++ recovered/source/wishart/verified/field_frontier03.lean
+@@ -12,7 +12,6 @@
+ 
+ @[expose] public section
+ 
+-set_option backward.isDefEq.respectTransparency false
+ 
+ section CanonicalSource24
+ /- Source: Wishart/NonnegativeRowIteration.lean -/

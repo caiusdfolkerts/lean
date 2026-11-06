@@ -1,0 +1,75 @@
+--- archive/source/wishart/verified/field_residual05.lean
++++ recovered/source/wishart/verified/field_residual05.lean
+@@ -26,10 +26,16 @@
+ namespace Wishart.FieldGaussian
+ open Wishart.FieldCharts
+ 
+-variable (F : Type*) [NormedDivisionRing F] [NormedAlgebra ℝ F]
+-  [StarRing F] [CStarRing F] [StarModule ℝ F]
+-  [InnerProductSpace ℝ F] [FiniteDimensional ℝ F]
++variable (F : Type*) [NormedDivisionRing F]
++  [StarRing F] [CStarRing F]
++  [InnerProductSpace ℝ F] [StarModule ℝ F] [FiniteDimensional ℝ F]
++  [SMulCommClass ℝ F F] [IsScalarTower ℝ F F]
+   [MeasurableSpace F] [BorelSpace F]
++
++@[reducible] local instance compatibleScalarAlgebraStage5_1 : NormedAlgebra ℝ F where
++  toAlgebra := Algebra.ofModule (fun r x y => smul_mul_assoc r x y)
++    (fun r x y => mul_smul_comm r x y)
++  norm_smul_le r x := (norm_smul r x).le
+ 
+ def leadingSelector (p q : ℕ) : Matrix (Fin (p + q)) (Fin p) F :=
+   (1 : Matrix (Fin (p + q)) (Fin (p + q)) F).submatrix id (Fin.castAdd q)
+@@ -722,9 +728,15 @@
+ namespace Wishart.FieldGaussian
+ open WishartVerification.FieldDensity Wishart.FieldDensity
+ 
+-variable (F : Type*) [NormedRing F] [NormedAlgebra ℝ F] [StarRing F] [CStarRing F]
+-  [StarModule ℝ F] [InnerProductSpace ℝ F] [FiniteDimensional ℝ F]
++variable (F : Type*) [NormedRing F] [StarRing F] [CStarRing F]
++  [InnerProductSpace ℝ F] [StarModule ℝ F] [FiniteDimensional ℝ F]
++  [SMulCommClass ℝ F F] [IsScalarTower ℝ F F]
+   [MeasurableSpace F] [BorelSpace F]
++
++@[reducible] local instance compatibleScalarAlgebraStage5_2 : NormedAlgebra ℝ F where
++  toAlgebra := Algebra.ofModule (fun r x y => smul_mul_assoc r x y)
++    (fun r x y => mul_smul_comm r x y)
++  norm_smul_le r x := (norm_smul r x).le
+ 
+ theorem finiteDensity_rowKernel_and_law (q : ℕ) (hF : 0 < Module.finrank ℝ F) :
+     FiniteDensity (volume : Measure (Row F q)) (rowKernel F q) ∧
+@@ -882,8 +894,14 @@
+ 
+ namespace Wishart.FieldGaussian
+ 
+-variable (F : Type*) [NormedRing F] [NormedAlgebra ℝ F] [StarRing F] [CStarRing F]
+-  [StarModule ℝ F] [InnerProductSpace ℝ F] [FiniteDimensional ℝ F]
++variable (F : Type*) [NormedRing F] [StarRing F] [CStarRing F]
++  [InnerProductSpace ℝ F] [StarModule ℝ F] [FiniteDimensional ℝ F]
++  [SMulCommClass ℝ F F] [IsScalarTower ℝ F F]
++
++@[reducible] local instance compatibleScalarAlgebraStage5_3 : NormedAlgebra ℝ F where
++  toAlgebra := Algebra.ofModule (fun r x y => smul_mul_assoc r x y)
++    (fun r x y => mul_smul_comm r x y)
++  norm_smul_le r x := (norm_smul r x).le
+ 
+ theorem column_star_dot_eq_norm_sq
+     (hstar : ∀ a : F, star a * a = algebraMap ℝ F (‖a‖ ^ 2))
+@@ -994,9 +1012,15 @@
+ 
+ namespace Wishart.FieldGaussian
+ 
+-variable (F : Type*) [NormedRing F] [NormedAlgebra ℝ F] [StarRing F] [CStarRing F]
+-  [StarModule ℝ F] [InnerProductSpace ℝ F] [FiniteDimensional ℝ F]
++variable (F : Type*) [NormedRing F] [StarRing F] [CStarRing F]
++  [InnerProductSpace ℝ F] [StarModule ℝ F] [FiniteDimensional ℝ F]
++  [SMulCommClass ℝ F F] [IsScalarTower ℝ F F]
+   [MeasurableSpace F] [BorelSpace F]
++
++@[reducible] local instance compatibleScalarAlgebraStage5_4 : NormedAlgebra ℝ F where
++  toAlgebra := Algebra.ofModule (fun r x y => smul_mul_assoc r x y)
++    (fun r x y => mul_smul_comm r x y)
++  norm_smul_le r x := (norm_smul r x).le
+ 
+ def matrixGram {n p : ℕ} (Z : Matrix (Fin n) (Fin p) F) : Hermitian F p :=
+   ⟨Zᴴ * Z,Matrix.isHermitian_conjTranspose_mul_self Z⟩

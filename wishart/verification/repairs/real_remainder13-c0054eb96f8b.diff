@@ -1,0 +1,11 @@
+--- archive/source/wishart/verified/real_remainder13.lean
++++ recovered/source/wishart/verified/real_remainder13.lean
+@@ -2,7 +2,7 @@
+ 
+ public import wishart.verified.real_remainder12
+ 
+-/- Generated ordinary proof stage. See audit/staged_real_remainder/RealRemainder13/manifest.json. -/
++/- Recovered canonical proof stage; see verification/recovery-patches.json. -/
+ 
+ @[expose] public section
+ 

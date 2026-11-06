@@ -1,0 +1,11 @@
+--- archive/source/wishart/verified/field_residual01.lean
++++ recovered/source/wishart/verified/field_residual01.lean
+@@ -14,7 +14,7 @@
+ public import Mathlib.Topology.Order.MonotoneConvergence
+ public import Mathlib.Analysis.SpecialFunctions.ExpDeriv
+ 
+-/- Exact canonical residual stage; see audit/field_residual/FieldResidual01.json. -/
++/- Recovered canonical proof stage; see verification/recovery-patches.json. -/
+ 
+ @[expose] public section
+ 

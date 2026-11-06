@@ -1,0 +1,54 @@
+--- archive/source/wishart/verified/field_residual05.lean
++++ recovered/source/wishart/verified/field_residual05.lean
+@@ -678,13 +678,31 @@
+     (fun i => (Matrix.PosDef.one.posSemidef.smul (F.shift_nonneg i)))
+     (fun i : J.erase j => F.profile i)
+     (fun i => F.convex i) (fun i => F.increasing i) (fun i => F.symmetric i)
++  have hselected (i : ι) (X : ComplexMatrix.Hermitian p) :
++      Spectral.spectralBoundaryValue (F.profile i) (FieldSpectral.orderedValues
++        (WishartVerification.hermitian_matrix_coe
++          (FieldSpectral.identityShift (ComplexMatrix.normalizedCompression (F.matrix i) Sigma X)
++            (F.shift i)))) = F.factor Sigma i X := rfl
++  have hother (i : ι) (X : ComplexMatrix.Hermitian p) :
++      Spectral.spectralBoundaryValue (F.profile i) (FieldSpectral.orderedValues
++        (WishartVerification.hermitian_matrix_coe
++          (F.shift i • (⟨1, Matrix.isHermitian_one⟩ : ComplexMatrix.Hermitian (F.size i)) +
++            ComplexMatrix.normalizedCompression (F.matrix i) Sigma X))) = F.factor Sigma i X := by
++    exact congrArg (fun Y : ComplexMatrix.Hermitian (F.size i) =>
++      Spectral.spectralBoundaryValue (F.profile i)
++        (FieldSpectral.orderedValues (WishartVerification.hermitian_matrix_coe Y)))
++      (add_comm _ _)
++  have hp (X : ComplexMatrix.Hermitian p) :
++      (∏ i : J.erase j, F.factor Sigma i X) = ∏ i ∈ J.erase j, F.factor Sigma i X :=
++    Finset.prod_coe_sort (J.erase j) (fun i => F.factor Sigma i X)
+   have hs :
+       (∫⁻ X, ENNReal.ofReal (F.factor Sigma j X) ∂ComplexMatrix.wishartMeasure α Sigma) *
+         (∫⁻ X, ENNReal.ofReal (∏ i ∈ J.erase j, F.factor Sigma i X)
+           ∂ComplexMatrix.wishartMeasure α Sigma) ≤
+       ∫⁻ X, ENNReal.ofReal (F.factor Sigma j X * ∏ i ∈ J.erase j, F.factor Sigma i X)
+         ∂ComplexMatrix.wishartMeasure α Sigma := by
+-    simpa only [factor, shiftedCompression, FieldSpectral.identityShift, Finset.prod_coe_sort, add_comm] using h
++    simp_rw [← hp]
++    simpa only [hselected, hother] using h
+   convert hs using 1
+   apply congrArg (fun t : ComplexMatrix.Hermitian p → ℝ≥0∞ => ∫⁻ X, t X ∂ComplexMatrix.wishartMeasure α Sigma)
+   funext X
+@@ -712,13 +730,17 @@
+     (fun i => (QuaternionMatrix.posDef_one.posSemidef.smul (F.shift_nonneg i)))
+     (fun i : J.erase j => F.profile i)
+     (fun i => F.convex i) (fun i => F.increasing i) (fun i => F.symmetric i)
++  have hp (X : QuaternionMatrix.Hermitian p) :
++      (∏ i : J.erase j, F.factor Sigma i X) = ∏ i ∈ J.erase j, F.factor Sigma i X :=
++    Finset.prod_coe_sort (J.erase j) (fun i => F.factor Sigma i X)
+   have hs :
+       (∫⁻ X, ENNReal.ofReal (F.factor Sigma j X) ∂QuaternionMatrix.wishartMeasure α Sigma) *
+         (∫⁻ X, ENNReal.ofReal (∏ i ∈ J.erase j, F.factor Sigma i X)
+           ∂QuaternionMatrix.wishartMeasure α Sigma) ≤
+       ∫⁻ X, ENNReal.ofReal (F.factor Sigma j X * ∏ i ∈ J.erase j, F.factor Sigma i X)
+         ∂QuaternionMatrix.wishartMeasure α Sigma := by
+-    simpa only [factor, shiftedCompression, QuaternionMatrix.identityShift, Finset.prod_coe_sort, add_comm] using h
++    simp_rw [← hp]
++    simpa only [factor, shiftedCompression, QuaternionMatrix.identityShift, add_comm] using h
+   convert hs using 1
+   apply congrArg (fun t : QuaternionMatrix.Hermitian p → ℝ≥0∞ => ∫⁻ X, t X ∂QuaternionMatrix.wishartMeasure α Sigma)
+   funext X

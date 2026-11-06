@@ -1,0 +1,41 @@
+[
+  {
+    "file": "source/wishart/verified/real_beta_ii01.lean",
+    "recovered_sha256": "b24f13ebe8334b9f51af2d349c746b74eb5070f64e9587cac66609026b6a419f",
+    "accepted_sha256": "fdcc96ca9037dad5ee2402fdf082d2aaf720f8ddf5661513185a3e3c2d38bc59",
+    "command": [
+      "lake",
+      "build",
+      "wishart.verified.real_beta_ii01"
+    ],
+    "exit_code": 0,
+    "log_sha256": "d7e388b5ae95e932141a43d6add3081a2d10cc66daf987339059808f03d80ec8",
+    "changes": [
+      "Explicit symmetric-matrix types in almost-everywhere binders.",
+      "Typed nonnegative-integral integrands and measurability arguments.",
+      "Explicit compressionScale and symmetric-congruence reductions.",
+      "Removed a redundant ring tactic after a field_simp proof already closed the goal."
+    ],
+    "scope": "Proof elaboration and explicit typing; no added mathematical hypothesis."
+  },
+  {
+    "file": "source/verification/statements_field.lean",
+    "recovered_sha256": "7427258c1c908553058b4ecaf2d46fcf98115934d7dd384a6a0b62827b54f063",
+    "accepted_sha256": "a42d1e5f90cd4aafc3c9cb1c96db09768f5776ed9ba5eb29e090d721fd38a924",
+    "command": [
+      "lake",
+      "build",
+      "+verification.statements_field"
+    ],
+    "exit_code": 0,
+    "log_sha256": "f8a70f17bef1766b46103ed9003356b48d88197d8ef8c2e9dc8b5d13ad9e45ca",
+    "diff": "verification/repairs/field-literal-gates.diff",
+    "diff_sha256": "ac9f1334b9c095db4b5bc4d37f6befc4356db27610c9e2c1e5792120aec63497",
+    "changes": [
+      "Explicit matrix values in quaternion cone, determinant, whitening and density statements.",
+      "Explicit Hermitian domains in the finite-power integral binders.",
+      "Replaced stale independent-replay wording with the actual compilation and checked-environment audit contract."
+    ],
+    "scope": "Explicit typing only; mathematical quantifiers, hypotheses and conclusions are unchanged."
+  }
+]

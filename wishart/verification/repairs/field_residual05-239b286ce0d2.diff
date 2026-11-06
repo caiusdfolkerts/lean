@@ -1,0 +1,331 @@
+--- archive/source/wishart/verified/field_residual05.lean
++++ recovered/source/wishart/verified/field_residual05.lean
+@@ -703,7 +703,7 @@
+ 
+ noncomputable section
+ open Matrix MeasureTheory ProbabilityTheory Set
+-open scoped Classical Quaternion ENNReal
++open scoped Classical Quaternion ENNReal Matrix.Norms.Frobenius
+ 
+ namespace WishartVerification.FieldDensity
+ 
+@@ -718,10 +718,10 @@
+   letI := isProbability_normalized hG
+   have hraw : (μ.prod ν).withDensity (fun z => f z.1 * g z.2) =
+       (normalizer μ f * normalizer ν g) • ((normalized μ f).prod (normalized ν g)) := by
+-    rw [← Measure.prod_withDensity hf hg,raw_eq_smul_normalized hF,raw_eq_smul_normalized hG,
++    rw [← prod_withDensity hf hg,raw_eq_smul_normalized hF,raw_eq_smul_normalized hG,
+       Measure.prod_smul_left,Measure.prod_smul_right,smul_smul]
+   exact (normalized_of_raw_eq_smul_probability _ _ _
+-    (mul_pos hF.positive hG.positive) (ENNReal.mul_lt_top hF.finite hG.finite) hraw).2
++    (CanonicallyOrderedAdd.mul_pos.mpr ⟨hF.positive, hG.positive⟩) (ENNReal.mul_lt_top hF.finite hG.finite) hraw).2
+ 
+ end WishartVerification.FieldDensity
+ 
+@@ -754,7 +754,7 @@
+     Matrix (Fin n) (Fin (q+1)) F := Matrix.of fun i j => Fin.cases (v i) (G i) j
+ 
+ def splitColumnLinearEquiv (n q : ℕ) :
+-    Row F n × Matrix (Fin n) (Fin q) F ≃ₗ[ℝ] Matrix (Fin n) (Fin (q+1)) F where
++    (Row F n × Matrix (Fin n) (Fin q) F) ≃ₗ[ℝ] Matrix (Fin n) (Fin (q+1)) F where
+   toFun z := appendColumn F z.1 z.2
+   invFun G := (WithLp.toLp 2 (fun i => G i 0),G.submatrix id Fin.succ)
+   left_inv z := by apply Prod.ext <;> ext i <;> rfl
+@@ -780,9 +780,14 @@
+   have hp := finiteDensity_product (volume : Measure (Row F n))
+     (Wishart.FieldHermitian.rectangularLebesgue F n q) (rowKernel F n) (matrixKernel F)
+     (measurable_rowKernel F n) (measurable_matrixKernel F n q) hrow.1 hmat.1
+-  have h := normalized_transport_haar (splitColumnLinearEquiv F n q).toContinuousLinearEquiv
+-    ((volume : Measure (Row F n)).prod (Wishart.FieldHermitian.rectangularLebesgue F n q))
+-    (Wishart.FieldHermitian.rectangularLebesgue F n (q+1))
++  have h := @normalized_transport_haar
++    (Row F n × Matrix (Fin n) (Fin q) F) (Matrix (Fin n) (Fin (q+1)) F)
++    _ _ _ _ (by exact inferInstanceAs (BorelSpace (Row F n × Matrix (Fin n) (Fin q) F)))
++    _ _ _ _ (by exact inferInstanceAs (BorelSpace (Matrix (Fin n) (Fin (q+1)) F)))
++    ((splitColumnLinearEquiv F n q).toContinuousLinearEquiv)
++    ((volume : Measure (Row F n)).prod (Wishart.FieldHermitian.rectangularLebesgue F n q)) (Wishart.FieldHermitian.rectangularLebesgue F n (q+1))
++    (by exact inferInstanceAs (Measure.IsAddHaarMeasure ((volume : Measure (Row F n)).prod (Wishart.FieldHermitian.rectangularLebesgue F n q))))
++    (by exact inferInstanceAs (Measure.IsAddHaarMeasure (Wishart.FieldHermitian.rectangularLebesgue F n (q+1))))
+     (fun z => rowKernel F n z.1 * matrixKernel F z.2) (matrixKernel F) hp.1
+     (fun z => matrixKernel_appendColumn F z.1 z.2)
+   rw [hp.2,hrow.2,hmat.2,(finiteDensity_matrixKernel_and_law F n (q+1) hF).2] at h
+@@ -792,7 +797,7 @@
+     Matrix (Fin (n+1)) (Fin q) F := Matrix.of fun i j => Fin.cases (v j) (fun k => G k j) i
+ 
+ def splitRowLinearEquiv (n q : ℕ) :
+-    Row F q × Matrix (Fin n) (Fin q) F ≃ₗ[ℝ] Matrix (Fin (n+1)) (Fin q) F where
++    (Row F q × Matrix (Fin n) (Fin q) F) ≃ₗ[ℝ] Matrix (Fin (n+1)) (Fin q) F where
+   toFun z := appendRow F z.1 z.2
+   invFun G := (WithLp.toLp 2 (G 0),G.submatrix Fin.succ id)
+   left_inv z := by apply Prod.ext <;> ext i <;> rfl
+@@ -818,9 +823,14 @@
+   have hp := finiteDensity_product (volume : Measure (Row F q))
+     (Wishart.FieldHermitian.rectangularLebesgue F n q) (rowKernel F q) (matrixKernel F)
+     (measurable_rowKernel F q) (measurable_matrixKernel F n q) hrow.1 hmat.1
+-  have h := normalized_transport_haar (splitRowLinearEquiv F n q).toContinuousLinearEquiv
+-    ((volume : Measure (Row F q)).prod (Wishart.FieldHermitian.rectangularLebesgue F n q))
+-    (Wishart.FieldHermitian.rectangularLebesgue F (n+1) q)
++  have h := @normalized_transport_haar
++    (Row F q × Matrix (Fin n) (Fin q) F) (Matrix (Fin (n+1)) (Fin q) F)
++    _ _ _ _ (by exact inferInstanceAs (BorelSpace (Row F q × Matrix (Fin n) (Fin q) F)))
++    _ _ _ _ (by exact inferInstanceAs (BorelSpace (Matrix (Fin (n+1)) (Fin q) F)))
++    ((splitRowLinearEquiv F n q).toContinuousLinearEquiv)
++    ((volume : Measure (Row F q)).prod (Wishart.FieldHermitian.rectangularLebesgue F n q)) (Wishart.FieldHermitian.rectangularLebesgue F (n+1) q)
++    (by exact inferInstanceAs (Measure.IsAddHaarMeasure ((volume : Measure (Row F q)).prod (Wishart.FieldHermitian.rectangularLebesgue F n q))))
++    (by exact inferInstanceAs (Measure.IsAddHaarMeasure (Wishart.FieldHermitian.rectangularLebesgue F (n+1) q)))
+     (fun z => rowKernel F q z.1 * matrixKernel F z.2) (matrixKernel F) hp.1
+     (fun z => matrixKernel_appendRow F z.1 z.2)
+   rw [hp.2,hrow.2,hmat.2,(finiteDensity_matrixKernel_and_law F (n+1) q hF).2] at h
+@@ -837,9 +847,14 @@
+ 
+ theorem matrixGaussian_map_transpose (n p : ℕ) (hF : 0 < Module.finrank ℝ F) :
+     (matrixGaussian F n p).map Matrix.transpose = matrixGaussian F p n := by
+-  have h := normalized_transport_haar (transposeMatrixLinearEquiv F n p).toContinuousLinearEquiv
+-    (Wishart.FieldHermitian.rectangularLebesgue F n p)
+-    (Wishart.FieldHermitian.rectangularLebesgue F p n) (matrixKernel F) (matrixKernel F)
++  have h := @normalized_transport_haar
++    (Matrix (Fin n) (Fin p) F) (Matrix (Fin p) (Fin n) F)
++    _ _ _ _ (by exact inferInstanceAs (BorelSpace (Matrix (Fin n) (Fin p) F)))
++    _ _ _ _ (by exact inferInstanceAs (BorelSpace (Matrix (Fin p) (Fin n) F)))
++    ((transposeMatrixLinearEquiv F n p).toContinuousLinearEquiv)
++    (Wishart.FieldHermitian.rectangularLebesgue F n p) (Wishart.FieldHermitian.rectangularLebesgue F p n)
++    (by exact inferInstanceAs (Measure.IsAddHaarMeasure (Wishart.FieldHermitian.rectangularLebesgue F n p)))
++    (by exact inferInstanceAs (Measure.IsAddHaarMeasure (Wishart.FieldHermitian.rectangularLebesgue F p n))) (matrixKernel F) (matrixKernel F)
+     (finiteDensity_matrixKernel_and_law F n p hF).1 (fun Z => by
+       unfold matrixKernel rectangularNormSquare
+       congr 3
+@@ -859,11 +874,16 @@
+ 
+ theorem matrixGaussian_map_conjTranspose (n p : ℕ) (hF : 0 < Module.finrank ℝ F) :
+     (matrixGaussian F n p).map Matrix.conjTranspose = matrixGaussian F p n := by
+-  have h := normalized_transport_haar
+-    (conjTransposeMatrixLinearEquiv F n p).toContinuousLinearEquiv
+-    (Wishart.FieldHermitian.rectangularLebesgue F n p)
+-    (Wishart.FieldHermitian.rectangularLebesgue F p n) (matrixKernel F) (matrixKernel F)
++  have h := @normalized_transport_haar
++    (Matrix (Fin n) (Fin p) F) (Matrix (Fin p) (Fin n) F)
++    _ _ _ _ (by exact inferInstanceAs (BorelSpace (Matrix (Fin n) (Fin p) F)))
++    _ _ _ _ (by exact inferInstanceAs (BorelSpace (Matrix (Fin p) (Fin n) F)))
++    ((conjTransposeMatrixLinearEquiv F n p).toContinuousLinearEquiv)
++    (Wishart.FieldHermitian.rectangularLebesgue F n p) (Wishart.FieldHermitian.rectangularLebesgue F p n)
++    (by exact inferInstanceAs (Measure.IsAddHaarMeasure (Wishart.FieldHermitian.rectangularLebesgue F n p)))
++    (by exact inferInstanceAs (Measure.IsAddHaarMeasure (Wishart.FieldHermitian.rectangularLebesgue F p n))) (matrixKernel F) (matrixKernel F)
+     (finiteDensity_matrixKernel_and_law F n p hF).1 (fun Z => by
++      change matrixKernel F Zᴴ = matrixKernel F Z
+       unfold matrixKernel rectangularNormSquare
+       simp only [Matrix.conjTranspose_apply,norm_star]
+       congr 3
+@@ -920,10 +940,12 @@
+   by_cases hv : v = 0
+   · refine ⟨1,?_⟩
+     simp [hv]
++    rfl
+   have hr : 0 < ‖v‖ := norm_pos_iff.mpr hv
+   let x : Row F (n+1) := ‖v‖⁻¹ • v
+   have hx : ‖x‖ = 1 := by
+-    rw [x,norm_smul,Real.norm_eq_abs,abs_of_pos (inv_pos.mpr hr),inv_mul_cancel₀ hr.ne']
++    dsimp only [x]
++    rw [norm_smul,Real.norm_eq_abs,abs_of_pos (inv_pos.mpr hr),inv_mul_cancel₀ hr.ne']
+   obtain ⟨V,hV⟩ := hfirst x hx
+   have hVe : (V : Matrix (Fin (n+1)) (Fin (n+1)) F) *ᵥ Pi.single 0 1 = fun i => x i := by
+     funext i
+@@ -936,7 +958,7 @@
+     change v i = ‖v‖ • (‖v‖⁻¹ • v i)
+     rw [smul_smul,mul_inv_cancel₀ hr.ne',one_smul]
+   refine ⟨star V,?_⟩
+-  rw [hvx,Matrix.mulVec_smul,hback]
++  rw [hvx, Matrix.mulVec_smul, Unitary.coe_star, hback]
+   funext i
+   by_cases hi : i = 0
+   · subst i
+@@ -949,25 +971,32 @@
+ open Wishart.FieldGaussian
+ 
+ theorem star_mul_self_norm_sq (a : ℂ) : star a * a = algebraMap ℝ ℂ (‖a‖ ^ 2) :=
+-  Complex.conj_mul' a
++by
++  simpa only [Complex.star_def, Algebra.algebraMap_eq_smul_one, Complex.real_smul, mul_one, Complex.ofReal_pow] using Complex.conj_mul' a
+ 
+ theorem exists_rotate_column {n : ℕ} (v : Row ℂ (n+1)) :
+     ∃ U : unitary (Matrix (Fin (n+1)) (Fin (n+1)) ℂ),
+       (U : Matrix (Fin (n+1)) (Fin (n+1)) ℂ) *ᵥ (fun i => v i) =
+         Pi.single 0 (‖v‖ : ℂ) := by
+-  apply exists_rotate_column_of_firstColumn ℂ _ v
+-  intro x hx
+-  let B : Matrix (Fin (n+1)) (Fin 1) ℂ := fun i _ => x i
+-  have hB : Bᴴ * B = 1 := by
+-    ext i j
+-    have hi : i = 0 := Subsingleton.elim _ _
+-    have hj : j = 0 := Subsingleton.elim _ _
+-    subst i; subst j
+-    change star (fun k => x k) ⬝ᵥ (fun k => x k) = 1
+-    rw [column_star_dot_eq_norm_sq ℂ star_mul_self_norm_sq,hx,one_pow,map_one]
+-  obtain ⟨U,hU⟩ := Wishart.FieldSpectral.exists_unitary_extension
+-    (show 1 ≤ n+1 by omega) B hB
+-  exact ⟨U,fun i => congrArg (fun M => M i 0) hU⟩
++  have hfirst : ∀ x : Row ℂ (n+1), ‖x‖ = 1 →
++      ∃ U : unitary (Matrix (Fin (n+1)) (Fin (n+1)) ℂ),
++        ∀ i, U.val i 0 = x i := by
++    intro x hx
++    let B : Matrix (Fin (n+1)) (Fin 1) ℂ := fun i _ => x i
++    have hB : Bᴴ * B = 1 := by
++      ext i j
++      have hi : i = 0 := Subsingleton.elim _ _
++      have hj : j = 0 := Subsingleton.elim _ _
++      subst i; subst j
++      change star (fun k => x k) ⬝ᵥ (fun k => x k) = 1
++      have hc := column_star_dot_eq_norm_sq ℂ (fun a => by
++        simpa only [Algebra.algebraMap_eq_smul_one] using star_mul_self_norm_sq a) x
++      simpa only [hx, one_pow, map_one] using hc
++    obtain ⟨U,hU⟩ := Wishart.FieldSpectral.exists_unitary_extension
++      (show 1 ≤ n+1 by omega) B hB
++    exact ⟨U,fun i => congrArg (fun M => M i 0) hU⟩
++  simpa only [Algebra.algebraMap_eq_smul_one, Complex.real_smul, mul_one] using
++    exists_rotate_column_of_firstColumn ℂ hfirst v
+ 
+ end Wishart.ComplexMatrix
+ 
+@@ -980,12 +1009,18 @@
+ 
+ theorem exists_rotate_column {n : ℕ} (v : Row ℍ[ℝ] (n+1)) :
+     ∃ U : unitary (Matrix (Fin (n+1)) (Fin (n+1)) ℍ[ℝ]),
+-      (U : Matrix (Fin (n+1)) (Fin (n+1)) ℍ[ℝ]) *ᵥ (fun i => v i) =
++      U.val *ᵥ (fun i => v i) =
+         Pi.single 0 (‖v‖ : ℍ[ℝ]) := by
+-  apply exists_rotate_column_of_firstColumn ℍ[ℝ] _ v
+-  intro x hx
+-  apply exists_unitary_firstColumn
+-  rw [column_star_dot_eq_norm_sq ℍ[ℝ] star_mul_self_norm_sq,hx,one_pow,map_one]
++  have hfirst : ∀ x : Row ℍ[ℝ] (n+1), ‖x‖ = 1 →
++      ∃ U : unitary (Matrix (Fin (n+1)) (Fin (n+1)) ℍ[ℝ]),
++        ∀ i, U.val i 0 = x i := by
++    intro x hx
++    apply exists_unitary_firstColumn (fun i => x i)
++    have hc := column_star_dot_eq_norm_sq ℍ[ℝ] (fun a => by
++      simpa only [Algebra.algebraMap_eq_smul_one] using star_mul_self_norm_sq a) x
++    simpa only [hx, one_pow, map_one] using hc
++  simpa only [Algebra.algebraMap_eq_smul_one, ← Quaternion.coe_mul_eq_smul, mul_one] using
++    exists_rotate_column_of_firstColumn ℍ[ℝ] hfirst v
+ 
+ end Wishart.QuaternionMatrix
+ end
+@@ -1008,7 +1043,7 @@
+ 
+ noncomputable section
+ open Matrix MeasureTheory ProbabilityTheory
+-open scoped Classical Quaternion ENNReal
++open scoped Classical Quaternion ENNReal Matrix.Norms.Frobenius
+ 
+ namespace Wishart.FieldGaussian
+ 
+@@ -1028,7 +1063,7 @@
+ theorem continuous_matrixGram (n p : ℕ) :
+     Continuous (matrixGram F : Matrix (Fin n) (Fin p) F → Hermitian F p) := by
+   apply Continuous.subtype_mk
+-  exact continuous_id.conjTranspose.mul continuous_id
++  exact continuous_id.matrix_conjTranspose.matrix_mul continuous_id
+ 
+ theorem matrixGaussian_map_gram (n p : ℕ) :
+     (matrixGaussian F n p).map (matrixGram F) =
+@@ -1042,18 +1077,20 @@
+     (U : unitary (Matrix (Fin n) (Fin n) F)) (Z : Matrix (Fin n) (Fin p) F) :
+     matrixGram F ((U : Matrix (Fin n) (Fin n) F) * Z) = matrixGram F Z := by
+   apply Subtype.ext
+-  change (U * Z)ᴴ * (U * Z) = Zᴴ * Z
++  change (U.val * Z)ᴴ * (U.val * Z) = Zᴴ * Z
+   rw [Matrix.conjTranspose_mul]
+   calc
+-    _ = Zᴴ * ((U : Matrix (Fin n) (Fin n) F)ᴴ * U) * Z := by
++    _ = Zᴴ * (U.valᴴ * U.val) * Z := by
+       simp only [Matrix.mul_assoc]
+-    _ = _ := by rw [Unitary.coe_star_mul_self,Matrix.mul_one]
++    _ = _ := by
++      have hU : U.valᴴ * U.val = 1 := Unitary.coe_star_mul_self U
++      rw [hU, Matrix.mul_one]
+ 
+ def firstColumn (n : ℕ) (r : ℝ) : Row F (n+1) :=
+   WithLp.toLp 2 (Pi.single 0 (algebraMap ℝ F r))
+ 
+ theorem continuous_firstColumn (n : ℕ) : Continuous (firstColumn F n) := by
+-  apply (WithLp.continuous_toLp 2 _).comp
++  apply (PiLp.continuous_toLp 2 (fun _ : Fin (n+1) => F)).comp
+   apply continuous_pi
+   intro i
+   by_cases hi : i = 0
+@@ -1080,7 +1117,7 @@
+     (U : unitary (Matrix (Fin n) (Fin n) F)) (v : Row F n)
+     (G : Matrix (Fin n) (Fin q) F) :
+     (U : Matrix (Fin n) (Fin n) F) * appendColumn F v G =
+-      appendColumn F (WithLp.toLp 2 (U *ᵥ (fun i => v i))) (U * G) := by
++      appendColumn F (WithLp.toLp 2 (U.val *ᵥ (fun i => v i))) (U.val * G) := by
+   ext i j
+   refine Fin.cases ?_ (fun k => ?_) j
+   · rfl
+@@ -1100,7 +1137,7 @@
+   obtain ⟨U,hU⟩ := hrotate v
+   have heq (G : Matrix (Fin (n+1)) (Fin q) F) :
+       matrixGram F (appendColumn F v G) =
+-        matrixGram F (appendColumn F (firstColumn F n ‖v‖) (U * G)) := by
++        matrixGram F (appendColumn F (firstColumn F n ‖v‖) (U.val * G)) := by
+     rw [← matrixGram_unitary_left F U (appendColumn F v G),
+       unitary_mul_appendColumn,hU]
+     rfl
+@@ -1109,14 +1146,14 @@
+     (continuous_matrixGram F (n+1) (q+1)).measurable.comp
+       ((continuous_appendColumn F (n+1) q).measurable.comp
+         (measurable_const.prodMk measurable_id))
+-  have hmul : Measurable (fun G : Matrix (Fin (n+1)) (Fin q) F => U * G) := by fun_prop
++  have hmul : Measurable (fun G : Matrix (Fin (n+1)) (Fin q) F => U.val * G) := by fun_prop
+   calc
+     _ = (matrixGaussian F (n+1) q).map
+         ((fun G => matrixGram F (appendColumn F (firstColumn F n ‖v‖) G)) ∘
+-          (fun G => U * G)) := by
++          (fun G => U.val * G)) := by
+       congr 1
+       exact funext heq
+-    _ = ((matrixGaussian F (n+1) q).map (fun G => U * G)).map
++    _ = ((matrixGaussian F (n+1) q).map (fun G => U.val * G)).map
+         (fun G => matrixGram F (appendColumn F (firstColumn F n ‖v‖) G)) :=
+       (Measure.map_map hg hmul).symm
+     _ = _ := by rw [matrixGaussian_map_unitary_left F hF re hstar U]
+@@ -1132,7 +1169,7 @@
+   exact (continuous_matrixGram F (n+1) (q+1)).measurable.comp
+     ((continuous_appendColumn F (n+1) q).measurable.comp
+       (((continuous_firstColumn F n).measurable.comp
+-        (Real.measurable_sqrt.comp measurable_fst)).prodMk
++        (measurable_fst.sqrt)).prodMk
+         ((continuous_appendRow F n q).measurable.comp measurable_snd)))
+ 
+ theorem matrixGram_recursive_law {n q : ℕ}
+@@ -1158,7 +1195,7 @@
+   have hg : Measurable g := (continuous_matrixGram F (n+1) (q+1)).measurable.comp
+     ((continuous_appendColumn F (n+1) q).measurable.comp
+       (((continuous_firstColumn F n).measurable.comp
+-        (Real.measurable_sqrt.comp measurable_fst)).prodMk measurable_snd))
++        (measurable_fst.sqrt)).prodMk measurable_snd))
+   have hrad := Wishart.map_prod_eq_of_map_fibres
+     (gaussianRowWithFactor F (1 : Matrix (Fin (n+1)) (Fin (n+1)) F))
+     (matrixGaussian F (n+1) q) T (by fun_prop) f hf g hg (by
+@@ -1170,7 +1207,10 @@
+     (matrixGaussian_split_column F (n+1) q hF)
+   rw [Measure.map_map (continuous_matrixGram F (n+1) (q+1)).measurable
+     (continuous_appendColumn F (n+1) q).measurable] at hcolumn
+-  rw [← hcolumn,hrad]
++  change ((gaussianRowWithFactor F (1 : Matrix (Fin (n+1)) (Fin (n+1)) F)).prod
++    (matrixGaussian F (n+1) q)).map f = _ at hcolumn
++  rw [← hcolumn, hrad]
++  simp only [Nat.cast_succ]
+   have hp := Measure.map_prod_map
+     (gammaMeasure ((Module.finrank ℝ F : ℝ) * (n+1) / 2)
+       ((Module.finrank ℝ F : ℝ) / 2))
+@@ -1196,7 +1236,9 @@
+       matrixGaussian F 1 q := by
+   have h := (measurePreserving_eval
+     (fun _ : Fin 1 => gaussianRowWithFactor F (1 : Matrix (Fin q) (Fin q) F)) 0).map_eq
+-  rw [matrixGaussian,← h,Measure.map_map (continuous_oneRowMatrix F q).measurable
++  unfold matrixGaussian
++  conv_lhs => rw [← h]
++  rw [Measure.map_map (continuous_oneRowMatrix F q).measurable
+     (measurable_pi_apply 0)]
+   congr 1
+   funext z

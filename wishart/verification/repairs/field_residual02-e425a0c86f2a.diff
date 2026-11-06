@@ -1,0 +1,521 @@
+--- archive/source/wishart/verified/field_residual02.lean
++++ recovered/source/wishart/verified/field_residual02.lean
+@@ -9,6 +9,10 @@
+ /- Exact canonical residual stage; see audit/field_residual/FieldResidual02.json. -/
+ 
+ @[expose] public section
++set_option maxErrors 1000
++set_option maxHeartbeats 1600000
++
++set_option backward.isDefEq.respectTransparency false
+ 
+ section CanonicalSource10
+ /- Source: Wishart/SpectralBoundaryValues.lean -/
+@@ -61,7 +65,7 @@
+   apply hm
+   intro i
+   apply Real.log_le_log (add_pos_of_nonneg_of_pos (hx i) (Real.exp_pos s))
+-  exact add_le_add_left (Real.exp_le_exp.mpr hst) _
++  linarith [Real.exp_le_exp.mpr hst]
+ 
+ theorem spectralBoundaryValue_tendsto {h : (Fin k → ℝ) → ℝ}
+     (hm : Monotone h) {x : Fin k → ℝ} (hx : ∀ i, 0 ≤ x i) :
+@@ -157,7 +161,7 @@
+   apply hm
+   intro i
+   exact Real.log_le_log (add_pos_of_nonneg_of_pos (hx i) (Real.exp_pos t))
+-    (add_le_add_right (hxy i) _)
++    (by linarith [hxy i])
+ 
+ theorem spectralBoundaryValue_symmetric {h : (Fin k → ℝ) → ℝ}
+     (hsym : SymmetricProfile h) (σ : Equiv.Perm (Fin k)) (x : Fin k → ℝ) :
+@@ -190,7 +194,7 @@
+ 
+ noncomputable section
+ open Matrix MeasureTheory Set
+-open scoped Classical Quaternion BigOperators ENNReal
++open scoped Classical Quaternion ComplexOrder BigOperators ENNReal
+ namespace Wishart
+ 
+ /-- Both inequalities in the selected-factor chain, with extended expectations.
+@@ -281,7 +285,7 @@
+ 
+ theorem factor_eigenvalue_boundary (Sigma : Matrix (Fin p) (Fin p) ℍ[ℝ]) (i : ι)
+     (X : QuaternionMatrix.Hermitian p)
+-    (hS : QuaternionMatrix.PosSemidef (F.shiftedCompression Sigma i X)) :
++    (hS : QuaternionMatrix.PosSemidef (F.shiftedCompression Sigma i X).val) :
+     Filter.Tendsto (fun ε : ℝ => Real.exp (F.profile i (fun a =>
+       Real.log (QuaternionMatrix.orderedValues (F.shiftedCompression Sigma i X) a + ε))))
+       (nhdsWithin 0 (Ioi 0)) (nhds (F.factor Sigma i X)) :=
+@@ -383,23 +387,23 @@
+ 
+ noncomputable section
+ open MeasureTheory
+-open scoped Classical Quaternion ENNReal
++open scoped Classical Quaternion ComplexOrder ENNReal
+ namespace Wishart
+ open WishartVerification.FieldDensity
+ 
+ theorem theorem_7_1_complex_normalization : SectionSevenComplexNormalization := by
+-  intro p α Sigma hα hΣ
+-  have h := (ComplexMatrix.finiteDensity_wishart_and_covariance_law hα hΣ).1
+-  exact ⟨h.positive, h.finite, ComplexMatrix.wishart_probability hα hΣ⟩
++  intro p α Sigma hα hSigma
++  have h := (ComplexMatrix.finiteDensity_wishart_and_covariance_law hα hSigma).1
++  exact ⟨h.positive, h.finite, ComplexMatrix.wishart_probability hα hSigma⟩
+ 
+ theorem theorem_7_1_quaternion_normalization : SectionSevenQuaternionNormalization := by
+-  intro p α Sigma hα hΣ
+-  have h := (QuaternionMatrix.finiteDensity_wishart_and_covariance_law hα hΣ).1
+-  exact ⟨h.positive, h.finite, QuaternionMatrix.wishart_probability hα hΣ⟩
++  intro p α Sigma hα hSigma
++  have h := (QuaternionMatrix.finiteDensity_wishart_and_covariance_law hα hSigma).1
++  exact ⟨h.positive, h.finite, QuaternionMatrix.wishart_probability hα hSigma⟩
+ 
+ theorem ComplexMatrix.wishart_ae_posDef {p : ℕ} (α : ℝ)
+     (Sigma : Matrix (Fin p) (Fin p) ℂ) :
+-    ∀ᵐ X ∂ComplexMatrix.wishartMeasure α Sigma,
++    ∀ᵐ (X : ComplexMatrix.Hermitian p) ∂ComplexMatrix.wishartMeasure α Sigma,
+       (X : Matrix (Fin p) (Fin p) ℂ).PosDef := by
+   apply ae_normalized_of_weight_ne_zero (ComplexMatrix.measurable_wishartWeight α Sigma)
+   intro X hX
+@@ -408,7 +412,7 @@
+ 
+ theorem QuaternionMatrix.wishart_ae_posDef {p : ℕ} (α : ℝ)
+     (Sigma : Matrix (Fin p) (Fin p) ℍ[ℝ]) :
+-    ∀ᵐ X ∂QuaternionMatrix.wishartMeasure α Sigma,
++    ∀ᵐ (X : QuaternionMatrix.Hermitian p) ∂QuaternionMatrix.wishartMeasure α Sigma,
+       QuaternionMatrix.PosDef (X : Matrix (Fin p) (Fin p) ℍ[ℝ]) := by
+   apply ae_normalized_of_weight_ne_zero (QuaternionMatrix.measurable_wishartWeight α Sigma)
+   intro X hX
+@@ -459,7 +463,7 @@
+     PEquiv.mul_toMatrix_toPEquiv]
+   ext i j
+   simp [diagonalHermitian, realDiagonal, Matrix.submatrix_apply,
+-    Matrix.diagonal_apply, e.injective.eq_iff]
++    Matrix.diagonal_apply, Equiv.Perm.inv_def, e.injective.eq_iff]
+ 
+ end Wishart.FieldCharts
+ 
+@@ -476,7 +480,7 @@
+   simp only [ascendingValues, Function.comp_apply, Fin.rev_rev]
+ 
+ theorem ascendingValues_monotone {p : ℕ} (X : Hermitian p) : Monotone (ascendingValues X) :=
+-  fun _ _ h => Wishart.FieldSpectral.antitone_orderedValues _ (Fin.rev_anti h)
++  fun _ _ h => Wishart.FieldSpectral.antitone_orderedValues (WishartVerification.hermitian_matrix_coe X) (Fin.rev_anti h)
+ 
+ theorem continuous_ascendingValues (p : ℕ) : Continuous (@ascendingValues p) := by
+   apply continuous_pi
+@@ -489,7 +493,7 @@
+       (X : Matrix (Fin p) (Fin p) ℂ).charpoly := by
+     change ((U : Matrix (Fin p) (Fin p) ℂ) * X * star U).charpoly = _
+     rw [Matrix.charpoly_mul_comm, ← Matrix.mul_assoc,
+-      Unitary.coe_star_mul_self, Matrix.one_mul]
++      Unitary.coe_star, Unitary.coe_star_mul_self, Matrix.one_mul]
+   have hs := ((WishartVerification.hermitian_matrix_coe (unitaryConjugate ℂ U X)).eigenvalues_eq_eigenvalues_iff
+     (WishartVerification.hermitian_matrix_coe X)).mpr hc
+   funext i
+@@ -519,19 +523,14 @@
+       (Wishart.FieldSpectral.orderedValues (WishartVerification.hermitian_matrix_coe X))) = X := by
+     apply Subtype.ext
+     change (O : Matrix (Fin p) (Fin p) ℂ) * _ * star O = _
+-    rw [← hO]
+-    have hu : (O : Matrix (Fin p) (Fin p) ℂ) *
+-        star (O : Matrix (Fin p) (Fin p) ℂ) = 1 := O.property.2
+-    calc
+-      (O : Matrix (Fin p) (Fin p) ℂ) *
+-          (star (O : Matrix (Fin p) (Fin p) ℂ) *
+-            (X : Matrix (Fin p) (Fin p) ℂ) * O) * star O =
+-          ((O : Matrix (Fin p) (Fin p) ℂ) * star O) * X *
+-            ((O : Matrix (Fin p) (Fin p) ℂ) * star O) := by
+-              simp only [Matrix.mul_assoc]
+-      _ = (X : Matrix (Fin p) (Fin p) ℂ) := by
+-        rw [hu, Matrix.one_mul, Matrix.mul_one]
+-  rw [ascendingValues, ← permutation_conjugate_diagonal ℂ Fin.revPerm,
++    change (O : Matrix (Fin p) (Fin p) ℂ) * Matrix.diagonal (fun i => (Wishart.FieldSpectral.orderedValues (WishartVerification.hermitian_matrix_coe X) i : ℂ)) * star (O : Matrix (Fin p) (Fin p) ℂ) = X.val
++    have hO2 : star O.val * X.val * O.val = Matrix.diagonal (fun i => (Wishart.FieldSpectral.orderedValues (WishartVerification.hermitian_matrix_coe X) i : ℂ)) := by
++      convert hO using 1 <;> rfl
++    rw [← hO2]
++    simp only [← Matrix.mul_assoc, O.property.2, Matrix.one_mul]
++    rw [Matrix.mul_assoc, O.property.2, Matrix.mul_one]
++  change unitaryConjugate ℂ (O * star P) (diagonalHermitian ℂ (Wishart.FieldSpectral.orderedValues (WishartVerification.hermitian_matrix_coe X) ∘ (Fin.revPerm : Equiv.Perm (Fin p)))) = X
++  rw [← permutation_conjugate_diagonal ℂ Fin.revPerm,
+     ← unitaryConjugate_mul]
+   simpa only [P, mul_assoc, Unitary.star_mul_self, mul_one] using hrec
+ 
+@@ -539,9 +538,10 @@
+     (U : unitary (Matrix (Fin p) (Fin p) ℂ)) (X : Hermitian p) :
+     wishartWeight α 1 (unitaryConjugate ℂ U X) = wishartWeight α 1 X := by
+   have h := wishartWeight_congruence_standard α
+-    (star U : Matrix (Fin p) (Fin p) ℂ) (Unitary.isUnit _) X
++    ((star U).val : Matrix (Fin p) (Fin p) ℂ) (Unitary.isUnit_coe (U := star U)) X
++  have hu : U.val * U.valᴴ = 1 := U.property.2
+   simpa only [Wishart.FieldHermitian.congruence, unitaryConjugate,
+-    Unitary.coe_star, Matrix.star_eq_conjTranspose, Matrix.conjTranspose_conjTranspose,
++    Unitary.coe_star, Matrix.star_eq_conjTranspose, Matrix.conjTranspose_conjTranspose, hu,
+     Unitary.coe_mul_star_self, realDeterminant, Matrix.det_one,
+     Complex.one_re, Real.one_rpow, ENNReal.ofReal_one, one_mul] using h
+ 
+@@ -558,6 +558,7 @@
+ end Wishart.ComplexMatrix
+ 
+ namespace Wishart.QuaternionMatrix
++open scoped Matrix.Norms.Frobenius
+ open Wishart.FieldCharts
+ 
+ theorem ascendingValues_reversal {p : ℕ} (X : Hermitian p) :
+@@ -567,25 +568,29 @@
+ 
+ theorem orderedValues_diagonal {p : ℕ} (lam : Fin p → ℝ) (hlam : Antitone lam) :
+     orderedValues (Wishart.FieldCharts.diagonalHermitian ℍ[ℝ] lam) = lam := by
+-  funext i
+-  unfold orderedValues
+   have hflat : flatHermitian (Wishart.FieldCharts.diagonalHermitian ℍ[ℝ] lam) =
+-      (⟨Matrix.diagonal (fun k => (doubleValues lam k : ℂ)), by simp⟩ :
+-        Wishart.FieldSpectral.Hermitian ℂ (p*2)) := by
++      Wishart.FieldCharts.diagonalHermitian ℂ (doubleValues lam) := by
+     apply Subtype.ext
+     exact flatRepresentation_diagonal lam
+-  rw [hflat, Wishart.FieldSpectral.orderedValues_diagonal _ (doubleValues_antitone hlam)]
+-  simp only [doubleValues, doubledIndex, Equiv.symm_apply_apply]
++  have he := congrArg (fun A : Wishart.FieldSpectral.Hermitian ℂ (p*2) =>
++    Wishart.FieldSpectral.orderedValues (WishartVerification.hermitian_matrix_coe A)) hflat
++  have hd := Wishart.FieldSpectral.orderedValues_diagonal (𝕜 := ℂ) (doubleValues lam) (doubleValues_antitone hlam)
++  funext i
++  change Wishart.FieldSpectral.orderedValues (WishartVerification.hermitian_matrix_coe
++    (flatHermitian (Wishart.FieldCharts.diagonalHermitian ℍ[ℝ] lam))) (doubledIndex i) = lam i
++  rw [he]
++  convert congrFun hd (doubledIndex i) using 1 <;>
++    simp [doubleValues, doubledIndex]
+ 
+ theorem ascendingValues_conjugate {p : ℕ}
+     (U : unitary (Matrix (Fin p) (Fin p) ℍ[ℝ])) (X : Hermitian p) :
+     ascendingValues (unitaryConjugate ℍ[ℝ] U X) = ascendingValues X := by
+-  unfold ascendingValues
++  change orderedValues (conjugate U X) ∘ Fin.rev = orderedValues X ∘ Fin.rev
+   rw [orderedValues_conjugate]
+ 
+ theorem ascendingValues_diagonal {p : ℕ} (lam : Fin p → ℝ) (hlam : Monotone lam) :
+     ascendingValues (Wishart.FieldCharts.diagonalHermitian ℍ[ℝ] lam) = lam := by
+-  let P := permutationUnitary ℍ[ℝ] (Fin.revPerm : Equiv.Perm (Fin p))
++  let P := Wishart.FieldCharts.permutationUnitary ℍ[ℝ] (Fin.revPerm : Equiv.Perm (Fin p))
+   have hrev : Antitone (lam ∘ Fin.rev) := fun _ _ h => hlam (Fin.rev_anti h)
+   have hs := orderedValues_diagonal (lam ∘ Fin.rev) hrev
+   have hperm := ascendingValues_conjugate P
+@@ -593,26 +598,33 @@
+   rw [permutation_conjugate_diagonal] at hperm
+   rw [← hperm]
+   funext i
+-  simp only [ascendingValues, hs, Function.comp_apply, Fin.revPerm_apply, Fin.rev_rev]
++  change orderedValues (Wishart.FieldCharts.diagonalHermitian ℍ[ℝ] (lam ∘ Fin.rev)) (Fin.rev i) = lam i
++  rw [hs]
++  simp
+ 
+ theorem exists_conjugate_ascending {p : ℕ} (X : Hermitian p) :
+     ∃ U : unitary (Matrix (Fin p) (Fin p) ℍ[ℝ]),
+       unitaryConjugate ℍ[ℝ] U
+         (Wishart.FieldCharts.diagonalHermitian ℍ[ℝ] (ascendingValues X)) = X := by
+   obtain ⟨O,hO⟩ := exists_conjugate_diagonal X
+-  let P := permutationUnitary ℍ[ℝ] (Fin.revPerm : Equiv.Perm (Fin p))
++  let P := Wishart.FieldCharts.permutationUnitary ℍ[ℝ] (Fin.revPerm : Equiv.Perm (Fin p))
+   refine ⟨O * star P, ?_⟩
+-  rw [ascendingValues, ← permutation_conjugate_diagonal ℍ[ℝ] Fin.revPerm,
++  change unitaryConjugate ℍ[ℝ] (O * star P) (Wishart.FieldCharts.diagonalHermitian ℍ[ℝ] (orderedValues X ∘ (Fin.revPerm : Equiv.Perm (Fin p)))) = X
++  rw [← permutation_conjugate_diagonal ℍ[ℝ] Fin.revPerm,
+     ← unitaryConjugate_mul]
+-  simpa only [P, mul_assoc, Unitary.star_mul_self, mul_one] using hO
++  have hO' : unitaryConjugate ℍ[ℝ] O
++      (Wishart.FieldCharts.diagonalHermitian ℍ[ℝ] (orderedValues X)) = X := by
++    convert hO using 1 <;> apply Subtype.ext <;> rfl
++  simpa only [P, mul_assoc, Unitary.star_mul_self, mul_one] using hO' 
+ 
+ theorem wishartWeight_unitary {p : ℕ} (α : ℝ)
+     (U : unitary (Matrix (Fin p) (Fin p) ℍ[ℝ])) (X : Hermitian p) :
+     wishartWeight α 1 (unitaryConjugate ℍ[ℝ] U X) = wishartWeight α 1 X := by
+   have h := wishartWeight_congruence_standard α
+-    (star U : Matrix (Fin p) (Fin p) ℍ[ℝ]) (Unitary.isUnit _) X
++    ((star U).val : Matrix (Fin p) (Fin p) ℍ[ℝ]) (Unitary.isUnit_coe (U := star U)) X
++  have hu : U.val * U.valᴴ = 1 := U.property.2
+   simpa only [Wishart.FieldHermitian.congruence, unitaryConjugate,
+-    Unitary.coe_star, Matrix.star_eq_conjTranspose, Matrix.conjTranspose_conjTranspose,
++    Unitary.coe_star, Matrix.star_eq_conjTranspose, Matrix.conjTranspose_conjTranspose, hu,
+     Unitary.coe_mul_star_self, positiveDeterminant, complexRepresentation_one,
+     Matrix.det_one, Complex.one_re, Real.sqrt_one, Real.one_rpow,
+     ENNReal.ofReal_one, one_mul] using h
+@@ -668,7 +680,7 @@
+     (hx : x.2 ∈ cayleyDomain F p) (hrepeated : ¬Function.Injective x.1) :
+     (chartDerivative F R x.2 hx x.1).det = 0 := by
+   apply abs_eq_zero.mp
+-  rw [abs_det_chartDerivative, gapProduct_eq_zero_of_not_injective F hrepeated,
++  rw [abs_det_chartDerivative, gapProduct_eq_zero_of_not_injective hrepeated,
+     abs_zero, zero_pow (Module.finrank_pos (R := ℝ) (M := F)).ne', mul_zero]
+ 
+ theorem ProductWindow.exists_finite_frame_cover (R : RealPartData F) {p : ℕ}
+@@ -704,7 +716,7 @@
+   have hconj := congrArg (unitaryConjugate F V) hfull
+   rw [← unitaryConjugate_mul, mul_inv_cancel_left] at hconj
+   refine ⟨a,ha,?_⟩
+-  exact congrArg (hermitianCoordinates F R p) hconj
++  simpa [orbitCoordinates, coordinateConjugation, chartCoordinates, C, conjugationLinearEquiv, spectralMap, unitaryConjugate, cayleyUnitary, diagonalHermitian, LinearEquiv.trans_apply] using congrArg (hermitianCoordinates F R p) hconj
+ 
+ theorem repeated_selector_null_of_orbits (R : RealPartData F) {p : ℕ}
+     [CompactSpace (unitary (Matrix (Fin p) (Fin p) F))]
+@@ -733,9 +745,12 @@
+       rw [(hd x hx).fderiv]
+       exact (hd x hx).hasFDerivWithinAt
+     · intro x hx
+-      rw [(hd x hx).fderiv, ContinuousLinearMap.det_comp,
+-        chartDerivative_det_zero_of_repeated F R x (W.angular_subset hx.2) hx.1,
+-        mul_zero]
++      rw [(hd x hx).fderiv]
++      change LinearMap.det (L.toLinearMap.comp (chartDerivative F R x.2 (W.angular_subset hx.2) x.1).toLinearMap) = 0
++      rw [LinearMap.det_comp]
++      have hz := chartDerivative_det_zero_of_repeated F R x (W.angular_subset hx.2) hx.1
++      change LinearMap.det (chartDerivative F R x.2 (W.angular_subset hx.2) x.1).toLinearMap = 0 at hz
++      rw [hz, mul_zero]
+   obtain ⟨t,ht⟩ := W.exists_finite_frame_cover F R
+   apply measure_mono_null (t := ⋃ U ∈ t, chart U '' bad)
+   · intro x hx
+@@ -745,10 +760,11 @@
+     obtain ⟨a,ha,heq⟩ := W.orbit_in_translated_image F R (selector X) U V hVU
+     apply mem_iUnion₂.mpr
+     refine ⟨V,hV,(selector X,a),⟨hx,ha⟩,?_⟩
++    change coordinateConjugation F R V (chartCoordinates F R (selector X,a)) = x
+     rw [← heq]
+     change hermitianCoordinates F R p (unitaryConjugate F U (diagonalHermitian F (selector X))) = x
+     rw [hU,LinearEquiv.apply_symm_apply]
+-  · exact measure_biUnion_finset_eq_zero.mpr fun U _ => hnull U
++  · exact (measure_biUnion_null_iff t.countable_toSet).mpr fun U _ => hnull U
+ 
+ end Wishart.FieldCharts
+ end
+@@ -774,6 +790,7 @@
+ open scoped Classical Quaternion ComplexOrder Matrix.Norms.L2Operator ENNReal
+ 
+ namespace Wishart.FieldCharts
++open scoped Matrix.Norms.Frobenius
+ 
+ variable (F : Type*) [NormedRing F] [NormedAlgebra ℝ F] [StarRing F]
+   [StarModule ℝ F] [FiniteDimensional ℝ F] [ContinuousStar F] [MeasurableSpace F] [BorelSpace F] [Nontrivial F]
+@@ -782,7 +799,7 @@
+     Continuous (Function.uncurry (unitaryConjugate F (p := p))) := by
+   apply Continuous.subtype_mk
+   change Continuous (fun z : unitary (Matrix (Fin p) (Fin p) F) × Hermitian F p =>
+-    (z.1 : Matrix (Fin p) (Fin p) F) * z.2 * star z.1)
++    z.1.val * z.2.val * star z.1.val)
+   fun_prop
+ 
+ theorem continuous_diagonalHermitian (p : ℕ) :
+@@ -791,6 +808,15 @@
+   change Continuous (fun lam : Fin p → ℝ => Matrix.diagonal
+     (fun i => algebraMap ℝ F (lam i)))
+   fun_prop
++
++theorem measurable_unitary_diagonal (p : ℕ) : Measurable
++    (fun z : unitary (Matrix (Fin p) (Fin p) F) × (Fin p → ℝ) =>
++      unitaryConjugate F z.1 (diagonalHermitian F z.2)) := by
++  have hc : Continuous (fun z : unitary (Matrix (Fin p) (Fin p) F) × (Fin p → ℝ) =>
++      unitaryConjugate F z.1 (diagonalHermitian F z.2)) :=
++    (continuous_unitaryConjugate F p).comp
++      (continuous_fst.prodMk ((continuous_diagonalHermitian F p).comp continuous_snd))
++  exact hc.measurable
+ 
+ theorem hermitianLebesgue_repeated_selector (R : RealPartData F) {p : ℕ}
+     [CompactSpace (unitary (Matrix (Fin p) (Fin p) F))]
+@@ -803,8 +829,16 @@
+   let e := (hermitianCoordinates F R p).toContinuousLinearEquiv
+   letI : IsAddHaarMeasure (μ.map e) := e.isAddHaarMeasure_map μ
+   have h := repeated_selector_null_of_orbits F R (μ.map e) selector horbit
++  change (μ.map e.toHomeomorph) {x | ¬Function.Injective (selector ((hermitianCoordinates F R p).symm x))} = 0 at h
+   rw [e.toHomeomorph.measurableEmbedding.map_apply] at h
+-  simpa only [e, mem_preimage, mem_setOf_eq, LinearEquiv.symm_apply_apply] using h
++  have hset : e.toHomeomorph ⁻¹' {x | ¬Function.Injective (selector ((hermitianCoordinates F R p).symm x))} =
++      {X | ¬Function.Injective (selector X)} := by
++    ext X
++    change (¬Function.Injective (selector ((hermitianCoordinates F R p).symm (hermitianCoordinates F R p X)))) ↔ _
++    rw [LinearEquiv.symm_apply_apply]
++    rfl
++  rw [hset] at h
++  exact h
+ 
+ end Wishart.FieldCharts
+ 
+@@ -863,6 +897,7 @@
+ end Wishart.ComplexMatrix
+ 
+ namespace Wishart.QuaternionMatrix
++open scoped Matrix.Norms.Frobenius
+ open Wishart.FieldCharts
+ 
+ def identityEigenLaw (p : ℕ) (α : ℝ) : Measure (Fin p → ℝ) :=
+@@ -945,6 +980,7 @@
+ open scoped Classical ENNReal Matrix.Norms.Operator
+ 
+ namespace Wishart.FieldCharts
++open scoped Matrix.Norms.Frobenius
+ 
+ variable (F : Type*) [NormedRing F] [NormedAlgebra ℝ F] [StarRing F]
+   [StarModule ℝ F] [FiniteDimensional ℝ F] [ContinuousStar F] [Nontrivial F]
+@@ -978,14 +1014,15 @@
+   have hAI : (∫⁻ z in W.angularWindow, A z ∂angularLebesgue F p) =
+       W.angularMass F R := by
+     apply setLIntegral_eq_of_support_subset
+-    exact Set.support_indicator_subset _ _
++    exact Set.support_indicator_subset
+   have hQI : (∫⁻ lam in chamber p, Q lam) = ∫⁻ lam, Q lam :=
+     setLIntegral_eq_of_support_subset hsupport
+   have hsep :
+       (∫⁻ x in chamber p ×ˢ W.angularWindow, A x.2 * Q x.1
+         ∂coordinateLebesgue F p) = W.angularMass F R * ∫⁻ lam, Q lam := by
+-    rw [coordinateLebesgue, setLIntegral_prod _ ((hA.comp measurable_snd).mul
+-      (hQ.comp measurable_fst)).aemeasurable]
++    rw [coordinateLebesgue, setLIntegral_prod (fun x : Coordinates F p => A x.2 * Q x.1)
++      (show Measurable (fun x : Coordinates F p => A x.2 * Q x.1) from
++        (hA.comp measurable_snd).mul (hQ.comp measurable_fst)).aemeasurable]
+     simp_rw [lintegral_mul_const _ hA, hAI]
+     rw [lintegral_const_mul _ hQ,hQI]
+   have hdom := (Wishart.Spectral.isOpen_positiveChamber p).measurableSet.prod
+@@ -1017,11 +1054,12 @@
+       congr 1
+       apply setLIntegral_congr_fun hdom
+       intro x hx
++      dsimp only
+       rw [abs_det_fderiv_chartCoordinates F R x (W.angular_subset hx.2),
+         ENNReal.ofReal_mul (abs_nonneg _), hselect x hx]
+       change ENNReal.ofReal (angularJacobian F x.2) *
+         ENNReal.ofReal _ * (w (chartCoordinates F R x) * f x.1) = _
+-      rw [mul_assoc,mul_assoc,← mul_assoc (ENNReal.ofReal _) (w _),hfactor x hx]
++      rw [mul_assoc,← mul_assoc (ENNReal.ofReal _) (w _),hfactor x hx]
+       simp only [A,Q,W.angularWeight_of_mem F R hx.2]
+     _ = _ := by rw [hsep]; simp only [Q,mul_assoc,mul_left_comm]
+ 
+@@ -1044,9 +1082,9 @@
+   let H : Coordinates F p → ℝ≥0∞ :=
+     (W.imageWindow F R).indicator (fun x => f (selector x))
+   have hT : Measurable T := by
+-    apply (hermitianCoordinates F R p).toLinearMap.continuous_of_finiteDimensional.measurable.comp
+-    exact (continuous_unitaryConjugate F p).measurable.comp
+-      (measurable_fst.prodMk ((continuous_diagonalHermitian F p).measurable.comp measurable_snd))
++    have hc : Measurable (fun X : Hermitian F p => hermitianCoordinates F R p X) :=
++      (hermitianCoordinates F R p).toLinearMap.continuous_of_finiteDimensional.measurable
++    exact hc.comp (measurable_unitary_diagonal F p)
+   have hH : Measurable H := (hf.comp hselector).indicator (W.measurableSet_imageWindow F R)
+   have hinner (lam : Fin p → ℝ) (hlam : lam ∈ chamber p) :
+       (∫⁻ U, H (T (U,lam)) ∂TauCeti.haarProb (unitary (Matrix (Fin p) (Fin p) F))) =
+@@ -1054,7 +1092,8 @@
+     have heq (U : unitary (Matrix (Fin p) (Fin p) F)) : H (T (U,lam)) =
+         (W.frameWindow F R).indicator (fun _ => f lam) U := by
+       by_cases hU : U ∈ W.frameWindow F R
+-      · have hx := (W.orbit_mem_image_iff F R lam hlam U).mpr hU
++      · have hx : orbitCoordinates F R lam U ∈ W.imageWindow F R :=
++          (W.orbit_mem_image_iff F R lam hlam U).mpr hU
+         simp only [H,T,Set.indicator_of_mem hx,Set.indicator_of_mem hU,hselect lam hlam U]
+       · have hx : orbitCoordinates F R lam U ∉ W.imageWindow F R :=
+           fun hx => hU ((W.orbit_mem_image_iff F R lam hlam U).mp hx)
+@@ -1176,8 +1215,9 @@
+     (by exact_mod_cast hβ),if_pos hlam]
+   congr 1
+   simp_rw [Real.rpow_natCast]
++  change _ = Wishart.Spectral.gapProduct lam ^ β
+   rw [Wishart.Spectral.gapProduct_eq_double_product]
+-  simp only [Finset.prod_pow,ite_pow,one_pow]
++  simp only [← Finset.prod_pow,ite_pow,one_pow]
+ 
+ theorem prod_laguerreWeight {p : ℕ} (β : ℕ) (α : ℝ)
+     (lam : Fin p → ℝ) (hlam : ∀ i, 0 < lam i) :
+@@ -1206,12 +1246,13 @@
+     Matrix.det_diagonal,map_prod,Complex.ofReal_re,inv_one,Matrix.one_mul,
+     Matrix.trace_diagonal,map_sum,Nat.cast_ofNat,div_self (by norm_num : (2:ℝ) ≠ 0),
+     one_mul]
+-  congr 2
+-  ring
++  simp only [Complex.coe_algebraMap, ← Complex.ofReal_prod, ← Complex.ofReal_sum,
++    Complex.ofReal_re] <;> congr 2 <;> ring
+ 
+ end Wishart.ComplexMatrix
+ 
+ namespace Wishart.QuaternionMatrix
++open scoped Matrix.Norms.Frobenius
+ open Wishart.FieldCharts
+ 
+ theorem wishartWeight_conjugate_diagonal {p : ℕ} (α : ℝ)
+@@ -1230,7 +1271,11 @@
+   rw [positiveDeterminant_diagonal lam (fun i => (hlam i).le)]
+   simp only [Ring.inverse_one,Matrix.one_mul,Wishart.FieldCharts.diagonalHermitian,
+     realDiagonal,Matrix.trace_diagonal,map_sum,QuaternionAlgebra.re_coe,Nat.cast_ofNat]
+-  norm_num
++  have htrace : (∑ i, (lam i : ℍ[ℝ])).re = ∑ i, lam i := by
++    change (QuaternionAlgebra.reₗ (-1 : ℝ) 0 (-1)) (∑ i, (lam i : ℍ[ℝ])) = _
++    rw [map_sum]
++    rfl
++  norm_num [htrace]
+ 
+ end Wishart.QuaternionMatrix
+ end
+@@ -1284,6 +1329,7 @@
+   apply h.trans
+   apply lintegral_mono
+   intro x
++  dsimp only
+   rw [ENNReal.ofReal_mul (ennrealTruncation_nonneg n f x),
+     ofReal_ennrealTruncation, ofReal_ennrealTruncation]
+   exact mul_le_mul' (min_le_left _ _) (min_le_left _ _)
+@@ -1312,6 +1358,7 @@
+ open scoped Classical Quaternion ComplexOrder Matrix.Norms.L2Operator ENNReal
+ 
+ namespace Wishart.FieldCharts
++open scoped Matrix.Norms.Frobenius
+ 
+ variable (F : Type*) [NormedRing F] [NormedAlgebra ℝ F] [StarRing F]
+   [StarModule ℝ F] [FiniteDimensional ℝ F] [ContinuousStar F] [Nontrivial F]
+@@ -1347,8 +1394,7 @@
+       (fun X => by simp only [wc,Function.comp_apply,e.symm_apply_apply])).2
+   have hbuild : Measurable (fun z : unitary (Matrix (Fin p) (Fin p) F) × (Fin p → ℝ) =>
+       unitaryConjugate F z.1 (diagonalHermitian F z.2)) :=
+-    (continuous_unitaryConjugate F p).measurable.comp
+-      (measurable_fst.prodMk ((continuous_diagonalHermitian F p).measurable.comp measurable_snd))
++    measurable_unitary_diagonal F p
+   have hrec' : ((TauCeti.haarProb (unitary (Matrix (Fin p) (Fin p) F))).prod κ).map
+       (fun z => orbitCoordinates F R z.2 z.1) = normalized (coordinateLebesgue F p) wc := by
+     rw [hcoord]
+@@ -1359,10 +1405,10 @@
+     κ sc (hselector.comp e.symm.continuous.measurable) q hq hqoff _ _ hae hrec'
+   · intro lam hlam U
+     simpa only [sc,Function.comp_apply,orbitCoordinates,e,
+-      LinearEquiv.symm_apply_apply] using hselect lam hlam U
++      LinearEquiv.coe_toContinuousLinearEquiv_symm', LinearEquiv.symm_apply_apply] using hselect lam hlam U
+   · intro lam hlam U
+     simpa only [wc,Function.comp_apply,orbitCoordinates,e,
+-      LinearEquiv.symm_apply_apply] using hfactor lam hlam U
++      LinearEquiv.coe_toContinuousLinearEquiv_symm', LinearEquiv.symm_apply_apply] using hfactor lam hlam U
+ 
+ end Wishart.FieldCharts
+ 
+@@ -1419,8 +1465,7 @@
+   letI := laguerreLaw_isProbability hα
+   have hb : Measurable (fun z : unitary (Matrix (Fin p) (Fin p) ℂ) × (Fin p → ℝ) =>
+       unitaryConjugate ℂ z.1 (diagonalHermitian ℂ z.2)) :=
+-    (continuous_unitaryConjugate ℂ p).measurable.comp
+-      (measurable_fst.prodMk ((continuous_diagonalHermitian ℂ p).measurable.comp measurable_snd))
++    measurable_unitary_diagonal ℂ p
+   have h := wishart_haar_laguerre_representation hα
+   rw [← Measure.prod_swap (μ := WishartVerification.normalizedWeight volume (fieldEigenDensity 2 p α))
+     (ν := TauCeti.haarProb (unitary (Matrix (Fin p) (Fin p) ℂ))),Measure.map_map hb measurable_swap] at h
+@@ -1442,6 +1487,7 @@
+ end Wishart.ComplexMatrix
+ 
+ namespace Wishart.QuaternionMatrix
++open scoped Matrix.Norms.Frobenius
+ open Wishart.FieldCharts Wishart.FieldSpectral
+ 
+ theorem identityEigenLaw_normalized_density {p : ℕ} {α : ℝ}
+@@ -1494,8 +1540,7 @@
+   letI := laguerreLaw_isProbability hα
+   have hb : Measurable (fun z : unitary (Matrix (Fin p) (Fin p) ℍ[ℝ]) × (Fin p → ℝ) =>
+       unitaryConjugate ℍ[ℝ] z.1 (Wishart.FieldCharts.diagonalHermitian ℍ[ℝ] z.2)) :=
+-    (continuous_unitaryConjugate ℍ[ℝ] p).measurable.comp
+-      (measurable_fst.prodMk ((continuous_diagonalHermitian ℍ[ℝ] p).measurable.comp measurable_snd))
++    measurable_unitary_diagonal ℍ[ℝ] p
+   have h := wishart_haar_laguerre_representation hα
+   rw [← Measure.prod_swap (μ := WishartVerification.normalizedWeight volume (fieldEigenDensity 4 p α))
+     (ν := TauCeti.haarProb (unitary (Matrix (Fin p) (Fin p) ℍ[ℝ]))),Measure.map_map hb measurable_swap] at h

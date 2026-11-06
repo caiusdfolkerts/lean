@@ -1,0 +1,224 @@
+--- archive/source/wishart/verified/field_residual06.lean
++++ recovered/source/wishart/verified/field_residual06.lean
+@@ -2159,7 +2159,7 @@
+       verticalJoin F z.1 z.2) := by
+   unfold verticalJoin
+   exact ((continuous_horizontalJoin F q p r).comp
+-    (continuous_fst.conjTranspose.prodMk continuous_snd.conjTranspose)).conjTranspose
++    (continuous_fst.matrix_conjTranspose.prodMk continuous_snd.matrix_conjTranspose)).matrix_conjTranspose
+ 
+ @[simp] theorem verticalJoin_castAdd {p r q : ℕ}
+     (A : Matrix (Fin p) (Fin q) F) (B : Matrix (Fin r) (Fin q) F)
+@@ -2176,19 +2176,33 @@
+ theorem matrixGaussian_split_rows (p r q : ℕ) (hF : 0 < Module.finrank ℝ F) :
+     ((matrixGaussian F p q).prod (matrixGaussian F r q)).map
+       (fun z => verticalJoin F z.1 z.2) = matrixGaussian F (p+r) q := by
++  let eF : F ≃L[ℝ] (Fin (Module.finrank ℝ F) → ℝ) :=
++    ContinuousLinearEquiv.ofFinrankEq (by simp)
++  letI : SecondCountableTopology F := eF.toHomeomorph.secondCountableTopology
++  have hT (a b : ℕ) : Measurable
++      (Matrix.conjTranspose : Matrix (Fin a) (Fin b) F → Matrix (Fin b) (Fin a) F) := by
++    simpa only [id_eq] using
++      (continuous_id : Continuous (@id (Matrix (Fin a) (Fin b) F))).matrix_conjTranspose.measurable
++  have hJoin : Measurable (Matrix.conjTranspose ∘
++      fun z : Matrix (Fin q) (Fin p) F × Matrix (Fin q) (Fin r) F => horizontalJoin F z.1 z.2) :=
++    (hT q (p+r)).comp (continuous_horizontalJoin F q p r).measurable
++  have hPair : Measurable (Prod.map
++      (Matrix.conjTranspose : Matrix (Fin p) (Fin q) F → Matrix (Fin q) (Fin p) F)
++      (Matrix.conjTranspose : Matrix (Fin r) (Fin q) F → Matrix (Fin q) (Fin r) F)) :=
++    (hT p q).prodMap (hT r q)
+   have h := congrArg (fun μ => μ.map Matrix.conjTranspose)
+     (matrixGaussian_split_columns F q p r hF)
+-  rw [Measure.map_map (by fun_prop) (continuous_horizontalJoin F q p r).measurable,
++  rw [Measure.map_map (hT q (p+r)) (continuous_horizontalJoin F q p r).measurable,
+     matrixGaussian_map_conjTranspose F q (p+r) hF] at h
+   rw [← matrixGaussian_map_conjTranspose F p q hF,
+     ← matrixGaussian_map_conjTranspose F r q hF,
+-    Measure.map_prod_map _ _ (by fun_prop) (by fun_prop),
+-    Measure.map_map (by fun_prop) (by fun_prop)] at h
++    Measure.map_prod_map _ _ (hT p q) (hT r q),
++    Measure.map_map hJoin hPair] at h
+   exact h
+ 
+ theorem verticalJoin_gram {p r q : ℕ}
+     (A : Matrix (Fin p) (Fin q) F) (B : Matrix (Fin r) (Fin q) F) :
+-    matrixGram F (verticalJoin F A B) = matrixGram F A + matrixGram F B := by
++    Wishart.FieldGaussian.matrixGram F (verticalJoin F A B) = Wishart.FieldGaussian.matrixGram F A + Wishart.FieldGaussian.matrixGram F B := by
+   apply Subtype.ext
+   ext i j
+   change (∑ a : Fin (p+r), star (verticalJoin F A B a i) * verticalJoin F A B a j) =
+@@ -2203,80 +2217,112 @@
+     horizontalJoin F (verticalJoin F A B) (verticalJoin F Z H) =
+       verticalJoin F (horizontalJoin F A Z) (horizontalJoin F B H) := by
+   ext i j
+-  obtain ⟨i,rfl⟩ := finSumFinEquiv.surjective i
+-  cases i <;>
+-    simp only [finSumFinEquiv_apply_left,finSumFinEquiv_apply_right,
+-      verticalJoin_castAdd,verticalJoin_natAdd,horizontalJoin,Matrix.of_apply]
++  obtain ⟨i, rfl⟩ := finSumFinEquiv.surjective i
++  obtain ⟨j, rfl⟩ := finSumFinEquiv.surjective j
++  cases i <;> cases j <;>
++    simp [horizontalJoin, verticalJoin_castAdd, verticalJoin_natAdd]
+ 
+ theorem zero_horizontalJoin_gram {r p q : ℕ} (H : Matrix (Fin r) (Fin q) F) :
+-    matrixGram F (horizontalJoin F (0 : Matrix (Fin r) (Fin p) F) H) =
+-      trailingBackground F (matrixGram F H) := by
++    Wishart.FieldGaussian.matrixGram F (horizontalJoin F (0 : Matrix (Fin r) (Fin p) F) H) =
++      trailingBackground F (Wishart.FieldGaussian.matrixGram F H) := by
+   apply Subtype.ext
+-  rw [matrixGram,horizontalJoin_gram]
+-  simp only [Matrix.conjTranspose_zero,Matrix.zero_mul,Matrix.mul_zero,
+-    trailingBackground,Wishart.FieldHermitian.fromBlocks,matrixGram]
++  change (horizontalJoin F (0 : Matrix (Fin r) (Fin p) F) H)ᴴ *
++      horizontalJoin F 0 H = _
++  rw [horizontalJoin_gram]
++  simp only [Matrix.conjTranspose_zero, Matrix.zero_mul, Matrix.mul_zero,
++    trailingBackground, Wishart.FieldHermitian.fromBlocks, Wishart.FieldGaussian.matrixGram,
++    Submodule.coe_zero]
+ 
+ theorem tallDiagonalFactor_mul_star {p r : ℕ}
+     (U : unitary (Matrix (Fin p) (Fin p) F)) (lam : Fin p → ℝ) :
+-    (wideDiagonalFactor F (Nat.le_add_right p r) lam)ᴴ * star U =
+-      verticalJoin F (realDiagonal F (fun i => Real.sqrt (lam i)) * star U)
++    (wideDiagonalFactor F (Nat.le_add_right p r) lam)ᴴ * U.valᴴ =
++      verticalJoin F (realDiagonal F (fun i => Real.sqrt (lam i)) * U.valᴴ)
+         (0 : Matrix (Fin r) (Fin p) F) := by
+   have hD : (realDiagonal F (fun i => Real.sqrt (lam i)))ᴴ =
+       realDiagonal F (fun i => Real.sqrt (lam i)) :=
+     WishartVerification.hermitian_matrix_coe (diagonalHermitian F _)
+-  rw [wideDiagonalFactor,Matrix.conjTranspose_mul,Matrix.conjTranspose_conjTranspose,hD]
++  rw [wideDiagonalFactor, Matrix.conjTranspose_mul,
++    Matrix.conjTranspose_conjTranspose, hD, Matrix.mul_assoc]
+   ext i j
+-  obtain ⟨i,rfl⟩ := finSumFinEquiv.surjective i
++  obtain ⟨i, rfl⟩ := finSumFinEquiv.surjective i
+   cases i with
+   | inl i =>
+-    simp only [finSumFinEquiv_apply_left,verticalJoin_castAdd,coordinateColumns,
+-      Matrix.mul_assoc,Matrix.mul_apply,Matrix.submatrix_apply,Matrix.one_apply]
+-    have heq (a : Fin p) : (Fin.castAdd r i : Fin (p+r)) = Fin.castLE (Nat.le_add_right p r) a ↔ i = a := by
++    simp only [finSumFinEquiv_apply_left, verticalJoin_castAdd]
++    change (∑ a : Fin p, (if Fin.castAdd r i = Fin.castLE (Nat.le_add_right p r) a
++      then (1 : F) else 0) *
++      (realDiagonal F (fun i => Real.sqrt (lam i)) * U.valᴴ) a j) = _
++    have heq (a : Fin p) :
++        (Fin.castAdd r i : Fin (p+r)) = Fin.castLE (Nat.le_add_right p r) a ↔ i = a := by
+       constructor
+-      · intro h; apply Fin.ext; exact congrArg Fin.val h
+-      · rintro rfl; rfl
+-    simp only [heq,ite_mul,one_mul,zero_mul,Finset.sum_ite_eq',Finset.mem_univ,if_true]
++      · intro h
++        apply Fin.ext
++        exact congrArg (fun x : Fin (p+r) => x.val) h
++      · rintro rfl
++        rfl
++    simp only [heq, ite_mul, one_mul, zero_mul, Finset.sum_ite_eq', Finset.sum_ite_eq, Finset.mem_univ, ite_true]
+   | inr i =>
+-    simp only [finSumFinEquiv_apply_right,verticalJoin_natAdd,coordinateColumns,
+-      Matrix.mul_assoc,Matrix.mul_apply,Matrix.submatrix_apply,Matrix.one_apply]
+-    have hne (a : Fin p) : (Fin.natAdd p i : Fin (p+r)) ≠ Fin.castLE (Nat.le_add_right p r) a := by
++    simp only [finSumFinEquiv_apply_right, verticalJoin_natAdd]
++    change (∑ a : Fin p, (if Fin.natAdd p i = Fin.castLE (Nat.le_add_right p r) a
++      then (1 : F) else 0) *
++      (realDiagonal F (fun i => Real.sqrt (lam i)) * U.valᴴ) a j) = 0
++    have hne (a : Fin p) :
++        (Fin.natAdd p i : Fin (p+r)) ≠ Fin.castLE (Nat.le_add_right p r) a := by
+       intro h
+-      have hval := congrArg Fin.val h
+-      simp only [Fin.val_natAdd,Fin.val_castLE] at hval
++      have hval := congrArg (fun x : Fin (p+r) => x.val) h
++      simp only [Fin.val_natAdd, Fin.val_castLE] at hval
+       omega
+-    simp only [hne,if_false,zero_mul,Finset.sum_const_zero,Pi.zero_apply]
++    simp only [hne, ite_false, zero_mul, Finset.sum_const_zero]
+ 
+ theorem tallGram_row_split {p r q : ℕ}
+     (U : unitary (Matrix (Fin p) (Fin p) F)) (lam : Fin p → ℝ)
+     (Z : Matrix (Fin p) (Fin q) F) (H : Matrix (Fin r) (Fin q) F) :
+-    matrixGram F (horizontalJoin F
+-      ((wideDiagonalFactor F (Nat.le_add_right p r) lam)ᴴ * star U)
++    Wishart.FieldGaussian.matrixGram F (horizontalJoin F
++      ((wideDiagonalFactor F (Nat.le_add_right p r) lam)ᴴ * U.valᴴ)
+       (verticalJoin F Z H)) =
+-      trailingBackground F (matrixGram F H) + spectralSchurGram F U lam Z := by
+-  rw [tallDiagonalFactor_mul_star,horizontalJoin_verticalJoin,verticalJoin_gram,
+-    zero_horizontalJoin_gram,add_comm]
+-  rfl
++      trailingBackground F (Wishart.FieldGaussian.matrixGram F H) + spectralSchurGram F U lam Z := by
++  rw [tallDiagonalFactor_mul_star, horizontalJoin_verticalJoin, verticalJoin_gram,
++    zero_horizontalJoin_gram]
++  change spectralSchurGram F U lam Z + trailingBackground F (Wishart.FieldGaussian.matrixGram F H) = _
++  exact add_comm _ _
+ 
+ theorem tallGram_noise_fibre {p r q : ℕ}
+     (hF : 0 < Module.finrank ℝ F)
+     (U : unitary (Matrix (Fin p) (Fin p) F)) (lam : Fin p → ℝ) :
+     (matrixGaussian F (p+r) q).map
+-      (fun G => matrixGram F (horizontalJoin F
+-        ((wideDiagonalFactor F (Nat.le_add_right p r) lam)ᴴ * star U) G)) =
++      (fun G => Wishart.FieldGaussian.matrixGram F (horizontalJoin F
++        ((wideDiagonalFactor F (Nat.le_add_right p r) lam)ᴴ * U.valᴴ) G)) =
+       ((matrixGaussian F p q).prod (gramWithFactor F r (1 : Matrix (Fin q) (Fin q) F))).map
+         (fun z => trailingBackground F z.2 + spectralSchurGram F U lam z.1) := by
++  let eF : F ≃L[ℝ] (Fin (Module.finrank ℝ F) → ℝ) :=
++    ContinuousLinearEquiv.ofFinrankEq (by simp)
++  letI : SecondCountableTopology F := eF.toHomeomorph.secondCountableTopology
++  have hleft : Measurable (fun G : Matrix (Fin (p+r)) (Fin q) F =>
++      Wishart.FieldGaussian.matrixGram F (horizontalJoin F
++        ((wideDiagonalFactor F (Nat.le_add_right p r) lam)ᴴ * U.valᴴ) G)) :=
++    ((Wishart.FieldGaussian.continuous_matrixGram F (p+r) (p+q)).comp
++      ((continuous_horizontalJoin F (p+r) p q).comp
++        (continuous_const.prodMk continuous_id))).measurable
++  have hright : Measurable (fun z : Matrix (Fin p) (Fin q) F × Hermitian F q =>
++      trailingBackground F z.2 + spectralSchurGram F U lam z.1) := by
++    have hW : Continuous (fun z : Matrix (Fin p) (Fin q) F × Hermitian F q =>
++        trailingBackground F (p := p) z.2) := by
++      apply Continuous.subtype_mk
++      simp only [Submodule.coe_zero, Matrix.conjTranspose_zero]
++      fun_prop
++    have hG : Continuous (fun z : Matrix (Fin p) (Fin q) F × Hermitian F q =>
++        spectralSchurGram F U lam z.1) :=
++      (Wishart.FieldGaussian.continuous_matrixGram F p (p+q)).comp
++        ((continuous_horizontalJoin F p p q).comp (continuous_const.prodMk continuous_fst))
++    exact (hW.add hG).measurable
+   rw [← matrixGaussian_split_rows F p r q hF,
+-    Measure.map_map (by unfold horizontalJoin; fun_prop)
+-      (continuous_verticalJoin F p r q).measurable,
++    Measure.map_map hleft (continuous_verticalJoin F p r q).measurable,
+     ← matrixGaussian_map_gram F r q]
+   have hp := Measure.map_prod_map (matrixGaussian F p q) (matrixGaussian F r q)
+     (measurable_id : Measurable (@id (Matrix (Fin p) (Fin q) F)))
+-    (continuous_matrixGram F r q).measurable
++    (Wishart.FieldGaussian.continuous_matrixGram F r q).measurable
+   simp only [Measure.map_id] at hp
+-  rw [hp,Measure.map_map (by
+-    apply Measurable.subtype_mk
+-    unfold trailingBackground spectralSchurGram horizontalJoin Wishart.FieldHermitian.fromBlocks
+-    fun_prop) (measurable_id.prodMap (continuous_matrixGram F r q).measurable)]
++  rw [hp, Measure.map_map hright
++    (measurable_id.prodMap (Wishart.FieldGaussian.continuous_matrixGram F r q).measurable)]
+   congr 1
+   exact funext fun z => tallGram_row_split F U lam z.1 z.2
+ 
+@@ -2288,13 +2334,17 @@
+     (μ.prod ν).map f = (μ.prod ρ).map g := by
+   apply Measure.ext_of_lintegral
+   intro h hh
+-  rw [lintegral_map hh hf,lintegral_map hh hg,
+-    lintegral_prod _ (hh.comp hf).aemeasurable,
++  rw [lintegral_map hh hf, lintegral_map hh hg]
++  change (∫⁻ z, (h ∘ f) z ∂μ.prod ν) = ∫⁻ z, (h ∘ g) z ∂μ.prod ρ
++  rw [lintegral_prod _ (hh.comp hf).aemeasurable,
+     lintegral_prod _ (hh.comp hg).aemeasurable]
+   apply lintegral_congr_ae
+   filter_upwards [hfg] with a ha
+-  rw [← lintegral_map hh (hf.comp (measurable_const.prodMk measurable_id)),
+-    ha,lintegral_map hh (hg.comp (measurable_const.prodMk measurable_id))]
++  have hfm : Measurable (fun b : B => f (a, b)) := hf.comp (measurable_const.prodMk measurable_id)
++  have hgm : Measurable (fun c : C => g (a, c)) := hg.comp (measurable_const.prodMk measurable_id)
++  have ha' := congrArg (fun θ : Measure X => ∫⁻ x, h x ∂θ) ha
++  rw [lintegral_map hh hfm, lintegral_map hh hgm] at ha'
++  exact ha' 
+ 
+ theorem map_assoc_prod {A B C X : Type*}
+     [MeasurableSpace A] [MeasurableSpace B] [MeasurableSpace C] [MeasurableSpace X]

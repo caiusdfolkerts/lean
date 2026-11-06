@@ -1,0 +1,24 @@
+--- archive/source/wishart/verified/field_residual09.lean
++++ recovered/source/wishart/verified/field_residual09.lean
+@@ -382,8 +382,8 @@
+   have hg (i : ι) : (∀ x, g i x = 0) ∨ ∃ h : (Fin (k i) → ℝ) → ℝ,
+       ConvexOn ℝ univ h ∧ Monotone h ∧ Spectral.SymmetricProfile h ∧
+       ∀ x, (∀ j, 0 ≤ x j) → Spectral.spectralBoundaryValue h x = g i x := by
+-    let h := Spectral.geometricDeterminantProfile (canonicalGeometricExtension (f i)) (d i)
+-    have hh := Spectral.geometricDeterminantProfile_properties (hf i).canonicalExtension (hd i)
++    let h : (Fin (k i) → ℝ) → ℝ := Spectral.geometricDeterminantProfile (canonicalGeometricExtension (f i)) (d i)
++    have hh := Spectral.geometricDeterminantProfile_properties (k := k i) (hf i).canonicalExtension (hd i)
+     exact Or.inr ⟨h, hh.1, hh.2.1, hh.2.2, fun x hx =>
+       Spectral.spectralBoundaryValue_geometricDeterminantProfile
+         (hf i).canonicalExtension_on_nonnegative (hd i) hx⟩
+@@ -414,8 +414,8 @@
+   have hg (i : ι) : (∀ x, g i x = 0) ∨ ∃ h : (Fin (k i) → ℝ) → ℝ,
+       ConvexOn ℝ univ h ∧ Monotone h ∧ Spectral.SymmetricProfile h ∧
+       ∀ x, (∀ j, 0 ≤ x j) → Spectral.spectralBoundaryValue h x = g i x := by
+-    let h := Spectral.geometricDeterminantProfile (canonicalGeometricExtension (f i)) (d i)
+-    have hh := Spectral.geometricDeterminantProfile_properties (hf i).canonicalExtension (hd i)
++    let h : (Fin (k i) → ℝ) → ℝ := Spectral.geometricDeterminantProfile (canonicalGeometricExtension (f i)) (d i)
++    have hh := Spectral.geometricDeterminantProfile_properties (k := k i) (hf i).canonicalExtension (hd i)
+     exact Or.inr ⟨h, hh.1, hh.2.1, hh.2.2, fun x hx =>
+       Spectral.spectralBoundaryValue_geometricDeterminantProfile
+         (hf i).canonicalExtension_on_nonnegative (hd i) hx⟩

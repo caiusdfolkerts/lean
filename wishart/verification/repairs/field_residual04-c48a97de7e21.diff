@@ -1,0 +1,139 @@
+--- archive/source/wishart/verified/field_residual04.lean
++++ recovered/source/wishart/verified/field_residual04.lean
+@@ -849,6 +849,7 @@
+   unfold schurNoiseLaw
+   infer_instance
+ 
++set_option backward.isDefEq.respectTransparency true in
+ theorem spectralSchurBuild_law {α : ℝ} (hα : ((p + q : ℕ) : ℝ) - 1 < α) :
+     ((identityEigenLaw p α).prod (schurNoiseLaw p q α)).map spectralSchurBuild =
+       wishartMeasure α (1 : Matrix (Fin (p + q)) (Fin (p + q)) ℂ) := by
+@@ -914,6 +915,7 @@
+   unfold schurNoiseLaw
+   infer_instance
+ 
++set_option backward.isDefEq.respectTransparency true in
+ theorem spectralSchurBuild_law {α : ℝ} (hα : ((p + q : ℕ) : ℝ) - 1 < α) :
+     ((identityEigenLaw p α).prod (schurNoiseLaw p q α)).map spectralSchurBuild =
+       wishartMeasure α (1 : Matrix (Fin (p + q)) (Fin (p + q)) ℍ[ℝ]) := by
+@@ -925,20 +927,31 @@
+   letI := wishart_standard_probability q hqα
+   let A := fun z : (Fin p → ℝ) × unitary (Matrix (Fin p) (Fin p) ℍ[ℝ]) =>
+     unitaryConjugate ℍ[ℝ] z.2 (Wishart.FieldCharts.diagonalHermitian ℍ[ℝ] z.1)
+-  have hA : Measurable A := (measurable_unitary_diagonal ℍ[ℝ] p).comp
+-    (measurable_snd.prodMk measurable_fst)
++  have hswap : Measurable (Prod.swap :
++      ((Fin p → ℝ) × unitary (Matrix (Fin p) (Fin p) ℍ[ℝ])) →
++        unitary (Matrix (Fin p) (Fin p) ℍ[ℝ]) × (Fin p → ℝ)) := measurable_swap
++  have hA : Measurable A := by
++    have hA0 := (measurable_unitary_diagonal ℍ[ℝ] p).comp hswap
++    simpa only [Function.comp_def, Prod.fst_swap, Prod.snd_swap, A] using hA0
+   have hspectral : ((identityEigenLaw p α).prod
+       (TauCeti.haarProb (unitary (Matrix (Fin p) (Fin p) ℍ[ℝ])))).map A =
+       wishartMeasure α (1 : Matrix (Fin p) (Fin p) ℍ[ℝ]) := by
+     rw [(identityEigenLaw_normalized_density hpα).2.2]
+     exact wishart_laguerre_haar_representation hpα
+-  rw [(finiteDensity_and_schur_law α (finiteDensity_wishart_standard p hpα)
+-    (finiteDensity_wishart_standard q hqα)).2]
+-  rw [← hspectral]
+-  exact (map_nested_prod (identityEigenLaw p α)
++  let ν := (matrixGaussian ℍ[ℝ] p q).prod
++    (wishartMeasure (α - p) (1 : Matrix (Fin q) (Fin q) ℍ[ℝ]))
++  let T := fun z : Hermitian p × (Matrix (Fin p) (Fin q) ℍ[ℝ] × Hermitian q) =>
++    schurInput z.1 z.2.2 z.2.1
++  have hsplit := map_nested_prod (identityEigenLaw p α)
+     (TauCeti.haarProb (unitary (Matrix (Fin p) (Fin p) ℍ[ℝ])))
+-    ((matrixGaussian ℍ[ℝ] p q).prod (wishartMeasure (α - p) (1 : Matrix (Fin q) (Fin q) ℍ[ℝ])))
+-    A hA (fun z => schurInput z.1 z.2.2 z.2.1) measurable_schurInput).symm
++    ν A hA T measurable_schurInput
++  have hprod := congrArg (fun μ : Measure (Hermitian p) => (μ.prod ν).map T) hspectral
++  calc
++    _ = ((((identityEigenLaw p α).prod
++        (TauCeti.haarProb (unitary (Matrix (Fin p) (Fin p) ℍ[ℝ])))).map A).prod ν).map T := hsplit.symm
++    _ = ((wishartMeasure α (1 : Matrix (Fin p) (Fin p) ℍ[ℝ])).prod ν).map T := hprod
++    _ = _ := (finiteDensity_and_schur_law α (finiteDensity_wishart_standard p hpα)
++      (finiteDensity_wishart_standard q hqα)).2.symm
+ 
+ theorem leadingBlock_spectralSchurBuild (z : (Fin p → ℝ) × SchurNoise p q) :
+     Wishart.FieldHermitian.leadingBlock ℍ[ℝ] (spectralSchurBuild z) =
+@@ -972,6 +985,7 @@
+ open scoped Classical Quaternion ComplexOrder ENNReal
+ 
+ namespace Wishart.ComplexMatrix
++open scoped Matrix.Norms.Frobenius
+ open Wishart.FieldCharts Wishart.FieldGaussian Wishart.Spectral
+ variable {p q : ℕ}
+ 
+@@ -1027,7 +1041,7 @@
+     apply Finset.measurable_prod
+     intro i hi
+     exact (continuous_complexFaceApprox (hc i) (hm i) (L i)).measurable.comp
+-      (measurable_const.add (continuous_compress ℂ (B i)).measurable)
++      (continuous_const.add (continuous_compress ℂ (B i))).measurable
+   intro x hx y hy hxy
+   change (∫⁻ z, f (spectralSchurBuild (x,z)) ∂schurNoiseLaw p q α) ≤
+     ∫⁻ z, f (spectralSchurBuild (y,z)) ∂schurNoiseLaw p q α
+@@ -1246,6 +1260,7 @@
+ open scoped Classical Quaternion ComplexOrder ENNReal
+ 
+ namespace Wishart.ComplexMatrix
++open scoped Matrix.Norms.Frobenius
+ open Wishart.FieldCharts Wishart.FieldGaussian Wishart.Spectral WishartVerification
+ variable {p q : ℕ}
+ 
+@@ -1297,7 +1312,7 @@
+     apply Finset.measurable_prod
+     intro i hi
+     exact (continuous_complexFaceApprox (hc i) (hm i) (L i)).measurable.comp
+-      (measurable_const.add (continuous_compress ℂ (B i)).measurable)
++      (continuous_const.add (continuous_compress ℂ (B i))).measurable
+   have hφ : Measurable φ := by
+     apply (continuous_sortedFaceMonomialApprox hc₀ hm₀ L₀).measurable.ennreal_ofReal.comp
+     fun_prop
+@@ -1468,8 +1483,8 @@
+     apply Matrix.ext
+     intro i j
+     have h := orthonormal_iff_ite.mp b.orthonormal i j
+-    simpa only [U, PiLp.inner_apply, RCLike.inner_apply', Matrix.mul_apply,
+-      Matrix.conjTranspose_apply, Matrix.one_apply, RCLike.star_def] using h
++    change (∑ a, star (b i a) * b j a) = if i = j then 1 else 0
++    simpa only [PiLp.inner_apply, RCLike.inner_apply', RCLike.star_def] using h
+   refine ⟨⟨U, Matrix.mem_unitaryGroup_iff'.mpr hU⟩, ?_⟩
+   apply Matrix.ext
+   intro i j
+@@ -1682,14 +1697,15 @@
+     (hSigma : Sigma.PosDef) {B : Matrix (Fin p) (Fin k) ℂ}
+     (hB : Function.Injective B.mulVec) (X : Hermitian p) :
+     (normalizedCompression B Sigma X : Matrix (Fin k) (Fin k) ℂ) =
+-      (CFC.sqrt (Bᴴ * Sigma * B))⁻¹ * (Bᴴ * X * B) *
++      (CFC.sqrt (Bᴴ * Sigma * B))⁻¹ * (Bᴴ * (X : Matrix (Fin p) (Fin p) ℂ) * B) *
+         (CFC.sqrt (Bᴴ * Sigma * B))⁻¹ := by
+   have hC := compressionCovariance_posDef hSigma hB
+   have hK : (CFC.sqrt (Bᴴ * Sigma * B)).PosDef :=
+     Matrix.isStrictlyPositive_iff_posDef.mp
+       (Matrix.isStrictlyPositive_iff_posDef.mpr hC).sqrt
+-  simp only [normalizedCompression, compressionCovariance, Matrix.conjTranspose_mul,
+-    hK.inv.isHermitian.eq, Matrix.mul_assoc]
++  simp only [normalizedCompression, compressionCovariance, Matrix.conjTranspose_mul]
++  rw [hK.inv.isHermitian.eq]
++  simp only [Matrix.mul_assoc]
+ 
+ theorem whitenedColumns_gram {Sigma : Matrix (Fin p) (Fin p) ℂ}
+     (hSigma : Sigma.PosDef) {B : Matrix (Fin p) (Fin k) ℂ}
+@@ -1764,12 +1780,13 @@
+     (hSigma : PosDef Sigma) {B : Matrix (Fin p) (Fin k) ℍ[ℝ]}
+     (hB : FullColumnRank B) (X : Hermitian p) :
+     (normalizedCompression B Sigma X : Matrix (Fin k) (Fin k) ℍ[ℝ]) =
+-      (sqrt (Bᴴ * Sigma * B))⁻¹ʳ * (Bᴴ * X * B) *
++      (sqrt (Bᴴ * Sigma * B))⁻¹ʳ * (Bᴴ * (X : Matrix (Fin p) (Fin p) ℍ[ℝ]) * B) *
+         (sqrt (Bᴴ * Sigma * B))⁻¹ʳ := by
+   have hK : PosDef (sqrt (Bᴴ * Sigma * B)) :=
+     (compressionCovariance_posDef hSigma hB).sqrt
+-  simp only [normalizedCompression, compressionCovariance, Matrix.conjTranspose_mul,
+-    hK.ringInverse.isHermitian.eq, Matrix.mul_assoc]
++  simp only [normalizedCompression, compressionCovariance, Matrix.conjTranspose_mul]
++  rw [hK.ringInverse.isHermitian.eq]
++  simp only [Matrix.mul_assoc]
+ 
+ theorem whitenedColumns_gram {Sigma : Matrix (Fin p) (Fin p) ℍ[ℝ]}
+     (hSigma : PosDef Sigma) {B : Matrix (Fin p) (Fin k) ℍ[ℝ]}

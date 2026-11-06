@@ -1,0 +1,90 @@
+--- archive/source/wishart/verified/field_residual07.lean
++++ recovered/source/wishart/verified/field_residual07.lean
+@@ -764,7 +764,7 @@
+     (c : ℝ) (hc0 : 0 ≤ c)
+     (h₀ : (Fin k₀ → ℝ) → ℝ) (hc₀ : ConvexOn ℝ univ h₀) (hm₀ : Monotone h₀) (L₀ : ℕ)
+     (k : ι → ℕ) (B : ∀ i, Matrix (Fin m) (Fin (k i)) ℍ[ℝ])
+-    (Q : ∀ i, Hermitian (k i)) (hQ : ∀ i, PosSemidef (Q i))
++    (Q : ∀ i, Hermitian (k i)) (hQ : ∀ i, PosSemidef (Q i).val)
+     (h : ∀ i, (Fin (k i) → ℝ) → ℝ)
+     (hc : ∀ i, ConvexOn ℝ univ (h i)) (hm : ∀ i, Monotone (h i)) (L : ι → ℕ) :
+     (∫⁻ X, ENNReal.ofReal (quaternionFaceApprox hc₀ hm₀ L₀
+@@ -782,27 +782,25 @@
+   let g : Hermitian (k₀ + q) → ℝ≥0∞ := fun X => ENNReal.ofReal
+     (∏ i, quaternionFaceApprox (hc i) (hm i) (L i) (Q i + normalizedCompression (B i) Sigma X))
+   have hcomp {k : ℕ} (D : Matrix (Fin (k₀ + q)) (Fin k) ℍ[ℝ]) :
+-      Measurable (normalizedCompression D Sigma) := by
+-    apply Measurable.subtype_mk
+-    unfold normalizedCompression
++      Continuous (normalizedCompression D Sigma) := by
++    apply Continuous.subtype_mk
+     fun_prop
+   have hf : Measurable f :=
+     (continuous_quaternionFaceApprox hc₀ hm₀ L₀).measurable.ennreal_ofReal.comp
+-      ((hcomp B₀).add measurable_const)
++      ((hcomp B₀).add continuous_const).measurable
+   have hg : Measurable g := by
+     apply Measurable.ennreal_ofReal
+     apply Finset.measurable_prod
+     intro i hi
+     exact (continuous_quaternionFaceApprox (hc i) (hm i) (L i)).measurable.comp
+-      (measurable_const.add (hcomp (B i)))
++      (continuous_const.add (hcomp (B i))).measurable
+   have hT : Measurable (Wishart.FieldHermitian.congruence ℍ[ℝ] (sqrt Sigma)) := by
+     apply Measurable.subtype_mk
+-    unfold Wishart.FieldHermitian.congruence
+     fun_prop
+   have hlaw := gramMeasure_covariance_law N Sigma
+   change (∫⁻ X, f X ∂gramMeasure N Sigma) * (∫⁻ X, g X ∂gramMeasure N Sigma) ≤
+     ∫⁻ X, f X * g X ∂gramMeasure N Sigma
+-  rw [hlaw, lintegral_map hf hT, lintegral_map hg hT, lintegral_map (hf.mul hg) hT]
++  rw [hlaw, lintegral_map hf hT, lintegral_map hg hT, lintegral_map (f := fun X => f X * g X) (hf.mul hg) hT]
+   have hfinite := gram_orthonormal_selected_finite_comparison N
+     (whitenedColumns Sigma B₀) (whitenedColumns_gram hSigma hB₀)
+     c hc0 h₀ hc₀ hm₀ L₀ k (fun i => whitenedColumns Sigma (B i)) Q hQ h hc hm L
+@@ -887,7 +885,7 @@
+     (h₀ : (Fin k₀ → ℝ) → ℝ) (hc₀ : ConvexOn ℝ univ h₀)
+     (hm₀ : Monotone h₀) (hs₀ : SymmetricProfile h₀)
+     (k : ι → ℕ) (B : ∀ i, Matrix (Fin m) (Fin (k i)) ℍ[ℝ])
+-    (Q : ∀ i, Hermitian (k i)) (hQ : ∀ i, PosSemidef (Q i))
++    (Q : ∀ i, Hermitian (k i)) (hQ : ∀ i, PosSemidef (Q i).val)
+     (h : ∀ i, (Fin (k i) → ℝ) → ℝ)
+     (hc : ∀ i, ConvexOn ℝ univ (h i)) (hm : ∀ i, Monotone (h i))
+     (hs : ∀ i, SymmetricProfile (h i)) :
+@@ -900,13 +898,13 @@
+   let μ := gramMeasure N Sigma
+   let A₀ : Hermitian m → Hermitian k₀ := fun X => identityShift (normalizedCompression B₀ Sigma X) c
+   let A : ∀ i, Hermitian m → Hermitian (k i) := fun i X => Q i + normalizedCompression (B i) Sigma X
+-  have hAm₀ : Measurable A₀ := (measurable_normalizedCompression B₀ Sigma).add measurable_const
++  have hAm₀ : Measurable A₀ := ((continuous_normalizedCompression B₀ Sigma).add continuous_const).measurable
+   have hAm (i : ι) : Measurable (A i) :=
+-    measurable_const.add (measurable_normalizedCompression (B i) Sigma)
+-  have hA₀ : ∀ᵐ X ∂μ, PosSemidef (A₀ X) := by
++    (continuous_const.add (continuous_normalizedCompression (B i) Sigma)).measurable
++  have hA₀ : ∀ᵐ X ∂μ, PosSemidef (A₀ X).val := by
+     filter_upwards [gramMeasure_ae_posSemidef N Sigma] with X hX
+     exact identityShift_posSemidef _ (normalizedCompression_posSemidef B₀ Sigma X hX) hc0
+-  have hA : ∀ᵐ X ∂μ, ∀ i, PosSemidef (A i X) := by
++  have hA : ∀ᵐ X ∂μ, ∀ i, PosSemidef (A i X).val := by
+     filter_upwards [gramMeasure_ae_posSemidef N Sigma] with X hX i
+     exact (hQ i).add (normalizedCompression_posSemidef (B i) Sigma X hX)
+   apply quaternion_spectral_boundary_selected_split μ k₀ k A₀ A hAm₀ hAm hA₀ hA h₀ h hc₀ hc hm₀ hm hs₀ hs
+@@ -995,13 +993,17 @@
+     (fun i => (QuaternionMatrix.posDef_one.posSemidef.smul (F.shift_nonneg i)))
+     (fun i : J.erase j => F.profile i)
+     (fun i => F.convex i) (fun i => F.increasing i) (fun i => F.symmetric i)
++  have hp (X : QuaternionMatrix.Hermitian p) :
++      (∏ i : J.erase j, F.factor Sigma i X) = ∏ i ∈ J.erase j, F.factor Sigma i X :=
++    Finset.prod_coe_sort (J.erase j) (fun i => F.factor Sigma i X)
+   have hs :
+       (∫⁻ X, ENNReal.ofReal (F.factor Sigma j X) ∂QuaternionMatrix.gramMeasure N Sigma) *
+         (∫⁻ X, ENNReal.ofReal (∏ i ∈ J.erase j, F.factor Sigma i X)
+           ∂QuaternionMatrix.gramMeasure N Sigma) ≤
+       ∫⁻ X, ENNReal.ofReal (F.factor Sigma j X * ∏ i ∈ J.erase j, F.factor Sigma i X)
+         ∂QuaternionMatrix.gramMeasure N Sigma := by
+-    simpa only [factor, shiftedCompression, QuaternionMatrix.identityShift, Finset.prod_coe_sort, add_comm] using h
++    simp_rw [← hp]
++    simpa only [factor, shiftedCompression, QuaternionMatrix.identityShift, add_comm] using h
+   convert hs using 1
+   apply congrArg (fun t : QuaternionMatrix.Hermitian p → ℝ≥0∞ => ∫⁻ X, t X ∂QuaternionMatrix.gramMeasure N Sigma)
+   funext X

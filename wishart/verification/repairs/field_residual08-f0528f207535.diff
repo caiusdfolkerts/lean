@@ -1,0 +1,37 @@
+--- archive/source/wishart/verified/field_residual08.lean
++++ recovered/source/wishart/verified/field_residual08.lean
+@@ -78,7 +78,7 @@
+ 
+ noncomputable section
+ open Matrix MeasureTheory ProbabilityTheory Set Filter Topology
+-open scoped Classical Quaternion ComplexOrder ENNReal
++open scoped Classical Quaternion ComplexOrder ENNReal Matrix.Norms.Frobenius
+ 
+ namespace Wishart
+ 
+@@ -103,10 +103,10 @@
+ theorem aemeasurable_factor_of_ae_posSemidef {p : ℕ} {ι : Type*}
+     (F : ComplexSpectralFamily p ι) (Sigma : Matrix (Fin p) (Fin p) ℂ)
+     (μ : Measure (ComplexMatrix.Hermitian p))
+-    (hPSD : ∀ᵐ X ∂μ, (X : Matrix (Fin p) (Fin p) ℂ).PosSemidef) (i : ι) :
++    (hPSD : ∀ᵐ (X : ComplexMatrix.Hermitian p) ∂μ, (X : Matrix (Fin p) (Fin p) ℂ).PosSemidef) (i : ι) :
+     AEMeasurable (F.factor Sigma i) μ := by
+   have hA : Measurable (F.shiftedCompression Sigma i) :=
+-    (ComplexMatrix.measurable_normalizedCompression (F.matrix i) Sigma).add measurable_const
++    ((ComplexMatrix.continuous_normalizedCompression (F.matrix i) Sigma).add continuous_const).measurable
+   apply aemeasurable_of_tendsto_metrizable_ae atTop
+     (fun n => ((FieldGaussian.continuous_complexFaceApprox (F.convex i) (F.increasing i) n).measurable.comp hA).aemeasurable)
+   filter_upwards [hPSD] with X hX
+@@ -132,10 +132,10 @@
+ theorem aemeasurable_factor_of_ae_posSemidef {p : ℕ} {ι : Type*}
+     (F : QuaternionSpectralFamily p ι) (Sigma : Matrix (Fin p) (Fin p) ℍ[ℝ])
+     (μ : Measure (QuaternionMatrix.Hermitian p))
+-    (hPSD : ∀ᵐ X ∂μ, QuaternionMatrix.PosSemidef X) (i : ι) :
++    (hPSD : ∀ᵐ (X : QuaternionMatrix.Hermitian p) ∂μ, QuaternionMatrix.PosSemidef (X : Matrix (Fin p) (Fin p) ℍ[ℝ])) (i : ι) :
+     AEMeasurable (F.factor Sigma i) μ := by
+   have hA : Measurable (F.shiftedCompression Sigma i) :=
+-    (QuaternionMatrix.measurable_normalizedCompression (F.matrix i) Sigma).add measurable_const
++    ((QuaternionMatrix.continuous_normalizedCompression (F.matrix i) Sigma).add continuous_const).measurable
+   apply aemeasurable_of_tendsto_metrizable_ae atTop
+     (fun n => ((FieldGaussian.continuous_quaternionFaceApprox (F.convex i) (F.increasing i) n).measurable.comp hA).aemeasurable)
+   filter_upwards [hPSD] with X hX

@@ -1,0 +1,1011 @@
+--- archive/source/wishart/verified/field_residual06.lean
++++ recovered/source/wishart/verified/field_residual06.lean
+@@ -109,12 +109,13 @@
+       (∀ i, X i.succ 0 = star (z i) * algebraMap ℝ F (Real.sqrt t)) ∧
+       (∀ i j, X i.succ j.succ = star (z i) * z j + (Hᴴ * H) i j) := by
+   dsimp only
+-  simp only [radialGramInput,matrixGram,Matrix.mul_apply,Matrix.conjTranspose_apply,
++  simp only [radialGramInput,Wishart.FieldGaussian.matrixGram,Matrix.mul_apply,Matrix.conjTranspose_apply,
+     appendColumn,appendRow,firstColumn,Matrix.of_apply,Fin.cases_zero,Fin.cases_succ,
+-    Fin.sum_univ_succ,WithLp.toLp_apply,Pi.single_eq_same,Pi.single_eq_of_ne (Fin.succ_ne_zero _),
++    Fin.sum_univ_succ,Pi.single_eq_same,Pi.single_eq_of_ne (Fin.succ_ne_zero _),
+     star_zero,zero_mul,mul_zero,Finset.sum_const_zero,add_zero,← algebraMap_star_comm,
+     star_trivial,← map_mul,← pow_two,Real.sq_sqrt ht]
+-  exact ⟨rfl,fun _ => rfl,fun _ => rfl,fun _ _ => rfl⟩
++  simp only [zero_pow (by decide : 2 ≠ 0), Finset.sum_const_zero, add_zero, ← map_pow,
++    Real.sq_sqrt ht, and_self, implies_true]
+ 
+ end Wishart.FieldGaussian
+ 
+@@ -134,19 +135,34 @@
+ theorem radialGramInput_eq_schur {n q : ℕ} (t : ℝ) (ht : 0 ≤ t)
+     (z : Row ℂ q) (H : Matrix (Fin n) (Fin q) ℂ) :
+     radialGramInput ℂ t z H = castHermitian ℂ (Nat.add_comm 1 q)
+-      (schurInput (scalarHermitian t) (matrixGram ℂ H) (oneRowMatrix ℂ z)) := by
++      (schurInput (scalarHermitian t) (Wishart.FieldGaussian.matrixGram ℂ H) (oneRowMatrix ℂ z)) := by
+   obtain ⟨h00,h0j,hi0,hij⟩ := radialGramInput_entries ℂ t ht z H
+   apply Subtype.ext
+-  ext i j
++  apply Matrix.ext
++  intro i j
+   refine Fin.cases ?_ (fun a => ?_) i <;> refine Fin.cases ?_ (fun b => ?_) j
+   · rw [h00]
+-    exact (cast_fromBlocks_zero_zero ℂ _ _ _).symm
+-  · rw [h0j,schurInput,cast_fromBlocks_zero_succ,sqrt_scalarHermitian ht]
+-    simp [scalarHermitian,oneRowMatrix,Matrix.mul_apply]
+-  · rw [hi0,schurInput,cast_fromBlocks_succ_zero,sqrt_scalarHermitian ht]
+-    simp [scalarHermitian,oneRowMatrix,Matrix.mul_apply]
+-  · rw [hij,schurInput,cast_fromBlocks_succ_succ]
+-    simp [matrixGram,oneRowMatrix,Matrix.mul_apply,add_comm]
++    simp only [schurInput,castHermitian,Wishart.FieldHermitian.fromBlocks,Matrix.submatrix_apply,
++      headCast_zero,headCast_succ,finSumFinEquiv_symm_apply_castAdd,
++      finSumFinEquiv_symm_apply_natAdd, Matrix.fromBlocks_apply₁₁]
++    simp [scalarHermitian, Algebra.algebraMap_eq_smul_one, Complex.real_smul, mul_one]
++  · rw [h0j]
++    simp only [schurInput,castHermitian,Wishart.FieldHermitian.fromBlocks,Matrix.submatrix_apply,
++      headCast_zero,headCast_succ,finSumFinEquiv_symm_apply_castAdd,
++      finSumFinEquiv_symm_apply_natAdd, Matrix.fromBlocks_apply₁₂]
++    rw [sqrt_scalarHermitian ht]
++    simp [scalarHermitian,oneRowMatrix,Matrix.mul_apply, Algebra.algebraMap_eq_smul_one, Complex.real_smul, mul_one, mul_comm]
++  · rw [hi0]
++    simp only [schurInput,castHermitian,Wishart.FieldHermitian.fromBlocks,Matrix.submatrix_apply,
++      headCast_zero,headCast_succ,finSumFinEquiv_symm_apply_castAdd,
++      finSumFinEquiv_symm_apply_natAdd, Matrix.fromBlocks_apply₂₁, Matrix.conjTranspose_apply]
++    rw [sqrt_scalarHermitian ht]
++    simp [scalarHermitian,oneRowMatrix,Matrix.mul_apply, Algebra.algebraMap_eq_smul_one, Complex.real_smul, mul_one, mul_comm]
++  · rw [hij]
++    simp only [schurInput,castHermitian,Wishart.FieldHermitian.fromBlocks,Matrix.submatrix_apply,
++      headCast_zero,headCast_succ,finSumFinEquiv_symm_apply_castAdd,
++      finSumFinEquiv_symm_apply_natAdd, Matrix.fromBlocks_apply₂₂]
++    simp [Wishart.FieldGaussian.matrixGram,oneRowMatrix,Matrix.mul_apply,add_comm]
+ 
+ theorem castHermitian_map_wishart {p q : ℕ} (h : p = q) (α : ℝ) :
+     (wishartMeasure α (1 : Matrix (Fin p) (Fin p) ℂ)).map (castHermitian ℂ h) =
+@@ -155,7 +171,7 @@
+   exact Measure.map_id
+ 
+ theorem matrixGaussian_gram_eq_standardGram (n p : ℕ) :
+-    (matrixGaussian ℂ n p).map (matrixGram ℂ) =
++    (matrixGaussian ℂ n p).map (Wishart.FieldGaussian.matrixGram ℂ) =
+       gramMeasure n (1 : Matrix (Fin p) (Fin p) ℂ) := by
+   rw [matrixGaussian_map_gram]
+   simp only [gramMeasure,CFC.sqrt_one]
+@@ -181,26 +197,43 @@
+     congr 1
+     funext i
+     rw [← Quaternion.coe_mul,← pow_two,Real.sq_sqrt ht]
+-  · rw [complexRepresentation_diagonal]
++  · change 0 ≤ complexRepresentation (Matrix.diagonal (fun _ : Fin 1 =>
++        (Real.sqrt t : ℍ[ℝ])))
++    rw [complexRepresentation_diagonal]
+     exact (Matrix.PosSemidef.diagonal
+       (fun _ => RCLike.nonneg_iff.mpr ⟨Real.sqrt_nonneg t,by simp⟩)).nonneg
+ 
+ theorem radialGramInput_eq_schur {n q : ℕ} (t : ℝ) (ht : 0 ≤ t)
+     (z : Row ℍ[ℝ] q) (H : Matrix (Fin n) (Fin q) ℍ[ℝ]) :
+     radialGramInput ℍ[ℝ] t z H = castHermitian ℍ[ℝ] (Nat.add_comm 1 q)
+-      (schurInput (scalarHermitian t) (matrixGram ℍ[ℝ] H) (oneRowMatrix ℍ[ℝ] z)) := by
++      (schurInput (scalarHermitian t) (Wishart.FieldGaussian.matrixGram ℍ[ℝ] H) (oneRowMatrix ℍ[ℝ] z)) := by
+   obtain ⟨h00,h0j,hi0,hij⟩ := radialGramInput_entries ℍ[ℝ] t ht z H
+   apply Subtype.ext
+-  ext i j
++  apply Matrix.ext
++  intro i j
+   refine Fin.cases ?_ (fun a => ?_) i <;> refine Fin.cases ?_ (fun b => ?_) j
+   · rw [h00]
+-    exact (cast_fromBlocks_zero_zero ℍ[ℝ] _ _ _).symm
+-  · rw [h0j,schurInput,cast_fromBlocks_zero_succ,sqrt_scalarHermitian ht]
+-    simp [scalarHermitian,oneRowMatrix,Matrix.mul_apply]
+-  · rw [hi0,schurInput,cast_fromBlocks_succ_zero,sqrt_scalarHermitian ht]
+-    simp [scalarHermitian,oneRowMatrix,Matrix.mul_apply]
+-  · rw [hij,schurInput,cast_fromBlocks_succ_succ]
+-    simp [matrixGram,oneRowMatrix,Matrix.mul_apply,add_comm]
++    simp only [schurInput,castHermitian,Wishart.FieldHermitian.fromBlocks,Matrix.submatrix_apply,
++      headCast_zero,headCast_succ,finSumFinEquiv_symm_apply_castAdd,
++      finSumFinEquiv_symm_apply_natAdd, Matrix.fromBlocks_apply₁₁]
++    simp [scalarHermitian, Algebra.algebraMap_eq_smul_one, ← Quaternion.coe_mul_eq_smul, mul_one]
++  · rw [h0j]
++    simp only [schurInput,castHermitian,Wishart.FieldHermitian.fromBlocks,Matrix.submatrix_apply,
++      headCast_zero,headCast_succ,finSumFinEquiv_symm_apply_castAdd,
++      finSumFinEquiv_symm_apply_natAdd, Matrix.fromBlocks_apply₁₂]
++    rw [sqrt_scalarHermitian ht]
++    simp [scalarHermitian,oneRowMatrix,Matrix.mul_apply, Algebra.algebraMap_eq_smul_one, ← Quaternion.coe_mul_eq_smul, mul_one]
++  · rw [hi0]
++    simp only [schurInput,castHermitian,Wishart.FieldHermitian.fromBlocks,Matrix.submatrix_apply,
++      headCast_zero,headCast_succ,finSumFinEquiv_symm_apply_castAdd,
++      finSumFinEquiv_symm_apply_natAdd, Matrix.fromBlocks_apply₂₁, Matrix.conjTranspose_apply]
++    rw [sqrt_scalarHermitian ht]
++    simp [scalarHermitian,oneRowMatrix,Matrix.mul_apply, Algebra.algebraMap_eq_smul_one, ← Quaternion.coe_mul_eq_smul, mul_one]
++  · rw [hij]
++    simp only [schurInput,castHermitian,Wishart.FieldHermitian.fromBlocks,Matrix.submatrix_apply,
++      headCast_zero,headCast_succ,finSumFinEquiv_symm_apply_castAdd,
++      finSumFinEquiv_symm_apply_natAdd, Matrix.fromBlocks_apply₂₂]
++    simp [Wishart.FieldGaussian.matrixGram,oneRowMatrix,Matrix.mul_apply,add_comm]
+ 
+ theorem castHermitian_map_wishart {p q : ℕ} (h : p = q) (α : ℝ) :
+     (wishartMeasure α (1 : Matrix (Fin p) (Fin p) ℍ[ℝ])).map (castHermitian ℍ[ℝ] h) =
+@@ -209,7 +242,7 @@
+   exact Measure.map_id
+ 
+ theorem matrixGaussian_gram_eq_standardGram (n p : ℕ) :
+-    (matrixGaussian ℍ[ℝ] n p).map (matrixGram ℍ[ℝ]) =
++    (matrixGaussian ℍ[ℝ] n p).map (Wishart.FieldGaussian.matrixGram ℍ[ℝ]) =
+       gramMeasure n (1 : Matrix (Fin p) (Fin p) ℍ[ℝ]) := by
+   rw [matrixGaussian_map_gram]
+   simp only [gramMeasure,sqrt_one_matrix]
+@@ -273,21 +306,23 @@
+ open Wishart.FieldGaussian
+ 
+ theorem matrixGaussian_gram_schur_law (n q : ℕ) :
+-    (matrixGaussian ℂ (n+1) (q+1)).map (matrixGram ℂ) =
++    (matrixGaussian ℂ (n+1) (q+1)).map (Wishart.FieldGaussian.matrixGram ℂ) =
+       ((wishartMeasure (n+1 : ℝ) (1 : Matrix (Fin 1) (Fin 1) ℂ)).prod
+         ((matrixGaussian ℂ 1 q).prod
+-          ((matrixGaussian ℂ n q).map (matrixGram ℂ)))).map
++          ((matrixGaussian ℂ n q).map (Wishart.FieldGaussian.matrixGram ℂ)))).map
+         (fun z => castHermitian ℂ (Nat.add_comm 1 q) (schurInput z.1 z.2.2 z.2.1)) := by
+   have hrec := matrixGram_recursive_law (n := n) (q := q) ℂ
+-    (by simp [Complex.finrank_real_complex]) Complex.reLm complex_re_star_mul exists_rotate_column
++    (by simp [Complex.finrank_real_complex]) Complex.reLm complex_re_star_mul (by
++      intro v
++      simpa only [Algebra.algebraMap_eq_smul_one, Complex.real_smul, mul_one] using exists_rotate_column v)
+   norm_num [Complex.finrank_real_complex] at hrec
+   rw [hrec,wishartMeasure_one_eq_gamma (by positivity),
+     ← gaussianRow_map_oneRowMatrix ℂ q]
+   have hmap := map_product_three (gammaMeasure (n+1 : ℝ) 1)
+     (gaussianRowWithFactor ℂ (1 : Matrix (Fin q) (Fin q) ℂ)) (matrixGaussian ℂ n q)
+-    scalarHermitian (oneRowMatrix ℂ) (matrixGram ℂ)
++    scalarHermitian (oneRowMatrix ℂ) (Wishart.FieldGaussian.matrixGram ℂ)
+     scalarHermitianCL.continuous.measurable (continuous_oneRowMatrix ℂ q).measurable
+-    (continuous_matrixGram ℂ n q).measurable
++    (Wishart.FieldGaussian.continuous_matrixGram ℂ n q).measurable
+     (fun z => castHermitian ℂ (Nat.add_comm 1 q) (schurInput z.1 z.2.2 z.2.1))
+     ((continuous_castHermitian ℂ _).measurable.comp measurable_schurInput)
+   rw [hmap]
+@@ -320,7 +355,7 @@
+             Measure.map_map (continuous_castHermitian ℂ _).measurable measurable_schurInput] at hcast
+           rw [← matrixGaussian_gram_eq_standardGram,matrixGaussian_gram_schur_law]
+           rw [matrixGaussian_gram_eq_standardGram,hsmall]
+-          simpa only [Nat.cast_succ,Nat.cast_one,add_sub_cancel_right,Function.comp_apply] using hcast.symm
++          simpa only [Nat.cast_succ,Nat.cast_one,Nat.cast_zero,zero_add,add_sub_cancel_right,Function.comp_def] using hcast.symm
+ 
+ end Wishart.ComplexMatrix
+ 
+@@ -329,22 +364,24 @@
+ open Wishart.FieldGaussian
+ 
+ theorem matrixGaussian_gram_schur_law (n q : ℕ) :
+-    (matrixGaussian ℍ[ℝ] (n+1) (q+1)).map (matrixGram ℍ[ℝ]) =
++    (matrixGaussian ℍ[ℝ] (n+1) (q+1)).map (Wishart.FieldGaussian.matrixGram ℍ[ℝ]) =
+       ((wishartMeasure (n+1 : ℝ) (1 : Matrix (Fin 1) (Fin 1) ℍ[ℝ])).prod
+         ((matrixGaussian ℍ[ℝ] 1 q).prod
+-          ((matrixGaussian ℍ[ℝ] n q).map (matrixGram ℍ[ℝ])))).map
++          ((matrixGaussian ℍ[ℝ] n q).map (Wishart.FieldGaussian.matrixGram ℍ[ℝ])))).map
+         (fun z => castHermitian ℍ[ℝ] (Nat.add_comm 1 q) (schurInput z.1 z.2.2 z.2.1)) := by
+   have hrec := matrixGram_recursive_law (n := n) (q := q) ℍ[ℝ]
+-    (by simp [Quaternion.finrank_eq_four]) (QuaternionAlgebra.reₗ (-1 : ℝ) 0 (-1)) quaternion_re_star_mul
+-    exists_rotate_column
++    (by simp [Quaternion.finrank_eq_four]) (QuaternionAlgebra.reₗ (-1 : ℝ) 0 (-1)) quaternion_re_star_mul (by
++      intro v
++      simpa only [Algebra.algebraMap_eq_smul_one, ← Quaternion.coe_mul_eq_smul, mul_one] using exists_rotate_column v)
+   norm_num [Quaternion.finrank_eq_four] at hrec
++  rw [show 4 * (n + 1 : ℝ) / 2 = 2 * (n + 1) by ring] at hrec
+   rw [hrec,wishartMeasure_one_eq_gamma (by positivity),
+     ← gaussianRow_map_oneRowMatrix ℍ[ℝ] q]
+   have hmap := map_product_three (gammaMeasure (2*(n+1 : ℝ)) 2)
+     (gaussianRowWithFactor ℍ[ℝ] (1 : Matrix (Fin q) (Fin q) ℍ[ℝ])) (matrixGaussian ℍ[ℝ] n q)
+-    scalarHermitian (oneRowMatrix ℍ[ℝ]) (matrixGram ℍ[ℝ])
++    scalarHermitian (oneRowMatrix ℍ[ℝ]) (Wishart.FieldGaussian.matrixGram ℍ[ℝ])
+     scalarHermitianCL.continuous.measurable (continuous_oneRowMatrix ℍ[ℝ] q).measurable
+-    (continuous_matrixGram ℍ[ℝ] n q).measurable
++    (Wishart.FieldGaussian.continuous_matrixGram ℍ[ℝ] n q).measurable
+     (fun z => castHermitian ℍ[ℝ] (Nat.add_comm 1 q) (schurInput z.1 z.2.2 z.2.1))
+     ((continuous_castHermitian ℍ[ℝ] _).measurable.comp measurable_schurInput)
+   rw [hmap]
+@@ -377,7 +414,7 @@
+             Measure.map_map (continuous_castHermitian ℍ[ℝ] _).measurable measurable_schurInput] at hcast
+           rw [← matrixGaussian_gram_eq_standardGram,matrixGaussian_gram_schur_law]
+           rw [matrixGaussian_gram_eq_standardGram,hsmall]
+-          simpa only [Nat.cast_succ,Nat.cast_one,add_sub_cancel_right,Function.comp_apply] using hcast.symm
++          simpa only [Nat.cast_succ,Nat.cast_one,Nat.cast_zero,zero_add,add_sub_cancel_right,Function.comp_def] using hcast.symm
+ 
+ end Wishart.QuaternionMatrix
+ end
+@@ -423,8 +460,8 @@
+ theorem mul_coordinateColumns {n p : ℕ} (e : Fin n ↪ Fin p)
+     (A : Matrix (Fin p) (Fin p) F) :
+     A * coordinateColumns F e = A.submatrix id e := by
+-  rw [coordinateColumns,Matrix.mul_submatrix_one (Equiv.refl (Fin p)) e]
+-  rfl
++  have h := Matrix.mul_submatrix_one (Equiv.refl (Fin p)) e (M := A)
++  simpa only [Equiv.coe_refl, Equiv.refl_symm, Function.id_comp, coordinateColumns] using h
+ 
+ def paddedDiagonal {n p : ℕ} (hnp : n ≤ p) (lam : Fin n → ℝ) : Hermitian F p :=
+   let E := coordinateColumns F ⟨Fin.castLE hnp,Fin.castLE_injective hnp⟩
+@@ -453,28 +490,38 @@
+     exact (Real.sq_sqrt (hlam i).le).symm
+   rw [heq,map_one]
+ 
++theorem unitary_val_star_mul_self {n : ℕ}
++    (U : unitary (Matrix (Fin n) (Fin n) F)) : U.valᴴ * U.val = 1 := by
++  simpa only [Unitary.coe_star, Matrix.star_eq_conjTranspose] using Unitary.coe_star_mul_self U
++
++theorem unitary_val_mul_star_self {n : ℕ}
++    (U : unitary (Matrix (Fin n) (Fin n) F)) : U.val * U.valᴴ = 1 := by
++  simpa only [Unitary.coe_star, Matrix.star_eq_conjTranspose] using Unitary.coe_mul_star_self U
++
+ def dualEigenFrame {n p : ℕ} (Z : Matrix (Fin n) (Fin p) F)
+     (U : unitary (Matrix (Fin n) (Fin n) F)) (lam : Fin n → ℝ) :
+     Matrix (Fin p) (Fin n) F :=
+-  Zᴴ * U * realDiagonal F (fun i => (Real.sqrt (lam i))⁻¹)
++  Zᴴ * U.val * realDiagonal F (fun i => (Real.sqrt (lam i))⁻¹)
+ 
+ theorem dualEigenFrame_orthonormal {n p : ℕ} (Z : Matrix (Fin n) (Fin p) F)
+     (U : unitary (Matrix (Fin n) (Fin n) F)) (lam : Fin n → ℝ)
+     (hlam : ∀ i, 0 < lam i)
+-    (hZ : Z * Zᴴ = (U : Matrix (Fin n) (Fin n) F) * realDiagonal F lam * star U) :
++    (hZ : Z * Zᴴ = U.val * realDiagonal F lam * U.valᴴ) :
+     (dualEigenFrame F Z U lam)ᴴ * dualEigenFrame F Z U lam = 1 := by
+   let D := realDiagonal F (fun i => (Real.sqrt (lam i))⁻¹)
+   have hD : Dᴴ = D :=
+     WishartVerification.hermitian_matrix_coe (diagonalHermitian F _)
+-  change (Zᴴ * U * D)ᴴ * (Zᴴ * U * D) = 1
++  change (Zᴴ * U.val * D)ᴴ * (Zᴴ * U.val * D) = 1
+   rw [Matrix.conjTranspose_mul,Matrix.conjTranspose_mul,Matrix.conjTranspose_conjTranspose,hD]
+   calc
+-    _ = D * (star U : Matrix (Fin n) (Fin n) F) * (Z * Zᴴ) * U * D := by
++    _ = D * U.valᴴ * (Z * Zᴴ) * U.val * D := by
+       simp only [Matrix.mul_assoc]
+     _ = D * realDiagonal F lam * D := by
+       rw [hZ]
+-      simp only [Matrix.mul_assoc,← Matrix.mul_assoc (star U) U,
+-        Unitary.coe_star_mul_self,Matrix.one_mul]
++      calc
++        _ = D * (U.valᴴ * U.val) * realDiagonal F lam * (U.valᴴ * U.val) * D := by
++          simp only [Matrix.mul_assoc]
++        _ = _ := by rw [unitary_val_star_mul_self]; simp only [Matrix.mul_one, Matrix.one_mul]
+     _ = 1 := realDiagonal_inv_sqrt_cancel F lam hlam
+ 
+ theorem dualEigenFrame_weighted_gram {n p : ℕ} (Z : Matrix (Fin n) (Fin p) F)
+@@ -484,38 +531,39 @@
+   let D := realDiagonal F (fun i => (Real.sqrt (lam i))⁻¹)
+   have hD : Dᴴ = D :=
+     WishartVerification.hermitian_matrix_coe (diagonalHermitian F _)
+-  change (Zᴴ * U * D) * realDiagonal F lam * (Zᴴ * U * D)ᴴ = Zᴴ * Z
++  change (Zᴴ * U.val * D) * realDiagonal F lam * (Zᴴ * U.val * D)ᴴ = Zᴴ * Z
+   rw [Matrix.conjTranspose_mul,Matrix.conjTranspose_mul,Matrix.conjTranspose_conjTranspose,hD]
+   calc
+-    _ = Zᴴ * U * (D * realDiagonal F lam * D) * star U * Z := by
++    _ = Zᴴ * U.val * (D * realDiagonal F lam * D) * U.valᴴ * Z := by
+       simp only [Matrix.mul_assoc]
+     _ = _ := by
+       rw [realDiagonal_inv_sqrt_cancel F lam hlam,Matrix.mul_one]
+-      simp only [Matrix.mul_assoc,← Matrix.mul_assoc U (star U),
+-        Unitary.coe_mul_star_self,Matrix.one_mul]
++      calc
++        _ = Zᴴ * (U.val * U.valᴴ) * Z := by simp only [Matrix.mul_assoc]
++        _ = _ := by rw [unitary_val_mul_star_self, Matrix.mul_one]
+ 
+ theorem paddedDiagonal_orbit_of_dual {n p : ℕ} (hnp : n ≤ p)
+     (hcomplete : ∀ B : Matrix (Fin p) (Fin n) F, Bᴴ * B = 1 →
+       ∃ O : unitary (Matrix (Fin p) (Fin p) F),
+-        (O : Matrix (Fin p) (Fin p) F).submatrix id (Fin.castLE hnp) = B)
++        O.val.submatrix id (Fin.castLE hnp) = B)
+     (Z : Matrix (Fin n) (Fin p) F)
+     (U : unitary (Matrix (Fin n) (Fin n) F)) (lam : Fin n → ℝ)
+     (hlam : ∀ i, 0 < lam i)
+-    (hZ : Z * Zᴴ = (U : Matrix (Fin n) (Fin n) F) * realDiagonal F lam * star U) :
++    (hZ : Z * Zᴴ = U.val * realDiagonal F lam * U.valᴴ) :
+     ∃ O : unitary (Matrix (Fin p) (Fin p) F),
+-      unitaryConjugate F O (paddedDiagonal F hnp lam) = matrixGram F Z := by
++      unitaryConjugate F O (paddedDiagonal F hnp lam) = Wishart.FieldGaussian.matrixGram F Z := by
+   obtain ⟨O,hO⟩ := hcomplete (dualEigenFrame F Z U lam)
+     (dualEigenFrame_orthonormal F Z U lam hlam hZ)
+   let E := coordinateColumns F ⟨Fin.castLE hnp,Fin.castLE_injective hnp⟩
+-  have hOE : (O : Matrix (Fin p) (Fin p) F) * E = dualEigenFrame F Z U lam := by
++  have hOE : O.val * E = dualEigenFrame F Z U lam := by
+     rw [mul_coordinateColumns]
+     exact hO
+   refine ⟨O,?_⟩
+   apply Subtype.ext
+-  change (O : Matrix (Fin p) (Fin p) F) * (E * realDiagonal F lam * Eᴴ) * star O = Zᴴ * Z
++  change O.val * (E * realDiagonal F lam * Eᴴ) * O.valᴴ = Zᴴ * Z
+   calc
+-    _ = ((O : Matrix (Fin p) (Fin p) F) * E) * realDiagonal F lam *
+-        ((O : Matrix (Fin p) (Fin p) F) * E)ᴴ := by
++    _ = (O.val * E) * realDiagonal F lam *
++        (O.val * E)ᴴ := by
+       rw [Matrix.conjTranspose_mul]
+       simp only [Matrix.mul_assoc]
+     _ = _ := by rw [hOE,dualEigenFrame_weighted_gram F Z U lam hlam]
+@@ -523,18 +571,18 @@
+ theorem matrixGaussian_map_unitary_right {n p : ℕ} (hF : 0 < Module.finrank ℝ F)
+     (re : F →ₗ[ℝ] ℝ) (hstar : ∀ a : F, re (star a * a) = ‖a‖ ^ 2)
+     (U : unitary (Matrix (Fin p) (Fin p) F)) :
+-    (matrixGaussian F n p).map (fun Z => Z * star U) = matrixGaussian F n p := by
++    (matrixGaussian F n p).map (fun Z => Z * U.valᴴ) = matrixGaussian F n p := by
+   calc
+     _ = (((matrixGaussian F n p).map Matrix.conjTranspose).map
+-        (fun Z => (U : Matrix (Fin p) (Fin p) F) * Z)).map Matrix.conjTranspose := by
++        (fun Z => U.val * Z)).map Matrix.conjTranspose := by
+       rw [Measure.map_map (by fun_prop) (by fun_prop),
+         Measure.map_map (by fun_prop) (by fun_prop)]
+       congr 1
+       funext Z
+-      simp only [Function.comp_apply,Matrix.conjTranspose_mul,
++      simp only [Function.comp_def,Matrix.conjTranspose_mul,
+         Matrix.conjTranspose_conjTranspose]
+     _ = ((matrixGaussian F p n).map
+-        (fun Z => (U : Matrix (Fin p) (Fin p) F) * Z)).map Matrix.conjTranspose := by
++        (fun Z => U.val * Z)).map Matrix.conjTranspose := by
+       rw [matrixGaussian_map_conjTranspose F n p hF]
+     _ = (matrixGaussian F p n).map Matrix.conjTranspose := by
+       rw [matrixGaussian_map_unitary_left F hF re hstar U]
+@@ -542,49 +590,55 @@
+ 
+ theorem matrixGram_unitary_right {n p : ℕ}
+     (U : unitary (Matrix (Fin p) (Fin p) F)) (Z : Matrix (Fin n) (Fin p) F) :
+-    matrixGram F (Z * star U) = unitaryConjugate F U (matrixGram F Z) := by
++    Wishart.FieldGaussian.matrixGram F (Z * U.valᴴ) = unitaryConjugate F U (Wishart.FieldGaussian.matrixGram F Z) := by
+   apply Subtype.ext
+-  change (Z * star U)ᴴ * (Z * star U) = (U : Matrix (Fin p) (Fin p) F) * (Zᴴ * Z) * star U
++  change (Z * U.valᴴ)ᴴ * (Z * U.valᴴ) = U.val * (Zᴴ * Z) * U.valᴴ
+   rw [Matrix.conjTranspose_mul,Matrix.conjTranspose_conjTranspose]
+   simp only [Matrix.mul_assoc]
+ 
+ theorem gram_map_unitaryConjugate {n p : ℕ} (hF : 0 < Module.finrank ℝ F)
+     (re : F →ₗ[ℝ] ℝ) (hstar : ∀ a : F, re (star a * a) = ‖a‖ ^ 2)
+     (U : unitary (Matrix (Fin p) (Fin p) F)) :
+-    ((matrixGaussian F n p).map (matrixGram F)).map (unitaryConjugate F U) =
+-      (matrixGaussian F n p).map (matrixGram F) := by
+-  rw [Measure.map_map ((continuous_unitaryConjugate F p).measurable.comp
+-    (measurable_const.prodMk measurable_id)) (continuous_matrixGram F n p).measurable]
+-  have h := congrArg (fun μ => μ.map (matrixGram F))
++    ((matrixGaussian F n p).map (Wishart.FieldGaussian.matrixGram F)).map (unitaryConjugate F U) =
++      (matrixGaussian F n p).map (Wishart.FieldGaussian.matrixGram F) := by
++  have hc : Continuous (unitaryConjugate F U) := by
++    apply Continuous.subtype_mk
++    change Continuous (fun X : Hermitian F p => U.val * X.val * U.valᴴ)
++    fun_prop
++  rw [Measure.map_map hc.measurable (Wishart.FieldGaussian.continuous_matrixGram F n p).measurable]
++  have h := congrArg (fun μ => μ.map (Wishart.FieldGaussian.matrixGram F))
+     (matrixGaussian_map_unitary_right F hF re hstar U (n := n))
+-  rw [Measure.map_map (continuous_matrixGram F n p).measurable (by fun_prop)] at h
+-  simpa only [Function.comp_apply,matrixGram_unitary_right] using h
++  rw [Measure.map_map (Wishart.FieldGaussian.continuous_matrixGram F n p).measurable (by fun_prop)] at h
++  simpa only [Function.comp_def,matrixGram_unitary_right] using h
+ 
+ end Wishart.FieldGaussian
+ 
+ namespace Wishart.ComplexMatrix
++open scoped Matrix.Norms.Frobenius
+ open Wishart.FieldGaussian Wishart.FieldCharts
+ 
+ theorem matrixGaussian_dual_gram_law {n p : ℕ} (hnp : n ≤ p) :
+-    (matrixGaussian ℂ n p).map (fun Z => matrixGram ℂ Zᴴ) =
++    (matrixGaussian ℂ n p).map (fun Z => Wishart.FieldGaussian.matrixGram ℂ Zᴴ) =
+       wishartMeasure (p : ℝ) (1 : Matrix (Fin n) (Fin n) ℂ) := by
+-  rw [← Measure.map_map (continuous_matrixGram ℂ p n).measurable (by fun_prop),
++  change (matrixGaussian ℂ n p).map (Wishart.FieldGaussian.matrixGram ℂ ∘ Matrix.conjTranspose) = _
++  rw [← Measure.map_map (Wishart.FieldGaussian.continuous_matrixGram ℂ p n).measurable (by fun_prop),
+     matrixGaussian_map_conjTranspose ℂ n p (by simp [Complex.finrank_real_complex]),
+     matrixGaussian_gram_eq_standardGram,gramMeasure_eq_wishartMeasure hnp]
+ 
+ theorem gram_padded_orbit {n p : ℕ} (hnp : n ≤ p)
+     (Z : Matrix (Fin n) (Fin p) ℂ) (hZ : (Z * Zᴴ).PosDef) :
+     ∃ O : unitary (Matrix (Fin p) (Fin p) ℂ),
+-      unitaryConjugate ℂ O (paddedDiagonal ℂ hnp (ascendingValues (matrixGram ℂ Zᴴ))) =
+-        matrixGram ℂ Z := by
+-  obtain ⟨U,hU⟩ := exists_conjugate_ascending (matrixGram ℂ Zᴴ)
++      unitaryConjugate ℂ O (paddedDiagonal ℂ hnp (ascendingValues (Wishart.FieldGaussian.matrixGram ℂ Zᴴ))) =
++        Wishart.FieldGaussian.matrixGram ℂ Z := by
++  obtain ⟨U,hU⟩ := exists_conjugate_ascending (Wishart.FieldGaussian.matrixGram ℂ Zᴴ)
+   apply paddedDiagonal_orbit_of_dual ℂ hnp
+     (fun B hB => Wishart.FieldSpectral.exists_unitary_extension hnp B hB) Z U
+   · intro i
+-    exact ascendingValues_pos _ (by simpa [matrixGram] using hZ) i
++    exact ascendingValues_pos _ (by simpa [Wishart.FieldGaussian.matrixGram] using hZ) i
+   · have h := congrArg Subtype.val hU
+-    simpa only [matrixGram,Matrix.conjTranspose_conjTranspose,unitaryConjugate,
+-      diagonalHermitian] using h.symm
++    simpa only [Wishart.FieldGaussian.matrixGram,Matrix.conjTranspose_conjTranspose,unitaryConjugate,
++      diagonalHermitian, realDiagonal, Algebra.algebraMap_eq_smul_one,
++      Matrix.star_eq_conjTranspose] using h.symm
+ 
+ end Wishart.ComplexMatrix
+ 
+@@ -593,25 +647,27 @@
+ open Wishart.FieldGaussian Wishart.FieldCharts
+ 
+ theorem matrixGaussian_dual_gram_law {n p : ℕ} (hnp : n ≤ p) :
+-    (matrixGaussian ℍ[ℝ] n p).map (fun Z => matrixGram ℍ[ℝ] Zᴴ) =
++    (matrixGaussian ℍ[ℝ] n p).map (fun Z => Wishart.FieldGaussian.matrixGram ℍ[ℝ] Zᴴ) =
+       wishartMeasure (p : ℝ) (1 : Matrix (Fin n) (Fin n) ℍ[ℝ]) := by
+-  rw [← Measure.map_map (continuous_matrixGram ℍ[ℝ] p n).measurable (by fun_prop),
++  change (matrixGaussian ℍ[ℝ] n p).map (Wishart.FieldGaussian.matrixGram ℍ[ℝ] ∘ Matrix.conjTranspose) = _
++  rw [← Measure.map_map (Wishart.FieldGaussian.continuous_matrixGram ℍ[ℝ] p n).measurable (by fun_prop),
+     matrixGaussian_map_conjTranspose ℍ[ℝ] n p (by simp [Quaternion.finrank_eq_four]),
+     matrixGaussian_gram_eq_standardGram,gramMeasure_eq_wishartMeasure hnp]
+ 
+ theorem gram_padded_orbit {n p : ℕ} (hnp : n ≤ p)
+     (Z : Matrix (Fin n) (Fin p) ℍ[ℝ]) (hZ : PosDef (Z * Zᴴ)) :
+     ∃ O : unitary (Matrix (Fin p) (Fin p) ℍ[ℝ]),
+-      unitaryConjugate ℍ[ℝ] O (paddedDiagonal ℍ[ℝ] hnp (ascendingValues (matrixGram ℍ[ℝ] Zᴴ))) =
+-        matrixGram ℍ[ℝ] Z := by
+-  obtain ⟨U,hU⟩ := exists_conjugate_ascending (matrixGram ℍ[ℝ] Zᴴ)
++      unitaryConjugate ℍ[ℝ] O (paddedDiagonal ℍ[ℝ] hnp (ascendingValues (Wishart.FieldGaussian.matrixGram ℍ[ℝ] Zᴴ))) =
++        Wishart.FieldGaussian.matrixGram ℍ[ℝ] Z := by
++  obtain ⟨U,hU⟩ := exists_conjugate_ascending (Wishart.FieldGaussian.matrixGram ℍ[ℝ] Zᴴ)
+   apply paddedDiagonal_orbit_of_dual ℍ[ℝ] hnp
+     (fun B hB => exists_unitary_extension p n hnp B hB) Z U
+   · intro i
+-    exact ascendingValues_pos _ (by simpa [matrixGram] using hZ) i
++    exact ascendingValues_pos _ (by simpa [Wishart.FieldGaussian.matrixGram] using hZ) i
+   · have h := congrArg Subtype.val hU
+-    simpa only [matrixGram,Matrix.conjTranspose_conjTranspose,unitaryConjugate,
+-      Wishart.FieldCharts.diagonalHermitian] using h.symm
++    simpa only [Wishart.FieldGaussian.matrixGram,Matrix.conjTranspose_conjTranspose,unitaryConjugate,
++      Wishart.FieldCharts.diagonalHermitian, realDiagonal, Algebra.algebraMap_eq_smul_one,
++      Matrix.star_eq_conjTranspose] using h.symm
+ 
+ end Wishart.QuaternionMatrix
+ end
+@@ -654,7 +710,7 @@
+ def rectangularUnitaryAction {n p : ℕ}
+     (g : unitary (Matrix (Fin n) (Fin n) F) × unitary (Matrix (Fin p) (Fin p) F))
+     (Z : Matrix (Fin n) (Fin p) F) : Matrix (Fin n) (Fin p) F :=
+-  (g.1 : Matrix (Fin n) (Fin n) F) * Z * star g.2
++  g.1.val * Z * g.2.valᴴ
+ 
+ theorem measurable_rectangularUnitaryAction (n p : ℕ) :
+     Measurable (Function.uncurry (rectangularUnitaryAction F (n := n) (p := p))) := by
+@@ -667,14 +723,14 @@
+     rectangularUnitaryAction F (g*h) Z =
+       rectangularUnitaryAction F g (rectangularUnitaryAction F h Z) := by
+   simp only [rectangularUnitaryAction,Prod.fst_mul,Prod.snd_mul,
+-    Submonoid.coe_mul,star_mul,Matrix.mul_assoc]
++    Submonoid.coe_mul,Matrix.conjTranspose_mul,Matrix.mul_assoc]
+ 
+ theorem matrixGaussian_map_rectangularUnitaryAction {n p : ℕ}
+     (hF : 0 < Module.finrank ℝ F) (re : F →ₗ[ℝ] ℝ)
+     (hstar : ∀ a : F, re (star a * a) = ‖a‖ ^ 2)
+     (g : unitary (Matrix (Fin n) (Fin n) F) × unitary (Matrix (Fin p) (Fin p) F)) :
+     (matrixGaussian F n p).map (rectangularUnitaryAction F g) = matrixGaussian F n p := by
+-  have h := congrArg (fun μ => μ.map (fun Z => Z * star g.2))
++  have h := congrArg (fun μ => μ.map (fun Z => Z * g.2.valᴴ))
+     (matrixGaussian_map_unitary_left F hF re hstar g.1 (q := p))
+   rw [Measure.map_map (by fun_prop) (by fun_prop),
+     matrixGaussian_map_unitary_right F hF re hstar g.2] at h
+@@ -702,7 +758,7 @@
+ theorem dualEigenFrame_reconstruction {n p : ℕ} (Z : Matrix (Fin n) (Fin p) F)
+     (U : unitary (Matrix (Fin n) (Fin n) F)) (lam : Fin n → ℝ)
+     (hlam : ∀ i, 0 < lam i) :
+-    (U : Matrix (Fin n) (Fin n) F) * realDiagonal F (fun i => Real.sqrt (lam i)) *
++    U.val * realDiagonal F (fun i => Real.sqrt (lam i)) *
+       (dualEigenFrame F Z U lam)ᴴ = Z := by
+   have hD : (realDiagonal F (fun i => (Real.sqrt (lam i))⁻¹))ᴴ =
+       realDiagonal F (fun i => (Real.sqrt (lam i))⁻¹) :=
+@@ -710,35 +766,35 @@
+   rw [dualEigenFrame,Matrix.conjTranspose_mul,Matrix.conjTranspose_mul,
+     Matrix.conjTranspose_conjTranspose,hD]
+   calc
+-    _ = (U : Matrix (Fin n) (Fin n) F) *
++    _ = U.val *
+         (realDiagonal F (fun i => Real.sqrt (lam i)) *
+-          realDiagonal F (fun i => (Real.sqrt (lam i))⁻¹)) * star U * Z := by
++          realDiagonal F (fun i => (Real.sqrt (lam i))⁻¹)) * U.valᴴ * Z := by
+       simp only [Matrix.mul_assoc]
+     _ = _ := by rw [realDiagonal_sqrt_inv_cancel F lam hlam,
+-      Matrix.mul_one,Unitary.coe_mul_star_self,Matrix.one_mul]
++      Matrix.mul_one,unitary_val_mul_star_self,Matrix.one_mul]
+ 
+ theorem wideSVD_of_dual {n p : ℕ} (hnp : n ≤ p)
+     (hcomplete : ∀ B : Matrix (Fin p) (Fin n) F, Bᴴ * B = 1 →
+       ∃ O : unitary (Matrix (Fin p) (Fin p) F),
+-        (O : Matrix (Fin p) (Fin p) F).submatrix id (Fin.castLE hnp) = B)
++        O.val.submatrix id (Fin.castLE hnp) = B)
+     (Z : Matrix (Fin n) (Fin p) F)
+     (U : unitary (Matrix (Fin n) (Fin n) F)) (lam : Fin n → ℝ)
+     (hlam : ∀ i, 0 < lam i)
+-    (hZ : Z * Zᴴ = (U : Matrix (Fin n) (Fin n) F) * realDiagonal F lam * star U) :
++    (hZ : Z * Zᴴ = U.val * realDiagonal F lam * U.valᴴ) :
+     ∃ g : unitary (Matrix (Fin n) (Fin n) F) × unitary (Matrix (Fin p) (Fin p) F),
+       rectangularUnitaryAction F g (wideDiagonalFactor F hnp lam) = Z := by
+   obtain ⟨O,hO⟩ := hcomplete (dualEigenFrame F Z U lam)
+     (dualEigenFrame_orthonormal F Z U lam hlam hZ)
+   let E := coordinateColumns F ⟨Fin.castLE hnp,Fin.castLE_injective hnp⟩
+-  have hOE : (O : Matrix (Fin p) (Fin p) F) * E = dualEigenFrame F Z U lam := by
++  have hOE : O.val * E = dualEigenFrame F Z U lam := by
+     rw [mul_coordinateColumns]
+     exact hO
+   refine ⟨(U,O),?_⟩
+-  change (U : Matrix (Fin n) (Fin n) F) * (realDiagonal F (fun i => Real.sqrt (lam i)) * Eᴴ) *
+-    star O = Z
++  change U.val * (realDiagonal F (fun i => Real.sqrt (lam i)) * Eᴴ) *
++    O.valᴴ = Z
+   calc
+-    _ = (U : Matrix (Fin n) (Fin n) F) * realDiagonal F (fun i => Real.sqrt (lam i)) *
+-        ((O : Matrix (Fin p) (Fin p) F) * E)ᴴ := by
++    _ = U.val * realDiagonal F (fun i => Real.sqrt (lam i)) *
++        (O.val * E)ᴴ := by
+       rw [Matrix.conjTranspose_mul]
+       simp only [Matrix.mul_assoc]
+     _ = _ := by rw [hOE,dualEigenFrame_reconstruction F Z U lam hlam]
+@@ -762,30 +818,37 @@
+     rw [← Measure.prod_swap (μ := μ) (ν := ν)]
+     simpa only [Measure.map_id] using Measure.map_prod_map (μ.prod ν) κ measurable_swap measurable_id
+   have h := congrArg (fun ρ => ρ.map Matrix.conjTranspose) hwide
+-  rw [Measure.map_map (by fun_prop)
+-    ((measurable_rectangularUnitaryAction F p n).comp
+-      (measurable_fst.prodMk ((continuous_wideDiagonalFactor F hpn).measurable.comp measurable_snd))),
++  have hm : Measurable (fun z :
++      (unitary (Matrix (Fin p) (Fin p) F) × unitary (Matrix (Fin n) (Fin n) F)) ×
++        (Fin p → ℝ) => rectangularUnitaryAction F z.1 (wideDiagonalFactor F hpn z.2)) :=
++    (by
++      apply Continuous.measurable
++      unfold rectangularUnitaryAction wideDiagonalFactor realDiagonal
++      fun_prop)
++  rw [Measure.map_map (by fun_prop) hm,
+     matrixGaussian_map_conjTranspose F p n hF,hswap,
+     Measure.map_map (by fun_prop) (measurable_swap.prodMap measurable_id)] at h
+-  simpa only [Function.comp_apply,Prod.map_apply,Prod.swap_prod_mk,rectangularUnitaryAction,
++  simpa only [Function.comp_def,Prod.map_def,Prod.fst_swap,Prod.snd_swap,id_eq,μ,ν,rectangularUnitaryAction,
+     Matrix.conjTranspose_mul,Matrix.conjTranspose_conjTranspose,Matrix.mul_assoc] using h
+ 
+ end Wishart.FieldGaussian
+ 
+ namespace Wishart.ComplexMatrix
++open scoped Matrix.Norms.Frobenius
+ open Wishart.FieldGaussian Wishart.FieldCharts
+ 
+ theorem exists_wideSVD {n p : ℕ} (hnp : n ≤ p)
+     (Z : Matrix (Fin n) (Fin p) ℂ) (hZ : (Z * Zᴴ).PosDef) :
+     ∃ g : unitary (Matrix (Fin n) (Fin n) ℂ) × unitary (Matrix (Fin p) (Fin p) ℂ),
+       rectangularUnitaryAction ℂ g
+-        (wideDiagonalFactor ℂ hnp (ascendingValues (matrixGram ℂ Zᴴ))) = Z := by
+-  obtain ⟨U,hU⟩ := exists_conjugate_ascending (matrixGram ℂ Zᴴ)
++        (wideDiagonalFactor ℂ hnp (ascendingValues (Wishart.FieldGaussian.matrixGram ℂ Zᴴ))) = Z := by
++  obtain ⟨U,hU⟩ := exists_conjugate_ascending (Wishart.FieldGaussian.matrixGram ℂ Zᴴ)
+   apply wideSVD_of_dual ℂ hnp
+     (fun B hB => Wishart.FieldSpectral.exists_unitary_extension hnp B hB) Z U
+-  · exact fun i => ascendingValues_pos _ (by simpa [matrixGram] using hZ) i
+-  · simpa only [matrixGram,Matrix.conjTranspose_conjTranspose,unitaryConjugate,
+-      diagonalHermitian] using (congrArg Subtype.val hU).symm
++  · exact fun i => ascendingValues_pos _ (by simpa [Wishart.FieldGaussian.matrixGram] using hZ) i
++  · simpa only [Wishart.FieldGaussian.matrixGram,Matrix.conjTranspose_conjTranspose,unitaryConjugate,
++      diagonalHermitian, realDiagonal, Algebra.algebraMap_eq_smul_one,
++      Matrix.star_eq_conjTranspose] using (congrArg Subtype.val hU).symm
+ 
+ theorem matrixGaussian_svd_law_of_le {n p : ℕ} (hnp : n ≤ p) :
+     (((TauCeti.haarProb (unitary (Matrix (Fin n) (Fin n) ℂ))).prod
+@@ -793,25 +856,27 @@
+         (identityEigenLaw n (p : ℝ))).map
+           (fun z => rectangularUnitaryAction ℂ z.1 (wideDiagonalFactor ℂ hnp z.2)) =
+       matrixGaussian ℂ n p := by
+-  have hmap : Measurable (fun Z : Matrix (Fin n) (Fin p) ℂ => matrixGram ℂ Zᴴ) :=
+-    (continuous_matrixGram ℂ p n).measurable.comp (by fun_prop)
++  have hmap : Measurable (fun Z : Matrix (Fin n) (Fin p) ℂ => Wishart.FieldGaussian.matrixGram ℂ Zᴴ) :=
++    (Wishart.FieldGaussian.continuous_matrixGram ℂ p n).measurable.comp (by fun_prop)
+   have hsel : Measurable (fun Z : Matrix (Fin n) (Fin p) ℂ =>
+-      ascendingValues (matrixGram ℂ Zᴴ)) := (continuous_ascendingValues n).measurable.comp hmap
++      ascendingValues (Wishart.FieldGaussian.matrixGram ℂ Zᴴ)) := (continuous_ascendingValues n).measurable.comp hmap
+   have hlabel : (matrixGaussian ℂ n p).map
+-      (fun Z => ascendingValues (matrixGram ℂ Zᴴ)) = identityEigenLaw n (p : ℝ) := by
++      (fun Z => ascendingValues (Wishart.FieldGaussian.matrixGram ℂ Zᴴ)) = identityEigenLaw n (p : ℝ) := by
++    change (matrixGaussian ℂ n p).map
++      (ascendingValues ∘ fun Z => Wishart.FieldGaussian.matrixGram ℂ Zᴴ) = _
+     rw [← Measure.map_map (continuous_ascendingValues n).measurable hmap,
+       matrixGaussian_dual_gram_law hnp]
+     rfl
+   have hpos : ∀ᵐ Z ∂matrixGaussian ℂ n p, (Z * Zᴴ).PosDef := by
+     have h := wishart_ae_posDef (p : ℝ) (1 : Matrix (Fin n) (Fin n) ℂ)
+     rw [← matrixGaussian_dual_gram_law hnp] at h
+-    simpa only [matrixGram,Matrix.conjTranspose_conjTranspose] using
++    simpa only [Wishart.FieldGaussian.matrixGram,Matrix.conjTranspose_conjTranspose] using
+       ae_of_ae_map hmap.aemeasurable h
+   have h := Wishart.map_prod_orbit_representative_ae
+     ((TauCeti.haarProb (unitary (Matrix (Fin n) (Fin n) ℂ))).prod
+       (TauCeti.haarProb (unitary (Matrix (Fin p) (Fin p) ℂ))))
+     (matrixGaussian ℂ n p) (rectangularUnitaryAction ℂ)
+-    (fun Z => ascendingValues (matrixGram ℂ Zᴴ)) (wideDiagonalFactor ℂ hnp)
++    (fun Z => ascendingValues (Wishart.FieldGaussian.matrixGram ℂ Zᴴ)) (wideDiagonalFactor ℂ hnp)
+     (measurable_rectangularUnitaryAction ℂ n p) hsel
+     (continuous_wideDiagonalFactor ℂ hnp).measurable
+     (rectangularUnitaryAction_mul ℂ)
+@@ -851,13 +916,14 @@
+     (Z : Matrix (Fin n) (Fin p) ℍ[ℝ]) (hZ : PosDef (Z * Zᴴ)) :
+     ∃ g : unitary (Matrix (Fin n) (Fin n) ℍ[ℝ]) × unitary (Matrix (Fin p) (Fin p) ℍ[ℝ]),
+       rectangularUnitaryAction ℍ[ℝ] g
+-        (wideDiagonalFactor ℍ[ℝ] hnp (ascendingValues (matrixGram ℍ[ℝ] Zᴴ))) = Z := by
+-  obtain ⟨U,hU⟩ := exists_conjugate_ascending (matrixGram ℍ[ℝ] Zᴴ)
++        (wideDiagonalFactor ℍ[ℝ] hnp (ascendingValues (Wishart.FieldGaussian.matrixGram ℍ[ℝ] Zᴴ))) = Z := by
++  obtain ⟨U,hU⟩ := exists_conjugate_ascending (Wishart.FieldGaussian.matrixGram ℍ[ℝ] Zᴴ)
+   apply wideSVD_of_dual ℍ[ℝ] hnp
+     (fun B hB => exists_unitary_extension p n hnp B hB) Z U
+-  · exact fun i => ascendingValues_pos _ (by simpa [matrixGram] using hZ) i
+-  · simpa only [matrixGram,Matrix.conjTranspose_conjTranspose,unitaryConjugate,
+-      Wishart.FieldCharts.diagonalHermitian] using (congrArg Subtype.val hU).symm
++  · exact fun i => ascendingValues_pos _ (by simpa [Wishart.FieldGaussian.matrixGram] using hZ) i
++  · simpa only [Wishart.FieldGaussian.matrixGram,Matrix.conjTranspose_conjTranspose,unitaryConjugate,
++      Wishart.FieldCharts.diagonalHermitian, realDiagonal, Algebra.algebraMap_eq_smul_one,
++      Matrix.star_eq_conjTranspose] using (congrArg Subtype.val hU).symm
+ 
+ theorem matrixGaussian_svd_law_of_le {n p : ℕ} (hnp : n ≤ p) :
+     (((TauCeti.haarProb (unitary (Matrix (Fin n) (Fin n) ℍ[ℝ]))).prod
+@@ -865,25 +931,27 @@
+         (identityEigenLaw n (p : ℝ))).map
+           (fun z => rectangularUnitaryAction ℍ[ℝ] z.1 (wideDiagonalFactor ℍ[ℝ] hnp z.2)) =
+       matrixGaussian ℍ[ℝ] n p := by
+-  have hmap : Measurable (fun Z : Matrix (Fin n) (Fin p) ℍ[ℝ] => matrixGram ℍ[ℝ] Zᴴ) :=
+-    (continuous_matrixGram ℍ[ℝ] p n).measurable.comp (by fun_prop)
++  have hmap : Measurable (fun Z : Matrix (Fin n) (Fin p) ℍ[ℝ] => Wishart.FieldGaussian.matrixGram ℍ[ℝ] Zᴴ) :=
++    (Wishart.FieldGaussian.continuous_matrixGram ℍ[ℝ] p n).measurable.comp (by fun_prop)
+   have hsel : Measurable (fun Z : Matrix (Fin n) (Fin p) ℍ[ℝ] =>
+-      ascendingValues (matrixGram ℍ[ℝ] Zᴴ)) := (continuous_ascendingValues n).measurable.comp hmap
++      ascendingValues (Wishart.FieldGaussian.matrixGram ℍ[ℝ] Zᴴ)) := (continuous_ascendingValues n).measurable.comp hmap
+   have hlabel : (matrixGaussian ℍ[ℝ] n p).map
+-      (fun Z => ascendingValues (matrixGram ℍ[ℝ] Zᴴ)) = identityEigenLaw n (p : ℝ) := by
++      (fun Z => ascendingValues (Wishart.FieldGaussian.matrixGram ℍ[ℝ] Zᴴ)) = identityEigenLaw n (p : ℝ) := by
++    change (matrixGaussian ℍ[ℝ] n p).map
++      (ascendingValues ∘ fun Z => Wishart.FieldGaussian.matrixGram ℍ[ℝ] Zᴴ) = _
+     rw [← Measure.map_map (continuous_ascendingValues n).measurable hmap,
+       matrixGaussian_dual_gram_law hnp]
+     rfl
+   have hpos : ∀ᵐ Z ∂matrixGaussian ℍ[ℝ] n p, PosDef (Z * Zᴴ) := by
+     have h := wishart_ae_posDef (p : ℝ) (1 : Matrix (Fin n) (Fin n) ℍ[ℝ])
+     rw [← matrixGaussian_dual_gram_law hnp] at h
+-    simpa only [matrixGram,Matrix.conjTranspose_conjTranspose] using
++    simpa only [Wishart.FieldGaussian.matrixGram,Matrix.conjTranspose_conjTranspose] using
+       ae_of_ae_map hmap.aemeasurable h
+   have h := Wishart.map_prod_orbit_representative_ae
+     ((TauCeti.haarProb (unitary (Matrix (Fin n) (Fin n) ℍ[ℝ]))).prod
+       (TauCeti.haarProb (unitary (Matrix (Fin p) (Fin p) ℍ[ℝ]))))
+     (matrixGaussian ℍ[ℝ] n p) (rectangularUnitaryAction ℍ[ℝ])
+-    (fun Z => ascendingValues (matrixGram ℍ[ℝ] Zᴴ)) (wideDiagonalFactor ℍ[ℝ] hnp)
++    (fun Z => ascendingValues (Wishart.FieldGaussian.matrixGram ℍ[ℝ] Zᴴ)) (wideDiagonalFactor ℍ[ℝ] hnp)
+     (measurable_rectangularUnitaryAction ℍ[ℝ] n p) hsel
+     (continuous_wideDiagonalFactor ℍ[ℝ] hnp).measurable
+     (rectangularUnitaryAction_mul ℍ[ℝ])
+@@ -954,18 +1022,18 @@
+ theorem exists_unitary_extension_at {n p : ℕ} (hnp : n ≤ p)
+     (hcomplete : ∀ B : Matrix (Fin p) (Fin n) F, Bᴴ * B = 1 →
+       ∃ O : unitary (Matrix (Fin p) (Fin p) F),
+-        (O : Matrix (Fin p) (Fin p) F).submatrix id (Fin.castLE hnp) = B)
++        O.val.submatrix id (Fin.castLE hnp) = B)
+     (e : Fin n ↪ Fin p) (B : Matrix (Fin p) (Fin n) F) (hB : Bᴴ * B = 1) :
+     ∃ O : unitary (Matrix (Fin p) (Fin p) F),
+-      (O : Matrix (Fin p) (Fin p) F).submatrix id e = B := by
++      O.val.submatrix id e = B := by
+   obtain ⟨O,hO⟩ := hcomplete B hB
+   obtain ⟨σ,hσ⟩ := Equiv.Perm.exists_extending_pair (Fin.castLE hnp) e
+     (Fin.castLE_injective hnp) e.injective
+   refine ⟨O * permutationUnitary F σ,?_⟩
+   ext i j
+-  change ((O : Matrix (Fin p) (Fin p) F) * σ.permMatrix F) i (e j) = B i j
++  change (O.val * σ.permMatrix F) i (e j) = B i j
+   rw [PEquiv.mul_toMatrix_toPEquiv]
+-  change (O : Matrix (Fin p) (Fin p) F) i (σ.symm (e j)) = B i j
++  change O.val i (σ.symm (e j)) = B i j
+   rw [← hσ j,σ.symm_apply_apply]
+   exact congrArg (fun A => A i j) hO
+ 
+@@ -980,35 +1048,37 @@
+ 
+ theorem wideDiagonalAt_mul_star {n p : ℕ} (e : Fin n ↪ Fin p) (lam : Fin n → ℝ)
+     (O : unitary (Matrix (Fin p) (Fin p) F)) :
+-    wideDiagonalAt F e lam * star O =
++    wideDiagonalAt F e lam * O.valᴴ =
+       realDiagonal F (fun i => Real.sqrt (lam i)) *
+-        (star O : Matrix (Fin p) (Fin p) F).submatrix e id := by
++        (O.valᴴ).submatrix e id := by
+   rw [wideDiagonalAt,Matrix.mul_assoc,coordinateColumns,Matrix.conjTranspose_submatrix,
+-    Matrix.conjTranspose_one,Matrix.one_submatrix_mul e (Equiv.refl (Fin p))]
+-  rfl
++    Matrix.conjTranspose_one]
++  have h := Matrix.one_submatrix_mul e (Equiv.refl (Fin p)) (M := O.valᴴ)
++  simp only [Equiv.coe_refl, Equiv.refl_symm, Function.id_comp] at h
++  rw [h]
+ 
+ theorem wideSVD_at_of_dual {n p : ℕ} (hnp : n ≤ p)
+     (hcomplete : ∀ B : Matrix (Fin p) (Fin n) F, Bᴴ * B = 1 →
+       ∃ O : unitary (Matrix (Fin p) (Fin p) F),
+-        (O : Matrix (Fin p) (Fin p) F).submatrix id (Fin.castLE hnp) = B)
++        O.val.submatrix id (Fin.castLE hnp) = B)
+     (e : Fin n ↪ Fin p) (Z : Matrix (Fin n) (Fin p) F)
+     (U : unitary (Matrix (Fin n) (Fin n) F)) (lam : Fin n → ℝ)
+     (hlam : ∀ i, 0 < lam i)
+-    (hZ : Z * Zᴴ = (U : Matrix (Fin n) (Fin n) F) * realDiagonal F lam * star U) :
++    (hZ : Z * Zᴴ = U.val * realDiagonal F lam * U.valᴴ) :
+     ∃ g : unitary (Matrix (Fin n) (Fin n) F) × unitary (Matrix (Fin p) (Fin p) F),
+       rectangularUnitaryAction F g (wideDiagonalAt F e lam) = Z := by
+   obtain ⟨O,hO⟩ := exists_unitary_extension_at F hnp hcomplete e (dualEigenFrame F Z U lam)
+     (dualEigenFrame_orthonormal F Z U lam hlam hZ)
+-  have hOE : (O : Matrix (Fin p) (Fin p) F) * coordinateColumns F e =
++  have hOE : O.val * coordinateColumns F e =
+       dualEigenFrame F Z U lam := by
+     rw [mul_coordinateColumns]
+     exact hO
+   refine ⟨(U,O),?_⟩
+-  change (U : Matrix (Fin n) (Fin n) F) *
+-    (realDiagonal F (fun i => Real.sqrt (lam i)) * (coordinateColumns F e)ᴴ) * star O = Z
++  change U.val *
++    (realDiagonal F (fun i => Real.sqrt (lam i)) * (coordinateColumns F e)ᴴ) * O.valᴴ = Z
+   calc
+-    _ = (U : Matrix (Fin n) (Fin n) F) * realDiagonal F (fun i => Real.sqrt (lam i)) *
+-        ((O : Matrix (Fin p) (Fin p) F) * coordinateColumns F e)ᴴ := by
++    _ = U.val * realDiagonal F (fun i => Real.sqrt (lam i)) *
++        (O.val * coordinateColumns F e)ᴴ := by
+       rw [Matrix.conjTranspose_mul]
+       simp only [Matrix.mul_assoc]
+     _ = _ := by rw [hOE,dualEigenFrame_reconstruction F Z U lam hlam]
+@@ -1016,6 +1086,7 @@
+ end Wishart.FieldGaussian
+ 
+ namespace Wishart.ComplexMatrix
++open scoped Matrix.Norms.Frobenius
+ open Wishart.FieldGaussian Wishart.FieldCharts
+ 
+ theorem matrixGaussian_svd_law_at {n p : ℕ} (hnp : n ≤ p) (e : Fin n ↪ Fin p) :
+@@ -1024,37 +1095,40 @@
+         (identityEigenLaw n (p : ℝ))).map
+           (fun z => rectangularUnitaryAction ℂ z.1 (wideDiagonalAt ℂ e z.2)) =
+       matrixGaussian ℂ n p := by
+-  have hmap : Measurable (fun Z : Matrix (Fin n) (Fin p) ℂ => matrixGram ℂ Zᴴ) :=
+-    (continuous_matrixGram ℂ p n).measurable.comp (by fun_prop)
++  have hmap : Measurable (fun Z : Matrix (Fin n) (Fin p) ℂ => Wishart.FieldGaussian.matrixGram ℂ Zᴴ) :=
++    (Wishart.FieldGaussian.continuous_matrixGram ℂ p n).measurable.comp (by fun_prop)
+   have hsel : Measurable (fun Z : Matrix (Fin n) (Fin p) ℂ =>
+-      ascendingValues (matrixGram ℂ Zᴴ)) := (continuous_ascendingValues n).measurable.comp hmap
++      ascendingValues (Wishart.FieldGaussian.matrixGram ℂ Zᴴ)) := (continuous_ascendingValues n).measurable.comp hmap
+   have hlabel : (matrixGaussian ℂ n p).map
+-      (fun Z => ascendingValues (matrixGram ℂ Zᴴ)) = identityEigenLaw n (p : ℝ) := by
++      (fun Z => ascendingValues (Wishart.FieldGaussian.matrixGram ℂ Zᴴ)) = identityEigenLaw n (p : ℝ) := by
++    change (matrixGaussian ℂ n p).map
++      (ascendingValues ∘ fun Z => Wishart.FieldGaussian.matrixGram ℂ Zᴴ) = _
+     rw [← Measure.map_map (continuous_ascendingValues n).measurable hmap,
+       matrixGaussian_dual_gram_law hnp]
+     rfl
+   have hpos : ∀ᵐ Z ∂matrixGaussian ℂ n p, (Z * Zᴴ).PosDef := by
+     have h := wishart_ae_posDef (p : ℝ) (1 : Matrix (Fin n) (Fin n) ℂ)
+     rw [← matrixGaussian_dual_gram_law hnp] at h
+-    simpa only [matrixGram,Matrix.conjTranspose_conjTranspose] using
++    simpa only [Wishart.FieldGaussian.matrixGram,Matrix.conjTranspose_conjTranspose] using
+       ae_of_ae_map hmap.aemeasurable h
+   have h := Wishart.map_prod_orbit_representative_ae
+     ((TauCeti.haarProb (unitary (Matrix (Fin n) (Fin n) ℂ))).prod
+       (TauCeti.haarProb (unitary (Matrix (Fin p) (Fin p) ℂ))))
+     (matrixGaussian ℂ n p) (rectangularUnitaryAction ℂ)
+-    (fun Z => ascendingValues (matrixGram ℂ Zᴴ)) (wideDiagonalAt ℂ e)
++    (fun Z => ascendingValues (Wishart.FieldGaussian.matrixGram ℂ Zᴴ)) (wideDiagonalAt ℂ e)
+     (measurable_rectangularUnitaryAction ℂ n p) hsel
+     (continuous_wideDiagonalAt ℂ e).measurable
+     (rectangularUnitaryAction_mul ℂ)
+     (matrixGaussian_map_rectangularUnitaryAction ℂ (by simp [Complex.finrank_real_complex])
+       Complex.reLm complex_re_star_mul) (by
+         filter_upwards [hpos] with Z hZ
+-        obtain ⟨U,hU⟩ := exists_conjugate_ascending (matrixGram ℂ Zᴴ)
++        obtain ⟨U,hU⟩ := exists_conjugate_ascending (Wishart.FieldGaussian.matrixGram ℂ Zᴴ)
+         apply wideSVD_at_of_dual ℂ hnp
+           (fun B hB => Wishart.FieldSpectral.exists_unitary_extension hnp B hB) e Z U
+-        · exact fun i => ascendingValues_pos _ (by simpa [matrixGram] using hZ) i
+-        · simpa only [matrixGram,Matrix.conjTranspose_conjTranspose,unitaryConjugate,
+-            diagonalHermitian] using (congrArg Subtype.val hU).symm)
++        · exact fun i => ascendingValues_pos _ (by simpa [Wishart.FieldGaussian.matrixGram] using hZ) i
++        · simpa only [Wishart.FieldGaussian.matrixGram,Matrix.conjTranspose_conjTranspose,unitaryConjugate,
++            diagonalHermitian, realDiagonal, Algebra.algebraMap_eq_smul_one,
++      Matrix.star_eq_conjTranspose] using (congrArg Subtype.val hU).symm)
+   rw [hlabel] at h
+   exact h
+ 
+@@ -1070,37 +1144,40 @@
+         (identityEigenLaw n (p : ℝ))).map
+           (fun z => rectangularUnitaryAction ℍ[ℝ] z.1 (wideDiagonalAt ℍ[ℝ] e z.2)) =
+       matrixGaussian ℍ[ℝ] n p := by
+-  have hmap : Measurable (fun Z : Matrix (Fin n) (Fin p) ℍ[ℝ] => matrixGram ℍ[ℝ] Zᴴ) :=
+-    (continuous_matrixGram ℍ[ℝ] p n).measurable.comp (by fun_prop)
++  have hmap : Measurable (fun Z : Matrix (Fin n) (Fin p) ℍ[ℝ] => Wishart.FieldGaussian.matrixGram ℍ[ℝ] Zᴴ) :=
++    (Wishart.FieldGaussian.continuous_matrixGram ℍ[ℝ] p n).measurable.comp (by fun_prop)
+   have hsel : Measurable (fun Z : Matrix (Fin n) (Fin p) ℍ[ℝ] =>
+-      ascendingValues (matrixGram ℍ[ℝ] Zᴴ)) := (continuous_ascendingValues n).measurable.comp hmap
++      ascendingValues (Wishart.FieldGaussian.matrixGram ℍ[ℝ] Zᴴ)) := (continuous_ascendingValues n).measurable.comp hmap
+   have hlabel : (matrixGaussian ℍ[ℝ] n p).map
+-      (fun Z => ascendingValues (matrixGram ℍ[ℝ] Zᴴ)) = identityEigenLaw n (p : ℝ) := by
++      (fun Z => ascendingValues (Wishart.FieldGaussian.matrixGram ℍ[ℝ] Zᴴ)) = identityEigenLaw n (p : ℝ) := by
++    change (matrixGaussian ℍ[ℝ] n p).map
++      (ascendingValues ∘ fun Z => Wishart.FieldGaussian.matrixGram ℍ[ℝ] Zᴴ) = _
+     rw [← Measure.map_map (continuous_ascendingValues n).measurable hmap,
+       matrixGaussian_dual_gram_law hnp]
+     rfl
+   have hpos : ∀ᵐ Z ∂matrixGaussian ℍ[ℝ] n p, PosDef (Z * Zᴴ) := by
+     have h := wishart_ae_posDef (p : ℝ) (1 : Matrix (Fin n) (Fin n) ℍ[ℝ])
+     rw [← matrixGaussian_dual_gram_law hnp] at h
+-    simpa only [matrixGram,Matrix.conjTranspose_conjTranspose] using
++    simpa only [Wishart.FieldGaussian.matrixGram,Matrix.conjTranspose_conjTranspose] using
+       ae_of_ae_map hmap.aemeasurable h
+   have h := Wishart.map_prod_orbit_representative_ae
+     ((TauCeti.haarProb (unitary (Matrix (Fin n) (Fin n) ℍ[ℝ]))).prod
+       (TauCeti.haarProb (unitary (Matrix (Fin p) (Fin p) ℍ[ℝ]))))
+     (matrixGaussian ℍ[ℝ] n p) (rectangularUnitaryAction ℍ[ℝ])
+-    (fun Z => ascendingValues (matrixGram ℍ[ℝ] Zᴴ)) (wideDiagonalAt ℍ[ℝ] e)
++    (fun Z => ascendingValues (Wishart.FieldGaussian.matrixGram ℍ[ℝ] Zᴴ)) (wideDiagonalAt ℍ[ℝ] e)
+     (measurable_rectangularUnitaryAction ℍ[ℝ] n p) hsel
+     (continuous_wideDiagonalAt ℍ[ℝ] e).measurable
+     (rectangularUnitaryAction_mul ℍ[ℝ])
+     (matrixGaussian_map_rectangularUnitaryAction ℍ[ℝ] (by simp [Quaternion.finrank_eq_four])
+       (QuaternionAlgebra.reₗ (-1 : ℝ) 0 (-1)) quaternion_re_star_mul) (by
+         filter_upwards [hpos] with Z hZ
+-        obtain ⟨U,hU⟩ := exists_conjugate_ascending (matrixGram ℍ[ℝ] Zᴴ)
++        obtain ⟨U,hU⟩ := exists_conjugate_ascending (Wishart.FieldGaussian.matrixGram ℍ[ℝ] Zᴴ)
+         apply wideSVD_at_of_dual ℍ[ℝ] hnp
+           (fun B hB => exists_unitary_extension p n hnp B hB) e Z U
+-        · exact fun i => ascendingValues_pos _ (by simpa [matrixGram] using hZ) i
+-        · simpa only [matrixGram,Matrix.conjTranspose_conjTranspose,unitaryConjugate,
+-            Wishart.FieldCharts.diagonalHermitian] using (congrArg Subtype.val hU).symm)
++        · exact fun i => ascendingValues_pos _ (by simpa [Wishart.FieldGaussian.matrixGram] using hZ) i
++        · simpa only [Wishart.FieldGaussian.matrixGram,Matrix.conjTranspose_conjTranspose,unitaryConjugate,
++            Wishart.FieldCharts.diagonalHermitian, realDiagonal, Algebra.algebraMap_eq_smul_one,
++      Matrix.star_eq_conjTranspose] using (congrArg Subtype.val hU).symm)
+   rw [hlabel] at h
+   exact h
+ 
+@@ -1142,23 +1219,25 @@
+ 
+ 
+ def splitColumnsLinearEquiv (n p q : ℕ) :
+-    Matrix (Fin n) (Fin p) F × Matrix (Fin n) (Fin q) F ≃ₗ[ℝ]
++    (Matrix (Fin n) (Fin p) F × Matrix (Fin n) (Fin q) F) ≃ₗ[ℝ]
+       Matrix (Fin n) (Fin (p+q)) F where
+   toFun z := horizontalJoin F z.1 z.2
+   invFun Z := (Z.submatrix id (Fin.castAdd q),Z.submatrix id (Fin.natAdd p))
+-  left_inv z := by apply Prod.ext <;> ext i j <;> rfl
++  left_inv z := by
++    apply Prod.ext <;> apply Matrix.ext <;> intro i j <;>
++      simp [horizontalJoin, Matrix.submatrix_apply]
+   right_inv Z := by
+     ext i j
+     obtain ⟨j,rfl⟩ := finSumFinEquiv.surjective j
+-    cases j <;> rfl
++    cases j <;> simp [horizontalJoin, Matrix.submatrix_apply]
+   map_add' A B := by
+     ext i j
+     obtain ⟨j,rfl⟩ := finSumFinEquiv.surjective j
+-    cases j <;> rfl
++    cases j <;> simp [horizontalJoin, Matrix.submatrix_apply]
+   map_smul' r A := by
+     ext i j
+     obtain ⟨j,rfl⟩ := finSumFinEquiv.surjective j
+-    cases j <;> rfl
++    cases j <;> simp [horizontalJoin, Matrix.submatrix_apply]
+ 
+ theorem continuous_horizontalJoin (n p q : ℕ) :
+     Continuous (fun z : Matrix (Fin n) (Fin p) F × Matrix (Fin n) (Fin q) F =>
+@@ -1176,7 +1255,7 @@
+     intro i hi
+     rw [← finSumFinEquiv.sum_comp (fun j => ‖horizontalJoin F A B i j‖ ^ 2),
+       Fintype.sum_sum_type]
+-    rfl
++    simp [horizontalJoin]
+   rw [matrixKernel,hn,mul_add,Real.exp_add,ENNReal.ofReal_mul (Real.exp_pos _).le]
+   rfl
+ 
+@@ -1205,26 +1284,26 @@
+     horizontalJoin F (U*A) (U*B) = U * horizontalJoin F A B := by
+   ext i j
+   obtain ⟨j,rfl⟩ := finSumFinEquiv.surjective j
+-  cases j <;> rfl
++  cases j <;> simp [horizontalJoin, Matrix.mul_apply]
+ 
+ def blockGramWithFactor {n p q m : ℕ} (T : Matrix (Fin (p+q)) (Fin m) F)
+     (A : Matrix (Fin n) (Fin p) F) (G : Matrix (Fin n) (Fin q) F) : Hermitian F m :=
+-  matrixGram F (horizontalJoin F A G * T)
++  Wishart.FieldGaussian.matrixGram F (horizontalJoin F A G * T)
+ 
+ theorem measurable_blockGramWithFactor {n p q m : ℕ}
+     (T : Matrix (Fin (p+q)) (Fin m) F) :
+     Measurable (fun z : Matrix (Fin n) (Fin p) F × Matrix (Fin n) (Fin q) F =>
+       blockGramWithFactor F T z.1 z.2) :=
+-  (continuous_matrixGram F n m).measurable.comp
+-    ((continuous_horizontalJoin F n p q).mul_const T).measurable
++  (Wishart.FieldGaussian.continuous_matrixGram F n m).measurable.comp
++    ((continuous_horizontalJoin F n p q).matrix_mul continuous_const).measurable
+ 
+ theorem blockGramWithFactor_drop_left {n p q m : ℕ}
+     (T : Matrix (Fin (p+q)) (Fin m) F)
+     (U : unitary (Matrix (Fin n) (Fin n) F))
+     (A : Matrix (Fin n) (Fin p) F) (G : Matrix (Fin n) (Fin q) F) :
+-    blockGramWithFactor F T (U*A) G = blockGramWithFactor F T A (star U * G) := by
+-  have hG : (U : Matrix (Fin n) (Fin n) F) * (star U * G) = G := by
+-    rw [← Matrix.mul_assoc,Unitary.coe_mul_star_self,Matrix.one_mul]
++    blockGramWithFactor F T (U.val*A) G = blockGramWithFactor F T A (U.valᴴ * G) := by
++  have hG : U.val * (U.valᴴ * G) = G := by
++    rw [← Matrix.mul_assoc,unitary_val_mul_star_self,Matrix.one_mul]
+   conv_lhs => rw [← hG]
+   rw [blockGramWithFactor,horizontalJoin_mul_left,Matrix.mul_assoc,matrixGram_unitary_left]
+   rfl
+@@ -1234,21 +1313,27 @@
+     (hstar : ∀ a : F, re (star a * a) = ‖a‖ ^ 2)
+     (T : Matrix (Fin (p+q)) (Fin m) F)
+     (U : unitary (Matrix (Fin n) (Fin n) F)) (A : Matrix (Fin n) (Fin p) F) :
+-    (matrixGaussian F n q).map (fun G => blockGramWithFactor F T (U*A) G) =
++    (matrixGaussian F n q).map (fun G => blockGramWithFactor F T (U.val*A) G) =
+       (matrixGaussian F n q).map (fun G => blockGramWithFactor F T A G) := by
++  have hpair : Measurable (fun G : Matrix (Fin n) (Fin q) F => (A, G)) :=
++    measurable_const.prodMk measurable_id
+   have hmap : Measurable (fun G : Matrix (Fin n) (Fin q) F =>
+-      blockGramWithFactor F T A G) := (measurable_blockGramWithFactor F T).comp
+-        (measurable_const.prodMk measurable_id)
++      blockGramWithFactor F T A G) := by
++    simpa only [Function.comp_def] using (measurable_blockGramWithFactor F T).comp hpair
+   calc
+     _ = (matrixGaussian F n q).map
+-        ((fun G => blockGramWithFactor F T A G) ∘ (fun G => star U * G)) := by
++        ((fun G => blockGramWithFactor F T A G) ∘ (fun G => U.valᴴ * G)) := by
+       congr 1
+       exact funext (blockGramWithFactor_drop_left F T U A)
+-    _ = ((matrixGaussian F n q).map (fun G => star U * G)).map
++    _ = ((matrixGaussian F n q).map (fun G => U.valᴴ * G)).map
+         (fun G => blockGramWithFactor F T A G) :=
+       (Measure.map_map hmap (by fun_prop)).symm
+-    _ = _ := by rw [matrixGaussian_map_unitary_left F hF re hstar (star U)]
+-
++    _ = _ := by
++      have hrot := matrixGaussian_map_unitary_left F hF re hstar (star U) (q := q)
++      simp only [Unitary.coe_star, Matrix.star_eq_conjTranspose] at hrot
++      rw [hrot]
++
++set_option backward.isDefEq.respectTransparency true in
+ theorem discard_left_unitary_noise {n p q m : ℕ} {L : Type*} [MeasurableSpace L]
+     (hF : 0 < Module.finrank ℝ F) (re : F →ₗ[ℝ] ℝ)
+     (hstar : ∀ a : F, re (star a * a) = ‖a‖ ^ 2)
+@@ -1257,23 +1342,42 @@
+     (B : L → Matrix (Fin n) (Fin p) F) (hB : Measurable B)
+     (T : Matrix (Fin (p+q)) (Fin m) F) :
+     ((ρ.prod ξ).prod (matrixGaussian F n q)).map
+-      (fun z => blockGramWithFactor F T (z.1.1 * B z.1.2) z.2) =
++      (fun z : (unitary (Matrix (Fin n) (Fin n) F) × L) × Matrix (Fin n) (Fin q) F => blockGramWithFactor F (n := n) (p := p) (q := q) (m := m) T (z.1.1.val * B z.1.2) z.2) =
+       (ξ.prod (matrixGaussian F n q)).map
+-        (fun z => blockGramWithFactor F T (B z.1) z.2) := by
++        (fun z : L × Matrix (Fin n) (Fin q) F => blockGramWithFactor F (n := n) (p := p) (q := q) (m := m) T (B z.1) z.2) := by
++  let e : F ≃L[ℝ] (Fin (Module.finrank ℝ F) → ℝ) :=
++    ContinuousLinearEquiv.ofFinrankEq (by simp)
++  letI : SecondCountableTopology F := e.toHomeomorph.secondCountableTopology
+   have hleft : Measurable (fun z :
+       (unitary (Matrix (Fin n) (Fin n) F) × L) × Matrix (Fin n) (Fin q) F =>
+-      blockGramWithFactor F T (z.1.1 * B z.1.2) z.2) := by
+-    apply (measurable_blockGramWithFactor F T).comp
+-    exact ((measurable_subtype_coe.comp (measurable_fst.comp measurable_fst)).mul
+-      (hB.comp (measurable_snd.comp measurable_fst))).prodMk measurable_snd
++      blockGramWithFactor F (n := n) (p := p) (q := q) (m := m) T (z.1.1.val * B z.1.2) z.2) := by
++    have hmul : Measurable (fun z :
++        Matrix (Fin n) (Fin n) F × Matrix (Fin n) (Fin p) F => z.1 * z.2) := by
++      apply measurable_pi_iff.mpr
++      intro i
++      apply measurable_pi_iff.mpr
++      intro j
++      change Measurable (fun z : Matrix (Fin n) (Fin n) F × Matrix (Fin n) (Fin p) F =>
++        ∑ k, z.1 i k * z.2 k j)
++      fun_prop
++    have harg : Measurable (fun z :
++        (unitary (Matrix (Fin n) (Fin n) F) × L) × Matrix (Fin n) (Fin q) F =>
++          (z.1.1.val, B z.1.2)) :=
++      (measurable_subtype_coe.comp (measurable_fst.comp measurable_fst)).prodMk
++        (hB.comp (measurable_snd.comp measurable_fst))
++    have h := (measurable_blockGramWithFactor F (n := n) (p := p) (q := q) (m := m) T).comp
++      ((hmul.comp harg).prodMk measurable_snd)
++    simpa only [Function.comp_def] using h
++  have harg : Measurable (fun z : L × Matrix (Fin n) (Fin q) F => (B z.1, z.2)) :=
++    (hB.comp measurable_fst).prodMk measurable_snd
+   have hright : Measurable (fun z : L × Matrix (Fin n) (Fin q) F =>
+-      blockGramWithFactor F T (B z.1) z.2) :=
+-    (measurable_blockGramWithFactor F T).comp ((hB.comp measurable_fst).prodMk measurable_snd)
++      blockGramWithFactor F (n := n) (p := p) (q := q) (m := m) T (B z.1) z.2) := by
++    simpa only [Function.comp_def] using (measurable_blockGramWithFactor F (n := n) (p := p) (q := q) (m := m) T).comp harg
+   have h := Wishart.map_prod_eq_of_map_fibres (ρ.prod ξ) (matrixGaussian F n q)
+     Prod.snd measurable_snd _ hleft _ hright (by
+       filter_upwards [] with z
+       exact blockGram_noise_fibre_drop_left F hF re hstar T z.1 (B z.2))
+-  rw [(measurePreserving_snd ρ ξ).map_eq] at h
++  rw [(measurePreserving_snd (μ := ρ) (ν := ξ)).map_eq] at h
+   exact h
+ 
+ end Wishart.FieldGaussian

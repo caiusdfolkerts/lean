@@ -1,0 +1,55 @@
+--- archive/source/wishart/verified/field_spectral_moments.lean
++++ recovered/source/wishart/verified/field_spectral_moments.lean
+@@ -8,6 +8,8 @@
+ /- Source: Wishart/FieldSpectralMoments.lean -/
+ 
+ @[expose] public section
++
++set_option backward.isDefEq.respectTransparency false
+ 
+ /-!
+ # Actual moments of every shifted compression eigenvalue
+@@ -29,7 +31,7 @@
+ theorem shiftedCompression_eigenvalue_allFiniteMoments_of_trace
+     (Sigma : Matrix (Fin p) (Fin p) ℂ) (B : Matrix (Fin p) (Fin k) ℂ)
+     {c : ℝ} (hc : 0 ≤ c) (μ : Measure (Hermitian p)) [IsFiniteMeasure μ]
+-    (hPSD : ∀ᵐ X ∂μ, (X : Matrix (Fin p) (Fin p) ℂ).PosSemidef)
++    (hPSD : ∀ᵐ (X : Hermitian p) ∂μ, (X : Matrix (Fin p) (Fin p) ℂ).PosSemidef)
+     (htrace : HasAllFiniteMoments (fun X : Hermitian p =>
+       (X : Matrix (Fin p) (Fin p) ℂ).trace.re) μ) (j : Fin k) :
+     HasAllFiniteMoments (fun X => FieldSpectral.orderedValues (WishartVerification.hermitian_matrix_coe
+@@ -55,20 +57,21 @@
+ end Wishart.ComplexMatrix
+ 
+ namespace Wishart.QuaternionMatrix
++open scoped Matrix.Norms.Frobenius
+ variable {p k : ℕ}
+ 
+-theorem orderedValues_le_realTrace (A : Hermitian k) (hA : PosSemidef A) (j : Fin k) :
++theorem orderedValues_le_realTrace (A : Hermitian k) (hA : PosSemidef (A : Matrix (Fin k) (Fin k) ℍ[ℝ])) (j : Fin k) :
+     orderedValues A j ≤ (A : Matrix (Fin k) (Fin k) ℍ[ℝ]).trace.re := by
+   rw [orderedValues_eq_decomposition,
+-    (orderedEigenDecomposition A (WishartVerification.hermitian_matrix_coe A)).trace_eq_sum]
++    (orderedEigenDecomposition (A : Matrix (Fin k) (Fin k) ℍ[ℝ]) (WishartVerification.hermitian_matrix_coe A)).trace_eq_sum]
+   exact Finset.single_le_sum
+-    (fun i _ => (orderedEigenDecomposition A (WishartVerification.hermitian_matrix_coe A)).values_nonneg hA i)
++    (fun i _ => (orderedEigenDecomposition (A : Matrix (Fin k) (Fin k) ℍ[ℝ]) (WishartVerification.hermitian_matrix_coe A)).values_nonneg hA i)
+     (Finset.mem_univ j)
+ 
+ theorem shiftedCompression_eigenvalue_allFiniteMoments_of_trace
+     (Sigma : Matrix (Fin p) (Fin p) ℍ[ℝ]) (B : Matrix (Fin p) (Fin k) ℍ[ℝ])
+     {c : ℝ} (hc : 0 ≤ c) (μ : Measure (Hermitian p)) [IsFiniteMeasure μ]
+-    (hPSD : ∀ᵐ X ∂μ, PosSemidef X)
++    (hPSD : ∀ᵐ (X : Hermitian p) ∂μ, PosSemidef (X : Matrix (Fin p) (Fin p) ℍ[ℝ]))
+     (htrace : HasAllFiniteMoments (fun X : Hermitian p =>
+       (X : Matrix (Fin p) (Fin p) ℍ[ℝ]).trace.re) μ) (j : Fin k) :
+     HasAllFiniteMoments (fun X => orderedValues
+@@ -80,7 +83,7 @@
+   have hm : Measurable S := (measurable_normalizedCompression B Sigma).add measurable_const
+   have hSm : Measurable (fun X => orderedValues (S X)) :=
+     (continuous_orderedValues k).measurable.comp hm
+-  have hS (X : Hermitian p) (hX : PosSemidef X) : PosSemidef (S X) :=
++  have hS (X : Hermitian p) (hX : PosSemidef (X : Matrix (Fin p) (Fin p) ℍ[ℝ])) : PosSemidef (S X : Matrix (Fin k) (Fin k) ℍ[ℝ]) :=
+     (normalizedCompression_posSemidef B Sigma X hX).add (posDef_one.posSemidef.smul hc)
+   apply allFiniteMoments_of_nonnegative_bound ((measurable_pi_apply j).comp hSm)
+     (hPSD.mono fun X hX => orderedValues_nonneg (S X) (hS X hX) j)

@@ -1,0 +1,11 @@
+--- archive/source/wishart/verified/field_residual05.lean
++++ recovered/source/wishart/verified/field_residual05.lean
+@@ -3,7 +3,7 @@
+ public import wishart.verified.field_residual04
+ public import wishart.verified.real_remainder11
+ 
+-/- Exact canonical residual stage; see audit/field_residual/FieldResidual05.json. -/
++/- Recovered canonical proof stage; see verification/recovery-patches.json. -/
+ 
+ @[expose] public section
+ 

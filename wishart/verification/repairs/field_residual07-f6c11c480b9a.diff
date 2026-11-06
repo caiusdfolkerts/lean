@@ -1,0 +1,216 @@
+--- archive/source/wishart/verified/field_residual07.lean
++++ recovered/source/wishart/verified/field_residual07.lean
+@@ -1023,6 +1023,7 @@
+   rw [Matrix.smul_mul, Matrix.one_mul, Matrix.trace_smul]
+   change Complex.reLm ((1 / 2 : ℝ) • X.trace) = _
+   rw [map_smul, smul_eq_mul]
++  rfl
+ 
+ theorem wishartWeight_trace_tilt (α : ℝ) (X : Hermitian p) :
+     wishartWeight α (1 : Matrix (Fin p) (Fin p) ℂ) X *
+@@ -1048,8 +1049,8 @@
+       (Real.exp ((1 / 2 : ℝ) * (X : Matrix (Fin p) (Fin p) ℂ).trace.re))) := by fun_prop
+   rw [wishartMeasure, lintegral_smul_measure,
+     lintegral_withDensity_eq_lintegral_mul _ (measurable_wishartWeight α 1) hmeas]
+-  simp_rw [wishartWeight_trace_tilt]
+-  exact ENNReal.mul_lt_top (ENNReal.inv_lt_top.mpr hfirst.positive.ne') hsecond.finite
++  simp_rw [Pi.mul_apply, wishartWeight_trace_tilt]
++  exact ENNReal.mul_lt_top (ENNReal.inv_lt_top.mpr hfirst.positive) hsecond.finite
+ 
+ theorem trace_allFiniteMoments_standard {α : ℝ} (hα : (p : ℝ) - 1 < α) :
+     WishartVerification.HasAllFiniteMoments
+@@ -1059,6 +1060,7 @@
+   apply WishartVerification.allFiniteMoments_of_positive_exponential (by fun_prop) _
+     (by norm_num : (0 : ℝ) < 1 / 2) (finite_exponential_trace_standard hα)
+   filter_upwards [wishart_ae_posDef α (1 : Matrix (Fin p) (Fin p) ℂ)] with X hX
++  change (0 : ℝ) ≤ RCLike.re (X : Matrix (Fin p) (Fin p) ℂ).trace
+   rw [Wishart.FieldSpectral.trace_eq_sum_orderedValues hX.isHermitian]
+   exact Finset.sum_nonneg fun i _ => (Wishart.FieldSpectral.orderedValues_pos hX i).le
+ 
+@@ -1085,6 +1087,7 @@
+   rw [Matrix.smul_mul, Matrix.one_mul, Matrix.trace_smul]
+   change (QuaternionAlgebra.reₗ (-1 : ℝ) 0 (-1)) ((1 / 2 : ℝ) • X.trace) = _
+   rw [map_smul, smul_eq_mul]
++  rfl
+ 
+ theorem wishartWeight_trace_tilt (α : ℝ) (X : Hermitian p) :
+     wishartWeight α (1 : Matrix (Fin p) (Fin p) ℍ[ℝ]) X *
+@@ -1107,18 +1110,21 @@
+   have hsecond := (finiteDensity_wishart_and_covariance_law hα
+     (posDef_one.smul (by norm_num : (0 : ℝ) < 2))).1
+   have hmeas : Measurable (fun X : Hermitian p => ENNReal.ofReal
+-      (Real.exp ((X : Matrix (Fin p) (Fin p) ℍ[ℝ]).trace.re))) := by fun_prop
++      (Real.exp ((X : Matrix (Fin p) (Fin p) ℍ[ℝ]).trace.re))) :=
++    (Quaternion.continuous_re.measurable.comp (by fun_prop)).exp.ennreal_ofReal
+   rw [wishartMeasure, lintegral_smul_measure,
+     lintegral_withDensity_eq_lintegral_mul _ (measurable_wishartWeight α 1) hmeas]
+-  simp_rw [wishartWeight_trace_tilt]
+-  exact ENNReal.mul_lt_top (ENNReal.inv_lt_top.mpr hfirst.positive.ne') hsecond.finite
++  simp_rw [Pi.mul_apply, wishartWeight_trace_tilt]
++  exact ENNReal.mul_lt_top (ENNReal.inv_lt_top.mpr hfirst.positive) hsecond.finite
+ 
+ theorem trace_allFiniteMoments_standard {α : ℝ} (hα : (p : ℝ) - 1 < α) :
+     WishartVerification.HasAllFiniteMoments
+       (fun X : Hermitian p => (X : Matrix (Fin p) (Fin p) ℍ[ℝ]).trace.re)
+       (wishartMeasure α (1 : Matrix (Fin p) (Fin p) ℍ[ℝ])) := by
+   letI := wishart_standard_probability p hα
+-  apply WishartVerification.allFiniteMoments_of_positive_exponential (by fun_prop) _
++  apply WishartVerification.allFiniteMoments_of_positive_exponential
++    (f := fun X : Hermitian p => (X : Matrix (Fin p) (Fin p) ℍ[ℝ]).trace.re)
++    (Quaternion.continuous_re.measurable.comp (by fun_prop)) _
+     (by norm_num : (0 : ℝ) < 1) (by simpa only [one_mul] using finite_exponential_trace_standard hα)
+   filter_upwards [wishart_ae_posDef α (1 : Matrix (Fin p) (Fin p) ℍ[ℝ])] with X hX
+   let D := orderedEigenDecomposition (X : Matrix (Fin p) (Fin p) ℍ[ℝ]) hX.isHermitian
+@@ -1165,7 +1171,7 @@
+ 
+ theorem realTrace_rowsGram {n p : ℕ} (re : F →ₗ[ℝ] ℝ)
+     (hstar : ∀ a : F, re (star a * a) = ‖a‖ ^ 2) (z : Fin n → Row F p) :
+-    realTrace F re (rowsGram F z) = ∑ a, ‖z a‖ ^ 2 := by
++    realTrace F re (rowsGram F z).val = ∑ a, ‖z a‖ ^ 2 := by
+   rw [rowsGram, realTrace_matrixGram F re hstar]
+   simp only [rectangularNormSquare, rowsMatrix, Matrix.of_apply, PiLp.norm_sq_eq_of_L2]
+ 
+@@ -1182,16 +1188,17 @@
+ theorem realTrace_gramWithFactor_allFiniteMoments {r p : ℕ} (n : ℕ)
+     (R : Matrix (Fin r) (Fin p) F) (re : F →ₗ[ℝ] ℝ)
+     (hstar : ∀ a : F, re (star a * a) = ‖a‖ ^ 2) :
+-    HasAllFiniteMoments (fun X : Hermitian F p => realTrace F re X)
++    HasAllFiniteMoments (fun X : Hermitian F p => realTrace F re X.val)
+       (gramWithFactor F n R) := by
+   have hT : MeasurePreserving (rowsGram F : (Fin n → Row F p) → Hermitian F p)
+       (Measure.pi (fun _ : Fin n => gaussianRowWithFactor F R)) (gramWithFactor F n R) :=
+     ⟨(continuous_rowsGram F n p).measurable, rfl⟩
+-  have hm : Measurable (fun X : Hermitian F p => realTrace F re X) := by
++  have hm : Measurable (fun X : Hermitian F p => realTrace F re X.val) := by
+     unfold realTrace
+     apply Finset.measurable_sum
+     intro i hi
+-    exact re.continuous_of_finiteDimensional.measurable.comp (by fun_prop)
++    exact re.continuous_of_finiteDimensional.measurable.comp
++      ((measurable_pi_apply i).comp ((measurable_pi_apply i).comp measurable_subtype_coe))
+   apply HasAllFiniteMoments.of_comp_measurePreserving hT hm
+   have h := rowNormSquares_allFiniteMoments (n := n) F R
+   apply h.congr_ae
+@@ -1274,21 +1281,22 @@
+   have hd : (Matrix.diagonal d).PosSemidef := by
+     apply Matrix.PosSemidef.diagonal
+     intro i
++    change (0 : 𝕜) ≤ ((RCLike.re A.trace - hA.isHermitian.eigenvalues i : ℝ) : 𝕜)
+     exact_mod_cast sub_nonneg.mpr (eigenvalue_le_realTrace hA i)
+   have heq : Matrix.diagonal d = RCLike.re A.trace • (1 : Matrix n n 𝕜) -
+       Matrix.diagonal (RCLike.ofReal ∘ hA.isHermitian.eigenvalues) := by
+     rw [← Matrix.diagonal_one, ← Matrix.diagonal_smul, Matrix.diagonal_sub]
+     congr 1
+     funext i
+-    simp [d, RCLike.real_smul_eq_coe_smul]
++    simp [d, Algebra.smul_def]
+   have hspec : A = (U : Matrix n n 𝕜) *
+       Matrix.diagonal (RCLike.ofReal ∘ hA.isHermitian.eigenvalues) *
+       (U : Matrix n n 𝕜)ᴴ := by
+-    simpa only [U, Unitary.conjStarAlgAut_apply] using hA.isHermitian.spectral_theorem
++    simpa only [U, Unitary.conjStarAlgAut_apply, Matrix.star_eq_conjTranspose] using hA.isHermitian.spectral_theorem
+   have hunit : (U : Matrix n n 𝕜) * (U : Matrix n n 𝕜)ᴴ = 1 :=
+     Unitary.coe_mul_star_self U
+   have h := hd.mul_mul_conjTranspose_same (U : Matrix n n 𝕜)
+-  rw [heq, mul_sub, sub_mul, Matrix.mul_smul, Matrix.mul_one,
++  rw [heq, Matrix.mul_sub, Matrix.sub_mul, Matrix.mul_smul, Matrix.mul_one,
+     Matrix.smul_mul, hunit, ← hspec] at h
+   exact h
+ 
+@@ -1315,7 +1323,7 @@
+     RCLike.re (Bᴴ * A * B).trace ≤ compressionTraceConstant B * RCLike.re A.trace := by
+   have h := realTrace_nonneg
+     ((realTrace_identity_sub_posSemidef hA).conjTranspose_mul_mul_same B)
+-  rw [mul_sub, sub_mul, Matrix.mul_smul, Matrix.mul_one, Matrix.smul_mul,
++  rw [Matrix.mul_sub, Matrix.sub_mul, Matrix.mul_smul, Matrix.mul_one, Matrix.smul_mul,
+     Matrix.trace_sub, Matrix.trace_smul, map_sub, RCLike.smul_re] at h
+   simpa only [compressionTraceConstant, mul_comm] using sub_nonneg.mp h
+ 
+@@ -1323,7 +1331,7 @@
+     (B : Matrix n m 𝕜) (D : Matrix m m 𝕜) :
+     RCLike.re (Bᴴ * A * B + D).trace ≤
+       compressionTraceConstant B * RCLike.re A.trace + RCLike.re D.trace := by
+-  simpa only [Matrix.trace_add, map_add] using
++  simpa only [Matrix.trace_add, map_add, add_comm] using
+     add_le_add_right (realTrace_compression_le hA B) (RCLike.re D.trace)
+ 
+ end Wishart.FieldSpectral
+@@ -1386,7 +1394,8 @@
+ theorem realTrace_nonneg {A : Matrix n n ℍ[ℝ]} (hA : PosSemidef A) :
+     0 ≤ A.trace.re := by
+   have h := FieldSpectral.realTrace_nonneg hA
+-  rw [trace_complexRepresentation, Complex.ofReal_re] at h
++  rw [trace_complexRepresentation] at h
++  change 0 ≤ 2 * A.trace.re at h
+   linarith
+ 
+ /-- A finite compression constant obtained from the faithful complex
+@@ -1402,14 +1411,15 @@
+     compressionTraceConstant B = 2 * (Bᴴ * B).trace.re := by
+   unfold compressionTraceConstant FieldSpectral.compressionTraceConstant
+   rw [← complexRepresentation_conjTranspose, ← complexRepresentation_mul,
+-    trace_complexRepresentation, Complex.ofReal_re]
++    trace_complexRepresentation]
++  rfl
+ 
+ theorem realTrace_compression_le {A : Matrix n n ℍ[ℝ]} (hA : PosSemidef A)
+     (B : Matrix n m ℍ[ℝ]) :
+     (Bᴴ * A * B).trace.re ≤ compressionTraceConstant B * A.trace.re := by
+   have h := FieldSpectral.realTrace_compression_le hA (complexRepresentation B)
+   rw [← complexRepresentation_congruence, trace_complexRepresentation,
+-    trace_complexRepresentation, Complex.ofReal_re, Complex.ofReal_re] at h
++    trace_complexRepresentation] at h
+   change 2 * (Bᴴ * A * B).trace.re ≤ compressionTraceConstant B * (2 * A.trace.re) at h
+   linarith
+ 
+@@ -1418,7 +1428,7 @@
+     (Bᴴ * A * B + D).trace.re ≤
+       compressionTraceConstant B * A.trace.re + D.trace.re := by
+   have h := add_le_add_right (realTrace_compression_le hA B) D.trace.re
+-  simpa only [Matrix.trace_add, Quaternion.re_add] using h
++  simpa only [Matrix.trace_add, Quaternion.re_add, add_comm] using h
+ 
+ variable {p k : ℕ}
+ 
+@@ -1497,7 +1507,6 @@
+   let T := Wishart.FieldHermitian.congruence ℂ (CFC.sqrt Sigma)
+   have hT : Measurable T := by
+     apply Measurable.subtype_mk
+-    unfold T Wishart.FieldHermitian.congruence
+     fun_prop
+   have hpres : MeasurePreserving T
+       (wishartMeasure α (1 : Matrix (Fin p) (Fin p) ℂ)) (wishartMeasure α Sigma) :=
+@@ -1515,7 +1524,7 @@
+ 
+ theorem finite_compression_determinant_powers_of_trace {p : ℕ}
+     (μ : Measure (Hermitian p)) [IsFiniteMeasure μ]
+-    (hPSD : ∀ᵐ X ∂μ, (X : Matrix (Fin p) (Fin p) ℂ).PosSemidef)
++    (hPSD : ∀ᵐ (X : Hermitian p) ∂μ, (X : Matrix (Fin p) (Fin p) ℂ).PosSemidef)
+     (htrace : HasAllFiniteMoments
+       (fun X : Hermitian p => (X : Matrix (Fin p) (Fin p) ℂ).trace.re) μ)
+     {ι : Type*} [Fintype ι]
+@@ -1564,13 +1573,12 @@
+   let T := Wishart.FieldHermitian.congruence ℍ[ℝ] (sqrt Sigma)
+   have hT : Measurable T := by
+     apply Measurable.subtype_mk
+-    unfold T Wishart.FieldHermitian.congruence
+     fun_prop
+   have hpres : MeasurePreserving T
+       (wishartMeasure α (1 : Matrix (Fin p) (Fin p) ℍ[ℝ])) (wishartMeasure α Sigma) :=
+     ⟨hT, (finiteDensity_wishart_and_covariance_law hα hSigma).2.symm⟩
+-  have htr : Measurable (fun X : Hermitian p => (X : Matrix (Fin p) (Fin p) ℍ[ℝ]).trace.re) := by
+-    fun_prop
++  have htr : Measurable (fun X : Hermitian p => (X : Matrix (Fin p) (Fin p) ℍ[ℝ]).trace.re) :=
++    Quaternion.continuous_re.measurable.comp (by fun_prop)
+   apply HasAllFiniteMoments.of_comp_measurePreserving hpres htr
+   apply allFiniteMoments_of_nonnegative_bound (htr.comp hT)
+   · filter_upwards [wishart_ae_posDef α (1 : Matrix (Fin p) (Fin p) ℍ[ℝ])] with X hX
+@@ -1582,7 +1590,7 @@
+ 
+ theorem finite_compression_determinant_powers_of_trace {p : ℕ}
+     (μ : Measure (Hermitian p)) [IsFiniteMeasure μ]
+-    (hPSD : ∀ᵐ X ∂μ, PosSemidef X)
++    (hPSD : ∀ᵐ (X : Hermitian p) ∂μ, PosSemidef (X : Matrix (Fin p) (Fin p) ℍ[ℝ]))
+     (htrace : HasAllFiniteMoments
+       (fun X : Hermitian p => (X : Matrix (Fin p) (Fin p) ℍ[ℝ]).trace.re) μ)
+     {ι : Type*} [Fintype ι]

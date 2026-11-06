@@ -1,0 +1,296 @@
+--- archive/source/wishart/verified/field_residual08.lean
++++ recovered/source/wishart/verified/field_residual08.lean
+@@ -379,7 +379,7 @@
+   have hterm (i : ι) :
+       Real.exp (g i (a • x + b • y) - C) ≤
+         a * Real.exp (g i x - A) + b * Real.exp (g i y - B) := by
+-    apply le_trans _ (Real.convexOn_exp.2 (mem_univ _) (mem_univ _) ha hb hab)
++    apply le_trans _ (convexOn_exp.2 (mem_univ _) (mem_univ _) ha hb hab)
+     apply Real.exp_le_exp.mpr
+     have h := (hg i).2 hx hy ha hb hab
+     dsimp only [C]
+@@ -428,13 +428,16 @@
+       (∑ i, s * (a i * x i)) + (∑ i, t * (a i * y i)) := by
+     congr 1 <;> apply Finset.sum_congr rfl <;> intro i hi <;> ring
+   rw [hsum]
+-  nlinarith
++  have hb : s * b + t * b = b := by rw [← add_mul, hst, one_mul]
++  linarith
+ 
+ theorem monotone_coordinatePlane {a : Fin k → ℝ} (ha : ∀ i, 0 ≤ a i) (b : ℝ) :
+     Monotone (coordinatePlane a b) := by
+   intro x y hxy
+-  exact add_le_add_right (Finset.sum_le_sum fun i _ =>
+-    mul_le_mul_of_nonneg_left (hxy i) (ha i)) b
++  unfold coordinatePlane
++  have hsum : (∑ i, a i * x i) ≤ ∑ i, a i * y i :=
++    Finset.sum_le_sum fun i _ => mul_le_mul_of_nonneg_left (hxy i) (ha i)
++  linarith
+ 
+ def determinantPowerProfile (ν : ℝ) (x : Fin k → ℝ) : ℝ := ν * ∑ i, x i
+ 
+@@ -462,7 +465,9 @@
+     MvPolynomial.eval (fun i => Real.exp (x i)) p =
+       weightedExponentialSum (fun d : p.support => p.coeff d)
+         (fun d => coordinatePlane (fun i => (d.val i : ℝ)) 0) x := by
+-  rw [MvPolynomial.eval_eq', weightedExponentialSum, Finset.sum_coe_sort]
++  rw [MvPolynomial.eval_eq', weightedExponentialSum,
++    Finset.sum_coe_sort p.support (fun d => p.coeff d *
++      Real.exp (coordinatePlane (fun i => (d i : ℝ)) 0 x))]
+   apply Finset.sum_congr rfl
+   intro d hd
+   congr 1
+@@ -510,7 +515,7 @@
+     unfold polynomialPowerProfile
+     congr 2
+     have h := congrArg (MvPolynomial.eval (fun i => Real.exp (x i))) (hsym σ)
+-    simpa only [MvPolynomial.eval_rename, Function.comp_apply] using h
++    simpa only [MvPolynomial.eval_rename, Function.comp_def] using h
+ 
+ /-- The profile evaluates to the actual polynomial power even on singular faces. -/
+ theorem spectralBoundaryValue_polynomialPowerProfile
+@@ -618,9 +623,9 @@
+ theorem schurPositiveProfile_properties (c : ι → ℝ) (mu : ι → YoungDiagram)
+     (hc : ∀ j, 0 ≤ c j) (hp : schurPositivePolynomial (k := k) c mu ≠ 0)
+     {a : ℝ} (ha : 0 ≤ a) :
+-    ConvexOn ℝ univ (polynomialPowerProfile (schurPositivePolynomial c mu) a) ∧
+-      Monotone (polynomialPowerProfile (schurPositivePolynomial c mu) a) ∧
+-      SymmetricProfile (polynomialPowerProfile (schurPositivePolynomial c mu) a) :=
++    ConvexOn ℝ univ (polynomialPowerProfile (schurPositivePolynomial (k := k) c mu) a) ∧
++      Monotone (polynomialPowerProfile (schurPositivePolynomial (k := k) c mu) a) ∧
++      SymmetricProfile (polynomialPowerProfile (schurPositivePolynomial (k := k) c mu) a) :=
+   polynomialPowerProfile_properties _ hp
+     (schurPositivePolynomial_coeff_nonneg c mu hc)
+     (schurPositivePolynomial_symmetric c mu) ha
+@@ -628,7 +633,7 @@
+ theorem spectralBoundaryValue_schurPositiveProfile (c : ι → ℝ) (mu : ι → YoungDiagram)
+     (hc : ∀ j, 0 ≤ c j) (hp : schurPositivePolynomial (k := k) c mu ≠ 0)
+     {a : ℝ} (ha : 0 ≤ a) {x : Fin k → ℝ} (hx : ∀ i, 0 ≤ x i) :
+-    spectralBoundaryValue (polynomialPowerProfile (schurPositivePolynomial c mu) a) x =
++    spectralBoundaryValue (polynomialPowerProfile (schurPositivePolynomial (k := k) c mu) a) x =
+       (∑ j, c j * MvPolynomial.eval x (TauCeti.diagramSchurPoly k ℝ (mu j))) ^ a := by
+   rw [spectralBoundaryValue_polynomialPowerProfile _ hp
+     (schurPositivePolynomial_coeff_nonneg c mu hc)
+@@ -640,12 +645,12 @@
+ is imposed on the polynomial in this exhaustive statement. -/
+ theorem schurPositivePower_zero_or_profile (c : ι → ℝ) (mu : ι → YoungDiagram)
+     (hc : ∀ j, 0 ≤ c j) {a : ℝ} (ha : 0 ≤ a) :
+-    (∀ x : Fin k → ℝ, (MvPolynomial.eval x (schurPositivePolynomial c mu)) ^ a = 0) ∨
++    (∀ x : Fin k → ℝ, (MvPolynomial.eval x (schurPositivePolynomial (k := k) c mu)) ^ a = 0) ∨
+       ∃ h : (Fin k → ℝ) → ℝ,
+         ConvexOn ℝ univ h ∧ Monotone h ∧ SymmetricProfile h ∧
+         ∀ x : Fin k → ℝ, (∀ i, 0 ≤ x i) →
+           spectralBoundaryValue h x =
+-            (MvPolynomial.eval x (schurPositivePolynomial c mu)) ^ a := by
++            (MvPolynomial.eval x (schurPositivePolynomial (k := k) c mu)) ^ a := by
+   by_cases hp : schurPositivePolynomial (k := k) c mu = 0
+   · by_cases ha0 : a = 0
+     · subst a
+@@ -657,7 +662,7 @@
+         simp only [spectralBoundaryValue, spectralRegularization, Real.exp_zero,
+           ciInf_const, Real.rpow_zero]
+     · exact Or.inl fun x => by simp only [hp, map_zero, Real.zero_rpow ha0]
+-  · refine Or.inr ⟨polynomialPowerProfile (schurPositivePolynomial c mu) a,
++  · refine Or.inr ⟨polynomialPowerProfile (schurPositivePolynomial (k := k) c mu) a,
+       (schurPositiveProfile_properties c mu hc hp ha).1,
+       (schurPositiveProfile_properties c mu hc hp ha).2.1,
+       (schurPositiveProfile_properties c mu hc hp ha).2.2, ?_⟩
+@@ -773,7 +778,6 @@
+     refine ⟨convex_univ, ?_⟩
+     intro x hx y hy u v hu hv huv
+     dsimp [g]
+-    simp only [Pi.add_apply, Pi.smul_apply, smul_eq_mul]
+     exact le_of_eq (by ring)
+   have hm (i : Fin k) : Monotone (g i) := fun x y hxy =>
+     mul_le_mul_of_nonneg_left (hxy i) hr.le
+@@ -791,7 +795,9 @@
+       (monotone_log_weightedExponentialSum c g (fun _ => zero_le_one) hpos hm hxy)
+       (div_nonneg ha hr.le)
+   · intro σ x
+-    simp only [tracePowerProfile, Function.comp_apply, Equiv.sum_comp]
++    unfold tracePowerProfile
++    congr 2
++    exact Equiv.sum_comp σ (fun i => Real.exp (r * x i))
+ 
+ theorem tracePowerProfile_positive_value (hk : 0 < k) {r a : ℝ}
+     {x : Fin k → ℝ} (hx : ∀ i, 0 < x i) :
+@@ -876,7 +882,7 @@
+   intro x hx i t ht hxt
+   by_cases ht0 : t = 0
+   · have hx0 : x i = 0 := le_antisymm (by simpa only [ht0] using hxt) (hx i)
+-    simp only [ht0, ← hx0, Function.update_eq_self]
++    simp only [ht0, ← hx0, Function.update_eq_self, le_refl]
+   · have htpos : 0 < t := lt_of_le_of_ne ht (Ne.symm ht0)
+     let y := Function.update x i t
+     let z := Function.update y i (-t)
+@@ -922,13 +928,12 @@
+   have hcoordinate (i : Fin k) :
+       Real.exp (z i - C) ≤ a * Real.exp (x i - q.logarithmicProfile x) +
+         b * Real.exp (y i - q.logarithmicProfile y) := by
+-    have h := Real.convexOn_exp.2 (mem_univ (x i - q.logarithmicProfile x))
++    have h := convexOn_exp.2 (mem_univ (x i - q.logarithmicProfile x))
+       (mem_univ (y i - q.logarithmicProfile y)) ha hb hab
+     simp only [smul_eq_mul] at h
+     have heq : z i - C = a * (x i - q.logarithmicProfile x) +
+         b * (y i - q.logarithmicProfile y) := by
+       dsimp [z, C]
+-      simp only [Pi.add_apply, Pi.smul_apply, smul_eq_mul]
+       ring
+     rw [heq]
+     exact h
+@@ -970,9 +975,12 @@
+   have hc := (q.logarithmicProfile_convex hk).comp_linearMap
+     ((1 / 2 : ℝ) • (LinearMap.id : (Fin k → ℝ) →ₗ[ℝ] (Fin k → ℝ)))
+   refine ⟨?_, ?_, ?_⟩
+-  · simpa only [sqrtPowerProfile, Set.preimage_univ, Function.comp_def,
+-      LinearMap.smul_apply, LinearMap.id_apply, Pi.smul_apply, smul_eq_mul,
+-      one_div, div_eq_mul_inv, mul_comm] using hc.smul ha
++  · have harg (x : Fin k → ℝ) : (1 / 2 : ℝ) • x = fun i => x i / 2 := by
++      funext i
++      simp only [Pi.smul_apply, smul_eq_mul, div_eq_mul_inv, one_mul, mul_comm]
++    change ConvexOn ℝ univ (fun x : Fin k → ℝ => a * q.logarithmicProfile (fun i => x i / 2))
++    simpa only [Set.preimage_univ, Function.comp_def, LinearMap.smul_apply,
++      LinearMap.id_apply, harg, smul_eq_mul] using hc.smul ha
+   · intro x y hxy
+     exact mul_le_mul_of_nonneg_left
+       (q.logarithmicProfile_monotone hk (fun i => div_le_div_of_nonneg_right (hxy i) (by norm_num))) ha
+@@ -1034,7 +1042,7 @@
+   toSeminorm : Seminorm ℝ (Matrix (Fin k) (Fin k) F)
+   separates : ∀ M, toSeminorm M = 0 → M = 0
+   invariant : ∀ (U V : unitary (Matrix (Fin k) (Fin k) F)) M,
+-    toSeminorm ((U : Matrix (Fin k) (Fin k) F) * M * V) = toSeminorm M
++    toSeminorm (U.val * M * V.val) = toSeminorm M
+ 
+ instance {F : Type*} [Ring F] [Algebra ℝ F] [StarRing F] {k : ℕ} :
+     CoeFun (UnitarilyInvariantNorm F k)
+@@ -1047,7 +1055,9 @@
+ def realDiagonalMap (k : ℕ) :
+     (Fin k → ℝ) →ₗ[ℝ] Matrix (Fin k) (Fin k) F where
+   toFun x := Matrix.diagonal (fun i => algebraMap ℝ F (x i))
+-  map_add' x y := by ext i j; simp [Matrix.diagonal_apply]
++  map_add' x y := by
++    ext i j
++    by_cases hij : i = j <;> simp [Matrix.diagonal_apply, hij]
+   map_smul' a x := by
+     ext i j
+     simp [Matrix.diagonal_apply, Algebra.smul_def]
+@@ -1073,7 +1083,7 @@
+   exact ⟨by rw [hs, hsq], by rw [hs, hsq]⟩
+ 
+ theorem signUnitary_mul_diagonal {k : ℕ} (i : Fin k) (x : Fin k → ℝ) :
+-    (signUnitary (F := F) i : Matrix (Fin k) (Fin k) F) * realDiagonalMap k x =
++    (signUnitary (F := F) i).val * realDiagonalMap k x =
+       realDiagonalMap k (Function.update x i (-x i)) := by
+   change Matrix.diagonal (fun j => if j = i then (-1 : F) else 1) *
+     Matrix.diagonal (fun j => algebraMap ℝ F (x j)) = _
+@@ -1096,13 +1106,13 @@
+     inv_mul_cancel, mul_inv_cancel, Matrix.permMatrix_one]
+ 
+ theorem permutationUnitary_diagonal {k : ℕ} (e : Equiv.Perm (Fin k)) (x : Fin k → ℝ) :
+-    (permutationUnitary (F := F) e : Matrix (Fin k) (Fin k) F) *
+-        realDiagonalMap k x * star (permutationUnitary e) = realDiagonalMap k (x ∘ e) := by
++    (permutationUnitary (F := F) e).val *
++        realDiagonalMap k x * (star (permutationUnitary (F := F) e)).val = realDiagonalMap k (x ∘ e) := by
+   change e.permMatrix F * _ * (e.permMatrix F)ᴴ = _
+   rw [Matrix.conjTranspose_permMatrix, PEquiv.toMatrix_toPEquiv_mul,
+     PEquiv.mul_toMatrix_toPEquiv]
+   ext i j
+-  simp [realDiagonalMap, Matrix.submatrix_apply, Matrix.diagonal_apply, e.injective.eq_iff]
++  simp [realDiagonalMap, Matrix.submatrix_apply, Matrix.diagonal_apply, Equiv.Perm.inv_def, e.injective.eq_iff]
+ 
+ variable [FaithfulSMul ℝ F]
+ 
+@@ -1121,7 +1131,7 @@
+   signFlip i x := by
+     change N (realDiagonalMap k (Function.update x i (-x i))) = N (realDiagonalMap k x)
+     rw [← signUnitary_mul_diagonal i x]
+-    simpa only [Submonoid.coe_one, Matrix.mul_one] using
++    simpa only [OneMemClass.coe_one, Matrix.mul_one] using
+       N.invariant (signUnitary i) 1 (realDiagonalMap k x)
+ 
+ @[simp] theorem diagonalNorm_apply {k : ℕ} (N : UnitarilyInvariantNorm F k) (x : Fin k → ℝ) :
+@@ -1169,19 +1179,21 @@
+   obtain ⟨U, hU⟩ := Wishart.FieldSpectral.exists_sorted_diagonalization
+     (WishartVerification.hermitian_matrix_coe S)
+   have hlam : ∀ i, 0 ≤ lam i := Wishart.FieldSpectral.orderedValues_nonneg hS
++  change star U.val * S.val * U.val = Matrix.diagonal (fun i => (lam i : ℂ)) at hU
+   have hrec : (Wishart.FieldCharts.unitaryConjugate ℂ U
+       (Wishart.FieldCharts.diagonalHermitian ℂ lam) : Matrix (Fin k) (Fin k) ℂ) = S := by
+     change (U : Matrix (Fin k) (Fin k) ℂ) * Matrix.diagonal (fun i => (lam i : ℂ)) * star U = S
+     rw [← hU]
+     calc
+       _ = ((U : Matrix (Fin k) (Fin k) ℂ) * star U) * S *
+-          ((U : Matrix (Fin k) (Fin k) ℂ) * star U) := by simp only [Matrix.mul_assoc]
++          ((U : Matrix (Fin k) (Fin k) ℂ) * star U) := by
++            simp only [Matrix.mul_assoc, Unitary.coe_star]
+       _ = _ := by rw [Unitary.coe_mul_star_self, Matrix.one_mul, Matrix.mul_one]
+-  rw [← hrec, Wishart.ComplexMatrix.sqrt_unitary_diagonal U lam hlam]
++  conv_lhs => rw [← hrec, Wishart.ComplexMatrix.sqrt_unitary_diagonal U lam hlam]
+   change N ((U : Matrix (Fin k) (Fin k) ℂ) *
+     Matrix.diagonal (fun i => (Real.sqrt (lam i) : ℂ)) * star U) =
+       N (Matrix.diagonal (fun i => (Real.sqrt (lam i) : ℂ)))
+-  exact N.invariant U (star U) _
++  simpa only [Unitary.coe_star] using N.invariant U (star U) _
+ 
+ theorem spectralBoundaryValue_norm_sqrt_power {k : ℕ}
+     (N : UnitarilyInvariantNorm ℂ k) (hk : 0 < k) {a : ℝ} (ha : 0 ≤ a)
+@@ -1199,24 +1211,23 @@
+ namespace QuaternionNorm
+ 
+ theorem norm_sqrt_eq_diagonal {k : ℕ} (N : UnitarilyInvariantNorm ℍ[ℝ] k)
+-    (S : Wishart.QuaternionMatrix.Hermitian k) (hS : Wishart.QuaternionMatrix.PosSemidef S) :
++    (S : Wishart.QuaternionMatrix.Hermitian k) (hS : Wishart.QuaternionMatrix.PosSemidef (S : Matrix (Fin k) (Fin k) ℍ[ℝ])) :
+     N (Wishart.QuaternionMatrix.sqrt S) =
+       N.diagonalNorm (fun i => Real.sqrt (Wishart.QuaternionMatrix.orderedValues S i)) := by
+   let lam := Wishart.QuaternionMatrix.orderedValues S
+   obtain ⟨U, hU⟩ := Wishart.QuaternionMatrix.exists_conjugate_diagonal S
+   have hlam : ∀ i, 0 ≤ lam i := Wishart.QuaternionMatrix.orderedValues_nonneg S hS
+-  have hrec : (Wishart.FieldCharts.unitaryConjugate ℍ[ℝ] U
+-      (Wishart.FieldCharts.diagonalHermitian ℍ[ℝ] lam) : Matrix (Fin k) (Fin k) ℍ[ℝ]) = S :=
+-    congrArg Subtype.val hU
+-  rw [← hrec, Wishart.QuaternionMatrix.sqrt_unitary_diagonal U lam hlam]
+-  change N ((U : Matrix (Fin k) (Fin k) ℍ[ℝ]) *
+-    Matrix.diagonal (fun i => (Real.sqrt (lam i) : ℍ[ℝ])) * star U) =
++  have hrec : Wishart.FieldCharts.unitaryConjugate ℍ[ℝ] U
++      (Wishart.FieldCharts.diagonalHermitian ℍ[ℝ] lam) = S := hU
++  conv_lhs => rw [← hrec, Wishart.QuaternionMatrix.sqrt_unitary_diagonal U lam hlam]
++  change N (U.val *
++    Matrix.diagonal (fun i => (Real.sqrt (lam i) : ℍ[ℝ])) * star U.val) =
+       N (Matrix.diagonal (fun i => (Real.sqrt (lam i) : ℍ[ℝ])))
+-  exact N.invariant U (star U) _
++  simpa only [Unitary.coe_star] using N.invariant U (star U) _
+ 
+ theorem spectralBoundaryValue_norm_sqrt_power {k : ℕ}
+     (N : UnitarilyInvariantNorm ℍ[ℝ] k) (hk : 0 < k) {a : ℝ} (ha : 0 ≤ a)
+-    (S : Wishart.QuaternionMatrix.Hermitian k) (hS : Wishart.QuaternionMatrix.PosSemidef S) :
++    (S : Wishart.QuaternionMatrix.Hermitian k) (hS : Wishart.QuaternionMatrix.PosSemidef (S : Matrix (Fin k) (Fin k) ℍ[ℝ])) :
+     spectralBoundaryValue (N.sqrtPowerProfile a) (Wishart.QuaternionMatrix.orderedValues S) =
+       N (Wishart.QuaternionMatrix.sqrt S) ^ a := by
+   rw [norm_sqrt_eq_diagonal N S hS]
+@@ -1349,7 +1360,7 @@
+       · intro S hS
+         simp only [spectralBoundaryValue, spectralRegularization, Real.exp_zero,
+           ciInf_const, Real.rpow_zero]
+-    · exact Or.inl fun S => by rw [N.empty_power]; simp only [ha0, if_false]
++    · exact Or.inl fun S => by rw [N.empty_power]; simp only [ha0, ite_false]
+   · have hkpos : 0 < k := Nat.pos_of_ne_zero hk
+     exact Or.inr ⟨N.sqrtPowerProfile a, (N.sqrtPowerProfile_properties hkpos ha).1,
+       (N.sqrtPowerProfile_properties hkpos ha).2.1,
+@@ -1362,7 +1373,7 @@
+       N (Wishart.QuaternionMatrix.sqrt S) ^ a = 0) ∨
+       ∃ h : (Fin k → ℝ) → ℝ,
+         ConvexOn ℝ univ h ∧ Monotone h ∧ SymmetricProfile h ∧
+-        ∀ S : Wishart.QuaternionMatrix.Hermitian k, Wishart.QuaternionMatrix.PosSemidef S →
++        ∀ S : Wishart.QuaternionMatrix.Hermitian k, Wishart.QuaternionMatrix.PosSemidef (S : Matrix (Fin k) (Fin k) ℍ[ℝ]) →
+           spectralBoundaryValue h (Wishart.QuaternionMatrix.orderedValues S) =
+             N (Wishart.QuaternionMatrix.sqrt S) ^ a := by
+   by_cases hk : k = 0
+@@ -1376,7 +1387,7 @@
+       · intro S hS
+         simp only [spectralBoundaryValue, spectralRegularization, Real.exp_zero,
+           ciInf_const, Real.rpow_zero]
+-    · exact Or.inl fun S => by rw [N.empty_power]; simp only [ha0, if_false]
++    · exact Or.inl fun S => by rw [N.empty_power]; simp only [ha0, ite_false]
+   · have hkpos : 0 < k := Nat.pos_of_ne_zero hk
+     exact Or.inr ⟨N.sqrtPowerProfile a, (N.sqrtPowerProfile_properties hkpos ha).1,
+       (N.sqrtPowerProfile_properties hkpos ha).2.1,

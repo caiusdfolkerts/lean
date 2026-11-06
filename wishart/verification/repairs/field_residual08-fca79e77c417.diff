@@ -1,0 +1,98 @@
+--- archive/source/wishart/verified/field_residual08.lean
++++ recovered/source/wishart/verified/field_residual08.lean
+@@ -1486,10 +1486,10 @@
+     (hB : ∀ i, Function.Injective (B i).mulVec)
+     (c : ι → ℝ) (hc : ∀ i, 0 ≤ c i)
+     (ψ : ∀ i, ComplexMatrix.Hermitian (k i) → ℝ)
+-    (hψ : ∀ i, (∀ S, (S : Matrix (Fin (k i)) (Fin (k i)) ℂ).PosSemidef → ψ i S = 0) ∨
++    (hψ : ∀ i, (∀ S : ComplexMatrix.Hermitian (k i), (S : Matrix (Fin (k i)) (Fin (k i)) ℂ).PosSemidef → ψ i S = 0) ∨
+       ∃ h : (Fin (k i) → ℝ) → ℝ,
+         ConvexOn ℝ univ h ∧ Monotone h ∧ Spectral.SymmetricProfile h ∧
+-        ∀ S, (S : Matrix (Fin (k i)) (Fin (k i)) ℂ).PosSemidef →
++        ∀ S : ComplexMatrix.Hermitian (k i), (S : Matrix (Fin (k i)) (Fin (k i)) ℂ).PosSemidef →
+           Spectral.spectralBoundaryValue h
+             (FieldSpectral.orderedValues (WishartVerification.hermitian_matrix_coe S)) = ψ i S)
+     (μ : Measure (ComplexMatrix.Hermitian p)) (hμ : IsSectionSevenComplexLaw Sigma μ) :
+@@ -1498,8 +1498,8 @@
+         (⟨1, Matrix.isHermitian_one⟩ : ComplexMatrix.Hermitian (k i)))) := by
+   have hex (i : ι) : ∃ h : (Fin (k i) → ℝ) → ℝ,
+       ConvexOn ℝ univ h ∧ Monotone h ∧ Spectral.SymmetricProfile h ∧
+-      ((∀ S, (S : Matrix (Fin (k i)) (Fin (k i)) ℂ).PosSemidef → ψ i S = 0) ∨
+-        ∀ S, (S : Matrix (Fin (k i)) (Fin (k i)) ℂ).PosSemidef →
++      ((∀ S : ComplexMatrix.Hermitian (k i), (S : Matrix (Fin (k i)) (Fin (k i)) ℂ).PosSemidef → ψ i S = 0) ∨
++        ∀ S : ComplexMatrix.Hermitian (k i), (S : Matrix (Fin (k i)) (Fin (k i)) ℂ).PosSemidef →
+           Spectral.spectralBoundaryValue h
+             (FieldSpectral.orderedValues (WishartVerification.hermitian_matrix_coe S)) = ψ i S) := by
+     rcases hψ i with hz | ⟨h, hconv, hmono, hsym, heq⟩
+@@ -1507,7 +1507,7 @@
+     · exact ⟨h, hconv, hmono, hsym, Or.inr heq⟩
+   choose h hconv hmono hsym heq using hex
+   let F : ComplexSpectralFamily p ι := ⟨k, B, hB, c, hc, h, hconv, hmono, hsym⟩
+-  have hsupport : ∀ᵐ X ∂μ, (X : Matrix (Fin p) (Fin p) ℂ).PosSemidef := by
++  have hsupport : ∀ᵐ X : ComplexMatrix.Hermitian p ∂μ, (X : Matrix (Fin p) (Fin p) ℂ).PosSemidef := by
+     rcases hμ with ⟨α, hα, rfl⟩ | ⟨n, hn, rfl⟩
+     · exact (ComplexMatrix.wishart_ae_posDef α Sigma).mono fun X hX => hX.posSemidef
+     · exact ComplexMatrix.gramMeasure_ae_posSemidef n Sigma
+@@ -1532,10 +1532,10 @@
+     (hB : ∀ i, QuaternionMatrix.FullColumnRank (B i))
+     (c : ι → ℝ) (hc : ∀ i, 0 ≤ c i)
+     (ψ : ∀ i, QuaternionMatrix.Hermitian (k i) → ℝ)
+-    (hψ : ∀ i, (∀ S, QuaternionMatrix.PosSemidef S → ψ i S = 0) ∨
++    (hψ : ∀ i, (∀ S : QuaternionMatrix.Hermitian (k i), QuaternionMatrix.PosSemidef (S : Matrix (Fin (k i)) (Fin (k i)) ℍ[ℝ]) → ψ i S = 0) ∨
+       ∃ h : (Fin (k i) → ℝ) → ℝ,
+         ConvexOn ℝ univ h ∧ Monotone h ∧ Spectral.SymmetricProfile h ∧
+-        ∀ S, QuaternionMatrix.PosSemidef S →
++        ∀ S : QuaternionMatrix.Hermitian (k i), QuaternionMatrix.PosSemidef (S : Matrix (Fin (k i)) (Fin (k i)) ℍ[ℝ]) →
+           Spectral.spectralBoundaryValue h (QuaternionMatrix.orderedValues S) = ψ i S)
+     (μ : Measure (QuaternionMatrix.Hermitian p)) (hμ : IsSectionSevenQuaternionLaw Sigma μ) :
+     ExtendedSelectedProductComparison μ (fun i X => ψ i
+@@ -1543,15 +1543,15 @@
+         (⟨1, Matrix.isHermitian_one⟩ : QuaternionMatrix.Hermitian (k i)))) := by
+   have hex (i : ι) : ∃ h : (Fin (k i) → ℝ) → ℝ,
+       ConvexOn ℝ univ h ∧ Monotone h ∧ Spectral.SymmetricProfile h ∧
+-      ((∀ S, QuaternionMatrix.PosSemidef S → ψ i S = 0) ∨
+-        ∀ S, QuaternionMatrix.PosSemidef S →
++      ((∀ S : QuaternionMatrix.Hermitian (k i), QuaternionMatrix.PosSemidef (S : Matrix (Fin (k i)) (Fin (k i)) ℍ[ℝ]) → ψ i S = 0) ∨
++        ∀ S : QuaternionMatrix.Hermitian (k i), QuaternionMatrix.PosSemidef (S : Matrix (Fin (k i)) (Fin (k i)) ℍ[ℝ]) →
+           Spectral.spectralBoundaryValue h (QuaternionMatrix.orderedValues S) = ψ i S) := by
+     rcases hψ i with hz | ⟨h, hconv, hmono, hsym, heq⟩
+     · exact ⟨fun _ => 0, convexOn_const 0 convex_univ, monotone_const, fun _ _ => rfl, Or.inl hz⟩
+     · exact ⟨h, hconv, hmono, hsym, Or.inr heq⟩
+   choose h hconv hmono hsym heq using hex
+   let F : QuaternionSpectralFamily p ι := ⟨k, B, hB, c, hc, h, hconv, hmono, hsym⟩
+-  have hsupport : ∀ᵐ X ∂μ, QuaternionMatrix.PosSemidef X := by
++  have hsupport : ∀ᵐ X : QuaternionMatrix.Hermitian p ∂μ, QuaternionMatrix.PosSemidef (X : Matrix (Fin p) (Fin p) ℍ[ℝ]) := by
+     rcases hμ with ⟨α, hα, rfl⟩ | ⟨n, hn, rfl⟩
+     · exact (QuaternionMatrix.wishart_ae_posDef α Sigma).mono fun X hX => hX.posSemidef
+     · exact QuaternionMatrix.gramMeasure_ae_posSemidef n Sigma
+@@ -1561,8 +1561,8 @@
+     · exact F.gram_selected_product_comparison n Sigma hSigma
+   apply hcompare.of_zero_or_aeEq
+   intro i
+-  have hpos (X : QuaternionMatrix.Hermitian p) (hX : QuaternionMatrix.PosSemidef X) :
+-      QuaternionMatrix.PosSemidef (F.shiftedCompression Sigma i X) :=
++  have hpos (X : QuaternionMatrix.Hermitian p) (hX : QuaternionMatrix.PosSemidef (X : Matrix (Fin p) (Fin p) ℍ[ℝ])) :
++      QuaternionMatrix.PosSemidef (F.shiftedCompression Sigma i X : Matrix (Fin (k i)) (Fin (k i)) ℍ[ℝ]) :=
+     (QuaternionMatrix.normalizedCompression_posSemidef (B i) Sigma X hX).add
+       (QuaternionMatrix.posDef_one.posSemidef.smul (hc i))
+   rcases heq i with hz | hval
+@@ -1635,10 +1635,11 @@
+     (N : ∀ i, Spectral.UnitarilyInvariantNorm ℍ[ℝ] (k i))
+     (μ : Measure (QuaternionMatrix.Hermitian p)) (hμ : IsSectionSevenQuaternionLaw Sigma μ) :
+     ExtendedSelectedProductComparison μ (fun i X =>
+-      N i (QuaternionMatrix.sqrt (QuaternionMatrix.normalizedCompression (B i) Sigma X + c i •
+-        (⟨1, Matrix.isHermitian_one⟩ : QuaternionMatrix.Hermitian (k i)))) ^ a i) := by
++      N i (QuaternionMatrix.sqrt ((QuaternionMatrix.normalizedCompression (B i) Sigma X + c i •
++        (⟨1, Matrix.isHermitian_one⟩ : QuaternionMatrix.Hermitian (k i))) :
++          Matrix (Fin (k i)) (Fin (k i)) ℍ[ℝ])) ^ a i) := by
+   apply quaternion_zero_or_profile_comparison Sigma hSigma k B hB c hc
+-    (fun i S => N i (QuaternionMatrix.sqrt S) ^ a i) _ μ hμ
++    (fun i S => N i (QuaternionMatrix.sqrt (S : Matrix (Fin (k i)) (Fin (k i)) ℍ[ℝ])) ^ a i) _ μ hμ
+   intro i
+   rcases Spectral.quaternionNormPower_zero_or_profile (N i) (ha i) with hz | hp
+   · exact Or.inl fun S _ => hz S
+@@ -1647,3 +1648,4 @@
+ end Wishart
+ end
+ end CanonicalSource79
++

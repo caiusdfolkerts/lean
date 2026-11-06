@@ -1,0 +1,46 @@
+--- archive/source/wishart/verified/real_beta_ii01.lean
++++ recovered/source/wishart/verified/real_beta_ii01.lean
+@@ -18,7 +18,7 @@
+ /-!
+ # The literal matrix beta-II density
+ 
+-This is density (18), with both real degrees in their full admissible ranges.
++This is density (19), with both real degrees in their full admissible ranges.
+ The exact Wishart/inverse-Wishart joint density factors as the beta-II density
+ in `X` times an inverse-Wishart density in `Y`, including its normalization
+ constants. The zero-dimensional endpoint is retained explicitly.
+@@ -331,8 +331,23 @@
+   have hsqrt : Measurable (fun z : SymmetricMatrix p × SymmetricMatrix p =>
+       CFC.sqrt (z.1 : Matrix (Fin p) (Fin p) ℝ)) :=
+     CFC.measurable_sqrt.comp (measurable_subtype_coe.comp measurable_fst)
+-  simpa only [matrixBetaIISample, Matrix.coe_symmetricCongruenceLinearMap_apply] using
+-    (hsqrt.mul (measurable_subtype_coe.comp measurable_snd)).mul hsqrt.matrix_transpose
++  have htranspose : Measurable (fun z : SymmetricMatrix p × SymmetricMatrix p =>
++      (CFC.sqrt (z.1 : Matrix (Fin p) (Fin p) ℝ))ᵀ) := by
++    apply measurable_pi_iff.mpr
++    intro i
++    apply measurable_pi_iff.mpr
++    intro j
++    exact (measurable_pi_apply i).comp ((measurable_pi_apply j).comp hsqrt)
++  change Measurable (fun z : SymmetricMatrix p × SymmetricMatrix p =>
++    (matrixBetaIISample z : Matrix (Fin p) (Fin p) ℝ))
++  have he (z : SymmetricMatrix p × SymmetricMatrix p) :
++      (matrixBetaIISample z : Matrix (Fin p) (Fin p) ℝ) =
++        CFC.sqrt (z.1 : Matrix (Fin p) (Fin p) ℝ) *
++          (z.2 : Matrix (Fin p) (Fin p) ℝ) *
++          (CFC.sqrt (z.1 : Matrix (Fin p) (Fin p) ℝ))ᵀ :=
++    Matrix.coe_symmetricCongruenceLinearMap_apply _ _
++  simp_rw [he]
++  exact (hsqrt.mul (measurable_subtype_coe.comp measurable_snd)).mul htranspose
+ 
+ theorem map_sqrt_congruence_identityWishart {p : ℕ} (α : ℝ)
+     (Y : SymmetricMatrix p) (hY : (Y : Matrix (Fin p) (Fin p) ℝ).PosDef) :
+@@ -372,7 +387,7 @@
+   rw [matrixBetaIIMeasure, withDensity_apply _ (measurableSet_posDefMatrix p).compl]
+   apply setLIntegral_eq_zero (measurableSet_posDefMatrix p).compl
+   intro X hX
+-  simp only [matrixBetaIIPDF, matrixBetaIIPDFReal_of_not_posDef α β Omega hX, ENNReal.ofReal_zero]
++  simp only [matrixBetaIIPDF, matrixBetaIIPDFReal_of_not_posDef α β Omega hX, ENNReal.ofReal_zero, Pi.zero_apply]
+ 
+ end Wishart
+ end

@@ -1,0 +1,56 @@
+--- archive/source/wishart/verified/field_frontier03.lean
++++ recovered/source/wishart/verified/field_frontier03.lean
+@@ -11,6 +11,8 @@
+ /- Generated ordinary proof stage. See audit/staged_field_frontier/FieldFrontier03/manifest.json. -/
+ 
+ @[expose] public section
++
++set_option backward.isDefEq.respectTransparency false
+ 
+ section CanonicalSource24
+ /- Source: Wishart/NonnegativeRowIteration.lean -/
+@@ -79,7 +81,7 @@
+     MonotoneOn (fun lam : Fin n → ℝ =>
+       ∫⁻ z, H (Q + shiftedRowSum G v lam z) ∂Measure.pi (fun _ : Fin n => μ)) (Ici 0) := by
+   apply monotoneOn_of_monotone_updates (fun _ : Fin n => Ici (0 : ℝ))
+-  intro lam hλ a t ht hλt
++  intro lam hlam a t ht hlamt
+   cases n with
+   | zero => exact Fin.elim0 a
+   | succ n =>
+@@ -116,7 +118,7 @@
+     intro z
+     exact hsingle (A z)
+       (hadd Q _ hQ (shiftedRowSum_mem hzero hadd hrow _ _ _)) (v a)
+-      (hλ a) ht hλt
++      (hlam a) ht hlamt
+ 
+ end WishartVerification
+ end
+@@ -140,8 +142,9 @@
+ open scoped Classical Quaternion ENNReal
+ namespace Wishart.FieldGaussian
+ 
+-variable (F : Type*) [NormedRing F] [NormedAlgebra ℝ F] [StarRing F] [CStarRing F] [StarModule ℝ F]
+-  [InnerProductSpace ℝ F] [FiniteDimensional ℝ F]
++variable (F : Type*) [NormedRing F] [StarRing F] [CStarRing F]
++  [InnerProductSpace ℝ F] [StarModule ℝ F] [FiniteDimensional ℝ F]
++  [SMulCommClass ℝ F F] [IsScalarTower ℝ F F]
+   [MeasurableSpace F] [BorelSpace F]
+ 
+ theorem rowFactor_comp {r m k : ℕ} (R : Matrix (Fin r) (Fin m) F)
+@@ -486,11 +489,12 @@
+   change (Measure.pi fun _ : Fin (Module.finrank ℝ E) => gaussianReal 0 1).map
+     (fun x => ‖∑ i, x i • b i‖ ^ 2) = _
+   rw [heq]
+-  simpa only [NNReal.coe_one,one_mul,Fintype.card_fin,Measure.map_id] using
++  simpa only [NNReal.coe_one,one_mul,Fintype.card_fin,Measure.map_id'] using
+     map_sum_sq_pi_gaussianReal (ι := Fin (Module.finrank ℝ E)) 1
+ 
+-variable (F : Type*) [NormedRing F] [NormedAlgebra ℝ F] [StarRing F] [CStarRing F]
++variable (F : Type*) [NormedRing F] [StarRing F] [CStarRing F]
+   [InnerProductSpace ℝ F] [FiniteDimensional ℝ F]
++  [SMulCommClass ℝ F F] [IsScalarTower ℝ F F]
+   [MeasurableSpace F] [BorelSpace F]
+ 
+ theorem finrank_row (n : ℕ) : Module.finrank ℝ (Row F n) = n * Module.finrank ℝ F := by

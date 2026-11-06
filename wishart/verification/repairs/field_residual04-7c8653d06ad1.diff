@@ -1,0 +1,64 @@
+--- archive/source/wishart/verified/field_residual04.lean
++++ recovered/source/wishart/verified/field_residual04.lean
+@@ -632,6 +632,7 @@
+ open scoped Matrix.Norms.L2Operator
+ open Wishart.FieldGaussian Wishart.FieldCharts Wishart.Spectral
+ 
++set_option backward.isDefEq.respectTransparency true in
+ theorem monotone_spectralSchur_average {p q : ℕ} {ι : Type*} [Fintype ι]
+     (U : unitary (Matrix (Fin p) (Fin p) ℂ))
+     (W : Hermitian q) (hW : (W : Matrix (Fin q) (Fin q) ℂ).PosSemidef)
+@@ -717,6 +718,7 @@
+ open scoped Matrix.Norms.Frobenius
+ open Wishart.FieldGaussian Wishart.FieldCharts Wishart.Spectral
+ 
++set_option backward.isDefEq.respectTransparency true in
+ theorem monotone_spectralSchur_average {p q : ℕ} {ι : Type*} [Fintype ι]
+     (U : unitary (Matrix (Fin p) (Fin p) ℍ[ℝ]))
+     (W : Hermitian q) (hW : PosSemidef W.val)
+@@ -749,10 +751,11 @@
+       apply Finset.measurable_prod
+       intro i hi
+       apply (continuous_quaternionFaceApprox (hc i) (hm i) (L i)).measurable.comp
+-      apply Measurable.add measurable_const
+-      apply (continuous_compress ℍ[ℝ] (B i)).measurable.comp
+-      apply Measurable.add measurable_const
+-      apply Measurable.subtype_mk
++      apply Continuous.measurable
++      apply Continuous.add continuous_const
++      apply (continuous_compress ℍ[ℝ] (B i)).comp
++      apply Continuous.add continuous_const
++      apply Continuous.subtype_mk
+       have hj : Continuous (fun Z : Matrix (Fin p) (Fin q) ℍ[ℝ] =>
+           horizontalJoin ℍ[ℝ] (realDiagonal ℍ[ℝ] (fun i => Real.sqrt (lam i)) * star U.val) Z) := by
+         apply continuous_pi
+@@ -763,21 +766,22 @@
+         cases finSumFinEquiv.symm j <;> simp only [Sum.elim_inl, Sum.elim_inr] <;> fun_prop
+       exact (show Continuous (fun Z : Matrix (Fin p) (Fin q) ℍ[ℝ] =>
+         (horizontalJoin ℍ[ℝ] (realDiagonal ℍ[ℝ] (fun i => Real.sqrt (lam i)) * star U.val) Z)ᴴ *
+-          horizontalJoin ℍ[ℝ] (realDiagonal ℍ[ℝ] (fun i => Real.sqrt (lam i)) * star U.val) Z) by fun_prop).measurable
++          horizontalJoin ℍ[ℝ] (realDiagonal ℍ[ℝ] (fun i => Real.sqrt (lam i)) * star U.val) Z) by fun_prop)
+     · apply Measurable.ennreal_ofReal
+       apply Finset.measurable_prod
+       intro i hi
+       apply (continuous_quaternionFaceApprox (hc i) (hm i) (L i)).measurable.comp
+-      apply Measurable.add measurable_const
+-      apply Finset.measurable_sum
++      apply Continuous.measurable
++      apply Continuous.add continuous_const
++      apply continuous_finsetSum
+       intro a ha
+-      exact (continuous_compressedRowContribution ℍ[ℝ] (B i)).measurable.comp
+-        ((measurable_pi_apply a).add measurable_const)
++      exact (continuous_compressedRowContribution ℍ[ℝ] (B i)).comp
++        ((continuous_apply a).add continuous_const)
+     · intro z
+-      congr 1
++      apply congrArg ENNReal.ofReal
+       apply Finset.prod_congr rfl
+       intro i hi
+-      congr 1
++      apply congrArg (quaternionFaceApprox (hc i) (hm i) (L i))
+       have hg : compress ℍ[ℝ] (B i) (spectralSchurGram ℍ[ℝ] U lam (rowsMatrix ℍ[ℝ] z)) =
+           ∑ a, compressedRowContribution ℍ[ℝ] (B i)
+             (rowFactorCLM ℍ[ℝ] (trailingSelector ℍ[ℝ] p q) (z a) +

@@ -1,0 +1,50 @@
+--- archive/source/wishart/verified/field_residual03.lean
++++ recovered/source/wishart/verified/field_residual03.lean
+@@ -601,7 +601,8 @@
+     coordinatePlane (sortedCoefficients a) b (fun i => Real.log (x i + Real.exp t))
+   apply coordinatePlane_le_sorted_on_chamber
+   intro i j hij
+-  exact Real.log_le_log (hpos j) (add_le_add_right (hmono hij) _)
++  exact Real.log_le_log (hpos j) (by
++    simpa only [add_comm] using add_le_add_right (hmono hij) (Real.exp t))
+ 
+ theorem finiteCoordinateMonomial_eq_leadingProducts
+     {a : Fin k → ℝ} (ha : ∀ i, 0 ≤ a i) (hmono : Antitone a)
+@@ -755,7 +756,8 @@
+     · subst j
+       simp only [Matrix.add_apply, Matrix.diagonal_apply_eq, Matrix.smul_apply,
+         Matrix.one_apply_eq, Algebra.smul_def, mul_one, map_add,
+-        Matrix.algebraMap_eq_diagonal, RCLike.algebraMap_eq_ofReal, Matrix.diagonal_apply_eq]
++        Matrix.algebraMap_eq_diagonal, Pi.algebraMap_apply,
++        RCLike.algebraMap_eq_ofReal, Matrix.diagonal_apply_eq]
+     · simp [hij]
+   · intro i j hij
+     simpa only [add_comm] using
+@@ -809,14 +811,14 @@
+     congrFun (Wishart.FieldSpectral.orderedValues_identityShift (flatHermitian A) t)
+       (doubledIndex i)
+ 
+-theorem identityShift_posDef (A : Hermitian p) (hA : PosSemidef A)
+-    {t : ℝ} (ht : 0 < t) : PosDef (identityShift A t) := by
++theorem identityShift_posDef (A : Hermitian p) (hA : PosSemidef (A : Matrix (Fin p) (Fin p) ℍ[ℝ]))
++    {t : ℝ} (ht : 0 < t) : PosDef (identityShift A t : Matrix (Fin p) (Fin p) ℍ[ℝ]) := by
+   change PosDef ((A : Matrix (Fin p) (Fin p) ℍ[ℝ]) + t • 1)
+   rw [add_comm]
+   exact (posDef_one.smul ht).add_posSemidef hA
+ 
+-theorem identityShift_posSemidef (A : Hermitian p) (hA : PosSemidef A)
+-    {t : ℝ} (ht : 0 ≤ t) : PosSemidef (identityShift A t) := by
++theorem identityShift_posSemidef (A : Hermitian p) (hA : PosSemidef (A : Matrix (Fin p) (Fin p) ℍ[ℝ]))
++    {t : ℝ} (ht : 0 ≤ t) : PosSemidef (identityShift A t : Matrix (Fin p) (Fin p) ℍ[ℝ]) := by
+   unfold PosSemidef
+   change (complexRepresentation ((A : Matrix (Fin p) (Fin p) ℍ[ℝ]) + t • 1)).PosSemidef
+   rw [complexRepresentation_add, complexRepresentation_smul, complexRepresentation_one]
+@@ -826,7 +828,7 @@
+   continuous_const.add (continuous_id.smul continuous_const)
+ 
+ theorem boundary_eq_matrix_regularization {h : (Fin p → ℝ) → ℝ}
+-    (hm : Monotone h) (A : Hermitian p) (hA : PosSemidef A) :
++    (hm : Monotone h) (A : Hermitian p) (hA : PosSemidef (A : Matrix (Fin p) (Fin p) ℍ[ℝ])) :
+     Tendsto (fun ε : ℝ => Real.exp (h (fun i => Real.log
+       (orderedValues (identityShift A ε) i))))
+       (𝓝[>] 0) (𝓝 (Spectral.spectralBoundaryValue h (orderedValues A))) := by

@@ -1,0 +1,42 @@
+--- archive/source/wishart/verified/field_residual08.lean
++++ recovered/source/wishart/verified/field_residual08.lean
+@@ -12,6 +12,8 @@
+ /- Exact canonical residual stage; see audit/field_residual/FieldResidual08.json. -/
+ 
+ @[expose] public section
++
++set_option backward.isDefEq.respectTransparency false
+ 
+ section CanonicalSource70
+ /- Source: Wishart/FieldPrincipalTheorem.lean -/
+@@ -250,10 +252,18 @@
+ open scoped Classical Quaternion
+ 
+ namespace Wishart.FieldGaussian
+-
+-variable (F : Type*) [NormedRing F] [NormedAlgebra ℝ F] [StarRing F] [CStarRing F]
+-  [InnerProductSpace ℝ F] [FiniteDimensional ℝ F]
++open scoped Matrix.Norms.Frobenius
++
++variable (F : Type*) [NormedRing F] [StarRing F] [CStarRing F]
++  [InnerProductSpace ℝ F] [StarModule ℝ F] [FiniteDimensional ℝ F]
+   [MeasurableSpace F] [BorelSpace F]
++  [SMulCommClass ℝ F F] [IsScalarTower ℝ F F]
++
++@[reducible] local instance compatibleScalarAlgebraStage8_1 : NormedAlgebra ℝ F where
++  toAlgebra := Algebra.ofModule (fun r x y => smul_mul_assoc r x y)
++    (fun r x y => mul_smul_comm r x y)
++  norm_smul_le r x := (norm_smul r x).le
++
+ 
+ /-- All real orthonormal coordinates are independent and have variance exactly
+ the reciprocal of the real dimension of the scalar field. -/
+@@ -1246,7 +1256,7 @@
+   apply spectralBoundaryValue_eq_of_continuousOn
+     (determinantPowerProfile_properties ha).2.1 _ ?_ hx
+   · exact ((Real.continuous_rpow_const ha).comp
+-      (continuous_finset_prod _ fun i _ => continuous_apply i)).continuousOn
++      (continuous_finsetProd _ fun i _ => continuous_apply i)).continuousOn
+   · intro y hy
+     rw [Real.rpow_def_of_pos (Finset.prod_pos fun i _ => hy i),
+       Real.log_prod (fun i _ => (hy i).ne')]

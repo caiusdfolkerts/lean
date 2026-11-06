@@ -1,0 +1,21 @@
+--- archive/source/wishart/verified/field_frontier03.lean
++++ recovered/source/wishart/verified/field_frontier03.lean
+@@ -8,7 +8,7 @@
+ public import tau_ceti.probability.distributions.gaussian.chi_squared
+ public import Mathlib.Probability.Moments.IntegrableExpMul
+ 
+-/- Generated ordinary proof stage. See audit/staged_field_frontier/FieldFrontier03/manifest.json. -/
++/- Recovered canonical proof stage; see verification/recovery-patches.json. -/
+ 
+ @[expose] public section
+ 
+@@ -101,7 +101,8 @@
+         (fun z => H (Q + shiftedRowSum G v (Function.update lam a s) z)) := by
+       funext z
+       rw [shiftedRowSum_split]
+-      dsimp [F, A, e, MeasurableEquiv.piFinSuccAbove, MeasurableEquiv.prodComm]
++      dsimp [F, A, e, MeasurableEquiv.trans, MeasurableEquiv.piFinSuccAbove,
++        MeasurableEquiv.prodComm]
+       simp only [add_assoc]
+     have heq (s : ℝ) :
+         (∫⁻ z, H (Q + shiftedRowSum G v (Function.update lam a s) z)

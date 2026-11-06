@@ -1,0 +1,173 @@
+--- archive/source/wishart/verified/field_frontier01.lean
++++ recovered/source/wishart/verified/field_frontier01.lean
+@@ -7,6 +7,8 @@
+ /- Generated ordinary proof stage. See audit/staged_field_frontier/FieldFrontier01/manifest.json. -/
+ 
+ @[expose] public section
++
++set_option backward.isDefEq.respectTransparency false
+ 
+ section CanonicalSource0
+ /- Source: Wishart/FieldSpectralCoordinates.lean -/
+@@ -443,7 +445,8 @@
+   have hab : (l,a) = (l,b) :=
+     hlocal (x₁ := (l,a)) (x₂ := (l,b)) ⟨hlU,ha⟩ ⟨hlU,hb⟩
+       (htransfer x hx a ha b hb h)
+-  exact Prod.ext rfl (congrArg Prod.snd hab)
++  have hab' := congrArg Prod.snd hab
++  exact Prod.ext rfl hab'
+ 
+ end WishartVerification
+ end
+@@ -564,7 +567,7 @@
+     change realDiagonal F lam * ((-2 : ℝ) • -skewOffEntries F h.2) +
+       (realDiagonal F h.1 + ((-2 : ℝ) • skewOffEntries F h.2) * realDiagonal F lam) = _
+     simp only [spectralCommutator, mul_smul_comm, smul_mul_assoc,
+-      smul_neg, smul_sub]
++      smul_neg, smul_sub, mul_neg]
+     abel
+   rw [heq, map_add, map_smul, ambientCoordinates_diagonal]
+   have hcomm : ambientCoordinates F R p (spectralCommutator F lam h.2) =
+@@ -877,7 +880,9 @@
+ 
+ @[simp] theorem angularOffLinearMap_zero (p : ℕ) :
+     angularOffLinearMap F (0 : OffDiagonal F p) = (-2 : ℝ) • LinearMap.id := by
+-  ext h ij
++  apply LinearMap.ext
++  intro h
++  funext ij
+   change ((-2 : ℝ) • (star ((1 + skewOffLinearMap F p 0)⁻¹ʳ) *
+     skewOffEntries F h * (1 + skewOffLinearMap F p 0)⁻¹ʳ)) ij.1.1 ij.1.2 = _
+   simp only [map_zero, add_zero, Ring.inverse_one, star_one, Matrix.one_mul,
+@@ -931,7 +936,7 @@
+     simp only [realDiagonal, Matrix.sub_apply, Matrix.mul_diagonal, Matrix.diagonal_mul,
+       gapOperator, LinearMap.pi_apply, LinearMap.smul_apply, LinearMap.proj_apply,
+       sub_smul, Algebra.smul_def]
+-    rw [Algebra.commutes (lam ij.1.2) (K ij.1.1 ij.1.2)]
++    rw [(Algebra.commutes (lam ij.1.2) (K ij.1.1 ij.1.2)).symm, map_sub, sub_mul]
+ 
+ def spectralInnerLinearMap {p : ℕ} (z : OffDiagonal F p) (lam : Fin p → ℝ) :
+     Coordinates F p →ₗ[ℝ] Coordinates F p :=
+@@ -1036,6 +1041,7 @@
+       unitaryConjugate F V (diagonalHermitian F mu) :=
+     (hermitianCoordinates F R p).injective heq
+   have hspec := strict_spectrum_unique F U V hlam.1 hmu.1 hm
++  change lam = mu at hspec
+   subst mu
+   have href := conjugate_diagonal_eq_forall_of_eq_simple F lam hlam.1.injective U V hm
+     (referenceSpectrum p)
+@@ -1044,7 +1050,8 @@
+     congrArg (hermitianCoordinates F R p) href
+   have hab := W.injOn_local (x₁ := (referenceSpectrum p,a))
+     (x₂ := (referenceSpectrum p,b)) ⟨W.reference_mem,ha⟩ ⟨W.reference_mem,hb⟩ hlocal
+-  exact Prod.ext rfl (congrArg Prod.snd hab)
++  have hab' := congrArg Prod.snd hab
++  exact Prod.ext rfl hab'
+ 
+ def orbitCoordinates (R : RealPartData F) {p : ℕ} (lam : Fin p → ℝ)
+     (U : unitary (Matrix (Fin p) (Fin p) F)) : Coordinates F p :=
+@@ -1086,6 +1093,7 @@
+       (hermitianCoordinates F R p).injective heq
+     have hs := strict_spectrum_unique F _ _ (W.eigen_subset hmu).1
+       (referenceSpectrum_mem_chamber p).1 hm
++    change mu = referenceSpectrum p at hs
+     subst mu
+     exact ⟨a,ha,heq.symm⟩
+   · rintro ⟨a,ha,heq⟩
+@@ -1106,6 +1114,7 @@
+         unitaryConjugate F U (diagonalHermitian F lam) :=
+       (hermitianCoordinates F R p).injective heq
+     have hs := strict_spectrum_unique F V U hmu.1 hlam.1 hm
++    change mu = lam at hs
+     subst mu
+     refine ⟨a,ha,?_⟩
+     exact congrArg (hermitianCoordinates F R p)
+@@ -1227,13 +1236,20 @@
+     simp only [unitaryConjugate, Submodule.coe_add, Matrix.mul_add, Matrix.add_mul]
+   map_smul' r X := by
+     apply Subtype.ext
+-    simp only [unitaryConjugate, Submodule.coe_smul, Matrix.mul_smul, Matrix.smul_mul]
++    simp only [unitaryConjugate, Submodule.coe_smul, Matrix.mul_smul, Matrix.smul_mul,
++      RingHom.id_apply]
+ 
+ def conjugationRepresentation (p : ℕ) :
+     unitary (Matrix (Fin p) (Fin p) F) →* Module.End ℝ (Hermitian F p) where
+   toFun U := (conjugationLinearEquiv F U).toLinearMap
+-  map_one' := by ext X; exact unitaryConjugate_one F X
+-  map_mul' U V := by ext X; exact unitaryConjugate_mul F U V X
++  map_one' := by
++    apply LinearMap.ext
++    intro X
++    exact unitaryConjugate_one F X
++  map_mul' U V := by
++    apply LinearMap.ext
++    intro X
++    exact unitaryConjugate_mul F U V X
+ 
+ theorem continuous_conjugation_apply {p : ℕ} (X : Hermitian F p) :
+     Continuous (fun U : unitary (Matrix (Fin p) (Fin p) F) => unitaryConjugate F U X) := by
+@@ -1276,7 +1292,8 @@
+     rw [h, abs_zero] at hd
+     exact zero_ne_one hd
+   change μ.map ((conjugationLinearEquiv F U).toLinearMap) = μ
+-  rw [Measure.map_linearMap_addHaar_eq_smul_addHaar μ hn]
++  rw [Measure.map_linearMap_addHaar_eq_smul_addHaar μ
++    (f := (conjugationLinearEquiv F U).toLinearMap) hn]
+   simp only [abs_inv, hd, inv_one, ENNReal.ofReal_one, one_smul]
+ 
+ end Wishart.FieldCharts
+@@ -1327,6 +1344,7 @@
+     ambientCoordinates_skew_commutator F R lam _ (angularFull_star F z h.2)]
+   simp only [Prod.mk_add_mk, add_zero, zero_add, spectralInnerLinearMap_apply,
+     angularOffLinearMap_apply]
++  rfl
+ 
+ def chartDerivative (R : RealPartData F) {p : ℕ}
+     (z : OffDiagonal F p) (hz : z ∈ cayleyDomain F p) (lam : Fin p → ℝ) :
+@@ -1468,7 +1486,8 @@
+   have hi : ContinuousAt (fun z : OffDiagonal F p => (1 + skewOffEntries F z)⁻¹ʳ) z := by
+     have hi := NormedRing.inverse_continuousAt u
+     rw [hu] at hi
+-    have h := hi.comp hlin.continuousAt
++    have h := hi.comp (f := fun z : OffDiagonal F p => 1 + skewOffEntries F z)
++      hlin.continuousAt
+     simpa only [hu] using h
+   exact (((hi.star.mul continuousAt_const).mul hi).const_smul (-2 : ℝ)).continuousWithinAt
+ 
+@@ -1483,12 +1502,13 @@
+       intro ij
+       exact (continuous_apply ij.1.2).comp_continuousOn
+         ((continuous_apply ij.1.1).comp_continuousOn (continuousOn_angularFull_apply F (b j)))
+-    simpa only [LinearMap.toMatrix_apply] using
++    simpa only [LinearMap.toMatrix_apply, LinearEquiv.coe_coe, Function.comp_def,
++      Module.Basis.equivFun_apply] using
+       ((continuous_apply i).comp b.equivFun.toLinearMap.continuous_of_finiteDimensional).comp_continuousOn hc
+   have hm : ContinuousOn (fun z => LinearMap.toMatrix b b (angularOffLinearMap F z))
+       (cayleyDomain F p) := continuousOn_pi.mpr fun i => continuousOn_pi.mpr (hentry i)
+   simpa only [angularJacobian, LinearMap.det_toMatrix] using
+-    (Matrix.continuous_det.comp_continuousOn hm).abs
++    (continuous_id.matrix_det.comp_continuousOn hm).abs
+ 
+ def ProductWindow.angularWeight (R : RealPartData F) {p : ℕ}
+     (W : ProductWindow F R p) : OffDiagonal F p → ℝ≥0∞ :=
+@@ -1518,7 +1538,9 @@
+     ((Wishart.Spectral.isOpen_positiveChamber p).measurableSet.prod W.angular_open.measurableSet)
+     (f' := fderiv ℝ (chartCoordinates F R)) _ (W.injOn_chamber F R)
+   intro x hx
+-  exact (hasStrictFDerivAt_chartCoordinates F R x (W.angular_subset hx.2)).hasFDerivAt.hasFDerivWithinAt
++  have hd := (hasStrictFDerivAt_chartCoordinates F R x (W.angular_subset hx.2)).hasFDerivAt
++  rw [hd.fderiv]
++  exact hd.hasFDerivWithinAt
+ 
+ end Wishart.FieldCharts
+ end
+@@ -1552,7 +1574,8 @@
+   have hmass : (c : ℝ≥0∞) * μ (ball (0 : E) 1) = μ (ball (0 : E) 1) := by
+     have h := congrArg (fun ν : Measure E => ν (ball (0 : E) 1)) hscale
+     rw [Measure.map_apply L.continuous.measurable isOpen_ball.measurableSet, hpre,
+-      Measure.smul_apply, smul_eq_mul] at h
++      Measure.smul_apply] at h
++    change μ (ball (0 : E) 1) = (c : ℝ≥0∞) * μ (ball (0 : E) 1) at h
+     exact h.symm
+   have h0 : μ (ball (0 : E) 1) ≠ 0 :=
+     (isOpen_ball.measure_pos μ (nonempty_ball.mpr zero_lt_one)).ne'

@@ -1,0 +1,81 @@
+{
+  "original_sha256": "07783131b872351c7597693cb95c6a894b888b6512844551b73e796d8bc268f4",
+  "corrected_sha256": "370b05bd3ed08f4a972af10f779da04f50986eb0c7d85ef7df8f03ac48ab7976",
+  "page_count": 25,
+  "changed_pages": [
+    14,
+    18,
+    20
+  ],
+  "unchanged_page_render_comparison": "Exact pixel equality at 72 dpi for all 22 unmodified pages",
+  "patches": [
+    {
+      "name": "anderson_sections",
+      "page": 14,
+      "redaction_rectangle": [
+        105.2,
+        267.1,
+        508.8,
+        405.0
+      ],
+      "replacement_rectangle": [
+        106.2,
+        268.1,
+        505.8,
+        386.93799743652346
+      ],
+      "replacement_text": "Its sublevel sets are symmetric and convex. To compare Gaussian masses,\nintersect the set translated by $-rv$ with a centered ellipsoidal density\nlevel set $E$ in the Gaussian support. These sections satisfy\n$A_{-r}=-A_r$ and\n$\\theta A_{r_1}+(1-\\theta)A_{r_2}\\subseteq A_{\\theta r_1+(1-\\theta)r_2}$.\nFor $0\\le s\\le r$, $r>0$, choose $\\theta=(1+s/r)/2$. Then\n$\\theta A_r+(1-\\theta)A_{-r}\\subseteq A_s$. If $|A_r|>0$,\nBrunn--Minkowski and symmetry give $|A_s|\\ge |A_r|$; if $|A_r|=0$,\nthis is automatic. Integrating the ellipsoidal layers proves the Gaussian\nassertion; zero-dimensional support is immediate. Thus the shifted row's\ngauge is stochastically increasing, and any nondecreasing outer function\npreserves the comparison."
+    },
+    {
+      "name": "effective_rank_threshold",
+      "page": 18,
+      "redaction_rectangle": [
+        105.2,
+        390.5,
+        507.0,
+        421.0
+      ],
+      "replacement_rectangle": [
+        106.2,
+        391.8,
+        505.8,
+        418.9140003204346
+      ],
+      "replacement_text": "\\noindent\n\\makebox[\\linewidth][c]{$\\displaystyle 2\\sum_{i:\\,k_i>0}\\nu_i<\\beta-p+1,$}\\makebox[0pt][r]{(18)}"
+    },
+    {
+      "name": "effective_rank_proof",
+      "page": 18,
+      "redaction_rectangle": [
+        105.2,
+        500.5,
+        509.0,
+        549.5
+      ],
+      "replacement_rectangle": [
+        106.2,
+        501.5,
+        505.8,
+        542.9860000610352
+      ],
+      "replacement_text": "\\textit{Proof.} The spectral factors $\\prod_j(\\lambda_j+c_i)^{\\nu_i}$ have the required\ncommon monotonicity. Put $s=\\sum_{i:\\,k_i>0}\\nu_i$; empty determinants are $1$.\nInterlacing after orthonormalization and bounding the shifts by scalar matrices gives"
+    },
+    {
+      "name": "beta_ii_empty_compressions",
+      "page": 20,
+      "redaction_rectangle": [
+        105.2,
+        210.5,
+        508.5,
+        302.0
+      ],
+      "replacement_rectangle": [
+        106.2,
+        212.0,
+        505.8,
+        269.07799911499023
+      ],
+      "replacement_text": "A zero-column determinant is $1$, with every moment finite. For nonnegative\npowers the joint criterion is (18), with no overlap restriction. Indeed, take\n$X=Y^{1/2}ZY^{1/2}$ with independent $Z\\sim W_p(\\alpha,I)$.\nThe bound $X\\preceq\\|Z\\|Y$ and the finite moments of $\\|Z\\|$ give\nsufficiency. The event $Z\\succeq I$ has positive probability and gives necessity."
+    }
+  ]
+}

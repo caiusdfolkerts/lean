@@ -1,0 +1,27 @@
+--- archive/source/wishart/verified/field_residual09.lean
++++ recovered/source/wishart/verified/field_residual09.lean
+@@ -9,6 +9,8 @@
+ /- Exact canonical residual stage; see audit/field_residual/FieldResidual09.json. -/
+ 
+ @[expose] public section
++
++set_option backward.isDefEq.respectTransparency false
+ 
+ section CanonicalSource80
+ /- Source: Wishart/FieldWhiteningDeterminants.lean -/
+@@ -122,6 +124,7 @@
+ end Wishart.ComplexMatrix
+ 
+ namespace Wishart.QuaternionMatrix
++open scoped Matrix.Norms.Frobenius
+ variable {p k : ℕ}
+ 
+ theorem unnormalize_shiftedCompression {Sigma : Matrix (Fin p) (Fin p) ℍ[ℝ]}
+@@ -523,6 +526,7 @@
+ end Wishart.FieldSpectral
+ 
+ namespace Wishart.QuaternionMatrix
++open scoped Matrix.Norms.Frobenius
+ 
+ variable {n : Type*} [Fintype n] [DecidableEq n]
+ 

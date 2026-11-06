@@ -1,0 +1,30 @@
+--- archive/source/wishart/verified/field_residual08.lean
++++ recovered/source/wishart/verified/field_residual08.lean
+@@ -249,7 +249,7 @@
+ 
+ noncomputable section
+ open MeasureTheory ProbabilityTheory
+-open scoped Classical Quaternion
++open scoped Classical Quaternion NNReal
+ 
+ namespace Wishart.FieldGaussian
+ open scoped Matrix.Norms.Frobenius
+@@ -293,11 +293,13 @@
+     rw [gaussianReal_map_const_mul]
+     infer_instance
+   rw [heq, Measure.pi_map_pi (fun _ => by fun_prop)]
+-  have hvar : (⟨standardDeviation F ^ 2, sq_nonneg _⟩ : ℝ≥0) =
+-      (Module.finrank ℝ F : ℝ≥0)⁻¹ := by
+-    apply NNReal.coe_injective
+-    simpa using standardDeviation_sq F hF
+-  simp only [gaussianReal_map_const_mul, mul_zero, mul_one, hvar]
++  simp only [gaussianReal_map_const_mul, mul_zero, mul_one]
++  apply congrArg Measure.pi
++  funext i
++  apply congrArg (gaussianReal 0)
++  apply NNReal.coe_injective
++  change standardDeviation F ^ 2 = (Module.finrank ℝ F : ℝ)⁻¹
++  exact standardDeviation_sq F hF
+ 
+ theorem complex_standard_row_coordinate_law {p : ℕ} {ι : Type*} [Fintype ι]
+     (b : OrthonormalBasis ι ℝ (Row ℂ p)) :

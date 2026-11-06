@@ -1,0 +1,15 @@
+--- archive/source/wishart/verified/field_frontier03.lean
++++ recovered/source/wishart/verified/field_frontier03.lean
+@@ -101,9 +101,9 @@
+         (fun z => H (Q + shiftedRowSum G v (Function.update lam a s) z)) := by
+       funext z
+       rw [shiftedRowSum_split]
+-      dsimp [F, A, e, MeasurableEquiv.trans, MeasurableEquiv.piFinSuccAbove,
+-        MeasurableEquiv.prodComm]
+-      simp only [add_assoc]
++      change H ((Q + shiftedRowSum G (v ∘ a.succAbove)
++        (lam ∘ a.succAbove) (z ∘ a.succAbove)) + G (z a + Real.sqrt s • v a)) = _
++      rw [add_assoc]
+     have heq (s : ℝ) :
+         (∫⁻ z, H (Q + shiftedRowSum G v (Function.update lam a s) z)
+           ∂Measure.pi (fun _ : Fin (n + 1) => μ)) =

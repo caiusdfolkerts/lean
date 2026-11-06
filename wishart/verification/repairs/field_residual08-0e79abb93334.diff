@@ -1,0 +1,11 @@
+--- archive/source/wishart/verified/field_residual08.lean
++++ recovered/source/wishart/verified/field_residual08.lean
+@@ -814,7 +814,7 @@
+     (tracePowerProfile_properties hk hr ha).2.1 _
+     (fun y hy => tracePowerProfile_positive_value hk hy) hx
+   exact ((Real.continuous_rpow_const (div_nonneg ha hr.le)).comp
+-    (continuous_finset_sum _ fun i _ =>
++    (continuous_finsetSum _ fun i _ =>
+       (Real.continuous_rpow_const hr.le).comp (continuous_apply i))).continuousOn
+ 
+ end Wishart.Spectral

@@ -1,0 +1,28 @@
+--- archive/source/wishart/verified/field_frontier01.lean
++++ recovered/source/wishart/verified/field_frontier01.lean
+@@ -8,7 +8,6 @@
+ 
+ @[expose] public section
+ 
+-set_option backward.isDefEq.respectTransparency false
+ 
+ section CanonicalSource0
+ /- Source: Wishart/FieldSpectralCoordinates.lean -/
+@@ -1488,7 +1487,7 @@
+     rw [hu] at hi
+     have h := hi.comp (f := fun z : OffDiagonal F p => 1 + skewOffEntries F z)
+       hlin.continuousAt
+-    simpa only [hu] using h
++    simpa only [hu, Function.comp_def] using h
+   exact (((hi.star.mul continuousAt_const).mul hi).const_smul (-2 : ℝ)).continuousWithinAt
+ 
+ theorem continuousOn_angularJacobian (p : ℕ) :
+@@ -1507,7 +1506,7 @@
+       ((continuous_apply i).comp b.equivFun.toLinearMap.continuous_of_finiteDimensional).comp_continuousOn hc
+   have hm : ContinuousOn (fun z => LinearMap.toMatrix b b (angularOffLinearMap F z))
+       (cayleyDomain F p) := continuousOn_pi.mpr fun i => continuousOn_pi.mpr (hentry i)
+-  simpa only [angularJacobian, LinearMap.det_toMatrix] using
++  simpa only [angularJacobian, Function.comp_def, id_eq, LinearMap.det_toMatrix] using
+     (continuous_id.matrix_det.comp_continuousOn hm).abs
+ 
+ def ProductWindow.angularWeight (R : RealPartData F) {p : ℕ}

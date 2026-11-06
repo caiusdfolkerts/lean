@@ -1,0 +1,11 @@
+--- archive/source/wishart/verified/field_residual04.lean
++++ recovered/source/wishart/verified/field_residual04.lean
+@@ -4,7 +4,7 @@
+ public import wishart.verified.field_frontier03
+ public import Mathlib.Analysis.InnerProductSpace.PiL2
+ 
+-/- Exact canonical residual stage; see audit/field_residual/FieldResidual04.json. -/
++/- Recovered canonical proof stage; see verification/recovery-patches.json. -/
+ 
+ @[expose] public section
+ 

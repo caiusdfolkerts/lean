@@ -1,0 +1,29 @@
+--- archive/source/wishart/verified/field_frontier01.lean
++++ recovered/source/wishart/verified/field_frontier01.lean
+@@ -1291,9 +1291,9 @@
+     rw [h, abs_zero] at hd
+     exact zero_ne_one hd
+   change μ.map ((conjugationLinearEquiv F U).toLinearMap) = μ
+-  rw [Measure.map_linearMap_addHaar_eq_smul_addHaar μ
+-    (f := (conjugationLinearEquiv F U).toLinearMap) hn]
+-  simp only [abs_inv, hd, inv_one, ENNReal.ofReal_one, one_smul]
++  have hmap := @Measure.map_linearMap_addHaar_eq_smul_addHaar (Hermitian F p)
++    _ _ _ ‹BorelSpace (Hermitian F p)› _ μ _ (conjugationLinearEquiv F U).toLinearMap hn
++  simpa only [abs_inv, hd, inv_one, ENNReal.ofReal_one, one_smul] using hmap
+ 
+ end Wishart.FieldCharts
+ end
+@@ -1487,11 +1487,12 @@
+     rw [hu] at hi
+     have h := hi.comp (f := fun z : OffDiagonal F p => 1 + skewOffEntries F z)
+       hlin.continuousAt
+-    simpa only [hu, Function.comp_def] using h
++    convert h using 1
+   exact (((hi.star.mul continuousAt_const).mul hi).const_smul (-2 : ℝ)).continuousWithinAt
+ 
+ theorem continuousOn_angularJacobian (p : ℕ) :
+     ContinuousOn (angularJacobian F (p := p)) (cayleyDomain F p) := by
++  change ContinuousOn (fun z : OffDiagonal F p => |LinearMap.det (angularOffLinearMap F z)|) _
+   let b := Module.finBasis ℝ (OffDiagonal F p)
+   have hentry (i j : Fin (Module.finrank ℝ (OffDiagonal F p))) :
+       ContinuousOn (fun z => LinearMap.toMatrix b b (angularOffLinearMap F z) i j)
