@@ -1,19 +1,19 @@
 # Stress–flex orthogonality on spheres and a torus obstruction
 
-This project formalises stress–flex orthogonality for finite cellulations of the two-sphere, the stress–lifting correspondence and analytic continuation behind it, and an explicit embedded nine-vertex torus on which orthogonality fails.
+This project contains the full Lean4 formalisation for all principal results in my paper *Stress–flex orthogonality on spheres and a torus obstruction*.
 
 ## Verification
 
-With Elan and Git installed, run these commands from this directory. The supplied configuration pins Lean and its dependencies.
+If you have Elan and Git installed, run below commands from this directory.
 
 ```sh
 lake exe cache get
 lake build
 ```
 
-The default build checks the proofs and rejects project axioms, proof placeholders, and dependencies beyond `propext`, `Classical.choice`, and `Quot.sound`.
-
 ## Main results
+
+Here's a guide to help you navigate this repo! All verified theorems/propositions/corollaries are linked to their corresponding Lean4 declarations in the table below.
 
 | Result | Lean declaration |
 | --- | --- |
@@ -22,5 +22,3 @@ The default build checks the proofs and rejects project axioms, proof placeholde
 | Theorem 1, embedded torus obstruction | `StressFlex.Torus.stress_flex_counterexample` |
 | Proposition 3, quotient correspondence, dimension and analytic continuation | `StressFlex.Spherical.paper_proposition_three` |
 | Nonzero torus period and failure of global face potentials | `StressFlex.Torus.lower_cycle_period`, `StressFlex.Torus.no_global_face_potentials` |
-
-The development is in `source/stress_flex.lean`; the period obstruction is in `source/torus_period.lean`.

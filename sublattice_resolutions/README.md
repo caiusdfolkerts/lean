@@ -1,22 +1,19 @@
 # Sublattice resolutions and Betti preservation in all powers
 
-This project formalises the principal results of Caius Folkerts’s *Sublattice resolutions and Betti preservation in all powers*, including the mixed, integral, determinantal, cellular, and characteristic-dependence extensions. The general auxiliary formulations of Proposition 2.5 and Lemmas 3.3 and 9.2 are replaced by direct arguments for their applications; Lemma 4.2 is proved in the sublattice setting used by Theorem 4.3.
+This project contains the full Lean4 formalisation for all principal results in my paper *Sublattice resolutions and Betti preservation in all powers*.
 
 ## Verification
 
-With Elan and Git installed, run these commands from this directory. The toolchain and dependency revisions are pinned in the supplied configuration.
+If you have Elan and Git installed, run below commands from this directory.
 
 ```sh
 lake exe cache get
 lake build
 ```
 
-The default build compiles all 227 mathematical modules and the original strict audit. The audit loads their complete kernel bodies, checks every project declaration and the 359 selected theorem and identification endpoints, and rejects project axioms, incomplete proofs, and unapproved transitive axioms. Unsafe or partial declarations cannot occur on a selected mathematical root’s dependency path. The permitted axioms are `propext`, `Classical.choice`, and `Quot.sound`. Its report is written to `.lake/reports/audit/kernel-dependencies.json`. Downloading the library cache is not itself a proof check.
-
-
 ## Main results
 
-Unless otherwise qualified, declaration names use the namespace `FourPapers.Sublattice`.
+Here's a guide to help you navigate this repo! All verified theorems/propositions/corollaries are linked to their corresponding Lean4 declarations in the table below. Note declaration names use `FourPapers.Sublattice`.
 
 | Paper result | Lean statement |
 | --- | --- |

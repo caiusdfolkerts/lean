@@ -1,21 +1,19 @@
 # Singular-vector spans beyond boundary format
 
-This project formalises Caius Folkerts’s results on the first Lefschetz map of Segre rings and the span of singular rank-one tensors. It includes the maximal-rank theorem in every characteristic, the exact first-excess defect, generic span membership for every tensor format, and the sufficient full-span ranges at larger excess. The geometric results use algebraically closed fields and the coordinate bilinear pairing.
+This project contains the full Lean4 formalisation for all principal results in my paper *Singular-vector spans beyond boundary format*.
 
 ## Verification
 
-With Elan, Git and Python 3 installed, run these commands from this directory. The compiler and dependency revisions are pinned in the supplied configuration.
+If you have Elan and Git installed, run below commands from this directory.
 
 ```sh
 lake exe cache get
 lake build
 ```
 
-The default build compiles the mathematical source and its verification module. It checks all project declarations and the 47 principal theorem and 28 semantic-definition entry points, allowing only `propext`, `Classical.choice`, and `Quot.sound`. It rejects incomplete proofs and additional mathematical axioms. Downloading the dependency cache is not itself a proof check. Several modules are large; allow at least 32 GB of available RAM.
-
 ## Main results
 
-Declaration names below use the namespace `PaperVerification.Segre`. The first-excess classification is exact; the larger-excess conclusions are sufficient ranges, not a classification of all remaining formats.
+Here's a guide to help you navigate this repo! All verified theorems/propositions/corollaries are linked to their corresponding Lean4 declarations in the table below. Note declaration names use `PaperVerification.Segre`.
 
 | Paper | Principal Lean declaration | Mathematical content |
 |---|---|---|
@@ -42,6 +40,3 @@ Declaration names below use the namespace `PaperVerification.Segre`. The first-e
 | Final explicit bounds, uniform bound | `OriginalProjectivePrincipal.uniform_large_factors` | Full generic span when every `nᵢ ≥ 3e²`. |
 | Final explicit bounds, excess two | `OriginalProjectivePrincipal.excess_two_six` | Full generic span at excess two when every smaller projective dimension is at least six. |
 | Final explicit bounds, growth of the explicit bounds | `AsymptoticGrowth.three_factor_growth`, `AsymptoticGrowth.many_factor_growth` | Actual `Asymptotics.IsBigO` statements along natural excess tending to infinity: `2e + O(√e)` and, for fixed `k ≥ 4`, `e + Oₖ(e^(1/⌈k/2⌉))`. |
-
-
-The source uses lowercase paths for navigation. The build prepares a local workspace preserving the verified Lean module identities and original proof bytes.

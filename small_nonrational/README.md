@@ -1,20 +1,19 @@
 # Small nonrational four-polytopes
 
-This project formalises the principal results of Caius Folkerts’s *Small nonrational four-polytopes*: a nonrational four-polytope on seventeen vertices, rational realizability of every four-polytope on at most ten vertices, and the deletion, density and classification results connecting them. The statements concern actual convex polytopes and their complete face lattices. In particular, the minimum possible number of vertices of a nonrational four-polytope lies between eleven and seventeen.
+This project contains the full Lean4 formalisation for all principal results in my paper *Small nonrational four-polytopes*.
 
 ## Verification
 
-With Lean installed through elan, Git, and Python 3.11 or later, run this command from this directory:
+If you have Elan and Git installed, run below commands from this directory.
 
 ```sh
+lake exe cache get
 lake build
 ```
 
-The pinned configuration selects Lean 4.35.0 and its matching Mathlib revision. The command fetches the required library cache, compiles every project source, and checks the principal statements and the axiom dependencies of all original proof occurrences. This is a substantial computation: the complete release was checked on a 16-core Linux machine with 64 GB of RAM. Keep at least 64 GB of working disk space available. Successful compilation steps are retained, so the same command resumes an interrupted build. Generated files stay in `.lake/`.
-
 ## Main results
 
-The principal statements are assembled in `source/papers/small_nonrational.lean`, in the namespace `Papers.SmallNonrational`.
+Here's a guide to help you navigate this repo! All verified theorems/propositions/corollaries are linked to their corresponding Lean4 declarations in the table below. Note declaration names use `Papers.SmallNonrational`.
 
 | Paper result | Lean declaration | Conclusion |
 | --- | --- | --- |
@@ -28,5 +27,3 @@ The principal statements are assembled in `source/papers/small_nonrational.lean`
 | Lemma 11 | `lemmaEleven` | The full rank-four rational-density classification, with its golden exception. |
 | Lemma 12 | `lemmaTwelve` | Rational approximation of multiaffine zeros, including singular original zeros. |
 | Vertex bounds | `seventeenVertexNonrational`, `nonrationalVertexLowerBound`, `vertexBounds`, `minimumVertexBounds` | Existence and attainment of the minimum, with 11 ≤ N ≤ 17. |
-
-The formalisation includes the rational witnesses and obstruction proofs needed by the terminal classification, and three additional Appendix B density results. It does not claim every unnumbered local parametrisation in Appendix B. `formalisation.md` explains the mathematics and the source organisation.
