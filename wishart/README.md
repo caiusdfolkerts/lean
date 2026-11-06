@@ -18,9 +18,11 @@ Here's a guide to help you navigate this repo! All verified theorems/proposition
 | Paper result | Lean statement |
 | --- | --- |
 | Theorem 1.1: product inequality, selected split, finite moments, equality case | `WishartVerification.theorem_1_1` |
-| Lemmas 2.1–2.2: ordered-spectrum association and independent regression representation | [Supporting lemmas](verification/theorem-scope.md#supporting-lemmas) |
+| Lemma 2.1: ordered-spectrum association | `WishartVerification.lemma_2_1_association`, `WishartVerification.lemma_2_1_strict_association` |
+| Lemma 2.2: independent regression representation | `Wishart.map_regressionReconstruction`, `Wishart.map_regressionJointReconstruction` |
 | Lemma 3.1: the full C² radial identity, real and integer shapes, including singular covariance | `FiniteOrder.lemma_3_1_real`, `FiniteOrder.lemma_3_1_integer` |
-| Lemmas 3.2–3.3: Gaussian determinant order and partition radial monotonicity | [Supporting lemmas](verification/theorem-scope.md#supporting-lemmas) |
+| Lemma 3.2: Gaussian determinant order | `WishartVerification.cdf_gaussian_shift_determinant_antitone`, `WishartVerification.integral_gaussian_rankOneDeterminant_rpow_strictMono` |
+| Lemma 3.3: partition radial monotonicity | `WishartVerification.lemma_3_3`, `WishartVerification.strictMonoOn_radial_full_determinant` |
 | Proportional shifts and Proposition 4.1: exponent monotonicity and tilted spectral domination | `WishartVerification.proportional_shift_product_inequalities`, `WishartVerification.proposition_4_1` |
 | Theorem 5.1: overlapping determinant functions and all rank clauses | `theorem_5_1_complete` |
 | Theorem 5.2: convex spectral gauges | `theorem_5_2_complete` |
@@ -32,4 +34,3 @@ Here's a guide to help you navigate this repo! All verified theorems/proposition
 | Beta-II exact moment range and gamma formula, including empty compressions | `theorem_6_3_finite_moment_iff_positive_ranks`, `theorem_6_3_gamma_moment_effective_rank` |
 | Theorem 7.1: complex and quaternionic densities and singular Gram laws | `theorem_7_1` |
 | Lemma 7.2: general row monotonicity with extended logarithms and zero-valued factors | `FieldGaussian.complex_row_logsubharmonic_product`, `FieldGaussian.quaternion_row_logsubharmonic_product` |
-| Section 7 examples: polynomial, Schur, elementary, trace and invariant-norm factors | [Example endpoints](verification/theorem-scope.md#examples-and-closure) |
