@@ -1,8 +1,8 @@
 # Lean formalisations
 
-Lean developments accompanying Caius Folkerts’s mathematics papers. Each directory contains one paper, its source, verification instructions, and mathematical exposition. Original code and documentation use Apache 2.0; third-party licenses remain in force.
+Lean developments accompanying Caius Folkerts’s mathematics papers. Each directory contains one paper, its Lean source, verification instructions, and a guide linking the paper's results to their corresponding Lean declarations. Original code and documentation use Apache 2.0; third-party licenses remain in force.
 
-Install Elan and a recent version of Git before following the verification commands in a project directory. The Linux build environment uses Git 2.50.1; older Git versions may fail while fetching the pinned dependencies.
+Install Elan and Git before following the verification commands in a project directory.
 
 | Project | Paper |
 | --- | --- |

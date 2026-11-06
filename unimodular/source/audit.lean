@@ -2,7 +2,7 @@ module
 
 public import Verified
 
-/-! Kernel-audited public declarations; correspondence is in formalisation.md. -/
+/-! Kernel-audited public declarations; correspondence is in README.md. -/
 
 set_option pp.universes true
 set_option pp.proofs false

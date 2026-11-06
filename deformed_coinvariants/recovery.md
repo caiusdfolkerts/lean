@@ -1,6 +1,6 @@
 # Source recovery and verification record
 
-This note records the recovered Lean development and its preparation for this package. The mathematical account and theorem correspondence are in [formalisation.md](formalisation.md) and [README.md](README.md). The source under `source/` is the development used by the default build.
+This note records the recovered Lean development and its preparation for this package. The theorem correspondence is in [README.md](README.md). The source under `source/` is the development used by the default build.
 
 ## The recovered checkpoint
 

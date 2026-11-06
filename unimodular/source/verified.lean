@@ -56,6 +56,6 @@ public import Continuation.Geometry.RayMatroidSimplification
 # Verified theorems on unimodular configurations and complete fans
 
 Theorems 1.1 (3.1) and 1.2, with the further results indexed in
-`formalisation.md`. Import this module to use the verified mathematical interface.
+`README.md`. Import this module to use the verified mathematical interface.
 `Audit.lean` prints the endpoint statements and their foundational axioms.
 -/
