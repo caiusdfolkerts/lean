@@ -1,8 +1,8 @@
-# Lean formalisations
+# Lean
 
-Lean developments accompanying Caius Folkerts’s mathematics papers. Each directory contains one paper, its Lean source, verification instructions, and a guide linking the paper's results to their corresponding Lean declarations. Original code and documentation use Apache 2.0; third-party licenses remain in force.
+This repo is home to the Lean formalisations for all my mathematics research. I've tried to make it as self-explanatory as possible. If you want to contact me, email me at caiusdfolkerts@gmail.com. 
 
-Install Elan and Git before following the verification commands in a project directory.
+You'll need to install Elan and Git to run the verification. 
 
 | Project | Paper |
 | --- | --- |
