@@ -1,7 +1,6 @@
 # Hilbert series of exterior algebras modulo two quadrics
 
-This project contains the lean formalisation to selected results from my paper *Hilbert series of exterior algebras modulo two quadrics*. This includes full formalisations to Theorems 1.1 and 1.3 and the below specified algebraic results in Sections 5 and 7. I’m still working on the formalisation to the general geometric statement of Theorem 1.2, and the ring identifications of Theorem 4.1. I expect them to be ready in a few days.
-
+This project contains the full Lean4 formalisation to Theorems 1.1, 1.3 and most algebraic results in Sections 5 and 7 from my paper *Hilbert series of exterior algebras modulo two quadrics*. I’m still working on the formalisation of the general geometric statement of Theorem 1.2 and parts of Theorem 4.1, but I expect them to be ready in a few days.
 
 ## Verification
 
