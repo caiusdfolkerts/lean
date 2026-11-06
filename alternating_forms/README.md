@@ -1,21 +1,20 @@
 # Hilbert series of exterior algebras modulo two quadrics
 
-This project formalises selected results of Caius Folkerts’s *Hilbert series of exterior algebras modulo two quadrics*. Theorems 1.1 and 1.3 and the specified algebraic results in Sections 5 and 7 are included.
+This project contains the lean formalisation to selected results from my paper *Hilbert series of exterior algebras modulo two quadrics*. This includes full formalisations to Theorems 1.1 and 1.3 and the below specified algebraic results in Sections 5 and 7. I’m still working on the formalisation to the general geometric statement of Theorem 1.2, and the ring identifications of Theorem 4.1. I expect them to be ready in a few days.
+
 
 ## Verification
 
-With Elan and Git installed, run these commands from this directory. The toolchain and dependency revisions are pinned in the supplied configuration.
+If you have Elan and Git installed, run below commands from this directory. 
 
 ```sh
 lake exe cache get
 lake build
 ```
 
-The default build includes the mathematical source and checks that the imported project theorems depend only on `propext`, `Classical.choice`, and `Quot.sound`. Downloading the library cache is not itself a proof check.
+## Guide
 
-## Main results
-
-Unless otherwise qualified, declaration names use `PaperVerification.AlternatingForms`.
+Here's a guide to help you navigate this repo! All verified theorems/propositions/corollaries are linked to their corresponding Lean4 declarations in the table below. Note declaration names use `PaperVerification.AlternatingForms`.
 
 | Paper result | Lean statement |
 | --- | --- |
@@ -33,5 +32,3 @@ Unless otherwise qualified, declaration names use `PaperVerification.Alternating
 | Theorem 7.1, p. 20 | `paper_theorem_7_1_exterior_basis`, `paper_theorem_7_1_initial_ideal`, `paper_theorem_7_1_initial_ideal_one_plane`, `paper_theorem_7_1_full_hilbert` |
 | Integral extension after Theorem 7.1, p. 20 | `IntegralOdd.paper_theorem_7_1_integral_full_basis`, `IntegralOdd.paper_theorem_7_1_integral_arbitrary_base_change`, `IntegralOdd.paper_theorem_7_1_integral_arbitrary_base_change_apply` |
 | Theorem 7.2, pp. 20–21 | `paper_theorem_7_2` |
-
-I’m still working on formalising the general geometric statement of Theorem 1.2, the ring identifications of Theorem 4.1, and the sheaf-cohomology assertions of Section 6. I plan to release these additions in the next few days.
