@@ -4,7 +4,7 @@ This project contains the full Lean4 formalisation for all principal results in 
 
 ## Verification
 
-If you have Elan and Git installed, run below commands from this directory.
+If you have Elan and Git installed, run below commands from this directory. If not, you'll have to install them first!
 
 ```sh
 lake exe cache get
