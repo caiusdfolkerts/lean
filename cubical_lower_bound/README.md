@@ -1,6 +1,6 @@
-# The cubical lower bound theorem
+# Face numbers of cubical polytopes
 
-This project contains the full Lean4 formalisation for all principal results in my paper *The cubical lower bound theorem*.
+This project contains the full Lean4 formalisation for all principal results in my paper *Face numbers of cubical polytopes*.
 
 ## Verification
 
