@@ -1,0 +1,4 @@
+Frobenius generators for smooth toric varieties
+Copyright 2026 Caius Folkerts
+
+Code and documentation are licensed under Apache-2.0. The accompanying paper remains copyright Caius Folkerts. Incorporated TauCeti and BondalThomsen source retains its original authorship and notices; the applicable licenses are in licenses/. These sources have been adapted to the pinned Lean and Mathlib versions and to the constructions used in this formalisation.

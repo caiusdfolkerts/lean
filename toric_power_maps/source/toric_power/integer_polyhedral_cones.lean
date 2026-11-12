@@ -1,0 +1,172 @@
+module
+
+public import ToricPower.BasicPolytope
+public import TauCeti.Geometry.Toric.Algebraic.Cone.Basic
+public import Mathlib.Analysis.Normed.Module.FiniteDimension
+
+/-!
+# Finite integral generators for cones cut out by integral inequalities
+
+Intersect the cone with the coordinate cube. The resulting compact
+polytope is the convex hull of finitely many extreme points. Cramer's
+rule supplies a positive integral multiple of each vertex. Rescaling
+an arbitrary cone point into the cube proves that those integral
+vectors generate the entire cone, including non-salient cones.
+-/
+
+@[expose] public noncomputable section
+open Set Matrix TauCeti.Toric
+open scoped BigOperators
+
+namespace ToricPower.FanSubdivision
+
+variable {n : ℕ} {ι : Type*} [Fintype ι] [DecidableEq ι]
+
+/-- The ordinary coordinate inclusion of the integer lattice. -/
+def integerCoordinateMap (n : ℕ) : (Fin n → ℤ) →+ (Fin n → ℝ) where
+  toFun z j := (z j : ℝ)
+  map_zero' := by ext j; simp
+  map_add' := by intro x y; ext j; simp
+
+theorem integer_halfspace_extreme_integral_multiple (C : Matrix ι (Fin n) ℤ)
+    (h : ι → ℤ) {x : Fin n → ℝ}
+    (extreme : x ∈ (NormalProjective.halfspaceRegion
+      (matrixRows (C.map (Int.castRingHom ℝ))) (fun r => (h r : ℝ))).extremePoints ℝ) :
+    ∃ (D : ℕ) (z : Fin n → ℤ), 0 < D ∧
+      integerCoordinateMap n z = (D : ℝ) • x := by
+  obtain ⟨I,feasible,equation⟩ := extremePoint_is_basicSolution C
+    (fun r => (h r : ℝ)) x extreme
+  let B := basicMatrix C I
+  have nonsingular : B.det ≠ 0 := feasible.1
+  have solves : realMatrix B *ᵥ x = fun j => (h (I j) : ℝ) := by
+    rw [equation]
+    exact basicSolution_solves C _ I feasible.1
+  obtain ⟨z,value⟩ := integral_multiple_of_solution B (fun j => h (I j)) x solves
+    (B.det.natAbs : ℤ) (Int.dvd_natAbs.mpr (dvd_refl _))
+  refine ⟨B.det.natAbs,z,Int.natAbs_pos.mpr nonsingular,?_⟩
+  ext j
+  change (z j : ℝ) = (B.det.natAbs : ℝ) * x j
+  simpa only [Int.cast_natCast] using value j
+
+abbrev BoxedInequalityIndex (ι : Type*) (n : ℕ) := ι ⊕ (Fin n ⊕ Fin n)
+
+def boxedInequalityMatrix (C : Matrix ι (Fin n) ℤ) :
+    Matrix (BoxedInequalityIndex ι n) (Fin n) ℤ :=
+  Sum.elim C (Sum.elim (fun j => Pi.single j 1) (fun j => -(Pi.single j 1)))
+
+def boxedInequalityRhs : BoxedInequalityIndex ι n → ℤ :=
+  Sum.elim (fun _ => 0) (fun _ => 1)
+
+def boxedInequalityRegion (C : Matrix ι (Fin n) ℤ) : Set (Fin n → ℝ) :=
+  NormalProjective.halfspaceRegion
+    (matrixRows ((boxedInequalityMatrix C).map (Int.castRingHom ℝ)))
+    (fun r => (boxedInequalityRhs r : ℝ))
+
+theorem boxedInequality_row_original (C : Matrix ι (Fin n) ℤ)
+    (r : ι) (x : Fin n → ℝ) :
+    matrixRows ((boxedInequalityMatrix C).map (Int.castRingHom ℝ)) (.inl r) x =
+      matrixRows (C.map (Int.castRingHom ℝ)) r x := rfl
+
+theorem boxedInequality_row_upper (C : Matrix ι (Fin n) ℤ)
+    (j : Fin n) (x : Fin n → ℝ) :
+    matrixRows ((boxedInequalityMatrix C).map (Int.castRingHom ℝ)) (.inr (.inl j)) x = x j := by
+  change (∑ k, (((Pi.single j (1 : ℤ) : Fin n → ℤ) k : ℤ) : ℝ) * x k) = x j
+  simp [Pi.single_apply]
+
+theorem boxedInequality_row_lower (C : Matrix ι (Fin n) ℤ)
+    (j : Fin n) (x : Fin n → ℝ) :
+    matrixRows ((boxedInequalityMatrix C).map (Int.castRingHom ℝ)) (.inr (.inr j)) x = -(x j) := by
+  change (∑ k, ((-((Pi.single j (1 : ℤ) : Fin n → ℤ) k) : ℤ) : ℝ) * x k) = -(x j)
+  simp [Pi.single_apply]
+
+theorem mem_boxedInequalityRegion_iff (C : Matrix ι (Fin n) ℤ) (x : Fin n → ℝ) :
+    x ∈ boxedInequalityRegion C ↔
+      (∀ r, matrixRows (C.map (Int.castRingHom ℝ)) r x ≤ 0) ∧
+        (∀ j, -(1 : ℝ) ≤ x j) ∧ ∀ j, x j ≤ 1 := by
+  constructor
+  · intro h
+    refine ⟨?_,?_,?_⟩
+    · intro r
+      simpa only [boxedInequality_row_original,boxedInequalityRhs,Sum.elim_inl,Int.cast_zero]
+        using h (.inl r)
+    · intro j
+      have bound := h (.inr (.inr j))
+      simp only [boxedInequality_row_lower,boxedInequalityRhs,Sum.elim_inr,Int.cast_one] at bound
+      linarith
+    · intro j
+      simpa only [boxedInequality_row_upper,boxedInequalityRhs,Sum.elim_inr,Int.cast_one]
+        using h (.inr (.inl j))
+  · rintro ⟨homogeneous,lower,upper⟩ r
+    rcases r with r | (j | j)
+    · simpa only [boxedInequality_row_original,boxedInequalityRhs,Sum.elim_inl,Int.cast_zero]
+        using homogeneous r
+    · simpa only [boxedInequality_row_upper,boxedInequalityRhs,Sum.elim_inr,Int.cast_one]
+        using upper j
+    · simp only [boxedInequality_row_lower,boxedInequalityRhs,Sum.elim_inr,Int.cast_one]
+      linarith [lower j]
+
+theorem boxedInequalityRegion_isCompact (C : Matrix ι (Fin n) ℤ) :
+    IsCompact (boxedInequalityRegion C) := by
+  apply (isCompact_Icc : IsCompact (Icc (fun _ : Fin n => -(1 : ℝ)) (fun _ => 1))).of_isClosed_subset
+    (NormalProjective.isClosed_halfspaceRegion _ _)
+  intro x member
+  have bounds := (mem_boxedInequalityRegion_iff C x).mp member
+  exact ⟨bounds.2.1,bounds.2.2⟩
+
+/-- A pointed cone defined by finitely many integral homogeneous
+inequalities is generated by finitely many actual lattice vectors. -/
+theorem integer_inequalityCone_isLatticeRational
+    (σ : PointedCone ℝ (Fin n → ℝ)) (C : Matrix ι (Fin n) ℤ)
+    (membership : ∀ x, x ∈ σ ↔
+      ∀ r, matrixRows (C.map (Int.castRingHom ℝ)) r x ≤ 0) :
+    IsLatticeRational (integerCoordinateMap n) σ := by
+  classical
+  let vertices := (boxedInequalityRegion C).extremePoints ℝ
+  have finiteVertices : vertices.Finite := NormalProjective.halfspace_extremePoints_finite _ _
+  letI : Fintype vertices := finiteVertices.fintype
+  have integral : ∀ v : vertices, ∃ (D : ℕ) (z : Fin n → ℤ), 0 < D ∧
+      integerCoordinateMap n z = (D : ℝ) • v.val :=
+    fun v => integer_halfspace_extreme_integral_multiple
+      (boxedInequalityMatrix C) boxedInequalityRhs v.property
+  choose D z positive integralValue using integral
+  let generators : Finset (Fin n → ℤ) := Finset.univ.image z
+  let hull := PointedCone.hull ℝ (integerCoordinateMap n '' (generators : Set (Fin n → ℤ)))
+  have vertexInCone (v : vertices) : v.val ∈ σ :=
+    (membership v.val).mpr ((mem_boxedInequalityRegion_iff C v.val).mp v.property.1).1
+  have vertexInHull (v : vertices) : v.val ∈ hull := by
+    apply (PointedCone.smul_mem_iff hull (Nat.cast_pos.mpr (positive v))).mp
+    rw [← integralValue v]
+    exact PointedCone.subset_hull
+      ⟨z v,Finset.mem_image.mpr ⟨v,Finset.mem_univ _,rfl⟩,rfl⟩
+  have boxInHull : boxedInequalityRegion C ⊆ hull := by
+    unfold boxedInequalityRegion
+    rw [NormalProjective.compact_halfspace_eq_convexHull_extremePoints _ _
+      (boxedInequalityRegion_isCompact C)]
+    exact convexHull_min (fun v member => vertexInHull ⟨v,member⟩) hull.convex
+  apply isLatticeRational_iff.mpr
+  refine ⟨generators,le_antisymm ?_ ?_⟩
+  · intro x inCone
+    let t : ℝ := (‖x‖+1)⁻¹
+    have denominator : 0 < ‖x‖+1 := by positivity
+    have tPositive : 0 < t := inv_pos.mpr denominator
+    have rescaled : t • x ∈ boxedInequalityRegion C := by
+      have coordinateBound (j : Fin n) : |(t • x) j| ≤ 1 := by
+        have coordinate : |x j| ≤ ‖x‖ := by simpa only [Real.norm_eq_abs] using norm_le_pi_norm x j
+        change |t * x j| ≤ 1
+        rw [abs_mul,abs_of_pos tPositive]
+        have prod := mul_le_mul_of_nonneg_left coordinate tPositive.le
+        have cancel : t * (‖x‖+1) = 1 := inv_mul_cancel₀ denominator.ne'
+        nlinarith
+      apply (mem_boxedInequalityRegion_iff C (t • x)).mpr
+      exact ⟨(membership _).mp (σ.smul_mem tPositive.le inCone),
+        fun j => (abs_le.mp (coordinateBound j)).1,
+        fun j => (abs_le.mp (coordinateBound j)).2⟩
+    exact (PointedCone.smul_mem_iff hull tPositive).mp (boxInHull rescaled)
+  · apply Submodule.span_le.mpr
+    rintro _ ⟨w,member,rfl⟩
+    obtain ⟨v,_,rfl⟩ := Finset.mem_image.mp member
+    rw [integralValue]
+    exact σ.smul_mem (Nat.cast_nonneg _) (vertexInCone v)
+
+end ToricPower.FanSubdivision
+end

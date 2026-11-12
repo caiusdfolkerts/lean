@@ -35,3 +35,4 @@ You'll need to install Elan and Git to run the verification.
 | `stress_flex` | Stress–flex orthogonality on spheres and a torus obstruction |
 | `small_nonrational` | Small nonrational four-polytopes |
 | `wishart` | The Wishart product inequality and spectral correlation |
+| `toric_power_maps` | Frobenius generators for smooth toric varieties |

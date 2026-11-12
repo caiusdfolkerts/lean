@@ -1,0 +1,25 @@
+name = "toric_power_maps_verification"
+version = "0.1.0"
+defaultTargets = ["Verified", "Audit"]
+moreLeanArgs = ["-j1", "-M5000"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "56a005855ea17e0b0958f73ec801ae140b0a1679"
+
+# Register the supporting project modules.
+# Mathlib is supplied by the pinned upstream dependency.
+[[lean_lib]]
+name = "SupportingSources"
+roots = ["ToricPower", "TauCeti", "NormalProjective"]
+
+# Verified theorem interface and its statement/axiom audit.
+[[lean_lib]]
+name = "Verified"
+globs = ["Verified"]
+
+[[lean_lib]]
+name = "Audit"
+globs = ["Audit"]
+
