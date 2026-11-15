@@ -1,6 +1,6 @@
 # Lean
 
-This repo is home to the Lean formalisations for all my mathematics research. I've tried to make it as self-explanatory as possible. If you want to contact me, email me at caiusdfolkerts@gmail.com. 
+This repo is home to the Lean formalisations for all my mathematics research. I've tried to make it as easy to navigate as possible. To contact me, email me at caiusdfolkerts@gmail.com. 
 
 You'll need to install Elan and Git to run the verification. 
 
