@@ -4,7 +4,7 @@ This repo is home to the Lean formalisations for all my mathematics research. I'
 
 You'll need to install Elan and Git to run the verification. 
 
-| Project | Flagship result |
+| Project | Result |
 | --- | --- |
 | [`alternating_forms`](alternating_forms/) | We determine the Hilbert series of a complex exterior algebra modulo two general quadrics in every dimension. |
 | [`barycentric_invariance`](barycentric_invariance/) | Barycentric subdivision preserves the face ring of a finite simplicial poset as a module over its universal parameters. |
