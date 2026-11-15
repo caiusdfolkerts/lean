@@ -1,6 +1,6 @@
 # A counterexample to Smilansky’s conjecture
 
-This project contains the full Lean4 formalisation for all principal results in my paper *A counterexample to Smilansky’s conjecture*.
+This project contains the full Lean4 formalisation for all principal results in my paper *A counterexample to Smilansky’s conjecture*. I've included the paper as paper.pdf.
 
 ## Verification
 

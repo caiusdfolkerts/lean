@@ -1,6 +1,6 @@
 # Six-connected K4-covered graphs are rigid in three dimensions
 
-This project contains the full Lean4 formalisation for all principal results in my paper *Six-connected K4-covered graphs are rigid in three dimensions*.
+This project contains the full Lean4 formalisation for all principal results in my paper *Six-connected K4-covered graphs are rigid in three dimensions*. I've included the paper as paper.pdf.
 
 ## Verification
 

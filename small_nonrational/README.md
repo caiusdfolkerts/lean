@@ -1,6 +1,6 @@
 # Small nonrational four-polytopes
 
-This project contains the full Lean4 formalisation for all principal results in my paper *Small nonrational four-polytopes*.
+This project contains the full Lean4 formalisation for all principal results in my paper *Small nonrational four-polytopes*. I've included the paper as paper.pdf.
 
 ## Verification
 

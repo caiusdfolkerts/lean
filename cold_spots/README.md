@@ -1,6 +1,6 @@
 # Universal cold spots of E8 and related lattices
 
-This project contains the full Lean4 formalisation for all principal results in my paper *Universal cold spots of E8 and related lattices*.
+This project contains the full Lean4 formalisation for all principal results in my paper *Universal cold spots of E8 and related lattices*. I've included the paper as paper.pdf.
 
 ## Verification
 

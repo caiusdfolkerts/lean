@@ -1,6 +1,6 @@
 # Undecidability of mixed-volume realization
 
-This project contains the full Lean4 formalisation for all principal results in my paper *Undecidability of mixed-volume realization*.
+This project contains the full Lean4 formalisation for all principal results in my paper *Undecidability of mixed-volume realization*. I've included the paper as paper.pdf.
 
 ## Verification
 

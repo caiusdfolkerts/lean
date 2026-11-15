@@ -1,6 +1,6 @@
 # Singular-vector spans beyond boundary format
 
-This project contains the full Lean4 formalisation for all principal results in my paper *Singular-vector spans beyond boundary format*.
+This project contains the full Lean4 formalisation for all principal results in my paper *Singular-vector spans beyond boundary format*. I've included the paper as paper.pdf.
 
 ## Verification
 

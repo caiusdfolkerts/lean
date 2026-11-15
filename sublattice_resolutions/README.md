@@ -1,6 +1,6 @@
 # Sublattice resolutions and Betti preservation in all powers
 
-This project contains the full Lean4 formalisation for all principal results in my paper *Sublattice resolutions and Betti preservation in all powers*.
+This project contains the full Lean4 formalisation for all principal results in my paper *Sublattice resolutions and Betti preservation in all powers*. I've included the paper as paper.pdf.
 
 ## Verification
 

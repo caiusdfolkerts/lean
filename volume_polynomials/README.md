@@ -1,6 +1,6 @@
 # Volume polynomials and the Heine–Shephard problem
 
-This project contains the full Lean4 formalisation for all principal results in my paper *Volume polynomials and the Heine–Shephard problem*.
+This project contains the full Lean4 formalisation for all principal results in my paper *Volume polynomials and the Heine–Shephard problem*. I've included the paper as paper.pdf.
 
 ## Verification
 

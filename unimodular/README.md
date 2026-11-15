@@ -1,6 +1,6 @@
 # Unimodular configurations and complete fans
 
-This project contains the full Lean4 formalisation for the principal results in my paper *Unimodular configurations and complete fans*. I’m still working on the remaining results, which I expect to be ready in a few days.
+This project contains the full Lean4 formalisation for the principal results in my paper *Unimodular configurations and complete fans*. I’m still working on the remaining results, which I expect to be ready in a few days. I've included the paper as paper.pdf.
 
 ## Verification
 

@@ -1,6 +1,6 @@
 # Higher Specht bases for Springer and Δ-Springer rings
 
-This project contains the full Lean4 formalisation for all principal results in my paper *Higher Specht bases for Springer and Δ-Springer rings*.
+This project contains the full Lean4 formalisation for all principal results in my paper *Higher Specht bases for Springer and Δ-Springer rings*. I've included the paper as paper.pdf.
 
 ## Verification
 

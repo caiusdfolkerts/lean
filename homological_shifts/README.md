@@ -1,6 +1,6 @@
 # Rank formulas for homological shifts of polymatroidal ideals
 
-This project contains the full Lean4 formalisation for all principal results in my paper *Rank formulas for homological shifts of polymatroidal ideals*.
+This project contains the full Lean4 formalisation for all principal results in my paper *Rank formulas for homological shifts of polymatroidal ideals*. I've included the paper as paper.pdf.
 
 ## Verification
 
