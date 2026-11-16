@@ -1,12 +1,8 @@
 # Lean
 
-[![Build all projects](https://github.com/caiusdfolkerts/lean/actions/workflows/lean.yml/badge.svg?branch=main&event=push)](https://github.com/caiusdfolkerts/lean/actions/workflows/lean.yml)
-
 This repo is home to the Lean formalisations for all my mathematics research. Over the last few months I've written 29 papers in convex geometry, commutative algebra and representation theory using AI. These include a resolution to the [Heine–Shephard problem](volume_polynomials/), and proofs of [Jockusch's 1993 cubical lower bound conjecture](cubical_lower_bound/), the [Hivert–Thiéry conjecture](deformed_coinvariants/) and the [Hanlon–Hicks–Lazarev conjecture](toric_power_maps/).
 
 Descriptions of the papers and their corresponding formalisations, are listed in the table below. For each formalisation, I've also included an index that links all verified statements to their corresponding Lean4 declarations.
-
-I've used GitHub Actions to discover and build all 29 Lean projects from a clean environment at each push. This uses precompiled Mathlib dependencies from Mathlib's cache; all project files are rebuilt from the published source. If the badge at the top of this README is green, then every project's job has succeeded. You can see the individual results and logs by clicking it.
 
 I've also made it easy to inspect theorem axioms via the default builds (there are no sorrys or admits in this repo!)
 
