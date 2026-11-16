@@ -2,7 +2,7 @@ name = "sublattice_resolutions"
 version = "1.0.0"
 defaultTargets = ["proof", "verification"]
 enableArtifactCache = false
-moreLeanArgs = ["-j1", "-M3200", "-DElab.async=false", "-Ddebug.skipKernelTC=false"]
+moreLeanArgs = ["-j1", "-M8192", "-DElab.async=false", "-Ddebug.skipKernelTC=false"]
 
 [[require]]
 name = "mathlib"
