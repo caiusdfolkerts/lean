@@ -40,6 +40,13 @@ jobs:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           sparse-checkout: ${{ matrix.project }}
+      - name: Check published source integrity
+        working-directory: ${{ matrix.project }}
+        shell: bash
+        run: |
+          if [[ -f verification/source_index.json ]]; then
+            python3 verification/run.py --prepare-only
+          fi
       - name: Build from source with cached Mathlib dependencies
         uses: leanprover/lean-action@ba3fdfe5c4476c925da13bf11a005ddb47e47aee # v1
         with:
@@ -50,3 +57,16 @@ jobs:
           lint: false
           use-mathlib-cache: true
           use-github-cache: false
+      - name: Preserve custom verification failure logs
+        if: failure()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: verification-logs-${{ matrix.project }}
+          include-hidden-files: true
+          if-no-files-found: ignore
+          retention-days: 14
+          path: |
+            ${{ matrix.project }}/.lake/verification_workspace/verification/**/*.json*
+            ${{ matrix.project }}/.lake/verification_workspace/SegreVerified.audit.jsonl
+            ${{ matrix.project }}/.lake/verification_workspace/.lake/build/**/*.json*
+            ${{ matrix.project }}/.lake/verification_workspace/.lake/build/**/*.log

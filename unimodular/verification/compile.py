@@ -125,6 +125,10 @@ def run(m):
         for d,h in r['dependencies_sha256'].items()):
         r['status'] = 'source_changed'
     if r['status']=='passed': r['olean_sha256'] = sha(o)
+    else:
+        print(f"FAILED: {m} (exit {r.get('exit_code')}); diagnostics: {log}", flush=True)
+        if log.exists():
+            print(log.read_text(), flush=True)
     return r
 
 pending = set(deps)-set(records)
