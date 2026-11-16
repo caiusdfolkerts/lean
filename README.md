@@ -2,13 +2,17 @@
 
 [![Build all projects](https://github.com/caiusdfolkerts/lean/actions/workflows/lean.yml/badge.svg?branch=main&event=push)](https://github.com/caiusdfolkerts/lean/actions/workflows/lean.yml)
 
-This repo is home to the Lean formalisations for all my mathematics research. I've tried to make it as easy to navigate as possible. To contact me, email me at caiusdfolkerts@gmail.com. 
+This repo is home to the Lean formalisations for all my mathematics research. Over the last few months I've written 29 papers in convex geometry, commutative algebra and representation theory using AI. These include a resolution to the [Heine–Shephard problem](volume_polynomials/), and proofs of [Jockusch's 1993 cubical lower bound conjecture](cubical_lower_bound/), the [Hivert–Thiéry conjecture](deformed_coinvariants/) and the [Hanlon–Hicks–Lazarev conjecture](toric_power_maps/).
+
+Descriptions of the papers and their corresponding formalisations, are listed in the table below. For each formalisation, I've also included an index that links all verified statements to their corresponding Lean4 declarations.
+
+On every push, GitHub Actions discovers all 29 Lean projects and builds each from a clean environment. This uses precompiled Mathlib dependencies from Mathlib's cache, but all project files are rebuilt from the published source. If the badge at the top of this README is green, then every project's job has succeeded. You can see the individual results and logs by clicking it.
+
+I've also made it easy to inspect theorem axioms via the default builds (there are no sorrys or admits in this repo!)
+
+If you find any improvements, please contact me at [caiusdfolkerts@gmail.com](mailto:caiusdfolkerts@gmail.com).
 
 You'll need to install Elan and Git to run the verification.
-
-On every push, CI builds every project from a clean checkout using its pinned Lean version and Mathlib dependency cache. Project build artifacts are never restored from a cache. Click the badge above for the individual results.
-
-Every project’s default build includes an axiom audit of its published results. These checks reject `sorryAx` (including unfinished supporting proofs) and any axioms beyond `propext`, `Classical.choice`, and `Quot.sound`. The audit must succeed for the project’s CI job to pass.
 
 | Project | Result |
 | --- | --- |
