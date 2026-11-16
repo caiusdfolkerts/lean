@@ -6,7 +6,7 @@ This repo is home to the Lean formalisations for all my mathematics research. Ov
 
 Descriptions of the papers and their corresponding formalisations, are listed in the table below. For each formalisation, I've also included an index that links all verified statements to their corresponding Lean4 declarations.
 
-On every push, GitHub Actions discovers all 29 Lean projects and builds each from a clean environment. This uses precompiled Mathlib dependencies from Mathlib's cache, but all project files are rebuilt from the published source. If the badge at the top of this README is green, then every project's job has succeeded. You can see the individual results and logs by clicking it.
+I've used GitHub Actions to discover and build all 29 Lean projects from a clean environment at each push. This uses precompiled Mathlib dependencies from Mathlib's cache; all project files are rebuilt from the published source. If the badge at the top of this README is green, then every project's job has succeeded. You can see the individual results and logs by clicking it.
 
 I've also made it easy to inspect theorem axioms via the default builds (there are no sorrys or admits in this repo!)
 
