@@ -1,6 +1,6 @@
-# Frobenius generators for smooth toric varieties
+# The Hanlon–Hicks–Lazarev conjecture on smooth toric varieties
 
-This project contains the full Lean4 formalisation of the principal results in my paper *Frobenius generators for smooth toric varieties*. I've included the paper as paper.pdf.
+This project contains the full Lean4 formalisation of the principal results in my paper *The Hanlon–Hicks–Lazarev conjecture on smooth toric varieties*. I've included the paper as paper.pdf.
 
 ## Verification
 

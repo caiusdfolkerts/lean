@@ -1,6 +1,6 @@
-# Explicit nonpolytopal Bier spheres
+# The first explicit nonpolytopal Bier spheres
 
-This project contains the full Lean4 formalisation for all principal results in my paper *Explicit nonpolytopal Bier spheres*. I've included the paper as paper.pdf.
+This project contains the full Lean4 formalisation for all principal results in my paper *The first explicit nonpolytopal Bier spheres*. I've included the paper as paper.pdf.
 
 ## Verification
 
