@@ -32,8 +32,8 @@ jobs:
     env:
       # Bound concurrency and memory on the hosted runner, without skipping checks.
       LEAN_NUM_THREADS: '2'
-      LEAN_VERIFY_JOBS: '2'
-      LEAN_VERIFY_HEAVY_JOBS: '1'
+      LEAN_VERIFY_JOBS: ${{ matrix.project == 'small_nonrational' && '4' || '2' }}
+      LEAN_VERIFY_HEAVY_JOBS: '2'
       LEAN_VERIFY_MEMORY_BUDGET_MB: '10000'
       LEAN_VERIFY_AUDIT_MEMORY_MB: '8192'
     steps:
