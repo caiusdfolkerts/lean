@@ -8,6 +8,8 @@ You'll need to install Elan and Git to run the verification.
 
 On every push, CI builds every project from a clean checkout using its pinned Lean version and Mathlib dependency cache. Project build artifacts are never restored from a cache. Click the badge above for the individual results.
 
+Every project’s default build includes an axiom audit of its published results. These checks reject `sorryAx` (including unfinished supporting proofs) and any axioms beyond `propext`, `Classical.choice`, and `Quot.sound`. The audit must succeed for the project’s CI job to pass.
+
 | Project | Result |
 | --- | --- |
 | [`alternating_forms`](alternating_forms/) | We determine the Hilbert series of a complex exterior algebra modulo two general quadrics in every dimension. |
