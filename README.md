@@ -1,8 +1,12 @@
 # Lean
 
+[![Build all projects](https://github.com/caiusdfolkerts/lean/actions/workflows/lean.yml/badge.svg?branch=main&event=push)](https://github.com/caiusdfolkerts/lean/actions/workflows/lean.yml)
+
 This repo is home to the Lean formalisations for all my mathematics research. I've tried to make it as easy to navigate as possible. To contact me, email me at caiusdfolkerts@gmail.com. 
 
-You'll need to install Elan and Git to run the verification. 
+You'll need to install Elan and Git to run the verification.
+
+On every push, CI builds every project from a clean checkout using its pinned Lean version and Mathlib dependency cache. Project build artifacts are never restored from a cache. Click the badge above for the individual results.
 
 | Project | Result |
 | --- | --- |

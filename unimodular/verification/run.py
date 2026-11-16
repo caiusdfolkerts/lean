@@ -47,7 +47,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--prepare-only',action='store_true');args=parser.parse_args()
     root=Path(__file__).resolve().parents[1];workspace,config=prepare(root)
     if args.prepare_only:print(f"Prepared {len(config['entries'])} unchanged source modules.");return
-    subprocess.run(['lake','env','python3','compile.py','--workers','8'],cwd=workspace,check=True)
+    subprocess.run(['lake','env','python3','compile.py','--workers',os.environ.get('LEAN_VERIFY_JOBS','8')],cwd=workspace,check=True)
     records=json.loads((workspace/'verification/kernel/results.json').read_text())
     if set(records)!={r['module'] for r in config['entries']} or any(r.get('status')!='passed' for r in records.values()):raise RuntimeError('Not all published modules passed')
     check_audit(workspace/'verification/kernel/Audit.jsonl',config['audited_declarations'])
