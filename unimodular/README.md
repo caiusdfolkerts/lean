@@ -1,6 +1,6 @@
 # Unimodular configurations and complete fans
 
-[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/lean/project-unimodular.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-unimodular.yml)
+[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/research/project-unimodular.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/research/actions/workflows/project-unimodular.yml)
 
 This project contains the full Lean4 formalisation for the principal results in my paper *Unimodular configurations and complete fans*. I’m still working on the remaining results, which I expect to be ready in a few days. I've included the paper as paper.pdf.
 

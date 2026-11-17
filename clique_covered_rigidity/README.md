@@ -1,6 +1,6 @@
 # Six-connected K4-covered graphs are rigid in three dimensions
 
-[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/lean/project-clique_covered_rigidity.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-clique_covered_rigidity.yml)
+[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/research/project-clique_covered_rigidity.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/research/actions/workflows/project-clique_covered_rigidity.yml)
 
 This project contains the full Lean4 formalisation for all principal results in my paper *Six-connected K4-covered graphs are rigid in three dimensions*. I've included the paper as paper.pdf.
 

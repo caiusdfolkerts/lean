@@ -1,6 +1,6 @@
 # The Hanlon–Hicks–Lazarev conjecture on smooth toric varieties
 
-[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/lean/project-toric_power_maps.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-toric_power_maps.yml)
+[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/research/project-toric_power_maps.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/research/actions/workflows/project-toric_power_maps.yml)
 
 This project contains the full Lean4 formalisation of the principal results in my paper *The Hanlon–Hicks–Lazarev conjecture on smooth toric varieties*. I've included the paper as paper.pdf.
 

@@ -1,6 +1,6 @@
 # The Hivert–Thiéry conjecture and differential normal forms
 
-[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/lean/project-deformed_coinvariants.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-deformed_coinvariants.yml)
+[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/research/project-deformed_coinvariants.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/research/actions/workflows/project-deformed_coinvariants.yml)
 
 This project contains the full Lean4 formalisation of the principal coinvariant theorems and most algebraic results in my paper *The Hivert–Thiéry conjecture and differential normal forms*. I’m still working on the remaining results, which I expect to be ready in a few days. I've included the paper as paper.pdf.
 

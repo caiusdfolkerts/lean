@@ -1,6 +1,6 @@
 # Quadratic generation for smooth polytopes with long edges
 
-[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/lean/project-toric_quadratic_generation.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-toric_quadratic_generation.yml)
+[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/research/project-toric_quadratic_generation.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/research/actions/workflows/project-toric_quadratic_generation.yml)
 
 This project contains the full Lean4 formalisation for all principal results in my paper *Quadratic generation for smooth polytopes with long edges*. I've included the paper as paper.pdf.
 

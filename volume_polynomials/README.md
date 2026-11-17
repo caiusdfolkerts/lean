@@ -1,6 +1,6 @@
 # Volume polynomials and the Heine–Shephard problem
 
-[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/lean/project-volume_polynomials.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-volume_polynomials.yml)
+[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/research/project-volume_polynomials.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/research/actions/workflows/project-volume_polynomials.yml)
 
 This project contains the full Lean4 formalisation for all principal results in my paper *Volume polynomials and the Heine–Shephard problem*. I've included the paper as paper.pdf.
 

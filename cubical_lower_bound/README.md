@@ -1,6 +1,6 @@
 # Face numbers of cubical polytopes
 
-[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/lean/project-cubical_lower_bound.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-cubical_lower_bound.yml)
+[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/research/project-cubical_lower_bound.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/research/actions/workflows/project-cubical_lower_bound.yml)
 
 This project contains the full Lean4 formalisation for all principal results in my paper *Face numbers of cubical polytopes*. I've included the paper as paper.pdf.
 

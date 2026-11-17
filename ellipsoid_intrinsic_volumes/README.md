@@ -1,6 +1,6 @@
 # Ellipsoids are determined by their intrinsic volumes
 
-[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/lean/project-ellipsoid_intrinsic_volumes.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-ellipsoid_intrinsic_volumes.yml)
+[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/research/project-ellipsoid_intrinsic_volumes.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/research/actions/workflows/project-ellipsoid_intrinsic_volumes.yml)
 
 This project contains the full Lean4 formalisation for all principal results in my paper *Ellipsoids are determined by their intrinsic volumes*. I've included the paper as paper.pdf.
 

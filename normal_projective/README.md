@@ -1,6 +1,6 @@
 # Normal–projective equivalence and the exact cube bound
 
-[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/lean/project-normal_projective.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-normal_projective.yml)
+[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/research/project-normal_projective.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/research/actions/workflows/project-normal_projective.yml)
 
 This project contains the full Lean4 formalisation for all principal results in my paper *Normal–projective equivalence and the exact cube bound*. I've included the paper as paper.pdf.
 
