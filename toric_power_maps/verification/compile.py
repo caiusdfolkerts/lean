@@ -20,10 +20,24 @@ import time
 ap = argparse.ArgumentParser()
 ap.add_argument('project', type=Path, nargs='?', default=Path(__file__).parent)
 ap.add_argument('--workers', type=int, default=1)
+ap.add_argument('--memory-budget-mb', type=int,
+                default=int(os.environ.get('LEAN_VERIFY_MEMORY_BUDGET_MB', '10000')))
 ap.add_argument('--roots', nargs='*')
 ap.add_argument('--retry', action='store_true')
 ap.add_argument('--run-id',default='kernel')
 args = ap.parse_args()
+# These kernel checks exceeded 5 GB in a clean CI build. Reserve their full
+# allowance before launch so they cannot overlap another compiler on CI.
+heavy_modules = {
+    'ToricPower.ReconstructionCompletionRawKernelComponents',
+    'ToricPower.ReconstructionCompletionRawHomGenerators',
+    'ToricPower.ReconstructionCompletionRawSquare',
+}
+def memory_mb(module):
+    return 10000 if module in heavy_modules else 5000
+
+if args.workers < 1:
+    ap.error('--workers must be positive')
 p = args.project.resolve()
 out = p / '.lake/verified/lib/lean'
 logs = p / 'verification' / args.run_id
@@ -71,6 +85,8 @@ def visit(m):
         visit(n)
         if n in deps: deps[m].append(n)
 for m in roots: visit(m)
+if args.memory_budget_mb < max((memory_mb(m) for m in deps), default=1):
+    ap.error('--memory-budget-mb is too small for the requested modules')
 (logs / 'dependency-graph.json').write_text(json.dumps({'roots':roots,'dependencies':deps,'external_imports':sorted(standard)},indent=2))
 
 env = os.environ.copy()
@@ -111,7 +127,7 @@ def run(m):
     o = out / (m.replace('.', '/') + '.olean')
     o.parent.mkdir(parents=True,exist_ok=True)
     log = logs / (m + '.jsonl')
-    cmd = [lean,'-R',str(p),'-j1','-M5000',str(f),'-o',str(o),'--json']
+    cmd = [lean,'-R',str(p),'-j1',f'-M{memory_mb(m)}',str(f),'-o',str(o),'--json']
     start = time.time()
     r = {'source_sha256':sha(f),'command':cmd,'started':start,
          'dependencies_sha256': {d: records[d]['olean_sha256'] for d in deps[m]}}
@@ -138,7 +154,7 @@ def run(m):
 
 pending = set(deps)-set(records)
 active = {}
-print(json.dumps({'modules':len(deps),'roots':len(roots),'reused_fresh':len(records),'workers':args.workers}),flush=True)
+print(json.dumps({'modules':len(deps),'roots':len(roots),'reused_fresh':len(records),'workers':args.workers,'memory_budget_mb':args.memory_budget_mb}),flush=True)
 with concurrent.futures.ThreadPoolExecutor(max_workers=args.workers) as pool:
     while pending or active:
         # Reject changed source and all of its transitive dependants.
@@ -157,9 +173,15 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=args.workers) as pool:
                 del records[m]
                 pending.add(m)
         ready = sorted(m for m in pending if all(records.get(d,{}).get('status')=='passed' for d in deps[m]))
-        for m in ready[:args.workers-len(active)]:
+        reserved_mb = sum(memory_mb(m) for m in active.values())
+        for m in ready:
+            if len(active) >= args.workers:
+                break
+            if reserved_mb + memory_mb(m) > args.memory_budget_mb:
+                continue
             pending.remove(m)
             active[pool.submit(run,m)] = m
+            reserved_mb += memory_mb(m)
         if not active:
             for m in pending:
                 records[m] = {'status':'blocked','dependencies':[d for d in deps[m] if records.get(d,{}).get('status')!='passed']}
