@@ -1,6 +1,6 @@
 # A counterexample to Smilansky’s conjecture
 
-[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/lean/project-cubical_indecomposability.yml?branch=main&label=build)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-cubical_indecomposability.yml)
+[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/lean/project-cubical_indecomposability.yml?branch=main&label=&style=for-the-badge)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-cubical_indecomposability.yml)
 
 This project contains the full Lean4 formalisation for all principal results in my paper *A counterexample to Smilansky’s conjecture*. I've included the paper as paper.pdf.
 

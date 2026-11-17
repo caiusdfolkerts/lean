@@ -1,6 +1,6 @@
 # The sharp vertex bound for conditional decomposability
 
-[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/lean/project-conditional_decomposability.yml?branch=main&label=build)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-conditional_decomposability.yml)
+[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/lean/project-conditional_decomposability.yml?branch=main&label=&style=for-the-badge)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-conditional_decomposability.yml)
 
 This project contains the full Lean4 formalisation for all principal results in my paper *The sharp vertex bound for conditional decomposability*. I've included the paper as paper.pdf.
 

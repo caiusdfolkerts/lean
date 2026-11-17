@@ -1,6 +1,6 @@
 # Universal cold spots of E8 and related lattices
 
-[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/lean/project-cold_spots.yml?branch=main&label=build)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-cold_spots.yml)
+[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/lean/project-cold_spots.yml?branch=main&label=&style=for-the-badge)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-cold_spots.yml)
 
 This project contains the full Lean4 formalisation for all principal results in my paper *Universal cold spots of E8 and related lattices*. I've included the paper as paper.pdf.
 
