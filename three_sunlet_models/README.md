@@ -1,6 +1,6 @@
 # Dimension and identifiability of three-sunlet models
 
-[![Build](https://github.com/caiusdfolkerts/lean/actions/workflows/project-three_sunlet_models.yml/badge.svg?branch=main)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-three_sunlet_models.yml)
+[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/lean/project-three_sunlet_models.yml?branch=main&label=build)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-three_sunlet_models.yml)
 
 This project contains the full Lean4 formalisation for all principal results in my paper *Dimension and identifiability of three-sunlet models*. I've included the paper as paper.pdf.
 

@@ -34,6 +34,11 @@ def event(kind):
 event('start')
 time.sleep(0.15)
 mode = os.environ['FIXTURE_MODE']
+if source.endswith('LightA.lean') and mode in ('memory', 'memory_always', 'ordinary_error'):
+    if memory < 10000 or mode != 'memory':
+        print('(kernel) excessive memory consumption detected' if mode != 'ordinary_error' else 'type mismatch')
+        event('end')
+        sys.exit(1)
 if source.endswith('RawSquare.lean'):
     if memory < 10000 or mode == 'fail':
         event('end')
@@ -78,6 +83,22 @@ event('end')
                 self.assertNotEqual(result.returncode, 0)
                 self.assertEqual(records[HEAVY]['status'], 'failed')
                 self.assertEqual(records['Audit']['status'], 'blocked')
+
+    def test_memory_retry_is_bounded_and_serial(self):
+        for mode in ('memory', 'memory_always', 'ordinary_error'):
+            with self.subTest(mode=mode):
+                result, events, records = self.run_fixture(mode)
+                attempts = [e['memory'] for e in events if e['kind'] == 'start' and e['source'].endswith('LightA.lean')]
+                self.assertEqual(attempts, [5000] if mode == 'ordinary_error' else [5000, 10000])
+                self.assertEqual(result.returncode == 0, mode == 'memory')
+                self.assertEqual(records['Audit']['status'], 'passed' if mode == 'memory' else 'blocked')
+                active = {}
+                for event in sorted(events, key=lambda e: e['time']):
+                    if event['kind'] == 'start':
+                        active[event['source']] = event['memory']
+                        self.assertLessEqual(sum(active.values()), 10000)
+                    else:
+                        active.pop(event['source'])
 
     def test_impossible_budget_rejected(self):
         result, events, _ = self.run_fixture(budget=9999)

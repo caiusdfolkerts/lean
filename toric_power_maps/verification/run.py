@@ -23,7 +23,7 @@ def prepare(root):
     (workspace/'lakefile.toml').write_bytes((root/'verification/project.toml').read_bytes())
     (workspace/'compile.py').write_bytes((root/'verification/compile.py').read_bytes())
     packages=workspace/'.lake/packages';packages.parent.mkdir(exist_ok=True)
-    if not packages.exists():packages.symlink_to(root/'.lake/packages',target_is_directory=True)
+    if not packages.exists() and not packages.is_symlink():packages.symlink_to(root/'.lake/packages',target_is_directory=True)
     return workspace,config
 
 def check_audit(log,expected):

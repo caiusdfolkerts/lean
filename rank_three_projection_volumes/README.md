@@ -1,6 +1,6 @@
 # Rank-three obstructions to coordinate projection volumes
 
-[![Build](https://github.com/caiusdfolkerts/lean/actions/workflows/project-rank_three_projection_volumes.yml/badge.svg?branch=main)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-rank_three_projection_volumes.yml)
+[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/lean/project-rank_three_projection_volumes.yml?branch=main&label=build)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-rank_three_projection_volumes.yml)
 
 This project contains the full Lean4 formalisation for all principal results in my paper *Rank-three obstructions to coordinate projection volumes*. I've included the paper as paper.pdf.
 

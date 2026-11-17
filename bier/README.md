@@ -1,6 +1,6 @@
 # The first explicit nonpolytopal Bier spheres
 
-[![Build](https://github.com/caiusdfolkerts/lean/actions/workflows/project-bier.yml/badge.svg?branch=main)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-bier.yml)
+[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/lean/project-bier.yml?branch=main&label=build)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-bier.yml)
 
 This project contains the full Lean4 formalisation for all principal results in my paper *The first explicit nonpolytopal Bier spheres*. I've included the paper as paper.pdf.
 

@@ -1,6 +1,6 @@
 # Hilbert series of exterior algebras modulo two quadrics
 
-[![Build](https://github.com/caiusdfolkerts/lean/actions/workflows/project-alternating_forms.yml/badge.svg?branch=main)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-alternating_forms.yml)
+[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/lean/project-alternating_forms.yml?branch=main&label=build)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-alternating_forms.yml)
 
 This project contains the full Lean4 formalisation to Theorems 1.1, 1.3 and most algebraic results in Sections 5 and 7 from my paper *Hilbert series of exterior algebras modulo two quadrics*. I’m still working on the formalisation of the general geometric statement of Theorem 1.2 and parts of Theorem 4.1, but I expect them to be ready in a few days. I've included the paper as paper.pdf.
 

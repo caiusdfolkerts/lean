@@ -30,6 +30,7 @@ args = ap.parse_args()
 # allowance before launch so they cannot overlap another compiler on CI.
 heavy_modules = {
     'ToricPower.ReconstructionCompletionRawKernelComponents',
+    'ToricPower.ReconstructionCompletionRawKernelGenerators',
     'ToricPower.ReconstructionCompletionRawHomGenerators',
     'ToricPower.ReconstructionCompletionRawSquare',
 }
@@ -137,6 +138,7 @@ def run(m):
         text = log.read_text()
         bad = re.search(r"hasSorry|declaration uses [`']sorry|sorryAx",text)
         r.update(exit_code=result.returncode,status='passed' if result.returncode==0 and not bad and o.exists() else 'failed')
+        r['memory_limit_exceeded'] = result.returncode != 0 and not bad and '(kernel) excessive memory consumption detected' in text
     except subprocess.TimeoutExpired:
         r.update(status='failed',exit_code='timeout')
     r['seconds'] = round(time.time()-start,2)
@@ -189,7 +191,18 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=args.workers) as pool:
         done,_ = concurrent.futures.wait(active,timeout=2,return_when=concurrent.futures.FIRST_COMPLETED)
         for task in done:
             m = active.pop(task)
-            records[m] = task.result()
+            result = task.result()
+            if (result['status'] == 'failed' and result.get('memory_limit_exceeded')
+                    and memory_mb(m) < 10000 and args.memory_budget_mb >= 10000):
+                # Retry only this resource failure, once, with a full reservation.
+                # Preserve the first attempt's diagnostics for inspection.
+                shutil.copyfile(logs / (m + '.jsonl'), logs / (m + '.memory-5000.jsonl'))
+                heavy_modules.add(m)
+                pending.add(m)
+                records.pop(m, None)
+                print(json.dumps({'module':m,'status':'retrying_memory_limit','memory_mb':10000}),flush=True)
+                continue
+            records[m] = result
             print(json.dumps({'module':m,'status':records[m]['status'],'seconds':records[m]['seconds'],'remaining':len(pending)}),flush=True)
         save()
 save()

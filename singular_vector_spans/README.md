@@ -1,6 +1,6 @@
 # Singular-vector spans beyond boundary format
 
-[![Build](https://github.com/caiusdfolkerts/lean/actions/workflows/project-singular_vector_spans.yml/badge.svg?branch=main)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-singular_vector_spans.yml)
+[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/lean/project-singular_vector_spans.yml?branch=main&label=build)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-singular_vector_spans.yml)
 
 This project contains the full Lean4 formalisation for all principal results in my paper *Singular-vector spans beyond boundary format*. I've included the paper as paper.pdf.
 
