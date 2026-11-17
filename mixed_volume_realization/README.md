@@ -1,5 +1,7 @@
 # Undecidability of mixed-volume realization
 
+[![Build](https://github.com/caiusdfolkerts/lean/actions/workflows/project-mixed_volume_realization.yml/badge.svg?branch=main)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-mixed_volume_realization.yml)
+
 This project contains the full Lean4 formalisation for all principal results in my paper *Undecidability of mixed-volume realization*. I've included the paper as paper.pdf.
 
 ## Verification

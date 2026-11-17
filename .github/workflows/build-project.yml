@@ -1,0 +1,55 @@
+name: Build one Lean project
+
+on:
+  workflow_call:
+    inputs:
+      project:
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    env:
+      # Bound concurrency and memory on the hosted runner, without skipping checks.
+      LEAN_NUM_THREADS: '2'
+      LEAN_VERIFY_JOBS: ${{ inputs.project == 'small_nonrational' && '4' || '2' }}
+      LEAN_VERIFY_HEAVY_JOBS: '2'
+      LEAN_VERIFY_MEMORY_BUDGET_MB: '10000'
+      LEAN_VERIFY_AUDIT_MEMORY_MB: '8192'
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          sparse-checkout: ${{ inputs.project }}
+      - name: Check published source integrity
+        working-directory: ${{ inputs.project }}
+        shell: bash
+        run: |
+          if [[ -f verification/source_index.json ]]; then
+            python3 verification/run.py --prepare-only
+          fi
+      - name: Build from source with cached Mathlib dependencies
+        uses: leanprover/lean-action@ba3fdfe5c4476c925da13bf11a005ddb47e47aee # v1
+        with:
+          lake-package-directory: ${{ inputs.project }}
+          auto-config: false
+          build: true
+          test: false
+          lint: false
+          use-mathlib-cache: true
+          use-github-cache: false
+      - name: Preserve custom verification failure logs
+        if: failure()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: verification-logs-${{ inputs.project }}
+          include-hidden-files: true
+          if-no-files-found: ignore
+          retention-days: 14
+          path: |
+            ${{ inputs.project }}/.lake/verification_workspace/verification/**/*.json*
+            ${{ inputs.project }}/.lake/verification_workspace/SegreVerified.audit.jsonl
+            ${{ inputs.project }}/.lake/verification_workspace/.lake/build/**/*.json*
+            ${{ inputs.project }}/.lake/verification_workspace/.lake/build/**/*.log

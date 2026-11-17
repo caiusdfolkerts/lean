@@ -1,0 +1,25 @@
+name: Lean clique_covered_rigidity
+
+on:
+  push:
+    paths:
+      - 'clique_covered_rigidity/**'
+      - '!clique_covered_rigidity/**/*.md'
+      - '!clique_covered_rigidity/**/*.pdf'
+      - '.github/workflows/build-project.yml'
+      - '.github/workflows/project-clique_covered_rigidity.yml'
+  pull_request:
+    paths:
+      - 'clique_covered_rigidity/**'
+      - '!clique_covered_rigidity/**/*.md'
+      - '!clique_covered_rigidity/**/*.pdf'
+      - '.github/workflows/build-project.yml'
+      - '.github/workflows/project-clique_covered_rigidity.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    uses: ./.github/workflows/build-project.yml
+    with:
+      project: clique_covered_rigidity

@@ -1,0 +1,25 @@
+name: Lean polymatroidal_ideals
+
+on:
+  push:
+    paths:
+      - 'polymatroidal_ideals/**'
+      - '!polymatroidal_ideals/**/*.md'
+      - '!polymatroidal_ideals/**/*.pdf'
+      - '.github/workflows/build-project.yml'
+      - '.github/workflows/project-polymatroidal_ideals.yml'
+  pull_request:
+    paths:
+      - 'polymatroidal_ideals/**'
+      - '!polymatroidal_ideals/**/*.md'
+      - '!polymatroidal_ideals/**/*.pdf'
+      - '.github/workflows/build-project.yml'
+      - '.github/workflows/project-polymatroidal_ideals.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    uses: ./.github/workflows/build-project.yml
+    with:
+      project: polymatroidal_ideals

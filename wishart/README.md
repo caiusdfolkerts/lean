@@ -1,5 +1,7 @@
 # The Wishart product inequality and spectral correlation
 
+[![Build](https://github.com/caiusdfolkerts/lean/actions/workflows/project-wishart.yml/badge.svg?branch=main)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-wishart.yml)
+
 This project contains the full Lean4 formalisation for all principal results in my paper *The Wishart product inequality and spectral correlation*. I've included the paper as paper.pdf.
 
 ## Verification

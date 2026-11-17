@@ -1,0 +1,25 @@
+name: Lean conditional_decomposability
+
+on:
+  push:
+    paths:
+      - 'conditional_decomposability/**'
+      - '!conditional_decomposability/**/*.md'
+      - '!conditional_decomposability/**/*.pdf'
+      - '.github/workflows/build-project.yml'
+      - '.github/workflows/project-conditional_decomposability.yml'
+  pull_request:
+    paths:
+      - 'conditional_decomposability/**'
+      - '!conditional_decomposability/**/*.md'
+      - '!conditional_decomposability/**/*.pdf'
+      - '.github/workflows/build-project.yml'
+      - '.github/workflows/project-conditional_decomposability.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    uses: ./.github/workflows/build-project.yml
+    with:
+      project: conditional_decomposability

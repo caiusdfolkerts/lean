@@ -1,0 +1,25 @@
+name: Lean alternating_forms
+
+on:
+  push:
+    paths:
+      - 'alternating_forms/**'
+      - '!alternating_forms/**/*.md'
+      - '!alternating_forms/**/*.pdf'
+      - '.github/workflows/build-project.yml'
+      - '.github/workflows/project-alternating_forms.yml'
+  pull_request:
+    paths:
+      - 'alternating_forms/**'
+      - '!alternating_forms/**/*.md'
+      - '!alternating_forms/**/*.pdf'
+      - '.github/workflows/build-project.yml'
+      - '.github/workflows/project-alternating_forms.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    uses: ./.github/workflows/build-project.yml
+    with:
+      project: alternating_forms

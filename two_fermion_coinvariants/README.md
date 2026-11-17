@@ -1,5 +1,7 @@
 # Monomial bases for two-fermion coinvariants
 
+[![Build](https://github.com/caiusdfolkerts/lean/actions/workflows/project-two_fermion_coinvariants.yml/badge.svg?branch=main)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-two_fermion_coinvariants.yml)
+
 This project contains the full Lean4 formalisation for all principal results in my paper *Monomial bases for two-fermion coinvariants*. I've included the paper as paper.pdf.
 
 ## Verification

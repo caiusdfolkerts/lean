@@ -1,0 +1,25 @@
+name: Lean projection_areas
+
+on:
+  push:
+    paths:
+      - 'projection_areas/**'
+      - '!projection_areas/**/*.md'
+      - '!projection_areas/**/*.pdf'
+      - '.github/workflows/build-project.yml'
+      - '.github/workflows/project-projection_areas.yml'
+  pull_request:
+    paths:
+      - 'projection_areas/**'
+      - '!projection_areas/**/*.md'
+      - '!projection_areas/**/*.pdf'
+      - '.github/workflows/build-project.yml'
+      - '.github/workflows/project-projection_areas.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    uses: ./.github/workflows/build-project.yml
+    with:
+      project: projection_areas

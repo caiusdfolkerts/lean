@@ -1,5 +1,7 @@
 # Characterizations of polymatroidal ideals
 
+[![Build](https://github.com/caiusdfolkerts/lean/actions/workflows/project-polymatroidal_ideals.yml/badge.svg?branch=main)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-polymatroidal_ideals.yml)
+
 This project contains the full Lean4 formalisation for all principal results in my paper *Characterizations of polymatroidal ideals*. I've included the paper as paper.pdf.
 
 ## Verification

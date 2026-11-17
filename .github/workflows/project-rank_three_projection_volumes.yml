@@ -1,0 +1,25 @@
+name: Lean rank_three_projection_volumes
+
+on:
+  push:
+    paths:
+      - 'rank_three_projection_volumes/**'
+      - '!rank_three_projection_volumes/**/*.md'
+      - '!rank_three_projection_volumes/**/*.pdf'
+      - '.github/workflows/build-project.yml'
+      - '.github/workflows/project-rank_three_projection_volumes.yml'
+  pull_request:
+    paths:
+      - 'rank_three_projection_volumes/**'
+      - '!rank_three_projection_volumes/**/*.md'
+      - '!rank_three_projection_volumes/**/*.pdf'
+      - '.github/workflows/build-project.yml'
+      - '.github/workflows/project-rank_three_projection_volumes.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    uses: ./.github/workflows/build-project.yml
+    with:
+      project: rank_three_projection_volumes

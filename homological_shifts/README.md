@@ -1,5 +1,7 @@
 # Rank formulas for homological shifts of polymatroidal ideals
 
+[![Build](https://github.com/caiusdfolkerts/lean/actions/workflows/project-homological_shifts.yml/badge.svg?branch=main)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-homological_shifts.yml)
+
 This project contains the full Lean4 formalisation for all principal results in my paper *Rank formulas for homological shifts of polymatroidal ideals*. I've included the paper as paper.pdf.
 
 ## Verification

@@ -1,5 +1,7 @@
 # Sharp bounds for indecomposable summands of graphical zonotopes
 
+[![Build](https://github.com/caiusdfolkerts/lean/actions/workflows/project-graphical_zonotopes.yml/badge.svg?branch=main)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-graphical_zonotopes.yml)
+
 This project contains the full Lean4 formalisation for all principal results in my paper *Sharp bounds for indecomposable summands of graphical zonotopes*. I've included the paper as paper.pdf.
 
 ## Verification

@@ -1,5 +1,7 @@
 # Barycentric invariance and universal parameters for face rings
 
+[![Build](https://github.com/caiusdfolkerts/lean/actions/workflows/project-barycentric_invariance.yml/badge.svg?branch=main)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-barycentric_invariance.yml)
+
 This project contains the full Lean4 formalisation for all principal results in my paper *Barycentric invariance and universal parameters for face rings*. I've included the paper as paper.pdf.
 
 ## Verification

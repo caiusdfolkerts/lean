@@ -1,0 +1,25 @@
+name: Lean singular_vector_spans
+
+on:
+  push:
+    paths:
+      - 'singular_vector_spans/**'
+      - '!singular_vector_spans/**/*.md'
+      - '!singular_vector_spans/**/*.pdf'
+      - '.github/workflows/build-project.yml'
+      - '.github/workflows/project-singular_vector_spans.yml'
+  pull_request:
+    paths:
+      - 'singular_vector_spans/**'
+      - '!singular_vector_spans/**/*.md'
+      - '!singular_vector_spans/**/*.pdf'
+      - '.github/workflows/build-project.yml'
+      - '.github/workflows/project-singular_vector_spans.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    uses: ./.github/workflows/build-project.yml
+    with:
+      project: singular_vector_spans

@@ -1,0 +1,25 @@
+name: Lean cubical_indecomposability
+
+on:
+  push:
+    paths:
+      - 'cubical_indecomposability/**'
+      - '!cubical_indecomposability/**/*.md'
+      - '!cubical_indecomposability/**/*.pdf'
+      - '.github/workflows/build-project.yml'
+      - '.github/workflows/project-cubical_indecomposability.yml'
+  pull_request:
+    paths:
+      - 'cubical_indecomposability/**'
+      - '!cubical_indecomposability/**/*.md'
+      - '!cubical_indecomposability/**/*.pdf'
+      - '.github/workflows/build-project.yml'
+      - '.github/workflows/project-cubical_indecomposability.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    uses: ./.github/workflows/build-project.yml
+    with:
+      project: cubical_indecomposability

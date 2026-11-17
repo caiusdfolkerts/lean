@@ -1,0 +1,25 @@
+name: Lean graphical_zonotopes
+
+on:
+  push:
+    paths:
+      - 'graphical_zonotopes/**'
+      - '!graphical_zonotopes/**/*.md'
+      - '!graphical_zonotopes/**/*.pdf'
+      - '.github/workflows/build-project.yml'
+      - '.github/workflows/project-graphical_zonotopes.yml'
+  pull_request:
+    paths:
+      - 'graphical_zonotopes/**'
+      - '!graphical_zonotopes/**/*.md'
+      - '!graphical_zonotopes/**/*.pdf'
+      - '.github/workflows/build-project.yml'
+      - '.github/workflows/project-graphical_zonotopes.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    uses: ./.github/workflows/build-project.yml
+    with:
+      project: graphical_zonotopes

@@ -1,0 +1,25 @@
+name: Lean three_sunlet_models
+
+on:
+  push:
+    paths:
+      - 'three_sunlet_models/**'
+      - '!three_sunlet_models/**/*.md'
+      - '!three_sunlet_models/**/*.pdf'
+      - '.github/workflows/build-project.yml'
+      - '.github/workflows/project-three_sunlet_models.yml'
+  pull_request:
+    paths:
+      - 'three_sunlet_models/**'
+      - '!three_sunlet_models/**/*.md'
+      - '!three_sunlet_models/**/*.pdf'
+      - '.github/workflows/build-project.yml'
+      - '.github/workflows/project-three_sunlet_models.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    uses: ./.github/workflows/build-project.yml
+    with:
+      project: three_sunlet_models

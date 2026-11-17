@@ -1,0 +1,25 @@
+name: Lean ellipsoid_intrinsic_volumes
+
+on:
+  push:
+    paths:
+      - 'ellipsoid_intrinsic_volumes/**'
+      - '!ellipsoid_intrinsic_volumes/**/*.md'
+      - '!ellipsoid_intrinsic_volumes/**/*.pdf'
+      - '.github/workflows/build-project.yml'
+      - '.github/workflows/project-ellipsoid_intrinsic_volumes.yml'
+  pull_request:
+    paths:
+      - 'ellipsoid_intrinsic_volumes/**'
+      - '!ellipsoid_intrinsic_volumes/**/*.md'
+      - '!ellipsoid_intrinsic_volumes/**/*.pdf'
+      - '.github/workflows/build-project.yml'
+      - '.github/workflows/project-ellipsoid_intrinsic_volumes.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    uses: ./.github/workflows/build-project.yml
+    with:
+      project: ellipsoid_intrinsic_volumes

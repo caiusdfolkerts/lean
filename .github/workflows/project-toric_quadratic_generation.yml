@@ -1,0 +1,25 @@
+name: Lean toric_quadratic_generation
+
+on:
+  push:
+    paths:
+      - 'toric_quadratic_generation/**'
+      - '!toric_quadratic_generation/**/*.md'
+      - '!toric_quadratic_generation/**/*.pdf'
+      - '.github/workflows/build-project.yml'
+      - '.github/workflows/project-toric_quadratic_generation.yml'
+  pull_request:
+    paths:
+      - 'toric_quadratic_generation/**'
+      - '!toric_quadratic_generation/**/*.md'
+      - '!toric_quadratic_generation/**/*.pdf'
+      - '.github/workflows/build-project.yml'
+      - '.github/workflows/project-toric_quadratic_generation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    uses: ./.github/workflows/build-project.yml
+    with:
+      project: toric_quadratic_generation

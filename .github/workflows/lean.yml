@@ -1,74 +1,65 @@
-name: Build all projects
+name: All projects verified
 
 on:
+  workflow_run:
+    workflows:
+      - Lean alternating_forms
+      - Lean barycentric_invariance
+      - Lean bier
+      - Lean clique_covered_rigidity
+      - Lean cold_spots
+      - Lean conditional_decomposability
+      - Lean cubical_indecomposability
+      - Lean cubical_lower_bound
+      - Lean deformed_coinvariants
+      - Lean ellipsoid_intrinsic_volumes
+      - Lean graphical_zonotopes
+      - Lean higher_specht_bases
+      - Lean homological_shifts
+      - Lean mixed_volume_realization
+      - Lean normal_projective
+      - Lean polymatroidal_ideals
+      - Lean projection_areas
+      - Lean rank_three_projection_volumes
+      - Lean singular_vector_spans
+      - Lean small_nonrational
+      - Lean sublattice_resolutions
+      - Lean symmetric_rank_conditions
+      - Lean three_sunlet_models
+      - Lean toric_power_maps
+      - Lean toric_quadratic_generation
+      - Lean two_fermion_coinvariants
+      - Lean unimodular
+      - Lean volume_polynomials
+      - Lean wishart
+    types: [requested, in_progress, completed]
+    branches: [main]
   push:
-  pull_request:
+    branches: [main]
+    paths:
+      - '**'
+      - '!**/*.md'
+      - '!**/*.pdf'
   workflow_dispatch:
 
 permissions:
   contents: read
-
+  actions: read
+concurrency:
+  group: aggregate-lean-status
+  cancel-in-progress: false
 jobs:
-  discover:
+  status:
     runs-on: ubuntu-24.04
-    outputs:
-      projects: ${{ steps.projects.outputs.matrix }}
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
+          ref: main
+          fetch-depth: 0
           sparse-checkout: .github
-      - id: projects
-        name: Discover all Lean projects
-        run: |
-          matrix=$(python3 .github/scripts/discover_projects.py)
-          echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
-
-  build:
-    name: Build ${{ matrix.project }}
-    needs: discover
-    strategy:
-      fail-fast: false
-      matrix: ${{ fromJSON(needs.discover.outputs.projects) }}
-    runs-on: ubuntu-24.04
-    timeout-minutes: 360
-    env:
-      # Bound concurrency and memory on the hosted runner, without skipping checks.
-      LEAN_NUM_THREADS: '2'
-      LEAN_VERIFY_JOBS: ${{ matrix.project == 'small_nonrational' && '4' || '2' }}
-      LEAN_VERIFY_HEAVY_JOBS: '2'
-      LEAN_VERIFY_MEMORY_BUDGET_MB: '10000'
-      LEAN_VERIFY_AUDIT_MEMORY_MB: '8192'
-    steps:
-      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
-        with:
-          sparse-checkout: ${{ matrix.project }}
-      - name: Check published source integrity
-        working-directory: ${{ matrix.project }}
-        shell: bash
-        run: |
-          if [[ -f verification/source_index.json ]]; then
-            python3 verification/run.py --prepare-only
-          fi
-      - name: Build from source with cached Mathlib dependencies
-        uses: leanprover/lean-action@ba3fdfe5c4476c925da13bf11a005ddb47e47aee # v1
-        with:
-          lake-package-directory: ${{ matrix.project }}
-          auto-config: false
-          build: true
-          test: false
-          lint: false
-          use-mathlib-cache: true
-          use-github-cache: false
-      - name: Preserve custom verification failure logs
-        if: failure()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-        with:
-          name: verification-logs-${{ matrix.project }}
-          include-hidden-files: true
-          if-no-files-found: ignore
-          retention-days: 14
-          path: |
-            ${{ matrix.project }}/.lake/verification_workspace/verification/**/*.json*
-            ${{ matrix.project }}/.lake/verification_workspace/SegreVerified.audit.jsonl
-            ${{ matrix.project }}/.lake/verification_workspace/.lake/build/**/*.json*
-            ${{ matrix.project }}/.lake/verification_workspace/.lake/build/**/*.log
+      - name: Test status aggregation
+        run: python3 .github/scripts/test_ci.py
+      - name: Check every project's latest build against its current inputs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 .github/scripts/aggregate_status.py

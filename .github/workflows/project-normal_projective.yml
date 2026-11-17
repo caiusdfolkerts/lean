@@ -1,0 +1,25 @@
+name: Lean normal_projective
+
+on:
+  push:
+    paths:
+      - 'normal_projective/**'
+      - '!normal_projective/**/*.md'
+      - '!normal_projective/**/*.pdf'
+      - '.github/workflows/build-project.yml'
+      - '.github/workflows/project-normal_projective.yml'
+  pull_request:
+    paths:
+      - 'normal_projective/**'
+      - '!normal_projective/**/*.md'
+      - '!normal_projective/**/*.pdf'
+      - '.github/workflows/build-project.yml'
+      - '.github/workflows/project-normal_projective.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    uses: ./.github/workflows/build-project.yml
+    with:
+      project: normal_projective

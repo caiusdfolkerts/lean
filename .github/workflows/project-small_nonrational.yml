@@ -1,0 +1,25 @@
+name: Lean small_nonrational
+
+on:
+  push:
+    paths:
+      - 'small_nonrational/**'
+      - '!small_nonrational/**/*.md'
+      - '!small_nonrational/**/*.pdf'
+      - '.github/workflows/build-project.yml'
+      - '.github/workflows/project-small_nonrational.yml'
+  pull_request:
+    paths:
+      - 'small_nonrational/**'
+      - '!small_nonrational/**/*.md'
+      - '!small_nonrational/**/*.pdf'
+      - '.github/workflows/build-project.yml'
+      - '.github/workflows/project-small_nonrational.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    uses: ./.github/workflows/build-project.yml
+    with:
+      project: small_nonrational
