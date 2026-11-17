@@ -12,7 +12,7 @@ If you find any improvements, please raise an issue or contact me at [caiusdfolk
 
 You'll need to install Elan and Git to run the verification.
 
-Each project has its own build and status badge. A push rebuilds only projects whose files changed; Markdown and PDF edits do not trigger builds. Changes to the shared build workflow rebuild every project. Builds use a clean checkout and Mathlib's dependency cache, without restoring project build artifacts. The main badge is green only when every project's latest build passed and covers its current build inputs. Click a project's badge for its results and logs.
+Each project has its own build and status badge. A push rebuilds only projects whose files changed; Markdown and PDF edits do not trigger builds. Changes to the shared build workflow rebuild every project. Builds use Mathlib's dependency cache without downloading project build artifacts. The small nonrational project uses a dedicated runner and can resume locally verified progress after checking source, compiler, dependency and artifact hashes; other projects use fresh hosted runners. The main badge is green only when every project's latest build passed and covers its current build inputs. Click a project's badge for its results and logs.
 
 | Project | Build | Result |
 | --- | --- | --- |

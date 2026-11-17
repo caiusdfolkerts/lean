@@ -2,6 +2,7 @@ name: Lean small_nonrational
 
 on:
   push:
+    branches: [main]
     paths:
       - 'small_nonrational/**'
       - '!small_nonrational/**/*.md'
@@ -18,8 +19,64 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+# Serialize builds on the dedicated machine; never interrupt accepted progress.
+concurrency:
+  group: small-nonrational-${{ github.ref }}
+  cancel-in-progress: false
 jobs:
-  build:
+  build_pull_request:
+    if: github.event_name == 'pull_request'
     uses: ./.github/workflows/build-project.yml
     with:
       project: small_nonrational
+
+  build:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: [self-hosted, linux, x64, small-nonrational]
+    timeout-minutes: 1440
+    env:
+      LEAN_NUM_THREADS: '1'
+      LEAN_VERIFY_JOBS: '32'
+      LEAN_VERIFY_HEAVY_JOBS: '24'
+      LEAN_VERIFY_MEMORY_BUDGET_MB: '98304'
+      LEAN_VERIFY_AUDIT_MEMORY_MB: '32768'
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          sparse-checkout: small_nonrational
+          # Keep local progress after interruption. The verifier checks source,
+          # compiler, dependency and artifact hashes before accepting any receipt.
+          clean: false
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+      - name: Check resources and published source integrity
+        working-directory: small_nonrational
+        run: |
+          python3 --version
+          nproc
+          cat /sys/fs/cgroup/memory.max
+          df -h .
+          python3 verification/run.py --prepare-only
+      - name: Verify all modules and theorem axioms
+        uses: leanprover/lean-action@ba3fdfe5c4476c925da13bf11a005ddb47e47aee # v1
+        with:
+          lake-package-directory: small_nonrational
+          auto-config: false
+          build: true
+          test: false
+          lint: false
+          use-mathlib-cache: true
+          use-github-cache: false
+      - name: Preserve verification receipts and diagnostics
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: small-nonrational-verification-${{ github.run_id }}-${{ github.run_attempt }}
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 14
+          path: |
+            small_nonrational/.lake/verification_workspace/.lake/build/verification/**/*.json
+            small_nonrational/.lake/verification_workspace/.lake/build/verification/**/*.log
