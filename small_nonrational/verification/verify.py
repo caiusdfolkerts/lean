@@ -223,8 +223,8 @@ run_cmd do
     return result
 
 
-def closure_axiom_audit(roots, modules, lean, flags, env, audits, timeout):
-    """Cover every selected module in serial, bounded import batches.
+def closure_axiom_audit(roots, modules, lean, flags, env, audits, timeout, jobs=1):
+    """Cover every selected module in independently checked, bounded batches.
 
     Each batch imports the modules it audits, so their ordinary transitive
     dependencies remain available. Batching avoids importing unrelated branches
@@ -233,15 +233,19 @@ def closure_axiom_audit(roots, modules, lean, flags, env, audits, timeout):
     modules = list(modules)
     if len(modules) != len(set(modules)) or not set(roots).issubset(modules):
         raise RuntimeError("Invalid module coverage for the closure axiom audit")
+    if jobs < 1:
+        raise RuntimeError("Invalid axiom audit concurrency")
     batches = []
-    for offset in range(0, len(modules), 64):
+    def check_batch(offset):
         selected = modules[offset:offset + 64]
         directory = audits / "axiom-batches" / f"{offset // 64:05d}"
-        result = closure_axiom_batch(selected, selected, lean, flags, env, directory, timeout)
-        batches.append(result)
-        print(f"Axiom audit: {min(offset + 64, len(modules))}/{len(modules)} modules.", flush=True)
-        if not result["passed"]:
-            break
+        return closure_axiom_batch(selected, selected, lean, flags, env, directory, timeout)
+    with concurrent.futures.ThreadPoolExecutor(max_workers=jobs) as pool:
+        # Ordered consumption preserves exact coverage and reproducible reports,
+        # although independent Lean processes may finish out of order.
+        for result in pool.map(check_batch, range(0, len(modules), 64)):
+            batches.append(result)
+            print(f"Axiom audit: {min(len(batches) * 64, len(modules))}/{len(modules)} modules.", flush=True)
     covered = [name for batch in batches for name in batch["modules"]]
     passed = covered == modules and all(batch["passed"] for batch in batches)
     result = {"passed": passed, "modules": modules, "covered_modules": covered,
@@ -334,7 +338,9 @@ def main():
     parser.add_argument("--memory-budget", type=int,
                         help="Maximum sum of memory caps for simultaneous compiler processes")
     parser.add_argument("--audit-memory", type=int, default=4096,
-                        help="MiB for each serial declaration-audit process")
+                        help="MiB per declaration-audit process")
+    parser.add_argument("--audit-jobs", type=int, default=1,
+                        help="Concurrent closure audit batches, bounded by the memory budget")
     parser.add_argument("--timeout", type=int, default=14400, help="Seconds per module")
     parser.add_argument("--fresh", action="store_true", help="Ignore this verifier's local receipts")
     parser.add_argument("--keep-going", action="store_true", help="Continue independent branches after a failure")
@@ -358,7 +364,8 @@ def main():
                      if args.memory_budget is None else args.memory_budget)
     if (not 1 <= args.jobs <= 64 or not 1 <= heavy_jobs <= args.jobs
             or min(args.memory, finite_memory, args.audit_memory) < 128
-            or memory_budget < largest_cap or args.timeout <= 0):
+            or memory_budget < largest_cap or args.timeout <= 0
+            or not 1 <= args.audit_jobs <= max(1, memory_budget // args.audit_memory)):
         parser.error("Use 1–64 jobs, valid heavy-job and memory limits, and a positive timeout")
 
     root = args.project.resolve()
@@ -705,7 +712,7 @@ def main():
     if not failures and not pending and len(completed) == len(order):
         print("Auditing transitive axioms of all selected project declarations.", flush=True)
         audit_flags = [f"-M{args.audit_memory}" if flag.startswith("-M") else flag for flag in flags]
-        axiom_audit = closure_axiom_audit(roots, order, lean, audit_flags, env, audits, args.timeout)
+        axiom_audit = closure_axiom_audit(roots, order, lean, audit_flags, env, audits, args.timeout, args.audit_jobs)
 
     # Rehash accepted bytes without a stat cache at closeout.
     print("Rechecking source and artifact identities for closeout.", flush=True)
@@ -733,7 +740,7 @@ def main():
                                   "mathlib_memory_mib": args.memory, "heavy_jobs": heavy_jobs,
                                   "reserved_memory_budget_mib": memory_budget,
                                   "module_memory_overrides_mib": memory_overrides,
-                                  "audit_memory_mib": args.audit_memory},
+                                  "audit_memory_mib": args.audit_memory, "audit_jobs": args.audit_jobs},
               "blocked_modules": sorted(pending), "changed_at_closeout": changed,
               "closure_axiom_audit": axiom_audit}
     write_json(audits / "result.json", result)

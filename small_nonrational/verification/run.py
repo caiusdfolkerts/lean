@@ -65,7 +65,7 @@ def main():
     if args.prepare_only:return
     def run(*args):subprocess.run(args,cwd=workspace,check=True)
     run('lake','env','python3','scripts/fetch_mathlib_cache.py')
-    command=['lake','env','python3','scripts/verify.py','--project',str(workspace),'--jobs',os.environ.get('LEAN_VERIFY_JOBS','16'),'--heavy-jobs',os.environ.get('LEAN_VERIFY_HEAVY_JOBS','8'),'--memory','4096','--finite-memory','1024','--memory-budget',os.environ.get('LEAN_VERIFY_MEMORY_BUDGET_MB','49152'),'--audit-memory',os.environ.get('LEAN_VERIFY_AUDIT_MEMORY_MB','32768'),'--keep-going']
+    command=['lake','env','python3','scripts/verify.py','--project',str(workspace),'--jobs',os.environ.get('LEAN_VERIFY_JOBS','16'),'--heavy-jobs',os.environ.get('LEAN_VERIFY_HEAVY_JOBS','8'),'--memory','4096','--finite-memory','1024','--memory-budget',os.environ.get('LEAN_VERIFY_MEMORY_BUDGET_MB','49152'),'--audit-memory',os.environ.get('LEAN_VERIFY_AUDIT_MEMORY_MB','32768'),'--audit-jobs',os.environ.get('LEAN_VERIFY_AUDIT_JOBS','1'),'--keep-going']
     overrides={'PolygonN7ClassificationPart001':4096,'Consolidated.RankFourCharts12':4096,'RootedSubsumedForest0161Proof001':2048,'Papers.SmallNonrational':8192,'Audit.SmallNonrational':8192,'Audit.SupportingLemmas':8192,'Audit.TerminalEndpoints':8192,'Audit.RankFourEndpoints':8192,'CompletedResidualCoverage':8192,'VerifiedTargets':8192,'Papers.GlobalEightRelationRowsClosed':8192}
     for name,limit in overrides.items():command.extend(['--module-memory',f'{name}={limit}'])
     run(*command)
