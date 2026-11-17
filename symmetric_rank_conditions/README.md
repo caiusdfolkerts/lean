@@ -1,6 +1,6 @@
 # Gröbner bases for symmetric rank conditions
 
-[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/lean/project-symmetric_rank_conditions.yml?branch=main&label=&style=for-the-badge)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-symmetric_rank_conditions.yml)
+[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/lean/project-symmetric_rank_conditions.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-symmetric_rank_conditions.yml)
 
 This project contains the full Lean4 formalisation for all principal results in my paper *Gröbner bases for symmetric rank conditions*. I've included the paper as paper.pdf.
 

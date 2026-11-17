@@ -1,6 +1,6 @@
 # Compatibility and realization of coordinate projection areas
 
-[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/lean/project-projection_areas.yml?branch=main&label=&style=for-the-badge)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-projection_areas.yml)
+[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/lean/project-projection_areas.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/lean/actions/workflows/project-projection_areas.yml)
 
 This project contains the full Lean4 formalisation for all principal results in my paper *Compatibility and realization of coordinate projection areas*. I've included the paper as paper.pdf.
 
