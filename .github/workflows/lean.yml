@@ -32,7 +32,7 @@ on:
       - Lean unimodular
       - Lean volume_polynomials
       - Lean wishart
-    types: [requested, in_progress, completed]
+    types: [in_progress, completed]
     branches: [main]
   push:
     branches: [main]
