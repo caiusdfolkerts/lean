@@ -2,15 +2,15 @@
 
 [![All projects verified](https://github.com/caiusdfolkerts/lean/actions/workflows/lean.yml/badge.svg?branch=main)](https://github.com/caiusdfolkerts/lean/actions/workflows/lean.yml)
 
-This repo is home to the Lean formalisations for all my mathematics research. Over the last few months I've written 29 papers in convex geometry, commutative algebra and representation using AI. I've resolved the [Heine–Shephard problem](volume_polynomials/), studied since the 1930s; I've also proved [Jockusch's 1993 cubical lower bound conjecture](cubical_lower_bound/), the [Hivert–Thiéry conjecture](deformed_coinvariants/) and the [Hanlon–Hicks–Lazarev conjecture](toric_power_maps/). These papers are all formalised in full in this repo. 
+This repo is home to the Lean formalisations for all my mathematics research. I've written 29 Lean-verified papers mostly in convex geometry, representation theory, and commutative algebra. Some of the results: I've resolved the [Heine–Shephard problem](volume_polynomials/), studied since the 1930s; I've also proved [Jockusch's 1993 cubical lower bound conjecture](cubical_lower_bound/), the [Hivert–Thiéry conjecture](deformed_coinvariants/) and the [Hanlon–Hicks–Lazarev conjecture](toric_power_maps/) on smooth toric varieties. The principal results of each paper are formalised in Lean here.  
 
 Descriptions of the papers and their corresponding formalisations are listed in the table below. For each formalisation, I've also included an index that links all verified statements to their corresponding Lean4 declarations.
 
 I've made it easy to inspect theorem axioms via the default builds.
 
-Each project is built independently through Github actions. If the badge is green, then the project built successfully. Clicking a badge opens build logs. The main badge above this README is green only when every build has passed. Builds run automatically when relevant files change. 
+Each project is built independently through Github actions. If the badge is green, then the project built successfully and build checks passed. Clicking a badge opens build logs. The main badge above this README is green only when every build has passed. Builds run automatically when relevant files change. 
 
-If you find any improvements, please raise an issue or contact me at [caiusdfolkerts@gmail.com](mailto:caiusdfolkerts@gmail.com).
+If you find any improvements, please raise an issue or contact me at [caiusfolkerts@gmail.com](mailto:caiusfolkerts@gmail.com).
 
 You'll need to install Elan and Git to run the verification.
 
