@@ -2,13 +2,13 @@
 
 [![All projects verified](https://github.com/caiusdfolkerts/lean/actions/workflows/lean.yml/badge.svg?branch=main)](https://github.com/caiusdfolkerts/lean/actions/workflows/lean.yml)
 
-This repo is home to the Lean formalisations for all my mathematics research. Over the last few months I've written 29 papers in convex geometry, commutative algebra and representation theory using AI. These include a resolution to the [Heine–Shephard problem](volume_polynomials/), and proofs of [Jockusch's 1993 cubical lower bound conjecture](cubical_lower_bound/), the [Hivert–Thiéry conjecture](deformed_coinvariants/) and the [Hanlon–Hicks–Lazarev conjecture](toric_power_maps/).
+This repo is home to the Lean formalisations for all my mathematics research. Over the last few months I've written 29 papers in convex geometry, commutative algebra and representation theory using AI. Some of my results: I've resolved the [Heine–Shephard problem](volume_polynomials/), I've proved [Jockusch's 1993 cubical lower bound conjecture](cubical_lower_bound/), the [Hivert–Thiéry conjecture](deformed_coinvariants/) and the [Hanlon–Hicks–Lazarev conjecture](toric_power_maps/). These papers are all formalised in full in this repo. 
 
 Descriptions of the papers and their corresponding formalisations are listed in the table below. For each formalisation, I've also included an index that links all verified statements to their corresponding Lean4 declarations.
 
-I've made it easy to inspect theorem axioms via the default builds (all proofs are free of sorry and admit)
+I've made it easy to inspect theorem axioms via the default builds (all proofs are free of sorry and admit).
 
-If you find any improvements, please contact me at [caiusdfolkerts@gmail.com](mailto:caiusdfolkerts@gmail.com).
+If you find any improvements, please raise an issue or contact me at [caiusdfolkerts@gmail.com](mailto:caiusdfolkerts@gmail.com).
 
 You'll need to install Elan and Git to run the verification.
 
