@@ -2,7 +2,7 @@
 
 [![All projects verified](https://github.com/caiusdfolkerts/lean/actions/workflows/lean.yml/badge.svg?branch=main)](https://github.com/caiusdfolkerts/lean/actions/workflows/lean.yml)
 
-This repo is home to the Lean formalisations for all my mathematics research. I've written 29 Lean-verified papers mostly in convex geometry, representation theory, and commutative algebra. Some of the results: I've resolved the [Heine–Shephard problem](volume_polynomials/), studied since the 1930s; I've also proved [Jockusch's 1993 cubical lower bound conjecture](cubical_lower_bound/), the [Hivert–Thiéry conjecture](deformed_coinvariants/) and the [Hanlon–Hicks–Lazarev conjecture](toric_power_maps/) on smooth toric varieties. The principal results of each paper are formalised in Lean here.  
+This repo is home to the Lean formalisations for all my mathematics research. I've written 29 Lean-verified papers mostly in convex geometry, representation theory, and commutative algebra. Some of the results: I've resolved the [Heine–Shephard problem](volume_polynomials/), studied since the 1930s; I've also proved [Jockusch's 1993 cubical lower bound conjecture](cubical_lower_bound/), the [Hivert–Thiéry conjecture](deformed_coinvariants/) and the [Hanlon–Hicks–Lazarev conjecture](toric_power_maps/) on smooth toric varieties. 
 
 Descriptions of the papers and their corresponding formalisations are listed in the table below. For each formalisation, I've also included an index that links all verified statements to their corresponding Lean4 declarations.
 
