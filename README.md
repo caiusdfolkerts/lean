@@ -1,4 +1,4 @@
-# Lean
+# Research
 
 [![All projects verified](https://github.com/caiusdfolkerts/research/actions/workflows/lean.yml/badge.svg?branch=main)](https://github.com/caiusdfolkerts/research/actions/workflows/lean.yml)
 
