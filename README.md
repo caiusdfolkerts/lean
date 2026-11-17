@@ -6,13 +6,13 @@ This repo is home to the Lean formalisations for all my mathematics research. Ov
 
 Descriptions of the papers and their corresponding formalisations are listed in the table below. For each formalisation, I've also included an index that links all verified statements to their corresponding Lean4 declarations.
 
-I've made it easy to inspect theorem axioms via the default builds (all proofs are free of sorry and admit).
+I've made it easy to inspect theorem axioms via the default builds.
+
+Each project is built independently through Github actions. If the badge is green, then the project built successfully. Clicking a badge opens build logs. The main badge above this README is green only when every build has passed. Builds run automatically when relevant files change. 
 
 If you find any improvements, please raise an issue or contact me at [caiusdfolkerts@gmail.com](mailto:caiusdfolkerts@gmail.com).
 
 You'll need to install Elan and Git to run the verification.
-
-Each project has its own build and status badge. A push rebuilds only projects whose files changed; Markdown and PDF edits do not trigger builds. Changes to the shared build workflow rebuild every project. Builds use Mathlib's dependency cache without downloading project build artifacts. The small nonrational project uses a dedicated runner and can resume locally verified progress after checking source, compiler, dependency and artifact hashes; other projects use fresh hosted runners. The main badge is green only when every project's latest build passed and covers its current build inputs. Click a project's badge for its results and logs.
 
 | Project | Build | Result |
 | --- | --- | --- |
