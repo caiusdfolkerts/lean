@@ -9,6 +9,8 @@ from __future__ import annotations
 
 import argparse
 import concurrent.futures
+from collections import deque
+from contextlib import contextmanager
 import fcntl
 import gzip
 import hashlib
@@ -158,7 +160,7 @@ def artifact_inventory(paths):
     return records
 
 
-def closure_axiom_batch(roots, modules, lean, flags, env, audits, timeout):
+def closure_axiom_batch(roots, modules, lean, flags, env, audits, timeout, memory_budget=None):
     """Ask Lean to audit every available declaration from the selected modules.
 
     Lean 4.35 records transitive axioms during module serialization. Every
@@ -204,12 +206,9 @@ run_cmd do
     audit_source.write_text(source)
     log = audits / "closure-axioms.log"
     command = [str(lean), *flags, str(audit_source)]
-    with log.open("w") as stream:
-        try:
-            code = subprocess.run(command, env=env, stdout=stream, stderr=subprocess.STDOUT,
-                                  timeout=timeout).returncode
-        except subprocess.TimeoutExpired:
-            code = 124
+    cap = int(next(flag[2:] for flag in flags if flag.startswith('-M')))
+    budget = memory_budget or LeanMemoryBudget(cap)
+    command, code = budget.run(command, env, log, timeout)
     text = log.read_text(errors="replace")
     match = re.search(r"CLOSURE_AXIOM_AUDIT_OK: (\d+) declarations", text)
     result = {"passed": code == 0 and match is not None, "exit_code": code,
@@ -223,7 +222,79 @@ run_cmd do
     return result
 
 
-def closure_axiom_audit(roots, modules, lean, flags, env, audits, timeout, jobs=1):
+class LeanMemoryBudget:
+    """Reserve compiler heap caps across concurrent processes and bounded retries."""
+    def __init__(self, total, retry_memory=0):
+        self.total = total
+        self.available = total
+        self.retry_memory = retry_memory
+        self.condition = threading.Condition()
+
+    @contextmanager
+    def reserve(self, amount):
+        if not 0 < amount <= self.total:
+            raise ValueError("Compiler heap cap exceeds the total memory budget")
+        with self.condition:
+            self.condition.wait_for(lambda: self.available >= amount)
+            self.available -= amount
+        try:
+            yield
+        finally:
+            with self.condition:
+                self.available += amount
+                self.condition.notify_all()
+
+    def run(self, command, env, log, timeout):
+        command = list(command)
+        positions = [i for i, flag in enumerate(command) if flag.startswith('-M')]
+        if len(positions) != 1:
+            raise ValueError("Expected exactly one explicit compiler memory cap")
+        position = positions[0]
+        while True:
+            memory = int(command[position][2:])
+            with self.reserve(memory), log.open('w') as stream:
+                try:
+                    code = subprocess.run(command, env=env, stdout=stream,
+                                          stderr=subprocess.STDOUT, timeout=timeout).returncode
+                except subprocess.TimeoutExpired:
+                    code = 124
+            text = log.read_text(errors='replace')
+            if (code not in (0, 124) and 'excessive memory consumption detected' in text
+                    and memory < self.retry_memory <= self.total):
+                shutil.copyfile(log, log.with_name(log.stem + f'.memory-{memory}.log'))
+                command[position] = f'-M{self.retry_memory}'
+                print(f'Retrying memory-limited audit with {self.retry_memory} MiB: {log}', flush=True)
+                continue
+            return command, code
+
+
+def bounded_parallel_map(function, items, jobs):
+    """Run independent tasks with bounded lookahead and deterministic output order."""
+    if jobs < 1:
+        raise ValueError("Concurrency must be positive")
+    iterator = iter(items)
+    with concurrent.futures.ThreadPoolExecutor(max_workers=jobs) as pool:
+        pending = deque()
+        # A few queued batches keep workers busy when the next ordered result
+        # is slower than its neighbours, without materialising every output.
+        for _ in range(jobs * 4):
+            try:
+                item = next(iterator)
+            except StopIteration:
+                break
+            pending.append(pool.submit(function, item))
+        while pending:
+            result = pending.popleft().result()
+            try:
+                item = next(iterator)
+            except StopIteration:
+                pass
+            else:
+                pending.append(pool.submit(function, item))
+            yield result
+
+
+def closure_axiom_audit(roots, modules, lean, flags, env, audits, timeout, jobs=1, memory_budget=None, retry_memory=0):
     """Cover every selected module in independently checked, bounded batches.
 
     Each batch imports the modules it audits, so their ordinary transitive
@@ -235,11 +306,13 @@ def closure_axiom_audit(roots, modules, lean, flags, env, audits, timeout, jobs=
         raise RuntimeError("Invalid module coverage for the closure axiom audit")
     if jobs < 1:
         raise RuntimeError("Invalid axiom audit concurrency")
+    cap = int(next((flag[2:] for flag in flags if flag.startswith('-M')), '1'))
+    budget = LeanMemoryBudget(memory_budget or jobs * cap, retry_memory)
     batches = []
     def check_batch(offset):
         selected = modules[offset:offset + 64]
         directory = audits / "axiom-batches" / f"{offset // 64:05d}"
-        return closure_axiom_batch(selected, selected, lean, flags, env, directory, timeout)
+        return closure_axiom_batch(selected, selected, lean, flags, env, directory, timeout, memory_budget=budget)
     with concurrent.futures.ThreadPoolExecutor(max_workers=jobs) as pool:
         # Ordered consumption preserves exact coverage and reproducible reports,
         # although independent Lean processes may finish out of order.
@@ -345,6 +418,7 @@ def main():
     parser.add_argument("--fresh", action="store_true", help="Ignore this verifier's local receipts")
     parser.add_argument("--keep-going", action="store_true", help="Continue independent branches after a failure")
     parser.add_argument("--plan", action="store_true", help="Validate sources and print order without compiling")
+    parser.add_argument("--audit-retry-memory", type=int, default=0)
     args = parser.parse_args()
     memory_overrides = {}
     for setting in args.module_memory:
@@ -365,7 +439,9 @@ def main():
     if (not 1 <= args.jobs <= 64 or not 1 <= heavy_jobs <= args.jobs
             or min(args.memory, finite_memory, args.audit_memory) < 128
             or memory_budget < largest_cap or args.timeout <= 0
-            or not 1 <= args.audit_jobs <= max(1, memory_budget // args.audit_memory)):
+            or not 1 <= args.audit_jobs <= 64
+            or (args.audit_jobs > 1 and args.audit_memory > memory_budget)
+            or not 0 <= args.audit_retry_memory <= max(memory_budget, args.audit_memory)):
         parser.error("Use 1–64 jobs, valid heavy-job and memory limits, and a positive timeout")
 
     root = args.project.resolve()
@@ -712,7 +788,7 @@ def main():
     if not failures and not pending and len(completed) == len(order):
         print("Auditing transitive axioms of all selected project declarations.", flush=True)
         audit_flags = [f"-M{args.audit_memory}" if flag.startswith("-M") else flag for flag in flags]
-        axiom_audit = closure_axiom_audit(roots, order, lean, audit_flags, env, audits, args.timeout, args.audit_jobs)
+        axiom_audit = closure_axiom_audit(roots, order, lean, audit_flags, env, audits, args.timeout, args.audit_jobs, max(memory_budget, args.audit_memory), args.audit_retry_memory)
 
     # Rehash accepted bytes without a stat cache at closeout.
     print("Rechecking source and artifact identities for closeout.", flush=True)
@@ -740,7 +816,7 @@ def main():
                                   "mathlib_memory_mib": args.memory, "heavy_jobs": heavy_jobs,
                                   "reserved_memory_budget_mib": memory_budget,
                                   "module_memory_overrides_mib": memory_overrides,
-                                  "audit_memory_mib": args.audit_memory, "audit_jobs": args.audit_jobs},
+                                  "audit_memory_mib": args.audit_memory, "audit_jobs": args.audit_jobs, "audit_retry_memory_mib": args.audit_retry_memory},
               "blocked_modules": sorted(pending), "changed_at_closeout": changed,
               "closure_axiom_audit": axiom_audit}
     write_json(audits / "result.json", result)

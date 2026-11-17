@@ -95,7 +95,13 @@ def main():
                         help="Maximum total mapped artifact bytes in one process")
     parser.add_argument("--memory", type=int, default=2048, help="Lean heap cap in MiB per process")
     parser.add_argument("--timeout", type=int, default=300, help="Seconds per serial batch")
+    parser.add_argument("--jobs", type=int, default=1)
+    parser.add_argument("--memory-budget", type=int, default=49152)
+    parser.add_argument("--compression-level", type=int, default=6)
+    parser.add_argument("--retry-memory", type=int, default=0)
     args = parser.parse_args()
+    if not 1 <= args.jobs <= 32 or args.memory > args.memory_budget or not 0 <= args.retry_memory <= args.memory_budget or not 0 <= args.compression_level <= 9:
+        parser.error("Export concurrency must fit the memory budget; compression must be 0-9")
     if not 1 <= args.batch_modules <= 64 or args.batch_input_mib < 1 or args.memory < 2048 or args.timeout < 1:
         parser.error("Use 1–64 modules per batch, positive input/time limits, and at least 2048 MiB")
     if args.accepted_subgraph != bool(args.module):
@@ -307,7 +313,7 @@ def main():
                "first_scope TEXT, other_scope TEXT, "
                "PRIMARY KEY(name, other_owner))")
     graph_path = output / "declarations.jsonl.gz"
-    graph = gzip.open(graph_path, "wt", encoding="utf-8", compresslevel=6)
+    graph = gzip.open(graph_path, "wt", encoding="utf-8", compresslevel=args.compression_level)
     env = os.environ.copy()
     # This reader imports only the pinned compiler's own implementation. It
     # never imports or evaluates project modules or their initialization code.
@@ -347,6 +353,7 @@ def main():
     header_check = {"command": header_command, "modules": len(source_headers),
                     "input_sha256": hash_file(header_input),
                     "output_sha256": hash_file(header_output), "log_sha256": hash_file(header_log)}
+    memory_budget = verifier.LeanMemoryBudget(args.memory_budget, args.retry_memory)
     batches, summaries, boundary_pending, boundary_seen = [], {}, set(), set()
     project_declarations = 0
 
@@ -408,19 +415,26 @@ def main():
 
     def extract(items, mode):
         nonlocal project_declarations
-        for items_batch, mapped_bytes in chunks(items):
-            number = len(batches)
+        first_number = len(batches)
+
+        def execute(task):
+            index, (items_batch, mapped_bytes) = task
+            number = first_number + index
             stem = batches_dir / f"{number:05d}"
             tsv, jsonl, log = (stem.with_suffix(s) for s in (".tsv", ".jsonl", ".log"))
             tsv.write_text("".join(f"{mode}\t{item['module']}\t{item['base']}\n" for item in items_batch))
             command = [str(lean), "-t1", "-j1", f"-M{args.memory}", "-DElab.async=false",
                        "-Ddebug.skipKernelTC=false", "--run", str(exporter), str(tsv), str(jsonl)]
             started = time.monotonic()
-            with log.open("w") as stream:
-                result = subprocess.run(command, env=env, stdout=stream, stderr=subprocess.STDOUT,
-                                        timeout=args.timeout)
-            if result.returncode:
-                raise RuntimeError(f"Extraction batch failed ({result.returncode}); see {log}")
+            command, code = memory_budget.run(command, env, log, args.timeout)
+            if code:
+                raise RuntimeError(f"Extraction batch failed ({code}); see {log}")
+            return number, items_batch, mapped_bytes, tsv, jsonl, log, command, started
+
+        # Independent Lean readers run concurrently. All ownership, reference,
+        # completeness and SQLite checks below remain ordered on the main thread.
+        for item in verifier.bounded_parallel_map(execute, enumerate(chunks(items)), args.jobs):
+            number, items_batch, mapped_bytes, tsv, jsonl, log, command, started = item
             expected = {item["module"] for item in items_batch}
             seen, counts = set(), {name: 0 for name in expected}
             with jsonl.open() as stream:
@@ -502,38 +516,46 @@ def main():
     pairs = list(db.execute("SELECT DISTINCT first_owner, other_owner FROM repeated_theorems ORDER BY 1, 2"))
     if pairs and args.batch_modules < 2:
         raise RuntimeError("Repeated-theorem comparisons require --batch-modules of at least two")
-    for first_owner, other_owner in pairs:
-        names = [row[0] for row in db.execute(
-            "SELECT name FROM repeated_theorems WHERE first_owner=? AND other_owner=? ORDER BY name",
-            (first_owner, other_owner))]
+    first_comparison = len(batches)
+
+    def comparison_inputs():
+        for index, (first_owner, other_owner) in enumerate(pairs):
+            names = [row[0] for row in db.execute(
+                "SELECT name FROM repeated_theorems WHERE first_owner=? AND other_owner=? ORDER BY name",
+                (first_owner, other_owner))]
+            yield first_comparison + index, first_owner, other_owner, names
+
+    def compare(task):
+        number, first_owner, other_owner, names = task
         left, right = bases[first_owner], bases[other_owner]
         mapped_bytes = sum(Path(str(base) + suffix).stat().st_size for base in (left, right)
                            for suffix in ("", ".server", ".private") if Path(str(base) + suffix).is_file())
         if mapped_bytes > args.batch_input_mib * 1024 * 1024:
             raise RuntimeError("Repeated-theorem comparison exceeds --batch-input-mib")
-        number = len(batches)
         stem = batches_dir / f"{number:05d}"
         tsv, jsonl, log = (stem.with_suffix(s) for s in (".tsv", ".jsonl", ".log"))
         tsv.write_text("\t".join(["compare", str(left), str(right), *names]) + "\n")
         command = [str(lean), "-t1", "-j1", f"-M{args.memory}", "-DElab.async=false",
                    "-Ddebug.skipKernelTC=false", "--run", str(exporter), str(tsv), str(jsonl)]
         started = time.monotonic()
-        with log.open("w") as stream:
-            result = subprocess.run(command, env=env, stdout=stream, stderr=subprocess.STDOUT, timeout=args.timeout)
-        if result.returncode:
+        command, code = memory_budget.run(command, env, log, args.timeout)
+        if code:
             raise RuntimeError(f"Repeated-theorem compatibility check failed; see {log}")
         comparisons = [json.loads(line) for line in jsonl.read_text().splitlines()]
         if ([row["name"] for row in comparisons] != names
                 or any(row["record"] != "compatible_theorem" or row["left"] != str(left)
                        or row["right"] != str(right) for row in comparisons)):
             raise RuntimeError("Incomplete repeated-theorem compatibility check")
-        repeated_count += len(names)
-        batches.append({"number": number, "mode": "theorem-compatibility",
-                        "modules": [first_owner, other_owner], "mapped_input_bytes": mapped_bytes,
-                        "seconds": round(time.monotonic() - started, 3), "command": command,
-                        "input_sha256": hash_file(tsv), "output_sha256": hash_file(jsonl),
-                        "log_sha256": hash_file(log), "repeated_theorems": len(names)})
-        print(f"Checked theorem compatibility batch {number}: {len(names)} repeated theorems", flush=True)
+        return {"number": number, "mode": "theorem-compatibility",
+                "modules": [first_owner, other_owner], "mapped_input_bytes": mapped_bytes,
+                "seconds": round(time.monotonic() - started, 3), "command": command,
+                "input_sha256": hash_file(tsv), "output_sha256": hash_file(jsonl),
+                "log_sha256": hash_file(log), "repeated_theorems": len(names)}
+
+    for report in verifier.bounded_parallel_map(compare, comparison_inputs(), args.jobs):
+        repeated_count += report["repeated_theorems"]
+        batches.append(report)
+        print(f"Checked theorem compatibility batch {report['number']}: {report['repeated_theorems']} repeated theorems", flush=True)
     missing = db.execute("SELECT r.name FROM references_used r LEFT JOIN declarations d ON d.name=r.name "
                          "WHERE d.name IS NULL ORDER BY r.name LIMIT 30").fetchall()
     if missing:
@@ -572,7 +594,7 @@ def main():
             raise RuntimeError(f"Input changed before extraction closeout: {path}")
     verifier.library_environment(lean, mathlib, root)  # recheck pinned clean source checkouts
     input_path = output / "verified-inputs.jsonl.gz"
-    with gzip.open(input_path, "wt", encoding="utf-8", compresslevel=6) as stream:
+    with gzip.open(input_path, "wt", encoding="utf-8", compresslevel=args.compression_level) as stream:
         for item in inputs:
             stream.write(json.dumps(item, sort_keys=True) + "\n")
         for path, value in sorted(identities.items()):
@@ -594,7 +616,7 @@ def main():
                 "wrapper_sha256": identities[str(Path(__file__).resolve())],
                 "source_import_check": header_check,
                 "batch_limits": {"modules": args.batch_modules, "mapped_input_mib": args.batch_input_mib,
-                                 "lean_memory_mib": args.memory, "seconds": args.timeout, "processes": 1},
+                                 "lean_memory_mib": args.memory, "seconds": args.timeout, "processes": args.jobs, "memory_budget_mib": args.memory_budget, "retry_memory_mib": args.retry_memory},
                 "batches": batches,
                 "files": {graph_path.name: hash_file(graph_path), input_path.name: hash_file(input_path)},
                 "created_unix": time.time()}

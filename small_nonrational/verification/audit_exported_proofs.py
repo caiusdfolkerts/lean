@@ -171,7 +171,12 @@ def main():
     parser.add_argument("--batch-modules", type=int, default=32)
     parser.add_argument("--memory", type=int, default=4096)
     parser.add_argument("--timeout", type=int, default=300)
+    parser.add_argument("--jobs", type=int, default=1)
+    parser.add_argument("--memory-budget", type=int, default=49152)
+    parser.add_argument("--retry-memory", type=int, default=0)
     args = parser.parse_args()
+    require(1 <= args.jobs <= 32 and args.memory <= args.memory_budget and 0 <= args.retry_memory <= args.memory_budget,
+            "Boundary audit concurrency exceeds its memory budget")
     require(1 <= args.batch_modules <= 64 and args.memory >= 1024 and args.timeout > 0,
             "Invalid bounded audit resource limits")
     root, export, output = args.project.resolve(), args.export.resolve(), args.output.resolve()
@@ -250,8 +255,9 @@ def main():
     for name, row in boundary.items():
         by_module.setdefault(sorted(row["module_occurrences"])[0], []).append(name)
     modules = sorted(by_module)
+    memory_budget = verifier.LeanMemoryBudget(args.memory_budget, args.retry_memory)
     reports, all_axioms = [], {}
-    for start in range(0, len(modules), args.batch_modules):
+    def check_batch(start):
         selected = modules[start:start + args.batch_modules]
         names = {name for module in selected for name in by_module[module]}
         source = output / f"BoundaryAudit{start // args.batch_modules:04d}.lean"
@@ -260,9 +266,7 @@ def main():
         command = [str(lean), "-t1", "-j1", f"-M{args.memory}", "-DmaxHeartbeats=0",
                    "-DElab.async=false", "-Ddebug.skipKernelTC=false", str(source)]
         began = time.monotonic()
-        with log.open("w") as stream:
-            code = subprocess.run(command, env=env, stdout=stream, stderr=subprocess.STDOUT,
-                                  timeout=args.timeout).returncode
+        command, code = memory_budget.run(command, env, log, args.timeout)
         require(code == 0, f"Boundary audit failed; see {log}")
         found = {}
         for line in log.read_text().splitlines():
@@ -275,10 +279,16 @@ def main():
         require(set(found) == names, "Incomplete boundary-name audit")
         require(f"BOUNDARY_AXIOM_AUDIT_OK: {len(names)} declarations" in log.read_text(),
                 "Missing boundary audit completion marker")
+        report = {"modules": selected, "names": sorted(names), "command": command,
+                  "seconds": round(time.monotonic() - began, 3),
+                  "source_sha256": sha(source), "log_sha256": sha(log)}
+        return found, report
+
+    for found, report in verifier.bounded_parallel_map(
+            check_batch, range(0, len(modules), args.batch_modules), args.jobs):
+        require(not (all_axioms.keys() & found.keys()), "Repeated boundary declaration between batches")
         all_axioms.update(found)
-        reports.append({"modules": selected, "names": sorted(names), "command": command,
-                        "seconds": round(time.monotonic() - began, 3),
-                        "source_sha256": sha(source), "log_sha256": sha(log)})
+        reports.append(report)
         print(f"Boundary axioms: {len(all_axioms)}/{len(boundary)} declarations", flush=True)
     require(set(all_axioms) == set(boundary), "Incomplete total library boundary audit")
     for path, expected in identities.items():
