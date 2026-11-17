@@ -165,13 +165,17 @@ def closure_axiom_batch(roots, modules, lean, flags, env, audits, timeout, memor
 
     Lean 4.35 records transitive axioms during module serialization. Every
     project artifact supplying those records was produced by this source build.
+    Share Lean's traversal state across roots, as its own serializer does. This
+    checks the union of reachable axioms, not separate per-declaration reports:
+    any cached cycle contribution was already traversed from an earlier root,
+    whose discovered axioms are also checked. All selected roots remain covered.
     """
     # Expose the selected modules' private declarations without exposing every
     # transitive dependency's private proof bodies. Every canonical source in
     # this project uses Lean 4.35's module system.
     imports = "\n".join(["module", "import Lean.Elab.BuiltinEvalCommand",
                           "meta import Lean.Elab.Command",
-                          "meta import Lean.Util.CollectAxioms",
+                          "meta import all Lean.Util.CollectAxioms",
                           *("import all " + name for name in dict.fromkeys(roots))])
     names = ", ".join("`" + name for name in modules)
     source = imports + "\n\n" + """
@@ -188,6 +192,9 @@ run_cmd do
   for name in project.toArray do
     unless moduleNames.contains name do
       throwError "Requested module is not imported: {name}"
+  let privateEnv := env.setExporting false
+  let axiomExtension := Lean.exportedAxiomsExt.getState (asyncMode := .mainOnly) env
+  let mut axiomState : Lean.CollectAxioms.State := {}
   let mut count : Nat := 0
   for idx in [:moduleNames.size] do
     if project.contains moduleNames[idx]! then
@@ -195,7 +202,8 @@ run_cmd do
         unless (env.find? name).isSome do
           throwError "Missing declaration {name} from selected module {moduleNames[idx]!}"
         count := count + 1
-        let axioms ← Lean.collectAxioms name
+        let (axioms, nextState) := ((Lean.CollectAxioms.collectAndGet axiomExtension.find? name).run privateEnv).run axiomState
+        axiomState := nextState
         for axiomName in axioms do
           unless allowed.contains axiomName do
             throwError "Unapproved axiom {axiomName} in {name}"
