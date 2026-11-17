@@ -63,6 +63,13 @@ def main():
     root=Path(__file__).resolve().parents[1]
     workspace=prepare(root)
     if args.prepare_only:return
+    if os.environ.get('LEAN_VERIFY_SMALL_MMAP_FALLBACK') == '1':
+        from resource_limits import install_small_mmap_fallback
+        policy=install_small_mmap_fallback()
+        report=workspace/'.lake/build/verification/runtime-resource-policy.json'
+        report.parent.mkdir(parents=True,exist_ok=True)
+        report.write_text(json.dumps(policy,indent=2)+'\n')
+        print('Using Lean small-region file-reading fallback: '+json.dumps(policy),flush=True)
     def run(*args):subprocess.run(args,cwd=workspace,check=True)
     run('lake','env','python3','scripts/fetch_mathlib_cache.py')
     command=['lake','env','python3','scripts/verify.py','--project',str(workspace),'--jobs',os.environ.get('LEAN_VERIFY_JOBS','16'),'--heavy-jobs',os.environ.get('LEAN_VERIFY_HEAVY_JOBS','8'),'--memory','4096','--finite-memory','1024','--memory-budget',os.environ.get('LEAN_VERIFY_MEMORY_BUDGET_MB','49152'),'--audit-memory',os.environ.get('LEAN_VERIFY_AUDIT_MEMORY_MB','32768'),'--audit-jobs',os.environ.get('LEAN_VERIFY_AUDIT_JOBS','1'),'--audit-retry-memory',os.environ.get('LEAN_VERIFY_AUDIT_RETRY_MEMORY_MB','0'),'--keep-going']
