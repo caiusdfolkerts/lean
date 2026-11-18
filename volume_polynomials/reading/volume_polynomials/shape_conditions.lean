@@ -35,7 +35,12 @@ def e₃ : Label := 2
 def sᵥ : Label := 3
 def s𝓌 : Label := 4
 def s𝓏 : Label := 5
-def bodyA : Label := 6
+/-- Exact natural bound for the distinguished body label. -/
+theorem palomarBodyAIndexBound : (6 : ℕ) < 9 := by decide
+/-- Exact natural bound for the first of the two parameter positions. -/
+theorem palomarAssignmentIndexBound : (0 : ℕ) < 2 := by decide
+
+def bodyA : Label := ⟨6, palomarBodyAIndexBound⟩
 def bodyB : Label := 7
 def bodyC : Label := 8
 
@@ -104,7 +109,7 @@ def inequalities : List RationalPolynomial :=
     extrusionSymbol (unitWeight bodyA) s𝓏 ]
 
 def assignment (lam a : ℝ) (c : Coefficients 9 3) : Variable → ℝ :=
-  Sum.elim (fun i => if i = 0 then lam else a) c
+  Sum.elim (fun i => if i = (⟨0, palomarAssignmentIndexBound⟩ : Fin 2) then lam else a) c
 
 def polynomialValue (lam a : ℝ) (c : Coefficients 9 3) : RationalPolynomial →+* ℝ :=
   MvPolynomial.eval₂Hom (algebraMap ℚ ℝ) (assignment lam a c)

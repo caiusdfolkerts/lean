@@ -3355,7 +3355,7 @@ namespace VolumePolynomials
 open scoped Topology
 open Set
 
-abbrev SegmentChoice := ℕ → Icc (- (1/2 : ℝ)) (1/2 : ℝ)
+abbrev SegmentChoice := ℕ → Icc (- ((Nat.cast 1 : ℝ) / Nat.cast 2)) ((Nat.cast 1 : ℝ) / Nat.cast 2)
 
 variable {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E]
 
@@ -5528,7 +5528,7 @@ noncomputable section
 namespace VolumePolynomials.Holonomy
 
 /-- The paper's angle is chosen in `(0, π)`, so the area formula has positive sine denominator. -/
-def angle : ℝ := Real.arccos (1 / 3)
+def angle : ℝ := Real.arccos ((Nat.cast 1 : ℝ) / Nat.cast 3)
 
 theorem cos_angle : Real.cos angle = 1 / 3 := by
   first
@@ -6451,9 +6451,9 @@ open scoped Topology
 open Polynomial.Chebyshev Filter Metric
 
 /-- The rational normalized sine coefficient, including the zero constant term. -/
-def rationalSineCoefficient : ℕ → ℚ
-  | 0 => 0
-  | n + 1 => |(U ℚ (n : ℤ)).eval (1 / 3)|
+def rationalSineCoefficient (n : ℕ) : ℚ :=
+  Nat.casesOn (motive := fun _ => ℚ) n 0
+    (fun k => |(Polynomial.Chebyshev.U ℚ (k : ℤ)).eval (1 / 3)|)
 
 theorem rationalSineCoefficient_eq {θ : ℝ} (hθ : Real.cos θ = 1 / 3)
     (hsin : 0 < Real.sin θ) (n : ℕ) :
@@ -7575,7 +7575,7 @@ def IsExposedEdge {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
     (K F : Set E) : Prop :=
   ∃ l : E →L[ℝ] ℝ, l ≠ 0 ∧ F = l.toExposed K ∧
     ∃ a v : E, v ≠ 0 ∧
-      F = {x | ∃ t : Icc (-(1 / 2 : ℝ)) (1 / 2 : ℝ), x = a + (t : ℝ) • v}
+      F = {x | ∃ t : Icc (- ((Nat.cast 1 : ℝ) / Nat.cast 2)) ((Nat.cast 1 : ℝ) / Nat.cast 2), x = a + (t : ℝ) • v}
 
 theorem exposed_affine_image (l : Plane →L[ℝ] ℝ)
     (f : Plane →L[ℝ] ThreeSpace) (g : ThreeSpace →L[ℝ] Plane)

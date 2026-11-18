@@ -51,6 +51,40 @@ theorem PalomarStateBodies_eq {n d : ℕ} (s : RationalReconstruction.State n d)
   split_ifs <;> rfl
 end VolumePolynomials
 
+namespace VolumePolynomials
+/-- Normalization preserves the exact original interval of segment choices. -/
+theorem palomarSegmentChoice_oldFormula :
+    SegmentChoice = (ℕ → Icc (- (1/2 : ℝ)) (1/2 : ℝ)) := by rfl
+/-- The series is still the original sum of the chosen scaled vectors. -/
+theorem palomarSeriesPoint_oldFormula {E : Type*} [NormedAddCommGroup E]
+    [NormedSpace ℝ E] [CompleteSpace E] (u : ℕ → E) (t : SegmentChoice) :
+    seriesPoint u t = ∑' n, (t n : ℝ) • u n := by rfl
+/-- The canonical Nat eliminator gives precisely the original two cases. -/
+theorem palomarRationalSineCoefficient_oldFormula (n : ℕ) :
+    rationalSineCoefficient n =
+      (match n with
+       | 0 => 0
+       | k + 1 => |(Polynomial.Chebyshev.U ℚ (k : ℤ)).eval (1 / 3)|) := by
+  cases n <;> rfl
+namespace Holonomy
+/-- The angle retains its exact original real value. -/
+theorem palomarAngle_oldFormula : angle = Real.arccos (1 / 3) := by rfl
+/-- The complete nondegenerate exposed-segment predicate is unchanged. -/
+theorem palomarIsExposedEdge_oldFormula {E : Type*} [NormedAddCommGroup E]
+    [NormedSpace ℝ E] (K F : Set E) : IsExposedEdge K F ↔
+      ∃ l : E →L[ℝ] ℝ, l ≠ 0 ∧ F = l.toExposed K ∧
+        ∃ a v : E, v ≠ 0 ∧
+          F = {x | ∃ t : Icc (-(1 / 2 : ℝ)) (1 / 2 : ℝ), x = a + (t : ℝ) • v} := by rfl
+end Holonomy
+namespace ShapeConditions
+/-- The distinguished label remains exactly the original Fin numeral. -/
+theorem palomarBodyA_oldFormula : bodyA = (6 : Label) := by rfl
+/-- Both parameters and every coefficient are substituted as before. -/
+theorem palomarAssignment_oldFormula (lam a : ℝ) (c : Coefficients 9 3) :
+    assignment lam a c = Sum.elim (fun i : Fin 2 => if i = 0 then lam else a) c := by rfl
+end ShapeConditions
+end VolumePolynomials
+
 open VolumePolynomials VolumePolynomials.Main VolumePolynomials.ShapeConditions
 open VolumePolynomials.Holonomy
 namespace PalomarVolumePolynomials

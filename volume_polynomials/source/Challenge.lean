@@ -477,7 +477,7 @@ def orbit : ℕ → ℝ × ℝ
 /-- The geometric weighting of the explicit rotation orbit. -/
 def weightedOrbit (lam : ℝ) (n : ℕ) : ℝ × ℝ := lam ^ n • orbit n
 /-- The paper angle arccos(1/3). -/
-def angle : ℝ := Real.arccos (1 / 3)
+def angle : ℝ := Real.arccos ((Nat.cast 1 : ℝ) / Nat.cast 3)
 /-- Equality with the translated image under an injective continuous linear map. -/
 def AffineCopy (S : Set Plane) (T : Set ThreeSpace) : Prop :=
   ∃ v : ThreeSpace, ∃ f : Plane →L[ℝ] ThreeSpace,
@@ -487,12 +487,12 @@ def IsExposedEdge {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
     (K F : Set E) : Prop :=
   ∃ l : E →L[ℝ] ℝ, l ≠ 0 ∧ F = l.toExposed K ∧
     ∃ a v : E, v ≠ 0 ∧
-      F = {x | ∃ t : Icc (-(1 / 2 : ℝ)) (1 / 2 : ℝ), x = a + (t : ℝ) • v}
+      F = {x | ∃ t : Icc (- ((Nat.cast 1 : ℝ) / Nat.cast 2)) ((Nat.cast 1 : ℝ) / Nat.cast 2), x = a + (t : ℝ) • v}
 end VolumePolynomials.Holonomy
 
 namespace VolumePolynomials
 /-- An independent coefficient in [-1/2,1/2] for every segment. -/
-abbrev SegmentChoice := ℕ → Icc (- (1/2 : ℝ)) (1/2 : ℝ)
+abbrev SegmentChoice := ℕ → Icc (- ((Nat.cast 1 : ℝ) / Nat.cast 2)) ((Nat.cast 1 : ℝ) / Nat.cast 2)
 section
 variable {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E]
 /-- The actual sum of the chosen scaled segment vectors. -/
@@ -510,9 +510,9 @@ def HasLocalContinuousExtension (F : ℂ → ℂ) (ζ : ℂ) : Prop :=
     ∀ z ∈ ball ζ δ, ‖z‖ < 1 → g z = F z
 
 /-- The explicit rational Chebyshev coefficients for the normalized sine series. -/
-def rationalSineCoefficient : ℕ → ℚ
-  | 0 => 0
-  | n + 1 => |(Polynomial.Chebyshev.U ℚ (n : ℤ)).eval (1 / 3)|
+def rationalSineCoefficient (n : ℕ) : ℚ :=
+  Nat.casesOn (motive := fun _ => ℚ) n 0
+    (fun k => |(Polynomial.Chebyshev.U ℚ (k : ℤ)).eval (1 / 3)|)
 
 /-- The ordinary finite Cauchy convolution of two rational sequences. -/
 def rationalConvolution (a b : ℕ → ℚ) (n : ℕ) : ℚ :=
@@ -582,12 +582,17 @@ abbrev Variable := Fin 2 ⊕ MultiIndex 9 3
 /-- Rational polynomials in both parameters and all ordinary coefficients. -/
 abbrev RationalPolynomial := MvPolynomial Variable ℚ
 
+/-- Exact natural bound for the distinguished body label. -/
+theorem palomarBodyAIndexBound : (6 : ℕ) < 9 := by sorry
+/-- Exact natural bound for the first of the two parameter positions. -/
+theorem palomarAssignmentIndexBound : (0 : ℕ) < 2 := by sorry
+
 /-- The distinguished body index six. -/
-def bodyA : Label := 6
+def bodyA : Label := ⟨6, palomarBodyAIndexBound⟩
 
 /-- Literal substitution of the two parameters and complete coefficient array. -/
 def assignment (lam a : ℝ) (c : Coefficients 9 3) : Variable → ℝ :=
-  Sum.elim (fun i => if i = 0 then lam else a) c
+  Sum.elim (fun i => if i = (⟨0, palomarAssignmentIndexBound⟩ : Fin 2) then lam else a) c
 
 /-- The ring homomorphism evaluating the finite rational shape constraints. -/
 def polynomialValue (lam a : ℝ) (c : Coefficients 9 3) : RationalPolynomial →+* ℝ :=

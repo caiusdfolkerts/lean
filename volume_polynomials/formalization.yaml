@@ -65,8 +65,11 @@ fidelity:
     Challenge. Three algorithm values are supplied by Solution through the
     Comparator definition_names mechanism and constrained by the all-input
     characterization, certificate and reconstruction statements. All 415
-    mathematical assembly source blocks are retained without changes in ten
-    modules; assembly/palomar-source-map.json records their hashes. The former
+    mathematical assembly blocks are retained in ten modules. Five blocks use
+    explicit numeric constructors or the canonical Nat eliminator to avoid
+    context-dependent generated auxiliary names; source/Solution.lean includes
+    seven old-formula equality proofs, pending compilation. The source map
+    records both original and prepared hashes. The former
     monolithic stage2 ownership audit is preserved as readable text, while
     the active private-declaration audit inventories every split module.
 limitations:

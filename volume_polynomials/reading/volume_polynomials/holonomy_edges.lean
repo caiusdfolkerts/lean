@@ -17,7 +17,7 @@ def IsExposedEdge {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
     (K F : Set E) : Prop :=
   ∃ l : E →L[ℝ] ℝ, l ≠ 0 ∧ F = l.toExposed K ∧
     ∃ a v : E, v ≠ 0 ∧
-      F = {x | ∃ t : Icc (-(1 / 2 : ℝ)) (1 / 2 : ℝ), x = a + (t : ℝ) • v}
+      F = {x | ∃ t : Icc (- ((Nat.cast 1 : ℝ) / Nat.cast 2)) ((Nat.cast 1 : ℝ) / Nat.cast 2), x = a + (t : ℝ) • v}
 
 theorem exposed_affine_image (l : Plane →L[ℝ] ℝ)
     (f : Plane →L[ℝ] ThreeSpace) (g : ThreeSpace →L[ℝ] Plane)

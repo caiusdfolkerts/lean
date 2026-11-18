@@ -14,9 +14,9 @@ open scoped Topology
 open Polynomial.Chebyshev Filter Metric
 
 /-- The rational normalized sine coefficient, including the zero constant term. -/
-def rationalSineCoefficient : ℕ → ℚ
-  | 0 => 0
-  | n + 1 => |(U ℚ (n : ℤ)).eval (1 / 3)|
+def rationalSineCoefficient (n : ℕ) : ℚ :=
+  Nat.casesOn (motive := fun _ => ℚ) n 0
+    (fun k => |(Polynomial.Chebyshev.U ℚ (k : ℤ)).eval (1 / 3)|)
 
 theorem rationalSineCoefficient_eq {θ : ℝ} (hθ : Real.cos θ = 1 / 3)
     (hsin : 0 < Real.sin θ) (n : ℕ) :

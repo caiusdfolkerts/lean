@@ -13,7 +13,9 @@
     "VolumePolynomials.positive_nhds_le_cofinite",
     "VolumePolynomials.polynomial_evaluation_germ_isUnit",
     "VolumePolynomials.RationalHulls.realPoint_zero",
-    "VolumePolynomials.RationalHulls.vertices_finite"
+    "VolumePolynomials.RationalHulls.vertices_finite",
+    "VolumePolynomials.ShapeConditions.palomarBodyAIndexBound",
+    "VolumePolynomials.ShapeConditions.palomarAssignmentIndexBound"
   ],
   "definition_names": [
     "VolumePolynomials.Main.volumeInequalityMatrix",
