@@ -160,6 +160,7 @@ variable [CommRing R] [Monoid G]
 variable [AddCommGroup M] [Module R M]
 
 /-- The action induced by a representation on its `d`th exterior power. -/
+@[expose]
 noncomputable def exteriorPower (ρ : Representation R G M) (d : ℕ) :
     Representation R G (⋀[R]^d M) where
   toFun g := _root_.exteriorPower.map d (ρ g)
@@ -446,9 +447,11 @@ abbrev Standard := Fin 2 → K
 abbrev SymmetricDegree (d : ℕ) := Sym[K]^d (Standard K)
 
 /-- The index counts the second basis vector, as in `bⱼ=xᵈ⁻ʲyʲ`. -/
+@[expose]
 def binaryIndex (d : ℕ) : Sym (Fin 2) d ≃ Fin (d+1) :=
   (TauCeti.symFinTwoEquiv d).trans Fin.revPerm
 
+@[expose]
 def binaryBasis (d : ℕ) : Module.Basis (Fin (d+1)) K (SymmetricDegree K d) :=
   ((Pi.basisFun K (Fin 2)).symmetricPower d).reindex (binaryIndex d)
 
@@ -516,6 +519,7 @@ variable (K : Type) [Field K]
 
 abbrev Model (t : ℕ) := Module.Dual K (SymmetricDegree K t) × SymmetricDegree K (t+1)
 
+@[expose]
 def modelRepresentation (t : ℕ) : Representation K (GL (Fin 2) K) (Model K t) :=
   (TauCeti.symPowerRep K 2 t).dual.prod (TauCeti.symPowerRep K 2 (t+1))
 
@@ -571,6 +575,7 @@ theorem pencil_equivariant (t : ℕ) (g : GL (Fin 2) K) (u : Standard K) :
   exact (LinearMap.comp_apply homQuadratic
     (SymmetricPower.consMul K (Standard K) t) (TauCeti.stdRep K 2 g u)).symm
 
+@[expose]
 def modelBasis (t : ℕ) : Module.Basis (Fin (2*(t+1)+1)) K (Model K t) :=
   ((binaryBasis K t).dualBasis.prod (binaryBasis K (t+1))).reindex (TopInterlacing.abIndex (t+1))
 
@@ -710,8 +715,10 @@ section OddPath
 variable {K : Type*} [Field K]
 
 /-- Zero-based odd path positions are the `a`-variables. -/
+@[expose]
 def aIndexDegree {k : ℕ} (i : Fin (2*k+1)) : ℕ := if i.val%2=1 then 1 else 0
 
+@[expose]
 def aWordDegree {k s : ℕ} (a : Fin s → Fin (2*k+1)) : ℕ :=
   ∑ j,aIndexDegree (a j)
 
@@ -874,12 +881,14 @@ variable {K : Type*} [Field K] [CharZero K]
 
 /-- The original exterior word span with `p` odd-position letters and total
 degree `s`, before taking the generated-ideal quotient. -/
+@[expose]
 def exteriorASubdegree (k s p : ℕ) :
     Submodule K (⋀[K]^s (Fin (2*k+1) → K)) :=
   Submodule.span K {x | ∃ I : PluckerIndex s (2*k+1),
     aWordDegree I.val=p ∧ x=exteriorPluckerBasis s (2*k+1) I}
 
 /-- The image of that original span in the genuine quotient by both quadrics. -/
+@[expose]
 def quotientASubdegree (k s p : ℕ) :
     Submodule K (OddExteriorQuotientDegree (K := K) k s) :=
   (exteriorASubdegree k s p).map
@@ -889,6 +898,7 @@ def quotientASubdegree (k s p : ℕ) :
 
 /-- The paper's original `(p,q)` piece: total exterior degree `p+q`, with
 exactly `p` of the `a`-variables. -/
+@[expose]
 def actualBigradedPiece (k p q : ℕ) :
     Submodule K (OddExteriorQuotientDegree (K := K) k (p+q)) :=
   quotientASubdegree k (p+q) p
@@ -1019,11 +1029,13 @@ variable (K : Type) [Field K]
 
 abbrev Coordinates (t : ℕ) := Fin (2*(t+1)+1) → K
 
+@[expose]
 def coordinateEquiv (t : ℕ) : Coordinates K t ≃ₗ[K] Model K t :=
   standardBasisEquiv (modelBasis K t)
 
 /-- The actual original vector representation, obtained by the displayed
 monomial-basis coordinate change. -/
+@[expose]
 def coordinateRepresentation (t : ℕ) :
     Representation K (GL (Fin 2) K) (Coordinates K t) where
   toFun g := (coordinateEquiv K t).symm.toLinearMap ∘ₗ
@@ -1148,6 +1160,7 @@ theorem original_relations_invariant (t s : ℕ) (g : GL (Fin 2) K) :
       (Submodule.smul_mem _ _ (Submodule.subset_span (by simp)))
 
 /-- The representation on the genuine quotient by both original quadrics. -/
+@[expose]
 def quotientRepresentation (t s : ℕ) :
     Representation K (GL (Fin 2) K) (OddExteriorQuotientDegree (K := K) (t+1) s) :=
   ((coordinateRepresentation K t).exteriorPower s).quotient _
@@ -1258,6 +1271,7 @@ theorem bigradedPiece_invariant (t p q : ℕ) (g : GL (Fin 2) K) :
 
 /-- The compatible action on the paper's original `(p,q)` quotient piece.
 Its carrier remains the independently defined image of the original words. -/
+@[expose]
 def bigradedRepresentation (t p q : ℕ) :
     Representation K (GL (Fin 2) K)
       (Bidegree.actualBigradedPiece (K := K) (t+1) p q) :=

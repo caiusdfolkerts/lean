@@ -6924,6 +6924,7 @@ def naturalQuotientRepresentation : (k s : ℕ) →
   | 0, s => Representation.trivial K (GL (Fin 2) K) _
   | t+1, s => quotientRepresentation K t s
 
+@[expose]
 def naturalBigradedRepresentation : (k p q : ℕ) →
     Representation K (GL (Fin 2) K) (Bidegree.actualBigradedPiece (K := K) k p q)
   | 0, p, q => Representation.trivial K (GL (Fin 2) K) _
@@ -7231,6 +7232,7 @@ variable (K : Type) [Field K]
 
 /-- The genuine iterated symmetric-power representation appearing in the
 paper, before restriction from `GL₂` to `SL₂`. -/
+@[expose]
 def plethysmRepresentation (p q : ℕ) :
     Representation K (GL (Fin 2) K) (Sym[K]^(2*p+1) (Sym[K]^q (Fin 2 → K))) :=
   (TauCeti.symPowerRep K 2 q).symmetricPower (2*p+1)

@@ -454,6 +454,7 @@ variable {α β : Type*} {m n : ℕ}
 This is Mathlib's quotient map `Sym.ofVector` precomposed with `List.Vector.ofFn`; the `Fin n → α`
 form is the one that carries a product topology, so it is the map that `Sym α n` carries the
 quotient topology along in `TauCeti/Topology/Sym/Basic.lean`. -/
+@[expose]
 def ofFn (f : Fin n → α) : Sym α n :=
   Sym.ofVector (List.Vector.ofFn f)
 
@@ -580,6 +581,7 @@ end Sym
 that count can be anything from `0` to `d`: the two counts sum to `d`, so the pair of them runs
 over the antidiagonal of `d`.  This is the rank-two instance of the count
 `#(Sym α d) = (#α + d - 1).choose d`. -/
+@[expose]
 noncomputable def symFinTwoEquiv (d : ℕ) : Sym (Fin 2) d ≃ Fin (d + 1) :=
   (Sym.equivNatSumOfFintype (Fin 2) d).trans <|
     ((finTwoArrowEquiv ℕ).subtypeEquiv fun _ => by
@@ -623,6 +625,7 @@ open scoped Classical BigOperators
 
 namespace PaperVerification.AlternatingForms.TopInterlacing
 
+@[expose]
 def abIndex (k : ℕ) : Fin k ⊕ Fin (k+1) ≃ Fin (2*k+1) where
   toFun
     | .inl i => ⟨2*i.val+1, by have := i.isLt; omega⟩
@@ -989,6 +992,7 @@ theorem map_rel {N : Type*} [AddCommMonoid N] [Module R N] (f : M →ₗ[R] N) :
         Function.comp_apply] using (tprod_equiv (R := R) e (f ∘ m)).symm
 
 /-- A linear map induces a linear map on every symmetric tensor power. -/
+@[expose]
 noncomputable def map {N : Type*} [AddCommMonoid N] [Module R N] (f : M →ₗ[R] N) :
     Sym[R] ι M →ₗ[R] Sym[R] ι N where
   toFun :=
@@ -1216,6 +1220,7 @@ theorem lift_rel (hf : ∀ e : Equiv.Perm ι, f.domDomCongr e = f) :
 
 /-- **The universal property of the symmetric tensor power**: a multilinear map that is unchanged
 by permuting its arguments descends to a linear map on the symmetric power. -/
+@[expose]
 noncomputable def lift (hf : ∀ e : Equiv.Perm ι, f.domDomCongr e = f) : Sym[R] ι M →ₗ[R] N where
   toFun := (addConGen (Rel R ι M)).lift (PiTensorProduct.lift f).toAddMonoidHom (lift_rel f hf)
   map_add' := map_add _
@@ -1346,6 +1351,7 @@ namespace SymmetricPower
 only to write down a pure symmetric tensor with prescribed factors. Any two orderings of the same
 unordered tuple differ by a permutation, by `TauCeti.Sym.ofFn_eq_ofFn_iff`, so the choice never
 escapes into the API below. -/
+@[expose]
 noncomputable def orderOfSym (s : Sym κ n) : Fin n → κ :=
   Function.surjInv TauCeti.Sym.ofFn_surjective s
 
@@ -1361,6 +1367,7 @@ variable [CommSemiring R] [AddCommMonoid M] [Module R M]
 variable (R) in
 /-- The pure symmetric tensor whose factors are the members of a family `v : κ → M` listed, with
 multiplicity but without order, by a point of `Sym κ n`. -/
+@[expose]
 noncomputable def tprodOfSym (v : κ → M) (s : Sym κ n) : Sym[R]^n M :=
   ⨂ₛ[R] i, v (orderOfSym s i)
 
@@ -1379,6 +1386,7 @@ variable (b : Basis κ R M)
 
 /-- Reading a pure tensor of basis vectors as the unordered tuple of its indices, on the tensor
 power. -/
+@[expose]
 noncomputable def toFinsuppAux : (⨂[R] (_ : Fin n), M) →ₗ[R] (Sym κ n →₀ R) :=
   (Basis.piTensorProduct fun _ : Fin n => b).constr R
     fun f => Finsupp.single (TauCeti.Sym.ofFn f) 1
@@ -1398,6 +1406,7 @@ private theorem toFinsuppAux_reindex (e : Equiv.Perm (Fin n)) :
   exact congrArg (Finsupp.single · (1 : R)) (TauCeti.Sym.ofFn_comp_perm e.symm f)
 
 /-- The multilinear form of the coordinate map, before descending to the symmetric power. -/
+@[expose]
 noncomputable def toFinsuppMultilinear :
     MultilinearMap R (fun _ : Fin n ↦ M) (Sym κ n →₀ R) :=
   (toFinsuppAux b).compMultilinearMap (PiTensorProduct.tprod R)
@@ -1412,6 +1421,7 @@ theorem toFinsuppMultilinear_domDomCongr (e : Equiv.Perm (Fin n)) :
 variable (n) in
 /-- The coordinates of a symmetric tensor in the basis induced by `b`: a pure tensor of basis
 vectors is sent to the unordered tuple of its indices. -/
+@[expose]
 noncomputable def toFinsupp : Sym[R]^n M →ₗ[R] (Sym κ n →₀ R) :=
   lift (toFinsuppMultilinear b) (toFinsuppMultilinear_domDomCongr b)
 
@@ -1422,6 +1432,7 @@ theorem toFinsupp_tprod_basis (f : Fin n → κ) :
 
 variable (n) in
 /-- The symmetric power of a free module is free on the unordered `n`-tuples of basis indices. -/
+@[expose]
 noncomputable def linearEquivFinsupp : Sym[R]^n M ≃ₗ[R] (Sym κ n →₀ R) :=
   LinearEquiv.ofLinearMap (toFinsupp n b) (Finsupp.linearCombination R (tprodOfSym R b))
     (by
@@ -1445,6 +1456,7 @@ private theorem linearEquivFinsupp_symm_single (s : Sym κ n) :
 variable (n) in
 /-- **A basis of the symmetric tensor power**: a basis of `M` induces a basis of `Sym[R]^n M`
 indexed by the unordered `n`-tuples of basis indices. -/
+@[expose]
 noncomputable def _root_.Module.Basis.symmetricPower : Basis (Sym κ n) R (Sym[R]^n M) :=
   Basis.ofRepr (linearEquivFinsupp n b)
 
@@ -1541,6 +1553,7 @@ section CommRing
 variable [CommRing k]
 
 /-- The standard representation of `GL n k` on column vectors. -/
+@[expose]
 def stdRep : Representation k (GL (Fin n) k) (Fin n → k) :=
   (Units.coeHom ((Fin n → k) →ₗ[k] (Fin n → k))).comp
     Matrix.GeneralLinearGroup.toLin.toMonoidHom
@@ -2493,6 +2506,7 @@ variable [CommSemiring R] [Monoid G]
 variable [AddCommMonoid M] [Module R M]
 
 /-- The action induced by a representation on its `d`th symmetric power. -/
+@[expose]
 noncomputable def symmetricPower (ρ : Representation R G M) (d : ℕ) :
     Representation R G (Sym[R]^d M) where
   toFun g := SymmetricPower.map (ι := Fin d) (ρ g)

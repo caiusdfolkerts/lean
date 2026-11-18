@@ -1,0 +1,163 @@
+{
+  "status": "full_measured_exposure_family_repair_prepared_unelaborated",
+  "failed_run": "44383546499",
+  "failed_source_commit": "0b85c7bc7cf7d2c3126f17f0ffb30a0fd1d6f484",
+  "all59_original_data_definitions_exported_for_bridges": true,
+  "canonical_mathlib_source_unchanged": true,
+  "challenge_unchanged_sha256": "1a8200eb1e626093772ae90317803a0459e2ce7f47b1382713bf2d82693cf4a6",
+  "all17_full_theorem_types_preserved": true,
+  "source_semantics": "All original declaration bodies, proof bodies, names and audit inventory preserved. Declaration-local @[expose] on52originaldefs exports their existing bodies,7abbrevs already exposed; no original/canonical definition is replaced and no assertion removed.",
+  "changes": [
+    {
+      "path": "source/paper_verification/literal005/PalomarPart001.lean",
+      "before": "feeddfab82c00d2fe57b377e9249eef22a5c299724ff28a63722bb0f94604303",
+      "after": "6a17092ff8eda38c236ef30d249a286b16bb6b80be6d107bc2ee03d33162044c",
+      "declaration_local_expose_annotations": [
+        "Module.Basis.symmetricPower",
+        "PaperVerification.AlternatingForms.TopInterlacing.abIndex",
+        "Representation.symmetricPower",
+        "SymmetricPower.lift",
+        "SymmetricPower.linearEquivFinsupp",
+        "SymmetricPower.map",
+        "SymmetricPower.orderOfSym",
+        "SymmetricPower.toFinsupp",
+        "SymmetricPower.toFinsuppAux",
+        "SymmetricPower.toFinsuppMultilinear",
+        "SymmetricPower.tprodOfSym",
+        "TauCeti.Sym.ofFn",
+        "TauCeti.stdRep",
+        "TauCeti.symFinTwoEquiv"
+      ],
+      "abbrevs_already_exposed_by_module_system": [
+        "TauCeti.symPowerRep"
+      ],
+      "all_original_declaration_bodies_byte_identical": true
+    },
+    {
+      "path": "source/paper_verification/literal001/PalomarPart001.lean",
+      "before": "9ccfa2efb45d4322347f8a635df03571eacf2cab4db0f6935e28bfcac2023eaf",
+      "after": "288cf7dd95c8ea97da88430a5fdad00a0b25b3d0e267d240a72518c8574c0118",
+      "declaration_local_expose_annotations": [
+        "PaperVerification.AlternatingForms.exteriorPluckerBasis",
+        "PaperVerification.AlternatingForms.matchingQuadratic",
+        "PaperVerification.AlternatingForms.oddPathFirstLeft",
+        "PaperVerification.AlternatingForms.oddPathFirstQuadratic",
+        "PaperVerification.AlternatingForms.oddPathMiddle",
+        "PaperVerification.AlternatingForms.oddPathSecondQuadratic",
+        "PaperVerification.AlternatingForms.oddPathSecondRight",
+        "PaperVerification.AlternatingForms.pluckerOrderEmbeddingEquiv",
+        "PaperVerification.AlternatingForms.pluckerSubsetEquiv"
+      ],
+      "abbrevs_already_exposed_by_module_system": [],
+      "all_original_declaration_bodies_byte_identical": true
+    },
+    {
+      "path": "source/paper_verification/literal006/PalomarPart000.lean",
+      "before": "2c8e7340c4e5de9c7fdc515e098da9e023ffa91c19fd1d20dbccd4e99851fd2a",
+      "after": "bbf971dbd9ce4f3f0685f513dd07ec2f49c2a9cb7e210402d5e5f0f432dc6706",
+      "declaration_local_expose_annotations": [
+        "PaperVerification.AlternatingForms.Bidegree.aIndexDegree",
+        "PaperVerification.AlternatingForms.Bidegree.aWordDegree",
+        "PaperVerification.AlternatingForms.Bidegree.actualBigradedPiece",
+        "PaperVerification.AlternatingForms.Bidegree.exteriorASubdegree",
+        "PaperVerification.AlternatingForms.Bidegree.quotientASubdegree",
+        "PaperVerification.AlternatingForms.SymmetricPencil.bigradedRepresentation",
+        "PaperVerification.AlternatingForms.SymmetricPencil.binaryBasis",
+        "PaperVerification.AlternatingForms.SymmetricPencil.binaryIndex",
+        "PaperVerification.AlternatingForms.SymmetricPencil.coordinateEquiv",
+        "PaperVerification.AlternatingForms.SymmetricPencil.coordinateRepresentation",
+        "PaperVerification.AlternatingForms.SymmetricPencil.modelBasis",
+        "PaperVerification.AlternatingForms.SymmetricPencil.modelRepresentation",
+        "PaperVerification.AlternatingForms.SymmetricPencil.quotientRepresentation",
+        "Representation.exteriorPower"
+      ],
+      "abbrevs_already_exposed_by_module_system": [
+        "PaperVerification.AlternatingForms.SymmetricPencil.Coordinates",
+        "PaperVerification.AlternatingForms.SymmetricPencil.Model",
+        "PaperVerification.AlternatingForms.SymmetricPencil.Standard",
+        "PaperVerification.AlternatingForms.SymmetricPencil.SymmetricDegree"
+      ],
+      "all_original_declaration_bodies_byte_identical": true
+    },
+    {
+      "path": "source/paper_verification/literal001/PalomarPart000.lean",
+      "before": "ede4481bdda0e56fafc8f0598436b02e02fc7f558ddc85537c94fc871397b4c7",
+      "after": "e28889a6d1029995995b15655f5770cfa5ffb1be9c19d6cc107347460ef0af31",
+      "declaration_local_expose_annotations": [
+        "PaperVerification.AlternatingForms.PluckerIndex",
+        "PaperVerification.AlternatingForms.StripWalks.paperWalkCount",
+        "PaperVerification.AlternatingForms.StripWalks.walkCount"
+      ],
+      "abbrevs_already_exposed_by_module_system": [],
+      "all_original_declaration_bodies_byte_identical": true
+    },
+    {
+      "path": "source/paper_verification/literal000/PalomarPart000.lean",
+      "before": "db065bac1d0ad9e9e2530f3979bcf50e8822e3ddcc69d164ec96d1609acd57ce",
+      "after": "925d3c9fbca47c3ad4e7b00fd329c5be6003a661d7864e860251ff459b19ff62",
+      "declaration_local_expose_annotations": [
+        "PaperVerification.AlternatingForms.exteriorDegreeRelations",
+        "PaperVerification.AlternatingForms.exteriorPair",
+        "PaperVerification.AlternatingForms.exteriorRelationIdeal",
+        "PaperVerification.AlternatingForms.orbitFormsFromCoordinates"
+      ],
+      "abbrevs_already_exposed_by_module_system": [
+        "PaperVerification.AlternatingForms.ExteriorQuotientDegree"
+      ],
+      "all_original_declaration_bodies_byte_identical": true
+    },
+    {
+      "path": "source/paper_verification/literal004/PalomarPart000.lean",
+      "before": "0f732993b9f6e4fff3785bfad2ad834a1610d467f3941a0f899445d972efb820",
+      "after": "bf89e3402ab48c47f77735d6a9d8b1476028e210b3d561b7c56e604e50534344",
+      "declaration_local_expose_annotations": [
+        "PaperVerification.AlternatingForms.PathDeterminant.paperMatrix",
+        "PaperVerification.AlternatingForms.exteriorPairHilbertSeries",
+        "PaperVerification.AlternatingForms.paperExteriorHilbertSeries",
+        "PaperVerification.FiniteHilbertSeries.expression"
+      ],
+      "abbrevs_already_exposed_by_module_system": [],
+      "all_original_declaration_bodies_byte_identical": true
+    },
+    {
+      "path": "source/paper_verification/literal007/PalomarPart000.lean",
+      "before": "78a101453cccf4b926791fe694db173b04e240ca6a89bf447eb714caf1bbb5aa",
+      "after": "7ac23ebb5791f4001920a526ba6d905fda3d94d561ccf12cc5faa0e3c3c8f417",
+      "declaration_local_expose_annotations": [
+        "PaperVerification.AlternatingForms.SymmetricPencil.naturalBigradedRepresentation",
+        "PaperVerification.AlternatingForms.TopRepresentation.plethysmRepresentation"
+      ],
+      "abbrevs_already_exposed_by_module_system": [],
+      "all_original_declaration_bodies_byte_identical": true
+    },
+    {
+      "path": "source/paper_verification/literal003/PalomarPart001.lean",
+      "before": "fb32fd46b3db2fb361a2800859ff096a6e090c253418d67b6cdd08730e71f73f",
+      "after": "edca33cc262fae1699cc974835c916386874a5f57517778c45e61509dd5f251e",
+      "declaration_local_expose_annotations": [
+        "PaperVerification.AlternatingForms.GoodOddIndex",
+        "PaperVerification.AlternatingForms.standardBasisEquiv"
+      ],
+      "abbrevs_already_exposed_by_module_system": [
+        "PaperVerification.AlternatingForms.OddExteriorQuotientDegree"
+      ],
+      "all_original_declaration_bodies_byte_identical": true
+    },
+    {
+      "path": "source/PalomarLiteralInterface.lean",
+      "before": "28b71f41749715b2e3198223057bc92972769c6b67c01de70f6dcfa0d592629f",
+      "after": "dbd77ca1a4de19bff13e4e604bdc12f8e75dd2c89312b25630957bc4f7c8cde2",
+      "changes": [
+        "Explicit R/\u03b9/M arguments on original map_id bridge.",
+        "Command-local finite1,000,000 heartbeat cap on measured original_relations_invariant definitional-equality bridge only; before docstring on its own line."
+      ]
+    }
+  ],
+  "full_source_comparator": "unverified",
+  "no_local_compilation": true,
+  "exposure_placement": {
+    "explicit_def_annotations": 52,
+    "already_exposed_abbrevs": 7
+  },
+  "pinned_Lean_API_check": "Lean/Elab/MutualDef.lean30\u201334 rejects attribute-command exposure; now only declaration-local @[expose] on52defs. Lines1354\u201355 establish7abbrevs are already exposed."
+}

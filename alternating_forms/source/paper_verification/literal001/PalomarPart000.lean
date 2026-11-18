@@ -2480,6 +2480,7 @@ theorem path_adjacency_power (w N : ℕ) (j : Fin (w + 1)) :
         (stripKernel_lower w N) (stripKernel_upper w N), stripKernel_succ]
 
 /-- The exact number of length-N walks in the closed strip [0,w]. -/
+@[expose]
 def walkCount (w N : ℕ) : ℕ :=
   Fintype.card {p : (SimpleGraph.pathGraph (w + 1)).Walk 0 (Fin.last w) // p.length = N}
 
@@ -2519,6 +2520,7 @@ theorem second_binomial_difference (n s : ℕ) (hs : 4 ≤ s) :
 
 /-- The paper's actual strip-walk count. All applications below prove that
 the displayed width is nonnegative before using its natural-number form. -/
+@[expose]
 def paperWalkCount (n s : ℕ) : ℕ := walkCount (n + 2 - 2 * s) (n + 2)
 
 /-- The complete high-strip identity needed for every prime in Theorem 7.2.
@@ -6617,6 +6619,7 @@ section ActualPresentation
 
 variable {K : Type*} [Field K] {s n : ℕ}
 
+@[expose]
 def PluckerIndex (s n : ℕ) := {I : Fin s → Fin n // StrictMono I}
 
 instance pluckerIndex_fintype (s n : ℕ) : Fintype (PluckerIndex s n) := by

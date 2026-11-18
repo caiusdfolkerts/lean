@@ -199,6 +199,7 @@ theorem expandedPathDenominator_inverse_coeff (n s : ℕ) :
 /-- Ordinary binomial coefficients outside their printed integer range are
 zero.  The guard retains the negative-bottom case instead of truncating it
 to a spurious coefficient choose(_,0)=1. -/
+@[expose]
 def paperMatrix (w s : ℕ) : Matrix (Fin s) (Fin s) ℤ :=
   fun i j => if i.val ≤ j.val+1 then
     ((w+i.val-j.val).choose (j.val+1-i.val) : ℤ) else 0
@@ -706,6 +707,7 @@ namespace PaperVerification.FiniteHilbertSeries
 
 open scoped BigOperators PowerSeries
 
+@[expose]
 def expression (a : ℕ → ℕ) (d : ℕ) : ℕ⟦X⟧ :=
   1 + ∑ s ∈ Finset.Icc 1 d, PowerSeries.C (a s) * PowerSeries.X ^ s
 
@@ -775,9 +777,11 @@ open scoped BigOperators Classical PowerSeries
 
 variable {K M : Type*} [Field K] [AddCommGroup M] [Module K M]
 
+@[expose]
 def exteriorPairHilbertSeries (f g : ⋀[K]^2 M) : ℕ⟦X⟧ :=
   PowerSeries.mk fun s => Module.finrank K (ExteriorQuotientDegree f g s)
 
+@[expose]
 def paperExteriorHilbertSeries (n : ℕ) : ℕ⟦X⟧ :=
   FiniteHilbertSeries.expression (StripWalks.paperWalkCount n) ((n+1)/2)
 

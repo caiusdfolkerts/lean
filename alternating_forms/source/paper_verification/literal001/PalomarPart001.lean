@@ -1760,6 +1760,7 @@ variable {K M ι : Type*} [Field K] [AddCommGroup M] [Module K M]
   [Fintype ι] [DecidableEq ι]
 
 /-- The actual homogeneous quadratic associated to a finite matching. -/
+@[expose]
 def matchingQuadratic (u v : ι → M) : ⋀[K]^2 M :=
   ∑ i, exteriorPair (K := K) (u i) (v i)
 
@@ -1812,20 +1813,25 @@ section OddPath
 variable {K M : Type*} [Field K] [AddCommGroup M] [Module K M]
 
 /-- Zero-based indices of the first matching in the paper's odd path. -/
+@[expose]
 def oddPathFirstLeft {k : ℕ} (i : Fin k) : Fin (2 * k + 1) :=
   ⟨2 * i.val, by have := i.isLt; omega⟩
 
+@[expose]
 def oddPathMiddle {k : ℕ} (i : Fin k) : Fin (2 * k + 1) :=
   ⟨2 * i.val + 1, by have := i.isLt; omega⟩
 
+@[expose]
 def oddPathSecondRight {k : ℕ} (i : Fin k) : Fin (2 * k + 1) :=
   ⟨2 * i.val + 2, by have := i.isLt; omega⟩
 
 /-- The literal form `F = Σ z_(2i-1) z_(2i)` in zero-based indexing. -/
+@[expose]
 def oddPathFirstQuadratic {k : ℕ} (z : Fin (2 * k + 1) → M) : ⋀[K]^2 M :=
   matchingQuadratic (fun i => z (oddPathFirstLeft i)) (fun i => z (oddPathMiddle i))
 
 /-- The literal form `G = Σ z_(2i) z_(2i+1)` in the same indexing. -/
+@[expose]
 def oddPathSecondQuadratic {k : ℕ} (z : Fin (2 * k + 1) → M) : ⋀[K]^2 M :=
   matchingQuadratic (fun i => z (oddPathMiddle i)) (fun i => z (oddPathSecondRight i))
 
@@ -2277,6 +2283,7 @@ open scoped BigOperators
 
 variable {K : Type*} [Field K] {s n t m : ℕ}
 
+@[expose]
 def pluckerOrderEmbeddingEquiv (s n : ℕ) :
     PluckerIndex s n ≃ (Fin s ↪o Fin n) where
   toFun I := OrderEmbedding.ofStrictMono I.val I.property
@@ -2284,12 +2291,14 @@ def pluckerOrderEmbeddingEquiv (s n : ℕ) :
   left_inv I := rfl
   right_inv f := by ext i; rfl
 
+@[expose]
 def pluckerSubsetEquiv (s n : ℕ) :
     PluckerIndex s n ≃ Set.powersetCard (Fin n) s :=
   (pluckerOrderEmbeddingEquiv s n).trans Set.powersetCard.ofFinEmbEquiv
 
 /-- The genuine increasing exterior basis indexed in exactly the same way
 as the Plücker polynomial variables. -/
+@[expose]
 def exteriorPluckerBasis (s n : ℕ) :
     Module.Basis (PluckerIndex s n) K (⋀[K]^s (Fin n → K)) :=
   ((Pi.basisFun K (Fin n)).exteriorPower s).reindex (pluckerSubsetEquiv s n).symm

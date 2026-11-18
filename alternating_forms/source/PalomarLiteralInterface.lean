@@ -313,7 +313,7 @@ noncomputable def map {N : Type*} [AddCommMonoid N] [Module R N] (f : M →ₗ[R
 /-- Literal SymmetricPower.map_id; precise source and scope recorded in the extraction map. -/
 theorem map_id :
     map (ι := ι) (LinearMap.id (R := R) (M := M)) = LinearMap.id := by
-  exact _root_.SymmetricPower.map_id
+  exact _root_.SymmetricPower.map_id (R := R) (ι := ι) (M := M)
 /-- Literal SymmetricPower.map_comp; precise source and scope recorded in the extraction map. -/
 theorem map_comp {N : Type*} {P : Type*}
     [AddCommMonoid N] [Module R N] [AddCommMonoid P] [Module R P] (f : M →ₗ[R] N) (g : N →ₗ[R] P) :
@@ -610,6 +610,7 @@ def coordinateRepresentation (t : ℕ) :
     ext x
     simp only [map_mul, LinearMap.comp_apply, LinearEquiv.coe_coe,
       Module.End.mul_apply, LinearEquiv.apply_symm_apply]
+set_option maxHeartbeats 1000000 in
 /-- Literal PaperVerification.AlternatingForms.SymmetricPencil.original_relations_invariant; precise source and scope recorded in the extraction map. -/
 theorem original_relations_invariant (t s : ℕ) (g : GL (Fin 2) K) :
     exteriorDegreeRelations

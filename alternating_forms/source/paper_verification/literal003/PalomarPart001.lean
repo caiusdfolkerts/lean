@@ -1907,6 +1907,7 @@ variable {K : Type*} [Field K]
 
 /-- The printed good-index inequalities, in zero-based coordinates and with
 the upper inequality moved across the subtraction. -/
+@[expose]
 def GoodOddIndex (k s : ℕ) :=
   {I : PluckerIndex s (2*k+1) // ∀ i,
     2*i.val≤(I.val i).val ∧ (I.val i).val+2*s≤2*k+2+2*i.val}
@@ -2143,6 +2144,7 @@ theorem oddPathSecondQuadratic_map {k : ℕ} (l : M →ₗ[K] N)
   rw [oddPathSecondQuadratic, matchingQuadratic_map]
   rfl
 
+@[expose]
 def standardBasisEquiv {n : ℕ} (b : Module.Basis (Fin n) K M) :
     (Fin n → K) ≃ₗ[K] M :=
   (Pi.basisFun K (Fin n)).equiv b (Equiv.refl (Fin n))
