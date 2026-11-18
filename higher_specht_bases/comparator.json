@@ -8,7 +8,11 @@
     "HigherSpecht.corollary_8_1_griffin_characteristic_all_partitions",
     "HigherSpecht.mem_prefixShape",
     "HigherSpecht.prefixShape_le",
-    "HigherSpecht.prefixShape_card"
+    "HigherSpecht.prefixShape_card",
+    "TauCeti.StandardYoungTableau.row_strict",
+    "TauCeti.StandardYoungTableau.col_strict",
+    "HigherSpecht.standardTableau_monotoneCells",
+    "HigherSpecht.prefixLabelEquiv_apply_val"
   ],
   "permitted_axioms": [
     "propext",

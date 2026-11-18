@@ -92,7 +92,25 @@ namespace StandardYoungTableau
 instance instFunLike {μ : YoungDiagram} :
     FunLike (StandardYoungTableau μ) ↥μ.cells (Fin μ.card) where
   coe T := T.toTableau
-  coe_injective := by sorry
+  coe_injective T U h := by
+    cases T with
+    | mk e _ _ =>
+      cases U with
+      | mk e' _ _ =>
+        congr
+        exact Equiv.ext fun c => congrFun h c
+
+/-- Standard-tableau monotonicity used only to type the literal prefix tableau. -/
+theorem row_strict {μ : YoungDiagram} (T : StandardYoungTableau μ)
+    {i j₁ j₂ : ℕ} (h : j₁ < j₂) (hcell : (i, j₂) ∈ μ) :
+    T ⟨(i, j₁), μ.up_left_mem (by rfl) h.le hcell⟩ < T ⟨(i, j₂), hcell⟩ := by sorry
+
+/-- Standard-tableau monotonicity used only to type the literal prefix tableau. -/
+theorem col_strict {μ : YoungDiagram} (T : StandardYoungTableau μ)
+    {i₁ i₂ j : ℕ} (h : i₁ < i₂) (hcell : (i₂, j) ∈ μ) :
+    T ⟨(i₁, j), μ.up_left_mem h.le (by rfl) hcell⟩ < T ⟨(i₂, j), hcell⟩ := by sorry
+
+
 end StandardYoungTableau
 
 variable {α ι : Type*}
@@ -201,6 +219,7 @@ def CatDominates {μ : YoungDiagram} (S : StandardYoungTableau μ)
 /-- Literal source definition of PolynomialRing. -/
 abbrev PolynomialRing (n : ℕ) (R : Type*) [CommRing R] := MvPolynomial (Fin n) R
 
+section PolynomialDefinitions
 variable {R : Type*} [CommRing R]
 
 /-- The elementary symmetric polynomial in precisely the variables in Y. -/
@@ -281,10 +300,26 @@ def elementaryMultiplier (n m : ℕ) (eta : ℕ → ℕ) : PolynomialRing n R :=
   ∏ j ∈ Finset.range m,
     MvPolynomial.esymm (Fin n) R (j + 1) ^ (eta j - eta (j + 1))
 
+end PolynomialDefinitions
+
+/-- Entrywise monotonicity used to certify the explicit prefix cell set is a diagram. -/
+theorem standardTableau_monotoneCells {μ : YoungDiagram} (S : StandardYoungTableau μ)
+    {a b : ↥μ.cells} (hab : a.val ≤ b.val) : S a ≤ S b := by sorry
+
 /-- The Young diagram of the entries less than k in the given standard tableau. -/
 def prefixShape {μ : YoungDiagram} (S : StandardYoungTableau μ) (k : ℕ) : YoungDiagram where
   cells := μ.cells.filter fun c => if hc : c ∈ μ.cells then (S ⟨c, hc⟩).val < k else False
-  isLowerSet := by sorry
+  isLowerSet := by
+    intro b a hab hb
+    obtain ⟨hbμ, hbk⟩ := Finset.mem_filter.mp hb
+    have haμ : a ∈ μ.cells := μ.isLowerSet hab hbμ
+    refine Finset.mem_filter.mpr ⟨haμ, ?_⟩
+    have hbk' : (S ⟨b, hbμ⟩).val < k := by
+      simpa only [dif_pos hbμ] using hbk
+    change (if hc : a ∈ μ.cells then (S ⟨a, hc⟩).val < k else False)
+    rw [dif_pos haμ]
+    exact lt_of_le_of_lt
+      (standardTableau_monotoneCells S (a := ⟨a, haμ⟩) (b := ⟨b, hbμ⟩) hab) hbk'
 
 /-- Exact membership criterion for the prefix Young diagram. -/
 theorem mem_prefixShape {μ : YoungDiagram} (S : StandardYoungTableau μ) (k : ℕ)
@@ -317,6 +352,12 @@ def prefixLabelEquiv {μ : YoungDiagram} (S : StandardYoungTableau μ)
   (prefixCellEquiv S k).trans
     ((S.toTableau.subtypeEquiv (fun c => Iff.rfl)).trans (initialLabelsEquiv hk))
 
+/-- Evaluation of the literal prefix-label equivalence on cell labels. -/
+@[simp] theorem prefixLabelEquiv_apply_val {μ : YoungDiagram}
+    (S : StandardYoungTableau μ) (k : ℕ) (hk : k ≤ μ.card)
+    (c : ↥(prefixShape S k).cells) :
+    (prefixLabelEquiv S k hk c).val = (S ⟨c.val, prefixShape_le S k c.property⟩).val := by sorry
+
 /-- Every allowed prefix has exactly the prescribed number of cells. -/
 theorem prefixShape_card {μ : YoungDiagram} (S : StandardYoungTableau μ)
     (k : ℕ) (hk : k ≤ μ.card) : (prefixShape S k).card = k := by sorry
@@ -325,8 +366,14 @@ theorem prefixShape_card {μ : YoungDiagram} (S : StandardYoungTableau μ)
 def prefixTableau {μ : YoungDiagram} (S : StandardYoungTableau μ)
     (k : ℕ) (hk : k ≤ μ.card) : StandardYoungTableau (prefixShape S k) where
   toTableau := (prefixLabelEquiv S k hk).trans (finCongr (prefixShape_card S k hk).symm)
-  row_strict' := by sorry
-  col_strict' := by sorry
+  row_strict' h hcell := by
+    change (prefixLabelEquiv S k hk _).val < (prefixLabelEquiv S k hk _).val
+    simp only [prefixLabelEquiv_apply_val]
+    exact S.row_strict h (prefixShape_le S k hcell)
+  col_strict' h hcell := by
+    change (prefixLabelEquiv S k hk _).val < (prefixLabelEquiv S k hk _).val
+    simp only [prefixLabelEquiv_apply_val]
+    exact S.col_strict h (prefixShape_le S k hcell)
 
 /-- Literal source definition of StandardPair. -/
 structure StandardPair (n : ℕ) where
