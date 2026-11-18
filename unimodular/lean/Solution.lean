@@ -252,7 +252,7 @@ def toOriginalFan (Φ : Fan ι) : TauCeti.Toric.Fan ι where
   lattice := ⟨Φ.lattice.free, Φ.lattice.finite, Φ.lattice.isBaseChange⟩
   cones := Φ.cones
   finite_cones := Φ.finite_cones
-  isToricCone := fun hσ => ⟨(Φ.isToricCone hσ).rational, (Φ.isToricCone hσ).salient⟩
+  isToricCone := fun {_} hσ => ⟨(Φ.isToricCone hσ).rational, (Φ.isToricCone hσ).salient⟩
   mem_of_isFaceOf := Φ.mem_of_isFaceOf
   inf_isFaceOf_left := Φ.inf_isFaceOf_left
 /-- Repackage an actual source fan without changing any cone or incidence. -/
@@ -260,16 +260,28 @@ def fromOriginalFan (Φ : TauCeti.Toric.Fan ι) : Fan ι where
   lattice := ⟨Φ.lattice.free, Φ.lattice.finite, Φ.lattice.isBaseChange⟩
   cones := Φ.cones
   finite_cones := Φ.finite_cones
-  isToricCone := fun hσ => ⟨(Φ.isToricCone hσ).rational, (Φ.isToricCone hσ).salient⟩
+  isToricCone := fun {_} hσ => ⟨(Φ.isToricCone hσ).rational, (Φ.isToricCone hσ).salient⟩
   mem_of_isFaceOf := Φ.mem_of_isFaceOf
   inf_isFaceOf_left := Φ.inf_isFaceOf_left
+/-- Completeness of the fresh fan is exactly the pointwise cone-covering condition. -/
+private theorem fresh_complete_iff (Φ : Fan ι) :
+    Φ.IsComplete ↔ ∀ x : V, ∃ σ ∈ Φ.cones, x ∈ σ := by
+  simp [Fan.IsComplete, Fan.support, Set.eq_univ_iff_forall]
+/-- The actual source completeness predicate agrees without unfolding its opaque definition. -/
+theorem toOriginal_complete_iff (Φ : Fan ι) :
+    (toOriginalFan Φ).IsComplete ↔ Φ.IsComplete :=
+  (TauCeti.Toric.Fan.isComplete_iff (toOriginalFan Φ)).trans (fresh_complete_iff Φ).symm
+/-- The reverse conversion preserves exactly the same covering condition. -/
+theorem fromOriginal_complete_iff (Φ : TauCeti.Toric.Fan ι) :
+    (fromOriginalFan Φ).IsComplete ↔ Φ.IsComplete :=
+  (fresh_complete_iff (fromOriginalFan Φ)).trans (TauCeti.Toric.Fan.isComplete_iff Φ).symm
 variable (u : E → N)
 def toOriginalOnRays (Φ : AllowedBlocks.FanOnRays ι u) :
     Unimodular.AllowedBlocks.FanOnRays ι u :=
-  ⟨toOriginalFan Φ.val, Φ.property.1, Φ.property.2⟩
+  ⟨toOriginalFan Φ.val, (toOriginal_complete_iff Φ.val).mpr Φ.property.1, Φ.property.2⟩
 def fromOriginalOnRays (Φ : Unimodular.AllowedBlocks.FanOnRays ι u) :
     AllowedBlocks.FanOnRays ι u :=
-  ⟨fromOriginalFan Φ.val, Φ.property.1, Φ.property.2⟩
+  ⟨fromOriginalFan Φ.val, (fromOriginal_complete_iff Φ.val).mpr Φ.property.1, Φ.property.2⟩
 theorem fromOriginal_toOriginal (Φ : AllowedBlocks.FanOnRays ι u) :
     fromOriginalOnRays u (toOriginalOnRays u Φ) = Φ := by
   apply Subtype.ext
@@ -294,11 +306,11 @@ theorem theorem_3_1 (hι : IsIntegralLattice ι) (hnz : ∀ e, ι (u e) ≠ 0)
     obtain ⟨Φ, hcomplete, hrays, hindicator⟩ :=
       (Unimodular.AllowedBlocks.theorem_3_1 ι u
         ⟨hι.free, hι.finite, hι.isBaseChange⟩ hnz hpos c hw).mp hc
-    exact ⟨Bridge.fromOriginalFan Φ, hcomplete, hrays, hindicator⟩
+    exact ⟨Bridge.fromOriginalFan Φ, (Bridge.fromOriginal_complete_iff Φ).mpr hcomplete, hrays, hindicator⟩
   · rintro ⟨Φ, hcomplete, hrays, hindicator⟩
     exact (Unimodular.AllowedBlocks.theorem_3_1 ι u
       ⟨hι.free, hι.finite, hι.isBaseChange⟩ hnz hpos c hw).mpr
-      ⟨Bridge.toOriginalFan Φ, hcomplete, hrays, hindicator⟩
+      ⟨Bridge.toOriginalFan Φ, (Bridge.toOriginal_complete_iff Φ).mpr hcomplete, hrays, hindicator⟩
 
 /-- The exact complete-fan classification or its signed-degree/primitive-connectivity consequence. -/
 theorem theorem_3_1_zero_one (hnz : ∀ e, ι (u e) ≠ 0)
@@ -342,6 +354,7 @@ theorem theorem_1_1_connectivity (hι : IsIntegralLattice ι) (hnz : ∀ e, ι (
       (Bridge.fromOriginalOnRays u (Bridge.toOriginalOnRays u Ψ)) := by
     exact Relation.ReflTransGen.lift (Bridge.fromOriginalOnRays u)
       (fun _ _ h => h) _ _ hpath
-  simpa only [Bridge.fromOriginal_toOriginal] using hpath'
+  rw [Bridge.fromOriginal_toOriginal, Bridge.fromOriginal_toOriginal] at hpath'
+  exact hpath'
 
 end PalomarFans.AllowedBlocks
