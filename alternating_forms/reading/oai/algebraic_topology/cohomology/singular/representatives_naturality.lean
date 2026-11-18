@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicTopology.Cohomology.Singular.Representatives
 import OAI.AlgebraicTopology.Cohomology.Singular.Functor
 

@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.Foundations.Scheme.TranscendenceDimension
 import OAI.AlgebraicGeometry.Foundations.Scheme.SupportAffineQuotient
 

@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.Divisors.LineBundles.SymmetricProjective.Proper
 import Mathlib.AlgebraicGeometry.Noetherian
 

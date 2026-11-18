@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.Divisors.LineBundles.Polynomial.AffineSpace
 import OAI.AlgebraicGeometry.Divisors.LineBundles.AffineSpace.ChartProperties
 

@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.AbelianModuli.HilbertConstruction.Pullback.SquareMapEquality
 
 /-! # Square Module Maps -/

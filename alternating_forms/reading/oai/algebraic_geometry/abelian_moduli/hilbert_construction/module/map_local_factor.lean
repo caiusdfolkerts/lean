@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.AbelianModuli.HilbertConstruction.Module.MapBasisExtension
 import OAI.AlgebraicGeometry.AbelianModuli.HilbertConstruction.Tensor.Powers
 

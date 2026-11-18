@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.CycleClass.Geometric.SmoothStratum
 import OAI.AlgebraicGeometry.CycleClass.Geometric.ReducedClosed
 

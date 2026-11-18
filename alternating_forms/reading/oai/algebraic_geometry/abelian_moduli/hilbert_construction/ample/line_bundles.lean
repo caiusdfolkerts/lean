@@ -1,3 +1,5 @@
+module
+
 import Mathlib.AlgebraicGeometry.AffineScheme
 import OAI.AlgebraicGeometry.AbelianModuli.HilbertConstruction.Tensor.Powers
 

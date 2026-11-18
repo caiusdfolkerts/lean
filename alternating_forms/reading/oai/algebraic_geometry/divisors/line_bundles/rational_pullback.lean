@@ -1,3 +1,5 @@
+module
+
 /- Modified from pinned openai/math: import the extracted algebraic rational-unit representative module. All declarations below are unchanged. Apache 2.0. -/
 import OAI.AlgebraicGeometry.Divisors.LineBundles.Deformation.FunctionField
 import OAI.AlgebraicGeometry.Divisors.LineBundles.RationalUnitRepresentative

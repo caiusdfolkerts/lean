@@ -1,5 +1,6 @@
 module
 
+public meta import PalomarAudit
 public import paper_verification.ambient_intrinsic5
 import all paper_verification.ambient_intrinsic5
 public import paper_verification.ambient_polarization2
@@ -1099,9 +1100,9 @@ run_cmd do
       let typeText ← liftTermElabM <| return (← Meta.ppExpr info.type).pretty
       fields := fields ++ [("readable_type", toJson typeText)]
     rows := rows.push (Json.mkObj fields)
-  IO.FS.createDirAll ".lake/reports"
+  PalomarAudit.createDirAll ".lake/reports"
   let path := ".lake/reports/" ++ (← getEnv).mainModule.toString ++ ".json"
-  IO.FS.writeFile path (Json.mkObj [("accepted", toJson true),
+  PalomarAudit.writeFile path (Json.mkObj [("accepted", toJson true),
     ("nonce", toJson "cb56918e0eabb70c0f7bebcb15a7ad73"), ("declaration_count", toJson localNames.size),
     ("kernel_trust_level", toJson env.header.trustLevel.toNat),
     ("kernel_type_checking_enabled", toJson (!Lean.debug.skipKernelTC.get opts)),

@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.Foundations.Scheme.FunctionFieldScalar
 import OAI.AlgebraicGeometry.Foundations.Scheme.FunctionFieldFiniteType
 import OAI.AlgebraicGeometry.Foundations.Scheme.SpecScalarTransport

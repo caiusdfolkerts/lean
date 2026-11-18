@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.Divisors.LineBundles.Augmented.SymmetricChartGenerators
 import OAI.AlgebraicGeometry.Divisors.LineBundles.Graded.ChartMultiplication
 

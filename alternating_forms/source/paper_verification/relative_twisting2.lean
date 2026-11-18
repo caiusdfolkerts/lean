@@ -1,5 +1,6 @@
 module
 
+public meta import PalomarAudit
 public import paper_verification.relative_projective_geometry2
 import all paper_verification.relative_projective_geometry2
 public import paper_verification.symmetric_projective_geometry3
@@ -361,9 +362,9 @@ run_cmd do
       let typeText ← liftTermElabM <| return (← Meta.ppExpr info.type).pretty
       fields := fields ++ [("readable_type", toJson typeText)]
     rows := rows.push (Json.mkObj fields)
-  IO.FS.createDirAll ".lake/reports"
+  PalomarAudit.createDirAll ".lake/reports"
   let path := ".lake/reports/" ++ (← getEnv).mainModule.toString ++ ".json"
-  IO.FS.writeFile path (Json.mkObj [("accepted", toJson true),
+  PalomarAudit.writeFile path (Json.mkObj [("accepted", toJson true),
     ("nonce", toJson "ee35dcaef081f763ef0a20b0431e4b7b"), ("declaration_count", toJson localNames.size),
     ("kernel_trust_level", toJson env.header.trustLevel.toNat),
     ("kernel_type_checking_enabled", toJson (!Lean.debug.skipKernelTC.get opts)),

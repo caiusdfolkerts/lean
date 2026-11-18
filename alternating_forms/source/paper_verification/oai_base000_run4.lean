@@ -1,5 +1,6 @@
 module
 
+public meta import PalomarAudit
 public import Mathlib.AlgebraicGeometry.Sites.Fpqc
 import all Mathlib.AlgebraicGeometry.Sites.Fpqc
 public import Mathlib.AlgebraicGeometry.Morphisms.Finite
@@ -3787,9 +3788,9 @@ run_cmd do
       let typeText ← liftTermElabM <| return (← Meta.ppExpr info.type).pretty
       fields := fields ++ [("readable_type", toJson typeText)]
     rows := rows.push (Json.mkObj fields)
-  IO.FS.createDirAll ".lake/reports"
+  PalomarAudit.createDirAll ".lake/reports"
   let path := ".lake/reports/" ++ (← getEnv).mainModule.toString ++ ".json"
-  IO.FS.writeFile path (Json.mkObj [("accepted", toJson true),
+  PalomarAudit.writeFile path (Json.mkObj [("accepted", toJson true),
     ("nonce", toJson "a263d6a1f353768ab7e2abe49be10196"), ("declaration_count", toJson localNames.size),
     ("kernel_trust_level", toJson env.header.trustLevel.toNat),
     ("kernel_type_checking_enabled", toJson (!Lean.debug.skipKernelTC.get opts)),

@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.Divisors.LineBundles.Open.ChowRestriction
 import OAI.AlgebraicGeometry.Divisors.LineBundles.Open.PrincipalRestriction
 

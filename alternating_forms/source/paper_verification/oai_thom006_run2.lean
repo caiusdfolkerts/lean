@@ -1,5 +1,6 @@
 module
 
+public meta import PalomarAudit
 public import Mathlib.LinearAlgebra.Complex.FiniteDimensional
 import all Mathlib.LinearAlgebra.Complex.FiniteDimensional
 public import Mathlib.LinearAlgebra.Dimension.RankNullity
@@ -3073,9 +3074,9 @@ run_cmd do
       let typeText ← liftTermElabM <| return (← Meta.ppExpr info.type).pretty
       fields := fields ++ [("readable_type", toJson typeText)]
     rows := rows.push (Json.mkObj fields)
-  IO.FS.createDirAll ".lake/reports"
+  PalomarAudit.createDirAll ".lake/reports"
   let path := ".lake/reports/" ++ (← getEnv).mainModule.toString ++ ".json"
-  IO.FS.writeFile path (Json.mkObj [("accepted", toJson true),
+  PalomarAudit.writeFile path (Json.mkObj [("accepted", toJson true),
     ("nonce", toJson "a9959768a50238327f202c47afbd5cd4"), ("declaration_count", toJson localNames.size),
     ("kernel_trust_level", toJson env.header.trustLevel.toNat),
     ("kernel_type_checking_enabled", toJson (!Lean.debug.skipKernelTC.get opts)),

@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.CycleClass.Geometric.NormalSliceLocalAction
 import OAI.AlgebraicGeometry.CycleClass.Geometric.NormalProductPurity
 import OAI.AlgebraicGeometry.CycleClass.Geometric.RelativeUniversalCoefficientNaturality

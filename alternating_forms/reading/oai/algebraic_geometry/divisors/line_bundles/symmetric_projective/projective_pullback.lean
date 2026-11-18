@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.Divisors.LineBundles.SymmetricProjective.PrincipalOpen
 import OAI.AlgebraicGeometry.Divisors.LineBundles.Projective.ScalarOpen
 

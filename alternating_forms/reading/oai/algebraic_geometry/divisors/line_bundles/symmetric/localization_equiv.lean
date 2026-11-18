@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.Divisors.LineBundles.Symmetric.LocalizationLift
 import OAI.AlgebraicGeometry.Divisors.LineBundles.Symmetric.LocalizationMap
 import OAI.AlgebraicGeometry.Divisors.LineBundles.LocalizedSymmetricExt

@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.Picard.PoincareBundle.Geometric.KernelLinearization
 import OAI.AlgebraicGeometry.Picard.PoincareBundle.Affine.Composition
 

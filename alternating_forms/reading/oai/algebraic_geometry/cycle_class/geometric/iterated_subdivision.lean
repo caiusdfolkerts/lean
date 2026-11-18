@@ -1,3 +1,5 @@
+module
+
 import OAI.Geometry.Foundations.ConvexStdSimplexMetric
 import OAI.AlgebraicGeometry.CycleClass.Geometric.BarycentricSimplex
 import OAI.AlgebraicGeometry.CycleClass.Geometric.SingularChainSupport

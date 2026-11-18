@@ -1,3 +1,5 @@
+module
+
 import Mathlib.LinearAlgebra.FiniteDimensional.Lemmas
 import Mathlib.LinearAlgebra.Dimension.Constructions
 import Mathlib.RingTheory.Finiteness.Finsupp

@@ -1,5 +1,6 @@
 module
 
+public meta import PalomarAudit
 import all paper_verification.literal000
 import all paper_verification.literal001
 import all paper_verification.literal002
@@ -1024,13 +1025,64 @@ run_cmd do
       | throwError "Audited declaration-name inventory contains a non-string"
     pure name
   let observedNameSet : Std.HashSet String := observedNameStrings.foldl (fun s n => s.insert n) {}
+  -- Source-block splitting changes only the private declaration's module prefix.
+  -- Normalize exactly the recorded migrated modules; preserve the complete suffix.
+  let migratedPrivatePrefixes : Array (String × String) := #[
+    ("_private.paper_verification.literal000.PalomarPart000.", "_private.paper_verification.literal000."),
+    ("_private.paper_verification.literal000.PalomarPart001.", "_private.paper_verification.literal000."),
+    ("_private.paper_verification.literal001.PalomarPart000.", "_private.paper_verification.literal001."),
+    ("_private.paper_verification.literal001.PalomarPart001.", "_private.paper_verification.literal001."),
+    ("_private.paper_verification.literal006.PalomarPart000.", "_private.paper_verification.literal006."),
+    ("_private.paper_verification.literal006.PalomarPart001.", "_private.paper_verification.literal006."),
+    ("_private.paper_verification.literal007.PalomarPart000.", "_private.paper_verification.literal007."),
+    ("_private.paper_verification.literal007.PalomarPart001.", "_private.paper_verification.literal007."),
+    ("_private.paper_verification.literal004.PalomarPart000.", "_private.paper_verification.literal004."),
+    ("_private.paper_verification.literal004.PalomarPart001.", "_private.paper_verification.literal004."),
+    ("_private.paper_verification.literal005.PalomarPart000.", "_private.paper_verification.literal005."),
+    ("_private.paper_verification.literal005.PalomarPart001.", "_private.paper_verification.literal005."),
+    ("_private.paper_verification.literal002.PalomarPart000.", "_private.paper_verification.literal002."),
+    ("_private.paper_verification.literal002.PalomarPart001.", "_private.paper_verification.literal002."),
+    ("_private.paper_verification.literal003.PalomarPart000.", "_private.paper_verification.literal003."),
+    ("_private.paper_verification.literal003.PalomarPart001.", "_private.paper_verification.literal003.")
+  ]
+  -- Explicitly exposed symmetric-power helpers preserve their exact original inventory names.
+  let exposedPrivateNames : Array (String × String) := #[
+    ("SymmetricPower.toFinsuppMultilinear_domDomCongr", "_private.paper_verification.literal005.0.SymmetricPower.toFinsuppMultilinear_domDomCongr"),
+    ("SymmetricPower.toFinsupp_tprod_basis", "_private.paper_verification.literal005.0.SymmetricPower.toFinsupp_tprod_basis"),
+    ("SymmetricPower.toFinsuppMultilinear", "_private.paper_verification.literal005.0.SymmetricPower.toFinsuppMultilinear"),
+    ("SymmetricPower.linearEquivFinsupp", "_private.paper_verification.literal005.0.SymmetricPower.linearEquivFinsupp"),
+    ("SymmetricPower.ofFn_orderOfSym", "_private.paper_verification.literal005.0.SymmetricPower.ofFn_orderOfSym"),
+    ("SymmetricPower.toFinsuppAux", "_private.paper_verification.literal005.0.SymmetricPower.toFinsuppAux"),
+    ("SymmetricPower.orderOfSym", "_private.paper_verification.literal005.0.SymmetricPower.orderOfSym"),
+    ("SymmetricPower.toFinsupp", "_private.paper_verification.literal005.0.SymmetricPower.toFinsupp"),
+    ("SymmetricPower.lift_rel", "_private.paper_verification.literal005.0.SymmetricPower.lift_rel"),
+    ("SymmetricPower.map_rel", "_private.paper_verification.literal005.0.SymmetricPower.map_rel")
+  ]
+  let normalizeMigratedName (name : Name) : String := Id.run do
+    let raw := name.toString
+    for (fromName, toName) in exposedPrivateNames do
+      if raw == fromName || raw.startsWith (fromName ++ ".") then
+        return toName ++ (raw.drop fromName.length).toString
+    for (fromPrefix, toPrefix) in migratedPrivatePrefixes do
+      if raw.startsWith fromPrefix then
+        return toPrefix ++ (raw.drop fromPrefix.length).toString
+    return raw
   let names ← env.constants.foldM (init := #[]) fun names name _ => do
     let some index := env.getModuleIdxFor? name | return names
     let owner := env.header.moduleNames[index.toNat]!
-    return if projectSet.contains owner || observedNameSet.contains name.toString then names.push name else names
+    return if projectSet.contains owner || observedNameSet.contains (normalizeMigratedName name) then names.push name else names
   let nameSet : NameSet := names.foldl (fun s n => s.insert n) {}
   let names := nameSet.toArray.qsort Name.quickLt
-  let coveredNameSet : Std.HashSet String := names.foldl (fun s n => s.insert n.toString) {}
+  -- A private-prefix translation may not identify two distinct declarations.
+  let mut normalizedOwners : Std.HashMap String Name := {}
+  for name in names do
+    let normalized := normalizeMigratedName name
+    if let some previous := normalizedOwners.get? normalized then
+      unless previous == name do
+        throwError "Private module migration is not injective: {previous} and {name}"
+    normalizedOwners := normalizedOwners.insert normalized name
+  let coveredNameSet : Std.HashSet String := names.foldl
+    (fun s n => s.insert (normalizeMigratedName n)) {}
   for observed in observedNameStrings do
     unless coveredNameSet.contains observed do
       throwError "Observed component declaration is absent: {observed}"
@@ -1076,7 +1128,7 @@ run_cmd do
     fields := fields ++ [("is_required_endpoint",
       toJson (required.any (fun item => item.1 == name)))]
     rows := rows.push (Json.mkObj fields)
-  IO.FS.createDirAll ".lake/reports"
+  PalomarAudit.createDirAll ".lake/reports"
   let reportPath := ".lake/reports/" ++ (← getEnv).mainModule.toString ++ ".json"
   let nonce := "local-source-build"
   let report := Json.mkObj [
@@ -1098,7 +1150,7 @@ run_cmd do
     ("failures", toJson failures),
     ("type_omissions", toJson omissions),
     ("declarations", toJson rows)]
-  IO.FS.writeFile reportPath report.compress
+  PalomarAudit.writeFile reportPath report.compress
   unless failures.isEmpty do
     throwError "Kernel audit rejected {failures.size} declaration/dependency problems."
   unless omissions.isEmpty do

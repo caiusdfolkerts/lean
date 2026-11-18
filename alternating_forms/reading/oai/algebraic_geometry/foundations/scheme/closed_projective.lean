@@ -1,3 +1,5 @@
+module
+
 import Mathlib.AlgebraicGeometry.ProjectiveSpectrum.Proper
 import Mathlib.AlgebraicGeometry.Noetherian
 import OAI.AlgebraicGeometry.Foundations.Scheme.ProjectiveSpace

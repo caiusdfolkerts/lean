@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.CycleClass.Geometric.SubdivisionSigns
 import OAI.AlgebraicGeometry.CycleClass.Geometric.SubdivisionOperator
 import OAI.AlgebraicGeometry.CycleClass.Geometric.PermutationLast

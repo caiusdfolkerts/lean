@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.Divisors.LineBundles.Projective.PrincipalLocalization
 import OAI.AlgebraicGeometry.Divisors.LineBundles.Projective.LocalizationRange
 import OAI.AlgebraicGeometry.Divisors.LineBundles.SymmetricProjective.Localization

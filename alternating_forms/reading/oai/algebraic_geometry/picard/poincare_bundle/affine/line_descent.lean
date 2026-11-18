@@ -1,3 +1,5 @@
+module
+
 import Mathlib.RingTheory.PicardGroup
 import Mathlib.RingTheory.Finiteness.Descent
 import Mathlib.LinearAlgebra.Dual.BaseChange

@@ -1,3 +1,5 @@
+module
+
 import PaperVerification.DirectSumConcentration
 import PaperVerification.ExactSequenceRank
 import PaperVerification.EmptySingularCohomology

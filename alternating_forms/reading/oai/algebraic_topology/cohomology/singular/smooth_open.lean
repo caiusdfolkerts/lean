@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicTopology.Cohomology.Singular.Smooth
 import OAI.AlgebraicTopology.Cohomology.Singular.Functor
 

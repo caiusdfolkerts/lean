@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicTopology.Cohomology.Singular.ChartOpenDiffeomorph
 import OAI.AlgebraicTopology.Cohomology.Singular.ChartSmoothComparison
 import OAI.AlgebraicTopology.Cohomology.Singular.SmoothStalkComparison

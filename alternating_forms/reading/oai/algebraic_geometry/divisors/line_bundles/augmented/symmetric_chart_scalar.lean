@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.Divisors.LineBundles.Augmented.SymmetricChartGenerators
 
 /-! # Symmetric Chart Scalar -/

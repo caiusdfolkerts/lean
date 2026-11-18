@@ -1,5 +1,6 @@
 module
 
+public meta import PalomarAudit
 public import Mathlib.Topology.Sheaves.Abelian
 import all Mathlib.Topology.Sheaves.Abelian
 public import Mathlib.Topology.Sheaves.Skyscraper
@@ -1493,9 +1494,9 @@ run_cmd do
       let typeText ← liftTermElabM <| return (← Meta.ppExpr info.type).pretty
       fields := fields ++ [("readable_type", toJson typeText)]
     rows := rows.push (Json.mkObj fields)
-  IO.FS.createDirAll ".lake/reports"
+  PalomarAudit.createDirAll ".lake/reports"
   let path := ".lake/reports/" ++ (← getEnv).mainModule.toString ++ ".json"
-  IO.FS.writeFile path (Json.mkObj [("accepted", toJson true),
+  PalomarAudit.writeFile path (Json.mkObj [("accepted", toJson true),
     ("nonce", toJson "1883acd676e78a165f3366ef3418864f"), ("declaration_count", toJson localNames.size),
     ("kernel_trust_level", toJson env.header.trustLevel.toNat),
     ("kernel_type_checking_enabled", toJson (!Lean.debug.skipKernelTC.get opts)),

@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.Foundations.Scheme.AffineSectionFiniteType
 import OAI.AlgebraicGeometry.Foundations.Scheme.StrictTranscendenceDrop
 import OAI.AlgebraicGeometry.Foundations.Scheme.SupportDimension

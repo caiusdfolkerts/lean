@@ -1,3 +1,5 @@
+module
+
 import Mathlib.Algebra.DirectSum.Module
 import Mathlib.LinearAlgebra.Dimension.Constructions
 import Mathlib.RingTheory.Finiteness.Basic

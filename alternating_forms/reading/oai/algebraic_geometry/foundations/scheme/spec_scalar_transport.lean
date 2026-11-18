@@ -1,3 +1,5 @@
+module
+
 import Mathlib.AlgebraicGeometry.AffineScheme
 import Mathlib.RingTheory.RingHom.StandardSmooth
 

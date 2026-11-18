@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicTopology.Cohomology.Singular.ManifoldSmoothFunctor
 import OAI.AlgebraicTopology.Cohomology.Singular.ManifoldSmoothModels
 import OAI.AlgebraicTopology.Cohomology.Singular.SmoothConvexComparison

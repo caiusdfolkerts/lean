@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.CycleClass.Geometric.NormalBallRestriction
 import OAI.AlgebraicGeometry.CycleClass.Geometric.NormalProductCohomology
 

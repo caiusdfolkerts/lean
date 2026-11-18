@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.CycleClass.Geometric.IntegralSmoothStratification
 import OAI.AlgebraicGeometry.Foundations.Scheme.SupportDimensionDrop
 

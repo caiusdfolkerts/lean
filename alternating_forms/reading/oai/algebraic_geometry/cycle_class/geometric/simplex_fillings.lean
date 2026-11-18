@@ -1,3 +1,5 @@
+module
+
 import OAI.Geometry.Foundations.ConvexStdSimplexMetric
 import OAI.AlgebraicGeometry.CycleClass.Geometric.ContractibleModel
 import OAI.AlgebraicGeometry.CycleClass.Geometric.SingularChainSupport

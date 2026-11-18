@@ -1,3 +1,5 @@
+module
+
 import Mathlib.LinearAlgebra.SymmetricAlgebra.Basic
 import Mathlib.RingTheory.GradedAlgebra.Basic
 

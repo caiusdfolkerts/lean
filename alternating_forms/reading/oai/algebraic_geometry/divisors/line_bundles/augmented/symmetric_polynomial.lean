@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.Divisors.LineBundles.Augmented.SymmetricChartDegreeOne
 import Mathlib.Algebra.Polynomial.AlgebraMap
 

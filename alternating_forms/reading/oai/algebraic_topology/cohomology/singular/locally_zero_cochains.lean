@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicTopology.Cohomology.Singular.SheafResolution
 import OAI.AlgebraicTopology.Cohomology.Singular.SmallCochainComparison
 import OAI.AlgebraicTopology.Cohomology.Singular.NaturalSmallChains

@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.Divisors.LineBundles.Augmented.SymmetricPolynomial
 import OAI.AlgebraicGeometry.Divisors.LineBundles.SymmetricProjective.ClosedImmersion
 import OAI.AlgebraicGeometry.Divisors.LineBundles.Symmetric.ScalarMap

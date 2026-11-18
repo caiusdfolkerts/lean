@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.Divisors.LineBundles.Support.CoefficientDiagram
 import OAI.AlgebraicGeometry.Divisors.LineBundles.Deformation.Localization
 

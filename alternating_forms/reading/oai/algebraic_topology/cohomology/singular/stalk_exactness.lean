@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicTopology.Cohomology.Singular.LocalPrimitives
 import OAI.AlgebraicTopology.Cohomology.Singular.StalkExactnessAt
 import OAI.AlgebraicTopology.DeRham.Comparison.SingularPresheaf

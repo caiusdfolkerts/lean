@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicTopology.Cohomology.Singular.LocallyFiniteGermGluing
 import OAI.AlgebraicTopology.Cohomology.Singular.GlobalSheafificationRepresentatives
 import OAI.AlgebraicTopology.DeRham.Comparison.ParacompactShrinkingCover

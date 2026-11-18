@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.Divisors.LineBundles.Closed.SupportImage
 import OAI.AlgebraicGeometry.Divisors.LineBundles.Graded.GlobalSpecialization
 import OAI.AlgebraicGeometry.Divisors.LineBundles.RationalDivisorRestriction

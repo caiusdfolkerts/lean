@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicTopology.Cohomology.Singular.InjectiveChainDual
 import OAI.AlgebraicTopology.Cohomology.Singular.IntegralCoefficientInjective
 import OAI.AlgebraicTopology.DeRham.Comparison.SmallSingularCochains

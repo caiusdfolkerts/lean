@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.Divisors.LineBundles.Symmetric.ScalarMap
 import Mathlib.RingTheory.Localization.Module
 

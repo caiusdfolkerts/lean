@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicTopology.DeRham.Comparison.SmallSingularSet
 import OAI.AlgebraicTopology.Cohomology.Singular.Functor
 import OAI.AlgebraicTopology.Cohomology.Singular.Coefficients

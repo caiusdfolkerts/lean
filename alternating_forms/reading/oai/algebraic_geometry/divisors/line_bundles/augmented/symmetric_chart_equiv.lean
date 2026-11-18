@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.Divisors.LineBundles.Augmented.SymmetricChartScalar
 import OAI.AlgebraicGeometry.Divisors.LineBundles.Augmented.SymmetricChartDegreeOne
 

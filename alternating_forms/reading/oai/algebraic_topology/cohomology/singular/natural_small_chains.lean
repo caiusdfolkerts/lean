@@ -1,3 +1,5 @@
+module
+
 import OAI.Geometry.Foundations.ConvexStdSimplexMetric
 import OAI.AlgebraicGeometry.CycleClass.Geometric.SmallChainImage
 import OAI.AlgebraicGeometry.CycleClass.Geometric.SubdivisionHomotopy

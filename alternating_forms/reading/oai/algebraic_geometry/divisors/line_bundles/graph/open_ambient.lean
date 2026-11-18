@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.Foundations.Scheme.ClosedProjective
 import Mathlib.AlgebraicGeometry.Morphisms.Smooth
 import Mathlib.AlgebraicGeometry.Morphisms.Separated

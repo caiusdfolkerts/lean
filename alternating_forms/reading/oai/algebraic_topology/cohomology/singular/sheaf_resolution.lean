@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicTopology.Cohomology.Singular.Augmentation
 import OAI.AlgebraicTopology.Cohomology.Singular.StalkExactness
 import OAI.AlgebraicTopology.Cohomology.Singular.SheafQuasiIso

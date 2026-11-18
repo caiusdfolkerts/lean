@@ -1,0 +1,14 @@
+{
+  "status": "frozen_pending_corrected_challenge_diagnostic",
+  "challenge_sha256": "c6316ba9153f52070c0628308d37184602a276ca07307cff6dc34e61faeb6f8c",
+  "lines": 768,
+  "bytes": 36559,
+  "repairs": [
+    "Preserve letI initializers and complete generic Hilbert/vanishing theorem type.",
+    "Keep root TensorProduct scoped notation rooted after context relocation.",
+    "Restore three source declarations omitted by former comment-aware extraction."
+  ],
+  "source_mathematical_changes": false,
+  "prior_failure_run": "44325375620",
+  "source_baseline": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37"
+}

@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicTopology.Cohomology.Singular.ChainDual
 import OAI.AlgebraicTopology.Cohomology.Singular.Representatives
 import OAI.AlgebraicTopology.Cohomology.Singular.ChainRepresentatives

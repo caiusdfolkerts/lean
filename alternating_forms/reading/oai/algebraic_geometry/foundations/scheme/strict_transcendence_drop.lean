@@ -1,3 +1,5 @@
+module
+
 import Mathlib.RingTheory.AlgebraicIndependent.TranscendenceBasis
 import Mathlib.RingTheory.Ideal.Quotient.Operations
 import OAI.AlgebraicGeometry.Foundations.Scheme.TranscendenceDegreeTransfer

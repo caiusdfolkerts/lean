@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicTopology.Cohomology.Singular.ManifoldSmooth
 import OAI.AlgebraicTopology.Cohomology.Singular.SmoothOpen
 

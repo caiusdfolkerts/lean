@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.CycleClass.Geometric.SmallMayerVietoris
 import OAI.AlgebraicGeometry.CycleClass.Geometric.SmallChainImage
 

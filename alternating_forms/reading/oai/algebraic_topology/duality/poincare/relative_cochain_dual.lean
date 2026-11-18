@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicTopology.Cohomology.Singular.RelativeSequence
 import OAI.AlgebraicTopology.Cohomology.Singular.InjectiveChainDual
 import OAI.AlgebraicTopology.Cohomology.Singular.IntegralCoefficientInjective

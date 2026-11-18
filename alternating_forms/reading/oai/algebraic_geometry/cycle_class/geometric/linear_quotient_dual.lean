@@ -1,3 +1,5 @@
+module
+
 import Mathlib.LinearAlgebra.Isomorphisms
 
 /-! # Linear Quotient Dual -/

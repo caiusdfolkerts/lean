@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.CycleClass.Geometric.LocalExcision
 import OAI.AlgebraicTopology.Duality.Poincare.RelativeCochainDual
 import OAI.AlgebraicTopology.Cohomology.Singular.InjectiveChainDual

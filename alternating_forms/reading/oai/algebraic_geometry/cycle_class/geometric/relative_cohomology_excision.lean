@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicTopology.Duality.Poincare.CompactSupportExcision
 import OAI.AlgebraicGeometry.CycleClass.Geometric.RelativeCochainTriple
 

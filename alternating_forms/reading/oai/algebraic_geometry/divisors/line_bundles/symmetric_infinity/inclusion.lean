@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.Divisors.LineBundles.SymmetricInfinity.Kernel
 import OAI.AlgebraicGeometry.Divisors.LineBundles.Projective.SurjectiveRange
 import OAI.AlgebraicGeometry.Divisors.LineBundles.Symmetric.AffineCompactification

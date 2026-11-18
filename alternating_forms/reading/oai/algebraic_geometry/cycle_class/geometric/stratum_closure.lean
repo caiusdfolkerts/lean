@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.CycleClass.Geometric.StratumDimension
 
 /-! # Stratum Closure -/

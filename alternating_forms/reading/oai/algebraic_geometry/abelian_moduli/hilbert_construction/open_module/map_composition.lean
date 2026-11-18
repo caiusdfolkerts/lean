@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.AbelianModuli.HilbertConstruction.OpenModule.MapImageValues
 
 /-! # Map Composition -/

@@ -1,3 +1,5 @@
+module
+
 import Mathlib.RingTheory.Etale.Field
 import Mathlib.RingTheory.AlgebraicIndependent.Defs
 import Mathlib.FieldTheory.IntermediateField.Adjoin.Algebra

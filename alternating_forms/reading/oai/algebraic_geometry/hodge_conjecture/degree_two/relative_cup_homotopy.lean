@@ -1,3 +1,5 @@
+module
+
 import Mathlib.Algebra.Homology.Embedding.TruncGEHomology
 import Lean.Elab.Tactic.Omega
 

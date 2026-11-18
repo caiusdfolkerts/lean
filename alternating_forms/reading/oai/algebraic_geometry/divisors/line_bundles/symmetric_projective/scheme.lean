@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.Divisors.LineBundles.Symmetric.GradedMap
 import OAI.AlgebraicGeometry.Divisors.LineBundles.Symmetric.GradingIdeals
 import Mathlib.AlgebraicGeometry.ProjectiveSpectrum.Functor

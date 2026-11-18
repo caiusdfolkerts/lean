@@ -1,3 +1,5 @@
+module
+
 import Mathlib.Geometry.Manifold.ContMDiff.Atlas
 import Mathlib.Geometry.Manifold.Diffeomorph
 import Mathlib.Topology.OpenPartialHomeomorph.Basic

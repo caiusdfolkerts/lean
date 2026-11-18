@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.CycleClass.Geometric.NormalProductCohomology
 import OAI.AlgebraicGeometry.CycleClass.Geometric.RationalLocalPurity
 

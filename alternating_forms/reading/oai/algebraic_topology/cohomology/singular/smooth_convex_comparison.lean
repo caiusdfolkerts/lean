@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicTopology.Cohomology.Singular.SmoothComparison
 import OAI.AlgebraicTopology.Cohomology.Singular.SmoothOpen
 

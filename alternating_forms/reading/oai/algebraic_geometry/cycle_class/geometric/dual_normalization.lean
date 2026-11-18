@@ -1,3 +1,5 @@
+module
+
 import Mathlib.LinearAlgebra.Dual.Defs
 import Mathlib.Algebra.Category.ModuleCat.Basic
 

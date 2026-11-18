@@ -1,3 +1,5 @@
+module
+
 import OAI.AlgebraicGeometry.AbelianModuli.HilbertConstruction.Local.ModuleIsomorphisms
 import OAI.AlgebraicGeometry.AbelianModuli.HilbertConstruction.TensorPower.Units
 
