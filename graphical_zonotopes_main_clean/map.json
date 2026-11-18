@@ -1,0 +1,64 @@
+{
+  "baseline_project": "graphical_zonotopes",
+  "baseline_revision": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
+  "status": "source-preparation-uncompiled",
+  "entries": [
+    {
+      "name": "main",
+      "comparator": "comparator-main.json",
+      "map": "map-main.json",
+      "metadata": "formalization-main.yaml"
+    },
+    {
+      "name": "separator",
+      "comparator": "comparator-separator.json",
+      "map": "map-separator.json",
+      "metadata": "formalization-separator.yaml"
+    },
+    {
+      "name": "consequences",
+      "comparator": "comparator-consequences.json",
+      "map": "map-consequences.json",
+      "metadata": "formalization-consequences.yaml"
+    },
+    {
+      "name": "spectra",
+      "comparator": "comparator-spectra.json",
+      "map": "map-spectra.json",
+      "metadata": "formalization-spectra.yaml"
+    }
+  ],
+  "supplementary_preparation": "Integrated source copies from frozen geometry_one supplementary_work drafts; no final compilation claimed.",
+  "coverage_inventory": "reports/graphical_zonotopes/expanded-manuscript-inventory.json",
+  "blockers": [
+    "All four independent entries require fresh Challenge/Solution checks, actual Comparator and independent kernels.",
+    "Corollaries6.7/6.8 algorithm, support-recovery and certified linear-time clauses remain unclaimed.",
+    "Supporting Proposition5.5/PropositionA.1 not located; appendixA.2/A.3/B.1 remain unselected in this first principal-result batch."
+  ],
+  "entry_inventory": {
+    "Main": {
+      "lines": 507,
+      "bytes": 29346,
+      "selected": 18,
+      "missing_locations": []
+    },
+    "Separator": {
+      "lines": 497,
+      "bytes": 28111,
+      "selected": 35,
+      "missing_locations": []
+    },
+    "Consequences": {
+      "lines": 332,
+      "bytes": 17766,
+      "selected": 15,
+      "missing_locations": []
+    },
+    "Spectra": {
+      "lines": 551,
+      "bytes": 30962,
+      "selected": 27,
+      "missing_locations": []
+    }
+  }
+}
