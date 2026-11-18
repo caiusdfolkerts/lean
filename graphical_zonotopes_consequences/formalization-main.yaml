@@ -1,0 +1,256 @@
+version: v0.4
+project:
+  name: 'Sharp bounds for indecomposable graphical-zonotope summands: main'
+  description: Principal path construction and simultaneous sharp bounds; exact 3-tree,
+    clique-book, multipartite and lattice classifications.
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.CO
+  - math.MG
+  msc2020:
+  - 52B11
+  - 52B12
+  - 05C10
+sources:
+- title: Sharp bounds for indecomposable summands of graphical zonotopes
+  authors:
+  - Caius Folkerts
+  type: paper
+  relationship: formalizes
+  location: paper.pdf; see map-main.json for exact selected results
+related_formalizations:
+- title: caiusdfolkerts/research graphical_zonotopes
+  relationship: repackages
+  id: https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/graphical_zonotopes
+  note: The complete substantive development is copied at this immutable baseline
+    revision, with documented module migrations and optional report IO adjustments.
+    Fresh literal statements and proof bridges form the comparison layer.
+status:
+  scope: Independent Challenge compiled with pinnedLean4.35/Mathlib56a005; Solution/source
+    bridges and complete comparison validation remain pending. Principal path construction
+    and simultaneous sharp bounds; exact 3-tree, clique-book, multipartite and lattice
+    classifications.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: PalomarGraphicalMain.direction_bounds_polytopal
+    file: SolutionMain.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-main.json
+  - declaration: PalomarGraphicalMain.threeTree_classification_polytopal
+    file: SolutionMain.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-main.json
+  - declaration: PalomarGraphicalMain.admissible_threeTree_lattice_witness
+    file: SolutionMain.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-main.json
+  - declaration: PalomarGraphicalMain.PathResults.principal_path_theorem
+    file: SolutionMain.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-main.json
+  - declaration: PalomarGraphicalMain.clique_book_classification
+    file: SolutionMain.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-main.json
+  - declaration: PalomarGraphicalMain.SaturatedDirections.paper_theorem_7_12
+    file: SolutionMain.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-main.json
+  - declaration: PalomarGraphicalMain.DiamondBook.paper_theorem_8_1
+    file: SolutionMain.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-main.json
+  - declaration: PalomarGraphicalMain.SparseFamily.paper_theorem_8_2_polytopal
+    file: SolutionMain.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-main.json
+  - declaration: PalomarGraphicalMain.TwoHub.two_singleton_classification
+    file: SolutionMain.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-main.json
+  - declaration: PalomarGraphicalMain.four_partite_spanning_threeTrees
+    file: SolutionMain.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-main.json
+  - declaration: PalomarGraphicalMain.threeTree_lattice_dilation
+    file: SolutionMain.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-main.json
+  - declaration: PalomarGraphicalMain.unit_lattice_classification
+    file: SolutionMain.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-main.json
+  - declaration: PalomarGraphicalMain.optimal_k5_free_dilation
+    file: SolutionMain.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-main.json
+  - declaration: PalomarGraphicalMain.DoubledParts.principal_boolean_phase_theorem
+    file: SolutionMain.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-main.json
+automation:
+  methods:
+  - method: agent
+    tool_setup: The manuscript discloses GPT-6 Astra, GPT-5.6 Sol, and Kimi K3 assistance
+      in developing its proofs. Historical roles beyond that disclosure have not been
+      independently reconstructed.
+  - method: agent
+    models:
+    - GPT-6.1 Sol
+    framework: OpenAI Codex
+    tool_setup: Prepared independent literal mathematical statements, source proof
+      bridges, module migrations, provenance and result mapping. Compared the manuscript,
+      README and actual Lean declarations.
+fidelity:
+  divergences: Selected mathematical hypotheses and conclusions are retained. Fresh
+    namespace names and source bridge proofs replace raw original declaration names.
+    The path construction is an existential wrapper whose Solution supplies the original
+    explicit polytope and complement; the recursive 3-tree predicate is related to
+    the source by constructor induction.
+review:
+  status: unchecked
+  notes: The current independent Challenge compiled locally with-M3072/-j1. The fresh
+    Solution/source bridges are source-prepared and have not been compiled locally.
+    No actual Comparator or independent kernel success is claimed. See map-main.json.
+alignment:
+  namespace: PalomarGraphicalMain
+  statements:
+  - source: Theorem 4.1
+    lean: PalomarGraphicalMain.direction_bounds_polytopal
+    module: SolutionMain.lean
+    status: in-progress
+  - source: Theorem 6.1
+    lean: PalomarGraphicalMain.threeTree_classification_polytopal
+    module: SolutionMain.lean
+    status: in-progress
+  - source: Theorem 6.1, quantitative integral construction
+    lean: PalomarGraphicalMain.admissible_threeTree_lattice_witness
+    module: SolutionMain.lean
+    status: in-progress
+  - source: Theorem 3.1; Theorem 4.1, simultaneous sharpness
+    lean: PalomarGraphicalMain.PathResults.principal_path_theorem
+    module: SolutionMain.lean
+    status: in-progress
+  - source: Theorem 7.1
+    lean: PalomarGraphicalMain.clique_book_classification
+    module: SolutionMain.lean
+    status: in-progress
+  - source: Theorem 7.12
+    lean: PalomarGraphicalMain.SaturatedDirections.paper_theorem_7_12
+    module: SolutionMain.lean
+    status: in-progress
+  - source: Theorem 8.1
+    lean: PalomarGraphicalMain.DiamondBook.paper_theorem_8_1
+    module: SolutionMain.lean
+    status: in-progress
+  - source: 'Theorem8.2: same actual lattice witness, all actual directions, exact
+      treewidth and complete proper-subgraph/spanning3tree obstructions'
+    lean: PalomarGraphicalMain.SparseFamily.paper_theorem_8_2_polytopal
+    module: SolutionMain.lean
+    status: in-progress
+  - source: Theorem 8.7
+    lean: PalomarGraphicalMain.TwoHub.two_singleton_classification
+    module: SolutionMain.lean
+    status: in-progress
+  - source: Theorem 8.9
+    lean: PalomarGraphicalMain.four_partite_spanning_threeTrees
+    module: SolutionMain.lean
+    status: in-progress
+  - source: Theorem 9.1
+    lean: PalomarGraphicalMain.threeTree_lattice_dilation
+    module: SolutionMain.lean
+    status: in-progress
+  - source: Theorem 9.5
+    lean: PalomarGraphicalMain.unit_lattice_classification
+    module: SolutionMain.lean
+    status: in-progress
+  - source: Corollary 9.12
+    lean: PalomarGraphicalMain.optimal_k5_free_dilation
+    module: SolutionMain.lean
+    status: in-progress
+  - source: Theorem 9.8
+    lean: PalomarGraphicalMain.DoubledParts.principal_boolean_phase_theorem
+    module: SolutionMain.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal construction semantics
+    lean: PalomarGraphicalMain.zeta_injective
+    module: SolutionMain.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal construction semantics
+    lean: PalomarGraphicalMain.actualRootEdge_symm
+    module: SolutionMain.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalMain.zeta_add
+    module: SolutionMain.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalMain.zeta_smul
+    module: SolutionMain.lean
+    status: in-progress

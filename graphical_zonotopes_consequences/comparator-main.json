@@ -1,0 +1,29 @@
+{
+  "challenge_module": "ChallengeMain",
+  "solution_module": "SolutionMain",
+  "theorem_names": [
+    "PalomarGraphicalMain.direction_bounds_polytopal",
+    "PalomarGraphicalMain.threeTree_classification_polytopal",
+    "PalomarGraphicalMain.admissible_threeTree_lattice_witness",
+    "PalomarGraphicalMain.PathResults.principal_path_theorem",
+    "PalomarGraphicalMain.clique_book_classification",
+    "PalomarGraphicalMain.SaturatedDirections.paper_theorem_7_12",
+    "PalomarGraphicalMain.DiamondBook.paper_theorem_8_1",
+    "PalomarGraphicalMain.SparseFamily.paper_theorem_8_2_polytopal",
+    "PalomarGraphicalMain.TwoHub.two_singleton_classification",
+    "PalomarGraphicalMain.four_partite_spanning_threeTrees",
+    "PalomarGraphicalMain.threeTree_lattice_dilation",
+    "PalomarGraphicalMain.unit_lattice_classification",
+    "PalomarGraphicalMain.optimal_k5_free_dilation",
+    "PalomarGraphicalMain.DoubledParts.principal_boolean_phase_theorem",
+    "PalomarGraphicalMain.zeta_injective",
+    "PalomarGraphicalMain.actualRootEdge_symm",
+    "PalomarGraphicalMain.zeta_add",
+    "PalomarGraphicalMain.zeta_smul"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}
