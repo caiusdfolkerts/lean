@@ -1,3 +1,3 @@
-# Canonical diagnostic revision25
+# Canonical diagnostic revision26
 
-Volume namespace repair and Mixed/Projection bounded helper TYPE probes. No source project build or full-preflight claim.
+Homo bounded type comparisons and Higher principal+multiplier Corollary4.3 interface. No full-preflight claim.

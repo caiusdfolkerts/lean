@@ -4,85 +4,85 @@
   "pipeline_commit": "14aa8d6b3c2f14a8540605e37144560b9a00e7e7",
   "cases": [
     {
-      "id": "volume_geometry_supplemental_r2",
+      "id": "homological_boundary_helper_pair_types",
       "module": "Challenge",
-      "case_dir": "cases/volume_geometry_supplemental_r2",
-      "original_package": "reports/volume_polynomials/effectivity/geometry-supplement-project",
-      "original_challenge": "reports/volume_polynomials/effectivity/geometry-supplement-project/source/ChallengeSupplement.lean",
-      "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
+      "case_dir": "cases/homological_boundary_helper_pair_types",
+      "original_package": "reports/homological_shifts/boundary-helper-comparison-smoke",
+      "original_challenge": "reports/homological_shifts/boundary-helper-comparison-smoke/Challenge.lean",
+      "lean_toolchain": "leanprover/lean4:v4.35.0",
       "hashes": {
-        "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
-        "lake-manifest.json": "0403d585bc7d7c99efd67cbf31a28d7fb97360e498bd2faa12f81ca5b06230af",
-        "original-lakefile.toml": "1edbb2969ea8cd4288ea22dc0d9fbdb4521a82509dfb8d4d837172422cf89c3f",
-        "Challenge.lean": "8524d9c44973b4116e670f7c41bb39d3346097e8631b47c8a0d2377fe79f0049"
+        "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+        "lake-manifest.json": "c19929a5111909242f1ca954a78a934cf2ad5972f7f3ee68310ad6bcfbb186ed",
+        "original-lakefile.toml": "45a63ae480339252c42baf15aa590314d40c82e55494b2a091d90be3f40675c6",
+        "Challenge.lean": "b9377e8286813209c015deb1f751a352984857fa655a621e6a6113a8302b9f1d"
       },
-      "challenge_lines": 599,
-      "challenge_bytes": 29923,
+      "challenge_lines": 379,
+      "challenge_bytes": 22556,
       "dependency_pins": [
         {
           "name": "mathlib",
-          "url": "https://github.com/leanprover-community/mathlib4",
-          "rev": "2cabef97b63d3275776b8b060d802de6a6fa1055"
+          "url": "https://github.com/leanprover-community/mathlib4.git",
+          "rev": "56a005855ea17e0b0958f73ec801ae140b0a1679"
         },
         {
           "name": "plausible",
           "url": "https://github.com/leanprover-community/plausible",
-          "rev": "c2d7840c65673533e15b499f25beecdc6227f7d8"
+          "rev": "dfa4f38190d07c37e315953e08b90fe2d95b3c24"
         },
         {
           "name": "LeanSearchClient",
           "url": "https://github.com/leanprover-community/LeanSearchClient",
-          "rev": "9d39f9bb0c30aa2f6200808805ff16e6ce950890"
+          "rev": "d6b4c7be5be75ec4917c873ac50c756dc1436372"
         },
         {
           "name": "importGraph",
           "url": "https://github.com/leanprover-community/import-graph",
-          "rev": "b3cc36c295aa5e3e3c0197b09a6556298e710447"
+          "rev": "a41f0e9a4dea23188ea9cc1c41ac9f8bbafe0b93"
         },
         {
           "name": "proofwidgets",
           "url": "https://github.com/leanprover-community/ProofWidgets4",
-          "rev": "17137fad38a2cc782ff00b323a13c3a991d085ab"
+          "rev": "df72b022e558978a1c50264cfc4d7fec86fa8e04"
         },
         {
           "name": "aesop",
           "url": "https://github.com/leanprover-community/aesop",
-          "rev": "29c64c56cc38211d39b306db2df11701e3d3de11"
+          "rev": "4a174c490d8707121c4a9290800489f105d85e07"
         },
         {
           "name": "Qq",
           "url": "https://github.com/leanprover-community/quote4",
-          "rev": "6d26f8bb4b2bb78f929ad160feac508866821316"
+          "rev": "dce0ad79c486cb1fb504af04f953c3466b0c6db8"
         },
         {
           "name": "batteries",
           "url": "https://github.com/leanprover-community/batteries",
-          "rev": "30691c775364967184547c94468bf6b5f25400fb"
+          "rev": "66e469188fe07963e5cf666c7d4433f45b8131c5"
         },
         {
           "name": "Cli",
           "url": "https://github.com/leanprover/lean4-cli",
-          "rev": "34d2efffcb6dc8d5f3537cf6a7f88bfaa999ec49"
+          "rev": "c24fe6078c630e89b489bffe59b3e20ac30d12c8"
         }
       ],
-      "diagnostic_class": "canonical-only-six-geometric-endpoints-three-map-supports-Challenge",
+      "diagnostic_class": "canonical-only-three-pair-boundary-type-comparisons-with-eighteen-bounded-leaves",
       "remote_memory_mib": 8192
     },
     {
-      "id": "mixed_volume_auxiliary_types",
+      "id": "higher_specht_multiplier_corollary43",
       "module": "Challenge",
-      "case_dir": "cases/mixed_volume_auxiliary_types",
-      "original_package": "packages/mixed_volume_realization",
-      "original_challenge": "reports/mixed_volume_realization/raw-diagnostic/CanonicalAuxiliaryTypesSmoke.lean",
+      "case_dir": "cases/higher_specht_multiplier_corollary43",
+      "original_package": "reports/higher_specht_bases/multiplier-corollary-smoke",
+      "original_challenge": "reports/higher_specht_bases/multiplier-corollary-smoke/Challenge.lean",
       "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
       "hashes": {
         "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
-        "lake-manifest.json": "365dcfeeb633a0ab203b47b0d4012bc05b9055f68a712ada5c671fba648be536",
-        "original-lakefile.toml": "188edbb34ff78aca96fd11514b299bf9a946bdd9cecf74828ac3bab4e88f668f",
-        "Challenge.lean": "ec5ff0d9b4b77034ecba39bcce3061056ec71674488620c144db612d8cf4fb39"
+        "lake-manifest.json": "8aeed7826084243b864d3140c58b570991a3a860ea8f4bb17d0fb5ad5052f932",
+        "original-lakefile.toml": "0ad49416adf960c17ba5a5bcad1a9cf2bf3608afb68fc778bc8676851dad1be5",
+        "Challenge.lean": "f8748bec00037dc1a21966467a7f7c6e8942dc30ff4a1433735f301d5a462f80"
       },
-      "challenge_lines": 886,
-      "challenge_bytes": 43336,
+      "challenge_lines": 521,
+      "challenge_bytes": 25455,
       "dependency_pins": [
         {
           "name": "mathlib",
@@ -130,79 +130,13 @@
           "rev": "34d2efffcb6dc8d5f3537cf6a7f88bfaa999ec49"
         }
       ],
-      "diagnostic_class": "canonical-only-three-bounded-auxiliary-type-lookups",
-      "remote_memory_mib": 8192
-    },
-    {
-      "id": "projection_areas_auxiliary_types",
-      "module": "Challenge",
-      "case_dir": "cases/projection_areas_auxiliary_types",
-      "original_package": "packages/projection_areas",
-      "original_challenge": "reports/projection_areas/raw-diagnostic/CanonicalAuxiliaryTypesSmoke.lean",
-      "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
-      "hashes": {
-        "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
-        "lake-manifest.json": "a1ec65315c409ef3b5f2857f0be290dc749a16905b04e41d565d57c0fad583bb",
-        "original-lakefile.toml": "a9312b7f773011ee9f76678df4498d6a01dc1765de62830175bc62d389ebd9bb",
-        "Challenge.lean": "409aa0025b28e8bee4ddb9fdbca5c7770e11585773b512138872f4d4b2db5d3f"
-      },
-      "challenge_lines": 644,
-      "challenge_bytes": 31699,
-      "dependency_pins": [
-        {
-          "name": "mathlib",
-          "url": "https://github.com/leanprover-community/mathlib4",
-          "rev": "2cabef97b63d3275776b8b060d802de6a6fa1055"
-        },
-        {
-          "name": "plausible",
-          "url": "https://github.com/leanprover-community/plausible",
-          "rev": "c2d7840c65673533e15b499f25beecdc6227f7d8"
-        },
-        {
-          "name": "LeanSearchClient",
-          "url": "https://github.com/leanprover-community/LeanSearchClient",
-          "rev": "9d39f9bb0c30aa2f6200808805ff16e6ce950890"
-        },
-        {
-          "name": "importGraph",
-          "url": "https://github.com/leanprover-community/import-graph",
-          "rev": "b3cc36c295aa5e3e3c0197b09a6556298e710447"
-        },
-        {
-          "name": "proofwidgets",
-          "url": "https://github.com/leanprover-community/ProofWidgets4",
-          "rev": "17137fad38a2cc782ff00b323a13c3a991d085ab"
-        },
-        {
-          "name": "aesop",
-          "url": "https://github.com/leanprover-community/aesop",
-          "rev": "29c64c56cc38211d39b306db2df11701e3d3de11"
-        },
-        {
-          "name": "Qq",
-          "url": "https://github.com/leanprover-community/quote4",
-          "rev": "6d26f8bb4b2bb78f929ad160feac508866821316"
-        },
-        {
-          "name": "batteries",
-          "url": "https://github.com/leanprover-community/batteries",
-          "rev": "30691c775364967184547c94468bf6b5f25400fb"
-        },
-        {
-          "name": "Cli",
-          "url": "https://github.com/leanprover/lean4-cli",
-          "rev": "34d2efffcb6dc8d5f3537cf6a7f88bfaa999ec49"
-        }
-      ],
-      "diagnostic_class": "canonical-only-three-bounded-auxiliary-type-lookups",
+      "diagnostic_class": "canonical-only-expanded-principal-plus-literal-multiplier-corollary43-Challenge",
       "remote_memory_mib": 8192
     }
   ],
   "default_case_ids": [
-    "volume_geometry_supplemental_r2",
-    "mixed_volume_auxiliary_types",
-    "projection_areas_auxiliary_types"
+    "homological_boundary_helper_pair_types",
+    "higher_specht_multiplier_corollary43"
   ],
   "operator_resource_policy": {
     "memory_mib": 8192,
@@ -211,5 +145,5 @@
     "matrix_max_parallel": 2,
     "compile_timeout_seconds": 2400
   },
-  "revision": "25"
+  "revision": "26"
 }
