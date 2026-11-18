@@ -1,0 +1,79 @@
+version: v0.4
+project:
+  name: Normal-projective equivalence and the exact cube bound
+  description: PN equivalence of realizations of a simple polytope is exactly membership
+    in the same connected component of its labelled realization space modulo affine
+    transformations. Local changes use d projective and d normal moves. Every simple
+    convex three-polytope is PN-unique. For every d at least 2, the largest distance
+    from a combinatorial d-cube to the geometric cube is exactly 2d-3, with separate
+    sharp projective and normal counts. The cyclic family forces the lower bound for
+    every target facet labelling.
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.CO
+  - math.MG
+  msc2020:
+  - 52B05
+  - 52B11
+sources:
+- title: Normal-projective equivalence and the exact cube bound
+  authors:
+  - Caius Folkerts
+  type: paper
+  relationship: formalizes
+  location: paper.pdf
+  note: Theorems1 and3, Corollary2 and the local word bound of Lemma4. The unrelated
+    boundary-origin example is retained only in the full source and is not selected
+    as an independent registry result.
+related_formalizations:
+- title: caiusdfolkerts/research normal_projective
+  relationship: repackages
+  id: https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/normal_projective
+  note: The complete substantive development is copied from this exact revision, preserving
+    original attribution and licences. The registry selection records the principal
+    canonical theorem formulations and their genuine proof/specification dependencies.
+    The auxiliary boundary-origin source check remains present without a separate
+    result claim.
+automation:
+  methods:
+  - method: agent
+    tool_setup: The manuscript discloses GPT-6 Astra, GPT-5.6 Sol, and Kimi K3 assistance
+      in developing its proofs. Historical roles beyond that disclosure have not been
+      independently reconstructed.
+  - method: agent
+    tool_setup: OpenAI Codex GPT-6.1 Sol prepared the Palomar statement and metadata,
+      comparing the supplied manuscript, README table, and Lean declarations.
+review:
+  status: unchecked
+  notes: This entry selects Theorems1 and3, Corollary2 and the local word bound, together
+    with actual supporting proof/specification obligations. The complete source and
+    all proof bodies are preserved. The boundary-origin example is unselected and
+    is not claimed as an independent research result or proof dependency of the selected
+    theorems. This distinct17-target snapshot still requires its own full preflight
+    and review. Corollary7 remains an explicit required standalone comparison gap,
+    under separate preparation.
+limitations:
+- The five supplied definition values retain their complete independent literal specifications.
+  The17-target candidate has not been recompiled or independently checked as a new
+  snapshot; prior18-target mechanical verification is not a new17-target verdict.
+- Theorems1/3, Corollary2 and the selected local-word formulation are retained without
+  changed hypotheses or conclusions. Corollary7 is an explicit required standalone
+  comparison gap; no exhaustive corollary coverage is claimed.
+- The complete boundary-origin example, source imports, audit guards and original
+  provenance are retained. It is unselected and is not described as a dependency of
+  the principal results.
+definition_specifications:
+  note: 'Comparator compares raw ConstantInfo, including proof fields and reducibility
+    heights. The five recorded definition values therefore use its definition-hole
+    interface. This does not leave their mathematics unspecified: compared normal
+    and support projections fix relabelling and both cube families completely; a literal
+    iff fixes geometric word length, and IsLeast uniquely fixes distance. All specifications
+    are independent statements using only the ordinary literal definitions shown in
+    Challenge.lean, and their Solution proofs use the actual original constructions.
+    No numerical distance is manufactured by a definition.'
+  details: map.json

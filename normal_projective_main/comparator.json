@@ -1,0 +1,35 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "NormalProjective.CanonicalModel.Realization.pnRelated_iff_same_component",
+    "NormalProjective.CanonicalModel.Realization.local_word_neighbourhood",
+    "NormalProjective.simple_three_pn_unique",
+    "NormalProjective.simple_three_faceOrderIso_pn",
+    "NormalProjective.CubeUpper.every_cube_exact_word_of_faceOrderIso",
+    "NormalProjective.CubeTargetLabels.cyclic_to_geometric_cube_lower_bound",
+    "NormalProjective.CubeTargetLabels.geometric_largest_PN_distance",
+    "PalomarNormal.referenceCube_data",
+    "PalomarNormal.cyclicRealization_data",
+    "PalomarNormal.geometricLength_iff",
+    "PalomarNormal.geometricPNDistance_isLeast",
+    "NormalProjective.CanonicalModel.Presentation.relabel_normal",
+    "NormalProjective.CanonicalModel.Presentation.relabel_support",
+    "NormalProjective.CanonicalModel.Presentation.sameLabelledType_refl",
+    "NormalProjective.CanonicalModel.Realization.affineRelated_refl",
+    "NormalProjective.CanonicalModel.Realization.affineRelated_symm",
+    "NormalProjective.CanonicalModel.Realization.affineRelated_trans"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "definition_names": [
+    "NormalProjective.CanonicalModel.Presentation.relabel",
+    "NormalProjective.CyclicCube.referenceCube",
+    "NormalProjective.CyclicCube.realization",
+    "NormalProjective.CubeTargetLabels.GeometricLength",
+    "NormalProjective.CubeTargetLabels.geometricPNDistance"
+  ]
+}
