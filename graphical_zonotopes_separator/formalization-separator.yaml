@@ -1,0 +1,250 @@
+version: v0.4
+project:
+  name: 'Sharp bounds for indecomposable graphical-zonotope summands: separator'
+  description: Complete positive-response gluing, exact kernel dimension and extremality
+    criterion, unique positive relation, closing-boundary lift invariance, and induced/clique
+    separator capacities.
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.CO
+  - math.MG
+  msc2020:
+  - 52B11
+  - 52B12
+  - 05C10
+sources:
+- title: Sharp bounds for indecomposable summands of graphical zonotopes
+  authors:
+  - Caius Folkerts
+  type: paper
+  relationship: formalizes
+  location: paper.pdf; see map-separator.json for exact selected results
+related_formalizations:
+- title: caiusdfolkerts/research graphical_zonotopes
+  relationship: repackages
+  id: https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/graphical_zonotopes
+  note: The complete substantive development is copied at this immutable baseline
+    revision, with documented module migrations and optional report IO adjustments.
+    Fresh literal statements and proof bridges form the comparison layer.
+status:
+  scope: Independent complete gluing/separator Challenge compiled with pinned4.35;
+    Solution/source bridges and full preflight remain pending.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: PalomarGraphicalSeparator.Separator.assembled_boundary_lift_transfer
+    file: SolutionSeparator.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-separator.json
+  - declaration: PalomarGraphicalSeparator.Separator.positive_response_gluing_finite
+    file: SolutionSeparator.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-separator.json
+  - declaration: PalomarGraphicalSeparator.Separator.induced_separator_capacity_finite
+    file: SolutionSeparator.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-separator.json
+  - declaration: PalomarGraphicalSeparator.Separator.clique_separator_capacity_finite
+    file: SolutionSeparator.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-separator.json
+  - declaration: PalomarGraphicalSeparator.Separator.positive_response_gluing
+    file: SolutionSeparator.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-separator.json
+automation:
+  methods:
+  - method: agent
+    tool_setup: The manuscript discloses GPT-6 Astra, GPT-5.6 Sol, and Kimi K3 assistance
+      in developing its proofs. Historical roles beyond that disclosure have not been
+      independently reconstructed.
+  - method: agent
+    models:
+    - GPT-6.1 Sol
+    framework: OpenAI Codex
+    tool_setup: Prepared independent literal mathematical statements, source proof
+      bridges, module migrations, provenance and result mapping. Compared the manuscript,
+      README and actual Lean declarations.
+fidelity:
+  divergences: Selected mathematical hypotheses and conclusions are retained. Fresh
+    namespace names and source bridge proofs replace raw original declaration names.
+    The separator statement spells out actual finite zeta reconstruction and Mobius
+    extraction in place of opaque equivalence applications; all source kernels, dimensions,
+    positivity and capacities are retained.
+review:
+  status: unchecked
+  notes: Current Challenge compiled locally-M3072/-j1. Fresh Solution fieldwise partition/coordinate
+    bridges remain uncompiled. No actual Comparator or independent kernel success
+    claimed.
+alignment:
+  namespace: PalomarGraphicalSeparator
+  statements:
+  - source: Theorem 5.4, exact boundary-lift invariance
+    lean: PalomarGraphicalSeparator.Separator.assembled_boundary_lift_transfer
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Theorem 5.4
+    lean: PalomarGraphicalSeparator.Separator.positive_response_gluing_finite
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Lemma 5.1
+    lean: PalomarGraphicalSeparator.Separator.induced_separator_capacity_finite
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Theorem 7.2
+    lean: PalomarGraphicalSeparator.Separator.clique_separator_capacity_finite
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal construction semantics
+    lean: PalomarGraphicalSeparator.Separator.Partition.clique_unique_branch
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal construction semantics
+    lean: PalomarGraphicalSeparator.Separator.globalFunction_mem
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal construction semantics
+    lean: PalomarGraphicalSeparator.Separator.componentPartition
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal construction semantics
+    lean: PalomarGraphicalSeparator.zeta_injective
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Theorem 5.4, ordered coordinate formulation
+    lean: PalomarGraphicalSeparator.Separator.positive_response_gluing
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSeparator.zeta_add
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSeparator.zeta_smul
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSeparator.Separator.branchOf_spec
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSeparator.coefficientFill_add
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSeparator.coefficientFill_smul
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSeparator.graphicalSpace_zero
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSeparator.graphicalSpace_add
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSeparator.graphicalSpace_smul
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSeparator.delta_add
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSeparator.delta_smul
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSeparator.Gluing.response_add
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSeparator.Gluing.response_smul
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSeparator.Gluing.privateKernel_zero
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSeparator.Gluing.privateKernel_add
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSeparator.Gluing.privateKernel_smul
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSeparator.Polyhedral.tightKernel_zero
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSeparator.Polyhedral.tightKernel_add
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSeparator.Polyhedral.tightKernel_smul
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSeparator.Separator.joinCoordinates_add
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSeparator.Separator.joinCoordinates_smul
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSeparator.Separator.privateEmbed_add
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSeparator.Separator.privateEmbed_smul
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSeparator.boundarySlack_add
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSeparator.boundarySlack_smul
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSeparator.Separator.boundaryEmbed_smul
+    module: SolutionSeparator.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSeparator.Separator.boundaryEmbed_add
+    module: SolutionSeparator.lean
+    status: in-progress
