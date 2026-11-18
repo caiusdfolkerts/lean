@@ -187,7 +187,17 @@ def boundaries (I : Ideal (MvPolynomial V K)) (q : ℤ) (p : ℕ) :
 
 /-- The actual homogeneous polynomial Koszul homology quotient. -/
 abbrev Homology (I : Ideal (MvPolynomial V K)) (q : ℤ) (p : ℕ) :=
-  _root_.Quotient (Submodule.quotientRel (R := K) (M := cycles I q p) (boundaries I q p))
+  (cycles I q p) ⧸ boundaries I q p
+
+/-- The canonical additive group on the actual homogeneous homology quotient. -/
+instance homologyAddCommGroup (I : Ideal (MvPolynomial V K)) (q : ℤ) (p : ℕ) :
+    AddCommGroup (Homology I q p) :=
+  Submodule.Quotient.addCommGroup (R := K) (M := cycles I q p) (boundaries I q p)
+
+/-- The canonical coefficient module on the actual homogeneous homology quotient. -/
+instance homologyModule (I : Ideal (MvPolynomial V K)) (q : ℤ) (p : ℕ) :
+    Module K (Homology I q p) :=
+  Submodule.Quotient.module (R := K) (M := cycles I q p) (boundaries I q p)
 
 end PalomarSublattice.Koszul
 namespace PalomarSublattice.Koszul

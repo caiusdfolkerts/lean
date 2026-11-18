@@ -213,8 +213,23 @@ def KoszulRegularity (B : Family V) (r : ℕ) : Prop :=
     ∃ i a, ¬Simplicial.ExactIn (k := k) (koszulFaces B a) i ∧ a.degree = r + i
 /-- The actual quotient J/I, using the canonical integral-closure ideal J. -/
 abbrev ClosureDifference (B : Family V) (d : ℕ) :=
-  let J := monomialIdeal k (lowerBaseFamily (lowerRank B) d)
-  _root_.Quotient (Submodule.quotientRel (Submodule.comap J.subtype (monomialIdeal k B)))
+  (monomialIdeal k (lowerBaseFamily (lowerRank B) d)) ⧸
+    Submodule.comap (monomialIdeal k (lowerBaseFamily (lowerRank B) d)).subtype
+      (monomialIdeal k B)
+/-- The canonical additive group of the actual submodule quotient J/I. -/
+instance closureDifferenceAddCommGroup (B : Family V) (d : ℕ) :
+    AddCommGroup (ClosureDifference (k := k) B d) :=
+  Submodule.Quotient.addCommGroup (R := MvPolynomial V k)
+    (M := monomialIdeal k (lowerBaseFamily (lowerRank B) d))
+    (Submodule.comap (monomialIdeal k (lowerBaseFamily (lowerRank B) d)).subtype
+      (monomialIdeal k B))
+/-- The canonical polynomial-module structure on the actual quotient J/I. -/
+instance closureDifferenceModule (B : Family V) (d : ℕ) :
+    Module (MvPolynomial V k) (ClosureDifference (k := k) B d) :=
+  Submodule.Quotient.module (R := MvPolynomial V k)
+    (M := monomialIdeal k (lowerBaseFamily (lowerRank B) d))
+    (Submodule.comap (monomialIdeal k (lowerBaseFamily (lowerRank B) d)).subtype
+      (monomialIdeal k B))
 /-- The actual monomials in J minus I, with coefficient one. -/
 def Holes (B : Family V) (d : ℕ) : Set (Exponent V) :=
   {a | MvPolynomial.monomial a (1 : k) ∈
@@ -350,4 +365,24 @@ theorem exists_outer_band_isolator (U : Finset V) (hm : 2 ≤ U.card) (d : ℕ)
     ∃ B : Family V, B.Nonempty ∧ Equigenerated B d ∧
       (¬ ∃ e, Equigenerated (localFamily B U) e) ∧
       (∀ R, HasLinearResolution (monomialLocalization k (monomialIdeal k B) R) ↔ R ≠ U) := by sorry
+end PalomarPolymatroidal
+
+namespace PalomarPolymatroidal
+open Classical CommAlg.Polymatroid Characterizations
+universe u
+variable {V k : Type u} [Fintype V] [LinearOrder V] [Field k]
+/-- Equation (2.4): actual ideal-integral closure is the intersection of the
+ordinary coordinate-prime powers prescribed by the lower rank function. -/
+theorem integral_closure_prime_power_factors {B : Family V} (hB : B.Nonempty)
+    (hanti : Antichain B) (hl : LocallyEquigenerated B) {d : ℕ} (hd : Equigenerated B d)
+    (f : MvPolynomial V k) :
+    CommAlg.IntegralOverIdeal (monomialIdeal k B) f ↔
+      f ∈ ⨅ U : Finset V, (variableIdeal (k := k) U) ^ lowerRank B U := by sorry
+/-- Corollary 2.12: polymatroidality is equivalent to local equigeneration
+and an actual intersection presentation by ordinary coordinate-prime powers.
+Exponent zero permits missing factors, including the empty-set convention. -/
+theorem intersection_type_iff {B : Family V} (hB : B.Nonempty) (hanti : Antichain B) :
+    IsPolymatroidal B ↔ LocallyEquigenerated B ∧
+      ∃ e : Finset V → ℕ, monomialIdeal k B =
+        ⨅ U : Finset V, (variableIdeal (k := k) U) ^ e U := by sorry
 end PalomarPolymatroidal

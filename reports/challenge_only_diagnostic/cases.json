@@ -1,88 +1,23 @@
 {
   "schema_version": 1,
-  "kind": "Challenge-only elaboration diagnostic; not full preflight",
+  "kind": "Canonical Challenge/probe elaboration diagnostic; not full preflight",
   "pipeline_commit": "14aa8d6b3c2f14a8540605e37144560b9a00e7e7",
   "cases": [
     {
-      "id": "volume_polynomials",
+      "id": "polymatroidal_ideals_supplement",
       "module": "Challenge",
-      "case_dir": "cases/volume_polynomials",
-      "original_package": "packages/volume_polynomials",
-      "original_challenge": "packages/volume_polynomials/source/Challenge.lean",
-      "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
-      "hashes": {
-        "Challenge.lean": "392ebc86acc7bde99e0853066c921628dfb86137d1d82524819ce28c2af9e964",
-        "lake-manifest.json": "5619bb28ae7f2972522467eccf712e99876805a4fb0b7298a3c8de5918224147",
-        "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
-        "original-lakefile.toml": "e429ab885c0b86124ac6b748b01715efdede7f476661ead3634e0c69b6521ccb"
-      },
-      "challenge_lines": 810,
-      "challenge_bytes": 41175,
-      "dependency_pins": [
-        {
-          "name": "mathlib",
-          "url": "https://github.com/leanprover-community/mathlib4",
-          "rev": "2cabef97b63d3275776b8b060d802de6a6fa1055"
-        },
-        {
-          "name": "plausible",
-          "url": "https://github.com/leanprover-community/plausible",
-          "rev": "c2d7840c65673533e15b499f25beecdc6227f7d8"
-        },
-        {
-          "name": "LeanSearchClient",
-          "url": "https://github.com/leanprover-community/LeanSearchClient",
-          "rev": "9d39f9bb0c30aa2f6200808805ff16e6ce950890"
-        },
-        {
-          "name": "importGraph",
-          "url": "https://github.com/leanprover-community/import-graph",
-          "rev": "b3cc36c295aa5e3e3c0197b09a6556298e710447"
-        },
-        {
-          "name": "proofwidgets",
-          "url": "https://github.com/leanprover-community/ProofWidgets4",
-          "rev": "17137fad38a2cc782ff00b323a13c3a991d085ab"
-        },
-        {
-          "name": "aesop",
-          "url": "https://github.com/leanprover-community/aesop",
-          "rev": "29c64c56cc38211d39b306db2df11701e3d3de11"
-        },
-        {
-          "name": "Qq",
-          "url": "https://github.com/leanprover-community/quote4",
-          "rev": "6d26f8bb4b2bb78f929ad160feac508866821316"
-        },
-        {
-          "name": "batteries",
-          "url": "https://github.com/leanprover-community/batteries",
-          "rev": "30691c775364967184547c94468bf6b5f25400fb"
-        },
-        {
-          "name": "Cli",
-          "url": "https://github.com/leanprover/lean4-cli",
-          "rev": "34d2efffcb6dc8d5f3537cf6a7f88bfaa999ec49"
-        }
-      ],
-      "diagnostic_class": "owner-frozen-measured-normalization-smoke",
-      "remote_memory_mib": 8192
-    },
-    {
-      "id": "barycentric_invariance_tor",
-      "module": "Challenge",
-      "case_dir": "cases/barycentric_invariance_tor",
-      "original_package": "packages/barycentric_invariance_tor",
-      "original_challenge": "packages/barycentric_invariance_tor/source/Challenge.lean",
+      "case_dir": "cases/polymatroidal_ideals_supplement",
+      "original_package": "reports/polymatroidal_ideals/supplemental/project",
+      "original_challenge": "reports/polymatroidal_ideals/supplemental/project/source/Challenge.lean",
       "lean_toolchain": "leanprover/lean4:v4.35.0",
       "hashes": {
-        "Challenge.lean": "8c9b6c288905b6a01755e0994afc8fb1074bea41a5c64b4bbfce310e0ac08905",
-        "lake-manifest.json": "39171539cb61af4520d7ad747cb986b0bbef964d043032fe4458c87fa9171546",
+        "Challenge.lean": "09eba870b48befb5744950e036b41e19048c816968f1c35ebccb681365ee8088",
+        "lake-manifest.json": "2c86775e548a568a6f8d3ab846561f2350c28cbbee440a05517f6810371c055a",
         "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
-        "original-lakefile.toml": "c55c4aa8d5484e055e97641067e33eea69502a5af5e852692cb766106a7ac0cd"
+        "original-lakefile.toml": "3e9c9c15f3a6f56394fd2d690f60d2426971188aad9a91c9a1b2de1cd633dd72"
       },
-      "challenge_lines": 871,
-      "challenge_bytes": 61925,
+      "challenge_lines": 388,
+      "challenge_bytes": 22264,
       "dependency_pins": [
         {
           "name": "mathlib",
@@ -132,11 +67,143 @@
       ],
       "diagnostic_class": "owner-frozen-corrected-source-retry",
       "remote_memory_mib": 8192
+    },
+    {
+      "id": "sublattice_resolutions_main",
+      "module": "Challenge",
+      "case_dir": "cases/sublattice_resolutions_main",
+      "original_package": "packages/sublattice_resolutions",
+      "original_challenge": "reports/sublattice_resolutions/candidate-main-rees-Challenge.lean",
+      "lean_toolchain": "leanprover/lean4:v4.35.0",
+      "hashes": {
+        "Challenge.lean": "cc90f700f8ec7b82ce61206b1708cead0c4aba5cadab5abfe3d771f71ce1dce4",
+        "lake-manifest.json": "d7a35b5c5854a8cb356e75a36105bfaefc92a473494125e5b9a897d3dfd5d46d",
+        "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+        "original-lakefile.toml": "e3934467dcd417ff65b4a39916006746b69e1890d1799a38b777f97702be0dfd"
+      },
+      "challenge_lines": 363,
+      "challenge_bytes": 21411,
+      "dependency_pins": [
+        {
+          "name": "mathlib",
+          "url": "https://github.com/leanprover-community/mathlib4.git",
+          "rev": "56a005855ea17e0b0958f73ec801ae140b0a1679"
+        },
+        {
+          "name": "plausible",
+          "url": "https://github.com/leanprover-community/plausible",
+          "rev": "dfa4f38190d07c37e315953e08b90fe2d95b3c24"
+        },
+        {
+          "name": "LeanSearchClient",
+          "url": "https://github.com/leanprover-community/LeanSearchClient",
+          "rev": "d6b4c7be5be75ec4917c873ac50c756dc1436372"
+        },
+        {
+          "name": "importGraph",
+          "url": "https://github.com/leanprover-community/import-graph",
+          "rev": "a41f0e9a4dea23188ea9cc1c41ac9f8bbafe0b93"
+        },
+        {
+          "name": "proofwidgets",
+          "url": "https://github.com/leanprover-community/ProofWidgets4",
+          "rev": "df72b022e558978a1c50264cfc4d7fec86fa8e04"
+        },
+        {
+          "name": "aesop",
+          "url": "https://github.com/leanprover-community/aesop",
+          "rev": "4a174c490d8707121c4a9290800489f105d85e07"
+        },
+        {
+          "name": "Qq",
+          "url": "https://github.com/leanprover-community/quote4",
+          "rev": "dce0ad79c486cb1fb504af04f953c3466b0c6db8"
+        },
+        {
+          "name": "batteries",
+          "url": "https://github.com/leanprover-community/batteries",
+          "rev": "66e469188fe07963e5cf666c7d4433f45b8131c5"
+        },
+        {
+          "name": "Cli",
+          "url": "https://github.com/leanprover/lean4-cli",
+          "rev": "c24fe6078c630e89b489bffe59b3e20ac30d12c8"
+        }
+      ],
+      "diagnostic_class": "owner-frozen-corrected-source-retry",
+      "remote_memory_mib": 8192
+    },
+    {
+      "id": "homological_boundary_probe",
+      "module": "Challenge",
+      "case_dir": "cases/homological_boundary_probe",
+      "original_package": "packages/homological_shifts",
+      "original_challenge": "reports/homological_shifts/diagnostics/BoundaryCanonicalProbeRemote.lean",
+      "lean_toolchain": "leanprover/lean4:v4.35.0",
+      "hashes": {
+        "Challenge.lean": "66b6f142f0404434b84d44ab915293d971ec67fc5f19a0b8cf8359000f5ca7af",
+        "lake-manifest.json": "c19929a5111909242f1ca954a78a934cf2ad5972f7f3ee68310ad6bcfbb186ed",
+        "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+        "original-lakefile.toml": "3b6f658b944632ccc88aecbdea481ae03689dc75a1edc67c387fc3717bfc8cb8"
+      },
+      "challenge_lines": 41,
+      "challenge_bytes": 1878,
+      "dependency_pins": [
+        {
+          "name": "mathlib",
+          "url": "https://github.com/leanprover-community/mathlib4.git",
+          "rev": "56a005855ea17e0b0958f73ec801ae140b0a1679"
+        },
+        {
+          "name": "plausible",
+          "url": "https://github.com/leanprover-community/plausible",
+          "rev": "dfa4f38190d07c37e315953e08b90fe2d95b3c24"
+        },
+        {
+          "name": "LeanSearchClient",
+          "url": "https://github.com/leanprover-community/LeanSearchClient",
+          "rev": "d6b4c7be5be75ec4917c873ac50c756dc1436372"
+        },
+        {
+          "name": "importGraph",
+          "url": "https://github.com/leanprover-community/import-graph",
+          "rev": "a41f0e9a4dea23188ea9cc1c41ac9f8bbafe0b93"
+        },
+        {
+          "name": "proofwidgets",
+          "url": "https://github.com/leanprover-community/ProofWidgets4",
+          "rev": "df72b022e558978a1c50264cfc4d7fec86fa8e04"
+        },
+        {
+          "name": "aesop",
+          "url": "https://github.com/leanprover-community/aesop",
+          "rev": "4a174c490d8707121c4a9290800489f105d85e07"
+        },
+        {
+          "name": "Qq",
+          "url": "https://github.com/leanprover-community/quote4",
+          "rev": "dce0ad79c486cb1fb504af04f953c3466b0c6db8"
+        },
+        {
+          "name": "batteries",
+          "url": "https://github.com/leanprover-community/batteries",
+          "rev": "66e469188fe07963e5cf666c7d4433f45b8131c5"
+        },
+        {
+          "name": "Cli",
+          "url": "https://github.com/leanprover/lean4-cli",
+          "rev": "c24fe6078c630e89b489bffe59b3e20ac30d12c8"
+        }
+      ],
+      "diagnostic_class": "canonical-only-read-only-auxiliary-type-probe",
+      "remote_memory_mib": 8192,
+      "probe_meaning": "Three direct boundary auxiliary type lookups only; no environment enumeration, source-project build or mathematical Challenge claim."
     }
   ],
   "default_case_ids": [
-    "volume_polynomials",
-    "barycentric_invariance_tor"
+    "polymatroidal_ideals_supplement",
+    "sublattice_resolutions_main",
+    "homological_boundary_probe"
   ],
   "operator_resource_policy": {
     "memory_mib": 8192,
@@ -145,5 +212,5 @@
     "matrix_max_parallel": 2,
     "compile_timeout_seconds": 2400
   },
-  "revision": "11"
+  "revision": "12"
 }
