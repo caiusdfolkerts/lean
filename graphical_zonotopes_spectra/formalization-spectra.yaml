@@ -35,15 +35,11 @@ related_formalizations:
     revision, with documented module migrations and optional report IO adjustments.
     Fresh literal statements and proof bridges form the comparison layer.
 status:
-  scope: Exact553-line independent Challenge passed pinnedLean4.35 canonical-only
-    diagnostic run44372929933. Revised Solution/source interfaces remain source-prepared
-    and uncompiled; full Comparator and independent kernel verification are pending.
-    Support and separator constraints for indecomposable graphical-zonotope summands,
-    planar classification, and exact dimension spectra for 3-trees and partial 3-trees,
-    with lattice attainment and intrinsic incidence forests. Includes tree-join and
-    three-hub book dimension formulas, Hamiltonian 3-tree lattice witnesses, and K5-free
-    graphs with full-dimensional indecomposable lattice weak summands but no admissible
-    spanning 3-tree.
+  scope: The exact553-line independent Challenge passed pinnedLean4.35 canonical-only
+    diagnostic run44372929933. The unchanged substantive Source closure compiled in
+    fullrun44375295782; its wrapper had9 reported interface errors. The complete error
+    class is repaired in the revised793-line Solution, which is uncompiled. Actual
+    Comparator, independent kernels and a clean editorial review remain pending.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms:
@@ -223,11 +219,11 @@ fidelity:
     claimed.
 review:
   status: unchecked
-  notes: The exact current Challenge passed canonical-only elaboration, confirmed
-    by actual receipt and log hashes. This does not check the actual Source/Solution
-    bridges, Comparator, independent kernels, or editorial cleanliness. Revised792-line
-    Solution is uncompiled. Fresh full preflight and clean editorial review required;
-    see map-spectra.json.
+  notes: Current Challenge canonical-only pass and prior unchanged Source-closure
+    build are actual recorded evidence. The revised Solution addresses every error
+    in the complete preceding wrapper report, retaining all27 selected statements.
+    No actual new Solution, Comparator or independent kernel pass is claimed. Fresh
+    full preflight and clean editorial review required; see map-spectra.json.
 alignment:
   namespace: PalomarGraphicalSpectra
   statements:
