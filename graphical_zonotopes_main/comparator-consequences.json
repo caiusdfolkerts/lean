@@ -1,0 +1,26 @@
+{
+  "challenge_module": "ChallengeConsequences",
+  "solution_module": "SolutionConsequences",
+  "theorem_names": [
+    "PalomarGraphicalConsequences.small_count_lattice_books",
+    "PalomarGraphicalConsequences.threshold_book_interval",
+    "PalomarGraphicalConsequences.two_threshold_four_bridge",
+    "PalomarGraphicalConsequences.two_threshold_five_bridge",
+    "PalomarGraphicalConsequences.book_upper_interval",
+    "PalomarGraphicalConsequences.lattice_dimension_spectrum",
+    "PalomarGraphicalConsequences.positive_dimension_spectrum",
+    "PalomarGraphicalConsequences.prescribed_coordinate_criterion",
+    "PalomarGraphicalConsequences.exponential_family",
+    "PalomarGraphicalConsequences.corollary_nine_four",
+    "PalomarGraphicalConsequences.one_singleton_decomposition",
+    "PalomarGraphicalConsequences.four_small_parts_decomposition",
+    "PalomarGraphicalConsequences.actualRootEdge_symm",
+    "PalomarGraphicalConsequences.PathJoin.adjacency_symm",
+    "PalomarGraphicalConsequences.boolean_decomposition_every_dimension"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}
