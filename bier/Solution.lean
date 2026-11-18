@@ -55,3 +55,33 @@ theorem general_allSign_construction_unrestricted (m k : ℕ)
     (Bier.patternCore m k (m ^ 2 - m + 1) h).ghost_proper,
     hdim, hsphere, hvertices, hnon⟩
 end PalomarBier
+
+/- Complete literal characterizations of every non-proof record field below.
+These equations determine each supplied constructor completely by proof
+irrelevance; they do not refer to opaque source primitives. -/
+namespace PalomarBier.Spec
+open LeanEval.Geometry.PlatonicClassification
+/-- The face polytope has exactly the original extreme vertices lying in the face. -/
+theorem facePolytope_vertices {n : ℕ} (P : ConvexPolytope n) {f : Set (E n)}
+    (hf : P.IsFace f) :
+    (facePolytope P hf).vertices = P.vertices.filter (fun v => v ∈ f) := by rfl
+/-- Every realized face is exactly the standard basis image of an input face. -/
+theorem standardRealization_faces {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (P : PreAbstractSimplicialComplex ι) :
+    (DifferentialGeometry.Topology.Engulfing.standardRealization P).faces =
+      (fun s : Finset ι => s.image (fun i => Pi.single i (1 : ℝ))) '' P.faces := by rfl
+/-- The abstract complex contains exactly the actual nonempty faces. -/
+theorem toAbstract_faces {V : Type*} [Fintype V] [DecidableEq V] (K : Bier.Complex V) :
+    K.toAbstract.faces = {s | s.Nonempty ∧ K.face s} := by rfl
+/-- Alexander duality is complement nonmembership on the full fixed ground set. -/
+theorem dual_face {V : Type*} [Fintype V] [DecidableEq V] (K : Bier.Complex V)
+    (hK : K.Proper) (s : Finset V) : (K.dual hK).face s ↔ ¬K.face sᶜ := by rfl
+/-- All Bier faces are precisely the disjoint deleted-join face pairs. -/
+theorem bier_face {V : Type*} [Fintype V] [DecidableEq V] (K : Bier.Complex V)
+    (hK : K.Proper) (s : Finset (V ⊕ V)) :
+    (K.bier hK).face s ↔
+      K.face s.toLeft ∧ ¬K.face s.toRightᶜ ∧ Disjoint s.toLeft s.toRight := by rfl
+/-- The new label is genuinely absent from every face. -/
+theorem ghost_face {V : Type*} [Fintype V] [DecidableEq V] (K : Bier.Complex V)
+    (s : Finset (Option V)) : K.ghost.face s ↔ none ∉ s ∧ K.face s.eraseNone := by rfl
+end PalomarBier.Spec

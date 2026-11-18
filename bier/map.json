@@ -1,7 +1,7 @@
 {
   "project": "bier",
   "baseline_revision": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
-  "status": "prepared_unbuilt",
+  "status": "source_build_passed_raw_repair_in_progress",
   "result_map": [
     {
       "paper_result": "Theorem 1, principal example",
@@ -193,13 +193,14 @@
     "symlinks": [],
     "compiled_artifacts": []
   },
-  "validation": "Not built; Comparator/NanoDa not run.",
+  "validation": "Bier19 Challenge frozen for remote smoke; exact source contexts audited. Source/Solution of prior11-target version passed run44347419677; current19-target complete-spec version is uncompiled and not full-preflight ready.",
   "blockers": [
-    "Fresh full source build after legacy module visibility migration, Solution wrapper elaboration, Comparator and NanoDa checks pending."
+    "Compile and compare all11 current targets after exact source binder-scope alignment.",
+    "Complete literal constructor-proof normalization and actual Comparator plus independent kernel checks remain pending."
   ],
   "challenge": {
-    "lines": 341,
-    "bytes": 17792,
+    "lines": 380,
+    "bytes": 19928,
     "custom_definitions": "Independent exact source data semantics; proof-only holes. New existential wrappers preserve original finite label types and all conclusions.",
     "imports_only_canonical_mathlib": true
   },
@@ -216,71 +217,180 @@
       "original_declaration": "Bier.ghost_signRank_bound_fixedCard",
       "source_file": "source/bier/obstruction.lean",
       "source_line": 77,
-      "challenge_line": 264
+      "challenge_line": 269
     },
     {
       "declaration": "Bier.ghost_signRank_bound_arbitrary",
       "original_declaration": "Bier.ghost_signRank_bound_arbitrary",
       "source_file": "source/bier/obstruction.lean",
       "source_line": 91,
-      "challenge_line": 273
+      "challenge_line": 278
     },
     {
       "declaration": "Bier.allColumnSigns_signRank",
       "original_declaration": "Bier.allColumnSigns_signRank",
       "source_file": "source/bier/all_signs.lean",
       "source_line": 76,
-      "challenge_line": 288
+      "challenge_line": 296
     },
     {
       "declaration": "Bier.Forster.signRank_spectral",
       "original_declaration": "Bier.Forster.signRank_spectral",
       "source_file": "source/bier/forster/operator_norm.lean",
       "source_line": 57,
-      "challenge_line": 295
+      "challenge_line": 305
     },
     {
       "declaration": "Bier.Forster.hadamard_columnRestriction_signRank",
       "original_declaration": "Bier.Forster.hadamard_columnRestriction_signRank",
       "source_file": "source/bier/forster/hadamard.lean",
       "source_line": 63,
-      "challenge_line": 299
+      "challenge_line": 309
     },
     {
       "declaration": "PalomarBier.principal_example",
       "original_declaration": "Bier.principal_example",
       "source_file": "source/bier/nonpolytopal_examples.lean",
       "source_line": 42,
-      "challenge_line": 309
+      "challenge_line": 318,
+      "solution_file": "Solution.lean",
+      "solution_line": 10
     },
     {
       "declaration": "PalomarBier.all_labels_example",
       "original_declaration": "Bier.all_labels_example",
       "source_file": "source/bier/isolated_nonpolytopal.lean",
       "source_line": 35,
-      "challenge_line": 315
+      "challenge_line": 324,
+      "solution_file": "Solution.lean",
+      "solution_line": 18
     },
     {
       "declaration": "PalomarBier.self_dual_example",
       "original_declaration": "Bier.self_dual_example",
       "source_file": "source/bier/nonpolytopal_examples.lean",
       "source_line": 112,
-      "challenge_line": 322
+      "challenge_line": 331,
+      "solution_file": "Solution.lean",
+      "solution_line": 28
     },
     {
       "declaration": "PalomarBier.three_dimensional_example",
       "original_declaration": "Bier.three_dimensional_example",
       "source_file": "source/bier/nonpolytopal_examples.lean",
       "source_line": 60,
-      "challenge_line": 329
+      "challenge_line": 338,
+      "solution_file": "Solution.lean",
+      "solution_line": 37
     },
     {
       "declaration": "PalomarBier.general_allSign_construction_unrestricted",
       "original_declaration": "Bier.general_allSign_construction_unrestricted",
       "source_file": "source/bier/general_construction.lean",
       "source_line": 10,
-      "challenge_line": 335
+      "challenge_line": 344,
+      "solution_file": "Solution.lean",
+      "solution_line": 46
+    },
+    {
+      "declaration": "LeanEval.Geometry.PlatonicClassification.finite_isFace",
+      "original_declaration": "LeanEval.Geometry.PlatonicClassification.finite_isFace",
+      "source_file": "source/cubical/polytope/faces.lean",
+      "source_line": 23,
+      "challenge_line": 75
+    },
+    {
+      "declaration": "Bier.Complex.ghost_proper",
+      "original_declaration": "Bier.Complex.ghost_proper",
+      "source_file": "source/bier/encoding.lean",
+      "source_line": 29,
+      "challenge_line": 218
+    },
+    {
+      "declaration": "PalomarBier.Spec.facePolytope_vertices",
+      "original_declaration": "LeanEval.Geometry.PlatonicClassification.facePolytope",
+      "source_file": "source/cubical/polytope/sotto_politopo.lean",
+      "source_line": 38,
+      "challenge_line": 358,
+      "solution_file": "Solution.lean",
+      "solution_line": 65,
+      "source_declaration_kind": "definition_characterized",
+      "role": "complete_literal_projection_specification"
+    },
+    {
+      "declaration": "PalomarBier.Spec.standardRealization_faces",
+      "original_declaration": "DifferentialGeometry.Topology.Engulfing.standardRealization",
+      "source_file": "source/differential_geometry/topology/simplicial_complex/realization/simplicial_gluing.lean",
+      "source_line": 21,
+      "challenge_line": 362,
+      "solution_file": "Solution.lean",
+      "solution_line": 69,
+      "source_declaration_kind": "definition_characterized",
+      "role": "complete_literal_projection_specification"
+    },
+    {
+      "declaration": "PalomarBier.Spec.toAbstract_faces",
+      "original_declaration": "Bier.Complex.toAbstract",
+      "source_file": "source/bier/complex.lean",
+      "source_line": 56,
+      "challenge_line": 367,
+      "solution_file": "Solution.lean",
+      "solution_line": 74,
+      "source_declaration_kind": "definition_characterized",
+      "role": "complete_literal_projection_specification"
+    },
+    {
+      "declaration": "PalomarBier.Spec.dual_face",
+      "original_declaration": "Bier.Complex.dual",
+      "source_file": "source/bier/complex.lean",
+      "source_line": 65,
+      "challenge_line": 370,
+      "solution_file": "Solution.lean",
+      "solution_line": 77,
+      "source_declaration_kind": "definition_characterized",
+      "role": "complete_literal_projection_specification"
+    },
+    {
+      "declaration": "PalomarBier.Spec.bier_face",
+      "original_declaration": "Bier.Complex.bier",
+      "source_file": "source/bier/complex.lean",
+      "source_line": 83,
+      "challenge_line": 373,
+      "solution_file": "Solution.lean",
+      "solution_line": 80,
+      "source_declaration_kind": "definition_characterized",
+      "role": "complete_literal_projection_specification"
+    },
+    {
+      "declaration": "PalomarBier.Spec.ghost_face",
+      "original_declaration": "Bier.Complex.ghost",
+      "source_file": "source/bier/encoding.lean",
+      "source_line": 20,
+      "challenge_line": 378,
+      "solution_file": "Solution.lean",
+      "solution_line": 85,
+      "source_declaration_kind": "definition_characterized",
+      "role": "complete_literal_projection_specification"
     }
   ],
-  "wrapper_note": "Explicit-example wrappers provide the original construction in Solution and keep its exact finite ground-set type, dimension, count and sphere/nonpolytopality conclusions; principal wrapper additionally keeps its missing ghost label."
+  "wrapper_note": "Explicit-example wrappers provide the original construction in Solution and keep its exact finite ground-set type, dimension, count and sphere/nonpolytopality conclusions; principal wrapper additionally keeps its missing ghost label.",
+  "supplied_constructors": {
+    "definitions": [
+      "LeanEval.Geometry.PlatonicClassification.facePolytope",
+      "DifferentialGeometry.Topology.Engulfing.standardRealization",
+      "Bier.Complex.toAbstract",
+      "Bier.Complex.dual",
+      "Bier.Complex.bier",
+      "Bier.Complex.ghost"
+    ],
+    "complete_specifications": [
+      "PalomarBier.Spec.facePolytope_vertices",
+      "PalomarBier.Spec.standardRealization_faces",
+      "PalomarBier.Spec.toAbstract_faces",
+      "PalomarBier.Spec.dual_face",
+      "PalomarBier.Spec.bier_face",
+      "PalomarBier.Spec.ghost_face"
+    ],
+    "data_uniqueness": "Each record has exactly one non-Prop field, fixed for every input by the literal projection equation; all remaining fields are proof certificates."
+  }
 }

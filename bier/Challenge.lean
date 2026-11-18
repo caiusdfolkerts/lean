@@ -247,6 +247,8 @@ def Polytopal (K : Complex V) : Prop := ∃ n, Nonempty (PolytopeRealization K n
 abbrev ghostBier {E : Type*} [Fintype E] [DecidableEq E] (K : Complex E) :=
   K.ghost.bier K.ghost_proper
 
+end Bier
+namespace Bier
 variable {R C : Type*} [Fintype R] [Fintype C]
 /-- Every entry is a strict sign, plus or minus one. -/
 def IsSignMatrix (H : Matrix R C ℝ) : Prop :=
@@ -258,7 +260,10 @@ def SignRealizes (H M : Matrix R C ℝ) : Prop :=
 def signRank (H : Matrix R C ℝ) : ℕ :=
   sInf {n : ℕ | ∃ M : Matrix R C ℝ, SignRealizes H M ∧ M.rank = n}
 
-variable {U : Type*} [Fintype U] [DecidableEq U] [DecidableEq C]
+end Bier
+namespace Bier
+variable {U C R : Type*} [Fintype U] [Fintype C] [Fintype R]
+  [DecidableEq U] [DecidableEq C]
 
 /-- Theorem 2 with every original hypothesis and quantifier. -/
 theorem ghost_signRank_bound_fixedCard (K : Complex (U ⊕ C)) (hK : K.Proper)
@@ -278,16 +283,21 @@ theorem ghost_signRank_bound_arbitrary (K : Complex (U ⊕ C)) (hK : K.Proper)
     (hP : Polytopal (ghostBier K)) :
     signRank H ≤ Fintype.card U ^ 2 - Fintype.card U + 2 := by sorry
 
+end Bier
+namespace Bier
+variable (R : Type*) [Fintype R] [DecidableEq R]
 /-- Every normalized column sign pattern occurs once. -/
-def allColumnSigns (R : Type*) :
+def allColumnSigns :
     Matrix (Option R) (R → Fin 2) ℝ := fun r c =>
   match r with
   | none => 1
   | some i => if c i = 0 then 1 else -1
 /-- Exact sign rank of the complete normalized all-sign matrix. -/
-theorem allColumnSigns_signRank (R : Type*) [Fintype R] :
+theorem allColumnSigns_signRank :
     signRank (allColumnSigns R) = Fintype.card R + 1 := by sorry
-namespace Forster
+end Bier
+namespace Bier.Forster
+variable {R C : Type*} [Fintype R] [Fintype C]
 /-- The usual Euclidean operator norm of a real matrix. -/
 def spectralNorm (H : Matrix R C ℝ) : ℝ :=
   ‖H.toEuclideanLin.toContinuousLinearMap‖
@@ -299,8 +309,7 @@ theorem signRank_spectral (H : Matrix R C ℝ) (hH : Bier.IsSignMatrix H) :
 theorem hadamard_columnRestriction_signRank [DecidableEq R] (A : Matrix R R ℝ)
     (hA : A.IsHadamard) (e : C ↪ R) :
     Fintype.card C ≤ Bier.signRank (A.submatrix id e) ^ 2 := by sorry
-end Forster
-end Bier
+end Bier.Forster
 
 namespace PalomarBier
 open Bier
@@ -339,3 +348,33 @@ theorem general_allSign_construction_unrestricted (m k : ℕ)
       (I.bier hI).vertices.card = 2 * (m + 2 ^ (m ^ 2 - m + 1)) + 1 ∧
       ¬ Polytopal (I.bier hI) := by sorry
 end PalomarBier
+
+/- Complete literal characterizations of every non-proof record field below.
+These equations determine each supplied constructor completely by proof
+irrelevance; they do not refer to opaque source primitives. -/
+namespace PalomarBier.Spec
+open LeanEval.Geometry.PlatonicClassification
+/-- The face polytope has exactly the original extreme vertices lying in the face. -/
+theorem facePolytope_vertices {n : ℕ} (P : ConvexPolytope n) {f : Set (E n)}
+    (hf : P.IsFace f) :
+    (facePolytope P hf).vertices = P.vertices.filter (fun v => v ∈ f) := by rfl
+/-- Every realized face is exactly the standard basis image of an input face. -/
+theorem standardRealization_faces {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (P : PreAbstractSimplicialComplex ι) :
+    (DifferentialGeometry.Topology.Engulfing.standardRealization P).faces =
+      (fun s : Finset ι => s.image (fun i => Pi.single i (1 : ℝ))) '' P.faces := by rfl
+/-- The abstract complex contains exactly the actual nonempty faces. -/
+theorem toAbstract_faces {V : Type*} [Fintype V] [DecidableEq V] (K : Bier.Complex V) :
+    K.toAbstract.faces = {s | s.Nonempty ∧ K.face s} := by rfl
+/-- Alexander duality is complement nonmembership on the full fixed ground set. -/
+theorem dual_face {V : Type*} [Fintype V] [DecidableEq V] (K : Bier.Complex V)
+    (hK : K.Proper) (s : Finset V) : (K.dual hK).face s ↔ ¬K.face sᶜ := by rfl
+/-- All Bier faces are precisely the disjoint deleted-join face pairs. -/
+theorem bier_face {V : Type*} [Fintype V] [DecidableEq V] (K : Bier.Complex V)
+    (hK : K.Proper) (s : Finset (V ⊕ V)) :
+    (K.bier hK).face s ↔
+      K.face s.toLeft ∧ ¬K.face s.toRightᶜ ∧ Disjoint s.toLeft s.toRight := by rfl
+/-- The new label is genuinely absent from every face. -/
+theorem ghost_face {V : Type*} [Fintype V] [DecidableEq V] (K : Bier.Complex V)
+    (s : Finset (Option V)) : K.ghost.face s ↔ none ∉ s ∧ K.face s.eraseNone := by rfl
+end PalomarBier.Spec

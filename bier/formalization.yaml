@@ -1,68 +1,79 @@
 version: v0.4
 project:
   name: The first explicit nonpolytopal Bier spheres
-  description: >-
-    Explicit finite complexes have nonpolytopal Bier spheres: the principal
-    input has dimension 9 and yields a sphere of dimension 145181 with 290365
-    actual vertices. The all-label, self-dual centrally symmetric, and input-
-    dimension-three variants retain the manuscript's exact quantitative data.
-    A universal sign-rank obstruction bounds strict sign matrices encoded by
-    faces when the ghost Bier sphere is polytopal, with bounds m^2-m+1 for
-    fixed positive face cardinality and m^2-m+2 for arbitrary cardinalities.
-    The full binomial-inequality family, Bier's genuine PL-sphere theorem,
-    Forster's inequality, Hadamard restrictions, and all-sign matrix rank are included.
-  authors: [Caius Folkerts]
-  responsible_maintainers: [Caius Folkerts]
+  description: 'Explicit finite complexes have nonpolytopal Bier spheres: the principal
+    input has dimension 9 and yields a sphere of dimension 145181 with 290365 actual
+    vertices. The all-label, self-dual centrally symmetric, and input- dimension-three
+    variants retain the manuscript''s exact quantitative data. A universal sign-rank
+    obstruction bounds strict sign matrices encoded by faces when the ghost Bier sphere
+    is polytopal, with bounds m^2-m+1 for fixed positive face cardinality and m^2-m+2
+    for arbitrary cardinalities. The full binomial-inequality family, Bier''s genuine
+    PL-sphere theorem, Forster''s inequality, Hadamard restrictions, and all-sign
+    matrix rank are included.'
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
   license: Apache-2.0
 classification:
-  arxiv: [math.CO, math.MG]
-  msc2020: [52B05, 52B11]
+  arxiv:
+  - math.CO
+  - math.MG
+  msc2020:
+  - 52B05
+  - 52B11
 sources:
-  - title: The first explicit nonpolytopal Bier spheres
-    authors: [Caius Folkerts]
-    type: paper
-    relationship: formalizes
-    location: paper.pdf
-    note: Theorems 1 and 2, all construction variants, and the final parameter range.
+- title: The first explicit nonpolytopal Bier spheres
+  authors:
+  - Caius Folkerts
+  type: paper
+  relationship: formalizes
+  location: paper.pdf
+  note: Theorems 1 and 2, all construction variants, and the final parameter range.
 related_formalizations:
-  - title: caiusdfolkerts/research bier
-    relationship: repackages
-    id: https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/bier
-    note: >-
-      The complete substantive development is copied here from this exact
-      revision. Palomar packaging adds the independent Challenge statement,
-      Solution import, Comparator configuration, and this metadata.
-  - title: SolarYs431/lean-eval-platonic-classification
-    relationship: adapts
-    id: https://github.com/SolarYs431/lean-eval-platonic-classification
-    note: >-
-      Daniele Cappello's Apache-2.0 polytope infrastructure is adapted in the
-      substantive sources. Original attribution headers and licences are retained.
+- title: caiusdfolkerts/research bier
+  relationship: repackages
+  id: https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/bier
+  note: The complete substantive development is copied here from this exact revision.
+    Palomar packaging adds the independent Challenge statement, Solution import, Comparator
+    configuration, and this metadata.
+- title: SolarYs431/lean-eval-platonic-classification
+  relationship: adapts
+  id: https://github.com/SolarYs431/lean-eval-platonic-classification
+  note: Daniele Cappello's Apache-2.0 polytope infrastructure is adapted in the substantive
+    sources. Original attribution headers and licences are retained.
 automation:
   methods:
-    - method: agent
-      tool_setup: >-
-        The manuscript discloses GPT-6 Astra, GPT-5.6 Sol, and Kimi K3
-        assistance in developing its proofs. Historical roles beyond that
-        disclosure have not been independently reconstructed.
-    - method: agent
-      tool_setup: >-
-        OpenAI Codex GPT-6.1 Sol prepared the Palomar statement and metadata,
-        comparing the supplied manuscript, README table, and Lean declarations.
+  - method: agent
+    tool_setup: The manuscript discloses GPT-6 Astra, GPT-5.6 Sol, and Kimi K3 assistance
+      in developing its proofs. Historical roles beyond that disclosure have not been
+      independently reconstructed.
+  - method: agent
+    tool_setup: OpenAI Codex GPT-6.1 Sol prepared the Palomar statement and metadata,
+      comparing the supplied manuscript, README table, and Lean declarations.
 review:
   status: unchecked
-  notes: >-
-    Packaging has undergone source-level statement comparison only. No fresh
-    Lean build, Comparator run, NanoDa check, or independent mathematical
-    peer review is claimed in this metadata. Consult reports and CI for actual
-    later validation. No weakening of the original selected statements is intended.
+  notes: The current19-target Challenge passed the independent pinned4.35 remote smoke
+    run44352784302 at SHA2565e052b83db84712f3568bfdc6956151ef6cb6b4e630708d44a7892e2b411eb3d.
+    The unchanged substantive source and prior11-target Solution passed remote builds
+    in run44347419677 before a Comparator type failure. The current19-target Solution
+    adds six literal rfl specification proofs and is not yet compiled. Actual Comparator
+    and independent kernel validation, and independent mathematical peer review, remain
+    separate and are not claimed.
 limitations:
-  - Custom definitions retain exact source data semantics and original names; only proof-valued fields are Challenge holes. Fresh Comparator validation is required.
-  - The registry entry records all principal example variants, both universal obstruction regimes, and the final construction family; the Schur-realization and padded-inverse-span lemmas remain proved dependencies rather than separate registry conclusions.
+- Six supplied record constructors are uniquely fixed by complete independently literal
+  projection equations. Their remaining fields are proof certificates. Actual raw
+  Comparator and independent kernel checks remain required for the current19-target
+  entry.
+- The registry entry records all principal example variants, both universal obstruction
+  regimes, and the final construction family; the Schur-realization and padded-inverse-span
+  lemmas remain proved dependencies rather than separate registry conclusions.
 fidelity:
-  divergences: >-
-    The explicit-example endpoints are existential wrappers with exactly the
-    original finite ground-set types and every quantitative and qualitative
-    property retained. Their Solution proofs instantiate the actual named
-    manuscript constructions. This avoids inlining the large construction
-    constants in the human-auditable Challenge while preserving the results.
+  divergences: 'Six proof-bearing record constructors are supplied definitions with
+    complete independently literal equations fixing every non-Prop record field: filtered
+    extreme vertices, standard basis face images, exact nonempty input faces, complement
+    duality, deleted-join Bier faces and the absent ghost label. Proof certificates
+    do not carry data. Finite-face and ghost-proper supporting theorems are compared
+    explicitly. The exact source binder contexts have been restored. The current19-target
+    Challenge passed pinned4.35 remote elaboration; the updated Solution, actual Comparator
+    and independent kernel validation remain pending.'
