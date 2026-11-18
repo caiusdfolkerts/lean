@@ -714,35 +714,8 @@ theorem paper_corollary_5_2 (p q : ℕ) :
 end
 end PaperVerification.AlternatingForms.TopRepresentation
 
-namespace PaperVerification.QuadraticCommutatorQuotient
-section
-open scoped Classical
-open TwoStepCentralLie
-variable {K ν Z : Type*} [Field K] [Fintype ν] [DecidableEq ν]
-  [AddCommGroup Z] [Module K Z]
-variable (D : Data (K := K) (V := V (K := K) (ν := ν)) (Z := Z))
-/-- Literal PaperVerification.QuadraticCommutatorQuotient.Algebra; precise source and scope recorded in the extraction map. -/
-abbrev Algebra := RingQuot (Relation D)
-end
-end PaperVerification.QuadraticCommutatorQuotient
 
-namespace OAI.AlgebraicGeometry.Foundations.Scheme.AffineComplexPoints
-section
-open _root_.CategoryTheory Opposite _root_.AlgebraicGeometry
-universe u
-/-- Literal OAI.AlgebraicGeometry.Foundations.Scheme.AffineComplexPoints.affineComplexPoints; precise source and scope recorded in the extraction map. -/
-abbrev affineComplexPoints (A : Type u) [CommRing A] [Algebra ℂ A] := A →ₐ[ℂ] ℂ
-end
-end OAI.AlgebraicGeometry.Foundations.Scheme.AffineComplexPoints
 
-namespace OAI.AlgebraicGeometry
-section
-universe u v
-variable {A : Type u} [CommRing A] [Algebra ℂ A]
-/-- Literal OAI.AlgebraicGeometry.Foundations.Scheme.AffineComplexPoints.affineComplexPoints.eval; precise source and scope recorded in the extraction map. -/
-def Foundations.Scheme.AffineComplexPoints.affineComplexPoints.eval (a : A) (x : Foundations.Scheme.AffineComplexPoints.affineComplexPoints A) : ℂ := x a
-end
-end OAI.AlgebraicGeometry
 
 namespace PaperVerification.MainStatements
 section

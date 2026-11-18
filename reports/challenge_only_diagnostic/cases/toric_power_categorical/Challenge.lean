@@ -57,9 +57,9 @@ def restrictedFan (Φ : Fan i) (W : Submodule ℝ V) (hW : IsRationalSubspace (i
   lattice := trace_integral Φ W hW
   cones := restrictedCones Φ W
   finite_cones := restriction_finite Φ W
-  isToricCone := restriction_toric Φ W
-  mem_of_isFaceOf := restriction_faces Φ W
-  inf_isFaceOf_left := restriction_intersection Φ W
+  isToricCone := fun {σ} hσ => restriction_toric Φ W (σ := σ) hσ
+  mem_of_isFaceOf := fun {σ τ} hσ hτ => restriction_faces Φ W (σ := σ) (τ := τ) hσ hτ
+  inf_isFaceOf_left := fun {σ τ} hσ hτ => restriction_intersection Φ W (σ := σ) (τ := τ) hσ hτ
 /-- Linearity means intersection with every original cone remains an original cone. -/
 def IsLinearSubspace (Φ : Fan i) (W : Submodule ℝ V) : Prop :=
   ∀ σ ∈ Φ.cones, σ ⊓ (W : PointedCone ℝ V) ∈ Φ.cones
@@ -77,7 +77,7 @@ def restrictedInclusion (Φ : Fan i) (W : Submodule ℝ V) (hW : IsRationalSubsp
   latticeMap := (latticeTrace (i := i) W).subtype.toAddMonoidHom
   realMap := W.subtype
   map_lattice _ := rfl
-  map_cone := restricted_map_cone Φ W
+  map_cone := fun {σ} hσ => restricted_map_cone Φ W (σ := σ) hσ
 /-- The actual scheme morphism induced by inclusion of a rational linear subspace. -/
 def linearInclusion (Φ : Fan i) (W : LinearSubspace Φ) :=
   (restrictedInclusion Φ W.space W.rational).algebraicMap
@@ -92,7 +92,7 @@ def powerFanHom (Φ : Fan i) (ell : ℕ) : FanHom Φ Φ where
   latticeMap := ell • AddMonoidHom.id N
   realMap := (ell : ℝ) • LinearMap.id
   map_lattice := power_lattice ell
-  map_cone := power_cone Φ ell
+  map_cone := fun {σ} hσ => power_cone Φ ell (σ := σ) hσ
 /-- The ordinary actual toric scheme power map, obtained by affine gluing. -/
 def powerMap (Φ : Fan i) (ell : ℕ) := (powerFanHom Φ ell).algebraicMap
 /-- Every actual finite toric fan gives a Noetherian scheme. -/

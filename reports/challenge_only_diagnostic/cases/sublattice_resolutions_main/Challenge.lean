@@ -178,7 +178,7 @@ def boundaries (I : Ideal (MvPolynomial V K)) (q : ℤ) (p : ℕ) :
 
 /-- The actual homogeneous polynomial Koszul homology quotient. -/
 abbrev Homology (I : Ideal (MvPolynomial V K)) (q : ℤ) (p : ℕ) :=
-  _root_.Quotient (Submodule.quotientRel (boundaries I q p))
+  _root_.Quotient (Submodule.quotientRel (R := K) (M := cycles I q p) (boundaries I q p))
 
 /-- The dimension of the actual homogeneous Koszul homology vector space. -/
 def betti (I : Ideal (MvPolynomial V K)) (p : ℕ) (q : ℤ) : ℕ :=
@@ -269,10 +269,10 @@ def Cycles (hE : finiteLatticeClosed n E) : Subalgebra k (TensorAlgebra (E := E)
   (LinearMap.ker differential).toSubalgebra (d_one hE) (cycles_mul hE)
 /-- The canonical noncommutative cycle ring, explicitly selected. -/
 instance (priority := 2000) cyclesRing (hE : finiteLatticeClosed n E) : Ring (Cycles (k := k) hE) :=
-  Subalgebra.toRing (Cycles hE)
+  Subalgebra.toRing (Cycles (k := k) hE)
 /-- The canonical scalar action on actual cycles, explicitly selected. -/
 instance (priority := 2000) cyclesAlgebra (hE : finiteLatticeClosed n E) : Algebra k (Cycles (k := k) hE) :=
-  Subalgebra.algebra (Cycles hE)
+  Subalgebra.algebra (Cycles (k := k) hE)
 /-- Zero is an actual Koszul boundary. -/
 theorem boundary_zero (hE : finiteLatticeClosed n E) :
     (0 : Cycles (k := k) hE).val ∈ LinearMap.range differential := by exact ⟨0, map_zero _⟩
@@ -304,14 +304,15 @@ def Boundaries (hE : finiteLatticeClosed n E) : TwoSidedIdeal (Cycles (k := k) h
     (boundary_left hE) (boundary_right hE)
 /-- The actual homology algebra, cycles modulo actual boundaries. -/
 abbrev Homology (hE : finiteLatticeClosed n E) :=
-  _root_.Quotient (Submodule.quotientRel (Boundaries (k := k) hE).asIdeal)
+  _root_.Quotient (Submodule.quotientRel (R := Cycles (k := k) hE) (M := Cycles (k := k) hE)
+    (Boundaries (k := k) hE).asIdeal)
 instance (priority := 2000) homologyRing (hE : finiteLatticeClosed n E) : Ring (Homology (k := k) hE) :=
-  Ideal.Quotient.ring (Boundaries hE).asIdeal
+  Ideal.Quotient.ring (Boundaries (k := k) hE).asIdeal
 instance (priority := 2000) homologyAlgebra (hE : finiteLatticeClosed n E) : Algebra k (Homology (k := k) hE) :=
-  Ideal.Quotient.algebra k (A := Cycles hE) (I := (Boundaries hE).asIdeal)
+  Ideal.Quotient.algebra k (A := Cycles (k := k) hE) (I := (Boundaries (k := k) hE).asIdeal)
 /-- The actual projection from cycles to their homology classes. -/
-def classMap (hE : finiteLatticeClosed n E) : Cycles (k := k) hE →ₐ[k] Homology hE :=
-  Ideal.Quotient.mkₐ k (Boundaries hE).asIdeal
+def classMap (hE : finiteLatticeClosed n E) : Cycles (k := k) hE →ₐ[k] Homology (k := k) hE :=
+  Ideal.Quotient.mkₐ k (Boundaries (k := k) hE).asIdeal
 /-- All exponent vectors actually occurring in the image monomial algebra. -/
 def ExponentMonoid := AddMonoidHom.mrange (finiteReesExponentMap.{u} E)
 /-- Every genuine image-monoid monomial belongs to the presentation image. -/
@@ -330,7 +331,7 @@ def DegreeOnePiece : Submodule k (TensorAlgebra (E := E) (k := k)) :=
     ∃ F : Finset (FiniteVariable.{u} n), z = coefficientMonomial a ⊗ₜ[k] wedgeBasis F}
 /-- Actual homology classes admitting an actual Rees-degree-one cycle representative. -/
 def FirstClasses (hE : finiteLatticeClosed n E) : Set (Homology (k := k) hE) :=
-  {z | ∃ x : Cycles hE, x.val ∈ DegreeOnePiece ∧ classMap hE x = z}
+  {z | ∃ x : Cycles (k := k) hE, x.val ∈ DegreeOnePiece ∧ classMap (k := k) hE x = z}
 /-- The homology-algebra assertion of Theorem1.2, in the ordinary Koszul
 algebra over its literal Rees image. -/
 theorem generated_in_degree_one (hE : finiteLatticeClosed n E) :

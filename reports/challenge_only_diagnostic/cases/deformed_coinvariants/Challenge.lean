@@ -432,28 +432,6 @@ open MvPolynomial Module Representation
 open scoped BigOperators Classical
 open PaperVerification PaperVerification.PowerOperators
 variable {K : Type*} [Field K] {n : ℕ}
-/-- The Hilbert series of the actual homogeneous subspaces of the reversed joint-image quotient. -/ def tailHilbertSeries (c : Fin n → K) (lam : K) (m : ℕ) : PowerSeries ℤ :=
-  PowerSeries.mk fun d => (Module.finrank K (tailQuotientDegree c lam m d) : ℤ)
-/-- The Hilbert series of the actual homogeneous subspaces of the original joint-image quotient. -/ def originalHilbertSeries (c : Fin n → K) (lam : K) (m : ℕ) : PowerSeries ℤ :=
-  PowerSeries.mk fun d => (Module.finrank K (originalTailQuotientDegree c lam m d) : ℤ)
-/-- The finite polynomial 1+q+...+q^(j-1). -/ def qIntegerPolynomial (j : ℕ) : Polynomial ℤ :=
-  ∑ i ∈ Finset.range j, Polynomial.X ^ i
-/-- Every clause of Theorem 2.2, with both genuine quotient Hilbert series and every coefficient-fixing subgroup. -/ theorem weighted_tail_theorem (c : Fin n → K) (lam : K) (m : ℕ) (hm : 0 < m) (hnr : Nonresonant c lam m) : (∃ B : Basis
-  (ArtinIndex n m) K (MvPolynomial (Fin n) K ⧸ tailHit c lam m), ∀ a, B a = (tailHit c lam m).mkQ (monomial a.val 1)) ∧
-  (tailHilbertSeries c lam m = ((∏ j ∈ Finset.Ico m (m+n), qIntegerPolynomial j : Polynomial ℤ) : PowerSeries ℤ)) ∧ (∀ (G :
-  Subgroup (Equiv.Perm (Fin n))) (hfix : ∀ g : G, ∀ i, c ((g : Equiv.Perm (Fin n)) i) = c i), GradedRepresentationEquivalent
-  (tailQuotientAction G c lam m hfix) (completeHomogeneousAction G m) (tailQuotientDegree c lam m) (ordinaryQuotientDegree
-  (completeHomogeneousFamily K n m))) ∧ (∀ a : K, (∀ i, c i = a) → ∀ G : Subgroup (Equiv.Perm (Fin n)),
-  GradedRepresentationEquivalent (tailQuotientAction G (fun _ : Fin n => a) lam m (fun _ _ => rfl)) (powerSumAction G m)
-  (tailQuotientDegree (fun _ : Fin n => a) lam m) (ordinaryQuotientDegree (powerSumFamily K n m))) ∧ (∀ hlow : ∀ i, ∀ a : ℕ, a < m
-  → c i + lam * (a : K) ≠ 0, (∃ B : Basis (ArtinIndex n m) K (MvPolynomial (Fin n) K ⧸ originalTailHit c lam m), ∀ a, B a =
-  (originalTailHit c lam m).mkQ (monomial a.val 1)) ∧ (originalHilbertSeries c lam m = ((∏ j ∈ Finset.Ico m (m+n),
-  qIntegerPolynomial j : Polynomial ℤ) : PowerSeries ℤ)) ∧ (∀ (G : Subgroup (Equiv.Perm (Fin n))) (hfix : ∀ g : G, ∀ i, c ((g :
-  Equiv.Perm (Fin n)) i) = c i), GradedRepresentationEquivalent (originalTailQuotientAction G c lam m hfix)
-  (completeHomogeneousAction G m) (originalTailQuotientDegree c lam m) (ordinaryQuotientDegree (completeHomogeneousFamily K n m)))
-  ∧ (∀ a : K, (∀ i, c i = a) → ∀ G : Subgroup (Equiv.Perm (Fin n)), GradedRepresentationEquivalent (originalTailQuotientAction G
-  (fun _ : Fin n => a) lam m (fun _ _ => rfl)) (powerSumAction G m) (originalTailQuotientDegree (fun _ : Fin n => a) lam m)
-  (ordinaryQuotientDegree (powerSumFamily K n m)))) := by sorry
 /-- Literal PalomarDeformed.originalHilbertSeries; precise source and scope recorded in the extraction map. -/ def originalHilbertSeries (c : Fin n → K) (lam : K) (m : ℕ) : PowerSeries ℤ :=
   PowerSeries.mk fun d => (Module.finrank K (originalTailQuotientDegree c lam m d) : ℤ)
 /-- Literal PalomarDeformed.qIntegerPolynomial; precise source and scope recorded in the extraction map. -/ def qIntegerPolynomial (j : ℕ) : Polynomial ℤ :=
@@ -691,11 +669,11 @@ open scoped DirectSum
 universe u v w
 variable (R : Type u) (M : Type v) [Semiring R] [AddCommMonoid M] [Module R M]
 variable {R M} {ι : Type} [DecidableEq ι]
-/-- Literal TauCeti.InternalGrading.ofDecomposition; precise source and scope recorded in the extraction map. -/ noncomputable def ofDecomposition (ℳ : ι → Submodule R M) [DirectSum.Decomposition ℳ] : InternalGrading R M ι :=
-  ⟨ℳ, DirectSum.Decomposition.isInternal ℳ⟩
 /-- Literal TauCeti.InternalGrading.canonicalDecomposition; precise source and scope recorded in the extraction map. -/
 noncomputable instance canonicalDecomposition (G : InternalGrading R M ι) : DirectSum.Decomposition G.piece :=
   G.isInternal.chooseDecomposition
+/-- Literal TauCeti.InternalGrading.ofDecomposition; precise source and scope recorded in the extraction map. -/ noncomputable def ofDecomposition (ℳ : ι → Submodule R M) [DirectSum.Decomposition ℳ] : InternalGrading R M ι :=
+  ⟨ℳ, DirectSum.Decomposition.isInternal ℳ⟩
 end TauCeti.InternalGrading
 namespace PaperVerification.GradedTowers
 open scoped DirectSum
@@ -725,7 +703,7 @@ local notation "P" => MvPolynomial ι K
   DirectSum.SetLike.IsHomogeneous (grading (K := K) w).piece U := by sorry
 end PaperVerification.NegativeWeightedGrading
 namespace TauCeti.InternalGrading
-open DirectSum
+open _root_.DirectSum
 variable {R M : Type*} {ι : Type} [DecidableEq ι]
 variable {S : Type*} [Semiring R] [Semiring S] [SMul R S] [AddCommMonoid M] [Module R M] [Module S M] [IsScalarTower R S M] (G : InternalGrading R M ι) (U : Submodule S M) (hU : SetLike.IsHomogeneous G.piece U)
 include hU
@@ -736,13 +714,13 @@ include hU
     (fun _ _ ↦ Iff.rfl) fun p x ↦ ⟨⟨_, hU p x.2⟩, rfl⟩
 end TauCeti.InternalGrading
 namespace TauCeti.InternalGrading
-open DirectSum
+open _root_.DirectSum
 variable {R M : Type*} {ι : Type} [DecidableEq ι]
 variable {S : Type*} [Semiring R] [Semiring S] [SMul R S] [AddCommMonoid M] [Module R M] [Module S M] [IsScalarTower R S M] (G : InternalGrading R M ι) (U : Submodule S M) (hU : SetLike.IsHomogeneous G.piece U)
 /-- Literal TauCeti.InternalGrading.submodule_piece; precise source and scope recorded in the extraction map. -/ theorem submodule_piece (p : ι) : (G.submodule U hU).piece p = (G.piece p).comap (U.subtype.restrictScalars R) := by sorry
 end TauCeti.InternalGrading
 namespace TauCeti.InternalGrading
-open DirectSum
+open _root_.DirectSum
 variable {R M : Type*} {ι : Type} [DecidableEq ι]
 variable {S : Type*} [Ring R] [Ring S] [SMul R S] [AddCommGroup M] [Module R M] [Module S M] [IsScalarTower R S M] (G : InternalGrading R M ι) (U : Submodule S M) (hU : SetLike.IsHomogeneous G.piece U)
 include hU
@@ -953,28 +931,6 @@ open MvPolynomial Module Representation
 open scoped BigOperators Classical
 open PaperVerification PaperVerification.PowerOperators
 variable {K : Type*} [Field K] {n : ℕ}
-/-- The Hilbert series of the actual homogeneous subspaces of the reversed joint-image quotient. -/ def tailHilbertSeries (c : Fin n → K) (lam : K) (m : ℕ) : PowerSeries ℤ :=
-  PowerSeries.mk fun d => (Module.finrank K (tailQuotientDegree c lam m d) : ℤ)
-/-- The Hilbert series of the actual homogeneous subspaces of the original joint-image quotient. -/ def originalHilbertSeries (c : Fin n → K) (lam : K) (m : ℕ) : PowerSeries ℤ :=
-  PowerSeries.mk fun d => (Module.finrank K (originalTailQuotientDegree c lam m d) : ℤ)
-/-- The finite polynomial 1+q+...+q^(j-1). -/ def qIntegerPolynomial (j : ℕ) : Polynomial ℤ :=
-  ∑ i ∈ Finset.range j, Polynomial.X ^ i
-/-- Every clause of Theorem 2.2, with both genuine quotient Hilbert series and every coefficient-fixing subgroup. -/ theorem weighted_tail_theorem (c : Fin n → K) (lam : K) (m : ℕ) (hm : 0 < m) (hnr : Nonresonant c lam m) : (∃ B : Basis
-  (ArtinIndex n m) K (MvPolynomial (Fin n) K ⧸ tailHit c lam m), ∀ a, B a = (tailHit c lam m).mkQ (monomial a.val 1)) ∧
-  (tailHilbertSeries c lam m = ((∏ j ∈ Finset.Ico m (m+n), qIntegerPolynomial j : Polynomial ℤ) : PowerSeries ℤ)) ∧ (∀ (G :
-  Subgroup (Equiv.Perm (Fin n))) (hfix : ∀ g : G, ∀ i, c ((g : Equiv.Perm (Fin n)) i) = c i), GradedRepresentationEquivalent
-  (tailQuotientAction G c lam m hfix) (completeHomogeneousAction G m) (tailQuotientDegree c lam m) (ordinaryQuotientDegree
-  (completeHomogeneousFamily K n m))) ∧ (∀ a : K, (∀ i, c i = a) → ∀ G : Subgroup (Equiv.Perm (Fin n)),
-  GradedRepresentationEquivalent (tailQuotientAction G (fun _ : Fin n => a) lam m (fun _ _ => rfl)) (powerSumAction G m)
-  (tailQuotientDegree (fun _ : Fin n => a) lam m) (ordinaryQuotientDegree (powerSumFamily K n m))) ∧ (∀ hlow : ∀ i, ∀ a : ℕ, a < m
-  → c i + lam * (a : K) ≠ 0, (∃ B : Basis (ArtinIndex n m) K (MvPolynomial (Fin n) K ⧸ originalTailHit c lam m), ∀ a, B a =
-  (originalTailHit c lam m).mkQ (monomial a.val 1)) ∧ (originalHilbertSeries c lam m = ((∏ j ∈ Finset.Ico m (m+n),
-  qIntegerPolynomial j : Polynomial ℤ) : PowerSeries ℤ)) ∧ (∀ (G : Subgroup (Equiv.Perm (Fin n))) (hfix : ∀ g : G, ∀ i, c ((g :
-  Equiv.Perm (Fin n)) i) = c i), GradedRepresentationEquivalent (originalTailQuotientAction G c lam m hfix)
-  (completeHomogeneousAction G m) (originalTailQuotientDegree c lam m) (ordinaryQuotientDegree (completeHomogeneousFamily K n m)))
-  ∧ (∀ a : K, (∀ i, c i = a) → ∀ G : Subgroup (Equiv.Perm (Fin n)), GradedRepresentationEquivalent (originalTailQuotientAction G
-  (fun _ : Fin n => a) lam m (fun _ _ => rfl)) (powerSumAction G m) (originalTailQuotientDegree (fun _ : Fin n => a) lam m)
-  (ordinaryQuotientDegree (powerSumFamily K n m)))) := by sorry
 /-- Literal PalomarDeformed.tailHilbertSeries; precise source and scope recorded in the extraction map. -/ def tailHilbertSeries (c : Fin n → K) (lam : K) (m : ℕ) : PowerSeries ℤ :=
   PowerSeries.mk fun d => (Module.finrank K (tailQuotientDegree c lam m d) : ℤ)
 /-- Literal PalomarDeformed.weighted_tail_theorem; precise source and scope recorded in the extraction map. -/ theorem weighted_tail_theorem (c : Fin n → K) (lam : K) (m : ℕ) (hm : 0 < m) (hnr : Nonresonant c lam m) : (∃ B : Basis

@@ -1,17 +1,16 @@
-# Current Challenge diagnostic revision06
+# Current Challenge diagnostic revision07
 
-Selected inputs are corrected Clique292, corrected Singular891, and the new
-standalone Polymatroidal supplement353. The supplement has thirteen targets and
-zero overlap with the immutable passed forty-eight-target main entry. No live
-core project is edited. No unchanged passing Challenge is rerun. Earlier
-snapshots and bounded receipts remain immutable.
+Selected inputs are the owner-frozen corrected Deformed952, Alternating741,
+Toric categorical176, and Sublattice main/Rees339 Challenges. Their previous
+failed snapshots and receipts remain immutable. No unchanged passing case or
+unfrozen repair is rerun.
 
 This checks independent Challenge elaboration with intentional theorem
 placeholders. It is not a Solution build, Comparator, mathematical verification,
-full preflight or registry intake. Clique and supplement preserve Lean4.35.0 /
-Mathlib56a005855ea17e0b0958f73ec801ae140b0a1679; Singular preserves
-Lean4.36.0-rc2 / Mathlib1626233321dc564d20355d8f9d4f22e114d68600.
-Exact complete source manifests and toolchain bytes are retained without overrides.
+full preflight or registry intake. Source toolchains and entire manifests stay
+unchanged. Deformed/Alternating use4.36.0-rc1/Mathlib2cab; Sublattice uses
+4.35.0/Mathlib56a. Toric uses4.35.0 and exact upstream TauCeti1f9/Mathlib074
+closure, with only the original direct TauCeti requirement and no override.
 
 Current resource policy:8GiB per standard16GiB runner, one compiler per job,
 max-parallel2,40-minute compile bound. Both workflow copies and runner defaults
