@@ -1,0 +1,44 @@
+version: v0.4
+project:
+  name: Six-connected K4-covered graphs are rigid in three dimensions
+  description: >-
+    Every finite six-connected graph whose edges lie in copies of K4 is
+    generically infinitesimally rigid in R3. The same conclusion holds for
+    arbitrary rigid-subgraph edge covers of order at least four and for
+    six-connected spanning completions of ambient rigid clusters. A flexible
+    five-connected example proves sharpness. The pair-pin theorem identifies
+    the actual generic relative motion dimension with the maximum partition
+    defect, and gives singleton optimality and independence of the literal
+    constraint rows under the stated no-merged-bodies and simplicity hypotheses.
+  authors: [Caius Folkerts]
+  responsible_maintainers: [Caius Folkerts]
+  license: Apache-2.0
+sources:
+  - type: article
+    title: Six-connected K4-covered graphs are rigid in three dimensions
+    authors: [Caius Folkerts]
+    identifier: paper.pdf
+    relationship: formalizes
+    note: Theorem 1.1, Corollary 1.2, Theorem 5.1, and the sharpness assertion.
+classification:
+  arxiv: [math.CO]
+  msc2020: [05C10, 52C25]
+automation:
+  methods:
+    - method: agent
+      tool_setup: OpenAI Codex with GPT-6.1 Sol, preparing Palomar packaging.
+      notes: >-
+        The supplied paper discloses GPT-6 Astra, GPT-5.6 Sol, and Kimi K3
+        assistance in developing the proofs. The full prior prompt history was
+        not reconstructed. This packaging copies the substantive source and
+        adds an independent Challenge, Comparator configuration, and metadata.
+review:
+  status: unchecked
+  notes: Package compilation and Comparator verification remain pending.
+fidelity:
+  notes: >-
+    The Challenge copies the actual real rigidity, Euclidean twist, compatibility,
+    quotient, and partition-defect semantics; no surrogate rank definition or
+    restricted graph class is substituted. Source provenance and retained
+    third-party notices are in NOTICE and licenses/. The source snapshot is
+    caiusdfolkerts/research at e0696fddcd3d10b5d6461e62e9b2f02c4195be37.
