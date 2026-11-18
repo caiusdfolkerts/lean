@@ -1,0 +1,11 @@
+# Realization fields of four-polytopes and simple-vertex deletion
+
+Caius Folkerts constructs a seventeen-vertex four-polytope whose face lattice is realizable over a real subfield precisely when it contains the square root of five. Its seven distinguished vertices and a point recovered from its faces force the golden-ratio equation. No rational realization of the same face lattice exists. In every dimension, deleting a simple vertex from a full-dimensional polytope with more than a simplex's worth of vertices gives a combinatorially determined polytope of the same dimension. The deletion preserves all real realization fields and preserves density of rational labelled realizations in both directions. These are Theorems 1 and 3 of the accompanying corrected paper.
+
+The files `Challenge.lean` and `Solution.lean` state these results. For the deletion theorem, a vertex in one realization corresponds to a vertex in another if the two belong to precisely the corresponding faces. The Solution identifies this relation with the unique vertex induced by the face-order isomorphism and proves that its density condition is equivalent to the paper development's labelled rational density. The three declarations selected by `comparator.json` are `SmallNonrational.theoremOne`, `SmallNonrational.seventeenVertexNonrational` and `SmallNonrational.theoremThree`.
+
+The project contains all 204 imported project modules for the construction and deletion proofs as ordinary Lean files at their canonical module paths. The per-file SHA-256 hashes and original paths appear in `source-provenance.json`. They reproduce the corresponding files in the author's pinned development byte for byte. The foundations for convex polytopes include work by Daniele Cappello. The code is licensed under Apache-2.0. The accompanying paper is copyright Caius Folkerts, all rights reserved. [Original Lean development](https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/small_nonrational)
+
+The rationality theorem through ten vertices, its eleven-vertex corollary and the resulting lower bound on the minimum require a separate finite coverage proof. Those results are outside this entry's scope.
+
+With the pinned Lean toolchain and Mathlib available, run `lake build Challenge Solution`.

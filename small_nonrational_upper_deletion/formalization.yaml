@@ -1,0 +1,51 @@
+version: v0.4
+project:
+  name: Realization fields of four-polytopes and simple-vertex deletion
+  description: >-
+    A seventeen-vertex four-polytope has a face lattice realizable over a
+    subfield of the reals exactly when that subfield contains the square root
+    of five. In particular, this polytope has no rational realization. In
+    every dimension, deleting a simple vertex from a full-dimensional
+    nonsimplex yields a polytope of the same dimension whose face lattice is
+    determined by the original marked face lattice. Deletion preserves all
+    real realization fields and the density of rational labelled realizations.
+  authors: [Caius Folkerts]
+  responsible_maintainers: [Caius Folkerts]
+  license: Apache-2.0
+sources:
+  - title: Small nonrational four-polytopes
+    authors: [Caius Folkerts]
+    id: "Caius Folkerts, Small nonrational four-polytopes (2026), corrected manuscript included as paper.pdf"
+    type: paper
+    location: Theorems 1 and 3, and the seventeen-vertex nonrationality consequence of Theorem 1
+    relationship: formalizes
+    author_endorsement: participated
+related_formalizations:
+  - title: Small nonrational four-polytopes
+    id: https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/small_nonrational
+    relationship: builds-on
+    note: The underlying geometric proof modules are reproduced at their canonical module paths in this project.
+classification:
+  arxiv: [math.CO, math.MG]
+  msc2020: [52B11, 52B05]
+status:
+  scope: >-
+    Theorem 1, its seventeen-vertex nonrationality consequence and Theorem 3.
+    The ten-vertex rationality theorem, the eleven-vertex corollary and the lower bound on the minimum are outside this entry.
+automation:
+  methods:
+    - method: agent
+      models: [GPT-6 Astra, GPT-5.6 Sol, Kimi K3]
+      tool_setup: The source paper credits these systems with assistance in developing the mathematical proofs.
+    - method: agent
+      framework: OpenAI Codex
+      tool_setup: Selected the original proof modules, checked their source hashes and prepared the comparison files and metadata.
+fidelity:
+  divergences: >-
+    All four assertions of the simple-vertex deletion theorem are stated
+    for geometric convex polytopes. Correspondence of vertices is expressed
+    through incidence with all faces. The Solution proves equivalence to the
+    vertex map induced by a face-order isomorphism.
+review:
+  status: unchecked
+  notes: No independent human review of this comparison is asserted.

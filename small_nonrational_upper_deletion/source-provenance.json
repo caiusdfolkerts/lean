@@ -1,0 +1,1235 @@
+{
+  "source_repository": "https://github.com/caiusdfolkerts/research",
+  "source_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
+  "source_project": "small_nonrational",
+  "roots": [
+    "Consolidated.Seventeen",
+    "Consolidated.DeletionPresentationAndDensity"
+  ],
+  "files": [
+    {
+      "module": "Consolidated.DeletionFaceGeometry",
+      "source": "source/consolidated/deletion_face_geometry.lean",
+      "path": "Consolidated/DeletionFaceGeometry.lean",
+      "sha256": "9076f2a32d90098d7f1d43ec109fca00477ffb70b21e8021b8d51389243a7606"
+    },
+    {
+      "module": "Consolidated.DeletionPresentationAndDensity",
+      "source": "source/consolidated/deletion_presentation_and_density.lean",
+      "path": "Consolidated/DeletionPresentationAndDensity.lean",
+      "sha256": "f9aada67ad0a32a86d9006c968969cf05e4047abf6bba98770ec74760f3e82b9"
+    },
+    {
+      "module": "Consolidated.EulerIncidences",
+      "source": "source/consolidated/euler_incidences.lean",
+      "path": "Consolidated/EulerIncidences.lean",
+      "sha256": "8f0975b3598ff05cc34b5c8579043d0df348b264a9ac267dd60b03ce71d0dec4"
+    },
+    {
+      "module": "Consolidated.FacetRelationReconstruction",
+      "source": "source/consolidated/facet_relation_reconstruction.lean",
+      "path": "Consolidated/FacetRelationReconstruction.lean",
+      "sha256": "9ed8d2f2ff58d4e7f45c08f481d01fe139ed1ec8c03cd6a480d4026874bd76be"
+    },
+    {
+      "module": "Consolidated.RationalFacetCoordinates",
+      "source": "source/consolidated/rational_facet_coordinates.lean",
+      "path": "Consolidated/RationalFacetCoordinates.lean",
+      "sha256": "68c7df652e702f56f994058b3690152777a6183bd2725c7bf1d641ded4947937"
+    },
+    {
+      "module": "Consolidated.Seventeen",
+      "source": "source/consolidated/seventeen.lean",
+      "path": "Consolidated/Seventeen.lean",
+      "sha256": "37ff3d168cb96c622daedeaedb7e19cefb737aa90fb31ccdb06a81c535936258"
+    },
+    {
+      "module": "Consolidated.VertexRestorationGeometry",
+      "source": "source/consolidated/vertex_restoration_geometry.lean",
+      "path": "Consolidated/VertexRestorationGeometry.lean",
+      "sha256": "ca9e0da64fe2db954c656666076513dc957116c9b98683237b17ed79f9625a3d"
+    },
+    {
+      "module": "Cubical.Polytope.AdiacenzaUnica",
+      "source": "source/cubical/polytope/adiacenza_unica.lean",
+      "path": "Cubical/Polytope/AdiacenzaUnica.lean",
+      "sha256": "58fe98048cc1d8510106196d88c588c504500e28c53353483a05a67677ce1700"
+    },
+    {
+      "module": "Cubical.Polytope.BalinskiGenerale",
+      "source": "source/cubical/polytope/balinski_generale.lean",
+      "path": "Cubical/Polytope/BalinskiGenerale.lean",
+      "sha256": "eec201e30b41539390d21a06f037016133ec18a5f2247acfb1c29320a6d0d277"
+    },
+    {
+      "module": "Cubical.Polytope.BandieraCompagna",
+      "source": "source/cubical/polytope/bandiera_compagna.lean",
+      "path": "Cubical/Polytope/BandieraCompagna.lean",
+      "sha256": "c0d17b85c01d5bca476466ae15365f9eec96833fefca4a2a74ee09da6fe0bb97"
+    },
+    {
+      "module": "Cubical.Polytope.BandieraVertice",
+      "source": "source/cubical/polytope/bandiera_vertice.lean",
+      "path": "Cubical/Polytope/BandieraVertice.lean",
+      "sha256": "8238067f34b3e851c871475de8760c6e204d181b58305d95e18c3f7be8d66adc"
+    },
+    {
+      "module": "Cubical.Polytope.Camminata",
+      "source": "source/cubical/polytope/camminata.lean",
+      "path": "Cubical/Polytope/Camminata.lean",
+      "sha256": "d8e246159e101b37dcd54821c83531bdaf763bba3f585d6a37aa2ed0f22c6b4a"
+    },
+    {
+      "module": "Cubical.Polytope.ConnessioneVentaglio",
+      "source": "source/cubical/polytope/connessione_ventaglio.lean",
+      "path": "Cubical/Polytope/ConnessioneVentaglio.lean",
+      "sha256": "43ce02398dbd4ab1d57bbfd101bb947072e4fb9bb5573f1241f7051089cba9cc"
+    },
+    {
+      "module": "Cubical.Polytope.Connettivita",
+      "source": "source/cubical/polytope/connettivita.lean",
+      "path": "Cubical/Polytope/Connettivita.lean",
+      "sha256": "1ce7addaf2c685826502d699fe2e60bb6d48980dfe285027f1f72f57eae172cf"
+    },
+    {
+      "module": "Cubical.Polytope.ConnettivitaGlobale",
+      "source": "source/cubical/polytope/connettivita_globale.lean",
+      "path": "Cubical/Polytope/ConnettivitaGlobale.lean",
+      "sha256": "cb83c67976c5605a6a5b58e4f581aaa80c363b07f7d78faf386feb9fda47832b"
+    },
+    {
+      "module": "Cubical.Polytope.ConnettivitaRidgeBase",
+      "source": "source/cubical/polytope/connettivita_ridge_base.lean",
+      "path": "Cubical/Polytope/ConnettivitaRidgeBase.lean",
+      "sha256": "51c4a38728d442c62bab3da4012da1d2805bdedf57ae5f73fbc53c2769ec807a"
+    },
+    {
+      "module": "Cubical.Polytope.ConnettivitaRidgeRiduzione",
+      "source": "source/cubical/polytope/connettivita_ridge_riduzione.lean",
+      "path": "Cubical/Polytope/ConnettivitaRidgeRiduzione.lean",
+      "sha256": "2a41ada15bb1c0add46156c20849a6f5a9554999ff0d74926c3e0cf355e27e9b"
+    },
+    {
+      "module": "Cubical.Polytope.ConnettivitaRidgeTre",
+      "source": "source/cubical/polytope/connettivita_ridge_tre.lean",
+      "path": "Cubical/Polytope/ConnettivitaRidgeTre.lean",
+      "sha256": "af5441009c9dd1cfe1cf3f15aec2ca27ee07543d58cec3fe538426e9f1be841f"
+    },
+    {
+      "module": "Cubical.Polytope.ConoVertice",
+      "source": "source/cubical/polytope/cono_vertice.lean",
+      "path": "Cubical/Polytope/ConoVertice.lean",
+      "sha256": "618943a69f49b60d6076b747f959fcefdc672e60457fba5e96276f2082a9b652"
+    },
+    {
+      "module": "Cubical.Polytope.Definitions",
+      "source": "source/cubical/polytope/definitions.lean",
+      "path": "Cubical/Polytope/Definitions.lean",
+      "sha256": "a9060fed71f8681dbf4dbf32722c844ea7f167e49112a2cc8896c6a4bc62eff1"
+    },
+    {
+      "module": "Cubical.Polytope.Diamante",
+      "source": "source/cubical/polytope/diamante.lean",
+      "path": "Cubical/Polytope/Diamante.lean",
+      "sha256": "b093aa2c979081318a05fc30c76e18fb2133b1e05cef4c3143ccf4798094d8de"
+    },
+    {
+      "module": "Cubical.Polytope.Diamante2D",
+      "source": "source/cubical/polytope/diamante2_d.lean",
+      "path": "Cubical/Polytope/Diamante2D.lean",
+      "sha256": "ec7234925fc353302be866140d29d4c8a3c76e13323deafdf9213fc0a71b0822"
+    },
+    {
+      "module": "Cubical.Polytope.DiamanteRelativo",
+      "source": "source/cubical/polytope/diamante_relativo.lean",
+      "path": "Cubical/Polytope/DiamanteRelativo.lean",
+      "sha256": "e144690498fa566874ae7e1101fefa77f38a6449c3d435df6655042e6ea3996a"
+    },
+    {
+      "module": "Cubical.Polytope.DimStretta",
+      "source": "source/cubical/polytope/dim_stretta.lean",
+      "path": "Cubical/Polytope/DimStretta.lean",
+      "sha256": "0be8cef8467bdcd5e1173533dec8981a03807be88478b6eeb49b3361f5a047ef"
+    },
+    {
+      "module": "Cubical.Polytope.DueFunzionali",
+      "source": "source/cubical/polytope/due_funzionali.lean",
+      "path": "Cubical/Polytope/DueFunzionali.lean",
+      "sha256": "0a61f316891c951c27d05e2c73818ce4d63374ad871853cf79e5615cf037b476"
+    },
+    {
+      "module": "Cubical.Polytope.DueVertici",
+      "source": "source/cubical/polytope/due_vertici.lean",
+      "path": "Cubical/Polytope/DueVertici.lean",
+      "sha256": "38e5f82e34dd8c6880da8475dc359b2da6d66c9d95b071fab9ce7752e62c5cf7"
+    },
+    {
+      "module": "Cubical.Polytope.Equivarianza",
+      "source": "source/cubical/polytope/equivarianza.lean",
+      "path": "Cubical/Polytope/Equivarianza.lean",
+      "sha256": "334088e16ba38a131c00264604872fb9fa37073dd4741192868ca3f94ce04537"
+    },
+    {
+      "module": "Cubical.Polytope.FaccetteConnesse",
+      "source": "source/cubical/polytope/faccette_connesse.lean",
+      "path": "Cubical/Polytope/FaccetteConnesse.lean",
+      "sha256": "8f070260e8aca74181884fbdd37259bb5d57c6dbe84948910270536f4c67f850"
+    },
+    {
+      "module": "Cubical.Polytope.FacciaArgmax",
+      "source": "source/cubical/polytope/faccia_argmax.lean",
+      "path": "Cubical/Polytope/FacciaArgmax.lean",
+      "sha256": "7e650637887253d039414840dd9c531e7f817e41f6703ba69eced497d24bc7a2"
+    },
+    {
+      "module": "Cubical.Polytope.FacciaIntermedia",
+      "source": "source/cubical/polytope/faccia_intermedia.lean",
+      "path": "Cubical/Polytope/FacciaIntermedia.lean",
+      "sha256": "1c00ae9f0877218a444b7166944a0b57f67ae6f8de258c2ea4aad08837e4e7a0"
+    },
+    {
+      "module": "Cubical.Polytope.FanVertice",
+      "source": "source/cubical/polytope/fan_vertice.lean",
+      "path": "Cubical/Polytope/FanVertice.lean",
+      "sha256": "88d45fd53ef4302b7412c5b0e99f0882ea361c6b42b469942e403bb6da2fd7fb"
+    },
+    {
+      "module": "Cubical.Polytope.FettaVertice",
+      "source": "source/cubical/polytope/fetta_vertice.lean",
+      "path": "Cubical/Polytope/FettaVertice.lean",
+      "sha256": "1aae3a4e43edfde151793519d49a47b879f773311bda5b867a00859f0325cfcf"
+    },
+    {
+      "module": "Cubical.Polytope.FiguraAlVertice",
+      "source": "source/cubical/polytope/figura_al_vertice.lean",
+      "path": "Cubical/Polytope/FiguraAlVertice.lean",
+      "sha256": "25c108a14f25d7e5f70c9d7ba6e1db6cf7bd3a401978d02a29ff54338403cb4a"
+    },
+    {
+      "module": "Cubical.Polytope.FlagAdiacente",
+      "source": "source/cubical/polytope/flag_adiacente.lean",
+      "path": "Cubical/Polytope/FlagAdiacente.lean",
+      "sha256": "f3b2a0b87610251e8b2ffb313f51ca95c089bffb08f88bcc959aef7fd008d41e"
+    },
+    {
+      "module": "Cubical.Polytope.Fondamenta",
+      "source": "source/cubical/polytope/fondamenta.lean",
+      "path": "Cubical/Polytope/Fondamenta.lean",
+      "sha256": "20994bb0f2b40b62c0783fa74a4153619dd0f616127bb7b0e121e84ba20eab34"
+    },
+    {
+      "module": "Cubical.Polytope.Gallerie",
+      "source": "source/cubical/polytope/gallerie.lean",
+      "path": "Cubical/Polytope/Gallerie.lean",
+      "sha256": "4c0e40ef8502afc8e1d9641c46681b6e5864d75643f66eed84d5be2bd450fd54"
+    },
+    {
+      "module": "Cubical.Polytope.Imports",
+      "source": "source/cubical/polytope/imports.lean",
+      "path": "Cubical/Polytope/Imports.lean",
+      "sha256": "1f9564ac6f986f0a10c19bbcf07a9e9a24049a7c89259db0a2792519a9f1e683"
+    },
+    {
+      "module": "Cubical.Polytope.Interpolazione",
+      "source": "source/cubical/polytope/interpolazione.lean",
+      "path": "Cubical/Polytope/Interpolazione.lean",
+      "sha256": "951c7c1bfd066d45f62c06add1b2941929236658d83f2eec801cfc69d84f5c57"
+    },
+    {
+      "module": "Cubical.Polytope.MossaInvolutiva",
+      "source": "source/cubical/polytope/mossa_involutiva.lean",
+      "path": "Cubical/Polytope/MossaInvolutiva.lean",
+      "sha256": "c0d3fa7a6913a8efa65114e9931e9fefe5cf8dd0668670bf1c9550e99185b7c4"
+    },
+    {
+      "module": "Cubical.Polytope.OrbitaVertici",
+      "source": "source/cubical/polytope/orbita_vertici.lean",
+      "path": "Cubical/Polytope/OrbitaVertici.lean",
+      "sha256": "ec47ef3a8b14d9ca7dfed00a3dafe0d7d4cd1530c6ad5f7a5171811dc265ef9c"
+    },
+    {
+      "module": "Cubical.Polytope.Perno",
+      "source": "source/cubical/polytope/perno.lean",
+      "path": "Cubical/Polytope/Perno.lean",
+      "sha256": "6ff0c1d213203e4ba73060219d8d804abf2fea06fe9a5c902705736101e23b77"
+    },
+    {
+      "module": "Cubical.Polytope.PernoMonotono",
+      "source": "source/cubical/polytope/perno_monotono.lean",
+      "path": "Cubical/Polytope/PernoMonotono.lean",
+      "sha256": "a541d38b2848534b0cec05d3a84624c845b02e18f8153f8ea30e2b5b75f174b4"
+    },
+    {
+      "module": "Cubical.Polytope.PerturbazioneFinita",
+      "source": "source/cubical/polytope/perturbazione_finita.lean",
+      "path": "Cubical/Polytope/PerturbazioneFinita.lean",
+      "sha256": "3e438bbeb7a02ebd148092f12fef20edeb9ea875597aa2d2f9b62086e1b52aea"
+    },
+    {
+      "module": "Cubical.Polytope.PoligonoConnesso",
+      "source": "source/cubical/polytope/poligono_connesso.lean",
+      "path": "Cubical/Polytope/PoligonoConnesso.lean",
+      "sha256": "6d9d283175defe2fe1e9d30f7763a5c59b5b60218914466f12fe62133e129615"
+    },
+    {
+      "module": "Cubical.Polytope.ScalaBandiere",
+      "source": "source/cubical/polytope/scala_bandiere.lean",
+      "path": "Cubical/Polytope/ScalaBandiere.lean",
+      "sha256": "de50dc717fa3516293e1b246b03748676c5fc9fb8b5bf187a014ed35d5e504b4"
+    },
+    {
+      "module": "Cubical.Polytope.ScaricoSpigolo",
+      "source": "source/cubical/polytope/scarico_spigolo.lean",
+      "path": "Cubical/Polytope/ScaricoSpigolo.lean",
+      "sha256": "b40a6c3899662b4cb323f1dd500d5c92e6c85fc535ccaf30cd3576a4383ebb4b"
+    },
+    {
+      "module": "Cubical.Polytope.SecondaFaccetta",
+      "source": "source/cubical/polytope/seconda_faccetta.lean",
+      "path": "Cubical/Polytope/SecondaFaccetta.lean",
+      "sha256": "eda451aacb532968786c385fd0e271f1643efbc41f5dd66d4e534be3a5f0f5cb"
+    },
+    {
+      "module": "Cubical.Polytope.SecondoIntermedio",
+      "source": "source/cubical/polytope/secondo_intermedio.lean",
+      "path": "Cubical/Polytope/SecondoIntermedio.lean",
+      "sha256": "6a41499a9883740af8c24bde62b1a64eac706efd05dbaada05375ed7ae0de676"
+    },
+    {
+      "module": "Cubical.Polytope.SecondoSpigolo",
+      "source": "source/cubical/polytope/secondo_spigolo.lean",
+      "path": "Cubical/Polytope/SecondoSpigolo.lean",
+      "sha256": "5c0f605a70970bf708db7f11e06a0c19bf9227ee0807e3bc58a64f816b975e5a"
+    },
+    {
+      "module": "Cubical.Polytope.SottoPolitopo",
+      "source": "source/cubical/polytope/sotto_politopo.lean",
+      "path": "Cubical/Polytope/SottoPolitopo.lean",
+      "sha256": "9ed737347680ef32bde190e14284605435c2ea85fd2f820399de6d1728720b0d"
+    },
+    {
+      "module": "Cubical.Polytope.VertexFigureRidge",
+      "source": "source/cubical/polytope/vertex_figure_ridge.lean",
+      "path": "Cubical/Polytope/VertexFigureRidge.lean",
+      "sha256": "6731dc6115c37202aeda8f6fe2c3bc4552691892d609ab29fbf9d899606e6a15"
+    },
+    {
+      "module": "Cubical.Polytope.VerticiEsposti",
+      "source": "source/cubical/polytope/vertici_esposti.lean",
+      "path": "Cubical/Polytope/VerticiEsposti.lean",
+      "sha256": "2048c0bf1ccf7177c02ca50f6c5b7e30baca7dad287c351a019fbe5cd8fc8728"
+    },
+    {
+      "module": "Papers.ActualEdgeSupports",
+      "source": "source/papers/actual_edge_supports.lean",
+      "path": "Papers/ActualEdgeSupports.lean",
+      "sha256": "ed9f785529919ae7aa5e38d9ca81a653dcbd7a82faf6e067daa1f6deb50b12a9"
+    },
+    {
+      "module": "Papers.ActualFaceFiniteness",
+      "source": "source/papers/actual_face_finiteness.lean",
+      "path": "Papers/ActualFaceFiniteness.lean",
+      "sha256": "5b3445a196406ed9197d2d4b21952579da82b55093807660879cc0ea74c615dc"
+    },
+    {
+      "module": "Papers.ActualNeighborBound",
+      "source": "source/papers/actual_neighbor_bound.lean",
+      "path": "Papers/ActualNeighborBound.lean",
+      "sha256": "b8c5663267b85dc79f8a77e4e9146c3f408b5ea62899d656fbcfeab4f835e022"
+    },
+    {
+      "module": "Papers.ActualPlaneEdgeBound",
+      "source": "source/papers/actual_plane_edge_bound.lean",
+      "path": "Papers/ActualPlaneEdgeBound.lean",
+      "sha256": "e77e1dab3107083456b59989c3d5c7f34898ec8fd9b04a1b8fb0d830d04c18ca"
+    },
+    {
+      "module": "Papers.ActualVertexFigureGraph",
+      "source": "source/papers/actual_vertex_figure_graph.lean",
+      "path": "Papers/ActualVertexFigureGraph.lean",
+      "sha256": "b8c45d22a410c05e002574faf4d1a25129bc410fbe29e2cbecd00cb860d0e02f"
+    },
+    {
+      "module": "Papers.AffineHomogeneousValues",
+      "source": "source/papers/affine_homogeneous_values.lean",
+      "path": "Papers/AffineHomogeneousValues.lean",
+      "sha256": "a2909b7c5f60b6caedb79dd36dd76cf4893fe1b622b678a8084658b2d77f1996"
+    },
+    {
+      "module": "Papers.AffineSystemContinuity",
+      "source": "source/papers/affine_system_continuity.lean",
+      "path": "Papers/AffineSystemContinuity.lean",
+      "sha256": "a2909b7c5f60b6caedb79dd36dd76cf4893fe1b622b678a8084658b2d77f1996"
+    },
+    {
+      "module": "Papers.BipartiteIncidencePeeling",
+      "source": "source/papers/bipartite_incidence_peeling.lean",
+      "path": "Papers/BipartiteIncidencePeeling.lean",
+      "sha256": "9473750ed193c99a0a26cee712c2930d4e6591f855d4790a9f29e1a83a3a8213"
+    },
+    {
+      "module": "Papers.ChirotopeDensity",
+      "source": "source/papers/chirotope_density.lean",
+      "path": "Papers/ChirotopeDensity.lean",
+      "sha256": "8c362e1f66381299421fbf181828c6c1fb44ed004e604a1e7ef1690f08832cc1"
+    },
+    {
+      "module": "Papers.ChirotopeRanks",
+      "source": "source/papers/chirotope_ranks.lean",
+      "path": "Papers/ChirotopeRanks.lean",
+      "sha256": "2f9036c0f2c237068707b138d79abc22badda67263e6e6d24e8a9788e14b2345"
+    },
+    {
+      "module": "Papers.ConstantRankKernels",
+      "source": "source/papers/constant_rank_kernels.lean",
+      "path": "Papers/ConstantRankKernels.lean",
+      "sha256": "ff2a36c22d3b46b6ca3a09524b312a5dfbe775125ea903edb39a7df621a138d0"
+    },
+    {
+      "module": "Papers.ConstantRankVectorCharts",
+      "source": "source/papers/constant_rank_vector_charts.lean",
+      "path": "Papers/ConstantRankVectorCharts.lean",
+      "sha256": "93cf548f621a2a896515503f902ed965c6172c6a14f6da1631f1c373d6588260"
+    },
+    {
+      "module": "Papers.ContinuousAffineFrames",
+      "source": "source/papers/continuous_affine_frames.lean",
+      "path": "Papers/ContinuousAffineFrames.lean",
+      "sha256": "a2909b7c5f60b6caedb79dd36dd76cf4893fe1b622b678a8084658b2d77f1996"
+    },
+    {
+      "module": "Papers.EquivalentExtensions",
+      "source": "source/papers/equivalent_extensions.lean",
+      "path": "Papers/EquivalentExtensions.lean",
+      "sha256": "f863663cb1e974047304e80bae312c702b6905a8ec0048be3765ee521913e562"
+    },
+    {
+      "module": "Papers.ExposedEdgeCenters",
+      "source": "source/papers/exposed_edge_centers.lean",
+      "path": "Papers/ExposedEdgeCenters.lean",
+      "sha256": "16926f20e7551296eaf76d9cd760769403e7a233a49fefc6e26b0f01ffe71079"
+    },
+    {
+      "module": "Papers.ExtensionVertexLabels",
+      "source": "source/papers/extension_vertex_labels.lean",
+      "path": "Papers/ExtensionVertexLabels.lean",
+      "sha256": "f863663cb1e974047304e80bae312c702b6905a8ec0048be3765ee521913e562"
+    },
+    {
+      "module": "Papers.FaceVertexCardinality",
+      "source": "source/papers/face_vertex_cardinality.lean",
+      "path": "Papers/FaceVertexCardinality.lean",
+      "sha256": "0e451e520912f6dab3fe555994a0ecfe7689889d79a86d49718d05828fbca67c"
+    },
+    {
+      "module": "Papers.FaceVertexDictionary",
+      "source": "source/papers/face_vertex_dictionary.lean",
+      "path": "Papers/FaceVertexDictionary.lean",
+      "sha256": "9473750ed193c99a0a26cee712c2930d4e6591f855d4790a9f29e1a83a3a8213"
+    },
+    {
+      "module": "Papers.FacetHalfspaces",
+      "source": "source/papers/facet_halfspaces.lean",
+      "path": "Papers/FacetHalfspaces.lean",
+      "sha256": "a2909b7c5f60b6caedb79dd36dd76cf4893fe1b622b678a8084658b2d77f1996"
+    },
+    {
+      "module": "Papers.FacetNormalization",
+      "source": "source/papers/facet_normalization.lean",
+      "path": "Papers/FacetNormalization.lean",
+      "sha256": "a2909b7c5f60b6caedb79dd36dd76cf4893fe1b622b678a8084658b2d77f1996"
+    },
+    {
+      "module": "Papers.FacetSupport",
+      "source": "source/papers/facet_support.lean",
+      "path": "Papers/FacetSupport.lean",
+      "sha256": "a2909b7c5f60b6caedb79dd36dd76cf4893fe1b622b678a8084658b2d77f1996"
+    },
+    {
+      "module": "Papers.FieldCoordinates",
+      "source": "source/papers/field_coordinates.lean",
+      "path": "Papers/FieldCoordinates.lean",
+      "sha256": "a2909b7c5f60b6caedb79dd36dd76cf4893fe1b622b678a8084658b2d77f1996"
+    },
+    {
+      "module": "Papers.FieldSpan",
+      "source": "source/papers/field_span.lean",
+      "path": "Papers/FieldSpan.lean",
+      "sha256": "a2909b7c5f60b6caedb79dd36dd76cf4893fe1b622b678a8084658b2d77f1996"
+    },
+    {
+      "module": "Papers.FiniteGraphOptimization",
+      "source": "source/papers/finite_graph_optimization.lean",
+      "path": "Papers/FiniteGraphOptimization.lean",
+      "sha256": "713b61b72f6fb023c376106a057d963a6287324b890db4dde605275e290e5e92"
+    },
+    {
+      "module": "Papers.FiniteHalfspaceFacets",
+      "source": "source/papers/finite_halfspace_facets.lean",
+      "path": "Papers/FiniteHalfspaceFacets.lean",
+      "sha256": "f863663cb1e974047304e80bae312c702b6905a8ec0048be3765ee521913e562"
+    },
+    {
+      "module": "Papers.FiniteHullCertificates",
+      "source": "source/papers/finite_hull_certificates.lean",
+      "path": "Papers/FiniteHullCertificates.lean",
+      "sha256": "9473750ed193c99a0a26cee712c2930d4e6591f855d4790a9f29e1a83a3a8213"
+    },
+    {
+      "module": "Papers.GaleConfigurationRanks",
+      "source": "source/papers/gale_configuration_ranks.lean",
+      "path": "Papers/GaleConfigurationRanks.lean",
+      "sha256": "4a1391748c8eb2db0c85c36ec6af17960b1b249af56b1ccd32eb8bbd0c0e7785"
+    },
+    {
+      "module": "Papers.GaleKernelBasis",
+      "source": "source/papers/gale_kernel_basis.lean",
+      "path": "Papers/GaleKernelBasis.lean",
+      "sha256": "318edf528dbec9d531be7bf8874cce33f0988115bb30be10a2ddfa841bb2b9b4"
+    },
+    {
+      "module": "Papers.GaleRankIdentity",
+      "source": "source/papers/gale_rank_identity.lean",
+      "path": "Papers/GaleRankIdentity.lean",
+      "sha256": "197cd3e366cb18fdb3027f97d1d5ce3b766e9623fa9c51068ff96f4685a7d9be"
+    },
+    {
+      "module": "Papers.HomogeneousConvex",
+      "source": "source/papers/homogeneous_convex.lean",
+      "path": "Papers/HomogeneousConvex.lean",
+      "sha256": "ea82ec8e9f370935aeeeb0df21336c8407bd9bb18615adc2310451dd67dc24ef"
+    },
+    {
+      "module": "Papers.HomogeneousSpan",
+      "source": "source/papers/homogeneous_span.lean",
+      "path": "Papers/HomogeneousSpan.lean",
+      "sha256": "a2909b7c5f60b6caedb79dd36dd76cf4893fe1b622b678a8084658b2d77f1996"
+    },
+    {
+      "module": "Papers.HomogeneousSpanDimension",
+      "source": "source/papers/homogeneous_span_dimension.lean",
+      "path": "Papers/HomogeneousSpanDimension.lean",
+      "sha256": "9f1f2edbe06a0702688a3079bea720fedbc91be4d3de19748e3ca40afaae5902"
+    },
+    {
+      "module": "Papers.IncidentTwoFacesActual",
+      "source": "source/papers/incident_two_faces_actual.lean",
+      "path": "Papers/IncidentTwoFacesActual.lean",
+      "sha256": "898071d18ffbc532ea04f1fd8f13e4a8f33c28f9968308e27318ed373f1b93d4"
+    },
+    {
+      "module": "Papers.IncidentTwoFacesCount",
+      "source": "source/papers/incident_two_faces_count.lean",
+      "path": "Papers/IncidentTwoFacesCount.lean",
+      "sha256": "17859877527dd39f0d6da5e9321e52aab636e48400f11503adadcef89d2d9e10"
+    },
+    {
+      "module": "Papers.IntrinsicChirotope",
+      "source": "source/papers/intrinsic_chirotope.lean",
+      "path": "Papers/IntrinsicChirotope.lean",
+      "sha256": "f5285c82be718c59002bf6c4fff9c09b247987f4d9c16cf448f2d4c25a37169f"
+    },
+    {
+      "module": "Papers.LowCorankGaleDensity",
+      "source": "source/papers/low_corank_gale_density.lean",
+      "path": "Papers/LowCorankGaleDensity.lean",
+      "sha256": "d5f99c182a7f27423755a67d1379c014bffb74a498879f5ac76320c8ef473ab7"
+    },
+    {
+      "module": "Papers.MatrixSupportCounts",
+      "source": "source/papers/matrix_support_counts.lean",
+      "path": "Papers/MatrixSupportCounts.lean",
+      "sha256": "ede20819e5a0515bd7d90996b93cdc9bc6688ec5663a87924840799cb031ae4e"
+    },
+    {
+      "module": "Papers.MinkowskiExposedFaces",
+      "source": "source/papers/minkowski_exposed_faces.lean",
+      "path": "Papers/MinkowskiExposedFaces.lean",
+      "sha256": "756a300c8b3c19c2e66bedf78d849a741cb885c9aa2d688db00dcc7f6128f064"
+    },
+    {
+      "module": "Papers.OrthogonalGaleCharts",
+      "source": "source/papers/orthogonal_gale_charts.lean",
+      "path": "Papers/OrthogonalGaleCharts.lean",
+      "sha256": "ef5124e620d8875fb57a95f086e0c293c0a076fceb097ac057db3914d3c48cc3"
+    },
+    {
+      "module": "Papers.PlaneChirotopeDensity",
+      "source": "source/papers/plane_chirotope_density.lean",
+      "path": "Papers/PlaneChirotopeDensity.lean",
+      "sha256": "8773cec8abf3267b57818a85aa88321acc6746a6e06e6f668fcd25456065cd97"
+    },
+    {
+      "module": "Papers.PlaneDependentTriples",
+      "source": "source/papers/plane_dependent_triples.lean",
+      "path": "Papers/PlaneDependentTriples.lean",
+      "sha256": "1b1b2ebd44e3e6d8c4bfa0057dd1b4ab767eb8d6b7d2e649c0573d3092ed8758"
+    },
+    {
+      "module": "Papers.PlaneRationalDensity",
+      "source": "source/papers/plane_rational_density.lean",
+      "path": "Papers/PlaneRationalDensity.lean",
+      "sha256": "9e5c3b9f105e6d5acd5179533cc536c1388c2baa34c2de89800153a5bdaa0df4"
+    },
+    {
+      "module": "Papers.PlaneReinsertionCharts",
+      "source": "source/papers/plane_reinsertion_charts.lean",
+      "path": "Papers/PlaneReinsertionCharts.lean",
+      "sha256": "f982057b3dc2a8be8e782a80f9cc91030266ae2a643eec718a95b5306f9eeb83"
+    },
+    {
+      "module": "Papers.PlaneRichLineJoins",
+      "source": "source/papers/plane_rich_line_joins.lean",
+      "path": "Papers/PlaneRichLineJoins.lean",
+      "sha256": "8c443fe5fe30934d1571aca3807f30bb515c6a150bdeaf5ae4df4f921e52bfeb"
+    },
+    {
+      "module": "Papers.PolytopeBalinski",
+      "source": "source/papers/polytope_balinski.lean",
+      "path": "Papers/PolytopeBalinski.lean",
+      "sha256": "082d03ee46c1e2bfe604ce451fb5747bcfca6e195601f5fc828692a1fb7c7843"
+    },
+    {
+      "module": "Papers.PolytopeBasicExtreme",
+      "source": "source/papers/polytope_basic_extreme.lean",
+      "path": "Papers/PolytopeBasicExtreme.lean",
+      "sha256": "2bdc10d277d5614f55f520e91d56d75a5ff3516c52bb392b78902b098aea0954"
+    },
+    {
+      "module": "Papers.PolytopeEulerFour",
+      "source": "source/papers/polytope_euler_four.lean",
+      "path": "Papers/PolytopeEulerFour.lean",
+      "sha256": "d68583a185ba3a0e2bc44d143aa5f91ee3e35f6ee86e348551c72141377aff52"
+    },
+    {
+      "module": "Papers.PolytopeEulerRadialFigure",
+      "source": "source/papers/polytope_euler_radial_figure.lean",
+      "path": "Papers/PolytopeEulerRadialFigure.lean",
+      "sha256": "c330b3459627acd250ce4e25ce74772f93ac886a89218f709a9ba7d6164220fd"
+    },
+    {
+      "module": "Papers.PolytopeFaceCounting",
+      "source": "source/papers/polytope_face_counting.lean",
+      "path": "Papers/PolytopeFaceCounting.lean",
+      "sha256": "487b33c8ed70bd12b239163006edab1e9b5a3055964d11ca362b9a4de5b3ce7f"
+    },
+    {
+      "module": "Papers.PolytopeGeometry",
+      "source": "source/papers/polytope_geometry.lean",
+      "path": "Papers/PolytopeGeometry.lean",
+      "sha256": "9473750ed193c99a0a26cee712c2930d4e6591f855d4790a9f29e1a83a3a8213"
+    },
+    {
+      "module": "Papers.PolytopeIncidenceConfiguration",
+      "source": "source/papers/polytope_incidence_configuration.lean",
+      "path": "Papers/PolytopeIncidenceConfiguration.lean",
+      "sha256": "a2909b7c5f60b6caedb79dd36dd76cf4893fe1b622b678a8084658b2d77f1996"
+    },
+    {
+      "module": "Papers.PolytopeIncidenceCounting",
+      "source": "source/papers/polytope_incidence_counting.lean",
+      "path": "Papers/PolytopeIncidenceCounting.lean",
+      "sha256": "d68583a185ba3a0e2bc44d143aa5f91ee3e35f6ee86e348551c72141377aff52"
+    },
+    {
+      "module": "Papers.PolytopeTargets",
+      "source": "source/papers/polytope_targets.lean",
+      "path": "Papers/PolytopeTargets.lean",
+      "sha256": "9473750ed193c99a0a26cee712c2930d4e6591f855d4790a9f29e1a83a3a8213"
+    },
+    {
+      "module": "Papers.PolytopeThreeIncidences",
+      "source": "source/papers/polytope_three_incidences.lean",
+      "path": "Papers/PolytopeThreeIncidences.lean",
+      "sha256": "9473750ed193c99a0a26cee712c2930d4e6591f855d4790a9f29e1a83a3a8213"
+    },
+    {
+      "module": "Papers.PolytopeVertexCone",
+      "source": "source/papers/polytope_vertex_cone.lean",
+      "path": "Papers/PolytopeVertexCone.lean",
+      "sha256": "e81a11a97a8e91b24582c4a756ff17be6d3db69762349421d22500deb863c569"
+    },
+    {
+      "module": "Papers.ProjectiveFrameNormalization",
+      "source": "source/papers/projective_frame_normalization.lean",
+      "path": "Papers/ProjectiveFrameNormalization.lean",
+      "sha256": "59435c5aabfd4ab35baa18f92c6345473a0a0b765b75ca69af2eafa9c2522813"
+    },
+    {
+      "module": "Papers.ProjectiveRepresentatives",
+      "source": "source/papers/projective_representatives.lean",
+      "path": "Papers/ProjectiveRepresentatives.lean",
+      "sha256": "00544d02a84288f887963e34b5617d92f6aeb967682206b5a90db6fbaedb1e8d"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch00",
+      "source": "source/papers/rank_three_finite/batch00.lean",
+      "path": "Papers/RankThreeFinite/Batch00.lean",
+      "sha256": "f962a84d580d607f0c93676b9b2fee44653adb2b032f1024cb4bfec38458626d"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch01",
+      "source": "source/papers/rank_three_finite/batch01.lean",
+      "path": "Papers/RankThreeFinite/Batch01.lean",
+      "sha256": "1654f77574502a6910c8deca2d8a7841c60457fb91db6f55149849744e64a171"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch02",
+      "source": "source/papers/rank_three_finite/batch02.lean",
+      "path": "Papers/RankThreeFinite/Batch02.lean",
+      "sha256": "a8f9f9665a94b51cb4ea4652823e09e64ec144787607fad7978821197c8d4065"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch03",
+      "source": "source/papers/rank_three_finite/batch03.lean",
+      "path": "Papers/RankThreeFinite/Batch03.lean",
+      "sha256": "c89666695dc71e0a052618877771d576e7c29c930b4ba36aee9308abc7cfdd32"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch04",
+      "source": "source/papers/rank_three_finite/batch04.lean",
+      "path": "Papers/RankThreeFinite/Batch04.lean",
+      "sha256": "e7d9c84f35e15473f9942388dd7b453f8390cabbf4ee48f2ae6365f501683ddd"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch05",
+      "source": "source/papers/rank_three_finite/batch05.lean",
+      "path": "Papers/RankThreeFinite/Batch05.lean",
+      "sha256": "66d8017510ccc14894a5773a8dbebd6bcdf9c0625aa838c276a426832f9ee8e4"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch06",
+      "source": "source/papers/rank_three_finite/batch06.lean",
+      "path": "Papers/RankThreeFinite/Batch06.lean",
+      "sha256": "805377eb619a9c0459292be00edc6a1da24899de5d17de88a809d90b1ffb4ec2"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch07",
+      "source": "source/papers/rank_three_finite/batch07.lean",
+      "path": "Papers/RankThreeFinite/Batch07.lean",
+      "sha256": "cc2288d21eeb1a836811e766d23b50887f5a4db724ab7054cba5cdbfa3c2bf1e"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch08",
+      "source": "source/papers/rank_three_finite/batch08.lean",
+      "path": "Papers/RankThreeFinite/Batch08.lean",
+      "sha256": "e2ee79612bd34747a6b44e21b05c4aa45a2db04f8022fb6f8c36200e9e456f9c"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch09",
+      "source": "source/papers/rank_three_finite/batch09.lean",
+      "path": "Papers/RankThreeFinite/Batch09.lean",
+      "sha256": "9194e7e2eeebf0da62128ea4732c3f3aa19a582e12eeaf76f87cffa192b01963"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch10",
+      "source": "source/papers/rank_three_finite/batch10.lean",
+      "path": "Papers/RankThreeFinite/Batch10.lean",
+      "sha256": "9652c7ca958ff013b940554b709bc5d12a03654a88b6618c776bc92ef4181e6e"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch11",
+      "source": "source/papers/rank_three_finite/batch11.lean",
+      "path": "Papers/RankThreeFinite/Batch11.lean",
+      "sha256": "6116cc7930633082a5294fde0533c706f2e82f41686bea772b9904936567799a"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch12",
+      "source": "source/papers/rank_three_finite/batch12.lean",
+      "path": "Papers/RankThreeFinite/Batch12.lean",
+      "sha256": "1eec8dc0fea365ecffa87de876f5aa07a5b2a380f7db5d314ce6462e55176fe1"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch13",
+      "source": "source/papers/rank_three_finite/batch13.lean",
+      "path": "Papers/RankThreeFinite/Batch13.lean",
+      "sha256": "f86091e66c1c938468acff6912c2fae59a6c3d84b24d4a92e2714e992ac1d697"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch14",
+      "source": "source/papers/rank_three_finite/batch14.lean",
+      "path": "Papers/RankThreeFinite/Batch14.lean",
+      "sha256": "e0c484197f459ba39c98ddd83b416183db898062fb3d1a69063c3048c1cbf252"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch15",
+      "source": "source/papers/rank_three_finite/batch15.lean",
+      "path": "Papers/RankThreeFinite/Batch15.lean",
+      "sha256": "8f390366486d0cfcb2379a13ea8b2eae087b9e9c57223879bbf8b84d16f91830"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch16",
+      "source": "source/papers/rank_three_finite/batch16.lean",
+      "path": "Papers/RankThreeFinite/Batch16.lean",
+      "sha256": "7cc607db59aae73948bee8dea1f5a6c207f7947372b7e97f508fdbe2d9d0f7b9"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch17",
+      "source": "source/papers/rank_three_finite/batch17.lean",
+      "path": "Papers/RankThreeFinite/Batch17.lean",
+      "sha256": "9dfd6113048aad5aa0278187f2e1e4de70631b3039feb7b1a59e43216f9bfdea"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch18",
+      "source": "source/papers/rank_three_finite/batch18.lean",
+      "path": "Papers/RankThreeFinite/Batch18.lean",
+      "sha256": "ea2dcfbd5e2ed11c671b2132ec1c88d20fd5804c88a2223033c5b121ef57b1c8"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch19",
+      "source": "source/papers/rank_three_finite/batch19.lean",
+      "path": "Papers/RankThreeFinite/Batch19.lean",
+      "sha256": "b9b3f6f7b0e86709b5e97e4dbfa95501720c74501dfbe2fddf00f52bc0362a2d"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch20",
+      "source": "source/papers/rank_three_finite/batch20.lean",
+      "path": "Papers/RankThreeFinite/Batch20.lean",
+      "sha256": "6ac6ba40a50ef786b79ffd0e29fcbe69d72da08fdc86455fb847d279b51ac393"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch21",
+      "source": "source/papers/rank_three_finite/batch21.lean",
+      "path": "Papers/RankThreeFinite/Batch21.lean",
+      "sha256": "4885193d4ee3733a53adac3e0509820387beaa6edafdcfc13c86cacf91191769"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch22",
+      "source": "source/papers/rank_three_finite/batch22.lean",
+      "path": "Papers/RankThreeFinite/Batch22.lean",
+      "sha256": "b1d7235a5a0e586c994e904077c4e98ca4d0b5212bd0af4d9cf8b3f424d85057"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch23",
+      "source": "source/papers/rank_three_finite/batch23.lean",
+      "path": "Papers/RankThreeFinite/Batch23.lean",
+      "sha256": "55b2b672e43d8b0453d4fe2687ee36cc1fe4be94f53907e46917da1195d56392"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch24",
+      "source": "source/papers/rank_three_finite/batch24.lean",
+      "path": "Papers/RankThreeFinite/Batch24.lean",
+      "sha256": "dfa229e991c9eb398f465ca67de65efc2619289db579ea201c53fd2bd58da263"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch25",
+      "source": "source/papers/rank_three_finite/batch25.lean",
+      "path": "Papers/RankThreeFinite/Batch25.lean",
+      "sha256": "02b069c2a5f73c4ae11b41f6ba92418c657fb8d8ac1942b2d1e4c69517f6f096"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch26",
+      "source": "source/papers/rank_three_finite/batch26.lean",
+      "path": "Papers/RankThreeFinite/Batch26.lean",
+      "sha256": "60c876fce9c00fde06e2bd6624a28db694a0769ee9731dc0700bc68105c419a7"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch27",
+      "source": "source/papers/rank_three_finite/batch27.lean",
+      "path": "Papers/RankThreeFinite/Batch27.lean",
+      "sha256": "41480cff767e49acb84a82d47780be12f89772ef211d86944b63155840951d83"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch28",
+      "source": "source/papers/rank_three_finite/batch28.lean",
+      "path": "Papers/RankThreeFinite/Batch28.lean",
+      "sha256": "a55a05b38b00dc8c29b7ae712b378fc99888904033c3a14753ea641547979f79"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch29",
+      "source": "source/papers/rank_three_finite/batch29.lean",
+      "path": "Papers/RankThreeFinite/Batch29.lean",
+      "sha256": "e3971a633852076fb9707bb955a943b32bce8b69323b90beb3df9e45628ca59f"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch30",
+      "source": "source/papers/rank_three_finite/batch30.lean",
+      "path": "Papers/RankThreeFinite/Batch30.lean",
+      "sha256": "b0942bbe91bb96b263476d8ced4218f2088268916478d0296ae2adadadfaa4e1"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch31",
+      "source": "source/papers/rank_three_finite/batch31.lean",
+      "path": "Papers/RankThreeFinite/Batch31.lean",
+      "sha256": "eefc26c1f79dd73ecbfb7011451e38514c9a21ff2e0521604187b24356aa57f1"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch32",
+      "source": "source/papers/rank_three_finite/batch32.lean",
+      "path": "Papers/RankThreeFinite/Batch32.lean",
+      "sha256": "2af627d1204469732faa2921d79fe14fd27557e8ef245c19f352baf6f9ddb10d"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch33",
+      "source": "source/papers/rank_three_finite/batch33.lean",
+      "path": "Papers/RankThreeFinite/Batch33.lean",
+      "sha256": "16260278b9b18944e244707d7cf1523a7dbbe46996d379e88d3e2533e3f492f4"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch34",
+      "source": "source/papers/rank_three_finite/batch34.lean",
+      "path": "Papers/RankThreeFinite/Batch34.lean",
+      "sha256": "a642dc5c3f7efcdb502ccc19922aa17b11a074c5299277d29841427b88102ba7"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch35",
+      "source": "source/papers/rank_three_finite/batch35.lean",
+      "path": "Papers/RankThreeFinite/Batch35.lean",
+      "sha256": "5d16010d47ed5f7c539b0a73a348940f009fde4b857239802e4e34697d22499c"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch36",
+      "source": "source/papers/rank_three_finite/batch36.lean",
+      "path": "Papers/RankThreeFinite/Batch36.lean",
+      "sha256": "da10a9c52209801b6015b369ec8803aa29613a9c0e4fadde8eb2ee99dbc21a24"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch37",
+      "source": "source/papers/rank_three_finite/batch37.lean",
+      "path": "Papers/RankThreeFinite/Batch37.lean",
+      "sha256": "4d5c8c6be46a495a59e6edc0e2d68bae5b39538fdb58769bcfcc80b624295a27"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch38",
+      "source": "source/papers/rank_three_finite/batch38.lean",
+      "path": "Papers/RankThreeFinite/Batch38.lean",
+      "sha256": "6c4ec1fdeb28aed4d817566c8ec088e7d46b2748b7797bbf138bd9b41e358877"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch39",
+      "source": "source/papers/rank_three_finite/batch39.lean",
+      "path": "Papers/RankThreeFinite/Batch39.lean",
+      "sha256": "9b1b56653a9e7070f590e8822121643f0f6e3efefb9a1678d515b275f4388dd0"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch40",
+      "source": "source/papers/rank_three_finite/batch40.lean",
+      "path": "Papers/RankThreeFinite/Batch40.lean",
+      "sha256": "b73e04bd89dc2d173ceefc0cf73705fa949502b388763907e0015059c3a9a6d0"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch41",
+      "source": "source/papers/rank_three_finite/batch41.lean",
+      "path": "Papers/RankThreeFinite/Batch41.lean",
+      "sha256": "7f2814fec5039cab462151e7b9af18571703e5a42922616100fbc7dbe89582b0"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch42",
+      "source": "source/papers/rank_three_finite/batch42.lean",
+      "path": "Papers/RankThreeFinite/Batch42.lean",
+      "sha256": "78605dd8ef1a6707a0fb2fe5f82c2adc068b0857987642c79ecc42cb54ea1282"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch43",
+      "source": "source/papers/rank_three_finite/batch43.lean",
+      "path": "Papers/RankThreeFinite/Batch43.lean",
+      "sha256": "260c281ec447f50616350ab633176beb747a8186216edc524d1fd14692bdc37b"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch44",
+      "source": "source/papers/rank_three_finite/batch44.lean",
+      "path": "Papers/RankThreeFinite/Batch44.lean",
+      "sha256": "32fd0f47745a2ef856ff8a9874257fed6ccea309fe6760b13cb98db40775f47f"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch45",
+      "source": "source/papers/rank_three_finite/batch45.lean",
+      "path": "Papers/RankThreeFinite/Batch45.lean",
+      "sha256": "2f8f0c472b98ba11903042ee4124da05afa43810f462bdd543a73864e2ecbc53"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch46",
+      "source": "source/papers/rank_three_finite/batch46.lean",
+      "path": "Papers/RankThreeFinite/Batch46.lean",
+      "sha256": "71d0f8db5e630b5f013cf6c798c547bc253f3d77b5b013f91941d09671dbdbe8"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch47",
+      "source": "source/papers/rank_three_finite/batch47.lean",
+      "path": "Papers/RankThreeFinite/Batch47.lean",
+      "sha256": "06f43559fe3cc7f382776c23eb1c25af33ad250802732d465fff8defe23b5681"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch48",
+      "source": "source/papers/rank_three_finite/batch48.lean",
+      "path": "Papers/RankThreeFinite/Batch48.lean",
+      "sha256": "899b4b8ce53cfb738eec329283026417737de603018232cccacc384431c3818f"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch49",
+      "source": "source/papers/rank_three_finite/batch49.lean",
+      "path": "Papers/RankThreeFinite/Batch49.lean",
+      "sha256": "f9a3a928d9948e39e173f7ff1caa52da7fe5a539f5315846c9ac1e240d1be61c"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch50",
+      "source": "source/papers/rank_three_finite/batch50.lean",
+      "path": "Papers/RankThreeFinite/Batch50.lean",
+      "sha256": "c1fa97d9ea2909b6baff7a6352295a8b8b37348bd67e6b11187940de47780db3"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch51",
+      "source": "source/papers/rank_three_finite/batch51.lean",
+      "path": "Papers/RankThreeFinite/Batch51.lean",
+      "sha256": "93b238a9b3878fbb839e69b9ac29c904848a234899de70775c0e030719595c7c"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch52",
+      "source": "source/papers/rank_three_finite/batch52.lean",
+      "path": "Papers/RankThreeFinite/Batch52.lean",
+      "sha256": "4b48b09f64d96fa76056166097ed85127a2669684b7353aab9dc861f03e5f79e"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch53",
+      "source": "source/papers/rank_three_finite/batch53.lean",
+      "path": "Papers/RankThreeFinite/Batch53.lean",
+      "sha256": "a03af8120621eba00959a23c1df0d241c79cc8137ab15366753729e6766381b3"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch54",
+      "source": "source/papers/rank_three_finite/batch54.lean",
+      "path": "Papers/RankThreeFinite/Batch54.lean",
+      "sha256": "0d02bc0bb7b9681bfbfd18d14815acb812aca5166934ac9e017d3b7595771df7"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch55",
+      "source": "source/papers/rank_three_finite/batch55.lean",
+      "path": "Papers/RankThreeFinite/Batch55.lean",
+      "sha256": "beca700a586e525961aff5b1ee1d9eda3842d0335f2ef9a45e444663a2afbe1a"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch56",
+      "source": "source/papers/rank_three_finite/batch56.lean",
+      "path": "Papers/RankThreeFinite/Batch56.lean",
+      "sha256": "4419ab14a670f4be268b8e573b77e5614945287e8676533bb388ecea6981a925"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch57",
+      "source": "source/papers/rank_three_finite/batch57.lean",
+      "path": "Papers/RankThreeFinite/Batch57.lean",
+      "sha256": "30b8e8a85ea92aaf45cf24eeae519953874ff298b1122d1defd433c3d7de6dc1"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch58",
+      "source": "source/papers/rank_three_finite/batch58.lean",
+      "path": "Papers/RankThreeFinite/Batch58.lean",
+      "sha256": "e9603a28af93571dc12b4df16f4548ea8ce81968335eb5323ff1461d1c774fe8"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch59",
+      "source": "source/papers/rank_three_finite/batch59.lean",
+      "path": "Papers/RankThreeFinite/Batch59.lean",
+      "sha256": "66dae61cca766cd469c77ab9829640c4697d917f4cbc0bd23b0e2e952782d7d2"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch60",
+      "source": "source/papers/rank_three_finite/batch60.lean",
+      "path": "Papers/RankThreeFinite/Batch60.lean",
+      "sha256": "faaedf8518bdd17611928c411b91e7905186812f6ff6ee2159d6ae1a6db05d80"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch61",
+      "source": "source/papers/rank_three_finite/batch61.lean",
+      "path": "Papers/RankThreeFinite/Batch61.lean",
+      "sha256": "76f954403c37b7c2b5ae00ee6257d524b1429a6465d4a681709362f4f055c0fd"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch62",
+      "source": "source/papers/rank_three_finite/batch62.lean",
+      "path": "Papers/RankThreeFinite/Batch62.lean",
+      "sha256": "002527c81b6f775dd22a01f10c87398338d969cdf3d256f69c23d30d8d5b689d"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch63",
+      "source": "source/papers/rank_three_finite/batch63.lean",
+      "path": "Papers/RankThreeFinite/Batch63.lean",
+      "sha256": "e13c8cdfd836f1276ca18561524ea581b69c094409d4877f81c5f0095ce90c26"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch64",
+      "source": "source/papers/rank_three_finite/batch64.lean",
+      "path": "Papers/RankThreeFinite/Batch64.lean",
+      "sha256": "eba98c2b8c786c3b64f3c1e2fc4c85e768e846cbc7ccbf139a3a9dcfb7b24d86"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch65",
+      "source": "source/papers/rank_three_finite/batch65.lean",
+      "path": "Papers/RankThreeFinite/Batch65.lean",
+      "sha256": "8903a0653061e731e995de01f3ec12bb1f88a05499b2bdf227b8298d5cf969f8"
+    },
+    {
+      "module": "Papers.RankThreeFinite.Batch66",
+      "source": "source/papers/rank_three_finite/batch66.lean",
+      "path": "Papers/RankThreeFinite/Batch66.lean",
+      "sha256": "869a40046aa4b4b18794ee8e37532c3b5527257b21bdf39880719460e830c6ff"
+    },
+    {
+      "module": "Papers.RankThreeIncidenceGeometry",
+      "source": "source/papers/rank_three_incidence_geometry.lean",
+      "path": "Papers/RankThreeIncidenceGeometry.lean",
+      "sha256": "4b60759686322a63e208d9743f6409887894149098a1e74b2bd706929c46b792"
+    },
+    {
+      "module": "Papers.RankThreePatternRealizations",
+      "source": "source/papers/rank_three_pattern_realizations.lean",
+      "path": "Papers/RankThreePatternRealizations.lean",
+      "sha256": "2209d05c484681b867f841da5b7e4cece497f5e973004681787b553c3481632a"
+    },
+    {
+      "module": "Papers.RationalApproximation",
+      "source": "source/papers/rational_approximation.lean",
+      "path": "Papers/RationalApproximation.lean",
+      "sha256": "a2909b7c5f60b6caedb79dd36dd76cf4893fe1b622b678a8084658b2d77f1996"
+    },
+    {
+      "module": "Papers.RationalCoordinates",
+      "source": "source/papers/rational_coordinates.lean",
+      "path": "Papers/RationalCoordinates.lean",
+      "sha256": "a2909b7c5f60b6caedb79dd36dd76cf4893fe1b622b678a8084658b2d77f1996"
+    },
+    {
+      "module": "Papers.RationalKernelCharts",
+      "source": "source/papers/rational_kernel_charts.lean",
+      "path": "Papers/RationalKernelCharts.lean",
+      "sha256": "a2909b7c5f60b6caedb79dd36dd76cf4893fe1b622b678a8084658b2d77f1996"
+    },
+    {
+      "module": "Papers.RationalityTenCoreNormalization",
+      "source": "source/papers/rationality_ten_core_normalization.lean",
+      "path": "Papers/RationalityTenCoreNormalization.lean",
+      "sha256": "073604ccbe10f1fbb03c571f7133d303d12b09046a4c3efe8e8761c855271baf"
+    },
+    {
+      "module": "Papers.RationalityTenOrdinaryPolytopeDensity",
+      "source": "source/papers/rationality_ten_ordinary_polytope_density.lean",
+      "path": "Papers/RationalityTenOrdinaryPolytopeDensity.lean",
+      "sha256": "e92b25818cdeef6b618b98c158341f1c875b245738ed783a9160c731c1235280"
+    },
+    {
+      "module": "Papers.RationalityTenPolygonMorseGraph",
+      "source": "source/papers/rationality_ten_polygon_morse_graph.lean",
+      "path": "Papers/RationalityTenPolygonMorseGraph.lean",
+      "sha256": "29aace1ba328da64a8997a201e5e1cac91fdce297d772a88542e3431664f6bc0"
+    },
+    {
+      "module": "Papers.RationalityTenPolygonRelationRanks",
+      "source": "source/papers/rationality_ten_polygon_relation_ranks.lean",
+      "path": "Papers/RationalityTenPolygonRelationRanks.lean",
+      "sha256": "0b1bcea2882c45dc4e82835590a2094c44b437af3a86aa44c8f77c889b73a841"
+    },
+    {
+      "module": "Papers.RationalityTenRankThreeContradictions",
+      "source": "source/papers/rationality_ten_rank_three_contradictions.lean",
+      "path": "Papers/RationalityTenRankThreeContradictions.lean",
+      "sha256": "e38d3aedee3388f52790f69b437b730b4c46599fe9c468ce55abae9d5b48ac10"
+    },
+    {
+      "module": "Papers.RationalityTenRelationSpaces",
+      "source": "source/papers/rationality_ten_relation_spaces.lean",
+      "path": "Papers/RationalityTenRelationSpaces.lean",
+      "sha256": "a44c6ecf9262be404cd6998c9f8434d827cc29f320c50d8262486326ba6859ad"
+    },
+    {
+      "module": "Papers.RationalityTenRestrictedColumns",
+      "source": "source/papers/rationality_ten_restricted_columns.lean",
+      "path": "Papers/RationalityTenRestrictedColumns.lean",
+      "sha256": "26b7448d6e244725b37e5ca3866a5e0dc1c19dfb815e28e3acd5ea8b00f43b08"
+    },
+    {
+      "module": "Papers.RationalityTenSmallQuadCores",
+      "source": "source/papers/rationality_ten_small_quad_cores.lean",
+      "path": "Papers/RationalityTenSmallQuadCores.lean",
+      "sha256": "32f1c9160b1009c36fdafa1e328f7c131c7e2f1ab3e183dfe79e9bad78d7e584"
+    },
+    {
+      "module": "Papers.RationalityTenSmallTripleCandidates",
+      "source": "source/papers/rationality_ten_small_triple_candidates.lean",
+      "path": "Papers/RationalityTenSmallTripleCandidates.lean",
+      "sha256": "0bd05964377ed37ddcb19ee27b6f5fb2364007d526afe88012d2ae27986c990c"
+    },
+    {
+      "module": "Papers.RationalityTenSmallTripleCores",
+      "source": "source/papers/rationality_ten_small_triple_cores.lean",
+      "path": "Papers/RationalityTenSmallTripleCores.lean",
+      "sha256": "457cce99bf1546df0e5b6d9f95856d9e8e6da361c7e7aa75026ff0830be41567"
+    },
+    {
+      "module": "Papers.RationalityTenSmallTripleDefinitions",
+      "source": "source/papers/rationality_ten_small_triple_definitions.lean",
+      "path": "Papers/RationalityTenSmallTripleDefinitions.lean",
+      "sha256": "e851bfe16fe190725a76159bc800a223e37396add5d928d8073731d87a699e35"
+    },
+    {
+      "module": "Papers.RationalityTenSupportBasics",
+      "source": "source/papers/rationality_ten_support_basics.lean",
+      "path": "Papers/RationalityTenSupportBasics.lean",
+      "sha256": "cbd1600ba4d9d6ec43a363b596d12d8c6999b7d3e2f8cb74328d6c9c79a2dc3c"
+    },
+    {
+      "module": "Papers.RealIncidenceCores",
+      "source": "source/papers/real_incidence_cores.lean",
+      "path": "Papers/RealIncidenceCores.lean",
+      "sha256": "e89667e9d0269cee383d3cdd66134393b3d157dde93e1b1e19579159279261da"
+    },
+    {
+      "module": "Papers.RelationMatrixDensity",
+      "source": "source/papers/relation_matrix_density.lean",
+      "path": "Papers/RelationMatrixDensity.lean",
+      "sha256": "46d942077ae69b6d75425a9587b01fad2186785dc335222091d5735edbc8c4af"
+    },
+    {
+      "module": "Papers.RichLineGeometry",
+      "source": "source/papers/rich_line_geometry.lean",
+      "path": "Papers/RichLineGeometry.lean",
+      "sha256": "0594dbb2df240bbcdbf6b88b5a3c954a38c0daed95859fe5a8405b80484bc4a9"
+    },
+    {
+      "module": "Papers.SimpleCornerFaces",
+      "source": "source/papers/simple_corner_faces.lean",
+      "path": "Papers/SimpleCornerFaces.lean",
+      "sha256": "5c203d69bbf5300bd7ecf2307d8a68d05468643beaa01d9f401ec8d75a4cf657"
+    },
+    {
+      "module": "Papers.SimpleDeletionIntrinsic",
+      "source": "source/papers/simple_deletion_intrinsic.lean",
+      "path": "Papers/SimpleDeletionIntrinsic.lean",
+      "sha256": "9473750ed193c99a0a26cee712c2930d4e6591f855d4790a9f29e1a83a3a8213"
+    },
+    {
+      "module": "Papers.SimplexFacetPresentation",
+      "source": "source/papers/simplex_facet_presentation.lean",
+      "path": "Papers/SimplexFacetPresentation.lean",
+      "sha256": "f863663cb1e974047304e80bae312c702b6905a8ec0048be3765ee521913e562"
+    },
+    {
+      "module": "Papers.SimplexFacetTransport",
+      "source": "source/papers/simplex_facet_transport.lean",
+      "path": "Papers/SimplexFacetTransport.lean",
+      "sha256": "f863663cb1e974047304e80bae312c702b6905a8ec0048be3765ee521913e562"
+    },
+    {
+      "module": "Papers.SmallRankChirotopeDensity",
+      "source": "source/papers/small_rank_chirotope_density.lean",
+      "path": "Papers/SmallRankChirotopeDensity.lean",
+      "sha256": "8799ee57cc6800522c9935741fb862ed9391e5fed4e1351f45ec9dc1196768cb"
+    },
+    {
+      "module": "Papers.SubfieldAffineForms",
+      "source": "source/papers/subfield_affine_forms.lean",
+      "path": "Papers/SubfieldAffineForms.lean",
+      "sha256": "a2909b7c5f60b6caedb79dd36dd76cf4893fe1b622b678a8084658b2d77f1996"
+    },
+    {
+      "module": "Papers.SupportFormIndependence",
+      "source": "source/papers/support_form_independence.lean",
+      "path": "Papers/SupportFormIndependence.lean",
+      "sha256": "e977cd8a29260f0cf1e36d94fb92132ce75cf90fb3d11e6e86e28554236fa411"
+    },
+    {
+      "module": "Papers.TwoFaceGraph",
+      "source": "source/papers/two_face_graph.lean",
+      "path": "Papers/TwoFaceGraph.lean",
+      "sha256": "f10d9f78f3eb427189114fb7e893b67b433c12751fb6bfecf6f7e0249487c7a7"
+    }
+  ]
+}
