@@ -1,0 +1,111 @@
+{
+  "status": "source_prepared_unelaborated_not_applied",
+  "original_challenge_sha256": "9ed707cacfd8055d3f309d14b42e916b0950ced5493141a6ade465f992abebae",
+  "challenge_sha256": "8e74531f5f06e7c37ec02fb2efcf6c9dcd491321b33b1f13c10cefdeadd66455",
+  "challenge_lines": 745,
+  "challenge_bytes": 35448,
+  "data_declarations": 59,
+  "theorem_bridges": [
+    {
+      "fresh": "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.paper_theorem_1_3_exterior_basis",
+      "actual_original": "PaperVerification.AlternatingForms.paper_theorem_1_3_exterior_basis",
+      "proof_application": "_root_.PaperVerification.AlternatingForms.paper_theorem_1_3_exterior_basis (k := k) (s := s)"
+    },
+    {
+      "fresh": "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.PathDeterminant.paperWalkCount_determinant",
+      "actual_original": "PaperVerification.AlternatingForms.PathDeterminant.paperWalkCount_determinant",
+      "proof_application": "_root_.PaperVerification.AlternatingForms.PathDeterminant.paperWalkCount_determinant (n := n) (s := s) (hs := hs)"
+    },
+    {
+      "fresh": "PalomarAlternatingLiteral.TauCeti.Sym.ofFn_surjective",
+      "actual_original": "TauCeti.Sym.ofFn_surjective",
+      "proof_application": "_root_.TauCeti.Sym.ofFn_surjective "
+    },
+    {
+      "fresh": "PalomarAlternatingLiteral.SymmetricPower.ext",
+      "actual_original": "SymmetricPower.ext",
+      "proof_application": "_root_.SymmetricPower.ext (hgh := hgh)"
+    },
+    {
+      "fresh": "PalomarAlternatingLiteral.SymmetricPower.map_rel",
+      "actual_original": "SymmetricPower.map_rel",
+      "proof_application": "_root_.SymmetricPower.map_rel (f := f)"
+    },
+    {
+      "fresh": "PalomarAlternatingLiteral.SymmetricPower.lift_rel",
+      "actual_original": "SymmetricPower.lift_rel",
+      "proof_application": "_root_.SymmetricPower.lift_rel (f := f) (hf := hf)"
+    },
+    {
+      "fresh": "PalomarAlternatingLiteral.SymmetricPower.map_id",
+      "actual_original": "SymmetricPower.map_id",
+      "proof_application": "_root_.SymmetricPower.map_id "
+    },
+    {
+      "fresh": "PalomarAlternatingLiteral.SymmetricPower.map_comp",
+      "actual_original": "SymmetricPower.map_comp",
+      "proof_application": "_root_.SymmetricPower.map_comp (f := f) (g := g)"
+    },
+    {
+      "fresh": "PalomarAlternatingLiteral.SymmetricPower.ofFn_orderOfSym",
+      "actual_original": "SymmetricPower.ofFn_orderOfSym",
+      "proof_application": "_root_.SymmetricPower.ofFn_orderOfSym (s := s)"
+    },
+    {
+      "fresh": "PalomarAlternatingLiteral.SymmetricPower.tprodOfSym_ofFn",
+      "actual_original": "SymmetricPower.tprodOfSym_ofFn",
+      "proof_application": "_root_.SymmetricPower.tprodOfSym_ofFn (R := R) (v := v) (f := f)"
+    },
+    {
+      "fresh": "PalomarAlternatingLiteral.SymmetricPower.toFinsuppMultilinear_domDomCongr",
+      "actual_original": "SymmetricPower.toFinsuppMultilinear_domDomCongr",
+      "proof_application": "_root_.SymmetricPower.toFinsuppMultilinear_domDomCongr (b := b) (e := e)"
+    },
+    {
+      "fresh": "PalomarAlternatingLiteral.SymmetricPower.toFinsupp_tprod_basis",
+      "actual_original": "SymmetricPower.toFinsupp_tprod_basis",
+      "proof_application": "_root_.SymmetricPower.toFinsupp_tprod_basis (b := b) (f := f)"
+    },
+    {
+      "fresh": "PalomarAlternatingLiteral.Representation.exteriorPower_apply",
+      "actual_original": "Representation.exteriorPower_apply",
+      "proof_application": "_root_.Representation.exteriorPower_apply (ρ := ρ) (d := d) (g := g)"
+    },
+    {
+      "fresh": "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.SymmetricPencil.original_relations_invariant",
+      "actual_original": "PaperVerification.AlternatingForms.SymmetricPencil.original_relations_invariant",
+      "proof_application": "_root_.PaperVerification.AlternatingForms.SymmetricPencil.original_relations_invariant (K := K) (t := t) (s := s) (g := g)"
+    },
+    {
+      "fresh": "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.SymmetricPencil.bigradedPiece_invariant",
+      "actual_original": "PaperVerification.AlternatingForms.SymmetricPencil.bigradedPiece_invariant",
+      "proof_application": "_root_.PaperVerification.AlternatingForms.SymmetricPencil.bigradedPiece_invariant (K := K) (t := t) (p := p) (q := q) (g := g)"
+    },
+    {
+      "fresh": "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopRepresentation.paper_corollary_5_2",
+      "actual_original": "PaperVerification.AlternatingForms.TopRepresentation.paper_corollary_5_2",
+      "proof_application": "_root_.PaperVerification.AlternatingForms.TopRepresentation.paper_corollary_5_2 (p := p) (q := q)"
+    },
+    {
+      "fresh": "PalomarAlternatingLiteral.PaperVerification.MainStatements.genericHilbertSeriesAndVanishing",
+      "actual_original": "PaperVerification.MainStatements.genericHilbertSeriesAndVanishing",
+      "proof_application": "_root_.PaperVerification.MainStatements.genericHilbertSeriesAndVanishing (n := n) (hdim := hdim)"
+    }
+  ],
+  "field_notation_rewrites": {
+    "_root_.Module.Basis.symmetricPower": "_root_.PalomarAlternatingLiteral.Module.Basis.symmetricPower",
+    "(stdRep k n).symmetricPower d": "PalomarAlternatingLiteral.Representation.symmetricPower (stdRep k n) d",
+    "ρ.exteriorPower d g": "PalomarAlternatingLiteral.Representation.exteriorPower ρ d g",
+    "((Pi.basisFun K (Fin 2)).symmetricPower d)": "(PalomarAlternatingLiteral.Module.Basis.symmetricPower (Pi.basisFun K (Fin 2)) d)",
+    "((coordinateRepresentation K t).exteriorPower s)": "(PalomarAlternatingLiteral.Representation.exteriorPower (coordinateRepresentation K t) s)",
+    "(TauCeti.symPowerRep K 2 q).symmetricPower (2*p+1)": "PalomarAlternatingLiteral.Representation.symmetricPower (TauCeti.symPowerRep K 2 q) (2*p+1)"
+  },
+  "source_modules_required": [
+    "PalomarOriginalSolution",
+    "PalomarLiteralInterface"
+  ],
+  "lake_membership_not_applied": "Add both own Source modules to the full package library roots; retain every original source and all existing audit assertions and expected declaration names.",
+  "semantics": "No new structures/classes/types. Literal data aliases, quotient constructions, coordinate maps and representations preserve original definitions. All principal and supporting theorem types retain exact original hypotheses and conclusions under the literal fresh namespace. Genuine Source proofs apply the actual original theorems by definitional equality; this bridge has not yet been elaborated.",
+  "validation": "Not a pass. The new module sequence is intended to isolate measured same-module private-proof and height chronology; complete raw closure still requires testing. All prior sources have been restored byte-for-byte before preparing this separate candidate.",
+  "whole_paper_coverage": false
+}

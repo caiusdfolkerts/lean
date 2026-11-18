@@ -35,8 +35,9 @@ automation:
   - method: agent
     tool_setup: OpenAI Codex
     notes: Current packaging, source-block migration, source mapping and independent
-      statement extraction are agent-assisted. Fresh build and Comparator evidence
-      are not yet available.
+      statement extraction are agent-assisted. The fresh literal Challenge passed canonical-only elaboration in run44380113477.
+      The unchanged audited source is retained; new same-semantics source bridges and
+      Comparator have not yet passed a full replay.
   - method: other
     tool_setup: Historical AI assistance reported in the included paper
     notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing

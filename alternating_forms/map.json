@@ -4,7 +4,7 @@
   "baseline_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
   "paper_sha256": "8b5fdb74a6c9c61ebf2ee4d89f71b6c07831524412731ff3f646074b6d416161",
   "one_entry_per_paper": true,
-  "status": "expanded_literal_context_entry_pending_elaboration",
+  "status": "fresh_literal_challenge_passed_full_source_bridges_and_comparator_unverified",
   "source_selection": [
     "paper.pdf",
     "README.md",
@@ -599,12 +599,8 @@
   },
   "challenge": {
     "path": "source/Challenge.lean",
-    "sha256": "9ed707cacfd8055d3f309d14b42e916b0950ced5493141a6ade465f992abebae",
-    "physical_lines": 741,
-    "bytes": 35151,
-    "local_elaboration": "not_run_for_current_hash",
-    "solution_build": "not_run_for_current_hash",
-    "comparator": "not_run_for_current_hash"
+    "sha256": "1a8200eb1e626093772ae90317803a0459e2ce7f47b1382713bf2d82693cf4a6",
+    "lines": 745
   },
   "packaging_changes": [
     {
@@ -621,5 +617,172 @@
       "kind": "literal_context_or_instance_repair",
       "evidence": "packaging/targeted-check-repair-r4.json"
     }
-  ]
+  ],
+  "coverage_status": "partial_principal_selection_not_whole_paper",
+  "uncovered_main_results_and_corollaries": [
+    {
+      "paper_result": "Theorem 1.2",
+      "uncovered_scope": "General regular zero-scheme geometric statement.",
+      "blocker_or_preparation": "Retained README excludes this general geometric theorem; no complete retained principal endpoint claimed.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Theorem 1.3 remaining algebraic/geometric clauses",
+      "uncovered_scope": "Literal ideal primality/saturation, affine charts, actual projective scheme/gluing and complete section-ring comparison.",
+      "blocker_or_preparation": "Source exists.882-line geometry extension prepares primality/saturation and exact affine coordinate charts; not applied or validated. Full scheme/section-ring interface remains uncovered.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Theorem 1.3 degenerations and Tor",
+      "uncovered_scope": "Both genuine coordinate-graded flat families, all endpoint fibers and actual ordinary graded Tor/Koszul clauses over complete section algebras.",
+      "blocker_or_preparation": "Full source closure is446 declarations/4646lines/236071bytes before compaction; independent split interfaces or explicit genuine bridges still required.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Theorem 4.1",
+      "uncovered_scope": "Remaining tautological Chern-class/evaluation conclusions.",
+      "blocker_or_preparation": "Retained README explicitly excludes parts; independent scope not selected.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Propositions 5.1, 5.3, 5.4",
+      "uncovered_scope": "Full bigraded Hilbert function, exact Koszul classification and graded Betti polynomials.",
+      "blocker_or_preparation": "Source/paper mapping retained; not independently selected.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Theorem 6.1; Proposition 6.2",
+      "uncovered_scope": "Exterior Koszul exactness and geometric cohomology consequences.",
+      "blocker_or_preparation": "Not independently selected; no whole-paper pass claimed.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Theorems 7.1, 7.2",
+      "uncovered_scope": "Positive-characteristic good monomial range and specified failure families.",
+      "blocker_or_preparation": "Not independently selected.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    }
+  ],
+  "whole_paper_coverage": false,
+  "baseline_project": "alternating_forms",
+  "fresh_literal_interface": {
+    "namespace": "PalomarAlternatingLiteral",
+    "data_declarations": 59,
+    "selected_names": [
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.paper_theorem_1_3_exterior_basis",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.PathDeterminant.paperWalkCount_determinant",
+      "PalomarAlternatingLiteral.TauCeti.Sym.ofFn_surjective",
+      "PalomarAlternatingLiteral.SymmetricPower.ext",
+      "PalomarAlternatingLiteral.SymmetricPower.map_rel",
+      "PalomarAlternatingLiteral.SymmetricPower.lift_rel",
+      "PalomarAlternatingLiteral.SymmetricPower.map_id",
+      "PalomarAlternatingLiteral.SymmetricPower.map_comp",
+      "PalomarAlternatingLiteral.SymmetricPower.ofFn_orderOfSym",
+      "PalomarAlternatingLiteral.SymmetricPower.tprodOfSym_ofFn",
+      "PalomarAlternatingLiteral.SymmetricPower.toFinsuppMultilinear_domDomCongr",
+      "PalomarAlternatingLiteral.SymmetricPower.toFinsupp_tprod_basis",
+      "PalomarAlternatingLiteral.Representation.exteriorPower_apply",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.SymmetricPencil.original_relations_invariant",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.SymmetricPencil.bigradedPiece_invariant",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopRepresentation.paper_corollary_5_2",
+      "PalomarAlternatingLiteral.PaperVerification.MainStatements.genericHilbertSeriesAndVanishing"
+    ],
+    "all17_actual_source_bridges": [
+      {
+        "fresh": "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.paper_theorem_1_3_exterior_basis",
+        "actual_original": "PaperVerification.AlternatingForms.paper_theorem_1_3_exterior_basis",
+        "proof_application": "_root_.PaperVerification.AlternatingForms.paper_theorem_1_3_exterior_basis (k := k) (s := s)"
+      },
+      {
+        "fresh": "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.PathDeterminant.paperWalkCount_determinant",
+        "actual_original": "PaperVerification.AlternatingForms.PathDeterminant.paperWalkCount_determinant",
+        "proof_application": "_root_.PaperVerification.AlternatingForms.PathDeterminant.paperWalkCount_determinant (n := n) (s := s) (hs := hs)"
+      },
+      {
+        "fresh": "PalomarAlternatingLiteral.TauCeti.Sym.ofFn_surjective",
+        "actual_original": "TauCeti.Sym.ofFn_surjective",
+        "proof_application": "_root_.TauCeti.Sym.ofFn_surjective "
+      },
+      {
+        "fresh": "PalomarAlternatingLiteral.SymmetricPower.ext",
+        "actual_original": "SymmetricPower.ext",
+        "proof_application": "_root_.SymmetricPower.ext (hgh := hgh)"
+      },
+      {
+        "fresh": "PalomarAlternatingLiteral.SymmetricPower.map_rel",
+        "actual_original": "SymmetricPower.map_rel",
+        "proof_application": "_root_.SymmetricPower.map_rel (f := f)"
+      },
+      {
+        "fresh": "PalomarAlternatingLiteral.SymmetricPower.lift_rel",
+        "actual_original": "SymmetricPower.lift_rel",
+        "proof_application": "_root_.SymmetricPower.lift_rel (f := f) (hf := hf)"
+      },
+      {
+        "fresh": "PalomarAlternatingLiteral.SymmetricPower.map_id",
+        "actual_original": "SymmetricPower.map_id",
+        "proof_application": "_root_.SymmetricPower.map_id "
+      },
+      {
+        "fresh": "PalomarAlternatingLiteral.SymmetricPower.map_comp",
+        "actual_original": "SymmetricPower.map_comp",
+        "proof_application": "_root_.SymmetricPower.map_comp (f := f) (g := g)"
+      },
+      {
+        "fresh": "PalomarAlternatingLiteral.SymmetricPower.ofFn_orderOfSym",
+        "actual_original": "SymmetricPower.ofFn_orderOfSym",
+        "proof_application": "_root_.SymmetricPower.ofFn_orderOfSym (s := s)"
+      },
+      {
+        "fresh": "PalomarAlternatingLiteral.SymmetricPower.tprodOfSym_ofFn",
+        "actual_original": "SymmetricPower.tprodOfSym_ofFn",
+        "proof_application": "_root_.SymmetricPower.tprodOfSym_ofFn (R := R) (v := v) (f := f)"
+      },
+      {
+        "fresh": "PalomarAlternatingLiteral.SymmetricPower.toFinsuppMultilinear_domDomCongr",
+        "actual_original": "SymmetricPower.toFinsuppMultilinear_domDomCongr",
+        "proof_application": "_root_.SymmetricPower.toFinsuppMultilinear_domDomCongr (b := b) (e := e)"
+      },
+      {
+        "fresh": "PalomarAlternatingLiteral.SymmetricPower.toFinsupp_tprod_basis",
+        "actual_original": "SymmetricPower.toFinsupp_tprod_basis",
+        "proof_application": "_root_.SymmetricPower.toFinsupp_tprod_basis (b := b) (f := f)"
+      },
+      {
+        "fresh": "PalomarAlternatingLiteral.Representation.exteriorPower_apply",
+        "actual_original": "Representation.exteriorPower_apply",
+        "proof_application": "_root_.Representation.exteriorPower_apply (\u03c1 := \u03c1) (d := d) (g := g)"
+      },
+      {
+        "fresh": "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.SymmetricPencil.original_relations_invariant",
+        "actual_original": "PaperVerification.AlternatingForms.SymmetricPencil.original_relations_invariant",
+        "proof_application": "_root_.PaperVerification.AlternatingForms.SymmetricPencil.original_relations_invariant (K := K) (t := t) (s := s) (g := g)"
+      },
+      {
+        "fresh": "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.SymmetricPencil.bigradedPiece_invariant",
+        "actual_original": "PaperVerification.AlternatingForms.SymmetricPencil.bigradedPiece_invariant",
+        "proof_application": "_root_.PaperVerification.AlternatingForms.SymmetricPencil.bigradedPiece_invariant (K := K) (t := t) (p := p) (q := q) (g := g)"
+      },
+      {
+        "fresh": "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopRepresentation.paper_corollary_5_2",
+        "actual_original": "PaperVerification.AlternatingForms.TopRepresentation.paper_corollary_5_2",
+        "proof_application": "_root_.PaperVerification.AlternatingForms.TopRepresentation.paper_corollary_5_2 (p := p) (q := q)"
+      },
+      {
+        "fresh": "PalomarAlternatingLiteral.PaperVerification.MainStatements.genericHilbertSeriesAndVanishing",
+        "actual_original": "PaperVerification.MainStatements.genericHilbertSeriesAndVanishing",
+        "proof_application": "_root_.PaperVerification.MainStatements.genericHilbertSeriesAndVanishing (n := n) (hdim := hdim)"
+      }
+    ],
+    "qualification_mapping": "qualification-rewrites.json",
+    "canonical_receipt": "reports/alternating_forms/challenge-diagnostic/run-44380113477/alternating_fresh_literal_r2/receipt.json",
+    "whole_original_audited_source_preserved": true
+  }
 }

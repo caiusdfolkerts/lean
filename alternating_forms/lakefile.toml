@@ -23,7 +23,7 @@ allowImportAll = true
 [[lean_lib]]
 name = "Palomar"
 srcDir = "source"
-roots = ["Challenge", "Solution"]
+roots = ["Challenge", "Solution", "PalomarOriginalSolution", "PalomarLiteralInterface"]
 allowImportAll = true
 
 [[lean_lib]]

@@ -39,6 +39,8 @@ noncomputable section
 set_option autoImplicit false
 open scoped BigOperators
 
+namespace PalomarAlternatingLiteral
+
 namespace PaperVerification.AlternatingForms
 section
 open scoped BigOperators
@@ -293,8 +295,8 @@ theorem ext {N : Type*} [AddCommMonoid N] [Module R N] {g h : Sym[R] ι M →ₗ
     (hgh : ∀ m : ι → M, g (⨂ₛ[R] i, m i) = h (⨂ₛ[R] i, m i)) : g = h := by sorry
 /-- Literal SymmetricPower.map_rel; precise source and scope recorded in the extraction map. -/
 theorem map_rel {N : Type*} [AddCommMonoid N] [Module R N] (f : M →ₗ[R] N) :
-    addConGen (Rel R ι M) ≤
-      AddCon.ker ((mk R ι N).toAddMonoidHom.comp
+    addConGen (_root_.SymmetricPower.Rel R ι M) ≤
+      AddCon.ker ((_root_.SymmetricPower.mk R ι N).toAddMonoidHom.comp
         (PiTensorProduct.map fun _ : ι => f).toAddMonoidHom) := by sorry
 end
 end SymmetricPower
@@ -308,10 +310,10 @@ variable [CommSemiring R] [AddCommMonoid M] [Module R M] [AddCommMonoid N] [Modu
 variable (f : MultilinearMap R (fun _ : ι ↦ M) N)
 /-- Literal SymmetricPower.lift_rel; precise source and scope recorded in the extraction map. -/
 theorem lift_rel (hf : ∀ e : Equiv.Perm ι, f.domDomCongr e = f) :
-    addConGen (Rel R ι M) ≤ AddCon.ker (PiTensorProduct.lift f).toAddMonoidHom := by sorry
+    addConGen (_root_.SymmetricPower.Rel R ι M) ≤ AddCon.ker (PiTensorProduct.lift f).toAddMonoidHom := by sorry
 /-- Literal SymmetricPower.lift; precise source and scope recorded in the extraction map. -/
 noncomputable def lift (hf : ∀ e : Equiv.Perm ι, f.domDomCongr e = f) : Sym[R] ι M →ₗ[R] N where
-  toFun := (addConGen (Rel R ι M)).lift (PiTensorProduct.lift f).toAddMonoidHom (lift_rel f hf)
+  toFun := (addConGen (_root_.SymmetricPower.Rel R ι M)).lift (PiTensorProduct.lift f).toAddMonoidHom (lift_rel f hf)
   map_add' := map_add _
   map_smul' r x := AddCon.induction_on x fun x => (PiTensorProduct.lift f).map_smul r x
 end
@@ -328,13 +330,13 @@ variable [AddCommMonoid M] [Module R M]
 noncomputable def map {N : Type*} [AddCommMonoid N] [Module R N] (f : M →ₗ[R] N) :
     Sym[R] ι M →ₗ[R] Sym[R] ι N where
   toFun :=
-    (addConGen (Rel R ι M)).lift
-      ((mk R ι N).toAddMonoidHom.comp
+    (addConGen (_root_.SymmetricPower.Rel R ι M)).lift
+      ((_root_.SymmetricPower.mk R ι N).toAddMonoidHom.comp
         (PiTensorProduct.map fun _ : ι => f).toAddMonoidHom)
       (map_rel f)
   map_add' := map_add _
   map_smul' r x := AddCon.induction_on x fun x => by
-    exact congrArg (mk R ι N) ((PiTensorProduct.map fun _ : ι => f).map_smul r x)
+    exact congrArg (_root_.SymmetricPower.mk R ι N) ((PiTensorProduct.map fun _ : ι => f).map_smul r x)
 /-- Literal SymmetricPower.map_id; precise source and scope recorded in the extraction map. -/
 theorem map_id :
     map (ι := ι) (LinearMap.id (R := R) (M := M)) = LinearMap.id := by sorry
@@ -455,11 +457,11 @@ noncomputable def linearEquivFinsupp : Sym[R]^n M ≃ₗ[R] (Sym κ n →₀ R) 
       rw [Finsupp.linearCombination_single, one_smul, ← ofFn_orderOfSym s, tprodOfSym_ofFn,
         toFinsupp_tprod_basis, ofFn_orderOfSym])
     (by
-      apply (LinearMap.cancel_right (LinearMap.range_eq_top.1 (range_mk R (Fin n) M))).1
+      apply (LinearMap.cancel_right (LinearMap.range_eq_top.1 (_root_.SymmetricPower.range_mk R (Fin n) M))).1
       refine (Basis.piTensorProduct fun _ : Fin n => b).ext fun f => ?_
       -- `⨂ₛ` is the quotient map applied to `⨂ₜ`.
-      have hmk : mk R (Fin n) M (⨂ₜ[R] i, b (f i)) = ⨂ₛ[R] i, b (f i) := by
-        rw [tprod, LinearMap.compMultilinearMap_apply]
+      have hmk : _root_.SymmetricPower.mk R (Fin n) M (⨂ₜ[R] i, b (f i)) = ⨂ₛ[R] i, b (f i) := by
+        rw [_root_.SymmetricPower.tprod, LinearMap.compMultilinearMap_apply]
       simp [hmk, toFinsupp_tprod_basis, tprodOfSym_ofFn])
 end
 end SymmetricPower
@@ -494,7 +496,7 @@ variable [CommSemiring R] [AddCommMonoid M] [Module R M]
 variable (b : Basis κ R M)
 variable (n)
 /-- Literal Module.Basis.symmetricPower; precise source and scope recorded in the extraction map. -/
-noncomputable def _root_.Module.Basis.symmetricPower : Basis (Sym κ n) R (Sym[R]^n M) :=
+noncomputable def _root_.PalomarAlternatingLiteral.Module.Basis.symmetricPower : Basis (Sym κ n) R (Sym[R]^n M) :=
   Basis.ofRepr (linearEquivFinsupp n b)
 end
 end SymmetricPower
@@ -521,7 +523,7 @@ variable [CommRing k]
 /-- Literal TauCeti.symPowerRep; precise source and scope recorded in the extraction map. -/
 noncomputable abbrev symPowerRep :
     Representation k (GL (Fin n) k) (Sym[k]^d (Fin n → k)) :=
-  (stdRep k n).symmetricPower d
+  PalomarAlternatingLiteral.Representation.symmetricPower (stdRep k n) d
 end
 end TauCeti
 
@@ -540,7 +542,7 @@ noncomputable def exteriorPower (ρ : Representation R G M) (d : ℕ) :
   map_mul' g h := by simp [Module.End.mul_eq_comp]
 /-- Literal Representation.exteriorPower_apply; precise source and scope recorded in the extraction map. -/
 theorem exteriorPower_apply (ρ : Representation R G M) (d : ℕ) (g : G) :
-    ρ.exteriorPower d g = _root_.exteriorPower.map d (ρ g) := by sorry
+    PalomarAlternatingLiteral.Representation.exteriorPower ρ d g = _root_.exteriorPower.map d (ρ g) := by sorry
 end
 end Representation
 
@@ -558,7 +560,7 @@ def binaryIndex (d : ℕ) : Sym (Fin 2) d ≃ Fin (d+1) :=
   (TauCeti.symFinTwoEquiv d).trans Fin.revPerm
 /-- Literal PaperVerification.AlternatingForms.SymmetricPencil.binaryBasis; precise source and scope recorded in the extraction map. -/
 def binaryBasis (d : ℕ) : Module.Basis (Fin (d+1)) K (SymmetricDegree K d) :=
-  ((Pi.basisFun K (Fin 2)).symmetricPower d).reindex (binaryIndex d)
+  (PalomarAlternatingLiteral.Module.Basis.symmetricPower (b := Pi.basisFun K (Fin 2)) (n := d)).reindex (binaryIndex d)
 /-- Literal PaperVerification.AlternatingForms.SymmetricPencil.Model; precise source and scope recorded in the extraction map. -/
 abbrev Model (t : ℕ) := Module.Dual K (SymmetricDegree K t) × SymmetricDegree K (t+1)
 /-- Literal PaperVerification.AlternatingForms.SymmetricPencil.modelRepresentation; precise source and scope recorded in the extraction map. -/
@@ -640,7 +642,7 @@ theorem original_relations_invariant (t s : ℕ) (g : GL (Fin 2) K) :
 /-- Literal PaperVerification.AlternatingForms.SymmetricPencil.quotientRepresentation; precise source and scope recorded in the extraction map. -/
 def quotientRepresentation (t s : ℕ) :
     Representation K (GL (Fin 2) K) (OddExteriorQuotientDegree (K := K) (t+1) s) :=
-  ((coordinateRepresentation K t).exteriorPower s).quotient _
+  (PalomarAlternatingLiteral.Representation.exteriorPower (coordinateRepresentation K t) s).quotient _
     (by
       intro g
       simpa only [Representation.exteriorPower_apply] using original_relations_invariant K t s g)
@@ -691,7 +693,7 @@ variable (K : Type) [Field K]
 /-- Literal PaperVerification.AlternatingForms.TopRepresentation.plethysmRepresentation; precise source and scope recorded in the extraction map. -/
 def plethysmRepresentation (p q : ℕ) :
     Representation K (GL (Fin 2) K) (Sym[K]^(2*p+1) (Sym[K]^q (Fin 2 → K))) :=
-  (TauCeti.symPowerRep K 2 q).symmetricPower (2*p+1)
+  PalomarAlternatingLiteral.Representation.symmetricPower (TauCeti.symPowerRep K 2 q) (2*p+1)
 end
 end PaperVerification.AlternatingForms.TopRepresentation
 
@@ -739,3 +741,5 @@ theorem genericHilbertSeriesAndVanishing (n : ℕ) (hdim : Module.finrank K M = 
                 x = 0 := by sorry
 end
 end PaperVerification.MainStatements
+
+end PalomarAlternatingLiteral
