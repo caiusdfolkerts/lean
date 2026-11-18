@@ -1,0 +1,18 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "PalomarEllipsoid.intrinsic_reconstruction",
+    "PalomarEllipsoid.uniform_holder_recovery",
+    "PalomarEllipsoid.sharp_holder_recovery",
+    "PalomarEllipsoid.sharp_holder_recovery_at_fixed_volume",
+    "PalomarEllipsoid.coefficient_transform_theorem",
+    "PalomarEllipsoid.coefficient_transform_manifold_with_corners",
+    "PalomarEllipsoid.measured_coefficient_box"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}
