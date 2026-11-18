@@ -187,6 +187,50 @@ variable {K P}
   naturality : ∀ p q (h : q ≤ p) x,
     E.res h (component p x) = component q (D.res h x)
 end FourPapers.Universal
+
+namespace FourPapers.Universal.CoherentEquiv
+section
+set_option backward.isDefEq.respectTransparency false
+universe u v w
+variable (K : Type u) [CommRing K] (P : Type v) [Preorder P]
+variable {K P}
+variable {D E F : ModuleDiagram K P}
+/-- Literal original coherent inverse-limit construction. -/
+def symm (e : CoherentEquiv D E) : CoherentEquiv E D where
+  component p := (e.component p).symm
+  naturality p q h x := by
+    apply (e.component q).injective
+    simpa using (e.naturality p q h ((e.component p).symm x)).symm
+/-- Literal original coherent inverse-limit construction. -/
+def sectionEquiv (e : CoherentEquiv D E) : D.sections ≃ₗ[K] E.sections where
+  toFun x := ⟨fun p => e.component p (x.val p), by
+    intro p q h
+    rw [e.naturality, x.property p q h]⟩
+  invFun x := ⟨fun p => (e.component p).symm (x.val p), by
+    intro p q h
+    change D.res h (e.symm.component p (x.val p)) =
+      e.symm.component q (x.val q)
+    exact (e.symm.naturality p q h (x.val p)).trans
+      (congrArg (e.symm.component q) (x.property p q h))⟩
+  left_inv x := by
+    apply Subtype.ext
+    funext p
+    exact (e.component p).symm_apply_apply (x.val p)
+  right_inv x := by
+    apply Subtype.ext
+    funext p
+    exact (e.component p).apply_symm_apply (x.val p)
+  map_add' x y := by
+    apply Subtype.ext
+    funext p
+    exact map_add (e.component p) (x.val p) (y.val p)
+  map_smul' c x := by
+    apply Subtype.ext
+    funext p
+    exact map_smul (e.component p) c (x.val p)
+end
+end FourPapers.Universal.CoherentEquiv
+
 namespace FourPapers.Universal
 set_option backward.isDefEq.respectTransparency false
 open Classical MvPolynomial
