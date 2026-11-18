@@ -265,7 +265,7 @@ theorem lattice_corollary_1_2 (ν : Measure PositiveParameter) (hν : ν≠0) :
     (∀ n : ℕ, 8 ≤ n → Even n →
       (∀ x : Fin n → ℝ, setMixtureEnergyENNReal (dPlusSet n) ν x≠∞) →
       ∀ x : Fin n → ℝ, IsMixtureColdSpot (dPlusSet n) ν x ↔ IsDeepHole (dPlusSet n) x) := by
-  exact PaperVerification.ColdSpots.lattice_corollary_1_2
+  exact PaperVerification.ColdSpots.lattice_corollary_1_2 ν hν
 
 end PalomarColdSpots
 
