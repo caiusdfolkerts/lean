@@ -1,0 +1,230 @@
+{
+  "project": "normal_projective_main_complete",
+  "baseline_revision": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
+  "status": "complete18_target_source_prepared_candidate_uncompiled",
+  "selected_results": [
+    {
+      "declaration": "NormalProjective.CanonicalModel.Realization.pnRelated_iff_same_component",
+      "source_file": "source/normal_projective/complete.lean",
+      "source_line": 999,
+      "challenge_line": 209
+    },
+    {
+      "declaration": "NormalProjective.CanonicalModel.Realization.local_word_neighbourhood",
+      "source_file": "source/normal_projective/complete.lean",
+      "source_line": 273,
+      "challenge_line": 204
+    },
+    {
+      "declaration": "NormalProjective.simple_three_pn_unique",
+      "source_file": "source/cor2_complete.lean",
+      "source_line": 319,
+      "challenge_line": 301
+    },
+    {
+      "declaration": "NormalProjective.simple_three_faceOrderIso_pn",
+      "source_file": "source/cor2_complete.lean",
+      "source_line": 788,
+      "challenge_line": 304
+    },
+    {
+      "declaration": "NormalProjective.CubeUpper.every_cube_exact_word_of_faceOrderIso",
+      "source_file": "source/cor2_complete.lean",
+      "source_line": 823,
+      "challenge_line": 361
+    },
+    {
+      "declaration": "NormalProjective.CubeTargetLabels.cyclic_to_geometric_cube_lower_bound",
+      "source_file": "source/normal_projective/complete.lean",
+      "source_line": 4292,
+      "challenge_line": 375
+    },
+    {
+      "declaration": "NormalProjective.CubeTargetLabels.geometric_largest_PN_distance",
+      "source_file": "source/normal_projective/complete.lean",
+      "source_line": 4342,
+      "challenge_line": 393
+    },
+    {
+      "declaration": "PalomarNormalCorollary7.paired_segment_crosspolytope",
+      "original_declaration": null,
+      "challenge_file": "Challenge.lean",
+      "challenge_line": 454,
+      "solution_file": "Solution.lean",
+      "solution_line": 71,
+      "source_declaration_kind": "new_explicit_bridge_from_existing_proved_results",
+      "role": "substantive_paper_corollary"
+    }
+  ],
+  "equivalent_formulations": {
+    "Lemma 4": "CanonicalModel.Realization.local_word_neighbourhood is the intrinsic statement; normalized_matrix_local_word is the raw-coordinate presentation of this same local result.",
+    "Theorem 3 upper bound": "every_cube_exact_word_of_faceOrderIso includes the arbitrary actual face-isomorphism case and the special fixed referenceCube case.",
+    "Corollary 2": "simple_three_faceOrderIso_pn includes arbitrary labels; simple_three_pn_unique separately records the full fixed labelled realization space."
+  },
+  "challenge": {
+    "lines": 460,
+    "bytes": 21279,
+    "imports_only_canonical_mathlib": true,
+    "custom_definitions": "Independent literal data definitions, exact original universe names and scoped canonical instance contexts. The five definition_names values are completely fixed by the compared specifications below; proof-only fields support well-typed construction."
+  },
+  "blockers": [
+    "Actual new combined Challenge/Source bridge/Solution compilation has not run.",
+    "Actual Comparator and independent kernels remain pending.",
+    "Fresh clean editorial review and exact replacement intake approval required before registration."
+  ],
+  "module_migration": "Not needed: all 99 baseline source modules already have module headers and are below 10000 lines.",
+  "definition_specifications": [
+    {
+      "definition": "NormalProjective.CanonicalModel.Presentation.relabel",
+      "meaning": "The same actual presentation with facet labels reindexed by the given equivalence.",
+      "constraints": [
+        "NormalProjective.CanonicalModel.Presentation.relabel_normal",
+        "NormalProjective.CanonicalModel.Presentation.relabel_support"
+      ],
+      "determination": "These fix every normal and support coordinate. All remaining Presentation fields and the Realization subtype property are propositions."
+    },
+    {
+      "definition": "NormalProjective.CyclicCube.referenceCube",
+      "meaning": "The unit cube cut out by -x_i<=0 and x_i<=1, with exactly the given lower/upper coordinate facet labels.",
+      "constraints": [
+        "PalomarNormal.referenceCube_data"
+      ],
+      "determination": "Both normal and support functions are fixed by explicitly displayed Euclidean normalization of the literal cyclic matrix at epsilon=0."
+    },
+    {
+      "definition": "NormalProjective.CyclicCube.realization",
+      "meaning": "The labelled cyclic family -x_i<=0 and x_i+epsilon*x_(i+1)<=1 in the fixed cube type.",
+      "constraints": [
+        "PalomarNormal.cyclicRealization_data"
+      ],
+      "determination": "Every normal/support coordinate of the actual Presentation value is fixed; its remaining fields and the same-labelled-type membership are propositions."
+    },
+    {
+      "definition": "NormalProjective.CubeTargetLabels.GeometricLength",
+      "meaning": "Existence of a genuine PN word of total length k ending at the geometric centred cube, allowing all induced endpoint facet labels.",
+      "constraints": [
+        "PalomarNormal.geometricLength_iff"
+      ],
+      "determination": "A literal iff fixes the complete predicate, including endpoint carrier, genuine word and separate p/q counts."
+    },
+    {
+      "definition": "NormalProjective.CubeTargetLabels.geometricPNDistance",
+      "meaning": "The least total length of such an actual geometric word.",
+      "constraints": [
+        "PalomarNormal.geometricPNDistance_isLeast"
+      ],
+      "determination": "The IsLeast specification fixes the natural-number value uniquely without importing a choice-proof AST."
+    }
+  ],
+  "baseline_project": "normal_projective",
+  "local_validation": {
+    "Challenge": {
+      "exit_code": 0,
+      "flags": [
+        "-M3072",
+        "-j1"
+      ],
+      "log": "reports/normal_projective/context-fix3-Challenge-check.log"
+    },
+    "minimal_DiagnosticSolution": {
+      "exit_code": 0,
+      "scope": "Imported normal_projective.complete rather than the final normal_projective root; proves four identical final specification theorems.",
+      "log": "reports/normal_projective/context-fix2-DiagnosticSolution-check.log"
+    },
+    "all_reachable_raw_comparison_audit": {
+      "status": "completed",
+      "visited": 15779,
+      "mismatches": 0,
+      "log": "reports/normal_projective/context3-all-raw-mismatches.log",
+      "theorem_names": [
+        "NormalProjective.CubeTargetLabels.geometric_largest_PN_distance",
+        "PalomarNormal.referenceCube_data",
+        "PalomarNormal.cyclicRealization_data",
+        "PalomarNormal.geometricLength_iff",
+        "PalomarNormal.geometricPNDistance_isLeast"
+      ],
+      "definition_names": [
+        "NormalProjective.CyclicCube.referenceCube",
+        "NormalProjective.CyclicCube.realization",
+        "NormalProjective.CubeTargetLabels.GeometricLength",
+        "NormalProjective.CubeTargetLabels.geometricPNDistance"
+      ],
+      "note": "Read-only export diagnostic, not a full Comparator/default-kernel run."
+    },
+    "final_scope": {
+      "theorem_names": [
+        "NormalProjective.CanonicalModel.Realization.pnRelated_iff_same_component",
+        "NormalProjective.CanonicalModel.Realization.local_word_neighbourhood",
+        "NormalProjective.simple_three_pn_unique",
+        "NormalProjective.simple_three_faceOrderIso_pn",
+        "NormalProjective.CubeUpper.every_cube_exact_word_of_faceOrderIso",
+        "NormalProjective.CubeTargetLabels.cyclic_to_geometric_cube_lower_bound",
+        "NormalProjective.CubeTargetLabels.geometric_largest_PN_distance",
+        "PalomarNormal.referenceCube_data",
+        "PalomarNormal.cyclicRealization_data",
+        "PalomarNormal.geometricLength_iff",
+        "PalomarNormal.geometricPNDistance_isLeast",
+        "NormalProjective.CanonicalModel.Presentation.relabel_normal",
+        "NormalProjective.CanonicalModel.Presentation.relabel_support",
+        "NormalProjective.CanonicalModel.Presentation.sameLabelledType_refl",
+        "NormalProjective.CanonicalModel.Realization.affineRelated_refl",
+        "NormalProjective.CanonicalModel.Realization.affineRelated_symm",
+        "NormalProjective.CanonicalModel.Realization.affineRelated_trans",
+        "PalomarNormalCorollary7.paired_segment_crosspolytope"
+      ],
+      "definition_names": [
+        "NormalProjective.CanonicalModel.Presentation.relabel",
+        "NormalProjective.CyclicCube.referenceCube",
+        "NormalProjective.CyclicCube.realization",
+        "NormalProjective.CubeTargetLabels.GeometricLength",
+        "NormalProjective.CubeTargetLabels.geometricPNDistance"
+      ],
+      "not_locally_validated": "This distinct core17 snapshot, official Comparator and independent kernels; all local compilation is off."
+    }
+  },
+  "canonical_context_fix": "HalfspaceData has exact original generated universe namesu_3/u_4; early source normed-field inference is preserved by locally enabling later RCLike.toInnerProductSpaceReal only at RootedGeometry and data specifications. No mathematical change.",
+  "prior18_full_preflight": {
+    "commit": "8ecec348c42c335884d80df8059f955f824bba2d",
+    "run_id": 44326369283,
+    "status": "PASS_mechanical_only"
+  },
+  "unselected_retained_example": {
+    "declaration": "NormalProjective.PolarCorrection.boundary_origin_counterexample",
+    "file": "source/normal_projective/polar_correction.lean",
+    "line": 43,
+    "role": "Unselected boundary-hypothesis check; not claimed independent research result or principal-proof dependency.",
+    "proof_source_unchanged": true
+  },
+  "required_corollary7": {
+    "status": "complete_literal_statement_and_proof_candidate_uncompiled",
+    "declaration": "PalomarNormalCorollary7.paired_segment_crosspolytope",
+    "challenge_file": "Challenge.lean",
+    "solution_file": "Solution.lean",
+    "support_modules": [
+      "Cor7FiniteHullExposure",
+      "Cor7PairFreeSupport",
+      "Cor7SourcePolarBridge"
+    ],
+    "paper_page": 7,
+    "original_proved_dependencies": [
+      "NormalProjective.PairedHalfspaces.patternVertex_incidence",
+      "NormalProjective.NormalizedCubeMoves.realizes_of_sites",
+      "NormalProjective.NormalizedCubeMoves.exposed_normals",
+      "NormalProjective.interior_lt_support"
+    ],
+    "actual_geometry": "Exact actual extremePoints and all nonempty proper exposed faces; no added distinctness/symmetry/origin or finite-model hypothesis."
+  },
+  "canonical_subchecks": {
+    "Cor7_39line_Challenge": {
+      "run_id": 44372929933,
+      "exit_code": 0,
+      "sha256": "b5eff90cfc2150016289f6a1c9f7d89749c0fba0c1c6b64c9d9abd1c100ba486"
+    },
+    "generic_exposure112_actual_proof_module": {
+      "run_id": 44380113477,
+      "exit_code": 0,
+      "sha256": "ab2fe6eaf8b5c11e706b9f502c3030b450123ec3decb4d2ce4c4c1f97b32b1a1"
+    },
+    "scope_limit": "Neither result is a combined460-line Challenge, Source bridge, final Solution or official full-preflight pass."
+  }
+}

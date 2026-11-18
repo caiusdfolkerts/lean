@@ -1,5 +1,0 @@
-module
-
-public import Papers.GraphicalZonotopes.ThreeTreeTriangleApex
-public import Papers.GraphicalZonotopes.TriangleApexCount
-
