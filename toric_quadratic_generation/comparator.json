@@ -2,9 +2,9 @@
   "challenge_module": "Challenge",
   "solution_module": "Solution",
   "theorem_names": [
-    "ToricQuadratic.normal_and_quadratic",
-    "ToricQuadratic.prescribed_parity",
-    "ToricQuadratic.adjoint_decomposition"
+    "PalomarLongEdges.normal_and_quadratic",
+    "PalomarLongEdges.prescribed_parity",
+    "PalomarLongEdges.adjoint_decomposition"
   ],
   "permitted_axioms": [
     "propext",

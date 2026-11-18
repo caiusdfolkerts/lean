@@ -42,11 +42,14 @@ automation:
 review:
   status: unchecked
   notes: >-
-    The independent Challenge has elaborated under the pinned Lean4.35.0.
+    The earlier Challenge elaborated under pinned Lean4.35.0 but its original-name
+    clones failed raw Comparator statement equality after the original Solution
+    built successfully. A fresh literal wrapper is now prepared and unchecked.
     No fresh Solution build, Comparator comparison,
     NanoDa check, or mathematical peer review is claimed. Challenge definitions
-    repeat the original names and source bodies; the intended comparison must
-    still be validated mechanically.
+    retain the source semantics in a fresh namespace, repeated literally in
+    Solution; actual proofs construct original records and invoke the full
+    original theorems. The new raw comparison remains to be verified.
 limitations:
   - The two original divisor/scheme formulations are present in the substantive project but are not separate compared declarations; their polytope counterparts are selected.
   - The file is a complete project copy with local comparison additions, rather than a thin wrapper around a separately imported substantive repository.

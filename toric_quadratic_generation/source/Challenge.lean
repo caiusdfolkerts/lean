@@ -11,13 +11,16 @@ polytope formulations of the two mixed decomposition theorems in Caius Folkerts,
 pages 1–2 of the accompanying paper.pdf. The divisor formulations have additional
 geometric content and are not asserted here. All custom mathematical definitions
 are inlined below from the pinned substantive development; no project module is
-imported by this statement. The Solution imports the original proof development.
+imported by this statement. The Solution repeats this literal statement prefix in the same fresh namespace
+and proves the claims by constructing the original polytope records and applying
+the original full theorems. This avoids asking Comparator to identify raw
+expressions generated in different historical declaration contexts.
 -/
 
 @[expose] public noncomputable section
 open scoped Pointwise
 open AddMonoidAlgebra
-namespace PaperVerification.ToricExchange
+namespace PalomarLongEdges.ToricExchange
 variable {M : Type*} [AddCommGroup M] (A : Set M)
 /-- Sum of the underlying lattice elements in a finite multiset. -/
 def total (s : Multiset A) : M := (s.map Subtype.val).sum
@@ -65,10 +68,10 @@ def IntegerDecompositionProperty : Prop :=
     ∃ s : Multiset (latticePoints embedding P), s.card = k ∧
       total (latticePoints embedding P) s = z
 
-end PaperVerification.ToricExchange
+end PalomarLongEdges.ToricExchange
 
-namespace PaperVerification.ToricGeometry
-open PaperVerification.ToricExchange
+namespace PalomarLongEdges.ToricGeometry
+open PalomarLongEdges.ToricExchange
 /-- The character lattice in standard integral coordinates. -/
 abbrev Lattice (n : ℕ) := Fin n → ℤ
 /-- Its real scalar extension in standard coordinates. -/
@@ -148,10 +151,10 @@ abbrev ParityClass (n : ℕ) := Lattice n ⧸ twiceLattice n
 /-- Send a lattice vector to its actual class modulo the doubled lattice. -/
 def parityClass (n : ℕ) : Lattice n →+ ParityClass n :=
   QuotientAddGroup.mk' (twiceLattice n)
-end PaperVerification.ToricGeometry
+end PalomarLongEdges.ToricGeometry
 
-namespace ToricQuadratic
-open PaperVerification.ToricGeometry PaperVerification.ToricExchange
+namespace PalomarLongEdges
+open PalomarLongEdges.ToricGeometry PalomarLongEdges.ToricExchange
 /-- Theorem 1.1. Every positive dimension, every field, all positive
 dilations, and the actual kernel of `X a ↦ χ^a t` are retained. -/
 theorem normal_and_quadratic
@@ -183,4 +186,4 @@ theorem adjoint_decomposition
         {m : Lattice n | embed n m ∈ interior Q.carrier} =
       {m : Lattice n | embed n m ∈ interior (P.minkowskiSum Q)} := by sorry
 
-end ToricQuadratic
+end PalomarLongEdges
