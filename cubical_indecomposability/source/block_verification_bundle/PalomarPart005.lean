@@ -46,7 +46,7 @@ namespace CubicalIndecomposability.Block.Rigidity
 
 open scoped BigOperators
 
-abbrev Assignment := Fin 32 → Fin 4 → ℝ
+-- Assignment is imported from the preceding shard.
 
 theorem bundle_be976f91f8_coordinate_vertex004 (h : Assignment) (H : Constraints h) (i : Fin 4) :
     h (⟨4, by decide⟩ : Fin 32) i = ∑ k : Fin 7, coefficients (⟨4, by decide⟩ : Fin 32) i k * seeds h k := by
