@@ -49,7 +49,11 @@ review:
     NanoDa check, or mathematical peer review is claimed. Challenge definitions
     retain the source semantics in a fresh namespace, repeated literally in
     Solution; actual proofs construct original records and invoke the full
-    original theorems. The new raw comparison remains to be verified.
+    original theorems. The first literal-wrapper comparison then found a raw
+    proof-field mismatch in twiceLattice. Elementary grade, embedding, and subgroup
+    laws are now explicitly named and selected for statement comparison, with
+    their proof bodies supplying the record fields. The corrected comparison
+    remains unverified.
 limitations:
   - The two original divisor/scheme formulations are present in the substantive project but are not separate compared declarations; their polytope counterparts are selected.
   - The file is a complete project copy with local comparison additions, rather than a thin wrapper around a separately imported substantive repository.

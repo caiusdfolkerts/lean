@@ -2,6 +2,13 @@
   "challenge_module": "Challenge",
   "solution_module": "Solution",
   "theorem_names": [
+    "PalomarLongEdges.ToricExchange.grade_zero",
+    "PalomarLongEdges.ToricExchange.grade_add",
+    "PalomarLongEdges.ToricGeometry.embedFn_zero",
+    "PalomarLongEdges.ToricGeometry.embedFn_add",
+    "PalomarLongEdges.ToricGeometry.twiceLattice_zero",
+    "PalomarLongEdges.ToricGeometry.twiceLattice_add",
+    "PalomarLongEdges.ToricGeometry.twiceLattice_neg",
     "PalomarLongEdges.normal_and_quadratic",
     "PalomarLongEdges.prescribed_parity",
     "PalomarLongEdges.adjoint_decomposition"

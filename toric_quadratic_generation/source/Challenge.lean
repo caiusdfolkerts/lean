@@ -24,11 +24,18 @@ namespace PalomarLongEdges.ToricExchange
 variable {M : Type*} [AddCommGroup M] (A : Set M)
 /-- Sum of the underlying lattice elements in a finite multiset. -/
 def total (s : Multiset A) : M := (s.map Subtype.val).sum
+/-- The grade of the empty multiset is zero. This law is separately compared. -/
+theorem grade_zero : (total A 0, (0 : Multiset A).card) = (0 : M × ℕ) := by
+  simp [total]
+/-- Grade is additive on actual multiset sums. This law is separately compared. -/
+theorem grade_add (s t : Multiset A) :
+    (total A (s + t), (s + t).card) = (total A s, s.card) + (total A t, t.card) := by
+  simp [total]
 /-- The degree and lattice sum of a multiset monomial. -/
 def grade : Multiset A →+ M × ℕ where
   toFun s := (total A s, s.card)
-  map_zero' := by simp [total]
-  map_add' s t := by simp [total]
+  map_zero' := grade_zero A
+  map_add' := grade_add A
 variable (R : Type*) [CommRing R]
 /-- The homogeneous toric map before the multiset/multiplicity identification. -/
 noncomputable def multisetToricMap : AddMonoidAlgebra R (Multiset A) →+* AddMonoidAlgebra R (M × ℕ) :=
@@ -76,11 +83,18 @@ open PalomarLongEdges.ToricExchange
 abbrev Lattice (n : ℕ) := Fin n → ℤ
 /-- Its real scalar extension in standard coordinates. -/
 abbrev Ambient (n : ℕ) := Fin n → ℝ
+/-- The underlying ordinary coordinatewise integral-to-real inclusion. -/
+def embedFn (n : ℕ) (z : Lattice n) : Ambient n := fun i => z i
+/-- The coordinate inclusion preserves zero; separately compared. -/
+theorem embedFn_zero (n : ℕ) : embedFn n 0 = 0 := by ext i; simp [embedFn]
+/-- The coordinate inclusion preserves addition; separately compared. -/
+theorem embedFn_add (n : ℕ) (z w : Lattice n) :
+    embedFn n (z + w) = embedFn n z + embedFn n w := by ext i; simp [embedFn]
 /-- The standard inclusion of the full lattice into its real vector space. -/
 def embed (n : ℕ) : Lattice n →+ Ambient n where
-  toFun z i := z i
-  map_zero' := by ext i; simp
-  map_add' z w := by ext i; simp
+  toFun := embedFn n
+  map_zero' := embedFn_zero n
+  map_add' := embedFn_add n
 /-- A full-dimensional lattice polytope, given by a finite generating set.
 The generating set is not required to contain only vertices. -/
 structure LatticePolytope (n : ℕ) where
@@ -134,16 +148,28 @@ def minkowskiSum (Q : LatticePolytope n) : Set (Ambient n) := P.carrier + Q.carr
 /-- Full IDP of the polytope, using every positive natural dilation. -/
 def HasIDP : Prop := IntegerDecompositionProperty (embed n) P.carrier
 end LatticePolytope
-/-- The actual subgroup 2M of the coordinate lattice. -/
+/-- The displayed doubled lattice contains zero; separately compared. -/
+theorem twiceLattice_zero (n : ℕ) : ∃ w : Lattice n, (0 : Lattice n) = w + w := by
+  exact ⟨0, by simp⟩
+/-- The displayed doubled lattice is closed under addition; separately compared. -/
+theorem twiceLattice_add (n : ℕ) {a b : Lattice n}
+    (ha : ∃ u, a = u + u) (hb : ∃ v, b = v + v) :
+    ∃ w, a + b = w + w := by
+  rcases ha with ⟨u, rfl⟩
+  rcases hb with ⟨v, rfl⟩
+  exact ⟨u + v, by abel⟩
+/-- The displayed doubled lattice is closed under negation; separately compared. -/
+theorem twiceLattice_neg (n : ℕ) {a : Lattice n} (ha : ∃ u, a = u + u) :
+    ∃ w, -a = w + w := by
+  rcases ha with ⟨u, rfl⟩
+  exact ⟨-u, by abel⟩
+/-- The actual subgroup 2M of the coordinate lattice. Every proof field is
+an explicitly named and separately compared elementary lattice law. -/
 def twiceLattice (n : ℕ) : AddSubgroup (Lattice n) where
   carrier := {z | ∃ w, z = w + w}
-  zero_mem' := ⟨0, by simp⟩
-  add_mem' := by
-    rintro a b ⟨u, rfl⟩ ⟨v, rfl⟩
-    exact ⟨u + v, by abel⟩
-  neg_mem' := by
-    rintro a ⟨u, rfl⟩
-    exact ⟨-u, by abel⟩
+  zero_mem' := twiceLattice_zero n
+  add_mem' := twiceLattice_add n
+  neg_mem' := twiceLattice_neg n
 
 /-- The quotient group used in the original prescribed-parity statement. -/
 abbrev ParityClass (n : ℕ) := Lattice n ⧸ twiceLattice n
