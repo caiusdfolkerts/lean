@@ -1,6 +1,7 @@
 module
 
 public import bier.forster.gram_determinant
+public import Mathlib.Analysis.Calculus.Deriv.Pow
 
 @[expose] public section
 
