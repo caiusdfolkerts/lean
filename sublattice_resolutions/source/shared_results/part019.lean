@@ -1,2 +1,0 @@
-module
-public import shared_results.part019_integer_filtered_symbols
