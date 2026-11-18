@@ -16,7 +16,7 @@ universe u v
 
 namespace DifferentialGeometry.Homology
 
-private theorem convex_coordinateSimplex (n : ℕ) :
+theorem convex_coordinateSimplex (n : ℕ) :
     Convex ℝ (ULift.down ⁻¹' Convexity.StdSimplex.coordinateSet ℝ (Fin (n + 1)) :
       Set (ULift.{u} (Fin (n + 1) → ℝ))) := by
   intro x hx y hy a b ha hb hab
