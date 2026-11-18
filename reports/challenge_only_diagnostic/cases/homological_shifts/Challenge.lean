@@ -10,6 +10,7 @@ public import Mathlib.CategoryTheory.Abelian.Projective.Dimension
 public import Mathlib.Algebra.Category.ModuleCat.Projective
 public import Mathlib.RingTheory.Ideal.Operations
 public import Mathlib.Data.Finset.Lattice.Fold
+public import Mathlib.RingTheory.LocalRing.Basic
 public import Lean.Elab.Tactic.Omega
 
 /-!
@@ -131,6 +132,19 @@ def basis : Module.Basis (Finset V) k (Ambient V k) := (Pi.basisFun k V).Exterio
 def Chains (K : Finset V → Prop) (i : ℕ) : Submodule k (Ambient V k) :=
   Submodule.span k (basis '' {s | K s ∧ s.card = i})
 /-- The signed augmented simplicial boundary, as actual exterior contraction. -/
+universe uBoundaryK uBoundaryV
+/-- Canonical commutation of the two scalar multiplications on the coefficient ring. -/
+theorem palomarBoundaryScalarComm {k : Type uBoundaryK} [CommRing k] :
+    SMulCommClass k k k := by sorry
+/-- Canonical scalar tower on the coordinate vector space used by exterior contraction. -/
+theorem palomarBoundaryPiScalarTower {V : Type uBoundaryV} {k : Type uBoundaryK} [CommRing k] :
+    IsScalarTower k k (V → k) := by sorry
+/-- Canonical commutation of coefficient scalars on the actual exterior algebra. -/
+theorem palomarBoundaryExteriorScalarComm {V : Type uBoundaryV} {k : Type uBoundaryK} [CommRing k] :
+    SMulCommClass k k (ExteriorAlgebra k (V → k)) := by sorry
+attribute [local instance] palomarBoundaryScalarComm palomarBoundaryPiScalarTower
+  palomarBoundaryExteriorScalarComm
+
 abbrev boundary : Ambient V k →ₗ[k] Ambient V k :=
   CliffordAlgebra.contractLeft (Q := (0 : QuadraticForm k (V → k)))
     (Fintype.linearCombination k (fun _ : V => (1 : k)))
