@@ -1,3 +1,3 @@
-# Canonical diagnostic revision28
+# Canonical diagnostic revision29
 
-Unimodular main+Corollary6.2, Bier declaration-order norm guard, and corrected Homo bounded type comparisons. No full-preflight claim.
+Relative proof-hypothesis repair, Sunlet15TYPEprobe, Deformed measured candidate and genuine ReesAPI105 proof smoke. No full-preflight claim.

@@ -1,3 +1,3 @@
-# Frozen diagnostic revision28
+# Frozen diagnostic revision29
 
-Three exact owner-frozen checks: Unimod338 fullmain plus literal integral-dual Corollary6.2, Bier444 measured declaration-order candidate with actual norm rfl guard and3bounded helper TYPE lookups, and corrected Homo379 boundary type-pair observer. Intentional Challenge obligations remain. Exact canonical metadata, one8GiB compiler/job,max2jobs,40minute compile deadline. No source proof/Comparator/kernel/full-preflight/intake claim. All prior snapshots immutable.
+Four exact owner-frozen checks: Relative718 proof-hypothesis repair; Sunlet786 fifteen bounded helper TYPE lookups; Deformed980 measured candidate preserving its original clauses; and ReesAPI105 genuine no-hole scalar/indexed/chain-map/quotient proof smoke. Sunlet supplies no values or project imports and preserves the full original Galois group datum. Original theorem placeholders in the three statement/type probes are scaffolding. Exact canonical metadata, one8GiB compiler/job,max2jobs,40minute compile deadline. No source proof/Comparator/kernel/full-preflight/intake claim. All prior snapshots immutable.
