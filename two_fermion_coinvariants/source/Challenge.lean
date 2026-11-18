@@ -221,11 +221,16 @@ def StrictBasisClaim (d : StrictData (K := K) (n := n)) : Prop :=
   LinearIndependent K (strictClasses d) ∧
     Submodule.span K (Set.range (strictClasses d)) = ⊤
 
+end PaperVerification.Fermion
+
+namespace PaperVerification.Fermion
+variable {R : Type*} [CommRing R] {n : ℕ}
+
 /-- The exact paired monomial-basis clause, over every original coefficient ring. -/
-theorem paired_basis_claim (d : PairedData (K := K) (n := n)) : PairedBasisClaim d := by sorry
+theorem paired_basis_claim (d : PairedData (K := R) (n := n)) : PairedBasisClaim d := by sorry
 
 /-- The exact strict monomial-basis clause, over every original coefficient ring. -/
-theorem strict_basis_claim (d : StrictData (K := K) (n := n)) : StrictBasisClaim d := by sorry
+theorem strict_basis_claim (d : StrictData (K := R) (n := n)) : StrictBasisClaim d := by sorry
 
 end PaperVerification.Fermion
 
