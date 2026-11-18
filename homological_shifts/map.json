@@ -363,11 +363,11 @@
   ],
   "checks": {
     "source_copy": "complete including retained reading files and licenses",
-    "build": "not_run",
-    "comparator": "not_run",
-    "nanoda": "not_run",
-    "editorial_review": "not_run",
-    "challenge_elaboration": "previous_version_passed_current_pending"
+    "build": "not_run_for_current_hash",
+    "comparator": "not_run_for_current_hash",
+    "nanoda": "not_run_for_current_hash",
+    "editorial_review": "not_run_for_current_hash",
+    "challenge_elaboration": "not_run_for_current_hash"
   },
   "current_selection": "The stabilization and fixed-twist clauses of Theorem 1.1, exact rank and canonicality clauses of Theorem 1.2, and actual projective-dimension Corollary 4.3 are selected.",
   "selected_wrapper_provenance": [
@@ -402,18 +402,12 @@
       "PalomarHomological.canonicalRank",
       "FourPapers.Homological.corollary_4_3",
       "FourPapers.Homological.corollary_4_3_eventual",
-      "CommAlg.Polymatroid.IsPolymatroidalIdeal.mul",
-      "CommAlg.Polymatroid.IsPolymatroidalIdeal.pow",
-      "CommAlg.Polymatroid.isPolymatroidalIdeal_rankIdeal",
-      "CommAlg.Polymatroid.RankFunction.map_empty",
-      "CommAlg.Polymatroid.RankFunction.mixed_submodular",
-      "CommAlg.Polymatroid.augmentedPartitionRank_empty",
-      "CommAlg.Polymatroid.augmentedPartitionRank_mono",
-      "CommAlg.Polymatroid.partitionRank_submodular",
-      "CommAlg.Polymatroid.shiftRankValue_empty",
-      "CommAlg.Polymatroid.shiftRankValue_le_u",
-      "CommAlg.Polymatroid.shiftRankValue_le_add",
-      "CommAlg.Polymatroid.augmentedRank_dominates"
+      "PalomarHomological.mulPolymatroidal",
+      "PalomarHomological.powPolymatroidal",
+      "PalomarHomological.rankIdealPolymatroidal",
+      "PalomarHomological.rankValue_empty",
+      "PalomarHomological.rankValue_mono",
+      "PalomarHomological.rankValue_submodular"
     ],
     "permitted_axioms": [
       "propext",
@@ -423,11 +417,18 @@
   },
   "challenge": {
     "path": "source/Challenge.lean",
-    "sha256": "25615c6d60f3d333df67c2d4f0c99be8ba7d569a38078131176da9b177190234",
-    "physical_lines": 337,
-    "bytes": 17702,
-    "local_elaboration": "pending_after_literal_dependency_repair",
-    "solution_build": "not_run",
-    "comparator": "not_run"
-  }
+    "sha256": "d25b7b1d6682c8c3c0a0cbaef19089d9fb4b0c5b50ed87541928829829ba2236",
+    "physical_lines": 245,
+    "bytes": 13958,
+    "local_elaboration": "not_run_for_current_hash",
+    "solution_build": "not_run_for_current_hash",
+    "comparator": "not_run_for_current_hash"
+  },
+  "packaging_changes": [
+    {
+      "kind": "literal_interface_repair",
+      "evidence": "packaging/explicit-interface-repair.json",
+      "description": "Exact current source/context correction and hash-bound pending validation receipt."
+    }
+  ]
 }

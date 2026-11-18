@@ -71,127 +71,6 @@ def partitionCost (g : Finset V → ℕ) {A : Finset V} (P : Finpartition A) : �
 /-- Minimum over every set partition into nonempty blocks, including the empty case. -/
 def partitionRank (g : Finset V → ℕ) (A : Finset V) : ℕ :=
   Finset.univ.inf' Finset.univ_nonempty (fun P : Finpartition A => partitionCost g P)
-/-- Literal original definition; its data and proof-bearing value are preserved. -/
-def RankFunction.Dominates (u g : RankFunction V) : Prop :=
-  ∀ A B, A ⊆ B → g B + u A ≤ u B + g A
-
-/-- Original proved rank-theoretic typing fact for the literal rank definition. -/
-@[simp] theorem RankFunction.map_empty (g : RankFunction V) : g ∅ = 0 := by sorry
-
-/-- Original proved rank-theoretic typing fact for the literal rank definition. -/
-theorem RankFunction.mixed_submodular {u g : RankFunction V}
-    (h : u.Dominates g) (A B : Finset V) :
-    g (A ∪ B) + u (A ∩ B) ≤ g A + u B := by sorry
-
-/-- Literal original definition; its data and proof-bearing value are preserved. -/
-def augmentedPartitionRank (g : Finset V → ℕ) (A : Finset V) : ℕ :=
-  A.card + partitionRank g A
-
-/-- Original proved rank-theoretic typing fact for the literal rank definition. -/
-@[simp] theorem augmentedPartitionRank_empty (g : Finset V → ℕ) :
-    augmentedPartitionRank g ∅ = 0 := by sorry
-
-/-- Original proved rank-theoretic typing fact for the literal rank definition. -/
-theorem augmentedPartitionRank_mono (g : RankFunction V) :
-    Monotone (augmentedPartitionRank g) := by sorry
-
-/-- Original proved rank-theoretic typing fact for the literal rank definition. -/
-theorem partitionRank_submodular (g : RankFunction V) (hg : g.Active) (A B : Finset V) :
-    partitionRank g (A ∪ B) + partitionRank g (A ∩ B) ≤
-      partitionRank g A + partitionRank g B := by sorry
-
-/-- Literal original definition; its data and proof-bearing value are preserved. -/
-def shiftRankValue (g u : RankFunction V) (i : ℕ) (A : Finset V) : ℕ :=
-  if A = ∅ then 0 else min (g A + i) (u A)
-
-/-- Original proved rank-theoretic typing fact for the literal rank definition. -/
-@[simp] theorem shiftRankValue_empty (g u : RankFunction V) (i : ℕ) :
-    shiftRankValue g u i ∅ = 0 := by sorry
-
-/-- Original proved rank-theoretic typing fact for the literal rank definition. -/
-theorem shiftRankValue_le_u (g u : RankFunction V) (i : ℕ) (A : Finset V) :
-    shiftRankValue g u i A ≤ u A := by sorry
-
-/-- Original proved rank-theoretic typing fact for the literal rank definition. -/
-theorem shiftRankValue_le_add (g u : RankFunction V) (i : ℕ) (A : Finset V) :
-    shiftRankValue g u i A ≤ g A + i := by sorry
-
-/-- Literal original definition; its data and proof-bearing value are preserved. -/
-def RankFunction.interpolate (g u : RankFunction V) (h : u.Dominates g)
-    (i : ℕ) : RankFunction V where
-  toFun := shiftRankValue g u i
-  empty := shiftRankValue_empty g u i
-  monotone := by
-    intro A B hAB
-    by_cases hA : A = ∅
-    · simp [hA]
-    have hB : B ≠ ∅ := by
-      intro heq
-      apply hA
-      simpa [heq] using hAB
-    simp only [shiftRankValue, if_neg hA, if_neg hB]
-    exact min_le_min (Nat.add_le_add_right (g.monotone hAB) i) (u.monotone hAB)
-  submodular := by
-    intro A B
-    by_cases hA : A = ∅
-    · simp [hA]
-    by_cases hB : B = ∅
-    · simp [hB]
-    have hUg := shiftRankValue_le_add g u i (A ∪ B)
-    have hIg := shiftRankValue_le_add g u i (A ∩ B)
-    have hUu := shiftRankValue_le_u g u i (A ∪ B)
-    have hIu := shiftRankValue_le_u g u i (A ∩ B)
-    have hg := g.submodular A B
-    have hu := u.submodular A B
-    have hm := RankFunction.mixed_submodular h A B
-    have hm' := RankFunction.mixed_submodular h B A
-    rw [Finset.union_comm B A, Finset.inter_comm B A] at hm'
-    rcases le_total (g A + i) (u A) with ha | ha <;>
-      rcases le_total (g B + i) (u B) with hb | hb
-    · have hAv : shiftRankValue g u i A = g A + i := by
-        simp [shiftRankValue, hA, min_eq_left ha]
-      have hBv : shiftRankValue g u i B = g B + i := by
-        simp [shiftRankValue, hB, min_eq_left hb]
-      rw [hAv, hBv]
-      omega
-    · have hAv : shiftRankValue g u i A = g A + i := by
-        simp [shiftRankValue, hA, min_eq_left ha]
-      have hBv : shiftRankValue g u i B = u B := by
-        simp [shiftRankValue, hB, min_eq_right hb]
-      rw [hAv, hBv]
-      omega
-    · have hAv : shiftRankValue g u i A = u A := by
-        simp [shiftRankValue, hA, min_eq_right ha]
-      have hBv : shiftRankValue g u i B = g B + i := by
-        simp [shiftRankValue, hB, min_eq_left hb]
-      rw [hAv, hBv]
-      omega
-    · have hAv : shiftRankValue g u i A = u A := by
-        simp [shiftRankValue, hA, min_eq_right ha]
-      have hBv : shiftRankValue g u i B = u B := by
-        simp [shiftRankValue, hB, min_eq_right hb]
-      rw [hAv, hBv]
-      omega
-
-/-- Literal original definition; its data and proof-bearing value are preserved. -/
-def augmentedRank (g : RankFunction V) (hg : g.Active) : RankFunction V where
-  toFun := augmentedPartitionRank g
-  empty := augmentedPartitionRank_empty g
-  monotone := augmentedPartitionRank_mono g
-  submodular A B := by
-    have h := partitionRank_submodular g hg A B
-    have hc := Finset.card_union_add_card_inter A B
-    unfold augmentedPartitionRank
-    omega
-
-/-- Original proved rank-theoretic typing fact for the literal rank definition. -/
-theorem augmentedRank_dominates (g : RankFunction V) (hg : g.Active) :
-    (augmentedRank g hg).Dominates g := by sorry
-
-/-- Literal original definition; its data and proof-bearing value are preserved. -/
-def homologicalRank (g : RankFunction V) (hg : g.Active) (i : ℕ) : RankFunction V :=
-  g.interpolate (augmentedRank g hg) (augmentedRank_dominates g hg) i
-
 /-- All upper-rank inequalities on a monomial exponent. -/
 def UpperFeasible (g : RankFunction V) (a : Exponent V) : Prop := ∀ U, subsetSum a U ≤ g U
 /-- An integer base: feasible exponent vector of total degree g(E). -/
@@ -228,6 +107,9 @@ def zeroDefectComponents (ρ : RankFunction V) (A : Finset V) : ℕ :=
 /-- The eventual projective dimension from the paper. -/
 def eventualOffset (ρ : RankFunction V) (A : Finset V) : ℕ := A.card - zeroDefectComponents ρ A
 
+end CommAlg.Polymatroid
+namespace CommAlg.Polymatroid
+open Classical Finset
 section Ideals
 universe u
 variable {V k : Type u} [Fintype V] [LinearOrder V] [CommRing k] [Nontrivial k]
@@ -236,17 +118,6 @@ def IsPolymatroidalIdeal (I : Ideal (MvPolynomial V k)) : Prop :=
   ∃ B : Family V, IsPolymatroidal B ∧ I = monomialIdeal k B
 /-- The uniquely determined minimal monomial generator family, chosen from a presentation. -/
 def idealGenerators (I : Ideal (MvPolynomial V k)) (hI : IsPolymatroidalIdeal I) : Family V := hI.choose
-/-- Products of polymatroidal ideals are polymatroidal; this is a typing fact,
-not an extra hypothesis of the compared stabilization theorem. -/
-theorem IsPolymatroidalIdeal.mul {I J : Ideal (MvPolynomial V k)}
-    (hI : IsPolymatroidalIdeal I) (hJ : IsPolymatroidalIdeal J) :
-    IsPolymatroidalIdeal (I * J) := by sorry
-/-- Every power is polymatroidal, including the zeroth power. -/
-theorem IsPolymatroidalIdeal.pow {I : Ideal (MvPolynomial V k)}
-    (hI : IsPolymatroidalIdeal I) (s : ℕ) : IsPolymatroidalIdeal (I ^ s) := by sorry
-/-- Every integral polymatroid rank defines a polymatroidal ideal. -/
-theorem isPolymatroidalIdeal_rankIdeal (g : RankFunction V) :
-    IsPolymatroidalIdeal (rankIdeal k g) := by sorry
 end Ideals
 end CommAlg.Polymatroid
 
@@ -282,7 +153,44 @@ end CommAlg.Koszul
 
 namespace PalomarHomological
 open CommAlg CommAlg.Polymatroid
+/-- The paper's explicit predicted rank value, including its normalized empty case. -/
+def rankValue {V : Type*} [Fintype V] [DecidableEq V]
+    (g : RankFunction V) (i : ℕ) (A : Finset V) : ℕ :=
+  if A = ∅ then 0 else min (g A + i) (A.card + partitionRank g A)
+/-- Normalization of the explicit numerical rank formula. -/
+theorem rankValue_empty {V : Type*} [Fintype V] [DecidableEq V]
+    (g : RankFunction V) (i : ℕ) : rankValue g i ∅ = 0 := by sorry
+/-- Monotonicity of the explicit numerical formula for an active rank. -/
+theorem rankValue_mono {V : Type*} [Fintype V] [DecidableEq V]
+    (g : RankFunction V) (hg : g.Active) (i : ℕ) : Monotone (rankValue g i) := by sorry
+/-- Submodularity of the explicit numerical formula for an active rank. -/
+theorem rankValue_submodular {V : Type*} [Fintype V] [DecidableEq V]
+    (g : RankFunction V) (hg : g.Active) (i : ℕ) (A B : Finset V) :
+    rankValue g i (A ∪ B) + rankValue g i (A ∩ B) ≤
+      rankValue g i A + rankValue g i B := by sorry
+/-- The same explicit paper rank, with its proved rank-function properties. -/
+def rankFunction {V : Type*} [Fintype V] [DecidableEq V]
+    (g : RankFunction V) (hg : g.Active) (i : ℕ) : RankFunction V where
+  toFun := rankValue g i
+  empty := rankValue_empty g i
+  monotone := rankValue_mono g hg i
+  submodular := rankValue_submodular g hg i
+
 universe u
+/-- The product closure certificate with every original ambient hypothesis explicit. -/
+theorem mulPolymatroidal {V k : Type u} [Fintype V] [LinearOrder V]
+    [CommRing k] [Nontrivial k] {I J : Ideal (MvPolynomial V k)}
+    (hI : IsPolymatroidalIdeal I) (hJ : IsPolymatroidalIdeal J) :
+    IsPolymatroidalIdeal (I * J) := by sorry
+/-- The power closure certificate with every original ambient hypothesis explicit. -/
+theorem powPolymatroidal {V k : Type u} [Fintype V] [LinearOrder V]
+    [CommRing k] [Nontrivial k] {I : Ideal (MvPolynomial V k)}
+    (hI : IsPolymatroidalIdeal I) (s : ℕ) : IsPolymatroidalIdeal (I ^ s) := by sorry
+/-- Every integral rank-base ideal is polymatroidal, with ambient hypotheses explicit. -/
+theorem rankIdealPolymatroidal {V k : Type u} [Fintype V] [LinearOrder V]
+    [CommRing k] [Nontrivial k] (g : RankFunction V) :
+    IsPolymatroidalIdeal (rankIdeal k g) := by sorry
+
 variable {V k : Type u} [Fintype V] [LinearOrder V] [Field k]
 /-- Homological shift via actual Koszul homology. The Solution identifies this
 with the genuine derived-Tor definition; no rank formula defines the support. -/
@@ -294,28 +202,28 @@ def homologicalShiftIdeal (I : Ideal (MvPolynomial V k)) (hI : IsPolymatroidalId
 /-- Theorem 1.1's uniform stabilization equality for every i>0 and s>=i. -/
 theorem stabilization (I : Ideal (MvPolynomial V k)) (hI : IsPolymatroidalIdeal I)
     (i s : ℕ) (_hi : 0 < i) (hs : i ≤ s) :
-    homologicalShiftIdeal (I ^ (s + 1)) (hI.pow (s + 1)) i =
-      I * homologicalShiftIdeal (I ^ s) (hI.pow s) i := by sorry
+    homologicalShiftIdeal (I ^ (s + 1)) (powPolymatroidal hI (s + 1)) i =
+      I * homologicalShiftIdeal (I ^ s) (powPolymatroidal hI s) i := by sorry
 /-- The fixed-polymatroidal-twist clause, on the identical uniform range. -/
 theorem twistedStabilization (I J : Ideal (MvPolynomial V k))
     (hI : IsPolymatroidalIdeal I) (hJ : IsPolymatroidalIdeal J)
     (i s : ℕ) (_hi : 0 < i) (hs : i ≤ s) :
-    homologicalShiftIdeal (J * I ^ (s + 1)) (hJ.mul (hI.pow (s + 1))) i =
-      I * homologicalShiftIdeal (J * I ^ s) (hJ.mul (hI.pow s)) i := by sorry
+    homologicalShiftIdeal (J * I ^ (s + 1)) (mulPolymatroidal hJ (powPolymatroidal hI (s + 1))) i =
+      I * homologicalShiftIdeal (J * I ^ s) (mulPolymatroidal hJ (powPolymatroidal hI s)) i := by sorry
 /-- Theorem 1.2's exact rank formula for the actual homological shift. -/
 theorem exactRankFormula (g : RankFunction V) (hg : g.Active) (i : ℕ) :
-    homologicalShiftIdeal (rankIdeal k g) (isPolymatroidalIdeal_rankIdeal g) i =
-      if homologicalRank g hg i Finset.univ = g Finset.univ + i then
-        rankIdeal k (homologicalRank g hg i) else ⊥ := by sorry
+    homologicalShiftIdeal (rankIdeal k g) (rankIdealPolymatroidal g) i =
+      if rankFunction g hg i Finset.univ = g Finset.univ + i then
+        rankIdeal k (rankFunction g hg i) else ⊥ := by sorry
 /-- The canonical upper-rank clause in the nonzero case, on the actual
 minimal monomial generator family of the homological shift. -/
 theorem canonicalRank (g : RankFunction V) (hg : g.Active) (i : ℕ)
-    (hne : homologicalShiftIdeal (rankIdeal k g) (isPolymatroidalIdeal_rankIdeal g) i ≠ ⊥) :
+    (hne : homologicalShiftIdeal (rankIdeal k g) (rankIdealPolymatroidal g) i ≠ ⊥) :
     ∃ hH : IsPolymatroidalIdeal
-        (homologicalShiftIdeal (rankIdeal k g) (isPolymatroidalIdeal_rankIdeal g) i),
+        (homologicalShiftIdeal (rankIdeal k g) (rankIdealPolymatroidal g) i),
       ∀ A : Finset V, upperRank (idealGenerators
-        (homologicalShiftIdeal (rankIdeal k g) (isPolymatroidalIdeal_rankIdeal g) i) hH) A =
-        homologicalRank g hg i A := by sorry
+        (homologicalShiftIdeal (rankIdeal k g) (rankIdealPolymatroidal g) i) hH) A =
+        rankFunction g hg i A := by sorry
 end PalomarHomological
 
 namespace FourPapers.Homological
