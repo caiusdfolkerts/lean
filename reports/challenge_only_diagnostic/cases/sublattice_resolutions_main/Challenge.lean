@@ -2,6 +2,9 @@ module
 public import Mathlib
 set_option maxHeartbeats 1000000
 set_option maxRecDepth 10000
+set_option backward.defeqAttrib.useBackward true
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
 
 /-!
 # A literal finite Rees Gröbner presentation for sublattice ideals
@@ -114,7 +117,7 @@ open scoped BigOperators
 open Classical MvPolynomial
 namespace PalomarSublattice.Koszul
 universe u
-variable {V K : Type u} [Fintype V] [LinearOrder V] [Field K]
+variable {V K : Type u} [Fintype V] [LinearOrder V] [CommRing K]
 
 /-- Literal coefficient Koszul coordinates in exterior degree p. -/
 abbrev Coordinates (I : Ideal (MvPolynomial V K)) (p : ℕ) := Set.powersetCard V p →₀ I
@@ -170,6 +173,12 @@ def cycles (I : Ideal (MvPolynomial V K)) (q : ℤ) (p : ℕ) :
     Submodule K (Coordinates I p) :=
   LinearMap.ker (previous I p) ⊓ piece I q p
 
+/-- The canonical additive group of the actual cycle submodule. This explicit
+instance keeps the quotient on the same canonical ring/module structures. -/
+instance cyclesAddCommGroup (I : Ideal (MvPolynomial V K)) (q : ℤ) (p : ℕ) :
+    AddCommGroup (cycles I q p) :=
+  Submodule.addCommGroup (R := K) (M := Coordinates I p) (cycles I q p)
+
 /-- Actual boundaries, mapped from the preceding homogeneous component and
 viewed in its cycles. The planned proof establishes differential squared zero. -/
 def boundaries (I : Ideal (MvPolynomial V K)) (q : ℤ) (p : ℕ) :
@@ -179,6 +188,11 @@ def boundaries (I : Ideal (MvPolynomial V K)) (q : ℤ) (p : ℕ) :
 /-- The actual homogeneous polynomial Koszul homology quotient. -/
 abbrev Homology (I : Ideal (MvPolynomial V K)) (q : ℤ) (p : ℕ) :=
   _root_.Quotient (Submodule.quotientRel (R := K) (M := cycles I q p) (boundaries I q p))
+
+end PalomarSublattice.Koszul
+namespace PalomarSublattice.Koszul
+universe u
+variable {V K : Type u} [Fintype V] [LinearOrder V] [Field K]
 
 /-- The dimension of the actual homogeneous Koszul homology vector space. -/
 def betti (I : Ideal (MvPolynomial V K)) (p : ℕ) (q : ℤ) : ℕ :=

@@ -36,6 +36,13 @@ set_option autoImplicit false
 set_option maxRecDepth 4000
 set_option maxHeartbeats 600000
 open scoped BigOperators
+
+/-- Independence descends along the actual kernel-span condition (original source theorem). -/
+theorem iSupIndep.map_of_ker_inf_iSup_le {R ι M N : Type*} [Ring R] [AddCommGroup M]
+    [Module R M] [AddCommGroup N] [Module R N] {A : ι → Submodule R M}
+    (hA : iSupIndep A) (f : M →ₗ[R] N)
+    (hker : LinearMap.ker f ⊓ (⨆ i, A i) ≤ ⨆ i, LinearMap.ker f ⊓ A i) :
+    iSupIndep fun i ↦ (A i).map f := by sorry
 namespace PaperVerification.EulerJacobian
 open MvPolynomial
 open scoped BigOperators

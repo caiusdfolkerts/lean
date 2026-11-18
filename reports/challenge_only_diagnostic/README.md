@@ -1,16 +1,20 @@
-# Current Challenge diagnostic revision08
+# Current Challenge diagnostic revision09
 
-Selected inputs are owner-frozen corrected Barycentric Tor827, Three-sunlet742,
-Singular896, and standalone Polymatroidal supplement353. All four retry concrete
-source errors; no unchanged passing case is rerun. Prior snapshots and receipts
-remain immutable. The supplement has zero target overlap with the immutable
-passed forty-eight-target main entry; no live core edits are included.
+Selected inputs are the owner-frozen corrected Deformed959 and Sublattice
+main/Rees353 Challenges. These retry actual source failures from revision07.
+The live revision08 cases and all unchanged passing cases are excluded.
+Earlier snapshots and bounded receipts remain immutable.
+
+Deformed restores the original named iSupIndep map-support proposition used
+by its unchanged quotient construction. Sublattice restores the source-style
+canonical additive group for cycle quotients. These are owner-reported repairs;
+no elaboration pass is claimed before this diagnostic runs.
 
 This checks independent Challenge elaboration with intentional theorem
 placeholders. It is not a Solution build, Comparator, mathematical verification,
-full preflight or registry intake. Source toolchains and entire manifests remain
-unchanged: Singular4.36.0-rc2/Mathlib1626233; the other three4.35.0/Mathlib56a.
-No dependency or toolchain override occurs.
+full preflight or registry intake. Exact complete source manifests and
+ toolchains remain unchanged: Deformed4.36.0-rc1/Mathlib2cab; Sublattice
+4.35.0/Mathlib56a. No dependency or toolchain override occurs.
 
 Current resource policy:8GiB per standard16GiB runner, one compiler per job,
 max-parallel2,40-minute compile bound. Both workflow copies and runner defaults

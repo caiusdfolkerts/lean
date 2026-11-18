@@ -4,218 +4,89 @@
   "pipeline_commit": "14aa8d6b3c2f14a8540605e37144560b9a00e7e7",
   "cases": [
     {
-      "id": "barycentric_invariance_tor",
+      "id": "deformed_coinvariants",
       "module": "Challenge",
-      "case_dir": "cases/barycentric_invariance_tor",
-      "original_package": "packages/barycentric_invariance_tor",
-      "original_challenge": "packages/barycentric_invariance_tor/source/Challenge.lean",
-      "lean_toolchain": "leanprover/lean4:v4.35.0",
+      "case_dir": "cases/deformed_coinvariants",
+      "original_package": "packages/deformed_coinvariants",
+      "original_challenge": "packages/deformed_coinvariants/source/Challenge.lean",
+      "metadata_source": "packages/deformed_coinvariants",
+      "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
       "hashes": {
-        "Challenge.lean": "2f2215d72a13adb7fbe1cb368ee3c3469e7929981b7c12de19b68d28c489266c",
-        "lake-manifest.json": "39171539cb61af4520d7ad747cb986b0bbef964d043032fe4458c87fa9171546",
-        "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
-        "original-lakefile.toml": "c55c4aa8d5484e055e97641067e33eea69502a5af5e852692cb766106a7ac0cd"
+        "Challenge.lean": "5c150e178ea9b9369c322f5a20308ea0797782429e724c396c42af9b494ca556",
+        "lake-manifest.json": "7c641c4eee886d6fce2a8e505a8822a2225c3fcc1ad02a90980071c6d4392d0b",
+        "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
+        "original-lakefile.toml": "1cf64b93d5d5e61d10c6303623d713aeeee5d39b05ee5e33e2846d7fde05fedd"
       },
-      "challenge_lines": 827,
-      "challenge_bytes": 60398,
-      "dependency_pins": [
-        {
-          "name": "mathlib",
-          "url": "https://github.com/leanprover-community/mathlib4.git",
-          "rev": "56a005855ea17e0b0958f73ec801ae140b0a1679"
-        },
-        {
-          "name": "plausible",
-          "url": "https://github.com/leanprover-community/plausible",
-          "rev": "dfa4f38190d07c37e315953e08b90fe2d95b3c24"
-        },
-        {
-          "name": "LeanSearchClient",
-          "url": "https://github.com/leanprover-community/LeanSearchClient",
-          "rev": "d6b4c7be5be75ec4917c873ac50c756dc1436372"
-        },
-        {
-          "name": "importGraph",
-          "url": "https://github.com/leanprover-community/import-graph",
-          "rev": "a41f0e9a4dea23188ea9cc1c41ac9f8bbafe0b93"
-        },
-        {
-          "name": "proofwidgets",
-          "url": "https://github.com/leanprover-community/ProofWidgets4",
-          "rev": "df72b022e558978a1c50264cfc4d7fec86fa8e04"
-        },
-        {
-          "name": "aesop",
-          "url": "https://github.com/leanprover-community/aesop",
-          "rev": "4a174c490d8707121c4a9290800489f105d85e07"
-        },
-        {
-          "name": "Qq",
-          "url": "https://github.com/leanprover-community/quote4",
-          "rev": "dce0ad79c486cb1fb504af04f953c3466b0c6db8"
-        },
-        {
-          "name": "batteries",
-          "url": "https://github.com/leanprover-community/batteries",
-          "rev": "66e469188fe07963e5cf666c7d4433f45b8131c5"
-        },
-        {
-          "name": "Cli",
-          "url": "https://github.com/leanprover/lean4-cli",
-          "rev": "c24fe6078c630e89b489bffe59b3e20ac30d12c8"
-        }
-      ],
-      "diagnostic_class": "owner-frozen-corrected-source-retry",
-      "previous_diagnostic_run": 44346428523,
-      "remote_memory_mib": 8192
-    },
-    {
-      "id": "three_sunlet_models",
-      "module": "Challenge",
-      "case_dir": "cases/three_sunlet_models",
-      "original_package": "packages/three_sunlet_models",
-      "original_challenge": "packages/three_sunlet_models/Challenge.lean",
-      "lean_toolchain": "leanprover/lean4:v4.35.0",
-      "hashes": {
-        "Challenge.lean": "45aae44a94e627c081c7b810891997cc9a9306c47d1c47d52b00ac32b5dc5080",
-        "lake-manifest.json": "204d7fc60683359b0889b09b1e69c3478f856259a9643e58a13d666ae45259af",
-        "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
-        "original-lakefile.toml": "76b0808f33e0e7da139fd9fe52a055dca157bdfae1c953b9c9dc94c648716d4c"
-      },
-      "challenge_lines": 742,
-      "challenge_bytes": 62006,
-      "dependency_pins": [
-        {
-          "name": "mathlib",
-          "url": "https://github.com/leanprover-community/mathlib4.git",
-          "rev": "56a005855ea17e0b0958f73ec801ae140b0a1679"
-        },
-        {
-          "name": "plausible",
-          "url": "https://github.com/leanprover-community/plausible",
-          "rev": "dfa4f38190d07c37e315953e08b90fe2d95b3c24"
-        },
-        {
-          "name": "LeanSearchClient",
-          "url": "https://github.com/leanprover-community/LeanSearchClient",
-          "rev": "d6b4c7be5be75ec4917c873ac50c756dc1436372"
-        },
-        {
-          "name": "importGraph",
-          "url": "https://github.com/leanprover-community/import-graph",
-          "rev": "a41f0e9a4dea23188ea9cc1c41ac9f8bbafe0b93"
-        },
-        {
-          "name": "proofwidgets",
-          "url": "https://github.com/leanprover-community/ProofWidgets4",
-          "rev": "df72b022e558978a1c50264cfc4d7fec86fa8e04"
-        },
-        {
-          "name": "aesop",
-          "url": "https://github.com/leanprover-community/aesop",
-          "rev": "4a174c490d8707121c4a9290800489f105d85e07"
-        },
-        {
-          "name": "Qq",
-          "url": "https://github.com/leanprover-community/quote4",
-          "rev": "dce0ad79c486cb1fb504af04f953c3466b0c6db8"
-        },
-        {
-          "name": "batteries",
-          "url": "https://github.com/leanprover-community/batteries",
-          "rev": "66e469188fe07963e5cf666c7d4433f45b8131c5"
-        },
-        {
-          "name": "Cli",
-          "url": "https://github.com/leanprover/lean4-cli",
-          "rev": "c24fe6078c630e89b489bffe59b3e20ac30d12c8"
-        }
-      ],
-      "diagnostic_class": "owner-frozen-corrected-source-retry",
-      "previous_diagnostic_run": 44346428523,
-      "remote_memory_mib": 8192
-    },
-    {
-      "id": "singular_vector_spans",
-      "module": "Challenge",
-      "case_dir": "cases/singular_vector_spans",
-      "original_package": "packages/singular_vector_spans",
-      "original_challenge": "packages/singular_vector_spans/Challenge.lean",
-      "lean_toolchain": "leanprover/lean4:v4.36.0-rc2",
-      "hashes": {
-        "Challenge.lean": "7e80bd1c872c18e92fca3f25bc4376164ec38f1b91f1c90365fa911b33b1a218",
-        "lake-manifest.json": "ab9561ee789bc5c912fbb857637499d2582ff28ff7c5eaaffa7ef6c4e598798a",
-        "lean-toolchain": "11c697aebe5b539d74f5069e497a588e7dfab1c4eeb74313f28357e351c55ca3",
-        "original-lakefile.lean.txt": "73c48d6640cdd912eccab4bd622ce3327c849e248292674018a3ae258dd4423a"
-      },
-      "challenge_lines": 896,
-      "challenge_bytes": 99865,
+      "challenge_lines": 959,
+      "challenge_bytes": 77434,
       "dependency_pins": [
         {
           "name": "mathlib",
           "url": "https://github.com/leanprover-community/mathlib4",
-          "rev": "1626233321dc564d20355d8f9d4f22e114d68600"
+          "rev": "2cabef97b63d3275776b8b060d802de6a6fa1055"
         },
         {
           "name": "plausible",
           "url": "https://github.com/leanprover-community/plausible",
-          "rev": "129d1ba9a16bc0660f46c79e9fb041ef5d5d80de"
+          "rev": "c2d7840c65673533e15b499f25beecdc6227f7d8"
         },
         {
           "name": "LeanSearchClient",
           "url": "https://github.com/leanprover-community/LeanSearchClient",
-          "rev": "c61286b7b63cbfd563b28e11e81d0a18233a044a"
+          "rev": "9d39f9bb0c30aa2f6200808805ff16e6ce950890"
         },
         {
           "name": "importGraph",
           "url": "https://github.com/leanprover-community/import-graph",
-          "rev": "b8cc5dd0a36233b88a6ed5a7dbf1207d09338c60"
+          "rev": "b3cc36c295aa5e3e3c0197b09a6556298e710447"
         },
         {
           "name": "proofwidgets",
           "url": "https://github.com/leanprover-community/ProofWidgets4",
-          "rev": "16259c0d07d61ee37d999d05b5cf96338b8daa11"
+          "rev": "17137fad38a2cc782ff00b323a13c3a991d085ab"
         },
         {
           "name": "aesop",
           "url": "https://github.com/leanprover-community/aesop",
-          "rev": "7d11bfa88558f8d3d90afdf6bd877ed70001498d"
+          "rev": "29c64c56cc38211d39b306db2df11701e3d3de11"
         },
         {
           "name": "Qq",
           "url": "https://github.com/leanprover-community/quote4",
-          "rev": "b0256621cb88178e9ad932a53633077b3029e621"
+          "rev": "6d26f8bb4b2bb78f929ad160feac508866821316"
         },
         {
           "name": "batteries",
           "url": "https://github.com/leanprover-community/batteries",
-          "rev": "6d971e7e6b3f7d0a501c5418815aa9022edd3499"
+          "rev": "30691c775364967184547c94468bf6b5f25400fb"
         },
         {
           "name": "Cli",
           "url": "https://github.com/leanprover/lean4-cli",
-          "rev": "c09cb1e4f1e6e1c231a1175a12b681b075054a1b"
+          "rev": "34d2efffcb6dc8d5f3537cf6a7f88bfaa999ec49"
         }
       ],
       "diagnostic_class": "owner-frozen-corrected-source-retry",
       "remote_memory_mib": 8192,
-      "previous_diagnostic_run": 44347656488
+      "owner_freeze_confirmed": true,
+      "previous_diagnostic_run": 44348249786
     },
     {
-      "id": "polymatroidal_ideals_supplement",
+      "id": "sublattice_resolutions_main",
       "module": "Challenge",
-      "case_dir": "cases/polymatroidal_ideals_supplement",
-      "original_package": "reports/polymatroidal_ideals/supplemental/project",
-      "original_challenge": "reports/polymatroidal_ideals/supplemental/project/source/Challenge.lean",
+      "case_dir": "cases/sublattice_resolutions_main",
+      "original_package": "packages/sublattice_resolutions",
+      "original_challenge": "reports/sublattice_resolutions/candidate-main-rees-Challenge.lean",
+      "metadata_source": "packages/sublattice_resolutions",
       "lean_toolchain": "leanprover/lean4:v4.35.0",
       "hashes": {
-        "Challenge.lean": "2c4b828e78be822564d826b3b60a095369a08a670ef3dcf7009550b32da0f062",
-        "lake-manifest.json": "2c86775e548a568a6f8d3ab846561f2350c28cbbee440a05517f6810371c055a",
+        "Challenge.lean": "6097d32a8b837e307a1802d710970581bc6110990f36a261aa2206069eedc290",
+        "lake-manifest.json": "d7a35b5c5854a8cb356e75a36105bfaefc92a473494125e5b9a897d3dfd5d46d",
         "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
-        "original-lakefile.toml": "3e9c9c15f3a6f56394fd2d690f60d2426971188aad9a91c9a1b2de1cd633dd72"
+        "original-lakefile.toml": "e3934467dcd417ff65b4a39916006746b69e1890d1799a38b777f97702be0dfd"
       },
       "challenge_lines": 353,
-      "challenge_bytes": 20240,
+      "challenge_bytes": 20907,
       "dependency_pins": [
         {
           "name": "mathlib",
@@ -265,14 +136,13 @@
       ],
       "diagnostic_class": "owner-frozen-corrected-source-retry",
       "remote_memory_mib": 8192,
-      "previous_diagnostic_run": 44347656488
+      "owner_freeze_confirmed": true,
+      "previous_diagnostic_run": 44348249786
     }
   ],
   "default_case_ids": [
-    "barycentric_invariance_tor",
-    "three_sunlet_models",
-    "singular_vector_spans",
-    "polymatroidal_ideals_supplement"
+    "deformed_coinvariants",
+    "sublattice_resolutions_main"
   ],
   "operator_resource_policy": {
     "memory_mib": 8192,
@@ -281,5 +151,5 @@
     "matrix_max_parallel": 2,
     "compile_timeout_seconds": 2400
   },
-  "revision": "08"
+  "revision": "09"
 }
