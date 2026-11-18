@@ -1,5 +1,7 @@
-# Palomar submission: projection_areas
+# Read-only projection_areas whole-reachable raw diagnostic
 
-Substantive source snapshot of [caiusdfolkerts/research](https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/projection_areas), revision `e0696fddcd3d10b5d6461e62e9b2f02c4195be37`.
+Exact immutable source ef8146344d3d4061f384c5c684b3adea1ff59f0d, full run 44374190900; source/Solution build passed, Comparator rejected ProjectionAreaTopology.coordinateProjection. No cause, source repair, theorem weakening or pure-definition equivalence is presumed. The pinned unmodified verifier executes once; the tested read-only union walker then audits the same retained exports. This is not an official full-preflight result or intake authorization.
 
-The complete selected development, paper, metadata, and Comparator configuration are in `projection_areas/`. This branch prepares a registry submission; it does not claim registry acceptance. See `projection_areas/formalization.yaml` for exact scope and provenance.
+The helper/wrapper are byte-identical to the reviewed Bier/Alternating pattern: six candidate leaves per non-theorem, 48 global, depth96 and500characters/node, with explicit candidate/emission/omission and truncation/depth/cap flags. Every differing reachable ConstantInfo is inventoried even when bounded leaves are incomplete. Standard19800-second execution, total exports at most1GiB, audit2GiB/300seconds; only bounded logs/hash receipts and audit-time/final mechanical reports upload. Both actual12-character-input blocks are validated by both pinned parsers; final report uploads even if prepare fails.
+
+Mathlib2cabef97b63d3275776b8b060d802de6a6fa1055/Lean4.36rc1. Exact proof-only TauCeti sources are ordinary checked source at the immutable candidate; no external TauCeti trusted-root build. No source project or local Lean process was launched during bundle preparation.
