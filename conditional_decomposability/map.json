@@ -1,0 +1,57 @@
+{
+  "project": "conditional_decomposability",
+  "baseline_revision": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
+  "status": "prepared_unbuilt",
+  "selected_results": [
+    {
+      "declaration": "Papers.Polytopes.conditional_decomposability_sharp",
+      "source_file": "source/consolidated_dev/conditional_complete_integration.lean",
+      "source_line": 7832,
+      "challenge_line": 88,
+      "paper_result": "Theorem 1"
+    },
+    {
+      "declaration": "Papers.Polytopes.conditional_vertex_count_isLeast",
+      "source_file": "source/consolidated_dev/conditional_complete_integration.lean",
+      "source_line": 7845,
+      "challenge_line": 95,
+      "paper_result": "Theorem 1"
+    },
+    {
+      "declaration": "Papers.Polytopes.decomposability_determined_by_face_lattice_below_threshold",
+      "source_file": "source/consolidated_dev/conditional_complete_integration.lean",
+      "source_line": 7782,
+      "challenge_line": 101,
+      "paper_result": "Stronger assertion following Theorem 1"
+    },
+    {
+      "declaration": "Papers.Polytopes.decomposable_iff_of_face_iso_below_threshold",
+      "source_file": "source/consolidated_dev/conditional_complete_integration.lean",
+      "source_line": 7799,
+      "challenge_line": 108,
+      "paper_result": "Stronger assertion following Theorem 1"
+    },
+    {
+      "declaration": "Papers.Polytopes.conditional_decomposability_attainment",
+      "source_file": "source/consolidated_dev/conditional_upper_canonical.lean",
+      "source_line": 2835,
+      "challenge_line": 115,
+      "paper_result": "Theorem 1"
+    }
+  ],
+  "challenge": {
+    "lines": 119,
+    "bytes": 5718,
+    "imports_only_canonical_mathlib": true,
+    "custom_definitions": "Independent exact semantic copies, original fully qualified names, documented in Challenge.lean."
+  },
+  "scan": {
+    "lean_files": 65,
+    "oversized": [],
+    "missing_module": []
+  },
+  "blockers": [
+    "Fresh Lean build and Comparator/NanoDa validation pending shared runtime."
+  ],
+  "scope_note": "All five README principal result rows selected; supporting paper lemmas remain proved dependencies rather than independently compared statements."
+}

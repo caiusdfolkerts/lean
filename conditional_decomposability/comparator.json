@@ -1,0 +1,16 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Papers.Polytopes.conditional_decomposability_sharp",
+    "Papers.Polytopes.conditional_vertex_count_isLeast",
+    "Papers.Polytopes.decomposability_determined_by_face_lattice_below_threshold",
+    "Papers.Polytopes.decomposable_iff_of_face_iso_below_threshold",
+    "Papers.Polytopes.conditional_decomposability_attainment"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

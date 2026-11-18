@@ -1,0 +1,59 @@
+version: v0.4
+project:
+  name: The sharp vertex bound for conditional decomposability
+  description: >-
+    For every dimension d at least 3, the least number of vertices of a
+    conditionally Minkowski decomposable convex d-polytope is 4d-4.
+    The formalization proves the universal lower bound, all-dimensional
+    attainment, the literal least-number formulation, and the stronger
+    statement that below this threshold decomposability is determined by
+    the face lattice. Polytopes are actual finite convex hulls with their
+    extreme vertices, and Minkowski summands may have any affine dimension.
+  authors: [Caius Folkerts]
+  responsible_maintainers: [Caius Folkerts]
+  license: Apache-2.0
+classification:
+  arxiv: [math.CO, math.MG]
+  msc2020: [52B05, 52B11]
+sources:
+  - title: The sharp vertex bound for conditional decomposability
+    authors: [Caius Folkerts]
+    type: paper
+    relationship: formalizes
+    location: paper.pdf
+    note: Theorem 1 and the stronger face-lattice assertion immediately following it.
+related_formalizations:
+  - title: caiusdfolkerts/research conditional_decomposability
+    relationship: repackages
+    id: https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/conditional_decomposability
+    note: >-
+      The complete substantive development is copied here from this exact
+      revision. Palomar packaging adds the independent Challenge statement,
+      Solution import, Comparator configuration, and this metadata.
+  - title: SolarYs431/lean-eval-platonic-classification
+    relationship: adapts
+    id: https://github.com/SolarYs431/lean-eval-platonic-classification
+    note: >-
+      Daniele Cappello's Apache-2.0 polytope infrastructure is adapted in the
+      substantive sources. Original attribution headers and licences are retained.
+automation:
+  methods:
+    - method: agent
+      tool_setup: >-
+        The manuscript discloses GPT-6 Astra, GPT-5.6 Sol, and Kimi K3
+        assistance in developing its proofs. Historical roles beyond that
+        disclosure have not been independently reconstructed.
+    - method: agent
+      tool_setup: >-
+        OpenAI Codex GPT-6.1 Sol prepared the Palomar statement and metadata,
+        comparing the supplied manuscript, README table, and Lean declarations.
+review:
+  status: unchecked
+  notes: >-
+    Packaging has undergone source-level statement comparison only. No fresh
+    Lean build, Comparator run, NanoDa check, or independent mathematical
+    peer review is claimed in this metadata. Consult reports and CI for actual
+    later validation. No weakening of the original selected statements is intended.
+limitations:
+  - Challenge definitions duplicate exact source semantics and original names; Comparator must verify their alignment with Solution dependencies.
+  - The registry entry records the five principal result formulations; supporting lemmas in the manuscript are not separately selected claims.
