@@ -1,9 +1,12 @@
 module
 public import characterizations.part003
-@[expose] public section
-set_option maxHeartbeats 0
-set_option maxRecDepth 10000
 section LeanWebUnit1
+@[expose] public section
+set_option Elab.async false
+set_option maxRecDepth 10000
+set_option maxHeartbeats 0
+set_option linter.unusedSectionVars false
+set_option linter.unusedSimpArgs false
 
 /-! ## Source: Characterizations.IntegralClosure -/
 section CheckedCharacterizationsSource58

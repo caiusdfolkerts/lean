@@ -1,9 +1,12 @@
 module
 public import characterizations.part002
-@[expose] public section
-set_option maxHeartbeats 0
-set_option maxRecDepth 10000
 section LeanWebUnit0
+@[expose] public section
+set_option Elab.async false
+set_option maxRecDepth 10000
+set_option maxHeartbeats 0
+set_option linter.unusedSectionVars false
+set_option linter.unusedSimpArgs false
 
 
 /-! ## Source: CommAlg.KoszulComplex.InternalGrading -/
@@ -8457,4 +8460,5 @@ end Characterizations
 
 end
 end CheckedCharacterizationsSource57
+end
 end LeanWebUnit1
