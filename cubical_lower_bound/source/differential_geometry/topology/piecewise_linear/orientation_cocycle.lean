@@ -56,7 +56,7 @@ theorem faceCofaces_faceStarComplex_self (s : Finset E) (m : ℕ) :
 variable [FiniteDimensional ℝ E]
 
 open Classical in
-private theorem localOrientationSign_mul_eq
+theorem localOrientationSign_mul_eq
     (hK : IsCombinatorialManifoldWithBoundary n K) (r : LinearOrder E)
     (o : ∀ s ∈ K.faces, CoherentOrientation n (faceStarComplex K s))
     {s t u S T : Finset E} (hs : s ∈ K.faces) (ht : t ∈ K.faces) (hu : u ∈ K.faces)
@@ -85,7 +85,7 @@ noncomputable def localOrientationParity
   else false
 
 open Classical in
-private theorem localOrientationParity_eq
+theorem localOrientationParity_eq
     (hK : IsCombinatorialManifoldWithBoundary n K) (r : LinearOrder E)
     (o : ∀ s ∈ K.faces, CoherentOrientation n (faceStarComplex K s))
     {s t S : Finset E} (hs : s ∈ K.faces) (ht : t ∈ K.faces) (hS : S ∈ K.faces)
@@ -101,13 +101,13 @@ private theorem localOrientationParity_eq
     Finset.subset_union_right htop.1 hS htop.2.2 hScard htop.2.1
       (Finset.union_subset hsS htS)]
 
-private theorem xor_decide_sign_mul {a b c : ℤ}
+theorem xor_decide_sign_mul {a b c : ℤ}
     (ha : a = 1 ∨ a = -1) (hb : b = 1 ∨ b = -1) (hc : c = 1 ∨ c = -1) :
     Bool.xor (decide (a * b = -1)) (decide (b * c = -1)) = decide (a * c = -1) := by
   rcases ha with rfl | rfl <;> rcases hb with rfl | rfl <;> rcases hc with rfl | rfl <;> decide
 
 open Classical in
-private theorem exists_topFace_superset_carrierFaces
+theorem exists_topFace_superset_carrierFaces
     (hK : IsCombinatorialManifoldWithBoundary n K) {f : Finset E}
     (hf : f ∈ (barycentricSubdivision K).faces) :
     ∃ S ∈ K.faces, S.card = n + 1 ∧ ∀ x ∈ f, carrierFace K x ⊆ S := by
