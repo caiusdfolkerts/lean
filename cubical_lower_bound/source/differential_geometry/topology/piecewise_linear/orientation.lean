@@ -4603,7 +4603,7 @@ theorem glueEmbed₂_not_mem_glued₁_of_not_mem
   have hzero : glueHeight E E (glueEmbed₂ A id v) = 0 := le_antisymm hle hge
   exact hvA ((glueHeight_glueEmbed₂_eq_zero_iff (E := E) A id v).mp hzero)
 
-private theorem isGlueIso_redecide
+theorem isGlueIso_redecide
     {X Y : Type*} [NormedAddCommGroup X] [NormedSpace ℝ X]
     [NormedAddCommGroup Y] [NormedSpace ℝ Y]
     {K : Geometry.SimplicialComplex ℝ X} {L : Geometry.SimplicialComplex ℝ Y}
@@ -8298,7 +8298,7 @@ theorem IsSubdivision.exists_face_card_eq_convexHull_subset
   exact ⟨s, hs.1, by omega, hs.2⟩
 
 open Classical in
-private theorem exists_orientationSign_on_subdivision_face
+theorem exists_orientationSign_on_subdivision_face
     [NormedAddCommGroup E] [NormedSpace ℝ E] [FiniteDimensional ℝ E]
     {K K' : Geometry.SimplicialComplex ℝ E} [Finite K'.faces] {n : ℕ}
     (hK' : IsCombinatorialManifoldWithBoundary (n + 1) K')

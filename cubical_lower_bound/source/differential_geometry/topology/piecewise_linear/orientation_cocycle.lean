@@ -76,7 +76,7 @@ private theorem localOrientationSign_mul_eq
     using heq
 
 open Classical in
-private noncomputable def localOrientationParity
+noncomputable def localOrientationParity
     (hK : IsCombinatorialManifoldWithBoundary n K) (r : LinearOrder E)
     (o : ∀ s ∈ K.faces, CoherentOrientation n (faceStarComplex K s)) (s t : Finset E) : Bool :=
   if h : s ∪ t ∈ K.faces then
