@@ -1,0 +1,16 @@
+{
+  "pipeline_commit": "14aa8d6b3c2f14a8540605e37144560b9a00e7e7",
+  "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
+  "mathlib_pin": "2cabef97b63d3275776b8b060d802de6a6fa1055",
+  "tauceti_pin": "06d5bb4e3ebb737dc6538567f5c53bf8800b9362",
+  "hashes": {
+    "LiteralWishartLaws.lean": "b41395c394ed6935eb32284c0b6e6a7b4f3b7a85e78410f8c4709f2e906540d4",
+    "LiteralWishartLawsSourceBridge.lean": "6049a33c684bff167b235f6c04294de815ad3d5ae2d483e17da96c3ab94b409a",
+    "canonical_runner.py": "0ba060b57e0b91a5bf083229c38ab4dcb6f7fcd7bd42bebdb3ddf4bf3af162a8",
+    "lake-manifest.json": "300eaa0ed216e52b46ddf86c28acbaef4a78c623986d47503b9ef4639ecdfd7a",
+    "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
+    "original-lakefile.toml": "d90686b28700434d823fbfe7fc03afb991d77ff566bd1c53b8c4f2525189ebc0",
+    "run.py": "59ed4af29efb4153d9f283f39ab555641bcb236ab254bce0d2c7ba11fe800a9c",
+    "source-closure-manifest.json": "3cdceb0a733dc31b1b87cce501bfce73b44a2901119a78680a2bb6d9c968e723"
+  }
+}
