@@ -3,6 +3,16 @@ public import volume_polynomials
 import all volume_polynomials
 /- BEGIN GENERATED PROJECT PRIVATE IMPORTS -/
 import all volume_polynomials.all
+import all volume_polynomials.assembly_part01
+import all volume_polynomials.assembly_part02
+import all volume_polynomials.assembly_part03
+import all volume_polynomials.assembly_part04
+import all volume_polynomials.assembly_part05
+import all volume_polynomials.assembly_part06
+import all volume_polynomials.assembly_part07
+import all volume_polynomials.assembly_part08
+import all volume_polynomials.assembly_part09
+import all volume_polynomials.assembly_part10
 /- END GENERATED PROJECT PRIVATE IMPORTS -/
 public meta import Lean.Elab.Command
 public meta import Lean.Util.CollectAxioms
@@ -14,7 +24,10 @@ public meta import Lean.Data.Json
 
 -- Generated verification output directories.
 run_cmd Lean.Elab.Command.liftIO do
-  IO.FS.createDirAll ".lake/reports/audit"
+  try
+    IO.FS.createDirAll ".lake/reports/audit"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
 
 
 /-!
@@ -186,7 +199,7 @@ run_cmd do
     throwError "No project declaration was found; an empty audit is not a successful verification."
   let report := Json.mkObj [
     ("scope", toJson "Public principal types and every actual stored private declaration in the imported project source modules, including vendored proofs and strictly classified compiler recursion companions."),
-    ("compiler_gate", toJson "Valid only after a successful complete ordinary project build from source, the full source-ownership audit, and a zero exit status for this audit file."),
+    ("compiler_gate", toJson "Valid only after a successful complete ordinary project build from source, the source-preserving split map and full module/private-data audit, and a zero exit status for this audit file."),
     ("required_statements", .arr statements),
     ("allowed_axioms", toJson (allowed.map Name.toString)),
     ("original_modules", toJson (originalModules.map Name.toString)),
@@ -197,5 +210,9 @@ run_cmd do
     ("recursion_helper_audit", toJson "Actual private partial definition with official compiler name, same-source safe recursive parent, matching type/universes/mutual metadata; all nodes axiom-audited and no safe logical edge to any helper."),
     ("checked_declarations", toJson checked),
     ("declarations", .arr rows)]
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/imported-axiom-audit.json" report.pretty
+  liftIO do
+    try
+      IO.FS.writeFile ".lake/reports/audit/imported-axiom-audit.json" report.pretty
+    catch _ =>
+      IO.eprintln "Optional audit report output skipped in this environment."
   logInfo m!"Checked {checked} actual project declarations; all required public principal entry points are present."

@@ -11,7 +11,7 @@ rev = "2cabef97b63d3275776b8b060d802de6a6fa1055"
 [[lean_lib]]
 name = "proof"
 srcDir = "source"
-roots = ["volume_polynomials", "volume_polynomials.all", "verification.internal.axioms", "verification.internal.executable_rational_smoke"]
+roots = ["volume_polynomials", "volume_polynomials.all", "volume_polynomials.assembly_part01", "volume_polynomials.assembly_part02", "volume_polynomials.assembly_part03", "volume_polynomials.assembly_part04", "volume_polynomials.assembly_part05", "volume_polynomials.assembly_part06", "volume_polynomials.assembly_part07", "volume_polynomials.assembly_part08", "volume_polynomials.assembly_part09", "volume_polynomials.assembly_part10", "verification.internal.axioms", "verification.internal.executable_rational_smoke"]
 allowImportAll = true
 
 [[lean_lib]]
@@ -19,3 +19,8 @@ name = "verification"
 srcDir = "source"
 roots = ["verification.check_1", "verification.check_2"]
 allowImportAll = true
+
+[[lean_lib]]
+name = "Palomar"
+srcDir = "source"
+roots = ["Challenge", "Solution"]

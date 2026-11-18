@@ -6,7 +6,7 @@ public meta import Lean.Meta.Basic
 open Lean Elab Command
 run_cmd do
   let env := (← getEnv).setExporting false
-  let localModules := #[`volume_polynomials, `volume_polynomials.all, `verification.internal.axioms, `verification.internal.executable_rational_smoke]
+  let localModules := #[`volume_polynomials, `volume_polynomials.all, `volume_polynomials.assembly_part01, `volume_polynomials.assembly_part02, `volume_polynomials.assembly_part03, `volume_polynomials.assembly_part04, `volume_polynomials.assembly_part05, `volume_polynomials.assembly_part06, `volume_polynomials.assembly_part07, `volume_polynomials.assembly_part08, `volume_polynomials.assembly_part09, `volume_polynomials.assembly_part10, `verification.internal.axioms, `verification.internal.executable_rational_smoke]
   let mut count : Nat := 0
   for (name, info) in env.constants.toList do
     let some idx := env.getModuleIdxFor? name | continue
