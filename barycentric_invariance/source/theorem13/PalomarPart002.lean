@@ -4631,8 +4631,8 @@ open Classical Finset MvPolynomial
 
 variable {V K : Type*} [Fintype V] [CommRing K]
 
-local instance (priority := 2000) : DecidableEq V := Classical.decEq V
-local instance (priority := 2000) : DecidableEq (BooleanFace V) := Classical.decEq _
+local instance (priority := 2000) palomarLocalInstance21241 : DecidableEq V := Classical.decEq V
+local instance (priority := 2000) palomarLocalInstance21242 : DecidableEq (BooleanFace V) := Classical.decEq _
 
 /-- The properly rank-colored order complex of the full Boolean simplex.
 Its monomial quotient is definitionally the existing barycentric ring. -/
@@ -5465,8 +5465,8 @@ open Classical Finset MvPolynomial
 
 variable (V K : Type*) [Fintype V] [CommRing K]
 
-local instance (priority := 2000) : DecidableEq V := Classical.decEq V
-local instance (priority := 2000) : DecidableEq (BooleanFace V) := Classical.decEq _
+local instance (priority := 2000) palomarLocalInstance22075 : DecidableEq V := Classical.decEq V
+local instance (priority := 2000) palomarLocalInstance22076 : DecidableEq (BooleanFace V) := Classical.decEq _
 
 /-- The actual parameter actions, stated independently of an auxiliary
 linear ordering on the vertex type. -/
@@ -5489,8 +5489,8 @@ structure SimplexEquivariantParameterComparison where
 
 variable {V K} {U : Type*} [Fintype U]
 
-local instance (priority := 2000) : DecidableEq U := Classical.decEq U
-local instance (priority := 2000) : DecidableEq (BooleanFace U) := Classical.decEq _
+local instance (priority := 2000) palomarLocalInstance22099 : DecidableEq U := Classical.decEq U
+local instance (priority := 2000) palomarLocalInstance22100 : DecidableEq (BooleanFace U) := Classical.decEq _
 
 /-- The explicit generator conditions are genuine linearity over the entire
 parameter polynomial ring, via the verified `ParameterEquiv` API. -/

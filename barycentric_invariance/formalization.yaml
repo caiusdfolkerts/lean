@@ -35,9 +35,9 @@ automation:
   methods:
   - method: agent
     tool_setup: OpenAI Codex
-    notes: Current packaging, source-block migration, source mapping and independent
-      statement extraction are agent-assisted. Fresh build and Comparator evidence
-      are not yet available.
+    notes: Agent-assisted statement selection, exact-context/source-body extraction,
+      packaging, source migration and stable instance naming. This does not constitute
+      mathematical review or a passing mechanical preflight.
   - method: other
     tool_setup: Historical AI assistance reported in the included paper
     notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing
@@ -45,10 +45,11 @@ automation:
       not been reconstructed from the snapshot.
 review:
   status: unchecked
-  notes: Paper, README and exact source inspected by the preparation agent. Independent
-    Challenge elaboration passed under exact Lean4.35.0 and canonical Mathlib56a005855ea17e0b0958f73ec801ae140b0a1679.
-    Full Solution/default-target build, Comparator, independent replay, expert review
-    and Palomar review remain pending.
+  notes: Paper, README and source declarations inspected. The current independent
+    Challenge restores literal source definition bodies and original binder/universe
+    contexts; only theorem proofs are holes. Stable explicit names were added to existing
+    instances without changing their values. Current Challenge elaboration, rebuilt
+    Solution, Comparator and independent kernel replay remain pending.
 scope:
   known_gaps:
   - The canonical chain-monomial associated-grade identification of Theorem 1.1 has

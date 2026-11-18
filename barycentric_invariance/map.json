@@ -4,7 +4,7 @@
   "baseline_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
   "paper_sha256": "44902437462f2861ab65c112f77ec1f19e594753d3c9b277d9adcb63c6e523e4",
   "one_entry_per_paper": true,
-  "status": "ready_for_full_preflight_scoped_entry",
+  "status": "literal_source_context_prepared_pending_elaboration",
   "source_selection": [
     "paper.pdf",
     "README.md",
@@ -291,11 +291,11 @@
   ],
   "checks": {
     "source_copy": "complete including retained reading files and licenses",
-    "build": "not_run",
-    "comparator": "not_run",
-    "nanoda": "not_run",
-    "editorial_review": "not_run",
-    "challenge_elaboration": "passed"
+    "build": "not_run_for_current_hash",
+    "comparator": "not_run_for_current_hash",
+    "nanoda": "not_run_for_current_hash",
+    "editorial_review": "not_run_for_current_hash",
+    "challenge_elaboration": "not_run_for_current_hash"
   },
   "current_selection": "Theorem 1.1 coherent integral construction with graded/filtered parameter-module equivalences, actual face evaluations and every relative restriction kernel; full coherent uniform factorial-unit criterion of Theorem 1.3; unrestricted negative Boolean-simplex obstruction.",
   "selected_wrapper_provenance": [
@@ -318,19 +318,34 @@
     "challenge_module": "Challenge",
     "solution_module": "Solution",
     "theorem_names": [
-      "PalomarBarycentric.parameterModuleComparison",
-      "FourPapers.Universal.factorial_nonunit_no_simplex_comparison",
       "FourPapers.Universal.faceVertices_mono",
       "FourPapers.Universal.existsUnique_subface",
-      "FourPapers.Universal.theorem_1_3_uniform_iff",
+      "FourPapers.Universal.polynomialRestriction_refl",
+      "FourPapers.Universal.polynomialRestriction_comp",
+      "FourPapers.Universal.stalkVertexSet_bot",
+      "FourPapers.Universal.faceEvaluation_relation",
       "FourPapers.Universal.standardCoefficients_surjective",
       "FourPapers.Universal.standardCoefficients_ker",
+      "FourPapers.Universal.BooleanFace.card_eq_of_color_eq",
       "FourPapers.Universal.isChainExponent_divisorClosed",
-      "FourPapers.Universal.isChainExponent_map_booleanFaceEmbedding",
-      "PalomarBarycentric.integralCoherentComparison",
+      "FourPapers.Universal.stalkVertexSet_subfaceOfVertexSet",
       "FourPapers.Universal.barycentricAllowed_divisorClosed",
       "FourPapers.Universal.barycentricIdeal_eq_forbiddenIdeal",
-      "FourPapers.Universal.standardExponent_map_booleanFaceInclusion"
+      "FourPapers.Universal.standardExponent_map_booleanFaceInclusion",
+      "FourPapers.Universal.killCompl_mem_forbiddenIdeal",
+      "FourPapers.Universal.isChainExponent_map_booleanFaceEmbedding",
+      "FourPapers.Universal.booleanRestriction_refl",
+      "FourPapers.Universal.booleanRestriction_comp",
+      "FourPapers.Universal.faceVertexInclusion_refl",
+      "FourPapers.Universal.faceVertexInclusion_trans",
+      "FourPapers.Universal.monomialCoefficientMap_mk",
+      "FourPapers.Universal.map_faceRelation",
+      "FourPapers.Universal.booleanFacePermutation_face",
+      "FourPapers.Universal.factorial_nonunit_no_simplex_comparison",
+      "FourPapers.Universal.theorem_1_3_uniform_iff",
+      "PalomarBarycentric.parameterModuleComparison",
+      "PalomarBarycentric.integralCoherentComparison",
+      "FourPapers.Universal.mem_faceVertices"
     ],
     "permitted_axioms": [
       "propext",
@@ -340,11 +355,23 @@
   },
   "challenge": {
     "path": "source/Challenge.lean",
-    "sha256": "fca9fb887cacd0bf76e7ec2d0d7e60b8010aa12f8b0e16f53919033a8dcf13dd",
-    "physical_lines": 641,
-    "bytes": 30946,
-    "local_elaboration": "passed",
-    "solution_build": "not_run",
-    "comparator": "not_run"
-  }
+    "sha256": "d4b9fd01951ec93af6bbd2e89bdd61108afa4aa079c1b53be7fb1e1ad2c48e8f",
+    "physical_lines": 915,
+    "bytes": 48685,
+    "local_elaboration": "not_run_for_current_hash",
+    "solution_build": "not_run_for_current_hash",
+    "comparator": "not_run_for_current_hash"
+  },
+  "packaging_changes": [
+    {
+      "kind": "literal_context_correction",
+      "description": "All independent definition values and source variable/universe contexts restored. Exact theorem statements replace proof terms only. Original local/Fintype instances receive explicit stable names in both environments; all instance values and substantive proof bodies are retained. Fresh wrapper headers are literal in Challenge and Solution.",
+      "evidence": "packaging/literal-correction-applied.json"
+    },
+    {
+      "kind": "literal_interface_repair",
+      "evidence": "packaging/targeted-check-repair.json",
+      "description": "Exact current source/context correction and hash-bound pending validation receipt."
+    }
+  ]
 }

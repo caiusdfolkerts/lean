@@ -489,7 +489,7 @@ variable (K : Type*) [CommRing K]
 /-- The atoms of a specified face, viewed as actual elements of the poset. -/
 abbrev FaceVertex (p : P) := {a : P // IsAtom a ∧ a ≤ p}
 
-instance (p : P) : Fintype (FaceVertex p) := Fintype.ofFinite _
+instance palomarFaceVertexFintype (p : P) : Fintype (FaceVertex p) := Fintype.ofFinite _
 
 def faceVertexInclusion {p q : P} (hqp : q ≤ p) : FaceVertex q ↪ FaceVertex p where
   toFun a := ⟨a.val, a.property.1, a.property.2.trans hqp⟩
@@ -628,7 +628,7 @@ variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
 
 abbrev NonzeroFace (P : Type*) [Preorder P] [OrderBot P] := {p : P // p ≠ ⊥}
 
-instance : Fintype (NonzeroFace P) := Fintype.ofFinite _
+instance palomarNonzeroFaceFintype : Fintype (NonzeroFace P) := Fintype.ofFinite _
 
 /-- The meet of two faces in a specified common Boolean upper interval. -/
 def faceMeetBelow (hs : IsSimplicialPoset P) (p q w : P)
