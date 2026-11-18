@@ -11,7 +11,7 @@ rev = "2cabef97b63d3275776b8b060d802de6a6fa1055"
 [[lean_lib]]
 name = "proof"
 srcDir = "source"
-roots = ["rank_three_algebra", "projection_core", "volume_polynomials.mixed_volume_basis_part02", "volume_polynomials.mixed_volume_basis_part01", "projection_boundary", "volume_polynomials.projection_area_foundation", "projection_escape", "main", "additional_results", "full_dependency_audit"]
+roots = ["projection_numeric_support", "rank_three_algebra", "projection_core", "volume_polynomials.mixed_volume_basis_part02", "volume_polynomials.mixed_volume_basis_part01", "projection_boundary", "volume_polynomials.projection_area_foundation", "projection_escape", "main", "additional_results", "full_dependency_audit"]
 allowImportAll = true
 
 [[lean_lib]]

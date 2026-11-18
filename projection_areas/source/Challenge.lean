@@ -305,6 +305,15 @@ def EscapeCone (n : ℕ) : Set (ProjectionArray n) :=
     (∀ i j, 0 ≤ q i j) ∧ AdmitsTriangleWeights q}
 end ProjectionAreaEscape
 
+namespace PalomarProjectionAreas.NumericProofs
+/-- The measured nonzero dimension proof for two coordinate positions. -/
+theorem twoNeZero : NeZero (1 + 1 : ℕ) := by infer_instance
+/-- The measured lower bound used by the literal exponent two. -/
+theorem twoAtLeastTwo : Nat.AtLeastTwo (1 + 1 : ℕ) := by infer_instance
+/-- The measured nonzero dimension proof for four coordinate positions. -/
+theorem fourNeZero : NeZero (3 + 1 : ℕ) := by infer_instance
+end PalomarProjectionAreas.NumericProofs
+
 namespace ProjectionAreaTopology
 /-- Canonical Euclidean coordinate space. -/
 abbrev CoordinateSpace (d : ℕ) := EuclideanSpace ℝ (Fin d)
@@ -320,6 +329,7 @@ abbrev Plane := Fin 2 → ℝ
 
 /-- The actual two-coordinate continuous linear projection. -/
 def coordinateProjection {d : ℕ} (i j : Fin d) : CoordinateSpace d →L[ℝ] Plane :=
+  letI : NeZero (1 + 1 : ℕ) := PalomarProjectionAreas.NumericProofs.twoNeZero
   { toLinearMap :=
       { toFun := fun x k => if k = 0 then x i else x j
         map_add' := by
@@ -375,6 +385,8 @@ namespace ProjectionAreaStrict
 open ProjectionAreaTransforms ProjectionAreaBoundaryPolytope
 /-- The identity on coordinates with the Euclidean norm on its codomain. -/
 def asEuclidean (n : ℕ) : (Fin n → ℝ) ≃L[ℝ] EuclideanSpace ℝ (Fin n) :=
+  letI : Nat.AtLeastTwo (1 + 1 : ℕ) := PalomarProjectionAreas.NumericProofs.twoAtLeastTwo
+  letI : NeZero (1 + 1 : ℕ) := PalomarProjectionAreas.NumericProofs.twoNeZero
   (PiLp.continuousLinearEquiv 2 ℝ (fun _ : Fin n => ℝ)).symm
 
 /-- The diameter after passing to the canonical Euclidean norm. -/
@@ -448,6 +460,7 @@ def selectBody {m n : ℕ} (σ : Fin m → Fin n) (K : Body n) : Body m :=
 
 /-- The specified root-product equality on the deleted four-coordinate area matrix. -/
 def BoundaryAt (K : Body 5) (m : Fin 5) (k : Fin 3) : Prop :=
+  letI : NeZero (3 + 1 : ℕ) := PalomarProjectionAreas.NumericProofs.fourNeZero
   let M := coordinateAreaMatrix (deleteBody m K)
   BoundaryEquality (Real.sqrt (M 0 1 * M 2 3))
     (Real.sqrt (M 0 2 * M 1 3)) (Real.sqrt (M 0 3 * M 1 2)) k
@@ -462,6 +475,7 @@ end ProjectionAreaMixedGeometry
 namespace ProjectionAreaSharpness
 /-- At least one of the three root-product inequalities is an equality. -/
 def IsBoundaryQuartet (M : Matrix (Fin 4) (Fin 4) ℝ) : Prop :=
+  letI : NeZero (3 + 1 : ℕ) := PalomarProjectionAreas.NumericProofs.fourNeZero
   Real.sqrt (M 0 1 * M 2 3) = Real.sqrt (M 0 2 * M 1 3) + Real.sqrt (M 0 3 * M 1 2) ∨
   Real.sqrt (M 0 2 * M 1 3) = Real.sqrt (M 0 1 * M 2 3) + Real.sqrt (M 0 3 * M 1 2) ∨
   Real.sqrt (M 0 3 * M 1 2) = Real.sqrt (M 0 1 * M 2 3) + Real.sqrt (M 0 2 * M 1 3)
@@ -474,6 +488,8 @@ namespace ProjectionAreaPaper
 open VolumePolynomials ProjectionAreaTopology ProjectionAreaMixedGeometry
 /-- The identity on coordinates from Euclidean space to the finite product norm. -/
 def piCoordinates (n : ℕ) : CoordinateSpace n ≃L[ℝ] V n :=
+  letI : Nat.AtLeastTwo (1 + 1 : ℕ) := PalomarProjectionAreas.NumericProofs.twoAtLeastTwo
+  letI : NeZero (1 + 1 : ℕ) := PalomarProjectionAreas.NumericProofs.twoNeZero
   PiLp.continuousLinearEquiv 2 ℝ (fun _ : Fin n => ℝ)
 
 /-- The same actual body in finite product coordinates. -/

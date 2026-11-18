@@ -55,9 +55,11 @@ automation:
 review:
   status: unchecked
   notes: >-
-    Source statements and paper were inspected during packaging. No independent
-    human review, new complete build, Comparator success, NanoDa success or
-    Palomar registration is claimed by this metadata.
+    Source statements and the paper were inspected. The corrected independent
+    633-line Challenge passed canonical elaboration in run 44389397024 at
+    SHA256 78cf8cdef535e3b7e18575eb78a62f63e9735ce03916e0b0f610a91a9e526de4.
+    The corrected source wrappers, full Comparator and mandatory kernels remain
+    pending. No independent human review or registry acceptance is claimed.
 status:
   notes: >-
     Prepared from caiusdfolkerts/research at commit
@@ -65,9 +67,12 @@ status:
     See the source README for the original theorem mapping.
 fidelity:
   notes: >-
-    The Challenge, Solution, Comparator configuration and every original paper
-    source are byte-identical to the preceding snapshot. This separate candidate
-    adds only the exact recursive proof-source Tau Ceti import closure and its
-    attribution, and changes Lake wiring to build it locally against the same
-    Mathlib and Lean pins. No new complete build or independent kernel replay
-    has yet been established for this candidate.
+    The exact recursive proof-source Tau Ceti closure and attribution remain
+    vendored against the unchanged Mathlib and Lean pins. After the failed
+    full snapshot and measured raw/type diagnostics, three exact proposition
+    witnesses for nonzero coordinate dimensions and the exponent two have
+    genuine named proofs and are explicitly compared. Local instances use
+    these witnesses in the affected literal projection, coordinate equivalence
+    and boundary predicates. All mathematical expressions, carriers, measures,
+    hypotheses and original paper proofs are retained. The corrected Challenge passed its canonical-only check; corrected source
+    wrappers, full Comparator and independent kernels remain pending.

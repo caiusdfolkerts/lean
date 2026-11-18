@@ -16,7 +16,10 @@
     "PalomarProjectionAreas.selected_boundary_quartets_unique_extension",
     "PalomarProjectionAreas.exists_open_nonrealizable_strict_quartets",
     "PalomarProjectionAreas.weighted_triangles_obstruction",
-    "PalomarProjectionAreas.rank_at_most_three_classification"
+    "PalomarProjectionAreas.rank_at_most_three_classification",
+    "PalomarProjectionAreas.NumericProofs.twoNeZero",
+    "PalomarProjectionAreas.NumericProofs.twoAtLeastTwo",
+    "PalomarProjectionAreas.NumericProofs.fourNeZero"
   ],
   "permitted_axioms": [
     "propext",

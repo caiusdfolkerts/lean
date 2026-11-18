@@ -340,6 +340,8 @@ open ProjectionAreaTopology ProjectionAreaMixedGeometry
 open ProjectionAreaRankThree ProjectionAreaReplication VolumePolynomials
 
 def piCoordinates (n : ℕ) : CoordinateSpace n ≃L[ℝ] V n :=
+  letI : Nat.AtLeastTwo (1 + 1 : ℕ) := PalomarProjectionAreas.NumericProofs.twoAtLeastTwo
+  letI : NeZero (1 + 1 : ℕ) := PalomarProjectionAreas.NumericProofs.twoNeZero
   PiLp.continuousLinearEquiv 2 ℝ (fun _ : Fin n => ℝ)
 
 def asPiBody {n : ℕ} (K : CoordinateBody n) : ProjectionAreaMixedGeometry.Body n :=
@@ -1377,6 +1379,7 @@ theorem sharpBody_positive (i j : Fin 5) (hij : i ≠ j) :
 
 /-- The ordinary root-product equality defining a boundary quartet. -/
 def IsBoundaryQuartet (M : Matrix (Fin 4) (Fin 4) ℝ) : Prop :=
+  letI : NeZero (3 + 1 : ℕ) := PalomarProjectionAreas.NumericProofs.fourNeZero
   Real.sqrt (M 0 1 * M 2 3) = Real.sqrt (M 0 2 * M 1 3) + Real.sqrt (M 0 3 * M 1 2) ∨
   Real.sqrt (M 0 2 * M 1 3) = Real.sqrt (M 0 1 * M 2 3) + Real.sqrt (M 0 3 * M 1 2) ∨
   Real.sqrt (M 0 3 * M 1 2) = Real.sqrt (M 0 1 * M 2 3) + Real.sqrt (M 0 2 * M 1 3)
@@ -1451,6 +1454,7 @@ namespace ProjectionAreaMixedGeometry
 /-- The equality specifying a particular one of the three balanced cuts
 of the increasing coordinate deletion. -/
 def BoundaryAt (K : Body 5) (m : Fin 5) (k : Fin 3) : Prop :=
+  letI : NeZero (3 + 1 : ℕ) := PalomarProjectionAreas.NumericProofs.fourNeZero
   let M := coordinateAreaMatrix (deleteBody m K)
   BoundaryEquality (Real.sqrt (M 0 1 * M 2 3))
     (Real.sqrt (M 0 2 * M 1 3)) (Real.sqrt (M 0 3 * M 1 2)) k

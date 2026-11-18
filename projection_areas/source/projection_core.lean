@@ -1,5 +1,6 @@
 module
 
+public import projection_numeric_support
 public import Aesop
 public import Mathlib.Algebra.Order.BigOperators.Group.Finset
 public import Mathlib.Analysis.Convex.Caratheodory
@@ -3995,6 +3996,7 @@ abbrev CoordinateBody (d : ℕ) := ConvexBody (CoordinateSpace d)
 abbrev Plane := Fin 2 → ℝ
 
 def coordinateProjection {d : ℕ} (i j : Fin d) : CoordinateSpace d →L[ℝ] Plane :=
+  letI : NeZero (1 + 1 : ℕ) := PalomarProjectionAreas.NumericProofs.twoNeZero
   { toLinearMap :=
       { toFun := fun x k => if k = 0 then x i else x j
         map_add' := by
@@ -4981,6 +4983,8 @@ theorem metricVertices_card {n : ℕ} (d : Fin n → Fin n → ℝ)
 
 /-- The coordinates are unchanged; only their norm is made explicitly Euclidean. -/
 def asEuclidean (n : ℕ) : (Fin n → ℝ) ≃L[ℝ] EuclideanSpace ℝ (Fin n) :=
+  letI : Nat.AtLeastTwo (1 + 1 : ℕ) := PalomarProjectionAreas.NumericProofs.twoAtLeastTwo
+  letI : NeZero (1 + 1 : ℕ) := PalomarProjectionAreas.NumericProofs.twoNeZero
   (PiLp.continuousLinearEquiv 2 ℝ (fun _ : Fin n => ℝ)).symm
 
 def euclideanDiameter {n : ℕ} (K : Set (Fin n → ℝ)) : ℝ :=
