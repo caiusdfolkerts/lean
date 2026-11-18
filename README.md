@@ -1,31 +1,23 @@
-# Current Challenge diagnostic revision04
+# Current Challenge diagnostic revision05
 
-Five explicitly owner-frozen inputs are selected in cases.json: corrected
-Deformed and Alternating, newly frozen Homological, the176-line categorical
-Toric Power main interface, and corrected338-line Sublattice/Rees main.
-No unchanged passing case is rerun. Prior snapshots and receipts remain bound
-to their immutable source commits and are not overwritten.
+Only the two owner-frozen corrected inputs in cases.json are selected:
+Barycentric Tor824 and Three-sunlet models741. No unchanged passing case is
+rerun. Earlier source snapshots and bounded receipts remain immutable.
 
-This is Challenge elaboration only, with intentional theorem placeholders.
-It is not a Solution build, Comparator, mathematical verification, full
-preflight or registry intake. The current resource policy is8GiB per standard
-16GiB runner, one compiler per job, max-parallel2,40-minute compile bound.
-Both workflow copies and runner defaults use8GiB. Historical4GiB results belong
-to revision01 only.
+This checks independent Challenge elaboration with intentional theorem
+placeholders. It is not a Solution build, Comparator, mathematical verification,
+full preflight or registry intake. Both cases preserve their exact4.35.0
+source toolchain and Mathlib56a005855ea17e0b0958f73ec801ae140b0a1679 manifest.
 
-Toric Power uses only the original requireTauCeti stanza, with canonical pin
-1f9b4414105d86e487a4ac4c3d3397076a44d0d2 and the entire untouched upstream
-manifest containing Mathlib074063781836922cb02701cd12943c9f51731afa. The runner
-supports a validated direct-root subset for this case, so transitive Mathlib
-is not promoted to an extra direct requirement. All manifest packages are
-still validated/materialized, and BOTH canonical roots' actual checked-out
-lean-toolchain files must match4.35.0. No override or local adapted TauCeti is used.
-The five explicitly imported upstream TauCeti modules are built as canonical
-module dependencies; no submitted project default/supporting-source build occurs.
+Current resource policy:8GiB per standard16GiB runner, one compiler perjob,
+max-parallel2,40-minute compile bound. Both workflow copies and runner defaults
+use8GiB. Historical4GiB belongs only to revision01. No dependency or toolchain
+override occurs; project default targets and local supporting libraries are
+absent from the generated canonical workspace.
 
-Pinned policy helpers remain14aa8d6b3c2f14a8540605e37144560b9a00e7e7. Exact
-Challenge bytes, original manifest/toolchain/config hashes, compiler, canonical
-Git revisions, commands, exits and bounded100KiB logs are recorded in receipts.
+Source, manifest, compiler, canonical Git revisions, actual commands/exits,
+bounded100KiB logs and output artifact hashes are bound in receipts. Pipeline
+policy helpers remain pinned14aa8d6b3c2f14a8540605e37144560b9a00e7e7.
 
-Local preparation is source-only: hashes and Python/YAML parsed, no Lean build.
-The Root worker owns publication and any subsequent full preflight/intake.
+Preparation: exact owner-frozen source hashes and Python/YAML only; no local
+compiler or dependency build. Root owns publication and further verification.

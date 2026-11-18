@@ -584,7 +584,10 @@ def interchangeParameters (p : Sunlet.Normalization.Parameters K ι Ω e o) : Su
 end end Sunlet.Normalization
 namespace Sunlet.NormalizedLatinSystem section set_option Elab.async false open Sunlet.ToricPairAlgebra variable {k ι Ω : Type*} [Field k] [CharZero k] [Fintype ι] [Fintype Ω] [DecidableEq ι] [DecidableEq Ω] (L : NormalizedLatinSystem ι Ω) (o : Ω) include o in
 /-- Rationality of the actual image closure of the original five-family polynomial map. -/
-theorem model_rational (hm : 5 ≤ Fintype.card Ω) : ∃ n : ℕ, 0 < n ∧ Nonempty (FractionRing (MvPolynomial (Ω ⊕ (Bool × Fin n)) k) ≃ₐ[k] L.ModelFunctionField (k := k)) := by sorry
+theorem model_rational (hm : 5 ≤ Fintype.card Ω) :
+    ∃ n : ℕ, 0 < n ∧ Nonempty
+      (FractionRing (MvPolynomial (Ω ⊕ (Bool × Fin n)) k) ≃ₐ[k]
+        L.ModelFunctionField (k := k)) := by sorry
 end end Sunlet.NormalizedLatinSystem
 namespace Sunlet.NetworkGraphDecomposition section set_option backward.isDefEq.respectTransparency.types false open SimpleGraph variable {V : Type*} (G : SimpleGraph V)
 /-- Exact source definition of vertexDegree. -/
