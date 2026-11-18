@@ -1,11 +1,15 @@
+module
+
 /-
 Adapted from SolarYs431/lean-eval-platonic-classification, original module Submission.DiamanteRelativo.
 Copyright 2026 Daniele Cappello. Licensed under Apache-2.0.
 Source provenance and adaptation details: THIRD_PARTY.md.
 -/
-import cubical.polytope.imports
-import cubical.polytope.diamante2_d
-import cubical.polytope.sotto_politopo
+public import cubical.polytope.imports
+public import cubical.polytope.diamante2_d
+public import cubical.polytope.sotto_politopo
+
+@[expose] public section
 
 open Set
 open scoped RealInnerProductSpace

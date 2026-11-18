@@ -1,6 +1,10 @@
-import differential_geometry.topology.simplicial_complex.ordered_simplicial_set
-import differential_geometry.topology.simplicial_set.finite_cell_induction
-import Mathlib.AlgebraicTopology.SimplicialSet.TopAdj
+module
+
+public import differential_geometry.topology.simplicial_complex.ordered_simplicial_set
+public import differential_geometry.topology.simplicial_set.finite_cell_induction
+public import Mathlib.AlgebraicTopology.SimplicialSet.TopAdj
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

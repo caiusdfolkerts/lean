@@ -1,6 +1,10 @@
-import differential_geometry.topology.simplex.coordinates
-import differential_geometry.topology.simplex.boundary_retraction
-import Mathlib.Topology.Homeomorph.Lemmas
+module
+
+public import differential_geometry.topology.simplex.coordinates
+public import differential_geometry.topology.simplex.boundary_retraction
+public import Mathlib.Topology.Homeomorph.Lemmas
+
+@[expose] public section
 
 set_option autoImplicit false
 

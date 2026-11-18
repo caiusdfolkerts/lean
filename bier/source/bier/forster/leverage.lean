@@ -1,4 +1,8 @@
-import bier.forster.gram_determinant
+module
+
+public import bier.forster.gram_determinant
+
+@[expose] public section
 
 /-! # Equal leverage scores at the determinant minimum
 

@@ -1,16 +1,20 @@
+module
+
 /-
 Copyright (c) 2026 DifferentialGeometry contributors. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: DifferentialGeometry contributors
 -/
-import differential_geometry.topology.piecewise_linear.pl_homeomorph
-import differential_geometry.topology.piecewise_linear.pasting
-import differential_geometry.topology.piecewise_linear.triangulation
-import differential_geometry.topology.piecewise_linear.manifold_invariance
-import differential_geometry.topology.piecewise_linear.boundary_of_ball
-import differential_geometry.analysis.calculus.interpolation.lipschitz_selection
-import Mathlib.Topology.Algebra.AffineSubspace
-import Mathlib.Topology.MetricSpace.Contracting
+public import differential_geometry.topology.piecewise_linear.pl_homeomorph
+public import differential_geometry.topology.piecewise_linear.pasting
+public import differential_geometry.topology.piecewise_linear.triangulation
+public import differential_geometry.topology.piecewise_linear.manifold_invariance
+public import differential_geometry.topology.piecewise_linear.boundary_of_ball
+public import differential_geometry.analysis.calculus.interpolation.lipschitz_selection
+public import Mathlib.Topology.Algebra.AffineSubspace
+public import Mathlib.Topology.MetricSpace.Contracting
+
+@[expose] public section
 
 open Set Topology Metric
 

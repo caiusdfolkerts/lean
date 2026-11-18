@@ -1,6 +1,10 @@
-import bier.threshold
-import bier.standard_coordinates
-import Mathlib.Data.Finset.Option
+module
+
+public import bier.threshold
+public import bier.standard_coordinates
+public import Mathlib.Data.Finset.Option
+
+@[expose] public section
 
 /-! A faithful linear realization of Bier cones modulo the diagonal. -/
 

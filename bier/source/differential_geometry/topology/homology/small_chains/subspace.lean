@@ -1,4 +1,8 @@
-import differential_geometry.topology.homology.small_chains
+module
+
+public import differential_geometry.topology.homology.small_chains
+
+@[expose] public section
 
 set_option autoImplicit false
 

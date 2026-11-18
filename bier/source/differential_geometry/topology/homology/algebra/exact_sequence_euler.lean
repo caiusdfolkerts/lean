@@ -1,7 +1,11 @@
-import differential_geometry.topology.homology.algebra.euler_characteristic
-import Mathlib.Algebra.Homology.HomologySequence
-import Mathlib.Algebra.Homology.HomologicalComplexAbelian
-import Mathlib.Algebra.Category.ModuleCat.Abelian
+module
+
+public import differential_geometry.topology.homology.algebra.euler_characteristic
+public import Mathlib.Algebra.Homology.HomologySequence
+public import Mathlib.Algebra.Homology.HomologicalComplexAbelian
+public import Mathlib.Algebra.Category.ModuleCat.Abelian
+
+@[expose] public section
 
 set_option autoImplicit false
 open CategoryTheory CategoryTheory.Limits

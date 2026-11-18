@@ -1,5 +1,9 @@
-import bier.padded_inverse_span
-import bier.sign_rank
+module
+
+public import bier.padded_inverse_span
+public import bier.sign_rank
+
+@[expose] public section
 
 /-! # The rank of the Schur-sign matrix
 

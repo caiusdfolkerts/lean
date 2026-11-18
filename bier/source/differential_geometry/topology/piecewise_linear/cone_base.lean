@@ -1,12 +1,16 @@
+module
+
 /-
 Copyright (c) 2026 DifferentialGeometry contributors. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: DifferentialGeometry contributors
 -/
-import differential_geometry.topology.piecewise_linear.cone_complex
-import differential_geometry.topology.piecewise_linear.simplex_boundary
-import differential_geometry.topology.piecewise_linear.radial_projection
-import differential_geometry.topology.piecewise_linear.subdivision
+public import differential_geometry.topology.piecewise_linear.cone_complex
+public import differential_geometry.topology.piecewise_linear.simplex_boundary
+public import differential_geometry.topology.piecewise_linear.radial_projection
+public import differential_geometry.topology.piecewise_linear.subdivision
+
+@[expose] public section
 
 open Set Topology
 

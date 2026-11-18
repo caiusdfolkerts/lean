@@ -1,16 +1,20 @@
+module
+
 /-
 Adapted from SolarYs431/lean-eval-platonic-classification, original module Submission.Interpolazione.
 Copyright 2026 Daniele Cappello. Licensed under Apache-2.0.
 Source provenance and adaptation details: THIRD_PARTY.md.
 -/
-import cubical.polytope.imports
-import cubical.polytope.definitions
-import cubical.polytope.perturbazione_finita
-import cubical.polytope.vertici_esposti
-import cubical.polytope.sotto_politopo
-import cubical.polytope.due_funzionali
-import cubical.polytope.dim_stretta
-import cubical.polytope.perno
+public import cubical.polytope.imports
+public import cubical.polytope.definitions
+public import cubical.polytope.perturbazione_finita
+public import cubical.polytope.vertici_esposti
+public import cubical.polytope.sotto_politopo
+public import cubical.polytope.due_funzionali
+public import cubical.polytope.dim_stretta
+public import cubical.polytope.perno
+
+@[expose] public section
 
 /-!
 FASE 3A, Q3-S3 — INTERPOLAZIONE (18 lug 2026).

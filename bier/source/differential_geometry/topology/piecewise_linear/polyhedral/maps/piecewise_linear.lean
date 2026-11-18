@@ -1,7 +1,11 @@
-import Mathlib.Analysis.Convex.SimplicialComplex.Basic
-import Mathlib.Analysis.Convex.Topology
-import Mathlib.Analysis.Normed.Affine.AddTorsorBases
-import Mathlib.Topology.LocallyFinite
+module
+
+public import Mathlib.Analysis.Convex.SimplicialComplex.Basic
+public import Mathlib.Analysis.Convex.Topology
+public import Mathlib.Analysis.Normed.Affine.AddTorsorBases
+public import Mathlib.Topology.LocallyFinite
+
+@[expose] public section
 
 namespace DifferentialGeometry.Topology.Engulfing
 

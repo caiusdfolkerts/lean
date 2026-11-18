@@ -1,6 +1,10 @@
-import cubical.pinning
-import Mathlib.Analysis.InnerProductSpace.ProdL2
-import Mathlib.Combinatorics.SimpleGraph.Maps
+module
+
+public import cubical.pinning
+public import Mathlib.Analysis.InnerProductSpace.ProdL2
+public import Mathlib.Combinatorics.SimpleGraph.Maps
+
+@[expose] public section
 
 /-!
 # Infinitesimal rigidity, gluing, and coning

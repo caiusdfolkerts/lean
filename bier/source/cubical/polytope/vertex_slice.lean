@@ -1,5 +1,9 @@
-import cubical.polytope.generic_height
-import cubical.polytope.figura_al_vertice
+module
+
+public import cubical.polytope.generic_height
+public import cubical.polytope.figura_al_vertice
+
+@[expose] public section
 
 /-!
 # Concrete vertex figures and descending links

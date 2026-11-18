@@ -1,11 +1,15 @@
+module
+
 /-
 Adapted from SolarYs431/lean-eval-platonic-classification, original module Submission.OrtoplesseFacce.
 Copyright 2026 Daniele Cappello. Licensed under Apache-2.0.
 Source provenance and adaptation details: THIRD_PARTY.md.
 -/
-import cubical.polytope.ortoplesse
-import cubical.polytope.diamante
-import cubical.polytope.perturbazione_finita
+public import cubical.polytope.ortoplesse
+public import cubical.polytope.diamante
+public import cubical.polytope.perturbazione_finita
+
+@[expose] public section
 
 open Set
 open scoped RealInnerProductSpace

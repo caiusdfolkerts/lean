@@ -1,6 +1,10 @@
-import bier.complex
-import bier.sign_rank
-import Mathlib.Data.Finset.Option
+module
+
+public import bier.complex
+public import bier.sign_rank
+public import Mathlib.Data.Finset.Option
+
+@[expose] public section
 
 /-! # Encoding strict signs by faces and adjoining a ghost label -/
 

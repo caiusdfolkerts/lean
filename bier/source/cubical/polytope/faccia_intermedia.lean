@@ -1,14 +1,18 @@
+module
+
 /-
 Adapted from SolarYs431/lean-eval-platonic-classification, original module Submission.FacciaIntermedia.
 Copyright 2026 Daniele Cappello. Licensed under Apache-2.0.
 Source provenance and adaptation details: THIRD_PARTY.md.
 -/
-import cubical.polytope.imports
-import cubical.polytope.definitions
-import cubical.polytope.scala_bandiere
-import cubical.polytope.sotto_politopo
-import cubical.polytope.interpolazione
-import cubical.polytope.dim_stretta
+public import cubical.polytope.imports
+public import cubical.polytope.definitions
+public import cubical.polytope.scala_bandiere
+public import cubical.polytope.sotto_politopo
+public import cubical.polytope.interpolazione
+public import cubical.polytope.dim_stretta
+
+@[expose] public section
 
 /-!
 MOTORE COXETER, PASSO 1 — LA FACCIA INTERMEDIA ESISTE (19 lug 2026).

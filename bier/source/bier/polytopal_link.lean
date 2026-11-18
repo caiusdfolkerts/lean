@@ -1,5 +1,9 @@
-import bier.polytopal_relabel
-import cubical.polytope.simplicial_vertex_figure
+module
+
+public import bier.polytopal_relabel
+public import cubical.polytope.simplicial_vertex_figure
+
+@[expose] public section
 
 /-! Vertex links are realized by genuine convex hyperplane vertex figures. -/
 

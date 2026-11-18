@@ -1,4 +1,8 @@
-import cubical.pl_abstract
+module
+
+public import cubical.pl_abstract
+
+@[expose] public section
 
 /-! Coordinate descriptions of the actual standard affine realization. -/
 

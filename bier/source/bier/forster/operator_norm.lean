@@ -1,5 +1,9 @@
-import bier.forster.bound
-import Mathlib.Analysis.InnerProductSpace.Adjoint
+module
+
+public import bier.forster.bound
+public import Mathlib.Analysis.InnerProductSpace.Adjoint
+
+@[expose] public section
 
 /-! # Forster's inequality with the usual Euclidean operator norm -/
 

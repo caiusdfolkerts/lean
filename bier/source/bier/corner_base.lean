@@ -1,4 +1,8 @@
-import bier.corner_deletion
+module
+
+public import bier.corner_deletion
+
+@[expose] public section
 
 /-! The new exposed simplex and complete proper-face correspondence after deletion. -/
 noncomputable section

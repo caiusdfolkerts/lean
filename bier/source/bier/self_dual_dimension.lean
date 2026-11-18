@@ -1,5 +1,9 @@
-import bier.self_dual
-import bier.facets
+module
+
+public import bier.self_dual
+public import bier.facets
+
+@[expose] public section
 
 /-! The dimension of the self-dual Bier construction as an actual face maximum. -/
 noncomputable section

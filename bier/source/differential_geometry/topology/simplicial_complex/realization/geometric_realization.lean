@@ -1,5 +1,9 @@
-import differential_geometry.topology.simplicial_complex.realization.simplicial_gluing
-import differential_geometry.topology.piecewise_linear.polyhedral.maps.piecewise_linear
+module
+
+public import differential_geometry.topology.simplicial_complex.realization.simplicial_gluing
+public import differential_geometry.topology.piecewise_linear.polyhedral.maps.piecewise_linear
+
+@[expose] public section
 
 namespace DifferentialGeometry.Topology.Engulfing
 

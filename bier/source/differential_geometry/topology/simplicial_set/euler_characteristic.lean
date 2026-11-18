@@ -1,8 +1,12 @@
-import differential_geometry.topology.homology.algebra.euler_characteristic
-import Mathlib.AlgebraicTopology.SimplicialSet.Homology.Nondegenerate
-import Mathlib.Algebra.Category.ModuleCat.Products
-import Mathlib.Algebra.DirectSum.Finsupp
-import Mathlib.LinearAlgebra.Dimension.Constructions
+module
+
+public import differential_geometry.topology.homology.algebra.euler_characteristic
+public import Mathlib.AlgebraicTopology.SimplicialSet.Homology.Nondegenerate
+public import Mathlib.Algebra.Category.ModuleCat.Products
+public import Mathlib.Algebra.DirectSum.Finsupp
+public import Mathlib.LinearAlgebra.Dimension.Constructions
+
+@[expose] public section
 
 set_option autoImplicit false
 

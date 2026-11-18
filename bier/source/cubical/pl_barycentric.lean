@@ -1,6 +1,10 @@
-import differential_geometry.topology.simplicial_complex.realization.barycentric_realization
-import differential_geometry.topology.piecewise_linear.star_complex
-import cubical.pl_sphere_rigidity
+module
+
+public import differential_geometry.topology.simplicial_complex.realization.barycentric_realization
+public import differential_geometry.topology.piecewise_linear.star_complex
+public import cubical.pl_sphere_rigidity
+
+@[expose] public section
 
 /-!
 # Piecewise affine equivalence of standard and barycentric realizations

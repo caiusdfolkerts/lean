@@ -1,5 +1,9 @@
-import bier.corner_base
-import bier.stellar_combinatorics
+module
+
+public import bier.corner_base
+public import bier.stellar_combinatorics
+
+@[expose] public section
 
 /-! Translating the exact stellar face formula into actual corner facets. -/
 noncomputable section

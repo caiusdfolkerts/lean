@@ -1,6 +1,10 @@
-import differential_geometry.topology.homology.subdivision.mesh_chains
-import differential_geometry.topology.homology.small_chains.compactness
-import Mathlib.Algebra.Category.ModuleCat.EpiMono
+module
+
+public import differential_geometry.topology.homology.subdivision.mesh_chains
+public import differential_geometry.topology.homology.small_chains.compactness
+public import Mathlib.Algebra.Category.ModuleCat.EpiMono
+
+@[expose] public section
 
 set_option autoImplicit false
 

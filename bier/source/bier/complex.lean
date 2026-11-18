@@ -1,5 +1,9 @@
-import cubical.pl_abstract
-import Mathlib.Data.Finset.Sum
+module
+
+public import cubical.pl_abstract
+public import Mathlib.Data.Finset.Sum
+
+@[expose] public section
 
 /-!
 # Finite simplicial complexes, Alexander duality, and the Bier construction

@@ -1,5 +1,9 @@
-import differential_geometry.topology.simplicial_complex.link_counting
-import Mathlib.Tactic.Linarith
+module
+
+public import differential_geometry.topology.simplicial_complex.link_counting
+public import Mathlib.Tactic.Linarith
+
+@[expose] public section
 
 open Finset
 

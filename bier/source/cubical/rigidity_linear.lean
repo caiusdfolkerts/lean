@@ -1,5 +1,9 @@
-import cubical.rigidity
-import cubical.exactness
+module
+
+public import cubical.rigidity
+public import cubical.exactness
+
+@[expose] public section
 
 /-!
 # Rigidity as exactness of a linear complex

@@ -1,12 +1,16 @@
+module
+
 /-
 Copyright (c) 2026 DifferentialGeometry contributors. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: DifferentialGeometry contributors
 -/
-import differential_geometry.topology.piecewise_linear.ball_sphere_link
-import differential_geometry.topology.piecewise_linear.join_internal
-import differential_geometry.topology.piecewise_linear.join_invariance
-import differential_geometry.topology.piecewise_linear.star_avoiding
+public import differential_geometry.topology.piecewise_linear.ball_sphere_link
+public import differential_geometry.topology.piecewise_linear.join_internal
+public import differential_geometry.topology.piecewise_linear.join_invariance
+public import differential_geometry.topology.piecewise_linear.star_avoiding
+
+@[expose] public section
 
 open Set
 

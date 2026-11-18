@@ -1,6 +1,10 @@
-import differential_geometry.topology.simplicial_complex.incidence
-import Mathlib.Algebra.BigOperators.Ring.Finset
-import Mathlib.Tactic.Ring
+module
+
+public import differential_geometry.topology.simplicial_complex.incidence
+public import Mathlib.Algebra.BigOperators.Ring.Finset
+public import Mathlib.Tactic.Ring
+
+@[expose] public section
 
 open Finset
 

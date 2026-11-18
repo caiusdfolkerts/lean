@@ -1,5 +1,9 @@
-import cubical.rigidity_linear
-import Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional
+module
+
+public import cubical.rigidity_linear
+public import Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional
+
+@[expose] public section
 
 /-!
 # Vertex splitting

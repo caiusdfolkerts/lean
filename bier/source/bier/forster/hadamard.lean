@@ -1,5 +1,9 @@
-import bier.forster.bound
-import Mathlib.LinearAlgebra.Matrix.HadamardMatrix
+module
+
+public import bier.forster.bound
+public import Mathlib.LinearAlgebra.Matrix.HadamardMatrix
+
+@[expose] public section
 
 /-! # The Forster bound for arbitrary column restrictions of Hadamard matrices
 

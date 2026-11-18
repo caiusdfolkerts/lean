@@ -1,5 +1,9 @@
-import bier.stellar_coordinates
-import bier.realization_from_faces
+module
+
+public import bier.stellar_coordinates
+public import bier.realization_from_faces
+
+@[expose] public section
 
 /-! Inverting a facet subdivision by deleting the actual new extreme vertex. -/
 noncomputable section

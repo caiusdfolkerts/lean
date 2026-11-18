@@ -1,5 +1,9 @@
-import bier.ghost_schur_signs
-import bier.schur_core
+module
+
+public import bier.ghost_schur_signs
+public import bier.schur_core
+
+@[expose] public section
 
 /-!
 # Theorem 2: the geometric sign-rank obstruction

@@ -1,6 +1,10 @@
-import bier.encoding
-import bier.link
-import bier.sphere
+module
+
+public import bier.encoding
+public import bier.link
+public import bier.sphere
+
+@[expose] public section
 
 /-! The exact self-dual suspension and its combinatorial antipodal symmetry. -/
 

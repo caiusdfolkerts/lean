@@ -1,10 +1,14 @@
-import Mathlib.Analysis.Convex.Combination
-import Mathlib.Analysis.Convex.Contractible
-import Mathlib.Geometry.Convex.ConvexSpace.Barycenter
-import Mathlib.Geometry.Convex.ConvexSpace.CompactSpaceStdSimplex
-import Mathlib.Geometry.Convex.ConvexSpace.PathConnectedSpaceStdSimplex
-import Mathlib.Topology.Algebra.Module.LocallyConvex
-import Mathlib.Topology.Algebra.Monoid.FunOnFinite
+module
+
+public import Mathlib.Analysis.Convex.Combination
+public import Mathlib.Analysis.Convex.Contractible
+public import Mathlib.Geometry.Convex.ConvexSpace.Barycenter
+public import Mathlib.Geometry.Convex.ConvexSpace.CompactSpaceStdSimplex
+public import Mathlib.Geometry.Convex.ConvexSpace.PathConnectedSpaceStdSimplex
+public import Mathlib.Topology.Algebra.Module.LocallyConvex
+public import Mathlib.Topology.Algebra.Monoid.FunOnFinite
+
+@[expose] public section
 
 noncomputable section
 

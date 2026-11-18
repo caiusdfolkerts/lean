@@ -1,12 +1,16 @@
+module
+
 /-
 Copyright (c) 2026 DifferentialGeometry contributors. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: DifferentialGeometry contributors
 -/
-import differential_geometry.topology.piecewise_linear.std_simplex_cone
-import differential_geometry.topology.piecewise_linear.pl_image
-import differential_geometry.topology.simplicial_complex.geometric_euler_characteristic
-import differential_geometry.topology.simplicial_complex.simplex
+public import differential_geometry.topology.piecewise_linear.std_simplex_cone
+public import differential_geometry.topology.piecewise_linear.pl_image
+public import differential_geometry.topology.simplicial_complex.geometric_euler_characteristic
+public import differential_geometry.topology.simplicial_complex.simplex
+
+@[expose] public section
 
 open Set
 

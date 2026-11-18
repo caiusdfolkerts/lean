@@ -1,7 +1,11 @@
-import cubical.polytope.cube_face_counts
-import cubical.polytope.figura_al_vertice
-import cubical.colored_graph
-import cubical.facet_determination
+module
+
+public import cubical.polytope.cube_face_counts
+public import cubical.polytope.figura_al_vertice
+public import cubical.colored_graph
+public import cubical.facet_determination
+
+@[expose] public section
 
 /-! # The actual facet cover of a cubical convex polytope -/
 

@@ -1,5 +1,9 @@
-import cubical.simplicial_fogelsanger_decomposition
-import cubical.generic_vertex_splitting
+module
+
+public import cubical.simplicial_fogelsanger_decomposition
+public import cubical.generic_vertex_splitting
+
+@[expose] public section
 
 /-! # Rigidity of the completed parts under vertex splitting -/
 

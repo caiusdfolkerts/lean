@@ -1,8 +1,12 @@
-import bier.forster.cauchy_binet
-import bier.forster.subset_forms
-import Mathlib.LinearAlgebra.Matrix.SchurComplement
-import Mathlib.Analysis.Matrix.PosDef
-import Mathlib.Algebra.Order.Star.Real
+module
+
+public import bier.forster.cauchy_binet
+public import bier.forster.subset_forms
+public import Mathlib.LinearAlgebra.Matrix.SchurComplement
+public import Mathlib.Analysis.Matrix.PosDef
+public import Mathlib.Algebra.Order.Star.Real
+
+@[expose] public section
 
 /-! # The weighted Gram determinant and its positive minor expansion -/
 

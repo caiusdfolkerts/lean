@@ -1,6 +1,10 @@
-import bier.forster.exponential_minimum
-import Mathlib.Data.Finset.Powerset
-import Mathlib.LinearAlgebra.Pi
+module
+
+public import bier.forster.exponential_minimum
+public import Mathlib.Data.Finset.Powerset
+public import Mathlib.LinearAlgebra.Pi
+
+@[expose] public section
 
 /-! # Balanced subset-sum forms on the zero-sum hyperplane -/
 

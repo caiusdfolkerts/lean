@@ -1,6 +1,10 @@
-import cubical.polytope.vertex_slice
-import cubical.polytope.face_incidence
-import Mathlib.Combinatorics.SimpleGraph.Finite
+module
+
+public import cubical.polytope.vertex_slice
+public import cubical.polytope.face_incidence
+public import Mathlib.Combinatorics.SimpleGraph.Finite
+
+@[expose] public section
 
 /-! # Geometric vertex-figure dimension and face incidence counts -/
 

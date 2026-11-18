@@ -1,6 +1,10 @@
-import bier.inverse_stellar
-import bier.isolated_data
-import bier.nonpolytopal_examples
+module
+
+public import bier.inverse_stellar
+public import bier.isolated_data
+public import bier.nonpolytopal_examples
+
+@[expose] public section
 
 /-! The exact all-labels-present nonpolytopal example, using actual inverse stacking. -/
 noncomputable section

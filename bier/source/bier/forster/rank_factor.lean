@@ -1,4 +1,8 @@
-import bier.sign_rank
+module
+
+public import bier.sign_rank
+
+@[expose] public section
 
 /-! # A factorization through the actual matrix rank -/
 

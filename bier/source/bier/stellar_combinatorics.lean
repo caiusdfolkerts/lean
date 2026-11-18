@@ -1,4 +1,8 @@
-import bier.isolated
+module
+
+public import bier.isolated
+
+@[expose] public section
 
 /-! # Complete combinatorial data for subdividing a facet at a new vertex -/
 

@@ -1,5 +1,9 @@
-import cubical.pl_abstract
-import differential_geometry.topology.piecewise_linear.link_euclidean
+module
+
+public import cubical.pl_abstract
+public import differential_geometry.topology.piecewise_linear.link_euclidean
+
+@[expose] public section
 
 /-! Faithful affine images preserve links as actual PL realizations. -/
 

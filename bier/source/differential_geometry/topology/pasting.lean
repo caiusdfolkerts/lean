@@ -1,11 +1,15 @@
+module
+
 /-
 Copyright (c) 2026 DifferentialGeometry contributors. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: DifferentialGeometry contributors
 -/
-import Mathlib.Topology.SeparatedMap
-import Mathlib.Data.Set.Card
-import Mathlib.Data.Set.Piecewise
+public import Mathlib.Topology.SeparatedMap
+public import Mathlib.Data.Set.Card
+public import Mathlib.Data.Set.Piecewise
+
+@[expose] public section
 
 open Set Topology
 

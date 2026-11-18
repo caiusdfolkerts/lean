@@ -1,10 +1,12 @@
-import bier.general_construction
-import bier.realization_from_faces
-import bier.audit_support
+module
 
--- Create directories for generated verification output.
-run_cmd Lean.Elab.Command.liftIO do
-  IO.FS.createDirAll ".lake/reports/audit"
+public import bier.general_construction
+public import bier.realization_from_faces
+public import bier.audit_support
+
+@[expose] public section
+
+-- Optional audit-report filesystem output is disabled in the read-only verifier.
 
 
 /-! Checked-environment guards for the principal statements and geometric foundations. -/

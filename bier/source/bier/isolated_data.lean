@@ -1,5 +1,9 @@
-import bier.isolated
-import bier.construction_data
+module
+
+public import bier.isolated
+public import bier.construction_data
+
+@[expose] public section
 
 /-! # Dimensions and actual vertex counts after making the ghost an isolated vertex -/
 

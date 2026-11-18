@@ -1,7 +1,11 @@
-import bier.explicit_ordering
-import bier.all_signs
-import bier.facets
-import bier.sphere
+module
+
+public import bier.explicit_ordering
+public import bier.all_signs
+public import bier.facets
+public import bier.sphere
+
+@[expose] public section
 
 /-! # Exact dimensions and actual vertex counts of the explicit constructions -/
 

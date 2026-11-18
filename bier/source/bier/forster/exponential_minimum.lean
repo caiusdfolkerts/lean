@@ -1,8 +1,12 @@
-import Mathlib.Analysis.Normed.Module.FiniteDimension
-import Mathlib.Analysis.SpecialFunctions.ExpDeriv
-import Mathlib.Analysis.Calculus.LocalExtr.Basic
-import Mathlib.Topology.MetricSpace.Bounded
-import Mathlib.Tactic
+module
+
+public import Mathlib.Analysis.Normed.Module.FiniteDimension
+public import Mathlib.Analysis.SpecialFunctions.ExpDeriv
+public import Mathlib.Analysis.Calculus.LocalExtr.Basic
+public import Mathlib.Topology.MetricSpace.Bounded
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-! # Attainment for a balanced finite exponential sum
 

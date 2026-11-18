@@ -1,5 +1,9 @@
-import cubical.bipartite_system
-import Mathlib.Logic.Relation
+module
+
+public import cubical.bipartite_system
+public import Mathlib.Logic.Relation
+
+@[expose] public section
 
 /-!
 # Propagation through a facet cover

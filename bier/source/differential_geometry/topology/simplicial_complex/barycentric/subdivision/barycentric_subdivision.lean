@@ -1,8 +1,12 @@
-import differential_geometry.topology.simplicial_complex.barycentric.coordinates.barycentric_chain
-import differential_geometry.topology.simplicial_complex.barycentric.coordinates.barycentric_weights
-import differential_geometry.topology.simplicial_complex.barycentric.coordinates.barycentric_chain_weights
-import Mathlib.Analysis.Convex.SimplicialComplex.Basic
-import Mathlib.Data.Fintype.Powerset
+module
+
+public import differential_geometry.topology.simplicial_complex.barycentric.coordinates.barycentric_chain
+public import differential_geometry.topology.simplicial_complex.barycentric.coordinates.barycentric_weights
+public import differential_geometry.topology.simplicial_complex.barycentric.coordinates.barycentric_chain_weights
+public import Mathlib.Analysis.Convex.SimplicialComplex.Basic
+public import Mathlib.Data.Fintype.Powerset
+
+@[expose] public section
 
 namespace DifferentialGeometry.Topology.Engulfing
 

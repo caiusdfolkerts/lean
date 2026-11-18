@@ -1,7 +1,11 @@
-import cubical.simplicial_reindex
-import cubical.simplicial_rigid_splitting
-import cubical.generic_gluing
-import cubical.rigidity_count
+module
+
+public import cubical.simplicial_reindex
+public import cubical.simplicial_rigid_splitting
+public import cubical.generic_gluing
+public import cubical.rigidity_count
+
+@[expose] public section
 
 /-!
 # Fogelsanger rigidity for finite minimal simplicial cycles

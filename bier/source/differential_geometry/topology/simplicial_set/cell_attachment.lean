@@ -1,6 +1,10 @@
-import differential_geometry.topology.simplicial_set.boundary_homeomorphism
-import differential_geometry.topology.simplex.u_lift
-import differential_geometry.topology.simplex.attachment_relative_homology
+module
+
+public import differential_geometry.topology.simplicial_set.boundary_homeomorphism
+public import differential_geometry.topology.simplex.u_lift
+public import differential_geometry.topology.simplex.attachment_relative_homology
+
+@[expose] public section
 
 set_option autoImplicit false
 

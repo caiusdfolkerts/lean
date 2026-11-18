@@ -1,5 +1,9 @@
-import bier.ghost_geometry
-import bier.supporting_signs
+module
+
+public import bier.ghost_geometry
+public import bier.supporting_signs
+
+@[expose] public section
 
 /-! # Lemma 3: the supporting facets determine the Schur signs -/
 

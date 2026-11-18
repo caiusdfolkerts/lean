@@ -1,7 +1,11 @@
-import differential_geometry.topology.simplex.coordinates
-import differential_geometry.topology.category.top_cat.pushout_closed_embedding
-import differential_geometry.topology.simplex.boundary_retraction
-import Mathlib.Topology.CompactOpen
+module
+
+public import differential_geometry.topology.simplex.coordinates
+public import differential_geometry.topology.category.top_cat.pushout_closed_embedding
+public import differential_geometry.topology.simplex.boundary_retraction
+public import Mathlib.Topology.CompactOpen
+
+@[expose] public section
 
 set_option autoImplicit false
 

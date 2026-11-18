@@ -1,14 +1,18 @@
+module
+
 /-
 Adapted from SolarYs431/lean-eval-platonic-classification, original module Submission.BalinskiGenerale.
 Copyright 2026 Daniele Cappello. Licensed under Apache-2.0.
 Source provenance and adaptation details: THIRD_PARTY.md.
 -/
-import cubical.polytope.imports
-import cubical.polytope.perno_monotono
-import cubical.polytope.orbita_vertici
-import cubical.polytope.cono_vertice
-import cubical.polytope.camminata
-import Mathlib.Analysis.InnerProductSpace.Dual
+public import cubical.polytope.imports
+public import cubical.polytope.perno_monotono
+public import cubical.polytope.orbita_vertici
+public import cubical.polytope.cono_vertice
+public import cubical.polytope.camminata
+public import Mathlib.Analysis.InnerProductSpace.Dual
+
+@[expose] public section
 
 /-!
 BALINSKI-LIGHT IN DIMENSIONE ARBITRARIA (20 lug 2026).

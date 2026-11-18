@@ -1,6 +1,10 @@
-import cubical.affine_path
-import Mathlib.LinearAlgebra.FiniteDimensional.Lemmas
-import Mathlib.Tactic
+module
+
+public import cubical.affine_path
+public import Mathlib.LinearAlgebra.FiniteDimensional.Lemmas
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # Generic exactness along an affine path

@@ -1,10 +1,14 @@
+module
+
 /-
 Copyright (c) 2026 DifferentialGeometry contributors. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: DifferentialGeometry contributors
 -/
-import differential_geometry.topology.piecewise_linear.cone_extension
-import differential_geometry.topology.piecewise_linear.link_euclidean
+public import differential_geometry.topology.piecewise_linear.cone_extension
+public import differential_geometry.topology.piecewise_linear.link_euclidean
+
+@[expose] public section
 
 open Set Topology
 

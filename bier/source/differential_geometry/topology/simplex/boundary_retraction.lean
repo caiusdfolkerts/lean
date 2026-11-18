@@ -1,7 +1,11 @@
-import differential_geometry.topology.simplex.coordinates
-import Mathlib.Analysis.Convex.StdSimplex
-import Mathlib.Topology.Homotopy.Equiv
-import Mathlib.Topology.Order.Lattice
+module
+
+public import differential_geometry.topology.simplex.coordinates
+public import Mathlib.Analysis.Convex.StdSimplex
+public import Mathlib.Topology.Homotopy.Equiv
+public import Mathlib.Topology.Order.Lattice
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,5 +1,9 @@
-import differential_geometry.topology.simplicial_set.finite_cell_induction
-import differential_geometry.topology.simplicial_set.realization_cell_induction
+module
+
+public import differential_geometry.topology.simplicial_set.finite_cell_induction
+public import differential_geometry.topology.simplicial_set.realization_cell_induction
+
+@[expose] public section
 
 set_option autoImplicit false
 

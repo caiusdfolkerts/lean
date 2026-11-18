@@ -1,5 +1,9 @@
-import bier.sign_rank
-import Mathlib.LinearAlgebra.LinearIndependent.Basic
+module
+
+public import bier.sign_rank
+public import Mathlib.LinearAlgebra.LinearIndependent.Basic
+
+@[expose] public section
 
 /-! # Full sign rank of the matrix containing every normalized column pattern -/
 

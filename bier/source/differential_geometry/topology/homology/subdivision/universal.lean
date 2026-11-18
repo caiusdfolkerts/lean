@@ -1,5 +1,9 @@
-import differential_geometry.topology.homology.subdivision.restriction
-import differential_geometry.topology.simplex.coordinates
+module
+
+public import differential_geometry.topology.homology.subdivision.restriction
+public import differential_geometry.topology.simplex.coordinates
+
+@[expose] public section
 
 set_option autoImplicit false
 

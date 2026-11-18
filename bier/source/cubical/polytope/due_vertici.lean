@@ -1,11 +1,15 @@
+module
+
 /-
 Adapted from SolarYs431/lean-eval-platonic-classification, original module Submission.DueVertici.
 Copyright 2026 Daniele Cappello. Licensed under Apache-2.0.
 Source provenance and adaptation details: THIRD_PARTY.md.
 -/
-import cubical.polytope.imports
-import cubical.polytope.bandiera_vertice
-import cubical.polytope.cono_vertice
+public import cubical.polytope.imports
+public import cubical.polytope.bandiera_vertice
+public import cubical.polytope.cono_vertice
+
+@[expose] public section
 
 open Set
 

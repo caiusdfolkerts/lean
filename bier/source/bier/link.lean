@@ -1,4 +1,8 @@
-import bier.complex
+module
+
+public import bier.complex
+
+@[expose] public section
 
 /-! Actual abstract links and relabelings, retaining the empty face and ghosts. -/
 

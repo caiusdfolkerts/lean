@@ -1,4 +1,8 @@
-import bier.forster.factor_bound
+module
+
+public import bier.forster.factor_bound
+
+@[expose] public section
 
 /-! # Forster's sign-rank bound, with all rank and cardinality cases
 

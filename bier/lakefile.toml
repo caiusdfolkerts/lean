@@ -19,3 +19,7 @@ name = "verification"
 srcDir = "source"
 roots = ["verification.check_1", "verification.check_2"]
 allowImportAll = true
+
+[[lean_lib]]
+name = "Palomar"
+roots = ["Challenge", "Solution"]

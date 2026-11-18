@@ -1,5 +1,9 @@
-import bier.geometry
-import bier.polytopal_relabel
+module
+
+public import bier.geometry
+public import bier.polytopal_relabel
+
+@[expose] public section
 
 /-! Deleting an extreme vertex and recognizing exposed faces from vertex values. -/
 

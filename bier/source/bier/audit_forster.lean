@@ -1,10 +1,12 @@
-import bier.forster.operator_norm
-import bier.forster.hadamard
-import bier.audit_support
+module
 
--- Create directories for generated verification output.
-run_cmd Lean.Elab.Command.liftIO do
-  IO.FS.createDirAll ".lake/reports/audit"
+public import bier.forster.operator_norm
+public import bier.forster.hadamard
+public import bier.audit_support
+
+@[expose] public section
+
+-- Optional audit-report filesystem output is disabled in the read-only verifier.
 
 
 /-! Kernel-environment audit of the complete Forster dependency chain. -/

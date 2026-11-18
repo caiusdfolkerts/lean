@@ -1,11 +1,15 @@
+module
+
 /-
 Copyright (c) 2026 DifferentialGeometry contributors. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: DifferentialGeometry contributors
 -/
-import differential_geometry.topology.piecewise_linear.link_subdivision
-import differential_geometry.topology.piecewise_linear.simplex_boundary
-import differential_geometry.topology.piecewise_linear.triangulation
+public import differential_geometry.topology.piecewise_linear.link_subdivision
+public import differential_geometry.topology.piecewise_linear.simplex_boundary
+public import differential_geometry.topology.piecewise_linear.triangulation
+
+@[expose] public section
 
 open Set Topology
 

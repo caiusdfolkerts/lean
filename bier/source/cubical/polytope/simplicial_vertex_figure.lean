@@ -1,6 +1,10 @@
-import cubical.polytope.vertex_slice_simplicial
-import cubical.polytope.facet_geometry
-import cubical.simplicial_embedding
+module
+
+public import cubical.polytope.vertex_slice_simplicial
+public import cubical.polytope.facet_geometry
+public import cubical.simplicial_embedding
+
+@[expose] public section
 
 /-! # Simplicial vertex figures and exact boundary-link identification -/
 

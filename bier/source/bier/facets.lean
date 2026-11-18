@@ -1,4 +1,8 @@
-import bier.encoding
+module
+
+public import bier.encoding
+
+@[expose] public section
 
 /-! # Bier faces, facet sizes, and the actual vertex set with one ghost -/
 

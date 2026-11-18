@@ -1,5 +1,9 @@
-import bier.geometry
-import bier.link
+module
+
+public import bier.geometry
+public import bier.link
+
+@[expose] public section
 
 /-! Convex realizations are invariant under faithful label changes. -/
 

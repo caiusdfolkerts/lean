@@ -1,6 +1,10 @@
-import Mathlib.AlgebraicTopology.SimplicialSet.TopAdj
-import Mathlib.Analysis.Normed.Module.Basic
-import Mathlib.Analysis.Convex.Combination
+module
+
+public import Mathlib.AlgebraicTopology.SimplicialSet.TopAdj
+public import Mathlib.Analysis.Normed.Module.Basic
+public import Mathlib.Analysis.Convex.Combination
+
+@[expose] public section
 
 set_option autoImplicit false
 

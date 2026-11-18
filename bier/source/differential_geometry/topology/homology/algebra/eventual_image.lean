@@ -1,6 +1,10 @@
-import differential_geometry.topology.homology.algebra.cokernel_homotopy
-import differential_geometry.topology.homology.algebra.locally_nilpotent
-import Mathlib.Algebra.Homology.HomologySequenceLemmas
+module
+
+public import differential_geometry.topology.homology.algebra.cokernel_homotopy
+public import differential_geometry.topology.homology.algebra.locally_nilpotent
+public import Mathlib.Algebra.Homology.HomologySequenceLemmas
+
+@[expose] public section
 
 set_option autoImplicit false
 open CategoryTheory CategoryTheory.Limits

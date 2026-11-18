@@ -1,6 +1,10 @@
-import bier.facet_coordinates
-import bier.facets
-import bier.schur_algebra
+module
+
+public import bier.facet_coordinates
+public import bier.facets
+public import bier.schur_algebra
+
+@[expose] public section
 
 /-! # The actual labelled vertices and facet bases in a ghost Bier realization -/
 

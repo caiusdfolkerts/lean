@@ -1,4 +1,8 @@
-import bier.geometry
+module
+
+public import bier.geometry
+
+@[expose] public section
 
 /-! Recover a genuine simplicial polytope realization from its proper exposed faces. -/
 

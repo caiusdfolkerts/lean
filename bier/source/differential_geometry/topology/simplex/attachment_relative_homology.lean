@@ -1,5 +1,9 @@
-import differential_geometry.topology.simplex.attachment
-import differential_geometry.topology.simplex.relative_homology
+module
+
+public import differential_geometry.topology.simplex.attachment
+public import differential_geometry.topology.simplex.relative_homology
+
+@[expose] public section
 
 set_option autoImplicit false
 

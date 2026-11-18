@@ -1,7 +1,11 @@
-import cubical.rigidity_linear
-import cubical.generic_exactness
-import Mathlib.Topology.Algebra.Module.Cardinality
-import Mathlib.Topology.Baire.Lemmas
+module
+
+public import cubical.rigidity_linear
+public import cubical.generic_exactness
+public import Mathlib.Topology.Algebra.Module.Cardinality
+public import Mathlib.Topology.Baire.Lemmas
+
+@[expose] public section
 
 /-!
 # Generic placements for rigidity and independence

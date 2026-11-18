@@ -1,4 +1,8 @@
-import bier.facets
+module
+
+public import bier.facets
+
+@[expose] public section
 
 /-! # Replacing the ghost by an isolated vertex is exactly a facet subdivision -/
 

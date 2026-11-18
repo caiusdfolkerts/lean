@@ -1,5 +1,9 @@
-import bier.geometry
-import Mathlib.LinearAlgebra.FiniteDimensional.Lemmas
+module
+
+public import bier.geometry
+public import Mathlib.LinearAlgebra.FiniteDimensional.Lemmas
+
+@[expose] public section
 
 /-! # Normalizing a simplex facet and an outside vertex
 

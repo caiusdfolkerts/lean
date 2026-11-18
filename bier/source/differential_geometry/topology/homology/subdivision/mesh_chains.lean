@@ -1,7 +1,11 @@
-import differential_geometry.topology.homology.subdivision.universal_geometry
-import differential_geometry.topology.homology.subdivision.mesh
-import Mathlib.CategoryTheory.Endomorphism
-import Mathlib.Analysis.SpecificLimits.Basic
+module
+
+public import differential_geometry.topology.homology.subdivision.universal_geometry
+public import differential_geometry.topology.homology.subdivision.mesh
+public import Mathlib.CategoryTheory.Endomorphism
+public import Mathlib.Analysis.SpecificLimits.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 

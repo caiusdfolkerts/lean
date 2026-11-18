@@ -1,5 +1,9 @@
-import differential_geometry.topology.simplicial_complex.geometric_realization_map
-import differential_geometry.topology.simplicial_complex.ordered_maps
+module
+
+public import differential_geometry.topology.simplicial_complex.geometric_realization_map
+public import differential_geometry.topology.simplicial_complex.ordered_maps
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

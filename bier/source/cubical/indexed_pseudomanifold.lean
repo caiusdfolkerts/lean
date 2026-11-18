@@ -1,4 +1,8 @@
-import cubical.pseudomanifold_circuit
+module
+
+public import cubical.pseudomanifold_circuit
+
+@[expose] public section
 
 /-!
 # Indexed simplicial pseudomanifolds

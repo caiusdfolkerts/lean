@@ -1,5 +1,9 @@
-import cubical.simplicial_geometry
-import cubical.complete_rigidity
+module
+
+public import cubical.simplicial_geometry
+public import cubical.complete_rigidity
+
+@[expose] public section
 
 /-!
 # Reindexing finite simplicial circuits

@@ -1,5 +1,9 @@
-import bier.sign_rank
-import Mathlib.Analysis.Real.Sqrt
+module
+
+public import bier.sign_rank
+public import Mathlib.Analysis.Real.Sqrt
+
+@[expose] public section
 
 /-! # The spectral estimate from a balanced projection
 

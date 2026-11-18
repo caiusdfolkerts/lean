@@ -1,6 +1,10 @@
-import bier.forster.gram_determinant
-import bier.sign_rank
-import cubical.generic_rigidity
+module
+
+public import bier.forster.gram_determinant
+public import bier.sign_rank
+public import cubical.generic_rigidity
+
+@[expose] public section
 
 /-! # Sign-preserving perturbation to general linear position
 

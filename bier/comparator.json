@@ -1,0 +1,22 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Bier.Complex.bier_isSphere",
+    "Bier.ghost_signRank_bound_fixedCard",
+    "Bier.ghost_signRank_bound_arbitrary",
+    "Bier.allColumnSigns_signRank",
+    "Bier.Forster.signRank_spectral",
+    "Bier.Forster.hadamard_columnRestriction_signRank",
+    "PalomarBier.principal_example",
+    "PalomarBier.all_labels_example",
+    "PalomarBier.self_dual_example",
+    "PalomarBier.three_dimensional_example",
+    "PalomarBier.general_allSign_construction_unrestricted"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

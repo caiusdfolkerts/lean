@@ -1,5 +1,9 @@
-import bier.complex
-import cubical.polytope.simplicial_boundary
+module
+
+public import bier.complex
+public import cubical.polytope.simplicial_boundary
+
+@[expose] public section
 
 /-!
 # Genuine convex realizations of finite simplicial complexes

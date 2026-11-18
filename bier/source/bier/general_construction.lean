@@ -1,4 +1,8 @@
-import bier.isolated_nonpolytopal
+module
+
+public import bier.isolated_nonpolytopal
+
+@[expose] public section
 
 /-! The final paragraph's literal parameter range: the binomial inequality alone. -/
 namespace Bier

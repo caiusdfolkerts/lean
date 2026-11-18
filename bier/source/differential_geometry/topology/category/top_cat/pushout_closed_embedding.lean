@@ -1,6 +1,10 @@
-import Mathlib.Topology.Category.TopCat.Limits.Basic
-import Mathlib.CategoryTheory.Limits.Types.Pushouts
-import Mathlib.Topology.Maps.Basic
+module
+
+public import Mathlib.Topology.Category.TopCat.Limits.Basic
+public import Mathlib.CategoryTheory.Limits.Types.Pushouts
+public import Mathlib.Topology.Maps.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 

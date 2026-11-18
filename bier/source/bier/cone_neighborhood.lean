@@ -1,4 +1,8 @@
-import bier.cone_coordinates
+module
+
+public import bier.cone_coordinates
+
+@[expose] public section
 
 /-! The canonical Bier cone contains a genuine neighborhood of its apex. -/
 

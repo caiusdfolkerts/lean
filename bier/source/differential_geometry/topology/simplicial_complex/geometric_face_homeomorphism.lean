@@ -1,5 +1,9 @@
-import differential_geometry.topology.simplex.coordinates
-import differential_geometry.topology.simplicial_complex.geometric_face_boundary
+module
+
+public import differential_geometry.topology.simplex.coordinates
+public import differential_geometry.topology.simplicial_complex.geometric_face_boundary
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

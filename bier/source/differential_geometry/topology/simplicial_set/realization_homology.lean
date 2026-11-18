@@ -1,11 +1,15 @@
-import Mathlib.Algebra.Category.ModuleCat.Abelian
-import Mathlib.Algebra.Category.ModuleCat.Colimits
-import Mathlib.Algebra.Homology.QuasiIso
-import Mathlib.AlgebraicTopology.ExtraDegeneracy
-import Mathlib.AlgebraicTopology.SimplicialSet.TopAdj
-import Mathlib.AlgebraicTopology.SingularHomology.HomotopyInvariance
-import Mathlib.AlgebraicTopology.SingularHomology.HomologyZero
-import differential_geometry.topology.simplex.coordinates
+module
+
+public import Mathlib.Algebra.Category.ModuleCat.Abelian
+public import Mathlib.Algebra.Category.ModuleCat.Colimits
+public import Mathlib.Algebra.Homology.QuasiIso
+public import Mathlib.AlgebraicTopology.ExtraDegeneracy
+public import Mathlib.AlgebraicTopology.SimplicialSet.TopAdj
+public import Mathlib.AlgebraicTopology.SingularHomology.HomotopyInvariance
+public import Mathlib.AlgebraicTopology.SingularHomology.HomologyZero
+public import differential_geometry.topology.simplex.coordinates
+
+@[expose] public section
 
 set_option autoImplicit false
 

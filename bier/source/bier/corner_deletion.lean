@@ -1,4 +1,8 @@
-import bier.corner_coordinates
+module
+
+public import bier.corner_coordinates
+
+@[expose] public section
 
 /-! Actual faces after deleting a vertex with a simplicial corner. -/
 

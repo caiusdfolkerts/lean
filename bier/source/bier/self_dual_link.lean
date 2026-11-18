@@ -1,4 +1,8 @@
-import bier.self_dual
+module
+
+public import bier.self_dual
+
+@[expose] public section
 
 /-! The old ghost Bier sphere occurs as the exact vertex link of the self-dual one. -/
 

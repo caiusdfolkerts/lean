@@ -1,8 +1,12 @@
-import bier.obstruction
-import bier.construction_data
-import bier.spectral_example
-import bier.self_dual_nonpolytopal
-import bier.self_dual_dimension
+module
+
+public import bier.obstruction
+public import bier.construction_data
+public import bier.spectral_example
+public import bier.self_dual_nonpolytopal
+public import bier.self_dual_dimension
+
+@[expose] public section
 
 /-! # The explicit nonpolytopal Bier spheres and the universal all-sign construction -/
 

@@ -1,10 +1,14 @@
-import bier.hadamard
-import bier.encoding
-import Mathlib.Data.Nat.Digits.Defs
-import Mathlib.Data.Finset.Sort
-import Mathlib.Data.Fintype.Powerset
-import Mathlib.Data.List.Lex
-import Mathlib.Order.Prod.Lex.Basic
+module
+
+public import bier.hadamard
+public import bier.encoding
+public import Mathlib.Data.Nat.Digits.Defs
+public import Mathlib.Data.Finset.Sort
+public import Mathlib.Data.Fintype.Powerset
+public import Mathlib.Data.List.Lex
+public import Mathlib.Order.Prod.Lex.Basic
+
+@[expose] public section
 
 /-! # The specified integer and lexicographic orders in the explicit examples -/
 

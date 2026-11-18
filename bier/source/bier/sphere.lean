@@ -1,4 +1,8 @@
-import bier.cone_complex
+module
+
+public import bier.cone_complex
+
+@[expose] public section
 
 /-!
 # Bier's sphere theorem

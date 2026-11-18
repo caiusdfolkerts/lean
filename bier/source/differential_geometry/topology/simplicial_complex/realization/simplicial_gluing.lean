@@ -1,8 +1,12 @@
-import Mathlib.Analysis.Convex.SimplicialComplex.AffineIndependentUnion
-import Mathlib.Analysis.Convex.Topology
-import Mathlib.LinearAlgebra.StdBasis
-import Mathlib.Topology.Homeomorph.Quotient
-import Mathlib.Analysis.Normed.Module.FiniteDimension
+module
+
+public import Mathlib.Analysis.Convex.SimplicialComplex.AffineIndependentUnion
+public import Mathlib.Analysis.Convex.Topology
+public import Mathlib.LinearAlgebra.StdBasis
+public import Mathlib.Topology.Homeomorph.Quotient
+public import Mathlib.Analysis.Normed.Module.FiniteDimension
+
+@[expose] public section
 
 namespace DifferentialGeometry.Topology.Engulfing
 

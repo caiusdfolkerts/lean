@@ -1,6 +1,10 @@
-import differential_geometry.topology.homology.algebra.finite_type
-import differential_geometry.topology.homology.euler_characteristic
-import Mathlib.Topology.Category.TopCat.EpiMono
+module
+
+public import differential_geometry.topology.homology.algebra.finite_type
+public import differential_geometry.topology.homology.euler_characteristic
+public import Mathlib.Topology.Category.TopCat.EpiMono
+
+@[expose] public section
 
 set_option autoImplicit false
 open CategoryTheory CategoryTheory.Limits AlgebraicTopology

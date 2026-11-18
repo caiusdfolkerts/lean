@@ -1,7 +1,11 @@
-import differential_geometry.topology.simplex.coordinates
-import differential_geometry.topology.simplex.vertex_map
-import Mathlib.Analysis.Convex.Topology
-import Mathlib.Topology.Homeomorph.Lemmas
+module
+
+public import differential_geometry.topology.simplex.coordinates
+public import differential_geometry.topology.simplex.vertex_map
+public import Mathlib.Analysis.Convex.Topology
+public import Mathlib.Topology.Homeomorph.Lemmas
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

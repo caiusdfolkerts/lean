@@ -1,5 +1,9 @@
-import bier.self_dual_link
-import bier.polytopal_link
+module
+
+public import bier.self_dual_link
+public import bier.polytopal_link
+
+@[expose] public section
 
 /-! The self-dual construction preserves genuine nonpolytopality. -/
 

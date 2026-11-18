@@ -1,5 +1,9 @@
-import Mathlib.Analysis.Convex.SimplicialComplex.Basic
-import Mathlib.SetTheory.Cardinal.Finite
+module
+
+public import Mathlib.Analysis.Convex.SimplicialComplex.Basic
+public import Mathlib.SetTheory.Cardinal.Finite
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

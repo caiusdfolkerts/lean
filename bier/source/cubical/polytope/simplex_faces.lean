@@ -1,4 +1,8 @@
-import cubical.polytope.simplicial_polytope
+module
+
+public import cubical.polytope.simplicial_polytope
+
+@[expose] public section
 
 /-! # Exposed faces of an actual geometric simplex -/
 

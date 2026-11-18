@@ -1,3 +1,5 @@
+module
+
 /-
 Copyright (c) 2026 Chokmah LLC. Licensed CC BY 4.0.
 Source: https://github.com/chokmah-me/catalan-sun-lean/blob/2d1890b21e946d5d61f364497b37a9fbb8790709/CatalanSun/CauchyBinet.lean
@@ -14,12 +16,14 @@ compiled and kernel checked with the pinned Lean 4.35.0 / Mathlib revision.
   injectives by image via `Finset.orderEmbOfFin`.
 -/
 
-import Mathlib.Data.Fintype.BigOperators
-import Mathlib.Data.Finset.Powerset
-import Mathlib.Data.Finset.Sort
-import Mathlib.Data.Matrix.Basic
-import Mathlib.LinearAlgebra.Matrix.Determinant.Basic
-import Mathlib.Logic.Equiv.Set
+public import Mathlib.Data.Fintype.BigOperators
+public import Mathlib.Data.Finset.Powerset
+public import Mathlib.Data.Finset.Sort
+public import Mathlib.Data.Matrix.Basic
+public import Mathlib.LinearAlgebra.Matrix.Determinant.Basic
+public import Mathlib.Logic.Equiv.Set
+
+@[expose] public section
 
 set_option linter.style.header false
 set_option linter.unusedSimpArgs false

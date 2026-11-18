@@ -1,6 +1,10 @@
-import Mathlib.Analysis.Convex.Combination
-import Mathlib.Data.Finset.Max
-import Mathlib.Basic.Real.Basic
+module
+
+public import Mathlib.Analysis.Convex.Combination
+public import Mathlib.Data.Finset.Max
+public import Mathlib.Basic.Real.Basic
+
+@[expose] public section
 
 namespace DifferentialGeometry.Topology.Engulfing
 

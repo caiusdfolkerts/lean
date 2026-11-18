@@ -1,8 +1,12 @@
-import differential_geometry.topology.simplicial_set.cell_attachment
-import differential_geometry.topology.simplicial_set.relative_realization
-import differential_geometry.topology.homology.algebra.quasi_iso_middle
-import Mathlib.CategoryTheory.Adhesive.Basic
-import Mathlib.CategoryTheory.Limits.Shapes.Pullback.IsPullback.Kernels
+module
+
+public import differential_geometry.topology.simplicial_set.cell_attachment
+public import differential_geometry.topology.simplicial_set.relative_realization
+public import differential_geometry.topology.homology.algebra.quasi_iso_middle
+public import Mathlib.CategoryTheory.Adhesive.Basic
+public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.IsPullback.Kernels
+
+@[expose] public section
 
 set_option autoImplicit false
 

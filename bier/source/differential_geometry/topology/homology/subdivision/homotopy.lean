@@ -1,6 +1,10 @@
-import differential_geometry.topology.homology.subdivision.barycentric
-import Mathlib.Algebra.Homology.Homotopy
-import Mathlib.Tactic.Abel
+module
+
+public import differential_geometry.topology.homology.subdivision.barycentric
+public import Mathlib.Algebra.Homology.Homotopy
+public import Mathlib.Tactic.Abel
+
+@[expose] public section
 
 set_option autoImplicit false
 

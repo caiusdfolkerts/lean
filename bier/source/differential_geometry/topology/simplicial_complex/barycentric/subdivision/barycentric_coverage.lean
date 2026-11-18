@@ -1,5 +1,9 @@
-import differential_geometry.topology.simplicial_complex.barycentric.subdivision.barycentric_subdivision
-import Mathlib.Algebra.BigOperators.Field
+module
+
+public import differential_geometry.topology.simplicial_complex.barycentric.subdivision.barycentric_subdivision
+public import Mathlib.Algebra.BigOperators.Field
+
+@[expose] public section
 
 namespace DifferentialGeometry.Topology.Engulfing
 

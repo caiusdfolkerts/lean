@@ -1,5 +1,9 @@
-import cubical.polytope.face_order
-import cubical.polytope.ipercubo
+module
+
+public import cubical.polytope.face_order
+public import cubical.polytope.ipercubo
+
+@[expose] public section
 
 /-!
 # Geometric meaning of “cubical”

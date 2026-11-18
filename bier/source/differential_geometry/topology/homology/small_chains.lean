@@ -1,7 +1,11 @@
-import Mathlib.Algebra.Category.ModuleCat.Colimits
-import Mathlib.AlgebraicTopology.SimplicialSet.Subcomplex
-import Mathlib.AlgebraicTopology.SimplicialSet.TopAdj
-import Mathlib.AlgebraicTopology.SingularHomology.Basic
+module
+
+public import Mathlib.Algebra.Category.ModuleCat.Colimits
+public import Mathlib.AlgebraicTopology.SimplicialSet.Subcomplex
+public import Mathlib.AlgebraicTopology.SimplicialSet.TopAdj
+public import Mathlib.AlgebraicTopology.SingularHomology.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 

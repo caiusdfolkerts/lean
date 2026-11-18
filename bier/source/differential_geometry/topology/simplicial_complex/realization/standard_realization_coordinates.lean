@@ -1,5 +1,9 @@
-import differential_geometry.topology.simplicial_complex.realization.simplicial_gluing
-import Mathlib.Analysis.Convex.Combination
+module
+
+public import differential_geometry.topology.simplicial_complex.realization.simplicial_gluing
+public import Mathlib.Analysis.Convex.Combination
+
+@[expose] public section
 
 namespace DifferentialGeometry.Topology.Engulfing
 

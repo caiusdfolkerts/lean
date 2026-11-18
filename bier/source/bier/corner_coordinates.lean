@@ -1,4 +1,8 @@
-import bier.delete_vertex
+module
+
+public import bier.delete_vertex
+
+@[expose] public section
 
 /-! Supporting corner facets give honest affine coordinates on the whole polytope. -/
 

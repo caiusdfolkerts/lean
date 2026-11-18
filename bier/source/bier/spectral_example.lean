@@ -1,5 +1,9 @@
-import bier.explicit_ordering
-import bier.forster.hadamard
+module
+
+public import bier.explicit_ordering
+public import bier.forster.hadamard
+
+@[expose] public section
 
 /-! # The strict numerical sign-rank obstruction in the principal example -/
 

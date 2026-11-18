@@ -1,4 +1,8 @@
-import bier.forster.leverage
+module
+
+public import bier.forster.leverage
+
+@[expose] public section
 
 /-! # The balanced orthogonal projection supplied by equal leverage scores
 

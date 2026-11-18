@@ -1,6 +1,10 @@
-import differential_geometry.topology.simplicial_set.boundary_realization
-import differential_geometry.topology.simplex.face
-import Mathlib.Topology.LocallyFinite
+module
+
+public import differential_geometry.topology.simplicial_set.boundary_realization
+public import differential_geometry.topology.simplex.face
+public import Mathlib.Topology.LocallyFinite
+
+@[expose] public section
 
 set_option autoImplicit false
 

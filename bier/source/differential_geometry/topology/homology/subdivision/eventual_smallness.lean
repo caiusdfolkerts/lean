@@ -1,5 +1,9 @@
-import differential_geometry.topology.homology.subdivision.simplex_smallness
-import Mathlib.LinearAlgebra.Quotient.Defs
+module
+
+public import differential_geometry.topology.homology.subdivision.simplex_smallness
+public import Mathlib.LinearAlgebra.Quotient.Defs
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,7 +1,11 @@
-import Mathlib.LinearAlgebra.Matrix.Rank
-import Mathlib.Analysis.InnerProductSpace.PiL2
-import Mathlib.Analysis.Matrix.Normed
-import Mathlib.Tactic
+module
+
+public import Mathlib.LinearAlgebra.Matrix.Rank
+public import Mathlib.Analysis.InnerProductSpace.PiL2
+public import Mathlib.Analysis.Matrix.Normed
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-! # Sign matrices, actual realizations, and sign rank
 

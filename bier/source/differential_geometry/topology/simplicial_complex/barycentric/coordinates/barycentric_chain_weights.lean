@@ -1,6 +1,10 @@
-import differential_geometry.topology.simplicial_complex.barycentric.coordinates.barycentric_chain
-import differential_geometry.topology.simplicial_complex.barycentric.coordinates.barycentric_weights
-import Mathlib.Algebra.Order.BigOperators.Group.Finset
+module
+
+public import differential_geometry.topology.simplicial_complex.barycentric.coordinates.barycentric_chain
+public import differential_geometry.topology.simplicial_complex.barycentric.coordinates.barycentric_weights
+public import Mathlib.Algebra.Order.BigOperators.Group.Finset
+
+@[expose] public section
 
 namespace DifferentialGeometry.Topology.Engulfing
 

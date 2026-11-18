@@ -1,6 +1,10 @@
-import bier.complex
-import bier.cone_neighborhood
-import bier.realization_image
+module
+
+public import bier.complex
+public import bier.cone_neighborhood
+public import bier.realization_image
+
+@[expose] public section
 
 /-! The coordinate cone is precisely the standard realization of the abstract cone. -/
 

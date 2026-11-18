@@ -1,5 +1,9 @@
-import bier.padded_inverse_span
-import Mathlib.LinearAlgebra.Matrix.Block
+module
+
+public import bier.padded_inverse_span
+public import Mathlib.LinearAlgebra.Matrix.Block
+
+@[expose] public section
 
 /-! # The coordinate computation behind the geometric Schur complement -/
 

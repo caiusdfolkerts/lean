@@ -1,9 +1,13 @@
-import bier.sign_rank
-import Mathlib.LinearAlgebra.Matrix.HadamardMatrix
-import Mathlib.Data.ZMod.Basic
-import Mathlib.Algebra.BigOperators.Ring.Finset
-import Mathlib.Algebra.Group.Submonoid.BigOperators
-import Mathlib.Tactic.FinCases
+module
+
+public import bier.sign_rank
+public import Mathlib.LinearAlgebra.Matrix.HadamardMatrix
+public import Mathlib.Data.ZMod.Basic
+public import Mathlib.Algebra.BigOperators.Ring.Finset
+public import Mathlib.Algebra.Group.Submonoid.BigOperators
+public import Mathlib.Tactic.FinCases
+
+@[expose] public section
 
 /-!
 # The explicit Paley–Walsh matrix

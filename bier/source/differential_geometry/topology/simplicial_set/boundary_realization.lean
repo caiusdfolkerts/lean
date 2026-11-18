@@ -1,6 +1,10 @@
-import Mathlib.AlgebraicTopology.SimplicialSet.TopAdj
-import Mathlib.AlgebraicTopology.SimplicialSet.Boundary
-import differential_geometry.topology.homology.small_chains.subspace
+module
+
+public import Mathlib.AlgebraicTopology.SimplicialSet.TopAdj
+public import Mathlib.AlgebraicTopology.SimplicialSet.Boundary
+public import differential_geometry.topology.homology.small_chains.subspace
+
+@[expose] public section
 
 set_option autoImplicit false
 

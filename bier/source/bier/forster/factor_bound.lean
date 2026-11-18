@@ -1,7 +1,11 @@
-import bier.forster.projection
-import bier.forster.projection_bound
-import bier.forster.generic_position
-import bier.forster.rank_factor
+module
+
+public import bier.forster.projection
+public import bier.forster.projection_bound
+public import bier.forster.generic_position
+public import bier.forster.rank_factor
+
+@[expose] public section
 
 /-! # The unrestricted Forster inequality for feature factorizations -/
 

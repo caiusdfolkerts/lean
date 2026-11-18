@@ -1,5 +1,9 @@
-import differential_geometry.topology.simplex.coordinates
-import Mathlib.Analysis.Convex.StdSimplex
+module
+
+public import differential_geometry.topology.simplex.coordinates
+public import Mathlib.Analysis.Convex.StdSimplex
+
+@[expose] public section
 
 set_option autoImplicit false
 

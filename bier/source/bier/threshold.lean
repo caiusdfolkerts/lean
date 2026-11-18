@@ -1,6 +1,10 @@
-import Mathlib.Data.Finset.Max
-import Mathlib.Data.Fintype.Powerset
-import Mathlib.Tactic
+module
+
+public import Mathlib.Data.Finset.Max
+public import Mathlib.Data.Fintype.Powerset
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-! Every proper down-set has a unique sign transition along each diagonal line. -/
 

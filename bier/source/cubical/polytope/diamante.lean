@@ -1,12 +1,16 @@
+module
+
 /-
 Adapted from SolarYs431/lean-eval-platonic-classification, original module Submission.Diamante.
 Copyright 2026 Daniele Cappello. Licensed under Apache-2.0.
 Source provenance and adaptation details: THIRD_PARTY.md.
 -/
-import cubical.polytope.imports
-import cubical.polytope.definitions
-import cubical.polytope.dim_stretta
-import cubical.polytope.scala_bandiere
+public import cubical.polytope.imports
+public import cubical.polytope.definitions
+public import cubical.polytope.dim_stretta
+public import cubical.polytope.scala_bandiere
+
+@[expose] public section
 
 /-!
 FASE 3A — IL DIAMANTE (18 lug 2026).

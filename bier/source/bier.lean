@@ -1,5 +1,9 @@
-import bier.general_construction
-import bier.forster.operator_norm
+module
+
+public import bier.general_construction
+public import bier.forster.operator_norm
+
+@[expose] public section
 
 /-!
 # Explicit nonpolytopal Bier spheres

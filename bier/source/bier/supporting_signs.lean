@@ -1,5 +1,9 @@
-import bier.facet_coordinates
-import Mathlib.LinearAlgebra.Matrix.NonsingularInverse
+module
+
+public import bier.facet_coordinates
+public import Mathlib.LinearAlgebra.Matrix.NonsingularInverse
+
+@[expose] public section
 
 /-! # The strict coordinate signs forced by the two neighboring facets -/
 

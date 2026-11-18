@@ -1,4 +1,8 @@
-import differential_geometry.topology.homology.subdivision.cone
+module
+
+public import differential_geometry.topology.homology.subdivision.cone
+
+@[expose] public section
 
 set_option autoImplicit false
 

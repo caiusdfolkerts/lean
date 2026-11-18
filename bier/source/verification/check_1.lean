@@ -1,7 +1,11 @@
-import bier
-import Lean.Util.CollectAxioms
-import Lean.Elab.Command
-import Lean.Meta.Basic
+module
+
+public import bier
+public import Lean.Util.CollectAxioms
+public import Lean.Elab.Command
+public import Lean.Meta.Basic
+
+@[expose] public section
 open Lean Elab Command
 run_cmd do
   let env := (← getEnv).setExporting false

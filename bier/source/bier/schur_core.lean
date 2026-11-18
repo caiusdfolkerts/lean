@@ -1,5 +1,9 @@
-import bier.schur_algebra
-import bier.schur_rank
+module
+
+public import bier.schur_algebra
+public import bier.schur_rank
+
+@[expose] public section
 
 /-! # Restricting the geometric Schur complement to the core labels -/
 

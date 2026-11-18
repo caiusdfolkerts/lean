@@ -1,9 +1,13 @@
-import differential_geometry.topology.simplicial_complex.ordered_geometric_cell
-import differential_geometry.topology.simplicial_complex.geometric_inclusion
-import differential_geometry.topology.simplicial_complex.finite_face_induction
-import differential_geometry.topology.simplicial_complex.empty_realization
-import differential_geometry.topology.simplicial_set.compactness
-import differential_geometry.topology.category.top_cat.pushout_injectivity
+module
+
+public import differential_geometry.topology.simplicial_complex.ordered_geometric_cell
+public import differential_geometry.topology.simplicial_complex.geometric_inclusion
+public import differential_geometry.topology.simplicial_complex.finite_face_induction
+public import differential_geometry.topology.simplicial_complex.empty_realization
+public import differential_geometry.topology.simplicial_set.compactness
+public import differential_geometry.topology.category.top_cat.pushout_injectivity
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section
