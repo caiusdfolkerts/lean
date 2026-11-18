@@ -16,7 +16,20 @@
     "PalomarSublattice.Rees.monomial_mem",
     "PalomarSublattice.Rees.generated_in_degree_one",
     "PalomarSublattice.multichain_finite",
-    "PalomarSublattice.all_powers_signed_fine_betti"
+    "PalomarSublattice.all_powers_signed_fine_betti",
+    "PalomarSublattice.sublattice_initial_ideal_identities",
+    "PalomarSublattice.sublattice_first_power_propagation",
+    "PalomarSublattice.GeneralRees.base_mem",
+    "PalomarSublattice.GeneralRees.d_one",
+    "PalomarSublattice.GeneralRees.cycles_mul",
+    "PalomarSublattice.GeneralRees.boundary_zero",
+    "PalomarSublattice.GeneralRees.boundary_add",
+    "PalomarSublattice.GeneralRees.boundary_neg",
+    "PalomarSublattice.GeneralRees.boundary_left",
+    "PalomarSublattice.GeneralRees.boundary_right",
+    "PalomarSublattice.GeneralRees.oneCoefficient_mem",
+    "PalomarSublattice.sublattice_deformation_rees_generation",
+    "PalomarSublattice.sublattice_first_power_finer_propagation"
   ],
   "permitted_axioms": [
     "propext",

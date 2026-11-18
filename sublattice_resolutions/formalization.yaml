@@ -8,7 +8,11 @@ project:
     satisfy the full signed fine-degree multichain Betti formula, with actual
     polynomial quotients by sums of predecessor colons, and their actual Rees
     Koszul homology algebra is generated in degree one. The literal finite
-    Rees kernel has the displayed monic Groebner presentation.
+    Rees kernel has the displayed monic Groebner presentation. For every
+    homogeneous deformation with this initial ideal, the first-power criterion
+    gives the symbolic and initial identities, Betti preservation in all powers
+    in every respected additive grading refining ordinary degree, and generation
+    of its actual Rees Koszul homology in auxiliary degree one.
   authors: [Caius Folkerts]
   responsible_maintainers: [Caius Folkerts]
   license: Apache-2.0
@@ -20,7 +24,7 @@ sources:
     authors: [Caius Folkerts]
     type: paper
     relationship: formalizes
-    location: paper.pdf, Theorems1.1,1.2 and Proposition2.2
+    location: paper.pdf, Theorems1.1,1.2,4.3 and Proposition2.2
 related_formalizations:
   - title: caiusdfolkerts/research sublattice_resolutions
     id: https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/sublattice_resolutions
@@ -35,12 +39,15 @@ automation:
 review:
   status: unchecked
   notes: >-
-    Exact494-line Challenge SHA3c20285b passed canonical elaboration in
-    remote run44368529809. All input hashes, canonical pins and bounded-log
-    hash were independently checked. The1571-line actual Solution wrapper
-    draft remains unelaborated. Complete source/Solution build, raw Comparator,
-    NanoDa and mathematical peer review remain unverified. Earlier partial
-    Proposition2.2 and363-line Challenge passes remain separate evidence.
+    Exact726-line Challenge SHA51c9d4bc passed canonical elaboration in
+    run44380113477/source863d32aa. All inputs, canonical pins and bounded-log
+    hash were independently checked. The2277-line repaired actual Solution
+    retains the complete first-power-criterion proof draft and incorporates
+    measured fixes for the63 earlier main-wrapper errors in run44371585714.
+    The genuine canonical API proof smoke passed in run44383675339 with
+    exact inputs and pins verified. This merged proof draft remains
+    unelaborated; that bounded check is not a full proof replay. No Solution,
+    Comparator, NanoDa, registry or mathematical peer-review pass is claimed.
 fidelity:
   divergences: >-
     Actual polynomial Koszul homology is used as the independent interface for
@@ -51,6 +58,6 @@ fidelity:
     remain quantified. The graph uses the given closed labeling without a
     connectivity assumption. The Rees conclusion uses the actual homology algebra.
 limitations:
-  - The exact expanded Challenge passed; all new Solution bridges, full source build, raw Comparator and NanoDa remain pending.
-  - This candidate covers Theorems1.1,1.2 and Proposition2.2; the remaining substantive corollary groups require their own exact interfaces and are not claimed here.
+  - The exact726-line extended Challenge passed. The merged actual Solution, full source build, raw Comparator and NanoDa remain unverified.
+  - This candidate drafts Theorems1.1,1.2,4.3 and Proposition2.2; the remaining substantive corollary groups require their own exact interfaces and are not claimed here.
   - Optional filesystem report writes catch IO failures individually; all mathematical audit assertions and source guards are retained.
