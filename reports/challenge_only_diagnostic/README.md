@@ -1,3 +1,3 @@
-# Frozen diagnostic revision22
+# Frozen diagnostic revision23
 
-One changed owner-frozen genuine actual-proof/API smoke from observed Rees Solution failures. All displayed theorem bodies are actual proofs; no placeholders or project imports. Exact canonical pins, one8GiB compiler/job,max2jobs,40minute compile deadline. Scope is the support/ideal/polynomial/basis/quotient/complex APIs exercised, not complete source proof or Comparator validation. Only added exact canonical PowersetCard import and removed already-closed proof steps after measured R19 errors. All prior snapshots immutable.
+One owner-frozen canonical coefficient auxiliary TYPE probe. Exactly three direct CoherentEquiv.trans proof-name lookups; rawAST2000/readable1200character bounds and explicit missing/truncation metadata. No values, dependency traversal or project build. Exact canonical pins, one8GiB compiler/job,max2jobs,40minute compile deadline. Prior canonical Challenge placeholders remain as diagnostic scaffolding, not proved claims. No full-preflight/Comparator/intake claim. All prior snapshots immutable.

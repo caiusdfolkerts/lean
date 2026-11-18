@@ -4,20 +4,20 @@
   "pipeline_commit": "14aa8d6b3c2f14a8540605e37144560b9a00e7e7",
   "cases": [
     {
-      "id": "sublattice_actual_canonical_api_proof_smoke_r2",
+      "id": "barycentric_relative_coefficient_aux_types",
       "module": "Challenge",
-      "case_dir": "cases/sublattice_actual_canonical_api_proof_smoke_r2",
-      "original_package": "reports/sublattice_resolutions/canonical-api-smoke-r2",
-      "original_challenge": "reports/sublattice_resolutions/canonical-api-smoke-r2/Challenge.lean",
+      "case_dir": "cases/barycentric_relative_coefficient_aux_types",
+      "original_package": "reports/barycentric_invariance_relative/coefficient-aux-smoke",
+      "original_challenge": "reports/barycentric_invariance_relative/coefficient-aux-smoke/Challenge.lean",
       "lean_toolchain": "leanprover/lean4:v4.35.0",
       "hashes": {
         "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
-        "lake-manifest.json": "d7a35b5c5854a8cb356e75a36105bfaefc92a473494125e5b9a897d3dfd5d46d",
-        "original-lakefile.toml": "e3934467dcd417ff65b4a39916006746b69e1890d1799a38b777f97702be0dfd",
-        "Challenge.lean": "ed66016b942a1cc1ada426c98c8bf0edd6f4009e1f35a9804691d70d4634ba04"
+        "lake-manifest.json": "1f49ab4b0413a57d8d5efeecdeac1132e4c2ff7ac252daefafd2d5c0be0a3a3e",
+        "original-lakefile.toml": "eefe11ae1dd6071e70bf29d17378cc9caaab18db6b29765681a8e693f553f665",
+        "Challenge.lean": "48d1684c718e61cd95c393eddc0d88529947f8d0177417d0ef4f180247233541"
       },
-      "challenge_lines": 158,
-      "challenge_bytes": 6801,
+      "challenge_lines": 730,
+      "challenge_bytes": 34429,
       "dependency_pins": [
         {
           "name": "mathlib",
@@ -65,15 +65,12 @@
           "rev": "c24fe6078c630e89b489bffe59b3e20ac30d12c8"
         }
       ],
-      "diagnostic_class": "canonical-only-genuine-bridge-proof-smoke",
-      "remote_memory_mib": 8192,
-      "proof_holes": false,
-      "source_project_import": false,
-      "proof_scope": "Actual support/ideal/polynomial/basis/quotient/chain-complex API proofs from observed Solution failures only"
+      "diagnostic_class": "canonical-only-three-bounded-coefficient-auxiliary-type-lookups",
+      "remote_memory_mib": 8192
     }
   ],
   "default_case_ids": [
-    "sublattice_actual_canonical_api_proof_smoke_r2"
+    "barycentric_relative_coefficient_aux_types"
   ],
   "operator_resource_policy": {
     "memory_mib": 8192,
@@ -82,5 +79,5 @@
     "matrix_max_parallel": 2,
     "compile_timeout_seconds": 2400
   },
-  "revision": "22"
+  "revision": "23"
 }
