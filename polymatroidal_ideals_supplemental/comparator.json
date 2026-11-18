@@ -1,0 +1,26 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "PalomarPolymatroidal.minimal_closure_finiteLength",
+    "PalomarPolymatroidal.maximal_hole_regularity",
+    "PalomarPolymatroidal.least_power_regularity_difference",
+    "PalomarPolymatroidal.Simplicial.boundary_mem",
+    "PalomarPolymatroidal.Simplicial.chainDifferential_comp",
+    "PalomarPolymatroidal.integral_closure_prime_power_factors",
+    "PalomarPolymatroidal.intersection_type_iff",
+    "PalomarPolymatroidal.koszulFaces_downward",
+    "PalomarPolymatroidal.deleted_generator_nonlinear_strand",
+    "PalomarPolymatroidal.exists_pure_isolator",
+    "PalomarPolymatroidal.exists_mixed_isolator",
+    "PalomarPolymatroidal.unique_bad_degree_lower_bound",
+    "PalomarPolymatroidal.pure_unique_bad_degree_lower_bound",
+    "PalomarPolymatroidal.exists_sharp_isolator",
+    "PalomarPolymatroidal.exists_outer_band_isolator"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

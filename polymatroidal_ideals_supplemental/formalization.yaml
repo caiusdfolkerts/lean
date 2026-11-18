@@ -1,0 +1,66 @@
+version: v0.4
+project:
+  name: Prime-power intersections, regularity and sharp local obstructions for polymatroidal ideals
+  description: >-
+    Polymatroidality is equivalent to local equigeneration and an intersection
+    presentation by ordinary coordinate-prime powers, with the exact lower-rank
+    factorization of integral closure. For a nonzero equigenerated monomial ideal whose proper monomial localizations
+    are polymatroidal, the actual integral closure is polymatroidal and its quotient
+    by the ideal has finite length. The maximum hole degree determines actual
+    Koszul regularity, and the least actual maximal-ideal power giving a
+    polymatroidal ideal equals regularity minus generating degree. Deleting one
+    Veronese generator has the complete stated fine and total nonlinear Betti
+    strand. Exact pure and mixed isolators realize the smallest possible degrees
+    and the sharp first nonlinear homological positions at every admissible
+    localization, including necessity of the outer-band generation tests.
+  authors: [Caius Folkerts]
+  responsible_maintainers: [Caius Folkerts]
+  license: Apache-2.0
+classification:
+  arxiv: [math.AC, math.CO]
+  msc2020: [13D02, 13F20, 05B35]
+sources:
+  - title: Characterizations of polymatroidal ideals
+    authors: [Caius Folkerts]
+    type: paper
+    relationship: formalizes
+    location: paper.pdf
+    note: Corollary2.12, Equation2.4, Propositions4.1,4.3,4.7,4.10; this supplement adds no previously registered recognition/testing theorem target.
+related_formalizations:
+  - title: Recognition and testing of polymatroidal ideals
+    relationship: other
+    id: https://github.com/caiusdfolkerts/research/tree/7a17ded3c2e62250c5eea2a1b150525cc3cb4008/polymatroidal_ideals
+    note: Separate companion entry; all48 comparison targets are excluded here.
+  - title: Original complete polymatroidal ideal proof development
+    relationship: other
+    id: https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/polymatroidal_ideals
+    note: Complete substantive proof sources and licensing notices retained, including the audited source-section split.
+automation:
+  methods:
+    - method: agent
+      tool_setup: >-
+        The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 assistance in
+        developing its proofs. Exact historical roles were not independently
+        reconstructed. OpenAI Codex using GPT-6.1 Sol prepared this supplemental
+        independent Challenge, genuine Koszul/derived-Tor proof bridges,
+        Comparator configuration and provenance metadata.
+review:
+  status: unchecked
+  notes: >-
+    Exact15-target Challenge SHA09eba870 passed canonical elaboration in
+    remote run44358094694. Receipt, input and bounded-log hashes were checked.
+    This does not verify the new Solution wrappers, complete source build,
+    Comparator, NanoDa or mathematical peer review. Earlier failed13-target
+    attempts and the separate core48 verification remain distinct evidence.
+fidelity:
+  divergences: >-
+    Actual augmented exterior Koszul homology is used in the independent
+    interface. The Solution explicitly identifies its dimensions and exactness
+    with the original genuine derived-Tor pieces. The nonzero hypothesis of
+    Proposition4.1 and actual ideal inequality in its nonclosed clause are
+    retained. Every coefficient field, arbitrary homological positions and relevant
+    degree zero conventions remain exact. Necessary true chain laws are selected
+    supporting propositions. No arithmetic surrogate replaces homological data.
+limitations:
+  - The canonical Challenge passed; complete source/Solution elaboration, raw comparison and kernel replay remain pending.
+  - The separate recognition/testing entry is required for the rest of the paper scope; none of its registered theorem targets is repeated here.
