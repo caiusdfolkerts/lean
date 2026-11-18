@@ -1,0 +1,53 @@
+{
+  "runner_sha256": "0bac0a003a57065cadb1226ba58ae234f91ac8bb06982ba7290f1decedc36c0e",
+  "regex": "lean::memory_exception|maximum memory|out of memory|memory limit|excessive memory consumption",
+  "cases": [
+    {
+      "message": "libc++abi: terminating due to uncaught exception of type lean::memory_exception",
+      "expected_resource_failure": true,
+      "actual_resource_failure": true
+    },
+    {
+      "message": "maximum memory consumption exceeded",
+      "expected_resource_failure": true,
+      "actual_resource_failure": true
+    },
+    {
+      "message": "out of memory",
+      "expected_resource_failure": true,
+      "actual_resource_failure": true
+    },
+    {
+      "message": "memory limit exceeded",
+      "expected_resource_failure": true,
+      "actual_resource_failure": true
+    },
+    {
+      "message": "error: (kernel) excessive memory consumption detected (use `set_option maxMemory <num>` to increase limit)",
+      "expected_resource_failure": true,
+      "actual_resource_failure": true
+    },
+    {
+      "message": "error: type mismatch\n  f\nhas type A but is expected to have type B",
+      "expected_resource_failure": false,
+      "actual_resource_failure": false
+    },
+    {
+      "message": "error: unknown identifier Foo",
+      "expected_resource_failure": false,
+      "actual_resource_failure": false
+    },
+    {
+      "message": "error: failed to synthesize\n  Module A B",
+      "expected_resource_failure": false,
+      "actual_resource_failure": false
+    },
+    {
+      "message": "error: unsolved goals\ncase foo\n\u22a2 P",
+      "expected_resource_failure": false,
+      "actual_resource_failure": false
+    }
+  ],
+  "compiler_started": false,
+  "snapshot_changed": false
+}
