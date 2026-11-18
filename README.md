@@ -1,3 +1,3 @@
-# Canonical diagnostic revision21
+# Canonical diagnostic revision22
 
-One independent corrected MainBary canonical Challenge. Intentional theorem placeholders; no full-preflight or intake claim.
+One genuine canonical proof/API smoke for observed Rees Solution failures. No full-preflight or intake claim.
