@@ -25,9 +25,13 @@ elab "#checked_checkpoint " artifact:str " record " record:str : command => do
     for a in axioms do
       used := used.insert a
   let path : System.FilePath := artifact.getString
-  if let some parent := path.parent then
-    liftIO <| IO.FS.createDirAll parent
-  liftIO <| Lean.writeModule env path
+  -- These development snapshots are auxiliary; all axiom checks above remain mandatory.
+  let artifactPersisted ← liftIO do
+    try
+      if let some parent := path.parent then IO.FS.createDirAll parent
+      Lean.writeModule env path
+      pure true
+    catch _ => pure false
   let report := Json.mkObj [
     ("module", toJson env.mainModule.toString),
     ("artifact", toJson artifact.getString),
@@ -35,7 +39,10 @@ elab "#checked_checkpoint " artifact:str " record " record:str : command => do
     ("axioms", toJson (used.toArray.qsort Name.lt |>.map Name.toString)),
     ("method", toJson "Unmodified Lean.writeModule after checking all local declaration axioms.")]
   let reportPath : System.FilePath := record.getString
-  if let some parent := reportPath.parent then
-    liftIO <| IO.FS.createDirAll parent
-  liftIO <| IO.FS.writeFile reportPath (report.pretty ++ "\n")
-  logInfo m!"Checked checkpoint saved: {path}; {names.size} local declarations"
+  let reportPersisted ← liftIO do
+    try
+      if let some parent := reportPath.parent then IO.FS.createDirAll parent
+      IO.FS.writeFile reportPath (report.pretty ++ "\n")
+      pure true
+    catch _ => pure false
+  logInfo m!"Checkpoint checked: {path}; {names.size} local declarations; artifact persisted: {artifactPersisted}; report persisted: {reportPersisted}"

@@ -99,9 +99,13 @@ elab "#export_proof_audit " id:ident " to " path:str : command => do
     ("boundary", toJson "Imported non-project constants are checked-library leaves."),
     ("nodes", Json.arr nodes)]
   let reportPath : System.FilePath := path.getString
-  if let some parent := reportPath.parent then
-    liftIO <| IO.FS.createDirAll parent
-  liftIO <| IO.FS.writeFile reportPath (output.pretty ++ "\n")
-  logInfo m!"Audit written for {n}; {nodes.size} constants; complete local values: {complete}"
+  -- Audit validation is mandatory; persistence is optional in read-only builds.
+  let persisted ← liftIO do
+    try
+      if let some parent := reportPath.parent then IO.FS.createDirAll parent
+      IO.FS.writeFile reportPath (output.pretty ++ "\n")
+      pure true
+    catch _ => pure false
+  logInfo m!"Audit checked for {n}; {nodes.size} constants; complete local values: {complete}; report persisted: {persisted}"
 
 end VerificationAudit
