@@ -174,7 +174,7 @@ def main():
                 console.unlink(missing_ok=True)
                 return out
             report['stage']='build';save();dag=graphlib.TopologicalSorter(graph);dag.prepare()
-            ready=list(dag.get_ready());running={};started=time.monotonic();build_failed=False
+            ready=list(dag.get_ready());running={};started=time.monotonic();failed=[]
             def build_module(name):
                 rel=Path(*name.split('.'));output=build/rel.with_suffix('.olean');output.parent.mkdir(parents=True,exist_ok=True)
                 argv=[bin_dir/'lean','-t1','-j1','-s65536','-M4096','-DmaxHeartbeats=0','-DElab.async=false','-Ddebug.skipKernelTC=false','-o',output,rel.with_suffix('.lean')]
@@ -182,19 +182,19 @@ def main():
                 if result['exit_code']==0:result['olean_bytes']=output.stat().st_size
                 return result
             with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
-                while (ready or running) and not build_failed:
+                while (ready or running) and len(failed) < 8:
                     while ready and len(running)<3:
                         n=ready.pop();running[pool.submit(build_module,n)]=n
                     done,_=concurrent.futures.wait(running,return_when=concurrent.futures.FIRST_COMPLETED)
                     for job in done:
                         n=running.pop(job);res=job.result();report['modules'][n]=res
                         if res['exit_code']:
-                            print(n,res.get('error_tail',''),flush=True);build_failed=True
+                            print(n,res.get('error_tail',''),flush=True);failed.append(n)
                         else:dag.done(n)
                     ready.extend(dag.get_ready());save()
                     if len(report['modules'])%25<2:print('Built',len(report['modules']),'of',len(graph),flush=True)
-            report['phases']['build']={'wall_seconds':round(time.monotonic()-started,3),'completed_module_count':len(report['modules'])}
-            if build_failed or len(report['modules'])!=len(graph):raise ValueError('Module compilation failed')
+            report['phases']['build']={'wall_seconds':round(time.monotonic()-started,3),'completed_module_count':len(report['modules']),'failed_modules':sorted(failed)}
+            if failed or len(report['modules'])!=len(graph):raise ValueError('Module compilation failed')
             audit = src/'DiagnosticEndpoint.lean'
             audit.write_text(f"module\nimport {endpoint}\nexample : {m['endpoint_type']} := {target}\n")
             export=scratch/'block.ndjson'

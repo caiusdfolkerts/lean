@@ -4,8 +4,8 @@
   "endpoint_type": "Papers.RationalityTen.GraphFiniteDispatch.Block 21816 21834",
   "files": {
     ".github/workflows/block0528-diagnostic.yml": {
-      "bytes": 1806,
-      "sha256": "9f48350c5bbfc05ea82f09d7943f59e133459bbadd62eed4bbf867ce48e458fe"
+      "bytes": 2212,
+      "sha256": "13a12f6bcabd67ab0a64331989c426411297c2c44fa01e88bd9d7a0339154447"
     },
     "LICENSE": {
       "bytes": 11410,
@@ -16,8 +16,8 @@
       "sha256": "e2af102b9599056f984ea036280b13207b8e6098d8fdef57256840d7b82b5a90"
     },
     "README.md": {
-      "bytes": 2440,
-      "sha256": "dd0ce8a92cf5db7aaaabd0a0b06c279d256d15bae4ff301bf8ff21610a501e8e"
+      "bytes": 2653,
+      "sha256": "fdb9c7b5b226b9c3d48e16674ae87b6339aa023b6130ba3d50becba691725c2a"
     },
     "diagnostic/provenance/core-receipt.json": {
       "bytes": 5227,
@@ -32,8 +32,8 @@
       "sha256": "ce8bd8479b3fc9b9db3ce7fe4249c5eccb70c08bb08978255008be773db85ea3"
     },
     "diagnostic/run.py": {
-      "bytes": 12311,
-      "sha256": "717f641c219159d2ddf69bd1c2613ef24e75651b248b1dc83513fe613d335587"
+      "bytes": 12326,
+      "sha256": "e72b455ecd7ab15b8e0e9e771bc24458bbab74430d9633985f4840356d000c7e"
     },
     "lake-manifest.json": {
       "bytes": 3549,
@@ -1512,8 +1512,8 @@
       "sha256": "206bc3cb571b93baa698eb7f0e5b1dcd8ef5de7c0f076f5d01929ce66bb10da5"
     },
     "source/NumericProofSchema.lean": {
-      "bytes": 1402,
-      "sha256": "6205d2b68646bc5a47a76738b8477b3f5aca83bf1aac436d1dedd41ee5dd31e3"
+      "bytes": 1374,
+      "sha256": "7d357d60f06e0b45b7219e6fa8ee7ad7a34edfa5b62185f93a922537d55950df"
     },
     "source/OrbitGrowthDAG.lean": {
       "bytes": 8551,
@@ -4942,7 +4942,7 @@
         "VertexLinkObstructionData.lean": "source/VertexLinkObstructionData.lean",
         "WitnessGrowthDAG.lean": "source/WitnessGrowthDAG.lean"
       },
-      "source_and_data_bytes": 12133120,
+      "source_and_data_bytes": 12133092,
       "upstream_modules": {
         "BatchedGrowthPruning": {
           "original_path": "source/geometry/batched_growth_pruning.lean",

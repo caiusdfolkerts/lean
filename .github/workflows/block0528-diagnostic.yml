@@ -2,8 +2,14 @@ name: Small nonrational block 0528 diagnostic
 
 on:
   push:
-    branches: [palomar/diagnostic-small-nonrational-block0528]
+    branches: [palomar/diagnostic-small-nonrational-block0528, palomar/diagnostic-small-nonrational-block0528-paired]
   workflow_dispatch:
+    inputs:
+      variants:
+        description: Proofs to measure
+        type: choice
+        default: both
+        options: [both, replacement]
 
 permissions:
   contents: read
@@ -16,7 +22,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        variant: [replacement, original]
+        variant: ${{ fromJSON((github.ref == 'refs/heads/palomar/diagnostic-small-nonrational-block0528-paired' || (github.event_name == 'workflow_dispatch' && inputs.variants == 'both')) && '["replacement","original"]' || '["replacement"]') }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:

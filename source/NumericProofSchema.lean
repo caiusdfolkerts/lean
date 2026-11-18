@@ -16,8 +16,7 @@ def elaborate (body : String) (args : Array (TSyntax `num)) : CommandElabM Unit 
   let mut expanded := body
   for i in [:args.size] do
     let arg := args[i]!
-    let some raw := arg.raw.reprint | throwError "expected a numeral"
-    let spelling := raw.trimAscii.toString
+    let some spelling := arg.raw.isLit? numLitKind | throwError "expected a numeral"
     -- A number token in this DSL can never supply a declaration or tactic.
     unless !spelling.isEmpty && spelling.toList.all (fun c =>
         c.isDigit || ('a' ≤ c && c ≤ 'f') || ('A' ≤ c && c ≤ 'F') || c == 'x') do
