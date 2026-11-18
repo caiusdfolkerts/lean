@@ -1,0 +1,175 @@
+{
+  "project": "cubical_indecomposability",
+  "baseline_revision": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
+  "status": "prepared_unbuilt",
+  "result_map": [
+    {
+      "paper_result": "Theorem 1: the rational, full-dimensional cubical and indecomposable witness",
+      "readme_names": [
+        "theorem_one"
+      ],
+      "matches": [
+        {
+          "readme_name": "theorem_one",
+          "file": "source/verification_bundle.lean",
+          "line": 157200,
+          "statement_prefix": "theorem theorem_one :\n    \u2203 K : ConvexPolytope 4,\n      K.IsFullDim \u2227 RationalCoordinates K \u2227 \u00acMinkowskiDecomposable K \u2227 IsCubical K \u2227\n      faceNumber K 0 = 144 \u2227 faceNumber K 1 = 404 \u2227\n      faceNumber K 2 = 390 \u2227 faceNumber K 3 = 130 \u2227\n      (\u2200 f : E 4 \u2192 E 4, IsParallelMap K f \u2192 IsHomothetyOnVertices K f) \u2227\n      (\u2200 A B : Set (E 4), Convex \u211d A \u2192 Convex \u211d B \u2192 K.toSet = A + B \u2192\n        \u2203 r : \u211d, 0 \u2264 r \u2227 r \u2264 1 \u2227 \u2203 b : E 4,\n          A = (fun x : E 4 => r \u2022 x + b) '' K.toSet \u2227\n          B = (fun x : E 4 => (1 - r) \u2022 x - b) '' K.toSet) "
+        }
+      ]
+    },
+    {
+      "paper_result": "The exact face vector (144, 404, 390, 130)",
+      "readme_names": [
+        "face_vector"
+      ],
+      "matches": [
+        {
+          "readme_name": "face_vector",
+          "file": "source/block_verification_bundle.lean",
+          "line": 23595,
+          "statement_prefix": "theorem face_vector :\n    faceNumber polytope 0 = 32 \u2227 faceNumber polytope 1 = 80 \u2227\n    faceNumber polytope 2 = 72 \u2227 faceNumber polytope 3 = 24 "
+        },
+        {
+          "readme_name": "face_vector",
+          "file": "source/verification_bundle.lean",
+          "line": 131097,
+          "statement_prefix": "theorem face_vector :\n    faceNumber polytope 0 = 144 \u2227 faceNumber polytope 1 = 404 \u2227\n    faceNumber polytope 2 = 390 \u2227 faceNumber polytope 3 = 130 "
+        }
+      ]
+    },
+    {
+      "paper_result": "All parallel redrawings are homothetic",
+      "readme_names": [
+        "parallel_redrawings_homothetic"
+      ],
+      "matches": [
+        {
+          "readme_name": "parallel_redrawings_homothetic",
+          "file": "source/verification_bundle.lean",
+          "line": 156644,
+          "statement_prefix": "theorem parallel_redrawings_homothetic (f : E 4 \u2192 E 4)\n    (hf : IsParallelMap polytope f) : IsHomothetyOnVertices polytope f "
+        }
+      ]
+    },
+    {
+      "paper_result": "Arbitrary convex Minkowski summands are homothetic",
+      "readme_names": [
+        "minkowski_summands"
+      ],
+      "matches": [
+        {
+          "readme_name": "minkowski_summands",
+          "file": "source/verification_bundle.lean",
+          "line": 157183,
+          "statement_prefix": "theorem minkowski_summands (A B : Set (E 4))\n    (hA : Convex \u211d A) (hB : Convex \u211d B)\n    (hK : polytope.toSet = A + B) :\n    \u2203 r : \u211d, 0 \u2264 r \u2227 r \u2264 1 \u2227 \u2203 b : E 4,\n      A = (fun x : E 4 => r \u2022 x + b) '' polytope.toSet \u2227\n      B = (fun x : E 4 => (1 - r) \u2022 x - b) '' polytope.toSet "
+        }
+      ]
+    },
+    {
+      "paper_result": "Lemma 2: the literal one-dimensional deformation-space criterion",
+      "readme_names": [
+        "lemma_two"
+      ],
+      "matches": [
+        {
+          "readme_name": "lemma_two",
+          "file": "source/block_verification_bundle.lean",
+          "line": 245,
+          "statement_prefix": "theorem lemma_two {d : \u2115} (P : ConvexPolytope d)\n    (hD : deformationDimension P = 1)\n    (A B : Set (E d)) (hA : Convex \u211d A) (hB : Convex \u211d B)\n    (hP : P.toSet = A + B) :\n    \u2203 r : \u211d, 0 \u2264 r \u2227 r \u2264 1 \u2227 \u2203 b : E d,\n      A = (fun x : E d => r \u2022 x + b) '' P.toSet \u2227\n      B = (fun x : E d => (1 - r) \u2022 x - b) '' P.toSet "
+        }
+      ]
+    },
+    {
+      "paper_result": "Lemma 3(i)",
+      "readme_names": [
+        "lemma_three_one"
+      ],
+      "matches": [
+        {
+          "readme_name": "lemma_three_one",
+          "file": "source/block_verification_bundle.lean",
+          "line": 674,
+          "statement_prefix": "theorem lemma_three_one\n    (p h : Fin 4 \u2192 V) (hp : AffineIndependent \u211d p)\n    (hparallel : \u2200 i : Fin 4, \u2203 a : \u211d,\n      h (i + 1) - h i = a \u2022 (p (i + 1) - p i)) :\n    \u2203 a : \u211d, \u2203 b : V, \u2200 i : Fin 4, h i = a \u2022 p i + b "
+        }
+      ]
+    },
+    {
+      "paper_result": "Lemma 3(ii)",
+      "readme_names": [
+        "Papers.Polytopes.redrawing_zero_of_two_neighbors"
+      ],
+      "matches": [
+        {
+          "readme_name": "Papers.Polytopes.redrawing_zero_of_two_neighbors",
+          "file": "source/block_verification_bundle.lean",
+          "line": 770,
+          "statement_prefix": "theorem redrawing_zero_of_two_neighbors {P : ConvexPolytope d}\n    (h : redrawingSpace P) {x y z : Vertex P}\n    (hxy : GeneralVertexStep P x y) (hxz : GeneralVertexStep P x z)\n    (hyz : y \u2260 z) (hy : h y = 0) (hz : h z = 0) : h x = 0 "
+        }
+      ]
+    },
+    {
+      "paper_result": "Proposition 5: the full auxiliary block statement",
+      "readme_names": [
+        "Block.proposition_five"
+      ],
+      "matches": [
+        {
+          "readme_name": "Block.proposition_five",
+          "file": "source/block_verification_bundle.lean",
+          "line": 34176,
+          "statement_prefix": "theorem proposition_five :\n    \u2203 P : ConvexPolytope 4,\n      P.IsFullDim \u2227 RationalCoordinates P \u2227 IsCubical P \u2227\n      faceNumber P 0 = 32 \u2227 faceNumber P 1 = 80 \u2227\n      faceNumber P 2 = 72 \u2227 faceNumber P 3 = 24 \u2227\n      \u2203 F H G Q : Set (E 4),\n      \u2203 hF : P.IsFace F, \u2203 hH : P.IsFace H, \u2203 hG : P.IsFace G,\n      \u2203 hQ : P.IsFace Q,\n        faceDim F = 3 \u2227 faceDim H = 3 \u2227 faceDim G = 3 \u2227\n        F \u2229 H = Q \u2227 faceDim Q = 2 \u2227\n        (facePolytope P hQ).vertices.card = 4 \u2227\n        Disjoint G (F \u222a H) \u2227\n        FaceDetermines P hH \u2227 FaceDetermines P hG \u2227\n        Module.finrank \u211d (deformationRestriction P hF).range \u2264 2 \u2227\n        HasAffineInterfaceNormalization P F H Q \u2227\n        ProjectivelyParallelepiped G "
+        }
+      ]
+    }
+  ],
+  "source_scan": {
+    "lean_files": 235,
+    "oversized": [],
+    "missing_module": [],
+    "symlinks": [],
+    "compiled_artifacts": []
+  },
+  "validation": "Not built; Comparator/NanoDa not run.",
+  "blockers": [
+    "Fresh full source build after module/split migration, Comparator and NanoDa validation pending."
+  ],
+  "challenge": {
+    "lines": 261,
+    "bytes": 13628,
+    "custom_definitions": "Independent exact data semantics with original names; only proof-valued fields are holes.",
+    "imports_only_canonical_mathlib": true
+  },
+  "coverage_note": "Theorem 1 already includes the f-vector, parallel redrawings, and arbitrary convex summands of the same actual witness. Selecting its named coordinate-witness specializations separately would force explicit data into the Challenge without adding a substantive theorem.",
+  "selected_results": [
+    {
+      "declaration": "CubicalIndecomposability.theorem_one",
+      "source_file": "source/verification_bundle/PalomarPart021.lean",
+      "source_line": 6128,
+      "challenge_line": 215
+    },
+    {
+      "declaration": "CubicalIndecomposability.lemma_two",
+      "source_file": "source/block_verification_bundle/PalomarPart000.lean",
+      "source_line": 245,
+      "challenge_line": 226
+    },
+    {
+      "declaration": "CubicalIndecomposability.lemma_three_one",
+      "source_file": "source/block_verification_bundle/PalomarPart000.lean",
+      "source_line": 674,
+      "challenge_line": 234
+    },
+    {
+      "declaration": "Papers.Polytopes.redrawing_zero_of_two_neighbors",
+      "source_file": "source/block_verification_bundle/PalomarPart000.lean",
+      "source_line": 770,
+      "challenge_line": 177
+    },
+    {
+      "declaration": "CubicalIndecomposability.Block.proposition_five",
+      "source_file": "source/block_verification_bundle/PalomarPart005.lean",
+      "source_line": 1381,
+      "challenge_line": 245
+    }
+  ]
+}

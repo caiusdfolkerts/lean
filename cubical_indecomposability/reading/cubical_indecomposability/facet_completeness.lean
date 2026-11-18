@@ -1,4 +1,8 @@
-import cubical.polytope.facet_geometry
+module
+
+public import cubical.polytope.facet_geometry
+
+@[expose] public section
 
 /-!
 # Certifying that a list contains every geometric facet

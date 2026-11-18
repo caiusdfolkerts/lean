@@ -1,4 +1,8 @@
-import cubical_indecomposability.data
+module
+
+public import cubical_indecomposability.data
+
+@[expose] public section
 
 /-!
 # A small exact separating-support search

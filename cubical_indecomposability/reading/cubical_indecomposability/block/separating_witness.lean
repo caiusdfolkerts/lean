@@ -1,4 +1,8 @@
-import cubical_indecomposability.block.data
+module
+
+public import cubical_indecomposability.block.data
+
+@[expose] public section
 
 set_option maxRecDepth 1000000
 set_option maxHeartbeats 0

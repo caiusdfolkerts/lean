@@ -1,0 +1,60 @@
+version: v0.4
+project:
+  name: A counterexample to Smilansky's conjecture
+  description: >-
+    An actual rational full-dimensional convex four-polytope is cubical and
+    Minkowski indecomposable, with face vector (144,404,390,130). All parallel
+    redrawings of its actual edge graph are uniform scalings plus translations.
+    Every arbitrary convex Minkowski summand is a translated nonnegative
+    multiple of the polytope, with complementary scale for its complement.
+    The formalization also records the one-dimensional quotient-space
+    summand criterion, local four-cycle and two-neighbor rigidity lemmas,
+    and the complete geometric and deformation-space auxiliary 32-vertex block.
+  authors: [Caius Folkerts]
+  responsible_maintainers: [Caius Folkerts]
+  license: Apache-2.0
+classification:
+  arxiv: [math.CO, math.MG]
+  msc2020: [52B05, 52B11]
+sources:
+  - title: A counterexample to Smilansky's conjecture
+    authors: [Caius Folkerts]
+    type: paper
+    relationship: formalizes
+    location: paper.pdf
+    note: Theorem 1, Lemma 2, Lemma 3(i)-(ii), and Proposition 5.
+related_formalizations:
+  - title: caiusdfolkerts/research cubical_indecomposability
+    relationship: repackages
+    id: https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/cubical_indecomposability
+    note: >-
+      The complete substantive development is copied here from this exact
+      revision. Palomar packaging adds the independent Challenge statement,
+      Solution import, Comparator configuration, and this metadata.
+  - title: SolarYs431/lean-eval-platonic-classification
+    relationship: adapts
+    id: https://github.com/SolarYs431/lean-eval-platonic-classification
+    note: >-
+      Daniele Cappello's Apache-2.0 polytope infrastructure is adapted in the
+      substantive sources. Original attribution headers and licences are retained.
+automation:
+  methods:
+    - method: agent
+      tool_setup: >-
+        The manuscript discloses GPT-6 Astra, GPT-5.6 Sol, and Kimi K3
+        assistance in developing its proofs. Historical roles beyond that
+        disclosure have not been independently reconstructed.
+    - method: agent
+      tool_setup: >-
+        OpenAI Codex GPT-6.1 Sol prepared the Palomar statement and metadata,
+        comparing the supplied manuscript, README table, and Lean declarations.
+review:
+  status: unchecked
+  notes: >-
+    Packaging has undergone source-level statement comparison only. No fresh
+    Lean build, Comparator run, NanoDa check, or independent mathematical
+    peer review is claimed in this metadata. Consult reports and CI for actual
+    later validation. No weakening of the original selected statements is intended.
+limitations:
+  - Challenge data definitions duplicate exact source semantics; only proof-valued construction fields are deliberate holes. Fresh Comparator validation is required.
+  - Theorem 1 includes the exact f-vector, all parallel redrawings, and arbitrary convex summands for one and the same existential polytope. The equivalent named coordinate-witness specializations are not separate selected claims.

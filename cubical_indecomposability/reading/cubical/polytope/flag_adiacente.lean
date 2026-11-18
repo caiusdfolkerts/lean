@@ -1,15 +1,19 @@
+module
+
 /-
 Adapted from SolarYs431/lean-eval-platonic-classification, original module Submission.FlagAdiacente.
 Copyright 2026 Daniele Cappello. Licensed under Apache-2.0.
 Source provenance and adaptation details: THIRD_PARTY.md.
 -/
-import cubical.polytope.imports
-import cubical.polytope.definitions
-import cubical.polytope.scala_bandiere
-import cubical.polytope.dim_stretta
-import cubical.polytope.faccia_intermedia
-import cubical.polytope.diamante_relativo
-import cubical.polytope.secondo_intermedio
+public import cubical.polytope.imports
+public import cubical.polytope.definitions
+public import cubical.polytope.scala_bandiere
+public import cubical.polytope.dim_stretta
+public import cubical.polytope.faccia_intermedia
+public import cubical.polytope.diamante_relativo
+public import cubical.polytope.secondo_intermedio
+
+@[expose] public section
 
 /-!
 MOTORE COXETER, PASSO 4 — L'ADIACENZA DI BANDIERE (19 lug 2026).

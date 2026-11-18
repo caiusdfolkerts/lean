@@ -1,6 +1,10 @@
-import cubical_indecomposability.cube_realization
-import cubical_indecomposability.redrawings
-import cubical_indecomposability.summands
+module
+
+public import cubical_indecomposability.cube_realization
+public import cubical_indecomposability.redrawings
+public import cubical_indecomposability.summands
+
+@[expose] public section
 
 /-!
 # Theorem 1 of *An indecomposable cubical four-polytope*

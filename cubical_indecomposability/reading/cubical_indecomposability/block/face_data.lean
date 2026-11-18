@@ -1,4 +1,8 @@
-import cubical_indecomposability.block.data
+module
+
+public import cubical_indecomposability.block.data
+
+@[expose] public section
 
 /-!
 # The normalized block's finite face catalogue

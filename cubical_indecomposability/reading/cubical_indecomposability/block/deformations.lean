@@ -1,7 +1,11 @@
-import cubical_indecomposability.block.actual_edges
-import cubical_indecomposability.block.interfaces
-import cubical_indecomposability.block.rigidity
-import cubical_indecomposability.face_restrictions
+module
+
+public import cubical_indecomposability.block.actual_edges
+public import cubical_indecomposability.block.interfaces
+public import cubical_indecomposability.block.rigidity
+public import cubical_indecomposability.face_restrictions
+
+@[expose] public section
 
 /-!
 # The determining facets and the two-dimensional restriction image

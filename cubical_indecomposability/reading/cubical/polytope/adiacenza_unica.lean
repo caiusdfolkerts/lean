@@ -1,15 +1,19 @@
+module
+
 /-
 Adapted from SolarYs431/lean-eval-platonic-classification, original module Submission.AdiacenzaUnica.
 Copyright 2026 Daniele Cappello. Licensed under Apache-2.0.
 Source provenance and adaptation details: THIRD_PARTY.md.
 -/
-import cubical.polytope.imports
-import cubical.polytope.definitions
-import cubical.polytope.scala_bandiere
-import cubical.polytope.dim_stretta
-import cubical.polytope.flag_adiacente
-import cubical.polytope.secondo_intermedio
-import cubical.polytope.due_vertici
+public import cubical.polytope.imports
+public import cubical.polytope.definitions
+public import cubical.polytope.scala_bandiere
+public import cubical.polytope.dim_stretta
+public import cubical.polytope.flag_adiacente
+public import cubical.polytope.secondo_intermedio
+public import cubical.polytope.due_vertici
+
+@[expose] public section
 
 /-!
 MOTORE COXETER, PASSO 6 — L'ADIACENZA È UNICA (19 lug 2026).

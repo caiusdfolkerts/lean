@@ -1,5 +1,9 @@
-import cubical.polytope.face_incidence
-import Mathlib.LinearAlgebra.Basis.VectorSpace
+module
+
+public import cubical.polytope.face_incidence
+public import Mathlib.LinearAlgebra.Basis.VectorSpace
+
+@[expose] public section
 
 /-!
 # Geometric simplices and simplicial convex polytopes

@@ -1,11 +1,15 @@
+module
+
 /-
 Adapted from SolarYs431/lean-eval-platonic-classification, original module Submission.Ortoplesse.
 Copyright 2026 Daniele Cappello. Licensed under Apache-2.0.
 Source provenance and adaptation details: THIRD_PARTY.md.
 -/
-import cubical.polytope.imports
-import Mathlib.Analysis.Convex.Strict.Extreme
-import cubical.polytope.definitions
+public import cubical.polytope.imports
+public import Mathlib.Analysis.Convex.Strict.Extreme
+public import cubical.polytope.definitions
+
+@[expose] public section
 
 /-!
 L'ortoplesse in dimensione arbitraria: i vertici sono `±eᵢ`.

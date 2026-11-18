@@ -1,4 +1,8 @@
-import cubical_indecomposability.rigidity.values03
+module
+
+public import cubical_indecomposability.rigidity.values03
+
+@[expose] public section
 
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000

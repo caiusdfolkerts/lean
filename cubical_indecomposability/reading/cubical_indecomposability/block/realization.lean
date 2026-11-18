@@ -1,7 +1,11 @@
-import cubical_indecomposability.block.evaluations
-import cubical_indecomposability.block.separation
-import cubical_indecomposability.block.cube_data
-import verification_bundle
+module
+
+public import cubical_indecomposability.block.evaluations
+public import cubical_indecomposability.block.separation
+public import cubical_indecomposability.block.cube_data
+public import verification_bundle
+
+@[expose] public section
 
 /-!
 # The exact data as an ordinary convex polytope

@@ -1,17 +1,21 @@
-import cubical_indecomposability.certificates.separation00
-import cubical_indecomposability.certificates.separation01
-import cubical_indecomposability.certificates.separation02
-import cubical_indecomposability.certificates.separation03
-import cubical_indecomposability.certificates.separation04
-import cubical_indecomposability.certificates.separation05
-import cubical_indecomposability.certificates.separation06
-import cubical_indecomposability.certificates.separation07
-import cubical_indecomposability.certificates.separation08
-import cubical_indecomposability.certificates.separation09
-import cubical_indecomposability.certificates.separation10
-import cubical_indecomposability.certificates.separation11
-import cubical_indecomposability.separating_witness
-import Mathlib.Tactic.FinCases
+module
+
+public import cubical_indecomposability.certificates.separation00
+public import cubical_indecomposability.certificates.separation01
+public import cubical_indecomposability.certificates.separation02
+public import cubical_indecomposability.certificates.separation03
+public import cubical_indecomposability.certificates.separation04
+public import cubical_indecomposability.certificates.separation05
+public import cubical_indecomposability.certificates.separation06
+public import cubical_indecomposability.certificates.separation07
+public import cubical_indecomposability.certificates.separation08
+public import cubical_indecomposability.certificates.separation09
+public import cubical_indecomposability.certificates.separation10
+public import cubical_indecomposability.certificates.separation11
+public import cubical_indecomposability.separating_witness
+public import Mathlib.Tactic.FinCases
+
+@[expose] public section
 
 /-! Exact integer arithmetic and finite incidences, checked by Lean's kernel.
 `decide +kernel` below proves closed propositions by reduction.  It invokes no native

@@ -1,7 +1,11 @@
-import cubical_indecomposability.data
-import Mathlib.Basic.Real.Basic
-import Mathlib.Tactic.LinearCombination
-import Mathlib.Tactic.FinCases
+module
+
+public import cubical_indecomposability.data
+public import Mathlib.Basic.Real.Basic
+public import Mathlib.Tactic.LinearCombination
+public import Mathlib.Tactic.FinCases
+
+@[expose] public section
 
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000

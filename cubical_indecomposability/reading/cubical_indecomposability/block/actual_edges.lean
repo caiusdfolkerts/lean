@@ -1,4 +1,8 @@
-import cubical_indecomposability.block.face_realization
+module
+
+public import cubical_indecomposability.block.face_realization
+
+@[expose] public section
 
 /-!
 # The edge list consists of actual exposed edges

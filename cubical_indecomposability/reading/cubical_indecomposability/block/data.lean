@@ -1,4 +1,8 @@
-import verification_bundle
+module
+
+public import verification_bundle
+
+@[expose] public section
 
 /-!
 # Exact data for the normalized 32-vertex block

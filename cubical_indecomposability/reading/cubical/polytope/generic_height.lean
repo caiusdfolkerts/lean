@@ -1,5 +1,9 @@
-import cubical.polytope.monotone
-import Mathlib.Algebra.Module.Submodule.Union
+module
+
+public import cubical.polytope.monotone
+public import Mathlib.Algebra.Module.Submodule.Union
+
+@[expose] public section
 
 /-! # Generic separating heights for finite configurations -/
 

@@ -1,5 +1,9 @@
-import cubical_indecomposability.block.interfaces
-import cubical_indecomposability.projective_geometry
+module
+
+public import cubical_indecomposability.block.interfaces
+public import cubical_indecomposability.projective_geometry
+
+@[expose] public section
 
 /-!
 # An affine equivalence of the two interfaces

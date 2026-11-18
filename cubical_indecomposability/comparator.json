@@ -1,0 +1,16 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "CubicalIndecomposability.theorem_one",
+    "CubicalIndecomposability.lemma_two",
+    "CubicalIndecomposability.lemma_three_one",
+    "Papers.Polytopes.redrawing_zero_of_two_neighbors",
+    "CubicalIndecomposability.Block.proposition_five"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

@@ -1,10 +1,14 @@
-import cubical_indecomposability.actual_edges
-import cubical_indecomposability.rigidity.directions
-import cubical_indecomposability.rigidity.complete
-import papers.parallel_maps
-import Mathlib.Tactic.Abel
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.Ring
+module
+
+public import cubical_indecomposability.actual_edges
+public import cubical_indecomposability.rigidity.directions
+public import cubical_indecomposability.rigidity.complete
+public import papers.parallel_maps
+public import Mathlib.Tactic.Abel
+public import Mathlib.Tactic.FieldSimp
+public import Mathlib.Tactic.Ring
+
+@[expose] public section
 
 /-!
 # Every parallel redrawing is a homothety and a translation

@@ -1,12 +1,16 @@
+module
+
 /-
 Adapted from SolarYs431/lean-eval-platonic-classification, original module Submission.ConnettivitaRidgeRiduzione.
 Copyright 2026 Daniele Cappello. Licensed under Apache-2.0.
 Source provenance and adaptation details: THIRD_PARTY.md.
 -/
-import cubical.polytope.imports
-import cubical.polytope.connettivita_ridge_tre
-import cubical.polytope.bandiera_vertice
-import cubical.polytope.interpolazione
+public import cubical.polytope.imports
+public import cubical.polytope.connettivita_ridge_tre
+public import cubical.polytope.bandiera_vertice
+public import cubical.polytope.interpolazione
+
+@[expose] public section
 
 /-!
 RIDUZIONE ESATTA DEL MURO DEL RIDGE-GRAPH (20 lug 2026).

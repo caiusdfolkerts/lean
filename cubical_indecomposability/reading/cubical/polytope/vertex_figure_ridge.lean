@@ -1,10 +1,14 @@
+module
+
 /-
 Adapted from SolarYs431/lean-eval-platonic-classification, original module Submission.VertexFigureRidge.
 Copyright 2026 Daniele Cappello. Licensed under Apache-2.0.
 Source provenance and adaptation details: THIRD_PARTY.md.
 -/
-import cubical.polytope.imports
-import cubical.polytope.connettivita_ridge_riduzione
+public import cubical.polytope.imports
+public import cubical.polytope.connettivita_ridge_riduzione
+
+@[expose] public section
 
 /-!
 FIGURA AL VERTICE: INTERFACCIA ESATTA DEL SOTTO-KILL-GATE (21 lug 2026).

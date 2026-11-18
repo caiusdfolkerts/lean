@@ -1,4 +1,8 @@
-import cubical_indecomposability.block.data
+module
+
+public import cubical_indecomposability.block.data
+
+@[expose] public section
 
 /-! Exact integer arithmetic and finite incidences, checked by Lean's kernel.
 `decide +kernel` below proves closed propositions by reduction.  It invokes no native

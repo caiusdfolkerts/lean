@@ -1,6 +1,10 @@
-import verification_bundle
-import cubical_indecomposability.block.realization
-import cubical_indecomposability.block.face_data_checks
+module
+
+public import verification_bundle
+public import cubical_indecomposability.block.realization
+public import cubical_indecomposability.block.face_data_checks
+
+@[expose] public section
 
 /-!
 # The complete geometric face lattice of the normalized auxiliary block

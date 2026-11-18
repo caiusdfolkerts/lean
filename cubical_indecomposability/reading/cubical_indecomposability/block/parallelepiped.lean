@@ -1,4 +1,8 @@
-import cubical_indecomposability.block.interfaces
+module
+
+public import cubical_indecomposability.block.interfaces
+
+@[expose] public section
 
 /-!
 # The disjoint facet is already a parallelepiped

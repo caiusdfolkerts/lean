@@ -1,4 +1,8 @@
-import cubical_indecomposability.block.face_realization
+module
+
+public import cubical_indecomposability.block.face_realization
+
+@[expose] public section
 
 /-!
 # The facets are combinatorial three-cubes

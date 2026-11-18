@@ -1,5 +1,9 @@
-import cubical_indecomposability.face_certificate
-import cubical.polytope.face_incidence
+module
+
+public import cubical_indecomposability.face_certificate
+public import cubical.polytope.face_incidence
+
+@[expose] public section
 
 /-!
 # Reading a finite incidence catalogue as geometric faces

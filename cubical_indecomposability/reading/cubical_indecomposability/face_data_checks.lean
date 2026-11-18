@@ -1,12 +1,16 @@
-import cubical_indecomposability.face_data
-import cubical_indecomposability.cube_data
-import cubical_indecomposability.face_data_checks.cube_complete
-import cubical_indecomposability.face_data_checks.lower_facets
-import cubical_indecomposability.face_data_checks.supports
-import cubical_indecomposability.face_data_checks.injective
-import cubical_indecomposability.face_data_checks.pairing
-import cubical.cube_face_code
-import Lean.Elab.Tactic.Omega
+module
+
+public import cubical_indecomposability.face_data
+public import cubical_indecomposability.cube_data
+public import cubical_indecomposability.face_data_checks.cube_complete
+public import cubical_indecomposability.face_data_checks.lower_facets
+public import cubical_indecomposability.face_data_checks.supports
+public import cubical_indecomposability.face_data_checks.injective
+public import cubical_indecomposability.face_data_checks.pairing
+public import cubical.cube_face_code
+public import Lean.Elab.Tactic.Omega
+
+@[expose] public section
 
 /-!
 # Kernel checks for the complete finite face catalogue

@@ -1,8 +1,12 @@
-import verification_bundle
-import Mathlib.LinearAlgebra.Dimension.RankNullity
-import Mathlib.LinearAlgebra.FiniteDimensional.Basic
-import Mathlib.LinearAlgebra.Quotient.Basic
-import Mathlib.Tactic.Module
+module
+
+public import verification_bundle
+public import Mathlib.LinearAlgebra.Dimension.RankNullity
+public import Mathlib.LinearAlgebra.FiniteDimensional.Basic
+public import Mathlib.LinearAlgebra.Quotient.Basic
+public import Mathlib.Tactic.Module
+
+@[expose] public section
 
 /-!
 # The paper's deformation space modulo translations

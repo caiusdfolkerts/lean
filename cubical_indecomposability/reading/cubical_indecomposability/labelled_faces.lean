@@ -1,7 +1,11 @@
-import papers.finite_hull_certificates
-import cubical.polytope.graph
-import cubical.polytope.dim_stretta
-import Mathlib.Tactic.FinCases
+module
+
+public import papers.finite_hull_certificates
+public import cubical.polytope.graph
+public import cubical.polytope.dim_stretta
+public import Mathlib.Tactic.FinCases
+
+@[expose] public section
 
 /-!
 # Exposed faces from finite support certificates

@@ -1,14 +1,18 @@
+module
+
 /-
 Adapted from SolarYs431/lean-eval-platonic-classification, original module Submission.Gallerie.
 Copyright 2026 Daniele Cappello. Licensed under Apache-2.0.
 Source provenance and adaptation details: THIRD_PARTY.md.
 -/
-import cubical.polytope.imports
-import cubical.polytope.definitions
-import cubical.polytope.flag_adiacente
-import cubical.polytope.adiacenza_unica
-import cubical.polytope.mossa_involutiva
-import cubical.polytope.equivarianza
+public import cubical.polytope.imports
+public import cubical.polytope.definitions
+public import cubical.polytope.flag_adiacente
+public import cubical.polytope.adiacenza_unica
+public import cubical.polytope.mossa_involutiva
+public import cubical.polytope.equivarianza
+
+@[expose] public section
 
 /-!
 MOTORE COXETER, PASSO 12 — IL LINGUAGGIO DELLE GALLERIE (19 lug 2026).

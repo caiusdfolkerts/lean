@@ -1,7 +1,11 @@
-import cubical.polytope.cubical
-import cubical.polytope.combinatorial_transport
-import cubical.polytope.monotone
-import cubical.cube
+module
+
+public import cubical.polytope.cubical
+public import cubical.polytope.combinatorial_transport
+public import cubical.polytope.monotone
+public import cubical.cube
+
+@[expose] public section
 
 /-!
 # Identifying the geometric cube graph with bit-vector adjacency

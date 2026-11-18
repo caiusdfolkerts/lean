@@ -1,6 +1,10 @@
-import verification_bundle
-import Mathlib.LinearAlgebra.AffineSpace.Independent
-import Mathlib.Tactic.Module
+module
+
+public import verification_bundle
+public import Mathlib.LinearAlgebra.AffineSpace.Independent
+public import Mathlib.Tactic.Module
+
+@[expose] public section
 
 /-!
 # An affinely independent four-cycle

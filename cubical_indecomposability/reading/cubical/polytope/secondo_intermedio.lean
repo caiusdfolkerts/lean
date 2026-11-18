@@ -1,12 +1,16 @@
+module
+
 /-
 Adapted from SolarYs431/lean-eval-platonic-classification, original module Submission.SecondoIntermedio.
 Copyright 2026 Daniele Cappello. Licensed under Apache-2.0.
 Source provenance and adaptation details: THIRD_PARTY.md.
 -/
-import cubical.polytope.imports
-import cubical.polytope.diamante_relativo
-import cubical.polytope.faccia_intermedia
-import cubical.polytope.vertici_esposti
+public import cubical.polytope.imports
+public import cubical.polytope.diamante_relativo
+public import cubical.polytope.faccia_intermedia
+public import cubical.polytope.vertici_esposti
+
+@[expose] public section
 
 open Set
 open scoped RealInnerProductSpace

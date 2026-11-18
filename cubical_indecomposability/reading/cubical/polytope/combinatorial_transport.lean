@@ -1,5 +1,9 @@
-import cubical.polytope.face_order
-import Mathlib.Combinatorics.SimpleGraph.Maps
+module
+
+public import cubical.polytope.face_order
+public import Mathlib.Combinatorics.SimpleGraph.Maps
+
+@[expose] public section
 
 /-!
 # Transporting vertices, incidence, and edges by a face-poset isomorphism

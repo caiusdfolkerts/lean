@@ -1,7 +1,11 @@
-import Mathlib.Data.Matrix.Basic
-import Mathlib.Data.Finset.Basic
-import Mathlib.Data.Int.Basic
-import Mathlib.Data.Rat.Defs
+module
+
+public import Mathlib.Data.Matrix.Basic
+public import Mathlib.Data.Finset.Basic
+public import Mathlib.Data.Int.Basic
+public import Mathlib.Data.Rat.Defs
+
+@[expose] public section
 
 /-!
 # Exact data for the 144-vertex cubical polytope

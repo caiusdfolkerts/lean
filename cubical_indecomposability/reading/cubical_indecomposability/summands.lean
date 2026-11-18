@@ -1,4 +1,8 @@
-import papers.parallel_minkowski
+module
+
+public import papers.parallel_minkowski
+
+@[expose] public section
 
 set_option autoImplicit false
 

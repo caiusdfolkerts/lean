@@ -1,5 +1,9 @@
-import cubical_indecomposability.separating_witness
-import Mathlib.Tactic.FinCases
+module
+
+public import cubical_indecomposability.separating_witness
+public import Mathlib.Tactic.FinCases
+
+@[expose] public section
 
 /-! Exact integer arithmetic and finite incidences, checked by Lean's kernel.
 `decide +kernel` below proves closed propositions by reduction.  It invokes no native

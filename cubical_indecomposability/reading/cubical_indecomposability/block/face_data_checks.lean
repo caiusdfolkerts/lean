@@ -1,6 +1,10 @@
-import cubical_indecomposability.block.face_data
-import cubical_indecomposability.block.cube_data
-import cubical_indecomposability.block.face_data_checks.pairing
+module
+
+public import cubical_indecomposability.block.face_data
+public import cubical_indecomposability.block.cube_data
+public import cubical_indecomposability.block.face_data_checks.pairing
+
+@[expose] public section
 
 /-!
 # Kernel checks for the complete finite face catalogue

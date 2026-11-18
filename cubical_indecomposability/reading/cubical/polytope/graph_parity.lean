@@ -1,5 +1,9 @@
-import Mathlib.Combinatorics.SimpleGraph.Coloring.Vertex
-import Mathlib.Logic.Relation
+module
+
+public import Mathlib.Combinatorics.SimpleGraph.Coloring.Vertex
+public import Mathlib.Logic.Relation
+
+@[expose] public section
 
 /-!
 # Bipartition from connected descending square fans

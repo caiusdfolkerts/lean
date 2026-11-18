@@ -1,5 +1,9 @@
-import cubical_indecomposability.face_realization
-import cubical.polytope.balinski_generale
+module
+
+public import cubical_indecomposability.face_realization
+public import cubical.polytope.balinski_generale
+
+@[expose] public section
 
 /-!
 # The edge list consists of actual exposed edges

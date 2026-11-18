@@ -1,6 +1,10 @@
-import cubical_indecomposability.face_realization
-import cubical.polytope.cube_faces
-import papers.complete_face_lattice
+module
+
+public import cubical_indecomposability.face_realization
+public import cubical.polytope.cube_faces
+public import papers.complete_face_lattice
+
+@[expose] public section
 
 /-!
 # The facets are combinatorial three-cubes

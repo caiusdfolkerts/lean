@@ -1,4 +1,8 @@
-import cubical_indecomposability.block.cube_realization
+module
+
+public import cubical_indecomposability.block.cube_realization
+
+@[expose] public section
 
 /-!
 # The three distinguished facets of the auxiliary block

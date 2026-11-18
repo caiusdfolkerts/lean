@@ -1,9 +1,13 @@
+module
+
 /-
 Adapted from SolarYs431/lean-eval-platonic-classification, original module Submission.Ipercubo.
 Copyright 2026 Daniele Cappello. Licensed under Apache-2.0.
 Source provenance and adaptation details: THIRD_PARTY.md.
 -/
-import cubical.polytope.ortoplesse_facce
+public import cubical.polytope.ortoplesse_facce
+
+@[expose] public section
 
 /-!
 L'ipercubo regolare in dimensione arbitraria.

@@ -1,7 +1,11 @@
-import Mathlib.LinearAlgebra.FiniteDimensional.Lemmas
-import Mathlib.LinearAlgebra.Dimension.Constructions
-import Mathlib.Tactic.Ring
-import Lean.Elab.Tactic.Omega
+module
+
+public import Mathlib.LinearAlgebra.FiniteDimensional.Lemmas
+public import Mathlib.LinearAlgebra.Dimension.Constructions
+public import Mathlib.Tactic.Ring
+public import Lean.Elab.Tactic.Omega
+
+@[expose] public section
 
 /-!
 # The normalized bipartite rigidity system

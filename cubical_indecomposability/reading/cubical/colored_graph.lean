@@ -1,6 +1,10 @@
-import Mathlib.Combinatorics.SimpleGraph.Coloring.Vertex
-import Mathlib.Combinatorics.SimpleGraph.Maps
-import Mathlib.Data.Sym.Card
+module
+
+public import Mathlib.Combinatorics.SimpleGraph.Coloring.Vertex
+public import Mathlib.Combinatorics.SimpleGraph.Maps
+public import Mathlib.Data.Sym.Card
+
+@[expose] public section
 
 /-! # The actual bipartite edge set of a properly two-colored graph -/
 

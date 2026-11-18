@@ -1,4 +1,8 @@
-import cubical.polytope.combinatorial_transport
+module
+
+public import cubical.polytope.combinatorial_transport
+
+@[expose] public section
 
 /-! # The graph of a geometric face is the induced graph on its vertices -/
 

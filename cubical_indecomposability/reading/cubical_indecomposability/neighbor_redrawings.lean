@@ -1,5 +1,9 @@
-import verification_bundle
-import cubical_indecomposability.deformation_dimension
+module
+
+public import verification_bundle
+public import cubical_indecomposability.deformation_dimension
+
+@[expose] public section
 
 /-!
 # The two-neighbor rule for parallel redrawings

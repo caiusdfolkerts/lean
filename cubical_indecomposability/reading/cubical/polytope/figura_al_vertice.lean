@@ -1,13 +1,17 @@
+module
+
 /-
 Adapted from SolarYs431/lean-eval-platonic-classification, original module Submission.FiguraAlVertice.
 Copyright 2026 Daniele Cappello. Licensed under Apache-2.0.
 Source provenance and adaptation details: THIRD_PARTY.md.
 -/
-import cubical.polytope.imports
-import cubical.polytope.fetta_vertice
-import cubical.polytope.sotto_politopo
-import cubical.polytope.vertici_esposti
-import cubical.polytope.vertex_figure_ridge
+public import cubical.polytope.imports
+public import cubical.polytope.fetta_vertice
+public import cubical.polytope.sotto_politopo
+public import cubical.polytope.vertici_esposti
+public import cubical.polytope.vertex_figure_ridge
+
+@[expose] public section
 
 /-!
 LA FIGURA AL VERTICE ESISTE — CHIUSURA DEL SOTTO-KILL-GATE (21 lug 2026).

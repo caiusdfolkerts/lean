@@ -1,12 +1,16 @@
-import cubical_indecomposability.evaluations
-import cubical_indecomposability.separation
-import cubical_indecomposability.cube_data
-import papers.finite_hull_certificates
-import papers.polytope_targets
-import Mathlib.Analysis.InnerProductSpace.PiL2
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.NormNum
+module
+
+public import cubical_indecomposability.evaluations
+public import cubical_indecomposability.separation
+public import cubical_indecomposability.cube_data
+public import papers.finite_hull_certificates
+public import papers.polytope_targets
+public import Mathlib.Analysis.InnerProductSpace.PiL2
+public import Mathlib.Tactic.FieldSimp
+public import Mathlib.Tactic.Ring
+public import Mathlib.Tactic.NormNum
+
+@[expose] public section
 
 /-!
 # The exact data as an ordinary convex polytope

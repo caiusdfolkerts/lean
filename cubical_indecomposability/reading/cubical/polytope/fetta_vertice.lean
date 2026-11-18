@@ -1,13 +1,17 @@
+module
+
 /-
 Adapted from SolarYs431/lean-eval-platonic-classification, original module Submission.FettaVertice.
 Copyright 2026 Daniele Cappello. Licensed under Apache-2.0.
 Source provenance and adaptation details: THIRD_PARTY.md.
 -/
-import cubical.polytope.imports
-import cubical.polytope.definitions
-import cubical.polytope.faccia_argmax
-import cubical.polytope.perturbazione_finita
-import cubical.polytope.bandiera_compagna
+public import cubical.polytope.imports
+public import cubical.polytope.definitions
+public import cubical.polytope.faccia_argmax
+public import cubical.polytope.perturbazione_finita
+public import cubical.polytope.bandiera_compagna
+
+@[expose] public section
 
 /-!
 LA FETTA AL VERTICE — IL CORPO (21 lug 2026).

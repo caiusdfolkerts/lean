@@ -1,18 +1,22 @@
-import cubical_indecomposability.certificates.support00
-import cubical_indecomposability.certificates.support01
-import cubical_indecomposability.certificates.support02
-import cubical_indecomposability.certificates.support03
-import cubical_indecomposability.certificates.support04
-import cubical_indecomposability.certificates.support05
-import cubical_indecomposability.certificates.support06
-import cubical_indecomposability.certificates.support07
-import cubical_indecomposability.certificates.support08
-import cubical_indecomposability.certificates.support09
-import cubical_indecomposability.certificates.support10
-import cubical_indecomposability.certificates.support11
-import cubical_indecomposability.certificates.support12
-import cubical_indecomposability.data
-import Mathlib.Tactic.FinCases
+module
+
+public import cubical_indecomposability.certificates.support00
+public import cubical_indecomposability.certificates.support01
+public import cubical_indecomposability.certificates.support02
+public import cubical_indecomposability.certificates.support03
+public import cubical_indecomposability.certificates.support04
+public import cubical_indecomposability.certificates.support05
+public import cubical_indecomposability.certificates.support06
+public import cubical_indecomposability.certificates.support07
+public import cubical_indecomposability.certificates.support08
+public import cubical_indecomposability.certificates.support09
+public import cubical_indecomposability.certificates.support10
+public import cubical_indecomposability.certificates.support11
+public import cubical_indecomposability.certificates.support12
+public import cubical_indecomposability.data
+public import Mathlib.Tactic.FinCases
+
+@[expose] public section
 
 /-! Exact integer arithmetic and finite incidences, checked by Lean's kernel.
 `decide +kernel` below proves closed propositions by reduction.  It invokes no native

@@ -1,8 +1,12 @@
-import Mathlib.Combinatorics.SimpleGraph.DegreeSum
-import Mathlib.Data.Fintype.Card
-import Mathlib.Data.Bool.Basic
-import Mathlib.Tactic.Ext
-import Lean.Elab.Tactic.Omega
+module
+
+public import Mathlib.Combinatorics.SimpleGraph.DegreeSum
+public import Mathlib.Data.Fintype.Card
+public import Mathlib.Data.Bool.Basic
+public import Mathlib.Tactic.Ext
+public import Lean.Elab.Tactic.Omega
+
+@[expose] public section
 
 /-!
 # The graph of a combinatorial cube

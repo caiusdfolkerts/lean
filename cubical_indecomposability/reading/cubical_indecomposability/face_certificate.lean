@@ -1,4 +1,8 @@
-import cubical_indecomposability.facet_completeness
+module
+
+public import cubical_indecomposability.facet_completeness
+
+@[expose] public section
 
 /-!
 # Exhaustive finite descriptions of a polytope's face lattice

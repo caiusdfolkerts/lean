@@ -1,4 +1,8 @@
-import cubical.polytope.face_order
+module
+
+public import cubical.polytope.face_order
+
+@[expose] public section
 
 /-! # Face-poset transport through an affine realization equivalence -/
 

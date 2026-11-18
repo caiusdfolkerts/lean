@@ -1,15 +1,19 @@
+module
+
 /-
 Adapted from SolarYs431/lean-eval-platonic-classification, original module Submission.Connettivita.
 Copyright 2026 Daniele Cappello. Licensed under Apache-2.0.
 Source provenance and adaptation details: THIRD_PARTY.md.
 -/
-import cubical.polytope.imports
-import cubical.polytope.definitions
-import cubical.polytope.scala_bandiere
-import cubical.polytope.dim_stretta
-import cubical.polytope.adiacenza_unica
-import cubical.polytope.mossa_involutiva
-import cubical.polytope.gallerie
+public import cubical.polytope.imports
+public import cubical.polytope.definitions
+public import cubical.polytope.scala_bandiere
+public import cubical.polytope.dim_stretta
+public import cubical.polytope.adiacenza_unica
+public import cubical.polytope.mossa_involutiva
+public import cubical.polytope.gallerie
+
+@[expose] public section
 
 /-!
 MOTORE COXETER, PASSO 17 — INFRASTRUTTURA DELLE GALLERIE E IL MURO

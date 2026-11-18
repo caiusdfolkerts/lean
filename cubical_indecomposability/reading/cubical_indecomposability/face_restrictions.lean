@@ -1,4 +1,8 @@
-import cubical_indecomposability.deformation_dimension
+module
+
+public import cubical_indecomposability.deformation_dimension
+
+@[expose] public section
 
 /-!
 # Restriction of deformation spaces to actual faces

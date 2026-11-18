@@ -1,5 +1,9 @@
-import verification_bundle
-import Mathlib.LinearAlgebra.AffineSpace.AffineEquiv
+module
+
+public import verification_bundle
+public import Mathlib.LinearAlgebra.AffineSpace.AffineEquiv
+
+@[expose] public section
 
 /-!
 # Homogeneous projectivities and affine interface maps

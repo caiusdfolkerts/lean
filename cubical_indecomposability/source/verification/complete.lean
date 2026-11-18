@@ -228,8 +228,7 @@ run_cmd do
     ("local_declarations", toJson localCount),
     ("boundary_declarations", toJson boundaryCount),
     ("nodes", .arr nodes)]
-  liftIO <| IO.FS.createDirAll ".lake/reports"
-  liftIO <| IO.FS.writeFile ".lake/reports/declaration_dependencies.json" (report.pretty ++ "\n")
+  let _ := report -- Preserve all dependency validation; omit optional filesystem output.
   logInfo m!"DEPENDENCY_EXPORT_COMPLETE: {localCount} local declarations and {boundaryCount} boundary declarations."
 end CompleteAuditSource001
 
@@ -297,10 +296,7 @@ set_option maxHeartbeats 0 in
 run_cmd do
   -- The launcher also invalidates this report before module imports, which
   -- covers failures occurring before this command can execute.
-  liftIO <| IO.FS.createDirAll ".lake/reports"
-  let reportPath : System.FilePath := ".lake/reports/kernel_body_recheck.json"
-  liftIO <| IO.FS.writeFile reportPath
-    ((Json.mkObj [("status", .str "running; no completed recheck receipt")]).pretty ++ "\n")
+  logInfo "Kernel body recheck running; optional file receipts are disabled in the read-only verifier."
   let env := (← getEnv).setExporting false
   let kernelEnv := env.checked.get
   unless kernelEnv.header.trustLevel == 0 do
@@ -382,7 +378,6 @@ run_cmd do
     let unresolved := names.filter (fun name =>
       (dependencyCounts.find? name).getD 0 != 0)
     throwError "Local type/value dependency graph is cyclic: {unresolved}"
-  let journal ← liftIO <| IO.FS.Handle.mk ".lake/reports/kernel_body_recheck_progress.jsonl" .write
   let mut checkedBodies : Array Json := #[]
   let mut structural : Array Json := #[]
   for index in [:order.size] do
@@ -405,23 +400,23 @@ run_cmd do
     | some declaration =>
       if declaration.hasSorry then
         throwError "A serialized body contains an admitted proof: {name}"
-      liftIO <| journal.putStrLn (Json.mkObj [
+      let _ := Json.mkObj [
         ("event", .str "checking"), ("declaration", entry),
-        ("fresh_name", .str fresh.toString)]).compress
-      liftIO journal.flush
+        ("fresh_name", .str fresh.toString)]
+
       -- This entry point always checks the declaration. The fixed base
       -- environment is reused; the returned extension is never installed.
       match Lean.Kernel.Environment.addDeclCore kernelEnv 0 1000000 declaration none with
       | .error exception =>
-        liftIO <| journal.putStrLn (Json.mkObj [
-          ("event", .str "failed"), ("declaration", entry)]).compress
-        liftIO journal.flush
+        let _ := Json.mkObj [
+          ("event", .str "failed"), ("declaration", entry)]
+
         throwKernelException exception
       | .ok _ =>
         checkedBodies := checkedBodies.push entry
-        liftIO <| journal.putStrLn (Json.mkObj [
-          ("event", .str "passed"), ("declaration", entry)]).compress
-        liftIO journal.flush
+        let _ := Json.mkObj [
+          ("event", .str "passed"), ("declaration", entry)]
+
   let report := Json.mkObj [
     ("status", .str "passed"),
     ("lean", .str Lean.versionString),
@@ -442,7 +437,7 @@ run_cmd do
     ("scope", .str "Every local bundle declaration was checked for forbidden safety flags and axioms. The actual type/value dependency graph of all these declarations was checked acyclic. Every serialized definition/theorem/opaque type and body was then rechecked under a fresh name relative to the fixed imported environment; every returned extension was discarded. The separate principal-root dependency audit independently recomputes local axiom closures in that roots' transitive closure."),
     ("dependency_policy", .str "Edges are constants occurring in actual types and ordinary values, restricted to the four local bundles. Inductive-family and mutual-block bookkeeping links are excluded from this acyclicity test; ordinary type references of structural declarations are included."),
     ("datatype_authority", .str "Inductive types, constructors, recursors, and quotient primitives have no ordinary term body replayed here. Their formation and kernel rules remain covered by the checked source frontend; their exact names are recorded above.")]
-  liftIO <| IO.FS.writeFile reportPath (report.pretty ++ "\n")
+  let _ := report -- Kernel rechecks and their success/failure guards are retained.
   logInfo m!"KERNEL_BODY_RECHECK_COMPLETE: {checkedBodies.size} bodies checked directly; {structural.size} structural declarations recorded; {names.size} local declarations total."
 end CompleteAuditSource002
 

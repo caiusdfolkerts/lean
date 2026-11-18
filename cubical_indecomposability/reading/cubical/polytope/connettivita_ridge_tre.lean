@@ -1,12 +1,16 @@
+module
+
 /-
 Adapted from SolarYs431/lean-eval-platonic-classification, original module Submission.ConnettivitaRidgeTre.
 Copyright 2026 Daniele Cappello. Licensed under Apache-2.0.
 Source provenance and adaptation details: THIRD_PARTY.md.
 -/
-import cubical.polytope.imports
-import cubical.polytope.connettivita_ridge_base
-import cubical.polytope.balinski_generale
-import cubical.polytope.faccette_connesse
+public import cubical.polytope.imports
+public import cubical.polytope.connettivita_ridge_base
+public import cubical.polytope.balinski_generale
+public import cubical.polytope.faccette_connesse
+
+@[expose] public section
 
 /-!
 CONNETTIVITÀ DEL RIDGE-GRAPH — DIMENSIONE INTRINSECA TRE (20 lug 2026).

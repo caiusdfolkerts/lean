@@ -1,7 +1,11 @@
-import cubical_indecomposability.realization
-import cubical_indecomposability.face_data_checks
-import cubical_indecomposability.labelled_faces
-import cubical_indecomposability.indexed_face_catalogue
+module
+
+public import cubical_indecomposability.realization
+public import cubical_indecomposability.face_data_checks
+public import cubical_indecomposability.labelled_faces
+public import cubical_indecomposability.indexed_face_catalogue
+
+@[expose] public section
 
 /-!
 # The complete geometric face lattice of the explicit polytope

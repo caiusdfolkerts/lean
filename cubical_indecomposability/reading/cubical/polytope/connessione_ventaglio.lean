@@ -1,27 +1,31 @@
+module
+
 /-
 Adapted from SolarYs431/lean-eval-platonic-classification, original module Submission.ConnessioneVentaglio.
 Copyright 2026 Daniele Cappello. Licensed under Apache-2.0.
 Source provenance and adaptation details: THIRD_PARTY.md.
 -/
-import cubical.polytope.imports
-import cubical.polytope.definitions
-import cubical.polytope.perturbazione_finita
-import cubical.polytope.vertici_esposti
-import cubical.polytope.sotto_politopo
-import cubical.polytope.dim_stretta
-import cubical.polytope.due_funzionali
-import cubical.polytope.perno
-import cubical.polytope.interpolazione
-import cubical.polytope.scala_bandiere
-import cubical.polytope.bandiera_compagna
-import cubical.polytope.diamante
-import cubical.polytope.diamante2_d
-import cubical.polytope.secondo_spigolo
-import cubical.polytope.seconda_faccetta
-import cubical.polytope.bandiera_vertice
-import cubical.polytope.cono_vertice
-import cubical.polytope.camminata
-import cubical.polytope.scarico_spigolo
+public import cubical.polytope.imports
+public import cubical.polytope.definitions
+public import cubical.polytope.perturbazione_finita
+public import cubical.polytope.vertici_esposti
+public import cubical.polytope.sotto_politopo
+public import cubical.polytope.dim_stretta
+public import cubical.polytope.due_funzionali
+public import cubical.polytope.perno
+public import cubical.polytope.interpolazione
+public import cubical.polytope.scala_bandiere
+public import cubical.polytope.bandiera_compagna
+public import cubical.polytope.diamante
+public import cubical.polytope.diamante2_d
+public import cubical.polytope.secondo_spigolo
+public import cubical.polytope.seconda_faccetta
+public import cubical.polytope.bandiera_vertice
+public import cubical.polytope.cono_vertice
+public import cubical.polytope.camminata
+public import cubical.polytope.scarico_spigolo
+
+@[expose] public section
 
 open Set
 open scoped RealInnerProductSpace

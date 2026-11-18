@@ -1,4 +1,8 @@
-import cubical_indecomposability.block.separating_witness
+module
+
+public import cubical_indecomposability.block.separating_witness
+
+@[expose] public section
 
 set_option maxRecDepth 1000000
 set_option maxHeartbeats 0

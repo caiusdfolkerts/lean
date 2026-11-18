@@ -1,8 +1,12 @@
-import cubical_indecomposability.block.affine_interfaces
-import cubical_indecomposability.block.deformations
-import cubical_indecomposability.block.parallelepiped
-import cubical_indecomposability.elementary_redrawings
-import cubical_indecomposability.neighbor_redrawings
+module
+
+public import cubical_indecomposability.block.affine_interfaces
+public import cubical_indecomposability.block.deformations
+public import cubical_indecomposability.block.parallelepiped
+public import cubical_indecomposability.elementary_redrawings
+public import cubical_indecomposability.neighbor_redrawings
+
+@[expose] public section
 
 /-!
 # Proposition 5: the complete auxiliary block
