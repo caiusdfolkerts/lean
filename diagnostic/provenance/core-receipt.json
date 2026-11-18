@@ -1,0 +1,119 @@
+{
+  "target": "ResidualBatch.NodeAndFrame",
+  "lean_toolchain": "leanprover/lean4:v4.35.0",
+  "lean_binary_sha256": "d1d9c26a539f54fe839d2aa7760bf1ac1dd76a30b26e2c9684bebf2900038fcf",
+  "driver_exit_code": 0,
+  "invocation_count": 9,
+  "invocations": [
+    {
+      "module": "RawBoundaryMatch",
+      "source_sha256": "761491d9e7da12e8887b1be3cb59e040c630c6dbd4439beb8338ec457315b7e5",
+      "compiled_interface_sha256": "cc9bc2df7193e7c8cf235aea6f9df26dc498288c19ac778e75d3b7f295ea7919",
+      "log_sha256": "8e90094b489e89e150ca69413c6fe4e6c6eb90f857c29aae6de16f447ef4ada6",
+      "exit_code": 0,
+      "driver_wall_seconds": 0.963,
+      "time_real_seconds": 0.95,
+      "peak_rss_bytes": 131858432,
+      "log": "logs-core/RawBoundaryMatch.log"
+    },
+    {
+      "module": "RawGraphGrowthFrames",
+      "source_sha256": "f5e175634562dcf3e9a7c159ccbda0b3fe90fabe6a19d2b56ba5dbdf5ab25f50",
+      "compiled_interface_sha256": "20b0e60d13e9f64c80433873e3f4f4fb2f2be68fbed13aad7f267807c1a3112e",
+      "log_sha256": "238dd500ae83d089f74864f5ca89b273818a49a005306edb08e0f7759d07dff1",
+      "exit_code": 0,
+      "driver_wall_seconds": 0.13,
+      "time_real_seconds": 0.12,
+      "peak_rss_bytes": 126451712,
+      "log": "logs-core/RawGraphGrowthFrames.log"
+    },
+    {
+      "module": "RawNatGrowthSoundness",
+      "source_sha256": "e3aa6b47dbdbae7f607ce79bf9645b178e4bc051def0787363a8e8c1e659c288",
+      "compiled_interface_sha256": "0ce0adf5153d077f2e2c48668cea0bec4296788a857e53a0fd082c30354961d4",
+      "log_sha256": "bf3e861ce839503553c80aebb34527474b8efad10cb5c0762804c32f6f418acc",
+      "exit_code": 0,
+      "driver_wall_seconds": 0.393,
+      "time_real_seconds": 0.38,
+      "peak_rss_bytes": 143179776,
+      "log": "logs-core/RawNatGrowthSoundness.log"
+    },
+    {
+      "module": "RawGrowthCacheCertificate",
+      "source_sha256": "efb320315b4e0e6ae2d9f19cdfaff42a169add9379b908f2ba0396ed3cff704e",
+      "compiled_interface_sha256": "1de02c38ccaf4029da9aa7402d489c56c81b98de4eb7a5f6408921cd5c196727",
+      "log_sha256": "8338dfdc600a209915758106ff55bb3267463edba8a50cacb09158d971d45db8",
+      "exit_code": 0,
+      "driver_wall_seconds": 0.185,
+      "time_real_seconds": 0.18,
+      "peak_rss_bytes": 133971968,
+      "log": "logs-core/RawGrowthCacheCertificate.log"
+    },
+    {
+      "module": "CachedCellRelabel",
+      "source_sha256": "64ccb6583aa2eede06534e7d104e35a2c590f1cc290d0a78964396ce489c04fd",
+      "compiled_interface_sha256": "9ec2e999227abc645264a8dcd11e5627fc2cca4603949d7b558ff7948f50ffba",
+      "log_sha256": "ec5abe335ae8e852764efd650b18db5c413e044107de1af4db37f1a3db0150ab",
+      "exit_code": 0,
+      "driver_wall_seconds": 0.163,
+      "time_real_seconds": 0.15,
+      "peak_rss_bytes": 131858432,
+      "log": "logs-core/CachedCellRelabel.log"
+    },
+    {
+      "module": "FastTenGraphEdges",
+      "source_sha256": "c011f709d2154fd1f4b77d07f263cde6908ca902958763df20fb4ab4537502fd",
+      "compiled_interface_sha256": "ffa964f2200752852e5a1cc04627431fecd105a72ff6a3131d31c55a3747de58",
+      "log_sha256": "5e2a7c2570d4bc781bbb93b88a435821a78e2379ef51cf08a920af34a3b7619f",
+      "exit_code": 0,
+      "driver_wall_seconds": 0.17,
+      "time_real_seconds": 0.16,
+      "peak_rss_bytes": 133890048,
+      "log": "logs-core/FastTenGraphEdges.log"
+    },
+    {
+      "module": "RawGraphSemanticCertificate",
+      "source_sha256": "10a45ff8d7af26695061e878f312563349a8a42d67eddc5647b45359dffcca5b",
+      "compiled_interface_sha256": "c492ac4f867e1642eae2279e2e68b77fac4df7b271bff7ac0bdf04304024bb7d",
+      "log_sha256": "cba1cfdf1dcd007e87c15673842c1f6f9091cf53f3b46a2a6c2a2a18fe2de0b7",
+      "exit_code": 0,
+      "driver_wall_seconds": 0.2,
+      "time_real_seconds": 0.19,
+      "peak_rss_bytes": 133595136,
+      "log": "logs-core/RawGraphSemanticCertificate.log"
+    },
+    {
+      "module": "RawFrameSupportCore",
+      "source_sha256": "79789b7e1ac970ec6a2e5526266a0179dd038f57d39763dfabd12cc4f5254c21",
+      "compiled_interface_sha256": "d033c3ae9a20a24d5a8313ff208e8e1e6b6da59a6478c89d93c797864424a167",
+      "log_sha256": "6e4ab5ee053ccbd951a6aba4e6b8d2b2ba608d157b45c1aff913d139effee631",
+      "exit_code": 0,
+      "driver_wall_seconds": 0.178,
+      "time_real_seconds": 0.17,
+      "peak_rss_bytes": 122748928,
+      "log": "logs-core/RawFrameSupportCore.log"
+    },
+    {
+      "module": "ResidualBatch.NodeAndFrame",
+      "source_sha256": "22d1da68e47d9cc592a1e1181d7c97097604ff100ba90e9a48e51938694a10e7",
+      "compiled_interface_sha256": "2dc627a8f36122ae8ae21e785167b7b3798ac55c6b54122c2e60d7a99bcd49b8",
+      "log_sha256": "f8b76d541bc8f59f74e9884cce898e0c10f12c3d77f33179a0d8e32919da2534",
+      "exit_code": 0,
+      "driver_wall_seconds": 0.347,
+      "time_real_seconds": 8.31,
+      "peak_rss_bytes": 135823360,
+      "log": "logs-core/ResidualBatch.NodeAndFrame.log"
+    }
+  ],
+  "maximum_observed_rss_bytes": 143179776,
+  "exact_compiler_options": [
+    "-t1",
+    "-j1",
+    "-M768",
+    "-s65536",
+    "-DmaxHeartbeats=0",
+    "-DElab.async=false",
+    "-Ddebug.skipKernelTC=false"
+  ],
+  "scope": "Generic node and frame library plus eight missing prerequisites. Higher generic completeBlock and concrete block remain uncompiled."
+}
