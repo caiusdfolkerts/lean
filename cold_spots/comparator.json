@@ -1,0 +1,14 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "PaperVerification.ColdSpots.lattice_theorem_1_1",
+    "PaperVerification.ColdSpots.lattice_covering_radius_table",
+    "PaperVerification.ColdSpots.lattice_corollary_1_2"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

@@ -1,0 +1,47 @@
+version: v0.4
+project:
+  name: Universal cold spots of E8 and related lattices
+  description: >-
+    For E6, E8, the dual E7 lattice, the integral Barnes-Wall lattice BW16,
+    and D_n plus in every even dimension n at least eight, the global minima
+    of every positive-parameter Gaussian lattice sum are precisely all deep
+    holes. The result extends to arbitrary nonzero positive mixtures whenever
+    the literal nonnegative energy is finite at all ambient points. The full
+    squared covering-radius table is proved with actual attainment: 4/3, 1,
+    7/8, 3, and n/8 in the respective normalizations.
+  authors: [Caius Folkerts]
+  responsible_maintainers: [Caius Folkerts]
+  license: Apache-2.0
+sources:
+  - type: article
+    title: Universal cold spots of E8 and related lattices
+    authors: [Caius Folkerts]
+    identifier: paper.pdf
+    relationship: formalizes
+    note: Theorem 1.1, Corollary 1.2, and the squared covering-radius table.
+classification:
+  arxiv: [math.MG, math.NT]
+  msc2020: [52C07, 11H31]
+automation:
+  methods:
+    - method: agent
+      tool_setup: OpenAI Codex with GPT-6.1 Sol, preparing Palomar packaging.
+      notes: >-
+        The supplied paper discloses GPT-6 Astra, GPT-5.6 Sol, and Kimi K3
+        assistance in developing the proofs. The full prior prompt history was
+        not reconstructed. This packaging copies the substantive source and
+        adds an independent Challenge, Comparator configuration, and metadata.
+review:
+  status: unchecked
+  notes: Package compilation and Comparator verification remain pending.
+fidelity:
+  notes: >-
+    The Challenge retains every ambient-point, even-dimension, Gaussian-parameter,
+    and mixing-measure quantifier of the selected results. Squared distances
+    are Euclidean sums of coordinate squares, and the E7 dual is restricted
+    only to its actual seven-dimensional zero-sum ambient space. Lattice sets
+    are copied from explicit source constructions. Supporting analytic
+    inequalities, explicit hole coordinates and translation-class counts, and
+    affine orbit results are present in the full source but are not separately
+    selected as Comparator declarations. Source snapshot: caiusdfolkerts/research
+    at e0696fddcd3d10b5d6461e62e9b2f02c4195be37.

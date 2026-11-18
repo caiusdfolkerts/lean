@@ -34,3 +34,26 @@ Here's a guide to help you navigate this repo! All verified theorems/proposition
 | Corollary 1.2 | `lattice_corollary_1_2`; `lattice_corollary_1_2_extended` |
 | Affine-isometry orbits | `dn_deep_holes_single_affine_orbit`; `e7_deep_holes_single_affine_orbit` |
 | Affine Weyl orbit of E8 holes | `e8_deep_holes_single_affine_weyl_orbit` |
+
+## Palomar statement of record
+
+`Challenge.lean` independently states the complete Theorem 1.1, Corollary 1.2,
+and the squared covering-radius table with attainment. `Solution.lean` imports
+the substantive proofs under their original declaration names. The exact
+selected declarations are listed in `comparator.json`.
+
+The statement uses explicit lattice sets: D_n plus is the even integer
+lattice together with its all-half translate; E6 is the root-normalized
+Eisenstein gluing construction; E7 dual is the projection to the zero-sum
+hyperplane in R8; BW16 is sqrt(2) times D16 plus half RM(1,4). Squared distance
+is the sum of coordinate squares. Gaussian and mixture energies are actual
+infinite sums and integrals. The mixing measure is arbitrary, positive and
+nonzero; finiteness of the nonnegative energy is the stated hypothesis for
+the real-valued corollary. No sigma-finiteness restriction is inserted.
+
+The underlying proof source also contains the supporting analytic results,
+explicit cold-spot descriptions, translation-class counts and affine orbit
+theorems listed above. Those supporting results are not separate Comparator
+targets in this entry. The selected principal theorem and corollary are
+retained in full. The package has not yet been compiled or run through
+Comparator in this preparation.
