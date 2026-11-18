@@ -17,8 +17,14 @@ import all projection_escape
 
 -- Generated verification output directories.
 run_cmd Lean.Elab.Command.liftIO do
-  IO.FS.createDirAll ".lake/reports/audit"
-  IO.FS.createDirAll ".lake/reports/audit/stages"
+  try
+    IO.FS.createDirAll ".lake/reports/audit"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
+  try
+    IO.FS.createDirAll ".lake/reports/audit/stages"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
 
 
 @[expose] public section
@@ -37,16 +43,28 @@ successful complete ordinary kernel check and the final theorem audit.
 -/
 
 #eval do
-  IO.FS.createDirAll ".lake/reports/audit/stages"
-  IO.FS.writeFile ".lake/reports/audit/stages/All.progress.txt" "PROJECTION STAGE All: imports loaded\nProgress only; no completed-check claim.\n"
+  try
+    IO.FS.createDirAll ".lake/reports/audit/stages"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
+  try
+    IO.FS.writeFile ".lake/reports/audit/stages/All.progress.txt" "PROJECTION STAGE All: imports loaded\nProgress only; no completed-check claim.\n"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
   IO.println "PROJECTION STAGE All: imports loaded"
   (← IO.getStdout).flush
 
 /-! ## 1. CoordinateReplication -/
 
 #eval do
-  IO.FS.createDirAll ".lake/reports/audit/stages"
-  IO.FS.writeFile ".lake/reports/audit/stages/All.progress.txt" "PROJECTION STAGE All: chapter 1: CoordinateReplication\nProgress only; no completed-check claim.\n"
+  try
+    IO.FS.createDirAll ".lake/reports/audit/stages"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
+  try
+    IO.FS.writeFile ".lake/reports/audit/stages/All.progress.txt" "PROJECTION STAGE All: chapter 1: CoordinateReplication\nProgress only; no completed-check claim.\n"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
   IO.println "PROJECTION STAGE All: chapter 1: CoordinateReplication"
   (← IO.getStdout).flush
 
@@ -287,8 +305,14 @@ end Source_CoordinateReplication
 /-! ## 2. PaperInterfaces -/
 
 #eval do
-  IO.FS.createDirAll ".lake/reports/audit/stages"
-  IO.FS.writeFile ".lake/reports/audit/stages/All.progress.txt" "PROJECTION STAGE All: chapter 2: PaperInterfaces\nProgress only; no completed-check claim.\n"
+  try
+    IO.FS.createDirAll ".lake/reports/audit/stages"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
+  try
+    IO.FS.writeFile ".lake/reports/audit/stages/All.progress.txt" "PROJECTION STAGE All: chapter 2: PaperInterfaces\nProgress only; no completed-check claim.\n"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
   IO.println "PROJECTION STAGE All: chapter 2: PaperInterfaces"
   (← IO.getStdout).flush
 
@@ -464,8 +488,14 @@ end Source_PaperInterfaces
 /-! ## 3. MainRankResults -/
 
 #eval do
-  IO.FS.createDirAll ".lake/reports/audit/stages"
-  IO.FS.writeFile ".lake/reports/audit/stages/All.progress.txt" "PROJECTION STAGE All: chapter 3: MainRankResults\nProgress only; no completed-check claim.\n"
+  try
+    IO.FS.createDirAll ".lake/reports/audit/stages"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
+  try
+    IO.FS.writeFile ".lake/reports/audit/stages/All.progress.txt" "PROJECTION STAGE All: chapter 3: MainRankResults\nProgress only; no completed-check claim.\n"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
   IO.println "PROJECTION STAGE All: chapter 3: MainRankResults"
   (← IO.getStdout).flush
 
@@ -606,8 +636,14 @@ end Source_MainRankResults
 /-! ## 4. OpenNonrealizable -/
 
 #eval do
-  IO.FS.createDirAll ".lake/reports/audit/stages"
-  IO.FS.writeFile ".lake/reports/audit/stages/All.progress.txt" "PROJECTION STAGE All: chapter 4: OpenNonrealizable\nProgress only; no completed-check claim.\n"
+  try
+    IO.FS.createDirAll ".lake/reports/audit/stages"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
+  try
+    IO.FS.writeFile ".lake/reports/audit/stages/All.progress.txt" "PROJECTION STAGE All: chapter 4: OpenNonrealizable\nProgress only; no completed-check claim.\n"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
   IO.println "PROJECTION STAGE All: chapter 4: OpenNonrealizable"
   (← IO.getStdout).flush
 
@@ -920,8 +956,14 @@ end Source_OpenNonrealizable
 /-! ## 5. BoundaryCompatibility -/
 
 #eval do
-  IO.FS.createDirAll ".lake/reports/audit/stages"
-  IO.FS.writeFile ".lake/reports/audit/stages/All.progress.txt" "PROJECTION STAGE All: chapter 5: BoundaryCompatibility\nProgress only; no completed-check claim.\n"
+  try
+    IO.FS.createDirAll ".lake/reports/audit/stages"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
+  try
+    IO.FS.writeFile ".lake/reports/audit/stages/All.progress.txt" "PROJECTION STAGE All: chapter 5: BoundaryCompatibility\nProgress only; no completed-check claim.\n"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
   IO.println "PROJECTION STAGE All: chapter 5: BoundaryCompatibility"
   (← IO.getStdout).flush
 
@@ -1187,8 +1229,14 @@ end Source_BoundaryCompatibility
 /-! ## 6. SharpBoundaryExample -/
 
 #eval do
-  IO.FS.createDirAll ".lake/reports/audit/stages"
-  IO.FS.writeFile ".lake/reports/audit/stages/All.progress.txt" "PROJECTION STAGE All: chapter 6: SharpBoundaryExample\nProgress only; no completed-check claim.\n"
+  try
+    IO.FS.createDirAll ".lake/reports/audit/stages"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
+  try
+    IO.FS.writeFile ".lake/reports/audit/stages/All.progress.txt" "PROJECTION STAGE All: chapter 6: SharpBoundaryExample\nProgress only; no completed-check claim.\n"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
   IO.println "PROJECTION STAGE All: chapter 6: SharpBoundaryExample"
   (← IO.getStdout).flush
 
@@ -1366,8 +1414,14 @@ end Source_SharpBoundaryExample
 /-! ## 7. BoundaryCorollary -/
 
 #eval do
-  IO.FS.createDirAll ".lake/reports/audit/stages"
-  IO.FS.writeFile ".lake/reports/audit/stages/All.progress.txt" "PROJECTION STAGE All: chapter 7: BoundaryCorollary\nProgress only; no completed-check claim.\n"
+  try
+    IO.FS.createDirAll ".lake/reports/audit/stages"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
+  try
+    IO.FS.writeFile ".lake/reports/audit/stages/All.progress.txt" "PROJECTION STAGE All: chapter 7: BoundaryCorollary\nProgress only; no completed-check claim.\n"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
   IO.println "PROJECTION STAGE All: chapter 7: BoundaryCorollary"
   (← IO.getStdout).flush
 
@@ -1674,8 +1728,14 @@ end Source_BoundaryCorollary
 /-! ## 8. SpectralZeroReduction -/
 
 #eval do
-  IO.FS.createDirAll ".lake/reports/audit/stages"
-  IO.FS.writeFile ".lake/reports/audit/stages/All.progress.txt" "PROJECTION STAGE All: chapter 8: SpectralZeroReduction\nProgress only; no completed-check claim.\n"
+  try
+    IO.FS.createDirAll ".lake/reports/audit/stages"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
+  try
+    IO.FS.writeFile ".lake/reports/audit/stages/All.progress.txt" "PROJECTION STAGE All: chapter 8: SpectralZeroReduction\nProgress only; no completed-check claim.\n"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
   IO.println "PROJECTION STAGE All: chapter 8: SpectralZeroReduction"
   (← IO.getStdout).flush
 
@@ -2218,7 +2278,19 @@ run_cmd do
     ("defining_constants", Lean.Json.arr definitions),
     ("allowed_axioms", Lean.toJson (allowed.map Lean.Name.toString)),
     ("dependency_node_count", Lean.toJson nodes.size)]
-  Lean.Elab.Command.liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  Lean.Elab.Command.liftIO <| IO.FS.writeFile ".lake/reports/audit/dependency-graph.json" graph.pretty
-  Lean.Elab.Command.liftIO <| IO.FS.writeFile ".lake/reports/audit/final-statements-and-axioms.json" report.pretty
+  Lean.Elab.Command.liftIO do
+    try
+      IO.FS.createDirAll ".lake/reports/audit"
+    catch _ =>
+      IO.eprintln "Optional audit report output skipped in this environment."
+  Lean.Elab.Command.liftIO do
+    try
+      IO.FS.writeFile ".lake/reports/audit/dependency-graph.json" graph.pretty
+    catch _ =>
+      IO.eprintln "Optional audit report output skipped in this environment."
+  Lean.Elab.Command.liftIO do
+    try
+      IO.FS.writeFile ".lake/reports/audit/final-statements-and-axioms.json" report.pretty
+    catch _ =>
+      IO.eprintln "Optional audit report output skipped in this environment."
   Lean.logInfo m!"PRINCIPAL AUDIT PASSED: {required.size} kernel theorems, {nodes.size} transitive logical declarations; only the standard axioms."

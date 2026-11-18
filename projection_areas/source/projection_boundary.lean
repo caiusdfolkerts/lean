@@ -32,16 +32,28 @@ successful complete ordinary kernel check and the final theorem audit.
 -/
 
 #eval do
-  IO.FS.createDirAll ".lake/reports/audit/stages"
-  IO.FS.writeFile ".lake/reports/audit/stages/ProjectionBoundary.progress.txt" "PROJECTION STAGE ProjectionBoundary: imports loaded\nProgress only; no completed-check claim.\n"
+  try
+    IO.FS.createDirAll ".lake/reports/audit/stages"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
+  try
+    IO.FS.writeFile ".lake/reports/audit/stages/ProjectionBoundary.progress.txt" "PROJECTION STAGE ProjectionBoundary: imports loaded\nProgress only; no completed-check claim.\n"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
   IO.println "PROJECTION STAGE ProjectionBoundary: imports loaded"
   (← IO.getStdout).flush
 
 /-! ## 1. BoundaryGeometry -/
 
 #eval do
-  IO.FS.createDirAll ".lake/reports/audit/stages"
-  IO.FS.writeFile ".lake/reports/audit/stages/ProjectionBoundary.progress.txt" "PROJECTION STAGE ProjectionBoundary: chapter 1: BoundaryGeometry\nProgress only; no completed-check claim.\n"
+  try
+    IO.FS.createDirAll ".lake/reports/audit/stages"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
+  try
+    IO.FS.writeFile ".lake/reports/audit/stages/ProjectionBoundary.progress.txt" "PROJECTION STAGE ProjectionBoundary: chapter 1: BoundaryGeometry\nProgress only; no completed-check claim.\n"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
   IO.println "PROJECTION STAGE ProjectionBoundary: chapter 1: BoundaryGeometry"
   (← IO.getStdout).flush
 
@@ -58,7 +70,10 @@ import environment. The source-to-aggregate hashes are recorded in audit.
 
 -- Generated verification output directories.
 run_cmd Lean.Elab.Command.liftIO do
-  IO.FS.createDirAll ".lake/reports/audit/stages"
+  try
+    IO.FS.createDirAll ".lake/reports/audit/stages"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
 
 -/
 
@@ -1100,8 +1115,14 @@ end Source_BoundaryGeometry
 /-! ## 2. BoundaryKernelAlgebra -/
 
 #eval do
-  IO.FS.createDirAll ".lake/reports/audit/stages"
-  IO.FS.writeFile ".lake/reports/audit/stages/ProjectionBoundary.progress.txt" "PROJECTION STAGE ProjectionBoundary: chapter 2: BoundaryKernelAlgebra\nProgress only; no completed-check claim.\n"
+  try
+    IO.FS.createDirAll ".lake/reports/audit/stages"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
+  try
+    IO.FS.writeFile ".lake/reports/audit/stages/ProjectionBoundary.progress.txt" "PROJECTION STAGE ProjectionBoundary: chapter 2: BoundaryKernelAlgebra\nProgress only; no completed-check claim.\n"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
   IO.println "PROJECTION STAGE ProjectionBoundary: chapter 2: BoundaryKernelAlgebra"
   (← IO.getStdout).flush
 
@@ -1725,8 +1746,14 @@ end Source_BoundaryKernelAlgebra
 /-! ## 3. BoundaryKernelGeometry -/
 
 #eval do
-  IO.FS.createDirAll ".lake/reports/audit/stages"
-  IO.FS.writeFile ".lake/reports/audit/stages/ProjectionBoundary.progress.txt" "PROJECTION STAGE ProjectionBoundary: chapter 3: BoundaryKernelGeometry\nProgress only; no completed-check claim.\n"
+  try
+    IO.FS.createDirAll ".lake/reports/audit/stages"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
+  try
+    IO.FS.writeFile ".lake/reports/audit/stages/ProjectionBoundary.progress.txt" "PROJECTION STAGE ProjectionBoundary: chapter 3: BoundaryKernelGeometry\nProgress only; no completed-check claim.\n"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
   IO.println "PROJECTION STAGE ProjectionBoundary: chapter 3: BoundaryKernelGeometry"
   (← IO.getStdout).flush
 
@@ -1898,8 +1925,14 @@ end Source_BoundaryKernelGeometry
 /-! ## 4. TripleProjectionInterior -/
 
 #eval do
-  IO.FS.createDirAll ".lake/reports/audit/stages"
-  IO.FS.writeFile ".lake/reports/audit/stages/ProjectionBoundary.progress.txt" "PROJECTION STAGE ProjectionBoundary: chapter 4: TripleProjectionInterior\nProgress only; no completed-check claim.\n"
+  try
+    IO.FS.createDirAll ".lake/reports/audit/stages"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
+  try
+    IO.FS.writeFile ".lake/reports/audit/stages/ProjectionBoundary.progress.txt" "PROJECTION STAGE ProjectionBoundary: chapter 4: TripleProjectionInterior\nProgress only; no completed-check claim.\n"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
   IO.println "PROJECTION STAGE ProjectionBoundary: chapter 4: TripleProjectionInterior"
   (← IO.getStdout).flush
 
@@ -2106,8 +2139,14 @@ end Source_TripleProjectionInterior
 /-! ## 5. PlanarRectangleBound -/
 
 #eval do
-  IO.FS.createDirAll ".lake/reports/audit/stages"
-  IO.FS.writeFile ".lake/reports/audit/stages/ProjectionBoundary.progress.txt" "PROJECTION STAGE ProjectionBoundary: chapter 5: PlanarRectangleBound\nProgress only; no completed-check claim.\n"
+  try
+    IO.FS.createDirAll ".lake/reports/audit/stages"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
+  try
+    IO.FS.writeFile ".lake/reports/audit/stages/ProjectionBoundary.progress.txt" "PROJECTION STAGE ProjectionBoundary: chapter 5: PlanarRectangleBound\nProgress only; no completed-check claim.\n"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
   IO.println "PROJECTION STAGE ProjectionBoundary: chapter 5: PlanarRectangleBound"
   (← IO.getStdout).flush
 
@@ -2546,8 +2585,14 @@ end Source_PlanarRectangleBound
 /-! ## 6. RectangleObstruction -/
 
 #eval do
-  IO.FS.createDirAll ".lake/reports/audit/stages"
-  IO.FS.writeFile ".lake/reports/audit/stages/ProjectionBoundary.progress.txt" "PROJECTION STAGE ProjectionBoundary: chapter 6: RectangleObstruction\nProgress only; no completed-check claim.\n"
+  try
+    IO.FS.createDirAll ".lake/reports/audit/stages"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
+  try
+    IO.FS.writeFile ".lake/reports/audit/stages/ProjectionBoundary.progress.txt" "PROJECTION STAGE ProjectionBoundary: chapter 6: RectangleObstruction\nProgress only; no completed-check claim.\n"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
   IO.println "PROJECTION STAGE ProjectionBoundary: chapter 6: RectangleObstruction"
   (← IO.getStdout).flush
 
@@ -2729,8 +2774,14 @@ end Source_RectangleObstruction
 /-! ## 7. CoordinateRectangles -/
 
 #eval do
-  IO.FS.createDirAll ".lake/reports/audit/stages"
-  IO.FS.writeFile ".lake/reports/audit/stages/ProjectionBoundary.progress.txt" "PROJECTION STAGE ProjectionBoundary: chapter 7: CoordinateRectangles\nProgress only; no completed-check claim.\n"
+  try
+    IO.FS.createDirAll ".lake/reports/audit/stages"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
+  try
+    IO.FS.writeFile ".lake/reports/audit/stages/ProjectionBoundary.progress.txt" "PROJECTION STAGE ProjectionBoundary: chapter 7: CoordinateRectangles\nProgress only; no completed-check claim.\n"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
   IO.println "PROJECTION STAGE ProjectionBoundary: chapter 7: CoordinateRectangles"
   (← IO.getStdout).flush
 
@@ -3065,8 +3116,14 @@ end Source_CoordinateRectangles
 /-! ## 8. FiveLabelObstruction -/
 
 #eval do
-  IO.FS.createDirAll ".lake/reports/audit/stages"
-  IO.FS.writeFile ".lake/reports/audit/stages/ProjectionBoundary.progress.txt" "PROJECTION STAGE ProjectionBoundary: chapter 8: FiveLabelObstruction\nProgress only; no completed-check claim.\n"
+  try
+    IO.FS.createDirAll ".lake/reports/audit/stages"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
+  try
+    IO.FS.writeFile ".lake/reports/audit/stages/ProjectionBoundary.progress.txt" "PROJECTION STAGE ProjectionBoundary: chapter 8: FiveLabelObstruction\nProgress only; no completed-check claim.\n"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
   IO.println "PROJECTION STAGE ProjectionBoundary: chapter 8: FiveLabelObstruction"
   (← IO.getStdout).flush
 

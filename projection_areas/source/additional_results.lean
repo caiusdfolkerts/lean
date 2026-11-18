@@ -10,7 +10,10 @@ public import rank_three_algebra
 
 -- Generated verification output directories.
 run_cmd Lean.Elab.Command.liftIO do
-  IO.FS.createDirAll ".lake/reports/audit"
+  try
+    IO.FS.createDirAll ".lake/reports/audit"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
 
 
 @[expose] public section
@@ -1968,7 +1971,19 @@ run_cmd do
     ("defining_constants", Lean.Json.arr definitions),
     ("allowed_axioms", Lean.toJson (allowed.map Lean.Name.toString)),
     ("dependency_node_count", Lean.toJson nodes.size)]
-  Lean.Elab.Command.liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  Lean.Elab.Command.liftIO <| IO.FS.writeFile ".lake/reports/audit/additional-dependency-graph.json" graph.pretty
-  Lean.Elab.Command.liftIO <| IO.FS.writeFile ".lake/reports/audit/additional-statements-and-axioms.json" report.pretty
+  Lean.Elab.Command.liftIO do
+    try
+      IO.FS.createDirAll ".lake/reports/audit"
+    catch _ =>
+      IO.eprintln "Optional audit report output skipped in this environment."
+  Lean.Elab.Command.liftIO do
+    try
+      IO.FS.writeFile ".lake/reports/audit/additional-dependency-graph.json" graph.pretty
+    catch _ =>
+      IO.eprintln "Optional audit report output skipped in this environment."
+  Lean.Elab.Command.liftIO do
+    try
+      IO.FS.writeFile ".lake/reports/audit/additional-statements-and-axioms.json" report.pretty
+    catch _ =>
+      IO.eprintln "Optional audit report output skipped in this environment."
   Lean.logInfo m!"ADDITIONAL AUDIT PASSED: {required.size} kernel theorems, {nodes.size} transitive logical declarations; only the standard axioms."

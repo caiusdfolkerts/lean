@@ -34,16 +34,28 @@ successful complete ordinary kernel check and the final theorem audit.
 -/
 
 #eval do
-  IO.FS.createDirAll ".lake/reports/audit/stages"
-  IO.FS.writeFile ".lake/reports/audit/stages/ProjectionEscape.progress.txt" "PROJECTION STAGE ProjectionEscape: imports loaded\nProgress only; no completed-check claim.\n"
+  try
+    IO.FS.createDirAll ".lake/reports/audit/stages"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
+  try
+    IO.FS.writeFile ".lake/reports/audit/stages/ProjectionEscape.progress.txt" "PROJECTION STAGE ProjectionEscape: imports loaded\nProgress only; no completed-check claim.\n"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
   IO.println "PROJECTION STAGE ProjectionEscape: imports loaded"
   (← IO.getStdout).flush
 
 /-! ## 1. EscapeNecessityGeometry -/
 
 #eval do
-  IO.FS.createDirAll ".lake/reports/audit/stages"
-  IO.FS.writeFile ".lake/reports/audit/stages/ProjectionEscape.progress.txt" "PROJECTION STAGE ProjectionEscape: chapter 1: EscapeNecessityGeometry\nProgress only; no completed-check claim.\n"
+  try
+    IO.FS.createDirAll ".lake/reports/audit/stages"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
+  try
+    IO.FS.writeFile ".lake/reports/audit/stages/ProjectionEscape.progress.txt" "PROJECTION STAGE ProjectionEscape: chapter 1: EscapeNecessityGeometry\nProgress only; no completed-check claim.\n"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
   IO.println "PROJECTION STAGE ProjectionEscape: chapter 1: EscapeNecessityGeometry"
   (← IO.getStdout).flush
 
@@ -60,7 +72,10 @@ import environment. The source-to-aggregate hashes are recorded in audit.
 
 -- Generated verification output directories.
 run_cmd Lean.Elab.Command.liftIO do
-  IO.FS.createDirAll ".lake/reports/audit/stages"
+  try
+    IO.FS.createDirAll ".lake/reports/audit/stages"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
 
 -/
 
@@ -937,8 +952,14 @@ end Source_EscapeNecessityGeometry
 /-! ## 2. EscapeRealization -/
 
 #eval do
-  IO.FS.createDirAll ".lake/reports/audit/stages"
-  IO.FS.writeFile ".lake/reports/audit/stages/ProjectionEscape.progress.txt" "PROJECTION STAGE ProjectionEscape: chapter 2: EscapeRealization\nProgress only; no completed-check claim.\n"
+  try
+    IO.FS.createDirAll ".lake/reports/audit/stages"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
+  try
+    IO.FS.writeFile ".lake/reports/audit/stages/ProjectionEscape.progress.txt" "PROJECTION STAGE ProjectionEscape: chapter 2: EscapeRealization\nProgress only; no completed-check claim.\n"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
   IO.println "PROJECTION STAGE ProjectionEscape: chapter 2: EscapeRealization"
   (← IO.getStdout).flush
 
@@ -1848,8 +1869,14 @@ end Source_EscapeRealization
 /-! ## 3. EscapePrisms -/
 
 #eval do
-  IO.FS.createDirAll ".lake/reports/audit/stages"
-  IO.FS.writeFile ".lake/reports/audit/stages/ProjectionEscape.progress.txt" "PROJECTION STAGE ProjectionEscape: chapter 3: EscapePrisms\nProgress only; no completed-check claim.\n"
+  try
+    IO.FS.createDirAll ".lake/reports/audit/stages"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
+  try
+    IO.FS.writeFile ".lake/reports/audit/stages/ProjectionEscape.progress.txt" "PROJECTION STAGE ProjectionEscape: chapter 3: EscapePrisms\nProgress only; no completed-check claim.\n"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
   IO.println "PROJECTION STAGE ProjectionEscape: chapter 3: EscapePrisms"
   (← IO.getStdout).flush
 
@@ -2088,8 +2115,14 @@ end Source_EscapePrisms
 /-! ## 4. EscapeTheorems -/
 
 #eval do
-  IO.FS.createDirAll ".lake/reports/audit/stages"
-  IO.FS.writeFile ".lake/reports/audit/stages/ProjectionEscape.progress.txt" "PROJECTION STAGE ProjectionEscape: chapter 4: EscapeTheorems\nProgress only; no completed-check claim.\n"
+  try
+    IO.FS.createDirAll ".lake/reports/audit/stages"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
+  try
+    IO.FS.writeFile ".lake/reports/audit/stages/ProjectionEscape.progress.txt" "PROJECTION STAGE ProjectionEscape: chapter 4: EscapeTheorems\nProgress only; no completed-check claim.\n"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
   IO.println "PROJECTION STAGE ProjectionEscape: chapter 4: EscapeTheorems"
   (← IO.getStdout).flush
 
@@ -2190,8 +2223,14 @@ end Source_EscapeTheorems
 /-! ## 5. StrictZeroExtension -/
 
 #eval do
-  IO.FS.createDirAll ".lake/reports/audit/stages"
-  IO.FS.writeFile ".lake/reports/audit/stages/ProjectionEscape.progress.txt" "PROJECTION STAGE ProjectionEscape: chapter 5: StrictZeroExtension\nProgress only; no completed-check claim.\n"
+  try
+    IO.FS.createDirAll ".lake/reports/audit/stages"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
+  try
+    IO.FS.writeFile ".lake/reports/audit/stages/ProjectionEscape.progress.txt" "PROJECTION STAGE ProjectionEscape: chapter 5: StrictZeroExtension\nProgress only; no completed-check claim.\n"
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
   IO.println "PROJECTION STAGE ProjectionEscape: chapter 5: StrictZeroExtension"
   (← IO.getStdout).flush
 
