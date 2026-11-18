@@ -13,10 +13,22 @@ namespace Bier.Forster
 
 open Classical Finset Matrix WithLp
 
+universe u
+/-- The measured real identity inverse-pair proof, given a stable public name. -/
+theorem realIdentityInvPair : RingHomInvPair (RingHom.id ℝ) (RingHom.id ℝ) := by
+  infer_instance
+/-- The measured commutation of real scalar multiplication on the actual
+Euclidean function space, fixed independently of generated auxiliary names. -/
+theorem euclideanSelfSMulComm (I : Type u) : SMulCommClass ℝ ℝ (EuclideanSpace ℝ I) := by
+  infer_instance
+
 variable {R C : Type*} [Fintype R] [Fintype C]
 
 /-- The spectral norm: the operator norm between the standard Euclidean spaces. -/
 def spectralNorm (H : Matrix R C ℝ) : ℝ :=
+  letI : RingHomInvPair (RingHom.id ℝ) (RingHom.id ℝ) := realIdentityInvPair
+  letI : SMulCommClass ℝ ℝ (EuclideanSpace ℝ R) := euclideanSelfSMulComm R
+  letI : SMulCommClass ℝ ℝ (EuclideanSpace ℝ C) := euclideanSelfSMulComm C
   ‖H.toEuclideanLin.toContinuousLinearMap‖
 
 theorem spectralNorm_nonneg (H : Matrix R C ℝ) : 0 ≤ spectralNorm H := norm_nonneg _

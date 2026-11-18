@@ -53,18 +53,19 @@ automation:
       comparing the supplied manuscript, README table, and Lean declarations.
 review:
   status: unchecked
-  notes: The current19-target Challenge passed the independent pinned4.35 remote smoke
-    run44352784302 at SHA2565e052b83db84712f3568bfdc6956151ef6cb6b4e630708d44a7892e2b411eb3d.
-    The unchanged substantive source and prior11-target Solution passed remote builds
-    in run44347419677 before a Comparator type failure. The current19-target Solution
-    adds six literal rfl specification proofs and is not yet compiled. Actual Comparator
-    and independent kernel validation, and independent mathematical peer review, remain
-    separate and are not claimed.
+  notes: At preparation, the exact21-target Challenge prefix and two genuine named
+    implicit-class proof helpers passed canonical elaboration in run44380113477. An
+    appended actual rfl equality confirms that the normalized spectralNorm remains
+    the original literal Euclidean operator norm. The prior19-target Source/Solution
+    build passed before the measured raw comparison failures. The revised Source/Solution,
+    actual Comparator, independent kernels and clean editorial review remain pending.
+    No local Lean compilation was launched.
 limitations:
 - Six supplied record constructors are uniquely fixed by complete independently literal
-  projection equations. Their remaining fields are proof certificates. Actual raw
-  Comparator and independent kernel checks remain required for the current19-target
-  entry.
+  projection equations; their remaining fields are proof certificates. Original11
+  substantive roots and8 existing support/specification targets are retained, with2
+  genuine measured class-proof supports added. Exact21-target Source/Solution, Comparator
+  and independent kernel checks remain required.
 - The registry entry records all principal example variants, both universal obstruction
   regimes, and the final construction family; the Schur-realization and padded-inverse-span
   lemmas remain proved dependencies rather than separate registry conclusions.
@@ -72,8 +73,9 @@ fidelity:
   divergences: 'Six proof-bearing record constructors are supplied definitions with
     complete independently literal equations fixing every non-Prop record field: filtered
     extreme vertices, standard basis face images, exact nonempty input faces, complement
-    duality, deleted-join Bier faces and the absent ghost label. Proof certificates
-    do not carry data. Finite-face and ghost-proper supporting theorems are compared
-    explicitly. The exact source binder contexts have been restored. The current19-target
-    Challenge passed pinned4.35 remote elaboration; the updated Solution, actual Comparator
-    and independent kernel validation remain pending.'
+    duality, deleted-join Bier faces and the absent ghost label. Two exact source
+    universe contexts are copied. Named identity inverse-pair and Euclidean scalar-commutation
+    theorem proofs replace the measured generated class-proof aliases in the spectral
+    norm; canonical rfl confirms its literal value is unchanged. All original mathematical
+    hypotheses and conclusions remain fixed. Current actual Source/Solution and comparison
+    validation remain pending.'

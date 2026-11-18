@@ -134,6 +134,7 @@ def boundaryFacets (P : ConvexPolytope n) : Finset (Finset (VertexType P)) :=
   Finset.univ.image (fun F : FacetType P => faceVertices P F.val.val)
 end LeanEval.Geometry.PlatonicClassification
 namespace Convexity.StdSimplex
+variable {R I : Type*}
 /-- The ordinary simplex in barycentric coordinates: nonnegative entries summing to one. -/
 def coordinateSet (R I : Type*) [Semiring R] [PartialOrder R] [Fintype I] : Set (I → R) :=
   {x | (∀ i, 0 ≤ x i) ∧ ∑ i, x i = 1}
@@ -243,8 +244,11 @@ structure PolytopeRealization (K : Complex V) (n : ℕ) where
       ∃ t ∈ boundaryFacets polytope, s.map vertexEquiv.toEmbedding ⊆ t
 /-- Ordinary polytopality via a genuine simplicial convex boundary realization. -/
 def Polytopal (K : Complex V) : Prop := ∃ n, Nonempty (PolytopeRealization K n)
+end Bier
+namespace Bier
+variable {E : Type*} [Fintype E] [DecidableEq E]
 /-- Bier sphere formed after adjoining a ghost label. -/
-abbrev ghostBier {E : Type*} [Fintype E] [DecidableEq E] (K : Complex E) :=
+abbrev ghostBier (K : Complex E) :=
   K.ghost.bier K.ghost_proper
 
 end Bier
@@ -297,9 +301,20 @@ theorem allColumnSigns_signRank :
     signRank (allColumnSigns R) = Fintype.card R + 1 := by sorry
 end Bier
 namespace Bier.Forster
+universe u
+/-- The measured real identity inverse-pair proof, given a stable public name. -/
+theorem realIdentityInvPair : RingHomInvPair (RingHom.id ℝ) (RingHom.id ℝ) := by
+  infer_instance
+/-- The measured commutation of real scalar multiplication on the actual
+Euclidean function space, fixed independently of generated auxiliary names. -/
+theorem euclideanSelfSMulComm (I : Type u) : SMulCommClass ℝ ℝ (EuclideanSpace ℝ I) := by
+  infer_instance
 variable {R C : Type*} [Fintype R] [Fintype C]
 /-- The usual Euclidean operator norm of a real matrix. -/
 def spectralNorm (H : Matrix R C ℝ) : ℝ :=
+  letI : RingHomInvPair (RingHom.id ℝ) (RingHom.id ℝ) := realIdentityInvPair
+  letI : SMulCommClass ℝ ℝ (EuclideanSpace ℝ R) := euclideanSelfSMulComm R
+  letI : SMulCommClass ℝ ℝ (EuclideanSpace ℝ C) := euclideanSelfSMulComm C
   ‖H.toEuclideanLin.toContinuousLinearMap‖
 /-- Forster's lower bound with no general-position assumption on a realizing matrix. -/
 theorem signRank_spectral (H : Matrix R C ℝ) (hH : Bier.IsSignMatrix H) :

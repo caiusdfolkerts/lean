@@ -20,7 +20,9 @@
     "PalomarBier.Spec.toAbstract_faces",
     "PalomarBier.Spec.dual_face",
     "PalomarBier.Spec.bier_face",
-    "PalomarBier.Spec.ghost_face"
+    "PalomarBier.Spec.ghost_face",
+    "Bier.Forster.realIdentityInvPair",
+    "Bier.Forster.euclideanSelfSMulComm"
   ],
   "permitted_axioms": [
     "propext",
