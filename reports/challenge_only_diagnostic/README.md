@@ -1,3 +1,3 @@
-# Frozen diagnostic revision19
+# Frozen diagnostic revision20
 
-One owner-frozen genuine actual-proof/API smoke from observed Rees Solution failures. All displayed theorem bodies are actual proofs; no placeholders or project imports. Exact canonical pins, one8GiB compiler/job,max2jobs,40minute compile deadline. Scope is the support/ideal/polynomial/basis/quotient/complex APIs exercised, not complete source proof or Comparator validation. All prior snapshots immutable.
+One owner-frozen canonical Challenge of six actual Volume geometric endpoints and three genuine map supports. Exact canonical pins, one8GiB compiler/job,max2jobs,40minute compile deadline. Principal theorem placeholders are intentional Challenge obligations; a successful check confirms the displayed interface elaborates, not its solutions. No full-preflight/Comparator/intake claim. All prior snapshots immutable.
