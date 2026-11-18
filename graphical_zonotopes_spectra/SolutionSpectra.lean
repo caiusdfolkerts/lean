@@ -574,9 +574,8 @@ private theorem source_component_maximum (G : SimpleGraph V) :
     TetrahedronComponents.maximumDimension G = GraphicalZonotopes.TetrahedronComponents.maximumDimension G := by
   unfold TetrahedronComponents.maximumDimension GraphicalZonotopes.TetrahedronComponents.maximumDimension
   apply Finset.sup_congr
-  · apply Finset.ext
-    intro c
-    simp only [Finset.mem_univ]
+  · exact congrArg (@Finset.univ (TetrahedronComponents.Component G))
+      (Subsingleton.elim _ _)
   · intro c hc
     rw [source_component_vertices]
 private theorem source_planarComponentDimension (G : SimpleGraph V) :
@@ -684,7 +683,10 @@ theorem refined_support_of_dimension_ge_three {G : SimpleGraph V}
   · intro S
     exact (congrFun (GraphicalZonotopes.zeta_mobius z) S).symm
   · simpa only [source_fourFamily] using h.1
-  · simpa only [source_fourFamily, source_tetrahedronGraph] using h.2.1
+  · have hf : fourFamily (GraphicalZonotopes.mobius z) =
+        GraphicalZonotopes.RefinedTriangleComponents.family (GraphicalZonotopes.mobius z) := rfl
+    exact (congrArg (fun F : Finset (Finset V) => (tetrahedronGraph F).Preconnected) hf).mpr
+      (by simpa only [source_tetrahedronGraph] using h.2.1)
   · simpa only [source_actualDirectionGraph, source_basePolytope, source_edgeGraph] using h.2.2.1
   · simpa only [source_DependsOn, source_fourFamily] using h.2.2.2
 

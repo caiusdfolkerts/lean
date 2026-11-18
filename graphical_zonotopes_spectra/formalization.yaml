@@ -36,12 +36,13 @@ related_formalizations:
     Fresh literal statements and proof bridges form the comparison layer.
 status:
   scope: The exact553-line independent Challenge passed pinnedLean4.35 canonical-only
-    diagnostic run44372929933. The unchanged substantive Source closure compiled in
-    fullrun44380729160. That run exposed actual implicit-parameter arity mismatches,
-    finite-set membership transport issues and a remaining tree-join instance
-    mismatch. The revised801-line Solution supplies arity-correct bridges and
-    unique-instance transport proofs; these revisions are uncompiled. Actual
-    Comparator, independent kernels and a clean editorial review remain pending.
+    diagnostic run44372929933. The unchanged Source closure passed fullrun44388590808;
+    its wrapper had exactly two remaining errors, finite component enumeration and
+    dependent support-family transport. Those proofs now use equality of Fintype
+    structures and coherent transport of the entire graph-connectivity predicate.
+    The revised803-line Solution is uncompiled. Other wrapper bridges compiled in
+    that preceding failed run. Actual Comparator, independent kernels and a clean
+    editorial review remain pending.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms:
