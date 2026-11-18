@@ -109,7 +109,7 @@ private theorem holes_agree {B : Family V} (hB : B.Nonempty) {d : ℕ}
     Holes (k := k) B d = Characterizations.holeSet B := by
   have hl := Characterizations.locallyEquigenerated_of_proper_polymatroidal hd hloc
   ext a
-  simp only [Holes, Characterizations.holeSet, Set.mem_setOf_eq,
+  simp only [Holes, Characterizations.holeSet, Set.mem_ofPred_eq,
     CommAlg.Polymatroid.monomial_mem_iff,
     Characterizations.contains_canonicalLowerBases_iff hB hl hd]
 
@@ -148,8 +148,7 @@ theorem maximal_hole_regularity {B : Family V} (hB : B.Nonempty) {d : ℕ}
       KoszulRegularity (k := k) B (t + 1) := by
   have hfamily : B ≠ lowerBaseFamily (lowerRank B) d := by
     intro he
-    apply hne
-    rw [he]
+    exact hne (congrArg (monomialIdeal k) he)
   obtain ⟨t,ht,hmax,hdt,hreg,_⟩ :=
     Characterizations.minimal_local_obstruction (k := k) hB hd hloc hfamily
   exact ⟨t, by simpa only [holes_agree hB hd hloc] using ht,
@@ -216,6 +215,11 @@ actual nonzero Koszul homology in a strictly nonlinear degree. -/
 def FirstNonlinear (B : Family V) (d r : ℕ) : Prop :=
   (∀ i < r, ∀ b, b.degree ≠ d + i → Simplicial.ExactIn (k := k) (koszulFaces B b) i) ∧
     ∃ b, d + r < b.degree ∧ ¬Simplicial.ExactIn (k := k) (koszulFaces B b) r
+private theorem faceExponent_eq_source (s : Finset V) :
+    faceExponent s = CommAlg.Koszul.faceExponent s := by
+  ext j
+  rw [CommAlg.Koszul.faceExponent_apply]
+  simp [faceExponent, Finsupp.single_apply]
 private theorem koszulBetti_eq_source (B : Family V) (a : Exponent V) (i : ℕ) :
     koszulBetti (k := k) B a i = CommAlg.Koszul.bettiNumber (k := k) B a i := by
   exact (Characterizations.Strands.bettiNumber_eq_face_homology_finrank B a i).symm
@@ -246,7 +250,7 @@ theorem deleted_generator_nonlinear_strand (a : Exponent V) (ha : 2 ≤ a.suppor
         Nat.choose (Fintype.card V - a.support.card) (i + 1 - a.support.card) else 0) ∧
     (∀ i j, j ≠ a.degree + i → j ≠ a.degree + i + 1 →
       totalKoszulBetti (k := k) (deletedVeronese a) i j = 0) := by
-  simpa only [deleted_eq_source, koszulBetti_eq_source, totalKoszulBetti_eq_source] using
+  simpa only [deleted_eq_source, koszulBetti_eq_source, totalKoszulBetti_eq_source, faceExponent_eq_source] using
     (Characterizations.Strands.deleted_generator_nonlinear_strand (k := k) a ha)
 /-- Proposition4.7(i): a unique bad localization, all localizations pure,
 at the smallest possible degree codimension+2. -/
