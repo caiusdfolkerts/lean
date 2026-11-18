@@ -6,7 +6,7 @@ public import Mathlib.FieldTheory.RatFunc.Basic
 
 -- Generated verification output directories.
 run_cmd Lean.Elab.Command.liftIO do
-  IO.FS.createDirAll ".lake/reports/audit"
+  tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
 
 @[expose] public section
 
@@ -16,14 +16,14 @@ Successful generation is not evidence of a successful Lean build. -/
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_IMPORTS_LOADED\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_IMPORTS_LOADED\n") (fun _ => pure ())
   logInfo "CANONICAL_IMPORTS_LOADED"
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN RegularPivot\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN RegularPivot\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN RegularPivot"
 
 /- Begin source RegularPivot.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -429,8 +429,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN NorthwestCharts\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN NorthwestCharts\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN NorthwestCharts"
 
 /- Begin source NorthwestCharts.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -540,8 +540,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN PrimalityCharts\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN PrimalityCharts\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN PrimalityCharts"
 
 /- Begin source PrimalityCharts.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -744,8 +744,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN DiagonalCharts\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN DiagonalCharts\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN DiagonalCharts"
 
 /- Begin source DiagonalCharts.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -966,8 +966,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN TriangularCharts\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN TriangularCharts\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN TriangularCharts"
 
 /- Begin source TriangularCharts.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -1091,8 +1091,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN PivotComparison\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN PivotComparison\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN PivotComparison"
 
 /- Begin source PivotComparison.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -1465,8 +1465,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN PivotGradedTransport\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN PivotGradedTransport\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN PivotGradedTransport"
 
 /- Begin source PivotGradedTransport.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -1964,8 +1964,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN ZeroRowCharts\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN ZeroRowCharts\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN ZeroRowCharts"
 
 /- Begin source ZeroRowCharts.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -2340,8 +2340,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN OffDiagonalCharts\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN OffDiagonalCharts\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN OffDiagonalCharts"
 
 /- Begin source OffDiagonalCharts.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -2555,8 +2555,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN DeletedIndices\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN DeletedIndices\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN DeletedIndices"
 
 /- Begin source DeletedIndices.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -2679,8 +2679,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN CoordinateProjections\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN CoordinateProjections\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN CoordinateProjections"
 
 /- Begin source CoordinateProjections.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -2779,8 +2779,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN ResidualCoordinates\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN ResidualCoordinates\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN ResidualCoordinates"
 
 /- Begin source ResidualCoordinates.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -2884,8 +2884,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN OffDiagonalBlocks\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN OffDiagonalBlocks\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN OffDiagonalBlocks"
 
 /- Begin source OffDiagonalBlocks.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -3141,8 +3141,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN OrderedPrefixCharts\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN OrderedPrefixCharts\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN OrderedPrefixCharts"
 
 /- Begin source OrderedPrefixCharts.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -3278,8 +3278,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN OffDiagonalPrefixes\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN OffDiagonalPrefixes\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN OffDiagonalPrefixes"
 
 /- Begin source OffDiagonalPrefixes.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -3493,8 +3493,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN IsolatedRankCharts\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN IsolatedRankCharts\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN IsolatedRankCharts"
 
 /- Begin source IsolatedRankCharts.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -3654,8 +3654,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN OffDiagonalCoordinates\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN OffDiagonalCoordinates\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN OffDiagonalCoordinates"
 
 /- Begin source OffDiagonalCoordinates.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -3867,8 +3867,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN PivotComparisonApplications\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN PivotComparisonApplications\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN PivotComparisonApplications"
 
 /- Begin source PivotComparisonApplications.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -4127,8 +4127,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN PivotLeading\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN PivotLeading\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN PivotLeading"
 
 /- Begin source PivotLeading.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -4525,8 +4525,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN PivotChartMaps\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN PivotChartMaps\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN PivotChartMaps"
 
 /- Begin source PivotChartMaps.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -4542,8 +4542,8 @@ variable {n : ℕ} {R S : Type*} [CommRing R] [CommRing S]
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_DECL PivotChartMaps.symm_carrier\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_DECL PivotChartMaps.symm_carrier\n") (fun _ => pure ())
   logInfo "CANONICAL_DECL PivotChartMaps.symm_carrier"
 
 @[simp] theorem schurCoordinateEquiv_symm_carrier (q : S) (i : Fin n) :
@@ -4553,8 +4553,8 @@ run_cmd do
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_DECL PivotChartMaps.symm_entry\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_DECL PivotChartMaps.symm_entry\n") (fun _ => pure ())
   logInfo "CANONICAL_DECL PivotChartMaps.symm_entry"
 
 @[simp] theorem schurCoordinateEquiv_symm_entry (q : S) (e : Entry n) :
@@ -4576,8 +4576,8 @@ run_cmd do
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_DECL PivotChartMaps.chart_definition\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_DECL PivotChartMaps.chart_definition\n") (fun _ => pure ())
   logInfo "CANONICAL_DECL PivotChartMaps.chart_definition"
 
 /-- The coordinate map from the original symmetric matrix into independent
@@ -4589,8 +4589,8 @@ def firstPivotChartMap (φ : Polynomial R →+* S) (q : S) :
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_DECL PivotChartMaps.pivot_image\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_DECL PivotChartMaps.pivot_image\n") (fun _ => pure ())
   logInfo "CANONICAL_DECL PivotChartMaps.pivot_image"
 
 @[simp] theorem firstPivotChartMap_pivot (φ : Polynomial R →+* S) (q : S) :
@@ -4602,8 +4602,8 @@ run_cmd do
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_DECL PivotChartMaps.carrier_image\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_DECL PivotChartMaps.carrier_image\n") (fun _ => pure ())
   logInfo "CANONICAL_DECL PivotChartMaps.carrier_image"
 
 @[simp] theorem firstPivotChartMap_carrier (φ : Polynomial R →+* S) (q : S)
@@ -4614,8 +4614,8 @@ run_cmd do
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_DECL PivotChartMaps.reverse_carrier_image\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_DECL PivotChartMaps.reverse_carrier_image\n") (fun _ => pure ())
   logInfo "CANONICAL_DECL PivotChartMaps.reverse_carrier_image"
 
 @[simp] theorem firstPivotChartMap_carrier_rev (φ : Polynomial R →+* S) (q : S)
@@ -4624,8 +4624,8 @@ run_cmd do
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_DECL PivotChartMaps.residual_image\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_DECL PivotChartMaps.residual_image\n") (fun _ => pure ())
   logInfo "CANONICAL_DECL PivotChartMaps.residual_image"
 
 @[simp] theorem firstPivotChartMap_residual (φ : Polynomial R →+* S) (q : S)
@@ -4646,8 +4646,8 @@ run_cmd do
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_DECL PivotChartMaps.schur_matrix\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_DECL PivotChartMaps.schur_matrix\n") (fun _ => pure ())
   logInfo "CANONICAL_DECL PivotChartMaps.schur_matrix"
 
 /-- The Schur complement is exactly the smaller independent generic symmetric
@@ -4666,8 +4666,8 @@ theorem firstPivotChartMap_schurMatrix (φ : Polynomial R →+* S) (q : S) :
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_DECL PivotChartMaps.pivot_inverse\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_DECL PivotChartMaps.pivot_inverse\n") (fun _ => pure ())
   logInfo "CANONICAL_DECL PivotChartMaps.pivot_inverse"
 
 /-- The supplied inverse becomes an actual inverse of the pivot entry in the
@@ -4679,8 +4679,8 @@ theorem firstPivotChartMap_inverse (φ : Polynomial R →+* S) (q : S)
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_DECL PivotChartMaps.determinantal_image\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_DECL PivotChartMaps.determinantal_image\n") (fun _ => pure ())
   logInfo "CANONICAL_DECL PivotChartMaps.determinantal_image"
 
 /-- The full determinantal ideal lowers its minor size by one in the actual
@@ -4697,8 +4697,8 @@ theorem determinantalIdeal_map_firstPivotChart
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_DECL PivotChartMaps.residual_profile\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_DECL PivotChartMaps.residual_profile\n") (fun _ => pure ())
   logInfo "CANONICAL_DECL PivotChartMaps.residual_profile"
 
 def residualRankArray (r : RankArray (n + 1)) : RankArray n :=
@@ -4706,8 +4706,8 @@ def residualRankArray (r : RankArray (n + 1)) : RankArray n :=
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_DECL PivotChartMaps.northwest_image\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_DECL PivotChartMaps.northwest_image\n") (fun _ => pure ())
   logInfo "CANONICAL_DECL PivotChartMaps.northwest_image"
 
 /-- Equation (4.1), with every positive northwest bound and both boundary
@@ -4730,8 +4730,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN PivotGenericCharts\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN PivotGenericCharts\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN PivotGenericCharts"
 
 /- Begin source PivotGenericCharts.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -4966,8 +4966,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN CarrierHilbert\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN CarrierHilbert\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN CarrierHilbert"
 
 /- Begin source CarrierHilbert.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -5449,8 +5449,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN DiagonalPrimality\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN DiagonalPrimality\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN DiagonalPrimality"
 
 /- Begin source DiagonalPrimality.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -5590,8 +5590,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN DiagonalRegular\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN DiagonalRegular\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN DiagonalRegular"
 
 /- Begin source DiagonalRegular.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -5676,8 +5676,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN DeterminantalPrimality\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN DeterminantalPrimality\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN DeterminantalPrimality"
 
 /- Begin source DeterminantalPrimality.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -5749,8 +5749,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN NorthwestGroebner\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN NorthwestGroebner\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN NorthwestGroebner"
 
 /- Begin source NorthwestGroebner.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -5995,8 +5995,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN PivotSymbolicContainment\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN PivotSymbolicContainment\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN PivotSymbolicContainment"
 
 /- Begin source PivotSymbolicContainment.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -6115,8 +6115,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN MixedGroebner\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN MixedGroebner\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN MixedGroebner"
 
 /- Begin source MixedGroebner.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -6486,8 +6486,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN OffDiagonalPrimality\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN OffDiagonalPrimality\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN OffDiagonalPrimality"
 
 /- Begin source OffDiagonalPrimality.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -6704,8 +6704,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN NorthwestPrimality\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "CANONICAL_BEGIN NorthwestPrimality\n") (fun _ => pure ())
   logInfo "CANONICAL_BEGIN NorthwestPrimality"
 
 /- Begin source NorthwestPrimality.lean; exact hash recorded in audit/canonical_sources.json -/
@@ -7230,7 +7230,7 @@ run_cmd do
     ("roots", toJson (roots.map index)),
     ("root_axioms", Json.arr rootAxioms),
     ("compiler_runtime_only", toJson (runtimeOnly.map Name.toString))]
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_dependency_graph.json" (Json.compress graph)
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_dependency_graph.json" (Json.compress graph)) (fun _ => pure ())
   logInfo m!"CANONICAL_AUDIT_OK {constants.size} local declarations; {roots.size} verification roots; only propext, Classical.choice, Quot.sound; no authored axioms or unsafe proof dependencies."
 

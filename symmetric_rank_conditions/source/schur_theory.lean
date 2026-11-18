@@ -9,7 +9,7 @@ public import Mathlib.Order.Interval.Finset.Nat
 
 -- Generated verification output directories.
 run_cmd Lean.Elab.Command.liftIO do
-  IO.FS.createDirAll ".lake/reports/audit"
+  tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
 
 
 @[expose] public section
@@ -1440,7 +1440,7 @@ run_cmd do
     ("roots", toJson (roots.map index)),
     ("root_axioms", Json.arr rootAxioms),
     ("compiler_runtime_only", toJson (runtimeOnly.map Name.toString))]
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/schur_dependency_graph.json" (Json.compress graph)
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/schur_dependency_graph.json" (Json.compress graph)) (fun _ => pure ())
   logInfo m!"SCHUR_AUDIT_OK {constants.size} local declarations; {roots.size} verification roots; only propext, Classical.choice, Quot.sound; no authored axioms or unsafe proof dependencies."
 

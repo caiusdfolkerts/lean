@@ -5,7 +5,7 @@ public import Mathlib.RingTheory.IntegralClosure.IntegrallyClosed
 
 -- Generated verification output directories.
 run_cmd Lean.Elab.Command.liftIO do
-  IO.FS.createDirAll ".lake/reports/audit"
+  tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
 
 @[expose] public section
 
@@ -15,14 +15,14 @@ run_cmd Lean.Elab.Command.liftIO do
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "SupplementaryVerification IMPORTS_LOADED\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "SupplementaryVerification IMPORTS_LOADED\n") (fun _ => pure ())
   logInfo "SupplementaryVerification IMPORTS_LOADED"
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "SupplementaryVerification BEGIN OrderTransfer\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "SupplementaryVerification BEGIN OrderTransfer\n") (fun _ => pure ())
   logInfo "SupplementaryVerification BEGIN OrderTransfer"
 
 /- Begin OrderTransfer.lean -/
@@ -343,8 +343,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "SupplementaryVerification BEGIN TransposeFixedLocus\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "SupplementaryVerification BEGIN TransposeFixedLocus\n") (fun _ => pure ())
   logInfo "SupplementaryVerification BEGIN TransposeFixedLocus"
 
 /- Begin TransposeFixedLocus.lean -/
@@ -634,8 +634,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "SupplementaryVerification BEGIN SchurReesNonnormal\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "SupplementaryVerification BEGIN SchurReesNonnormal\n") (fun _ => pure ())
   logInfo "SupplementaryVerification BEGIN SchurReesNonnormal"
 
 /- Begin SchurReesNonnormal.lean -/
@@ -846,8 +846,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "SupplementaryVerification BEGIN SchurMathlibCorrespondence\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "SupplementaryVerification BEGIN SchurMathlibCorrespondence\n") (fun _ => pure ())
   logInfo "SupplementaryVerification BEGIN SchurMathlibCorrespondence"
 
 /- Begin SchurMathlibCorrespondence.lean -/
@@ -1106,7 +1106,7 @@ run_cmd do
     ("roots", toJson (roots.map index)),
     ("root_axioms", Json.arr rootAxioms),
     ("compiler_runtime_only", toJson (runtimeOnly.map Name.toString))]
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/supplementary_dependency_graph.json" (Json.compress graph)
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/supplementary_dependency_graph.json" (Json.compress graph)) (fun _ => pure ())
   logInfo m!"SUPPLEMENTARY_VERIFICATION_AUDIT_OK {constants.size} local declarations; {roots.size} verification roots; only propext, Classical.choice, Quot.sound; no authored axioms or unsafe proof dependencies."
 

@@ -5,7 +5,7 @@ public import ideal_real_weight
 
 -- Generated verification output directories.
 run_cmd Lean.Elab.Command.liftIO do
-  IO.FS.createDirAll ".lake/reports/audit"
+  tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
 
 
 @[expose] public section
@@ -16,14 +16,14 @@ run_cmd Lean.Elab.Command.liftIO do
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "GramFoundation IMPORTS_LOADED\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "GramFoundation IMPORTS_LOADED\n") (fun _ => pure ())
   logInfo "GramFoundation IMPORTS_LOADED"
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "GramFoundation BEGIN GramMinors\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "GramFoundation BEGIN GramMinors\n") (fun _ => pure ())
   logInfo "GramFoundation BEGIN GramMinors"
 
 /- Begin GramMinors.lean -/
@@ -276,8 +276,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "GramFoundation BEGIN GramWeights\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "GramFoundation BEGIN GramWeights\n") (fun _ => pure ())
   logInfo "GramFoundation BEGIN GramWeights"
 
 /- Begin GramWeights.lean -/
@@ -470,8 +470,8 @@ end
 
 open Lean Elab Command in
 run_cmd do
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "GramFoundation BEGIN MonicWeightFamilies\n"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/canonical_progress.txt" "GramFoundation BEGIN MonicWeightFamilies\n") (fun _ => pure ())
   logInfo "GramFoundation BEGIN MonicWeightFamilies"
 
 /- Begin MonicWeightFamilies.lean -/
@@ -674,7 +674,7 @@ run_cmd do
     ("roots", toJson (roots.map index)),
     ("root_axioms", Json.arr rootAxioms),
     ("compiler_runtime_only", toJson (runtimeOnly.map Name.toString))]
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/gram_foundation_dependency_graph.json" (Json.compress graph)
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/gram_foundation_dependency_graph.json" (Json.compress graph)) (fun _ => pure ())
   logInfo m!"GRAM_FOUNDATION_AUDIT_OK {constants.size} local declarations; {roots.size} verification roots; only propext, Classical.choice, Quot.sound; no authored axioms or unsafe proof dependencies."
 

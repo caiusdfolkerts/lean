@@ -1,0 +1,65 @@
+version: v0.4
+project:
+  name: Gröbner bases for symmetric rank conditions
+  description: >-
+    Every realizable symmetric northwest rank profile defines a prime ideal
+    over every coefficient field, with the prescribed folded-antidiagonal
+    initial ideal and the actual rank-locus vanishing ideal over algebraically
+    closed fields. For every symmetric nonnegative rank array and finite valid
+    list of symbolic powers of full symmetric determinantal ideals, the
+    prescribed minors and exact-score minor products give a Gröbner basis.
+    Its integral monic normalization yields a fixed standard-monomial basis
+    after arbitrary commutative base change. Selected applications include
+    domain and geometric-fiber consequences and arbitrary base change of finite
+    compatible sums and intersections with free standard-monomial quotients.
+    The actual single symbolic Rees algebra has the displayed finite SAGBI basis.
+  authors: [Caius Folkerts]
+  responsible_maintainers: [Caius Folkerts]
+  license: Apache-2.0
+classification:
+  arxiv: [math.AG, math.CO]
+  msc2020: [13P10, 14M12, 13C40]
+sources:
+  - title: Gröbner bases for symmetric rank conditions
+    authors: [Caius Folkerts]
+    type: paper
+    relationship: formalizes
+    location: paper.pdf
+    note: Theorems 1.1–1.2, pages 2–3. Proposition4.1 and Corollaries6.1/6.3/7.1 are also selected; other later applications remain unselected.
+related_formalizations:
+  - title: caiusdfolkerts/research symmetric_rank_conditions
+    relationship: other
+    id: https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/symmetric_rank_conditions
+    note: Complete substantive project copied at the pinned baseline; original proof and licence notices retained.
+automation:
+  methods:
+    - method: agent
+      tool_setup: >-
+        The supplied paper credits GPT-6 Astra, GPT-5.6 Sol, and Kimi K3
+        assistance in developing its proofs. The precise historical roles
+        have not been independently reconstructed.
+    - method: agent
+      tool_setup: >-
+        OpenAI Codex prepared the independent Challenge, Solution import,
+        Comparator configuration, declaration map, and this metadata by reading
+        the supplied paper, README, and source declarations.
+review:
+  status: unchecked
+  notes: >-
+    The preceding 18-claim independent Challenge elaborated under pinned
+    Lean4.35.0. The current proof-field port factors the original grevlex and
+    coefficient-algebra proof bodies into selected supporting propositions and
+    awaits elaboration. No full Solution, Comparator, NanoDa or mathematical
+    peer review result is claimed.
+fidelity:
+  divergences: >-
+    Theorem statements preserve the exact source definitions and quantifiers.
+    The oversized combinatorics aggregate is split at a fully closed original
+    source boundary into two public modules; its old import path is retained.
+    Tactic-generated grevlex instance proofs and coefficient-subalgebra closure
+    proofs are named as selected supporting propositions in both the original
+    copied source and independent interface. Carriers, orders and mathematical
+    laws are retained.
+limitations:
+  - This preparation currently compares the principal algebraic theorems 1.1 and 1.2 and Corollaries6.1/6.3/7.1; substantial other application corollaries are not yet included in the comparison and must be added for the requested complete paper entry.
+  - No fresh compilation or comparison has run. The Challenge includes the exact custom grevlex type and order construction, whose elaboration requires mechanical validation.

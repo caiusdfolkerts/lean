@@ -2484,12 +2484,17 @@ open Finsupp
 
 variable [LinearOrder α]
 
+/-- Injectivity of the literal degree/reverse-colex key; separately compared. -/
+theorem degreeColexKey_injective : Function.Injective
+    (fun f : DegRevLex (α →₀ ℕ) =>
+      toLex ((ofDegRevLex f).degree, OrderDual.toDual (toColex (ofDegRevLex f)))) :=
+  fun f g h => by simpa using congr_arg (fun p => ofColex (OrderDual.ofDual (ofLex p).2)) h
 /-- The graded reverse lexicographic order on `α →₀ ℕ`: compare total degrees, then compare
 monomials of equal degree by the reverse of the colexicographic order. -/
 noncomputable instance : LinearOrder (DegRevLex (α →₀ ℕ)) :=
   LinearOrder.lift'
-    (fun f ↦ toLex ((ofDegRevLex f).degree, OrderDual.toDual (toColex (ofDegRevLex f))))
-    fun f g h ↦ by simpa using congr_arg (fun p ↦ ofColex (OrderDual.ofDual (ofLex p).2)) h
+    (fun f => toLex ((ofDegRevLex f).degree, OrderDual.toDual (toColex (ofDegRevLex f))))
+    degreeColexKey_injective
 
 /-- The graded reverse lexicographic order compares degrees first, then reverses the
 colexicographic order. -/
@@ -2517,7 +2522,8 @@ theorem lt_iff_exists {a b : DegRevLex (α →₀ ℕ)} :
   refine or_congr_right (and_congr_right fun _ ↦ exists_congr fun i ↦ and_congr_left fun _ ↦ ?_)
   exact forall_congr' fun j ↦ imp_congr_right fun _ ↦ eq_comm
 
-instance : IsOrderedCancelAddMonoid (DegRevLex (α →₀ ℕ)) where
+/-- The ordinary ordered-cancellation laws for this exact grevlex order. -/
+theorem orderedCancelAddMonoid_laws : IsOrderedCancelAddMonoid (DegRevLex (α →₀ ℕ)) where
   le_of_add_le_add_left a b c h := by
     rw [le_iff] at h ⊢
     simpa only [ofDegRevLex_add, map_add, add_lt_add_iff_left, add_right_inj, toColex_add,
@@ -2526,6 +2532,8 @@ instance : IsOrderedCancelAddMonoid (DegRevLex (α →₀ ℕ)) where
     rw [le_iff] at h ⊢
     simpa only [ofDegRevLex_add, map_add, add_lt_add_iff_right, add_left_inj, toColex_add,
       add_le_add_iff_right] using h
+
+instance : IsOrderedCancelAddMonoid (DegRevLex (α →₀ ℕ)) := orderedCancelAddMonoid_laws
 
 theorem single_strictAnti : StrictAnti (fun a : α ↦ toDegRevLex (single a 1)) := fun _ _ h ↦
   lt_iff.2 (Or.inr ⟨by simp, Colex.single_lt_iff.2 h⟩)
@@ -2550,7 +2558,7 @@ theorem monotone_degree :
 
 /-- The graded reverse lexicographic order is well-founded when the indices have no infinite
 ascending chains, for instance when there are finitely many of them. -/
-instance wellFoundedLT [WellFoundedGT α] : WellFoundedLT (DegRevLex (α →₀ ℕ)) := by
+theorem wellFoundedLT_law [WellFoundedGT α] : WellFoundedLT (DegRevLex (α →₀ ℕ)) := by
   have hfib (n : ℕ) : ((fun x : DegRevLex (α →₀ ℕ) ↦ (ofDegRevLex x).degree) ⁻¹' {n}).WellFoundedOn
       (Function.onFun (· < ·) fun x ↦ OrderDual.toDual (toColex (ofDegRevLex x))) := by
     refine Set.wellFoundedOn_image.1 (((wellFoundedOn_setOf_degree_le_toColex_gt n).subset ?_))
@@ -2560,6 +2568,9 @@ instance wellFoundedLT [WellFoundedGT α] : WellFoundedLT (DegRevLex (α →₀ 
     fun a b (h : a < b) ↦ Prod.lex_def.2 <| by
       simpa only [OrderDual.toDual_lt_toDual] using lt_iff.1 h
 
+instance wellFoundedLT [WellFoundedGT α] : WellFoundedLT (DegRevLex (α →₀ ℕ)) :=
+  wellFoundedLT_law
+
 end DegRevLex
 
 namespace MonomialOrder
@@ -2568,38 +2579,39 @@ open Finsupp DegRevLex
 
 variable {σ : Type*} [LinearOrder σ] [WellFoundedGT σ]
 
-/-- The graded reverse lexicographic order on `σ →₀ ℕ`, as a `MonomialOrder`. Variables are
-ordered antitonely, `X i ≤ X j ↔ j ≤ i`, so on `Fin n` the variable `X 0` is the largest. -/
-noncomputable def degRevLex : MonomialOrder σ where
-  syn := DegRevLex (σ →₀ ℕ)
-  toSyn := { toEquiv := toDegRevLex, map_add' := toDegRevLex_add }
-  toSyn_monotone a b h := by
-    simp only [AddEquiv.coe_mk, DegRevLex.le_iff, ofDegRevLex_toDegRevLex]
-    obtain ⟨c, rfl⟩ := exists_add_of_le h
-    rcases eq_or_ne c 0 with rfl | hc
-    · simp
-    · exact Or.inl (by simpa [map_add, Nat.pos_iff_ne_zero, degree_eq_zero_iff] using hc)
+/-- Coordinatewise exponent domination is monotone for the exact grevlex map. -/
+theorem toDegRevLex_monotone : Monotone (fun a : σ →₀ ℕ => toDegRevLex a) := by
+  intro a b h
+  simp only [DegRevLex.le_iff, ofDegRevLex_toDegRevLex]
+  obtain ⟨c, rfl⟩ := exists_add_of_le h
+  rcases eq_or_ne c 0 with rfl | hc
+  · simp
+  · exact Or.inl (by simpa [map_add, Nat.pos_iff_ne_zero, degree_eq_zero_iff] using hc)
 
 open scoped _root_.MonomialOrder
 
 theorem degRevLex_le_iff {a b : σ →₀ ℕ} :
-    a ≼[degRevLex] b ↔ toDegRevLex a ≤ toDegRevLex b :=
+  a ≼[degRevLex] b ↔ toDegRevLex a ≤ toDegRevLex b :=
   Iff.rfl
 
 theorem degRevLex_lt_iff {a b : σ →₀ ℕ} :
-    a ≺[degRevLex] b ↔ toDegRevLex a < toDegRevLex b :=
+  a ≺[degRevLex] b ↔ toDegRevLex a < toDegRevLex b :=
   Iff.rfl
 
 @[simp]
 theorem degRevLex_single_le_iff {a b : σ} :
-    single a 1 ≼[degRevLex] single b 1 ↔ b ≤ a := by
+  single a 1 ≼[degRevLex] single b 1 ↔ b ≤ a := by
   rw [degRevLex_le_iff, DegRevLex.single_le_iff]
 
 @[simp]
 theorem degRevLex_single_lt_iff {a b : σ} :
-    single a 1 ≺[degRevLex] single b 1 ↔ b < a := by
+  single a 1 ≺[degRevLex] single b 1 ↔ b < a := by
   rw [degRevLex_lt_iff, DegRevLex.single_lt_iff]
 
+noncomputable def degRevLex : MonomialOrder σ where
+  syn := DegRevLex (σ →₀ ℕ)
+  toSyn := { toEquiv := toDegRevLex, map_add' := toDegRevLex_add }
+  toSyn_monotone := toDegRevLex_monotone
 end MonomialOrder
 
 section Examples

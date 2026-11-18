@@ -5,7 +5,7 @@ public import Lean.Util.CollectAxioms
 
 -- Generated verification output directories.
 run_cmd Lean.Elab.Command.liftIO do
-  IO.FS.createDirAll ".lake/reports/audit"
+  tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
 
 
 /-!
@@ -113,8 +113,8 @@ run_cmd do
     ("roots", toJson (roots.map index)),
     ("root_axioms", Json.arr rootAxioms),
     ("compiler_runtime_only", toJson (runtime.map Name.toString))]
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/reader_dependency_graph.json" (Json.compress graph)
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/reader_dependency_graph.json" (Json.compress graph)) (fun _ => pure ())
   logInfo m!"DEPENDENCY_GRAPH {Json.compress graph}"
   logInfo m!"READER_DEPENDENCY_AUDIT_OK {constants.size} imported declarations; actual reader proof values; only propext, Classical.choice, Quot.sound; no environment mutation or new mathematical assertions."
 
