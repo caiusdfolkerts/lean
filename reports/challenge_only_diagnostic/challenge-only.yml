@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       cases:
-        description: Optional comma-separated case IDs; blank runs the six requested cases
+        description: Optional comma-separated case IDs; blank runs the revision03 corrected cases
         default: ""
         type: string
 permissions:
@@ -96,7 +96,7 @@ jobs:
             --pipeline "$GITHUB_WORKSPACE/pipeline" \
             --work "$RUNNER_TEMP/challenge-work" \
             --output "$RUNNER_TEMP/challenge-evidence" \
-            --memory-mib 4096 --setup-timeout 2400 --compile-timeout 2400
+            --memory-mib 8192 --setup-timeout 2400 --compile-timeout 2400
       - name: Record incomplete attempts honestly
         if: always()
         env:

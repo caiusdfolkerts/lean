@@ -492,6 +492,9 @@ def graded : Submodule K (Family (P := P) K) where
 /-- The submodule of families that are coherent, degree preserving and linear over every universal rank parameter. -/
 def comparisonModule : Submodule K (Family (P := P) K) :=
   coherent K ⊓ (parameterLinear K ⊓ graded K)
+/-- The additive inverse is the one forced by the actual module over the coefficient ring. -/
+instance comparisonModuleAddCommGroup : AddCommGroup (comparisonModule (P := P) K) :=
+  Module.addCommMonoidToAddCommGroup K
 /-- The scalar of a comparison family, read as the constant coefficient of its value on one at the minimal face. -/
 def scalar : comparisonModule (P := P) K →ₗ[K] K where
   toFun F := constantCoefficient (F.val ⊥ 1)

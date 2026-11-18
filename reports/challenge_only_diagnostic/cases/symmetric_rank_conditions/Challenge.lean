@@ -174,13 +174,13 @@ open Finsupp
 
 variable [LinearOrder α]
 
-/-- The graded reverse lexicographic order on `α →₀ ℕ`: compare total degrees, then compare
-monomials of equal degree by the reverse of the colexicographic order. -/
 /-- Injectivity of the literal degree/reverse-colex key; separately compared. -/
 theorem degreeColexKey_injective : Function.Injective
     (fun f : DegRevLex (α →₀ ℕ) =>
       toLex ((ofDegRevLex f).degree, OrderDual.toDual (toColex (ofDegRevLex f)))) :=
   fun f g h => by simpa using congr_arg (fun p => ofColex (OrderDual.ofDual (ofLex p).2)) h
+/-- The graded reverse lexicographic order on `α →₀ ℕ`: compare total degrees, then compare
+monomials of equal degree by the reverse of the colexicographic order. -/
 noncomputable instance : LinearOrder (DegRevLex (α →₀ ℕ)) :=
   LinearOrder.lift'
     (fun f => toLex ((ofDegRevLex f).degree, OrderDual.toDual (toColex (ofDegRevLex f))))

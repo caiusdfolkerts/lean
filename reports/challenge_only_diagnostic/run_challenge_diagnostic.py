@@ -147,7 +147,7 @@ def execute(o,case,folder,manifest):
  except Exception as error:d.finish('diagnostic-blocked',error);return 2
 
 def main():
- p=argparse.ArgumentParser(description=__doc__);p.add_argument('command',choices=['inspect','list','check-inputs','run']);p.add_argument('--cases',type=Path,default=Path(__file__).with_name('cases.json'));p.add_argument('--case');p.add_argument('--pipeline',type=Path);p.add_argument('--work',type=Path);p.add_argument('--output',type=Path);p.add_argument('--memory-mib',type=int,default=4096);p.add_argument('--setup-timeout',type=int,default=2400);p.add_argument('--compile-timeout',type=int,default=2400);o=p.parse_args();data=json.loads(o.cases.read_text())
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('command',choices=['inspect','list','check-inputs','run']);p.add_argument('--cases',type=Path,default=Path(__file__).with_name('cases.json'));p.add_argument('--case');p.add_argument('--pipeline',type=Path);p.add_argument('--work',type=Path);p.add_argument('--output',type=Path);p.add_argument('--memory-mib',type=int,default=8192);p.add_argument('--setup-timeout',type=int,default=2400);p.add_argument('--compile-timeout',type=int,default=2400);o=p.parse_args();data=json.loads(o.cases.read_text())
  if o.command=='list':
   raw=os.getenv('DIAGNOSTIC_CASE_FILTER','').strip();selected=raw.split(',') if raw else data.get('default_case_ids',[x['id'] for x in data['cases']])
   for name in selected:load_case(o.cases,name)

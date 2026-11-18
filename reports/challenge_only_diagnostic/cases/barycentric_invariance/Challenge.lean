@@ -10,10 +10,8 @@ public import Mathlib.Data.Fintype.Card
 public import Mathlib.Data.Nat.Factorial.Basic
 public import Mathlib.Order.Atoms.Finite
 public import Lean.Elab.Tactic.Omega
-
 /-!
 # Universal parameter modules for actual face rings
-
 The genuine face ring and its barycentric Stanley--Reisner quotient admit
 coherent graded comparisons over universal rank parameters. The selected
 statements include all relative restriction kernels and integral coefficient
@@ -21,20 +19,17 @@ base change, the uniform factorial-unit criterion for equivariance, and the
 negative simplex obstruction even without grading or coherence. The canonical
 associated-graded map and derived-Tor conclusions remain separate entries.
 -/
-
 @[expose] public section
 noncomputable section
 set_option autoImplicit false
 set_option maxRecDepth 4000
 set_option maxHeartbeats 600000
 open scoped BigOperators
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
 open Classical Finset
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
-
 /-- The paper's definition of a finite simplicial poset. -/
 def IsSimplicialPoset (P : Type*) [PartialOrder P] [OrderBot P] : Prop :=
   ∀ p : P, ∃ n : ℕ, Nonempty (Set.Iic p ≃o Finset (Fin n))
@@ -47,17 +42,18 @@ theorem faceVertices_mono : Monotone (faceVertices : P → Finset P) := by sorry
 theorem existsUnique_subface (hs : IsSimplicialPoset P) (p : P) (s : Finset P)
     (hsu : s ⊆ faceVertices p) :
     ∃! x : Set.Iic p, faceVertices x.val = s := by sorry
+/-- Membership in the actual vertex set is exactly being an atom below the face. -/
+@[simp] theorem mem_faceVertices {p a : P} :
+    a ∈ faceVertices p ↔ IsAtom a ∧ a ≤ p := by sorry
 /-- The rank is the number of vertices in a Boolean face. -/
 def faceRank (p : P) : ℕ := (faceVertices p).card
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
 universe u v w
 variable (K : Type u) [CommRing K] (P : Type v) [Preorder P]
-
 /-- A diagram of coefficient modules with specified face restrictions and their identity and composition laws. -/
 structure ModuleDiagram where
   obj : P → Type w
@@ -70,14 +66,12 @@ structure ModuleDiagram where
 attribute [instance] ModuleDiagram.addCommGroup ModuleDiagram.module
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
 universe u v w
 variable (K : Type u) [CommRing K] (P : Type v) [Preorder P]
 variable {K P}
-
 /-- An objectwise linear equivalence commuting with every face restriction. -/
 structure CoherentEquiv (D E : ModuleDiagram K P) where
   component : ∀ p, D.obj p ≃ₗ[K] E.obj p
@@ -85,7 +79,6 @@ structure CoherentEquiv (D E : ModuleDiagram K P) where
     E.res h (component p x) = component q (D.res h x)
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal.CoherentEquiv
 section
 set_option backward.isDefEq.respectTransparency false
@@ -93,7 +86,6 @@ universe u v w
 variable (K : Type u) [CommRing K] (P : Type v) [Preorder P]
 variable {K P}
 variable {D E F : ModuleDiagram K P}
-
 /-- Literal retained-source def; original position theorem13.lean:384. -/
 def trans (e : CoherentEquiv D E) (f : CoherentEquiv E F) : CoherentEquiv D F where
   component p := (e.component p).trans (f.component p)
@@ -103,14 +95,12 @@ def trans (e : CoherentEquiv D E) (f : CoherentEquiv E F) : CoherentEquiv D F wh
     rw [f.naturality, e.naturality]
 end
 end FourPapers.Universal.CoherentEquiv
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
 open Classical MvPolynomial
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
 variable (K : Type*) [CommRing K]
-
 /-- The actual atoms of the poset lying below the specified face. -/
 abbrev FaceVertex (p : P) := {a : P // IsAtom a ∧ a ≤ p}
 /-- Literal retained-source instance; original position theorem13.lean:492. -/
@@ -144,13 +134,11 @@ def polynomialParameter (p : P) (i : ℕ) : PolynomialStalk K p :=
   MvPolynomial.esymm (FaceVertex p) K i
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
 open Classical MvPolynomial Finset
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
-
 /-- The nonminimal faces of the poset, as a subtype of its elements. -/
 abbrev NonzeroFace (P : Type*) [Preorder P] [OrderBot P] := {p : P // p ≠ ⊥}
 /-- Literal retained-source instance; original position theorem13.lean:631. -/
@@ -168,14 +156,12 @@ def minimalCommonUppers (p q : P) : Finset P :=
   univ.filter (IsMinimalCommonUpper p q)
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
 open Classical MvPolynomial Finset
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
 variable (K : Type*) [CommRing K]
-
 /-- Literal retained-source abbrev; original position theorem13.lean:694. -/
 abbrev FacePolynomial := MvPolynomial (NonzeroFace P) K
 /-- The bottom-face symbol is the scalar one, as in the original definition. -/
@@ -223,26 +209,22 @@ def barycentricParameterAction (d : ℕ) :
   MvPolynomial.aeval fun i => barycentricRankParameter K (i.val + 1)
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
 variable {V : Type*} [Fintype V]
-
 /-- Literal retained-source def; original position theorem13.lean:778. -/
 def vertexDegree (a : V → ℕ) : ℕ := ∑ v, a v
 /-- Literal retained-source def; original position theorem13.lean:782. -/
 def rankWeight (d r : ℕ) : ℤ := (r : ℤ) * (2 * (d : ℤ) - r)
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
 open Classical Finset MvPolynomial
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
 variable (K : Type*) [CommRing K]
-
 /-- The vertices of `q` that occur in the ambient face `p`. -/
 def stalkVertexSet (p q : P) : Finset (FaceVertex p) :=
   univ.filter fun a => a.val ≤ q
@@ -271,13 +253,11 @@ def faceRingEvaluation (hs : IsSimplicialPoset P) (r : P) :
     exact faceEvaluation_relation K hs r hf)
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
 open Classical
 variable {V K : Type*} [CommRing K]
-
 /-- An allowed collection of exponent vectors is closed under divisibility. -/
 def IsDivisorClosed (P : (V →₀ ℕ) → Prop) : Prop :=
   ∀ ⦃a b⦄, a ≤ b → P b → P a
@@ -312,13 +292,11 @@ def standardMonomialBasis (P : (V →₀ ℕ) → Prop) (hP : IsDivisorClosed P)
   (Finsupp.basisSingleOne).map (standardMonomialEquiv P hP).symm
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
 open Classical Finset
 variable {V K : Type*} [Fintype V] [DecidableEq V] [CommRing K]
-
 /-- Nonempty faces of the Boolean simplex on `V`. -/
 abbrev BooleanFace (V : Type*) [DecidableEq V] := {F : Finset V // F.Nonempty}
 /-- Rank minus one, to index the rank parameters by `Fin (card V)`. -/
@@ -354,13 +332,11 @@ def colorSum (c : Fin (Fintype.card V)) : BooleanBarycentricRing V K :=
   ∑ F ∈ facesOfColor c, faceVariable F
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
 open Classical Finset
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
-
 /-- Literal retained-source def; original position theorem13.lean:1961. -/
 def subfaceOfVertexSet (hs : IsSimplicialPoset P) (p : P)
     (s : Finset (FaceVertex p)) : Set.Iic p :=
@@ -388,14 +364,12 @@ def booleanFaceInclusion (hs : IsSimplicialPoset P) (p : P) :
     simpa only [stalkVertexSet_subfaceOfVertexSet] using hv
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
 open Classical MvPolynomial Finset
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
 variable (K : Type*) [CommRing K]
-
 /-- Exponent vectors whose nonzero support is a chain of nonminimal faces. -/
 def BarycentricAllowed (a : NonzeroFace P →₀ ℕ) : Prop :=
   ∀ p ∈ a.support, ∀ q ∈ a.support, p.val ≤ q.val ∨ q.val ≤ p.val
@@ -408,25 +382,21 @@ theorem barycentricIdeal_eq_forbiddenIdeal :
       forbiddenIdeal (K := K) (BarycentricAllowed (P := P)) := by sorry
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
 open Classical Finset
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
-
 /-- Literal retained-source theorem; original position theorem13.lean:2205. -/
 theorem standardExponent_map_booleanFaceInclusion (hs : IsSimplicialPoset P)
     (p : P) {a : BooleanFace (FaceVertex p) →₀ ℕ} (ha : IsChainExponent a) :
     BarycentricAllowed (a.mapDomain (booleanFaceInclusion hs p)) := by sorry
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
 variable {V W K : Type*} [CommRing K]
-
 /-- Literal retained-source theorem; original position theorem13.lean:2279. -/
 theorem killCompl_mem_forbiddenIdeal
     (e : V ↪ W) (P : (W →₀ ℕ) → Prop) (Q : (V →₀ ℕ) → Prop)
@@ -450,7 +420,6 @@ def monomialRestriction
           (killCompl_mem_forbiddenIdeal e P Q hP hQ allowed hf))
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
@@ -458,7 +427,6 @@ open Classical Finset
 variable {U V W K : Type*}
   [Fintype U] [Fintype V] [Fintype W]
   [DecidableEq U] [DecidableEq V] [DecidableEq W] [CommRing K]
-
 /-- Literal retained-source def; original position theorem13.lean:2350. -/
 def booleanFaceEmbedding (e : V ↪ W) : BooleanFace V ↪ BooleanFace W where
   toFun F := ⟨F.val.map e, F.property.map (f := e)⟩
@@ -486,14 +454,12 @@ def booleanRankParameter (r : ℕ) : BooleanBarycentricRing V K :=
   ∑ F : BooleanFace V, if F.val.card = r then faceVariable F else 0
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
 open Classical Finset
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
 variable (K : Type*) [CommRing K]
-
 /-- Literal retained-source theorem; original position theorem13.lean:2692. -/
 @[simp] theorem faceVertexInclusion_refl (p : P) :
     faceVertexInclusion (le_refl p) = Function.Embedding.refl (FaceVertex p) := by sorry
@@ -520,13 +486,11 @@ abbrev barycentricDiagram : ModuleDiagram K P where
     simpa only [AlgHom.comp_apply, faceVertexInclusion_trans] using h
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
 open Classical Finset MvPolynomial
 variable {V K : Type*} [Fintype V] [LinearOrder V] [CommRing K]
-
 /-- Literal retained-source def; original position theorem13.lean:7499. -/
 def polynomialDegreePiece (n : ℕ) : Submodule K (MvPolynomial V K) where
   carrier := {f | ∀ a : V →₀ ℕ, vertexDegree (fun v => a v) ≠ n → f.coeff a = 0}
@@ -539,14 +503,12 @@ def polynomialDegreePiece (n : ℕ) : Submodule K (MvPolynomial V K) where
     rw [MvPolynomial.coeff_smul, hf a ha, smul_zero]
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
 open Classical
 variable {V W K L : Type*} [CommRing K] [CommRing L]
 variable (P : (V →₀ ℕ) → Prop) (hP : IsDivisorClosed P) (h : K →+* L)
-
 /-- Apply the coefficient homomorphism to the actual standard coefficients. -/
 def monomialCoefficientMap :
     MonomialQuotient (K := K) P →ₛₗ[h] MonomialQuotient (K := L) P :=
@@ -574,14 +536,12 @@ def monomialCoefficientRingHom :
       map_mul (MvPolynomial.map h), map_mul]
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
 open Classical
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
 variable (K : Type*) [CommRing K] (hs : IsSimplicialPoset P)
-
 /-- Literal retained-source def; original position theorem13.lean:8131. -/
 def barycentricPresentationEquiv :
     BarycentricRing (P := P) K ≃ₐ[K]
@@ -596,7 +556,6 @@ def barycentricRingEvaluation (p : P) :
       (barycentricPresentationEquiv K).toAlgHom
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
@@ -604,7 +563,6 @@ open Classical MvPolynomial
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
 variable {K L : Type*} [CommRing K] [CommRing L]
 variable (hs : IsSimplicialPoset P) (h : K →+* L)
-
 /-- Literal retained-source theorem; original position theorem13.lean:9174. -/
 theorem map_faceRelation {f : FacePolynomial (P := P) K} (hf : f ∈ faceRelations K hs) :
     MvPolynomial.map h f ∈ faceRelations L hs := by sorry
@@ -621,14 +579,12 @@ def originalBarycentricCoefficientChange : BarycentricRing (P := P) K →+* Bary
       (barycentricPresentationEquiv K).toRingHom)
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
 open Classical Finset MvPolynomial
 variable {I V K M N : Type*} [CommRing K]
   [AddCommGroup M] [Module K M] [AddCommGroup N] [Module K N]
-
 /-- Literal retained-source def; original position theorem13.lean:9287. -/
 def basisOrdinaryDegreePiece (b : Module.Basis I K M) (degree : I → ℕ) (n : ℕ) : Submodule K M where
   carrier := {x | ∀ i, degree i ≠ n → b.repr x i = 0}
@@ -637,7 +593,6 @@ def basisOrdinaryDegreePiece (b : Module.Basis I K M) (degree : I → ℕ) (n : 
   smul_mem' := by intro c x hx i hi; simp only [map_smul, Finsupp.smul_apply, hx i hi, smul_zero]
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
@@ -646,7 +601,6 @@ variable {I V K M N : Type*} [CommRing K]
   [AddCommGroup M] [Module K M] [AddCommGroup N] [Module K N]
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
 variable (K) (hs : IsSimplicialPoset P)
-
 /-- The conventional degree piece is the image of the actual homogeneous polynomials in the original presentation. -/
 def usualFaceDegreePiece (n : ℕ) : Submodule K (FaceRing K hs) :=
   (weightedHomogeneousSubmodule K (fun q : NonzeroFace P => faceRank q.val) n).map
@@ -657,13 +611,11 @@ def usualBarycentricDegreePiece (n : ℕ) : Submodule K (BarycentricRing (P := P
     (Ideal.Quotient.mkₐ K (barycentricIdeal (P := P) K)).toLinearMap
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
 open Classical Finset MvPolynomial
 variable {I V K M : Type*} [CommRing K] [AddCommGroup M] [Module K M]
-
 /-- Literal retained-source def; original position theorem13.lean:9660. -/
 def presentationWeightLevel (w : (V →₀ ℕ) → ℤ) (n : ℤ) : Submodule K (MvPolynomial V K) where
   carrier := {f | ∀ a, n ≤ w a → f.coeff a = 0}
@@ -672,7 +624,6 @@ def presentationWeightLevel (w : (V →₀ ℕ) → ℤ) (n : ℤ) : Submodule K
   smul_mem' := by intro c f hf a ha; simp only [coeff_smul, hf a ha, smul_zero]
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
@@ -680,7 +631,6 @@ open Classical Finset MvPolynomial
 variable {I V K M : Type*} [CommRing K] [AddCommGroup M] [Module K M]
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
 variable (K) (hs : IsSimplicialPoset P)
-
 /-- Literal retained-source def; original position theorem13.lean:9701. -/
 def originalPolynomialWeight (d : ℕ) (a : NonzeroFace P →₀ ℕ) : ℤ :=
   a.sum (fun q n => (n : ℤ) * rankWeight d (faceRank q.val))
@@ -694,13 +644,11 @@ def usualBarycentricWeightLevel (d : ℕ) (n : ℤ) : Submodule K (BarycentricRi
     (Ideal.Quotient.mkₐ K (barycentricIdeal (P := P) K)).toLinearMap
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
 open Classical Finset MvPolynomial
 variable {V C : Type*} [Fintype V] [Fintype C]
-
 /-- A downward-closed simplicial complex with a vertex coloring injective on each face. -/
 structure ProperlyColoredComplex (V C : Type*) where
   face : Finset V → Prop
@@ -709,26 +657,22 @@ structure ProperlyColoredComplex (V C : Type*) where
   proper : ∀ s, face s → Set.InjOn color (s : Set V)
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal.ProperlyColoredComplex
 section
 set_option backward.isDefEq.respectTransparency false
 open Classical Finset MvPolynomial
 variable {V C : Type*} [Fintype V] [Fintype C]
 variable (D : ProperlyColoredComplex V C)
-
 /-- Literal retained-source def; original position theorem13.lean:10763. -/
 def allowed (a : V →₀ ℕ) : Prop := D.face a.support
 end
 end FourPapers.Universal.ProperlyColoredComplex
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 open Classical Finset MvPolynomial
 variable {V W U K : Type*} [Fintype V] [Fintype W] [Fintype U] [CommRing K]
-
 /-- Literal retained-source def; original position theorem13.lean:16746. -/
 def booleanVertexRelabelEquiv (e : V ≃ W) :
     BooleanBarycentricRing V K ≃ₐ[K] BooleanBarycentricRing W K :=
@@ -757,14 +701,12 @@ def booleanOrdinaryDegree [DecidableEq V] (a : BooleanFace V →₀ ℕ) : ℕ :
   a.sum (fun F n => n * F.val.card)
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 open Classical Finset MvPolynomial
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
-
 /-- Literal retained-source def; original position theorem13.lean:16864. -/
 def faceVertexOrderEquiv (e : P ≃o P) (p : P) : FaceVertex p ≃ FaceVertex (e p) where
   toFun a := ⟨e a.val, (e.isAtom_iff a.val).mpr a.property.1, e.monotone a.property.2⟩
@@ -774,7 +716,6 @@ def faceVertexOrderEquiv (e : P ≃o P) (p : P) : FaceVertex p ≃ FaceVertex (e
   right_inv a := Subtype.ext (e.apply_symm_apply a.val)
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
@@ -782,7 +723,6 @@ set_option backward.isDefEq.respectTransparency.types false
 open Classical Finset MvPolynomial
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
 variable (K : Type*) [CommRing K]
-
 /-- Literal retained-source def; original position theorem13.lean:16900. -/
 def polynomialStalkOrderEquiv (e : P ≃o P) (p : P) :
     PolynomialStalk K p ≃ₐ[K] PolynomialStalk K (e p) :=
@@ -793,7 +733,6 @@ def barycentricStalkOrderEquiv (e : P ≃o P) (p : P) :
   booleanVertexRelabelEquiv (faceVertexOrderEquiv e p)
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal.ProperlyColoredComplex
 section
 set_option backward.isDefEq.respectTransparency false
@@ -801,7 +740,8 @@ set_option backward.isDefEq.respectTransparency.types false
 open Classical Finset MvPolynomial
 variable {V C K G : Type*} [Fintype V] [Fintype C] [CommRing K] [Group G]
 variable (D : FourPapers.Universal.ProperlyColoredComplex V C) (K)
-
+/-- The actual monomial quotient of the properly colored simplicial complex. -/
+abbrev Ring := MonomialQuotient (K := K) D.allowed
 /-- Literal retained-source def; original position theorem13.lean:21017. -/
 def colorRename (e : Equiv.Perm V)
     (hface : ∀ s, D.face (s.image e) ↔ D.face s) : D.Ring K →ₐ[K] D.Ring K := by
@@ -824,7 +764,6 @@ def colorRename (e : Equiv.Perm V)
   exact fun p hp => hh hp
 end
 end FourPapers.Universal.ProperlyColoredComplex
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
@@ -833,7 +772,6 @@ open Classical Finset MvPolynomial
 variable {V K : Type*} [Fintype V] [CommRing K]
 local instance (priority := 2000) palomarLocalInstance21241 : DecidableEq V := Classical.decEq V
 local instance (priority := 2000) palomarLocalInstance21242 : DecidableEq (BooleanFace V) := Classical.decEq _
-
 /-- The properly rank-colored order complex of the full Boolean simplex. Its monomial quotient is definitionally the existing barycentric ring. -/
 def booleanColoredComplex (V : Type*) [Fintype V] :
     ProperlyColoredComplex (BooleanFace V) (Fin (Fintype.card V)) where
@@ -869,7 +807,6 @@ def booleanRename (K : Type*) [CommRing K] (e : Equiv.Perm V) :
     (booleanFacePermutation_face e)
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
@@ -878,7 +815,6 @@ open Classical Finset MvPolynomial
 variable (V K : Type*) [Fintype V] [CommRing K]
 local instance (priority := 2000) palomarLocalInstance22075 : DecidableEq V := Classical.decEq V
 local instance (priority := 2000) palomarLocalInstance22076 : DecidableEq (BooleanFace V) := Classical.decEq _
-
 /-- Exactly an unrestricted equivariant universal-parameter module comparison on one simplex. Grading, coherence, and multiplication preservation are absent. -/
 structure SimplexEquivariantParameterComparison where
   equiv : MvPolynomial V K ≃ₗ[K] BooleanBarycentricRing V K
@@ -888,7 +824,6 @@ structure SimplexEquivariantParameterComparison where
     equiv (MvPolynomial.rename g x) = booleanRename K g (equiv x)
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
@@ -900,7 +835,6 @@ attribute [local instance 2000] palomarLocalInstance22076
 variable {V K} {U : Type*} [Fintype U]
 local instance (priority := 2000) palomarLocalInstance22099 : DecidableEq U := Classical.decEq U
 local instance (priority := 2000) palomarLocalInstance22100 : DecidableEq (BooleanFace U) := Classical.decEq _
-
 /-- The negative half of Theorem 1.3 in its full stated strength: a nonunit factorial excludes even an ungraded, incoherent parameter-module isomorphism equivariant under the entire symmetric group. -/
 theorem factorial_nonunit_no_simplex_comparison
     (hd : 1 ≤ Fintype.card V)
@@ -908,14 +842,12 @@ theorem factorial_nonunit_no_simplex_comparison
     IsEmpty (SimplexEquivariantParameterComparison V K) := by sorry
 end
 end FourPapers.Universal
-
 namespace FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open Classical Finset MvPolynomial
-
 /-- The paper's uniform existence assertion, in arbitrary finite-poset universe. Coherence and ordinary grading are explicit. Equivariance for the entire order automorphism group implies equivariance for each of its group actions, without any hypothesis on the group order in `K`. -/
 def UniformCoherentEquivariantComparisons (K : Type v) [CommRing K] (d : ℕ) : Prop :=
   ∀ (P : Type u) [PartialOrder P] [OrderBot P] [Fintype P]
@@ -936,7 +868,6 @@ theorem theorem_1_3_uniform_iff (K : Type v) [CommRing K]
       IsUnit (((d - 1).factorial : ℕ) : K) := by sorry
 end
 end FourPapers.Universal
-
 namespace PalomarBarycentric
 section
 open Classical MvPolynomial Finset
@@ -944,7 +875,6 @@ open scoped BigOperators
 open FourPapers.Universal
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
 variable (K : Type*) [CommRing K] (hs : IsSimplicialPoset P)
-
 /-- The global ordinary-graded, rank-filtered universal-parameter comparison on the actual quotient rings. -/
 theorem parameterModuleComparison (d : ℕ) (hrank : ∀ p : P, faceRank p ≤ d) :
     ∃ e : BarycentricRing (P := P) K ≃ₗ[K] FaceRing K hs,
@@ -963,7 +893,6 @@ open FourPapers.Universal
 universe v
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
 variable (hs : IsSimplicialPoset P)
-
 /-- A single integral comparison extends to every coefficient ring, coherently on all stalks and relative restriction kernels. -/
 theorem integralCoherentComparison (d : ℕ) (hrank : ∀ p : P, faceRank p ≤ d) :
     ∃ eZ : BarycentricRing (P := P) ℤ ≃ₗ[ℤ] FaceRing ℤ hs,
