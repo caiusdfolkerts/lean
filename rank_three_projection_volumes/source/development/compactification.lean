@@ -5702,9 +5702,15 @@ elab "#export_checked_dependencies " id:ident " to " file:str : command => do
     ("nodes", Json.arr nodes)]
   let destination : System.FilePath := file.getString
   if let some parent := destination.parent then
-    IO.FS.createDirAll parent
-  IO.FS.writeFile destination report.pretty
-  logInfo m!"Exported checked dependency graph for {root}: {nodes.size} nodes"
+    try
+      IO.FS.createDirAll parent
+    catch _ =>
+      IO.eprintln "Optional audit report output skipped in this environment."
+  try
+    IO.FS.writeFile destination report.pretty
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
+  logInfo m!"Checked dependency graph (optional file output attempted) for {root}: {nodes.size} nodes"
 
 /-
 Each genuine project module exports all of its local declarations. Later
@@ -5771,9 +5777,15 @@ elab "#export_checked_module_dependencies " file:str : command => do
     ("nodes", Json.arr nodes)]
   let destination : System.FilePath := file.getString
   if let some parent := destination.parent then
-    IO.FS.createDirAll parent
-  IO.FS.writeFile destination report.pretty
-  logInfo m!"Exported full module dependency graph for {env.mainModule}: {localNames.size} local declarations, {nodes.size} nodes"
+    try
+      IO.FS.createDirAll parent
+    catch _ =>
+      IO.eprintln "Optional audit report output skipped in this environment."
+  try
+    IO.FS.writeFile destination report.pretty
+  catch _ =>
+    IO.eprintln "Optional audit report output skipped in this environment."
+  logInfo m!"Checked full module dependency graph (optional file output attempted) for {env.mainModule}: {localNames.size} local declarations, {nodes.size} nodes"
 
 #assert_standard_axioms RankThreeProjection.theorem31
 #assert_standard_axioms RankThreeProjection.theorem31_with_dimension

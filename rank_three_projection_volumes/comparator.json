@@ -1,0 +1,16 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "PalomarRankThree.theorem11_euclidean",
+    "PalomarRankThree.theorem31_euclidean",
+    "PalomarRankThree.theorem31_euclidean_closure",
+    "PalomarRankThree.theorem31_euclidean_renormalize_dimension",
+    "PalomarRankThree.exists_open_counterexamples"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}
