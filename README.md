@@ -1,3 +1,3 @@
-# Canonical diagnostic revision14
+# Canonical diagnostic revision15
 
-Source-only independent statements and bounded canonical auxiliary-type probes. No full-preflight or intake claim.
+Source-only independent principal statements and one genuine geometry bridge proof smoke. No full-preflight or intake claim.

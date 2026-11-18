@@ -476,34 +476,41 @@ def orbit : ℕ → ℝ × ℝ
   | n + 1 => returnMap (orbit n)
 /-- The geometric weighting of the explicit rotation orbit. -/
 def weightedOrbit (lam : ℝ) (n : ℕ) : ℝ × ℝ := lam ^ n • orbit n
-/-- The paper angle arccos(1/3). -/
-def angle : ℝ := Real.arccos ((Nat.cast 1 : ℝ) / Nat.cast 3)
 /-- Equality with the translated image under an injective continuous linear map. -/
 def AffineCopy (S : Set Plane) (T : Set ThreeSpace) : Prop :=
   ∃ v : ThreeSpace, ∃ f : Plane →L[ℝ] ThreeSpace,
     Function.Injective f ∧ T = v +ᵥ f '' S
-/-- The whole exposed face of a nonzero functional is a nondegenerate segment. -/
-def IsExposedEdge {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
-    (K F : Set E) : Prop :=
-  ∃ l : E →L[ℝ] ℝ, l ≠ 0 ∧ F = l.toExposed K ∧
-    ∃ a v : E, v ≠ 0 ∧
-      F = {x | ∃ t : Icc (- ((Nat.cast 1 : ℝ) / Nat.cast 2)) ((Nat.cast 1 : ℝ) / Nat.cast 2), x = a + (t : ℝ) • v}
 end VolumePolynomials.Holonomy
 
 namespace VolumePolynomials
-/-- An independent coefficient in [-1/2,1/2] for every segment. -/
+end VolumePolynomials
+
+namespace VolumePolynomials.PalomarGeometry
+universe uPG
+/-- The exact normalized interval, with explicit natural casts. -/
 abbrev SegmentChoice := ℕ → Icc (- ((Nat.cast 1 : ℝ) / Nat.cast 2)) ((Nat.cast 1 : ℝ) / Nat.cast 2)
-section
-variable {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E]
-/-- The actual sum of the chosen scaled segment vectors. -/
-noncomputable def seriesPoint (u : ℕ → E) (t : SegmentChoice) : E :=
+/-- The actual infinite sum of the selected segment coefficients. -/
+noncomputable def seriesPoint {E : Type uPG} [NormedAddCommGroup E]
+    [NormedSpace ℝ E] [CompleteSpace E] (u : ℕ → E) (t : SegmentChoice) : E :=
   ∑' n, (t n : ℝ) • u n
-/-- The literal infinite Minkowski sum, as the range of all segment choices. -/
-def segmentSeries (u : ℕ → E) : Set E := Set.range (seriesPoint u)
-end
+/-- The literal range of all segment choices. -/
+def segmentSeries {E : Type uPG} [NormedAddCommGroup E]
+    [NormedSpace ℝ E] [CompleteSpace E] (u : ℕ → E) : Set E := Set.range (seriesPoint u)
+/-- The exact angle arccos(1/3), with explicit natural casts. -/
+def angle : ℝ := Real.arccos ((Nat.cast 1 : ℝ) / Nat.cast 3)
+/-- A whole exposed face which is a nondegenerate closed segment. -/
+def IsExposedEdge {E : Type uPG} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (K F : Set E) : Prop :=
+  ∃ l : E →L[ℝ] ℝ, l ≠ 0 ∧ F = l.toExposed K ∧
+    ∃ a v : E, v ≠ 0 ∧
+      F = {x | ∃ t : Icc (- ((Nat.cast 1 : ℝ) / Nat.cast 2)) ((Nat.cast 1 : ℝ) / Nat.cast 2),
+        x = a + (t : ℝ) • v}
+end VolumePolynomials.PalomarGeometry
+
+namespace VolumePolynomials
 /-- The explicit forced planar set, without bundling a proof of compact convexity. Its carrier is identical to source forcedBody. -/
 def PalomarForcedSet (lam : ℝ) : Set (ℝ × ℝ) :=
-  segmentSeries (Holonomy.weightedOrbit lam)
+  PalomarGeometry.segmentSeries (Holonomy.weightedOrbit lam)
 /-- Continuous extension across a neighborhood of a point of the complex unit circle. -/
 def HasLocalContinuousExtension (F : ℂ → ℂ) (ζ : ℂ) : Prop :=
   ∃ δ > 0, ∃ g : ℂ → ℂ, ContinuousOn g (ball ζ δ) ∧
@@ -745,28 +752,28 @@ theorem shape_forcing :
       P.length = 39 ∧ Q.length = 8 ∧
       (∀ lam a : ℝ,
         (∃ c ∈ VolumeLocus 9 3, SatisfiesShapeSystem P Q lam a c) ↔
-          0 < lam ∧ lam < 1 ∧ a = realAreaSeries angle lam) ∧
+          0 < lam ∧ lam < 1 ∧ a = realAreaSeries VolumePolynomials.PalomarGeometry.angle lam) ∧
       (∀ (lam a : ℝ) (c : Coefficients 9 3) (K : Fin 9 → Body 3),
         Realizes K c → SatisfiesShapeSystem P Q lam a c →
           ∃ (hlam₀ : 0 < lam) (hlam₁ : lam < 1),
             AffineCopy (PalomarForcedSet lam) (K bodyA) ∧
-            Set.Infinite {R : Set ThreeSpace | IsExposedEdge (K bodyA) R} ∧
+            Set.Infinite {R : Set ThreeSpace | VolumePolynomials.PalomarGeometry.IsExposedEdge (K bodyA) R} ∧
             ¬ TauCeti.IsSemialgebraic (K bodyA : Set ThreeSpace)) ∧
       (∀ (lam : ℝ) (hlam₀ : 0 < lam) (hlam₁ : lam < 1),
-        Set.Infinite {F : Set Plane | IsExposedEdge (PalomarForcedSet lam) F} ∧
+        Set.Infinite {F : Set Plane | VolumePolynomials.PalomarGeometry.IsExposedEdge (PalomarForcedSet lam) F} ∧
         ¬ TauCeti.IsSemialgebraic ((Homeomorph.finTwoArrow (X := ℝ)) ⁻¹'
           (PalomarForcedSet lam : Set Plane))) ∧
-      (∀ lam : ℝ, (realAreaSeries angle lam : ℂ) = areaGeneratingFunction angle (lam : ℂ)) ∧
-      AnalyticOnNhd ℂ (areaGeneratingFunction angle) (ball 0 1) ∧
-      (∀ ζ : Circle, ¬ HasLocalContinuousExtension (areaGeneratingFunction angle) ζ) ∧
-      (∀ n : ℕ, iteratedDeriv n (areaGeneratingFunction angle) 0 / (n.factorial : ℂ) =
+      (∀ lam : ℝ, (realAreaSeries VolumePolynomials.PalomarGeometry.angle lam : ℂ) = areaGeneratingFunction VolumePolynomials.PalomarGeometry.angle (lam : ℂ)) ∧
+      AnalyticOnNhd ℂ (areaGeneratingFunction VolumePolynomials.PalomarGeometry.angle) (ball 0 1) ∧
+      (∀ ζ : Circle, ¬ HasLocalContinuousExtension (areaGeneratingFunction VolumePolynomials.PalomarGeometry.angle) ζ) ∧
+      (∀ n : ℕ, iteratedDeriv n (areaGeneratingFunction VolumePolynomials.PalomarGeometry.angle) 0 / (n.factorial : ℂ) =
         (areaTaylorCoefficient n : ℂ)) ∧
       (∀ p : Polynomial (Polynomial ℝ), p ≠ 0 →
         ¬ ∀ lam : ℝ, lam ∈ Ioo 0 1 →
-          p.eval₂ (Polynomial.evalRingHom lam) (realAreaSeries angle lam) = 0) ∧
+          p.eval₂ (Polynomial.evalRingHom lam) (realAreaSeries VolumePolynomials.PalomarGeometry.angle lam) = 0) ∧
       (letI : Algebra (RatFunc ℝ) PositiveRealGerm := rationalFunctionGermAlgebra
        Transcendental (RatFunc ℝ)
-         (Filter.Germ.ofFun (realAreaSeries angle) : PositiveRealGerm)) := by sorry
+         (Filter.Germ.ofFun (realAreaSeries VolumePolynomials.PalomarGeometry.angle) : PositiveRealGerm)) := by sorry
 
 /-- Theorem 1.3, complete countable quadratic family of paper.pdf. -/
 theorem countable_characterization (n d : ℕ) (hd : 0 < d) :

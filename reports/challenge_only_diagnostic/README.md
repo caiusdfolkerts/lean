@@ -1,3 +1,3 @@
-# Frozen diagnostic revision14
+# Frozen diagnostic revision15
 
-Exact owner-frozen Fermion256 and Homo259 statement repairs plus canonical-only main/relative auxiliary TYPE smoke probes. Main951/Relative718 make exactly3 direct type lookups each, with explicit8000-character bounds and no environment/value/dependency expansion. No full project source import/build, Comparator, intake or proof claim. Four cases only, one8GiB compiler per job, max2jobs,40minute compile deadline. Original metadata bytes/pins unchanged.
+Exact principal Fermion873/Homo319 statements, separate original-lattice necessity Unimod151, corrected Volume817, and genuine canonical-only Volume geometry-bridge proof smoke521. Last probe has no sorry/axiom placeholders and checks its displayed transport proofs only. Other statements intentionally contain theorem placeholders and establish interface elaboration only. No complete project source import/build, Comparator, intake or registration claim. One8GiB compiler per job, matrix max2,40minute compile deadline. Exact metadata bytes and canonical pins unchanged.

@@ -38,6 +38,11 @@ def load_case(path,case_id):
 class Diagnostic:
  def __init__(self,o,case):
   self.o=o;self.case=case;self.logs=[];self.receipt={'schema_version':1,'kind':'Challenge-only elaboration diagnostic; NOT full preflight','case':case['id'],'challenge_module':case['module'],'source_commit':os.getenv('GITHUB_SHA'),'source_repository':os.getenv('GITHUB_REPOSITORY'),'workflow_run':os.getenv('GITHUB_RUN_ID'),'script_sha256':sha(Path(__file__)),'pipeline_commit':PIN,'meaning':'Intentional Challenge theorem placeholders are accepted. No Solution build, Comparator, external kernel or registry/intake authorization is claimed.','input_hashes':case['hashes'],'original_challenge':case['original_challenge'],'lean_toolchain':case['lean_toolchain'],'phases':[],'status':'running','started_at':dt.datetime.now(dt.timezone.utc).isoformat()}
+  self.receipt['diagnostic_class']=case.get('diagnostic_class','canonical-Challenge')
+  if case.get('diagnostic_class')=='canonical-only-genuine-bridge-proof-smoke':
+   self.receipt['kind']='Canonical-only geometry bridge proof smoke; NOT full preflight'
+   self.receipt['meaning']='The frozen probe has no proof placeholders. Successful elaboration checks its exact geometry transport proofs only; no full project, Comparator, independent external kernel, or intake claim.'
+   self.receipt['proof_holes_in_frozen_input']=False
   o.output.mkdir(parents=True,exist_ok=True);self.save()
  def save(self):write(self.o.output/'receipt.json',self.receipt)
  def run(self,phase,cmd,*,cwd,env=None,timeout=1800,required=True):
