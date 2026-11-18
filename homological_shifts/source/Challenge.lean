@@ -1,4 +1,5 @@
 module
+public import Mathlib.RingTheory.ReesAlgebra
 public import Mathlib.Algebra.MvPolynomial.CommRing
 public import Mathlib.Data.Finsupp.Weight
 public import Mathlib.Data.Finsupp.Interval
@@ -10,6 +11,7 @@ public import Mathlib.CategoryTheory.Abelian.Projective.Dimension
 public import Mathlib.Algebra.Category.ModuleCat.Projective
 public import Mathlib.RingTheory.Ideal.Operations
 public import Mathlib.Data.Finset.Lattice.Fold
+public import Mathlib.RingTheory.LocalRing.Basic
 public import Lean.Elab.Tactic.Omega
 
 /-!
@@ -130,6 +132,19 @@ def basis : Module.Basis (Finset V) k (Ambient V k) := (Pi.basisFun k V).Exterio
 /-- The span of actual face wedges of cardinality i; the empty face has degree zero. -/
 def Chains (K : Finset V → Prop) (i : ℕ) : Submodule k (Ambient V k) :=
   Submodule.span k (basis '' {s | K s ∧ s.card = i})
+universe uBoundaryK uBoundaryV
+/-- Canonical commutation of the two scalar multiplications on the coefficient ring. -/
+theorem palomarBoundaryScalarComm {k : Type uBoundaryK} [CommRing k] :
+    SMulCommClass k k k := by sorry
+/-- Canonical scalar tower on the coordinate vector space used by exterior contraction. -/
+theorem palomarBoundaryPiScalarTower {V : Type uBoundaryV} {k : Type uBoundaryK} [CommRing k] :
+    IsScalarTower k k (V → k) := by sorry
+/-- Canonical commutation of coefficient scalars on the actual exterior algebra. -/
+theorem palomarBoundaryExteriorScalarComm {V : Type uBoundaryV} {k : Type uBoundaryK} [CommRing k] :
+    SMulCommClass k k (ExteriorAlgebra k (V → k)) := by sorry
+attribute [local instance] palomarBoundaryScalarComm palomarBoundaryPiScalarTower
+  palomarBoundaryExteriorScalarComm
+
 /-- The signed augmented simplicial boundary, as actual exterior contraction. -/
 abbrev boundary : Ambient V k →ₗ[k] Ambient V k :=
   CliffordAlgebra.contractLeft (Q := (0 : QuadraticForm k (V → k)))
@@ -243,3 +258,62 @@ theorem corollary_4_3_eventual (ρ : RankFunction V) (hρ : ρ.Active)
         (ModuleCat.of (MvPolynomial V k) ↥((rankIdeal k ρ) ^ s)) =
       (eventualOffset ρ Finset.univ : WithBot ℕ∞) := by sorry
 end FourPapers.Homological
+
+namespace PalomarHomological
+open CommAlg CommAlg.Polymatroid
+universe u
+variable {V k : Type u} [Fintype V] [LinearOrder V] [Field k]
+/-- Positive-power pieces of the actual homological-shift module; degree zero is zero. -/
+def powerPiece (I : Ideal (MvPolynomial V k)) (hI : IsPolymatroidalIdeal I)
+    (i s : ℕ) : Ideal (MvPolynomial V k) :=
+  if s = 0 then ⊥ else homologicalShiftIdeal (I ^ s) (powPolymatroidal hI s) i
+
+/-- Literal zero closure of the coefficientwise Rees ideal. -/
+theorem powerZero {V k : Type u} [Fintype V] [LinearOrder V] [Field k]
+    (I : Ideal (MvPolynomial V k)) (hI : IsPolymatroidalIdeal I) (i : ℕ) :
+    ∀ s, (0 : reesAlgebra I).val.coeff s ∈ powerPiece I hI i s := by sorry
+/-- Literal addition closure of the coefficientwise Rees ideal. -/
+theorem powerAdd {V k : Type u} [Fintype V] [LinearOrder V] [Field k]
+    (I : Ideal (MvPolynomial V k)) (hI : IsPolymatroidalIdeal I) (i : ℕ)
+    {p q : reesAlgebra I}
+    (hp : ∀ s, p.val.coeff s ∈ powerPiece I hI i s)
+    (hq : ∀ s, q.val.coeff s ∈ powerPiece I hI i s) :
+    ∀ s, (p + q).val.coeff s ∈ powerPiece I hI i s := by sorry
+/-- Literal multiplication closure, proved from the genuine homological-shift action. -/
+theorem powerMul {V k : Type u} [Fintype V] [LinearOrder V] [Field k]
+    (I : Ideal (MvPolynomial V k)) (hI : IsPolymatroidalIdeal I) (i : ℕ)
+    (r p : reesAlgebra I) (hp : ∀ s, p.val.coeff s ∈ powerPiece I hI i s) :
+    ∀ s, (r * p).val.coeff s ∈ powerPiece I hI i s := by sorry
+/-- The ordinary Rees ideal whose coefficients are the actual positive-power homological shifts. -/
+def powerIdeal (I : Ideal (MvPolynomial V k)) (hI : IsPolymatroidalIdeal I)
+    (i : ℕ) : Ideal (reesAlgebra I) where
+  carrier := {p | ∀ s, p.val.coeff s ∈ powerPiece I hI i s}
+  zero_mem' := powerZero I hI i
+  add_mem' := powerAdd I hI i
+  smul_mem' := powerMul I hI i
+/-- All homogeneous elements in Rees degrees at most i, including polynomial factors. -/
+def powerBoxGenerators (I : Ideal (MvPolynomial V k))
+    (hI : IsPolymatroidalIdeal I) (i : ℕ) : Set (reesAlgebra I) :=
+  {p | ∃ s r, s ≤ i ∧ r ∈ powerPiece I hI i s ∧ p.val = Polynomial.monomial s r}
+/-- The ordinary monic-equation definition of integrality over an ideal. -/
+def IntegralOverIdeal {R : Type*} [CommRing R] (I : Ideal R) (x : R) : Prop :=
+  ∃ n : ℕ, 0 < n ∧ ∃ c : ℕ → R,
+    (∀ i < n, c i ∈ I ^ (n - i)) ∧ x ^ n + ∑ i ∈ Finset.range n, c i * x ^ i = 0
+/-- An ideal contains every element integral over it in its actual ambient ring. -/
+def IsIntegrallyClosedIdeal {R : Type*} [CommRing R] (I : Ideal R) : Prop :=
+  ∀ x : R, IntegralOverIdeal I x → x ∈ I
+
+/-- Theorem 1.1's actual ordinary Rees-module generation assertion. -/
+theorem reesGeneration (I : Ideal (MvPolynomial V k))
+    (hI : IsPolymatroidalIdeal I) (i : ℕ) (hi : 0 < i) :
+    powerIdeal I hI i = Ideal.span (powerBoxGenerators I hI i) := by sorry
+/-- Theorem 6.1: integral closure in the actual ordinary Rees algebra. -/
+theorem reesIntegralClosure (I : Ideal (MvPolynomial V k))
+    (hI : IsPolymatroidalIdeal I) (i : ℕ) (hi : 0 < i) :
+    IsIntegrallyClosedIdeal (powerIdeal I hI i) := by sorry
+/-- Theorem 5.1's field independence on every genuine nonzero Koszul multidegree. -/
+theorem fieldIndependence {l : Type u} [Field l]
+    (g : RankFunction V) (a : Exponent V) (i : ℕ) :
+    Simplicial.NonzeroHomology (k := k) (Koszul.koszulFaces (rankBases g) a) i ↔
+      Simplicial.NonzeroHomology (k := l) (Koszul.koszulFaces (rankBases g) a) i := by sorry
+end PalomarHomological

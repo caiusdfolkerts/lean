@@ -5746,6 +5746,19 @@ lemma downward_link {K : Finset V → Prop} (hK : Downward K) (e : V) :
   intro s t hts hs
   exact ⟨hK (Finset.insert_subset_insert e hts) hs.1, fun h => hs.2 (hts h)⟩
 
+universe uBoundaryK uBoundaryV
+/-- Canonical commutation of the two scalar multiplications on the coefficient ring. -/
+theorem palomarBoundaryScalarComm {k : Type uBoundaryK} [CommRing k] :
+    SMulCommClass k k k := by infer_instance
+/-- Canonical scalar tower on the coordinate vector space used by exterior contraction. -/
+theorem palomarBoundaryPiScalarTower {V : Type uBoundaryV} {k : Type uBoundaryK} [CommRing k] :
+    IsScalarTower k k (V → k) := by infer_instance
+/-- Canonical commutation of coefficient scalars on the actual exterior algebra. -/
+theorem palomarBoundaryExteriorScalarComm {V : Type uBoundaryV} {k : Type uBoundaryK} [CommRing k] :
+    SMulCommClass k k (ExteriorAlgebra k (V → k)) := by infer_instance
+attribute [local instance] palomarBoundaryScalarComm palomarBoundaryPiScalarTower
+  palomarBoundaryExteriorScalarComm
+
 abbrev boundary : Ambient V k →ₗ[k] Ambient V k :=
   contractLeft (Q := (0 : QuadraticForm k (V → k)))
     (Fintype.linearCombination k (fun _ : V => (1 : k)))

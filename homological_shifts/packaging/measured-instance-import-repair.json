@@ -1,0 +1,12 @@
+{
+  "status": "applied_partial_measured_repair_not_frozen",
+  "before_challenge_sha256": "d25b7b1d6682c8c3c0a0cbaef19089d9fb4b0c5b50ed87541928829829ba2236",
+  "after_challenge_sha256": "ab732ed7a89a8c7abab1220bb259b92bfcb64fc0a4f888675292dab2d04e82bc",
+  "challenge_lines": 246,
+  "diagnostic_run": "44351761925",
+  "evidence": "reports/homological_shifts/type-diagnostic/run-44351761925/raw-metadata-diagnostic/audit-bounded.log",
+  "measured_cause": "All four main theorem types use the same named universe u, but Nontrivial k resolves through EuclideanDomain.toNontrivial/Field.toEuclideanDomain in Challenge and IsLocalRing.toNontrivial/Field.instIsLocalRing in Source. Both latter constants were absent from Challenge.",
+  "repair": "Import canonical Mathlib.RingTheory.LocalRing.Basic, where Field.instIsLocalRing and its Nontrivial parent are registered, matching the measured source inference environment. No mathematical term, data formula, binder or hypothesis changed.",
+  "remaining_measured_mismatches": "Actual boundary data contains two classes of generated proof aliases. Waiting for authorized canonical-only bounded remote auxiliary-type smoke before naming exact support obligations.",
+  "no_current_comparator_pass_claim": true
+}

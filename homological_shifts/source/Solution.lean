@@ -128,3 +128,98 @@ theorem canonicalRank (g : RankFunction V) (hg : g.Active) (i : ℕ)
   simpa only [rankFunction_eq_source] using
     (FourPapers.Homological.theorem_1_2_canonical g hg i hne A)
 end PalomarHomological
+
+namespace PalomarHomological
+open CommAlg CommAlg.Polymatroid
+universe u
+variable {V k : Type u} [Fintype V] [LinearOrder V] [Field k]
+/-- Positive-power pieces of the actual homological-shift module; degree zero is zero. -/
+def powerPiece (I : Ideal (MvPolynomial V k)) (hI : IsPolymatroidalIdeal I)
+    (i s : ℕ) : Ideal (MvPolynomial V k) :=
+  if s = 0 then ⊥ else homologicalShiftIdeal (I ^ s) (powPolymatroidal hI s) i
+
+private theorem powerPiece_eq_source (I : Ideal (MvPolynomial V k))
+    (hI : IsPolymatroidalIdeal I) (i s : ℕ) :
+    powerPiece I hI i s = CommAlg.homologicalPowerPiece I hI i s := by
+  simp only [powerPiece, CommAlg.homologicalPowerPiece, agrees_with_derivedTor]
+
+/-- Literal zero closure of the coefficientwise Rees ideal. -/
+theorem powerZero {V k : Type u} [Fintype V] [LinearOrder V] [Field k]
+    (I : Ideal (MvPolynomial V k)) (hI : IsPolymatroidalIdeal I) (i : ℕ) :
+    ∀ s, (0 : reesAlgebra I).val.coeff s ∈ powerPiece I hI i s := by
+  intro s
+  simpa only [Subalgebra.coe_zero, Polynomial.coeff_zero] using (powerPiece I hI i s).zero_mem
+/-- Literal addition closure of the coefficientwise Rees ideal. -/
+theorem powerAdd {V k : Type u} [Fintype V] [LinearOrder V] [Field k]
+    (I : Ideal (MvPolynomial V k)) (hI : IsPolymatroidalIdeal I) (i : ℕ)
+    {p q : reesAlgebra I}
+    (hp : ∀ s, p.val.coeff s ∈ powerPiece I hI i s)
+    (hq : ∀ s, q.val.coeff s ∈ powerPiece I hI i s) :
+    ∀ s, (p + q).val.coeff s ∈ powerPiece I hI i s := by
+  intro s
+  simpa only [Subalgebra.coe_add, Polynomial.coeff_add] using
+    (powerPiece I hI i s).add_mem (hp s) (hq s)
+/-- Literal multiplication closure, proved from the genuine homological-shift action. -/
+theorem powerMul {V k : Type u} [Fintype V] [LinearOrder V] [Field k]
+    (I : Ideal (MvPolynomial V k)) (hI : IsPolymatroidalIdeal I) (i : ℕ)
+    (r p : reesAlgebra I) (hp : ∀ s, p.val.coeff s ∈ powerPiece I hI i s) :
+    ∀ s, (r * p).val.coeff s ∈ powerPiece I hI i s := by
+  intro s
+  change (r.val * p.val).coeff s ∈ powerPiece I hI i s
+  rw [Polynomial.coeff_mul]
+  apply Ideal.sum_mem
+  rintro ⟨n, t⟩ hnt
+  rw [← Finset.mem_antidiagonal.mp hnt]
+  rw [powerPiece_eq_source] at hp ⊢
+  exact CommAlg.homologicalPowerPiece_action I hI i n t
+    (Ideal.mul_mem_mul (r.property n) (hp t))
+/-- The ordinary Rees ideal whose coefficients are the actual positive-power homological shifts. -/
+def powerIdeal (I : Ideal (MvPolynomial V k)) (hI : IsPolymatroidalIdeal I)
+    (i : ℕ) : Ideal (reesAlgebra I) where
+  carrier := {p | ∀ s, p.val.coeff s ∈ powerPiece I hI i s}
+  zero_mem' := powerZero I hI i
+  add_mem' := powerAdd I hI i
+  smul_mem' := powerMul I hI i
+/-- All homogeneous elements in Rees degrees at most i, including polynomial factors. -/
+def powerBoxGenerators (I : Ideal (MvPolynomial V k))
+    (hI : IsPolymatroidalIdeal I) (i : ℕ) : Set (reesAlgebra I) :=
+  {p | ∃ s r, s ≤ i ∧ r ∈ powerPiece I hI i s ∧ p.val = Polynomial.monomial s r}
+/-- The ordinary monic-equation definition of integrality over an ideal. -/
+def IntegralOverIdeal {R : Type*} [CommRing R] (I : Ideal R) (x : R) : Prop :=
+  ∃ n : ℕ, 0 < n ∧ ∃ c : ℕ → R,
+    (∀ i < n, c i ∈ I ^ (n - i)) ∧ x ^ n + ∑ i ∈ Finset.range n, c i * x ^ i = 0
+/-- An ideal contains every element integral over it in its actual ambient ring. -/
+def IsIntegrallyClosedIdeal {R : Type*} [CommRing R] (I : Ideal R) : Prop :=
+  ∀ x : R, IntegralOverIdeal I x → x ∈ I
+
+private theorem powerIdeal_eq_source (I : Ideal (MvPolynomial V k))
+    (hI : IsPolymatroidalIdeal I) (i : ℕ) :
+    powerIdeal I hI i = CommAlg.homologicalPowerIdeal I hI i := by
+  ext p
+  change (∀ s, p.val.coeff s ∈ powerPiece I hI i s) ↔
+    ∀ s, p.val.coeff s ∈ CommAlg.homologicalPowerPiece I hI i s
+  simp only [powerPiece_eq_source]
+
+/-- Theorem 1.1's actual ordinary Rees-module generation assertion. -/
+theorem reesGeneration (I : Ideal (MvPolynomial V k))
+    (hI : IsPolymatroidalIdeal I) (i : ℕ) (hi : 0 < i) :
+    powerIdeal I hI i = Ideal.span (powerBoxGenerators I hI i) := by
+  simpa only [powerIdeal_eq_source, powerBoxGenerators, powerPiece_eq_source,
+    CommAlg.homologicalPowerBoxGenerators] using
+      (FourPapers.Homological.theorem_1_1_generation I hI i hi)
+/-- Theorem 6.1: integral closure in the actual ordinary Rees algebra. -/
+theorem reesIntegralClosure (I : Ideal (MvPolynomial V k))
+    (hI : IsPolymatroidalIdeal I) (i : ℕ) (hi : 0 < i) :
+    IsIntegrallyClosedIdeal (powerIdeal I hI i) := by
+  rw [powerIdeal_eq_source]
+  change CommAlg.IsIntegrallyClosedIdeal (CommAlg.homologicalPowerIdeal I hI i)
+  exact FourPapers.Homological.theorem_6_1 I hI i hi
+/-- Theorem 5.1's field independence on every genuine nonzero Koszul multidegree. -/
+theorem fieldIndependence {l : Type u} [Field l]
+    (g : RankFunction V) (a : Exponent V) (i : ℕ) :
+    Simplicial.NonzeroHomology (k := k) (Koszul.koszulFaces (rankBases g) a) i ↔
+      Simplicial.NonzeroHomology (k := l) (Koszul.koszulFaces (rankBases g) a) i := by
+  rw [← CommAlg.Koszul.gradedBettiNonzero_iff_faces (k := k),
+    ← CommAlg.Koszul.gradedBettiNonzero_iff_faces (k := l)]
+  exact FourPapers.Homological.theorem_5_1_field_independent g a i
+end PalomarHomological

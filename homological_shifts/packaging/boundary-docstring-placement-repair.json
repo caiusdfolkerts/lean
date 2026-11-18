@@ -1,0 +1,22 @@
+{
+  "status": "exact_observed_parser_fix_no_math_change",
+  "failed_run": "44364682276",
+  "cause": "The original boundary doc comment was followed by an inserted universe command. Lean requires a declaration after a doc comment.",
+  "repair": "Move the unchanged original docstring immediately before its original abbrev boundary. No declaration type, value, proof, option, import or comparator target changes.",
+  "changes": [
+    {
+      "path": "packages/homological_shifts/source/Challenge.lean",
+      "before_sha256": "61cf12d4d90a49f0bd03bd29b0f7fd4da6a609b57b74cb03b8ca0eed04f7f11d",
+      "after_sha256": "944a37b95ee5e54dee808247d562b28de228d6634931cc9acd3550cf06ebf287",
+      "lines": 259
+    },
+    {
+      "path": "reports/homological_shifts/Challenge.rees-extension.lean",
+      "before_sha256": "b17e1aa980d21d66d2251306f74991f92fb3b21099e708df645be6358882e483",
+      "after_sha256": "f3cbf2f8643263c0b344489623f1c6b1cfcf702cfa31080bc55372be295b5e62",
+      "lines": 319
+    }
+  ],
+  "local_compilation": "not_run",
+  "immutable_cases_untouched": true
+}

@@ -1,0 +1,34 @@
+{
+  "status": "measured_boundary_normalization_prepared_for_remote_check",
+  "raw_diagnostic_run": "44351761925",
+  "canonical_auxiliary_probe_run": "44358094694",
+  "observed_classes": {
+    "boundary._proof_1": "SMulCommClass k k k",
+    "boundary._proof_2": "IsScalarTower k k (V \u2192 k)",
+    "boundary._proof_3": "SMulCommClass k k (ExteriorAlgebra k (V \u2192 k))"
+  },
+  "probe_limits": "All three found. First full2555 characters; second24579/third74265 characters each explicitly truncated at8000. Class heads/carriers are measured, not a claim of equality of the truncated full dictionary ASTs.",
+  "repair": "The three actual canonical instance propositions have named proved support theorems, explicitly selected for exact statement comparison, applied as local instances in both literal boundary definitions. The exterior contraction itself is unchanged. Both source supports are proved by canonical instance synthesis; Challenge supports are the same theorem obligations.",
+  "canonical_import_repair": "Mathlib.RingTheory.LocalRing.Basic already added to restore measured Field.instIsLocalRing Nontrivial path across all four endpoints.",
+  "changes": [
+    {
+      "path": "packages/homological_shifts/source/Challenge.lean",
+      "before_sha256": "ab732ed7a89a8c7abab1220bb259b92bfcb64fc0a4f888675292dab2d04e82bc",
+      "after_sha256": "61cf12d4d90a49f0bd03bd29b0f7fd4da6a609b57b74cb03b8ca0eed04f7f11d",
+      "lines": 259
+    },
+    {
+      "path": "packages/homological_shifts/source/four_papers/homological/complete/PalomarPart000.lean",
+      "before_sha256": "c789fcd9b5a3881801f3698a4a5c10325b3d43e1d3b279b162aab54ed4c2edfe",
+      "after_sha256": "ff10075ea86e48beccb95a46efed380e34277f0afbf61592a50de9d574dfab10",
+      "lines": 8947
+    }
+  ],
+  "new_selected_support_theorems": [
+    "CommAlg.Simplicial.palomarBoundaryScalarComm",
+    "CommAlg.Simplicial.palomarBoundaryPiScalarTower",
+    "CommAlg.Simplicial.palomarBoundaryExteriorScalarComm"
+  ],
+  "no_local_compilation": true,
+  "mathematical_scope_unchanged": true
+}

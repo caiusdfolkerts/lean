@@ -35,9 +35,10 @@ automation:
   methods:
   - method: agent
     tool_setup: OpenAI Codex
-    notes: Current packaging, source-block migration, source mapping and independent
-      statement extraction are agent-assisted. Fresh build and Comparator evidence
-      are not yet available.
+    notes: Agent-assisted exact statement/source extraction, module migration and
+      canonical proposition normalization. Current exact expanded independent Challenge
+      elaboration passed remotely; no current expanded Source/Solution/Comparator/replay
+      pass is claimed.
   - method: other
     tool_setup: Historical AI assistance reported in the included paper
     notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing
@@ -45,22 +46,22 @@ automation:
       not been reconstructed from the snapshot.
 review:
   status: unchecked
-  notes: Paper, README and source declarations inspected. Earlier independent Challenge
-    elaborated under the exact toolchain; the current revision restores the literal
-    source rank interpolation and separately compares the supporting proof statements.
-    Current Challenge elaboration, Solution build, Comparator and independent kernel
-    replay are pending.
+  notes: Exact319-line independent Challenge f3cbf2f passed canonical remote elaboration
+    run44368529809, with artifact/input/dependency/protected-workflow hashes validated.
+    Current expanded Source/Solution bridge, Comparator and replay have not yet been
+    run. Existing complete proof development and all audits are retained.
 scope:
   known_gaps:
-  - Theorem 1.1 Rees-module generation and sharpness, mixed-power Corollary 4.1, exact
-    generator intervals of Theorem 4.4, total Betti support of Theorem 5.1 and integral-closure
-    Theorem 6.1/Corollary 6.2 still require extraction.
-  - The fresh Solution build must verify both the source migration and the explicit
-    standard-Koszul/derived-Tor bridge.
+  - Current full Source/Solution bridge, Comparator and independent kernel replay
+    remain unverified.
+  - Mixed coordinate stabilization/module generation Cor4.1, universal sharpness Prop4.2,
+    full generator interval/threshold Theorem4.4, remaining actual homogenized ideal/canonical-rank
+    clauses of Theorem5.1, and actual multi-Rees Cor6.2 remain required uncovered
+    goals.
   notes: The submitted project contains the substantive historical proof development
     copied from the pinned source snapshot; this is not a thin wrapper. Historical
     upstream dependencies and license notices are retained. See map.json for exact
     proposed selections and unresolved source mapping.
-  current_selection: The stabilization and fixed-twist clauses of Theorem 1.1, exact
-    rank and canonicality clauses of Theorem 1.2, and actual projective-dimension
-    Corollary 4.3 are selected.
+  current_selection: All current stabilization/fixed-twist/exact-rank/canonical-rank/pdim
+    claims, plus actual ordinary-Rees generation1.1, actual monic-equation integral
+    closure6.1 and full field-independence5.1 on actual Koszul nonzero multidegrees.

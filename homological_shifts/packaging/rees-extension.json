@@ -1,0 +1,31 @@
+{
+  "status": "source_prepared_unelaborated_not_applied",
+  "challenge_lines": 319,
+  "challenge_bytes": 18474,
+  "challenge_sha256": "f3cbf2f8643263c0b344489623f1c6b1cfcf702cfa31080bc55372be295b5e62",
+  "added_principal_clauses": [
+    "Theorem1.1 genuine ordinary Rees generation",
+    "Theorem6.1 genuine monic-equation integral closure inside ordinary Rees algebra",
+    "Theorem5.1 field independence of every actual Koszul nonzero multidegree"
+  ],
+  "proof_bridges": [
+    "Actual Koszul shift equals original derived-Tor shift.",
+    "Coefficientwise positive-power Rees ideal equals original homologicalPowerIdeal.",
+    "Source theorem1.1_generation/theorem6.1/theorem5.1_field_independent applied without narrowing."
+  ],
+  "remaining": [
+    "Cor4.1 mixed stabilization and module generation",
+    "Proposition4.2 universal sharpness",
+    "Theorem4.4 full minimal-generator interval and threshold",
+    "Theorem5.1 actual homogenized ideal and canonical rank",
+    "Cor6.2 actual multi-Rees integral closure"
+  ],
+  "prior_candidate_before_measured_repairs": {
+    "challenge_sha256": "208cfaa9755b1d3592bd418222af06f1b6ccc4bae95e7c4a2e45111a363a537f",
+    "lines": 305,
+    "bytes": 17600
+  },
+  "measured_repairs_included": "Same canonical LocalRing import and measured three scalar proof-class supports as frozen259-line interface. This separate expanded interface remains unelaborated and unapplied.",
+  "challenge_before_docstring_repair_sha256": "b17e1aa980d21d66d2251306f74991f92fb3b21099e708df645be6358882e483",
+  "docstring_placement_repair": "boundary-docstring-placement-repair.json"
+}

@@ -363,13 +363,13 @@
   ],
   "checks": {
     "source_copy": "complete including retained reading files and licenses",
-    "build": "not_run_for_current_hash",
-    "comparator": "not_run_for_current_hash",
-    "nanoda": "not_run_for_current_hash",
-    "editorial_review": "not_run_for_current_hash",
-    "challenge_elaboration": "not_run_for_current_hash"
+    "build": "not_run",
+    "comparator": "not_run",
+    "nanoda": "not_run",
+    "editorial_review": "not_run",
+    "challenge_elaboration": "previous_version_passed_current_pending"
   },
-  "current_selection": "The stabilization and fixed-twist clauses of Theorem 1.1, exact rank and canonicality clauses of Theorem 1.2, and actual projective-dimension Corollary 4.3 are selected.",
+  "current_selection": "All current stabilization/fixed-twist/exact-rank/canonical-rank/pdim claims, plus actual ordinary-Rees generation1.1, actual monic-equation integral closure6.1 and full field-independence5.1 on actual Koszul nonzero multidegrees.",
   "selected_wrapper_provenance": [
     [
       "PalomarHomological.stabilization",
@@ -402,12 +402,18 @@
       "PalomarHomological.canonicalRank",
       "FourPapers.Homological.corollary_4_3",
       "FourPapers.Homological.corollary_4_3_eventual",
-      "PalomarHomological.mulPolymatroidal",
-      "PalomarHomological.powPolymatroidal",
-      "PalomarHomological.rankIdealPolymatroidal",
-      "PalomarHomological.rankValue_empty",
-      "PalomarHomological.rankValue_mono",
-      "PalomarHomological.rankValue_submodular"
+      "CommAlg.Polymatroid.IsPolymatroidalIdeal.mul",
+      "CommAlg.Polymatroid.IsPolymatroidalIdeal.pow",
+      "CommAlg.Polymatroid.isPolymatroidalIdeal_rankIdeal",
+      "CommAlg.Polymatroid.RankFunction.map_empty",
+      "CommAlg.Polymatroid.RankFunction.mixed_submodular",
+      "CommAlg.Polymatroid.augmentedPartitionRank_empty",
+      "CommAlg.Polymatroid.augmentedPartitionRank_mono",
+      "CommAlg.Polymatroid.partitionRank_submodular",
+      "CommAlg.Polymatroid.shiftRankValue_empty",
+      "CommAlg.Polymatroid.shiftRankValue_le_u",
+      "CommAlg.Polymatroid.shiftRankValue_le_add",
+      "CommAlg.Polymatroid.augmentedRank_dominates"
     ],
     "permitted_axioms": [
       "propext",
@@ -417,18 +423,113 @@
   },
   "challenge": {
     "path": "source/Challenge.lean",
-    "sha256": "d25b7b1d6682c8c3c0a0cbaef19089d9fb4b0c5b50ed87541928829829ba2236",
-    "physical_lines": 245,
-    "bytes": 13958,
-    "local_elaboration": "not_run_for_current_hash",
-    "solution_build": "not_run_for_current_hash",
-    "comparator": "not_run_for_current_hash"
+    "sha256": "25615c6d60f3d333df67c2d4f0c99be8ba7d569a38078131176da9b177190234",
+    "physical_lines": 337,
+    "bytes": 17702,
+    "local_elaboration": "pending_after_literal_dependency_repair",
+    "solution_build": "not_run",
+    "comparator": "not_run"
   },
-  "packaging_changes": [
+  "coverage_status": "partial_principal_selection_not_whole_paper",
+  "current_independent_challenge": {
+    "path": "packages/homological_shifts/source/Challenge.lean",
+    "sha256": "d25b7b1d6682c8c3c0a0cbaef19089d9fb4b0c5b50ed87541928829829ba2236"
+  },
+  "uncovered_main_results_and_corollaries": [
     {
-      "kind": "literal_interface_repair",
-      "evidence": "packaging/explicit-interface-repair.json",
-      "description": "Exact current source/context correction and hash-bound pending validation receipt."
+      "paper_result": "Theorem 1.1 generation",
+      "uncovered_scope": "Actual ordinary Rees-module generation in the full stated range.",
+      "blocker_or_preparation": "Complete source-only Challenge/Solution candidate prepared in reports/homological_shifts/*rees-extension.lean; not applied or validated.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Corollary 4.1",
+      "uncovered_scope": "All finite-color coordinatewise stabilization and actual multigraded Rees generation.",
+      "blocker_or_preparation": "Source exists; no independent complete extraction yet.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Proposition 4.2",
+      "uncovered_scope": "Universal sharpness family in every positive degree.",
+      "blocker_or_preparation": "Source exists; no independent extraction yet.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Theorem 4.4",
+      "uncovered_scope": "Zero-module case, exact minimal-generator interval/endpoints/least generation bound and signed rational-ceiling threshold.",
+      "blocker_or_preparation": "Source exists; no independent complete extraction yet.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Theorem 5.1",
+      "uncovered_scope": "Actual total-support homogenized ideal, genuine projective dimension, equigeneration and canonical rank.",
+      "blocker_or_preparation": "Source exists; full independent interface still required; field-independence clause separately source-prepared but unvalidated in rees extension.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Theorem 6.1",
+      "uncovered_scope": "Actual monic-equation integral closure inside the ordinary Rees algebra.",
+      "blocker_or_preparation": "Source-only rees extension candidate prepared, not applied or validated.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Corollary 6.2",
+      "uncovered_scope": "Actual finite-color multi-Rees integral closure, fixed twists and zero coordinates.",
+      "blocker_or_preparation": "Source exists; no independent extraction yet.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
     }
-  ]
+  ],
+  "coverage_note": "A source theorem, a prepared candidate, a Challenge elaboration pass, and a full Comparator/replay pass are separate states. No partial entry is counted as whole-paper coverage.",
+  "current_interface_status": "exact319_challenge_pass_full_source_solution_comparator_unverified",
+  "current_challenge_sha256": "f3cbf2f8643263c0b344489623f1c6b1cfcf702cfa31080bc55372be295b5e62",
+  "added_current_principal_interfaces": [
+    {
+      "name": "PalomarHomological.reesGeneration",
+      "actual_original_proof": "FourPapers.Homological.theorem_1_1_generation",
+      "baseline_source_path": "source/four_papers/homological/complete.lean",
+      "baseline_source_line": 17178,
+      "baseline_source_sha256": "389a4ee083aece791154ada1e90706a73524d01b52a243aa0df6b49804ec088a",
+      "validation": "Current exact Challenge passed; Solution bridge/full comparison unverified."
+    },
+    {
+      "name": "PalomarHomological.reesIntegralClosure",
+      "actual_original_proof": "FourPapers.Homological.theorem_6_1",
+      "baseline_source_path": "source/four_papers/homological/complete.lean",
+      "baseline_source_line": 17313,
+      "baseline_source_sha256": "389a4ee083aece791154ada1e90706a73524d01b52a243aa0df6b49804ec088a",
+      "validation": "Current exact Challenge passed; Solution bridge/full comparison unverified."
+    },
+    {
+      "name": "PalomarHomological.fieldIndependence",
+      "actual_original_proof": "FourPapers.Homological.theorem_5_1_field_independent",
+      "baseline_source_path": "source/four_papers/homological/complete.lean",
+      "baseline_source_line": 17306,
+      "baseline_source_sha256": "389a4ee083aece791154ada1e90706a73524d01b52a243aa0df6b49804ec088a",
+      "validation": "Current exact Challenge passed; Solution bridge/full comparison unverified."
+    }
+  ],
+  "canonical_challenge_receipt": "reports/homological_shifts/challenge-diagnostic/run-44368529809/receipt.json",
+  "canonical_challenge_verification": "reports/homological_shifts/challenge-diagnostic/run-44368529809/collection-verification.json",
+  "shared_literal_solution_data_audit": {
+    "declarations": [
+      "PalomarHomological.rankValue",
+      "PalomarHomological.rankFunction",
+      "PalomarHomological.homologicalShiftIdeal",
+      "PalomarHomological.powerPiece",
+      "PalomarHomological.powerIdeal",
+      "PalomarHomological.powerBoxGenerators",
+      "PalomarHomological.IntegralOverIdeal",
+      "PalomarHomological.IsIntegrallyClosedIdeal"
+    ],
+    "mismatches": [],
+    "method": "Whitespace/comment-normalized complete literal declaration bodies; not compiled metadata equality."
+  },
+  "remaining_goal_note": "All uncovered principal/corollary records remain required goals. Newly selected generation/integrality/field-independence clauses remain unvalidated until full Source/Solution/Comparator/replay succeeds."
 }

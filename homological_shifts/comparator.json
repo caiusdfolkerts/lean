@@ -13,7 +13,16 @@
     "PalomarHomological.rankIdealPolymatroidal",
     "PalomarHomological.rankValue_empty",
     "PalomarHomological.rankValue_mono",
-    "PalomarHomological.rankValue_submodular"
+    "PalomarHomological.rankValue_submodular",
+    "PalomarHomological.powerZero",
+    "PalomarHomological.powerAdd",
+    "PalomarHomological.powerMul",
+    "PalomarHomological.reesGeneration",
+    "PalomarHomological.reesIntegralClosure",
+    "PalomarHomological.fieldIndependence",
+    "CommAlg.Simplicial.palomarBoundaryScalarComm",
+    "CommAlg.Simplicial.palomarBoundaryPiScalarTower",
+    "CommAlg.Simplicial.palomarBoundaryExteriorScalarComm"
   ],
   "permitted_axioms": [
     "propext",
