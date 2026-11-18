@@ -1,5 +1,7 @@
 module
 public import Mathlib
+set_option maxHeartbeats 1000000
+set_option maxRecDepth 10000
 
 /-!
 # A literal finite Rees Gröbner presentation for sublattice ideals
@@ -176,7 +178,7 @@ def boundaries (I : Ideal (MvPolynomial V K)) (q : ℤ) (p : ℕ) :
 
 /-- The actual homogeneous polynomial Koszul homology quotient. -/
 abbrev Homology (I : Ideal (MvPolynomial V K)) (q : ℤ) (p : ℕ) :=
-  cycles I q p ⧸ boundaries I q p
+  _root_.Quotient (Submodule.quotientRel (boundaries I q p))
 
 /-- The dimension of the actual homogeneous Koszul homology vector space. -/
 def betti (I : Ideal (MvPolynomial V K)) (p : ℕ) (q : ℤ) : ℕ :=
@@ -301,7 +303,8 @@ def Boundaries (hE : finiteLatticeClosed n E) : TwoSidedIdeal (Cycles (k := k) h
     (boundary_zero hE) (boundary_add hE) (boundary_neg hE)
     (boundary_left hE) (boundary_right hE)
 /-- The actual homology algebra, cycles modulo actual boundaries. -/
-abbrev Homology (hE : finiteLatticeClosed n E) := Cycles (k := k) hE ⧸ (Boundaries hE).asIdeal
+abbrev Homology (hE : finiteLatticeClosed n E) :=
+  _root_.Quotient (Submodule.quotientRel (Boundaries (k := k) hE).asIdeal)
 instance (priority := 2000) homologyRing (hE : finiteLatticeClosed n E) : Ring (Homology (k := k) hE) :=
   Ideal.Quotient.ring (Boundaries hE).asIdeal
 instance (priority := 2000) homologyAlgebra (hE : finiteLatticeClosed n E) : Algebra k (Homology (k := k) hE) :=

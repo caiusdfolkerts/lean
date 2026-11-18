@@ -88,7 +88,14 @@ def execute(o,case,folder,manifest):
   for p in manifest['packages']:
    repository=github_repository(p.get('url',''))
    if repository and repository.lower() in aliases:direct.append(p)
+  requested=case.get('canonical_direct_roots')
+  if requested is not None:
+   if not isinstance(requested,list) or not requested or len(set(requested))!=len(requested):raise ValueError('Invalid explicit canonical direct-root list')
+   known={p['name'] for p in direct}
+   if not set(requested)<=known:raise ValueError('Explicit direct root is not a canonical pinned manifest root')
+   direct=[p for p in direct if p['name'] in requested]
   if not direct:raise ValueError('A pinned canonical Mathlib/TauCeti root is required')
+  d.receipt['generated_canonical_direct_roots']=[p['name'] for p in direct]
   name=manifest.get('name')
   if not isinstance(name,str) or not name:raise ValueError('Manifest package name missing')
   config=[f'name = {json.dumps(name)}','version = "0.1.0"','defaultTargets = ["ChallengeDiagnostic"]','']
