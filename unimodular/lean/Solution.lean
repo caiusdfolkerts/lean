@@ -249,7 +249,7 @@ variable {E N V : Type*} [Fintype E] [AddCommGroup N] [NormedAddCommGroup V]
   [NormedSpace ℝ V] [FiniteDimensional ℝ V] {ι : N →+ V}
 /-- Lattice rationality agrees by the public finite-generator characterization,
 without unfolding the source predicate's nonexposed implementation. -/
-private theorem rational_iff_source (σ : PointedCone ℝ V) :
+theorem rational_iff_source (σ : PointedCone ℝ V) :
     IsLatticeRational ι σ ↔ TauCeti.Toric.IsLatticeRational ι σ :=
   (PalomarFans.Toric.isLatticeRational_iff).trans (TauCeti.Toric.isLatticeRational_iff).symm
 /-- Forget only the fresh packaging names; retain the actual cone set. -/
@@ -271,7 +271,7 @@ def fromOriginalFan (Φ : TauCeti.Toric.Fan ι) : Fan ι where
   mem_of_isFaceOf := Φ.mem_of_isFaceOf
   inf_isFaceOf_left := Φ.inf_isFaceOf_left
 /-- Completeness of the fresh fan is exactly the pointwise cone-covering condition. -/
-private theorem fresh_complete_iff (Φ : Fan ι) :
+theorem fresh_complete_iff (Φ : Fan ι) :
     Φ.IsComplete ↔ ∀ x : V, ∃ σ ∈ Φ.cones, x ∈ σ := by
   simp [Fan.IsComplete, Fan.support, Set.eq_univ_iff_forall]
 /-- The actual source completeness predicate agrees without unfolding its opaque definition. -/
