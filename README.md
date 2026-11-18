@@ -1,3 +1,3 @@
-# Canonical diagnostic revision24
+# Canonical diagnostic revision25
 
-Four canonical checks: Higher principal interface, literal Wishart law component, and Tor/Deformed bounded type probes. No full-preflight claim.
+Volume namespace repair and Mixed/Projection bounded helper TYPE probes. No source project build or full-preflight claim.

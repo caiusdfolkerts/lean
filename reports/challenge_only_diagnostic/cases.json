@@ -4,20 +4,20 @@
   "pipeline_commit": "14aa8d6b3c2f14a8540605e37144560b9a00e7e7",
   "cases": [
     {
-      "id": "higher_specht_measured_repair_smoke",
+      "id": "volume_geometry_supplemental_r2",
       "module": "Challenge",
-      "case_dir": "cases/higher_specht_measured_repair_smoke",
-      "original_package": "reports/higher_specht_bases/measured-repair-smoke",
-      "original_challenge": "reports/higher_specht_bases/measured-repair-smoke/Challenge.lean",
+      "case_dir": "cases/volume_geometry_supplemental_r2",
+      "original_package": "reports/volume_polynomials/effectivity/geometry-supplement-project",
+      "original_challenge": "reports/volume_polynomials/effectivity/geometry-supplement-project/source/ChallengeSupplement.lean",
       "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
       "hashes": {
         "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
-        "lake-manifest.json": "8aeed7826084243b864d3140c58b570991a3a860ea8f4bb17d0fb5ad5052f932",
-        "original-lakefile.toml": "0ad49416adf960c17ba5a5bcad1a9cf2bf3608afb68fc778bc8676851dad1be5",
-        "Challenge.lean": "277c7953849f5b01b88b8a1f0dc1d20ca628fed83581fa738d8c5501d684400a"
+        "lake-manifest.json": "0403d585bc7d7c99efd67cbf31a28d7fb97360e498bd2faa12f81ca5b06230af",
+        "original-lakefile.toml": "1edbb2969ea8cd4288ea22dc0d9fbdb4521a82509dfb8d4d837172422cf89c3f",
+        "Challenge.lean": "8524d9c44973b4116e670f7c41bb39d3346097e8631b47c8a0d2377fe79f0049"
       },
-      "challenge_lines": 487,
-      "challenge_bytes": 23475,
+      "challenge_lines": 599,
+      "challenge_bytes": 29923,
       "dependency_pins": [
         {
           "name": "mathlib",
@@ -65,24 +65,24 @@
           "rev": "34d2efffcb6dc8d5f3537cf6a7f88bfaa999ec49"
         }
       ],
-      "diagnostic_class": "canonical-only-measured-repair-principal-Challenge",
+      "diagnostic_class": "canonical-only-six-geometric-endpoints-three-map-supports-Challenge",
       "remote_memory_mib": 8192
     },
     {
-      "id": "wishart_literal_laws_component",
+      "id": "mixed_volume_auxiliary_types",
       "module": "Challenge",
-      "case_dir": "cases/wishart_literal_laws_component",
-      "original_package": "reports/wishart/canonical-law-route/canonical-case",
-      "original_challenge": "reports/wishart/canonical-law-route/canonical-case/Challenge.lean",
+      "case_dir": "cases/mixed_volume_auxiliary_types",
+      "original_package": "packages/mixed_volume_realization",
+      "original_challenge": "reports/mixed_volume_realization/raw-diagnostic/CanonicalAuxiliaryTypesSmoke.lean",
       "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
       "hashes": {
         "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
-        "lake-manifest.json": "5619bb28ae7f2972522467eccf712e99876805a4fb0b7298a3c8de5918224147",
-        "original-lakefile.toml": "e429ab885c0b86124ac6b748b01715efdede7f476661ead3634e0c69b6521ccb",
-        "Challenge.lean": "b41395c394ed6935eb32284c0b6e6a7b4f3b7a85e78410f8c4709f2e906540d4"
+        "lake-manifest.json": "365dcfeeb633a0ab203b47b0d4012bc05b9055f68a712ada5c671fba648be536",
+        "original-lakefile.toml": "188edbb34ff78aca96fd11514b299bf9a946bdd9cecf74828ac3bab4e88f668f",
+        "Challenge.lean": "ec5ff0d9b4b77034ecba39bcce3061056ec71674488620c144db612d8cf4fb39"
       },
-      "challenge_lines": 101,
-      "challenge_bytes": 4537,
+      "challenge_lines": 886,
+      "challenge_bytes": 43336,
       "dependency_pins": [
         {
           "name": "mathlib",
@@ -130,92 +130,24 @@
           "rev": "34d2efffcb6dc8d5f3537cf6a7f88bfaa999ec49"
         }
       ],
-      "diagnostic_class": "canonical-only-literal-Wishart-law-component",
-      "remote_memory_mib": 8192,
-      "proof_holes": false,
-      "source_project_import": false,
-      "proof_scope": "Literal Wishart densities, both parameter branches, normalized measures and total inverse data plus actual reflection Hermitian proof only; not the complete Wishart Challenge or source bridge"
-    },
-    {
-      "id": "barycentric_tor_auxiliary_types",
-      "module": "Challenge",
-      "case_dir": "cases/barycentric_tor_auxiliary_types",
-      "original_package": "reports/barycentric_invariance_tor/helper-types-smoke",
-      "original_challenge": "reports/barycentric_invariance_tor/helper-types-smoke/Challenge.lean",
-      "lean_toolchain": "leanprover/lean4:v4.35.0",
-      "hashes": {
-        "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
-        "lake-manifest.json": "39171539cb61af4520d7ad747cb986b0bbef964d043032fe4458c87fa9171546",
-        "original-lakefile.toml": "e392c3ef3c19aacc2783da624f7d3eea233c00e1f07d973a43b89926787160e3",
-        "Challenge.lean": "38ced6b46a5a13cc4f9c84f9562ffd1b9347649fbc9e1b601400e6de215bdc6e"
-      },
-      "challenge_lines": 892,
-      "challenge_bytes": 63982,
-      "dependency_pins": [
-        {
-          "name": "mathlib",
-          "url": "https://github.com/leanprover-community/mathlib4.git",
-          "rev": "56a005855ea17e0b0958f73ec801ae140b0a1679"
-        },
-        {
-          "name": "plausible",
-          "url": "https://github.com/leanprover-community/plausible",
-          "rev": "dfa4f38190d07c37e315953e08b90fe2d95b3c24"
-        },
-        {
-          "name": "LeanSearchClient",
-          "url": "https://github.com/leanprover-community/LeanSearchClient",
-          "rev": "d6b4c7be5be75ec4917c873ac50c756dc1436372"
-        },
-        {
-          "name": "importGraph",
-          "url": "https://github.com/leanprover-community/import-graph",
-          "rev": "a41f0e9a4dea23188ea9cc1c41ac9f8bbafe0b93"
-        },
-        {
-          "name": "proofwidgets",
-          "url": "https://github.com/leanprover-community/ProofWidgets4",
-          "rev": "df72b022e558978a1c50264cfc4d7fec86fa8e04"
-        },
-        {
-          "name": "aesop",
-          "url": "https://github.com/leanprover-community/aesop",
-          "rev": "4a174c490d8707121c4a9290800489f105d85e07"
-        },
-        {
-          "name": "Qq",
-          "url": "https://github.com/leanprover-community/quote4",
-          "rev": "dce0ad79c486cb1fb504af04f953c3466b0c6db8"
-        },
-        {
-          "name": "batteries",
-          "url": "https://github.com/leanprover-community/batteries",
-          "rev": "66e469188fe07963e5cf666c7d4433f45b8131c5"
-        },
-        {
-          "name": "Cli",
-          "url": "https://github.com/leanprover/lean4-cli",
-          "rev": "c24fe6078c630e89b489bffe59b3e20ac30d12c8"
-        }
-      ],
-      "diagnostic_class": "canonical-only-eight-bounded-auxiliary-type-lookups",
+      "diagnostic_class": "canonical-only-three-bounded-auxiliary-type-lookups",
       "remote_memory_mib": 8192
     },
     {
-      "id": "deformed_coinvariants_auxiliary_types",
+      "id": "projection_areas_auxiliary_types",
       "module": "Challenge",
-      "case_dir": "cases/deformed_coinvariants_auxiliary_types",
-      "original_package": "reports/deformed_coinvariants/helper-types-smoke",
-      "original_challenge": "reports/deformed_coinvariants/helper-types-smoke/Challenge.lean",
+      "case_dir": "cases/projection_areas_auxiliary_types",
+      "original_package": "packages/projection_areas",
+      "original_challenge": "reports/projection_areas/raw-diagnostic/CanonicalAuxiliaryTypesSmoke.lean",
       "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
       "hashes": {
         "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
-        "lake-manifest.json": "7c641c4eee886d6fce2a8e505a8822a2225c3fcc1ad02a90980071c6d4392d0b",
-        "original-lakefile.toml": "908d25cd3ad3a5911d95fd279e4ed586f113bd9101e6eb693b132dc0b76370f5",
-        "Challenge.lean": "1a7e7486e776bd13f3e600e7bb22f83473e20392369e7de43b283512c716296d"
+        "lake-manifest.json": "a1ec65315c409ef3b5f2857f0be290dc749a16905b04e41d565d57c0fad583bb",
+        "original-lakefile.toml": "a9312b7f773011ee9f76678df4498d6a01dc1765de62830175bc62d389ebd9bb",
+        "Challenge.lean": "409aa0025b28e8bee4ddb9fdbca5c7770e11585773b512138872f4d4b2db5d3f"
       },
-      "challenge_lines": 980,
-      "challenge_bytes": 79871,
+      "challenge_lines": 644,
+      "challenge_bytes": 31699,
       "dependency_pins": [
         {
           "name": "mathlib",
@@ -263,15 +195,14 @@
           "rev": "34d2efffcb6dc8d5f3537cf6a7f88bfaa999ec49"
         }
       ],
-      "diagnostic_class": "canonical-only-fourteen-bounded-auxiliary-type-lookups",
+      "diagnostic_class": "canonical-only-three-bounded-auxiliary-type-lookups",
       "remote_memory_mib": 8192
     }
   ],
   "default_case_ids": [
-    "higher_specht_measured_repair_smoke",
-    "wishart_literal_laws_component",
-    "barycentric_tor_auxiliary_types",
-    "deformed_coinvariants_auxiliary_types"
+    "volume_geometry_supplemental_r2",
+    "mixed_volume_auxiliary_types",
+    "projection_areas_auxiliary_types"
   ],
   "operator_resource_policy": {
     "memory_mib": 8192,
@@ -280,5 +211,5 @@
     "matrix_max_parallel": 2,
     "compile_timeout_seconds": 2400
   },
-  "revision": "24"
+  "revision": "25"
 }
