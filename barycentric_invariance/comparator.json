@@ -1,0 +1,24 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "PalomarBarycentric.parameterModuleComparison",
+    "FourPapers.Universal.factorial_nonunit_no_simplex_comparison",
+    "FourPapers.Universal.faceVertices_mono",
+    "FourPapers.Universal.existsUnique_subface",
+    "FourPapers.Universal.theorem_1_3_uniform_iff",
+    "FourPapers.Universal.standardCoefficients_surjective",
+    "FourPapers.Universal.standardCoefficients_ker",
+    "FourPapers.Universal.isChainExponent_divisorClosed",
+    "FourPapers.Universal.isChainExponent_map_booleanFaceEmbedding",
+    "PalomarBarycentric.integralCoherentComparison",
+    "FourPapers.Universal.barycentricAllowed_divisorClosed",
+    "FourPapers.Universal.barycentricIdeal_eq_forbiddenIdeal",
+    "FourPapers.Universal.standardExponent_map_booleanFaceInclusion"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

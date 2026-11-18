@@ -1,0 +1,72 @@
+version: v0.4
+project:
+  name: Barycentric invariance and universal parameters for face rings
+  description: Actual face rings of every finite simplicial poset and its barycentric
+    subdivision admit coherent integral comparisons that extend to every commutative
+    coefficient ring, commute with the universal rank parameters, preserve ordinary
+    grading and the rank-weight filtration, and identify every relative restriction
+    kernel. Uniform coherent equivariant comparisons in rank at most d exist exactly
+    when (d-1)! is a unit. On a Boolean simplex, a nonunit factorial excludes even
+    an ungraded, incoherent symmetric-group equivariant parameter-module equivalence.
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.CO
+  - math.AC
+  msc2020:
+  - 13F55
+  - 05E45
+sources:
+- type: paper
+  title: Barycentric invariance and universal parameters for face rings
+  authors:
+  - Caius Folkerts
+  relationship: formalizes
+  author_endorsement: participated
+  url: https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/barycentric_invariance/paper.pdf
+  note: 'Exact included paper SHA-256: 44902437462f2861ab65c112f77ec1f19e594753d3c9b277d9adcb63c6e523e4.
+    Scope and declaration locations are recorded in map.json; novelty is not independently
+    established.'
+automation:
+  methods:
+  - method: agent
+    tool_setup: OpenAI Codex
+    notes: Current packaging, source-block migration, source mapping and independent
+      statement extraction are agent-assisted. Fresh build and Comparator evidence
+      are not yet available.
+  - method: other
+    tool_setup: Historical AI assistance reported in the included paper
+    notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing
+      its proofs. The exact model roles and extent of historical Lean automation have
+      not been reconstructed from the snapshot.
+review:
+  status: unchecked
+  notes: Paper, README and exact source inspected by the preparation agent. Independent
+    Challenge elaboration passed under exact Lean4.35.0 and canonical Mathlib56a005855ea17e0b0958f73ec801ae140b0a1679.
+    Full Solution/default-target build, Comparator, independent replay, expert review
+    and Palomar review remain pending.
+scope:
+  known_gaps:
+  - The canonical chain-monomial associated-grade identification of Theorem 1.1 has
+    not yet been independently extracted.
+  - Actual-Tor, rank-selected cohomology, equivariance and product clauses of Theorem
+    1.2, and scalar/H1 obstruction Theorem 9.4, belong to independently concatenated
+    proof bundles and are being prepared as separate honest configurations. Importing
+    all bundles into one Solution would redeclare shared core constants.
+  - Three oversized proof bundles were split at original source-module boundaries
+    with anonymous scopes/options restored and all shards added to explicit Lake roots;
+    fresh full elaboration remains required.
+  - Independent Challenge elaboration passed; Solution, Comparator and independent
+    replay remain pending.
+  notes: The submitted project contains the substantive historical proof development
+    copied from the pinned source snapshot; this is not a thin wrapper. Historical
+    upstream dependencies and license notices are retained. See map.json for exact
+    proposed selections and unresolved source mapping.
+  current_selection: Theorem 1.1 coherent integral construction with graded/filtered
+    parameter-module equivalences, actual face evaluations and every relative restriction
+    kernel; full coherent uniform factorial-unit criterion of Theorem 1.3; unrestricted
+    negative Boolean-simplex obstruction.
