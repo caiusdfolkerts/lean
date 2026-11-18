@@ -202,10 +202,16 @@ def mellinMoment {n : ℕ} (e : Coefficients n) (r : ℝ) : ℝ :=
 def coefficientAdmissible {n : ℕ} (e : Coefficients n) : Prop :=
   (∀ j, 0 ≤ e j) ∧ 0 < e 0 ∧ 0 < e (Fin.last n)
 
+/-- The internal coefficient index is within the literal free-coordinate range.
+The two excluded endpoints are precisely the constant and leading coefficients. -/
+theorem fixedEndpointIndexBound (m : ℕ) (j : Fin (m + 1 + 1))
+    (h0 : ¬ j.val = 0) (hn : ¬ j.val = m + 1) : j.val - 1 < m := by
+  omega
+
 /-- There are `m` free internal coefficients and degree `m+1`. -/
 def fixedEndpoints (m : ℕ) (e0 en : ℝ) (x : Fin m → ℝ) : Coefficients (m + 1) :=
   fun j => if h0 : j.val = 0 then e0 else
-    if hn : j.val = m + 1 then en else x ⟨j.val - 1, by omega⟩
+    if hn : j.val = m + 1 then en else x ⟨j.val - 1, fixedEndpointIndexBound m j h0 hn⟩
 
 def coefficientMap (m : ℕ) (e0 en : ℝ) (x : Fin m → ℝ) : Fin m → ℝ :=
   fun k => coefficientTransform (fixedEndpoints m e0 en x) (k.val + 1)

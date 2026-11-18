@@ -145,10 +145,16 @@ def mellinMoment {n : ℕ} (e : Coefficients n) (r : ℝ) : ℝ :=
   ∫ t in Ioi (0 : ℝ), Real.rpow t (r - 1) *
     Real.rpow (coefficientPolynomial e t) (-(3 / 2 : ℝ))
 
+/-- The internal coefficient index is within the literal free-coordinate range.
+The two excluded endpoints are precisely the constant and leading coefficients. -/
+theorem fixedEndpointIndexBound (m : ℕ) (j : Fin (m + 1 + 1))
+    (h0 : ¬ j.val = 0) (hn : ¬ j.val = m + 1) : j.val - 1 < m := by
+  omega
+
 /-- The degree m+1 coefficient vector with the constant and leading coefficients fixed. -/
 def fixedEndpoints (m : ℕ) (e0 en : ℝ) (x : Fin m → ℝ) : Coefficients (m + 1) :=
   fun j => if h0 : j.val = 0 then e0 else
-    if hn : j.val = m + 1 then en else x ⟨j.val - 1, by omega⟩
+    if hn : j.val = m + 1 then en else x ⟨j.val - 1, fixedEndpointIndexBound m j h0 hn⟩
 
 /-- The m internal components of the coefficient integral transform. -/
 def coefficientMap (m : ℕ) (e0 en : ℝ) (x : Fin m → ℝ) : Fin m → ℝ :=

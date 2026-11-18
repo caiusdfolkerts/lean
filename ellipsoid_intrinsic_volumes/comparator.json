@@ -8,7 +8,8 @@
     "PalomarEllipsoid.sharp_holder_recovery_at_fixed_volume",
     "PalomarEllipsoid.coefficient_transform_theorem",
     "PalomarEllipsoid.coefficient_transform_manifold_with_corners",
-    "PalomarEllipsoid.measured_coefficient_box"
+    "PalomarEllipsoid.measured_coefficient_box",
+    "EllipsoidVerification.fixedEndpointIndexBound"
   ],
   "permitted_axioms": [
     "propext",
