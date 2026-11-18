@@ -1,0 +1,329 @@
+{
+  "repository": "https://github.com/TauCetiProject/TauCeti",
+  "commit": "06d5bb4e3ebb737dc6538567f5c53bf8800b9362",
+  "role": "Proof-only local source; Challenge imports remain canonical Mathlib only",
+  "source_transformations": [],
+  "license": "licenses/vendor/tauceti/LICENSE",
+  "files": [
+    {
+      "module": "TauCeti.Analysis.Convex.LogConcave",
+      "upstream_path": "TauCeti/Analysis/Convex/LogConcave.lean",
+      "candidate_path": "source/TauCeti/Analysis/Convex/LogConcave.lean",
+      "sha256": "3d5b40950aaa78422a00c61f3352f0d5dd1371b9579d8e546a58a248ef4da490",
+      "git_blob_sha1": "668f406cdcd0b8e213a8624ab39561ad0fc65127",
+      "bytes": 9304,
+      "lines": 186,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.Analysis.Convex.Measure",
+      "upstream_path": "TauCeti/Analysis/Convex/Measure.lean",
+      "candidate_path": "source/TauCeti/Analysis/Convex/Measure.lean",
+      "sha256": "ce1c79d13b3584b205c0130c1a88a2e8ec985b3f05fdef0be3fdd1bc38dd85a7",
+      "git_blob_sha1": "225f3f7d78cb17e45d6abe7efa6aad06eb192779",
+      "bytes": 15387,
+      "lines": 274,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.Analysis.Convex.Prod",
+      "upstream_path": "TauCeti/Analysis/Convex/Prod.lean",
+      "candidate_path": "source/TauCeti/Analysis/Convex/Prod.lean",
+      "sha256": "65202359a9c82d6015b1368364853902fcf26d7cce44f4aef17fcff354a3cc34",
+      "git_blob_sha1": "2e813e998b449a800db2db53a87022494675267a",
+      "bytes": 1705,
+      "lines": 39,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.Analysis.Convex.Separation",
+      "upstream_path": "TauCeti/Analysis/Convex/Separation.lean",
+      "candidate_path": "source/TauCeti/Analysis/Convex/Separation.lean",
+      "sha256": "9f53ac5a00dcbc2e33404ae81a32c2a5a163ac2ace01503d69d682a52ee35b61",
+      "git_blob_sha1": "6486355e08bb854a16348763ca81da8129940415",
+      "bytes": 2563,
+      "lines": 56,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.Analysis.InnerProductSpace.LinearIsometry",
+      "upstream_path": "TauCeti/Analysis/InnerProductSpace/LinearIsometry.lean",
+      "candidate_path": "source/TauCeti/Analysis/InnerProductSpace/LinearIsometry.lean",
+      "sha256": "7172431b2e2f27e41deef8eefd26551cf2e986e330ecbcbc33087a38900eb4d8",
+      "git_blob_sha1": "190e7a72a6bde1b15ca8be92c3a889fb0c71b79c",
+      "bytes": 16268,
+      "lines": 331,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.Analysis.InnerProductSpace.Projection.Basic",
+      "upstream_path": "TauCeti/Analysis/InnerProductSpace/Projection/Basic.lean",
+      "candidate_path": "source/TauCeti/Analysis/InnerProductSpace/Projection/Basic.lean",
+      "sha256": "4513389c31f4f1a80da9d55cf2c707c9deb8c75901d74918d19abcc1e07b48e7",
+      "git_blob_sha1": "4d2ed5212cc615912ccfa3ad381f2d62ee12fe10",
+      "bytes": 18544,
+      "lines": 343,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.Analysis.MeanInequalities",
+      "upstream_path": "TauCeti/Analysis/MeanInequalities.lean",
+      "candidate_path": "source/TauCeti/Analysis/MeanInequalities.lean",
+      "sha256": "1063331e9d85463ce4f7dfeade4e1d5c8deb8b84d49b12fed516539ea6a669ee",
+      "git_blob_sha1": "536914632d126afb4a7ed9039ee8e0d2ac61527f",
+      "bytes": 10346,
+      "lines": 180,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.Analysis.SpecialFunctions.Pow.Integral",
+      "upstream_path": "TauCeti/Analysis/SpecialFunctions/Pow/Integral.lean",
+      "candidate_path": "source/TauCeti/Analysis/SpecialFunctions/Pow/Integral.lean",
+      "sha256": "8800932bad020fe70a27f378096df20e0c44a8c422654ebc74ef99e9a9089570",
+      "git_blob_sha1": "489e2d733578f3349431442a636238d63f817a9b",
+      "bytes": 24057,
+      "lines": 412,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.Analysis.SpecialFunctions.Pow.NNReal",
+      "upstream_path": "TauCeti/Analysis/SpecialFunctions/Pow/NNReal.lean",
+      "candidate_path": "source/TauCeti/Analysis/SpecialFunctions/Pow/NNReal.lean",
+      "sha256": "463784c8d0abde752c401daacbe10cad9a118f17d1051d0ce67f4e825a8555fa",
+      "git_blob_sha1": "47d7e26c768c15832f28e62e63e3197e25ae6c20",
+      "bytes": 15189,
+      "lines": 273,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.Analysis.SpecialFunctions.Pow.Real",
+      "upstream_path": "TauCeti/Analysis/SpecialFunctions/Pow/Real.lean",
+      "candidate_path": "source/TauCeti/Analysis/SpecialFunctions/Pow/Real.lean",
+      "sha256": "cf4e50c4a88ff8dd848d4fcee9a725a9cae57e68c4ab14133df10a302d516f01",
+      "git_blob_sha1": "db2859b98fb74071d01a653aff583496b7a7117f",
+      "bytes": 9674,
+      "lines": 175,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.Data.List.PermanencesMinusVariations",
+      "upstream_path": "TauCeti/Data/List/PermanencesMinusVariations.lean",
+      "candidate_path": "source/TauCeti/Data/List/PermanencesMinusVariations.lean",
+      "sha256": "68b04032a492294c777b7705cb146425195319cf52cea0fea29f099a9fb30c2c",
+      "git_blob_sha1": "1d7e2356992690b8589f6d38e7c157897f351bab",
+      "bytes": 10396,
+      "lines": 229,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.Data.Set.Lattice",
+      "upstream_path": "TauCeti/Data/Set/Lattice.lean",
+      "candidate_path": "source/TauCeti/Data/Set/Lattice.lean",
+      "sha256": "91255e8e82491fc13fe6c8a13e07c20126688652130a017a46f196afb02219a5",
+      "git_blob_sha1": "3837cf01713e665a9fc2ed505f4b95e38322d891",
+      "bytes": 1227,
+      "lines": 37,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.Geometry.RealAlgebraic.Semialgebraic.AlgebraicDependence",
+      "upstream_path": "TauCeti/Geometry/RealAlgebraic/Semialgebraic/AlgebraicDependence.lean",
+      "candidate_path": "source/TauCeti/Geometry/RealAlgebraic/Semialgebraic/AlgebraicDependence.lean",
+      "sha256": "fb6259c612432285ed5cabe58230f6115dbd2c6530db70bc6148a4169b9a8aae",
+      "git_blob_sha1": "9197dc050bb2168158a63750da0181c1b5afad00",
+      "bytes": 3077,
+      "lines": 70,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.Geometry.RealAlgebraic.Semialgebraic.Basic",
+      "upstream_path": "TauCeti/Geometry/RealAlgebraic/Semialgebraic/Basic.lean",
+      "candidate_path": "source/TauCeti/Geometry/RealAlgebraic/Semialgebraic/Basic.lean",
+      "sha256": "fc692ea739dfa42526de936efa634c39e2d7afcdbeb133304e897600de2555a3",
+      "git_blob_sha1": "4fca529abd103db54541b0b56998f9bdd55414ef",
+      "bytes": 21841,
+      "lines": 417,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.MeasureTheory.Constructions.HaarToSphere",
+      "upstream_path": "TauCeti/MeasureTheory/Constructions/HaarToSphere.lean",
+      "candidate_path": "source/TauCeti/MeasureTheory/Constructions/HaarToSphere.lean",
+      "sha256": "f28f7429aaad16cc9d66654a1633da0c7ef5b047d134676e90f95cdbdeace3c2",
+      "git_blob_sha1": "8c6c7eb484d1cdcd5aff9414e7bc5a76ec92be68",
+      "bytes": 19542,
+      "lines": 337,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.MeasureTheory.Function.Monotone",
+      "upstream_path": "TauCeti/MeasureTheory/Function/Monotone.lean",
+      "candidate_path": "source/TauCeti/MeasureTheory/Function/Monotone.lean",
+      "sha256": "ff0e2af1d860ee4875179d9b4a3968c29213bda790b945c9635fc891655b4c4a",
+      "git_blob_sha1": "15f78bb974cdbc1740e952a59f3ac511fbf9f08f",
+      "bytes": 2034,
+      "lines": 50,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.MeasureTheory.Group.Measure",
+      "upstream_path": "TauCeti/MeasureTheory/Group/Measure.lean",
+      "candidate_path": "source/TauCeti/MeasureTheory/Group/Measure.lean",
+      "sha256": "c05c03ef7a44675161760f758a922d461b90baee8788b983c57cbbd8a1ac8f83",
+      "git_blob_sha1": "0b9fddb0d45bc1ded96a1df49b30fa1d2718f129",
+      "bytes": 9954,
+      "lines": 188,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.MeasureTheory.Integral.Lebesgue.Subsequence",
+      "upstream_path": "TauCeti/MeasureTheory/Integral/Lebesgue/Subsequence.lean",
+      "candidate_path": "source/TauCeti/MeasureTheory/Integral/Lebesgue/Subsequence.lean",
+      "sha256": "7ec129a23107f51339e5d04b5b01bdf4933f33e84fb40fbdcb73fe9a5aecde96",
+      "git_blob_sha1": "1b2bd851cc4f3ee3bbe199254aa2f811c916c885",
+      "bytes": 2358,
+      "lines": 52,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.MeasureTheory.Integral.PrekopaLeindler",
+      "upstream_path": "TauCeti/MeasureTheory/Integral/PrekopaLeindler.lean",
+      "candidate_path": "source/TauCeti/MeasureTheory/Integral/PrekopaLeindler.lean",
+      "sha256": "499d29897b8156e0027920b6097e471dc4be46fd0ad0139929c0dbe61e4e8a43",
+      "git_blob_sha1": "5c76310e6fa8db2eccb9d43ae8f9c39213f40bba",
+      "bytes": 26801,
+      "lines": 459,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.MeasureTheory.Measure.Lebesgue.BrunnMinkowski.Basic",
+      "upstream_path": "TauCeti/MeasureTheory/Measure/Lebesgue/BrunnMinkowski/Basic.lean",
+      "candidate_path": "source/TauCeti/MeasureTheory/Measure/Lebesgue/BrunnMinkowski/Basic.lean",
+      "sha256": "31f85800d41decb96b79d716ed645ec1879ee1ddd5b8fb1b9c22c7f80fe683d7",
+      "git_blob_sha1": "8ffee75d061bbc97b674a7d83258c1b786eba399",
+      "bytes": 11131,
+      "lines": 205,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.MeasureTheory.Measure.Lebesgue.BrunnMinkowski.Equality",
+      "upstream_path": "TauCeti/MeasureTheory/Measure/Lebesgue/BrunnMinkowski/Equality.lean",
+      "candidate_path": "source/TauCeti/MeasureTheory/Measure/Lebesgue/BrunnMinkowski/Equality.lean",
+      "sha256": "8cbd41fb3e547a401871d7e0d6ab5da7e43abd5301e6e74adf1b03535d9bfc0b",
+      "git_blob_sha1": "6cbb73cff6001d184d329bb2662923a575db056e",
+      "bytes": 13645,
+      "lines": 220,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.MeasureTheory.Measure.Lebesgue.BrunnMinkowski.Homothety",
+      "upstream_path": "TauCeti/MeasureTheory/Measure/Lebesgue/BrunnMinkowski/Homothety.lean",
+      "candidate_path": "source/TauCeti/MeasureTheory/Measure/Lebesgue/BrunnMinkowski/Homothety.lean",
+      "sha256": "c23d31dc030276b3213578166383c0c0c7cc2e88ce4b3439890ad52ec0f1f790",
+      "git_blob_sha1": "2968810395e0738d6c4ad3944a0160bf6d706c52",
+      "bytes": 15186,
+      "lines": 247,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.MeasureTheory.Measure.Lebesgue.BrunnMinkowski.Quantile",
+      "upstream_path": "TauCeti/MeasureTheory/Measure/Lebesgue/BrunnMinkowski/Quantile.lean",
+      "candidate_path": "source/TauCeti/MeasureTheory/Measure/Lebesgue/BrunnMinkowski/Quantile.lean",
+      "sha256": "b38d150572d39cf66bb215635f78aaddf28b7ed194787b3360485b41403f9c41",
+      "git_blob_sha1": "44c3a24f774386c8fda5ef7b3d36382378d98665",
+      "bytes": 18545,
+      "lines": 303,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.MeasureTheory.Measure.Lebesgue.BrunnMinkowski.Real",
+      "upstream_path": "TauCeti/MeasureTheory/Measure/Lebesgue/BrunnMinkowski/Real.lean",
+      "candidate_path": "source/TauCeti/MeasureTheory/Measure/Lebesgue/BrunnMinkowski/Real.lean",
+      "sha256": "10b9e5bcdb838557c8fa3063cb9d298fe29ceea615f145fc128ba2cfe505ee9a",
+      "git_blob_sha1": "8ca0c09604d5a2e0bb9898211d425bf0f4e3f1db",
+      "bytes": 8351,
+      "lines": 157,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.MeasureTheory.Measure.Lebesgue.BrunnMinkowski.Section",
+      "upstream_path": "TauCeti/MeasureTheory/Measure/Lebesgue/BrunnMinkowski/Section.lean",
+      "candidate_path": "source/TauCeti/MeasureTheory/Measure/Lebesgue/BrunnMinkowski/Section.lean",
+      "sha256": "682778a7645142fee258a335e0685ea1f8dfc12e8b97895b3b385d0d43b52102",
+      "git_blob_sha1": "19a0ebe83c6dfa4144cb0d14ac88be97ec0f282d",
+      "bytes": 16443,
+      "lines": 277,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.MeasureTheory.Measure.Lebesgue.EqHaar",
+      "upstream_path": "TauCeti/MeasureTheory/Measure/Lebesgue/EqHaar.lean",
+      "candidate_path": "source/TauCeti/MeasureTheory/Measure/Lebesgue/EqHaar.lean",
+      "sha256": "cca8446b1bf8fe527759e25fe5f72a1e0da56dc27e0955d7b048a62ec1c97734",
+      "git_blob_sha1": "6a3d045a2b6bb794925e0bf19f62ae242fd73c5a",
+      "bytes": 10544,
+      "lines": 215,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.MeasureTheory.Measure.Lebesgue.OrthogonalSlices",
+      "upstream_path": "TauCeti/MeasureTheory/Measure/Lebesgue/OrthogonalSlices.lean",
+      "candidate_path": "source/TauCeti/MeasureTheory/Measure/Lebesgue/OrthogonalSlices.lean",
+      "sha256": "be83b0a9fe5cff7894025c8871f28d21ffeb610a239e03df56bd821f63ed281a",
+      "git_blob_sha1": "ec1653d1a19bb2cab43ef3416a2ce29175b0350e",
+      "bytes": 18292,
+      "lines": 321,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.MeasureTheory.Measure.Mod0MeasureIso",
+      "upstream_path": "TauCeti/MeasureTheory/Measure/Mod0MeasureIso.lean",
+      "candidate_path": "source/TauCeti/MeasureTheory/Measure/Mod0MeasureIso.lean",
+      "sha256": "5716375e5c6039dca0ca2a9d4252baa67ded0b5f7ed311d218477f2ffaf7278f",
+      "git_blob_sha1": "c578e157d12a9c0028eb41f6e742d7c947d384fa",
+      "bytes": 11503,
+      "lines": 250,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.MeasureTheory.SetAlgebra",
+      "upstream_path": "TauCeti/MeasureTheory/SetAlgebra.lean",
+      "candidate_path": "source/TauCeti/MeasureTheory/SetAlgebra.lean",
+      "sha256": "0ff28cfc6dd0f06458ead53215db0833396fcc5afdc2df6f3e93cea30a1d51af",
+      "git_blob_sha1": "0b305a13c28d728880931638d8f4ee7020bc5428",
+      "bytes": 3037,
+      "lines": 70,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.Probability.Cdf",
+      "upstream_path": "TauCeti/Probability/Cdf.lean",
+      "candidate_path": "source/TauCeti/Probability/Cdf.lean",
+      "sha256": "19232b53f35295f46da8672dc7269d3f617905b4b9b3fc6f1f7e910908fecd28",
+      "git_blob_sha1": "b6d7930730753e3279bf2d609f78c89a6b47932a",
+      "bytes": 22358,
+      "lines": 414,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.Probability.ConditionalProbability",
+      "upstream_path": "TauCeti/Probability/ConditionalProbability.lean",
+      "candidate_path": "source/TauCeti/Probability/ConditionalProbability.lean",
+      "sha256": "fda173a4091f9335834bca4a814a39584d0ae1fa1aa6b60243c54c06d3714bf1",
+      "git_blob_sha1": "b7b6b51b7412060a28475a1b6c9607a8cad9a815",
+      "bytes": 13889,
+      "lines": 270,
+      "source_transformations": []
+    },
+    {
+      "module": "TauCeti.Probability.Quantile",
+      "upstream_path": "TauCeti/Probability/Quantile.lean",
+      "candidate_path": "source/TauCeti/Probability/Quantile.lean",
+      "sha256": "f6c2f3fd65ebf7381dea8e9408e8d6daf334948b66962109d44fa30d0cc9f3d0",
+      "git_blob_sha1": "e311e76b8b6e1816af4b1a87d1b90ac90f764953",
+      "bytes": 56593,
+      "lines": 1006,
+      "source_transformations": []
+    }
+  ]
+}

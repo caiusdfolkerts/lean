@@ -4,11 +4,6 @@ defaultTargets = ["proof", "verification"]
 moreLeanArgs = ["-t0", "-j1", "-DElab.async=false", "-Ddebug.skipKernelTC=false"]
 
 [[require]]
-name = "TauCeti"
-git = "https://github.com/TauCetiProject/TauCeti"
-rev = "06d5bb4e3ebb737dc6538567f5c53bf8800b9362"
-
-[[require]]
 name = "mathlib"
 git = "https://github.com/leanprover-community/mathlib4"
 rev = "2cabef97b63d3275776b8b060d802de6a6fa1055"
@@ -29,3 +24,10 @@ allowImportAll = true
 name = "Palomar"
 srcDir = "source"
 roots = ["Challenge", "Solution"]
+
+# Exact pinned proof-only TauCeti closure; no upstream source edits.
+[[lean_lib]]
+name = "TauCetiProofSources"
+srcDir = "source"
+roots = ["TauCeti.Analysis.Convex.LogConcave", "TauCeti.Analysis.Convex.Measure", "TauCeti.Analysis.Convex.Prod", "TauCeti.Analysis.Convex.Separation", "TauCeti.Analysis.InnerProductSpace.LinearIsometry", "TauCeti.Analysis.InnerProductSpace.Projection.Basic", "TauCeti.Analysis.MeanInequalities", "TauCeti.Analysis.SpecialFunctions.Pow.Integral", "TauCeti.Analysis.SpecialFunctions.Pow.NNReal", "TauCeti.Analysis.SpecialFunctions.Pow.Real", "TauCeti.Data.List.PermanencesMinusVariations", "TauCeti.Data.Set.Lattice", "TauCeti.Geometry.RealAlgebraic.Semialgebraic.AlgebraicDependence", "TauCeti.Geometry.RealAlgebraic.Semialgebraic.Basic", "TauCeti.MeasureTheory.Constructions.HaarToSphere", "TauCeti.MeasureTheory.Function.Monotone", "TauCeti.MeasureTheory.Group.Measure", "TauCeti.MeasureTheory.Integral.Lebesgue.Subsequence", "TauCeti.MeasureTheory.Integral.PrekopaLeindler", "TauCeti.MeasureTheory.Measure.Lebesgue.BrunnMinkowski.Basic", "TauCeti.MeasureTheory.Measure.Lebesgue.BrunnMinkowski.Equality", "TauCeti.MeasureTheory.Measure.Lebesgue.BrunnMinkowski.Homothety", "TauCeti.MeasureTheory.Measure.Lebesgue.BrunnMinkowski.Quantile", "TauCeti.MeasureTheory.Measure.Lebesgue.BrunnMinkowski.Real", "TauCeti.MeasureTheory.Measure.Lebesgue.BrunnMinkowski.Section", "TauCeti.MeasureTheory.Measure.Lebesgue.EqHaar", "TauCeti.MeasureTheory.Measure.Lebesgue.OrthogonalSlices", "TauCeti.MeasureTheory.Measure.Mod0MeasureIso", "TauCeti.MeasureTheory.SetAlgebra", "TauCeti.Probability.Cdf", "TauCeti.Probability.ConditionalProbability", "TauCeti.Probability.Quantile"]
+leanOptions = { weak.linter.mathlibStandardSet = true, weak.linter.style.longFile = 1500, weak.linter.style.longFileDefValue = 1500, weak.linter.style.header = true, warningAsError = true }
