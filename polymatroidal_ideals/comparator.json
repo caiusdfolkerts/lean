@@ -46,7 +46,10 @@
     "Characterizations.integralOverIdeal_iff_mem_canonicalLowerBases",
     "Characterizations.integralClosure_set_eq",
     "Characterizations.exchange_of_order_coverage",
-    "Characterizations.Presentation.polymatroidal_iff_linearPresentation_distanceFour"
+    "Characterizations.Presentation.polymatroidal_iff_linearPresentation_distanceFour",
+    "PalomarPolymatroidal.degree_cutoff_iff",
+    "PalomarPolymatroidal.degree_dimension_cutoff_iff",
+    "PalomarPolymatroidal.triangular_cutoff_iff"
   ],
   "permitted_axioms": [
     "propext",

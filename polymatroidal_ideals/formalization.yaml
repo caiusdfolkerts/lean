@@ -12,7 +12,9 @@ project:
     with the prescribed distance-four exchange condition also characterizes
     polymatroidality. The selected consequences
     include genuine quotient-socle recognition, field independence, localization
-    of universal quotients, every monomial term order, exact codimension
+    of universal quotients, every monomial term order, exact retained-variable
+    Koszul homological-position tests through the degree/dimension and triangular
+    cutoffs of Theorems4.2/4.9, exact codimension
     bands and attained minimum testing-set sizes, exact necessary and sufficient
     variable-order coverage, sharp test-number formulas and bounds,
     fixed-degree logarithmic asymptotics, and sharp uniform rejection fractions
@@ -29,7 +31,7 @@ sources:
     type: paper
     relationship: formalizes
     location: paper.pdf
-    note: Theorems1.1,2.11,3.3,3.6; Corollaries2.7,2.10,2.12,3.10,3.11; Theorems3.12,4.5; Corollary4.8; Theorems5.3–5.4; Corollary5.5; Theorem5.6.
+    note: Theorems1.1,2.11,3.3,3.6; Corollaries2.7,2.10,2.12,3.10,3.11; Theorems3.12,4.2,4.5,4.9; Corollary4.8; Theorems5.3–5.4; Corollary5.5; Theorem5.6.
 related_formalizations:
   - title: caiusdfolkerts/research polymatroidal_ideals
     relationship: other
@@ -50,14 +52,13 @@ automation:
 review:
   status: unchecked
   notes: >-
-    The preceding 43-claim Challenge elaborated under pinned Lean4.35.0.
-    A source-context audit then corrected namespace, universe, instance and
-    hypothesis mismatches before first full comparison. The current corrected
-    interface still requires elaboration.
-    No full Solution build, Comparator comparison,
-    NanoDa check, or mathematical peer review is claimed. Challenge definitions
-    repeat the original names and source bodies; the intended comparison must
-    still be validated mechanically.
+    The earlier 43-claim interface elaborated under pinned Lean4.35.0. The
+    subsequent context audit corrected namespaces, universes and hypotheses;
+    its45-comparison canonical preflight then found a missing Finset opening,
+    now restored. The current48-comparison interface adds actual exterior
+    Koszul exactness tests with explicit source bridges to the manuscript's
+    genuine derived Tor order. This extension remains unelaborated; no full
+    Solution, Comparator, NanoDa or mathematical peer-review result is claimed.
 fidelity:
   divergences: >-
     Literal theorem 1.1(A) includes zero; theorem 1.1(B) is recorded both in
@@ -69,5 +70,5 @@ fidelity:
     aggregates split at original source boundaries. The source-module membership
     audit is extended to the split compiled modules.
 limitations:
-  - This preparation does not yet compare the entire requested paper scope. Proposition4.1, sharp homological-position tests of Theorems4.2/4.9, and nonlinear isolator strands remain separate outstanding groups.
-  - The independent Challenge has elaborated; the original proof assembly split, full Solution and raw comparison remain unverified. Preliminary policy lint is not proof verification.
+  - This preparation does not yet compare the entire requested paper scope. Proposition4.1 and explicit sharp nonlinear isolator strands remain separate outstanding groups.
+  - The current48-comparison Challenge and actual Solution wrapper require full elaboration and comparison. Previous narrower elaboration and preliminary policy lint are not full proof verification.

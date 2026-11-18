@@ -374,6 +374,7 @@ theorem polymatroidal_iff_localization_band {B : Family V} (hB : B.Nonempty)
         HasLinearResolution (monomialLocalization k (monomialIdeal k B) U) := by sorry
 end LocalizationBands
 section Coverage
+open Finset
 variable {V : Type*} [Fintype V] [DecidableEq V]
 /-- The designated two variables are the last two, in the specified order. -/
 def FinalPair (o : VariableOrder V) (i j : V) : Prop :=
@@ -589,3 +590,56 @@ theorem polymatroidal_iff_linearPresentation_distanceFour [Nontrivial k]
     IsPolymatroidal B ↔ Nonempty (FiniteLinearPresentation (k := k) B) ∧ DistanceFourExchange B := by sorry
 end Characterizations.Presentation
 end FinitePresentationSource
+
+namespace PalomarPolymatroidal.Simplicial
+variable {V k : Type*} [Fintype V] [LinearOrder V] [CommRing k]
+/-- The actual exterior algebra of the coordinate vector space. -/
+abbrev Ambient (V k : Type*) [Fintype V] [CommRing k] := ExteriorAlgebra k (V → k)
+/-- Its standard exterior basis indexed by coordinate subsets. -/
+def basis : Module.Basis (Finset V) k (Ambient V k) := (Pi.basisFun k V).ExteriorAlgebra
+/-- Actual augmented chains on the displayed faces in exterior degree i. -/
+def Chains (F : Finset V → Prop) (i : ℕ) : Submodule k (Ambient V k) :=
+  Submodule.span k (basis '' {s | F s ∧ s.card = i})
+/-- The signed augmented boundary is literal exterior contraction by the sum
+of the coordinate functionals. -/
+abbrev boundary : Ambient V k →ₗ[k] Ambient V k :=
+  CliffordAlgebra.contractLeft (Q := (0 : QuadraticForm k (V → k)))
+    (Fintype.linearCombination k (fun _ : V => (1 : k)))
+/-- Every actual cycle in this degree is filled by a chain in the next degree. -/
+def ExactIn (F : Finset V → Prop) (i : ℕ) : Prop :=
+  ∀ z : Ambient V k, z ∈ Chains F i → boundary z = 0 →
+    ∃ y : Ambient V k, y ∈ Chains F (i + 1) ∧ boundary y = z
+end PalomarPolymatroidal.Simplicial
+namespace PalomarPolymatroidal
+open Classical CommAlg.Polymatroid Characterizations
+universe u
+variable {V k : Type u} [Fintype V] [LinearOrder V] [Field k]
+/-- The squarefree exponent carried by an exterior coordinate subset. -/
+def faceExponent (s : Finset V) : Exponent V := ∑ j ∈ s, Finsupp.single j 1
+/-- The literal multidegree-a ideal Koszul faces: the residual monomial lies
+in the displayed actual monomial ideal. -/
+def koszulFaces (B : Family V) (a : Exponent V) (s : Finset V) : Prop :=
+  faceExponent s ≤ a ∧ ∃ b ∈ B, b ≤ a - faceExponent s
+/-- Exactness of the actual retained-variable Koszul chains through position t,
+in every fine multidegree outside the linear total-degree strand. -/
+def LocalKoszulLinearThrough (B : Family V) (U : Finset V) (e t : ℕ) : Prop :=
+  ∀ a : Exponent U, ∀ i : ℕ, i ≤ t → a.degree ≠ e + i →
+    Simplicial.ExactIn (k := k) (koszulFaces (localFamily B U) a) i
+/-- Theorem4.2, with the manuscript's exact degree cutoff e_U-1. -/
+theorem degree_cutoff_iff (B : Family V) (hB : B.Nonempty) (hanti : Antichain B) :
+    IsPolymatroidal B ↔ ∀ U : Finset V, ∃ e,
+      Equigenerated (localFamily B U) e ∧
+        (0 < e → LocalKoszulLinearThrough (k := k) B U e (e - 1)) := by sorry
+/-- Theorem4.2's equivalent degree-and-dimension cutoff. -/
+theorem degree_dimension_cutoff_iff (B : Family V) (hB : B.Nonempty) (hanti : Antichain B) :
+    IsPolymatroidal B ↔ ∀ U : Finset V, ∃ e,
+      Equigenerated (localFamily B U) e ∧
+        (0 < e → LocalKoszulLinearThrough (k := k) B U e (min (e - 1) (U.card - 1))) := by sorry
+/-- Theorem4.9, retaining the full triangular homological-position cutoff. -/
+theorem triangular_cutoff_iff (B : Family V) (hB : B.Nonempty) {d : ℕ}
+    (hd : Equigenerated B d) (hd2 : 2 ≤ d) : IsPolymatroidal B ↔
+    ∀ U : Finset V, 2 ≤ U.card → Fintype.card V - U.card ≤ d - 1 →
+      ∃ e, Equigenerated (localFamily B U) e ∧
+        (0 < e → LocalKoszulLinearThrough (k := k) B U e
+          (min (e - 1) (min (d - 1 - (Fintype.card V - U.card)) (U.card - 1)))) := by sorry
+end PalomarPolymatroidal
