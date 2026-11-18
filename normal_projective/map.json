@@ -1,0 +1,70 @@
+{
+  "project": "normal_projective",
+  "baseline_revision": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
+  "status": "prepared_unbuilt",
+  "selected_results": [
+    {
+      "declaration": "NormalProjective.CanonicalModel.Realization.pnRelated_iff_same_component",
+      "source_file": "source/normal_projective/complete.lean",
+      "source_line": 999,
+      "challenge_line": 198
+    },
+    {
+      "declaration": "NormalProjective.CanonicalModel.Realization.local_word_neighbourhood",
+      "source_file": "source/normal_projective/complete.lean",
+      "source_line": 273,
+      "challenge_line": 193
+    },
+    {
+      "declaration": "NormalProjective.simple_three_pn_unique",
+      "source_file": "source/cor2_complete.lean",
+      "source_line": 319,
+      "challenge_line": 283
+    },
+    {
+      "declaration": "NormalProjective.simple_three_faceOrderIso_pn",
+      "source_file": "source/cor2_complete.lean",
+      "source_line": 788,
+      "challenge_line": 286
+    },
+    {
+      "declaration": "NormalProjective.CubeUpper.every_cube_exact_word_of_faceOrderIso",
+      "source_file": "source/cor2_complete.lean",
+      "source_line": 823,
+      "challenge_line": 342
+    },
+    {
+      "declaration": "NormalProjective.CubeTargetLabels.cyclic_to_geometric_cube_lower_bound",
+      "source_file": "source/normal_projective/complete.lean",
+      "source_line": 4292,
+      "challenge_line": 356
+    },
+    {
+      "declaration": "NormalProjective.CubeTargetLabels.geometric_largest_PN_distance",
+      "source_file": "source/normal_projective/complete.lean",
+      "source_line": 4342,
+      "challenge_line": 374
+    },
+    {
+      "declaration": "NormalProjective.PolarCorrection.boundary_origin_counterexample",
+      "source_file": "source/normal_projective/polar_correction.lean",
+      "source_line": 43,
+      "challenge_line": 386
+    }
+  ],
+  "equivalent_formulations": {
+    "Lemma 4": "CanonicalModel.Realization.local_word_neighbourhood is the intrinsic statement; normalized_matrix_local_word is the raw-coordinate presentation of this same local result.",
+    "Theorem 3 upper bound": "every_cube_exact_word_of_faceOrderIso includes the arbitrary actual face-isomorphism case and the special fixed referenceCube case.",
+    "Corollary 2": "simple_three_faceOrderIso_pn includes arbitrary labels; simple_three_pn_unique separately records the full fixed labelled realization space."
+  },
+  "challenge": {
+    "lines": 391,
+    "bytes": 17469,
+    "imports_only_canonical_mathlib": true,
+    "custom_definitions": "Exact source data definitions independently inlined; supporting proof fields are holes and proof irrelevant."
+  },
+  "blockers": [
+    "Fresh Lean build and Comparator/NanoDa validation pending shared runtime."
+  ],
+  "module_migration": "Not needed: all 99 baseline source modules already have module headers and are below 10000 lines."
+}

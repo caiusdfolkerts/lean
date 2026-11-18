@@ -1,0 +1,19 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "NormalProjective.CanonicalModel.Realization.pnRelated_iff_same_component",
+    "NormalProjective.CanonicalModel.Realization.local_word_neighbourhood",
+    "NormalProjective.simple_three_pn_unique",
+    "NormalProjective.simple_three_faceOrderIso_pn",
+    "NormalProjective.CubeUpper.every_cube_exact_word_of_faceOrderIso",
+    "NormalProjective.CubeTargetLabels.cyclic_to_geometric_cube_lower_bound",
+    "NormalProjective.CubeTargetLabels.geometric_largest_PN_distance",
+    "NormalProjective.PolarCorrection.boundary_origin_counterexample"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

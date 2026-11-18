@@ -1,0 +1,54 @@
+version: v0.4
+project:
+  name: Normal-projective equivalence and the exact cube bound
+  description: >-
+    PN equivalence of realizations of a simple polytope is exactly membership
+    in the same connected component of its labelled realization space modulo
+    affine transformations. Local changes use d projective and d normal moves.
+    Every simple convex three-polytope is PN-unique. For every d at least 2,
+    the largest distance from a combinatorial d-cube to the geometric cube is
+    exactly 2d-3, with separate sharp projective and normal counts. The cyclic
+    family forces the lower bound for every target facet labelling. A separate
+    counterexample records the correction required in an auxiliary polarity identity.
+  authors: [Caius Folkerts]
+  responsible_maintainers: [Caius Folkerts]
+  license: Apache-2.0
+classification:
+  arxiv: [math.CO, math.MG]
+  msc2020: [52B05, 52B11]
+sources:
+  - title: Normal-projective equivalence and the exact cube bound
+    authors: [Caius Folkerts]
+    type: paper
+    relationship: formalizes
+    location: paper.pdf
+    note: Theorems 1 and 3, Corollary 2, Lemma 4, and the auxiliary polarity correction.
+related_formalizations:
+  - title: caiusdfolkerts/research normal_projective
+    relationship: repackages
+    id: https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/normal_projective
+    note: >-
+      The complete substantive development is copied here from this exact
+      revision. Palomar packaging adds the independent Challenge statement,
+      Solution import, Comparator configuration, and this metadata.
+automation:
+  methods:
+    - method: agent
+      tool_setup: >-
+        The manuscript discloses GPT-6 Astra, GPT-5.6 Sol, and Kimi K3
+        assistance in developing its proofs. Historical roles beyond that
+        disclosure have not been independently reconstructed.
+    - method: agent
+      tool_setup: >-
+        OpenAI Codex GPT-6.1 Sol prepared the Palomar statement and metadata,
+        comparing the supplied manuscript, README table, and Lean declarations.
+review:
+  status: unchecked
+  notes: >-
+    Packaging has undergone source-level statement comparison only. No fresh
+    Lean build, Comparator run, NanoDa check, or independent mathematical
+    peer review is claimed in this metadata. Consult reports and CI for actual
+    later validation. No weakening of the original selected statements is intended.
+limitations:
+  - Challenge data definitions duplicate exact source semantics and original names; proof-only fields and supporting existence proofs are deliberate Challenge holes. Comparator validation remains required.
+  - The registry entry records the principal theorem and substantive corollary formulations; equivalent raw-matrix and labelled-special-case formulations are represented by the stronger selected canonical statements.
