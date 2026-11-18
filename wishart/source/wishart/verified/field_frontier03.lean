@@ -5,7 +5,7 @@ public import Mathlib.MeasureTheory.Constructions.Pi
 public import Mathlib.MeasureTheory.Integral.Prod
 public import Mathlib.MeasureTheory.Measure.Prod
 public import Mathlib.MeasureTheory.Constructions.BorelSpace.Metrizable
-public import tau_ceti.probability.distributions.gaussian.chi_squared
+public import TauCeti.Probability.Distributions.Gaussian.ChiSquared
 public import Mathlib.Probability.Moments.IntegrableExpMul
 
 /- Recovered canonical proof stage; see verification/recovery-patches.json. -/

@@ -1,0 +1,67 @@
+version: v0.4
+project:
+  name: The Wishart product inequality and spectral correlation
+  description: >-
+    Disjoint principal minors of every real-shape nonsingular Wishart law
+    satisfy the product and selected-split moment inequalities for arbitrary
+    nonnegative real powers, with finite moments and equality exactly for
+    independent active covariance blocks. Proportional shifts and exponent
+    monotonicity, overlapping real compression inequalities under their
+    explicit rank conditions, inverse-Wishart association and exact moments,
+    beta-II comparisons and moments, and complex and quaternion density and
+    singular Gaussian Gram comparisons with finite powers are included.
+  authors: [Caius Folkerts]
+  responsible_maintainers: [Caius Folkerts]
+  license: Apache-2.0
+sources:
+  - type: article
+    title: The Wishart product inequality and spectral correlation
+    authors: [Caius Folkerts]
+    identifier: paper.pdf
+    relationship: formalizes
+    note: >-
+      Theorem 1.1, proportional shifts and Proposition 4.1, Theorems 5.1-5.3,
+      Corollary 5.4, Theorems 6.1 and 6.3, Corollary 6.2, and Theorem 7.1.
+      Exact all-rank moment statements include zero-column compressions.
+classification:
+  arxiv: [math.PR]
+  msc2020: [60E15, 62H10]
+automation:
+  methods:
+    - method: agent
+      tool_setup: OpenAI Codex with GPT-6.1 Sol, preparing Palomar packaging.
+      notes: >-
+        The supplied paper discloses GPT-6 Astra, GPT-5.6 Sol, and Kimi K3
+        assistance in developing the proofs. Prior prompt history was not
+        reconstructed. Packaging copies substantive proofs and extracts an
+        independent custom-definition closure for all selected principal results.
+review:
+  status: unchecked
+  notes: >-
+    The independently extracted Challenge elaborates against the exact pinned
+    canonical TauCeti support closure, with only the 20 intended theorem
+    placeholders. This does not verify the full Solution build, strict
+    dependency comparison, or independent kernel checking, which remain pending.
+fidelity:
+  notes: >-
+    No Gaussian-row restriction is imposed on the real shape in Theorem 1.1.
+    All rank restrictions on real overlaps, actual almost surely constant
+    beta-II factor removals, extended integrals, singular spectral boundary
+    values, and positive-rank effective exponent sums are retained. The
+    corrected manuscript and original-paper provenance are retained under
+    verification/. Supporting radial identities and analytic lemmas remain
+    in the full substantive source and are not separately selected targets.
+    The Challenge imports canonical pinned TauCeti; retained local vendored TauCeti
+    is unused by both comparison modules. Both use the exact same canonical
+    recorded support revision 06d5bb4e3ebb737dc6538567f5c53bf8800b9362 and
+    Mathlib pin. Source snapshot is caiusdfolkerts/research at
+    e0696fddcd3d10b5d6461e62e9b2f02c4195be37.
+
+comparison_support:
+  note: >-
+    Exact supporting theorem types used by inlined definitions are separately
+    compared. Two local quaternion BorelSpace instances are proof-valued
+    definition targets; their types are propositions, so proof irrelevance
+    leaves no unspecified semantic data. Their actual source proofs are supplied
+    by the Solution. All measures, topologies, matrix operations and profiles
+    retain explicit source values.

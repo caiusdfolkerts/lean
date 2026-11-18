@@ -36,3 +36,38 @@ Here's a guide to help you navigate this repo! All verified theorems/proposition
 | Beta-II exact moment range and gamma formula, including empty compressions | `theorem_6_3_finite_moment_iff_positive_ranks`, `theorem_6_3_gamma_moment_effective_rank` |
 | Theorem 7.1: complex and quaternionic densities and singular Gram laws | `theorem_7_1` |
 | Lemma 7.2: general row monotonicity with extended logarithms and zero-valued factors | `FieldGaussian.complex_row_logsubharmonic_product`, `FieldGaussian.quaternion_row_logsubharmonic_product` |
+
+## Palomar statement of record
+
+The independently extracted `Challenge.lean` selects all principal theorems and
+substantive corollaries: Theorem 1.1, proportional shifts and Proposition 4.1,
+Theorems 5.1-5.3, Corollary 5.4, Theorem 6.1, Corollary 6.2, Theorem 6.3 and
+Theorem 7.1, with the full exact all-rank moment ranges and gamma identities.
+`Solution.lean` imports the substantive proofs under their original names.
+The 15 principal declarations are listed in `comparator.json`, alongside five
+supporting theorems and two proof-valued BorelSpace interface definitions.
+
+The real nonsingular range is the full real-shape range alpha > p-1; a
+Gaussian-row representation is not inserted as a hypothesis. Real overlap
+rank conditions remove actual constant/full-rank factors as in the source.
+The inverse comparison is on the actual positive ordered spectrum and retains
+all single, remaining and joint integrability hypotheses and the common
+monotonicity direction. Zero-column determinant factors contribute exponent
+zero in exact inverse and beta-II moment criteria. Beta-II rank removal tests
+actual almost sure constancy. Complex and quaternion laws include actual
+Lebesgue-density normalization, singular Gaussian Gram alternatives, extended
+spectral boundary values and finite determinant powers.
+
+The Challenge imports Mathlib and canonical TauCeti at the recorded support
+revision. The canonical toolchain and dependency manifest were verified to
+match this project's rc1 toolchain and Mathlib pin. Solution proof imports have also been normalized to the exact canonical
+TauCeti paths, so private constant module identities match the Challenge.
+The supplied local support files and their notices remain retained but unused. Supporting analytic and
+radial lemmas remain in the proof source and are not separate Comparator
+targets. Manuscript corrections and the original paper are preserved under
+`verification/`.
+
+The independent Challenge elaborates with the exact pinned canonical TauCeti
+support closure and only its 20 intended theorem placeholders. Full Solution
+compilation, strict dependency comparison and independent kernel checking
+remain pending. This is an unchecked packaging draft.

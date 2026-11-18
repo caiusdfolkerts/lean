@@ -3,12 +3,12 @@ module
 public import wishart.verified.field_analytic_union
 public import Mathlib.LinearAlgebra.Matrix.SchurComplement
 public import Mathlib.Logic.Equiv.Prod
-public import tau_ceti.analysis.matrix.sqrt
+public import TauCeti.Analysis.Matrix.Sqrt
 public import Mathlib.LinearAlgebra.Dimension.StrongRankCondition
-public import tau_ceti.probability.distributions.gamma.basic
-public import tau_ceti.measure_theory.measure.with_density
-public import tau_ceti.probability.distributions.gaussian.density
-public import tau_ceti.measure_theory.measure.pi_with_density
+public import TauCeti.Probability.Distributions.Gamma.Basic
+public import TauCeti.MeasureTheory.Measure.WithDensity
+public import TauCeti.Probability.Distributions.Gaussian.Density
+public import TauCeti.MeasureTheory.Measure.PiWithDensity
 public import Mathlib.MeasureTheory.Integral.DominatedConvergence
 public import Mathlib.LinearAlgebra.Complex.FiniteDimensional
 public import Mathlib.Analysis.Complex.Basic

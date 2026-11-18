@@ -1,7 +1,7 @@
 module
 
 public import wishart.verified.real_remainder02
-public import tau_ceti.probability.distributions.wishart.inverse.moments
+public import TauCeti.Probability.Distributions.Wishart.Inverse.Moments
 
 /- Generated ordinary proof stage. See audit/staged_real_remainder/RealRemainder03/manifest.json. -/
 

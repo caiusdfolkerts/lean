@@ -11,221 +11,221 @@ mathematical axioms or theorem statements.
 module
 
 /- BEGIN GENERATED LOCAL IMPORTS -/
-import all tau_ceti.algebra.module.equiv.basic
-import all tau_ceti.algebra.order.field.basic
-import all tau_ceti.algebra.quaternion.complex_matrix
-import all tau_ceti.algebra.quaternion.norm_form
-import all tau_ceti.algebra.ring.invertible
-import all tau_ceti.analysis.analytic.of_scalars
-import all tau_ceti.analysis.c_star_algebra.continuous_functional_calculus.continuity
-import all tau_ceti.analysis.calculus.cont_diff.translation
-import all tau_ceti.analysis.calculus.deriv.second
-import all tau_ceti.analysis.calculus.derivative_test
-import all tau_ceti.analysis.calculus.f_deriv.continuous_linear_map
-import all tau_ceti.analysis.calculus.f_deriv.det
-import all tau_ceti.analysis.calculus.f_deriv.prod
-import all tau_ceti.analysis.calculus.gradient
-import all tau_ceti.analysis.calculus.line_deriv.basic
-import all tau_ceti.analysis.calculus.parametric_integral
-import all tau_ceti.analysis.calculus.second_derivative
-import all tau_ceti.analysis.calculus.taylor_integral
-import all tau_ceti.analysis.distribution.du_bois_reymond
-import all tau_ceti.analysis.distribution.test_function.line_deriv
-import all tau_ceti.analysis.inner_product_space.basis_span
-import all tau_ceti.analysis.inner_product_space.complete_square
-import all tau_ceti.analysis.inner_product_space.courant_fischer
-import all tau_ceti.analysis.inner_product_space.euclidean.space
-import all tau_ceti.analysis.inner_product_space.gram_schmidt_ortho
-import all tau_ceti.analysis.inner_product_space.harmonic.ball
-import all tau_ceti.analysis.inner_product_space.harmonic.dilation
-import all tau_ceti.analysis.inner_product_space.harmonic.isometry
-import all tau_ceti.analysis.inner_product_space.harmonic.mean_value.basic
-import all tau_ceti.analysis.inner_product_space.harmonic.mean_value.converse
-import all tau_ceti.analysis.inner_product_space.harmonic.subharmonic
-import all tau_ceti.analysis.inner_product_space.hilbert_basis.basic
-import all tau_ceti.analysis.inner_product_space.laplacian.barrier_maximizer
-import all tau_ceti.analysis.inner_product_space.laplacian.basic
-import all tau_ceti.analysis.inner_product_space.laplacian.comparison
-import all tau_ceti.analysis.inner_product_space.laplacian.drift_maximum_principle
-import all tau_ceti.analysis.inner_product_space.laplacian.hopf_lemma
-import all tau_ceti.analysis.inner_product_space.laplacian.local_extr
-import all tau_ceti.analysis.inner_product_space.laplacian.lower_order_maximum_principle
-import all tau_ceti.analysis.inner_product_space.laplacian.maximum_principle
-import all tau_ceti.analysis.inner_product_space.laplacian.parametric_integral
-import all tau_ceti.analysis.inner_product_space.laplacian.strong_maximum_principle
-import all tau_ceti.analysis.inner_product_space.laplacian.weak_maximum_principle
-import all tau_ceti.analysis.inner_product_space.norm_pow
-import all tau_ceti.analysis.inner_product_space.point_spectrum
-import all tau_ceti.analysis.inner_product_space.spectrum
-import all tau_ceti.analysis.inner_product_space.symmetric.functional_calculus
-import all tau_ceti.analysis.matrix.eigenvalues
-import all tau_ceti.analysis.matrix.entrywise_op_norm
-import all tau_ceti.analysis.matrix.euclidean_lin
-import all tau_ceti.analysis.matrix.frobenius
-import all tau_ceti.analysis.matrix.functional_calculus
-import all tau_ceti.analysis.matrix.l2_op_norm
-import all tau_ceti.analysis.matrix.ldl
-import all tau_ceti.analysis.matrix.measurable_space
-import all tau_ceti.analysis.matrix.orthogonal_rows
-import all tau_ceti.analysis.matrix.pos_def
-import all tau_ceti.analysis.matrix.pos_semidef.basic
-import all tau_ceti.analysis.matrix.spectrum
-import all tau_ceti.analysis.matrix.sqrt
-import all tau_ceti.analysis.normed.lp.pi_lp
-import all tau_ceti.analysis.normed.module.ball
-import all tau_ceti.analysis.normed.module.rc_like.real
-import all tau_ceti.analysis.normed.operator.basic
-import all tau_ceti.analysis.pde.fundamental_solution.euclidean.basic
-import all tau_ceti.analysis.pde.green_function.ball
-import all tau_ceti.analysis.pde.green_function.boundary_concentration
-import all tau_ceti.analysis.pde.poisson_integral.ball
-import all tau_ceti.analysis.sobolev.weak_deriv.basic
-import all tau_ceti.analysis.sobolev.weak_deriv.laplacian
-import all tau_ceti.analysis.special_functions.erf
-import all tau_ceti.analysis.special_functions.gamma
-import all tau_ceti.analysis.special_functions.incomplete_gamma
-import all tau_ceti.analysis.special_functions.log.sum_log_one_sub
-import all tau_ceti.analysis.special_functions.multivariate_gamma.basic
-import all tau_ceti.analysis.special_functions.multivariate_gamma.cholesky
-import all tau_ceti.analysis.special_functions.multivariate_gamma.divergence
-import all tau_ceti.analysis.special_functions.multivariate_gamma.integral
-import all tau_ceti.analysis.special_functions.pow.real
-import all tau_ceti.analysis.specific_limits.sq_le_mul_doubling
-import all tau_ceti.combinatorics.enumerative.partition.basic
-import all tau_ceti.combinatorics.enumerative.partition.conjugate
-import all tau_ceti.combinatorics.enumerative.partition.dominance
-import all tau_ceti.combinatorics.young.bender_knuth
-import all tau_ceti.combinatorics.young.diagram
-import all tau_ceti.combinatorics.young.kostka
-import all tau_ceti.combinatorics.young.partitions
-import all tau_ceti.combinatorics.young.semistandard_tableau
-import all tau_ceti.data.fin.tuple.sort
-import all tau_ceti.data.list.lex
-import all tau_ceti.linear_algebra.dimension.submodule
-import all tau_ceti.linear_algebra.eigenspace.anticommute
-import all tau_ceti.linear_algebra.matrix.alternating
-import all tau_ceti.linear_algebra.matrix.block_succ
-import all tau_ceti.linear_algebra.matrix.cholesky.basic
-import all tau_ceti.linear_algebra.matrix.cholesky.coordinates
-import all tau_ceti.linear_algebra.matrix.cholesky.equiv
-import all tau_ceti.linear_algebra.matrix.cholesky.jacobian
-import all tau_ceti.linear_algebra.matrix.cholesky.topology
-import all tau_ceti.linear_algebra.matrix.congruence
-import all tau_ceti.linear_algebra.matrix.general_linear_group.special_unitary
-import all tau_ceti.linear_algebra.matrix.inv_sub
-import all tau_ceti.linear_algebra.matrix.mv_polynomial
-import all tau_ceti.linear_algebra.matrix.pos_semidef
-import all tau_ceti.linear_algebra.matrix.rank
-import all tau_ceti.linear_algebra.matrix.rank.closed
-import all tau_ceti.linear_algebra.matrix.trace.basic
-import all tau_ceti.linear_algebra.matrix.triangular
-import all tau_ceti.linear_algebra.unitary_group
-import all tau_ceti.measure_theory.constructions.haar_to_sphere
-import all tau_ceti.measure_theory.constructions.pi
-import all tau_ceti.measure_theory.function.l1_space.integrable
-import all tau_ceti.measure_theory.function.lp.l_integral_rpow
-import all tau_ceti.measure_theory.function.monotone
-import all tau_ceti.measure_theory.group.integral
-import all tau_ceti.measure_theory.group.measure
-import all tau_ceti.measure_theory.integral.odd_symmetric
-import all tau_ceti.measure_theory.integral.pi
-import all tau_ceti.measure_theory.integral.sub_mean_value
-import all tau_ceti.measure_theory.measure.dirac
-import all tau_ceti.measure_theory.measure.haar.of_basis
-import all tau_ceti.measure_theory.measure.lower_semicontinuous_lintegral
-import all tau_ceti.measure_theory.measure.measurability
-import all tau_ceti.measure_theory.measure.mod0_measure_iso
-import all tau_ceti.measure_theory.measure.mv_polynomial_zero_locus
-import all tau_ceti.measure_theory.measure.pi_with_density
-import all tau_ceti.measure_theory.measure.probability_measure.map
-import all tau_ceti.measure_theory.measure.prod
-import all tau_ceti.measure_theory.measure.product_kernel
-import all tau_ceti.measure_theory.measure.real
-import all tau_ceti.measure_theory.measure.support
-import all tau_ceti.measure_theory.measure.symmetric_matrix.basic
-import all tau_ceti.measure_theory.measure.symmetric_matrix.cholesky
-import all tau_ceti.measure_theory.measure.symmetric_matrix.congruence
-import all tau_ceti.measure_theory.measure.symmetric_matrix.determinant
-import all tau_ceti.measure_theory.measure.symmetric_matrix.integrable
-import all tau_ceti.measure_theory.measure.symmetric_matrix.inv
-import all tau_ceti.measure_theory.measure.symmetric_matrix.lebesgue
-import all tau_ceti.measure_theory.measure.symmetric_matrix.pos_def
-import all tau_ceti.measure_theory.measure.symmetric_matrix.rank
-import all tau_ceti.measure_theory.measure.with_density
-import all tau_ceti.measure_theory.optimal_transport.compactness
-import all tau_ceti.measure_theory.optimal_transport.cost.basic
-import all tau_ceti.measure_theory.optimal_transport.coupling
-import all tau_ceti.measure_theory.optimal_transport.existence.basic
-import all tau_ceti.measure_theory.optimal_transport.gluing
-import all tau_ceti.measure_theory.optimal_transport.graph_plan.basic
-import all tau_ceti.measure_theory.optimal_transport.wasserstein.basic
-import all tau_ceti.measure_theory.optimal_transport.wasserstein.quantile.basic
-import all tau_ceti.probability.cdf
-import all tau_ceti.probability.cdf.density
-import all tau_ceti.probability.density
-import all tau_ceti.probability.distributions.chi_squared.basic
-import all tau_ceti.probability.distributions.chi_squared.support
-import all tau_ceti.probability.distributions.dirac
-import all tau_ceti.probability.distributions.gamma.basic
-import all tau_ceti.probability.distributions.gamma.cdf
-import all tau_ceti.probability.distributions.gamma.char_fun
-import all tau_ceti.probability.distributions.gamma.measurability
-import all tau_ceti.probability.distributions.gamma.pdf
-import all tau_ceti.probability.distributions.gamma.sqrt
-import all tau_ceti.probability.distributions.gamma.support
-import all tau_ceti.probability.distributions.gaussian.affine
-import all tau_ceti.probability.distributions.gaussian.basic
-import all tau_ceti.probability.distributions.gaussian.cdf
-import all tau_ceti.probability.distributions.gaussian.chi_squared
-import all tau_ceti.probability.distributions.gaussian.density
-import all tau_ceti.probability.distributions.gaussian.multivariate
-import all tau_ceti.probability.distributions.gaussian.pi
-import all tau_ceti.probability.distributions.gaussian.quadratic_form
-import all tau_ceti.probability.distributions.inverse_gamma.basic
-import all tau_ceti.probability.distributions.inverse_gamma.moments
-import all tau_ceti.probability.distributions.noncentral_chi_squared.basic
-import all tau_ceti.probability.distributions.noncentral_chi_squared.convolution
-import all tau_ceti.probability.distributions.noncentral_chi_squared.gaussian
-import all tau_ceti.probability.distributions.noncentral_chi_squared.moments
-import all tau_ceti.probability.distributions.noncentral_chi_squared.stochastic_order
-import all tau_ceti.probability.distributions.noncentral_chi_squared.transforms
-import all tau_ceti.probability.distributions.poisson.basic
-import all tau_ceti.probability.distributions.poisson.measurability
-import all tau_ceti.probability.distributions.wishart.agreement
-import all tau_ceti.probability.distributions.wishart.bartlett
-import all tau_ceti.probability.distributions.wishart.basic
-import all tau_ceti.probability.distributions.wishart.char_fun
-import all tau_ceti.probability.distributions.wishart.congruence
-import all tau_ceti.probability.distributions.wishart.inverse.basic
-import all tau_ceti.probability.distributions.wishart.inverse.measurability
-import all tau_ceti.probability.distributions.wishart.inverse.moments
-import all tau_ceti.probability.distributions.wishart.low_dimension
-import all tau_ceti.probability.distributions.wishart.marginal
-import all tau_ceti.probability.distributions.wishart.moments
-import all tau_ceti.probability.distributions.wishart.nonsingular
-import all tau_ceti.probability.distributions.wishart.transforms
-import all tau_ceti.probability.generating_function
-import all tau_ceti.probability.kernel.composition.measure_comp_prod
-import all tau_ceti.probability.kernel.disintegration.countable
-import all tau_ceti.probability.moments.basic
-import all tau_ceti.probability.moments.complex_mgf
-import all tau_ceti.probability.moments.covariance
-import all tau_ceti.probability.moments.determinacy
-import all tau_ceti.probability.moments.integrable_exp_mul
-import all tau_ceti.probability.moments.pi
-import all tau_ceti.probability.quantile
-import all tau_ceti.probability.stochastic_order
-import all tau_ceti.representation_theory.compact.haar
-import all tau_ceti.ring_theory.mv_polynomial.symmetric.schur.basic
-import all tau_ceti.ring_theory.mv_polynomial.symmetric.schur.symmetric
-import all tau_ceti.topology.algebra.mv_polynomial.zero_locus
-import all tau_ceti.topology.algebra.star.unitary
-import all tau_ceti.topology.algebra.unitary_group
-import all tau_ceti.topology.compactness.normed
-import all tau_ceti.topology.e_metric_space.rpow
-import all tau_ceti.topology.instances.matrix
-import all tau_ceti.topology.order.compact
-import all tau_ceti.topology.semicontinuity.approximation
+import all TauCeti.Algebra.Module.Equiv.Basic
+import all TauCeti.Algebra.Order.Field.Basic
+import all TauCeti.Algebra.Quaternion.ComplexMatrix
+import all TauCeti.Algebra.Quaternion.NormForm
+import all TauCeti.Algebra.Ring.Invertible
+import all TauCeti.Analysis.Analytic.OfScalars
+import all TauCeti.Analysis.CStarAlgebra.ContinuousFunctionalCalculus.Continuity
+import all TauCeti.Analysis.Calculus.ContDiff.Translation
+import all TauCeti.Analysis.Calculus.Deriv.Second
+import all TauCeti.Analysis.Calculus.DerivativeTest
+import all TauCeti.Analysis.Calculus.FDeriv.ContinuousLinearMap
+import all TauCeti.Analysis.Calculus.FDeriv.Det
+import all TauCeti.Analysis.Calculus.FDeriv.Prod
+import all TauCeti.Analysis.Calculus.Gradient
+import all TauCeti.Analysis.Calculus.LineDeriv.Basic
+import all TauCeti.Analysis.Calculus.ParametricIntegral
+import all TauCeti.Analysis.Calculus.SecondDerivative
+import all TauCeti.Analysis.Calculus.TaylorIntegral
+import all TauCeti.Analysis.Distribution.DuBoisReymond
+import all TauCeti.Analysis.Distribution.TestFunction.LineDeriv
+import all TauCeti.Analysis.InnerProductSpace.BasisSpan
+import all TauCeti.Analysis.InnerProductSpace.CompleteSquare
+import all TauCeti.Analysis.InnerProductSpace.CourantFischer
+import all TauCeti.Analysis.InnerProductSpace.Euclidean.Space
+import all TauCeti.Analysis.InnerProductSpace.GramSchmidtOrtho
+import all TauCeti.Analysis.InnerProductSpace.Harmonic.Ball
+import all TauCeti.Analysis.InnerProductSpace.Harmonic.Dilation
+import all TauCeti.Analysis.InnerProductSpace.Harmonic.Isometry
+import all TauCeti.Analysis.InnerProductSpace.Harmonic.MeanValue.Basic
+import all TauCeti.Analysis.InnerProductSpace.Harmonic.MeanValue.Converse
+import all TauCeti.Analysis.InnerProductSpace.Harmonic.Subharmonic
+import all TauCeti.Analysis.InnerProductSpace.HilbertBasis.Basic
+import all TauCeti.Analysis.InnerProductSpace.Laplacian.BarrierMaximizer
+import all TauCeti.Analysis.InnerProductSpace.Laplacian.Basic
+import all TauCeti.Analysis.InnerProductSpace.Laplacian.Comparison
+import all TauCeti.Analysis.InnerProductSpace.Laplacian.DriftMaximumPrinciple
+import all TauCeti.Analysis.InnerProductSpace.Laplacian.HopfLemma
+import all TauCeti.Analysis.InnerProductSpace.Laplacian.LocalExtr
+import all TauCeti.Analysis.InnerProductSpace.Laplacian.LowerOrderMaximumPrinciple
+import all TauCeti.Analysis.InnerProductSpace.Laplacian.MaximumPrinciple
+import all TauCeti.Analysis.InnerProductSpace.Laplacian.ParametricIntegral
+import all TauCeti.Analysis.InnerProductSpace.Laplacian.StrongMaximumPrinciple
+import all TauCeti.Analysis.InnerProductSpace.Laplacian.WeakMaximumPrinciple
+import all TauCeti.Analysis.InnerProductSpace.NormPow
+import all TauCeti.Analysis.InnerProductSpace.PointSpectrum
+import all TauCeti.Analysis.InnerProductSpace.Spectrum
+import all TauCeti.Analysis.InnerProductSpace.Symmetric.FunctionalCalculus
+import all TauCeti.Analysis.Matrix.Eigenvalues
+import all TauCeti.Analysis.Matrix.EntrywiseOpNorm
+import all TauCeti.Analysis.Matrix.EuclideanLin
+import all TauCeti.Analysis.Matrix.Frobenius
+import all TauCeti.Analysis.Matrix.FunctionalCalculus
+import all TauCeti.Analysis.Matrix.L2OpNorm
+import all TauCeti.Analysis.Matrix.LDL
+import all TauCeti.Analysis.Matrix.MeasurableSpace
+import all TauCeti.Analysis.Matrix.OrthogonalRows
+import all TauCeti.Analysis.Matrix.PosDef
+import all TauCeti.Analysis.Matrix.PosSemidef.Basic
+import all TauCeti.Analysis.Matrix.Spectrum
+import all TauCeti.Analysis.Matrix.Sqrt
+import all TauCeti.Analysis.Normed.Lp.PiLp
+import all TauCeti.Analysis.Normed.Module.Ball
+import all TauCeti.Analysis.Normed.Module.RCLike.Real
+import all TauCeti.Analysis.Normed.Operator.Basic
+import all TauCeti.Analysis.PDE.FundamentalSolution.Euclidean.Basic
+import all TauCeti.Analysis.PDE.GreenFunction.Ball
+import all TauCeti.Analysis.PDE.GreenFunction.BoundaryConcentration
+import all TauCeti.Analysis.PDE.PoissonIntegral.Ball
+import all TauCeti.Analysis.Sobolev.WeakDeriv.Basic
+import all TauCeti.Analysis.Sobolev.WeakDeriv.Laplacian
+import all TauCeti.Analysis.SpecialFunctions.Erf
+import all TauCeti.Analysis.SpecialFunctions.Gamma
+import all TauCeti.Analysis.SpecialFunctions.IncompleteGamma
+import all TauCeti.Analysis.SpecialFunctions.Log.SumLogOneSub
+import all TauCeti.Analysis.SpecialFunctions.MultivariateGamma.Basic
+import all TauCeti.Analysis.SpecialFunctions.MultivariateGamma.Cholesky
+import all TauCeti.Analysis.SpecialFunctions.MultivariateGamma.Divergence
+import all TauCeti.Analysis.SpecialFunctions.MultivariateGamma.Integral
+import all TauCeti.Analysis.SpecialFunctions.Pow.Real
+import all TauCeti.Analysis.SpecificLimits.SqLeMulDoubling
+import all TauCeti.Combinatorics.Enumerative.Partition.Basic
+import all TauCeti.Combinatorics.Enumerative.Partition.Conjugate
+import all TauCeti.Combinatorics.Enumerative.Partition.Dominance
+import all TauCeti.Combinatorics.Young.BenderKnuth
+import all TauCeti.Combinatorics.Young.Diagram
+import all TauCeti.Combinatorics.Young.Kostka
+import all TauCeti.Combinatorics.Young.Partitions
+import all TauCeti.Combinatorics.Young.SemistandardTableau
+import all TauCeti.Data.Fin.Tuple.Sort
+import all TauCeti.Data.List.Lex
+import all TauCeti.LinearAlgebra.Dimension.Submodule
+import all TauCeti.LinearAlgebra.Eigenspace.Anticommute
+import all TauCeti.LinearAlgebra.Matrix.Alternating
+import all TauCeti.LinearAlgebra.Matrix.BlockSucc
+import all TauCeti.LinearAlgebra.Matrix.Cholesky.Basic
+import all TauCeti.LinearAlgebra.Matrix.Cholesky.Coordinates
+import all TauCeti.LinearAlgebra.Matrix.Cholesky.Equiv
+import all TauCeti.LinearAlgebra.Matrix.Cholesky.Jacobian
+import all TauCeti.LinearAlgebra.Matrix.Cholesky.Topology
+import all TauCeti.LinearAlgebra.Matrix.Congruence
+import all TauCeti.LinearAlgebra.Matrix.GeneralLinearGroup.SpecialUnitary
+import all TauCeti.LinearAlgebra.Matrix.InvSub
+import all TauCeti.LinearAlgebra.Matrix.MvPolynomial
+import all TauCeti.LinearAlgebra.Matrix.PosSemidef
+import all TauCeti.LinearAlgebra.Matrix.Rank
+import all TauCeti.LinearAlgebra.Matrix.Rank.Closed
+import all TauCeti.LinearAlgebra.Matrix.Trace.Basic
+import all TauCeti.LinearAlgebra.Matrix.Triangular
+import all TauCeti.LinearAlgebra.UnitaryGroup
+import all TauCeti.MeasureTheory.Constructions.HaarToSphere
+import all TauCeti.MeasureTheory.Constructions.Pi
+import all TauCeti.MeasureTheory.Function.L1Space.Integrable
+import all TauCeti.MeasureTheory.Function.Lp.LIntegralRpow
+import all TauCeti.MeasureTheory.Function.Monotone
+import all TauCeti.MeasureTheory.Group.Integral
+import all TauCeti.MeasureTheory.Group.Measure
+import all TauCeti.MeasureTheory.Integral.OddSymmetric
+import all TauCeti.MeasureTheory.Integral.Pi
+import all TauCeti.MeasureTheory.Integral.SubMeanValue
+import all TauCeti.MeasureTheory.Measure.Dirac
+import all TauCeti.MeasureTheory.Measure.Haar.OfBasis
+import all TauCeti.MeasureTheory.Measure.LowerSemicontinuousLintegral
+import all TauCeti.MeasureTheory.Measure.Measurability
+import all TauCeti.MeasureTheory.Measure.Mod0MeasureIso
+import all TauCeti.MeasureTheory.Measure.MvPolynomialZeroLocus
+import all TauCeti.MeasureTheory.Measure.PiWithDensity
+import all TauCeti.MeasureTheory.Measure.ProbabilityMeasure.Map
+import all TauCeti.MeasureTheory.Measure.Prod
+import all TauCeti.MeasureTheory.Measure.ProductKernel
+import all TauCeti.MeasureTheory.Measure.Real
+import all TauCeti.MeasureTheory.Measure.Support
+import all TauCeti.MeasureTheory.Measure.SymmetricMatrix.Basic
+import all TauCeti.MeasureTheory.Measure.SymmetricMatrix.Cholesky
+import all TauCeti.MeasureTheory.Measure.SymmetricMatrix.Congruence
+import all TauCeti.MeasureTheory.Measure.SymmetricMatrix.Determinant
+import all TauCeti.MeasureTheory.Measure.SymmetricMatrix.Integrable
+import all TauCeti.MeasureTheory.Measure.SymmetricMatrix.Inv
+import all TauCeti.MeasureTheory.Measure.SymmetricMatrix.Lebesgue
+import all TauCeti.MeasureTheory.Measure.SymmetricMatrix.PosDef
+import all TauCeti.MeasureTheory.Measure.SymmetricMatrix.Rank
+import all TauCeti.MeasureTheory.Measure.WithDensity
+import all TauCeti.MeasureTheory.OptimalTransport.Compactness
+import all TauCeti.MeasureTheory.OptimalTransport.Cost.Basic
+import all TauCeti.MeasureTheory.OptimalTransport.Coupling
+import all TauCeti.MeasureTheory.OptimalTransport.Existence.Basic
+import all TauCeti.MeasureTheory.OptimalTransport.Gluing
+import all TauCeti.MeasureTheory.OptimalTransport.GraphPlan.Basic
+import all TauCeti.MeasureTheory.OptimalTransport.Wasserstein.Basic
+import all TauCeti.MeasureTheory.OptimalTransport.Wasserstein.Quantile.Basic
+import all TauCeti.Probability.Cdf
+import all TauCeti.Probability.Cdf.Density
+import all TauCeti.Probability.Density
+import all TauCeti.Probability.Distributions.ChiSquared.Basic
+import all TauCeti.Probability.Distributions.ChiSquared.Support
+import all TauCeti.Probability.Distributions.Dirac
+import all TauCeti.Probability.Distributions.Gamma.Basic
+import all TauCeti.Probability.Distributions.Gamma.Cdf
+import all TauCeti.Probability.Distributions.Gamma.CharFun
+import all TauCeti.Probability.Distributions.Gamma.Measurability
+import all TauCeti.Probability.Distributions.Gamma.PDF
+import all TauCeti.Probability.Distributions.Gamma.Sqrt
+import all TauCeti.Probability.Distributions.Gamma.Support
+import all TauCeti.Probability.Distributions.Gaussian.Affine
+import all TauCeti.Probability.Distributions.Gaussian.Basic
+import all TauCeti.Probability.Distributions.Gaussian.Cdf
+import all TauCeti.Probability.Distributions.Gaussian.ChiSquared
+import all TauCeti.Probability.Distributions.Gaussian.Density
+import all TauCeti.Probability.Distributions.Gaussian.Multivariate
+import all TauCeti.Probability.Distributions.Gaussian.Pi
+import all TauCeti.Probability.Distributions.Gaussian.QuadraticForm
+import all TauCeti.Probability.Distributions.InverseGamma.Basic
+import all TauCeti.Probability.Distributions.InverseGamma.Moments
+import all TauCeti.Probability.Distributions.NoncentralChiSquared.Basic
+import all TauCeti.Probability.Distributions.NoncentralChiSquared.Convolution
+import all TauCeti.Probability.Distributions.NoncentralChiSquared.Gaussian
+import all TauCeti.Probability.Distributions.NoncentralChiSquared.Moments
+import all TauCeti.Probability.Distributions.NoncentralChiSquared.StochasticOrder
+import all TauCeti.Probability.Distributions.NoncentralChiSquared.Transforms
+import all TauCeti.Probability.Distributions.Poisson.Basic
+import all TauCeti.Probability.Distributions.Poisson.Measurability
+import all TauCeti.Probability.Distributions.Wishart.Agreement
+import all TauCeti.Probability.Distributions.Wishart.Bartlett
+import all TauCeti.Probability.Distributions.Wishart.Basic
+import all TauCeti.Probability.Distributions.Wishart.CharFun
+import all TauCeti.Probability.Distributions.Wishart.Congruence
+import all TauCeti.Probability.Distributions.Wishart.Inverse.Basic
+import all TauCeti.Probability.Distributions.Wishart.Inverse.Measurability
+import all TauCeti.Probability.Distributions.Wishart.Inverse.Moments
+import all TauCeti.Probability.Distributions.Wishart.LowDimension
+import all TauCeti.Probability.Distributions.Wishart.Marginal
+import all TauCeti.Probability.Distributions.Wishart.Moments
+import all TauCeti.Probability.Distributions.Wishart.Nonsingular
+import all TauCeti.Probability.Distributions.Wishart.Transforms
+import all TauCeti.Probability.GeneratingFunction
+import all TauCeti.Probability.Kernel.Composition.MeasureCompProd
+import all TauCeti.Probability.Kernel.Disintegration.Countable
+import all TauCeti.Probability.Moments.Basic
+import all TauCeti.Probability.Moments.ComplexMGF
+import all TauCeti.Probability.Moments.Covariance
+import all TauCeti.Probability.Moments.Determinacy
+import all TauCeti.Probability.Moments.IntegrableExpMul
+import all TauCeti.Probability.Moments.Pi
+import all TauCeti.Probability.Quantile
+import all TauCeti.Probability.StochasticOrder
+import all TauCeti.RepresentationTheory.Compact.Haar
+import all TauCeti.RingTheory.MvPolynomial.Symmetric.Schur.Basic
+import all TauCeti.RingTheory.MvPolynomial.Symmetric.Schur.Symmetric
+import all TauCeti.Topology.Algebra.MvPolynomial.ZeroLocus
+import all TauCeti.Topology.Algebra.Star.Unitary
+import all TauCeti.Topology.Algebra.UnitaryGroup
+import all TauCeti.Topology.Compactness.Normed
+import all TauCeti.Topology.EMetricSpace.Rpow
+import all TauCeti.Topology.Instances.Matrix
+import all TauCeti.Topology.Order.Compact
+import all TauCeti.Topology.Semicontinuity.Approximation
 import all verification.statements_beta_ii
 import all verification.statements_beta_ii_moments
 import all verification.statements_extensions
@@ -623,221 +623,221 @@ run_cmd do
     liftIO <| IO.FS.removeFile outputPath
   -- BEGIN GENERATED OWNED MODULES
   let projectModules : Array Name := #[
-    `tau_ceti.algebra.module.equiv.basic,
-    `tau_ceti.algebra.order.field.basic,
-    `tau_ceti.algebra.quaternion.complex_matrix,
-    `tau_ceti.algebra.quaternion.norm_form,
-    `tau_ceti.algebra.ring.invertible,
-    `tau_ceti.analysis.analytic.of_scalars,
-    `tau_ceti.analysis.c_star_algebra.continuous_functional_calculus.continuity,
-    `tau_ceti.analysis.calculus.cont_diff.translation,
-    `tau_ceti.analysis.calculus.deriv.second,
-    `tau_ceti.analysis.calculus.derivative_test,
-    `tau_ceti.analysis.calculus.f_deriv.continuous_linear_map,
-    `tau_ceti.analysis.calculus.f_deriv.det,
-    `tau_ceti.analysis.calculus.f_deriv.prod,
-    `tau_ceti.analysis.calculus.gradient,
-    `tau_ceti.analysis.calculus.line_deriv.basic,
-    `tau_ceti.analysis.calculus.parametric_integral,
-    `tau_ceti.analysis.calculus.second_derivative,
-    `tau_ceti.analysis.calculus.taylor_integral,
-    `tau_ceti.analysis.distribution.du_bois_reymond,
-    `tau_ceti.analysis.distribution.test_function.line_deriv,
-    `tau_ceti.analysis.inner_product_space.basis_span,
-    `tau_ceti.analysis.inner_product_space.complete_square,
-    `tau_ceti.analysis.inner_product_space.courant_fischer,
-    `tau_ceti.analysis.inner_product_space.euclidean.space,
-    `tau_ceti.analysis.inner_product_space.gram_schmidt_ortho,
-    `tau_ceti.analysis.inner_product_space.harmonic.ball,
-    `tau_ceti.analysis.inner_product_space.harmonic.dilation,
-    `tau_ceti.analysis.inner_product_space.harmonic.isometry,
-    `tau_ceti.analysis.inner_product_space.harmonic.mean_value.basic,
-    `tau_ceti.analysis.inner_product_space.harmonic.mean_value.converse,
-    `tau_ceti.analysis.inner_product_space.harmonic.subharmonic,
-    `tau_ceti.analysis.inner_product_space.hilbert_basis.basic,
-    `tau_ceti.analysis.inner_product_space.laplacian.barrier_maximizer,
-    `tau_ceti.analysis.inner_product_space.laplacian.basic,
-    `tau_ceti.analysis.inner_product_space.laplacian.comparison,
-    `tau_ceti.analysis.inner_product_space.laplacian.drift_maximum_principle,
-    `tau_ceti.analysis.inner_product_space.laplacian.hopf_lemma,
-    `tau_ceti.analysis.inner_product_space.laplacian.local_extr,
-    `tau_ceti.analysis.inner_product_space.laplacian.lower_order_maximum_principle,
-    `tau_ceti.analysis.inner_product_space.laplacian.maximum_principle,
-    `tau_ceti.analysis.inner_product_space.laplacian.parametric_integral,
-    `tau_ceti.analysis.inner_product_space.laplacian.strong_maximum_principle,
-    `tau_ceti.analysis.inner_product_space.laplacian.weak_maximum_principle,
-    `tau_ceti.analysis.inner_product_space.norm_pow,
-    `tau_ceti.analysis.inner_product_space.point_spectrum,
-    `tau_ceti.analysis.inner_product_space.spectrum,
-    `tau_ceti.analysis.inner_product_space.symmetric.functional_calculus,
-    `tau_ceti.analysis.matrix.eigenvalues,
-    `tau_ceti.analysis.matrix.entrywise_op_norm,
-    `tau_ceti.analysis.matrix.euclidean_lin,
-    `tau_ceti.analysis.matrix.frobenius,
-    `tau_ceti.analysis.matrix.functional_calculus,
-    `tau_ceti.analysis.matrix.l2_op_norm,
-    `tau_ceti.analysis.matrix.ldl,
-    `tau_ceti.analysis.matrix.measurable_space,
-    `tau_ceti.analysis.matrix.orthogonal_rows,
-    `tau_ceti.analysis.matrix.pos_def,
-    `tau_ceti.analysis.matrix.pos_semidef.basic,
-    `tau_ceti.analysis.matrix.spectrum,
-    `tau_ceti.analysis.matrix.sqrt,
-    `tau_ceti.analysis.normed.lp.pi_lp,
-    `tau_ceti.analysis.normed.module.ball,
-    `tau_ceti.analysis.normed.module.rc_like.real,
-    `tau_ceti.analysis.normed.operator.basic,
-    `tau_ceti.analysis.pde.fundamental_solution.euclidean.basic,
-    `tau_ceti.analysis.pde.green_function.ball,
-    `tau_ceti.analysis.pde.green_function.boundary_concentration,
-    `tau_ceti.analysis.pde.poisson_integral.ball,
-    `tau_ceti.analysis.sobolev.weak_deriv.basic,
-    `tau_ceti.analysis.sobolev.weak_deriv.laplacian,
-    `tau_ceti.analysis.special_functions.erf,
-    `tau_ceti.analysis.special_functions.gamma,
-    `tau_ceti.analysis.special_functions.incomplete_gamma,
-    `tau_ceti.analysis.special_functions.log.sum_log_one_sub,
-    `tau_ceti.analysis.special_functions.multivariate_gamma.basic,
-    `tau_ceti.analysis.special_functions.multivariate_gamma.cholesky,
-    `tau_ceti.analysis.special_functions.multivariate_gamma.divergence,
-    `tau_ceti.analysis.special_functions.multivariate_gamma.integral,
-    `tau_ceti.analysis.special_functions.pow.real,
-    `tau_ceti.analysis.specific_limits.sq_le_mul_doubling,
-    `tau_ceti.combinatorics.enumerative.partition.basic,
-    `tau_ceti.combinatorics.enumerative.partition.conjugate,
-    `tau_ceti.combinatorics.enumerative.partition.dominance,
-    `tau_ceti.combinatorics.young.bender_knuth,
-    `tau_ceti.combinatorics.young.diagram,
-    `tau_ceti.combinatorics.young.kostka,
-    `tau_ceti.combinatorics.young.partitions,
-    `tau_ceti.combinatorics.young.semistandard_tableau,
-    `tau_ceti.data.fin.tuple.sort,
-    `tau_ceti.data.list.lex,
-    `tau_ceti.linear_algebra.dimension.submodule,
-    `tau_ceti.linear_algebra.eigenspace.anticommute,
-    `tau_ceti.linear_algebra.matrix.alternating,
-    `tau_ceti.linear_algebra.matrix.block_succ,
-    `tau_ceti.linear_algebra.matrix.cholesky.basic,
-    `tau_ceti.linear_algebra.matrix.cholesky.coordinates,
-    `tau_ceti.linear_algebra.matrix.cholesky.equiv,
-    `tau_ceti.linear_algebra.matrix.cholesky.jacobian,
-    `tau_ceti.linear_algebra.matrix.cholesky.topology,
-    `tau_ceti.linear_algebra.matrix.congruence,
-    `tau_ceti.linear_algebra.matrix.general_linear_group.special_unitary,
-    `tau_ceti.linear_algebra.matrix.inv_sub,
-    `tau_ceti.linear_algebra.matrix.mv_polynomial,
-    `tau_ceti.linear_algebra.matrix.pos_semidef,
-    `tau_ceti.linear_algebra.matrix.rank,
-    `tau_ceti.linear_algebra.matrix.rank.closed,
-    `tau_ceti.linear_algebra.matrix.trace.basic,
-    `tau_ceti.linear_algebra.matrix.triangular,
-    `tau_ceti.linear_algebra.unitary_group,
-    `tau_ceti.measure_theory.constructions.haar_to_sphere,
-    `tau_ceti.measure_theory.constructions.pi,
-    `tau_ceti.measure_theory.function.l1_space.integrable,
-    `tau_ceti.measure_theory.function.lp.l_integral_rpow,
-    `tau_ceti.measure_theory.function.monotone,
-    `tau_ceti.measure_theory.group.integral,
-    `tau_ceti.measure_theory.group.measure,
-    `tau_ceti.measure_theory.integral.odd_symmetric,
-    `tau_ceti.measure_theory.integral.pi,
-    `tau_ceti.measure_theory.integral.sub_mean_value,
-    `tau_ceti.measure_theory.measure.dirac,
-    `tau_ceti.measure_theory.measure.haar.of_basis,
-    `tau_ceti.measure_theory.measure.lower_semicontinuous_lintegral,
-    `tau_ceti.measure_theory.measure.measurability,
-    `tau_ceti.measure_theory.measure.mod0_measure_iso,
-    `tau_ceti.measure_theory.measure.mv_polynomial_zero_locus,
-    `tau_ceti.measure_theory.measure.pi_with_density,
-    `tau_ceti.measure_theory.measure.probability_measure.map,
-    `tau_ceti.measure_theory.measure.prod,
-    `tau_ceti.measure_theory.measure.product_kernel,
-    `tau_ceti.measure_theory.measure.real,
-    `tau_ceti.measure_theory.measure.support,
-    `tau_ceti.measure_theory.measure.symmetric_matrix.basic,
-    `tau_ceti.measure_theory.measure.symmetric_matrix.cholesky,
-    `tau_ceti.measure_theory.measure.symmetric_matrix.congruence,
-    `tau_ceti.measure_theory.measure.symmetric_matrix.determinant,
-    `tau_ceti.measure_theory.measure.symmetric_matrix.integrable,
-    `tau_ceti.measure_theory.measure.symmetric_matrix.inv,
-    `tau_ceti.measure_theory.measure.symmetric_matrix.lebesgue,
-    `tau_ceti.measure_theory.measure.symmetric_matrix.pos_def,
-    `tau_ceti.measure_theory.measure.symmetric_matrix.rank,
-    `tau_ceti.measure_theory.measure.with_density,
-    `tau_ceti.measure_theory.optimal_transport.compactness,
-    `tau_ceti.measure_theory.optimal_transport.cost.basic,
-    `tau_ceti.measure_theory.optimal_transport.coupling,
-    `tau_ceti.measure_theory.optimal_transport.existence.basic,
-    `tau_ceti.measure_theory.optimal_transport.gluing,
-    `tau_ceti.measure_theory.optimal_transport.graph_plan.basic,
-    `tau_ceti.measure_theory.optimal_transport.wasserstein.basic,
-    `tau_ceti.measure_theory.optimal_transport.wasserstein.quantile.basic,
-    `tau_ceti.probability.cdf,
-    `tau_ceti.probability.cdf.density,
-    `tau_ceti.probability.density,
-    `tau_ceti.probability.distributions.chi_squared.basic,
-    `tau_ceti.probability.distributions.chi_squared.support,
-    `tau_ceti.probability.distributions.dirac,
-    `tau_ceti.probability.distributions.gamma.basic,
-    `tau_ceti.probability.distributions.gamma.cdf,
-    `tau_ceti.probability.distributions.gamma.char_fun,
-    `tau_ceti.probability.distributions.gamma.measurability,
-    `tau_ceti.probability.distributions.gamma.pdf,
-    `tau_ceti.probability.distributions.gamma.sqrt,
-    `tau_ceti.probability.distributions.gamma.support,
-    `tau_ceti.probability.distributions.gaussian.affine,
-    `tau_ceti.probability.distributions.gaussian.basic,
-    `tau_ceti.probability.distributions.gaussian.cdf,
-    `tau_ceti.probability.distributions.gaussian.chi_squared,
-    `tau_ceti.probability.distributions.gaussian.density,
-    `tau_ceti.probability.distributions.gaussian.multivariate,
-    `tau_ceti.probability.distributions.gaussian.pi,
-    `tau_ceti.probability.distributions.gaussian.quadratic_form,
-    `tau_ceti.probability.distributions.inverse_gamma.basic,
-    `tau_ceti.probability.distributions.inverse_gamma.moments,
-    `tau_ceti.probability.distributions.noncentral_chi_squared.basic,
-    `tau_ceti.probability.distributions.noncentral_chi_squared.convolution,
-    `tau_ceti.probability.distributions.noncentral_chi_squared.gaussian,
-    `tau_ceti.probability.distributions.noncentral_chi_squared.moments,
-    `tau_ceti.probability.distributions.noncentral_chi_squared.stochastic_order,
-    `tau_ceti.probability.distributions.noncentral_chi_squared.transforms,
-    `tau_ceti.probability.distributions.poisson.basic,
-    `tau_ceti.probability.distributions.poisson.measurability,
-    `tau_ceti.probability.distributions.wishart.agreement,
-    `tau_ceti.probability.distributions.wishart.bartlett,
-    `tau_ceti.probability.distributions.wishart.basic,
-    `tau_ceti.probability.distributions.wishart.char_fun,
-    `tau_ceti.probability.distributions.wishart.congruence,
-    `tau_ceti.probability.distributions.wishart.inverse.basic,
-    `tau_ceti.probability.distributions.wishart.inverse.measurability,
-    `tau_ceti.probability.distributions.wishart.inverse.moments,
-    `tau_ceti.probability.distributions.wishart.low_dimension,
-    `tau_ceti.probability.distributions.wishart.marginal,
-    `tau_ceti.probability.distributions.wishart.moments,
-    `tau_ceti.probability.distributions.wishart.nonsingular,
-    `tau_ceti.probability.distributions.wishart.transforms,
-    `tau_ceti.probability.generating_function,
-    `tau_ceti.probability.kernel.composition.measure_comp_prod,
-    `tau_ceti.probability.kernel.disintegration.countable,
-    `tau_ceti.probability.moments.basic,
-    `tau_ceti.probability.moments.complex_mgf,
-    `tau_ceti.probability.moments.covariance,
-    `tau_ceti.probability.moments.determinacy,
-    `tau_ceti.probability.moments.integrable_exp_mul,
-    `tau_ceti.probability.moments.pi,
-    `tau_ceti.probability.quantile,
-    `tau_ceti.probability.stochastic_order,
-    `tau_ceti.representation_theory.compact.haar,
-    `tau_ceti.ring_theory.mv_polynomial.symmetric.schur.basic,
-    `tau_ceti.ring_theory.mv_polynomial.symmetric.schur.symmetric,
-    `tau_ceti.topology.algebra.mv_polynomial.zero_locus,
-    `tau_ceti.topology.algebra.star.unitary,
-    `tau_ceti.topology.algebra.unitary_group,
-    `tau_ceti.topology.compactness.normed,
-    `tau_ceti.topology.e_metric_space.rpow,
-    `tau_ceti.topology.instances.matrix,
-    `tau_ceti.topology.order.compact,
-    `tau_ceti.topology.semicontinuity.approximation,
+    `TauCeti.Algebra.Module.Equiv.Basic,
+    `TauCeti.Algebra.Order.Field.Basic,
+    `TauCeti.Algebra.Quaternion.ComplexMatrix,
+    `TauCeti.Algebra.Quaternion.NormForm,
+    `TauCeti.Algebra.Ring.Invertible,
+    `TauCeti.Analysis.Analytic.OfScalars,
+    `TauCeti.Analysis.CStarAlgebra.ContinuousFunctionalCalculus.Continuity,
+    `TauCeti.Analysis.Calculus.ContDiff.Translation,
+    `TauCeti.Analysis.Calculus.Deriv.Second,
+    `TauCeti.Analysis.Calculus.DerivativeTest,
+    `TauCeti.Analysis.Calculus.FDeriv.ContinuousLinearMap,
+    `TauCeti.Analysis.Calculus.FDeriv.Det,
+    `TauCeti.Analysis.Calculus.FDeriv.Prod,
+    `TauCeti.Analysis.Calculus.Gradient,
+    `TauCeti.Analysis.Calculus.LineDeriv.Basic,
+    `TauCeti.Analysis.Calculus.ParametricIntegral,
+    `TauCeti.Analysis.Calculus.SecondDerivative,
+    `TauCeti.Analysis.Calculus.TaylorIntegral,
+    `TauCeti.Analysis.Distribution.DuBoisReymond,
+    `TauCeti.Analysis.Distribution.TestFunction.LineDeriv,
+    `TauCeti.Analysis.InnerProductSpace.BasisSpan,
+    `TauCeti.Analysis.InnerProductSpace.CompleteSquare,
+    `TauCeti.Analysis.InnerProductSpace.CourantFischer,
+    `TauCeti.Analysis.InnerProductSpace.Euclidean.Space,
+    `TauCeti.Analysis.InnerProductSpace.GramSchmidtOrtho,
+    `TauCeti.Analysis.InnerProductSpace.Harmonic.Ball,
+    `TauCeti.Analysis.InnerProductSpace.Harmonic.Dilation,
+    `TauCeti.Analysis.InnerProductSpace.Harmonic.Isometry,
+    `TauCeti.Analysis.InnerProductSpace.Harmonic.MeanValue.Basic,
+    `TauCeti.Analysis.InnerProductSpace.Harmonic.MeanValue.Converse,
+    `TauCeti.Analysis.InnerProductSpace.Harmonic.Subharmonic,
+    `TauCeti.Analysis.InnerProductSpace.HilbertBasis.Basic,
+    `TauCeti.Analysis.InnerProductSpace.Laplacian.BarrierMaximizer,
+    `TauCeti.Analysis.InnerProductSpace.Laplacian.Basic,
+    `TauCeti.Analysis.InnerProductSpace.Laplacian.Comparison,
+    `TauCeti.Analysis.InnerProductSpace.Laplacian.DriftMaximumPrinciple,
+    `TauCeti.Analysis.InnerProductSpace.Laplacian.HopfLemma,
+    `TauCeti.Analysis.InnerProductSpace.Laplacian.LocalExtr,
+    `TauCeti.Analysis.InnerProductSpace.Laplacian.LowerOrderMaximumPrinciple,
+    `TauCeti.Analysis.InnerProductSpace.Laplacian.MaximumPrinciple,
+    `TauCeti.Analysis.InnerProductSpace.Laplacian.ParametricIntegral,
+    `TauCeti.Analysis.InnerProductSpace.Laplacian.StrongMaximumPrinciple,
+    `TauCeti.Analysis.InnerProductSpace.Laplacian.WeakMaximumPrinciple,
+    `TauCeti.Analysis.InnerProductSpace.NormPow,
+    `TauCeti.Analysis.InnerProductSpace.PointSpectrum,
+    `TauCeti.Analysis.InnerProductSpace.Spectrum,
+    `TauCeti.Analysis.InnerProductSpace.Symmetric.FunctionalCalculus,
+    `TauCeti.Analysis.Matrix.Eigenvalues,
+    `TauCeti.Analysis.Matrix.EntrywiseOpNorm,
+    `TauCeti.Analysis.Matrix.EuclideanLin,
+    `TauCeti.Analysis.Matrix.Frobenius,
+    `TauCeti.Analysis.Matrix.FunctionalCalculus,
+    `TauCeti.Analysis.Matrix.L2OpNorm,
+    `TauCeti.Analysis.Matrix.LDL,
+    `TauCeti.Analysis.Matrix.MeasurableSpace,
+    `TauCeti.Analysis.Matrix.OrthogonalRows,
+    `TauCeti.Analysis.Matrix.PosDef,
+    `TauCeti.Analysis.Matrix.PosSemidef.Basic,
+    `TauCeti.Analysis.Matrix.Spectrum,
+    `TauCeti.Analysis.Matrix.Sqrt,
+    `TauCeti.Analysis.Normed.Lp.PiLp,
+    `TauCeti.Analysis.Normed.Module.Ball,
+    `TauCeti.Analysis.Normed.Module.RCLike.Real,
+    `TauCeti.Analysis.Normed.Operator.Basic,
+    `TauCeti.Analysis.PDE.FundamentalSolution.Euclidean.Basic,
+    `TauCeti.Analysis.PDE.GreenFunction.Ball,
+    `TauCeti.Analysis.PDE.GreenFunction.BoundaryConcentration,
+    `TauCeti.Analysis.PDE.PoissonIntegral.Ball,
+    `TauCeti.Analysis.Sobolev.WeakDeriv.Basic,
+    `TauCeti.Analysis.Sobolev.WeakDeriv.Laplacian,
+    `TauCeti.Analysis.SpecialFunctions.Erf,
+    `TauCeti.Analysis.SpecialFunctions.Gamma,
+    `TauCeti.Analysis.SpecialFunctions.IncompleteGamma,
+    `TauCeti.Analysis.SpecialFunctions.Log.SumLogOneSub,
+    `TauCeti.Analysis.SpecialFunctions.MultivariateGamma.Basic,
+    `TauCeti.Analysis.SpecialFunctions.MultivariateGamma.Cholesky,
+    `TauCeti.Analysis.SpecialFunctions.MultivariateGamma.Divergence,
+    `TauCeti.Analysis.SpecialFunctions.MultivariateGamma.Integral,
+    `TauCeti.Analysis.SpecialFunctions.Pow.Real,
+    `TauCeti.Analysis.SpecificLimits.SqLeMulDoubling,
+    `TauCeti.Combinatorics.Enumerative.Partition.Basic,
+    `TauCeti.Combinatorics.Enumerative.Partition.Conjugate,
+    `TauCeti.Combinatorics.Enumerative.Partition.Dominance,
+    `TauCeti.Combinatorics.Young.BenderKnuth,
+    `TauCeti.Combinatorics.Young.Diagram,
+    `TauCeti.Combinatorics.Young.Kostka,
+    `TauCeti.Combinatorics.Young.Partitions,
+    `TauCeti.Combinatorics.Young.SemistandardTableau,
+    `TauCeti.Data.Fin.Tuple.Sort,
+    `TauCeti.Data.List.Lex,
+    `TauCeti.LinearAlgebra.Dimension.Submodule,
+    `TauCeti.LinearAlgebra.Eigenspace.Anticommute,
+    `TauCeti.LinearAlgebra.Matrix.Alternating,
+    `TauCeti.LinearAlgebra.Matrix.BlockSucc,
+    `TauCeti.LinearAlgebra.Matrix.Cholesky.Basic,
+    `TauCeti.LinearAlgebra.Matrix.Cholesky.Coordinates,
+    `TauCeti.LinearAlgebra.Matrix.Cholesky.Equiv,
+    `TauCeti.LinearAlgebra.Matrix.Cholesky.Jacobian,
+    `TauCeti.LinearAlgebra.Matrix.Cholesky.Topology,
+    `TauCeti.LinearAlgebra.Matrix.Congruence,
+    `TauCeti.LinearAlgebra.Matrix.GeneralLinearGroup.SpecialUnitary,
+    `TauCeti.LinearAlgebra.Matrix.InvSub,
+    `TauCeti.LinearAlgebra.Matrix.MvPolynomial,
+    `TauCeti.LinearAlgebra.Matrix.PosSemidef,
+    `TauCeti.LinearAlgebra.Matrix.Rank,
+    `TauCeti.LinearAlgebra.Matrix.Rank.Closed,
+    `TauCeti.LinearAlgebra.Matrix.Trace.Basic,
+    `TauCeti.LinearAlgebra.Matrix.Triangular,
+    `TauCeti.LinearAlgebra.UnitaryGroup,
+    `TauCeti.MeasureTheory.Constructions.HaarToSphere,
+    `TauCeti.MeasureTheory.Constructions.Pi,
+    `TauCeti.MeasureTheory.Function.L1Space.Integrable,
+    `TauCeti.MeasureTheory.Function.Lp.LIntegralRpow,
+    `TauCeti.MeasureTheory.Function.Monotone,
+    `TauCeti.MeasureTheory.Group.Integral,
+    `TauCeti.MeasureTheory.Group.Measure,
+    `TauCeti.MeasureTheory.Integral.OddSymmetric,
+    `TauCeti.MeasureTheory.Integral.Pi,
+    `TauCeti.MeasureTheory.Integral.SubMeanValue,
+    `TauCeti.MeasureTheory.Measure.Dirac,
+    `TauCeti.MeasureTheory.Measure.Haar.OfBasis,
+    `TauCeti.MeasureTheory.Measure.LowerSemicontinuousLintegral,
+    `TauCeti.MeasureTheory.Measure.Measurability,
+    `TauCeti.MeasureTheory.Measure.Mod0MeasureIso,
+    `TauCeti.MeasureTheory.Measure.MvPolynomialZeroLocus,
+    `TauCeti.MeasureTheory.Measure.PiWithDensity,
+    `TauCeti.MeasureTheory.Measure.ProbabilityMeasure.Map,
+    `TauCeti.MeasureTheory.Measure.Prod,
+    `TauCeti.MeasureTheory.Measure.ProductKernel,
+    `TauCeti.MeasureTheory.Measure.Real,
+    `TauCeti.MeasureTheory.Measure.Support,
+    `TauCeti.MeasureTheory.Measure.SymmetricMatrix.Basic,
+    `TauCeti.MeasureTheory.Measure.SymmetricMatrix.Cholesky,
+    `TauCeti.MeasureTheory.Measure.SymmetricMatrix.Congruence,
+    `TauCeti.MeasureTheory.Measure.SymmetricMatrix.Determinant,
+    `TauCeti.MeasureTheory.Measure.SymmetricMatrix.Integrable,
+    `TauCeti.MeasureTheory.Measure.SymmetricMatrix.Inv,
+    `TauCeti.MeasureTheory.Measure.SymmetricMatrix.Lebesgue,
+    `TauCeti.MeasureTheory.Measure.SymmetricMatrix.PosDef,
+    `TauCeti.MeasureTheory.Measure.SymmetricMatrix.Rank,
+    `TauCeti.MeasureTheory.Measure.WithDensity,
+    `TauCeti.MeasureTheory.OptimalTransport.Compactness,
+    `TauCeti.MeasureTheory.OptimalTransport.Cost.Basic,
+    `TauCeti.MeasureTheory.OptimalTransport.Coupling,
+    `TauCeti.MeasureTheory.OptimalTransport.Existence.Basic,
+    `TauCeti.MeasureTheory.OptimalTransport.Gluing,
+    `TauCeti.MeasureTheory.OptimalTransport.GraphPlan.Basic,
+    `TauCeti.MeasureTheory.OptimalTransport.Wasserstein.Basic,
+    `TauCeti.MeasureTheory.OptimalTransport.Wasserstein.Quantile.Basic,
+    `TauCeti.Probability.Cdf,
+    `TauCeti.Probability.Cdf.Density,
+    `TauCeti.Probability.Density,
+    `TauCeti.Probability.Distributions.ChiSquared.Basic,
+    `TauCeti.Probability.Distributions.ChiSquared.Support,
+    `TauCeti.Probability.Distributions.Dirac,
+    `TauCeti.Probability.Distributions.Gamma.Basic,
+    `TauCeti.Probability.Distributions.Gamma.Cdf,
+    `TauCeti.Probability.Distributions.Gamma.CharFun,
+    `TauCeti.Probability.Distributions.Gamma.Measurability,
+    `TauCeti.Probability.Distributions.Gamma.PDF,
+    `TauCeti.Probability.Distributions.Gamma.Sqrt,
+    `TauCeti.Probability.Distributions.Gamma.Support,
+    `TauCeti.Probability.Distributions.Gaussian.Affine,
+    `TauCeti.Probability.Distributions.Gaussian.Basic,
+    `TauCeti.Probability.Distributions.Gaussian.Cdf,
+    `TauCeti.Probability.Distributions.Gaussian.ChiSquared,
+    `TauCeti.Probability.Distributions.Gaussian.Density,
+    `TauCeti.Probability.Distributions.Gaussian.Multivariate,
+    `TauCeti.Probability.Distributions.Gaussian.Pi,
+    `TauCeti.Probability.Distributions.Gaussian.QuadraticForm,
+    `TauCeti.Probability.Distributions.InverseGamma.Basic,
+    `TauCeti.Probability.Distributions.InverseGamma.Moments,
+    `TauCeti.Probability.Distributions.NoncentralChiSquared.Basic,
+    `TauCeti.Probability.Distributions.NoncentralChiSquared.Convolution,
+    `TauCeti.Probability.Distributions.NoncentralChiSquared.Gaussian,
+    `TauCeti.Probability.Distributions.NoncentralChiSquared.Moments,
+    `TauCeti.Probability.Distributions.NoncentralChiSquared.StochasticOrder,
+    `TauCeti.Probability.Distributions.NoncentralChiSquared.Transforms,
+    `TauCeti.Probability.Distributions.Poisson.Basic,
+    `TauCeti.Probability.Distributions.Poisson.Measurability,
+    `TauCeti.Probability.Distributions.Wishart.Agreement,
+    `TauCeti.Probability.Distributions.Wishart.Bartlett,
+    `TauCeti.Probability.Distributions.Wishart.Basic,
+    `TauCeti.Probability.Distributions.Wishart.CharFun,
+    `TauCeti.Probability.Distributions.Wishart.Congruence,
+    `TauCeti.Probability.Distributions.Wishart.Inverse.Basic,
+    `TauCeti.Probability.Distributions.Wishart.Inverse.Measurability,
+    `TauCeti.Probability.Distributions.Wishart.Inverse.Moments,
+    `TauCeti.Probability.Distributions.Wishart.LowDimension,
+    `TauCeti.Probability.Distributions.Wishart.Marginal,
+    `TauCeti.Probability.Distributions.Wishart.Moments,
+    `TauCeti.Probability.Distributions.Wishart.Nonsingular,
+    `TauCeti.Probability.Distributions.Wishart.Transforms,
+    `TauCeti.Probability.GeneratingFunction,
+    `TauCeti.Probability.Kernel.Composition.MeasureCompProd,
+    `TauCeti.Probability.Kernel.Disintegration.Countable,
+    `TauCeti.Probability.Moments.Basic,
+    `TauCeti.Probability.Moments.ComplexMGF,
+    `TauCeti.Probability.Moments.Covariance,
+    `TauCeti.Probability.Moments.Determinacy,
+    `TauCeti.Probability.Moments.IntegrableExpMul,
+    `TauCeti.Probability.Moments.Pi,
+    `TauCeti.Probability.Quantile,
+    `TauCeti.Probability.StochasticOrder,
+    `TauCeti.RepresentationTheory.Compact.Haar,
+    `TauCeti.RingTheory.MvPolynomial.Symmetric.Schur.Basic,
+    `TauCeti.RingTheory.MvPolynomial.Symmetric.Schur.Symmetric,
+    `TauCeti.Topology.Algebra.MvPolynomial.ZeroLocus,
+    `TauCeti.Topology.Algebra.Star.Unitary,
+    `TauCeti.Topology.Algebra.UnitaryGroup,
+    `TauCeti.Topology.Compactness.Normed,
+    `TauCeti.Topology.EMetricSpace.Rpow,
+    `TauCeti.Topology.Instances.Matrix,
+    `TauCeti.Topology.Order.Compact,
+    `TauCeti.Topology.Semicontinuity.Approximation,
     `verification.statements_beta_ii,
     `verification.statements_beta_ii_moments,
     `verification.statements_extensions,
@@ -1115,7 +1115,7 @@ run_cmd do
   for moduleName in moduleNames do
     let localPrefix := moduleName.toString.startsWith "wishart." ||
       moduleName == `wishart_main ||
-      moduleName.toString.startsWith "tau_ceti." ||
+      moduleName.toString.startsWith "TauCeti." ||
       moduleName.toString.startsWith "verification.statements_"
     if localPrefix && !selectedModules.contains moduleName then
       throwError "Local import absent from generated audit closure: {moduleName}"
@@ -1339,10 +1339,16 @@ run_cmd do
     ("imported_boundary_dependencies", Json.arr leafInfo),
     ("hidden_body_boundaries", toJson
       (summaryBoundaries.toArray.qsort Name.lt |>.map Name.toString))]
-  liftIO <| IO.FS.createDirAll outputDirectory
-  let temporaryPath := outputDirectory / "kernel-dependencies.json.tmp"
-  liftIO <| IO.FS.writeFile temporaryPath (graph.pretty ++ "\n")
-  liftIO <| IO.FS.rename temporaryPath outputPath
+  -- Validation above is mandatory; JSON persistence is optional in read-only builds.
+  let reportPersisted ← liftIO do
+    try
+      IO.FS.createDirAll outputDirectory
+      let temporaryPath := outputDirectory / "kernel-dependencies.json.tmp"
+      IO.FS.writeFile temporaryPath (graph.pretty ++ "\n")
+      IO.FS.rename temporaryPath outputPath
+      pure true
+    catch _ => pure false
+  logInfo m!"Optional kernel audit report persisted: {reportPersisted}"
   logInfo m!"KERNEL_AUDIT_OK {constants.size} local declarations; {localTheorems} theorems; {roots.size} roots; {projectModules.size} local modules; {reachable.size} inspected dependency nodes"
 
 end WishartAudit.Kernel

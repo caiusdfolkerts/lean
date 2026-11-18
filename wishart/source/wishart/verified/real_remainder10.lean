@@ -1,7 +1,7 @@
 module
 
 public import wishart.verified.real_remainder09
-public import tau_ceti.probability.distributions.wishart.agreement
+public import TauCeti.Probability.Distributions.Wishart.Agreement
 
 /- Generated ordinary proof stage. See audit/staged_real_remainder/RealRemainder10/manifest.json. -/
 

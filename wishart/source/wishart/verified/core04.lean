@@ -1,7 +1,7 @@
 module
 
 public import wishart.verified.core03
-public import tau_ceti.probability.distributions.gaussian.density
+public import TauCeti.Probability.Distributions.Gaussian.Density
 public import Mathlib.Analysis.Calculus.BumpFunction.InnerProduct
 public import Mathlib.Analysis.Calculus.LHopital
 

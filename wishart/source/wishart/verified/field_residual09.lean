@@ -2,7 +2,7 @@ module
 
 public import wishart.verified.field_residual08
 public import Mathlib.Topology.Order.MonotoneConvergence
-public import tau_ceti.analysis.matrix.functional_calculus
+public import TauCeti.Analysis.Matrix.FunctionalCalculus
 public import Mathlib.LinearAlgebra.Lagrange
 public import Mathlib.Analysis.SpecialFunctions.ContinuousFunctionalCalculus.Rpow.Basic
 

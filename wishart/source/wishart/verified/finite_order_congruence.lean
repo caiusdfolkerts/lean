@@ -2,7 +2,7 @@ module
 
 public import wishart.verified.finite_order_radial_calculus
 public import wishart.verified.finite_order_covariance
-public import tau_ceti.analysis.calculus.second_derivative
+public import TauCeti.Analysis.Calculus.SecondDerivative
 
 /-!
 # Covariance congruence for the finite-order radial generator

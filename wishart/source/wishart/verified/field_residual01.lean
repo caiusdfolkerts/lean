@@ -3,11 +3,11 @@ module
 public import wishart.verified.field_analytic01
 public import wishart.verified.real_remainder09
 public import Mathlib.LinearAlgebra.Matrix.Permutation
-public import tau_ceti.analysis.matrix.eigenvalues
+public import TauCeti.Analysis.Matrix.Eigenvalues
 public import Mathlib.Data.Fin.Tuple.Sort
 public import Mathlib.Logic.Equiv.Fin.Basic
 public import wishart.verified.field_frontier01
-public import tau_ceti.representation_theory.compact.haar
+public import TauCeti.RepresentationTheory.Compact.Haar
 public import Mathlib.Topology.Algebra.Star.Unitary
 public import wishart.verified.field_frontier02
 public import Mathlib.Analysis.Matrix.PosDef

@@ -1,0 +1,35 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "WishartVerification.theorem_1_1",
+    "WishartVerification.proportional_shift_product_inequalities",
+    "WishartVerification.proposition_4_1",
+    "Wishart.theorem_5_1_complete",
+    "Wishart.theorem_5_2_complete",
+    "Wishart.theorem_5_3_complete",
+    "Wishart.corollary_5_4_complete",
+    "Wishart.theorem_6_1_on_positiveOrderedSpectrum",
+    "Wishart.corollary_6_2_positive_ranks",
+    "Wishart.corollary_6_2_finite_moment_iff_positive_ranks",
+    "Wishart.corollary_6_2_gamma_moment_effective_rank",
+    "Wishart.theorem_6_3_ae_constant_rank",
+    "Wishart.theorem_6_3_finite_moment_iff_positive_ranks",
+    "Wishart.theorem_6_3_gamma_moment_effective_rank",
+    "Wishart.theorem_7_1",
+    "Wishart.normalizedCompression_posDef",
+    "Wishart.Spectral.ascendingSpectrum_mem_positiveOrderedSpectrum",
+    "Wishart.QuaternionMatrix.isHermitian_complexRepresentation_iff",
+    "WishartVerification.hermitian_matrix_coe",
+    "Wishart.SpectralGauge.exists_countable_positive_support"
+  ],
+  "definition_names": [
+    "Wishart.QuaternionMatrix.matrixBorelSpace",
+    "Wishart.QuaternionMatrix.hermitianBorelSpace"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

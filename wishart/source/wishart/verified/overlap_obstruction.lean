@@ -1,7 +1,7 @@
 module
 
-public import tau_ceti.probability.distributions.wishart.bartlett
-public import tau_ceti.probability.distributions.gaussian.chi_squared
+public import TauCeti.Probability.Distributions.Wishart.Bartlett
+public import TauCeti.Probability.Distributions.Gaussian.ChiSquared
 public import Mathlib.MeasureTheory.Integral.Pi
 public import Mathlib.Probability.Moments.Covariance
 public import Mathlib.Probability.ConditionalExpectation

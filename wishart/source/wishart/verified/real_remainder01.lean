@@ -1,7 +1,7 @@
 module
 
 public import wishart.verified.real_core_extensions
-public import tau_ceti.probability.distributions.wishart.low_dimension
+public import TauCeti.Probability.Distributions.Wishart.LowDimension
 public import Mathlib.Analysis.Distribution.AEEqOfIntegralContDiff
 
 /- Generated ordinary proof stage. See audit/staged_real_remainder/RealRemainder01/manifest.json. -/

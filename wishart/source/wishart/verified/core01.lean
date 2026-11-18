@@ -2,16 +2,16 @@ module
 
 public import Mathlib.Data.Fin.Basic
 public import Mathlib.Logic.Equiv.Basic
-public import tau_ceti.probability.distributions.wishart.bartlett
-public import tau_ceti.probability.distributions.gaussian.affine
-public import tau_ceti.measure_theory.constructions.pi
+public import TauCeti.Probability.Distributions.Wishart.Bartlett
+public import TauCeti.Probability.Distributions.Gaussian.Affine
+public import TauCeti.MeasureTheory.Constructions.Pi
 public import Mathlib.Analysis.SpecialFunctions.ContinuousFunctionalCalculus.Rpow.Measurable
-public import tau_ceti.probability.distributions.wishart.congruence
-public import tau_ceti.probability.distributions.wishart.marginal
-public import tau_ceti.probability.distributions.wishart.moments
+public import TauCeti.Probability.Distributions.Wishart.Congruence
+public import TauCeti.Probability.Distributions.Wishart.Marginal
+public import TauCeti.Probability.Distributions.Wishart.Moments
 public import Mathlib.Analysis.Distribution.TemperateGrowth
 public import Mathlib.Analysis.SpecialFunctions.SmoothTransition
-public import tau_ceti.analysis.calculus.f_deriv.det
+public import TauCeti.Analysis.Calculus.FDeriv.Det
 public import Mathlib.Probability.Distributions.Gaussian.Fernique
 
 /- Generated ordinary proof stage. See audit/staged_core/Core01/manifest.json. -/

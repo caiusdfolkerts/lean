@@ -1,10 +1,10 @@
 module
 
 public import wishart.verified.core05
-public import tau_ceti.probability.distributions.wishart.inverse.basic
+public import TauCeti.Probability.Distributions.Wishart.Inverse.Basic
 public import Mathlib.Data.Matrix.ColumnRowPartitioned
-public import tau_ceti.analysis.matrix.orthogonal_rows
-public import tau_ceti.linear_algebra.matrix.rank
+public import TauCeti.Analysis.Matrix.OrthogonalRows
+public import TauCeti.LinearAlgebra.Matrix.Rank
 
 /- Generated ordinary proof stage. See audit/staged_compact_inverseassociation/InverseAssociation01/manifest.json. -/
 

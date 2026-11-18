@@ -6,7 +6,7 @@ public import Mathlib.Analysis.Convex.SpecificFunctions.Basic
 public import Mathlib.Analysis.SpecialFunctions.Pow.Continuity
 public import Mathlib.RingTheory.MvPolynomial.Symmetric.Defs
 public import Mathlib.Topology.Algebra.MvPolynomial
-public import tau_ceti.ring_theory.mv_polynomial.symmetric.schur.symmetric
+public import TauCeti.RingTheory.MvPolynomial.Symmetric.Schur.Symmetric
 public import Mathlib.Analysis.Normed.Module.Seminorm.Basic
 
 /- Recovered canonical proof stage; see verification/recovery-patches.json. -/

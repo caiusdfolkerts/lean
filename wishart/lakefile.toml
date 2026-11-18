@@ -321,3 +321,13 @@ roots = [
   "verification.complete",
 ]
 allowImportAll = true
+
+[[require]]
+name = "TauCeti"
+git = "https://github.com/TauCetiProject/TauCeti"
+rev = "06d5bb4e3ebb737dc6538567f5c53bf8800b9362"
+
+[[lean_lib]]
+name = "Palomar"
+srcDir = "."
+roots = ["Challenge", "Solution"]

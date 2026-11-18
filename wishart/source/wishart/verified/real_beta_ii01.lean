@@ -2,7 +2,7 @@ module
 
 public import wishart.verified.real_remainder06
 public import wishart.verified.shared_extended_limits01
-public import tau_ceti.probability.distributions.wishart.inverse.measurability
+public import TauCeti.Probability.Distributions.Wishart.Inverse.Measurability
 public import Mathlib.MeasureTheory.Measure.GiryMonad
 public import Mathlib.MeasureTheory.Integral.Prod
 

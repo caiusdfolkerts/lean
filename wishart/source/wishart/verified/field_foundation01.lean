@@ -1,6 +1,6 @@
 module
 
-public import tau_ceti.algebra.quaternion.complex_matrix
+public import TauCeti.Algebra.Quaternion.ComplexMatrix
 public import Mathlib.Analysis.Matrix.PosDef
 public import Mathlib.MeasureTheory.Constructions.BorelSpace.Basic
 public import Mathlib.Analysis.SpecialFunctions.Sqrt

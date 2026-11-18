@@ -1,8 +1,8 @@
 module
 
 public import wishart.verified.field_common_base
-public import tau_ceti.analysis.inner_product_space.harmonic.subharmonic
-public import tau_ceti.analysis.inner_product_space.harmonic.mean_value.basic
+public import TauCeti.Analysis.InnerProductSpace.Harmonic.Subharmonic
+public import TauCeti.Analysis.InnerProductSpace.Harmonic.MeanValue.Basic
 public import Mathlib.Analysis.Convex.Integral
 public import Mathlib.LinearAlgebra.Complex.FiniteDimensional
 public import Mathlib.Analysis.CStarAlgebra.Unitary.Maps

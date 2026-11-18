@@ -2,14 +2,14 @@ module
 
 public import wishart.verified.core01
 public import Mathlib.Analysis.Normed.Operator.Prod
-public import tau_ceti.probability.stochastic_order
-public import tau_ceti.probability.distributions.noncentral_chi_squared.stochastic_order
-public import tau_ceti.probability.distributions.noncentral_chi_squared.gaussian
-public import tau_ceti.probability.distributions.noncentral_chi_squared.moments
-public import tau_ceti.representation_theory.compact.haar
-public import tau_ceti.topology.algebra.unitary_group
-public import tau_ceti.analysis.matrix.eigenvalues
-public import tau_ceti.linear_algebra.matrix.alternating
+public import TauCeti.Probability.StochasticOrder
+public import TauCeti.Probability.Distributions.NoncentralChiSquared.StochasticOrder
+public import TauCeti.Probability.Distributions.NoncentralChiSquared.Gaussian
+public import TauCeti.Probability.Distributions.NoncentralChiSquared.Moments
+public import TauCeti.RepresentationTheory.Compact.Haar
+public import TauCeti.Topology.Algebra.UnitaryGroup
+public import TauCeti.Analysis.Matrix.Eigenvalues
+public import TauCeti.LinearAlgebra.Matrix.Alternating
 
 /- Generated ordinary proof stage. See audit/staged_core/Core02/manifest.json. -/
 
