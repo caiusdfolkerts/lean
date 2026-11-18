@@ -61,12 +61,13 @@ automation:
 review:
   status: unchecked
   notes: All17 retained statements and existing Solution proof bodies are preserved
-    verbatim, as is the complete substantive source. Actual canonical-only checks
-    passed the independently literal39-line Corollary7 statement and112-line generic
-    convex-hull proof module. The new polar-pattern/midpoint Source bridges and final
-    assembled proof are still uncompiled. No actual new Source/Solution, Comparator,
-    independent kernel or clean editorial pass is claimed; the exact new snapshot
-    requires them.
+    verbatim, as is the complete substantive source. Exact standalone39-line Corollary7
+    Challenge and112-line generic exposure proofs passed canonical checks. In fullrun44384186711
+    the combined460-line Challenge and all3 new Source bridge modules compiled before
+    one final proof failed because ext chose basis vectors rather than arbitrary points.
+    Explicit LinearMap.ext and ContinuousLinearMap.ext now fix both corresponding
+    conversions; the revised final Solution is uncompiled. Actual Comparator, independent
+    kernels and clean editorial review remain pending.
 limitations:
 - The exact new18-target snapshot and new Corollary7 proof interfaces have not compiled.
   Prior mechanical verification of an older normal snapshot is historical evidence

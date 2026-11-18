@@ -112,7 +112,8 @@ theorem paired_segment_crosspolytope (d : ℕ) (v : Label d → Space d)
       have hcont : ℓ.toContinuousLinearMap ≠ 0 := by
         intro hh
         apply hℓ
-        ext x
+        apply LinearMap.ext
+        intro x
         exact congrArg (fun f : Space (n+1) →L[ℝ] ℝ => f x) hh
       have hstrict := NormalProjective.interior_lt_support (hull v)
         ℓ.toContinuousLinearMap hcont a hvalid hz
@@ -154,6 +155,7 @@ theorem paired_segment_crosspolytope (d : ℕ) (v : Label d → Space d)
       refine ⟨hnonempty,hproper,ℓ.toLinearMap,a,?_,hvalid,hlevel.symm⟩
       intro hh
       apply hℓ
-      ext x
+      apply ContinuousLinearMap.ext
+      intro x
       exact congrArg (fun f : Space (n+1) →ₗ[ℝ] ℝ => f x) hh
 end PalomarNormalCorollary7

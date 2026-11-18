@@ -68,7 +68,7 @@
     "custom_definitions": "Independent literal data definitions, exact original universe names and scoped canonical instance contexts. The five definition_names values are completely fixed by the compared specifications below; proof-only fields support well-typed construction."
   },
   "blockers": [
-    "Actual new combined Challenge/Source bridge/Solution compilation has not run.",
+    "Revised final Solution pointwise ext proof has not compiled.",
     "Actual Comparator and independent kernels remain pending.",
     "Fresh clean editorial review and exact replacement intake approval required before registration."
   ],
@@ -226,5 +226,14 @@
       "sha256": "ab2fe6eaf8b5c11e706b9f502c3030b450123ec3decb4d2ce4c4c1f97b32b1a1"
     },
     "scope_limit": "Neither result is a combined460-line Challenge, Source bridge, final Solution or official full-preflight pass."
+  },
+  "previous_complete18_full_attempt": {
+    "commit": "b329d313f686bfb4a7c2f2abfef749d6345d8977",
+    "run_id": 44384186711,
+    "stage": "Solution_wrapper_elaboration",
+    "complete_report_errors": 1,
+    "combined460lineChallenge": "PASS_before_Solution_stage",
+    "new3SourceBridgeModules": "PASS_before_Solution_stage",
+    "repair": "Explicit pointwise LinearMap.ext/ContinuousLinearMap.ext, replacing ambiguous basis-ext tactic. Statements unchanged."
   }
 }
