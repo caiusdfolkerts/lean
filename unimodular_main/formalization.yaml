@@ -1,0 +1,66 @@
+version: v0.4
+project:
+  name: Exact minor class and networks of deeply monotone polytopes
+  description: >-
+    The actual represented matroid of the original primitive geometric facet
+    normals of a deeply monotone smooth reflexive polytope is in the ordinary
+    constructive series-parallel class. Every ordinary matroid minor remains
+    in the class, retaining the original integral dual labels. The matroid is
+    the finite direct sum of its actual connected loopless component restrictions;
+    each component has a genuine eligible rooted-network cycle-matroid model.
+    Conversely every ordinary ground-series-parallel matroid embeds, on its
+    full actual ground, as a minor of the primitive-normal matroid of a
+    positive-dimensional deeply monotone coordinate polytope.
+  authors: [Caius Folkerts]
+  responsible_maintainers: [Caius Folkerts]
+  license: Apache-2.0
+classification:
+  arxiv: [math.CO, math.AG]
+  msc2020: [52B20, 05B35, 14M25]
+sources:
+  - title: Unimodular configurations and complete fans
+    authors: [Caius Folkerts]
+    type: paper
+    relationship: formalizes
+    location: paper.pdf
+    note: Theorem1.2 original-lattice direct-sum network, necessity, ordinary-minor and exact minor-realization assertions.
+related_formalizations:
+  - title: Complete-fan degree-one cycle entry
+    id: https://github.com/caiusdfolkerts/research/tree/232c744f9152210fa907985383a4dd5a7a3400e7/unimodular
+    relationship: other
+    note: Separate passing13-target fan entry; none of its selected targets is repeated.
+  - title: Complete original proof development
+    id: https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/unimodular
+    relationship: other
+    note: All original substantive sources and licensing notices remain retained.
+automation:
+  methods:
+    - method: agent
+      tool_setup: >-
+        OpenAI Codex using GPT-6.1 Sol inspected the actual paper and retained
+        source, prepared independent literal geometric and matroid definitions,
+        explicit source bridges, comparison configuration and provenance metadata.
+        Original historical assistance acknowledgements remain in paper and
+        source; historical roles have not been independently reconstructed.
+review:
+  status: unchecked
+  notes: >-
+    Exact322-line Challenge SHA5e4f78b66 passed canonical elaboration in
+    run44380113477 at source863d32aa1b69fe85005718f9e97ffe5e1caa4bf9.
+    All input hashes, canonical pins and bounded-log hash were independently
+    checked. The677-line actual Solution draft remains unelaborated; full
+    original-source/Solution build, raw Comparator, NanoDa, registry admission
+    and mathematical peer review remain unverified. The distinct13-target
+    fan entry previously passed full preflight and stays unchanged.
+fidelity:
+  divergences: >-
+    Actual scalar extension of the finite free lattice, real convex hulls,
+    primitive edge segments, maximal proper convex faces, entire real unit
+    corners and full represented Mathlib matroids are inlined. The ordinary
+    construction class uses deletion, contraction and genuine circuit predicates,
+    not excluded minors or a numerical rank surrogate. Source conversions preserve
+    the whole carrier, every edge direction, facet label and independent subset.
+limitations:
+  - The exact322-line independent Challenge passed; the new Solution bridges, complete source build and comparison remain unverified.
+  - The new coordinate-realization bridge uses genuine primitive-edge, full real unit-corner and facet-exhaustiveness theorems; it has not yet been elaborated.
+  - Deep-monotone sufficiency, extremal-ray, section-ring and exceptional-example groups remain outside this candidate; whole-paper completion is not claimed.

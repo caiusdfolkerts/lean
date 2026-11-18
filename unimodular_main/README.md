@@ -1,0 +1,7 @@
+# Theorem 1.2: actual primitive normals and the exact minor class
+
+An independent literal Challenge states the ordinary series-parallel classification of the actual represented normal matroid of a deeply monotone smooth reflexive polytope, its full connected-component network decomposition, and the realization converse for every matroid on its entire genuine ground. The realization witness is an actual positive-dimensional coordinate polytope with its full real convex hull, primitive edge geometry, real unit corners and geometric facets.
+
+The 322-line Challenge has 12 comparisons: three substantive endpoints and nine supporting propositions. The 677-line Solution draft transports the retained original proofs through explicit geometric and represented-matroid bridges. All original sources and licenses remain retained.
+
+The exact 322-line Challenge passed canonical elaboration in run44380113477, with every input hash, canonical pin and bounded-log hash independently checked. Its actual Solution remains unelaborated. It claims no Solution, Comparator, NanoDa, registry or peer-review pass. The distinct passing 13-target fan entry and the earlier frozen 151/246-line Challenge inputs remain unchanged. Deep-monotone sufficiency, extremal-ray, section-ring and exceptional-example groups remain outside this candidate; whole-paper completion is not claimed.

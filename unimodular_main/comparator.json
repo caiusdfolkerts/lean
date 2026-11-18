@@ -1,0 +1,23 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "PalomarDeepMonotone.IsIntegralLattice.realCharacter_apply",
+    "PalomarDeepMonotone.Presentation.primitiveEdgeDirections_finite",
+    "PalomarDeepMonotone.VectorMatroid.linearIndepOn_finset_augment",
+    "PalomarDeepMonotone.VectorMatroid.independent_empty",
+    "PalomarDeepMonotone.VectorMatroid.independent_hereditary",
+    "PalomarDeepMonotone.VectorMatroid.independent_augmentation",
+    "PalomarDeepMonotone.VectorMatroid.onSet_indep",
+    "PalomarDeepMonotone.Presentation.necessity_and_all_minors",
+    "PalomarDeepMonotone.Components.pairwise_disjoint",
+    "PalomarDeepMonotone.Presentation.direct_sum_networks",
+    "PalomarDeepMonotone.Coordinates.Presentation.primitiveEdgeDirections_finite",
+    "PalomarDeepMonotone.exact_minor_class"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}
