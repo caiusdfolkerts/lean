@@ -25,3 +25,10 @@ The proof source comes from `caiusdfolkerts/research` baseline `e0696fddcd3d10b5
 The paper discloses GPT-6 Astra, GPT-5.6 Sol and Kimi K3 assistance in developing its proofs. OpenAI Codex assisted this packaging and scope audit. Full earlier prompt history was not reconstructed.
 
 With the pinned Lean/Mathlib toolchain installed, the ordinary targets are `lake build Challenge Solution`. Palomar's exact-commit full workflow, Comparator and independent kernel checks remain required before intake.
+
+The first full supplemental build compiled the substantive source, then rejected
+two new closure-transport wrappers: an expensive definitional `change` and an
+unexposed canonical Real instance in the E7 type transport. The revision uses
+explicit carrier equalities and canonical closure congruence, with Mathlib
+import-all in the Solution. The Challenge and mathematical statements are
+unchanged; the repaired wrappers still require full preflight.

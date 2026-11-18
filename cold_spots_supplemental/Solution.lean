@@ -1,4 +1,6 @@
 module
+public import Mathlib
+import all Mathlib
 public import release_all
 
 @[expose] public section
@@ -311,25 +313,25 @@ private theorem e6_closure_eq :
     AddSubgroup.closure e6Set = PaperVerification.ColdSpots.e6AddSubgroup := by
   have h : e6Set = (PaperVerification.ColdSpots.e6AddSubgroup : Set _) :=
     PaperVerification.ColdSpots.e6AddSubgroup_coe.symm
-  rw [h, AddSubgroup.closure_eq]
+  exact (congrArg AddSubgroup.closure h).trans (AddSubgroup.closure_eq _)
 
 private theorem dPlus_closure_eq (n : ℕ) (heven : Even n) :
     AddSubgroup.closure (dPlusSet n) = PaperVerification.ColdSpots.dPlusAddSubgroup n heven := by
-  change AddSubgroup.closure
-    ((PaperVerification.ColdSpots.dPlusAddSubgroup n heven) : Set _) = _
-  exact AddSubgroup.closure_eq _
+  have h : dPlusSet n =
+      ((PaperVerification.ColdSpots.dPlusAddSubgroup n heven) : Set (Fin n → ℝ)) := rfl
+  exact (congrArg AddSubgroup.closure h).trans (AddSubgroup.closure_eq _)
 
 private theorem e7_closure_eq :
     AddSubgroup.closure e7ProjectedSet = PaperVerification.ColdSpots.e7ProjectedAddSubgroup := by
   have h : e7ProjectedSet = (PaperVerification.ColdSpots.e7ProjectedAddSubgroup : Set _) :=
     PaperVerification.ColdSpots.e7ProjectedAddSubgroup_coe.symm
-  rw [h, AddSubgroup.closure_eq]
+  exact (congrArg AddSubgroup.closure h).trans (AddSubgroup.closure_eq _)
 
 private theorem bw16_closure_eq :
     AddSubgroup.closure bw16Set = PaperVerification.ColdSpots.bw16AddSubgroup := by
   have h : bw16Set = (PaperVerification.ColdSpots.bw16AddSubgroup : Set _) :=
     PaperVerification.ColdSpots.bw16AddSubgroup_coe.symm
-  rw [h, AddSubgroup.closure_eq]
+  exact (congrArg AddSubgroup.closure h).trans (AddSubgroup.closure_eq _)
 
 /-- Introduction table, PDF page2. -/
 theorem lattice_translation_class_table :

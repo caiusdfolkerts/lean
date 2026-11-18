@@ -41,7 +41,9 @@ review:
     in run44360360113 at diagnostic commit224234d543551423d12e2db058ef4a0dccba5679.
     Its18 intentional theorem placeholders check statement interfaces only.
     New Solution wrapper compilation, full preflight, Comparator and independent
-    kernel checks remain pending.
+    kernel checks remain pending. The first full run compiled the substantive
+    source but rejected closure transport wrappers; explicit carrier congruence
+    and canonical Mathlib body visibility repairs are source-prepared, uncompiled.
 fidelity:
   notes: >-
     All ambient points, positive Gaussian parameters and even-dimension ranges
