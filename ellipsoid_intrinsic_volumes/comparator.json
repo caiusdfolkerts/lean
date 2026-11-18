@@ -9,7 +9,9 @@
     "PalomarEllipsoid.coefficient_transform_theorem",
     "PalomarEllipsoid.coefficient_transform_manifold_with_corners",
     "PalomarEllipsoid.measured_coefficient_box",
-    "EllipsoidVerification.fixedEndpointIndexBound"
+    "EllipsoidVerification.fixedEndpointIndexBound",
+    "EllipsoidVerification.matrixDerivative._proof_4",
+    "EllipsoidVerification.matrixDerivative._proof_6"
   ],
   "permitted_axioms": [
     "propext",
