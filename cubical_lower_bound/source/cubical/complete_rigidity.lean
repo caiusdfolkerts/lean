@@ -1,6 +1,10 @@
-import cubical.generic_vertex_splitting
-import Mathlib.Analysis.InnerProductSpace.PiL2
-import Mathlib.LinearAlgebra.Basis.Bilinear
+module
+
+public import cubical.generic_vertex_splitting
+public import Mathlib.Analysis.InnerProductSpace.PiL2
+public import Mathlib.LinearAlgebra.Basis.Bilinear
+
+@[expose] public section
 
 /-!
 # Complete graphs as rigidity bases

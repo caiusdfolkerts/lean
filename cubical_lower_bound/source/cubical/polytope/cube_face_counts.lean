@@ -1,4 +1,8 @@
-import cubical.polytope.cube_face_geometry
+module
+
+public import cubical.polytope.cube_face_geometry
+
+@[expose] public section
 
 /-! # Exact face and local-degree counts in cubical polytopes -/
 

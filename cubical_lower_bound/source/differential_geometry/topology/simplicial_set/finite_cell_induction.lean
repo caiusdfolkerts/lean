@@ -1,5 +1,9 @@
-import differential_geometry.topology.simplicial_set.maximal_cell
-import Mathlib.Order.Preorder.Finite
+module
+
+public import differential_geometry.topology.simplicial_set.maximal_cell
+public import Mathlib.Order.Preorder.Finite
+
+@[expose] public section
 
 set_option autoImplicit false
 

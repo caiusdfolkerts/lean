@@ -1,13 +1,17 @@
+module
+
 /-
 Copyright (c) 2026 DifferentialGeometry contributors. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: DifferentialGeometry contributors
 -/
-import differential_geometry.topology.piecewise_linear.branch_sign_chain
-import differential_geometry.topology.piecewise_linear.double_cover_complex
-import differential_geometry.topology.simplicial_complex.edge_graph
-import Mathlib.Combinatorics.SimpleGraph.Connectivity.Connected
-import Mathlib.Combinatorics.SimpleGraph.Walk.Operations
+public import differential_geometry.topology.piecewise_linear.branch_sign_chain
+public import differential_geometry.topology.piecewise_linear.double_cover_complex
+public import differential_geometry.topology.simplicial_complex.edge_graph
+public import Mathlib.Combinatorics.SimpleGraph.Connectivity.Connected
+public import Mathlib.Combinatorics.SimpleGraph.Walk.Operations
+
+@[expose] public section
 
 namespace DifferentialGeometry.Topology.PiecewiseLinear
 

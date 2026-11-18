@@ -1,5 +1,9 @@
-import cubical.polytope.cube_face_counts
-import cubical.polytope.affine_face_order
+module
+
+public import cubical.polytope.cube_face_counts
+public import cubical.polytope.affine_face_order
+
+@[expose] public section
 
 /-! # Every geometric cube face is affinely a standard cube -/
 

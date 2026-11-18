@@ -1,6 +1,10 @@
-import cubical.polytope.cube_graph
-import cubical.polytope.face_graph
-import cubical.polytope.bipartition
+module
+
+public import cubical.polytope.cube_graph
+public import cubical.polytope.face_graph
+public import cubical.polytope.bipartition
+
+@[expose] public section
 
 /-! # Square faces of an actual cubical polytope
 

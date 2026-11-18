@@ -1,4 +1,8 @@
-import cubical.pl_abstract
+module
+
+public import cubical.pl_abstract
+
+@[expose] public section
 
 /-!
 # Piecewise affine transport of finite abstract complexes

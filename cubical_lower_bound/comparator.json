@@ -1,0 +1,27 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "LeanEval.Geometry.PlatonicClassification.IsCubical.edge_bound",
+    "LeanEval.Geometry.PlatonicClassification.IsCubical.edge_bound_nat",
+    "LeanEval.Geometry.PlatonicClassification.IsCubical.strengthened_edge_bound",
+    "LeanEval.Geometry.PlatonicClassification.IsCubical.bipartite",
+    "LeanEval.Geometry.PlatonicClassification.IsCubical.face_lower_bound",
+    "LeanEval.Geometry.PlatonicClassification.IsCubical.facet_lower_bound",
+    "LeanEval.Geometry.PlatonicClassification.IsCubical.strengthened_face_lower_bound",
+    "LeanEval.Geometry.PlatonicClassification.IsCubical.strengthened_facet_lower_bound",
+    "LeanEval.Geometry.PlatonicClassification.standardCube_faceNumber",
+    "LeanEval.Geometry.PlatonicClassification.standardCube_face_equality",
+    "LeanEval.Geometry.PlatonicClassification.standardCube_facet_equality",
+    "LeanEval.Geometry.PlatonicClassification.IsStackedCubical.isCubical",
+    "LeanEval.Geometry.PlatonicClassification.IsStackedCubical.edge_equality_real",
+    "LeanEval.Geometry.PlatonicClassification.IsStackedCubical.face_equality_real",
+    "LeanEval.Geometry.PlatonicClassification.IsStackedCubical.facet_equality_real",
+    "Cubical.PL.CubeComplex.cubical_pl_lower_bound"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

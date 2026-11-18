@@ -1,9 +1,13 @@
-import differential_geometry.topology.simplicial_complex.ordered_cell_attachment
-import differential_geometry.topology.simplicial_complex.geometric_realization_map
-import differential_geometry.topology.simplicial_complex.geometric_face_homeomorphism
-import differential_geometry.topology.simplex.reindex
-import differential_geometry.topology.simplicial_set.boundary_realization
-import differential_geometry.topology.category.top_cat.closed_cover
+module
+
+public import differential_geometry.topology.simplicial_complex.ordered_cell_attachment
+public import differential_geometry.topology.simplicial_complex.geometric_realization_map
+public import differential_geometry.topology.simplicial_complex.geometric_face_homeomorphism
+public import differential_geometry.topology.simplex.reindex
+public import differential_geometry.topology.simplicial_set.boundary_realization
+public import differential_geometry.topology.category.top_cat.closed_cover
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

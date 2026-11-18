@@ -1,6 +1,10 @@
-import Mathlib.LinearAlgebra.AffineSpace.Centroid
-import Mathlib.LinearAlgebra.AffineSpace.Independent
-import Mathlib.Basic.Real.Basic
+module
+
+public import Mathlib.LinearAlgebra.AffineSpace.Centroid
+public import Mathlib.LinearAlgebra.AffineSpace.Independent
+public import Mathlib.Basic.Real.Basic
+
+@[expose] public section
 
 namespace DifferentialGeometry.Topology.Engulfing
 

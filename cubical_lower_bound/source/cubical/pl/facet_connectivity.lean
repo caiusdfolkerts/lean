@@ -1,4 +1,8 @@
-import cubical.pl.facet_topology
+module
+
+public import cubical.pl.facet_topology
+
+@[expose] public section
 
 /-! # Ridge-connected facets of a cubical PL sphere
 

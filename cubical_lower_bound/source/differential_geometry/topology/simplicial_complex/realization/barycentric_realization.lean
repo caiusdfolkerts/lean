@@ -1,6 +1,10 @@
-import differential_geometry.topology.piecewise_linear.polyhedral.quotient.polyhedral_quotient
-import differential_geometry.topology.simplicial_complex.realization.geometric_realization
-import differential_geometry.topology.simplicial_complex.barycentric.subdivision.barycentric_coverage
+module
+
+public import differential_geometry.topology.piecewise_linear.polyhedral.quotient.polyhedral_quotient
+public import differential_geometry.topology.simplicial_complex.realization.geometric_realization
+public import differential_geometry.topology.simplicial_complex.barycentric.subdivision.barycentric_coverage
+
+@[expose] public section
 
 namespace DifferentialGeometry.Topology.Engulfing
 

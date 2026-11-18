@@ -1,6 +1,10 @@
-import cubical.pl.cube_complex
-import cubical.pl_abstract
-import Mathlib.Data.Fintype.Fin
+module
+
+public import cubical.pl.cube_complex
+public import cubical.pl_abstract
+public import Mathlib.Data.Fintype.Fin
+
+@[expose] public section
 
 /-! # Purity and facet connectivity of genuine cubical PL spheres
 

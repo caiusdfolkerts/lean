@@ -1,4 +1,8 @@
-import cubical.pl_barycentric
+module
+
+public import cubical.pl_barycentric
+
+@[expose] public section
 
 /-!
 # Abstract simplicial graphs and links

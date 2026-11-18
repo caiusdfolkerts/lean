@@ -1,5 +1,9 @@
-import cubical.pl.cube_complex
-import Mathlib.Combinatorics.SimpleGraph.Connectivity.Connected
+module
+
+public import cubical.pl.cube_complex
+public import Mathlib.Combinatorics.SimpleGraph.Connectivity.Connected
+
+@[expose] public section
 
 /-! Local cube parity and its independence from a containing cell. -/
 

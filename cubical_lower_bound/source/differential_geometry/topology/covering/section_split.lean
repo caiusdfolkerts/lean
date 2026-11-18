@@ -1,5 +1,9 @@
-import Mathlib.Topology.Covering.Basic
-import Mathlib.Topology.Connected.Clopen
+module
+
+public import Mathlib.Topology.Covering.Basic
+public import Mathlib.Topology.Connected.Clopen
+
+@[expose] public section
 
 noncomputable section
 open Set Topology

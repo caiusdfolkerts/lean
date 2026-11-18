@@ -1,5 +1,9 @@
-import cubical.polytope.simplicial_boundary
-import cubical.polytope.simplicial_vertex_figure
+module
+
+public import cubical.polytope.simplicial_boundary
+public import cubical.polytope.simplicial_vertex_figure
+
+@[expose] public section
 
 /-!
 # Every relevant link of a simplicial convex boundary is a minimal cycle

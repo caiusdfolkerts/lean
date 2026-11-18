@@ -1,4 +1,8 @@
-import cubical.local_propagation
+module
+
+public import cubical.local_propagation
+
+@[expose] public section
 
 /-!
 # From local polynomial kernels to propagation of global solutions

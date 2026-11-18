@@ -1,9 +1,13 @@
-import differential_geometry.topology.piecewise_linear.general_position
-import differential_geometry.topology.piecewise_linear.manifold_connectivity
-import differential_geometry.topology.simplicial_complex.edge_graph
-import cubical.indexed_pseudomanifold
-import cubical.simplicial_ridge_count
-import cubical.fogelsanger
+module
+
+public import differential_geometry.topology.piecewise_linear.general_position
+public import differential_geometry.topology.piecewise_linear.manifold_connectivity
+public import differential_geometry.topology.simplicial_complex.edge_graph
+public import cubical.indexed_pseudomanifold
+public import cubical.simplicial_ridge_count
+public import cubical.fogelsanger
+
+@[expose] public section
 
 /-!
 # Genuine finite simplicial PL spheres are generically rigid

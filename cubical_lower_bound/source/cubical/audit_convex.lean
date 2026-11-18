@@ -1,12 +1,14 @@
-import cubical.polytope.main
-import cubical.polytope.face_bounds
-import cubical.polytope.generic_theorems
-import cubical.polytope.stacking_sharpness_real
-import cubical.audit_support
+module
 
--- Create directories for generated verification output.
-run_cmd Lean.Elab.Command.liftIO do
-  IO.FS.createDirAll ".lake/reports/audit"
+public import cubical.polytope.main
+public import cubical.polytope.face_bounds
+public import cubical.polytope.generic_theorems
+public import cubical.polytope.stacking_sharpness_real
+public import cubical.audit_support
+
+@[expose] public section
+
+-- Optional audit-report filesystem output is disabled in the read-only verifier.
 
 
 /-! # Transitive axiom audit of every principal convex claim -/

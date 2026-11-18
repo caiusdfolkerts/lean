@@ -1,5 +1,9 @@
-import cubical.cube
-import Mathlib.Data.Fintype.Option
+module
+
+public import cubical.cube
+public import Mathlib.Data.Fintype.Option
+
+@[expose] public section
 
 /-! # The ordinary coordinate face poset of a cube -/
 

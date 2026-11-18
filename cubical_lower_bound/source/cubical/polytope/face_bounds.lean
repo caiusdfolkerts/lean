@@ -1,6 +1,10 @@
-import cubical.polytope.mpw
-import cubical.polytope.main_higher
-import cubical.polytope.dimension_three
+module
+
+public import cubical.polytope.mpw
+public import cubical.polytope.main_higher
+public import cubical.polytope.dimension_three
+
+@[expose] public section
 
 /-!
 # All cubical face-number lower bounds

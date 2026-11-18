@@ -1,9 +1,13 @@
+module
+
 /-
 Adapted from SolarYs431/lean-eval-platonic-classification, original module Submission.FacciaArgmax.
 Copyright 2026 Daniele Cappello. Licensed under Apache-2.0.
 Source provenance and adaptation details: THIRD_PARTY.md.
 -/
-import cubical.polytope.imports
+public import cubical.polytope.imports
+
+@[expose] public section
 
 /-!
 L3 — LA FACCIA ARGMAX VIVE SUI VERTICI (campagna #50, lato faccetta, G1-mio).

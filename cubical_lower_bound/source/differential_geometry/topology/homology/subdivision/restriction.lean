@@ -1,6 +1,10 @@
-import differential_geometry.topology.homology.subdivision.support
-import differential_geometry.topology.homology.subdivision.naturality
-import differential_geometry.topology.homology.small_chains.subspace
+module
+
+public import differential_geometry.topology.homology.subdivision.support
+public import differential_geometry.topology.homology.subdivision.naturality
+public import differential_geometry.topology.homology.small_chains.subspace
+
+@[expose] public section
 
 set_option autoImplicit false
 

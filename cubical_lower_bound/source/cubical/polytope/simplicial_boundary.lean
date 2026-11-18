@@ -1,5 +1,9 @@
-import cubical.polytope.facet_geometry
-import cubical.pseudomanifold_circuit
+module
+
+public import cubical.polytope.facet_geometry
+public import cubical.pseudomanifold_circuit
+
+@[expose] public section
 
 /-! # The exact simplicial boundary of a geometric simplicial polytope -/
 

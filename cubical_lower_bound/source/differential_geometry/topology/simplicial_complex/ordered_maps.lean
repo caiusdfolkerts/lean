@@ -1,4 +1,8 @@
-import differential_geometry.topology.simplicial_complex.ordered_simplicial_set
+module
+
+public import differential_geometry.topology.simplicial_complex.ordered_simplicial_set
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

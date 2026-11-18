@@ -1,11 +1,15 @@
-import cubical.stars
-import cubical.facet_determination
-import cubical.facet_rank
-import cubical.generic_neighbors
-import cubical.generic_certificates
-import cubical.rigidity_to_local
-import cubical.generic_rigidity
-import cubical.counting
+module
+
+public import cubical.stars
+public import cubical.facet_determination
+public import cubical.facet_rank
+public import cubical.generic_neighbors
+public import cubical.generic_certificates
+public import cubical.rigidity_to_local
+public import cubical.generic_rigidity
+public import cubical.counting
+
+@[expose] public section
 
 /-!
 # Assembly of the cubical rigidity bound

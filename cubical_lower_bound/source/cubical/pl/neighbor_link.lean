@@ -1,5 +1,9 @@
-import cubical.pl.vertex_link
-import cubical.pl_relabel
+module
+
+public import cubical.pl.vertex_link
+public import cubical.pl_relabel
+
+@[expose] public section
 
 /-!
 # Original simplicial vertex links of cubical PL spheres

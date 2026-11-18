@@ -1,6 +1,10 @@
-import cubical.polytope.faces
-import cubical.polytope.due_vertici
-import Mathlib.Combinatorics.SimpleGraph.Basic
+module
+
+public import cubical.polytope.faces
+public import cubical.polytope.due_vertici
+public import Mathlib.Combinatorics.SimpleGraph.Basic
+
+@[expose] public section
 
 /-!
 # The actual edge graph of a finite convex polytope

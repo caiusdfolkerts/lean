@@ -1,5 +1,9 @@
-import cubical.polytope.lower_bound
-import cubical.polytope.link_rigidity
+module
+
+public import cubical.polytope.lower_bound
+public import cubical.polytope.link_rigidity
+
+@[expose] public section
 
 /-! # The cubical lower bound theorem in dimensions at least four
 

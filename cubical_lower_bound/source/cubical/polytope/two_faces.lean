@@ -1,5 +1,9 @@
-import cubical.polytope.graph
-import cubical.polytope.dim_stretta
+module
+
+public import cubical.polytope.graph
+public import cubical.polytope.dim_stretta
+
+@[expose] public section
 
 /-! # Uniqueness of a two-face through two nonadjacent vertices -/
 

@@ -1,5 +1,9 @@
-import cubical.polytope.vertex_slice_counts
-import Mathlib.Combinatorics.SimpleGraph.DegreeSum
+module
+
+public import cubical.polytope.vertex_slice_counts
+public import Mathlib.Combinatorics.SimpleGraph.DegreeSum
+
+@[expose] public section
 
 /-! # The geometric one-face count is the ordinary graph edge count -/
 

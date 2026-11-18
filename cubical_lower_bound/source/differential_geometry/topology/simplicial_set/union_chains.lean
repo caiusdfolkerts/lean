@@ -1,9 +1,13 @@
-import differential_geometry.topology.simplicial_set.chain_colimits
-import differential_geometry.topology.homology.algebra.pushout_exact
-import Mathlib.AlgebraicTopology.SimplicialSet.SubcomplexColimits
-import Mathlib.Algebra.Category.ModuleCat.Abelian
-import Mathlib.Algebra.Homology.HomologicalComplexAbelian
-import Mathlib.CategoryTheory.Limits.Shapes.Pullback.IsPullback.Kernels
+module
+
+public import differential_geometry.topology.simplicial_set.chain_colimits
+public import differential_geometry.topology.homology.algebra.pushout_exact
+public import Mathlib.AlgebraicTopology.SimplicialSet.SubcomplexColimits
+public import Mathlib.Algebra.Category.ModuleCat.Abelian
+public import Mathlib.Algebra.Homology.HomologicalComplexAbelian
+public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.IsPullback.Kernels
+
+@[expose] public section
 
 set_option autoImplicit false
 open CategoryTheory CategoryTheory.Limits

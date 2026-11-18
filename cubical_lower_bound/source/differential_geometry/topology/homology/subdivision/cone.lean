@@ -1,8 +1,12 @@
-import differential_geometry.topology.homology.subdivision.affine_simplex
-import Mathlib.Algebra.Category.ModuleCat.Colimits
-import Mathlib.AlgebraicTopology.SingularHomology.Basic
-import Mathlib.Algebra.BigOperators.Fin
-import Mathlib.Data.Fin.Tuple.Basic
+module
+
+public import differential_geometry.topology.homology.subdivision.affine_simplex
+public import Mathlib.Algebra.Category.ModuleCat.Colimits
+public import Mathlib.AlgebraicTopology.SingularHomology.Basic
+public import Mathlib.Algebra.BigOperators.Fin
+public import Mathlib.Data.Fin.Tuple.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 

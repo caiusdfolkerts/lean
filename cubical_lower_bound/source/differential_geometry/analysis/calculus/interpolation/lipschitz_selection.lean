@@ -1,11 +1,15 @@
+module
+
 /-
 Copyright (c) 2026 DifferentialGeometry contributors. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: DifferentialGeometry contributors
 -/
-import Mathlib.Analysis.Calculus.MeanValue
-import Mathlib.Analysis.Normed.Affine.Convex
-import Mathlib.Analysis.Normed.Module.FiniteDimension
+public import Mathlib.Analysis.Calculus.MeanValue
+public import Mathlib.Analysis.Normed.Affine.Convex
+public import Mathlib.Analysis.Normed.Module.FiniteDimension
+
+@[expose] public section
 
 open Set Filter Topology
 

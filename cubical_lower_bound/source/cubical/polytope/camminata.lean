@@ -1,9 +1,13 @@
+module
+
 /-
 Adapted from SolarYs431/lean-eval-platonic-classification, original module Submission.Camminata.
 Copyright 2026 Daniele Cappello. Licensed under Apache-2.0.
 Source provenance and adaptation details: THIRD_PARTY.md.
 -/
-import cubical.polytope.imports
+public import cubical.polytope.imports
+
+@[expose] public section
 
 /-!
 FASE 3A, F4c — LA CAMMINATA DEL SIMPLESSO, FORMA ASTRATTA (18 lug 2026).

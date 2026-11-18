@@ -1,11 +1,15 @@
+module
+
 /-
 Adapted from SolarYs431/lean-eval-platonic-classification, original module Submission.ConnettivitaRidgeBase.
 Copyright 2026 Daniele Cappello. Licensed under Apache-2.0.
 Source provenance and adaptation details: THIRD_PARTY.md.
 -/
-import cubical.polytope.imports
-import cubical.polytope.connettivita_globale
-import cubical.polytope.poligono_connesso
+public import cubical.polytope.imports
+public import cubical.polytope.connettivita_globale
+public import cubical.polytope.poligono_connesso
+
+@[expose] public section
 
 /-!
 CONNETTIVITÀ DEL RIDGE-GRAPH — BASE BIDIMENSIONALE (20 lug 2026).

@@ -1,6 +1,10 @@
-import differential_geometry.topology.homology.small_chains
-import Mathlib.Topology.MetricSpace.Pseudo.Lemmas
-import differential_geometry.topology.simplex.coordinates
+module
+
+public import differential_geometry.topology.homology.small_chains
+public import Mathlib.Topology.MetricSpace.Pseudo.Lemmas
+public import differential_geometry.topology.simplex.coordinates
+
+@[expose] public section
 
 set_option autoImplicit false
 

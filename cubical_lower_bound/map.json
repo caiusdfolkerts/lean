@@ -1,0 +1,377 @@
+{
+  "project": "cubical_lower_bound",
+  "baseline_revision": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
+  "status": "prepared_unbuilt",
+  "result_map": [
+    {
+      "paper_result": "Theorem 1, `d \u2265 3`",
+      "readme_names": [
+        "IsCubical.edge_bound",
+        "IsCubical.edge_bound_nat"
+      ],
+      "matches": [
+        {
+          "readme_name": "IsCubical.edge_bound",
+          "file": "source/cubical/polytope/main.lean",
+          "line": 29,
+          "statement_prefix": "theorem IsCubical.edge_bound (P : ConvexPolytope n) (hc : IsCubical P)\n    (hdim : 3 \u2264 P.dim) :\n    ((P.dim : \u211d) + 1) / 2 * P.vertices.card - 2 ^ (P.dim - 1) \u2264 faceNumber P 1 "
+        },
+        {
+          "readme_name": "IsCubical.edge_bound_nat",
+          "file": "source/cubical/polytope/main.lean",
+          "line": 17,
+          "statement_prefix": "theorem IsCubical.edge_bound_nat (P : ConvexPolytope n) (hc : IsCubical P)\n    (hdim : 3 \u2264 P.dim) :\n    (P.dim + 1) * P.vertices.card \u2264 2 * faceNumber P 1 + 2 ^ P.dim "
+        }
+      ]
+    },
+    {
+      "paper_result": "Theorem 1, strengthened, `d \u2265 4`",
+      "readme_names": [
+        "IsCubical.strengthened_edge_bound",
+        "IsCubical.strengthened_edge_bound_nat"
+      ],
+      "matches": [
+        {
+          "readme_name": "IsCubical.strengthened_edge_bound",
+          "file": "source/cubical/pl/lower_bound.lean",
+          "line": 104,
+          "statement_prefix": "theorem strengthened_edge_bound (d : \u2115) (hd : 4 \u2264 d)\n    (hK : K.IsSphere (d - 1)) (c : K.graph.Coloring Bool) :\n    ((d : \u211d) + 1) / 2 * K.faceNumber 0 - 2 ^ (d - 1) +\n      ((d : \u211d) - 1) / 2 *\n        |(Fintype.card (Black c) : \u211d) - Fintype.card (White c)| \u2264 K.faceNumber 1 "
+        },
+        {
+          "readme_name": "IsCubical.strengthened_edge_bound",
+          "file": "source/cubical/polytope/main_higher.lean",
+          "line": 61,
+          "statement_prefix": "theorem IsCubical.strengthened_edge_bound (P : ConvexPolytope n) (hc : IsCubical P)\n    (hdim : 4 \u2264 P.dim) (c : (polytopeGraph P).Coloring Bool) :\n    ((P.dim : \u211d) + 1) / 2 * P.vertices.card - 2 ^ (P.dim - 1) +\n      ((P.dim : \u211d) - 1) / 2 *\n        |(Fintype.card (Black c) : \u211d) - Fintype.card (White c)| \u2264 faceNumber P 1 "
+        },
+        {
+          "readme_name": "IsCubical.strengthened_edge_bound_nat",
+          "file": "source/cubical/pl/lower_bound.lean",
+          "line": 81,
+          "statement_prefix": "theorem strengthened_edge_bound_nat (d : \u2115) (hd : 4 \u2264 d)\n    (hK : K.IsSphere (d - 1)) (c : K.graph.Coloring Bool) :\n    (d + 1) * K.faceNumber 0 + (d - 1) *\n      Nat.dist (Fintype.card (Black c)) (Fintype.card (White c)) \u2264\n        2 * K.faceNumber 1 + 2 ^ d "
+        },
+        {
+          "readme_name": "IsCubical.strengthened_edge_bound_nat",
+          "file": "source/cubical/polytope/main_higher.lean",
+          "line": 33,
+          "statement_prefix": "theorem IsCubical.strengthened_edge_bound_nat (P : ConvexPolytope n) (hc : IsCubical P)\n    (hdim : 4 \u2264 P.dim) (c : (polytopeGraph P).Coloring Bool) :\n    (P.dim + 1) * P.vertices.card + (P.dim - 1) *\n      Nat.dist (Fintype.card (Black c)) (Fintype.card (White c)) \u2264\n        2 * faceNumber P 1 + 2 ^ P.dim "
+        }
+      ]
+    },
+    {
+      "paper_result": "Bipartition for convex cubical `d \u2265 3`",
+      "readme_names": [
+        "IsCubical.bipartite"
+      ],
+      "matches": [
+        {
+          "readme_name": "IsCubical.bipartite",
+          "file": "source/cubical/polytope/cube_face_geometry.lean",
+          "line": 142,
+          "statement_prefix": "theorem IsCubical.bipartite (P : ConvexPolytope n) (hc : IsCubical P)\n    (hdim : 3 \u2264 P.dim) : (polytopeGraph P).Colorable 2 "
+        }
+      ]
+    },
+    {
+      "paper_result": "Lemma 2",
+      "readme_names": [
+        "IsCubical.generic_local_propagation"
+      ],
+      "matches": [
+        {
+          "readme_name": "IsCubical.generic_local_propagation",
+          "file": "source/cubical/polytope/generic_theorems.lean",
+          "line": 95,
+          "statement_prefix": "theorem IsCubical.generic_local_propagation (P : ConvexPolytope n)\n    (hc : IsCubical P) (hdim : 4 \u2264 P.dim)\n    (c : (polytopeGraph P).Coloring Bool) :\n    \u2203 Q : MvPolynomial (White c \u00d7 Fin P.dim) \u211d, Q \u2260 0 \u2227\n      \u2200 x : White c \u00d7 Fin P.dim \u2192 \u211d, MvPolynomial.eval x Q \u2260 0 \u2192\n        (cubicalFacetCover P hc (by omega) c).LocalPropagation P.dim\n          (fun w i => x (w, i)) "
+        }
+      ]
+    },
+    {
+      "paper_result": "Proposition 3",
+      "readme_names": [
+        "IsCubical.generic_facet_determination"
+      ],
+      "matches": [
+        {
+          "readme_name": "IsCubical.generic_facet_determination",
+          "file": "source/cubical/polytope/generic_theorems.lean",
+          "line": 107,
+          "statement_prefix": "theorem IsCubical.generic_facet_determination (P : ConvexPolytope n)\n    (hc : IsCubical P) (hdim : 4 \u2264 P.dim)\n    (c : (polytopeGraph P).Coloring Bool) :\n    let C "
+        }
+      ]
+    },
+    {
+      "paper_result": "Corollary 4, all finite cubical PL spheres in the stated range",
+      "readme_names": [
+        "cubical_pl_lower_bound",
+        "strengthened_edge_bound"
+      ],
+      "matches": [
+        {
+          "readme_name": "cubical_pl_lower_bound",
+          "file": "source/cubical/pl/lower_bound.lean",
+          "line": 132,
+          "statement_prefix": "theorem cubical_pl_lower_bound (d : \u2115) (hd : 4 \u2264 d) (hK : K.IsSphere (d - 1)) :\n    Nonempty (K.graph.Coloring Bool) \u2227\n    \u2200 c : K.graph.Coloring Bool,\n      ((d : \u211d) + 1) / 2 * K.faceNumber 0 - 2 ^ (d - 1) +\n        ((d : \u211d) - 1) / 2 *\n          |(Fintype.card (Black c) : \u211d) - Fintype.card (White c)| \u2264 K.faceNumber 1 "
+        },
+        {
+          "readme_name": "strengthened_edge_bound",
+          "file": "source/cubical/pl/lower_bound.lean",
+          "line": 104,
+          "statement_prefix": "theorem strengthened_edge_bound (d : \u2115) (hd : 4 \u2264 d)\n    (hK : K.IsSphere (d - 1)) (c : K.graph.Coloring Bool) :\n    ((d : \u211d) + 1) / 2 * K.faceNumber 0 - 2 ^ (d - 1) +\n      ((d : \u211d) - 1) / 2 *\n        |(Fintype.card (Black c) : \u211d) - Fintype.card (White c)| \u2264 K.faceNumber 1 "
+        }
+      ]
+    },
+    {
+      "paper_result": "Corollary 5, every `1 \u2264 i \u2264 d\u22122`, `d \u2265 3`",
+      "readme_names": [
+        "IsCubical.face_lower_bound"
+      ],
+      "matches": [
+        {
+          "readme_name": "IsCubical.face_lower_bound",
+          "file": "source/cubical/polytope/face_bounds.lean",
+          "line": 87,
+          "statement_prefix": "theorem IsCubical.face_lower_bound (P : ConvexPolytope n)\n    (hc : IsCubical P) (hdim : 3 \u2264 P.dim) (i : \u2115)\n    (hi : 1 \u2264 i) (hid : i \u2264 P.dim - 2) :\n    ((P.dim.choose i : \u211d) + (P.dim - 1).choose (i - 1)) / 2 ^ i * P.vertices.card -\n      2 ^ (P.dim - i) * (P.dim - 1).choose (i - 1) \u2264 faceNumber P i "
+        }
+      ]
+    },
+    {
+      "paper_result": "Corollary 5, facets",
+      "readme_names": [
+        "IsCubical.facet_lower_bound"
+      ],
+      "matches": [
+        {
+          "readme_name": "IsCubical.facet_lower_bound",
+          "file": "source/cubical/quadrilateral_triangulation.lean",
+          "line": 370,
+          "statement_prefix": "theorem facet_lower_bound [Nonempty F] :\n    Fintype.card B + Fintype.card W \u2264 Fintype.card F + 2 "
+        },
+        {
+          "readme_name": "IsCubical.facet_lower_bound",
+          "file": "source/cubical/polytope/face_bounds.lean",
+          "line": 110,
+          "statement_prefix": "theorem IsCubical.facet_lower_bound (P : ConvexPolytope n)\n    (hc : IsCubical P) (hdim : 3 \u2264 P.dim) :\n    ((P.dim : \u211d) - 1) / 2 ^ (P.dim - 2) * P.vertices.card -\n      2 * ((P.dim : \u211d) - 2) \u2264 faceNumber P (P.dim - 1) "
+        }
+      ]
+    },
+    {
+      "paper_result": "Final strengthened face/facet formulas",
+      "readme_names": [
+        "IsCubical.strengthened_face_lower_bound",
+        "IsCubical.strengthened_facet_lower_bound"
+      ],
+      "matches": [
+        {
+          "readme_name": "IsCubical.strengthened_face_lower_bound",
+          "file": "source/cubical/polytope/face_bounds.lean",
+          "line": 135,
+          "statement_prefix": "theorem IsCubical.strengthened_face_lower_bound (P : ConvexPolytope n)\n    (hc : IsCubical P) (hdim : 4 \u2264 P.dim) (c : (polytopeGraph P).Coloring Bool)\n    (i : \u2115) (hi : 1 \u2264 i) (hid : i \u2264 P.dim - 2) :\n    ((P.dim.choose i : \u211d) + (P.dim - 1).choose (i - 1)) / 2 ^ i * P.vertices.card -\n      2 ^ (P.dim - i) * (P.dim - 1).choose (i - 1) +\n      ((P.dim : \u211d) - 1) * (P.dim - 1).choose (i - 1) / 2 ^ i *\n        |(Fintype.card (Black c) : \u211d) - Fintype.card (White c)| \u2264 faceNumber P i "
+        },
+        {
+          "readme_name": "IsCubical.strengthened_facet_lower_bound",
+          "file": "source/cubical/polytope/face_bounds.lean",
+          "line": 169,
+          "statement_prefix": "theorem IsCubical.strengthened_facet_lower_bound (P : ConvexPolytope n)\n    (hc : IsCubical P) (hdim : 4 \u2264 P.dim) (c : (polytopeGraph P).Coloring Bool) :\n    ((P.dim : \u211d) - 1) / 2 ^ (P.dim - 2) * P.vertices.card -\n      2 * ((P.dim : \u211d) - 2) +\n      ((P.dim : \u211d) - 1) * ((P.dim : \u211d) - 2) / 2 ^ (P.dim - 1) *\n        |(Fintype.card (Black c) : \u211d) - Fintype.card (White c)| \u2264\n      faceNumber P (P.dim - 1) "
+        }
+      ]
+    },
+    {
+      "paper_result": "Complete cube f-vector and equality cases",
+      "readme_names": [
+        "standardCube_faceNumber",
+        "standardCube_face_equality",
+        "standardCube_facet_equality"
+      ],
+      "matches": [
+        {
+          "readme_name": "standardCube_faceNumber",
+          "file": "source/cubical/polytope/cube_enumerations.lean",
+          "line": 35,
+          "statement_prefix": "theorem standardCube_faceNumber (d : \u2115) (hd : 1 \u2264 d) (i : \u2115) :\n    faceNumber (standardCube d) i = 2 ^ (d - i) * d.choose i "
+        },
+        {
+          "readme_name": "standardCube_face_equality",
+          "file": "source/cubical/polytope/cube_enumerations.lean",
+          "line": 72,
+          "statement_prefix": "theorem standardCube_face_equality (d : \u2115) (hd : 3 \u2264 d) (i : \u2115)\n    (hi : 1 \u2264 i) (hid : i \u2264 d - 2) :\n    (d.choose i + (d - 1).choose (i - 1)) * (standardCube d).vertices.card =\n      2 ^ i * faceNumber (standardCube d) i + 2 ^ d * (d - 1).choose (i - 1) "
+        },
+        {
+          "readme_name": "standardCube_facet_equality",
+          "file": "source/cubical/polytope/cube_enumerations.lean",
+          "line": 83,
+          "statement_prefix": "theorem standardCube_facet_equality (d : \u2115) (hd : 3 \u2264 d) :\n    (d - 1) * (standardCube d).vertices.card =\n      2 ^ (d - 2) * faceNumber (standardCube d) (d - 1) +\n        (d - 2) * 2 ^ (d - 1) "
+        }
+      ]
+    },
+    {
+      "paper_result": "Stacking preserves cubicality",
+      "readme_names": [
+        "FacetStacking.isCubical",
+        "IsStackedCubical.isCubical"
+      ],
+      "matches": [
+        {
+          "readme_name": "FacetStacking.isCubical",
+          "file": "source/cubical/polytope/stacking_cubical.lean",
+          "line": 23,
+          "statement_prefix": "theorem isCubical (S : FacetStacking P Q) (hc : IsCubical P) (hdim : 3 \u2264 P.dim) :\n    IsCubical Q "
+        },
+        {
+          "readme_name": "IsStackedCubical.isCubical",
+          "file": "source/cubical/polytope/stacking_cubical.lean",
+          "line": 23,
+          "statement_prefix": "theorem isCubical (S : FacetStacking P Q) (hc : IsCubical P) (hdim : 3 \u2264 P.dim) :\n    IsCubical Q "
+        },
+        {
+          "readme_name": "IsStackedCubical.isCubical",
+          "file": "source/cubical/polytope/stacking_cubical.lean",
+          "line": 86,
+          "statement_prefix": "theorem IsStackedCubical.isCubical {P : ConvexPolytope n} (h : IsStackedCubical P) :\n    3 \u2264 P.dim \u2192 IsCubical P "
+        }
+      ]
+    },
+    {
+      "paper_result": "Every finite realized stacking sequence attains the bounds",
+      "readme_names": [
+        "IsStackedCubical.edge_equality_real",
+        "IsStackedCubical.face_equality_real",
+        "IsStackedCubical.facet_equality_real"
+      ],
+      "matches": [
+        {
+          "readme_name": "IsStackedCubical.edge_equality_real",
+          "file": "source/cubical/polytope/stacking_sharpness_real.lean",
+          "line": 21,
+          "statement_prefix": "theorem IsStackedCubical.edge_equality_real (hP : IsStackedCubical P)\n    (hdim : 3 \u2264 P.dim) :\n    ((P.dim : \u211d) + 1) / 2 * P.vertices.card - 2 ^ (P.dim - 1) = faceNumber P 1 "
+        },
+        {
+          "readme_name": "IsStackedCubical.face_equality_real",
+          "file": "source/cubical/polytope/stacking_sharpness_real.lean",
+          "line": 35,
+          "statement_prefix": "theorem IsStackedCubical.face_equality_real (hP : IsStackedCubical P)\n    (hdim : 3 \u2264 P.dim) (i : \u2115) (hi : 1 \u2264 i) (hid : i \u2264 P.dim - 2) :\n    ((P.dim.choose i : \u211d) + (P.dim - 1).choose (i - 1)) / 2 ^ i * P.vertices.card -\n      2 ^ (P.dim - i) * (P.dim - 1).choose (i - 1) = faceNumber P i "
+        },
+        {
+          "readme_name": "IsStackedCubical.facet_equality_real",
+          "file": "source/cubical/polytope/stacking_sharpness_real.lean",
+          "line": 55,
+          "statement_prefix": "theorem IsStackedCubical.facet_equality_real (hP : IsStackedCubical P)\n    (hdim : 3 \u2264 P.dim) :\n    ((P.dim : \u211d) - 1) / 2 ^ (P.dim - 2) * P.vertices.card -\n      2 * ((P.dim : \u211d) - 2) = faceNumber P (P.dim - 1) "
+        }
+      ]
+    }
+  ],
+  "source_scan": {
+    "lean_files": 366,
+    "oversized": [],
+    "missing_module": [],
+    "symlinks": [],
+    "compiled_artifacts": []
+  },
+  "validation": "Not built; Comparator/NanoDa not run.",
+  "blockers": [
+    "Fresh full source build after legacy module visibility migration, Comparator and NanoDa validation pending."
+  ],
+  "challenge": {
+    "lines": 370,
+    "bytes": 18471,
+    "custom_definitions": "Independent exact data semantics with original names; only proof-valued construction fields are holes.",
+    "imports_only_canonical_mathlib": true
+  },
+  "selected_results": [
+    {
+      "declaration": "LeanEval.Geometry.PlatonicClassification.IsCubical.edge_bound",
+      "baseline_file": "source/cubical/polytope/main.lean",
+      "baseline_line": 25,
+      "challenge_line": 137
+    },
+    {
+      "declaration": "LeanEval.Geometry.PlatonicClassification.IsCubical.edge_bound_nat",
+      "baseline_file": "source/cubical/polytope/main.lean",
+      "baseline_line": 13,
+      "challenge_line": 142
+    },
+    {
+      "declaration": "LeanEval.Geometry.PlatonicClassification.IsCubical.strengthened_edge_bound",
+      "baseline_file": "source/cubical/polytope/main_higher.lean",
+      "baseline_line": 57,
+      "challenge_line": 147
+    },
+    {
+      "declaration": "LeanEval.Geometry.PlatonicClassification.IsCubical.bipartite",
+      "baseline_file": "source/cubical/polytope/cube_face_geometry.lean",
+      "baseline_line": 138,
+      "challenge_line": 154
+    },
+    {
+      "declaration": "LeanEval.Geometry.PlatonicClassification.IsCubical.face_lower_bound",
+      "baseline_file": "source/cubical/polytope/face_bounds.lean",
+      "baseline_line": 83,
+      "challenge_line": 158
+    },
+    {
+      "declaration": "LeanEval.Geometry.PlatonicClassification.IsCubical.facet_lower_bound",
+      "baseline_file": "source/cubical/polytope/face_bounds.lean",
+      "baseline_line": 106,
+      "challenge_line": 165
+    },
+    {
+      "declaration": "LeanEval.Geometry.PlatonicClassification.IsCubical.strengthened_face_lower_bound",
+      "baseline_file": "source/cubical/polytope/face_bounds.lean",
+      "baseline_line": 131,
+      "challenge_line": 171
+    },
+    {
+      "declaration": "LeanEval.Geometry.PlatonicClassification.IsCubical.strengthened_facet_lower_bound",
+      "baseline_file": "source/cubical/polytope/face_bounds.lean",
+      "baseline_line": 165,
+      "challenge_line": 180
+    },
+    {
+      "declaration": "LeanEval.Geometry.PlatonicClassification.standardCube_faceNumber",
+      "baseline_file": "source/cubical/polytope/cube_enumerations.lean",
+      "baseline_line": 31,
+      "challenge_line": 189
+    },
+    {
+      "declaration": "LeanEval.Geometry.PlatonicClassification.standardCube_face_equality",
+      "baseline_file": "source/cubical/polytope/cube_enumerations.lean",
+      "baseline_line": 68,
+      "challenge_line": 193
+    },
+    {
+      "declaration": "LeanEval.Geometry.PlatonicClassification.standardCube_facet_equality",
+      "baseline_file": "source/cubical/polytope/cube_enumerations.lean",
+      "baseline_line": 79,
+      "challenge_line": 199
+    },
+    {
+      "declaration": "LeanEval.Geometry.PlatonicClassification.IsStackedCubical.isCubical",
+      "baseline_file": "source/cubical/polytope/stacking_cubical.lean",
+      "baseline_line": 82,
+      "challenge_line": 248
+    },
+    {
+      "declaration": "LeanEval.Geometry.PlatonicClassification.IsStackedCubical.edge_equality_real",
+      "baseline_file": "source/cubical/polytope/stacking_sharpness_real.lean",
+      "baseline_line": 17,
+      "challenge_line": 254
+    },
+    {
+      "declaration": "LeanEval.Geometry.PlatonicClassification.IsStackedCubical.face_equality_real",
+      "baseline_file": "source/cubical/polytope/stacking_sharpness_real.lean",
+      "baseline_line": 31,
+      "challenge_line": 259
+    },
+    {
+      "declaration": "LeanEval.Geometry.PlatonicClassification.IsStackedCubical.facet_equality_real",
+      "baseline_file": "source/cubical/polytope/stacking_sharpness_real.lean",
+      "baseline_line": 51,
+      "challenge_line": 265
+    },
+    {
+      "declaration": "Cubical.PL.CubeComplex.cubical_pl_lower_bound",
+      "baseline_file": "source/cubical/pl/lower_bound.lean",
+      "baseline_line": 128,
+      "challenge_line": 362
+    }
+  ]
+}

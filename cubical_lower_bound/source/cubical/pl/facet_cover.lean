@@ -1,6 +1,10 @@
-import cubical.pl.facet_connectivity
-import cubical.colored_graph
-import cubical.facet_determination
+module
+
+public import cubical.pl.facet_connectivity
+public import cubical.colored_graph
+public import cubical.facet_determination
+
+@[expose] public section
 
 /-! # The actual facet cover of a cubical PL sphere -/
 

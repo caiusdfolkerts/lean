@@ -1,6 +1,10 @@
-import differential_geometry.topology.simplex.coordinates
-import differential_geometry.topology.simplex.vertex_map
-import differential_geometry.topology.simplex.boundary_retraction
+module
+
+public import differential_geometry.topology.simplex.coordinates
+public import differential_geometry.topology.simplex.vertex_map
+public import differential_geometry.topology.simplex.boundary_retraction
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

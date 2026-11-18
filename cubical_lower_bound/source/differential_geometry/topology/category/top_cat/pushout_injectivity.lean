@@ -1,4 +1,8 @@
-import differential_geometry.topology.category.top_cat.pushout_closed_embedding
+module
+
+public import differential_geometry.topology.category.top_cat.pushout_closed_embedding
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

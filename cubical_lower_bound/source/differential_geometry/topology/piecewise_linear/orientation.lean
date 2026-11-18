@@ -1,20 +1,24 @@
+module
+
 /-
 Copyright (c) 2026 DifferentialGeometry contributors. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: DifferentialGeometry contributors
 -/
-import differential_geometry.topology.piecewise_linear.affine_orientation
-import differential_geometry.topology.piecewise_linear.boundary_extension
-import differential_geometry.topology.piecewise_linear.boundary_invariance
-import differential_geometry.topology.piecewise_linear.general_position
-import differential_geometry.topology.piecewise_linear.manifold_connectivity
-import differential_geometry.topology.piecewise_linear.singular_general_position
-import differential_geometry.topology.piecewise_linear.stellar_sphere
-import differential_geometry.topology.simplicial_complex.incidence
-import differential_geometry.topology.sphere_separation.permutation_deletion
-import Mathlib.Data.Fin.SuccPredOrder
-import Mathlib.Data.Prod.Lex
-import Mathlib.Data.Sum.Order
+public import differential_geometry.topology.piecewise_linear.affine_orientation
+public import differential_geometry.topology.piecewise_linear.boundary_extension
+public import differential_geometry.topology.piecewise_linear.boundary_invariance
+public import differential_geometry.topology.piecewise_linear.general_position
+public import differential_geometry.topology.piecewise_linear.manifold_connectivity
+public import differential_geometry.topology.piecewise_linear.singular_general_position
+public import differential_geometry.topology.piecewise_linear.stellar_sphere
+public import differential_geometry.topology.simplicial_complex.incidence
+public import differential_geometry.topology.sphere_separation.permutation_deletion
+public import Mathlib.Data.Fin.SuccPredOrder
+public import Mathlib.Data.Prod.Lex
+public import Mathlib.Data.Sum.Order
+
+@[expose] public section
 
 open Set
 

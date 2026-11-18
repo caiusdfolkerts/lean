@@ -1,5 +1,9 @@
-import differential_geometry.topology.simplicial_complex.euler_characteristic
-import Mathlib.Tactic.NormNum
+module
+
+public import differential_geometry.topology.simplicial_complex.euler_characteristic
+public import Mathlib.Tactic.NormNum
+
+@[expose] public section
 
 open Finset
 

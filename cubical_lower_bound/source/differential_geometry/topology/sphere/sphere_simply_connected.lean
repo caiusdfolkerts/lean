@@ -1,7 +1,11 @@
-import Mathlib.AlgebraicTopology.FundamentalGroupoid.SimplyConnected
-import Mathlib.Analysis.Normed.Module.Connected
-import Mathlib.Geometry.Manifold.Instances.Sphere
-import Mathlib.Topology.Algebra.Module.FiniteDimension
+module
+
+public import Mathlib.AlgebraicTopology.FundamentalGroupoid.SimplyConnected
+public import Mathlib.Analysis.Normed.Module.Connected
+public import Mathlib.Geometry.Manifold.Instances.Sphere
+public import Mathlib.Topology.Algebra.Module.FiniteDimension
+
+@[expose] public section
 
 namespace DifferentialGeometry.Topology
 

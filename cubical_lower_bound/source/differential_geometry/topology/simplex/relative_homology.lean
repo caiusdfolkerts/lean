@@ -1,6 +1,10 @@
-import differential_geometry.topology.simplex.boundary_retraction
-import differential_geometry.topology.homology.relative.excision
-import Mathlib.AlgebraicTopology.SingularHomology.HomotopyInvariance
+module
+
+public import differential_geometry.topology.simplex.boundary_retraction
+public import differential_geometry.topology.homology.relative.excision
+public import Mathlib.AlgebraicTopology.SingularHomology.HomotopyInvariance
+
+@[expose] public section
 
 set_option autoImplicit false
 

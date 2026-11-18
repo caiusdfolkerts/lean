@@ -1,8 +1,12 @@
-import Mathlib.AlgebraicTopology.SimplicialComplex.Basic
-import Mathlib.AlgebraicTopology.SimplicialSet.NerveNondegenerate
-import Mathlib.AlgebraicTopology.SimplicialSet.NonDegenerateSimplicesSubcomplex
-import Mathlib.AlgebraicTopology.SimplicialSet.Finite
-import Mathlib.Data.Finset.Sort
+module
+
+public import Mathlib.AlgebraicTopology.SimplicialComplex.Basic
+public import Mathlib.AlgebraicTopology.SimplicialSet.NerveNondegenerate
+public import Mathlib.AlgebraicTopology.SimplicialSet.NonDegenerateSimplicesSubcomplex
+public import Mathlib.AlgebraicTopology.SimplicialSet.Finite
+public import Mathlib.Data.Finset.Sort
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

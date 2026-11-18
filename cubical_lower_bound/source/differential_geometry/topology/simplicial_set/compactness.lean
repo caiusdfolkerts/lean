@@ -1,7 +1,11 @@
-import differential_geometry.topology.simplicial_set.finite_cell_induction
-import differential_geometry.topology.category.top_cat.pushout_closed_embedding
-import Mathlib.AlgebraicTopology.SimplicialSet.TopAdj
-import Mathlib.Geometry.Convex.ConvexSpace.CompactSpaceStdSimplex
+module
+
+public import differential_geometry.topology.simplicial_set.finite_cell_induction
+public import differential_geometry.topology.category.top_cat.pushout_closed_embedding
+public import Mathlib.AlgebraicTopology.SimplicialSet.TopAdj
+public import Mathlib.Geometry.Convex.ConvexSpace.CompactSpaceStdSimplex
+
+@[expose] public section
 
 set_option autoImplicit false
 

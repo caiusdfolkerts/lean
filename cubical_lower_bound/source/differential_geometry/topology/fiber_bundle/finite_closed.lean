@@ -1,5 +1,9 @@
-import Mathlib.Topology.FiberBundle.Basic
-import Mathlib.Topology.Maps.Basic
+module
+
+public import Mathlib.Topology.FiberBundle.Basic
+public import Mathlib.Topology.Maps.Basic
+
+@[expose] public section
 
 noncomputable section
 open Bundle Set Filter

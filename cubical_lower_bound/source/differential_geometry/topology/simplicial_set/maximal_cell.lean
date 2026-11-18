@@ -1,8 +1,12 @@
-import Mathlib.AlgebraicTopology.SimplicialSet.Boundary
-import Mathlib.AlgebraicTopology.SimplicialSet.NonDegenerateSimplicesSubcomplex
-import Mathlib.CategoryTheory.Limits.Types.Pushouts
-import Mathlib.CategoryTheory.Limits.FunctorCategory.Basic
-import Mathlib.SetTheory.Cardinal.Finite
+module
+
+public import Mathlib.AlgebraicTopology.SimplicialSet.Boundary
+public import Mathlib.AlgebraicTopology.SimplicialSet.NonDegenerateSimplicesSubcomplex
+public import Mathlib.CategoryTheory.Limits.Types.Pushouts
+public import Mathlib.CategoryTheory.Limits.FunctorCategory.Basic
+public import Mathlib.SetTheory.Cardinal.Finite
+
+@[expose] public section
 
 set_option autoImplicit false
 

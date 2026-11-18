@@ -1,6 +1,10 @@
-import cubical.polytope.vertex_slice_counts
-import cubical.polytope.cube_face_counts
-import cubical.polytope.simplicial_polytope
+module
+
+public import cubical.polytope.vertex_slice_counts
+public import cubical.polytope.cube_face_counts
+public import cubical.polytope.simplicial_polytope
+
+@[expose] public section
 
 /-! # Vertex figures of cubical polytopes are geometrically simplicial -/
 

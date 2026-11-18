@@ -1,15 +1,19 @@
+module
+
 /-
 Copyright (c) 2026 DifferentialGeometry contributors. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: DifferentialGeometry contributors
 -/
-import differential_geometry.topology.piecewise_linear.general_position
-import differential_geometry.topology.piecewise_linear.boundary_invariance
-import differential_geometry.topology.piecewise_linear.pl_homeomorph_open
-import differential_geometry.topology.piecewise_linear.star_complex
-import differential_geometry.topology.piecewise_linear.open_star
-import differential_geometry.topology.piecewise_linear.combinatorial
-import Mathlib.Topology.SeparatedMap
+public import differential_geometry.topology.piecewise_linear.general_position
+public import differential_geometry.topology.piecewise_linear.boundary_invariance
+public import differential_geometry.topology.piecewise_linear.pl_homeomorph_open
+public import differential_geometry.topology.piecewise_linear.star_complex
+public import differential_geometry.topology.piecewise_linear.open_star
+public import differential_geometry.topology.piecewise_linear.combinatorial
+public import Mathlib.Topology.SeparatedMap
+
+@[expose] public section
 
 open Set Topology Metric
 

@@ -1,5 +1,9 @@
-import cubical.polytope.graph
-import Mathlib.Data.Fintype.BigOperators
+module
+
+public import cubical.polytope.graph
+public import Mathlib.Data.Fintype.BigOperators
+
+@[expose] public section
 
 /-! # Finite geometric face incidence and double counting -/
 

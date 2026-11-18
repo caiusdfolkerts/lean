@@ -1,7 +1,11 @@
-import differential_geometry.topology.piecewise_linear.pl_ball_sphere
-import Mathlib.GroupTheory.Index
-import Mathlib.Topology.Algebra.Module.LocallyConvex
-import Mathlib.Topology.Homotopy.Lifting
+module
+
+public import differential_geometry.topology.piecewise_linear.pl_ball_sphere
+public import Mathlib.GroupTheory.Index
+public import Mathlib.Topology.Algebra.Module.LocallyConvex
+public import Mathlib.Topology.Homotopy.Lifting
+
+@[expose] public section
 
 noncomputable section
 

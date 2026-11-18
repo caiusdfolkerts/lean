@@ -1,8 +1,12 @@
-import cubical.polytope.simplicial_boundary
-import cubical.polytope.simplicial_boundary_links
-import cubical.polytope.face_incidence
-import cubical.simplicial_lower_bound
-import cubical.simplicial_embedding
+module
+
+public import cubical.polytope.simplicial_boundary
+public import cubical.polytope.simplicial_boundary_links
+public import cubical.polytope.face_incidence
+public import cubical.simplicial_lower_bound
+public import cubical.simplicial_embedding
+
+@[expose] public section
 
 /-! # Equality of geometric and simplicial face numbers -/
 

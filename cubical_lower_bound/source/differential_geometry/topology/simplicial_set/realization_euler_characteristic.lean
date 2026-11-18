@@ -1,6 +1,10 @@
-import differential_geometry.topology.simplicial_set.finite_realization_homology
-import differential_geometry.topology.simplicial_set.euler_characteristic
-import differential_geometry.topology.homology.euler_characteristic
+module
+
+public import differential_geometry.topology.simplicial_set.finite_realization_homology
+public import differential_geometry.topology.simplicial_set.euler_characteristic
+public import differential_geometry.topology.homology.euler_characteristic
+
+@[expose] public section
 
 set_option autoImplicit false
 

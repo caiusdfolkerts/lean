@@ -1,4 +1,8 @@
-import differential_geometry.topology.homology.algebra.exact_sequence_euler
+module
+
+public import differential_geometry.topology.homology.algebra.exact_sequence_euler
+
+@[expose] public section
 
 set_option autoImplicit false
 open CategoryTheory CategoryTheory.Limits

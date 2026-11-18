@@ -1,4 +1,8 @@
-import cubical.polytope.cube_enumerations
+module
+
+public import cubical.polytope.cube_enumerations
+
+@[expose] public section
 
 /-! # Genuine facet stackings preserve cubicality -/
 

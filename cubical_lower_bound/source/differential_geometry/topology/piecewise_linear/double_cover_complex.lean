@@ -1,14 +1,18 @@
+module
+
 /-
 Copyright (c) 2026 DifferentialGeometry contributors. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: DifferentialGeometry contributors
 -/
-import differential_geometry.topology.covering.bool_cocycle
-import differential_geometry.topology.covering.double_cover_components
-import differential_geometry.topology.covering.section_split
-import differential_geometry.topology.fiber_bundle.finite_closed
-import differential_geometry.topology.piecewise_linear.open_star
-import Mathlib.Analysis.Convex.PathConnected
+public import differential_geometry.topology.covering.bool_cocycle
+public import differential_geometry.topology.covering.double_cover_components
+public import differential_geometry.topology.covering.section_split
+public import differential_geometry.topology.fiber_bundle.finite_closed
+public import differential_geometry.topology.piecewise_linear.open_star
+public import Mathlib.Analysis.Convex.PathConnected
+
+@[expose] public section
 
 noncomputable section
 

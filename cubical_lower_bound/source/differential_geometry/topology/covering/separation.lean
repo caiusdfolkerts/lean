@@ -1,6 +1,10 @@
-import Mathlib.Topology.Covering.Basic
-import Mathlib.Topology.Compactness.Lindelof
-import Mathlib.Geometry.Manifold.ChartedSpace
+module
+
+public import Mathlib.Topology.Covering.Basic
+public import Mathlib.Topology.Compactness.Lindelof
+public import Mathlib.Geometry.Manifold.ChartedSpace
+
+@[expose] public section
 
 open Set
 namespace DifferentialGeometry.Topology.Covering

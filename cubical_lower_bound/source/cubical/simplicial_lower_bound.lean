@@ -1,7 +1,11 @@
-import cubical.fogelsanger
-import cubical.simplicial_face_graph
-import cubical.simplicial_ridge_count
-import Mathlib.Data.Nat.Choose.Basic
+module
+
+public import cubical.fogelsanger
+public import cubical.simplicial_face_graph
+public import cubical.simplicial_ridge_count
+public import Mathlib.Data.Nat.Choose.Basic
+
+@[expose] public section
 
 /-! # The simplicial lower bound theorem from minimal-cycle rigidity
 

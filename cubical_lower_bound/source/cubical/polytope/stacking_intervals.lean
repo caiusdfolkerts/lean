@@ -1,4 +1,8 @@
-import cubical.polytope.stacking_counts
+module
+
+public import cubical.polytope.stacking_counts
+
+@[expose] public section
 
 /-! # Face intervals in a genuine facet stacking -/
 

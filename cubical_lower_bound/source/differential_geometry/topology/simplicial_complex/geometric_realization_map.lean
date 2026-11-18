@@ -1,8 +1,12 @@
-import differential_geometry.topology.simplex.coordinates
-import differential_geometry.topology.simplicial_complex.ordered_simplicial_set
-import differential_geometry.topology.simplex.vertex_map
-import Mathlib.Analysis.Convex.SimplicialComplex.Basic
-import Mathlib.AlgebraicTopology.SimplicialSet.TopAdj
+module
+
+public import differential_geometry.topology.simplex.coordinates
+public import differential_geometry.topology.simplicial_complex.ordered_simplicial_set
+public import differential_geometry.topology.simplex.vertex_map
+public import Mathlib.Analysis.Convex.SimplicialComplex.Basic
+public import Mathlib.AlgebraicTopology.SimplicialSet.TopAdj
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

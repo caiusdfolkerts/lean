@@ -1,16 +1,20 @@
+module
+
 /-
 Copyright (c) 2026 DifferentialGeometry contributors. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: DifferentialGeometry contributors
 -/
-import differential_geometry.topology.piecewise_linear.triangulation_existence
-import differential_geometry.topology.piecewise_linear.star_complex
-import differential_geometry.topology.piecewise_linear.link_euclidean
-import differential_geometry.topology.piecewise_linear.mesh
-import differential_geometry.topology.piecewise_linear.combinatorial_zero
-import differential_geometry.topology.piecewise_linear.pl_ball_sphere
-import differential_geometry.topology.piecewise_linear.ball_sphere_link
-import Mathlib.Topology.Baire.Lemmas
+public import differential_geometry.topology.piecewise_linear.triangulation_existence
+public import differential_geometry.topology.piecewise_linear.star_complex
+public import differential_geometry.topology.piecewise_linear.link_euclidean
+public import differential_geometry.topology.piecewise_linear.mesh
+public import differential_geometry.topology.piecewise_linear.combinatorial_zero
+public import differential_geometry.topology.piecewise_linear.pl_ball_sphere
+public import differential_geometry.topology.piecewise_linear.ball_sphere_link
+public import Mathlib.Topology.Baire.Lemmas
+
+@[expose] public section
 
 open Set Topology Metric
 open scoped Manifold

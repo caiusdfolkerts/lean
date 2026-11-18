@@ -1,4 +1,8 @@
-import cubical.pl.facet_cover
+module
+
+public import cubical.pl.facet_cover
+
+@[expose] public section
 
 /-! # The original vertex and edge counts of a cubical complex -/
 

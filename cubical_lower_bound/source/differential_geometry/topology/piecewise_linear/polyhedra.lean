@@ -1,12 +1,16 @@
+module
+
 /-
 Copyright (c) 2026 DifferentialGeometry contributors. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: DifferentialGeometry contributors
 -/
-import differential_geometry.topology.piecewise_linear.polytope
-import Mathlib.Analysis.Convex.SimplicialComplex.Basic
-import Mathlib.Analysis.Convex.Topology
-import Mathlib.LinearAlgebra.AffineSpace.FiniteDimensional
+public import differential_geometry.topology.piecewise_linear.polytope
+public import Mathlib.Analysis.Convex.SimplicialComplex.Basic
+public import Mathlib.Analysis.Convex.Topology
+public import Mathlib.LinearAlgebra.AffineSpace.FiniteDimensional
+
+@[expose] public section
 
 open Set Topology
 

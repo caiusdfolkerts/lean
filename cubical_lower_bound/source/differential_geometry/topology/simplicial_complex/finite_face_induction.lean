@@ -1,5 +1,9 @@
-import differential_geometry.topology.simplicial_complex.maximal_face
-import Mathlib.Order.Preorder.Finite
+module
+
+public import differential_geometry.topology.simplicial_complex.maximal_face
+public import Mathlib.Order.Preorder.Finite
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

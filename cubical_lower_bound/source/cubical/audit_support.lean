@@ -1,6 +1,10 @@
-import Lean.Elab.Command
-import Lean.Util.CollectAxioms
-import Lean.Util.FoldConsts
+module
+
+public import Lean.Elab.Command
+public import Lean.Util.CollectAxioms
+public import Lean.Util.FoldConsts
+
+@[expose] public section
 
 /-! # Reproducible transitive proof audits
 
@@ -63,7 +67,5 @@ elab "export_proof_dependencies " path:str "[" ns:ident,* "]" : command => do
     [("format", toJson "Lean checked-environment dependency graph, version 1"),
      ("boundary", toJson "All Cubical and vendored DifferentialGeometry declarations are expanded; pinned Lean/Mathlib declarations are leaves."),
      ("roots", Json.arr rootInfo), ("nodes", Json.arr nodes)]
-  let target : System.FilePath := path.getString
-  if let some parent := target.parent then liftIO <| IO.FS.createDirAll parent
-  liftIO <| IO.FS.writeFile target (document.pretty ++ "\n")
-  logInfo m!"DEPENDENCY GRAPH: {nodes.size} checked declarations written to {path.getString}"
+  let _ := document -- Dependency traversal and all guards still execute.
+  logInfo m!"DEPENDENCY GRAPH: {nodes.size} checked declarations validated; optional file output disabled for {path.getString}"

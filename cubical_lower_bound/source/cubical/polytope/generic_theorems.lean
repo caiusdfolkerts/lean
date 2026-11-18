@@ -1,5 +1,9 @@
-import cubical.polytope.lower_bound
-import cubical.polytope.link_rigidity
+module
+
+public import cubical.polytope.lower_bound
+public import cubical.polytope.link_rigidity
+
+@[expose] public section
 
 /-! # Lemma 2 and Proposition 3 for actual convex cubical polytopes
 

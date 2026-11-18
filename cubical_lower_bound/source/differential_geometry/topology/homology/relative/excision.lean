@@ -1,7 +1,11 @@
-import differential_geometry.topology.homology.relative.map
-import differential_geometry.topology.homology.small_chains.quasi_iso
-import differential_geometry.topology.homology.small_chains.union
-import differential_geometry.topology.homology.algebra.cokernel_quasi_iso
+module
+
+public import differential_geometry.topology.homology.relative.map
+public import differential_geometry.topology.homology.small_chains.quasi_iso
+public import differential_geometry.topology.homology.small_chains.union
+public import differential_geometry.topology.homology.algebra.cokernel_quasi_iso
+
+@[expose] public section
 
 set_option autoImplicit false
 open CategoryTheory CategoryTheory.Limits AlgebraicTopology

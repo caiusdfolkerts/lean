@@ -1,6 +1,10 @@
-import cubical.pl.neighbor_link
-import cubical.pl.facet_cover
-import cubical.abstract_bound
+module
+
+public import cubical.pl.neighbor_link
+public import cubical.pl.facet_cover
+public import cubical.abstract_bound
+
+@[expose] public section
 
 /-!
 # Square stars in genuine abstract cubical complexes

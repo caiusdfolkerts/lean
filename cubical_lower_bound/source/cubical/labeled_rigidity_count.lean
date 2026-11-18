@@ -1,4 +1,8 @@
-import cubical.rigidity_count
+module
+
+public import cubical.rigidity_count
+
+@[expose] public section
 
 /-!
 # Edge-count bounds for an explicit covering family of distance equations

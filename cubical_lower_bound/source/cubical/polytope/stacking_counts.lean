@@ -1,4 +1,8 @@
-import cubical.polytope.stacking_poset
+module
+
+public import cubical.polytope.stacking_poset
+
+@[expose] public section
 
 /-! # Face counts derived from the facet-gluing poset -/
 

@@ -1,15 +1,19 @@
+module
+
 /-
 Adapted from SolarYs431/lean-eval-platonic-classification, original module Submission.FaccetteConnesse.
 Copyright 2026 Daniele Cappello. Licensed under Apache-2.0.
 Source provenance and adaptation details: THIRD_PARTY.md.
 -/
-import cubical.polytope.imports
-import cubical.polytope.connessione_ventaglio
-import cubical.polytope.diamante_relativo
-import cubical.polytope.faccia_intermedia
-import cubical.polytope.perturbazione_finita
-import cubical.polytope.mossa_involutiva
-import cubical.polytope.poligono_connesso
+public import cubical.polytope.imports
+public import cubical.polytope.connessione_ventaglio
+public import cubical.polytope.diamante_relativo
+public import cubical.polytope.faccia_intermedia
+public import cubical.polytope.perturbazione_finita
+public import cubical.polytope.mossa_involutiva
+public import cubical.polytope.poligono_connesso
+
+@[expose] public section
 
 open Set
 open scoped RealInnerProductSpace

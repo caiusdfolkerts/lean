@@ -1,6 +1,10 @@
-import cubical.rigidity
-import cubical.local_propagation
-import Mathlib.Analysis.InnerProductSpace.PiL2
+module
+
+public import cubical.rigidity
+public import cubical.local_propagation
+public import Mathlib.Analysis.InnerProductSpace.PiL2
+
+@[expose] public section
 
 /-!
 # Euclidean rigidity supplies the local pinned condition

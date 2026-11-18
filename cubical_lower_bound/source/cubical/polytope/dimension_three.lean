@@ -1,8 +1,12 @@
-import cubical.quadrilateral_triangulation
-import cubical.polytope.facet_geometry
-import cubical.polytope.facet_counts
-import cubical.polytope.edge_counts
-import cubical.polytope.two_faces
+module
+
+public import cubical.quadrilateral_triangulation
+public import cubical.polytope.facet_geometry
+public import cubical.polytope.facet_counts
+public import cubical.polytope.edge_counts
+public import cubical.polytope.two_faces
+
+@[expose] public section
 
 /-!
 # The cubical lower bounds in dimension three

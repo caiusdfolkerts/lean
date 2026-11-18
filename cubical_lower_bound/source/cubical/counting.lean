@@ -1,7 +1,11 @@
-import Mathlib.Data.Nat.Choose.Sum
-import Mathlib.Data.Nat.Dist
-import Mathlib.Basic.Real.Basic
-import Mathlib.Tactic
+module
+
+public import Mathlib.Data.Nat.Choose.Sum
+public import Mathlib.Data.Nat.Dist
+public import Mathlib.Basic.Real.Basic
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # Exact numerical consequences of the asymmetric bounds

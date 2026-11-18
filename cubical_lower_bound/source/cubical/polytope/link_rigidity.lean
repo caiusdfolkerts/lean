@@ -1,6 +1,10 @@
-import cubical.polytope.square_stars
-import cubical.polytope.vertex_slice_simplicial
-import cubical.polytope.simplicial_rigidity
+module
+
+public import cubical.polytope.square_stars
+public import cubical.polytope.vertex_slice_simplicial
+public import cubical.polytope.simplicial_rigidity
+
+@[expose] public section
 
 /-! # Generic rigidity of the actual vertex links of cubical polytopes -/
 

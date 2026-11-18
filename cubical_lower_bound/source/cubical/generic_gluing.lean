@@ -1,6 +1,10 @@
-import cubical.generic_rigidity
-import cubical.generic_vertex_splitting
-import Mathlib.Combinatorics.SimpleGraph.Connectivity.Connected
+module
+
+public import cubical.generic_rigidity
+public import cubical.generic_vertex_splitting
+public import Mathlib.Combinatorics.SimpleGraph.Connectivity.Connected
+
+@[expose] public section
 
 /-!
 # Gluing a connected family of rigid subgraphs

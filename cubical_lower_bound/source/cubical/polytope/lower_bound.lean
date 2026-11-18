@@ -1,7 +1,11 @@
-import cubical.polytope.square_stars
-import cubical.polytope.facet_counts
-import cubical.polytope.edge_counts
-import cubical.abstract_card_bound
+module
+
+public import cubical.polytope.square_stars
+public import cubical.polytope.facet_counts
+public import cubical.polytope.edge_counts
+public import cubical.abstract_card_bound
+
+@[expose] public section
 
 /-! # Applying the rank argument to actual convex cubical polytopes
 

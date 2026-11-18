@@ -1,9 +1,11 @@
-import cubical
-import cubical.audit_convex
+module
 
--- Create directories for generated verification output.
-run_cmd Lean.Elab.Command.liftIO do
-  IO.FS.createDirAll ".lake/reports/audit"
+public import cubical
+public import cubical.audit_convex
+
+@[expose] public section
+
+-- Optional audit-report filesystem output is disabled in the read-only verifier.
 
 
 /-! # Final audit of the complete paper -/

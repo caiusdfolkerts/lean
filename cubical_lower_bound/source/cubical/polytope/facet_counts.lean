@@ -1,4 +1,8 @@
-import cubical.polytope.facet_cover
+module
+
+public import cubical.polytope.facet_cover
+
+@[expose] public section
 
 /-! # Color-class and edge counts within actual cubical facets -/
 

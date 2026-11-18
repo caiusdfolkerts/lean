@@ -1,6 +1,10 @@
-import cubical.cube
-import Mathlib.AlgebraicTopology.SimplicialComplex.Basic
-import Mathlib.Data.ZMod.Basic
+module
+
+public import cubical.cube
+public import Mathlib.AlgebraicTopology.SimplicialComplex.Basic
+public import Mathlib.Data.ZMod.Basic
+
+@[expose] public section
 
 /-!
 # Finite abstract cubical complexes

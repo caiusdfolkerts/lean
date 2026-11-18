@@ -1,5 +1,9 @@
-import differential_geometry.topology.simplex.coordinates
-import differential_geometry.topology.simplex.ball_coordinates
+module
+
+public import differential_geometry.topology.simplex.coordinates
+public import differential_geometry.topology.simplex.ball_coordinates
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

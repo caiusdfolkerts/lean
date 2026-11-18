@@ -1,5 +1,9 @@
-import cubical.polytope.graph
-import cubical.polytope.balinski_generale
+module
+
+public import cubical.polytope.graph
+public import cubical.polytope.balinski_generale
+
+@[expose] public section
 
 /-!
 # Monotone paths in an actual convex-polytope graph

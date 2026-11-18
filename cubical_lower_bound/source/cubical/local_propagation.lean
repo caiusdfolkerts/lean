@@ -1,7 +1,11 @@
-import cubical.generic_rank
-import cubical.bipartite_system
-import Mathlib.Data.Fin.Tuple.Basic
-import Mathlib.Algebra.BigOperators.Fin
+module
+
+public import cubical.generic_rank
+public import cubical.bipartite_system
+public import Mathlib.Data.Fin.Tuple.Basic
+public import Mathlib.Algebra.BigOperators.Fin
+
+@[expose] public section
 
 /-!
 # The local polynomial system at a white vertex

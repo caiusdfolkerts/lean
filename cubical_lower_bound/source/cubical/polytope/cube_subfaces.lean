@@ -1,5 +1,9 @@
-import cubical.polytope.stacking_intervals
-import cubical.polytope.cube_face_affine
+module
+
+public import cubical.polytope.stacking_intervals
+public import cubical.polytope.cube_face_affine
+
+@[expose] public section
 
 /-! # Face intervals and cubicality under ordinary face-poset isomorphisms -/
 

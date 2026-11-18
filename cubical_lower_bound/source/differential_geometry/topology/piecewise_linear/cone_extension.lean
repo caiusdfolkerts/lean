@@ -1,11 +1,15 @@
+module
+
 /-
 Copyright (c) 2026 DifferentialGeometry contributors. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: DifferentialGeometry contributors
 -/
-import differential_geometry.topology.piecewise_linear.cone_base
-import differential_geometry.topology.piecewise_linear.piecewise_affine_simplicial
-import differential_geometry.topology.piecewise_linear.pl_homeomorph
+public import differential_geometry.topology.piecewise_linear.cone_base
+public import differential_geometry.topology.piecewise_linear.piecewise_affine_simplicial
+public import differential_geometry.topology.piecewise_linear.pl_homeomorph
+
+@[expose] public section
 
 open Set Topology
 

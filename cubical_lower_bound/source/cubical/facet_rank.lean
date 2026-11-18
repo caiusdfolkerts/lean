@@ -1,5 +1,9 @@
-import cubical.bipartite_system
-import Mathlib.LinearAlgebra.Matrix.Rank
+module
+
+public import cubical.bipartite_system
+public import Mathlib.LinearAlgebra.Matrix.Rank
+
+@[expose] public section
 
 /-!
 # Rank and nullity of a facet's normalized system

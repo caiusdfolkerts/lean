@@ -1,6 +1,10 @@
-import Mathlib.AlgebraicTopology.SimplicialComplex.Basic
-import Mathlib.Combinatorics.Enumerative.DoubleCounting
-import Mathlib.Data.Finset.Powerset
+module
+
+public import Mathlib.AlgebraicTopology.SimplicialComplex.Basic
+public import Mathlib.Combinatorics.Enumerative.DoubleCounting
+public import Mathlib.Data.Finset.Powerset
+
+@[expose] public section
 
 open Finset
 

@@ -1,13 +1,17 @@
+module
+
 /-
 Copyright (c) 2026 DifferentialGeometry contributors. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: DifferentialGeometry contributors
 -/
-import differential_geometry.topology.piecewise_linear.isomorphic_subdivision
-import differential_geometry.topology.piecewise_linear.join_standard
-import differential_geometry.topology.piecewise_linear.join_transport
-import differential_geometry.topology.piecewise_linear.simplex_ball
-import differential_geometry.topology.piecewise_linear.star_complex
+public import differential_geometry.topology.piecewise_linear.isomorphic_subdivision
+public import differential_geometry.topology.piecewise_linear.join_standard
+public import differential_geometry.topology.piecewise_linear.join_transport
+public import differential_geometry.topology.piecewise_linear.simplex_ball
+public import differential_geometry.topology.piecewise_linear.star_complex
+
+@[expose] public section
 
 open Set
 

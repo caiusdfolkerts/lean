@@ -1,7 +1,11 @@
-import cubical.polytope.simplicial_face_counts
-import cubical.polytope.vertex_slice_simplicial
-import cubical.polytope.edge_counts
-import cubical.mpw
+module
+
+public import cubical.polytope.simplicial_face_counts
+public import cubical.polytope.vertex_slice_simplicial
+public import cubical.polytope.edge_counts
+public import cubical.mpw
+
+@[expose] public section
 
 /-!
 # Cubical MPW reduction on actual convex polytopes

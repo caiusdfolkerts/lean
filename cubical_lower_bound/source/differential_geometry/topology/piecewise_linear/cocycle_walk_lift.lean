@@ -1,10 +1,14 @@
+module
+
 /-
 Copyright (c) 2026 DifferentialGeometry contributors. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: DifferentialGeometry contributors
 -/
-import differential_geometry.topology.piecewise_linear.cocycle_monodromy
-import differential_geometry.topology.piecewise_linear.covering_orientation
+public import differential_geometry.topology.piecewise_linear.cocycle_monodromy
+public import differential_geometry.topology.piecewise_linear.covering_orientation
+
+@[expose] public section
 
 namespace DifferentialGeometry.Topology.PiecewiseLinear
 

@@ -1,6 +1,10 @@
-import differential_geometry.topology.simplicial_complex.realization.standard_realization_coordinates
-import differential_geometry.topology.simplicial_complex.barycentric.coordinates.barycentric_chain
-import Mathlib.Order.Interval.Finset.Nat
+module
+
+public import differential_geometry.topology.simplicial_complex.realization.standard_realization_coordinates
+public import differential_geometry.topology.simplicial_complex.barycentric.coordinates.barycentric_chain
+public import Mathlib.Order.Interval.Finset.Nat
+
+@[expose] public section
 
 namespace DifferentialGeometry.Topology.Engulfing
 

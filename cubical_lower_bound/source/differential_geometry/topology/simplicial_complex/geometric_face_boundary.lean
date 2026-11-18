@@ -1,6 +1,10 @@
-import differential_geometry.topology.simplex.coordinates
-import differential_geometry.topology.simplex.vertex_faces
-import differential_geometry.topology.simplicial_complex.maximal_face
+module
+
+public import differential_geometry.topology.simplex.coordinates
+public import differential_geometry.topology.simplex.vertex_faces
+public import differential_geometry.topology.simplicial_complex.maximal_face
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

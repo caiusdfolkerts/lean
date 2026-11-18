@@ -1,4 +1,8 @@
-import Mathlib.Algebra.Homology.HomologySequenceLemmas
+module
+
+public import Mathlib.Algebra.Homology.HomologySequenceLemmas
+
+@[expose] public section
 
 set_option autoImplicit false
 open CategoryTheory ComposableArrows Abelian

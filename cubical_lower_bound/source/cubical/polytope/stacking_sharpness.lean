@@ -1,4 +1,8 @@
-import cubical.polytope.stacking_cubical
+module
+
+public import cubical.polytope.stacking_cubical
+
+@[expose] public section
 
 /-!
 # Exact stacked cubical f-vectors and sharpness

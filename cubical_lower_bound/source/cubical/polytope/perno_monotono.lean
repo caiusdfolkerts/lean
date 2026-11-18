@@ -1,10 +1,14 @@
+module
+
 /-
 Adapted from SolarYs431/lean-eval-platonic-classification, original module Submission.PernoMonotono.
 Copyright 2026 Daniele Cappello. Licensed under Apache-2.0.
 Source provenance and adaptation details: THIRD_PARTY.md.
 -/
-import cubical.polytope.imports
-import cubical.polytope.interpolazione
+public import cubical.polytope.imports
+public import cubical.polytope.interpolazione
+
+@[expose] public section
 
 /-!
 PERNO MONOTONO (20 lug 2026).

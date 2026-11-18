@@ -1,17 +1,21 @@
+module
+
 /-
 Adapted from SolarYs431/lean-eval-platonic-classification, original module Submission.SecondaFaccetta.
 Copyright 2026 Daniele Cappello. Licensed under Apache-2.0.
 Source provenance and adaptation details: THIRD_PARTY.md.
 -/
-import cubical.polytope.imports
-import cubical.polytope.definitions
-import cubical.polytope.vertici_esposti
-import cubical.polytope.dim_stretta
-import cubical.polytope.scala_bandiere
-import cubical.polytope.diamante
-import cubical.polytope.diamante2_d
-import cubical.polytope.interpolazione
-import cubical.polytope.secondo_spigolo
+public import cubical.polytope.imports
+public import cubical.polytope.definitions
+public import cubical.polytope.vertici_esposti
+public import cubical.polytope.dim_stretta
+public import cubical.polytope.scala_bandiere
+public import cubical.polytope.diamante
+public import cubical.polytope.diamante2_d
+public import cubical.polytope.interpolazione
+public import cubical.polytope.secondo_spigolo
+
+@[expose] public section
 
 /-!
 FASE 3A — LA SECONDA FACCETTA (18 lug 2026).

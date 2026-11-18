@@ -1,10 +1,14 @@
+module
+
 /-
 Copyright (c) 2026 DifferentialGeometry contributors. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: DifferentialGeometry contributors
 -/
-import differential_geometry.topology.piecewise_linear.polytope
-import Mathlib.Topology.OpenPartialHomeomorph.Basic
+public import differential_geometry.topology.piecewise_linear.polytope
+public import Mathlib.Topology.OpenPartialHomeomorph.Basic
+
+@[expose] public section
 
 open Set Topology Filter
 

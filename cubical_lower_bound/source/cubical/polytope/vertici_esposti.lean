@@ -1,11 +1,15 @@
+module
+
 /-
 Adapted from SolarYs431/lean-eval-platonic-classification, original module Submission.VerticiEsposti.
 Copyright 2026 Daniele Cappello. Licensed under Apache-2.0.
 Source provenance and adaptation details: THIRD_PARTY.md.
 -/
-import cubical.polytope.imports
-import cubical.polytope.definitions
-import cubical.polytope.perturbazione_finita
+public import cubical.polytope.imports
+public import cubical.polytope.definitions
+public import cubical.polytope.perturbazione_finita
+
+@[expose] public section
 
 /-!
 FASE 3A, Q1 — I VERTICI SONO FACCE ESPOSTE (18 lug 2026).

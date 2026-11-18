@@ -1,5 +1,9 @@
-import differential_geometry.topology.simplicial_complex.incidence
-import differential_geometry.topology.simplicial_complex.maximal_face
+module
+
+public import differential_geometry.topology.simplicial_complex.incidence
+public import differential_geometry.topology.simplicial_complex.maximal_face
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

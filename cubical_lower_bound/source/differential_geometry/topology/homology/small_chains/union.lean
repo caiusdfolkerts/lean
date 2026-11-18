@@ -1,5 +1,9 @@
-import differential_geometry.topology.homology.small_chains.subspace
-import differential_geometry.topology.simplicial_set.union_chains
+module
+
+public import differential_geometry.topology.homology.small_chains.subspace
+public import differential_geometry.topology.simplicial_set.union_chains
+
+@[expose] public section
 
 set_option autoImplicit false
 open CategoryTheory CategoryTheory.Limits Opposite Simplicial AlgebraicTopology

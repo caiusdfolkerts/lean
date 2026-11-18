@@ -1,5 +1,9 @@
-import cubical.simplicial_faces
-import cubical.simplicial_reindex
+module
+
+public import cubical.simplicial_faces
+public import cubical.simplicial_reindex
+
+@[expose] public section
 
 /-! # Injective changes of the ambient vertex type -/
 

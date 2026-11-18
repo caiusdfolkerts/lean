@@ -1,5 +1,9 @@
-import cubical.generic_rigidity
-import cubical.vertex_splitting
+module
+
+public import cubical.generic_rigidity
+public import cubical.vertex_splitting
+
+@[expose] public section
 
 /-!
 # Generic vertex splitting and relabelling

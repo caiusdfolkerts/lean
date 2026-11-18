@@ -1,6 +1,10 @@
-import Mathlib.Topology.Covering.Basic
-import Mathlib.Topology.Connected.Clopen
-import Mathlib.Topology.Homeomorph.Lemmas
+module
+
+public import Mathlib.Topology.Covering.Basic
+public import Mathlib.Topology.Connected.Clopen
+public import Mathlib.Topology.Homeomorph.Lemmas
+
+@[expose] public section
 
 noncomputable section
 open Set

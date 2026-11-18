@@ -1,6 +1,10 @@
-import cubical.polytope.cube_faces
-import cubical.polytope.cube_subfaces
-import cubical.cube_face_code_count
+module
+
+public import cubical.polytope.cube_faces
+public import cubical.polytope.cube_subfaces
+public import cubical.cube_face_code_count
+
+@[expose] public section
 
 /-! # The full geometric cube f-vector and the cube-prism face isomorphism -/
 

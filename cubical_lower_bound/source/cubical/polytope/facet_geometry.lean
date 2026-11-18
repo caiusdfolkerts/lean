@@ -1,5 +1,9 @@
-import cubical.polytope.facet_cover
-import cubical.polytope.simplex_faces
+module
+
+public import cubical.polytope.facet_cover
+public import cubical.polytope.simplex_faces
+
+@[expose] public section
 
 /-! # Actual facet vertex sets and the geometric ridge diamond -/
 

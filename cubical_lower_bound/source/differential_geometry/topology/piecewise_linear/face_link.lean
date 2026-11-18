@@ -1,10 +1,14 @@
+module
+
 /-
 Copyright (c) 2026 DifferentialGeometry contributors. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: DifferentialGeometry contributors
 -/
-import differential_geometry.topology.piecewise_linear.barycentric
-import differential_geometry.topology.simplicial_complex.geometric_link
+public import differential_geometry.topology.piecewise_linear.barycentric
+public import differential_geometry.topology.simplicial_complex.geometric_link
+
+@[expose] public section
 
 open Set
 

@@ -1,4 +1,8 @@
-import differential_geometry.topology.homology.subdivision.barycentric
+module
+
+public import differential_geometry.topology.homology.subdivision.barycentric
+
+@[expose] public section
 
 set_option autoImplicit false
 

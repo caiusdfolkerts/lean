@@ -1,4 +1,8 @@
-import cubical.polytope.sotto_politopo
+module
+
+public import cubical.polytope.sotto_politopo
+
+@[expose] public section
 
 /-!
 # Finite face sets of genuine convex polytopes

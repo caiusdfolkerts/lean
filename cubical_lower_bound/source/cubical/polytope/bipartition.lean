@@ -1,5 +1,9 @@
-import cubical.polytope.vertex_slice
-import cubical.polytope.graph_parity
+module
+
+public import cubical.polytope.vertex_slice
+public import cubical.polytope.graph_parity
+
+@[expose] public section
 
 /-!
 # Bipartition of geometric polytopes whose two-faces are squares

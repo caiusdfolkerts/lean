@@ -1,6 +1,10 @@
-import cubical.polytope.facet_cover
-import cubical.polytope.face_incidence
-import Mathlib.Order.WithBot
+module
+
+public import cubical.polytope.facet_cover
+public import cubical.polytope.face_incidence
+public import Mathlib.Order.WithBot
+
+@[expose] public section
 
 /-!
 # The ordinary face-poset operation of stacking a cube on a facet

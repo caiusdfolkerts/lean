@@ -1,4 +1,8 @@
-import cubical.simplicial_lower_bound
+module
+
+public import cubical.simplicial_lower_bound
+
+@[expose] public section
 
 /-! # The cubical McMullen--Perles--Walkup reduction
 

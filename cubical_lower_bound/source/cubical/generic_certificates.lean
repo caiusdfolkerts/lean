@@ -1,4 +1,8 @@
-import cubical.generic_rank
+module
+
+public import cubical.generic_rank
+
+@[expose] public section
 
 /-!
 # Explicit polynomial certificates for simultaneous generic rank

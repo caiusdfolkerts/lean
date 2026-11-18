@@ -1,5 +1,9 @@
-import differential_geometry.topology.homology.relative
-import Mathlib.Algebra.Homology.HomologySequenceLemmas
+module
+
+public import differential_geometry.topology.homology.relative
+public import Mathlib.Algebra.Homology.HomologySequenceLemmas
+
+@[expose] public section
 
 set_option autoImplicit false
 open CategoryTheory CategoryTheory.Limits AlgebraicTopology

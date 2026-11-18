@@ -1,7 +1,11 @@
-import differential_geometry.topology.simplex.coordinates
-import differential_geometry.topology.simplex.boundary_retraction
-import Mathlib.Analysis.Convex.GaugeRescale
-import Mathlib.Topology.Algebra.Module.FiniteDimension
+module
+
+public import differential_geometry.topology.simplex.coordinates
+public import differential_geometry.topology.simplex.boundary_retraction
+public import Mathlib.Analysis.Convex.GaugeRescale
+public import Mathlib.Topology.Algebra.Module.FiniteDimension
+
+@[expose] public section
 
 set_option autoImplicit false
 

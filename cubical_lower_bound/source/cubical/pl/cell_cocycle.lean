@@ -1,8 +1,12 @@
-import cubical.pl.cell_parity
-import cubical.pl.simply_connected
-import cubical.pl_abstract
-import cubical.pl.facet_topology
-import Mathlib.Combinatorics.SimpleGraph.Coloring.Vertex
+module
+
+public import cubical.pl.cell_parity
+public import cubical.pl.simply_connected
+public import cubical.pl_abstract
+public import cubical.pl.facet_topology
+public import Mathlib.Combinatorics.SimpleGraph.Coloring.Vertex
+
+@[expose] public section
 
 /-!
 # The cubical parity cocycle

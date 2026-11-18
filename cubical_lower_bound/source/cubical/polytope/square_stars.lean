@@ -1,7 +1,11 @@
-import cubical.polytope.facet_cover
-import cubical.polytope.face_incidence
-import cubical.polytope.two_faces
-import cubical.abstract_bound
+module
+
+public import cubical.polytope.facet_cover
+public import cubical.polytope.face_incidence
+public import cubical.polytope.two_faces
+public import cubical.abstract_bound
+
+@[expose] public section
 
 /-! # The square-star incidence data in the local propagation lemma
 

@@ -1,6 +1,10 @@
-import differential_geometry.topology.simplicial_complex.maximal_face
-import differential_geometry.topology.simplicial_complex.ordered_maps
-import differential_geometry.topology.simplicial_set.maximal_cell
+module
+
+public import differential_geometry.topology.simplicial_complex.maximal_face
+public import differential_geometry.topology.simplicial_complex.ordered_maps
+public import differential_geometry.topology.simplicial_set.maximal_cell
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

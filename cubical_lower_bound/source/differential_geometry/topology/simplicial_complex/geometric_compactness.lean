@@ -1,6 +1,10 @@
-import Mathlib.Analysis.Convex.Topology
-import Mathlib.Analysis.Normed.Module.Basic
-import Mathlib.Analysis.Convex.SimplicialComplex.Basic
+module
+
+public import Mathlib.Analysis.Convex.Topology
+public import Mathlib.Analysis.Normed.Module.Basic
+public import Mathlib.Analysis.Convex.SimplicialComplex.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

@@ -1,0 +1,61 @@
+version: v0.4
+project:
+  name: Face numbers of cubical polytopes
+  description: >-
+    Convex cubical polytopes in every dimension at least three satisfy the
+    exact edge and higher-face lower bounds of the manuscript. In dimensions
+    at least four, all bounds include the strengthening by the absolute
+    imbalance of the two colour classes. The edge bound extends to every
+    finite cubical PL sphere with the stated dimension and common-face
+    hypotheses. Cubes and all finite realized facet-stacking sequences attain
+    the bounds. The formal objects are actual convex hulls with exposed faces,
+    actual cubical cell complexes, genuine piecewise affine sphere equivalences,
+    and actual face-poset facet gluings.
+  authors: [Caius Folkerts]
+  responsible_maintainers: [Caius Folkerts]
+  license: Apache-2.0
+classification:
+  arxiv: [math.CO, math.MG]
+  msc2020: [52B05, 52B11]
+sources:
+  - title: Face numbers of cubical polytopes
+    authors: [Caius Folkerts]
+    type: paper
+    relationship: formalizes
+    location: paper.pdf
+    note: Theorem 1, Corollaries 4 and 5, the strengthened face formulas, and cube/stacking sharpness.
+related_formalizations:
+  - title: caiusdfolkerts/research cubical_lower_bound
+    relationship: repackages
+    id: https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/cubical_lower_bound
+    note: >-
+      The complete substantive development is copied here from this exact
+      revision. Palomar packaging adds the independent Challenge statement,
+      Solution import, Comparator configuration, and this metadata.
+  - title: SolarYs431/lean-eval-platonic-classification
+    relationship: adapts
+    id: https://github.com/SolarYs431/lean-eval-platonic-classification
+    note: >-
+      Daniele Cappello's Apache-2.0 polytope infrastructure is adapted in the
+      substantive sources. Original attribution headers and licences are retained.
+automation:
+  methods:
+    - method: agent
+      tool_setup: >-
+        The manuscript discloses GPT-6 Astra, GPT-5.6 Sol, and Kimi K3
+        assistance in developing its proofs. Historical roles beyond that
+        disclosure have not been independently reconstructed.
+    - method: agent
+      tool_setup: >-
+        OpenAI Codex GPT-6.1 Sol prepared the Palomar statement and metadata,
+        comparing the supplied manuscript, README table, and Lean declarations.
+review:
+  status: unchecked
+  notes: >-
+    Packaging has undergone source-level statement comparison only. No fresh
+    Lean build, Comparator run, NanoDa check, or independent mathematical
+    peer review is claimed in this metadata. Consult reports and CI for actual
+    later validation. No weakening of the original selected statements is intended.
+limitations:
+  - Challenge data definitions duplicate exact source semantics and original names; only proof-valued construction fields are holes. Fresh Comparator validation is required.
+  - The registry entry records the principal lower bounds, substantive corollaries, and sharpness statements; the generic local-propagation and facet-determination lemmas remain substantive proved dependencies rather than separately advertised registry conclusions.

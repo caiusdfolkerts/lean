@@ -1,11 +1,15 @@
+module
+
 /-
 Copyright (c) 2026 DifferentialGeometry contributors. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: DifferentialGeometry contributors
 -/
-import differential_geometry.topology.piecewise_linear.combinatorial_zero
-import differential_geometry.topology.piecewise_linear.isomorphic_subdivision
-import differential_geometry.topology.piecewise_linear.manifold_subdivision
+public import differential_geometry.topology.piecewise_linear.combinatorial_zero
+public import differential_geometry.topology.piecewise_linear.isomorphic_subdivision
+public import differential_geometry.topology.piecewise_linear.manifold_subdivision
+
+@[expose] public section
 
 open Set
 

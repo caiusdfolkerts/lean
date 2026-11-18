@@ -1,8 +1,12 @@
-import differential_geometry.topology.homology.subdivision.affine_pieces
-import Mathlib.Analysis.Normed.Module.Convex
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.Ring
+module
+
+public import differential_geometry.topology.homology.subdivision.affine_pieces
+public import Mathlib.Analysis.Normed.Module.Convex
+public import Mathlib.Tactic.Positivity
+public import Mathlib.Tactic.Linarith
+public import Mathlib.Tactic.Ring
+
+@[expose] public section
 
 set_option autoImplicit false
 

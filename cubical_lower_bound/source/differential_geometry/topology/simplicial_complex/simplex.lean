@@ -1,5 +1,9 @@
-import differential_geometry.topology.simplicial_complex.boundary_counting
-import Mathlib.Data.Nat.Choose.Sum
+module
+
+public import differential_geometry.topology.simplicial_complex.boundary_counting
+public import Mathlib.Data.Nat.Choose.Sum
+
+@[expose] public section
 
 open Finset
 

@@ -1,6 +1,10 @@
-import Mathlib.Analysis.Convex.SimplicialComplex.Basic
-import Mathlib.Combinatorics.SimpleGraph.Basic
-import Mathlib.Data.Set.Card
+module
+
+public import Mathlib.Analysis.Convex.SimplicialComplex.Basic
+public import Mathlib.Combinatorics.SimpleGraph.Basic
+public import Mathlib.Data.Set.Card
+
+@[expose] public section
 
 open Set
 

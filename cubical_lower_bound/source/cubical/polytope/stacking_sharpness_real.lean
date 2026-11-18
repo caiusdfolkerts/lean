@@ -1,4 +1,8 @@
-import cubical.polytope.stacking_sharpness
+module
+
+public import cubical.polytope.stacking_sharpness
+
+@[expose] public section
 
 /-! # Stacked sharpness in the paper's displayed notation
 

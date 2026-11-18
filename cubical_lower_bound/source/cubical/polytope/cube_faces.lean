@@ -1,6 +1,10 @@
-import cubical.polytope.cube_face_affine
-import cubical.polytope.facet_geometry
-import cubical.cube_face_code
+module
+
+public import cubical.polytope.cube_face_affine
+public import cubical.polytope.facet_geometry
+public import cubical.cube_face_code
+
+@[expose] public section
 
 /-! # The geometric cube face lattice is the coordinate face lattice
 

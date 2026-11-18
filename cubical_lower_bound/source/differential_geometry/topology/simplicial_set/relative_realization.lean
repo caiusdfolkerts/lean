@@ -1,8 +1,12 @@
-import differential_geometry.topology.simplicial_set.realization_homology
-import differential_geometry.topology.simplicial_set.chain_colimits
-import differential_geometry.topology.homology.relative.map
-import differential_geometry.topology.homology.algebra.cokernel_quasi_iso
-import Mathlib.Topology.Homeomorph.Lemmas
+module
+
+public import differential_geometry.topology.simplicial_set.realization_homology
+public import differential_geometry.topology.simplicial_set.chain_colimits
+public import differential_geometry.topology.homology.relative.map
+public import differential_geometry.topology.homology.algebra.cokernel_quasi_iso
+public import Mathlib.Topology.Homeomorph.Lemmas
+
+@[expose] public section
 
 set_option autoImplicit false
 

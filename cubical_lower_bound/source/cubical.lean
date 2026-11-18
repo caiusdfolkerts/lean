@@ -1,8 +1,12 @@
-import cubical.polytope.main
-import cubical.polytope.face_bounds
-import cubical.polytope.generic_theorems
-import cubical.polytope.stacking_sharpness_real
-import cubical.pl.lower_bound
+module
+
+public import cubical.polytope.main
+public import cubical.polytope.face_bounds
+public import cubical.polytope.generic_theorems
+public import cubical.polytope.stacking_sharpness_real
+public import cubical.pl.lower_bound
+
+@[expose] public section
 
 /-!
 # Complete formalization of “The cubical lower bound theorem”

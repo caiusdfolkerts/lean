@@ -1,7 +1,11 @@
-import Mathlib.Combinatorics.SimpleGraph.DegreeSum
-import Mathlib.Data.Fintype.Card
-import Mathlib.Data.Bool.Basic
-import Mathlib.Tactic
+module
+
+public import Mathlib.Combinatorics.SimpleGraph.DegreeSum
+public import Mathlib.Data.Fintype.Card
+public import Mathlib.Data.Bool.Basic
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # The graph of a combinatorial cube

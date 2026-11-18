@@ -1,6 +1,10 @@
-import differential_geometry.topology.simplicial_complex.geometric_realization_homeomorphism
-import differential_geometry.topology.simplicial_complex.ordered_realization_euler
-import Mathlib.SetTheory.Cardinal.Order
+module
+
+public import differential_geometry.topology.simplicial_complex.geometric_realization_homeomorphism
+public import differential_geometry.topology.simplicial_complex.ordered_realization_euler
+public import Mathlib.SetTheory.Cardinal.Order
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

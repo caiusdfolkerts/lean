@@ -1,6 +1,10 @@
-import cubical.cube_face_code
-import Mathlib.Data.Fintype.Powerset
-import Mathlib.Data.Fin.Tuple.Basic
+module
+
+public import cubical.cube_face_code
+public import Mathlib.Data.Fintype.Powerset
+public import Mathlib.Data.Fin.Tuple.Basic
+
+@[expose] public section
 
 /-! # Exact enumeration and prism structure of cube face codes -/
 

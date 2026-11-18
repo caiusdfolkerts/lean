@@ -1,9 +1,13 @@
-import differential_geometry.topology.covering.separation
-import differential_geometry.topology.piecewise_linear.covering_lift
-import differential_geometry.topology.piecewise_linear.general_position
-import differential_geometry.topology.piecewise_linear.manifold_invariance
-import differential_geometry.topology.piecewise_linear.simplex_ball
-import differential_geometry.topology.piecewise_linear.simplicial_image
+module
+
+public import differential_geometry.topology.covering.separation
+public import differential_geometry.topology.piecewise_linear.covering_lift
+public import differential_geometry.topology.piecewise_linear.general_position
+public import differential_geometry.topology.piecewise_linear.manifold_invariance
+public import differential_geometry.topology.piecewise_linear.simplex_ball
+public import differential_geometry.topology.piecewise_linear.simplicial_image
+
+@[expose] public section
 
 noncomputable section
 

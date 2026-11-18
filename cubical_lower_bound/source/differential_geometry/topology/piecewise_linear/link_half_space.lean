@@ -1,11 +1,15 @@
+module
+
 /-
 Copyright (c) 2026 DifferentialGeometry contributors. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: DifferentialGeometry contributors
 -/
-import differential_geometry.topology.piecewise_linear.link_euclidean
-import differential_geometry.topology.piecewise_linear.std_simplex_cone
-import differential_geometry.topology.piecewise_linear.star_complex
+public import differential_geometry.topology.piecewise_linear.link_euclidean
+public import differential_geometry.topology.piecewise_linear.std_simplex_cone
+public import differential_geometry.topology.piecewise_linear.star_complex
+
+@[expose] public section
 
 open Set Topology
 

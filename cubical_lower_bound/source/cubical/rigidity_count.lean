@@ -1,8 +1,12 @@
-import cubical.rigidity_linear
-import cubical.generic_rigidity
-import Mathlib.Analysis.InnerProductSpace.PiL2
-import Mathlib.Combinatorics.SimpleGraph.Finite
-import Mathlib.Data.Fintype.Prod
+module
+
+public import cubical.rigidity_linear
+public import cubical.generic_rigidity
+public import Mathlib.Analysis.InnerProductSpace.PiL2
+public import Mathlib.Combinatorics.SimpleGraph.Finite
+public import Mathlib.Data.Fintype.Prod
+
+@[expose] public section
 
 /-!
 # Edge counts from genuine infinitesimal rigidity

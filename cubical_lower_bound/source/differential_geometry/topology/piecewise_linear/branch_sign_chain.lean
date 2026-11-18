@@ -1,6 +1,10 @@
-import Mathlib.Data.ZMod.Basic
-import Mathlib.Algebra.BigOperators.Fin
-import Mathlib.Algebra.CharP.Two
+module
+
+public import Mathlib.Data.ZMod.Basic
+public import Mathlib.Algebra.BigOperators.Fin
+public import Mathlib.Algebra.CharP.Two
+
+@[expose] public section
 
 open Finset
 

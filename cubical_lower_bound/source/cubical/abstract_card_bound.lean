@@ -1,4 +1,8 @@
-import cubical.abstract_bound
+module
+
+public import cubical.abstract_bound
+
+@[expose] public section
 
 /-! # An enumeration-independent interface to the rank bound
 

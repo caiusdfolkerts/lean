@@ -1,4 +1,8 @@
-import cubical.pl.cell_parity
+module
+
+public import cubical.pl.cell_parity
+
+@[expose] public section
 
 /-! The simplicial neighbor link of a vertex in an abstract cubical complex. -/
 

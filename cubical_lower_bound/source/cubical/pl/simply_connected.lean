@@ -1,6 +1,10 @@
-import differential_geometry.topology.piecewise_linear.cocycle_walk_lift
-import differential_geometry.topology.simplex.normed_ball
-import differential_geometry.topology.sphere.sphere_simply_connected
+module
+
+public import differential_geometry.topology.piecewise_linear.cocycle_walk_lift
+public import differential_geometry.topology.simplex.normed_ball
+public import differential_geometry.topology.sphere.sphere_simply_connected
+
+@[expose] public section
 
 /-!
 # Simple connectedness and exact Boolean cocycles on PL spheres

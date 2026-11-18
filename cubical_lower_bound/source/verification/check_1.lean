@@ -1,7 +1,11 @@
-import cubical.audit
-import Lean.Util.CollectAxioms
-import Lean.Elab.Command
-import Lean.Meta.Basic
+module
+
+public import cubical.audit
+public import Lean.Util.CollectAxioms
+public import Lean.Elab.Command
+public import Lean.Meta.Basic
+
+@[expose] public section
 open Lean Elab Command
 run_cmd do
   let env := (← getEnv).setExporting false

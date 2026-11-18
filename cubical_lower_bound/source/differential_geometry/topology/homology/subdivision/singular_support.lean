@@ -1,4 +1,8 @@
-import differential_geometry.topology.homology.subdivision.singular
+module
+
+public import differential_geometry.topology.homology.subdivision.singular
+
+@[expose] public section
 
 set_option autoImplicit false
 

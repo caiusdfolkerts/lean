@@ -1,4 +1,8 @@
-import cubical.pl.facet_cover
+module
+
+public import cubical.pl.facet_cover
+
+@[expose] public section
 
 /-!
 # Exact color and edge counts in cubical cells

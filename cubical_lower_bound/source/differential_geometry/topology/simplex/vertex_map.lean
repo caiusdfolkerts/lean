@@ -1,8 +1,12 @@
-import differential_geometry.topology.simplex.coordinates
-import Mathlib.Analysis.Convex.StdSimplex
-import Mathlib.LinearAlgebra.AffineSpace.Independent
-import Mathlib.Analysis.Normed.Module.Basic
-import Mathlib.Topology.ContinuousMap.Basic
+module
+
+public import differential_geometry.topology.simplex.coordinates
+public import Mathlib.Analysis.Convex.StdSimplex
+public import Mathlib.LinearAlgebra.AffineSpace.Independent
+public import Mathlib.Analysis.Normed.Module.Basic
+public import Mathlib.Topology.ContinuousMap.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

@@ -1,7 +1,11 @@
-import cubical.indexed_pseudomanifold
-import cubical.fogelsanger
-import cubical.labeled_rigidity_count
-import Mathlib.Data.Finset.Prod
+module
+
+public import cubical.indexed_pseudomanifold
+public import cubical.fogelsanger
+public import cubical.labeled_rigidity_count
+public import Mathlib.Data.Finset.Prod
+
+@[expose] public section
 
 /-!
 # Triangulating a two-colored quadrilateral surface

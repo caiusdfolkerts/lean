@@ -1,8 +1,12 @@
-import cubical.pl.square_stars
-import cubical.pl.facet_counts
-import cubical.pl.face_counts
-import cubical.pl.cell_cocycle
-import cubical.abstract_card_bound
+module
+
+public import cubical.pl.square_stars
+public import cubical.pl.facet_counts
+public import cubical.pl.face_counts
+public import cubical.pl.cell_cocycle
+public import cubical.abstract_card_bound
+
+@[expose] public section
 
 /-! # Corollary 4: the full cubical PL-sphere edge bound
 

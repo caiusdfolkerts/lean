@@ -1,6 +1,10 @@
-import differential_geometry.topology.homology.algebra.eventual_image
-import differential_geometry.topology.homology.subdivision.singular_support
-import differential_geometry.topology.homology.subdivision.eventual_smallness
+module
+
+public import differential_geometry.topology.homology.algebra.eventual_image
+public import differential_geometry.topology.homology.subdivision.singular_support
+public import differential_geometry.topology.homology.subdivision.eventual_smallness
+
+@[expose] public section
 
 set_option autoImplicit false
 open CategoryTheory CategoryTheory.Limits

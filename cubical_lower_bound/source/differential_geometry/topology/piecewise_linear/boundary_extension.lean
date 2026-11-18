@@ -1,11 +1,15 @@
+module
+
 /-
 Copyright (c) 2026 DifferentialGeometry contributors. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: DifferentialGeometry contributors
 -/
-import differential_geometry.topology.piecewise_linear.boundary_of_ball
-import differential_geometry.topology.piecewise_linear.std_simplex_cone
-import differential_geometry.topology.piecewise_linear.simplex_boundary_image
+public import differential_geometry.topology.piecewise_linear.boundary_of_ball
+public import differential_geometry.topology.piecewise_linear.std_simplex_cone
+public import differential_geometry.topology.piecewise_linear.simplex_boundary_image
+
+@[expose] public section
 
 open Set
 

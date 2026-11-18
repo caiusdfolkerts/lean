@@ -1,5 +1,9 @@
-import cubical.polytope.simplicial_boundary
-import cubical.fogelsanger
+module
+
+public import cubical.polytope.simplicial_boundary
+public import cubical.fogelsanger
+
+@[expose] public section
 
 /-!
 # Generic rigidity of genuine simplicial convex polytopes

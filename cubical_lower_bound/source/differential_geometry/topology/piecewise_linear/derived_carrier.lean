@@ -1,5 +1,9 @@
-import differential_geometry.topology.piecewise_linear.derived
-import differential_geometry.topology.piecewise_linear.simplicial_map
+module
+
+public import differential_geometry.topology.piecewise_linear.derived
+public import differential_geometry.topology.piecewise_linear.simplicial_map
+
+@[expose] public section
 
 namespace DifferentialGeometry.Topology.PiecewiseLinear
 

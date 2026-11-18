@@ -1,6 +1,10 @@
-import cubical.polytope.graph
-import cubical.polytope.connettivita_globale
-import Mathlib.Order.Interval.Set.Monotone
+module
+
+public import cubical.polytope.graph
+public import cubical.polytope.connettivita_globale
+public import Mathlib.Order.Interval.Set.Monotone
+
+@[expose] public section
 
 /-!
 # Combinatorial equivalences preserve geometric face dimension
