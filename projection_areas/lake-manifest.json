@@ -109,18 +109,6 @@
       "inputRev": "v4.36.0-rc1",
       "inherited": true,
       "configFile": "lakefile.toml"
-    },
-    {
-      "url": "https://github.com/TauCetiProject/TauCeti",
-      "type": "git",
-      "subDir": null,
-      "scope": "",
-      "rev": "06d5bb4e3ebb737dc6538567f5c53bf8800b9362",
-      "name": "TauCeti",
-      "manifestFile": "lake-manifest.json",
-      "inputRev": "06d5bb4e3ebb737dc6538567f5c53bf8800b9362",
-      "inherited": false,
-      "configFile": "lakefile.toml"
     }
   ],
   "name": "projection_areas",
