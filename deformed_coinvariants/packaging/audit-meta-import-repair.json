@@ -1,0 +1,15 @@
+{
+  "status": "applied_pending_source_rebuild",
+  "reason": "Lean module elaboration executes report emission at meta stage; import helper for meta code as well.",
+  "change": "public import PalomarAudit -> public meta import PalomarAudit",
+  "mathematical_change": false,
+  "validation_changes": false,
+  "files": [
+    {
+      "path": "source/DeformedCoinvariants/KernelAudit.lean",
+      "before_sha256": "627d22dd84119dce222be62a8f9806c8d5e1582881c262860fd32caa6ce22018",
+      "after_sha256": "a09169780b1634aa7f72ef2cba90364d26dc95f6c9f8fa61aee262d3f34f5dff",
+      "validation_assertion_count": 31
+    }
+  ]
+}

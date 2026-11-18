@@ -1,0 +1,23 @@
+{
+  "status": "frozen_pending_corrected_challenge_diagnostic",
+  "challenge_sha256": "b021bed64e0c9391fb8cede9c3d7cd5a2023d326fd1a136412ea4f190119a7a9",
+  "lines": 996,
+  "bytes": 82535,
+  "repairs": [
+    "Preserve local let/letI initializers and complete proposition6.5/equivariant and theorem6.3/basis theorem types.",
+    "Canonical PowerSeries inverse import.",
+    "Restore literal InternalGrading constructors, homogeneous submodule, quotient and decomposition instance with exact proof bodies.",
+    "Resolve namespace-relative JacobianDivergence helper dependencies.",
+    "Drop unused EquivariantHomMatrices open directive only.",
+    "Topologically group identical original contexts and compact declaration headers; no definition values changed."
+  ],
+  "source_header_change": {
+    "path": "source/TauCeti/Algebra/Module/GradedModule/Internal.lean",
+    "name": "TauCeti.InternalGrading.canonicalDecomposition",
+    "before_sha256": "3fbc490d719f155b2a31064f03393ed21373e3cfd46d27365dcfdca8a5100b3e",
+    "after_sha256": "828729ee72c65f60ac9bfe4d2b0451f42d75950bbd122af67383f6f803dcc326",
+    "value_changed": false
+  },
+  "prior_failure_run": "44325375620",
+  "source_baseline": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37"
+}

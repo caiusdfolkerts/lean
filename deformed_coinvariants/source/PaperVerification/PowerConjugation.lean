@@ -24,7 +24,7 @@ open scoped BigOperators
 namespace PaperVerification.PowerOperators
 
 variable {K ι : Type*} [Field K] [Fintype ι]
-local instance : DecidableEq ι := Classical.decEq ι
+local instance palomarPowerFieldDecidableEq : DecidableEq ι := Classical.decEq ι
 
 def diagonalWeight (c : ι → K) (lam : K) (a : ι →₀ ℕ) : K :=
   ∏ i, (c i + lam * (a i : K))

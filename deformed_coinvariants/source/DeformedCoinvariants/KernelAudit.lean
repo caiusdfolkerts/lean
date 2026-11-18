@@ -8,6 +8,7 @@ mathematical axioms or theorem statements.
 -/
 module
 
+public meta import PalomarAudit
 /- BEGIN GENERATED LOCAL IMPORTS -/
 import all PaperVerification.PowerOperators
 import all PaperVerification.FermionMomentRecurrence
@@ -1044,9 +1045,9 @@ run_cmd do
     ("imported_boundary_dependencies", Json.arr leafInfo),
     ("hidden_body_boundaries", toJson
       (summaryBoundaries.toArray.qsort Name.lt |>.map Name.toString))]
-  liftIO <| IO.FS.createDirAll outputDirectory
+  liftIO <| PalomarAudit.createDirAll outputDirectory
   let temporaryPath := outputDirectory / "kernel-dependencies.json.tmp"
-  liftIO <| IO.FS.writeFile temporaryPath (graph.pretty ++ "\n")
+  liftIO <| PalomarAudit.writeFile temporaryPath (graph.pretty ++ "\n")
   liftIO <| IO.FS.rename temporaryPath outputPath
   logInfo m!"KERNEL_AUDIT_OK {constants.size} local declarations; {localTheorems} theorems; {roots.size} roots; {projectModules.size} local modules; {reachable.size} inspected dependency nodes"
 

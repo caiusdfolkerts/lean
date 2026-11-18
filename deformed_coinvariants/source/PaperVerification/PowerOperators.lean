@@ -26,7 +26,7 @@ open scoped BigOperators
 namespace PaperVerification.PowerOperators
 
 variable {R ι : Type*} [CommRing R]
-local instance : DecidableEq ι := Classical.decEq ι
+local instance palomarPowerRingDecidableEq : DecidableEq ι := Classical.decEq ι
 
 /-- The coordinate Euler derivation `X_i ∂_i`, viewed as a linear map. -/
 def euler (i : ι) : MvPolynomial ι R →ₗ[R] MvPolynomial ι R :=

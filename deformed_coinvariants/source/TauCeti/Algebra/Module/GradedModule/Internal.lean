@@ -109,7 +109,7 @@ theorem ext : ∀ {G H : InternalGrading R M ι}, (∀ p, G.piece p = H.piece p)
     rfl
 
 /-- The decomposition attached to an internal grading. -/
-noncomputable instance (G : InternalGrading R M ι) : DirectSum.Decomposition G.piece :=
+noncomputable instance canonicalDecomposition (G : InternalGrading R M ι) : DirectSum.Decomposition G.piece :=
   G.isInternal.chooseDecomposition
 
 /-- The internal grading carried by a family of submodules with a `DirectSum.Decomposition`.  This

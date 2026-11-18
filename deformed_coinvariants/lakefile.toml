@@ -22,3 +22,14 @@ srcDir = "source"
 roots = ["DeformedCoinvariants.KernelAudit", "verification.check_1"]
 allowImportAll = true
 defaultFacets = ["elabArts"]
+
+[[lean_lib]]
+name = "Palomar"
+srcDir = "source"
+roots = ["Challenge", "Solution"]
+allowImportAll = true
+
+[[lean_lib]]
+name = "PalomarAudit"
+srcDir = "source"
+roots = ["PalomarAudit"]

@@ -1,0 +1,13 @@
+{
+  "status": "frozen_pending_corrected_challenge_diagnostic",
+  "challenge_sha256": "25d9c01de61c702d345d94d5b652f37840d46f95fe3f1ac97e3bf46fa135e6d9",
+  "lines": 952,
+  "bytes": 77004,
+  "prior_failure_run": "44343651132",
+  "repairs": [
+    "Context-command continuation now stops at declarations after same-line doc comments; eliminates duplicate Palomar definitions without dropping any selected statement.",
+    "Restore original root DirectSum namespace for homogeneous submodule and quotient definitions after context relocation.",
+    "Preserve complete let/letI theorem types, including same-line semicolon local definitions."
+  ],
+  "source_mathematical_changes": false
+}

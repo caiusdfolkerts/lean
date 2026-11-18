@@ -1,0 +1,870 @@
+{
+  "project": "deformed_coinvariants",
+  "baseline_repository": "caiusdfolkerts/research",
+  "baseline_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
+  "paper_sha256": "91f1f86a084126741f666c46db6db8be9744b6f52c92159601f65f7aa21ba377",
+  "one_entry_per_paper": true,
+  "status": "frozen_for_full_preflight_partial_paper_scope",
+  "source_selection": [
+    "paper.pdf",
+    "README.md",
+    "source/**/*.lean"
+  ],
+  "coverage": [
+    {
+      "paper_result": "Theorem 1.1: every clause",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        2,
+        3,
+        9
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.PowerOperators.paper_theorem_1_1",
+          "locations": [
+            {
+              "name": "PaperVerification.PowerOperators.paper_theorem_1_1",
+              "declaration_kind": "theorem",
+              "source_path": "source/PaperVerification/PowerTheoremOneOne.lean",
+              "source_line": 23,
+              "source_sha256": "1a2366a7f4726512593427dc6e13c58ee9f9a57c7b64ae075514edf7995c4b47",
+              "source_spelling": "paper_theorem_1_1"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "selected_pending_current_elaboration"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/deformed_coinvariants/paper.pdf#page=2"
+    },
+    {
+      "paper_result": "Theorem 1.1: the specified Artin basis",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        2,
+        3,
+        9
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.PowerOperators.paper_theorem_1_1_monomial_basis",
+          "locations": [
+            {
+              "name": "PaperVerification.PowerOperators.paper_theorem_1_1_monomial_basis",
+              "declaration_kind": "theorem",
+              "source_path": "source/PaperVerification/PowerOriginalBasis.lean",
+              "source_line": 77,
+              "source_sha256": "c3455b27954ab13d73c9d7de48b17377cb6e69e1d154057a1239b78fc8fb7027",
+              "source_spelling": "paper_theorem_1_1_monomial_basis"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/deformed_coinvariants/paper.pdf#page=2"
+    },
+    {
+      "paper_result": "Theorem 1.1: graded equivalence for the full symmetric group",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        2,
+        3,
+        9
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.PowerOperators.paper_theorem_1_1_sufficiency",
+          "locations": [
+            {
+              "name": "PaperVerification.PowerOperators.paper_theorem_1_1_sufficiency",
+              "declaration_kind": "theorem",
+              "source_path": "source/PaperVerification/PowerTheoremOneOneSufficiency.lean",
+              "source_line": 108,
+              "source_sha256": "a0bc4fadd4ab50809b51f92a690599d9e22fc82ac2a7e416dff065b264978ec7",
+              "source_spelling": "paper_theorem_1_1_sufficiency"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/deformed_coinvariants/paper.pdf#page=2"
+    },
+    {
+      "paper_result": "Theorem 1.1: necessity at every excluded parameter, for every `n \u2265 2`",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        2,
+        3,
+        9
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.PowerOperators.paper_theorem_1_1_artin_necessity",
+          "locations": [
+            {
+              "name": "PaperVerification.PowerOperators.paper_theorem_1_1_artin_necessity",
+              "declaration_kind": "theorem",
+              "source_path": "source/PaperVerification/PowerExceptionalArtin.lean",
+              "source_line": 73,
+              "source_sha256": "93987f283dbda477979002ffd02ddc3f95979c09f742f06204c1b79e30662f87",
+              "source_spelling": "paper_theorem_1_1_artin_necessity"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.PowerOperators.original_artin_spanning_iff",
+          "locations": [
+            {
+              "name": "PaperVerification.PowerOperators.original_artin_spanning_iff",
+              "declaration_kind": "theorem",
+              "source_path": "source/PaperVerification/PowerExceptionalArtin.lean",
+              "source_line": 83,
+              "source_sha256": "93987f283dbda477979002ffd02ddc3f95979c09f742f06204c1b79e30662f87",
+              "source_spelling": "original_artin_spanning_iff"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/deformed_coinvariants/paper.pdf#page=2"
+    },
+    {
+      "paper_result": "Exact exceptional parameter set",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [],
+      "declarations": [
+        {
+          "name": "PaperVerification.PowerOperators.exceptionalSet",
+          "locations": [
+            {
+              "name": "PaperVerification.PowerOperators.exceptionalSet",
+              "declaration_kind": "def",
+              "source_path": "source/PaperVerification/PowerParameters.lean",
+              "source_line": 74,
+              "source_sha256": "038db3a1368e6c745fef3e8dd026c6791a462ea7afe2a54c4c39b8100b8e8646",
+              "source_spelling": "exceptionalSet"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.PowerOperators.nonresonant_one_iff",
+          "locations": [
+            {
+              "name": "PaperVerification.PowerOperators.nonresonant_one_iff",
+              "declaration_kind": "theorem",
+              "source_path": "source/PaperVerification/PowerParameters.lean",
+              "source_line": 80,
+              "source_sha256": "038db3a1368e6c745fef3e8dd026c6791a462ea7afe2a54c4c39b8100b8e8646",
+              "source_spelling": "nonresonant_one_iff"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/deformed_coinvariants/paper.pdf"
+    },
+    {
+      "paper_result": "Theorem 2.2: every clause",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        5,
+        32
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.PowerOperators.paper_theorem_2_2",
+          "locations": [
+            {
+              "name": "PaperVerification.PowerOperators.paper_theorem_2_2",
+              "declaration_kind": "theorem",
+              "source_path": "source/PaperVerification/PowerTheoremTwoTwo.lean",
+              "source_line": 55,
+              "source_sha256": "27725fad588dc4d7e161523bb1d90745cf390b78967b98302a530953583489c6",
+              "source_spelling": "paper_theorem_2_2"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/deformed_coinvariants/paper.pdf#page=5"
+    },
+    {
+      "paper_result": "Theorem 2.2 and equation (2.2): the specified weighted Artin basis",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        5,
+        32
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.PowerOperators.paper_theorem_2_2_basis",
+          "locations": [
+            {
+              "name": "PaperVerification.PowerOperators.paper_theorem_2_2_basis",
+              "declaration_kind": "def",
+              "source_path": "source/PaperVerification/PowerBasisTheorem.lean",
+              "source_line": 90,
+              "source_sha256": "a7412da5b278796d6dc6c38acdad741988a07606c2f730431a207b595b74cdfd",
+              "source_spelling": "paper_theorem_2_2_basis"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.PowerOperators.paper_theorem_2_2_basis_apply",
+          "locations": [
+            {
+              "name": "PaperVerification.PowerOperators.paper_theorem_2_2_basis_apply",
+              "declaration_kind": "theorem",
+              "source_path": "source/PaperVerification/PowerBasisTheorem.lean",
+              "source_line": 97,
+              "source_sha256": "a7412da5b278796d6dc6c38acdad741988a07606c2f730431a207b595b74cdfd",
+              "source_spelling": "paper_theorem_2_2_basis_apply"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.PowerOperators.paper_theorem_2_2_monomial_basis",
+          "locations": [
+            {
+              "name": "PaperVerification.PowerOperators.paper_theorem_2_2_monomial_basis",
+              "declaration_kind": "theorem",
+              "source_path": "source/PaperVerification/PowerBasisTheorem.lean",
+              "source_line": 106,
+              "source_sha256": "a7412da5b278796d6dc6c38acdad741988a07606c2f730431a207b595b74cdfd",
+              "source_spelling": "paper_theorem_2_2_monomial_basis"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/deformed_coinvariants/paper.pdf#page=5"
+    },
+    {
+      "paper_result": "Theorem 2.2: the complete Hilbert series",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        5,
+        32
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.PowerOperators.paper_theorem_2_2_hilbert_polynomial",
+          "locations": [
+            {
+              "name": "PaperVerification.PowerOperators.paper_theorem_2_2_hilbert_polynomial",
+              "declaration_kind": "theorem",
+              "source_path": "source/PaperVerification/PowerHilbertSeries.lean",
+              "source_line": 115,
+              "source_sha256": "c98154e5e054fa123474822434f6a0ad1f4282de024376e5f05cde1fe89df97c",
+              "source_spelling": "paper_theorem_2_2_hilbert_polynomial"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/deformed_coinvariants/paper.pdf#page=5"
+    },
+    {
+      "paper_result": "Theorem 2.2: graded equivalence for every subgroup fixing the coefficients",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        5,
+        32
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.PowerOperators.paper_theorem_2_2_graded_representation",
+          "locations": [
+            {
+              "name": "PaperVerification.PowerOperators.paper_theorem_2_2_graded_representation",
+              "declaration_kind": "theorem",
+              "source_path": "source/PaperVerification/PowerRepresentationTheorem.lean",
+              "source_line": 52,
+              "source_sha256": "7251ef8a02b3e00ebbb1d1229901ae212a3708488700dc1c0611120449750199",
+              "source_spelling": "paper_theorem_2_2_graded_representation"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/deformed_coinvariants/paper.pdf#page=5"
+    },
+    {
+      "paper_result": "Theorem 2.2: the power-sum comparison for equal coefficients",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        5,
+        32
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.PowerOperators.paper_theorem_2_2_equal_coefficient_power_sums",
+          "locations": [
+            {
+              "name": "PaperVerification.PowerOperators.paper_theorem_2_2_equal_coefficient_power_sums",
+              "declaration_kind": "theorem",
+              "source_path": "source/PaperVerification/PowerSumComparator.lean",
+              "source_line": 133,
+              "source_sha256": "b6e4cb2c10dbde8debc3adb2e791f26b13fea8c0f40c866dd57315e18228f97a",
+              "source_spelling": "paper_theorem_2_2_equal_coefficient_power_sums"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/deformed_coinvariants/paper.pdf#page=5"
+    },
+    {
+      "paper_result": "Theorem 2.2 and equation (2.3): the original operator family",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        5,
+        32
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.PowerOperators.paper_theorem_2_2_original_monomial_basis",
+          "locations": [
+            {
+              "name": "PaperVerification.PowerOperators.paper_theorem_2_2_original_monomial_basis",
+              "declaration_kind": "theorem",
+              "source_path": "source/PaperVerification/PowerOriginalBasis.lean",
+              "source_line": 64,
+              "source_sha256": "c3455b27954ab13d73c9d7de48b17377cb6e69e1d154057a1239b78fc8fb7027",
+              "source_spelling": "paper_theorem_2_2_original_monomial_basis"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.PowerOperators.paper_theorem_2_2_original_hilbert_polynomial",
+          "locations": [
+            {
+              "name": "PaperVerification.PowerOperators.paper_theorem_2_2_original_hilbert_polynomial",
+              "declaration_kind": "theorem",
+              "source_path": "source/PaperVerification/PowerOriginalHilbert.lean",
+              "source_line": 45,
+              "source_sha256": "9da258136935c06c61875a90c3ad11d7723b3bdcb86c3768e3b00d7561325854",
+              "source_spelling": "paper_theorem_2_2_original_hilbert_polynomial"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.PowerOperators.paper_theorem_2_2_original_graded_representation",
+          "locations": [
+            {
+              "name": "PaperVerification.PowerOperators.paper_theorem_2_2_original_graded_representation",
+              "declaration_kind": "theorem",
+              "source_path": "source/PaperVerification/PowerOriginalRepresentation.lean",
+              "source_line": 24,
+              "source_sha256": "5af0c4a4c1aa19490b80f0bc856b6bb847680f508164975e074b44d1f1888a9e",
+              "source_spelling": "paper_theorem_2_2_original_graded_representation"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.PowerOperators.paper_theorem_2_2_original_equal_coefficient_power_sums",
+          "locations": [
+            {
+              "name": "PaperVerification.PowerOperators.paper_theorem_2_2_original_equal_coefficient_power_sums",
+              "declaration_kind": "theorem",
+              "source_path": "source/PaperVerification/PowerSumComparator.lean",
+              "source_line": 149,
+              "source_sha256": "b6e4cb2c10dbde8debc3adb2e791f26b13fea8c0f40c866dd57315e18228f97a",
+              "source_spelling": "paper_theorem_2_2_original_equal_coefficient_power_sums"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/deformed_coinvariants/paper.pdf#page=5"
+    },
+    {
+      "paper_result": "Original infinite tail and finite presentation",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [],
+      "declarations": [
+        {
+          "name": "PaperVerification.PowerOperators.tailHit_eq_firstTailHit",
+          "locations": [
+            {
+              "name": "PaperVerification.PowerOperators.tailHit_eq_firstTailHit",
+              "declaration_kind": "theorem",
+              "source_path": "source/PaperVerification/PowerRecurrence.lean",
+              "source_line": 71,
+              "source_sha256": "ac757766fc1a763f29033821cf4a81f8f5d2a96d6acb81a3daf865c87978a1d5",
+              "source_spelling": "tailHit_eq_firstTailHit"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.PowerOperators.diagonalEquiv_original",
+          "locations": [
+            {
+              "name": "PaperVerification.PowerOperators.diagonalEquiv_original",
+              "declaration_kind": "theorem",
+              "source_path": "source/PaperVerification/PowerConjugation.lean",
+              "source_line": 112,
+              "source_sha256": "bb93bc48037445f2d44e87a6d7d371867594dea540d6bda5624b71c4ea34e6cd",
+              "source_spelling": "diagonalEquiv_original"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.PowerOperators.diagonalEquiv_map_originalTailHit",
+          "locations": [
+            {
+              "name": "PaperVerification.PowerOperators.diagonalEquiv_map_originalTailHit",
+              "declaration_kind": "theorem",
+              "source_path": "source/PaperVerification/PowerConjugation.lean",
+              "source_line": 143,
+              "source_sha256": "bb93bc48037445f2d44e87a6d7d371867594dea540d6bda5624b71c4ea34e6cd",
+              "source_spelling": "diagonalEquiv_map_originalTailHit"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/deformed_coinvariants/paper.pdf"
+    },
+    {
+      "paper_result": "Positive-characteristic stabilizer condition used in Theorem 2.2",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        5,
+        32
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.PowerOperators.Nonresonant.isUnit_stabilizer_card",
+          "locations": [
+            {
+              "name": "PaperVerification.PowerOperators.Nonresonant.isUnit_stabilizer_card",
+              "declaration_kind": "theorem",
+              "source_path": "source/PaperVerification/PowerStabilizerCharacteristic.lean",
+              "source_line": 99,
+              "source_sha256": "9b88cfe318518bef24bc91599a087cb705002f2ce28353839faeb54076e39d7a",
+              "source_spelling": "Nonresonant.isUnit_stabilizer_card"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/deformed_coinvariants/paper.pdf#page=5"
+    },
+    {
+      "paper_result": "Theorem 6.2: weighted Jacobian equality on the paper\u2019s full nonresonant range",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        49
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.EulerJacobian.paper_theorem_6_2",
+          "locations": [
+            {
+              "name": "PaperVerification.EulerJacobian.paper_theorem_6_2",
+              "declaration_kind": "theorem",
+              "source_path": "source/PaperVerification/EulerParameters.lean",
+              "source_line": 116,
+              "source_sha256": "72c93f6be6ca3a12512df6fa7b7e5d89db3be9fbdeca20e4c02a94605792c45f",
+              "source_spelling": "paper_theorem_6_2"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "selected_pending_current_elaboration"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/deformed_coinvariants/paper.pdf#page=49"
+    },
+    {
+      "paper_result": "Theorem 6.2 over arbitrary characteristic-zero fields",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        49
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.EulerJacobian.jacobian_hit_eq_of_nonresonant",
+          "locations": [
+            {
+              "name": "PaperVerification.EulerJacobian.jacobian_hit_eq_of_nonresonant",
+              "declaration_kind": "theorem",
+              "source_path": "source/PaperVerification/EulerParameters.lean",
+              "source_line": 94,
+              "source_sha256": "72c93f6be6ca3a12512df6fa7b7e5d89db3be9fbdeca20e4c02a94605792c45f",
+              "source_spelling": "jacobian_hit_eq_of_nonresonant"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/deformed_coinvariants/paper.pdf#page=49"
+    },
+    {
+      "paper_result": "Theorem 6.3: all scalar conclusions, including equation (6.1)",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        50,
+        55
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.JacobianDivergence.paper_theorem_6_3_scalar",
+          "locations": [
+            {
+              "name": "PaperVerification.JacobianDivergence.paper_theorem_6_3_scalar",
+              "declaration_kind": "theorem",
+              "source_path": "source/PaperVerification/HypersurfaceTheoremSixThree.lean",
+              "source_line": 45,
+              "source_sha256": "8ff371abc9378f19236a33220b053de51f68dabe2dd5c34a1101081a01b4ae75",
+              "source_spelling": "paper_theorem_6_3_scalar"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "selected_pending_current_elaboration"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/deformed_coinvariants/paper.pdf#page=50"
+    },
+    {
+      "paper_result": "Theorem 6.3: every homogeneous lift of every homogeneous Milnor basis is a basis over the actual subalgebra `\u2102[F]`",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        50,
+        55
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.JacobianDivergence.paper_theorem_6_3_basis_lifts",
+          "locations": [
+            {
+              "name": "PaperVerification.JacobianDivergence.paper_theorem_6_3_basis_lifts",
+              "declaration_kind": "theorem",
+              "source_path": "source/PaperVerification/HypersurfaceTheoremSixThree.lean",
+              "source_line": 82,
+              "source_sha256": "8ff371abc9378f19236a33220b053de51f68dabe2dd5c34a1101081a01b4ae75",
+              "source_spelling": "paper_theorem_6_3_basis_lifts"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "selected_pending_current_elaboration"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/deformed_coinvariants/paper.pdf#page=50"
+    },
+    {
+      "paper_result": "Theorem 6.3: equivariant decomposition (6.2), natural exact sequence, and homogeneous equivariant splitting",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        50,
+        55
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.JacobianDivergence.paper_theorem_6_3_equivariant",
+          "locations": [
+            {
+              "name": "PaperVerification.JacobianDivergence.paper_theorem_6_3_equivariant",
+              "declaration_kind": "theorem",
+              "source_path": "source/PaperVerification/HypersurfaceTheoremSixThree.lean",
+              "source_line": 97,
+              "source_sha256": "8ff371abc9378f19236a33220b053de51f68dabe2dd5c34a1101081a01b4ae75",
+              "source_spelling": "paper_theorem_6_3_equivariant"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "selected_pending_current_elaboration"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/deformed_coinvariants/paper.pdf#page=50"
+    },
+    {
+      "paper_result": "Theorem 6.3: canonical defect map with the paper\u2019s ordered Hamiltonian denominator",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        50,
+        55
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.JacobianDivergence.paperHamiltonianDefectEquiv",
+          "locations": [
+            {
+              "name": "PaperVerification.JacobianDivergence.paperHamiltonianDefectEquiv",
+              "declaration_kind": "def",
+              "source_path": "source/PaperVerification/HypersurfaceTheoremSixThree.lean",
+              "source_line": 29,
+              "source_sha256": "8ff371abc9378f19236a33220b053de51f68dabe2dd5c34a1101081a01b4ae75",
+              "source_spelling": "paperHamiltonianDefectEquiv"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/deformed_coinvariants/paper.pdf#page=50"
+    },
+    {
+      "paper_result": "Proposition 6.5: all scalar conclusions, the exact exceptional set, and every integer-degree Hilbert coefficient",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        55
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.VectorEuler.paper_proposition_6_5_scalar",
+          "locations": [
+            {
+              "name": "PaperVerification.VectorEuler.paper_proposition_6_5_scalar",
+              "declaration_kind": "theorem",
+              "source_path": "source/PaperVerification/CompleteIntersectionCodimensionFull.lean",
+              "source_line": 117,
+              "source_sha256": "2226e5c873a59aba6c5b62975d21ba457dfdef018d42d8e0a73d38d9f12ac5ea",
+              "source_spelling": "paper_proposition_6_5_scalar"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "selected_pending_current_elaboration"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/deformed_coinvariants/paper.pdf#page=55"
+    },
+    {
+      "paper_result": "Proposition 6.5: equivariance for every linear group preserving the weights and each equation",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        55
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.VectorEuler.paper_proposition_6_5_equivariant",
+          "locations": [
+            {
+              "name": "PaperVerification.VectorEuler.paper_proposition_6_5_equivariant",
+              "declaration_kind": "theorem",
+              "source_path": "source/PaperVerification/CompleteIntersectionCodimensionFull.lean",
+              "source_line": 151,
+              "source_sha256": "2226e5c873a59aba6c5b62975d21ba457dfdef018d42d8e0a73d38d9f12ac5ea",
+              "source_spelling": "paper_proposition_6_5_equivariant"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "selected_pending_current_elaboration"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/deformed_coinvariants/paper.pdf#page=55"
+    },
+    {
+      "paper_result": "Proposition 6.5: canonical equivalence from the actual polynomial degree piece to the literal defect",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        55
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.VectorEuler.regularDefectEquiv",
+          "locations": [
+            {
+              "name": "PaperVerification.VectorEuler.regularDefectEquiv",
+              "declaration_kind": "def",
+              "source_path": "source/PaperVerification/CompleteIntersectionCodimensionFull.lean",
+              "source_line": 84,
+              "source_sha256": "2226e5c873a59aba6c5b62975d21ba457dfdef018d42d8e0a73d38d9f12ac5ea",
+              "source_spelling": "regularDefectEquiv"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.VectorEuler.regularDefectEquiv_canonical",
+          "locations": [
+            {
+              "name": "PaperVerification.VectorEuler.regularDefectEquiv_canonical",
+              "declaration_kind": "theorem",
+              "source_path": "source/PaperVerification/CompleteIntersectionCodimensionFull.lean",
+              "source_line": 102,
+              "source_sha256": "2226e5c873a59aba6c5b62975d21ba457dfdef018d42d8e0a73d38d9f12ac5ea",
+              "source_spelling": "regularDefectEquiv_canonical"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/deformed_coinvariants/paper.pdf#page=55"
+    }
+  ],
+  "known_gaps": [
+    "Corollary2.4 arithmetic-index/operator progression conclusions are not independently selected.",
+    "Retained verification/theorem-scope.md explicitly excludes the general normal-form theorems in sections3\u20135 (including noncommutative Theorem5.1) and intermediate-codimension Theorem6.4. Auxiliary source is not a complete endpoint proof.",
+    "The exact expanded Challenge passed canonical remote elaboration; complete Source/Solution build, Comparator, independent kernel replay and editorial review remain pending."
+  ],
+  "checks": {
+    "source_copy": "complete including retained reading files and licenses",
+    "build": "not_run_for_current_hash",
+    "comparator": "not_run_for_current_hash",
+    "nanoda": "not_run_for_current_hash",
+    "editorial_review": "not_run_for_current_hash",
+    "challenge_elaboration": "passed_remote_Challenge_only_run44352266159",
+    "challenge_receipt": "reports/challenge_only_diagnostic/run-44352266159/deformed_coinvariants/receipt.json"
+  },
+  "current_selection": "Full Theorem 1.1; full weighted-tail Theorem 2.2 via proved genuine homogeneous-subspace Hilbert-series equality; weighted Jacobian Theorem 6.2; all scalar, arbitrary homogeneous Milnor-basis lifting and finite-group equivariant/exact homogeneous splitting clauses of Theorem 6.3; and all scalar/Laurent homogeneous coefficient and arbitrary preserving-linear-group equivariant clauses of Proposition 6.5.",
+  "selected_wrapper_provenance": [
+    [
+      "PalomarDeformed.weighted_tail_theorem",
+      "PaperVerification.PowerOperators.paper_theorem_2_2",
+      "The type is expanded only by defining each Hilbert series directly from the actual homogeneous quotient subspaces. The Solution proves equality with the source InternalGrading series using the existing piece-identification theorems."
+    ]
+  ],
+  "comparator": {
+    "challenge_module": "Challenge",
+    "solution_module": "Solution",
+    "theorem_names": [
+      "PaperVerification.EulerJacobian.eigenvalue_zero_iff",
+      "PaperVerification.EulerJacobian.paper_theorem_6_2",
+      "PaperVerification.PowerOperators.completeHomogeneousFamily_invariant",
+      "PaperVerification.PowerOperators.powerSumFamily_invariant",
+      "PaperVerification.PowerOperators.elementaryCoinvariantFamily_invariant",
+      "PaperVerification.EulerInjective.defectToQuotient_kernel",
+      "PaperVerification.EulerInjective.defectToQuotient_range",
+      "PaperVerification.PowerOperators.rename_mem_ordinaryFamilyIdeal",
+      "PaperVerification.JacobianDivergence.potential_transcendental",
+      "PaperVerification.JacobianDivergence.hit_le_jacobian",
+      "PaperVerification.JacobianDivergence.defectToHit_kernel",
+      "PaperVerification.JacobianDivergence.defectToHit_range",
+      "PaperVerification.JacobianDivergence.homogeneousComponent_mem_jacobian",
+      "PaperVerification.JacobianDivergence.potential_mul_mem",
+      "PaperVerification.JacobianDivergence.paper_theorem_6_3_scalar",
+      "PaperVerification.JacobianDivergence.paper_theorem_6_3_basis_lifts",
+      "PaperVerification.PowerOperators.rename_mem_tailHit",
+      "PaperVerification.PowerOperators.rename_mem_originalTailHit",
+      "PaperVerification.PowerOperators.paper_theorem_1_1",
+      "PaperVerification.VectorEuler.potentialToQuotient_range",
+      "PaperVerification.VectorEuler.homogeneousPotentialMap_bijective",
+      "PaperVerification.VectorEuler.regular_coefficient_injective",
+      "PaperVerification.VectorEuler.paper_proposition_6_5_scalar",
+      "TauCeti.DirectSum.isInternal_comap",
+      "PaperVerification.NegativeWeightedGrading.submodule_homogeneous",
+      "TauCeti.InternalGrading.submodule_piece",
+      "MvPolynomial.linearSubst_one",
+      "MvPolynomial.linearSubst_mul_apply",
+      "PaperVerification.JacobianLinearAction.linearSubst_mem_jacobianSubmodule",
+      "PaperVerification.JacobianLinearAction.linearSubst_mem_hit",
+      "PaperVerification.JacobianLinearAction.polynomialRepresentation_preserves_weights",
+      "PaperVerification.VectorEuler.targetRepresentation_preserves_coefficient",
+      "PaperVerification.VectorEuler.targetRepresentation_preserves_hit",
+      "PaperVerification.VectorEuler.paper_proposition_6_5_equivariant",
+      "PaperVerification.JacobianDivergence.milnorRepresentation_preserves_negativeGrading",
+      "PaperVerification.JacobianDivergence.paper_theorem_6_3_equivariant",
+      "PalomarDeformed.weighted_tail_theorem",
+      "iSupIndep.map_of_ker_inf_iSup_le"
+    ],
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ]
+  },
+  "challenge": {
+    "path": "source/Challenge.lean",
+    "sha256": "5c150e178ea9b9369c322f5a20308ea0797782429e724c396c42af9b494ca556",
+    "physical_lines": 959,
+    "bytes": 77434,
+    "local_elaboration": "passed_remote_Challenge_only_exact_current_hash",
+    "solution_build": "not_run_for_current_hash",
+    "comparator": "not_run_for_current_hash"
+  },
+  "packaging_changes": [
+    {
+      "kind": "literal_context_and_instance_naming",
+      "description": "All reached definition bodies and original binder/universe/decidability contexts restored. Two existing anonymous classical instances gained stable explicit names, with identical values. Reopened named local instance attributes reuse their existing constants. All original substantive proof bodies are preserved.",
+      "evidence": "packaging/expanded-applied.json"
+    },
+    {
+      "kind": "literal_interface_repair",
+      "evidence": "packaging/targeted-check-repair.json",
+      "description": "Exact current source/context correction and hash-bound pending validation receipt."
+    },
+    {
+      "kind": "literal_context_or_instance_repair",
+      "evidence": "packaging/targeted-check-repair-r4.json"
+    },
+    {
+      "kind": "literal_dependency_completion",
+      "evidence": "packaging/targeted-check-repair-r7.json",
+      "description": "Exact original root independence helper statement restored; all original quotient construction proof bodies retained."
+    }
+  ],
+  "coverage_status": "partial_principal_selection_not_whole_paper",
+  "uncovered_main_results_and_corollaries": [
+    {
+      "paper_result": "Corollary 2.4",
+      "uncovered_scope": "Arithmetic progressions, full enlarged monomial ranges and G(h,1,n) representation comparison.",
+      "blocker_or_preparation": "No complete principal source endpoint identified in retained verified declarations.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Theorems 3.1, 3.2, 3.4, 3.5, 3.6; Corollaries 3.3, 3.7",
+      "uncovered_scope": "Generic quotient Hilbert series, minimal/free resolutions, polynomial-form and Lie-Rinehart complexes, and stable pentagonal degree consequences.",
+      "blocker_or_preparation": "Retained verification/theorem-scope.md explicitly excludes general \u00a7\u00a73\u20135 endpoints; auxiliary work is not a complete source proof.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Theorems 4.1, 4.3, 4.4; Corollary 4.2",
+      "uncovered_scope": "Arithmetic-index operator normal forms and full coefficient/matrix/complex conclusions.",
+      "blocker_or_preparation": "Outside retained reviewed principal endpoints.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Theorems 5.1, 5.4, 5.6; Corollaries 5.2, 5.3, 5.7",
+      "uncovered_scope": "Noncommutative filtered normal forms, scalar/reflection-group variants, parameter-module freeness and higher homology.",
+      "blocker_or_preparation": "Outside retained reviewed principal endpoints; cannot claim formalization from auxiliary declarations.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Theorem 6.4",
+      "uncovered_scope": "Intermediate-codimension complete-intersection defect statement at every parameter.",
+      "blocker_or_preparation": "Explicitly excluded by retained verification/theorem-scope.md.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    }
+  ],
+  "coverage_note": "A source theorem, a prepared candidate, a Challenge elaboration pass, and a full Comparator/replay pass are separate states. No partial entry is counted as whole-paper coverage."
+}
