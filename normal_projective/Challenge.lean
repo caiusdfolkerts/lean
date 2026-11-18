@@ -8,6 +8,7 @@ public import Mathlib.Topology.Order.Real
 public import Mathlib.Analysis.SpecialFunctions.Sqrt
 public import Mathlib.Topology.Algebra.Module.ContinuousLinearMap.PiProd
 public import Mathlib.Tactic.Ext
+public import Mathlib.Analysis.InnerProductSpace.Basic
 /-!
 # Normal-projective equivalence and the exact cube bound
 
@@ -28,6 +29,8 @@ locations and selection of equivalent README formulations are in map.json.
 noncomputable section
 open Set Filter
 open scoped BigOperators Topology
+attribute [-instance] RCLike.toInnerProductSpaceReal RCLike.innerProductSpace
+
 namespace NormalProjective.CanonicalModel
 
 abbrev Space (d : ℕ) := Fin d → ℝ
@@ -213,8 +216,9 @@ namespace NormalProjective
 def halfspaceRegion {E ι : Type*} [AddCommGroup E] [Module ℝ E]
     (f : ι → E →ₗ[ℝ] ℝ) (h : ι → ℝ) : Set E :=
   {x | ∀ i, f i x ≤ h i}
+universe u_3 u_4
 /-- Continuous real linear normal forms and their support numbers. -/
-abbrev HalfspaceData (ι E : Type*) [NormedAddCommGroup E] [NormedSpace ℝ E] :=
+abbrev HalfspaceData (ι : Type u_3) (E : Type u_4) [NormedAddCommGroup E] [NormedSpace ℝ E] :=
   (ι → E →L[ℝ] ℝ) × (ι → ℝ)
 /-- The geometric intersection of the inequalities in a halfspace datum. -/
 def dataRegion {E ι : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
@@ -284,6 +288,12 @@ def relabel (Q : Presentation d W) (e : V ≃ W) : Presentation d V :=
   presentation (relabelRegular (ofCanonical Q) e)
 /-- Reflexivity of equality of the actual labelled face lattice. -/
 theorem sameLabelledType_refl (P : Presentation d V) : P.SameLabelledType P := by sorry
+/-- Exact outward unit normals after reindexing. -/
+theorem relabel_normal (Q : Presentation d W) (e : V ≃ W) (i : V) :
+    (Q.relabel e).normal i = Q.normal (e i) := by sorry
+/-- Exact support numbers after reindexing. -/
+theorem relabel_support (Q : Presentation d W) (e : V ≃ W) (i : V) :
+    (Q.relabel e).support i = Q.support (e i) := by sorry
 end CanonicalModel.Presentation
 
 open CanonicalModel CanonicalModel.Realization
@@ -301,6 +311,7 @@ theorem simple_three_faceOrderIso_pn {V W : Type*} [Fintype V] [Fintype W]
 end NormalProjective
 
 namespace NormalProjective.RootedGeometry
+attribute [local instance] RCLike.toInnerProductSpaceReal
 open UnitNormalization CanonicalModel
 /-- The two opposite facet labels in each coordinate direction. -/
 abbrev Labels (d : ℕ) := Sum (Fin d) (Fin d)
@@ -397,3 +408,35 @@ theorem boundary_origin_counterexample :
     polar (recentered (Set.Icc 0 1) (1 / 2)) ≠
       fractionalRecenter (1 / 2) '' polar (Set.Icc 0 1) := by sorry
 end NormalProjective.PolarCorrection
+
+namespace PalomarNormal
+attribute [local instance] RCLike.toInnerProductSpaceReal
+open NormalProjective NormalProjective.CanonicalModel
+open NormalProjective.CanonicalModel.Realization NormalProjective.CyclicCube
+open NormalProjective.RootedGeometry NormalProjective.UnitNormalization
+/-- Exact labelled unit-normal and support data of the standard cube inequalities. -/
+theorem referenceCube_data (n : ℕ) :
+    (referenceCube n).normal =
+      (fun i => unitRow ((rootedData (RankObstruction.cyclicMatrix n 0)).1 i)) ∧
+    (referenceCube n).support =
+      (fun i => (rootedData (RankObstruction.cyclicMatrix n 0)).2 i /
+        length ((rootedData (RankObstruction.cyclicMatrix n 0)).1 i)) := by sorry
+/-- Exact labelled normalization of -x_i<=0 and x_i+epsilon*x_(i+1)<=1. -/
+theorem cyclicRealization_data {n : ℕ} {ε : ℝ} (hε0 : 0 ≤ ε) (hε1 : ε < 1) :
+    (CyclicCube.realization (n := n) hε0 hε1).val.normal =
+      (fun i => unitRow ((rootedData (RankObstruction.cyclicMatrix n ε)).1 i)) ∧
+    (CyclicCube.realization (n := n) hε0 hε1).val.support =
+      (fun i => (rootedData (RankObstruction.cyclicMatrix n ε)).2 i /
+        length ((rootedData (RankObstruction.cyclicMatrix n ε)).1 i)) := by sorry
+/-- Literal total length k, permitting every induced endpoint facet labelling. -/
+theorem geometricLength_iff {n : ℕ} (P : Realization (referenceCube n)) (k : ℕ) :
+    CubeTargetLabels.GeometricLength P k ↔
+      ∃ Q : Realization (referenceCube n), ∃ p q : ℕ,
+        Q.carrier = Set.Icc (fun _ => (-1 : ℝ)) (fun _ => (1 : ℝ)) ∧
+          PNWord P Q p q ∧ p + q = k := by sorry
+/-- Distance is uniquely fixed as the least literal geometric word length. -/
+theorem geometricPNDistance_isLeast {n : ℕ} (hn : 1 ≤ n)
+    (P : Realization (referenceCube n)) :
+    IsLeast {k : ℕ | CubeTargetLabels.GeometricLength P k}
+      (CubeTargetLabels.geometricPNDistance hn P) := by sorry
+end PalomarNormal
