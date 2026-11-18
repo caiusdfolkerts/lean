@@ -1,6 +1,6 @@
 module
 
-public import PalomarAudit
+public meta import PalomarAudit
 public import four_papers.homological.complete.PalomarPart000
 import all four_papers.homological.complete.PalomarPart000
 public import Aesop

@@ -1,6 +1,6 @@
 module
 
-public import PalomarAudit
+public meta import PalomarAudit
 public import Aesop
 public meta import Lean.Elab.Command
 public meta import Lean.Elab.Tactic.Omega
