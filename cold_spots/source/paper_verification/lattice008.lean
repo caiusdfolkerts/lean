@@ -2117,9 +2117,12 @@ run_cmd do
     ("passed", toJson failures.isEmpty)]
   let target := (← IO.getEnv "PAPER_VERIFICATION_AUDIT_PATH").getD ".lake/build/paper-audit/PaperVerification_Lattice008.json"
   let path : System.FilePath := target
-  if let some parent := path.parent then
-    IO.FS.createDirAll parent
-  IO.FS.writeFile path (document.compress ++ "\n")
+  -- Validation is mandatory; audit-file persistence is optional in read-only builds.
+  let reportPersisted ← try
+    if let some parent := path.parent then IO.FS.createDirAll parent
+    IO.FS.writeFile path (document.compress ++ "\n")
+    pure true
+  catch _ => pure false
   if !failures.isEmpty then
     throwError "Kernel declaration audit rejected {failures.size} dependency/axiom findings; see {target}"
-  logInfo m!"Kernel declaration audit passed for {rows.size} declarations; see {target}"
+  logInfo m!"Kernel declaration audit passed for {rows.size} declarations; report persisted: {reportPersisted}; target: {target}"

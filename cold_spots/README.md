@@ -55,5 +55,6 @@ The underlying proof source also contains the supporting analytic results,
 explicit cold-spot descriptions, translation-class counts and affine orbit
 theorems listed above. Those supporting results are not separate Comparator
 targets in this entry. The selected principal theorem and corollary are
-retained in full. The package has not yet been compiled or run through
-Comparator in this preparation.
+retained in full. The independent Challenge elaborates successfully against the unchanged
+pinned Lean v4.35.0 and Mathlib, with only the selected theorem placeholders.
+Full Solution compilation and Comparator remain pending.

@@ -17,7 +17,7 @@ The E7 dual lives in the actual seven-dimensional zero-sum subspace of R8.
 noncomputable section
 open MeasureTheory
 open scoped BigOperators ENNReal
-namespace PaperVerification.PositiveMixtures
+namespace PalomarPositiveMixtures
 variable {ι X : Type*}
 /-- Strictly positive real Gaussian parameters. -/
 abbrev PositiveParameter := Set.Ioi (0 : ℝ)
@@ -38,9 +38,9 @@ def gaussianMixture (ν : Measure PositiveParameter) (r : ℝ) : ℝ :=
 def mixtureEnergy (d : ι → X → ℝ) (ν : Measure PositiveParameter) (x : X) : ℝ :=
   ∑' v : ι, gaussianMixture ν (d v x)
 
-end PaperVerification.PositiveMixtures
-namespace PaperVerification.ColdSpots
-open PaperVerification.PositiveMixtures
+end PalomarPositiveMixtures
+namespace PalomarColdSpots
+open PalomarPositiveMixtures
 variable {n : ℕ}
 
 /-- Squared Euclidean distance: the sum of coordinate squares. -/
@@ -266,4 +266,4 @@ theorem lattice_corollary_1_2 (ν : Measure PositiveParameter) (hν : ν≠0) :
       ∀ x : Fin n → ℝ, IsMixtureColdSpot (dPlusSet n) ν x ↔ IsDeepHole (dPlusSet n) x) := by
   sorry
 
-end PaperVerification.ColdSpots
+end PalomarColdSpots
