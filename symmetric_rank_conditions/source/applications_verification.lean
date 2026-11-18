@@ -3269,6 +3269,20 @@ def coefficientAlgebra (I : ℕ → Ideal S) (hzero : I 0 = ⊤)
   zero_mem' := coefficient_zero I
   algebraMap_mem' := coefficient_algebraMap I hzero
 
+@[simp] theorem coefficientAlgebra_monomial_mem
+    (I : ℕ → Ideal S) (hzero : I 0 = ⊤)
+    (hmul : ∀ a b f g, f ∈ I a → g ∈ I b → f * g ∈ I (a+b))
+    (s : ℕ) (f : S) :
+    Polynomial.monomial s f ∈ coefficientAlgebra (K := K) I hzero hmul ↔ f ∈ I s := by
+  constructor
+  · intro h
+    simpa using h s
+  · intro h i
+    by_cases hi : s = i
+    · subst i
+      simpa using h
+    · simp [Polynomial.coeff_monomial, hi]
+
 /-- The actual coefficient subalgebra of the prime ideal symbolic-power family. -/
 def symbolicRees (P : Ideal S) [P.IsPrime] : Subalgebra K (Polynomial S) :=
   coefficientAlgebra (symbolicPower P) (symbolicPower_zero P)
