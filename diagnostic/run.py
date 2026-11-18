@@ -1,4 +1,4 @@
-"""Validate a source snapshot; --run also compiles and replays one exact variant on Linux."""
+"""Verify the three-block source closure and measure all exports for later independent replay."""
 import argparse
 import concurrent.futures
 import graphlib
@@ -108,7 +108,7 @@ def export_measurements(path, target):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('variant',choices=['replacement','original'])
+    ap.add_argument('variant',choices=['replacement'])
     ap.add_argument('--run',action='store_true')
     args = ap.parse_args()
     m = json.loads(SOURCE_MANIFEST.read_text())
@@ -195,23 +195,30 @@ def main():
                     if len(report['modules'])%25<2:print('Built',len(report['modules']),'of',len(graph),flush=True)
             report['phases']['build']={'wall_seconds':round(time.monotonic()-started,3),'completed_module_count':len(report['modules']),'failed_modules':sorted(failed)}
             if failed or len(report['modules'])!=len(graph):raise ValueError('Module compilation failed')
+            scopes = m['measurement_scopes']
             audit = src/'DiagnosticEndpoint.lean'
-            audit.write_text(f"module\nimport {endpoint}\nexample : {m['endpoint_type']} := {target}\n")
-            export=scratch/'block.ndjson'
-            commands=[('endpoint_type',[bin_dir/'lean','-t1','-j1','-M4096','-Ddebug.skipKernelTC=false',audit.name]),
-                      ('export',[bin_dir/'leanexport',endpoint,'--',target,*PRIMITIVES]),
-                      ('lean_kernel',[bin_dir/'leanchecker','--silent','--from-export',export]),
-                      ('nanoda',[bin_dir/'nanoda_bin',scratch/'nanoda.json']),
-                      ('con_ron',[bin_dir/'con-ron','--jobs=2','--verified',export])]
-            (scratch/'nanoda.json').write_text(json.dumps({'use_stdin':False,'export_file_path':str(export),'permitted_axioms':AXIOMS,
-                'unpermitted_axiom_hard_error':False,'num_threads':4,'nat_extension':True,'string_extension':True}))
-            for label,cmd in commands:
-                report['stage']=label;save();print(label,target,flush=True)
-                measured=measure(label,cmd,export if label=='export' else None);report['phases'][label]=measured;save()
+            audit.write_text('module\nimport '+endpoint+'\n'+'\n'.join(
+                'example : '+entry['type']+' := '+entry['theorem'] for entry in scopes if entry.get('type'))+'\n')
+            check=measure('endpoint_type',[bin_dir/'lean','-t1','-j1','-M4096',
+                                          '-Ddebug.skipKernelTC=false',audit.name])
+            report['phases']['endpoint_type']=check
+            if check['exit_code']:
+                raise RuntimeError('Endpoint type audit failed: '+check.get('error_tail',''))
+            report['exports']={}
+            for entry in scopes:
+                name=entry['label']
+                report['stage']='export_'+name;save()
+                # The joint proof persists on the ephemeral runner across the three separate checker steps.
+                dest=(Path(os.environ['RUNNER_TEMP'])/'graph-family.ndjson' if name=='joint'
+                      else scratch/(name+'.ndjson'))
+                measured=measure('export_'+name,[bin_dir/'leanexport',entry['module'],'--',
+                                                 entry['theorem'],*PRIMITIVES],dest)
+                report['phases']['export_'+name]=measured;save()
                 if measured['exit_code']:
-                    raise RuntimeError(f'{label} failed: '+measured.get('error_tail',''))
-                if label=='export':report['export']=export_measurements(export,target);save()
-            report.update(status='pass',stage='completed');save()
+                    raise RuntimeError('Export '+name+' failed: '+measured.get('error_tail',''))
+                report['exports'][name]=export_measurements(dest,entry['theorem']);save()
+                if name!='joint': dest.unlink()
+            report.update(status='exported',stage='ready_for_independent_replay');save()
     except BaseException as e:
         report['status']='failed';report['error']=str(e)[-12000:];save();raise
 
