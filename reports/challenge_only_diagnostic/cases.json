@@ -4,20 +4,85 @@
   "pipeline_commit": "14aa8d6b3c2f14a8540605e37144560b9a00e7e7",
   "cases": [
     {
-      "id": "barycentric_relative_measured_repair",
+      "id": "unimodular_main_and_integral_dual_cor62",
       "module": "Challenge",
-      "case_dir": "cases/barycentric_relative_measured_repair",
-      "original_package": "reports/barycentric_invariance_relative/measured-repair-smoke",
-      "original_challenge": "reports/barycentric_invariance_relative/measured-repair-smoke/Challenge.lean",
+      "case_dir": "cases/unimodular_main_and_integral_dual_cor62",
+      "original_package": "reports/unimodular/main12/main-and-cor62-project",
+      "original_challenge": "reports/unimodular/main12/main-and-cor62-project/lean/Challenge.lean",
+      "lean_toolchain": "leanprover/lean4:v4.36.0-rc2",
+      "hashes": {
+        "lean-toolchain": "11c697aebe5b539d74f5069e497a588e7dfab1c4eeb74313f28357e351c55ca3",
+        "lake-manifest.json": "eda69d614955a3beccf5a8f24dacaa79e27b7b7b0e6d3f28383c316cbbba05be",
+        "original-lakefile.toml": "f7bc96a073719a7f621ebccfe5e6d0ef15a83994ddc5d7a0a25193f1dc81cfd7",
+        "Challenge.lean": "61b5d581d985709c65de3123ebec030dbd84b2c6c271d6e6205293b9423f0a86"
+      },
+      "challenge_lines": 338,
+      "challenge_bytes": 19830,
+      "dependency_pins": [
+        {
+          "name": "plausible",
+          "url": "https://github.com/leanprover-community/plausible",
+          "rev": "129d1ba9a16bc0660f46c79e9fb041ef5d5d80de"
+        },
+        {
+          "name": "LeanSearchClient",
+          "url": "https://github.com/leanprover-community/LeanSearchClient",
+          "rev": "c61286b7b63cbfd563b28e11e81d0a18233a044a"
+        },
+        {
+          "name": "importGraph",
+          "url": "https://github.com/leanprover-community/import-graph",
+          "rev": "b8cc5dd0a36233b88a6ed5a7dbf1207d09338c60"
+        },
+        {
+          "name": "proofwidgets",
+          "url": "https://github.com/leanprover-community/ProofWidgets4",
+          "rev": "16259c0d07d61ee37d999d05b5cf96338b8daa11"
+        },
+        {
+          "name": "aesop",
+          "url": "https://github.com/leanprover-community/aesop",
+          "rev": "7d11bfa88558f8d3d90afdf6bd877ed70001498d"
+        },
+        {
+          "name": "Qq",
+          "url": "https://github.com/leanprover-community/quote4",
+          "rev": "b0256621cb88178e9ad932a53633077b3029e621"
+        },
+        {
+          "name": "batteries",
+          "url": "https://github.com/leanprover-community/batteries",
+          "rev": "6d971e7e6b3f7d0a501c5418815aa9022edd3499"
+        },
+        {
+          "name": "Cli",
+          "url": "https://github.com/leanprover/lean4-cli",
+          "rev": "c09cb1e4f1e6e1c231a1175a12b681b075054a1b"
+        },
+        {
+          "name": "mathlib",
+          "url": "https://github.com/leanprover-community/mathlib4",
+          "rev": "1626233321dc564d20355d8f9d4f22e114d68600"
+        }
+      ],
+      "diagnostic_class": "canonical-only-full-main-plus-literal-original-integral-dual-corollary62-Challenge",
+      "remote_memory_mib": 8192
+    },
+    {
+      "id": "bier_measured_declaration_order_smoke",
+      "module": "Challenge",
+      "case_dir": "cases/bier_measured_declaration_order_smoke",
+      "original_package": "packages/bier",
+      "original_challenge": "reports/bier/measured-declaration-order-repair/CanonicalOrderSmoke.lean",
       "lean_toolchain": "leanprover/lean4:v4.35.0",
       "hashes": {
         "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
-        "lake-manifest.json": "1f49ab4b0413a57d8d5efeecdeac1132e4c2ff7ac252daefafd2d5c0be0a3a3e",
-        "original-lakefile.toml": "eefe11ae1dd6071e70bf29d17378cc9caaab18db6b29765681a8e693f553f665",
-        "Challenge.lean": "49d26b490cf2bf859ae37e35d77b77774b66f743abb8e4e0d1c94a8b202c048c"
+        "lake-manifest.json": "694ef9c615ca8ca150affe6c6fd526783b78e265fdad46b93847dbcef0ffe017",
+        "original-lakefile.toml": "2ac8a636a95466755175c2f1d55522e747c313562925101283a1b00df36cd8f6",
+        "Challenge.lean": "8b7c762e1f2cfa7535154a7ebdb080ce999babc93c7708156bb550d767706eee"
       },
-      "challenge_lines": 717,
-      "challenge_bytes": 33951,
+      "challenge_lines": 444,
+      "challenge_bytes": 22841,
       "dependency_pins": [
         {
           "name": "mathlib",
@@ -65,154 +130,24 @@
           "rev": "c24fe6078c630e89b489bffe59b3e20ac30d12c8"
         }
       ],
-      "diagnostic_class": "canonical-only-measured-classproof-identity-repair-Challenge",
+      "diagnostic_class": "canonical-only-measured-order-candidate-plus-actual-norm-rfl-and-three-type-lookups",
       "remote_memory_mib": 8192
     },
     {
-      "id": "mixed_volume_measured_repair",
+      "id": "homological_boundary_helper_pair_types_r2",
       "module": "Challenge",
-      "case_dir": "cases/mixed_volume_measured_repair",
-      "original_package": "packages/mixed_volume_realization",
-      "original_challenge": "packages/mixed_volume_realization/source/Challenge.lean",
-      "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
-      "hashes": {
-        "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
-        "lake-manifest.json": "365dcfeeb633a0ab203b47b0d4012bc05b9055f68a712ada5c671fba648be536",
-        "original-lakefile.toml": "188edbb34ff78aca96fd11514b299bf9a946bdd9cecf74828ac3bab4e88f668f",
-        "Challenge.lean": "5d680230128cbf4b33c421181d8d1ae02a12844b946839fdb7c668fa731a18e5"
-      },
-      "challenge_lines": 868,
-      "challenge_bytes": 42686,
-      "dependency_pins": [
-        {
-          "name": "mathlib",
-          "url": "https://github.com/leanprover-community/mathlib4",
-          "rev": "2cabef97b63d3275776b8b060d802de6a6fa1055"
-        },
-        {
-          "name": "plausible",
-          "url": "https://github.com/leanprover-community/plausible",
-          "rev": "c2d7840c65673533e15b499f25beecdc6227f7d8"
-        },
-        {
-          "name": "LeanSearchClient",
-          "url": "https://github.com/leanprover-community/LeanSearchClient",
-          "rev": "9d39f9bb0c30aa2f6200808805ff16e6ce950890"
-        },
-        {
-          "name": "importGraph",
-          "url": "https://github.com/leanprover-community/import-graph",
-          "rev": "b3cc36c295aa5e3e3c0197b09a6556298e710447"
-        },
-        {
-          "name": "proofwidgets",
-          "url": "https://github.com/leanprover-community/ProofWidgets4",
-          "rev": "17137fad38a2cc782ff00b323a13c3a991d085ab"
-        },
-        {
-          "name": "aesop",
-          "url": "https://github.com/leanprover-community/aesop",
-          "rev": "29c64c56cc38211d39b306db2df11701e3d3de11"
-        },
-        {
-          "name": "Qq",
-          "url": "https://github.com/leanprover-community/quote4",
-          "rev": "6d26f8bb4b2bb78f929ad160feac508866821316"
-        },
-        {
-          "name": "batteries",
-          "url": "https://github.com/leanprover-community/batteries",
-          "rev": "30691c775364967184547c94468bf6b5f25400fb"
-        },
-        {
-          "name": "Cli",
-          "url": "https://github.com/leanprover/lean4-cli",
-          "rev": "34d2efffcb6dc8d5f3537cf6a7f88bfaa999ec49"
-        }
-      ],
-      "diagnostic_class": "canonical-only-measured-generic-eval-and-label-proof-repair-Challenge",
-      "remote_memory_mib": 8192
-    },
-    {
-      "id": "projection_areas_measured_repair",
-      "module": "Challenge",
-      "case_dir": "cases/projection_areas_measured_repair",
-      "original_package": "packages/projection_areas",
-      "original_challenge": "packages/projection_areas/source/Challenge.lean",
-      "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
-      "hashes": {
-        "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
-        "lake-manifest.json": "a1ec65315c409ef3b5f2857f0be290dc749a16905b04e41d565d57c0fad583bb",
-        "original-lakefile.toml": "fd9630659135ab2994eb1b710ec5ab37892a19e058fa9f4869e1a6d172a59ece",
-        "Challenge.lean": "78cf8cdef535e3b7e18575eb78a62f63e9735ce03916e0b0f610a91a9e526de4"
-      },
-      "challenge_lines": 633,
-      "challenge_bytes": 31506,
-      "dependency_pins": [
-        {
-          "name": "mathlib",
-          "url": "https://github.com/leanprover-community/mathlib4",
-          "rev": "2cabef97b63d3275776b8b060d802de6a6fa1055"
-        },
-        {
-          "name": "plausible",
-          "url": "https://github.com/leanprover-community/plausible",
-          "rev": "c2d7840c65673533e15b499f25beecdc6227f7d8"
-        },
-        {
-          "name": "LeanSearchClient",
-          "url": "https://github.com/leanprover-community/LeanSearchClient",
-          "rev": "9d39f9bb0c30aa2f6200808805ff16e6ce950890"
-        },
-        {
-          "name": "importGraph",
-          "url": "https://github.com/leanprover-community/import-graph",
-          "rev": "b3cc36c295aa5e3e3c0197b09a6556298e710447"
-        },
-        {
-          "name": "proofwidgets",
-          "url": "https://github.com/leanprover-community/ProofWidgets4",
-          "rev": "17137fad38a2cc782ff00b323a13c3a991d085ab"
-        },
-        {
-          "name": "aesop",
-          "url": "https://github.com/leanprover-community/aesop",
-          "rev": "29c64c56cc38211d39b306db2df11701e3d3de11"
-        },
-        {
-          "name": "Qq",
-          "url": "https://github.com/leanprover-community/quote4",
-          "rev": "6d26f8bb4b2bb78f929ad160feac508866821316"
-        },
-        {
-          "name": "batteries",
-          "url": "https://github.com/leanprover-community/batteries",
-          "rev": "30691c775364967184547c94468bf6b5f25400fb"
-        },
-        {
-          "name": "Cli",
-          "url": "https://github.com/leanprover/lean4-cli",
-          "rev": "34d2efffcb6dc8d5f3537cf6a7f88bfaa999ec49"
-        }
-      ],
-      "diagnostic_class": "canonical-only-measured-dimension-witness-repair-Challenge",
-      "remote_memory_mib": 8192
-    },
-    {
-      "id": "cubical_lower_measured_repair23",
-      "module": "Challenge",
-      "case_dir": "cases/cubical_lower_measured_repair23",
-      "original_package": "packages/cubical_lower_bound",
-      "original_challenge": "packages/cubical_lower_bound/Challenge.lean",
+      "case_dir": "cases/homological_boundary_helper_pair_types_r2",
+      "original_package": "reports/homological_shifts/boundary-helper-comparison-smoke-r2",
+      "original_challenge": "reports/homological_shifts/boundary-helper-comparison-smoke-r2/Challenge.lean",
       "lean_toolchain": "leanprover/lean4:v4.35.0",
       "hashes": {
         "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
-        "lake-manifest.json": "0f62e0b45cf1555cc389b1e4f64e6da69e13b52aab82240c61c2062701d71208",
-        "original-lakefile.toml": "32f3f582e0d52c47e9baa44fd1d39dcd5536b2ec6768a04295f10b75fae9f2e0",
-        "Challenge.lean": "aabc2915eceec8a645cb63602e0d85d177c85db71f74931272ddc138e70d2c90"
+        "lake-manifest.json": "c19929a5111909242f1ca954a78a934cf2ad5972f7f3ee68310ad6bcfbb186ed",
+        "original-lakefile.toml": "45a63ae480339252c42baf15aa590314d40c82e55494b2a091d90be3f40675c6",
+        "Challenge.lean": "ece63578b32a1c408f0d294692eccf5db366fc20d2e492fde5d597d2ce207be1"
       },
-      "challenge_lines": 417,
-      "challenge_bytes": 20996,
+      "challenge_lines": 379,
+      "challenge_bytes": 22624,
       "dependency_pins": [
         {
           "name": "mathlib",
@@ -260,15 +195,14 @@
           "rev": "c24fe6078c630e89b489bffe59b3e20ac30d12c8"
         }
       ],
-      "diagnostic_class": "canonical-only-six-complete-independent-data-field-specifications-plus-principal-Challenge",
+      "diagnostic_class": "canonical-only-three-boundary-type-pairs-observer-parser-repair",
       "remote_memory_mib": 8192
     }
   ],
   "default_case_ids": [
-    "barycentric_relative_measured_repair",
-    "mixed_volume_measured_repair",
-    "projection_areas_measured_repair",
-    "cubical_lower_measured_repair23"
+    "unimodular_main_and_integral_dual_cor62",
+    "bier_measured_declaration_order_smoke",
+    "homological_boundary_helper_pair_types_r2"
   ],
   "operator_resource_policy": {
     "memory_mib": 8192,
@@ -277,5 +211,5 @@
     "matrix_max_parallel": 2,
     "compile_timeout_seconds": 2400
   },
-  "revision": "27"
+  "revision": "28"
 }

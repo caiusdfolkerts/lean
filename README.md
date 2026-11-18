@@ -1,3 +1,3 @@
-# Canonical diagnostic revision27
+# Canonical diagnostic revision28
 
-Four measured canonical interface repairs. No full-preflight claim or source proof validation.
+Unimodular main+Corollary6.2, Bier declaration-order norm guard, and corrected Homo bounded type comparisons. No full-preflight claim.
