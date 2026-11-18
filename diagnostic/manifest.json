@@ -1,11 +1,116 @@
 {
-  "endpoint_module": "FamilyDiagnostic",
-  "endpoint_theorem": "ResidualDiagnostic.complete",
-  "endpoint_type": "Papers.RationalityTen.GraphFiniteDispatch.Block 21816 21834 \u2227 Papers.RationalityTen.GraphFiniteDispatch.Block 25786 25789 \u2227 Papers.RationalityTen.GraphFiniteDispatch.Block 35093 35119",
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "blocks": [
+    {
+      "block": "GraphCompactBlock0527",
+      "cells": 1014,
+      "frames": 37,
+      "hi": 21816,
+      "lo": 21806,
+      "nodes": 1318,
+      "records": 10,
+      "row": 29
+    },
+    {
+      "block": "GraphCompactBlock0528",
+      "cells": 1956,
+      "frames": 26,
+      "hi": 21834,
+      "lo": 21816,
+      "nodes": 1270,
+      "records": 18,
+      "row": 29
+    },
+    {
+      "block": "GraphCompactBlock0529",
+      "cells": 1774,
+      "frames": 44,
+      "hi": 21850,
+      "lo": 21834,
+      "nodes": 1203,
+      "records": 16,
+      "row": 29
+    },
+    {
+      "block": "GraphCompactBlock0530",
+      "cells": 749,
+      "frames": 16,
+      "hi": 21857,
+      "lo": 21850,
+      "nodes": 1400,
+      "records": 7,
+      "row": 29
+    },
+    {
+      "block": "GraphCompactBlock0531",
+      "cells": 2646,
+      "frames": 96,
+      "hi": 21881,
+      "lo": 21857,
+      "nodes": 1411,
+      "records": 24,
+      "row": 29
+    },
+    {
+      "block": "GraphCompactBlock0532",
+      "cells": 1865,
+      "frames": 80,
+      "hi": 21898,
+      "lo": 21881,
+      "nodes": 1217,
+      "records": 17,
+      "row": 29
+    },
+    {
+      "block": "GraphCompactBlock0533",
+      "cells": 4545,
+      "frames": 144,
+      "hi": 21939,
+      "lo": 21898,
+      "nodes": 1407,
+      "records": 41,
+      "row": 29
+    },
+    {
+      "block": "GraphCompactBlock0534",
+      "cells": 766,
+      "frames": 21,
+      "hi": 21946,
+      "lo": 21939,
+      "nodes": 1217,
+      "records": 7,
+      "row": 29
+    }
+  ],
+  "eight_scope_counts": {
+    "cells": 15315,
+    "frames": 464,
+    "leaves": 159,
+    "matching": 25,
+    "nodes": 10443,
+    "nonidentity_frames": 324,
+    "quota": 134,
+    "records": 140
+  },
+  "endpoint_module": "NestedRow29",
+  "endpoint_types": {
+    "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0527.complete": "Papers.RationalityTen.GraphFiniteDispatch.Block 21806 21816",
+    "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0528.complete": "Papers.RationalityTen.GraphFiniteDispatch.Block 21816 21834",
+    "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0529.complete": "Papers.RationalityTen.GraphFiniteDispatch.Block 21834 21850",
+    "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0530.complete": "Papers.RationalityTen.GraphFiniteDispatch.Block 21850 21857",
+    "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0531.complete": "Papers.RationalityTen.GraphFiniteDispatch.Block 21857 21881",
+    "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0532.complete": "Papers.RationalityTen.GraphFiniteDispatch.Block 21881 21898",
+    "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0533.complete": "Papers.RationalityTen.GraphFiniteDispatch.Block 21898 21939",
+    "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0534.complete": "Papers.RationalityTen.GraphFiniteDispatch.Block 21939 21946"
+  },
   "files": {
-    ".github/workflows/residual-family.yml": {
-      "bytes": 3209,
-      "sha256": "4d7a5649ef56e10c1f905fab89a6479fe1c8fdd706aeab13747abecd1826f2bf"
+    ".github/workflows/nested-row.yml": {
+      "bytes": 5365,
+      "sha256": "c12fe75e0496c54ec2e3f988a3b867ec01f526714acdb0e6d2e7ad9a398bf261"
     },
     "LICENSE": {
       "bytes": 11410,
@@ -16,30 +121,14 @@
       "sha256": "e2af102b9599056f984ea036280b13207b8e6098d8fdef57256840d7b82b5a90"
     },
     "README.md": {
-      "bytes": 1410,
-      "sha256": "9ac813419851cdb61e1c8e08cbd057f26992b97594f8b3acef5e85c0d6e42b9a"
+      "bytes": 1990,
+      "sha256": "383a66b6190bda3eafddde2fbbc7ae57db180eced1fb099c3c475a675873b117"
     },
-    "diagnostic/provenance/GraphCompactBlock0824.json": {
-      "bytes": 3326,
-      "sha256": "15128a4e2139e4f228471a7a46d8e1e4af4ca25d6a84de1536d961e6b89940d2"
+    "diagnostic/nested.py": {
+      "bytes": 10367,
+      "sha256": "f4866f10c3f7995d7214b2a11d468c061d9ac8677cc02f030fc8c1496bd0bdb0"
     },
-    "diagnostic/provenance/GraphCompactBlock1055.json": {
-      "bytes": 9922,
-      "sha256": "e4d887f81a7aaf7b2892e0a42226e71f7ce4a94231cb03c58f728741b1346fdb"
-    },
-    "diagnostic/provenance/corrected-exclusions.json": {
-      "bytes": 1741,
-      "sha256": "719f790a0f8fac41bb7bc41228a07657c892d06074efe4487de57ceaeeaafc29"
-    },
-    "diagnostic/provenance/source-map.json": {
-      "bytes": 7985,
-      "sha256": "ce8bd8479b3fc9b9db3ce7fe4249c5eccb70c08bb08978255008be773db85ea3"
-    },
-    "diagnostic/replay.py": {
-      "bytes": 2626,
-      "sha256": "4d580fa4a69a9863627f16693dbbba4fd480104bf8e18599f165e7901ba16eda"
-    },
-    "diagnostic/run.py": {
+    "diagnostic/support.py": {
       "bytes": 12517,
       "sha256": "4a28381a752304093cd9e0251d2e38e68f4fd8f0270fbe385b4253c2c94294a8"
     },
@@ -82,10 +171,6 @@
     "source/FaceOnlyCompatibility.lean": {
       "bytes": 2096,
       "sha256": "6feb072b603401ea45ac78ab8a0d40cd28e778b67afbdee360875bd94bbcbcbe"
-    },
-    "source/FamilyDiagnostic.lean": {
-      "bytes": 655,
-      "sha256": "c3f2349f7df8bcca6f4db4b1a3c8ff1a82235f78ba2a4cf23dd4a8ca7fca2154"
     },
     "source/FastAvailability.lean": {
       "bytes": 3885,
@@ -543,17 +628,37 @@
       "bytes": 1106,
       "sha256": "74d9ecd13938db0d09018a9e1679a6e20f9b3c47dd11295361baae23e5d3b56c"
     },
+    "source/GraphCompactBlock0527.lean": {
+      "bytes": 13825,
+      "sha256": "a06713678b11000415dcf82ae502171de9ba96c133e52d9e898451e67f0b79c5"
+    },
     "source/GraphCompactBlock0528.lean": {
       "bytes": 20435,
       "sha256": "03dc0680ad23edafbb91e97efe66fbe748d9b93ac9016fb4f14c778c40a40780"
     },
-    "source/GraphCompactBlock0824.lean": {
-      "bytes": 5817,
-      "sha256": "a005cc2e3010e90a116aa27dc5c1f0378236adfa9ec01d13a2743e1e10772474"
+    "source/GraphCompactBlock0529.lean": {
+      "bytes": 20219,
+      "sha256": "dc1c2b950b1f3f1d03e657a3bb8f620f16d96f3812616fb29afb251bc9455ac7"
     },
-    "source/GraphCompactBlock1055.lean": {
-      "bytes": 36413,
-      "sha256": "48c19af3e938291bee9b0c9aa49641e713e298a5196f6bd582a31b01f3fa74a0"
+    "source/GraphCompactBlock0530.lean": {
+      "bytes": 10555,
+      "sha256": "23ee482bc9a0e8dc82ad5895ffaf7008232b19fbf2d30efaa467bb8a48e2eb69"
+    },
+    "source/GraphCompactBlock0531.lean": {
+      "bytes": 32122,
+      "sha256": "bbb91b842f9a9f95a26268d19363acccc1e90910dc7f150987851b9fb116478f"
+    },
+    "source/GraphCompactBlock0532.lean": {
+      "bytes": 23722,
+      "sha256": "f3c97eb152f28a671e0380a2da42edb1e60c4649bacb3e178133e5a0c1d26740"
+    },
+    "source/GraphCompactBlock0533.lean": {
+      "bytes": 55360,
+      "sha256": "20e3e8f5c616fa1c670be06f94ebb760c6fd9ce7b56a00bad8a46ed3bd104651"
+    },
+    "source/GraphCompactBlock0534.lean": {
+      "bytes": 9809,
+      "sha256": "4e6b707a16bf993122facaba688eda093743ab1a29c62dcbc26b796a2fcfe20b"
     },
     "source/GraphCompactBlocks.lean": {
       "bytes": 1227,
@@ -587,6 +692,14 @@
       "bytes": 7189,
       "sha256": "02f3992fad0a8f2784f61cad8cd233efe6ab8ebae3cb85c4422ee147783fe6e9"
     },
+    "source/GraphInputsRow29Part00093Data.gpack": {
+      "bytes": 84450,
+      "sha256": "ee264e8d687bcf3cd223e8869d53d765558f2857d65224a907dd3e849fa0ab46"
+    },
+    "source/GraphInputsRow29Part00093Data.lean": {
+      "bytes": 843,
+      "sha256": "84c7ca4ab968c56187251e24067121125e6a4a9c16f42fe78047fea6578f2979"
+    },
     "source/GraphInputsRow29Part00094Data.gpack": {
       "bytes": 82932,
       "sha256": "7b82e54755bfc33e2943e615c68db36544e40ebe374642bab707ddcfd3cfae9e"
@@ -595,21 +708,53 @@
       "bytes": 1227,
       "sha256": "9a3965938ee4bf89a8f48b69d23b97a900cc7ed1e1e6350162baf3ca3414683d"
     },
-    "source/GraphInputsRow31Part00036Data.gpack": {
-      "bytes": 94663,
-      "sha256": "c2a80e5b3414f4d6564c8f80fb762519716707da31e1810b8893d5575b7f193d"
+    "source/GraphInputsRow29Part00095Data.gpack": {
+      "bytes": 88785,
+      "sha256": "eaac7b9da4d1a20ebb63b48c5da9f4742c0fb73de48e4029b57e14f2a61aad28"
     },
-    "source/GraphInputsRow31Part00036Data.lean": {
-      "bytes": 514,
-      "sha256": "3cceb63abe9a21ebee6dd2e7c47dec17af886260ad8be21b1c0ef3b6850840d5"
+    "source/GraphInputsRow29Part00095Data.lean": {
+      "bytes": 1131,
+      "sha256": "b134063c82d2c237c6382978055de5466e7d3ca23f397f754289270ce436c2f6"
     },
-    "source/GraphInputsSix0Part00090Data.gpack": {
-      "bytes": 85484,
-      "sha256": "39d26e841ad25b04963e59b5dc5401e1d5e397c4f3345c8c96afef94be117098"
+    "source/GraphInputsRow29Part00096Data.gpack": {
+      "bytes": 90349,
+      "sha256": "d440e29509451dbca39c506a42f5f113fa876267ecd6bbae3cba82e33f33860a"
     },
-    "source/GraphInputsSix0Part00090Data.lean": {
-      "bytes": 1557,
-      "sha256": "df84c8f325cf27ffa2fefd374bb3ed3730d1b84596f9b8c3c171732498dfc934"
+    "source/GraphInputsRow29Part00096Data.lean": {
+      "bytes": 702,
+      "sha256": "c40a413e9c4204f84309115cafb3764de6a0f42b89f8d589c3d0ac177eede65b"
+    },
+    "source/GraphInputsRow29Part00097Data.gpack": {
+      "bytes": 95249,
+      "sha256": "b4f9d091d5256d5f8d0a7b0a1ad89b6ffd568dad8d54ffe3cdc766a2f4d33fff"
+    },
+    "source/GraphInputsRow29Part00097Data.lean": {
+      "bytes": 1515,
+      "sha256": "235f037ba08a610c2a3543f2ad813d207a853f1bbccf78389ca217d40939d05c"
+    },
+    "source/GraphInputsRow29Part00098Data.gpack": {
+      "bytes": 84564,
+      "sha256": "1b1f574ce4d5f037d937ed8fbaaee1550a7ae5908abfe82485791e92cac1816e"
+    },
+    "source/GraphInputsRow29Part00098Data.lean": {
+      "bytes": 1179,
+      "sha256": "2ab1c5720094c5d42d5a6e61ab4dc70caa9c3a41b333073eeeecca28b69a137b"
+    },
+    "source/GraphInputsRow29Part00099Data.gpack": {
+      "bytes": 103748,
+      "sha256": "b83b9880754561cfb321ac2178ede088ef529387592b6d87af2bf878eec0b882"
+    },
+    "source/GraphInputsRow29Part00099Data.lean": {
+      "bytes": 2331,
+      "sha256": "ecac5293b9aa961990b874562a435bce6c099a1d3da8cad8cffb5caf4b769a9b"
+    },
+    "source/GraphInputsRow29Part00100Data.gpack": {
+      "bytes": 82863,
+      "sha256": "1a0ddcdbc42dd5c098b8af6276c3b414989d07acf56031ff76b2a19afd30fea7"
+    },
+    "source/GraphInputsRow29Part00100Data.lean": {
+      "bytes": 702,
+      "sha256": "115cd7e950716fc8ecdb2a2f70e84bf989e938c3f5903936da7051ca0503f463"
     },
     "source/GraphNumerals.lean": {
       "bytes": 4948,
@@ -671,13 +816,9 @@
       "bytes": 13161,
       "sha256": "5fb5c653236615113df490beb38b213e311095ce57935d8bb69b1025210a83d3"
     },
-    "source/InducedTerminalMatches/M078.lean": {
-      "bytes": 13438,
-      "sha256": "3f1355a294406bc383f2a2641c818f5a3d966628785a7cf8444ae3a43f0f3d99"
-    },
-    "source/InducedTerminalMatches/M079.lean": {
-      "bytes": 13344,
-      "sha256": "560b539093ade1054d1b015e108e9e04bad43db4c3857093e38c574f96acf346"
+    "source/InducedTerminalMatches/M054.lean": {
+      "bytes": 13179,
+      "sha256": "658df08c74884ef6526f88b35d9a0d52682dc1862e3d67172bf9d7f94a5f44f9"
     },
     "source/IntegerTables.lean": {
       "bytes": 1287,
@@ -726,6 +867,10 @@
     "source/MatrixGraphProblem.lean": {
       "bytes": 7155,
       "sha256": "206bc3cb571b93baa698eb7f0e5b1dcd8ef5de7c0f076f5d01929ce66bb10da5"
+    },
+    "source/NestedRow29.lean": {
+      "bytes": 295,
+      "sha256": "92dad9a3e1732869ab55c87ffc673278e12e136d28f9ae648c610c2e65f09d35"
     },
     "source/NumericProofSchema.lean": {
       "bytes": 1374,
@@ -1130,6 +1275,10 @@
     "source/ResidualBatch/NodeAndFrame.lean": {
       "bytes": 2392,
       "sha256": "22d1da68e47d9cc592a1e1181d7c97097604ff100ba90e9a48e51938694a10e7"
+    },
+    "source/ResidualBatch/SplitSide.lean": {
+      "bytes": 973,
+      "sha256": "40f5cbdae0e67c830b471d4cacb5df6f2d42b9ffa74e255a20e9e2b06e7068bd"
     },
     "source/SharedGraphCellPool.lean": {
       "bytes": 12620,
@@ -1704,41 +1853,86 @@
       "sha256": "6ab2ec605af5f2bf65d272ab36ef8a4028fe2c04141424a7e3ecc96c162f89aa"
     }
   },
+  "frozen_project_git_tree": "695ec1edc7db3e2903d9ecabedb36d9cc890faf4",
   "lean_toolchain": "leanprover/lean4:v4.35.0",
   "mathlib_commit": "56a005855ea17e0b0958f73ec801ae140b0a1679",
-  "measurement_scopes": [
+  "per_checker_timeout_seconds": {
+    "eight": {
+      "lean_kernel": 3000,
+      "nanoda": 960
+    },
+    "generic": {
+      "lean_kernel": 1200,
+      "nanoda": 480
+    },
+    "single": {
+      "lean_kernel": 1500,
+      "nanoda": 480
+    }
+  },
+  "project_source_inventory_sha256": "8a8621ec68afadaea0701da0187d5709b1a5e689d21c12e31cd331fb42026390",
+  "reference_proof_exports": {
+    "generic": "f7e4520867d4717dc7176aac8c5b506441108a6e27f241a5e7101020845c402d",
+    "single": "18eaaf47b9f3ff9b805900798e5fb305a1eede776845cc2b24a5b245e98696fa"
+  },
+  "scopes": [
     {
       "label": "generic",
       "module": "ResidualBatch.Graph",
-      "theorem": "Papers.RationalityTen.ResidualBatch.completeBlock"
+      "required": [
+        "Papers.RationalityTen.ResidualBatch.completeBlock"
+      ],
+      "theorems": [
+        "Papers.RationalityTen.ResidualBatch.completeBlock"
+      ]
     },
     {
-      "label": "block0528",
+      "label": "single",
       "module": "GraphCompactBlock0528",
-      "theorem": "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0528.complete",
-      "type": "Papers.RationalityTen.GraphFiniteDispatch.Block 21816 21834"
+      "required": [
+        "Papers.RationalityTen.ResidualBatch.completeBlock",
+        "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0528.complete"
+      ],
+      "theorems": [
+        "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0528.complete"
+      ]
     },
     {
-      "label": "block0824",
-      "module": "GraphCompactBlock0824",
-      "theorem": "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0824.complete",
-      "type": "Papers.RationalityTen.GraphFiniteDispatch.Block 25786 25789"
-    },
-    {
-      "label": "block1055",
-      "module": "GraphCompactBlock1055",
-      "theorem": "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock1055.complete",
-      "type": "Papers.RationalityTen.GraphFiniteDispatch.Block 35093 35119"
-    },
-    {
-      "label": "joint",
-      "module": "FamilyDiagnostic",
-      "theorem": "ResidualDiagnostic.complete",
-      "type": "Papers.RationalityTen.GraphFiniteDispatch.Block 21816 21834 \u2227 Papers.RationalityTen.GraphFiniteDispatch.Block 25786 25789 \u2227 Papers.RationalityTen.GraphFiniteDispatch.Block 35093 35119"
+      "label": "eight",
+      "module": "NestedRow29",
+      "required": [
+        "Papers.RationalityTen.ResidualBatch.completeBlock",
+        "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0527.complete",
+        "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0528.complete",
+        "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0529.complete",
+        "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0530.complete",
+        "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0531.complete",
+        "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0532.complete",
+        "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0533.complete",
+        "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0534.complete"
+      ],
+      "theorems": [
+        "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0527.complete",
+        "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0528.complete",
+        "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0529.complete",
+        "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0530.complete",
+        "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0531.complete",
+        "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0532.complete",
+        "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0533.complete",
+        "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0534.complete"
+      ]
     }
   ],
+  "source_files_identical_to_prior_47_key_diagnostic": 405,
+  "tool_sha256": {
+    "con-ron": "60f4ca9fb9436c323789fa49aae33af6dcd1b9b54b43a66b461779ce79fd8eec",
+    "lean": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+    "leanchecker": "12c38901cdbfab178f1bf6145dd30012e9a3b2c11ca695292a5884fa3cbaddb6",
+    "leanexport": "f6a6483d518a11b323c28b9bac176d2220df0e9fc3230833815db9586669c074",
+    "nanoda_bin": "cbf13950fc4a48f635a0beceeb5ed32dd82568b870cfd081b6391c1f2cf02ba5"
+  },
   "upstream_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
-  "upstream_repository": "https://github.com/caiusdfolkerts/research",
+  "upstream_repository": "caiusdfolkerts/research",
   "variants": {
     "replacement": {
       "external_imports": [
@@ -1762,7 +1956,7 @@
         "Lean.Elab.Command",
         "Lean.Elab.Term"
       ],
-      "module_count": 347,
+      "module_count": 357,
       "paths": {
         "BatchedGrowthPruning.lean": "source/BatchedGrowthPruning.lean",
         "BatchedOrbitGrowth.lean": "source/BatchedOrbitGrowth.lean",
@@ -1772,7 +1966,6 @@
         "CertificateNumbers.lean": "source/CertificateNumbers.lean",
         "ConcreteGrowth.lean": "source/ConcreteGrowth.lean",
         "FaceOnlyCompatibility.lean": "source/FaceOnlyCompatibility.lean",
-        "FamilyDiagnostic.lean": "source/FamilyDiagnostic.lean",
         "FastAvailability.lean": "source/FastAvailability.lean",
         "FastBatchedGrowth.lean": "source/FastBatchedGrowth.lean",
         "FastGeneralGraphReplay.lean": "source/FastGeneralGraphReplay.lean",
@@ -1887,9 +2080,14 @@
         "GraphCatalogueCheck.lean": "source/GraphCatalogueCheck.lean",
         "GraphCatalogueCore.lean": "source/GraphCatalogueCore.lean",
         "GraphCatalogueData.lean": "source/GraphCatalogueData.lean",
+        "GraphCompactBlock0527.lean": "source/GraphCompactBlock0527.lean",
         "GraphCompactBlock0528.lean": "source/GraphCompactBlock0528.lean",
-        "GraphCompactBlock0824.lean": "source/GraphCompactBlock0824.lean",
-        "GraphCompactBlock1055.lean": "source/GraphCompactBlock1055.lean",
+        "GraphCompactBlock0529.lean": "source/GraphCompactBlock0529.lean",
+        "GraphCompactBlock0530.lean": "source/GraphCompactBlock0530.lean",
+        "GraphCompactBlock0531.lean": "source/GraphCompactBlock0531.lean",
+        "GraphCompactBlock0532.lean": "source/GraphCompactBlock0532.lean",
+        "GraphCompactBlock0533.lean": "source/GraphCompactBlock0533.lean",
+        "GraphCompactBlock0534.lean": "source/GraphCompactBlock0534.lean",
         "GraphCompactBlocks.lean": "source/GraphCompactBlocks.lean",
         "GraphConditionedGrowth.lean": "source/GraphConditionedGrowth.lean",
         "GraphCoreCertificate.lean": "source/GraphCoreCertificate.lean",
@@ -1898,12 +2096,22 @@
         "GraphGrowthConstraints.lean": "source/GraphGrowthConstraints.lean",
         "GraphGrowthInputs.lean": "source/GraphGrowthInputs.lean",
         "GraphGrowthRuleSoundness.lean": "source/GraphGrowthRuleSoundness.lean",
+        "GraphInputsRow29Part00093Data.gpack": "source/GraphInputsRow29Part00093Data.gpack",
+        "GraphInputsRow29Part00093Data.lean": "source/GraphInputsRow29Part00093Data.lean",
         "GraphInputsRow29Part00094Data.gpack": "source/GraphInputsRow29Part00094Data.gpack",
         "GraphInputsRow29Part00094Data.lean": "source/GraphInputsRow29Part00094Data.lean",
-        "GraphInputsRow31Part00036Data.gpack": "source/GraphInputsRow31Part00036Data.gpack",
-        "GraphInputsRow31Part00036Data.lean": "source/GraphInputsRow31Part00036Data.lean",
-        "GraphInputsSix0Part00090Data.gpack": "source/GraphInputsSix0Part00090Data.gpack",
-        "GraphInputsSix0Part00090Data.lean": "source/GraphInputsSix0Part00090Data.lean",
+        "GraphInputsRow29Part00095Data.gpack": "source/GraphInputsRow29Part00095Data.gpack",
+        "GraphInputsRow29Part00095Data.lean": "source/GraphInputsRow29Part00095Data.lean",
+        "GraphInputsRow29Part00096Data.gpack": "source/GraphInputsRow29Part00096Data.gpack",
+        "GraphInputsRow29Part00096Data.lean": "source/GraphInputsRow29Part00096Data.lean",
+        "GraphInputsRow29Part00097Data.gpack": "source/GraphInputsRow29Part00097Data.gpack",
+        "GraphInputsRow29Part00097Data.lean": "source/GraphInputsRow29Part00097Data.lean",
+        "GraphInputsRow29Part00098Data.gpack": "source/GraphInputsRow29Part00098Data.gpack",
+        "GraphInputsRow29Part00098Data.lean": "source/GraphInputsRow29Part00098Data.lean",
+        "GraphInputsRow29Part00099Data.gpack": "source/GraphInputsRow29Part00099Data.gpack",
+        "GraphInputsRow29Part00099Data.lean": "source/GraphInputsRow29Part00099Data.lean",
+        "GraphInputsRow29Part00100Data.gpack": "source/GraphInputsRow29Part00100Data.gpack",
+        "GraphInputsRow29Part00100Data.lean": "source/GraphInputsRow29Part00100Data.lean",
         "GraphNumerals.lean": "source/GraphNumerals.lean",
         "GraphProblemCertificate.lean": "source/GraphProblemCertificate.lean",
         "GraphRootExclusion.lean": "source/GraphRootExclusion.lean",
@@ -1919,8 +2127,7 @@
         "IdentityGrowthRenaming.lean": "source/IdentityGrowthRenaming.lean",
         "InducedTerminalMatches/Basic.lean": "source/InducedTerminalMatches/Basic.lean",
         "InducedTerminalMatches/M053.lean": "source/InducedTerminalMatches/M053.lean",
-        "InducedTerminalMatches/M078.lean": "source/InducedTerminalMatches/M078.lean",
-        "InducedTerminalMatches/M079.lean": "source/InducedTerminalMatches/M079.lean",
+        "InducedTerminalMatches/M054.lean": "source/InducedTerminalMatches/M054.lean",
         "IntegerTables.lean": "source/IntegerTables.lean",
         "LowerSchemas/FiniteFullSix.lean": "source/LowerSchemas/FiniteFullSix.lean",
         "LowerSchemas/FiniteFullSix/Part0.lean": "source/LowerSchemas/FiniteFullSix/Part0.lean",
@@ -1933,6 +2140,7 @@
         "LowerSchemas/RawTargetChunks.lean": "source/LowerSchemas/RawTargetChunks.lean",
         "LowerSchemas/RawTargetChunks/Part0.lean": "source/LowerSchemas/RawTargetChunks/Part0.lean",
         "MatrixGraphProblem.lean": "source/MatrixGraphProblem.lean",
+        "NestedRow29.lean": "source/NestedRow29.lean",
         "NumericProofSchema.lean": "source/NumericProofSchema.lean",
         "OrbitGrowthDAG.lean": "source/OrbitGrowthDAG.lean",
         "PackedGeneralGraphNodes.lean": "source/PackedGeneralGraphNodes.lean",
@@ -2034,6 +2242,7 @@
         "RawTargets.lean": "source/RawTargets.lean",
         "ResidualBatch/Graph.lean": "source/ResidualBatch/Graph.lean",
         "ResidualBatch/NodeAndFrame.lean": "source/ResidualBatch/NodeAndFrame.lean",
+        "ResidualBatch/SplitSide.lean": "source/ResidualBatch/SplitSide.lean",
         "SharedGraphCellPool.lean": "source/SharedGraphCellPool.lean",
         "SharedPoolIncidence.lean": "source/SharedPoolIncidence.lean",
         "SharedSix0CellPoolChecked.lean": "source/SharedSix0CellPoolChecked.lean",
@@ -2177,1321 +2386,6 @@
         "UnsupportedRidgePruning.lean": "source/UnsupportedRidgePruning.lean",
         "VertexLinkObstructionData.lean": "source/VertexLinkObstructionData.lean",
         "WitnessGrowthDAG.lean": "source/WitnessGrowthDAG.lean"
-      },
-      "source_and_data_bytes": 13016421,
-      "upstream_modules": {
-        "BatchedGrowthPruning": {
-          "original_path": "source/geometry/batched_growth_pruning.lean",
-          "original_sha256": "90017809631d00b6e3114f6ac20b145106fd4a159876cb02653718e7b55c42f3"
-        },
-        "BatchedOrbitGrowth": {
-          "original_path": "source/geometry/batched_orbit_growth.lean",
-          "original_sha256": "4bc9c541def34f03104b090a1674b7dbdef0d568c78bce2df1bfa68a08c7c7b4"
-        },
-        "BatchedSearchLeaves": {
-          "original_path": "source/geometry/batched_search_leaves.lean",
-          "original_sha256": "e079d8ef616bd40928b33d9673b224d8574647c23ae99e364782aca116e18098"
-        },
-        "CachedCellRelabel": {
-          "original_path": "source/geometry/cached_cell_relabel.lean",
-          "original_sha256": "64ccb6583aa2eede06534e7d104e35a2c590f1cc290d0a78964396ce489c04fd"
-        },
-        "CachedGraphTriangles": {
-          "original_path": "source/geometry/cached_graph_triangles.lean",
-          "original_sha256": "34fc5e8607a0465ec82971e64d3d8abf5982cc77e7b5e541024843bed7229a74"
-        },
-        "ConcreteGrowth": {
-          "original_path": "source/geometry/concrete_growth.lean",
-          "original_sha256": "de893e4200cd38515846e85ee7c40f74e7c441faabef730a7cdc8e9e008254bc"
-        },
-        "FaceOnlyCompatibility": {
-          "original_path": "source/geometry/face_only_compatibility.lean",
-          "original_sha256": "6feb072b603401ea45ac78ab8a0d40cd28e778b67afbdee360875bd94bbcbcbe"
-        },
-        "FastAvailability": {
-          "original_path": "source/geometry/fast_availability.lean",
-          "original_sha256": "a2d5a2a9180e19175168526103e5ca99f2f9627a068722c0b14ec682dea9c959"
-        },
-        "FastBatchedGrowth": {
-          "original_path": "source/geometry/fast_batched_growth.lean",
-          "original_sha256": "5bdbaf9a42b100c1a4e58c1144dee169dc09ade3e7c4debdbbbb075258512a25"
-        },
-        "FastGeneralGraphReplay": {
-          "original_path": "source/geometry/fast_general_graph_replay.lean",
-          "original_sha256": "3f974d7eb881b6be71ce776cf6b0aa3e2e290108b9b3723abe150ec2286b19db"
-        },
-        "FastGraphConditionedGrowth": {
-          "original_path": "source/geometry/fast_graph_conditioned_growth.lean",
-          "original_sha256": "08c3d80e237e842806fa783a5a660949d07fbb8ec3b5270c306c33912aa2cd7d"
-        },
-        "FastGraphRuleCheck": {
-          "original_path": "source/geometry/fast_graph_rule_check.lean",
-          "original_sha256": "1c13b0ba691f71ca4e5e9b03b4411ae94245c2e9afe9785afa1284f7653d7c1f"
-        },
-        "FastGrowthCompatibility": {
-          "original_path": "source/geometry/fast_growth_compatibility.lean",
-          "original_sha256": "6b1049703edf75d22d1139bcc299517dcfc92fd3970e4452bd79c1a41782e632"
-        },
-        "FastMaskCardinality": {
-          "original_path": "source/geometry/fast_mask_cardinality.lean",
-          "original_sha256": "d3b050cfeabad0d0776878c265e2e9d5b5c7f93a6083a203c448ef05c42fdd69"
-        },
-        "FastTenGraphEdges": {
-          "original_path": "source/geometry/fast_ten_graph_edges.lean",
-          "original_sha256": "c011f709d2154fd1f4b77d07f263cde6908ca902958763df20fb4ab4537502fd"
-        },
-        "FasterGraphConditionedGrowth": {
-          "original_path": "source/geometry/faster_graph_conditioned_growth.lean",
-          "original_sha256": "0b766ec470d2a2da89cd43aed53c17dd2e737bfb8c23e03a8ba047761d3093df"
-        },
-        "FiniteChecks": {
-          "original_path": "source/geometry/finite_checks.lean",
-          "original_sha256": "56938fc648ddd818ef6e5355b9fc34c61c7921a68c15d1219ca63b523d89233c"
-        },
-        "FiniteMaskSets": {
-          "original_path": "source/geometry/finite_mask_sets.lean",
-          "original_sha256": "b53b4e957fc0a031383e544444acfdae7f591caa6256ae69aee7b1fdb9a1cda8"
-        },
-        "FullSix0FacetUniverse": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe.lean",
-          "original_sha256": "2a5d3129e9da66da958d0262c043f68251c5e1ec9e9343aa0771be81325f6ed0"
-        },
-        "FullSix0FacetUniverseDataPart000": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part000.lean",
-          "original_sha256": "cf0a22a756b44944013e21e280526074a4022a8b7aecf554ae94db6a1ad886d1"
-        },
-        "FullSix0FacetUniverseDataPart001": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part001.lean",
-          "original_sha256": "34e6a2e834383248576a2ddb308001d517c5adb699af3ff7f30e789f2164fd31"
-        },
-        "FullSix0FacetUniverseDataPart002": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part002.lean",
-          "original_sha256": "1bb331360799e812b06052f397c2cad3ef27006f337eb26ac286b91912900881"
-        },
-        "FullSix0FacetUniverseDataPart003": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part003.lean",
-          "original_sha256": "d4c03230b5b29c24ef68301bcf1b96a8a7e14ff45d58be410721adf99bb26bd9"
-        },
-        "FullSix0FacetUniverseDataPart004": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part004.lean",
-          "original_sha256": "657c0ff3a866b9d90e8b7fc2e9ab3a49f047a00c6d599259d0e7eaedc9215bd9"
-        },
-        "FullSix0FacetUniverseDataPart005": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part005.lean",
-          "original_sha256": "10bd21dae01f83bac0ac3d816140eff4587799ece22798e9f638b61ab6e4623b"
-        },
-        "FullSix0FacetUniverseDataPart006": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part006.lean",
-          "original_sha256": "ed617c18a5ee6c2a2753eebe91a3a1cc24a4c4a6a5110ef4c6470524e7d1c724"
-        },
-        "FullSix0FacetUniverseDataPart007": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part007.lean",
-          "original_sha256": "4ca7cf60195b58516da55e561991033eb4e77d2b17decd1b562d658285e24e57"
-        },
-        "FullSix0FacetUniverseDataPart008": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part008.lean",
-          "original_sha256": "b288625ba72c7984c8837f377a78337381c740237a20951518fc18d8928e89c9"
-        },
-        "FullSix0FacetUniverseDataPart009": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part009.lean",
-          "original_sha256": "4edb95b2545d32dd62808b40c53004f9cd03144520afaf8a578431fb33814145"
-        },
-        "FullSix0FacetUniverseDataPart010": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part010.lean",
-          "original_sha256": "6701648f42ad287d8049bb4c5297038fea71e6fdcd61fb9ef3ca3d7ec7dd7e78"
-        },
-        "FullSix0FacetUniverseDataPart011": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part011.lean",
-          "original_sha256": "6035b5fcda4889822ce9185d30d004b52ac98ffc069ef67fc6d6158648fcbf1c"
-        },
-        "FullSix0FacetUniverseDataPart012": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part012.lean",
-          "original_sha256": "5204054f3cf5a40cd12b03d422380ad4b0836cbb1a74f12ffe4211c1f3f026b4"
-        },
-        "FullSix0FacetUniverseDataPart013": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part013.lean",
-          "original_sha256": "7ba5ede5697f77e4ca70e38b4a5eca8082ee566fb22fe00e2ce7f2db13af4058"
-        },
-        "FullSix0FacetUniverseDataPart014": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part014.lean",
-          "original_sha256": "553b910f6676904e705227a45dd7959e3306fe1e1400e20f5443f406ed233de7"
-        },
-        "FullSix0FacetUniverseDataPart015": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part015.lean",
-          "original_sha256": "76b90ba6578380332affb7e25c29b55f8622520dcd265fc32ff51a3e8997817b"
-        },
-        "FullSix0FacetUniverseDataPart016": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part016.lean",
-          "original_sha256": "e0a23ae18f6c437e977b279063b42e0d95bddd48cb66e2ade48325487f344ba3"
-        },
-        "FullSix0FacetUniverseDataPart017": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part017.lean",
-          "original_sha256": "0483e56e4fa2d3ca69a9d87a7c764c7943591245a7ee6236c359ad5aac36dad5"
-        },
-        "FullSix0FacetUniverseDataPart018": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part018.lean",
-          "original_sha256": "10843e7d00554e648f2f863f2f941200751bad955e1ff46cad968fd9df458873"
-        },
-        "FullSix0FacetUniverseDataPart019": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part019.lean",
-          "original_sha256": "531f01c8f6cbb3723c90bc2cab83899d19a17522aa79c5a8c301871d89461577"
-        },
-        "FullSix0FacetUniverseDataPart020": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part020.lean",
-          "original_sha256": "b1753c25c18ac87587663112f88992244f99e66c695ac6fdab06487e00de1b1f"
-        },
-        "FullSix0FacetUniverseDataPart021": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part021.lean",
-          "original_sha256": "50822ece09e3327829ed70a12211436ba915a3673d97344d030c63481c6f5677"
-        },
-        "FullSix0FacetUniverseDataPart022": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part022.lean",
-          "original_sha256": "7228390ee67103a3eb3279fead24bac2555ffb662c5f2fa42a47b3190cde79be"
-        },
-        "FullSix0FacetUniverseDataPart023": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part023.lean",
-          "original_sha256": "2da2669a90955236e5003617b20299215b3559599a6ba3109933ef4cba74d706"
-        },
-        "FullSix0FacetUniverseDataPart024": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part024.lean",
-          "original_sha256": "4914ffa3db565ce9792c770cab0fc0a099fb1d0b059b24d7cea0604d2f26327d"
-        },
-        "FullSix0FacetUniverseDataPart025": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part025.lean",
-          "original_sha256": "bba89155f45633a1f411a648443a1acae9055706a21ac5aa8e7ba9e5d0418adf"
-        },
-        "FullSix0FacetUniverseDataPart026": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part026.lean",
-          "original_sha256": "b6124466afc5691d50834361bafc6592d635fd485589899703c2ad9f7a94753f"
-        },
-        "FullSix0FacetUniverseDataPart027": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part027.lean",
-          "original_sha256": "b615bbd5866d31170d3489d815a59ab7f7182676046ce06b51cf67d6c4864d92"
-        },
-        "FullSix0FacetUniverseDataPart028": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part028.lean",
-          "original_sha256": "2a3f1eadb20a8016b0d9dec98b97396764678437b71ac5e071817de3c20d4f26"
-        },
-        "FullSix0FacetUniverseDataPart029": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part029.lean",
-          "original_sha256": "016a48062e83113a915a5e79f00eb822b957e79e692d7986931dba6ff0604c43"
-        },
-        "FullSix0FacetUniverseDataPart030": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part030.lean",
-          "original_sha256": "ede659b36469246a211b391094200f7a7a67082c369cf149e61751446f6f7e57"
-        },
-        "FullSix0FacetUniverseDataPart031": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part031.lean",
-          "original_sha256": "c8fa928fdd06ea1f7aef7c8470ac368beacdc61905ccade400320e75ea441fc7"
-        },
-        "FullSix0FacetUniverseDataPart032": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part032.lean",
-          "original_sha256": "4e12b6023191f0c1e6a1ed8bab2432c0148ff2dcf8102fa99cc61f1316eb01f5"
-        },
-        "FullSix0FacetUniverseDataPart033": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part033.lean",
-          "original_sha256": "09d677ebc4f35eaf59a8c4373503625a0adf0ed71fb1f8442650384a08a869f2"
-        },
-        "FullSix0FacetUniverseDataPart034": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part034.lean",
-          "original_sha256": "5303088d563a1faf10750a098d10a8fc23a37cf03ee16c721cf8cefd889876f1"
-        },
-        "FullSix0FacetUniverseDataPart035": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part035.lean",
-          "original_sha256": "b192d46776f9c0d0c5bdba0d9ae81a393a6fa2b794b96f57d5675c45712e1ab4"
-        },
-        "FullSix0FacetUniverseDataPart036": {
-          "original_path": "source/finite/full_six/full_six0_facet_universe_data_part036.lean",
-          "original_sha256": "f495e3c9859a968234c1eb6d3bf35aedae60a9653225637ea80cf0019818f49b"
-        },
-        "FullSmallFacetUniverse": {
-          "original_path": "source/geometry/full_small_facet_universe.lean",
-          "original_sha256": "62486f644e1957d40c9ed407b610b201b02fe08dff7af07c5c5b35da51853bfd"
-        },
-        "Graph13Level10": {
-          "original_path": "source/finite/graph/graph13_level10.lean",
-          "original_sha256": "a66d24feece3ee336ca909aa6757aca08d3d08268581d3def8251520855403af"
-        },
-        "Graph13Level10Part000": {
-          "original_path": "source/finite/graph/graph13_level10_part000.lean",
-          "original_sha256": "f437c340e6e914663caafcab8715adf0defd0ea3bf8abfa47b12db1ad9e821c4"
-        },
-        "Graph13Level11": {
-          "original_path": "source/finite/graph/graph13_level11.lean",
-          "original_sha256": "bd5dcd1b0dd6f93461ef3daa18e46093135638601612807d7d98bd72e5d80e81"
-        },
-        "Graph13Level11Part000": {
-          "original_path": "source/finite/graph/graph13_level11_part000.lean",
-          "original_sha256": "8babbbbe25f49ee8ac56a84af8f194c46962d7ccfc9373a5044be43a2555cd27"
-        },
-        "Graph13Level11Part001": {
-          "original_path": "source/finite/graph/graph13_level11_part001.lean",
-          "original_sha256": "cb82d86d065a3f33546ea4fb8d99f85029d3d11f75b26597ecba4a1d8d567079"
-        },
-        "Graph13Level11Part002": {
-          "original_path": "source/finite/graph/graph13_level11_part002.lean",
-          "original_sha256": "747c00706cd19c2f442d7433e158ae90c84849be751032b8a09bae43e5939184"
-        },
-        "Graph13Level12": {
-          "original_path": "source/finite/graph/graph13_level12.lean",
-          "original_sha256": "809c9838c4be9732ebc8a7189453abfdadfa433f7b3dbcde1aebfdf9c2de16e0"
-        },
-        "Graph13Level12Part000": {
-          "original_path": "source/finite/graph/graph13_level12_part000.lean",
-          "original_sha256": "4fe8f39283c7bab28c54a3c8825e222cd68f79ceb5157d6b1bdf982815cf8a56"
-        },
-        "Graph13Level12Part001": {
-          "original_path": "source/finite/graph/graph13_level12_part001.lean",
-          "original_sha256": "94d8a1b66a84dcc460d5fb84dc6b4a5b3204f94adeb02e9cf5b1804191363817"
-        },
-        "Graph13Level12Part002": {
-          "original_path": "source/finite/graph/graph13_level12_part002.lean",
-          "original_sha256": "814b125bae950ac302148047adcc2de819714085994e9e671b08b5d94c2348ae"
-        },
-        "Graph13Level12Part003": {
-          "original_path": "source/finite/graph/graph13_level12_part003.lean",
-          "original_sha256": "a36cdb28d44235def157841605838e53bb409ce44e961a3a15fe99512fa532a3"
-        },
-        "Graph13Level12Part004": {
-          "original_path": "source/finite/graph/graph13_level12_part004.lean",
-          "original_sha256": "d526d17e75190aeff1df4f3c3e28d060875581f2d0a5add9e80bf2083b95f7f9"
-        },
-        "Graph13Level13": {
-          "original_path": "source/finite/graph/graph13_level13.lean",
-          "original_sha256": "6f1c998c4478b91cf9302d386a692d945dc55ae47f80c043795ec596093d4075"
-        },
-        "Graph13Level13Part000": {
-          "original_path": "source/finite/graph/graph13_level13_part000.lean",
-          "original_sha256": "70d6972e63ece55891cb51999674bc67e19a75c2f3435218d8592b3472795d13"
-        },
-        "Graph13Level13Part001": {
-          "original_path": "source/finite/graph/graph13_level13_part001.lean",
-          "original_sha256": "f623400a0a939f9ce3325530fffb49e44845533582f14f579fe029657446ed0f"
-        },
-        "Graph13Level13Part002": {
-          "original_path": "source/finite/graph/graph13_level13_part002.lean",
-          "original_sha256": "8b17b44559b2dc4c4871b2504ee54f0e64098d8750cb722c06667b1423c56fcd"
-        },
-        "Graph13Level13Part003": {
-          "original_path": "source/finite/graph/graph13_level13_part003.lean",
-          "original_sha256": "4dbe60913b259bd633630e98acaef920fc5a4269aba1b5d4cb6e67c10b927ee0"
-        },
-        "Graph13Level13Part004": {
-          "original_path": "source/finite/graph/graph13_level13_part004.lean",
-          "original_sha256": "6a0a85c451b7f813bddfe42113ca6e8f7b85117de8c62dc847c8391a61329f9b"
-        },
-        "Graph13Level13Part005": {
-          "original_path": "source/finite/graph/graph13_level13_part005.lean",
-          "original_sha256": "aada1ebd9a1e7c55b6d8f053eb0cc55b8f42a9fce8441a1e81818adb6393d578"
-        },
-        "Graph13Level13Part006": {
-          "original_path": "source/finite/graph/graph13_level13_part006.lean",
-          "original_sha256": "d095b1fcd71f320b3ddddcd1ee1b4a620b40cc37562dd985c119cb96bbcb4195"
-        },
-        "GraphCandidateCoverage": {
-          "original_path": "source/geometry/graph_candidate_coverage.lean",
-          "original_sha256": "76b11e5dace95b17dd1dc231aed5ea83fa9675f42ab16835c1652db1f68c8e4f"
-        },
-        "GraphCaseCertificate": {
-          "original_path": "source/geometry/graph_case_certificate.lean",
-          "original_sha256": "c1cef31c7b76165c89236f4a07cf3ec8e14238ec4a2f9572aecd39ee36b58619"
-        },
-        "GraphCatalogueCheck": {
-          "original_path": "source/geometry/graph_catalogue_check.lean",
-          "original_sha256": "9491871a597a0177d41c4efae51528d36f0c5851ce47e75826c274cf2c7fb752"
-        },
-        "GraphCatalogueCore": {
-          "original_path": "source/geometry/graph_catalogue_core.lean",
-          "original_sha256": "dde1a33e2e9d308aeaed5ec6e386f1da4198a8df32fdf675205ce4d018a7b4ca"
-        },
-        "GraphCatalogueData": {
-          "original_path": "source/geometry/graph_catalogue_data.lean",
-          "original_sha256": "74d9ecd13938db0d09018a9e1679a6e20f9b3c47dd11295361baae23e5d3b56c"
-        },
-        "GraphCompactBlock0528": {
-          "original_path": "source/finite/graph_compact_block/part_001/graph_compact_block0528.lean",
-          "original_sha256": "14fac02c23c0bd26a2cd7b2298d5f8e86f478faff4b5bb09bdf96aee9c2735b5"
-        },
-        "GraphCompactBlock0824": {
-          "original_path": "source/finite/graph_compact_block/part_002/graph_compact_block0824.lean",
-          "original_sha256": "fa17bbaf1272cec284ed9faa10efc0e62dd95cf0aba141514aa8d5ec173c96d7"
-        },
-        "GraphCompactBlock1055": {
-          "original_path": "source/finite/graph_compact_block/part_003/graph_compact_block1055.lean",
-          "original_sha256": "63a9e274a80478b0764147ce4755951b956ce423b8e685852c2347da3394cf1c"
-        },
-        "GraphCompactBlocks": {
-          "original_path": "source/geometry/graph_compact_blocks.lean",
-          "original_sha256": "7afa54687c73aa52598e2927564a9ccbbd51c6c499a5d95e6662e4af593838a6"
-        },
-        "GraphConditionedGrowth": {
-          "original_path": "source/geometry/graph_conditioned_growth.lean",
-          "original_sha256": "b0aac0c70f0211bc21fa81169b8b50b5ecf5235b0e626a90ceffe6c06de621bd"
-        },
-        "GraphCoreCertificate": {
-          "original_path": "source/geometry/graph_core_certificate.lean",
-          "original_sha256": "d59c971e1a4bf49ae2b470c76f5361a4b1496e17ff3ff04799cb41e1a05879ee"
-        },
-        "GraphEmbeddingCoverage": {
-          "original_path": "source/geometry/graph_embedding_coverage.lean",
-          "original_sha256": "eea3407a12d4fa54e822d57738084608076708897342a27f169f1b366c405a91"
-        },
-        "GraphGrowthConstraints": {
-          "original_path": "source/geometry/graph_growth_constraints.lean",
-          "original_sha256": "65082b64612cfbfc61c8b6ef2b4ea6eb4ceb79d0a84e2830750c0f5b2c61292a"
-        },
-        "GraphGrowthInputs": {
-          "original_path": "source/geometry/graph_growth_inputs.lean",
-          "original_sha256": "1a840288b26f07706507d10d7c9e5374bf0b7c1eacde84668306c0f457ab64e9"
-        },
-        "GraphGrowthRuleSoundness": {
-          "original_path": "source/geometry/graph_growth_rule_soundness.lean",
-          "original_sha256": "02f3992fad0a8f2784f61cad8cd233efe6ab8ebae3cb85c4422ee147783fe6e9"
-        },
-        "GraphInputsRow29Part00094Data": {
-          "original_path": "source/finite/graph_inputs_row/part_010/graph_inputs_row29_part00094_data.lean",
-          "original_sha256": "0dc122975500decbc797efda40fe6f39e96480975bbfc2abf1368b46c6ff140e"
-        },
-        "GraphInputsRow31Part00036Data": {
-          "original_path": "source/finite/graph_inputs_row/part_016/graph_inputs_row31_part00036_data.lean",
-          "original_sha256": "7c48b91833b7b7b907f5e81d44add8a49181f4e24def70107fcb6621e4737a10"
-        },
-        "GraphInputsSix0Part00090Data": {
-          "original_path": "source/finite/graph_inputs_six/part_001/graph_inputs_six0_part00090_data.lean",
-          "original_sha256": "d049586fd2c132e96737256bcb3ee8ab8609adcfa5f7a7a228de509677f75d0a"
-        },
-        "GraphProblemCertificate": {
-          "original_path": "source/geometry/graph_problem_certificate.lean",
-          "original_sha256": "c05444c1a7b2e62d93424f29f082eae0de1a988fbba01b55c63504d9026ba092"
-        },
-        "GraphRootExclusion": {
-          "original_path": "source/geometry/graph_root_exclusion.lean",
-          "original_sha256": "9f1c0ff0404917adc3353b5ee8d61d4d9f47656a4eb507ef772e51051af98d40"
-        },
-        "GraphRouteCasesData": {
-          "original_path": "source/geometry/graph_route_cases_data.lean",
-          "original_sha256": "4513529cc1be6fcd086ab56267248987cc1c2d8da37028fe662ee48ba05cdf62"
-        },
-        "GraphRouteSelector": {
-          "original_path": "source/geometry/graph_route_selector.lean",
-          "original_sha256": "bf5df47c77a8447b1f98b8e149f8dbbe2c31df05716671cb2a1fdf59522718a2"
-        },
-        "GraphRowSpecifications": {
-          "original_path": "source/geometry/graph_row_specifications.lean",
-          "original_sha256": "858b7db1f6ede1b88caf5cfc30ee5a6196af3d134f9b339455957fb2865ded17"
-        },
-        "GraphSixEmbeddingCoverage": {
-          "original_path": "source/geometry/graph_six_embedding_coverage.lean",
-          "original_sha256": "7f13f0a87344d4123e62ff6a0e64e047054a4fd2a3b8608e09a7d0df7e50c812"
-        },
-        "GrowthBitsets": {
-          "original_path": "source/geometry/growth_bitsets.lean",
-          "original_sha256": "3ecb0da03f95b20e4bc4e38b19323ae8a44053e4a2cfcb950510ad17bd7feab1"
-        },
-        "GrowthCacheCertificate": {
-          "original_path": "source/geometry/growth_cache_certificate.lean",
-          "original_sha256": "a4e76795e960c084a255156a1435bd6407fb0d8ad80c01ae07c2952e9333d58e"
-        },
-        "GrowthDAG": {
-          "original_path": "source/geometry/growth_dag.lean",
-          "original_sha256": "ee193ba523160c4bf02356c5769a63cf413ca076e36b7c29a7f20ba596da37fe"
-        },
-        "GrowthPruning": {
-          "original_path": "source/geometry/growth_pruning.lean",
-          "original_sha256": "b42c3a7851a0eebffa3b37998f784bda5d08b9a517f56fe45b0de8b0229d9cad"
-        },
-        "GrowthRenaming": {
-          "original_path": "source/geometry/growth_renaming.lean",
-          "original_sha256": "084d04866eadfcc73cff730b3e095a74aaec907c12c944a3a6fad6e15298bb8d"
-        },
-        "IdentityGrowthRenaming": {
-          "original_path": "source/geometry/identity_growth_renaming.lean",
-          "original_sha256": "af732fc70e7ca2053753f999187984313c517eece3f1af2ed3a49d7a39dab2a1"
-        },
-        "InducedTerminalMatches.Basic": {
-          "original_path": "source/induced_terminal_matches/basic.lean",
-          "original_sha256": "2bf501ed0bc04a455fd40c14b418e7257abd405b9fe9d7cd0cc612232c5b842d"
-        },
-        "InducedTerminalMatches.M053": {
-          "original_path": "source/induced_terminal_matches/m053.lean",
-          "original_sha256": "b948f14e8905550de8661bc42cc97f5a22be9068004d5fb50437856d3f816497"
-        },
-        "InducedTerminalMatches.M078": {
-          "original_path": "source/induced_terminal_matches/m078.lean",
-          "original_sha256": "e16c8598a694b4aa3595a511475fc6d4458e9263e39b0d198968629fe7f12c21"
-        },
-        "InducedTerminalMatches.M079": {
-          "original_path": "source/induced_terminal_matches/m079.lean",
-          "original_sha256": "1cebc52d4c2d176ef3cb564764fc1829bc32883f34258651363d19d06a557866"
-        },
-        "MatrixGraphProblem": {
-          "original_path": "source/geometry/matrix_graph_problem.lean",
-          "original_sha256": "206bc3cb571b93baa698eb7f0e5b1dcd8ef5de7c0f076f5d01929ce66bb10da5"
-        },
-        "OrbitGrowthDAG": {
-          "original_path": "source/geometry/orbit_growth_dag.lean",
-          "original_sha256": "cfd77df1cabe25de59b5e71f2076b50159e12b50b4eec33342f4635452a29eac"
-        },
-        "PackedGeneralGraphNodes": {
-          "original_path": "source/geometry/packed_general_graph_nodes.lean",
-          "original_sha256": "04e249bc4f32f2145c099e198b91adf700ecde3ed1963114d9c4b776da13f361"
-        },
-        "PackedGraphCertificate": {
-          "original_path": "source/geometry/packed_graph_certificate.lean",
-          "original_sha256": "3a10ab25d943074957cf2876528d4e66f6c5e5f91be3b609851a49e0caab418a"
-        },
-        "PackedGraphData": {
-          "original_path": "source/geometry/packed_graph_data.lean",
-          "original_sha256": "3a55b3c2815d65af0c3d3549ad1f745a9bb771e15975f8e901dc858b928afb0e"
-        },
-        "PackedGraphInputs": {
-          "original_path": "source/geometry/packed_graph_inputs.lean",
-          "original_sha256": "195f022dbf1c17eb1552885869165a7d4ad10179a5fafff84ad9287b93efe738"
-        },
-        "PackedGraphNodes": {
-          "original_path": "source/geometry/packed_graph_nodes.lean",
-          "original_sha256": "4f00a3b31c65a1e0e1675af0bf298daa16515243440c3897957d9126b6f5a4fc"
-        },
-        "PackedGrowthData": {
-          "original_path": "source/geometry/packed_growth_data.lean",
-          "original_sha256": "1825b917d6cba0daa6f1f66424b0a68be161678a0c58c837721885c610a8c9b0"
-        },
-        "PackedIncidenceMatrix": {
-          "original_path": "source/geometry/packed_incidence_matrix.lean",
-          "original_sha256": "0044d5bf5238b4744fdf4b1a21b2b74118c328331bd6be022c43b30f40a71808"
-        },
-        "PackedRawNatGrowth": {
-          "original_path": "source/geometry/packed_raw_nat_growth.lean",
-          "original_sha256": "fe9d92d06205e66cdc6d9d1325570d7f9dce13825c5c7de22d706f4edc07c4fe"
-        },
-        "PrimitiveBitsetGrowth": {
-          "original_path": "source/geometry/primitive_bitset_growth.lean",
-          "original_sha256": "1dab7b97743105f51e6b4cf239b07b23184cbc60620dfe3133438ee97a164e62"
-        },
-        "RawBatchGrowth": {
-          "original_path": "source/geometry/raw_batch_growth.lean",
-          "original_sha256": "68b7d099eed590ab720bc5a73bf182add19839783d3f84575a68ddf3e3764e45"
-        },
-        "RawBoundaryData": {
-          "original_path": "source/geometry/raw_boundary_data.lean",
-          "original_sha256": "2da0fea85f12eeaef68ef66c51b890a84de5f5953b4cf5f3133a178c61c2dc67"
-        },
-        "RawBoundaryMatch": {
-          "original_path": "source/geometry/raw_boundary_match.lean",
-          "original_sha256": "761491d9e7da12e8887b1be3cb59e040c630c6dbd4439beb8338ec457315b7e5"
-        },
-        "RawClosedLeafData": {
-          "original_path": "source/geometry/raw_closed_leaf_data.lean",
-          "original_sha256": "e95fc7f79ad368ffafab199aeb682e13878a34fa66cfb7dae325f8912445e20d"
-        },
-        "RawFrameSupportCore": {
-          "original_path": "source/geometry/raw_frame_support_core.lean",
-          "original_sha256": "79789b7e1ac970ec6a2e5526266a0179dd038f57d39763dfabd12cc4f5254c21"
-        },
-        "RawGraphConditionedGrowth": {
-          "original_path": "source/geometry/raw_graph_conditioned_growth.lean",
-          "original_sha256": "369f702bce7b35b1f983d91d3b38fad5b99819b5c3232c332c9862f324f24aff"
-        },
-        "RawGraphGrowthFrames": {
-          "original_path": "source/geometry/raw_graph_growth_frames.lean",
-          "original_sha256": "f5e175634562dcf3e9a7c159ccbda0b3fe90fabe6a19d2b56ba5dbdf5ab25f50"
-        },
-        "RawGraphSemanticCertificate": {
-          "original_path": "source/geometry/raw_graph_semantic_certificate.lean",
-          "original_sha256": "10a45ff8d7af26695061e878f312563349a8a42d67eddc5647b45359dffcca5b"
-        },
-        "RawGrowthCacheCertificate": {
-          "original_path": "source/geometry/raw_growth_cache_certificate.lean",
-          "original_sha256": "efb320315b4e0e6ae2d9f19cdfaff42a169add9379b908f2ba0396ed3cff704e"
-        },
-        "RawLeafCertificate": {
-          "original_path": "source/geometry/raw_leaf_certificate.lean",
-          "original_sha256": "70820f07988905e6663d156e9b5e52e6023f15985aa24f9b2f6fd3f43bdfb106"
-        },
-        "RawNatGrowthCheck": {
-          "original_path": "source/geometry/raw_nat_growth_check.lean",
-          "original_sha256": "c4fc4f312223b6031b3cff3b70f7e3f3d0e96d4a37d0477eb1141dd011339118"
-        },
-        "RawNatGrowthSoundness": {
-          "original_path": "source/geometry/raw_nat_growth_soundness.lean",
-          "original_sha256": "e3aa6b47dbdbae7f607ce79bf9645b178e4bc051def0787363a8e8c1e659c288"
-        },
-        "RawTargetChunks.C000": {
-          "original_path": "source/raw_target_chunks/c000.lean",
-          "original_sha256": "2f9642da9c52e1a73f2dc477d9e9c7d16896802653b2efce6ba1246feec20cb7"
-        },
-        "RawTargetChunks.C001": {
-          "original_path": "source/raw_target_chunks/c001.lean",
-          "original_sha256": "9f2cec738603b79121913e7a26b210fb4004c77beca3b519d165f3de95e925f8"
-        },
-        "RawTargetChunks.C002": {
-          "original_path": "source/raw_target_chunks/c002.lean",
-          "original_sha256": "1e490f1d7d1605be7144ddbd87c93f4746fe09302f83ad8bfb419735d61d884a"
-        },
-        "RawTargetChunks.C003": {
-          "original_path": "source/raw_target_chunks/c003.lean",
-          "original_sha256": "f1566839374e2086efda1ce4c25ac6f7754c1ce8a8da0d0f5dbdc903799a5dd4"
-        },
-        "RawTargetChunks.C004": {
-          "original_path": "source/raw_target_chunks/c004.lean",
-          "original_sha256": "482c598e4e80efe1fa638556c91dfbc7662224f61d7e1405b55f4413c8046bfc"
-        },
-        "RawTargetChunks.C005": {
-          "original_path": "source/raw_target_chunks/c005.lean",
-          "original_sha256": "81947eb9ef17a94c65b24d0a16ef951924bd55c393b93a55f2ae1c6f1dce5afd"
-        },
-        "RawTargetChunks.C006": {
-          "original_path": "source/raw_target_chunks/c006.lean",
-          "original_sha256": "43b1e5915168453d202dca83dd246686d31594b37c4f4a32718a36527bd6b947"
-        },
-        "RawTargetChunks.C007": {
-          "original_path": "source/raw_target_chunks/c007.lean",
-          "original_sha256": "871b908d5c1ecbc7d35964201cdcf6b9257fc94cc7678f174382fd175893e3a1"
-        },
-        "RawTargetChunks.C008": {
-          "original_path": "source/raw_target_chunks/c008.lean",
-          "original_sha256": "8ab523e72de32b2620984d44bf79874f71fcfd9c230df6622e9e2c04f747eb58"
-        },
-        "RawTargetChunks.C009": {
-          "original_path": "source/raw_target_chunks/c009.lean",
-          "original_sha256": "90f1fd30d1f1afed0d9f5331390d939d7eafdb69683ce817dd89ef06cbb3f777"
-        },
-        "RawTargetChunks.C010": {
-          "original_path": "source/raw_target_chunks/c010.lean",
-          "original_sha256": "c6b4ff32935eef6b775d10d5e150f91c4ef751fbcbfd27cf470b08a635f595db"
-        },
-        "RawTargetChunks.C011": {
-          "original_path": "source/raw_target_chunks/c011.lean",
-          "original_sha256": "101a1fdb0dbb935b799e7fb134c05481dca0d4cb1485898c7d6dd4d40029633b"
-        },
-        "RawTargetChunks.C012": {
-          "original_path": "source/raw_target_chunks/c012.lean",
-          "original_sha256": "bfd73fde2a231a3e7c12707341eeccf8bee99758b3e741273b2531e76de2a8ad"
-        },
-        "RawTargetChunks.C013": {
-          "original_path": "source/raw_target_chunks/c013.lean",
-          "original_sha256": "897183569c73ff9ce6a9b36acafd359634418dc1df1d017e9cd2b808ce4b3fba"
-        },
-        "RawTargetChunks.C014": {
-          "original_path": "source/raw_target_chunks/c014.lean",
-          "original_sha256": "366170e53e0a4f5f40128850281d939f3246d7e5560aed6ffea9cbb77c794441"
-        },
-        "RawTargetChunks.C015": {
-          "original_path": "source/raw_target_chunks/c015.lean",
-          "original_sha256": "48f05713a45e17e87172e2203041ae334113ad61e4a7f69742f1702512a4ecef"
-        },
-        "RawTargetChunks.C016": {
-          "original_path": "source/raw_target_chunks/c016.lean",
-          "original_sha256": "82918ba10fb1d94c8135b93ef3f053896cc42dbd2cff3b532b7a3e8b473eef5b"
-        },
-        "RawTargetChunks.C017": {
-          "original_path": "source/raw_target_chunks/c017.lean",
-          "original_sha256": "fc52185aa965999b1747de36660eddc7a8c72fecbe656e2d2a21d4be30d26c30"
-        },
-        "RawTargetChunks.C018": {
-          "original_path": "source/raw_target_chunks/c018.lean",
-          "original_sha256": "c3b6a0dffdd0a4f4326899e1cecb3fb238ff357f9a1ceae200ec19ab9c1f6fba"
-        },
-        "RawTargetChunks.C018A": {
-          "original_path": "source/raw_target_chunks/c018_a.lean",
-          "original_sha256": "5cefa8aee533a914cb0e2488adc0663d32f2c6bc388f4b140bc6e65cb81b440e"
-        },
-        "RawTargetChunks.C018B": {
-          "original_path": "source/raw_target_chunks/c018_b.lean",
-          "original_sha256": "8be2e59d67765aef4605af3c958b1109573af9a6a29e0d6c661996a2a67f649b"
-        },
-        "RawTargetChunks.C019": {
-          "original_path": "source/raw_target_chunks/c019.lean",
-          "original_sha256": "d540ad1f2a80a5dcebef295b136ee44932c6ee653fc918143e1add8e4b61ade2"
-        },
-        "RawTargetChunks.C019A": {
-          "original_path": "source/raw_target_chunks/c019_a.lean",
-          "original_sha256": "d6acf9f5a60c4facf1c89c43262556cfc19e2157746995083db1861bba689dbf"
-        },
-        "RawTargetChunks.C019B": {
-          "original_path": "source/raw_target_chunks/c019_b.lean",
-          "original_sha256": "2dee2d1c4d16b139dbcec79373e680e7e9fcff7882e63930da4625704980e443"
-        },
-        "RawTargetChunks.C020": {
-          "original_path": "source/raw_target_chunks/c020.lean",
-          "original_sha256": "0bd86bc78c26ee52a6593d20c0289f25b2f52ddf130f9864624a053a65417ec3"
-        },
-        "RawTargetChunks.C020A": {
-          "original_path": "source/raw_target_chunks/c020_a.lean",
-          "original_sha256": "c5d0d3ee0b62e7dc4d796278e5a94815451719c15d8d8eec69ce721c4ff54102"
-        },
-        "RawTargetChunks.C020B": {
-          "original_path": "source/raw_target_chunks/c020_b.lean",
-          "original_sha256": "334ac8dc011c3d7be6c4704ff8ce9f27a38e0fff3357a30889119292ceeb7d5d"
-        },
-        "RawTargetChunks.C021": {
-          "original_path": "source/raw_target_chunks/c021.lean",
-          "original_sha256": "76c19d0396e813bb0a4bb63190a0accdce6c11211629b151b5fffa45d216c931"
-        },
-        "RawTargetChunks.C021A": {
-          "original_path": "source/raw_target_chunks/c021_a.lean",
-          "original_sha256": "f283255d1d969a7dbbed9602e58bee8f824ea3fb3420d0fea2d9ba2c664a2fcc"
-        },
-        "RawTargetChunks.C021B": {
-          "original_path": "source/raw_target_chunks/c021_b.lean",
-          "original_sha256": "cb455c83723c8ec08f234aabafe786c6c0abe2db10e17ba48d66448646b72153"
-        },
-        "RawTargetChunks.C022": {
-          "original_path": "source/raw_target_chunks/c022.lean",
-          "original_sha256": "9cdd618848e636f84aad63dbb51d59a08734d8a12e7e91f817d8b95edd7cb809"
-        },
-        "RawTargetChunks.C022A": {
-          "original_path": "source/raw_target_chunks/c022_a.lean",
-          "original_sha256": "60267d39f60a0d088972570b8fb56195f62c980e157c59afd548118df63ab1ed"
-        },
-        "RawTargetChunks.C022B": {
-          "original_path": "source/raw_target_chunks/c022_b.lean",
-          "original_sha256": "bb69515fcbf7ac18b11a564735fea976d219cc6b14287918b1f55ee7bc977281"
-        },
-        "RawTargetChunks.C023": {
-          "original_path": "source/raw_target_chunks/c023.lean",
-          "original_sha256": "0a6c4f183d8e94ebadadb7dbc470b451cefd89bdf3bc9398f4f73d8be003a152"
-        },
-        "RawTargetChunks.C023A": {
-          "original_path": "source/raw_target_chunks/c023_a.lean",
-          "original_sha256": "3682cacb1bfc82f42bbc1214d96d09bf3309803519e71544ebcc0d4d585ea3eb"
-        },
-        "RawTargetChunks.C023B": {
-          "original_path": "source/raw_target_chunks/c023_b.lean",
-          "original_sha256": "0b10a0edfa3982f4d19bcc30d8712173b39564fa1715c01b65adf75edd819c92"
-        },
-        "RawTargetChunks.C024": {
-          "original_path": "source/raw_target_chunks/c024.lean",
-          "original_sha256": "3ebcadcf0728bdf6f628768c7e1f83598c85a8b123693384770fc3b47081a261"
-        },
-        "RawTargetChunks.C024A": {
-          "original_path": "source/raw_target_chunks/c024_a.lean",
-          "original_sha256": "66968ebc5ced75b9eb957c31bf4dadef2d582ecf34b8983f012bdf92fd5a8c02"
-        },
-        "RawTargetChunks.C024B": {
-          "original_path": "source/raw_target_chunks/c024_b.lean",
-          "original_sha256": "26eb89fe364e95ac525dd5219d826e91153b54b727dd8ff87e8dbcb84851b009"
-        },
-        "RawTargetChunks.C025": {
-          "original_path": "source/raw_target_chunks/c025.lean",
-          "original_sha256": "34af0cc73f9aa684559377178ac37d638928d961d9abd2aa3c0d238b20d855da"
-        },
-        "RawTargetChunks.C025A": {
-          "original_path": "source/raw_target_chunks/c025_a.lean",
-          "original_sha256": "8ddaf7724e2f4eefa7fe9b582ac6e39feed163e4573ce354fb99be769a71d1ad"
-        },
-        "RawTargetChunks.C025B": {
-          "original_path": "source/raw_target_chunks/c025_b.lean",
-          "original_sha256": "96883b5e4f9087a1ecfadd00b99b17167017d91b2fb11b6e94ee73911ea92dab"
-        },
-        "RawTargetChunks.C026": {
-          "original_path": "source/raw_target_chunks/c026.lean",
-          "original_sha256": "03f9afc512fc06f47c1d263f1b7c6556c72a3d80256824b1015182fc45e61155"
-        },
-        "RawTargetChunks.C026A": {
-          "original_path": "source/raw_target_chunks/c026_a.lean",
-          "original_sha256": "ff37f004dd398894c2174fb294b6e49dcd1d67db971a0fb6ae62c0136ed1933e"
-        },
-        "RawTargetChunks.C026B": {
-          "original_path": "source/raw_target_chunks/c026_b.lean",
-          "original_sha256": "203facb907436bc6d0a5635b92a92ed4d9f6d6de89d830308e81d771b8097603"
-        },
-        "RawTargetChunks.C027": {
-          "original_path": "source/raw_target_chunks/c027.lean",
-          "original_sha256": "39b8db59af7d0fb9603e7fe3f0f23750310c2cb37daffb3df179a31b792a47ac"
-        },
-        "RawTargetChunks.C027A": {
-          "original_path": "source/raw_target_chunks/c027_a.lean",
-          "original_sha256": "53ce51252d229219af45a09a7fdc5543f80fd8736f56f39b81abe33d2d099e4d"
-        },
-        "RawTargetChunks.C027B": {
-          "original_path": "source/raw_target_chunks/c027_b.lean",
-          "original_sha256": "f4eb8457497d4bce4d72f44dd06f8ab4b53ea4c4df1c72d3108fd57fd6cb2f69"
-        },
-        "RawTargetChunks.C028": {
-          "original_path": "source/raw_target_chunks/c028.lean",
-          "original_sha256": "0004cabb2f9887dc4b849f3064d7bd79f5c24da76369f619d396677f604cb5ae"
-        },
-        "RawTargetChunks.C028A": {
-          "original_path": "source/raw_target_chunks/c028_a.lean",
-          "original_sha256": "5fbec57bba28fc4ff518ceacfadf70d9b9307e33340bc03fec8567fc7b950dff"
-        },
-        "RawTargetChunks.C028B": {
-          "original_path": "source/raw_target_chunks/c028_b.lean",
-          "original_sha256": "b0c8280c2d216d2965af0c29a193acd3c66bb367a079f1747eec331fdaac8e76"
-        },
-        "RawTargetChunks.C029": {
-          "original_path": "source/raw_target_chunks/c029.lean",
-          "original_sha256": "f12921ed6d71f06d1020fd356c3814814ca1c464a380cfc6f4f0273fd5539460"
-        },
-        "RawTargetChunks.C029A": {
-          "original_path": "source/raw_target_chunks/c029_a.lean",
-          "original_sha256": "a6e6420e9b714ec8978628e3706b582b89f5a926b82fe59c29cfef4b1352ce1d"
-        },
-        "RawTargetChunks.C029B": {
-          "original_path": "source/raw_target_chunks/c029_b.lean",
-          "original_sha256": "f461b488fd97b387b957656bf4211857a8bcb5f5f81401f978d1fd1d1cab4b9a"
-        },
-        "RawTargetChunks.C030": {
-          "original_path": "source/raw_target_chunks/c030.lean",
-          "original_sha256": "f1370728a8fde575dab5ad5c62374182b62a618f1311869601608668ffebd77a"
-        },
-        "RawTargetChunks.C030A": {
-          "original_path": "source/raw_target_chunks/c030_a.lean",
-          "original_sha256": "4ca85bd45f996aed1bf1fbb3b435b72697a2dd0ba0676a115b263fa1506f2644"
-        },
-        "RawTargetChunks.C030B": {
-          "original_path": "source/raw_target_chunks/c030_b.lean",
-          "original_sha256": "d626829011ae05f1a44c4227d660bfc45c836fb370b465a6995b739ef62ef85e"
-        },
-        "RawTargetChunks.C031": {
-          "original_path": "source/raw_target_chunks/c031.lean",
-          "original_sha256": "67dc96542fe4e86d8acd19e036cabcf2577594ee969c9b5690c2124dc3f085ee"
-        },
-        "RawTargetChunks.C031A": {
-          "original_path": "source/raw_target_chunks/c031_a.lean",
-          "original_sha256": "0ece32cdf855b3f04f40bdf3ecf9a3a3177d2caacbb2a85416182978eb014199"
-        },
-        "RawTargetChunks.C031B": {
-          "original_path": "source/raw_target_chunks/c031_b.lean",
-          "original_sha256": "334c87928cada7723e98f70dc602632e14e429cbe7ca06e1c6817d3975bec8d0"
-        },
-        "RawTargetChunks.C032": {
-          "original_path": "source/raw_target_chunks/c032.lean",
-          "original_sha256": "6c6d86497477ed5266a1ab1d94594daa162a99c1cf8f4331306299ff7f004cce"
-        },
-        "RawTargetChunks.C032A": {
-          "original_path": "source/raw_target_chunks/c032_a.lean",
-          "original_sha256": "ed5338cc73eb8a271927b4be5073542d4849a94cc18b6447ef1aeb692cc0bd60"
-        },
-        "RawTargetChunks.C032B": {
-          "original_path": "source/raw_target_chunks/c032_b.lean",
-          "original_sha256": "d0234a47444163ea1e26f1a28c84261b1abb73e89579233aad3942a9e89b5b76"
-        },
-        "RawTargetChunks.C033": {
-          "original_path": "source/raw_target_chunks/c033.lean",
-          "original_sha256": "59e296b504c347837d4d3f4000e14d164403fb2e35d1481e44516dbbab06727a"
-        },
-        "RawTargetChunks.C033A": {
-          "original_path": "source/raw_target_chunks/c033_a.lean",
-          "original_sha256": "af57d0e0b895fa511ef58389ab8e6cc0009f431b018b1632c20fe98b6c9c206c"
-        },
-        "RawTargetChunks.C033B": {
-          "original_path": "source/raw_target_chunks/c033_b.lean",
-          "original_sha256": "603f6d7f3cbe73cf0ad4b1b12cdae806d716fcbb6d8c0398ccdb09616bc57940"
-        },
-        "RawTargetChunks.C034": {
-          "original_path": "source/raw_target_chunks/c034.lean",
-          "original_sha256": "faaaa0718ddb91a82ec8cd10953b9e37dc2a64b6cb44735ecce3ee297bebf7e8"
-        },
-        "RawTargetChunks.C034A": {
-          "original_path": "source/raw_target_chunks/c034_a.lean",
-          "original_sha256": "6af4a7e628d5484b4f12de1403d7032a4b9d43bd0a3f5fd4511a2a4feb342ada"
-        },
-        "RawTargetChunks.C034B": {
-          "original_path": "source/raw_target_chunks/c034_b.lean",
-          "original_sha256": "17a7a7e0ec68be3f2579e6fe92f6a1f95c403e8f661d9f5c8cf648d51d6a387e"
-        },
-        "RawTargetChunks.C035": {
-          "original_path": "source/raw_target_chunks/c035.lean",
-          "original_sha256": "ecd75a33527e481d613fa3729408fa8d5208a524de4032fac3c9bc1c9a0d8893"
-        },
-        "RawTargetChunks.C035A": {
-          "original_path": "source/raw_target_chunks/c035_a.lean",
-          "original_sha256": "2e9fe2abceeab4e4bb87dcad8bc7181cf6adba0a2b1d31d3e2b28dfb50b9f7b3"
-        },
-        "RawTargetChunks.C035B": {
-          "original_path": "source/raw_target_chunks/c035_b.lean",
-          "original_sha256": "5dde5499200a7e2cde1fdb4efeb37ca02014d6deac49329e142ccd7932fb4094"
-        },
-        "RawTargetChunks.C036": {
-          "original_path": "source/raw_target_chunks/c036.lean",
-          "original_sha256": "edb9cf1d5d156f4e73f1bf3d555e37fc15ae7f15b2354f45cb797cb5467e4460"
-        },
-        "RawTargetChunks.C036A": {
-          "original_path": "source/raw_target_chunks/c036_a.lean",
-          "original_sha256": "d98ffbb4aba8a28401fe21160567a35be9df6f37fb8fb6fef5471cf58476f7de"
-        },
-        "RawTargetChunks.C036B": {
-          "original_path": "source/raw_target_chunks/c036_b.lean",
-          "original_sha256": "b425fa2c4085e132a3e1cef08673b82b947e9dde4aaf553016d703566cbe4047"
-        },
-        "RawTargets": {
-          "original_path": "source/geometry/raw_targets.lean",
-          "original_sha256": "27b3adaf7ea74a9ee83504b100b1b13ba7919533d8967d431354cbf325be9f38"
-        },
-        "SharedGraphCellPool": {
-          "original_path": "source/geometry/shared_graph_cell_pool.lean",
-          "original_sha256": "d483ef294697b3557c01f038eef64af84fcb4b5d89946bdaee6df48f8946a29f"
-        },
-        "SharedPoolIncidence": {
-          "original_path": "source/geometry/shared_pool_incidence.lean",
-          "original_sha256": "76af9c0e5dd6aba44ea74b664742a50445c77ce959eea6941ce6cf6406ab908a"
-        },
-        "SharedSix0CellPoolChecked": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_checked.lean",
-          "original_sha256": "9ec5e95ea0553e676e3181d844e50fdf539ae281c31ab07d74f2098a57d926df"
-        },
-        "SharedSix0CellPoolData": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_data.lean",
-          "original_sha256": "d8a2f53c856692f911c658ac9eafe01f0246d97e4f8e148940fb0a8ee4f6a6e3"
-        },
-        "SharedSix0CellPoolLiteralPages00": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_literal_pages00.lean",
-          "original_sha256": "060cff464c1f80ee8711ea0d1c5e84be2971941d1ce161bcbdb173eec0d4db43"
-        },
-        "SharedSix0CellPoolLiteralPages01": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_literal_pages01.lean",
-          "original_sha256": "118f87392c4096302ccded8fbf3b108d4a969569051f7f9de1e96e4fe136772f"
-        },
-        "SharedSix0CellPoolLiteralPages02": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_literal_pages02.lean",
-          "original_sha256": "3a98402106285e5226e973b34658bf08b3eea6b6a47debacbea1cdb244c273c1"
-        },
-        "SharedSix0CellPoolLiteralPages03": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_literal_pages03.lean",
-          "original_sha256": "388479f84f28a82648c0334211560fd9f43485db02e8785448fc8e2120d802b9"
-        },
-        "SharedSix0CellPoolLiteralPages04": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_literal_pages04.lean",
-          "original_sha256": "0bea96400539cde4e76aa9a067a41b3d83da96a94be15c30a473a5c5ef7cb307"
-        },
-        "SharedSix0CellPoolLiteralPages05": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_literal_pages05.lean",
-          "original_sha256": "8b82f895c26a7709937eb109f9cfea839de5b7677e51b5d695f3447c6be2d5ba"
-        },
-        "SharedSix0CellPoolLiteralPages06": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_literal_pages06.lean",
-          "original_sha256": "b983798c3fa608fb412c2cb8d32265591f07ff403b43faaf21d53fd5e88e61d0"
-        },
-        "SharedSix0CellPoolLiteralPages07": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_literal_pages07.lean",
-          "original_sha256": "e1b7f321f701738e9a0587370a29d2765d1a4448580f221468b6670f34852455"
-        },
-        "SharedSix0CellPoolLiteralPages08": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_literal_pages08.lean",
-          "original_sha256": "7e934c56319c507da1acb1c56839886156431c651fd8092707279087d3db49b8"
-        },
-        "SharedSix0CellPoolLiteralPages09": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_literal_pages09.lean",
-          "original_sha256": "03394c5209029a3886e385c6272c8558e8758a6bc79a9a30af030d370c13c684"
-        },
-        "SharedSix0CellPoolLiteralPages10": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_literal_pages10.lean",
-          "original_sha256": "e6af6f3c955b7c045768b657b2e97b818b48224cc96a343a0a370eedc80837bd"
-        },
-        "SharedSix0CellPoolLiteralPages11": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_literal_pages11.lean",
-          "original_sha256": "e848c80e71f9a98f004a6561e68816b3c7aad08beedfb5b9abb66d1d87a54cc3"
-        },
-        "SharedSix0CellPoolLiteralPages12": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_literal_pages12.lean",
-          "original_sha256": "4f3a9e0bfc30283784c1c7748b0a0f008c06552348c0e91c3def34c66145b402"
-        },
-        "SharedSix0CellPoolLiteralPages13": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_literal_pages13.lean",
-          "original_sha256": "ce9c058aa5897603561033ffa7764716c8b928b804beaf41da8eba0eb122c848"
-        },
-        "SharedSix0CellPoolLiteralPages14": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_literal_pages14.lean",
-          "original_sha256": "60b2e1624a379a590e773eff43b01a5dd53d11969b9a8b7a8dd9611783f86ede"
-        },
-        "SharedSix0CellPoolLiteralPages15": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_literal_pages15.lean",
-          "original_sha256": "fa2482835592234fbd5c4df2f188e7e24c3d86d46496a17f7c6c8b68bc6bddfd"
-        },
-        "SharedSix0CellPoolLiteralPages16": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_literal_pages16.lean",
-          "original_sha256": "8935e66b87990ba360a304f207f67d9528e4a27e9ad9bc4e01fcdf87498ec6b5"
-        },
-        "SharedSix0CellPoolLiteralPages17": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_literal_pages17.lean",
-          "original_sha256": "85ff2004a08a17375dc010f38b6958abba48052ad9e95deb178f1eb1fefa70db"
-        },
-        "SharedSix0CellPoolLiteralPages18": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_literal_pages18.lean",
-          "original_sha256": "38534b9bc68f176e316752bc90ff12efa441215d4edb78427fd7b91b052640ec"
-        },
-        "SharedSix0CellPoolLiteralPages19": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_literal_pages19.lean",
-          "original_sha256": "23f751536f9acc9b14c361c4733147efb6ddbac55b18ab3a2cad1986c74dc1c2"
-        },
-        "SharedSix0CellPoolLiteralPages20": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_literal_pages20.lean",
-          "original_sha256": "692b8ef387cfa99d497967e71cff8199beedddf4331cd3d930c13466a7a72c0c"
-        },
-        "SharedSix0CellPoolLiteralPages21": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_literal_pages21.lean",
-          "original_sha256": "98652bfc76234882e41f253412ff45ef40a0beb6a845ce32aa6dafb2157e77b9"
-        },
-        "SharedSix0CellPoolReplay00": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_replay00.lean",
-          "original_sha256": "b226ef5c58e48fb8410ba258838d3846e81cf57609733f7b11392c9cd484ea0e"
-        },
-        "SharedSix0CellPoolReplay01": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_replay01.lean",
-          "original_sha256": "ed495198b1026d5c8f67a0099e67529f41d47cc76c2513471ab492976ff6e387"
-        },
-        "SharedSix0CellPoolReplay02": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_replay02.lean",
-          "original_sha256": "81c9bdc5f9ed4206a876b8f3b59584de09373fdcdb7e5502b9f728fe95ff340a"
-        },
-        "SharedSix0CellPoolReplay03": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_replay03.lean",
-          "original_sha256": "e2370e047f899c3c0d031d9ccffb0225d99e19f2f4d5b9eaea59e03180be8015"
-        },
-        "SharedSix0CellPoolReplay04": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_replay04.lean",
-          "original_sha256": "26976b8f658b5296cd365fb1fe493615143420fbf40ed2f2618ae6d9be4c9e21"
-        },
-        "SharedSix0CellPoolReplay05": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_replay05.lean",
-          "original_sha256": "1f99c3425d3ea57467b005e95a95a0879080797f7138055c2e8b21e21a5eb29c"
-        },
-        "SharedSix0CellPoolReplay06": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_replay06.lean",
-          "original_sha256": "da8392b7b356efa21fc59b5354514d40f623d264931300de5c10ca499be02c28"
-        },
-        "SharedSix0CellPoolReplay07": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_replay07.lean",
-          "original_sha256": "6fde804d4f785a759bd45405cf6ced3b07a7456dccf27c7a6c9c744d7af70f74"
-        },
-        "SharedSix0CellPoolReplay08": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_replay08.lean",
-          "original_sha256": "eb606b59ea0a5098c3151864dba2190c3f8ea00f243f36bb8ea97202f155f035"
-        },
-        "SharedSix0CellPoolReplay09": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_replay09.lean",
-          "original_sha256": "ff4ad525e164138a0f860bb58b3496229a931ebc3fd1b1383d416760ecb2c4a5"
-        },
-        "SharedSix0CellPoolReplay10": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_replay10.lean",
-          "original_sha256": "a98f4d48f7c31633ad44757c31d24942b05b57ac898c76f2426afdeee9f3c650"
-        },
-        "SharedSix0CellPoolReplay11": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_replay11.lean",
-          "original_sha256": "b2dca089218bf6b7ea89c45b39e3d83c9a3972b743e62ad3456eb3a26baf5f74"
-        },
-        "SharedSix0CellPoolReplay12": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_replay12.lean",
-          "original_sha256": "b837673da462b91ddde0ba6bc7e5817cc89ccde9981711b6ab52621ceb8c0234"
-        },
-        "SharedSix0CellPoolReplay13": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_replay13.lean",
-          "original_sha256": "70a9549f3d46b7c8e3cc380ff50823e21ae5eb1e1d6f9e9fbac7e8a5dd935ad9"
-        },
-        "SharedSix0CellPoolReplay14": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_replay14.lean",
-          "original_sha256": "17f803716b91b18043d60de24f8a26ba48276f758d5ca0ee15f6431e8e663c7c"
-        },
-        "SharedSix0CellPoolReplay15": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_replay15.lean",
-          "original_sha256": "0aa631bd19774ffde789fb59cb92d3160b47e3731da04e7861adcafd70940bca"
-        },
-        "SharedSix0CellPoolReplay16": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_replay16.lean",
-          "original_sha256": "bade4043a8101a0c196eb10aea6e6cc3638a67734d0a54d9f89723991ea4f8bf"
-        },
-        "SharedSix0CellPoolReplay17": {
-          "original_path": "source/finite/shared_six/shared_six0_cell_pool_replay17.lean",
-          "original_sha256": "9a88a178cfdbdbea12224f69eae5528d6695b8fa55c6c4e743b10af7f0190271"
-        },
-        "SharedSix0IncidenceChecked": {
-          "original_path": "source/finite/shared_six/shared_six0_incidence_checked.lean",
-          "original_sha256": "1e9180c84a66c71e0e1b65d7b21756c965a2bd611c15a4ad9520f6c3184c29d0"
-        },
-        "SharedSix0IncidenceData": {
-          "original_path": "source/finite/shared_six/shared_six0_incidence_data.lean",
-          "original_sha256": "cf42c8204be76ed5ac540e63e2c8118618a16f9f4ef9f3ce68cf1504339433a0"
-        },
-        "SharedSix0IncidenceReplay00": {
-          "original_path": "source/finite/shared_six/shared_six0_incidence_replay00.lean",
-          "original_sha256": "4ec86fab53b25c683f5a2aef9838b0fcad89f94beca7269438407a4e73b53c88"
-        },
-        "SharedSix0IncidenceReplay01": {
-          "original_path": "source/finite/shared_six/shared_six0_incidence_replay01.lean",
-          "original_sha256": "a74bafe318642e38686f4f09ce2f0615394ae83117391713ba360e3fc0d13d0d"
-        },
-        "SharedSix0IncidenceReplay02": {
-          "original_path": "source/finite/shared_six/shared_six0_incidence_replay02.lean",
-          "original_sha256": "49f073baba774c625ff8219d9cdf328070d0a8b264acf839535e68af0fede7a6"
-        },
-        "SharedSix0IncidenceReplay03": {
-          "original_path": "source/finite/shared_six/shared_six0_incidence_replay03.lean",
-          "original_sha256": "cdf65c19b55a9bc76587e37ac2eeed6c80d40ecce8d179259ddaa29cc3f764e7"
-        },
-        "SharedSix0IncidenceReplay04": {
-          "original_path": "source/finite/shared_six/shared_six0_incidence_replay04.lean",
-          "original_sha256": "794a03892adc66534fde0c87605cd483cdef54ccd96a3743404119e21ed2f3d7"
-        },
-        "SharedSix0IncidenceReplay05": {
-          "original_path": "source/finite/shared_six/shared_six0_incidence_replay05.lean",
-          "original_sha256": "e685b5941a38227e34877176c431d6bfd1b43cae686747565405bb88d3ed1319"
-        },
-        "SharedSix0IncidenceReplay06": {
-          "original_path": "source/finite/shared_six/shared_six0_incidence_replay06.lean",
-          "original_sha256": "be8beacf0e0799562759800e590428184567eafdb77bd57206c3abdcafc74866"
-        },
-        "SharedSix0IncidenceReplay07": {
-          "original_path": "source/finite/shared_six/shared_six0_incidence_replay07.lean",
-          "original_sha256": "c93577a0539978b38b477408cc80c43860ce16eca1eed644130c7ed8ea312476"
-        },
-        "SharedSix0IncidenceReplay08": {
-          "original_path": "source/finite/shared_six/shared_six0_incidence_replay08.lean",
-          "original_sha256": "0c7e71f58e351c0862c71c93c07170a1fc14ef9624eaa38bf81a53ef111720cf"
-        },
-        "SharedSmallGraph": {
-          "original_path": "source/geometry/shared_small_graph.lean",
-          "original_sha256": "278dff5f3b60410e001fd83596d9c0bfd9480fb082c1e841762fd8c3065fa454"
-        },
-        "SharedSmallGraphBase": {
-          "original_path": "source/geometry/shared_small_graph_base.lean",
-          "original_sha256": "59f4566119cb00f5056bf2142998742e92ddea9e8ea82c7dc342e146ff350a76"
-        },
-        "SharedSmallGraphCellData000": {
-          "original_path": "source/finite/shared_small_graph_cell_data/shared_small_graph_cell_data000.lean",
-          "original_sha256": "c8bd202eee77c9379ca2c25c69917ccfc11f508c850a816c0a92b4e313659084"
-        },
-        "SharedSmallGraphCellData001": {
-          "original_path": "source/finite/shared_small_graph_cell_data/shared_small_graph_cell_data001.lean",
-          "original_sha256": "ddee7a1f04013cceca0a810b07c3021d15b8f81a4f4298545ff7257da83a6c5b"
-        },
-        "SharedSmallGraphCellData002": {
-          "original_path": "source/finite/shared_small_graph_cell_data/shared_small_graph_cell_data002.lean",
-          "original_sha256": "afb4d3d220c4d079b65d70c90cd7e0557bda62c3b7b53510ddc7bc2fcd9a198c"
-        },
-        "SharedSmallGraphCellData003": {
-          "original_path": "source/finite/shared_small_graph_cell_data/shared_small_graph_cell_data003.lean",
-          "original_sha256": "22e029fd074c90900fb2e08dd51133361719addcac33fc9287f8621b658f06bb"
-        },
-        "SharedSmallGraphCellData004": {
-          "original_path": "source/finite/shared_small_graph_cell_data/shared_small_graph_cell_data004.lean",
-          "original_sha256": "2582d2b6a2014b0a604b10c984a8f0ae0b647c72fd6426b19e7ba6a51b04bfec"
-        },
-        "SharedSmallGraphCellData005": {
-          "original_path": "source/finite/shared_small_graph_cell_data/shared_small_graph_cell_data005.lean",
-          "original_sha256": "76f9ad17ff432191ac554d48d46e72dc4cf8385a8538f66199ace9dcfda948f8"
-        },
-        "SharedSmallGraphCellData006": {
-          "original_path": "source/finite/shared_small_graph_cell_data/shared_small_graph_cell_data006.lean",
-          "original_sha256": "87413f52fb2f7b0cd6d9ea7fb95afc071e32f275b5dd8e5e1a3c842afea19b7f"
-        },
-        "SharedSmallGraphCells000": {
-          "original_path": "source/finite/shared_small_graph_cells/shared_small_graph_cells000.lean",
-          "original_sha256": "ec919b00f355d5d585d6c48b6bf290f755f5168ebe14ccad3d09a7e186c9a630"
-        },
-        "SharedSmallGraphCells001": {
-          "original_path": "source/finite/shared_small_graph_cells/shared_small_graph_cells001.lean",
-          "original_sha256": "115780cab2c7440c1af38481afefbd0854e929ead30ac9062264e2571b34f93d"
-        },
-        "SharedSmallGraphCells002": {
-          "original_path": "source/finite/shared_small_graph_cells/shared_small_graph_cells002.lean",
-          "original_sha256": "a8eb7bacc547817bb5817286d9f93948eca35dc9be8ee67a5e3d2133a414b6d8"
-        },
-        "SharedSmallGraphCells003": {
-          "original_path": "source/finite/shared_small_graph_cells/shared_small_graph_cells003.lean",
-          "original_sha256": "4c2ff4c7c68bb7cb0815ca79964c45440fa6e365f8a13ed28022cf8da1323b6b"
-        },
-        "SharedSmallGraphCells004": {
-          "original_path": "source/finite/shared_small_graph_cells/shared_small_graph_cells004.lean",
-          "original_sha256": "0556826dc897c6f9f312d9e856f4d6f7440454523a6def13c261a451681424fb"
-        },
-        "SharedSmallGraphCells005": {
-          "original_path": "source/finite/shared_small_graph_cells/shared_small_graph_cells005.lean",
-          "original_sha256": "96ee6b6b4957a2ce134ae1a153c629c1d70f5b164659d47d2507650bd51849ed"
-        },
-        "SharedSmallGraphCells006": {
-          "original_path": "source/finite/shared_small_graph_cells/shared_small_graph_cells006.lean",
-          "original_sha256": "b3bf6a6577782266bfffc4358715e738f2226b077cc19da331ba9076d44218b6"
-        },
-        "SharedSmallGraphCells007": {
-          "original_path": "source/finite/shared_small_graph_cells/shared_small_graph_cells007.lean",
-          "original_sha256": "f2679edb40ea2289d5008bd699e35dbf3c74a76eadc2d2b85fbb0598d4b51c8a"
-        },
-        "SharedSmallGraphCells008": {
-          "original_path": "source/finite/shared_small_graph_cells/shared_small_graph_cells008.lean",
-          "original_sha256": "4216d83ac8f44dce71e8d848cc2b0696741cc00a7c8e9f7c0fde23f052f63aa1"
-        },
-        "SharedSmallGraphCells009": {
-          "original_path": "source/finite/shared_small_graph_cells/shared_small_graph_cells009.lean",
-          "original_sha256": "1ee7a16e3fb3843c044a3d474c9263c83bfc0fcdd40721804d255010cf8df364"
-        },
-        "SharedSmallGraphCells010": {
-          "original_path": "source/finite/shared_small_graph_cells/shared_small_graph_cells010.lean",
-          "original_sha256": "f7e85603ec0c69a54ff921c00763ac13fddf59f918546cf07b8c9daca4f77a6f"
-        },
-        "SharedSmallGraphCells011": {
-          "original_path": "source/finite/shared_small_graph_cells/shared_small_graph_cells011.lean",
-          "original_sha256": "b607c42eb81f2c89ba92d5b61ed6aa0f05266f30c05e59a3f70a2696b5dc4b3c"
-        },
-        "SharedSmallGraphCells012": {
-          "original_path": "source/finite/shared_small_graph_cells/shared_small_graph_cells012.lean",
-          "original_sha256": "6b096002db0f5db14290b523f10567d7fcc1d7b9f33d1fb1f77e0cc2bc6169cb"
-        },
-        "SharedSmallGraphCells013": {
-          "original_path": "source/finite/shared_small_graph_cells/shared_small_graph_cells013.lean",
-          "original_sha256": "335213f3a85403a43f53f42621798da047c9d46fd36d3bb328f789acf58e8059"
-        },
-        "SharedSmallGraphCells014": {
-          "original_path": "source/finite/shared_small_graph_cells/shared_small_graph_cells014.lean",
-          "original_sha256": "4625e6aad4e3992f705e1479516aec81d2aff20184283e453f19afde9f4cd028"
-        },
-        "SharedSmallGraphCells015": {
-          "original_path": "source/finite/shared_small_graph_cells/shared_small_graph_cells015.lean",
-          "original_sha256": "0090fc072cb2a6212fa26ccdfc8e7857b0d336e98934208d42f305ae462bd22d"
-        },
-        "SharedSmallGraphCells016": {
-          "original_path": "source/finite/shared_small_graph_cells/shared_small_graph_cells016.lean",
-          "original_sha256": "b84b26c29861d2799eca814e94bfea487fadbbadf4c94bd77c5e80c5382894a5"
-        },
-        "SharedSmallGraphCells017": {
-          "original_path": "source/finite/shared_small_graph_cells/shared_small_graph_cells017.lean",
-          "original_sha256": "43c94cfa5cf90dd351c7ae2a3efbe4339e8c0e7768fda80bf5bebae5e7733b5f"
-        },
-        "SharedSmallGraphCells018": {
-          "original_path": "source/finite/shared_small_graph_cells/shared_small_graph_cells018.lean",
-          "original_sha256": "079e8f605904109f15d67570654bbc54a95783d558291db03f3a41ec0875a020"
-        },
-        "SharedSmallGraphCells019": {
-          "original_path": "source/finite/shared_small_graph_cells/shared_small_graph_cells019.lean",
-          "original_sha256": "d69646437a4bcd0a8a6d1c09429e446b4b6f613723e2d2106bfea53c9785f8f1"
-        },
-        "SharedSmallGraphCells020": {
-          "original_path": "source/finite/shared_small_graph_cells/shared_small_graph_cells020.lean",
-          "original_sha256": "ae5bf7fb9dc57613f8ca6b0d284ef9377a5e470dd0932fbb1eaff162ffc1f0bc"
-        },
-        "SharedSmallGraphCells021": {
-          "original_path": "source/finite/shared_small_graph_cells/shared_small_graph_cells021.lean",
-          "original_sha256": "c78b3447f71b36faf648c96adf1a7ab6a1793b81e009f944a9493d6609443c5d"
-        },
-        "SharedSmallGraphCells022": {
-          "original_path": "source/finite/shared_small_graph_cells/shared_small_graph_cells022.lean",
-          "original_sha256": "cb8a2702320cb912907be39ed348443f7736b75b97f397ffe1976a2fd96c8e91"
-        },
-        "SharedSmallGraphCells023": {
-          "original_path": "source/finite/shared_small_graph_cells/shared_small_graph_cells023.lean",
-          "original_sha256": "3ae58335da3fd33137b45d08edec85cbfa980d0ef47de3c38f7da4c878772f66"
-        },
-        "SharedSmallGraphCells024": {
-          "original_path": "source/finite/shared_small_graph_cells/shared_small_graph_cells024.lean",
-          "original_sha256": "4fb52f6bf076bc4eb6f4a04f48496a50be22cc9dfcd6c29bb6fdd3668bd012d3"
-        },
-        "SharedSmallGraphCells025": {
-          "original_path": "source/finite/shared_small_graph_cells/shared_small_graph_cells025.lean",
-          "original_sha256": "806f2892251e02fb1179c97271c0a74b3f7c2a3560b1845b7766b92f3a9da6fa"
-        },
-        "SharedSmallGraphCellsChecked": {
-          "original_path": "source/geometry/shared_small_graph_cells_checked.lean",
-          "original_sha256": "c9914309e921ee33c6f6fb8a61ea865048aac47c53563b1a441e1b890ecc4784"
-        },
-        "SharedSmallGraphData": {
-          "original_path": "source/geometry/shared_small_graph_data.lean",
-          "original_sha256": "746e12a659bc4ccbf96ba03f3b071b255cd993fea5b58bdafd33dbf0d1b233a0"
-        },
-        "SharedSmallGraphRidges000": {
-          "original_path": "source/finite/shared_small_graph_ridges/shared_small_graph_ridges000.lean",
-          "original_sha256": "ee360bac0ca8de4a8bdcc5591e912030740788b32e39ca1a84db5fc49a8750dd"
-        },
-        "SharedSmallGraphRidges001": {
-          "original_path": "source/finite/shared_small_graph_ridges/shared_small_graph_ridges001.lean",
-          "original_sha256": "eda1a93af945e382a3b4fd40b74c490a045d4c9a0a8855d41e94b008dffe879a"
-        },
-        "SharedSmallGraphRidges002": {
-          "original_path": "source/finite/shared_small_graph_ridges/shared_small_graph_ridges002.lean",
-          "original_sha256": "fe6e49f9263a38ddbab11e716c1c4c40847f163d1ea9f76bc047efba131ed61e"
-        },
-        "SharedSmallGraphRidges003": {
-          "original_path": "source/finite/shared_small_graph_ridges/shared_small_graph_ridges003.lean",
-          "original_sha256": "ed4649f5e83a7484cd9048f889f70ee210bbb5a9bf29bcc999812a81c9b88f19"
-        },
-        "SharedSmallGraphRidges004": {
-          "original_path": "source/finite/shared_small_graph_ridges/shared_small_graph_ridges004.lean",
-          "original_sha256": "52ca5dcc10af681e0753e5edb31cf684a4706d1aa50a0fc44216d43ecf358b50"
-        },
-        "SharedSmallGraphRidges005": {
-          "original_path": "source/finite/shared_small_graph_ridges/shared_small_graph_ridges005.lean",
-          "original_sha256": "932efcd0814de71f3a09da96783215005b95df230961abc41669efbfea2b5456"
-        },
-        "SharedSmallGraphRidges006": {
-          "original_path": "source/finite/shared_small_graph_ridges/shared_small_graph_ridges006.lean",
-          "original_sha256": "e3d09b5e36860a3c0b73b141df626781f24058fb3f52ec74f331cbac2a7150a2"
-        },
-        "SharedSmallGraphRidges007": {
-          "original_path": "source/finite/shared_small_graph_ridges/shared_small_graph_ridges007.lean",
-          "original_sha256": "afb0e7ac20b154da7bc2196bf5fe79860a60bba2c0292080ff73d4d6e1ad615e"
-        },
-        "SharedSmallGraphRidgesChecked": {
-          "original_path": "source/geometry/shared_small_graph_ridges_checked.lean",
-          "original_sha256": "4ebde2a4948598c57e4429c709de1a894a5fb7101c1d53ded975cd04fdbb91a0"
-        },
-        "SharedSmallGraphRowData": {
-          "original_path": "source/geometry/shared_small_graph_row_data.lean",
-          "original_sha256": "caf3dee0d4b4166f06faed49a26d57b9d9096af095b27ec6c845bf3c686618e0"
-        },
-        "SharedSmallGraphWithin000": {
-          "original_path": "source/finite/shared_small_graph_within/shared_small_graph_within000.lean",
-          "original_sha256": "d42bf78a4fd42fd8eae7a9545d465abd1437cc294c624d5d3be5b06f860f8f29"
-        },
-        "SharedSmallGraphWithin001": {
-          "original_path": "source/finite/shared_small_graph_within/shared_small_graph_within001.lean",
-          "original_sha256": "58c222b28ded48688f1f156bdebcee53a14da4ff2925a66e20a0d45b8f0304a9"
-        },
-        "SharedSmallGraphWithin002": {
-          "original_path": "source/finite/shared_small_graph_within/shared_small_graph_within002.lean",
-          "original_sha256": "cd89543c87a7924cf074a3a3a67fabab1dc850c6ec103a6f7786515ef84830a2"
-        },
-        "SharedSmallGraphWithin003": {
-          "original_path": "source/finite/shared_small_graph_within/shared_small_graph_within003.lean",
-          "original_sha256": "d1b67aabb90521e9fad0360c50807de45cf822de9aec47b7814060376a2e4b8e"
-        },
-        "SharedSmallGraphWithinChecked": {
-          "original_path": "source/geometry/shared_small_graph_within_checked.lean",
-          "original_sha256": "c44b3afacc9b2c22998043bb5c0a77c283c63038284d8aea49e275a3b82f019f"
-        },
-        "SharedSmallRootReplay": {
-          "original_path": "source/geometry/shared_small_root_replay.lean",
-          "original_sha256": "a27e3c2a39c209f9db109013944925a20fe278e75462deff05cb0aa1eecf4bd2"
-        },
-        "SharedTriangleCountsData": {
-          "original_path": "source/geometry/shared_triangle_counts_data.lean",
-          "original_sha256": "bcf35a780ab460c330cd07a072a49a642986d22ab4f4a5c59820833339446ded"
-        },
-        "Six0PackedCell": {
-          "original_path": "source/finite/six/six0_packed_cell.lean",
-          "original_sha256": "5caec8b5ad0c7598a5223d172d2a87a8cfe1e1d3bae947c03163065c651d3002"
-        },
-        "SparseGrowthDAG": {
-          "original_path": "source/geometry/sparse_growth_dag.lean",
-          "original_sha256": "8bf50794fbd3cbb14c136370a754adf534089ae7f6ba4091d18bac470c9f1d32"
-        },
-        "SubsumptionSearch": {
-          "original_path": "source/geometry/subsumption_search.lean",
-          "original_sha256": "8bd7aab430b13de998ec70ea1d68de5a7dcf9f0eb78d25edc6ea07d0c6eb7877"
-        },
-        "TenGraphEdges": {
-          "original_path": "source/geometry/ten_graph_edges.lean",
-          "original_sha256": "b3107775c68ee6569a80b31fc37c8cf4603812d0b4b50ea10bc9f80441deae74"
-        },
-        "TenGraphTriangles": {
-          "original_path": "source/geometry/ten_graph_triangles.lean",
-          "original_sha256": "f2adc24d4f70333f02fa4dc12b4dec249cd92396ba6d35b8c5e421204c0e02ce"
-        },
-        "TriangleCountCertificate": {
-          "original_path": "source/geometry/triangle_count_certificate.lean",
-          "original_sha256": "2602edce3fc0a91c11cc6a2d1c2511e06a31be20538a088412b786f2aec4bf2a"
-        },
-        "UnsupportedRidgePruning": {
-          "original_path": "source/geometry/unsupported_ridge_pruning.lean",
-          "original_sha256": "d69d4aabf9c95ef03f126f7ceaba7c38f4d85deab71167c212c35d61379498b9"
-        },
-        "VertexLinkObstructionData": {
-          "original_path": "source/geometry/vertex_link_obstruction_data.lean",
-          "original_sha256": "6341248e7734d79390713c922b3396a47e8a6183c7fe816647cbd6922942c0fa"
-        },
-        "WitnessGrowthDAG": {
-          "original_path": "source/geometry/witness_growth_dag.lean",
-          "original_sha256": "6ab2ec605af5f2bf65d272ab36ef8a4028fe2c04141424a7e3ecc96c162f89aa"
-        }
       }
     }
   },

@@ -1,0 +1,115 @@
+name: Small nonrational nested graph measurement
+
+on:
+  push:
+    branches: [palomar/diagnostic-small-nonrational-nested-row29]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  kernel:
+    name: Measure three nested scopes on one host
+    runs-on: ubuntu-24.04
+    timeout-minutes: 170
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Install pinned Lean
+        timeout-minutes: 8
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/block0528-elan"
+          curl --fail --location --silent --show-error --retry 3 --max-time 180 --output "$RUNNER_TEMP/block0528-elan.tar.gz" https://github.com/leanprover/elan/releases/download/v4.2.3/elan-x86_64-unknown-linux-gnu.tar.gz
+          echo "df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2  $RUNNER_TEMP/block0528-elan.tar.gz" | sha256sum --check -
+          tar -xzf "$RUNNER_TEMP/block0528-elan.tar.gz" -C "$RUNNER_TEMP/block0528-elan"
+          "$RUNNER_TEMP/block0528-elan/elan-init" -y --no-modify-path --default-toolchain none
+          "$HOME/.elan/bin/elan" toolchain install "$(cat lean-toolchain)"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Compile frozen sources and export all three proof scopes
+        id: build
+        timeout-minutes: 30
+        run: python3 diagnostic/nested.py build
+      - name: Save build receipt
+        if: ${{ !cancelled() && steps.build.outcome != 'skipped' }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: nested-row29-build-${{ github.sha }}
+          path: diagnostic-results/build.json
+          retention-days: 5
+          if-no-files-found: warn
+      - name: Replay generic with lean_kernel
+        id: generic_lean_kernel
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: python3 diagnostic/nested.py generic lean_kernel
+      - name: Save generic-lean_kernel receipt
+        if: ${{ !cancelled() && steps.generic_lean_kernel.outcome != 'skipped' }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: nested-row29-generic-lean_kernel-${{ github.sha }}
+          path: diagnostic-results/generic-lean_kernel.json
+          retention-days: 5
+          if-no-files-found: warn
+      - name: Replay generic with nanoda
+        id: generic_nanoda
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: python3 diagnostic/nested.py generic nanoda
+      - name: Save generic-nanoda receipt
+        if: ${{ !cancelled() && steps.generic_nanoda.outcome != 'skipped' }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: nested-row29-generic-nanoda-${{ github.sha }}
+          path: diagnostic-results/generic-nanoda.json
+          retention-days: 5
+          if-no-files-found: warn
+      - name: Replay single with lean_kernel
+        id: single_lean_kernel
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: python3 diagnostic/nested.py single lean_kernel
+      - name: Save single-lean_kernel receipt
+        if: ${{ !cancelled() && steps.single_lean_kernel.outcome != 'skipped' }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: nested-row29-single-lean_kernel-${{ github.sha }}
+          path: diagnostic-results/single-lean_kernel.json
+          retention-days: 5
+          if-no-files-found: warn
+      - name: Replay single with nanoda
+        id: single_nanoda
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: python3 diagnostic/nested.py single nanoda
+      - name: Save single-nanoda receipt
+        if: ${{ !cancelled() && steps.single_nanoda.outcome != 'skipped' }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: nested-row29-single-nanoda-${{ github.sha }}
+          path: diagnostic-results/single-nanoda.json
+          retention-days: 5
+          if-no-files-found: warn
+      - name: Replay eight with lean_kernel
+        id: eight_lean_kernel
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: python3 diagnostic/nested.py eight lean_kernel
+      - name: Save eight-lean_kernel receipt
+        if: ${{ !cancelled() && steps.eight_lean_kernel.outcome != 'skipped' }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: nested-row29-eight-lean_kernel-${{ github.sha }}
+          path: diagnostic-results/eight-lean_kernel.json
+          retention-days: 5
+          if-no-files-found: warn
+      - name: Replay eight with nanoda
+        id: eight_nanoda
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: python3 diagnostic/nested.py eight nanoda
+      - name: Save eight-nanoda receipt
+        if: ${{ !cancelled() && steps.eight_nanoda.outcome != 'skipped' }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: nested-row29-eight-nanoda-${{ github.sha }}
+          path: diagnostic-results/eight-nanoda.json
+          retention-days: 5
+          if-no-files-found: warn
