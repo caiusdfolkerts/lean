@@ -1,0 +1,6 @@
+{
+  "changes": [
+    "source/theorem94/PalomarPart000.lean"
+  ],
+  "meaning": "Only adds the stable explicit name palomarFaceVertexFintype; instance value unchanged."
+}

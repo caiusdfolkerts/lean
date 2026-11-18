@@ -1,0 +1,14 @@
+{
+  "status": "applied_pending_elaboration",
+  "challenge_sha256": "5ee606b06cd968da4f53af9fa89bad79287de51c667173fe298bb51d635042a4",
+  "solution_sha256": "edd2503e7678277fddb742c9c1b4ebf0610a75c5ffa082be7287b117953c5ae3",
+  "lines": 686,
+  "bytes": 31987,
+  "wrapper_names": [
+    "PalomarBarycentricScalar.exactScalarIdeal",
+    "PalomarBarycentricScalar.cohomologicalObstructionModule"
+  ],
+  "source_change": "Stable explicit instance declaration names only; all values and proof bodies preserved.",
+  "wrapper_change": "Fresh wrapper statement and universe/variable context copied literally into both Challenge and Solution; original substantive proof terms reused.",
+  "semantic_docstrings_restored": 40
+}
