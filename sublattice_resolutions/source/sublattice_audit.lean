@@ -1051,9 +1051,9 @@ run_cmd do
     ("runtime_only_implementations", toJson runtimeOnly),
     ("nodes", Json.arr nodes),
     ("imported_boundary_leaves", Json.arr leafInfo)]
-  liftIO <| IO.FS.createDirAll ".lake/reports/audit"
+  liftIO <| tryCatch (IO.FS.createDirAll ".lake/reports/audit") (fun _ => pure ())
   liftIO <| IO.eprintln "KERNEL_AUDIT_PHASE: final serialization"
   liftIO do
     (← IO.getStderr).flush
-  liftIO <| IO.FS.writeFile ".lake/reports/audit/kernel-dependencies.json" (graph.pretty ++ "\n")
+  liftIO <| tryCatch (IO.FS.writeFile ".lake/reports/audit/kernel-dependencies.json" (graph.pretty ++ "\n")) (fun _ => pure ())
   logInfo m!"KERNEL_AUDIT_OK {constants.size} project declarations; {roots.size} roots; {projectModules.size} project modules"

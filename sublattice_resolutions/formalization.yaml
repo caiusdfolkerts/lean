@@ -1,0 +1,56 @@
+version: v0.4
+project:
+  name: Sublattice resolutions and Betti preservation in all powers
+  description: >-
+    Closed binomial edge ideals and their displayed initial monomial ideals
+    have equal Betti numbers in every positive power, over every field, in all
+    homological degrees and integer ordinary degrees. Finite sublattice ideals
+    satisfy the full signed fine-degree multichain Betti formula, with actual
+    polynomial quotients by sums of predecessor colons, and their actual Rees
+    Koszul homology algebra is generated in degree one. The literal finite
+    Rees kernel has the displayed monic Groebner presentation.
+  authors: [Caius Folkerts]
+  responsible_maintainers: [Caius Folkerts]
+  license: Apache-2.0
+classification:
+  arxiv: [math.AC, math.CO]
+  msc2020: [13D02, 13P10, 06D05]
+sources:
+  - title: Sublattice resolutions and Betti preservation in all powers
+    authors: [Caius Folkerts]
+    type: paper
+    relationship: formalizes
+    location: paper.pdf, Theorems1.1,1.2 and Proposition2.2
+related_formalizations:
+  - title: caiusdfolkerts/research sublattice_resolutions
+    id: https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/sublattice_resolutions
+    relationship: other
+    note: Exact substantive baseline project copied with original provenance and licences retained.
+automation:
+  methods:
+    - method: agent
+      tool_setup: The manuscript credits GPT-6 Astra, GPT-5.6 Sol, and Kimi K3 assistance. Historical roles have not been independently reconstructed.
+    - method: agent
+      tool_setup: OpenAI Codex using GPT-6.1 Sol compared the actual paper and original source, inlined literal presentation and polynomial/exterior Koszul data, and prepared explicit graded chain and genuine derived-Tor bridges. These new bridges remain unelaborated.
+review:
+  status: unchecked
+  notes: >-
+    Exact494-line Challenge SHA3c20285b passed canonical elaboration in
+    remote run44368529809. All input hashes, canonical pins and bounded-log
+    hash were independently checked. The1571-line actual Solution wrapper
+    draft remains unelaborated. Complete source/Solution build, raw Comparator,
+    NanoDa and mathematical peer review remain unverified. Earlier partial
+    Proposition2.2 and363-line Challenge passes remain separate evidence.
+fidelity:
+  divergences: >-
+    Actual polynomial Koszul homology is used as the independent interface for
+    the genuine derived Tor Betti groups. Solution explicitly transports grading,
+    variable action, differentials, cycles and boundaries to the original actual
+    derived Tor components. Negative fine degrees vanish through actual chain
+    pieces; all fields, positive powers, homological degrees and signed degrees
+    remain quantified. The graph uses the given closed labeling without a
+    connectivity assumption. The Rees conclusion uses the actual homology algebra.
+limitations:
+  - The exact expanded Challenge passed; all new Solution bridges, full source build, raw Comparator and NanoDa remain pending.
+  - This candidate covers Theorems1.1,1.2 and Proposition2.2; the remaining substantive corollary groups require their own exact interfaces and are not claimed here.
+  - Optional filesystem report writes catch IO failures individually; all mathematical audit assertions and source guards are retained.

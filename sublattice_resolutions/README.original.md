@@ -1,0 +1,36 @@
+# Sublattice resolutions and Betti preservation in all powers
+
+[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/research/project-sublattice_resolutions.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/research/actions/workflows/project-sublattice_resolutions.yml)
+
+This project contains the full Lean4 formalisation for all principal results in my paper *Sublattice resolutions and Betti preservation in all powers*. I've included the paper as paper.pdf.
+
+## Verification
+
+If you have Elan and Git installed, run below commands from this directory.
+
+```sh
+lake exe cache get
+lake build
+```
+
+## Main results
+
+Here's a guide to help you navigate this repo! All verified theorems/propositions/corollaries are linked to their corresponding Lean4 declarations in the table below. Note declaration names use `FourPapers.Sublattice`.
+
+| Paper result | Lean statement |
+| --- | --- |
+| Theorem 1.1, closed graphs in the original labelling | `theorem11_integer_bettiEquality` |
+| Theorem 1.2, signed fine formula and Rees-homology generation | `theorem12` |
+| Proposition 2.2, literal finite Rees presentation | `proposition22` |
+| Proposition 3.1, multiplicative propagation | `proposition31` |
+| Theorems 4.1 and 4.3, ideal identities and conditional Betti transfer | `RowCutNetwork.theorem41`, `theorem43`, `theorem43_integer_betti`, `theorem43_finer_betti_of_refines` |
+| Corollaries 5.1–5.3, finite formulas and the multiplication-induced Tor injection | `corollary51_integer`, `corollary52_integer_grouped_expansion`, `corollary53_chosenMinimumGenerator_paperTor` |
+| Theorem 5.5, mixed products and unit-colour generation | `theorem55_betti_of_individual_integer_premise`, `theorem55_literal_generation` |
+| Corollaries 5.6–5.7, finite and nested initial criteria | `corollary56_initial`, `corollary56_betti`, `corollary57_ideal_identities` |
+| Corollary 5.8, positive homogeneous regular substitution | `corollary58_powerFreeResolution` |
+| Section 6, retained-ring recursion, graph gradings and determinant powers | `lemma61_quotientBetti_recursion_arbitrary_variables`, `corollary62_natural`, `corollary64_closed`, `theorem65_integer` |
+| Theorem 7.1 and Corollary 7.2, integral and mixed comparisons | `theorem71_actualIntegral`, `theorem71_baseChange`, `theorem71_arbitraryWeightFamily`, `corollary72` |
+| Theorem 8.1, cellular resolution and numerical invariants | `theorem81_cellularResolution`, `theorem81`, `theorem81_integer_support`, `theorem81_integer_regularity`, `theorem81_depth_integer` |
+| Theorem 9.1, the integral graph family and arbitrary coefficient change | `theorem91`, `theorem91_same_ranks` |
+| Proposition 10.2 and Corollary 10.3, torsion and finite-complex realization | `RP2.theorem102_integral`, `RP2.theorem102_betti`, `FiniteComplexIncidence.theorem103_all_degrees` |
+| Corollary 10.4, characteristic excess and independence in all powers | `corollary104_integer_grouped_expansion`, `corollary104_integer_global_exists_iff_all_powers` |

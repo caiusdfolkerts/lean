@@ -20,3 +20,9 @@ name = "verification"
 srcDir = "source"
 roots = ["sublattice_audit", "verification.check_1"]
 allowImportAll = true
+
+[[lean_lib]]
+name = "submission"
+srcDir = "source"
+roots = ["Challenge", "Solution"]
+allowImportAll = true

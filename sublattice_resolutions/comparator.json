@@ -1,0 +1,26 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "PalomarSublattice.Koszul.eraseIndex_card",
+    "PalomarSublattice.proposition22",
+    "PalomarSublattice.closed_graph_betti_preservation",
+    "PalomarSublattice.Rees.base_mem",
+    "PalomarSublattice.Rees.d_one",
+    "PalomarSublattice.Rees.cycles_mul",
+    "PalomarSublattice.Rees.boundary_zero",
+    "PalomarSublattice.Rees.boundary_add",
+    "PalomarSublattice.Rees.boundary_neg",
+    "PalomarSublattice.Rees.boundary_left",
+    "PalomarSublattice.Rees.boundary_right",
+    "PalomarSublattice.Rees.monomial_mem",
+    "PalomarSublattice.Rees.generated_in_degree_one",
+    "PalomarSublattice.multichain_finite",
+    "PalomarSublattice.all_powers_signed_fine_betti"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}
