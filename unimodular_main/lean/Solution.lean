@@ -154,13 +154,13 @@ theorem corners_agree (P : Presentation n ι) (w : {w // w ∈ P.vertices}) :
   unfold Presentation.geometricUnitCorner
     Unimodular.OriginalSmoothReflexivePresentation.geometricUnitCorner
   rw [edge_finsets_agree]
-  rfl
 
 theorem deeplyMonotone_agrees (P : Presentation n ι) :
     P.DeeplyMonotone ↔ (sourcePresentation P).DeeplyMonotone := by
   simp only [Presentation.DeeplyMonotone,
     Unimodular.OriginalSmoothReflexivePresentation.DeeplyMonotone,
     corners_agree, carrier_agrees]
+  rfl
 
 theorem facet_normals_agree (P : Presentation n ι) :
     P.geometricFacetNormals = (sourcePresentation P).geometricFacetNormals := by
@@ -171,7 +171,6 @@ theorem facet_normals_agree (P : Presentation n ι) :
     Presentation.normalFace, Unimodular.OriginalSmoothReflexivePresentation.normalFace,
     IsGeometricFacet, Unimodular.OriginalPolytopeTransport.IsGeometricFacet,
     IsPrimitive, TauCeti.isPrimitive_def, Set.mem_setOf_eq, carrier_agrees, character_agrees]
-  rfl
 end PalomarDeepMonotone.Bridge
 
 namespace PalomarDeepMonotone.VectorMatroid
@@ -199,8 +198,9 @@ theorem independent_augmentation (v : α → W) (E : Set α) {I J : Finset α}
     ∃ e ∈ J, e ∉ I ∧ ((insert e I : Finset α) : Set α) ⊆ E ∧
       LinearIndepOn K v ((insert e I : Finset α) : Set α) := by
   obtain ⟨e,heJ,heI,hli⟩ := linearIndepOn_finset_augment v hI.2 hJ.2 hcard
-  exact ⟨e,heJ,heI,by simpa only [Finset.coe_insert] using
-    Set.insert_subset (hJ.1 heJ) hI.1,by simpa only [Finset.coe_insert] using hli⟩
+  refine ⟨e,heJ,heI,?_,?_⟩
+  · simpa only [Finset.coe_insert] using (Set.insert_subset (hJ.1 heJ) hI.1)
+  · simpa only [Finset.coe_insert] using hli
 /-- The actual ordinary represented Mathlib matroid on the given original labels.
 Its finite independent sets are exactly the linearly independent subsets of E. -/
 def onSet (v : α → W) (E : Set α) : Matroid α :=
@@ -263,7 +263,8 @@ theorem onSet_agrees {K α W : Type*} [Field K] [AddCommGroup W] [Module K W]
     VectorMatroid.onSet (K := K) v E = Unimodular.VectorMatroid.onSet (K := K) v E := by
   apply Matroid.ext_indep rfl
   intro I hI
-  rw [VectorMatroid.onSet_indep, Unimodular.VectorMatroid.onSet_indep]
+  exact (VectorMatroid.onSet_indep v E I).trans
+    (Unimodular.VectorMatroid.onSet_indep v E I).symm
 
 theorem normalMatroid_agrees (P : Presentation n ι) :
     P.normalMatroid = (sourcePresentation P).normalMatroid := by
@@ -622,6 +623,7 @@ theorem coordinate_deeplyMonotone_agrees {n : ℕ} (P : Coordinates.Presentation
   simp only [Coordinates.Presentation.DeeplyMonotone,
     Unimodular.SmoothReflexivePresentation.DeeplyMonotone,
     coordinate_corners_agree, coordinate_carrier_agrees]
+  rfl
 
 theorem coordinate_facet_normals_agree {n : ℕ} (P : Coordinates.Presentation n) :
     P.geometricFacetNormals = (sourceCoordinate P).geometricFacetNormals := by

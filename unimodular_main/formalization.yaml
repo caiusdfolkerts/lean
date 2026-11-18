@@ -46,14 +46,14 @@ review:
   status: unchecked
   notes: >-
     Exact322-line Challenge passed canonical elaboration in run44380113477.
-    Full run44382055490 built the reachable original proof imports but the
-    Solution could not load a legacy free-support Partition alongside Mathlib's
-    distinct fixed-support Partition. This repair alpha-renames only that
-    legacy type/namespace and its10 materialized dependent modules, preserving
-    every constructor, field, proof body and original source copy. Challenge,
-    all12 selected statements, Solution and canonical pins remain unchanged.
-    The repaired import closure and actual Solution remain unelaborated; no
-    full Comparator, NanoDa, registry or peer-review pass is claimed.
+    Full run44386770990 passed the repaired legacy-partition import collision
+    and built all reachable original proof imports through OriginalPolytopeNetworks.
+    Its complete untruncated report contains seven Solution-only errors. This
+    proof-only repair removes two completed-goal steps, closes two definitionally
+    equal vertex-subtype goals, separates the augmentation tuple obligations,
+    and composes the exact independent-set equivalences without over-rewriting.
+    All mathematical statements, definitions, source modules and canonical pins
+    remain unchanged. The repaired Solution and raw comparison are unverified.
 fidelity:
   divergences: >-
     The old free-support partition implementation is renamed PalomarLegacyPartition
