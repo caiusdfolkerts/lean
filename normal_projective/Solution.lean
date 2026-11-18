@@ -1,5 +1,7 @@
 module
 public import normal_projective
+@[expose] public section
+noncomputable section
 
 /-! Original substantive proofs under their original fully qualified names. -/
 
