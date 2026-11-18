@@ -1,0 +1,18 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "HigherSpecht.springer_basis_target",
+    "HigherSpecht.theorem_4_1",
+    "HigherSpecht.corollary_8_1_springer_characteristic",
+    "HigherSpecht.corollary_8_1_griffin_characteristic_all_partitions",
+    "HigherSpecht.mem_prefixShape",
+    "HigherSpecht.prefixShape_le",
+    "HigherSpecht.prefixShape_card"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}
