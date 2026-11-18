@@ -236,15 +236,17 @@ end PaperVerification.Fermion
 
 namespace PalomarFermion
 open PaperVerification.Fermion
-variable {R : Type*} [CommRing R] {n : ℕ}
+universe uPalomar
 
 /-- The paired quotient is free of the printed finite rank over every ring. -/
-theorem pairedFreeRank (d : PairedData (K := R) (n := n)) :
+theorem pairedFreeRank {R : Type uPalomar} [CommRing R] {n : ℕ}
+    (d : PairedData (K := R) (n := n)) :
     Nonempty (PairedQuotient d.beta d.phi d.a d.b ≃ₗ[R]
       (Fin (2^n * (∏ i, d.r i) * d.s.ascFactorial n) → R)) := by sorry
 
 /-- The strict quotient is free of the printed finite rank over every ring. -/
-theorem strictFreeRank (d : StrictData (K := R) (n := n)) :
+theorem strictFreeRank {R : Type uPalomar} [CommRing R] {n : ℕ}
+    (d : StrictData (K := R) (n := n)) :
     Nonempty (StrictQuotient d.beta d.phi ≃ₗ[R]
       (Fin (2^(n-1) * (∏ i, d.r i) * n.factorial) → R)) := by sorry
 

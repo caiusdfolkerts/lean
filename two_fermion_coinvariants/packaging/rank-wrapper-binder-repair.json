@@ -1,0 +1,20 @@
+{
+  "status": "frozen_pending_comparator",
+  "challenge_sha256": "126ae51e461d0b40f9a745cffeb11c50b6769e9292cbe9a17538862804eb8aef",
+  "lines": 253,
+  "bytes": 10770,
+  "changes": [
+    {
+      "path": "source/Challenge.lean",
+      "before_sha256": "60e4dcafa7f6e0b61152be4043bf05c3e0ede892f3217cb4024773d83160e895",
+      "after_sha256": "a3722031b3b4a7ed9308a5339bc9c03a4e53aed84f37709d30f92ff8ff55ebfb"
+    },
+    {
+      "path": "source/Solution.lean",
+      "before_sha256": "aa64075ee013e04cc83d1b2d3b65c41d582b982ab2645157c60f35e0c2a6449d",
+      "after_sha256": "1cc5ae7cd06420f253c6cddeb4a2117107b683e641439456e262931a08aeddb7"
+    }
+  ],
+  "reason": "Original paired/strict source basis endpoints now passed Comparator, but fresh rank wrapper metadata failed. Both fresh wrappers now use the same explicit named universe and complete binder heads in Challenge/Solution; their types and actual source projection proofs are preserved. Exact cause of former raw mismatch is not claimed established.",
+  "prior_failure_run": "44339093058"
+}

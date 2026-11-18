@@ -340,7 +340,7 @@
       "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf#page=22"
     },
     {
-      "paper_result": "Original-data correspondence for §7",
+      "paper_result": "Original-data correspondence for \u00a77",
       "paper_file": "paper.pdf",
       "paper_pdf_pages": [],
       "declarations": [
@@ -423,7 +423,7 @@
       "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf"
     },
     {
-      "paper_result": "§8.1: invariant-generated ideals",
+      "paper_result": "\u00a78.1: invariant-generated ideals",
       "paper_file": "paper.pdf",
       "paper_pdf_pages": [],
       "declarations": [
@@ -476,7 +476,7 @@
       "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf"
     },
     {
-      "paper_result": "§8.1 and equation (20): bases",
+      "paper_result": "\u00a78.1 and equation (20): bases",
       "paper_file": "paper.pdf",
       "paper_pdf_pages": [],
       "declarations": [
@@ -574,7 +574,7 @@
       "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf"
     },
     {
-      "paper_result": "§8.1: full Hilbert formulas",
+      "paper_result": "\u00a78.1: full Hilbert formulas",
       "paper_file": "paper.pdf",
       "paper_pdf_pages": [],
       "declarations": [
@@ -642,7 +642,7 @@
       "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf"
     },
     {
-      "paper_result": "§8.1: parameter fields",
+      "paper_result": "\u00a78.1: parameter fields",
       "paper_file": "paper.pdf",
       "paper_pdf_pages": [],
       "declarations": [
@@ -710,7 +710,7 @@
       "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf"
     },
     {
-      "paper_result": "§8.1: Lentfer identifications",
+      "paper_result": "\u00a78.1: Lentfer identifications",
       "paper_file": "paper.pdf",
       "paper_pdf_pages": [],
       "declarations": [
@@ -843,7 +843,7 @@
       "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf#page=25"
     },
     {
-      "paper_result": "§8.2 and equation (22)",
+      "paper_result": "\u00a78.2 and equation (22)",
       "paper_file": "paper.pdf",
       "paper_pdf_pages": [],
       "declarations": [
@@ -896,7 +896,7 @@
       "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf"
     },
     {
-      "paper_result": "§8.2: Schur decomposition",
+      "paper_result": "\u00a78.2: Schur decomposition",
       "paper_file": "paper.pdf",
       "paper_pdf_pages": [],
       "declarations": [
@@ -964,7 +964,7 @@
       "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf"
     },
     {
-      "paper_result": "§8.3 and equation (23)",
+      "paper_result": "\u00a78.3 and equation (23)",
       "paper_file": "paper.pdf",
       "paper_pdf_pages": [],
       "declarations": [
@@ -1004,15 +1004,16 @@
   ],
   "known_gaps": [
     "The exterior-Hilbert, associated-graded, flat-family and fiber clauses of Theorems 1.1 and 1.2 still require independent extraction.",
-    "Principal local-structure and equivariant/character results in Sections 7–8 remain unextracted.",
+    "Principal local-structure and equivariant/character results in Sections 7\u20138 remain unextracted.",
     "The exact Lean4.36.0-rc2 / Mathlib428aa8288d061ec3ae75c1b85ac178e2cb9def23 environment has not been provisioned or checked locally."
   ],
   "checks": {
     "source_copy": "complete including retained reading files and licenses",
-    "build": "not_run",
-    "comparator": "not_run",
-    "nanoda": "not_run",
-    "editorial_review": "not_run"
+    "build": "not_run_for_current_hash",
+    "comparator": "not_run_for_current_hash",
+    "nanoda": "not_run_for_current_hash",
+    "editorial_review": "not_run_for_current_hash",
+    "challenge_elaboration": "not_run_for_current_hash"
   },
   "current_selection": "The exact monomial-basis clauses of Theorems 1.1 and 1.2 and their all-ring finite free ranks are selected.",
   "selected_wrapper_provenance": [
@@ -1044,11 +1045,18 @@
   },
   "challenge": {
     "path": "source/Challenge.lean",
-    "sha256": "3bc938a1f4760fd028025fc1f0f2d659ec808ec02a75785a4255deb3e2ca3697",
-    "physical_lines": 246,
-    "bytes": 10590,
-    "local_elaboration": "not_yet_passed",
-    "solution_build": "not_run",
-    "comparator": "not_run"
-  }
+    "sha256": "126ae51e461d0b40f9a745cffeb11c50b6769e9292cbe9a17538862804eb8aef",
+    "physical_lines": 253,
+    "bytes": 10770,
+    "local_elaboration": "not_run_for_current_hash",
+    "solution_build": "not_run_for_current_hash",
+    "comparator": "not_run_for_current_hash"
+  },
+  "packaging_changes": [
+    {
+      "kind": "literal_interface_repair",
+      "evidence": "packaging/endpoint-context-repair.json",
+      "description": "Exact current source/context correction and hash-bound pending validation receipt."
+    }
+  ]
 }
