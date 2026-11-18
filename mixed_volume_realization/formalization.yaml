@@ -55,9 +55,11 @@ automation:
 review:
   status: unchecked
   notes: >-
-    Source statements and paper were inspected during packaging. No independent
-    human review, new complete build, Comparator success, NanoDa success or
-    Palomar registration is claimed by this metadata.
+    Source statements and the paper were inspected. The corrected independent
+    868-line Challenge passed canonical elaboration in run 44389397024 at
+    SHA256 5d680230128cbf4b33c421181d8d1ae02a12844b946839fdb7c668fa731a18e5.
+    The corrected source wrappers, full Comparator and mandatory kernels remain
+    pending. No independent human review or registry acceptance is claimed.
 status:
   notes: >-
     Prepared from caiusdfolkerts/research at commit
@@ -70,9 +72,13 @@ fidelity:
     are supplied by Solution through Comparator definition_names. The uniform
     theorem constrains their values for every dimension, valid rational input
     representation, stochastic initial row and threshold in (0,1).
-    The Challenge, Solution, Comparator configuration and every original paper
-    source are byte-identical to the preceding snapshot. This separate candidate
-    adds only the exact recursive proof-source Tau Ceti import closure and its
-    attribution, and changes Lake wiring to build it locally against the same
-    Mathlib and Lean pins. No new complete build or independent kernel replay
-    has yet been established for this candidate.
+    The exact recursive proof-source Tau Ceti closure and attribution remain
+    vendored against the unchanged Mathlib and Lean pins. Following the failed
+    full snapshot and measured raw/type diagnostics, literal evaluation now
+    takes the complete rational family as an explicit argument, with actual
+    source equality proofs in Solution. The measured characteristic-zero proof
+    and exact label bounds have named genuine support statements. The ordered
+    word product uses the same nil/cons recurrence through canonical List.rec;
+    its original recurrence proofs are retained. These changes preserve every
+    geometric, input, output and algorithm hypothesis. The corrected Challenge passed its canonical-only check; corrected source
+    wrappers, full Comparator and independent kernels remain pending.

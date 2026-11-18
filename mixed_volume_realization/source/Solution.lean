@@ -17,6 +17,32 @@ noncomputable section
 open Set MeasureTheory Matrix Filter Metric
 open scoped BigOperators Pointwise Topology
 
+namespace PalomarMixedVolume.LiteralEvaluation
+universe uEval
+/-- A named genuine characteristic-zero witness fixes the measured implicit proof argument. -/
+theorem realCharZero : CharZero ℝ := by infer_instance
+/-- Literal evaluation of every ordinary coefficient of a supplied rational
+polynomial family. The family is an explicit argument, not a hidden data value. -/
+def evaluate {σ : Type uEval} {n d : ℕ}
+    (family : VolumePolynomials.MultiIndex n d → MvPolynomial σ ℚ)
+    (a : σ → ℝ) : VolumePolynomials.Coefficients n d :=
+  letI : CharZero ℝ := realCharZero
+  fun α => MvPolynomial.eval₂ (algebraMap ℚ ℝ) a (family α)
+end PalomarMixedVolume.LiteralEvaluation
+
+namespace PalomarMixedVolume.LiteralEvaluation
+/-- Equality to the source uniform evaluator for its actual complete family. -/
+private theorem uniform_eq {s m : ℕ} (A : MixedVolume.AutomatonMoments.RationalData s m)
+    (p : Fin m → ℝ) (theta : ℝ) :
+    evaluate (MixedVolume.UniformQuadratic.coefficientSymbol A)
+      (MixedVolume.RationalReduction.assignment p theta) =
+      MixedVolume.UniformQuadratic.coefficientMap A p theta := by rfl
+/-- Whole-function equality to the actual scalar-section coefficient map. -/
+private theorem scalar_eq :
+    evaluate MixedVolume.ScalarSection.rationalCoefficient =
+      MixedVolume.ScalarSection.coefficientMap := by rfl
+end PalomarMixedVolume.LiteralEvaluation
+
 section
 open VolumePolynomials MixedVolume MixedVolume.MainResults MixedVolume.CoefficientCoding MixedVolume.Completeness MixedVolume.AutomatonWords
 open MixedVolume.AutomatonMoments MixedVolume.GeneralLocus
@@ -64,15 +90,16 @@ theorem theorem_4_3 :
           (Represented.decode result).2.length =
             RationalExtraction.interpolationSize (GeneralLocus.numberOfBodies s m) 3 ∧
           UniformEncoding.decodedArray (GeneralLocus.numberOfBodies s m) result =
-            UniformQuadratic.coefficientMap A (fun j => (p j : ℝ)) (theta : ℝ)) ∧
+            PalomarMixedVolume.LiteralEvaluation.evaluate (UniformQuadratic.coefficientSymbol A) (RationalReduction.assignment (fun j => (p j : ℝ)) (theta : ℝ))) ∧
     (∀ (s m : ℕ) (A : AutomatonMoments.RationalData s m) (hs : 0 < s),
       (∀ a : MultiIndex (GeneralLocus.numberOfBodies s m) 3,
         (UniformQuadratic.coefficientSymbol A a).totalDegree ≤ 2) ∧
       (∀ p : Fin m → ℝ, AutomatonWords.ProbabilityRow p →
         ∀ theta : ℝ, 0 < theta → theta < 1 →
-          (UniformQuadratic.coefficientMap A p theta ∈
+          (PalomarMixedVolume.LiteralEvaluation.evaluate (UniformQuadratic.coefficientSymbol A) (RationalReduction.assignment p theta) ∈
             VolumeLocus (GeneralLocus.numberOfBodies s m) 3 ↔
-              A.toReal.UniversalCutpoint p theta))) := MixedVolume.MainResults.theorem_4_3
+              A.toReal.UniversalCutpoint p theta))) := by
+  simpa only [PalomarMixedVolume.LiteralEvaluation.uniform_eq] using MixedVolume.MainResults.theorem_4_3
 end PalomarMixedVolume.MainResults
 end
 
@@ -96,13 +123,14 @@ open MixedVolume.ScalarPolynomial MvPolynomial
 namespace PalomarMixedVolume.ScalarSection
 theorem theorem_6_1 :
     (∀ α, (rationalCoefficient α).totalDegree ≤ 2) ∧
-      coefficientMap ⁻¹' VolumeLocus 12 3 = DyadicCone.cone ∧
+      PalomarMixedVolume.LiteralEvaluation.evaluate rationalCoefficient ⁻¹' VolumeLocus 12 3 = DyadicCone.cone ∧
       (∀ (k : ℕ) (R : ℝ), 0 < R →
         ∃ a : Fin 3 → ℝ, ∃ δ : ℝ, 0 < δ ∧
           a ∈ DyadicCone.plane k ∩ Metric.ball 0 R ∧
           ∀ b, dist b a < δ → b ∈ DyadicCone.plane k →
             b ∈ frontier DyadicCone.cone ∩ Metric.ball 0 R) ∧
-      ¬ TauCeti.IsSemialgebraic (VolumeLocus 12 3) := MixedVolume.ScalarSection.theorem_6_1
+      ¬ TauCeti.IsSemialgebraic (VolumeLocus 12 3) := by
+  simpa only [PalomarMixedVolume.LiteralEvaluation.scalar_eq] using MixedVolume.ScalarSection.theorem_6_1
 end PalomarMixedVolume.ScalarSection
 end
 

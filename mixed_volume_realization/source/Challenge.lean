@@ -398,9 +398,8 @@ structure Data (s m : ℕ) where
 namespace Data
 variable {s m : ℕ} (A : Data s m)
 /-- The ordered product of transition matrices along a finite word. -/
-def wordMatrix (A : Data s m) : Word s → Matrix (Fin m) (Fin m) ℝ
-  | [] => 1
-  | a :: w => A.P a * wordMatrix A w
+def wordMatrix (A : Data s m) : Word s → Matrix (Fin m) (Fin m) ℝ :=
+  List.rec 1 (fun a _ product => A.P a * product)
 /-- The vector of accepting values after the word. -/
 def value (w : Word s) (j : Fin m) : ℝ := (A.wordMatrix w *ᵥ A.f) j
 /-- The actual acceptance value of the input probability row. -/
@@ -563,6 +562,19 @@ def decodedArray (n : ℕ) (result : Code Output) : Coefficients n 3 :=
   fun a => ((decode result).2.getD (RationalExtraction.coefficientCode a) 0 : ℝ)
 end MixedVolume.UniformEncoding
 
+namespace PalomarMixedVolume.LiteralEvaluation
+universe uEval
+/-- A named genuine characteristic-zero witness fixes the measured implicit proof argument. -/
+theorem realCharZero : CharZero ℝ := by infer_instance
+/-- Literal evaluation of every ordinary coefficient of a supplied rational
+polynomial family. The family is an explicit argument, not a hidden data value. -/
+def evaluate {σ : Type uEval} {n d : ℕ}
+    (family : VolumePolynomials.MultiIndex n d → MvPolynomial σ ℚ)
+    (a : σ → ℝ) : VolumePolynomials.Coefficients n d :=
+  letI : CharZero ℝ := realCharZero
+  fun α => MvPolynomial.eval₂ (algebraMap ℚ ℝ) a (family α)
+end PalomarMixedVolume.LiteralEvaluation
+
 namespace MixedVolume.UniformQuadratic
 open AutomatonMoments GeneralLocus RationalReduction VolumePolynomials
 variable {s m : ℕ}
@@ -572,10 +584,6 @@ the exact computed output, and equivalence with universal cutpoint acceptance
 for all stochastic initial rows and thresholds in (0,1). -/
 def coefficientSymbol (A : RationalData s m) (a : MultiIndex (numberOfBodies s m) 3) :
     MvPolynomial (Parameter m) ℚ := by sorry
-/-- Literal evaluation of the supplied rational polynomial family at the probability row and threshold. -/
-def coefficientMap (A : RationalData s m) (p : Fin m → ℝ) (theta : ℝ) :
-    Coefficients (numberOfBodies s m) 3 :=
-  fun a => MvPolynomial.aeval (assignment p theta) (coefficientSymbol A a)
 end MixedVolume.UniformQuadratic
 
 namespace MixedVolume.FixedSection
@@ -589,10 +597,14 @@ namespace MixedVolume.ScalarPolynomial
 abbrev Label := Fin 12
 /-- Three real scalar parameters. -/
 abbrev Parameter := Fin 3
+/-- Exact state-label constructor bound. -/
+theorem stateLabel_bound (i : Parameter) : 5 + i.val < 12 := by omega
 /-- The three state-body labels. -/
-def stateLabel (i : Parameter) : Label := ⟨5 + i.val, by omega⟩
+def stateLabel (i : Parameter) : Label := ⟨5 + i.val, stateLabel_bound i⟩
+/-- Exact image-label constructor bound. -/
+theorem imageLabel_bound (i : Parameter) : 8 + i.val < 12 := by omega
 /-- The three image-body labels. -/
-def imageLabel (i : Parameter) : Label := ⟨8 + i.val, by omega⟩
+def imageLabel (i : Parameter) : Label := ⟨8 + i.val, imageLabel_bound i⟩
 /-- The final deficit-body label. -/
 def deficitLabel : Label := 11
 /-- The literal three dyadic rates 1, 1/2 and 1/4. -/
@@ -725,9 +737,6 @@ def rationalCoefficient (α : MultiIndex 12 3) : MvPolynomial Parameter ℚ :=
     C ((rationalLinearBody 1).coeff (exponent α)) * X 1 -
     C ((rationalLinearBody 2).coeff (exponent α)) * X 2 +
     C (rationalQuadraticBody.coeff (exponent α)) * quadratic (fun i => X i)
-/-- Literal evaluation of the exact complete rational quadratic coefficient family. -/
-def coefficientMap (a : Parameter → ℝ) : Coefficients 12 3 :=
-  fun α => eval₂ (algebraMap ℚ ℝ) a (rationalCoefficient α)
 end MixedVolume.ScalarSection
 
 namespace MixedVolume.DyadicCone
@@ -795,13 +804,13 @@ theorem theorem_4_3 :
           (Represented.decode result).2.length =
             RationalExtraction.interpolationSize (GeneralLocus.numberOfBodies s m) 3 ∧
           UniformEncoding.decodedArray (GeneralLocus.numberOfBodies s m) result =
-            UniformQuadratic.coefficientMap A (fun j => (p j : ℝ)) (theta : ℝ)) ∧
+            PalomarMixedVolume.LiteralEvaluation.evaluate (UniformQuadratic.coefficientSymbol A) (RationalReduction.assignment (fun j => (p j : ℝ)) (theta : ℝ))) ∧
     (∀ (s m : ℕ) (A : AutomatonMoments.RationalData s m) (hs : 0 < s),
       (∀ a : MultiIndex (GeneralLocus.numberOfBodies s m) 3,
         (UniformQuadratic.coefficientSymbol A a).totalDegree ≤ 2) ∧
       (∀ p : Fin m → ℝ, AutomatonWords.ProbabilityRow p →
         ∀ theta : ℝ, 0 < theta → theta < 1 →
-          (UniformQuadratic.coefficientMap A p theta ∈
+          (PalomarMixedVolume.LiteralEvaluation.evaluate (UniformQuadratic.coefficientSymbol A) (RationalReduction.assignment p theta) ∈
             VolumeLocus (GeneralLocus.numberOfBodies s m) 3 ↔
               A.toReal.UniversalCutpoint p theta))) := by sorry
 end PalomarMixedVolume.MainResults
@@ -829,7 +838,7 @@ namespace PalomarMixedVolume.ScalarSection
 /-- Theorem 6.1 of paper.pdf. -/
 theorem theorem_6_1 :
     (∀ α, (rationalCoefficient α).totalDegree ≤ 2) ∧
-      coefficientMap ⁻¹' VolumeLocus 12 3 = DyadicCone.cone ∧
+      PalomarMixedVolume.LiteralEvaluation.evaluate rationalCoefficient ⁻¹' VolumeLocus 12 3 = DyadicCone.cone ∧
       (∀ (k : ℕ) (R : ℝ), 0 < R →
         ∃ a : Fin 3 → ℝ, ∃ δ : ℝ, 0 < δ ∧
           a ∈ DyadicCone.plane k ∩ Metric.ball 0 R ∧

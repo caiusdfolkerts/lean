@@ -202,9 +202,8 @@ namespace Data
 
 variable {s m : ℕ} (A : Data s m)
 
-def wordMatrix (A : Data s m) : Word s → Matrix (Fin m) (Fin m) ℝ
-  | [] => 1
-  | a :: w => A.P a * wordMatrix A w
+def wordMatrix (A : Data s m) : Word s → Matrix (Fin m) (Fin m) ℝ :=
+  List.rec 1 (fun a _ product => A.P a * product)
 
 @[simp] theorem wordMatrix_nil : A.wordMatrix [] = 1 := rfl
 @[simp] theorem wordMatrix_cons (a : Fin s) (w : Word s) :

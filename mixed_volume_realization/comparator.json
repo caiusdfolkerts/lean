@@ -11,7 +11,10 @@
     "MixedVolume.RationalCode.eval_surjective",
     "MixedVolume.EffectiveSigns.nonnegative_primrec",
     "MixedVolume.EffectiveSigns.allNonnegative_primrec",
-    "MixedVolume.CoefficientCoding.nonnegative_primrec"
+    "MixedVolume.CoefficientCoding.nonnegative_primrec",
+    "PalomarMixedVolume.LiteralEvaluation.realCharZero",
+    "MixedVolume.ScalarPolynomial.stateLabel_bound",
+    "MixedVolume.ScalarPolynomial.imageLabel_bound"
   ],
   "definition_names": [
     "MixedVolume.UniformEncoding.program",

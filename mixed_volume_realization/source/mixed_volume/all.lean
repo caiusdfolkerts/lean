@@ -31,8 +31,12 @@ open scoped BigOperators
 abbrev Label := Fin 12
 abbrev Parameter := Fin 3
 
-def stateLabel (i : Parameter) : Label := ⟨5 + i.val, by omega⟩
-def imageLabel (i : Parameter) : Label := ⟨8 + i.val, by omega⟩
+/-- Exact state-label constructor bound. -/
+theorem stateLabel_bound (i : Parameter) : 5 + i.val < 12 := by omega
+def stateLabel (i : Parameter) : Label := ⟨5 + i.val, stateLabel_bound i⟩
+/-- Exact image-label constructor bound. -/
+theorem imageLabel_bound (i : Parameter) : 8 + i.val < 12 := by omega
+def imageLabel (i : Parameter) : Label := ⟨8 + i.val, imageLabel_bound i⟩
 def deficitLabel : Label := 11
 
 def rate (i : Parameter) : ℚ :=
