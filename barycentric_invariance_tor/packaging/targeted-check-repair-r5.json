@@ -1,0 +1,19 @@
+{
+  "status": "frozen_pending_corrected_challenge_diagnostic",
+  "challenge_sha256": "2f2215d72a13adb7fbe1cb368ee3c3469e7929981b7c12de19b68d28c489266c",
+  "lines": 827,
+  "bytes": 60398,
+  "prior_failure_run": "44346428523",
+  "repairs": [
+    "Open the DirectSum notation scope in both independent wrapper modules.",
+    "Remove unused FilteredHomology open from an earlier dependency group.",
+    "Select the actual specified parameter algebra module action explicitly, preventing unrelated quotient-module typeclass search. The canonical Algebra.toModule value is identical in Challenge and source."
+  ],
+  "source_change": {
+    "path": "source/theorem12/PalomarPart002.lean",
+    "before_sha256": "c5fa7e209068ad1ad778439b9f93325ffc3fd6e58317a3bca37387420e19f2aa",
+    "after_sha256": "238eb81562d188d1e5d3a63ae0e61b4b8195262ef585669afaa9232fa39aa7bc",
+    "original_mathematical_action_unchanged": true
+  },
+  "proof_bodies_changed": false
+}

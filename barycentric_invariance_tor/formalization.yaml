@@ -1,0 +1,68 @@
+version: v0.4
+project:
+  name: 'Barycentric invariance: homogeneous Tor and rank-selected cohomology'
+  description: For every field and finite simplicial poset of bounded rank, the associated
+    graded of each actual homogeneous parameter Koszul homology group of its face
+    ring is the direct sum of ordinary rank-selected reduced cohomology in the stated
+    degrees. The filtration has the explicit finite bound 2*d*j+1. The actual total
+    parameter complex is also compared with Mathlib derived Tor; the Solution uses
+    the existing filtered identification of homogeneous Koszul homology with ordinary
+    internal Tor. Equivariance, products, relative pairs and representation-group
+    consequences are outside this selection.
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.CO
+  - math.AC
+  msc2020:
+  - 13F55
+  - 05E45
+sources:
+- type: paper
+  title: Barycentric invariance and universal parameters for face rings
+  authors:
+  - Caius Folkerts
+  relationship: formalizes
+  author_endorsement: participated
+  url: https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/barycentric_invariance/paper.pdf
+  note: 'Exact included paper SHA-256: 44902437462f2861ab65c112f77ec1f19e594753d3c9b277d9adcb63c6e523e4.
+    Scope and declaration locations are recorded in map.json; novelty is not independently
+    established.'
+automation:
+  methods:
+  - method: agent
+    tool_setup: OpenAI Codex
+    notes: Agent-assisted extraction of exact source data and theorem types, ordinary
+      derived-Tor/homogeneous-Koszul bridge packaging, command/context and scope migration
+      repairs. Current Challenge-only canonical elaboration passed; full validation
+      pending.
+  - method: other
+    tool_setup: Historical AI assistance reported in the included paper
+    notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing
+      its proofs. The exact model roles and extent of historical Lean automation have
+      not been reconstructed from the snapshot.
+review:
+  status: unchecked
+  notes: Paper, README and actual theorem12 source inspected. Current871-line Challenge
+    passed canonical-only remote elaboration in run44356335164. All chain, coefficient,
+    inverse-limit, quotient and cohomology data retain their original semantics/proofs;
+    source uses the actual filtered ordinary-Tor equivalence. This does not establish
+    Source/Solution, Comparator or independent replay success.
+scope:
+  known_gaps:
+  - The full group-equivariant, multiplicative, relative-pair and Grothendieck-group
+    clauses of Theorem1.2 remain required uncovered goals.
+  - Other main paper results use separate configurations because theorem12/theorem13/theorem94
+    independently redeclare their core.
+  - The exact current Challenge passed canonical remote elaboration; Source/Solution
+    build, Comparator, independent replay and editorial review are pending.
+  notes: The submitted project contains the substantive historical proof development
+    copied from the pinned source snapshot; this is not a thin wrapper. Historical
+    upstream dependencies and license notices are retained. See map.json for exact
+    proposed selections and unresolved source mapping.
+  current_selection: The non-equivariant homogeneous Koszul formulation of Theorem1.2,
+    explicit finite filtration bound, and genuine total derived-Tor/Koszul comparison.

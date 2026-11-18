@@ -1,0 +1,19 @@
+{
+  "status": "frozen_pending_corrected_challenge_diagnostic",
+  "challenge_sha256": "8c9b6c288905b6a01755e0994afc8fb1074bea41a5c64b4bbfce310e0ac08905",
+  "lines": 871,
+  "bytes": 61925,
+  "prior_failure_run": "44351576861",
+  "repair": "Restore literal CoherentEquiv.symm and sectionEquiv definitions with their complete original inverse-limit construction proofs and contexts. The lexical resolver missed e.sectionEquiv.trans because it examined only the final trans suffix. No definition proof or data field replaced with a hole.",
+  "restored_definitions": [
+    {
+      "name": "FourPapers.Universal.CoherentEquiv.symm",
+      "source_line": 6154
+    },
+    {
+      "name": "FourPapers.Universal.CoherentEquiv.sectionEquiv",
+      "source_line": 6168
+    }
+  ],
+  "source_mathematical_changes": false
+}
