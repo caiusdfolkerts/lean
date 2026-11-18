@@ -1,16 +1,16 @@
-# Current Challenge diagnostic revision07
+# Current Challenge diagnostic revision08
 
-Selected inputs are the owner-frozen corrected Deformed952, Alternating741,
-Toric categorical176, and Sublattice main/Rees339 Challenges. Their previous
-failed snapshots and receipts remain immutable. No unchanged passing case or
-unfrozen repair is rerun.
+Selected inputs are owner-frozen corrected Barycentric Tor827, Three-sunlet742,
+Singular896, and standalone Polymatroidal supplement353. All four retry concrete
+source errors; no unchanged passing case is rerun. Prior snapshots and receipts
+remain immutable. The supplement has zero target overlap with the immutable
+passed forty-eight-target main entry; no live core edits are included.
 
 This checks independent Challenge elaboration with intentional theorem
 placeholders. It is not a Solution build, Comparator, mathematical verification,
-full preflight or registry intake. Source toolchains and entire manifests stay
-unchanged. Deformed/Alternating use4.36.0-rc1/Mathlib2cab; Sublattice uses
-4.35.0/Mathlib56a. Toric uses4.35.0 and exact upstream TauCeti1f9/Mathlib074
-closure, with only the original direct TauCeti requirement and no override.
+full preflight or registry intake. Source toolchains and entire manifests remain
+unchanged: Singular4.36.0-rc2/Mathlib1626233; the other three4.35.0/Mathlib56a.
+No dependency or toolchain override occurs.
 
 Current resource policy:8GiB per standard16GiB runner, one compiler per job,
 max-parallel2,40-minute compile bound. Both workflow copies and runner defaults

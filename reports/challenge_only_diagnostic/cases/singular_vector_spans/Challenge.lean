@@ -144,7 +144,8 @@ noncomputable def _root_.Sym.equivFinsuppDegree (ι : Type w) (n : ℕ) : Sym ι
     (Equiv.subtypeEquiv (Equiv.refl _) (fun d => by
       simp [Finsupp.degree_eq_weight_one, Finsupp.weight_apply, Function.id_def]))
 end end TauCeti.SymmetricAlgebra
-namespace TauCeti.SymmetricAlgebra section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.Module universe u v w variable (R : Type u) (M : Type v) [CommSemiring R] [AddCommMonoid M] [Module R M] variable {R M} in
+namespace TauCeti.SymmetricAlgebra section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.Module universe u v w variable (R : Type u) (M : Type v) [CommSemiring R] [AddCommMonoid M] [Module R M]
+variable {R M} in
 /-- A basis of a module induces the monomial basis on each homogeneous component of its symmetric algebra. The basis vectors are indexed by degree-`n` multisets of basis indices. -/
 noncomputable def _root_.Module.Basis.symmetricAlgebraHomogeneous {ι : Type w} (b : Basis ι R M) (n : ℕ) : Basis (Sym ι n) R (homogeneousSubmodule R M n) := by
   exact ((TauCeti.homogeneousMonomialBasis (R := R) n).map
@@ -501,7 +502,8 @@ namespace AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf section set_option 
 /-- The localization of `A` at the homogeneous prime ideal of a point of `Proj A`: the stalks of all twisting sheaves embed into it. -/
 abbrev Localizations (x : ProjectiveSpectrum 𝒜) : Type u := Localization.AtPrime x.asHomogeneousIdeal.toIdeal
 end end AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf
-namespace AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.TopCat _root_.TopologicalSpace _root_.CategoryTheory _root_.Opposite universe u variable {A : Type u} {σ : Type*} [CommRing A] [SetLike σ A] [AddSubgroupClass σ A] variable (𝒜 : ℕ → σ) [GradedRing 𝒜] variable {𝒜} in
+namespace AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.TopCat _root_.TopologicalSpace _root_.CategoryTheory _root_.Opposite universe u variable {A : Type u} {σ : Type*} [CommRing A] [SetLike σ A] [AddSubgroupClass σ A] variable (𝒜 : ℕ → σ) [GradedRing 𝒜]
+variable {𝒜} in
 /-- A dependent function on an open `U` is a *fraction of degree `n`* if it is a fixed fraction `r / s` with `r` and `s` homogeneous, `deg r = deg s + n` and `s` outside every point of `U`. -/
 def IsFraction (n : ℤ) {U : Opens (ProjectiveSpectrum.top 𝒜)} (f : ∀ x : U, Localizations 𝒜 x.1) : Prop := ∃ (i j : ℕ) (_ : (j : ℤ) = i + n) (r : 𝒜 j) (s : 𝒜 i) (s_nin : ∀ x : U, (s : A) ∉ x.1.asHomogeneousIdeal.toIdeal), ∀ x : U, f x = Localization.mk (r : A) ⟨s, s_nin x⟩
 end end AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf
@@ -526,7 +528,8 @@ theorem isLocallyFraction_mul {m n : ℤ} {U : Opens (ProjectiveSpectrum.top �
 /-- Sections of the structure sheaf of `Proj`, viewed in the localizations, are local fractions of degree `0`. -/
 theorem isLocallyFraction_val {U : Opens (ProjectiveSpectrum.top 𝒜)} (a : Γ(Proj 𝒜, U)) : (isLocallyFraction 𝒜 0).pred fun x ↦ (a.1 x).val := by sorry
 end end AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf
-namespace AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.TopCat _root_.TopologicalSpace _root_.CategoryTheory _root_.Opposite universe u variable {A : Type u} {σ : Type*} [CommRing A] [SetLike σ A] [AddSubgroupClass σ A] variable (𝒜 : ℕ → σ) [GradedRing 𝒜] variable {𝒜} variable (𝒜) in
+namespace AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.TopCat _root_.TopologicalSpace _root_.CategoryTheory _root_.Opposite universe u variable {A : Type u} {σ : Type*} [CommRing A] [SetLike σ A] [AddSubgroupClass σ A] variable (𝒜 : ℕ → σ) [GradedRing 𝒜] variable {𝒜}
+variable (𝒜) in
 /-- The local fractions of degree `n` on `U`, as an additive subgroup of all dependent functions into the localizations. -/
 def sectionsAddSubgroup (n : ℤ) (U : Opens (ProjectiveSpectrum.top 𝒜)) :
     AddSubgroup (∀ x : U, Localizations 𝒜 x.1) where
@@ -590,7 +593,8 @@ namespace AlgebraicGeometry.Proj.twistingSheaf section set_option maxRecDepth 20
 /-- Exact source definition of ext. -/
 theorem ext {s t : Γ(twistingSheaf 𝒜 n, U)} (h : ∀ x, s.1 x = t.1 x) : s = t := by sorry
 end end AlgebraicGeometry.Proj.twistingSheaf
-namespace AlgebraicGeometry.Proj.twistingSheaf section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.TopCat _root_.TopologicalSpace _root_.CategoryTheory _root_.Opposite universe u variable {A : Type u} {σ : Type*} [CommRing A] [SetLike σ A] [AddSubgroupClass σ A] variable (𝒜 : ℕ → σ) [GradedRing 𝒜] open AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf variable {𝒜} {n : ℤ} {U V : (Proj 𝒜).Opens} variable (𝒜 U) in
+namespace AlgebraicGeometry.Proj.twistingSheaf section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.TopCat _root_.TopologicalSpace _root_.CategoryTheory _root_.Opposite universe u variable {A : Type u} {σ : Type*} [CommRing A] [SetLike σ A] [AddSubgroupClass σ A] variable (𝒜 : ℕ → σ) [GradedRing 𝒜] open AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf variable {𝒜} {n : ℤ} {U V : (Proj 𝒜).Opens}
+variable (𝒜 U) in
 /-- The multiplication `Γ(U, 𝒪(m)) × Γ(U, 𝒪(n)) → Γ(U, 𝒪(m + n))`, bilinear over the sections of the structure sheaf: sections are multiplied pointwise in the localizations. -/
 def mul (m n : ℤ) : Γ(twistingSheaf 𝒜 m, U) →ₗ[Γ(Proj 𝒜, U)] Γ(twistingSheaf 𝒜 n, U) →ₗ[Γ(Proj 𝒜, U)] Γ(twistingSheaf 𝒜 (m + n), U) := LinearMap.mk₂ Γ(Proj 𝒜, U) (fun s t ↦ ⟨s.1 * t.1, isLocallyFraction_mul s.2 t.2⟩) (fun _ _ _ ↦ ext fun _ ↦ add_mul _ _ _) (fun _ _ _ ↦ ext fun _ ↦ mul_assoc _ _ _) (fun _ _ _ ↦ ext fun _ ↦ mul_add _ _ _) (fun _ _ _ ↦ ext fun _ ↦ mul_left_comm _ _ _)
 end end AlgebraicGeometry.Proj.twistingSheaf
@@ -609,7 +613,8 @@ structure _root_.SheafOfModules.LocalGeneratorsData.IsInvertible
   /-- Every local free basis has at most one element. -/
   basisSubsingleton (i : q.I) : Subsingleton (q.generators i).I
 end end TauCeti.SheafOfModules
-namespace TauCeti.SheafOfModules section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.CategoryTheory universe u v₁ u₁ variable {C : Type u₁} [Category.{v₁} C] {J : GrothendieckTopology C} {R : Sheaf J RingCat.{u}} [∀ Y : C, HasWeakSheafify (J.over Y) AddCommGrpCat.{u}] [∀ Y : C, (J.over Y).WEqualsLocallyBijective AddCommGrpCat.{u}] {M N : SheafOfModules.{u} R} variable (M) in
+namespace TauCeti.SheafOfModules section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.CategoryTheory universe u v₁ u₁ variable {C : Type u₁} [Category.{v₁} C] {J : GrothendieckTopology C} {R : Sheaf J RingCat.{u}} [∀ Y : C, HasWeakSheafify (J.over Y) AddCommGrpCat.{u}] [∀ Y : C, (J.over Y).WEqualsLocallyBijective AddCommGrpCat.{u}] {M N : SheafOfModules.{u} R}
+variable (M) in
 /-- A sheaf of modules is invertible if it is locally free of rank one. The witness is local generator data whose free presentations are isomorphisms and whose basis types have exactly one element. -/
 class IsInvertible : Prop where
   /-- A rank-one local trivialization of the sheaf. -/

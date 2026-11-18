@@ -230,7 +230,7 @@ theorem minimal_closure_finiteLength {B : Family V} (hB : B.Nonempty) {d : ℕ}
     (hloc : ∀ U : Finset V, U ⊂ Finset.univ → IsPolymatroidal (localize B U)) :
     IsPolymatroidal (lowerBaseFamily (lowerRank B) d) ∧
       monomialIdeal k B ≤ monomialIdeal k (lowerBaseFamily (lowerRank B) d) ∧
-      ({f : MvPolynomial V k | IntegralOverIdeal (monomialIdeal k B) f} =
+      ({f : MvPolynomial V k | CommAlg.IntegralOverIdeal (monomialIdeal k B) f} =
         (monomialIdeal k (lowerBaseFamily (lowerRank B) d) : Set (MvPolynomial V k))) ∧
       IsFiniteLength (MvPolynomial V k) (ClosureDifference (k := k) B d) := by sorry
 /-- Proposition4.1: if I differs from J, the actual maximum hole degree t

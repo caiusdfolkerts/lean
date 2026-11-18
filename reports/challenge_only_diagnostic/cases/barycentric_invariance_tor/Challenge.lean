@@ -10,7 +10,7 @@ noncomputable section
 set_option autoImplicit false
 set_option maxRecDepth 4000
 set_option maxHeartbeats 600000
-open scoped BigOperators
+open scoped BigOperators DirectSum
 namespace FourPapers.Universal
 set_option backward.isDefEq.respectTransparency false
 open Classical Finset
@@ -98,7 +98,7 @@ variable (K : Type*) [CommRing K]
 end FourPapers.Universal
 namespace FourPapers.Universal
 set_option backward.isDefEq.respectTransparency false
-open Classical CategoryTheory FourPapers.FilteredHomology
+open Classical CategoryTheory
 universe u
 variable {K : Type u} [CommRing K]
 /-- Literal FourPapers.Universal.complexIncoming; source theorem12.lean:20422. -/ abbrev complexIncoming (C : ChainComplex (ModuleCat.{u} K) ℕ) (i : ℕ) :=
@@ -763,6 +763,9 @@ variable {K P : Type u} [CommRing K] [PartialOrder P] [OrderBot P] [Fintype P]
 variable (K) (hs : IsSimplicialPoset P) (d : ℕ) (hrank : ∀ p : P, faceRank p ≤ d)
 local instance originalParameterAlgebra : Algebra (MvPolynomial (Fin d) K) (FaceRing K hs) :=
   (faceParameterAction K hs d).toRingHom.toAlgebra
+/-- The module action is explicitly the actual parameter algebra's scalar action. -/
+local instance originalParameterModule : Module (MvPolynomial (Fin d) K) (FaceRing K hs) :=
+  @Algebra.toModule _ _ _ _ (originalParameterAlgebra K hs d)
 /-- Literal FourPapers.Universal.originalParameterTor; source theorem12.lean:23219. -/ def originalParameterTor (m : ℕ) : ModuleCat.{u} K :=
   (ModuleCat.restrictScalars (algebraMap K (MvPolynomial (Fin d) K))).obj
     (((Tor (ModuleCat (MvPolynomial (Fin d) K)) m).obj
