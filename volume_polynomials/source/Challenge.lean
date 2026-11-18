@@ -675,13 +675,6 @@ theorem realPoint_zero (d : ℕ) : realPoint (0 : RationalPoint d) = (0 : Space 
 theorem vertices_finite {d : ℕ} (L : List (RationalPoint d)) : (vertices L).Finite := by
   first
   | simpa only [vertices, List.coe_toFinset] using L.toFinset.finite_toSet.image realPoint
-/-- The actual rational convex hull as a compact convex body, with zero among its vertices. -/
-noncomputable def body {d : ℕ} (L : List (RationalPoint d)) (hL : 0 ∈ L) : Body d where
-  carrier := hull L
-  convex' := convex_convexHull ℝ _
-  isCompact' := (vertices_finite L).isCompact_convexHull ℝ
-  nonempty' := ⟨(0 : Space d),
-    subset_convexHull ℝ _ ⟨(0 : RationalPoint d), hL, realPoint_zero d⟩⟩
 end VolumePolynomials.RationalHulls
 
 namespace VolumePolynomials.RationalReconstruction
@@ -703,9 +696,6 @@ instance stateLinearOrder (n d : ℕ) : LinearOrder (State n d) :=
 
 instance stateInhabited (n d : ℕ) : Inhabited (State n d) := ⟨⟨fun _ => [0]⟩⟩
 
-/-- The actual rational hulls returned by a finite output state. -/
-noncomputable def stateBodies {n d : ℕ} (s : State n d) : Fin n → Body d :=
-  fun i => if h : 0 ∈ s.vertices i then body (s.vertices i) h else 0
 /-- Supplied algorithm value: the complete source rational reconstruction
 procedure, including its input-derived radius and finite path selection.
 The compared theorem constrains every output on every valid rational input
@@ -713,6 +703,24 @@ name: convergence of the whole sequence, exact realization, rejection iff
 nonrealizability, and literal rational-hull output semantics. -/
 def reconstruct (n d : ℕ) (a : ℕ → MultiIndex n d → ℚ) (h : ℕ) : Option (State n d) := by sorry
 end VolumePolynomials.RationalReconstruction
+
+namespace VolumePolynomials
+/-- The actual rational hull, with zero among its explicitly listed vertices. -/
+noncomputable def PalomarRationalBody {d : ℕ}
+    (L : List (RationalHulls.RationalPoint d)) (hL : 0 ∈ L) : Body d where
+  carrier := RationalHulls.hull L
+  convex' := convex_convexHull ℝ _
+  isCompact' := (RationalHulls.vertices_finite L).isCompact_convexHull ℝ
+  nonempty' := ⟨(0 : Space d),
+    subset_convexHull ℝ _ ⟨(0 : RationalHulls.RationalPoint d),hL,RationalHulls.realPoint_zero d⟩⟩
+/-- Decode every state as its literal rational hulls, returning the singleton
+zero body precisely for a vertex list omitting zero. The logical branch
+uses the explicitly specified classical decision procedure. -/
+noncomputable def PalomarStateBodies {n d : ℕ}
+    (s : RationalReconstruction.State n d) : Fin n → Body d :=
+  fun i => @dite (Body d) (0 ∈ s.vertices i) (Classical.propDecidable _)
+    (fun h => PalomarRationalBody (s.vertices i) h) (fun _ => 0)
+end VolumePolynomials
 
 open VolumePolynomials VolumePolynomials.Main VolumePolynomials.ShapeConditions
 open VolumePolynomials.Holonomy
@@ -786,12 +794,12 @@ theorem rational_polytope_reconstruction (n d : ℕ) (hd : 0 < d)
     (c ∈ VolumeLocus n d →
       (∀ h, RationalReconstruction.reconstruct n d a h ≠ none) ∧
       ∃ K : Fin n → Body d,
-        Tendsto (fun h => RationalReconstruction.stateBodies
+        Tendsto (fun h => PalomarStateBodies
           ((RationalReconstruction.reconstruct n d a h).getD default)) atTop (𝓝 K) ∧
         Realizes K c) ∧
     (c ∉ VolumeLocus n d ↔ ∃ h, RationalReconstruction.reconstruct n d a h = none) ∧
     (∀ h s, RationalReconstruction.reconstruct n d a h = some s →
       ∀ i, 0 ∈ s.vertices i ∧
-        (RationalReconstruction.stateBodies s i : Set (Space d)) = RationalHulls.hull (s.vertices i)) := by sorry
+        (PalomarStateBodies s i : Set (Space d)) = RationalHulls.hull (s.vertices i)) := by sorry
 
 end PalomarVolumePolynomials

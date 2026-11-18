@@ -21,6 +21,36 @@ namespace VolumePolynomials
 def PalomarForcedSet (lam : ℝ) : Set (ℝ × ℝ) :=
   segmentSeries (Holonomy.weightedOrbit lam)
 end VolumePolynomials
+namespace VolumePolynomials
+/-- The actual rational hull, with zero among its explicitly listed vertices. -/
+noncomputable def PalomarRationalBody {d : ℕ}
+    (L : List (RationalHulls.RationalPoint d)) (hL : 0 ∈ L) : Body d where
+  carrier := RationalHulls.hull L
+  convex' := convex_convexHull ℝ _
+  isCompact' := (RationalHulls.vertices_finite L).isCompact_convexHull ℝ
+  nonempty' := ⟨(0 : Space d),
+    subset_convexHull ℝ _ ⟨(0 : RationalHulls.RationalPoint d),hL,RationalHulls.realPoint_zero d⟩⟩
+/-- Decode every state as its literal rational hulls, returning the singleton
+zero body precisely for a vertex list omitting zero. The logical branch
+uses the explicitly specified classical decision procedure. -/
+noncomputable def PalomarStateBodies {n d : ℕ}
+    (s : RationalReconstruction.State n d) : Fin n → Body d :=
+  fun i => @dite (Body d) (0 ∈ s.vertices i) (Classical.propDecidable _)
+    (fun h => PalomarRationalBody (s.vertices i) h) (fun _ => 0)
+end VolumePolynomials
+
+namespace VolumePolynomials
+/-- Both constructors have the same carrier and differ only by proof fields. -/
+theorem PalomarRationalBody_eq {d : ℕ} (L : List (RationalHulls.RationalPoint d))
+    (hL : 0 ∈ L) : PalomarRationalBody L hL = RationalHulls.body L hL := by rfl
+/-- The full state decoder agrees on every state, including invalid lists. -/
+theorem PalomarStateBodies_eq {n d : ℕ} (s : RationalReconstruction.State n d) :
+    PalomarStateBodies s = RationalReconstruction.stateBodies s := by
+  funext i
+  unfold PalomarStateBodies RationalReconstruction.stateBodies
+  split_ifs <;> rfl
+end VolumePolynomials
+
 open VolumePolynomials VolumePolynomials.Main VolumePolynomials.ShapeConditions
 open VolumePolynomials.Holonomy
 namespace PalomarVolumePolynomials
@@ -81,11 +111,13 @@ theorem rational_polytope_reconstruction (n d : ℕ) (hd : 0 < d)
     (c ∈ VolumeLocus n d →
       (∀ h, RationalReconstruction.reconstruct n d a h ≠ none) ∧
       ∃ K : Fin n → Body d,
-        Tendsto (fun h => RationalReconstruction.stateBodies
+        Tendsto (fun h => PalomarStateBodies
           ((RationalReconstruction.reconstruct n d a h).getD default)) atTop (𝓝 K) ∧
         Realizes K c) ∧
     (c ∉ VolumeLocus n d ↔ ∃ h, RationalReconstruction.reconstruct n d a h = none) ∧
     (∀ h s, RationalReconstruction.reconstruct n d a h = some s →
       ∀ i, 0 ∈ s.vertices i ∧
-        (RationalReconstruction.stateBodies s i : Set (Space d)) = RationalHulls.hull (s.vertices i)) := VolumePolynomials.Main.rational_polytope_reconstruction n d hd c a ha
+        (PalomarStateBodies s i : Set (Space d)) = RationalHulls.hull (s.vertices i)) := by
+  have h := VolumePolynomials.Main.rational_polytope_reconstruction n d hd c a ha
+  simpa only [VolumePolynomials.PalomarStateBodies_eq] using h
 end PalomarVolumePolynomials
