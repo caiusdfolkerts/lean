@@ -1,0 +1,68 @@
+version: v0.4
+project:
+  name: "Undecidability of mixed-volume realization"
+  description: >-
+    Rational membership in the complete forty-four-body cubic coefficient locus is co-recursively enumerable complete even for nonnegative input coefficients, with point-padding extensions. The paper also gives a rational automaton reduction, a fixed section with infinitely many boundary facets, and the explicit three-parameter twelve-body section obstructing semialgebraicity. Each selected statement must retain all exact dimensions, coefficient conventions and computability hypotheses.
+  authors:
+    - Caius Folkerts
+  responsible_maintainers:
+    - Caius Folkerts
+  license: Apache-2.0
+classification:
+  arxiv: [math.MG]
+  msc2020: ["52A38", "03D35"]
+sources:
+  - title: "Undecidability of mixed-volume realization"
+    type: paper
+    authors: [Caius Folkerts]
+    relationship: formalizes
+    location: paper.pdf
+    notes: >-
+      Included paper at the reviewed snapshot. This is a source-based account;
+      the packaging does not assert novelty or independent human review.
+  - title: Supporting polytope proofs adapted from openai/math
+    type: other
+    relationship: adapts
+    url: https://github.com/openai/math/tree/adc7f1241b42e322a6451854ab7e4b4c146bf78a
+    notes: >-
+      Source headers identify supporting polytope geometry adapted from this
+      Apache-2.0 snapshot. Original attribution and applicable licence notices
+      are retained. This credit concerns supporting formal code, rather than
+      a claim that the paper's principal results appeared in that source.
+  - title: Mathlib and Tau Ceti supporting formal libraries
+    type: other
+    relationship: background
+    notes: >-
+      Canonical dependency revisions are pinned in lake-manifest.json.
+      Vendored supporting modules retain their source copyright headers and
+      licences. These libraries supply background formal mathematics.
+automation:
+  methods:
+    - method: agent
+      tool_setup: >-
+        The included paper discloses assistance from GPT-6 Astra, GPT-5.6 Sol
+        and Kimi K3 in developing its proofs. The supplied project snapshot
+        contains the substantive Lean development; exact division of prior
+        formalization work among systems is not reconstructed here.
+    - method: agent
+      tool_setup: >-
+        Palomar Challenge/Solution packaging and source inspection prepared
+        with OpenAI Codex; new wrappers and metadata require fresh verification.
+review:
+  status: unchecked
+  notes: >-
+    Source statements and paper were inspected during packaging. No independent
+    human review, new complete build, Comparator success, NanoDa success or
+    Palomar registration is claimed by this metadata.
+status:
+  notes: >-
+    Prepared from caiusdfolkerts/research at commit
+    e0696fddcd3d10b5d6461e62e9b2f02c4195be37, project mixed_volume_realization.
+    See the source README for the original theorem mapping.
+fidelity:
+  notes: >-
+    All geometry, stochastic automata and exact rational representations are
+    explicit in Challenge. The uniform program and rational coefficient family
+    are supplied by Solution through Comparator definition_names. The uniform
+    theorem constrains their values for every dimension, valid rational input
+    representation, stochastic initial row and threshold in (0,1).
