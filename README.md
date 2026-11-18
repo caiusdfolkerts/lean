@@ -1,3 +1,3 @@
-# Canonical diagnostic revision26
+# Canonical diagnostic revision27
 
-Homo bounded type comparisons and Higher principal+multiplier Corollary4.3 interface. No full-preflight claim.
+Four measured canonical interface repairs. No full-preflight claim or source proof validation.

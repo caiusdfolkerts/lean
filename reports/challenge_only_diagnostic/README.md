@@ -1,3 +1,3 @@
-# Frozen diagnostic revision26
+# Frozen diagnostic revision27
 
-Two exact owner-frozen canonical checks: Homo379 bounded boundary-helper type comparisons and Higher521 original principal results plus literal multiplier Corollary4.3. Boundary observer compares only three actual type pairs and at most18 bounded leaves, no values/project build. Intentional original Challenge placeholders remain scaffolding. Exact canonical metadata, one8GiB compiler/job,max2jobs,40minute compile deadline. No full-preflight/Comparator/intake claim; all prior snapshots immutable.
+Four exact owner-frozen canonical measured repairs: Relative717, Mixed868, Projection633, CubicalLower417. All previous principal hypotheses/results retained; genuine supports and complete literal data-field specifications address actual measured differences. This checks canonical statement interfaces only. Exact canonical metadata, one8GiB compiler/job,max2jobs,40minute compile deadline. Intentional Challenge obligations remain; no source proof/Comparator/kernel/full-preflight/intake claim. All prior snapshots immutable.
