@@ -1,0 +1,92 @@
+name: Frozen clique raw ConstantInfo diagnostic
+run-name: Clique raw diagnostic ${{ github.run_id }}
+# Read-only diagnostic only. No Comparator/full preflight or intake action.
+on:
+  push:
+    branches: [palomar/clique-raw-diagnostic]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - name: Checkout frozen diagnostic snapshot
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Validate complete frozen input inventory
+        run: python3 reports/clique_covered_rigidity/raw-diagnostic/run_remote.py check-inputs
+      - name: Checkout pinned canonical policy helpers
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: PalomarRegistry/PalomarSubmission
+          ref: 14aa8d6b3c2f14a8540605e37144560b9a00e7e7
+          path: pipeline
+          persist-credentials: false
+      - name: Set up pinned Python action
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.11.10"
+      - name: Install pinned parsing dependencies
+        run: python -m pip install --disable-pip-version-check --require-hashes --no-deps -r pipeline/requirements.txt
+      - name: Free ephemeral runner disk
+        uses: jlumbroso/free-disk-space@54081f138730dfa15788a46383842cd2f914a1be
+        with:
+          tool-cache: false
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: false
+          docker-images: true
+          swap-storage: false
+      - name: Install pinned elan release
+        run: |
+          python3 pipeline/scripts/trusted_download.py \
+            --url https://github.com/leanprover/elan/releases/download/v4.2.3/elan-x86_64-unknown-linux-gnu.tar.gz \
+            --output "$RUNNER_TEMP/elan.tar.gz" \
+            --sha256 df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2
+          mkdir "$RUNNER_TEMP/elan"
+          tar -xzf "$RUNNER_TEMP/elan.tar.gz" -C "$RUNNER_TEMP/elan"
+          "$RUNNER_TEMP/elan/elan-init" -y --no-modify-path --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Install exact frozen Lean toolchain
+        run: elan toolchain install leanprover/lean4:v4.35.0
+      - name: Run three probe closures sequentially with one4GiB compiler
+        id: initial
+        continue-on-error: true
+        run: |
+          python3 reports/clique_covered_rigidity/raw-diagnostic/run_remote.py run \
+            --pipeline "$GITHUB_WORKSPACE/pipeline" \
+            --work "$RUNNER_TEMP/clique-work-4096" \
+            --output "$RUNNER_TEMP/clique-evidence/attempt-4096" --memory-mib 4096
+      - name: Resource-only8GiB retry with unchanged inputs
+        id: fallback
+        if: steps.initial.outputs.memory_exhausted == 'true'
+        continue-on-error: true
+        run: |
+          python3 reports/clique_covered_rigidity/raw-diagnostic/run_remote.py run \
+            --pipeline "$GITHUB_WORKSPACE/pipeline" \
+            --work "$RUNNER_TEMP/clique-work-8192" \
+            --output "$RUNNER_TEMP/clique-evidence/attempt-8192" --memory-mib 8192
+      - name: Finalize interrupted attempts and assess diagnostic completion
+        if: always()
+        env:
+          DIAGNOSTIC_STEPS: ${{ toJSON(steps) }}
+        run: |
+          python3 reports/clique_covered_rigidity/raw-diagnostic/finalize_attempts.py \
+            --output "$RUNNER_TEMP/clique-evidence"
+      - name: Upload bounded logs and independent attempt receipts
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: clique-raw-constantinfo
+          path: |
+            ${{ runner.temp }}/clique-evidence/attempt-4096/receipt.json
+            ${{ runner.temp }}/clique-evidence/attempt-4096/*.log
+            ${{ runner.temp }}/clique-evidence/attempt-8192/receipt.json
+            ${{ runner.temp }}/clique-evidence/attempt-8192/*.log
+            ${{ runner.temp }}/clique-evidence/summary.json
+          if-no-files-found: warn
+          retention-days: 30

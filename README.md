@@ -1,5 +1,3 @@
-# Palomar submission: clique_covered_rigidity
+# Clique raw definition diagnostic
 
-Substantive source snapshot of [caiusdfolkerts/research](https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/clique_covered_rigidity), revision `e0696fddcd3d10b5d6461e62e9b2f02c4195be37`.
-
-The complete selected development, paper, metadata, and Comparator configuration are in `clique_covered_rigidity/`. This branch prepares a registry submission; it does not claim registry acceptance. See `clique_covered_rigidity/formalization.yaml` for exact scope and provenance.
+Inspects the precise Lean constant representations behind a Comparator mismatch using frozen source and independent statement probes. This is a diagnostic, not proof acceptance or registry intake. See reports/clique_covered_rigidity/raw-diagnostic/README.md.

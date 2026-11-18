@@ -1,0 +1,24 @@
+{
+  "status": "source_preparation_checks_pass",
+  "python_ast": "pass",
+  "workflow_yaml": "pass",
+  "actions_pinned": "pass",
+  "snapshot_files": 35,
+  "local_lean_compiler_invoked": false,
+  "remote_job_started": false,
+  "note": "Probe Lean code remains uncompiled. Root must review and publish.",
+  "bounded_stream_fixture": {
+    "status": "pass",
+    "full_bytes": 2097152,
+    "bounded_bytes": 1048576,
+    "full_sha256": "5256ec18f11624025905d057d6befb03d77b243511ac5f77ed5e0221ce6d84b5",
+    "truncation_flag": true
+  },
+  "checked_Lean_API_sources": [
+    "Lean.Elab.Command.liftTermElabM",
+    "Lean.Expr.dbgToString",
+    "Lean.Expr Hashable",
+    "Lean.Expr.getUsedConstants",
+    "Lean.InductiveVal fields"
+  ]
+}

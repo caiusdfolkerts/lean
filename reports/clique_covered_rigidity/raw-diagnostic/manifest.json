@@ -1,0 +1,129 @@
+{
+  "status": "source_only_uncompiled",
+  "source_public_commit": "45c788d75b5ce84ed77d5944326eff647603fc27",
+  "toolchain": "leanprover/lean4:v4.35.0",
+  "mathlib_rev": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+  "frozen_package_fingerprints": {
+    "Challenge.lean": "2d1a981eed4cf828b6b46f7273d12f14cfb399239dd2972a79b29560e2a2a1ad",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+    "lake-manifest.json": "5c584a75f5459e2cb135bd03f7063eebb24e169a1a6940563f3884b100636c46",
+    "lakefile.toml": "4d5c19b81a6641f48868449ec0657312c4cbaec35f80e0d34f96db429cb68e7b",
+    "Solution.lean": "9dea2f82a5297a6a5d146c0fa5b2833a4aa9f1d74b37181fb24c199befa11e68",
+    "source/consolidated/rigidity_combined02_part3.lean": "92a8ec7583de91195798d2bad42d011c0de274f1e66ae97ccdfbf4f11924ebf8",
+    "source/consolidated/rigidity_combined_prepared.lean": "9d247611611f64bb78c82e15b019bd09beab126b0921a4b221a62395918a371c"
+  },
+  "six_literal_definitions": [
+    {
+      "short_name": "Vec3",
+      "normalized_text_equal": true,
+      "source_body": "abbrev Vec3 := Fin 3 \u2192 \u211d",
+      "challenge_body": "abbrev Vec3 := Fin 3 \u2192 \u211d"
+    },
+    {
+      "short_name": "Twist",
+      "normalized_text_equal": true,
+      "source_body": "abbrev Twist := Vec3 \u00d7 Vec3",
+      "challenge_body": "abbrev Twist := Vec3 \u00d7 Vec3"
+    },
+    {
+      "short_name": "evaluateTwist",
+      "normalized_text_equal": true,
+      "source_body": "def evaluateTwist (p : Vec3) : Twist \u2192\u2097[\u211d] Vec3 :=\n  LinearMap.snd \u211d Vec3 Vec3 +\n    ((crossProduct (R := \u211d)).flip p).comp (LinearMap.fst \u211d Vec3 Vec3)",
+      "challenge_body": "def evaluateTwist (p : Vec3) : Twist \u2192\u2097[\u211d] Vec3 :=\n  LinearMap.snd \u211d Vec3 Vec3 +\n    ((crossProduct (R := \u211d)).flip p).comp (LinearMap.fst \u211d Vec3 Vec3)"
+    },
+    {
+      "short_name": "PairPinGraph",
+      "normalized_text_equal": true,
+      "source_body": "structure PairPinGraph (B E : Type) where\n  left : E \u2192 B\n  right : E \u2192 B\n  loopless : \u2200 e, left e \u2260 right e",
+      "challenge_body": "structure PairPinGraph (B E : Type) where\n  left : E \u2192 B\n  right : E \u2192 B\n  loopless : \u2200 e, left e \u2260 right e"
+    },
+    {
+      "short_name": "compatibilityOperator",
+      "normalized_text_equal": true,
+      "source_body": "def compatibilityOperator (J : PairPinGraph B E) (p : E \u2192 Vec3) :\n    (B \u2192 Twist) \u2192\u2097[\u211d] (E \u2192 Vec3) :=\n  LinearMap.pi fun e =>\n    (evaluateTwist (p e)).comp\n      (LinearMap.proj (R := \u211d) (\u03c6 := fun _ : B => Twist) (J.left e) -\n        LinearMap.proj (R := \u211d) (\u03c6 := fun _ : B => Twist) (J.right e))",
+      "challenge_body": "def compatibilityOperator (J : PairPinGraph B E) (p : E \u2192 Vec3) :\n    (B \u2192 Twist) \u2192\u2097[\u211d] (E \u2192 Vec3) :=\n  LinearMap.pi fun e =>\n    (evaluateTwist (p e)).comp\n      (LinearMap.proj (R := \u211d) (\u03c6 := fun _ : B => Twist) (J.left e) -\n        LinearMap.proj (R := \u211d) (\u03c6 := fun _ : B => Twist) (J.right e))"
+    },
+    {
+      "short_name": "pinRow",
+      "normalized_text_equal": true,
+      "source_body": "def pinRow (J : PairPinGraph B E) (p : E \u2192 Vec3) (a : E \u00d7 Fin 3) :\n    (B \u2192 Twist) \u2192\u2097[\u211d] \u211d :=\n  (LinearMap.proj a.2).comp ((LinearMap.proj a.1).comp (compatibilityOperator J p))",
+      "challenge_body": "def pinRow (J : PairPinGraph B E) (p : E \u2192 Vec3) (a : E \u00d7 Fin 3) :\n    (B \u2192 Twist) \u2192\u2097[\u211d] \u211d :=\n  (LinearMap.proj a.2).comp ((LinearMap.proj a.1).comp (compatibilityOperator J p))"
+    }
+  ],
+  "contexts": {
+    "Vec3": "Papers.Rigidity; no section variables",
+    "Twist_and_evaluateTwist": "Papers.Rigidity; open Matrix; open scoped Matrix; no section variables",
+    "PairPinGraph_and_compatibilityOperator": "Papers.Rigidity; open scoped BigOperators Classical; PairPinGraph namespace variable {B E : Type}",
+    "pinRow": "Papers.Rigidity.PairPinGraph; variable {B E : Type}; no local opens, instances, include/omit, or noncomputable section"
+  },
+  "challenge_context_difference": "Challenge wraps all declarations in noncomputable section, opens Matrix globally and BigOperators/Matrix/Classical scopes globally. No text evidence establishes an elaborated value difference.",
+  "comparator_fields": [
+    "name",
+    "levelParams",
+    "type",
+    "value",
+    "hints",
+    "safety",
+    "all"
+  ],
+  "excluded_explanations": [
+    "Binder names and binder annotations are ignored by Expr.eqv, the BEq Expr used by ConstantInfo equality.",
+    "No extra Fintype/DecidableEq/Nonempty binders occur in pinRow raw source context.",
+    "The six pending proof-helper normalizations do not explain pure pinRow."
+  ],
+  "remaining_evidence_needed": "Actual source/Challenge ConstantInfo output, especially dependency values/hints and implicit instance arguments.",
+  "snapshot_files": {
+    "Challenge.lean": "2d1a981eed4cf828b6b46f7273d12f14cfb399239dd2972a79b29560e2a2a1ad",
+    "LICENSE": "cacb9b966903a68a7b55e83ee5c5004d9178206d7f6ac5ab61b8b5f15244147f",
+    "NOTICE": "6becd117167b8652540f4b3660c8795c0dd21db900de5fd35c7c2822e738477f",
+    "RawChallengeProbe.lean": "933a47d69e4268d56e2a1e5474fcb6811650a455f628b4f94db54d5abbd742d1",
+    "RawLiteralProbe.lean": "d4fda9e042d1a2df54d079d77c4419c2faee36b6d50b2853ed59fb77d377f355",
+    "RawSourceProbe.lean": "709ce97d13ee91a8b8c7dbff51e0e46e2ef6f9b0568d3106c42ee40add72b69f",
+    "lake-manifest.json": "5c584a75f5459e2cb135bd03f7063eebb24e169a1a6940563f3884b100636c46",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+    "original-lakefile.toml.txt": "4d5c19b81a6641f48868449ec0657312c4cbaec35f80e0d34f96db429cb68e7b",
+    "source/consolidated/pair_pin_progress01.lean": "f549ade7ebc7dd67c966a1ba758fd1a65222db0fd31fc620f945c686c7ccf392",
+    "source/consolidated/pair_pin_progress02.lean": "e6e859906fd4a1aa8d2904914a6be4c678c8997b33b99bffecb9c6af24f3a181",
+    "source/consolidated/rigidity_combined02.lean": "156da87ec85ad3c45f1b5af3bcf940dba7aa0f6e3c0e5e1098b9a86dca5a4619",
+    "source/consolidated/rigidity_combined02_part1.lean": "e6b6b04368b44f7ef91ea3d09a5ca8d70df62852919c8a9d466843d3f9c94f26",
+    "source/consolidated/rigidity_combined02_part2.lean": "11d446494800da33e8d50a617be8a39e94134ac7f390147f6dfc7a630c0c53e8",
+    "source/consolidated/rigidity_combined02_part3.lean": "92a8ec7583de91195798d2bad42d011c0de274f1e66ae97ccdfbf4f11924ebf8",
+    "source/consolidated/rigidity_combined03.lean": "4fb29d6fee18625ab388ecd37010716e08c14ac2d1807c3f99de4dae189caeef",
+    "source/consolidated/rigidity_combined03_part1.lean": "3b1564fb1b7552a0be3383330c049e41dab3532f554a29b46134781122ef8196",
+    "source/consolidated/rigidity_combined03_part2.lean": "bcf856ab0ad2d1ad7c503fbe52538aeb4af19175ffce9b05e3c438cc3df7a19b",
+    "source/consolidated/rigidity_combined04.lean": "5e9e185a48a610e52e7b9653f5e03bda7af50b4ced29047c8ec6fda5a816a2f2",
+    "source/consolidated/rigidity_combined05.lean": "dcfdacf1258a9b23370c56c1e542edb8c3af87340221a7231fc6e179e08e7645",
+    "source/consolidated/rigidity_combined06.lean": "f5fbde9553fa6394ff5e9dcffde7e076969e2e496a6054f636878c7383fecaa4",
+    "source/consolidated/rigidity_combined07.lean": "9403a7c6f1872353b6237d6df4ee9ab99f484ce1eac441ea51ca84f26014ea8a",
+    "source/consolidated/rigidity_combined_prepared.lean": "9d247611611f64bb78c82e15b019bd09beab126b0921a4b221a62395918a371c",
+    "source/consolidated/rigidity_foundations01.lean": "a474a90f07c881921ce75b735a2b94e4a9c30599f074f09bace576e82b49b902",
+    "source/consolidated/rigidity_foundations02.lean": "999569eff217eab96ba91145da44097886d6fcd7a13a717607c8bf8dde891ef5",
+    "source/consolidated/rigidity_generic_tools.lean": "977367208f18b375a7ddb485bfe5ae7f6adb3e294a1be1906b913e99654a1606",
+    "source/consolidated/rigidity_main_recovery01.lean": "decd1c985b56813dc8bb12d71e632ecbb99b199bdb0ae60affee3c9b2a3d077e",
+    "source/consolidated/rigidity_main_recovery01_part1.lean": "cab2d0b3922398bf4f1cd20b30ad2c63255ea80517e98f951f7be02ae82726e8",
+    "source/consolidated/rigidity_main_recovery01_part2.lean": "11cbb23a642b1c577ce53e6a98ab7509fc1272b984f269504b245728f781c5bf",
+    "source/consolidated/rigidity_priority_expectation01.lean": "46dc0bd0cf0ceb65b696c9b439dde1506056bd287878ca75cd0675ae0162e335",
+    "source/papers/rigidity_mode_splitting.lean": "5a0254b25243a211320312ee4b4794ca1df3ab76d47ac7120943dea9300960c6",
+    "source/rigidity.lean": "8ea2ec3e727ec6042a04c9e27a24d4b9009a0892d12e9ce9a774efa4ea3c00b8",
+    "source/verification/check_1.lean": "8a6bd5e959910967b696be3df1d553bf09425d466013ac71d25d23132860001a",
+    "source/verification/internal/checkpoint.lean": "4e47d1edd3382f859e151a121169cbd4840399549691b30ce3d3f51cf1cad3b7",
+    "source/verification/internal/extract.lean": "c83f77669b5aa0bca9ed599bdf9554069efd4f83f4888dbd5e1082cd0a8e6541"
+  },
+  "snapshot_directory": "snapshot",
+  "pipeline_commit": "14aa8d6b3c2f14a8540605e37144560b9a00e7e7",
+  "targets": [
+    "RawChallengeProbe",
+    "RawLiteralProbe",
+    "RawSourceProbe"
+  ],
+  "log_limit_bytes_each": 1048576,
+  "worker_count": 1,
+  "memory_mib_each": 4096,
+  "resource_only_fallback": {
+    "initial_memory_mib": 4096,
+    "retry_memory_mib": 8192,
+    "condition": "explicit Lean memory-exhaustion diagnostic",
+    "separate_workspaces_and_receipts": true,
+    "statement_edits": false
+  }
+}
