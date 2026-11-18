@@ -3,6 +3,12 @@ module
 public import LiteralWishartLaws
 public import TauCeti.Probability.Distributions.Wishart.Nonsingular
 public import TauCeti.Probability.Distributions.Wishart.Inverse.Basic
+import all TauCeti.MeasureTheory.Measure.SymmetricMatrix.Basic
+import all TauCeti.MeasureTheory.Measure.SymmetricMatrix.Lebesgue
+import all TauCeti.Analysis.SpecialFunctions.MultivariateGamma.Basic
+import all TauCeti.Probability.Distributions.Wishart.Nonsingular
+import all TauCeti.MeasureTheory.Measure.SymmetricMatrix.Inv
+import all TauCeti.Probability.Distributions.Wishart.Inverse.Basic
 
 /-! Actual two-module source equality bridge, prepared but uncompiled.
 LiteralWishartLaws must first compile as its own canonical-Mathlib-only module.
@@ -30,10 +36,10 @@ theorem reconstruct_eq (p : ℕ) :
   ext i j
   change (if h : i ≤ j then x ⟨(i, j), h⟩ else x ⟨(j, i), le_of_not_ge h⟩) = _
   by_cases h : i ≤ j
-  · rw [dif_pos h]
-    exact (TauCeti.coe_symmetricCoordinates_symm_apply_of_le x h).symm
-  · rw [dif_neg h]
-    exact (TauCeti.coe_symmetricCoordinates_symm_apply_of_ge x (le_of_not_ge h)).symm
+  · rw [dite_eq_left h]
+    exact (TauCeti.coe_symmetricCoordinates_symm_apply_of_le p x h).symm
+  · rw [dite_eq_right h]
+    exact (TauCeti.coe_symmetricCoordinates_symm_apply_of_ge p x (le_of_not_ge h)).symm
 
 /-- The exact source measure normalization is retained, not only an unspecified
 multiple of Haar measure. -/

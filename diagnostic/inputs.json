@@ -5,7 +5,7 @@
   "tauceti_pin": "06d5bb4e3ebb737dc6538567f5c53bf8800b9362",
   "hashes": {
     "LiteralWishartLaws.lean": "b41395c394ed6935eb32284c0b6e6a7b4f3b7a85e78410f8c4709f2e906540d4",
-    "LiteralWishartLawsSourceBridge.lean": "6049a33c684bff167b235f6c04294de815ad3d5ae2d483e17da96c3ab94b409a",
+    "LiteralWishartLawsSourceBridge.lean": "2050bcc70f60fb82681faac8e95196fa8a20a2e0a874120f7ebfa1d487cc2e08",
     "canonical_runner.py": "0ba060b57e0b91a5bf083229c38ab4dcb6f7fcd7bd42bebdb3ddf4bf3af162a8",
     "lake-manifest.json": "300eaa0ed216e52b46ddf86c28acbaef4a78c623986d47503b9ef4639ecdfd7a",
     "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
