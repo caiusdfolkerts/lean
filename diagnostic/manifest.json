@@ -1908,8 +1908,8 @@
       "sha256": "27b3adaf7ea74a9ee83504b100b1b13ba7919533d8967d431354cbf325be9f38"
     },
     "source/ResidualBatch/Graph.lean": {
-      "bytes": 6544,
-      "sha256": "f391287baa85e13ae03be34270d8c3216b4a799b350d32c21d0c68b107b8b090"
+      "bytes": 6579,
+      "sha256": "6a7520d94fbc0f42a790e084216058c8c0c8ace7b0b3a1f8e867518fac6acfa1"
     },
     "source/ResidualBatch/NodeAndFrame.lean": {
       "bytes": 2392,
@@ -4942,7 +4942,7 @@
         "VertexLinkObstructionData.lean": "source/VertexLinkObstructionData.lean",
         "WitnessGrowthDAG.lean": "source/WitnessGrowthDAG.lean"
       },
-      "source_and_data_bytes": 12133092,
+      "source_and_data_bytes": 12133127,
       "upstream_modules": {
         "BatchedGrowthPruning": {
           "original_path": "source/geometry/batched_growth_pruning.lean",

@@ -36,15 +36,20 @@ theorem core_of_checks {m : Nat} [NeZero m] (packets : Fin m → Packet)
   have h := metaOk i
   obtain ⟨lit, frames, root, leaves⟩ := (by
     simpa only [sideCheck, Bool.and_eq_true_iff] using side i)
-  refine { matrix := D.metadata_checked h, valid := D.valid_of_metadata h,
-    literal := literalFacts_of_checks D.data (allFin_at _ lit), nodes := ?_,
-    leaf_nodup := D.leaves_nodup h, frames := ?_, root_empty := of_decide_eq_true root,
+  refine {
+    matrix := D.metadata_checked h
+    valid := D.valid_of_metadata h
+    literal := literalFacts_of_checks D.data (allFin_at _ lit)
+    nodes := ?_
+    leaf_nodup := D.leaves_nodup h
+    frames := ?_
+    root_empty := of_decide_eq_true root
     leaves_checked := ⟨(packets i).leaf, allFin_at _ leaves⟩ }
   · exact rawNodesOfBatch (fun i => (packets i).data) metaOk nodes i
   · intro f
     exact supported_of_frameCheck D f _ (allFin_at _ frames f)
 
-private def parameterCheck (row : Nat) (p : Packet) : Bool :=
+def parameterCheck (row : Nat) (p : Packet) : Bool :=
   decide (p.data.k = 5) &&
     (allFin (n := 5) (fun j => decide (p.data.data.quota j.val = (rowOfCode row).quota.getD j.val 0)) &&
     (decide (p.data.inputs.requiredEdges = SharedSmallGraph.requiredMask p.complement) &&
@@ -58,7 +63,7 @@ private theorem parameters_of_check (row : Nat) (p : Packet) (ok : parameterChec
   exact ⟨of_decide_eq_true k, fun j => of_decide_eq_true (allFin_at _ quota j),
     of_decide_eq_true required, of_decide_eq_true missing, of_decide_eq_true incidence⟩
 
-private def universeCheck {N : Nat} [NeZero N] (p : Packet) (cells : Fin N → Cell)
+def universeCheck {N : Nat} [NeZero N] (p : Packet) (cells : Fin N → Cell)
     (rows : IncidenceRows N 10 45) (allowed : Nat) : Bool :=
   let emb := (List.finRange p.data.n).map (embedding (N := N) p.data)
   allFin (fun c => decide (p.data.data.cells c = cells (embedding p.data c))) &&
@@ -92,12 +97,12 @@ theorem result_of_rowCheck (row : Nat) (p : Packet) (core : Core p.data)
       (GraphEmbeddingCoverage.six_allowed _) GraphEmbeddingCoverage.six_edges (by simpa using covered)⟩
   · exact of_small _ _ h ⟨p.data, core, hp, coverage_of_check p _ _ _
       (GraphEmbeddingCoverage.small_allowed _) GraphEmbeddingCoverage.small_edges
-      (by simpa only [if_neg h] using covered)⟩
+      (by simpa only [ite_eq_right h] using covered)⟩
 
 def metadataAt {m : Nat} [NeZero m] (p : Fin m → Packet) (j : Nat) : Bool :=
   (p (Fin.ofNat m j)).data.metadataCheck
 
-def checkedMetadata {m : Nat} [NeZero m] (p : Fin m → Packet)
+theorem checkedMetadata {m : Nat} [NeZero m] (p : Fin m → Packet)
     (metadata : Interval (metadataAt p) 0 m) : ∀ i, (p i).data.metadataCheck = true :=
   batch_metadata (fun i => (p i).data) metadata
 
@@ -120,6 +125,6 @@ theorem completeBlock {m : Nat} [NeZero m] (offset row : Nat) (p : Fin m → Pac
   rw [← hk]
   exact result_of_rowCheck row (p j)
     (core_of_checks p (checkedMetadata p metadata) nodes (fin_of_interval _ side) j)
-    (fin_of_interval _ rows j)
+    (fin_of_interval (fun i => rowCheck row (p i)) rows j)
 
 end Papers.RationalityTen.ResidualBatch
