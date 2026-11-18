@@ -161,7 +161,8 @@ theorem parallelAssignment_add (P : ConvexPolytope d) :
   exact (Papers.Polytopes.redrawingSpace (toSource P)).add_mem
 theorem parallelAssignment_smul (P : ConvexPolytope d) :
     ∀ (a : ℝ) {h : Vertex P → E d}, ParallelAssignment P h → ParallelAssignment P (a • h) := by
-  exact (Papers.Polytopes.redrawingSpace (toSource P)).smul_mem
+  intro a h hh
+  exact (Papers.Polytopes.redrawingSpace (toSource P)).smul_mem a hh
 /-- The literal actual-edge parallel assignment subspace. -/
 def redrawingSpace (P : ConvexPolytope d) : Submodule ℝ (Vertex P → E d) where
   carrier := {h | ParallelAssignment P h}
@@ -214,7 +215,8 @@ theorem redrawing_zero_of_two_neighbors {P : ConvexPolytope d}
     (h : redrawingSpace P) {x y z : Vertex P}
     (hxy : GeneralVertexStep P x y) (hxz : GeneralVertexStep P x z)
     (hyz : y ≠ z) (hy : h y = 0) (hz : h z = 0) : h x = 0 := by
-  exact Papers.Polytopes.redrawing_zero_of_two_neighbors h hxy hxz hyz hy hz
+  exact Papers.Polytopes.redrawing_zero_of_two_neighbors (P := toSource P)
+    h (x := x) (y := y) (z := z) hxy hxz hyz hy hz
 /-- An invertible homogeneous representative of a projectivity. -/
 abbrev HomogeneousProjectivity (d : ℕ) := E (d + 1) ≃ₗ[ℝ] E (d + 1)
 /-- Append homogeneous coordinate one. -/
