@@ -64,7 +64,7 @@ def sideSum (n : I → ℕ) : ℕ := ∑ i, n i
 /-- Exact source definition of weight. -/
 def weight {n : I → ℕ} (u : Cell n) : ℕ := rank u * (sideSum n - rank u)
 end end PaperVerification.Segre.Staircase
-namespace PaperVerification.Segre.Monomials section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 set_option autoImplicit false open MvPolynomial open PaperVerification.Segre.Staircase variable {I K : Type*} [Fintype I] [DecidableEq I] [Field K] variable {n : I → ℕ}
+namespace PaperVerification.Segre.Monomials section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 set_option autoImplicit false open _root_.MvPolynomial open PaperVerification.Segre.Staircase variable {I K : Type*} [Fintype I] [DecidableEq I] [Field K] variable {n : I → ℕ}
 /-- Exact source definition of Variables. -/
 abbrev Variables (n : I → ℕ) := Σ i, Fin (n i + 1)
 /-- One copy of the chosen coordinate in each factor. -/
@@ -72,7 +72,7 @@ noncomputable def cellExponent (u : Cell n) : Variables n →₀ ℕ := ∑ i, F
 /-- A literal rank-one Segre coordinate monomial. -/
 noncomputable def cellPolynomial (u : Cell n) : MvPolynomial (Variables n) K := monomial (cellExponent u) 1
 end end PaperVerification.Segre.Monomials
-namespace PaperVerification.Segre.Balanced section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 set_option autoImplicit false open PaperVerification.Segre.Staircase PaperVerification.Segre.Monomials MvPolynomial variable {I K : Type*} [Fintype I] [DecidableEq I] [Field K] {n : I → ℕ}
+namespace PaperVerification.Segre.Balanced section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 set_option autoImplicit false open PaperVerification.Segre.Staircase PaperVerification.Segre.Monomials _root_.MvPolynomial variable {I K : Type*} [Fintype I] [DecidableEq I] [Field K] {n : I → ℕ}
 /-- The multidegree of one factor variable. -/
 def factorWeight (z : Variables n) : I → ℕ := fun i => if z.1 = i then 1 else 0
 /-- Equal degree in all factors. -/
@@ -82,7 +82,7 @@ theorem diagonalDegree_add (q r : ℕ) : diagonalDegree (I := I) (q + r) = diago
 /-- The weighted exponent is exactly the vector of sums in the individual factor blocks. -/
 theorem factorWeight_apply (a : Variables n →₀ ℕ) (i : I) : Finsupp.weight (factorWeight (n := n)) a i = ∑ j : Fin (n i + 1), a ⟨i,j⟩ := by sorry
 end end PaperVerification.Segre.Balanced
-namespace PaperVerification.Segre.RankParameters section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 set_option autoImplicit false open PaperVerification.Segre.Staircase Matrix open scoped Matrix variable {I K : Type*} [Fintype I] [DecidableEq I] [Field K] {n : I → ℕ}
+namespace PaperVerification.Segre.RankParameters section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 set_option autoImplicit false open PaperVerification.Segre.Staircase _root_.Matrix open scoped Matrix variable {I K : Type*} [Fintype I] [DecidableEq I] [Field K] {n : I → ℕ}
 /-- Exact source definition of Ranks. -/
 abbrev Ranks (n : I → ℕ) := Fin (sideSum n + 1)
 /-- The literal comparability graph of the full product of chains. -/
@@ -90,8 +90,10 @@ def chainGraph (n : I → ℕ) : SimpleGraph (Cell n) where
   Adj u v := u ≠ v ∧ (u ≤ v ∨ v ≤ u)
   symm.symm := fun _ _ h => ⟨h.1.symm, h.2.symm⟩
   loopless.irrefl := fun _ h => h.1 rfl
+/-- Exact source definition of chainGraph_decidable. -/
+instance chainGraph_decidable (n : I → ℕ) : DecidableRel (chainGraph n).Adj := fun u v => inferInstanceAs (Decidable (u ≠ v ∧ (u ≤ v ∨ v ≤ u)))
 end end PaperVerification.Segre.RankParameters
-namespace PaperVerification.Segre.HigherPieces section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 set_option autoImplicit false open PaperVerification.Segre.Staircase PaperVerification.Segre.Monomials PaperVerification.Segre.Balanced PaperVerification.Segre.Artinian MvPolynomial variable {I K : Type*} [Fintype I] [DecidableEq I] [Field K] {n : I → ℕ}
+namespace PaperVerification.Segre.HigherPieces section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 set_option autoImplicit false open PaperVerification.Segre.Staircase PaperVerification.Segre.Monomials PaperVerification.Segre.Balanced PaperVerification.Segre.Artinian _root_.MvPolynomial variable {I K : Type*} [Fintype I] [DecidableEq I] [Field K] {n : I → ℕ}
 /-- Exact source definition of wordPolynomial. -/
 noncomputable def wordPolynomial (q : ℕ) (w : Fin q → Cell n) : MvPolynomial (Variables n) K := ∏ j, cellPolynomial (w j)
 /-- Exact source definition of piece. -/
@@ -99,6 +101,15 @@ noncomputable def piece (q : ℕ) : Submodule K (MvPolynomial (Variables n) K) :
 /-- Equality with the entire balanced homogeneous component. -/
 theorem piece_eq_balanced (q : ℕ) : piece (K := K) (n := n) q = weightedHomogeneousSubmodule K (factorWeight (n := n)) (diagonalDegree q) := by sorry
 end end PaperVerification.Segre.HigherPieces
+namespace SymmetricPower section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open scoped TensorProduct universe u v w variable {R ι : Type u} {M : Type v} {N : Type w} variable [CommSemiring R] [AddCommMonoid M] [Module R M] [AddCommMonoid N] [Module R N] variable (f : MultilinearMap R (fun _ : ι ↦ M) N)
+/-- A permutation-invariant multilinear map takes the same value on a pure tensor and on each of its reorderings, so it is constant on the classes of the defining relation of the symmetric power. -/
+public theorem lift_rel (hf : ∀ e : Equiv.Perm ι, f.domDomCongr e = f) : addConGen (Rel R ι M) ≤ AddCon.ker (PiTensorProduct.lift f).toAddMonoidHom := by sorry
+/-- **The universal property of the symmetric tensor power**: a multilinear map that is unchanged by permuting its arguments descends to a linear map on the symmetric power. -/
+noncomputable def lift (hf : ∀ e : Equiv.Perm ι, f.domDomCongr e = f) : Sym[R] ι M →ₗ[R] N where
+  toFun := (addConGen (Rel R ι M)).lift (PiTensorProduct.lift f).toAddMonoidHom (lift_rel f hf)
+  map_add' := map_add _
+  map_smul' r x := AddCon.induction_on x fun x => (PiTensorProduct.lift f).map_smul r x
+end end SymmetricPower
 namespace SymmetricAlgebra section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 universe u v w x variable (R : Type u) [CommSemiring R] variable {M : Type v} {N : Type w} {P : Type x} variable [AddCommMonoid M] [Module R M] variable [AddCommMonoid N] [Module R N] variable [AddCommMonoid P] [Module R P]
 /-- The algebra homomorphism between symmetric algebras induced by a linear map. -/
 noncomputable def map (f : M →ₗ[R] N) : SymmetricAlgebra R M →ₐ[R] SymmetricAlgebra R N := lift ((ι R N).comp f)
@@ -112,14 +123,16 @@ end end SymmetricAlgebra
 namespace TauCeti.SymmetricAlgebra section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 universe u v variable (R : Type u) (M : Type v) [CommSemiring R] [AddCommMonoid M] [Module R M]
 /-- The degree-`n` homogeneous part of `SymmetricAlgebra R M`: the `n`-th power of the range of the canonical generator map. -/
 abbrev homogeneousSubmodule (n : ℕ) : Submodule R (SymmetricAlgebra R M) := LinearMap.range (SymmetricAlgebra.ι R M) ^ n
+/-- A symmetric-algebra generator is homogeneous of degree one. -/
+theorem ι_mem_homogeneousSubmodule (x : M) : SymmetricAlgebra.ι R M x ∈ homogeneousSubmodule R M 1 := by sorry
 /-- The homogeneous submodules form a graded monoid: the unit is homogeneous of degree zero, and multiplication adds degrees. -/
 instance instGradedMonoid : SetLike.GradedMonoid (homogeneousSubmodule R M) := Submodule.nat_power_gradedMonoid (LinearMap.range (SymmetricAlgebra.ι R M))
 end end TauCeti.SymmetricAlgebra
-namespace TauCeti section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open MvPolynomial
+namespace TauCeti section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.MvPolynomial
 /-- The monomial basis of a homogeneous component, indexed by exponent vectors of its degree. -/
 noncomputable def homogeneousMonomialBasis {σ R : Type*} [CommSemiring R] (n : ℕ) : Module.Basis {s : σ →₀ ℕ // s.degree = n} R (homogeneousSubmodule σ R n) := (basisRestrictSupport R {s : σ →₀ ℕ | s.degree = n}).map (LinearEquiv.ofEq _ _ (homogeneousSubmodule_eq_finsupp_supported σ R n).symm)
 end end TauCeti
-namespace TauCeti.SymmetricAlgebra section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open Module universe u v w variable (R : Type u) (M : Type v) [CommSemiring R] [AddCommMonoid M] [Module R M]
+namespace TauCeti.SymmetricAlgebra section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.Module universe u v w variable (R : Type u) (M : Type v) [CommSemiring R] [AddCommMonoid M] [Module R M]
 /-- Exact source definition of map_homogeneousSubmodule_equivMvPolynomial. -/
 theorem map_homogeneousSubmodule_equivMvPolynomial {ι : Type w} (b : Basis ι R M) (n : ℕ) : (homogeneousSubmodule R M n).map (SymmetricAlgebra.equivMvPolynomial b).toLinearMap = MvPolynomial.homogeneousSubmodule ι R n := by sorry
 /-- The restriction of the polynomial equivalence induced by `b` to homogeneous components. -/
@@ -130,11 +143,15 @@ noncomputable def _root_.Sym.equivFinsuppDegree (ι : Type w) (n : ℕ) : Sym ι
   exact (Sym.equivNatSum ι n).trans
     (Equiv.subtypeEquiv (Equiv.refl _) (fun d => by
       simp [Finsupp.degree_eq_weight_one, Finsupp.weight_apply, Function.id_def]))
+end end TauCeti.SymmetricAlgebra
+namespace TauCeti.SymmetricAlgebra section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.Module universe u v w variable (R : Type u) (M : Type v) [CommSemiring R] [AddCommMonoid M] [Module R M] variable {R M} in
 /-- A basis of a module induces the monomial basis on each homogeneous component of its symmetric algebra. The basis vectors are indexed by degree-`n` multisets of basis indices. -/
 noncomputable def _root_.Module.Basis.symmetricAlgebraHomogeneous {ι : Type w} (b : Basis ι R M) (n : ℕ) : Basis (Sym ι n) R (homogeneousSubmodule R M n) := by
   exact ((TauCeti.homogeneousMonomialBasis (R := R) n).map
     (homogeneousSubmoduleEquivMvPolynomial R M b n).symm).reindex
       (Sym.equivFinsuppDegree ι n).symm
+end end TauCeti.SymmetricAlgebra
+namespace TauCeti.SymmetricAlgebra section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.Module universe u v w variable (R : Type u) (M : Type v) [CommSemiring R] [AddCommMonoid M] [Module R M]
 /-- Each homogeneous component of the symmetric algebra of a free module is free, with the monomial basis `Module.Basis.symmetricAlgebraHomogeneous`. -/
 instance instModuleFreeHomogeneousSubmodule [Module.Free R M] (n : ℕ) : Module.Free R (homogeneousSubmodule R M n) := .of_basis ((Module.Free.chooseBasis R M).symmetricAlgebraHomogeneous n)
 /-- Each homogeneous component of the symmetric algebra of a finite free module is finite: its monomial basis is indexed by the degree-`n` multisets of a finite basis. -/
@@ -166,7 +183,7 @@ noncomputable def equivHomogeneous (n : ℕ) : Sym[R]^n M ≃ₗ[R] TauCeti.Symm
     obtain ⟨x, hx⟩ := (range_toSymmetricAlgebra R M n).ge p.property
     exact ⟨x, Subtype.ext hx⟩
 end end TauCeti.SymmetricPower
-namespace PaperVerification.Segre.SymmetricRealization section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 set_option autoImplicit false open PaperVerification.Segre.Staircase PaperVerification.Segre.Monomials PaperVerification.Segre.Balanced PaperVerification.Segre.HigherPieces MvPolynomial Module open scoped TensorProduct variable {I K : Type*} [Fintype I] [DecidableEq I] [Field K] {n : I → ℕ}
+namespace PaperVerification.Segre.SymmetricRealization section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 set_option autoImplicit false open PaperVerification.Segre.Staircase PaperVerification.Segre.Monomials PaperVerification.Segre.Balanced PaperVerification.Segre.HigherPieces _root_.MvPolynomial _root_.Module open scoped TensorProduct variable {I K : Type*} [Fintype I] [DecidableEq I] [Field K] {n : I → ℕ}
 /-- Exact source definition of BalancedExponent. -/
 abbrev BalancedExponent (q : ℕ) := {a : Variables n →₀ ℕ // Finsupp.weight (factorWeight (n := n)) a = diagonalDegree q}
 /-- Exact source definition of FactorExponent. -/
@@ -214,7 +231,7 @@ noncomputable def polynomialTensorBasis (q : ℕ) : Basis (FactorExponent (n := 
 /-- Basis-level equivalence; the next results identify its underlying map. -/
 noncomputable def polynomialTensorEquiv (q : ℕ) : PolynomialTensor (K := K) (n := n) q ≃ₗ[K] piece (K := K) (n := n) q := (polynomialTensorBasis (K := K) q).equiv (balancedBasis q) (exponentEquiv q)
 end end PaperVerification.Segre.SymmetricRealization
-namespace PaperVerification.Segre.SymmetricRealization section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 set_option autoImplicit false open PaperVerification.Segre.Staircase PaperVerification.Segre.Monomials PaperVerification.Segre.Balanced PaperVerification.Segre.HigherPieces MvPolynomial Module open scoped TensorProduct variable {I K : Type*} [Fintype I] [DecidableEq I] [Field K] {n : I → ℕ} variable {F : Type} [Field F]
+namespace PaperVerification.Segre.SymmetricRealization section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 set_option autoImplicit false open PaperVerification.Segre.Staircase PaperVerification.Segre.Monomials PaperVerification.Segre.Balanced PaperVerification.Segre.HigherPieces _root_.MvPolynomial _root_.Module open scoped TensorProduct variable {I K : Type*} [Fintype I] [DecidableEq I] [Field K] {n : I → ℕ} variable {F : Type} [Field F]
 /-- The actual symmetric tensor power of the i-th vector-space factor. -/
 abbrev FactorSymmetric (q : ℕ) (i : I) := Sym[F]^q (Fin (n i+1) → F)
 /-- The component displayed in the paper, using actual symmetric quotient tensors. -/
@@ -247,7 +264,7 @@ noncomputable def tensorMul (p q : ℕ) : SymmetricTensor (F := F) (n := n) p �
 /-- The canonical degreewise equivalence respects the paper's componentwise symmetric-power multiplication in every pair of degrees. -/
 theorem symmetricTensorEquiv_mul (p q : ℕ) (x : SymmetricTensor (F := F) (n := n) p) (y : SymmetricTensor (F := F) (n := n) q) : (symmetricTensorEquiv (p+q) (tensorMul p q x y)).val = (symmetricTensorEquiv p x).val * (symmetricTensorEquiv q y).val := by sorry
 end end PaperVerification.Segre.SymmetricRealization
-namespace PaperVerification.Segre.SymmetricRealization section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 set_option autoImplicit false set_option backward.isDefEq.respectTransparency false open PaperVerification.Segre.Staircase PaperVerification.Segre.Monomials PaperVerification.Segre.Balanced PaperVerification.Segre.HigherPieces MvPolynomial Module open scoped TensorProduct DirectSum variable {I : Type*} [Fintype I] [DecidableEq I] {n : I → ℕ} variable {F : Type} [Field F]
+namespace PaperVerification.Segre.SymmetricRealization section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 set_option autoImplicit false set_option backward.isDefEq.respectTransparency false open PaperVerification.Segre.Staircase PaperVerification.Segre.Monomials PaperVerification.Segre.Balanced PaperVerification.Segre.HigherPieces _root_.MvPolynomial _root_.Module open scoped TensorProduct DirectSum variable {I : Type*} [Fintype I] [DecidableEq I] {n : I → ℕ} variable {F : Type} [Field F]
 /-- Exact source definition of piece_gradedMonoid. -/
 instance piece_gradedMonoid : SetLike.GradedMonoid (piece (K := F) (n := n)) where
   one_mem := by
@@ -352,7 +369,7 @@ noncomputable instance tensorGAlgebra :
 /-- Exactly the direct sum displayed in the paper, with the verified componentwise tensor-symmetric-power algebra structure above. -/
 abbrev SymmetricSegre := ⨁ q : ℕ, SymmetricTensor (F := F) (n := n) q
 end end PaperVerification.Segre.SymmetricRealization
-namespace PaperVerification.Segre section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 set_option autoImplicit false open Matrix open scoped Matrix variable {K I V : Type*} [Field K] [Fintype I] [DecidableEq I]
+namespace PaperVerification.Segre section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 set_option autoImplicit false open _root_.Matrix open scoped Matrix variable {K I V : Type*} [Field K] [Fintype I] [DecidableEq I]
 /-- Infinitesimal rigidity restricted to a chosen vertex set. Velocities are allowed on all vertices, so the definition does not assume any extension theorem. -/
 def InfinitesimallyRigidOn (G : SimpleGraph V) (p : V → I → K) (S : Set V) : Prop := ∀ u : V → I → K, (∀ v ∈ S, ∀ w ∈ S, G.Adj v w → (p v - p w) ⬝ᵥ (u v - u w) = 0) → ∃ (M : Matrix I I K) (t : I → K), Mᵀ = -M ∧ (∀ i, M i i = 0) ∧ ∀ v ∈ S, u v = M *ᵥ p v + t
 end end PaperVerification.Segre
@@ -387,13 +404,13 @@ noncomputable def symmetricPieceToReduction (A : Matrix (Cell n) D F) (q : ℕ) 
 /-- Exact source definition of symmetricActualPiece. -/
 noncomputable def symmetricActualPiece (A : Matrix (Cell n) D F) (q : ℕ) : Submodule F (SymmetricReduction A) := LinearMap.range (symmetricPieceToReduction A q)
 end end PaperVerification.Segre.SymmetricRealization
-namespace PaperVerification.Segre.RigidityRank section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 set_option autoImplicit false open Matrix PaperVerification.Segre.GraphKernel PaperVerification.Segre.KoszulDimension open scoped Matrix variable {K V I E : Type*} [Field K] [Fintype I] [DecidableEq I]
+namespace PaperVerification.Segre.RigidityRank section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 set_option autoImplicit false open _root_.Matrix PaperVerification.Segre.GraphKernel PaperVerification.Segre.KoszulDimension open scoped Matrix variable {K V I E : Type*} [Field K] [Fintype I] [DecidableEq I]
 /-- Use oriented edges to give a finite index type without choosing an orientation. Repeated opposite rows have the same kernel and rank. -/
 abbrev Edges (G : SimpleGraph V) := {vw : V × V // G.Adj vw.1 vw.2}
 /-- Exact source definition of endpoints. -/
 def endpoints (G : SimpleGraph V) : Edges G → V × V := Subtype.val
 end end PaperVerification.Segre.RigidityRank
-namespace PaperVerification.Segre.RigidityRank section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 set_option autoImplicit false open Matrix PaperVerification.Segre.GraphKernel PaperVerification.Segre.KoszulDimension open scoped Matrix variable {K V I E : Type*} [Field K] [Fintype I] [DecidableEq I] variable [Fintype V]
+namespace PaperVerification.Segre.RigidityRank section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 set_option autoImplicit false open _root_.Matrix PaperVerification.Segre.GraphKernel PaperVerification.Segre.KoszulDimension open scoped Matrix variable {K V I E : Type*} [Field K] [Fintype I] [DecidableEq I] variable [Fintype V]
 /-- The literal rigidity matrix, with one column for each vertex-coordinate pair. The formula is polynomial and is valid over any coefficient ring. -/
 noncomputable def rigidityMatrix {R : Type*} [CommRing R] (p : Matrix V I R) (edges : E → V × V) : Matrix E (V × I) R := by
   classical
@@ -451,7 +468,7 @@ noncomputable def kernelDefect (a b : ℕ) : ℕ := by
   exact if a=1 ∨ b=1 then a*b else
     if TwoFactorInjectivity.Exceptional a b then (if a=4 ∨ b=4 then 2 else 3) else 0
 end end PaperVerification.Segre.TwoFactorGeneric
-namespace PaperVerification.Segre.ThreeFactorLefschetz section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 set_option autoImplicit false open PaperVerification.Segre.Staircase PaperVerification.Segre.Monomials PaperVerification.Segre.RankParameters PaperVerification.Segre.GenericFirstLefschetz PaperVerification.Segre.GenericSurjectivity open PaperVerification.Segre.ChainClassification PaperVerification.Segre.ThreeChainCores Matrix variable {K : Type*} [Field K]
+namespace PaperVerification.Segre.ThreeFactorLefschetz section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 set_option autoImplicit false open PaperVerification.Segre.Staircase PaperVerification.Segre.Monomials PaperVerification.Segre.RankParameters PaperVerification.Segre.GenericFirstLefschetz PaperVerification.Segre.GenericSurjectivity open PaperVerification.Segre.ChainClassification PaperVerification.Segre.ThreeChainCores _root_.Matrix variable {K : Type*} [Field K]
 /-- Exact first-Lefschetz defect for positive triples. The exceptional predicate is independently specified by literal factor permutations. -/
 noncomputable def kernelDefect (n : Fin 3 → ℕ) : ℕ := by
   classical
@@ -480,11 +497,15 @@ theorem theorem_1_1_symmetric_one_factor [Infinite F] (n : Fin 1 → ℕ) : ∃ 
 /-- The full second homogeneous piece vanishes in each projective-line case, with the same unrestricted parameter open and both factor orders. -/
 theorem theorem_1_1_symmetric_projective_line [Infinite F] (a b : ℕ) (ha : 1≤a) (hb : 1≤b) (hline : a=1 ∨ b=1) : ∃ g : MvPolynomial (Cell (TwoFactorActual.shape a b) × Ranks (TwoFactorActual.shape a b)) F,g≠0 ∧ ∀ A : Matrix (Cell (TwoFactorActual.shape a b)) (Ranks (TwoFactorActual.shape a b)) F, MvPolynomial.eval (fun j => A j.1 j.2) g≠0 → symmetricActualPiece A 2=⊥ := by sorry
 end end PaperVerification.Segre.SymmetricPrincipal
-namespace AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open TopCat TopologicalSpace CategoryTheory Opposite universe u variable {A : Type u} {σ : Type*} [CommRing A] [SetLike σ A] [AddSubgroupClass σ A] variable (𝒜 : ℕ → σ) [GradedRing 𝒜]
+namespace AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.TopCat _root_.TopologicalSpace _root_.CategoryTheory _root_.Opposite universe u variable {A : Type u} {σ : Type*} [CommRing A] [SetLike σ A] [AddSubgroupClass σ A] variable (𝒜 : ℕ → σ) [GradedRing 𝒜]
 /-- The localization of `A` at the homogeneous prime ideal of a point of `Proj A`: the stalks of all twisting sheaves embed into it. -/
 abbrev Localizations (x : ProjectiveSpectrum 𝒜) : Type u := Localization.AtPrime x.asHomogeneousIdeal.toIdeal
+end end AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf
+namespace AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.TopCat _root_.TopologicalSpace _root_.CategoryTheory _root_.Opposite universe u variable {A : Type u} {σ : Type*} [CommRing A] [SetLike σ A] [AddSubgroupClass σ A] variable (𝒜 : ℕ → σ) [GradedRing 𝒜] variable {𝒜} in
 /-- A dependent function on an open `U` is a *fraction of degree `n`* if it is a fixed fraction `r / s` with `r` and `s` homogeneous, `deg r = deg s + n` and `s` outside every point of `U`. -/
 def IsFraction (n : ℤ) {U : Opens (ProjectiveSpectrum.top 𝒜)} (f : ∀ x : U, Localizations 𝒜 x.1) : Prop := ∃ (i j : ℕ) (_ : (j : ℤ) = i + n) (r : 𝒜 j) (s : 𝒜 i) (s_nin : ∀ x : U, (s : A) ∉ x.1.asHomogeneousIdeal.toIdeal), ∀ x : U, f x = Localization.mk (r : A) ⟨s, s_nin x⟩
+end end AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf
+namespace AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.TopCat _root_.TopologicalSpace _root_.CategoryTheory _root_.Opposite universe u variable {A : Type u} {σ : Type*} [CommRing A] [SetLike σ A] [AddSubgroupClass σ A] variable (𝒜 : ℕ → σ) [GradedRing 𝒜]
 /-- Being a fraction of degree `n` is preserved by restriction to smaller opens. -/
 def isFractionPrelocal (n : ℤ) :
     PrelocalPredicate fun x : ProjectiveSpectrum.top 𝒜 ↦ Localizations 𝒜 x where
@@ -493,7 +514,7 @@ def isFractionPrelocal (n : ℤ) :
 /-- The local predicate of being locally a fraction of degree `n`; the sections of the twisting sheaf `𝒪(n)` are the dependent functions satisfying it. -/
 def isLocallyFraction (n : ℤ) : LocalPredicate fun x : ProjectiveSpectrum.top 𝒜 ↦ Localizations 𝒜 x := (isFractionPrelocal 𝒜 n).sheafify
 end end AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf
-namespace AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open TopCat TopologicalSpace CategoryTheory Opposite universe u variable {A : Type u} {σ : Type*} [CommRing A] [SetLike σ A] [AddSubgroupClass σ A] variable (𝒜 : ℕ → σ) [GradedRing 𝒜] variable {𝒜}
+namespace AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.TopCat _root_.TopologicalSpace _root_.CategoryTheory _root_.Opposite universe u variable {A : Type u} {σ : Type*} [CommRing A] [SetLike σ A] [AddSubgroupClass σ A] variable (𝒜 : ℕ → σ) [GradedRing 𝒜] variable {𝒜}
 /-- The zero function is locally a fraction of every degree. -/
 theorem isLocallyFraction_zero (n : ℤ) (U : Opens (ProjectiveSpectrum.top 𝒜)) : (isLocallyFraction 𝒜 n).pred (0 : ∀ x : U, Localizations 𝒜 x.1) := by sorry
 /-- Exact source definition of isLocallyFraction_add. -/
@@ -502,6 +523,10 @@ theorem isLocallyFraction_add {n : ℤ} {U : Opens (ProjectiveSpectrum.top 𝒜)
 theorem isLocallyFraction_neg {n : ℤ} {U : Opens (ProjectiveSpectrum.top 𝒜)} {f : ∀ x : U, Localizations 𝒜 x.1} (hf : (isLocallyFraction 𝒜 n).pred f) : (isLocallyFraction 𝒜 n).pred (-f) := by sorry
 /-- The product of a local fraction of degree `m` and a local fraction of degree `n` is a local fraction of degree `m + n`. -/
 theorem isLocallyFraction_mul {m n : ℤ} {U : Opens (ProjectiveSpectrum.top 𝒜)} {f g : ∀ x : U, Localizations 𝒜 x.1} (hf : (isLocallyFraction 𝒜 m).pred f) (hg : (isLocallyFraction 𝒜 n).pred g) : (isLocallyFraction 𝒜 (m + n)).pred (f * g) := by sorry
+/-- Sections of the structure sheaf of `Proj`, viewed in the localizations, are local fractions of degree `0`. -/
+theorem isLocallyFraction_val {U : Opens (ProjectiveSpectrum.top 𝒜)} (a : Γ(Proj 𝒜, U)) : (isLocallyFraction 𝒜 0).pred fun x ↦ (a.1 x).val := by sorry
+end end AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf
+namespace AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.TopCat _root_.TopologicalSpace _root_.CategoryTheory _root_.Opposite universe u variable {A : Type u} {σ : Type*} [CommRing A] [SetLike σ A] [AddSubgroupClass σ A] variable (𝒜 : ℕ → σ) [GradedRing 𝒜] variable {𝒜} variable (𝒜) in
 /-- The local fractions of degree `n` on `U`, as an additive subgroup of all dependent functions into the localizations. -/
 def sectionsAddSubgroup (n : ℤ) (U : Opens (ProjectiveSpectrum.top 𝒜)) :
     AddSubgroup (∀ x : U, Localizations 𝒜 x.1) where
@@ -509,6 +534,15 @@ def sectionsAddSubgroup (n : ℤ) (U : Opens (ProjectiveSpectrum.top 𝒜)) :
   zero_mem' := isLocallyFraction_zero n U
   add_mem' := isLocallyFraction_add
   neg_mem' := isLocallyFraction_neg
+end end AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf
+namespace AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.TopCat _root_.TopologicalSpace _root_.CategoryTheory _root_.Opposite universe u variable {A : Type u} {σ : Type*} [CommRing A] [SetLike σ A] [AddSubgroupClass σ A] variable (𝒜 : ℕ → σ) [GradedRing 𝒜] variable {𝒜}
+/-- Sections of the structure sheaf of `Proj` act on local fractions of degree `n` pointwise, through the inclusions `A_{(x)} → A_x` of the homogeneous localizations. -/
+instance sectionsAddSubgroup.smul (n : ℤ) (U : Opens (ProjectiveSpectrum.top 𝒜)) :
+    SMul Γ(Proj 𝒜, U) (sectionsAddSubgroup 𝒜 n U) where
+  smul a f := ⟨fun x ↦ (a.1 x).val * f.1 x, by
+    have := isLocallyFraction_mul (isLocallyFraction_val a) f.2
+    rw [zero_add] at this
+    exact this⟩
 /-- The local fractions of degree `n` on `U` form a module over the sections of the structure sheaf of `Proj` on `U`. -/
 instance sectionsAddSubgroup.module (n : ℤ) (U : Opens (ProjectiveSpectrum.top 𝒜)) :
     Module Γ(Proj 𝒜, U) (sectionsAddSubgroup 𝒜 n U) where
@@ -523,7 +557,7 @@ instance sectionsAddSubgroup.module (n : ℤ) (U : Opens (ProjectiveSpectrum.top
   zero_smul f := Subtype.ext <| funext fun x ↦
     (congrArg (· * f.1 x) HomogeneousLocalization.val_zero).trans (zero_mul _)
 end end AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf
-namespace AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open TopCat TopologicalSpace CategoryTheory Opposite universe u variable {A : Type u} {σ : Type*} [CommRing A] [SetLike σ A] [AddSubgroupClass σ A] variable (𝒜 : ℕ → σ) [GradedRing 𝒜] variable {𝒜} variable (𝒜)
+namespace AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.TopCat _root_.TopologicalSpace _root_.CategoryTheory _root_.Opposite universe u variable {A : Type u} {σ : Type*} [CommRing A] [SetLike σ A] [AddSubgroupClass σ A] variable (𝒜 : ℕ → σ) [GradedRing 𝒜] variable {𝒜} variable (𝒜)
 /-- The twisting sheaf `𝒪(n)` as a sheaf of types: the subsheaf of dependent functions into the localizations which are locally fractions of degree `n`. -/
 def twistingSheafInType (n : ℤ) : Sheaf (Type u) (ProjectiveSpectrum.top 𝒜) := subsheafToTypes (isLocallyFraction 𝒜 n)
 /-- The twisting sheaf `𝒪(n)` as a presheaf of abelian groups. -/
@@ -538,9 +572,13 @@ def twistingPresheafInAb (n : ℤ) : (Opens (ProjectiveSpectrum.top 𝒜))ᵒᵖ
 /-- The presheaf of abelian groups `𝒪(n)` has the sheaf of types `𝒪(n)` as underlying presheaf of types. -/
 def twistingPresheafInAbCompForget (n : ℤ) : twistingPresheafInAb 𝒜 n ⋙ forget Ab ≅ (twistingSheafInType 𝒜 n).obj := NatIso.ofComponents (fun _ ↦ Iso.refl _) fun _ ↦ rfl
 /-- The twisting sheaf `𝒪(n)` as a presheaf of modules over the structure sheaf of `Proj`. -/
-def twistingPresheaf (n : ℤ) : PresheafOfModules.{u} (Proj 𝒜).ringCatSheaf.obj := letI (U : (Proj 𝒜).Opensᵒᵖ) : Module ((Proj 𝒜).ringCatSheaf.obj.obj U) ((twistingPresheafInAb 𝒜 n).obj U) := sectionsAddSubgroup.module n U.unop .ofPresheaf (twistingPresheafInAb 𝒜 n) fun _ _ _ _ _ ↦ rfl
+def twistingPresheaf (n : ℤ) : PresheafOfModules.{u} (Proj 𝒜).ringCatSheaf.obj :=
+  letI (U : (Proj 𝒜).Opensᵒᵖ) :
+      Module ((Proj 𝒜).ringCatSheaf.obj.obj U) ((twistingPresheafInAb 𝒜 n).obj U) :=
+    sectionsAddSubgroup.module n U.unop
+  .ofPresheaf (twistingPresheafInAb 𝒜 n) fun _ _ _ _ _ ↦ rfl
 end end AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf
-namespace AlgebraicGeometry.Proj section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open TopCat TopologicalSpace CategoryTheory Opposite universe u variable {A : Type u} {σ : Type*} [CommRing A] [SetLike σ A] [AddSubgroupClass σ A] variable (𝒜 : ℕ → σ) [GradedRing 𝒜] open AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf
+namespace AlgebraicGeometry.Proj section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.TopCat _root_.TopologicalSpace _root_.CategoryTheory _root_.Opposite universe u variable {A : Type u} {σ : Type*} [CommRing A] [SetLike σ A] [AddSubgroupClass σ A] variable (𝒜 : ℕ → σ) [GradedRing 𝒜] open AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf
 /-- The **twisting sheaf** `𝒪(n)` on `Proj A`, for `n ∈ ℤ`: the sheaf of `𝒪_{Proj A}`-modules whose sections over `U` are the dependent functions `x ↦ f x ∈ A_x` on `U` which are locally fractions `r / s` of homogeneous elements with `deg r ... -/
 def twistingSheaf (n : ℤ) : (Proj 𝒜).Modules where
   val := twistingPresheaf 𝒜 n
@@ -548,17 +586,19 @@ def twistingSheaf (n : ℤ) : (Proj 𝒜).Modules where
     (TopCat.Presheaf.isSheaf_of_iso (twistingPresheafInAbCompForget 𝒜 n).symm
       (twistingSheafInType 𝒜 n).2)
 end end AlgebraicGeometry.Proj
-namespace AlgebraicGeometry.Proj.twistingSheaf section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open TopCat TopologicalSpace CategoryTheory Opposite universe u variable {A : Type u} {σ : Type*} [CommRing A] [SetLike σ A] [AddSubgroupClass σ A] variable (𝒜 : ℕ → σ) [GradedRing 𝒜] open AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf variable {𝒜} {n : ℤ} {U V : (Proj 𝒜).Opens}
+namespace AlgebraicGeometry.Proj.twistingSheaf section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.TopCat _root_.TopologicalSpace _root_.CategoryTheory _root_.Opposite universe u variable {A : Type u} {σ : Type*} [CommRing A] [SetLike σ A] [AddSubgroupClass σ A] variable (𝒜 : ℕ → σ) [GradedRing 𝒜] open AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf variable {𝒜} {n : ℤ} {U V : (Proj 𝒜).Opens}
 /-- Exact source definition of ext. -/
 theorem ext {s t : Γ(twistingSheaf 𝒜 n, U)} (h : ∀ x, s.1 x = t.1 x) : s = t := by sorry
+end end AlgebraicGeometry.Proj.twistingSheaf
+namespace AlgebraicGeometry.Proj.twistingSheaf section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.TopCat _root_.TopologicalSpace _root_.CategoryTheory _root_.Opposite universe u variable {A : Type u} {σ : Type*} [CommRing A] [SetLike σ A] [AddSubgroupClass σ A] variable (𝒜 : ℕ → σ) [GradedRing 𝒜] open AlgebraicGeometry.ProjectiveSpectrum.TwistingSheaf variable {𝒜} {n : ℤ} {U V : (Proj 𝒜).Opens} variable (𝒜 U) in
 /-- The multiplication `Γ(U, 𝒪(m)) × Γ(U, 𝒪(n)) → Γ(U, 𝒪(m + n))`, bilinear over the sections of the structure sheaf: sections are multiplied pointwise in the localizations. -/
 def mul (m n : ℤ) : Γ(twistingSheaf 𝒜 m, U) →ₗ[Γ(Proj 𝒜, U)] Γ(twistingSheaf 𝒜 n, U) →ₗ[Γ(Proj 𝒜, U)] Γ(twistingSheaf 𝒜 (m + n), U) := LinearMap.mk₂ Γ(Proj 𝒜, U) (fun s t ↦ ⟨s.1 * t.1, isLocallyFraction_mul s.2 t.2⟩) (fun _ _ _ ↦ ext fun _ ↦ add_mul _ _ _) (fun _ _ _ ↦ ext fun _ ↦ mul_assoc _ _ _) (fun _ _ _ ↦ ext fun _ ↦ mul_add _ _ _) (fun _ _ _ ↦ ext fun _ ↦ mul_left_comm _ _ _)
 end end AlgebraicGeometry.Proj.twistingSheaf
-namespace TauCeti.SheafOfModules section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open TauCeti.CategoryTheory Category Limits universe u v v₁ u₁ variable {C : Type u₁} [Category.{v₁} C] {J : GrothendieckTopology C} variable [HasWeakSheafify J AddCommGrpCat.{v}] [J.WEqualsLocallyBijective AddCommGrpCat.{v}]
+namespace TauCeti.SheafOfModules section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.CategoryTheory Category Limits universe u v v₁ u₁ variable {C : Type u₁} [Category.{v₁} C] {J : GrothendieckTopology C} variable [HasWeakSheafify J AddCommGrpCat.{v}] [J.WEqualsLocallyBijective AddCommGrpCat.{v}]
 /-- The sheaf of rings underlying a sheaf of commutative rings on a site; the site-level analogue of `AlgebraicGeometry.Scheme.ringCatSheaf`. -/
 abbrev ringCatSheaf (R : Sheaf J CommRingCat.{u}) [J.HasSheafCompose (forget₂ CommRingCat RingCat.{u})] : Sheaf J RingCat.{u} := (sheafCompose J (forget₂ CommRingCat RingCat.{u})).obj R
 end end TauCeti.SheafOfModules
-namespace TauCeti.SheafOfModules section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open TauCeti.CategoryTheory universe u v₁ u₁ variable {C : Type u₁} [Category.{v₁} C] {J : GrothendieckTopology C} {R : Sheaf J RingCat.{u}} [∀ Y : C, HasWeakSheafify (J.over Y) AddCommGrpCat.{u}] [∀ Y : C, (J.over Y).WEqualsLocallyBijective AddCommGrpCat.{u}] {M N : SheafOfModules.{u} R}
+namespace TauCeti.SheafOfModules section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.CategoryTheory universe u v₁ u₁ variable {C : Type u₁} [Category.{v₁} C] {J : GrothendieckTopology C} {R : Sheaf J RingCat.{u}} [∀ Y : C, HasWeakSheafify (J.over Y) AddCommGrpCat.{u}] [∀ Y : C, (J.over Y).WEqualsLocallyBijective AddCommGrpCat.{u}] {M N : SheafOfModules.{u} R}
 /-- Local generators exhibit a sheaf of modules as invertible when they freely generate it on a cover and every local generating type has exactly one element. -/
 structure _root_.SheafOfModules.LocalGeneratorsData.IsInvertible
     (q : SheafOfModules.LocalGeneratorsData M) : Prop where
@@ -569,11 +609,19 @@ structure _root_.SheafOfModules.LocalGeneratorsData.IsInvertible
   /-- Every local free basis has at most one element. -/
   basisSubsingleton (i : q.I) : Subsingleton (q.generators i).I
 end end TauCeti.SheafOfModules
-namespace TauCeti.AlgebraicGeometry.SheafOfModules section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open TauCeti.CategoryTheory TauCeti.AlgebraicGeometry TopologicalSpace universe u variable (X : Scheme.{u})
+namespace TauCeti.SheafOfModules section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.CategoryTheory universe u v₁ u₁ variable {C : Type u₁} [Category.{v₁} C] {J : GrothendieckTopology C} {R : Sheaf J RingCat.{u}} [∀ Y : C, HasWeakSheafify (J.over Y) AddCommGrpCat.{u}] [∀ Y : C, (J.over Y).WEqualsLocallyBijective AddCommGrpCat.{u}] {M N : SheafOfModules.{u} R} variable (M) in
+/-- A sheaf of modules is invertible if it is locally free of rank one. The witness is local generator data whose free presentations are isomorphisms and whose basis types have exactly one element. -/
+class IsInvertible : Prop where
+  /-- A rank-one local trivialization of the sheaf. -/
+  exists_isInvertible :
+    ∃ q : SheafOfModules.LocalGeneratorsData.{u₁} M,
+      SheafOfModules.LocalGeneratorsData.IsInvertible q
+end end TauCeti.SheafOfModules
+namespace TauCeti.AlgebraicGeometry.SheafOfModules section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.CategoryTheory _root_.AlgebraicGeometry _root_.TopologicalSpace universe u variable (X : Scheme.{u})
 /-- The object property of being an invertible sheaf on a scheme. -/
 abbrev isInvertible : ObjectProperty X.Modules := TauCeti.SheafOfModules.IsInvertible (R := X.ringCatSheaf)
 end end TauCeti.AlgebraicGeometry.SheafOfModules
-namespace TauCeti.AlgebraicGeometry section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open TauCeti.CategoryTheory TauCeti.AlgebraicGeometry TopologicalSpace universe u variable {X : Scheme.{u}}
+namespace TauCeti.AlgebraicGeometry section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.CategoryTheory _root_.AlgebraicGeometry _root_.TopologicalSpace universe u variable {X : Scheme.{u}}
 /-- The full category of invertible sheaves on `X`. Its morphisms are morphisms of `𝒪_X`-modules. -/
 abbrev InvertibleSheaf (X : Scheme.{u}) : Type _ := ObjectProperty.FullSubcategory (SheafOfModules.isInvertible X)
 end end TauCeti.AlgebraicGeometry
@@ -619,7 +667,11 @@ instance instFinitePresentation [Module.FinitePresentation R M] : Algebra.Finite
   rintro _ ⟨m, hm, rfl⟩
   exact key hm
 end end TauCeti.SymmetricAlgebra
-namespace TauCeti.SymmetricAlgebra section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open Module open scoped DirectSum universe u v variable (R : Type u) (M : Type v) [CommSemiring R] [AddCommMonoid M] [Module R M]
+namespace TauCeti.SymmetricAlgebra section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.Module open scoped DirectSum universe u v variable (R : Type u) (M : Type v) [CommSemiring R] [AddCommMonoid M] [Module R M]
+/-- A version of `SymmetricAlgebra.ι` that maps directly into the graded structure. This is primarily an auxiliary construction used to provide `gradedAlgebra`. -/
+noncomputable def GradedAlgebra.ι : M →ₗ[R] ⨁ n, homogeneousSubmodule R M n := DirectSum.lof R ℕ (fun n ↦ homogeneousSubmodule R M n) 1 ∘ₗ (SymmetricAlgebra.ι R M).codRestrict _ (ι_mem_homogeneousSubmodule R M)
+/-- The defining formula for `GradedAlgebra.ι`. -/
+theorem GradedAlgebra.ι_apply (m : M) : GradedAlgebra.ι R M m = DirectSum.of (fun n ↦ homogeneousSubmodule R M n) 1 ⟨SymmetricAlgebra.ι R M m, ι_mem_homogeneousSubmodule R M m⟩ := by sorry
 /-- A symmetric algebra is graded by its homogeneous pieces, without a freeness assumption on `M`. This supplies both the canonical decomposition and the multiplicative graded-algebra API. -/
 noncomputable instance gradedAlgebra : GradedAlgebra (homogeneousSubmodule R M) :=
   GradedAlgebra.ofAlgHom _ (SymmetricAlgebra.lift (GradedAlgebra.ι R M))
@@ -652,13 +704,15 @@ instance isMaximal_toIdeal_irrelevant (K : Type*) [Field K] [Module K M] : (Homo
   rw [toIdeal_irrelevant_eq_ker_algebraMapInv]
   exact RingHom.ker_isMaximal_of_surjective _ (SymmetricAlgebra.algebraMap_leftInverse M).surjective
 end end TauCeti.SymmetricAlgebra
-namespace TauCeti.SymmetricAlgebra section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open TauCeti.CategoryTheory TauCeti.AlgebraicGeometry universe u variable (R : Type u) (M : Type u) [CommRing R] [AddCommMonoid M] [Module R M]
+namespace TauCeti.SymmetricAlgebra section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.CategoryTheory _root_.AlgebraicGeometry universe u variable (R : Type u) (M : Type u) [CommRing R] [AddCommMonoid M] [Module R M]
 /-- The structural morphism from the projective spectrum of a symmetric algebra to the spectrum of its coefficient ring. -/
 noncomputable def projToSpec : Proj (homogeneousSubmodule R M) ⟶ Spec (.of R) := Proj.toSpecZero (homogeneousSubmodule R M) ≫ Spec.map (CommRingCat.ofHom (algebraMap R (homogeneousSubmodule R M 0)))
 /-- The coefficient morphism is `Proj.toSpecZero` followed by the scalar identification. -/
 theorem projToSpec_def : projToSpec R M = Proj.toSpecZero (homogeneousSubmodule R M) ≫ Spec.map (CommRingCat.ofHom (algebraMap R (homogeneousSubmodule R M 0))) := by sorry
 /-- Exact source definition of isIso_scalarSpecMap. -/
 public theorem isIso_scalarSpecMap : IsIso (Spec.map (CommRingCat.ofHom (algebraMap R (homogeneousSubmodule R M 0)))) := by sorry
+/-- The standard opens `D₊(v j)` of a spanning family `v` of linear forms cover the projective spectrum of the symmetric algebra. -/
+theorem iSup_basicOpen_ι_eq_top {κ : Type*} (v : κ → M) (hv : Submodule.span R (Set.range v) = ⊤) : ⨆ j, Proj.basicOpen (homogeneousSubmodule R M) (_root_.SymmetricAlgebra.ι R M (v j)) = ⊤ := by sorry
 /-- The projective spectrum of a finite module is proper over the coefficient ring. Freeness and projectivity are not required. -/
 instance instIsProperProjToSpec [Module.Finite R M] : IsProper (projToSpec R M) := by
   -- Use Mathlib's properness theorem for `Proj.toSpecZero` and the degree-zero equivalence.
@@ -679,11 +733,11 @@ instance instIsNoetherianProj [Module.Finite R M] [IsNoetherianRing R] :
 /-- The projective spectrum of a finite module over a Jacobson spectrum is Jacobson. -/
 instance instJacobsonSpaceProj [Module.Finite R M] [JacobsonSpace (Spec (.of R))] : JacobsonSpace (Proj (homogeneousSubmodule R M)) := LocallyOfFiniteType.jacobsonSpace (projToSpec R M)
 end end TauCeti.SymmetricAlgebra
-namespace AlgebraicGeometry.Proj section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open CategoryTheory TopologicalSpace universe u variable {A : Type u} {σ : Type*} [CommRing A] [SetLike σ A] [AddSubgroupClass σ A] variable {𝒜 : ℕ → σ} [GradedRing 𝒜]
+namespace AlgebraicGeometry.Proj section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.CategoryTheory _root_.TopologicalSpace universe u variable {A : Type u} {σ : Type*} [CommRing A] [SetLike σ A] [AddSubgroupClass σ A] variable {𝒜 : ℕ → σ} [GradedRing 𝒜]
 /-- All integer twists are invertible if the standard opens of a family of degree-one elements cover `Proj`. -/
 theorem isInvertible_twistingSheaf_of_iSup_eq_top {ι : Type u} (f : ι → A) (hf : ∀ i, f i ∈ 𝒜 1) (hcover : ⨆ i, basicOpen 𝒜 (f i) = ⊤) (n : ℤ) : TauCeti.SheafOfModules.IsInvertible (R := (Proj 𝒜).ringCatSheaf) (twistingSheaf 𝒜 n) := by sorry
 end end AlgebraicGeometry.Proj
-namespace TauCeti.SymmetricAlgebra section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open TauCeti.CategoryTheory TopologicalSpace variable (R M : Type u) [CommRing R] [AddCommMonoid M] [Module R M]
+namespace TauCeti.SymmetricAlgebra section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.CategoryTheory _root_.TopologicalSpace variable (R M : Type u) [CommRing R] [AddCommMonoid M] [Module R M]
 /-- Every integer twisting sheaf on the projective spectrum of a symmetric algebra is invertible, over an arbitrary commutative base ring. -/
 instance isInvertible_twistingSheaf (n : ℤ) : TauCeti.SheafOfModules.IsInvertible (R := (AlgebraicGeometry.Proj (homogeneousSubmodule R M)).ringCatSheaf)
       (AlgebraicGeometry.Proj.twistingSheaf (homogeneousSubmodule R M) n) :=
@@ -692,11 +746,11 @@ instance isInvertible_twistingSheaf (n : ℤ) : TauCeti.SheafOfModules.IsInverti
     (ι_mem_homogeneousSubmodule R M)
     (iSup_basicOpen_ι_eq_top R M id (by simp)) n
 end end TauCeti.SymmetricAlgebra
-namespace TauCeti.AlgebraicGeometry section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open TauCeti.AlgebraicGeometry TauCeti.CategoryTheory MonoidalCategory universe u v
+namespace TauCeti.AlgebraicGeometry section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.AlgebraicGeometry _root_.CategoryTheory MonoidalCategory universe u v
 /-- The type of isomorphism classes of line bundles on a scheme. -/
 def LineBundleClass (X : Scheme.{u}) : Type _ := Skeleton (InvertibleSheaf X)
 end end TauCeti.AlgebraicGeometry
-namespace TauCeti.AlgebraicGeometry.LineBundleClass section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open TauCeti.AlgebraicGeometry TauCeti.CategoryTheory MonoidalCategory universe u v variable {X : Scheme.{u}}
+namespace TauCeti.AlgebraicGeometry.LineBundleClass section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.AlgebraicGeometry _root_.CategoryTheory MonoidalCategory universe u v variable {X : Scheme.{u}}
 /-- The isomorphism class of a line bundle. -/
 def mk (L : InvertibleSheaf X) : LineBundleClass X := toSkeleton L
 end end TauCeti.AlgebraicGeometry.LineBundleClass
@@ -715,9 +769,11 @@ def pairing {S : Type*} [Fintype S] (v : S → R) : (S → R) →ₗ[R] R where
     intro a _
     exact mul_left_comm _ _ _
 end end PaperVerification.Segre.TangentKernel
-namespace PaperVerification.Segre.FullGraphChartReindex section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 set_option autoImplicit false open scoped Classical BigOperators open PaperVerification.Segre.Staircase PaperVerification.Segre.Monomials PaperVerification.Segre.Degeneration PaperVerification.Segre.GraphSpan PaperVerification.Segre.CriticalGraph PaperVerification.Segre.SingularSpan PaperVerification.Segre.ProjectiveCharts open PaperVerification.Segre.ProjectivePointSpan PaperVerification.Segre.GraphQuotientElimination PaperVerification.Segre.GraphCriticalElimination open PaperVerification.Segre.CriticalChartReindex MvPolynomial variable {I J K : Type} [Fintype I] [DecidableEq I] [Fintype J] [DecidableEq J] [Field K] {n : I → ℕ}
+namespace PaperVerification.Segre.FullGraphChartReindex section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 set_option autoImplicit false open scoped Classical BigOperators open PaperVerification.Segre.Staircase PaperVerification.Segre.Monomials PaperVerification.Segre.Degeneration PaperVerification.Segre.GraphSpan PaperVerification.Segre.CriticalGraph PaperVerification.Segre.SingularSpan PaperVerification.Segre.ProjectiveCharts open PaperVerification.Segre.ProjectivePointSpan PaperVerification.Segre.GraphQuotientElimination PaperVerification.Segre.GraphCriticalElimination open PaperVerification.Segre.CriticalChartReindex _root_.MvPolynomial variable {I J K : Type} [Fintype I] [DecidableEq I] [Fintype J] [DecidableEq J] [Field K] {n : I → ℕ}
 /-- All original factors, with the final factor placed at `none`. -/
 abbrev FullFactor (n : I → ℕ) (J : Type) : Option I → Type | none => J | some i => Fin (n i+1)
+instance (i : Option I) : Fintype (FullFactor n J i) := by
+  cases i <;> dsimp [FullFactor] <;> infer_instance
 end end PaperVerification.Segre.FullGraphChartReindex
 namespace PaperVerification.Segre.ActualTensorSpan section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 set_option autoImplicit false open scoped Classical BigOperators TensorProduct open PaperVerification.Segre.TensorFactorReindex variable (K : Type*) [Field K] {I : Type*} [Fintype I] [DecidableEq I] variable (σ : I → Type*) [∀ i,Fintype (σ i)]
 /-- The paper's tensor space, using the actual universal tensor product. -/
@@ -809,13 +865,13 @@ theorem three_factor_sqrt_bound (e : ℕ) (he : 2 ≤ e) (n : Fin 3 → ℕ) (hn
 /-- The exact real-root bound following Theorem 6.3 for every number of smaller factors at least four, with the full generic projective conclusion. The root and ceiling are actual real operations, not asymptotic estimates. -/
 theorem many_factor_root_bound (k e : ℕ) (hk : 4 ≤ k) (he : 2 ≤ e) (n : Fin k → ℕ) (hn : ∀ i, e + 2 * ⌈(((k + 1) * e : ℕ) : ℝ) ^ (1 / (((k + 1) / 2 : ℕ) : ℝ))⌉₊ + 4 * k - 2 ≤ n i) (ρ : Equiv.Perm (Option (Fin k))) : GenericProjectiveFullSpan K (fun i => FullFactor n (Option (Fin (sideSum n + e))) (ρ i)) := by sorry
 end end PaperVerification.Segre.OriginalProjectivePrincipal
-namespace PaperVerification.Segre.RigidityPrincipal section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open scoped BigOperators TensorProduct set_option autoImplicit false open Matrix PaperVerification.Segre.RigidityRank PaperVerification.Segre.GenericRigidity PaperVerification.Segre.Staircase PaperVerification.Segre.RankParameters variable {K I V : Type*} [Field K] [Fintype I] [DecidableEq I] [Fintype V]
+namespace PaperVerification.Segre.RigidityPrincipal section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open scoped BigOperators TensorProduct set_option autoImplicit false open _root_.Matrix PaperVerification.Segre.RigidityRank PaperVerification.Segre.GenericRigidity PaperVerification.Segre.Staircase PaperVerification.Segre.RankParameters variable {K I V : Type*} [Field K] [Fintype I] [DecidableEq I] [Fintype V]
 /-- Proposition 5.1, the nonexceptional case, on an explicitly nonempty open of all actual placements, with no bound on the positive chain lengths. -/
 theorem proposition_5_1_rigid [Infinite K] (k : ℕ) (hk : 3 ≤ k) (n : Fin k → ℕ) (hpos : ∀ i, 1 ≤ n i) (hex : ∀ h : k = 3, ¬ ChainClassification.ExceptionalTriple (fun i => n (Fin.cast h.symm i))) : ∃ f : MvPolynomial (Cell n × Fin (sideSum n + 1)) K, f ≠ 0 ∧ (∃ p : Matrix (Cell n) (Fin (sideSum n + 1)) K, MvPolynomial.eval (flattenVelocity p) f ≠ 0) ∧ ∀ p : Matrix (Cell n) (Fin (sideSum n + 1)) K, MvPolynomial.eval (flattenVelocity p) f ≠ 0 → affineSpan K (Set.range p) = ⊤ ∧ InfinitesimallyRigidOn (chainGraph n) p Set.univ := by sorry
 /-- Proposition 5.1, all three exceptional triples and every factor order, on an explicitly nonempty open of actual stress-free placements. -/
 theorem proposition_5_1_stress_free [Infinite K] (n : Fin 3 → ℕ) (hex : ChainClassification.ExceptionalTriple n) : ∃ f : MvPolynomial (Cell n × Fin (sideSum n + 1)) K, f ≠ 0 ∧ (∃ p : Matrix (Cell n) (Fin (sideSum n + 1)) K, MvPolynomial.eval (flattenVelocity p) f ≠ 0) ∧ ∀ p : Matrix (Cell n) (Fin (sideSum n + 1)) K, MvPolynomial.eval (flattenVelocity p) f ≠ 0 → affineSpan K (Set.range p) = ⊤ ∧ 2 * (rigidityMatrix p (endpoints (chainGraph n))).rank = Fintype.card (Edges (chainGraph n)) ∧ ¬ InfinitesimallyRigidOn (chainGraph n) p Set.univ := by sorry
 end end PaperVerification.Segre.RigidityPrincipal
-namespace PaperVerification.Segre.AsymptoticGrowth section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 set_option autoImplicit false open scoped BigOperators TensorProduct open Asymptotics Filter
+namespace PaperVerification.Segre.AsymptoticGrowth section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 set_option autoImplicit false open scoped BigOperators TensorProduct open _root_.Asymptotics _root_.Filter
 /-- The exact three-factor threshold on page 17. -/
 def threeFactorThreshold (e : ℕ) : ℕ := 2 * e + 2 * ⌈Real.sqrt (7 * (e : ℝ))⌉₊
 /-- The reciprocal of the integer ceiling of half the factor count. -/

@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       cases:
-        description: Optional comma-separated case IDs; blank runs the revision05 corrected cases
+        description: Optional comma-separated case IDs; blank runs the revision06 frozen cases
         default: ""
         type: string
 permissions:
