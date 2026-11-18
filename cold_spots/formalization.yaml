@@ -33,7 +33,7 @@ automation:
         adds an independent Challenge, Comparator configuration, and metadata.
 review:
   status: unchecked
-  notes: Package compilation and Comparator verification remain pending.
+  notes: Substantive proof and wrapper compilation passed in an earlier full run; the current named-proof-field revision awaits full build and Comparator.
 fidelity:
   notes: >-
     The Challenge retains every ambient-point, even-dimension, Gaussian-parameter,
@@ -45,3 +45,13 @@ fidelity:
     affine orbit results are present in the full source but are not separately
     selected as Comparator declarations. Source snapshot: caiusdfolkerts/research
     at e0696fddcd3d10b5d6461e62e9b2f02c4195be37.
+
+comparison_support:
+  principal_result_count: 3
+  supporting_theorem_count: 6
+  note: >-
+    The supporting theorem declarations prove preservation of zero and addition
+    by the integer embedding, closure of the zero-sum subspace, and the
+    zero-sum property of mean subtraction. They are compared so all semantic
+    definition values can use fixed named proof applications; no semantic
+    definition value is unspecified.

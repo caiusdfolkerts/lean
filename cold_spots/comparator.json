@@ -4,7 +4,13 @@
   "theorem_names": [
     "PalomarColdSpots.lattice_theorem_1_1",
     "PalomarColdSpots.lattice_covering_radius_table",
-    "PalomarColdSpots.lattice_corollary_1_2"
+    "PalomarColdSpots.lattice_corollary_1_2",
+    "PalomarColdSpots.eisEmbed_zero_proof",
+    "PalomarColdSpots.eisEmbed_add_proof",
+    "PalomarColdSpots.zeroSum_zero_proof",
+    "PalomarColdSpots.zeroSum_add_proof",
+    "PalomarColdSpots.zeroSum_smul_proof",
+    "PalomarColdSpots.project8_zeroSum_proof"
   ],
   "permitted_axioms": [
     "propext",

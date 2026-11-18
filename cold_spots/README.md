@@ -55,6 +55,13 @@ The underlying proof source also contains the supporting analytic results,
 explicit cold-spot descriptions, translation-class counts and affine orbit
 theorems listed above. Those supporting results are not separate Comparator
 targets in this entry. The selected principal theorem and corollary are
-retained in full. The independent Challenge elaborates successfully against the unchanged
-pinned Lean v4.35.0 and Mathlib, with only the selected theorem placeholders.
-Full Solution compilation and Comparator remain pending.
+retained in full. The substantive proof and the fresh-namespace theorem wrappers have passed a
+full source build. This revision normalizes the six proof-valued fields below
+and awaits its new full build and Comparator verification.
+
+The Comparator also checks six supporting proofs used by the independently
+defined integer embedding, zero-sum subspace and orthogonal projection.
+Naming these proofs keeps module-local generated auxiliary proof names out of
+the semantic definitions. All carrier sets, coordinate functions and lattice
+values remain the displayed literal constructions; no semantic definition is
+left unspecified. The Solution supplies the actual supporting proofs.

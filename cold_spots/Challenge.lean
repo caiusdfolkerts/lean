@@ -86,11 +86,22 @@ abbrev EisInt := ℤ × ℤ
 /-- Three copies of the integer Eisenstein lattice and the three gluing classes. -/
 abbrev E6Index := ZMod 3 × (Fin 3 → EisInt)
 
+/-- The integer-coordinate embedding sends zero to zero. -/
+theorem eisEmbed_zero_proof :
+    (((0 : EisInt).1 : ℝ), ((0 : EisInt).2 : ℝ)) = (0 : TriPoint) := by
+  sorry
+
+/-- The integer-coordinate embedding preserves addition. -/
+theorem eisEmbed_add_proof (z w : EisInt) :
+    (((z + w).1 : ℝ), ((z + w).2 : ℝ)) =
+      (((z.1 : ℝ), (z.2 : ℝ)) : TriPoint) + ((w.1 : ℝ), (w.2 : ℝ)) := by
+  sorry
+
 /-- Embed integer Eisenstein coordinates into real Eisenstein coordinates. -/
 def eisEmbed : EisInt →+ TriPoint where
   toFun z := ((z.1 : ℝ), (z.2 : ℝ))
-  map_zero' := by ext <;> simp
-  map_add' := by intro z w; ext <;> simp
+  map_zero' := eisEmbed_zero_proof
+  map_add' := eisEmbed_add_proof
 
 /-- The Eisenstein gluing vector with coordinates (1/3,-1/3). -/
 def triC : TriPoint := (1 / 3, -(1 / 3))
@@ -116,29 +127,40 @@ def dPlusSet (n : ℕ) : Set (Fin n → ℝ) :=
   {x | ∃ z : Fin n → ℤ, Even (∑ i, z i) ∧
     (x = intVec z ∨ x = fun i ↦ (z i : ℝ) + 1 / 2)}
 
+/-- The zero vector has zero coordinate sum. -/
+theorem zeroSum_zero_proof : (∑ i : Fin 8, (0 : Fin 8 → ℝ) i) = 0 := by
+  sorry
+
+/-- The zero-sum hyperplane is closed under vector addition. -/
+theorem zeroSum_add_proof (x y : Fin 8 → ℝ)
+    (hx : (∑ i, x i) = 0) (hy : (∑ i, y i) = 0) :
+    (∑ i, (x + y) i) = 0 := by
+  sorry
+
+/-- The zero-sum hyperplane is closed under real scalar multiplication. -/
+theorem zeroSum_smul_proof (a : ℝ) (x : Fin 8 → ℝ)
+    (hx : (∑ i, x i) = 0) : (∑ i, (a • x) i) = 0 := by
+  sorry
+
 /-- The real seven-dimensional subspace of R8 with coordinate sum zero. -/
 def zeroSumSpace : Submodule ℝ (Fin 8 → ℝ) where
   carrier := {x | ∑ i, x i = 0}
-  zero_mem' := by simp
+  zero_mem' := zeroSum_zero_proof
   add_mem' := by
     intro x y hx hy
-    change (∑ i, x i) = 0 at hx
-    change (∑ i, y i) = 0 at hy
-    change (∑ i, (x + y) i) = 0
-    simp only [Pi.add_apply, Finset.sum_add_distrib, hx, hy, zero_add]
+    exact zeroSum_add_proof x y hx hy
   smul_mem' := by
     intro a x hx
-    change (∑ i, x i) = 0 at hx
-    change (∑ i, (a • x) i) = 0
-    simp only [Pi.smul_apply, smul_eq_mul, ← Finset.mul_sum, hx, mul_zero]
+    exact zeroSum_smul_proof a x hx
+
+/-- Subtracting the coordinate mean gives a zero-sum vector. -/
+theorem project8_zeroSum_proof (x : Fin 8 → ℝ) :
+    (∑ i : Fin 8, (x i - (∑ j, x j) / 8)) = 0 := by
+  sorry
 
 /-- Orthogonal projection to the zero-sum hyperplane. -/
 def project8 (x : Fin 8 → ℝ) : zeroSumSpace :=
-  ⟨fun i ↦ x i - (∑ j, x j) / 8, by
-    change (∑ i, (x i - (∑ j, x j) / 8)) = 0
-    simp only [Finset.sum_sub_distrib, Finset.sum_const, Finset.card_univ, Fintype.card_fin,
-      nsmul_eq_mul]
-    ring⟩
+  ⟨fun i ↦ x i - (∑ j, x j) / 8, project8_zeroSum_proof x⟩
 
 /-- The orthogonal projection of the even integer-coordinate lattice in R8. -/
 def e7ProjectedSet : Set zeroSumSpace :=
