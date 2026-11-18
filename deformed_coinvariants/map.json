@@ -826,6 +826,11 @@
       "kind": "literal_dependency_completion",
       "evidence": "packaging/targeted-check-repair-r7.json",
       "description": "Exact original root independence helper statement restored; all original quotient construction proof bodies retained."
+    },
+    {
+      "kind": "own_hilbert_projection_bridge",
+      "evidence": "packaging/hilbert-projection-bridge-repair.json",
+      "description": "Explicit actual graded-submodule rewrites under dependent finrank in both own series equality bridges; original source/data unchanged."
     }
   ],
   "coverage_status": "partial_principal_selection_not_whole_paper",

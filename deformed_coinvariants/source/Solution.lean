@@ -29,8 +29,8 @@ def qIntegerPolynomial (j : ℕ) : Polynomial ℤ :=
 private theorem tailHilbertSeries_eq_source (c : Fin n → K) (lam : K) (m : ℕ) :
     tailHilbertSeries c lam m = GradedHilbert.series (tailQuotientGrading c lam m) := by
   ext d
-  simp only [tailHilbertSeries, PowerSeries.coeff_mk, GradedHilbert.coeff_series,
-    tailQuotientGrading_piece]
+  simp only [tailHilbertSeries, PowerSeries.coeff_mk, GradedHilbert.coeff_series]
+  rw [tailQuotientGrading_piece c lam m d]
 
 private theorem originalHilbertSeries_eq_source
     (c : Fin n → K) (lam : K) (m : ℕ)
@@ -38,8 +38,8 @@ private theorem originalHilbertSeries_eq_source
     originalHilbertSeries c lam m =
       GradedHilbert.series (originalTailQuotientGrading c lam m h) := by
   ext d
-  simp only [originalHilbertSeries, PowerSeries.coeff_mk, GradedHilbert.coeff_series,
-    originalTailQuotientGrading_piece]
+  simp only [originalHilbertSeries, PowerSeries.coeff_mk, GradedHilbert.coeff_series]
+  rw [originalTailQuotientGrading_piece c lam m h d]
 
 /-- Every clause of the original weighted-tail theorem, transported only along
 proved equality of the actual homogeneous-subspace Hilbert series. -/

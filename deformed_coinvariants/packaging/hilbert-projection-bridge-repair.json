@@ -1,0 +1,17 @@
+{
+  "status": "frozen_pending_solution_retry",
+  "source_failed_commit": "a8d5252a2707081c81712eb479ad028555788ce8",
+  "source_failed_run": "44355027395",
+  "before_solution_sha256": "9b8375ff8ab5001e4d50ed9250ea1b2da19fcf69a3a6aba086b32225847d43f1",
+  "after_solution_sha256": "1dff6f5d45e7d8db79f25adcafcba62ba70dbe04efba9a9896eb005f98ad38e1",
+  "challenge_sha256": "5c150e178ea9b9369c322f5a20308ea0797782429e724c396c42af9b494ca556",
+  "repair": "Both own Hilbert-series bridges now first simplify coefficient evaluation, then explicitly rewrite the actual graded submodule equality under finrank. This follows the original source PowerOriginalHilbert.lean41 dependent-submodule rewrite pattern; simplifier-only traversal had left the type argument untouched.",
+  "lemmas_used": [
+    "PaperVerification.PowerOperators.tailQuotientGrading_piece",
+    "PaperVerification.PowerOperators.originalTailQuotientGrading_piece"
+  ],
+  "actual_graded_spaces_unchanged": true,
+  "data_definitions_unchanged": true,
+  "original_source_proofs_unchanged": true,
+  "local_compiler": "not_run"
+}
