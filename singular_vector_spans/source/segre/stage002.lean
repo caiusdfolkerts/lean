@@ -981,12 +981,12 @@ universe v w
 
 variable (R : Type) (M : Type v) [CommSemiring R] [AddCommMonoid M] [Module R M]
 
-private noncomputable def algebraMultilinear (n : ℕ) :
+public noncomputable def algebraMultilinear (n : ℕ) :
     MultilinearMap R (fun _ : Fin n ↦ M) (SymmetricAlgebra R M) :=
   (MultilinearMap.mkPiAlgebra R (Fin n) (SymmetricAlgebra R M)).compLinearMap
     (fun _ ↦ SymmetricAlgebra.ι R M)
 
-private theorem algebraMultilinear_invariant (n : ℕ) (e : Equiv.Perm (Fin n)) :
+public theorem algebraMultilinear_invariant (n : ℕ) (e : Equiv.Perm (Fin n)) :
     (algebraMultilinear R M n).domDomCongr e = algebraMultilinear R M n := by
   ext m
   exact Equiv.prod_comp e (fun i ↦ SymmetricAlgebra.ι R M (m i))

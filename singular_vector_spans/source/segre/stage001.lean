@@ -2985,7 +2985,7 @@ variable (f : MultilinearMap R (fun _ : ι ↦ M) N)
 /-- A permutation-invariant multilinear map takes the same value on a pure tensor and on each of
 its reorderings, so it is constant on the classes of the defining relation of the symmetric
 power. -/
-private theorem lift_rel (hf : ∀ e : Equiv.Perm ι, f.domDomCongr e = f) :
+public theorem lift_rel (hf : ∀ e : Equiv.Perm ι, f.domDomCongr e = f) :
     addConGen (Rel R ι M) ≤ AddCon.ker (PiTensorProduct.lift f).toAddMonoidHom := by
   apply AddCon.addConGen_le.2
   intro x y h

@@ -42,3 +42,33 @@ Here's a guide to help you navigate this repo! All verified theorems/proposition
 | Final explicit bounds, uniform bound | `OriginalProjectivePrincipal.uniform_large_factors` | Full generic span when every `nᵢ ≥ 3e²`. |
 | Final explicit bounds, excess two | `OriginalProjectivePrincipal.excess_two_six` | Full generic span at excess two when every smaller projective dimension is at least six. |
 | Final explicit bounds, growth of the explicit bounds | `AsymptoticGrowth.three_factor_growth`, `AsymptoticGrowth.many_factor_growth` | Actual `Asymptotics.IsBigO` statements along natural excess tending to infinity: `2e + O(√e)` and, for fixed `k ≥ 4`, `e + Oₖ(e^(1/⌈k/2⌉))`. |
+
+## Palomar statement of record
+
+The independent `Challenge.lean` selects Theorem 1.1 with nonemptiness and
+small-format clauses, Corollary 1.2 with factor permutations and its two
+families, Theorem 1.3 with an actual finite linear combination and the empty
+format, the complete Proposition 5.1 classifications, Theorems 6.1 and 6.3,
+and all final explicit and asymptotic bounds. The 22 principal declarations and
+29 supporting theorem obligations are listed separately in the preparation map
+and `comparator.json`. These supporting types occur in the exact inlined
+definitions; other embedded-scheme applications remain in the proof source.
+
+The rank statement uses the actual symmetric-power Segre quotient, its
+homogeneous pieces and multiplication. The geometric statements use ordinary
+tensor products, actual bilinear contractions, ordinary linear and projective
+spans, and nonempty principal opens. All field characteristics, factor orders,
+exceptional formats, unbounded excess ranges, and explicit thresholds are
+retained.
+
+The ordinary Lake proof library reads regular copies under `modules/` with the
+original module identities from `verification/source_index.json`. All copied
+source bytes and original lowercase sources are retained; no symlinks or build
+outputs are required in the submitted snapshot.
+
+The independent Challenge passed pinned rc2 remote elaboration with its
+51 intended theorem placeholders. This checks the statement interfaces only.
+Full substantive Solution compilation, strict Comparator and independent
+kernel verification remain pending; this package is ready for that preflight.
+The ordinary proof library builds the 90 indexed module copies directly; the
+legacy default verification target remains available for its original workflow.

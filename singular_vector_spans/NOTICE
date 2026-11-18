@@ -3,3 +3,16 @@ Original work: Copyright 2026 Caius Folkerts. Licensed under Apache License 2.0.
 Supporting Tau Ceti material is derived from revision 06d5bb4e3ebb737dc6538567f5c53bf8800b9362. Original author and copyright notices remain in the source; its Apache 2.0 license is retained under licenses/.
 
 Publication preparation uses lowercase source paths and a generated local build workspace. Original Lean module identities, source text, proof bodies and verification guards are preserved byte for byte.
+
+Palomar packaging adds a meta-only in-memory audit record buffer and makes only
+audit-file persistence optional for read-only verification builds. All original
+trust, axiom, declaration, dependency and principal-result assertions remain.
+Mathematical declarations and their proofs are unchanged. The original audit
+source and index are retained under verification/original-complete.lean.txt and
+verification/original-source-index.json.
+
+Four support declarations needed by the independent statement are made public
+for stable module identities: TauCeti.SymmetricPower.algebraMultilinear, its
+invariance theorem, TauCeti.SymmetricAlgebra.isIso_scalarSpecMap, and
+SymmetricPower.lift_rel. Their
+mathematical types, definition values and proof bodies are unchanged.

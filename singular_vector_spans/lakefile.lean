@@ -20,3 +20,11 @@ target verify pkg : Unit := do
     let code ← child.wait
     if code != 0 then
       error s!"Proof verification failed (exit {code})."
+
+lean_lib SubstantiveProof where
+  srcDir := "modules"
+  roots := #[`SegreVerified]
+
+lean_lib Palomar where
+  srcDir := "."
+  roots := #[`Challenge, `Solution]

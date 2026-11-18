@@ -489,7 +489,12 @@ run_cmd do
     throwError "A required principal or semantic audit row was not produced"
   outputLines := outputLines.push ("SEGRE_FULL_KERNEL_AUDIT_PASS " ++ report.compress)
   let auditPath := (System.FilePath.mk (← getFileName)).withExtension "audit.jsonl"
-  IO.FS.writeFile auditPath (String.intercalate "\n" outputLines.toList ++ "\n")
+  let principalRecords := String.intercalate "\n" outputLines.toList ++ "\n"
+  modify fun state => { state with scopes := state.scopes.map fun scope =>
+    { scope with opts := scope.opts.set `palomarAuditRecords principalRecords } }
+  -- All validations above are mandatory; persistence is optional in read-only builds.
+  try IO.FS.writeFile auditPath principalRecords
+  catch _ => pure ()
   logInfo m!"SEGRE_FULL_KERNEL_AUDIT_PASS {report.compress}"
 
 
@@ -658,16 +663,23 @@ run_cmd do
     ("boundary", toJson "Pinned, kernel-checked imported library declarations")]
   outputLines := outputLines.push ("SEGRE_DEPENDENCY_GRAPH_PASS " ++ summary.compress)
   let auditPath := (System.FilePath.mk (← getFileName)).withExtension "audit.jsonl"
-  let principalRecords ← IO.FS.readFile auditPath
-  IO.FS.writeFile auditPath
-    (principalRecords ++ String.intercalate "\n" outputLines.toList ++ "\n")
-  let auditBytes ← IO.FS.readBinFile auditPath
+  let principalRecords := (← getOptions).get `palomarAuditRecords ""
+  unless !principalRecords.isEmpty do throwError "Principal audit records were not retained"
+  let combinedRecords := principalRecords ++ String.intercalate "\n" outputLines.toList ++ "\n"
+  modify fun state => { state with scopes := state.scopes.map fun scope =>
+    { scope with opts := scope.opts.set `palomarAuditRecords combinedRecords } }
+  let reportPersisted ← try
+    IO.FS.writeFile auditPath combinedRecords
+    pure true
+  catch _ => pure false
+  let auditBytes := combinedRecords.toUTF8
   let descriptor := Json.mkObj [
     ("module", toJson env.mainModule.toString),
     ("path", toJson auditPath.toString),
     ("bytes", toJson auditBytes.size),
     ("hash64", toJson (toString (hash auditBytes).toNat)),
     ("hash_algorithm", toJson "Lean.ByteArray.hash (64-bit; not SHA256)"),
-    ("encoding", toJson "UTF-8 JSON records with marker prefixes")]
+    ("encoding", toJson "UTF-8 JSON records with marker prefixes"),
+    ("persisted", toJson reportPersisted)]
   logInfo m!"SEGRE_DEPENDENCY_GRAPH_PASS {summary.compress}"
   logInfo m!"SEGRE_AUDIT_FILE {descriptor.compress}"

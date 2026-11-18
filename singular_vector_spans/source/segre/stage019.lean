@@ -2090,7 +2090,7 @@ theorem projToSpec_def :
       Spec.map (CommRingCat.ofHom (algebraMap R (homogeneousSubmodule R M 0))) :=
   (rfl)
 
-private theorem isIso_scalarSpecMap :
+public theorem isIso_scalarSpecMap :
     IsIso (Spec.map (CommRingCat.ofHom (algebraMap R (homogeneousSubmodule R M 0)))) := by
   have h : Function.Bijective (algebraMap R (homogeneousSubmodule R M 0)) := by
     have h_eq : ⇑(homogeneousSubmoduleZeroEquiv R M).symm =
