@@ -27,9 +27,7 @@ import Lean.Data.Json.Basic
 import Lean.Data.Json.FromToJson.Basic
 import Lean.Data.Json.Printer
 
--- Generated verification output directories.
-run_cmd Lean.Elab.Command.liftIO do
-  IO.FS.createDirAll ".lake/reports/audit/final"
+-- Optional audit-report filesystem output is disabled in the read-only verifier.
 
 
 /-!
@@ -1517,6 +1515,5 @@ run_cmd do
     ("local_declarations", Json.arr records),
     ("pinned_library_boundary", Json.arr boundaryRecords),
     ("unapproved_axioms", Json.arr #[])]
-  IO.FS.createDirAll ".lake/reports/audit/final"
-  IO.FS.writeFile ".lake/reports/audit/final/MaxwellCore_dependencies.json" result.pretty
+  let _ := result -- Keep audit construction; verifier logs retain the checked counts.
   logInfo m!"Audited {records.size} local declarations and {boundaryRecords.size} pinned-library boundaries."
