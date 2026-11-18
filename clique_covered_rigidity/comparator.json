@@ -6,7 +6,14 @@
     "Papers.Rigidity.sixConnected_rigidSubgraphCovered_rigid",
     "Papers.Rigidity.rigidCluster_completion_sixConnected_rigid",
     "Papers.Rigidity.fiveConnected_k4Covered_flexible_exists",
-    "Papers.Rigidity.PairPinGraph.defect_theorem_at_algebraicallyGeneric_pins"
+    "Papers.Rigidity.PairPinGraph.defect_theorem_at_algebraicallyGeneric_pins",
+    "Papers.Rigidity.BarJoint.edgeConstraint_map_add",
+    "Papers.Rigidity.BarJoint.edgeConstraint_map_smul",
+    "Papers.Rigidity.clusterCompletion_symm",
+    "Papers.Rigidity.clusterCompletion_loopless",
+    "Papers.Rigidity.PairPinGraph.partitionDefectSet_nonempty",
+    "Papers.Rigidity.PairPinGraph.commonTwist_mem_ker",
+    "Papers.Rigidity.PairPinGraph.realIdentityCompTriple"
   ],
   "permitted_axioms": [
     "propext",

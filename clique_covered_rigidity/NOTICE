@@ -2,3 +2,10 @@ Copyright 2026 Caius Folkerts. Original code and documentation are licensed unde
 
 
 Publication preparation, 5 November 2026: module filenames and imports were normalised, verification output paths were moved under .lake, and the documentation was adapted to Markdown. Existing third-party copyright and attribution notices are retained in the source and licenses directory.
+
+Palomar comparison normalization: existing linearity, graph-symmetry,
+looplessness, partition-nonemptiness and common-motion proofs are named
+supporting theorem obligations. A closed identity RingHomCompTriple theorem
+is used by local instances in compatibilityOperator and pinRow to remove the
+measured generated implicit proof alias difference. Mathematical data formulas
+and the five principal result types are retained.

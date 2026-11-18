@@ -1484,21 +1484,29 @@ theorem edgeConstraint_comm {V : Type} {d : ℕ}
   ring
 
 /-- One bar constraint as a real linear functional of the velocity. -/
+theorem edgeConstraint_map_add {V : Type} {d : ℕ}
+    (p : Placement V d) (v w : V) (u z : Velocity V d) :
+    edgeConstraint p (u + z) v w = edgeConstraint p u v w + edgeConstraint p z v w := by
+  simp only [edgeConstraint, Pi.add_apply]
+  rw [← Finset.sum_add_distrib]
+  apply Finset.sum_congr rfl
+  intro i _
+  ring
+
+theorem edgeConstraint_map_smul {V : Type} {d : ℕ}
+    (p : Placement V d) (v w : V) (c : ℝ) (u : Velocity V d) :
+    edgeConstraint p (c • u) v w = (RingHom.id ℝ) c • edgeConstraint p u v w := by
+  simp only [edgeConstraint, Pi.smul_apply, smul_eq_mul, RingHom.id_apply]
+  rw [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro i _
+  ring
+
 def edgeFunctional {V : Type} {d : ℕ}
     (p : Placement V d) (v w : V) : Velocity V d →ₗ[ℝ] ℝ where
   toFun u := edgeConstraint p u v w
-  map_add' u z := by
-    simp only [edgeConstraint, Pi.add_apply]
-    rw [← Finset.sum_add_distrib]
-    apply Finset.sum_congr rfl
-    intro i _
-    ring
-  map_smul' c u := by
-    simp only [edgeConstraint, Pi.smul_apply, smul_eq_mul, RingHom.id_apply]
-    rw [Finset.mul_sum]
-    apply Finset.sum_congr rfl
-    intro i _
-    ring
+  map_add' := edgeConstraint_map_add p v w
+  map_smul' := edgeConstraint_map_smul p v w
 
 @[simp] theorem edgeFunctional_apply {V : Type} {d : ℕ}
     (p : Placement V d) (u : Velocity V d) (v w : V) :
@@ -2287,13 +2295,19 @@ def RigidClusterCoveredRigidityClaim : Prop :=
     IsGenericallyRigidInR3 G
 
 /-- Complete each member of a family of vertex sets, keeping the same vertices. -/
+theorem clusterCompletion_symm {V I : Type} (C : I → Finset V) :
+    Std.Symm (fun v w : V => v ≠ w ∧ ∃ i, v ∈ C i ∧ w ∈ C i) := by
+  constructor
+  rintro v w ⟨hvw, i, hv, hw⟩
+  exact ⟨Ne.symm hvw, i, hw, hv⟩
+
+theorem clusterCompletion_loopless {V I : Type} (C : I → Finset V) :
+    Std.Irrefl (fun v w : V => v ≠ w ∧ ∃ i, v ∈ C i ∧ w ∈ C i) := by constructor; intro v; simp
+
 def clusterCompletion {V I : Type} (C : I → Finset V) : SimpleGraph V where
   Adj v w := v ≠ w ∧ ∃ i, v ∈ C i ∧ w ∈ C i
-  symm := by
-    constructor
-    rintro v w ⟨hvw, i, hv, hw⟩
-    exact ⟨Ne.symm hvw, i, hw, hv⟩
-  loopless := by constructor; intro v; simp
+  symm := clusterCompletion_symm C
+  loopless := clusterCompletion_loopless C
 
 /-- All pairs of vertices in the set belong to the rigidity closure of the
 ambient graph. Unlike `RigidInducedSubgraph`, the rigidity may be transmitted

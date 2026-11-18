@@ -33,21 +33,19 @@ def edgeConstraint {V : Type} {d : ℕ}
   ∑ i : Fin d, (p v i - p w i) * (u v i - u w i)
 
 /-- One bar constraint, as a real linear functional of the velocity. -/
+theorem edgeConstraint_map_add {V : Type} {d : ℕ}
+    (p : Placement V d) (v w : V) (u z : Velocity V d) :
+    edgeConstraint p (u + z) v w = edgeConstraint p u v w + edgeConstraint p z v w := by sorry
+
+theorem edgeConstraint_map_smul {V : Type} {d : ℕ}
+    (p : Placement V d) (v w : V) (c : ℝ) (u : Velocity V d) :
+    edgeConstraint p (c • u) v w = (RingHom.id ℝ) c • edgeConstraint p u v w := by sorry
+
 def edgeFunctional {V : Type} {d : ℕ}
     (p : Placement V d) (v w : V) : Velocity V d →ₗ[ℝ] ℝ where
   toFun u := edgeConstraint p u v w
-  map_add' u z := by
-    simp only [edgeConstraint, Pi.add_apply]
-    rw [← Finset.sum_add_distrib]
-    apply Finset.sum_congr rfl
-    intro i _
-    ring
-  map_smul' c u := by
-    simp only [edgeConstraint, Pi.smul_apply, smul_eq_mul, RingHom.id_apply]
-    rw [Finset.mul_sum]
-    apply Finset.sum_congr rfl
-    intro i _
-    ring
+  map_add' := edgeConstraint_map_add p v w
+  map_smul' := edgeConstraint_map_smul p v w
 
 /-- The real bar-joint rigidity operator on all ordered pairs, zero on nonedges. -/
 noncomputable def rigidityOperator {V : Type} {d : ℕ}
@@ -106,13 +104,16 @@ def RigidSubgraphCovered {V : Type} [Fintype V] (G : SimpleGraph V) : Prop :=
         IsGenericallyRigidInR3 H
 
 /-- Complete each member of a family of vertex sets on the same ambient vertices. -/
+theorem clusterCompletion_symm {V I : Type} (C : I → Finset V) :
+    Std.Symm (fun v w : V => v ≠ w ∧ ∃ i, v ∈ C i ∧ w ∈ C i) := by sorry
+
+theorem clusterCompletion_loopless {V I : Type} (C : I → Finset V) :
+    Std.Irrefl (fun v w : V => v ≠ w ∧ ∃ i, v ∈ C i ∧ w ∈ C i) := by sorry
+
 def clusterCompletion {V I : Type} (C : I → Finset V) : SimpleGraph V where
   Adj v w := v ≠ w ∧ ∃ i, v ∈ C i ∧ w ∈ C i
-  symm := by
-    constructor
-    rintro v w ⟨hvw, i, hv, hw⟩
-    exact ⟨Ne.symm hvw, i, hw, hv⟩
-  loopless := by constructor; intro v; simp
+  symm := clusterCompletion_symm C
+  loopless := clusterCompletion_loopless C
 
 /-- All pairs of vertices in this set belong to the ambient rigidity closure. -/
 def RigidCluster {V : Type} [Fintype V] (G : SimpleGraph V) (S : Finset V) : Prop :=
@@ -161,11 +162,15 @@ structure PairPinGraph (B E : Type) where
   loopless : ∀ e, left e ≠ right e
 
 namespace PairPinGraph
+theorem realIdentityCompTriple :
+    RingHomCompTriple (RingHom.id ℝ) (RingHom.id ℝ) (RingHom.id ℝ) := by sorry
+
 variable {B E : Type}
 
 /-- Three coordinate rows per pin equating velocities of its two bodies. -/
 def compatibilityOperator (J : PairPinGraph B E) (p : E → Vec3) :
     (B → Twist) →ₗ[ℝ] (E → Vec3) :=
+  letI : RingHomCompTriple (RingHom.id ℝ) (RingHom.id ℝ) (RingHom.id ℝ) := realIdentityCompTriple
   LinearMap.pi fun e =>
     (evaluateTwist (p e)).comp
       (LinearMap.proj (R := ℝ) (φ := fun _ : B => Twist) (J.left e) -
@@ -188,10 +193,7 @@ def commonTwistMap : Twist →ₗ[ℝ] (B → Twist) :=
   LinearMap.pi fun _ => LinearMap.id
 
 theorem commonTwist_mem_ker (J : PairPinGraph B E) (p : E → Vec3) (X : Twist) :
-    commonTwistMap X ∈ (compatibilityOperator J p).ker := by
-  rw [LinearMap.mem_ker]
-  ext e i
-  simp [commonTwistMap, compatibilityOperator]
+    commonTwistMap X ∈ (compatibilityOperator J p).ker := by sorry
 
 /-- The common Euclidean motions as elements of the compatibility kernel. -/
 def commonTwistInKernel (J : PairPinGraph B E) (p : E → Vec3) :
@@ -228,10 +230,14 @@ noncomputable def labelledPartitionDefect [Fintype B] [Fintype E]
   6 * (((Finset.univ.image π).card : ℤ) - 1) - (partitionCapacity J π : ℤ)
 
 /-- Maximum integer defect over every partition of the finite body set. -/
+theorem partitionDefectSet_nonempty [Fintype B] [Fintype E]
+    (J : PairPinGraph B E) :
+    (Finset.univ.image (fun π : B → Fin (Fintype.card B) => labelledPartitionDefect J π)).Nonempty := by sorry
+
 noncomputable def maxPartitionDefect [Fintype B] [Fintype E]
     (J : PairPinGraph B E) : ℤ :=
   (Finset.univ.image (fun π : B → Fin (Fintype.card B) => labelledPartitionDefect J π)).max'
-    (Finset.image_nonempty.mpr ⟨Fintype.equivFin B, Finset.mem_univ _⟩)
+    (partitionDefectSet_nonempty J)
 
 /-- The integer defect for the partition into singleton bodies. -/
 noncomputable def singletonPartitionDefect [Fintype B] [Fintype E]
@@ -245,6 +251,7 @@ def IsSimple (J : PairPinGraph B E) : Prop :=
 /-- One literal coordinate row of a pin compatibility equation. -/
 def pinRow (J : PairPinGraph B E) (p : E → Vec3) (a : E × Fin 3) :
     (B → Twist) →ₗ[ℝ] ℝ :=
+  letI : RingHomCompTriple (RingHom.id ℝ) (RingHom.id ℝ) (RingHom.id ℝ) := realIdentityCompTriple
   (LinearMap.proj a.2).comp ((LinearMap.proj a.1).comp (compatibilityOperator J p))
 
 /-- Distinct bodies have distinct twists in some actual compatible motion. -/

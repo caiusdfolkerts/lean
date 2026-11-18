@@ -33,7 +33,8 @@ Here's a guide to help you navigate this repo! All verified theorems/proposition
 `Challenge.lean` independently states Theorem 1.1, both parts of Corollary 1.2,
 the five-connected sharpness assertion, and all three clauses of Theorem 5.1.
 `Solution.lean` imports the substantive proofs, using their original names and
-types. `comparator.json` lists precisely these five declarations.
+types. `comparator.json` lists these five principal declarations and seven
+separate supporting proof obligations.
 
 The Challenge defines generic rigidity by the maximum rank of the actual real
 bar-joint operator and compares it with the complete graph on the same vertex
@@ -46,7 +47,13 @@ Algebraic independence is over Q for every actual pin occurrence coordinate.
 The no-merged-bodies clause and simplicity clause retain their printed scope.
 
 Three oversized proof modules have been split at balanced source-section
-boundaries; the original module paths are public-import aggregators. No
-mathematical statement or proof has been intentionally changed. The independent Challenge elaborates successfully against the unchanged
-pinned Lean v4.35.0 and Mathlib, with only the selected theorem placeholders.
-Full Solution compilation and Comparator remain pending.
+boundaries; the original module paths are public-import aggregators.
+The principal statements and all geometric/operator data retain their source
+semantics. Existing proof fields have been moved into named supporting
+theorems with their actual source proofs. A closed theorem for identity-ring
+homomorphism composition is supplied locally in the two affected linear-map
+definitions, preventing a measured generated proof-name difference.
+
+The prior full source build passed; the strict Comparator then exposed the
+implicit composition-proof identity difference. The current named-helper
+revision has not yet been elaborated or checked by the full workflow.

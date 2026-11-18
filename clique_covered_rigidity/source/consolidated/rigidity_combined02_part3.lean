@@ -2091,11 +2091,15 @@ structure PairPinGraph (B E : Type) where
 
 namespace PairPinGraph
 
+theorem realIdentityCompTriple :
+    RingHomCompTriple (RingHom.id ℝ) (RingHom.id ℝ) (RingHom.id ℝ) := by infer_instance
+
 variable {B E : Type}
 
 /-- The occurrence-level compatibility operator, with three rows per pin. -/
 def compatibilityOperator (J : PairPinGraph B E) (p : E → Vec3) :
     (B → Twist) →ₗ[ℝ] (E → Vec3) :=
+  letI : RingHomCompTriple (RingHom.id ℝ) (RingHom.id ℝ) (RingHom.id ℝ) := realIdentityCompTriple
   LinearMap.pi fun e =>
     (evaluateTwist (p e)).comp
       (LinearMap.proj (R := ℝ) (φ := fun _ : B => Twist) (J.left e) -
@@ -2238,10 +2242,15 @@ theorem exists_partition_labelling [Fintype B] (s : Setoid B) :
   intro i j
   rw [e.injective.eq_iff, Quotient.eq]
 
+theorem partitionDefectSet_nonempty [Fintype B] [Fintype E]
+    (J : PairPinGraph B E) :
+    (Finset.univ.image (fun π : B → Fin (Fintype.card B) => labelledPartitionDefect J π)).Nonempty := by
+  exact Finset.image_nonempty.mpr ⟨Fintype.equivFin B, Finset.mem_univ _⟩
+
 noncomputable def maxPartitionDefect [Fintype B] [Fintype E]
     (J : PairPinGraph B E) : ℤ :=
   (Finset.univ.image (fun π : B → Fin (Fintype.card B) => labelledPartitionDefect J π)).max'
-    (Finset.image_nonempty.mpr ⟨Fintype.equivFin B, Finset.mem_univ _⟩)
+    (partitionDefectSet_nonempty J)
 
 theorem multiplicity_const_of_ne [Fintype E] (J : PairPinGraph B E)
     {t : ℕ} (a i j : Fin t) (hij : i ≠ j) :
@@ -2787,6 +2796,7 @@ def flattenPinCoordinates : (E → Vec3) ≃ₗ[ℝ] (E × Fin 3 → ℝ) where
 /-- One literal coordinate row of a pin compatibility equation. -/
 def pinRow (J : PairPinGraph B E) (p : E → Vec3) (a : E × Fin 3) :
     (B → Twist) →ₗ[ℝ] ℝ :=
+  letI : RingHomCompTriple (RingHom.id ℝ) (RingHom.id ℝ) (RingHom.id ℝ) := realIdentityCompTriple
   (LinearMap.proj a.2).comp ((LinearMap.proj a.1).comp (compatibilityOperator J p))
 
 @[simp] theorem pinRow_apply (J : PairPinGraph B E) (p : E → Vec3)
