@@ -1,0 +1,11 @@
+{
+  "status": "partial_measured_repair_applied_not_frozen",
+  "diagnostic_run": "44351424654",
+  "before_challenge_sha256": "d4b9fd01951ec93af6bbd2e89bdd61108afa4aa079c1b53be7fb1e1ad2c48e8f",
+  "after_challenge_sha256": "ef6d15d2ef490e52df90b9d63796b715bfbe2d9b4f1af1c418b556dd57d7c5de",
+  "challenge_lines": 924,
+  "measured_type_cause": "ProperlyColoredComplex.Ring source binder order is V,C,D,K,CommRingK; former Challenge inserted the abbreviation in colorRename context with V,C,K,CommRingK,D. This also changed colorRename instantiated type.",
+  "repair": "Restore exact original Ring declaration context and argument chronology in its own isolated section; unchanged body and mathematical quotient.",
+  "remaining": "All measured generated proof aliases must be normalized comprehensively before freeze/retry.",
+  "source_mathematical_changes": false
+}

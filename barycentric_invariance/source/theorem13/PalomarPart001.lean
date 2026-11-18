@@ -109,10 +109,8 @@ set_option linter.unusedSectionVars false
 set_option linter.deprecated false
 set_option linter.unnecessarySimpa false
 set_option linter.style.haveILetI false
-set_option linter.unusedSimpArgs false
 set_option synthInstance.maxHeartbeats 200000
-set_option linter.unusedTactic false
-set_option autoImplicit false
+set_option linter.unusedSimpArgs false
 /- BEGIN IntegralCoherentComparison.lean -/
 section
 
@@ -929,11 +927,17 @@ open Classical Finset MvPolynomial
 variable {I V K M N : Type*} [CommRing K]
   [AddCommGroup M] [Module K M] [AddCommGroup N] [Module K N]
 
+/-- The original scalar-closure proof for the unchanged coefficient predicate. -/
+theorem palomarBasisOrdinaryDegreePiece_smul (b : Module.Basis I K M)
+    (degree : I → ℕ) (n : ℕ) :
+    ∀ (c : K) (x : M), (∀ i, degree i ≠ n → b.repr x i = 0) →
+      ∀ i, degree i ≠ n → b.repr (c • x) i = 0 := by intro c x hx i hi; simp only [map_smul, Finsupp.smul_apply, hx i hi, smul_zero]
+
 def basisOrdinaryDegreePiece (b : Module.Basis I K M) (degree : I → ℕ) (n : ℕ) : Submodule K M where
   carrier := {x | ∀ i, degree i ≠ n → b.repr x i = 0}
   zero_mem' := by intro i hi; simp
   add_mem' := by intro x y hx hy i hi; simp only [map_add, Finsupp.add_apply, hx i hi, hy i hi, add_zero]
-  smul_mem' := by intro c x hx i hi; simp only [map_smul, Finsupp.smul_apply, hx i hi, smul_zero]
+  smul_mem' := palomarBasisOrdinaryDegreePiece_smul b degree n
 
 theorem weightedPresentationPiece_eq (q : MvPolynomial V K →ₗ[K] M)
     (b : Module.Basis I K M) (a : I → V →₀ ℕ) (w : V → ℕ) (degree : I → ℕ)
@@ -1302,11 +1306,16 @@ namespace FourPapers.Universal
 open Classical Finset MvPolynomial
 variable {I V K M : Type*} [CommRing K] [AddCommGroup M] [Module K M]
 
+/-- The original scalar-closure proof for the unchanged coefficient predicate. -/
+theorem palomarPresentationWeightLevel_smul (w : (V →₀ ℕ) → ℤ) (n : ℤ) :
+    ∀ (c : K) (f : MvPolynomial V K), (∀ a, n ≤ w a → f.coeff a = 0) →
+      ∀ a, n ≤ w a → (c • f).coeff a = 0 := by intro c f hf a ha; simp only [coeff_smul, hf a ha, smul_zero]
+
 def presentationWeightLevel (w : (V →₀ ℕ) → ℤ) (n : ℤ) : Submodule K (MvPolynomial V K) where
   carrier := {f | ∀ a, n ≤ w a → f.coeff a = 0}
   zero_mem' := by intro a ha; simp
   add_mem' := by intro f g hf hg a ha; simp only [MvPolynomial.coeff_add, hf a ha, hg a ha, add_zero]
-  smul_mem' := by intro c f hf a ha; simp only [coeff_smul, hf a ha, smul_zero]
+  smul_mem' := palomarPresentationWeightLevel_smul w n
 
 theorem weightedPresentationFiltration_eq (q : MvPolynomial V K →ₗ[K] M)
     (b : Module.Basis I K M) (a : I → V →₀ ℕ)

@@ -29,7 +29,17 @@
     "FourPapers.Universal.theorem_1_3_uniform_iff",
     "PalomarBarycentric.parameterModuleComparison",
     "PalomarBarycentric.integralCoherentComparison",
-    "FourPapers.Universal.mem_faceVertices"
+    "FourPapers.Universal.mem_faceVertices",
+    "FourPapers.Universal.BooleanFace.palomarColorBound",
+    "FourPapers.Universal.palomarBooleanFaceInclusion_nonzero",
+    "FourPapers.Universal.palomarBooleanFaceInclusionValue_injective",
+    "FourPapers.Universal.palomarPolynomialDegreePiece_smul",
+    "FourPapers.Universal.palomarBasisOrdinaryDegreePiece_smul",
+    "FourPapers.Universal.palomarPresentationWeightLevel_smul",
+    "FourPapers.Universal.palomarBarycentricDiagram_res_refl",
+    "FourPapers.Universal.palomarBarycentricDiagram_res_comp",
+    "PalomarBarycentric.coefficientIdentityInvPair",
+    "PalomarBarycentric.coefficientIdealTwoSided"
   ],
   "permitted_axioms": [
     "propext",

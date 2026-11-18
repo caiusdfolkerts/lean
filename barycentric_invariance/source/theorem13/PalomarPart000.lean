@@ -82,6 +82,20 @@ public import Mathlib.Tactic.Ring
 public meta import Lean.Elab.Tactic.Omega
 
 @[expose] public section
+namespace PalomarBarycentric
+universe uCoefficient
+/-- The canonical inverse-pair law for the identity coefficient homomorphism. -/
+theorem coefficientIdentityInvPair {K : Type uCoefficient} [CommRing K] :
+    RingHomInvPair (RingHom.id K) (RingHom.id K) := by infer_instance
+/-- Every ideal of a commutative coefficient algebra is two-sided. -/
+theorem coefficientIdealTwoSided {R : Type uCoefficient} [CommRing R] (I : Ideal R) :
+    I.IsTwoSided := by infer_instance
+attribute [instance 2000] coefficientIdentityInvPair coefficientIdealTwoSided
+end PalomarBarycentric
+end
+
+
+@[expose] public section
 -- Keep editor information enabled for the stock Lean command processor.
 set_option Elab.async false
 set_option maxRecDepth 4000
@@ -1596,12 +1610,17 @@ variable {V K : Type*} [Fintype V] [DecidableEq V] [CommRing K]
 /-- Nonempty faces of the Boolean simplex on `V`. -/
 abbrev BooleanFace (V : Type*) [DecidableEq V] := {F : Finset V // F.Nonempty}
 
+
+/-- The original finite color bound, with the original cardinality proof. -/
+theorem BooleanFace.palomarColorBound (F : BooleanFace V) :
+    F.val.card - 1 < Fintype.card V := by
+  have hp : 0 < F.val.card := card_pos.mpr F.property
+  have hb : F.val.card ≤ Fintype.card V := card_le_univ F.val
+  omega
+
 /-- Rank minus one, to index the rank parameters by `Fin (card V)`. -/
 def BooleanFace.color (F : BooleanFace V) : Fin (Fintype.card V) :=
-  ⟨F.val.card - 1, by
-    have hp : 0 < F.val.card := card_pos.mpr F.property
-    have hb : F.val.card ≤ Fintype.card V := card_le_univ F.val
-    omega⟩
+  ⟨F.val.card - 1, BooleanFace.palomarColorBound F⟩
 
 @[simp] theorem BooleanFace.color_succ (F : BooleanFace V) :
     (BooleanFace.color F).val + 1 = F.val.card := by
@@ -1993,21 +2012,34 @@ def faceBooleanInterval (hs : IsSimplicialPoset P) (p : P) :
     intro q r
     exact stalkVertexSet_subset_iff hs q.property r.property
 
+
+/-- The original chosen nonempty subface is not the bottom face. -/
+theorem palomarBooleanFaceInclusion_nonzero (hs : IsSimplicialPoset P) (p : P)
+    (F : BooleanFace (FaceVertex p)) : (subfaceOfVertexSet hs p F.val).val ≠ ⊥ := by
+  intro hbot
+  have he := stalkVertexSet_subfaceOfVertexSet hs p F.val
+  rw [hbot, stalkVertexSet_bot] at he
+  exact F.property.ne_empty he.symm
+/-- Exactly the original face inclusion function, with its named nonzero proof. -/
+def palomarBooleanFaceInclusionValue (hs : IsSimplicialPoset P) (p : P)
+    (F : BooleanFace (FaceVertex p)) : NonzeroFace P :=
+  ⟨(subfaceOfVertexSet hs p F.val).val, palomarBooleanFaceInclusion_nonzero hs p F⟩
+/-- Injectivity by the original vertex-set argument. -/
+theorem palomarBooleanFaceInclusionValue_injective (hs : IsSimplicialPoset P) (p : P) :
+    Function.Injective (palomarBooleanFaceInclusionValue hs p) := by
+  intro F G h
+  apply Subtype.ext
+  have he : (subfaceOfVertexSet hs p F.val).val =
+      (subfaceOfVertexSet hs p G.val).val := congrArg (fun z : NonzeroFace P => z.val) h
+  have hv := congrArg (stalkVertexSet p) he
+  simpa only [stalkVertexSet_subfaceOfVertexSet] using hv
+
 /-- Nonempty Boolean faces embed as actual nonzero subfaces of the original
 poset. The embedding is confined to this Boolean interval. -/
 def booleanFaceInclusion (hs : IsSimplicialPoset P) (p : P) :
     BooleanFace (FaceVertex p) ↪ NonzeroFace P where
-  toFun F := ⟨(subfaceOfVertexSet hs p F.val).val, by
-    intro hbot
-    have he := stalkVertexSet_subfaceOfVertexSet hs p F.val
-    rw [hbot, stalkVertexSet_bot] at he
-    exact F.property.ne_empty he.symm⟩
-  inj' F G h := by
-    apply Subtype.ext
-    have he : (subfaceOfVertexSet hs p F.val).val =
-        (subfaceOfVertexSet hs p G.val).val := congrArg (fun z : NonzeroFace P => z.val) h
-    have hv := congrArg (stalkVertexSet p) he
-    simpa only [stalkVertexSet_subfaceOfVertexSet] using hv
+  toFun := palomarBooleanFaceInclusionValue hs p
+  inj' := palomarBooleanFaceInclusionValue_injective hs p
 
 theorem booleanFaceInclusion_le (hs : IsSimplicialPoset P) (p : P)
     (F : BooleanFace (FaceVertex p)) : (booleanFaceInclusion hs p F).val ≤ p :=
@@ -2702,20 +2734,30 @@ variable (K : Type*) [CommRing K]
 
 abbrev BarycentricStalk (p : P) := BooleanBarycentricRing (FaceVertex p) K
 
-abbrev barycentricDiagram : ModuleDiagram K P where
-  obj p := BarycentricStalk K p
-  res h := (booleanRestriction (K := K) (faceVertexInclusion h)).toLinearMap
-  res_refl p x := by
+/-- The original identity law for the actual Boolean restriction map. -/
+theorem palomarBarycentricDiagram_res_refl (p : P) (x : BarycentricStalk K p) :
+    (booleanRestriction (K := K) (faceVertexInclusion (le_refl p))).toLinearMap x = x := by
     change booleanRestriction (K := K) (faceVertexInclusion (le_refl p)) x = x
     rw [faceVertexInclusion_refl, booleanRestriction_refl]
     rfl
-  res_comp hqp hrq x := by
+/-- The original composition law for the actual Boolean restriction maps. -/
+theorem palomarBarycentricDiagram_res_comp {p q r : P} (hqp : q ≤ p) (hrq : r ≤ q)
+    (x : BarycentricStalk K p) :
+    (booleanRestriction (K := K) (faceVertexInclusion hrq)).toLinearMap
+      ((booleanRestriction (K := K) (faceVertexInclusion hqp)).toLinearMap x) =
+      (booleanRestriction (K := K) (faceVertexInclusion (hrq.trans hqp))).toLinearMap x := by
     change booleanRestriction (K := K) (faceVertexInclusion hrq)
       (booleanRestriction (faceVertexInclusion hqp) x) =
         booleanRestriction (faceVertexInclusion (hrq.trans hqp)) x
     have h := DFunLike.congr_fun
       (booleanRestriction_comp (K := K) (faceVertexInclusion hrq) (faceVertexInclusion hqp)) x
     simpa only [AlgHom.comp_apply, faceVertexInclusion_trans] using h
+
+abbrev barycentricDiagram : ModuleDiagram K P where
+  obj p := BarycentricStalk K p
+  res h := (booleanRestriction (K := K) (faceVertexInclusion h)).toLinearMap
+  res_refl := palomarBarycentricDiagram_res_refl K
+  res_comp := palomarBarycentricDiagram_res_comp K
 
 variable (hs : IsSimplicialPoset P)
 
@@ -7496,15 +7538,23 @@ theorem vertexDegree_eq_chainOrdinaryDegree (a : BooleanFace V →₀ ℕ) :
     vertexDegree (fun v => chainVertexMap a v) = chainOrdinaryDegree a :=
   vertexDegree_chainVertexMap a
 
+universe uPolynomialV uPolynomialK
+/-- The original scalar-closure proof for the unchanged coefficient predicate. -/
+theorem palomarPolynomialDegreePiece_smul {V : Type uPolynomialV} {K : Type uPolynomialK}
+    [Fintype V] [CommRing K] (n : ℕ) :
+    ∀ (c : K) (f : MvPolynomial V K),
+      (∀ a : V →₀ ℕ, vertexDegree (fun v => a v) ≠ n → f.coeff a = 0) →
+      ∀ a : V →₀ ℕ, vertexDegree (fun v => a v) ≠ n → (c • f).coeff a = 0 := by
+    intro c f hf a ha
+    rw [MvPolynomial.coeff_smul, hf a ha, smul_zero]
+
 def polynomialDegreePiece (n : ℕ) : Submodule K (MvPolynomial V K) where
   carrier := {f | ∀ a : V →₀ ℕ, vertexDegree (fun v => a v) ≠ n → f.coeff a = 0}
   zero_mem' := by intro a ha; simp
   add_mem' := by
     intro f g hf hg a ha
     rw [MvPolynomial.coeff_add, hf a ha, hg a ha, add_zero]
-  smul_mem' := by
-    intro c f hf a ha
-    rw [MvPolynomial.coeff_smul, hf a ha, smul_zero]
+  smul_mem' := palomarPolynomialDegreePiece_smul n
 
 theorem polynomialDegreePiece_support (n : ℕ) (f : MvPolynomial V K)
     (hf : f ∈ polynomialDegreePiece n) (a : V →₀ ℕ) (ha : a ∈ f.support) :

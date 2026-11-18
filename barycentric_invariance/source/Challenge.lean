@@ -10,6 +10,20 @@ public import Mathlib.Data.Fintype.Card
 public import Mathlib.Data.Nat.Factorial.Basic
 public import Mathlib.Order.Atoms.Finite
 public import Lean.Elab.Tactic.Omega
+
+@[expose] public section
+namespace PalomarBarycentric
+universe uCoefficient
+/-- The canonical inverse-pair law for the identity coefficient homomorphism. -/
+theorem coefficientIdentityInvPair {K : Type uCoefficient} [CommRing K] :
+    RingHomInvPair (RingHom.id K) (RingHom.id K) := by sorry
+/-- Every ideal of a commutative coefficient algebra is two-sided. -/
+theorem coefficientIdealTwoSided {R : Type uCoefficient} [CommRing R] (I : Ideal R) :
+    I.IsTwoSided := by sorry
+attribute [instance 2000] coefficientIdentityInvPair coefficientIdealTwoSided
+end PalomarBarycentric
+end
+
 /-!
 # Universal parameter modules for actual face rings
 The genuine face ring and its barycentric Stanley--Reisner quotient admit
@@ -299,12 +313,14 @@ open Classical Finset
 variable {V K : Type*} [Fintype V] [DecidableEq V] [CommRing K]
 /-- Nonempty faces of the Boolean simplex on `V`. -/
 abbrev BooleanFace (V : Type*) [DecidableEq V] := {F : Finset V // F.Nonempty}
+
+/-- The original finite color bound, with the original cardinality proof. -/
+theorem BooleanFace.palomarColorBound (F : BooleanFace V) :
+    F.val.card - 1 < Fintype.card V := by sorry
+
 /-- Rank minus one, to index the rank parameters by `Fin (card V)`. -/
 def BooleanFace.color (F : BooleanFace V) : Fin (Fintype.card V) :=
-  ⟨F.val.card - 1, by
-    have hp : 0 < F.val.card := card_pos.mpr F.property
-    have hb : F.val.card ≤ Fintype.card V := card_le_univ F.val
-    omega⟩
+  ⟨F.val.card - 1, BooleanFace.palomarColorBound F⟩
 /-- Literal retained-source theorem; original position theorem13.lean:1612. -/
 theorem BooleanFace.card_eq_of_color_eq {F G : BooleanFace V}
     (h : (BooleanFace.color F) = G.color) : F.val.card = G.val.card := by sorry
@@ -348,20 +364,23 @@ def subfaceOfVertexSet (hs : IsSimplicialPoset P) (p : P)
 theorem stalkVertexSet_subfaceOfVertexSet (hs : IsSimplicialPoset P) (p : P)
     (s : Finset (FaceVertex p)) :
     stalkVertexSet p (subfaceOfVertexSet hs p s).val = s := by sorry
+
+/-- The original chosen nonempty subface is not the bottom face. -/
+theorem palomarBooleanFaceInclusion_nonzero (hs : IsSimplicialPoset P) (p : P)
+    (F : BooleanFace (FaceVertex p)) : (subfaceOfVertexSet hs p F.val).val ≠ ⊥ := by sorry
+/-- Exactly the original face inclusion function, with its named nonzero proof. -/
+def palomarBooleanFaceInclusionValue (hs : IsSimplicialPoset P) (p : P)
+    (F : BooleanFace (FaceVertex p)) : NonzeroFace P :=
+  ⟨(subfaceOfVertexSet hs p F.val).val, palomarBooleanFaceInclusion_nonzero hs p F⟩
+/-- Injectivity by the original vertex-set argument. -/
+theorem palomarBooleanFaceInclusionValue_injective (hs : IsSimplicialPoset P) (p : P) :
+    Function.Injective (palomarBooleanFaceInclusionValue hs p) := by sorry
+
 /-- Nonempty Boolean faces embed as actual nonzero subfaces of the original poset. The embedding is confined to this Boolean interval. -/
 def booleanFaceInclusion (hs : IsSimplicialPoset P) (p : P) :
     BooleanFace (FaceVertex p) ↪ NonzeroFace P where
-  toFun F := ⟨(subfaceOfVertexSet hs p F.val).val, by
-    intro hbot
-    have he := stalkVertexSet_subfaceOfVertexSet hs p F.val
-    rw [hbot, stalkVertexSet_bot] at he
-    exact F.property.ne_empty he.symm⟩
-  inj' F G h := by
-    apply Subtype.ext
-    have he : (subfaceOfVertexSet hs p F.val).val =
-        (subfaceOfVertexSet hs p G.val).val := congrArg (fun z : NonzeroFace P => z.val) h
-    have hv := congrArg (stalkVertexSet p) he
-    simpa only [stalkVertexSet_subfaceOfVertexSet] using hv
+  toFun := palomarBooleanFaceInclusionValue hs p
+  inj' := palomarBooleanFaceInclusionValue_injective hs p
 end
 end FourPapers.Universal
 namespace FourPapers.Universal
@@ -469,21 +488,23 @@ variable (K : Type*) [CommRing K]
       faceVertexInclusion (hrq.trans hqp) := by sorry
 /-- The Boolean barycentric Stanley--Reisner quotient on the vertices of the specified face. -/
 abbrev BarycentricStalk (p : P) := BooleanBarycentricRing (FaceVertex p) K
+
+/-- The original identity law for the actual Boolean restriction map. -/
+theorem palomarBarycentricDiagram_res_refl (p : P) (x : BarycentricStalk K p) :
+    (booleanRestriction (K := K) (faceVertexInclusion (le_refl p))).toLinearMap x = x := by sorry
+/-- The original composition law for the actual Boolean restriction maps. -/
+theorem palomarBarycentricDiagram_res_comp {p q r : P} (hqp : q ≤ p) (hrq : r ≤ q)
+    (x : BarycentricStalk K p) :
+    (booleanRestriction (K := K) (faceVertexInclusion hrq)).toLinearMap
+      ((booleanRestriction (K := K) (faceVertexInclusion hqp)).toLinearMap x) =
+      (booleanRestriction (K := K) (faceVertexInclusion (hrq.trans hqp))).toLinearMap x := by sorry
+
 /-- Literal retained-source abbrev; original position theorem13.lean:2705. -/
 abbrev barycentricDiagram : ModuleDiagram K P where
   obj p := BarycentricStalk K p
   res h := (booleanRestriction (K := K) (faceVertexInclusion h)).toLinearMap
-  res_refl p x := by
-    change booleanRestriction (K := K) (faceVertexInclusion (le_refl p)) x = x
-    rw [faceVertexInclusion_refl, booleanRestriction_refl]
-    rfl
-  res_comp hqp hrq x := by
-    change booleanRestriction (K := K) (faceVertexInclusion hrq)
-      (booleanRestriction (faceVertexInclusion hqp) x) =
-        booleanRestriction (faceVertexInclusion (hrq.trans hqp)) x
-    have h := DFunLike.congr_fun
-      (booleanRestriction_comp (K := K) (faceVertexInclusion hrq) (faceVertexInclusion hqp)) x
-    simpa only [AlgHom.comp_apply, faceVertexInclusion_trans] using h
+  res_refl := palomarBarycentricDiagram_res_refl K
+  res_comp := palomarBarycentricDiagram_res_comp K
 end
 end FourPapers.Universal
 namespace FourPapers.Universal
@@ -491,6 +512,15 @@ section
 set_option backward.isDefEq.respectTransparency false
 open Classical Finset MvPolynomial
 variable {V K : Type*} [Fintype V] [LinearOrder V] [CommRing K]
+
+universe uPolynomialV uPolynomialK
+/-- The original scalar-closure proof for the unchanged coefficient predicate. -/
+theorem palomarPolynomialDegreePiece_smul {V : Type uPolynomialV} {K : Type uPolynomialK}
+    [Fintype V] [CommRing K] (n : ℕ) :
+    ∀ (c : K) (f : MvPolynomial V K),
+      (∀ a : V →₀ ℕ, vertexDegree (fun v => a v) ≠ n → f.coeff a = 0) →
+      ∀ a : V →₀ ℕ, vertexDegree (fun v => a v) ≠ n → (c • f).coeff a = 0 := by sorry
+
 /-- Literal retained-source def; original position theorem13.lean:7499. -/
 def polynomialDegreePiece (n : ℕ) : Submodule K (MvPolynomial V K) where
   carrier := {f | ∀ a : V →₀ ℕ, vertexDegree (fun v => a v) ≠ n → f.coeff a = 0}
@@ -498,9 +528,7 @@ def polynomialDegreePiece (n : ℕ) : Submodule K (MvPolynomial V K) where
   add_mem' := by
     intro f g hf hg a ha
     rw [MvPolynomial.coeff_add, hf a ha, hg a ha, add_zero]
-  smul_mem' := by
-    intro c f hf a ha
-    rw [MvPolynomial.coeff_smul, hf a ha, smul_zero]
+  smul_mem' := palomarPolynomialDegreePiece_smul n
 end
 end FourPapers.Universal
 namespace FourPapers.Universal
@@ -585,12 +613,19 @@ set_option backward.isDefEq.respectTransparency false
 open Classical Finset MvPolynomial
 variable {I V K M N : Type*} [CommRing K]
   [AddCommGroup M] [Module K M] [AddCommGroup N] [Module K N]
+
+/-- The original scalar-closure proof for the unchanged coefficient predicate. -/
+theorem palomarBasisOrdinaryDegreePiece_smul (b : Module.Basis I K M)
+    (degree : I → ℕ) (n : ℕ) :
+    ∀ (c : K) (x : M), (∀ i, degree i ≠ n → b.repr x i = 0) →
+      ∀ i, degree i ≠ n → b.repr (c • x) i = 0 := by sorry
+
 /-- Literal retained-source def; original position theorem13.lean:9287. -/
 def basisOrdinaryDegreePiece (b : Module.Basis I K M) (degree : I → ℕ) (n : ℕ) : Submodule K M where
   carrier := {x | ∀ i, degree i ≠ n → b.repr x i = 0}
   zero_mem' := by intro i hi; simp
   add_mem' := by intro x y hx hy i hi; simp only [map_add, Finsupp.add_apply, hx i hi, hy i hi, add_zero]
-  smul_mem' := by intro c x hx i hi; simp only [map_smul, Finsupp.smul_apply, hx i hi, smul_zero]
+  smul_mem' := palomarBasisOrdinaryDegreePiece_smul b degree n
 end
 end FourPapers.Universal
 namespace FourPapers.Universal
@@ -616,12 +651,18 @@ section
 set_option backward.isDefEq.respectTransparency false
 open Classical Finset MvPolynomial
 variable {I V K M : Type*} [CommRing K] [AddCommGroup M] [Module K M]
+
+/-- The original scalar-closure proof for the unchanged coefficient predicate. -/
+theorem palomarPresentationWeightLevel_smul (w : (V →₀ ℕ) → ℤ) (n : ℤ) :
+    ∀ (c : K) (f : MvPolynomial V K), (∀ a, n ≤ w a → f.coeff a = 0) →
+      ∀ a, n ≤ w a → (c • f).coeff a = 0 := by sorry
+
 /-- Literal retained-source def; original position theorem13.lean:9660. -/
 def presentationWeightLevel (w : (V →₀ ℕ) → ℤ) (n : ℤ) : Submodule K (MvPolynomial V K) where
   carrier := {f | ∀ a, n ≤ w a → f.coeff a = 0}
   zero_mem' := by intro a ha; simp
   add_mem' := by intro f g hf hg a ha; simp only [MvPolynomial.coeff_add, hf a ha, hg a ha, add_zero]
-  smul_mem' := by intro c f hf a ha; simp only [coeff_smul, hf a ha, smul_zero]
+  smul_mem' := palomarPresentationWeightLevel_smul w n
 end
 end FourPapers.Universal
 namespace FourPapers.Universal
@@ -665,6 +706,17 @@ variable {V C : Type*} [Fintype V] [Fintype C]
 variable (D : ProperlyColoredComplex V C)
 /-- Literal retained-source def; original position theorem13.lean:10763. -/
 def allowed (a : V →₀ ℕ) : Prop := D.face a.support
+end
+end FourPapers.Universal.ProperlyColoredComplex
+namespace FourPapers.Universal.ProperlyColoredComplex
+section
+set_option backward.isDefEq.respectTransparency false
+open Classical Finset MvPolynomial
+variable {V C : Type*} [Fintype V] [Fintype C]
+variable (D : ProperlyColoredComplex V C)
+variable (K : Type*) [CommRing K]
+/-- Literal source order: the complex argument precedes its coefficient ring. -/
+abbrev Ring := MonomialQuotient (K := K) D.allowed
 end
 end FourPapers.Universal.ProperlyColoredComplex
 namespace FourPapers.Universal
@@ -740,8 +792,6 @@ set_option backward.isDefEq.respectTransparency.types false
 open Classical Finset MvPolynomial
 variable {V C K G : Type*} [Fintype V] [Fintype C] [CommRing K] [Group G]
 variable (D : FourPapers.Universal.ProperlyColoredComplex V C) (K)
-/-- The actual monomial quotient of the properly colored simplicial complex. -/
-abbrev Ring := MonomialQuotient (K := K) D.allowed
 /-- Literal retained-source def; original position theorem13.lean:21017. -/
 def colorRename (e : Equiv.Perm V)
     (hface : ∀ s, D.face (s.image e) ↔ D.face s) : D.Ring K →ₐ[K] D.Ring K := by

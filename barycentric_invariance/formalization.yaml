@@ -35,9 +35,10 @@ automation:
   methods:
   - method: agent
     tool_setup: OpenAI Codex
-    notes: Agent-assisted statement selection, exact-context/source-body extraction,
-      packaging, source migration and stable instance naming. This does not constitute
-      mathematical review or a passing mechanical preflight.
+    notes: Packaging and statement extraction are agent-assisted. The965-line measured
+      main repair passed canonical-only Challenge elaboration in run44383410137. Actual
+      source proof-field calculations and original data predicates are preserved.
+      Full source/Solution/Comparator replay of the measured repair remains unverified.
   - method: other
     tool_setup: Historical AI assistance reported in the included paper
     notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing
@@ -45,11 +46,11 @@ automation:
       not been reconstructed from the snapshot.
 review:
   status: unchecked
-  notes: Paper, README and source declarations inspected. The current independent
-    Challenge restores literal source definition bodies and original binder/universe
-    contexts; only theorem proofs are holes. Stable explicit names were added to existing
-    instances without changing their values. Current Challenge elaboration, rebuilt
-    Solution, Comparator and independent kernel replay remain pending.
+  notes: Original915 Challenge and exactf314 source/Solution passed their respective
+    builds; current957 interface includes measured Ring dependency/order and canonical
+    proposition repairs plus semantic explicit-field supports, and has not yet been
+    elaborated. Comparator/replay are unverified; required uncovered clauses remain
+    explicit.
 scope:
   known_gaps:
   - The canonical chain-monomial associated-grade identification of Theorem 1.1 has
@@ -61,8 +62,9 @@ scope:
   - Three oversized proof bundles were split at original source-module boundaries
     with anonymous scopes/options restored and all shards added to explicit Lake roots;
     fresh full elaboration remains required.
-  - Independent Challenge elaboration passed; Solution, Comparator and independent
-    replay remain pending.
+  - Current957-line revised independent Challenge, rebuilt Solution, full Comparator
+    and independent replay have not passed. Earlier passes apply only to their exact
+    snapshots.
   notes: The submitted project contains the substantive historical proof development
     copied from the pinned source snapshot; this is not a thin wrapper. Historical
     upstream dependencies and license notices are retained. See map.json for exact
