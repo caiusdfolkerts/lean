@@ -21,7 +21,7 @@ namespace VolumePolynomials
 open scoped Topology
 open Set
 
-abbrev SegmentChoice := ℕ → Icc (- ((Nat.cast 1 : ℝ) / Nat.cast 2)) ((Nat.cast 1 : ℝ) / Nat.cast 2)
+abbrev SegmentChoice := ℕ → Icc (- (1/2 : ℝ)) (1/2 : ℝ)
 
 variable {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E]
 

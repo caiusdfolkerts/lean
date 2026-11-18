@@ -5373,7 +5373,7 @@
         5890,
         6162
       ],
-      "normalization_note": "Explicit numeric constructors or canonical Nat.casesOn, with old-formula equality proofs in Solution; prepared-uncompiled."
+      "normalization_note": "Named genuine Fin bound proofs or canonical Nat.casesOn; old-formula evidence in Solution pending compilation."
     },
     {
       "original_source": "VolumePolynomials/ShapeTuple.lean",
@@ -5735,14 +5735,13 @@
       ],
       "split_module": "volume_polynomials.assembly_part09",
       "block_sha256": "48793073ef2c9d0918dcf14ac1dcc06c9d85f981c3602a32689c2dbeecdf35ca",
-      "mathematical_source_block_unchanged": false,
+      "mathematical_source_block_unchanged": true,
       "baseline_block_sha256": "48793073ef2c9d0918dcf14ac1dcc06c9d85f981c3602a32689c2dbeecdf35ca",
-      "prepared_block_sha256": "642887c2bfa8687f3e86c14d5457670dd55d4eea1ffd5e3a6691c319b6bb8357",
+      "prepared_block_sha256": "48793073ef2c9d0918dcf14ac1dcc06c9d85f981c3602a32689c2dbeecdf35ca",
       "prepared_block_lines": [
         3340,
         3506
-      ],
-      "normalization_note": "Explicit numeric constructors or canonical Nat.casesOn, with old-formula equality proofs in Solution; prepared-uncompiled."
+      ]
     },
     {
       "original_source": "VolumePolynomials/AffineAttractor.lean",
@@ -5992,14 +5991,13 @@
       ],
       "split_module": "volume_polynomials.assembly_part09",
       "block_sha256": "c74e91092d7835498e05a7cbc24664de5852af3c64f753c64cdc209e599ef6d2",
-      "mathematical_source_block_unchanged": false,
+      "mathematical_source_block_unchanged": true,
       "baseline_block_sha256": "c74e91092d7835498e05a7cbc24664de5852af3c64f753c64cdc209e599ef6d2",
-      "prepared_block_sha256": "fc02d717abafe9e8ef0cf681804f446fc02dc0cfbae61a0c5faf4f27d8ffb259",
+      "prepared_block_sha256": "c74e91092d7835498e05a7cbc24664de5852af3c64f753c64cdc209e599ef6d2",
       "prepared_block_lines": [
         5521,
         5556
-      ],
-      "normalization_note": "Explicit numeric constructors or canonical Nat.casesOn, with old-formula equality proofs in Solution; prepared-uncompiled."
+      ]
     },
     {
       "original_source": "VolumePolynomials/HolonomyDeterminants.lean",
@@ -6160,7 +6158,7 @@
         6441,
         6596
       ],
-      "normalization_note": "Explicit numeric constructors or canonical Nat.casesOn, with old-formula equality proofs in Solution; prepared-uncompiled."
+      "normalization_note": "Named genuine Fin bound proofs or canonical Nat.casesOn; old-formula evidence in Solution pending compilation."
     },
     {
       "original_source": "VolumePolynomials/AreaAnalytic.lean",
@@ -6314,14 +6312,13 @@
       ],
       "split_module": "volume_polynomials.assembly_part09",
       "block_sha256": "b117338e0929a89f1944a2bd2fea2c430d6d4229bed4d8475e72d666f496893d",
-      "mathematical_source_block_unchanged": false,
+      "mathematical_source_block_unchanged": true,
       "baseline_block_sha256": "b117338e0929a89f1944a2bd2fea2c430d6d4229bed4d8475e72d666f496893d",
-      "prepared_block_sha256": "549ee242f27e0c484d51c09f53d0fa02c607bc34e4f6ca3ab471d128fa057789",
+      "prepared_block_sha256": "b117338e0929a89f1944a2bd2fea2c430d6d4229bed4d8475e72d666f496893d",
       "prepared_block_lines": [
         7561,
         7698
-      ],
-      "normalization_note": "Explicit numeric constructors or canonical Nat.casesOn, with old-formula equality proofs in Solution; prepared-uncompiled."
+      ]
     },
     {
       "original_source": "VolumePolynomials/AreaRatFuncTranscendence.lean",
@@ -6665,12 +6662,14 @@
     "evidence_run": 44351328992,
     "changed_blocks": [
       "VolumePolynomials/ShapeConditions.lean",
-      "VolumePolynomials/MinkowskiSeries.lean",
-      "VolumePolynomials/HolonomyAngle.lean",
-      "VolumePolynomials/RationalTaylor.lean",
-      "VolumePolynomials/HolonomyEdges.lean"
+      "VolumePolynomials/RationalTaylor.lean"
     ],
     "prepared_equality_proofs_in": "source/Solution.lean",
-    "status": "prepared-uncompiled"
+    "status": "fresh_geometry_bridges_prepared_uncompiled",
+    "restored_original_geometry_blocks": [
+      "VolumePolynomials/MinkowskiSeries.lean",
+      "VolumePolynomials/HolonomyAngle.lean",
+      "VolumePolynomials/HolonomyEdges.lean"
+    ]
   }
 }

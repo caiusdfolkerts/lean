@@ -16,10 +16,32 @@ noncomputable section
 open Set MeasureTheory Filter Metric Polynomial
 open scoped BigOperators Pointwise Topology
 
+namespace VolumePolynomials.PalomarGeometry
+universe uPG
+/-- The exact normalized interval, with explicit natural casts. -/
+abbrev SegmentChoice := ℕ → Icc (- ((Nat.cast 1 : ℝ) / Nat.cast 2)) ((Nat.cast 1 : ℝ) / Nat.cast 2)
+/-- The actual infinite sum of the selected segment coefficients. -/
+noncomputable def seriesPoint {E : Type uPG} [NormedAddCommGroup E]
+    [NormedSpace ℝ E] (u : ℕ → E) (t : SegmentChoice) : E :=
+  ∑' n, (t n : ℝ) • u n
+/-- The literal range of all segment choices. -/
+def segmentSeries {E : Type uPG} [NormedAddCommGroup E]
+    [NormedSpace ℝ E] (u : ℕ → E) : Set E := Set.range (seriesPoint u)
+/-- The exact angle arccos(1/3), with explicit natural casts. -/
+def angle : ℝ := Real.arccos ((Nat.cast 1 : ℝ) / Nat.cast 3)
+/-- A whole exposed face which is a nondegenerate closed segment. -/
+def IsExposedEdge {E : Type uPG} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (K F : Set E) : Prop :=
+  ∃ l : E →L[ℝ] ℝ, l ≠ 0 ∧ F = l.toExposed K ∧
+    ∃ a v : E, v ≠ 0 ∧
+      F = {x | ∃ t : Icc (- ((Nat.cast 1 : ℝ) / Nat.cast 2)) ((Nat.cast 1 : ℝ) / Nat.cast 2),
+        x = a + (t : ℝ) • v}
+end VolumePolynomials.PalomarGeometry
+
 namespace VolumePolynomials
 /-- The literal carrier of the source forced body. -/
 def PalomarForcedSet (lam : ℝ) : Set (ℝ × ℝ) :=
-  segmentSeries (Holonomy.weightedOrbit lam)
+  PalomarGeometry.segmentSeries (Holonomy.weightedOrbit lam)
 end VolumePolynomials
 namespace VolumePolynomials
 /-- The actual rational hull, with zero among its explicitly listed vertices. -/
@@ -52,34 +74,59 @@ theorem PalomarStateBodies_eq {n d : ℕ} (s : RationalReconstruction.State n d)
 end VolumePolynomials
 
 namespace VolumePolynomials
-/-- Normalization preserves the exact original interval of segment choices. -/
+/-- Equality of the explicit normalized half with the original literal. -/
+theorem palomarHalf_eq : ((Nat.cast 1 : ℝ) / Nat.cast 2) = (1/2 : ℝ) := by norm_num
+/-- Equality of the explicit normalized third with the original literal. -/
+theorem palomarThird_eq : ((Nat.cast 1 : ℝ) / Nat.cast 3) = (1/3 : ℝ) := by norm_num
+/-- Exact equality of the original and normalized coefficient types. -/
 theorem palomarSegmentChoice_oldFormula :
-    SegmentChoice = (ℕ → Icc (- (1/2 : ℝ)) (1/2 : ℝ)) := by rfl
-/-- The series is still the original sum of the chosen scaled vectors. -/
+    PalomarGeometry.SegmentChoice = (ℕ → Icc (- (1/2 : ℝ)) (1/2 : ℝ)) :=
+  congrArg (fun h : ℝ => (ℕ → Icc (-h) h)) palomarHalf_eq
+/-- The literal normalized series has exactly the displayed sum. -/
 theorem palomarSeriesPoint_oldFormula {E : Type*} [NormedAddCommGroup E]
-    [NormedSpace ℝ E] [CompleteSpace E] (u : ℕ → E) (t : SegmentChoice) :
-    seriesPoint u t = ∑' n, (t n : ℝ) • u n := by rfl
-/-- The canonical Nat eliminator gives precisely the original two cases. -/
+    [NormedSpace ℝ E] (u : ℕ → E) (t : PalomarGeometry.SegmentChoice) :
+    PalomarGeometry.seriesPoint u t = ∑' n, (t n : ℝ) • u n := by rfl
+/-- Coefficient-wise identity transports the entire series range in both directions. -/
+theorem palomarSegmentSeries_eq_source {E : Type*} [NormedAddCommGroup E]
+    [NormedSpace ℝ E] (u : ℕ → E) :
+    PalomarGeometry.segmentSeries u = segmentSeries u := by
+  ext x
+  change (∃ t : PalomarGeometry.SegmentChoice, PalomarGeometry.seriesPoint u t = x) ↔
+    (∃ t : SegmentChoice, seriesPoint u t = x)
+  constructor
+  · rintro ⟨t, ht⟩
+    let s : SegmentChoice := fun n => ⟨(t n : ℝ), by simpa only [palomarHalf_eq] using (t n).property⟩
+    refine ⟨s, ?_⟩
+    have hs : seriesPoint u s = PalomarGeometry.seriesPoint u t := by rfl
+    exact hs.trans ht
+  · rintro ⟨s, hs⟩
+    let t : PalomarGeometry.SegmentChoice := fun n =>
+      ⟨(s n : ℝ), by simpa only [palomarHalf_eq] using (s n).property⟩
+    refine ⟨t, ?_⟩
+    have ht : PalomarGeometry.seriesPoint u t = seriesPoint u s := by rfl
+    exact ht.trans hs
+/-- The canonical Nat eliminator retains precisely the original coefficient formula. -/
 theorem palomarRationalSineCoefficient_oldFormula (n : ℕ) :
     rationalSineCoefficient n =
       (match n with
        | 0 => 0
        | k + 1 => |(Polynomial.Chebyshev.U ℚ (k : ℤ)).eval (1 / 3)|) := by
   cases n <;> rfl
-namespace Holonomy
-/-- The angle retains its exact original real value. -/
-theorem palomarAngle_oldFormula : angle = Real.arccos (1 / 3) := by rfl
-/-- The complete nondegenerate exposed-segment predicate is unchanged. -/
-theorem palomarIsExposedEdge_oldFormula {E : Type*} [NormedAddCommGroup E]
-    [NormedSpace ℝ E] (K F : Set E) : IsExposedEdge K F ↔
-      ∃ l : E →L[ℝ] ℝ, l ≠ 0 ∧ F = l.toExposed K ∧
-        ∃ a v : E, v ≠ 0 ∧
-          F = {x | ∃ t : Icc (-(1 / 2 : ℝ)) (1 / 2 : ℝ), x = a + (t : ℝ) • v} := by rfl
-end Holonomy
+/-- Exact angle equality supplies every analytic clause in the shape theorem. -/
+theorem palomarAngle_oldFormula : PalomarGeometry.angle = Real.arccos (1/3) :=
+  congrArg Real.arccos palomarThird_eq
+theorem palomarAngle_eq_source : PalomarGeometry.angle = Holonomy.angle :=
+  palomarAngle_oldFormula
+/-- The complete exposed-face predicate is transported without dropping a clause. -/
+theorem palomarIsExposedEdge_eq_source {E : Type*} [NormedAddCommGroup E]
+    [NormedSpace ℝ E] (K F : Set E) :
+    PalomarGeometry.IsExposedEdge K F ↔ Holonomy.IsExposedEdge K F := by
+  unfold PalomarGeometry.IsExposedEdge Holonomy.IsExposedEdge
+  rw [palomarHalf_eq]
 namespace ShapeConditions
-/-- The distinguished label remains exactly the original Fin numeral. -/
+/-- The distinguished label retains its original Fin numeral. -/
 theorem palomarBodyA_oldFormula : bodyA = (6 : Label) := by rfl
-/-- Both parameters and every coefficient are substituted as before. -/
+/-- The complete parameter and coefficient substitution is unchanged. -/
 theorem palomarAssignment_oldFormula (lam a : ℝ) (c : Coefficients 9 3) :
     assignment lam a c = Sum.elim (fun i : Fin 2 => if i = 0 then lam else a) c := by rfl
 end ShapeConditions
@@ -98,29 +145,31 @@ theorem shape_forcing :
       P.length = 39 ∧ Q.length = 8 ∧
       (∀ lam a : ℝ,
         (∃ c ∈ VolumeLocus 9 3, SatisfiesShapeSystem P Q lam a c) ↔
-          0 < lam ∧ lam < 1 ∧ a = realAreaSeries angle lam) ∧
+          0 < lam ∧ lam < 1 ∧ a = realAreaSeries VolumePolynomials.PalomarGeometry.angle lam) ∧
       (∀ (lam a : ℝ) (c : Coefficients 9 3) (K : Fin 9 → Body 3),
         Realizes K c → SatisfiesShapeSystem P Q lam a c →
           ∃ (hlam₀ : 0 < lam) (hlam₁ : lam < 1),
             AffineCopy (PalomarForcedSet lam) (K bodyA) ∧
-            Set.Infinite {R : Set ThreeSpace | IsExposedEdge (K bodyA) R} ∧
+            Set.Infinite {R : Set ThreeSpace | VolumePolynomials.PalomarGeometry.IsExposedEdge (K bodyA) R} ∧
             ¬ TauCeti.IsSemialgebraic (K bodyA : Set ThreeSpace)) ∧
       (∀ (lam : ℝ) (hlam₀ : 0 < lam) (hlam₁ : lam < 1),
-        Set.Infinite {F : Set Plane | IsExposedEdge (PalomarForcedSet lam) F} ∧
+        Set.Infinite {F : Set Plane | VolumePolynomials.PalomarGeometry.IsExposedEdge (PalomarForcedSet lam) F} ∧
         ¬ TauCeti.IsSemialgebraic ((Homeomorph.finTwoArrow (X := ℝ)) ⁻¹'
           (PalomarForcedSet lam : Set Plane))) ∧
-      (∀ lam : ℝ, (realAreaSeries angle lam : ℂ) = areaGeneratingFunction angle (lam : ℂ)) ∧
-      AnalyticOnNhd ℂ (areaGeneratingFunction angle) (ball 0 1) ∧
-      (∀ ζ : Circle, ¬ HasLocalContinuousExtension (areaGeneratingFunction angle) ζ) ∧
-      (∀ n : ℕ, iteratedDeriv n (areaGeneratingFunction angle) 0 / (n.factorial : ℂ) =
+      (∀ lam : ℝ, (realAreaSeries VolumePolynomials.PalomarGeometry.angle lam : ℂ) = areaGeneratingFunction VolumePolynomials.PalomarGeometry.angle (lam : ℂ)) ∧
+      AnalyticOnNhd ℂ (areaGeneratingFunction VolumePolynomials.PalomarGeometry.angle) (ball 0 1) ∧
+      (∀ ζ : Circle, ¬ HasLocalContinuousExtension (areaGeneratingFunction VolumePolynomials.PalomarGeometry.angle) ζ) ∧
+      (∀ n : ℕ, iteratedDeriv n (areaGeneratingFunction VolumePolynomials.PalomarGeometry.angle) 0 / (n.factorial : ℂ) =
         (areaTaylorCoefficient n : ℂ)) ∧
       (∀ p : Polynomial (Polynomial ℝ), p ≠ 0 →
         ¬ ∀ lam : ℝ, lam ∈ Ioo 0 1 →
-          p.eval₂ (Polynomial.evalRingHom lam) (realAreaSeries angle lam) = 0) ∧
+          p.eval₂ (Polynomial.evalRingHom lam) (realAreaSeries VolumePolynomials.PalomarGeometry.angle lam) = 0) ∧
       (letI : Algebra (RatFunc ℝ) PositiveRealGerm := rationalFunctionGermAlgebra
        Transcendental (RatFunc ℝ)
-         (Filter.Germ.ofFun (realAreaSeries angle) : PositiveRealGerm)) := by
-  simpa only [VolumePolynomials.Holonomy.forcedBody_carrier, VolumePolynomials.PalomarForcedSet] using
+         (Filter.Germ.ofFun (realAreaSeries VolumePolynomials.PalomarGeometry.angle) : PositiveRealGerm)) := by
+  simpa only [VolumePolynomials.Holonomy.forcedBody_carrier, VolumePolynomials.PalomarForcedSet,
+    VolumePolynomials.palomarSegmentSeries_eq_source, VolumePolynomials.palomarAngle_eq_source,
+    VolumePolynomials.palomarIsExposedEdge_eq_source] using
     VolumePolynomials.Main.shape_forcing
 
 theorem countable_characterization (n d : ℕ) (hd : 0 < d) :

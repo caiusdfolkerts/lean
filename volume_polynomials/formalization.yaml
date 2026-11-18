@@ -65,11 +65,17 @@ fidelity:
     Challenge. Three algorithm values are supplied by Solution through the
     Comparator definition_names mechanism and constrained by the all-input
     characterization, certificate and reconstruction statements. All 415
-    mathematical assembly blocks are retained in ten modules. Five blocks use
-    explicit numeric constructors or the canonical Nat eliminator to avoid
-    context-dependent generated auxiliary names; source/Solution.lean includes
-    seven old-formula equality proofs, pending compilation. The source map
-    records both original and prepared hashes. The former
+    mathematical assembly blocks are retained in ten modules. Two blocks use
+    named genuine Fin bounds or the canonical Nat eliminator; original and
+    prepared hashes are retained. Independent normalized real geometry is
+    literal in both Challenge and Solution. Explicit scalar identities,
+    coefficient maps, range equality and predicate/angle bridges transport
+    the complete shape theorem to the original source geometry. The exact
+    817-line Challenge and a separate genuine 521-line canonical-only bridge
+    probe both elaborated successfully in diagnostic run 44368529809; this
+    does not certify the complete source build, imported Solution, Comparator
+    or independent kernel replays, which remain pending for this snapshot.
+    The source map records provenance. The former
     monolithic stage2 ownership audit is preserved as readable text, while
     the active private-declaration audit inventories every split module.
 limitations:

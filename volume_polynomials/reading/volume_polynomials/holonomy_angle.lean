@@ -10,7 +10,7 @@ noncomputable section
 namespace VolumePolynomials.Holonomy
 
 /-- The paper's angle is chosen in `(0, π)`, so the area formula has positive sine denominator. -/
-def angle : ℝ := Real.arccos ((Nat.cast 1 : ℝ) / Nat.cast 3)
+def angle : ℝ := Real.arccos (1 / 3)
 
 theorem cos_angle : Real.cos angle = 1 / 3 := by
   first
