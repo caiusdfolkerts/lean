@@ -243,7 +243,7 @@ def HasTreewidthAtMost (G : SimpleGraph V) (w : ℕ) : Prop :=
     ∀ v, (T.induce {i | v ∈ bag i}).Connected
 end PalomarGraphicalMain
 namespace PalomarGraphicalMain
-private theorem threeTreeOn_source_iff {V : Type*} [Fintype V] [DecidableEq V]
+private theorem threeTreeOn_source_iff {V : Type*} [DecidableEq V]
     {S : Finset V} {G : SimpleGraph V} :
     ThreeTreeOn S G ↔ GraphicalZonotopes.ThreeTreeOn S G := by
   constructor
@@ -256,6 +256,114 @@ private theorem threeTreeOn_source_iff {V : Type*} [Fintype V] [DecidableEq V]
     induction h with
     | tetrahedron C hC => exact ThreeTreeOn.tetrahedron C hC
     | attach h u hu T hT hTS hcl ih => exact ThreeTreeOn.attach ih u hu T hT hTS hcl
+private theorem source_Supermodular : @Supermodular = @GraphicalZonotopes.Supermodular := by
+  rfl
+private theorem source_Normalized : @Normalized = @GraphicalZonotopes.Normalized := by
+  rfl
+private theorem source_TranslationNormalized : @TranslationNormalized = @GraphicalZonotopes.TranslationNormalized := by
+  rfl
+private theorem source_delta : @delta = @GraphicalZonotopes.delta := by
+  rfl
+private theorem source_subsetSum : @subsetSum = @GraphicalZonotopes.subsetSum := by
+  rfl
+private theorem source_basePolytope : @basePolytope = @GraphicalZonotopes.basePolytope := by
+  rfl
+private theorem source_MinkowskiIndecomposable : @MinkowskiIndecomposable = @GraphicalZonotopes.MinkowskiIndecomposable := by
+  rfl
+private theorem source_zeta : @zeta = @GraphicalZonotopes.zeta := by
+  rfl
+private theorem source_zetaEquiv : @zetaEquiv = @GraphicalZonotopes.zetaEquiv := by
+  rfl
+private theorem source_mobius : @mobius = @GraphicalZonotopes.mobius := by
+  rfl
+private theorem source_edgeFamily : @edgeFamily = @GraphicalZonotopes.edgeFamily := by
+  rfl
+private theorem source_basisVector : @basisVector = @GraphicalZonotopes.basisVector := by
+  rfl
+private theorem source_coordinateSimplex : @coordinateSimplex = @GraphicalZonotopes.coordinateSimplex := by
+  rfl
+private theorem source_graphicalZonotope : @graphicalZonotope = @GraphicalZonotopes.graphicalZonotope := by
+  rfl
+private theorem source_IsMinkowskiSummand : @IsMinkowskiSummand = @GraphicalZonotopes.IsMinkowskiSummand := by
+  rfl
+private theorem source_IsWeakMinkowskiSummand : @IsWeakMinkowskiSummand = @GraphicalZonotopes.IsWeakMinkowskiSummand := by
+  rfl
+private theorem source_IsExposedSegment : @IsExposedSegment = @GraphicalZonotopes.IsExposedSegment := by
+  rfl
+private theorem source_ActualRootEdge : @ActualRootEdge = @GraphicalZonotopes.ActualRootEdge := by
+  rfl
+private theorem source_IsFinitePolytope : @IsFinitePolytope = @GraphicalZonotopes.IsFinitePolytope := by
+  rfl
+private theorem source_IsGeneralizedPermutahedron : @IsGeneralizedPermutahedron = @GraphicalZonotopes.IsGeneralizedPermutahedron := by
+  rfl
+private theorem source_PolytopalMinkowskiIndecomposable : @PolytopalMinkowskiIndecomposable = @GraphicalZonotopes.PolytopalMinkowskiIndecomposable := by
+  rfl
+private theorem source_actualDirectionGraph : @actualDirectionGraph = @GraphicalZonotopes.actualDirectionGraph := by
+  rfl
+private theorem source_directionCount : @directionCount = @GraphicalZonotopes.directionCount := by
+  rfl
+private theorem source_maximumDirectionDegree : @maximumDirectionDegree = @GraphicalZonotopes.maximumDirectionDegree := by
+  rfl
+private theorem source_FullDimension : @FullDimension = @GraphicalZonotopes.FullDimension := by
+  rfl
+private theorem source_IntegerValued : @IntegerValued = @GraphicalZonotopes.IntegerValued := by
+  rfl
+private theorem source_LatticePolytope : @LatticePolytope = @GraphicalZonotopes.LatticePolytope := by
+  rfl
+private theorem source_HasPlaneStraightLineDrawing : @HasPlaneStraightLineDrawing = @GraphicalZonotopes.HasPlaneStraightLineDrawing := by
+  rfl
+private theorem source_SupportsFullIndecomposable : @SupportsFullIndecomposable = @GraphicalZonotopes.SupportsFullIndecomposable := by
+  rfl
+private theorem source_maximumIndecomposableDimension : @maximumIndecomposableDimension = @GraphicalZonotopes.maximumIndecomposableDimension := by
+  rfl
+private theorem source_lowerSupport : @lowerSupport = @GraphicalZonotopes.lowerSupport := by
+  rfl
+private theorem source_BooleanElemental : @BooleanElemental = @GraphicalZonotopes.BooleanElemental := by
+  rfl
+private theorem source_FullLatticeSummandAt : @FullLatticeSummandAt = @GraphicalZonotopes.FullLatticeSummandAt := by
+  rfl
+private theorem source_tetrahedra : @tetrahedra = @GraphicalZonotopes.tetrahedra := by
+  rfl
+private theorem source_triangleMultiplicity : @triangleMultiplicity = @GraphicalZonotopes.triangleMultiplicity := by
+  rfl
+private theorem source_Admissible : @Admissible = @GraphicalZonotopes.Admissible := by
+  rfl
+private theorem source_cliqueBook : @cliqueBook = @GraphicalZonotopes.cliqueBook := by
+  rfl
+private theorem source_cliqueCapacity : @cliqueCapacity = @GraphicalZonotopes.cliqueCapacity := by
+  rfl
+private theorem source_saturatedHubNeighbors : @saturatedHubNeighbors = @GraphicalZonotopes.saturatedHubNeighbors := by
+  rfl
+private theorem source_fourPartite : @fourPartite = @GraphicalZonotopes.fourPartite := by
+  rfl
+private theorem source_twoSingletonGraph : @twoSingletonGraph = @GraphicalZonotopes.twoSingletonGraph := by
+  rfl
+private theorem source_EdgeMinimalSupporting : @EdgeMinimalSupporting = @GraphicalZonotopes.EdgeMinimalSupporting := by
+  rfl
+private theorem source_CentrallySymmetricUpToTranslation : @CentrallySymmetricUpToTranslation = @GraphicalZonotopes.CentrallySymmetricUpToTranslation := by
+  rfl
+private theorem source_HasTreewidthAtMost : @HasTreewidthAtMost = @GraphicalZonotopes.HasTreewidthAtMost := by
+  rfl
+private theorem source_Path_graph : @Path.graph = @GraphicalZonotopes.Path.graph := by
+  rfl
+private theorem source_ThreeTreeOn : @ThreeTreeOn = @GraphicalZonotopes.ThreeTreeOn := by
+  funext W instD S G
+  exact propext threeTreeOn_source_iff
+private theorem source_IsThreeTree : @IsThreeTree = @GraphicalZonotopes.IsThreeTree := by
+  funext W instF instD G
+  simp only [IsThreeTree, GraphicalZonotopes.IsThreeTree, source_ThreeTreeOn]
+private theorem source_HasAdmissibleSpanningThreeTree :
+    @HasAdmissibleSpanningThreeTree = @GraphicalZonotopes.HasAdmissibleSpanningThreeTree := by
+  funext W instF instD G
+  simp only [HasAdmissibleSpanningThreeTree,
+    GraphicalZonotopes.HasAdmissibleSpanningThreeTree, source_IsThreeTree, source_Admissible]
+private theorem source_maximumThreeTreeSupportDimension :
+    @maximumThreeTreeSupportDimension = @GraphicalZonotopes.maximumThreeTreeSupportDimension := by
+  funext W instF instD G
+  simp only [maximumThreeTreeSupportDimension,
+    GraphicalZonotopes.maximumThreeTreeSupportDimension, source_IsFinitePolytope,
+    source_MinkowskiIndecomposable, source_IsWeakMinkowskiSummand,
+    source_graphicalZonotope, source_ThreeTreeOn, source_actualDirectionGraph]
 end PalomarGraphicalMain
 
 namespace PalomarGraphicalMain
@@ -265,7 +373,7 @@ theorem direction_bounds_polytopal (n : ℕ) (hn : 4≤ n) (Q : Set (Fin n → �
     (hd : FullDimension Q) :
     3*n-6≤ directionCount Q ∧ min (n-1) 6≤ maximumDirectionDegree Q ∧
     (directionCount Q=3*n-6 → IsThreeTree (actualDirectionGraph Q)) := by
-  simpa only [IsThreeTree, GraphicalZonotopes.IsThreeTree, threeTreeOn_source_iff] using
+  simpa only [source_Supermodular, source_Normalized, source_TranslationNormalized, source_delta, source_subsetSum, source_basePolytope, source_MinkowskiIndecomposable, source_zeta, source_zetaEquiv, source_mobius, source_edgeFamily, source_basisVector, source_coordinateSimplex, source_graphicalZonotope, source_IsMinkowskiSummand, source_IsWeakMinkowskiSummand, source_IsExposedSegment, source_ActualRootEdge, source_IsFinitePolytope, source_IsGeneralizedPermutahedron, source_PolytopalMinkowskiIndecomposable, source_actualDirectionGraph, source_directionCount, source_maximumDirectionDegree, source_FullDimension, source_IntegerValued, source_LatticePolytope, source_HasPlaneStraightLineDrawing, source_SupportsFullIndecomposable, source_maximumIndecomposableDimension, source_lowerSupport, source_BooleanElemental, source_FullLatticeSummandAt, source_tetrahedra, source_triangleMultiplicity, source_Admissible, source_cliqueBook, source_cliqueCapacity, source_saturatedHubNeighbors, source_fourPartite, source_twoSingletonGraph, source_EdgeMinimalSupporting, source_CentrallySymmetricUpToTranslation, source_HasTreewidthAtMost, source_Path_graph, source_ThreeTreeOn, source_IsThreeTree, source_HasAdmissibleSpanningThreeTree, source_maximumThreeTreeSupportDimension] using
     GraphicalZonotopes.direction_bounds_polytopal n hn Q hQ hi hd
 /-- The corresponding complete principal theorem, with every original hypothesis. -/
 theorem threeTree_classification_polytopal {n : ℕ} (hn : 4≤ n)
@@ -463,7 +571,7 @@ theorem SaturatedDirections.paper_theorem_7_12 :
 
 /-- Complete corresponding principal theorem, including its quantitative witness. -/
 theorem DiamondBook.paper_theorem_8_1 : Targets.DiamondBookClassification := by
-  simpa only [Targets.DiamondBookClassification, GraphicalZonotopes.Targets.DiamondBookClassification, HasAdmissibleSpanningThreeTree, GraphicalZonotopes.HasAdmissibleSpanningThreeTree, IsThreeTree, GraphicalZonotopes.IsThreeTree, threeTreeOn_source_iff] using GraphicalZonotopes.DiamondBook.paper_theorem_8_1
+  simpa only [Targets.DiamondBookClassification, GraphicalZonotopes.Targets.DiamondBookClassification, source_Supermodular, source_Normalized, source_TranslationNormalized, source_delta, source_subsetSum, source_basePolytope, source_MinkowskiIndecomposable, source_zeta, source_zetaEquiv, source_mobius, source_edgeFamily, source_basisVector, source_coordinateSimplex, source_graphicalZonotope, source_IsMinkowskiSummand, source_IsWeakMinkowskiSummand, source_IsExposedSegment, source_ActualRootEdge, source_IsFinitePolytope, source_IsGeneralizedPermutahedron, source_PolytopalMinkowskiIndecomposable, source_actualDirectionGraph, source_directionCount, source_maximumDirectionDegree, source_FullDimension, source_IntegerValued, source_LatticePolytope, source_HasPlaneStraightLineDrawing, source_SupportsFullIndecomposable, source_maximumIndecomposableDimension, source_lowerSupport, source_BooleanElemental, source_FullLatticeSummandAt, source_tetrahedra, source_triangleMultiplicity, source_Admissible, source_cliqueBook, source_cliqueCapacity, source_saturatedHubNeighbors, source_fourPartite, source_twoSingletonGraph, source_EdgeMinimalSupporting, source_CentrallySymmetricUpToTranslation, source_HasTreewidthAtMost, source_Path_graph, source_ThreeTreeOn, source_IsThreeTree, source_HasAdmissibleSpanningThreeTree, source_maximumThreeTreeSupportDimension] using GraphicalZonotopes.DiamondBook.paper_theorem_8_1
 
 /-- Complete corresponding principal theorem, including its quantitative witness. -/
 theorem SparseFamily.paper_theorem_8_2_polytopal (n : ℕ) (hn : 10 ≤ n) :
@@ -481,7 +589,7 @@ theorem SparseFamily.paper_theorem_8_2_polytopal (n : ℕ) (hn : 10 ≤ n) :
         ∃ R : Set (Fin n → ℝ),IsFinitePolytope R ∧
           PolytopalMinkowskiIndecomposable R ∧ FullDimension R ∧
           IsWeakMinkowskiSummand R (graphicalZonotope H) := by
-  simpa only [IsThreeTree, GraphicalZonotopes.IsThreeTree, threeTreeOn_source_iff] using
+  simpa only [source_Supermodular, source_Normalized, source_TranslationNormalized, source_delta, source_subsetSum, source_basePolytope, source_MinkowskiIndecomposable, source_zeta, source_zetaEquiv, source_mobius, source_edgeFamily, source_basisVector, source_coordinateSimplex, source_graphicalZonotope, source_IsMinkowskiSummand, source_IsWeakMinkowskiSummand, source_IsExposedSegment, source_ActualRootEdge, source_IsFinitePolytope, source_IsGeneralizedPermutahedron, source_PolytopalMinkowskiIndecomposable, source_actualDirectionGraph, source_directionCount, source_maximumDirectionDegree, source_FullDimension, source_IntegerValued, source_LatticePolytope, source_HasPlaneStraightLineDrawing, source_SupportsFullIndecomposable, source_maximumIndecomposableDimension, source_lowerSupport, source_BooleanElemental, source_FullLatticeSummandAt, source_tetrahedra, source_triangleMultiplicity, source_Admissible, source_cliqueBook, source_cliqueCapacity, source_saturatedHubNeighbors, source_fourPartite, source_twoSingletonGraph, source_EdgeMinimalSupporting, source_CentrallySymmetricUpToTranslation, source_HasTreewidthAtMost, source_Path_graph, source_ThreeTreeOn, source_IsThreeTree, source_HasAdmissibleSpanningThreeTree, source_maximumThreeTreeSupportDimension] using
     GraphicalZonotopes.SparseFamily.paper_theorem_8_2_polytopal n hn
 
 /-- Complete corresponding principal theorem, including its quantitative witness. -/
@@ -490,11 +598,11 @@ theorem TwoHub.two_singleton_classification : Targets.TwoSingletonClassification
 
 /-- Complete corresponding principal theorem, including its quantitative witness. -/
 theorem four_partite_spanning_threeTrees : Targets.FourPartiteSpanningThreeTrees := by
-  simpa only [Targets.FourPartiteSpanningThreeTrees, GraphicalZonotopes.Targets.FourPartiteSpanningThreeTrees, HasAdmissibleSpanningThreeTree, GraphicalZonotopes.HasAdmissibleSpanningThreeTree, IsThreeTree, GraphicalZonotopes.IsThreeTree, maximumThreeTreeSupportDimension, GraphicalZonotopes.maximumThreeTreeSupportDimension, threeTreeOn_source_iff] using GraphicalZonotopes.four_partite_spanning_threeTrees
+  simpa only [Targets.FourPartiteSpanningThreeTrees, GraphicalZonotopes.Targets.FourPartiteSpanningThreeTrees, source_Supermodular, source_Normalized, source_TranslationNormalized, source_delta, source_subsetSum, source_basePolytope, source_MinkowskiIndecomposable, source_zeta, source_zetaEquiv, source_mobius, source_edgeFamily, source_basisVector, source_coordinateSimplex, source_graphicalZonotope, source_IsMinkowskiSummand, source_IsWeakMinkowskiSummand, source_IsExposedSegment, source_ActualRootEdge, source_IsFinitePolytope, source_IsGeneralizedPermutahedron, source_PolytopalMinkowskiIndecomposable, source_actualDirectionGraph, source_directionCount, source_maximumDirectionDegree, source_FullDimension, source_IntegerValued, source_LatticePolytope, source_HasPlaneStraightLineDrawing, source_SupportsFullIndecomposable, source_maximumIndecomposableDimension, source_lowerSupport, source_BooleanElemental, source_FullLatticeSummandAt, source_tetrahedra, source_triangleMultiplicity, source_Admissible, source_cliqueBook, source_cliqueCapacity, source_saturatedHubNeighbors, source_fourPartite, source_twoSingletonGraph, source_EdgeMinimalSupporting, source_CentrallySymmetricUpToTranslation, source_HasTreewidthAtMost, source_Path_graph, source_ThreeTreeOn, source_IsThreeTree, source_HasAdmissibleSpanningThreeTree, source_maximumThreeTreeSupportDimension] using GraphicalZonotopes.four_partite_spanning_threeTrees
 
 /-- Complete corresponding principal theorem, including its quantitative witness. -/
 theorem threeTree_lattice_dilation : Targets.ThreeTreeLatticeDilation := by
-  simpa only [Targets.ThreeTreeLatticeDilation, GraphicalZonotopes.Targets.ThreeTreeLatticeDilation, IsThreeTree, GraphicalZonotopes.IsThreeTree, threeTreeOn_source_iff] using GraphicalZonotopes.threeTree_lattice_dilation
+  simpa only [Targets.ThreeTreeLatticeDilation, GraphicalZonotopes.Targets.ThreeTreeLatticeDilation, source_Supermodular, source_Normalized, source_TranslationNormalized, source_delta, source_subsetSum, source_basePolytope, source_MinkowskiIndecomposable, source_zeta, source_zetaEquiv, source_mobius, source_edgeFamily, source_basisVector, source_coordinateSimplex, source_graphicalZonotope, source_IsMinkowskiSummand, source_IsWeakMinkowskiSummand, source_IsExposedSegment, source_ActualRootEdge, source_IsFinitePolytope, source_IsGeneralizedPermutahedron, source_PolytopalMinkowskiIndecomposable, source_actualDirectionGraph, source_directionCount, source_maximumDirectionDegree, source_FullDimension, source_IntegerValued, source_LatticePolytope, source_HasPlaneStraightLineDrawing, source_SupportsFullIndecomposable, source_maximumIndecomposableDimension, source_lowerSupport, source_BooleanElemental, source_FullLatticeSummandAt, source_tetrahedra, source_triangleMultiplicity, source_Admissible, source_cliqueBook, source_cliqueCapacity, source_saturatedHubNeighbors, source_fourPartite, source_twoSingletonGraph, source_EdgeMinimalSupporting, source_CentrallySymmetricUpToTranslation, source_HasTreewidthAtMost, source_Path_graph, source_ThreeTreeOn, source_IsThreeTree, source_HasAdmissibleSpanningThreeTree, source_maximumThreeTreeSupportDimension] using GraphicalZonotopes.threeTree_lattice_dilation
 
 /-- Complete corresponding principal theorem, including its quantitative witness. -/
 theorem unit_lattice_classification : Targets.UnitLatticeClassification := by
@@ -540,9 +648,11 @@ theorem principal_path_theorem {n : ℕ} (hn : 4 ≤ n) :
       HasPlaneStraightLineDrawing (Path.graph n) ∧
       (Path.graph n).CliqueFree 5 ∧ (edgeFamily (Path.graph n)).card = 3*n-6 ∧
       (Path.graph n).maxDegree = min (n-1) 6 := by
-  exact ⟨GraphicalZonotopes.Path.polytope n, GraphicalZonotopes.Path.complement n,
+  refine ⟨GraphicalZonotopes.Path.polytope n, GraphicalZonotopes.Path.complement n,
     GraphicalZonotopes.Path.polytope_generalizedPermutahedron n,
     GraphicalZonotopes.Path.polytope_polytopalIndecomposable hn,
     GraphicalZonotopes.Path.polytope_fullDimension hn,
-    GraphicalZonotopes.Path.principal_path_theorem hn⟩
+    ?_⟩
+  simpa only [GraphicalZonotopes.Path.PrincipalPathClaim, source_Supermodular, source_Normalized, source_TranslationNormalized, source_delta, source_subsetSum, source_basePolytope, source_MinkowskiIndecomposable, source_zeta, source_zetaEquiv, source_mobius, source_edgeFamily, source_basisVector, source_coordinateSimplex, source_graphicalZonotope, source_IsMinkowskiSummand, source_IsWeakMinkowskiSummand, source_IsExposedSegment, source_ActualRootEdge, source_IsFinitePolytope, source_IsGeneralizedPermutahedron, source_PolytopalMinkowskiIndecomposable, source_actualDirectionGraph, source_directionCount, source_maximumDirectionDegree, source_FullDimension, source_IntegerValued, source_LatticePolytope, source_HasPlaneStraightLineDrawing, source_SupportsFullIndecomposable, source_maximumIndecomposableDimension, source_lowerSupport, source_BooleanElemental, source_FullLatticeSummandAt, source_tetrahedra, source_triangleMultiplicity, source_Admissible, source_cliqueBook, source_cliqueCapacity, source_saturatedHubNeighbors, source_fourPartite, source_twoSingletonGraph, source_EdgeMinimalSupporting, source_CentrallySymmetricUpToTranslation, source_HasTreewidthAtMost, source_Path_graph, source_ThreeTreeOn, source_IsThreeTree, source_HasAdmissibleSpanningThreeTree, source_maximumThreeTreeSupportDimension] using
+    GraphicalZonotopes.Path.principal_path_theorem hn
 end PalomarGraphicalMain.PathResults

@@ -17,7 +17,7 @@
       },
       "solution": {
         "file": "SolutionMain.lean",
-        "line": 263
+        "line": 371
       },
       "source_declaration": "GraphicalZonotopes.direction_bounds_polytopal",
       "source": {
@@ -37,7 +37,7 @@
       },
       "solution": {
         "file": "SolutionMain.lean",
-        "line": 271
+        "line": 379
       },
       "source_declaration": "GraphicalZonotopes.threeTree_classification_polytopal",
       "source": {
@@ -57,7 +57,7 @@
       },
       "solution": {
         "file": "SolutionMain.lean",
-        "line": 287
+        "line": 395
       },
       "source_declaration": "GraphicalZonotopes.admissible_threeTree_lattice_witness",
       "source": {
@@ -78,7 +78,7 @@
       },
       "solution": {
         "file": "SolutionMain.lean",
-        "line": 530
+        "line": 638
       },
       "source_declaration": "GraphicalZonotopes.Path.principal_path_theorem",
       "source": {
@@ -98,7 +98,7 @@
       },
       "solution": {
         "file": "SolutionMain.lean",
-        "line": 442
+        "line": 550
       },
       "source_declaration": "GraphicalZonotopes.clique_book_classification",
       "source": {
@@ -118,7 +118,7 @@
       },
       "solution": {
         "file": "SolutionMain.lean",
-        "line": 446
+        "line": 554
       },
       "source_declaration": "GraphicalZonotopes.SaturatedDirections.paper_theorem_7_12",
       "source": {
@@ -138,7 +138,7 @@
       },
       "solution": {
         "file": "SolutionMain.lean",
-        "line": 465
+        "line": 573
       },
       "source_declaration": "GraphicalZonotopes.DiamondBook.paper_theorem_8_1",
       "source": {
@@ -159,7 +159,7 @@
       },
       "solution": {
         "file": "SolutionMain.lean",
-        "line": 469
+        "line": 577
       },
       "source": {
         "file": "source/verified/parts/part023.lean",
@@ -178,7 +178,7 @@
       },
       "solution": {
         "file": "SolutionMain.lean",
-        "line": 488
+        "line": 596
       },
       "source_declaration": "GraphicalZonotopes.TwoHub.two_singleton_classification",
       "source": {
@@ -198,7 +198,7 @@
       },
       "solution": {
         "file": "SolutionMain.lean",
-        "line": 492
+        "line": 600
       },
       "source_declaration": "GraphicalZonotopes.four_partite_spanning_threeTrees",
       "source": {
@@ -218,7 +218,7 @@
       },
       "solution": {
         "file": "SolutionMain.lean",
-        "line": 496
+        "line": 604
       },
       "source_declaration": "GraphicalZonotopes.threeTree_lattice_dilation",
       "source": {
@@ -238,7 +238,7 @@
       },
       "solution": {
         "file": "SolutionMain.lean",
-        "line": 500
+        "line": 608
       },
       "source_declaration": "GraphicalZonotopes.unit_lattice_classification",
       "source": {
@@ -258,7 +258,7 @@
       },
       "solution": {
         "file": "SolutionMain.lean",
-        "line": 504
+        "line": 612
       },
       "source_declaration": "GraphicalZonotopes.optimal_k5_free_dilation",
       "source": {
@@ -278,7 +278,7 @@
       },
       "solution": {
         "file": "SolutionMain.lean",
-        "line": 522
+        "line": 630
       },
       "source_declaration": "GraphicalZonotopes.DoubledParts.principal_boolean_phase_theorem",
       "source": {
@@ -385,5 +385,6 @@
     },
     "Solution": "Source bridge draft, not compiled locally.",
     "Comparator_and_kernels": "Not yet run."
-  }
+  },
+  "local_interface_status": "Main Solution compiled0; Consequences atomic interfaces prepared and awaiting local source-tail build. Actual per-entry Comparator/kernel status is recorded separately."
 }
