@@ -1,0 +1,13 @@
+{
+  "status": "observed_solution_proof_repair_not_compiled",
+  "failed_snapshot": "6e47ba77ee66f909a4d89c07d5b7595e84a819b2",
+  "failed_run": "44372598060",
+  "complete_error_count": 1,
+  "complete_error": "Solution173 rewrote the dependent function hp : \u2200s, coeff p s\u2208powerPiece\u2026 rather than a fixed coefficient membership.",
+  "repair": "Instantiate the actual hypothesis at t, rewrite that pointwise membership to the genuine Source power piece, then apply the same existing homogeneous action theorem.",
+  "solution_before_sha256": "34934beb5e7cfb4d68e80b7d29337acb7786647042aaf2be7ac0e4ced01559a9",
+  "solution_sha256": "23670634f7c2e93b0e48ddd88b44a2a9532c938d4ed2cb624fba30ea9392c2b2",
+  "challenge_unchanged_sha256": "f3cbf2f8643263c0b344489623f1c6b1cfcf702cfa31080bc55372be295b5e62",
+  "statement_data_hypotheses_source_proofs_unchanged": true,
+  "no_local_compilation": true
+}

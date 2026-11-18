@@ -170,9 +170,11 @@ theorem powerMul {V k : Type u} [Fintype V] [LinearOrder V] [Field k]
   apply Ideal.sum_mem
   rintro ⟨n, t⟩ hnt
   rw [← Finset.mem_antidiagonal.mp hnt]
-  rw [powerPiece_eq_source] at hp ⊢
+  have hpt : p.val.coeff t ∈ CommAlg.homologicalPowerPiece I hI i t := by
+    simpa only [powerPiece_eq_source] using hp t
+  rw [powerPiece_eq_source]
   exact CommAlg.homologicalPowerPiece_action I hI i n t
-    (Ideal.mul_mem_mul (r.property n) (hp t))
+    (Ideal.mul_mem_mul (r.property n) hpt)
 /-- The ordinary Rees ideal whose coefficients are the actual positive-power homological shifts. -/
 def powerIdeal (I : Ideal (MvPolynomial V k)) (hI : IsPolymatroidalIdeal I)
     (i : ℕ) : Ideal (reesAlgebra I) where

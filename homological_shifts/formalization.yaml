@@ -46,10 +46,10 @@ automation:
       not been reconstructed from the snapshot.
 review:
   status: unchecked
-  notes: Exact319-line independent Challenge f3cbf2f passed canonical remote elaboration
-    run44368529809, with artifact/input/dependency/protected-workflow hashes validated.
-    Current expanded Source/Solution bridge, Comparator and replay have not yet been
-    run. Existing complete proof development and all audits are retained.
+  notes: Exact319 Challenge passed run44368529809. Full retained source and audits
+    built in exact6e47/run44372598060. The sole Solution error rewrote a dependent
+    coefficient hypothesis as a whole; the same existing Rees action proof now instantiates
+    it pointwise. Current proof repair, Comparator and replay remain unverified.
 scope:
   known_gaps:
   - Current full Source/Solution bridge, Comparator and independent kernel replay
