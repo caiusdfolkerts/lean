@@ -17,11 +17,11 @@ universe u
 
 namespace DifferentialGeometry.SSet
 
-private def simplexCoordinateULiftHomeomorph (n : ℕ) :
+def simplexCoordinateULiftHomeomorph (n : ℕ) :
     SimplexCategory.toTop.{u}.obj ⦋n⦌ ≃ₜ ULift.{u} (coordinateSet ℝ (Fin (n + 1))) :=
   Homeomorph.ulift.trans ((coordinateHomeomorph ℝ _).trans Homeomorph.ulift.symm)
 
-private def boundaryCoordinateULiftHomeomorph (n : ℕ) :
+def boundaryCoordinateULiftHomeomorph (n : ℕ) :
     simplexBoundarySet.{u} n ≃ₜ
       {p : ULift.{u} (coordinateSet ℝ (Fin (n + 1))) //
         p.down ∈ DifferentialGeometry.Simplex.boundary (Fin (n + 1))} :=

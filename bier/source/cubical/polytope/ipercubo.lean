@@ -596,21 +596,24 @@ theorem ipercuboFlagStep_card (d : ℕ) (hd : 1 ≤ d)
 open Classical in
 noncomputable def ipercuboFlagCoord (d : ℕ) (hd : 1 ≤ d)
     (F : (ipercubo d hd).Flag) (k : Fin d) : Fin d :=
-  (Finset.card_pos.mp (by rw [ipercuboFlagStep_card d hd F k]; omega)).choose
+  (Finset.card_pos.mp (show 0 < (ipercuboFlagNextFree d hd F k \ ipercuboFlagFree d hd F k).card by
+    rw [ipercuboFlagStep_card d hd F k]; omega)).choose
 
 open Classical in
 theorem ipercuboFlagCoord_mem_next (d : ℕ) (hd : 1 ≤ d)
     (F : (ipercubo d hd).Flag) (k : Fin d) :
     ipercuboFlagCoord d hd F k ∈ ipercuboFlagNextFree d hd F k :=
   (Finset.mem_sdiff.mp
-    (Finset.card_pos.mp (by rw [ipercuboFlagStep_card d hd F k]; omega)).choose_spec).1
+    (Finset.card_pos.mp (show 0 < (ipercuboFlagNextFree d hd F k \ ipercuboFlagFree d hd F k).card by
+    rw [ipercuboFlagStep_card d hd F k]; omega)).choose_spec).1
 
 open Classical in
 theorem ipercuboFlagCoord_not_free (d : ℕ) (hd : 1 ≤ d)
     (F : (ipercubo d hd).Flag) (k : Fin d) :
     ipercuboFlagCoord d hd F k ∉ ipercuboFlagFree d hd F k :=
   (Finset.mem_sdiff.mp
-    (Finset.card_pos.mp (by rw [ipercuboFlagStep_card d hd F k]; omega)).choose_spec).2
+    (Finset.card_pos.mp (show 0 < (ipercuboFlagNextFree d hd F k \ ipercuboFlagFree d hd F k).card by
+    rw [ipercuboFlagStep_card d hd F k]; omega)).choose_spec).2
 
 open Classical in
 theorem ipercuboFlagCoord_mem_free_of_lt (d : ℕ) (hd : 1 ≤ d)

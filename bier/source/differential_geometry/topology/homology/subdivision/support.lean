@@ -21,7 +21,7 @@ variable {E : Type u} [NormedAddCommGroup E] [NormedSpace ℝ E]
 local notation "A" => smallSingularSimplices (TopCat.of E) (fun _ : Unit ↦ s)
 
 omit [NormedSpace ℝ E] in
-private theorem small_vertices_mem {n : ℕ} (σ : (A : SSet) _⦋n⦌) (i : Fin (n + 1)) :
+theorem small_vertices_mem {n : ℕ} (σ : (A : SSet) _⦋n⦌) (i : Fin (n + 1)) :
     singularSimplexVertices σ.val i ∈ s := by
   obtain ⟨_, hσ⟩ := σ.property
   exact hσ ⟨Convexity.StdSimplex.single i, rfl⟩

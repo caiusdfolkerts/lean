@@ -11,13 +11,13 @@ open CategoryTheory CategoryTheory.Limits Opposite Simplicial
 universe u
 noncomputable section
 namespace DifferentialGeometry.Homology
-private abbrev simplexAmbient (n : ℕ) := ULift.{u} (Fin (n + 1) → ℝ)
-private def simplexRegion (n : ℕ) : Set (simplexAmbient.{u} n) :=
+abbrev simplexAmbient (n : ℕ) := ULift.{u} (Fin (n + 1) → ℝ)
+def simplexRegion (n : ℕ) : Set (simplexAmbient.{u} n) :=
   ULift.down ⁻¹' Convexity.StdSimplex.coordinateSet ℝ (Fin (n + 1))
-private theorem convex_simplexRegion (n : ℕ) : Convex ℝ (simplexRegion.{u} n) := by
+theorem convex_simplexRegion (n : ℕ) : Convex ℝ (simplexRegion.{u} n) := by
   intro x hx y hy a b ha hb hab
   exact (Convexity.StdSimplex.convex_coordinateSet ℝ (Fin (n + 1))) hx hy ha hb hab
-private def simplexRegionHomeo (n : ℕ) :
+def simplexRegionHomeo (n : ℕ) :
     SimplexCategory.toTop.{u}.obj ⦋n⦌ ≃ₜ simplexRegion.{u} n where
   toFun x := ⟨⟨x.down.weights⟩, x.down.weights_nonneg, x.down.total_of_fintype⟩
   invFun x := ⟨(Convexity.StdSimplex.coordinateEquiv ℝ (Fin (n + 1))).symm
@@ -68,7 +68,7 @@ private theorem simplexEmbedding_naturality {n m : ℕ} (f : ⦋n⦌ ⟶ ⦋m⦌
   apply ULift.ext
   exact congrArg Subtype.val (Convexity.StdSimplex.coordinateEquiv_map f x.down)
 
-private def simplexSupportedIso (n : ℕ) :
+def simplexSupportedIso (n : ℕ) :
     TopCat.toSSet.obj (SimplexCategory.toTop.{u}.obj ⦋n⦌) ≅
       (smallSingularSimplices (TopCat.of (simplexAmbient.{u} n))
         (fun _ : Unit ↦ simplexRegion n) : SSet) :=
@@ -102,7 +102,7 @@ private theorem simplexSupportedIso_naturality {n m : ℕ} (f : ⦋n⦌ ⟶ ⦋m
 
 variable {k : Type u} [Ring k] (R : ModuleCat.{u} k)
 
-private def simplexSupportedChainIso (n : ℕ) :=
+def simplexSupportedChainIso (n : ℕ) :=
   ((SSet.chainComplexFunctor (ModuleCat.{u} k)).obj R).mapIso (simplexSupportedIso.{u} n)
 
 private theorem simplexSupportedChainIso_naturality {n m : ℕ} (f : ⦋n⦌ ⟶ ⦋m⦌) :

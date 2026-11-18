@@ -79,7 +79,7 @@ private theorem boundaryCanonicalSimplex_mem (n : ℕ) (m : SimplexCategoryᵒ�
   rw [stdSimplexToTop_app_down]
   exact coordinateMap_zero_of_not_mem_range σ.val i hi z
 
-private def boundaryToSmallSingular (n : ℕ) :
+def boundaryToSmallSingular (n : ℕ) :
     (_root_.SSet.boundary n : _root_.SSet.{u}) ⟶
       DifferentialGeometry.Homology.smallSingularSimplices (SimplexCategory.toTop.obj ⦋n⦌)
         (fun _ : Unit ↦ simplexBoundarySet n) :=

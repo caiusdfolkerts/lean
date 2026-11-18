@@ -43,18 +43,18 @@ variable (H : Homotopy b (𝟙 K))
   (hcompat : ∀ n, i.f n ≫ H.hom n (n + 1) = hA n ≫ i.f (n + 1))
 
 include hcompat in
-private theorem desc_condition (n : ℕ) :
+theorem desc_condition (n : ℕ) :
     i.f n ≫ (H.hom n (n + 1) ≫ (cokernel.π i).f (n + 1)) = 0 := by
   rw [← Category.assoc, hcompat, Category.assoc]
   have h := _root_.HomologicalComplex.congr_hom (cokernel.condition i) (n + 1)
   simp only [_root_.HomologicalComplex.comp_f, _root_.HomologicalComplex.zero_f_apply] at h
   rw [h, comp_zero]
 
-private def descHom (n : ℕ) : (cokernel i).X n ⟶ (cokernel i).X (n + 1) :=
+def descHom (n : ℕ) : (cokernel i).X n ⟶ (cokernel i).X (n + 1) :=
   cokernelDescAt i n (H.hom n (n + 1) ≫ (cokernel.π i).f (n + 1))
     (desc_condition i b H hA hcompat n)
 
-private theorem projection_descHom (n : ℕ) :
+theorem projection_descHom (n : ℕ) :
     (cokernel.π i).f n ≫ descHom i b H hA hcompat n =
       H.hom n (n + 1) ≫ (cokernel.π i).f (n + 1) :=
   cokernel_π_descAt _ _ _ _
