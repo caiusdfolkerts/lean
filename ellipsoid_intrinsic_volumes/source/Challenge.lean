@@ -212,36 +212,18 @@ def axisCoefficientPolynomial {n : ℕ} (a : Fin n → ℝ) : ℝ[X] :=
 def axisCoefficients {n : ℕ} (a : Fin n → ℝ) : Coefficients n :=
   fun j => (axisCoefficientPolynomial a).coeff j.val
 
-/-- The standard continuous linear identification of Euclidean coordinates with a finite function space. -/
-def coefficientEuclideanCoordinates (m : ℕ) :
-    EuclideanSpace ℝ (Fin m) ≃L[ℝ] (Fin m → ℝ) :=
-  PiLp.continuousLinearEquiv 2 ℝ (fun _ : Fin m => ℝ)
-
-/-- The explicit homeomorphism between the standard quadrant and the coordinate orthant. -/
-def quadrantCoefficientOrthantHomeomorph (m : ℕ) :
-    EuclideanQuadrant m ≃ₜ closedCoefficientOrthant m where
-  toFun x := ⟨coefficientEuclideanCoordinates m x.val, x.property⟩
-  invFun x := ⟨(coefficientEuclideanCoordinates m).symm x.val, x.property⟩
-  left_inv x := by
-    apply Subtype.ext
-    exact (coefficientEuclideanCoordinates m).symm_apply_apply x.val
-  right_inv x := by
-    apply Subtype.ext
-    exact (coefficientEuclideanCoordinates m).apply_symm_apply x.val
-  continuous_toFun :=
-    ((coefficientEuclideanCoordinates m).continuous.comp continuous_subtype_val).subtype_mk _
-  continuous_invFun :=
-    ((coefficientEuclideanCoordinates m).symm.continuous.comp continuous_subtype_val).subtype_mk _
-
-/-- The literal coefficient map on the standard quadrant manifold. -/
-def quadrantCoefficientMap (m : ℕ) (e0 en : ℝ) :
-    EuclideanQuadrant m → (Fin m → ℝ) :=
-  restrictedCoefficientMap m e0 en ∘ quadrantCoefficientOrthantHomeomorph m
 
 end EllipsoidVerification
 
 open EllipsoidVerification
 namespace PalomarEllipsoid
+
+/-- The coefficient transform on Mathlib's standard quadrant, using its literal
+Euclidean coordinate entries. No auxiliary coordinate transport is part of
+this definition. -/
+def coefficientQuadrantMap (m : ℕ) (e0 en : ℝ) :
+    EuclideanQuadrant m → (Fin m → ℝ) :=
+  fun x => coefficientMap m e0 en (fun i => x.val i)
 
 /-- Theorem 1.1 of the accompanying paper, with all source hypotheses retained. -/
 theorem intrinsic_reconstruction : IntrinsicReconstruction := by sorry
@@ -263,9 +245,9 @@ theorem coefficient_transform_theorem {m : ℕ} {e0 en : ℝ}
 theorem coefficient_transform_manifold_with_corners {m : ℕ} {e0 en : ℝ}
     (h0 : 0 < e0) (hn : 0 < en) :
     Manifold.IsSmoothEmbedding (𝓡c m) 𝓘(ℝ, Fin m → ℝ) ∞
-      (quadrantCoefficientMap m e0 en) ∧
-    IsProperMap (quadrantCoefficientMap m e0 en) ∧
-    IsClosed (Set.range (quadrantCoefficientMap m e0 en)) := by sorry
+      (coefficientQuadrantMap m e0 en) ∧
+    IsProperMap (coefficientQuadrantMap m e0 en) ∧
+    IsClosed (Set.range (coefficientQuadrantMap m e0 en)) := by sorry
 
 /-- Section 5.1 of the accompanying paper, with all source hypotheses retained. -/
 theorem measured_coefficient_box {n : ℕ} (hn : 0 < n) (E : FullEllipsoid n)
