@@ -1,0 +1,16 @@
+{
+  "path": "source/two_fermion/PalomarPart005.lean",
+  "before_sha256": "7c19afad21cafd930211be05210c42d181bb5c9a9d0fb31735636113a1f1f070",
+  "after_sha256": "6f66f2e07ff6c135dc1cb62f5962a423344456199ee1e0859e95675db1874266",
+  "changes": [
+    {
+      "name": "PaperVerification.Fermion.pairedPowerIndex_ext",
+      "change": "Remove private visibility modifier only; statement and genuine proof unchanged."
+    },
+    {
+      "name": "PaperVerification.Fermion.strictPowerIndex_ext",
+      "change": "Remove private visibility modifier only; statement and genuine proof unchanged."
+    }
+  ],
+  "all220_principal_ownership_checks_preserved": true
+}

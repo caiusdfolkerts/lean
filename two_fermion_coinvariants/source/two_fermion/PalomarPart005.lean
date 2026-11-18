@@ -1006,7 +1006,7 @@ def pairedPowerToIndex (d : PairedData (K := R) (n := n))
   rw [← wordBoxBounds_disjSum_cast d _ _ hW i,Finset.toLeft_disjSum_toRight]
   exact_mod_cast z.2.val.property i
 
-private theorem pairedPowerIndex_ext {r u v : Fin n → ℕ} {s : ℕ}
+theorem pairedPowerIndex_ext {r u v : Fin n → ℕ} {s : ℕ}
     {a b : PairedPowerIndex r u v s} (hW : a.1 = b.1)
     (he : a.2.val.val = b.2.val.val) : a = b := by
   rcases a with ⟨W, ⟨⟨e, he'⟩, hW'⟩⟩
@@ -8857,7 +8857,7 @@ def strictPowerToIndex (d : StrictData (K := R) (n := n)) (z : StrictPowerIndex 
     rw [←strictWordBoxBounds_disjSum_cast d.r _ _ hW i,Finset.toLeft_disjSum_toRight]
     exact_mod_cast z.2.val.property i
 
-private theorem strictPowerIndex_ext {r : Fin n → ℕ}
+theorem strictPowerIndex_ext {r : Fin n → ℕ}
     {a b : StrictPowerIndex r} (hW : a.1 = b.1)
     (he : a.2.val.val = b.2.val.val) : a = b := by
   rcases a with ⟨W, ⟨⟨e, he'⟩, hW'⟩⟩

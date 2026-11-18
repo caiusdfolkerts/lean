@@ -1,0 +1,44 @@
+{
+  "status": "source_prepared_not_applied_not_elaborated",
+  "challenge_sha256": "bbdb19d878f27682e6b4d847cffd54782b0673c13d257d275e53dd890ecc06da",
+  "lines": 933,
+  "bytes": 68759,
+  "retained_all_four_current_endpoints": true,
+  "main_results_added": [
+    "All paired Theorem1.1 clauses, including all-ring exterior pieces, actual associated graded and original paired homogenized flat family with both algebra fibers.",
+    "All strict Theorem1.2 clauses, including all-ring exterior pieces and actual associated-graded algebra with its exact graded images.",
+    "Both intrinsic nonzero-ring rank/Hilbert statements, retaining existing zero-ring-compatible finite free rank statements."
+  ],
+  "source_visibility_plan_not_applied": [
+    {
+      "name": "PaperVerification.Fermion.pairedPowerIndex_ext",
+      "required_source_visibility_change": {
+        "path": "source/two_fermion/PalomarPart005.lean",
+        "line": 1009,
+        "change": "Remove only private modifier; retain exact original user name, type and proof body."
+      }
+    },
+    {
+      "name": "PaperVerification.Fermion.strictPowerIndex_ext",
+      "required_source_visibility_change": {
+        "path": "source/two_fermion/PalomarPart005.lean",
+        "line": 8860,
+        "change": "Remove only private modifier; retain exact original user name, type and proof body."
+      }
+    }
+  ],
+  "remaining_interface_audit": [
+    "All named graded-ring/graded-algebra and finite-index instances must be present before use.",
+    "Source helper proof-only binder contexts and raw dependencies need validation before Comparator-ready.",
+    "Preserve existing220-owner audit checks and complete authored split-module closure audit."
+  ],
+  "original_source_proofs_changed": false,
+  "measured_module_instance_repair": "The same exact instance deactivation as the currently frozen256-line repair is applied to this separate candidate, based on compiled raw evidence44354719626. No source private-visibility changes have been applied to the active package.",
+  "validation": "Source-prepared only, not elaborated or applied to the active package. All prior four endpoints retained; full actual principal1.1/1.2 clauses are candidates, not claimed coverage.",
+  "previous_candidate_before_measured_instance_repair": {
+    "challenge_sha256": "78cf061c497125f359c51f2ed8288d5976f601c9d353f9c0f771eb13e0c3c112",
+    "lines": 871,
+    "bytes": 63912
+  },
+  "observed_extraction_closure_repair": "closure-repair.json"
+}

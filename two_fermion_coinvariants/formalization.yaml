@@ -6,6 +6,9 @@ project:
     with the stated factorial and nonempty weight-subset units. The polynomial inputs
     retain arbitrary coupled lower terms satisfying the exact highest-weight hypotheses.
     The quotients have the printed finite free ranks, including over the zero ring.
+    The complete original Theorems1.1 and1.2 also give their actual associated graded
+    and exterior-Hilbert pieces, with the genuine paired homogenized finite-free flat
+    family and its zero and one algebra fibers.
   authors:
   - Caius Folkerts
   responsible_maintainers:
@@ -33,9 +36,11 @@ automation:
   methods:
   - method: agent
     tool_setup: OpenAI Codex
-    notes: Current packaging, source-block migration, source mapping and independent
-      statement extraction are agent-assisted. Fresh build and Comparator evidence
-      are not yet available.
+    notes: Packaging and literal independent extraction are agent-assisted. The936-line
+      expanded principal Challenge passed canonical-only elaboration in run44380113477.
+      Existing substantive proofs, all220 principal ownership checks and original
+      hypotheses are retained. Full Source/Solution/Comparator replay of this expanded
+      interface remains unverified.
   - method: other
     tool_setup: Historical AI assistance reported in the included paper
     notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing
@@ -48,15 +53,15 @@ review:
     No Palomar review or registration is claimed.
 scope:
   known_gaps:
-  - The exterior-Hilbert, associated-graded, flat-family and fiber clauses of Theorems
-    1.1 and 1.2 still require independent extraction.
-  - Principal local-structure and equivariant/character results in Sections 7–8 remain
+  - Principal local-structure and equivariant/character results in Sections7–8 remain
     unextracted.
-  - The exact Lean4.36.0-rc2 / Mathlib428aa8288d061ec3ae75c1b85ac178e2cb9def23 environment
-    has not been provisioned or checked locally.
+  - Expanded actual associated-graded, exterior-Hilbert, homogenized flat-family/fiber
+    interfaces passed canonical Challenge elaboration; Source/Solution/Comparator
+    replay remains unverified.
   notes: The submitted project contains the substantive historical proof development
     copied from the pinned source snapshot; this is not a thin wrapper. Historical
     upstream dependencies and license notices are retained. See map.json for exact
     proposed selections and unresolved source mapping.
-  current_selection: The exact monomial-basis clauses of Theorems 1.1 and 1.2 and
-    their all-ring finite free ranks are selected.
+  current_selection: Full original Theorems1.1 and1.2, including actual associated
+    graded, Hilbert pieces, genuine paired homogenized flat family and both algebra
+    fibers, retaining all4 original basis/free-rank targets.

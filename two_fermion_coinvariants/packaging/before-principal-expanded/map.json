@@ -1,0 +1,1062 @@
+{
+  "project": "two_fermion_coinvariants",
+  "baseline_repository": "caiusdfolkerts/research",
+  "baseline_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
+  "paper_sha256": "c4a3dd3f2e102d6b4bcc8d50c58ea8007c412cea8d762a8fbb5b105db09bc19a",
+  "one_entry_per_paper": true,
+  "status": "draft_incomplete",
+  "source_selection": [
+    "paper.pdf",
+    "README.md",
+    "source/**/*.lean"
+  ],
+  "coverage": [
+    {
+      "paper_result": "Theorem 1.1",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        3,
+        17
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.Fermion.theorem_1_1",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.theorem_1_1",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 85581,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "theorem_1_1"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.theorem_1_1_free_rank",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.theorem_1_1_free_rank",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 96421,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "theorem_1_1_free_rank"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf#page=3"
+    },
+    {
+      "paper_result": "Theorem 1.2",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        3,
+        17
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.Fermion.theorem_1_2",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.theorem_1_2",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 85783,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "theorem_1_2"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.theorem_1_2_free_rank",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.theorem_1_2_free_rank",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 96446,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "theorem_1_2_free_rank"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf#page=3"
+    },
+    {
+      "paper_result": "Proposition 2.1",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        4,
+        9
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.Fermion.Newton.proposition_2_1",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.Newton.proposition_2_1",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 97176,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "proposition_2_1"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.Newton.monicRectangleBasis_apply",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.Newton.monicRectangleBasis_apply",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 97161,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "monicRectangleBasis_apply"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf#page=4"
+    },
+    {
+      "paper_result": "Proposition 7.1",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        21
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.Fermion.paired_separated_finite_iff_over_any_ring",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.paired_separated_finite_iff_over_any_ring",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 42364,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "paired_separated_finite_iff_over_any_ring"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.strict_separated_finite_iff_over_any_ring",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.strict_separated_finite_iff_over_any_ring",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 42392,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "strict_separated_finite_iff_over_any_ring"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf#page=21"
+    },
+    {
+      "paper_result": "Theorem 7.2: local structure",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        22
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.Fermion.theorem_7_2",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.theorem_7_2",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 95034,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "theorem_7_2"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.theorem_7_2_complex",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.theorem_7_2_complex",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 96300,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "theorem_7_2_complex"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf#page=22"
+    },
+    {
+      "paper_result": "Theorem 7.2: local and global dimensions",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        22
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.Fermion.SeparatedPairedData.localSuper_finrank",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.SeparatedPairedData.localSuper_finrank",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 95175,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "localSuper_finrank"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.SeparatedPairedData.globalSuper_finrank_sum",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.SeparatedPairedData.globalSuper_finrank_sum",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 95191,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "globalSuper_finrank_sum"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.SeparatedPairedData.globalSuper_finrank_closed",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.SeparatedPairedData.globalSuper_finrank_closed",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 95920,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "globalSuper_finrank_closed"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.SeparatedPairedData.localRank_sum_closed",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.SeparatedPairedData.localRank_sum_closed",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 95957,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "localRank_sum_closed"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf#page=22"
+    },
+    {
+      "paper_result": "Theorem 7.2: exterior Hilbert coefficients",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        22
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.Fermion.SeparatedPairedData.localSuper_exterior_hilbert_coefficient",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.SeparatedPairedData.localSuper_exterior_hilbert_coefficient",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 95795,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "localSuper_exterior_hilbert_coefficient"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.SeparatedPairedData.globalSuper_exterior_hilbert_coefficient",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.SeparatedPairedData.globalSuper_exterior_hilbert_coefficient",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 95939,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "globalSuper_exterior_hilbert_coefficient"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.SeparatedPairedData.localExteriorFinrank_sum",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.SeparatedPairedData.localExteriorFinrank_sum",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 95978,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "localExteriorFinrank_sum"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf#page=22"
+    },
+    {
+      "paper_result": "Original-data correspondence for \u00a77",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [],
+      "declarations": [
+        {
+          "name": "PaperVerification.Fermion.exists_univariate_factorization",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.exists_univariate_factorization",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 96073,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "exists_univariate_factorization"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.SeparatedCoverOfPairedData.toSeparatedData_superIdeal",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.SeparatedCoverOfPairedData.toSeparatedData_superIdeal",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 96224,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "toSeparatedData_superIdeal"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.SeparatedCoverOfPairedData.toSeparatedData_toPairedData",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.SeparatedCoverOfPairedData.toSeparatedData_toPairedData",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 96244,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "toSeparatedData_toPairedData"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.SeparatedCoverOfPairedData.originalSuperTensorProductEquiv",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.SeparatedCoverOfPairedData.originalSuperTensorProductEquiv",
+              "declaration_kind": "def",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 96268,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "originalSuperTensorProductEquiv"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.originalSuperTensorProductEquiv_complex",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.originalSuperTensorProductEquiv_complex",
+              "declaration_kind": "def",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 96353,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "originalSuperTensorProductEquiv_complex"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf"
+    },
+    {
+      "paper_result": "\u00a78.1: invariant-generated ideals",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [],
+      "declarations": [
+        {
+          "name": "PaperVerification.Fermion.Coinvariants.positiveInvariantIdeal_eq_paired",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.Coinvariants.positiveInvariantIdeal_eq_paired",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 85413,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "positiveInvariantIdeal_eq_paired"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.Coinvariants.positiveInvariantIdeal_eq_strict",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.Coinvariants.positiveInvariantIdeal_eq_strict",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 85421,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "positiveInvariantIdeal_eq_strict"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.Coinvariants.positiveInvariantIdeal_eq_strict_typeA",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.Coinvariants.positiveInvariantIdeal_eq_strict_typeA",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 85384,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "positiveInvariantIdeal_eq_strict_typeA"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf"
+    },
+    {
+      "paper_result": "\u00a78.1 and equation (20): bases",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [],
+      "declarations": [
+        {
+          "name": "PaperVerification.Fermion.Coinvariants.oppositeCoinvariantBasis",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.Coinvariants.oppositeCoinvariantBasis",
+              "declaration_kind": "def",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 85895,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "oppositeCoinvariantBasis"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.Coinvariants.trivialColorCoinvariantBasis",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.Coinvariants.trivialColorCoinvariantBasis",
+              "declaration_kind": "def",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 85928,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "trivialColorCoinvariantBasis"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.Coinvariants.typeACoinvariantBasis",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.Coinvariants.typeACoinvariantBasis",
+              "declaration_kind": "def",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 85963,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "typeACoinvariantBasis"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.Coinvariants.oppositeCoinvariantBasis_apply",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.Coinvariants.oppositeCoinvariantBasis_apply",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 85902,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "oppositeCoinvariantBasis_apply"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.Coinvariants.trivialColorCoinvariantBasis_apply",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.Coinvariants.trivialColorCoinvariantBasis_apply",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 85935,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "trivialColorCoinvariantBasis_apply"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.Coinvariants.typeACoinvariantBasis_apply",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.Coinvariants.typeACoinvariantBasis_apply",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 86540,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "typeACoinvariantBasis_apply"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf"
+    },
+    {
+      "paper_result": "\u00a78.1: full Hilbert formulas",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [],
+      "declarations": [
+        {
+          "name": "PaperVerification.Fermion.Coinvariants.oppositeCoinvariant_full_hilbert_coefficient",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.Coinvariants.oppositeCoinvariant_full_hilbert_coefficient",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 86974,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "oppositeCoinvariant_full_hilbert_coefficient"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.Coinvariants.trivialColorCoinvariant_full_hilbert_coefficient",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.Coinvariants.trivialColorCoinvariant_full_hilbert_coefficient",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 86984,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "trivialColorCoinvariant_full_hilbert_coefficient"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.Coinvariants.typeACoinvariant_full_hilbert_coefficient",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.Coinvariants.typeACoinvariant_full_hilbert_coefficient",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 87057,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "typeACoinvariant_full_hilbert_coefficient"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.Coinvariants.typeACoinvariant_physical_basis_card",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.Coinvariants.typeACoinvariant_physical_basis_card",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 87044,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "typeACoinvariant_physical_basis_card"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf"
+    },
+    {
+      "paper_result": "\u00a78.1: parameter fields",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [],
+      "declarations": [
+        {
+          "name": "PaperVerification.Fermion.Coinvariants.complex_positiveInvariantIdeal_eq_paired",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.Coinvariants.complex_positiveInvariantIdeal_eq_paired",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 86008,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "complex_positiveInvariantIdeal_eq_paired"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.Coinvariants.complex_positiveInvariantIdeal_eq_strict",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.Coinvariants.complex_positiveInvariantIdeal_eq_strict",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 86019,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "complex_positiveInvariantIdeal_eq_strict"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.Coinvariants.positive_characteristic_opposite_ideal",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.Coinvariants.positive_characteristic_opposite_ideal",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 86731,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "positive_characteristic_opposite_ideal"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.Coinvariants.positive_characteristic_trivial_color_ideal",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.Coinvariants.positive_characteristic_trivial_color_ideal",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 86742,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "positive_characteristic_trivial_color_ideal"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf"
+    },
+    {
+      "paper_result": "\u00a78.1: Lentfer identifications",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [],
+      "declarations": [
+        {
+          "name": "PaperVerification.Fermion.Coinvariants.lentferTypeA_exponent_iff",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.Coinvariants.lentferTypeA_exponent_iff",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 86647,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "lentferTypeA_exponent_iff"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.Coinvariants.lentferTypeB_exponent_iff",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.Coinvariants.lentferTypeB_exponent_iff",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 86653,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "lentferTypeB_exponent_iff"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf"
+    },
+    {
+      "paper_result": "Theorem 8.1 and equation (21)",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        25
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.Fermion.theorem_8_1",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.theorem_8_1",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 55959,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "theorem_8_1"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.TypeA.equation_21",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.TypeA.equation_21",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 49470,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "equation_21"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf#page=25"
+    },
+    {
+      "paper_result": "Theorem 8.1: fibers and actions",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        25
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.Fermion.WeightRees.fiberUnit_equivariant",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.WeightRees.fiberUnit_equivariant",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 55384,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "fiberUnit_equivariant"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.TypeA.nonzeroFiberEquiv_intertwines",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.TypeA.nonzeroFiberEquiv_intertwines",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 55433,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "nonzeroFiberEquiv_intertwines"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.TypeA.TheoremEightOneClaim",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.TypeA.TheoremEightOneClaim",
+              "declaration_kind": "structure",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 55866,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "TheoremEightOneClaim"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf#page=25"
+    },
+    {
+      "paper_result": "\u00a78.2 and equation (22)",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [],
+      "declarations": [
+        {
+          "name": "PaperVerification.Fermion.TypeA.polynomialPiece_paper_module_decomposition",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.TypeA.polynomialPiece_paper_module_decomposition",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 82925,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "polynomialPiece_paper_module_decomposition"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.TypeA.equation_22_character",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.TypeA.equation_22_character",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 82478,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "equation_22_character"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.TypeA.equation_22_diagonal_trace",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.TypeA.equation_22_diagonal_trace",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 82299,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "equation_22_diagonal_trace"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf"
+    },
+    {
+      "paper_result": "\u00a78.2: Schur decomposition",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [],
+      "declarations": [
+        {
+          "name": "PaperVerification.Fermion.ColorSchur.polynomialPiece_schur_decomposition",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.ColorSchur.polynomialPiece_schur_decomposition",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 83083,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "polynomialPiece_schur_decomposition"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.ColorSchur.schurCopyMultiplicity_eq_coefficient",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.ColorSchur.schurCopyMultiplicity_eq_coefficient",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 83118,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "schurCopyMultiplicity_eq_coefficient"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.ColorSchur.every_schur_summand_irreducible",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.ColorSchur.every_schur_summand_irreducible",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 83096,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "every_schur_summand_irreducible"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.ColorSchur.summand_equivalent_iff_label",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.ColorSchur.summand_equivalent_iff_label",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 83136,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "summand_equivalent_iff_label"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf"
+    },
+    {
+      "paper_result": "\u00a78.3 and equation (23)",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [],
+      "declarations": [
+        {
+          "name": "PaperVerification.Fermion.TypeA.equation_23_character",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.TypeA.equation_23_character",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 82363,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "equation_23_character"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.Fermion.TypeA.diagonal_trace_eq_eulerian",
+          "locations": [
+            {
+              "name": "PaperVerification.Fermion.TypeA.diagonal_trace_eq_eulerian",
+              "declaration_kind": "theorem",
+              "source_path": "source/two_fermion.lean",
+              "source_line": 53936,
+              "source_sha256": "6400d3ec4cf144be86aed83e0335049df8985f8fc4e12590c8af786a58b26444",
+              "source_spelling": "diagonal_trace_eq_eulerian"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf"
+    }
+  ],
+  "known_gaps": [
+    "The exterior-Hilbert, associated-graded, flat-family and fiber clauses of Theorems 1.1 and 1.2 still require independent extraction.",
+    "Principal local-structure and equivariant/character results in Sections 7\u20138 remain unextracted.",
+    "The exact Lean4.36.0-rc2 / Mathlib428aa8288d061ec3ae75c1b85ac178e2cb9def23 environment has not been provisioned or checked locally."
+  ],
+  "checks": {
+    "source_copy": "complete including retained reading files and licenses",
+    "build": "not_run_for_current_hash",
+    "comparator": "not_run_for_current_hash",
+    "nanoda": "not_run_for_current_hash",
+    "editorial_review": "not_run_for_current_hash",
+    "challenge_elaboration": "not_run_for_current_hash"
+  },
+  "current_selection": "The exact monomial-basis clauses of Theorems 1.1 and 1.2 and their all-ring finite free ranks are selected.",
+  "selected_wrapper_provenance": [
+    [
+      "PalomarFermion.pairedFreeRank",
+      "PaperVerification.Fermion.theorem_1_1_free_rank",
+      "Projection of the proved all-ring free-rank statement; no field or nontrivial-ring hypothesis is added."
+    ],
+    [
+      "PalomarFermion.strictFreeRank",
+      "PaperVerification.Fermion.theorem_1_2_free_rank",
+      "Projection of the proved all-ring free-rank statement; no field or nontrivial-ring hypothesis is added."
+    ]
+  ],
+  "comparator": {
+    "challenge_module": "Challenge",
+    "solution_module": "Solution",
+    "theorem_names": [
+      "PaperVerification.Fermion.paired_basis_claim",
+      "PaperVerification.Fermion.strict_basis_claim",
+      "PalomarFermion.pairedFreeRank",
+      "PalomarFermion.strictFreeRank"
+    ],
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ]
+  },
+  "challenge": {
+    "path": "source/Challenge.lean",
+    "sha256": "126ae51e461d0b40f9a745cffeb11c50b6769e9292cbe9a17538862804eb8aef",
+    "physical_lines": 253,
+    "bytes": 10770,
+    "local_elaboration": "not_run_for_current_hash",
+    "solution_build": "not_run_for_current_hash",
+    "comparator": "not_run_for_current_hash"
+  },
+  "packaging_changes": [
+    {
+      "kind": "literal_interface_repair",
+      "evidence": "packaging/endpoint-context-repair.json",
+      "description": "Exact current source/context correction and hash-bound pending validation receipt."
+    }
+  ]
+}

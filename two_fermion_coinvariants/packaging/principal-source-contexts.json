@@ -1,0 +1,2026 @@
+{
+  "status": "written_contexts_only_not_compiled_equality",
+  "candidate_challenge_sha256": "fc734791e50d0e7bace8977438705b513f14a63723ded5d2356b55d8294ab831",
+  "all_selected_names": [
+    "PaperVerification.Fermion.BasisFiltered.bound_zero",
+    "PaperVerification.Fermion.BasisFiltered.bound_add",
+    "PaperVerification.Fermion.BasisFiltered.bound_smul",
+    "PaperVerification.Fermion.BasisFiltered.homogeneous_bound",
+    "PaperVerification.Fermion.Exterior.modeRank_injective",
+    "PaperVerification.Fermion.Exterior.interleavedOddRank_injective",
+    "PaperVerification.Fermion.HasHighestPower.map",
+    "PaperVerification.Fermion.validWord_disjSum_iff",
+    "PaperVerification.Fermion.wordBoxBounds_disjSum_cast",
+    "PaperVerification.Fermion.pairedPowerIndex_ext",
+    "PaperVerification.Fermion.paired_basis_claim",
+    "PaperVerification.Fermion.weightedHomogenize_hasHighestPower",
+    "PaperVerification.Fermion.strictWord_of_polynomialIndex",
+    "PaperVerification.Fermion.wordHeight_arrival_cast",
+    "PaperVerification.Fermion.strictWordBoxBounds_disjSum_cast",
+    "PaperVerification.Fermion.strictPowerIndex_ext",
+    "PaperVerification.Fermion.strict_basis_claim",
+    "PaperVerification.Fermion.FilteredAlgebra.mul_mem_filtration",
+    "PaperVerification.Fermion.FilteredAlgebra.one_mem_filtration",
+    "PaperVerification.Fermion.FilteredAlgebra.algebraMap_mem_filtration",
+    "PaperVerification.Fermion.FilteredAlgebra.gradedPreMul_mem_ker_left",
+    "PaperVerification.Fermion.FilteredAlgebra.gradedPreMul_mem_ker_right",
+    "PaperVerification.Fermion.FilteredAlgebra.gradedMul_assoc",
+    "PaperVerification.Fermion.FilteredAlgebra.gradedAlgebraMap₀_one",
+    "PaperVerification.Fermion.FilteredAlgebra.gradedOne_mul",
+    "PaperVerification.Fermion.FilteredAlgebra.gradedMul_one",
+    "PaperVerification.Fermion.FilteredAlgebra.gradedAlgebraMap₀_mul",
+    "PaperVerification.Fermion.FilteredAlgebra.gradedAlgebraMap₀_mul_algebraMap₀",
+    "PaperVerification.Fermion.FilteredAlgebra.gradedAlgebraMap₀_commutes",
+    "PaperVerification.Fermion.BasisFiltered.bound_mul",
+    "PaperVerification.Fermion.BasisFiltered.boundPiece_mono",
+    "PaperVerification.Fermion.super_weighted_one_homogeneous",
+    "PaperVerification.Fermion.super_weighted_basis_mul_homogeneous",
+    "PaperVerification.Fermion.theorem_1_1",
+    "PaperVerification.Fermion.theorem_1_1_rank",
+    "PaperVerification.Fermion.theorem_1_2",
+    "PaperVerification.Fermion.theorem_1_2_rank",
+    "PalomarFermion.pairedFreeRank",
+    "PalomarFermion.strictFreeRank",
+    "PaperVerification.Fermion.FilteredAlgebra.mem_previousRestricted_iff"
+  ],
+  "missing_selected_declarations": [],
+  "declarations": [
+    {
+      "name": "PaperVerification.Fermion.BasisFiltered.Bound",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion.BasisFiltered",
+      "candidate_line": 21,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators",
+        "variable {R M I J E : Type*} [CommRing R] [AddCommGroup M] [Module R M] (b : Module.Basis I R M) (w : I → ℕ)"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.BasisFiltered.Homogeneous",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion.BasisFiltered",
+      "candidate_line": 22,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators",
+        "variable {R M I J E : Type*} [CommRing R] [AddCommGroup M] [Module R M] (b : Module.Basis I R M) (w : I → ℕ)"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.BasisFiltered.bound_zero",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion.BasisFiltered",
+      "candidate_line": 23,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators",
+        "variable {R M I J E : Type*} [CommRing R] [AddCommGroup M] [Module R M] (b : Module.Basis I R M) (w : I → ℕ)"
+      ],
+      "written_statement": "theorem bound_zero (d : ℕ) : Bound b w d 0 := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.BasisFiltered.bound_add",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion.BasisFiltered",
+      "candidate_line": 24,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators",
+        "variable {R M I J E : Type*} [CommRing R] [AddCommGroup M] [Module R M] (b : Module.Basis I R M) (w : I → ℕ)"
+      ],
+      "written_statement": "theorem bound_add {d : ℕ} {x y : M} (hx : Bound b w d x) (hy : Bound b w d y) : Bound b w d (x+y) := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.BasisFiltered.bound_smul",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion.BasisFiltered",
+      "candidate_line": 25,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators",
+        "variable {R M I J E : Type*} [CommRing R] [AddCommGroup M] [Module R M] (b : Module.Basis I R M) (w : I → ℕ)"
+      ],
+      "written_statement": "theorem bound_smul {d : ℕ} {x : M} (hx : Bound b w d x) (a : R) : Bound b w d (a • x) := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.BasisFiltered.homogeneous_bound",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion.BasisFiltered",
+      "candidate_line": 26,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators",
+        "variable {R M I J E : Type*} [CommRing R] [AddCommGroup M] [Module R M] (b : Module.Basis I R M) (w : I → ℕ)"
+      ],
+      "written_statement": "theorem homogeneous_bound {d : ℕ} {x : M} (hx : Homogeneous b w d x) : Bound b w d x := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.moment",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 33,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators",
+        "open Polynomial",
+        "variable {R M : Type*} [CommRing R] [AddCommGroup M] [Module R M]",
+        "variable {n : ℕ}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.momentIdeal",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 42,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators",
+        "open Polynomial",
+        "variable {R : Type*} [CommRing R]",
+        "variable {n : ℕ}",
+        "variable {A : Type*} [Ring A] [Algebra R A]"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.PolynomialRing",
+      "kind": "abbrev",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 49,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators _root_.TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : ℕ)"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.OddIndex",
+      "kind": "abbrev",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 50,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators _root_.TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : ℕ)"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.OddModule",
+      "kind": "abbrev",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 51,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators _root_.TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : ℕ)"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.SuperRing",
+      "kind": "abbrev",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 52,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators _root_.TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : ℕ)"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.theta",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 61,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators _root_.TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : ℕ)"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.xi",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 64,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators _root_.TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : ℕ)"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedCoefficients",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 77,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators _root_.TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : ℕ)",
+        "variable {K n}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedIdeal",
+      "kind": "abbrev",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 83,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators _root_.TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : ℕ)",
+        "variable {K n}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.PairedQuotient",
+      "kind": "abbrev",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 85,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators _root_.TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : ℕ)",
+        "variable {K n}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.strictCoefficients",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 87,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators _root_.TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : ℕ)",
+        "variable {K n}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.strictIdeal",
+      "kind": "abbrev",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 93,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators _root_.TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : ℕ)",
+        "variable {K n}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.StrictQuotient",
+      "kind": "abbrev",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 95,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators _root_.TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : ℕ)",
+        "variable {K n}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.AllowedWeights",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 97,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators _root_.TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : ℕ)",
+        "variable {K n}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.monomialWeight",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 100,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators _root_.TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : ℕ)",
+        "variable {K n}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.HasHighestPower",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 102,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators _root_.TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : ℕ)",
+        "variable {K n}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.PairedData",
+      "kind": "structure",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 106,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators _root_.TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : ℕ)",
+        "variable {K n}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.StrictData",
+      "kind": "structure",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 123,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators _root_.TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : ℕ)",
+        "variable {K n}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.marks",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 131,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators _root_.TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : ℕ)",
+        "variable {K n}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.height",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 133,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators _root_.TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : ℕ)",
+        "variable {K n}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.previousHeight",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 135,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators _root_.TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : ℕ)",
+        "variable {K n}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedBound",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 137,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators _root_.TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : ℕ)",
+        "variable {K n}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.PairedIndex",
+      "kind": "abbrev",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 141,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators _root_.TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : ℕ)",
+        "variable {K n}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.StrictIndex",
+      "kind": "abbrev",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 145,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators _root_.TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : ℕ)",
+        "variable {K n}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.boxMonomial",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 149,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators _root_.TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : ℕ)",
+        "variable {K n}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedClasses",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 152,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators _root_.TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : ℕ)",
+        "variable {K n}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.strictClasses",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 155,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators _root_.TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : ℕ)",
+        "variable {K n}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.PairedBasisClaim",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 158,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators _root_.TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : ℕ)",
+        "variable {K n}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.StrictBasisClaim",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 161,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators _root_.TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : ℕ)",
+        "variable {K n}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.Exterior.modeRank",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion.Exterior",
+      "candidate_line": 168,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators",
+        "variable {R V : Type*} [CommRing R] [AddCommGroup V] [Module R V] {n : ℕ}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.Exterior.modeRank_injective",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion.Exterior",
+      "candidate_line": 171,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators",
+        "variable {R V : Type*} [CommRing R] [AddCommGroup V] [Module R V] {n : ℕ}"
+      ],
+      "written_statement": "theorem modeRank_injective : Function.Injective (modeRank (n := n)) := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.coveringWeight",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 177,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators",
+        "open MvPolynomial",
+        "variable {K : Type*} [Field K] {n : ℕ}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.Newton.RectangleIndex",
+      "kind": "abbrev",
+      "namespace": "PaperVerification.Fermion.Newton",
+      "candidate_line": 184,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open MvPolynomial",
+        "open scoped BigOperators",
+        "variable {F : Type*} [Field F] {n : ℕ}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.Newton.rectangleIndexEquiv",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion.Newton",
+      "candidate_line": 186,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open MvPolynomial",
+        "open scoped BigOperators",
+        "variable {F : Type*} [Field F] {n : ℕ}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.Exterior.interleavedOddRank",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion.Exterior",
+      "candidate_line": 196,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.Exterior.interleavedOddRank_injective",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion.Exterior",
+      "candidate_line": 199,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators"
+      ],
+      "written_statement": "theorem interleavedOddRank_injective (n : ℕ) : Function.Injective (@interleavedOddRank n) := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.Exterior.interleavedOddOrder",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion.Exterior",
+      "candidate_line": 200,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.Exterior.pairedPrefix",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion.Exterior",
+      "candidate_line": 202,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.Endpoint.wordMark",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion.Endpoint",
+      "candidate_line": 216,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators",
+        "open Polynomial",
+        "variable {R I : Type*} [CommRing R] [DecidableEq I]"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.Exterior.wordHeight",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion.Exterior",
+      "candidate_line": 233,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators",
+        "open Polynomial",
+        "open Colex",
+        "open Endpoint",
+        "variable {R V : Type*} [CommRing R] [AddCommGroup V] [Module R V] {n : ℕ}",
+        "local instance FermionHarmonicEndpoint_localInst_1 (m : ℕ) : LinearOrder (Fin m ⊕ Fin m) := interleavedOddOrder m\n-- PALOMAR_CONTEXT_ORIGIN 227",
+        "local instance FermionHarmonicEndpoint_localInst_2 (m : ℕ) : PartialOrder (Fin m ⊕ Fin m) := (interleavedOddOrder m).toPartialOrder\n-- PALOMAR_CONTEXT_ORIGIN 228",
+        "local instance FermionHarmonicEndpoint_localInst_3 (m : ℕ) : Preorder (Fin m ⊕ Fin m) := (interleavedOddOrder m).toPreorder\n-- PALOMAR_CONTEXT_ORIGIN 229",
+        "local instance FermionHarmonicEndpoint_localInst_4 (m : ℕ) : LE (Fin m ⊕ Fin m) := (interleavedOddOrder m).toLE\n-- PALOMAR_CONTEXT_ORIGIN 230",
+        "local instance FermionHarmonicEndpoint_localInst_5 (m : ℕ) : LT (Fin m ⊕ Fin m) := (interleavedOddOrder m).toLT\n-- PALOMAR_CONTEXT_ORIGIN 231",
+        "local instance FermionHarmonicEndpoint_localInst_6 (m : ℕ) : DecidableEq (Fin m ⊕ Fin m) := (interleavedOddOrder m).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 232"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.Endpoint.pairedBoxBound",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion.Endpoint",
+      "candidate_line": 241,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open scoped BigOperators",
+        "variable {K : Type*} [Field K] {n : ℕ}",
+        "local notation \"P\" => MvPolynomial (Fin n) K"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.ValidWord",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 258,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open scoped BigOperators",
+        "open MvPolynomial Exterior Endpoint Colex",
+        "variable {K : Type*} [Field K] {n : ℕ}",
+        "local instance FermionPowerHarmonicBound_localInst_1 (m : ℕ) : LinearOrder (Fin m ⊕ Fin m) := interleavedOddOrder m\n-- PALOMAR_CONTEXT_ORIGIN 252",
+        "local instance FermionPowerHarmonicBound_localInst_2 (m : ℕ) : PartialOrder (Fin m ⊕ Fin m) := (interleavedOddOrder m).toPartialOrder\n-- PALOMAR_CONTEXT_ORIGIN 253",
+        "local instance FermionPowerHarmonicBound_localInst_3 (m : ℕ) : Preorder (Fin m ⊕ Fin m) := (interleavedOddOrder m).toPreorder\n-- PALOMAR_CONTEXT_ORIGIN 254",
+        "local instance FermionPowerHarmonicBound_localInst_4 (m : ℕ) : LE (Fin m ⊕ Fin m) := (interleavedOddOrder m).toLE\n-- PALOMAR_CONTEXT_ORIGIN 255",
+        "local instance FermionPowerHarmonicBound_localInst_5 (m : ℕ) : LT (Fin m ⊕ Fin m) := (interleavedOddOrder m).toLT\n-- PALOMAR_CONTEXT_ORIGIN 256",
+        "local instance FermionPowerHarmonicBound_localInst_6 (m : ℕ) : DecidableEq (Fin m ⊕ Fin m) := (interleavedOddOrder m).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 257"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.wordBoxBounds",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 268,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators",
+        "variable {F : Type*} [Field F] {n : ℕ}",
+        "local instance FermionCreatorPolynomialBoxes_localInst_1 (m : ℕ) : DecidableEq (Fin m ⊕ Fin m) :=\n  (interleavedOddOrder m).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 266"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.SuperMonomialIndex",
+      "kind": "abbrev",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 275,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open MvPolynomial",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {K : Type*} [CommRing K] {n : ℕ} [LinearOrder (OddIndex n)]"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.superMonomialBasis",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 276,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open MvPolynomial",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {K : Type*} [CommRing K] {n : ℕ} [LinearOrder (OddIndex n)]"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.wordPolynomialWeight",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 278,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open MvPolynomial",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {K : Type*} [CommRing K] {n : ℕ} [LinearOrder (OddIndex n)]"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.superMonomialWeight",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 279,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open MvPolynomial",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {K : Type*} [CommRing K] {n : ℕ} [LinearOrder (OddIndex n)]"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.HasHighestPower.map",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 286,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open MvPolynomial",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {R S : Type*} [CommRing R] [CommRing S] {n : ℕ}"
+      ],
+      "written_statement": "theorem HasHighestPower.map (f : R →+* S) (r : Fin n → ℕ) (p : PolynomialRing R n) (i : Fin n) (d : ℕ) (hp : HasHighestPower r p i d) : HasHighestPower r\n  (MvPolynomial.map f p) i d := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.PairedData.map",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 288,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open MvPolynomial",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {R S : Type*} [CommRing R] [CommRing S] {n : ℕ}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedOddWeight",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 326,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {K : Type*} [CommRing K] {n : ℕ}",
+        "local instance FermionPairedMomentHighest_localInst_1 : LinearOrder (Fin n ⊕ Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 314",
+        "local instance FermionPairedMomentHighest_localInst_2 : PartialOrder (Fin n ⊕ Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toPartialOrder\n-- PALOMAR_CONTEXT_ORIGIN 316",
+        "local instance FermionPairedMomentHighest_localInst_3 : Preorder (Fin n ⊕ Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toPreorder\n-- PALOMAR_CONTEXT_ORIGIN 318",
+        "local instance FermionPairedMomentHighest_localInst_4 : LE (Fin n ⊕ Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toLE\n-- PALOMAR_CONTEXT_ORIGIN 320",
+        "local instance FermionPairedMomentHighest_localInst_5 : LT (Fin n ⊕ Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toLT\n-- PALOMAR_CONTEXT_ORIGIN 322",
+        "local instance FermionPairedMomentHighest_localInst_6 : DecidableEq (Fin n ⊕ Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 324"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.PairedWordPolynomialIndex",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 337,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {F : Type*} [Field F] {n : ℕ}",
+        "local instance FermionPairedPowerBasis_localInst_1 : LinearOrder (Fin n ⊕ Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 335"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.PairedPowerIndex",
+      "kind": "abbrev",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 346,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {F : Type*} [Field F] {n : ℕ}",
+        "local instance FermionPairedPowerBasis_localInst_1 : LinearOrder (Fin n ⊕ Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 335"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.validWord_disjSum_iff",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 356,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionPairedIndex_localInst_1 : DecidableEq (Fin n ⊕ Fin n) :=\n  (interleavedOddOrder n).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 354"
+      ],
+      "written_statement": "theorem validWord_disjSum_iff (T S : Finset (Fin n)) : ValidWord (T.disjSum S) ↔ ∀ i, 0 ≤ height T S i := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.wordBoxBounds_disjSum_cast",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 357,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionPairedIndex_localInst_1 : DecidableEq (Fin n ⊕ Fin n) :=\n  (interleavedOddOrder n).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 354"
+      ],
+      "written_statement": "theorem wordBoxBounds_disjSum_cast (d : PairedData (K := R) (n := n)) (T S : Finset (Fin n)) (h : ValidWord (T.disjSum S)) (i : Fin n) : (wordBoxBounds d.r d.u\n  d.v d.s (T.disjSum S) i : ℤ) = pairedBound d T S i := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedIndexToPower",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 359,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionPairedIndex_localInst_1 : DecidableEq (Fin n ⊕ Fin n) :=\n  (interleavedOddOrder n).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 354"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedPowerToIndex",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 367,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionPairedIndex_localInst_1 : DecidableEq (Fin n ⊕ Fin n) :=\n  (interleavedOddOrder n).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 354"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedPowerIndex_ext",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 376,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionPairedIndex_localInst_1 : DecidableEq (Fin n ⊕ Fin n) :=\n  (interleavedOddOrder n).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 354"
+      ],
+      "written_statement": "theorem pairedPowerIndex_ext {r u v : Fin n → ℕ} {s : ℕ} {a b : PairedPowerIndex r u v s} (hW : a.1 = b.1) (he : a.2.val.val = b.2.val.val) : a = b := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedIndexEquiv",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 378,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionPairedIndex_localInst_1 : DecidableEq (Fin n ⊕ Fin n) :=\n  (interleavedOddOrder n).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 354"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.paired_basis_claim",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 409,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "attribute [local instance] PaperVerification.Fermion.FermionPairedIndex_localInst_1",
+        "local instance FermionPairedIndex_localInst_2 : LinearOrder (Fin n ⊕ Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 397",
+        "local instance FermionPairedIndex_localInst_3 : PartialOrder (Fin n ⊕ Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toPartialOrder\n-- PALOMAR_CONTEXT_ORIGIN 399",
+        "local instance FermionPairedIndex_localInst_4 : Preorder (Fin n ⊕ Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toPreorder\n-- PALOMAR_CONTEXT_ORIGIN 401",
+        "local instance FermionPairedIndex_localInst_5 : LE (Fin n ⊕ Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toLE\n-- PALOMAR_CONTEXT_ORIGIN 403",
+        "local instance FermionPairedIndex_localInst_6 : LT (Fin n ⊕ Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toLT\n-- PALOMAR_CONTEXT_ORIGIN 405",
+        "local instance FermionPairedIndex_localInst_7 : DecidableEq (Fin n ⊕ Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 407"
+      ],
+      "written_statement": "theorem paired_basis_claim (d : PairedData (K := R) (n := n)) : PairedBasisClaim d := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.weightedHomogenize",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 434,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionHomogenizedFamily_localInst_1 : LinearOrder (Fin n ⊕ Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 432"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.weightedHomogenize_hasHighestPower",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 437,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionHomogenizedFamily_localInst_1 : LinearOrder (Fin n ⊕ Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 432"
+      ],
+      "written_statement": "theorem weightedHomogenize_hasHighestPower (r : Fin n → ℕ) (p : PolynomialRing R n) (i : Fin n) (e : ℕ) (hp : HasHighestPower r p i e) : HasHighestPower r\n  (weightedHomogenize (coveringWeight r) (e*coveringWeight r i) p) i e := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedHomogenizedData",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 439,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionHomogenizedFamily_localInst_1 : LinearOrder (Fin n ⊕ Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 432"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.PairedHomogenizedQuotient",
+      "kind": "abbrev",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 456,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionHomogenizedFamily_localInst_1 : LinearOrder (Fin n ⊕ Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 432"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.strictWordBoxBounds",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 467,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators",
+        "variable {n : ℕ}",
+        "local instance FermionStrictPolynomialBoxes_localInst_1 (m : ℕ) : DecidableEq (Fin m ⊕ Fin m) :=\n  (interleavedOddOrder m).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 465"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.StrictWordPolynomialIndex",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 469,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators",
+        "variable {n : ℕ}",
+        "local instance FermionStrictPolynomialBoxes_localInst_1 (m : ℕ) : DecidableEq (Fin m ⊕ Fin m) :=\n  (interleavedOddOrder m).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 465"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.StrictPowerIndex",
+      "kind": "abbrev",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 477,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators",
+        "variable {n : ℕ}",
+        "local instance FermionStrictPolynomialBoxes_localInst_1 (m : ℕ) : DecidableEq (Fin m ⊕ Fin m) :=\n  (interleavedOddOrder m).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 465"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.StrictWord",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 478,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators",
+        "variable {n : ℕ}",
+        "local instance FermionStrictPolynomialBoxes_localInst_1 (m : ℕ) : DecidableEq (Fin m ⊕ Fin m) :=\n  (interleavedOddOrder m).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 465"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.strictWord_of_polynomialIndex",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 480,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators",
+        "variable {n : ℕ}",
+        "local instance FermionStrictPolynomialBoxes_localInst_1 (m : ℕ) : DecidableEq (Fin m ⊕ Fin m) :=\n  (interleavedOddOrder m).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 465"
+      ],
+      "written_statement": "theorem strictWord_of_polynomialIndex (r : Fin n → ℕ) (T : Finset (OddIndex n)) (a : StrictWordPolynomialIndex r T) : StrictWord T := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.BasisFiltered.homogeneousPiece",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion.BasisFiltered",
+      "candidate_line": 494,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators",
+        "variable {R M Q I E : Type*} [CommRing R] [AddCommGroup M] [Module R M] [AddCommGroup Q] [Module R Q] (b : Module.Basis I R M) (w : I → ℕ)"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.wordHeight_arrival_cast",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 516,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionStrictIndex_localInst_1 : DecidableEq (Fin n ⊕ Fin n) :=\n  (interleavedOddOrder n).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 514"
+      ],
+      "written_statement": "theorem wordHeight_arrival_cast (T S : Finset (Fin n)) (h : ValidWord (T.disjSum S)) (i : Fin n) : (wordHeight (T.disjSum S) (i.val+1) : ℤ)=height T S i := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.strictWordBoxBounds_disjSum_cast",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 518,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionStrictIndex_localInst_1 : DecidableEq (Fin n ⊕ Fin n) :=\n  (interleavedOddOrder n).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 514"
+      ],
+      "written_statement": "theorem strictWordBoxBounds_disjSum_cast (r : Fin n → ℕ) (T S : Finset (Fin n)) (h : ValidWord (T.disjSum S)) (i : Fin n) : (strictWordBoxBounds r (T.disjSum S)\n  i : ℤ)=(r i : ℤ)*height T S i := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.strictIndexToPower",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 520,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionStrictIndex_localInst_1 : DecidableEq (Fin n ⊕ Fin n) :=\n  (interleavedOddOrder n).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 514"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.strictPowerToIndex",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 529,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionStrictIndex_localInst_1 : DecidableEq (Fin n ⊕ Fin n) :=\n  (interleavedOddOrder n).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 514"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.strictPowerIndex_ext",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 543,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionStrictIndex_localInst_1 : DecidableEq (Fin n ⊕ Fin n) :=\n  (interleavedOddOrder n).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 514"
+      ],
+      "written_statement": "theorem strictPowerIndex_ext {r : Fin n → ℕ} {a b : StrictPowerIndex r} (hW : a.1 = b.1) (he : a.2.val.val = b.2.val.val) : a = b := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.strictIndexEquiv",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 544,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionStrictIndex_localInst_1 : DecidableEq (Fin n ⊕ Fin n) :=\n  (interleavedOddOrder n).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 514"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.strict_basis_claim",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 575,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "attribute [local instance] PaperVerification.Fermion.FermionStrictIndex_localInst_1",
+        "local instance FermionStrictIndex_localInst_2 : LinearOrder (Fin n ⊕ Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 563",
+        "local instance FermionStrictIndex_localInst_3 : PartialOrder (Fin n ⊕ Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toPartialOrder\n-- PALOMAR_CONTEXT_ORIGIN 565",
+        "local instance FermionStrictIndex_localInst_4 : Preorder (Fin n ⊕ Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toPreorder\n-- PALOMAR_CONTEXT_ORIGIN 567",
+        "local instance FermionStrictIndex_localInst_5 : LE (Fin n ⊕ Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toLE\n-- PALOMAR_CONTEXT_ORIGIN 569",
+        "local instance FermionStrictIndex_localInst_6 : LT (Fin n ⊕ Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toLT\n-- PALOMAR_CONTEXT_ORIGIN 571",
+        "local instance FermionStrictIndex_localInst_7 : DecidableEq (Fin n ⊕ Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 573"
+      ],
+      "written_statement": "theorem strict_basis_claim (d : StrictData (K := R) (n := n)) : StrictBasisClaim d := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedExteriorPiece",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 584,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionPairedExteriorPieces_localInst_1 : LinearOrder (Fin n ⊕ Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 582"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.PairedExteriorIndex",
+      "kind": "abbrev",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 587,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionPairedExteriorPieces_localInst_1 : LinearOrder (Fin n ⊕ Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 582"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.strictSuperWeight",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 606,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionStrictHighestForms_localInst_1 : LinearOrder (Fin n ⊕ Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 604"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.Filtration",
+      "kind": "structure",
+      "namespace": "PaperVerification.Fermion.FilteredAlgebra",
+      "candidate_line": 613,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.filtration",
+      "kind": "abbrev",
+      "namespace": "PaperVerification.Fermion.FilteredAlgebra",
+      "candidate_line": 624,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.previous",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion.FilteredAlgebra",
+      "candidate_line": 625,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.previousRestricted",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion.FilteredAlgebra",
+      "candidate_line": 628,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.mul_mem_filtration",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion.FilteredAlgebra",
+      "candidate_line": 630,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ],
+      "written_statement": "theorem mul_mem_filtration (f : Filtration R A) {i j : ℕ} {x y : A} (hx : x ∈ filtration f i) (hy : y ∈ filtration f j) : x*y ∈ filtration f (i+j) := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.one_mem_filtration",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion.FilteredAlgebra",
+      "candidate_line": 631,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ],
+      "written_statement": "theorem one_mem_filtration (f : Filtration R A) (k : ℕ) : (1 : A) ∈ filtration f k := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.algebraMap_mem_filtration",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion.FilteredAlgebra",
+      "candidate_line": 632,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ],
+      "written_statement": "theorem algebraMap_mem_filtration (f : Filtration R A) (r : R) (k : ℕ) : algebraMap R A r ∈ filtration f k := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.mem_previousRestricted_iff",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion.FilteredAlgebra",
+      "candidate_line": 634,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ],
+      "written_statement": "@[simp] theorem mem_previousRestricted_iff (f : Filtration R A) (k : ℕ)\n    (x : filtration f k) : x ∈ previousRestricted f k ↔ (x : A) ∈ previous f k := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.GradedPiece",
+      "kind": "abbrev",
+      "namespace": "PaperVerification.Fermion.FilteredAlgebra",
+      "candidate_line": 636,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.AssociatedGraded",
+      "kind": "abbrev",
+      "namespace": "PaperVerification.Fermion.FilteredAlgebra",
+      "candidate_line": 638,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.filteredMul",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion.FilteredAlgebra",
+      "candidate_line": 640,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedPreMul",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion.FilteredAlgebra",
+      "candidate_line": 647,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedPreMul_mem_ker_left",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion.FilteredAlgebra",
+      "candidate_line": 649,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ],
+      "written_statement": "theorem gradedPreMul_mem_ker_left (f : Filtration R A) (i j : ℕ) : previousRestricted f i ≤ (gradedPreMul f i j).ker := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedPreMul_mem_ker_right",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion.FilteredAlgebra",
+      "candidate_line": 650,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ],
+      "written_statement": "theorem gradedPreMul_mem_ker_right (f : Filtration R A) (i j : ℕ) : previousRestricted f j ≤ (gradedPreMul f i j).flip.ker := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedMul",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion.FilteredAlgebra",
+      "candidate_line": 651,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedMul_assoc",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion.FilteredAlgebra",
+      "candidate_line": 655,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ],
+      "written_statement": "theorem gradedMul_assoc (f : Filtration R A) (i j k : ℕ) (x : GradedPiece f i) (y : GradedPiece f j) (z : GradedPiece f k) : cast (congrArg (GradedPiece f)\n  (Nat.add_assoc i j k)) (gradedMul f (i + j) k (gradedMul f i j x y) z) = gradedMul f i (j + k) x (gradedMul f j k y z) := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedOne",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion.FilteredAlgebra",
+      "candidate_line": 657,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedAlgebraMap₀",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion.FilteredAlgebra",
+      "candidate_line": 659,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedAlgebraMap₀_one",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion.FilteredAlgebra",
+      "candidate_line": 667,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ],
+      "written_statement": "@[simp] theorem gradedAlgebraMap₀_one (f : Filtration R A) : gradedAlgebraMap₀ f 1 = gradedOne f := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedOne_mul",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion.FilteredAlgebra",
+      "candidate_line": 668,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ],
+      "written_statement": "@[simp] theorem gradedOne_mul (f : Filtration R A) (k : ℕ) (x : GradedPiece f k) : gradedMul f 0 k (gradedOne f) x = cast (congrArg (GradedPiece f)\n  (Nat.zero_add k).symm) x := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedMul_one",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion.FilteredAlgebra",
+      "candidate_line": 670,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ],
+      "written_statement": "@[simp] theorem gradedMul_one (f : Filtration R A) (k : ℕ) (x : GradedPiece f k) : gradedMul f k 0 x (gradedOne f) = cast (congrArg (GradedPiece f)\n  (Nat.add_zero k).symm) x := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedAlgebraMap₀_mul",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion.FilteredAlgebra",
+      "candidate_line": 745,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ],
+      "written_statement": "@[simp] theorem gradedAlgebraMap₀_mul (f : Filtration R A) (r : R) (k : ℕ) (x : GradedPiece f k) : cast (congrArg (GradedPiece f) (Nat.zero_add k)) (gradedMul f\n  0 k (gradedAlgebraMap₀ f r) x) = r • x := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedAlgebraMap₀_mul_algebraMap₀",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion.FilteredAlgebra",
+      "candidate_line": 747,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ],
+      "written_statement": "@[simp 1100] theorem gradedAlgebraMap₀_mul_algebraMap₀ (f : Filtration R A) (r s : R) : gradedMul f 0 0 (gradedAlgebraMap₀ f r) (gradedAlgebraMap₀ f s) =\n  gradedAlgebraMap₀ f (r * s) := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedAlgebraMap₀_commutes",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion.FilteredAlgebra",
+      "candidate_line": 749,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ],
+      "written_statement": "theorem gradedAlgebraMap₀_commutes (f : Filtration R A) (r : R) (k : ℕ) (x : GradedPiece f k) : cast (congrArg (GradedPiece f) ((Nat.zero_add k).trans\n  (Nat.add_zero k).symm)) (gradedMul f 0 k (gradedAlgebraMap₀ f r) x) = gradedMul f k 0 x (gradedAlgebraMap₀ f r) := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.BasisFiltered.bound_mul",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion.BasisFiltered",
+      "candidate_line": 800,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators",
+        "variable {R A Q I : Type*} [CommRing R] [Ring A] [Algebra R A] [Ring Q] [Algebra R Q] (b : Module.Basis I R A) (w : I → ℕ)"
+      ],
+      "written_statement": "theorem bound_mul (hmul : ∀ i j,Homogeneous b w (w i+w j) (b i*b j)) {d e : ℕ} {x y : A} (hx : Bound b w d x) (hy : Bound b w e y) : Bound b w (d+e) (x*y) := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.BasisFiltered.boundPiece",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion.BasisFiltered",
+      "candidate_line": 802,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators",
+        "variable {R A Q I : Type*} [CommRing R] [Ring A] [Algebra R A] [Ring Q] [Algebra R Q] (b : Module.Basis I R A) (w : I → ℕ)"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.BasisFiltered.boundPiece_mono",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion.BasisFiltered",
+      "candidate_line": 807,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators",
+        "variable {R A Q I : Type*} [CommRing R] [Ring A] [Algebra R A] [Ring Q] [Algebra R Q] (b : Module.Basis I R A) (w : I → ℕ)"
+      ],
+      "written_statement": "theorem boundPiece_mono : Monotone (boundPiece b w) := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.BasisFiltered.quotientFiltration",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion.BasisFiltered",
+      "candidate_line": 808,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open scoped BigOperators",
+        "variable {R A Q I : Type*} [CommRing R] [Ring A] [Algebra R A] [Ring Q] [Algebra R Q] (b : Module.Basis I R A) (w : I → ℕ)"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.super_weighted_one_homogeneous",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 823,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators _root_.TensorProduct DirectSum",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionPairedAssociatedGraded_localInst_1 : LinearOrder (Fin n ⊕ Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 821"
+      ],
+      "written_statement": "theorem super_weighted_one_homogeneous (w : Fin n → ℕ) (ν : OddIndex n → ℕ) : BasisFiltered.Homogeneous (superMonomialBasis (K := R)) (superMonomialWeight w ν)\n  0 1 := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.super_weighted_basis_mul_homogeneous",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 825,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators _root_.TensorProduct DirectSum",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionPairedAssociatedGraded_localInst_1 : LinearOrder (Fin n ⊕ Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 821"
+      ],
+      "written_statement": "theorem super_weighted_basis_mul_homogeneous (w : Fin n → ℕ) (ν : OddIndex n → ℕ) (L T : SuperMonomialIndex n) : BasisFiltered.Homogeneous (superMonomialBasis\n  (K := R)) (superMonomialWeight w ν) (superMonomialWeight w ν L+superMonomialWeight w ν T) (superMonomialBasis L*superMonomialBasis T) := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedSuperWeight",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 827,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators _root_.TensorProduct DirectSum",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionPairedAssociatedGraded_localInst_1 : LinearOrder (Fin n ⊕ Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 821"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedQuotientFiltration",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 829,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators _root_.TensorProduct DirectSum",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionPairedAssociatedGraded_localInst_1 : LinearOrder (Fin n ⊕ Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 821"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.PairedAssociatedGraded",
+      "kind": "abbrev",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 834,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators _root_.TensorProduct DirectSum",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionPairedAssociatedGraded_localInst_1 : LinearOrder (Fin n ⊕ Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 821"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedPowerWeightedPiece",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 836,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators _root_.TensorProduct DirectSum",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionPairedAssociatedGraded_localInst_1 : LinearOrder (Fin n ⊕ Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 821"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.strictQuotientFiltration",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 848,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped DirectSum",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionStrictAssociatedGraded_localInst_1 : LinearOrder (Fin n ⊕ Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 846"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.StrictAssociatedGraded",
+      "kind": "abbrev",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 853,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped DirectSum",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionStrictAssociatedGraded_localInst_1 : LinearOrder (Fin n ⊕ Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 846"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.strictPowerWeightedPiece",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 855,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped DirectSum",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionStrictAssociatedGraded_localInst_1 : LinearOrder (Fin n ⊕ Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 846"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.theorem_1_1",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 866,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open Exterior",
+        "open MvPolynomial",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionTheoremOneOne_localInst_1 : LinearOrder (Fin n ⊕ Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 864"
+      ],
+      "written_statement": "theorem theorem_1_1 (d : PairedData (K := R) (n := n)) :\n    PairedBasisClaim d ∧\n    Fintype.card (PairedIndex d)=2^n*(∏ i,d.r i)*d.s.ascFactorial n ∧\n    (∀ j,Nonempty (Module.Basis (PairedExteriorIndex d j) R (pairedExteriorPiece d j)) ∧\n      Fintype.card (PairedExteriorIndex d j)=\n        (Polynomial.C ((∏ i,d.r i)*d.s.ascFactorial n)*(1+Polynomial.X)^n : Polynomial ℕ).coeff j) ∧\n    (∃ e : PairedAssociatedGraded d ≃ₐ[R]\n      PairedQuotient d.beta (fun i ↦ X i^d.r i) (fun i ↦ X i^d.u i) (fun i ↦ X i^d.v i),\n      ∀ k,LinearMap.range (e.toLinearMap.comp\n        (DirectSum.lof R ℕ (FilteredAlgebra.GradedPiece (pairedQuotientFiltration d)) k)) =\n        pairedPowerWeightedPiece d k) ∧\n    PairedBasisClaim (pairedHomogenizedData d) ∧\n    (Module.Finite (Polynomial R) (PairedHomogenizedQuotient d) ∧\n      Module.Free (Polynomial R) (PairedHomogenizedQuotient d)) ∧\n    Module.Flat (Polynomial R) (PairedHomogenizedQuotient d) ∧\n    (letI : Algebra (Polynomial R) R := (Polynomial.evalRingHom (0 : R)).toAlgebra;\n      Nonempty (R ⊗[Polynomial R] PairedHomogenizedQuotient d ≃ₐ[R]\n        PairedQuotient d.beta (fun i ↦ X i^d.r i) (fun i ↦ X i^d.u i) (fun i ↦ X i^d.v i))) ∧\n    (letI : Algebra (Polynomial R) R := (Polynomial.evalRingHom (1 : R)).toAlgebra;\n      Nonempty (R ⊗[Polynomial R] PairedHomogenizedQuotient d ≃ₐ[R]\n        PairedQuotient d.beta d.phi d.a d.b)) := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.theorem_1_1_rank",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 887,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open Exterior",
+        "open MvPolynomial",
+        "open scoped BigOperators _root_.TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionTheoremOneOne_localInst_1 : LinearOrder (Fin n ⊕ Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 864"
+      ],
+      "written_statement": "theorem theorem_1_1_rank [Nontrivial R] (d : PairedData (K := R) (n := n)) : Module.finrank R (PairedQuotient d.beta d.phi d.a d.b)= 2^n*(∏ i,d.r\n  i)*d.s.ascFactorial n ∧ ∀ j,Module.finrank R (pairedExteriorPiece d j)= (Polynomial.C ((∏ i,d.r i)*d.s.ascFactorial n)*(1+Polynomial.X)^n : Polynomial\n  ℕ).coeff j := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.strictExteriorPiece",
+      "kind": "def",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 898,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionStrictExteriorPieces_localInst_1 : LinearOrder (Fin n ⊕ Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 896"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.StrictExteriorIndex",
+      "kind": "abbrev",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 901,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionStrictExteriorPieces_localInst_1 : LinearOrder (Fin n ⊕ Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 896"
+      ],
+      "written_statement": null
+    },
+    {
+      "name": "PaperVerification.Fermion.theorem_1_2",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 911,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open Exterior",
+        "open MvPolynomial",
+        "open scoped BigOperators DirectSum",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionTheoremOneTwo_localInst_1 : LinearOrder (Fin n ⊕ Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 909"
+      ],
+      "written_statement": "theorem theorem_1_2 (d : StrictData (K := R) (n := n)) : StrictBasisClaim d ∧ Fintype.card (StrictIndex d)=2^(n-1)*(∏ i,d.r i)*n.factorial ∧ (∀ j,Nonempty\n  (Module.Basis (StrictExteriorIndex d j) R (strictExteriorPiece d j)) ∧ Fintype.card (StrictExteriorIndex d j)= (Polynomial.C ((∏ i,d.r\n  i)*n.factorial)*(1+Polynomial.X)^(n-1) : Polynomial ℕ).coeff j) ∧ (∃ e : StrictAssociatedGraded d ≃ₐ[R] StrictQuotient d.beta (fun i ↦ X i^d.r i), ∀\n  k,LinearMap.range (e.toLinearMap.comp (DirectSum.lof R ℕ (FilteredAlgebra.GradedPiece (strictQuotientFiltration d)) k))= strictPowerWeightedPiece d k) := by sorry"
+    },
+    {
+      "name": "PaperVerification.Fermion.theorem_1_2_rank",
+      "kind": "theorem",
+      "namespace": "PaperVerification.Fermion",
+      "candidate_line": 916,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open Exterior",
+        "open MvPolynomial",
+        "open scoped BigOperators DirectSum",
+        "variable {R : Type*} [CommRing R] {n : ℕ}",
+        "local instance FermionTheoremOneTwo_localInst_1 : LinearOrder (Fin n ⊕ Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 909"
+      ],
+      "written_statement": "theorem theorem_1_2_rank [Nontrivial R] (d : StrictData (K := R) (n := n)) : Module.finrank R (StrictQuotient d.beta d.phi)=2^(n-1)*(∏ i,d.r i)*n.factorial ∧ ∀\n  j,Module.finrank R (strictExteriorPiece d j)= (Polynomial.C ((∏ i,d.r i)*n.factorial)*(1+Polynomial.X)^(n-1) : Polynomial ℕ).coeff j := by sorry"
+    },
+    {
+      "name": "PalomarFermion.pairedFreeRank",
+      "kind": "theorem",
+      "namespace": "PalomarFermion",
+      "candidate_line": 925,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open PaperVerification.Fermion",
+        "universe uPalomar"
+      ],
+      "written_statement": "theorem pairedFreeRank {R : Type uPalomar} [CommRing R] {n : ℕ}\n    (d : PairedData (K := R) (n := n)) :\n    Nonempty (PairedQuotient d.beta d.phi d.a d.b ≃ₗ[R]\n      (Fin (2^n * (∏ i, d.r i) * d.s.ascFactorial n) → R)) := by sorry"
+    },
+    {
+      "name": "PalomarFermion.strictFreeRank",
+      "kind": "theorem",
+      "namespace": "PalomarFermion",
+      "candidate_line": 931,
+      "source_context_commands": [
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open PaperVerification.Fermion",
+        "universe uPalomar"
+      ],
+      "written_statement": "theorem strictFreeRank {R : Type uPalomar} [CommRing R] {n : ℕ}\n    (d : StrictData (K := R) (n := n)) :\n    Nonempty (StrictQuotient d.beta d.phi ≃ₗ[R]\n      (Fin (2^(n-1) * (∏ i, d.r i) * n.factorial) → R)) := by sorry"
+    }
+  ]
+}

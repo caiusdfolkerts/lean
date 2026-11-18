@@ -4,7 +4,7 @@
   "baseline_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
   "paper_sha256": "c4a3dd3f2e102d6b4bcc8d50c58ea8007c412cea8d762a8fbb5b105db09bc19a",
   "one_entry_per_paper": true,
-  "status": "draft_incomplete",
+  "status": "principal_expanded_challenge_passed_full_source_comparator_unverified",
   "source_selection": [
     "paper.pdf",
     "README.md",
@@ -32,7 +32,7 @@
             }
           ],
           "resolution": "found",
-          "challenge_status": "not_extracted"
+          "challenge_status": "full_principal_interface_canonical_challenge_passed_full_verification_unverified"
         },
         {
           "name": "PaperVerification.Fermion.theorem_1_1_free_rank",
@@ -47,7 +47,7 @@
             }
           ],
           "resolution": "found",
-          "challenge_status": "not_extracted"
+          "challenge_status": "full_principal_interface_canonical_challenge_passed_full_verification_unverified"
         }
       ],
       "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf#page=3"
@@ -73,7 +73,7 @@
             }
           ],
           "resolution": "found",
-          "challenge_status": "not_extracted"
+          "challenge_status": "full_principal_interface_canonical_challenge_passed_full_verification_unverified"
         },
         {
           "name": "PaperVerification.Fermion.theorem_1_2_free_rank",
@@ -88,7 +88,7 @@
             }
           ],
           "resolution": "found",
-          "challenge_status": "not_extracted"
+          "challenge_status": "full_principal_interface_canonical_challenge_passed_full_verification_unverified"
         }
       ],
       "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf#page=3"
@@ -1003,9 +1003,8 @@
     }
   ],
   "known_gaps": [
-    "The exterior-Hilbert, associated-graded, flat-family and fiber clauses of Theorems 1.1 and 1.2 still require independent extraction.",
-    "Principal local-structure and equivariant/character results in Sections 7\u20138 remain unextracted.",
-    "The exact Lean4.36.0-rc2 / Mathlib428aa8288d061ec3ae75c1b85ac178e2cb9def23 environment has not been provisioned or checked locally."
+    "Principal local-structure and equivariant/character results in Sections7\u20138 remain unextracted.",
+    "Expanded actual associated-graded, exterior-Hilbert, homogenized flat-family/fiber interfaces passed canonical Challenge elaboration; Source/Solution/Comparator replay remains unverified."
   ],
   "checks": {
     "source_copy": "complete including retained reading files and licenses",
@@ -1015,7 +1014,7 @@
     "editorial_review": "not_run_for_current_hash",
     "challenge_elaboration": "not_run_for_current_hash"
   },
-  "current_selection": "The exact monomial-basis clauses of Theorems 1.1 and 1.2 and their all-ring finite free ranks are selected.",
+  "current_selection": "Full original Theorems1.1 and1.2, including actual associated graded, Hilbert pieces, genuine paired homogenized flat family and both algebra fibers, retaining all4 original basis/free-rank targets.",
   "selected_wrapper_provenance": [
     [
       "PalomarFermion.pairedFreeRank",
@@ -1045,18 +1044,247 @@
   },
   "challenge": {
     "path": "source/Challenge.lean",
-    "sha256": "126ae51e461d0b40f9a745cffeb11c50b6769e9292cbe9a17538862804eb8aef",
-    "physical_lines": 253,
-    "bytes": 10770,
-    "local_elaboration": "not_run_for_current_hash",
-    "solution_build": "not_run_for_current_hash",
-    "comparator": "not_run_for_current_hash"
+    "sha256": "fc734791e50d0e7bace8977438705b513f14a63723ded5d2356b55d8294ab831",
+    "lines": 936
   },
   "packaging_changes": [
     {
       "kind": "literal_interface_repair",
       "evidence": "packaging/endpoint-context-repair.json",
       "description": "Exact current source/context correction and hash-bound pending validation receipt."
+    }
+  ],
+  "baseline_project": "two_fermion_coinvariants",
+  "coverage_status": "partial_principal_selection_not_whole_paper",
+  "whole_paper_coverage": false,
+  "current_principal_expansion": {
+    "challenge_sha256": "fc734791e50d0e7bace8977438705b513f14a63723ded5d2356b55d8294ab831",
+    "selected_names": [
+      "PaperVerification.Fermion.BasisFiltered.bound_zero",
+      "PaperVerification.Fermion.BasisFiltered.bound_add",
+      "PaperVerification.Fermion.BasisFiltered.bound_smul",
+      "PaperVerification.Fermion.BasisFiltered.homogeneous_bound",
+      "PaperVerification.Fermion.Exterior.modeRank_injective",
+      "PaperVerification.Fermion.Exterior.interleavedOddRank_injective",
+      "PaperVerification.Fermion.HasHighestPower.map",
+      "PaperVerification.Fermion.validWord_disjSum_iff",
+      "PaperVerification.Fermion.wordBoxBounds_disjSum_cast",
+      "PaperVerification.Fermion.pairedPowerIndex_ext",
+      "PaperVerification.Fermion.paired_basis_claim",
+      "PaperVerification.Fermion.weightedHomogenize_hasHighestPower",
+      "PaperVerification.Fermion.strictWord_of_polynomialIndex",
+      "PaperVerification.Fermion.wordHeight_arrival_cast",
+      "PaperVerification.Fermion.strictWordBoxBounds_disjSum_cast",
+      "PaperVerification.Fermion.strictPowerIndex_ext",
+      "PaperVerification.Fermion.strict_basis_claim",
+      "PaperVerification.Fermion.FilteredAlgebra.mul_mem_filtration",
+      "PaperVerification.Fermion.FilteredAlgebra.one_mem_filtration",
+      "PaperVerification.Fermion.FilteredAlgebra.algebraMap_mem_filtration",
+      "PaperVerification.Fermion.FilteredAlgebra.gradedPreMul_mem_ker_left",
+      "PaperVerification.Fermion.FilteredAlgebra.gradedPreMul_mem_ker_right",
+      "PaperVerification.Fermion.FilteredAlgebra.gradedMul_assoc",
+      "PaperVerification.Fermion.FilteredAlgebra.gradedAlgebraMap\u2080_one",
+      "PaperVerification.Fermion.FilteredAlgebra.gradedOne_mul",
+      "PaperVerification.Fermion.FilteredAlgebra.gradedMul_one",
+      "PaperVerification.Fermion.FilteredAlgebra.gradedAlgebraMap\u2080_mul",
+      "PaperVerification.Fermion.FilteredAlgebra.gradedAlgebraMap\u2080_mul_algebraMap\u2080",
+      "PaperVerification.Fermion.FilteredAlgebra.gradedAlgebraMap\u2080_commutes",
+      "PaperVerification.Fermion.BasisFiltered.bound_mul",
+      "PaperVerification.Fermion.BasisFiltered.boundPiece_mono",
+      "PaperVerification.Fermion.super_weighted_one_homogeneous",
+      "PaperVerification.Fermion.super_weighted_basis_mul_homogeneous",
+      "PaperVerification.Fermion.theorem_1_1",
+      "PaperVerification.Fermion.theorem_1_1_rank",
+      "PaperVerification.Fermion.theorem_1_2",
+      "PaperVerification.Fermion.theorem_1_2_rank",
+      "PalomarFermion.pairedFreeRank",
+      "PalomarFermion.strictFreeRank",
+      "PaperVerification.Fermion.FilteredAlgebra.mem_previousRestricted_iff"
+    ],
+    "source_contexts": "packaging/principal-source-contexts.json",
+    "visibility": "packaging/principal-helper-visibility.json",
+    "canonical_receipt": "reports/two_fermion_coinvariants/challenge-diagnostic/run-44380113477/two_fermion_principal_smoke_r3/receipt.json",
+    "source_solution_comparator": "unverified"
+  },
+  "uncovered_main_results_and_corollaries": [
+    {
+      "paper_result": "Proposition 2.1",
+      "required_not_optional": true,
+      "validated_covered": false,
+      "status": "independent_interface_not_extracted",
+      "declarations": [
+        "PaperVerification.Fermion.Newton.proposition_2_1",
+        "PaperVerification.Fermion.Newton.monicRectangleBasis_apply"
+      ]
+    },
+    {
+      "paper_result": "Proposition 7.1",
+      "required_not_optional": true,
+      "validated_covered": false,
+      "status": "independent_interface_not_extracted",
+      "declarations": [
+        "PaperVerification.Fermion.paired_separated_finite_iff_over_any_ring",
+        "PaperVerification.Fermion.strict_separated_finite_iff_over_any_ring"
+      ]
+    },
+    {
+      "paper_result": "Theorem 7.2: local structure",
+      "required_not_optional": true,
+      "validated_covered": false,
+      "status": "independent_interface_not_extracted",
+      "declarations": [
+        "PaperVerification.Fermion.theorem_7_2",
+        "PaperVerification.Fermion.theorem_7_2_complex"
+      ]
+    },
+    {
+      "paper_result": "Theorem 7.2: local and global dimensions",
+      "required_not_optional": true,
+      "validated_covered": false,
+      "status": "independent_interface_not_extracted",
+      "declarations": [
+        "PaperVerification.Fermion.SeparatedPairedData.localSuper_finrank",
+        "PaperVerification.Fermion.SeparatedPairedData.globalSuper_finrank_sum",
+        "PaperVerification.Fermion.SeparatedPairedData.globalSuper_finrank_closed",
+        "PaperVerification.Fermion.SeparatedPairedData.localRank_sum_closed"
+      ]
+    },
+    {
+      "paper_result": "Theorem 7.2: exterior Hilbert coefficients",
+      "required_not_optional": true,
+      "validated_covered": false,
+      "status": "independent_interface_not_extracted",
+      "declarations": [
+        "PaperVerification.Fermion.SeparatedPairedData.localSuper_exterior_hilbert_coefficient",
+        "PaperVerification.Fermion.SeparatedPairedData.globalSuper_exterior_hilbert_coefficient",
+        "PaperVerification.Fermion.SeparatedPairedData.localExteriorFinrank_sum"
+      ]
+    },
+    {
+      "paper_result": "Original-data correspondence for \u00a77",
+      "required_not_optional": true,
+      "validated_covered": false,
+      "status": "independent_interface_not_extracted",
+      "declarations": [
+        "PaperVerification.Fermion.exists_univariate_factorization",
+        "PaperVerification.Fermion.SeparatedCoverOfPairedData.toSeparatedData_superIdeal",
+        "PaperVerification.Fermion.SeparatedCoverOfPairedData.toSeparatedData_toPairedData",
+        "PaperVerification.Fermion.SeparatedCoverOfPairedData.originalSuperTensorProductEquiv",
+        "PaperVerification.Fermion.originalSuperTensorProductEquiv_complex"
+      ]
+    },
+    {
+      "paper_result": "\u00a78.1: invariant-generated ideals",
+      "required_not_optional": true,
+      "validated_covered": false,
+      "status": "independent_interface_not_extracted",
+      "declarations": [
+        "PaperVerification.Fermion.Coinvariants.positiveInvariantIdeal_eq_paired",
+        "PaperVerification.Fermion.Coinvariants.positiveInvariantIdeal_eq_strict",
+        "PaperVerification.Fermion.Coinvariants.positiveInvariantIdeal_eq_strict_typeA"
+      ]
+    },
+    {
+      "paper_result": "\u00a78.1 and equation (20): bases",
+      "required_not_optional": true,
+      "validated_covered": false,
+      "status": "independent_interface_not_extracted",
+      "declarations": [
+        "PaperVerification.Fermion.Coinvariants.oppositeCoinvariantBasis",
+        "PaperVerification.Fermion.Coinvariants.trivialColorCoinvariantBasis",
+        "PaperVerification.Fermion.Coinvariants.typeACoinvariantBasis",
+        "PaperVerification.Fermion.Coinvariants.oppositeCoinvariantBasis_apply",
+        "PaperVerification.Fermion.Coinvariants.trivialColorCoinvariantBasis_apply",
+        "PaperVerification.Fermion.Coinvariants.typeACoinvariantBasis_apply"
+      ]
+    },
+    {
+      "paper_result": "\u00a78.1: full Hilbert formulas",
+      "required_not_optional": true,
+      "validated_covered": false,
+      "status": "independent_interface_not_extracted",
+      "declarations": [
+        "PaperVerification.Fermion.Coinvariants.oppositeCoinvariant_full_hilbert_coefficient",
+        "PaperVerification.Fermion.Coinvariants.trivialColorCoinvariant_full_hilbert_coefficient",
+        "PaperVerification.Fermion.Coinvariants.typeACoinvariant_full_hilbert_coefficient",
+        "PaperVerification.Fermion.Coinvariants.typeACoinvariant_physical_basis_card"
+      ]
+    },
+    {
+      "paper_result": "\u00a78.1: parameter fields",
+      "required_not_optional": true,
+      "validated_covered": false,
+      "status": "independent_interface_not_extracted",
+      "declarations": [
+        "PaperVerification.Fermion.Coinvariants.complex_positiveInvariantIdeal_eq_paired",
+        "PaperVerification.Fermion.Coinvariants.complex_positiveInvariantIdeal_eq_strict",
+        "PaperVerification.Fermion.Coinvariants.positive_characteristic_opposite_ideal",
+        "PaperVerification.Fermion.Coinvariants.positive_characteristic_trivial_color_ideal"
+      ]
+    },
+    {
+      "paper_result": "\u00a78.1: Lentfer identifications",
+      "required_not_optional": true,
+      "validated_covered": false,
+      "status": "independent_interface_not_extracted",
+      "declarations": [
+        "PaperVerification.Fermion.Coinvariants.lentferTypeA_exponent_iff",
+        "PaperVerification.Fermion.Coinvariants.lentferTypeB_exponent_iff"
+      ]
+    },
+    {
+      "paper_result": "Theorem 8.1 and equation (21)",
+      "required_not_optional": true,
+      "validated_covered": false,
+      "status": "independent_interface_not_extracted",
+      "declarations": [
+        "PaperVerification.Fermion.theorem_8_1",
+        "PaperVerification.Fermion.TypeA.equation_21"
+      ]
+    },
+    {
+      "paper_result": "Theorem 8.1: fibers and actions",
+      "required_not_optional": true,
+      "validated_covered": false,
+      "status": "independent_interface_not_extracted",
+      "declarations": [
+        "PaperVerification.Fermion.WeightRees.fiberUnit_equivariant",
+        "PaperVerification.Fermion.TypeA.nonzeroFiberEquiv_intertwines",
+        "PaperVerification.Fermion.TypeA.TheoremEightOneClaim"
+      ]
+    },
+    {
+      "paper_result": "\u00a78.2 and equation (22)",
+      "required_not_optional": true,
+      "validated_covered": false,
+      "status": "independent_interface_not_extracted",
+      "declarations": [
+        "PaperVerification.Fermion.TypeA.polynomialPiece_paper_module_decomposition",
+        "PaperVerification.Fermion.TypeA.equation_22_character",
+        "PaperVerification.Fermion.TypeA.equation_22_diagonal_trace"
+      ]
+    },
+    {
+      "paper_result": "\u00a78.2: Schur decomposition",
+      "required_not_optional": true,
+      "validated_covered": false,
+      "status": "independent_interface_not_extracted",
+      "declarations": [
+        "PaperVerification.Fermion.ColorSchur.polynomialPiece_schur_decomposition",
+        "PaperVerification.Fermion.ColorSchur.schurCopyMultiplicity_eq_coefficient",
+        "PaperVerification.Fermion.ColorSchur.every_schur_summand_irreducible",
+        "PaperVerification.Fermion.ColorSchur.summand_equivalent_iff_label"
+      ]
+    },
+    {
+      "paper_result": "\u00a78.3 and equation (23)",
+      "required_not_optional": true,
+      "validated_covered": false,
+      "status": "independent_interface_not_extracted",
+      "declarations": [
+        "PaperVerification.Fermion.TypeA.equation_23_character",
+        "PaperVerification.Fermion.TypeA.diagonal_trace_eq_eulerian"
+      ]
     }
   ]
 }

@@ -1,0 +1,2405 @@
+{
+  "status": "static_candidate_not_applied_or_elaborated",
+  "physical_lines": 1297,
+  "bytes": 70426,
+  "closure": 145,
+  "selected_statements": [
+    "PaperVerification.Fermion.BasisFiltered.bound_zero",
+    "PaperVerification.Fermion.BasisFiltered.bound_add",
+    "PaperVerification.Fermion.BasisFiltered.bound_smul",
+    "PaperVerification.Fermion.BasisFiltered.homogeneous_bound",
+    "PaperVerification.Fermion.Exterior.modeRank_injective",
+    "PaperVerification.Fermion.Exterior.interleavedOddRank_injective",
+    "PaperVerification.Fermion.HasHighestPower.map",
+    "PaperVerification.Fermion.validWord_disjSum_iff",
+    "PaperVerification.Fermion.wordBoxBounds_disjSum_cast",
+    "PaperVerification.Fermion.pairedPowerIndex_ext",
+    "PaperVerification.Fermion.paired_basis_claim",
+    "PaperVerification.Fermion.weightedHomogenize_hasHighestPower",
+    "PaperVerification.Fermion.strictWord_of_polynomialIndex",
+    "PaperVerification.Fermion.wordHeight_arrival_cast",
+    "PaperVerification.Fermion.strictWordBoxBounds_disjSum_cast",
+    "PaperVerification.Fermion.strictPowerIndex_ext",
+    "PaperVerification.Fermion.strict_basis_claim",
+    "PaperVerification.Fermion.FilteredAlgebra.mul_mem_filtration",
+    "PaperVerification.Fermion.FilteredAlgebra.one_mem_filtration",
+    "PaperVerification.Fermion.FilteredAlgebra.algebraMap_mem_filtration",
+    "PaperVerification.Fermion.FilteredAlgebra.gradedPreMul_mem_ker_left",
+    "PaperVerification.Fermion.FilteredAlgebra.gradedPreMul_mem_ker_right",
+    "PaperVerification.Fermion.FilteredAlgebra.gradedMul_assoc",
+    "PaperVerification.Fermion.FilteredAlgebra.gradedAlgebraMap\u2080_one",
+    "PaperVerification.Fermion.FilteredAlgebra.gradedOne_mul",
+    "PaperVerification.Fermion.FilteredAlgebra.gradedMul_one",
+    "PaperVerification.Fermion.FilteredAlgebra.gradedAlgebraMap\u2080_mul",
+    "PaperVerification.Fermion.FilteredAlgebra.gradedAlgebraMap\u2080_mul_algebraMap\u2080",
+    "PaperVerification.Fermion.FilteredAlgebra.gradedAlgebraMap\u2080_commutes",
+    "PaperVerification.Fermion.BasisFiltered.bound_mul",
+    "PaperVerification.Fermion.BasisFiltered.boundPiece_mono",
+    "PaperVerification.Fermion.super_weighted_one_homogeneous",
+    "PaperVerification.Fermion.super_weighted_basis_mul_homogeneous",
+    "PaperVerification.Fermion.theorem_1_1",
+    "PaperVerification.Fermion.theorem_1_1_rank",
+    "PaperVerification.Fermion.theorem_1_2",
+    "PaperVerification.Fermion.theorem_1_2_rank"
+  ],
+  "missing": [],
+  "private": [
+    "PaperVerification.Fermion.pairedPowerIndex_ext",
+    "PaperVerification.Fermion.strictPowerIndex_ext"
+  ],
+  "cycles": [],
+  "source_duplicates": [],
+  "definitions": [
+    {
+      "name": "PaperVerification.Fermion.BasisFiltered.Bound",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 847,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "variable {R M I J E : Type*} [CommRing R] [AddCommGroup M] [Module R M]\n    (b : Module.Basis I R M) (w : I \u2192 \u2115)"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.BasisFiltered.Homogeneous",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 849,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "variable {R M I J E : Type*} [CommRing R] [AddCommGroup M] [Module R M]\n    (b : Module.Basis I R M) (w : I \u2192 \u2115)"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.BasisFiltered.bound_zero",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 853,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "variable {R M I J E : Type*} [CommRing R] [AddCommGroup M] [Module R M]\n    (b : Module.Basis I R M) (w : I \u2192 \u2115)"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.BasisFiltered.bound_add",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 857,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "variable {R M I J E : Type*} [CommRing R] [AddCommGroup M] [Module R M]\n    (b : Module.Basis I R M) (w : I \u2192 \u2115)"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.BasisFiltered.bound_smul",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 875,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "variable {R M I J E : Type*} [CommRing R] [AddCommGroup M] [Module R M]\n    (b : Module.Basis I R M) (w : I \u2192 \u2115)"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.BasisFiltered.homogeneous_bound",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 914,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "variable {R M I J E : Type*} [CommRing R] [AddCommGroup M] [Module R M]\n    (b : Module.Basis I R M) (w : I \u2192 \u2115)"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.moment",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1587,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open Polynomial",
+        "variable {R M : Type*} [CommRing R] [AddCommGroup M] [Module R M]",
+        "variable {n : \u2115}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.momentIdeal",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1704,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open Polynomial",
+        "variable {R : Type*} [CommRing R]",
+        "variable {n : \u2115}",
+        "variable {A : Type*} [Ring A] [Algebra R A]"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.PolynomialRing",
+      "kind": "abbrev",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1759,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.OddIndex",
+      "kind": "abbrev",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1762,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.OddModule",
+      "kind": "abbrev",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1765,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.SuperRing",
+      "kind": "abbrev",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1768,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.superQuotientModule",
+      "kind": "instance",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1777,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.theta",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1787,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.xi",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1792,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.MomentKind",
+      "kind": "inductive",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1797,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedCoefficients",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1808,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)",
+        "variable {K n}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedIdeal",
+      "kind": "abbrev",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1816,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)",
+        "variable {K n}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.PairedQuotient",
+      "kind": "abbrev",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1821,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)",
+        "variable {K n}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.strictCoefficients",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1831,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)",
+        "variable {K n}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.strictIdeal",
+      "kind": "abbrev",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1839,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)",
+        "variable {K n}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.StrictQuotient",
+      "kind": "abbrev",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1844,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)",
+        "variable {K n}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.AllowedWeights",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1853,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)",
+        "variable {K n}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.monomialWeight",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1858,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)",
+        "variable {K n}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.HasHighestPower",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1862,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)",
+        "variable {K n}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.PairedData",
+      "kind": "structure",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1869,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)",
+        "variable {K n}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.StrictData",
+      "kind": "structure",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1888,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)",
+        "variable {K n}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.marks",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1898,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)",
+        "variable {K n}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.height",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1902,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)",
+        "variable {K n}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.previousHeight",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1906,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)",
+        "variable {K n}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedBound",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1922,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)",
+        "variable {K n}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.PairedIndex",
+      "kind": "abbrev",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1972,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)",
+        "variable {K n}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.StrictIndex",
+      "kind": "abbrev",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1978,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)",
+        "variable {K n}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.boxMonomial",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1984,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)",
+        "variable {K n}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedClasses",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1989,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)",
+        "variable {K n}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.strictClasses",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 1995,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)",
+        "variable {K n}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.PairedBasisClaim",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 2001,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)",
+        "variable {K n}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.StrictBasisClaim",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 2006,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators TensorProduct",
+        "universe u",
+        "variable (K : Type u) [CommRing K] (n : \u2115)",
+        "variable {K n}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.Exterior.modeRank",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 6112,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "variable {R V : Type*} [CommRing R] [AddCommGroup V] [Module R V] {n : \u2115}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.Exterior.modeRank_injective",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 6116,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "variable {R V : Type*} [CommRing R] [AddCommGroup V] [Module R V] {n : \u2115}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.coveringWeight",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 21892,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open MvPolynomial",
+        "variable {K : Type*} [Field K] {n : \u2115}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.Newton.RectangleIndex",
+      "kind": "abbrev",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 26718,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open MvPolynomial",
+        "open scoped BigOperators",
+        "variable {F : Type*} [Field F] {n : \u2115}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.Newton.rectangleIndexEquiv",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 26721,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open MvPolynomial",
+        "open scoped BigOperators",
+        "variable {F : Type*} [Field F] {n : \u2115}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.Newton.rectangleIndex_fintype",
+      "kind": "instance",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 26728,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open MvPolynomial",
+        "open scoped BigOperators",
+        "variable {F : Type*} [Field F] {n : \u2115}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.Exterior.interleavedOddRank",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 30334,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.Exterior.interleavedOddRank_injective",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 30338,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.Exterior.interleavedOddOrder",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 30356,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.Exterior.pairedPrefix",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 30360,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.Endpoint.Mark",
+      "kind": "inductive",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 33378,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.Endpoint.wordMark",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 34797,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open Polynomial",
+        "variable {R I : Type*} [CommRing R] [DecidableEq I]"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.Exterior.wordHeight",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 35405,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "open Polynomial",
+        "open Colex",
+        "open Endpoint",
+        "variable {R V : Type*} [CommRing R] [AddCommGroup V] [Module R V] {n : \u2115}",
+        "local instance FermionHarmonicEndpoint_localInst_1 (m : \u2115) : LinearOrder (Fin m \u2295 Fin m) := interleavedOddOrder m\n-- PALOMAR_CONTEXT_ORIGIN 35396",
+        "local instance FermionHarmonicEndpoint_localInst_2 (m : \u2115) : PartialOrder (Fin m \u2295 Fin m) := (interleavedOddOrder m).toPartialOrder\n-- PALOMAR_CONTEXT_ORIGIN 35397",
+        "local instance FermionHarmonicEndpoint_localInst_3 (m : \u2115) : Preorder (Fin m \u2295 Fin m) := (interleavedOddOrder m).toPreorder\n-- PALOMAR_CONTEXT_ORIGIN 35398",
+        "local instance FermionHarmonicEndpoint_localInst_4 (m : \u2115) : LE (Fin m \u2295 Fin m) := (interleavedOddOrder m).toLE\n-- PALOMAR_CONTEXT_ORIGIN 35399",
+        "local instance FermionHarmonicEndpoint_localInst_5 (m : \u2115) : LT (Fin m \u2295 Fin m) := (interleavedOddOrder m).toLT\n-- PALOMAR_CONTEXT_ORIGIN 35400",
+        "local instance FermionHarmonicEndpoint_localInst_6 (m : \u2115) : DecidableEq (Fin m \u2295 Fin m) := (interleavedOddOrder m).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 35401"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.Endpoint.pairedBoxBound",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 36848,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open scoped BigOperators",
+        "variable {K : Type*} [Field K] {n : \u2115}",
+        "local notation \"P\" => MvPolynomial (Fin n) K"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.ValidWord",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 37575,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open scoped BigOperators",
+        "open MvPolynomial Exterior Endpoint Colex",
+        "variable {K : Type*} [Field K] {n : \u2115}",
+        "local instance FermionPowerHarmonicBound_localInst_1 (m : \u2115) : LinearOrder (Fin m \u2295 Fin m) := interleavedOddOrder m\n-- PALOMAR_CONTEXT_ORIGIN 37554",
+        "local instance FermionPowerHarmonicBound_localInst_2 (m : \u2115) : PartialOrder (Fin m \u2295 Fin m) := (interleavedOddOrder m).toPartialOrder\n-- PALOMAR_CONTEXT_ORIGIN 37555",
+        "local instance FermionPowerHarmonicBound_localInst_3 (m : \u2115) : Preorder (Fin m \u2295 Fin m) := (interleavedOddOrder m).toPreorder\n-- PALOMAR_CONTEXT_ORIGIN 37556",
+        "local instance FermionPowerHarmonicBound_localInst_4 (m : \u2115) : LE (Fin m \u2295 Fin m) := (interleavedOddOrder m).toLE\n-- PALOMAR_CONTEXT_ORIGIN 37557",
+        "local instance FermionPowerHarmonicBound_localInst_5 (m : \u2115) : LT (Fin m \u2295 Fin m) := (interleavedOddOrder m).toLT\n-- PALOMAR_CONTEXT_ORIGIN 37558",
+        "local instance FermionPowerHarmonicBound_localInst_6 (m : \u2115) : DecidableEq (Fin m \u2295 Fin m) := (interleavedOddOrder m).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 37559"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.wordBoxBounds",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 38403,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators",
+        "variable {F : Type*} [Field F] {n : \u2115}",
+        "local instance FermionCreatorPolynomialBoxes_localInst_1 (m : \u2115) : DecidableEq (Fin m \u2295 Fin m) :=\n  (interleavedOddOrder m).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 38365"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.SuperMonomialIndex",
+      "kind": "abbrev",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 40643,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open MvPolynomial",
+        "open scoped BigOperators TensorProduct",
+        "variable {K : Type*} [CommRing K] {n : \u2115} [LinearOrder (OddIndex n)]"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.superMonomialBasis",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 40645,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open MvPolynomial",
+        "open scoped BigOperators TensorProduct",
+        "variable {K : Type*} [CommRing K] {n : \u2115} [LinearOrder (OddIndex n)]"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.wordPolynomialWeight",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 40682,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open MvPolynomial",
+        "open scoped BigOperators TensorProduct",
+        "variable {K : Type*} [CommRing K] {n : \u2115} [LinearOrder (OddIndex n)]"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.superMonomialWeight",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 40684,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open MvPolynomial",
+        "open scoped BigOperators TensorProduct",
+        "variable {K : Type*} [CommRing K] {n : \u2115} [LinearOrder (OddIndex n)]"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.HasHighestPower.map",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 40830,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open MvPolynomial",
+        "open scoped BigOperators TensorProduct",
+        "variable {R S : Type*} [CommRing R] [CommRing S] {n : \u2115}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.PairedData.map",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 40840,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open MvPolynomial",
+        "open scoped BigOperators TensorProduct",
+        "variable {R S : Type*} [CommRing R] [CommRing S] {n : \u2115}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedOddWeight",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 41226,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option maxHeartbeats 800000",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators TensorProduct",
+        "variable {K : Type*} [CommRing K] {n : \u2115}",
+        "local instance FermionPairedMomentHighest_localInst_1 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 41151",
+        "local instance FermionPairedMomentHighest_localInst_2 : PartialOrder (Fin n \u2295 Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toPartialOrder\n-- PALOMAR_CONTEXT_ORIGIN 41153",
+        "local instance FermionPairedMomentHighest_localInst_3 : Preorder (Fin n \u2295 Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toPreorder\n-- PALOMAR_CONTEXT_ORIGIN 41155",
+        "local instance FermionPairedMomentHighest_localInst_4 : LE (Fin n \u2295 Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toLE\n-- PALOMAR_CONTEXT_ORIGIN 41157",
+        "local instance FermionPairedMomentHighest_localInst_5 : LT (Fin n \u2295 Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toLT\n-- PALOMAR_CONTEXT_ORIGIN 41159",
+        "local instance FermionPairedMomentHighest_localInst_6 : DecidableEq (Fin n \u2295 Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 41161"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.PairedWordPolynomialIndex",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 41353,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators TensorProduct",
+        "variable {F : Type*} [Field F] {n : \u2115}",
+        "local instance FermionPairedPowerBasis_localInst_1 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 41350"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedWordPolynomialIndex_fintype",
+      "kind": "instance",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 41356,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators TensorProduct",
+        "variable {F : Type*} [Field F] {n : \u2115}",
+        "local instance FermionPairedPowerBasis_localInst_1 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 41350"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.PairedPowerIndex",
+      "kind": "abbrev",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 41363,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators TensorProduct",
+        "variable {F : Type*} [Field F] {n : \u2115}",
+        "local instance FermionPairedPowerBasis_localInst_1 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 41350"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.validWord_disjSum_iff",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 42981,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionPairedIndex_localInst_1 : DecidableEq (Fin n \u2295 Fin n) :=\n  (interleavedOddOrder n).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 42958"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.wordBoxBounds_disjSum_cast",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 43008,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionPairedIndex_localInst_1 : DecidableEq (Fin n \u2295 Fin n) :=\n  (interleavedOddOrder n).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 42958"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedIndexToPower",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 43020,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionPairedIndex_localInst_1 : DecidableEq (Fin n \u2295 Fin n) :=\n  (interleavedOddOrder n).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 42958"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedPowerToIndex",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 43030,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionPairedIndex_localInst_1 : DecidableEq (Fin n \u2295 Fin n) :=\n  (interleavedOddOrder n).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 42958"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedPowerIndex_ext",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 43041,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionPairedIndex_localInst_1 : DecidableEq (Fin n \u2295 Fin n) :=\n  (interleavedOddOrder n).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 42958"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedIndexEquiv",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 43053,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionPairedIndex_localInst_1 : DecidableEq (Fin n \u2295 Fin n) :=\n  (interleavedOddOrder n).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 42958"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.paired_basis_claim",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 43163,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionPairedIndex_localInst_1 : DecidableEq (Fin n \u2295 Fin n) :=\n  (interleavedOddOrder n).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 42958",
+        "local instance FermionPairedIndex_localInst_2 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 43068",
+        "local instance FermionPairedIndex_localInst_3 : PartialOrder (Fin n \u2295 Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toPartialOrder\n-- PALOMAR_CONTEXT_ORIGIN 43070",
+        "local instance FermionPairedIndex_localInst_4 : Preorder (Fin n \u2295 Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toPreorder\n-- PALOMAR_CONTEXT_ORIGIN 43072",
+        "local instance FermionPairedIndex_localInst_5 : LE (Fin n \u2295 Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toLE\n-- PALOMAR_CONTEXT_ORIGIN 43074",
+        "local instance FermionPairedIndex_localInst_6 : LT (Fin n \u2295 Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toLT\n-- PALOMAR_CONTEXT_ORIGIN 43076",
+        "local instance FermionPairedIndex_localInst_7 : DecidableEq (Fin n \u2295 Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 43078"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.superQuotientTensorRing",
+      "kind": "instance",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 43243,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option synthInstance.maxHeartbeats 400000",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open Exterior",
+        "open scoped TensorProduct",
+        "variable (R S : Type*) [CommRing R] [CommRing S] [Algebra R S] {n : \u2115}",
+        "local instance FermionPairedAlgebraBaseChange_localInst_1 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 43238"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.superQuotientTensorAlgebra",
+      "kind": "instance",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 43248,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option synthInstance.maxHeartbeats 400000",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open Exterior",
+        "open scoped TensorProduct",
+        "variable (R S : Type*) [CommRing R] [CommRing S] [Algebra R S] {n : \u2115}",
+        "local instance FermionPairedAlgebraBaseChange_localInst_1 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 43238"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.weightedHomogenize",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 43338,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionHomogenizedFamily_localInst_1 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 43335"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.weightedHomogenize_hasHighestPower",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 43374,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionHomogenizedFamily_localInst_1 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 43335"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedHomogenizedData",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 43405,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionHomogenizedFamily_localInst_1 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 43335"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.PairedHomogenizedQuotient",
+      "kind": "abbrev",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 43466,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionHomogenizedFamily_localInst_1 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 43335"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.strictWordBoxBounds",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 43828,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators",
+        "variable {n : \u2115}",
+        "local instance FermionStrictPolynomialBoxes_localInst_1 (m : \u2115) : DecidableEq (Fin m \u2295 Fin m) :=\n  (interleavedOddOrder m).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 43825"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.StrictWordPolynomialIndex",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 43831,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators",
+        "variable {n : \u2115}",
+        "local instance FermionStrictPolynomialBoxes_localInst_1 (m : \u2115) : DecidableEq (Fin m \u2295 Fin m) :=\n  (interleavedOddOrder m).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 43825"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.strictWordPolynomialIndex_fintype",
+      "kind": "instance",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 43834,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators",
+        "variable {n : \u2115}",
+        "local instance FermionStrictPolynomialBoxes_localInst_1 (m : \u2115) : DecidableEq (Fin m \u2295 Fin m) :=\n  (interleavedOddOrder m).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 43825"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.StrictPowerIndex",
+      "kind": "abbrev",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 43840,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators",
+        "variable {n : \u2115}",
+        "local instance FermionStrictPolynomialBoxes_localInst_1 (m : \u2115) : DecidableEq (Fin m \u2295 Fin m) :=\n  (interleavedOddOrder m).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 43825"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.StrictWord",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 43842,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators",
+        "variable {n : \u2115}",
+        "local instance FermionStrictPolynomialBoxes_localInst_1 (m : \u2115) : DecidableEq (Fin m \u2295 Fin m) :=\n  (interleavedOddOrder m).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 43825"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.strictWord_of_polynomialIndex",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 43851,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators",
+        "variable {n : \u2115}",
+        "local instance FermionStrictPolynomialBoxes_localInst_1 (m : \u2115) : DecidableEq (Fin m \u2295 Fin m) :=\n  (interleavedOddOrder m).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 43825"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedIndex_fintype",
+      "kind": "instance",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 44570,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open Paths Exterior Endpoint",
+        "open scoped BigOperators",
+        "variable {A R : Type*} [CommSemiring A] [CommRing R] {n : \u2115}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.BasisFiltered.homogeneousPiece",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 47575,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "variable {R M Q I E : Type*} [CommRing R] [AddCommGroup M] [Module R M]\n  [AddCommGroup Q] [Module R Q]\n  (b : Module.Basis I R M) (w : I \u2192 \u2115)"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.wordHeight_arrival_cast",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 50853,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionStrictIndex_localInst_1 : DecidableEq (Fin n \u2295 Fin n) :=\n  (interleavedOddOrder n).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 50850"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.strictWordBoxBounds_disjSum_cast",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 50860,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionStrictIndex_localInst_1 : DecidableEq (Fin n \u2295 Fin n) :=\n  (interleavedOddOrder n).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 50850"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.strictIndexToPower",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 50865,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionStrictIndex_localInst_1 : DecidableEq (Fin n \u2295 Fin n) :=\n  (interleavedOddOrder n).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 50850"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.strictPowerToIndex",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 50876,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionStrictIndex_localInst_1 : DecidableEq (Fin n \u2295 Fin n) :=\n  (interleavedOddOrder n).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 50850"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.strictPowerIndex_ext",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 50892,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionStrictIndex_localInst_1 : DecidableEq (Fin n \u2295 Fin n) :=\n  (interleavedOddOrder n).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 50850"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.strictIndexEquiv",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 50902,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionStrictIndex_localInst_1 : DecidableEq (Fin n \u2295 Fin n) :=\n  (interleavedOddOrder n).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 50850"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.strict_basis_claim",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 50946,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior Endpoint Newton",
+        "open scoped BigOperators TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionStrictIndex_localInst_1 : DecidableEq (Fin n \u2295 Fin n) :=\n  (interleavedOddOrder n).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 50850",
+        "local instance FermionStrictIndex_localInst_2 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 50917",
+        "local instance FermionStrictIndex_localInst_3 : PartialOrder (Fin n \u2295 Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toPartialOrder\n-- PALOMAR_CONTEXT_ORIGIN 50919",
+        "local instance FermionStrictIndex_localInst_4 : Preorder (Fin n \u2295 Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toPreorder\n-- PALOMAR_CONTEXT_ORIGIN 50921",
+        "local instance FermionStrictIndex_localInst_5 : LE (Fin n \u2295 Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toLE\n-- PALOMAR_CONTEXT_ORIGIN 50923",
+        "local instance FermionStrictIndex_localInst_6 : LT (Fin n \u2295 Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toLT\n-- PALOMAR_CONTEXT_ORIGIN 50925",
+        "local instance FermionStrictIndex_localInst_7 : DecidableEq (Fin n \u2295 Fin n) :=\n  (LinearOrder.lift' modeRank modeRank_injective).toDecidableEq\n-- PALOMAR_CONTEXT_ORIGIN 50927"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedExteriorPiece",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 51054,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionPairedExteriorPieces_localInst_1 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 50986"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.PairedExteriorIndex",
+      "kind": "abbrev",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 51059,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionPairedExteriorPieces_localInst_1 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 50986"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.strictIndex_fintype",
+      "kind": "instance",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 51192,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open Exterior Endpoint",
+        "open scoped BigOperators",
+        "variable {A R : Type*} [CommSemiring A] [CommRing R] {n : \u2115}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.strictSuperWeight",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80376,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionStrictHighestForms_localInst_1 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 80338"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.Filtration",
+      "kind": "structure",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80544,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.filtration",
+      "kind": "abbrev",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80552,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.previous",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80554,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.previousRestricted",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80558,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.mul_mem_filtration",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80564,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.one_mem_filtration",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80590,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.algebraMap_mem_filtration",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80593,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.GradedPiece",
+      "kind": "abbrev",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80605,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.AssociatedGraded",
+      "kind": "abbrev",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80616,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.filteredMul",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80619,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedPreMul",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80628,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedPreMul_mem_ker_left",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80640,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedPreMul_mem_ker_right",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80653,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedMul",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80668,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedMul_assoc",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80719,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedOne",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80737,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedAlgebraMap\u2080",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80754,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedAlgebraMap\u2080_one",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80780,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedOne_mul",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80786,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedMul_one",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80797,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedGOne",
+      "kind": "instance",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80808,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedGMul",
+      "kind": "instance",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80817,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedGMonoid",
+      "kind": "instance",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80827,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedGRing",
+      "kind": "instance",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80857,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedAlgebraMap\u2080_mul",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80894,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedAlgebraMap\u2080_mul_algebraMap\u2080",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80905,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedAlgebraMap\u2080_commutes",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80912,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedGSemiring",
+      "kind": "instance",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80934,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.gradedGAlgebra",
+      "kind": "instance",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80940,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.FilteredAlgebra.associatedGradedRing",
+      "kind": "instance",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 80981,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped DirectSum",
+        "universe u w",
+        "variable (R : Type u) (A : Type w) [CommRing R] [Ring A] [Algebra R A]",
+        "variable {R A}"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.BasisFiltered.bound_mul",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 81048,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "variable {R A Q I : Type*} [CommRing R] [Ring A] [Algebra R A]\n  [Ring Q] [Algebra R Q] (b : Module.Basis I R A) (w : I \u2192 \u2115)"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.BasisFiltered.boundPiece",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 81091,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "variable {R A Q I : Type*} [CommRing R] [Ring A] [Algebra R A]\n  [Ring Q] [Algebra R Q] (b : Module.Basis I R A) (w : I \u2192 \u2115)"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.BasisFiltered.boundPiece_mono",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 81097,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "variable {R A Q I : Type*} [CommRing R] [Ring A] [Algebra R A]\n  [Ring Q] [Algebra R Q] (b : Module.Basis I R A) (w : I \u2192 \u2115)"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.BasisFiltered.quotientFiltration",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 81102,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open scoped BigOperators",
+        "variable {R A Q I : Type*} [CommRing R] [Ring A] [Algebra R A]\n  [Ring Q] [Algebra R Q] (b : Module.Basis I R A) (w : I \u2192 \u2115)"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.super_weighted_one_homogeneous",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 81607,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option maxHeartbeats 100000",
+        "set_option profiler true",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators TensorProduct DirectSum",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionPairedAssociatedGraded_localInst_1 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 81599"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.super_weighted_basis_mul_homogeneous",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 81618,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option maxHeartbeats 100000",
+        "set_option profiler true",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators TensorProduct DirectSum",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionPairedAssociatedGraded_localInst_1 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 81599"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedSuperWeight",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 81634,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option maxHeartbeats 100000",
+        "set_option profiler true",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators TensorProduct DirectSum",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionPairedAssociatedGraded_localInst_1 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 81599"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedQuotientFiltration",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 81638,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option maxHeartbeats 100000",
+        "set_option profiler true",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators TensorProduct DirectSum",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionPairedAssociatedGraded_localInst_1 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 81599"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.PairedAssociatedGraded",
+      "kind": "abbrev",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 81645,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option maxHeartbeats 100000",
+        "set_option profiler true",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators TensorProduct DirectSum",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionPairedAssociatedGraded_localInst_1 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 81599"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.pairedPowerWeightedPiece",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 81649,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option maxHeartbeats 100000",
+        "set_option profiler true",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators TensorProduct DirectSum",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionPairedAssociatedGraded_localInst_1 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 81599"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.strictQuotientFiltration",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 81930,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option maxHeartbeats 800000",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped DirectSum",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionStrictAssociatedGraded_localInst_1 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 81927"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.StrictAssociatedGraded",
+      "kind": "abbrev",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 81937,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option maxHeartbeats 800000",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped DirectSum",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionStrictAssociatedGraded_localInst_1 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 81927"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.strictPowerWeightedPiece",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 81940,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option maxHeartbeats 800000",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped DirectSum",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionStrictAssociatedGraded_localInst_1 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 81927"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.theorem_1_1",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 85581,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open Exterior",
+        "open MvPolynomial",
+        "open scoped BigOperators TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionTheoremOneOne_localInst_1 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 85575"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.theorem_1_1_rank",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 85610,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open Exterior",
+        "open MvPolynomial",
+        "open scoped BigOperators TensorProduct",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionTheoremOneOne_localInst_1 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 85575"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.strictExteriorPiece",
+      "kind": "def",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 85687,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionStrictExteriorPieces_localInst_1 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 85647"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.StrictExteriorIndex",
+      "kind": "abbrev",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 85692,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "set_option backward.isDefEq.respectTransparency false",
+        "open MvPolynomial Exterior",
+        "open scoped BigOperators",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionStrictExteriorPieces_localInst_1 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 85647"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.theorem_1_2",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 85783,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open Exterior",
+        "open MvPolynomial",
+        "open scoped BigOperators DirectSum",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionTheoremOneTwo_localInst_1 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 85778"
+      ]
+    },
+    {
+      "name": "PaperVerification.Fermion.theorem_1_2_rank",
+      "kind": "theorem",
+      "source_path": "source/two_fermion.lean",
+      "source_line": 85800,
+      "context": [
+        "set_option maxErrors 1000",
+        "set_option Elab.async true",
+        "set_option linter.all false",
+        "set_option autoImplicit false",
+        "open Exterior",
+        "open MvPolynomial",
+        "open scoped BigOperators DirectSum",
+        "variable {R : Type*} [CommRing R] {n : \u2115}",
+        "local instance FermionTheoremOneTwo_localInst_1 : LinearOrder (Fin n \u2295 Fin n) :=\n  LinearOrder.lift' modeRank modeRank_injective\n-- PALOMAR_CONTEXT_ORIGIN 85778"
+      ]
+    }
+  ]
+}
