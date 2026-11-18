@@ -55,9 +55,12 @@ automation:
 review:
   status: unchecked
   notes: >-
-    Source statements and paper were inspected during packaging. No independent
-    human review, new complete build, Comparator success, NanoDa success or
-    Palomar registration is claimed by this metadata.
+    Source statements and paper were inspected during packaging. The exact Lean
+    sources at commit 8fe9d11ad83882ef5c2411edc874725fa95ce26f passed the complete
+    pinned mechanical preflight in run 44379977931, including Comparator, Lean,
+    NanoDa and the additional accepted con-ron replay. This records mechanical
+    evidence at that commit; no independent human review or Palomar registration
+    is claimed. The preferred statement-size advisory remains nonblocking.
 status:
   notes: >-
     Prepared from caiusdfolkerts/research at commit
@@ -65,9 +68,12 @@ status:
     See the source README for the original theorem mapping.
 fidelity:
   notes: >-
-    The Challenge, Solution, Comparator configuration and every original paper
-    source are byte-identical to the preceding snapshot. This separate candidate
-    adds only the exact recursive proof-source Tau Ceti import closure and its
-    attribution, and changes Lake wiring to build it locally against the same
-    Mathlib and Lean pins. No new complete build or independent kernel replay
-    has yet been established for this candidate.
+    Every original paper proof module, the Challenge and Comparator configuration
+    are byte-identical to the preceding vendored-source snapshot. The exact
+    recursive proof-only Tau Ceti closure and attribution are retained locally
+    against unchanged Mathlib and Lean pins. Solution additionally repairs three
+    malformed rfl proof applications and transports the complete perturbation
+    function and hollow-positive/strict-inertia predicates through explicit
+    equality and iff lemmas. These wrapper proof repairs preserve every theorem
+    statement, hypothesis and literal mathematical value. The passing mechanical
+    reference is commit 8fe9d11ad83882ef5c2411edc874725fa95ce26f.
