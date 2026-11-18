@@ -1,0 +1,29 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "PalomarColdSpotsSupplemental.lattice_translation_class_table",
+    "PalomarColdSpotsSupplemental.dPlusGaussian_minimum",
+    "PalomarColdSpotsSupplemental.gaussian_E8_minimum_iff_paper_families",
+    "PalomarColdSpotsSupplemental.e7Dual_gaussian_minimum",
+    "PalomarColdSpotsSupplemental.isE7DeepHole_iff_paper",
+    "PalomarColdSpotsSupplemental.bw16_gaussian_minimum_literal",
+    "PalomarColdSpotsSupplemental.bw16_deepHole_iff_root_union",
+    "PalomarColdSpotsSupplemental.e6_gaussian_minimum",
+    "PalomarColdSpotsSupplemental.e6_cold_spot_description",
+    "PalomarColdSpotsSupplemental.e6_deep_hole_description",
+    "PalomarColdSpotsSupplemental.dPlus_gaussian_equality_halfGrid",
+    "PalomarColdSpotsSupplemental.bw16_gaussian_equality_root_union_literal",
+    "PalomarColdSpotsSupplemental.eisEmbed_zero_proof",
+    "PalomarColdSpotsSupplemental.eisEmbed_add_proof",
+    "PalomarColdSpotsSupplemental.zeroSum_zero_proof",
+    "PalomarColdSpotsSupplemental.zeroSum_add_proof",
+    "PalomarColdSpotsSupplemental.zeroSum_smul_proof",
+    "PalomarColdSpotsSupplemental.project8_zeroSum_proof"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}
