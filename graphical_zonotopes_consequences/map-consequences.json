@@ -2,7 +2,7 @@
   "baseline_project": "graphical_zonotopes",
   "baseline_revision": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
   "entry": "consequences",
-  "status": "frozen_challenge_passed_solution_and_full_preflight_pending",
+  "status": "source_prepared_interface_repair_frozen_for_remote_checks",
   "comparator_config": "comparator-consequences.json",
   "claims": [
     {
@@ -16,14 +16,14 @@
       },
       "solution": {
         "file": "SolutionConsequences.lean",
-        "line": 213
+        "line": 312
       },
       "source_declaration": "GraphicalZonotopes.BooleanModule.small_count_lattice_books",
       "source": {
         "file": "source/verified/parts/part014.lean",
         "line": 343
       },
-      "status": "prepared-uncompiled"
+      "status": "source_prepared_repaired_bridge_uncompiled"
     },
     {
       "paper_results": [
@@ -36,14 +36,14 @@
       },
       "solution": {
         "file": "SolutionConsequences.lean",
-        "line": 224
+        "line": 323
       },
       "source_declaration": "GraphicalZonotopes.BooleanModule.threshold_book_interval",
       "source": {
         "file": "source/verified/parts/part013.lean",
         "line": 1683
       },
-      "status": "prepared-uncompiled"
+      "status": "source_prepared_repaired_bridge_uncompiled"
     },
     {
       "paper_results": [
@@ -56,14 +56,14 @@
       },
       "solution": {
         "file": "SolutionConsequences.lean",
-        "line": 236
+        "line": 335
       },
       "source_declaration": "GraphicalZonotopes.BooleanModule.two_threshold_four_bridge",
       "source": {
         "file": "source/verified/parts/part013.lean",
         "line": 1558
       },
-      "status": "prepared-uncompiled"
+      "status": "source_prepared_repaired_bridge_uncompiled"
     },
     {
       "paper_results": [
@@ -76,14 +76,14 @@
       },
       "solution": {
         "file": "SolutionConsequences.lean",
-        "line": 246
+        "line": 345
       },
       "source_declaration": "GraphicalZonotopes.BooleanModule.two_threshold_five_bridge",
       "source": {
         "file": "source/verified/parts/part013.lean",
         "line": 1572
       },
-      "status": "prepared-uncompiled"
+      "status": "source_prepared_repaired_bridge_uncompiled"
     },
     {
       "paper_results": [
@@ -96,14 +96,14 @@
       },
       "solution": {
         "file": "SolutionConsequences.lean",
-        "line": 256
+        "line": 355
       },
       "source_declaration": "GraphicalZonotopes.BooleanModule.book_upper_interval",
       "source": {
         "file": "source/verified/parts/part012.lean",
         "line": 2423
       },
-      "status": "prepared-uncompiled"
+      "status": "source_prepared_repaired_bridge_uncompiled"
     },
     {
       "paper_results": [
@@ -116,14 +116,14 @@
       },
       "solution": {
         "file": "SolutionConsequences.lean",
-        "line": 267
+        "line": 366
       },
       "source_declaration": "GraphicalZonotopes.BookSpectrum.lattice_dimension_spectrum",
       "source": {
         "file": "source/verified/extensions.lean",
         "line": 569
       },
-      "status": "prepared-uncompiled"
+      "status": "source_prepared_repaired_bridge_uncompiled"
     },
     {
       "paper_results": [
@@ -136,14 +136,14 @@
       },
       "solution": {
         "file": "SolutionConsequences.lean",
-        "line": 276
+        "line": 375
       },
       "source_declaration": "GraphicalZonotopes.BookSpectrum.positive_dimension_spectrum",
       "source": {
         "file": "source/verified/extensions.lean",
         "line": 612
       },
-      "status": "prepared-uncompiled"
+      "status": "source_prepared_repaired_bridge_uncompiled"
     },
     {
       "paper_results": [
@@ -156,14 +156,14 @@
       },
       "solution": {
         "file": "SolutionConsequences.lean",
-        "line": 286
+        "line": 385
       },
       "source_declaration": "GraphicalZonotopes.BookSpectrum.prescribed_coordinate_criterion",
       "source": {
         "file": "source/verified/extensions.lean",
         "line": 557
       },
-      "status": "prepared-uncompiled"
+      "status": "source_prepared_repaired_bridge_uncompiled"
     },
     {
       "paper_results": [
@@ -176,14 +176,14 @@
       },
       "solution": {
         "file": "SolutionConsequences.lean",
-        "line": 296
+        "line": 395
       },
       "source_declaration": "GraphicalZonotopes.TwoHub.exponential_family",
       "source": {
         "file": "source/verified/parts/part024.lean",
         "line": 1641
       },
-      "status": "prepared-uncompiled"
+      "status": "source_prepared_repaired_bridge_uncompiled"
     },
     {
       "paper_results": [
@@ -196,14 +196,14 @@
       },
       "solution": {
         "file": "SolutionConsequences.lean",
-        "line": 308
+        "line": 407
       },
       "source_declaration": "GraphicalZonotopes.PathJoin.corollary_nine_four",
       "source": {
         "file": "source/verified/parts/part021.lean",
         "line": 1657
       },
-      "status": "prepared-uncompiled"
+      "status": "source_prepared_repaired_bridge_uncompiled"
     },
     {
       "paper_results": [
@@ -216,14 +216,14 @@
       },
       "solution": {
         "file": "SolutionConsequences.lean",
-        "line": 314
+        "line": 413
       },
       "source_declaration": "GraphicalZonotopes.DoubledParts.one_singleton_decomposition",
       "source": {
         "file": "source/verified/parts/part018.lean",
         "line": 762
       },
-      "status": "prepared-uncompiled"
+      "status": "source_prepared_repaired_bridge_uncompiled"
     },
     {
       "paper_results": [
@@ -236,14 +236,14 @@
       },
       "solution": {
         "file": "SolutionConsequences.lean",
-        "line": 328
+        "line": 427
       },
       "source_declaration": "GraphicalZonotopes.FourSmallParts.four_small_parts_decomposition",
       "source": {
         "file": "source/verified/parts/part018.lean",
         "line": 1097
       },
-      "status": "prepared-uncompiled"
+      "status": "source_prepared_repaired_bridge_uncompiled"
     },
     {
       "paper_results": [
@@ -263,7 +263,7 @@
         "file": "source/verified/parts/part001.lean",
         "line": 692
       },
-      "status": "prepared-uncompiled"
+      "status": "source_prepared_repaired_bridge_uncompiled"
     },
     {
       "paper_results": [
@@ -283,12 +283,12 @@
         "file": "SolutionConsequences.lean",
         "line": 193
       },
-      "status": "prepared-uncompiled",
+      "status": "source_prepared_repaired_bridge_uncompiled",
       "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
     },
     {
       "paper_results": [
-        "Corollary9.11: both actual lattice indecomposable Boolean summands in every dimension\u22653"
+        "Corollary9.11: both actual lattice indecomposable Boolean summands in every dimension≥3"
       ],
       "challenge_declaration": "PalomarGraphicalConsequences.boolean_decomposition_every_dimension",
       "source_declaration": "GraphicalZonotopes.boolean_decomposition_every_dimension",
@@ -298,13 +298,13 @@
       },
       "solution": {
         "file": "SolutionConsequences.lean",
-        "line": 340
+        "line": 439
       },
       "source": {
         "file": "source/verified/parts/part018.lean",
         "line": 1187
       },
-      "status": "prepared-uncompiled"
+      "status": "source_prepared_repaired_bridge_uncompiled"
     }
   ],
   "definition_semantics": "Every nontrivial proof-valued constructor argument is factored through a named compared supporting theorem. All data and carrier definitions are literal and independently present in both fresh modules. Canonical Fintype subtype/quotient constructions are explicit. No definition_names or opaque supplied values.",
@@ -319,8 +319,8 @@
     "TheoremB.1"
   ],
   "blockers": [
-    "Fresh Challenge and Solution/source-bridge compilation pending.",
-    "Actual Comparator and independent kernel checks have not run."
+    "Revised Solution/source interface elaboration has not run.",
+    "Official Comparator and independent kernel validation remain pending."
   ],
   "local_validation": {
     "Challenge": {
@@ -332,5 +332,6 @@
     },
     "Solution": "Source bridge draft, not compiled locally.",
     "Comparator_and_kernels": "Not yet run."
-  }
+  },
+  "local_interface_status": "Complete Source/Fresh interfaces statically audited; revised Solution has not compiled. All local compilation is paused for shared resource limits."
 }

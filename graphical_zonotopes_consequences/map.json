@@ -1,64 +1,337 @@
 {
   "baseline_project": "graphical_zonotopes",
   "baseline_revision": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
-  "status": "source-preparation-uncompiled",
-  "entries": [
+  "entry": "consequences",
+  "status": "source_prepared_interface_repair_frozen_for_remote_checks",
+  "comparator_config": "comparator-consequences.json",
+  "claims": [
     {
-      "name": "main",
-      "comparator": "comparator-main.json",
-      "map": "map-main.json",
-      "metadata": "formalization-main.yaml"
+      "paper_results": [
+        "Theorem7.5, actual integral construction"
+      ],
+      "challenge_declaration": "PalomarGraphicalConsequences.small_count_lattice_books",
+      "challenge": {
+        "file": "ChallengeConsequences.lean",
+        "line": 213
+      },
+      "solution": {
+        "file": "SolutionConsequences.lean",
+        "line": 312
+      },
+      "source_declaration": "GraphicalZonotopes.BooleanModule.small_count_lattice_books",
+      "source": {
+        "file": "source/verified/parts/part014.lean",
+        "line": 343
+      },
+      "status": "source_prepared_repaired_bridge_uncompiled"
     },
     {
-      "name": "separator",
-      "comparator": "comparator-separator.json",
-      "map": "map-separator.json",
-      "metadata": "formalization-separator.yaml"
+      "paper_results": [
+        "Proposition7.8, supporting refined dilation"
+      ],
+      "challenge_declaration": "PalomarGraphicalConsequences.threshold_book_interval",
+      "challenge": {
+        "file": "ChallengeConsequences.lean",
+        "line": 223
+      },
+      "solution": {
+        "file": "SolutionConsequences.lean",
+        "line": 323
+      },
+      "source_declaration": "GraphicalZonotopes.BooleanModule.threshold_book_interval",
+      "source": {
+        "file": "source/verified/parts/part013.lean",
+        "line": 1683
+      },
+      "status": "source_prepared_repaired_bridge_uncompiled"
     },
     {
-      "name": "consequences",
-      "comparator": "comparator-consequences.json",
-      "map": "map-consequences.json",
-      "metadata": "formalization-consequences.yaml"
+      "paper_results": [
+        "Proposition7.9, four hubs"
+      ],
+      "challenge_declaration": "PalomarGraphicalConsequences.two_threshold_four_bridge",
+      "challenge": {
+        "file": "ChallengeConsequences.lean",
+        "line": 234
+      },
+      "solution": {
+        "file": "SolutionConsequences.lean",
+        "line": 335
+      },
+      "source_declaration": "GraphicalZonotopes.BooleanModule.two_threshold_four_bridge",
+      "source": {
+        "file": "source/verified/parts/part013.lean",
+        "line": 1558
+      },
+      "status": "source_prepared_repaired_bridge_uncompiled"
     },
     {
-      "name": "spectra",
-      "comparator": "comparator-spectra.json",
-      "map": "map-spectra.json",
-      "metadata": "formalization-spectra.yaml"
+      "paper_results": [
+        "Proposition7.9, five hubs"
+      ],
+      "challenge_declaration": "PalomarGraphicalConsequences.two_threshold_five_bridge",
+      "challenge": {
+        "file": "ChallengeConsequences.lean",
+        "line": 243
+      },
+      "solution": {
+        "file": "SolutionConsequences.lean",
+        "line": 345
+      },
+      "source_declaration": "GraphicalZonotopes.BooleanModule.two_threshold_five_bridge",
+      "source": {
+        "file": "source/verified/parts/part013.lean",
+        "line": 1572
+      },
+      "status": "source_prepared_repaired_bridge_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Theorem7.10"
+      ],
+      "challenge_declaration": "PalomarGraphicalConsequences.book_upper_interval",
+      "challenge": {
+        "file": "ChallengeConsequences.lean",
+        "line": 252
+      },
+      "solution": {
+        "file": "SolutionConsequences.lean",
+        "line": 355
+      },
+      "source_declaration": "GraphicalZonotopes.BooleanModule.book_upper_interval",
+      "source": {
+        "file": "source/verified/parts/part012.lean",
+        "line": 2423
+      },
+      "status": "source_prepared_repaired_bridge_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Corollary7.11, lattice attainment"
+      ],
+      "challenge_declaration": "PalomarGraphicalConsequences.lattice_dimension_spectrum",
+      "challenge": {
+        "file": "ChallengeConsequences.lean",
+        "line": 262
+      },
+      "solution": {
+        "file": "SolutionConsequences.lean",
+        "line": 366
+      },
+      "source_declaration": "GraphicalZonotopes.BookSpectrum.lattice_dimension_spectrum",
+      "source": {
+        "file": "source/verified/extensions.lean",
+        "line": 569
+      },
+      "status": "source_prepared_repaired_bridge_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Corollary7.11, complete positive spectrum"
+      ],
+      "challenge_declaration": "PalomarGraphicalConsequences.positive_dimension_spectrum",
+      "challenge": {
+        "file": "ChallengeConsequences.lean",
+        "line": 270
+      },
+      "solution": {
+        "file": "SolutionConsequences.lean",
+        "line": 375
+      },
+      "source_declaration": "GraphicalZonotopes.BookSpectrum.positive_dimension_spectrum",
+      "source": {
+        "file": "source/verified/extensions.lean",
+        "line": 612
+      },
+      "status": "source_prepared_repaired_bridge_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Corollary7.11, prescribed coordinates"
+      ],
+      "challenge_declaration": "PalomarGraphicalConsequences.prescribed_coordinate_criterion",
+      "challenge": {
+        "file": "ChallengeConsequences.lean",
+        "line": 279
+      },
+      "solution": {
+        "file": "SolutionConsequences.lean",
+        "line": 385
+      },
+      "source_declaration": "GraphicalZonotopes.BookSpectrum.prescribed_coordinate_criterion",
+      "source": {
+        "file": "source/verified/extensions.lean",
+        "line": 557
+      },
+      "status": "source_prepared_repaired_bridge_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Theorem8.4, exact exponential family"
+      ],
+      "challenge_declaration": "PalomarGraphicalConsequences.exponential_family",
+      "challenge": {
+        "file": "ChallengeConsequences.lean",
+        "line": 288
+      },
+      "solution": {
+        "file": "SolutionConsequences.lean",
+        "line": 395
+      },
+      "source_declaration": "GraphicalZonotopes.TwoHub.exponential_family",
+      "source": {
+        "file": "source/verified/parts/part024.lean",
+        "line": 1641
+      },
+      "status": "source_prepared_repaired_bridge_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Corollary9.4, exact real dilation minima"
+      ],
+      "challenge_declaration": "PalomarGraphicalConsequences.corollary_nine_four",
+      "challenge": {
+        "file": "ChallengeConsequences.lean",
+        "line": 299
+      },
+      "solution": {
+        "file": "SolutionConsequences.lean",
+        "line": 407
+      },
+      "source_declaration": "GraphicalZonotopes.PathJoin.corollary_nine_four",
+      "source": {
+        "file": "source/verified/parts/part021.lean",
+        "line": 1657
+      },
+      "status": "source_prepared_repaired_bridge_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Corollary9.10"
+      ],
+      "challenge_declaration": "PalomarGraphicalConsequences.one_singleton_decomposition",
+      "challenge": {
+        "file": "ChallengeConsequences.lean",
+        "line": 304
+      },
+      "solution": {
+        "file": "SolutionConsequences.lean",
+        "line": 413
+      },
+      "source_declaration": "GraphicalZonotopes.DoubledParts.one_singleton_decomposition",
+      "source": {
+        "file": "source/verified/parts/part018.lean",
+        "line": 762
+      },
+      "status": "source_prepared_repaired_bridge_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Corollary9.11"
+      ],
+      "challenge_declaration": "PalomarGraphicalConsequences.four_small_parts_decomposition",
+      "challenge": {
+        "file": "ChallengeConsequences.lean",
+        "line": 315
+      },
+      "solution": {
+        "file": "SolutionConsequences.lean",
+        "line": 427
+      },
+      "source_declaration": "GraphicalZonotopes.FourSmallParts.four_small_parts_decomposition",
+      "source": {
+        "file": "source/verified/parts/part018.lean",
+        "line": 1097
+      },
+      "status": "source_prepared_repaired_bridge_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal direction-graph constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalConsequences.actualRootEdge_symm",
+      "challenge": {
+        "file": "ChallengeConsequences.lean",
+        "line": 135
+      },
+      "solution": {
+        "file": "SolutionConsequences.lean",
+        "line": 136
+      },
+      "source_declaration": "GraphicalZonotopes.actualRootEdge_symm",
+      "source": {
+        "file": "source/verified/parts/part001.lean",
+        "line": 692
+      },
+      "status": "source_prepared_repaired_bridge_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal direction-graph constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalConsequences.PathJoin.adjacency_symm",
+      "challenge": {
+        "file": "ChallengeConsequences.lean",
+        "line": 192
+      },
+      "solution": {
+        "file": "SolutionConsequences.lean",
+        "line": 193
+      },
+      "source_declaration": null,
+      "source": {
+        "file": "SolutionConsequences.lean",
+        "line": 193
+      },
+      "status": "source_prepared_repaired_bridge_uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Corollary9.11: both actual lattice indecomposable Boolean summands in every dimension≥3"
+      ],
+      "challenge_declaration": "PalomarGraphicalConsequences.boolean_decomposition_every_dimension",
+      "source_declaration": "GraphicalZonotopes.boolean_decomposition_every_dimension",
+      "challenge": {
+        "file": "ChallengeConsequences.lean",
+        "line": 325
+      },
+      "solution": {
+        "file": "SolutionConsequences.lean",
+        "line": 439
+      },
+      "source": {
+        "file": "source/verified/parts/part018.lean",
+        "line": 1187
+      },
+      "status": "source_prepared_repaired_bridge_uncompiled"
     }
   ],
-  "supplementary_preparation": "Integrated source copies from frozen geometry_one supplementary_work drafts; no final compilation claimed.",
-  "coverage_inventory": "reports/graphical_zonotopes/expanded-manuscript-inventory.json",
+  "definition_semantics": "Every nontrivial proof-valued constructor argument is factored through a named compared supporting theorem. All data and carrier definitions are literal and independently present in both fresh modules. Canonical Fintype subtype/quotient constructions are explicit. No definition_names or opaque supplied values.",
+  "scope_notes": [],
+  "unselected_supporting_gaps": [
+    "Supporting Proposition5.5 restriction gluing endpoint not located",
+    "Supporting PropositionA.1 arbitrary-field polymatroid rank endpoint not located"
+  ],
+  "optional_unselected_appendix_results": [
+    "PropositionA.2",
+    "CorollaryA.3",
+    "TheoremB.1"
+  ],
   "blockers": [
-    "All four independent entries require fresh Challenge/Solution checks, actual Comparator and independent kernels.",
-    "Corollaries6.7/6.8 algorithm, support-recovery and certified linear-time clauses remain unclaimed.",
-    "Supporting Proposition5.5/PropositionA.1 not located; appendixA.2/A.3/B.1 remain unselected in this first principal-result batch."
+    "Revised Solution/source interface elaboration has not run.",
+    "Official Comparator and independent kernel validation remain pending."
   ],
-  "entry_inventory": {
-    "Main": {
-      "lines": 507,
-      "bytes": 29346,
-      "selected": 18,
-      "missing_locations": []
+  "local_validation": {
+    "Challenge": {
+      "module": "ChallengeConsequences",
+      "exit_code": 0,
+      "elapsed_seconds": 90.49,
+      "sha256": "10bd10911d2bce8fc966adeb7a1d35eb9f6919aee8e1cfce0c7576d79d2205e9",
+      "log": "fresh-challenge-consequences-check.log"
     },
-    "Separator": {
-      "lines": 497,
-      "bytes": 28111,
-      "selected": 35,
-      "missing_locations": []
-    },
-    "Consequences": {
-      "lines": 332,
-      "bytes": 17766,
-      "selected": 15,
-      "missing_locations": []
-    },
-    "Spectra": {
-      "lines": 551,
-      "bytes": 30962,
-      "selected": 27,
-      "missing_locations": []
-    }
-  }
+    "Solution": "Source bridge draft, not compiled locally.",
+    "Comparator_and_kernels": "Not yet run."
+  },
+  "local_interface_status": "Complete Source/Fresh interfaces statically audited; revised Solution has not compiled. All local compilation is paused for shared resource limits."
 }

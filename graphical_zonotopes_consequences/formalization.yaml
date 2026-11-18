@@ -31,9 +31,10 @@ related_formalizations:
     revision, with documented module migrations and optional report IO adjustments.
     Fresh literal statements and proof bridges form the comparison layer.
 status:
-  scope: Independent Challenge compiled with pinnedLean4.35/Mathlib56a005; Solution/source
-    bridges and complete comparison validation remain pending. Substantive graphical-zonotope
-    construction, book spectrum, prescribed-coordinate and lattice decomposition consequences.
+  scope: Challenge compiled with pinned Lean4.35; its exact bytes are unchanged. Revised
+    Solution uses complete Source/Fresh interfaces and is uncompiled. Substantive
+    graphical-zonotope construction, book spectrum, prescribed-coordinate and lattice
+    decomposition consequences.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms:
@@ -165,9 +166,9 @@ fidelity:
     are separately identified.
 review:
   status: unchecked
-  notes: The current independent Challenge compiled locally with-M3072/-j1. The fresh
-    Solution/source bridges are source-prepared and have not been compiled locally.
-    No actual Comparator or independent kernel success is claimed. See map-consequences.json.
+  notes: Unchecked revised interfaces. No actual Comparator or independent kernel
+    pass is claimed for this entry. Local compilation is paused for shared resource
+    limits; see map-consequences.json.
 alignment:
   namespace: PalomarGraphicalConsequences
   statements:
