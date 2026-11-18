@@ -576,8 +576,8 @@
       "sha256": "7b82e54755bfc33e2943e615c68db36544e40ebe374642bab707ddcfd3cfae9e"
     },
     "source/GraphInputsRow29Part00094Data.lean": {
-      "bytes": 1213,
-      "sha256": "cea37d8f08e3de03589a5d15c314e20bdd2f8021d60fd1db166498ffc1363a78"
+      "bytes": 1245,
+      "sha256": "1aa6d19e93fcb2e5bb89bcfd9bfbcac889a36324478ce1b6526c522b622b20fa"
     },
     "source/GraphNumerals.lean": {
       "bytes": 4948,
@@ -2126,7 +2126,7 @@
         "VertexLinkObstructionData.lean": "source/VertexLinkObstructionData.lean",
         "WitnessGrowthDAG.lean": "source/WitnessGrowthDAG.lean"
       },
-      "source_and_data_bytes": 12227442,
+      "source_and_data_bytes": 12227474,
       "upstream_modules": {
         "BatchedGrowthPruning": {
           "original_path": "source/geometry/batched_growth_pruning.lean",

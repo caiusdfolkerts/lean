@@ -1,5 +1,6 @@
 module
 prelude
+public import GraphPureGeometry
 public meta import PureGeometricRecordFiles
 public import PackedGraphInputs
 
