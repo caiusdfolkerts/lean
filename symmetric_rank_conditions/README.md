@@ -1,5 +1,7 @@
 # Gröbner bases for symmetric rank conditions
 
+This submission compares 18 substantive algebraic results and 31 supporting propositions (49 targets), covering Theorems1.1/1.2, Proposition4.1, and the selected base-change, basis, freeness/flatness and SAGBI application statements. The full original project guide below also lists retained results outside this Challenge; whole-paper coverage is not claimed. The preceding source/Solution build passed, but raw comparison failed. The present canonical module-instance correction is unelaborated.
+
 [![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/research/project-symmetric_rank_conditions.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/research/actions/workflows/project-symmetric_rank_conditions.yml)
 
 This project contains the full Lean4 formalisation for all principal results in my paper *Gröbner bases for symmetric rank conditions*. I've included the paper as paper.pdf.

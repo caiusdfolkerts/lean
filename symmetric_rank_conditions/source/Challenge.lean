@@ -1,9 +1,9 @@
 module
 public import Mathlib
 -- Match the original curated import closure's polynomial module dictionary.
--- Mathlib's umbrella additionally imports IrreducibleQuadratic.instModuleSelf;
+-- The umbrella adds instModuleSelf and instModule shortcut dictionaries;
 -- the raw exported source types use AddMonoidAlgebra.instModule directly.
-attribute [-instance] MvPolynomial.instModuleSelf
+attribute [-instance] MvPolynomial.instModuleSelf MvPolynomial.instModule
 
 /-!
 # Symmetric northwest rank and symbolic conditions
