@@ -1,5 +1,1 @@
-# Palomar submission: bier
-
-Substantive source snapshot of [caiusdfolkerts/research](https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/bier), revision `e0696fddcd3d10b5d6461e62e9b2f02c4195be37`.
-
-The complete selected development, paper, metadata, and Comparator configuration are in `bier/`. This branch prepares a registry submission; it does not claim registry acceptance. See `bier/formalization.yaml` for exact scope and provenance.
+Read-only whole-reachable comparison for exact Bier21 source2eb0b1801cd56296e9d0a9920df75f2cec197193 after actual Source/Solution build success and spectralNorm raw failure. The trusted verifier is pinned and unmodified; its retained exports are audited in the same remote job. No further mathematical source or helper aliases are changed. This diagnostic does not certify official preflight or registration.
