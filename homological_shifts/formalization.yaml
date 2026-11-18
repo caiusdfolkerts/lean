@@ -45,10 +45,11 @@ automation:
       not been reconstructed from the snapshot.
 review:
   status: unchecked
-  notes: Paper/README/source mapping inspected by the preparation agent. The independent
-    Challenge elaborated against the exact pinned Lean/Mathlib environment; Solution
-    build, Comparator, independent kernel replay and expert review remain incomplete.
-    No Palomar review or registration is claimed.
+  notes: Paper, README and source declarations inspected. Earlier independent Challenge
+    elaborated under the exact toolchain; the current revision restores the literal
+    source rank interpolation and separately compares the supporting proof statements.
+    Current Challenge elaboration, Solution build, Comparator and independent kernel
+    replay are pending.
 scope:
   known_gaps:
   - Theorem 1.1 Rees-module generation and sharpness, mixed-power Corollary 4.1, exact

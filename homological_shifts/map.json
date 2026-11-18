@@ -4,7 +4,7 @@
   "baseline_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
   "paper_sha256": "174c3153cdc92a4868e0516cdf444b0e364112495716eeb41e2872b4c664c0b8",
   "one_entry_per_paper": true,
-  "status": "draft_incomplete",
+  "status": "ready_for_validation_after_literal_dependency_repair",
   "source_selection": [
     "paper.pdf",
     "README.md",
@@ -367,7 +367,7 @@
     "comparator": "not_run",
     "nanoda": "not_run",
     "editorial_review": "not_run",
-    "challenge_elaboration": "passed"
+    "challenge_elaboration": "previous_version_passed_current_pending"
   },
   "current_selection": "The stabilization and fixed-twist clauses of Theorem 1.1, exact rank and canonicality clauses of Theorem 1.2, and actual projective-dimension Corollary 4.3 are selected.",
   "selected_wrapper_provenance": [
@@ -401,7 +401,19 @@
       "PalomarHomological.exactRankFormula",
       "PalomarHomological.canonicalRank",
       "FourPapers.Homological.corollary_4_3",
-      "FourPapers.Homological.corollary_4_3_eventual"
+      "FourPapers.Homological.corollary_4_3_eventual",
+      "CommAlg.Polymatroid.IsPolymatroidalIdeal.mul",
+      "CommAlg.Polymatroid.IsPolymatroidalIdeal.pow",
+      "CommAlg.Polymatroid.isPolymatroidalIdeal_rankIdeal",
+      "CommAlg.Polymatroid.RankFunction.map_empty",
+      "CommAlg.Polymatroid.RankFunction.mixed_submodular",
+      "CommAlg.Polymatroid.augmentedPartitionRank_empty",
+      "CommAlg.Polymatroid.augmentedPartitionRank_mono",
+      "CommAlg.Polymatroid.partitionRank_submodular",
+      "CommAlg.Polymatroid.shiftRankValue_empty",
+      "CommAlg.Polymatroid.shiftRankValue_le_u",
+      "CommAlg.Polymatroid.shiftRankValue_le_add",
+      "CommAlg.Polymatroid.augmentedRank_dominates"
     ],
     "permitted_axioms": [
       "propext",
@@ -411,10 +423,10 @@
   },
   "challenge": {
     "path": "source/Challenge.lean",
-    "sha256": "b1503047fa668528c6fcbff62b5c8be4a8ccadba7bf01c45fd2277aa9f8a8c41",
-    "physical_lines": 216,
-    "bytes": 12488,
-    "local_elaboration": "passed",
+    "sha256": "25615c6d60f3d333df67c2d4f0c99be8ba7d569a38078131176da9b177190234",
+    "physical_lines": 337,
+    "bytes": 17702,
+    "local_elaboration": "pending_after_literal_dependency_repair",
     "solution_build": "not_run",
     "comparator": "not_run"
   }

@@ -10,6 +10,7 @@ public import Mathlib.CategoryTheory.Abelian.Projective.Dimension
 public import Mathlib.Algebra.Category.ModuleCat.Projective
 public import Mathlib.RingTheory.Ideal.Operations
 public import Mathlib.Data.Finset.Lattice.Fold
+public import Lean.Elab.Tactic.Omega
 
 /-!
 # Homological shifts of polymatroidal ideals
@@ -70,13 +71,127 @@ def partitionCost (g : Finset V → ℕ) {A : Finset V} (P : Finpartition A) : �
 /-- Minimum over every set partition into nonempty blocks, including the empty case. -/
 def partitionRank (g : Finset V → ℕ) (A : Finset V) : ℕ :=
   Finset.univ.inf' Finset.univ_nonempty (fun P : Finpartition A => partitionCost g P)
-/-- The exact homological rank, with its polymatroid properties as proof fields.
-The entire numerical function is explicit, including the empty-set value. -/
-def homologicalRank (g : RankFunction V) (hg : g.Active) (i : ℕ) : RankFunction V where
-  toFun A := if A = ∅ then 0 else min (g A + i) (A.card + partitionRank g A)
-  empty := by simp
-  monotone := by sorry
-  submodular := by sorry
+/-- Literal original definition; its data and proof-bearing value are preserved. -/
+def RankFunction.Dominates (u g : RankFunction V) : Prop :=
+  ∀ A B, A ⊆ B → g B + u A ≤ u B + g A
+
+/-- Original proved rank-theoretic typing fact for the literal rank definition. -/
+@[simp] theorem RankFunction.map_empty (g : RankFunction V) : g ∅ = 0 := by sorry
+
+/-- Original proved rank-theoretic typing fact for the literal rank definition. -/
+theorem RankFunction.mixed_submodular {u g : RankFunction V}
+    (h : u.Dominates g) (A B : Finset V) :
+    g (A ∪ B) + u (A ∩ B) ≤ g A + u B := by sorry
+
+/-- Literal original definition; its data and proof-bearing value are preserved. -/
+def augmentedPartitionRank (g : Finset V → ℕ) (A : Finset V) : ℕ :=
+  A.card + partitionRank g A
+
+/-- Original proved rank-theoretic typing fact for the literal rank definition. -/
+@[simp] theorem augmentedPartitionRank_empty (g : Finset V → ℕ) :
+    augmentedPartitionRank g ∅ = 0 := by sorry
+
+/-- Original proved rank-theoretic typing fact for the literal rank definition. -/
+theorem augmentedPartitionRank_mono (g : RankFunction V) :
+    Monotone (augmentedPartitionRank g) := by sorry
+
+/-- Original proved rank-theoretic typing fact for the literal rank definition. -/
+theorem partitionRank_submodular (g : RankFunction V) (hg : g.Active) (A B : Finset V) :
+    partitionRank g (A ∪ B) + partitionRank g (A ∩ B) ≤
+      partitionRank g A + partitionRank g B := by sorry
+
+/-- Literal original definition; its data and proof-bearing value are preserved. -/
+def shiftRankValue (g u : RankFunction V) (i : ℕ) (A : Finset V) : ℕ :=
+  if A = ∅ then 0 else min (g A + i) (u A)
+
+/-- Original proved rank-theoretic typing fact for the literal rank definition. -/
+@[simp] theorem shiftRankValue_empty (g u : RankFunction V) (i : ℕ) :
+    shiftRankValue g u i ∅ = 0 := by sorry
+
+/-- Original proved rank-theoretic typing fact for the literal rank definition. -/
+theorem shiftRankValue_le_u (g u : RankFunction V) (i : ℕ) (A : Finset V) :
+    shiftRankValue g u i A ≤ u A := by sorry
+
+/-- Original proved rank-theoretic typing fact for the literal rank definition. -/
+theorem shiftRankValue_le_add (g u : RankFunction V) (i : ℕ) (A : Finset V) :
+    shiftRankValue g u i A ≤ g A + i := by sorry
+
+/-- Literal original definition; its data and proof-bearing value are preserved. -/
+def RankFunction.interpolate (g u : RankFunction V) (h : u.Dominates g)
+    (i : ℕ) : RankFunction V where
+  toFun := shiftRankValue g u i
+  empty := shiftRankValue_empty g u i
+  monotone := by
+    intro A B hAB
+    by_cases hA : A = ∅
+    · simp [hA]
+    have hB : B ≠ ∅ := by
+      intro heq
+      apply hA
+      simpa [heq] using hAB
+    simp only [shiftRankValue, if_neg hA, if_neg hB]
+    exact min_le_min (Nat.add_le_add_right (g.monotone hAB) i) (u.monotone hAB)
+  submodular := by
+    intro A B
+    by_cases hA : A = ∅
+    · simp [hA]
+    by_cases hB : B = ∅
+    · simp [hB]
+    have hUg := shiftRankValue_le_add g u i (A ∪ B)
+    have hIg := shiftRankValue_le_add g u i (A ∩ B)
+    have hUu := shiftRankValue_le_u g u i (A ∪ B)
+    have hIu := shiftRankValue_le_u g u i (A ∩ B)
+    have hg := g.submodular A B
+    have hu := u.submodular A B
+    have hm := RankFunction.mixed_submodular h A B
+    have hm' := RankFunction.mixed_submodular h B A
+    rw [Finset.union_comm B A, Finset.inter_comm B A] at hm'
+    rcases le_total (g A + i) (u A) with ha | ha <;>
+      rcases le_total (g B + i) (u B) with hb | hb
+    · have hAv : shiftRankValue g u i A = g A + i := by
+        simp [shiftRankValue, hA, min_eq_left ha]
+      have hBv : shiftRankValue g u i B = g B + i := by
+        simp [shiftRankValue, hB, min_eq_left hb]
+      rw [hAv, hBv]
+      omega
+    · have hAv : shiftRankValue g u i A = g A + i := by
+        simp [shiftRankValue, hA, min_eq_left ha]
+      have hBv : shiftRankValue g u i B = u B := by
+        simp [shiftRankValue, hB, min_eq_right hb]
+      rw [hAv, hBv]
+      omega
+    · have hAv : shiftRankValue g u i A = u A := by
+        simp [shiftRankValue, hA, min_eq_right ha]
+      have hBv : shiftRankValue g u i B = g B + i := by
+        simp [shiftRankValue, hB, min_eq_left hb]
+      rw [hAv, hBv]
+      omega
+    · have hAv : shiftRankValue g u i A = u A := by
+        simp [shiftRankValue, hA, min_eq_right ha]
+      have hBv : shiftRankValue g u i B = u B := by
+        simp [shiftRankValue, hB, min_eq_right hb]
+      rw [hAv, hBv]
+      omega
+
+/-- Literal original definition; its data and proof-bearing value are preserved. -/
+def augmentedRank (g : RankFunction V) (hg : g.Active) : RankFunction V where
+  toFun := augmentedPartitionRank g
+  empty := augmentedPartitionRank_empty g
+  monotone := augmentedPartitionRank_mono g
+  submodular A B := by
+    have h := partitionRank_submodular g hg A B
+    have hc := Finset.card_union_add_card_inter A B
+    unfold augmentedPartitionRank
+    omega
+
+/-- Original proved rank-theoretic typing fact for the literal rank definition. -/
+theorem augmentedRank_dominates (g : RankFunction V) (hg : g.Active) :
+    (augmentedRank g hg).Dominates g := by sorry
+
+/-- Literal original definition; its data and proof-bearing value are preserved. -/
+def homologicalRank (g : RankFunction V) (hg : g.Active) (i : ℕ) : RankFunction V :=
+  g.interpolate (augmentedRank g hg) (augmentedRank_dominates g hg) i
+
 /-- All upper-rank inequalities on a monomial exponent. -/
 def UpperFeasible (g : RankFunction V) (a : Exponent V) : Prop := ∀ U, subsetSum a U ≤ g U
 /-- An integer base: feasible exponent vector of total degree g(E). -/
@@ -95,9 +210,15 @@ def partitionDefect (g : RankFunction V) {A : Finset V} (P : Finpartition A) : �
   (∑ C ∈ P.parts, g C) - g A
 /-- Number of elements minus number of partition blocks. -/
 def partitionSlack {A : Finset V} (P : Finpartition A) : ℕ := A.card - P.parts.card
+end CommAlg.Polymatroid
+namespace CommAlg.Polymatroid
+variable {ι : Type*} [Fintype ι] [Nonempty ι]
 /-- The literal minimum over a finite nonempty index type. -/
-def finiteMinimum {ι : Type*} [Fintype ι] [Nonempty ι] (f : ι → ℕ) : ℕ :=
+def finiteMinimum (f : ι → ℕ) : ℕ :=
   Finset.univ.inf' Finset.univ_nonempty f
+end CommAlg.Polymatroid
+namespace CommAlg.Polymatroid
+variable {V : Type*} [Fintype V] [DecidableEq V]
 /-- Partitions having zero rank defect. -/
 def zeroDefectPartitions (ρ : RankFunction V) (A : Finset V) : Finset (Finpartition A) :=
   Finset.univ.filter (fun P => partitionDefect ρ P = 0)

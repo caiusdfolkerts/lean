@@ -10,7 +10,16 @@
     "FourPapers.Homological.corollary_4_3_eventual",
     "CommAlg.Polymatroid.IsPolymatroidalIdeal.mul",
     "CommAlg.Polymatroid.IsPolymatroidalIdeal.pow",
-    "CommAlg.Polymatroid.isPolymatroidalIdeal_rankIdeal"
+    "CommAlg.Polymatroid.isPolymatroidalIdeal_rankIdeal",
+    "CommAlg.Polymatroid.RankFunction.map_empty",
+    "CommAlg.Polymatroid.RankFunction.mixed_submodular",
+    "CommAlg.Polymatroid.augmentedPartitionRank_empty",
+    "CommAlg.Polymatroid.augmentedPartitionRank_mono",
+    "CommAlg.Polymatroid.partitionRank_submodular",
+    "CommAlg.Polymatroid.shiftRankValue_empty",
+    "CommAlg.Polymatroid.shiftRankValue_le_u",
+    "CommAlg.Polymatroid.shiftRankValue_le_add",
+    "CommAlg.Polymatroid.augmentedRank_dominates"
   ],
   "permitted_axioms": [
     "propext",
