@@ -16,7 +16,7 @@ variable {α : Type*} {M N : Matroid α} {e f g : α} {I X P D : Set α}
 section Parallel
 
 /-- The partition of the nonloops of `M` into parallel classes. -/
-def parallelClasses (M : Matroid α) : Partition (Set α) :=
+def parallelClasses (M : Matroid α) : PalomarLegacyPartition (Set α) :=
   (M.closure_isFlat ∅).covByPartition
 
 @[simp]
@@ -43,13 +43,13 @@ instance {M : Matroid α} : IsTrans α M.Parallel :=
   inferInstanceAs <| IsTrans α M.parallelClasses
 
 lemma Parallel.symm (h : M.Parallel e f) : M.Parallel f e :=
-  Partition.Rel.symm h
+  PalomarLegacyPartition.Rel.symm h
 
 lemma parallel_comm : M.Parallel e f ↔ M.Parallel f e :=
-  Partition.rel_comm
+  PalomarLegacyPartition.rel_comm
 
 lemma Parallel.trans (h : M.Parallel e f) (h' : M.Parallel f g) : M.Parallel e g :=
-  Partition.Rel.trans h h'
+  PalomarLegacyPartition.Rel.trans h h'
 
 lemma Parallel.closure_eq_closure (h : M.Parallel e f) : M.closure {e} = M.closure {f} :=
   (parallel_iff.1 h).2.2
@@ -88,7 +88,7 @@ lemma setOf_parallel_eq_closure_diff_loops (M : Matroid α) (e : α) :
     {f | M.Parallel e f} = M.closure {e} \ M.loops := by
   by_cases he : M.IsNonloop e
   · rw [Parallel, parallelClasses, loops,
-      Partition.setOf_rel_eq_partOf, (M.closure_isFlat ∅).partOf_covByPartition_eq,
+      PalomarLegacyPartition.setOf_rel_eq_partOf, (M.closure_isFlat ∅).partOf_covByPartition_eq,
       closure_insert_closure_eq_closure_insert, insert_empty_eq]
   rw [not_isNonloop_iff_closure.1 he, sdiff_self, eq_empty_iff_forall_notMem]
   exact fun f hf ↦ he (Parallel.isNonloop_left hf)

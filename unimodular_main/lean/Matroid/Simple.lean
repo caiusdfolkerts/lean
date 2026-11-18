@@ -197,9 +197,9 @@ lemma simple_iff_forall_parallel_class [Loopless M] :
   rw [(show f = x from hx.subset hef), show e = x from hx.subset (hef.isNonloop_left.parallel_self)]
 
 lemma simple_iff_parallelClasses_eq_discrete' :
-    M.Simple ↔ M.Loopless ∧ M.parallelClasses = Partition.discrete {e | M.IsNonloop e} := by
-  refine ⟨fun h ↦ ⟨by infer_instance, Partition.eq_of_rel_iff_rel ?_⟩, fun ⟨_,h⟩ ↦ ?_⟩
-  · simp only [Partition.rel_discrete_iff, mem_ofPred_eq,
+    M.Simple ↔ M.Loopless ∧ M.parallelClasses = PalomarLegacyPartition.discrete {e | M.IsNonloop e} := by
+  refine ⟨fun h ↦ ⟨by infer_instance, PalomarLegacyPartition.eq_of_rel_iff_rel ?_⟩, fun ⟨_,h⟩ ↦ ?_⟩
+  · simp only [PalomarLegacyPartition.rel_discrete_iff, mem_ofPred_eq,
       show M.parallelClasses = M.Parallel from rfl]
     refine fun x y ↦ ⟨fun hpara ↦ ⟨hpara.eq, hpara.isNonloop_left⟩, ?_⟩
     rintro ⟨rfl, nl⟩
@@ -208,11 +208,11 @@ lemma simple_iff_parallelClasses_eq_discrete' :
   simp [Parallel, h]
 
 lemma simple_iff_parallelClasses_eq_discrete [Loopless M] :
-    M.Simple ↔  M.parallelClasses = Partition.discrete {e | M.IsNonloop e} := by
+    M.Simple ↔  M.parallelClasses = PalomarLegacyPartition.discrete {e | M.IsNonloop e} := by
   rw [simple_iff_parallelClasses_eq_discrete', and_iff_right (by assumption)]
 
 lemma parallelClasses_eq_discrete [Simple M] :
-    M.parallelClasses = Partition.discrete {e | M.IsNonloop e} :=
+    M.parallelClasses = PalomarLegacyPartition.discrete {e | M.IsNonloop e} :=
   simple_iff_parallelClasses_eq_discrete.1 (by assumption)
 
 lemma Simple.eq_of_parallel_of_mem (h : (M ↾ X).Simple) (he : e ∈ X) (hf : f ∈ X)
@@ -635,7 +635,7 @@ lemma isSimplification_iff : N.IsSimplification M ↔ N.Loopless ∧ N ≤r M �
   refine ⟨fun h ↦ ⟨h.simple.loopless, h.isRestriction, fun e he ↦ h.exists_unique he⟩,
     fun ⟨h, hr, h'⟩ ↦ ?_⟩
   choose f hf using h'
-  refine ⟨Partition.RepFun.mk (fun x ↦ if hx : M.IsNonloop x then f hx else x)
+  refine ⟨PalomarLegacyPartition.RepFun.mk (fun x ↦ if hx : M.IsNonloop x then f hx else x)
     (fun a ha ↦ ?_) (fun a ha ↦ ?_) fun a b (hab : M.Parallel a b) ↦ ?_, ?_⟩
   · simp_rw [dite_eq_right (show ¬ M.IsNonloop a from mem_parallelClasses_supp_iff.not.mp ha)]
   · rw [mem_parallelClasses_supp_iff] at ha
@@ -647,7 +647,7 @@ lemma isSimplification_iff : N.IsSimplification M ↔ N.Loopless ∧ N ≤r M �
   refine Set.ext fun x ↦ ⟨?_, fun h ↦ ?_⟩
   · rintro ⟨x,(hx : M.IsNonloop x),rfl⟩; simp [hx, (hf hx).1.1]
   have hx := ((isNonloop_of_loopless h).of_isRestriction hr)
-  simp only [Partition.RepFun.mk_apply, mem_image, mem_ofPred_eq]
+  simp only [PalomarLegacyPartition.RepFun.mk_apply, mem_image, mem_ofPred_eq]
   exact ⟨x, hx, by rw [dite_eq_left hx, ← (hf hx).2 _ ⟨h, hx.parallel_self⟩]⟩
 
 /-- `N` is a simplification of `M` if `N` is minimal in the restriction order simplifying `M`. -/
@@ -868,7 +868,7 @@ noncomputable def simplification (M : Matroid α) : Matroid α :=
 
 lemma simplification_isSimplification (M : Matroid α) : M.simplification.IsSimplification M := by
   let f := M.removeLoops.parallelClasses.nonempty_repFun.some
-  refine ⟨Partition.RepFun.mk' _ f mem_parallelClasses_supp_iff
+  refine ⟨PalomarLegacyPartition.RepFun.mk' _ f mem_parallelClasses_supp_iff
     (fun a ha ↦ f.apply_of_notMem (by simpa))
     (fun a ha ↦ by simpa [mem_ofPred_eq, parallelClasses_rel_eq] using f.rel_apply (by simpa))
     (fun a b hab ↦ f.apply_eq_apply (by simpa)), ?_⟩

@@ -45,15 +45,20 @@ automation:
 review:
   status: unchecked
   notes: >-
-    Exact322-line Challenge SHA5e4f78b66 passed canonical elaboration in
-    run44380113477 at source863d32aa1b69fe85005718f9e97ffe5e1caa4bf9.
-    All input hashes, canonical pins and bounded-log hash were independently
-    checked. The677-line actual Solution draft remains unelaborated; full
-    original-source/Solution build, raw Comparator, NanoDa, registry admission
-    and mathematical peer review remain unverified. The distinct13-target
-    fan entry previously passed full preflight and stays unchanged.
+    Exact322-line Challenge passed canonical elaboration in run44380113477.
+    Full run44382055490 built the reachable original proof imports but the
+    Solution could not load a legacy free-support Partition alongside Mathlib's
+    distinct fixed-support Partition. This repair alpha-renames only that
+    legacy type/namespace and its10 materialized dependent modules, preserving
+    every constructor, field, proof body and original source copy. Challenge,
+    all12 selected statements, Solution and canonical pins remain unchanged.
+    The repaired import closure and actual Solution remain unelaborated; no
+    full Comparator, NanoDa, registry or peer-review pass is claimed.
 fidelity:
   divergences: >-
+    The old free-support partition implementation is renamed PalomarLegacyPartition
+    in its materialized modules to avoid colliding with canonical Mathlib fixed-support
+    partitions. The definitions and original source files are preserved exactly.
     Actual scalar extension of the finite free lattice, real convex hulls,
     primitive edge segments, maximal proper convex faces, entire real unit
     corners and full represented Mathlib matroids are inlined. The ordinary

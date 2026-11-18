@@ -143,7 +143,7 @@ lemma IsPoint.subset_or_inter_eq_loops_of_isFlat (hP : M.IsPoint P) (hF : M.IsFl
 
 -- /-- Each flat `F` induces a partition of the set of points not contained in `F`. -/
 -- def IsFlat.covByIsPointPartition {F : Set α} (hF : M.IsFlat F) :
---     Partition {P | M.IsPoint P ∧ ¬ (P ⊆ F)} := Partition.ofPairwiseDisjoint'
+--     PalomarLegacyPartition {P | M.IsPoint P ∧ ¬ (P ⊆ F)} := PalomarLegacyPartition.ofPairwiseDisjoint'
 --   (parts := (fun F' ↦ {P | P ⊆ F' ∧ ¬ (P ⊆ F)}) '' hF.covByPartition)
 --   (pairwiseDisjoint := by
 --     rintro Ps ⟨_, h, rfl⟩

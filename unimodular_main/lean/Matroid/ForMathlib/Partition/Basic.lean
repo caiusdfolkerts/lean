@@ -28,26 +28,26 @@ lemma sSupIndep_subsingleton {α : Type*} [CompleteLattice α] {S : Set α} (hs 
   · exact sSupIndep_empty
   exact sSupIndep_singleton a
 
-structure Partition (α : Type*) [CompleteLattice α] where
+structure PalomarLegacyPartition (α : Type*) [CompleteLattice α] where
   parts : Set α
   indep : sSupIndep parts
   bot_not_mem : ⊥ ∉ parts
 
-namespace Partition
+namespace PalomarLegacyPartition
 
 section Basic
 
-variable [CompleteLattice α] {P Q : Partition α}
+variable [CompleteLattice α] {P Q : PalomarLegacyPartition α}
 
-def supp (P : Partition α) : α := sSup P.parts
+def supp (P : PalomarLegacyPartition α) : α := sSup P.parts
 
-instance : SetLike (Partition α) α where
-  coe := Partition.parts
+instance : SetLike (PalomarLegacyPartition α) α where
+  coe := PalomarLegacyPartition.parts
   coe_injective p p' h := by cases p; cases p'; simpa using h
 
 @[simp] lemma mem_parts : x ∈ P.parts ↔ x ∈ P := Iff.rfl
 
-lemma coe_eq (P : Partition α) : ↑P = P.parts := rfl
+lemma coe_eq (P : PalomarLegacyPartition α) : ↑P = P.parts := rfl
 
 lemma ext_parts (hP : P.parts = Q.parts) : P = Q := by
   cases P
@@ -62,26 +62,26 @@ lemma ext_iff_parts : P = Q ↔ P.parts = Q.parts :=
   ext x
   simpa using hP x
 
-def subset (P Q : Partition α) : Prop := P.parts ⊆ Q.parts
+def subset (P Q : PalomarLegacyPartition α) : Prop := P.parts ⊆ Q.parts
 
--- instance : HasSubset (Partition α) where
+-- instance : HasSubset (PalomarLegacyPartition α) where
 --   Subset := subset
 
-instance : IsPartialOrder (Partition α) (·.subset ·) where
+instance : IsPartialOrder (PalomarLegacyPartition α) (·.subset ·) where
   refl _ _ := id
   trans _ _ _ hPQ hQR _ h := hQR (hPQ h)
   antisymm _ _ hPQ hPQ' := by ext S; exact ⟨(hPQ ·), (hPQ' ·)⟩
 
-def ssubset (P Q : Partition α) : Prop := P.parts ⊂ Q.parts
+def ssubset (P Q : PalomarLegacyPartition α) : Prop := P.parts ⊂ Q.parts
 
--- instance : HasSSubset (Partition α) where
+-- instance : HasSSubset (PalomarLegacyPartition α) where
 --   SSubset P Q := P.parts ⊂ Q.parts
 
-instance : IsStrictOrder (Partition α) (·.ssubset ·) where
+instance : IsStrictOrder (PalomarLegacyPartition α) (·.ssubset ·) where
   irrefl _ := not_ssubset_of_subset (α := Set α) fun _ a ↦ a
   trans _ _ _ := ssubset_trans (α := Set α)
 
-instance : IsNonstrictStrictOrder (Partition α) (·.subset ·) (·.ssubset ·) where
+instance : IsNonstrictStrictOrder (PalomarLegacyPartition α) (·.subset ·) (·.ssubset ·) where
   right_iff_left_not_left _ _ := Iff.rfl
 
 lemma disjoint (hx : x ∈ P) (hy : y ∈ P) (hxy : x ≠ y) : Disjoint x y :=
@@ -103,9 +103,9 @@ lemma ne_bot_of_mem (hx : x ∈ P) : x ≠ ⊥ :=
 lemma bot_lt_of_mem (hx : x ∈ P) : ⊥ < x :=
   bot_lt_iff_ne_bot.2 <| P.ne_bot_of_mem hx
 
-lemma sSup_eq (P : Partition α) : sSup P = P.supp  := rfl
+lemma sSup_eq (P : PalomarLegacyPartition α) : sSup P = P.supp  := rfl
 
-lemma iSup_eq (P : Partition α) : ⨆ x ∈ P, x = P.supp := by
+lemma iSup_eq (P : PalomarLegacyPartition α) : ⨆ x ∈ P, x = P.supp := by
   simp_rw [← P.sSup_eq, sSup_eq_iSup]
   rfl
 
@@ -140,9 +140,9 @@ end Basic
 
 section PairwiseDisjoint
 
-variable {α : Type*} [Order.Frame α] {s t x y z : α} {parts : Set α} {P Q : Partition α}
+variable {α : Type*} [Order.Frame α] {s t x y z : α} {parts : Set α} {P Q : PalomarLegacyPartition α}
 
-@[simps] def ofPairwiseDisjoint (pairwiseDisjoint : parts.PairwiseDisjoint id) : Partition α where
+@[simps] def ofPairwiseDisjoint (pairwiseDisjoint : parts.PairwiseDisjoint id) : PalomarLegacyPartition α where
   parts := parts \ {⊥}
   indep := sSupIndep_iff_pairwiseDisjoint.mpr (pairwiseDisjoint.subset sdiff_subset)
   bot_not_mem := by simp
@@ -156,7 +156,7 @@ lemma supp_ofPairwiseDisjoint (pairwiseDisjoint : parts.PairwiseDisjoint id) :
 
 @[simps] def ofPairwiseDisjoint' (pairwiseDisjoint : parts.PairwiseDisjoint id)
   (forall_nonempty : ∀ s ∈ parts, s ≠ ⊥) :
-    Partition α where
+    PalomarLegacyPartition α where
   parts := parts
   indep := pairwiseDisjoint.sSupIndep
   bot_not_mem := fun h ↦ by simpa using forall_nonempty _ h
@@ -179,10 +179,10 @@ end PairwiseDisjoint
 
 section indep
 
-variable [CompleteLattice α] {u : Set α} {a b : α} {P Q : Partition α}
+variable [CompleteLattice α] {u : Set α} {a b : α} {P Q : PalomarLegacyPartition α}
 
 /-- A `sSupIndep` collection not containing `⊥` gives a partition of its supremum. -/
-@[simps] def ofIndependent (hs : sSupIndep u) (hbot : ⊥ ∉ u) : Partition α where
+@[simps] def ofIndependent (hs : sSupIndep u) (hbot : ⊥ ∉ u) : PalomarLegacyPartition α where
   parts := u
   indep := hs
   bot_not_mem := hbot
@@ -195,7 +195,7 @@ variable [CompleteLattice α] {u : Set α} {a b : α} {P Q : Partition α}
 
 /-- A `sSupIndep` collection gives a partition of its supremum by removing `⊥`. -/
 @[simps!]
-def ofIndependent' (hs : sSupIndep u) : Partition α :=
+def ofIndependent' (hs : sSupIndep u) : PalomarLegacyPartition α :=
   (ofIndependent (hs.mono (sdiff_subset (t := {⊥}))) (fun h ↦ h.2 rfl))
 
 @[simp] lemma mem_ofIndependent'_iff (hu : sSupIndep u) :
@@ -206,29 +206,29 @@ def ofIndependent' (hs : sSupIndep u) : Partition α :=
   simp
 
 /-- The partition with no parts. -/
-@[simps] protected def empty (α : Type*) [CompleteLattice α] : Partition α where
+@[simps] protected def empty (α : Type*) [CompleteLattice α] : PalomarLegacyPartition α where
   parts := ∅
   indep := by simp
   bot_not_mem := by simp
 
-instance : Bot (Partition α) where
-  bot := Partition.empty α
+instance : Bot (PalomarLegacyPartition α) where
+  bot := PalomarLegacyPartition.empty α
 
-@[simp] lemma parts_bot (α : Type*) [CompleteLattice α] : (⊥ : Partition α).parts = ∅ := rfl
+@[simp] lemma parts_bot (α : Type*) [CompleteLattice α] : (⊥ : PalomarLegacyPartition α).parts = ∅ := rfl
 
-@[simp] lemma notMem_bot : a ∉ (⊥ : Partition α) := notMem_empty α
+@[simp] lemma notMem_bot : a ∉ (⊥ : PalomarLegacyPartition α) := notMem_empty α
 
 @[simp]
-lemma parts_eq_empty_iff (P : Partition α) : P.parts = ∅ ↔ P = ⊥ := by
+lemma parts_eq_empty_iff (P : PalomarLegacyPartition α) : P.parts = ∅ ↔ P = ⊥ := by
   refine ⟨fun h ↦ ?_, fun h ↦ by simp [h]⟩
   ext x
   rw [← mem_parts, h]
   simp
 
-@[simp] lemma supp_bot : (⊥ : Partition α).supp = ⊥ := sSup_empty
+@[simp] lemma supp_bot : (⊥ : PalomarLegacyPartition α).supp = ⊥ := sSup_empty
 
 @[simp] lemma bot_coe_eq (α : Type*) [CompleteLattice α] :
-    ((⊥ : Partition α) : Set α) = ∅ := rfl
+    ((⊥ : PalomarLegacyPartition α) : Set α) = ∅ := rfl
 
 lemma eq_bot (hP : P.supp = ⊥) : P = ⊥ := by
   ext x
@@ -244,11 +244,11 @@ lemma supp_eq_bot_iff : P.supp = ⊥ ↔ P = ⊥ := by
   exact supp_bot
 
 @[simp]
-lemma bot_subset (P : Partition α) : Partition.subset ⊥ P :=
+lemma bot_subset (P : PalomarLegacyPartition α) : PalomarLegacyPartition.subset ⊥ P :=
   fun _ hsP => hsP.elim
 
 @[simp]
-lemma exists_mem_iff_ne_bot (P : Partition α) : (∃ x, x ∈ P) ↔ P ≠ ⊥ := by
+lemma exists_mem_iff_ne_bot (P : PalomarLegacyPartition α) : (∃ x, x ∈ P) ↔ P ≠ ⊥ := by
   refine ⟨?_, fun hP ↦ ?_⟩
   · rintro ⟨x, hx⟩ rfl
     exact notMem_bot hx
@@ -256,36 +256,36 @@ lemma exists_mem_iff_ne_bot (P : Partition α) : (∃ x, x ∈ P) ↔ P ≠ ⊥ 
   rw [nonempty_iff_ne_empty]
   rwa [ne_eq, ← parts_eq_empty_iff] at hP
 
-instance {α : Type*} [CompleteLattice α] [Subsingleton α] : Unique (Partition α) where
+instance {α : Type*} [CompleteLattice α] [Subsingleton α] : Unique (PalomarLegacyPartition α) where
   default := ⊥
   uniq P := eq_bot (by
     simp only [← P.sSup_eq, sSup_eq_bot, SetLike.mem_coe]
     exact fun a b ↦ Subsingleton.elim _ _)
 
 /-- The one-part partition. -/
-@[simps] def indiscrete (s : α) (hs : s ≠ ⊥) : Partition α where
+@[simps] def indiscrete (s : α) (hs : s ≠ ⊥) : PalomarLegacyPartition α where
   parts := {s}
   indep := by simp [sSupIndep]
   bot_not_mem := by simpa using hs.symm
 
 @[simp] lemma mem_indiscrete_iff (hs : s ≠ ⊥) :
-    a ∈ Partition.indiscrete s hs ↔ a = s := Iff.rfl
+    a ∈ PalomarLegacyPartition.indiscrete s hs ↔ a = s := Iff.rfl
 
 @[simp]
-lemma supp_indiscrete (hs : s ≠ ⊥) : (Partition.indiscrete s hs).supp = s := by
-  simp [Partition.indiscrete, supp]
+lemma supp_indiscrete (hs : s ≠ ⊥) : (PalomarLegacyPartition.indiscrete s hs).supp = s := by
+  simp [PalomarLegacyPartition.indiscrete, supp]
 
 @[simp]
-lemma indiscrete_subset_iff (hs : s ≠ ⊥) : (Partition.indiscrete s hs).subset P ↔ s ∈ P := by
+lemma indiscrete_subset_iff (hs : s ≠ ⊥) : (PalomarLegacyPartition.indiscrete s hs).subset P ↔ s ∈ P := by
   change (indiscrete s hs).parts ⊆ P.parts ↔ s ∈ P.parts
   simp
 
-lemma indiscrete_eq_iff (hs : s ≠ ⊥) : Partition.indiscrete s hs = P ↔ {s} = P.parts := by
+lemma indiscrete_eq_iff (hs : s ≠ ⊥) : PalomarLegacyPartition.indiscrete s hs = P ↔ {s} = P.parts := by
   rw [ext_iff_parts, indiscrete_parts]
 
 /-- Similar to `indiscrete`, but in the case `s = ⊥` it returns the empty partition. -/
 @[simps]
-def indiscrete' (s : α) : Partition α where
+def indiscrete' (s : α) : PalomarLegacyPartition α where
   parts := {T | s ≠ ⊥ ∧ T = s}
   indep := sSupIndep_subsingleton <| by
     rintro x ⟨hx, rfl⟩ y ⟨hy, rfl⟩
@@ -296,7 +296,7 @@ def indiscrete' (s : α) : Partition α where
 lemma mem_indiscrete'_iff : x ∈ indiscrete' s ↔ s ≠ ⊥ ∧ x = s := Iff.rfl
 
 @[simp]
-lemma indiscrete'_eq_empty : indiscrete' ⊥ = (⊥ : Partition α) :=
+lemma indiscrete'_eq_empty : indiscrete' ⊥ = (⊥ : PalomarLegacyPartition α) :=
   eq_bot <| by simp [-supp_eq_bot_iff, supp, indiscrete']
 
 @[simp]
@@ -321,9 +321,9 @@ end indep
 
 section IsPartition
 
-variable {α : Type*} [CompleteLattice α] {S T : Set α} {x y z : α} {P : Partition α}
+variable {α : Type*} [CompleteLattice α] {S T : Set α} {x y z : α} {P : PalomarLegacyPartition α}
 
-def IsPartition (S : Set α) : Prop := ∃ P : Partition α, P.parts = S
+def IsPartition (S : Set α) : Prop := ∃ P : PalomarLegacyPartition α, P.parts = S
 
 namespace IsPartition
 
@@ -365,12 +365,12 @@ lemma bot_lt_of_mem (hS : IsPartition S) (hx : x ∈ S) : ⊥ < x := by
   obtain ⟨P, rfl⟩ := hS
   exact P.bot_lt_of_mem hx
 
-lemma iff_exists : IsPartition S ↔ ∃ P : Partition α, P.parts = S := Iff.rfl
+lemma iff_exists : IsPartition S ↔ ∃ P : PalomarLegacyPartition α, P.parts = S := Iff.rfl
 
 end IsPartition
 
 @[simp]
-lemma exists_subset_iff_isPartition : (∃ P : Partition α, S ⊆ P.parts) ↔ IsPartition S := by
+lemma exists_subset_iff_isPartition : (∃ P : PalomarLegacyPartition α, S ⊆ P.parts) ↔ IsPartition S := by
   refine ⟨fun ⟨P, hP⟩ ↦ ?_, ?_⟩
   · use ofIndependent' (P.indep.mono hP)
     simp only [ofIndependent'_parts, sdiff_eq_left, disjoint_singleton_right]
@@ -383,7 +383,7 @@ lemma IsPartition.subset (hS : IsPartition T) (hST : S ⊆ T) : IsPartition S :=
   obtain ⟨P, hP⟩ := hS
   exact ⟨P, hST.trans hP⟩
 
-lemma parts_isPartition (P : Partition α) : IsPartition P.parts := ⟨P, rfl⟩
+lemma parts_isPartition (P : PalomarLegacyPartition α) : IsPartition P.parts := ⟨P, rfl⟩
 
 lemma isPartition_of_subset (hS : S ⊆ P.parts) : IsPartition S := by
   rw [← exists_subset_iff_isPartition]
@@ -427,9 +427,9 @@ lemma isPartition_iff_pairwiseDisjoint {S : Set α} [Order.Frame α] :
 
 section Order
 
-variable {α : Type*} [CompleteLattice α] {P Q R : Partition α} {s t a : α}
+variable {α : Type*} [CompleteLattice α] {P Q R : PalomarLegacyPartition α} {s t a : α}
 
-instance : PartialOrder (Partition α) where
+instance : PartialOrder (PalomarLegacyPartition α) where
   le P Q := ∀ x ∈ P, ∃ y ∈ Q, x ≤ y
   lt := _
   le_refl P x hx := ⟨x,hx,rfl.le⟩
@@ -438,7 +438,7 @@ instance : PartialOrder (Partition α) where
     obtain ⟨z, hz, hyz⟩ := hQR y hy
     exact ⟨z, hz, hxy.trans hyz⟩
   le_antisymm P Q hp hq := by
-    refine Partition.ext fun x ↦ ⟨fun h ↦ ?_, fun h ↦ ?_⟩
+    refine PalomarLegacyPartition.ext fun x ↦ ⟨fun h ↦ ?_, fun h ↦ ?_⟩
     · obtain ⟨y, hy, hxy⟩ := hp x h
       obtain ⟨x', hx', hyx'⟩ := hq y hy
       obtain rfl := P.pairwiseDisjoint.eq_of_le h hx' (P.ne_bot_of_mem h)
@@ -452,10 +452,10 @@ instance : PartialOrder (Partition α) where
 
 lemma le_def : P ≤ Q ↔ ∀ x ∈ P, ∃ y ∈ Q, x ≤ y := Iff.rfl
 
-lemma exists_le_of_mem_le {x : α} {P Q : Partition α} (h : P ≤ Q) (hx : x ∈ P) :
+lemma exists_le_of_mem_le {x : α} {P Q : PalomarLegacyPartition α} (h : P ≤ Q) (hx : x ∈ P) :
     ∃ y ∈ Q, x ≤ y := h x hx
 
-lemma exists_unique_of_mem_le {x : α} {P Q : Partition α} (h : P ≤ Q) (hx : x ∈ P) :
+lemma exists_unique_of_mem_le {x : α} {P Q : PalomarLegacyPartition α} (h : P ≤ Q) (hx : x ∈ P) :
     ∃! y ∈ Q, x ≤ y := by
   obtain ⟨y, hy, hxy⟩ := h x hx
   refine ⟨y, ⟨hy, hxy⟩, fun z ⟨hz, hxz⟩ => Q.eq_of_not_disjoint hz hy ?_⟩
@@ -466,7 +466,7 @@ lemma exists_unique_of_mem_le {x : α} {P Q : Partition α} (h : P ≤ Q) (hx : 
 lemma le_of_supp_le_part (ha : a ∈ P) (hQa : Q.supp ≤ a) : Q ≤ P :=
   fun _ hx ↦ ⟨a, ha, (Q.le_supp_of_mem hx).trans hQa⟩
 
-instance : OrderTop (Partition α) where
+instance : OrderTop (PalomarLegacyPartition α) where
   top := ofIndependent' (sSupIndep_singleton ⊤)
   le_top := by
     obtain (hs | hs) := eq_or_ne ⊤ (⊥ : α)
@@ -474,48 +474,48 @@ instance : OrderTop (Partition α) where
       simp only [hs, le_of_subsingleton, implies_true]
     exact fun P x hx ↦ ⟨⊤, by simp [hs], by simp⟩
 
-@[simp] lemma supp_top : (⊤ : Partition α).supp = ⊤ := by
+@[simp] lemma supp_top : (⊤ : PalomarLegacyPartition α).supp = ⊤ := by
   change (ofIndependent' (sSupIndep_singleton ⊤)).supp = ⊤
   simp
 
-@[simp] lemma parts_top [Nontrivial α] : (⊤ : Partition α).parts = {⊤} := by
+@[simp] lemma parts_top [Nontrivial α] : (⊤ : PalomarLegacyPartition α).parts = {⊤} := by
   change (ofIndependent' (sSupIndep_singleton ⊤)).parts = {⊤}
   rw [ofIndependent'_parts]
   simp
 
-@[simp] lemma top_parts (hs : (⊤ : α) ≠ ⊥) : (⊤ : Partition α) = ({⊤} : Set α) := by
+@[simp] lemma top_parts (hs : (⊤ : α) ≠ ⊥) : (⊤ : PalomarLegacyPartition α) = ({⊤} : Set α) := by
   change (ofIndependent' (sSupIndep_singleton ⊤)).parts = {⊤}
   simp [hs]
 
-@[simp] lemma mem_top_iff {a : α} : a ∈ (⊤ : Partition α) ↔ a = ⊤ ∧ a ≠ ⊥ := by
+@[simp] lemma mem_top_iff {a : α} : a ∈ (⊤ : PalomarLegacyPartition α) ↔ a = ⊤ ∧ a ≠ ⊥ := by
   change a ∈ ofIndependent' (sSupIndep_singleton ⊤) ↔ _
   rw [mem_ofIndependent'_iff, mem_singleton_iff]
 
-lemma top_eq_indiscrete (hs : ⊤ ≠ ⊥) : (⊤ : Partition α) = indiscrete ⊤ hs := by
+lemma top_eq_indiscrete (hs : ⊤ ≠ ⊥) : (⊤ : PalomarLegacyPartition α) = indiscrete ⊤ hs := by
   ext a
   rw [mem_top_iff, mem_indiscrete_iff, and_iff_left_iff_imp]
   rintro rfl; assumption
 
-lemma parts_top_subset : ((⊤ : Partition α) : Set α) ⊆ {⊤} := by
+lemma parts_top_subset : ((⊤ : PalomarLegacyPartition α) : Set α) ⊆ {⊤} := by
   simp
 
-instance : OrderBot (Partition α) where
+instance : OrderBot (PalomarLegacyPartition α) where
   bot_le _ _ hs := hs.elim
 
 @[simp]
-lemma bot_parts : (⊥ : Partition α).parts = ∅ := rfl
+lemma bot_parts : (⊥ : PalomarLegacyPartition α).parts = ∅ := rfl
 
 @[simp]
-lemma bot_supp : (⊥ : Partition α).supp = ⊥ := by
+lemma bot_supp : (⊥ : PalomarLegacyPartition α).supp = ⊥ := by
   simp
 
-lemma supp_le_of_le {P Q : Partition α} (h : P ≤ Q) : P.supp ≤ Q.supp :=
+lemma supp_le_of_le {P Q : PalomarLegacyPartition α} (h : P ≤ Q) : P.supp ≤ Q.supp :=
   sSup_le_sSup_of_isCofinalFor h
 
-lemma le_of_subset {P Q : Partition α} (h : P.subset Q) : P ≤ Q :=
+lemma le_of_subset {P Q : PalomarLegacyPartition α} (h : P.subset Q) : P ≤ Q :=
   fun x hx => ⟨x, h hx, le_rfl⟩
 
-instance [Nontrivial α] : Nontrivial (Partition α) := by
+instance [Nontrivial α] : Nontrivial (PalomarLegacyPartition α) := by
   use ⊥, ⊤
   apply_fun (·.parts)
   simp only [parts_bot, parts_top, ne_eq]
@@ -526,9 +526,9 @@ end Order
 
 section Atomic
 
-variable {α : Type*} [CompleteLattice α] {P Q : Partition α}
+variable {α : Type*} [CompleteLattice α] {P Q : PalomarLegacyPartition α}
 
-def Atomic (P : Partition α) : Prop := ∀ x ∈ P, IsAtom x
+def Atomic (P : PalomarLegacyPartition α) : Prop := ∀ x ∈ P, IsAtom x
 
 lemma Atomic.subset_iff_le (hQ : Q.Atomic) : P.subset Q ↔ P ≤ Q := by
   refine ⟨le_of_subset, fun h x hxP ↦ ?_⟩
@@ -543,10 +543,10 @@ lemma Atomic.atomic_of_le (hPQ : P ≤ Q) (hQ : Q.Atomic) : P.Atomic :=
   hQ.atomic_of_subset <| hQ.subset_iff_le.mpr hPQ
 
 @[simp]
-lemma bot_atomic : (⊥ : Partition α).Atomic := by simp [Atomic]
+lemma bot_atomic : (⊥ : PalomarLegacyPartition α).Atomic := by simp [Atomic]
 
 lemma exists_atomic (s : α) [IsAtomistic α] [IsModularLattice α] [IsCompactlyGenerated α] :
-    ∃ P : Partition α, P.Atomic ∧ P.supp = s := by
+    ∃ P : PalomarLegacyPartition α, P.Atomic ∧ P.supp = s := by
   obtain ⟨t, htindep, heq, hAtomic⟩ := exists_sSupIndep_of_sSup_atoms s (by
     simp_rw [and_comm]
     exact sSup_atoms_le_eq s)

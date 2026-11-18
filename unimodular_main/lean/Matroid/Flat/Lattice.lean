@@ -497,8 +497,8 @@ lemma CovBy.insert_isBasis (hFF' : F ⋖[M] F') (hI : M.IsBasis I F) (he : e ∈
   rw [← hFF'.closure_insert_eq he, closure_insert_congr_right hI.closure_eq_closure]
 
 /-- The flats covering a flat `F` induce a partition of `M.E \ F`. -/
-@[simps!] def IsFlat.covByPartition (_ : M.IsFlat F) : Partition (Set α) :=
-  Partition.ofPairwiseDisjoint'
+@[simps!] def IsFlat.covByPartition (_ : M.IsFlat F) : PalomarLegacyPartition (Set α) :=
+  PalomarLegacyPartition.ofPairwiseDisjoint'
     (parts := (· \ F) '' {F' | F ⋖[M] F'})
     (pairwiseDisjoint := by
       rintro _ ⟨F₁, hF₁, rfl⟩  _ ⟨F₂, hF₂, rfl⟩ hne
@@ -512,7 +512,7 @@ lemma CovBy.insert_isBasis (hFF' : F ⋖[M] F') (hI : M.IsBasis I F) (he : e ∈
 set_option backward.isDefEq.respectTransparency false in
 @[simp]
 lemma IsFlat.covByPartition_supp (hF : M.IsFlat F) : hF.covByPartition.supp = M.E \ F := by
-  simp only [covByPartition, Partition.supp_ofPairwiseDisjoint', sSup_eq_sUnion, sUnion_image,
+  simp only [covByPartition, PalomarLegacyPartition.supp_ofPairwiseDisjoint', sSup_eq_sUnion, sUnion_image,
     mem_ofPred_eq, Set.ext_iff, mem_iUnion, mem_sdiff, exists_and_left, exists_prop]
   exact fun e ↦ ⟨fun ⟨F', heF', hlt, h⟩ ↦ ⟨hlt.isFlat_right.subset_ground heF', h⟩,
     fun ⟨he,heF⟩ ↦ ⟨M.closure (insert e F), M.mem_closure_of_mem (mem_insert _ _),

@@ -8,23 +8,23 @@ variable {α β ι ι' : Type*} {s t S T : Set α} {a b c x y : α}
 
 open Set Function
 
-namespace Partition
+namespace PalomarLegacyPartition
 
 section Induce
 
-variable [CompleteLattice α] {P Q R : Partition α}
+variable [CompleteLattice α] {P Q R : PalomarLegacyPartition α}
 
 @[simps!]
-protected def induce (P : Partition α) (a : α) : Partition α :=
+protected def induce (P : PalomarLegacyPartition α) (a : α) : PalomarLegacyPartition α :=
   ofIndependent' (u := (a ⊓ ·) '' P.parts) <| P.indep.image (fun _ ↦ inf_le_right)
 
 @[simp 80]
 lemma induce_supp : (P.induce a).supp = ⨆ t ∈ P, a ⊓ t := by
-  simp [Partition.induce, sSup_image]
+  simp [PalomarLegacyPartition.induce, sSup_image]
 
 @[simp]
 lemma mem_induce_iff : x ∈ P.induce a ↔ x ≠ ⊥ ∧ ∃ t ∈ P, a ⊓ t = x := by
-  simp [Partition.induce, and_comm]
+  simp [PalomarLegacyPartition.induce, and_comm]
 
 lemma inf_mem_induce (h : x ∈ P) (hne : a ⊓ x ≠ ⊥) : a ⊓ x ∈ P.induce a := by
   exact mem_induce_iff.mpr ⟨hne, x, h, rfl⟩
@@ -35,7 +35,7 @@ lemma induce_empty : P.induce ⊥ = ⊥ := by
   simp +contextual [eq_comm]
 
 @[simp]
-lemma induce_induce : Partition.induce (Partition.induce P a) b = Partition.induce P (b ⊓ a) := by
+lemma induce_induce : PalomarLegacyPartition.induce (PalomarLegacyPartition.induce P a) b = PalomarLegacyPartition.induce P (b ⊓ a) := by
   ext x
   simp only [mem_induce_iff, and_congr_right_iff]
   refine fun hne => ⟨fun h => ?_, fun h => ?_⟩
@@ -100,7 +100,7 @@ lemma induce_eq_induce_right (h : a ⊓ P.supp = b ⊓ P.supp) : P.induce a = P.
   (induce_le_induce_right h.le).antisymm (induce_le_induce_right h.ge)
 
 
-def isInducedSubpartition (P Q : Partition α) : Prop :=
+def isInducedSubpartition (P Q : PalomarLegacyPartition α) : Prop :=
   Q.induce P.supp = P
 
 scoped infixl:50 " ≤ip " => isInducedSubpartition
@@ -130,13 +130,13 @@ lemma isInducedSubpartition.eq_of_supp_le (hPQ : P ≤ip Q) (hQP : Q.supp ≤ P.
 lemma isInducedSubpartition_rfl : P ≤ip P := by
   simp [isInducedSubpartition]
 
-instance : Std.Refl (isInducedSubpartition : Partition α → Partition α → Prop) where
+instance : Std.Refl (isInducedSubpartition : PalomarLegacyPartition α → PalomarLegacyPartition α → Prop) where
   refl _ := isInducedSubpartition_rfl
 
 lemma isInducedSubpartition.antisymm (hPQ : P ≤ip Q) (hQP : Q ≤ip P) : P = Q :=
   hPQ.eq_of_supp_le hQP.supp_le
 
-instance : Std.Antisymm (isInducedSubpartition : Partition α → Partition α → Prop) where
+instance : Std.Antisymm (isInducedSubpartition : PalomarLegacyPartition α → PalomarLegacyPartition α → Prop) where
   antisymm _ _ := isInducedSubpartition.antisymm
 
 end Induce
@@ -145,11 +145,11 @@ section InduceFrame
 
 -- lemmas related to `induce` under `Order.Frame α` assumptions
 
-variable [Order.Frame α] {P Q R : Partition α} {a b c x y : α}
+variable [Order.Frame α] {P Q R : PalomarLegacyPartition α} {a b c x y : α}
 
 @[simp↓]
-lemma induce_supp' (P : Partition α) (a : α) : (Partition.induce P a).supp = a ⊓ P.supp := by
-  simp only [Partition.induce, supp_ofIndependent']
+lemma induce_supp' (P : PalomarLegacyPartition α) (a : α) : (PalomarLegacyPartition.induce P a).supp = a ⊓ P.supp := by
+  simp only [PalomarLegacyPartition.induce, supp_ofIndependent']
   rw [sSup_image, ← inf_sSup_eq]
   rfl
 
@@ -179,16 +179,16 @@ end InduceFrame
 
 section Restrict
 
-variable [CompleteLattice α] {P Q R : Partition α}
+variable [CompleteLattice α] {P Q R : PalomarLegacyPartition α}
 
 /-- `P \ s` is the subpartition of `P` with parts `P.parts \ s`. -/
 @[simps]
-def delete (P : Partition α) (s : Set α) : Partition α where
+def delete (P : PalomarLegacyPartition α) (s : Set α) : PalomarLegacyPartition α where
   parts := P.parts \ s
   indep := P.indep.mono sdiff_subset
   bot_not_mem h := P.bot_not_mem h.1
 
-scoped infixl:65 " \\ " => Partition.delete
+scoped infixl:65 " \\ " => PalomarLegacyPartition.delete
 
 @[simp] lemma mem_delete_iff : x ∈ delete P s ↔ x ∈ P ∧ x ∉ s := Iff.rfl
 
@@ -245,7 +245,7 @@ lemma delete_supp_le : (delete P s).supp ≤ P.supp := by
 
 /-- The subpartition with over a subset of the parts. -/
 @[simps]
-def restrict (P : Partition α) (s : Set α) (hs : s ⊆ P.parts) : Partition α where
+def restrict (P : PalomarLegacyPartition α) (s : Set α) (hs : s ⊆ P.parts) : PalomarLegacyPartition α where
   parts := s
   indep := P.indep.mono hs
   bot_not_mem h := P.bot_not_mem (hs h)
@@ -269,7 +269,7 @@ lemma restrict_eq_self_iff (hs : s ⊆ P.parts) : P.restrict s hs = P ↔ s = P.
 
 
 @[simps! parts]
-def cover (P : Partition α) (a : α) : Partition α :=
+def cover (P : PalomarLegacyPartition α) (a : α) : PalomarLegacyPartition α :=
   P.restrict {s | s ∈ P.parts ∧ ¬ Disjoint a s} (fun x ↦ by aesop)
 
 @[simp] lemma mem_cover_iff : x ∈ P.cover a ↔ x ∈ P ∧ ¬ Disjoint a x := Iff.rfl
@@ -304,14 +304,14 @@ lemma cover_eq_self_iff : P.cover a = P ↔ ∀ x ∈ P, ¬ Disjoint a x := by
   simp only [mem_cover_iff, and_iff_left_iff_imp]
   exact h x
 
-lemma induce_le_cover (P : Partition α) (a : α) : P.induce a ≤ P.cover a := by
+lemma induce_le_cover (P : PalomarLegacyPartition α) (a : α) : P.induce a ≤ P.cover a := by
   rintro x ⟨hxP, hdisj⟩
   obtain ⟨y, hyP, rfl⟩ := hxP
   simp only [mem_parts] at hyP
   simp only [mem_singleton_iff, mem_cover_iff, and_assoc, disjoint_iff] at hdisj ⊢
   use y, hyP, hdisj, inf_le_right
 
-def avoid (P : Partition α) (a : α) : Partition α :=
+def avoid (P : PalomarLegacyPartition α) (a : α) : PalomarLegacyPartition α :=
   P.restrict {s | s ∈ P.parts ∧ Disjoint a s} (fun x ↦ by aesop)
 
 @[simp] lemma mem_avoid_iff : x ∈ P.avoid a ↔ x ∈ P ∧ Disjoint a x := Iff.rfl
@@ -337,22 +337,22 @@ lemma avoid_eq_self_iff : P.avoid a = P ↔ ∀ x ∈ P, Disjoint a x := by
   exact h x
 
 
-def Agree (P Q : Partition α) : Prop := ∃ S : Partition α, P.subset S ∧ Q.subset S
+def Agree (P Q : PalomarLegacyPartition α) : Prop := ∃ S : PalomarLegacyPartition α, P.subset S ∧ Q.subset S
 
-lemma agree_of_subset_subset {P₀ Q₀ : Partition α} (hP : P₀.subset P) (hQ : Q₀.subset P) :
+lemma agree_of_subset_subset {P₀ Q₀ : PalomarLegacyPartition α} (hP : P₀.subset P) (hQ : Q₀.subset P) :
     P₀.Agree Q₀ := ⟨P, hP, hQ⟩
 
 @[simp]
 lemma Agree.rfl : P.Agree P := ⟨P, subset_rfl (a := P.parts), subset_rfl (a := P.parts)⟩
 
-instance : Std.Refl (Agree : Partition α → Partition α → Prop) where
+instance : Std.Refl (Agree : PalomarLegacyPartition α → PalomarLegacyPartition α → Prop) where
   refl _ := Agree.rfl
 
 lemma Agree.symm (h : P.Agree Q) : Q.Agree P := by
   obtain ⟨S, hPS, hQS⟩ := h
   exact ⟨S, hQS, hPS⟩
 
-instance : Std.Symm (Agree : Partition α → Partition α → Prop) where
+instance : Std.Symm (Agree : PalomarLegacyPartition α → PalomarLegacyPartition α → Prop) where
   symm _ _ := Agree.symm
 
 lemma agree_comm : P.Agree Q ↔ Q.Agree P := ⟨Agree.symm, Agree.symm⟩
@@ -376,15 +376,15 @@ lemma Agree.mem_or_disjoint (h : P.Agree Q) (ha : a ∈ P) : a ∈ Q ∨ Disjoin
   rw [or_iff_not_imp_right]
   exact mem_of_subset_of_not_disjoint hQS (hPS ha)
 
-lemma Agree.mono_left {P₀ : Partition α} (h : P.Agree Q) (hP : P₀.subset P) : P₀.Agree Q := by
+lemma Agree.mono_left {P₀ : PalomarLegacyPartition α} (h : P.Agree Q) (hP : P₀.subset P) : P₀.Agree Q := by
   obtain ⟨S, hPS, hQS⟩ := h
   exact ⟨S, trans_of _ hP hPS, hQS⟩
 
-lemma Agree.mono_right {Q₀ : Partition α} (h : P.Agree Q) (hQ : Q₀.subset Q) : P.Agree Q₀ := by
+lemma Agree.mono_right {Q₀ : PalomarLegacyPartition α} (h : P.Agree Q) (hQ : Q₀.subset Q) : P.Agree Q₀ := by
   obtain ⟨S, hPS, hQS⟩ := h
   exact ⟨S, hPS, trans_of _ hQ hQS⟩
 
-lemma Agree.mono {P₀ Q₀ : Partition α} (h : P.Agree Q) (hP : P₀.subset P) (hQ : Q₀.subset Q) :
+lemma Agree.mono {P₀ Q₀ : PalomarLegacyPartition α} (h : P.Agree Q) (hP : P₀.subset P) (hQ : Q₀.subset Q) :
     P₀.Agree Q₀ := by
   obtain ⟨S, hPS, hQS⟩ := h
   exact ⟨S, trans_of _ hP hPS, trans_of _ hQ hQS⟩
@@ -420,7 +420,7 @@ section RestrictFrame
 
 -- stuff that needs `Order.Frame α`
 
-variable [Order.Frame α] {P Q : Partition α}
+variable [Order.Frame α] {P Q : PalomarLegacyPartition α}
 
 @[simp]
 lemma cover_eq_bot_iff : P.cover a = ⊥ ↔ ∀ x ∈ P, Disjoint a x := by
@@ -429,7 +429,7 @@ lemma cover_eq_bot_iff : P.cover a = ⊥ ↔ ∀ x ∈ P, Disjoint a x := by
   by_contra hndisj
   exact P.ne_bot_of_mem hbP <| h b hbP hndisj
 
-lemma induce_sSup_eq_restrict (P : Partition α) (a : α) :
+lemma induce_sSup_eq_restrict (P : PalomarLegacyPartition α) (a : α) :
     P.induce (sSup {s | s ∈ P.parts ∧ ¬ Disjoint a s}) =
     P.restrict {s | s ∈ P.parts ∧ ¬ Disjoint a s} (fun x ↦ by aesop) := by
   ext x
@@ -466,7 +466,7 @@ lemma sSupIndep_parts_union_of_mem_of_not_disjoint (h : ∀ x ∈ P, ¬ Disjoint
 
 lemma agree_of_mem_of_not_disjoint (h : ∀ x ∈ P, ¬ Disjoint Q.supp x → x ∈ Q) : P.Agree Q := by
   have hindep : sSupIndep (P.parts ∪ Q.parts) := sSupIndep_parts_union_of_mem_of_not_disjoint h
-  let R : Partition α := ofIndependent hindep (by simp [P.bot_not_mem, Q.bot_not_mem])
+  let R : PalomarLegacyPartition α := ofIndependent hindep (by simp [P.bot_not_mem, Q.bot_not_mem])
   use R, subset_union_left, subset_union_right
 
 lemma agree_iff_mem_of_not_disjoint: P.Agree Q ↔ ∀ x ∈ P, ¬ Disjoint Q.supp x → x ∈ Q :=
@@ -478,7 +478,7 @@ lemma agree_of_supp_disjoint (h : Disjoint P.supp Q.supp) : P.Agree Q := by
   rintro x hxP hndisj
   exact (hndisj <| h.symm.mono_right (P.le_supp_of_mem hxP)).elim
 
-lemma set_pairwise_agree_iff_sUnion_pairwiseDisjoint {Ps : Set (Partition α)} :
+lemma set_pairwise_agree_iff_sUnion_pairwiseDisjoint {Ps : Set (PalomarLegacyPartition α)} :
     Ps.Pairwise Agree ↔ (⋃ P ∈ Ps, P.parts).PairwiseDisjoint id := by
   refine ⟨fun h a ha b hb hne => ?_, fun h P hP Q hQ hne => ?_⟩
   · simp only [mem_iUnion, mem_parts, exists_prop] at ha hb
@@ -490,11 +490,11 @@ lemma set_pairwise_agree_iff_sUnion_pairwiseDisjoint {Ps : Set (Partition α)} :
   apply h.subset
   simp [hP, hQ, subset_biUnion_of_mem]
 
-def ofSetPairwiseAgree (Ps : Set (Partition α)) (h : Ps.Pairwise Agree) : Partition α :=
+def ofSetPairwiseAgree (Ps : Set (PalomarLegacyPartition α)) (h : Ps.Pairwise Agree) : PalomarLegacyPartition α :=
   ofPairwiseDisjoint (set_pairwise_agree_iff_sUnion_pairwiseDisjoint.mp h)
 
 @[simp]
-lemma ofSetPairwiseAgree_parts {Ps : Set (Partition α)} (h : Ps.Pairwise Agree) :
+lemma ofSetPairwiseAgree_parts {Ps : Set (PalomarLegacyPartition α)} (h : Ps.Pairwise Agree) :
     (ofSetPairwiseAgree Ps h).parts = ⋃ P ∈ Ps, P.parts := by
   simp only [ofSetPairwiseAgree, ofPairwiseDisjoint_parts, sdiff_eq_left, disjoint_singleton_right,
     mem_iUnion, mem_parts, exists_prop, not_exists, not_and]
@@ -502,12 +502,12 @@ lemma ofSetPairwiseAgree_parts {Ps : Set (Partition α)} (h : Ps.Pairwise Agree)
   exact P.bot_not_mem
 
 @[simp]
-lemma ofSetPairwiseAgree_supp {Ps : Set (Partition α)} (h : Ps.Pairwise Agree) :
+lemma ofSetPairwiseAgree_supp {Ps : Set (PalomarLegacyPartition α)} (h : Ps.Pairwise Agree) :
     (ofSetPairwiseAgree Ps h).supp = ⨆ P ∈ Ps, P.supp := by
   simp only [supp, ofSetPairwiseAgree, ofPairwiseDisjoint_parts, sSup_sdiff_singleton_bot]
   rw [← sUnion_image, sSup_sUnion, iSup_image]
 
-lemma ofSetPairwiseAgree_subset_of_mem {Ps : Set (Partition α)} (h : Ps.Pairwise Agree)
+lemma ofSetPairwiseAgree_subset_of_mem {Ps : Set (PalomarLegacyPartition α)} (h : Ps.Pairwise Agree)
     (hP : P ∈ Ps) : P.subset (ofSetPairwiseAgree Ps h) := by
   change P.parts ⊆ (ofSetPairwiseAgree Ps h).parts
   simp only [ofSetPairwiseAgree_parts]

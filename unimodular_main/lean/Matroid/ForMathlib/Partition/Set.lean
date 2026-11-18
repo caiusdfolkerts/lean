@@ -8,13 +8,13 @@ open Set Function Relation
 
 variable {α β ι ι' : Type*} {r : α → α → Prop} {f : ι → α} {x y z : α}
 
-namespace Partition
+namespace PalomarLegacyPartition
 
 section Set
 
-variable {s t u : Set α} {S T : Set (Set α)} {P Q : Partition (Set α)}
+variable {s t u : Set α} {S T : Set (Set α)} {P Q : PalomarLegacyPartition (Set α)}
 
-@[simp] protected lemma sUnion_eq (P : Partition (Set α)) : ⋃₀ P = P.supp :=
+@[simp] protected lemma sUnion_eq (P : PalomarLegacyPartition (Set α)) : ⋃₀ P = P.supp :=
   P.sSup_eq
 
 lemma nonempty_of_mem (ht : t ∈ P) : t.Nonempty :=
@@ -78,11 +78,11 @@ end Set
 
 section Rel
 
-variable {S T : Set α} {a b c : α} {P Q : Partition (Set α)}
+variable {S T : Set α} {a b c : α} {P Q : PalomarLegacyPartition (Set α)}
 
 /-- Every partition of `s : Set α` induces a transitive, symmetric Binary relation on `α`
   whose equivalence classes are the parts of `P`. The relation is irreflexive outside `s`.  -/
-def Rel (P : Partition (Set α)) (a b : α) : Prop :=
+def Rel (P : PalomarLegacyPartition (Set α)) (a b : α) : Prop :=
   ∃ t ∈ P, a ∈ t ∧ b ∈ t
 
 lemma le_of_rel_le' (h : P.Rel ≤ Q.Rel) : P ≤ Q := by
@@ -95,7 +95,7 @@ lemma le_of_rel_le' (h : P.Rel ≤ Q.Rel) : P ≤ Q := by
   obtain rfl := eq_of_mem_of_mem hT hT' hxT hxT'
   exact haT'
 
-instance : FunLike (Partition (Set α)) α (α → Prop) where
+instance : FunLike (PalomarLegacyPartition (Set α)) α (α → Prop) where
   coe := Rel
   coe_injective _ _ h := le_antisymm (le_of_rel_le' h.le) (le_of_rel_le' h.ge)
 
@@ -117,10 +117,10 @@ lemma rel_self_of_mem_supp (hx : x ∈ P.supp) : P x x := by
   obtain ⟨t, ht, hxt⟩ := mem_supp_iff.mp hx
   exact rel_self_of_mem ht hxt
 
-instance (P : Partition (Set α)) : Std.Symm P where
+instance (P : PalomarLegacyPartition (Set α)) : Std.Symm P where
   symm _ _ := fun ⟨t, ht, ha, hb⟩ ↦ ⟨t, ht, hb, ha⟩
 
-instance (P : Partition (Set α)) : IsTrans α P where
+instance (P : PalomarLegacyPartition (Set α)) : IsTrans α P where
   trans := by
     intro _ _ _ ⟨t, ht, ha, hb⟩ ⟨t', ht', hb', hc⟩
     exact ⟨t, ht, ha, by rwa [eq_of_mem_of_mem ht ht' hb hb']⟩
@@ -181,12 +181,12 @@ lemma Rel.right_rfl (h : P x y) : P y y :=
   h.symm.left_rfl
 
 @[simp]
-lemma rel_bot : ⇑(⊥ : Partition (Set α)) = fun _ _ => False := by
+lemma rel_bot : ⇑(⊥ : PalomarLegacyPartition (Set α)) = fun _ _ => False := by
   ext x y
   simp [rel_iff_exists]
 
 @[simp]
-lemma rel_top : ⇑(⊤ : Partition (Set α)) = fun _ _ => True := by
+lemma rel_top : ⇑(⊤ : PalomarLegacyPartition (Set α)) = fun _ _ => True := by
   obtain h | h := isEmpty_or_nonempty α <;> ext x y
   · exact h.elim x
   simp [rel_iff_exists]
@@ -226,7 +226,7 @@ lemma rel_le_of_subset (h : P.subset Q) : ⇑P ≤ ⇑Q :=
 
 /-- A transitive, symmetric Binary relation `r` induces a partition of the set of elements on
   which it is reflexive. -/
-@[simps] def ofRel (r : α → α → Prop) [IsTrans α r] [Std.Symm r] : Partition (Set α) where
+@[simps] def ofRel (r : α → α → Prop) [IsTrans α r] [Std.Symm r] : PalomarLegacyPartition (Set α) where
   parts := fibers r
   indep := PairwiseDisjoint.sSupIndep fibers_pairwiseDisjoint
   bot_not_mem := emptySet_notMem_fibers r
@@ -241,7 +241,7 @@ lemma rel_ofRel_eq {r : α → α → Prop} [IsTrans α r] [Std.Symm r] : ofRel 
   exact ⟨fun ⟨S, ⟨c, ⟨d, hdc⟩, heq⟩, haS, hbS⟩ => trans' (heq ▸ haS) (symm (heq ▸ hbS)),
     fun hab => ⟨fiber r b, fiber_mem_fibers hab, hab, refl_of_right hab⟩⟩
 
-lemma ofRel_rel_eq (P : Partition (Set α)) : ofRel P = P := by
+lemma ofRel_rel_eq (P : PalomarLegacyPartition (Set α)) : ofRel P = P := by
   apply rel_inj
   rw [rel_ofRel_eq]
 
@@ -249,7 +249,7 @@ lemma fibers_rel_eq : fibers P = P.parts := by
   rw [Set.ext_iff]
   exact (ofRel P).ext_iff.mp <| ofRel_rel_eq P
 
-@[ext] theorem eq_of_rel_iff_rel {P P' : Partition (Set α)} (h : ∀ x y, P x y ↔ P' x y) :
+@[ext] theorem eq_of_rel_iff_rel {P P' : PalomarLegacyPartition (Set α)} (h : ∀ x y, P x y ↔ P' x y) :
     P = P' := by
   rw [← ofRel_rel_eq P, ← ofRel_rel_eq P']
   congr 1
@@ -257,7 +257,7 @@ lemma fibers_rel_eq : fibers P = P.parts := by
   exact h _ _
 
 @[simps!]
-def ofRel' (r : α → α → Prop) : Partition (Set α) :=
+def ofRel' (r : α → α → Prop) : PalomarLegacyPartition (Set α) :=
   ofRel (Relation.TransClosure <| Relation.SymmClosure r)
 
 @[simp]
@@ -276,7 +276,7 @@ lemma le_ofRel' (r : α → α → Prop) : r ≤ ofRel' r := by
 
 
 /-- The part containing a given element of the set being partitioned. If `x ∉ s`, then `∅`.  -/
-def partOf (P : Partition (Set α)) (x : α) : Set α :=
+def partOf (P : PalomarLegacyPartition (Set α)) (x : α) : Set α :=
   fiber P x
 
 lemma partOf_subset_supp : P.partOf x ⊆ P.supp := by
@@ -291,7 +291,7 @@ lemma partOf_mem (hx : x ∈ P.supp) : P.partOf x ∈ P := by
   rw [exists_partOf_iff_mem]
   use x
 
-lemma partOf_eq_empty (P : Partition (Set α)) (hx : x ∉ P.supp) : P.partOf x = ∅ :=
+lemma partOf_eq_empty (P : PalomarLegacyPartition (Set α)) (hx : x ∉ P.supp) : P.partOf x = ∅ :=
   fiber_empty.mpr (by simpa)
 
 @[simp]
@@ -321,7 +321,7 @@ lemma eq_partOf_iff_mem (hxT : x ∈ T) : T = P.partOf x ↔ T ∈ P := by
   rw [mem_partOf_iff] at hxT
   exact rel_self_iff_mem_supp.mp hxT
 
-lemma rel_iff_of_partOf_mem {Q : Partition (Set α)} (h : P.partOf x ∈ Q) : P x y ↔ Q x y := by
+lemma rel_iff_of_partOf_mem {Q : PalomarLegacyPartition (Set α)} (h : P.partOf x ∈ Q) : P x y ↔ Q x y := by
   simp_rw [rel_iff_exists]
   refine ⟨fun ⟨t, htP, hxt, hyt⟩ => ⟨t, ?_, hxt, hyt⟩, fun ⟨t, htQ, hxt, hyt⟩ => ⟨t, ?_, hxt, hyt⟩⟩
   · obtain rfl := P.eq_partOf_of_mem htP hxt
@@ -333,7 +333,7 @@ lemma rel_iff_of_partOf_mem {Q : Partition (Set α)} (h : P.partOf x ∈ Q) : P 
   obtain heq := Q.eq_of_mem_of_mem h htQ (mem_partOf hxP) hxt
   exact heq.symm ▸ (partOf_mem hxP)
 
-lemma partOf_mem_iff_rel_iff {Q : Partition (Set α)} :
+lemma partOf_mem_iff_rel_iff {Q : PalomarLegacyPartition (Set α)} :
     P.partOf x ∈ Q ↔ x ∈ P.supp ∧ ∀ y, P x y ↔ Q x y := by
   refine ⟨fun h => ⟨partOf_ne_bot_iff.mp (Q.ne_bot_of_mem h), fun y ↦ rel_iff_of_partOf_mem h⟩,
     fun ⟨hx, hrel⟩ => ?_⟩
@@ -344,12 +344,12 @@ lemma partOf_mem_iff_rel_iff {Q : Partition (Set α)} :
   rw [rel_comm, ← hrel y, rel_comm]
 
 @[simp]
-lemma indiscrete_rel (hS : S ≠ ∅) : ⇑(Partition.indiscrete S hS) = fun x y ↦ x ∈ S ∧ y ∈ S := by
+lemma indiscrete_rel (hS : S ≠ ∅) : ⇑(PalomarLegacyPartition.indiscrete S hS) = fun x y ↦ x ∈ S ∧ y ∈ S := by
   ext x y
   simp [rel_iff_exists]
 
 @[simp]
-lemma indiscrete'_rel : ⇑(Partition.indiscrete' S) = fun x y ↦ x ∈ S ∧ y ∈ S := by
+lemma indiscrete'_rel : ⇑(PalomarLegacyPartition.indiscrete' S) = fun x y ↦ x ∈ S ∧ y ∈ S := by
   ext x y
   simp only [rel_iff_exists, mem_indiscrete'_iff, bot_eq_empty, ne_eq, ← nonempty_iff_ne_empty,
     existsAndEq, and_true, and_iff_right_iff_imp, and_imp]
@@ -357,7 +357,7 @@ lemma indiscrete'_rel : ⇑(Partition.indiscrete' S) = fun x y ↦ x ∈ S ∧ y
   use x
 
 @[simp]
-lemma induce_rel (P : Partition (Set α)) {S : Set α} :
+lemma induce_rel (P : PalomarLegacyPartition (Set α)) {S : Set α} :
     ⇑(P.induce S) = fun x y ↦ x ∈ S ∧ y ∈ S ∧ P x y := by
   ext x y
   simp only [rel_iff_exists, mem_induce_iff]
@@ -369,17 +369,17 @@ lemma induce_rel (P : Partition (Set α)) {S : Set α} :
   use x
 
 @[simp]
-lemma induce_apply (P : Partition (Set α)) {S : Set α} :
+lemma induce_apply (P : PalomarLegacyPartition (Set α)) {S : Set α} :
     P.induce S x y ↔ x ∈ S ∧ y ∈ S ∧ P x y := by rw [induce_rel]
 
-lemma isInducedSubpartition_iff_rel (P Q : Partition (Set α)) :
+lemma isInducedSubpartition_iff_rel (P Q : PalomarLegacyPartition (Set α)) :
     P ≤ip Q ↔ (fun x y ↦ x ∈ P.supp ∧ y ∈ P.supp ∧ Q x y) = ⇑P := by
   rw [isInducedSubpartition_iff, ← rel_inj_iff, induce_rel]
 
 lemma isInducedSubpartition.rel (h : P ≤ip Q) : ⇑P = fun x y ↦ x ∈ P.supp ∧ y ∈ P.supp ∧ Q x y :=
   (P.isInducedSubpartition_iff_rel Q).mp h |>.symm
 
-lemma restrict_rel (P : Partition (Set α)) {S : Set (Set α)} (hS : S ⊆ P.parts) :
+lemma restrict_rel (P : PalomarLegacyPartition (Set α)) {S : Set (Set α)} (hS : S ⊆ P.parts) :
     ⇑(P.restrict S hS) = fun x y ↦ x ∈ ⋃₀ S ∧ P x y := by
   ext x y
   simp only [rel_iff_exists, mem_restrict_iff, mem_sUnion]
@@ -389,20 +389,20 @@ lemma restrict_rel (P : Partition (Set α)) {S : Set (Set α)} (hS : S ⊆ P.par
   exact hsS
 
 @[simp]
-lemma restrict_apply (P : Partition (Set α)) {S : Set (Set α)} (hS : S ⊆ P.parts) :
+lemma restrict_apply (P : PalomarLegacyPartition (Set α)) {S : Set (Set α)} (hS : S ⊆ P.parts) :
     P.restrict S hS x y ↔ x ∈ ⋃₀ S ∧ P x y := by rw [P.restrict_rel hS]
 
-lemma rel_of_restrict_rel (P : Partition (Set α)) {S : Set (Set α)} (hS : S ⊆ P.parts)
+lemma rel_of_restrict_rel (P : PalomarLegacyPartition (Set α)) {S : Set (Set α)} (hS : S ⊆ P.parts)
     (hx : x ∈ ⋃₀ S) (hxy : P x y) : P.restrict S hS x y := by
   rw [restrict_rel]
   exact ⟨hx, hxy⟩
 
 @[simp]
-lemma delete_rel (P : Partition (Set α)) (S : Set (Set α)) :
+lemma delete_rel (P : PalomarLegacyPartition (Set α)) (S : Set (Set α)) :
     ⇑(P \ S) = fun x y ↦ ∃ t ∈ P \ S, x ∈ t ∧ y ∈ t := rfl
 
 -- I am not really happy with this simplification route.
-lemma cover_rel (P : Partition (Set α)) (S : Set α) :
+lemma cover_rel (P : PalomarLegacyPartition (Set α)) (S : Set α) :
     ⇑(P.cover S) = Relation.Domp P (P.induce S) := by
   ext x y
   simp only [cover, mem_parts, not_disjoint_iff, restrict_apply, mem_sUnion, mem_ofPred_eq,
@@ -415,14 +415,14 @@ lemma cover_rel (P : Partition (Set α)) (S : Set α) :
   exact ⟨t, ⟨htP, by use a⟩, hxt⟩
 
 @[simp]
-lemma cover_rel_of_left_mem (P : Partition (Set α)) (hx : x ∈ S) : P.cover S x y ↔ P x y := by
+lemma cover_rel_of_left_mem (P : PalomarLegacyPartition (Set α)) (hx : x ∈ S) : P.cover S x y ↔ P x y := by
   simp only [cover, mem_parts, not_disjoint_iff, restrict_apply, mem_sUnion, mem_ofPred_eq,
     and_assoc, and_iff_right_iff_imp]
   rintro ⟨t, ht, hxt, hyt⟩
   use t, ht, by use x
 
 @[simp]
-lemma cover_rel_of_right_mem (P : Partition (Set α)) (hy : y ∈ S) : P.cover S x y ↔ P x y := by
+lemma cover_rel_of_right_mem (P : PalomarLegacyPartition (Set α)) (hy : y ∈ S) : P.cover S x y ↔ P x y := by
   rw [rel_comm, cover_rel_of_left_mem P hy, rel_comm]
 
 lemma subset_cover_supp (h : S ⊆ P.supp) : S ⊆ (P.cover S).supp := by
@@ -491,11 +491,11 @@ end Rel
 
 section Discrete
 
-variable {α : Type*} {S T : Set α} {a b : α} {P Q : Partition (Set α)}
+variable {α : Type*} {S T : Set α} {a b : α} {P Q : PalomarLegacyPartition (Set α)}
 
 /-- The discrete partition -/
 @[simps]
-protected def discrete (S : Set α) : Partition (Set α) where
+protected def discrete (S : Set α) : PalomarLegacyPartition (Set α) where
   parts := singleton '' S
   indep := by
     rintro _ ⟨a, haS, rfl⟩ T hTa hT
@@ -514,30 +514,30 @@ protected def discrete (S : Set α) : Partition (Set α) where
     rintro ⟨a, ha, heq⟩
     simp at heq
 
-@[simp] lemma supp_discrete (S : Set α) : (Partition.discrete S).supp = S := by
-  simp [Partition.discrete, supp]
+@[simp] lemma supp_discrete (S : Set α) : (PalomarLegacyPartition.discrete S).supp = S := by
+  simp [PalomarLegacyPartition.discrete, supp]
 
-@[simp] lemma mem_discrete_iff : T ∈ (Partition.discrete S) ↔ ∃ a ∈ S, {a} = T := by
+@[simp] lemma mem_discrete_iff : T ∈ (PalomarLegacyPartition.discrete S) ↔ ∃ a ∈ S, {a} = T := by
   rw [← mem_parts]
-  simp [Partition.discrete]
+  simp [PalomarLegacyPartition.discrete]
 
-lemma mem_discrete_of_mem_supp {x : α} (h : x ∈ S) : {x} ∈ Partition.discrete S := by
+lemma mem_discrete_of_mem_supp {x : α} (h : x ∈ S) : {x} ∈ PalomarLegacyPartition.discrete S := by
   use x
 
-lemma rel_discrete_eq' : Partition.discrete S = fun a b => a = b ∧ b ∈ S := by
+lemma rel_discrete_eq' : PalomarLegacyPartition.discrete S = fun a b => a = b ∧ b ∈ S := by
   ext a b
   rw [and_comm]
-  simp [Partition.discrete, rel_iff_exists, ← mem_parts]
+  simp [PalomarLegacyPartition.discrete, rel_iff_exists, ← mem_parts]
 
 @[simp]
-lemma rel_discrete_eq : Partition.discrete S = fun a b => a = b ∧ a ∈ S := by
+lemma rel_discrete_eq : PalomarLegacyPartition.discrete S = fun a b => a = b ∧ a ∈ S := by
   ext a b
   rw [rel_discrete_eq', and_congr_right_iff]
   rintro rfl
   rfl
 
 @[simp]
-lemma rel_discrete_iff : Partition.discrete S a b ↔ a = b ∧ a ∈ S := by
+lemma rel_discrete_iff : PalomarLegacyPartition.discrete S a b ↔ a = b ∧ a ∈ S := by
   rw [rel_discrete_eq]
 
 lemma eq_of_rel_of_left_singleton_mem (hab : P a b) (ha : {a} ∈ P) : a = b := by
@@ -550,17 +550,17 @@ lemma eq_of_rel_of_right_singleton_mem (hab : P a b) (hb : {b} ∈ P) : a = b :=
   exact (eq_of_rel_of_left_singleton_mem hab hb).symm
 
 @[simp]
-lemma discrete_atomic (S : Set α) : (Partition.discrete S).Atomic := by
+lemma discrete_atomic (S : Set α) : (PalomarLegacyPartition.discrete S).Atomic := by
   rintro _ ⟨a, -, rfl⟩
   exact isAtom_singleton a
 
 lemma Atomic.exists_singleton_of_mem (hP : Atomic P) {t : Set α} (htP : t ∈ P) : ∃ a, t = {a} :=
   Set.isAtom_iff.mp <| hP t htP
 
-lemma atomic_iff_eq_discrete (P : Partition (Set α)) :
-    P.Atomic ↔ P = Partition.discrete P.supp := by
+lemma atomic_iff_eq_discrete (P : PalomarLegacyPartition (Set α)) :
+    P.Atomic ↔ P = PalomarLegacyPartition.discrete P.supp := by
   refine ⟨fun h => ?_, fun h => h ▸ discrete_atomic P.supp⟩
-  apply Partition.ext fun x ↦ ?_
+  apply PalomarLegacyPartition.ext fun x ↦ ?_
   refine ⟨fun hx => ?_, ?_⟩
   · obtain ⟨a, rfl⟩ := h.exists_singleton_of_mem hx
     simp only [mem_discrete_iff, singleton_eq_singleton_iff, exists_eq_right]
@@ -578,23 +578,23 @@ lemma mem_atomic_iff (hP : P.Atomic) : S ∈ P ↔ ∃ a ∈ P.supp, {a} = S := 
   rintro ⟨a, ha, rfl⟩
   simpa
 
-lemma eq_discrete_iff : P = Partition.discrete S ↔ P.Atomic ∧ P.supp = S := by
+lemma eq_discrete_iff : P = PalomarLegacyPartition.discrete S ↔ P.Atomic ∧ P.supp = S := by
   constructor
   · rintro rfl
     exact ⟨discrete_atomic S, supp_discrete S⟩
   rintro ⟨hP, rfl⟩
   exact (atomic_iff_eq_discrete P).mp hP
 
-lemma eq_discrete_of (hP : Atomic P) (hS : P.supp = S) : P = Partition.discrete S :=
+lemma eq_discrete_of (hP : Atomic P) (hS : P.supp = S) : P = PalomarLegacyPartition.discrete S :=
   eq_discrete_iff.mpr ⟨hP, hS⟩
 
-lemma discrete_le_of_supp_eq (P : Partition (Set α)) : Partition.discrete P.supp ≤ P := by
+lemma discrete_le_of_supp_eq (P : PalomarLegacyPartition (Set α)) : PalomarLegacyPartition.discrete P.supp ≤ P := by
   refine le_of_rel_le fun a b => ?_
   rw [rel_discrete_iff]
   rintro ⟨rfl, hb⟩
   exact rel_self_of_mem_supp hb
 
-lemma atomic_iff_rel_le_eq (P : Partition (Set α)) : P.Atomic ↔ ⇑P ≤ Eq := by
+lemma atomic_iff_rel_le_eq (P : PalomarLegacyPartition (Set α)) : P.Atomic ↔ ⇑P ≤ Eq := by
   refine ⟨fun h x y ⟨t, htP, hxt, hyt⟩ ↦ ?_, fun h t htP ↦ ?_⟩
   · obtain ⟨a, rfl⟩ := Set.isAtom_iff.mp <| h t htP
     rw [mem_singleton_iff] at hxt hyt
@@ -611,36 +611,36 @@ lemma Atomic.rel_eq (hP : Atomic P) : ⇑P = fun a b => a = b ∧ a ∈ P.supp :
   rintro ⟨rfl, ha⟩
   exact rel_self_of_mem_supp ha
 
-lemma discrete_of_le_discrete (hS : P ≤ Partition.discrete S) : P = Partition.discrete P.supp := by
+lemma discrete_of_le_discrete (hS : P ≤ PalomarLegacyPartition.discrete S) : P = PalomarLegacyPartition.discrete P.supp := by
   rw [← atomic_iff_eq_discrete]
   exact (discrete_atomic S).atomic_of_le hS
 
 lemma discrete_subset_discrete_of_subset (hST : S ⊆ T) :
-    (Partition.discrete S).subset (Partition.discrete T) := by
+    (PalomarLegacyPartition.discrete S).subset (PalomarLegacyPartition.discrete T) := by
   rintro s hsS
   obtain ⟨x, hx, rfl⟩ := hsS
   use x, hST hx
 
 @[simp]
-lemma discrete_subset_discrete_iff : (Partition.discrete S).subset (Partition.discrete T) ↔ S ⊆ T :=
+lemma discrete_subset_discrete_iff : (PalomarLegacyPartition.discrete S).subset (PalomarLegacyPartition.discrete T) ↔ S ⊆ T :=
   ⟨fun h x => by simpa using @h {x}, discrete_subset_discrete_of_subset⟩
 
-lemma discrete_mono (hST : S ⊆ T) : Partition.discrete S ≤ Partition.discrete T := by
+lemma discrete_mono (hST : S ⊆ T) : PalomarLegacyPartition.discrete S ≤ PalomarLegacyPartition.discrete T := by
   rw [← (discrete_atomic T).subset_iff_le]
   exact discrete_subset_discrete_of_subset hST
 
 lemma discrete_subset_iff_rel :
-    (Partition.discrete S).subset P ↔ ∀ x y, x ∈ S → (x = y ↔ P x y) := by
+    (PalomarLegacyPartition.discrete S).subset P ↔ ∀ x y, x ∈ S → (x = y ↔ P x y) := by
   simp +contextual [subset_iff_rel]
 
 @[simp]
-lemma discrete_empty : Partition.discrete (∅ : Set α) = ⊥ := by
+lemma discrete_empty : PalomarLegacyPartition.discrete (∅ : Set α) = ⊥ := by
   ext x
   simp
 
-lemma supp_singleton_iff (hP : P.supp = {a}) : P = Partition.discrete {a} := by
+lemma supp_singleton_iff (hP : P.supp = {a}) : P = PalomarLegacyPartition.discrete {a} := by
   simp only [← codomain_rel, Set.ext_iff, mem_codomain_iff, mem_singleton_iff] at hP
-  rw [← Partition.rel_inj_iff]
+  rw [← PalomarLegacyPartition.rel_inj_iff]
   ext x y
   simp only [rel_discrete_iff, mem_singleton_iff]
   refine ⟨fun h => ?_, ?_⟩
@@ -656,7 +656,7 @@ lemma atomic_of_supp_singleton (hP : P.supp = {a}) : P.Atomic := by
   exact discrete_atomic {a}
 
 @[simp]
-lemma discrete_le_iff : Partition.discrete S ≤ P ↔ S ⊆ P.supp := by
+lemma discrete_le_iff : PalomarLegacyPartition.discrete S ≤ P ↔ S ⊆ P.supp := by
   refine ⟨fun h x hx => ?_, fun h t ht => ?_⟩
   · obtain ⟨t, htP, hxt⟩ := h {x} (mem_discrete_of_mem_supp hx)
     simp only [singleton_subset_iff] at hxt
@@ -666,7 +666,7 @@ lemma discrete_le_iff : Partition.discrete S ≤ P ↔ S ⊆ P.supp := by
 
 @[simp]
 lemma discrete_isInducedSubpartition_iff :
-    Partition.discrete S ≤ip Q ↔ S ⊆ Q.supp ∧ Atomic (Q.induce S) := by
+    PalomarLegacyPartition.discrete S ≤ip Q ↔ S ⊆ Q.supp ∧ Atomic (Q.induce S) := by
   simp only [isInducedSubpartition_iff, supp_discrete, atomic_iff_eq_discrete, ↓induce_supp',
     inf_eq_inter]
   refine ⟨fun h => ?_, fun ⟨hsu, heq⟩ => by rw [heq, inter_eq_left.mpr hsu]⟩
@@ -695,9 +695,9 @@ end Discrete
 
 section Flatten
 
-variable [Order.Frame α] {P : Partition (Set α)} {Q : Partition α} (h : P.supp = Q.parts) {p q : α}
+variable [Order.Frame α] {P : PalomarLegacyPartition (Set α)} {Q : PalomarLegacyPartition α} (h : P.supp = Q.parts) {p q : α}
 
-def flatten (P : Partition (Set α)) {Q : Partition α} (h : P.supp = Q.parts) : Partition α where
+def flatten (P : PalomarLegacyPartition (Set α)) {Q : PalomarLegacyPartition α} (h : P.supp = Q.parts) : PalomarLegacyPartition α where
   parts := sSup '' P.parts
   indep := by
     rintro a ⟨F, hF, rfl⟩
@@ -720,16 +720,16 @@ def flatten (P : Partition (Set α)) {Q : Partition α} (h : P.supp = Q.parts) :
     exact le_sSup ha |>.not_gt hFa
 
 @[simp]
-lemma flatten_parts (P : Partition (Set α)) (h : P.supp = Q.parts) :
+lemma flatten_parts (P : PalomarLegacyPartition (Set α)) (h : P.supp = Q.parts) :
     (flatten P h).parts = sSup '' P.parts := rfl
 
 @[simp]
-lemma flatten_supp (P : Partition (Set α)) (h : P.supp = Q.parts) :
+lemma flatten_supp (P : PalomarLegacyPartition (Set α)) (h : P.supp = Q.parts) :
     (flatten P h).supp = Q.supp := by
   simp only [supp, flatten, ← h, sSup_eq_sUnion]
   rw [sSup_image, sSup_sUnion]
 
-lemma le_flatten (P : Partition (Set α)) (h : P.supp = Q.parts) : Q ≤ P.flatten h := by
+lemma le_flatten (P : PalomarLegacyPartition (Set α)) (h : P.supp = Q.parts) : Q ≤ P.flatten h := by
   intro q hqQ
   rw [← mem_parts, ← h, mem_supp_iff] at hqQ
   obtain ⟨F, hF, hqF⟩ := hqQ
@@ -740,4 +740,4 @@ lemma le_flatten (P : Partition (Set α)) (h : P.supp = Q.parts) : Q ≤ P.flatt
 end Flatten
 
 
-end Partition
+end PalomarLegacyPartition

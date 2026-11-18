@@ -177,13 +177,13 @@ lemma ConnectedTo.trans {e₁ e₂ : α} (h₁ : M.ConnectedTo e₁ f) (h₂ : M
 instance : IsTrans α M.ConnectedTo where
   trans _ _ _ := ConnectedTo.trans
 
-def ConnPartition (M : Matroid α) : Partition (Set α) :=
-  Partition.ofRel (ConnectedTo M)
+def ConnPartition (M : Matroid α) : PalomarLegacyPartition (Set α) :=
+  PalomarLegacyPartition.ofRel (ConnectedTo M)
 
 @[simp]
 lemma connPartition_supp (M : Matroid α) : M.ConnPartition.supp = M.E := by
   ext x
-  simp only [ConnPartition, Partition.ofRel_supp, Relation.domain, mem_ofPred_eq]
+  simp only [ConnPartition, PalomarLegacyPartition.ofRel_supp, Relation.domain, mem_ofPred_eq]
   exact ⟨fun ⟨y, hy⟩ ↦ hy.mem_ground_left, fun hx ↦ ⟨x, connectedTo_self hx⟩⟩
 
 @[simp]

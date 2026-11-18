@@ -239,7 +239,7 @@ lemma IsFlat.ground_encard_eq_tsum (hF₀ : M.IsFlat F₀) :
   rw [← encard_sdiff_add_encard_of_subset hF₀.subset_ground, add_comm]
   apply congr_arg (_ + ·)
   have hcard := ENat.tsum_encard_eq_encard_sUnion hF₀.covByPartition.pairwiseDisjoint
-  simp only [SetLike.coe_sort_coe, Partition.sUnion_eq] at hcard
+  simp only [SetLike.coe_sort_coe, PalomarLegacyPartition.sUnion_eq] at hcard
   rw [← ENat.tsum_comp_eq_tsum_of_equiv hF₀.equivCovByPartition (fun F ↦ encard ((F : Set α) \ F₀)),
     ← hcard]
   apply tsum_congr

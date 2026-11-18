@@ -8,14 +8,14 @@ open Set Function Relation
 
 variable {α β ι ι' : Type*} {r : α → α → Prop} {f : ι → α} {x y z : α}
 
-namespace Partition
+namespace PalomarLegacyPartition
 
 section Rep
 
-variable {S T : Set α} {a b : α} {P : Partition (Set α)}
+variable {S T : Set α} {a b : α} {P : PalomarLegacyPartition (Set α)}
 
 /-- Noncomputably choose a representative from an equivalence class-/
-noncomputable def rep (P : Partition (Set α)) (ht : T ∈ P) : α := (P.nonempty_of_mem ht).some
+noncomputable def rep (P : PalomarLegacyPartition (Set α)) (ht : T ∈ P) : α := (P.nonempty_of_mem ht).some
 
 @[simp] lemma rep_mem (ht : T ∈ P) : P.rep ht ∈ T :=
   (P.nonempty_of_mem ht).some_mem
@@ -26,10 +26,10 @@ noncomputable def rep (P : Partition (Set α)) (ht : T ∈ P) : α := (P.nonempt
 @[simp] lemma partOf_rep (ht : T ∈ P) : P.partOf (P.rep ht) = T :=
   (eq_partOf_of_mem ht (P.rep_mem ht)).symm
 
-lemma finite_of_finite (P : Partition (Set α)) (hs : P.supp.Finite) : (P : Set (Set α)).Finite :=
+lemma finite_of_finite (P : PalomarLegacyPartition (Set α)) (hs : P.supp.Finite) : (P : Set (Set α)).Finite :=
   hs.finite_subsets.subset fun _ ↦ subset_of_mem
 
-lemma rel_iff_partOf_eq_partOf (P : Partition (Set α)) (hx : x ∈ P.supp) (hy : y ∈ P.supp) :
+lemma rel_iff_partOf_eq_partOf (P : PalomarLegacyPartition (Set α)) (hx : x ∈ P.supp) (hy : y ∈ P.supp) :
     P x y ↔ P.partOf x = P.partOf y := by
   refine ⟨fun ⟨t, htP, hxt, hyt⟩ ↦ ?_, fun h ↦ ⟨P.partOf x, P.partOf_mem hx, P.mem_partOf hx, ?_⟩⟩
   · rw [eq_partOf_of_mem (P.partOf_mem hx)]
@@ -37,7 +37,7 @@ lemma rel_iff_partOf_eq_partOf (P : Partition (Set α)) (hx : x ∈ P.supp) (hy 
   rw [h]
   exact mem_partOf hy
 
-lemma rel_iff_partOf_eq_partOf' (P : Partition (Set α)) :
+lemma rel_iff_partOf_eq_partOf' (P : PalomarLegacyPartition (Set α)) :
     P x y ↔ ∃ (_ : x ∈ P.supp) (_ : y ∈ P.supp), P.partOf x = P.partOf y :=
   ⟨fun h ↦ ⟨h.left_mem, h.right_mem, (P.rel_iff_partOf_eq_partOf h.left_mem h.right_mem).1 h⟩,
     fun ⟨hx,hy,h⟩ ↦ (P.rel_iff_partOf_eq_partOf hx hy).2 h⟩
@@ -48,7 +48,7 @@ lemma rel_iff_forall : P x y ↔ x ∈ P.supp ∧ ∀ t ∈ P, x ∈ t ↔ y ∈
   rw [← h _ (P.partOf_mem hxs)]
   exact P.mem_partOf hxs
 
-lemma setOf_rel_self_eq (P : Partition (Set α)) : {x | P x x} = P.supp := by
+lemma setOf_rel_self_eq (P : PalomarLegacyPartition (Set α)) : {x | P x x} = P.supp := by
   refine subset_antisymm (fun x hx ↦ ?_) (fun x hx ↦ ?_)
   · obtain ⟨t, ht, hxP, -⟩ := hx
     exact subset_of_mem ht hxP
@@ -65,34 +65,34 @@ lemma setOf_rel_eq (ht : T ∈ P) (hx : x ∈ T) : {y | P x y} = T :=
 lemma rep_rel (ht : T ∈ P) (hx : x ∈ T) : P x (P.rep ht) :=
   ⟨T, ht, hx, P.rep_mem ht⟩
 
-@[simp] lemma rep_rel_self {P : Partition (Set α)} (ht : T ∈ P) : P (P.rep ht) (P.rep ht) :=
+@[simp] lemma rep_rel_self {P : PalomarLegacyPartition (Set α)} (ht : T ∈ P) : P (P.rep ht) (P.rep ht) :=
   rep_rel _ (P.rep_mem ht)
 
 lemma setOf_rel_rep_eq (ht : T ∈ P) : {x | P (P.rep ht) x} = T :=
   setOf_rel_eq ht (P.rep_mem ht)
 
 /-- The `partOf x` is the set of `y` related to `x`. True even if `x ∉ s`, since both are `∅`.-/
-lemma setOf_rel_eq_partOf (P : Partition (Set α)) (x : α) : {y | P x y} = P.partOf x := by
+lemma setOf_rel_eq_partOf (P : PalomarLegacyPartition (Set α)) (x : α) : {y | P x y} = P.partOf x := by
   by_cases hx : x ∈ P.supp
   · rw [setOf_rel_eq (P.partOf_mem hx) (P.mem_partOf hx)]
   rw [partOf_eq_empty _ hx, eq_empty_iff_forall_notMem]
   exact fun y hxy ↦ hx <| Rel.left_mem hxy
 
-lemma setOf_rel_mem (P : Partition (Set α)) (hx : x ∈ P.supp) : {y | P x y} ∈ P := by
+lemma setOf_rel_mem (P : PalomarLegacyPartition (Set α)) (hx : x ∈ P.supp) : {y | P x y} ∈ P := by
   obtain ⟨t, ⟨ht,hp⟩, -⟩ := P.exists_unique_of_mem_supp hx
   rwa [setOf_rel_eq ht hp]
 
 lemma discrete.rel_iff_eq_of_mem (ha : a ∈ P.supp) :
-    (Partition.discrete P.supp) a b ↔ a = b := by
+    (PalomarLegacyPartition.discrete P.supp) a b ↔ a = b := by
   rw [rel_discrete_iff, and_iff_left ha]
 
 end Rep
 
 section RepFun
 
-variable {a b : α} {s : Set α} {P : Partition (Set α)}
+variable {a b : α} {s : Set α} {P : PalomarLegacyPartition (Set α)}
 
-structure RepFun (P : Partition (Set α)) where
+structure RepFun (P : PalomarLegacyPartition (Set α)) where
   (toFun : α → α)
   (apply_eq_self_of_notMem : ∀ a ∉ P.supp, toFun a = a)
   (rel_apply_of_mem : ∀ a ∈ P.supp, P a (toFun a))
@@ -102,13 +102,13 @@ instance : FunLike (RepFun P) α α where
   coe := RepFun.toFun
   coe_injective f f' := by cases f; cases f'; simp
 
-def RepFun.mk' (P : Partition (Set α)) (f : α → α) {p : α → Prop} (hP : ∀ {x}, x ∈ P.supp ↔ p x)
+def RepFun.mk' (P : PalomarLegacyPartition (Set α)) (f : α → α) {p : α → Prop} (hP : ∀ {x}, x ∈ P.supp ↔ p x)
     (h₁ : ∀ a, ¬ p a → f a = a) (h₂ : ∀ a, p a → P a (f a))
     (h₃ : ∀ a b, P a b → f a = f b) : P.RepFun :=
   ⟨f, fun a ha ↦ h₁ a (hP.not.mp ha), fun a ha ↦ h₂ a (hP.mp ha), h₃⟩
 
 @[simp]
-lemma RepFun.mk_apply (P : Partition (Set α)) (f) (h₁ : ∀ a ∉ P.supp, f a = a)
+lemma RepFun.mk_apply (P : PalomarLegacyPartition (Set α)) (f) (h₁ : ∀ a ∉ P.supp, f a = a)
   (h₂ : ∀ a ∈ P.supp, P a (f a)) (h₃) (x : α) : (RepFun.mk f h₁ h₂ h₃) x = f x := rfl
 
 lemma RepFun.apply_of_notMem (f : P.RepFun) (ha : a ∉ P.supp) : f a = a :=
@@ -171,7 +171,7 @@ lemma RepFun.idem (f : P.RepFun) (a : α) : f (f a) = f a := by
   simp_rw [f.apply_of_notMem ha]
 
 /-- Any partially defined `RepFun` extends to a complete one. -/
-lemma exists_extend_partial_repFun (P : Partition (Set α)) {t : Set α} (f₀ : t → α)
+lemma exists_extend_partial_repFun (P : PalomarLegacyPartition (Set α)) {t : Set α} (f₀ : t → α)
     (h_notMem : ∀ x : t, x.1 ∉ P.supp → f₀ x = x) (h_mem : ∀ x : t, x.1 ∈ P.supp → P x (f₀ x))
     (h_eq : ∀ x y : t, P x y → f₀ x = f₀ y) : ∃ (f : P.RepFun), ∀ x : t, f x = f₀ x := by
   classical
@@ -200,13 +200,13 @@ lemma exists_extend_partial_repFun (P : Partition (Set α)) {t : Set α} (f₀ :
 
 /-- For any set `t` containining no two distinct related elements, there is a `RepFun` equal to
 the identity on `t`. -/
-lemma exists_extend_partial_repFun' (P : Partition (Set α)) {t : Set α}
+lemma exists_extend_partial_repFun' (P : PalomarLegacyPartition (Set α)) {t : Set α}
     (h : ∀ ⦃x y⦄, x ∈ t → y ∈ t → P x y → x = y) : ∃ (f : P.RepFun), EqOn f id t := by
   obtain ⟨f, hf⟩ := P.exists_extend_partial_repFun (fun x : t ↦ x) (by simp)
     (by simp [P.rel_self_iff_mem]) (fun x y ↦ h x.2 y.2)
   exact ⟨f, fun x hx ↦ hf ⟨x, hx⟩⟩
 
-lemma nonempty_repFun (P : Partition (Set α)) : Nonempty P.RepFun := by
+lemma nonempty_repFun (P : PalomarLegacyPartition (Set α)) : Nonempty P.RepFun := by
   obtain ⟨f, -⟩ := P.exists_extend_partial_repFun' (t := ∅) (by simp)
   exact ⟨f⟩
 
@@ -217,7 +217,7 @@ theorem repFun_repFun (f f' : P.RepFun) (x : α) : f (f' x) = f x := by
   rw [f'.apply_of_notMem hx, f.apply_of_notMem hx]
 
 @[simp]
-lemma repFun_discrete_coeFun (s : Set α) (f : (Partition.discrete s).RepFun) :
+lemma repFun_discrete_coeFun (s : Set α) (f : (PalomarLegacyPartition.discrete s).RepFun) :
     (f : α → α) = id := by
   ext x
   obtain (hx | hx) := em (x ∈ s)
@@ -226,7 +226,7 @@ lemma repFun_discrete_coeFun (s : Set α) (f : (Partition.discrete s).RepFun) :
     exact hx'.1.symm
   rw [f.apply_of_notMem (supp_discrete s |>.symm ▸ hx), id]
 
-lemma RepFun.coeFun_eq_id_of_eq_discrete  (f : P.RepFun) (hP : P = Partition.discrete s) :
+lemma RepFun.coeFun_eq_id_of_eq_discrete  (f : P.RepFun) (hP : P = PalomarLegacyPartition.discrete s) :
     (f : α → α) = id := by
   subst hP; exact repFun_discrete_coeFun s f
 
@@ -234,9 +234,9 @@ end RepFun
 
 section fiber
 
-variable {f : α → α} {S : Set α} {P : Partition (Set α)}
+variable {f : α → α} {S : Set α} {P : PalomarLegacyPartition (Set α)}
 
-def fiber (f : α → α) : Partition (Set α) := by
+def fiber (f : α → α) : PalomarLegacyPartition (Set α) := by
   refine ofIndependent' (u := (f ⁻¹' {·}) '' (univ : Set α)) ?_
   rintro _ ⟨s, -, rfl⟩
   simp only [image_univ, sSup_eq_sUnion, disjoint_iff_forall_ne, mem_preimage, mem_singleton_iff,
@@ -263,7 +263,7 @@ lemma fiber_rel_iff (f : α → α) : (fiber f) x y ↔ f x = f y := by
   grind
 
 lemma le_fiber_iff (f : α → α) : P ≤ fiber f ↔ ∀ a b, P a b → f a = f b := by
-  simp_rw [← Partition.rel_le_iff_le, Pi.le_def, fiber_rel_iff]
+  simp_rw [← PalomarLegacyPartition.rel_le_iff_le, Pi.le_def, fiber_rel_iff]
   rfl
 
 end fiber
@@ -272,13 +272,13 @@ end fiber
 
 section IsRepFun
 
-variable {a b : α} {s : Set α} {P P' : Partition (Set α)} {f g : α → α} {p : α → Prop}
+variable {a b : α} {s : Set α} {P P' : PalomarLegacyPartition (Set α)} {f g : α → α} {p : α → Prop}
 
 /-- A predicate characterizing when a function `f : α → α` is a representative function for a
 partition `P`. A representative function maps each element to a canonical representative in its
 equivalence class, is the identity outside the support, and maps related elements to the same
 representative. -/
-structure IsRepFun (P : Partition (Set α)) (f : α → α) : Prop where
+structure IsRepFun (P : PalomarLegacyPartition (Set α)) (f : α → α) : Prop where
   apply_of_notMem : ∀ ⦃a⦄, a ∉ P.supp → f a = a
   rel_apply : ∀ ⦃a⦄, a ∈ P.supp → P a (f a)
   apply_eq_apply : ∀ ⦃a b⦄, P a b → f a = f b
@@ -286,7 +286,7 @@ structure IsRepFun (P : Partition (Set α)) (f : α → α) : Prop where
 namespace IsRepFun
 
 /-- Constructor for `IsRepFun` that uses a custom membership predicate. -/
-lemma mk' (P : Partition (Set α)) (f : α → α) (hP : ∀ {x}, x ∈ P.supp ↔ p x)
+lemma mk' (P : PalomarLegacyPartition (Set α)) (f : α → α) (hP : ∀ {x}, x ∈ P.supp ↔ p x)
     (h₁ : ∀ a, ¬ p a → f a = a) (h₂ : ∀ a, p a → P a (f a))
     (h₃ : ∀ a b, P a b → f a = f b) : IsRepFun P f :=
   ⟨fun a ha ↦ h₁ a (hP.not.mp ha), fun a ha ↦ h₂ a (hP.mp ha), h₃⟩
@@ -402,7 +402,7 @@ lemma notMem_image_supp_of_rel_of_ne_apply (hf : IsRepFun P f) (hab : P a b) (h 
 end IsRepFun
 
 /-- Any partially defined representative function extends to a complete one. -/
-lemma exists_extend_partial (P : Partition (Set α)) {t : Set α} (f₀ : t → α)
+lemma exists_extend_partial (P : PalomarLegacyPartition (Set α)) {t : Set α} (f₀ : t → α)
     (h_notMem : ∀ x : t, x.1 ∉ P.supp → f₀ x = x) (h_mem : ∀ x : t, x.1 ∈ P.supp → P x (f₀ x))
     (h_eq : ∀ x y : t, P x y → f₀ x = f₀ y) : ∃ f, IsRepFun P f ∧ ∀ x : t, f x = f₀ x := by
   classical
@@ -430,13 +430,13 @@ lemma exists_extend_partial (P : Partition (Set α)) {t : Set α} (f₀ : t → 
 
 /-- For any set `t` containing no two distinct related elements, there is a representative function
 equal to the identity on `t`. -/
-lemma exists_extend_partial' (P : Partition (Set α)) {t : Set α}
+lemma exists_extend_partial' (P : PalomarLegacyPartition (Set α)) {t : Set α}
     (h : ∀ ⦃x y⦄, x ∈ t → y ∈ t → P x y → x = y) : ∃ f, IsRepFun P f ∧ EqOn f id t := by
   obtain ⟨f, hf, hft⟩ := exists_extend_partial P (fun x : t ↦ x) (by simp)
     (by simp [P.rel_self_iff_mem]) (fun x y ↦ h x.2 y.2)
   exact ⟨f, hf, fun x hx ↦ hft ⟨x, hx⟩⟩
 
-lemma isRepFun_nonempty (P : Partition (Set α)) : ∃ f, IsRepFun P f := by
+lemma isRepFun_nonempty (P : PalomarLegacyPartition (Set α)) : ∃ f, IsRepFun P f := by
   obtain ⟨f, hf, -⟩ := exists_extend_partial' P (t := ∅) (by simp)
   exact ⟨f, hf⟩
 
@@ -479,17 +479,17 @@ end IsRepFun
 
 -- /-- If `a ∈ s`, noncomputably choose an element in the same cell of `P` as some `a : α`.
 -- If `a ∉ s`, is equal to `a`. -/
--- noncomputable def rep' (P : Partition (Set α)) (a : α) : α :=
+-- noncomputable def rep' (P : PalomarLegacyPartition (Set α)) (a : α) : α :=
 --     if h : a ∈ s then P.rep (P.partOf_mem h) else a
 
--- lemma rep'_eq_rep (P : Partition (Set α)) (ha : a ∈ s) : P.rep' a = P.rep (P.partOf_mem ha) := by
+-- lemma rep'_eq_rep (P : PalomarLegacyPartition (Set α)) (ha : a ∈ s) : P.rep' a = P.rep (P.partOf_mem ha) := by
 --   rw [rep', dite_eq_left ha]
 
--- lemma rel_rep' (P : Partition (Set α)) (ha : a ∈ s) : P a (P.rep' a) := by
+-- lemma rel_rep' (P : PalomarLegacyPartition (Set α)) (ha : a ∈ s) : P a (P.rep' a) := by
 --   rw [P.rep'_eq_rep ha]
 --   exact P.rep_rel (P.partOf_mem ha) (P.mem_partOf ha)
 
--- lemma rep'_eq_self_of_notMem (P : Partition (Set α)) (ha : a ∉ s) : P.rep' a = a := by
+-- lemma rep'_eq_self_of_notMem (P : PalomarLegacyPartition (Set α)) (ha : a ∉ s) : P.rep' a = a := by
 --   rw [rep', dite_eq_right ha]
 
 -- lemma rel_iff_rep'_eq_rep' (ha : a ∈ s) (hb : b ∈ s) : P a b ↔ P.rep' a = P.rep' b := by
