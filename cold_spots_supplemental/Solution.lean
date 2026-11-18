@@ -324,9 +324,10 @@ private theorem dPlus_closure_eq (n : ℕ) (heven : Even n) :
 
 private theorem e7_closure_eq :
     AddSubgroup.closure e7ProjectedSet = PaperVerification.ColdSpots.e7ProjectedAddSubgroup := by
-  have h : e7ProjectedSet = (PaperVerification.ColdSpots.e7ProjectedAddSubgroup : Set _) :=
-    PaperVerification.ColdSpots.e7ProjectedAddSubgroup_coe.symm
-  exact (congrArg AddSubgroup.closure h).trans (AddSubgroup.closure_eq _)
+  change AddSubgroup.closure PaperVerification.ColdSpots.e7ProjectedSet =
+    PaperVerification.ColdSpots.e7ProjectedAddSubgroup
+  rw [← PaperVerification.ColdSpots.e7ProjectedAddSubgroup_coe]
+  exact AddSubgroup.closure_eq _
 
 private theorem bw16_closure_eq :
     AddSubgroup.closure bw16Set = PaperVerification.ColdSpots.bw16AddSubgroup := by
