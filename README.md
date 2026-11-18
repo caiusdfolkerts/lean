@@ -1,5 +1,7 @@
-# Palomar submission: symmetric_rank_conditions
+# Exact symmetric theorem type diagnostic
 
-Substantive source snapshot of [caiusdfolkerts/research](https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/symmetric_rank_conditions), revision `e0696fddcd3d10b5d6461e62e9b2f02c4195be37`.
+Immutable source 0410627bdeb75623e5a6d5cd7044713731084927, failed run44351893553. All49 Comparator-selected theorem types are compared before the dependency traversal. Every endpoint reports exact raw type equality, complete universe parameter lists, type AST lengths, candidate/emission/depth limits, and completeness flags. Up to1 first raw difference per endpoint is emitted under a separate64-leaf type quota; no later endpoint can be suppressed by earlier targets. Leaf text is capped at500 characters with explicit length/truncation flags; the search is capped at6 candidates and depth96 with explicit flags. Global expected/reported/missing endpoint counts are required.
 
-The complete selected development, paper, metadata, and Comparator configuration are in `symmetric_rank_conditions/`. This branch prepares a registry submission; it does not claim registry acceptance. See `symmetric_rank_conditions/formalization.yaml` for exact scope and provenance.
+The unchanged fixture-tested parser/walker also audits the entire reachable raw ConstantInfo union, with its separate48 data-value leaf quota. No raw expression is normalized. A missing endpoint or unequal type with no returned leaf is explicitly marked incomplete. The bounded log retains first200/last200 lines and250000 characters;49 endpoint summaries precede data traversal, with at most49 first leaves. The exact mechanical report is uploaded even if preparation fails.
+
+No project source, scope, hypothesis or proof is changed. This is diagnostic evidence, not a preflight, kernel or intake result. Root owns publication. Both actual input blocks are validated against both exact pinned pipeline parsers before freeze. Request symtypes0001 has12 lowercase alphanumeric characters. No local compiler was run.
