@@ -1,4 +1,8 @@
+module
+
 import CommAlg.Polymatroid.HomologicalInterval
+
+@[expose] public section
 
 /-!
 # Arbitrary polynomial generators in the exact Rees generation bound

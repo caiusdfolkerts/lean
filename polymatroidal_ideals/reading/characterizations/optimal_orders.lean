@@ -1,4 +1,8 @@
+module
+
 import Characterizations.TripleCount
+
+@[expose] public section
 
 /-! # A minimum family of universal variable-order tests -/
 

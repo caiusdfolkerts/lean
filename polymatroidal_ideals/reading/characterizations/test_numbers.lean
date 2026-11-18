@@ -1,4 +1,8 @@
+module
+
 import Characterizations.CountingBounds
+
+@[expose] public section
 
 /-! # The literal minimum numbers N(n) and N(n,d) -/
 

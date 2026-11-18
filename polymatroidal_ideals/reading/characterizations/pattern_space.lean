@@ -1,4 +1,8 @@
+module
+
 import Characterizations.FiniteCover
+
+@[expose] public section
 
 /-! # The finite space of all required degree-sensitive patterns -/
 

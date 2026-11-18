@@ -1,6 +1,10 @@
+module
+
 import Characterizations.Resolution.HomogeneousFree
 import CommAlg.KoszulComplex.Resolution
 import Mathlib.Algebra.Homology.ShortComplex.ModuleCat
+
+@[expose] public section
 
 /-! # Actual linear free resolutions
 

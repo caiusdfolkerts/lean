@@ -1,6 +1,10 @@
+module
+
 import Characterizations.RealHull
 import CommAlg.Polymatroid.RankBases
 import CommAlg.Polymatroid.IdealProducts
+
+@[expose] public section
 
 /-! # The full integer base family of a locally equigenerated monomial ideal -/
 noncomputable section

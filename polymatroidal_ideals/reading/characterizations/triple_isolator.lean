@@ -1,4 +1,8 @@
+module
+
 import Characterizations.PairIsolator
+
+@[expose] public section
 
 /-! # The exact pointed-triple obstruction (Lemma 5.2) -/
 

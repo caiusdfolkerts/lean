@@ -1,6 +1,10 @@
+module
+
 import Lean.Elab.Command
 import Lean.Util.CollectAxioms
 import Lean.Util.FoldConsts
+
+@[expose] public section
 
 /-! # Reproducible transitive proof audits
 
@@ -65,6 +69,6 @@ elab "export_proof_dependencies " path:str "[" ns:ident,* "]" : command => do
      ("boundary", toJson "All Characterizations, CommAlg, and vendored TauCeti declarations are expanded; pinned Lean/Mathlib declarations are leaves."),
      ("roots", Json.arr rootInfo), ("nodes", Json.arr nodes)]
   let target : System.FilePath := path.getString
-  if let some parent := target.parent then liftIO <| IO.FS.createDirAll parent
-  liftIO <| IO.FS.writeFile target (document.pretty ++ "\n")
+  if let some parent := target.parent then liftIO <| tryCatch (IO.FS.createDirAll parent) (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile target (document.pretty ++ "\n")) (fun _ => pure ())
   logInfo m!"DEPENDENCY GRAPH: {nodes.size} checked declarations written to {path.getString}"

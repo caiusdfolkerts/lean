@@ -1,6 +1,10 @@
+module
+
 import Characterizations.Resolution.Cone
 import Characterizations.Resolution.VariableIdeal
 import Characterizations.VariableOrders
+
+@[expose] public section
 
 /-! # Linear quotients construct actual linear free resolutions -/
 

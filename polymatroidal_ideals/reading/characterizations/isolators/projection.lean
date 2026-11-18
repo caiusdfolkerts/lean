@@ -1,6 +1,10 @@
+module
+
 import Characterizations.BoundedFamilies
 import Characterizations.Localization
 import Characterizations.Resolution.LinearQuotients
+
+@[expose] public section
 
 /-! # Exact minimal generators in localized deleted bounded families -/
 noncomputable section

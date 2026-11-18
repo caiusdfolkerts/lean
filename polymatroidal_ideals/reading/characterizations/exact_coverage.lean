@@ -1,4 +1,8 @@
+module
+
 import Characterizations.TripleIsolator
+
+@[expose] public section
 
 /-! # The exact universal coverage characterization in Theorem 5.3 -/
 

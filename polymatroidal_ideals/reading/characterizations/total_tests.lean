@@ -1,6 +1,10 @@
+module
+
 import Characterizations.Triangular
 import Characterizations.Regularity
 import CommAlg.KoszulComplex.DerivedDecomposition
+
+@[expose] public section
 
 /-! # Total-degree Tor formulations of the homological tests
 

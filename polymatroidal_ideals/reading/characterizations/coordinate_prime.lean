@@ -1,4 +1,8 @@
+module
+
 import Characterizations.PrimePowers
+
+@[expose] public section
 
 /-! # The coordinate ideals in the intersection formula are actually prime -/
 noncomputable section

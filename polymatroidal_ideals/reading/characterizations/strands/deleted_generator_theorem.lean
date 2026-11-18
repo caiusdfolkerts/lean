@@ -1,5 +1,9 @@
+module
+
 import Characterizations.Strands.DeletedBetti
 import Characterizations.Isolators.Pure
+
+@[expose] public section
 
 /-! # The complete deleted-generator proposition, including its localized ideals -/
 noncomputable section

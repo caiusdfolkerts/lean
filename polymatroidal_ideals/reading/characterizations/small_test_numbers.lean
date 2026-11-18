@@ -1,5 +1,9 @@
+module
+
 import Characterizations.SmallCases
 import Mathlib.Data.Fintype.Perm
+
+@[expose] public section
 
 /-! # The exact zero-, one-, and six-test small cases -/
 

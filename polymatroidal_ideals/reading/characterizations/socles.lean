@@ -1,6 +1,10 @@
+module
+
 import Characterizations.Projection
 import Mathlib.RingTheory.MvPolynomial.Homogeneous
 import Mathlib.RingTheory.Ideal.Quotient.Defs
+
+@[expose] public section
 
 /-! # Actual quotient socles and the local-socle characterization
 

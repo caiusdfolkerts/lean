@@ -1,5 +1,9 @@
+module
+
 import Characterizations.Isolators.Pure
 import Characterizations.Resolution.Degree
+
+@[expose] public section
 
 /-! # The lower-degree isolator with exactly one mixed-degree localization -/
 noncomputable section

@@ -1,6 +1,10 @@
+module
+
 import Characterizations.MinimalMixedMinor
 import Characterizations.Strands.SocleTor
 import Characterizations.Strands.DeletedBetti
+
+@[expose] public section
 
 /-! # Every failure has a genuine nonlinear Tor class in the degree-bounded range -/
 noncomputable section

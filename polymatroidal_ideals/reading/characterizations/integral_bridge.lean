@@ -1,7 +1,11 @@
+module
+
 import CommAlg.IntegralClosure.Ideal
 import Mathlib.RingTheory.IntegralClosure.Algebra.Ideal
 import Mathlib.RingTheory.ReesAlgebra
 import Mathlib.Algebra.Polynomial.RingDivision
+
+@[expose] public section
 
 /-! # From actual Rees-algebra integrality to ideal integrality
 

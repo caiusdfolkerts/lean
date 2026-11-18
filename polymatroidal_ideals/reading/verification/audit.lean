@@ -1,8 +1,12 @@
+module
+
 import Characterizations.AuditCore
 import Characterizations.AuditSectionFour
 import Characterizations.AuditTriangular
 import Characterizations.AuditZeroBoundary
 import Characterizations.AuditSectionFive
+
+@[expose] public section
 
 /-! Complete principal-theorem audit. Each imported audit fails on any
 transitive axiom other than `propext`, `Classical.choice`, and `Quot.sound`.

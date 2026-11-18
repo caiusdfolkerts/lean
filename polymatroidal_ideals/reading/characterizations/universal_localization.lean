@@ -1,5 +1,9 @@
+module
+
 import Characterizations.PureDegree
 import Characterizations.Projection
+
+@[expose] public section
 
 /-! # Universal pure reverse-lexicographic quotients survive localization -/
 

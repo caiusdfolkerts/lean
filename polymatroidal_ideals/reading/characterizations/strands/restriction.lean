@@ -1,6 +1,10 @@
+module
+
 import Characterizations.Strands.OrderEmbedding
 import Characterizations.Localization
 import CommAlg.KoszulComplex.FaceMatroid
+
+@[expose] public section
 
 /-! # Exact fine Betti transport under deletion of unused coordinates -/
 noncomputable section

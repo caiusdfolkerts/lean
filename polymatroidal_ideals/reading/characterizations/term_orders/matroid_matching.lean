@@ -1,5 +1,9 @@
+module
+
 import CommAlg.Polymatroid.CloneMatroid
 import Mathlib.Combinatorics.Hall.Finite
+
+@[expose] public section
 
 /-! # One-sided matching of two actual matroid bases
 

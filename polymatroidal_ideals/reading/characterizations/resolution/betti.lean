@@ -1,7 +1,11 @@
+module
+
 import Characterizations.Resolution.KoszulStaircase
 import Characterizations.Resolution.Degree
 import Characterizations.Strands.DeletedBetti
 import CommAlg.KoszulComplex.BettiNumbers
+
+@[expose] public section
 
 /-! # An actual linear free resolution forces genuine graded Tor concentration -/
 noncomputable section

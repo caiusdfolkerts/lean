@@ -1,7 +1,11 @@
+module
+
 import Characterizations.AuditSupport
 import Characterizations.AsymptoticTests
 import Characterizations.SmallRejection
 import Characterizations.UniversalLocalization
+
+@[expose] public section
 
 audit_standard_axioms Characterizations.polymatroidal_iff_universal_revlex
 audit_standard_axioms Characterizations.polymatroidal_iff_universal_pure_revlex

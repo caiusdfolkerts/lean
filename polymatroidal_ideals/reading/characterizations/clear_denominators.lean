@@ -1,5 +1,9 @@
+module
+
 import Characterizations.RationalConvex
 import Mathlib.Data.Rat.Lemmas
+
+@[expose] public section
 
 /-! # Exact denominator clearing for nonnegative rational convex combinations -/
 

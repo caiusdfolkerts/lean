@@ -1,4 +1,8 @@
+module
+
 import Characterizations.PatternIsolator
+
+@[expose] public section
 
 /-! # A tournament with a predecessor at every vertex -/
 

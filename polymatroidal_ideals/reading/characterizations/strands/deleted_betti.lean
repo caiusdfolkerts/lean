@@ -1,5 +1,9 @@
+module
+
 import Characterizations.Strands.DeletedFaces
 import Characterizations.Strands.BettiTransport
+
+@[expose] public section
 
 /-! # Proposition 4.3: all nonlinear multigraded and total Betti numbers -/
 noncomputable section

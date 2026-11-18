@@ -1,4 +1,8 @@
+module
+
 import Characterizations.WitnessPaths
+
+@[expose] public section
 
 /-! # The four-coordinate exchange obstruction -/
 

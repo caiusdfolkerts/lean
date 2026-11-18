@@ -1,6 +1,10 @@
+module
+
 import Characterizations.MinimalLocal
 import CommAlg.IntegralClosure.OrdinaryRees
 import CommAlg.Polymatroid.IdealBridge
+
+@[expose] public section
 
 /-!
 # The zero-ideal obstruction to an unrestricted regularity formula

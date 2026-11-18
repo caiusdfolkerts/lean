@@ -1,5 +1,9 @@
+module
+
 import Characterizations.Resolution.Lift
 import CommAlg.Polymatroid.Exponents
+
+@[expose] public section
 
 /-! The generator degree of an actual homogeneous free resolution. -/
 noncomputable section

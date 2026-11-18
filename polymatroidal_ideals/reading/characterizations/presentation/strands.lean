@@ -1,6 +1,10 @@
+module
+
 import Characterizations.Resolution.HomogeneousFree
 import Characterizations.ExchangeGraph
 import Mathlib.LinearAlgebra.Finsupp.LinearCombination
+
+@[expose] public section
 
 /-! # The actual multigraded strands of the canonical monomial presentation -/
 noncomputable section

@@ -1,3 +1,5 @@
+module
+
 import Mathlib.RingTheory.MvPolynomial.Homogeneous
 import Mathlib.LinearAlgebra.Pi
 import Mathlib.Tactic.Common
@@ -8,6 +10,8 @@ import Mathlib.Tactic.Ring
 import Mathlib.Tactic.NormNum
 import Mathlib.Tactic.FieldSimp
 import Mathlib.Tactic.LinearCombination
+
+@[expose] public section
 
 /-! # Homogeneous maps and lifts between genuine finite free polynomial modules -/
 

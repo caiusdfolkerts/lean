@@ -6,7 +6,7 @@ public meta import Lean.Meta.Basic
 open Lean Elab Command
 run_cmd do
   let env := (← getEnv).setExporting false
-  let localModules := #[`characterizations]
+  let localModules := #[`characterizations, `characterizations.part001, `characterizations.part002, `characterizations.part003, `characterizations.part004]
   let mut count : Nat := 0
   for (name, info) in env.constants.toList do
     let some idx := env.getModuleIdxFor? name | continue

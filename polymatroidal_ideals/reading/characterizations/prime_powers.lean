@@ -1,4 +1,8 @@
+module
+
 import Characterizations.IntegralClosure
+
+@[expose] public section
 
 /-! # Ordinary coordinate-prime powers, and the exact intersection formula -/
 noncomputable section

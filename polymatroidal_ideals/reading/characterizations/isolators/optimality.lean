@@ -1,6 +1,10 @@
+module
+
 import Characterizations.Isolators.Coverage
 import Characterizations.Triangular
 import Characterizations.SmallCases
+
+@[expose] public section
 
 /-! # Exact optimal localization families and the smallest isolator degrees -/
 noncomputable section

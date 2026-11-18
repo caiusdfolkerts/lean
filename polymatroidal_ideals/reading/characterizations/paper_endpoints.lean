@@ -1,5 +1,9 @@
+module
+
 import Characterizations.MonomialNormalForm
 import CommAlg.IntegralClosure.OrdinaryRees
+
+@[expose] public section
 
 /-!
 # The integral-closedness characterization, including the zero ideal

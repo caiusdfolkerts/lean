@@ -1,5 +1,9 @@
+module
+
 import Characterizations.Projection
 import Characterizations.Transport
+
+@[expose] public section
 
 /-! # Retained-variable and ambient descriptions of monomial localization agree -/
 noncomputable section

@@ -1,4 +1,8 @@
+module
+
 import Characterizations.Strands.BettiTransport
+
+@[expose] public section
 
 /-! # Signed simplicial chain transport along an order embedding -/
 noncomputable section

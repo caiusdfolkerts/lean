@@ -1,5 +1,9 @@
+module
+
 import Characterizations.Isolators.Shift
 import Characterizations.Resolution.Betti
+
+@[expose] public section
 
 /-! # Exact sharpness: a prescribed first nonlinear derived-Tor position -/
 noncomputable section

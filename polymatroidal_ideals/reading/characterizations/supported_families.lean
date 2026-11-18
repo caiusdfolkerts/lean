@@ -1,5 +1,9 @@
+module
+
 import Characterizations.FiniteHoles
 import Characterizations.SmallCases
+
+@[expose] public section
 
 /-! # Exact support identities for coordinate minors -/
 noncomputable section

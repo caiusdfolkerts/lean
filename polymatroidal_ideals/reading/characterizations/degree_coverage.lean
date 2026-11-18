@@ -1,4 +1,8 @@
+module
+
 import Characterizations.ExactCoverage
+
+@[expose] public section
 
 /-! # The full degree-sensitive sufficient coverage theorem -/
 

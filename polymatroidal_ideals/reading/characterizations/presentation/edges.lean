@@ -1,4 +1,8 @@
+module
+
 import Characterizations.Presentation.Strands
+
+@[expose] public section
 
 /-! # Linear binomial syzygies are exactly unit-exchange relations -/
 noncomputable section

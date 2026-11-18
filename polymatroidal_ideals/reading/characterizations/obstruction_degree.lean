@@ -1,8 +1,12 @@
+module
+
 import Characterizations.Resolution.Descent
 import Characterizations.Resolution.LocalizationDescent
 import Characterizations.TriangleCore
 import Characterizations.Isolators.Coverage
 import Characterizations.SmallCases
+
+@[expose] public section
 
 /-! # The full degree cost of a maximal obstruction (Lemma 4.4)
 

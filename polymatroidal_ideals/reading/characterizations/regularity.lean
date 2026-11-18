@@ -1,7 +1,11 @@
+module
+
 import Characterizations.ThickeningClosure
 import Characterizations.Strands.FiniteHoles
 import Characterizations.Strands.SocleTor
 import Characterizations.Strands.DeletedBetti
+
+@[expose] public section
 
 /-! # Genuine Tor regularity of a minimal local obstruction -/
 noncomputable section

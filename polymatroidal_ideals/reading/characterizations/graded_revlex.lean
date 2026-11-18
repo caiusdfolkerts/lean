@@ -1,6 +1,10 @@
+module
+
 import Characterizations.VariableOrders
 import Mathlib.Data.Finsupp.MonomialOrder
 import Mathlib.Order.WellFounded
+
+@[expose] public section
 
 /-! # Graded reverse lexicographic order as a genuine Mathlib monomial order -/
 noncomputable section

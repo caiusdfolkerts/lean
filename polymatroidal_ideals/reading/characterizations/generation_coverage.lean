@@ -1,5 +1,9 @@
+module
+
 import Characterizations.RankIncrements
 import Characterizations.AmbientLocalization
+
+@[expose] public section
 
 /-! # The sharp codimension range needed to force local equigeneration -/
 noncomputable section

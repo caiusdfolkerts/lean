@@ -1,7 +1,11 @@
+module
+
 import Characterizations.RealHull
 import Mathlib.Analysis.Convex.Caratheodory
 import Mathlib.LinearAlgebra.Matrix.ToLin
 import Mathlib.LinearAlgebra.Basis.VectorSpace
+
+@[expose] public section
 
 /-! # Rational coefficients for rational points in finite real convex hulls -/
 

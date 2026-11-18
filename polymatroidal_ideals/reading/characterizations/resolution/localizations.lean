@@ -1,5 +1,9 @@
+module
+
 import Characterizations.Resolution.LinearQuotients
 import Characterizations.Projection
+
+@[expose] public section
 
 /-! # Actual linear resolutions after monomial localization -/
 

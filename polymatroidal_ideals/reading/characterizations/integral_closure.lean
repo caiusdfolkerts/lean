@@ -1,6 +1,10 @@
+module
+
 import Characterizations.MonomialIntegrality
 import Characterizations.SubsetWeights
 import Characterizations.Projection
+
+@[expose] public section
 
 /-! # Theorem 2.11: exact integral closure and the integral-closure characterization -/
 

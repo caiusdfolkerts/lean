@@ -1,5 +1,9 @@
+module
+
 import characterizations
 import Characterizations.AuditSupport
+
+@[expose] public section
 
 /-! The zero-inclusive localization theorem and the explicit regularity exception. -/
 

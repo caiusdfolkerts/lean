@@ -1,5 +1,9 @@
+module
+
 import Characterizations.Strands.BettiTransport
 import CommAlg.KoszulComplex.FaceMatroid
+
+@[expose] public section
 
 /-! # A monomial socle element produces the actual top derived-Tor class -/
 noncomputable section

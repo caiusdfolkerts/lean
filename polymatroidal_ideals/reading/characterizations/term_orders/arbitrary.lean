@@ -1,6 +1,10 @@
+module
+
 import Characterizations.TermOrders.MatroidMatching
 import Characterizations.BoundedFamilies
 import Mathlib.Data.Finsupp.MonomialOrder
+
+@[expose] public section
 
 /-! # Linear quotients in every genuine monomial term order
 

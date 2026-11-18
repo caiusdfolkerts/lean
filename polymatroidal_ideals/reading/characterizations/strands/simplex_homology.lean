@@ -1,5 +1,9 @@
+module
+
 import CommAlg.Simplicial.Homology
 import Mathlib.LinearAlgebra.FiniteDimensional.Basic
+
+@[expose] public section
 
 /-! # Explicit contraction and the one-dimensional boundary-simplex class -/
 noncomputable section

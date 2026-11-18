@@ -1,5 +1,9 @@
+module
+
 import Characterizations.ExchangeGraph
 import CommAlg.Polymatroid.LinearQuotients
+
+@[expose] public section
 
 /-! # Literal colon ideals and the combinatorial variable-witness condition -/
 

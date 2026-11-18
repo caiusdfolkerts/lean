@@ -1,0 +1,73 @@
+version: v0.4
+project:
+  name: Characterizations of polymatroidal ideals
+  description: >-
+    A monomial ideal is polymatroidal exactly when every monomial localization
+    has an actual linear free resolution. Universal pure reverse lexicographic
+    colon quotients characterize the minimal generator antichain even without
+    prior equigeneration. Ordinary ideal integral closedness together with local
+    equigeneration gives another characterization. The real convex hull equals
+    the full lower-rank polytope, and the actual ideal integral closure is the
+    ideal of all its integer bases. A genuine finite linear presentation together
+    with the prescribed distance-four exchange condition also characterizes
+    polymatroidality. The selected consequences
+    include genuine quotient-socle recognition, field independence, localization
+    of universal quotients, every monomial term order, exact codimension
+    bands and attained minimum testing-set sizes, exact necessary and sufficient
+    variable-order coverage, sharp test-number formulas and bounds,
+    fixed-degree logarithmic asymptotics, and sharp uniform rejection fractions
+    with attained examples and independent repeated-test bounds.
+  authors: [Caius Folkerts]
+  responsible_maintainers: [Caius Folkerts]
+  license: Apache-2.0
+classification:
+  arxiv: [math.AC, math.CO]
+  msc2020: [13D02, 13F20, 05B35]
+sources:
+  - title: Characterizations of polymatroidal ideals
+    authors: [Caius Folkerts]
+    type: paper
+    relationship: formalizes
+    location: paper.pdf
+    note: Theorems1.1,2.11,3.3,3.6; Corollaries2.7,2.10,2.12,3.10,3.11; Theorems3.12,4.5; Corollary4.8; Theorems5.3–5.4; Corollary5.5; Theorem5.6.
+related_formalizations:
+  - title: caiusdfolkerts/research polymatroidal_ideals
+    relationship: other
+    id: https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/polymatroidal_ideals
+    note: Complete substantive project copied at the pinned baseline; original proof and licence notices retained.
+automation:
+  methods:
+    - method: agent
+      tool_setup: >-
+        The supplied paper credits GPT-6 Astra, GPT-5.6 Sol, and Kimi K3
+        assistance in developing its proofs. The precise historical roles
+        have not been independently reconstructed.
+    - method: agent
+      tool_setup: >-
+        OpenAI Codex prepared the independent Challenge, Solution import,
+        Comparator configuration, declaration map, and this metadata by reading
+        the supplied paper, README, and source declarations.
+review:
+  status: unchecked
+  notes: >-
+    The preceding 43-claim Challenge elaborated under pinned Lean4.35.0.
+    A source-context audit then corrected namespace, universe, instance and
+    hypothesis mismatches before first full comparison. The current corrected
+    interface still requires elaboration.
+    No full Solution build, Comparator comparison,
+    NanoDa check, or mathematical peer review is claimed. Challenge definitions
+    repeat the original names and source bodies; the intended comparison must
+    still be validated mechanically.
+fidelity:
+  divergences: >-
+    Literal theorem 1.1(A) includes zero; theorem 1.1(B) is recorded both in
+    its equigenerated form and in the stronger antichain form of Corollary3.10.
+    The large public aggregate is split only at complete original source
+    section boundaries. Its mathematical source bodies are retained; only
+    outer assembly sections are closed/reopened between modules. The duplicate
+    reading assembly is retained, with module headers added and its two large
+    aggregates split at original source boundaries. The source-module membership
+    audit is extended to the split compiled modules.
+limitations:
+  - This preparation does not yet compare the entire requested paper scope. Proposition4.1, sharp homological-position tests of Theorems4.2/4.9, and nonlinear isolator strands remain separate outstanding groups.
+  - The independent Challenge has elaborated; the original proof assembly split, full Solution and raw comparison remain unverified. Preliminary policy lint is not proof verification.

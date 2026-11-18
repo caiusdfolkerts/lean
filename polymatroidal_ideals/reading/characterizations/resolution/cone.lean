@@ -1,5 +1,9 @@
+module
+
 import Characterizations.Resolution.Lift
 import Mathlib.RingTheory.Ideal.Colon
+
+@[expose] public section
 
 /-! # The actual graded mapping cone for adjoining one generator -/
 

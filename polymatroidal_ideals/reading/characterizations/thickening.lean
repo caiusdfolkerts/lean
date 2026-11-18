@@ -1,5 +1,9 @@
+module
+
 import Characterizations.CoordinatePrime
 import Characterizations.FiniteHoles
+
+@[expose] public section
 
 /-! # Multiplication by every power of the homogeneous maximal ideal -/
 noncomputable section

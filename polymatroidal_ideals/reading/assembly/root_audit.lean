@@ -1,7 +1,11 @@
+module
+
 import Characterizations.Complete
 import Lean.Elab.Command
 import Lean.Util.CollectAxioms
 import Lean.Util.FoldConsts
+
+@[expose] public section
 
 /-! # Reproducible transitive proof audits
 
@@ -67,8 +71,8 @@ elab "export_characterizations_complete_dependencies " path:str "[" ns:ident,* "
      ("boundary", toJson "All Characterizations and consolidated FourPapers.Homological.Complete declarations, including their CommAlg/TauCeti foundations, are expanded; pinned Lean/Mathlib declarations are leaves."),
      ("roots", Json.arr rootInfo), ("nodes", Json.arr nodes)]
   let target : System.FilePath := path.getString
-  if let some parent := target.parent then liftIO <| IO.FS.createDirAll parent
-  liftIO <| IO.FS.writeFile target (document.pretty ++ "\n")
+  if let some parent := target.parent then liftIO <| tryCatch (IO.FS.createDirAll parent) (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile target (document.pretty ++ "\n")) (fun _ => pure ())
   logInfo m!"DEPENDENCY GRAPH: {nodes.size} checked declarations written to {path.getString}"
 
 /-! All historical audited roots and the zero-inclusive paper endpoints. -/

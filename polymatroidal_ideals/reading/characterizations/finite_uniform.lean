@@ -1,5 +1,9 @@
+module
+
 import Characterizations.OptimalOrders
 import Mathlib.Algebra.Group.End
+
+@[expose] public section
 
 /-! # Exact finite uniform probabilities and equally sized fibers -/
 

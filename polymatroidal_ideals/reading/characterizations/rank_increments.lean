@@ -1,4 +1,8 @@
+module
+
 import Characterizations.LowerBases
+
+@[expose] public section
 
 /-! # Rank increments on intervals of coordinate localizations -/
 noncomputable section

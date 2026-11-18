@@ -1,4 +1,8 @@
+module
+
 import Characterizations.Resolution.KoszulRows
+
+@[expose] public section
 
 /-! The actual top Koszul socle cycle and its non-boundary property. -/
 noncomputable section

@@ -1,5 +1,9 @@
+module
+
 import Characterizations.Localization
 import CommAlg.Polymatroid.RankIdeal
+
+@[expose] public section
 
 /-! # Monomial localization preserves the full exchange axiom
 

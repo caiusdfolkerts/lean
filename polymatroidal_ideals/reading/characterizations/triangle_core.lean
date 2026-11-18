@@ -1,7 +1,11 @@
+module
+
 import Characterizations.GenerationCoverage
 import Characterizations.Resolution.Betti
 import Characterizations.Resolution.Localizations
 import Characterizations.Strands.Restriction
+
+@[expose] public section
 
 /-! # Rank-maximal nonlinear localizations and the triangular range
 

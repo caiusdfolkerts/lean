@@ -1,6 +1,10 @@
+module
+
 import Characterizations.TermOrders.Arbitrary
 import Characterizations.GradedRevlex
 import Characterizations.OrderExistence
+
+@[expose] public section
 
 /-! # The full arbitrary-term-order characterization -/
 noncomputable section

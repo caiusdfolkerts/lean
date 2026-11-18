@@ -1,5 +1,9 @@
+module
+
 import Characterizations.Resolution.Descent
 import Characterizations.Resolution.LocalizationDescentData
+
+@[expose] public section
 
 /-! Descent from a restored variable when the actual generator family is unchanged. -/
 noncomputable section

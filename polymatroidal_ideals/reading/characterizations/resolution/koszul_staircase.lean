@@ -1,5 +1,9 @@
+module
+
 import Characterizations.Resolution.KoszulRows
 import Characterizations.Resolution.Lift
+
+@[expose] public section
 
 /-! A graded double-complex staircase, proved by actual element lifting. -/
 noncomputable section

@@ -1,7 +1,11 @@
+module
+
 import Characterizations.Strands.TotalDimension
 import Characterizations.Strands.DeletedGeneratorTheorem
 import CommAlg.KoszulComplex.ResidueCoefficients
 import Mathlib.Algebra.Category.ModuleCat.Monoidal.Symmetric
+
+@[expose] public section
 
 /-! # The manuscript's `Tor(I,k)` and its genuine homogeneous submodules
 

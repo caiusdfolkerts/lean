@@ -1,4 +1,8 @@
+module
+
 import Characterizations.DegreeCoverage
+
+@[expose] public section
 
 /-! # Common monomial factors and unused variables preserve quotient tests -/
 

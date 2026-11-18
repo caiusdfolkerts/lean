@@ -1,4 +1,8 @@
+module
+
 import Characterizations.Socles
+
+@[expose] public section
 
 /-! The full local-socle characterization, in the actual retained-variable quotient rings. -/
 noncomputable section

@@ -1,4 +1,8 @@
+module
+
 import Characterizations.SocleCharacterization
+
+@[expose] public section
 
 /-! # Actual generators attaining every minimum along a nested chain -/
 

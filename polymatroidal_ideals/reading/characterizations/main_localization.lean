@@ -1,6 +1,10 @@
+module
+
 import Characterizations.Resolution.Localizations
 import Characterizations.Resolution.Socle
 import Characterizations.SocleCharacterization
+
+@[expose] public section
 
 /-! # Theorem 1.1(A): actual local linear resolutions characterize polymatroids -/
 noncomputable section

@@ -1,4 +1,8 @@
+module
+
 import Characterizations.Presentation.Edges
+
+@[expose] public section
 
 /-! # Exchange paths span the actual polynomial syzygies -/
 noncomputable section

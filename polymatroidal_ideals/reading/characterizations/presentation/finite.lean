@@ -1,6 +1,10 @@
+module
+
 import Characterizations.Presentation.Connectivity
 import Characterizations.WitnessPaths
 import Characterizations.VariableOrders
+
+@[expose] public section
 
 /-! # Conventional finite free presentations and the local exchange criterion -/
 noncomputable section

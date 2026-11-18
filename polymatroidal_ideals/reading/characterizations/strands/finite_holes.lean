@@ -1,6 +1,10 @@
+module
+
 import Characterizations.Strands.DeletedFaces
 import Characterizations.Strands.BettiTransport
 import CommAlg.Polymatroid.HomologicalMain
+
+@[expose] public section
 
 /-! # Exact regularity bounds from a finite collection of missing monomials -/
 noncomputable section

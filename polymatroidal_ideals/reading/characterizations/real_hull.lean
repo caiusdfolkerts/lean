@@ -1,8 +1,12 @@
+module
+
 import Characterizations.GreedyChain
 import Mathlib.Data.Fin.Tuple.Sort
 import Mathlib.Algebra.Order.Chebyshev
 import Mathlib.Analysis.Convex.Topology
 import Mathlib.Analysis.LocallyConvex.Separation
+
+@[expose] public section
 
 /-! # The exact real convex hull forced by local equigeneration -/
 

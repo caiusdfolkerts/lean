@@ -1,4 +1,8 @@
+module
+
 import Characterizations.OptimalOrders
+
+@[expose] public section
 
 /-! # The small-variable and small-degree cases of the sharp test theorem -/
 

@@ -1,5 +1,9 @@
+module
+
 import Characterizations.LowerBases
 import CommAlg.IntegralClosure.Ideal
+
+@[expose] public section
 
 /-! # Literal subset-degree valuations and integral closure -/
 noncomputable section

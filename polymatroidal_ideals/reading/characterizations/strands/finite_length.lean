@@ -1,5 +1,9 @@
+module
+
 import CommAlg.KoszulComplex.MonomialBasis
 import Mathlib.RingTheory.FiniteLength
+
+@[expose] public section
 
 /-! # Actual ideal quotients with finitely many missing monomials have finite length -/
 noncomputable section

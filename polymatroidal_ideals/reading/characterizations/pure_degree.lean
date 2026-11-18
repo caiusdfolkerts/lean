@@ -1,4 +1,8 @@
+module
+
 import Characterizations.OrderExistence
+
+@[expose] public section
 
 /-! # Universal pure reverse lexicographic quotients force one degree -/
 

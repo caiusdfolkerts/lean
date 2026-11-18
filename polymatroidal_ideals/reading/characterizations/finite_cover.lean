@@ -1,7 +1,11 @@
+module
+
 import Mathlib.Algebra.BigOperators.Field
 import Characterizations.PatternProbability
 import Mathlib.Analysis.SpecialFunctions.Log.Basic
 import Mathlib.Algebra.Order.Floor.Ring
+
+@[expose] public section
 
 /-! # A kernel-checked probabilistic covering bound for finite tests -/
 

@@ -1,6 +1,10 @@
+module
+
 import Characterizations.Strands.DeletedGenerators
 import Characterizations.Strands.SimplexHomology
 import CommAlg.KoszulComplex.FaceMatroid
+
+@[expose] public section
 
 /-! # Complete multigraded face calculation for a deleted Veronese generator -/
 noncomputable section

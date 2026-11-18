@@ -1,4 +1,8 @@
+module
+
 import Characterizations.Quotients
+
+@[expose] public section
 
 /-! # Linear-quotient witnesses connect every coordinate box -/
 

@@ -1,4 +1,8 @@
+module
+
 import Characterizations.Transport
+
+@[expose] public section
 
 /-! # Exact degree-padded isolators on arbitrary active variable sets -/
 

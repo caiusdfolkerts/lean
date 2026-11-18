@@ -1,4 +1,8 @@
+module
+
 import Characterizations.FiniteUniform
+
+@[expose] public section
 
 /-! # Uniform distribution of pointed final triples -/
 

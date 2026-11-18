@@ -1,5 +1,9 @@
+module
+
 import Characterizations.Tournament
 import Mathlib.Data.Fintype.Powerset
+
+@[expose] public section
 
 /-! # Exact counting of pointed final triples -/
 

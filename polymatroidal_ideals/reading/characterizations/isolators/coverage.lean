@@ -1,5 +1,9 @@
+module
+
 import Characterizations.Isolators.Main
 import Characterizations.MainLocalization
+
+@[expose] public section
 
 /-! # Necessary localization tests and their exact cardinalities -/
 noncomputable section

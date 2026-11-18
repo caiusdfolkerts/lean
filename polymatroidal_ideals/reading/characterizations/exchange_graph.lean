@@ -1,5 +1,9 @@
+module
+
 import CommAlg.Polymatroid.Exponents
 import Mathlib.Logic.Relation
+
+@[expose] public section
 
 /-! # Unit-exchange paths in coordinate boxes
 

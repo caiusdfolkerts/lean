@@ -1,5 +1,9 @@
+module
+
 import Characterizations.Rejection
 import Characterizations.SmallTestNumbers
+
+@[expose] public section
 
 /-! # Sharp rejection probabilities in two and three variables -/
 

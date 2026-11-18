@@ -1,4 +1,8 @@
+module
+
 import Characterizations.Resolution.Basic
+
+@[expose] public section
 
 /-! # Homogeneous comparison maps for free resolutions -/
 

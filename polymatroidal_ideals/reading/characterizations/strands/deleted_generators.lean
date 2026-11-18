@@ -1,5 +1,9 @@
+module
+
 import Characterizations.BoundedFamilies
 import CommAlg.KoszulComplex.FaceCombinatorics
+
+@[expose] public section
 
 /-! # The actual ideal obtained by deleting one Veronese generator -/
 

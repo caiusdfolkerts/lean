@@ -1,4 +1,8 @@
+module
+
 import Characterizations.AmbientLocalization
+
+@[expose] public section
 
 /-! # Coordinate restrictions and mixed monomial minors
 

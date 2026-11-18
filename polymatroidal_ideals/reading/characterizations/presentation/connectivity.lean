@@ -1,4 +1,8 @@
+module
+
 import Characterizations.Presentation.Paths
+
+@[expose] public section
 
 /-! # A disconnected box detects a genuine nonlinear first syzygy -/
 noncomputable section

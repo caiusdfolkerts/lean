@@ -1,4 +1,8 @@
+module
+
 import Characterizations.PatternProbability
+
+@[expose] public section
 
 /-! # A pointed triple injects into any prescribed final pair event -/
 

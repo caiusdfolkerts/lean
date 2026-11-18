@@ -1,4 +1,8 @@
+module
+
 import Characterizations.SmallTestNumbers
+
+@[expose] public section
 
 /-! # The exact test number once the degree reaches n-2 -/
 

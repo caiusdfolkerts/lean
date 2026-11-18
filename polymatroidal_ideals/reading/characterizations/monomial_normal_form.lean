@@ -1,8 +1,12 @@
+module
+
 import Characterizations.MainLocalization
 import Characterizations.PureDegree
 import Characterizations.IntegralClosure
 import CommAlg.Polymatroid.IdealBridge
 import Mathlib.RingTheory.Polynomial.Basic
+
+@[expose] public section
 
 /-! # Every monomial ideal has its unique finite minimal monomial presentation
 

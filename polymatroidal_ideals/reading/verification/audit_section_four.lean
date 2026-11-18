@@ -1,5 +1,9 @@
+module
+
 import characterizations
 import Characterizations.AuditSupport
+
+@[expose] public section
 
 /-! Transitive axiom guards and exact proof dependencies for Section 4. -/
 

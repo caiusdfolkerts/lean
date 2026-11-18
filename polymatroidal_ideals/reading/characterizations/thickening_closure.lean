@@ -1,4 +1,8 @@
+module
+
 import Characterizations.Thickening
+
+@[expose] public section
 
 /-! # Exact closure and sharp power threshold for minimal local obstructions -/
 noncomputable section

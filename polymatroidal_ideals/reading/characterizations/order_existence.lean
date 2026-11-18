@@ -1,6 +1,10 @@
+module
+
 import Characterizations.VariableOrders
 import Mathlib.Data.Finset.Sort
 import Mathlib.Order.Prod.Lex.Basic
+
+@[expose] public section
 
 /-! # Actual variable permutations with specified final patterns -/
 

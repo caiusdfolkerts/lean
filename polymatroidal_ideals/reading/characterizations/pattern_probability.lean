@@ -1,4 +1,8 @@
+module
+
 import Characterizations.PointUniformity
+
+@[expose] public section
 
 /-! # The exact rejection mass of an active order pattern -/
 

@@ -1,5 +1,9 @@
+module
+
 import Characterizations.Regularity
 import Characterizations.Strands.FiniteLength
+
+@[expose] public section
 
 /-! # Proposition 4.1 with the actual integral closure and actual finite-length quotient -/
 noncomputable section

@@ -1,5 +1,9 @@
+module
+
 import Characterizations.Isolators.Projection
 import Characterizations.Strands.DeletedGenerators
+
+@[expose] public section
 
 /-! # The exact family isolating one nonlinear localization -/
 noncomputable section

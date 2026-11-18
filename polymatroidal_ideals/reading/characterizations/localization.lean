@@ -1,7 +1,11 @@
+module
+
 import CommAlg.Polymatroid.Localization
 import CommAlg.Polymatroid.SocleReconstruction
 import Mathlib.Algebra.MvPolynomial.Eval
 import Mathlib.Algebra.BigOperators.Group.Finset.Piecewise
+
+@[expose] public section
 
 /-! # Literal monomial localization in the retained-variable polynomial ring -/
 

@@ -1,7 +1,11 @@
+module
+
 import CommAlg.KoszulComplex.CoefficientProjectiveDimension
 import Mathlib.Algebra.Homology.ShortComplex.ModuleCat
 import Mathlib.RingTheory.MvPolynomial.Homogeneous
 import Mathlib.RingTheory.MvPolynomial.Ideal
+
+@[expose] public section
 
 /-! Genuine coefficient Koszul rows, their naturality and exactness on free coefficients. -/
 noncomputable section

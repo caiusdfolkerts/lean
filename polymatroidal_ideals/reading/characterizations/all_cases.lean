@@ -1,5 +1,9 @@
+module
+
 import Characterizations.Isolators.Optimality
 import Characterizations.MonomialNormalForm
+
+@[expose] public section
 
 /-! Theorem 4.5 and its universal testing predicates, including the zero ideal. -/
 noncomputable section

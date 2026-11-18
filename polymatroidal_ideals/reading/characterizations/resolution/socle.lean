@@ -1,7 +1,11 @@
+module
+
 import Characterizations.Resolution.KoszulStaircase
 import Characterizations.Resolution.KoszulSocleCycle
 import Characterizations.Resolution.Degree
 import Characterizations.Socles
+
+@[expose] public section
 
 /-! The socle-degree theorem derived from a genuine exact linear free resolution. -/
 noncomputable section

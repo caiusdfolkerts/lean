@@ -1,7 +1,11 @@
+module
+
 import Characterizations.Isolators.Mixed
 import Characterizations.Transport
 import Characterizations.Strands.BettiTransport
 import CommAlg.Polymatroid.IdealProducts
+
+@[expose] public section
 
 /-! # Common monomial factors: actual ideals, localization, and derived Betti numbers -/
 noncomputable section

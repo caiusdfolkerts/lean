@@ -1,6 +1,10 @@
+module
+
 import Characterizations.Resolution.Specialize
 import CommAlg.Polymatroid.Exponents
 import Mathlib.Algebra.MvPolynomial.Division
+
+@[expose] public section
 
 /-! Removing a polynomial variable from a genuine linear free resolution. -/
 noncomputable section

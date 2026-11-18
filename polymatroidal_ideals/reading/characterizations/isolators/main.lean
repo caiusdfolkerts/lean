@@ -1,4 +1,8 @@
+module
+
 import Characterizations.Isolators.Sharp
+
+@[expose] public section
 
 /-! # Propositions 4.7 and 4.10 in the actual localized polynomial rings -/
 noncomputable section

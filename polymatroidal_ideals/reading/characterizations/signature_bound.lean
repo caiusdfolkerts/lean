@@ -1,5 +1,9 @@
+module
+
 import Characterizations.OptimalOrders
 import Mathlib.Combinatorics.SetFamily.LYM
+
+@[expose] public section
 
 /-! # The sharp Boolean-antichain constraint on any degree-sensitive test family -/
 

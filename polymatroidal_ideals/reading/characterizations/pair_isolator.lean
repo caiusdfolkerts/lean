@@ -1,4 +1,8 @@
+module
+
 import Characterizations.BoundedFamilies
+
+@[expose] public section
 
 /-! # The exact final-pair obstruction (Lemma 5.1) -/
 

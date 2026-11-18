@@ -1,4 +1,8 @@
+module
+
 import Characterizations.Resolution.Basic
+
+@[expose] public section
 
 /-! Exact specialization of actual finite free matrices along a regular quotient. -/
 

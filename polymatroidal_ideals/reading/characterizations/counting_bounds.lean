@@ -1,6 +1,10 @@
+module
+
 import Characterizations.PatternSpace
 import Characterizations.SignatureBound
 import Characterizations.HighDegreeNumbers
+
+@[expose] public section
 
 /-! # The numerical upper and lower bounds of Corollary 5.5 -/
 

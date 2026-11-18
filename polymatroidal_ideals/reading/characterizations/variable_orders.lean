@@ -1,5 +1,9 @@
+module
+
 import Characterizations.FourObstruction
 import Mathlib.Data.Fintype.EquivFin
+
+@[expose] public section
 
 /-! # Variable permutations and pure reverse lexicographic tests -/
 

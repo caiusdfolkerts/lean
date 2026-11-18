@@ -1,6 +1,10 @@
+module
+
 import Characterizations.TestNumbers
 import Mathlib.Analysis.Asymptotics.Defs
 import Mathlib.Data.Nat.Choose.Bounds
+
+@[expose] public section
 
 /-! # The fixed-degree logarithmic asymptotic in Corollary 5.5 -/
 

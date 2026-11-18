@@ -1,6 +1,10 @@
+module
+
 import Characterizations.RankIncrements
 import Characterizations.AmbientLocalization
 import Characterizations.IntegralClosure
+
+@[expose] public section
 
 /-! # Finite holes in a minimal coordinate obstruction -/
 noncomputable section

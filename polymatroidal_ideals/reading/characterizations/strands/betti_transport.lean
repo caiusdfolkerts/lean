@@ -1,5 +1,9 @@
+module
+
 import Characterizations.Strands.SimplexHomology
 import CommAlg.KoszulComplex.BettiNumbers
+
+@[expose] public section
 
 /-! # Numerical transport to the genuine derived-Tor components -/
 noncomputable section

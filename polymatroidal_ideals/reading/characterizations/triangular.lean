@@ -1,5 +1,9 @@
+module
+
 import Characterizations.TriangleCore
 import Characterizations.MinimalMixedObstruction
+
+@[expose] public section
 
 /-! # The degree-bounded and triangular localization characterizations
 

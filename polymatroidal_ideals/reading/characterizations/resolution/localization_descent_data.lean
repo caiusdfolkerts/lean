@@ -1,5 +1,9 @@
+module
+
 import Characterizations.Localization
 import Mathlib.Algebra.MvPolynomial.Rename
+
+@[expose] public section
 
 /-! Exact retained-variable data for localization descent. -/
 

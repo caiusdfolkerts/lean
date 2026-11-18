@@ -1,5 +1,9 @@
+module
+
 import Characterizations.MixedMinors
 import Characterizations.SupportedFamilies
+
+@[expose] public section
 
 /-! # A smallest non-polymatroidal mixed coordinate minor -/
 noncomputable section

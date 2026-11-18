@@ -1,4 +1,8 @@
+module
+
 import Characterizations.PureDegree
+
+@[expose] public section
 
 /-! # Capped Veronese families and deletion of one generator -/
 

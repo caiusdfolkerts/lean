@@ -1,5 +1,9 @@
+module
+
 import Characterizations.PairMass
 import Characterizations.FiniteCover
+
+@[expose] public section
 
 /-! # The sharp rejection fraction, including independent repeated tests -/
 

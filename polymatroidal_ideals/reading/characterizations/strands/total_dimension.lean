@@ -1,6 +1,10 @@
+module
+
 import Characterizations.TotalTests
 import CommAlg.KoszulComplex.InternalGrading
 import Mathlib.LinearAlgebra.FiniteDimensional.Lemmas
+
+@[expose] public section
 
 /-! # Total Betti sums are dimensions of the actual total-degree derived-Tor submodules -/
 noncomputable section

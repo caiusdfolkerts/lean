@@ -1,5 +1,9 @@
+module
+
 import Characterizations.ClearDenominators
 import Characterizations.IntegralBridge
+
+@[expose] public section
 
 /-! # Integral equations for every lattice point of a monomial Newton polytope -/
 

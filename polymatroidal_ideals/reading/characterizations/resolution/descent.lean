@@ -1,4 +1,8 @@
+module
+
 import Characterizations.Resolution.DeleteVariable
+
+@[expose] public section
 
 /-! Genuine linear free resolutions descend along a variable regular on the ideal quotient. -/
 noncomputable section

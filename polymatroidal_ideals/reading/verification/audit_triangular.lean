@@ -1,5 +1,9 @@
+module
+
 import Characterizations.AuditSupport
 import Characterizations.TotalTests
+
+@[expose] public section
 
 audit_standard_axioms Characterizations.localize_restriction
 audit_standard_axioms Characterizations.restriction_lowerRank
