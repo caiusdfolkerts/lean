@@ -15,6 +15,8 @@ public import Mathlib.Data.Finset.Powerset
 public import Mathlib.Algebra.Order.Antidiag.Pi
 public import Mathlib.LinearAlgebra.Basis.Defs
 public import Mathlib.Algebra.CharP.Basic
+public import Mathlib.Combinatorics.Enumerative.Partition.YoungDiagram
+public import Mathlib.Analysis.Complex.Basic
 
 /-!
 # Prescribed higher Specht bases and their exact characteristic range
@@ -32,7 +34,7 @@ clauses remain to be independently extracted before a complete paper entry.
 @[expose] public section
 noncomputable section
 set_option autoImplicit false
-open scoped BigOperators Classical
+open scoped BigOperators
 
 namespace YoungDiagram
 /-- A cell `c` is **addable** to `μ` if it is not a cell of `μ` while every cell strictly below
@@ -41,22 +43,29 @@ it in the product order is. These are exactly the cells outside `μ` whose addit
 def IsAddable (μ : YoungDiagram) (c : ℕ × ℕ) : Prop :=
   c ∉ μ ∧ ∀ d < c, d ∈ μ
 
+/-- The defining conjunction of the addable-cell predicate. -/
+theorem isAddable_def (μ : YoungDiagram) (c : ℕ × ℕ) :
+    IsAddable μ c ↔ c ∉ μ ∧ ∀ d < c, d ∈ μ := by sorry
+
+/-- The original finite test is equivalent to the actual addable-cell predicate. -/
+theorem palomarIsAddable_decision_iff (μ : YoungDiagram) (c : ℕ × ℕ) :
+    (c ∉ μ ∧ ∀ d ∈ Finset.Iio c, d ∈ μ) ↔ IsAddable μ c := by sorry
+
 /-- The source's finite decision procedure for an addable cell. -/
 instance instDecidableIsAddable (μ : YoungDiagram) (c : ℕ × ℕ) : Decidable (IsAddable μ c) :=
-  decidable_of_iff (c ∉ μ ∧ ∀ d ∈ Finset.Iio c, d ∈ μ) (by simp [IsAddable])
+  decidable_of_iff (c ∉ μ ∧ ∀ d ∈ Finset.Iio c, d ∈ μ) (palomarIsAddable_decision_iff μ c)
+
+/-- The literal cells used by addCell form a lower set, by the original calculation. -/
+theorem palomarAddCell_isLowerSet (μ : YoungDiagram) (c : ℕ × ℕ) :
+    IsLowerSet (↑(μ.cells ∪ Finset.range (c.1 + 1) ×ˢ Finset.range (c.2 + 1)) : Set (ℕ × ℕ)) := by
+  sorry
 
 /-- The Young diagram obtained from `μ` by adding the cell `c` together with every cell below it in
 the product order. It is defined without a hypothesis on `c`, dually to `YoungDiagram.erase`; at
 an addable cell exactly the cell `c` is added (`YoungDiagram.IsAddable.cells_addCell_eq_insert`). -/
 def addCell (μ : YoungDiagram) (c : ℕ × ℕ) : YoungDiagram where
   cells := μ.cells ∪ Finset.range (c.1 + 1) ×ˢ Finset.range (c.2 + 1)
-  isLowerSet := by
-    intro a b hba ha
-    simp only [Finset.coe_union, Finset.coe_product, Finset.coe_range, Set.mem_union,
-      Finset.mem_coe, mem_cells, Set.mem_prod, Set.mem_Iio] at ha ⊢
-    rcases ha with ha | ⟨h1, h2⟩
-    · exact .inl (μ.isLowerSet hba ha)
-    · exact .inr ⟨hba.1.trans_lt h1, hba.2.trans_lt h2⟩
+  isLowerSet := palomarAddCell_isLowerSet μ c
 
 end YoungDiagram
 
@@ -114,26 +123,35 @@ theorem col_strict {μ : YoungDiagram} (T : StandardYoungTableau μ)
 end StandardYoungTableau
 
 variable {α ι : Type*}
+/-- Original multiplication closure of the unchanged fiber-preserving predicate. -/
+theorem palomarFiber_mul (f : α → ι) {σ τ : Equiv.Perm α}
+    (hσ : ∀ a, f (σ a) = f a) (hτ : ∀ a, f (τ a) = f a) :
+    ∀ a, f ((σ * τ) a) = f a := by sorry
+/-- Original identity closure of the unchanged fiber-preserving predicate. -/
+theorem palomarFiber_one (f : α → ι) : ∀ a, f ((1 : Equiv.Perm α) a) = f a := by sorry
+/-- Original inverse closure of the unchanged fiber-preserving predicate. -/
+theorem palomarFiber_inv (f : α → ι) {σ : Equiv.Perm α}
+    (hσ : ∀ a, f (σ a) = f a) : ∀ a, f (σ⁻¹ a) = f a := by
+  sorry
+
 /-- The subgroup of permutations of `α` that preserve every fiber of `f : α → ι`, that is, those
 moving each point within its own fiber. -/
 def fiberSubgroup (f : α → ι) : Subgroup (Equiv.Perm α) where
   carrier := {σ | ∀ a, f (σ a) = f a}
-  mul_mem' hσ hτ a := (hσ _).trans (hτ a)
-  one_mem' _ := rfl
-  inv_mem' {σ} hσ a := by
-    have h := hσ (σ⁻¹ a)
-    rwa [Equiv.Perm.inv_def, Equiv.apply_symm_apply, eq_comm] at h
+  mul_mem' := palomarFiber_mul f
+  one_mem' := palomarFiber_one f
+  inv_mem' := palomarFiber_inv f
 
 namespace YoungTableau
 variable {μ : YoungDiagram}
 /-- The **row group** of a `μ`-tableau: the permutations of the labels that keep every label in
 its own row of `t`. -/
-def rowSubgroup (t : YoungTableau μ) : Subgroup (Equiv.Perm (Fin μ.card)) :=
+abbrev rowSubgroup (t : YoungTableau μ) : Subgroup (Equiv.Perm (Fin μ.card)) :=
   fiberSubgroup (rowIndex t)
 
 /-- The **column group** of a `μ`-tableau: the permutations of the labels that keep every label in
 its own column of `t`. -/
-def colSubgroup (t : YoungTableau μ) : Subgroup (Equiv.Perm (Fin μ.card)) :=
+abbrev colSubgroup (t : YoungTableau μ) : Subgroup (Equiv.Perm (Fin μ.card)) :=
   fiberSubgroup (colIndex t)
 
 end YoungTableau
@@ -148,15 +166,15 @@ def ascentCount (r : ℕ → ℕ) (j : ℕ) : ℕ :=
 
 /-- Extend the label-to-row function by zero outside the finite label range.
 Only indices strictly below `μ.card` enter cocharge labels. -/
-def tableauRows {μ : YoungDiagram} (S : StandardYoungTableau μ) (i : ℕ) : ℕ :=
+abbrev tableauRows {μ : YoungDiagram} (S : StandardYoungTableau μ) (i : ℕ) : ℕ :=
   if h : i < μ.card then rowIndex S.toTableau ⟨i, h⟩ else 0
 
 /-- The cocharge label of a printed entry (with the printed entry shifted by one). -/
-def cochargeLabel {μ : YoungDiagram} (S : StandardYoungTableau μ)
+abbrev cochargeLabel {μ : YoungDiagram} (S : StandardYoungTableau μ)
     (i : Fin μ.card) : ℕ := ascentCount (tableauRows S) i.val
 
 /-- The cocharge filling on the cells, before assigning variable labels through T. -/
-def cochargeFilling {μ : YoungDiagram} (S : StandardYoungTableau μ)
+abbrev cochargeFilling {μ : YoungDiagram} (S : StandardYoungTableau μ)
     (c : ↥μ.cells) : ℕ := cochargeLabel S (S c)
 
 /-- Literal source definition of cochargeDegree. -/
@@ -164,7 +182,7 @@ def cochargeDegree {μ : YoungDiagram} (S : StandardYoungTableau μ) : ℕ :=
   ∑ i : Fin μ.card, cochargeLabel S i
 
 /-- Literal source definition of descentNumber. -/
-def descentNumber {μ : YoungDiagram} (S : StandardYoungTableau μ) : ℕ :=
+abbrev descentNumber {μ : YoungDiagram} (S : StandardYoungTableau μ) : ℕ :=
   ascentCount (tableauRows S) (μ.card - 1)
 
 /-- Top-to-bottom, left-to-right row reading in the paper's French convention.
@@ -175,7 +193,7 @@ def rowReadingCells (μ : YoungDiagram) : List ↥μ.cells :=
     decide (d.val.1 < c.val.1 ∨ (c.val.1 = d.val.1 ∧ c.val.2 ≤ d.val.2))
 
 /-- Literal source definition of cochargeWord. -/
-def cochargeWord {μ : YoungDiagram} (S : StandardYoungTableau μ) : List ℕ :=
+abbrev cochargeWord {μ : YoungDiagram} (S : StandardYoungTableau μ) : List ℕ :=
   (rowReadingCells μ).map (cochargeFilling S)
 
 /-- Literal source definition of CatState. -/
@@ -220,6 +238,7 @@ def CatDominates {μ : YoungDiagram} (S : StandardYoungTableau μ)
 abbrev PolynomialRing (n : ℕ) (R : Type*) [CommRing R] := MvPolynomial (Fin n) R
 
 section PolynomialDefinitions
+attribute [local instance] Classical.propDecidable
 variable {R : Type*} [CommRing R]
 
 /-- The elementary symmetric polynomial in precisely the variables in Y. -/
@@ -284,7 +303,7 @@ def youngApply {μ : YoungDiagram} (T : YoungTableau μ)
   columnAlternate (colSubgroup T) (rowSymmetrize (rowSubgroup T) p)
 
 /-- Literal source definition of transportedCocharge. -/
-def transportedCocharge {μ : YoungDiagram} (S : StandardYoungTableau μ)
+abbrev transportedCocharge {μ : YoungDiagram} (S : StandardYoungTableau μ)
     (T : YoungTableau μ) : Fin μ.card →₀ ℕ :=
   Finsupp.equivFunOnFinite.symm fun i => cochargeFilling S (T.symm i)
 
@@ -467,4 +486,36 @@ theorem corollary_8_1_griffin_characteristic_all_partitions
     IsSpecifiedBasis (R := K) (griffinFamily K n lam hk s) ↔
       ringChar K = 0 ∨ n < ringChar K := by sorry
 
+end HigherSpecht
+
+namespace Nat.Partition
+/-- Exact dominance: every initial sum of decreasing parts is at least the other sum. -/
+def Dominates {n : ℕ} (μ ν : n.Partition) : Prop :=
+  ∀ k : ℕ, ((ν.parts.sort (· ≥ ·)).take k).sum ≤ ((μ.parts.sort (· ≥ ·)).take k).sum
+end Nat.Partition
+namespace HigherSpecht
+open Module
+/-- The literal finite monomial-symmetric expansion with arbitrary nonzero leading
+coefficient and only dominance-lower terms, as in Corollary4.3. -/
+def IsDominanceTriangularMultiplier {R : Type*} [CommRing R] (n : ℕ) (eta : YoungDiagram)
+    (f : PolynomialRing n R) : Prop :=
+  ∃ c : eta.card.Partition → R,
+    c (eta.toPartition rfl) ≠ 0 ∧
+    (∀ zeta, c zeta ≠ 0 → (eta.toPartition rfl).Dominates zeta) ∧
+    f = ∑ zeta, c zeta • MvPolynomial.msymm (Fin n) R zeta
+/-- The original Griffin quotient classes with the specified multiplier f at
+exactly the same eligible rectangle/prefix/descent index; no changed quotient. -/
+def alternativeGriffinFamily {n s : ℕ} (lam : YoungDiagram) (hk : lam.card ≤ n)
+    (f : YoungDiagram → PolynomialRing n ℂ) (i : GriffinIndex n lam hk s) :
+    GriffinRing ℂ n lam s :=
+  Ideal.Quotient.mk (griffinIdeal ℂ n lam s) (pairPolynomial i.pair * f i.multiplier)
+/-- Corollary4.3 with triangularity required only for actual admissible multipliers,
+including all original indices and arbitrary non-monic nonzero leading coefficients. -/
+theorem corollary_4_3_on_admissible_multipliers
+    (n : ℕ) (lam : YoungDiagram) (hk : lam.card ≤ n)
+    (s : ℕ) (hs : 0 < s) (hheight : lam.colLen 0 ≤ s)
+    (f : YoungDiagram → PolynomialRing n ℂ)
+    (hf : ∀ i : GriffinIndex n lam hk s,
+      IsDominanceTriangularMultiplier n i.multiplier (f i.multiplier)) :
+    IsSpecifiedBasis (R := ℂ) (alternativeGriffinFamily (s := s) lam hk f) := by sorry
 end HigherSpecht

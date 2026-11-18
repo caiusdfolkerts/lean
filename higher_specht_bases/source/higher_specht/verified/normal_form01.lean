@@ -97,7 +97,7 @@ theorem row_le_of_ascentCount_eq (r : ℕ → ℕ) {i j : ℕ}
 
 /-- Extend the label-to-row function by zero outside the finite label range.
 Only indices strictly below `μ.card` enter cocharge labels. -/
-def tableauRows {μ : YoungDiagram} (S : StandardYoungTableau μ) (i : ℕ) : ℕ :=
+abbrev tableauRows {μ : YoungDiagram} (S : StandardYoungTableau μ) (i : ℕ) : ℕ :=
   if h : i < μ.card then rowIndex S.toTableau ⟨i, h⟩ else 0
 
 @[simp] theorem tableauRows_fin {μ : YoungDiagram} (S : StandardYoungTableau μ)
@@ -105,17 +105,17 @@ def tableauRows {μ : YoungDiagram} (S : StandardYoungTableau μ) (i : ℕ) : �
   simp [tableauRows, i.isLt]
 
 /-- The cocharge label of a printed entry (with the printed entry shifted by one). -/
-def cochargeLabel {μ : YoungDiagram} (S : StandardYoungTableau μ)
+abbrev cochargeLabel {μ : YoungDiagram} (S : StandardYoungTableau μ)
     (i : Fin μ.card) : ℕ := ascentCount (tableauRows S) i.val
 
 /-- The cocharge filling on the cells, before assigning variable labels through T. -/
-def cochargeFilling {μ : YoungDiagram} (S : StandardYoungTableau μ)
+abbrev cochargeFilling {μ : YoungDiagram} (S : StandardYoungTableau μ)
     (c : ↥μ.cells) : ℕ := cochargeLabel S (S c)
 
 def cochargeDegree {μ : YoungDiagram} (S : StandardYoungTableau μ) : ℕ :=
   ∑ i : Fin μ.card, cochargeLabel S i
 
-def descentNumber {μ : YoungDiagram} (S : StandardYoungTableau μ) : ℕ :=
+abbrev descentNumber {μ : YoungDiagram} (S : StandardYoungTableau μ) : ℕ :=
   ascentCount (tableauRows S) (μ.card - 1)
 
 theorem cochargeLabel_mono {μ : YoungDiagram} (S : StandardYoungTableau μ) :
@@ -237,7 +237,7 @@ def rowReadingCells (μ : YoungDiagram) : List ↥μ.cells :=
   μ.cells.attach.toList.mergeSort fun c d =>
     decide (d.val.1 < c.val.1 ∨ (c.val.1 = d.val.1 ∧ c.val.2 ≤ d.val.2))
 
-def cochargeWord {μ : YoungDiagram} (S : StandardYoungTableau μ) : List ℕ :=
+abbrev cochargeWord {μ : YoungDiagram} (S : StandardYoungTableau μ) : List ℕ :=
   (rowReadingCells μ).map (cochargeFilling S)
 
 @[simp] theorem length_cochargeWord {μ : YoungDiagram} (S : StandardYoungTableau μ) :

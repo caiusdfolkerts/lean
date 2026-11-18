@@ -4,7 +4,7 @@
   "baseline_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
   "paper_sha256": "931c0ee33b94c7a77d373c4040abb40151a8f1cd049b977006df188e31013a0c",
   "one_entry_per_paper": true,
-  "status": "ready_for_full_preflight_incomplete_paper_scope",
+  "status": "measured_repair_and_multiplier_corollary_challenge_passed_full_source_comparator_unverified",
   "source_selection": [
     "paper.pdf",
     "README.md",
@@ -195,7 +195,7 @@
             }
           ],
           "resolution": "found",
-          "challenge_status": "not_extracted"
+          "challenge_status": "selected_canonical_challenge_passed_full_comparator_unverified"
         }
       ],
       "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases/paper.pdf#page=18"
@@ -1466,7 +1466,7 @@
     "editorial_review": "not_run",
     "challenge_elaboration": "passed"
   },
-  "current_selection": "The prescribed Springer basis of Theorem 1.1, prescribed Griffin basis of Theorem 4.1, exact Springer characteristic range of Corollary 8.1, and exact Griffin characteristic range including empty partitions are selected. Prefix typing lemmas are also compared.",
+  "current_selection": "Prescribed Springer and Griffin bases, exact basis characteristic ranges including empty partitions, and full Corollary4.3 admissible dominance-triangular alternative multiplier basis with arbitrary nonzero leading coefficients.",
   "selected_wrapper_provenance": [],
   "comparator": {
     "challenge_module": "Challenge",
@@ -1478,7 +1478,20 @@
       "HigherSpecht.corollary_8_1_griffin_characteristic_all_partitions",
       "HigherSpecht.mem_prefixShape",
       "HigherSpecht.prefixShape_le",
-      "HigherSpecht.prefixShape_card"
+      "HigherSpecht.prefixShape_card",
+      "TauCeti.StandardYoungTableau.row_strict",
+      "TauCeti.StandardYoungTableau.col_strict",
+      "HigherSpecht.standardTableau_monotoneCells",
+      "HigherSpecht.prefixLabelEquiv_apply_val",
+      "YoungDiagram.isAddable_def",
+      "YoungDiagram.palomarAddCell_isLowerSet",
+      "YoungDiagram.palomarIsAddable_decision_iff",
+      "TauCeti.palomarFiber_mul",
+      "TauCeti.palomarFiber_one",
+      "TauCeti.palomarFiber_inv",
+      "HigherSpecht.prefixTableau._proof_2",
+      "HigherSpecht.prefixTableau._proof_3",
+      "HigherSpecht.corollary_4_3_on_admissible_multipliers"
     ],
     "permitted_axioms": [
       "propext",
@@ -1488,11 +1501,106 @@
   },
   "challenge": {
     "path": "source/Challenge.lean",
-    "sha256": "8df9c3652e8e30b7cfb5a3139926d1ffc8494374d163003d7f10fac3f7e919c6",
-    "physical_lines": 423,
-    "bytes": 20150,
-    "local_elaboration": "passed",
-    "solution_build": "not_run",
-    "comparator": "not_run"
-  }
+    "sha256": "f8748bec00037dc1a21966467a7f7c6e8942dc30ff4a1433735f301d5a462f80",
+    "lines": 521,
+    "canonical_run": "44387460587",
+    "canonical_status": "passed",
+    "full_source_comparator": "unverified"
+  },
+  "coverage_status": "partial_principal_selection_not_whole_paper",
+  "current_independent_challenge": {
+    "path": "source/Challenge.lean",
+    "sha256": "f8748bec00037dc1a21966467a7f7c6e8942dc30ff4a1433735f301d5a462f80",
+    "lines": 521,
+    "canonical_run": "44387460587",
+    "canonical_status": "passed",
+    "full_source_comparator": "unverified"
+  },
+  "uncovered_main_results_and_corollaries": [
+    {
+      "paper_result": "Theorem 3.2",
+      "uncovered_scope": "Full higher Specht pairing and column insertion, beyond the selected basis assertions.",
+      "blocker_or_preparation": "Source exists; independent full interface/proof closure not selected.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Corollary 4.3",
+      "uncovered_scope": "Dominance-triangular symmetric multipliers.",
+      "blocker_or_preparation": "Full literal interface and genuine original proof import selected; canonical521Challenge passed run44387460587. Full Source/Solution/Comparator remains required.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Theorem 5.2; Corollaries 5.3, 5.5, 5.6, 5.7",
+      "uncovered_scope": "Fixed irreducible harmonic copies, sums/intersections and simultaneous adapted bases.",
+      "blocker_or_preparation": "Source exists; not independently selected.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Theorems 6.1, 6.6; Corollaries 6.5, 6.7",
+      "uncovered_scope": "Untruncated parameter-module free basis, integral/all-field freeness and simultaneous harmonic/sum-intersection assertions.",
+      "blocker_or_preparation": "Source exists; independent interfaces and bridges still required.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Theorem 7.1; Corollaries 7.4, 7.5, 7.6",
+      "uncovered_scope": "Every fiber and primary geometry, reduced/etale locus, regularity, levelness/type/Gorenstein assertions.",
+      "blocker_or_preparation": "Source exists; not independently selected.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Corollary 8.1 remaining clauses",
+      "uncovered_scope": "Fixed-copy irreducibility and localized variants, beyond selected exact characteristic basis statements.",
+      "blocker_or_preparation": "Source exists; not independently selected.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    }
+  ],
+  "coverage_note": "A source theorem, a prepared candidate, a Challenge elaboration pass, and a full Comparator/replay pass are separate states. No partial entry is counted as whole-paper coverage.",
+  "current_measured_dependency_repair": {
+    "path": "measured-raw-normalization.json",
+    "challenge_sha256": "277c7953849f5b01b88b8a1f0dc1d20ca628fed83581fa738d8c5501d684400a",
+    "canonical_case_run": "44385512169",
+    "full_source_solution_comparator": "unverified"
+  },
+  "baseline_project": "higher_specht_bases",
+  "whole_paper_coverage": false,
+  "multiplier_corollary_provenance": {
+    "status": "source_prepared_frozen_full_corollary_extension_unelaborated",
+    "project": "higher_specht_bases",
+    "challenge_sha256": "f8748bec00037dc1a21966467a7f7c6e8942dc30ff4a1433735f301d5a462f80",
+    "challenge_lines": 521,
+    "retains_all487_statements_and_measured_repairs": true,
+    "adds": "Corollary4.3 prescribed Griffin basis under every dominance-triangular multiplier, arbitrary nonzero leading coefficient and hypotheses only at used admissible indices.",
+    "definitions": [
+      {
+        "name": "Nat.Partition.Dominates",
+        "actual_source": "source/tau_ceti/combinatorics/enumerative/partition/dominance.lean:70",
+        "semantics": "All initial sorted-part sums, exact literal source predicate."
+      },
+      {
+        "name": "HigherSpecht.IsDominanceTriangularMultiplier",
+        "actual_source": "source/higher_specht/verified/remaining03_complete.lean:527",
+        "semantics": "Literal finite msymm expansion, nonzero leading coefficient, all supported lower partitions dominated."
+      },
+      {
+        "name": "HigherSpecht.alternativeGriffinFamily",
+        "actual_source": "source/higher_specht/verified/remaining03_complete.lean:1703",
+        "semantics": "Exact same Griffin ideal quotient and every original GriffinIndex."
+      }
+    ],
+    "genuine_source_theorem": "source/higher_specht/verified/remaining03_complete.lean:1835 HigherSpecht.corollary_4_3_on_admissible_multipliers",
+    "solution": "Imports original substantive proof; no hypotheses/conclusions narrowed or new proof data.",
+    "canonical_imports_added": [
+      "Mathlib.Combinatorics.Enumerative.Partition.YoungDiagram",
+      "Mathlib.Analysis.Complex.Basic"
+    ],
+    "original487_active_package_unchanged": true,
+    "local_compilation": false
+  },
+  "canonical_receipt": "reports/higher_specht_bases/challenge-diagnostic/run-44387460587/higher_specht_multiplier_corollary43/receipt.json"
 }

@@ -4,6 +4,8 @@
 
 This project contains the full Lean4 formalisation for all principal results in my paper *Higher Specht bases for Springer and Δ-Springer rings*. I've included the paper as paper.pdf.
 
+The independent Comparator selection currently covers the prescribed Springer and Griffin bases, their exact field-characteristic ranges, and Corollary4.3 with every admissible dominance-triangular multiplier and arbitrary nonzero leading coefficient. Its521-line Challenge passed canonical elaboration; the current full Source/Solution/Comparator replay remains unverified. The required further principal results and corollaries are listed explicitly in map.json.
+
 ## Verification
 
 If you have Elan and Git installed, run below commands from this directory.

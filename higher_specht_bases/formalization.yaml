@@ -8,7 +8,10 @@ project:
     the diagram size. The Griffin family has the exact analogous characteristic range
     greater than n, including the empty partition under the stated positive exponent
     bound. The statement defines tableaux, cocharge, terminating cyclic insertion,
-    eligibility, symmetrizers and the actual quotient ideals explicitly.
+    eligibility, symmetrizers and the actual quotient ideals explicitly. Corollary4.3
+    retains the prescribed Griffin basis for every dominance-triangular symmetric
+    multiplier with arbitrary nonzero leading coefficient, requiring triangularity
+    only at actually admissible indices.
   authors:
   - Caius Folkerts
   responsible_maintainers:
@@ -36,9 +39,12 @@ automation:
   methods:
   - method: agent
     tool_setup: OpenAI Codex
-    notes: Current packaging, source-block migration, source mapping and independent
-      statement extraction are agent-assisted. Fresh build and Comparator evidence
-      are not yet available.
+    notes: Packaging and independent literal extraction are agent-assisted. The487-line
+      measured raw dependency repair passed canonical Challenge elaboration in run44385512169.
+      The521-line extension retaining it and adding full Corollary4.3 passed run44387460587.
+      Eight same-value definitions have fixed abbrev metadata; original lower-set/decision/fiber-closure
+      calculations are retained under named selected support facts. Current full Source/Solution/Comparator
+      replay is unverified.
   - method: other
     tool_setup: Historical AI assistance reported in the included paper
     notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing
@@ -46,11 +52,10 @@ automation:
       not been reconstructed from the snapshot.
 review:
   status: unchecked
-  notes: Paper, README and source declarations inspected by the preparation agent.
-    The independent Challenge elaborated successfully under exact Lean4.36.0-rc1 and
-    canonical Mathlib2cabef97b63d3275776b8b060d802de6a6fa1055. This is not a Solution
-    build, Comparator result, independent kernel replay, expert review, or Palomar
-    review.
+  notes: Canonical-only remote elaboration of exact current521Challenge passed run44387460587.
+    Source proof bodies are retained and the new corollary imports its actual original
+    proof. This does not establish a full Solution/Comparator, independent kernel
+    replay or expert/Palomar review.
 scope:
   known_gaps:
   - The fixed-copy irreducible representation assertions, column-insertion result,
@@ -61,13 +66,13 @@ scope:
     with public-import/import-all chains and explicit Lake library roots. The complete
     fresh Solution/default-target build must verify cross-module visibility and private
     declarations.
-  - Only the independent Challenge has been locally elaborated. Solution compilation,
-    Comparator, independent kernel replay and Palomar review remain pending.
+  - The521-line current Challenge passed canonical-only remote elaboration. Full source/Solution
+    build, Comparator and independent kernel replay for the measured repair and Corollary4.3
+    extension have not passed.
   notes: The submitted project contains the substantive historical proof development
     copied from the pinned source snapshot; this is not a thin wrapper. Historical
     upstream dependencies and license notices are retained. See map.json for exact
     proposed selections and unresolved source mapping.
-  current_selection: The prescribed Springer basis of Theorem 1.1, prescribed Griffin
-    basis of Theorem 4.1, exact Springer characteristic range of Corollary 8.1, and
-    exact Griffin characteristic range including empty partitions are selected. Prefix
-    typing lemmas are also compared.
+  current_selection: Prescribed Springer and Griffin bases, exact basis characteristic
+    ranges including empty partitions, and full Corollary4.3 admissible dominance-triangular
+    alternative multiplier basis with arbitrary nonzero leading coefficients.

@@ -84,8 +84,12 @@ theorem isAddable_def (μ : YoungDiagram) (c : ℕ × ℕ) :
     IsAddable μ c ↔ c ∉ μ ∧ ∀ d < c, d ∈ μ :=
   Iff.rfl
 
+/-- The original finite test is equivalent to the actual addable-cell predicate. -/
+theorem palomarIsAddable_decision_iff (μ : YoungDiagram) (c : ℕ × ℕ) :
+    (c ∉ μ ∧ ∀ d ∈ Finset.Iio c, d ∈ μ) ↔ IsAddable μ c := by simp [isAddable_def]
+
 instance instDecidableIsAddable (μ : YoungDiagram) (c : ℕ × ℕ) : Decidable (IsAddable μ c) :=
-  decidable_of_iff (c ∉ μ ∧ ∀ d ∈ Finset.Iio c, d ∈ μ) (by simp [isAddable_def])
+  decidable_of_iff (c ∉ μ ∧ ∀ d ∈ Finset.Iio c, d ∈ μ) (palomarIsAddable_decision_iff μ c)
 
 namespace IsAddable
 
@@ -161,18 +165,22 @@ theorem isAddable_transpose : IsAddable μ.transpose c ↔ IsAddable μ c.swap :
 
 /-! ### Adding a cell -/
 
+/-- The literal cells used by addCell form a lower set, by the original calculation. -/
+theorem palomarAddCell_isLowerSet (μ : YoungDiagram) (c : ℕ × ℕ) :
+    IsLowerSet (↑(μ.cells ∪ Finset.range (c.1 + 1) ×ˢ Finset.range (c.2 + 1)) : Set (ℕ × ℕ)) := by
+  intro a b hba ha
+  simp only [Finset.coe_union, Finset.coe_product, Finset.coe_range, Set.mem_union,
+    Finset.mem_coe, mem_cells, Set.mem_prod, Set.mem_Iio] at ha ⊢
+  rcases ha with ha | ⟨h1, h2⟩
+  · exact .inl (μ.isLowerSet hba ha)
+  · exact .inr ⟨hba.1.trans_lt h1, hba.2.trans_lt h2⟩
+
 /-- The Young diagram obtained from `μ` by adding the cell `c` together with every cell below it in
 the product order. It is defined without a hypothesis on `c`, dually to `YoungDiagram.erase`; at
 an addable cell exactly the cell `c` is added (`YoungDiagram.IsAddable.cells_addCell_eq_insert`). -/
 def addCell (μ : YoungDiagram) (c : ℕ × ℕ) : YoungDiagram where
   cells := μ.cells ∪ Finset.range (c.1 + 1) ×ˢ Finset.range (c.2 + 1)
-  isLowerSet := by
-    intro a b hba ha
-    simp only [Finset.coe_union, Finset.coe_product, Finset.coe_range, Set.mem_union,
-      Finset.mem_coe, mem_cells, Set.mem_prod, Set.mem_Iio] at ha ⊢
-    rcases ha with ha | ⟨h1, h2⟩
-    · exact .inl (μ.isLowerSet hba ha)
-    · exact .inr ⟨hba.1.trans_lt h1, hba.2.trans_lt h2⟩
+  isLowerSet := palomarAddCell_isLowerSet μ c
 
 theorem cells_addCell (μ : YoungDiagram) (c : ℕ × ℕ) :
     (addCell μ c).cells = μ.cells ∪ Finset.range (c.1 + 1) ×ˢ Finset.range (c.2 + 1) :=

@@ -2092,7 +2092,7 @@ def youngApply {μ : YoungDiagram} (T : YoungTableau μ)
     (p : PolynomialRing μ.card R) : PolynomialRing μ.card R :=
   columnAlternate (colSubgroup T) (rowSymmetrize (rowSubgroup T) p)
 
-def transportedCocharge {μ : YoungDiagram} (S : StandardYoungTableau μ)
+abbrev transportedCocharge {μ : YoungDiagram} (S : StandardYoungTableau μ)
     (T : YoungTableau μ) : Fin μ.card →₀ ℕ :=
   Finsupp.equivFunOnFinite.symm fun i => cochargeFilling S (T.symm i)
 

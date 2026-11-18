@@ -43,12 +43,12 @@ variable {μ : YoungDiagram}
 
 /-- The **row group** of a `μ`-tableau: the permutations of the labels that keep every label in
 its own row of `t`. -/
-def rowSubgroup (t : YoungTableau μ) : Subgroup (Equiv.Perm (Fin μ.card)) :=
+abbrev rowSubgroup (t : YoungTableau μ) : Subgroup (Equiv.Perm (Fin μ.card)) :=
   fiberSubgroup (rowIndex t)
 
 /-- The **column group** of a `μ`-tableau: the permutations of the labels that keep every label in
 its own column of `t`. -/
-def colSubgroup (t : YoungTableau μ) : Subgroup (Equiv.Perm (Fin μ.card)) :=
+abbrev colSubgroup (t : YoungTableau μ) : Subgroup (Equiv.Perm (Fin μ.card)) :=
   fiberSubgroup (colIndex t)
 
 @[simp]

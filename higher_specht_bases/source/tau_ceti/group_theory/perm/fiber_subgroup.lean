@@ -59,15 +59,26 @@ namespace TauCeti
 
 variable {α ι κ : Type*}
 
+/-- Original multiplication closure of the unchanged fiber-preserving predicate. -/
+theorem palomarFiber_mul (f : α → ι) {σ τ : Equiv.Perm α}
+    (hσ : ∀ a, f (σ a) = f a) (hτ : ∀ a, f (τ a) = f a) :
+    ∀ a, f ((σ * τ) a) = f a := by intro a; exact (hσ _).trans (hτ a)
+/-- Original identity closure of the unchanged fiber-preserving predicate. -/
+theorem palomarFiber_one (f : α → ι) : ∀ a, f ((1 : Equiv.Perm α) a) = f a := by intro a; rfl
+/-- Original inverse closure of the unchanged fiber-preserving predicate. -/
+theorem palomarFiber_inv (f : α → ι) {σ : Equiv.Perm α}
+    (hσ : ∀ a, f (σ a) = f a) : ∀ a, f (σ⁻¹ a) = f a := by
+  intro a
+  have h := hσ (σ⁻¹ a)
+  rwa [Equiv.Perm.inv_def, Equiv.apply_symm_apply, eq_comm] at h
+
 /-- The subgroup of permutations of `α` that preserve every fiber of `f : α → ι`, that is, those
 moving each point within its own fiber. -/
 def fiberSubgroup (f : α → ι) : Subgroup (Equiv.Perm α) where
   carrier := {σ | ∀ a, f (σ a) = f a}
-  mul_mem' hσ hτ a := (hσ _).trans (hτ a)
-  one_mem' _ := rfl
-  inv_mem' {σ} hσ a := by
-    have h := hσ (σ⁻¹ a)
-    rwa [Equiv.Perm.inv_def, Equiv.apply_symm_apply, eq_comm] at h
+  mul_mem' := palomarFiber_mul f
+  one_mem' := palomarFiber_one f
+  inv_mem' := palomarFiber_inv f
 
 @[simp]
 theorem mem_fiberSubgroup {f : α → ι} {σ : Equiv.Perm α} :
