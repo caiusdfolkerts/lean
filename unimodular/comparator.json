@@ -1,0 +1,24 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "PalomarFans.Toric.isLatticeRational_iff",
+    "PalomarFans.Toric.IsLatticeRational.fg",
+    "PalomarFans.ConeInterior.interior_nonempty_of_span_eq_top",
+    "PalomarFans.ConeInterior.exists_normal",
+    "PalomarFans.AllowedBlocks.blockCone_isLatticeRational",
+    "PalomarFans.AllowedBlocks.fullBlock_finite",
+    "PalomarFans.AllowedBlocks.facetBlock_finite",
+    "PalomarFans.AllowedBlocks.equationFn_zero",
+    "PalomarFans.AllowedBlocks.equationFn_add",
+    "PalomarFans.AllowedBlocks.theorem_3_1",
+    "PalomarFans.AllowedBlocks.theorem_3_1_zero_one",
+    "PalomarFans.AllowedBlocks.signed_degree_independent",
+    "PalomarFans.AllowedBlocks.theorem_1_1_connectivity"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}
