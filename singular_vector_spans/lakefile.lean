@@ -4,6 +4,7 @@ open Lake DSL
 package singular_vector_spans where
   fixedToolchain := true
   requiresModuleSystem := true
+  moreLeanArgs := #["-t0", "-j1", "-DElab.async=false", "-Ddebug.skipKernelTC=false"]
 
 require mathlib from git
   "https://github.com/leanprover-community/mathlib4" @

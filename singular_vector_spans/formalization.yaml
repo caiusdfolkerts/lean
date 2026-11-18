@@ -44,7 +44,10 @@ review:
     principal results remain separate from 29 supporting theorem obligations.
     This is a statement-interface check with intentional placeholders, not a
     substantive Solution build, Comparator or independent kernel result; those
-    full checks remain pending.
+    full checks remain pending. The first full run failed because the ordinary
+    package omitted the original -t0 argument. That argument is now restored
+    with one worker and synchronous elaboration; all source audit assertions
+    remain unchanged.
 fidelity:
   notes: >-
     The principal rank statement uses the actual symmetric-power Segre quotient,

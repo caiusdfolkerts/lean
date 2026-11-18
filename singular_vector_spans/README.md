@@ -72,3 +72,9 @@ Full substantive Solution compilation, strict Comparator and independent
 kernel verification remain pending; this package is ready for that preflight.
 The ordinary proof library builds the 90 indexed module copies directly; the
 legacy default verification target remains available for its original workflow.
+
+The first full preflight rejected the missing `-t0` compiler argument at the
+retained source audits. The ordinary package now restores trust level zero,
+one worker, synchronous elaboration and kernel checking from the original
+verification configuration. All audit assertions remain unchanged. The revised
+full preflight remains pending.
