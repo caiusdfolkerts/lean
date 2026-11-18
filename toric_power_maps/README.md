@@ -1,33 +1,20 @@
-# The Hanlon–Hicks–Lazarev conjecture on smooth toric varieties
+# Frobenius generators for smooth toric varieties
 
-[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/research/project-toric_power_maps.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/research/actions/workflows/project-toric_power_maps.yml)
+The independent Challenge adds the full categorical main Theorem1.1 to the
+arithmetic/class-set consequences: ordinary positive-power direct images of
+actual Cartier line bundles generate the actual bounded coherent derived
+category exactly under the all-rational-linear-subspace cohomology criterion,
+and every sufficiently large positive integer exponent generates.
 
-This project contains the full Lean4 formalisation of the principal results in my paper *The Hanlon–Hicks–Lazarev conjecture on smooth toric varieties*. I've included the paper as paper.pdf.
+The standalone main categorical Challenge passed canonical elaboration against
+TauCeti1f9b4414 and that commit's complete Mathlib07406378 dependency closure.
+The combined430line Challenge and complete upgraded Solution closure remain
+unbuilt. The finite integer-pattern criterion5.2 and the categorical effective
+bound7.2 are not yet compared. No whole-paper completion is claimed.
 
-## Verification
+The original complete source files and all licensing notices remain retained.
+Canonical dependencies own201 previously duplicated materialized modules and
+23 consolidated upstream source blocks. Four custom categorical source sections
+remain compiled verbatim. See formalization.yaml and the supervisor overlay plan.
 
-If you have Elan, Git and Python 3 installed, run these commands from this directory.
-
-```sh
-lake exe cache get
-lake build
-```
-
-The project pins Lean 4.35.0 and its Mathlib revision. The build checks the sources and the axioms of the declarations below.
-
-## Main results
-
-All declarations below are in the `ToricPower` namespace, except where a longer namespace is shown.
-
-| Paper result | Lean statement |
-| --- | --- |
-| Theorem 1.1: generation criterion for every Cartier divisor and all sufficiently large integer powers | `paper_theorem_1_1` |
-| Proposition 3.2: complete-fan sufficiency | `toric_complete_cartier_eventual_generation` |
-| Lemma 4.1, fan formulation: smooth completion preserving the original cones | `ToricPower.FanSubdivision.exists_complete_regular_extension_fullOnRays` |
-| Theorem 5.2: the finite ray-span and integral-character criterion | `paper_theorem_5_2`, `paper_theorem_5_2_cartier` |
-| Lemma 6.1: the universal grid and the full integral cokernel | `thomsenClasses_eq_frobenius_universal`, `thomsenClasses_eq_union_positive`, `paper_lemma_6_1_zonotope_grid` |
-| Proposition 6.2: stabilization and the exact one-exponent generation test | `paper_proposition_6_2_classes_int`, `paper_proposition_6_2_DbCoh_invariant`, `paper_proposition_6_2_DbCoh_cartier` |
-| Lemma 7.1: lattice absorption | `paper_lemma_7_1_int` |
-| Theorem 7.2: raw-summand periodicity and generation at a height-linear bound | `paper_theorem_7_2`, `paper_theorem_7_2_cartier_generation`, `periodicityBound_eq_paper_formula` |
-
-The accompanying [paper](paper.pdf) includes the corrected proof of Lemma 4.1, using a relative smooth refinement that preserves the original cones.
+The exact combined430-line Challenge passed canonical remote elaboration (run44352784302); no full Solution/Comparator pass is claimed. A subsequent static source audit found28 duplicate globals arising from renamed canonical module paths. Three compatibility providers now import their pinned canonical owners; the sole historical HomologicalComplex.exact_iCycles_toCycles lemma absent from the canonical API retains its exact original proof. Every original source/ file remains unchanged. A namespace-aware re-audit of235 canonical modules versus the custom proof tree found no remaining named-global collisions; anonymous instances and actual API compatibility still require full elaboration.

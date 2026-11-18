@@ -307,17 +307,24 @@ namespace ToricPower
 
 variable {ι κ : Type*} [Fintype κ]
 
-/-- The integral ray-pairing map, in arbitrary lattice bases. -/
+/-- The displayed ray-pairing function preserves addition; separately compared. -/
+theorem rayMap_add_law (A : ι → κ → ℤ) (u v : κ → ℤ) :
+    (fun i => ∑ j, A i j * (u + v) j) =
+      (fun i => ∑ j, A i j * u j) + (fun i => ∑ j, A i j * v j) := by
+  ext i
+  simp [mul_add, Finset.sum_add_distrib]
+/-- The displayed ray-pairing function preserves integral scaling; separately compared. -/
+theorem rayMap_smul_law (A : ι → κ → ℤ) (r : ℤ) (u : κ → ℤ) :
+    (fun i => ∑ j, A i j * (r • u) j) = r • (fun i => ∑ j, A i j * u j) := by
+  ext i
+  simp [Finset.mul_sum, mul_assoc, mul_left_comm]
+/-- The actual integral ray-pairing linear map. -/
 def rayMap (A : ι → κ → ℤ) : (κ → ℤ) →ₗ[ℤ] (ι → ℤ) where
   toFun u i := ∑ j, A i j * u j
-  map_add' u v := by
-    ext i
-    simp [mul_add, Finset.sum_add_distrib]
-  map_smul' r u := by
-    ext i
-    simp [Finset.mul_sum, mul_assoc, mul_left_comm]
+  map_add' := rayMap_add_law A
+  map_smul' := rayMap_smul_law A
 
-/-- A coefficient vector of the actual floor splitting, before taking classes. -/
+/-- Actual coordinatewise integral floor coefficients of the power-map splitting. -/
 def powerCoefficient (A : ι → κ → ℤ) (b : ι → ℤ) (ell : ℤ)
     (u : κ → ℤ) : ι → ℤ :=
   fun i => (b i + rayMap A u i) / ell

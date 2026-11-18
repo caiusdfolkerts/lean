@@ -4263,7 +4263,7 @@
     {
       "module": "ToricPower.Core",
       "path": "source/toric_power/core.lean",
-      "source_sha256": "0dd6ee51575757894c325afa2098aa660903c25fb7b710aca7c9969bdbfb362c"
+      "source_sha256": "f4213a20c1ccc2f7a63373e08d5eba23e755eecd48166827f3044f61e4582254"
     },
     {
       "module": "ToricPower.CoresolutionDerivedUniversal",

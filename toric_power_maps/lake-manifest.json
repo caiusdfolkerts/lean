@@ -3,14 +3,26 @@
   "packagesDir": ".lake/packages",
   "packages": [
     {
-      "url": "https://github.com/leanprover-community/mathlib4.git",
+      "url": "https://github.com/TauCetiProject/TauCeti",
       "type": "git",
       "subDir": null,
       "scope": "",
-      "rev": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+      "rev": "1f9b4414105d86e487a4ac4c3d3397076a44d0d2",
+      "name": "TauCeti",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "1f9b4414105d86e487a4ac4c3d3397076a44d0d2",
+      "inherited": false,
+      "configFile": "lakefile.toml"
+    },
+    {
+      "url": "https://github.com/leanprover-community/mathlib4",
+      "type": "git",
+      "subDir": null,
+      "scope": "",
+      "rev": "074063781836922cb02701cd12943c9f51731afa",
       "name": "mathlib",
       "manifestFile": "lake-manifest.json",
-      "inputRev": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+      "inputRev": "master",
       "inherited": false,
       "configFile": "lakefile.lean"
     },

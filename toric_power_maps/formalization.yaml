@@ -1,0 +1,68 @@
+version: v0.4
+project:
+  name: Frobenius generators for smooth toric varieties
+  description: >-
+    On every nonempty smooth finite toric fan, an ordinary positive-power direct
+    image of an arbitrary actual Cartier line bundle generates the literal
+    bounded coherent derived category exactly when every actual rational linear
+    subspace has nonzero total restricted Zariski sheaf cohomology. Under that
+    criterion every sufficiently large positive integer exponent generates.
+    The arithmetic consequences retain the full integral cokernel, exact
+    determinant periods and explicit raw-coefficient bounds, and the exact
+    stable one-exponent class set.
+  authors: [Caius Folkerts]
+  responsible_maintainers: [Caius Folkerts]
+  license: Apache-2.0
+classification:
+  arxiv: [math.AG, math.CO]
+  msc2020: [14M25, 14F08, 52B20]
+sources:
+  - title: The Hanlon–Hicks–Lazarev conjecture on smooth toric varieties
+    authors: [Caius Folkerts]
+    type: paper
+    relationship: formalizes
+    location: paper.pdf
+    note: Full categorical Theorem1.1; arithmetic/class-set endpoints including Lemmas6.1/7.1, Proposition6.2 class-set conclusion and raw-coefficient part of Theorem7.2. The finite integer-pattern and effective categorical conclusions are not yet compared.
+related_formalizations:
+  - title: Original complete toric-power proof development
+    relationship: other
+    id: https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/toric_power_maps
+    note: Every complete original source file and license is retained; canonical source blocks are compiled through the official dependency after the documented project upgrade.
+  - title: Canonical TauCeti
+    relationship: other
+    id: https://github.com/TauCetiProject/TauCeti/tree/1f9b4414105d86e487a4ac4c3d3397076a44d0d2
+    note: Entire official pinned manifest closure retained exactly, including Mathlib074063781836922cb02701cd12943c9f51731afa, with no dependency override.
+automation:
+  methods:
+    - method: agent
+      tool_setup: >-
+        OpenAI Codex using GPT-6.1 Sol read the paper, README and retained source,
+        prepared the independent literal interfaces, genuine source proof bridges,
+        canonical dependency overlay, comparison configuration and metadata.
+        Historical proof-development assistance is retained in the original
+        paper and source acknowledgements, without independently reconstructed roles.
+review:
+  status: unchecked
+  notes: >-
+    The standalone18-comparison categorical main interface passed canonical
+    elaboration in remote run44348249786 at its exact SHA4657220f. The combined
+    28-comparison Challenge passed canonical elaboration in run44352784302 at
+    exact SHAe58483f8. Three static compatibility wrappers remove28 duplicated
+    globals from the pinned canonical upgrade; complete original sources remain.
+    Full source/Solution elaboration, Comparator, NanoDa and mathematical peer
+    review remain unverified for this project revision.
+fidelity:
+  divergences: >-
+    Actual canonical fan schemes, Cartier divisors, ordinary module-sheaf
+    pushforwards, bounded derived coherent objects, thick generation and actual
+    Zariski sheaf cohomology are used. All rational linear subspaces and all
+    cohomological degrees are retained. Necessary proved typing and record-law
+    propositions are explicit comparison targets. The Solution transports the
+    genuine source main theorem through literal data and actual record
+    conversions, not an assumed equivalence or abstract generation predicate.
+    A complete canonical TauCeti dependency upgrade supplies its own exact
+    Mathlib pin. Canonical declarations replace only redundant compiled copies;
+    complete original sources remain archived under source/ with licenses/hashes.
+limitations:
+  - Full upgraded source and combined interface build, comparison and proof checking remain pending.
+  - Finite criterion5.2, effective categorical bound7.2 and other paper corollaries remain outside the current selected scope; whole-paper completion is not claimed.
