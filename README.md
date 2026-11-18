@@ -1,3 +1,3 @@
-# Canonical diagnostic revision20
+# Canonical diagnostic revision21
 
-One independent canonical Challenge of Volume geometric consequences. Intentional theorem placeholders; no full-preflight or intake claim.
+One independent corrected MainBary canonical Challenge. Intentional theorem placeholders; no full-preflight or intake claim.

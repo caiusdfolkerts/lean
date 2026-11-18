@@ -1,3 +1,3 @@
-# Frozen diagnostic revision20
+# Frozen diagnostic revision21
 
-One owner-frozen canonical Challenge of six actual Volume geometric endpoints and three genuine map supports. Exact canonical pins, one8GiB compiler/job,max2jobs,40minute compile deadline. Principal theorem placeholders are intentional Challenge obligations; a successful check confirms the displayed interface elaborates, not its solutions. No full-preflight/Comparator/intake claim. All prior snapshots immutable.
+One owner-frozen MainBary965 canonical Challenge repairing measured docstring attachments and an accidentally introduced helper ordering dependency. Exact canonical pins; one8GiB compiler/job,max2jobs,40minute compile deadline. Intentional principal theorem placeholders remain. No solution/full-preflight/Comparator/intake claim; all prior snapshots immutable.

@@ -4,73 +4,73 @@
   "pipeline_commit": "14aa8d6b3c2f14a8540605e37144560b9a00e7e7",
   "cases": [
     {
-      "id": "volume_geometry_supplemental",
+      "id": "barycentric_main_repair_smoke_r2",
       "module": "Challenge",
-      "case_dir": "cases/volume_geometry_supplemental",
-      "original_package": "reports/volume_polynomials/effectivity/geometry-supplement-project",
-      "original_challenge": "reports/volume_polynomials/effectivity/geometry-supplement-project/source/ChallengeSupplement.lean",
-      "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
+      "case_dir": "cases/barycentric_main_repair_smoke_r2",
+      "original_package": "reports/barycentric_invariance/repair-smoke-r2",
+      "original_challenge": "reports/barycentric_invariance/repair-smoke-r2/Challenge.lean",
+      "lean_toolchain": "leanprover/lean4:v4.35.0",
       "hashes": {
-        "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
-        "lake-manifest.json": "0403d585bc7d7c99efd67cbf31a28d7fb97360e498bd2faa12f81ca5b06230af",
-        "original-lakefile.toml": "1edbb2969ea8cd4288ea22dc0d9fbdb4521a82509dfb8d4d837172422cf89c3f",
-        "Challenge.lean": "0a937fd8aa5b8d4c9e63ac62dbbeba7a3e80d63160cba5a9a8815860039389b4"
+        "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+        "lake-manifest.json": "1f49ab4b0413a57d8d5efeecdeac1132e4c2ff7ac252daefafd2d5c0be0a3a3e",
+        "original-lakefile.toml": "692633eaf752c4bcacada8bdf275fcac1bc19ec7290fc35888a96b8bf49d868b",
+        "Challenge.lean": "ccadfca2e84cdd49a39bc1d307a6f119e3c56931bbc4c751058a6738f5f00ae0"
       },
-      "challenge_lines": 599,
-      "challenge_bytes": 29909,
+      "challenge_lines": 965,
+      "challenge_bytes": 51285,
       "dependency_pins": [
         {
           "name": "mathlib",
-          "url": "https://github.com/leanprover-community/mathlib4",
-          "rev": "2cabef97b63d3275776b8b060d802de6a6fa1055"
+          "url": "https://github.com/leanprover-community/mathlib4.git",
+          "rev": "56a005855ea17e0b0958f73ec801ae140b0a1679"
         },
         {
           "name": "plausible",
           "url": "https://github.com/leanprover-community/plausible",
-          "rev": "c2d7840c65673533e15b499f25beecdc6227f7d8"
+          "rev": "dfa4f38190d07c37e315953e08b90fe2d95b3c24"
         },
         {
           "name": "LeanSearchClient",
           "url": "https://github.com/leanprover-community/LeanSearchClient",
-          "rev": "9d39f9bb0c30aa2f6200808805ff16e6ce950890"
+          "rev": "d6b4c7be5be75ec4917c873ac50c756dc1436372"
         },
         {
           "name": "importGraph",
           "url": "https://github.com/leanprover-community/import-graph",
-          "rev": "b3cc36c295aa5e3e3c0197b09a6556298e710447"
+          "rev": "a41f0e9a4dea23188ea9cc1c41ac9f8bbafe0b93"
         },
         {
           "name": "proofwidgets",
           "url": "https://github.com/leanprover-community/ProofWidgets4",
-          "rev": "17137fad38a2cc782ff00b323a13c3a991d085ab"
+          "rev": "df72b022e558978a1c50264cfc4d7fec86fa8e04"
         },
         {
           "name": "aesop",
           "url": "https://github.com/leanprover-community/aesop",
-          "rev": "29c64c56cc38211d39b306db2df11701e3d3de11"
+          "rev": "4a174c490d8707121c4a9290800489f105d85e07"
         },
         {
           "name": "Qq",
           "url": "https://github.com/leanprover-community/quote4",
-          "rev": "6d26f8bb4b2bb78f929ad160feac508866821316"
+          "rev": "dce0ad79c486cb1fb504af04f953c3466b0c6db8"
         },
         {
           "name": "batteries",
           "url": "https://github.com/leanprover-community/batteries",
-          "rev": "30691c775364967184547c94468bf6b5f25400fb"
+          "rev": "66e469188fe07963e5cf666c7d4433f45b8131c5"
         },
         {
           "name": "Cli",
           "url": "https://github.com/leanprover/lean4-cli",
-          "rev": "34d2efffcb6dc8d5f3537cf6a7f88bfaa999ec49"
+          "rev": "c24fe6078c630e89b489bffe59b3e20ac30d12c8"
         }
       ],
-      "diagnostic_class": "canonical-only-six-geometric-endpoints-three-map-supports-Challenge",
+      "diagnostic_class": "canonical-only-measured-parser-context-repair-principal-Challenge",
       "remote_memory_mib": 8192
     }
   ],
   "default_case_ids": [
-    "volume_geometry_supplemental"
+    "barycentric_main_repair_smoke_r2"
   ],
   "operator_resource_policy": {
     "memory_mib": 8192,
@@ -79,5 +79,5 @@
     "matrix_max_parallel": 2,
     "compile_timeout_seconds": 2400
   },
-  "revision": "20"
+  "revision": "21"
 }
