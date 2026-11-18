@@ -1,3 +1,3 @@
-# Frozen diagnostic revision18
+# Frozen diagnostic revision19
 
-Nine exact latest owner-frozen changed cases. MainBary957, Relative3-type730, complete UnimodTheorem1.2-322, Bier21 statements402 with actual literal operator-norm rfl guard, full Homo357 sharpness, corrected Alt745/Fermion936, genuine corrected Cor7Exposure112, and full four-clause ReesTransfer726 with the measured canonical grading instance. Only Cor7Exposure contains no theorem proof placeholders; its successful check proves those displayed supporting geometric interfaces only. Bier rfl does not prove the paper claims represented by placeholders. Exact canonical pins, one8GiB compiler/job,max2jobs,40minute compile deadline. No full-preflight/Comparator/intake claim; all prior runs immutable.
+One owner-frozen genuine actual-proof/API smoke from observed Rees Solution failures. All displayed theorem bodies are actual proofs; no placeholders or project imports. Exact canonical pins, one8GiB compiler/job,max2jobs,40minute compile deadline. Scope is the support/ideal/polynomial/basis/quotient/complex APIs exercised, not complete source proof or Comparator validation. All prior snapshots immutable.

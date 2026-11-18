@@ -1,3 +1,3 @@
-# Canonical diagnostic revision18
+# Canonical diagnostic revision19
 
-Source-only independent principal statements and one genuine geometry bridge proof smoke. No full-preflight or intake claim.
+One genuine canonical proof/API smoke for observed Rees Solution failures. No full-preflight or intake claim.
