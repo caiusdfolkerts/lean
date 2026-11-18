@@ -1,29 +1,20 @@
-# Characterizations of polymatroidal ideals
+# Recognition and testing of polymatroidal ideals
 
-[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/research/project-polymatroidal_ideals.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/research/actions/workflows/project-polymatroidal_ideals.yml)
+The48 selected comparisons cover the actual monomial-ideal recognition theorems,
+finite linear presentations and exchange, quotient socles and field independence,
+real lower-rank polytopes and canonical integral-closure ideals, exact homological
+localization tests, localization and order coverage, test-number bounds and sharp
+rejection probabilities. Every custom mathematical statement retains its exact
+source hypotheses and genuine finite-resolution or Koszul/derived-Tor meaning.
 
-This project contains the full Lean4 formalisation for all principal results in my paper *Characterizations of polymatroidal ideals*. I've included the paper as paper.pdf.
+The equivalence with ordinary integral closedness plus local equigeneration is
+Theorem2.11, Equation(2.5). The separate characterization by intersections of powers
+of coordinate primes is not a comparison target in this entry; it is being prepared
+in the regularity/sharpness supplement. No intersection-type coverage is advertised
+by the Equation(2.5) theorem here.
 
-## Verification
-
-If you have Elan and Git installed, run below commands from this directory.
-
-```sh
-lake exe cache get
-lake build
-```
-
-## Main results
-
-Here's a guide to help you navigate this repo! All verified theorems/propositions/corollaries are linked to their corresponding Lean4 declarations in the table below.
-
-| Paper result | Scope retained |
-| --- | --- |
-| Theorem 1.1; Corollaries 2.7, 2.10, 3.10–3.11 | Both recognition equivalences, literal polynomial ideals and localizations, quotient socles, field independence, and universal pure reverse-lexicographic quotients. |
-| Theorem 2.11; Corollary 2.12 | The real generator hull, ordinary integral closure for all polynomial elements, coordinate-prime powers, and the integral-closedness and intersection-type characterizations. |
-| Theorems 3.3, 3.6, 3.12 | Genuine linear presentations, prescribed-donor exchange at distance four, sufficient order coverage, and every monomial term order. |
-| Proposition 4.1 | The complete nonzero result, the valid closure and finite-length assertions at zero, and the explicit zero-ideal counterexample to the unrestricted regularity equality. |
-| Theorems 4.2, 4.5, 4.9 | The exact degree and dimension cutoffs, both localization bands, and the triangular bound for actual graded derived Tor. |
-| Propositions 4.3, 4.7, 4.10; Corollary 4.8 | The complete nonlinear deleted-generator strand, single-localization isolators, optimal degrees and first nonlinear positions, and attained minimum numbers of localization tests. |
-| Theorems 5.3–5.4; Corollary 5.5 | Exact necessary and sufficient order coverage, all small cases, exact high-degree counts, both lower bounds, the logarithmic upper bound, and literal fixed-degree asymptotics. |
-| Theorem 5.6 | The sharp uniform rejection probability, examples attaining it, the small-dimensional cases, and the repeated independent-test bound. |
+All48 mathematical types and proofs are unchanged from the full-preflight passing
+snapshot7a17ded3c2e62250c5eea2a1b150525cc3cb4008. This revision corrects only a source
+docstring and entry metadata/documentation. Its own exact full preflight is pending.
+The original paper, complete proof sources and licenses are retained. Original
+full-project documentation is archived separately as README.original.md.

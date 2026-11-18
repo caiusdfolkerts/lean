@@ -31,7 +31,7 @@ sources:
     type: paper
     relationship: formalizes
     location: paper.pdf
-    note: Theorems1.1,2.11,3.3,3.6; Corollaries2.7,2.10,2.12,3.10,3.11; Theorems3.12,4.2,4.5,4.9; Corollary4.8; Theorems5.3–5.4; Corollary5.5; Theorem5.6.
+    note: Theorems1.1,2.11,3.3,3.6; Corollaries2.7,2.10,3.10,3.11; Theorem2.11 Equation(2.5); Theorems3.12,4.2,4.5,4.9; Corollary4.8; Theorems5.3–5.4; Corollary5.5; Theorem5.6.
 related_formalizations:
   - title: caiusdfolkerts/research polymatroidal_ideals
     relationship: other
@@ -52,13 +52,13 @@ automation:
 review:
   status: unchecked
   notes: >-
-    The earlier 43-claim interface elaborated under pinned Lean4.35.0. The
-    subsequent context audit corrected namespaces, universes and hypotheses;
-    its45-comparison canonical preflight then found a missing Finset opening,
-    now restored. The current48-comparison interface adds actual exterior
-    Koszul exactness tests with explicit source bridges to the manuscript's
-    genuine derived Tor order. This extension remains unelaborated; no full
-    Solution, Comparator, NanoDa or mathematical peer-review result is claimed.
+    All48 mathematical comparison types and proofs passed complete pinned
+    preflight at7a17ded3c2e62250c5eea2a1b150525cc3cb4008, run44339119312.
+    This exact revision changes one theorem docstring and entry documentation
+    and metadata, preserving all48 mathematical declarations. The integral
+    closedness/local-equigeneration equivalence is correctly identified as
+    Theorem2.11 Equation(2.5). Its own exact full preflight remains pending.
+    No mathematical peer review or registry acceptance is claimed.
 fidelity:
   divergences: >-
     Literal theorem 1.1(A) includes zero; theorem 1.1(B) is recorded both in
@@ -70,9 +70,6 @@ fidelity:
     aggregates split at original source boundaries. The source-module membership
     audit is extended to the split compiled modules.
 limitations:
-  - This preparation does not yet compare the entire requested paper scope. Proposition4.1 and explicit sharp nonlinear isolator strands remain separate outstanding groups.
-  - The current48-comparison Challenge and actual Solution wrapper require full elaboration and comparison. Previous narrower elaboration and preliminary policy lint are not full proof verification.
-
-# Source scope repair after run44325512501: Challenge phase passed; source split
-# closed only named units, leaving original inner public section open. All four
-# split headers/footers now preserve original nesting and options. Full retry pending.
+  - The coordinate-prime-powers intersection formula and intersection-type characterization are separate supplementary targets, not claimed by the Equation(2.5) comparison here.
+  - Proposition4.1 and explicit sharp nonlinear isolator strands are prepared in the separate supplement. Whole-paper coverage is not claimed by this core entry alone.
+  - This label-corrected commit still requires its own exact full pinned preflight before intake approval.

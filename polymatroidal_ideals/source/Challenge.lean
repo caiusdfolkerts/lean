@@ -201,7 +201,7 @@ section IntegralCharacterization
 universe u
 variable {V : Type u} [Fintype V] [DecidableEq V]
 variable {k : Type*} [CommRing k] [IsDomain k]
-/-- Corollary 2.12 / Equation2.5: ordinary ideal integrality plus local
+/-- Theorem 2.11, Equation(2.5): ordinary ideal integrality plus local
 equigeneration recovers the full exchange axiom. -/
 theorem polymatroidal_iff_integrallyClosed_localEquigenerated {B : Family V}
     (hB : B.Nonempty) (hanti : Antichain B) :
