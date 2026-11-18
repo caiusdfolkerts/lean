@@ -458,12 +458,12 @@ def sublatticeIdeal {k : Type u} [Field k] (E : Finset (FiniteTuple n)) :
 def lexBefore (b a : FiniteTuple n) : Prop :=
   ∃ r, b r < a r ∧ ∀ s < r, b s = a s
 /-- Exactly the tuples before the displayed generator, with the original labels. -/
-def prefix (E : Finset (FiniteTuple n)) (a : FiniteTuple n) : Finset (FiniteTuple n) :=
+def lexPrefix (E : Finset (FiniteTuple n)) (a : FiniteTuple n) : Finset (FiniteTuple n) :=
   E.filter (fun b => lexBefore n b a)
 /-- The genuine predecessor colon in the actual polynomial ring. -/
 def predecessorColon {k : Type u} [Field k] (E : Finset (FiniteTuple n)) (a : FiniteTuple n) :
     Ideal (MvPolynomial (FiniteVariable.{u} n) k) :=
-  (sublatticeIdeal n (prefix n E a)).colon {rowMonomial n a}
+  (sublatticeIdeal n (lexPrefix n E a)).colon {rowMonomial n a}
 /-- Monotone multichains, allowing repetitions, of exactly the displayed length. -/
 def Multichain (E : Finset (FiniteTuple n)) (m : ℕ) :=
   {w : Fin m → E // Monotone (fun s => (w s).val)}

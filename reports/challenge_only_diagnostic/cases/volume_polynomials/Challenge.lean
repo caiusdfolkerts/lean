@@ -491,11 +491,11 @@ universe uPG
 abbrev SegmentChoice := ℕ → Icc (- ((Nat.cast 1 : ℝ) / Nat.cast 2)) ((Nat.cast 1 : ℝ) / Nat.cast 2)
 /-- The actual infinite sum of the selected segment coefficients. -/
 noncomputable def seriesPoint {E : Type uPG} [NormedAddCommGroup E]
-    [NormedSpace ℝ E] [CompleteSpace E] (u : ℕ → E) (t : SegmentChoice) : E :=
+    [NormedSpace ℝ E] (u : ℕ → E) (t : SegmentChoice) : E :=
   ∑' n, (t n : ℝ) • u n
 /-- The literal range of all segment choices. -/
 def segmentSeries {E : Type uPG} [NormedAddCommGroup E]
-    [NormedSpace ℝ E] [CompleteSpace E] (u : ℕ → E) : Set E := Set.range (seriesPoint u)
+    [NormedSpace ℝ E] (u : ℕ → E) : Set E := Set.range (seriesPoint u)
 /-- The exact angle arccos(1/3), with explicit natural casts. -/
 def angle : ℝ := Real.arccos ((Nat.cast 1 : ℝ) / Nat.cast 3)
 /-- A whole exposed face which is a nondegenerate closed segment. -/

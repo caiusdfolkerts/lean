@@ -412,10 +412,10 @@ abbrev MultiIndex (n d : ℕ) :=
 abbrev Coefficients (n d : ℕ) := MultiIndex n d → ℝ
 abbrev SegmentChoice := ℕ → Icc (- (1/2 : ℝ)) (1/2 : ℝ)
 noncomputable def seriesPoint {E : Type*} [NormedAddCommGroup E]
-    [NormedSpace ℝ E] [CompleteSpace E] (u : ℕ → E) (t : SegmentChoice) : E :=
+    [NormedSpace ℝ E] (u : ℕ → E) (t : SegmentChoice) : E :=
   ∑' n, (t n : ℝ) • u n
 def segmentSeries {E : Type*} [NormedAddCommGroup E]
-    [NormedSpace ℝ E] [CompleteSpace E] (u : ℕ → E) : Set E := Set.range (seriesPoint u)
+    [NormedSpace ℝ E] (u : ℕ → E) : Set E := Set.range (seriesPoint u)
 def rationalSineCoefficient (n : ℕ) : ℚ :=
   Nat.casesOn (motive := fun _ => ℚ) n 0
     (fun k => |(Polynomial.Chebyshev.U ℚ (k : ℤ)).eval (1 / 3)|)
@@ -444,11 +444,11 @@ universe uPG
 abbrev SegmentChoice := ℕ → Icc (- ((Nat.cast 1 : ℝ) / Nat.cast 2)) ((Nat.cast 1 : ℝ) / Nat.cast 2)
 /-- The actual infinite sum of the selected segment coefficients. -/
 noncomputable def seriesPoint {E : Type uPG} [NormedAddCommGroup E]
-    [NormedSpace ℝ E] [CompleteSpace E] (u : ℕ → E) (t : SegmentChoice) : E :=
+    [NormedSpace ℝ E] (u : ℕ → E) (t : SegmentChoice) : E :=
   ∑' n, (t n : ℝ) • u n
 /-- The literal range of all segment choices. -/
 def segmentSeries {E : Type uPG} [NormedAddCommGroup E]
-    [NormedSpace ℝ E] [CompleteSpace E] (u : ℕ → E) : Set E := Set.range (seriesPoint u)
+    [NormedSpace ℝ E] (u : ℕ → E) : Set E := Set.range (seriesPoint u)
 /-- The exact angle arccos(1/3), with explicit natural casts. -/
 def angle : ℝ := Real.arccos ((Nat.cast 1 : ℝ) / Nat.cast 3)
 /-- A whole exposed face which is a nondegenerate closed segment. -/
@@ -471,11 +471,11 @@ theorem palomarSegmentChoice_oldFormula :
   congrArg (fun h : ℝ => (ℕ → Icc (-h) h)) palomarHalf_eq
 /-- The literal normalized series has exactly the displayed sum. -/
 theorem palomarSeriesPoint_oldFormula {E : Type*} [NormedAddCommGroup E]
-    [NormedSpace ℝ E] [CompleteSpace E] (u : ℕ → E) (t : PalomarGeometry.SegmentChoice) :
+    [NormedSpace ℝ E] (u : ℕ → E) (t : PalomarGeometry.SegmentChoice) :
     PalomarGeometry.seriesPoint u t = ∑' n, (t n : ℝ) • u n := by rfl
 /-- Coefficient-wise identity transports the entire series range in both directions. -/
 theorem palomarSegmentSeries_eq_source {E : Type*} [NormedAddCommGroup E]
-    [NormedSpace ℝ E] [CompleteSpace E] (u : ℕ → E) :
+    [NormedSpace ℝ E] (u : ℕ → E) :
     PalomarGeometry.segmentSeries u = segmentSeries u := by
   ext x
   change (∃ t : PalomarGeometry.SegmentChoice, PalomarGeometry.seriesPoint u t = x) ↔
