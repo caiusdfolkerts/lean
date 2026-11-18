@@ -49,7 +49,7 @@ theorem PackedAlignment.exactSlots {D : RawData} {xs} (h : PackedAlignment D xs)
   constructor <;> intro c
   · exact congrArg PackedGraphData.cell (get_of_packed D.cells _ xs h.cellCode h.cellBound c.val
       (by simpa only [h.length_eq] using c.isLt))
-  · exact congrArg (PackedGraphData.finiteList 45 6)
+  · exact congrArg (fun code => PackedGraphData.finiteList 45 6 code)
       (get_of_packed D.edgeLists _ xs h.edgeListCode h.edgeListBound c.val
         (by simpa only [h.length_eq] using c.isLt))
   · exact get_of_packed D.edgeMasks _ xs h.edgeCode h.edgeBound c.val
