@@ -59,9 +59,9 @@ theorem vertexRows_of_code (D : RawData) (hw : D.vertexRows.width = D.n)
     (D.data.vertexRows a).testBit c.val = (D.data.cells c).vertices.testBit a.val := by
   have row : D.vertexRows.get a.val =
       PackedIncidenceMatrix.row D.n (PackedIncidenceMatrix.code (vertexColumns D)) a.val := by
-    simp only [Fields.get, PackedRawNatGrowth.take, PackedRawNatGrowth.drop, hw, hcode,
-      PackedIncidenceMatrix.row, PrimitiveBitsetGrowth.singleton_eq, Nat.one_shiftLeft,
-      Nat.and_two_pow_sub_one_eq_mod]
+    change ((D.vertexRows.code >>> (D.vertexRows.width * a.val)) &&& ((1 <<< D.vertexRows.width) - 1)) =
+      ((PackedIncidenceMatrix.code (vertexColumns D)) >>> (D.n * a.val)) % PrimitiveBitsetGrowth.singleton D.n
+    rw [hw, hcode, Nat.one_shiftLeft, Nat.and_two_pow_sub_one_eq_mod, PrimitiveBitsetGrowth.singleton_eq]
   change (D.vertexRows.get a.val).testBit c.val = _
   rw [row, ← GrowthBitsets.bitAt_eq_testBit, PackedIncidenceMatrix.rows_exact]
   apply Bool.eq_iff_iff.mpr
@@ -74,7 +74,7 @@ theorem literalTest_of_facts (D : RawData) (h : LiteralFacts D.data) (c : Fin D.
   · exact List.all_eq_true.mpr fun a _ => decide_eq_true (h.vertices a c)
   · exact List.all_eq_true.mpr fun q _ => decide_eq_true (h.missing c q)
 
-def sideRemainder (p : Packet) : Bool :=
+noncomputable def sideRemainder (p : Packet) : Bool :=
   allFin (fun f => frameCheck p.data f (p.frame f)) &&
   (decide ((p.data.nodes p.data.rootNode).cells = []) &&
    allFin (fun j => RawLeafCertificate.check p.data.data.quota
