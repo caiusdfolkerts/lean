@@ -109,10 +109,8 @@ set_option linter.unusedSectionVars false
 set_option linter.deprecated false
 set_option linter.unnecessarySimpa false
 set_option linter.style.haveILetI false
-set_option linter.unusedSimpArgs false
 set_option synthInstance.maxHeartbeats 200000
-set_option linter.unusedTactic false
-set_option autoImplicit false
+set_option linter.unusedSimpArgs false
 /- BEGIN IntegralCoherentComparison.lean -/
 section
 

@@ -114,15 +114,10 @@ set_option linter.unusedSectionVars false
 -- Restore the original anonymous enclosing source scopes at this boundary.
 set_option Elab.async false
 set_option maxRecDepth 4000
-set_option maxHeartbeats 150000
+set_option maxHeartbeats 1000000
 set_option backward.isDefEq.respectTransparency false
 set_option linter.unusedVariables false
 set_option linter.unusedSectionVars false
-set_option linter.unusedSimpArgs false
-set_option synthInstance.maxHeartbeats 200000
-set_option linter.unusedTactic false
-set_option autoImplicit false
-set_option backward.isDefEq.respectTransparency.types false
 /- BEGIN FourPapers/Universal/CyclicParameterBaseChange.lean -/
 section
 

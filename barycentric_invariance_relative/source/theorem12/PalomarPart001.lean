@@ -146,7 +146,6 @@ set_option linter.unusedSectionVars false
 set_option linter.unusedSimpArgs false
 set_option synthInstance.maxHeartbeats 10000
 set_option linter.unusedTactic false
-set_option autoImplicit false
 /- BEGIN BarycentricDiagram.lean -/
 section
 
