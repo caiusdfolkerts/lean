@@ -26,3 +26,9 @@ Full integrated helper has not been run locally against either project export.
 No local project/Mathlib build was performed. Root owns publication.
 
 Push trigger: palomar-diagnostics/bary-first-diff.
+
+Revision02 corrects diagnostic request identifiers to exactly twelve lowercase
+alphanumeric characters required by the unchanged pinned input contract.
+The earlier workflow stopped at prepare before any source build or export.
+Mechanical reports are now always uploaded, including preparation rejections.
+No mathematical source, helper, resource budget or source commit is changed.

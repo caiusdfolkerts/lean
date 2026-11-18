@@ -1,5 +1,5 @@
 name: Read-only barycentric raw expression diagnostic
-run-name: Raw metadata diagnostic diagbarydiff01
+run-name: Raw metadata diagnostic diagbarfd001
 # Independent diagnostic only. This does not invoke the official reusable
 # workflow and does not certify a preflight pass. The verifier CLI itself is
 # pinned and unmodified; its retained exports are read in the same remote job.
@@ -92,7 +92,7 @@ jobs:
         id: prepare
         env:
           BUNDLE_GEMFILE: ${{ github.workspace }}/pipeline/Gemfile
-          PALOMAR_INPUTS: '{"repository": "caiusdfolkerts/research", "commit": "f314332cc71719a44c80d8140b7da08483bb293e", "request_id": "diagbarydiff01", "mode": "full", "options": "{\"project_path\": \"barycentric_invariance\", \"comparator_config_path\": \"barycentric_invariance/comparator.json\", \"authorization_relationship\": \"I am a responsible author or maintainer\"}", "execution_profile": "palomar-standard-v1", "execution_attempt": ""}'
+          PALOMAR_INPUTS: '{"repository": "caiusdfolkerts/research", "commit": "f314332cc71719a44c80d8140b7da08483bb293e", "request_id": "diagbarfd001", "mode": "full", "options": "{\"project_path\": \"barycentric_invariance\", \"comparator_config_path\": \"barycentric_invariance/comparator.json\", \"authorization_relationship\": \"I am a responsible author or maintainer\"}", "execution_profile": "palomar-standard-v1", "execution_attempt": ""}'
         run: |
           python - <<'PYTHON'
           import json, os, pathlib
@@ -174,7 +174,7 @@ jobs:
         id: finalize
         if: always()
         env:
-          PALOMAR_INPUTS: '{"repository": "caiusdfolkerts/research", "commit": "f314332cc71719a44c80d8140b7da08483bb293e", "request_id": "diagbarydiff01", "mode": "full", "options": "{\"project_path\": \"barycentric_invariance\", \"comparator_config_path\": \"barycentric_invariance/comparator.json\", \"authorization_relationship\": \"I am a responsible author or maintainer\"}", "execution_profile": "palomar-standard-v1", "execution_attempt": ""}'
+          PALOMAR_INPUTS: '{"repository": "caiusdfolkerts/research", "commit": "f314332cc71719a44c80d8140b7da08483bb293e", "request_id": "diagbarfd001", "mode": "full", "options": "{\"project_path\": \"barycentric_invariance\", \"comparator_config_path\": \"barycentric_invariance/comparator.json\", \"authorization_relationship\": \"I am a responsible author or maintainer\"}", "execution_profile": "palomar-standard-v1", "execution_attempt": ""}'
           PALOMAR_STEPS: ${{ toJSON(steps) }}
           PALOMAR_WORKFLOW_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: python3 pipeline/scripts/workflow_report.py finalize --report "$RUNNER_TEMP/mechanical-report.json"
@@ -183,10 +183,11 @@ jobs:
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         with:
-          name: raw-metadata-diagnostic-diagbarydiff01
+          name: raw-metadata-diagnostic-diagbarfd001
           path: |
             ${{ runner.temp }}/raw-metadata-diagnostic/audit-receipt.json
             ${{ runner.temp }}/raw-metadata-diagnostic/audit-bounded.log
             ${{ runner.temp }}/raw-metadata-diagnostic/mechanical-report-at-audit.json
+            ${{ runner.temp }}/mechanical-report.json
           if-no-files-found: warn
           retention-days: 30
