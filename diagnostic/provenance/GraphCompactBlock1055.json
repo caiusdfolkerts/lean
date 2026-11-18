@@ -1,5 +1,5 @@
 {
-  "source_sha256": "48c19af3e938291bee9b0c9aa49641e713e298a5196f6bd582a31b01f3fa74a0",
+  "source_sha256": "bb293388bcb4335465cda5c52a74483a9f7a449e5c496ef8cf49089bf9c98e88",
   "theorem": "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock1055.complete",
   "type": "Papers.RationalityTen.GraphFiniteDispatch.Block 35093 35119",
   "stats": {
@@ -196,5 +196,14 @@
       "sha256": "63a264ebb9cc8a6697a5e54de1afa673a647b7f1ae18f8f0ab8dffbd82f098d6"
     }
   },
-  "state": "source prepared; complete block pending Lean and kernel replay"
+  "state": "source prepared; complete block pending Lean and kernel replay",
+  "resource_split": {
+    "failed_earlier_run": "44340586994",
+    "frame_counts_by_ordinal": {
+      "10": 17,
+      "13": 15,
+      "16": 13
+    },
+    "method": "Each original frame checked independently; literal/root/leaves checked and reassembled at same sideCheck predicate."
+  }
 }

@@ -24,8 +24,8 @@
       "sha256": "15128a4e2139e4f228471a7a46d8e1e4af4ca25d6a84de1536d961e6b89940d2"
     },
     "diagnostic/provenance/GraphCompactBlock1055.json": {
-      "bytes": 9922,
-      "sha256": "e4d887f81a7aaf7b2892e0a42226e71f7ce4a94231cb03c58f728741b1346fdb"
+      "bytes": 10209,
+      "sha256": "497a0892a2aec8ce90ac1f1f69835996489372dc0b8ab39db546049c5d86b40e"
     },
     "diagnostic/provenance/corrected-exclusions.json": {
       "bytes": 1741,
@@ -552,8 +552,8 @@
       "sha256": "a005cc2e3010e90a116aa27dc5c1f0378236adfa9ec01d13a2743e1e10772474"
     },
     "source/GraphCompactBlock1055.lean": {
-      "bytes": 36413,
-      "sha256": "48c19af3e938291bee9b0c9aa49641e713e298a5196f6bd582a31b01f3fa74a0"
+      "bytes": 45405,
+      "sha256": "bb293388bcb4335465cda5c52a74483a9f7a449e5c496ef8cf49089bf9c98e88"
     },
     "source/GraphCompactBlocks.lean": {
       "bytes": 1227,
@@ -1130,6 +1130,10 @@
     "source/ResidualBatch/NodeAndFrame.lean": {
       "bytes": 2392,
       "sha256": "22d1da68e47d9cc592a1e1181d7c97097604ff100ba90e9a48e51938694a10e7"
+    },
+    "source/ResidualBatch/SplitSide.lean": {
+      "bytes": 973,
+      "sha256": "40f5cbdae0e67c830b471d4cacb5df6f2d42b9ffa74e255a20e9e2b06e7068bd"
     },
     "source/SharedGraphCellPool.lean": {
       "bytes": 12620,
@@ -1762,7 +1766,7 @@
         "Lean.Elab.Command",
         "Lean.Elab.Term"
       ],
-      "module_count": 347,
+      "module_count": 348,
       "paths": {
         "BatchedGrowthPruning.lean": "source/BatchedGrowthPruning.lean",
         "BatchedOrbitGrowth.lean": "source/BatchedOrbitGrowth.lean",
@@ -2034,6 +2038,7 @@
         "RawTargets.lean": "source/RawTargets.lean",
         "ResidualBatch/Graph.lean": "source/ResidualBatch/Graph.lean",
         "ResidualBatch/NodeAndFrame.lean": "source/ResidualBatch/NodeAndFrame.lean",
+        "ResidualBatch/SplitSide.lean": "source/ResidualBatch/SplitSide.lean",
         "SharedGraphCellPool.lean": "source/SharedGraphCellPool.lean",
         "SharedPoolIncidence.lean": "source/SharedPoolIncidence.lean",
         "SharedSix0CellPoolChecked.lean": "source/SharedSix0CellPoolChecked.lean",
@@ -2178,7 +2183,7 @@
         "VertexLinkObstructionData.lean": "source/VertexLinkObstructionData.lean",
         "WitnessGrowthDAG.lean": "source/WitnessGrowthDAG.lean"
       },
-      "source_and_data_bytes": 13016421,
+      "source_and_data_bytes": 13026386,
       "upstream_modules": {
         "BatchedGrowthPruning": {
           "original_path": "source/geometry/batched_growth_pruning.lean",

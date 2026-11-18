@@ -1,6 +1,6 @@
 module
 prelude
-public import ResidualBatch.Graph
+public import ResidualBatch.SplitSide
 public import GraphInputsSix0Part00090Data
 
 @[expose] public section
@@ -628,8 +628,71 @@ private theorem sideVerified008 : Interval sideVerifiedTest 8 9 :=
 private theorem sideVerified009 : Interval sideVerifiedTest 9 10 :=
   interval_of_check _ 9 1 (by decide +kernel)
 
-private theorem sideVerified010 : Interval sideVerifiedTest 10 11 :=
+private def splitFrames010 (f : Fin 17) : Bool :=
+  frameCheck (packets (Fin.ofNat 26 10)).data f ((packets (Fin.ofNat 26 10)).frame f)
+
+private def splitFrames010Test (k : Nat) : Bool := splitFrames010 (Fin.ofNat 17 k)
+
+private theorem splitFrames010Part00 : Interval splitFrames010Test 0 1 :=
+  interval_of_check _ 0 1 (by decide +kernel)
+
+private theorem splitFrames010Part01 : Interval splitFrames010Test 1 2 :=
+  interval_of_check _ 1 1 (by decide +kernel)
+
+private theorem splitFrames010Part02 : Interval splitFrames010Test 2 3 :=
+  interval_of_check _ 2 1 (by decide +kernel)
+
+private theorem splitFrames010Part03 : Interval splitFrames010Test 3 4 :=
+  interval_of_check _ 3 1 (by decide +kernel)
+
+private theorem splitFrames010Part04 : Interval splitFrames010Test 4 5 :=
+  interval_of_check _ 4 1 (by decide +kernel)
+
+private theorem splitFrames010Part05 : Interval splitFrames010Test 5 6 :=
+  interval_of_check _ 5 1 (by decide +kernel)
+
+private theorem splitFrames010Part06 : Interval splitFrames010Test 6 7 :=
+  interval_of_check _ 6 1 (by decide +kernel)
+
+private theorem splitFrames010Part07 : Interval splitFrames010Test 7 8 :=
+  interval_of_check _ 7 1 (by decide +kernel)
+
+private theorem splitFrames010Part08 : Interval splitFrames010Test 8 9 :=
+  interval_of_check _ 8 1 (by decide +kernel)
+
+private theorem splitFrames010Part09 : Interval splitFrames010Test 9 10 :=
+  interval_of_check _ 9 1 (by decide +kernel)
+
+private theorem splitFrames010Part10 : Interval splitFrames010Test 10 11 :=
   interval_of_check _ 10 1 (by decide +kernel)
+
+private theorem splitFrames010Part11 : Interval splitFrames010Test 11 12 :=
+  interval_of_check _ 11 1 (by decide +kernel)
+
+private theorem splitFrames010Part12 : Interval splitFrames010Test 12 13 :=
+  interval_of_check _ 12 1 (by decide +kernel)
+
+private theorem splitFrames010Part13 : Interval splitFrames010Test 13 14 :=
+  interval_of_check _ 13 1 (by decide +kernel)
+
+private theorem splitFrames010Part14 : Interval splitFrames010Test 14 15 :=
+  interval_of_check _ 14 1 (by decide +kernel)
+
+private theorem splitFrames010Part15 : Interval splitFrames010Test 15 16 :=
+  interval_of_check _ 15 1 (by decide +kernel)
+
+private theorem splitFrames010Part16 : Interval splitFrames010Test 16 17 :=
+  interval_of_check _ 16 1 (by decide +kernel)
+
+private theorem splitFrames010All : Interval splitFrames010Test 0 17 :=
+(interval_append _ 0 8 17 (interval_append _ 0 4 8 (interval_append _ 0 2 4 (interval_append _ 0 1 2 splitFrames010Part00 splitFrames010Part01) (interval_append _ 2 3 4 splitFrames010Part02 splitFrames010Part03)) (interval_append _ 4 6 8 (interval_append _ 4 5 6 splitFrames010Part04 splitFrames010Part05) (interval_append _ 6 7 8 splitFrames010Part06 splitFrames010Part07))) (interval_append _ 8 12 17 (interval_append _ 8 10 12 (interval_append _ 8 9 10 splitFrames010Part08 splitFrames010Part09) (interval_append _ 10 11 12 splitFrames010Part10 splitFrames010Part11)) (interval_append _ 12 14 17 (interval_append _ 12 13 14 splitFrames010Part12 splitFrames010Part13) (interval_append _ 14 15 17 splitFrames010Part14 (interval_append _ 15 16 17 splitFrames010Part15 splitFrames010Part16)))))
+
+private theorem sideVerified010 : Interval sideVerifiedTest 10 11 := by
+  intro k lo hi
+  have hk : k = 10 := by omega
+  subst k
+  exact sideOfFrames (packets (Fin.ofNat 26 10)) (by decide +kernel)
+    (fin_of_interval splitFrames010 splitFrames010All) (by decide +kernel) (by decide +kernel)
 
 private theorem sideVerified011 : Interval sideVerifiedTest 11 12 :=
   interval_of_check _ 11 1 (by decide +kernel)
@@ -637,8 +700,65 @@ private theorem sideVerified011 : Interval sideVerifiedTest 11 12 :=
 private theorem sideVerified012 : Interval sideVerifiedTest 12 13 :=
   interval_of_check _ 12 1 (by decide +kernel)
 
-private theorem sideVerified013 : Interval sideVerifiedTest 13 14 :=
+private def splitFrames013 (f : Fin 15) : Bool :=
+  frameCheck (packets (Fin.ofNat 26 13)).data f ((packets (Fin.ofNat 26 13)).frame f)
+
+private def splitFrames013Test (k : Nat) : Bool := splitFrames013 (Fin.ofNat 15 k)
+
+private theorem splitFrames013Part00 : Interval splitFrames013Test 0 1 :=
+  interval_of_check _ 0 1 (by decide +kernel)
+
+private theorem splitFrames013Part01 : Interval splitFrames013Test 1 2 :=
+  interval_of_check _ 1 1 (by decide +kernel)
+
+private theorem splitFrames013Part02 : Interval splitFrames013Test 2 3 :=
+  interval_of_check _ 2 1 (by decide +kernel)
+
+private theorem splitFrames013Part03 : Interval splitFrames013Test 3 4 :=
+  interval_of_check _ 3 1 (by decide +kernel)
+
+private theorem splitFrames013Part04 : Interval splitFrames013Test 4 5 :=
+  interval_of_check _ 4 1 (by decide +kernel)
+
+private theorem splitFrames013Part05 : Interval splitFrames013Test 5 6 :=
+  interval_of_check _ 5 1 (by decide +kernel)
+
+private theorem splitFrames013Part06 : Interval splitFrames013Test 6 7 :=
+  interval_of_check _ 6 1 (by decide +kernel)
+
+private theorem splitFrames013Part07 : Interval splitFrames013Test 7 8 :=
+  interval_of_check _ 7 1 (by decide +kernel)
+
+private theorem splitFrames013Part08 : Interval splitFrames013Test 8 9 :=
+  interval_of_check _ 8 1 (by decide +kernel)
+
+private theorem splitFrames013Part09 : Interval splitFrames013Test 9 10 :=
+  interval_of_check _ 9 1 (by decide +kernel)
+
+private theorem splitFrames013Part10 : Interval splitFrames013Test 10 11 :=
+  interval_of_check _ 10 1 (by decide +kernel)
+
+private theorem splitFrames013Part11 : Interval splitFrames013Test 11 12 :=
+  interval_of_check _ 11 1 (by decide +kernel)
+
+private theorem splitFrames013Part12 : Interval splitFrames013Test 12 13 :=
+  interval_of_check _ 12 1 (by decide +kernel)
+
+private theorem splitFrames013Part13 : Interval splitFrames013Test 13 14 :=
   interval_of_check _ 13 1 (by decide +kernel)
+
+private theorem splitFrames013Part14 : Interval splitFrames013Test 14 15 :=
+  interval_of_check _ 14 1 (by decide +kernel)
+
+private theorem splitFrames013All : Interval splitFrames013Test 0 15 :=
+(interval_append _ 0 7 15 (interval_append _ 0 3 7 (interval_append _ 0 1 3 splitFrames013Part00 (interval_append _ 1 2 3 splitFrames013Part01 splitFrames013Part02)) (interval_append _ 3 5 7 (interval_append _ 3 4 5 splitFrames013Part03 splitFrames013Part04) (interval_append _ 5 6 7 splitFrames013Part05 splitFrames013Part06))) (interval_append _ 7 11 15 (interval_append _ 7 9 11 (interval_append _ 7 8 9 splitFrames013Part07 splitFrames013Part08) (interval_append _ 9 10 11 splitFrames013Part09 splitFrames013Part10)) (interval_append _ 11 13 15 (interval_append _ 11 12 13 splitFrames013Part11 splitFrames013Part12) (interval_append _ 13 14 15 splitFrames013Part13 splitFrames013Part14))))
+
+private theorem sideVerified013 : Interval sideVerifiedTest 13 14 := by
+  intro k lo hi
+  have hk : k = 13 := by omega
+  subst k
+  exact sideOfFrames (packets (Fin.ofNat 26 13)) (by decide +kernel)
+    (fin_of_interval splitFrames013 splitFrames013All) (by decide +kernel) (by decide +kernel)
 
 private theorem sideVerified014 : Interval sideVerifiedTest 14 15 :=
   interval_of_check _ 14 1 (by decide +kernel)
@@ -646,8 +766,59 @@ private theorem sideVerified014 : Interval sideVerifiedTest 14 15 :=
 private theorem sideVerified015 : Interval sideVerifiedTest 15 16 :=
   interval_of_check _ 15 1 (by decide +kernel)
 
-private theorem sideVerified016 : Interval sideVerifiedTest 16 17 :=
-  interval_of_check _ 16 1 (by decide +kernel)
+private def splitFrames016 (f : Fin 13) : Bool :=
+  frameCheck (packets (Fin.ofNat 26 16)).data f ((packets (Fin.ofNat 26 16)).frame f)
+
+private def splitFrames016Test (k : Nat) : Bool := splitFrames016 (Fin.ofNat 13 k)
+
+private theorem splitFrames016Part00 : Interval splitFrames016Test 0 1 :=
+  interval_of_check _ 0 1 (by decide +kernel)
+
+private theorem splitFrames016Part01 : Interval splitFrames016Test 1 2 :=
+  interval_of_check _ 1 1 (by decide +kernel)
+
+private theorem splitFrames016Part02 : Interval splitFrames016Test 2 3 :=
+  interval_of_check _ 2 1 (by decide +kernel)
+
+private theorem splitFrames016Part03 : Interval splitFrames016Test 3 4 :=
+  interval_of_check _ 3 1 (by decide +kernel)
+
+private theorem splitFrames016Part04 : Interval splitFrames016Test 4 5 :=
+  interval_of_check _ 4 1 (by decide +kernel)
+
+private theorem splitFrames016Part05 : Interval splitFrames016Test 5 6 :=
+  interval_of_check _ 5 1 (by decide +kernel)
+
+private theorem splitFrames016Part06 : Interval splitFrames016Test 6 7 :=
+  interval_of_check _ 6 1 (by decide +kernel)
+
+private theorem splitFrames016Part07 : Interval splitFrames016Test 7 8 :=
+  interval_of_check _ 7 1 (by decide +kernel)
+
+private theorem splitFrames016Part08 : Interval splitFrames016Test 8 9 :=
+  interval_of_check _ 8 1 (by decide +kernel)
+
+private theorem splitFrames016Part09 : Interval splitFrames016Test 9 10 :=
+  interval_of_check _ 9 1 (by decide +kernel)
+
+private theorem splitFrames016Part10 : Interval splitFrames016Test 10 11 :=
+  interval_of_check _ 10 1 (by decide +kernel)
+
+private theorem splitFrames016Part11 : Interval splitFrames016Test 11 12 :=
+  interval_of_check _ 11 1 (by decide +kernel)
+
+private theorem splitFrames016Part12 : Interval splitFrames016Test 12 13 :=
+  interval_of_check _ 12 1 (by decide +kernel)
+
+private theorem splitFrames016All : Interval splitFrames016Test 0 13 :=
+(interval_append _ 0 6 13 (interval_append _ 0 3 6 (interval_append _ 0 1 3 splitFrames016Part00 (interval_append _ 1 2 3 splitFrames016Part01 splitFrames016Part02)) (interval_append _ 3 4 6 splitFrames016Part03 (interval_append _ 4 5 6 splitFrames016Part04 splitFrames016Part05))) (interval_append _ 6 9 13 (interval_append _ 6 7 9 splitFrames016Part06 (interval_append _ 7 8 9 splitFrames016Part07 splitFrames016Part08)) (interval_append _ 9 11 13 (interval_append _ 9 10 11 splitFrames016Part09 splitFrames016Part10) (interval_append _ 11 12 13 splitFrames016Part11 splitFrames016Part12))))
+
+private theorem sideVerified016 : Interval sideVerifiedTest 16 17 := by
+  intro k lo hi
+  have hk : k = 16 := by omega
+  subst k
+  exact sideOfFrames (packets (Fin.ofNat 26 16)) (by decide +kernel)
+    (fin_of_interval splitFrames016 splitFrames016All) (by decide +kernel) (by decide +kernel)
 
 private theorem sideVerified017 : Interval sideVerifiedTest 17 18 :=
   interval_of_check _ 17 1 (by decide +kernel)
