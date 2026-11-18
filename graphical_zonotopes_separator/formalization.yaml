@@ -102,9 +102,14 @@ fidelity:
     positivity and capacities are retained.
 review:
   status: unchecked
-  notes: Current Challenge compiled locally-M3072/-j1. Fresh Solution fieldwise partition/coordinate
-    bridges remain uncompiled. No actual Comparator or independent kernel success
-    claimed.
+  notes: Prior Source/Solution builds passed. Retained compiled exports measured24
+    raw mismatches; the repair names the local vertex DecidableEq identically and
+    supplies active-branch Fintype by the explicit canonical Subtype.fintype constructor.
+    This changes only implementation instance references, preserving all mathematical
+    data and hypotheses. The repaired files are source-audited and await remote rebuild,
+    actual Comparator and independent kernels. The interrupted native-environment
+    negative fixture is not claimed as completed validation. No independent mathematical
+    peer review is claimed.
 alignment:
   namespace: PalomarGraphicalSeparator
   statements:

@@ -202,6 +202,10 @@ def Data.privateKernelSpace (M : Data B J K D I X)
 
 /-- Genuinely nonzero private branches. -/
 abbrev ActiveBranch (f : ∀ j,K j → ℝ) := {j : J // f j≠0}
+/-- Canonical finite subtype enumeration, fixed independently of source instances. -/
+noncomputable instance activeBranchFintype (f : ∀ j,K j → ℝ) : Fintype (ActiveBranch f) := by
+  classical
+  exact Subtype.fintype (fun j => f j ≠ 0)
 end PalomarGraphicalSeparator.Gluing
 
 namespace PalomarGraphicalSeparator.Polyhedral
@@ -345,7 +349,7 @@ end PalomarGraphicalSeparator.Separator
 namespace PalomarGraphicalSeparator
 section Ordered
 variable {V J : Type*} [Fintype V] [LinearOrder V]
-local instance : DecidableEq V := LinearOrder.toDecidableEq
+local instance vertexDecidableEq : DecidableEq V := LinearOrder.toDecidableEq
 variable [Fintype J] [DecidableEq J]
 abbrev OrientedEdge (G : SimpleGraph V) := {e : V × V // e.1< e.2 ∧ G.Adj e.1 e.2}
 noncomputable instance orientedEdgeFintype (G : SimpleGraph V) : Fintype (OrientedEdge G) := by

@@ -13,11 +13,11 @@
       "challenge_declaration": "PalomarGraphicalSeparator.Separator.assembled_boundary_lift_transfer",
       "challenge": {
         "file": "ChallengeSeparator.lean",
-        "line": 434
+        "line": 438
       },
       "solution": {
         "file": "SolutionSeparator.lean",
-        "line": 442
+        "line": 446
       },
       "source_declaration": "GraphicalZonotopes.Separator.assembled_boundary_lift_transfer",
       "source": {
@@ -33,11 +33,11 @@
       "challenge_declaration": "PalomarGraphicalSeparator.Separator.positive_response_gluing_finite",
       "challenge": {
         "file": "ChallengeSeparator.lean",
-        "line": 480
+        "line": 484
       },
       "solution": {
         "file": "SolutionSeparator.lean",
-        "line": 492
+        "line": 496
       },
       "source_declaration": "GraphicalZonotopes.Separator.positive_response_gluing_finite",
       "source": {
@@ -53,11 +53,11 @@
       "challenge_declaration": "PalomarGraphicalSeparator.Separator.induced_separator_capacity_finite",
       "challenge": {
         "file": "ChallengeSeparator.lean",
-        "line": 461
+        "line": 465
       },
       "solution": {
         "file": "SolutionSeparator.lean",
-        "line": 471
+        "line": 475
       },
       "source_declaration": "GraphicalZonotopes.Separator.induced_separator_capacity_finite",
       "source": {
@@ -73,11 +73,11 @@
       "challenge_declaration": "PalomarGraphicalSeparator.Separator.clique_separator_capacity_finite",
       "challenge": {
         "file": "ChallengeSeparator.lean",
-        "line": 472
+        "line": 476
       },
       "solution": {
         "file": "SolutionSeparator.lean",
-        "line": 483
+        "line": 487
       },
       "source_declaration": "GraphicalZonotopes.Separator.clique_separator_capacity_finite",
       "source": {
@@ -93,11 +93,11 @@
       "challenge_declaration": "PalomarGraphicalSeparator.Separator.Partition.clique_unique_branch",
       "challenge": {
         "file": "ChallengeSeparator.lean",
-        "line": 231
+        "line": 235
       },
       "solution": {
         "file": "SolutionSeparator.lean",
-        "line": 235
+        "line": 239
       },
       "source_declaration": "GraphicalZonotopes.Separator.Partition.clique_unique_branch",
       "source": {
@@ -113,11 +113,11 @@
       "challenge_declaration": "PalomarGraphicalSeparator.Separator.globalFunction_mem",
       "challenge": {
         "file": "ChallengeSeparator.lean",
-        "line": 281
+        "line": 285
       },
       "solution": {
         "file": "SolutionSeparator.lean",
-        "line": 286
+        "line": 290
       },
       "source_declaration": "GraphicalZonotopes.Separator.functionEquiv",
       "source": {
@@ -134,11 +134,11 @@
       "challenge_declaration": "PalomarGraphicalSeparator.Separator.componentPartition",
       "challenge": {
         "file": "ChallengeSeparator.lean",
-        "line": 333
+        "line": 337
       },
       "solution": {
         "file": "SolutionSeparator.lean",
-        "line": 339
+        "line": 343
       },
       "source_declaration": "GraphicalZonotopes.Separator.componentPartition",
       "source": {
@@ -174,11 +174,11 @@
       "challenge_declaration": "PalomarGraphicalSeparator.Separator.positive_response_gluing",
       "challenge": {
         "file": "ChallengeSeparator.lean",
-        "line": 443
+        "line": 447
       },
       "solution": {
         "file": "SolutionSeparator.lean",
-        "line": 452
+        "line": 456
       },
       "source_declaration": "GraphicalZonotopes.Separator.positive_response_gluing",
       "source": {
@@ -237,11 +237,11 @@
       "source_declaration": null,
       "challenge": {
         "file": "ChallengeSeparator.lean",
-        "line": 245
+        "line": 249
       },
       "solution": {
         "file": "SolutionSeparator.lean",
-        "line": 250
+        "line": 254
       },
       "source": {
         "file": "SolutionSeparator.lean",
@@ -510,11 +510,11 @@
       "source_declaration": null,
       "challenge": {
         "file": "ChallengeSeparator.lean",
-        "line": 208
+        "line": 212
       },
       "solution": {
         "file": "SolutionSeparator.lean",
-        "line": 210
+        "line": 214
       },
       "source": {
         "file": "SolutionSeparator.lean",
@@ -531,11 +531,11 @@
       "source_declaration": null,
       "challenge": {
         "file": "ChallengeSeparator.lean",
-        "line": 210
+        "line": 214
       },
       "solution": {
         "file": "SolutionSeparator.lean",
-        "line": 212
+        "line": 216
       },
       "source": {
         "file": "SolutionSeparator.lean",
@@ -552,11 +552,11 @@
       "source_declaration": null,
       "challenge": {
         "file": "ChallengeSeparator.lean",
-        "line": 212
+        "line": 216
       },
       "solution": {
         "file": "SolutionSeparator.lean",
-        "line": 214
+        "line": 218
       },
       "source": {
         "file": "SolutionSeparator.lean",
@@ -573,11 +573,11 @@
       "source_declaration": null,
       "challenge": {
         "file": "ChallengeSeparator.lean",
-        "line": 264
+        "line": 268
       },
       "solution": {
         "file": "SolutionSeparator.lean",
-        "line": 269
+        "line": 273
       },
       "source": {
         "file": "SolutionSeparator.lean",
@@ -594,11 +594,11 @@
       "source_declaration": null,
       "challenge": {
         "file": "ChallengeSeparator.lean",
-        "line": 268
+        "line": 272
       },
       "solution": {
         "file": "SolutionSeparator.lean",
-        "line": 273
+        "line": 277
       },
       "source": {
         "file": "SolutionSeparator.lean",
@@ -615,11 +615,11 @@
       "source_declaration": null,
       "challenge": {
         "file": "ChallengeSeparator.lean",
-        "line": 303
+        "line": 307
       },
       "solution": {
         "file": "SolutionSeparator.lean",
-        "line": 309
+        "line": 313
       },
       "source": {
         "file": "SolutionSeparator.lean",
@@ -636,11 +636,11 @@
       "source_declaration": null,
       "challenge": {
         "file": "ChallengeSeparator.lean",
-        "line": 308
+        "line": 312
       },
       "solution": {
         "file": "SolutionSeparator.lean",
-        "line": 314
+        "line": 318
       },
       "source": {
         "file": "SolutionSeparator.lean",
@@ -657,11 +657,11 @@
       "source_declaration": null,
       "challenge": {
         "file": "ChallengeSeparator.lean",
-        "line": 352
+        "line": 356
       },
       "solution": {
         "file": "SolutionSeparator.lean",
-        "line": 360
+        "line": 364
       },
       "source": {
         "file": "SolutionSeparator.lean",
@@ -678,11 +678,11 @@
       "source_declaration": null,
       "challenge": {
         "file": "ChallengeSeparator.lean",
-        "line": 356
+        "line": 360
       },
       "solution": {
         "file": "SolutionSeparator.lean",
-        "line": 364
+        "line": 368
       },
       "source": {
         "file": "SolutionSeparator.lean",
@@ -699,11 +699,11 @@
       "source_declaration": null,
       "challenge": {
         "file": "ChallengeSeparator.lean",
-        "line": 294
+        "line": 298
       },
       "solution": {
         "file": "SolutionSeparator.lean",
-        "line": 300
+        "line": 304
       },
       "source": {
         "file": "SolutionSeparator.lean",
@@ -720,11 +720,11 @@
       "source_declaration": null,
       "challenge": {
         "file": "ChallengeSeparator.lean",
-        "line": 290
+        "line": 294
       },
       "solution": {
         "file": "SolutionSeparator.lean",
-        "line": 296
+        "line": 300
       },
       "source": {
         "file": "SolutionSeparator.lean",
@@ -749,5 +749,6 @@
     },
     "Solution": "Source bridge draft, not compiled locally.",
     "Comparator_and_kernels": "Not yet run."
-  }
+  },
+  "validation": "Prior exact source/Solution compiled remotely and locally. Full retained-export audit found24 mismatches caused by module-generated anonymous DecidableEq names and one source Fintype instance leak. The bounded two-cause interface repair is source-audited but not rebuilt because local disk crossed the10GiB floor; full remote validation remains required."
 }
