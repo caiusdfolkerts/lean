@@ -34,8 +34,10 @@ theorem coefficient_transform_manifold_with_corners {m : ℕ} {e0 en : ℝ}
   have hmap : quadrantCoefficientMap m e0 en = coefficientQuadrantMap m e0 en := by
     funext x
     exact quadrantCoefficientMap_apply m e0 en x
-  simpa only [hmap] using
-    EllipsoidVerification.coefficient_transform_manifold_with_corners h0 hn
+  have h := EllipsoidVerification.coefficient_transform_manifold_with_corners
+    (m := m) (e0 := e0) (en := en) h0 hn
+  rw [hmap] at h
+  exact h
 theorem measured_coefficient_box {n : ℕ} (hn : 0 < n) (E : FullEllipsoid n)
     (k : Fin (n + 1)) (hk : 0 < k.val) (hkn : k.val < n) :
     (n.choose k.val : ℝ) * (E.volume n / unitBallVolume n) ^ (2 * (k.val : ℝ) / n) ≤
