@@ -1,7 +1,7 @@
-name: Small nonrational projection subset sharing
+name: Small nonrational indexed face witnesses
 on:
   push:
-    branches: [palomar/diagnostic-small-nonrational-projection-pool]
+    branches: [palomar/diagnostic-small-nonrational-projection-078]
   workflow_dispatch:
 permissions:
   contents: read
@@ -31,7 +31,7 @@ jobs:
           set -euo pipefail
           read -r -a modules <<< "$(python3 diagnostic/run.py --external)"
           lake exe cache get "${modules[@]}"
-      - name: Compile and compare both 30-target proofs
+      - name: Compile and compare three 30-target proofs
         env:
           PYTHONDONTWRITEBYTECODE: "1"
         timeout-minutes: 115
@@ -40,7 +40,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         with:
-          name: projection-pool-${{ github.sha }}
+          name: projection-078-${{ github.sha }}
           path: diagnostic-results/projection-pool.json
           if-no-files-found: warn
           retention-days: 5

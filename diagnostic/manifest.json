@@ -1,10 +1,9 @@
 {
-  "baseline": "Numeric-token-corrected source candidate, including original repeated vertex-set declarations",
-  "endpoint": "ProjectionTargets.B000",
+  "endpoint": "Batches.B078",
   "files": {
-    ".github/workflows/projection-pool.yml": {
-      "bytes": 1996,
-      "sha256": "ec9d25892ba76a8db92fea57342e19756dfc754105e4e82d5df82219528975e6"
+    ".github/workflows/projection-078.yml": {
+      "bytes": 1992,
+      "sha256": "c9362ef28303b8285f31d858828d21abf9b6989755dc4af3ed54539dd8f95acb"
     },
     "LICENSE": {
       "bytes": 11410,
@@ -15,16 +14,24 @@
       "sha256": "e2af102b9599056f984ea036280b13207b8e6098d8fdef57256840d7b82b5a90"
     },
     "README.md": {
-      "bytes": 1511,
-      "sha256": "2863b9aef980c500c4414f8651ced57d4f3bbbeb39a81b438a53ccb8a9ce28a1"
+      "bytes": 1621,
+      "sha256": "a2ce3b592fca31a445b6e30dedb1c3f5edc67becfa8d498bd3c3a3994e0b657a"
+    },
+    "baseline/Batches/B078.lean": {
+      "bytes": 515317,
+      "sha256": "e02e65aa89a7cd391c0d84af0765ccbeec8f8b3f13ba6899416486a31da8fd4b"
     },
     "diagnostic/lean_export_reader.py": {
       "bytes": 12326,
       "sha256": "e72b455ecd7ab15b8e0e9e771bc24458bbab74430d9633985f4840356d000c7e"
     },
     "diagnostic/run.py": {
-      "bytes": 7471,
-      "sha256": "9403788c503b6f5f1184cc6820e248252b401e95cb7b2dd8b9d9d804daabc4f5"
+      "bytes": 7497,
+      "sha256": "8300d553e5944132a8182066c9b9e938eb7ec483d44a0ad8262aa62f313249a1"
+    },
+    "indexed/Batches/B078.lean": {
+      "bytes": 382113,
+      "sha256": "e6108d290db9ba7748ad82b607b3286cb7b3641b28fba89f4f804e53e9257c82"
     },
     "lake-manifest.json": {
       "bytes": 3561,
@@ -38,375 +45,355 @@
       "bytes": 25,
       "sha256": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c"
     },
-    "pooled/Batches/B000.lean": {
-      "bytes": 134436,
-      "sha256": "386c74f32e9f2a9a6cc7feec6922c2e733b259ba246c0c9b0ec53374eff6537f"
+    "pooled/Batches/B078.lean": {
+      "bytes": 367943,
+      "sha256": "bc087d2742da27122754b4c35f4e93894feecf8766389caf978384e7bb5e8dcd"
     },
-    "pooled/SharedProjectionVertexSets.lean": {
-      "bytes": 66616,
-      "sha256": "7b2d19c0e5466243a17b3e56ad31b2442217523644c04d2914ab1b68bc61bccc"
-    },
-    "source/Batches/B000.lean": {
-      "bytes": 140968,
-      "sha256": "983d95ce6985f886738cb0f6fad9479acfd0c85782273b71b608f4c7ffa0c349"
-    },
-    "source/LowerSchemas/Batches.lean": {
-      "bytes": 53,
-      "sha256": "8d05fbeef6afe575675c1bae78678f96ed8fb443544978decce00cd6fa3d2a4f"
-    },
-    "source/LowerSchemas/Batches/Part0.lean": {
-      "bytes": 130724,
-      "sha256": "7b381b25afc43fea05cf2f7a01cac4a1b0f9679a63f305bb427f06e5fc4a4833"
-    },
-    "source/LowerSchemas/RawTargetChunks.lean": {
+    "shared/LowerSchemas/RawTargetChunks.lean": {
       "bytes": 61,
       "sha256": "3d5a9906fe960f07e437b10a47205f4302d7f5ee37d15f26bb3dd3a092da8169"
     },
-    "source/LowerSchemas/RawTargetChunks/Part0.lean": {
+    "shared/LowerSchemas/RawTargetChunks/Part0.lean": {
       "bytes": 285,
       "sha256": "ac0d956c4262a669213535cb8bc6437f4da3b2ae213e96ea7ea4e98c07e31a1b"
     },
-    "source/NumericProofSchema.lean": {
+    "shared/NumericProofSchema.lean": {
       "bytes": 1374,
       "sha256": "7d357d60f06e0b45b7219e6fa8ee7ad7a34edfa5b62185f93a922537d55950df"
     },
-    "source/Papers/FiniteProjectionChecks.lean": {
+    "shared/Papers/FiniteProjectionChecks.lean": {
       "bytes": 6691,
       "sha256": "f5542e9bb50e1a5ce2111b1e3d5d9d50ea8cecfe34ab6f5164ccffbfdd9491bc"
     },
-    "source/Papers/FiniteProjectionData.lean": {
+    "shared/Papers/FiniteProjectionData.lean": {
       "bytes": 10150,
       "sha256": "e6f2b392e66b18f9487f2fdbdc55df25f7067067f7d9bd1544313d9a1a9bb45c"
     },
-    "source/Papers/ProjectedRelationTemplate.lean": {
+    "shared/Papers/ProjectedRelationTemplate.lean": {
       "bytes": 399,
       "sha256": "5b850b72006205ef28220267e5908a6108dfb04fb09d48304da98fe1ca3bc5c2"
     },
-    "source/ProjectionTargets/B000.lean": {
-      "bytes": 7357,
-      "sha256": "aa75ddaa640cf05bd5b925a6ddf99d3413e8640a0cd7f02b401cbecc70335499"
-    },
-    "source/ProjectionVertexSets.lean": {
-      "bytes": 944,
-      "sha256": "1f760a90fa064fb384d2c13d84ee3796639e863b465f34037cc384dc62f7d43e"
-    },
-    "source/RawBoundaryData.lean": {
+    "shared/RawBoundaryData.lean": {
       "bytes": 680,
       "sha256": "2da0fea85f12eeaef68ef66c51b890a84de5f5953b4cf5f3133a178c61c2dc67"
     },
-    "source/RawTargetChunks/C000.lean": {
+    "shared/RawTargetChunks/C000.lean": {
       "bytes": 42499,
       "sha256": "2f9642da9c52e1a73f2dc477d9e9c7d16896802653b2efce6ba1246feec20cb7"
     },
-    "source/RawTargetChunks/C001.lean": {
+    "shared/RawTargetChunks/C001.lean": {
       "bytes": 42009,
       "sha256": "9f2cec738603b79121913e7a26b210fb4004c77beca3b519d165f3de95e925f8"
     },
-    "source/RawTargetChunks/C002.lean": {
+    "shared/RawTargetChunks/C002.lean": {
       "bytes": 42857,
       "sha256": "1e490f1d7d1605be7144ddbd87c93f4746fe09302f83ad8bfb419735d61d884a"
     },
-    "source/RawTargetChunks/C003.lean": {
+    "shared/RawTargetChunks/C003.lean": {
       "bytes": 43453,
       "sha256": "f1566839374e2086efda1ce4c25ac6f7754c1ce8a8da0d0f5dbdc903799a5dd4"
     },
-    "source/RawTargetChunks/C004.lean": {
+    "shared/RawTargetChunks/C004.lean": {
       "bytes": 39228,
       "sha256": "482c598e4e80efe1fa638556c91dfbc7662224f61d7e1405b55f4413c8046bfc"
     },
-    "source/RawTargetChunks/C005.lean": {
+    "shared/RawTargetChunks/C005.lean": {
       "bytes": 39114,
       "sha256": "81947eb9ef17a94c65b24d0a16ef951924bd55c393b93a55f2ae1c6f1dce5afd"
     },
-    "source/RawTargetChunks/C006.lean": {
+    "shared/RawTargetChunks/C006.lean": {
       "bytes": 39951,
       "sha256": "43b1e5915168453d202dca83dd246686d31594b37c4f4a32718a36527bd6b947"
     },
-    "source/RawTargetChunks/C007.lean": {
+    "shared/RawTargetChunks/C007.lean": {
       "bytes": 41708,
       "sha256": "871b908d5c1ecbc7d35964201cdcf6b9257fc94cc7678f174382fd175893e3a1"
     },
-    "source/RawTargetChunks/C008.lean": {
+    "shared/RawTargetChunks/C008.lean": {
       "bytes": 40544,
       "sha256": "8ab523e72de32b2620984d44bf79874f71fcfd9c230df6622e9e2c04f747eb58"
     },
-    "source/RawTargetChunks/C009.lean": {
+    "shared/RawTargetChunks/C009.lean": {
       "bytes": 40214,
       "sha256": "90f1fd30d1f1afed0d9f5331390d939d7eafdb69683ce817dd89ef06cbb3f777"
     },
-    "source/RawTargetChunks/C010.lean": {
+    "shared/RawTargetChunks/C010.lean": {
       "bytes": 42014,
       "sha256": "c6b4ff32935eef6b775d10d5e150f91c4ef751fbcbfd27cf470b08a635f595db"
     },
-    "source/RawTargetChunks/C011.lean": {
+    "shared/RawTargetChunks/C011.lean": {
       "bytes": 40337,
       "sha256": "101a1fdb0dbb935b799e7fb134c05481dca0d4cb1485898c7d6dd4d40029633b"
     },
-    "source/RawTargetChunks/C012.lean": {
+    "shared/RawTargetChunks/C012.lean": {
       "bytes": 40566,
       "sha256": "bfd73fde2a231a3e7c12707341eeccf8bee99758b3e741273b2531e76de2a8ad"
     },
-    "source/RawTargetChunks/C013.lean": {
+    "shared/RawTargetChunks/C013.lean": {
       "bytes": 39970,
       "sha256": "897183569c73ff9ce6a9b36acafd359634418dc1df1d017e9cd2b808ce4b3fba"
     },
-    "source/RawTargetChunks/C014.lean": {
+    "shared/RawTargetChunks/C014.lean": {
       "bytes": 41476,
       "sha256": "366170e53e0a4f5f40128850281d939f3246d7e5560aed6ffea9cbb77c794441"
     },
-    "source/RawTargetChunks/C015.lean": {
+    "shared/RawTargetChunks/C015.lean": {
       "bytes": 41397,
       "sha256": "48f05713a45e17e87172e2203041ae334113ad61e4a7f69742f1702512a4ecef"
     },
-    "source/RawTargetChunks/C016.lean": {
+    "shared/RawTargetChunks/C016.lean": {
       "bytes": 42859,
       "sha256": "82918ba10fb1d94c8135b93ef3f053896cc42dbd2cff3b532b7a3e8b473eef5b"
     },
-    "source/RawTargetChunks/C017.lean": {
+    "shared/RawTargetChunks/C017.lean": {
       "bytes": 42916,
       "sha256": "fc52185aa965999b1747de36660eddc7a8c72fecbe656e2d2a21d4be30d26c30"
     },
-    "source/RawTargetChunks/C018.lean": {
+    "shared/RawTargetChunks/C018.lean": {
       "bytes": 237,
       "sha256": "4d5cb0fc29ea0e523fddb3f89b007e5e71e40f76b96ddb2629482635a3eb0b0a"
     },
-    "source/RawTargetChunks/C018A.lean": {
+    "shared/RawTargetChunks/C018A.lean": {
       "bytes": 21495,
       "sha256": "5cefa8aee533a914cb0e2488adc0663d32f2c6bc388f4b140bc6e65cb81b440e"
     },
-    "source/RawTargetChunks/C018B.lean": {
+    "shared/RawTargetChunks/C018B.lean": {
       "bytes": 21518,
       "sha256": "8be2e59d67765aef4605af3c958b1109573af9a6a29e0d6c661996a2a67f649b"
     },
-    "source/RawTargetChunks/C019.lean": {
+    "shared/RawTargetChunks/C019.lean": {
       "bytes": 237,
       "sha256": "a57eaaae3fb6f64cc68b87a0d1c820ee64a0889cc62a2b41c525f23119241c4e"
     },
-    "source/RawTargetChunks/C019A.lean": {
+    "shared/RawTargetChunks/C019A.lean": {
       "bytes": 21476,
       "sha256": "d6acf9f5a60c4facf1c89c43262556cfc19e2157746995083db1861bba689dbf"
     },
-    "source/RawTargetChunks/C019B.lean": {
+    "shared/RawTargetChunks/C019B.lean": {
       "bytes": 21522,
       "sha256": "2dee2d1c4d16b139dbcec79373e680e7e9fcff7882e63930da4625704980e443"
     },
-    "source/RawTargetChunks/C020.lean": {
+    "shared/RawTargetChunks/C020.lean": {
       "bytes": 237,
       "sha256": "ce2fe50b4814c3d166c637d1c7eeec8888be1774182c5720ef613c57d6ee5463"
     },
-    "source/RawTargetChunks/C020A.lean": {
+    "shared/RawTargetChunks/C020A.lean": {
       "bytes": 22225,
       "sha256": "c5d0d3ee0b62e7dc4d796278e5a94815451719c15d8d8eec69ce721c4ff54102"
     },
-    "source/RawTargetChunks/C020B.lean": {
+    "shared/RawTargetChunks/C020B.lean": {
       "bytes": 22427,
       "sha256": "334ac8dc011c3d7be6c4704ff8ce9f27a38e0fff3357a30889119292ceeb7d5d"
     },
-    "source/RawTargetChunks/C021.lean": {
+    "shared/RawTargetChunks/C021.lean": {
       "bytes": 237,
       "sha256": "6dfe51235ad6855dc32a6f464df01b59c039241c0142f8d25a38d3906d77f14b"
     },
-    "source/RawTargetChunks/C021A.lean": {
+    "shared/RawTargetChunks/C021A.lean": {
       "bytes": 22443,
       "sha256": "f283255d1d969a7dbbed9602e58bee8f824ea3fb3420d0fea2d9ba2c664a2fcc"
     },
-    "source/RawTargetChunks/C021B.lean": {
+    "shared/RawTargetChunks/C021B.lean": {
       "bytes": 22384,
       "sha256": "cb455c83723c8ec08f234aabafe786c6c0abe2db10e17ba48d66448646b72153"
     },
-    "source/RawTargetChunks/C022.lean": {
+    "shared/RawTargetChunks/C022.lean": {
       "bytes": 237,
       "sha256": "5825c6de8809925e4b3e7eab74cf687fe68ebe8379e79ee020e8ca7e5d9ecb97"
     },
-    "source/RawTargetChunks/C022A.lean": {
+    "shared/RawTargetChunks/C022A.lean": {
       "bytes": 22482,
       "sha256": "60267d39f60a0d088972570b8fb56195f62c980e157c59afd548118df63ab1ed"
     },
-    "source/RawTargetChunks/C022B.lean": {
+    "shared/RawTargetChunks/C022B.lean": {
       "bytes": 22474,
       "sha256": "bb69515fcbf7ac18b11a564735fea976d219cc6b14287918b1f55ee7bc977281"
     },
-    "source/RawTargetChunks/C023.lean": {
+    "shared/RawTargetChunks/C023.lean": {
       "bytes": 237,
       "sha256": "561fc4003f61166ad2ab21b824a6db9e4faa155a20fb379d02e384a1c6c3ef39"
     },
-    "source/RawTargetChunks/C023A.lean": {
+    "shared/RawTargetChunks/C023A.lean": {
       "bytes": 22441,
       "sha256": "3682cacb1bfc82f42bbc1214d96d09bf3309803519e71544ebcc0d4d585ea3eb"
     },
-    "source/RawTargetChunks/C023B.lean": {
+    "shared/RawTargetChunks/C023B.lean": {
       "bytes": 22394,
       "sha256": "0b10a0edfa3982f4d19bcc30d8712173b39564fa1715c01b65adf75edd819c92"
     },
-    "source/RawTargetChunks/C024.lean": {
+    "shared/RawTargetChunks/C024.lean": {
       "bytes": 237,
       "sha256": "3496849bba57e54da8821ed1c63f9ef97c60effb6171004f0c9bb027aef52fee"
     },
-    "source/RawTargetChunks/C024A.lean": {
+    "shared/RawTargetChunks/C024A.lean": {
       "bytes": 22414,
       "sha256": "66968ebc5ced75b9eb957c31bf4dadef2d582ecf34b8983f012bdf92fd5a8c02"
     },
-    "source/RawTargetChunks/C024B.lean": {
+    "shared/RawTargetChunks/C024B.lean": {
       "bytes": 22440,
       "sha256": "26eb89fe364e95ac525dd5219d826e91153b54b727dd8ff87e8dbcb84851b009"
     },
-    "source/RawTargetChunks/C025.lean": {
+    "shared/RawTargetChunks/C025.lean": {
       "bytes": 237,
       "sha256": "827ab0a519e9de84d96f2c248ddb6ac91c7dd8db699383a1abfb6acd57120275"
     },
-    "source/RawTargetChunks/C025A.lean": {
+    "shared/RawTargetChunks/C025A.lean": {
       "bytes": 22434,
       "sha256": "8ddaf7724e2f4eefa7fe9b582ac6e39feed163e4573ce354fb99be769a71d1ad"
     },
-    "source/RawTargetChunks/C025B.lean": {
+    "shared/RawTargetChunks/C025B.lean": {
       "bytes": 22413,
       "sha256": "96883b5e4f9087a1ecfadd00b99b17167017d91b2fb11b6e94ee73911ea92dab"
     },
-    "source/RawTargetChunks/C026.lean": {
+    "shared/RawTargetChunks/C026.lean": {
       "bytes": 237,
       "sha256": "db202fa8432f6bffc0feaa9529c15786244d8c7a3b2e4f1e04d0c853a53eed5d"
     },
-    "source/RawTargetChunks/C026A.lean": {
+    "shared/RawTargetChunks/C026A.lean": {
       "bytes": 22447,
       "sha256": "ff37f004dd398894c2174fb294b6e49dcd1d67db971a0fb6ae62c0136ed1933e"
     },
-    "source/RawTargetChunks/C026B.lean": {
+    "shared/RawTargetChunks/C026B.lean": {
       "bytes": 22463,
       "sha256": "203facb907436bc6d0a5635b92a92ed4d9f6d6de89d830308e81d771b8097603"
     },
-    "source/RawTargetChunks/C027.lean": {
+    "shared/RawTargetChunks/C027.lean": {
       "bytes": 237,
       "sha256": "1f097092816084e6c90f26a1c86420102c73062000542b76e30787d37378c243"
     },
-    "source/RawTargetChunks/C027A.lean": {
+    "shared/RawTargetChunks/C027A.lean": {
       "bytes": 22455,
       "sha256": "53ce51252d229219af45a09a7fdc5543f80fd8736f56f39b81abe33d2d099e4d"
     },
-    "source/RawTargetChunks/C027B.lean": {
+    "shared/RawTargetChunks/C027B.lean": {
       "bytes": 22387,
       "sha256": "f4eb8457497d4bce4d72f44dd06f8ab4b53ea4c4df1c72d3108fd57fd6cb2f69"
     },
-    "source/RawTargetChunks/C028.lean": {
+    "shared/RawTargetChunks/C028.lean": {
       "bytes": 237,
       "sha256": "a3e394e68a3b091a1bcfd36f1cae3a65199aeccdbf9c7dce606de29b119566d8"
     },
-    "source/RawTargetChunks/C028A.lean": {
+    "shared/RawTargetChunks/C028A.lean": {
       "bytes": 22384,
       "sha256": "5fbec57bba28fc4ff518ceacfadf70d9b9307e33340bc03fec8567fc7b950dff"
     },
-    "source/RawTargetChunks/C028B.lean": {
+    "shared/RawTargetChunks/C028B.lean": {
       "bytes": 22382,
       "sha256": "b0c8280c2d216d2965af0c29a193acd3c66bb367a079f1747eec331fdaac8e76"
     },
-    "source/RawTargetChunks/C029.lean": {
+    "shared/RawTargetChunks/C029.lean": {
       "bytes": 237,
       "sha256": "634f3880091b2ced6abecdeb17fdd68c0b8d5d83468f3c8906d4a10f15df557f"
     },
-    "source/RawTargetChunks/C029A.lean": {
+    "shared/RawTargetChunks/C029A.lean": {
       "bytes": 22347,
       "sha256": "a6e6420e9b714ec8978628e3706b582b89f5a926b82fe59c29cfef4b1352ce1d"
     },
-    "source/RawTargetChunks/C029B.lean": {
+    "shared/RawTargetChunks/C029B.lean": {
       "bytes": 22391,
       "sha256": "f461b488fd97b387b957656bf4211857a8bcb5f5f81401f978d1fd1d1cab4b9a"
     },
-    "source/RawTargetChunks/C030.lean": {
+    "shared/RawTargetChunks/C030.lean": {
       "bytes": 237,
       "sha256": "761fc88070d56c27ed342be5ab5103e87db95c8120caa95635d92b8e5703d36b"
     },
-    "source/RawTargetChunks/C030A.lean": {
+    "shared/RawTargetChunks/C030A.lean": {
       "bytes": 22549,
       "sha256": "4ca85bd45f996aed1bf1fbb3b435b72697a2dd0ba0676a115b263fa1506f2644"
     },
-    "source/RawTargetChunks/C030B.lean": {
+    "shared/RawTargetChunks/C030B.lean": {
       "bytes": 23375,
       "sha256": "d626829011ae05f1a44c4227d660bfc45c836fb370b465a6995b739ef62ef85e"
     },
-    "source/RawTargetChunks/C031.lean": {
+    "shared/RawTargetChunks/C031.lean": {
       "bytes": 237,
       "sha256": "95a1aef470bf4efbf3fcd7421379de2237b2f85f028a7417f854f0beade5ea63"
     },
-    "source/RawTargetChunks/C031A.lean": {
+    "shared/RawTargetChunks/C031A.lean": {
       "bytes": 23414,
       "sha256": "0ece32cdf855b3f04f40bdf3ecf9a3a3177d2caacbb2a85416182978eb014199"
     },
-    "source/RawTargetChunks/C031B.lean": {
+    "shared/RawTargetChunks/C031B.lean": {
       "bytes": 23382,
       "sha256": "334c87928cada7723e98f70dc602632e14e429cbe7ca06e1c6817d3975bec8d0"
     },
-    "source/RawTargetChunks/C032.lean": {
+    "shared/RawTargetChunks/C032.lean": {
       "bytes": 237,
       "sha256": "fc68116e6de5bfea89f69a838204287b01f9751d427557a3b40131434335fd78"
     },
-    "source/RawTargetChunks/C032A.lean": {
+    "shared/RawTargetChunks/C032A.lean": {
       "bytes": 23387,
       "sha256": "ed5338cc73eb8a271927b4be5073542d4849a94cc18b6447ef1aeb692cc0bd60"
     },
-    "source/RawTargetChunks/C032B.lean": {
+    "shared/RawTargetChunks/C032B.lean": {
       "bytes": 23389,
       "sha256": "d0234a47444163ea1e26f1a28c84261b1abb73e89579233aad3942a9e89b5b76"
     },
-    "source/RawTargetChunks/C033.lean": {
+    "shared/RawTargetChunks/C033.lean": {
       "bytes": 237,
       "sha256": "17c59a42a6fbe83ce90a5d64db702253040e39003eebaa41db46f6b5deb88480"
     },
-    "source/RawTargetChunks/C033A.lean": {
+    "shared/RawTargetChunks/C033A.lean": {
       "bytes": 23408,
       "sha256": "af57d0e0b895fa511ef58389ab8e6cc0009f431b018b1632c20fe98b6c9c206c"
     },
-    "source/RawTargetChunks/C033B.lean": {
+    "shared/RawTargetChunks/C033B.lean": {
       "bytes": 23376,
       "sha256": "603f6d7f3cbe73cf0ad4b1b12cdae806d716fcbb6d8c0398ccdb09616bc57940"
     },
-    "source/RawTargetChunks/C034.lean": {
+    "shared/RawTargetChunks/C034.lean": {
       "bytes": 237,
       "sha256": "cfe7b219466d0db7963c03f417afb8fc10308f878c689a3cbf3176b2afe6ed2b"
     },
-    "source/RawTargetChunks/C034A.lean": {
+    "shared/RawTargetChunks/C034A.lean": {
       "bytes": 23370,
       "sha256": "6af4a7e628d5484b4f12de1403d7032a4b9d43bd0a3f5fd4511a2a4feb342ada"
     },
-    "source/RawTargetChunks/C034B.lean": {
+    "shared/RawTargetChunks/C034B.lean": {
       "bytes": 23357,
       "sha256": "17a7a7e0ec68be3f2579e6fe92f6a1f95c403e8f661d9f5c8cf648d51d6a387e"
     },
-    "source/RawTargetChunks/C035.lean": {
+    "shared/RawTargetChunks/C035.lean": {
       "bytes": 237,
       "sha256": "391ef6223ed4b4764e2831059b7a34b28431be72238327e46b3f1c0e28e83ff7"
     },
-    "source/RawTargetChunks/C035A.lean": {
+    "shared/RawTargetChunks/C035A.lean": {
       "bytes": 23392,
       "sha256": "2e9fe2abceeab4e4bb87dcad8bc7181cf6adba0a2b1d31d3e2b28dfb50b9f7b3"
     },
-    "source/RawTargetChunks/C035B.lean": {
+    "shared/RawTargetChunks/C035B.lean": {
       "bytes": 23350,
       "sha256": "5dde5499200a7e2cde1fdb4efeb37ca02014d6deac49329e142ccd7932fb4094"
     },
-    "source/RawTargetChunks/C036.lean": {
+    "shared/RawTargetChunks/C036.lean": {
       "bytes": 237,
       "sha256": "c57a24ddc7a52505f9371d38e8d834e473abe9ecaadd8e421459f8b6f50496c6"
     },
-    "source/RawTargetChunks/C036A.lean": {
+    "shared/RawTargetChunks/C036A.lean": {
       "bytes": 23346,
       "sha256": "d98ffbb4aba8a28401fe21160567a35be9df6f37fb8fb6fef5471cf58476f7de"
     },
-    "source/RawTargetChunks/C036B.lean": {
+    "shared/RawTargetChunks/C036B.lean": {
       "bytes": 18283,
       "sha256": "b425fa2c4085e132a3e1cef08673b82b947e9dde4aaf553016d703566cbe4047"
     },
-    "source/RawTargets.lean": {
+    "shared/RawTargets.lean": {
       "bytes": 2689,
       "sha256": "27b3adaf7ea74a9ee83504b100b1b13ba7919533d8967d431354cbf325be9f38"
     },
-    "source/TerminalGeometry.lean": {
+    "shared/SharedProjectionVertexSets.lean": {
+      "bytes": 66616,
+      "sha256": "7b2d19c0e5466243a17b3e56ad31b2442217523644c04d2914ab1b68bc61bccc"
+    },
+    "shared/TerminalGeometry.lean": {
       "bytes": 1110,
       "sha256": "b9a5af9dcb1a580c946f24e4ab3ebd72b5ab05e1120fac97325eb4fce898170d"
     }
   },
   "lean": "leanprover/lean4:v4.35.0",
   "mathlib": "56a005855ea17e0b0958f73ec801ae140b0a1679",
-  "theorem": "Nonrational.TerminalVerification.certified_B000",
-  "type": "\u2200 j : Fin 30, Nonrational.TerminalVerification.Certifies (0 + j.val)",
+  "theorem": "Nonrational.TerminalVerification.certified_B078",
+  "type": "\u2200 j : Fin 30, Nonrational.TerminalVerification.Certifies (2373 + j.val)",
   "upstream_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
   "variants": {
     "baseline": {
@@ -421,102 +408,97 @@
         "Mathlib.Tactic.FinCases"
       ],
       "modules": {
-        "Batches.B000": "source/Batches/B000.lean",
-        "LowerSchemas.Batches": "source/LowerSchemas/Batches.lean",
-        "LowerSchemas.Batches.Part0": "source/LowerSchemas/Batches/Part0.lean",
-        "LowerSchemas.RawTargetChunks": "source/LowerSchemas/RawTargetChunks.lean",
-        "LowerSchemas.RawTargetChunks.Part0": "source/LowerSchemas/RawTargetChunks/Part0.lean",
-        "NumericProofSchema": "source/NumericProofSchema.lean",
-        "Papers.FiniteProjectionChecks": "source/Papers/FiniteProjectionChecks.lean",
-        "Papers.FiniteProjectionData": "source/Papers/FiniteProjectionData.lean",
-        "Papers.ProjectedRelationTemplate": "source/Papers/ProjectedRelationTemplate.lean",
-        "ProjectionTargets.B000": "source/ProjectionTargets/B000.lean",
-        "ProjectionVertexSets": "source/ProjectionVertexSets.lean",
-        "RawBoundaryData": "source/RawBoundaryData.lean",
-        "RawTargetChunks.C000": "source/RawTargetChunks/C000.lean",
-        "RawTargetChunks.C001": "source/RawTargetChunks/C001.lean",
-        "RawTargetChunks.C002": "source/RawTargetChunks/C002.lean",
-        "RawTargetChunks.C003": "source/RawTargetChunks/C003.lean",
-        "RawTargetChunks.C004": "source/RawTargetChunks/C004.lean",
-        "RawTargetChunks.C005": "source/RawTargetChunks/C005.lean",
-        "RawTargetChunks.C006": "source/RawTargetChunks/C006.lean",
-        "RawTargetChunks.C007": "source/RawTargetChunks/C007.lean",
-        "RawTargetChunks.C008": "source/RawTargetChunks/C008.lean",
-        "RawTargetChunks.C009": "source/RawTargetChunks/C009.lean",
-        "RawTargetChunks.C010": "source/RawTargetChunks/C010.lean",
-        "RawTargetChunks.C011": "source/RawTargetChunks/C011.lean",
-        "RawTargetChunks.C012": "source/RawTargetChunks/C012.lean",
-        "RawTargetChunks.C013": "source/RawTargetChunks/C013.lean",
-        "RawTargetChunks.C014": "source/RawTargetChunks/C014.lean",
-        "RawTargetChunks.C015": "source/RawTargetChunks/C015.lean",
-        "RawTargetChunks.C016": "source/RawTargetChunks/C016.lean",
-        "RawTargetChunks.C017": "source/RawTargetChunks/C017.lean",
-        "RawTargetChunks.C018": "source/RawTargetChunks/C018.lean",
-        "RawTargetChunks.C018A": "source/RawTargetChunks/C018A.lean",
-        "RawTargetChunks.C018B": "source/RawTargetChunks/C018B.lean",
-        "RawTargetChunks.C019": "source/RawTargetChunks/C019.lean",
-        "RawTargetChunks.C019A": "source/RawTargetChunks/C019A.lean",
-        "RawTargetChunks.C019B": "source/RawTargetChunks/C019B.lean",
-        "RawTargetChunks.C020": "source/RawTargetChunks/C020.lean",
-        "RawTargetChunks.C020A": "source/RawTargetChunks/C020A.lean",
-        "RawTargetChunks.C020B": "source/RawTargetChunks/C020B.lean",
-        "RawTargetChunks.C021": "source/RawTargetChunks/C021.lean",
-        "RawTargetChunks.C021A": "source/RawTargetChunks/C021A.lean",
-        "RawTargetChunks.C021B": "source/RawTargetChunks/C021B.lean",
-        "RawTargetChunks.C022": "source/RawTargetChunks/C022.lean",
-        "RawTargetChunks.C022A": "source/RawTargetChunks/C022A.lean",
-        "RawTargetChunks.C022B": "source/RawTargetChunks/C022B.lean",
-        "RawTargetChunks.C023": "source/RawTargetChunks/C023.lean",
-        "RawTargetChunks.C023A": "source/RawTargetChunks/C023A.lean",
-        "RawTargetChunks.C023B": "source/RawTargetChunks/C023B.lean",
-        "RawTargetChunks.C024": "source/RawTargetChunks/C024.lean",
-        "RawTargetChunks.C024A": "source/RawTargetChunks/C024A.lean",
-        "RawTargetChunks.C024B": "source/RawTargetChunks/C024B.lean",
-        "RawTargetChunks.C025": "source/RawTargetChunks/C025.lean",
-        "RawTargetChunks.C025A": "source/RawTargetChunks/C025A.lean",
-        "RawTargetChunks.C025B": "source/RawTargetChunks/C025B.lean",
-        "RawTargetChunks.C026": "source/RawTargetChunks/C026.lean",
-        "RawTargetChunks.C026A": "source/RawTargetChunks/C026A.lean",
-        "RawTargetChunks.C026B": "source/RawTargetChunks/C026B.lean",
-        "RawTargetChunks.C027": "source/RawTargetChunks/C027.lean",
-        "RawTargetChunks.C027A": "source/RawTargetChunks/C027A.lean",
-        "RawTargetChunks.C027B": "source/RawTargetChunks/C027B.lean",
-        "RawTargetChunks.C028": "source/RawTargetChunks/C028.lean",
-        "RawTargetChunks.C028A": "source/RawTargetChunks/C028A.lean",
-        "RawTargetChunks.C028B": "source/RawTargetChunks/C028B.lean",
-        "RawTargetChunks.C029": "source/RawTargetChunks/C029.lean",
-        "RawTargetChunks.C029A": "source/RawTargetChunks/C029A.lean",
-        "RawTargetChunks.C029B": "source/RawTargetChunks/C029B.lean",
-        "RawTargetChunks.C030": "source/RawTargetChunks/C030.lean",
-        "RawTargetChunks.C030A": "source/RawTargetChunks/C030A.lean",
-        "RawTargetChunks.C030B": "source/RawTargetChunks/C030B.lean",
-        "RawTargetChunks.C031": "source/RawTargetChunks/C031.lean",
-        "RawTargetChunks.C031A": "source/RawTargetChunks/C031A.lean",
-        "RawTargetChunks.C031B": "source/RawTargetChunks/C031B.lean",
-        "RawTargetChunks.C032": "source/RawTargetChunks/C032.lean",
-        "RawTargetChunks.C032A": "source/RawTargetChunks/C032A.lean",
-        "RawTargetChunks.C032B": "source/RawTargetChunks/C032B.lean",
-        "RawTargetChunks.C033": "source/RawTargetChunks/C033.lean",
-        "RawTargetChunks.C033A": "source/RawTargetChunks/C033A.lean",
-        "RawTargetChunks.C033B": "source/RawTargetChunks/C033B.lean",
-        "RawTargetChunks.C034": "source/RawTargetChunks/C034.lean",
-        "RawTargetChunks.C034A": "source/RawTargetChunks/C034A.lean",
-        "RawTargetChunks.C034B": "source/RawTargetChunks/C034B.lean",
-        "RawTargetChunks.C035": "source/RawTargetChunks/C035.lean",
-        "RawTargetChunks.C035A": "source/RawTargetChunks/C035A.lean",
-        "RawTargetChunks.C035B": "source/RawTargetChunks/C035B.lean",
-        "RawTargetChunks.C036": "source/RawTargetChunks/C036.lean",
-        "RawTargetChunks.C036A": "source/RawTargetChunks/C036A.lean",
-        "RawTargetChunks.C036B": "source/RawTargetChunks/C036B.lean",
-        "RawTargets": "source/RawTargets.lean",
-        "TerminalGeometry": "source/TerminalGeometry.lean"
+        "Batches.B078": "baseline/Batches/B078.lean",
+        "LowerSchemas.RawTargetChunks": "shared/LowerSchemas/RawTargetChunks.lean",
+        "LowerSchemas.RawTargetChunks.Part0": "shared/LowerSchemas/RawTargetChunks/Part0.lean",
+        "NumericProofSchema": "shared/NumericProofSchema.lean",
+        "Papers.FiniteProjectionChecks": "shared/Papers/FiniteProjectionChecks.lean",
+        "Papers.FiniteProjectionData": "shared/Papers/FiniteProjectionData.lean",
+        "Papers.ProjectedRelationTemplate": "shared/Papers/ProjectedRelationTemplate.lean",
+        "RawBoundaryData": "shared/RawBoundaryData.lean",
+        "RawTargetChunks.C000": "shared/RawTargetChunks/C000.lean",
+        "RawTargetChunks.C001": "shared/RawTargetChunks/C001.lean",
+        "RawTargetChunks.C002": "shared/RawTargetChunks/C002.lean",
+        "RawTargetChunks.C003": "shared/RawTargetChunks/C003.lean",
+        "RawTargetChunks.C004": "shared/RawTargetChunks/C004.lean",
+        "RawTargetChunks.C005": "shared/RawTargetChunks/C005.lean",
+        "RawTargetChunks.C006": "shared/RawTargetChunks/C006.lean",
+        "RawTargetChunks.C007": "shared/RawTargetChunks/C007.lean",
+        "RawTargetChunks.C008": "shared/RawTargetChunks/C008.lean",
+        "RawTargetChunks.C009": "shared/RawTargetChunks/C009.lean",
+        "RawTargetChunks.C010": "shared/RawTargetChunks/C010.lean",
+        "RawTargetChunks.C011": "shared/RawTargetChunks/C011.lean",
+        "RawTargetChunks.C012": "shared/RawTargetChunks/C012.lean",
+        "RawTargetChunks.C013": "shared/RawTargetChunks/C013.lean",
+        "RawTargetChunks.C014": "shared/RawTargetChunks/C014.lean",
+        "RawTargetChunks.C015": "shared/RawTargetChunks/C015.lean",
+        "RawTargetChunks.C016": "shared/RawTargetChunks/C016.lean",
+        "RawTargetChunks.C017": "shared/RawTargetChunks/C017.lean",
+        "RawTargetChunks.C018": "shared/RawTargetChunks/C018.lean",
+        "RawTargetChunks.C018A": "shared/RawTargetChunks/C018A.lean",
+        "RawTargetChunks.C018B": "shared/RawTargetChunks/C018B.lean",
+        "RawTargetChunks.C019": "shared/RawTargetChunks/C019.lean",
+        "RawTargetChunks.C019A": "shared/RawTargetChunks/C019A.lean",
+        "RawTargetChunks.C019B": "shared/RawTargetChunks/C019B.lean",
+        "RawTargetChunks.C020": "shared/RawTargetChunks/C020.lean",
+        "RawTargetChunks.C020A": "shared/RawTargetChunks/C020A.lean",
+        "RawTargetChunks.C020B": "shared/RawTargetChunks/C020B.lean",
+        "RawTargetChunks.C021": "shared/RawTargetChunks/C021.lean",
+        "RawTargetChunks.C021A": "shared/RawTargetChunks/C021A.lean",
+        "RawTargetChunks.C021B": "shared/RawTargetChunks/C021B.lean",
+        "RawTargetChunks.C022": "shared/RawTargetChunks/C022.lean",
+        "RawTargetChunks.C022A": "shared/RawTargetChunks/C022A.lean",
+        "RawTargetChunks.C022B": "shared/RawTargetChunks/C022B.lean",
+        "RawTargetChunks.C023": "shared/RawTargetChunks/C023.lean",
+        "RawTargetChunks.C023A": "shared/RawTargetChunks/C023A.lean",
+        "RawTargetChunks.C023B": "shared/RawTargetChunks/C023B.lean",
+        "RawTargetChunks.C024": "shared/RawTargetChunks/C024.lean",
+        "RawTargetChunks.C024A": "shared/RawTargetChunks/C024A.lean",
+        "RawTargetChunks.C024B": "shared/RawTargetChunks/C024B.lean",
+        "RawTargetChunks.C025": "shared/RawTargetChunks/C025.lean",
+        "RawTargetChunks.C025A": "shared/RawTargetChunks/C025A.lean",
+        "RawTargetChunks.C025B": "shared/RawTargetChunks/C025B.lean",
+        "RawTargetChunks.C026": "shared/RawTargetChunks/C026.lean",
+        "RawTargetChunks.C026A": "shared/RawTargetChunks/C026A.lean",
+        "RawTargetChunks.C026B": "shared/RawTargetChunks/C026B.lean",
+        "RawTargetChunks.C027": "shared/RawTargetChunks/C027.lean",
+        "RawTargetChunks.C027A": "shared/RawTargetChunks/C027A.lean",
+        "RawTargetChunks.C027B": "shared/RawTargetChunks/C027B.lean",
+        "RawTargetChunks.C028": "shared/RawTargetChunks/C028.lean",
+        "RawTargetChunks.C028A": "shared/RawTargetChunks/C028A.lean",
+        "RawTargetChunks.C028B": "shared/RawTargetChunks/C028B.lean",
+        "RawTargetChunks.C029": "shared/RawTargetChunks/C029.lean",
+        "RawTargetChunks.C029A": "shared/RawTargetChunks/C029A.lean",
+        "RawTargetChunks.C029B": "shared/RawTargetChunks/C029B.lean",
+        "RawTargetChunks.C030": "shared/RawTargetChunks/C030.lean",
+        "RawTargetChunks.C030A": "shared/RawTargetChunks/C030A.lean",
+        "RawTargetChunks.C030B": "shared/RawTargetChunks/C030B.lean",
+        "RawTargetChunks.C031": "shared/RawTargetChunks/C031.lean",
+        "RawTargetChunks.C031A": "shared/RawTargetChunks/C031A.lean",
+        "RawTargetChunks.C031B": "shared/RawTargetChunks/C031B.lean",
+        "RawTargetChunks.C032": "shared/RawTargetChunks/C032.lean",
+        "RawTargetChunks.C032A": "shared/RawTargetChunks/C032A.lean",
+        "RawTargetChunks.C032B": "shared/RawTargetChunks/C032B.lean",
+        "RawTargetChunks.C033": "shared/RawTargetChunks/C033.lean",
+        "RawTargetChunks.C033A": "shared/RawTargetChunks/C033A.lean",
+        "RawTargetChunks.C033B": "shared/RawTargetChunks/C033B.lean",
+        "RawTargetChunks.C034": "shared/RawTargetChunks/C034.lean",
+        "RawTargetChunks.C034A": "shared/RawTargetChunks/C034A.lean",
+        "RawTargetChunks.C034B": "shared/RawTargetChunks/C034B.lean",
+        "RawTargetChunks.C035": "shared/RawTargetChunks/C035.lean",
+        "RawTargetChunks.C035A": "shared/RawTargetChunks/C035A.lean",
+        "RawTargetChunks.C035B": "shared/RawTargetChunks/C035B.lean",
+        "RawTargetChunks.C036": "shared/RawTargetChunks/C036.lean",
+        "RawTargetChunks.C036A": "shared/RawTargetChunks/C036A.lean",
+        "RawTargetChunks.C036B": "shared/RawTargetChunks/C036B.lean",
+        "RawTargets": "shared/RawTargets.lean",
+        "TerminalGeometry": "shared/TerminalGeometry.lean"
       },
       "origin_modules": {
-        "Batches.B000": "0d19239de2c667df1e94002c7a852a7533fc7896dfa4cebb07d4ef6b6b979d65",
+        "Batches.B078": "e02e65aa89a7cd391c0d84af0765ccbeec8f8b3f13ba6899416486a31da8fd4b",
         "Papers.FiniteProjectionChecks": "f5542e9bb50e1a5ce2111b1e3d5d9d50ea8cecfe34ab6f5164ccffbfdd9491bc",
         "Papers.FiniteProjectionData": "e6f2b392e66b18f9487f2fdbdc55df25f7067067f7d9bd1544313d9a1a9bb45c",
         "Papers.ProjectedRelationTemplate": "5b850b72006205ef28220267e5908a6108dfb04fb09d48304da98fe1ca3bc5c2",
-        "ProjectionTargets.B000": "aa75ddaa640cf05bd5b925a6ddf99d3413e8640a0cd7f02b401cbecc70335499",
         "RawBoundaryData": "2da0fea85f12eeaef68ef66c51b890a84de5f5953b4cf5f3133a178c61c2dc67",
         "RawTargetChunks.C000": "2f9642da9c52e1a73f2dc477d9e9c7d16896802653b2efce6ba1246feec20cb7",
         "RawTargetChunks.C001": "9f2cec738603b79121913e7a26b210fb4004c77beca3b519d165f3de95e925f8",
@@ -597,95 +579,363 @@
         "TerminalGeometry": "b9a5af9dcb1a580c946f24e4ab3ebd72b5ab05e1120fac97325eb4fce898170d"
       },
       "paths": {
-        "Batches/B000.lean": "source/Batches/B000.lean",
-        "LowerSchemas/Batches.lean": "source/LowerSchemas/Batches.lean",
-        "LowerSchemas/Batches/Part0.lean": "source/LowerSchemas/Batches/Part0.lean",
-        "LowerSchemas/RawTargetChunks.lean": "source/LowerSchemas/RawTargetChunks.lean",
-        "LowerSchemas/RawTargetChunks/Part0.lean": "source/LowerSchemas/RawTargetChunks/Part0.lean",
-        "NumericProofSchema.lean": "source/NumericProofSchema.lean",
-        "Papers/FiniteProjectionChecks.lean": "source/Papers/FiniteProjectionChecks.lean",
-        "Papers/FiniteProjectionData.lean": "source/Papers/FiniteProjectionData.lean",
-        "Papers/ProjectedRelationTemplate.lean": "source/Papers/ProjectedRelationTemplate.lean",
-        "ProjectionTargets/B000.lean": "source/ProjectionTargets/B000.lean",
-        "ProjectionVertexSets.lean": "source/ProjectionVertexSets.lean",
-        "RawBoundaryData.lean": "source/RawBoundaryData.lean",
-        "RawTargetChunks/C000.lean": "source/RawTargetChunks/C000.lean",
-        "RawTargetChunks/C001.lean": "source/RawTargetChunks/C001.lean",
-        "RawTargetChunks/C002.lean": "source/RawTargetChunks/C002.lean",
-        "RawTargetChunks/C003.lean": "source/RawTargetChunks/C003.lean",
-        "RawTargetChunks/C004.lean": "source/RawTargetChunks/C004.lean",
-        "RawTargetChunks/C005.lean": "source/RawTargetChunks/C005.lean",
-        "RawTargetChunks/C006.lean": "source/RawTargetChunks/C006.lean",
-        "RawTargetChunks/C007.lean": "source/RawTargetChunks/C007.lean",
-        "RawTargetChunks/C008.lean": "source/RawTargetChunks/C008.lean",
-        "RawTargetChunks/C009.lean": "source/RawTargetChunks/C009.lean",
-        "RawTargetChunks/C010.lean": "source/RawTargetChunks/C010.lean",
-        "RawTargetChunks/C011.lean": "source/RawTargetChunks/C011.lean",
-        "RawTargetChunks/C012.lean": "source/RawTargetChunks/C012.lean",
-        "RawTargetChunks/C013.lean": "source/RawTargetChunks/C013.lean",
-        "RawTargetChunks/C014.lean": "source/RawTargetChunks/C014.lean",
-        "RawTargetChunks/C015.lean": "source/RawTargetChunks/C015.lean",
-        "RawTargetChunks/C016.lean": "source/RawTargetChunks/C016.lean",
-        "RawTargetChunks/C017.lean": "source/RawTargetChunks/C017.lean",
-        "RawTargetChunks/C018.lean": "source/RawTargetChunks/C018.lean",
-        "RawTargetChunks/C018A.lean": "source/RawTargetChunks/C018A.lean",
-        "RawTargetChunks/C018B.lean": "source/RawTargetChunks/C018B.lean",
-        "RawTargetChunks/C019.lean": "source/RawTargetChunks/C019.lean",
-        "RawTargetChunks/C019A.lean": "source/RawTargetChunks/C019A.lean",
-        "RawTargetChunks/C019B.lean": "source/RawTargetChunks/C019B.lean",
-        "RawTargetChunks/C020.lean": "source/RawTargetChunks/C020.lean",
-        "RawTargetChunks/C020A.lean": "source/RawTargetChunks/C020A.lean",
-        "RawTargetChunks/C020B.lean": "source/RawTargetChunks/C020B.lean",
-        "RawTargetChunks/C021.lean": "source/RawTargetChunks/C021.lean",
-        "RawTargetChunks/C021A.lean": "source/RawTargetChunks/C021A.lean",
-        "RawTargetChunks/C021B.lean": "source/RawTargetChunks/C021B.lean",
-        "RawTargetChunks/C022.lean": "source/RawTargetChunks/C022.lean",
-        "RawTargetChunks/C022A.lean": "source/RawTargetChunks/C022A.lean",
-        "RawTargetChunks/C022B.lean": "source/RawTargetChunks/C022B.lean",
-        "RawTargetChunks/C023.lean": "source/RawTargetChunks/C023.lean",
-        "RawTargetChunks/C023A.lean": "source/RawTargetChunks/C023A.lean",
-        "RawTargetChunks/C023B.lean": "source/RawTargetChunks/C023B.lean",
-        "RawTargetChunks/C024.lean": "source/RawTargetChunks/C024.lean",
-        "RawTargetChunks/C024A.lean": "source/RawTargetChunks/C024A.lean",
-        "RawTargetChunks/C024B.lean": "source/RawTargetChunks/C024B.lean",
-        "RawTargetChunks/C025.lean": "source/RawTargetChunks/C025.lean",
-        "RawTargetChunks/C025A.lean": "source/RawTargetChunks/C025A.lean",
-        "RawTargetChunks/C025B.lean": "source/RawTargetChunks/C025B.lean",
-        "RawTargetChunks/C026.lean": "source/RawTargetChunks/C026.lean",
-        "RawTargetChunks/C026A.lean": "source/RawTargetChunks/C026A.lean",
-        "RawTargetChunks/C026B.lean": "source/RawTargetChunks/C026B.lean",
-        "RawTargetChunks/C027.lean": "source/RawTargetChunks/C027.lean",
-        "RawTargetChunks/C027A.lean": "source/RawTargetChunks/C027A.lean",
-        "RawTargetChunks/C027B.lean": "source/RawTargetChunks/C027B.lean",
-        "RawTargetChunks/C028.lean": "source/RawTargetChunks/C028.lean",
-        "RawTargetChunks/C028A.lean": "source/RawTargetChunks/C028A.lean",
-        "RawTargetChunks/C028B.lean": "source/RawTargetChunks/C028B.lean",
-        "RawTargetChunks/C029.lean": "source/RawTargetChunks/C029.lean",
-        "RawTargetChunks/C029A.lean": "source/RawTargetChunks/C029A.lean",
-        "RawTargetChunks/C029B.lean": "source/RawTargetChunks/C029B.lean",
-        "RawTargetChunks/C030.lean": "source/RawTargetChunks/C030.lean",
-        "RawTargetChunks/C030A.lean": "source/RawTargetChunks/C030A.lean",
-        "RawTargetChunks/C030B.lean": "source/RawTargetChunks/C030B.lean",
-        "RawTargetChunks/C031.lean": "source/RawTargetChunks/C031.lean",
-        "RawTargetChunks/C031A.lean": "source/RawTargetChunks/C031A.lean",
-        "RawTargetChunks/C031B.lean": "source/RawTargetChunks/C031B.lean",
-        "RawTargetChunks/C032.lean": "source/RawTargetChunks/C032.lean",
-        "RawTargetChunks/C032A.lean": "source/RawTargetChunks/C032A.lean",
-        "RawTargetChunks/C032B.lean": "source/RawTargetChunks/C032B.lean",
-        "RawTargetChunks/C033.lean": "source/RawTargetChunks/C033.lean",
-        "RawTargetChunks/C033A.lean": "source/RawTargetChunks/C033A.lean",
-        "RawTargetChunks/C033B.lean": "source/RawTargetChunks/C033B.lean",
-        "RawTargetChunks/C034.lean": "source/RawTargetChunks/C034.lean",
-        "RawTargetChunks/C034A.lean": "source/RawTargetChunks/C034A.lean",
-        "RawTargetChunks/C034B.lean": "source/RawTargetChunks/C034B.lean",
-        "RawTargetChunks/C035.lean": "source/RawTargetChunks/C035.lean",
-        "RawTargetChunks/C035A.lean": "source/RawTargetChunks/C035A.lean",
-        "RawTargetChunks/C035B.lean": "source/RawTargetChunks/C035B.lean",
-        "RawTargetChunks/C036.lean": "source/RawTargetChunks/C036.lean",
-        "RawTargetChunks/C036A.lean": "source/RawTargetChunks/C036A.lean",
-        "RawTargetChunks/C036B.lean": "source/RawTargetChunks/C036B.lean",
-        "RawTargets.lean": "source/RawTargets.lean",
-        "TerminalGeometry.lean": "source/TerminalGeometry.lean"
+        "Batches/B078.lean": "baseline/Batches/B078.lean",
+        "LowerSchemas/RawTargetChunks.lean": "shared/LowerSchemas/RawTargetChunks.lean",
+        "LowerSchemas/RawTargetChunks/Part0.lean": "shared/LowerSchemas/RawTargetChunks/Part0.lean",
+        "NumericProofSchema.lean": "shared/NumericProofSchema.lean",
+        "Papers/FiniteProjectionChecks.lean": "shared/Papers/FiniteProjectionChecks.lean",
+        "Papers/FiniteProjectionData.lean": "shared/Papers/FiniteProjectionData.lean",
+        "Papers/ProjectedRelationTemplate.lean": "shared/Papers/ProjectedRelationTemplate.lean",
+        "RawBoundaryData.lean": "shared/RawBoundaryData.lean",
+        "RawTargetChunks/C000.lean": "shared/RawTargetChunks/C000.lean",
+        "RawTargetChunks/C001.lean": "shared/RawTargetChunks/C001.lean",
+        "RawTargetChunks/C002.lean": "shared/RawTargetChunks/C002.lean",
+        "RawTargetChunks/C003.lean": "shared/RawTargetChunks/C003.lean",
+        "RawTargetChunks/C004.lean": "shared/RawTargetChunks/C004.lean",
+        "RawTargetChunks/C005.lean": "shared/RawTargetChunks/C005.lean",
+        "RawTargetChunks/C006.lean": "shared/RawTargetChunks/C006.lean",
+        "RawTargetChunks/C007.lean": "shared/RawTargetChunks/C007.lean",
+        "RawTargetChunks/C008.lean": "shared/RawTargetChunks/C008.lean",
+        "RawTargetChunks/C009.lean": "shared/RawTargetChunks/C009.lean",
+        "RawTargetChunks/C010.lean": "shared/RawTargetChunks/C010.lean",
+        "RawTargetChunks/C011.lean": "shared/RawTargetChunks/C011.lean",
+        "RawTargetChunks/C012.lean": "shared/RawTargetChunks/C012.lean",
+        "RawTargetChunks/C013.lean": "shared/RawTargetChunks/C013.lean",
+        "RawTargetChunks/C014.lean": "shared/RawTargetChunks/C014.lean",
+        "RawTargetChunks/C015.lean": "shared/RawTargetChunks/C015.lean",
+        "RawTargetChunks/C016.lean": "shared/RawTargetChunks/C016.lean",
+        "RawTargetChunks/C017.lean": "shared/RawTargetChunks/C017.lean",
+        "RawTargetChunks/C018.lean": "shared/RawTargetChunks/C018.lean",
+        "RawTargetChunks/C018A.lean": "shared/RawTargetChunks/C018A.lean",
+        "RawTargetChunks/C018B.lean": "shared/RawTargetChunks/C018B.lean",
+        "RawTargetChunks/C019.lean": "shared/RawTargetChunks/C019.lean",
+        "RawTargetChunks/C019A.lean": "shared/RawTargetChunks/C019A.lean",
+        "RawTargetChunks/C019B.lean": "shared/RawTargetChunks/C019B.lean",
+        "RawTargetChunks/C020.lean": "shared/RawTargetChunks/C020.lean",
+        "RawTargetChunks/C020A.lean": "shared/RawTargetChunks/C020A.lean",
+        "RawTargetChunks/C020B.lean": "shared/RawTargetChunks/C020B.lean",
+        "RawTargetChunks/C021.lean": "shared/RawTargetChunks/C021.lean",
+        "RawTargetChunks/C021A.lean": "shared/RawTargetChunks/C021A.lean",
+        "RawTargetChunks/C021B.lean": "shared/RawTargetChunks/C021B.lean",
+        "RawTargetChunks/C022.lean": "shared/RawTargetChunks/C022.lean",
+        "RawTargetChunks/C022A.lean": "shared/RawTargetChunks/C022A.lean",
+        "RawTargetChunks/C022B.lean": "shared/RawTargetChunks/C022B.lean",
+        "RawTargetChunks/C023.lean": "shared/RawTargetChunks/C023.lean",
+        "RawTargetChunks/C023A.lean": "shared/RawTargetChunks/C023A.lean",
+        "RawTargetChunks/C023B.lean": "shared/RawTargetChunks/C023B.lean",
+        "RawTargetChunks/C024.lean": "shared/RawTargetChunks/C024.lean",
+        "RawTargetChunks/C024A.lean": "shared/RawTargetChunks/C024A.lean",
+        "RawTargetChunks/C024B.lean": "shared/RawTargetChunks/C024B.lean",
+        "RawTargetChunks/C025.lean": "shared/RawTargetChunks/C025.lean",
+        "RawTargetChunks/C025A.lean": "shared/RawTargetChunks/C025A.lean",
+        "RawTargetChunks/C025B.lean": "shared/RawTargetChunks/C025B.lean",
+        "RawTargetChunks/C026.lean": "shared/RawTargetChunks/C026.lean",
+        "RawTargetChunks/C026A.lean": "shared/RawTargetChunks/C026A.lean",
+        "RawTargetChunks/C026B.lean": "shared/RawTargetChunks/C026B.lean",
+        "RawTargetChunks/C027.lean": "shared/RawTargetChunks/C027.lean",
+        "RawTargetChunks/C027A.lean": "shared/RawTargetChunks/C027A.lean",
+        "RawTargetChunks/C027B.lean": "shared/RawTargetChunks/C027B.lean",
+        "RawTargetChunks/C028.lean": "shared/RawTargetChunks/C028.lean",
+        "RawTargetChunks/C028A.lean": "shared/RawTargetChunks/C028A.lean",
+        "RawTargetChunks/C028B.lean": "shared/RawTargetChunks/C028B.lean",
+        "RawTargetChunks/C029.lean": "shared/RawTargetChunks/C029.lean",
+        "RawTargetChunks/C029A.lean": "shared/RawTargetChunks/C029A.lean",
+        "RawTargetChunks/C029B.lean": "shared/RawTargetChunks/C029B.lean",
+        "RawTargetChunks/C030.lean": "shared/RawTargetChunks/C030.lean",
+        "RawTargetChunks/C030A.lean": "shared/RawTargetChunks/C030A.lean",
+        "RawTargetChunks/C030B.lean": "shared/RawTargetChunks/C030B.lean",
+        "RawTargetChunks/C031.lean": "shared/RawTargetChunks/C031.lean",
+        "RawTargetChunks/C031A.lean": "shared/RawTargetChunks/C031A.lean",
+        "RawTargetChunks/C031B.lean": "shared/RawTargetChunks/C031B.lean",
+        "RawTargetChunks/C032.lean": "shared/RawTargetChunks/C032.lean",
+        "RawTargetChunks/C032A.lean": "shared/RawTargetChunks/C032A.lean",
+        "RawTargetChunks/C032B.lean": "shared/RawTargetChunks/C032B.lean",
+        "RawTargetChunks/C033.lean": "shared/RawTargetChunks/C033.lean",
+        "RawTargetChunks/C033A.lean": "shared/RawTargetChunks/C033A.lean",
+        "RawTargetChunks/C033B.lean": "shared/RawTargetChunks/C033B.lean",
+        "RawTargetChunks/C034.lean": "shared/RawTargetChunks/C034.lean",
+        "RawTargetChunks/C034A.lean": "shared/RawTargetChunks/C034A.lean",
+        "RawTargetChunks/C034B.lean": "shared/RawTargetChunks/C034B.lean",
+        "RawTargetChunks/C035.lean": "shared/RawTargetChunks/C035.lean",
+        "RawTargetChunks/C035A.lean": "shared/RawTargetChunks/C035A.lean",
+        "RawTargetChunks/C035B.lean": "shared/RawTargetChunks/C035B.lean",
+        "RawTargetChunks/C036.lean": "shared/RawTargetChunks/C036.lean",
+        "RawTargetChunks/C036A.lean": "shared/RawTargetChunks/C036A.lean",
+        "RawTargetChunks/C036B.lean": "shared/RawTargetChunks/C036B.lean",
+        "RawTargets.lean": "shared/RawTargets.lean",
+        "TerminalGeometry.lean": "shared/TerminalGeometry.lean"
+      }
+    },
+    "indexed": {
+      "external": [
+        "Init",
+        "Lean.Elab.Command",
+        "Mathlib.Data.Fin.VecNotation",
+        "Mathlib.Data.Finset.Card",
+        "Mathlib.Data.Fintype.Basic",
+        "Mathlib.Data.Fintype.Sum",
+        "Mathlib.Data.Nat.Bitwise",
+        "Mathlib.Tactic.FinCases"
+      ],
+      "modules": {
+        "Batches.B078": "indexed/Batches/B078.lean",
+        "LowerSchemas.RawTargetChunks": "shared/LowerSchemas/RawTargetChunks.lean",
+        "LowerSchemas.RawTargetChunks.Part0": "shared/LowerSchemas/RawTargetChunks/Part0.lean",
+        "NumericProofSchema": "shared/NumericProofSchema.lean",
+        "Papers.FiniteProjectionChecks": "shared/Papers/FiniteProjectionChecks.lean",
+        "Papers.FiniteProjectionData": "shared/Papers/FiniteProjectionData.lean",
+        "Papers.ProjectedRelationTemplate": "shared/Papers/ProjectedRelationTemplate.lean",
+        "RawBoundaryData": "shared/RawBoundaryData.lean",
+        "RawTargetChunks.C000": "shared/RawTargetChunks/C000.lean",
+        "RawTargetChunks.C001": "shared/RawTargetChunks/C001.lean",
+        "RawTargetChunks.C002": "shared/RawTargetChunks/C002.lean",
+        "RawTargetChunks.C003": "shared/RawTargetChunks/C003.lean",
+        "RawTargetChunks.C004": "shared/RawTargetChunks/C004.lean",
+        "RawTargetChunks.C005": "shared/RawTargetChunks/C005.lean",
+        "RawTargetChunks.C006": "shared/RawTargetChunks/C006.lean",
+        "RawTargetChunks.C007": "shared/RawTargetChunks/C007.lean",
+        "RawTargetChunks.C008": "shared/RawTargetChunks/C008.lean",
+        "RawTargetChunks.C009": "shared/RawTargetChunks/C009.lean",
+        "RawTargetChunks.C010": "shared/RawTargetChunks/C010.lean",
+        "RawTargetChunks.C011": "shared/RawTargetChunks/C011.lean",
+        "RawTargetChunks.C012": "shared/RawTargetChunks/C012.lean",
+        "RawTargetChunks.C013": "shared/RawTargetChunks/C013.lean",
+        "RawTargetChunks.C014": "shared/RawTargetChunks/C014.lean",
+        "RawTargetChunks.C015": "shared/RawTargetChunks/C015.lean",
+        "RawTargetChunks.C016": "shared/RawTargetChunks/C016.lean",
+        "RawTargetChunks.C017": "shared/RawTargetChunks/C017.lean",
+        "RawTargetChunks.C018": "shared/RawTargetChunks/C018.lean",
+        "RawTargetChunks.C018A": "shared/RawTargetChunks/C018A.lean",
+        "RawTargetChunks.C018B": "shared/RawTargetChunks/C018B.lean",
+        "RawTargetChunks.C019": "shared/RawTargetChunks/C019.lean",
+        "RawTargetChunks.C019A": "shared/RawTargetChunks/C019A.lean",
+        "RawTargetChunks.C019B": "shared/RawTargetChunks/C019B.lean",
+        "RawTargetChunks.C020": "shared/RawTargetChunks/C020.lean",
+        "RawTargetChunks.C020A": "shared/RawTargetChunks/C020A.lean",
+        "RawTargetChunks.C020B": "shared/RawTargetChunks/C020B.lean",
+        "RawTargetChunks.C021": "shared/RawTargetChunks/C021.lean",
+        "RawTargetChunks.C021A": "shared/RawTargetChunks/C021A.lean",
+        "RawTargetChunks.C021B": "shared/RawTargetChunks/C021B.lean",
+        "RawTargetChunks.C022": "shared/RawTargetChunks/C022.lean",
+        "RawTargetChunks.C022A": "shared/RawTargetChunks/C022A.lean",
+        "RawTargetChunks.C022B": "shared/RawTargetChunks/C022B.lean",
+        "RawTargetChunks.C023": "shared/RawTargetChunks/C023.lean",
+        "RawTargetChunks.C023A": "shared/RawTargetChunks/C023A.lean",
+        "RawTargetChunks.C023B": "shared/RawTargetChunks/C023B.lean",
+        "RawTargetChunks.C024": "shared/RawTargetChunks/C024.lean",
+        "RawTargetChunks.C024A": "shared/RawTargetChunks/C024A.lean",
+        "RawTargetChunks.C024B": "shared/RawTargetChunks/C024B.lean",
+        "RawTargetChunks.C025": "shared/RawTargetChunks/C025.lean",
+        "RawTargetChunks.C025A": "shared/RawTargetChunks/C025A.lean",
+        "RawTargetChunks.C025B": "shared/RawTargetChunks/C025B.lean",
+        "RawTargetChunks.C026": "shared/RawTargetChunks/C026.lean",
+        "RawTargetChunks.C026A": "shared/RawTargetChunks/C026A.lean",
+        "RawTargetChunks.C026B": "shared/RawTargetChunks/C026B.lean",
+        "RawTargetChunks.C027": "shared/RawTargetChunks/C027.lean",
+        "RawTargetChunks.C027A": "shared/RawTargetChunks/C027A.lean",
+        "RawTargetChunks.C027B": "shared/RawTargetChunks/C027B.lean",
+        "RawTargetChunks.C028": "shared/RawTargetChunks/C028.lean",
+        "RawTargetChunks.C028A": "shared/RawTargetChunks/C028A.lean",
+        "RawTargetChunks.C028B": "shared/RawTargetChunks/C028B.lean",
+        "RawTargetChunks.C029": "shared/RawTargetChunks/C029.lean",
+        "RawTargetChunks.C029A": "shared/RawTargetChunks/C029A.lean",
+        "RawTargetChunks.C029B": "shared/RawTargetChunks/C029B.lean",
+        "RawTargetChunks.C030": "shared/RawTargetChunks/C030.lean",
+        "RawTargetChunks.C030A": "shared/RawTargetChunks/C030A.lean",
+        "RawTargetChunks.C030B": "shared/RawTargetChunks/C030B.lean",
+        "RawTargetChunks.C031": "shared/RawTargetChunks/C031.lean",
+        "RawTargetChunks.C031A": "shared/RawTargetChunks/C031A.lean",
+        "RawTargetChunks.C031B": "shared/RawTargetChunks/C031B.lean",
+        "RawTargetChunks.C032": "shared/RawTargetChunks/C032.lean",
+        "RawTargetChunks.C032A": "shared/RawTargetChunks/C032A.lean",
+        "RawTargetChunks.C032B": "shared/RawTargetChunks/C032B.lean",
+        "RawTargetChunks.C033": "shared/RawTargetChunks/C033.lean",
+        "RawTargetChunks.C033A": "shared/RawTargetChunks/C033A.lean",
+        "RawTargetChunks.C033B": "shared/RawTargetChunks/C033B.lean",
+        "RawTargetChunks.C034": "shared/RawTargetChunks/C034.lean",
+        "RawTargetChunks.C034A": "shared/RawTargetChunks/C034A.lean",
+        "RawTargetChunks.C034B": "shared/RawTargetChunks/C034B.lean",
+        "RawTargetChunks.C035": "shared/RawTargetChunks/C035.lean",
+        "RawTargetChunks.C035A": "shared/RawTargetChunks/C035A.lean",
+        "RawTargetChunks.C035B": "shared/RawTargetChunks/C035B.lean",
+        "RawTargetChunks.C036": "shared/RawTargetChunks/C036.lean",
+        "RawTargetChunks.C036A": "shared/RawTargetChunks/C036A.lean",
+        "RawTargetChunks.C036B": "shared/RawTargetChunks/C036B.lean",
+        "RawTargets": "shared/RawTargets.lean",
+        "SharedProjectionVertexSets": "shared/SharedProjectionVertexSets.lean",
+        "TerminalGeometry": "shared/TerminalGeometry.lean"
+      },
+      "origin_modules": {
+        "Batches.B078": "e02e65aa89a7cd391c0d84af0765ccbeec8f8b3f13ba6899416486a31da8fd4b",
+        "Papers.FiniteProjectionChecks": "f5542e9bb50e1a5ce2111b1e3d5d9d50ea8cecfe34ab6f5164ccffbfdd9491bc",
+        "Papers.FiniteProjectionData": "e6f2b392e66b18f9487f2fdbdc55df25f7067067f7d9bd1544313d9a1a9bb45c",
+        "Papers.ProjectedRelationTemplate": "5b850b72006205ef28220267e5908a6108dfb04fb09d48304da98fe1ca3bc5c2",
+        "RawBoundaryData": "2da0fea85f12eeaef68ef66c51b890a84de5f5953b4cf5f3133a178c61c2dc67",
+        "RawTargetChunks.C000": "2f9642da9c52e1a73f2dc477d9e9c7d16896802653b2efce6ba1246feec20cb7",
+        "RawTargetChunks.C001": "9f2cec738603b79121913e7a26b210fb4004c77beca3b519d165f3de95e925f8",
+        "RawTargetChunks.C002": "1e490f1d7d1605be7144ddbd87c93f4746fe09302f83ad8bfb419735d61d884a",
+        "RawTargetChunks.C003": "f1566839374e2086efda1ce4c25ac6f7754c1ce8a8da0d0f5dbdc903799a5dd4",
+        "RawTargetChunks.C004": "482c598e4e80efe1fa638556c91dfbc7662224f61d7e1405b55f4413c8046bfc",
+        "RawTargetChunks.C005": "81947eb9ef17a94c65b24d0a16ef951924bd55c393b93a55f2ae1c6f1dce5afd",
+        "RawTargetChunks.C006": "43b1e5915168453d202dca83dd246686d31594b37c4f4a32718a36527bd6b947",
+        "RawTargetChunks.C007": "871b908d5c1ecbc7d35964201cdcf6b9257fc94cc7678f174382fd175893e3a1",
+        "RawTargetChunks.C008": "8ab523e72de32b2620984d44bf79874f71fcfd9c230df6622e9e2c04f747eb58",
+        "RawTargetChunks.C009": "90f1fd30d1f1afed0d9f5331390d939d7eafdb69683ce817dd89ef06cbb3f777",
+        "RawTargetChunks.C010": "c6b4ff32935eef6b775d10d5e150f91c4ef751fbcbfd27cf470b08a635f595db",
+        "RawTargetChunks.C011": "101a1fdb0dbb935b799e7fb134c05481dca0d4cb1485898c7d6dd4d40029633b",
+        "RawTargetChunks.C012": "bfd73fde2a231a3e7c12707341eeccf8bee99758b3e741273b2531e76de2a8ad",
+        "RawTargetChunks.C013": "897183569c73ff9ce6a9b36acafd359634418dc1df1d017e9cd2b808ce4b3fba",
+        "RawTargetChunks.C014": "366170e53e0a4f5f40128850281d939f3246d7e5560aed6ffea9cbb77c794441",
+        "RawTargetChunks.C015": "48f05713a45e17e87172e2203041ae334113ad61e4a7f69742f1702512a4ecef",
+        "RawTargetChunks.C016": "82918ba10fb1d94c8135b93ef3f053896cc42dbd2cff3b532b7a3e8b473eef5b",
+        "RawTargetChunks.C017": "fc52185aa965999b1747de36660eddc7a8c72fecbe656e2d2a21d4be30d26c30",
+        "RawTargetChunks.C018": "c3b6a0dffdd0a4f4326899e1cecb3fb238ff357f9a1ceae200ec19ab9c1f6fba",
+        "RawTargetChunks.C018A": "5cefa8aee533a914cb0e2488adc0663d32f2c6bc388f4b140bc6e65cb81b440e",
+        "RawTargetChunks.C018B": "8be2e59d67765aef4605af3c958b1109573af9a6a29e0d6c661996a2a67f649b",
+        "RawTargetChunks.C019": "d540ad1f2a80a5dcebef295b136ee44932c6ee653fc918143e1add8e4b61ade2",
+        "RawTargetChunks.C019A": "d6acf9f5a60c4facf1c89c43262556cfc19e2157746995083db1861bba689dbf",
+        "RawTargetChunks.C019B": "2dee2d1c4d16b139dbcec79373e680e7e9fcff7882e63930da4625704980e443",
+        "RawTargetChunks.C020": "0bd86bc78c26ee52a6593d20c0289f25b2f52ddf130f9864624a053a65417ec3",
+        "RawTargetChunks.C020A": "c5d0d3ee0b62e7dc4d796278e5a94815451719c15d8d8eec69ce721c4ff54102",
+        "RawTargetChunks.C020B": "334ac8dc011c3d7be6c4704ff8ce9f27a38e0fff3357a30889119292ceeb7d5d",
+        "RawTargetChunks.C021": "76c19d0396e813bb0a4bb63190a0accdce6c11211629b151b5fffa45d216c931",
+        "RawTargetChunks.C021A": "f283255d1d969a7dbbed9602e58bee8f824ea3fb3420d0fea2d9ba2c664a2fcc",
+        "RawTargetChunks.C021B": "cb455c83723c8ec08f234aabafe786c6c0abe2db10e17ba48d66448646b72153",
+        "RawTargetChunks.C022": "9cdd618848e636f84aad63dbb51d59a08734d8a12e7e91f817d8b95edd7cb809",
+        "RawTargetChunks.C022A": "60267d39f60a0d088972570b8fb56195f62c980e157c59afd548118df63ab1ed",
+        "RawTargetChunks.C022B": "bb69515fcbf7ac18b11a564735fea976d219cc6b14287918b1f55ee7bc977281",
+        "RawTargetChunks.C023": "0a6c4f183d8e94ebadadb7dbc470b451cefd89bdf3bc9398f4f73d8be003a152",
+        "RawTargetChunks.C023A": "3682cacb1bfc82f42bbc1214d96d09bf3309803519e71544ebcc0d4d585ea3eb",
+        "RawTargetChunks.C023B": "0b10a0edfa3982f4d19bcc30d8712173b39564fa1715c01b65adf75edd819c92",
+        "RawTargetChunks.C024": "3ebcadcf0728bdf6f628768c7e1f83598c85a8b123693384770fc3b47081a261",
+        "RawTargetChunks.C024A": "66968ebc5ced75b9eb957c31bf4dadef2d582ecf34b8983f012bdf92fd5a8c02",
+        "RawTargetChunks.C024B": "26eb89fe364e95ac525dd5219d826e91153b54b727dd8ff87e8dbcb84851b009",
+        "RawTargetChunks.C025": "34af0cc73f9aa684559377178ac37d638928d961d9abd2aa3c0d238b20d855da",
+        "RawTargetChunks.C025A": "8ddaf7724e2f4eefa7fe9b582ac6e39feed163e4573ce354fb99be769a71d1ad",
+        "RawTargetChunks.C025B": "96883b5e4f9087a1ecfadd00b99b17167017d91b2fb11b6e94ee73911ea92dab",
+        "RawTargetChunks.C026": "03f9afc512fc06f47c1d263f1b7c6556c72a3d80256824b1015182fc45e61155",
+        "RawTargetChunks.C026A": "ff37f004dd398894c2174fb294b6e49dcd1d67db971a0fb6ae62c0136ed1933e",
+        "RawTargetChunks.C026B": "203facb907436bc6d0a5635b92a92ed4d9f6d6de89d830308e81d771b8097603",
+        "RawTargetChunks.C027": "39b8db59af7d0fb9603e7fe3f0f23750310c2cb37daffb3df179a31b792a47ac",
+        "RawTargetChunks.C027A": "53ce51252d229219af45a09a7fdc5543f80fd8736f56f39b81abe33d2d099e4d",
+        "RawTargetChunks.C027B": "f4eb8457497d4bce4d72f44dd06f8ab4b53ea4c4df1c72d3108fd57fd6cb2f69",
+        "RawTargetChunks.C028": "0004cabb2f9887dc4b849f3064d7bd79f5c24da76369f619d396677f604cb5ae",
+        "RawTargetChunks.C028A": "5fbec57bba28fc4ff518ceacfadf70d9b9307e33340bc03fec8567fc7b950dff",
+        "RawTargetChunks.C028B": "b0c8280c2d216d2965af0c29a193acd3c66bb367a079f1747eec331fdaac8e76",
+        "RawTargetChunks.C029": "f12921ed6d71f06d1020fd356c3814814ca1c464a380cfc6f4f0273fd5539460",
+        "RawTargetChunks.C029A": "a6e6420e9b714ec8978628e3706b582b89f5a926b82fe59c29cfef4b1352ce1d",
+        "RawTargetChunks.C029B": "f461b488fd97b387b957656bf4211857a8bcb5f5f81401f978d1fd1d1cab4b9a",
+        "RawTargetChunks.C030": "f1370728a8fde575dab5ad5c62374182b62a618f1311869601608668ffebd77a",
+        "RawTargetChunks.C030A": "4ca85bd45f996aed1bf1fbb3b435b72697a2dd0ba0676a115b263fa1506f2644",
+        "RawTargetChunks.C030B": "d626829011ae05f1a44c4227d660bfc45c836fb370b465a6995b739ef62ef85e",
+        "RawTargetChunks.C031": "67dc96542fe4e86d8acd19e036cabcf2577594ee969c9b5690c2124dc3f085ee",
+        "RawTargetChunks.C031A": "0ece32cdf855b3f04f40bdf3ecf9a3a3177d2caacbb2a85416182978eb014199",
+        "RawTargetChunks.C031B": "334c87928cada7723e98f70dc602632e14e429cbe7ca06e1c6817d3975bec8d0",
+        "RawTargetChunks.C032": "6c6d86497477ed5266a1ab1d94594daa162a99c1cf8f4331306299ff7f004cce",
+        "RawTargetChunks.C032A": "ed5338cc73eb8a271927b4be5073542d4849a94cc18b6447ef1aeb692cc0bd60",
+        "RawTargetChunks.C032B": "d0234a47444163ea1e26f1a28c84261b1abb73e89579233aad3942a9e89b5b76",
+        "RawTargetChunks.C033": "59e296b504c347837d4d3f4000e14d164403fb2e35d1481e44516dbbab06727a",
+        "RawTargetChunks.C033A": "af57d0e0b895fa511ef58389ab8e6cc0009f431b018b1632c20fe98b6c9c206c",
+        "RawTargetChunks.C033B": "603f6d7f3cbe73cf0ad4b1b12cdae806d716fcbb6d8c0398ccdb09616bc57940",
+        "RawTargetChunks.C034": "faaaa0718ddb91a82ec8cd10953b9e37dc2a64b6cb44735ecce3ee297bebf7e8",
+        "RawTargetChunks.C034A": "6af4a7e628d5484b4f12de1403d7032a4b9d43bd0a3f5fd4511a2a4feb342ada",
+        "RawTargetChunks.C034B": "17a7a7e0ec68be3f2579e6fe92f6a1f95c403e8f661d9f5c8cf648d51d6a387e",
+        "RawTargetChunks.C035": "ecd75a33527e481d613fa3729408fa8d5208a524de4032fac3c9bc1c9a0d8893",
+        "RawTargetChunks.C035A": "2e9fe2abceeab4e4bb87dcad8bc7181cf6adba0a2b1d31d3e2b28dfb50b9f7b3",
+        "RawTargetChunks.C035B": "5dde5499200a7e2cde1fdb4efeb37ca02014d6deac49329e142ccd7932fb4094",
+        "RawTargetChunks.C036": "edb9cf1d5d156f4e73f1bf3d555e37fc15ae7f15b2354f45cb797cb5467e4460",
+        "RawTargetChunks.C036A": "d98ffbb4aba8a28401fe21160567a35be9df6f37fb8fb6fef5471cf58476f7de",
+        "RawTargetChunks.C036B": "b425fa2c4085e132a3e1cef08673b82b947e9dde4aaf553016d703566cbe4047",
+        "RawTargets": "27b3adaf7ea74a9ee83504b100b1b13ba7919533d8967d431354cbf325be9f38",
+        "TerminalGeometry": "b9a5af9dcb1a580c946f24e4ab3ebd72b5ab05e1120fac97325eb4fce898170d"
+      },
+      "paths": {
+        "Batches/B078.lean": "indexed/Batches/B078.lean",
+        "LowerSchemas/RawTargetChunks.lean": "shared/LowerSchemas/RawTargetChunks.lean",
+        "LowerSchemas/RawTargetChunks/Part0.lean": "shared/LowerSchemas/RawTargetChunks/Part0.lean",
+        "NumericProofSchema.lean": "shared/NumericProofSchema.lean",
+        "Papers/FiniteProjectionChecks.lean": "shared/Papers/FiniteProjectionChecks.lean",
+        "Papers/FiniteProjectionData.lean": "shared/Papers/FiniteProjectionData.lean",
+        "Papers/ProjectedRelationTemplate.lean": "shared/Papers/ProjectedRelationTemplate.lean",
+        "RawBoundaryData.lean": "shared/RawBoundaryData.lean",
+        "RawTargetChunks/C000.lean": "shared/RawTargetChunks/C000.lean",
+        "RawTargetChunks/C001.lean": "shared/RawTargetChunks/C001.lean",
+        "RawTargetChunks/C002.lean": "shared/RawTargetChunks/C002.lean",
+        "RawTargetChunks/C003.lean": "shared/RawTargetChunks/C003.lean",
+        "RawTargetChunks/C004.lean": "shared/RawTargetChunks/C004.lean",
+        "RawTargetChunks/C005.lean": "shared/RawTargetChunks/C005.lean",
+        "RawTargetChunks/C006.lean": "shared/RawTargetChunks/C006.lean",
+        "RawTargetChunks/C007.lean": "shared/RawTargetChunks/C007.lean",
+        "RawTargetChunks/C008.lean": "shared/RawTargetChunks/C008.lean",
+        "RawTargetChunks/C009.lean": "shared/RawTargetChunks/C009.lean",
+        "RawTargetChunks/C010.lean": "shared/RawTargetChunks/C010.lean",
+        "RawTargetChunks/C011.lean": "shared/RawTargetChunks/C011.lean",
+        "RawTargetChunks/C012.lean": "shared/RawTargetChunks/C012.lean",
+        "RawTargetChunks/C013.lean": "shared/RawTargetChunks/C013.lean",
+        "RawTargetChunks/C014.lean": "shared/RawTargetChunks/C014.lean",
+        "RawTargetChunks/C015.lean": "shared/RawTargetChunks/C015.lean",
+        "RawTargetChunks/C016.lean": "shared/RawTargetChunks/C016.lean",
+        "RawTargetChunks/C017.lean": "shared/RawTargetChunks/C017.lean",
+        "RawTargetChunks/C018.lean": "shared/RawTargetChunks/C018.lean",
+        "RawTargetChunks/C018A.lean": "shared/RawTargetChunks/C018A.lean",
+        "RawTargetChunks/C018B.lean": "shared/RawTargetChunks/C018B.lean",
+        "RawTargetChunks/C019.lean": "shared/RawTargetChunks/C019.lean",
+        "RawTargetChunks/C019A.lean": "shared/RawTargetChunks/C019A.lean",
+        "RawTargetChunks/C019B.lean": "shared/RawTargetChunks/C019B.lean",
+        "RawTargetChunks/C020.lean": "shared/RawTargetChunks/C020.lean",
+        "RawTargetChunks/C020A.lean": "shared/RawTargetChunks/C020A.lean",
+        "RawTargetChunks/C020B.lean": "shared/RawTargetChunks/C020B.lean",
+        "RawTargetChunks/C021.lean": "shared/RawTargetChunks/C021.lean",
+        "RawTargetChunks/C021A.lean": "shared/RawTargetChunks/C021A.lean",
+        "RawTargetChunks/C021B.lean": "shared/RawTargetChunks/C021B.lean",
+        "RawTargetChunks/C022.lean": "shared/RawTargetChunks/C022.lean",
+        "RawTargetChunks/C022A.lean": "shared/RawTargetChunks/C022A.lean",
+        "RawTargetChunks/C022B.lean": "shared/RawTargetChunks/C022B.lean",
+        "RawTargetChunks/C023.lean": "shared/RawTargetChunks/C023.lean",
+        "RawTargetChunks/C023A.lean": "shared/RawTargetChunks/C023A.lean",
+        "RawTargetChunks/C023B.lean": "shared/RawTargetChunks/C023B.lean",
+        "RawTargetChunks/C024.lean": "shared/RawTargetChunks/C024.lean",
+        "RawTargetChunks/C024A.lean": "shared/RawTargetChunks/C024A.lean",
+        "RawTargetChunks/C024B.lean": "shared/RawTargetChunks/C024B.lean",
+        "RawTargetChunks/C025.lean": "shared/RawTargetChunks/C025.lean",
+        "RawTargetChunks/C025A.lean": "shared/RawTargetChunks/C025A.lean",
+        "RawTargetChunks/C025B.lean": "shared/RawTargetChunks/C025B.lean",
+        "RawTargetChunks/C026.lean": "shared/RawTargetChunks/C026.lean",
+        "RawTargetChunks/C026A.lean": "shared/RawTargetChunks/C026A.lean",
+        "RawTargetChunks/C026B.lean": "shared/RawTargetChunks/C026B.lean",
+        "RawTargetChunks/C027.lean": "shared/RawTargetChunks/C027.lean",
+        "RawTargetChunks/C027A.lean": "shared/RawTargetChunks/C027A.lean",
+        "RawTargetChunks/C027B.lean": "shared/RawTargetChunks/C027B.lean",
+        "RawTargetChunks/C028.lean": "shared/RawTargetChunks/C028.lean",
+        "RawTargetChunks/C028A.lean": "shared/RawTargetChunks/C028A.lean",
+        "RawTargetChunks/C028B.lean": "shared/RawTargetChunks/C028B.lean",
+        "RawTargetChunks/C029.lean": "shared/RawTargetChunks/C029.lean",
+        "RawTargetChunks/C029A.lean": "shared/RawTargetChunks/C029A.lean",
+        "RawTargetChunks/C029B.lean": "shared/RawTargetChunks/C029B.lean",
+        "RawTargetChunks/C030.lean": "shared/RawTargetChunks/C030.lean",
+        "RawTargetChunks/C030A.lean": "shared/RawTargetChunks/C030A.lean",
+        "RawTargetChunks/C030B.lean": "shared/RawTargetChunks/C030B.lean",
+        "RawTargetChunks/C031.lean": "shared/RawTargetChunks/C031.lean",
+        "RawTargetChunks/C031A.lean": "shared/RawTargetChunks/C031A.lean",
+        "RawTargetChunks/C031B.lean": "shared/RawTargetChunks/C031B.lean",
+        "RawTargetChunks/C032.lean": "shared/RawTargetChunks/C032.lean",
+        "RawTargetChunks/C032A.lean": "shared/RawTargetChunks/C032A.lean",
+        "RawTargetChunks/C032B.lean": "shared/RawTargetChunks/C032B.lean",
+        "RawTargetChunks/C033.lean": "shared/RawTargetChunks/C033.lean",
+        "RawTargetChunks/C033A.lean": "shared/RawTargetChunks/C033A.lean",
+        "RawTargetChunks/C033B.lean": "shared/RawTargetChunks/C033B.lean",
+        "RawTargetChunks/C034.lean": "shared/RawTargetChunks/C034.lean",
+        "RawTargetChunks/C034A.lean": "shared/RawTargetChunks/C034A.lean",
+        "RawTargetChunks/C034B.lean": "shared/RawTargetChunks/C034B.lean",
+        "RawTargetChunks/C035.lean": "shared/RawTargetChunks/C035.lean",
+        "RawTargetChunks/C035A.lean": "shared/RawTargetChunks/C035A.lean",
+        "RawTargetChunks/C035B.lean": "shared/RawTargetChunks/C035B.lean",
+        "RawTargetChunks/C036.lean": "shared/RawTargetChunks/C036.lean",
+        "RawTargetChunks/C036A.lean": "shared/RawTargetChunks/C036A.lean",
+        "RawTargetChunks/C036B.lean": "shared/RawTargetChunks/C036B.lean",
+        "RawTargets.lean": "shared/RawTargets.lean",
+        "SharedProjectionVertexSets.lean": "shared/SharedProjectionVertexSets.lean",
+        "TerminalGeometry.lean": "shared/TerminalGeometry.lean"
       }
     },
     "pooled": {
@@ -700,102 +950,98 @@
         "Mathlib.Tactic.FinCases"
       ],
       "modules": {
-        "Batches.B000": "pooled/Batches/B000.lean",
-        "LowerSchemas.Batches": "source/LowerSchemas/Batches.lean",
-        "LowerSchemas.Batches.Part0": "source/LowerSchemas/Batches/Part0.lean",
-        "LowerSchemas.RawTargetChunks": "source/LowerSchemas/RawTargetChunks.lean",
-        "LowerSchemas.RawTargetChunks.Part0": "source/LowerSchemas/RawTargetChunks/Part0.lean",
-        "NumericProofSchema": "source/NumericProofSchema.lean",
-        "Papers.FiniteProjectionChecks": "source/Papers/FiniteProjectionChecks.lean",
-        "Papers.FiniteProjectionData": "source/Papers/FiniteProjectionData.lean",
-        "Papers.ProjectedRelationTemplate": "source/Papers/ProjectedRelationTemplate.lean",
-        "ProjectionTargets.B000": "source/ProjectionTargets/B000.lean",
-        "RawBoundaryData": "source/RawBoundaryData.lean",
-        "RawTargetChunks.C000": "source/RawTargetChunks/C000.lean",
-        "RawTargetChunks.C001": "source/RawTargetChunks/C001.lean",
-        "RawTargetChunks.C002": "source/RawTargetChunks/C002.lean",
-        "RawTargetChunks.C003": "source/RawTargetChunks/C003.lean",
-        "RawTargetChunks.C004": "source/RawTargetChunks/C004.lean",
-        "RawTargetChunks.C005": "source/RawTargetChunks/C005.lean",
-        "RawTargetChunks.C006": "source/RawTargetChunks/C006.lean",
-        "RawTargetChunks.C007": "source/RawTargetChunks/C007.lean",
-        "RawTargetChunks.C008": "source/RawTargetChunks/C008.lean",
-        "RawTargetChunks.C009": "source/RawTargetChunks/C009.lean",
-        "RawTargetChunks.C010": "source/RawTargetChunks/C010.lean",
-        "RawTargetChunks.C011": "source/RawTargetChunks/C011.lean",
-        "RawTargetChunks.C012": "source/RawTargetChunks/C012.lean",
-        "RawTargetChunks.C013": "source/RawTargetChunks/C013.lean",
-        "RawTargetChunks.C014": "source/RawTargetChunks/C014.lean",
-        "RawTargetChunks.C015": "source/RawTargetChunks/C015.lean",
-        "RawTargetChunks.C016": "source/RawTargetChunks/C016.lean",
-        "RawTargetChunks.C017": "source/RawTargetChunks/C017.lean",
-        "RawTargetChunks.C018": "source/RawTargetChunks/C018.lean",
-        "RawTargetChunks.C018A": "source/RawTargetChunks/C018A.lean",
-        "RawTargetChunks.C018B": "source/RawTargetChunks/C018B.lean",
-        "RawTargetChunks.C019": "source/RawTargetChunks/C019.lean",
-        "RawTargetChunks.C019A": "source/RawTargetChunks/C019A.lean",
-        "RawTargetChunks.C019B": "source/RawTargetChunks/C019B.lean",
-        "RawTargetChunks.C020": "source/RawTargetChunks/C020.lean",
-        "RawTargetChunks.C020A": "source/RawTargetChunks/C020A.lean",
-        "RawTargetChunks.C020B": "source/RawTargetChunks/C020B.lean",
-        "RawTargetChunks.C021": "source/RawTargetChunks/C021.lean",
-        "RawTargetChunks.C021A": "source/RawTargetChunks/C021A.lean",
-        "RawTargetChunks.C021B": "source/RawTargetChunks/C021B.lean",
-        "RawTargetChunks.C022": "source/RawTargetChunks/C022.lean",
-        "RawTargetChunks.C022A": "source/RawTargetChunks/C022A.lean",
-        "RawTargetChunks.C022B": "source/RawTargetChunks/C022B.lean",
-        "RawTargetChunks.C023": "source/RawTargetChunks/C023.lean",
-        "RawTargetChunks.C023A": "source/RawTargetChunks/C023A.lean",
-        "RawTargetChunks.C023B": "source/RawTargetChunks/C023B.lean",
-        "RawTargetChunks.C024": "source/RawTargetChunks/C024.lean",
-        "RawTargetChunks.C024A": "source/RawTargetChunks/C024A.lean",
-        "RawTargetChunks.C024B": "source/RawTargetChunks/C024B.lean",
-        "RawTargetChunks.C025": "source/RawTargetChunks/C025.lean",
-        "RawTargetChunks.C025A": "source/RawTargetChunks/C025A.lean",
-        "RawTargetChunks.C025B": "source/RawTargetChunks/C025B.lean",
-        "RawTargetChunks.C026": "source/RawTargetChunks/C026.lean",
-        "RawTargetChunks.C026A": "source/RawTargetChunks/C026A.lean",
-        "RawTargetChunks.C026B": "source/RawTargetChunks/C026B.lean",
-        "RawTargetChunks.C027": "source/RawTargetChunks/C027.lean",
-        "RawTargetChunks.C027A": "source/RawTargetChunks/C027A.lean",
-        "RawTargetChunks.C027B": "source/RawTargetChunks/C027B.lean",
-        "RawTargetChunks.C028": "source/RawTargetChunks/C028.lean",
-        "RawTargetChunks.C028A": "source/RawTargetChunks/C028A.lean",
-        "RawTargetChunks.C028B": "source/RawTargetChunks/C028B.lean",
-        "RawTargetChunks.C029": "source/RawTargetChunks/C029.lean",
-        "RawTargetChunks.C029A": "source/RawTargetChunks/C029A.lean",
-        "RawTargetChunks.C029B": "source/RawTargetChunks/C029B.lean",
-        "RawTargetChunks.C030": "source/RawTargetChunks/C030.lean",
-        "RawTargetChunks.C030A": "source/RawTargetChunks/C030A.lean",
-        "RawTargetChunks.C030B": "source/RawTargetChunks/C030B.lean",
-        "RawTargetChunks.C031": "source/RawTargetChunks/C031.lean",
-        "RawTargetChunks.C031A": "source/RawTargetChunks/C031A.lean",
-        "RawTargetChunks.C031B": "source/RawTargetChunks/C031B.lean",
-        "RawTargetChunks.C032": "source/RawTargetChunks/C032.lean",
-        "RawTargetChunks.C032A": "source/RawTargetChunks/C032A.lean",
-        "RawTargetChunks.C032B": "source/RawTargetChunks/C032B.lean",
-        "RawTargetChunks.C033": "source/RawTargetChunks/C033.lean",
-        "RawTargetChunks.C033A": "source/RawTargetChunks/C033A.lean",
-        "RawTargetChunks.C033B": "source/RawTargetChunks/C033B.lean",
-        "RawTargetChunks.C034": "source/RawTargetChunks/C034.lean",
-        "RawTargetChunks.C034A": "source/RawTargetChunks/C034A.lean",
-        "RawTargetChunks.C034B": "source/RawTargetChunks/C034B.lean",
-        "RawTargetChunks.C035": "source/RawTargetChunks/C035.lean",
-        "RawTargetChunks.C035A": "source/RawTargetChunks/C035A.lean",
-        "RawTargetChunks.C035B": "source/RawTargetChunks/C035B.lean",
-        "RawTargetChunks.C036": "source/RawTargetChunks/C036.lean",
-        "RawTargetChunks.C036A": "source/RawTargetChunks/C036A.lean",
-        "RawTargetChunks.C036B": "source/RawTargetChunks/C036B.lean",
-        "RawTargets": "source/RawTargets.lean",
-        "SharedProjectionVertexSets": "pooled/SharedProjectionVertexSets.lean",
-        "TerminalGeometry": "source/TerminalGeometry.lean"
+        "Batches.B078": "pooled/Batches/B078.lean",
+        "LowerSchemas.RawTargetChunks": "shared/LowerSchemas/RawTargetChunks.lean",
+        "LowerSchemas.RawTargetChunks.Part0": "shared/LowerSchemas/RawTargetChunks/Part0.lean",
+        "NumericProofSchema": "shared/NumericProofSchema.lean",
+        "Papers.FiniteProjectionChecks": "shared/Papers/FiniteProjectionChecks.lean",
+        "Papers.FiniteProjectionData": "shared/Papers/FiniteProjectionData.lean",
+        "Papers.ProjectedRelationTemplate": "shared/Papers/ProjectedRelationTemplate.lean",
+        "RawBoundaryData": "shared/RawBoundaryData.lean",
+        "RawTargetChunks.C000": "shared/RawTargetChunks/C000.lean",
+        "RawTargetChunks.C001": "shared/RawTargetChunks/C001.lean",
+        "RawTargetChunks.C002": "shared/RawTargetChunks/C002.lean",
+        "RawTargetChunks.C003": "shared/RawTargetChunks/C003.lean",
+        "RawTargetChunks.C004": "shared/RawTargetChunks/C004.lean",
+        "RawTargetChunks.C005": "shared/RawTargetChunks/C005.lean",
+        "RawTargetChunks.C006": "shared/RawTargetChunks/C006.lean",
+        "RawTargetChunks.C007": "shared/RawTargetChunks/C007.lean",
+        "RawTargetChunks.C008": "shared/RawTargetChunks/C008.lean",
+        "RawTargetChunks.C009": "shared/RawTargetChunks/C009.lean",
+        "RawTargetChunks.C010": "shared/RawTargetChunks/C010.lean",
+        "RawTargetChunks.C011": "shared/RawTargetChunks/C011.lean",
+        "RawTargetChunks.C012": "shared/RawTargetChunks/C012.lean",
+        "RawTargetChunks.C013": "shared/RawTargetChunks/C013.lean",
+        "RawTargetChunks.C014": "shared/RawTargetChunks/C014.lean",
+        "RawTargetChunks.C015": "shared/RawTargetChunks/C015.lean",
+        "RawTargetChunks.C016": "shared/RawTargetChunks/C016.lean",
+        "RawTargetChunks.C017": "shared/RawTargetChunks/C017.lean",
+        "RawTargetChunks.C018": "shared/RawTargetChunks/C018.lean",
+        "RawTargetChunks.C018A": "shared/RawTargetChunks/C018A.lean",
+        "RawTargetChunks.C018B": "shared/RawTargetChunks/C018B.lean",
+        "RawTargetChunks.C019": "shared/RawTargetChunks/C019.lean",
+        "RawTargetChunks.C019A": "shared/RawTargetChunks/C019A.lean",
+        "RawTargetChunks.C019B": "shared/RawTargetChunks/C019B.lean",
+        "RawTargetChunks.C020": "shared/RawTargetChunks/C020.lean",
+        "RawTargetChunks.C020A": "shared/RawTargetChunks/C020A.lean",
+        "RawTargetChunks.C020B": "shared/RawTargetChunks/C020B.lean",
+        "RawTargetChunks.C021": "shared/RawTargetChunks/C021.lean",
+        "RawTargetChunks.C021A": "shared/RawTargetChunks/C021A.lean",
+        "RawTargetChunks.C021B": "shared/RawTargetChunks/C021B.lean",
+        "RawTargetChunks.C022": "shared/RawTargetChunks/C022.lean",
+        "RawTargetChunks.C022A": "shared/RawTargetChunks/C022A.lean",
+        "RawTargetChunks.C022B": "shared/RawTargetChunks/C022B.lean",
+        "RawTargetChunks.C023": "shared/RawTargetChunks/C023.lean",
+        "RawTargetChunks.C023A": "shared/RawTargetChunks/C023A.lean",
+        "RawTargetChunks.C023B": "shared/RawTargetChunks/C023B.lean",
+        "RawTargetChunks.C024": "shared/RawTargetChunks/C024.lean",
+        "RawTargetChunks.C024A": "shared/RawTargetChunks/C024A.lean",
+        "RawTargetChunks.C024B": "shared/RawTargetChunks/C024B.lean",
+        "RawTargetChunks.C025": "shared/RawTargetChunks/C025.lean",
+        "RawTargetChunks.C025A": "shared/RawTargetChunks/C025A.lean",
+        "RawTargetChunks.C025B": "shared/RawTargetChunks/C025B.lean",
+        "RawTargetChunks.C026": "shared/RawTargetChunks/C026.lean",
+        "RawTargetChunks.C026A": "shared/RawTargetChunks/C026A.lean",
+        "RawTargetChunks.C026B": "shared/RawTargetChunks/C026B.lean",
+        "RawTargetChunks.C027": "shared/RawTargetChunks/C027.lean",
+        "RawTargetChunks.C027A": "shared/RawTargetChunks/C027A.lean",
+        "RawTargetChunks.C027B": "shared/RawTargetChunks/C027B.lean",
+        "RawTargetChunks.C028": "shared/RawTargetChunks/C028.lean",
+        "RawTargetChunks.C028A": "shared/RawTargetChunks/C028A.lean",
+        "RawTargetChunks.C028B": "shared/RawTargetChunks/C028B.lean",
+        "RawTargetChunks.C029": "shared/RawTargetChunks/C029.lean",
+        "RawTargetChunks.C029A": "shared/RawTargetChunks/C029A.lean",
+        "RawTargetChunks.C029B": "shared/RawTargetChunks/C029B.lean",
+        "RawTargetChunks.C030": "shared/RawTargetChunks/C030.lean",
+        "RawTargetChunks.C030A": "shared/RawTargetChunks/C030A.lean",
+        "RawTargetChunks.C030B": "shared/RawTargetChunks/C030B.lean",
+        "RawTargetChunks.C031": "shared/RawTargetChunks/C031.lean",
+        "RawTargetChunks.C031A": "shared/RawTargetChunks/C031A.lean",
+        "RawTargetChunks.C031B": "shared/RawTargetChunks/C031B.lean",
+        "RawTargetChunks.C032": "shared/RawTargetChunks/C032.lean",
+        "RawTargetChunks.C032A": "shared/RawTargetChunks/C032A.lean",
+        "RawTargetChunks.C032B": "shared/RawTargetChunks/C032B.lean",
+        "RawTargetChunks.C033": "shared/RawTargetChunks/C033.lean",
+        "RawTargetChunks.C033A": "shared/RawTargetChunks/C033A.lean",
+        "RawTargetChunks.C033B": "shared/RawTargetChunks/C033B.lean",
+        "RawTargetChunks.C034": "shared/RawTargetChunks/C034.lean",
+        "RawTargetChunks.C034A": "shared/RawTargetChunks/C034A.lean",
+        "RawTargetChunks.C034B": "shared/RawTargetChunks/C034B.lean",
+        "RawTargetChunks.C035": "shared/RawTargetChunks/C035.lean",
+        "RawTargetChunks.C035A": "shared/RawTargetChunks/C035A.lean",
+        "RawTargetChunks.C035B": "shared/RawTargetChunks/C035B.lean",
+        "RawTargetChunks.C036": "shared/RawTargetChunks/C036.lean",
+        "RawTargetChunks.C036A": "shared/RawTargetChunks/C036A.lean",
+        "RawTargetChunks.C036B": "shared/RawTargetChunks/C036B.lean",
+        "RawTargets": "shared/RawTargets.lean",
+        "SharedProjectionVertexSets": "shared/SharedProjectionVertexSets.lean",
+        "TerminalGeometry": "shared/TerminalGeometry.lean"
       },
       "origin_modules": {
-        "Batches.B000": "0d19239de2c667df1e94002c7a852a7533fc7896dfa4cebb07d4ef6b6b979d65",
+        "Batches.B078": "e02e65aa89a7cd391c0d84af0765ccbeec8f8b3f13ba6899416486a31da8fd4b",
         "Papers.FiniteProjectionChecks": "f5542e9bb50e1a5ce2111b1e3d5d9d50ea8cecfe34ab6f5164ccffbfdd9491bc",
         "Papers.FiniteProjectionData": "e6f2b392e66b18f9487f2fdbdc55df25f7067067f7d9bd1544313d9a1a9bb45c",
         "Papers.ProjectedRelationTemplate": "5b850b72006205ef28220267e5908a6108dfb04fb09d48304da98fe1ca3bc5c2",
-        "ProjectionTargets.B000": "aa75ddaa640cf05bd5b925a6ddf99d3413e8640a0cd7f02b401cbecc70335499",
         "RawBoundaryData": "2da0fea85f12eeaef68ef66c51b890a84de5f5953b4cf5f3133a178c61c2dc67",
         "RawTargetChunks.C000": "2f9642da9c52e1a73f2dc477d9e9c7d16896802653b2efce6ba1246feec20cb7",
         "RawTargetChunks.C001": "9f2cec738603b79121913e7a26b210fb4004c77beca3b519d165f3de95e925f8",
@@ -876,95 +1122,92 @@
         "TerminalGeometry": "b9a5af9dcb1a580c946f24e4ab3ebd72b5ab05e1120fac97325eb4fce898170d"
       },
       "paths": {
-        "Batches/B000.lean": "pooled/Batches/B000.lean",
-        "LowerSchemas/Batches.lean": "source/LowerSchemas/Batches.lean",
-        "LowerSchemas/Batches/Part0.lean": "source/LowerSchemas/Batches/Part0.lean",
-        "LowerSchemas/RawTargetChunks.lean": "source/LowerSchemas/RawTargetChunks.lean",
-        "LowerSchemas/RawTargetChunks/Part0.lean": "source/LowerSchemas/RawTargetChunks/Part0.lean",
-        "NumericProofSchema.lean": "source/NumericProofSchema.lean",
-        "Papers/FiniteProjectionChecks.lean": "source/Papers/FiniteProjectionChecks.lean",
-        "Papers/FiniteProjectionData.lean": "source/Papers/FiniteProjectionData.lean",
-        "Papers/ProjectedRelationTemplate.lean": "source/Papers/ProjectedRelationTemplate.lean",
-        "ProjectionTargets/B000.lean": "source/ProjectionTargets/B000.lean",
-        "RawBoundaryData.lean": "source/RawBoundaryData.lean",
-        "RawTargetChunks/C000.lean": "source/RawTargetChunks/C000.lean",
-        "RawTargetChunks/C001.lean": "source/RawTargetChunks/C001.lean",
-        "RawTargetChunks/C002.lean": "source/RawTargetChunks/C002.lean",
-        "RawTargetChunks/C003.lean": "source/RawTargetChunks/C003.lean",
-        "RawTargetChunks/C004.lean": "source/RawTargetChunks/C004.lean",
-        "RawTargetChunks/C005.lean": "source/RawTargetChunks/C005.lean",
-        "RawTargetChunks/C006.lean": "source/RawTargetChunks/C006.lean",
-        "RawTargetChunks/C007.lean": "source/RawTargetChunks/C007.lean",
-        "RawTargetChunks/C008.lean": "source/RawTargetChunks/C008.lean",
-        "RawTargetChunks/C009.lean": "source/RawTargetChunks/C009.lean",
-        "RawTargetChunks/C010.lean": "source/RawTargetChunks/C010.lean",
-        "RawTargetChunks/C011.lean": "source/RawTargetChunks/C011.lean",
-        "RawTargetChunks/C012.lean": "source/RawTargetChunks/C012.lean",
-        "RawTargetChunks/C013.lean": "source/RawTargetChunks/C013.lean",
-        "RawTargetChunks/C014.lean": "source/RawTargetChunks/C014.lean",
-        "RawTargetChunks/C015.lean": "source/RawTargetChunks/C015.lean",
-        "RawTargetChunks/C016.lean": "source/RawTargetChunks/C016.lean",
-        "RawTargetChunks/C017.lean": "source/RawTargetChunks/C017.lean",
-        "RawTargetChunks/C018.lean": "source/RawTargetChunks/C018.lean",
-        "RawTargetChunks/C018A.lean": "source/RawTargetChunks/C018A.lean",
-        "RawTargetChunks/C018B.lean": "source/RawTargetChunks/C018B.lean",
-        "RawTargetChunks/C019.lean": "source/RawTargetChunks/C019.lean",
-        "RawTargetChunks/C019A.lean": "source/RawTargetChunks/C019A.lean",
-        "RawTargetChunks/C019B.lean": "source/RawTargetChunks/C019B.lean",
-        "RawTargetChunks/C020.lean": "source/RawTargetChunks/C020.lean",
-        "RawTargetChunks/C020A.lean": "source/RawTargetChunks/C020A.lean",
-        "RawTargetChunks/C020B.lean": "source/RawTargetChunks/C020B.lean",
-        "RawTargetChunks/C021.lean": "source/RawTargetChunks/C021.lean",
-        "RawTargetChunks/C021A.lean": "source/RawTargetChunks/C021A.lean",
-        "RawTargetChunks/C021B.lean": "source/RawTargetChunks/C021B.lean",
-        "RawTargetChunks/C022.lean": "source/RawTargetChunks/C022.lean",
-        "RawTargetChunks/C022A.lean": "source/RawTargetChunks/C022A.lean",
-        "RawTargetChunks/C022B.lean": "source/RawTargetChunks/C022B.lean",
-        "RawTargetChunks/C023.lean": "source/RawTargetChunks/C023.lean",
-        "RawTargetChunks/C023A.lean": "source/RawTargetChunks/C023A.lean",
-        "RawTargetChunks/C023B.lean": "source/RawTargetChunks/C023B.lean",
-        "RawTargetChunks/C024.lean": "source/RawTargetChunks/C024.lean",
-        "RawTargetChunks/C024A.lean": "source/RawTargetChunks/C024A.lean",
-        "RawTargetChunks/C024B.lean": "source/RawTargetChunks/C024B.lean",
-        "RawTargetChunks/C025.lean": "source/RawTargetChunks/C025.lean",
-        "RawTargetChunks/C025A.lean": "source/RawTargetChunks/C025A.lean",
-        "RawTargetChunks/C025B.lean": "source/RawTargetChunks/C025B.lean",
-        "RawTargetChunks/C026.lean": "source/RawTargetChunks/C026.lean",
-        "RawTargetChunks/C026A.lean": "source/RawTargetChunks/C026A.lean",
-        "RawTargetChunks/C026B.lean": "source/RawTargetChunks/C026B.lean",
-        "RawTargetChunks/C027.lean": "source/RawTargetChunks/C027.lean",
-        "RawTargetChunks/C027A.lean": "source/RawTargetChunks/C027A.lean",
-        "RawTargetChunks/C027B.lean": "source/RawTargetChunks/C027B.lean",
-        "RawTargetChunks/C028.lean": "source/RawTargetChunks/C028.lean",
-        "RawTargetChunks/C028A.lean": "source/RawTargetChunks/C028A.lean",
-        "RawTargetChunks/C028B.lean": "source/RawTargetChunks/C028B.lean",
-        "RawTargetChunks/C029.lean": "source/RawTargetChunks/C029.lean",
-        "RawTargetChunks/C029A.lean": "source/RawTargetChunks/C029A.lean",
-        "RawTargetChunks/C029B.lean": "source/RawTargetChunks/C029B.lean",
-        "RawTargetChunks/C030.lean": "source/RawTargetChunks/C030.lean",
-        "RawTargetChunks/C030A.lean": "source/RawTargetChunks/C030A.lean",
-        "RawTargetChunks/C030B.lean": "source/RawTargetChunks/C030B.lean",
-        "RawTargetChunks/C031.lean": "source/RawTargetChunks/C031.lean",
-        "RawTargetChunks/C031A.lean": "source/RawTargetChunks/C031A.lean",
-        "RawTargetChunks/C031B.lean": "source/RawTargetChunks/C031B.lean",
-        "RawTargetChunks/C032.lean": "source/RawTargetChunks/C032.lean",
-        "RawTargetChunks/C032A.lean": "source/RawTargetChunks/C032A.lean",
-        "RawTargetChunks/C032B.lean": "source/RawTargetChunks/C032B.lean",
-        "RawTargetChunks/C033.lean": "source/RawTargetChunks/C033.lean",
-        "RawTargetChunks/C033A.lean": "source/RawTargetChunks/C033A.lean",
-        "RawTargetChunks/C033B.lean": "source/RawTargetChunks/C033B.lean",
-        "RawTargetChunks/C034.lean": "source/RawTargetChunks/C034.lean",
-        "RawTargetChunks/C034A.lean": "source/RawTargetChunks/C034A.lean",
-        "RawTargetChunks/C034B.lean": "source/RawTargetChunks/C034B.lean",
-        "RawTargetChunks/C035.lean": "source/RawTargetChunks/C035.lean",
-        "RawTargetChunks/C035A.lean": "source/RawTargetChunks/C035A.lean",
-        "RawTargetChunks/C035B.lean": "source/RawTargetChunks/C035B.lean",
-        "RawTargetChunks/C036.lean": "source/RawTargetChunks/C036.lean",
-        "RawTargetChunks/C036A.lean": "source/RawTargetChunks/C036A.lean",
-        "RawTargetChunks/C036B.lean": "source/RawTargetChunks/C036B.lean",
-        "RawTargets.lean": "source/RawTargets.lean",
-        "SharedProjectionVertexSets.lean": "pooled/SharedProjectionVertexSets.lean",
-        "TerminalGeometry.lean": "source/TerminalGeometry.lean"
+        "Batches/B078.lean": "pooled/Batches/B078.lean",
+        "LowerSchemas/RawTargetChunks.lean": "shared/LowerSchemas/RawTargetChunks.lean",
+        "LowerSchemas/RawTargetChunks/Part0.lean": "shared/LowerSchemas/RawTargetChunks/Part0.lean",
+        "NumericProofSchema.lean": "shared/NumericProofSchema.lean",
+        "Papers/FiniteProjectionChecks.lean": "shared/Papers/FiniteProjectionChecks.lean",
+        "Papers/FiniteProjectionData.lean": "shared/Papers/FiniteProjectionData.lean",
+        "Papers/ProjectedRelationTemplate.lean": "shared/Papers/ProjectedRelationTemplate.lean",
+        "RawBoundaryData.lean": "shared/RawBoundaryData.lean",
+        "RawTargetChunks/C000.lean": "shared/RawTargetChunks/C000.lean",
+        "RawTargetChunks/C001.lean": "shared/RawTargetChunks/C001.lean",
+        "RawTargetChunks/C002.lean": "shared/RawTargetChunks/C002.lean",
+        "RawTargetChunks/C003.lean": "shared/RawTargetChunks/C003.lean",
+        "RawTargetChunks/C004.lean": "shared/RawTargetChunks/C004.lean",
+        "RawTargetChunks/C005.lean": "shared/RawTargetChunks/C005.lean",
+        "RawTargetChunks/C006.lean": "shared/RawTargetChunks/C006.lean",
+        "RawTargetChunks/C007.lean": "shared/RawTargetChunks/C007.lean",
+        "RawTargetChunks/C008.lean": "shared/RawTargetChunks/C008.lean",
+        "RawTargetChunks/C009.lean": "shared/RawTargetChunks/C009.lean",
+        "RawTargetChunks/C010.lean": "shared/RawTargetChunks/C010.lean",
+        "RawTargetChunks/C011.lean": "shared/RawTargetChunks/C011.lean",
+        "RawTargetChunks/C012.lean": "shared/RawTargetChunks/C012.lean",
+        "RawTargetChunks/C013.lean": "shared/RawTargetChunks/C013.lean",
+        "RawTargetChunks/C014.lean": "shared/RawTargetChunks/C014.lean",
+        "RawTargetChunks/C015.lean": "shared/RawTargetChunks/C015.lean",
+        "RawTargetChunks/C016.lean": "shared/RawTargetChunks/C016.lean",
+        "RawTargetChunks/C017.lean": "shared/RawTargetChunks/C017.lean",
+        "RawTargetChunks/C018.lean": "shared/RawTargetChunks/C018.lean",
+        "RawTargetChunks/C018A.lean": "shared/RawTargetChunks/C018A.lean",
+        "RawTargetChunks/C018B.lean": "shared/RawTargetChunks/C018B.lean",
+        "RawTargetChunks/C019.lean": "shared/RawTargetChunks/C019.lean",
+        "RawTargetChunks/C019A.lean": "shared/RawTargetChunks/C019A.lean",
+        "RawTargetChunks/C019B.lean": "shared/RawTargetChunks/C019B.lean",
+        "RawTargetChunks/C020.lean": "shared/RawTargetChunks/C020.lean",
+        "RawTargetChunks/C020A.lean": "shared/RawTargetChunks/C020A.lean",
+        "RawTargetChunks/C020B.lean": "shared/RawTargetChunks/C020B.lean",
+        "RawTargetChunks/C021.lean": "shared/RawTargetChunks/C021.lean",
+        "RawTargetChunks/C021A.lean": "shared/RawTargetChunks/C021A.lean",
+        "RawTargetChunks/C021B.lean": "shared/RawTargetChunks/C021B.lean",
+        "RawTargetChunks/C022.lean": "shared/RawTargetChunks/C022.lean",
+        "RawTargetChunks/C022A.lean": "shared/RawTargetChunks/C022A.lean",
+        "RawTargetChunks/C022B.lean": "shared/RawTargetChunks/C022B.lean",
+        "RawTargetChunks/C023.lean": "shared/RawTargetChunks/C023.lean",
+        "RawTargetChunks/C023A.lean": "shared/RawTargetChunks/C023A.lean",
+        "RawTargetChunks/C023B.lean": "shared/RawTargetChunks/C023B.lean",
+        "RawTargetChunks/C024.lean": "shared/RawTargetChunks/C024.lean",
+        "RawTargetChunks/C024A.lean": "shared/RawTargetChunks/C024A.lean",
+        "RawTargetChunks/C024B.lean": "shared/RawTargetChunks/C024B.lean",
+        "RawTargetChunks/C025.lean": "shared/RawTargetChunks/C025.lean",
+        "RawTargetChunks/C025A.lean": "shared/RawTargetChunks/C025A.lean",
+        "RawTargetChunks/C025B.lean": "shared/RawTargetChunks/C025B.lean",
+        "RawTargetChunks/C026.lean": "shared/RawTargetChunks/C026.lean",
+        "RawTargetChunks/C026A.lean": "shared/RawTargetChunks/C026A.lean",
+        "RawTargetChunks/C026B.lean": "shared/RawTargetChunks/C026B.lean",
+        "RawTargetChunks/C027.lean": "shared/RawTargetChunks/C027.lean",
+        "RawTargetChunks/C027A.lean": "shared/RawTargetChunks/C027A.lean",
+        "RawTargetChunks/C027B.lean": "shared/RawTargetChunks/C027B.lean",
+        "RawTargetChunks/C028.lean": "shared/RawTargetChunks/C028.lean",
+        "RawTargetChunks/C028A.lean": "shared/RawTargetChunks/C028A.lean",
+        "RawTargetChunks/C028B.lean": "shared/RawTargetChunks/C028B.lean",
+        "RawTargetChunks/C029.lean": "shared/RawTargetChunks/C029.lean",
+        "RawTargetChunks/C029A.lean": "shared/RawTargetChunks/C029A.lean",
+        "RawTargetChunks/C029B.lean": "shared/RawTargetChunks/C029B.lean",
+        "RawTargetChunks/C030.lean": "shared/RawTargetChunks/C030.lean",
+        "RawTargetChunks/C030A.lean": "shared/RawTargetChunks/C030A.lean",
+        "RawTargetChunks/C030B.lean": "shared/RawTargetChunks/C030B.lean",
+        "RawTargetChunks/C031.lean": "shared/RawTargetChunks/C031.lean",
+        "RawTargetChunks/C031A.lean": "shared/RawTargetChunks/C031A.lean",
+        "RawTargetChunks/C031B.lean": "shared/RawTargetChunks/C031B.lean",
+        "RawTargetChunks/C032.lean": "shared/RawTargetChunks/C032.lean",
+        "RawTargetChunks/C032A.lean": "shared/RawTargetChunks/C032A.lean",
+        "RawTargetChunks/C032B.lean": "shared/RawTargetChunks/C032B.lean",
+        "RawTargetChunks/C033.lean": "shared/RawTargetChunks/C033.lean",
+        "RawTargetChunks/C033A.lean": "shared/RawTargetChunks/C033A.lean",
+        "RawTargetChunks/C033B.lean": "shared/RawTargetChunks/C033B.lean",
+        "RawTargetChunks/C034.lean": "shared/RawTargetChunks/C034.lean",
+        "RawTargetChunks/C034A.lean": "shared/RawTargetChunks/C034A.lean",
+        "RawTargetChunks/C034B.lean": "shared/RawTargetChunks/C034B.lean",
+        "RawTargetChunks/C035.lean": "shared/RawTargetChunks/C035.lean",
+        "RawTargetChunks/C035A.lean": "shared/RawTargetChunks/C035A.lean",
+        "RawTargetChunks/C035B.lean": "shared/RawTargetChunks/C035B.lean",
+        "RawTargetChunks/C036.lean": "shared/RawTargetChunks/C036.lean",
+        "RawTargetChunks/C036A.lean": "shared/RawTargetChunks/C036A.lean",
+        "RawTargetChunks/C036B.lean": "shared/RawTargetChunks/C036B.lean",
+        "RawTargets.lean": "shared/RawTargets.lean",
+        "SharedProjectionVertexSets.lean": "shared/SharedProjectionVertexSets.lean",
+        "TerminalGeometry.lean": "shared/TerminalGeometry.lean"
       }
     }
   }

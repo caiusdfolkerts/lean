@@ -41,13 +41,13 @@ def main():
         assert reached==set(g)
         graphs[var]=g
     common=set.intersection(*(set(g) for g in graphs.values()))
-    common={n for n in common if variants['baseline']['modules'][n]==variants['pooled']['modules'][n]}
+    common={n for n in common if all(v['modules'][n]==variants['baseline']['modules'][n] for v in variants.values())}
     nodes=list(graphlib.TopologicalSorter(graphs['baseline']).static_order())
     for n in nodes:
         if n in common and any(d not in common for d in graphs['baseline'][n]):common.remove(n)
     external=sorted({n for v in variants.values() for n in v['external'] if n.startswith('Mathlib.')})
     if args.external:print(' '.join(external));return
-    print('Verified',len(nodes),'baseline modules and',len(graphs['pooled']),'pooled modules;',len(common),'identical shared prerequisites',flush=True)
+    print('Verified exact input closure of each variant', {k:len(g) for k,g in graphs.items()},len(common),'shared prerequisites', flush=True)
     if not args.run:return
     # Import a tested streaming reader only after source validation, and suppress Python cache files in checkout.
     from lean_export_reader import PRIMITIVES,export_measurements
@@ -63,7 +63,7 @@ def main():
         work=Path(t)
         try:
             srcs={};builds={}
-            for var in ['common','baseline','pooled']:
+            for var in ['common','baseline','pooled','indexed']:
                 srcs[var]=work/(var+'-source');srcs[var].mkdir()
                 builds[var]=work/(var+'-build');builds[var].mkdir()
                 spec=variants['baseline' if var=='common' else var]
@@ -88,7 +88,7 @@ def main():
                 if x.returncode:
                     with log.open('rb') as f:f.seek(max(0,log.stat().st_size-8000));d['error_tail']=f.read().decode(errors='replace')
                 return d
-            for var in ['common','baseline','pooled']:
+            for var in ['common','baseline','pooled','indexed']:
                 graph=graphs['baseline' if var=='common' else var]
                 selected=common if var=='common' else set(graph)-common
                 r['modules'][var]={}
