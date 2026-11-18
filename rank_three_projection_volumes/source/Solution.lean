@@ -182,11 +182,24 @@ theorem markedArray_eq {n k : ℕ} (K : EuclideanBody n)
   rfl
 
 theorem projectionLocus_eq (n k : ℕ) :
-    euclideanAllProjectionLocus n k = RankThreeProjection.euclideanAllProjectionLocus n k := rfl n k
+    euclideanAllProjectionLocus n k = RankThreeProjection.euclideanAllProjectionLocus n k := by rfl
 theorem closedProjectionLocus_eq (n : ℕ) :
-    euclideanClosedProjectionLocus n = RankThreeProjection.euclideanClosedProjectionLocus n := rfl n
+    euclideanClosedProjectionLocus n = RankThreeProjection.euclideanClosedProjectionLocus n := by rfl
 theorem dimension_eq {n : ℕ} (K : EuclideanBody n) :
-    euclideanBodyDimension K = RankThreeProjection.euclideanBodyDimension K := rfl K
+    euclideanBodyDimension K = RankThreeProjection.euclideanBodyDimension K := by rfl
+
+/-- The independent perturbation has the complete source value as a function of epsilon. -/
+theorem strictPerturb_eq {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (P : Matrix ι ι ℝ) (a : ι → ℝ) :
+    strictPerturb P a = VolumeVerification.MatrixInertia.strictPerturb P a := by rfl
+
+/-- Every original hollow, symmetric and positive entry condition is retained. -/
+theorem positiveHollowSymmetric_iff {n : ℕ} (P : Array n) :
+    PositiveHollowSymmetric P ↔ RankThreeProjection.PositiveHollowSymmetric P := by rfl
+
+/-- The full positive/negative/radical inertia predicate is identical. -/
+theorem strictLorentzian_iff {n : ℕ} (P : Array n) :
+    StrictLorentzian P ↔ RankThreeProjection.StrictLorentzian P := by rfl
 theorem theorem11_euclidean {n : ℕ} (hn : 5 ≤ n)
     (P : Array n) (hP : PositiveHollowSymmetric P) (hrank : P.rank = 3) :
     P ∉ euclideanClosedProjectionLocus n ∧
@@ -203,7 +216,9 @@ theorem theorem11_euclidean {n : ℕ} (hn : 5 ≤ n)
         (∃ V : Set (HollowSymmetricArray n), IsOpen V ∧ V.Nonempty ∧
           ∀ Q ∈ V, PositiveHollowSymmetric Q.val ∧ StrictLorentzian Q.val ∧
             Q.val ∉ euclideanClosedProjectionLocus n) := by
-  simpa only [closedProjectionLocus_eq] using RankThreeProjection.theorem11_euclidean hn P hP hrank
+  simpa only [closedProjectionLocus_eq, strictPerturb_eq,
+    positiveHollowSymmetric_iff, strictLorentzian_iff] using
+    RankThreeProjection.theorem11_euclidean hn P hP hrank
 
 theorem theorem31_euclidean {n k : ℕ} (hk : 1 ≤ k) (hkn : k < n)
     (P : Deleted n k → ℝ) :
@@ -234,7 +249,8 @@ theorem exists_open_counterexamples {n : ℕ} (hn : 5 ≤ n) :
     ∃ V : Set (HollowSymmetricArray n), IsOpen V ∧ V.Nonempty ∧
       ∀ Q ∈ V, PositiveHollowSymmetric Q.val ∧ StrictLorentzian Q.val ∧
         Q.val ∉ euclideanClosedProjectionLocus n := by
-  simpa only [closedProjectionLocus_eq, RankThreeProjection.euclideanClosedProjectionLocus_eq]
+  simpa only [closedProjectionLocus_eq, RankThreeProjection.euclideanClosedProjectionLocus_eq,
+    positiveHollowSymmetric_iff, strictLorentzian_iff]
     using RankThreeProjection.exists_open_counterexamples hn
 
 end PalomarRankThree
