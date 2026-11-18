@@ -1,0 +1,12 @@
+name = "higher_specht_measured_repair"
+version = "0.1.0"
+defaultTargets = ["ChallengeDiagnostic"]
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "2cabef97b63d3275776b8b060d802de6a6fa1055"
+[[lean_lib]]
+name = "ChallengeDiagnostic"
+srcDir = "."
+roots = ["Challenge"]
+defaultFacets = ["elabArts"]

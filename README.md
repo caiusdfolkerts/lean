@@ -1,3 +1,3 @@
-# Canonical diagnostic revision23
+# Canonical diagnostic revision24
 
-Three exact bounded Relative coefficient auxiliary TYPE lookups. No source project build or full-preflight claim.
+Four canonical checks: Higher principal interface, literal Wishart law component, and Tor/Deformed bounded type probes. No full-preflight claim.
