@@ -2588,6 +2588,11 @@ theorem toDegRevLex_monotone : Monotone (fun a : σ →₀ ℕ => toDegRevLex a)
   · simp
   · exact Or.inl (by simpa [map_add, Nat.pos_iff_ne_zero, degree_eq_zero_iff] using hc)
 
+noncomputable def degRevLex : MonomialOrder σ where
+  syn := DegRevLex (σ →₀ ℕ)
+  toSyn := { toEquiv := toDegRevLex, map_add' := toDegRevLex_add }
+  toSyn_monotone := toDegRevLex_monotone
+
 open scoped _root_.MonomialOrder
 
 theorem degRevLex_le_iff {a b : σ →₀ ℕ} :
@@ -2608,10 +2613,6 @@ theorem degRevLex_single_lt_iff {a b : σ} :
   single a 1 ≺[degRevLex] single b 1 ↔ b < a := by
   rw [degRevLex_lt_iff, DegRevLex.single_lt_iff]
 
-noncomputable def degRevLex : MonomialOrder σ where
-  syn := DegRevLex (σ →₀ ℕ)
-  toSyn := { toEquiv := toDegRevLex, map_add' := toDegRevLex_add }
-  toSyn_monotone := toDegRevLex_monotone
 end MonomialOrder
 
 section Examples
