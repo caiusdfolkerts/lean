@@ -1,0 +1,62 @@
+version: v0.4
+project:
+  name: Monomial bases for two-fermion coinvariants
+  description: Literal ordered monomial classes form bases of the paired and strict
+    weighted two-fermion moment quotients over every commutative coefficient ring
+    with the stated factorial and nonempty weight-subset units. The polynomial inputs
+    retain arbitrary coupled lower terms satisfying the exact highest-weight hypotheses.
+    The quotients have the printed finite free ranks, including over the zero ring.
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.CO
+  - math.AC
+  msc2020:
+  - 05E10
+  - 13A50
+sources:
+- type: paper
+  title: Monomial bases for two-fermion coinvariants
+  authors:
+  - Caius Folkerts
+  relationship: formalizes
+  author_endorsement: participated
+  url: https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf
+  note: 'Exact included paper SHA-256: c4a3dd3f2e102d6b4bcc8d50c58ea8007c412cea8d762a8fbb5b105db09bc19a.
+    Scope and declaration locations are recorded in map.json; novelty is not independently
+    established.'
+automation:
+  methods:
+  - method: agent
+    tool_setup: OpenAI Codex
+    notes: Current packaging, source-block migration, source mapping and independent
+      statement extraction are agent-assisted. Fresh build and Comparator evidence
+      are not yet available.
+  - method: other
+    tool_setup: Historical AI assistance reported in the included paper
+    notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing
+      its proofs. The exact model roles and extent of historical Lean automation have
+      not been reconstructed from the snapshot.
+review:
+  status: unchecked
+  notes: Paper/README/source mapping inspected by the preparation agent. Solution
+    build, Comparator, independent kernel replay and expert review remain incomplete.
+    No Palomar review or registration is claimed.
+scope:
+  known_gaps:
+  - The exterior-Hilbert, associated-graded, flat-family and fiber clauses of Theorems
+    1.1 and 1.2 still require independent extraction.
+  - Principal local-structure and equivariant/character results in Sections 7–8 remain
+    unextracted.
+  - The exact Lean4.36.0-rc2 / Mathlib428aa8288d061ec3ae75c1b85ac178e2cb9def23 environment
+    has not been provisioned or checked locally.
+  notes: The submitted project contains the substantive historical proof development
+    copied from the pinned source snapshot; this is not a thin wrapper. Historical
+    upstream dependencies and license notices are retained. See map.json for exact
+    proposed selections and unresolved source mapping.
+  current_selection: The exact monomial-basis clauses of Theorems 1.1 and 1.2 and
+    their all-ring finite free ranks are selected.
