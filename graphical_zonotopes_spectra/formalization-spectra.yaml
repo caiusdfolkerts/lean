@@ -1,0 +1,346 @@
+version: v0.4
+project:
+  name: 'Sharp bounds for indecomposable graphical-zonotope summands: spectra'
+  description: Support and separator constraints for indecomposable graphical-zonotope
+    summands, planar classification, and exact dimension spectra for 3-trees and partial
+    3-trees, with lattice attainment and intrinsic incidence forests. Includes tree-join
+    and three-hub book dimension formulas, Hamiltonian 3-tree lattice witnesses, and
+    K5-free graphs with full-dimensional indecomposable lattice weak summands but
+    no admissible spanning 3-tree.
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.CO
+  - math.MG
+  msc2020:
+  - 52B11
+  - 52B12
+  - 05C10
+sources:
+- title: Sharp bounds for indecomposable summands of graphical zonotopes
+  authors:
+  - Caius Folkerts
+  type: paper
+  relationship: formalizes
+  location: paper.pdf; map-spectra.json identifies exact selected results
+related_formalizations:
+- title: caiusdfolkerts/research graphical_zonotopes
+  relationship: repackages
+  id: https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/graphical_zonotopes
+  note: The complete substantive development is copied at this immutable baseline
+    revision, with documented module migrations and optional report IO adjustments.
+    Fresh literal statements and proof bridges form the comparison layer.
+status:
+  scope: Exact553-line independent Challenge passed pinnedLean4.35 canonical-only
+    diagnostic run44372929933. Revised Solution/source interfaces remain source-prepared
+    and uncompiled; full Comparator and independent kernel verification are pending.
+    Support and separator constraints for indecomposable graphical-zonotope summands,
+    planar classification, and exact dimension spectra for 3-trees and partial 3-trees,
+    with lattice attainment and intrinsic incidence forests. Includes tree-join and
+    three-hub book dimension formulas, Hamiltonian 3-tree lattice witnesses, and K5-free
+    graphs with full-dimensional indecomposable lattice weak summands but no admissible
+    spanning 3-tree.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: PalomarGraphicalSpectra.paper_corollary_5_2
+    file: SolutionSpectra.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-spectra.json
+  - declaration: PalomarGraphicalSpectra.triangle_components_le_three
+    file: SolutionSpectra.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-spectra.json
+  - declaration: PalomarGraphicalSpectra.threeTree_dimension_and_spectrum
+    file: SolutionSpectra.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-spectra.json
+  - declaration: PalomarGraphicalSpectra.partial_threeTree_piecewise_maximum
+    file: SolutionSpectra.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-spectra.json
+  - declaration: PalomarGraphicalSpectra.partial_threeTree_full_dimension_spectrum
+    file: SolutionSpectra.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-spectra.json
+  - declaration: PalomarGraphicalSpectra.paper_corollary_6_9_tree_join
+    file: SolutionSpectra.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-spectra.json
+  - declaration: PalomarGraphicalSpectra.partial_threeTree_support_classification
+    file: SolutionSpectra.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-spectra.json
+  - declaration: PalomarGraphicalSpectra.three_hub_book_maximum
+    file: SolutionSpectra.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-spectra.json
+  - declaration: PalomarGraphicalSpectra.paper_corollary_8_5
+    file: SolutionSpectra.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-spectra.json
+  - declaration: PalomarGraphicalSpectra.refined_support_of_dimension_ge_three
+    file: SolutionSpectra.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-spectra.json
+  - declaration: PalomarGraphicalSpectra.planar_full_iff_threeTree
+    file: SolutionSpectra.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-spectra.json
+  - declaration: PalomarGraphicalSpectra.planar_component_dimension_spectrum
+    file: SolutionSpectra.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-spectra.json
+  - declaration: PalomarGraphicalSpectra.threeTree_incidence_isTree
+    file: SolutionSpectra.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-spectra.json
+  - declaration: PalomarGraphicalSpectra.partial_threeTree_incidence_isAcyclic
+    file: SolutionSpectra.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-spectra.json
+  - declaration: PalomarGraphicalSpectra.hamiltonian_threeTree_lattice_witness
+    file: SolutionSpectra.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-spectra.json
+  - declaration: PalomarGraphicalSpectra.planar_full_iff_threeTree_finite
+    file: SolutionSpectra.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-spectra.json
+  - declaration: PalomarGraphicalSpectra.planar_component_dimension_spectrum_finite
+    file: SolutionSpectra.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-spectra.json
+  - declaration: PalomarGraphicalSpectra.partial_threeTree_polytope_support
+    file: SolutionSpectra.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-spectra.json
+  - declaration: PalomarGraphicalSpectra.induced_admissible_threeTree_witness
+    file: SolutionSpectra.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-spectra.json
+automation:
+  methods:
+  - method: agent
+    tool_setup: The manuscript discloses GPT-6 Astra, GPT-5.6 Sol, and Kimi K3 assistance
+      in developing its proofs. Historical roles beyond that disclosure have not been
+      independently reconstructed.
+  - method: agent
+    models:
+    - GPT-6.1 Sol
+    framework: OpenAI Codex
+    tool_setup: Prepared independent literal mathematical statements, source proof
+      bridges, module migrations, provenance and result mapping. Compared the manuscript,
+      README and actual Lean declarations.
+fidelity:
+  divergences: Fresh literal semantics and explicit source bridges. Incidence tree/forest
+    and exact dimension/spectrum formulas are included. Corollaries6.7/6.8 algorithmic
+    implementation, support recovery and certified time-complexity clauses are not
+    claimed.
+review:
+  status: unchecked
+  notes: The exact current Challenge passed canonical-only elaboration, confirmed
+    by actual receipt and log hashes. This does not check the actual Source/Solution
+    bridges, Comparator, independent kernels, or editorial cleanliness. Revised792-line
+    Solution is uncompiled. Fresh full preflight and clean editorial review required;
+    see map-spectra.json.
+alignment:
+  namespace: PalomarGraphicalSpectra
+  statements:
+  - source: Corollary5.2
+    lean: PalomarGraphicalSpectra.paper_corollary_5_2
+    module: SolutionSpectra.lean
+    status: in-progress
+  - source: Corollary5.3
+    lean: PalomarGraphicalSpectra.triangle_components_le_three
+    module: SolutionSpectra.lean
+    status: in-progress
+  - source: Corollary6.7
+    lean: PalomarGraphicalSpectra.threeTree_dimension_and_spectrum
+    module: SolutionSpectra.lean
+    status: in-progress
+  - source: Corollary6.8
+    lean: PalomarGraphicalSpectra.partial_threeTree_piecewise_maximum
+    module: SolutionSpectra.lean
+    status: in-progress
+  - source: Corollaries6.7–6.8, full positive spectrum
+    lean: PalomarGraphicalSpectra.partial_threeTree_full_dimension_spectrum
+    module: SolutionSpectra.lean
+    status: in-progress
+  - source: Corollary6.9, tree join
+    lean: PalomarGraphicalSpectra.paper_corollary_6_9_tree_join
+    module: SolutionSpectra.lean
+    status: in-progress
+  - source: Corollary6.6
+    lean: PalomarGraphicalSpectra.partial_threeTree_support_classification
+    module: SolutionSpectra.lean
+    status: in-progress
+  - source: Corollary6.9, three-hub book
+    lean: PalomarGraphicalSpectra.three_hub_book_maximum
+    module: SolutionSpectra.lean
+    status: in-progress
+  - source: Corollary8.5
+    lean: PalomarGraphicalSpectra.paper_corollary_8_5
+    module: SolutionSpectra.lean
+    status: in-progress
+  - source: Corollary4.4
+    lean: PalomarGraphicalSpectra.refined_support_of_dimension_ge_three
+    module: SolutionSpectra.lean
+    status: in-progress
+  - source: Corollary6.4
+    lean: PalomarGraphicalSpectra.planar_full_iff_threeTree
+    module: SolutionSpectra.lean
+    status: in-progress
+  - source: Corollary6.5
+    lean: PalomarGraphicalSpectra.planar_component_dimension_spectrum
+    module: SolutionSpectra.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal direction-graph constructor semantics
+    lean: PalomarGraphicalSpectra.actualRootEdge_symm
+    module: SolutionSpectra.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal direction-graph constructor semantics
+    lean: PalomarGraphicalSpectra.PathJoin.adjacency_symm
+    module: SolutionSpectra.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSpectra.tetrahedronIntersection_symm
+    module: SolutionSpectra.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSpectra.fourFamilyEdges_symm
+    module: SolutionSpectra.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSpectra.TreeJoin.hubAdjacency_symm
+    module: SolutionSpectra.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSpectra.TreeJoin.hubAdjacency_irrefl
+    module: SolutionSpectra.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSpectra.incidenceAdjacency_symm
+    module: SolutionSpectra.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal constructor semantics
+    lean: PalomarGraphicalSpectra.incidenceAdjacency_irrefl
+    module: SolutionSpectra.lean
+    status: in-progress
+  - source: 'Corollary6.7: actual clique-triangle incidence tree'
+    lean: PalomarGraphicalSpectra.threeTree_incidence_isTree
+    module: SolutionSpectra.lean
+    status: in-progress
+  - source: 'Corollary6.8: intrinsic incidence forest'
+    lean: PalomarGraphicalSpectra.partial_threeTree_incidence_isAcyclic
+    module: SolutionSpectra.lean
+    status: in-progress
+  - source: 'Corollary6.9: Hamiltonian3tree full-dimensional lattice witness and exact
+      actual direction graph'
+    lean: PalomarGraphicalSpectra.hamiltonian_threeTree_lattice_witness
+    module: SolutionSpectra.lean
+    status: in-progress
+  - source: 'Corollary6.4: arbitrary finite ground set, order supplied internally'
+    lean: PalomarGraphicalSpectra.planar_full_iff_threeTree_finite
+    module: SolutionSpectra.lean
+    status: in-progress
+  - source: 'Corollary6.5: arbitrary finite ground set and every positive dimension'
+    lean: PalomarGraphicalSpectra.planar_component_dimension_spectrum_finite
+    module: SolutionSpectra.lean
+    status: in-progress
+  - source: 'Corollary6.6: every actual support has exactly dimension |U|-1'
+    lean: PalomarGraphicalSpectra.partial_threeTree_polytope_support
+    module: SolutionSpectra.lean
+    status: in-progress
+  - source: 'Corollary6.6: every admissible induced support attains |U|-1 with a lattice
+      witness'
+    lean: PalomarGraphicalSpectra.induced_admissible_threeTree_witness
+    module: SolutionSpectra.lean
+    status: in-progress
+acknowledgements: The independently literal plane-drawing predicate retains Álvaro
+  Begué's three continuous-arc conditions from his Jordan–Schönflies plane-graph formalization,
+  attributed under Apache2.0 in the preserved source and fresh statement layer.

@@ -1,0 +1,390 @@
+{
+  "baseline_project": "graphical_zonotopes",
+  "baseline_revision": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
+  "entry": "main",
+  "status": "frozen_challenge_passed_solution_and_full_preflight_pending",
+  "description": "Principal path construction and simultaneous sharp bounds; exact 3-tree, clique-book, multipartite and lattice classifications.",
+  "comparator_config": "comparator-main.json",
+  "claims": [
+    {
+      "paper_results": [
+        "Theorem 4.1"
+      ],
+      "challenge_declaration": "PalomarGraphicalMain.direction_bounds_polytopal",
+      "challenge": {
+        "file": "ChallengeMain.lean",
+        "line": 244
+      },
+      "solution": {
+        "file": "SolutionMain.lean",
+        "line": 371
+      },
+      "source_declaration": "GraphicalZonotopes.direction_bounds_polytopal",
+      "source": {
+        "file": "source/verified/parts/part023.lean",
+        "line": 900
+      },
+      "status": "prepared-uncompiled"
+    },
+    {
+      "paper_results": [
+        "Theorem 6.1"
+      ],
+      "challenge_declaration": "PalomarGraphicalMain.threeTree_classification_polytopal",
+      "challenge": {
+        "file": "ChallengeMain.lean",
+        "line": 250
+      },
+      "solution": {
+        "file": "SolutionMain.lean",
+        "line": 379
+      },
+      "source_declaration": "GraphicalZonotopes.threeTree_classification_polytopal",
+      "source": {
+        "file": "source/verified/parts/part023.lean",
+        "line": 2253
+      },
+      "status": "prepared-uncompiled"
+    },
+    {
+      "paper_results": [
+        "Theorem 6.1, quantitative integral construction"
+      ],
+      "challenge_declaration": "PalomarGraphicalMain.admissible_threeTree_lattice_witness",
+      "challenge": {
+        "file": "ChallengeMain.lean",
+        "line": 264
+      },
+      "solution": {
+        "file": "SolutionMain.lean",
+        "line": 395
+      },
+      "source_declaration": "GraphicalZonotopes.admissible_threeTree_lattice_witness",
+      "source": {
+        "file": "source/verified/parts/part008.lean",
+        "line": 2419
+      },
+      "status": "prepared-uncompiled"
+    },
+    {
+      "paper_results": [
+        "Theorem 3.1",
+        "Theorem 4.1, simultaneous sharpness"
+      ],
+      "challenge_declaration": "PalomarGraphicalMain.PathResults.principal_path_theorem",
+      "challenge": {
+        "file": "ChallengeMain.lean",
+        "line": 494
+      },
+      "solution": {
+        "file": "SolutionMain.lean",
+        "line": 638
+      },
+      "source_declaration": "GraphicalZonotopes.Path.principal_path_theorem",
+      "source": {
+        "file": "source/verified/parts/part019.lean",
+        "line": 1463
+      },
+      "status": "prepared-uncompiled"
+    },
+    {
+      "paper_results": [
+        "Theorem 7.1"
+      ],
+      "challenge_declaration": "PalomarGraphicalMain.clique_book_classification",
+      "challenge": {
+        "file": "ChallengeMain.lean",
+        "line": 417
+      },
+      "solution": {
+        "file": "SolutionMain.lean",
+        "line": 550
+      },
+      "source_declaration": "GraphicalZonotopes.clique_book_classification",
+      "source": {
+        "file": "source/verified/parts/part014.lean",
+        "line": 810
+      },
+      "status": "prepared-uncompiled"
+    },
+    {
+      "paper_results": [
+        "Theorem 7.12"
+      ],
+      "challenge_declaration": "PalomarGraphicalMain.SaturatedDirections.paper_theorem_7_12",
+      "challenge": {
+        "file": "ChallengeMain.lean",
+        "line": 420
+      },
+      "solution": {
+        "file": "SolutionMain.lean",
+        "line": 554
+      },
+      "source_declaration": "GraphicalZonotopes.SaturatedDirections.paper_theorem_7_12",
+      "source": {
+        "file": "source/verified/parts/part022.lean",
+        "line": 2295
+      },
+      "status": "prepared-uncompiled"
+    },
+    {
+      "paper_results": [
+        "Theorem 8.1"
+      ],
+      "challenge_declaration": "PalomarGraphicalMain.DiamondBook.paper_theorem_8_1",
+      "challenge": {
+        "file": "ChallengeMain.lean",
+        "line": 438
+      },
+      "solution": {
+        "file": "SolutionMain.lean",
+        "line": 573
+      },
+      "source_declaration": "GraphicalZonotopes.DiamondBook.paper_theorem_8_1",
+      "source": {
+        "file": "source/verified/parts/part016.lean",
+        "line": 1127
+      },
+      "status": "prepared-uncompiled"
+    },
+    {
+      "paper_results": [
+        "Theorem8.2: same actual lattice witness, all actual directions, exact treewidth and complete proper-subgraph/spanning3tree obstructions"
+      ],
+      "challenge_declaration": "PalomarGraphicalMain.SparseFamily.paper_theorem_8_2_polytopal",
+      "source_declaration": "GraphicalZonotopes.SparseFamily.paper_theorem_8_2_polytopal",
+      "challenge": {
+        "file": "ChallengeMain.lean",
+        "line": 441
+      },
+      "solution": {
+        "file": "SolutionMain.lean",
+        "line": 577
+      },
+      "source": {
+        "file": "source/verified/parts/part023.lean",
+        "line": 2182
+      },
+      "status": "prepared-uncompiled"
+    },
+    {
+      "paper_results": [
+        "Theorem 8.7"
+      ],
+      "challenge_declaration": "PalomarGraphicalMain.TwoHub.two_singleton_classification",
+      "challenge": {
+        "file": "ChallengeMain.lean",
+        "line": 458
+      },
+      "solution": {
+        "file": "SolutionMain.lean",
+        "line": 596
+      },
+      "source_declaration": "GraphicalZonotopes.TwoHub.two_singleton_classification",
+      "source": {
+        "file": "source/verified/parts/part024.lean",
+        "line": 1621
+      },
+      "status": "prepared-uncompiled"
+    },
+    {
+      "paper_results": [
+        "Theorem 8.9"
+      ],
+      "challenge_declaration": "PalomarGraphicalMain.four_partite_spanning_threeTrees",
+      "challenge": {
+        "file": "ChallengeMain.lean",
+        "line": 461
+      },
+      "solution": {
+        "file": "SolutionMain.lean",
+        "line": 600
+      },
+      "source_declaration": "GraphicalZonotopes.four_partite_spanning_threeTrees",
+      "source": {
+        "file": "source/verified/parts/part024.lean",
+        "line": 1057
+      },
+      "status": "prepared-uncompiled"
+    },
+    {
+      "paper_results": [
+        "Theorem 9.1"
+      ],
+      "challenge_declaration": "PalomarGraphicalMain.threeTree_lattice_dilation",
+      "challenge": {
+        "file": "ChallengeMain.lean",
+        "line": 464
+      },
+      "solution": {
+        "file": "SolutionMain.lean",
+        "line": 604
+      },
+      "source_declaration": "GraphicalZonotopes.threeTree_lattice_dilation",
+      "source": {
+        "file": "source/verified/parts/part019.lean",
+        "line": 1721
+      },
+      "status": "prepared-uncompiled"
+    },
+    {
+      "paper_results": [
+        "Theorem 9.5"
+      ],
+      "challenge_declaration": "PalomarGraphicalMain.unit_lattice_classification",
+      "challenge": {
+        "file": "ChallengeMain.lean",
+        "line": 467
+      },
+      "solution": {
+        "file": "SolutionMain.lean",
+        "line": 608
+      },
+      "source_declaration": "GraphicalZonotopes.unit_lattice_classification",
+      "source": {
+        "file": "source/verified/parts/part020.lean",
+        "line": 1328
+      },
+      "status": "prepared-uncompiled"
+    },
+    {
+      "paper_results": [
+        "Corollary 9.12"
+      ],
+      "challenge_declaration": "PalomarGraphicalMain.optimal_k5_free_dilation",
+      "challenge": {
+        "file": "ChallengeMain.lean",
+        "line": 470
+      },
+      "solution": {
+        "file": "SolutionMain.lean",
+        "line": 612
+      },
+      "source_declaration": "GraphicalZonotopes.optimal_k5_free_dilation",
+      "source": {
+        "file": "source/verified/parts/part020.lean",
+        "line": 1473
+      },
+      "status": "prepared-uncompiled"
+    },
+    {
+      "paper_results": [
+        "Theorem 9.8"
+      ],
+      "challenge_declaration": "PalomarGraphicalMain.DoubledParts.principal_boolean_phase_theorem",
+      "challenge": {
+        "file": "ChallengeMain.lean",
+        "line": 487
+      },
+      "solution": {
+        "file": "SolutionMain.lean",
+        "line": 630
+      },
+      "source_declaration": "GraphicalZonotopes.DoubledParts.principal_boolean_phase_theorem",
+      "source": {
+        "file": "source/verified/parts/part024.lean",
+        "line": 2128
+      },
+      "status": "prepared-uncompiled"
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal construction semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalMain.zeta_injective",
+      "challenge": {
+        "file": "ChallengeMain.lean",
+        "line": 63
+      },
+      "solution": {
+        "file": "SolutionMain.lean",
+        "line": 64
+      },
+      "source_declaration": "GraphicalZonotopes.zeta_injective",
+      "source": {
+        "file": "source/verified/parts/part000.lean",
+        "line": 1101
+      },
+      "status": "prepared-uncompiled"
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal construction semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalMain.actualRootEdge_symm",
+      "challenge": {
+        "file": "ChallengeMain.lean",
+        "line": 136
+      },
+      "solution": {
+        "file": "SolutionMain.lean",
+        "line": 138
+      },
+      "source_declaration": "GraphicalZonotopes.actualRootEdge_symm",
+      "source": {
+        "file": "source/verified/parts/part001.lean",
+        "line": 692
+      },
+      "status": "prepared-uncompiled"
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalMain.zeta_add",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeMain.lean",
+        "line": 52
+      },
+      "solution": {
+        "file": "SolutionMain.lean",
+        "line": 53
+      },
+      "source": {
+        "file": "SolutionMain.lean",
+        "line": 53
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalMain.zeta_smul",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeMain.lean",
+        "line": 55
+      },
+      "solution": {
+        "file": "SolutionMain.lean",
+        "line": 56
+      },
+      "source": {
+        "file": "SolutionMain.lean",
+        "line": 56
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    }
+  ],
+  "definition_semantics": "Every nontrivial proof-valued constructor argument is factored through a named compared supporting theorem. All data and carrier definitions are literal and independently present in both fresh modules. Canonical Fintype subtype/quotient constructions are explicit. No definition_names or opaque supplied values.",
+  "blockers": [
+    "Fresh Challenge and Solution/source-bridge compilation pending.",
+    "Actual Comparator and independent kernel checks have not run."
+  ],
+  "local_validation": {
+    "Challenge": {
+      "module": "ChallengeMain",
+      "exit_code": 0,
+      "elapsed_seconds": 137.08,
+      "sha256": "b642eb4efd7f8a42ea7b089e9f9d7bc107d7436c03e4f9039221b6c11de3a2d9",
+      "log": "fresh-challenge-main-check.log"
+    },
+    "Solution": "Source bridge draft, not compiled locally.",
+    "Comparator_and_kernels": "Not yet run."
+  },
+  "local_interface_status": "Main Solution compiled0; Consequences atomic interfaces prepared and awaiting local source-tail build. Actual per-entry Comparator/kernel status is recorded separately."
+}
