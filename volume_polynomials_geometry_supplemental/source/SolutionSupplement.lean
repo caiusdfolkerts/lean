@@ -376,8 +376,9 @@ theorem forced_body_geometric (lam : ℝ) (hlam₀ : 0 < lam) (hlam₁ : lam < 1
         {x | ∃ t : Icc (-half) half, x = a j + (t : ℝ) • weightedOrbit lam j}) ∧
     (∀ i j : ℕ, i ≠ j → det (weightedOrbit lam i) (weightedOrbit lam j) ≠ 0) ∧
     ¬ TauCeti.IsSemialgebraic ((Homeomorph.finTwoArrow (X := ℝ)) ⁻¹' forcedSet lam) := by
+  rw [half_eq]
   simpa only [forcedSet_eq lam hlam₀ hlam₁, orbitNormal_eq, weightedOrbit_eq,
-    det, VolumePolynomials.Holonomy.det, areaSeries_eq, half_eq] using
+    det, VolumePolynomials.Holonomy.det, areaSeries_eq] using
     VolumePolynomials.Holonomy.theorem_7_3_geometric lam hlam₀ hlam₁
 
 end PalomarVolumeSupplement
