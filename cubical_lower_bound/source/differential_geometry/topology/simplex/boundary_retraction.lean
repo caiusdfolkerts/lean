@@ -123,7 +123,7 @@ def boundaryInclusion : C(boundary I, punctured I) :=
   ⟨fun x ↦ ⟨x.val, boundary_ne_barycenter x.property⟩,
     continuous_subtype_val.subtype_mk _⟩
 
-private def radialRetractionPoint (x : punctured I) : boundary I :=
+def radialRetractionPoint (x : punctured I) : boundary I :=
   ⟨⟨fun i ↦ (x.val.val i - minimumCoordinate x.val) /
       (1 - (Fintype.card I : ℝ) * minimumCoordinate x.val),
     ⟨fun i ↦ div_nonneg (sub_nonneg.mpr (minimumCoordinate_le x.val i))
@@ -165,7 +165,7 @@ theorem radialRetraction_boundary (x : boundary I) :
     (1 - (Fintype.card I : ℝ) * minimumCoordinate x.val) = x.val.val i
   rw [minimumCoordinate_eq_zero x.property, sub_zero, mul_zero, sub_zero, div_one]
 
-private def radialHomotopyPoint (t : unitInterval) (x : punctured I) : punctured I :=
+def radialHomotopyPoint (t : unitInterval) (x : punctured I) : punctured I :=
   ⟨⟨(1 - (t : ℝ)) • x.val.val + (t : ℝ) • (radialRetraction x).val.val,
     convex_coordinateSet ℝ I x.val.property (radialRetraction x).val.property
       (sub_nonneg.mpr t.property.2) t.property.1 (sub_add_cancel _ _)⟩, by

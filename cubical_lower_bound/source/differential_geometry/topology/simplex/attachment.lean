@@ -156,7 +156,7 @@ theorem isQuotientMap_neighborhoodQuotient : IsQuotientMap (neighborhoodQuotient
       exact ⟨Sum.inl ⟨d, hdc⟩, Subtype.ext hd⟩
     · exact ⟨Sum.inr x, Subtype.ext hx⟩
 
-private def retractionOnSum : C(punctured I ⊕ X, X) :=
+def retractionOnSum : C(punctured I ⊕ X, X) :=
   ⟨Sum.elim (fun d ↦ g (radialRetraction d)) id,
     (g.hom.continuous.comp radialRetraction.continuous).sumElim continuous_id⟩
 
@@ -190,7 +190,7 @@ private theorem retractionOnSum_fiber (z z' : punctured I ⊕ X)
     exact hax.symm
   · exact DifferentialGeometry.TopCat.Pushout.injective_inr h Subtype.val_injective he
 
-private def neighborhoodRetractionPoint (p : puncturedNeighborhood (r := r)) : X :=
+def neighborhoodRetractionPoint (p : puncturedNeighborhood (r := r)) : X :=
   retractionOnSum (g := g)
     (Function.surjInv (isQuotientMap_neighborhoodQuotient h).surjective p)
 
@@ -216,7 +216,7 @@ theorem neighborhoodRetraction_old (x : X) :
     neighborhoodRetraction h (oldToNeighborhood h x) = x :=
   neighborhoodRetractionPoint_quotient h (Sum.inr x)
 
-private def deformationOnSum :
+def deformationOnSum :
     C(unitInterval × (punctured I ⊕ X), puncturedNeighborhood (r := r)) :=
   ⟨fun tz ↦ Sum.elim
     (fun d ↦ cellToNeighborhood h (radialDeformation (tz.1, d)))
@@ -260,7 +260,7 @@ private theorem deformationOnSum_fiber (t : unitInterval) (z z' : punctured I �
     rfl
   · exact hz
 
-private def neighborhoodDeformationPoint
+def neighborhoodDeformationPoint
     (tp : unitInterval × puncturedNeighborhood (r := r)) : puncturedNeighborhood (r := r) :=
   deformationOnSum h (tp.1,
     Function.surjInv (isQuotientMap_neighborhoodQuotient h).surjective tp.2)

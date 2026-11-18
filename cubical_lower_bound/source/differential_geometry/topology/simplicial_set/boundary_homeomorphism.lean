@@ -17,7 +17,7 @@ universe u
 
 namespace DifferentialGeometry.SSet
 
-private def coordinateRealizationHomeomorph (n : SimplexCategory) :
+def coordinateRealizationHomeomorph (n : SimplexCategory) :
     _root_.SSet.toTop.obj (_root_.SSet.stdSimplex.obj n : _root_.SSet.{u}) ≃ₜ
       coordinateSet ℝ (Fin (n.len + 1)) :=
   (SimplexCategory.toTopHomeo n).trans (coordinateHomeomorph ℝ _)
@@ -168,7 +168,7 @@ instance isEmpty_realization_boundary_zero :
     IsEmpty (_root_.SSet.toTop.obj (_root_.SSet.boundary 0 : _root_.SSet.{u})) :=
   ⟨fun x ↦ isEmptyElim (boundaryRealizationLift 0 x)⟩
 
-private def boundaryInverseSuccPoint (n : ℕ) (p : simplexBoundarySet.{u} (n + 1)) :
+def boundaryInverseSuccPoint (n : ℕ) (p : simplexBoundarySet.{u} (n + 1)) :
     _root_.SSet.toTop.obj (_root_.SSet.boundary (n + 1) : _root_.SSet.{u}) :=
   boundaryFaceMap p.property.choose
     (DifferentialGeometry.Simplex.faceDelete p.property.choose
@@ -180,7 +180,7 @@ private theorem boundaryInverseSuccPoint_face (n : ℕ) (p : simplexBoundarySet.
       (DifferentialGeometry.Simplex.faceDelete i ⟨coordinateHomeomorph ℝ _ p.val.down, hi⟩) :=
   boundaryFaceMap_delete_eq _ _ _ _ _
 
-private theorem continuous_boundaryInverseSuccPoint (n : ℕ) :
+theorem continuous_boundaryInverseSuccPoint (n : ℕ) :
     Continuous (boundaryInverseSuccPoint.{u} n) := by
   let F (i : Fin (n + 2)) : Set (simplexBoundarySet.{u} (n + 1)) :=
     {p | p.val.down.weights i = 0}
