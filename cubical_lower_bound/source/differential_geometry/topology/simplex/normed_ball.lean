@@ -14,7 +14,7 @@ namespace DifferentialGeometry.Simplex
 variable {n : ℕ} {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
   (e : (Fin n → ℝ) ≃L[ℝ] E)
 
-private theorem coordinateBody_interior_nonempty : (interior (e '' coordinateSimplex n)).Nonempty := by
+theorem coordinateBody_interior_nonempty : (interior (e '' coordinateSimplex n)).Nonempty := by
   change (interior (e.toHomeomorph '' coordinateSimplex n)).Nonempty
   rw [← e.toHomeomorph.image_interior]
   exact (interior_coordinateSimplex_nonempty n).image e

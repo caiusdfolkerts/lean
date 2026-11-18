@@ -3355,7 +3355,7 @@ theorem boundaryComplex_simplexComplex_std (n : ℕ)
       (hspace.symm ▸ B.convexHull_subset_space hs
         (openSimplex_subset_convexHull s hx))
 
-private noncomputable def classicalConeComplex {E : Type*}
+noncomputable def classicalConeComplex {E : Type*}
     [NormedAddCommGroup E] [NormedSpace ℝ E] {p : E}
     {L : Geometry.SimplicialComplex ℝ E} (h : IsConeBase p L) :
     Geometry.SimplicialComplex ℝ E :=
@@ -6205,7 +6205,7 @@ private theorem orderEmbOfFin_erase_apply
   rw [hcycle]
   exact congrFun heq i |>.symm
 
-private noncomputable def orderPositionOfCard
+noncomputable def orderPositionOfCard
     (r : LinearOrder E) (s : Finset E) {N : ℕ} (h : s.card = N)
     (v : E) (hv : v ∈ s) : Fin N := by
   let _ := r
