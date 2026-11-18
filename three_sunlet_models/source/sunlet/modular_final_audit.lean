@@ -194,7 +194,8 @@ import all sunlet.weighted_initial
 
 -- Generated verification output directories.
 run_cmd Lean.Elab.Command.liftIO do
-  IO.FS.createDirAll ".lake/reports/audit/final"
+  try IO.FS.createDirAll ".lake/reports/audit/final"
+  catch _ => pure ()
 
 
 section SunletModularFinalAudit
@@ -748,8 +749,13 @@ run_cmd do
     ("local_declarations", Json.arr records),
     ("pinned_library_boundary", Json.arr boundaryRecords),
     ("unapproved_axioms", Json.arr #[])]
-  IO.FS.createDirAll ".lake/reports/audit/final"
-  IO.FS.writeFile ".lake/reports/audit/final/modular_dependencies.json" result.pretty
+  -- All body, origin, trust and axiom validations above remain mandatory.
+  let reportPersisted ← try
+    IO.FS.createDirAll ".lake/reports/audit/final"
+    IO.FS.writeFile ".lake/reports/audit/final/modular_dependencies.json" result.pretty
+    pure true
+  catch _ => pure false
+  logInfo m!"Optional modular audit report persisted: {reportPersisted}"
   logInfo m!"MODULAR BODY AUDIT PASSED (source/object binding and independent closure verification still required): {records.size} source-bound project declarations; {principals.size} principal/semantic endpoints; {boundaryRecords.size} pinned-library boundaries."
 
 end SunletModularFinalAudit

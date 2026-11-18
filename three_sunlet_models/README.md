@@ -27,3 +27,26 @@ Here's a guide to help you navigate this repo! All verified theorems/proposition
 | Theorem 7.1 | The complete automorphism-orbit and inverse-stable-partition dimension classification, including both exceptional cases. |
 | Corollary 7.4 | The cyclic orbit-model formula for every order n≥5 and every automorphism subgroup. |
 | Corollary 8.1 | The complete dimension formula for actual finite binary level-one graphs, with triangles and the two-leaf edge case. |
+
+## Palomar statement of record
+
+The independent `Challenge.lean` selects every main theorem and substantive
+corollary listed above, including the original group-coordinate dimension
+statement, the exact normalized degree and character-wreath Galois equivalence,
+full algebraic general fibers, rationality over the original characteristic-zero
+field, literal two-point prime-loop ambiguity, all retained cyclic coordinates,
+and both network formulas on actual binary level-one graphs.
+
+The exact sixteen theorem declarations and one multiplicative-equivalence
+definition are listed in `comparator.json`, alongside seven supporting theorem
+obligations. `Solution.lean` imports their
+substantive source implementations under the original names. All custom
+polynomial maps, affine closures, normalized function fields, loop data,
+partitions and graph definitions are inlined in the statement. Supporting
+tangent/contact and field-reconstruction lemmas remain in the proof closure.
+
+The independent Challenge passed its pinned remote elaboration check with the
+23 intended theorem placeholders and the selected constructive Galois-value
+placeholder. This checks the statement interfaces only. Full substantive
+Solution compilation, strict Comparator and independent kernel verification
+remain pending; the package is ready for that full preflight.

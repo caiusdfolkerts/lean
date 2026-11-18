@@ -1,0 +1,60 @@
+version: v0.4
+project:
+  name: Dimension and identifiability of three-sunlet models
+  description: >-
+    Normalized Latin systems of every order m at least five have three-sunlet
+    image dimension 5m-4 in every characteristic, including the original finite
+    abelian-group coordinates. Two transitive derangement families give the
+    stated dimension 3m+2c-2. Complex generic fibers have unique unordered toric
+    decomposition, normalized degree twice the square of the loop abelianization
+    order, and the character-wreath Galois group. The model is rational over Q.
+    Prime nonassociative loops give precisely two normalized general preimages;
+    cyclic models of every order at least six admit rational reconstruction from
+    the literal 8m-12 retained coordinates. Orbit and inverse-stable partition
+    identifications have the complete dimension classification, which yields
+    the full binary level-one network formula including triangles and two leaves.
+  authors: [Caius Folkerts]
+  responsible_maintainers: [Caius Folkerts]
+  license: Apache-2.0
+sources:
+  - type: article
+    title: Dimension and identifiability of three-sunlet models
+    authors: [Caius Folkerts]
+    identifier: paper.pdf
+    relationship: formalizes
+    note: >-
+      Theorems 1.1, 2.3, 4.2, 6.1 and 7.1; Corollaries 5.1, 7.4 and 8.1.
+      The Galois-group equivalence is compared as a definition value of its
+      exact displayed multiplicative-equivalence type.
+classification:
+  arxiv: [math.AG, math.ST]
+  msc2020: [14M25, 62R01]
+automation:
+  methods:
+    - method: agent
+      tool_setup: OpenAI Codex with GPT-6.1 Sol, preparing Palomar packaging.
+      notes: >-
+        The supplied paper discloses GPT-6 Astra, GPT-5.6 Sol, and Kimi K3
+        assistance in developing the proofs. Prior prompt history was not
+        reconstructed. This preparation copies the substantive proof and
+        extracts an independent exact-definition Challenge for all main results.
+review:
+  status: unchecked
+  notes: >-
+    The independent Challenge passed pinned remote elaboration at diagnostic
+    commit 61cecd364f2d5d41817bc7e362421de6015daf51, run 44351576861. This is a
+    statement-interface check with intentional placeholders, not a proof build
+    or Comparator result. Full Solution compilation, strict dependency comparison
+    and independent kernel verification remain pending.
+fidelity:
+  notes: >-
+    The dimension statements retain every characteristic, literal affine image
+    closure and original group-coordinate map. Complex hypotheses occur only
+    where the paper uses them. Rationality is over the original characteristic-zero
+    field, so Q is included without algebraic closedness. The retained coordinate
+    set, normalized generic fibers, character-wreath group, arbitrary automorphism
+    subgroups, inverse-stable partitions and actual binary-cactus network
+    definitions are retained. Supporting tangent, contact, differential and
+    field-reconstruction lemmas remain in the proof closure but are not separate
+    Comparator targets. Source snapshot: caiusdfolkerts/research at
+    e0696fddcd3d10b5d6461e62e9b2f02c4195be37.
