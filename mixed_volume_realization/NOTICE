@@ -2,3 +2,5 @@ Copyright 2026 Caius Folkerts. Original code and documentation are licensed unde
 
 
 Publication preparation, 5 November 2026: module filenames and imports were normalised, verification output paths were moved under .lake, and the documentation was adapted to Markdown. Existing third-party copyright and attribution notices are retained in the source and licenses directory.
+
+Proof-only Tau Ceti source closure: 31 modules copied without modification from https://github.com/TauCetiProject/TauCeti at 06d5bb4e3ebb737dc6538567f5c53bf8800b9362. Original source copyright and Authors headers are retained. See licenses/vendor/tauceti/LICENSE and source-manifest.json.

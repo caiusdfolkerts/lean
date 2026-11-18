@@ -33,9 +33,13 @@ sources:
     type: other
     relationship: background
     notes: >-
-      Canonical dependency revisions are pinned in lake-manifest.json.
-      Vendored supporting modules retain their source copyright headers and
-      licences. These libraries supply background formal mathematics.
+      Mathlib and its exact canonical closure remain pinned in lake-manifest.json.
+      The 31 proof-only Tau Ceti modules are copied byte-for-byte from
+      TauCetiProject/TauCeti at 06d5bb4e3ebb737dc6538567f5c53bf8800b9362; source hashes,
+      original copyright headers and the upstream Apache-2.0 licence are retained
+      under licenses/vendor/tauceti. No Tau Ceti module is imported by Challenge.
+      This local proof library replaces the external all-module default build;
+      no mathematical source, statement, proof or kernel check is weakened.
 automation:
   methods:
     - method: agent
@@ -66,3 +70,9 @@ fidelity:
     are supplied by Solution through Comparator definition_names. The uniform
     theorem constrains their values for every dimension, valid rational input
     representation, stochastic initial row and threshold in (0,1).
+    The Challenge, Solution, Comparator configuration and every original paper
+    source are byte-identical to the preceding snapshot. This separate candidate
+    adds only the exact recursive proof-source Tau Ceti import closure and its
+    attribution, and changes Lake wiring to build it locally against the same
+    Mathlib and Lean pins. No new complete build or independent kernel replay
+    has yet been established for this candidate.
