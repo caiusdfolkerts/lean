@@ -1,4 +1,5 @@
 module
+public import Mathlib
 public import Mathlib.Analysis.Convex.Exposed
 public import Mathlib.Analysis.Convex.KreinMilman
 public import Mathlib.Analysis.InnerProductSpace.PiL2
@@ -27,7 +28,7 @@ original source headers and third-party Apache-2.0 licences.
 noncomputable section
 open Set
 open scoped Pointwise Classical
-namespace LeanEval.Geometry.PlatonicClassification
+namespace PalomarCubical.Geometry
 
 /-- Euclidean n-space, with Mathlib's usual real inner product. -/
 abbrev E (n : ℕ) := EuclideanSpace ℝ (Fin n)
@@ -56,10 +57,10 @@ end ConvexPolytope
 
 /-- Nonempty faces, carrying the inherited inclusion order. -/
 abbrev FaceType {n : ℕ} (P : ConvexPolytope n) := {F : Set (E n) // P.IsFace F}
-end LeanEval.Geometry.PlatonicClassification
+end PalomarCubical.Geometry
 
 
-namespace LeanEval.Geometry.PlatonicClassification
+namespace PalomarCubical.Geometry
 open ConvexPolytope
 variable {n : ℕ}
 /-- Affine dimension of a geometric face. -/
@@ -75,21 +76,29 @@ noncomputable def faceSet (P : ConvexPolytope n) : Finset (Set (E n)) :=
 noncomputable def faceNumber (P : ConvexPolytope n) (i : ℕ) : ℕ := by
   classical
   exact ((faceSet P).filter (fun F => faceDim F = i)).card
-/-- The face as a convex polytope, with its actual extreme vertices. -/
+theorem facePolytope_vertices_nonempty (P : ConvexPolytope n) {f : Set (E n)}
+    (hf : P.IsFace f) : (P.vertices.filter (· ∈ f)).Nonempty := by sorry
+theorem facePolytope_vertices_extreme (P : ConvexPolytope n) {f : Set (E n)}
+    (hf : P.IsFace f) : ((P.vertices.filter (· ∈ f) : Finset (E n)) : Set (E n)) =
+      Set.extremePoints ℝ (convexHull ℝ ((P.vertices.filter (· ∈ f) : Finset (E n)) : Set (E n))) := by sorry
+/-- The actual face hull, with precisely the original extreme vertices on it. -/
 noncomputable def facePolytope (P : ConvexPolytope n) {f : Set (E n)}
     (hf : P.IsFace f) : ConvexPolytope n where
   vertices := P.vertices.filter (· ∈ f)
-  vertices_nonempty := by sorry
-  vertices_eq_extremePoints := by sorry
+  vertices_nonempty := facePolytope_vertices_nonempty P hf
+  vertices_eq_extremePoints := facePolytope_vertices_extreme P hf
 /-- A sign vector of the standard geometric cube. -/
 noncomputable def vertIper {d : ℕ} (s : Fin d → Bool) : E d :=
   (EuclideanSpace.equiv (Fin d) ℝ).symm (fun i => if s i then 1 else -1)
 /-- The set of all 2^d cube vertices. -/
 noncomputable def verticiIper (d : ℕ) : Finset (E d) :=
   (Finset.univ : Finset (Fin d → Bool)).image vertIper
-/-- The convex hull of all sign vectors, including the zero-dimensional cube. -/
+theorem cube_vertices_nonempty (d : ℕ) : (verticiIper d).Nonempty := by sorry
+theorem cube_vertices_extreme (d : ℕ) : (verticiIper d : Set (E d)) =
+    Set.extremePoints ℝ (convexHull ℝ (verticiIper d : Set (E d))) := by sorry
+/-- The complete standard sign-vector hull in every dimension, including zero. -/
 noncomputable def standardCube (d : ℕ) : ConvexPolytope d :=
-  ⟨verticiIper d, by sorry, by sorry⟩
+  ⟨verticiIper d, cube_vertices_nonempty d, cube_vertices_extreme d⟩
 /-- Combinatorial equivalence via the ordinary nonempty geometric face posets. -/
 def CombinatoriallyEquivalent {n m : ℕ}
     (P : ConvexPolytope n) (Q : ConvexPolytope m) : Prop :=
@@ -103,11 +112,11 @@ def IsCubical {n : ℕ} (P : ConvexPolytope n) : Prop :=
 def GeneralVertexStep (P : ConvexPolytope n) (p q : E n) : Prop :=
   q ∈ P.vertices ∧ p ≠ q ∧
     ∃ e : Set (E n), P.IsFace e ∧ faceDim e = 1 ∧ p ∈ e ∧ q ∈ e
-end LeanEval.Geometry.PlatonicClassification
+end PalomarCubical.Geometry
 
-namespace Papers.Polytopes
-open LeanEval.Geometry.PlatonicClassification
-open LeanEval.Geometry.PlatonicClassification.ConvexPolytope
+namespace PalomarCubical.Polytopes
+open PalomarCubical.Geometry
+open PalomarCubical.Geometry.ConvexPolytope
 variable {d : ℕ}
 /-- Positive homothety of actual convex sets, allowing translation. -/
 def IsHomotheticCopy (P A : ConvexPolytope d) : Prop :=
@@ -130,17 +139,26 @@ def IsHomothetyOnVertices (P : ConvexPolytope d) (f : E d → E d) : Prop :=
   ∃ a : ℝ, ∃ b : E d, ∀ v ∈ P.vertices, f v = a • v + b
 /-- Actual extreme vertices, with no extraneous ambient points. -/
 abbrev Vertex (P : ConvexPolytope d) := {x : E d // x ∈ P.vertices}
-/-- Parallel vertex assignments before quotienting by constant translations. -/
-def redrawingSpace (P : ConvexPolytope d) :
-    Submodule ℝ (Vertex P → E d) where
-  carrier := {h | ∀ u v : Vertex P, GeneralVertexStep P u v →
-    ∃ a : ℝ, h v - h u = a • ((v : E d) - (u : E d))}
-  zero_mem' := by sorry
-  add_mem' := by sorry
-  smul_mem' := by sorry
+def ParallelAssignment (P : ConvexPolytope d) (h : Vertex P → E d) : Prop :=
+  ∀ u v : Vertex P, GeneralVertexStep P u v →
+    ∃ a : ℝ, h v - h u = a • ((v : E d) - (u : E d))
+theorem parallelAssignment_zero (P : ConvexPolytope d) : ParallelAssignment P 0 := by sorry
+theorem parallelAssignment_add (P : ConvexPolytope d) :
+    ∀ {h k : Vertex P → E d}, ParallelAssignment P h → ParallelAssignment P k →
+      ParallelAssignment P (h+k) := by sorry
+theorem parallelAssignment_smul (P : ConvexPolytope d) :
+    ∀ (a : ℝ) {h : Vertex P → E d}, ParallelAssignment P h → ParallelAssignment P (a • h) := by sorry
+/-- The literal actual-edge parallel assignment subspace. -/
+def redrawingSpace (P : ConvexPolytope d) : Submodule ℝ (Vertex P → E d) where
+  carrier := {h | ParallelAssignment P h}
+  zero_mem' := parallelAssignment_zero P
+  add_mem' := parallelAssignment_add P
+  smul_mem' := parallelAssignment_smul P
+theorem translation_parallel (P : ConvexPolytope d) (b : E d) :
+    ParallelAssignment P (fun _ => b) := by sorry
 /-- The linear map taking a translation vector to its constant assignment. -/
 def translationMap (P : ConvexPolytope d) : E d →ₗ[ℝ] redrawingSpace P where
-  toFun b := ⟨fun _ => b, by intro u v _; exact ⟨0, by simp⟩⟩
+  toFun b := ⟨fun _ => b, translation_parallel P b⟩
   map_add' _ _ := rfl
   map_smul' _ _ := rfl
 /-- The subspace of constant translations. -/
@@ -158,19 +176,19 @@ variable (P : ConvexPolytope d) {F : Set (E d)} (hF : P.IsFace F)
 /-- Inclusion of an actual extreme vertex of a face into the original vertex set. -/
 def faceVertex (v : Vertex (facePolytope P hF)) : Vertex P :=
   ⟨v, (Finset.mem_filter.mp v.property).1⟩
+theorem redrawing_restriction_parallel (h : redrawingSpace P) :
+    ParallelAssignment (facePolytope P hF) (fun v => h (faceVertex P hF v)) := by sorry
 /-- Restriction of actual parallel assignments to a face. -/
-def redrawingRestriction :
-    redrawingSpace P →ₗ[ℝ] redrawingSpace (facePolytope P hF) where
-  toFun h := ⟨fun v => h (faceVertex P hF v), by sorry⟩
+def redrawingRestriction : redrawingSpace P →ₗ[ℝ] redrawingSpace (facePolytope P hF) where
+  toFun h := ⟨fun v => h (faceVertex P hF v), redrawing_restriction_parallel P hF h⟩
   map_add' _ _ := rfl
   map_smul' _ _ := rfl
-/-- The induced map on parallel redrawings modulo translations. -/
-def deformationRestriction :
-    DeformationSpace P →ₗ[ℝ] DeformationSpace (facePolytope P hF) :=
+theorem redrawing_restriction_translation : ∀ h, h ∈ translationSpace P →
+    redrawingRestriction P hF h ∈ translationSpace (facePolytope P hF) := by sorry
+/-- The induced map on literal parallel redrawings modulo translations. -/
+def deformationRestriction : DeformationSpace P →ₗ[ℝ] DeformationSpace (facePolytope P hF) :=
   (translationSpace P).mapQ (translationSpace (facePolytope P hF))
-    (redrawingRestriction P hF) (by
-      rintro h ⟨b, rfl⟩
-      exact ⟨b, rfl⟩)
+    (redrawingRestriction P hF) (redrawing_restriction_translation P hF)
 /-- A face determines P exactly when quotient-space restriction is injective. -/
 def FaceDetermines : Prop := Function.Injective (deformationRestriction P hF)
 /-- Lemma 3(ii) for vertex assignments. -/
@@ -206,11 +224,11 @@ def ProjectivelyParallelepiped (G : Set (E 4)) : Prop :=
   ∃ T : HomogeneousProjectivity 4, ProjectivelyPositiveOn T G ∧
     ∃ e : E 3 →ᵃ[ℝ] E 4, Function.Injective e ∧
       projectiveApply T '' G = e '' (standardCube 3).toSet
-end Papers.Polytopes
+end PalomarCubical.Polytopes
 
-namespace CubicalIndecomposability
-open LeanEval.Geometry.PlatonicClassification
-open LeanEval.Geometry.PlatonicClassification.ConvexPolytope Papers.Polytopes
+namespace PalomarCubical.Results
+open PalomarCubical.Geometry
+open PalomarCubical.Geometry.ConvexPolytope PalomarCubical.Polytopes
 /-- Theorem 1 in full, including arbitrary convex summands. -/
 theorem theorem_one :
     ∃ K : ConvexPolytope 4,
@@ -236,11 +254,11 @@ theorem lemma_three_one {V : Type*} [AddCommGroup V] [Module ℝ V]
     (hparallel : ∀ i : Fin 4, ∃ a : ℝ,
       h (i + 1) - h i = a • (p (i + 1) - p i)) :
     ∃ a : ℝ, ∃ b : V, ∀ i : Fin 4, h i = a • p i + b := by sorry
-end CubicalIndecomposability
+end PalomarCubical.Results
 
-namespace CubicalIndecomposability.Block
-open LeanEval.Geometry.PlatonicClassification
-open LeanEval.Geometry.PlatonicClassification.ConvexPolytope Papers.Polytopes
+namespace PalomarCubical.Results.Block
+open PalomarCubical.Geometry
+open PalomarCubical.Geometry.ConvexPolytope PalomarCubical.Polytopes
 /-- Proposition 5, including genuine quotient restriction and geometric interfaces. -/
 theorem proposition_five :
     ∃ P : ConvexPolytope 4,
@@ -258,4 +276,4 @@ theorem proposition_five :
         Module.finrank ℝ (deformationRestriction P hF).range ≤ 2 ∧
         HasAffineInterfaceNormalization P F H Q ∧
         ProjectivelyParallelepiped G := by sorry
-end CubicalIndecomposability.Block
+end PalomarCubical.Results.Block
