@@ -1,3 +1,5 @@
+module
+
 import TauCeti.LinearAlgebra.ExteriorAlgebra.Contraction
 /-! # Augmented simplicial chains as genuine exterior-algebra chains
 

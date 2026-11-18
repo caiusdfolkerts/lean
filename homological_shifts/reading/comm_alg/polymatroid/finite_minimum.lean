@@ -1,3 +1,5 @@
+module
+
 import Mathlib.Data.Finset.Lattice.Fold
 
 /-! # Exact minima of nonempty finite families of natural numbers -/

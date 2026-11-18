@@ -1,3 +1,5 @@
+module
+
 import CommAlg.Simplicial.Chains
 
 /-! # Chain-level deletion/contraction and nonzero homology

@@ -1,3 +1,5 @@
+module
+
 import CommAlg.Polymatroid.Exponents
 import CommAlg.Simplicial.Chains
 /-! # Upper Koszul faces as actual divisibility conditions -/

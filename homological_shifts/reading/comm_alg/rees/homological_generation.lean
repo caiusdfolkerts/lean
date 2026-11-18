@@ -1,3 +1,5 @@
+module
+
 import CommAlg.IntegralClosure.HomologicalRees
 import CommAlg.Polymatroid.HomologicalStabilization
 import CommAlg.Rees.OneColor

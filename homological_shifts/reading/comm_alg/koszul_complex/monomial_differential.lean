@@ -1,3 +1,5 @@
+module
+
 import CommAlg.KoszulComplex.MonomialBasis
 import CommAlg.KoszulComplex.CoefficientTor
 

@@ -1,3 +1,5 @@
+module
+
 import CommAlg.Polymatroid.HomogenizedBases
 
 /-! # The actual homogenized polynomial ideal

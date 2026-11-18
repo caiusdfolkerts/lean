@@ -1,3 +1,5 @@
+module
+
 import CommAlg.IntegralClosure.OrdinaryRees
 
 /-! # The actual equivalence between ordinary and one-color Rees algebras -/

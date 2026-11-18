@@ -1,3 +1,5 @@
+module
+
 import CommAlg.IntegralClosure.SemigroupAlgebra
 import CommAlg.Polymatroid.MultiRank
 import Mathlib.Algebra.MvPolynomial.Equiv

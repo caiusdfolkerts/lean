@@ -1,3 +1,5 @@
+module
+
 import CommAlg.Polymatroid.PowerShiftRees
 
 /-! # Exact degrees of the minimal monomial generators of the actual Rees ideal -/

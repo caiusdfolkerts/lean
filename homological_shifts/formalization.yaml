@@ -1,0 +1,65 @@
+version: v0.4
+project:
+  name: Rank formulas for homological shifts of polymatroidal ideals
+  description: Over every field, actual homological shifts of polymatroidal ideals
+    obey the uniform power-stabilization equality, also with a fixed polymatroidal
+    twist. An explicit partition minimum gives the exact integral polymatroid rank
+    and its canonicality in every nonzero shift. The same partition data compute the
+    genuine categorical projective dimension of every positive power and its eventual
+    value. The independent statement uses actual augmented Koszul homology, identified
+    with genuine derived Tor by the Solution.
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.AC
+  - math.CO
+  msc2020:
+  - 13D02
+  - 05B35
+sources:
+- type: paper
+  title: Rank formulas for homological shifts of polymatroidal ideals
+  authors:
+  - Caius Folkerts
+  relationship: formalizes
+  author_endorsement: participated
+  url: https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf
+  note: 'Exact included paper SHA-256: 174c3153cdc92a4868e0516cdf444b0e364112495716eeb41e2872b4c664c0b8.
+    Scope and declaration locations are recorded in map.json; novelty is not independently
+    established.'
+automation:
+  methods:
+  - method: agent
+    tool_setup: OpenAI Codex
+    notes: Current packaging, source-block migration, source mapping and independent
+      statement extraction are agent-assisted. Fresh build and Comparator evidence
+      are not yet available.
+  - method: other
+    tool_setup: Historical AI assistance reported in the included paper
+    notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing
+      its proofs. The exact model roles and extent of historical Lean automation have
+      not been reconstructed from the snapshot.
+review:
+  status: unchecked
+  notes: Paper/README/source mapping inspected by the preparation agent. The independent
+    Challenge elaborated against the exact pinned Lean/Mathlib environment; Solution
+    build, Comparator, independent kernel replay and expert review remain incomplete.
+    No Palomar review or registration is claimed.
+scope:
+  known_gaps:
+  - Theorem 1.1 Rees-module generation and sharpness, mixed-power Corollary 4.1, exact
+    generator intervals of Theorem 4.4, total Betti support of Theorem 5.1 and integral-closure
+    Theorem 6.1/Corollary 6.2 still require extraction.
+  - The fresh Solution build must verify both the source migration and the explicit
+    standard-Koszul/derived-Tor bridge.
+  notes: The submitted project contains the substantive historical proof development
+    copied from the pinned source snapshot; this is not a thin wrapper. Historical
+    upstream dependencies and license notices are retained. See map.json for exact
+    proposed selections and unresolved source mapping.
+  current_selection: The stabilization and fixed-twist clauses of Theorem 1.1, exact
+    rank and canonicality clauses of Theorem 1.2, and actual projective-dimension
+    Corollary 4.3 are selected.

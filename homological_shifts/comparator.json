@@ -1,0 +1,20 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "PalomarHomological.stabilization",
+    "PalomarHomological.twistedStabilization",
+    "PalomarHomological.exactRankFormula",
+    "PalomarHomological.canonicalRank",
+    "FourPapers.Homological.corollary_4_3",
+    "FourPapers.Homological.corollary_4_3_eventual",
+    "CommAlg.Polymatroid.IsPolymatroidalIdeal.mul",
+    "CommAlg.Polymatroid.IsPolymatroidalIdeal.pow",
+    "CommAlg.Polymatroid.isPolymatroidalIdeal_rankIdeal"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

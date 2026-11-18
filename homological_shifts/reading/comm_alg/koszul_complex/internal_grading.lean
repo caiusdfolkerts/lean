@@ -1,3 +1,5 @@
+module
+
 import CommAlg.KoszulComplex.DerivedDecomposition
 import Mathlib.Algebra.DirectSum.Module
 

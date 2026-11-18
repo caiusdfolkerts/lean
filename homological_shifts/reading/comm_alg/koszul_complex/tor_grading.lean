@@ -1,3 +1,5 @@
+module
+
 import CommAlg.KoszulComplex.GradedTor
 
 /-! # Completeness and independence of the genuine Tor multigrading

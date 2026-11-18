@@ -1,3 +1,5 @@
+module
+
 import CommAlg.Polymatroid.IdealProducts
 
 noncomputable section

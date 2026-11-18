@@ -1,3 +1,5 @@
+module
+
 import CommAlg.ProjectiveDimension.RankIdealUpper
 import CommAlg.KoszulComplex.CoefficientProjectiveDimension
 import CommAlg.KoszulComplex.TorGrading

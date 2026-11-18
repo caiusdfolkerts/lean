@@ -1,3 +1,5 @@
+module
+
 import CommAlg.IntegralClosure.ShiftWeights
 
 /-! # Integral closure of the actual multi-Rees coefficient ideal

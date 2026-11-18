@@ -1,3 +1,5 @@
+module
+
 import CommAlg.IntegralClosure.Weight
 
 /-! # Integral closure of ideals cut out by integer linear weights

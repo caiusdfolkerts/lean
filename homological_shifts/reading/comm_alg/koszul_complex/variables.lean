@@ -1,3 +1,5 @@
+module
+
 import Mathlib.RingTheory.MvPolynomial.Ideal
 import Mathlib.RingTheory.Regular.RegularSequence
 import Mathlib.Data.List.Nodup

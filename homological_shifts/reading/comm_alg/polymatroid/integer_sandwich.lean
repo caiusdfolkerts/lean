@@ -1,3 +1,5 @@
+module
+
 import CommAlg.Polymatroid.RankIdeal
 
 /-! # Integral submodular / supermodular sandwich

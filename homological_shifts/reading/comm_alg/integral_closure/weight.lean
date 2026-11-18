@@ -1,3 +1,5 @@
+module
+
 import Mathlib.RingTheory.MvPolynomial.WeightedHomogeneous
 import Mathlib.Algebra.MvPolynomial.NoZeroDivisors
 import Mathlib.RingTheory.Ideal.Operations

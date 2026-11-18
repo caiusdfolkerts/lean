@@ -1,3 +1,5 @@
+module
+
 import CommAlg.Polymatroid.PowerShiftLeastGeneration
 
 /-! # The explicit inequalities selecting new minimal Rees generators -/

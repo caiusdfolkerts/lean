@@ -1,3 +1,5 @@
+module
+
 import CommAlg.IntegralClosure.MultiRees
 
 /-! # Generating an actual multigraded Rees ideal in a finite box

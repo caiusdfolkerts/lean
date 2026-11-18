@@ -1,3 +1,5 @@
+module
+
 import Mathlib.RingTheory.MvPolynomial.Ideal
 import Mathlib.Data.Finsupp.Weight
 import Mathlib.Order.Preorder.Finite

@@ -1,3 +1,5 @@
+module
+
 import CommAlg.Polymatroid.PowerShiftGenerators
 
 /-! # Minimal Rees monomials really generate the coefficientwise ideal -/

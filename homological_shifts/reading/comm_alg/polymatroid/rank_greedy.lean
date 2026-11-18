@@ -1,3 +1,5 @@
+module
+
 import CommAlg.Polymatroid.RankBases
 
 /-! # Base extension and recovery of every canonical rank value -/

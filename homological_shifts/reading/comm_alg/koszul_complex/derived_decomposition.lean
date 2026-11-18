@@ -1,3 +1,5 @@
+module
+
 import CommAlg.KoszulComplex.TorGrading
 
 /-! # Every genuine derived Tor class is a finite sum of multigraded classes -/

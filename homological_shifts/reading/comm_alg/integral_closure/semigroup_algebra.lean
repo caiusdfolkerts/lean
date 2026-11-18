@@ -1,3 +1,5 @@
+module
+
 import CommAlg.IntegralClosure.Ideal
 import Mathlib.Algebra.Algebra.Subalgebra.Lattice
 import Mathlib.Algebra.Group.Submonoid.Basic

@@ -1,3 +1,5 @@
+module
+
 public import Mathlib.LinearAlgebra.CliffordAlgebra.Conjugation
 public import Mathlib.LinearAlgebra.ExteriorAlgebra.Basis
 import Mathlib.Tactic.LinearCombination

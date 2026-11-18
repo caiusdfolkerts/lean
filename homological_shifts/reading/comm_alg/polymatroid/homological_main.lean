@@ -1,3 +1,5 @@
+module
+
 import CommAlg.KoszulComplex.GradedTor
 import CommAlg.Polymatroid.KoszulRankFormula
 import CommAlg.Polymatroid.IdealProducts

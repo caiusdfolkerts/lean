@@ -1,0 +1,421 @@
+{
+  "project": "homological_shifts",
+  "baseline_repository": "caiusdfolkerts/research",
+  "baseline_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
+  "paper_sha256": "174c3153cdc92a4868e0516cdf444b0e364112495716eeb41e2872b4c664c0b8",
+  "one_entry_per_paper": true,
+  "status": "draft_incomplete",
+  "source_selection": [
+    "paper.pdf",
+    "README.md",
+    "source/**/*.lean"
+  ],
+  "coverage": [
+    {
+      "paper_result": "Theorem 1.1, stabilization and generation",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        2
+      ],
+      "declarations": [
+        {
+          "name": "FourPapers.Homological.theorem_1_1",
+          "locations": [
+            {
+              "name": "FourPapers.Homological.theorem_1_1",
+              "declaration_kind": "theorem",
+              "source_path": "source/four_papers/homological/complete.lean",
+              "source_line": 17163,
+              "source_sha256": "389a4ee083aece791154ada1e90706a73524d01b52a243aa0df6b49804ec088a",
+              "source_spelling": "theorem_1_1"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "FourPapers.Homological.theorem_1_1_twisted",
+          "locations": [
+            {
+              "name": "FourPapers.Homological.theorem_1_1_twisted",
+              "declaration_kind": "theorem",
+              "source_path": "source/four_papers/homological/complete.lean",
+              "source_line": 17170,
+              "source_sha256": "389a4ee083aece791154ada1e90706a73524d01b52a243aa0df6b49804ec088a",
+              "source_spelling": "theorem_1_1_twisted"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "FourPapers.Homological.theorem_1_1_generation",
+          "locations": [
+            {
+              "name": "FourPapers.Homological.theorem_1_1_generation",
+              "declaration_kind": "theorem",
+              "source_path": "source/four_papers/homological/complete.lean",
+              "source_line": 17178,
+              "source_sha256": "389a4ee083aece791154ada1e90706a73524d01b52a243aa0df6b49804ec088a",
+              "source_spelling": "theorem_1_1_generation"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf#page=2"
+    },
+    {
+      "paper_result": "Theorem 1.2, exact rank and canonicality",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        9,
+        13
+      ],
+      "declarations": [
+        {
+          "name": "FourPapers.Homological.theorem_1_2",
+          "locations": [
+            {
+              "name": "FourPapers.Homological.theorem_1_2",
+              "declaration_kind": "theorem",
+              "source_path": "source/four_papers/homological/complete.lean",
+              "source_line": 17186,
+              "source_sha256": "389a4ee083aece791154ada1e90706a73524d01b52a243aa0df6b49804ec088a",
+              "source_spelling": "theorem_1_2"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "FourPapers.Homological.theorem_1_2_canonical",
+          "locations": [
+            {
+              "name": "FourPapers.Homological.theorem_1_2_canonical",
+              "declaration_kind": "theorem",
+              "source_path": "source/four_papers/homological/complete.lean",
+              "source_line": 17194,
+              "source_sha256": "389a4ee083aece791154ada1e90706a73524d01b52a243aa0df6b49804ec088a",
+              "source_spelling": "theorem_1_2_canonical"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf#page=9"
+    },
+    {
+      "paper_result": "Corollary 4.1, mixed powers and generation",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [],
+      "declarations": [
+        {
+          "name": "FourPapers.Homological.corollary_4_1",
+          "locations": [
+            {
+              "name": "FourPapers.Homological.corollary_4_1",
+              "declaration_kind": "theorem",
+              "source_path": "source/four_papers/homological/complete.lean",
+              "source_line": 17323,
+              "source_sha256": "389a4ee083aece791154ada1e90706a73524d01b52a243aa0df6b49804ec088a",
+              "source_spelling": "corollary_4_1"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "FourPapers.Homological.corollary_4_1_generation",
+          "locations": [
+            {
+              "name": "FourPapers.Homological.corollary_4_1_generation",
+              "declaration_kind": "theorem",
+              "source_path": "source/four_papers/homological/complete.lean",
+              "source_line": 17334,
+              "source_sha256": "389a4ee083aece791154ada1e90706a73524d01b52a243aa0df6b49804ec088a",
+              "source_spelling": "corollary_4_1_generation"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf"
+    },
+    {
+      "paper_result": "Proposition 4.2, sharpness",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        10
+      ],
+      "declarations": [
+        {
+          "name": "FourPapers.Homological.proposition_4_2",
+          "locations": [
+            {
+              "name": "FourPapers.Homological.proposition_4_2",
+              "declaration_kind": "theorem",
+              "source_path": "source/four_papers/homological/complete.lean",
+              "source_line": 17204,
+              "source_sha256": "389a4ee083aece791154ada1e90706a73524d01b52a243aa0df6b49804ec088a",
+              "source_spelling": "proposition_4_2"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf#page=10"
+    },
+    {
+      "paper_result": "Corollary 4.3, actual projective dimension",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [],
+      "declarations": [
+        {
+          "name": "FourPapers.Homological.corollary_4_3",
+          "locations": [
+            {
+              "name": "FourPapers.Homological.corollary_4_3",
+              "declaration_kind": "theorem",
+              "source_path": "source/four_papers/homological/complete.lean",
+              "source_line": 17219,
+              "source_sha256": "389a4ee083aece791154ada1e90706a73524d01b52a243aa0df6b49804ec088a",
+              "source_spelling": "corollary_4_3"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "selected_challenge_only_passed"
+        },
+        {
+          "name": "FourPapers.Homological.corollary_4_3_eventual",
+          "locations": [
+            {
+              "name": "FourPapers.Homological.corollary_4_3_eventual",
+              "declaration_kind": "theorem",
+              "source_path": "source/four_papers/homological/complete.lean",
+              "source_line": 17227,
+              "source_sha256": "389a4ee083aece791154ada1e90706a73524d01b52a243aa0df6b49804ec088a",
+              "source_spelling": "corollary_4_3_eventual"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "selected_challenge_only_passed"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf"
+    },
+    {
+      "paper_result": "Theorem 4.4, exact generator interval",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        3
+      ],
+      "declarations": [
+        {
+          "name": "FourPapers.Homological.theorem_4_4_zero",
+          "locations": [
+            {
+              "name": "FourPapers.Homological.theorem_4_4_zero",
+              "declaration_kind": "theorem",
+              "source_path": "source/four_papers/homological/complete.lean",
+              "source_line": 17235,
+              "source_sha256": "389a4ee083aece791154ada1e90706a73524d01b52a243aa0df6b49804ec088a",
+              "source_spelling": "theorem_4_4_zero"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "FourPapers.Homological.theorem_4_4",
+          "locations": [
+            {
+              "name": "FourPapers.Homological.theorem_4_4",
+              "declaration_kind": "theorem",
+              "source_path": "source/four_papers/homological/complete.lean",
+              "source_line": 17242,
+              "source_sha256": "389a4ee083aece791154ada1e90706a73524d01b52a243aa0df6b49804ec088a",
+              "source_spelling": "theorem_4_4"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "FourPapers.Homological.theorem_4_4_threshold_formula",
+          "locations": [
+            {
+              "name": "FourPapers.Homological.theorem_4_4_threshold_formula",
+              "declaration_kind": "theorem",
+              "source_path": "source/four_papers/homological/complete.lean",
+              "source_line": 17267,
+              "source_sha256": "389a4ee083aece791154ada1e90706a73524d01b52a243aa0df6b49804ec088a",
+              "source_spelling": "theorem_4_4_threshold_formula"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf#page=3"
+    },
+    {
+      "paper_result": "Theorem 5.1, total actual-Tor support",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [],
+      "declarations": [
+        {
+          "name": "FourPapers.Homological.theorem_5_1",
+          "locations": [
+            {
+              "name": "FourPapers.Homological.theorem_5_1",
+              "declaration_kind": "theorem",
+              "source_path": "source/four_papers/homological/complete.lean",
+              "source_line": 17278,
+              "source_sha256": "389a4ee083aece791154ada1e90706a73524d01b52a243aa0df6b49804ec088a",
+              "source_spelling": "theorem_5_1"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "FourPapers.Homological.theorem_5_1_rank",
+          "locations": [
+            {
+              "name": "FourPapers.Homological.theorem_5_1_rank",
+              "declaration_kind": "theorem",
+              "source_path": "source/four_papers/homological/complete.lean",
+              "source_line": 17298,
+              "source_sha256": "389a4ee083aece791154ada1e90706a73524d01b52a243aa0df6b49804ec088a",
+              "source_spelling": "theorem_5_1_rank"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "FourPapers.Homological.theorem_5_1_field_independent",
+          "locations": [
+            {
+              "name": "FourPapers.Homological.theorem_5_1_field_independent",
+              "declaration_kind": "theorem",
+              "source_path": "source/four_papers/homological/complete.lean",
+              "source_line": 17306,
+              "source_sha256": "389a4ee083aece791154ada1e90706a73524d01b52a243aa0df6b49804ec088a",
+              "source_spelling": "theorem_5_1_field_independent"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf"
+    },
+    {
+      "paper_result": "Theorem 6.1 and Corollary 6.2, integral closure",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        14
+      ],
+      "declarations": [
+        {
+          "name": "FourPapers.Homological.theorem_6_1",
+          "locations": [
+            {
+              "name": "FourPapers.Homological.theorem_6_1",
+              "declaration_kind": "theorem",
+              "source_path": "source/four_papers/homological/complete.lean",
+              "source_line": 17313,
+              "source_sha256": "389a4ee083aece791154ada1e90706a73524d01b52a243aa0df6b49804ec088a",
+              "source_spelling": "theorem_6_1"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "FourPapers.Homological.corollary_6_2",
+          "locations": [
+            {
+              "name": "FourPapers.Homological.corollary_6_2",
+              "declaration_kind": "theorem",
+              "source_path": "source/four_papers/homological/complete.lean",
+              "source_line": 17342,
+              "source_sha256": "389a4ee083aece791154ada1e90706a73524d01b52a243aa0df6b49804ec088a",
+              "source_spelling": "corollary_6_2"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf#page=14"
+    }
+  ],
+  "known_gaps": [
+    "Theorem 1.1 Rees-module generation and sharpness, mixed-power Corollary 4.1, exact generator intervals of Theorem 4.4, total Betti support of Theorem 5.1 and integral-closure Theorem 6.1/Corollary 6.2 still require extraction.",
+    "The fresh Solution build must verify both the source migration and the explicit standard-Koszul/derived-Tor bridge."
+  ],
+  "checks": {
+    "source_copy": "complete including retained reading files and licenses",
+    "build": "not_run",
+    "comparator": "not_run",
+    "nanoda": "not_run",
+    "editorial_review": "not_run",
+    "challenge_elaboration": "passed"
+  },
+  "current_selection": "The stabilization and fixed-twist clauses of Theorem 1.1, exact rank and canonicality clauses of Theorem 1.2, and actual projective-dimension Corollary 4.3 are selected.",
+  "selected_wrapper_provenance": [
+    [
+      "PalomarHomological.stabilization",
+      "FourPapers.Homological.theorem_1_1",
+      "Only the standard Koszul-homology definition is substituted for the source derived-Tor shift, along a proved equality."
+    ],
+    [
+      "PalomarHomological.twistedStabilization",
+      "FourPapers.Homological.theorem_1_1_twisted",
+      "The identical derived-Tor/Koszul equality preserves every quantifier and the fixed-twist range."
+    ],
+    [
+      "PalomarHomological.exactRankFormula",
+      "FourPapers.Homological.theorem_1_2",
+      "The numerical rank function is explicit, including the empty-set convention."
+    ],
+    [
+      "PalomarHomological.canonicalRank",
+      "FourPapers.Homological.theorem_1_2_canonical",
+      "The rank is computed from the actual minimal monomial generators. The witness only supplies the already-proved polymatroidality of the shift."
+    ]
+  ],
+  "comparator": {
+    "challenge_module": "Challenge",
+    "solution_module": "Solution",
+    "theorem_names": [
+      "PalomarHomological.stabilization",
+      "PalomarHomological.twistedStabilization",
+      "PalomarHomological.exactRankFormula",
+      "PalomarHomological.canonicalRank",
+      "FourPapers.Homological.corollary_4_3",
+      "FourPapers.Homological.corollary_4_3_eventual"
+    ],
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ]
+  },
+  "challenge": {
+    "path": "source/Challenge.lean",
+    "sha256": "b1503047fa668528c6fcbff62b5c8be4a8ccadba7bf01c45fd2277aa9f8a8c41",
+    "physical_lines": 216,
+    "bytes": 12488,
+    "local_elaboration": "passed",
+    "solution_build": "not_run",
+    "comparator": "not_run"
+  }
+}

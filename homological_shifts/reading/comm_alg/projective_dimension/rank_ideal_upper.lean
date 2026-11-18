@@ -1,3 +1,5 @@
+module
+
 import CommAlg.ProjectiveDimension.KoszulBound
 import CommAlg.ProjectiveDimension.IdealGeneratorExact
 import CommAlg.Polymatroid.RevlexColonCardinality

@@ -1,3 +1,5 @@
+module
+
 import CommAlg.Polymatroid.PowerStabilization
 
 /-! # Exact ceiling thresholds for every subset and every homological degree

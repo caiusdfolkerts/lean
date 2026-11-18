@@ -1,3 +1,5 @@
+module
+
 import CommAlg.Polymatroid.RankShiftFormula
 import CommAlg.Polymatroid.IdealProducts
 

@@ -1,3 +1,5 @@
+module
+
 import CommAlg.KoszulComplex.CoefficientTor
 import CommAlg.KoszulComplex.HomogeneousFaces
 

@@ -1,3 +1,5 @@
+module
+
 import CommAlg.Polymatroid.Dilworth
 
 /-! # Removing the first copy of each supported variable

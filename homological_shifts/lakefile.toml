@@ -11,7 +11,7 @@ rev = "56a005855ea17e0b0958f73ec801ae140b0a1679"
 [[lean_lib]]
 name = "proof"
 srcDir = "source"
-roots = ["four_papers.homological.complete"]
+roots = ["four_papers.homological.complete", "four_papers.homological.complete.PalomarPart000", "four_papers.homological.complete.PalomarPart001"]
 allowImportAll = true
 
 [[lean_lib]]
@@ -19,3 +19,14 @@ name = "verification"
 srcDir = "source"
 roots = ["verification.check_1"]
 allowImportAll = true
+
+[[lean_lib]]
+name = "Palomar"
+srcDir = "source"
+roots = ["Challenge", "Solution"]
+allowImportAll = true
+
+[[lean_lib]]
+name = "PalomarAudit"
+srcDir = "source"
+roots = ["PalomarAudit"]

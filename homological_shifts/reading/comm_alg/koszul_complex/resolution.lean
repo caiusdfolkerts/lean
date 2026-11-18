@@ -1,3 +1,5 @@
+module
+
 import CommAlg.KoszulComplex.Complex
 import CommAlg.KoszulComplex.Variables
 import Mathlib.Algebra.Category.ModuleCat.Projective

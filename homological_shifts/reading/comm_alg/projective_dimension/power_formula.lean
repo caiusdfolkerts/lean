@@ -1,3 +1,5 @@
+module
+
 import CommAlg.ProjectiveDimension.RankIdeal
 import CommAlg.Polymatroid.PowerShiftInterval
 

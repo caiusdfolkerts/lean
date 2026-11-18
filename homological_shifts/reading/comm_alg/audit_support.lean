@@ -1,3 +1,5 @@
+module
+
 import Lean.Elab.Command
 import Lean.Util.CollectAxioms
 import Lean.Util.FoldConsts

@@ -1,3 +1,5 @@
+module
+
 import Mathlib.LinearAlgebra.Basis.Basic
 import Mathlib.Algebra.DirectSum.Decomposition
 import Mathlib.Algebra.DirectSum.Module

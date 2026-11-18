@@ -1,3 +1,5 @@
+module
+
 import CommAlg.Polymatroid.RankGreedy
 
 /-! # Reverse lexicographic exchange and the colon variables
