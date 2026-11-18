@@ -1,0 +1,19 @@
+{
+  "compiler": "/Users/caiusfolkerts/Projects/palomar-supervisor/tooling/elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+  "helpers": {
+    "GraphPureGeometry": {
+      "source_sha256": "60b59a81980a961147a520c441691cedc06f6c30a5b725cdab8282298537e326",
+      "exit": 0,
+      "elapsed_s": 7.924,
+      "peak_rss_bytes": 267976704
+    },
+    "PureGeometricRecordFiles": {
+      "source_sha256": "8ffbd61166c3e7596e6e9558435bc1bfc61b131a8679dea76174e1419fbb6ed3",
+      "exit": 0,
+      "elapsed_s": 3.902,
+      "peak_rss_bytes": 375062528
+    }
+  },
+  "limit_mib": 768,
+  "bound": "Lean -M768; one compiler at a time"
+}

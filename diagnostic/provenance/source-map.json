@@ -1,0 +1,337 @@
+{
+  "upstream_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
+  "paper_sha256": "2092c7b5705fcda1b8efeec8c0be08b76bf5d7d92090564c30917a154a223d7e",
+  "replaced_module": "GraphCompactBlock0528",
+  "original_theorem": "Papers.RationalityTen.GraphFiniteDispatch.Blocks.GraphCompactBlock0528.complete",
+  "half_open_compact_key_interval": [
+    21816,
+    21834
+  ],
+  "row": 29,
+  "ordered_complement_keys": [
+    16536295444736,
+    16536836309248,
+    16537108938752,
+    16537368920832,
+    16537373179904,
+    16537381502976,
+    16537505300480,
+    16539956871424,
+    16540724953088,
+    16544616943872,
+    16544768213120,
+    16544773967872,
+    16544885379200,
+    16545958855296,
+    16549314298384,
+    16608915423232,
+    16609452228608,
+    16632420827136
+  ],
+  "record_dimensions": {
+    "record000": {
+      "cellPred": 112,
+      "framePred": 1,
+      "leafPred": 1,
+      "nodePred": 186
+    },
+    "record001": {
+      "cellPred": 99,
+      "framePred": 1,
+      "leafPred": 1,
+      "nodePred": 2
+    },
+    "record002": {
+      "cellPred": 102,
+      "framePred": 1,
+      "leafPred": 1,
+      "nodePred": 2
+    },
+    "record003": {
+      "cellPred": 112,
+      "framePred": 2,
+      "leafPred": 1,
+      "nodePred": 84
+    },
+    "record004": {
+      "cellPred": 102,
+      "framePred": 1,
+      "leafPred": 1,
+      "nodePred": 30
+    },
+    "record005": {
+      "cellPred": 101,
+      "framePred": 2,
+      "leafPred": 1,
+      "nodePred": 35
+    },
+    "record006": {
+      "cellPred": 98,
+      "framePred": 1,
+      "leafPred": 1,
+      "nodePred": 4
+    },
+    "record007": {
+      "cellPred": 106,
+      "framePred": 2,
+      "leafPred": 1,
+      "nodePred": 6
+    },
+    "record008": {
+      "cellPred": 106,
+      "framePred": 1,
+      "leafPred": 1,
+      "nodePred": 8
+    },
+    "record009": {
+      "cellPred": 120,
+      "framePred": 1,
+      "leafPred": 1,
+      "nodePred": 57
+    },
+    "record010": {
+      "cellPred": 120,
+      "framePred": 2,
+      "leafPred": 1,
+      "nodePred": 54
+    },
+    "record011": {
+      "cellPred": 126,
+      "framePred": 2,
+      "leafPred": 1,
+      "nodePred": 108
+    },
+    "record012": {
+      "cellPred": 117,
+      "framePred": 1,
+      "leafPred": 1,
+      "nodePred": 97
+    },
+    "record013": {
+      "cellPred": 117,
+      "framePred": 2,
+      "leafPred": 1,
+      "nodePred": 6
+    },
+    "record014": {
+      "cellPred": 117,
+      "framePred": 2,
+      "leafPred": 1,
+      "nodePred": 6
+    },
+    "record015": {
+      "cellPred": 99,
+      "framePred": 1,
+      "leafPred": 1,
+      "nodePred": 2
+    },
+    "record016": {
+      "cellPred": 98,
+      "framePred": 1,
+      "leafPred": 1,
+      "nodePred": 2
+    },
+    "record017": {
+      "cellPred": 104,
+      "framePred": 2,
+      "leafPred": 7,
+      "nodePred": 581
+    }
+  },
+  "nonidentity_frames": 8,
+  "frame_witnesses": {
+    "record000": {
+      "0": [
+        "identity"
+      ]
+    },
+    "record001": {
+      "0": [
+        "identity"
+      ]
+    },
+    "record002": {
+      "0": [
+        "identity"
+      ]
+    },
+    "record003": {
+      "0": [
+        "identity"
+      ],
+      "1": [
+        "permutation",
+        654820258080,
+        654820258080
+      ]
+    },
+    "record004": {
+      "0": [
+        "identity"
+      ]
+    },
+    "record005": {
+      "0": [
+        "identity"
+      ],
+      "1": [
+        "permutation",
+        654820258305,
+        654820258305
+      ]
+    },
+    "record006": {
+      "0": [
+        "identity"
+      ]
+    },
+    "record007": {
+      "0": [
+        "identity"
+      ],
+      "1": [
+        "permutation",
+        654820258305,
+        654820258305
+      ]
+    },
+    "record008": {
+      "0": [
+        "identity"
+      ]
+    },
+    "record009": {
+      "0": [
+        "identity"
+      ]
+    },
+    "record010": {
+      "0": [
+        "identity"
+      ],
+      "1": [
+        "permutation",
+        654820196880,
+        654820196880
+      ]
+    },
+    "record011": {
+      "0": [
+        "identity"
+      ],
+      "1": [
+        "permutation",
+        654820196880,
+        654820196880
+      ]
+    },
+    "record012": {
+      "0": [
+        "identity"
+      ]
+    },
+    "record013": {
+      "0": [
+        "identity"
+      ],
+      "1": [
+        "permutation",
+        654820258080,
+        654820258080
+      ]
+    },
+    "record014": {
+      "0": [
+        "identity"
+      ],
+      "1": [
+        "permutation",
+        654820258080,
+        654820258080
+      ]
+    },
+    "record015": {
+      "0": [
+        "identity"
+      ]
+    },
+    "record016": {
+      "0": [
+        "identity"
+      ]
+    },
+    "record017": {
+      "0": [
+        "identity"
+      ],
+      "1": [
+        "permutation",
+        654568538640,
+        654568538640
+      ]
+    }
+  },
+  "typed_leaf_witness_counts": {
+    "quota": 17,
+    "matching": 7
+  },
+  "terminal_match_modules": [
+    "InducedTerminalMatches.M053"
+  ],
+  "terminal_matches": [
+    "Nonrational.InducedTerminalMatches.M053.r1716",
+    "Nonrational.InducedTerminalMatches.M053.r1717",
+    "Nonrational.InducedTerminalMatches.M053.r1718",
+    "Nonrational.InducedTerminalMatches.M053.r1719",
+    "Nonrational.InducedTerminalMatches.M053.r1720",
+    "Nonrational.InducedTerminalMatches.M053.r1721",
+    "Nonrational.InducedTerminalMatches.M053.r1722"
+  ],
+  "source_files_read": {
+    "GraphInputsRow29Part00094Data": {
+      "upstream_path": "source/finite/graph_inputs_row/part_010/graph_inputs_row29_part00094_data.lean",
+      "sha256": "0dc122975500decbc797efda40fe6f39e96480975bbfc2abf1368b46c6ff140e"
+    },
+    "GraphInputsRow29Part00094Frames": {
+      "upstream_path": "source/finite/graph_inputs_row/part_010/graph_inputs_row29_part00094_frames.lean",
+      "sha256": "c0f40752f8d393919215df21680d674f3e83b09ac1d4fb1628938d0cb66c4922"
+    },
+    "GraphInputsRow29Part00094Leaves": {
+      "upstream_path": "source/finite/graph_inputs_row/part_010/graph_inputs_row29_part00094_leaves.lean",
+      "sha256": "88734595dba61a1aa91025d6f7db4a5ddc2e95e9affc83810ea26677b0f7eccf"
+    },
+    "GraphCompactBlock0528": {
+      "upstream_path": "source/finite/graph_compact_block/part_001/graph_compact_block0528.lean",
+      "sha256": "14fac02c23c0bd26a2cd7b2298d5f8e86f478faff4b5bb09bdf96aee9c2735b5"
+    },
+    "GraphInputsRow29Part00094Cases": {
+      "upstream_path": "source/finite/graph_inputs_row/part_010/graph_inputs_row29_part00094_cases.lean",
+      "sha256": "88b3272c3a8daa4ae50adb09b3f9ca5c2e99dcf4217d4a50f60efa04fc607583"
+    },
+    "GraphInputsRow29Part00094Checked": {
+      "upstream_path": "source/finite/graph_inputs_row/part_010/graph_inputs_row29_part00094_checked.lean",
+      "sha256": "67b9371333ddc45c7f3e7ae4f548b8986397e952288f6e530b0f1f3cd9475fbe"
+    },
+    "SharedFrameGroups089Data": {
+      "upstream_path": "source/finite/shared_frame_groups/shared_frame_groups089_data.lean",
+      "sha256": "df2e4636083fdce6bd7a3f9215ba08a7b5508e0d1efe75f0748ad065044d2f3a"
+    },
+    "SharedFrameGroups113Data": {
+      "upstream_path": "source/finite/shared_frame_groups/shared_frame_groups113_data.lean",
+      "sha256": "8bc2b27b7d55c02c45419ac51b99d266208589519902a068cd7e862d87a0dfb8"
+    },
+    "SharedFrameGroups118Data": {
+      "upstream_path": "source/finite/shared_frame_groups/shared_frame_groups118_data.lean",
+      "sha256": "fbe8946b050a9a5cac581cb879782d0bbb3e8d9227b8593c9a73e26ae2f25b2c"
+    },
+    "SharedFrameGroups119Data": {
+      "upstream_path": "source/finite/shared_frame_groups/shared_frame_groups119_data.lean",
+      "sha256": "ea05b6fa083bf760237b259273794d47559ba867dabc5580f60d86eeded703b1"
+    },
+    "InducedTerminalMatches.M053": {
+      "upstream_path": "source/induced_terminal_matches/m053.lean",
+      "sha256": "b948f14e8905550de8661bc42cc97f5a22be9068004d5fb50437856d3f816497"
+    }
+  },
+  "checks_performed": "Original SHA and key order, every frame/leaf witness and record dimension checked in Python. Lean code source only; no compiler or kernel replay."
+}
