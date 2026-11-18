@@ -37,8 +37,10 @@ related_formalizations:
 status:
   scope: The exact553-line independent Challenge passed pinnedLean4.35 canonical-only
     diagnostic run44372929933. The unchanged substantive Source closure compiled in
-    fullrun44375295782; its wrapper had9 reported interface errors. The complete error
-    class is repaired in the revised793-line Solution, which is uncompiled. Actual
+    fullrun44380729160. That run exposed actual implicit-parameter arity mismatches,
+    finite-set membership transport issues and a remaining tree-join instance
+    mismatch. The revised801-line Solution supplies arity-correct bridges and
+    unique-instance transport proofs; these revisions are uncompiled. Actual
     Comparator, independent kernels and a clean editorial review remain pending.
   sorry_count: 0
   sorry_in_definitions: 0

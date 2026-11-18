@@ -2,7 +2,7 @@
   "baseline_project": "graphical_zonotopes",
   "baseline_revision": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
   "entry": "spectra",
-  "status": "frozen_complete9_error_Solution_repair_uncompiled",
+  "status": "frozen_actual_arity_and_instance_transport_repair_uncompiled",
   "comparator_config": "comparator-spectra.json",
   "claims": [
     {
@@ -16,14 +16,14 @@
       },
       "solution": {
         "file": "SolutionSpectra.lean",
-        "line": 580
+        "line": 588
       },
       "source_declaration": "GraphicalZonotopes.paper_corollary_5_2",
       "source": {
         "file": "source/verified/parts/part041.lean",
         "line": 1697
       },
-      "status": "Challenge_passed_repaired_Solution_uncompiled"
+      "status": "Challenge_passed_actual_arity_repair_Solution_uncompiled"
     },
     {
       "paper_results": [
@@ -36,14 +36,14 @@
       },
       "solution": {
         "file": "SolutionSpectra.lean",
-        "line": 592
+        "line": 600
       },
       "source_declaration": "GraphicalZonotopes.SupportsFullIndecomposable.triangle_components_le_three",
       "source": {
         "file": "source/verified/parts/part008.lean",
         "line": 1720
       },
-      "status": "Challenge_passed_repaired_Solution_uncompiled"
+      "status": "Challenge_passed_actual_arity_repair_Solution_uncompiled"
     },
     {
       "paper_results": [
@@ -56,14 +56,14 @@
       },
       "solution": {
         "file": "SolutionSpectra.lean",
-        "line": 602
+        "line": 610
       },
       "source_declaration": "GraphicalZonotopes.threeTree_dimension_and_spectrum",
       "source": {
         "file": "source/verified/parts/part010.lean",
         "line": 1313
       },
-      "status": "Challenge_passed_repaired_Solution_uncompiled"
+      "status": "Challenge_passed_actual_arity_repair_Solution_uncompiled"
     },
     {
       "paper_results": [
@@ -76,14 +76,14 @@
       },
       "solution": {
         "file": "SolutionSpectra.lean",
-        "line": 611
+        "line": 619
       },
       "source_declaration": "GraphicalZonotopes.partial_threeTree_piecewise_maximum",
       "source": {
         "file": "source/verified/parts/part020.lean",
         "line": 1661
       },
-      "status": "Challenge_passed_repaired_Solution_uncompiled"
+      "status": "Challenge_passed_actual_arity_repair_Solution_uncompiled"
     },
     {
       "paper_results": [
@@ -96,14 +96,14 @@
       },
       "solution": {
         "file": "SolutionSpectra.lean",
-        "line": 617
+        "line": 625
       },
       "source_declaration": "GraphicalZonotopes.partial_threeTree_full_dimension_spectrum",
       "source": {
         "file": "source/verified/parts/part020.lean",
         "line": 1682
       },
-      "status": "Challenge_passed_repaired_Solution_uncompiled"
+      "status": "Challenge_passed_actual_arity_repair_Solution_uncompiled"
     },
     {
       "paper_results": [
@@ -116,14 +116,14 @@
       },
       "solution": {
         "file": "SolutionSpectra.lean",
-        "line": 626
+        "line": 634
       },
       "source_declaration": "GraphicalZonotopes.TreeJoin.paper_corollary_6_9_tree_join",
       "source": {
         "file": "source/verified/parts/part010.lean",
         "line": 1499
       },
-      "status": "Challenge_passed_repaired_Solution_uncompiled"
+      "status": "Challenge_passed_actual_arity_repair_Solution_uncompiled"
     },
     {
       "paper_results": [
@@ -136,14 +136,14 @@
       },
       "solution": {
         "file": "SolutionSpectra.lean",
-        "line": 643
+        "line": 651
       },
       "source_declaration": "GraphicalZonotopes.partial_threeTree_support_classification",
       "source": {
         "file": "source/verified/parts/part010.lean",
         "line": 993
       },
-      "status": "Challenge_passed_repaired_Solution_uncompiled"
+      "status": "Challenge_passed_actual_arity_repair_Solution_uncompiled"
     },
     {
       "paper_results": [
@@ -156,14 +156,14 @@
       },
       "solution": {
         "file": "SolutionSpectra.lean",
-        "line": 652
+        "line": 660
       },
       "source_declaration": "GraphicalZonotopes.three_hub_book_maximum",
       "source": {
         "file": "source/verified/parts/part014.lean",
         "line": 874
       },
-      "status": "Challenge_passed_repaired_Solution_uncompiled"
+      "status": "Challenge_passed_actual_arity_repair_Solution_uncompiled"
     },
     {
       "paper_results": [
@@ -176,14 +176,14 @@
       },
       "solution": {
         "file": "SolutionSpectra.lean",
-        "line": 657
+        "line": 665
       },
       "source_declaration": "GraphicalZonotopes.TwoHub.paper_corollary_8_5",
       "source": {
         "file": "source/verified/parts/part024.lean",
         "line": 1759
       },
-      "status": "Challenge_passed_repaired_Solution_uncompiled"
+      "status": "Challenge_passed_actual_arity_repair_Solution_uncompiled"
     },
     {
       "paper_results": [
@@ -196,14 +196,14 @@
       },
       "solution": {
         "file": "SolutionSpectra.lean",
-        "line": 665
+        "line": 673
       },
       "source_declaration": "GraphicalZonotopes.RefinedTriangleComponents.refined_support_of_dimension_ge_three",
       "source": {
         "file": "source/verified/parts/part010.lean",
         "line": 822
       },
-      "status": "Challenge_passed_repaired_Solution_uncompiled"
+      "status": "Challenge_passed_actual_arity_repair_Solution_uncompiled"
     },
     {
       "paper_results": [
@@ -216,14 +216,14 @@
       },
       "solution": {
         "file": "SolutionSpectra.lean",
-        "line": 684
+        "line": 692
       },
       "source_declaration": "GraphicalZonotopes.HasPlaneDrawing.full_polytopal_iff_threeTree",
       "source": {
         "file": "source/verified/parts/part041.lean",
         "line": 1559
       },
-      "status": "Challenge_passed_repaired_Solution_uncompiled"
+      "status": "Challenge_passed_actual_arity_repair_Solution_uncompiled"
     },
     {
       "paper_results": [
@@ -236,14 +236,14 @@
       },
       "solution": {
         "file": "SolutionSpectra.lean",
-        "line": 692
+        "line": 700
       },
       "source_declaration": "GraphicalZonotopes.paper_corollary_6_5",
       "source": {
         "file": "source/verified/parts/part041.lean",
         "line": 1636
       },
-      "status": "Challenge_passed_repaired_Solution_uncompiled"
+      "status": "Challenge_passed_actual_arity_repair_Solution_uncompiled"
     },
     {
       "paper_results": [
@@ -263,7 +263,7 @@
         "file": "source/verified/parts/part001.lean",
         "line": 692
       },
-      "status": "Challenge_passed_repaired_Solution_uncompiled"
+      "status": "Challenge_passed_actual_arity_repair_Solution_uncompiled"
     },
     {
       "paper_results": [
@@ -283,7 +283,7 @@
         "file": "SolutionSpectra.lean",
         "line": 194
       },
-      "status": "Challenge_passed_repaired_Solution_uncompiled",
+      "status": "Challenge_passed_actual_arity_repair_Solution_uncompiled",
       "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
     },
     {
@@ -304,7 +304,7 @@
         "file": "SolutionSpectra.lean",
         "line": 255
       },
-      "status": "Challenge_passed_repaired_Solution_uncompiled",
+      "status": "Challenge_passed_actual_arity_repair_Solution_uncompiled",
       "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
     },
     {
@@ -325,7 +325,7 @@
         "file": "SolutionSpectra.lean",
         "line": 285
       },
-      "status": "Challenge_passed_repaired_Solution_uncompiled",
+      "status": "Challenge_passed_actual_arity_repair_Solution_uncompiled",
       "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
     },
     {
@@ -346,7 +346,7 @@
         "file": "SolutionSpectra.lean",
         "line": 303
       },
-      "status": "Challenge_passed_repaired_Solution_uncompiled",
+      "status": "Challenge_passed_actual_arity_repair_Solution_uncompiled",
       "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
     },
     {
@@ -367,7 +367,7 @@
         "file": "SolutionSpectra.lean",
         "line": 310
       },
-      "status": "Challenge_passed_repaired_Solution_uncompiled",
+      "status": "Challenge_passed_actual_arity_repair_Solution_uncompiled",
       "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
     },
     {
@@ -388,7 +388,7 @@
         "file": "SolutionSpectra.lean",
         "line": 386
       },
-      "status": "Challenge_passed_repaired_Solution_uncompiled",
+      "status": "Challenge_passed_actual_arity_repair_Solution_uncompiled",
       "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
     },
     {
@@ -409,7 +409,7 @@
         "file": "SolutionSpectra.lean",
         "line": 389
       },
-      "status": "Challenge_passed_repaired_Solution_uncompiled",
+      "status": "Challenge_passed_actual_arity_repair_Solution_uncompiled",
       "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
     },
     {
@@ -424,13 +424,13 @@
       },
       "solution": {
         "file": "SolutionSpectra.lean",
-        "line": 716
+        "line": 724
       },
       "source": {
         "file": "source/verified/parts/part005.lean",
         "line": 1720
       },
-      "status": "Challenge_passed_repaired_Solution_uncompiled"
+      "status": "Challenge_passed_actual_arity_repair_Solution_uncompiled"
     },
     {
       "paper_results": [
@@ -444,13 +444,13 @@
       },
       "solution": {
         "file": "SolutionSpectra.lean",
-        "line": 720
+        "line": 728
       },
       "source": {
         "file": "source/verified/parts/part041.lean",
         "line": 2162
       },
-      "status": "Challenge_passed_repaired_Solution_uncompiled"
+      "status": "Challenge_passed_actual_arity_repair_Solution_uncompiled"
     },
     {
       "paper_results": [
@@ -464,13 +464,13 @@
       },
       "solution": {
         "file": "SolutionSpectra.lean",
-        "line": 727
+        "line": 735
       },
       "source": {
         "file": "source/verified/parts/part009.lean",
         "line": 746
       },
-      "status": "Challenge_passed_repaired_Solution_uncompiled"
+      "status": "Challenge_passed_actual_arity_repair_Solution_uncompiled"
     },
     {
       "paper_results": [
@@ -484,13 +484,13 @@
       },
       "solution": {
         "file": "SolutionSpectra.lean",
-        "line": 746
+        "line": 754
       },
       "source": {
         "file": "source/verified/parts/part041.lean",
         "line": 1598
       },
-      "status": "Challenge_passed_repaired_Solution_uncompiled"
+      "status": "Challenge_passed_actual_arity_repair_Solution_uncompiled"
     },
     {
       "paper_results": [
@@ -504,13 +504,13 @@
       },
       "solution": {
         "file": "SolutionSpectra.lean",
-        "line": 754
+        "line": 762
       },
       "source": {
         "file": "source/verified/parts/part041.lean",
         "line": 1636
       },
-      "status": "Challenge_passed_repaired_Solution_uncompiled"
+      "status": "Challenge_passed_actual_arity_repair_Solution_uncompiled"
     },
     {
       "paper_results": [
@@ -524,13 +524,13 @@
       },
       "solution": {
         "file": "SolutionSpectra.lean",
-        "line": 768
+        "line": 776
       },
       "source": {
         "file": "source/verified/parts/part010.lean",
         "line": 959
       },
-      "status": "Challenge_passed_repaired_Solution_uncompiled"
+      "status": "Challenge_passed_actual_arity_repair_Solution_uncompiled"
     },
     {
       "paper_results": [
@@ -544,13 +544,13 @@
       },
       "solution": {
         "file": "SolutionSpectra.lean",
-        "line": 783
+        "line": 791
       },
       "source": {
         "file": "source/verified/parts/part010.lean",
         "line": 979
       },
-      "status": "Challenge_passed_repaired_Solution_uncompiled"
+      "status": "Challenge_passed_actual_arity_repair_Solution_uncompiled"
     }
   ],
   "definition_semantics": "Every nontrivial proof-valued constructor argument is factored through a named compared supporting theorem. All data and carrier definitions are literal and independently present in both fresh modules. Canonical Fintype subtype/quotient constructions are explicit. No definition_names or opaque supplied values.",
@@ -577,7 +577,7 @@
   "remaining_selected": [
     "Corollaries6.7/6.8: executable dynamic programming, direct enumeration and certified linear time/recovery claims."
   ],
-  "local_interface_status": "All9 errors from the complete preceding report addressed together by atomic whole-function/recursive-predicate interfaces and exact decision-procedure coherence. No local Lean or success claim for the current Solution.",
+  "local_interface_status": "Local Lean off. Current801-line bridge revision source-prepared only; Cor6.9 congruence transports only provably unique class data and remains uncompiled.",
   "Challenge_check": {
     "status": "PASS_canonical_only_not_full_preflight",
     "run_id": 44372929933,
@@ -586,11 +586,10 @@
     "exit_code": 0
   },
   "previous_full_failure": {
-    "commit": "59f3c14525408a156d5521f77f6cc97546588d1a",
-    "run_id": 44375295782,
+    "commit": "476f93f4079927d773f36f6cdb2d348e52e3da71",
+    "run_id": 44380729160,
     "Source_import_closure": "PASS_before_wrapper_errors",
     "stage": "Solution_wrapper_elaboration",
-    "errors_in_complete_report": 9,
-    "repair_report": "reports/graphical_zonotopes/spectra-full-repair/repair.json"
+    "repair_report": "reports/graphical_zonotopes/spectra-full-repair/arity-repair.json"
   }
 }

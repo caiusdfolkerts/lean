@@ -530,11 +530,17 @@ theorem hasPlaneDrawing_iff (G : SimpleGraph V) :
     exact ⟨p,hp,drawing,⟨h.edge_param,h.vertex_mem_edgeArc,h.edge_inter⟩⟩
 
 
-private theorem source_tetrahedronGraph : @tetrahedronGraph = @GraphicalZonotopes.tetrahedronGraph := by
+private theorem source_tetrahedronGraph :
+    @tetrahedronGraph = (fun {W : Type*} [iF : Fintype W] [iD : DecidableEq W]
+      (F : Finset (Finset W)) => @GraphicalZonotopes.tetrahedronGraph W iD F) := by
+  funext W iF iD F
   rfl
 private theorem source_fourFamily : @fourFamily = @GraphicalZonotopes.RefinedTriangleComponents.family := by
   rfl
-private theorem source_edgeGraph : @edgeGraph = @GraphicalZonotopes.RefinedTriangleComponents.edgeGraph := by
+private theorem source_edgeGraph :
+    @edgeGraph = (fun {W : Type*} [iF : Fintype W] [iD : DecidableEq W]
+      (y : SetFunction W) => @GraphicalZonotopes.RefinedTriangleComponents.edgeGraph W iF y) := by
+  funext W iF iD y
   rfl
 private theorem source_DependsOn : @DependsOn = @GraphicalZonotopes.DependsOn := by
   rfl
@@ -545,7 +551,7 @@ private theorem source_TreeJoin_addHub {W : Type*} [Fintype W] [DecidableEq W]
   funext x y
   cases x <;> cases y <;>
     simp only [TreeJoin.addHub, TreeJoin.hubAdjacency,
-      GraphicalZonotopes.SingleVertexGraph.graph, mem_univ]
+      GraphicalZonotopes.SingleVertexGraph.graph, Finset.mem_univ]
 private theorem source_TreeJoin_graph (T : SimpleGraph V) :
     TreeJoin.graph T = GraphicalZonotopes.TreeJoin.graph T := by
   unfold TreeJoin.graph GraphicalZonotopes.TreeJoin.graph
@@ -568,7 +574,9 @@ private theorem source_component_maximum (G : SimpleGraph V) :
     TetrahedronComponents.maximumDimension G = GraphicalZonotopes.TetrahedronComponents.maximumDimension G := by
   unfold TetrahedronComponents.maximumDimension GraphicalZonotopes.TetrahedronComponents.maximumDimension
   apply Finset.sup_congr
-  · exact Finset.ext (fun c => ⟨fun _ => Finset.mem_univ c, fun _ => Finset.mem_univ c⟩)
+  · apply Finset.ext
+    intro c
+    simp only [Finset.mem_univ]
   · intro c hc
     rw [source_component_vertices]
 private theorem source_planarComponentDimension (G : SimpleGraph V) :
@@ -635,9 +643,9 @@ theorem paper_corollary_6_9_tree_join (T : SimpleGraph V) (hT : T.IsTree) :
       PolytopalMinkowskiIndecomposable Q ∧
       IsWeakMinkowskiSummand Q (graphicalZonotope (TreeJoin.graph T)) ∧
       Module.finrank ℝ (vectorSpan ℝ Q)=TreeJoin.s3 T+1 := by
-  have hdec : (GraphicalZonotopes.TreeJoin.vertexOrder V).toDecidableEq =
-      (inferInstance : DecidableEq ((V ⊕ Fin 1) ⊕ Fin 1)) := Subsingleton.elim _ _
-  simpa only [hdec,source_ThreeTreeOn, source_IsThreeTree, source_HasAdmissibleSpanningThreeTree, source_IsPartialThreeTree, source_Supermodular, source_Normalized, source_TranslationNormalized, source_delta, source_subsetSum, source_basePolytope, source_ExtremeSupermodular, source_MinkowskiIndecomposable, source_edgeFamily, source_basisVector, source_coordinateSimplex, source_graphicalZonotope, source_IsMinkowskiSummand, source_IsWeakMinkowskiSummand, source_IsExposedSegment, source_ActualRootEdge, source_IsFinitePolytope, source_PolytopalMinkowskiIndecomposable, source_FullDimension, source_IntegerValued, source_LatticePolytope, source_Graphical, source_lowerSupport, source_BooleanElemental, source_FullLatticeSummandAt, source_maximumIndecomposableDimension, source_actualDirectionGraph, source_cliqueBook, source_cliqueCapacity, source_fourPartite, source_twoSingletonGraph, source_Admissible, source_triangleMultiplicity, source_tetrahedra, source_inducedOn, source_DependsOn, source_fourFamily, source_tetrahedronGraph, source_edgeGraph, source_TreeJoin_graph, source_TreeJoin_s3, source_planarComponentDimension, HasAdmissibleSpanningThreeTree, GraphicalZonotopes.HasAdmissibleSpanningThreeTree, IsThreeTree, GraphicalZonotopes.IsThreeTree, IsPartialThreeTree, GraphicalZonotopes.IsPartialThreeTree, threeTreeOn_iff, maximum_count_eq, partialThreeTreeDimension, GraphicalZonotopes.partialThreeTreeDimension] using GraphicalZonotopes.TreeJoin.paper_corollary_6_9_tree_join T hT
+  have hs := GraphicalZonotopes.TreeJoin.paper_corollary_6_9_tree_join T hT
+  simp only [source_ThreeTreeOn, source_IsThreeTree, source_HasAdmissibleSpanningThreeTree, source_IsPartialThreeTree, source_Supermodular, source_Normalized, source_TranslationNormalized, source_delta, source_subsetSum, source_basePolytope, source_ExtremeSupermodular, source_MinkowskiIndecomposable, source_edgeFamily, source_basisVector, source_coordinateSimplex, source_graphicalZonotope, source_IsMinkowskiSummand, source_IsWeakMinkowskiSummand, source_IsExposedSegment, source_ActualRootEdge, source_IsFinitePolytope, source_PolytopalMinkowskiIndecomposable, source_FullDimension, source_IntegerValued, source_LatticePolytope, source_Graphical, source_lowerSupport, source_BooleanElemental, source_FullLatticeSummandAt, source_maximumIndecomposableDimension, source_actualDirectionGraph, source_cliqueBook, source_cliqueCapacity, source_fourPartite, source_twoSingletonGraph, source_Admissible, source_triangleMultiplicity, source_tetrahedra, source_inducedOn, source_DependsOn, source_fourFamily, source_tetrahedronGraph, source_edgeGraph, source_TreeJoin_graph, source_TreeJoin_s3, source_planarComponentDimension, HasAdmissibleSpanningThreeTree, GraphicalZonotopes.HasAdmissibleSpanningThreeTree, IsThreeTree, GraphicalZonotopes.IsThreeTree, IsPartialThreeTree, GraphicalZonotopes.IsPartialThreeTree, threeTreeOn_iff, maximum_count_eq, partialThreeTreeDimension, GraphicalZonotopes.partialThreeTreeDimension] at hs ⊢
+  convert hs using 16 <;> first | rfl | exact Subsingleton.elim _ _
 
 /-- Corollary6.6 of paper.pdf, with literal actual-body and graph semantics. -/
 theorem partial_threeTree_support_classification {G : SimpleGraph V}
