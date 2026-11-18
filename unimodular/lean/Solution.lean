@@ -247,12 +247,18 @@ namespace PalomarFans.Bridge
 open PalomarFans.Toric
 variable {E N V : Type*} [Fintype E] [AddCommGroup N] [NormedAddCommGroup V]
   [NormedSpace ℝ V] [FiniteDimensional ℝ V] {ι : N →+ V}
+/-- Lattice rationality agrees by the public finite-generator characterization,
+without unfolding the source predicate's nonexposed implementation. -/
+private theorem rational_iff_source (σ : PointedCone ℝ V) :
+    IsLatticeRational ι σ ↔ TauCeti.Toric.IsLatticeRational ι σ :=
+  (PalomarFans.Toric.isLatticeRational_iff).trans (TauCeti.Toric.isLatticeRational_iff).symm
 /-- Forget only the fresh packaging names; retain the actual cone set. -/
 def toOriginalFan (Φ : Fan ι) : TauCeti.Toric.Fan ι where
   lattice := ⟨Φ.lattice.free, Φ.lattice.finite, Φ.lattice.isBaseChange⟩
   cones := Φ.cones
   finite_cones := Φ.finite_cones
-  isToricCone := fun {_} hσ => ⟨(Φ.isToricCone hσ).rational, (Φ.isToricCone hσ).salient⟩
+  isToricCone := fun {σ} hσ =>
+    ⟨(rational_iff_source σ).mp (Φ.isToricCone hσ).rational, (Φ.isToricCone hσ).salient⟩
   mem_of_isFaceOf := Φ.mem_of_isFaceOf
   inf_isFaceOf_left := Φ.inf_isFaceOf_left
 /-- Repackage an actual source fan without changing any cone or incidence. -/
@@ -260,7 +266,8 @@ def fromOriginalFan (Φ : TauCeti.Toric.Fan ι) : Fan ι where
   lattice := ⟨Φ.lattice.free, Φ.lattice.finite, Φ.lattice.isBaseChange⟩
   cones := Φ.cones
   finite_cones := Φ.finite_cones
-  isToricCone := fun {_} hσ => ⟨(Φ.isToricCone hσ).rational, (Φ.isToricCone hσ).salient⟩
+  isToricCone := fun {σ} hσ =>
+    ⟨(rational_iff_source σ).mpr (Φ.isToricCone hσ).rational, (Φ.isToricCone hσ).salient⟩
   mem_of_isFaceOf := Φ.mem_of_isFaceOf
   inf_isFaceOf_left := Φ.inf_isFaceOf_left
 /-- Completeness of the fresh fan is exactly the pointwise cone-covering condition. -/
@@ -284,8 +291,10 @@ def fromOriginalOnRays (Φ : Unimodular.AllowedBlocks.FanOnRays ι u) :
   ⟨fromOriginalFan Φ.val, (fromOriginal_complete_iff Φ.val).mpr Φ.property.1, Φ.property.2⟩
 theorem fromOriginal_toOriginal (Φ : AllowedBlocks.FanOnRays ι u) :
     fromOriginalOnRays u (toOriginalOnRays u Φ) = Φ := by
+  rcases Φ with ⟨Φ,hΦ⟩
   apply Subtype.ext
-  cases Φ.val
+  change fromOriginalFan (toOriginalFan Φ) = Φ
+  cases Φ
   rfl
 end PalomarFans.Bridge
 
