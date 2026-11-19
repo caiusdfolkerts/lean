@@ -122,6 +122,17 @@ public meta import Lean.Elab.Command
 public meta import Lean.Elab.Tactic.Omega
 
 @[expose] public section
+namespace PalomarBarycentricTor
+/-- Canonical cancellation and scalar-action laws used by the actual complexes. -/
+theorem natRightCancelAdd : IsRightCancelAdd ℕ := by infer_instance
+theorem coefficientSMulComm {K : Type*} [CommRing K] : SMulCommClass K K K := by infer_instance
+theorem functionScalarTower {V K : Type*} [CommRing K] : IsScalarTower K K (V → K) := by infer_instance
+theorem exteriorScalarComm {V K : Type*} [CommRing K] : SMulCommClass K K (ExteriorAlgebra K (V → K)) := by infer_instance
+theorem tensorPreservesZero {R : Type*} [CommRing R] (M : ModuleCat R) : ((CategoryTheory.MonoidalCategory.curriedTensor (ModuleCat R)).flip.obj M).PreservesZeroMorphisms := by infer_instance
+attribute [instance 2200] natRightCancelAdd coefficientSMulComm functionScalarTower exteriorScalarComm tensorPreservesZero
+end PalomarBarycentricTor
+end
+@[expose] public section
 -- Keep editor information enabled for the stock Lean command processor.
 set_option Elab.async false
 set_option maxRecDepth 4000

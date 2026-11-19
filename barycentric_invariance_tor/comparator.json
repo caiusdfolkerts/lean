@@ -36,7 +36,12 @@
     "FourPapers.Universal.originalInternalHomologyFiltration_finite",
     "FourPapers.Universal.augmentedCoboundary_square",
     "PalomarBarycentricTor.actualDerivedTorComparison",
-    "PalomarBarycentricTor.associatedGraded"
+    "PalomarBarycentricTor.associatedGraded",
+    "PalomarBarycentricTor.natRightCancelAdd",
+    "PalomarBarycentricTor.coefficientSMulComm",
+    "PalomarBarycentricTor.functionScalarTower",
+    "PalomarBarycentricTor.exteriorScalarComm",
+    "PalomarBarycentricTor.tensorPreservesZero"
   ],
   "definition_names": [],
   "permitted_axioms": [
