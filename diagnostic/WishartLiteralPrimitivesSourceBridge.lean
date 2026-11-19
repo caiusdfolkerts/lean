@@ -1,8 +1,14 @@
 module
 
-public import LiteralWishartLaws
+public import WishartLiteralPrimitives
 public import TauCeti.Probability.Distributions.Wishart.Nonsingular
 public import TauCeti.Probability.Distributions.Wishart.Inverse.Basic
+public import TauCeti.Algebra.Quaternion.ComplexMatrix
+public import TauCeti.Probability.Distributions.Wishart.Basic
+import all TauCeti.Probability.Distributions.Wishart.Basic
+import all TauCeti.Analysis.Matrix.Frobenius
+import all TauCeti.Algebra.Quaternion.ComplexMatrix
+import all TauCeti.MeasureTheory.Measure.SymmetricMatrix.Congruence
 import all TauCeti.MeasureTheory.Measure.SymmetricMatrix.Basic
 import all TauCeti.MeasureTheory.Measure.SymmetricMatrix.Lebesgue
 import all TauCeti.Analysis.SpecialFunctions.MultivariateGamma.Basic
@@ -84,3 +90,49 @@ theorem inverseWishartMeasure_eq {p : ℕ} :
   rw [nonsingularWishartMeasure_eq, symmetricInv_eq]
 
 end WishartLiteralLaws
+
+
+namespace WishartLiteralSpecification
+/-- Whole record equality to the actual source Frobenius structure. -/
+theorem matrixInner_exact {m n : Type*} [Fintype m] [Fintype n] :
+    (Matrix.frobeniusInnerProductSpace (m := m) (n := n)) =
+      WishartLiteralStructures.matrixInnerProductSpace := by rfl
+/-- Whole normed-group record equality, including exact subtype uniformity. -/
+theorem symmetricNorm_exact (p : ℕ) :
+    TauCeti.symmetricMatrixNormedAddCommGroup p =
+      WishartLiteralStructures.symmetricNormedAddCommGroup p := by rfl
+/-- The source inner product equals the complete literal compatible record. -/
+theorem symmetricInner_exact (p : ℕ) :
+    TauCeti.symmetricMatrixInnerProductSpace p =
+      WishartLiteralStructures.symmetricInnerProductSpace p := by rfl
+/-- The actual source congruence has exactly the literal rectangular matrix action. -/
+theorem congruence_exact {p q : ℕ} (M : Matrix (Fin q) (Fin p) ℝ) :
+    Matrix.symmetricCongruenceLinearMap M = WishartLiteralStructures.symmetricCongruence M := by
+  apply LinearMap.ext
+  intro A
+  apply Subtype.ext
+  rfl
+/-- The actual source star-algebra embedding has every literal complex entry. -/
+theorem quaternion_exact (q : ℍ[ℝ]) :
+    Quaternion.toComplexMatrix q = WishartLiteralStructures.quaternionRepresentation q := by
+  change Quaternion.toComplexMatrix q = WishartLiteralStructures.complexMatrixBasis.liftHom q
+  rw [Quaternion.toComplexMatrix_apply, WishartLiteralStructures.complexMatrixBasis_liftHom_apply]
+/-- Exact source Lebesgue normalization. -/
+theorem lebesgue_exact (p : ℕ) :
+    TauCeti.symmetricLebesgue p = WishartLiteralLaws.symmetricLebesgue p :=
+  (WishartLiteralLaws.symmetricLebesgue_eq p).symm
+/-- Exact source Gamma product on all arguments. -/
+theorem gamma_exact : TauCeti.multivariateGamma = WishartLiteralLaws.multivariateGamma :=
+  WishartLiteralLaws.multivariateGamma_eq.symm
+/-- Complete source Wishart law, including invalid-parameter zero branches. -/
+theorem wishart_exact {p : ℕ} :
+    @TauCeti.Probability.nonsingularWishartMeasure p = @WishartLiteralLaws.nonsingularWishartMeasure p :=
+  WishartLiteralLaws.nonsingularWishartMeasure_eq.symm
+/-- Complete source inverse law, including the total inverse action. -/
+theorem inverse_exact {p : ℕ} :
+    @TauCeti.Probability.inverseWishartMeasure p = @WishartLiteralLaws.inverseWishartMeasure p :=
+  WishartLiteralLaws.inverseWishartMeasure_eq.symm
+/-- Exact integer Gaussian-Gram law at every scale, not only its density regime. -/
+theorem gram_exact {p : ℕ} (ν : ℕ) (S : Matrix (Fin p) (Fin p) ℝ) :
+    TauCeti.Probability.wishartGramMeasure ν S = WishartLiteralStructures.wishartGramMeasure ν S := by rfl
+end WishartLiteralSpecification

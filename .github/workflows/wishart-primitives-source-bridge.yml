@@ -1,9 +1,9 @@
-name: Independent Wishart law source bridge diagnostic
-run-name: Wishart law source bridge diagnostic ${{ github.run_id }}
+name: Independent Wishart primitive source bridge diagnostic
+run-name: Wishart primitive source bridge diagnostic ${{ github.run_id }}
 # Separate bounded diagnostic, never official full preflight or intake.
 on:
   push:
-    branches: [palomar-diagnostics/wishart-law-source-bridge]
+    branches: [palomar-diagnostics/wishart-primitives-source-bridge]
   workflow_dispatch:
 permissions:
   contents: read
@@ -78,7 +78,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         with:
-          name: wishart-law-two-stage
+          name: wishart-primitives-two-stage
           path: |
             ${{ runner.temp }}/wishart-law-evidence/receipt.json
             ${{ runner.temp }}/wishart-law-evidence/canonical/receipt.json

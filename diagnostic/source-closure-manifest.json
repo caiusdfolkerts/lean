@@ -1,12 +1,43 @@
 {
-  "status": "source-only frozen manifest for later second-stage actual source bridge; canonical first stage PASS required",
-  "tauceti_pin": "06d5bb4e3ebb737dc6538567f5c53bf8800b9362",
-  "mathlib_pin": "2cabef97b63d3275776b8b060d802de6a6fa1055",
-  "toolchain": "leanprover/lean4:v4.36.0-rc1",
-  "module_count": 32,
-  "bytes": 404658,
-  "all_sha256_and_git_blob_sha1_verified": true,
+  "status": "exactcanonicalproofsourceclosure",
+  "source_pin": "06d5bb4e3ebb737dc6538567f5c53bf8800b9362",
+  "roots": [
+    "TauCeti.Probability.Distributions.Wishart.Nonsingular",
+    "TauCeti.Probability.Distributions.Wishart.Inverse.Basic",
+    "TauCeti.Algebra.Quaternion.ComplexMatrix",
+    "TauCeti.Probability.Distributions.Wishart.Basic"
+  ],
+  "module_count": 47,
+  "bytes": 539453,
   "files": [
+    {
+      "module": "TauCeti.Algebra.Quaternion.ComplexMatrix",
+      "bytes": 13716,
+      "git_blob_sha1": "70b924b13fad0939efcfe451d407553c47cf7f93",
+      "imports": [
+        "Mathlib.Algebra.QuaternionBasis",
+        "Mathlib.Analysis.Quaternion",
+        "Mathlib.Algebra.Star.StarAlgHom",
+        "Mathlib.LinearAlgebra.UnitaryGroup",
+        "Mathlib.LinearAlgebra.Matrix.Adjugate",
+        "TauCeti.Algebra.Quaternion.NormForm",
+        "TauCeti.LinearAlgebra.UnitaryGroup"
+      ],
+      "path": "TauCeti/Algebra/Quaternion/ComplexMatrix.lean",
+      "sha256": "94374a0ee3b42d8fe93e5954313ca1f1212eb9f8c4d3c5a4e9841e61b7efebcc"
+    },
+    {
+      "module": "TauCeti.Algebra.Quaternion.NormForm",
+      "bytes": 12912,
+      "git_blob_sha1": "5397e5c033d9707fd154a4aa7d79929d949b0f3b",
+      "imports": [
+        "Mathlib.Algebra.Quaternion",
+        "Mathlib.Algebra.Star.Unitary",
+        "Mathlib.LinearAlgebra.QuadraticForm.IsometryEquiv"
+      ],
+      "path": "TauCeti/Algebra/Quaternion/NormForm.lean",
+      "sha256": "f3d0295cf2f704eef7552ae6fa54f63382c1cab5988e2e409a291fe518bdacce"
+    },
     {
       "module": "TauCeti.Analysis.InnerProductSpace.GramSchmidtOrtho",
       "bytes": 7245,
@@ -239,6 +270,50 @@
       "sha256": "40a229a626aeaa4360883994e7ca570f80dbcccd48ca81c0b5b103b4d108ff08"
     },
     {
+      "module": "TauCeti.LinearAlgebra.Matrix.MvPolynomial",
+      "bytes": 5363,
+      "git_blob_sha1": "c152100333cb75aa0bba35e915f2d0f8227cd499",
+      "imports": [
+        "Mathlib.Algebra.MvPolynomial.Degrees",
+        "Mathlib.LinearAlgebra.Matrix.Determinant.Basic",
+        "Mathlib.LinearAlgebra.Matrix.MvPolynomial",
+        "Mathlib.RingTheory.MvPowerSeries.NoZeroDivisors",
+        "Mathlib.Algebra.MvPolynomial.CommRing"
+      ],
+      "path": "TauCeti/LinearAlgebra/Matrix/MvPolynomial.lean",
+      "sha256": "be2dd7eba26a57f7a8221c5db5cc561603c17f083760fcc450679bf2e183bde5"
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.Matrix.Rank",
+      "bytes": 22238,
+      "git_blob_sha1": "e94326541e549805804c9a1bc3210592c999f5ac",
+      "imports": [
+        "Mathlib.GroupTheory.GroupAction.ConjAct",
+        "Mathlib.LinearAlgebra.Matrix.GeneralLinearGroup.Defs",
+        "Mathlib.LinearAlgebra.Matrix.Hermitian",
+        "Mathlib.LinearAlgebra.Matrix.Rank",
+        "Mathlib.Data.Matrix.ColumnRowPartitioned",
+        "Mathlib.FieldTheory.Finiteness",
+        "Mathlib.LinearAlgebra.LinearIndependent.BaseChange"
+      ],
+      "path": "TauCeti/LinearAlgebra/Matrix/Rank.lean",
+      "sha256": "1c1f61c652af88d7a7cfbaf3ce79bf7fbf343449abb8320a8e7277b99814e804"
+    },
+    {
+      "module": "TauCeti.LinearAlgebra.Matrix.Rank.Closed",
+      "bytes": 11322,
+      "git_blob_sha1": "1e0a23eb5648af275831ea096bd2dc6e2b28f793",
+      "imports": [
+        "Mathlib.Algebra.MvPolynomial.Funext",
+        "Mathlib.Topology.Instances.Matrix",
+        "TauCeti.LinearAlgebra.Matrix.MvPolynomial",
+        "TauCeti.LinearAlgebra.Matrix.Rank",
+        "TauCeti.Topology.Algebra.MvPolynomial.ZeroLocus"
+      ],
+      "path": "TauCeti/LinearAlgebra/Matrix/Rank/Closed.lean",
+      "sha256": "be07f2bfcd13d0eaef3fb4455d1df414979b39406d3b86b03f18468da173d3aa"
+    },
+    {
       "module": "TauCeti.LinearAlgebra.Matrix.Triangular",
       "bytes": 23153,
       "git_blob_sha1": "a1d2ab6370e745372ce9d00db0132ece1ea8472c",
@@ -251,6 +326,29 @@
       "sha256": "7931fc69ce1365a14354ca2809a34bfdd7555fbd6dba8906f8d7882182d85dcc"
     },
     {
+      "module": "TauCeti.LinearAlgebra.UnitaryGroup",
+      "bytes": 2192,
+      "git_blob_sha1": "79fe2422d62b50e2c6440288da0cf7df5e9838df",
+      "imports": [
+        "Mathlib.LinearAlgebra.Matrix.Adjugate",
+        "Mathlib.LinearAlgebra.UnitaryGroup"
+      ],
+      "path": "TauCeti/LinearAlgebra/UnitaryGroup.lean",
+      "sha256": "60157956b8fef9b89145cc6c90c64976b021e898897fab21cb160f1b34edc4cc"
+    },
+    {
+      "module": "TauCeti.MeasureTheory.Integral.OddSymmetric",
+      "bytes": 3028,
+      "git_blob_sha1": "e9c5021a8a9fe8f9846f5df9fbfe1288b27b93d4",
+      "imports": [
+        "Mathlib.Algebra.Group.EvenFunction",
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic",
+        "Mathlib.MeasureTheory.Group.Integral"
+      ],
+      "path": "TauCeti/MeasureTheory/Integral/OddSymmetric.lean",
+      "sha256": "09c76dffccb295759ae66c1365385ce8652713f18f905a5298a27dde04d25975"
+    },
+    {
       "module": "TauCeti.MeasureTheory.Measure.Haar.OfBasis",
       "bytes": 2864,
       "git_blob_sha1": "65939d59fe80c50c233659608e2acb267cc42e52",
@@ -260,6 +358,20 @@
       ],
       "path": "TauCeti/MeasureTheory/Measure/Haar/OfBasis.lean",
       "sha256": "9c15a4d4a0b226a9627ed55b34e67659b198e0485c17b4348178b6ce0dde0770"
+    },
+    {
+      "module": "TauCeti.MeasureTheory.Measure.MvPolynomialZeroLocus",
+      "bytes": 6187,
+      "git_blob_sha1": "2e799accca0534d97fcacaa90b97ed5aefe66f7b",
+      "imports": [
+        "Mathlib.Algebra.MvPolynomial.Equiv",
+        "Mathlib.Algebra.Polynomial.Roots",
+        "Mathlib.MeasureTheory.Constructions.Pi",
+        "Mathlib.MeasureTheory.Measure.Lebesgue.Basic",
+        "Mathlib.MeasureTheory.Measure.Prod"
+      ],
+      "path": "TauCeti/MeasureTheory/Measure/MvPolynomialZeroLocus.lean",
+      "sha256": "a0162aa9923c959256972e7dab50c39deff9e8b6d2ac53e941216ae75e6269de"
     },
     {
       "module": "TauCeti.MeasureTheory.Measure.Real",
@@ -325,6 +437,17 @@
       "sha256": "416b0bb566048f455bf1e781012220865a9c4400f022e26bbeb86f0ad5a3af2e"
     },
     {
+      "module": "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Determinant",
+      "bytes": 4434,
+      "git_blob_sha1": "03d21183674f6f7a59badd49213d697e86b74d81",
+      "imports": [
+        "TauCeti.MeasureTheory.Measure.MvPolynomialZeroLocus",
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Lebesgue"
+      ],
+      "path": "TauCeti/MeasureTheory/Measure/SymmetricMatrix/Determinant.lean",
+      "sha256": "39d22f8e17100ef423a26e170a4d4adec4f94846c533ac3e16964b83221880ce"
+    },
+    {
       "module": "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Inv",
       "bytes": 14921,
       "git_blob_sha1": "99f108117cfd126de9ec3d10a0bd59099cbeb9a4",
@@ -364,6 +487,17 @@
       "sha256": "00974fd2ea3c0a567f77e581c459695ea7e42b37b31b38ab10259e6962ecd56c"
     },
     {
+      "module": "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Rank",
+      "bytes": 1644,
+      "git_blob_sha1": "0bd4a3ddff2d110f3814e04a2a12fb526f9d9b56",
+      "imports": [
+        "TauCeti.LinearAlgebra.Matrix.Rank.Closed",
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Basic"
+      ],
+      "path": "TauCeti/MeasureTheory/Measure/SymmetricMatrix/Rank.lean",
+      "sha256": "cb3871dbe9f1260a07a8d9656536a99da2615a30981e1fac77fe6092c1141f66"
+    },
+    {
       "module": "TauCeti.MeasureTheory.Measure.WithDensity",
       "bytes": 18849,
       "git_blob_sha1": "f50274b81e96ba031b868641703cc44eb6dd4b46",
@@ -390,6 +524,50 @@
       ],
       "path": "TauCeti/Probability/Density.lean",
       "sha256": "7190cd4d2d95a70503ac667d72f0302a482cdce91344e6f68435c415587faf08"
+    },
+    {
+      "module": "TauCeti.Probability.Distributions.Gaussian.Affine",
+      "bytes": 7650,
+      "git_blob_sha1": "d88f5528aea44f42ec7b239dce74d41f73d3ca9a",
+      "imports": [
+        "TauCeti.Probability.Distributions.Gaussian.Multivariate",
+        "Mathlib.Probability.Distributions.Gaussian.CharFun",
+        "Mathlib.Probability.Distributions.Gaussian.Fernique"
+      ],
+      "path": "TauCeti/Probability/Distributions/Gaussian/Affine.lean",
+      "sha256": "d286bbdf3b448fc729859db8bc6370f1a25c155fd428943c6a10fd3c59f6e797"
+    },
+    {
+      "module": "TauCeti.Probability.Distributions.Gaussian.Multivariate",
+      "bytes": 9657,
+      "git_blob_sha1": "9d1581bfc7a3e8ec3e557658c9193dd8abe82457",
+      "imports": [
+        "Mathlib.Probability.Distributions.Gaussian.Multivariate",
+        "TauCeti.Probability.Moments.Covariance",
+        "Mathlib.Probability.Distributions.Gaussian.HasGaussianLaw.Independence",
+        "Mathlib.Probability.Distributions.Gaussian.Fernique",
+        "Mathlib.Probability.Distributions.Gaussian.HasGaussianLaw.Basic"
+      ],
+      "path": "TauCeti/Probability/Distributions/Gaussian/Multivariate.lean",
+      "sha256": "24d14dcb1c24941200c08ae978db5745206bb164bf89e04a6976c3d5941e1f61"
+    },
+    {
+      "module": "TauCeti.Probability.Distributions.Wishart.Basic",
+      "bytes": 19937,
+      "git_blob_sha1": "47ca4251ba70656cbd2d3955f76688be7a79c997",
+      "imports": [
+        "Mathlib.Analysis.InnerProductSpace.GramMatrix",
+        "Mathlib.Probability.HasLaw",
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Congruence",
+        "TauCeti.Probability.Distributions.Gaussian.Affine",
+        "Mathlib.MeasureTheory.Group.Convolution",
+        "Mathlib.Probability.ProductMeasure",
+        "TauCeti.Analysis.Matrix.Sqrt",
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Determinant",
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Rank"
+      ],
+      "path": "TauCeti/Probability/Distributions/Wishart/Basic.lean",
+      "sha256": "999ac0c1e7ec8769c0af065c4aa2cba477195d1cf07f0aefd4f5dbabb7c0f562"
     },
     {
       "module": "TauCeti.Probability.Distributions.Wishart.Congruence",
@@ -434,15 +612,30 @@
       ],
       "path": "TauCeti/Probability/Distributions/Wishart/Nonsingular.lean",
       "sha256": "2957d45e807effc6d30e9bbc381e0c0126d340925fc69945e9dadaac403a19f8"
+    },
+    {
+      "module": "TauCeti.Probability.Moments.Covariance",
+      "bytes": 10621,
+      "git_blob_sha1": "a557b30d727c2a532a3ab8dae392d798294b1ef5",
+      "imports": [
+        "Mathlib.Probability.Moments.CovarianceBilin",
+        "Mathlib.Analysis.Matrix.Hermitian",
+        "Mathlib.Analysis.InnerProductSpace.Projection.Reflection",
+        "TauCeti.MeasureTheory.Integral.OddSymmetric"
+      ],
+      "path": "TauCeti/Probability/Moments/Covariance.lean",
+      "sha256": "fe0634c4dd3a044d52c57d4797b6b0531fc4de7c74c6a02b1a3db80b22873416"
+    },
+    {
+      "module": "TauCeti.Topology.Algebra.MvPolynomial.ZeroLocus",
+      "bytes": 3894,
+      "git_blob_sha1": "7475559e6c70032c2e4feddfafc82b495ac9f249",
+      "imports": [
+        "Mathlib.RingTheory.Nullstellensatz",
+        "Mathlib.Topology.Algebra.MvPolynomial"
+      ],
+      "path": "TauCeti/Topology/Algebra/MvPolynomial/ZeroLocus.lean",
+      "sha256": "1f85a53e19af6065f72344e88149a21a2ee7523e89e892ae97093a2bd4f8ed59"
     }
-  ],
-  "build_scope": "Only Nonsingular and Inverse.Basic imported canonical source closures; diagnostic, not official trusted-roots build",
-  "ordered_protocol": [
-    "In fresh workspace validate exact Mathlib-only full manifest and compile canonical LiteralWishartLaws to its own olean",
-    "Hash that olean; do not re-elaborate this source after TauCeti imports",
-    "Materialize exact original canonical TauCeti06d5bb manifest/Mathlib2cab; verify each listed32 tracked source hashes before any TC build",
-    "Build only actual two source import roots under same exact toolchain",
-    "Set module search path to already compiled canonical LiteralWishartLaws artifact and compile exact SourceBridge6049",
-    "Retain each exit/pin/manifest/source/olean/log hash, bounded logs and explicit truncation flags; no fullpreflight/intake claim"
   ]
 }

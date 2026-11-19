@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Two ordered Wishart component checks. Diagnostic only, never full preflight."""
+"""Two ordered Wishart primitive component checks. Diagnostic only, never full preflight."""
 from pathlib import Path
 import argparse, hashlib, importlib.util, json, os, shutil, sys, time
 from types import SimpleNamespace
@@ -59,10 +59,10 @@ def main():
     spec.loader.exec_module(runner)
     stage = None
     try:
-        case = {'id': 'wishart_independent_laws_first', 'module': 'LiteralWishartLaws',
+        case = {'id': 'wishart_independent_laws_first', 'module': 'WishartLiteralPrimitives',
                 'lean_toolchain': frozen['lean_toolchain'],
-                'hashes': {**frozen['hashes'], 'Challenge.lean': frozen['hashes']['LiteralWishartLaws.lean']},
-                'original_challenge': 'LiteralWishartLaws.lean',
+                'hashes': {**frozen['hashes'], 'Challenge.lean': frozen['hashes']['WishartLiteralPrimitives.lean']},
+                'original_challenge': 'WishartLiteralPrimitives.lean',
                 'diagnostic_class': 'canonical-only-genuine-bridge-proof-smoke'}
         # execute() compiles the law module before building any TauCeti module:
         # its header imports Mathlib only. The exact original manifest remains fixed.
@@ -70,7 +70,7 @@ def main():
         folder.mkdir()
         for name in ['lean-toolchain', 'lake-manifest.json']:
             shutil.copyfile(HERE / name, folder / name)
-        shutil.copyfile(HERE / 'LiteralWishartLaws.lean', folder / 'Challenge.lean')
+        shutil.copyfile(HERE / 'WishartLiteralPrimitives.lean', folder / 'Challenge.lean')
         o = SimpleNamespace(pipeline=args.pipeline, work=args.work,
                             output=args.output / 'canonical', memory_mib=8192,
                             setup_timeout=2400, compile_timeout=2400)
@@ -84,7 +84,7 @@ def main():
         origin = workspace / 'diagnostic-output'
         libs = workspace / '.lake/build/lib/lean'
         libs.mkdir(parents=True, exist_ok=True)
-        artifacts = sorted(origin.glob('LiteralWishartLaws.*'))
+        artifacts = sorted(origin.glob('WishartLiteralPrimitives.*'))
         assert any(x.suffix == '.olean' for x in artifacts)
         r['independent_artifacts'] = []
         for artifact in artifacts:
@@ -93,7 +93,7 @@ def main():
             r['independent_artifacts'].append({'name': artifact.name, 'sha256': sha(target), 'bytes': target.stat().st_size})
         closure = json.loads((HERE / 'source-closure-manifest.json').read_text())
         tau = workspace / '.lake/packages/TauCeti'
-        assert len(closure['files']) == 32
+        assert len(closure['files']) == 47
         checked = []
         for row in closure['files']:
             src = tau / row['path']
@@ -108,7 +108,7 @@ def main():
         stage = runner.Diagnostic(stage_o, case)
         stage.receipt['kind'] = 'Actual source bridge diagnostic; not full preflight'
         tc = ['elan', 'run', frozen['lean_toolchain']]
-        # Compile the exact two-root closure in dependency order, one compiler
+        # Compile the exact four-root closure in dependency order, one compiler
         # at a time. Never invoke TauCeti's 22,249-module default target.
         pending = {row['module']: row for row in closure['files']}
         order = []
@@ -126,13 +126,13 @@ def main():
         for row in order:
             remaining = 2400 - (time.monotonic() - budget_start)
             if remaining <= 0:
-                raise TimeoutError('Entire 32-module source-closure budget expired')
+                raise TimeoutError('Entire 47-module source-closure budget expired')
             target = tau / '.lake/build/lib/lean' / Path(row['path']).with_suffix('.olean')
             target.parent.mkdir(parents=True, exist_ok=True)
             stage.run('source-module-' + row['module'], tc + ['lake', '--keep-toolchain', 'env', 'lean', '--trust=0', '-j1', '-M8192', '-DElab.async=false', '-Ddebug.skipKernelTC=false', '--root=' + str(tau), '-o', str(target), str(tau / row['path'])], cwd=workspace, timeout=remaining)
-        bridge = workspace / 'LiteralWishartLawsSourceBridge.lean'
+        bridge = workspace / 'WishartLiteralPrimitivesSourceBridge.lean'
         shutil.copyfile(HERE / bridge.name, bridge)
-        artifact = workspace / 'diagnostic-output' / 'LiteralWishartLawsSourceBridge.olean'
+        artifact = workspace / 'diagnostic-output' / 'WishartLiteralPrimitivesSourceBridge.olean'
         code, _ = stage.run('actual-source-equality-bridge', tc + ['lake', '--keep-toolchain', 'env', 'lean', '--trust=0', '-j1', '-M8192', '-DElab.async=false', '-Ddebug.skipKernelTC=false', '--root=' + str(workspace), '-o', str(artifact), str(bridge)], cwd=workspace, timeout=2400, required=False)
         r['source_bridge_exit_code'] = code
         for row in r['independent_artifacts']:

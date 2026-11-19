@@ -4,13 +4,13 @@
   "mathlib_pin": "2cabef97b63d3275776b8b060d802de6a6fa1055",
   "tauceti_pin": "06d5bb4e3ebb737dc6538567f5c53bf8800b9362",
   "hashes": {
-    "LiteralWishartLaws.lean": "b41395c394ed6935eb32284c0b6e6a7b4f3b7a85e78410f8c4709f2e906540d4",
-    "LiteralWishartLawsSourceBridge.lean": "2050bcc70f60fb82681faac8e95196fa8a20a2e0a874120f7ebfa1d487cc2e08",
+    "WishartLiteralPrimitives.lean": "ae85305fd9f13141fcf1491a38246104bcc33db94581bbfba12db92f1921b487",
+    "WishartLiteralPrimitivesSourceBridge.lean": "157d94e485e764947e1e7d820722989fc89cbf7acd6ab4e737c42175f3fe9390",
     "canonical_runner.py": "0ba060b57e0b91a5bf083229c38ab4dcb6f7fcd7bd42bebdb3ddf4bf3af162a8",
     "lake-manifest.json": "300eaa0ed216e52b46ddf86c28acbaef4a78c623986d47503b9ef4639ecdfd7a",
     "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
     "original-lakefile.toml": "d90686b28700434d823fbfe7fc03afb991d77ff566bd1c53b8c4f2525189ebc0",
-    "run.py": "59ed4af29efb4153d9f283f39ab555641bcb236ab254bce0d2c7ba11fe800a9c",
-    "source-closure-manifest.json": "3cdceb0a733dc31b1b87cce501bfce73b44a2901119a78680a2bb6d9c968e723"
+    "run.py": "27c463e82d6da8043c2c2a85c4a3251a5268cafde36bbd26fe8372a0bd95579d",
+    "source-closure-manifest.json": "d09160d4a77be9f68d65ff61071f10f8a63fb662b038b8bb0982298bb45281c7"
   }
 }
