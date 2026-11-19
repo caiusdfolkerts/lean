@@ -4191,12 +4191,13 @@ theorem originalDegreeDifferential_liftsCycles (j i : ℕ) :
 abbrev originalInternalKoszulHomology (j i : ℕ) :=
   complexKernelHomology (originalKoszulDegreeComplex K hs d hrank j) i
 
+theorem palomarOriginalInternalSquare (j i : ℕ) : (complexOutgoing (originalKoszulDegreeComplex K hs d hrank j) i).comp (complexIncoming (originalKoszulDegreeComplex K hs d hrank j) i) = 0 := complexIncomingOutgoing (originalKoszulDegreeComplex K hs d hrank j) i
 def originalInternalHomologyFiltration (j i : ℕ) :
     Filtration (K := K) (originalInternalKoszulHomology K hs d hrank j i) :=
   homologyFiltration (originalDegreeTermFiltration K hs d j i)
     (complexIncoming (originalKoszulDegreeComplex K hs d hrank j) i)
     (complexOutgoing (originalKoszulDegreeComplex K hs d hrank j) i)
-    (complexIncomingOutgoing (originalKoszulDegreeComplex K hs d hrank j) i)
+    (palomarOriginalInternalSquare K hs d hrank j i)
 
 /-- An explicit finite upper endpoint, valid over every commutative ring. -/
 theorem originalInternalHomologyFiltration_finite (j i : ℕ) :

@@ -1,0 +1,42 @@
+{
+  "status": "applied pending full verification",
+  "canonical_run": "44506316080",
+  "canonical_commit": "8b9c7b804704cb027686198b9fe8bee15899042d",
+  "selected_targets_unchanged": 43,
+  "proof_argument_replacements": [
+    [
+      "def originalInternalHomologyFiltration",
+      "(complexIncomingOutgoing (originalKoszulDegreeComplex K hs d hrank j) i)",
+      "(palomarOriginalInternalSquare K hs d hrank j i)"
+    ],
+    [
+      "def augmentedCochainComplex",
+      "(fun i => ModuleCat.hom_ext (augmentedCoboundary_square \u039b h\u039b i))",
+      "(palomarAugmentedSquare \u039b h\u039b)"
+    ],
+    [
+      "abbrev rankSelectedCohomology",
+      "(rankSelection_downward (rankColoredOrderComplex hs d hrank) S)",
+      "(palomarRankSelectedDownward hs d hrank S)"
+    ]
+  ],
+  "changes": [
+    {
+      "path": "source/Challenge.lean",
+      "before_sha256": "5a699c087ba255a9ec3397697076ea502710ebf283fb6f54180085794ed59e39",
+      "after_sha256": "9347c0b7f9b0ae92209e54079db47a5740980efbbb1df5e0aed9b86cc4de4920"
+    },
+    {
+      "path": "source/theorem12/PalomarPart002.lean",
+      "before_sha256": "ae02526c8932cf7705d2100c9839de0cc8ef835ae2377657ce8dda78ba871586",
+      "after_sha256": "740849b08089e2f3f0a3ad91079b085a6b218c366296b1ba3026a835a82ef613"
+    },
+    {
+      "path": "source/theorem12/PalomarPart004.lean",
+      "before_sha256": "54fac460e37f6c215a831c0931e6412f39cdeff02c5bd590a8cc09fe22055a4f",
+      "after_sha256": "be13c7ef32694cd31840370200fad524fe51897a40d82b5d39fc967622c5390d"
+    }
+  ],
+  "new_holes": 0,
+  "applied_at": "2026-11-19T10:47:07.777517+00:00"
+}

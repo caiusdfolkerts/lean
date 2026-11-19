@@ -930,12 +930,13 @@ theorem augmentedCoboundary_square (Λ : Finset V → Prop)
     Subtype.ext (Simplicial.boundary_boundary x.val)
   rw [hz, map_zero]
 
+theorem palomarAugmentedSquare (Λ : Finset V → Prop) (hΛ : Simplicial.Downward Λ) (i : ℕ) : ModuleCat.ofHom (augmentedCoboundary (K := K) Λ hΛ i) ≫ ModuleCat.ofHom (augmentedCoboundary (K := K) Λ hΛ (i + 1)) = 0 := ModuleCat.hom_ext (augmentedCoboundary_square Λ hΛ i)
 def augmentedCochainComplex (Λ : Finset V → Prop) (hΛ : Simplicial.Downward Λ) :
     HomologicalComplex (ModuleCat.{max u v} K) PalomarBarycentricTor.naturalUp :=
   CochainComplex.of
     (fun i => ModuleCat.of K (Module.Dual K (Simplicial.Chains (k := K) Λ i)))
     (fun i => ModuleCat.ofHom (augmentedCoboundary Λ hΛ i))
-    (fun i => ModuleCat.hom_ext (augmentedCoboundary_square Λ hΛ i))
+    (palomarAugmentedSquare Λ hΛ)
 
 @[simp] theorem augmentedCochainComplex_d (Λ : Finset V → Prop)
     (hΛ : Simplicial.Downward Λ) (i : ℕ) :
@@ -1219,12 +1220,21 @@ open Classical CategoryTheory FourPapers.FilteredHomology
 universe u v
 variable {P K : Type u} [PartialOrder P] [OrderBot P] [Fintype P] [CommRing K]
 variable (K) (hs : IsSimplicialPoset P) (d : ℕ) (hrank : ∀ p : P, faceRank p ≤ d)
+theorem palomarRankSelectedDownward (S : Finset (Fin d)) :
+    letI : LinearOrder (NonzeroFace P) := (rankColoredOrderComplex hs d hrank).colorLinearOrder
+    letI : DecidableEq (Fin d) := Classical.decEq _
+    letI : DecidableEq (NonzeroFace P) := Classical.decEq _
+    CommAlg.Simplicial.Downward (rankSelection (rankColoredOrderComplex hs d hrank) S) := by
+  letI : LinearOrder (NonzeroFace P) := (rankColoredOrderComplex hs d hrank).colorLinearOrder
+  letI : DecidableEq (Fin d) := Classical.decEq _
+  letI : DecidableEq (NonzeroFace P) := Classical.decEq _
+  exact rankSelection_downward (rankColoredOrderComplex hs d hrank) S
 abbrev rankSelectedCohomology (S : Finset (Fin d)) (i : ℕ) :=
   letI : LinearOrder (NonzeroFace P) := (rankColoredOrderComplex hs d hrank).colorLinearOrder
   letI : DecidableEq (Fin d) := Classical.decEq _
   letI : DecidableEq (NonzeroFace P) := Classical.decEq _
   reducedCohomology (K := K) (rankSelection (rankColoredOrderComplex hs d hrank) S)
-    (rankSelection_downward (rankColoredOrderComplex hs d hrank) S)
+    (palomarRankSelectedDownward hs d hrank S)
     ((S.card : ℤ) - i - 1)
 
 def rankSelectedEmptyRelativeIso (S : Finset (Fin d)) (i : ℕ) :

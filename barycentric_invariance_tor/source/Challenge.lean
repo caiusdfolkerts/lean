@@ -143,18 +143,15 @@ namespace FourPapers.Universal
 set_option backward.isDefEq.respectTransparency false
 open Classical Finset
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
-/-- Literal FourPapers.Universal.IsSimplicialPoset; source theorem12.lean:5908. -/ def IsSimplicialPoset (P : Type*) [PartialOrder P] [OrderBot P] : Prop :=
-  ∀ p : P, ∃ n : ℕ, Nonempty (Set.Iic p ≃o Finset (Fin n))
-/-- Literal FourPapers.Universal.faceVertices; source theorem12.lean:5912. -/ def faceVertices (p : P) : Finset P :=
-  univ.filter fun a => IsAtom a ∧ a ≤ p
+/-- Literal FourPapers.Universal.IsSimplicialPoset; source theorem12.lean:5908. -/ def IsSimplicialPoset (P : Type*) [PartialOrder P] [OrderBot P] : Prop := ∀ p : P, ∃ n : ℕ, Nonempty (Set.Iic p ≃o Finset (Fin n))
+/-- Literal FourPapers.Universal.faceVertices; source theorem12.lean:5912. -/ def faceVertices (p : P) : Finset P := univ.filter fun a => IsAtom a ∧ a ≤ p
 /-- Literal FourPapers.Universal.mem_faceVertices; source theorem12.lean:5915. -/ @[simp] theorem mem_faceVertices {p a : P} : a ∈ faceVertices p ↔ IsAtom a ∧ a ≤ p := by sorry
 /-- Literal FourPapers.Universal.faceVertices_mono; source theorem12.lean:5928. -/ theorem faceVertices_mono : Monotone (faceVertices : P → Finset P) := by sorry
 /-- Literal FourPapers.Universal.existsUnique_subface; source theorem12.lean:5982. -/ theorem existsUnique_subface (hs : IsSimplicialPoset P) (p : P) (s : Finset P) (hsu : s ⊆ faceVertices p) : ∃! x : Set.Iic p, faceVertices x.val = s := by sorry
 /-- Literal FourPapers.Universal.faceRank; source theorem12.lean:6024. -/ def faceRank (p : P) : ℕ := (faceVertices p).card
 /-- Literal FourPapers.Universal.faceRank_bot; source theorem12.lean:6026. -/ @[simp] theorem faceRank_bot : faceRank (⊥ : P) = 0 := by sorry
 /-- Literal FourPapers.Universal.faceRank_strictMono; source theorem12.lean:6028. -/ theorem faceRank_strictMono (hs : IsSimplicialPoset P) : StrictMono (faceRank : P → ℕ) := by sorry
-/-- Literal FourPapers.Universal.koszulExteriorDegree; source theorem12.lean:19765. -/ def koszulExteriorDegree {d i : ℕ} (s : Set.powersetCard (Fin d) i) : ℕ :=
-  ∑ j ∈ s.val, (j.val + 1)
+/-- Literal FourPapers.Universal.koszulExteriorDegree; source theorem12.lean:19765. -/ def koszulExteriorDegree {d i : ℕ} (s : Set.powersetCard (Fin d) i) : ℕ := ∑ j ∈ s.val, (j.val + 1)
 end FourPapers.Universal
 namespace FourPapers.Universal
 set_option backward.isDefEq.respectTransparency false
@@ -165,10 +162,8 @@ instance palomarNonzeroFaceFintype : Fintype (NonzeroFace P) := Fintype.ofFinite
 /-- Literal FourPapers.Universal.faceMeetBelow; source theorem12.lean:6410. -/ def faceMeetBelow (hs : IsSimplicialPoset P) (p q w : P) (hpw : p ≤ w) (hqw : q ≤ w) : P :=
   ((existsUnique_subface hs w (faceVertices p ∩ faceVertices q)
     (Finset.inter_subset_left.trans (faceVertices_mono hpw))).choose).val
-/-- Literal FourPapers.Universal.IsMinimalCommonUpper; source theorem12.lean:6458. -/ def IsMinimalCommonUpper (p q w : P) : Prop :=
-  p ≤ w ∧ q ≤ w ∧ ∀ v, p ≤ v → q ≤ v → v ≤ w → v = w
-/-- Literal FourPapers.Universal.minimalCommonUppers; source theorem12.lean:6461. -/ def minimalCommonUppers (p q : P) : Finset P :=
-  univ.filter (IsMinimalCommonUpper p q)
+/-- Literal FourPapers.Universal.IsMinimalCommonUpper; source theorem12.lean:6458. -/ def IsMinimalCommonUpper (p q w : P) : Prop := p ≤ w ∧ q ≤ w ∧ ∀ v, p ≤ v → q ≤ v → v ≤ w → v = w
+/-- Literal FourPapers.Universal.minimalCommonUppers; source theorem12.lean:6461. -/ def minimalCommonUppers (p q : P) : Finset P := univ.filter (IsMinimalCommonUpper p q)
 end FourPapers.Universal
 namespace CommAlg.Simplicial
 set_option backward.isDefEq.respectTransparency false
@@ -176,10 +171,8 @@ open CliffordAlgebra
 variable {V k : Type*} [Fintype V] [LinearOrder V] [CommRing k]
 /-- Literal CommAlg.Simplicial.Ambient; source theorem12.lean:5584. -/ abbrev Ambient (V k : Type*) [Fintype V] [CommRing k] := ExteriorAlgebra k (V → k)
 /-- Literal CommAlg.Simplicial.basis; source theorem12.lean:5586. -/ def basis : Module.Basis (Finset V) k (Ambient V k) := (Pi.basisFun k V).ExteriorAlgebra
-/-- Literal CommAlg.Simplicial.Chains; source theorem12.lean:5588. -/ def Chains (K : Finset V → Prop) (i : ℕ) : Submodule k (Ambient V k) :=
-  Submodule.span k (basis '' {s | K s ∧ s.card = i})
-/-- Literal CommAlg.Simplicial.Downward; source theorem12.lean:5591. -/ def Downward (K : Finset V → Prop) : Prop :=
-  ∀ ⦃s t⦄, t ⊆ s → K s → K t
+/-- Literal CommAlg.Simplicial.Chains; source theorem12.lean:5588. -/ def Chains (K : Finset V → Prop) (i : ℕ) : Submodule k (Ambient V k) := Submodule.span k (basis '' {s | K s ∧ s.card = i})
+/-- Literal CommAlg.Simplicial.Downward; source theorem12.lean:5591. -/ def Downward (K : Finset V → Prop) : Prop := ∀ ⦃s t⦄, t ⊆ s → K s → K t
 /-- Literal CommAlg.Simplicial.boundary; source theorem12.lean:5608. -/ abbrev boundary : Ambient V k →ₗ[k] Ambient V k :=
   contractLeft (Q := (0 : QuadraticForm k (V → k)))
     (Fintype.linearCombination k (fun _ : V => (1 : k)))
@@ -191,8 +184,7 @@ open Classical MvPolynomial Finset
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
 variable (K : Type*) [CommRing K]
 /-- Literal FourPapers.Universal.FacePolynomial; source theorem12.lean:6470. -/ abbrev FacePolynomial := MvPolynomial (NonzeroFace P) K
-/-- Literal FourPapers.Universal.faceSymbol; source theorem12.lean:6473. -/ def faceSymbol (p : P) : FacePolynomial (P := P) K :=
-  if hp : p = ⊥ then 1 else X ⟨p, hp⟩
+/-- Literal FourPapers.Universal.faceSymbol; source theorem12.lean:6473. -/ def faceSymbol (p : P) : FacePolynomial (P := P) K := if hp : p = ⊥ then 1 else X ⟨p, hp⟩
 /-- Literal FourPapers.Universal.faceRelations; source theorem12.lean:6485. -/ def faceRelations (hs : IsSimplicialPoset P) : Set (FacePolynomial (P := P) K) :=
   {f | (∃ (p q w : P) (hpw : p ≤ w) (hqw : q ≤ w),
       f = faceSymbol K p * faceSymbol K q -
@@ -200,40 +192,29 @@ variable (K : Type*) [CommRing K]
           ∑ u ∈ minimalCommonUppers p q, faceSymbol K u) ∨
     (∃ p q, (¬ ∃ w, p ≤ w ∧ q ≤ w) ∧
       f = faceSymbol K p * faceSymbol K q)}
-/-- Literal FourPapers.Universal.faceIdeal; source theorem12.lean:6493. -/ def faceIdeal (hs : IsSimplicialPoset P) : Ideal (FacePolynomial (P := P) K) :=
-  Ideal.span (faceRelations K hs)
-/-- Literal FourPapers.Universal.FaceRing; source theorem12.lean:6497. -/ abbrev FaceRing (hs : IsSimplicialPoset P) :=
-  FacePolynomial (P := P) K ⧸ faceIdeal K hs
+/-- Literal FourPapers.Universal.faceIdeal; source theorem12.lean:6493. -/ def faceIdeal (hs : IsSimplicialPoset P) : Ideal (FacePolynomial (P := P) K) := Ideal.span (faceRelations K hs)
+/-- Literal FourPapers.Universal.FaceRing; source theorem12.lean:6497. -/ abbrev FaceRing (hs : IsSimplicialPoset P) := FacePolynomial (P := P) K ⧸ faceIdeal K hs
 def palomarFaceRingModule (hs : IsSimplicialPoset P) : Module K (FaceRing K hs) := inferInstance
 attribute [instance 2400] palomarFaceRingModule
 /-- Literal FourPapers.Universal.barycentricIdeal; source theorem12.lean:6501. -/ def barycentricIdeal : Ideal (FacePolynomial (P := P) K) :=
   Ideal.span {f | ∃ p q : NonzeroFace P,
     ¬ p.val ≤ q.val ∧ ¬ q.val ≤ p.val ∧ f = X p * X q}
 /-- Literal FourPapers.Universal.BarycentricRing; source theorem12.lean:6505. -/ abbrev BarycentricRing := FacePolynomial (P := P) K ⧸ barycentricIdeal (P := P) K
-/-- Literal FourPapers.Universal.faceRingGenerator; source theorem12.lean:6507. -/ def faceRingGenerator (hs : IsSimplicialPoset P) (p : P) : FaceRing K hs :=
-  Ideal.Quotient.mk (faceIdeal K hs) (faceSymbol K p)
-/-- Literal FourPapers.Universal.barycentricGenerator; source theorem12.lean:6510. -/ def barycentricGenerator (p : P) : BarycentricRing (P := P) K :=
-  Ideal.Quotient.mk (barycentricIdeal K) (faceSymbol K p)
-/-- Literal FourPapers.Universal.faceRankParameter; source theorem12.lean:6514. -/ def faceRankParameter (hs : IsSimplicialPoset P) (i : ℕ) : FaceRing K hs :=
-  ∑ p ∈ univ.filter (fun p : P => faceRank p = i), faceRingGenerator K hs p
-/-- Literal FourPapers.Universal.barycentricRankParameter; source theorem12.lean:6517. -/ def barycentricRankParameter (i : ℕ) : BarycentricRing (P := P) K :=
-  ∑ p ∈ univ.filter (fun p : P => faceRank p = i), barycentricGenerator K p
-/-- Literal FourPapers.Universal.faceParameterAction; source theorem12.lean:6520. -/ def faceParameterAction (hs : IsSimplicialPoset P) (d : ℕ) : MvPolynomial (Fin d) K →ₐ[K] FaceRing K hs :=
-  MvPolynomial.aeval fun i => faceRankParameter K hs (i.val + 1)
-/-- Literal FourPapers.Universal.barycentricParameterAction; source theorem12.lean:6524. -/ def barycentricParameterAction (d : ℕ) : MvPolynomial (Fin d) K →ₐ[K] BarycentricRing (P := P) K :=
-  MvPolynomial.aeval fun i => barycentricRankParameter K (i.val + 1)
-/-- Literal FourPapers.Universal.BarycentricAllowed; source theorem12.lean:7826. -/ def BarycentricAllowed (a : NonzeroFace P →₀ ℕ) : Prop :=
-  ∀ p ∈ a.support, ∀ q ∈ a.support, p.val ≤ q.val ∨ q.val ≤ p.val
+/-- Literal FourPapers.Universal.faceRingGenerator; source theorem12.lean:6507. -/ def faceRingGenerator (hs : IsSimplicialPoset P) (p : P) : FaceRing K hs := Ideal.Quotient.mk (faceIdeal K hs) (faceSymbol K p)
+/-- Literal FourPapers.Universal.barycentricGenerator; source theorem12.lean:6510. -/ def barycentricGenerator (p : P) : BarycentricRing (P := P) K := Ideal.Quotient.mk (barycentricIdeal K) (faceSymbol K p)
+/-- Literal FourPapers.Universal.faceRankParameter; source theorem12.lean:6514. -/ def faceRankParameter (hs : IsSimplicialPoset P) (i : ℕ) : FaceRing K hs := ∑ p ∈ univ.filter (fun p : P => faceRank p = i), faceRingGenerator K hs p
+/-- Literal FourPapers.Universal.barycentricRankParameter; source theorem12.lean:6517. -/ def barycentricRankParameter (i : ℕ) : BarycentricRing (P := P) K := ∑ p ∈ univ.filter (fun p : P => faceRank p = i), barycentricGenerator K p
+/-- Literal FourPapers.Universal.faceParameterAction; source theorem12.lean:6520. -/ def faceParameterAction (hs : IsSimplicialPoset P) (d : ℕ) : MvPolynomial (Fin d) K →ₐ[K] FaceRing K hs := MvPolynomial.aeval fun i => faceRankParameter K hs (i.val + 1)
+/-- Literal FourPapers.Universal.barycentricParameterAction; source theorem12.lean:6524. -/ def barycentricParameterAction (d : ℕ) : MvPolynomial (Fin d) K →ₐ[K] BarycentricRing (P := P) K := MvPolynomial.aeval fun i => barycentricRankParameter K (i.val + 1)
+/-- Literal FourPapers.Universal.BarycentricAllowed; source theorem12.lean:7826. -/ def BarycentricAllowed (a : NonzeroFace P →₀ ℕ) : Prop := ∀ p ∈ a.support, ∀ q ∈ a.support, p.val ≤ q.val ∨ q.val ≤ p.val
 end FourPapers.Universal
 namespace FourPapers.Universal
 set_option backward.isDefEq.respectTransparency false
 open Classical CategoryTheory
 universe u
 variable {K : Type u} [CommRing K]
-/-- Literal FourPapers.Universal.complexIncoming; source theorem12.lean:20422. -/ abbrev complexIncoming (C : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown) (i : ℕ) :=
-  (C.d (i + 1) i).hom
-/-- Literal FourPapers.Universal.complexOutgoing; source theorem12.lean:20424. -/ abbrev complexOutgoing (C : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown) (i : ℕ) :=
-  (C.d i (i - 1)).hom
+/-- Literal FourPapers.Universal.complexIncoming; source theorem12.lean:20422. -/ abbrev complexIncoming (C : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown) (i : ℕ) := (C.d (i + 1) i).hom
+/-- Literal FourPapers.Universal.complexOutgoing; source theorem12.lean:20424. -/ abbrev complexOutgoing (C : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown) (i : ℕ) := (C.d i (i - 1)).hom
 /-- Literal FourPapers.Universal.complexIncomingOutgoing; source theorem12.lean:20427. -/ theorem complexIncomingOutgoing (C : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown) (i : ℕ) : (complexOutgoing C i).comp (complexIncoming C i) = 0 := by sorry
 end FourPapers.Universal
 section
@@ -241,10 +222,8 @@ set_option backward.isDefEq.respectTransparency false
 universe u v
 open CategoryTheory Category Limits Module ExteriorAlgebra
 variable {R : Type u} [CommRing R] {M : Type v} [AddCommGroup M] [Module R M] (φ : M →ₗ[R] R)
-/-- Literal koszulComplex.dAlternating; source theorem12.lean:720. -/ noncomputable def koszulComplex.dAlternating (n : ℕ) : M [⋀^Fin (n + 1)]→ₗ[R] ⋀[R]^n M :=
-  AlternatingMap.alternatizeUncurryFin (φ.smulRight (exteriorPower.ιMulti R n))
-/-- Literal koszulComplex.d; source theorem12.lean:734. -/ noncomputable def koszulComplex.d (n : ℕ) : ⋀[R]^(n + 1) M →ₗ[R] ⋀[R]^n M :=
-  exteriorPower.alternatingMapLinearEquiv (koszulComplex.dAlternating φ n)
+/-- Literal koszulComplex.dAlternating; source theorem12.lean:720. -/ noncomputable def koszulComplex.dAlternating (n : ℕ) : M [⋀^Fin (n + 1)]→ₗ[R] ⋀[R]^n M := AlternatingMap.alternatizeUncurryFin (φ.smulRight (exteriorPower.ιMulti R n))
+/-- Literal koszulComplex.d; source theorem12.lean:734. -/ noncomputable def koszulComplex.d (n : ℕ) : ⋀[R]^(n + 1) M →ₗ[R] ⋀[R]^n M := exteriorPower.alternatingMapLinearEquiv (koszulComplex.dAlternating φ n)
 /-- Literal koszulComplex.d_comp_eq_zero; source theorem12.lean:737. -/ lemma koszulComplex.d_comp_eq_zero (n : ℕ) : koszulComplex.d φ n ∘ₗ koszulComplex.d φ (n + 1) = 0 := by sorry
 /-- Literal koszulComplex; source theorem12.lean:753. -/ noncomputable def koszulComplex : HomologicalComplex (ModuleCat R) PalomarBarycentricTor.naturalDown :=
   ChainComplex.of (fun n ↦ ModuleCat.of R (⋀[R]^n M))
@@ -259,8 +238,7 @@ variable {R : Type u} {V : Type} [CommRing R] [Fintype V] [LinearOrder V]
 /-- Literal CommAlg.Koszul.familyCoefficientComplex; source theorem12.lean:5030. -/ abbrev familyCoefficientComplex (x : V → R) (M : ModuleCat.{u} R) : HomologicalComplex (ModuleCat.{u} R) PalomarBarycentricTor.naturalDown :=
   (((CategoryTheory.MonoidalCategory.tensoringRight (ModuleCat R)).obj M).mapHomologicalComplex (ComplexShape.down ℕ)).obj
       (koszulComplex (Fintype.linearCombination R x))
-/-- Literal CommAlg.Koszul.coefficientCoordinates; source theorem12.lean:5036. -/ def coefficientCoordinates (x : V → R) (M : ModuleCat.{u} R) (i : ℕ) : (familyCoefficientComplex x M).X i ≃ₗ[R] (Set.powersetCard V i →₀ M) :=
-  TensorProduct.equivFinsuppOfBasisLeft ((Pi.basisFun R V).exteriorPower i)
+/-- Literal CommAlg.Koszul.coefficientCoordinates; source theorem12.lean:5036. -/ def coefficientCoordinates (x : V → R) (M : ModuleCat.{u} R) (i : ℕ) : (familyCoefficientComplex x M).X i ≃ₗ[R] (Set.powersetCard V i →₀ M) := TensorProduct.equivFinsuppOfBasisLeft ((Pi.basisFun R V).exteriorPower i)
 /-- Literal CommAlg.Koszul.coordinateDifferential; source theorem12.lean:5042. -/ def coordinateDifferential (x : V → R) (M : ModuleCat.{u} R) (i : ℕ) : (Set.powersetCard V (i + 1) →₀ M) →ₗ[R] (Set.powersetCard V i →₀ M) :=
   let δ : (familyCoefficientComplex.{u} x M).X (i + 1) →ₗ[R]
       (familyCoefficientComplex.{u} x M).X i :=
@@ -273,8 +251,7 @@ set_option backward.isDefEq.respectTransparency false
 open CategoryTheory MvPolynomial
 universe u v
 variable {V : Type} {k : Type u} [CommRing k]
-/-- Literal CommAlg.Koszul.residueCoefficientModule; source theorem12.lean:5819. -/ def residueCoefficientModule : ModuleCat.{u} (MvPolynomial V k) :=
-  (ModuleCat.restrictScalars (constantCoeff : MvPolynomial V k →+* k)).obj (ModuleCat.of k k)
+/-- Literal CommAlg.Koszul.residueCoefficientModule; source theorem12.lean:5819. -/ def residueCoefficientModule : ModuleCat.{u} (MvPolynomial V k) := (ModuleCat.restrictScalars (constantCoeff : MvPolynomial V k →+* k)).obj (ModuleCat.of k k)
 end CommAlg.Koszul
 namespace FourPapers.Universal
 set_option backward.isDefEq.respectTransparency false
@@ -385,26 +362,22 @@ variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
     intro a ha
     obtain ⟨v, hv, rfl⟩ := mem_image.mp ha
     exact mem_faceVertices.mpr v.property)).choose
-/-- Literal FourPapers.Universal.StandardFaceIndex; source theorem12.lean:7914. -/ abbrev StandardFaceIndex (P : Type*) [PartialOrder P] [OrderBot P] :=
-  {a : NonzeroFace P →₀ ℕ // BarycentricAllowed a}
+/-- Literal FourPapers.Universal.StandardFaceIndex; source theorem12.lean:7914. -/ abbrev StandardFaceIndex (P : Type*) [PartialOrder P] [OrderBot P] := {a : NonzeroFace P →₀ ℕ // BarycentricAllowed a}
 /-- Literal FourPapers.Universal.standardCarrier; source theorem12.lean:7919. -/ def standardCarrier (a : StandardFaceIndex P) : P :=
   if h : a.val.support.Nonempty then
     (Finset.exists_max_image a.val.support (fun p : NonzeroFace P => faceRank p.val) h).choose.val
   else ⊥
 /-- Literal FourPapers.Universal.standardCarrier_le_iff; source theorem12.lean:7924. -/ theorem standardCarrier_le_iff (hs : IsSimplicialPoset P) (a : StandardFaceIndex P) (p : P) : standardCarrier a ≤ p ↔ ∀ q ∈ a.val.support, q.val ≤ p := by sorry
 /-- Literal FourPapers.Universal.StandardInside; source theorem12.lean:8005. -/ abbrev StandardInside (p : P) := {a : StandardFaceIndex P // standardCarrier a ≤ p}
-/-- Literal FourPapers.Universal.OriginalKoszulIndex; source theorem12.lean:19771. -/ abbrev OriginalKoszulIndex (P : Type*) [PartialOrder P] [OrderBot P] (d i : ℕ) :=
-  Σ _ : Set.powersetCard (Fin d) i, StandardFaceIndex P
+/-- Literal FourPapers.Universal.OriginalKoszulIndex; source theorem12.lean:19771. -/ abbrev OriginalKoszulIndex (P : Type*) [PartialOrder P] [OrderBot P] (d i : ℕ) := Σ _ : Set.powersetCard (Fin d) i, StandardFaceIndex P
 end FourPapers.Universal
 namespace FourPapers.Universal
 set_option backward.isDefEq.respectTransparency false
 open Classical Finset MvPolynomial
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
 variable (K : Type*) [CommRing K] (hs : IsSimplicialPoset P)
-/-- Literal FourPapers.Universal.faceRingMonomial; source theorem12.lean:8687. -/ def faceRingMonomial (a : NonzeroFace P →₀ ℕ) : FaceRing K hs :=
-  Ideal.Quotient.mk (faceIdeal K hs) (monomial a 1)
-/-- Literal FourPapers.Universal.standardOrdinaryDegree; source theorem12.lean:13414. -/ def standardOrdinaryDegree (a : StandardFaceIndex P) : ℕ :=
-  a.val.sum (fun F n => n * faceRank F.val)
+/-- Literal FourPapers.Universal.faceRingMonomial; source theorem12.lean:8687. -/ def faceRingMonomial (a : NonzeroFace P →₀ ℕ) : FaceRing K hs := Ideal.Quotient.mk (faceIdeal K hs) (monomial a 1)
+/-- Literal FourPapers.Universal.standardOrdinaryDegree; source theorem12.lean:13414. -/ def standardOrdinaryDegree (a : StandardFaceIndex P) : ℕ := a.val.sum (fun F n => n * faceRank F.val)
 end FourPapers.Universal
 namespace FourPapers.Universal
 set_option backward.isDefEq.respectTransparency false
@@ -415,25 +388,19 @@ namespace FourPapers.Universal
 set_option backward.isDefEq.respectTransparency false
 open Classical Finset
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
-/-- Literal FourPapers.Universal.koszulExteriorWeight; source theorem12.lean:19768. -/ def koszulExteriorWeight (d : ℕ) {i : ℕ} (s : Set.powersetCard (Fin d) i) : ℤ :=
-  ∑ j ∈ s.val, rankWeight d (j.val + 1)
-/-- Literal FourPapers.Universal.originalKoszulDegree; source theorem12.lean:19774. -/ def originalKoszulDegree {d i : ℕ} (a : OriginalKoszulIndex P d i) : ℕ :=
-  standardOrdinaryDegree a.2 + koszulExteriorDegree a.1
+/-- Literal FourPapers.Universal.koszulExteriorWeight; source theorem12.lean:19768. -/ def koszulExteriorWeight (d : ℕ) {i : ℕ} (s : Set.powersetCard (Fin d) i) : ℤ := ∑ j ∈ s.val, rankWeight d (j.val + 1)
+/-- Literal FourPapers.Universal.originalKoszulDegree; source theorem12.lean:19774. -/ def originalKoszulDegree {d i : ℕ} (a : OriginalKoszulIndex P d i) : ℕ := standardOrdinaryDegree a.2 + koszulExteriorDegree a.1
 end FourPapers.Universal
 namespace FourPapers.Universal
 set_option backward.isDefEq.respectTransparency false
 open Classical Finset MvPolynomial
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
 variable (K : Type*) [CommRing K]
-/-- Literal FourPapers.Universal.stalkVertexSet; source theorem12.lean:6835. -/ def stalkVertexSet (p q : P) : Finset (FaceVertex p) :=
-  univ.filter fun a => a.val ≤ q
+/-- Literal FourPapers.Universal.stalkVertexSet; source theorem12.lean:6835. -/ def stalkVertexSet (p q : P) : Finset (FaceVertex p) := univ.filter fun a => a.val ≤ q
 /-- Literal FourPapers.Universal.stalkVertexSet_bot; source theorem12.lean:6841. -/ @[simp] theorem stalkVertexSet_bot (p : P) : stalkVertexSet p (⊥ : P) = ∅ := by sorry
-/-- Literal FourPapers.Universal.faceProduct; source theorem12.lean:6846. -/ def faceProduct (p q : P) : PolynomialStalk K p :=
-  ∏ a ∈ stalkVertexSet p q, X a
-/-- Literal FourPapers.Universal.faceValue; source theorem12.lean:6852. -/ def faceValue (p q : P) : PolynomialStalk K p :=
-  if q ≤ p then faceProduct K p q else 0
-/-- Literal FourPapers.Universal.faceEvaluation; source theorem12.lean:6932. -/ def faceEvaluation (r : P) : FacePolynomial (P := P) K →ₐ[K] PolynomialStalk K r :=
-  MvPolynomial.aeval fun p => faceValue K r p.val
+/-- Literal FourPapers.Universal.faceProduct; source theorem12.lean:6846. -/ def faceProduct (p q : P) : PolynomialStalk K p := ∏ a ∈ stalkVertexSet p q, X a
+/-- Literal FourPapers.Universal.faceValue; source theorem12.lean:6852. -/ def faceValue (p q : P) : PolynomialStalk K p := if q ≤ p then faceProduct K p q else 0
+/-- Literal FourPapers.Universal.faceEvaluation; source theorem12.lean:6932. -/ def faceEvaluation (r : P) : FacePolynomial (P := P) K →ₐ[K] PolynomialStalk K r := MvPolynomial.aeval fun p => faceValue K r p.val
 /-- Literal FourPapers.Universal.faceEvaluation_relation; source theorem12.lean:6942. -/ theorem faceEvaluation_relation (hs : IsSimplicialPoset P) (r : P) {f : FacePolynomial (P := P) K} (hf : f ∈ faceRelations K hs) : faceEvaluation K r f = 0 :=
   by sorry
 /-- Literal FourPapers.Universal.faceRingEvaluation; source theorem12.lean:6955. -/ def faceRingEvaluation (hs : IsSimplicialPoset P) (r : P) : FaceRing K hs →ₐ[K] PolynomialStalk K r :=
@@ -461,8 +428,7 @@ variable (K : Type*) [CommRing K] (hs : IsSimplicialPoset P)
     apply Subtype.ext
     funext p
     exact map_smul (faceRingEvaluation K hs p) c f
-/-- Literal FourPapers.Universal.standardRankWeight; source theorem12.lean:12534. -/ def standardRankWeight (d : ℕ) (a : StandardFaceIndex P) : ℤ :=
-  a.val.sum (fun F n => (n : ℤ) * rankWeight d (faceRank F.val))
+/-- Literal FourPapers.Universal.standardRankWeight; source theorem12.lean:12534. -/ def standardRankWeight (d : ℕ) (a : StandardFaceIndex P) : ℤ := a.val.sum (fun F n => (n : ℤ) * rankWeight d (faceRank F.val))
 end FourPapers.Universal
 namespace FourPapers.Universal
 set_option backward.isDefEq.respectTransparency false
@@ -470,16 +436,14 @@ open Classical Finset
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
 /-- Literal FourPapers.Universal.stalkVertexSet_subfaceOfVertexSet; source theorem12.lean:7752. -/ theorem stalkVertexSet_subfaceOfVertexSet (hs : IsSimplicialPoset P) (p : P) (s : Finset (FaceVertex p)) : stalkVertexSet p (subfaceOfVertexSet hs p s).val = s
   := by sorry
-/-- Literal FourPapers.Universal.originalKoszulWeight; source theorem12.lean:19777. -/ def originalKoszulWeight (d : ℕ) {i : ℕ} (a : OriginalKoszulIndex P d i) : ℤ :=
-  standardRankWeight d a.2 + koszulExteriorWeight d a.1
+/-- Literal FourPapers.Universal.originalKoszulWeight; source theorem12.lean:19777. -/ def originalKoszulWeight (d : ℕ) {i : ℕ} (a : OriginalKoszulIndex P d i) : ℤ := standardRankWeight d a.2 + koszulExteriorWeight d a.1
 end FourPapers.Universal
 namespace FourPapers.Universal
 set_option backward.isDefEq.respectTransparency false
 open Classical Finset
 variable {V K : Type*} [Fintype V] [DecidableEq V] [CommRing K]
 /-- Literal FourPapers.Universal.BooleanFace; source theorem12.lean:7373. -/ abbrev BooleanFace (V : Type*) [DecidableEq V] := {F : Finset V // F.Nonempty}
-/-- Literal FourPapers.Universal.IsChainExponent; source theorem12.lean:7396. -/ def IsChainExponent (a : BooleanFace V →₀ ℕ) : Prop :=
-  ∀ F ∈ a.support, ∀ G ∈ a.support, F.val ⊆ G.val ∨ G.val ⊆ F.val
+/-- Literal FourPapers.Universal.IsChainExponent; source theorem12.lean:7396. -/ def IsChainExponent (a : BooleanFace V →₀ ℕ) : Prop := ∀ F ∈ a.support, ∀ G ∈ a.support, F.val ⊆ G.val ∨ G.val ⊆ F.val
 end FourPapers.Universal
 namespace FourPapers.Universal
 set_option backward.isDefEq.respectTransparency false
@@ -530,8 +494,7 @@ set_option backward.isDefEq.respectTransparency false
 open Classical
 variable {P I : Type*} [Preorder P]
 variable (K : Type*) [CommRing K] (carrier : I → P)
-/-- Literal FourPapers.Universal.coefficientStalk; source theorem12.lean:8327. -/ def coefficientStalk (p : P) : Submodule K (I →₀ K) :=
-  Finsupp.supported K K {i | carrier i ≤ p}
+/-- Literal FourPapers.Universal.coefficientStalk; source theorem12.lean:8327. -/ def coefficientStalk (p : P) : Submodule K (I →₀ K) := Finsupp.supported K K {i | carrier i ≤ p}
 /-- Literal FourPapers.Universal.coefficientRestriction; source theorem12.lean:8330. -/ def coefficientRestriction {p q : P} (_hqp : q ≤ p) : coefficientStalk K carrier p →ₗ[K] coefficientStalk K carrier q :=
   (Finsupp.restrictDom K K {i | carrier i ≤ q}).comp
     (coefficientStalk K carrier p).subtype
@@ -577,8 +540,7 @@ variable (K : Type*) [CommRing K] (carrier : I → P)
     apply Subtype.ext
     funext p
     exact map_smul (Finsupp.restrictDom K K {i | carrier i ≤ p}) c x
-/-- Literal FourPapers.Universal.coefficientAtCarrier; source theorem12.lean:8386. -/ def coefficientAtCarrier (x : (coefficientDiagram K carrier).sections) (i : I) : K :=
-  (x.val (carrier i)).val i
+/-- Literal FourPapers.Universal.coefficientAtCarrier; source theorem12.lean:8386. -/ def coefficientAtCarrier (x : (coefficientDiagram K carrier).sections) (i : I) : K := (x.val (carrier i)).val i
 end FourPapers.Universal
 namespace FourPapers.Universal
 set_option backward.isDefEq.respectTransparency false
@@ -602,29 +564,25 @@ variable [Fintype P]
   right_inv := coefficientSection_assembly K carrier
   map_add' := (coefficientSection K carrier).map_add
   map_smul' := (coefficientSection K carrier).map_smul
-/-- Literal FourPapers.Universal.sectionsFromCoherentCoefficients; source theorem12.lean:8442. -/ def sectionsFromCoherentCoefficients (D : ModuleDiagram K P) (e : CoherentEquiv D (coefficientDiagram K carrier)) : D.sections ≃ₗ[K] (I →₀ K) :=
-  e.sectionEquiv.trans (coefficientSectionEquiv K carrier).symm
+/-- Literal FourPapers.Universal.sectionsFromCoherentCoefficients; source theorem12.lean:8442. -/ def sectionsFromCoherentCoefficients (D : ModuleDiagram K P) (e : CoherentEquiv D (coefficientDiagram K carrier)) : D.sections ≃ₗ[K] (I →₀ K) := e.sectionEquiv.trans (coefficientSectionEquiv K carrier).symm
 end FourPapers.Universal
 namespace FourPapers.Universal
 set_option backward.isDefEq.respectTransparency false
 open Classical Finset
 variable {V T K : Type*} [Fintype V] [DecidableEq V] [Fintype T] [CommRing K]
-/-- Literal FourPapers.Universal.subsetExponent; source theorem12.lean:8826. -/ def subsetExponent (F : Finset V) : V →₀ ℕ :=
-  ∑ v ∈ F, Finsupp.single v 1
+/-- Literal FourPapers.Universal.subsetExponent; source theorem12.lean:8826. -/ def subsetExponent (F : Finset V) : V →₀ ℕ := ∑ v ∈ F, Finsupp.single v 1
 end FourPapers.Universal
 namespace FourPapers.Universal
 set_option backward.isDefEq.respectTransparency false
 open Classical Finset
 variable {V : Type*} [Fintype V] [LinearOrder V]
-/-- Literal FourPapers.Universal.chainVertexMap; source theorem12.lean:9096. -/ def chainVertexMap : (BooleanFace V →₀ ℕ) →ₗ[ℕ] (V →₀ ℕ) :=
-  Finsupp.linearCombination ℕ (fun F => subsetExponent F.val)
+/-- Literal FourPapers.Universal.chainVertexMap; source theorem12.lean:9096. -/ def chainVertexMap : (BooleanFace V →₀ ℕ) →ₗ[ℕ] (V →₀ ℕ) := Finsupp.linearCombination ℕ (fun F => subsetExponent F.val)
 /-- Literal FourPapers.Universal.vertexHeight; source theorem12.lean:9199. -/ def vertexHeight (a : V →₀ ℕ) : ℕ := Finset.univ.sup (fun v => a v)
 /-- Literal FourPapers.Universal.exponentLayer; source theorem12.lean:9204. -/ def exponentLayer (a : V →₀ ℕ) (k : Fin (vertexHeight a)) : BooleanFace V :=
   ⟨Finset.univ.filter (fun v => k.val < a v), by
     obtain ⟨v, hv, hkv⟩ := Finset.lt_sup_iff.mp k.isLt
     exact ⟨v, Finset.mem_filter.mpr ⟨hv, hkv⟩⟩⟩
-/-- Literal FourPapers.Universal.layerExponent; source theorem12.lean:9213. -/ def layerExponent (a : V →₀ ℕ) : BooleanFace V →₀ ℕ :=
-  ∑ k : Fin (vertexHeight a), Finsupp.single (exponentLayer a k) 1
+/-- Literal FourPapers.Universal.layerExponent; source theorem12.lean:9213. -/ def layerExponent (a : V →₀ ℕ) : BooleanFace V →₀ ℕ := ∑ k : Fin (vertexHeight a), Finsupp.single (exponentLayer a k) 1
 /-- Literal FourPapers.Universal.layerExponent_isChain; source theorem12.lean:9231. -/ theorem layerExponent_isChain (a : V →₀ ℕ) : IsChainExponent (layerExponent a) := by sorry
 /-- Literal FourPapers.Universal.chainVertexMap_layerExponent; source theorem12.lean:9245. -/ theorem chainVertexMap_layerExponent (a : V →₀ ℕ) : chainVertexMap (layerExponent a) = a := by sorry
 /-- Literal FourPapers.Universal.chainVertexMap_chain_injective; source theorem12.lean:9347. -/ theorem chainVertexMap_chain_injective : Function.Injective (fun a : {a : BooleanFace V →₀ ℕ // IsChainExponent a} => chainVertexMap a.val) := by sorry
@@ -649,10 +607,8 @@ open Classical Finset MvPolynomial
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
 variable (K : Type*) [CommRing K]
 variable {K}
-/-- Literal FourPapers.Universal.standardVertexEquiv; source theorem12.lean:9536. -/ def standardVertexEquiv (hs : IsSimplicialPoset P) (p : P) : StandardInside p ≃ (FaceVertex p →₀ ℕ) :=
-  (standardInsideEquiv hs p).symm.trans chainVertexEquivUnordered
-/-- Literal FourPapers.Universal.polynomialStandardBasis; source theorem12.lean:9553. -/ def polynomialStandardBasis (hs : IsSimplicialPoset P) (p : P) : Module.Basis (StandardInside p) K (PolynomialStalk K p) :=
-  (MvPolynomial.basisMonomials (FaceVertex p) K).reindex (standardVertexEquiv hs p).symm
+/-- Literal FourPapers.Universal.standardVertexEquiv; source theorem12.lean:9536. -/ def standardVertexEquiv (hs : IsSimplicialPoset P) (p : P) : StandardInside p ≃ (FaceVertex p →₀ ℕ) := (standardInsideEquiv hs p).symm.trans chainVertexEquivUnordered
+/-- Literal FourPapers.Universal.polynomialStandardBasis; source theorem12.lean:9553. -/ def polynomialStandardBasis (hs : IsSimplicialPoset P) (p : P) : Module.Basis (StandardInside p) K (PolynomialStalk K p) := (MvPolynomial.basisMonomials (FaceVertex p) K).reindex (standardVertexEquiv hs p).symm
 end FourPapers.Universal
 namespace FourPapers.Universal
 set_option backward.isDefEq.respectTransparency false
@@ -670,8 +626,7 @@ variable (K : Type*) [CommRing K] (hs : IsSimplicialPoset P)
 /-- Literal FourPapers.Universal.polynomialSectionCoordinates; source theorem12.lean:9892. -/ def polynomialSectionCoordinates : (polynomialDiagram (P := P) K).sections ≃ₗ[K] (StandardFaceIndex P →₀ K) :=
   sectionsFromCoherentCoefficients K standardCarrier (polynomialDiagram K)
     (polynomialCoefficientEquiv K hs)
-/-- Literal FourPapers.Universal.standardFaceCombination; source theorem12.lean:9897. -/ def standardFaceCombination : (StandardFaceIndex P →₀ K) →ₗ[K] FaceRing K hs :=
-  Finsupp.linearCombination K (fun a => faceRingMonomial K hs a.val)
+/-- Literal FourPapers.Universal.standardFaceCombination; source theorem12.lean:9897. -/ def standardFaceCombination : (StandardFaceIndex P →₀ K) →ₗ[K] FaceRing K hs := Finsupp.linearCombination K (fun a => faceRingMonomial K hs a.val)
 /-- Literal FourPapers.Universal.standardFaceCombination_surjective; source theorem12.lean:9900. -/ theorem standardFaceCombination_surjective : Function.Surjective (standardFaceCombination K hs) := by sorry
 /-- Literal FourPapers.Universal.standardFaceCombination_coefficients; source theorem12.lean:9913. -/ theorem standardFaceCombination_coefficients (x : StandardFaceIndex P →₀ K) : polynomialSectionCoordinates K hs (faceRingSection K hs (standardFaceCombination K
   hs x)) = x := by sorry
@@ -758,18 +713,13 @@ set_option backward.isDefEq.respectTransparency false
 open Classical
 variable {K : Type*} [CommRing K]
 variable {X Y Z : Type*} [AddCommGroup X] [Module K X] [AddCommGroup Y] [Module K Y] [AddCommGroup Z] [Module K Z]
-/-- Literal FourPapers.FilteredHomology.lowerInLevel; source theorem12.lean:16698. -/ def lowerInLevel (F : Filtration (K := K) X) (n : ℕ) : Submodule K (F.level (n + 1)) :=
-  (F.level n).comap (F.level (n + 1)).subtype
-/-- Literal FourPapers.FilteredHomology.Grade; source theorem12.lean:16701. -/ abbrev Grade (F : Filtration (K := K) X) (n : ℕ) :=
-  F.level (n + 1) ⧸ lowerInLevel F n
-/-- Literal FourPapers.FilteredHomology.boundaryMap; source theorem12.lean:16731. -/ def boundaryMap (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) : X →ₗ[K] LinearMap.ker g :=
-  f.codRestrict _ (fun x => LinearMap.congr_fun hfg x)
-/-- Literal FourPapers.FilteredHomology.Homology; source theorem12.lean:16735. -/ abbrev Homology (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) :=
-  LinearMap.ker g ⧸ LinearMap.range (boundaryMap f g hfg)
+/-- Literal FourPapers.FilteredHomology.lowerInLevel; source theorem12.lean:16698. -/ def lowerInLevel (F : Filtration (K := K) X) (n : ℕ) : Submodule K (F.level (n + 1)) := (F.level n).comap (F.level (n + 1)).subtype
+/-- Literal FourPapers.FilteredHomology.Grade; source theorem12.lean:16701. -/ abbrev Grade (F : Filtration (K := K) X) (n : ℕ) := F.level (n + 1) ⧸ lowerInLevel F n
+/-- Literal FourPapers.FilteredHomology.boundaryMap; source theorem12.lean:16731. -/ def boundaryMap (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) : X →ₗ[K] LinearMap.ker g := f.codRestrict _ (fun x => LinearMap.congr_fun hfg x)
+/-- Literal FourPapers.FilteredHomology.Homology; source theorem12.lean:16735. -/ abbrev Homology (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) := LinearMap.ker g ⧸ LinearMap.range (boundaryMap f g hfg)
 /-- Literal FourPapers.FilteredHomology.homologyClass; source theorem12.lean:16738. -/ def homologyClass (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) : LinearMap.ker g →ₗ[K] Homology f g hfg := (LinearMap.range (boundaryMap f g hfg)).mkQ
 /-- Literal FourPapers.FilteredHomology.cycleLevel; source theorem12.lean:16751. -/ def cycleLevel (F : Filtration (K := K) Y) (g : Y →ₗ[K] Z) (n : ℕ) : Submodule K (LinearMap.ker g) := (F.level n).comap (LinearMap.ker g).subtype
-/-- Literal FourPapers.FilteredHomology.homologyLevel; source theorem12.lean:16754. -/ def homologyLevel (F : Filtration (K := K) Y) (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) (n : ℕ) : Submodule K (Homology f g hfg) :=
-  (cycleLevel F g n).map (homologyClass f g hfg)
+/-- Literal FourPapers.FilteredHomology.homologyLevel; source theorem12.lean:16754. -/ def homologyLevel (F : Filtration (K := K) Y) (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) (n : ℕ) : Submodule K (Homology f g hfg) := (cycleLevel F g n).map (homologyClass f g hfg)
 /-- Literal FourPapers.FilteredHomology.homologyFiltration; source theorem12.lean:16758. -/ def homologyFiltration (F : Filtration (K := K) Y) (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) : Filtration (K := K) (Homology f g hfg) where
   level := homologyLevel F f g hfg
   zero := by simp [homologyLevel, cycleLevel, F.zero]
@@ -788,8 +738,7 @@ variable {K X Y Z : Type*} [CommRing K] [AddCommGroup X] [Module K X] [AddCommGr
   zero := by simp only [F.zero, Submodule.comap_bot, LinearMap.ker_eq_bot.mpr N.injective_subtype]
   mono := fun _ _ h => Submodule.comap_mono (F.mono h)
   exhaustive x := F.exhaustive x.val
-/-- Literal FourPapers.FilteredHomology.restrictedMap; source theorem12.lean:19034. -/ def restrictedMap (f : X →ₗ[K] Y) (N : Submodule K X) (M : Submodule K Y) (hNM : ∀ x, x ∈ N → f x ∈ M) : N →ₗ[K] M :=
-  (f.domRestrict N).codRestrict M (fun x => hNM x.val x.property)
+/-- Literal FourPapers.FilteredHomology.restrictedMap; source theorem12.lean:19034. -/ def restrictedMap (f : X →ₗ[K] Y) (N : Submodule K X) (M : Submodule K Y) (hNM : ∀ x, x ∈ N → f x ∈ M) : N →ₗ[K] M := (f.domRestrict N).codRestrict M (fun x => hNM x.val x.property)
 end FourPapers.FilteredHomology
 namespace FourPapers.Universal.ProperlyColoredComplex
 set_option backward.isDefEq.respectTransparency false
@@ -807,8 +756,7 @@ namespace FourPapers.BasisGrading
 set_option backward.isDefEq.respectTransparency false
 open Classical
 variable {R M I A : Type*} [CommRing R] [AddCommMonoid M] [Module R M]
-/-- Literal FourPapers.BasisGrading.Piece; source theorem12.lean:18578. -/ def Piece (b : Module.Basis I R M) (deg : I → A) (a : A) : Submodule R M :=
-  Submodule.span R (b '' {i | deg i = a})
+/-- Literal FourPapers.BasisGrading.Piece; source theorem12.lean:18578. -/ def Piece (b : Module.Basis I R M) (deg : I → A) (a : A) : Submodule R M := Submodule.span R (b '' {i | deg i = a})
 end FourPapers.BasisGrading
 namespace FourPapers.Universal
 set_option backward.isDefEq.respectTransparency false
@@ -832,8 +780,7 @@ set_option backward.isDefEq.respectTransparency false
 open Classical CategoryTheory CommAlg
 universe u v
 variable {K B B' : Type u} {C : Type} [CommRing K] [CommRing B] [CommRing B'] [Algebra K B] [Algebra K B'] [Fintype C] [LinearOrder C]
-/-- Literal FourPapers.Universal.parameterKoszulDifferential; source theorem12.lean:19834. -/ def parameterKoszulDifferential (γ : C → B) (i : ℕ) : (Set.powersetCard C (i + 1) →₀ B) →ₗ[K] (Set.powersetCard C i →₀ B) :=
-  (Koszul.coordinateDifferential γ (ModuleCat.of B B) i).restrictScalars K
+/-- Literal FourPapers.Universal.parameterKoszulDifferential; source theorem12.lean:19834. -/ def parameterKoszulDifferential (γ : C → B) (i : ℕ) : (Set.powersetCard C (i + 1) →₀ B) →ₗ[K] (Set.powersetCard C i →₀ B) := (Koszul.coordinateDifferential γ (ModuleCat.of B B) i).restrictScalars K
 /-- Literal FourPapers.Universal.parameterKoszulDifferential_comp; source theorem12.lean:19838. -/ theorem parameterKoszulDifferential_comp (γ : C → B) (i : ℕ) : (parameterKoszulDifferential (K := K) γ i).comp (parameterKoszulDifferential (K := K) γ (i + 1))
   = 0 := by sorry
 /-- Literal FourPapers.Universal.parameterKoszulComplex; source theorem12.lean:19852. -/ def parameterKoszulComplex (γ : C → B) : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown :=
@@ -847,8 +794,7 @@ open Classical CategoryTheory CommAlg
 universe u v
 variable {P K : Type u} [PartialOrder P] [OrderBot P] [Fintype P] [CommRing K]
 variable (K) (hs : IsSimplicialPoset P) (d : ℕ) (hrank : ∀ p : P, faceRank p ≤ d)
-/-- Literal FourPapers.Universal.originalKoszulComplex; source theorem12.lean:19900. -/ abbrev originalKoszulComplex : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown :=
-  parameterKoszulComplex (K := K) (fun i : Fin d => faceRankParameter K hs (i.val + 1))
+/-- Literal FourPapers.Universal.originalKoszulComplex; source theorem12.lean:19900. -/ abbrev originalKoszulComplex : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown := parameterKoszulComplex (K := K) (fun i : Fin d => faceRankParameter K hs (i.val + 1))
 end FourPapers.Universal
 namespace FourPapers.Universal
 set_option backward.isDefEq.respectTransparency false
@@ -856,12 +802,9 @@ open Classical CategoryTheory FourPapers.FilteredHomology
 universe u
 variable {P K : Type u} [PartialOrder P] [OrderBot P] [Fintype P] [CommRing K]
 variable (K) (hs : IsSimplicialPoset P) (d : ℕ)
-/-- Literal FourPapers.Universal.originalKoszulBasis; source theorem12.lean:19946. -/ def originalKoszulBasis (i : ℕ) : Module.Basis (OriginalKoszulIndex P d i) K (Set.powersetCard (Fin d) i →₀ FaceRing K hs) :=
-  Finsupp.basis (fun _ => standardFaceBasis K hs)
-/-- Literal FourPapers.Universal.originalKoszulFiltration; source theorem12.lean:19954. -/ def originalKoszulFiltration (i : ℕ) : Filtration (K := K) (Set.powersetCard (Fin d) i →₀ FaceRing K hs) :=
-  basisFiltration (originalKoszulBasis K hs d i) (fun a => (originalKoszulWeight d a).toNat)
-/-- Literal FourPapers.Universal.originalKoszulDegreePiece; source theorem12.lean:19962. -/ def originalKoszulDegreePiece (i j : ℕ) :=
-  FourPapers.BasisGrading.Piece (originalKoszulBasis K hs d i) originalKoszulDegree j
+/-- Literal FourPapers.Universal.originalKoszulBasis; source theorem12.lean:19946. -/ def originalKoszulBasis (i : ℕ) : Module.Basis (OriginalKoszulIndex P d i) K (Set.powersetCard (Fin d) i →₀ FaceRing K hs) := Finsupp.basis (fun _ => standardFaceBasis K hs)
+/-- Literal FourPapers.Universal.originalKoszulFiltration; source theorem12.lean:19954. -/ def originalKoszulFiltration (i : ℕ) : Filtration (K := K) (Set.powersetCard (Fin d) i →₀ FaceRing K hs) := basisFiltration (originalKoszulBasis K hs d i) (fun a => (originalKoszulWeight d a).toNat)
+/-- Literal FourPapers.Universal.originalKoszulDegreePiece; source theorem12.lean:19962. -/ def originalKoszulDegreePiece (i j : ℕ) := FourPapers.BasisGrading.Piece (originalKoszulBasis K hs d i) originalKoszulDegree j
 end FourPapers.Universal
 namespace FourPapers.Universal
 set_option backward.isDefEq.respectTransparency false
@@ -902,16 +845,14 @@ variable (K) (hs : IsSimplicialPoset P) (d : ℕ) (hrank : ∀ p : P, faceRank p
       apply Subtype.ext
       exact LinearMap.congr_fun (parameterKoszulDifferential_comp
         (K := K) (fun r : Fin d => faceRankParameter K hs (r.val + 1)) i) x.val)
-/-- Literal FourPapers.Universal.originalDegreeTermFiltration; source theorem12.lean:20665. -/ def originalDegreeTermFiltration (j i : ℕ) : Filtration (K := K) (originalKoszulDegreePiece K hs d i j) :=
-  submoduleFiltration (originalKoszulFiltration K hs d i) (originalKoszulDegreePiece K hs d i j)
+/-- Literal FourPapers.Universal.originalDegreeTermFiltration; source theorem12.lean:20665. -/ def originalDegreeTermFiltration (j i : ℕ) : Filtration (K := K) (originalKoszulDegreePiece K hs d i j) := submoduleFiltration (originalKoszulFiltration K hs d i) (originalKoszulDegreePiece K hs d i j)
 end FourPapers.Universal
 namespace FourPapers.Universal
 set_option backward.isDefEq.respectTransparency false
 open Classical CategoryTheory FourPapers.FilteredHomology
 universe u
 variable {K : Type u} [CommRing K]
-/-- Literal FourPapers.Universal.complexKernelHomology; source theorem12.lean:20431. -/ abbrev complexKernelHomology (C : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown) (i : ℕ) :=
-  Homology (complexIncoming C i) (complexOutgoing C i) (complexIncomingOutgoing C i)
+/-- Literal FourPapers.Universal.complexKernelHomology; source theorem12.lean:20431. -/ abbrev complexKernelHomology (C : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown) (i : ℕ) := Homology (complexIncoming C i) (complexOutgoing C i) (complexIncomingOutgoing C i)
 end FourPapers.Universal
 namespace FourPapers.Universal
 set_option backward.isDefEq.respectTransparency false
@@ -920,13 +861,13 @@ universe u
 variable {K : Type u} [CommRing K]
 variable {P : Type u} [PartialOrder P] [OrderBot P] [Fintype P]
 variable (K) (hs : IsSimplicialPoset P) (d : ℕ) (hrank : ∀ p : P, faceRank p ≤ d)
-/-- Literal FourPapers.Universal.originalInternalKoszulHomology; source theorem12.lean:20688. -/ abbrev originalInternalKoszulHomology (j i : ℕ) :=
-  complexKernelHomology (originalKoszulDegreeComplex K hs d hrank j) i
+/-- Literal FourPapers.Universal.originalInternalKoszulHomology; source theorem12.lean:20688. -/ abbrev originalInternalKoszulHomology (j i : ℕ) := complexKernelHomology (originalKoszulDegreeComplex K hs d hrank j) i
+theorem palomarOriginalInternalSquare (j i : ℕ) : (complexOutgoing (originalKoszulDegreeComplex K hs d hrank j) i).comp (complexIncoming (originalKoszulDegreeComplex K hs d hrank j) i) = 0 := complexIncomingOutgoing (originalKoszulDegreeComplex K hs d hrank j) i
 /-- Literal FourPapers.Universal.originalInternalHomologyFiltration; source theorem12.lean:20691. -/ def originalInternalHomologyFiltration (j i : ℕ) : Filtration (K := K) (originalInternalKoszulHomology K hs d hrank j i) :=
   homologyFiltration (originalDegreeTermFiltration K hs d j i)
     (complexIncoming (originalKoszulDegreeComplex K hs d hrank j) i)
     (complexOutgoing (originalKoszulDegreeComplex K hs d hrank j) i)
-    (complexIncomingOutgoing (originalKoszulDegreeComplex K hs d hrank j) i)
+    (palomarOriginalInternalSquare K hs d hrank j i)
 /-- Literal FourPapers.Universal.originalInternalHomologyFiltration_finite; source theorem12.lean:20699. -/ theorem originalInternalHomologyFiltration_finite (j i : ℕ) : (originalInternalHomologyFiltration K hs d hrank j i).level (2 * d * j + 1) = ⊤ := by sorry
 end FourPapers.Universal
 namespace FourPapers.Universal
@@ -935,10 +876,8 @@ open CategoryTheory
 universe u
 variable {K P : Type u} [CommRing K] [PartialOrder P] [OrderBot P] [Fintype P]
 variable (K) (hs : IsSimplicialPoset P) (d : ℕ) (hrank : ∀ p : P, faceRank p ≤ d)
-local instance originalParameterAlgebra : Algebra (MvPolynomial (Fin d) K) (FaceRing K hs) :=
-  (faceParameterAction K hs d).toRingHom.toAlgebra
-local instance originalParameterModule : Module (MvPolynomial (Fin d) K) (FaceRing K hs) :=
-  @Algebra.toModule _ _ _ _ (originalParameterAlgebra K hs d)
+local instance originalParameterAlgebra : Algebra (MvPolynomial (Fin d) K) (FaceRing K hs) := (faceParameterAction K hs d).toRingHom.toAlgebra
+local instance originalParameterModule : Module (MvPolynomial (Fin d) K) (FaceRing K hs) := @Algebra.toModule _ _ _ _ (originalParameterAlgebra K hs d)
 /-- Literal FourPapers.Universal.originalParameterTor; source theorem12.lean:23219. -/ def originalParameterTor (m : ℕ) : ModuleCat.{u} K :=
   (ModuleCat.restrictScalars (algebraMap K (MvPolynomial (Fin d) K))).obj
     (((Tor (ModuleCat (MvPolynomial (Fin d) K)) m).obj
@@ -960,15 +899,15 @@ set_option backward.isDefEq.respectTransparency.types false
 open Classical CategoryTheory CommAlg
 universe u v
 variable {K : Type u} {V : Type v} [CommRing K] [Fintype V] [LinearOrder V]
-/-- Literal FourPapers.Universal.augmentedCoboundary; source theorem12.lean:33851. -/ def augmentedCoboundary (Λ : Finset V → Prop) (hΛ : Simplicial.Downward Λ) (i : ℕ) : Module.Dual K (Simplicial.Chains (k := K) Λ i) →ₗ[K] Module.Dual K (Simplicial.Chains (k := K) Λ (i + 1)) :=
-  (augmentedFaceBoundary Λ hΛ i).dualMap
+/-- Literal FourPapers.Universal.augmentedCoboundary; source theorem12.lean:33851. -/ def augmentedCoboundary (Λ : Finset V → Prop) (hΛ : Simplicial.Downward Λ) (i : ℕ) : Module.Dual K (Simplicial.Chains (k := K) Λ i) →ₗ[K] Module.Dual K (Simplicial.Chains (k := K) Λ (i + 1)) := (augmentedFaceBoundary Λ hΛ i).dualMap
 /-- Literal FourPapers.Universal.augmentedCoboundary_square; source theorem12.lean:33856. -/ theorem augmentedCoboundary_square (Λ : Finset V → Prop) (hΛ : Simplicial.Downward Λ) (i : ℕ) : (augmentedCoboundary (K := K) Λ hΛ (i + 1)).comp
   (augmentedCoboundary (K := K) Λ hΛ i) = 0 := by sorry
+theorem palomarAugmentedSquare (Λ : Finset V → Prop) (hΛ : Simplicial.Downward Λ) (i : ℕ) : ModuleCat.ofHom (augmentedCoboundary (K := K) Λ hΛ i) ≫ ModuleCat.ofHom (augmentedCoboundary (K := K) Λ hΛ (i + 1)) = 0 := ModuleCat.hom_ext (augmentedCoboundary_square Λ hΛ i)
 /-- Literal FourPapers.Universal.augmentedCochainComplex; source theorem12.lean:33870. -/ def augmentedCochainComplex (Λ : Finset V → Prop) (hΛ : Simplicial.Downward Λ) : HomologicalComplex (ModuleCat.{max u v} K) PalomarBarycentricTor.naturalUp :=
   CochainComplex.of
     (fun i => ModuleCat.of K (Module.Dual K (Simplicial.Chains (k := K) Λ i)))
     (fun i => ModuleCat.ofHom (augmentedCoboundary Λ hΛ i))
-    (fun i => ModuleCat.hom_ext (augmentedCoboundary_square Λ hΛ i))
+    (palomarAugmentedSquare Λ hΛ)
 /-- Literal FourPapers.Universal.reducedCohomology; source theorem12.lean:33884. -/ def reducedCohomology (Λ : Finset V → Prop) (hΛ : Simplicial.Downward Λ) (q : ℤ) : ModuleCat.{max u v} K :=
   if -1 ≤ q then (augmentedCochainComplex (K := K) Λ hΛ).homology (q + 1).toNat
   else ModuleCat.of K (ULift.{v} (Fin 0 → K))
@@ -981,12 +920,21 @@ open Classical CategoryTheory FourPapers.FilteredHomology
 universe u v
 variable {P K : Type u} [PartialOrder P] [OrderBot P] [Fintype P] [CommRing K]
 variable (K) (hs : IsSimplicialPoset P) (d : ℕ) (hrank : ∀ p : P, faceRank p ≤ d)
+theorem palomarRankSelectedDownward (S : Finset (Fin d)) :
+    letI : LinearOrder (NonzeroFace P) := (rankColoredOrderComplex hs d hrank).colorLinearOrder
+    letI : DecidableEq (Fin d) := Classical.decEq _
+    letI : DecidableEq (NonzeroFace P) := Classical.decEq _
+    CommAlg.Simplicial.Downward (rankSelection (rankColoredOrderComplex hs d hrank) S) := by
+  letI : LinearOrder (NonzeroFace P) := (rankColoredOrderComplex hs d hrank).colorLinearOrder
+  letI : DecidableEq (Fin d) := Classical.decEq _
+  letI : DecidableEq (NonzeroFace P) := Classical.decEq _
+  exact rankSelection_downward (rankColoredOrderComplex hs d hrank) S
 /-- Literal FourPapers.Universal.rankSelectedCohomology; source theorem12.lean:34159. -/ abbrev rankSelectedCohomology (S : Finset (Fin d)) (i : ℕ) :=
   letI : LinearOrder (NonzeroFace P) := (rankColoredOrderComplex hs d hrank).colorLinearOrder
   letI : DecidableEq (Fin d) := Classical.decEq _
   letI : DecidableEq (NonzeroFace P) := Classical.decEq _
   reducedCohomology (K := K) (rankSelection (rankColoredOrderComplex hs d hrank) S)
-    (rankSelection_downward (rankColoredOrderComplex hs d hrank) S)
+    (palomarRankSelectedDownward hs d hrank S)
     ((S.card : ℤ) - i - 1)
 end FourPapers.Universal
 namespace PalomarBarycentricTor
