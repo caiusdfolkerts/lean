@@ -456,10 +456,14 @@ local instance FermionPairedAlgebraBaseChange_localInst_1 : LinearOrder (Fin n �
 instance superQuotientTensorRing (I : TwoSidedIdeal (SuperRing R n)) :
     Ring (S ⊗[R] I.ringCon.Quotient) := by
   exact Algebra.TensorProduct.instRing (R := R) (A := S) (B := I.ringCon.Quotient)
+theorem superQuotientTensorRing_formula (I : TwoSidedIdeal (SuperRing R n)) :
+    superQuotientTensorRing R S I = Algebra.TensorProduct.instRing (R := R) (A := S) (B := I.ringCon.Quotient) := by sorry
 /-- Literal PaperVerification.Fermion.superQuotientTensorAlgebra; precise source and scope recorded in the extraction map. -/
 instance superQuotientTensorAlgebra (I : TwoSidedIdeal (SuperRing R n)) :
     Algebra S (S ⊗[R] I.ringCon.Quotient) := by
   exact Algebra.TensorProduct.leftAlgebra (R := R) (S := S) (A := S) (B := I.ringCon.Quotient)
+theorem superQuotientTensorAlgebra_formula (I : TwoSidedIdeal (SuperRing R n)) :
+    superQuotientTensorAlgebra R S I = Algebra.TensorProduct.leftAlgebra (R := R) (S := S) (A := S) (B := I.ringCon.Quotient) := by sorry
 end PaperVerification.Fermion
 namespace PaperVerification.Fermion
 set_option backward.isDefEq.respectTransparency false

@@ -72,7 +72,9 @@
     "PaperVerification.Fermion.pairedPowerWeightedPiece_formula",
     "PaperVerification.Fermion.pairedExteriorPiece_formula",
     "PaperVerification.Fermion.strictQuotientFiltration_formula",
-    "PaperVerification.Fermion.pairedQuotientFiltration_formula"
+    "PaperVerification.Fermion.pairedQuotientFiltration_formula",
+    "PaperVerification.Fermion.superQuotientTensorRing_formula",
+    "PaperVerification.Fermion.superQuotientTensorAlgebra_formula"
   ],
   "permitted_axioms": [
     "propext",
@@ -85,6 +87,8 @@
     "PaperVerification.Fermion.pairedPowerWeightedPiece",
     "PaperVerification.Fermion.pairedExteriorPiece",
     "PaperVerification.Fermion.strictQuotientFiltration",
-    "PaperVerification.Fermion.pairedQuotientFiltration"
+    "PaperVerification.Fermion.pairedQuotientFiltration",
+    "PaperVerification.Fermion.superQuotientTensorRing",
+    "PaperVerification.Fermion.superQuotientTensorAlgebra"
   ]
 }
