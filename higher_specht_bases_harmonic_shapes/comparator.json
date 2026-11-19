@@ -18,7 +18,9 @@
     "HigherSpecht.prefixTableau._proof_2",
     "HigherSpecht.prefixTableau._proof_3",
     "HigherSpecht.finite_harmonics_with_specht_shapes",
-    "HigherSpecht.untruncated_harmonics_with_specht_shapes"
+    "HigherSpecht.untruncated_harmonics_with_specht_shapes",
+    "HigherSpecht.polynomialRename_one",
+    "HigherSpecht.polynomialRename_mul"
   ],
   "permitted_axioms": [
     "propext",

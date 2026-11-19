@@ -62,7 +62,7 @@ theorem finite_harmonics_with_specht_shapes
   refine ⟨T, W, ?_, ?_, ?_⟩
   · intro i
     let f := Classical.choose (hcopy i).1
-    let E := f.equivOfRange (Classical.choose_spec (hcopy i).1).1 rfl
+    let E := f.equivOfRange (Classical.choose_spec (hcopy i).1).1 (P := W i) rfl
     refine ⟨⟨E⟩, ?_, by simpa only [hW] using (hcopy i).2⟩
     letI := complexYoungIdealRepresentation_isIrreducible i.part
     exact irreducible_of_representation_equiv E
@@ -97,7 +97,7 @@ theorem untruncated_harmonics_with_specht_shapes
   refine ⟨T, W, ?_, ?_, hfinite, ?_⟩
   · intro i
     let f := Classical.choose (hcopy i).1
-    let E := f.equivOfRange (Classical.choose_spec (hcopy i).1).1 rfl
+    let E := f.equivOfRange (Classical.choose_spec (hcopy i).1).1 (P := W i) rfl
     refine ⟨⟨E⟩, ?_, by simpa only [hW] using (hcopy i).2⟩
     letI := complexYoungIdealRepresentation_isIrreducible i.part
     exact irreducible_of_representation_equiv E
