@@ -81,7 +81,7 @@ result and its complete input model. It names only the measured proposition
 witnesses, proves whole superclass-record equalities, and constrains every
 selected mathematical definition by its complete literal value. The finite
 index and identity proof replacements also have original-formula equality
-checks. The current962-line independent Challenge passed run 44487625189, including all 27
+checks. The current 962-line independent Challenge passed run 44487625189, including all 27
 complete value equations. All 37 genuine canonical witness and whole-record
 identity proofs passed 44486271637. Source/Solution replay, strict Comparator
 and mandatory kernel verification were still pending at preparation.
