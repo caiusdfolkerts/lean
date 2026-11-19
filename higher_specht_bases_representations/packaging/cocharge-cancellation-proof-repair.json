@@ -1,0 +1,27 @@
+{
+  "status": "frozen measured sole source proof repair; full verification pending",
+  "actual_failed_commit": "d18ef5b11250170548e2e62e8bf60d8383028a1f",
+  "actual_failed_run": 44467518949,
+  "report_sha256": "a73185c83ceddd6508682565e7c1228a0f47d3808b1cf9295ee5751e7aa21e1c",
+  "complete_error_excerpts": {
+    "errors": [
+      {
+        "excerpt": "error: source/higher_specht/verified/remaining01.lean:515:78: unsolved goals\nmu : YoungDiagram\nS : StandardYoungTableau mu\nT : YoungTableau mu\neta : YoungDiagram\ni : Fin mu.card\n\u22a2 cochargeLabel S ((tableauLabelEquiv S T) i) + boostLabel eta mu.card ((tableauLabelEquiv S T) i) -\n      cochargeFilling S ((Equiv.symm T) i) =\n    boostLabel eta mu.card ((tableauLabelEquiv S T) i)",
+        "location": {
+          "column": 78,
+          "line": 515,
+          "path": "source/higher_specht/verified/remaining01.lean"
+        },
+        "truncated": false
+      }
+    ],
+    "omitted_error_count": 0,
+    "output_truncated": false,
+    "schema_version": 1
+  },
+  "source": "source/higher_specht/verified/remaining01.lean",
+  "repair": "The simp residual contains cochargeLabel at tableauLabelEquiv versus the definitionally equal cochargeFilling at T.symm. Expose both transported exponents at the identical literal label, then apply Nat.add_sub_cancel_left directly. All definitions, type/universe/binder contexts and hypotheses remain unchanged.",
+  "before_sha256": "f75a73a174c24c5faa0dd175e532cdf96289ce2a55b7015aff0b0014713984e8",
+  "after_sha256": "615ff45dc61ac6770816fc0f833b1b78cc6fadef4ce576ab6b3aa74a908f44fb",
+  "all5principal_Cor43_targets_and_selected_support_unchanged": true
+}
