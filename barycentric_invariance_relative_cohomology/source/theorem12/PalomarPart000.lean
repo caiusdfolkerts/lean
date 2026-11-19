@@ -749,6 +749,8 @@ lemma koszulComplex.dAlternating_apply (n : ℕ) (x : Fin (n + 1) → M) :
 noncomputable def koszulComplex.d (n : ℕ) : ⋀[R]^(n + 1) M →ₗ[R] ⋀[R]^n M :=
   exteriorPower.alternatingMapLinearEquiv (koszulComplex.dAlternating φ n)
 
+theorem koszulComplex.dAlternating_palomar_formula (n : ℕ) : koszulComplex.dAlternating φ n = AlternatingMap.alternatizeUncurryFin (φ.smulRight (exteriorPower.ιMulti R n)) := rfl
+theorem koszulComplex.d_palomar_formula (n : ℕ) : koszulComplex.d φ n = exteriorPower.alternatingMapLinearEquiv (koszulComplex.dAlternating φ n) := rfl
 lemma koszulComplex.d_comp_eq_zero (n : ℕ) :
     koszulComplex.d φ n ∘ₗ koszulComplex.d φ (n + 1) = 0 := by
   let β : M →ₗ[R] M →ₗ[R] M [⋀^Fin n]→ₗ[R] ⋀[R]^n M :=

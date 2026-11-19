@@ -155,6 +155,8 @@ noncomputable def koszulComplex.dAlternating (n : ℕ) :
 /-- Literal koszulComplex.d; source theorem12.lean:734. -/
 noncomputable def koszulComplex.d (n : ℕ) : ⋀[R]^(n + 1) M →ₗ[R] ⋀[R]^n M :=
   exteriorPower.alternatingMapLinearEquiv (koszulComplex.dAlternating φ n)
+theorem koszulComplex.dAlternating_palomar_formula (n : ℕ) : koszulComplex.dAlternating φ n = AlternatingMap.alternatizeUncurryFin (φ.smulRight (exteriorPower.ιMulti R n)) := by sorry
+theorem koszulComplex.d_palomar_formula (n : ℕ) : koszulComplex.d φ n = exteriorPower.alternatingMapLinearEquiv (koszulComplex.dAlternating φ n) := by sorry
 /-- Literal koszulComplex.d_comp_eq_zero; source theorem12.lean:737. -/
 lemma koszulComplex.d_comp_eq_zero (n : ℕ) :
     koszulComplex.d φ n ∘ₗ koszulComplex.d φ (n + 1) = 0 := by sorry
