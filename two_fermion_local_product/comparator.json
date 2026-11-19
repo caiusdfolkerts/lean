@@ -1,0 +1,27 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "PaperVerification.Fermion.Exterior.modeRank_injective",
+    "PaperVerification.Fermion.Endpoint.HomogeneousPolynomial.eval",
+    "PaperVerification.Fermion.ringCon_le_ker_of_kills",
+    "PaperVerification.Fermion.quotientMk_eq_zero_of_mem",
+    "PaperVerification.Fermion.twoSided_map_killed",
+    "PaperVerification.Fermion.tensorQuotientForward_tmul_mk",
+    "PaperVerification.Fermion.tensorQuotientBackward_mk_tmul",
+    "PaperVerification.Fermion.residueAlgHom_surjective",
+    "PaperVerification.Fermion.SeparatedOrdinaryData.pointEval_kills",
+    "PaperVerification.Fermion.SeparatedPairedData.ordinary_scalar_ideal_mem",
+    "PaperVerification.Fermion.localProductOverSupport",
+    "PaperVerification.Fermion.SeparatedPairedData.localSuper_finrank",
+    "PaperVerification.Fermion.SeparatedPairedData.localSuper_exterior_hilbert_coefficient",
+    "PaperVerification.Fermion.SeparatedPairedData.globalSuper_finrank_closed",
+    "PaperVerification.Fermion.SeparatedPairedData.globalSuper_exterior_hilbert_coefficient"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "definition_names": []
+}
