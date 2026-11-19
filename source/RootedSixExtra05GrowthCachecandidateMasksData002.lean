@@ -1,0 +1,20 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedSixExtra
+public meta import CertificateNumbers
+import HexNatLiteral
+public import SignatureCompatibility
+public import FiniteChecks
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSixExtra05
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+cert_candidateMasksBlock_10 0010 0
+cert_candidateMasksBlock_10 0011 1
+cert_candidateMasksBlock_10 0012 2
+cert_candidateMasksBlock_10 0013 3
+cert_candidateMasksBlock_8 0014 4
+end Papers.RationalityTen.RootedCaches.RootedSixExtra05
