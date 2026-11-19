@@ -1,5 +1,5 @@
-# Palomar submission: projection_areas
+# Exact Projection statement and dependency diagnostic
 
-Substantive source snapshot of [caiusdfolkerts/research](https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/projection_areas), revision `e0696fddcd3d10b5d6461e62e9b2f02c4195be37`.
+This isolated read-only diagnostic targets failed full snapshot b011d02b9d0da8652e4cfe3a30735ae5616fd648, run44392553582. Source/Solution built; Comparator rejected NumericProofs.twoNeZero's theorem statement. It reports every selected18 theorem type/universe summary and bounded first differences before traversing the full reachable dependency union. The3 newly selected numeric supports additionally get raw type AST previews with an8000character cap, original lengths and explicit truncation flags. It does not guess proof-class or instance repairs.
 
-The complete selected development, paper, metadata, and Comparator configuration are in `projection_areas/`. This branch prepares a registry submission; it does not claim registry acceptance. See `projection_areas/formalization.yaml` for exact scope and provenance.
+The existing tested raw helper retains6candidate leaves/definition,64selected-type leaves,48dependency-data leaves, depth96 and500characters/node. All completion/cap counters remain explicit; a cap means evidence is incomplete. The wrapper's log retention cap remains250000characters. Exports are capped at1GiB each and not uploaded. The unmodified pinned verifier runs in full mode only to retain exact exports after rejection; this is not an official preflight pass. Mandatory final mechanical reports and bounded audit receipts/logs upload even on failure. No mathematical source is changed.
