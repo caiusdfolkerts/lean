@@ -771,7 +771,7 @@ instance homologyModule (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
   Submodule.Quotient.module (R := k) (M := cycles I q p) (boundaries I q p)
 /-- The dimension of the genuine ordinary integer Koszul homology strand. -/
 def betti (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) : ℕ :=
-  Module.finrank k (Homology I q p)
+  Module.finrank k ((cycles I q p) ⧸ boundaries I q p)
 end PalomarSublattice.OrdinaryQuotientKoszul
 
 /- Literal Corollaries5.1 and5.2. Every normalized degree is integer-valued;
