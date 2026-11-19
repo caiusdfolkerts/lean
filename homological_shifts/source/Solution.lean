@@ -89,6 +89,9 @@ private theorem agrees_with_derivedTor
   apply congrArg (fun S : Set (Exponent V) =>
     (fun a : Exponent V => MvPolynomial.monomial a (1 : k)) '' S)
   ext a
+  change Simplicial.literalNonzeroHomology (k := k)
+      (Koszul.koszulFaces (idealGenerators I hI) a) i ↔
+    Koszul.GradedBettiNonzero (k := k) (idealGenerators I hI) a i
   rw [CommAlg.Simplicial.literalNonzeroHomology_iff]
   exact (CommAlg.Koszul.gradedBettiNonzero_iff_faces (k := k) (idealGenerators I hI) a i).symm
 

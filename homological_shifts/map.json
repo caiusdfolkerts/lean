@@ -363,7 +363,7 @@
   ],
   "checks": {
     "source_copy": "complete including retained reading files and licenses",
-    "build": "prior_c7_source_solution_pass_current_literal_bridge_not_run",
+    "build": "Exactbdab retained Source including literal iff built; sole Solution92 set membership rewrite repaired; current full pending",
     "comparator": "prior_c7_failed_generated_boundary_proof_names_current_pending",
     "nanoda": "not_run_for_current_hash",
     "editorial_review": "not_run_for_current_hash",
@@ -551,7 +551,7 @@
     "source_leaf": "source/PalomarHomologicalBoundary.lean",
     "source_bridge": "CommAlg.Simplicial.literalNonzeroHomology_iff, genuine rfl in original owner source/four_papers/homological/complete/PalomarPart000.lean",
     "model_relation": "Exact retained original NonzeroHomology; no rank-prediction surrogate or assumed comparison.",
-    "source_status": "Canonical semantic identity controls passed; full retained-source bridge build pending.",
+    "source_status": "Complete retained Source including actual literal iff built44464323984; current proof-only outer set-membership repair awaits full Solution/Comparator.",
     "measured_raw_audit": "reports/homological_shifts/raw-context-diagnostic/run-44381686323/collection-verification.json",
     "semantic_controls": "Passed44463606794 exact375 interface prefix plus both genuine rfl controls; Source module iff still requires full build."
   },
@@ -564,5 +564,19 @@
     "scope": "Every i\u22651 and every variable set of cardinality i+1, all positive s<i and exact principal-product ideal/nonzero at s=i.",
     "source_bridge": "Solution rewrites actual uniform rank and existing derived-Tor equality, then applies existing proposition_4_2.",
     "status": "prior357 canonical passR18; current375 data repair pending, full Solution unverified"
+  },
+  "latest_literal_solution_proof_repair": {
+    "status": "measured_proof_only_repair_ready_full_preflight",
+    "failed_commit": "bdab0c8bce8a01b0bebe32de91c600e53d8d816a",
+    "failed_run": 44464323984,
+    "complete_error_count": 1,
+    "error": "Solution92 rw did not look through set-builder membership after extensionality.",
+    "change": "Explicitly change the reducible set-membership iff to the identical pair of homology predicates, then apply the unchanged genuine homology iff and actual derived-Tor theorem.",
+    "statements_models_hypotheses_changed": false,
+    "original_source_and_actual_iff_bridge_built": true,
+    "challenge_unchanged_sha256": "7b8997fc9ca232a829a71f385cd75bc27859b39011025503e3eb44ee132586f2",
+    "solution_before_sha256": "457784530004a125172fbe5f450e3e1a3a7da81e04f0f897feef180c23a4741d",
+    "solution_after_sha256": "5c325ce2b33ffba35ff21f57066ba69ab37882e1ffe9e5d21675deff425bc75c",
+    "current_full_validation": "pending"
   }
 }

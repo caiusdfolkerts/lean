@@ -1,0 +1,14 @@
+{
+  "status": "measured_proof_only_repair_ready_full_preflight",
+  "failed_commit": "bdab0c8bce8a01b0bebe32de91c600e53d8d816a",
+  "failed_run": 44464323984,
+  "complete_error_count": 1,
+  "error": "Solution92 rw did not look through set-builder membership after extensionality.",
+  "change": "Explicitly change the reducible set-membership iff to the identical pair of homology predicates, then apply the unchanged genuine homology iff and actual derived-Tor theorem.",
+  "statements_models_hypotheses_changed": false,
+  "original_source_and_actual_iff_bridge_built": true,
+  "challenge_unchanged_sha256": "7b8997fc9ca232a829a71f385cd75bc27859b39011025503e3eb44ee132586f2",
+  "solution_before_sha256": "457784530004a125172fbe5f450e3e1a3a7da81e04f0f897feef180c23a4741d",
+  "solution_after_sha256": "5c325ce2b33ffba35ff21f57066ba69ab37882e1ffe9e5d21675deff425bc75c",
+  "current_full_validation": "pending"
+}
