@@ -97,6 +97,21 @@ def main (args : List String) : IO UInt32 := do
     LeanExport.parseStream (IO.FS.Stream.ofHandle h)
   let solution ← IO.FS.withFile solutionPath .read fun h =>
     LeanExport.parseStream (IO.FS.Stream.ofHandle h)
+  for n in #[`FourPapers.Universal.faceRingGenerator._proof_1,
+      `FourPapers.Universal.originalFaceCoefficientChange._proof_2,
+      `FourPapers.Universal.standardCoefficients._proof_1,
+      `FourPapers.Universal.basisOrdinaryDegreePiece._proof_3] do
+    for (label, env) in #[("challenge", challenge), ("solution", solution)] do
+      match env.constMap[n]? with
+      | none => IO.println s!"MEASURED_HELPER_MISSING {label} {n}"
+      | some d =>
+        let raw := reprStr d.type
+        IO.println (Json.mkObj [("kind", toJson "MEASURED_HELPER_TYPE"),
+          ("environment", toJson label), ("name", toJson n.toString),
+          ("levels", toJson (reprStr d.levelParams)),
+          ("characters", toJson raw.length),
+          ("truncated", toJson (decide (10000 < raw.length))),
+          ("type", toJson (String.ofList (raw.toList.take 10000)))]).compress
   let config ← IO.ofExcept (Json.parse (← IO.FS.readFile configPath))
   let theorems ← IO.ofExcept (namesField config "theorem_names")
   let definitions ← IO.ofExcept (namesField config "definition_names")
