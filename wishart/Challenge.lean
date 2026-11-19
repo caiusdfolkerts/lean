@@ -87,6 +87,18 @@ universe u
     IsScalarTower ℝ ℝ (Matrix n n ℝ):=by infer_instance
 /-- The source's real-scalar tower on complex matrices. -/ @[instance 2000] theorem complexMatrixSelfScalarTower (n:Type u) :
     IsScalarTower ℝ ℝ (Matrix n n ℂ):=by infer_instance
+@[instance 2200] theorem finRealMatrixStarModule (p : ℕ) :
+    StarModule ℝ (Matrix (Fin p) (Fin p) ℝ) := by infer_instance
+@[instance 2200] theorem finRealMatrixScalarComm (p : ℕ) :
+    SMulCommClass ℝ (Matrix (Fin p) (Fin p) ℝ) (Matrix (Fin p) (Fin p) ℝ) := by infer_instance
+@[instance 2200] theorem finRealMatrixScalarTower (p : ℕ) :
+    IsScalarTower ℝ (Matrix (Fin p) (Fin p) ℝ) (Matrix (Fin p) (Fin p) ℝ) := by infer_instance
+@[instance 2200] theorem finRealMatrixStarOrdered (p : ℕ) :
+    StarOrderedRing (Matrix (Fin p) (Fin p) ℝ) := by infer_instance
+@[instance 2200] theorem finRealMatrixCFC (p : ℕ) :
+    NonUnitalContinuousFunctionalCalculus ℝ (Matrix (Fin p) (Fin p) ℝ) IsSelfAdjoint := by infer_instance
+@[instance 2200] theorem finRealMatrixNonnegSpectrum (p : ℕ) :
+    NonnegSpectrumClass ℝ (Matrix (Fin p) (Fin p) ℝ) := by infer_instance
 end WishartSharedProof
 
 namespace WishartLiteralStructures
