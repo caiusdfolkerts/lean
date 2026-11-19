@@ -948,7 +948,7 @@ def wishartNormalizer {p : ℕ} (α : ℝ) (Sigma : Matrix (Fin p) (Fin p) ℂ) 
 
 def wishartMeasure {p : ℕ} (α : ℝ) (Sigma : Matrix (Fin p) (Fin p) ℂ) :
     Measure (Hermitian p) :=
-  (wishartNormalizer α Sigma)⁻¹ • (hermitianLebesgue p).withDensity (wishartWeight α Sigma)
+  WishartLiteralOperations.scaleMeasure (wishartNormalizer α Sigma)⁻¹ ((hermitianLebesgue p).withDensity (wishartWeight α Sigma))
 
 /-- The genuine n-row field Gaussian Gram law, including singular sample sizes. -/
 def gramMeasure {p : ℕ} (n : ℕ) (Sigma : Matrix (Fin p) (Fin p) ℂ) : Measure (Hermitian p) :=
@@ -1020,7 +1020,7 @@ def wishartNormalizer {p : ℕ} (α : ℝ) (Sigma : Matrix (Fin p) (Fin p) ℍ[�
 
 def wishartMeasure {p : ℕ} (α : ℝ) (Sigma : Matrix (Fin p) (Fin p) ℍ[ℝ]) :
     Measure (Hermitian p) :=
-  (wishartNormalizer α Sigma)⁻¹ • (hermitianLebesgue p).withDensity (wishartWeight α Sigma)
+  WishartLiteralOperations.scaleMeasure (wishartNormalizer α Sigma)⁻¹ ((hermitianLebesgue p).withDensity (wishartWeight α Sigma))
 
 def gramMeasure {p : ℕ} (n : ℕ) (Sigma : Matrix (Fin p) (Fin p) ℍ[ℝ]) : Measure (Hermitian p) :=
   Wishart.FieldGaussian.gramWithFactor ℍ[ℝ] n (sqrt Sigma)

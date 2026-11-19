@@ -592,7 +592,7 @@ theorem vandermonde_normalized_reference_change
   have hZ := vandermonde_reference_change ν w β hwm hw0
     (fun _ ↦ 1) measurable_const (fun _ ↦ zero_le_one)
   simp only [mul_one] at hZ
-  unfold normalizedWeight
+  unfold normalizedWeight WishartLiteralOperations.scaleMeasure
   rw [hZ, vandermonde_withDensity_reference_change ν w β hwm hw0]
 
 variable {n : ℕ}

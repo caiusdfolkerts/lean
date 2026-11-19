@@ -794,7 +794,7 @@ theorem identityGaugeCompression_matrix {q : ℕ}
     add_comm]
 
 def shiftedGaugeValue {q : ℕ} (Φ : SpectralGauge q) (c : ℝ) (S : SymmetricMatrix q) : ℝ :=
-  Φ.value (S + c • SpectralGauge.identitySymmetric q)
+  Φ.value (WishartLiteralOperations.addScaledSymmetric S (SpectralGauge.identitySymmetric q) c)
 
 theorem measurable_shiftedGaugeValue {q : ℕ} (Φ : SpectralGauge q) (c : ℝ) :
     Measurable (shiftedGaugeValue Φ c) := Φ.measurable_value.comp (measurable_id.add measurable_const)
@@ -862,7 +862,7 @@ theorem shiftedGaugeValue_spectral {q : ℕ} (Φ : SpectralGauge q) {c : ℝ}
       Matrix.coe_symmetricCongruenceLinearMap_apply, Submodule.coe_add, Submodule.coe_smul,
       SpectralGauge.identitySymmetric, Matrix.mul_add, Matrix.add_mul, Matrix.mul_smul,
       Matrix.smul_mul, Matrix.mul_one, Spectral.orth_mul_transpose]
-  unfold shiftedGaugeValue
+  unfold shiftedGaugeValue WishartLiteralOperations.addScaledSymmetric
   rw [heq, Φ.value_eq, Φ.value_eq hD]
   · exact Φ.orthogonalInvariant O D hD
   · change ((Matrix.symmetricCongruenceLinearMap (↑O : Matrix (Fin q) (Fin q) ℝ) D :

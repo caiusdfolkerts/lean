@@ -43,7 +43,7 @@ theorem normalizedWeight_integral_ae (μ : Measure Ω) (w f : Ω → ℝ)
     (hwm : Measurable w) (hw0 : ∀ᵐ x ∂μ, 0 ≤ w x) (hwi : Integrable w μ) :
     (∫ x, f x ∂normalizedWeight μ w) =
       (∫ x, w x * f x ∂μ) / (∫ x, w x ∂μ) := by
-  rw [normalizedWeight, integral_smul_measure,
+  rw [normalizedWeight, WishartLiteralOperations.scaleMeasure, integral_smul_measure,
     integral_withDensity_eq_integral_toReal_smul hwm.ennreal_ofReal
       (ae_of_all _ fun _ ↦ ENNReal.ofReal_lt_top) f,
     ENNReal.toReal_inv, ← ofReal_integral_eq_lintegral_ofReal hwi hw0,
@@ -71,7 +71,7 @@ theorem normalizedWeight_congr_ae (μ : Measure Ω) (u v : Ω → ℝ)
     (h : u =ᵐ[μ] v) : normalizedWeight μ u = normalizedWeight μ v := by
   have he : (fun x ↦ ENNReal.ofReal (u x)) =ᵐ[μ] (fun x ↦ ENNReal.ofReal (v x)) :=
     h.fun_comp ENNReal.ofReal
-  unfold normalizedWeight
+  unfold normalizedWeight WishartLiteralOperations.scaleMeasure
   rw [lintegral_congr_ae he, withDensity_congr_ae he]
 
 theorem normalizedWeight_const_mul (μ : Measure Ω) (w : Ω → ℝ)
@@ -87,7 +87,7 @@ theorem normalizedWeight_const_mul (μ : Measure Ω) (w : Ω → ℝ)
       rfl
     rw [heq] at h
     exact h
-  unfold normalizedWeight
+  unfold normalizedWeight WishartLiteralOperations.scaleMeasure
   simp_rw [ENNReal.ofReal_mul hc.le]
   rw [lintegral_const_mul _ hwm.ennreal_ofReal,
     hwd,
@@ -762,7 +762,7 @@ theorem map_normalizedWeight_of_measurePreserving
     (huv : u =ᵐ[μ] v ∘ T) :
     (normalizedWeight μ u).map T = normalizedWeight ν v := by
   rw [normalizedWeight_congr_ae μ u (v ∘ T) huv]
-  unfold normalizedWeight
+  unfold normalizedWeight WishartLiteralOperations.scaleMeasure
   rw [Measure.map_smul _ hT.measurable.aemeasurable]
   have hwd : (μ.withDensity (fun x ↦ ENNReal.ofReal ((v ∘ T) x))).map T =
       ν.withDensity (fun x ↦ ENNReal.ofReal (v x)) := by
@@ -778,7 +778,7 @@ theorem normalizedWeight_prod_fst
     (w : Ω → ℝ) (hwm : Measurable w) :
     normalizedWeight (μ.prod ν) (fun x ↦ w x.1) = (normalizedWeight μ w).prod ν := by
   have hZ := (measurePreserving_fst (μ := μ) (ν := ν)).lintegral_comp hwm.ennreal_ofReal
-  unfold normalizedWeight
+  unfold normalizedWeight WishartLiteralOperations.scaleMeasure
   rw [hZ, Measure.prod_smul_left, prod_withDensity_left hwm.ennreal_ofReal]
 
 theorem measurePreserving_normalizedWeight
@@ -971,7 +971,7 @@ theorem separateWeight_tilt_law
   have hlaw : normalizedWeight (normalizedWeight volume (chamberWeight s w β)) V =
       c • volume.withDensity (fun x ↦ ENNReal.ofReal
         (chamberWeight s (fun i t ↦ w i t * v i t) β x)) := by
-    unfold normalizedWeight
+    unfold normalizedWeight WishartLiteralOperations.scaleMeasure
     rw [withDensity_smul_measure,
       ← withDensity_mul volume (chamberWeight_measurable s hs w β hwm).ennreal_ofReal
         hVm.ennreal_ofReal, smul_smul]

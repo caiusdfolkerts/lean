@@ -1763,7 +1763,7 @@ def trailingScale (q m : ℕ) (S : Matrix (Fin (q + m)) (Fin (q + m)) ℝ) :
 
 def selectedInverseRoot (q m : ℕ)
     (S : Matrix (Fin (q + m)) (Fin (q + m)) ℝ) : Matrix (Fin q) (Fin q) ℝ :=
-  (CFC.sqrt (leadingScale q m S))⁻¹
+  WishartLiteralOperations.inverseSquareRoot (leadingScale q m S)
 
 def selectedWhitening (q m : ℕ)
     (S : Matrix (Fin (q + m)) (Fin (q + m)) ℝ) :

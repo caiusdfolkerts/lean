@@ -81,8 +81,9 @@ fidelity:
     Original paper theorem proofs, hypotheses and functional input models
     are retained. Whole real and complex superclass record equalities and
     original-formula equalities provide explicit semantic preservation checks.
-    Built-in Lean equation lemmas fully fix 27 mathematical definition values
-    whose raw reducibility heights differed; no unrestricted value is supplied.
+    Fourteen generated Lean equations and sixteen explicitly stated identities
+    specify complete defining formulas. Lean checks the explicit identities
+    by reflexivity against the definitions in the proof development.
     The product-Haar support instance now gives a proved local product
     translation-measurability record. All three component measures and the
     exact nested product formula are unchanged.
@@ -102,8 +103,8 @@ comparison_support:
   note: >-
     The original twenty principal/support targets are retained. Ten additional
     complete primitive value specifications, gauge record specifications,
-    proved proposition witnesses, constructor support and 27 built-in exact
-    definition equations are compared without increasing the paper-result count.
+    proved proposition witnesses, constructor support, and thirty defining
+    equations support the comparison of those twenty results.
     The semantic definition targets have genuine literal values in Challenge
     and their entire records/functions are fixed by the compared equality
     specifications; they are not unconstrained function or geometry holes.
