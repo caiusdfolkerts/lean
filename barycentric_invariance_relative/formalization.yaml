@@ -44,10 +44,12 @@ automation:
       not been reconstructed from the snapshot.
 review:
   status: unchecked
-  notes: The current independent Challenge, including the genuine polynomial
-    quotient scalar-tower support, passed canonical elaboration in run44470860320.
-    The original mathematical selection is unchanged. Full source, Solution,
-    Comparator and independent kernel verification of this exact repair are pending.
+  notes: The current independent Challenge, including a genuine polynomial
+    self-action scalar-tower support specialized to the original face parameters,
+    passed canonical elaboration in run44474988258. The support matches the
+    measured auxiliary type from run44474405031. The original mathematical
+    selection is unchanged. Full source, Solution, Comparator and independent
+    kernel verification of this exact repair are pending.
 scope:
   known_gaps:
   - Other theorem groups from the same paper have separate configurations because

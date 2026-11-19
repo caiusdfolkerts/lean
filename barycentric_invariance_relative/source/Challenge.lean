@@ -304,6 +304,13 @@ variable (K : Type*) [CommRing K]
 
 /-- The Boolean barycentric Stanley--Reisner quotient on the vertices of the specified face. -/
 abbrev BarycentricStalk (p : P) := BooleanBarycentricRing (FaceVertex p) K
+/-- The polynomial self-action tower, specialized to the original face parameters. -/
+theorem palomarBarycentricPolynomialSelfTower (p : P) :
+    IsScalarTower K (MvPolynomial (BooleanFace (FaceVertex p)) K)
+      (MvPolynomial (BooleanFace (FaceVertex p)) K) := by
+  infer_instance
+attribute [instance 2300] palomarBarycentricPolynomialSelfTower
+
 end
 end FourPapers.Universal
 
