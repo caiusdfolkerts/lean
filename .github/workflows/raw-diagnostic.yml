@@ -1,5 +1,5 @@
 name: Read-only Wishart full20 selected type and reachable metadata diagnostic
-run-name: Raw metadata diagnostic wishraw00002
+run-name: Raw metadata diagnostic wishraw00003
 # Independent diagnostic only. This does not invoke the official reusable
 # workflow and does not certify a preflight pass. The verifier CLI itself is
 # pinned and unmodified; its retained exports are read in the same remote job.
@@ -92,7 +92,7 @@ jobs:
         id: prepare
         env:
           BUNDLE_GEMFILE: ${{ github.workspace }}/pipeline/Gemfile
-          PALOMAR_INPUTS: '{"repository": "caiusdfolkerts/research", "commit": "141c03dd3526da7106331c9a20456f11e53b26e2", "request_id": "wishraw00002", "mode": "full", "options": "{\"project_path\": \"wishart\", \"comparator_config_path\": \"wishart/comparator.json\", \"authorization_relationship\": \"I am a responsible author or maintainer\"}", "execution_profile": "palomar-standard-v1", "execution_attempt": ""}'
+          PALOMAR_INPUTS: '{"repository": "caiusdfolkerts/research", "commit": "141c03dd3526da7106331c9a20456f11e53b26e2", "request_id": "wishraw00003", "mode": "full", "options": "{\"project_path\": \"wishart\", \"comparator_config_path\": \"wishart/comparator.json\", \"authorization_relationship\": \"I am a responsible author or maintainer\"}", "execution_profile": "palomar-standard-v1", "execution_attempt": ""}'
         run: |
           python - <<'PYTHON'
           import json, os, pathlib
@@ -185,7 +185,7 @@ jobs:
         id: finalize
         if: always()
         env:
-          PALOMAR_INPUTS: '{"repository": "caiusdfolkerts/research", "commit": "141c03dd3526da7106331c9a20456f11e53b26e2", "request_id": "wishraw00002", "mode": "full", "options": "{\"project_path\": \"wishart\", \"comparator_config_path\": \"wishart/comparator.json\", \"authorization_relationship\": \"I am a responsible author or maintainer\"}", "execution_profile": "palomar-standard-v1", "execution_attempt": ""}'
+          PALOMAR_INPUTS: '{"repository": "caiusdfolkerts/research", "commit": "141c03dd3526da7106331c9a20456f11e53b26e2", "request_id": "wishraw00003", "mode": "full", "options": "{\"project_path\": \"wishart\", \"comparator_config_path\": \"wishart/comparator.json\", \"authorization_relationship\": \"I am a responsible author or maintainer\"}", "execution_profile": "palomar-standard-v1", "execution_attempt": ""}'
           PALOMAR_STEPS: ${{ toJSON(steps) }}
           PALOMAR_WORKFLOW_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: python3 pipeline/scripts/workflow_report.py finalize --report "$RUNNER_TEMP/mechanical-report.json"
@@ -194,7 +194,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         with:
-          name: raw-metadata-diagnostic-wishraw00002
+          name: raw-metadata-diagnostic-wishraw00003
           path: |
             ${{ runner.temp }}/raw-metadata-diagnostic/audit-receipt.json
             ${{ runner.temp }}/raw-metadata-diagnostic/audit-bounded.log

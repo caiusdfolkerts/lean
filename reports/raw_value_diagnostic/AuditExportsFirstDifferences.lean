@@ -212,6 +212,7 @@ def main (args : List String) : IO UInt32 := do
   let mut seen : Std.HashSet Name := {}
   let mut mismatches := 0
   let mut rawLeaves := 0
+  let mut dependencyTypeLeaves := 0
   while !work.isEmpty do
     let n := work.back!
     work := work.pop
@@ -231,11 +232,25 @@ def main (args : List String) : IO UInt32 := do
         let category := if statementEqual a b then "VALUE_OR_METADATA" else "STATEMENT"
         IO.println s!"RAW_{category}_MISMATCH {n} theorem={b.isTheorem} {differenceFields a b}"
         mismatches := mismatches + 1
+        if !statementEqual a b then
+          for (path, x, y) in firstExprDifferences a.type b.type "type" do
+            if dependencyTypeLeaves < 256 then
+              IO.println (Json.mkObj [("kind", toJson "DEPENDENCY_TYPE_DIFFERENCE"),
+                ("name", toJson n.toString), ("path", toJson path),
+                ("challenge", toJson (boundedExprText x)),
+                ("solution", toJson (boundedExprText y))]).compress
+              dependencyTypeLeaves := dependencyTypeLeaves + 1
+        if b.isTheorem then
+          let text := reprStr b.type
+          IO.println (Json.mkObj [("kind", toJson "SOURCE_PROOF_TYPE"),
+            ("name", toJson n.toString), ("characters", toJson text.length),
+            ("truncated", toJson (decide (6000 < text.length))),
+            ("raw_type", toJson (String.ofList (text.toList.take 6000)))]).compress
         if !b.isTheorem then
           if let some av := a.value? (allowOpaque := true) then
             if let some bv := b.value? (allowOpaque := true) then
               for (path, x, y) in firstExprDifferences av bv do
-                if rawLeaves < 48 then
+                if rawLeaves < 512 then
                   IO.println (Json.mkObj [("kind", toJson "RAW_EXPR_DIFFERENCE"),
                     ("name", toJson n.toString), ("path", toJson path),
                     ("challenge", toJson (boundedExprText x)),
@@ -243,5 +258,5 @@ def main (args : List String) : IO UInt32 := do
                   rawLeaves := rawLeaves + 1
       -- Continue through both values to enumerate the entire failure class.
       work := work ++ deps a ++ deps b
-  IO.println s!"AUDIT_COMPLETE visited={seen.size} mismatches={mismatches} raw_difference_leaves={rawLeaves} principal_type_difference_leaves={typeLeaves}"
+  IO.println s!"AUDIT_COMPLETE visited={seen.size} mismatches={mismatches} raw_difference_leaves={rawLeaves} principal_type_difference_leaves={typeLeaves} dependency_type_difference_leaves={dependencyTypeLeaves} value_global_limit=512 type_global_limit=256"
   return 0
