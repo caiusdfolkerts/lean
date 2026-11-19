@@ -1938,16 +1938,19 @@ local instance FermionStrictCoupledIndependence_localInst_1 : LinearOrder (Fin n
 
 /-- Data used only for the creator highest-form calculation: both creator
 prefactors are phi. The ordinary strict ideal remains the s=1 extension. -/
+theorem strictCreatorTwoPositive : 0 < (2 : ℕ) := by decide
+theorem strictCreatorDegreeSplit (d : StrictData (K := R) (n := n)) (i : Fin n) :
+    d.r i + d.r i = d.r i * 2 := by omega
 def StrictData.creatorData (d : StrictData (K := R) (n := n)) :
     PairedData (K := R) (n := n) where
   positive_n := d.positive_n
   s := 2
-  positive_s := by decide
+  positive_s := strictCreatorTwoPositive
   r := d.r
   u := d.r
   v := d.r
   positive_r := d.positive_r
-  degree_split := fun _ ↦ by omega
+  degree_split := strictCreatorDegreeSplit d
   beta := d.beta
   allowed_weights := d.allowed_weights
   phi := d.phi
@@ -3512,7 +3515,7 @@ def lowerSubmodule (b : Module.Basis J P M) (weight : J → ℕ) (r : ℕ) : Sub
   zero_mem' := by intro i hi; exact (hi (by simp)).elim
   add_mem' := by
     intro x y hx hy i hi
-    by_cases hxi : b.repr x i=0
+    by_cases hxi : PalomarFermion.coordinates b x i=0
     · apply hy i
       simpa only [map_add,Finsupp.add_apply,hxi,zero_add] using hi
     · exact hx i hxi
@@ -8336,6 +8339,8 @@ variable {R V W : Type*} [CommRing R]
 
 /-- Insert each exterior factor into the original exterior algebra, then
 multiply in increasing index order. No action is transported to define this map. -/
+theorem assemblyScalarCommute : SMulCommClass R R (ExteriorAlgebra R W) := inferInstance
+attribute [local instance 2200] assemblyScalarCommute
 def assemble (d : Fin n → ℕ) (e : Fin n → V →ₗ[R] W) :
     (⨂[R] i : Fin n, (⋀[R]^(d i) V)) →ₗ[R] ExteriorAlgebra R W :=
   PiTensorProduct.lift <|
@@ -8411,8 +8416,8 @@ variable {R : Type*} [CommRing R] {n : ℕ}
 
 /-- The local two-color space at index i, embedded in the original odd module. -/
 def embedding (i : Fin n) : (Fin 2 → R) →ₗ[R] OddModule R n where
-  toFun v := Sum.elim (fun j ↦ if j=i then v 0 else 0)
-    (fun j ↦ if j=i then v 1 else 0)
+  toFun v := Sum.elim (fun j ↦ if j=i then v ⟨0, Nat.zero_lt_two⟩ else 0)
+    (fun j ↦ if j=i then v ⟨1, Nat.lt_succ_self 1⟩ else 0)
   map_add' v w := by
     funext j
     cases j <;> simp only [Sum.elim_inl,Sum.elim_inr,Pi.add_apply] <;>

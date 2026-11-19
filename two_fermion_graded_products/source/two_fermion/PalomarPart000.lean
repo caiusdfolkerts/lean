@@ -518,6 +518,8 @@ public theorem coefficientCommutativeIdentitySurjective {R : Type uDictionary} [
 public theorem finiteCoordinates (n : ℕ) : Finite (Fin n) := by infer_instance
 /-- The primitive finite set of the two separately labeled exterior families. -/
 public theorem finiteOddCoordinates (n : ℕ) : Finite (Fin n ⊕ Fin n) := by infer_instance
+public theorem coefficientIdentityComposition {R : Type uDictionary} [CommRing R] : RingHomCompTriple (RingHom.id R) (RingHom.id R) (RingHom.id R) := by infer_instance
+attribute [instance 2200] coefficientIdentityComposition
 attribute [instance 2000] coefficientIdentityInvPair coefficientIdentitySurjective
 attribute [instance 2100] coefficientCommutativeIdentityInvPair coefficientCommutativeIdentitySurjective finiteCoordinates finiteOddCoordinates
 universe uCoordinateModule uCoordinateIndex
@@ -5530,11 +5532,18 @@ def oddScalarExtension : OddModule K n →ₗ[K] OddModule A n where
   · simp [oddScalarExtension, Pi.single_eq_of_ne h]
 
 /-- The actual exterior-algebra change of coefficients. -/
+theorem oddSpecializationScalarTower : IsScalarTower K A (OddModule A n) := inferInstance
+theorem oddSpecializationCompatible :
+    LinearMap.CompatibleSMul (OddModule A n) (ExteriorAlgebra A (OddModule A n)) K A := inferInstance
+theorem oddSpecializationSquaresZero (v : OddModule K n) :
+    (ExteriorAlgebra.ι A) (oddScalarExtension (A := A) v) *
+      (ExteriorAlgebra.ι A) (oddScalarExtension (A := A) v) = 0 := ExteriorAlgebra.ι_sq_zero _
+attribute [local instance 2200] oddSpecializationScalarTower oddSpecializationCompatible
 def oddExteriorSpecialization :
     ExteriorAlgebra K (OddModule K n) →ₐ[K] ExteriorAlgebra A (OddModule A n) :=
   ExteriorAlgebra.lift K
     ⟨((ExteriorAlgebra.ι A).restrictScalars K).comp oddScalarExtension,
-      fun v ↦ ExteriorAlgebra.ι_sq_zero _⟩
+      oddSpecializationSquaresZero (K := K) (A := A) (n := n)⟩
 
 @[simp] theorem oddExteriorSpecialization_generator (i : OddIndex n) :
     oddExteriorSpecialization (K := K) (A := A)

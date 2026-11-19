@@ -1,11 +1,29 @@
 module
 public import Mathlib
-
-/-! Theorem 8.1: initial ideals and an equivariant degeneration of the two-fermion quotient. -/
 @[expose] public section
+attribute [-instance] MvPolynomial.instModuleSelf MvPolynomial.instModule
 noncomputable section
 set_option autoImplicit false
-open scoped BigOperators
+open scoped BigOperators TensorProduct
+namespace PalomarFermion
+universe uDictionary
+public theorem coefficientIdentityInvPair {R : Type uDictionary} [CommRing R] : RingHomInvPair (RingHom.id R) (RingHom.id R) := by sorry
+public theorem coefficientCommutativeIdentityInvPair {R : Type uDictionary} [hR : CommRing R] : @RingHomInvPair R R hR.toCommSemiring.toSemiring hR.toCommSemiring.toSemiring (@RingHom.id R hR.toCommSemiring.toSemiring.toNonAssocSemiring) (@RingHom.id R hR.toCommSemiring.toSemiring.toNonAssocSemiring) := by sorry
+public theorem coefficientIdentitySurjective {R : Type uDictionary} [CommRing R] : RingHomSurjective (RingHom.id R) := by sorry
+public theorem coefficientCommutativeIdentitySurjective {R : Type uDictionary} [hR : CommRing R] : @RingHomSurjective R R hR.toCommSemiring.toSemiring hR.toCommSemiring.toSemiring (@RingHom.id R hR.toCommSemiring.toSemiring.toNonAssocSemiring) := by sorry
+public theorem finiteCoordinates (n : ℕ) : Finite (Fin n) := by sorry
+public theorem finiteOddCoordinates (n : ℕ) : Finite (Fin n ⊕ Fin n) := by sorry
+public theorem coefficientIdentityComposition {R : Type uDictionary} [CommRing R] : RingHomCompTriple (RingHom.id R) (RingHom.id R) (RingHom.id R) := by sorry
+attribute [instance 2200] coefficientIdentityComposition
+attribute [instance 2000] coefficientIdentityInvPair coefficientIdentitySurjective
+attribute [instance 2100] coefficientCommutativeIdentityInvPair coefficientCommutativeIdentitySurjective finiteCoordinates finiteOddCoordinates
+universe uCoordinateModule uCoordinateIndex
+public abbrev coordinates {R : Type uDictionary} [CommRing R] {M : Type uCoordinateModule} {I : Type uCoordinateIndex} [AddCommGroup M] [Module R M] (b : Module.Basis I R M) : M →ₗ[R] (I →₀ R) :=
+  @LinearEquiv.toLinearMap R R _ _ (RingHom.id R) (RingHom.id R)
+    (coefficientCommutativeIdentityInvPair (R := R)) (coefficientCommutativeIdentityInvPair (R := R))
+    M (I →₀ R) _ _ _ _ b.repr
+@[simp] public theorem coordinates_apply {R : Type uDictionary} [CommRing R] {M : Type uCoordinateModule} {I : Type uCoordinateIndex} [AddCommGroup M] [Module R M] (b : Module.Basis I R M) (x : M) : coordinates b x = b.repr x := by sorry
+end PalomarFermion
 namespace PaperVerification.Fermion.WeightRees
 open scoped Classical BigOperators LaurentPolynomial
 variable (K A : Type*) [CommRing K] [Ring A] [Algebra K A]
@@ -16,24 +34,22 @@ def Multiplicative : Prop := ∀ i j k,b.repr (b i*b j) k≠0 → weight i+weigh
 def multiplicationPolynomial (i j k : I) : Polynomial K := Polynomial.monomial (weight k-(weight i+weight j)) (b.repr (b i*b j) k)
 end PaperVerification.Fermion.WeightRees
 namespace PaperVerification.Fermion.BasisFiltered
-open scoped BigOperators
 variable {R M I J E : Type*} [CommRing R] [AddCommGroup M] [Module R M]
     (b : Module.Basis I R M) (w : I → ℕ)
 def component (d : ℕ) : M →ₗ[R] M where
   toFun x := b.repr.symm ((b.repr x).filter (fun i ↦ w i = d))
   map_add' x y := by rw [map_add,Finsupp.filter_add,map_add]
   map_smul' a x := by rw [map_smul,Finsupp.filter_smul,map_smul,RingHom.id_apply]
-def Homogeneous (d : ℕ) (x : M) : Prop := ∀ i, b.repr x i ≠ 0 → w i = d
+def Homogeneous (d : ℕ) (x : M) : Prop := ∀ i, PalomarFermion.coordinates b x i ≠ 0 → w i = d
 theorem homogeneous_component (d : ℕ) (x : M) : Homogeneous b w d (component b w d x) := by sorry
 end PaperVerification.Fermion.BasisFiltered
 namespace PaperVerification.Fermion.BlockInitial
-open scoped BigOperators
 open BasisFiltered
 variable {K P M N Q J : Type*} [CommRing K] [CommRing P] [Algebra K P]
   [AddCommGroup M] [Module P M] [Module K M] [IsScalarTower K P M]
   [AddCommGroup N] [Module K N] [AddCommGroup Q] [Module K Q] [Fintype J]
   (b : Module.Basis J P M) (weight : J → ℕ)
-def LowerBound (r : ℕ) (x : M) : Prop := ∀ j,b.repr x j≠0 → r≤weight j
+def LowerBound (r : ℕ) (x : M) : Prop := ∀ j,PalomarFermion.coordinates b x j≠0 → r≤weight j
 def initialMin (I : Submodule K M) : Submodule K M :=
   Submodule.span K {y | ∃ x∈I,∃ r,LowerBound b weight r x ∧ component b weight r x=y}
 variable (q : M →ₗ[K] Q) (D : J → Type*) [∀ j,Fintype (D j)]
@@ -49,7 +65,6 @@ structure TriangularPresentation where
   independent : ∀ j,LinearIndependent K (fun e ↦ diagonal j (polynomial j e))
 end PaperVerification.Fermion.BlockInitial
 namespace PaperVerification.Fermion.BlockInitial.TriangularPresentation
-open scoped BigOperators
 open BasisFiltered
 variable {K P M N Q J : Type*} [CommRing K] [CommRing P] [Algebra K P]
   [AddCommGroup M] [Module P M] [Module K M] [IsScalarTower K P M]
@@ -62,7 +77,6 @@ def representative (z : Sigma D) : M := h.polynomial z.1 z.2 • b z.1
 end PaperVerification.Fermion.BlockInitial.TriangularPresentation
 namespace PaperVerification.Fermion
 section
-open scoped BigOperators
 open Polynomial
 section
 variable {R M : Type*} [CommRing R] [AddCommGroup M] [Module R M]
@@ -75,12 +89,16 @@ variable {A : Type*} [Ring A] [Algebra R A]
 def momentIdeal {κ : Type*} (x : Fin n → R) (v : κ → Fin n → A) : TwoSidedIdeal A := TwoSidedIdeal.span (Set.range fun p : κ × ℕ ↦
   moment x (v p.1) p.2)
 end
-open scoped BigOperators TensorProduct
 universe u
 variable (K : Type u) [CommRing K] (n : ℕ)
 abbrev PolynomialRing := MvPolynomial (Fin n) K
 abbrev OddIndex := Fin n ⊕ Fin n
 abbrev OddModule := OddIndex n → K
+theorem polynomialSelfCommute : SMulCommClass K (PolynomialRing K n) (PolynomialRing K n) := by sorry
+theorem polynomialSelfTower : IsScalarTower K (PolynomialRing K n) (PolynomialRing K n) := by sorry
+theorem exteriorSelfCommute : SMulCommClass K (ExteriorAlgebra K (OddModule K n)) (ExteriorAlgebra K (OddModule K n)) := by sorry
+theorem exteriorSelfTower : IsScalarTower K (ExteriorAlgebra K (OddModule K n)) (ExteriorAlgebra K (OddModule K n)) := by sorry
+attribute [instance 2100] polynomialSelfCommute polynomialSelfTower exteriorSelfCommute exteriorSelfTower
 abbrev SuperRing := PolynomialRing K n ⊗[K] ExteriorAlgebra K (OddModule K n)
 @[reducible] noncomputable instance superQuotientModule (I : TwoSidedIdeal (SuperRing K n)) :
     Module K I.ringCon.Quotient := by
@@ -97,6 +115,12 @@ inductive MomentKind
   | polynomial | theta | xi | mixed
   deriving DecidableEq
 variable {K n}
+noncomputable def pairedCoefficients (β : Fin n → K)
+    (a b : Fin n → PolynomialRing K n) : MomentKind → Fin n → SuperRing K n
+  | .polynomial, i => (MvPolynomial.C (β i) * a i * b i) • (1 : SuperRing K n)
+  | .theta, i => b i • theta K n i
+  | .xi, i => (MvPolynomial.C (β i) * a i) • xi K n i
+  | .mixed, i => theta K n i * xi K n i
 noncomputable def strictCoefficients (β : Fin n → K)
     (φ : Fin n → PolynomialRing K n) : MomentKind → Fin n → SuperRing K n
   | .polynomial, i => (MvPolynomial.C (β i) * φ i) • (1 : SuperRing K n)
@@ -137,7 +161,6 @@ structure StrictData where
   highest_phi : ∀ i, HasHighestPower r (phi i) i (r i)
 end PaperVerification.Fermion
 namespace PaperVerification.Fermion.Exterior
-open scoped BigOperators
 section
 variable {R V : Type*} [CommRing R] [AddCommGroup V] [Module R V] {n : ℕ}
 variable (b : Module.Basis (Fin n ⊕ Fin n) R V)
@@ -154,20 +177,25 @@ def coefficientPairing (b : Module.Basis I R V) : E →ₗ[R] E →ₗ[R] R := b
 end PaperVerification.Fermion.Exterior
 namespace PaperVerification.Fermion
 set_option backward.isDefEq.respectTransparency false
-open scoped TensorProduct BigOperators
 variable {K A : Type*} [CommRing K] [CommRing A] [Algebra K A] {n : ℕ}
 def oddScalarExtension : OddModule K n →ₗ[K] OddModule A n where
   toFun v i := algebraMap K A (v i)
   map_add' v w := by ext i; simp
   map_smul' a v := by ext i; simp [Algebra.smul_def]
+theorem oddSpecializationScalarTower : IsScalarTower K A (OddModule A n) := inferInstance
+theorem oddSpecializationCompatible :
+    LinearMap.CompatibleSMul (OddModule A n) (ExteriorAlgebra A (OddModule A n)) K A := inferInstance
+theorem oddSpecializationSquaresZero (v : OddModule K n) :
+    (ExteriorAlgebra.ι A) (oddScalarExtension (A := A) v) *
+      (ExteriorAlgebra.ι A) (oddScalarExtension (A := A) v) = 0 := ExteriorAlgebra.ι_sq_zero _
+attribute [local instance 2200] oddSpecializationScalarTower oddSpecializationCompatible
 def oddExteriorSpecialization : ExteriorAlgebra K (OddModule K n) →ₐ[K] ExteriorAlgebra A (OddModule A n) := ExteriorAlgebra.lift K
-  ⟨((ExteriorAlgebra.ι A).restrictScalars K).comp oddScalarExtension, fun v ↦ ExteriorAlgebra.ι_sq_zero _⟩
+  ⟨((ExteriorAlgebra.ι A).restrictScalars K).comp oddScalarExtension, oddSpecializationSquaresZero (K := K) (A := A) (n := n)⟩
 def superSpecialization (f : PolynomialRing K n →ₐ[K] A) : SuperRing K n →ₐ[K] ExteriorAlgebra A (OddModule A n) :=
   Algebra.TensorProduct.lift (R := K) (S := K) (((Algebra.ofId A (ExteriorAlgebra A (OddModule A n))).restrictScalars K).comp f)
   oddExteriorSpecialization (fun p z ↦ Algebra.commute_algebraMap_left (f p) _)
 end PaperVerification.Fermion
 namespace PaperVerification.Fermion.Exterior
-open scoped BigOperators
 variable {R V : Type*} [CommRing R] [AddCommGroup V] [Module R V] {n : ℕ}
 def modeRank : Fin n ⊕ Fin n → ℕ
   | .inl i => i.val
@@ -193,16 +221,20 @@ def multiplicityWordWeight (T : Finset (OddIndex n)) : ℕ := ∑ j ∈ T,multip
 end PaperVerification.Fermion.Exterior
 namespace PaperVerification.Fermion.Newton
 open MvPolynomial
-open scoped BigOperators
 variable {F : Type*} [Field F] {n : ℕ}
 abbrev RectangleIndex (h : Fin n → ℕ) :=
   {a : Fin n →₀ ℕ // ∀ i, a i < h i}
-def rectangleIndexEquiv (h : Fin n → ℕ) :
-    RectangleIndex h ≃ (∀ i : Fin n, Fin (h i)) where
-  toFun a i := ⟨a.val i,a.property i⟩
-  invFun a := ⟨Finsupp.equivFunOnFinite.symm (fun i ↦ (a i).val),fun i ↦ (a i).isLt⟩
-  left_inv a := by apply Subtype.ext; ext i; rfl
-  right_inv a := by funext i; apply Fin.ext; rfl
+theorem rectangleForwardBounds (h : Fin n → ℕ) (a : RectangleIndex h) : ∀ i, a.val i < h i := by sorry
+theorem rectangleBackwardBounds (h : Fin n → ℕ) (a : ∀ i, Fin (h i)) : ∀ i, Finsupp.equivFunOnFinite.symm (fun j => (a j).val) i < h i := by sorry
+def rectangleForward (h : Fin n → ℕ) (a : RectangleIndex h) : ∀ i, Fin (h i) := fun i => ⟨a.val i,rectangleForwardBounds h a i⟩
+def rectangleBackward (h : Fin n → ℕ) (a : ∀ i, Fin (h i)) : RectangleIndex h := ⟨Finsupp.equivFunOnFinite.symm (fun i => (a i).val),rectangleBackwardBounds h a⟩
+theorem rectangleLeftInverse (h : Fin n → ℕ) : Function.LeftInverse (rectangleBackward h) (rectangleForward h) := by sorry
+theorem rectangleRightInverse (h : Fin n → ℕ) : Function.RightInverse (rectangleBackward h) (rectangleForward h) := by sorry
+ def rectangleIndexEquiv (h : Fin n → ℕ) : RectangleIndex h ≃ (∀ i : Fin n, Fin (h i)) where
+  toFun := rectangleForward h
+  invFun := rectangleBackward h
+  left_inv := rectangleLeftInverse h
+  right_inv := rectangleRightInverse h
 instance rectangleIndex_fintype (h : Fin n → ℕ) : Fintype (RectangleIndex h) :=
   Fintype.ofEquiv _ (rectangleIndexEquiv h).symm
 end PaperVerification.Fermion.Newton
@@ -213,9 +245,8 @@ theorem multiplyIntoQuotient_apply (J : Ideal A) (g a : A) : multiplyIntoQuotien
   sorry
 end PaperVerification.Fermion
 namespace PaperVerification.Fermion.Exterior
-def interleavedOddRank {n : ℕ} : Fin n ⊕ Fin n → ℕ
-  | .inl i => 2 * i.val + 1
-  | .inr i => 2 * i.val
+def interleavedOddRank {n : ℕ} : Fin n ⊕ Fin n → ℕ :=
+  Sum.elim (fun i => 2 * i.val + 1) (fun i => 2 * i.val)
 theorem interleavedOddRank_injective (n : ℕ) : Function.Injective (@interleavedOddRank n) := by sorry
 def interleavedOddOrder (n : ℕ) : LinearOrder (Fin n ⊕ Fin n) := LinearOrder.lift' interleavedOddRank (interleavedOddRank_injective n)
 def pairedPrefix (n i : ℕ) : Finset (Fin n ⊕ Fin n) := (Finset.univ.filter (fun j : Fin n ↦ j.val < i)).disjSum (Finset.univ.filter
@@ -227,7 +258,6 @@ inductive Mark
   deriving DecidableEq
 end PaperVerification.Fermion.Endpoint
 namespace PaperVerification.Fermion.Exterior
-open scoped BigOperators
 open Polynomial
 open Endpoint
 variable {R V : Type*} [CommRing R] [AddCommGroup V] [Module R V] {n : ℕ}
@@ -243,7 +273,6 @@ namespace PaperVerification.Fermion
 section
 set_option backward.isDefEq.respectTransparency false
 section
-open scoped BigOperators
 open MvPolynomial Exterior Endpoint
 variable {K : Type*} [Field K] {n : ℕ}
 local instance FermionPowerHarmonicBound_localInst_1 (m : ℕ) : LinearOrder (Fin m ⊕ Fin m) := interleavedOddOrder m
@@ -254,14 +283,12 @@ local instance FermionPowerHarmonicBound_localInst_5 (m : ℕ) : LT (Fin m ⊕ F
 local instance FermionPowerHarmonicBound_localInst_6 (m : ℕ) : DecidableEq (Fin m ⊕ Fin m) := (interleavedOddOrder m).toDecidableEq
 def ValidWord (T : Finset (Fin n ⊕ Fin n)) : Prop := ∀ i ≤ n, (T ∩ pairedPrefix n i).card ≤ i
 end
-open scoped TensorProduct BigOperators
 variable {K : Type*} [CommRing K] {n : ℕ}
 variable [LinearOrder (OddIndex n)]
 def superPolynomialBasis : Module.Basis (Finset (OddIndex n)) (PolynomialRing K n) (SuperRing K n) := ((Pi.basisFun K (OddIndex
   n)).ExteriorAlgebra).baseChange (PolynomialRing K n)
 end
 open MvPolynomial Exterior
-open scoped BigOperators
 variable {R : Type*} [CommRing R] {n : ℕ}
 def coupledOrdinaryMoment (d : PairedData (K := R) (n := n)) (k : ℕ) : PolynomialRing R n := moment d.phi (fun i ↦ C (d.beta i) * d.a i
   * d.b i) k
@@ -273,7 +300,6 @@ end PaperVerification.Fermion
 namespace PaperVerification.Fermion.Universal
 set_option backward.isDefEq.respectTransparency false
 open MvPolynomial
-open scoped BigOperators
 inductive Kind
   | phi
   | left
@@ -312,7 +338,6 @@ section
 set_option backward.isDefEq.respectTransparency false
 section
 open MvPolynomial
-open scoped BigOperators TensorProduct
 variable {R : Type*} [CommRing R] {n : ℕ}
 def StrictData.pairedExtension (d : StrictData (K := R) (n := n)) :
     PairedData (K := R) (n := n) where
@@ -335,7 +360,6 @@ def StrictData.pairedExtension (d : StrictData (K := R) (n := n)) :
     simpa only [pow_zero] using highestPower_X_pow d.r i 0
 end
 open MvPolynomial Exterior Endpoint Newton
-open scoped BigOperators
 variable {n : ℕ}
 local instance FermionStrictPolynomialBoxes_localInst_1 (m : ℕ) : DecidableEq (Fin m ⊕ Fin m) :=
   (interleavedOddOrder m).toDecidableEq
@@ -352,21 +376,23 @@ end
 set_option maxHeartbeats 800000
 set_option backward.isDefEq.respectTransparency false
 open MvPolynomial Exterior Endpoint Newton
-open scoped BigOperators TensorProduct
 section
 variable {R : Type*} [CommRing R] {n : ℕ}
 local instance FermionStrictCoupledIndependence_localInst_1 : LinearOrder (Fin n ⊕ Fin n) :=
   LinearOrder.lift' modeRank modeRank_injective
+theorem strictCreatorTwoPositive : 0 < (2 : ℕ) := by decide
+theorem strictCreatorDegreeSplit (d : StrictData (K := R) (n := n)) (i : Fin n) :
+    d.r i + d.r i = d.r i * 2 := by omega
 def StrictData.creatorData (d : StrictData (K := R) (n := n)) :
     PairedData (K := R) (n := n) where
   positive_n := d.positive_n
   s := 2
-  positive_s := by decide
+  positive_s := strictCreatorTwoPositive
   r := d.r
   u := d.r
   v := d.r
   positive_r := d.positive_r
-  degree_split := fun _ ↦ by omega
+  degree_split := strictCreatorDegreeSplit d
   beta := d.beta
   allowed_weights := d.allowed_weights
   phi := d.phi
@@ -393,7 +419,6 @@ namespace PaperVerification.Fermion.Paths
 set_option backward.isDefEq.respectTransparency false
 local instance FermionPathBoxes_localInst_1 (p : Prop) : Decidable p := Classical.propDecidable p
 open Exterior Endpoint
-open scoped BigOperators
 variable {n : ℕ}
 local instance FermionPathBoxes_localInst_2 (m : ℕ) : DecidableEq (Fin m ⊕ Fin m) :=
   (interleavedOddOrder m).toDecidableEq
@@ -409,13 +434,11 @@ section
 set_option backward.isDefEq.respectTransparency false
 section
 open Exterior Endpoint Newton
-open scoped BigOperators
 variable {n : ℕ}
 local instance FermionStrictIndexRecursion_localInst_1 (m : ℕ) : DecidableEq (Fin m ⊕ Fin m) :=
   (interleavedOddOrder m).toDecidableEq
 theorem card_strictPowerIndex (r : Fin n → ℕ) (hn : 0<n) : Fintype.card (StrictPowerIndex r)=2^(n-1)*(∏ i,r i)*n.factorial := by sorry
 end
-open scoped BigOperators
 section
 variable {R : Type*} [CommRing R] {n : ℕ}
 theorem strictCoupled_quotient_finite (d : StrictData (K := R) (n := n)) : Module.Finite R (StrictQuotient d.beta d.phi) := by sorry
@@ -440,7 +463,6 @@ def strictCoupledBasis (d : StrictData (K := F) (n := n)) :
 end
 section
 open MvPolynomial Exterior
-open scoped BigOperators TensorProduct
 variable {F : Type*} [Field F] {n : ℕ}
 local instance FermionStrictMultiplicityInitial_localInst_1 : LinearOrder (OddIndex n) :=
   LinearOrder.lift' modeRank modeRank_injective
@@ -499,7 +521,6 @@ def strictMultiplicityInitialGenerators (d : StrictData (K := F) (n := n)) :
       BasisFiltered.component (superPolynomialBasis (K := F)) multiplicityWordWeight r x=y}
 end
 open Exterior
-open scoped BigOperators
 variable {F : Type*} [Field F] {n : ℕ}
 local instance FermionMultiplicityInitialAlgebra_localInst_1 : LinearOrder (OddIndex n) :=
   LinearOrder.lift' modeRank modeRank_injective
@@ -507,7 +528,6 @@ def strictMultiplicityInitialIdeal (d : StrictData (K := F) (n := n)) : TwoSided
   (strictMultiplicityInitialGenerators d)
 end PaperVerification.Fermion
 namespace PaperVerification.Fermion.BlockInitial
-open scoped BigOperators
 variable {K P M N Q J : Type*} [CommRing K] [CommRing P] [Algebra K P]
   [AddCommGroup M] [Module P M] [Module K M] [IsScalarTower K P M]
   [AddCommGroup N] [Module K N] [AddCommGroup Q] [Module K Q] [Fintype J]
@@ -519,7 +539,7 @@ def lowerSubmodule (b : Module.Basis J P M) (weight : J → ℕ) (r : ℕ) : Sub
   zero_mem' := by intro i hi; exact (hi (by simp)).elim
   add_mem' := by
     intro x y hx hy i hi
-    by_cases hxi : b.repr x i=0
+    by_cases hxi : PalomarFermion.coordinates b x i=0
     · apply hy i
       simpa only [map_add,Finsupp.add_apply,hxi,zero_add] using hi
     · exact hx i hxi
@@ -530,7 +550,6 @@ def lowerSubmodule (b : Module.Basis J P M) (weight : J → ℕ) (r : ℕ) : Sub
     exact hi (by simp only [map_smul,Finsupp.smul_apply,hz,smul_zero])
 end PaperVerification.Fermion.BlockInitial
 namespace PaperVerification.Fermion.BlockInitial.TriangularPresentation
-open scoped BigOperators
 variable {K P M N Q J : Type*} [CommRing K] [CommRing P] [Algebra K P]
   [AddCommGroup M] [Module P M] [Module K M] [IsScalarTower K P M]
   [AddCommGroup N] [Module K N] [AddCommGroup Q] [Module K Q] [Fintype J]
@@ -548,7 +567,6 @@ namespace PaperVerification.Fermion
 set_option backward.isDefEq.respectTransparency false
 open MvPolynomial Exterior
 section
-open scoped BigOperators
 variable {F : Type*} [Field F] {n : ℕ}
 local instance FermionMultiplicityBlocks_localInst_1 : LinearOrder (OddIndex n) :=
   LinearOrder.lift' modeRank modeRank_injective
@@ -783,24 +801,17 @@ noncomputable instance associatedGradedRing {f : Filtration R A} :
   infer_instance
 end PaperVerification.Fermion.DescendingAlgebra
 namespace PaperVerification.Fermion.BasisFiltered
-open scoped BigOperators
 variable {R M Q I E : Type*} [CommRing R] [AddCommGroup M] [Module R M]
   [AddCommGroup Q] [Module R Q]
   (b : Module.Basis I R M) (w : I → ℕ)
+theorem homogeneousZero (d : ℕ) : Homogeneous b w d (0 : M) := by sorry
+theorem homogeneousAdd {d : ℕ} {x y : M} (hx : Homogeneous b w d x) (hy : Homogeneous b w d y) : Homogeneous b w d (x+y) := by sorry
+theorem homogeneousSmul {d : ℕ} {x : M} (hx : Homogeneous b w d x) (c : R) : Homogeneous b w d (c • x) := by sorry
 def homogeneousPiece (d : ℕ) : Submodule R M where
   carrier := {x | Homogeneous b w d x}
-  zero_mem' := by intro i hi; exact (hi (by simp)).elim
-  add_mem' := by
-    intro x y hx hy i hi
-    by_cases hxi : b.repr x i=0
-    · apply hy i
-      simpa only [map_add,Finsupp.add_apply,hxi,zero_add] using hi
-    · exact hx i hxi
-  smul_mem' := by
-    intro c x hx i hi
-    apply hx i
-    intro hz
-    exact hi (by simp only [map_smul,Finsupp.smul_apply,hz,smul_zero])
+  zero_mem' := homogeneousZero b w d
+  add_mem' := homogeneousAdd b w
+  smul_mem' := fun c _ hx => homogeneousSmul b w hx c
 end PaperVerification.Fermion.BasisFiltered
 namespace PaperVerification.Fermion.DescendingBasis
 open scoped Classical BigOperators DirectSum
@@ -896,7 +907,6 @@ end PaperVerification.Fermion
 namespace PaperVerification.Fermion.TypeA
 set_option backward.isDefEq.respectTransparency false
 open MvPolynomial Exterior
-open scoped BigOperators
 variable {F : Type*} [Field F] [CharZero F] {n : ℕ}
 local instance FermionTypeAMultiplicity_localInst_1 : LinearOrder (OddIndex n) :=
   LinearOrder.lift' modeRank modeRank_injective
@@ -916,9 +926,10 @@ def data (hn : 0<n) : StrictData (K := F) (n := n) where
   highest_phi := fun i ↦ by simpa only [pow_one] using highestPower_X_pow (fun _ : Fin n ↦ 1) i 1
 end PaperVerification.Fermion.TypeA
 namespace PaperVerification.Fermion.NaturalExteriorTensor
-open scoped TensorProduct
 variable {R V W : Type*} [CommRing R]
   [AddCommGroup V] [Module R V] [AddCommGroup W] [Module R W] {n : ℕ}
+theorem assemblyScalarCommute : SMulCommClass R R (ExteriorAlgebra R W) := inferInstance
+attribute [local instance 2200] assemblyScalarCommute
 def assemble (d : Fin n → ℕ) (e : Fin n → V →ₗ[R] W) : (⨂[R] i : Fin n, (⋀[R]^(d i) V)) →ₗ[R] ExteriorAlgebra R W :=
   PiTensorProduct.lift <| (MultilinearMap.mkPiAlgebraFin R n (ExteriorAlgebra R W)).compLinearMap (fun i ↦ (ExteriorAlgebra.map (e
   i)).toLinearMap.comp (Submodule.subtype _))
@@ -927,11 +938,10 @@ namespace PaperVerification.Fermion.NaturalColor
 set_option backward.isDefEq.respectTransparency false
 set_option maxHeartbeats 1000000
 set_option synthInstance.maxHeartbeats 100000
-open scoped BigOperators TensorProduct
 variable {R : Type*} [CommRing R] {n : ℕ}
 def embedding (i : Fin n) : (Fin 2 → R) →ₗ[R] OddModule R n where
-  toFun v := Sum.elim (fun j ↦ if j=i then v 0 else 0)
-    (fun j ↦ if j=i then v 1 else 0)
+  toFun v := Sum.elim (fun j ↦ if j=i then v ⟨0, Nat.zero_lt_two⟩ else 0)
+    (fun j ↦ if j=i then v ⟨1, Nat.lt_succ_self 1⟩ else 0)
   map_add' v w := by
     funext j
     cases j <;> simp only [Sum.elim_inl,Sum.elim_inr,Pi.add_apply] <;>
