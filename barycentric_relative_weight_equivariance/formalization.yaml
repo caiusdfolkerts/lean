@@ -1,0 +1,51 @@
+version: v0.4
+project:
+  name: Equivariant rank-selected cohomology of the relative weight filtration
+  description: In homological degree i and internal degree j, homogeneous relative Koszul homology has
+    a filtration reaching the full space by level 2dj+1. In weight n its associated graded is the product
+    of the rank-selected reduced relative cohomology groups of the indicated degree and weight. The same
+    comparison intertwines every order automorphism preserving the subposet.
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.CO
+  - math.AC
+  msc2020:
+  - 13F55
+  - 05E45
+sources:
+- type: paper
+  title: Barycentric invariance and universal parameters for face rings
+  authors:
+  - Caius Folkerts
+  relationship: formalizes
+  author_endorsement: participated
+  url: https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/barycentric_invariance/paper.pdf
+  note: 'Exact included paper SHA-256: 44902437462f2861ab65c112f77ec1f19e594753d3c9b277d9adcb63c6e523e4.
+    Scope and declaration locations are recorded in map.json; novelty is not independently established.'
+automation:
+  methods:
+  - method: agent
+    tool_setup: OpenAI Codex
+    notes: Codex extracted the independent statement from the pinned Lean source and packaged the existing
+      proof.
+  - method: other
+    tool_setup: Historical AI assistance reported in the included paper
+    notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing its proofs.
+      The exact model roles and extent of historical Lean automation have not been reconstructed from
+      the snapshot.
+review:
+  status: unchecked
+  notes: The exact-snapshot mechanical report records verification. The Palomar review records editorial
+    findings.
+scope:
+  current_selection: In homological degree i and internal degree j, homogeneous relative Koszul homology
+    has a filtration reaching the full space by level 2dj+1. In weight n its associated graded is the
+    product of the rank-selected reduced relative cohomology groups of the indicated degree and weight.
+    The same comparison intertwines every order automorphism preserving the subposet.
+  known_gaps: []
+  notes: Companion entries cover other parts of Theorem 1.2.
