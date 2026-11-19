@@ -1,5 +1,3 @@
-# Palomar submission: toric_power_maps
+# Toric source-error diagnostic
 
-Substantive source snapshot of [caiusdfolkerts/research](https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/toric_power_maps), revision `e0696fddcd3d10b5d6461e62e9b2f02c4195be37`.
-
-The complete selected development, paper, metadata, and Comparator configuration are in `toric_power_maps/`. This branch prepares a registry submission; it does not claim registry acceptance. See `toric_power_maps/formalization.yaml` for exact scope and provenance.
+Collect all original compiler errors against exact4e3c0d23 source. Only the in-process bounded report count changes from20to100, with8000characters per error and explicit omissions/truncations. The actual original source, pinned pipeline files, canonical dependencies and mathematical checks are unchanged. This diagnostic is not an official preflight or registry submission.
