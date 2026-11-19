@@ -688,7 +688,7 @@ abbrev TableauTabloid (mu : YoungDiagram) :=
 
 abbrev TabloidSpaceOver (R : Type*) (mu : YoungDiagram) := TableauTabloid mu → R
 
-abbrev tabloidRepresentationOver (R : Type*) [CommRing R] (mu : YoungDiagram) :
+abbrev canonicalTabloidRepresentationOver (R : Type*) [CommRing R] (mu : YoungDiagram) :
     Representation R (Equiv.Perm (Fin mu.card)) (TabloidSpaceOver R mu) where
   toFun g :=
     { toFun f := fun q => f (g⁻¹ • q)
@@ -697,25 +697,25 @@ abbrev tabloidRepresentationOver (R : Type*) [CommRing R] (mu : YoungDiagram) :
   map_one' := by ext f q; simp
   map_mul' g h := by ext f q; simp [mul_smul]
 
-abbrev polytabloidOver (R : Type*) [CommRing R] {mu : YoungDiagram}
+abbrev canonicalPolytabloidOver (R : Type*) [CommRing R] {mu : YoungDiagram}
     (T : YoungTableau mu) : TabloidSpaceOver R mu :=
   ∑ g : colSubgroup T, ((Equiv.Perm.sign g.val : ℤ) : R) •
     Pi.single (g.val • tabloid T) 1
 
-theorem polytabloidSpan_stable (R : Type*) [CommRing R] (mu : YoungDiagram)
+theorem canonicalPolytabloidSpan_stable (R : Type*) [CommRing R] (mu : YoungDiagram)
     (g : Equiv.Perm (Fin mu.card)) (v : TabloidSpaceOver R mu)
-    (hv : v ∈ Submodule.span R (Set.range (polytabloidOver R (mu := mu)))) :
-    tabloidRepresentationOver R mu g v ∈
-      Submodule.span R (Set.range (polytabloidOver R (mu := mu))) := by sorry
+    (hv : v ∈ Submodule.span R (Set.range (canonicalPolytabloidOver R (mu := mu)))) :
+    canonicalTabloidRepresentationOver R mu g v ∈
+      Submodule.span R (Set.range (canonicalPolytabloidOver R (mu := mu))) := by sorry
 
-abbrev spechtSubrepresentationOver (R : Type*) [CommRing R] (mu : YoungDiagram) :
-    Subrepresentation (tabloidRepresentationOver R mu) where
-  toSubmodule := Submodule.span R (Set.range (polytabloidOver R (mu := mu)))
-  apply_mem_toSubmodule := polytabloidSpan_stable R mu
+abbrev canonicalSpechtSubrepresentationOver (R : Type*) [CommRing R] (mu : YoungDiagram) :
+    Subrepresentation (canonicalTabloidRepresentationOver R mu) where
+  toSubmodule := Submodule.span R (Set.range (canonicalPolytabloidOver R (mu := mu)))
+  apply_mem_toSubmodule := canonicalPolytabloidSpan_stable R mu
 
-abbrev partitionSpechtRepresentationOver (R : Type palomarRepU) [CommRing R] {n : ℕ}
+abbrev canonicalPartitionSpechtRepresentation (R : Type palomarRepU) [CommRing R] {n : ℕ}
     (part : n.Partition) :=
-  (spechtSubrepresentationOver R (YoungDiagram.ofPartition part)).toRepresentation.comp
+  (canonicalSpechtSubrepresentationOver R (YoungDiagram.ofPartition part)).toRepresentation.comp
     (finCongr (YoungDiagram.card_ofPartition part).symm).permCongrHom.toMonoidHom
 
 end SpechtModel
@@ -727,7 +727,7 @@ theorem springer_fixedSpan_specht
     ∃ W : Subrepresentation (springerRepresentation K lam),
       W.toSubmodule = springerFixedCopySpanOver K lam part S ∧
       W.toRepresentation.IsIrreducible ∧
-      Nonempty (Representation.Equiv (partitionSpechtRepresentationOver K part)
+      Nonempty (Representation.Equiv (canonicalPartitionSpechtRepresentation K part)
         W.toRepresentation) := by sorry
 
 theorem griffin_fixedSpan_specht
@@ -738,7 +738,7 @@ theorem griffin_fixedSpan_specht
     ∃ W : Subrepresentation (griffinRepresentation K n lam s),
       W.toSubmodule = griffinFixedCopySpanOver K lam hk s part i ∧
       W.toRepresentation.IsIrreducible ∧
-      Nonempty (Representation.Equiv (partitionSpechtRepresentationOver K part)
+      Nonempty (Representation.Equiv (canonicalPartitionSpechtRepresentation K part)
         W.toRepresentation) := by sorry
 
 end HigherSpecht
