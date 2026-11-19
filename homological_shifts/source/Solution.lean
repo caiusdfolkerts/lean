@@ -471,7 +471,7 @@ theorem mixedZero (J : Ideal (MvPolynomial V k)) (I : C → Ideal (MvPolynomial 
     (hJ : IsPolymatroidalIdeal J) (hI : ∀ c, IsPolymatroidalIdeal (I c)) (i : ℕ) :
     ∀ s, (0 : multiReesAlgebra I).val.coeff s ∈ mixedPiece J I hJ hI i s := by
   intro s
-  simpa only [Subalgebra.coe_zero, MvPolynomial.coeff_zero] using
+  simpa only [Subalgebra.coe_zero, MvPolynomial.coeff_zero, Finsupp.zero_apply] using
     (mixedPiece J I hJ hI i s).zero_mem
 
 /-- Addition closure of the exact actual coefficient ideals. -/
