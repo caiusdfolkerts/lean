@@ -1,0 +1,184 @@
+module
+public import Mathlib
+/-! Shared proposition witnesses for proof-reference differences measured in
+Wishart raw audit44473421580 and canonical class-type probe44481534659.
+These declarations supply only proofs of fully literal canonical propositions;
+no norm, scalar action, order, measure, functional calculus value or data record
+is chosen by an unrestricted definition. All proof bodies are genuine. -/
+@[expose] public section
+noncomputable section
+namespace WishartSharedProof
+open scoped MatrixOrder Matrix.Norms.L2Operator
+universe u
+/-- The source's exact natural-zero interpretation of the nonzero dimension two. -/
+@[instance 2000] theorem natTwoNeZero :
+    @NeZero ℕ (@Zero.ofOfNat0 ℕ (instOfNatNat (nat_lit 0))) (1+1 : ℕ) := ⟨by decide⟩
+/-- Dimension two satisfies the canonical lower-bound class used by `PiLp` numerals. -/
+@[instance 2000] theorem natTwoAtLeastTwo : Nat.AtLeastTwo (1+1) := by infer_instance
+/-- Real scalar multiplication commutes with matrix conjugate transpose. -/
+@[instance 2000] theorem realMatrixStarModule (n : Type u) :
+    StarModule ℝ (Matrix n n ℝ) := by infer_instance
+/-- The topology of the real scalar semiring is compatible with its operations. -/
+@[instance 2000] theorem realTopologicalSemiring : IsTopologicalSemiring ℝ := by infer_instance
+/-- The real scalar/matrix actions commute. -/
+@[instance 2000] theorem realMatrixScalarComm (n : Type u) [Fintype n] [DecidableEq n] :
+    SMulCommClass ℝ (Matrix n n ℝ) (Matrix n n ℝ) := by infer_instance
+/-- The real scalar/matrix actions satisfy the scalar tower law. -/
+@[instance 2000] theorem realMatrixScalarTower (n : Type u) [Fintype n] [DecidableEq n] :
+    IsScalarTower ℝ (Matrix n n ℝ) (Matrix n n ℝ) := by infer_instance
+/-- The matrix star order used by the source's total functional calculus. -/
+@[instance 2000] theorem realMatrixStarOrdered (n : Type u) [Fintype n] :
+    StarOrderedRing (Matrix n n ℝ) := by infer_instance
+/-- The exact real-matrix continuous-functional-calculus proposition. -/
+@[instance 2000] theorem realMatrixCFC (n : Type u) [Fintype n] [DecidableEq n] :
+    NonUnitalContinuousFunctionalCalculus ℝ (Matrix n n ℝ) IsSelfAdjoint := by infer_instance
+/-- Nonnegative real-matrix order has nonnegative real spectrum. -/
+@[instance 2000] theorem realMatrixNonnegSpectrum (n : Type u) [Fintype n] :
+    NonnegSpectrumClass ℝ (Matrix n n ℝ) := by infer_instance
+/-- The real scalar action commutes with multiplication on complex matrices. -/
+@[instance 2000] theorem complexMatrixScalarComm (n : Type u) [Fintype n] [DecidableEq n] :
+    SMulCommClass ℝ (Matrix n n ℂ) (Matrix n n ℂ) := by infer_instance
+/-- The real scalar action and complex-matrix multiplication form a tower. -/
+@[instance 2000] theorem complexMatrixScalarTower (n : Type u) [Fintype n] [DecidableEq n] :
+    IsScalarTower ℝ (Matrix n n ℂ) (Matrix n n ℂ) := by infer_instance
+/-- The canonical complex-matrix star-order proposition. -/
+@[instance 2000] theorem complexMatrixStarOrdered (n : Type u) [Fintype n] :
+    StarOrderedRing (Matrix n n ℂ) := by infer_instance
+/-- The exact complex-matrix real continuous-functional-calculus proposition. -/
+@[instance 2000] theorem complexMatrixCFC (n : Type u) [Fintype n] [DecidableEq n] :
+    NonUnitalContinuousFunctionalCalculus ℝ (Matrix n n ℂ) IsSelfAdjoint := by infer_instance
+/-- Nonnegative complex-matrix order has nonnegative real spectrum. -/
+@[instance 2000] theorem complexMatrixNonnegSpectrum (n : Type u) [Fintype n] :
+    NonnegSpectrumClass ℝ (Matrix n n ℂ) := by infer_instance
+/-- The identity real scalar homomorphisms are mutually inverse. -/
+@[instance 2000] theorem realIdentityInvPair :
+    RingHomInvPair (RingHom.id ℝ) (RingHom.id ℝ) := by infer_instance
+/-- Addition is continuous on the literal Gaussian row space. -/
+@[instance 2000] theorem rowContinuousAdd (F : Type u) [NormedRing F] (m : ℕ) :
+    ContinuousAdd (PiLp 2 (fun _ : Fin m => F)) := by infer_instance
+/-- The two real scalar actions on the literal row space commute. -/
+@[instance 2000] theorem rowScalarComm (F : Type u) [NormedRing F] [InnerProductSpace ℝ F] (m : ℕ) :
+    SMulCommClass ℝ ℝ (PiLp 2 (fun _ : Fin m => F)) := by infer_instance
+/-- Constant real scaling is continuous on the literal row space. -/
+@[instance 2000] theorem rowContinuousConstSMul (F : Type u) [NormedRing F] [InnerProductSpace ℝ F] (m : ℕ) :
+    ContinuousConstSMul ℝ (PiLp 2 (fun _ : Fin m => F)) := by infer_instance
+/-- The literal row space is a topological additive group. -/
+@[instance 2000] theorem rowTopologicalAddGroup (F : Type u) [NormedRing F] (m : ℕ) :
+    IsTopologicalAddGroup (PiLp 2 (fun _ : Fin m => F)) := by infer_instance
+/-- Joint real scaling is continuous on the literal row space. -/
+@[instance 2000] theorem rowContinuousSMul (F : Type u) [NormedRing F] [InnerProductSpace ℝ F] (m : ℕ) :
+    ContinuousSMul ℝ (PiLp 2 (fun _ : Fin m => F)) := by infer_instance
+/-- The literal row space is Hausdorff. -/
+@[instance 2000] theorem rowT2Space (F : Type u) [NormedRing F] (m : ℕ) :
+    T2Space (PiLp 2 (fun _ : Fin m => F)) := by infer_instance
+/-- Finitely many finite-dimensional coordinates form a finite real module. -/
+@[instance 2000] theorem rowFinite (F : Type u) [NormedRing F] [InnerProductSpace ℝ F]
+    [FiniteDimensional ℝ F] (m : ℕ) :
+    Module.Finite ℝ (PiLp 2 (fun _ : Fin m => F)) := by infer_instance
+/-- The measured alternative complex normed-ring hierarchy paths have the same whole record. -/
+theorem complexNormedCommRing_path_eq :
+    @CommCStarAlgebra.toNormedCommRing ℂ instCommCStarAlgebraComplex =
+      @NormedField.toNormedCommRing ℂ Complex.instNormedField := by rfl
+/-- Changing only a proposition witness cannot change the resulting mathematical value. -/
+theorem propositionWitness_value_eq {P : Prop} {α : Sort u} (f : P → α) (h₁ h₂ : P) :
+    f h₁ = f h₂ := by rfl
+/-- The two source real-semiring superclass paths give the same whole record. -/
+theorem realSemiring_path_eq :
+    @CommSemiring.toSemiring ℝ (@CommRing.toCommSemiring ℝ Real.commRing) =
+      @Ring.toSemiring ℝ (@DivisionRing.toRing ℝ Real.instDivisionRing) := by rfl
+/-- The literal zeroth index lies below every cardinality at least three. -/
+theorem zero_lt_of_three_le {n : ℕ} (h : 3 ≤ n) : 0 < n := by omega
+/-- The literal third index lies below every cardinality at least three. -/
+theorem two_lt_of_three_le {n : ℕ} (h : 3 ≤ n) : 2 < n := by omega
+/-- The literal zeroth index lies below every cardinality at least two. -/
+theorem zero_lt_of_two_le {n : ℕ} (h : 2 ≤ n) : 0 < n := by omega
+/-- The literal second index lies below every cardinality at least two. -/
+theorem one_lt_of_two_le {n : ℕ} (h : 2 ≤ n) : 1 < n := by omega
+/-- The exact reversed cardinality identity used by both spectral index maps. -/
+theorem finCard_symm (p : ℕ) : p = Fintype.card (Fin p) := (Fintype.card_fin p).symm
+/-- The real identity matrix is self-adjoint at every dimension. -/
+theorem realIdentitySelfAdjoint (p : ℕ) : IsSelfAdjoint (1 : Matrix (Fin p) (Fin p) ℝ) :=
+  Matrix.isHermitian_one.isSelfAdjoint
+/-- A real vector subspace is free over the real field. -/
+@[instance 2000] theorem submoduleFree (E : Type u) [AddCommGroup E] [Module ℝ E]
+    (S : Submodule ℝ E) : Module.Free ℝ S := by infer_instance
+/-- A subspace of a finite real module is finite. -/
+@[instance 2000] theorem submoduleFinite (E : Type u) [AddCommGroup E] [Module ℝ E]
+    [Module.Finite ℝ E] (S : Submodule ℝ E) : Module.Finite ℝ S := by infer_instance
+/-- A normed real vector subspace inherits its ambient Borel structure. -/
+@[instance 2000] theorem submoduleBorel (E : Type u) [NormedAddCommGroup E] [NormedSpace ℝ E]
+    [MeasurableSpace E] [BorelSpace E] (S : Submodule ℝ E) : BorelSpace S := by infer_instance
+/-- The scalar tower used by the normalized nonnegative density measure. -/
+@[instance 2000] theorem ennrealSelfScalarTower : IsScalarTower ENNReal ENNReal ENNReal := by infer_instance
+/-- The source's real-scalar tower on real matrices. -/
+@[instance 2000] theorem realMatrixSelfScalarTower (n : Type u) :
+    IsScalarTower ℝ ℝ (Matrix n n ℝ) := by infer_instance
+/-- The source's real-scalar tower on complex matrices. -/
+@[instance 2000] theorem complexMatrixSelfScalarTower (n : Type u) :
+    IsScalarTower ℝ ℝ (Matrix n n ℂ) := by infer_instance
+end WishartSharedProof
+
+attribute [-instance] instCommCStarAlgebraComplex
+open Matrix Set Set.powersetCard
+open scoped Classical ComplexOrder Matrix.Norms.L2Operator
+set_option maxHeartbeats 400000
+set_option synthInstance.maxHeartbeats 100000
+namespace Wishart.FieldSpectral
+variable {𝕜 : Type*} [RCLike 𝕜]
+def coordinateFrame {j p : ℕ} (e : Fin j ↪ Fin p) : Matrix (Fin p) (Fin j) 𝕜 :=
+  (1 : Matrix (Fin p) (Fin p) 𝕜).submatrix id e
+
+theorem coordinateFrame_compression {j p : ℕ} (e : Fin j ↪ Fin p)
+    (A : Matrix (Fin p) (Fin p) 𝕜) :
+    (coordinateFrame (𝕜 := 𝕜) e)ᴴ * A * coordinateFrame e = A.submatrix e e := by
+  with_unfolding_all
+    unfold coordinateFrame
+    rw [Matrix.conjTranspose_submatrix, Matrix.conjTranspose_one]
+    change (1 : Matrix (Fin p) (Fin p) _).submatrix e (Equiv.refl (Fin p)) * A * (1 : Matrix (Fin p) (Fin p) _).submatrix (Equiv.refl (Fin p)) e = _
+    rw [Matrix.one_submatrix_mul e (Equiv.refl (Fin p)) A,
+      Matrix.mul_submatrix_one (Equiv.refl (Fin p)) e]
+    simp only [Equiv.refl_symm, Equiv.coe_refl, Function.id_comp,
+      Matrix.submatrix_submatrix, Function.comp_id]
+
+theorem coordinateFrame_orthonormal {j p : ℕ} (e : Fin j ↪ Fin p) :
+    (coordinateFrame (𝕜 := 𝕜) e)ᴴ * coordinateFrame (𝕜 := 𝕜) e = 1 := by
+  with_unfolding_all
+    simpa only [Matrix.mul_one, Matrix.submatrix_one_embedding] using
+      coordinateFrame_compression (𝕜 := 𝕜) e (1 : Matrix (Fin p) (Fin p) 𝕜)
+
+def OrthonormalFrame (𝕜 : Type*) [RCLike 𝕜] (p j : ℕ) :=
+  {U : Matrix (Fin p) (Fin j) 𝕜 // Uᴴ * U = 1}
+
+def compressionDeterminant {p j : ℕ} (A : Matrix (Fin p) (Fin p) 𝕜)
+    (U : OrthonormalFrame 𝕜 p j) : ℝ := RCLike.re (U.valᴴ * A * U.val).det
+
+theorem exists_compression_eq_of_diagonalization {p j : ℕ} (hj : j ≤ p)
+    {A : Matrix (Fin p) (Fin p) 𝕜} (O : unitary (Matrix (Fin p) (Fin p) 𝕜))
+    {lam : Fin p → ℝ}
+    (hdiag : (star O.val) * A * O.val =
+      Matrix.diagonal (fun i => (lam i : 𝕜))) :
+    ∃ U : OrthonormalFrame 𝕜 p j,
+      compressionDeterminant A U = ∏ i : Fin j, lam (Fin.castLE hj i) := by
+  with_unfolding_all
+    let E := coordinateFrame (𝕜 := 𝕜) (Fin.castLEEmb hj)
+    let U := O.val * E
+    have hU : Uᴴ * U = 1 := by
+      simp only [U, Matrix.conjTranspose_mul]
+      calc
+        _ = Eᴴ * ((star O.val) * O.val) * E := by
+          simp only [Matrix.mul_assoc, Matrix.star_eq_conjTranspose]
+        _ = 1 := by rw [O.property.1, Matrix.mul_one]; exact Wishart.FieldSpectral.coordinateFrame_orthonormal (𝕜 := 𝕜) _
+    refine ⟨⟨U, hU⟩, ?_⟩
+    have heq : Uᴴ * A * U = Eᴴ * Matrix.diagonal (fun i => (lam i : 𝕜)) * E := by
+      simp only [U, Matrix.conjTranspose_mul]
+      calc
+        _ = Eᴴ * ((star O.val) * A * O.val) * E := by
+          simp only [Matrix.mul_assoc, Matrix.star_eq_conjTranspose]
+        _ = _ := by rw [hdiag]
+    change RCLike.re (Uᴴ * A * U).det = _
+    rw [heq, coordinateFrame_compression,
+      Matrix.submatrix_diagonal_embedding, Matrix.det_diagonal]
+    simp [E, ← map_prod, RCLike.ofReal_re]
+
+
+end Wishart.FieldSpectral

@@ -1,5 +1,1 @@
-# Palomar submission: wishart
-
-Substantive source snapshot of [caiusdfolkerts/research](https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/wishart), revision `e0696fddcd3d10b5d6461e62e9b2f02c4195be37`.
-
-The complete selected development, paper, metadata, and Comparator configuration are in `wishart/`. This branch prepares a registry submission; it does not claim registry acceptance. See `wishart/formalization.yaml` for exact scope and provenance.
+Wishart generic matrix compression proof diagnostic after full44498172349. Exact statements and operations are preserved; the candidate changes only proof transparency. This is not a full preflight.
