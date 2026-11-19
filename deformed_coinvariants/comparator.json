@@ -51,7 +51,16 @@
     "TauCeti.InternalGrading.palomarDecomposition_isInternal",
     "TauCeti.InternalGrading.palomarQuotient_isInternal",
     "PaperVerification.PowerOperators.palomarOrdinaryAction_preserves",
-    "PaperVerification.PowerOperators.palomarOriginalTailAction_preserves"
+    "PaperVerification.PowerOperators.palomarOriginalTailAction_preserves",
+    "PalomarDeformedSupport.fieldDivisionIdentityInvPair",
+    "PalomarDeformedSupport.fieldDivisionIdentitySurjective",
+    "PalomarDeformedSupport.commRingIdentitySurjective",
+    "PalomarDeformedSupport.finitePolynomialSelfTower",
+    "PalomarDeformedSupport.ringSubmoduleAddSubmonoid",
+    "PalomarDeformedSupport.submoduleScalarTower",
+    "PaperVerification.JacobianDivergence.brieskornScalarComm",
+    "PaperVerification.JacobianDivergence.brieskornScalarSelfTower",
+    "PaperVerification.JacobianDivergence.brieskornEndScalarTower"
   ],
   "permitted_axioms": [
     "propext",

@@ -37,12 +37,10 @@ automation:
   methods:
   - method: agent
     tool_setup: OpenAI Codex
-    notes: This source-prepared candidate responds to actual whole-reachable raw metadata
-      diagnostic44365389953 and14actual canonical helper-type lookups in44385512169.
-      Exact original grading/internality/permutation-invariance calculations and actual
-      data carriers are retained. Eight canonical proposition supports are named;
-      two equal-value representation definitions have fixed abbrev metadata. No current
-      candidate elaboration/Source/Solution/Comparator pass is claimed.
+    notes: The 998-line independent Challenge passed canonical elaboration in
+      run44473198776, including nine additional genuine instance propositions
+      specialized to the measured helper types. Original data carriers, all prior
+      selected statements and original proof calculations are retained.
   - method: other
     tool_setup: Historical AI assistance reported in the included paper
     notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing
@@ -50,10 +48,9 @@ automation:
       not been reconstructed from the snapshot.
 review:
   status: unchecked
-  notes: Unelaborated measured repair candidate; existing959package and prior full-build
-    evidence remain separate snapshots. This folder carries independent Challenge
-    plus before/after-hashed source patches for the full existing proof project, and
-    is not a complete Source submission by itself.
+  notes: Canonical Challenge elaboration passed. Full source, Solution, Comparator
+    and independent kernel verification of this exact repair remain pending.
+    Scope exclusions below are retained and have not been silently treated as proved.
 scope:
   known_gaps:
   - Corollary2.4 arithmetic-index/operator progression conclusions are not independently

@@ -17,7 +17,6 @@ public import Mathlib.LinearAlgebra.Quotient.Basic
 public import Mathlib.RingTheory.PowerSeries.Basic
 public import Mathlib.Analysis.Complex.Basic
 public import Mathlib.Order.Interval.Finset.Nat
-
 @[expose] public section
 namespace PalomarDeformedSupport
 universe uK uR uM uS
@@ -39,6 +38,22 @@ theorem subtypeScalarCompatible {R : Type uR} {M : Type uM} {S : Type uS} [Semir
 theorem quotientScalarCompatible {R : Type uR} {M : Type uM} {S : Type uS} [Ring R] [Ring S] [SMul R S] [AddCommGroup M] [Module R M] [Module S M] [IsScalarTower R S M] (U : Submodule S M) : LinearMap.CompatibleSMul M (M ⧸ U) R S := by sorry
 attribute [instance 2000] fieldIdentitySurjective fieldIdentityCompTriple fieldIdentityInvPair permutationSubmonoid submoduleAddSubmonoid subtypeScalarCompatible quotientScalarCompatible
 attribute [instance 1900] ringIdentitySurjective
+theorem fieldDivisionIdentityInvPair {K : Type uK} [hK : Field K] :
+    @RingHomInvPair K K hK.toDivisionRing.toRing.toSemiring hK.toDivisionRing.toRing.toSemiring
+      (@RingHom.id K hK.toDivisionRing.toRing.toSemiring.toNonAssocSemiring)
+      (@RingHom.id K hK.toDivisionRing.toRing.toSemiring.toNonAssocSemiring) := by infer_instance
+theorem fieldDivisionIdentitySurjective {K : Type uK} [hK : Field K] :
+    @RingHomSurjective K K hK.toDivisionRing.toRing.toSemiring hK.toDivisionRing.toRing.toSemiring
+      (@RingHom.id K hK.toDivisionRing.toRing.toSemiring.toNonAssocSemiring) := by infer_instance
+theorem commRingIdentitySurjective {R : Type uR} [hR : CommRing R] :
+    @RingHomSurjective R R hR.toRing.toSemiring hR.toRing.toSemiring
+      (@RingHom.id R hR.toRing.toSemiring.toNonAssocSemiring) := by infer_instance
+theorem finitePolynomialSelfTower {K : Type uK} [hK : Field K] (n : ℕ) :
+    IsScalarTower K (@MvPolynomial (Fin n) K hK.toCommRing.toCommSemiring)
+      (@MvPolynomial (Fin n) K hK.toCommRing.toCommSemiring) := by infer_instance
+theorem ringSubmoduleAddSubmonoid {R : Type uR} {M : Type uM} [Ring R] [AddCommGroup M] [Module R M] : AddSubmonoidClass (Submodule R M) M := by infer_instance
+theorem submoduleScalarTower {R : Type uR} {M : Type uM} {S : Type uS} [Semiring R] [Semiring S] [SMul R S] [AddCommMonoid M] [Module R M] [Module S M] [IsScalarTower R S M] (U : Submodule S M) : IsScalarTower R S U := by infer_instance
+attribute [instance 2200] fieldDivisionIdentityInvPair fieldDivisionIdentitySurjective commRingIdentitySurjective finitePolynomialSelfTower ringSubmoduleAddSubmonoid submoduleScalarTower
 end PalomarDeformedSupport
 end
 /-!
@@ -60,7 +75,6 @@ set_option autoImplicit false
 set_option maxRecDepth 4000
 set_option maxHeartbeats 600000
 open scoped BigOperators
-
 /-- Independence descends along the actual kernel-span condition (original source theorem). -/
 theorem iSupIndep.map_of_ker_inf_iSup_le {R ι M N : Type*} [Ring R] [AddCommGroup M]
     [Module R M] [AddCommGroup N] [Module R N] {A : ι → Submodule R M}
@@ -320,6 +334,10 @@ open MvPolynomial Polynomial
 variable {K ι : Type*} [Field K] [Fintype ι]
 local notation "P" => MvPolynomial ι K
 /-- Literal PaperVerification.JacobianDivergence.BrieskornQuotient; precise source and scope recorded in the extraction map. -/ abbrev BrieskornQuotient (F : P) := P ⧸ divergenceSpace F
+theorem brieskornScalarComm (F : P) : SMulCommClass K K (BrieskornQuotient F) := by infer_instance
+theorem brieskornScalarSelfTower (F : P) : IsScalarTower K K (BrieskornQuotient F) := by infer_instance
+theorem brieskornEndScalarTower (F : P) : IsScalarTower K (Module.End K (BrieskornQuotient F)) (BrieskornQuotient F) := by infer_instance
+attribute [instance 2200] brieskornScalarComm brieskornScalarSelfTower brieskornEndScalarTower
 /-- Literal PaperVerification.JacobianDivergence.potentialAction; precise source and scope recorded in the extraction map. -/ def potentialAction (F : P) : BrieskornQuotient F →ₗ[K] BrieskornQuotient F :=
   (divergenceSpace F).mapQ (divergenceSpace F) (LinearMap.mulLeft K F)
     (fun u hu => potential_mul_mem F u hu)

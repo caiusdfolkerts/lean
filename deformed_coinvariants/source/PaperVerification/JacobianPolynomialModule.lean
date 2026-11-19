@@ -26,6 +26,11 @@ variable {K ι : Type*} [Field K] [Fintype ι]
 local notation "P" => MvPolynomial ι K
 
 abbrev BrieskornQuotient (F : P) := P ⧸ divergenceSpace F
+theorem brieskornScalarComm (F : P) : SMulCommClass K K (BrieskornQuotient F) := by infer_instance
+theorem brieskornScalarSelfTower (F : P) : IsScalarTower K K (BrieskornQuotient F) := by infer_instance
+theorem brieskornEndScalarTower (F : P) : IsScalarTower K (Module.End K (BrieskornQuotient F)) (BrieskornQuotient F) := by infer_instance
+attribute [instance 2200] brieskornScalarComm brieskornScalarSelfTower brieskornEndScalarTower
+
 
 def potentialAction (F : P) : BrieskornQuotient F →ₗ[K] BrieskornQuotient F :=
   (divergenceSpace F).mapQ (divergenceSpace F) (LinearMap.mulLeft K F)

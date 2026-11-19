@@ -1,4 +1,5 @@
 module
+public import Mathlib.Algebra.MvPolynomial.Basic
 public import Mathlib.LinearAlgebra.Quotient.Basic
 public import Mathlib.GroupTheory.Perm.Fin
 public import Mathlib.Algebra.Group.Subgroup.Basic
@@ -24,5 +25,21 @@ theorem subtypeScalarCompatible {R : Type uR} {M : Type uM} {S : Type uS} [Semir
 theorem quotientScalarCompatible {R : Type uR} {M : Type uM} {S : Type uS} [Ring R] [Ring S] [SMul R S] [AddCommGroup M] [Module R M] [Module S M] [IsScalarTower R S M] (U : Submodule S M) : LinearMap.CompatibleSMul M (M ⧸ U) R S := by infer_instance
 attribute [instance 2000] fieldIdentitySurjective fieldIdentityCompTriple fieldIdentityInvPair permutationSubmonoid submoduleAddSubmonoid subtypeScalarCompatible quotientScalarCompatible
 attribute [instance 1900] ringIdentitySurjective
+theorem fieldDivisionIdentityInvPair {K : Type uK} [hK : Field K] :
+    @RingHomInvPair K K hK.toDivisionRing.toRing.toSemiring hK.toDivisionRing.toRing.toSemiring
+      (@RingHom.id K hK.toDivisionRing.toRing.toSemiring.toNonAssocSemiring)
+      (@RingHom.id K hK.toDivisionRing.toRing.toSemiring.toNonAssocSemiring) := by infer_instance
+theorem fieldDivisionIdentitySurjective {K : Type uK} [hK : Field K] :
+    @RingHomSurjective K K hK.toDivisionRing.toRing.toSemiring hK.toDivisionRing.toRing.toSemiring
+      (@RingHom.id K hK.toDivisionRing.toRing.toSemiring.toNonAssocSemiring) := by infer_instance
+theorem commRingIdentitySurjective {R : Type uR} [hR : CommRing R] :
+    @RingHomSurjective R R hR.toRing.toSemiring hR.toRing.toSemiring
+      (@RingHom.id R hR.toRing.toSemiring.toNonAssocSemiring) := by infer_instance
+theorem finitePolynomialSelfTower {K : Type uK} [hK : Field K] (n : ℕ) :
+    IsScalarTower K (@MvPolynomial (Fin n) K hK.toCommRing.toCommSemiring)
+      (@MvPolynomial (Fin n) K hK.toCommRing.toCommSemiring) := by infer_instance
+theorem ringSubmoduleAddSubmonoid {R : Type uR} {M : Type uM} [Ring R] [AddCommGroup M] [Module R M] : AddSubmonoidClass (Submodule R M) M := by infer_instance
+theorem submoduleScalarTower {R : Type uR} {M : Type uM} {S : Type uS} [Semiring R] [Semiring S] [SMul R S] [AddCommMonoid M] [Module R M] [Module S M] [IsScalarTower R S M] (U : Submodule S M) : IsScalarTower R S U := by infer_instance
+attribute [instance 2200] fieldDivisionIdentityInvPair fieldDivisionIdentitySurjective commRingIdentitySurjective finitePolynomialSelfTower ringSubmoduleAddSubmonoid submoduleScalarTower
 end PalomarDeformedSupport
 end
