@@ -1,5 +1,9 @@
 # Barycentric invariance and universal parameters for face rings
 
+This Palomar entry selects the non-equivariant homogeneous Koszul formulation of Theorem 1.2, its finite filtration bound, and the total derived-Tor/Koszul comparison. The group-equivariant, product, relative-pair and Grothendieck-group clauses are not selected here. Other configurations cover other theorem groups. Exact snapshot verification and editorial review are recorded separately. The source-project badge and navigation retained below are not a verification receipt for this entry.
+
+## Retained source-project guide
+
 [![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/research/project-barycentric_invariance.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/research/actions/workflows/project-barycentric_invariance.yml)
 
 This project contains the full Lean4 formalisation for all principal results in my paper *Barycentric invariance and universal parameters for face rings*. I've included the paper as paper.pdf.

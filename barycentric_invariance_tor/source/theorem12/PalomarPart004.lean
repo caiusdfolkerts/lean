@@ -938,6 +938,14 @@ def augmentedCochainComplex (Λ : Finset V → Prop) (hΛ : Simplicial.Downward 
     (fun i => ModuleCat.ofHom (augmentedCoboundary Λ hΛ i))
     (palomarAugmentedSquare Λ hΛ)
 
+theorem augmentedCochainComplex_formula (Λ : Finset V → Prop) (hΛ : Simplicial.Downward Λ) :
+    augmentedCochainComplex (K := K) Λ hΛ =
+  CochainComplex.of
+    (fun i => ModuleCat.of K (Module.Dual K (Simplicial.Chains (k := K) Λ i)))
+    (fun i => ModuleCat.ofHom (augmentedCoboundary Λ hΛ i))
+    (palomarAugmentedSquare Λ hΛ) := by rfl
+
+
 @[simp] theorem augmentedCochainComplex_d (Λ : Finset V → Prop)
     (hΛ : Simplicial.Downward Λ) (i : ℕ) :
     (augmentedCochainComplex (K := K) Λ hΛ).d i (i + 1) =

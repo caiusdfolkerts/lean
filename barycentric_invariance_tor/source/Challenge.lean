@@ -908,6 +908,14 @@ theorem palomarAugmentedSquare (Λ : Finset V → Prop) (hΛ : Simplicial.Downwa
     (fun i => ModuleCat.of K (Module.Dual K (Simplicial.Chains (k := K) Λ i)))
     (fun i => ModuleCat.ofHom (augmentedCoboundary Λ hΛ i))
     (palomarAugmentedSquare Λ hΛ)
+
+theorem augmentedCochainComplex_formula (Λ : Finset V → Prop) (hΛ : Simplicial.Downward Λ) :
+    augmentedCochainComplex (K := K) Λ hΛ =
+  CochainComplex.of
+    (fun i => ModuleCat.of K (Module.Dual K (Simplicial.Chains (k := K) Λ i)))
+    (fun i => ModuleCat.ofHom (augmentedCoboundary Λ hΛ i))
+    (palomarAugmentedSquare Λ hΛ) := by rfl
+
 /-- Literal FourPapers.Universal.reducedCohomology; source theorem12.lean:33884. -/ def reducedCohomology (Λ : Finset V → Prop) (hΛ : Simplicial.Downward Λ) (q : ℤ) : ModuleCat.{max u v} K :=
   if -1 ≤ q then (augmentedCochainComplex (K := K) Λ hΛ).homology (q + 1).toNat
   else ModuleCat.of K (ULift.{v} (Fin 0 → K))

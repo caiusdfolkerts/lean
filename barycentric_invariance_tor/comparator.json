@@ -44,9 +44,12 @@
     "PalomarBarycentricTor.tensorPreservesZero",
     "FourPapers.Universal.palomarRankColorBound",
     "FourPapers.Universal.palomarRankFaceDownward",
-    "FourPapers.Universal.palomarRankColorProper"
+    "FourPapers.Universal.palomarRankColorProper",
+    "FourPapers.Universal.augmentedCochainComplex_formula"
   ],
-  "definition_names": [],
+  "definition_names": [
+    "FourPapers.Universal.augmentedCochainComplex"
+  ],
   "permitted_axioms": [
     "propext",
     "Quot.sound",

@@ -38,8 +38,8 @@ automation:
     tool_setup: OpenAI Codex
     notes: Agent-assisted extraction of exact source data and theorem types, ordinary
       derived-Tor/homogeneous-Koszul bridge packaging, command/context and scope migration
-      repairs. Current Challenge-only canonical elaboration passed; full validation
-      pending.
+      repairs. The independent interface passed canonical elaboration in run44506316080.
+      Its full verification is a separate check, recorded in the exact snapshot report.
   - method: other
     tool_setup: Historical AI assistance reported in the included paper
     notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing
@@ -47,19 +47,19 @@ automation:
       not been reconstructed from the snapshot.
 review:
   status: unchecked
-  notes: The independent Challenge, explicit original complex shapes and face-ring
-    module, and extracted original rank-coloring proofs passed canonical elaboration
-    in run44486287433. All 40 prior selected statements remain, with three genuine
-    rank-coloring support theorems added. Full source, Solution, comparison and
-    independent kernel replay of this exact snapshot are pending.
+  notes: Preparation record dated 2026-11-19 at 10:59 UTC. Canonical run44506316080
+    checked all 43 selected statements with three genuine named square/downward
+    proof helpers. Full run44508908737 for the preceding sealed snapshot is running
+    at this timestamp. Subsequent exact-snapshot reports determine mechanical status;
+    editorial review is separate. No whole-paper coverage is claimed.
 scope:
   known_gaps:
   - The full group-equivariant, multiplicative, relative-pair and Grothendieck-group
     clauses of Theorem1.2 remain required uncovered goals.
   - Other main paper results use separate configurations because theorem12/theorem13/theorem94
     independently redeclare their core.
-  - The exact current Challenge passed canonical remote elaboration; Source/Solution
-    build, Comparator, independent replay and editorial review are pending.
+  - At the preparation timestamp above, full verification of the revised snapshot
+    was not complete. Subsequent exact-snapshot reports determine its status.
   notes: The submitted project contains the substantive historical proof development
     copied from the pinned source snapshot; this is not a thin wrapper. Historical
     upstream dependencies and license notices are retained. See map.json for exact
