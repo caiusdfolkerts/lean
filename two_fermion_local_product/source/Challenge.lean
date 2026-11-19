@@ -3,6 +3,7 @@ public import Mathlib
 
 /-! Dimensions of the local factors and exterior components of separated two-fermion quotients. -/
 @[expose] public section
+attribute [-instance] MvPolynomial.instModuleSelf
 noncomputable section
 set_option autoImplicit false
 open scoped BigOperators
@@ -644,7 +645,6 @@ instance superQuotientFieldAlgebra : Algebra F d.SuperQuotient :=
 @[reducible] instance superQuotientFieldModule : Module F d.SuperQuotient :=
   @Algebra.toModule _ _ _ _ d.superQuotientFieldAlgebra
 def superMk : SuperRing F n →ₐ[F] d.SuperQuotient := d.superIdeal.ringCon.mkₐ F
-attribute [local instance 2450] AddMonoidAlgebra.instModule in
 theorem ordinary_scalar_ideal_mem
     (p : PolynomialRing F n)
     (hp : p∈separatedOrdinaryIdeal d.beta d.G d.phi) :
