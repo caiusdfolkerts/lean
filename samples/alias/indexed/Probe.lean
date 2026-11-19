@@ -1,0 +1,21 @@
+module
+prelude
+public import ResidualGraphKernel
+public import GraphInputsRow16Part00000Data
+public import GraphInputsRow19Part00000Data
+
+public section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+open Papers.RationalityTen PackedGraphCertificate FiniteChecks
+open SharedGraphCellPool ResidualGraphKernel
+
+namespace Diagnostic
+
+theorem case00 : Interval (localCheck Papers.RationalityTen.CompactReplay.GraphInputsRow16Part00000.record006) 0 63 :=
+  indexedChecked Papers.RationalityTen.CompactReplay.GraphInputsRow16Part00000.record006 3778491872364456177106674302634934136185741248634564649412211189786451236785661919809176313850978558683689214150178913915911100015728259646790758084638692882645119810082399868202522124508175 (by decide +kernel)
+
+theorem case01 : Interval (localCheck Papers.RationalityTen.CompactReplay.GraphInputsRow19Part00000.record021) 0 63 :=
+  case00
+
+end Diagnostic

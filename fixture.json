@@ -1,0 +1,824 @@
+{
+  "common_imports": {
+    "BatchedGrowthPruning": [
+      "GrowthBitsets",
+      "GrowthRenaming"
+    ],
+    "BatchedOrbitGrowth": [
+      "BatchedGrowthPruning",
+      "OrbitGrowthDAG"
+    ],
+    "BatchedSearchLeaves": [
+      "FastBatchedGrowth"
+    ],
+    "CachedCellRelabel": [
+      "RawGraphGrowthFrames",
+      "FiniteChecks",
+      "RawGrowthCacheCertificate"
+    ],
+    "CertificateNumbers": [
+      "GraphNumerals"
+    ],
+    "ConcreteGrowth": [
+      "WitnessGrowthDAG",
+      "Init.Data.Nat.Bitwise.Basic"
+    ],
+    "FaceOnlyCompatibility": [
+      "FastGrowthCompatibility",
+      "GrowthBitsets"
+    ],
+    "FastAvailability": [
+      "GraphConditionedGrowth"
+    ],
+    "FastBatchedGrowth": [
+      "BatchedOrbitGrowth"
+    ],
+    "FastGeneralGraphReplay": [
+      "FasterGraphConditionedGrowth",
+      "FastMaskCardinality"
+    ],
+    "FastGraphConditionedGrowth": [
+      "RawGraphConditionedGrowth",
+      "FastGraphRuleCheck"
+    ],
+    "FastGraphRuleCheck": [
+      "GraphGrowthRuleSoundness"
+    ],
+    "FastGrowthCompatibility": [
+      "FiniteChecks"
+    ],
+    "FastMaskCardinality": [
+      "FiniteMaskSets",
+      "Init.Data.List.Count",
+      "Init.Data.List.FinRange",
+      "Init.Data.Nat.Bitwise.Lemmas"
+    ],
+    "FastTenGraphEdges": [
+      "TenGraphEdges"
+    ],
+    "FasterGraphConditionedGrowth": [
+      "FastGraphConditionedGrowth",
+      "FastAvailability"
+    ],
+    "FiniteChecks": [
+      "PackedGrowthData",
+      "Init.Data.List.Nat.Range",
+      "Init.Data.Fin.Lemmas"
+    ],
+    "FiniteMaskSets": [
+      "GrowthBitsets",
+      "GrowthRenaming",
+      "Init.Data.List.Nat.Pairwise",
+      "Init.Data.List.Perm"
+    ],
+    "GeometricRecordFiles": [
+      "GraphGeometry",
+      "CertificateNumbers"
+    ],
+    "GraphCandidateCoverage": [
+      "FiniteMaskSets"
+    ],
+    "GraphCatalogueCore": [
+      "FastBatchedGrowth",
+      "IdentityGrowthRenaming",
+      "Init.Data.List.Nat.Pairwise"
+    ],
+    "GraphConditionedGrowth": [
+      "GraphGrowthRuleSoundness",
+      "SubsumptionSearch"
+    ],
+    "GraphGeometry": [
+      "GraphNumerals"
+    ],
+    "GraphGrowthConstraints": [
+      "FiniteMaskSets",
+      "UnsupportedRidgePruning",
+      "PrimitiveBitsetGrowth"
+    ],
+    "GraphGrowthInputs": [
+      "FasterGraphConditionedGrowth"
+    ],
+    "GraphGrowthRuleSoundness": [
+      "GraphGrowthConstraints"
+    ],
+    "GraphInputsRow16Part00000Data": [
+      "GeometricRecordFiles",
+      "PackedGraphInputs"
+    ],
+    "GraphInputsRow16Part00011Data": [
+      "GeometricRecordFiles",
+      "PackedGraphInputs"
+    ],
+    "GraphInputsRow19Part00000Data": [
+      "GeometricRecordFiles",
+      "PackedGraphInputs"
+    ],
+    "GraphInputsRow19Part00034Data": [
+      "GeometricRecordFiles",
+      "PackedGraphInputs"
+    ],
+    "GraphInputsRow23Part00029Data": [
+      "GeometricRecordFiles",
+      "PackedGraphInputs"
+    ],
+    "GraphInputsRow24Part00141Data": [
+      "GeometricRecordFiles",
+      "PackedGraphInputs"
+    ],
+    "GraphInputsRow25Part00022Data": [
+      "GeometricRecordFiles",
+      "PackedGraphInputs"
+    ],
+    "GraphInputsRow26Part00077Data": [
+      "GeometricRecordFiles",
+      "PackedGraphInputs"
+    ],
+    "GraphInputsRow27Part00016Data": [
+      "GeometricRecordFiles",
+      "PackedGraphInputs"
+    ],
+    "GraphInputsRow28Part00012Data": [
+      "GeometricRecordFiles",
+      "PackedGraphInputs"
+    ],
+    "GraphInputsRow29Part00281Data": [
+      "GeometricRecordFiles",
+      "PackedGraphInputs"
+    ],
+    "GraphInputsRow30Part00030Data": [
+      "GeometricRecordFiles",
+      "PackedGraphInputs"
+    ],
+    "GraphInputsRow31Part00048Data": [
+      "GeometricRecordFiles",
+      "PackedGraphInputs"
+    ],
+    "GraphInputsSix0Part00089Data": [
+      "GeometricRecordFiles",
+      "PackedGraphInputs"
+    ],
+    "GraphLargeRow29Case01592Data": [
+      "CertificateNumbers",
+      "PackedGraphInputs"
+    ],
+    "GraphNumerals": [
+      "Lean.Elab.Term"
+    ],
+    "GraphProblemCertificate": [
+      "GraphGrowthConstraints",
+      "GrowthCacheCertificate"
+    ],
+    "GrowthBitsets": [
+      "FastGrowthCompatibility",
+      "Init.Data.Nat.Bitwise.Lemmas"
+    ],
+    "GrowthCacheCertificate": [
+      "BatchedGrowthPruning"
+    ],
+    "GrowthDAG": [
+      "Init.Data.Nat.Lemmas",
+      "Init.Data.List.Lemmas",
+      "Init.WF",
+      "Init.ByCases",
+      "Init.Omega"
+    ],
+    "GrowthPruning": [
+      "SparseGrowthDAG",
+      "Init.Data.List.Perm",
+      "Init.Data.List.Pairwise"
+    ],
+    "GrowthRenaming": [
+      "WitnessGrowthDAG"
+    ],
+    "IdentityGrowthRenaming": [
+      "OrbitGrowthDAG"
+    ],
+    "MatrixGraphProblem": [
+      "GraphProblemCertificate",
+      "FaceOnlyCompatibility",
+      "FiniteChecks",
+      "PackedIncidenceMatrix"
+    ],
+    "OrbitGrowthDAG": [
+      "GrowthRenaming"
+    ],
+    "PackedGeneralGraphNodes": [
+      "PackedGraphNodes"
+    ],
+    "PackedGraphCertificate": [
+      "MatrixGraphProblem",
+      "PackedGraphData",
+      "FastGeneralGraphReplay"
+    ],
+    "PackedGraphData": [
+      "PackedGeneralGraphNodes"
+    ],
+    "PackedGraphInputs": [
+      "PackedGraphCertificate",
+      "GraphGrowthInputs"
+    ],
+    "PackedGraphNodes": [
+      "FastGraphConditionedGrowth",
+      "PackedRawNatGrowth"
+    ],
+    "PackedGrowthData": [
+      "ConcreteGrowth"
+    ],
+    "PackedIncidenceMatrix": [
+      "GrowthBitsets",
+      "PrimitiveBitsetGrowth",
+      "Init.Data.List.FinRange"
+    ],
+    "PackedRawNatGrowth": [
+      "RawNatGrowthCheck",
+      "ConcreteGrowth"
+    ],
+    "PrimitiveBitsetGrowth": [
+      "BatchedSearchLeaves"
+    ],
+    "RawBatchGrowth": [
+      "FastBatchedGrowth",
+      "ConcreteGrowth"
+    ],
+    "RawBoundaryMatch": [
+      "TenGraphEdges",
+      "PrimitiveBitsetGrowth"
+    ],
+    "RawGraphConditionedGrowth": [
+      "GraphConditionedGrowth"
+    ],
+    "RawGraphGrowthFrames": [
+      "RawBoundaryMatch"
+    ],
+    "RawGraphSemanticCertificate": [
+      "MatrixGraphProblem",
+      "CachedCellRelabel",
+      "FastTenGraphEdges"
+    ],
+    "RawGrowthCacheCertificate": [
+      "RawNatGrowthSoundness"
+    ],
+    "RawNatGrowthCheck": [
+      "RawBatchGrowth"
+    ],
+    "RawNatGrowthSoundness": [
+      "RawNatGrowthCheck",
+      "PrimitiveBitsetGrowth",
+      "FastGraphConditionedGrowth"
+    ],
+    "ResidualGraphKernel": [
+      "SharedGraphCellPool"
+    ],
+    "SharedGraphCellPool": [
+      "PackedGraphInputs",
+      "RawGraphSemanticCertificate",
+      "GraphCandidateCoverage"
+    ],
+    "SparseGrowthDAG": [
+      "GrowthDAG",
+      "Init.Data.Bool"
+    ],
+    "SubsumptionSearch": [
+      "UnsupportedRidgePruning"
+    ],
+    "TenGraphEdges": [
+      "GraphCatalogueCore"
+    ],
+    "UnsupportedRidgePruning": [
+      "BatchedGrowthPruning",
+      "PrimitiveBitsetGrowth"
+    ],
+    "WitnessGrowthDAG": [
+      "GrowthPruning"
+    ]
+  },
+  "external_imports": [
+    "Init.ByCases",
+    "Init.Data.Bool",
+    "Init.Data.Fin.Lemmas",
+    "Init.Data.List.Count",
+    "Init.Data.List.FinRange",
+    "Init.Data.List.Lemmas",
+    "Init.Data.List.Nat.Pairwise",
+    "Init.Data.List.Nat.Range",
+    "Init.Data.List.Pairwise",
+    "Init.Data.List.Perm",
+    "Init.Data.Nat.Bitwise.Basic",
+    "Init.Data.Nat.Bitwise.Lemmas",
+    "Init.Data.Nat.Lemmas",
+    "Init.Omega",
+    "Init.WF",
+    "Lean.Elab.Term"
+  ],
+  "groups": {
+    "16": [
+      {
+        "bad_pairs": 397,
+        "prefix": "GraphInputsRow16Part00011",
+        "record": 16,
+        "slots": 80
+      },
+      {
+        "bad_pairs": 374,
+        "prefix": "GraphInputsRow16Part00011",
+        "record": 5,
+        "slots": 78
+      },
+      {
+        "bad_pairs": 316,
+        "prefix": "GraphInputsRow16Part00011",
+        "record": 4,
+        "slots": 77
+      },
+      {
+        "bad_pairs": 313,
+        "prefix": "GraphInputsRow16Part00011",
+        "record": 28,
+        "slots": 71
+      }
+    ],
+    "19": [
+      {
+        "bad_pairs": 532,
+        "prefix": "GraphInputsRow19Part00034",
+        "record": 53,
+        "slots": 82
+      },
+      {
+        "bad_pairs": 439,
+        "prefix": "GraphInputsRow19Part00034",
+        "record": 46,
+        "slots": 76
+      },
+      {
+        "bad_pairs": 388,
+        "prefix": "GraphInputsRow19Part00034",
+        "record": 49,
+        "slots": 79
+      },
+      {
+        "bad_pairs": 363,
+        "prefix": "GraphInputsRow19Part00034",
+        "record": 24,
+        "slots": 76
+      }
+    ],
+    "23": [
+      {
+        "bad_pairs": 990,
+        "prefix": "GraphInputsRow23Part00029",
+        "record": 15,
+        "slots": 95
+      },
+      {
+        "bad_pairs": 638,
+        "prefix": "GraphInputsRow23Part00029",
+        "record": 9,
+        "slots": 96
+      },
+      {
+        "bad_pairs": 622,
+        "prefix": "GraphInputsRow23Part00029",
+        "record": 8,
+        "slots": 91
+      },
+      {
+        "bad_pairs": 490,
+        "prefix": "GraphInputsRow23Part00029",
+        "record": 11,
+        "slots": 96
+      }
+    ],
+    "24": [
+      {
+        "bad_pairs": 891,
+        "prefix": "GraphInputsRow24Part00141",
+        "record": 7,
+        "slots": 93
+      },
+      {
+        "bad_pairs": 816,
+        "prefix": "GraphInputsRow24Part00141",
+        "record": 9,
+        "slots": 96
+      },
+      {
+        "bad_pairs": 794,
+        "prefix": "GraphInputsRow24Part00141",
+        "record": 8,
+        "slots": 96
+      },
+      {
+        "bad_pairs": 770,
+        "prefix": "GraphInputsRow24Part00141",
+        "record": 10,
+        "slots": 97
+      }
+    ],
+    "25": [
+      {
+        "bad_pairs": 710,
+        "prefix": "GraphInputsRow25Part00022",
+        "record": 37,
+        "slots": 112
+      },
+      {
+        "bad_pairs": 594,
+        "prefix": "GraphInputsRow25Part00022",
+        "record": 32,
+        "slots": 111
+      },
+      {
+        "bad_pairs": 581,
+        "prefix": "GraphInputsRow25Part00022",
+        "record": 57,
+        "slots": 108
+      },
+      {
+        "bad_pairs": 483,
+        "prefix": "GraphInputsRow25Part00022",
+        "record": 5,
+        "slots": 112
+      }
+    ],
+    "26": [
+      {
+        "bad_pairs": 1037,
+        "prefix": "GraphInputsRow26Part00077",
+        "record": 14,
+        "slots": 103
+      },
+      {
+        "bad_pairs": 1034,
+        "prefix": "GraphInputsRow26Part00077",
+        "record": 1,
+        "slots": 103
+      },
+      {
+        "bad_pairs": 945,
+        "prefix": "GraphInputsRow26Part00077",
+        "record": 7,
+        "slots": 106
+      },
+      {
+        "bad_pairs": 869,
+        "prefix": "GraphInputsRow26Part00077",
+        "record": 4,
+        "slots": 105
+      }
+    ],
+    "27": [
+      {
+        "bad_pairs": 560,
+        "prefix": "GraphInputsRow27Part00016",
+        "record": 29,
+        "slots": 146
+      },
+      {
+        "bad_pairs": 433,
+        "prefix": "GraphInputsRow27Part00016",
+        "record": 26,
+        "slots": 120
+      },
+      {
+        "bad_pairs": 396,
+        "prefix": "GraphInputsRow27Part00016",
+        "record": 2,
+        "slots": 111
+      },
+      {
+        "bad_pairs": 330,
+        "prefix": "GraphInputsRow27Part00016",
+        "record": 9,
+        "slots": 106
+      }
+    ],
+    "28": [
+      {
+        "bad_pairs": 764,
+        "prefix": "GraphInputsRow28Part00012",
+        "record": 55,
+        "slots": 119
+      },
+      {
+        "bad_pairs": 579,
+        "prefix": "GraphInputsRow28Part00012",
+        "record": 38,
+        "slots": 118
+      },
+      {
+        "bad_pairs": 418,
+        "prefix": "GraphInputsRow28Part00012",
+        "record": 48,
+        "slots": 113
+      },
+      {
+        "bad_pairs": 417,
+        "prefix": "GraphInputsRow28Part00012",
+        "record": 24,
+        "slots": 108
+      }
+    ],
+    "29": [
+      {
+        "bad_pairs": 1420,
+        "prefix": "GraphInputsRow29Part00281",
+        "record": 5,
+        "slots": 126
+      },
+      {
+        "bad_pairs": 1375,
+        "prefix": "GraphInputsRow29Part00281",
+        "record": 4,
+        "slots": 142
+      },
+      {
+        "bad_pairs": 1202,
+        "prefix": "GraphInputsRow29Part00281",
+        "record": 3,
+        "slots": 131
+      },
+      {
+        "bad_pairs": 1156,
+        "prefix": "GraphInputsRow29Part00281",
+        "record": 1,
+        "slots": 120
+      },
+      {
+        "bad_pairs": null,
+        "prefix": "GraphLargeRow29Case01592",
+        "record": 0,
+        "slots": 106
+      }
+    ],
+    "30": [
+      {
+        "bad_pairs": 1454,
+        "prefix": "GraphInputsRow30Part00030",
+        "record": 33,
+        "slots": 122
+      },
+      {
+        "bad_pairs": 1172,
+        "prefix": "GraphInputsRow30Part00030",
+        "record": 29,
+        "slots": 115
+      },
+      {
+        "bad_pairs": 809,
+        "prefix": "GraphInputsRow30Part00030",
+        "record": 38,
+        "slots": 116
+      },
+      {
+        "bad_pairs": 544,
+        "prefix": "GraphInputsRow30Part00030",
+        "record": 50,
+        "slots": 119
+      }
+    ],
+    "31": [
+      {
+        "bad_pairs": 2228,
+        "prefix": "GraphInputsRow31Part00048",
+        "record": 2,
+        "slots": 150
+      },
+      {
+        "bad_pairs": 1288,
+        "prefix": "GraphInputsRow31Part00048",
+        "record": 5,
+        "slots": 122
+      },
+      {
+        "bad_pairs": 746,
+        "prefix": "GraphInputsRow31Part00048",
+        "record": 1,
+        "slots": 126
+      },
+      {
+        "bad_pairs": 596,
+        "prefix": "GraphInputsRow31Part00048",
+        "record": 3,
+        "slots": 136
+      }
+    ],
+    "32": [
+      {
+        "bad_pairs": 1718,
+        "prefix": "GraphInputsSix0Part00089",
+        "record": 15,
+        "slots": 127
+      },
+      {
+        "bad_pairs": 1357,
+        "prefix": "GraphInputsSix0Part00089",
+        "record": 29,
+        "slots": 127
+      },
+      {
+        "bad_pairs": 1217,
+        "prefix": "GraphInputsSix0Part00089",
+        "record": 18,
+        "slots": 129
+      },
+      {
+        "bad_pairs": 1184,
+        "prefix": "GraphInputsSix0Part00089",
+        "record": 16,
+        "slots": 121
+      }
+    ],
+    "alias": [
+      {
+        "bad_pairs": 16,
+        "prefix": "GraphInputsRow16Part00000",
+        "record": 6,
+        "slots": 63
+      },
+      {
+        "bad_pairs": 16,
+        "prefix": "GraphInputsRow19Part00000",
+        "record": 21,
+        "slots": 63
+      }
+    ]
+  },
+  "sha256": {
+    ".github/workflows/residual-graph-kernel.yml": "d4ad6fb3f266fa0ce4532cf4c006a9818d37159d4e59956b990e0094d0f0b1d0",
+    "benchmark_ci.py": "3bc2268e8be5414dcbbe15118c9bcf8f8843dd8c489b37cd1d008f24f9dda8c3",
+    "common/BatchedGrowthPruning.lean": "90017809631d00b6e3114f6ac20b145106fd4a159876cb02653718e7b55c42f3",
+    "common/BatchedOrbitGrowth.lean": "4bc9c541def34f03104b090a1674b7dbdef0d568c78bce2df1bfa68a08c7c7b4",
+    "common/BatchedSearchLeaves.lean": "e079d8ef616bd40928b33d9673b224d8574647c23ae99e364782aca116e18098",
+    "common/CachedCellRelabel.lean": "64ccb6583aa2eede06534e7d104e35a2c590f1cc290d0a78964396ce489c04fd",
+    "common/CertificateNumbers.lean": "adf5cee92a2617325249bea79855ffca54a31dec0350da6c1155ebcaf6f3c805",
+    "common/ConcreteGrowth.lean": "de893e4200cd38515846e85ee7c40f74e7c441faabef730a7cdc8e9e008254bc",
+    "common/FaceOnlyCompatibility.lean": "6feb072b603401ea45ac78ab8a0d40cd28e778b67afbdee360875bd94bbcbcbe",
+    "common/FastAvailability.lean": "a2d5a2a9180e19175168526103e5ca99f2f9627a068722c0b14ec682dea9c959",
+    "common/FastBatchedGrowth.lean": "5bdbaf9a42b100c1a4e58c1144dee169dc09ade3e7c4debdbbbb075258512a25",
+    "common/FastGeneralGraphReplay.lean": "3f974d7eb881b6be71ce776cf6b0aa3e2e290108b9b3723abe150ec2286b19db",
+    "common/FastGraphConditionedGrowth.lean": "08c3d80e237e842806fa783a5a660949d07fbb8ec3b5270c306c33912aa2cd7d",
+    "common/FastGraphRuleCheck.lean": "1c13b0ba691f71ca4e5e9b03b4411ae94245c2e9afe9785afa1284f7653d7c1f",
+    "common/FastGrowthCompatibility.lean": "6b1049703edf75d22d1139bcc299517dcfc92fd3970e4452bd79c1a41782e632",
+    "common/FastMaskCardinality.lean": "d3b050cfeabad0d0776878c265e2e9d5b5c7f93a6083a203c448ef05c42fdd69",
+    "common/FastTenGraphEdges.lean": "c011f709d2154fd1f4b77d07f263cde6908ca902958763df20fb4ab4537502fd",
+    "common/FasterGraphConditionedGrowth.lean": "0b766ec470d2a2da89cd43aed53c17dd2e737bfb8c23e03a8ba047761d3093df",
+    "common/FiniteChecks.lean": "56938fc648ddd818ef6e5355b9fc34c61c7921a68c15d1219ca63b523d89233c",
+    "common/FiniteMaskSets.lean": "b53b4e957fc0a031383e544444acfdae7f591caa6256ae69aee7b1fdb9a1cda8",
+    "common/GeometricRecordFiles.lean": "5a2871cd74a80c7f491c0f965922eeea860604cc20f2191f0508ed6e3d41407a",
+    "common/GraphCandidateCoverage.lean": "76b11e5dace95b17dd1dc231aed5ea83fa9675f42ab16835c1652db1f68c8e4f",
+    "common/GraphCatalogueCore.lean": "dde1a33e2e9d308aeaed5ec6e386f1da4198a8df32fdf675205ce4d018a7b4ca",
+    "common/GraphConditionedGrowth.lean": "b0aac0c70f0211bc21fa81169b8b50b5ecf5235b0e626a90ceffe6c06de621bd",
+    "common/GraphGeometry.lean": "73548fcf4cc734c7d90bf9fa96edd7bced8ad42184e781c689cd55e89ad084df",
+    "common/GraphGrowthConstraints.lean": "65082b64612cfbfc61c8b6ef2b4ea6eb4ceb79d0a84e2830750c0f5b2c61292a",
+    "common/GraphGrowthInputs.lean": "1a840288b26f07706507d10d7c9e5374bf0b7c1eacde84668306c0f457ab64e9",
+    "common/GraphGrowthRuleSoundness.lean": "02f3992fad0a8f2784f61cad8cd233efe6ab8ebae3cb85c4422ee147783fe6e9",
+    "common/GraphInputsRow16Part00000Data.gpack": "e53d41c08c9ab776d7dec3a6e5f92e06610b31c3d2b077df0a6e0c05d80a6f01",
+    "common/GraphInputsRow16Part00000Data.lean": "2e287d64b09d383dca517d461176570335bb22df17b555bd344d73dc085c6619",
+    "common/GraphInputsRow16Part00011Data.gpack": "ac3e7ff4a8d6d672bbc85f670f99f5dbfd19309a05799e7abc3840a868ce2b18",
+    "common/GraphInputsRow16Part00011Data.lean": "3dfa4576bab4f69dec28e1b6acc94ea0f78cf34205fe8774295d93bb5bade176",
+    "common/GraphInputsRow19Part00000Data.gpack": "8781d4417500ee006a791affa315744de5f5cc76664ecba75972b78ecdfb2e36",
+    "common/GraphInputsRow19Part00000Data.lean": "458ae77c58d936bc17fe4b6a611cb8f838c2d4403f6681defd552e15c21f1628",
+    "common/GraphInputsRow19Part00034Data.gpack": "77a6bd6287ed7c706a83e0e77d31520a41e9fa470f0f65789516400bae272570",
+    "common/GraphInputsRow19Part00034Data.lean": "c9e7fc364c7786db56facb8a9d48759dbf9daa4f35cb3fc54c26ae87ef37d5d1",
+    "common/GraphInputsRow23Part00029Data.gpack": "7bd2a5acf60266f1dd01ce45acab45d14196e1e6455a94d1d012fcb39b8e28a0",
+    "common/GraphInputsRow23Part00029Data.lean": "69b7e0938fab523cf77f75cca41009960354eda1e89487c3e6848dffb79f8de3",
+    "common/GraphInputsRow24Part00141Data.gpack": "aeadbe479f56c032aad31afb9c1ff7b2c49aa0f1b56f61c51144b4bb16475211",
+    "common/GraphInputsRow24Part00141Data.lean": "06ad7dc74d519ba9fa24e290a8a509741262f405a08a05b9e8d89528831da1b7",
+    "common/GraphInputsRow25Part00022Data.gpack": "946eb7ab64fac2127e7b76eab7d6bdfe998056172b690c02587d9200d34a6b81",
+    "common/GraphInputsRow25Part00022Data.lean": "f9aa42e7b5dc21556b2c1ef29442bf872a415c1e5805216081ed367039fea0cb",
+    "common/GraphInputsRow26Part00077Data.gpack": "ba33fd9848a800f5181c575448e4f2ef01cd08f01b7201658cf06f6372feb60b",
+    "common/GraphInputsRow26Part00077Data.lean": "be8ab30f1a4ed37df6626c192478cb7cb6cc016577bc1eadd115e3ed29ad7ef7",
+    "common/GraphInputsRow27Part00016Data.gpack": "bb62f6782069b6fd3aae5a0e2e9a69b766545dc0d80c7e8a7ffcce648d40e9d9",
+    "common/GraphInputsRow27Part00016Data.lean": "66603d4a27aa64bb284d1329d042873e76477358cfa4f1465aa4a2ee14769933",
+    "common/GraphInputsRow28Part00012Data.gpack": "8a24c5ac98dbe155647f9dd060e0c523e7cc2bebe824afee139c95140a486158",
+    "common/GraphInputsRow28Part00012Data.lean": "6fe787e52e3a5e81be67fbd42116e1db59338d94f6a21851858bd6bbd79f6d2d",
+    "common/GraphInputsRow29Part00281Data.gpack": "7ac973bcfa078bafda9a76c7a17238da8dfa7437406a40ea96238a235c807f29",
+    "common/GraphInputsRow29Part00281Data.lean": "e9b6343d6b14ec2917fa9dda8b2b9af093d30b33acbc57eb3e3027c4eaa03f50",
+    "common/GraphInputsRow30Part00030Data.gpack": "727ef20fc1a932dd957ced69d7c8651f887e21a4b158cad8560d98f2080968f1",
+    "common/GraphInputsRow30Part00030Data.lean": "ccb9eb16aff9b025739a577c54b901cee5116cf4afcef9dd33f913f183cc80d7",
+    "common/GraphInputsRow31Part00048Data.gpack": "4032ebc37ef0f59b5434491c2c9b349a95aef05362fa9d547ebe9710e7e68659",
+    "common/GraphInputsRow31Part00048Data.lean": "ed222a29f22da2f224537784533790fbba723c4f2c301794d94b5ecdca75e5c4",
+    "common/GraphInputsSix0Part00089Data.gpack": "ad3693617e4e117d58304a56a792ad217145cd9323ffc1ddda9439a595767675",
+    "common/GraphInputsSix0Part00089Data.lean": "cd5d5b2b2b95666aab77931df8ec157dfd210453c81098dbe59f842760ec2eda",
+    "common/GraphLargeRow29Case01592Data.lean": "6de400f29a7317d2184fb2370ec61095a87caa0d92c1f73f0a3721a58cc21f2c",
+    "common/GraphLargeRow29Case01592Data.natpack": "cc6ef983ea779ed80a653872b53bd30b25ca32551629341b96aa22d65f4b7e89",
+    "common/GraphNumerals.lean": "c3ca65b9f512843e5a9ff832d8dc5e59f6e9fc6dcd16ab8a6248e67a1a69c83e",
+    "common/GraphProblemCertificate.lean": "c05444c1a7b2e62d93424f29f082eae0de1a988fbba01b55c63504d9026ba092",
+    "common/GrowthBitsets.lean": "3ecb0da03f95b20e4bc4e38b19323ae8a44053e4a2cfcb950510ad17bd7feab1",
+    "common/GrowthCacheCertificate.lean": "a4e76795e960c084a255156a1435bd6407fb0d8ad80c01ae07c2952e9333d58e",
+    "common/GrowthDAG.lean": "ee193ba523160c4bf02356c5769a63cf413ca076e36b7c29a7f20ba596da37fe",
+    "common/GrowthPruning.lean": "b42c3a7851a0eebffa3b37998f784bda5d08b9a517f56fe45b0de8b0229d9cad",
+    "common/GrowthRenaming.lean": "084d04866eadfcc73cff730b3e095a74aaec907c12c944a3a6fad6e15298bb8d",
+    "common/IdentityGrowthRenaming.lean": "af732fc70e7ca2053753f999187984313c517eece3f1af2ed3a49d7a39dab2a1",
+    "common/LICENSE": "cacb9b966903a68a7b55e83ee5c5004d9178206d7f6ac5ab61b8b5f15244147f",
+    "common/MatrixGraphProblem.lean": "206bc3cb571b93baa698eb7f0e5b1dcd8ef5de7c0f076f5d01929ce66bb10da5",
+    "common/NOTICE": "e2af102b9599056f984ea036280b13207b8e6098d8fdef57256840d7b82b5a90",
+    "common/OrbitGrowthDAG.lean": "cfd77df1cabe25de59b5e71f2076b50159e12b50b4eec33342f4635452a29eac",
+    "common/PackedGeneralGraphNodes.lean": "04e249bc4f32f2145c099e198b91adf700ecde3ed1963114d9c4b776da13f361",
+    "common/PackedGraphCertificate.lean": "3a10ab25d943074957cf2876528d4e66f6c5e5f91be3b609851a49e0caab418a",
+    "common/PackedGraphData.lean": "3a55b3c2815d65af0c3d3549ad1f745a9bb771e15975f8e901dc858b928afb0e",
+    "common/PackedGraphInputs.lean": "195f022dbf1c17eb1552885869165a7d4ad10179a5fafff84ad9287b93efe738",
+    "common/PackedGraphNodes.lean": "4f00a3b31c65a1e0e1675af0bf298daa16515243440c3897957d9126b6f5a4fc",
+    "common/PackedGrowthData.lean": "1825b917d6cba0daa6f1f66424b0a68be161678a0c58c837721885c610a8c9b0",
+    "common/PackedIncidenceMatrix.lean": "0044d5bf5238b4744fdf4b1a21b2b74118c328331bd6be022c43b30f40a71808",
+    "common/PackedRawNatGrowth.lean": "fe9d92d06205e66cdc6d9d1325570d7f9dce13825c5c7de22d706f4edc07c4fe",
+    "common/PrimitiveBitsetGrowth.lean": "1dab7b97743105f51e6b4cf239b07b23184cbc60620dfe3133438ee97a164e62",
+    "common/RawBatchGrowth.lean": "68b7d099eed590ab720bc5a73bf182add19839783d3f84575a68ddf3e3764e45",
+    "common/RawBoundaryMatch.lean": "761491d9e7da12e8887b1be3cb59e040c630c6dbd4439beb8338ec457315b7e5",
+    "common/RawGraphConditionedGrowth.lean": "369f702bce7b35b1f983d91d3b38fad5b99819b5c3232c332c9862f324f24aff",
+    "common/RawGraphGrowthFrames.lean": "f5e175634562dcf3e9a7c159ccbda0b3fe90fabe6a19d2b56ba5dbdf5ab25f50",
+    "common/RawGraphSemanticCertificate.lean": "10a45ff8d7af26695061e878f312563349a8a42d67eddc5647b45359dffcca5b",
+    "common/RawGrowthCacheCertificate.lean": "efb320315b4e0e6ae2d9f19cdfaff42a169add9379b908f2ba0396ed3cff704e",
+    "common/RawNatGrowthCheck.lean": "c4fc4f312223b6031b3cff3b70f7e3f3d0e96d4a37d0477eb1141dd011339118",
+    "common/RawNatGrowthSoundness.lean": "e3aa6b47dbdbae7f607ce79bf9645b178e4bc051def0787363a8e8c1e659c288",
+    "common/ResidualGraphKernel.lean": "108d2a623fbdf38cf21f6678fc6eb4b19cd88ffb5bc96346dcc2731cd2ddcd1b",
+    "common/SharedGraphCellPool.lean": "d483ef294697b3557c01f038eef64af84fcb4b5d89946bdaee6df48f8946a29f",
+    "common/SixFacetCells.gpool": "7e2bcd680f58c06e2220c0900556646aa78df1f416afe962049a45378131a1b7",
+    "common/SmallFacetCells.gpool": "fa3f9bbceefd61f259fc3dd9ef544523926c272fac22449e2998fab54d10c128",
+    "common/SparseGrowthDAG.lean": "8bf50794fbd3cbb14c136370a754adf534089ae7f6ba4091d18bac470c9f1d32",
+    "common/SubsumptionSearch.lean": "8bd7aab430b13de998ec70ea1d68de5a7dcf9f0eb78d25edc6ea07d0c6eb7877",
+    "common/TenGraphEdges.lean": "b3107775c68ee6569a80b31fc37c8cf4603812d0b4b50ea10bc9f80441deae74",
+    "common/UnsupportedRidgePruning.lean": "d69d4aabf9c95ef03f126f7ceaba7c38f4d85deab71167c212c35d61379498b9",
+    "common/WitnessGrowthDAG.lean": "6ab2ec605af5f2bf65d272ab36ef8a4028fe2c04141424a7e3ecc96c162f89aa",
+    "common/lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+    "samples/16/baseline/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/16/baseline/Probe.lean": "00de74d7d928cbe65632f6fbd7d4c86b414515ebf64dfee1dae773a5c7cb59e7",
+    "samples/16/hoisted/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/16/hoisted/Probe.lean": "25561040f254c1df81207dad470f4645a7a6f7474d15ab7cb9a1b5bcc8f09184",
+    "samples/16/indexed/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/16/indexed/Probe.lean": "e992fa0491beb3cf1f1dbbabcff97ae35d8a27b33ce00e31b1cf6634716ce77a",
+    "samples/19/baseline/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/19/baseline/Probe.lean": "e7b7f3b46c41413e3d432543a52e2fdf1b5019b10e9f26c5b1cee7a01dd3939c",
+    "samples/19/hoisted/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/19/hoisted/Probe.lean": "d6e4c2a5904975d6ef93886e3ad334e6c414aac338fb749ac53614818716ade5",
+    "samples/19/indexed/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/19/indexed/Probe.lean": "d7e19774eb34a7f740cd0e8b2c568d4cb2925eafc8a0f3f576de38f73ca0c59f",
+    "samples/23/baseline/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/23/baseline/Probe.lean": "ee6fe105a31ab4d164eaf5cfa72a7ecb503b118c57eb3c2802a0793d451ef36c",
+    "samples/23/hoisted/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/23/hoisted/Probe.lean": "8b45ebc0ca28336381e65d058fe72aa34bf0ed27831a925c617317a2362f641c",
+    "samples/23/indexed/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/23/indexed/Probe.lean": "a7acea447ed5fc291325b84799a0a0351d053592a4e8db97fdb723b67d1bc12e",
+    "samples/24/baseline/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/24/baseline/Probe.lean": "fa869eea5769803455a9fb0e24e6290ba0527c4e2ec03311e8cbf23a60af4704",
+    "samples/24/hoisted/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/24/hoisted/Probe.lean": "f9b8600f29156502e57b15541e8ece5a5a33445268eacb418c3de9318b3a06c1",
+    "samples/24/indexed/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/24/indexed/Probe.lean": "6151919aba17b86b6a985170e20b29c531877dd1e4a42d9f550843fe5c81487c",
+    "samples/25/baseline/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/25/baseline/Probe.lean": "a45cf7a1d824b2fce0e71bcf8cfc1f12981a767f4888ae2583bc900a00b2b2ef",
+    "samples/25/hoisted/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/25/hoisted/Probe.lean": "0341dd23dc9357dfef1ee32820d32f44b05fb041ca51b319ba260c233d230353",
+    "samples/25/indexed/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/25/indexed/Probe.lean": "20c2b24a8eaf93429705ad2d09debbdea9d5259741c5c0fa81bdf86f6b6c55cb",
+    "samples/26/baseline/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/26/baseline/Probe.lean": "c5d69ba581322d1a1704ff9cc096a88216deefaa1444668a756e80af01756372",
+    "samples/26/hoisted/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/26/hoisted/Probe.lean": "d182e12c867efa789141905d0fa35e5c327ca9058d50a7d066d94cbc6cf976cc",
+    "samples/26/indexed/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/26/indexed/Probe.lean": "8b85390d27833dbcbe1bd7a84d12dcc9ef413a1ce646321cc4499e94ccd44717",
+    "samples/27/baseline/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/27/baseline/Probe.lean": "16a54cbe7ceb5853274b39f07a588c35d8e23fcf4fd4317470ccaeba44c15f4d",
+    "samples/27/hoisted/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/27/hoisted/Probe.lean": "b2ba0fad247994c625fc568f3c35e0cf7b8b8f38c42ab8a979583bab1f40f3be",
+    "samples/27/indexed/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/27/indexed/Probe.lean": "fd6b552a0c42bd4a8f535a8bfd5b98afe60c489313f2e34254416f2927bd342b",
+    "samples/28/baseline/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/28/baseline/Probe.lean": "127153b607d131c3822c8ff5a88d8c1a5cc20c763c4a8fea710d1eb86830fd6c",
+    "samples/28/hoisted/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/28/hoisted/Probe.lean": "40ec18f9cee8cbebd95e540d8e42dfd6a0525d04d3013d75e1140b546618c3ad",
+    "samples/28/indexed/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/28/indexed/Probe.lean": "eed31281a35b70898ed4ac0a70c5ed006a188c135dcc519eaa34d033dc071f57",
+    "samples/29/baseline/Audit.lean": "19164ccb2339c5a7f9af30625efbf233c44ae861cdd3c76dd0957287f07d2ce2",
+    "samples/29/baseline/Probe.lean": "164e5a03c1d94f3c03802ad42ce6d7eebf8ffc6b50af57d9a6d8da8eedc70d0c",
+    "samples/29/hoisted/Audit.lean": "19164ccb2339c5a7f9af30625efbf233c44ae861cdd3c76dd0957287f07d2ce2",
+    "samples/29/hoisted/Probe.lean": "ba2a2ed425fb29ed4eb4262780f337d4645727991ff9c182ac6458ba268ce760",
+    "samples/29/indexed/Audit.lean": "19164ccb2339c5a7f9af30625efbf233c44ae861cdd3c76dd0957287f07d2ce2",
+    "samples/29/indexed/Probe.lean": "ee7e5c7edfeeb8179c991a4ce3d446466493e5b8cfbba4ca0ec49c96fcfeb5cb",
+    "samples/30/baseline/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/30/baseline/Probe.lean": "b062385ece731aafaca025d7f6acb31e5032a6227831efb7d5a7a61874127bbf",
+    "samples/30/hoisted/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/30/hoisted/Probe.lean": "82ce5020dde55034c5978957373144bc9670ac1ebfa169395dd49719790ce965",
+    "samples/30/indexed/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/30/indexed/Probe.lean": "ed31f3fb2d1c5b72f5d934bce1d8819182eaf73e438b9ddefe9751f19f8d3547",
+    "samples/31/baseline/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/31/baseline/Probe.lean": "e01c8d39f01e236762fb52a89eaf25e9ddb98fdcf486debb495111fd9a38f577",
+    "samples/31/hoisted/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/31/hoisted/Probe.lean": "32da03de383a5c6e0191d738a0e6ff94431c8cebe4fa3f63e6f63558927ba184",
+    "samples/31/indexed/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/31/indexed/Probe.lean": "bcfa8b87a120e6c88b280bee5410609e1b30577cc4b684fe033b809bac47438a",
+    "samples/32/baseline/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/32/baseline/Probe.lean": "1e8e4779e8ce23b3936477bf351c3763164fb14fcaf7aab016102b52637523ba",
+    "samples/32/hoisted/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/32/hoisted/Probe.lean": "2289c13e06bf999b46336897613bdc512510f862cd9844cc0734ecf0c2a34f97",
+    "samples/32/indexed/Audit.lean": "43dca28865864113ef35913313792209bf4adf186912d89588d4eec1c9acb398",
+    "samples/32/indexed/Probe.lean": "70f659030f75a095e17d9882651d6eb399d126cf1ef8925ac8032096ae826ce3",
+    "samples/alias/baseline/Audit.lean": "9cc87eebe403ff3e0125f2ac9efbef00acea208593b5fc9f02c4aaf9390931bd",
+    "samples/alias/baseline/Probe.lean": "0da20d178e7d76b0604baa19461eb7f5233d56722dbd6b8ea55236f762f142ca",
+    "samples/alias/hoisted/Audit.lean": "9cc87eebe403ff3e0125f2ac9efbef00acea208593b5fc9f02c4aaf9390931bd",
+    "samples/alias/hoisted/Probe.lean": "074ff414543070ce15d243f8809530abd54ed0708017aebc3f9b38a13e876a31",
+    "samples/alias/indexed/Audit.lean": "9cc87eebe403ff3e0125f2ac9efbef00acea208593b5fc9f02c4aaf9390931bd",
+    "samples/alias/indexed/Probe.lean": "94eed0f4c7d18338a59981df46b75fea985ee70c4d7128df661c756bcb5cc564"
+  }
+}
