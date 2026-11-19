@@ -1,0 +1,49 @@
+name: Core-only complete literal value equation fixture
+on:
+  push:
+    branches: [palomar-diagnostics/wishart-literal-value-fixture]
+permissions:
+  contents: read
+jobs:
+  fixture:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: PalomarRegistry/PalomarSubmission
+          ref: 14aa8d6b3c2f14a8540605e37144560b9a00e7e7
+          path: pipeline
+          persist-credentials: false
+      - name: Install pinned elan
+        run: |
+          python3 pipeline/scripts/trusted_download.py --url https://github.com/leanprover/elan/releases/download/v4.2.3/elan-x86_64-unknown-linux-gnu.tar.gz --output "$RUNNER_TEMP/elan.tar.gz" --sha256 df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2
+          mkdir "$RUNNER_TEMP/elan"
+          tar -xzf "$RUNNER_TEMP/elan.tar.gz" -C "$RUNNER_TEMP/elan"
+          "$RUNNER_TEMP/elan/elan-init" -y --no-modify-path --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Install exact toolchain
+        run: elan toolchain install leanprover/lean4:v4.36.0-rc1
+      - name: Compile exact core-only fixture
+        run: |
+          set +e
+          elan run leanprover/lean4:v4.36.0-rc1 lean -j1 -M512 -DElab.async=false -Ddebug.skipKernelTC=false -o "$RUNNER_TEMP/Fixture.olean" fixture/Fixture.lean > fixture.log 2>&1
+          code=$?
+          python3 - "$code" <<'PYCODE'
+          import json,hashlib,pathlib,sys
+          p=pathlib.Path('fixture/Fixture.lean');l=pathlib.Path('fixture.log');code=int(sys.argv[1]);assert l.stat().st_size<65536
+          pathlib.Path('receipt.json').write_text(json.dumps({'kind':'core-only genuine complete literal value equation fixture; no Mathlib/project build','exit_code':code,'source_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'log_sha256':hashlib.sha256(l.read_bytes()).hexdigest(),'memory_mib':512,'toolchain':'leanprover/lean4:v4.36.0-rc1'},indent=2)+'\n')
+          PYCODE
+          cat fixture.log
+          exit "$code"
+      - name: Upload bounded fixture evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: literal-value-fixture
+          path: |
+            receipt.json
+            fixture.log
