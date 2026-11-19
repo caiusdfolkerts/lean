@@ -6496,6 +6496,7 @@ def faceIdeal (hs : IsSimplicialPoset P) : Ideal (FacePolynomial (P := P) K) :=
 /-- Two-sidedness of the actual face ideal, specialized to its literal coefficient algebra. -/
 theorem palomarFaceIdealTwoSided (hs : IsSimplicialPoset P) :
     (faceIdeal K hs).IsTwoSided := by infer_instance
+attribute [instance 2100] palomarFaceIdealTwoSided
 
 
 /-- Stanley's face ring of the original simplicial poset. -/

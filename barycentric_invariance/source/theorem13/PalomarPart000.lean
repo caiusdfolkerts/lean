@@ -90,6 +90,12 @@ theorem coefficientIdentityInvPair {K : Type uCoefficient} [CommRing K] :
 /-- Every ideal of a commutative coefficient algebra is two-sided. -/
 theorem coefficientIdealTwoSided {R : Type uCoefficient} [CommRing R] (I : Ideal R) :
     I.IsTwoSided := by infer_instance
+/-- Identity inverse-pair with the commutative-semiring projection used by the basis representation. -/
+theorem commutativeCoefficientIdentityInvPair {K : Type uCoefficient} [hK : CommRing K] :
+    @RingHomInvPair K K hK.toCommSemiring.toSemiring hK.toCommSemiring.toSemiring
+      (@RingHom.id K hK.toCommSemiring.toSemiring.toNonAssocSemiring)
+      (@RingHom.id K hK.toCommSemiring.toSemiring.toNonAssocSemiring) := by infer_instance
+attribute [instance 2100] commutativeCoefficientIdentityInvPair
 attribute [instance 2000] coefficientIdentityInvPair coefficientIdealTwoSided
 end PalomarBarycentric
 end
@@ -734,6 +740,7 @@ def faceIdeal (hs : IsSimplicialPoset P) : Ideal (FacePolynomial (P := P) K) :=
 /-- Two-sidedness of the actual face ideal, specialized to its literal coefficient algebra. -/
 theorem palomarFaceIdealTwoSided (hs : IsSimplicialPoset P) :
     (faceIdeal K hs).IsTwoSided := by infer_instance
+attribute [instance 2100] palomarFaceIdealTwoSided
 
 
 /-- Stanley's face ring of the original simplicial poset. -/

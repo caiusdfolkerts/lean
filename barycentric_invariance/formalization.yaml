@@ -35,8 +35,8 @@ automation:
   methods:
   - method: agent
     tool_setup: OpenAI Codex
-    notes: Packaging and statement extraction are agent-assisted. The 983-line
-      independent Challenge passed canonical elaboration in run44468741668.
+    notes: Packaging and statement extraction are agent-assisted. The 990-line
+      independent Challenge passed canonical elaboration in run44472823775.
       Named original closure proofs and explicit face-ideal two-sided proofs
       preserve the original predicates. Full verification of this exact repair
       remains pending.
@@ -61,7 +61,7 @@ scope:
   - Three oversized proof bundles were split at original source-module boundaries
     with anonymous scopes/options restored and all shards added to explicit Lake roots;
     fresh full elaboration remains required.
-  - Current983-line revised independent Challenge, rebuilt Solution, full Comparator
+  - Current990-line revised independent Challenge, rebuilt Solution, full Comparator
     and independent replay have not passed. Earlier passes apply only to their exact
     snapshots.
   notes: The submitted project contains the substantive historical proof development

@@ -42,7 +42,8 @@
     "PalomarBarycentric.coefficientIdealTwoSided",
     "FourPapers.Universal.palomarFaceIdealTwoSided",
     "FourPapers.Universal.palomarBasisOrdinaryDegreePiece_zero",
-    "FourPapers.Universal.palomarBasisOrdinaryDegreePiece_add"
+    "FourPapers.Universal.palomarBasisOrdinaryDegreePiece_add",
+    "PalomarBarycentric.commutativeCoefficientIdentityInvPair"
   ],
   "permitted_axioms": [
     "propext",
