@@ -10,6 +10,7 @@ open MvPolynomial Exterior
 variable {F : Type*} [Field F] [CharZero F] {n : ℕ}
 attribute [local instance] theoremEightOneOrder
 -- PALOMAR_CONTEXT_ORIGIN 55724
+set_option maxRecDepth 8192 in
 theorem palomarColorZeroFiber (hn : 0<n) :
     letI : Algebra (Polynomial F) F := (Polynomial.evalRingHom (0 : F)).toAlgebra
     let d := data (F := F) hn
