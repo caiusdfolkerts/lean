@@ -8187,35 +8187,50 @@ end ProperlyColoredComplex
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
 
 /-- The rank-selected order complex, with its actual proper rank coloring. -/
+theorem palomarRankColorBound (hs : IsSimplicialPoset P) (d : ℕ)
+    (hrank : ∀ p : P, faceRank p ≤ d) (p : NonzeroFace P) : faceRank p.val - 1 < d := by
+  have hpos : 0 < faceRank p.val := by
+    simpa only [faceRank_bot] using
+      (faceRank_strictMono hs) (bot_lt_iff_ne_bot.mpr p.property)
+  have hbound := hrank p.val
+  omega
+
+theorem palomarRankFaceDownward :
+    ∀ ⦃s t : Finset (NonzeroFace P)⦄, s ⊆ t →
+      (∀ p ∈ t, ∀ q ∈ t, p.val ≤ q.val ∨ q.val ≤ p.val) →
+      (∀ p ∈ s, ∀ q ∈ s, p.val ≤ q.val ∨ q.val ≤ p.val) := by
+  intro s t hst ht p hp q hq
+  exact ht p (hst hp) q (hst hq)
+
+theorem palomarRankColorProper (hs : IsSimplicialPoset P) (d : ℕ)
+    (hrank : ∀ p : P, faceRank p ≤ d) (s : Finset (NonzeroFace P))
+    (hs' : ∀ p ∈ s, ∀ q ∈ s, p.val ≤ q.val ∨ q.val ≤ p.val) :
+    Set.InjOn (fun p : NonzeroFace P =>
+      (⟨faceRank p.val - 1, palomarRankColorBound hs d hrank p⟩ : Fin d)) (s : Set (NonzeroFace P)) := by
+  intro p hp q hq he
+  have hpos (v : NonzeroFace P) : 0 < faceRank v.val := by
+    simpa only [faceRank_bot] using
+      (faceRank_strictMono hs) (bot_lt_iff_ne_bot.mpr v.property)
+  have hr : faceRank p.val = faceRank q.val := by
+    have hh := congrArg Fin.val he
+    have hp' := hpos p
+    have hq' := hpos q
+    dsimp at hh
+    omega
+  apply Subtype.ext
+  rcases hs' p hp q hq with hpq | hqp
+  · by_contra hn
+    exact (Nat.ne_of_lt ((faceRank_strictMono hs) (lt_of_le_of_ne hpq hn))) hr
+  · by_contra hn
+    exact (Nat.ne_of_lt ((faceRank_strictMono hs) (lt_of_le_of_ne hqp (Ne.symm hn)))) hr.symm
+
 def rankColoredOrderComplex (hs : IsSimplicialPoset P) (d : ℕ)
     (hrank : ∀ p : P, faceRank p ≤ d) :
     ProperlyColoredComplex (NonzeroFace P) (Fin d) where
   face s := ∀ p ∈ s, ∀ q ∈ s, p.val ≤ q.val ∨ q.val ≤ p.val
-  downward := by
-    intro s t hst ht p hp q hq
-    exact ht p (hst hp) q (hst hq)
-  color p := ⟨faceRank p.val - 1, by
-    have hpos : 0 < faceRank p.val := by
-      simpa only [faceRank_bot] using
-        (faceRank_strictMono hs) (bot_lt_iff_ne_bot.mpr p.property)
-    have hbound := hrank p.val
-    omega⟩
-  proper s hs' p hp q hq he := by
-    have hpos (v : NonzeroFace P) : 0 < faceRank v.val := by
-      simpa only [faceRank_bot] using
-        (faceRank_strictMono hs) (bot_lt_iff_ne_bot.mpr v.property)
-    have hr : faceRank p.val = faceRank q.val := by
-      have hh := congrArg Fin.val he
-      have hp' := hpos p
-      have hq' := hpos q
-      dsimp at hh
-      omega
-    apply Subtype.ext
-    rcases hs' p hp q hq with hpq | hqp
-    · by_contra hn
-      exact (Nat.ne_of_lt ((faceRank_strictMono hs) (lt_of_le_of_ne hpq hn))) hr
-    · by_contra hn
-      exact (Nat.ne_of_lt ((faceRank_strictMono hs) (lt_of_le_of_ne hqp (Ne.symm hn)))) hr.symm
+  downward := palomarRankFaceDownward
+  color p := ⟨faceRank p.val - 1, palomarRankColorBound hs d hrank p⟩
+  proper := palomarRankColorProper hs d hrank
 
 end FourPapers.Universal
 

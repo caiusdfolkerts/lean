@@ -4992,7 +4992,7 @@ local instance : DecidableEq C := Classical.decEq C
 set_option synthInstance.checkSynthOrder false in
 local instance squarefreeHomologyVertexOrder : LinearOrder V := D.colorLinearOrder
 
-abbrev rankCochainComplex (S : Finset C) : CochainComplex (ModuleCat.{u} K) ℕ :=
+abbrev rankCochainComplex (S : Finset C) : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalUp :=
   relativeAugmentedCochainComplex (K := K) (rankSelection D S) (fun _ => False)
     (rankSelection_downward D S) (by intro s t h ht; exact ht)
 
@@ -5446,7 +5446,7 @@ lemma relativeCoefficientInclusion_differential (i : ℕ) :
     (coordinateDifferential_natural (MvPolynomial.X : C → MvPolynomial C K)
       (ModuleCat.ofHom (Q.relativeParameterKernel K).subtype) i) x
 
-def relativeKoszulComplex : ChainComplex (ModuleCat.{u} K) ℕ :=
+def relativeKoszulComplex : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown :=
   ChainComplex.of
     (fun i => ModuleCat.of K (Set.powersetCard C i →₀ Q.relativeParameterKernel K))
     (fun i => ModuleCat.ofHom (Q.relativeKoszulDifferential K i))
@@ -5559,7 +5559,7 @@ lemma relativeColorKoszulDifferential_comp (β : C →₀ ℕ) (i : ℕ) :
   intro x
   exact Subtype.ext (LinearMap.congr_fun (Q.relativeKoszulDifferential_comp K i) x.val)
 
-def relativeColorKoszulComplex (β : C →₀ ℕ) : ChainComplex (ModuleCat.{u} K) ℕ :=
+def relativeColorKoszulComplex (β : C →₀ ℕ) : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown :=
   ChainComplex.of (fun i => ModuleCat.of K (Q.relativeColorKoszulPiece K β i))
     (fun i => ModuleCat.ofHom (Q.relativeColorKoszulDifferential K β i))
     (fun i => ModuleCat.hom_ext (Q.relativeColorKoszulDifferential_comp K β i))
@@ -5988,7 +5988,7 @@ local instance : DecidableEq C := Classical.decEq C
 set_option synthInstance.checkSynthOrder false in
 local instance relativeSquarefreeHomologyVertexOrder : LinearOrder V := D.colorLinearOrder
 
-abbrev rankCochainComplex (S : Finset C) : CochainComplex (ModuleCat.{u} K) ℕ :=
+abbrev rankCochainComplex (S : Finset C) : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalUp :=
   relativeAugmentedCochainComplex (K := K) (rankSelection D S) (rankSelection Q.toColoredComplex S)
     (rankSelection_downward D S) (rankSelection_downward Q.toColoredComplex S)
 
@@ -6706,7 +6706,7 @@ lemma relativeCoarseKoszulDifferential_comp (a : A) (i : ℕ) :
   intro x
   exact Subtype.ext (LinearMap.congr_fun (Q.relativeKoszulDifferential_comp K i) x.val)
 
-def relativeCoarseKoszulComplex (a : A) : ChainComplex (ModuleCat.{u} K) ℕ :=
+def relativeCoarseKoszulComplex (a : A) : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown :=
   ChainComplex.of (fun i => ModuleCat.of K (Q.relativeCoarseKoszulPiece K g a i))
     (fun i => ModuleCat.ofHom (Q.relativeCoarseKoszulDifferential K g a i))
     (fun i => ModuleCat.hom_ext (Q.relativeCoarseKoszulDifferential_comp K g a i))
@@ -7760,8 +7760,8 @@ theorem shortComplexMiddleHomologyIso_natural
 The abstract complexes keep the categorical homology construction opaque
 when this lemma is applied to concrete homogeneous strands. -/
 theorem complexMiddleHomologyIso_natural
-    (C₁ : ChainComplex (ModuleCat.{v} K) ℕ)
-    (D₁ : CochainComplex (ModuleCat.{v} K) ℕ) (i j : ℕ)
+    (C₁ : HomologicalComplex (ModuleCat.{v} K) PalomarBarycentricTor.naturalDown)
+    (D₁ : HomologicalComplex (ModuleCat.{v} K) PalomarBarycentricTor.naturalUp) (i j : ℕ)
     (e : C₁.X i ≃ₗ[K] D₁.X j)
     (hcycles : ∀ y, D₁.d j (j + 1) (e y) = 0 ↔ C₁.d i (i - 1) y = 0)
     (hboundaries : ∀ y, (∃ x', D₁.d (j - 1) j x' = e y) ↔

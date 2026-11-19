@@ -122,8 +122,9 @@ public import Lean.Elab.Command
 /-! Theorem 1.2: actual homogeneous Koszul filtration, associated graded, and genuine derived Tor comparison. -/
 @[expose] public section
 namespace PalomarBarycentricTor
-/-- Canonical cancellation and scalar-action laws used by the actual complexes. -/
 theorem natRightCancelAdd : IsRightCancelAdd ℕ := by infer_instance
+def naturalDown : ComplexShape ℕ := @ComplexShape.down ℕ _ natRightCancelAdd _
+def naturalUp : ComplexShape ℕ := @ComplexShape.up ℕ _ natRightCancelAdd _
 theorem coefficientSMulComm {K : Type*} [CommRing K] : SMulCommClass K K K := by infer_instance
 theorem functionScalarTower {V K : Type*} [CommRing K] : IsScalarTower K K (V → K) := by infer_instance
 theorem exteriorScalarComm {V K : Type*} [CommRing K] : SMulCommClass K K (ExteriorAlgebra K (V → K)) := by infer_instance
@@ -159,7 +160,6 @@ set_option backward.isDefEq.respectTransparency false
 open Classical MvPolynomial Finset
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
 /-- Literal FourPapers.Universal.NonzeroFace; source theorem12.lean:6405. -/ abbrev NonzeroFace (P : Type*) [Preorder P] [OrderBot P] := {p : P // p ≠ ⊥}
-/-- Literal FourPapers.Universal.palomarNonzeroFaceFintype; source theorem12.lean:6407. -/
 instance palomarNonzeroFaceFintype : Fintype (NonzeroFace P) := Fintype.ofFinite _
 /-- Literal FourPapers.Universal.faceMeetBelow; source theorem12.lean:6410. -/ def faceMeetBelow (hs : IsSimplicialPoset P) (p q w : P) (hpw : p ≤ w) (hqw : q ≤ w) : P :=
   ((existsUnique_subface hs w (faceVertices p ∩ faceVertices q)
@@ -203,6 +203,8 @@ variable (K : Type*) [CommRing K]
   Ideal.span (faceRelations K hs)
 /-- Literal FourPapers.Universal.FaceRing; source theorem12.lean:6497. -/ abbrev FaceRing (hs : IsSimplicialPoset P) :=
   FacePolynomial (P := P) K ⧸ faceIdeal K hs
+def palomarFaceRingModule (hs : IsSimplicialPoset P) : Module K (FaceRing K hs) := inferInstance
+attribute [instance 2400] palomarFaceRingModule
 /-- Literal FourPapers.Universal.barycentricIdeal; source theorem12.lean:6501. -/ def barycentricIdeal : Ideal (FacePolynomial (P := P) K) :=
   Ideal.span {f | ∃ p q : NonzeroFace P,
     ¬ p.val ≤ q.val ∧ ¬ q.val ≤ p.val ∧ f = X p * X q}
@@ -227,11 +229,11 @@ set_option backward.isDefEq.respectTransparency false
 open Classical CategoryTheory
 universe u
 variable {K : Type u} [CommRing K]
-/-- Literal FourPapers.Universal.complexIncoming; source theorem12.lean:20422. -/ abbrev complexIncoming (C : ChainComplex (ModuleCat.{u} K) ℕ) (i : ℕ) :=
+/-- Literal FourPapers.Universal.complexIncoming; source theorem12.lean:20422. -/ abbrev complexIncoming (C : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown) (i : ℕ) :=
   (C.d (i + 1) i).hom
-/-- Literal FourPapers.Universal.complexOutgoing; source theorem12.lean:20424. -/ abbrev complexOutgoing (C : ChainComplex (ModuleCat.{u} K) ℕ) (i : ℕ) :=
+/-- Literal FourPapers.Universal.complexOutgoing; source theorem12.lean:20424. -/ abbrev complexOutgoing (C : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown) (i : ℕ) :=
   (C.d i (i - 1)).hom
-/-- Literal FourPapers.Universal.complexIncomingOutgoing; source theorem12.lean:20427. -/ theorem complexIncomingOutgoing (C : ChainComplex (ModuleCat.{u} K) ℕ) (i : ℕ) : (complexOutgoing C i).comp (complexIncoming C i) = 0 := by sorry
+/-- Literal FourPapers.Universal.complexIncomingOutgoing; source theorem12.lean:20427. -/ theorem complexIncomingOutgoing (C : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown) (i : ℕ) : (complexOutgoing C i).comp (complexIncoming C i) = 0 := by sorry
 end FourPapers.Universal
 section
 set_option backward.isDefEq.respectTransparency false
@@ -243,7 +245,7 @@ variable {R : Type u} [CommRing R] {M : Type v} [AddCommGroup M] [Module R M] (�
 /-- Literal koszulComplex.d; source theorem12.lean:734. -/ noncomputable def koszulComplex.d (n : ℕ) : ⋀[R]^(n + 1) M →ₗ[R] ⋀[R]^n M :=
   exteriorPower.alternatingMapLinearEquiv (koszulComplex.dAlternating φ n)
 /-- Literal koszulComplex.d_comp_eq_zero; source theorem12.lean:737. -/ lemma koszulComplex.d_comp_eq_zero (n : ℕ) : koszulComplex.d φ n ∘ₗ koszulComplex.d φ (n + 1) = 0 := by sorry
-/-- Literal koszulComplex; source theorem12.lean:753. -/ noncomputable def koszulComplex : ChainComplex (ModuleCat R) ℕ :=
+/-- Literal koszulComplex; source theorem12.lean:753. -/ noncomputable def koszulComplex : HomologicalComplex (ModuleCat R) PalomarBarycentricTor.naturalDown :=
   ChainComplex.of (fun n ↦ ModuleCat.of R (⋀[R]^n M))
     (fun n ↦ ModuleCat.ofHom (koszulComplex.d φ n))
     (fun n ↦ by rw [← ModuleCat.ofHom_comp, koszulComplex.d_comp_eq_zero, ModuleCat.ofHom_zero])
@@ -253,7 +255,7 @@ set_option backward.isDefEq.respectTransparency false
 open CategoryTheory TensorProduct
 universe u v
 variable {R : Type u} {V : Type} [CommRing R] [Fintype V] [LinearOrder V]
-/-- Literal CommAlg.Koszul.familyCoefficientComplex; source theorem12.lean:5030. -/ abbrev familyCoefficientComplex (x : V → R) (M : ModuleCat.{u} R) : ChainComplex (ModuleCat.{u} R) ℕ :=
+/-- Literal CommAlg.Koszul.familyCoefficientComplex; source theorem12.lean:5030. -/ abbrev familyCoefficientComplex (x : V → R) (M : ModuleCat.{u} R) : HomologicalComplex (ModuleCat.{u} R) PalomarBarycentricTor.naturalDown :=
   (((CategoryTheory.MonoidalCategory.tensoringRight (ModuleCat R)).obj M).mapHomologicalComplex (ComplexShape.down ℕ)).obj
       (koszulComplex (Fintype.linearCombination R x))
 /-- Literal CommAlg.Koszul.coefficientCoordinates; source theorem12.lean:5036. -/ def coefficientCoordinates (x : V → R) (M : ModuleCat.{u} R) (i : ℕ) : (familyCoefficientComplex x M).X i ≃ₗ[R] (Set.powersetCard V i →₀ M) :=
@@ -313,7 +315,6 @@ variable {K P}
   naturality : ∀ p q (h : q ≤ p) x,
     E.res h (component p x) = component q (D.res h x)
 end FourPapers.Universal
-
 namespace FourPapers.Universal.CoherentEquiv
 section
 set_option backward.isDefEq.respectTransparency false
@@ -321,13 +322,11 @@ universe u v w
 variable (K : Type u) [CommRing K] (P : Type v) [Preorder P]
 variable {K P}
 variable {D E F : ModuleDiagram K P}
-/-- Literal original coherent inverse-limit construction. -/
 def symm (e : CoherentEquiv D E) : CoherentEquiv E D where
   component p := (e.component p).symm
   naturality p q h x := by
     apply (e.component q).injective
     simpa using (e.naturality p q h ((e.component p).symm x)).symm
-/-- Literal original coherent inverse-limit construction. -/
 def sectionEquiv (e : CoherentEquiv D E) : D.sections ≃ₗ[K] E.sections where
   toFun x := ⟨fun p => e.component p (x.val p), by
     intro p q h
@@ -356,14 +355,12 @@ def sectionEquiv (e : CoherentEquiv D E) : D.sections ≃ₗ[K] E.sections where
     exact map_smul (e.component p) c (x.val p)
 end
 end FourPapers.Universal.CoherentEquiv
-
 namespace FourPapers.Universal
 set_option backward.isDefEq.respectTransparency false
 open Classical MvPolynomial
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
 variable (K : Type*) [CommRing K]
 /-- Literal FourPapers.Universal.FaceVertex; source theorem12.lean:6266. -/ abbrev FaceVertex (p : P) := {a : P // IsAtom a ∧ a ≤ p}
-/-- Literal FourPapers.Universal.palomarFaceVertexFintype; source theorem12.lean:6268. -/
 instance palomarFaceVertexFintype (p : P) : Fintype (FaceVertex p) := Fintype.ofFinite _
 /-- Literal FourPapers.Universal.PolynomialStalk; source theorem12.lean:6274. -/ abbrev PolynomialStalk (p : P) := MvPolynomial (FaceVertex p) K
 /-- Literal FourPapers.Universal.polynomialRestriction; source theorem12.lean:6277. -/ def polynomialRestriction {p q : P} (hqp : q ≤ p) : PolynomialStalk K p →ₐ[K] PolynomialStalk K q := by
@@ -711,33 +708,39 @@ set_option backward.isDefEq.respectTransparency false
 open Classical Finset MvPolynomial
 variable {V C : Type*} [Fintype V] [Fintype C]
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
-/-- Literal FourPapers.Universal.rankColoredOrderComplex; source theorem12.lean:16492. -/ def rankColoredOrderComplex (hs : IsSimplicialPoset P) (d : ℕ) (hrank : ∀ p : P, faceRank p ≤ d) : ProperlyColoredComplex (NonzeroFace P) (Fin d) where
+/-- Literal FourPapers.Universal.rankColoredOrderComplex; source theorem12.lean:16492. -/ theorem palomarRankColorBound (hs : IsSimplicialPoset P) (d : ℕ) (hrank : ∀ p : P, faceRank p ≤ d) (p : NonzeroFace P) : faceRank p.val - 1 < d := by
+  have hpos : 0 < faceRank p.val := by
+    simpa only [faceRank_bot] using
+      (faceRank_strictMono hs) (bot_lt_iff_ne_bot.mpr p.property)
+  have hbound := hrank p.val
+  omega
+theorem palomarRankFaceDownward : ∀ ⦃s t : Finset (NonzeroFace P)⦄, s ⊆ t → (∀ p ∈ t, ∀ q ∈ t, p.val ≤ q.val ∨ q.val ≤ p.val) → (∀ p ∈ s, ∀ q ∈ s, p.val ≤ q.val ∨ q.val ≤ p.val) := by
+  intro s t hst ht p hp q hq
+  exact ht p (hst hp) q (hst hq)
+theorem palomarRankColorProper (hs : IsSimplicialPoset P) (d : ℕ) (hrank : ∀ p : P, faceRank p ≤ d) (s : Finset (NonzeroFace P))
+    (hs' : ∀ p ∈ s, ∀ q ∈ s, p.val ≤ q.val ∨ q.val ≤ p.val) :
+    Set.InjOn (fun p : NonzeroFace P => (⟨faceRank p.val - 1, palomarRankColorBound hs d hrank p⟩ : Fin d)) (s : Set (NonzeroFace P)) := by
+  intro p hp q hq he
+  have hpos (v : NonzeroFace P) : 0 < faceRank v.val := by
+    simpa only [faceRank_bot] using
+      (faceRank_strictMono hs) (bot_lt_iff_ne_bot.mpr v.property)
+  have hr : faceRank p.val = faceRank q.val := by
+    have hh := congrArg Fin.val he
+    have hp' := hpos p
+    have hq' := hpos q
+    dsimp at hh
+    omega
+  apply Subtype.ext
+  rcases hs' p hp q hq with hpq | hqp
+  · by_contra hn
+    exact (Nat.ne_of_lt ((faceRank_strictMono hs) (lt_of_le_of_ne hpq hn))) hr
+  · by_contra hn
+    exact (Nat.ne_of_lt ((faceRank_strictMono hs) (lt_of_le_of_ne hqp (Ne.symm hn)))) hr.symm
+def rankColoredOrderComplex (hs : IsSimplicialPoset P) (d : ℕ) (hrank : ∀ p : P, faceRank p ≤ d) : ProperlyColoredComplex (NonzeroFace P) (Fin d) where
   face s := ∀ p ∈ s, ∀ q ∈ s, p.val ≤ q.val ∨ q.val ≤ p.val
-  downward := by
-    intro s t hst ht p hp q hq
-    exact ht p (hst hp) q (hst hq)
-  color p := ⟨faceRank p.val - 1, by
-    have hpos : 0 < faceRank p.val := by
-      simpa only [faceRank_bot] using
-        (faceRank_strictMono hs) (bot_lt_iff_ne_bot.mpr p.property)
-    have hbound := hrank p.val
-    omega⟩
-  proper s hs' p hp q hq he := by
-    have hpos (v : NonzeroFace P) : 0 < faceRank v.val := by
-      simpa only [faceRank_bot] using
-        (faceRank_strictMono hs) (bot_lt_iff_ne_bot.mpr v.property)
-    have hr : faceRank p.val = faceRank q.val := by
-      have hh := congrArg Fin.val he
-      have hp' := hpos p
-      have hq' := hpos q
-      dsimp at hh
-      omega
-    apply Subtype.ext
-    rcases hs' p hp q hq with hpq | hqp
-    · by_contra hn
-      exact (Nat.ne_of_lt ((faceRank_strictMono hs) (lt_of_le_of_ne hpq hn))) hr
-    · by_contra hn
-      exact (Nat.ne_of_lt ((faceRank_strictMono hs) (lt_of_le_of_ne hqp (Ne.symm hn)))) hr.symm
+  downward := palomarRankFaceDownward
+  color p := ⟨faceRank p.val - 1, palomarRankColorBound hs d hrank p⟩
+  proper := palomarRankColorProper hs d hrank
 end FourPapers.Universal
 namespace FourPapers.FilteredHomology
 set_option backward.isDefEq.respectTransparency false
@@ -832,7 +835,7 @@ variable {K B B' : Type u} {C : Type} [CommRing K] [CommRing B] [CommRing B'] [A
   (Koszul.coordinateDifferential γ (ModuleCat.of B B) i).restrictScalars K
 /-- Literal FourPapers.Universal.parameterKoszulDifferential_comp; source theorem12.lean:19838. -/ theorem parameterKoszulDifferential_comp (γ : C → B) (i : ℕ) : (parameterKoszulDifferential (K := K) γ i).comp (parameterKoszulDifferential (K := K) γ (i + 1))
   = 0 := by sorry
-/-- Literal FourPapers.Universal.parameterKoszulComplex; source theorem12.lean:19852. -/ def parameterKoszulComplex (γ : C → B) : ChainComplex (ModuleCat.{u} K) ℕ :=
+/-- Literal FourPapers.Universal.parameterKoszulComplex; source theorem12.lean:19852. -/ def parameterKoszulComplex (γ : C → B) : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown :=
   ChainComplex.of (fun i => ModuleCat.of K (Set.powersetCard C i →₀ B))
     (fun i => ModuleCat.ofHom (parameterKoszulDifferential (K := K) γ i))
     (fun i => ModuleCat.hom_ext (parameterKoszulDifferential_comp (K := K) γ i))
@@ -843,7 +846,7 @@ open Classical CategoryTheory CommAlg
 universe u v
 variable {P K : Type u} [PartialOrder P] [OrderBot P] [Fintype P] [CommRing K]
 variable (K) (hs : IsSimplicialPoset P) (d : ℕ) (hrank : ∀ p : P, faceRank p ≤ d)
-/-- Literal FourPapers.Universal.originalKoszulComplex; source theorem12.lean:19900. -/ abbrev originalKoszulComplex : ChainComplex (ModuleCat.{u} K) ℕ :=
+/-- Literal FourPapers.Universal.originalKoszulComplex; source theorem12.lean:19900. -/ abbrev originalKoszulComplex : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown :=
   parameterKoszulComplex (K := K) (fun i : Fin d => faceRankParameter K hs (i.val + 1))
 end FourPapers.Universal
 namespace FourPapers.Universal
@@ -888,7 +891,7 @@ variable (K) (hs : IsSimplicialPoset P) (d : ℕ) (hrank : ∀ p : P, faceRank p
 /-- Literal FourPapers.Universal.originalKoszulDegreeDifferential; source theorem12.lean:20590. -/ def originalKoszulDegreeDifferential (j i : ℕ) : originalKoszulDegreePiece K hs d (i + 1) j →ₗ[K] originalKoszulDegreePiece K hs d i j :=
   restrictedMap (originalKoszulDifferential K hs d i) _ _
     (originalKoszulDifferential_degree K hs d hrank i j)
-/-- Literal FourPapers.Universal.originalKoszulDegreeComplex; source theorem12.lean:20595. -/ def originalKoszulDegreeComplex (j : ℕ) : ChainComplex (ModuleCat.{u} K) ℕ :=
+/-- Literal FourPapers.Universal.originalKoszulDegreeComplex; source theorem12.lean:20595. -/ def originalKoszulDegreeComplex (j : ℕ) : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown :=
   ChainComplex.of (fun i => ModuleCat.of K (originalKoszulDegreePiece K hs d i j))
     (fun i => ModuleCat.ofHom (originalKoszulDegreeDifferential K hs d hrank j i)) (by
       intro i
@@ -906,7 +909,7 @@ set_option backward.isDefEq.respectTransparency false
 open Classical CategoryTheory FourPapers.FilteredHomology
 universe u
 variable {K : Type u} [CommRing K]
-/-- Literal FourPapers.Universal.complexKernelHomology; source theorem12.lean:20431. -/ abbrev complexKernelHomology (C : ChainComplex (ModuleCat.{u} K) ℕ) (i : ℕ) :=
+/-- Literal FourPapers.Universal.complexKernelHomology; source theorem12.lean:20431. -/ abbrev complexKernelHomology (C : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown) (i : ℕ) :=
   Homology (complexIncoming C i) (complexOutgoing C i) (complexIncomingOutgoing C i)
 end FourPapers.Universal
 namespace FourPapers.Universal
@@ -933,7 +936,6 @@ variable {K P : Type u} [CommRing K] [PartialOrder P] [OrderBot P] [Fintype P]
 variable (K) (hs : IsSimplicialPoset P) (d : ℕ) (hrank : ∀ p : P, faceRank p ≤ d)
 local instance originalParameterAlgebra : Algebra (MvPolynomial (Fin d) K) (FaceRing K hs) :=
   (faceParameterAction K hs d).toRingHom.toAlgebra
-/-- The module action is explicitly the actual parameter algebra's scalar action. -/
 local instance originalParameterModule : Module (MvPolynomial (Fin d) K) (FaceRing K hs) :=
   @Algebra.toModule _ _ _ _ (originalParameterAlgebra K hs d)
 /-- Literal FourPapers.Universal.originalParameterTor; source theorem12.lean:23219. -/ def originalParameterTor (m : ℕ) : ModuleCat.{u} K :=
@@ -961,7 +963,7 @@ variable {K : Type u} {V : Type v} [CommRing K] [Fintype V] [LinearOrder V]
   (augmentedFaceBoundary Λ hΛ i).dualMap
 /-- Literal FourPapers.Universal.augmentedCoboundary_square; source theorem12.lean:33856. -/ theorem augmentedCoboundary_square (Λ : Finset V → Prop) (hΛ : Simplicial.Downward Λ) (i : ℕ) : (augmentedCoboundary (K := K) Λ hΛ (i + 1)).comp
   (augmentedCoboundary (K := K) Λ hΛ i) = 0 := by sorry
-/-- Literal FourPapers.Universal.augmentedCochainComplex; source theorem12.lean:33870. -/ def augmentedCochainComplex (Λ : Finset V → Prop) (hΛ : Simplicial.Downward Λ) : CochainComplex (ModuleCat.{max u v} K) ℕ :=
+/-- Literal FourPapers.Universal.augmentedCochainComplex; source theorem12.lean:33870. -/ def augmentedCochainComplex (Λ : Finset V → Prop) (hΛ : Simplicial.Downward Λ) : HomologicalComplex (ModuleCat.{max u v} K) PalomarBarycentricTor.naturalUp :=
   CochainComplex.of
     (fun i => ModuleCat.of K (Module.Dual K (Simplicial.Chains (k := K) Λ i)))
     (fun i => ModuleCat.ofHom (augmentedCoboundary Λ hΛ i))

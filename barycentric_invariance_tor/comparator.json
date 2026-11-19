@@ -41,7 +41,10 @@
     "PalomarBarycentricTor.coefficientSMulComm",
     "PalomarBarycentricTor.functionScalarTower",
     "PalomarBarycentricTor.exteriorScalarComm",
-    "PalomarBarycentricTor.tensorPreservesZero"
+    "PalomarBarycentricTor.tensorPreservesZero",
+    "FourPapers.Universal.palomarRankColorBound",
+    "FourPapers.Universal.palomarRankFaceDownward",
+    "FourPapers.Universal.palomarRankColorProper"
   ],
   "definition_names": [],
   "permitted_axioms": [

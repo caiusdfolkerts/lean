@@ -125,6 +125,9 @@ public meta import Lean.Elab.Tactic.Omega
 namespace PalomarBarycentricTor
 /-- Canonical cancellation and scalar-action laws used by the actual complexes. -/
 theorem natRightCancelAdd : IsRightCancelAdd ℕ := by infer_instance
+def naturalDown : ComplexShape ℕ := @ComplexShape.down ℕ _ natRightCancelAdd _
+def naturalUp : ComplexShape ℕ := @ComplexShape.up ℕ _ natRightCancelAdd _
+
 theorem coefficientSMulComm {K : Type*} [CommRing K] : SMulCommClass K K K := by infer_instance
 theorem functionScalarTower {V K : Type*} [CommRing K] : IsScalarTower K K (V → K) := by infer_instance
 theorem exteriorScalarComm {V K : Type*} [CommRing K] : SMulCommClass K K (ExteriorAlgebra K (V → K)) := by infer_instance
@@ -693,7 +696,7 @@ The Koszul complex of a sequence `f₁, …, fᵣ` of elements of `R` is the spe
   displayed above, defined as the alternatisation of `x ↦ φ x • ιMulti`.
 * `koszulComplex.d φ n`: the induced linear map `⋀[R]^(n + 1) M →ₗ[R] ⋀[R]^n M`, the Koszul
   differential.
-* `koszulComplex φ`: the Koszul complex of `φ`, as a `ChainComplex (ModuleCat R) ℕ`.
+* `koszulComplex φ`: the Koszul complex of `φ`, as a `HomologicalComplex (ModuleCat R) PalomarBarycentricTor.naturalDown`.
 * `koszulComplex.ofList l`: the Koszul complex of a list `l` of elements of `R`.
 * `koszulComplex.map`: the chain map `koszulComplex φ ⟶ koszulComplex φ'` induced by a
   linear map `f : M →ₗ[R] N` with `φ' ∘ₗ f = φ`, and `koszulComplex.isoOfEquiv`, the
@@ -761,7 +764,7 @@ lemma koszulComplex.d_comp_eq_zero (n : ℕ) :
 
 /-- The Koszul complex, with objects exterior powers and differential `koszulComplex.d`. -/
 @[stacks 0622 "only recording chain complex"]
-noncomputable def koszulComplex : ChainComplex (ModuleCat R) ℕ :=
+noncomputable def koszulComplex : HomologicalComplex (ModuleCat R) PalomarBarycentricTor.naturalDown :=
   ChainComplex.of (fun n ↦ ModuleCat.of R (⋀[R]^n M))
     (fun n ↦ ModuleCat.ofHom (koszulComplex.d φ n))
     (fun n ↦ by rw [← ModuleCat.ofHom_comp, koszulComplex.d_comp_eq_zero, ModuleCat.ofHom_zero])
@@ -1062,7 +1065,7 @@ noncomputable def toAppendMap : koszulComplex φ ⟶ koszulComplex (appendMap φ
       | i + 1 => from_ofList_hom_comm_pos φ a i)
 
 /-- Augumentation of Koszul complex by zero object. -/
-noncomputable abbrev upOne : ChainComplex (ModuleCat R) ℕ :=
+noncomputable abbrev upOne : HomologicalComplex (ModuleCat R) PalomarBarycentricTor.naturalDown :=
   (koszulComplex φ).augment (X := ModuleCat.of R PUnit) 0 (by simp)
 
 /-- The canonical isomorphism of homology for augumenting with zero object. -/
@@ -1128,7 +1131,7 @@ lemma toAppendMap_comp_toUpOne_eq_zero : toAppendMap φ a ≫ toUpOne φ a = 0 :
     simp [LinearEquiv.symm_apply_apply]
 
 /-- The short complex given by `toAppendMap` and `toUpOne` -/
-noncomputable def shortComplexProd : ShortComplex (ChainComplex (ModuleCat R) ℕ) where
+noncomputable def shortComplexProd : ShortComplex (HomologicalComplex (ModuleCat R) PalomarBarycentricTor.naturalDown) where
   f := toAppendMap φ a
   g := toUpOne φ a
   zero := toAppendMap_comp_toUpOne_eq_zero φ a
@@ -1458,7 +1461,7 @@ universe u
 variable {R : Type u} [CommRing R]
 
 /-- An exact positive-degree complex of projectives resolves its zeroth cokernel. -/
-def resolutionOpcycles (K : ChainComplex (ModuleCat.{u} R) ℕ)
+def resolutionOpcycles (K : HomologicalComplex (ModuleCat.{u} R) PalomarBarycentricTor.naturalDown)
     (hproj : ∀ n, Projective (K.X n)) (hexact : ∀ n, K.ExactAt (n + 1)) :
     ProjectiveResolution (K.opcycles 0) where
   complex := K
@@ -1504,7 +1507,7 @@ def regularSequenceResolution (l : List R) (hl : RingTheory.Sequence.IsRegular R
 
 /-- Tensor a Koszul complex with a genuine module. -/
 def coefficientComplex (l : List R) (M : ModuleCat.{u} R) :
-    ChainComplex (ModuleCat.{u} R) ℕ :=
+    HomologicalComplex (ModuleCat.{u} R) PalomarBarycentricTor.naturalDown :=
   (((CategoryTheory.MonoidalCategory.tensoringRight (ModuleCat R)).obj M).mapHomologicalComplex (ComplexShape.down ℕ)).obj (koszulComplex.ofList l)
 
 /-- The first-factor derived tensor functor (Mathlib's `Tor'`) is computed by this Koszul complex.
@@ -2223,7 +2226,7 @@ end MkCochainComplexInt
 
 section ModuleCat
 
-variable {R : Type*} [Ring R] {P Q : ChainComplex (ModuleCat R) ℕ} {e e' : P ⟶ Q}
+variable {R : Type*} [Ring R] {P Q : HomologicalComplex (ModuleCat R) PalomarBarycentricTor.naturalDown} {e e' : P ⟶ Q}
 
 namespace Homotopy
 
@@ -4122,7 +4125,7 @@ with `K(φ)ₙ = ⋀ⁿ M` and differential `koszulDifferential φ`, the contrac
 
 The body is exposed so that the terms of the complex are definitionally the exterior powers, and
 elements of `(koszulComplex φ).X n` can be used as elements of `⋀ⁿ M`. -/
-@[expose] def koszulComplex (φ : Module.Dual R M) : ChainComplex (ModuleCat.{max u v} R) ℕ :=
+@[expose] def koszulComplex (φ : Module.Dual R M) : HomologicalComplex (ModuleCat.{max u v} R) PalomarBarycentricTor.naturalDown :=
   ChainComplex.of (fun n ↦ ModuleCat.of R (⋀[R]^n M))
     (fun n ↦ ModuleCat.ofHom (koszulDifferential φ n))
     fun n ↦ ModuleCat.hom_ext (koszulDifferential_comp_koszulDifferential φ n)
@@ -5039,7 +5042,7 @@ lemma differential_eq_contraction {S : Type*} [CommRing S]
 
 /-- Tensor Koszul complex for an arbitrarily indexed finite sequence. -/
 abbrev familyCoefficientComplex (x : V → R) (M : ModuleCat.{u} R) :
-    ChainComplex (ModuleCat.{u} R) ℕ :=
+    HomologicalComplex (ModuleCat.{u} R) PalomarBarycentricTor.naturalDown :=
   (((CategoryTheory.MonoidalCategory.tensoringRight (ModuleCat R)).obj M).mapHomologicalComplex (ComplexShape.down ℕ)).obj
       (koszulComplex (Fintype.linearCombination R x))
 
@@ -5072,7 +5075,7 @@ lemma coordinateDifferential_comp (x : V → R) (M : ModuleCat.{u} R) (i : ℕ) 
 
 /-- The coordinate chain complex is explicitly isomorphic to the tensor Koszul complex. -/
 def coordinateComplex (x : V → R) (M : ModuleCat.{u} R) :
-    ChainComplex (ModuleCat.{u} R) ℕ :=
+    HomologicalComplex (ModuleCat.{u} R) PalomarBarycentricTor.naturalDown :=
   ChainComplex.of (fun i => ModuleCat.of R (Set.powersetCard V i →₀ M))
     (fun i => ModuleCat.ofHom (coordinateDifferential x M i))
     (fun i => ModuleCat.hom_ext (coordinateDifferential_comp x M i))
@@ -6507,6 +6510,9 @@ def faceIdeal (hs : IsSimplicialPoset P) : Ideal (FacePolynomial (P := P) K) :=
 /-- Stanley's face ring of the original simplicial poset. -/
 abbrev FaceRing (hs : IsSimplicialPoset P) :=
   FacePolynomial (P := P) K ⧸ faceIdeal K hs
+def palomarFaceRingModule (hs : IsSimplicialPoset P) : Module K (FaceRing K hs) := inferInstance
+attribute [instance 2400] palomarFaceRingModule
+
 
 /-- The Stanley--Reisner ideal of the order complex, generated by incomparable pairs. -/
 def barycentricIdeal : Ideal (FacePolynomial (P := P) K) :=

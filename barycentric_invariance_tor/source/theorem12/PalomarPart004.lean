@@ -931,7 +931,7 @@ theorem augmentedCoboundary_square (Λ : Finset V → Prop)
   rw [hz, map_zero]
 
 def augmentedCochainComplex (Λ : Finset V → Prop) (hΛ : Simplicial.Downward Λ) :
-    CochainComplex (ModuleCat.{max u v} K) ℕ :=
+    HomologicalComplex (ModuleCat.{max u v} K) PalomarBarycentricTor.naturalUp :=
   CochainComplex.of
     (fun i => ModuleCat.of K (Module.Dual K (Simplicial.Chains (k := K) Λ i)))
     (fun i => ModuleCat.ofHom (augmentedCoboundary Λ hΛ i))
@@ -2992,7 +2992,7 @@ def idealCoefficientKoszulProduct (I : Ideal B) (i j : ℕ) :
 
 /-- The actual subcomplex with ideal-valued coordinates. -/
 def idealCoefficientKoszulComplex (γ : C → B) (I : Ideal B) :
-    ChainComplex (ModuleCat.{u} K) ℕ :=
+    HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown :=
   submoduleComplex (parameterKoszulComplex (K := K) γ)
     (idealCoefficientKoszulTerm (K := K) (C := C) I) (by
       intro i x hx
@@ -3497,7 +3497,7 @@ universe u
 variable {K : Type u} [CommRing K]
 
 /-- The three literal modules around one degree of an actual filtered complex. -/
-def complexBilinearHomologyWindow (C : ChainComplex (ModuleCat.{u} K) ℕ)
+def complexBilinearHomologyWindow (C : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown)
     (F : ∀ i, Filtration (K := K) (C.X i))
     (hf : ∀ i, Preserves (F (i + 1)) (F i) (complexIncoming C i))
     (hl : ∀ i, LiftsCycles (F (i + 1)) (F i) (complexIncoming C i))
@@ -3517,7 +3517,7 @@ def complexBilinearHomologyWindow (C : ChainComplex (ModuleCat.{u} K) ℕ)
   outgoing_lifts := complexOutgoing_liftsCycles C F hl i
 
 @[simp] theorem complexBilinearHomologyWindow_associated
-    (C : ChainComplex (ModuleCat.{u} K) ℕ) (F : ∀ i, Filtration (K := K) (C.X i))
+    (C : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown) (F : ∀ i, Filtration (K := K) (C.X i))
     (hf : ∀ i, Preserves (F (i + 1)) (F i) (complexIncoming C i))
     (hl : ∀ i, LiftsCycles (F (i + 1)) (F i) (complexIncoming C i)) (i n : ℕ) :
     (complexBilinearHomologyWindow C F hf hl i).associated n =

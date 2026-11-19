@@ -47,11 +47,11 @@ automation:
       not been reconstructed from the snapshot.
 review:
   status: unchecked
-  notes: The independent Challenge with source-aligned canonical imports and
-    five genuine auxiliary scalar and categorical laws passed canonical
-    elaboration in run44476169086. All original selected statements remain.
-    Full source, Solution, comparison and independent kernel replay of this
-    exact snapshot are pending.
+  notes: The independent Challenge, explicit original complex shapes and face-ring
+    module, and extracted original rank-coloring proofs passed canonical elaboration
+    in run44486287433. All 40 prior selected statements remain, with three genuine
+    rank-coloring support theorems added. Full source, Solution, comparison and
+    independent kernel replay of this exact snapshot are pending.
 scope:
   known_gaps:
   - The full group-equivariant, multiplicative, relative-pair and Grothendieck-group
