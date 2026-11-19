@@ -1,0 +1,101 @@
+version: v0.4
+project:
+  name: "Undecidability of mixed-volume realization"
+  description: >-
+    Rational membership in the complete forty-four-body cubic coefficient locus is
+    co-recursively enumerable complete even for nonnegative coefficients, with
+    point-padding extensions. For rational automata with at least one alphabet
+    letter, the uniform algorithm produces the complete cubic array and the quadratic
+    section whose realizability is equivalent to the universal cutpoint condition.
+    Corollary 5.1 fixes a rational quadratic family from the probability simplex in
+    R28 to cubic coefficient arrays for 91 bodies. Even when a rational coefficient
+    input is promised to lie in the real image of this fixed family, deciding its
+    mixed-volume realizability is undecidable. This is a promise problem on that
+    family, not unrestricted membership in its image. The explicit three-parameter,
+    twelve-body section in Theorem 6.1 has infinitely many boundary planes and
+    obstructs semialgebraicity.
+  authors:
+    - Caius Folkerts
+  responsible_maintainers:
+    - Caius Folkerts
+  license: Apache-2.0
+classification:
+  arxiv: [math.MG]
+  msc2020: ["52A38", "03D35"]
+sources:
+  - title: "Undecidability of mixed-volume realization"
+    type: paper
+    authors: [Caius Folkerts]
+    relationship: formalizes
+    location: paper.pdf
+    notes: >-
+      Included paper at the reviewed snapshot. This is a source-based account;
+      the packaging does not assert novelty or independent human review.
+  - title: Supporting polytope proofs adapted from openai/math
+    type: other
+    relationship: adapts
+    url: https://github.com/openai/math/tree/adc7f1241b42e322a6451854ab7e4b4c146bf78a
+    notes: >-
+      Source headers identify supporting polytope geometry adapted from this
+      Apache-2.0 snapshot. Original attribution and applicable licence notices
+      are retained. This credit concerns supporting formal code, rather than
+      a claim that the paper's principal results appeared in that source.
+  - title: Mathlib and Tau Ceti supporting formal libraries
+    type: other
+    relationship: background
+    notes: >-
+      Mathlib and its exact canonical closure remain pinned in lake-manifest.json.
+      The 31 proof-only Tau Ceti modules are copied byte-for-byte from
+      TauCetiProject/TauCeti at 06d5bb4e3ebb737dc6538567f5c53bf8800b9362; source hashes,
+      original copyright headers and the upstream Apache-2.0 licence are retained
+      under licenses/vendor/tauceti. No Tau Ceti module is imported by Challenge.
+      This local proof library replaces the external all-module default build;
+      no mathematical source, statement, proof or kernel check is weakened.
+automation:
+  methods:
+    - method: agent
+      tool_setup: >-
+        The included paper discloses assistance from GPT-6 Astra, GPT-5.6 Sol
+        and Kimi K3 in developing its proofs. The supplied project snapshot
+        contains the substantive Lean development; exact division of prior
+        formalization work among systems is not reconstructed here.
+    - method: agent
+      tool_setup: >-
+        Palomar Challenge/Solution packaging and source inspection prepared
+        with OpenAI Codex; new wrappers and metadata require fresh verification.
+review:
+  status: unchecked
+  notes: >-
+    On 2026-11-19, full verification of commit ab3c7578c6078d7f173e20e3ba489dcbca6622be
+    passed, including Source and Solution builds, Comparator and independent kernels.
+    The editorial review then identified two presentation gaps, addressed here by
+    stating the paper's positive-alphabet hypothesis and the fixed-section promise.
+    This revision changes formalization.yaml only. Its verification and editorial
+    outcomes are recorded separately; no clean editorial decision is claimed here.
+
+status:
+  notes: >-
+    Prepared from caiusdfolkerts/research at commit
+    e0696fddcd3d10b5d6461e62e9b2f02c4195be37, project mixed_volume_realization.
+    See the source README for the original theorem mapping.
+fidelity:
+  notes: >-
+    All geometry, stochastic automata and exact rational representations are
+    explicit in Challenge. The uniform program and rational coefficient family
+    are supplied by Solution through Comparator definition_names. The uniform
+    theorem constrains output correctness and section equivalence for every positive
+    alphabet size s, every state dimension m and valid rational input representation;
+    the section equivalence uses a stochastic initial row and threshold in (0,1).
+    The positive-alphabet hypothesis is the paper's standing assumption s >= 1
+    at the start of Section 2. No zero-letter output-correctness claim is made.
+    The exact recursive proof-source Tau Ceti closure and attribution remain
+    vendored against the unchanged Mathlib and Lean pins. Following the failed
+    full snapshot and measured raw/type diagnostics, literal evaluation now
+    takes the complete rational family as an explicit argument, with actual
+    source equality proofs in Solution. The measured characteristic-zero proof
+    and exact label bounds have named genuine support statements. The ordered
+    word product uses the same nil/cons recurrence through canonical List.rec;
+    its original recurrence proofs are retained. These changes preserve every
+    geometric, input, output and algorithm hypothesis. The earlier mechanical verification passed for the exact prior commit recorded
+    above; all Lean declarations and Comparator selections are unchanged in this
+    metadata revision.

@@ -1,0 +1,28 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "PalomarMixedVolume.MainResults.theorem_1_1",
+    "PalomarMixedVolume.MainResults.theorem_1_1_all_n",
+    "PalomarMixedVolume.MainResults.theorem_4_3",
+    "PalomarMixedVolume.FixedSection.corollary_5_1_exists",
+    "PalomarMixedVolume.ScalarSection.theorem_6_1",
+    "PalomarMixedVolume.ScalarSection.theorem_6_1_all_n",
+    "MixedVolume.RationalCode.eval_surjective",
+    "MixedVolume.EffectiveSigns.nonnegative_primrec",
+    "MixedVolume.EffectiveSigns.allNonnegative_primrec",
+    "MixedVolume.CoefficientCoding.nonnegative_primrec",
+    "PalomarMixedVolume.LiteralEvaluation.realCharZero",
+    "MixedVolume.ScalarPolynomial.stateLabel_bound",
+    "MixedVolume.ScalarPolynomial.imageLabel_bound"
+  ],
+  "definition_names": [
+    "MixedVolume.UniformEncoding.program",
+    "MixedVolume.UniformQuadratic.coefficientSymbol"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}
