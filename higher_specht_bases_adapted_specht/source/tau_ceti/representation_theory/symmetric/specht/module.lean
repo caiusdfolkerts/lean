@@ -235,12 +235,7 @@ theorem polytabloid_coeff_smul_tabloid (t : YoungTableau μ) (q : colSubgroup t)
     have hne : (r : Equiv.Perm (Fin μ.card)) • tabloid t ≠
         (q : Equiv.Perm (Fin μ.card)) • tabloid t := fun h =>
       hr (smul_tabloid_injective t h)
-    change (Finsupp.single
-      ((r : Equiv.Perm (Fin μ.card)) • tabloid t)
-      (((Equiv.Perm.sign (r : Equiv.Perm (Fin μ.card)) : ℤ) : ℚ)) :
-      (Equiv.Perm (Fin μ.card) ⧸ youngSubgroup (shapePartition μ)) →₀ ℚ)
-      ((q : Equiv.Perm (Fin μ.card)) • tabloid t) = 0
-    exact Finsupp.single_eq_of_ne hne.symm
+    rw [MonoidAlgebra.smul_single, MonoidAlgebra.coeff_single_apply, if_neg hne]
   · intro h
     exact absurd (Finset.mem_univ _) h
 
@@ -261,7 +256,7 @@ theorem polytabloid_coeff_eq_zero_of_forall_ne (t : YoungTableau μ)
   rw [polytabloid_eq_sum, MonoidAlgebra.coeff_sum, Finsupp.finsetSum_apply]
   refine Finset.sum_eq_zero fun q _ => ?_
   have hne := h (q : Equiv.Perm (Fin μ.card)) q.2
-  simp [MonoidAlgebra.coeff_single, hne]
+  rw [MonoidAlgebra.smul_single, MonoidAlgebra.coeff_single_apply, if_neg hne]
 
 /-- Polytabloids are nonzero. -/
 @[simp]
