@@ -1,0 +1,43 @@
+module
+prelude
+public meta import GraphNodes
+public import GraphInputsRow29Part00227Data
+public meta import KernelDecideContext
+
+@[expose] public section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.CompactReplay.GraphInputsRow29Part00227
+open Papers.RationalityTen PackedGraphCertificate FiniteChecks
+certified_graph_nodes record000 4 1
+certified_graph_nodes record001 31 1
+certified_graph_nodes record002 5 1
+certified_graph_nodes record003 18 1
+certified_graph_nodes record004 48 1
+certified_graph_nodes record005 6 1
+certified_graph_nodes record006 4 1
+certified_graph_nodes record007 25 1
+certified_graph_nodes record008 34 1
+certified_graph_nodes record009 19 1
+certified_graph_nodes record010 32 1
+certified_graph_nodes record011 209 1
+certified_graph_nodes record012 13 1
+certified_graph_nodes record013 34 1
+certified_graph_nodes record014 19 1
+certified_graph_nodes record015 3 1
+certified_graph_nodes record017 17 1
+certified_graph_nodes record018 16 1
+certified_graph_nodes record019 161 1
+certified_graph_nodes record020 70 1
+certified_graph_nodes record021 14 1
+certified_graph_nodes record022 6 1
+certified_graph_nodes record023 23 1
+certified_graph_nodes record024 21 1
+certified_graph_nodes record025 5 1
+certified_graph_nodes record026 25 1
+certified_graph_nodes record027 4 1
+certified_graph_nodes record028 32 1
+certified_graph_nodes record029 135 1
+certified_graph_nodes record030 68 1
+
+end Papers.RationalityTen.CompactReplay.GraphInputsRow29Part00227

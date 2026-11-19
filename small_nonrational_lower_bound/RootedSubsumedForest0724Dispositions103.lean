@@ -1,0 +1,79 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedSubsumedForest
+public import RootedSubsumedForest0724DispositionData
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedForests.RootedSubsumedForest0724
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open GrowthDAG SparseGrowthDAG GrowthPruning GrowthRenaming
+open GrowthBitsets BatchedGrowthPruning BatchedOrbitGrowth
+open RawNatGrowthSoundness RawNatGrowthCompleteness
+cert_disposition_at_5 3296
+cert_disposition_at_5 3297
+cert_disposition_at_5 3298
+cert_disposition_at_5 3299
+cert_disposition_at_5 3300
+cert_disposition_at_5 3301
+cert_disposition_at_5 3302
+cert_disposition_at_5 3303
+cert_disposition_at_5 3304
+cert_disposition_at_5 3305
+cert_disposition_at_5 3306
+cert_disposition_at_5 3307
+cert_disposition_at_5 3308
+cert_disposition_at_5 3309
+cert_disposition_at_5 3310
+cert_disposition_at_5 3311
+cert_disposition_at_5 3312
+cert_disposition_at_5 3313
+cert_disposition_at_5 3314
+cert_disposition_at_5 3315
+cert_disposition_at_5 3316
+cert_disposition_at_5 3317
+cert_disposition_at_5 3318
+cert_disposition_at_5 3319
+cert_disposition_at_5 3320
+cert_disposition_at_5 3321
+cert_disposition_at_5 3322
+cert_disposition_at_5 3323
+cert_disposition_at_5 3324
+cert_disposition_at_5 3325
+cert_disposition_at_5 3326
+cert_disposition_at_5 3327
+cert_disposition_interval_3 3296 3297
+cert_disposition_interval_3 3297 3298
+cert_disposition_interval_3 3298 3299
+cert_disposition_interval_3 3299 3300
+cert_disposition_interval_3 3300 3301
+cert_disposition_interval_3 3301 3302
+cert_disposition_interval_3 3302 3303
+cert_disposition_interval_3 3303 3304
+cert_disposition_interval_3 3304 3305
+cert_disposition_interval_3 3305 3306
+cert_disposition_interval_3 3306 3307
+cert_disposition_interval_3 3307 3308
+cert_disposition_interval_3 3308 3309
+cert_disposition_interval_3 3309 3310
+cert_disposition_interval_3 3310 3311
+cert_disposition_interval_3 3311 3312
+cert_disposition_interval_3 3312 3313
+cert_disposition_interval_3 3313 3314
+cert_disposition_interval_3 3314 3315
+cert_disposition_interval_3 3315 3316
+cert_disposition_interval_3 3316 3317
+cert_disposition_interval_3 3317 3318
+cert_disposition_interval_3 3318 3319
+cert_disposition_interval_3 3319 3320
+cert_disposition_interval_3 3320 3321
+cert_disposition_interval_3 3321 3322
+cert_disposition_interval_3 3322 3323
+cert_disposition_interval_3 3323 3324
+cert_disposition_interval_3 3324 3325
+cert_disposition_interval_3 3325 3326
+cert_disposition_interval_3 3326 3327
+cert_disposition_interval_4 3327 3328
+end Papers.RationalityTen.RootedForests.RootedSubsumedForest0724

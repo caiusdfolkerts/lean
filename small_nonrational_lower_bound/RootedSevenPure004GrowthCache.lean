@@ -1,0 +1,44 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedSevenPure
+public import RootedSevenPure004GrowthCacheCells000
+public import RootedSevenPure004GrowthCacheCells001
+public import RootedSevenPure004GrowthCacheCells002
+public import RootedSevenPure004GrowthCacheBad000
+public import RootedSevenPure004GrowthCacheBad001
+public import RootedSevenPure004GrowthCacheBad002
+public import RootedSevenPure004GrowthCacheRidges000
+public import RootedSevenPure004GrowthCacheRidges001
+public import RootedSevenPure004GrowthCacheRidges002
+public import RootedSevenPure004GrowthCacheRidges003
+public import RootedSevenPure004GrowthCacheRidges004
+public import RootedSevenPure004GrowthCacheRidges005
+public import RootedSevenPure004GrowthCacheRidges006
+public import RootedSevenPure004GrowthCacheRidges007
+public import RootedSevenPure004GrowthCacheKinds000
+public import RootedSevenPure004GrowthCacheWellFormed000
+public import RootedSevenPure004GrowthCacheWellFormed001
+public import RootedSevenPure004GrowthCacheWellFormed002
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSevenPure004
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+cert_cellTest_complete_4 659
+cert_badTest_complete_5 659
+cert_ridgeTest_complete_4
+cert_kindTest_complete_6
+cert_wellFormedTest_complete_6 659
+cert_cell_facts_3 659
+cert_ridge_facts_3
+cert_bad_disjoint_2 659
+cert_cache_3
+cert_raw_kind_exact_3 659
+cert_facts_2 659
+cert_well_formed_3 659
+#print axioms cache
+#print axioms well_formed
+
+end Papers.RationalityTen.RootedCaches.RootedSevenPure004

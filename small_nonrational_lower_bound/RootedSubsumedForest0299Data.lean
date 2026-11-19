@@ -1,0 +1,63 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedSubsumedForest
+public import RootedSixBase00GrowthCacheData
+public import RootedSixBase00FastWordsData
+public import CounterGrowthReplay
+public import RawNatGrowthCompleteness
+public import FiniteChecks
+public import SubsumedClassification
+public import RootedSubsumedForest0299Packed000
+public import RootedSubsumedForest0299Packed001
+public import RootedSubsumedForest0299Packed002
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedForests.RootedSubsumedForest0299
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open GrowthDAG SparseGrowthDAG GrowthPruning GrowthRenaming
+open GrowthBitsets BatchedGrowthPruning BatchedOrbitGrowth
+open RawNatGrowthSoundness RawNatGrowthCompleteness
+
+abbrev cellCount : Nat := 21976
+abbrev nodeCount : Nat := 15088
+abbrev leafCount : Nat := 12
+cert_widths_3 15 14 7 4
+cert_blocks_11
+cert_counterTable_3
+cert_codes_3
+cert_counters_3 55
+cert_rawNodes_3
+def leafTable : Table (List Nat) :=
+(.branch 6
+ (.branch 3
+ (.branch 1
+ (.leaf [0,2,97,259,415,675,839,1112,1268])
+ (.branch 2
+ (.leaf [0,34,75,164,244,333,408,638,825,1070,1520,20504])
+ (.leaf [0,2,45,224,291,680,972,1114,1224,1480,1840,19117])))
+ (.branch 4
+ (.leaf [0,1,6,276,656,822,995,1102,1260,1512,1839,19009])
+ (.branch 5
+ (.leaf [0,2,5,276,415,551,798,1068,1270,1488,1840,19597])
+ (.leaf [0,3,126,204,350,375,612,690,834,1045,1524,20715]))))
+ (.branch 9
+ (.branch 7
+ (.leaf [0,1,46,248,289,391,574,1104,1258,1504,1839,19489])
+ (.branch 8
+ (.leaf [0,35,46,142,246,402,1099,1228,1452,1522,19270])
+ (.leaf [0,35,61,164,238,333,424,781,1114,1504,1860,20684])))
+ (.branch 10
+ (.leaf [0,31,35,145,261,311,400,805,1090,1515,1857,20736])
+ (.branch 11
+ (.leaf [0,31,35,133,401,814,1091,1259,1309,1527,1839,18701])
+ (.leaf [0,32,121,137,413,634,802,1103,1237,1528,1839,18700])))))
+cert_rawLeaves_3
+cert_leaves_3
+cert_quota_3 0 2 0 0 0 1 0 0 5 3
+cert_nodeTest_5 96 00
+cert_nodeTest_sound_4 96 00
+cert_leafTest_4 00
+end Papers.RationalityTen.RootedForests.RootedSubsumedForest0299

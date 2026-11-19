@@ -1,0 +1,17 @@
+module
+prelude
+public meta import GraphNodes
+public import GraphInputsRow24Part00156Data
+public meta import KernelDecideContext
+
+@[expose] public section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00156
+open Papers.RationalityTen PackedGraphCertificate FiniteChecks
+certified_graph_nodes record000 297 1
+certified_graph_nodes record001 84 1
+certified_graph_nodes record003 497 1
+certified_graph_nodes record004 804 1
+
+end Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00156

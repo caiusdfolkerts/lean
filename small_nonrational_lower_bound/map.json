@@ -1,0 +1,17 @@
+{
+  "baseline_project": "small_nonrational",
+  "snapshot_source_commit": "bfaaa483aa38137e4d31c89c405de03390177358",
+  "paper_sha256": "2092c7b5705fcda1b8efeec8c0be08b76bf5d7d92090564c30917a154a223d7e",
+  "selected_results": [
+    "Theorem 2",
+    "Corollary 4",
+    "Attainment and bounds for the minimum vertex count"
+  ],
+  "selected_declarations": [
+    "SmallNonrationalBounds.theoremTwo",
+    "SmallNonrationalBounds.corollaryFour",
+    "SmallNonrationalBounds.minimumVertexBounds"
+  ],
+  "structurally_replaced_cases": 832,
+  "original_graph_records": 35119
+}

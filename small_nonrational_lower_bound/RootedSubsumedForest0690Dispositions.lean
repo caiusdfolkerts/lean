@@ -1,0 +1,23 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedSubsumedForest
+public import RootedSubsumedForest0690Data
+public import RawLeafCertificate
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedForests.RootedSubsumedForest0690
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open GrowthDAG SparseGrowthDAG GrowthPruning GrowthRenaming
+open GrowthBitsets BatchedGrowthPruning BatchedOrbitGrowth
+open RawNatGrowthSoundness RawNatGrowthCompleteness
+
+cert_dispositionTable_2 0
+cert_disposition_3
+cert_dispositionTest_5 03
+cert_dispositionTest_block_2 0 1
+cert_dispositionTest_complete_2
+cert_disposition_checked_5 03
+end Papers.RationalityTen.RootedForests.RootedSubsumedForest0690

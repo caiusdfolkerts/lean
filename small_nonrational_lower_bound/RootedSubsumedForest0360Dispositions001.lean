@@ -1,0 +1,61 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedSubsumedForest
+public import RootedSubsumedForest0360DispositionData
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedForests.RootedSubsumedForest0360
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open GrowthDAG SparseGrowthDAG GrowthPruning GrowthRenaming
+open GrowthBitsets BatchedGrowthPruning BatchedOrbitGrowth
+open RawNatGrowthSoundness RawNatGrowthCompleteness
+cert_disposition_at_8 32
+cert_disposition_at_6 33 02 017 1104
+cert_disposition_at_5 34
+cert_disposition_at_8 35
+cert_disposition_at_9 36 02 017 1105
+cert_disposition_at_6 37 02 017 1106
+cert_disposition_at_5 38
+cert_disposition_at_5 39
+cert_disposition_at_5 40
+cert_disposition_at_5 41
+cert_disposition_at_5 42
+cert_disposition_at_8 43
+cert_disposition_at_9 44 02 017 1107
+cert_disposition_at_9 45 02 017 1108
+cert_disposition_at_9 46 02 017 1109
+cert_disposition_at_9 47 02 017 1110
+cert_disposition_at_6 48 02 017 1111
+cert_disposition_at_5 49
+cert_disposition_at_5 50
+cert_disposition_at_5 51
+cert_disposition_at_5 52
+cert_disposition_at_5 53
+cert_disposition_at_5 54
+cert_disposition_interval_3 32 33
+cert_disposition_interval_3 33 34
+cert_disposition_interval_3 34 35
+cert_disposition_interval_3 35 36
+cert_disposition_interval_3 36 37
+cert_disposition_interval_3 37 38
+cert_disposition_interval_3 38 39
+cert_disposition_interval_3 39 40
+cert_disposition_interval_3 40 41
+cert_disposition_interval_3 41 42
+cert_disposition_interval_3 42 43
+cert_disposition_interval_3 43 44
+cert_disposition_interval_3 44 45
+cert_disposition_interval_3 45 46
+cert_disposition_interval_3 46 47
+cert_disposition_interval_3 47 48
+cert_disposition_interval_3 48 49
+cert_disposition_interval_3 49 50
+cert_disposition_interval_3 50 51
+cert_disposition_interval_3 51 52
+cert_disposition_interval_3 52 53
+cert_disposition_interval_3 53 54
+cert_disposition_interval_4 54 55
+end Papers.RationalityTen.RootedForests.RootedSubsumedForest0360

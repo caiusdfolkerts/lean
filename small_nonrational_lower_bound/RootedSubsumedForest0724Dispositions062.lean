@@ -1,0 +1,79 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedSubsumedForest
+public import RootedSubsumedForest0724DispositionData
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedForests.RootedSubsumedForest0724
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open GrowthDAG SparseGrowthDAG GrowthPruning GrowthRenaming
+open GrowthBitsets BatchedGrowthPruning BatchedOrbitGrowth
+open RawNatGrowthSoundness RawNatGrowthCompleteness
+cert_disposition_at_5 1984
+cert_disposition_at_5 1985
+cert_disposition_at_5 1986
+cert_disposition_at_5 1987
+cert_disposition_at_5 1988
+cert_disposition_at_5 1989
+cert_disposition_at_5 1990
+cert_disposition_at_5 1991
+cert_disposition_at_5 1992
+cert_disposition_at_5 1993
+cert_disposition_at_5 1994
+cert_disposition_at_5 1995
+cert_disposition_at_5 1996
+cert_disposition_at_5 1997
+cert_disposition_at_5 1998
+cert_disposition_at_5 1999
+cert_disposition_at_5 2000
+cert_disposition_at_5 2001
+cert_disposition_at_5 2002
+cert_disposition_at_5 2003
+cert_disposition_at_5 2004
+cert_disposition_at_5 2005
+cert_disposition_at_5 2006
+cert_disposition_at_5 2007
+cert_disposition_at_5 2008
+cert_disposition_at_5 2009
+cert_disposition_at_5 2010
+cert_disposition_at_5 2011
+cert_disposition_at_5 2012
+cert_disposition_at_5 2013
+cert_disposition_at_5 2014
+cert_disposition_at_5 2015
+cert_disposition_interval_3 1984 1985
+cert_disposition_interval_3 1985 1986
+cert_disposition_interval_3 1986 1987
+cert_disposition_interval_3 1987 1988
+cert_disposition_interval_3 1988 1989
+cert_disposition_interval_3 1989 1990
+cert_disposition_interval_3 1990 1991
+cert_disposition_interval_3 1991 1992
+cert_disposition_interval_3 1992 1993
+cert_disposition_interval_3 1993 1994
+cert_disposition_interval_3 1994 1995
+cert_disposition_interval_3 1995 1996
+cert_disposition_interval_3 1996 1997
+cert_disposition_interval_3 1997 1998
+cert_disposition_interval_3 1998 1999
+cert_disposition_interval_3 1999 2000
+cert_disposition_interval_3 2000 2001
+cert_disposition_interval_3 2001 2002
+cert_disposition_interval_3 2002 2003
+cert_disposition_interval_3 2003 2004
+cert_disposition_interval_3 2004 2005
+cert_disposition_interval_3 2005 2006
+cert_disposition_interval_3 2006 2007
+cert_disposition_interval_3 2007 2008
+cert_disposition_interval_3 2008 2009
+cert_disposition_interval_3 2009 2010
+cert_disposition_interval_3 2010 2011
+cert_disposition_interval_3 2011 2012
+cert_disposition_interval_3 2012 2013
+cert_disposition_interval_3 2013 2014
+cert_disposition_interval_3 2014 2015
+cert_disposition_interval_4 2015 2016
+end Papers.RationalityTen.RootedForests.RootedSubsumedForest0724

@@ -1,0 +1,79 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedRawForest
+public import RootedRawForest0098DispositionData
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedForests.RootedRawForest0098
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open GrowthDAG SparseGrowthDAG GrowthPruning GrowthRenaming
+open GrowthBitsets BatchedGrowthPruning BatchedOrbitGrowth
+open RawNatGrowthSoundness RawNatGrowthCompleteness
+cert_disposition_at_2 0
+cert_disposition_at_3 1
+cert_disposition_at 2 0000
+cert_disposition_at_3 3
+cert_disposition_at 4 0001
+cert_disposition_at_2 5
+cert_disposition_at_2 6
+cert_disposition_at_3 7
+cert_disposition_at 8 0002
+cert_disposition_at_3 9
+cert_disposition_at 10 0003
+cert_disposition_at_2 11
+cert_disposition_at_2 12
+cert_disposition_at_3 13
+cert_disposition_at 14 0004
+cert_disposition_at_3 15
+cert_disposition_at 16 0005
+cert_disposition_at_3 17
+cert_disposition_at 18 0006
+cert_disposition_at_2 19
+cert_disposition_at_2 20
+cert_disposition_at_3 21
+cert_disposition_at 22 0007
+cert_disposition_at_3 23
+cert_disposition_at 24 0008
+cert_disposition_at_2 25
+cert_disposition_at_2 26
+cert_disposition_at_3 27
+cert_disposition_at 28 0009
+cert_disposition_at_3 29
+cert_disposition_at 30 0010
+cert_disposition_at_2 31
+cert_disposition_interval 0 1
+cert_disposition_interval 1 2
+cert_disposition_interval 2 3
+cert_disposition_interval 3 4
+cert_disposition_interval 4 5
+cert_disposition_interval 5 6
+cert_disposition_interval 6 7
+cert_disposition_interval 7 8
+cert_disposition_interval 8 9
+cert_disposition_interval 9 10
+cert_disposition_interval 10 11
+cert_disposition_interval 11 12
+cert_disposition_interval 12 13
+cert_disposition_interval 13 14
+cert_disposition_interval 14 15
+cert_disposition_interval 15 16
+cert_disposition_interval 16 17
+cert_disposition_interval 17 18
+cert_disposition_interval 18 19
+cert_disposition_interval 19 20
+cert_disposition_interval 20 21
+cert_disposition_interval 21 22
+cert_disposition_interval 22 23
+cert_disposition_interval 23 24
+cert_disposition_interval 24 25
+cert_disposition_interval 25 26
+cert_disposition_interval 26 27
+cert_disposition_interval 27 28
+cert_disposition_interval 28 29
+cert_disposition_interval 29 30
+cert_disposition_interval 30 31
+cert_disposition_interval_2 31 32
+end Papers.RationalityTen.RootedForests.RootedRawForest0098

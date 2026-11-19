@@ -1,0 +1,60 @@
+module
+prelude
+public meta import LowerSchemas.Leaves
+public import GraphInputsRow29Part00066Data
+public import FastRawLeafCertificate
+public import InducedTerminalMatches.M044
+
+@[expose] public section
+namespace Papers.RationalityTen.CompactReplay.GraphInputsRow29Part00066
+open Papers.RationalityTen ConcreteGrowth RawLeafCertificate FastRawLeafCertificate
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+
+cert_graph_rawLeaves 000
+cert_graph_raw_exact 000
+cert_graph_certificateTable_5 000
+cert_graph_certificates 000
+cert_graph_leaf_checked_3 000
+cert_graph_leaf_certificates_checked_7 000
+#print axioms record000_leaf_certificates_checked
+
+cert_graph_rawLeaves 001
+cert_graph_raw_exact 001
+cert_graph_certificateTable_5 001
+cert_graph_certificates 001
+cert_graph_leaf_checked_3 001
+cert_graph_leaf_certificates_checked_7 001
+#print axioms record001_leaf_certificates_checked
+
+cert_graph_rawLeaves 002
+cert_graph_raw_exact 002
+cert_graph_certificateTable_5 002
+cert_graph_certificates 002
+cert_graph_leaf_checked_3 002
+cert_graph_leaf_certificates_checked_7 002
+#print axioms record002_leaf_certificates_checked
+
+cert_graph_rawLeaves 003
+cert_graph_raw_exact 003
+cert_graph_certificateTable_5 003
+cert_graph_certificates 003
+cert_graph_leaf_checked_3 003
+cert_graph_leaf_certificates_checked_7 003
+#print axioms record003_leaf_certificates_checked
+
+cert_graph_rawLeaves 004
+cert_graph_raw_exact 004
+cert_graph_certificateTable_6 004 044 044 044 044 1429 1430 1431 1432 1433 1434 1435 1436
+cert_graph_certificates 004
+cert_graph_leaf_checked_2 004 0 044 1429
+cert_graph_leaf_checked_2 004 1 044 1430
+cert_graph_leaf_checked_2 004 2 044 1431
+cert_graph_leaf_checked_2 004 3 044 1432
+cert_graph_leaf_checked_2 004 4 044 1433
+cert_graph_leaf_checked_2 004 5 044 1434
+cert_graph_leaf_checked_2 004 6 044 1435
+cert_graph_leaf_checked_2 004 7 044 1436
+cert_graph_leaf_certificates_checked_8 004
+#print axioms record004_leaf_certificates_checked
+end Papers.RationalityTen.CompactReplay.GraphInputsRow29Part00066

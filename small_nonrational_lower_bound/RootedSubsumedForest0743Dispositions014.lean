@@ -1,0 +1,21 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedSubsumedForest
+public import RootedSubsumedForest0743DispositionData
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedForests.RootedSubsumedForest0743
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open GrowthDAG SparseGrowthDAG GrowthPruning GrowthRenaming
+open GrowthBitsets BatchedGrowthPruning BatchedOrbitGrowth
+open RawNatGrowthSoundness RawNatGrowthCompleteness
+cert_disposition_at_5 448
+cert_disposition_at_5 449
+cert_disposition_at_5 450
+cert_disposition_interval_3 448 449
+cert_disposition_interval_3 449 450
+cert_disposition_interval_4 450 451
+end Papers.RationalityTen.RootedForests.RootedSubsumedForest0743

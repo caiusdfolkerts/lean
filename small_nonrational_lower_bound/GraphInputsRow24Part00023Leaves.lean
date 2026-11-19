@@ -1,0 +1,676 @@
+module
+prelude
+public meta import LowerSchemas.Leaves
+public import GraphInputsRow24Part00023Data
+public import FastRawLeafCertificate
+
+@[expose] public section
+namespace Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00023
+open Papers.RationalityTen ConcreteGrowth RawLeafCertificate FastRawLeafCertificate
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+
+cert_graph_rawLeaves 000
+cert_graph_raw_exact 000
+cert_graph_certificateTable_5 000
+cert_graph_certificates 000
+cert_graph_leaf_checked_3 000
+cert_graph_leaf_certificates_checked_7 000
+#print axioms record000_leaf_certificates_checked
+
+cert_graph_rawLeaves 001
+cert_graph_raw_exact 001
+cert_graph_certificateTable_5 001
+cert_graph_certificates 001
+cert_graph_leaf_checked_3 001
+cert_graph_leaf_certificates_checked_7 001
+#print axioms record001_leaf_certificates_checked
+
+cert_graph_rawLeaves 002
+cert_graph_raw_exact 002
+cert_graph_certificateTable_5 002
+cert_graph_certificates 002
+cert_graph_leaf_checked_3 002
+cert_graph_leaf_certificates_checked_7 002
+#print axioms record002_leaf_certificates_checked
+
+cert_graph_rawLeaves 003
+cert_graph_raw_exact 003
+cert_graph_certificateTable_5 003
+cert_graph_certificates 003
+cert_graph_leaf_checked_3 003
+cert_graph_leaf_certificates_checked_7 003
+#print axioms record003_leaf_certificates_checked
+
+cert_graph_rawLeaves 004
+cert_graph_raw_exact 004
+cert_graph_certificateTable_5 004
+cert_graph_certificates 004
+cert_graph_leaf_checked_3 004
+cert_graph_leaf_certificates_checked_7 004
+#print axioms record004_leaf_certificates_checked
+
+cert_graph_rawLeaves 005
+cert_graph_raw_exact 005
+cert_graph_certificateTable_5 005
+cert_graph_certificates 005
+cert_graph_leaf_checked_3 005
+cert_graph_leaf_certificates_checked_7 005
+#print axioms record005_leaf_certificates_checked
+
+cert_graph_rawLeaves 006
+cert_graph_raw_exact 006
+cert_graph_certificateTable_5 006
+cert_graph_certificates 006
+cert_graph_leaf_checked_3 006
+cert_graph_leaf_certificates_checked_7 006
+#print axioms record006_leaf_certificates_checked
+
+cert_graph_rawLeaves 007
+cert_graph_raw_exact 007
+cert_graph_certificateTable_5 007
+cert_graph_certificates 007
+cert_graph_leaf_checked_3 007
+cert_graph_leaf_certificates_checked_7 007
+#print axioms record007_leaf_certificates_checked
+
+cert_graph_rawLeaves 008
+cert_graph_raw_exact 008
+cert_graph_certificateTable_5 008
+cert_graph_certificates 008
+cert_graph_leaf_checked_3 008
+cert_graph_leaf_certificates_checked_7 008
+#print axioms record008_leaf_certificates_checked
+
+cert_graph_rawLeaves 009
+cert_graph_raw_exact 009
+cert_graph_certificateTable_5 009
+cert_graph_certificates 009
+cert_graph_leaf_checked_3 009
+cert_graph_leaf_certificates_checked_7 009
+#print axioms record009_leaf_certificates_checked
+
+cert_graph_rawLeaves 010
+cert_graph_raw_exact 010
+cert_graph_certificateTable_5 010
+cert_graph_certificates 010
+cert_graph_leaf_checked_3 010
+cert_graph_leaf_certificates_checked_7 010
+#print axioms record010_leaf_certificates_checked
+
+cert_graph_rawLeaves 011
+cert_graph_raw_exact 011
+cert_graph_certificateTable_5 011
+cert_graph_certificates 011
+cert_graph_leaf_checked_3 011
+cert_graph_leaf_certificates_checked_7 011
+#print axioms record011_leaf_certificates_checked
+
+cert_graph_rawLeaves 012
+cert_graph_raw_exact 012
+cert_graph_certificateTable_5 012
+cert_graph_certificates 012
+cert_graph_leaf_checked_3 012
+cert_graph_leaf_certificates_checked_7 012
+#print axioms record012_leaf_certificates_checked
+
+cert_graph_rawLeaves 013
+cert_graph_raw_exact 013
+cert_graph_certificateTable_5 013
+cert_graph_certificates 013
+cert_graph_leaf_checked_3 013
+cert_graph_leaf_certificates_checked_7 013
+#print axioms record013_leaf_certificates_checked
+
+cert_graph_rawLeaves 014
+cert_graph_raw_exact 014
+cert_graph_certificateTable_5 014
+cert_graph_certificates 014
+cert_graph_leaf_checked_3 014
+cert_graph_leaf_certificates_checked_7 014
+#print axioms record014_leaf_certificates_checked
+
+cert_graph_rawLeaves 015
+cert_graph_raw_exact 015
+cert_graph_certificateTable_5 015
+cert_graph_certificates 015
+cert_graph_leaf_checked_3 015
+cert_graph_leaf_certificates_checked_7 015
+#print axioms record015_leaf_certificates_checked
+
+cert_graph_rawLeaves 016
+cert_graph_raw_exact 016
+cert_graph_certificateTable_5 016
+cert_graph_certificates 016
+cert_graph_leaf_checked_3 016
+cert_graph_leaf_certificates_checked_7 016
+#print axioms record016_leaf_certificates_checked
+
+cert_graph_rawLeaves 017
+cert_graph_raw_exact 017
+cert_graph_certificateTable_5 017
+cert_graph_certificates 017
+cert_graph_leaf_checked_3 017
+cert_graph_leaf_certificates_checked_7 017
+#print axioms record017_leaf_certificates_checked
+
+cert_graph_rawLeaves 018
+cert_graph_raw_exact 018
+cert_graph_certificateTable_5 018
+cert_graph_certificates 018
+cert_graph_leaf_checked_3 018
+cert_graph_leaf_certificates_checked_7 018
+#print axioms record018_leaf_certificates_checked
+
+cert_graph_rawLeaves 019
+cert_graph_raw_exact 019
+cert_graph_certificateTable_5 019
+cert_graph_certificates 019
+cert_graph_leaf_checked_3 019
+cert_graph_leaf_certificates_checked_7 019
+#print axioms record019_leaf_certificates_checked
+
+cert_graph_rawLeaves 020
+cert_graph_raw_exact 020
+cert_graph_certificateTable_5 020
+cert_graph_certificates 020
+cert_graph_leaf_checked_3 020
+cert_graph_leaf_certificates_checked_7 020
+#print axioms record020_leaf_certificates_checked
+
+cert_graph_rawLeaves 021
+cert_graph_raw_exact 021
+cert_graph_certificateTable_5 021
+cert_graph_certificates 021
+cert_graph_leaf_checked_3 021
+cert_graph_leaf_certificates_checked_7 021
+#print axioms record021_leaf_certificates_checked
+
+cert_graph_rawLeaves 022
+cert_graph_raw_exact 022
+cert_graph_certificateTable_5 022
+cert_graph_certificates 022
+cert_graph_leaf_checked_3 022
+cert_graph_leaf_certificates_checked_7 022
+#print axioms record022_leaf_certificates_checked
+
+cert_graph_rawLeaves 023
+cert_graph_raw_exact 023
+cert_graph_certificateTable_5 023
+cert_graph_certificates 023
+cert_graph_leaf_checked_3 023
+cert_graph_leaf_certificates_checked_7 023
+#print axioms record023_leaf_certificates_checked
+
+cert_graph_rawLeaves 024
+cert_graph_raw_exact 024
+cert_graph_certificateTable_5 024
+cert_graph_certificates 024
+cert_graph_leaf_checked_3 024
+cert_graph_leaf_certificates_checked_7 024
+#print axioms record024_leaf_certificates_checked
+
+cert_graph_rawLeaves 025
+cert_graph_raw_exact 025
+cert_graph_certificateTable_5 025
+cert_graph_certificates 025
+cert_graph_leaf_checked_3 025
+cert_graph_leaf_certificates_checked_7 025
+#print axioms record025_leaf_certificates_checked
+
+cert_graph_rawLeaves 026
+cert_graph_raw_exact 026
+cert_graph_certificateTable_5 026
+cert_graph_certificates 026
+cert_graph_leaf_checked_3 026
+cert_graph_leaf_certificates_checked_7 026
+#print axioms record026_leaf_certificates_checked
+
+cert_graph_rawLeaves 027
+cert_graph_raw_exact 027
+cert_graph_certificateTable_5 027
+cert_graph_certificates 027
+cert_graph_leaf_checked_3 027
+cert_graph_leaf_certificates_checked_7 027
+#print axioms record027_leaf_certificates_checked
+
+cert_graph_rawLeaves 028
+cert_graph_raw_exact 028
+cert_graph_certificateTable_5 028
+cert_graph_certificates 028
+cert_graph_leaf_checked_3 028
+cert_graph_leaf_certificates_checked_7 028
+#print axioms record028_leaf_certificates_checked
+
+cert_graph_rawLeaves 029
+cert_graph_raw_exact 029
+cert_graph_certificateTable_5 029
+cert_graph_certificates 029
+cert_graph_leaf_checked_3 029
+cert_graph_leaf_certificates_checked_7 029
+#print axioms record029_leaf_certificates_checked
+
+cert_graph_rawLeaves 030
+cert_graph_raw_exact 030
+cert_graph_certificateTable_5 030
+cert_graph_certificates 030
+cert_graph_leaf_checked_3 030
+cert_graph_leaf_certificates_checked_7 030
+#print axioms record030_leaf_certificates_checked
+
+cert_graph_rawLeaves 031
+cert_graph_raw_exact 031
+cert_graph_certificateTable_5 031
+cert_graph_certificates 031
+cert_graph_leaf_checked_3 031
+cert_graph_leaf_certificates_checked_7 031
+#print axioms record031_leaf_certificates_checked
+
+cert_graph_rawLeaves 032
+cert_graph_raw_exact 032
+cert_graph_certificateTable_5 032
+cert_graph_certificates 032
+cert_graph_leaf_checked_3 032
+cert_graph_leaf_certificates_checked_7 032
+#print axioms record032_leaf_certificates_checked
+
+cert_graph_rawLeaves 033
+cert_graph_raw_exact 033
+cert_graph_certificateTable_5 033
+cert_graph_certificates 033
+cert_graph_leaf_checked_3 033
+cert_graph_leaf_certificates_checked_7 033
+#print axioms record033_leaf_certificates_checked
+
+cert_graph_rawLeaves 034
+cert_graph_raw_exact 034
+cert_graph_certificateTable_5 034
+cert_graph_certificates 034
+cert_graph_leaf_checked_3 034
+cert_graph_leaf_certificates_checked_7 034
+#print axioms record034_leaf_certificates_checked
+
+cert_graph_rawLeaves 035
+cert_graph_raw_exact 035
+cert_graph_certificateTable_5 035
+cert_graph_certificates 035
+cert_graph_leaf_checked_3 035
+cert_graph_leaf_certificates_checked_7 035
+#print axioms record035_leaf_certificates_checked
+
+cert_graph_rawLeaves 036
+cert_graph_raw_exact 036
+cert_graph_certificateTable_5 036
+cert_graph_certificates 036
+cert_graph_leaf_checked_3 036
+cert_graph_leaf_certificates_checked_7 036
+#print axioms record036_leaf_certificates_checked
+
+cert_graph_rawLeaves 037
+cert_graph_raw_exact 037
+cert_graph_certificateTable_5 037
+cert_graph_certificates 037
+cert_graph_leaf_checked_3 037
+cert_graph_leaf_certificates_checked_7 037
+#print axioms record037_leaf_certificates_checked
+
+cert_graph_rawLeaves 038
+cert_graph_raw_exact 038
+cert_graph_certificateTable_5 038
+cert_graph_certificates 038
+cert_graph_leaf_checked_3 038
+cert_graph_leaf_certificates_checked_7 038
+#print axioms record038_leaf_certificates_checked
+
+cert_graph_rawLeaves 039
+cert_graph_raw_exact 039
+cert_graph_certificateTable_5 039
+cert_graph_certificates 039
+cert_graph_leaf_checked_3 039
+cert_graph_leaf_certificates_checked_7 039
+#print axioms record039_leaf_certificates_checked
+
+cert_graph_rawLeaves 040
+cert_graph_raw_exact 040
+cert_graph_certificateTable_5 040
+cert_graph_certificates 040
+cert_graph_leaf_checked_3 040
+cert_graph_leaf_certificates_checked_7 040
+#print axioms record040_leaf_certificates_checked
+
+cert_graph_rawLeaves 041
+cert_graph_raw_exact 041
+cert_graph_certificateTable_5 041
+cert_graph_certificates 041
+cert_graph_leaf_checked_3 041
+cert_graph_leaf_certificates_checked_7 041
+#print axioms record041_leaf_certificates_checked
+
+cert_graph_rawLeaves 042
+cert_graph_raw_exact 042
+cert_graph_certificateTable_5 042
+cert_graph_certificates 042
+cert_graph_leaf_checked_3 042
+cert_graph_leaf_certificates_checked_7 042
+#print axioms record042_leaf_certificates_checked
+
+cert_graph_rawLeaves 043
+cert_graph_raw_exact 043
+cert_graph_certificateTable_5 043
+cert_graph_certificates 043
+cert_graph_leaf_checked_3 043
+cert_graph_leaf_certificates_checked_7 043
+#print axioms record043_leaf_certificates_checked
+
+cert_graph_rawLeaves 044
+cert_graph_raw_exact 044
+cert_graph_certificateTable_5 044
+cert_graph_certificates 044
+cert_graph_leaf_checked_3 044
+cert_graph_leaf_certificates_checked_7 044
+#print axioms record044_leaf_certificates_checked
+
+cert_graph_rawLeaves 045
+cert_graph_raw_exact 045
+cert_graph_certificateTable_5 045
+cert_graph_certificates 045
+cert_graph_leaf_checked_3 045
+cert_graph_leaf_certificates_checked_7 045
+#print axioms record045_leaf_certificates_checked
+
+cert_graph_rawLeaves 046
+cert_graph_raw_exact 046
+cert_graph_certificateTable_5 046
+cert_graph_certificates 046
+cert_graph_leaf_checked_3 046
+cert_graph_leaf_certificates_checked_7 046
+#print axioms record046_leaf_certificates_checked
+
+cert_graph_rawLeaves 047
+cert_graph_raw_exact 047
+cert_graph_certificateTable_5 047
+cert_graph_certificates 047
+cert_graph_leaf_checked_3 047
+cert_graph_leaf_certificates_checked_7 047
+#print axioms record047_leaf_certificates_checked
+
+cert_graph_rawLeaves 048
+cert_graph_raw_exact 048
+cert_graph_certificateTable_5 048
+cert_graph_certificates 048
+cert_graph_leaf_checked_3 048
+cert_graph_leaf_certificates_checked_7 048
+#print axioms record048_leaf_certificates_checked
+
+cert_graph_rawLeaves 049
+cert_graph_raw_exact 049
+cert_graph_certificateTable_5 049
+cert_graph_certificates 049
+cert_graph_leaf_checked_3 049
+cert_graph_leaf_certificates_checked_7 049
+#print axioms record049_leaf_certificates_checked
+
+cert_graph_rawLeaves 050
+cert_graph_raw_exact 050
+cert_graph_certificateTable_5 050
+cert_graph_certificates 050
+cert_graph_leaf_checked_3 050
+cert_graph_leaf_certificates_checked_7 050
+#print axioms record050_leaf_certificates_checked
+
+cert_graph_rawLeaves 051
+cert_graph_raw_exact 051
+cert_graph_certificateTable_5 051
+cert_graph_certificates 051
+cert_graph_leaf_checked_3 051
+cert_graph_leaf_certificates_checked_7 051
+#print axioms record051_leaf_certificates_checked
+
+cert_graph_rawLeaves 052
+cert_graph_raw_exact 052
+cert_graph_certificateTable_5 052
+cert_graph_certificates 052
+cert_graph_leaf_checked_3 052
+cert_graph_leaf_certificates_checked_7 052
+#print axioms record052_leaf_certificates_checked
+
+cert_graph_rawLeaves 053
+cert_graph_raw_exact 053
+cert_graph_certificateTable_5 053
+cert_graph_certificates 053
+cert_graph_leaf_checked_3 053
+cert_graph_leaf_certificates_checked_7 053
+#print axioms record053_leaf_certificates_checked
+
+cert_graph_rawLeaves 054
+cert_graph_raw_exact 054
+cert_graph_certificateTable_5 054
+cert_graph_certificates 054
+cert_graph_leaf_checked_3 054
+cert_graph_leaf_certificates_checked_7 054
+#print axioms record054_leaf_certificates_checked
+
+cert_graph_rawLeaves 055
+cert_graph_raw_exact 055
+cert_graph_certificateTable_5 055
+cert_graph_certificates 055
+cert_graph_leaf_checked_3 055
+cert_graph_leaf_certificates_checked_7 055
+#print axioms record055_leaf_certificates_checked
+
+cert_graph_rawLeaves 056
+cert_graph_raw_exact 056
+cert_graph_certificateTable_5 056
+cert_graph_certificates 056
+cert_graph_leaf_checked_3 056
+cert_graph_leaf_certificates_checked_7 056
+#print axioms record056_leaf_certificates_checked
+
+cert_graph_rawLeaves 057
+cert_graph_raw_exact 057
+cert_graph_certificateTable_5 057
+cert_graph_certificates 057
+cert_graph_leaf_checked_3 057
+cert_graph_leaf_certificates_checked_7 057
+#print axioms record057_leaf_certificates_checked
+
+cert_graph_rawLeaves 058
+cert_graph_raw_exact 058
+cert_graph_certificateTable_5 058
+cert_graph_certificates 058
+cert_graph_leaf_checked_3 058
+cert_graph_leaf_certificates_checked_7 058
+#print axioms record058_leaf_certificates_checked
+
+cert_graph_rawLeaves 059
+cert_graph_raw_exact 059
+cert_graph_certificateTable_5 059
+cert_graph_certificates 059
+cert_graph_leaf_checked_3 059
+cert_graph_leaf_certificates_checked_7 059
+#print axioms record059_leaf_certificates_checked
+
+cert_graph_rawLeaves 060
+cert_graph_raw_exact 060
+cert_graph_certificateTable_5 060
+cert_graph_certificates 060
+cert_graph_leaf_checked_3 060
+cert_graph_leaf_certificates_checked_7 060
+#print axioms record060_leaf_certificates_checked
+
+cert_graph_rawLeaves 061
+cert_graph_raw_exact 061
+cert_graph_certificateTable_5 061
+cert_graph_certificates 061
+cert_graph_leaf_checked_3 061
+cert_graph_leaf_certificates_checked_7 061
+#print axioms record061_leaf_certificates_checked
+
+cert_graph_rawLeaves 062
+cert_graph_raw_exact 062
+cert_graph_certificateTable_5 062
+cert_graph_certificates 062
+cert_graph_leaf_checked_3 062
+cert_graph_leaf_certificates_checked_7 062
+#print axioms record062_leaf_certificates_checked
+
+cert_graph_rawLeaves 063
+cert_graph_raw_exact 063
+cert_graph_certificateTable_5 063
+cert_graph_certificates 063
+cert_graph_leaf_checked_3 063
+cert_graph_leaf_certificates_checked_7 063
+#print axioms record063_leaf_certificates_checked
+
+cert_graph_rawLeaves 064
+cert_graph_raw_exact 064
+cert_graph_certificateTable_5 064
+cert_graph_certificates 064
+cert_graph_leaf_checked_3 064
+cert_graph_leaf_certificates_checked_7 064
+#print axioms record064_leaf_certificates_checked
+
+cert_graph_rawLeaves 065
+cert_graph_raw_exact 065
+cert_graph_certificateTable_5 065
+cert_graph_certificates 065
+cert_graph_leaf_checked_3 065
+cert_graph_leaf_certificates_checked_7 065
+#print axioms record065_leaf_certificates_checked
+
+cert_graph_rawLeaves 066
+cert_graph_raw_exact 066
+cert_graph_certificateTable_5 066
+cert_graph_certificates 066
+cert_graph_leaf_checked_3 066
+cert_graph_leaf_certificates_checked_7 066
+#print axioms record066_leaf_certificates_checked
+
+cert_graph_rawLeaves 067
+cert_graph_raw_exact 067
+cert_graph_certificateTable_5 067
+cert_graph_certificates 067
+cert_graph_leaf_checked_3 067
+cert_graph_leaf_certificates_checked_7 067
+#print axioms record067_leaf_certificates_checked
+
+cert_graph_rawLeaves 068
+cert_graph_raw_exact 068
+cert_graph_certificateTable_5 068
+cert_graph_certificates 068
+cert_graph_leaf_checked_3 068
+cert_graph_leaf_certificates_checked_7 068
+#print axioms record068_leaf_certificates_checked
+
+cert_graph_rawLeaves 069
+cert_graph_raw_exact 069
+cert_graph_certificateTable_5 069
+cert_graph_certificates 069
+cert_graph_leaf_checked_3 069
+cert_graph_leaf_certificates_checked_7 069
+#print axioms record069_leaf_certificates_checked
+
+cert_graph_rawLeaves 070
+cert_graph_raw_exact 070
+cert_graph_certificateTable_5 070
+cert_graph_certificates 070
+cert_graph_leaf_checked_3 070
+cert_graph_leaf_certificates_checked_7 070
+#print axioms record070_leaf_certificates_checked
+
+cert_graph_rawLeaves 071
+cert_graph_raw_exact 071
+cert_graph_certificateTable_5 071
+cert_graph_certificates 071
+cert_graph_leaf_checked_3 071
+cert_graph_leaf_certificates_checked_7 071
+#print axioms record071_leaf_certificates_checked
+
+cert_graph_rawLeaves 072
+cert_graph_raw_exact 072
+cert_graph_certificateTable_5 072
+cert_graph_certificates 072
+cert_graph_leaf_checked_3 072
+cert_graph_leaf_certificates_checked_7 072
+#print axioms record072_leaf_certificates_checked
+
+cert_graph_rawLeaves 073
+cert_graph_raw_exact 073
+cert_graph_certificateTable_5 073
+cert_graph_certificates 073
+cert_graph_leaf_checked_3 073
+cert_graph_leaf_certificates_checked_7 073
+#print axioms record073_leaf_certificates_checked
+
+cert_graph_rawLeaves 074
+cert_graph_raw_exact 074
+cert_graph_certificateTable_5 074
+cert_graph_certificates 074
+cert_graph_leaf_checked_3 074
+cert_graph_leaf_certificates_checked_7 074
+#print axioms record074_leaf_certificates_checked
+
+cert_graph_rawLeaves 075
+cert_graph_raw_exact 075
+cert_graph_certificateTable_5 075
+cert_graph_certificates 075
+cert_graph_leaf_checked_3 075
+cert_graph_leaf_certificates_checked_7 075
+#print axioms record075_leaf_certificates_checked
+
+cert_graph_rawLeaves 076
+cert_graph_raw_exact 076
+cert_graph_certificateTable_5 076
+cert_graph_certificates 076
+cert_graph_leaf_checked_3 076
+cert_graph_leaf_certificates_checked_7 076
+#print axioms record076_leaf_certificates_checked
+
+cert_graph_rawLeaves 077
+cert_graph_raw_exact 077
+cert_graph_certificateTable_5 077
+cert_graph_certificates 077
+cert_graph_leaf_checked_3 077
+cert_graph_leaf_certificates_checked_7 077
+#print axioms record077_leaf_certificates_checked
+
+cert_graph_rawLeaves 078
+cert_graph_raw_exact 078
+cert_graph_certificateTable_5 078
+cert_graph_certificates 078
+cert_graph_leaf_checked_3 078
+cert_graph_leaf_certificates_checked_7 078
+#print axioms record078_leaf_certificates_checked
+
+cert_graph_rawLeaves 079
+cert_graph_raw_exact 079
+cert_graph_certificateTable_5 079
+cert_graph_certificates 079
+cert_graph_leaf_checked_3 079
+cert_graph_leaf_certificates_checked_7 079
+#print axioms record079_leaf_certificates_checked
+
+cert_graph_rawLeaves 080
+cert_graph_raw_exact 080
+cert_graph_certificateTable_5 080
+cert_graph_certificates 080
+cert_graph_leaf_checked_3 080
+cert_graph_leaf_certificates_checked_7 080
+#print axioms record080_leaf_certificates_checked
+
+cert_graph_rawLeaves 081
+cert_graph_raw_exact 081
+cert_graph_certificateTable_5 081
+cert_graph_certificates 081
+cert_graph_leaf_checked_3 081
+cert_graph_leaf_certificates_checked_7 081
+#print axioms record081_leaf_certificates_checked
+
+cert_graph_rawLeaves 082
+cert_graph_raw_exact 082
+cert_graph_certificateTable_5 082
+cert_graph_certificates 082
+cert_graph_leaf_checked_3 082
+cert_graph_leaf_certificates_checked_7 082
+#print axioms record082_leaf_certificates_checked
+end Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00023

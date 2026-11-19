@@ -1,0 +1,187 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedSevenMixed
+public import RootedSevenMixed012
+public import RawKindedFacePlacement
+public import RootedSevenMixed012OutsideData
+public import RawOutsidePlacement
+
+@[expose] public section
+
+set_option maxRecDepth 100000
+set_option maxHeartbeats 0
+namespace Papers.RationalityTen.RootedCanonical.RootedSevenMixed012.T5
+open ConcreteGrowth
+abbrev blockCount : Nat := 22
+noncomputable def template : Cell := ⟨4, 63, [3, 5, 6, 10, 17, 20, 24, 36, 40, 48], [7, 21, 27, 46, 52, 56]⟩
+cert_root_3 012
+noncomputable def records : Table (RawFacePlacement.Block × Nat) :=
+(.branch 11
+ (.branch 5
+ (.branch 2
+ (.branch 1
+ (.leaf (⟨3, 3, 5517840, 5517840, 434925761040, 361742426640⟩, 527099478887435110289899926))
+ (.leaf (⟨3, 3, 5517840, 5517840, 352465745475, 361625618550⟩, 788231440481714455986176622)))
+ (.branch 3
+ (.leaf (⟨3, 3, 5517840, 5517840, 283746268755, 361617754230⟩, 875275427679807571218268854))
+ (.branch 4
+ (.leaf (⟨3, 3, 5517840, 5517840, 215026792020, 361617201270⟩, 962319414877900686450361086))
+ (.leaf (⟨3, 3, 5444640, 5390640, 434925761040, 361742426640⟩, 570621472486481667905946042)))))
+ (.branch 8
+ (.branch 6
+ (.leaf (⟨3, 3, 5444640, 5390640, 352465745475, 361625618550⟩, 831753434080761013602222738))
+ (.branch 7
+ (.leaf (⟨3, 3, 5444640, 5390640, 283746268755, 361617754230⟩, 918797421278854128834314970))
+ (.leaf (⟨3, 3, 5444640, 5390640, 215026792020, 361617201270⟩, 1005841408476947244066407202))))
+ (.branch 9
+ (.leaf (⟨4, 3, 5391120, 5448720, 434488427280, 435025028880⟩, 295803635385530867992913102167322985256805198810021104620240865113917638945268653476728403808472580579125637415390))
+ (.branch 10
+ (.leaf (⟨4, 3, 5391120, 5448720, 429656593185, 435020112135⟩, 4917335504195390732883601034544641524957385832676525068709551009935222841941161495415929346646581659877638144))
+ (.leaf (⟨4, 3, 5391120, 5448720, 425630061600, 435019743600⟩, 5357693957699710996525510318775041943206551852913959461176974969916102578006300164770675205595601106911756288))))))
+ (.branch 16
+ (.branch 13
+ (.branch 12
+ (.leaf (⟨4, 3, 4215585, 3481860, 434488427280, 435025028880⟩, 4394343348236977016485545312111906810363783798124516854079640711897049989237329978425681727968669355716968448))
+ (.leaf (⟨4, 3, 4215585, 3481860, 429656593185, 435020112135⟩, 316846576927183388458267078777738127271484222714888709730113051280089514737258483891339319886934183035894828630557)))
+ (.branch 14
+ (.leaf (⟨4, 3, 4215585, 3481860, 425630061600, 435019743600⟩, 345705468184308251164137459980910385978130777458669732806970335151288471113141178394055808815383661280808677671501))
+ (.branch 15
+ (.leaf (⟨3, 3, 3212610, 2183235, 434925761040, 361742426640⟩, 540398197873692467111854557))
+ (.leaf (⟨3, 3, 3212610, 2183235, 352465745475, 361625618550⟩, 801530159467971812808131253)))))
+ (.branch 19
+ (.branch 17
+ (.leaf (⟨3, 3, 3212610, 2183235, 283746268755, 361617754230⟩, 888574146666064928040223485))
+ (.branch 18
+ (.leaf (⟨3, 3, 3212610, 2183235, 215026792020, 361617201270⟩, 975618133864158043272315717))
+ (.leaf (⟨3, 3, 2164035, 2164035, 434925761040, 361742426640⟩, 501711759976900053884666289))))
+ (.branch 20
+ (.leaf (⟨3, 3, 2164035, 2164035, 352465745475, 361625618550⟩, 762843721571179399580942985))
+ (.branch 21
+ (.leaf (⟨3, 3, 2164035, 2164035, 283746268755, 361617754230⟩, 849887708769272514813035217))
+ (.leaf (⟨3, 3, 2164035, 2164035, 215026792020, 361617201270⟩, 936931695967365630045127449)))))))
+cert_raw
+cert_witness 838
+noncomputable def faceTable : Table Nat :=
+(.branch 47131
+ (.branch 21592
+ (.branch 7272
+ (.branch 7256
+ (.leaf 0)
+ (.leaf 1))
+ (.branch 7280
+ (.leaf 2)
+ (.branch 21511
+ (.leaf 3)
+ (.leaf 4))))
+ (.branch 27675
+ (.branch 21608
+ (.leaf 5)
+ (.branch 21616
+ (.leaf 6)
+ (.leaf 7)))
+ (.branch 27694
+ (.leaf 8)
+ (.branch 27701
+ (.leaf 9)
+ (.leaf 10)))))
+ (.branch 53352
+ (.branch 47157
+ (.branch 47150
+ (.leaf 11)
+ (.leaf 12))
+ (.branch 53255
+ (.leaf 13)
+ (.branch 53336
+ (.leaf 14)
+ (.leaf 15))))
+ (.branch 57432
+ (.branch 53360
+ (.leaf 16)
+ (.branch 57351
+ (.leaf 17)
+ (.leaf 18)))
+ (.branch 57448
+ (.leaf 19)
+ (.branch 57456
+ (.leaf 20)
+ (.leaf 21))))))
+cert_faceWitness
+cert_validity 6
+cert_placement 6 012
+cert_test_7
+cert_symmetry 012
+end Papers.RationalityTen.RootedCanonical.RootedSevenMixed012.T5
+
+set_option maxRecDepth 100000
+set_option maxHeartbeats 0
+namespace Papers.RationalityTen.RootedCanonical.RootedSevenMixed012.T5
+cert_check 0000 0000 0 0 6 6
+cert_block_2 0000 0 6
+cert_check 0001 0000 1 0 6 6
+cert_block_2 0001 1 6
+cert_check 0002 0000 2 0 6 6
+cert_block_2 0002 2 6
+cert_check 0003 0000 3 0 6 6
+cert_block_2 0003 3 6
+cert_check 0004 0000 4 0 6 6
+cert_block_2 0004 4 6
+cert_check 0005 0000 5 0 6 6
+cert_block_2 0005 5 6
+cert_check 0006 0000 6 0 6 6
+cert_block_2 0006 6 6
+cert_check 0007 0000 7 0 6 6
+cert_block_2 0007 7 6
+cert_check 0008 0000 8 0 8 8
+cert_check 0008 0008 8 8 16 8
+cert_check 0008 0016 8 16 24 8
+cert_block 0008 8
+cert_check 0009 0000 9 0 8 8
+cert_check 0009 0008 9 8 16 8
+cert_check 0009 0016 9 16 24 8
+cert_block 0009 9
+cert_check 0010 0000 10 0 8 8
+cert_check 0010 0008 10 8 16 8
+cert_check 0010 0016 10 16 24 8
+cert_block 0010 10
+cert_check 0011 0000 11 0 8 8
+cert_check 0011 0008 11 8 16 8
+cert_check 0011 0016 11 16 24 8
+cert_block 0011 11
+cert_check 0012 0000 12 0 8 8
+cert_check 0012 0008 12 8 16 8
+cert_check 0012 0016 12 16 24 8
+cert_block 0012 12
+cert_check 0013 0000 13 0 8 8
+cert_check 0013 0008 13 8 16 8
+cert_check 0013 0016 13 16 24 8
+cert_block 0013 13
+cert_check 0014 0000 14 0 6 6
+cert_block_2 0014 14 6
+cert_check 0015 0000 15 0 6 6
+cert_block_2 0015 15 6
+cert_check 0016 0000 16 0 6 6
+cert_block_2 0016 16 6
+cert_check 0017 0000 17 0 6 6
+cert_block_2 0017 17 6
+cert_check 0018 0000 18 0 6 6
+cert_block_2 0018 18 6
+cert_check 0019 0000 19 0 6 6
+cert_block_2 0019 19 6
+cert_check 0020 0000 20 0 6 6
+cert_block_2 0020 20 6
+cert_check 0021 0000 21 0 6 6
+cert_block_2 0021 21 6
+end Papers.RationalityTen.RootedCanonical.RootedSevenMixed012.T5
+
+set_option maxRecDepth 100000
+set_option maxHeartbeats 0
+namespace Papers.RationalityTen.RootedCanonical.RootedSevenMixed012.T5
+cert_metadata_validity_3 0000 0 16 16
+cert_metadata_validity_3 0016 16 22 6
+cert_metadata_validity_2 22
+cert_metadata_symmetry_4 0000 0 16 16
+cert_metadata_symmetry_4 0016 16 22 6
+cert_metadata_symmetry_5 22
+cert_metadata_normalizers 6
+cert_metadata_root
+end Papers.RationalityTen.RootedCanonical.RootedSevenMixed012.T5

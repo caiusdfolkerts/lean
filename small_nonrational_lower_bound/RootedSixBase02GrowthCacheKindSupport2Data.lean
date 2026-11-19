@@ -1,0 +1,73 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedSixBase
+public meta import CertificateNumbers
+public import RootedSixBase02GrowthCacheData
+public import PackedListAppend
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSixBase02
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open RawGrowthCacheCertificate RawNatGrowthSoundness
+def kindSupport2_000 : List Nat := [102,103,104,105,106,107,114,115,116,117,118,119,126,127,128,129,130,131,138,139,140,141,142,143,150,151,152,153,154,155,162,163]
+def kindSupport2_001 : List Nat := [164,165,166,167,174,175,176,177,178,179,186,187,188,189,190,191,198,199,200,201,202,203,210,211,212,213,214,215,222,223,224,225]
+def kindSupport2_002 : List Nat := [226,227,234,235,236,237,238,239,246,247,248,249,250,251,252,253,254,267,268,269,270,271,272,273,274,275,288,289,290,291,292,293]
+def kindSupport2_003 : List Nat := [294,295,296,309,310,311,312,313,314,315,316,317,334,335,336,337,338,339,340,341,342,355,356,357,358,359,360,361,362,363,376,377]
+def kindSupport2_004 : List Nat := [378,379,380,381,382,383,384,397,398,399,400,401,402,403,404,405,418,419,420,421,422,423,424,425,426,439,440,441,442,443,444,445]
+def kindSupport2_005 : List Nat := [446,447,460,461,462,463,464,465,466,467,468,481,482,483,484,485,486,487,488,489,502,503,504,505,506,507,508,509,510,511,531,532]
+def kindSupport2_006 : List Nat := [533,534,535,536,537,538,539,552,553,554,555,556,557,558,559,560,573,574,575,576,577,578,579,580,581,594,595,596,597,598,599,600]
+def kindSupport2_007 : List Nat := [601,602,615,616,617,618,619,620,627,628,629,630,631,632,639,640,641,642,643,644,651,652,653,654,655,656,663,664,665,666,667,668]
+def kindSupport2_008 : List Nat := [675,676,677,678,679,680,687,688,689,690,691,692,693,694,695,708,709,710,711,712,713,714,715,716,729,730,731,732,733,734,735,736]
+def kindSupport2_009 : List Nat := [737,750,751,752,753,754,755,756,757,758,771,772,773,774,775,776,777,778,779,792,793,794,795,796,797,798,799,800,813,814,815,816]
+def kindSupport2_010 : List Nat := [817,818,819,820,821,834,835,836,837,838,839,840,841,842,855,856,857,858,859,860,861,862,863,864,880,881,882,883,884,885,886,887]
+def kindSupport2_011 : List Nat := [888,901,902,903,904,905,906,907,908,909,922,923,924,925,926,927,928,929,930,943,944,945,946,947,948,949,950,951,964,965,966,967]
+def kindSupport2_012 : List Nat := [968,969,970,971,972,973,989,990,991,992,993,994,1001,1002,1003,1004,1005,1006,1013,1014,1015,1016,1017,1018,1025,1026,1027,1028,1029,1030,1037,1038]
+def kindSupport2_013 : List Nat := [1039,1040,1041,1042,1049,1050,1051,1052,1053,1054,1061,1062,1063,1064,1065,1066,1067,1068,1069,1082,1083,1084,1085,1086,1087,1088,1089,1090,1103,1104,1105,1106]
+def kindSupport2_014 : List Nat := [1107,1108,1109,1110,1111,1124,1125,1126,1127,1128,1129,1130,1131,1132,1145,1146,1147,1148,1149,1150,1151,1152,1153,1166,1167,1168,1169,1170,1171,1172,1173,1174]
+def kindSupport2_015 : List Nat := [1187,1188,1189,1190,1191,1192,1193,1194,1195,1208,1209,1210,1211,1212,1213,1214,1215,1216,1229,1230,1231,1232,1233,1234,1235,1236,1237,1238,1254,1255,1256,1257]
+def kindSupport2_016 : List Nat := [1258,1259,1260,1261,1262,1275,1276,1277,1278,1279,1280,1281,1282,1283,1296,1297,1298,1299,1300,1301,1302,1303,1304,1317,1318,1319,1320,1321,1322,1323,1324,1325]
+def kindSupport2_017 : List Nat := [1338,1339,1340,1341,1342,1343,1344,1345,1346,1347,1363,1364,1365,1366,1367,1368,1369,1370,1371,1372]
+cert_kindSupport_code_2 2
+cert_kindSupport_rest_3 2 000 0
+cert_kindSupport_rest_3 2 001 416
+cert_kindSupport_rest_3 2 002 832
+cert_kindSupport_rest_3 2 003 1248
+cert_kindSupport_rest_3 2 004 1664
+cert_kindSupport_rest_3 2 005 2080
+cert_kindSupport_rest_3 2 006 2496
+cert_kindSupport_rest_3 2 007 2912
+cert_kindSupport_rest_3 2 008 3328
+cert_kindSupport_rest_3 2 009 3744
+cert_kindSupport_rest_3 2 010 4160
+cert_kindSupport_rest_3 2 011 4576
+cert_kindSupport_rest_3 2 012 4992
+cert_kindSupport_rest_3 2 013 5408
+cert_kindSupport_rest_3 2 014 5824
+cert_kindSupport_rest_3 2 015 6240
+cert_kindSupport_rest_3 2 016 6656
+cert_kindSupport_rest_3 2 017 7072
+cert_kindSupport_rest_3 2 018 7332
+cert_kindSupport_suffix_4 2 018
+cert_kindSupport_suffix_5 2 017 018
+cert_kindSupport_suffix_5 2 016 017
+cert_kindSupport_suffix_5 2 015 016
+cert_kindSupport_suffix_5 2 014 015
+cert_kindSupport_suffix_5 2 013 014
+cert_kindSupport_suffix_5 2 012 013
+cert_kindSupport_suffix_5 2 011 012
+cert_kindSupport_suffix_5 2 010 011
+cert_kindSupport_suffix_5 2 009 010
+cert_kindSupport_suffix_5 2 008 009
+cert_kindSupport_suffix_5 2 007 008
+cert_kindSupport_suffix_5 2 006 007
+cert_kindSupport_suffix_5 2 005 006
+cert_kindSupport_suffix_5 2 004 005
+cert_kindSupport_suffix_5 2 003 004
+cert_kindSupport_suffix_5 2 002 003
+cert_kindSupport_suffix_5 2 001 002
+cert_kindSupport_suffix_5 2 000 001
+cert_kindSupport_source_3 2 13 564
+end Papers.RationalityTen.RootedCaches.RootedSixBase02

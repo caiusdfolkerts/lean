@@ -1,0 +1,24 @@
+module
+prelude
+public meta import LowerSchemas.FinitePackedSevenMixed
+public import PackedSevenMixed014Cache
+public import PackedSevenMixed014Leaves
+public import IdentityGrowthRenaming
+public import PackedSevenMixed014Proof000
+
+@[expose] public section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.PackedReplay.PackedSevenMixed014
+open Papers.RationalityTen
+open ConcreteGrowth GrowthDAG SparseGrowthDAG GrowthPruning GrowthRenaming
+open GrowthBitsets BatchedGrowthPruning BatchedOrbitGrowth FiniteChecks
+open RawNatGrowthSoundness RawNatGrowthCompleteness RawGrowthCacheCertificate
+cert_nodeTest_complete 340
+cert_renamings 466
+cert_root 340 339
+cert_nodes 340 466 1
+cert_boundary_classification 466
+#print axioms boundary_classification
+
+end Papers.RationalityTen.PackedReplay.PackedSevenMixed014

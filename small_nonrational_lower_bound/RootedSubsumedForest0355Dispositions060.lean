@@ -1,0 +1,79 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedSubsumedForest
+public import RootedSubsumedForest0355DispositionData
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedForests.RootedSubsumedForest0355
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open GrowthDAG SparseGrowthDAG GrowthPruning GrowthRenaming
+open GrowthBitsets BatchedGrowthPruning BatchedOrbitGrowth
+open RawNatGrowthSoundness RawNatGrowthCompleteness
+cert_disposition_at_5 1920
+cert_disposition_at_5 1921
+cert_disposition_at_5 1922
+cert_disposition_at_5 1923
+cert_disposition_at_5 1924
+cert_disposition_at_5 1925
+cert_disposition_at_5 1926
+cert_disposition_at_5 1927
+cert_disposition_at_5 1928
+cert_disposition_at_5 1929
+cert_disposition_at_5 1930
+cert_disposition_at_5 1931
+cert_disposition_at_5 1932
+cert_disposition_at_5 1933
+cert_disposition_at_5 1934
+cert_disposition_at_5 1935
+cert_disposition_at_5 1936
+cert_disposition_at_5 1937
+cert_disposition_at_5 1938
+cert_disposition_at_5 1939
+cert_disposition_at_5 1940
+cert_disposition_at_5 1941
+cert_disposition_at_5 1942
+cert_disposition_at_5 1943
+cert_disposition_at_5 1944
+cert_disposition_at_5 1945
+cert_disposition_at_5 1946
+cert_disposition_at_5 1947
+cert_disposition_at_5 1948
+cert_disposition_at_5 1949
+cert_disposition_at_5 1950
+cert_disposition_at_5 1951
+cert_disposition_interval_3 1920 1921
+cert_disposition_interval_3 1921 1922
+cert_disposition_interval_3 1922 1923
+cert_disposition_interval_3 1923 1924
+cert_disposition_interval_3 1924 1925
+cert_disposition_interval_3 1925 1926
+cert_disposition_interval_3 1926 1927
+cert_disposition_interval_3 1927 1928
+cert_disposition_interval_3 1928 1929
+cert_disposition_interval_3 1929 1930
+cert_disposition_interval_3 1930 1931
+cert_disposition_interval_3 1931 1932
+cert_disposition_interval_3 1932 1933
+cert_disposition_interval_3 1933 1934
+cert_disposition_interval_3 1934 1935
+cert_disposition_interval_3 1935 1936
+cert_disposition_interval_3 1936 1937
+cert_disposition_interval_3 1937 1938
+cert_disposition_interval_3 1938 1939
+cert_disposition_interval_3 1939 1940
+cert_disposition_interval_3 1940 1941
+cert_disposition_interval_3 1941 1942
+cert_disposition_interval_3 1942 1943
+cert_disposition_interval_3 1943 1944
+cert_disposition_interval_3 1944 1945
+cert_disposition_interval_3 1945 1946
+cert_disposition_interval_3 1946 1947
+cert_disposition_interval_3 1947 1948
+cert_disposition_interval_3 1948 1949
+cert_disposition_interval_3 1949 1950
+cert_disposition_interval_3 1950 1951
+cert_disposition_interval_4 1951 1952
+end Papers.RationalityTen.RootedForests.RootedSubsumedForest0355

@@ -1,0 +1,25 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedSevenPure
+public meta import CertificateNumbers
+public import HexNatLiteral
+public import SignatureCompatibility
+public import FiniteChecks
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSevenPure024
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+cert_badMasksBlock_5 0000 0
+cert_badMasksBlock_5 0001 1
+cert_badMasksBlock_5 0002 2
+cert_badMasksBlock_5 0003 3
+cert_badMasksBlock_5 0004 4
+cert_badMasksBlock_5 0005 5
+cert_badMasksBlock_5 0006 6
+cert_badMasksBlock_5 0007 7
+def badMasksBlock0008 : Nat := (certNat% 8)
+
+end Papers.RationalityTen.RootedCaches.RootedSevenPure024

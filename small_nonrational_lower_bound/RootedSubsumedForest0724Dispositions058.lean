@@ -1,0 +1,79 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedSubsumedForest
+public import RootedSubsumedForest0724DispositionData
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedForests.RootedSubsumedForest0724
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open GrowthDAG SparseGrowthDAG GrowthPruning GrowthRenaming
+open GrowthBitsets BatchedGrowthPruning BatchedOrbitGrowth
+open RawNatGrowthSoundness RawNatGrowthCompleteness
+cert_disposition_at_5 1856
+cert_disposition_at_5 1857
+cert_disposition_at_5 1858
+cert_disposition_at_5 1859
+cert_disposition_at_5 1860
+cert_disposition_at_5 1861
+cert_disposition_at_5 1862
+cert_disposition_at_5 1863
+cert_disposition_at_5 1864
+cert_disposition_at_5 1865
+cert_disposition_at_5 1866
+cert_disposition_at_5 1867
+cert_disposition_at_5 1868
+cert_disposition_at_5 1869
+cert_disposition_at_5 1870
+cert_disposition_at_5 1871
+cert_disposition_at_5 1872
+cert_disposition_at_5 1873
+cert_disposition_at_5 1874
+cert_disposition_at_5 1875
+cert_disposition_at_5 1876
+cert_disposition_at_5 1877
+cert_disposition_at_5 1878
+cert_disposition_at_5 1879
+cert_disposition_at_5 1880
+cert_disposition_at_5 1881
+cert_disposition_at_5 1882
+cert_disposition_at_5 1883
+cert_disposition_at_5 1884
+cert_disposition_at_5 1885
+cert_disposition_at_5 1886
+cert_disposition_at_5 1887
+cert_disposition_interval_3 1856 1857
+cert_disposition_interval_3 1857 1858
+cert_disposition_interval_3 1858 1859
+cert_disposition_interval_3 1859 1860
+cert_disposition_interval_3 1860 1861
+cert_disposition_interval_3 1861 1862
+cert_disposition_interval_3 1862 1863
+cert_disposition_interval_3 1863 1864
+cert_disposition_interval_3 1864 1865
+cert_disposition_interval_3 1865 1866
+cert_disposition_interval_3 1866 1867
+cert_disposition_interval_3 1867 1868
+cert_disposition_interval_3 1868 1869
+cert_disposition_interval_3 1869 1870
+cert_disposition_interval_3 1870 1871
+cert_disposition_interval_3 1871 1872
+cert_disposition_interval_3 1872 1873
+cert_disposition_interval_3 1873 1874
+cert_disposition_interval_3 1874 1875
+cert_disposition_interval_3 1875 1876
+cert_disposition_interval_3 1876 1877
+cert_disposition_interval_3 1877 1878
+cert_disposition_interval_3 1878 1879
+cert_disposition_interval_3 1879 1880
+cert_disposition_interval_3 1880 1881
+cert_disposition_interval_3 1881 1882
+cert_disposition_interval_3 1882 1883
+cert_disposition_interval_3 1883 1884
+cert_disposition_interval_3 1884 1885
+cert_disposition_interval_3 1885 1886
+cert_disposition_interval_3 1886 1887
+cert_disposition_interval_4 1887 1888
+end Papers.RationalityTen.RootedForests.RootedSubsumedForest0724
