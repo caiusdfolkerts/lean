@@ -1,9 +1,0 @@
-{
-  "at": "2026-11-19T04:44:13.179631+00:00",
-  "source_patch_before_after_hashes_verified": true,
-  "frozen_files_verified": 62,
-  "canonical_run": 44393240426,
-  "challenge_sha256": "2097d7d1d344115cc31497e3fb246f31ade2b14580887a0343645c64adcc1cca",
-  "reviewed_diff": "reports/deformed_coinvariants/measured-repair-candidate/root-source-review.diff",
-  "full_check_pending": true
-}
