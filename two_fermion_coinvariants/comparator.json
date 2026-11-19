@@ -66,11 +66,15 @@
     "PaperVerification.Fermion.polynomialSelfTower",
     "PaperVerification.Fermion.exteriorSelfCommute",
     "PaperVerification.Fermion.exteriorSelfTower",
-    "PalomarFermion.coordinates_apply"
+    "PalomarFermion.coordinates_apply",
+    "PaperVerification.Fermion.strictExteriorPiece_formula"
   ],
   "permitted_axioms": [
     "propext",
     "Quot.sound",
     "Classical.choice"
+  ],
+  "definition_names": [
+    "PaperVerification.Fermion.strictExteriorPiece"
   ]
 }

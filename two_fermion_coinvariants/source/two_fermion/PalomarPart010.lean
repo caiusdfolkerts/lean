@@ -2267,6 +2267,12 @@ def strictExteriorPiece (d : StrictData (K := R) (n := n)) (j : ℕ) :
   (BasisFiltered.homogeneousPiece (superMonomialBasis (K := R)) (fun i ↦ i.2.card) j).map
     ((strictIdeal d.beta d.phi).ringCon.mkₐ R).toLinearMap
 
+theorem strictExteriorPiece_formula (d : StrictData (K := R) (n := n)) (j : ℕ) :
+    strictExteriorPiece d j =
+  (BasisFiltered.homogeneousPiece (superMonomialBasis (K := R)) (fun i ↦ i.2.card) j).map
+    ((strictIdeal d.beta d.phi).ringCon.mkₐ R).toLinearMap := by rfl
+
+
 abbrev StrictExteriorIndex (d : StrictData (K := R) (n := n)) (j : ℕ) :=
   {z : StrictPowerIndex d.r // z.1.card=j}
 
