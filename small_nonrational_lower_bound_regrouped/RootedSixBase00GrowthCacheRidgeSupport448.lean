@@ -1,0 +1,172 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedSixBase.Part0
+public import BundledChecks.RootedSixBase00GrowthCacheRidgeSupport448Batch000
+public import RootedSixBase00GrowthCacheRidgeSupport448PartGrouped000
+public import RawMaskAppend
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSixBase00
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open RawGrowthCacheCertificate RawNatGrowthSoundness
+cert_ridgeSupport_suffix_decode 448 145 15
+cert_ridgeSupport_suffix_decode_2 448 144 15 31 31 145 145 0
+cert_ridgeSupport_suffix_decode_2 448 143 15 63 32 145 144 31
+cert_ridgeSupport_suffix_decode_2 448 142 15 95 32 145 143 63
+cert_ridgeSupport_suffix_decode_2 448 141 15 127 32 145 142 95
+cert_ridgeSupport_suffix_decode_2 448 140 15 159 32 145 141 127
+cert_ridgeSupport_suffix_decode_2 448 139 15 191 32 145 140 159
+cert_ridgeSupport_suffix_decode_2 448 138 15 223 32 145 139 191
+cert_ridgeSupport_suffix_decode_2 448 137 15 255 32 145 138 223
+cert_ridgeSupport_suffix_decode_2 448 136 15 287 32 145 137 255
+cert_ridgeSupport_suffix_decode_2 448 135 15 319 32 145 136 287
+cert_ridgeSupport_suffix_decode_2 448 134 15 351 32 145 135 319
+cert_ridgeSupport_suffix_decode_2 448 133 15 383 32 145 134 351
+cert_ridgeSupport_suffix_decode_2 448 132 15 415 32 145 133 383
+cert_ridgeSupport_suffix_decode_2 448 131 15 447 32 145 132 415
+cert_ridgeSupport_suffix_decode_2 448 130 15 479 32 145 131 447
+cert_ridgeSupport_suffix_decode_2 448 129 15 511 32 145 130 479
+cert_ridgeSupport_suffix_decode_2 448 128 15 543 32 145 129 511
+cert_ridgeSupport_suffix_decode_2 448 127 15 575 32 145 128 543
+cert_ridgeSupport_suffix_decode_2 448 126 15 607 32 145 127 575
+cert_ridgeSupport_suffix_decode_2 448 125 15 639 32 145 126 607
+cert_ridgeSupport_suffix_decode_2 448 124 15 671 32 145 125 639
+cert_ridgeSupport_suffix_decode_2 448 123 15 703 32 145 124 671
+cert_ridgeSupport_suffix_decode_2 448 122 15 735 32 145 123 703
+cert_ridgeSupport_suffix_decode_2 448 121 15 767 32 145 122 735
+cert_ridgeSupport_suffix_decode_2 448 120 15 799 32 145 121 767
+cert_ridgeSupport_suffix_decode_2 448 119 15 831 32 145 120 799
+cert_ridgeSupport_suffix_decode_2 448 118 15 863 32 145 119 831
+cert_ridgeSupport_suffix_decode_2 448 117 15 895 32 145 118 863
+cert_ridgeSupport_suffix_decode_2 448 116 15 927 32 145 117 895
+cert_ridgeSupport_suffix_decode_2 448 115 15 959 32 145 116 927
+cert_ridgeSupport_suffix_decode_2 448 114 15 991 32 145 115 959
+cert_ridgeSupport_suffix_decode_2 448 113 15 1023 32 145 114 991
+cert_ridgeSupport_suffix_decode_2 448 112 15 1055 32 145 113 1023
+cert_ridgeSupport_suffix_decode_2 448 111 15 1087 32 145 112 1055
+cert_ridgeSupport_suffix_decode_2 448 110 15 1119 32 145 111 1087
+cert_ridgeSupport_suffix_decode_2 448 109 15 1151 32 145 110 1119
+cert_ridgeSupport_suffix_decode_2 448 108 15 1183 32 145 109 1151
+cert_ridgeSupport_suffix_decode_2 448 107 15 1215 32 145 108 1183
+cert_ridgeSupport_suffix_decode_2 448 106 15 1247 32 145 107 1215
+cert_ridgeSupport_suffix_decode_2 448 105 15 1279 32 145 106 1247
+cert_ridgeSupport_suffix_decode_2 448 104 15 1311 32 145 105 1279
+cert_ridgeSupport_suffix_decode_2 448 103 15 1343 32 145 104 1311
+cert_ridgeSupport_suffix_decode_2 448 102 15 1375 32 145 103 1343
+cert_ridgeSupport_suffix_decode_2 448 101 15 1407 32 145 102 1375
+cert_ridgeSupport_suffix_decode_2 448 100 15 1439 32 145 101 1407
+cert_ridgeSupport_suffix_decode_2 448 099 15 1471 32 145 100 1439
+cert_ridgeSupport_suffix_decode_2 448 098 15 1503 32 145 099 1471
+cert_ridgeSupport_suffix_decode_2 448 097 15 1535 32 145 098 1503
+cert_ridgeSupport_suffix_decode_2 448 096 15 1567 32 145 097 1535
+cert_ridgeSupport_suffix_decode_2 448 095 15 1599 32 145 096 1567
+cert_ridgeSupport_suffix_decode_2 448 094 15 1631 32 145 095 1599
+cert_ridgeSupport_suffix_decode_2 448 093 15 1663 32 145 094 1631
+cert_ridgeSupport_suffix_decode_2 448 092 15 1695 32 145 093 1663
+cert_ridgeSupport_suffix_decode_2 448 091 15 1727 32 145 092 1695
+cert_ridgeSupport_suffix_decode_2 448 090 15 1759 32 145 091 1727
+cert_ridgeSupport_suffix_decode_2 448 089 15 1791 32 145 090 1759
+cert_ridgeSupport_suffix_decode_2 448 088 15 1823 32 145 089 1791
+cert_ridgeSupport_suffix_decode_2 448 087 15 1855 32 145 088 1823
+cert_ridgeSupport_suffix_decode_2 448 086 15 1887 32 145 087 1855
+cert_ridgeSupport_suffix_decode_2 448 085 15 1919 32 145 086 1887
+cert_ridgeSupport_suffix_decode_2 448 084 15 1951 32 145 085 1919
+cert_ridgeSupport_suffix_decode_2 448 083 15 1983 32 145 084 1951
+cert_ridgeSupport_suffix_decode_2 448 082 15 2015 32 145 083 1983
+cert_ridgeSupport_suffix_decode_2 448 081 15 2047 32 145 082 2015
+cert_ridgeSupport_suffix_decode_2 448 080 15 2079 32 145 081 2047
+cert_ridgeSupport_suffix_decode_2 448 079 15 2111 32 145 080 2079
+cert_ridgeSupport_suffix_decode_2 448 078 15 2143 32 145 079 2111
+cert_ridgeSupport_suffix_decode_2 448 077 15 2175 32 145 078 2143
+cert_ridgeSupport_suffix_decode_2 448 076 15 2207 32 145 077 2175
+cert_ridgeSupport_suffix_decode_2 448 075 15 2239 32 145 076 2207
+cert_ridgeSupport_suffix_decode_2 448 074 15 2271 32 145 075 2239
+cert_ridgeSupport_suffix_decode_2 448 073 15 2303 32 145 074 2271
+cert_ridgeSupport_suffix_decode_2 448 072 15 2335 32 145 073 2303
+cert_ridgeSupport_suffix_decode_2 448 071 15 2367 32 145 072 2335
+cert_ridgeSupport_suffix_decode_2 448 070 15 2399 32 145 071 2367
+cert_ridgeSupport_suffix_decode_2 448 069 15 2431 32 145 070 2399
+cert_ridgeSupport_suffix_decode_2 448 068 15 2463 32 145 069 2431
+cert_ridgeSupport_suffix_decode_2 448 067 15 2495 32 145 068 2463
+cert_ridgeSupport_suffix_decode_2 448 066 15 2527 32 145 067 2495
+cert_ridgeSupport_suffix_decode_2 448 065 15 2559 32 145 066 2527
+cert_ridgeSupport_suffix_decode_2 448 064 15 2591 32 145 065 2559
+cert_ridgeSupport_suffix_decode_2 448 063 15 2623 32 145 064 2591
+cert_ridgeSupport_suffix_decode_2 448 062 15 2655 32 145 063 2623
+cert_ridgeSupport_suffix_decode_2 448 061 15 2687 32 145 062 2655
+cert_ridgeSupport_suffix_decode_2 448 060 15 2719 32 145 061 2687
+cert_ridgeSupport_suffix_decode_2 448 059 15 2751 32 145 060 2719
+cert_ridgeSupport_suffix_decode_2 448 058 15 2783 32 145 059 2751
+cert_ridgeSupport_suffix_decode_2 448 057 15 2815 32 145 058 2783
+cert_ridgeSupport_suffix_decode_2 448 056 15 2847 32 145 057 2815
+cert_ridgeSupport_suffix_decode_2 448 055 15 2879 32 145 056 2847
+cert_ridgeSupport_suffix_decode_2 448 054 15 2911 32 145 055 2879
+cert_ridgeSupport_suffix_decode_2 448 053 15 2943 32 145 054 2911
+cert_ridgeSupport_suffix_decode_2 448 052 15 2975 32 145 053 2943
+cert_ridgeSupport_suffix_decode_2 448 051 15 3007 32 145 052 2975
+cert_ridgeSupport_suffix_decode_2 448 050 15 3039 32 145 051 3007
+cert_ridgeSupport_suffix_decode_2 448 049 15 3071 32 145 050 3039
+cert_ridgeSupport_suffix_decode_2 448 048 15 3103 32 145 049 3071
+cert_ridgeSupport_suffix_decode_2 448 047 15 3135 32 145 048 3103
+cert_ridgeSupport_suffix_decode_2 448 046 15 3167 32 145 047 3135
+cert_ridgeSupport_suffix_decode_2 448 045 15 3199 32 145 046 3167
+cert_ridgeSupport_suffix_decode_2 448 044 15 3231 32 145 045 3199
+cert_ridgeSupport_suffix_decode_2 448 043 15 3263 32 145 044 3231
+cert_ridgeSupport_suffix_decode_2 448 042 15 3295 32 145 043 3263
+cert_ridgeSupport_suffix_decode_2 448 041 15 3327 32 145 042 3295
+cert_ridgeSupport_suffix_decode_2 448 040 15 3359 32 145 041 3327
+cert_ridgeSupport_suffix_decode_2 448 039 15 3391 32 145 040 3359
+cert_ridgeSupport_suffix_decode_2 448 038 15 3423 32 145 039 3391
+cert_ridgeSupport_suffix_decode_2 448 037 15 3455 32 145 038 3423
+cert_ridgeSupport_suffix_decode_2 448 036 15 3487 32 145 037 3455
+cert_ridgeSupport_suffix_decode_2 448 035 15 3519 32 145 036 3487
+cert_ridgeSupport_suffix_decode_2 448 034 15 3551 32 145 035 3519
+cert_ridgeSupport_suffix_decode_2 448 033 15 3583 32 145 034 3551
+cert_ridgeSupport_suffix_decode_2 448 032 15 3615 32 145 033 3583
+cert_ridgeSupport_suffix_decode_2 448 031 15 3647 32 145 032 3615
+cert_ridgeSupport_suffix_decode_2 448 030 15 3679 32 145 031 3647
+cert_ridgeSupport_suffix_decode_2 448 029 15 3711 32 145 030 3679
+cert_ridgeSupport_suffix_decode_2 448 028 15 3743 32 145 029 3711
+cert_ridgeSupport_suffix_decode_2 448 027 15 3775 32 145 028 3743
+cert_ridgeSupport_suffix_decode_2 448 026 15 3807 32 145 027 3775
+cert_ridgeSupport_suffix_decode_2 448 025 15 3839 32 145 026 3807
+cert_ridgeSupport_suffix_decode_2 448 024 15 3871 32 145 025 3839
+cert_ridgeSupport_suffix_decode_2 448 023 15 3903 32 145 024 3871
+cert_ridgeSupport_suffix_decode_2 448 022 15 3935 32 145 023 3903
+cert_ridgeSupport_suffix_decode_2 448 021 15 3967 32 145 022 3935
+cert_ridgeSupport_suffix_decode_2 448 020 15 3999 32 145 021 3967
+cert_ridgeSupport_suffix_decode_2 448 019 15 4031 32 145 020 3999
+cert_ridgeSupport_suffix_decode_2 448 018 15 4063 32 145 019 4031
+cert_ridgeSupport_suffix_decode_2 448 017 15 4095 32 145 018 4063
+cert_ridgeSupport_suffix_decode_2 448 016 15 4127 32 145 017 4095
+cert_ridgeSupport_suffix_decode_2 448 015 15 4159 32 145 016 4127
+cert_ridgeSupport_suffix_decode_2 448 014 15 4191 32 145 015 4159
+cert_ridgeSupport_suffix_decode_2 448 013 15 4223 32 145 014 4191
+cert_ridgeSupport_suffix_decode_2 448 012 15 4255 32 145 013 4223
+cert_ridgeSupport_suffix_decode_2 448 011 15 4287 32 145 012 4255
+cert_ridgeSupport_suffix_decode_2 448 010 15 4319 32 145 011 4287
+cert_ridgeSupport_suffix_decode_2 448 009 15 4351 32 145 010 4319
+cert_ridgeSupport_suffix_decode_2 448 008 15 4383 32 145 009 4351
+cert_ridgeSupport_suffix_decode_2 448 007 15 4415 32 145 008 4383
+cert_ridgeSupport_suffix_decode_2 448 006 15 4447 32 145 007 4415
+cert_ridgeSupport_suffix_decode_2 448 005 15 4479 32 145 006 4447
+cert_ridgeSupport_suffix_decode_2 448 004 15 4511 32 145 005 4479
+cert_ridgeSupport_suffix_decode_2 448 003 15 4543 32 145 004 4511
+cert_ridgeSupport_suffix_decode_2 448 002 15 4575 32 145 003 4543
+cert_ridgeSupport_suffix_decode_2 448 001 15 4607 32 145 002 4575
+cert_ridgeSupport_suffix_decode_2 448 000 15 4639 32 145 001 4607
+cert_ridgeSupport_eq_3 448
+theorem ridgeTest_large_448 : ridgeTest 448 = true := by
+  apply Bool.and_eq_true_iff.mpr
+  constructor
+  · apply decide_eq_true
+    rw [ridgeSupport448_eq]
+    simp only [ridgeSupport448_suffix_000, ridgeSupport448_suffix_001, ridgeSupport448_suffix_002, ridgeSupport448_suffix_003, ridgeSupport448_suffix_004, ridgeSupport448_suffix_005, ridgeSupport448_suffix_006, ridgeSupport448_suffix_007, ridgeSupport448_suffix_008, ridgeSupport448_suffix_009, ridgeSupport448_suffix_010, ridgeSupport448_suffix_011, ridgeSupport448_suffix_012, ridgeSupport448_suffix_013, ridgeSupport448_suffix_014, ridgeSupport448_suffix_015, ridgeSupport448_suffix_016, ridgeSupport448_suffix_017, ridgeSupport448_suffix_018, ridgeSupport448_suffix_019, ridgeSupport448_suffix_020, ridgeSupport448_suffix_021, ridgeSupport448_suffix_022, ridgeSupport448_suffix_023, ridgeSupport448_suffix_024, ridgeSupport448_suffix_025, ridgeSupport448_suffix_026, ridgeSupport448_suffix_027, ridgeSupport448_suffix_028, ridgeSupport448_suffix_029, ridgeSupport448_suffix_030, ridgeSupport448_suffix_031, ridgeSupport448_suffix_032, ridgeSupport448_suffix_033, ridgeSupport448_suffix_034, ridgeSupport448_suffix_035, ridgeSupport448_suffix_036, ridgeSupport448_suffix_037, ridgeSupport448_suffix_038, ridgeSupport448_suffix_039, ridgeSupport448_suffix_040, ridgeSupport448_suffix_041, ridgeSupport448_suffix_042, ridgeSupport448_suffix_043, ridgeSupport448_suffix_044, ridgeSupport448_suffix_045, ridgeSupport448_suffix_046, ridgeSupport448_suffix_047, ridgeSupport448_suffix_048, ridgeSupport448_suffix_049, ridgeSupport448_suffix_050, ridgeSupport448_suffix_051, ridgeSupport448_suffix_052, ridgeSupport448_suffix_053, ridgeSupport448_suffix_054, ridgeSupport448_suffix_055, ridgeSupport448_suffix_056, ridgeSupport448_suffix_057, ridgeSupport448_suffix_058, ridgeSupport448_suffix_059, ridgeSupport448_suffix_060, ridgeSupport448_suffix_061, ridgeSupport448_suffix_062, ridgeSupport448_suffix_063, ridgeSupport448_suffix_064, ridgeSupport448_suffix_065, ridgeSupport448_suffix_066, ridgeSupport448_suffix_067, ridgeSupport448_suffix_068, ridgeSupport448_suffix_069, ridgeSupport448_suffix_070, ridgeSupport448_suffix_071, ridgeSupport448_suffix_072, ridgeSupport448_suffix_073, ridgeSupport448_suffix_074, ridgeSupport448_suffix_075, ridgeSupport448_suffix_076, ridgeSupport448_suffix_077, ridgeSupport448_suffix_078, ridgeSupport448_suffix_079, ridgeSupport448_suffix_080, ridgeSupport448_suffix_081, ridgeSupport448_suffix_082, ridgeSupport448_suffix_083, ridgeSupport448_suffix_084, ridgeSupport448_suffix_085, ridgeSupport448_suffix_086, ridgeSupport448_suffix_087, ridgeSupport448_suffix_088, ridgeSupport448_suffix_089, ridgeSupport448_suffix_090, ridgeSupport448_suffix_091, ridgeSupport448_suffix_092, ridgeSupport448_suffix_093, ridgeSupport448_suffix_094, ridgeSupport448_suffix_095, ridgeSupport448_suffix_096, ridgeSupport448_suffix_097, ridgeSupport448_suffix_098, ridgeSupport448_suffix_099, ridgeSupport448_suffix_100, ridgeSupport448_suffix_101, ridgeSupport448_suffix_102, ridgeSupport448_suffix_103, ridgeSupport448_suffix_104, ridgeSupport448_suffix_105, ridgeSupport448_suffix_106, ridgeSupport448_suffix_107, ridgeSupport448_suffix_108, ridgeSupport448_suffix_109, ridgeSupport448_suffix_110, ridgeSupport448_suffix_111, ridgeSupport448_suffix_112, ridgeSupport448_suffix_113, ridgeSupport448_suffix_114, ridgeSupport448_suffix_115, ridgeSupport448_suffix_116, ridgeSupport448_suffix_117, ridgeSupport448_suffix_118, ridgeSupport448_suffix_119, ridgeSupport448_suffix_120, ridgeSupport448_suffix_121, ridgeSupport448_suffix_122, ridgeSupport448_suffix_123, ridgeSupport448_suffix_124, ridgeSupport448_suffix_125, ridgeSupport448_suffix_126, ridgeSupport448_suffix_127, ridgeSupport448_suffix_128, ridgeSupport448_suffix_129, ridgeSupport448_suffix_130, ridgeSupport448_suffix_131, ridgeSupport448_suffix_132, ridgeSupport448_suffix_133, ridgeSupport448_suffix_134, ridgeSupport448_suffix_135, ridgeSupport448_suffix_136, ridgeSupport448_suffix_137, ridgeSupport448_suffix_138, ridgeSupport448_suffix_139, ridgeSupport448_suffix_140, ridgeSupport448_suffix_141, ridgeSupport448_suffix_142, ridgeSupport448_suffix_143, ridgeSupport448_suffix_144, ridgeSupport448_suffix_145, RawMaskAppend.mask_append, RawMaskAppend.mask_nil, ridgeSupport448_000_mask, ridgeSupport448_001_mask, ridgeSupport448_002_mask, ridgeSupport448_003_mask, ridgeSupport448_004_mask, ridgeSupport448_005_mask, ridgeSupport448_006_mask, ridgeSupport448_007_mask, ridgeSupport448_008_mask, ridgeSupport448_009_mask, ridgeSupport448_010_mask, ridgeSupport448_011_mask, ridgeSupport448_012_mask, ridgeSupport448_013_mask, ridgeSupport448_014_mask, ridgeSupport448_015_mask, ridgeSupport448_016_mask, ridgeSupport448_017_mask, ridgeSupport448_018_mask, ridgeSupport448_019_mask, ridgeSupport448_020_mask, ridgeSupport448_021_mask, ridgeSupport448_022_mask, ridgeSupport448_023_mask, ridgeSupport448_024_mask, ridgeSupport448_025_mask, ridgeSupport448_026_mask, ridgeSupport448_027_mask, ridgeSupport448_028_mask, ridgeSupport448_029_mask, ridgeSupport448_030_mask, ridgeSupport448_031_mask, ridgeSupport448_032_mask, ridgeSupport448_033_mask, ridgeSupport448_034_mask, ridgeSupport448_035_mask, ridgeSupport448_036_mask, ridgeSupport448_037_mask, ridgeSupport448_038_mask, ridgeSupport448_039_mask, ridgeSupport448_040_mask, ridgeSupport448_041_mask, ridgeSupport448_042_mask, ridgeSupport448_043_mask, ridgeSupport448_044_mask, ridgeSupport448_045_mask, ridgeSupport448_046_mask, ridgeSupport448_047_mask, ridgeSupport448_048_mask, ridgeSupport448_049_mask, ridgeSupport448_050_mask, ridgeSupport448_051_mask, ridgeSupport448_052_mask, ridgeSupport448_053_mask, ridgeSupport448_054_mask, ridgeSupport448_055_mask, ridgeSupport448_056_mask, ridgeSupport448_057_mask, ridgeSupport448_058_mask, ridgeSupport448_059_mask, ridgeSupport448_060_mask, ridgeSupport448_061_mask, ridgeSupport448_062_mask, ridgeSupport448_063_mask, ridgeSupport448_064_mask, ridgeSupport448_065_mask, ridgeSupport448_066_mask, ridgeSupport448_067_mask, ridgeSupport448_068_mask, ridgeSupport448_069_mask, ridgeSupport448_070_mask, ridgeSupport448_071_mask, ridgeSupport448_072_mask, ridgeSupport448_073_mask, ridgeSupport448_074_mask, ridgeSupport448_075_mask, ridgeSupport448_076_mask, ridgeSupport448_077_mask, ridgeSupport448_078_mask, ridgeSupport448_079_mask, ridgeSupport448_080_mask, ridgeSupport448_081_mask, ridgeSupport448_082_mask, ridgeSupport448_083_mask, ridgeSupport448_084_mask, ridgeSupport448_085_mask, ridgeSupport448_086_mask, ridgeSupport448_087_mask, ridgeSupport448_088_mask, ridgeSupport448_089_mask, ridgeSupport448_090_mask, ridgeSupport448_091_mask, ridgeSupport448_092_mask, ridgeSupport448_093_mask, ridgeSupport448_094_mask, ridgeSupport448_095_mask, ridgeSupport448_096_mask, ridgeSupport448_097_mask, ridgeSupport448_098_mask, ridgeSupport448_099_mask, ridgeSupport448_100_mask, ridgeSupport448_101_mask, ridgeSupport448_102_mask, ridgeSupport448_103_mask, ridgeSupport448_104_mask, ridgeSupport448_105_mask, ridgeSupport448_106_mask, ridgeSupport448_107_mask, ridgeSupport448_108_mask, ridgeSupport448_109_mask, ridgeSupport448_110_mask, ridgeSupport448_111_mask, ridgeSupport448_112_mask, ridgeSupport448_113_mask, ridgeSupport448_114_mask, ridgeSupport448_115_mask, ridgeSupport448_116_mask, ridgeSupport448_117_mask, ridgeSupport448_118_mask, ridgeSupport448_119_mask, ridgeSupport448_120_mask, ridgeSupport448_121_mask, ridgeSupport448_122_mask, ridgeSupport448_123_mask, ridgeSupport448_124_mask, ridgeSupport448_125_mask, ridgeSupport448_126_mask, ridgeSupport448_127_mask, ridgeSupport448_128_mask, ridgeSupport448_129_mask, ridgeSupport448_130_mask, ridgeSupport448_131_mask, ridgeSupport448_132_mask, ridgeSupport448_133_mask, ridgeSupport448_134_mask, ridgeSupport448_135_mask, ridgeSupport448_136_mask, ridgeSupport448_137_mask, ridgeSupport448_138_mask, ridgeSupport448_139_mask, ridgeSupport448_140_mask, ridgeSupport448_141_mask, ridgeSupport448_142_mask, ridgeSupport448_143_mask, ridgeSupport448_144_mask]
+    decide +kernel
+  · rw [ridgeSupport448_eq]
+    simp only [ridgeSupport448_suffix_000, ridgeSupport448_suffix_001, ridgeSupport448_suffix_002, ridgeSupport448_suffix_003, ridgeSupport448_suffix_004, ridgeSupport448_suffix_005, ridgeSupport448_suffix_006, ridgeSupport448_suffix_007, ridgeSupport448_suffix_008, ridgeSupport448_suffix_009, ridgeSupport448_suffix_010, ridgeSupport448_suffix_011, ridgeSupport448_suffix_012, ridgeSupport448_suffix_013, ridgeSupport448_suffix_014, ridgeSupport448_suffix_015, ridgeSupport448_suffix_016, ridgeSupport448_suffix_017, ridgeSupport448_suffix_018, ridgeSupport448_suffix_019, ridgeSupport448_suffix_020, ridgeSupport448_suffix_021, ridgeSupport448_suffix_022, ridgeSupport448_suffix_023, ridgeSupport448_suffix_024, ridgeSupport448_suffix_025, ridgeSupport448_suffix_026, ridgeSupport448_suffix_027, ridgeSupport448_suffix_028, ridgeSupport448_suffix_029, ridgeSupport448_suffix_030, ridgeSupport448_suffix_031, ridgeSupport448_suffix_032, ridgeSupport448_suffix_033, ridgeSupport448_suffix_034, ridgeSupport448_suffix_035, ridgeSupport448_suffix_036, ridgeSupport448_suffix_037, ridgeSupport448_suffix_038, ridgeSupport448_suffix_039, ridgeSupport448_suffix_040, ridgeSupport448_suffix_041, ridgeSupport448_suffix_042, ridgeSupport448_suffix_043, ridgeSupport448_suffix_044, ridgeSupport448_suffix_045, ridgeSupport448_suffix_046, ridgeSupport448_suffix_047, ridgeSupport448_suffix_048, ridgeSupport448_suffix_049, ridgeSupport448_suffix_050, ridgeSupport448_suffix_051, ridgeSupport448_suffix_052, ridgeSupport448_suffix_053, ridgeSupport448_suffix_054, ridgeSupport448_suffix_055, ridgeSupport448_suffix_056, ridgeSupport448_suffix_057, ridgeSupport448_suffix_058, ridgeSupport448_suffix_059, ridgeSupport448_suffix_060, ridgeSupport448_suffix_061, ridgeSupport448_suffix_062, ridgeSupport448_suffix_063, ridgeSupport448_suffix_064, ridgeSupport448_suffix_065, ridgeSupport448_suffix_066, ridgeSupport448_suffix_067, ridgeSupport448_suffix_068, ridgeSupport448_suffix_069, ridgeSupport448_suffix_070, ridgeSupport448_suffix_071, ridgeSupport448_suffix_072, ridgeSupport448_suffix_073, ridgeSupport448_suffix_074, ridgeSupport448_suffix_075, ridgeSupport448_suffix_076, ridgeSupport448_suffix_077, ridgeSupport448_suffix_078, ridgeSupport448_suffix_079, ridgeSupport448_suffix_080, ridgeSupport448_suffix_081, ridgeSupport448_suffix_082, ridgeSupport448_suffix_083, ridgeSupport448_suffix_084, ridgeSupport448_suffix_085, ridgeSupport448_suffix_086, ridgeSupport448_suffix_087, ridgeSupport448_suffix_088, ridgeSupport448_suffix_089, ridgeSupport448_suffix_090, ridgeSupport448_suffix_091, ridgeSupport448_suffix_092, ridgeSupport448_suffix_093, ridgeSupport448_suffix_094, ridgeSupport448_suffix_095, ridgeSupport448_suffix_096, ridgeSupport448_suffix_097, ridgeSupport448_suffix_098, ridgeSupport448_suffix_099, ridgeSupport448_suffix_100, ridgeSupport448_suffix_101, ridgeSupport448_suffix_102, ridgeSupport448_suffix_103, ridgeSupport448_suffix_104, ridgeSupport448_suffix_105, ridgeSupport448_suffix_106, ridgeSupport448_suffix_107, ridgeSupport448_suffix_108, ridgeSupport448_suffix_109, ridgeSupport448_suffix_110, ridgeSupport448_suffix_111, ridgeSupport448_suffix_112, ridgeSupport448_suffix_113, ridgeSupport448_suffix_114, ridgeSupport448_suffix_115, ridgeSupport448_suffix_116, ridgeSupport448_suffix_117, ridgeSupport448_suffix_118, ridgeSupport448_suffix_119, ridgeSupport448_suffix_120, ridgeSupport448_suffix_121, ridgeSupport448_suffix_122, ridgeSupport448_suffix_123, ridgeSupport448_suffix_124, ridgeSupport448_suffix_125, ridgeSupport448_suffix_126, ridgeSupport448_suffix_127, ridgeSupport448_suffix_128, ridgeSupport448_suffix_129, ridgeSupport448_suffix_130, ridgeSupport448_suffix_131, ridgeSupport448_suffix_132, ridgeSupport448_suffix_133, ridgeSupport448_suffix_134, ridgeSupport448_suffix_135, ridgeSupport448_suffix_136, ridgeSupport448_suffix_137, ridgeSupport448_suffix_138, ridgeSupport448_suffix_139, ridgeSupport448_suffix_140, ridgeSupport448_suffix_141, ridgeSupport448_suffix_142, ridgeSupport448_suffix_143, ridgeSupport448_suffix_144, ridgeSupport448_suffix_145, List.all_append, List.all_nil, ridgeSupport448_000_checked, ridgeSupport448_001_checked, ridgeSupport448_002_checked, ridgeSupport448_003_checked, ridgeSupport448_004_checked, ridgeSupport448_005_checked, ridgeSupport448_006_checked, ridgeSupport448_007_checked, ridgeSupport448_008_checked, ridgeSupport448_009_checked, ridgeSupport448_010_checked, ridgeSupport448_011_checked, ridgeSupport448_012_checked, ridgeSupport448_013_checked, ridgeSupport448_014_checked, ridgeSupport448_015_checked, ridgeSupport448_016_checked, ridgeSupport448_017_checked, ridgeSupport448_018_checked, ridgeSupport448_019_checked, ridgeSupport448_020_checked, ridgeSupport448_021_checked, ridgeSupport448_022_checked, ridgeSupport448_023_checked, ridgeSupport448_024_checked, ridgeSupport448_025_checked, ridgeSupport448_026_checked, ridgeSupport448_027_checked, ridgeSupport448_028_checked, ridgeSupport448_029_checked, ridgeSupport448_030_checked, ridgeSupport448_031_checked, ridgeSupport448_032_checked, ridgeSupport448_033_checked, ridgeSupport448_034_checked, ridgeSupport448_035_checked, ridgeSupport448_036_checked, ridgeSupport448_037_checked, ridgeSupport448_038_checked, ridgeSupport448_039_checked, ridgeSupport448_040_checked, ridgeSupport448_041_checked, ridgeSupport448_042_checked, ridgeSupport448_043_checked, ridgeSupport448_044_checked, ridgeSupport448_045_checked, ridgeSupport448_046_checked, ridgeSupport448_047_checked, ridgeSupport448_048_checked, ridgeSupport448_049_checked, ridgeSupport448_050_checked, ridgeSupport448_051_checked, ridgeSupport448_052_checked, ridgeSupport448_053_checked, ridgeSupport448_054_checked, ridgeSupport448_055_checked, ridgeSupport448_056_checked, ridgeSupport448_057_checked, ridgeSupport448_058_checked, ridgeSupport448_059_checked, ridgeSupport448_060_checked, ridgeSupport448_061_checked, ridgeSupport448_062_checked, ridgeSupport448_063_checked, ridgeSupport448_064_checked, ridgeSupport448_065_checked, ridgeSupport448_066_checked, ridgeSupport448_067_checked, ridgeSupport448_068_checked, ridgeSupport448_069_checked, ridgeSupport448_070_checked, ridgeSupport448_071_checked, ridgeSupport448_072_checked, ridgeSupport448_073_checked, ridgeSupport448_074_checked, ridgeSupport448_075_checked, ridgeSupport448_076_checked, ridgeSupport448_077_checked, ridgeSupport448_078_checked, ridgeSupport448_079_checked, ridgeSupport448_080_checked, ridgeSupport448_081_checked, ridgeSupport448_082_checked, ridgeSupport448_083_checked, ridgeSupport448_084_checked, ridgeSupport448_085_checked, ridgeSupport448_086_checked, ridgeSupport448_087_checked, ridgeSupport448_088_checked, ridgeSupport448_089_checked, ridgeSupport448_090_checked, ridgeSupport448_091_checked, ridgeSupport448_092_checked, ridgeSupport448_093_checked, ridgeSupport448_094_checked, ridgeSupport448_095_checked, ridgeSupport448_096_checked, ridgeSupport448_097_checked, ridgeSupport448_098_checked, ridgeSupport448_099_checked, ridgeSupport448_100_checked, ridgeSupport448_101_checked, ridgeSupport448_102_checked, ridgeSupport448_103_checked, ridgeSupport448_104_checked, ridgeSupport448_105_checked, ridgeSupport448_106_checked, ridgeSupport448_107_checked, ridgeSupport448_108_checked, ridgeSupport448_109_checked, ridgeSupport448_110_checked, ridgeSupport448_111_checked, ridgeSupport448_112_checked, ridgeSupport448_113_checked, ridgeSupport448_114_checked, ridgeSupport448_115_checked, ridgeSupport448_116_checked, ridgeSupport448_117_checked, ridgeSupport448_118_checked, ridgeSupport448_119_checked, ridgeSupport448_120_checked, ridgeSupport448_121_checked, ridgeSupport448_122_checked, ridgeSupport448_123_checked, ridgeSupport448_124_checked, ridgeSupport448_125_checked, ridgeSupport448_126_checked, ridgeSupport448_127_checked, ridgeSupport448_128_checked, ridgeSupport448_129_checked, ridgeSupport448_130_checked, ridgeSupport448_131_checked, ridgeSupport448_132_checked, ridgeSupport448_133_checked, ridgeSupport448_134_checked, ridgeSupport448_135_checked, ridgeSupport448_136_checked, ridgeSupport448_137_checked, ridgeSupport448_138_checked, ridgeSupport448_139_checked, ridgeSupport448_140_checked, ridgeSupport448_141_checked, ridgeSupport448_142_checked, ridgeSupport448_143_checked, ridgeSupport448_144_checked, Bool.and_self]
+
+end Papers.RationalityTen.RootedCaches.RootedSixBase00

@@ -1,0 +1,17 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedSixExtra
+public meta import CertificateNumbers
+public import RootedSixExtra02GrowthCacheRidgeSupport266Data
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSixExtra02
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open RawGrowthCacheCertificate RawNatGrowthSoundness
+cert_ridgeSupport_decode_3 266 008 13 25 009
+cert_ridgeSupport_mask_3 266 008 0
+cert_ridgeSupport_checked_6 266 008
+end Papers.RationalityTen.RootedCaches.RootedSixExtra02

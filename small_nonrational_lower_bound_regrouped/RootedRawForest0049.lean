@@ -1,0 +1,28 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedRawForest
+public import RootedSevenPure015GrowthCache
+public import IdentityRawMaps
+public import RawClosedGrowthClassification
+public import RootedRawForest0049Leaves
+public import RootedRawForest0049Proof000
+public import RootedRawForest0049Proof001
+public import RootedRawForest0049Proof002
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedForests.RootedRawForest0049
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open GrowthDAG SparseGrowthDAG GrowthPruning GrowthRenaming
+open GrowthBitsets BatchedGrowthPruning BatchedOrbitGrowth
+open RawNatGrowthSoundness RawNatGrowthCompleteness
+
+cert_nodeTest_complete_2 1465
+cert_root_2 1464
+cert_nodes_2
+cert_boundary_classification_3 015
+#print axioms boundary_classification
+
+end Papers.RationalityTen.RootedForests.RootedRawForest0049

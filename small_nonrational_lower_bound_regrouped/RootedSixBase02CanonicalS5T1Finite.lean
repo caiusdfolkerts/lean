@@ -1,0 +1,608 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedSixBase.Part0
+public meta import IntegerTables
+public import RootedSixBase02
+public import RawKindedFacePlacement
+public import RootedSixBase02OutsideData
+public import RawOutsidePlacement
+
+@[expose] public section
+
+set_option maxRecDepth 100000
+set_option maxHeartbeats 0
+namespace Papers.RationalityTen.RootedCanonical.RootedSixBase02.S5T1
+open ConcreteGrowth
+abbrev blockCount : Nat := 128
+noncomputable def template : Cell := ⟨3, 31, [3, 5, 6, 10, 12, 17, 20, 24], [7, 14, 21, 27, 28]⟩
+cert_root_5 02
+noncomputable def records : Table (RawFacePlacement.Block × Nat) :=
+(.branch 64
+ (.branch 32
+ (.branch 16
+ (.branch 8
+ (.branch 4
+ (.branch 2
+ (.branch 1
+ (.leaf (⟨1, 4, 274960, 274960, 361617786720, 288326448720⟩, 518))
+ (.leaf (⟨1, 4, 274960, 274960, 361616738145, 288326448645⟩, 871)))
+ (.branch 3
+ (.leaf (⟨1, 4, 274960, 274960, 361599960930, 288326447205⟩, 980))
+ (.leaf (⟨1, 4, 274960, 274960, 361331525475, 288326420325⟩, 1245))))
+ (.branch 6
+ (.branch 5
+ (.leaf (⟨1, 4, 274960, 274960, 357036558180, 288325928805⟩, 1354))
+ (.leaf (⟨1, 4, 274960, 274960, 288317081445, 288317081445⟩, 1379)))
+ (.branch 7
+ (.leaf (⟨1, 4, 274945, 274945, 361617786720, 288326448720⟩, 519))
+ (.leaf (⟨1, 4, 274945, 274945, 361616738145, 288326448645⟩, 872)))))
+ (.branch 12
+ (.branch 10
+ (.branch 9
+ (.leaf (⟨1, 4, 274945, 274945, 361599960930, 288326447205⟩, 981))
+ (.leaf (⟨1, 4, 274945, 274945, 361331525475, 288326420325⟩, 1246)))
+ (.branch 11
+ (.leaf (⟨1, 4, 274945, 274945, 357036558180, 288325928805⟩, 1355))
+ (.leaf (⟨1, 4, 274945, 274945, 288317081445, 288317081445⟩, 1380))))
+ (.branch 14
+ (.branch 13
+ (.leaf (⟨2, 4, 274960, 274960, 361626105360, 361626105360⟩, 17170693))
+ (.leaf (⟨2, 4, 274960, 274960, 361609328160, 361626104160⟩, 22937949)))
+ (.branch 15
+ (.leaf (⟨2, 4, 274960, 274960, 361592550945, 361626104070⟩, 35848738))
+ (.leaf (⟨2, 4, 274960, 274960, 361340892720, 361626081120⟩, 28443057))))))
+ (.branch 24
+ (.branch 20
+ (.branch 18
+ (.branch 17
+ (.leaf (⟨2, 4, 274960, 274960, 361324115505, 361626081030⟩, 46072510))
+ (.leaf (⟨2, 4, 274960, 274960, 356760712770, 361625649270⟩, 58721151)))
+ (.branch 19
+ (.leaf (⟨2, 4, 274960, 274960, 352465745475, 361625618550⟩, 70583348))
+ (.leaf (⟨2, 4, 274960, 274960, 288309671505, 361617786630⟩, 51577618))))
+ (.branch 22
+ (.branch 21
+ (.leaf (⟨2, 4, 274960, 274960, 283746268755, 361617754230⟩, 76088456))
+ (.leaf (⟨2, 4, 274960, 274960, 215026792020, 361617201270⟩, 83231989)))
+ (.branch 23
+ (.leaf (⟨1, 4, 274690, 274465, 361617786720, 288326448720⟩, 512))
+ (.leaf (⟨1, 4, 274690, 274465, 361616738145, 288326448645⟩, 865)))))
+ (.branch 28
+ (.branch 26
+ (.branch 25
+ (.leaf (⟨1, 4, 274690, 274465, 361599960930, 288326447205⟩, 974))
+ (.leaf (⟨1, 4, 274690, 274465, 361331525475, 288326420325⟩, 1239)))
+ (.branch 27
+ (.leaf (⟨1, 4, 274690, 274465, 357036558180, 288325928805⟩, 1348))
+ (.leaf (⟨1, 4, 274690, 274465, 288317081445, 288317081445⟩, 1373))))
+ (.branch 30
+ (.branch 29
+ (.leaf (⟨2, 4, 274720, 274720, 361626105360, 361626105360⟩, 16711938))
+ (.leaf (⟨2, 4, 274720, 274720, 361609328160, 361626104160⟩, 22479194)))
+ (.branch 31
+ (.leaf (⟨2, 4, 274720, 274720, 361592550945, 361626104070⟩, 35389983))
+ (.leaf (⟨2, 4, 274720, 274720, 361340892720, 361626081120⟩, 27984302)))))))
+ (.branch 48
+ (.branch 40
+ (.branch 36
+ (.branch 34
+ (.branch 33
+ (.leaf (⟨2, 4, 274720, 274720, 361324115505, 361626081030⟩, 45613755))
+ (.leaf (⟨2, 4, 274720, 274720, 356760712770, 361625649270⟩, 58262396)))
+ (.branch 35
+ (.leaf (⟨2, 4, 274720, 274720, 352465745475, 361625618550⟩, 70124593))
+ (.leaf (⟨2, 4, 274720, 274720, 288309671505, 361617786630⟩, 51118863))))
+ (.branch 38
+ (.branch 37
+ (.leaf (⟨2, 4, 274720, 274720, 283746268755, 361617754230⟩, 75629701))
+ (.leaf (⟨2, 4, 274720, 274720, 215026792020, 361617201270⟩, 82773234)))
+ (.branch 39
+ (.leaf (⟨2, 4, 274465, 274690, 361626105360, 361626105360⟩, 16777475))
+ (.leaf (⟨2, 4, 274465, 274690, 361609328160, 361626104160⟩, 22544731)))))
+ (.branch 44
+ (.branch 42
+ (.branch 41
+ (.leaf (⟨2, 4, 274465, 274690, 361592550945, 361626104070⟩, 35455520))
+ (.leaf (⟨2, 4, 274465, 274690, 361340892720, 361626081120⟩, 28049839)))
+ (.branch 43
+ (.leaf (⟨2, 4, 274465, 274690, 361324115505, 361626081030⟩, 45679292))
+ (.leaf (⟨2, 4, 274465, 274690, 356760712770, 361625649270⟩, 58327933))))
+ (.branch 46
+ (.branch 45
+ (.leaf (⟨2, 4, 274465, 274690, 352465745475, 361625618550⟩, 70190130))
+ (.leaf (⟨2, 4, 274465, 274690, 288309671505, 361617786630⟩, 51184400)))
+ (.branch 47
+ (.leaf (⟨2, 4, 274465, 274690, 283746268755, 361617754230⟩, 75695238))
+ (.leaf (⟨2, 4, 274465, 274690, 215026792020, 361617201270⟩, 82838771))))))
+ (.branch 56
+ (.branch 52
+ (.branch 50
+ (.branch 49
+ (.leaf (⟨3, 4, 274960, 274960, 361742426640, 434925761040⟩, 131774906617317264861495408))
+ (.leaf (⟨3, 4, 274960, 274960, 361473991440, 434925741840⟩, 218818893815410380093587640)))
+ (.branch 51
+ (.leaf (⟨3, 4, 274960, 274960, 283627709745, 434918463495⟩, 751963315403730710890152561))
+ (.leaf (⟨3, 4, 274960, 274960, 141893788995, 434917935495⟩, 1204108471127158837234631655))))
+ (.branch 54
+ (.branch 53
+ (.leaf (⟨1, 4, 270595, 262945, 361617786720, 288326448720⟩, 523))
+ (.leaf (⟨1, 4, 270595, 262945, 361616738145, 288326448645⟩, 876)))
+ (.branch 55
+ (.leaf (⟨1, 4, 270595, 262945, 361599960930, 288326447205⟩, 985))
+ (.leaf (⟨1, 4, 270595, 262945, 361331525475, 288326420325⟩, 1250)))))
+ (.branch 60
+ (.branch 58
+ (.branch 57
+ (.leaf (⟨1, 4, 270595, 262945, 357036558180, 288325928805⟩, 1359))
+ (.leaf (⟨1, 4, 270595, 262945, 288317081445, 288317081445⟩, 1384)))
+ (.branch 59
+ (.leaf (⟨2, 4, 270385, 267010, 361626105360, 361626105360⟩, 17236232))
+ (.leaf (⟨2, 4, 270385, 267010, 361609328160, 361626104160⟩, 23003488))))
+ (.branch 62
+ (.branch 61
+ (.leaf (⟨2, 4, 270385, 267010, 361592550945, 361626104070⟩, 35914277))
+ (.leaf (⟨2, 4, 270385, 267010, 361340892720, 361626081120⟩, 28508596)))
+ (.branch 63
+ (.leaf (⟨2, 4, 270385, 267010, 361324115505, 361626081030⟩, 46138049))
+ (.leaf (⟨2, 4, 270385, 267010, 356760712770, 361625649270⟩, 58786690))))))))
+ (.branch 96
+ (.branch 80
+ (.branch 72
+ (.branch 68
+ (.branch 66
+ (.branch 65
+ (.leaf (⟨2, 4, 270385, 267010, 352465745475, 361625618550⟩, 70648887))
+ (.leaf (⟨2, 4, 270385, 267010, 288309671505, 361617786630⟩, 51643157)))
+ (.branch 67
+ (.leaf (⟨2, 4, 270385, 267010, 283746268755, 361617754230⟩, 76153995))
+ (.leaf (⟨2, 4, 270385, 267010, 215026792020, 361617201270⟩, 83297528))))
+ (.branch 70
+ (.branch 69
+ (.leaf (⟨2, 4, 266290, 266290, 361626105360, 361626105360⟩, 17039617))
+ (.leaf (⟨2, 4, 266290, 266290, 361609328160, 361626104160⟩, 22806873)))
+ (.branch 71
+ (.leaf (⟨2, 4, 266290, 266290, 361592550945, 361626104070⟩, 35717662))
+ (.leaf (⟨2, 4, 266290, 266290, 361340892720, 361626081120⟩, 28311981)))))
+ (.branch 76
+ (.branch 74
+ (.branch 73
+ (.leaf (⟨2, 4, 266290, 266290, 361324115505, 361626081030⟩, 45941434))
+ (.leaf (⟨2, 4, 266290, 266290, 356760712770, 361625649270⟩, 58590075)))
+ (.branch 75
+ (.leaf (⟨2, 4, 266290, 266290, 352465745475, 361625618550⟩, 70452272))
+ (.leaf (⟨2, 4, 266290, 266290, 288309671505, 361617786630⟩, 51446542))))
+ (.branch 78
+ (.branch 77
+ (.leaf (⟨2, 4, 266290, 266290, 283746268755, 361617754230⟩, 75957380))
+ (.leaf (⟨2, 4, 266290, 266290, 215026792020, 361617201270⟩, 83100913)))
+ (.branch 79
+ (.leaf (⟨3, 4, 262945, 270595, 361742426640, 434925761040⟩, 132983906224752600919375983))
+ (.leaf (⟨3, 4, 262945, 270595, 361473991440, 434925741840⟩, 220027893422845716151468215))))))
+ (.branch 88
+ (.branch 84
+ (.branch 82
+ (.branch 81
+ (.leaf (⟨3, 4, 262945, 270595, 283627709745, 434918463495⟩, 753172315011166046948033136))
+ (.leaf (⟨3, 4, 262945, 270595, 141893788995, 434917935495⟩, 1205317470734594173292512230)))
+ (.branch 83
+ (.leaf (⟨1, 4, 205060, 17185, 361617786720, 288326448720⟩, 521))
+ (.leaf (⟨1, 4, 205060, 17185, 361616738145, 288326448645⟩, 874))))
+ (.branch 86
+ (.branch 85
+ (.leaf (⟨1, 4, 205060, 17185, 361599960930, 288326447205⟩, 983))
+ (.leaf (⟨1, 4, 205060, 17185, 361331525475, 288326420325⟩, 1248)))
+ (.branch 87
+ (.leaf (⟨1, 4, 205060, 17185, 357036558180, 288325928805⟩, 1357))
+ (.leaf (⟨1, 4, 205060, 17185, 288317081445, 288317081445⟩, 1382)))))
+ (.branch 92
+ (.branch 90
+ (.branch 89
+ (.leaf (⟨2, 4, 205120, 82720, 361626105360, 361626105360⟩, 17236232))
+ (.leaf (⟨2, 4, 205120, 82720, 361609328160, 361626104160⟩, 23003488)))
+ (.branch 91
+ (.leaf (⟨2, 4, 205120, 82720, 361592550945, 361626104070⟩, 35914277))
+ (.leaf (⟨2, 4, 205120, 82720, 361340892720, 361626081120⟩, 28508596))))
+ (.branch 94
+ (.branch 93
+ (.leaf (⟨2, 4, 205120, 82720, 361324115505, 361626081030⟩, 46138049))
+ (.leaf (⟨2, 4, 205120, 82720, 356760712770, 361625649270⟩, 58786690)))
+ (.branch 95
+ (.leaf (⟨2, 4, 205120, 82720, 352465745475, 361625618550⟩, 70648887))
+ (.leaf (⟨2, 4, 205120, 82720, 288309671505, 361617786630⟩, 51643157)))))))
+ (.branch 112
+ (.branch 104
+ (.branch 100
+ (.branch 98
+ (.branch 97
+ (.leaf (⟨2, 4, 205120, 82720, 283746268755, 361617754230⟩, 76153995))
+ (.leaf (⟨2, 4, 205120, 82720, 215026792020, 361617201270⟩, 83297528)))
+ (.branch 99
+ (.leaf (⟨2, 4, 200770, 81970, 361626105360, 361626105360⟩, 16908543))
+ (.leaf (⟨2, 4, 200770, 81970, 361609328160, 361626104160⟩, 22675799))))
+ (.branch 102
+ (.branch 101
+ (.leaf (⟨2, 4, 200770, 81970, 361592550945, 361626104070⟩, 35586588))
+ (.leaf (⟨2, 4, 200770, 81970, 361340892720, 361626081120⟩, 28180907)))
+ (.branch 103
+ (.leaf (⟨2, 4, 200770, 81970, 361324115505, 361626081030⟩, 45810360))
+ (.leaf (⟨2, 4, 200770, 81970, 356760712770, 361625649270⟩, 58459001)))))
+ (.branch 108
+ (.branch 106
+ (.branch 105
+ (.leaf (⟨2, 4, 200770, 81970, 352465745475, 361625618550⟩, 70321198))
+ (.leaf (⟨2, 4, 200770, 81970, 288309671505, 361617786630⟩, 51315468)))
+ (.branch 107
+ (.leaf (⟨2, 4, 200770, 81970, 283746268755, 361617754230⟩, 75826306))
+ (.leaf (⟨2, 4, 200770, 81970, 215026792020, 361617201270⟩, 82969839))))
+ (.branch 110
+ (.branch 109
+ (.leaf (⟨3, 4, 201760, 147760, 361742426640, 434925761040⟩, 132983906224752600919375983))
+ (.leaf (⟨3, 4, 201760, 147760, 361473991440, 434925741840⟩, 220027893422845716151468215)))
+ (.branch 111
+ (.leaf (⟨3, 4, 201760, 147760, 283627709745, 434918463495⟩, 753172315011166046948033136))
+ (.leaf (⟨3, 4, 201760, 147760, 141893788995, 434917935495⟩, 1205317470734594173292512230))))))
+ (.branch 120
+ (.branch 116
+ (.branch 114
+ (.branch 113
+ (.leaf (⟨2, 4, 135235, 66610, 361626105360, 361626105360⟩, 17432841))
+ (.leaf (⟨2, 4, 135235, 66610, 361609328160, 361626104160⟩, 23200097)))
+ (.branch 115
+ (.leaf (⟨2, 4, 135235, 66610, 361592550945, 361626104070⟩, 36110886))
+ (.leaf (⟨2, 4, 135235, 66610, 361340892720, 361626081120⟩, 28705205))))
+ (.branch 118
+ (.branch 117
+ (.leaf (⟨2, 4, 135235, 66610, 361324115505, 361626081030⟩, 46334658))
+ (.leaf (⟨2, 4, 135235, 66610, 356760712770, 361625649270⟩, 58983299)))
+ (.branch 119
+ (.leaf (⟨2, 4, 135235, 66610, 352465745475, 361625618550⟩, 70845496))
+ (.leaf (⟨2, 4, 135235, 66610, 288309671505, 361617786630⟩, 51839766)))))
+ (.branch 124
+ (.branch 122
+ (.branch 121
+ (.leaf (⟨2, 4, 135235, 66610, 283746268755, 361617754230⟩, 76350604))
+ (.leaf (⟨2, 4, 135235, 66610, 215026792020, 361617201270⟩, 83494137)))
+ (.branch 123
+ (.leaf (⟨4, 4, 148240, 205840, 350450238240, 508225069440⟩, 3027464367842201812538126329084002875463016389132361448213539724868548185447828351813877780274508698359562240))
+ (.leaf (⟨4, 4, 148240, 205840, 208716321825, 508218741000⟩, 316846576927184514106193536597655625253602544847088552282322369547849318354207135841073642807312554612618904470031))))
+ (.branch 126
+ (.branch 125
+ (.leaf (⟨3, 4, 66610, 135235, 361742426640, 434925761040⟩, 136610665235726532007034988))
+ (.leaf (⟨3, 4, 66610, 135235, 361473991440, 434925741840⟩, 223654652433819647239127220)))
+ (.branch 127
+ (.leaf (⟨3, 4, 66610, 135235, 283627709745, 434918463495⟩, 756799074022139978035692141))
+ (.leaf (⟨3, 4, 66610, 135235, 141893788995, 434917935495⟩, 1208944229745568104380171235)))))))))
+cert_raw_3
+cert_witness_3 8084
+cert_faceTable_3 255
+cert_faceWitness_3
+cert_validity_3 5
+cert_placement_3 5 02
+cert_test_9
+cert_symmetry_3 02
+end Papers.RationalityTen.RootedCanonical.RootedSixBase02.S5T1
+
+set_option maxRecDepth 100000
+set_option maxHeartbeats 0
+namespace Papers.RationalityTen.RootedCanonical.RootedSixBase02.S5T1
+cert_check_3 0000 0000 0 0 1 1
+cert_block_6 0000 0 1
+cert_check_3 0001 0000 1 0 1 1
+cert_block_6 0001 1 1
+cert_check_3 0002 0000 2 0 1 1
+cert_block_6 0002 2 1
+cert_check_3 0003 0000 3 0 1 1
+cert_block_6 0003 3 1
+cert_check_3 0004 0000 4 0 1 1
+cert_block_6 0004 4 1
+cert_check_3 0005 0000 5 0 1 1
+cert_block_6 0005 5 1
+cert_check_3 0006 0000 6 0 1 1
+cert_block_6 0006 6 1
+cert_check_3 0007 0000 7 0 1 1
+cert_block_6 0007 7 1
+cert_check_3 0008 0000 8 0 1 1
+cert_block_6 0008 8 1
+cert_check_3 0009 0000 9 0 1 1
+cert_block_6 0009 9 1
+cert_check_3 0010 0000 10 0 1 1
+cert_block_6 0010 10 1
+cert_check_3 0011 0000 11 0 1 1
+cert_block_6 0011 11 1
+cert_check_3 0012 0000 12 0 2 2
+cert_block_6 0012 12 2
+cert_check_3 0013 0000 13 0 2 2
+cert_block_6 0013 13 2
+cert_check_3 0014 0000 14 0 2 2
+cert_block_6 0014 14 2
+cert_check_3 0015 0000 15 0 2 2
+cert_block_6 0015 15 2
+cert_check_3 0016 0000 16 0 2 2
+cert_block_6 0016 16 2
+cert_check_3 0017 0000 17 0 2 2
+cert_block_6 0017 17 2
+cert_check_3 0018 0000 18 0 2 2
+cert_block_6 0018 18 2
+cert_check_3 0019 0000 19 0 2 2
+cert_block_6 0019 19 2
+cert_check_3 0020 0000 20 0 2 2
+cert_block_6 0020 20 2
+cert_check_3 0021 0000 21 0 2 2
+cert_block_6 0021 21 2
+cert_check_3 0022 0000 22 0 1 1
+cert_block_6 0022 22 1
+cert_check_3 0023 0000 23 0 1 1
+cert_block_6 0023 23 1
+cert_check_3 0024 0000 24 0 1 1
+cert_block_6 0024 24 1
+cert_check_3 0025 0000 25 0 1 1
+cert_block_6 0025 25 1
+cert_check_3 0026 0000 26 0 1 1
+cert_block_6 0026 26 1
+cert_check_3 0027 0000 27 0 1 1
+cert_block_6 0027 27 1
+cert_check_3 0028 0000 28 0 2 2
+cert_block_6 0028 28 2
+cert_check_3 0029 0000 29 0 2 2
+cert_block_6 0029 29 2
+cert_check_3 0030 0000 30 0 2 2
+cert_block_6 0030 30 2
+cert_check_3 0031 0000 31 0 2 2
+cert_block_6 0031 31 2
+cert_check_3 0032 0000 32 0 2 2
+cert_block_6 0032 32 2
+cert_check_3 0033 0000 33 0 2 2
+cert_block_6 0033 33 2
+cert_check_3 0034 0000 34 0 2 2
+cert_block_6 0034 34 2
+cert_check_3 0035 0000 35 0 2 2
+cert_block_6 0035 35 2
+cert_check_3 0036 0000 36 0 2 2
+cert_block_6 0036 36 2
+cert_check_3 0037 0000 37 0 2 2
+cert_block_6 0037 37 2
+cert_check_3 0038 0000 38 0 2 2
+cert_block_6 0038 38 2
+cert_check_3 0039 0000 39 0 2 2
+cert_block_6 0039 39 2
+cert_check_3 0040 0000 40 0 2 2
+cert_block_6 0040 40 2
+cert_check_3 0041 0000 41 0 2 2
+cert_block_6 0041 41 2
+cert_check_3 0042 0000 42 0 2 2
+cert_block_6 0042 42 2
+cert_check_3 0043 0000 43 0 2 2
+cert_block_6 0043 43 2
+cert_check_3 0044 0000 44 0 2 2
+cert_block_6 0044 44 2
+cert_check_3 0045 0000 45 0 2 2
+cert_block_6 0045 45 2
+cert_check_3 0046 0000 46 0 2 2
+cert_block_6 0046 46 2
+cert_check_3 0047 0000 47 0 2 2
+cert_block_6 0047 47 2
+cert_check_3 0048 0000 48 0 6 6
+cert_block_6 0048 48 6
+cert_check_3 0049 0000 49 0 6 6
+cert_block_6 0049 49 6
+cert_check_3 0050 0000 50 0 6 6
+cert_block_6 0050 50 6
+cert_check_3 0051 0000 51 0 6 6
+cert_block_6 0051 51 6
+cert_check_3 0052 0000 52 0 1 1
+cert_block_6 0052 52 1
+cert_check_3 0053 0000 53 0 1 1
+cert_block_6 0053 53 1
+cert_check_3 0054 0000 54 0 1 1
+cert_block_6 0054 54 1
+cert_check_3 0055 0000 55 0 1 1
+cert_block_6 0055 55 1
+cert_check_3 0056 0000 56 0 1 1
+cert_block_6 0056 56 1
+cert_check_3 0057 0000 57 0 1 1
+cert_block_6 0057 57 1
+cert_check_3 0058 0000 58 0 2 2
+cert_block_6 0058 58 2
+cert_check_3 0059 0000 59 0 2 2
+cert_block_6 0059 59 2
+cert_check_3 0060 0000 60 0 2 2
+cert_block_6 0060 60 2
+cert_check_3 0061 0000 61 0 2 2
+cert_block_6 0061 61 2
+cert_check_3 0062 0000 62 0 2 2
+cert_block_6 0062 62 2
+cert_check_3 0063 0000 63 0 2 2
+cert_block_6 0063 63 2
+end Papers.RationalityTen.RootedCanonical.RootedSixBase02.S5T1
+
+set_option maxRecDepth 100000
+set_option maxHeartbeats 0
+namespace Papers.RationalityTen.RootedCanonical.RootedSixBase02.S5T1
+cert_check_3 0064 0000 64 0 2 2
+cert_block_6 0064 64 2
+cert_check_3 0065 0000 65 0 2 2
+cert_block_6 0065 65 2
+cert_check_3 0066 0000 66 0 2 2
+cert_block_6 0066 66 2
+cert_check_3 0067 0000 67 0 2 2
+cert_block_6 0067 67 2
+cert_check_3 0068 0000 68 0 2 2
+cert_block_6 0068 68 2
+cert_check_3 0069 0000 69 0 2 2
+cert_block_6 0069 69 2
+cert_check_3 0070 0000 70 0 2 2
+cert_block_6 0070 70 2
+cert_check_3 0071 0000 71 0 2 2
+cert_block_6 0071 71 2
+cert_check_3 0072 0000 72 0 2 2
+cert_block_6 0072 72 2
+cert_check_3 0073 0000 73 0 2 2
+cert_block_6 0073 73 2
+cert_check_3 0074 0000 74 0 2 2
+cert_block_6 0074 74 2
+cert_check_3 0075 0000 75 0 2 2
+cert_block_6 0075 75 2
+cert_check_3 0076 0000 76 0 2 2
+cert_block_6 0076 76 2
+cert_check_3 0077 0000 77 0 2 2
+cert_block_6 0077 77 2
+cert_check_3 0078 0000 78 0 6 6
+cert_block_6 0078 78 6
+cert_check_3 0079 0000 79 0 6 6
+cert_block_6 0079 79 6
+cert_check_3 0080 0000 80 0 6 6
+cert_block_6 0080 80 6
+cert_check_3 0081 0000 81 0 6 6
+cert_block_6 0081 81 6
+cert_check_3 0082 0000 82 0 1 1
+cert_block_6 0082 82 1
+cert_check_3 0083 0000 83 0 1 1
+cert_block_6 0083 83 1
+cert_check_3 0084 0000 84 0 1 1
+cert_block_6 0084 84 1
+cert_check_3 0085 0000 85 0 1 1
+cert_block_6 0085 85 1
+cert_check_3 0086 0000 86 0 1 1
+cert_block_6 0086 86 1
+cert_check_3 0087 0000 87 0 1 1
+cert_block_6 0087 87 1
+cert_check_3 0088 0000 88 0 2 2
+cert_block_6 0088 88 2
+cert_check_3 0089 0000 89 0 2 2
+cert_block_6 0089 89 2
+cert_check_3 0090 0000 90 0 2 2
+cert_block_6 0090 90 2
+cert_check_3 0091 0000 91 0 2 2
+cert_block_6 0091 91 2
+cert_check_3 0092 0000 92 0 2 2
+cert_block_6 0092 92 2
+cert_check_3 0093 0000 93 0 2 2
+cert_block_6 0093 93 2
+cert_check_3 0094 0000 94 0 2 2
+cert_block_6 0094 94 2
+cert_check_3 0095 0000 95 0 2 2
+cert_block_6 0095 95 2
+cert_check_3 0096 0000 96 0 2 2
+cert_block_6 0096 96 2
+cert_check_3 0097 0000 97 0 2 2
+cert_block_6 0097 97 2
+cert_check_3 0098 0000 98 0 2 2
+cert_block_6 0098 98 2
+cert_check_3 0099 0000 99 0 2 2
+cert_block_6 0099 99 2
+cert_check_3 0100 0000 100 0 2 2
+cert_block_6 0100 100 2
+cert_check_3 0101 0000 101 0 2 2
+cert_block_6 0101 101 2
+cert_check_3 0102 0000 102 0 2 2
+cert_block_6 0102 102 2
+cert_check_3 0103 0000 103 0 2 2
+cert_block_6 0103 103 2
+cert_check_3 0104 0000 104 0 2 2
+cert_block_6 0104 104 2
+cert_check_3 0105 0000 105 0 2 2
+cert_block_6 0105 105 2
+cert_check_3 0106 0000 106 0 2 2
+cert_block_6 0106 106 2
+cert_check_3 0107 0000 107 0 2 2
+cert_block_6 0107 107 2
+cert_check_3 0108 0000 108 0 6 6
+cert_block_6 0108 108 6
+cert_check_3 0109 0000 109 0 6 6
+cert_block_6 0109 109 6
+cert_check_3 0110 0000 110 0 6 6
+cert_block_6 0110 110 6
+cert_check_3 0111 0000 111 0 6 6
+cert_block_6 0111 111 6
+cert_check_3 0112 0000 112 0 2 2
+cert_block_6 0112 112 2
+cert_check_3 0113 0000 113 0 2 2
+cert_block_6 0113 113 2
+cert_check_3 0114 0000 114 0 2 2
+cert_block_6 0114 114 2
+cert_check_3 0115 0000 115 0 2 2
+cert_block_6 0115 115 2
+cert_check_3 0116 0000 116 0 2 2
+cert_block_6 0116 116 2
+cert_check_3 0117 0000 117 0 2 2
+cert_block_6 0117 117 2
+cert_check_3 0118 0000 118 0 2 2
+cert_block_6 0118 118 2
+cert_check_3 0119 0000 119 0 2 2
+cert_block_6 0119 119 2
+cert_check_3 0120 0000 120 0 2 2
+cert_block_6 0120 120 2
+cert_check_3 0121 0000 121 0 2 2
+cert_block_6 0121 121 2
+cert_check_3 0122 0000 122 0 8 8
+cert_check_3 0122 0008 122 8 16 8
+cert_check_3 0122 0016 122 16 24 8
+cert_block_5 0122 122
+cert_check_3 0123 0000 123 0 8 8
+cert_check_3 0123 0008 123 8 16 8
+cert_check_3 0123 0016 123 16 24 8
+cert_block_5 0123 123
+cert_check_3 0124 0000 124 0 6 6
+cert_block_6 0124 124 6
+cert_check_3 0125 0000 125 0 6 6
+cert_block_6 0125 125 6
+cert_check_3 0126 0000 126 0 6 6
+cert_block_6 0126 126 6
+cert_check_3 0127 0000 127 0 6 6
+cert_block_6 0127 127 6
+end Papers.RationalityTen.RootedCanonical.RootedSixBase02.S5T1
+
+set_option maxRecDepth 100000
+set_option maxHeartbeats 0
+namespace Papers.RationalityTen.RootedCanonical.RootedSixBase02.S5T1
+cert_metadata_validity_11 0000 0 16 16
+cert_metadata_validity_11 0016 16 32 16
+cert_metadata_validity_11 0032 32 48 16
+cert_metadata_validity_11 0048 48 64 16
+cert_metadata_validity_11 0064 64 80 16
+cert_metadata_validity_11 0080 80 96 16
+cert_metadata_validity_11 0096 96 112 16
+cert_metadata_validity_11 0112 112 128 16
+theorem metadata_validity : FiniteChecks.Interval validity 0 blockCount :=
+  (FiniteChecks.interval_append (validity) 0 64 128
+  (FiniteChecks.interval_append (validity) 0 32 64
+  (FiniteChecks.interval_append (validity) 0 16 32
+  metadata_validity_0000
+  metadata_validity_0016)
+  (FiniteChecks.interval_append (validity) 32 48 64
+  metadata_validity_0032
+  metadata_validity_0048))
+  (FiniteChecks.interval_append (validity) 64 96 128
+  (FiniteChecks.interval_append (validity) 64 80 96
+  metadata_validity_0064
+  metadata_validity_0080)
+  (FiniteChecks.interval_append (validity) 96 112 128
+  metadata_validity_0096
+  metadata_validity_0112)))
+cert_metadata_symmetry_11 0000 0 16 16
+cert_metadata_symmetry_11 0016 16 32 16
+cert_metadata_symmetry_11 0032 32 48 16
+cert_metadata_symmetry_11 0048 48 64 16
+cert_metadata_symmetry_11 0064 64 80 16
+cert_metadata_symmetry_11 0080 80 96 16
+cert_metadata_symmetry_11 0096 96 112 16
+cert_metadata_symmetry_11 0112 112 128 16
+theorem metadata_symmetry : FiniteChecks.Interval symmetry 0 blockCount :=
+  (FiniteChecks.interval_append (symmetry) 0 64 128
+  (FiniteChecks.interval_append (symmetry) 0 32 64
+  (FiniteChecks.interval_append (symmetry) 0 16 32
+  metadata_symmetry_0000
+  metadata_symmetry_0016)
+  (FiniteChecks.interval_append (symmetry) 32 48 64
+  metadata_symmetry_0032
+  metadata_symmetry_0048))
+  (FiniteChecks.interval_append (symmetry) 64 96 128
+  (FiniteChecks.interval_append (symmetry) 64 80 96
+  metadata_symmetry_0064
+  metadata_symmetry_0080)
+  (FiniteChecks.interval_append (symmetry) 96 112 128
+  metadata_symmetry_0096
+  metadata_symmetry_0112)))
+cert_metadata_normalizers_3 5
+cert_metadata_root_3
+end Papers.RationalityTen.RootedCanonical.RootedSixBase02.S5T1

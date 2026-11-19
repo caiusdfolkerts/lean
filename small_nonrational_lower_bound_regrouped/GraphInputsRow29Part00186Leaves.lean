@@ -1,0 +1,59 @@
+module
+prelude
+public meta import LowerSchemas.Leaves
+public import GraphInputsRow29Part00186Data
+public import FastRawLeafCertificate
+public import InducedTerminalMatches.M064
+
+@[expose] public section
+namespace Papers.RationalityTen.CompactReplay.GraphInputsRow29Part00186
+open Papers.RationalityTen ConcreteGrowth RawLeafCertificate FastRawLeafCertificate
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+
+cert_graph_rawLeaves 000
+cert_graph_raw_exact 000
+cert_graph_certificateTable_9 000 064 064 064 2052 2053 2054 2055 2056 2057 2058
+cert_graph_certificates 000
+cert_graph_leaf_checked_2 000 0 064 2052
+cert_graph_leaf_checked_2 000 1 064 2053
+cert_graph_leaf_checked_2 000 2 064 2054
+cert_graph_leaf_checked_2 000 3 064 2055
+cert_graph_leaf_checked_2 000 4 064 2056
+cert_graph_leaf_checked_2 000 5 064 2057
+cert_graph_leaf_checked_2 000 6 064 2058
+cert_graph_leaf_certificates_checked_2 000
+#print axioms record000_leaf_certificates_checked
+
+cert_graph_rawLeaves 001
+cert_graph_raw_exact 001
+cert_graph_certificateTable_5 001
+cert_graph_certificates 001
+cert_graph_leaf_checked_3 001
+cert_graph_leaf_certificates_checked_7 001
+#print axioms record001_leaf_certificates_checked
+
+cert_graph_rawLeaves 002
+cert_graph_raw_exact 002
+cert_graph_certificateTable_5 002
+cert_graph_certificates 002
+cert_graph_leaf_checked_3 002
+cert_graph_leaf_certificates_checked_7 002
+#print axioms record002_leaf_certificates_checked
+
+cert_graph_rawLeaves 003
+cert_graph_raw_exact 003
+cert_graph_certificateTable_5 003
+cert_graph_certificates 003
+cert_graph_leaf_checked_3 003
+cert_graph_leaf_certificates_checked_7 003
+#print axioms record003_leaf_certificates_checked
+
+cert_graph_rawLeaves 004
+cert_graph_raw_exact 004
+cert_graph_certificateTable_5 004
+cert_graph_certificates 004
+cert_graph_leaf_checked_3 004
+cert_graph_leaf_certificates_checked_7 004
+#print axioms record004_leaf_certificates_checked
+end Papers.RationalityTen.CompactReplay.GraphInputsRow29Part00186

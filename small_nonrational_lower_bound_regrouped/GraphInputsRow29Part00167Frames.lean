@@ -1,0 +1,29 @@
+module
+prelude
+public meta import LowerSchemas.Frames
+public import GraphInputsRow29Part00167Data
+public import RawFrameSupport
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.CompactReplay.GraphInputsRow29Part00167
+open Papers.RationalityTen PackedGraphCertificate SharedGraphCellPool
+open SharedGraphFramePairs RawFrameSupport FiniteChecks
+cert_graph_frame_supported_2 000
+cert_graph_frames_supported_18 000
+#print axioms record000_frames_supported
+cert_graph_frame_supported_2 001
+cert_graph_frames_supported_18 001
+#print axioms record001_frames_supported
+cert_graph_frame_supported_2 002
+cert_graph_frames_supported_18 002
+#print axioms record002_frames_supported
+cert_graph_frame_supported_2 003
+cert_graph_frames_supported_18 003
+#print axioms record003_frames_supported
+cert_graph_frame_supported_2 004
+cert_graph_frames_supported_18 004
+#print axioms record004_frames_supported
+end Papers.RationalityTen.CompactReplay.GraphInputsRow29Part00167

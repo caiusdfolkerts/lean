@@ -1,0 +1,33 @@
+module
+prelude
+public meta import GraphCases
+public import GraphInputsRow24Part00134Checked
+public import GraphInputsRow24Part00134Metadata
+public import GraphInputsRow24Part00134Frames
+public import GraphInputsRow24Part00134Leaves
+public import GraphEmbeddingCoverage
+public import GraphCoverageBatch100
+
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00134
+open Papers.RationalityTen PackedGraphCertificate SharedGraphCellPool
+open GraphCaseCertificate GraphRowSpecifications
+
+certified_graph_case record000 24 31570191777792 GraphCoverageDescriptions.GraphCoverageBatch100.candidate10049 14
+
+certified_graph_case record001 24 31570266161152 GraphCoverageDescriptions.GraphCoverageBatch100.candidate10050 14
+
+certified_graph_case record002 24 31570728583168 GraphCoverageDescriptions.GraphCoverageBatch100.candidate10051 14
+
+certified_graph_case record003 24 31578768081152 GraphCoverageDescriptions.GraphCoverageBatch100.candidate10052 14
+
+certified_graph_case record004 24 31579040710656 GraphCoverageDescriptions.GraphCoverageBatch100.candidate10053 14
+
+certified_graph_case record005 24 31579304951808 GraphCoverageDescriptions.GraphCoverageBatch100.candidate10054 14
+
+certified_graph_case record006 24 31579313274880 GraphCoverageDescriptions.GraphCoverageBatch100.candidate10055 14
+end Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00134

@@ -1,0 +1,41 @@
+version: v0.4
+project:
+  name: Rational realizations of small four-polytopes
+  description: >-
+    Every four-polytope with at most ten vertices admits a rational realization
+    of its face lattice. Every eleven-vertex four-polytope with a simple vertex
+    also admits a rational realization. The least number of vertices of a
+    nonrational four-polytope is attained and lies between eleven and seventeen.
+  authors: [Caius Folkerts]
+  responsible_maintainers: [Caius Folkerts]
+  license: Apache-2.0
+sources:
+  - title: Small nonrational four-polytopes
+    authors: [Caius Folkerts]
+    type: paper
+    id: "Caius Folkerts, Small nonrational four-polytopes (2026), corrected manuscript included as paper.pdf"
+    location: Theorem 2, Corollary 4 and the vertex bounds in the introduction
+    relationship: formalizes
+    author_endorsement: participated
+related_formalizations:
+  - id: https://github.com/caiusdfolkerts/research/tree/bfaaa483aa38137e4d31c89c405de03390177358/small_nonrational
+    relationship: builds-on
+    note: The proof is repackaged from the author's geometric reductions and complete finite coverage.
+classification:
+  arxiv: [math.CO, math.MG]
+  msc2020: [52B11, 52B05]
+status:
+  scope: >-
+    Theorem 2, Corollary 4, and both inequalities and attainment
+    in the stated bounds on the least number of vertices.
+automation:
+  methods:
+    - method: agent
+      models: [GPT-6 Astra, GPT-5.6 Sol, Kimi K3]
+      tool_setup: The source paper credits these systems with assistance in developing the mathematical proofs.
+    - method: agent
+      framework: OpenAI Codex
+      tool_setup: Prepared the comparison modules, finite certificate encodings and repeated-proof constructors.
+review:
+  status: unchecked
+  notes: No independent human review of the packaged comparison is asserted.

@@ -1,0 +1,71 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedSixExtra
+public meta import CertificateNumbers
+import HexNatLiteral
+public import SignatureCompatibility
+public import FiniteChecks
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSixExtra02
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+cert_badMasksBlock_12 0020 0
+cert_badMasksBlock_12 0021 1
+cert_badMasksBlock_9 0022
+cert_badMasksBlock_9 0023
+cert_badMasksBlock_9 0024
+cert_badMasksBlock_9 0025
+cert_badMasksBlock_9 0026
+cert_badMasksBlock_9 0027
+cert_badMasksBlock_9 0028
+cert_badMasksBlock_9 0029
+cert_badMasksBlock_9 0030
+cert_badMasksBlock_9 0031
+cert_badMasksBlock_9 0032
+cert_badMasksBlock_9 0033
+cert_badMasksBlock_9 0034
+cert_badMasksBlock_9 0035
+cert_badMasksBlock_9 0036
+cert_badMasksBlock_9 0037
+cert_badMasksBlock_9 0038
+cert_badMasksBlock_9 0039
+cert_badMasksBlock_9 0040
+cert_badMasksBlock_9 0041
+cert_badMasksBlock_9 0042
+cert_badMasksBlock_9 0043
+cert_badMasksBlock_9 0044
+cert_badMasksBlock_9 0045
+cert_badMasksBlock_9 0046
+cert_badMasksBlock_9 0047
+cert_badMasksBlock_9 0048
+cert_badMasksBlock_9 0049
+cert_badMasksBlock_9 0050
+cert_badMasksBlock_9 0051
+cert_badMasksBlock_9 0052
+cert_badMasksBlock_9 0053
+cert_badMasksBlock_9 0054
+cert_badMasksBlock_9 0055
+cert_badMasksBlock_9 0056
+cert_badMasksBlock_9 0057
+cert_badMasksBlock_9 0058
+cert_badMasksBlock_9 0059
+cert_badMasksBlock_9 0060
+cert_badMasksBlock_9 0061
+cert_badMasksBlock_9 0062
+cert_badMasksBlock_9 0063
+cert_badMasksBlock_9 0064
+cert_badMasksBlock_9 0065
+cert_badMasksBlock_9 0066
+cert_badMasksBlock_9 0067
+cert_badMasksBlock_9 0068
+cert_badMasksBlock_9 0069
+cert_badMasksBlock_9 0070
+cert_badMasksBlock_9 0071
+cert_badMasksBlock_9 0072
+cert_badMasksBlock_9 0073
+def badMasksBlock0074 : Nat := 0x0
+
+end Papers.RationalityTen.RootedCaches.RootedSixExtra02

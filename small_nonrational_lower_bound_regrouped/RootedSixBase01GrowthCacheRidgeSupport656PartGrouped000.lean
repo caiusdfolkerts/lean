@@ -1,0 +1,110 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedSixBase.Part0
+public meta import CertificateNumbers
+public import RootedSixBase01GrowthCacheRidgeSupport656Data
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option palomar.groupedCertificateSource "RootedSixBase01GrowthCacheRidgeSupport656Part000.lean"
+namespace Papers.RationalityTen.RootedCaches.RootedSixBase01
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open RawGrowthCacheCertificate RawNatGrowthSoundness
+cert_ridgeSupport_decode_2 656 000 14 32 001
+cert_ridgeSupport_mask_2 656 000 0
+cert_ridgeSupport_checked_3 656 000
+cert_ridgeSupport_decode_2 656 001 14 32 002
+cert_ridgeSupport_mask_2 656 001 1
+cert_ridgeSupport_checked_3 656 001
+cert_ridgeSupport_decode_2 656 002 14 32 003
+cert_ridgeSupport_mask_2 656 002 2
+cert_ridgeSupport_checked_3 656 002
+cert_ridgeSupport_decode_2 656 003 14 32 004
+cert_ridgeSupport_mask_2 656 003 3
+cert_ridgeSupport_checked_3 656 003
+cert_ridgeSupport_decode_2 656 004 14 32 005
+cert_ridgeSupport_mask_2 656 004 4
+cert_ridgeSupport_checked_3 656 004
+cert_ridgeSupport_decode_2 656 005 14 32 006
+cert_ridgeSupport_mask_2 656 005 5
+cert_ridgeSupport_checked_3 656 005
+cert_ridgeSupport_decode_2 656 006 14 32 007
+cert_ridgeSupport_mask_2 656 006 6
+cert_ridgeSupport_checked_3 656 006
+cert_ridgeSupport_decode_2 656 007 14 32 008
+cert_ridgeSupport_mask_2 656 007 7
+cert_ridgeSupport_checked_4 656 007
+end Papers.RationalityTen.RootedCaches.RootedSixBase01
+end
+end
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option palomar.groupedCertificateSource "RootedSixBase01GrowthCacheRidgeSupport656Part001.lean"
+namespace Papers.RationalityTen.RootedCaches.RootedSixBase01
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open RawGrowthCacheCertificate RawNatGrowthSoundness
+cert_ridgeSupport_decode_2 656 008 14 32 009
+cert_ridgeSupport_mask_2 656 008 0
+cert_ridgeSupport_checked_3 656 008
+cert_ridgeSupport_decode_2 656 009 14 32 010
+cert_ridgeSupport_mask_2 656 009 1
+cert_ridgeSupport_checked_3 656 009
+cert_ridgeSupport_decode_2 656 010 14 32 011
+cert_ridgeSupport_mask_2 656 010 2
+cert_ridgeSupport_checked_3 656 010
+cert_ridgeSupport_decode_2 656 011 14 32 012
+cert_ridgeSupport_mask_2 656 011 3
+cert_ridgeSupport_checked_3 656 011
+cert_ridgeSupport_decode_2 656 012 14 32 013
+cert_ridgeSupport_mask_2 656 012 4
+cert_ridgeSupport_checked_3 656 012
+cert_ridgeSupport_decode_2 656 013 14 32 014
+cert_ridgeSupport_mask_2 656 013 5
+cert_ridgeSupport_checked_3 656 013
+cert_ridgeSupport_decode_2 656 014 14 32 015
+cert_ridgeSupport_mask_2 656 014 6
+cert_ridgeSupport_checked_3 656 014
+cert_ridgeSupport_decode_2 656 015 14 32 016
+cert_ridgeSupport_mask_2 656 015 7
+cert_ridgeSupport_checked_4 656 015
+end Papers.RationalityTen.RootedCaches.RootedSixBase01
+end
+end
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option palomar.groupedCertificateSource "RootedSixBase01GrowthCacheRidgeSupport656Part002.lean"
+namespace Papers.RationalityTen.RootedCaches.RootedSixBase01
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open RawGrowthCacheCertificate RawNatGrowthSoundness
+cert_ridgeSupport_decode_2 656 016 14 32 017
+cert_ridgeSupport_mask_2 656 016 0
+cert_ridgeSupport_checked_3 656 016
+cert_ridgeSupport_decode_2 656 017 14 32 018
+cert_ridgeSupport_mask_2 656 017 1
+cert_ridgeSupport_checked_3 656 017
+cert_ridgeSupport_decode_2 656 018 14 32 019
+cert_ridgeSupport_mask_2 656 018 2
+cert_ridgeSupport_checked_3 656 018
+cert_ridgeSupport_decode_2 656 019 14 32 020
+cert_ridgeSupport_mask_2 656 019 3
+cert_ridgeSupport_checked_3 656 019
+cert_ridgeSupport_decode_2 656 020 14 32 021
+cert_ridgeSupport_mask_2 656 020 4
+cert_ridgeSupport_checked_3 656 020
+cert_ridgeSupport_decode_2 656 021 14 32 022
+cert_ridgeSupport_mask_2 656 021 5
+cert_ridgeSupport_checked_3 656 021
+cert_ridgeSupport_decode_2 656 022 14 15 023
+cert_ridgeSupport_mask_2 656 022 6
+cert_ridgeSupport_checked_4 656 022
+end Papers.RationalityTen.RootedCaches.RootedSixBase01
+end
+end

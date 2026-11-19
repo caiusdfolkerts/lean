@@ -1,0 +1,109 @@
+module
+prelude
+public meta import LowerSchemas.Frames
+public meta import CertificateNumbers
+public import GraphInputsRow31Part00058Data
+public import RawFrameSupport
+public import SharedFrameGroups108Checked
+public import SharedFrameGroups109Checked
+public import SharedFrameGroups112Checked
+public import SharedFrameGroups113Checked
+public import SharedFrameGroups118Checked
+public import SharedFrameGroups119Checked
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.CompactReplay.GraphInputsRow31Part00058
+open Papers.RationalityTen PackedGraphCertificate SharedGraphCellPool
+open SharedGraphFramePairs RawFrameSupport FiniteChecks
+cert_graph_frame_supported_2 000
+cert_graph_frame_indices 000 001 1115 13 0
+cert_graph_frame_graph 000 001 1115
+cert_graph_frame_links_5 000 001 0000 1115 1 0 64 64
+cert_graph_frame_links_5 000 001 0064 1115 1 64 128 64
+cert_graph_frame_links_5 000 001 0128 1115 1 128 129 1
+cert_graph_frame_links_4 000 001 1115 1 129
+cert_graph_frame_supported 000 001 1 1115
+cert_graph_frames_supported_20 000
+#print axioms record000_frames_supported
+cert_graph_frame_supported_2 001
+cert_graph_frames_supported_18 001
+#print axioms record001_frames_supported
+cert_graph_frame_supported_2 002
+cert_graph_frame_indices 002 001 1115 13 1
+cert_graph_frame_graph 002 001 1115
+cert_graph_frame_links_5 002 001 0000 1115 1 0 64 64
+cert_graph_frame_links_5 002 001 0064 1115 1 64 128 64
+cert_graph_frame_links_5 002 001 0128 1115 1 128 134 6
+cert_graph_frame_links_4 002 001 1115 1 134
+cert_graph_frame_supported 002 001 1 1115
+cert_graph_frame_indices 002 002 1100 13 2
+cert_graph_frame_graph 002 002 1100
+cert_graph_frame_links_5 002 002 0000 1100 2 0 64 64
+cert_graph_frame_links_5 002 002 0064 1100 2 64 128 64
+cert_graph_frame_links_5 002 002 0128 1100 2 128 134 6
+cert_graph_frame_links_4 002 002 1100 2 134
+cert_graph_frame_supported 002 002 2 1100
+cert_graph_frame_indices 002 003 1099 11 3
+cert_graph_frame_graph 002 003 1099
+cert_graph_frame_links_5 002 003 0000 1099 3 0 64 64
+cert_graph_frame_links_5 002 003 0064 1099 3 64 128 64
+cert_graph_frame_links_5 002 003 0128 1099 3 128 134 6
+cert_graph_frame_links_4 002 003 1099 3 134
+cert_graph_frame_supported 002 003 3 1099
+cert_graph_frames_supported_6 002
+#print axioms record002_frames_supported
+cert_graph_frame_supported_2 003
+cert_graph_frame_indices 003 001 1115 13 4
+cert_graph_frame_graph 003 001 1115
+cert_graph_frame_links_5 003 001 0000 1115 1 0 64 64
+cert_graph_frame_links_5 003 001 0064 1115 1 64 117 53
+cert_graph_frame_links_3 003 001 1115 1 117
+cert_graph_frame_supported 003 001 1 1115
+cert_graph_frame_indices 003 002 1081 13 5
+cert_graph_frame_graph 003 002 1081
+cert_graph_frame_links_5 003 002 0000 1081 2 0 64 64
+cert_graph_frame_links_5 003 002 0064 1081 2 64 117 53
+cert_graph_frame_links_3 003 002 1081 2 117
+cert_graph_frame_supported 003 002 2 1081
+cert_graph_frame_indices 003 003 1080 12 6
+cert_graph_frame_graph 003 003 1080
+cert_graph_frame_links_5 003 003 0000 1080 3 0 64 64
+cert_graph_frame_links_5 003 003 0064 1080 3 64 117 53
+cert_graph_frame_links_3 003 003 1080 3 117
+cert_graph_frame_supported 003 003 3 1080
+cert_graph_frames_supported_6 003
+#print axioms record003_frames_supported
+cert_graph_frame_supported_2 004
+cert_graph_frame_indices 004 001 1115 13 7
+cert_graph_frame_graph 004 001 1115
+cert_graph_frame_links_5 004 001 0000 1115 1 0 64 64
+cert_graph_frame_links_5 004 001 0064 1115 1 64 126 62
+cert_graph_frame_links_3 004 001 1115 1 126
+cert_graph_frame_supported 004 001 1 1115
+cert_graph_frames_supported_20 004
+#print axioms record004_frames_supported
+cert_graph_frame_supported_2 005
+cert_graph_frame_indices 005 001 1114 13 8
+cert_graph_frame_graph 005 001 1114
+cert_graph_frame_links_5 005 001 0000 1114 1 0 64 64
+cert_graph_frame_links_5 005 001 0064 1114 1 64 125 61
+cert_graph_frame_links_3 005 001 1114 1 125
+cert_graph_frame_supported 005 001 1 1114
+cert_graph_frames_supported_20 005
+#print axioms record005_frames_supported
+cert_graph_frame_supported_2 006
+cert_graph_frame_indices 006 001 1114 13 9
+cert_graph_frame_graph 006 001 1114
+cert_graph_frame_links_5 006 001 0000 1114 1 0 64 64
+cert_graph_frame_links_5 006 001 0064 1114 1 64 122 58
+cert_graph_frame_links_3 006 001 1114 1 122
+cert_graph_frame_supported 006 001 1 1114
+cert_graph_frames_supported_20 006
+#print axioms record006_frames_supported
+cert_graph_frame_supported_2 007
+cert_graph_frames_supported_18 007
+#print axioms record007_frames_supported
+end Papers.RationalityTen.CompactReplay.GraphInputsRow31Part00058

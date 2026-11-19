@@ -1,0 +1,35 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedSubsumedForest.Part0
+public import RootedSixBase00GrowthCache
+public import RootedSixBase00FastWords
+public import SubsumedClassification
+public import RootedSubsumedForest0338Leaves
+public import RootedSubsumedForest0338ProofGrouped000
+public import RootedSubsumedForest0338ProofGrouped001
+public import RootedSubsumedForest0338ProofGrouped002
+public import RootedSubsumedForest0338ProofGrouped003
+public import RootedSubsumedForest0338ProofGrouped004
+public import RootedSubsumedForest0338ProofGrouped005
+public import RootedSubsumedForest0338ProofGrouped006
+public import RootedSubsumedForest0338ProofGrouped007
+public import RootedSubsumedForest0338ProofGrouped008
+public import RootedSubsumedForest0338ProofGrouped009
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedForests.RootedSubsumedForest0338
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open GrowthDAG SparseGrowthDAG GrowthPruning GrowthRenaming
+open GrowthBitsets BatchedGrowthPruning BatchedOrbitGrowth
+open RawNatGrowthSoundness RawNatGrowthCompleteness
+
+theorem nodeTest_complete : Interval nodeTest 0 nodeCount := (interval_append nodeTest 0 28800 58209 (interval_append nodeTest 0 14080 28800 (interval_append nodeTest 0 7040 14080 (interval_append nodeTest 0 3200 7040 (interval_append nodeTest 0 1280 3200 (interval_append nodeTest 0 640 1280 nodeInterval0 nodeInterval640) (interval_append nodeTest 1280 1920 3200 nodeInterval1280 (interval_append nodeTest 1920 2560 3200 nodeInterval1920 nodeInterval2560))) (interval_append nodeTest 3200 5120 7040 (interval_append nodeTest 3200 3840 5120 nodeInterval3200 (interval_append nodeTest 3840 4480 5120 nodeInterval3840 nodeInterval4480)) (interval_append nodeTest 5120 5760 7040 nodeInterval5120 (interval_append nodeTest 5760 6400 7040 nodeInterval5760 nodeInterval6400)))) (interval_append nodeTest 7040 10240 14080 (interval_append nodeTest 7040 8320 10240 (interval_append nodeTest 7040 7680 8320 nodeInterval7040 nodeInterval7680) (interval_append nodeTest 8320 8960 10240 nodeInterval8320 (interval_append nodeTest 8960 9600 10240 nodeInterval8960 nodeInterval9600))) (interval_append nodeTest 10240 12160 14080 (interval_append nodeTest 10240 10880 12160 nodeInterval10240 (interval_append nodeTest 10880 11520 12160 nodeInterval10880 nodeInterval11520)) (interval_append nodeTest 12160 12800 14080 nodeInterval12160 (interval_append nodeTest 12800 13440 14080 nodeInterval12800 nodeInterval13440))))) (interval_append nodeTest 14080 21120 28800 (interval_append nodeTest 14080 17280 21120 (interval_append nodeTest 14080 15360 17280 (interval_append nodeTest 14080 14720 15360 nodeInterval14080 nodeInterval14720) (interval_append nodeTest 15360 16000 17280 nodeInterval15360 (interval_append nodeTest 16000 16640 17280 nodeInterval16000 nodeInterval16640))) (interval_append nodeTest 17280 19200 21120 (interval_append nodeTest 17280 17920 19200 nodeInterval17280 (interval_append nodeTest 17920 18560 19200 nodeInterval17920 nodeInterval18560)) (interval_append nodeTest 19200 19840 21120 nodeInterval19200 (interval_append nodeTest 19840 20480 21120 nodeInterval19840 nodeInterval20480)))) (interval_append nodeTest 21120 24960 28800 (interval_append nodeTest 21120 23040 24960 (interval_append nodeTest 21120 21760 23040 nodeInterval21120 (interval_append nodeTest 21760 22400 23040 nodeInterval21760 nodeInterval22400)) (interval_append nodeTest 23040 23680 24960 nodeInterval23040 (interval_append nodeTest 23680 24320 24960 nodeInterval23680 nodeInterval24320))) (interval_append nodeTest 24960 26880 28800 (interval_append nodeTest 24960 25600 26880 nodeInterval24960 (interval_append nodeTest 25600 26240 26880 nodeInterval25600 nodeInterval26240)) (interval_append nodeTest 26880 27520 28800 nodeInterval26880 (interval_append nodeTest 27520 28160 28800 nodeInterval27520 nodeInterval28160)))))) (interval_append nodeTest 28800 43520 58209 (interval_append nodeTest 28800 35840 43520 (interval_append nodeTest 28800 32000 35840 (interval_append nodeTest 28800 30080 32000 (interval_append nodeTest 28800 29440 30080 nodeInterval28800 nodeInterval29440) (interval_append nodeTest 30080 30720 32000 nodeInterval30080 (interval_append nodeTest 30720 31360 32000 nodeInterval30720 nodeInterval31360))) (interval_append nodeTest 32000 33920 35840 (interval_append nodeTest 32000 32640 33920 nodeInterval32000 (interval_append nodeTest 32640 33280 33920 nodeInterval32640 nodeInterval33280)) (interval_append nodeTest 33920 34560 35840 nodeInterval33920 (interval_append nodeTest 34560 35200 35840 nodeInterval34560 nodeInterval35200)))) (interval_append nodeTest 35840 39680 43520 (interval_append nodeTest 35840 37760 39680 (interval_append nodeTest 35840 36480 37760 nodeInterval35840 (interval_append nodeTest 36480 37120 37760 nodeInterval36480 nodeInterval37120)) (interval_append nodeTest 37760 38400 39680 nodeInterval37760 (interval_append nodeTest 38400 39040 39680 nodeInterval38400 nodeInterval39040))) (interval_append nodeTest 39680 41600 43520 (interval_append nodeTest 39680 40320 41600 nodeInterval39680 (interval_append nodeTest 40320 40960 41600 nodeInterval40320 nodeInterval40960)) (interval_append nodeTest 41600 42240 43520 nodeInterval41600 (interval_append nodeTest 42240 42880 43520 nodeInterval42240 nodeInterval42880))))) (interval_append nodeTest 43520 50560 58209 (interval_append nodeTest 43520 46720 50560 (interval_append nodeTest 43520 44800 46720 (interval_append nodeTest 43520 44160 44800 nodeInterval43520 nodeInterval44160) (interval_append nodeTest 44800 45440 46720 nodeInterval44800 (interval_append nodeTest 45440 46080 46720 nodeInterval45440 nodeInterval46080))) (interval_append nodeTest 46720 48640 50560 (interval_append nodeTest 46720 47360 48640 nodeInterval46720 (interval_append nodeTest 47360 48000 48640 nodeInterval47360 nodeInterval48000)) (interval_append nodeTest 48640 49280 50560 nodeInterval48640 (interval_append nodeTest 49280 49920 50560 nodeInterval49280 nodeInterval49920)))) (interval_append nodeTest 50560 54400 58209 (interval_append nodeTest 50560 52480 54400 (interval_append nodeTest 50560 51200 52480 nodeInterval50560 (interval_append nodeTest 51200 51840 52480 nodeInterval51200 nodeInterval51840)) (interval_append nodeTest 52480 53120 54400 nodeInterval52480 (interval_append nodeTest 53120 53760 54400 nodeInterval53120 nodeInterval53760))) (interval_append nodeTest 54400 56320 58209 (interval_append nodeTest 54400 55040 56320 nodeInterval54400 (interval_append nodeTest 55040 55680 56320 nodeInterval55040 nodeInterval55680)) (interval_append nodeTest 56320 56960 58209 nodeInterval56320 (interval_append nodeTest 56960 57600 58209 nodeInterval56960 nodeInterval57600)))))))
+cert_root_7 58208
+cert_nodes_3 96
+cert_boundary_classification_5 96 00
+#print axioms boundary_classification
+
+end Papers.RationalityTen.RootedForests.RootedSubsumedForest0338

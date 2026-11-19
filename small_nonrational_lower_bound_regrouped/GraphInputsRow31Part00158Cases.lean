@@ -1,0 +1,43 @@
+module
+prelude
+public meta import GraphCases
+public import GraphInputsRow31Part00158Checked
+public import GraphInputsRow31Part00158Metadata
+public import GraphInputsRow31Part00158Frames
+public import GraphInputsRow31Part00158Leaves
+public import GraphEmbeddingCoverage
+public import GraphCoverageBatch168
+
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.CompactReplay.GraphInputsRow31Part00158
+open Papers.RationalityTen PackedGraphCertificate SharedGraphCellPool
+open GraphCaseCertificate GraphRowSpecifications
+
+certified_graph_case record000 31 31082712932480 GraphCoverageDescriptions.GraphCoverageBatch168.candidate16801 14
+
+certified_graph_case record001 31 31108448264448 GraphCoverageDescriptions.GraphCoverageBatch168.candidate16802 14
+
+certified_graph_case record002 31 31114890723456 GraphCoverageDescriptions.GraphCoverageBatch168.candidate16803 14
+
+certified_graph_case record003 31 31115293229568 GraphCoverageDescriptions.GraphCoverageBatch168.candidate16804 14
+
+certified_graph_case record004 31 31117038198912 GraphCoverageDescriptions.GraphCoverageBatch168.candidate16805 14
+
+certified_graph_case record005 31 31155692904480 GraphCoverageDescriptions.GraphCoverageBatch168.candidate16806 14
+
+certified_graph_case record006 31 31200859160832 GraphCoverageDescriptions.GraphCoverageBatch168.candidate16807 14
+
+certified_graph_case record007 31 31224480415744 GraphCoverageDescriptions.GraphCoverageBatch168.candidate16808 14
+
+certified_graph_case record008 31 31337206546688 GraphCoverageDescriptions.GraphCoverageBatch168.candidate16809 14
+
+certified_graph_case record009 31 31337218056192 GraphCoverageDescriptions.GraphCoverageBatch168.candidate16810 14
+
+certified_graph_case record010 31 31337449267200 GraphCoverageDescriptions.GraphCoverageBatch168.candidate16811 14
+
+certified_graph_case record011 31 31346315493920 GraphCoverageDescriptions.GraphCoverageBatch168.candidate16812 14
+end Papers.RationalityTen.CompactReplay.GraphInputsRow31Part00158

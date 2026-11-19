@@ -1,0 +1,113 @@
+module
+prelude
+public meta import LowerSchemas.FiniteSmallSubsumedForest
+public import SmallSubsumedForest15Data
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.SmallRawForests.SmallSubsumedForest15
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open GrowthDAG SparseGrowthDAG GrowthPruning GrowthRenaming
+open GrowthBitsets BatchedGrowthPruning BatchedOrbitGrowth
+open RawNatGrowthSoundness RawNatGrowthCompleteness
+cert_leafTestAt_2 544
+cert_leafTestAt_block_3 544 0 1
+cert_leafTestAt_block_3 544 1 2
+cert_leafTestAt_block_3 544 2 3
+cert_leafTestAt_block_3 544 3 4
+cert_leafTestAt_block_3 544 4 5
+cert_leafTestAt_block_3 544 5 6
+cert_leafTestAt_block_3 544 6 7
+cert_leafTestAt_block_3 544 7 8
+cert_leafTestAt_block_3 544 8 9
+cert_leafTestAt_block_3 544 9 10
+cert_leafTestAt_block_3 544 10 11
+cert_leafTestAt_block_3 544 11 12
+cert_leafTestAt_block_3 544 12 13
+cert_leafTestAt_block_3 544 13 14
+cert_leafTestAt_block_3 544 14 15
+cert_leafTestAt_block_3 544 15 16
+cert_leafTestAt_block_3 544 16 17
+cert_leafTestAt_block_3 544 17 18
+cert_leafTestAt_block_3 544 18 19
+cert_leafTestAt_block_3 544 19 20
+cert_leafTestAt_block_3 544 20 21
+cert_leafTestAt_block_3 544 21 22
+cert_leafTestAt_block_3 544 22 23
+cert_leafTestAt_block_3 544 23 24
+cert_leafTestAt_block_3 544 24 25
+cert_leafTestAt_block_3 544 25 26
+cert_leafTestAt_block_3 544 26 27
+cert_leafTestAt_block_3 544 27 28
+cert_leafTestAt_block_3 544 28 29
+cert_leafTestAt_block_3 544 29 30
+cert_leafTestAt_block_3 544 30 31
+cert_leafTestAt_block_3 544 31 32
+theorem leafTestAt544_complete : Interval leafTestAt544 0 32 :=
+  (interval_append leafTestAt544 0 16 32
+  (interval_append leafTestAt544 0 8 16
+  (interval_append leafTestAt544 0 4 8
+  (interval_append leafTestAt544 0 2 4
+  (interval_append leafTestAt544 0 1 2
+  leafTestAt544_block_0
+  leafTestAt544_block_1)
+  (interval_append leafTestAt544 2 3 4
+  leafTestAt544_block_2
+  leafTestAt544_block_3))
+  (interval_append leafTestAt544 4 6 8
+  (interval_append leafTestAt544 4 5 6
+  leafTestAt544_block_4
+  leafTestAt544_block_5)
+  (interval_append leafTestAt544 6 7 8
+  leafTestAt544_block_6
+  leafTestAt544_block_7)))
+  (interval_append leafTestAt544 8 12 16
+  (interval_append leafTestAt544 8 10 12
+  (interval_append leafTestAt544 8 9 10
+  leafTestAt544_block_8
+  leafTestAt544_block_9)
+  (interval_append leafTestAt544 10 11 12
+  leafTestAt544_block_10
+  leafTestAt544_block_11))
+  (interval_append leafTestAt544 12 14 16
+  (interval_append leafTestAt544 12 13 14
+  leafTestAt544_block_12
+  leafTestAt544_block_13)
+  (interval_append leafTestAt544 14 15 16
+  leafTestAt544_block_14
+  leafTestAt544_block_15))))
+  (interval_append leafTestAt544 16 24 32
+  (interval_append leafTestAt544 16 20 24
+  (interval_append leafTestAt544 16 18 20
+  (interval_append leafTestAt544 16 17 18
+  leafTestAt544_block_16
+  leafTestAt544_block_17)
+  (interval_append leafTestAt544 18 19 20
+  leafTestAt544_block_18
+  leafTestAt544_block_19))
+  (interval_append leafTestAt544 20 22 24
+  (interval_append leafTestAt544 20 21 22
+  leafTestAt544_block_20
+  leafTestAt544_block_21)
+  (interval_append leafTestAt544 22 23 24
+  leafTestAt544_block_22
+  leafTestAt544_block_23)))
+  (interval_append leafTestAt544 24 28 32
+  (interval_append leafTestAt544 24 26 28
+  (interval_append leafTestAt544 24 25 26
+  leafTestAt544_block_24
+  leafTestAt544_block_25)
+  (interval_append leafTestAt544 26 27 28
+  leafTestAt544_block_26
+  leafTestAt544_block_27))
+  (interval_append leafTestAt544 28 30 32
+  (interval_append leafTestAt544 28 29 30
+  leafTestAt544_block_28
+  leafTestAt544_block_29)
+  (interval_append leafTestAt544 30 31 32
+  leafTestAt544_block_30
+  leafTestAt544_block_31)))))
+cert_leafInterval_2 544 576
+end Papers.RationalityTen.SmallRawForests.SmallSubsumedForest15

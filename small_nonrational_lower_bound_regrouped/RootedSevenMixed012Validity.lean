@@ -1,0 +1,12 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedSevenMixed
+public import RootedSevenMixed012ValidityPart000
+public import RootedSevenMixed012ValidityPart001
+
+@[expose] public section
+namespace Papers.RationalityTen.FacetUniverses.RootedSevenMixed012.Validity
+open Papers.RationalityTen
+cert_checked_5 838
+cert_graph_checked 838 012
+end Papers.RationalityTen.FacetUniverses.RootedSevenMixed012.Validity
