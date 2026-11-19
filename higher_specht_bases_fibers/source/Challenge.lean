@@ -55,15 +55,18 @@ def springerIdeal (R : Type*) [CommRing R] (μ : YoungDiagram) :
 abbrev SpringerRing (R : Type*) [CommRing R] (μ : YoungDiagram) :=
   PolynomialRing μ.card R ⧸ springerIdeal R μ
 
-def adjoinOnes (μ : YoungDiagram) (m : ℕ) : YoungDiagram where
-  cells := μ.cells ∪ (Finset.range (μ.colLen 0 + m) ×ˢ {0})
-  isLowerSet := by
+theorem adjoinOnes_isLowerSet (μ : YoungDiagram) (m : ℕ) :
+    IsLowerSet (↑(μ.cells ∪ (Finset.range (μ.colLen 0 + m) ×ˢ {0})) : Set (ℕ × ℕ)) := by
     rintro ⟨a, b⟩ ⟨c, d⟩ ⟨hac, hbd⟩ h
     rcases Finset.mem_union.mp h with h | h
     · exact Finset.mem_union_left _ (μ.isLowerSet ⟨hac, hbd⟩ h)
     · apply Finset.mem_union_right
       simp only [Finset.mem_product, Finset.mem_range, Finset.mem_singleton] at h ⊢
       exact ⟨hac.trans_lt h.1, by omega⟩
+
+def adjoinOnes (μ : YoungDiagram) (m : ℕ) : YoungDiagram where
+  cells := μ.cells ∪ (Finset.range (μ.colLen 0 + m) ×ˢ {0})
+  isLowerSet := adjoinOnes_isLowerSet μ m
 
 def columnPartition (k : ℕ) : YoungDiagram := adjoinOnes ⊥ k
 
@@ -80,9 +83,12 @@ abbrev ParameterFiber (R : Type*) [CommRing R] (n : ℕ) (lam : YoungDiagram)
 section RootData
 variable {R : Type*} [CommRing R] {ι : Type*} [Fintype ι]
 
+theorem parameterPolynomial_index_lt {m : ℕ} (j : Fin m) :
+    m - j.val - 1 < m := by omega
+
 def parameterPolynomial {m : ℕ} (a : Fin m → R) : Polynomial R :=
   Polynomial.X ^ m + ∑ j : Fin m,
-    Polynomial.C ((-1) ^ (m - j.val) * a ⟨m - j.val - 1, by omega⟩) *
+    Polynomial.C ((-1) ^ (m - j.val) * a ⟨m - j.val - 1, parameterPolynomial_index_lt j⟩) *
       Polynomial.X ^ j.val
 
 abbrev PrescribedRootAssignments (n : ℕ) (r : ι → ℕ) :=

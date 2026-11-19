@@ -4,7 +4,9 @@
   "theorem_names": [
     "HigherSpecht.theorem_7_1_parameter_fiber_exists",
     "HigherSpecht.theorem_7_1_algebraicClosure_exists",
-    "HigherSpecht.theorem_7_1_algebraicClosure_number_of_factors"
+    "HigherSpecht.theorem_7_1_algebraicClosure_number_of_factors",
+    "HigherSpecht.parameterPolynomial_index_lt",
+    "HigherSpecht.adjoinOnes_isLowerSet"
   ],
   "permitted_axioms": [
     "propext",
