@@ -8,7 +8,9 @@
     "HigherSpecht.untruncated_isReduced_iff",
     "HigherSpecht.parameterFiber_etale_iff_polynomial",
     "HigherSpecht.parameterFiber_geometricallyReduced_iff_squarefree",
-    "HigherSpecht.parameter_etale_atPrime_iff_polynomial"
+    "HigherSpecht.parameter_etale_atPrime_iff_polynomial",
+    "HigherSpecht.untruncated_primary_and_graded_multiplicities",
+    "HigherSpecht.coordinateIdeal_isPrime"
   ],
   "permitted_axioms": [
     "propext",

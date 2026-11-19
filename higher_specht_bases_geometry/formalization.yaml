@@ -44,7 +44,7 @@ review:
   status: unchecked
   notes: This selection requires its own full preflight.
 scope:
-  current_selection: Proposition 7.3 irredundant primary decomposition and radicals. Corollary 7.4 reducedness, geometric reducedness, étale fibers and the base-local étale criterion.
+  current_selection: Proposition 7.3 irredundant primary decomposition, radicals and both multiplicities. Corollary 7.4 reducedness, geometric reducedness, étale fibers and the base-local étale criterion.
   known_gaps:
-  - Numerical component multiplicities and the regularity and level/type corollaries are outside this comparison.
+  - The separate regularity and level/type corollaries are outside this comparison.
   notes: See map.json for precise declarations.

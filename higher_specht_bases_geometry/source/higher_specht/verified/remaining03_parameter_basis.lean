@@ -14,6 +14,8 @@ public import Mathlib.RingTheory.PowerSeries.WellKnown
 
 @[expose] public section
 
+universe palomarFiberCoeffU
+
 section CanonicalSource44
 /- Source: HigherSpecht/SpringerDimension.lean -/
 
@@ -1376,7 +1378,7 @@ namespace HigherSpecht
 
 attribute [local instance] MvPolynomial.gradedAlgebra
 
-variable {R : Type*} [CommRing R] {n : ℕ}
+variable {R : Type palomarFiberCoeffU} [CommRing R] {n : ℕ}
 
 def homogeneousQuotientPiece (I : Ideal (PolynomialRing n R)) (d : ℕ) :
     Submodule R (PolynomialRing n R ⧸ I) :=

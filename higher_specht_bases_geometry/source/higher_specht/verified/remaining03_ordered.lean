@@ -9,6 +9,8 @@ public import Mathlib.RepresentationTheory.FiniteIndex
 
 @[expose] public section
 
+universe palomarFiberCoeffU
+
 section CanonicalSource66
 /- Source: HigherSpecht/OrderedRoots.lean -/
 
@@ -437,7 +439,7 @@ theorem columnWitness_mem_blockSpringerHarmonics
 abbrev SpringerCoordinateBlocks (n : ℕ) (mu : YoungDiagram) :=
   {A : Finset (Fin n) // A.card = mu.card}
 
-def springerComponentIntersection (R : Type*) [CommRing R] (n : ℕ)
+def springerComponentIntersection (R : Type palomarFiberCoeffU) [CommRing R] (n : ℕ)
     (mu : YoungDiagram) : Ideal (PolynomialRing n R) :=
   ⨅ A : SpringerCoordinateBlocks n mu, blockSpringerIdeal R A.val mu
 
@@ -524,7 +526,7 @@ namespace HigherSpecht
 
 variable {R : Type*} [CommRing R] {n : ℕ}
 
-def coordinateIdeal (R : Type*) [CommRing R] (A : Finset (Fin n)) :
+def coordinateIdeal (R : Type palomarFiberCoeffU) [CommRing R] (A : Finset (Fin n)) :
     Ideal (PolynomialRing n R) :=
   Ideal.span (MvPolynomial.X '' (A : Set (Fin n)))
 

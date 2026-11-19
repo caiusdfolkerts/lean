@@ -2019,7 +2019,7 @@ def untruncatedIdeal (R : Type*) [CommRing R] (n : ℕ) (μ : YoungDiagram) :
     Ideal (PolynomialRing n R) := Ideal.span {p | IsElementaryGenerator n μ p}
 
 /-- Stable name for the commutative ideal's two-sidedness in quotient data. -/
-theorem untruncatedIdeal_isTwoSided (R : Type*) [CommRing R]
+theorem untruncatedIdeal_isTwoSided (R : Type palomarFiberCoeffU) [CommRing R]
     (n : ℕ) (lam : YoungDiagram) : (untruncatedIdeal R n lam).IsTwoSided :=
   Ideal.instIsTwoSided_1 (untruncatedIdeal R n lam)
 
@@ -2034,7 +2034,7 @@ def griffinIdeal (R : Type*) [CommRing R] (n : ℕ) (μ : YoungDiagram) (s : ℕ
 def springerIdeal (R : Type palomarFiberCoeffU) [CommRing R] (μ : YoungDiagram) :
     Ideal (PolynomialRing μ.card R) := untruncatedIdeal R μ.card μ
 
-abbrev UntruncatedRing (R : Type*) [CommRing R] (n : ℕ) (μ : YoungDiagram) :=
+abbrev UntruncatedRing (R : Type palomarFiberCoeffU) [CommRing R] (n : ℕ) (μ : YoungDiagram) :=
   PolynomialRing n R ⧸ untruncatedIdeal R n μ
 
 abbrev GriffinRing (R : Type*) [CommRing R] (n : ℕ) (μ : YoungDiagram) (s : ℕ) :=

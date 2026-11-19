@@ -25,6 +25,8 @@ public import tau_ceti.representation_theory.subrepresentation
 
 @[expose] public section
 
+universe palomarFiberCoeffU
+
 section CanonicalSource0
 /- Source: HigherSpecht/GriffinExpressionCharacters.lean -/
 
@@ -5232,9 +5234,11 @@ theorem localization_map_iInf_finite
 
 variable {K : Type*} [Field K] {n : ℕ} {lam : YoungDiagram}
 
-instance coordinateIdeal_isPrime (A : Finset (Fin n)) :
-    (coordinateIdeal K A).IsPrime :=
+theorem coordinateIdeal_isPrime {K : Type palomarFiberCoeffU} [Field K] {n : ℕ}
+    (A : Finset (Fin n)) : (coordinateIdeal K A).IsPrime :=
   MvPolynomial.span_X_image_isPrime (R := K) (A : Set (Fin n))
+
+attribute [instance] coordinateIdeal_isPrime
 
 theorem map_other_component_at_coordinatePrime
     (A B : SpringerCoordinateBlocks n lam) (hBA : B ≠ A) :
@@ -5307,7 +5311,7 @@ theorem length_blockSpringerIdeal_at_coordinatePrime
 
 /-- Generic component multiplicity is the genuine local module length,
 not a number assigned from a proposed formula. -/
-def genericComponentLength (K : Type*) [Field K]
+def genericComponentLength (K : Type palomarFiberCoeffU) [Field K]
     (A : SpringerCoordinateBlocks n lam) : ℕ∞ :=
   Module.length (Localization.AtPrime (coordinateIdeal K A.val))
     (Localization.AtPrime (coordinateIdeal K A.val) ⧸
@@ -5646,7 +5650,7 @@ def untruncatedMonomialDegreeBasis (K : Type*) [Field K]
     (fun _ => MvPolynomial.isHomogeneous_monomial 1 rfl)
     (untruncatedStandardMonomialBasis_apply hk) d
 
-def untruncatedHilbertFunction (K : Type*) [Field K]
+def untruncatedHilbertFunction (K : Type palomarFiberCoeffU) [Field K]
     (n : ℕ) (lam : YoungDiagram) (d : ℕ) : ℕ :=
   Module.finrank K (homogeneousQuotientPiece (untruncatedIdeal K n lam) d)
 

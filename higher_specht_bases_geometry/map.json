@@ -9,7 +9,8 @@
   "status": "geometry_candidate_awaiting_full_preflight",
   "selected_results": [
     "Proposition 7.3: actual irredundant primary decomposition and radicals",
-    "Corollary 7.4: reducedness, geometric reducedness, fibers and the full base-local \u00e9tale locus"
+    "Corollary 7.4: reducedness, geometric reducedness, fibers and the full base-local \u00e9tale locus",
+    "Proposition 7.3 generic local lengths and conventional standard graded multiplicity"
   ],
   "coverage": [
     {
@@ -20,6 +21,10 @@
           "name": "HigherSpecht.proposition_7_3_primary_decomposition",
           "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
           "source_line": 4742
+        },
+        {
+          "name": "HigherSpecht.untruncated_primary_and_graded_multiplicities",
+          "source_path": "source/Solution.lean"
         }
       ]
     },

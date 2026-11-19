@@ -1272,7 +1272,7 @@ theorem elementaryOn_union {A B : Finset (Fin n)} (hAB : Disjoint A B) (d : ℕ)
 /-- The threshold is written in the integers.  Allowing degree zero here
 is harmless precisely when the block has the cardinality of the partition;
 the following image theorem proves agreement with the original ideal. -/
-def blockSpringerIdeal (R : Type*) [CommRing R] (A : Finset (Fin n))
+def blockSpringerIdeal (R : Type palomarFiberCoeffU) [CommRing R] (A : Finset (Fin n))
     (mu : YoungDiagram) : Ideal (PolynomialRing n R) :=
   Ideal.span {p | ∃ (Y : Finset (Fin n)) (d : ℕ), Y ⊆ A ∧ d ≤ Y.card ∧
     (Y.card : ℤ) - (columnTail mu (A.card - Y.card) : ℤ) < (d : ℤ) ∧

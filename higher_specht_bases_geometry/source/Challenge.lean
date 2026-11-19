@@ -7,6 +7,10 @@ public import Mathlib.Data.Finset.Powerset
 public import Mathlib.RingTheory.PiTensorProduct
 public import Mathlib.FieldTheory.IsAlgClosed.AlgebraicClosure
 public import Mathlib.RingTheory.Etale.Basic
+public import Mathlib.RingTheory.Length
+public import Mathlib.RingTheory.MvPolynomial.Homogeneous
+public import Mathlib.RingTheory.MvPolynomial.Ideal
+public import Mathlib.LinearAlgebra.Dimension.Finite
 public import Mathlib.RingTheory.MvPolynomial.Symmetric.Defs
 public import Mathlib.RingTheory.Ideal.IsPrimary
 public import Mathlib.RingTheory.Nilpotent.GeometricallyReduced
@@ -65,13 +69,13 @@ abbrev SpringerRing (R : Type palomarFiberCoeffU) [CommRing R] (μ : YoungDiagra
   PolynomialRing μ.card R ⧸ springerIdeal R μ
 
 /-- Stable name for the commutative ideal's two-sidedness in quotient data. -/
-theorem untruncatedIdeal_isTwoSided (R : Type*) [CommRing R]
+theorem untruncatedIdeal_isTwoSided (R : Type palomarFiberCoeffU) [CommRing R]
     (n : ℕ) (lam : YoungDiagram) : (untruncatedIdeal R n lam).IsTwoSided :=
   Ideal.instIsTwoSided_1 (untruncatedIdeal R n lam)
 
 attribute [instance 1200] untruncatedIdeal_isTwoSided
 
-abbrev UntruncatedRing (R : Type*) [CommRing R] (n : ℕ) (μ : YoungDiagram) :=
+abbrev UntruncatedRing (R : Type palomarFiberCoeffU) [CommRing R] (n : ℕ) (μ : YoungDiagram) :=
   PolynomialRing n R ⧸ untruncatedIdeal R n μ
 
 def elementaryParameterClasses (K : Type*) [CommRing K] (n : ℕ) (lam : YoungDiagram) :
@@ -116,7 +120,7 @@ variable {n : ℕ}
 def columnTail (μ : YoungDiagram) (h : ℕ) : ℕ :=
   (μ.cells.filter fun c => h ≤ c.2).card
 
-def blockSpringerIdeal (R : Type*) [CommRing R] (A : Finset (Fin n))
+def blockSpringerIdeal (R : Type palomarFiberCoeffU) [CommRing R] (A : Finset (Fin n))
     (mu : YoungDiagram) : Ideal (PolynomialRing n R) :=
   Ideal.span {p | ∃ (Y : Finset (Fin n)) (d : ℕ), Y ⊆ A ∧ d ≤ Y.card ∧
     (Y.card : ℤ) - (columnTail mu (A.card - Y.card) : ℤ) < (d : ℤ) ∧
@@ -125,15 +129,18 @@ def blockSpringerIdeal (R : Type*) [CommRing R] (A : Finset (Fin n))
 abbrev SpringerCoordinateBlocks (n : ℕ) (mu : YoungDiagram) :=
   {A : Finset (Fin n) // A.card = mu.card}
 
-def springerComponentIntersection (R : Type*) [CommRing R] (n : ℕ)
+def springerComponentIntersection (R : Type palomarFiberCoeffU) [CommRing R] (n : ℕ)
     (mu : YoungDiagram) : Ideal (PolynomialRing n R) :=
   ⨅ A : SpringerCoordinateBlocks n mu, blockSpringerIdeal R A.val mu
 
-def coordinateIdeal (R : Type*) [CommRing R] (A : Finset (Fin n)) :
+def coordinateIdeal (R : Type palomarFiberCoeffU) [CommRing R] (A : Finset (Fin n)) :
     Ideal (PolynomialRing n R) :=
   Ideal.span (MvPolynomial.X '' (A : Set (Fin n)))
 
-variable {R : Type*} [CommRing R] {mu : YoungDiagram}
+end Components
+
+section ComponentTheorems
+variable {R : Type*} [CommRing R] {n : ℕ} {mu : YoungDiagram}
 
 theorem proposition_7_3_primary_decomposition [IsDomain R]
     (hn : mu.card ≤ n) :
@@ -150,7 +157,7 @@ theorem proposition_7_3_primary_decomposition [IsDomain R]
 theorem untruncated_isReduced_iff [IsDomain R] (hn : mu.card ≤ n) :
     IsReduced (UntruncatedRing R n mu) ↔ mu.colLen 0 ≤ 1 := by sorry
 
-end Components
+end ComponentTheorems
 
 section Fibers
 variable {K : Type*} [Field K] {n m : ℕ}
@@ -187,5 +194,52 @@ theorem parameter_etale_atPrime_iff_polynomial
               (MvPolynomial.X i))).eval 0 ≠ 0) := by sorry
 
 end EtaleLocus
+
+def rowFactorialProduct (lam : YoungDiagram) : ℕ :=
+  ∏ j ∈ Finset.range (lam.colLen 0), (lam.rowLen j).factorial
+
+theorem coordinateIdeal_isPrime {K : Type palomarFiberCoeffU} [Field K] {n : ℕ}
+    (A : Finset (Fin n)) : (coordinateIdeal K A).IsPrime :=
+  MvPolynomial.span_X_image_isPrime (R := K) (A : Set (Fin n))
+
+attribute [instance] coordinateIdeal_isPrime
+
+section LocalLength
+variable {n : ℕ} {lam : YoungDiagram}
+
+def genericComponentLength (K : Type palomarFiberCoeffU) [Field K]
+    (A : SpringerCoordinateBlocks n lam) : ℕ∞ :=
+  Module.length (Localization.AtPrime (coordinateIdeal K A.val))
+    (Localization.AtPrime (coordinateIdeal K A.val) ⧸
+      (untruncatedIdeal K n lam).map
+        (algebraMap (PolynomialRing n K) (Localization.AtPrime (coordinateIdeal K A.val))))
+
+end LocalLength
+
+section GradedPiece
+variable {R : Type palomarFiberCoeffU} [CommRing R] {n : ℕ}
+
+def homogeneousQuotientPiece (I : Ideal (PolynomialRing n R)) (d : ℕ) :
+    Submodule R (PolynomialRing n R ⧸ I) :=
+  (homogeneousSubmodule (Fin n) R d).map (Ideal.Quotient.mkₐ R I).toLinearMap
+
+end GradedPiece
+
+def untruncatedHilbertFunction (K : Type palomarFiberCoeffU) [Field K]
+    (n : ℕ) (lam : YoungDiagram) (d : ℕ) : ℕ :=
+  Module.finrank K (homogeneousQuotientPiece (untruncatedIdeal K n lam) d)
+
+/-- Both conventional multiplicities: actual local length and the leading
+coefficient of the eventual Hilbert polynomial of the actual quotient. -/
+theorem untruncated_primary_and_graded_multiplicities (K : Type*) [Field K]
+    (n : ℕ) (lam : YoungDiagram) (hk : lam.card ≤ n) :
+    (∀ A : SpringerCoordinateBlocks n lam,
+      genericComponentLength K A = (lam.card.factorial / rowFactorialProduct lam : ℕ)) ∧
+    let m := n - lam.card
+    let M : ℚ := ((n.factorial / (m.factorial * rowFactorialProduct lam) : ℕ) : ℚ)
+    (m = 0 → (Module.finrank K (UntruncatedRing K n lam) : ℚ) = M) ∧
+    (0 < m → ∃ P : Polynomial ℚ,
+      (∃ N : ℕ, ∀ d > N, (untruncatedHilbertFunction K n lam d : ℚ) = P.eval (d : ℚ)) ∧
+      P.natDegree = m - 1 ∧ ((m - 1).factorial : ℚ) * P.leadingCoeff = M) := by sorry
 
 end HigherSpecht
