@@ -1,6 +1,7 @@
 module
 public import Consolidated.GraphActualCompleteness
 public import CompletedSmall.ActualAssembly
+public import GraphDirectCoverage
 
 @[expose] public section
 noncomputable section
@@ -49,11 +50,13 @@ theorem small_row_hasTerminal (P : ConvexPolytope 4) (hP : P.IsFullDim)
   rcases hr with htriangle | hcase
   · exact False.elim (Nat.not_lt_of_ge hmin htriangle)
   · simp only [hcode, ite_false] at hcase
-    rcases hcase with hsmall | hempty
+    rcases hcase with hsmall | hempty | hdirect
     · exact small_hasTerminal P hP hnonsimple hfacets lab' (rowOfCode code) _
         hlength hquota hmissing hcomplement hsmall
     · exact False.elim (empty_root_impossible P hP hnonsimple hfacets lab'
         (rowOfCode code) _ hquota hmissing hcomplement hempty)
+    · exact direct_small_hasTerminal P hP hnonsimple hfacets lab' (rowOfCode code) _
+        hlength hquota hmissing hcomplement hdirect
 
 def smallCodes : List Nat := [16,19,23,24,25,26,27,28,29,30,31]
 
@@ -141,9 +144,13 @@ theorem six_hasTerminal_of_verified (hverified : VerifiedRow 32)
   simp only [Row.key, GraphRowSpecifications.code_eq, Result] at hr
   rcases hr with htriangle | hcase
   · exact False.elim (Nat.not_lt_of_ge hmin htriangle)
-  · exact six_hasTerminal P hP hnonsimple C.small C.assignment hcounts lab'
-      (rowOfCode 32) _ (by decide) hquota
-      (CompletedSix.exceptional_covered_nonedges P C hrow).symm hcomplement hcase
+  · rcases hcase with hsix | hdirect
+    · exact six_hasTerminal P hP hnonsimple C.small C.assignment hcounts lab'
+        (rowOfCode 32) _ (by decide) hquota
+        (CompletedSix.exceptional_covered_nonedges P C hrow).symm hcomplement hsix
+    · exact direct_six_hasTerminal P hP hnonsimple C.small C.assignment hcounts lab'
+        (rowOfCode 32) _ (by decide) hquota
+        (CompletedSix.exceptional_covered_nonedges P C hrow).symm hcomplement hdirect
 
 #print axioms small_hasTerminal_of_verified
 #print axioms six_hasTerminal_of_verified
