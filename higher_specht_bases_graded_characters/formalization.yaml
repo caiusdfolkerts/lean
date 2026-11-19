@@ -43,5 +43,5 @@ review:
   status: unchecked
   notes: The graded character selection requires its own full preflight.
 scope:
-  current_selection: The graded Frobenius clauses of Corollaries 5.3, 5.6 and 6.7 in their character-valued form.
+  current_selection: The graded Frobenius clauses of Corollaries 5.3, 5.6 and 6.7 in character-valued form, and Theorem 6.1 with its exact elementary-parameter denominator.
   notes: The equalities specify every permutation trace in every grade, with each right-hand summand an independently defined Young symmetrizer Specht representation. Under the Frobenius characteristic map, the Specht character of a partition maps to its Schur function.

@@ -19,6 +19,7 @@ public import Mathlib.Combinatorics.Enumerative.Partition.YoungDiagram
 public import Mathlib.Analysis.Complex.Basic
 public import Mathlib.Algebra.MonoidAlgebra.MapDomain
 public import Mathlib.RepresentationTheory.Character
+public import Mathlib.RingTheory.PowerSeries.Basic
 public import Mathlib.RepresentationTheory.Subrepresentation
 public import Mathlib.RingTheory.MvPolynomial.Homogeneous
 
@@ -150,6 +151,8 @@ abbrev colSubgroup (t : YoungTableau μ) : Subgroup (Equiv.Perm (Fin μ.card)) :
 end YoungTableau
 end TauCeti
 
+universe palomarYoungU
+
 namespace TauCeti.YoungTableau
 
 variable {μ : YoungDiagram}
@@ -163,13 +166,13 @@ local instance decidablePredMemColSubgroup (t : YoungTableau μ) :
   Classical.decPred _
 
 /-- The **row symmetrizer** `a_t`, the sum of the permutations preserving the rows of `t`. -/
-noncomputable def rowSymmetrizer (t : YoungTableau μ) :
+noncomputable abbrev rowSymmetrizer (t : YoungTableau μ) :
     MonoidAlgebra ℚ (Equiv.Perm (Fin μ.card)) :=
   ∑ p : rowSubgroup t, MonoidAlgebra.of ℚ (Equiv.Perm (Fin μ.card)) p
 
 /-- The **column antisymmetrizer** `b_t`, the signed sum of the permutations preserving the
 columns of `t`. -/
-noncomputable def columnAntisymmetrizer (t : YoungTableau μ) :
+noncomputable abbrev columnAntisymmetrizer (t : YoungTableau μ) :
     MonoidAlgebra ℚ (Equiv.Perm (Fin μ.card)) :=
   ∑ q : colSubgroup t,
     ((Equiv.Perm.sign (q : Equiv.Perm (Fin μ.card)) : ℤ) : ℚ) •
@@ -177,11 +180,11 @@ noncomputable def columnAntisymmetrizer (t : YoungTableau μ) :
 
 /-- The **Young symmetrizer** of `t`, with the convention `c_t = a_t b_t`. On a left module it
 acts by column-antisymmetrization followed by row-symmetrization. -/
-noncomputable def youngSymmetrizer (t : YoungTableau μ) :
+noncomputable abbrev youngSymmetrizer (t : YoungTableau μ) :
     MonoidAlgebra ℚ (Equiv.Perm (Fin μ.card)) :=
   rowSymmetrizer t * columnAntisymmetrizer t
 
-noncomputable def youngSymmetrizerOver (k : Type*) [Semiring k] [Algebra ℚ k] (t : YoungTableau μ) :
+noncomputable abbrev youngSymmetrizerOver (k : Type palomarYoungU) [Semiring k] [Algebra ℚ k] (t : YoungTableau μ) :
     MonoidAlgebra k (Equiv.Perm (Fin μ.card)) :=
   MonoidAlgebra.mapAlgHom _ (Algebra.ofId ℚ k) (youngSymmetrizer t)
 
@@ -751,5 +754,28 @@ theorem springer_intersection_graded_specht_character {n : ℕ} (hn : 0 < n)
           (e.permutationStable ℂ) d).toRepresentation.character g =
           ∑ z : {z : SpringerIntersectionLeftIndex A // cochargeDegree z.val.2 = d},
             (paperYoungIdealRepresentation z.val.val.1 (T z.val.val.1)).character g := by sorry
+
+abbrev UntruncatedLeftTableauIndex (n : ℕ) (lam : YoungDiagram)
+    (hk : lam.card ≤ n) :=
+  {z : (Σ part : n.Partition, StandardYoungTableau (YoungDiagram.ofPartition part)) //
+    CatDominates (prefixTableau z.2 lam.card
+      (by simpa only [YoungDiagram.card_ofPartition] using hk)) lam}
+
+/-- The exact elementary-parameter denominator, in character-valued form.
+The numerator retains one Specht character per eligible left tableau. -/
+theorem untruncated_graded_character_rational
+    (n : ℕ) (lam : YoungDiagram) (hk : lam.card ≤ n) :
+    let e : UntruncatedIdealExpression n := .atom ⟨lam, hk⟩
+    ∃ T : (part : n.Partition) → YoungTableau (YoungDiagram.ofPartition part),
+    ∃ f : Fintype (UntruncatedLeftTableauIndex n lam hk),
+    ∀ g : Equiv.Perm (Fin n),
+      letI := f
+      (PowerSeries.mk fun d =>
+        (homogeneousQuotientSubrepresentation (e.ideal ℂ)
+          (e.permutationStable ℂ) d).toRepresentation.character g) *
+        (∏ i : Fin (n - lam.card), (1 - (PowerSeries.X : PowerSeries ℂ) ^ (i.val + 1))) =
+        ∑ b : UntruncatedLeftTableauIndex n lam hk,
+          PowerSeries.C ((paperYoungIdealRepresentation b.val.1 (T b.val.1)).character g) *
+            PowerSeries.X ^ cochargeDegree b.val.2 := by sorry
 
 end HigherSpecht

@@ -24,7 +24,8 @@
     "HigherSpecht.UntruncatedIdealExpression.permutationStable",
     "HigherSpecht.griffin_graded_specht_character",
     "HigherSpecht.untruncated_graded_specht_character",
-    "HigherSpecht.springer_intersection_graded_specht_character"
+    "HigherSpecht.springer_intersection_graded_specht_character",
+    "HigherSpecht.untruncated_graded_character_rational"
   ],
   "permitted_axioms": [
     "propext",

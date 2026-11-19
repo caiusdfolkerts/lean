@@ -109,4 +109,74 @@ theorem springer_intersection_graded_specht_character {n : ℕ} (hn : 0 < n)
   exact (hχ g).trans (Equiv.sum_comp E
     (fun z => (paperYoungIdealRepresentation z.val.val.1 (T z.val.val.1)).character g))
 
+/-- The exact elementary-parameter denominator, in character-valued form.
+The numerator retains one Specht character per eligible left tableau. -/
+theorem untruncated_graded_character_rational
+    (n : ℕ) (lam : YoungDiagram) (hk : lam.card ≤ n) :
+    let e : UntruncatedIdealExpression n := .atom ⟨lam, hk⟩
+    ∃ T : (part : n.Partition) → YoungTableau (YoungDiagram.ofPartition part),
+    ∃ f : Fintype (UntruncatedLeftTableauIndex n lam hk),
+    ∀ g : Equiv.Perm (Fin n),
+      letI := f
+      (PowerSeries.mk fun d =>
+        (homogeneousQuotientSubrepresentation (e.ideal ℂ)
+          (e.permutationStable ℂ) d).toRepresentation.character g) *
+        (∏ i : Fin (n - lam.card), (1 - (PowerSeries.X : PowerSeries ℂ) ^ (i.val + 1))) =
+        ∑ b : UntruncatedLeftTableauIndex n lam hk,
+          PowerSeries.C ((paperYoungIdealRepresentation b.val.1 (T b.val.1)).character g) *
+            PowerSeries.X ^ cochargeDegree b.val.2 := by
+  classical
+  let e : UntruncatedIdealExpression n := .atom ⟨lam, hk⟩
+  let T : (part : n.Partition) → YoungTableau (YoungDiagram.ofPartition part) :=
+    fun part => (StandardYoungTableau.rowSuperstandard _).toTableau
+  refine ⟨T, inferInstance, ?_⟩
+  intro g
+  dsimp only
+  let m := n - lam.card
+  let χ : n.Partition → ℂ := fun part =>
+    (paperYoungIdealRepresentation part (T part)).character g
+  let N : PowerSeries ℂ := ∑ b : UntruncatedLeftTableauIndex n lam hk,
+    PowerSeries.C (χ b.val.1) * PowerSeries.X ^ cochargeDegree b.val.2
+  let S : PowerSeries ℂ := PowerSeries.mk fun d => (untruncatedGradedPiece ℂ n lam d).toRepresentation.character g
+  have hcoeff (d : ℕ) : PowerSeries.coeff d S =
+      ∑ b : UntruncatedLeftTableauIndex n lam hk,
+        if cochargeDegree b.val.2 ≤ d then
+          χ b.val.1 * (Nat.card (BoundedLengthPartitionDegree m (d - cochargeDegree b.val.2)) : ℂ)
+        else 0 := by
+    dsimp only [S]
+    rw [PowerSeries.coeff_mk, character_untruncatedGradedPiece]
+    have hchar (part : n.Partition) : (spechtModuleℂ part).ρ.character g = χ part :=
+      (congrFun (Representation.char_iso (complexYoungIdealSpechtEquiv part)) g).symm
+    simp_rw [hchar]
+    rw [← Equiv.sum_comp (untruncatedDegreeCopyPartitionEquiv n lam hk d).symm
+      (fun i : UntruncatedDegreeCopyIndex n lam hk d => χ i.val.part)]
+    simp only [untruncatedDegreeCopyPartitionEquiv, Fintype.sum_sigma]
+    change (∑ b : {b : UntruncatedLeftTableauIndex n lam hk // cochargeDegree b.val.2 ≤ d},
+      ∑ _eta : BoundedLengthPartitionDegree m (d - cochargeDegree b.val.val.2), χ b.val.val.1) = _
+    have hsum :
+        (∑ b : {b : UntruncatedLeftTableauIndex n lam hk // cochargeDegree b.val.2 ≤ d},
+          ∑ _eta : BoundedLengthPartitionDegree m (d - cochargeDegree b.val.val.2), χ b.val.val.1) =
+        ∑ b : {b : UntruncatedLeftTableauIndex n lam hk // cochargeDegree b.val.2 ≤ d},
+          χ b.val.val.1 * (Nat.card (BoundedLengthPartitionDegree m
+            (d - cochargeDegree b.val.val.2)) : ℂ) := by
+      simp only [Finset.sum_const, Finset.card_univ, nsmul_eq_mul,
+        Nat.card_eq_fintype_card, mul_comm]
+    rw [hsum, ← Finset.sum_filter]
+    exact (Finset.sum_subtype _ (by simp)
+      (fun b : UntruncatedLeftTableauIndex n lam hk =>
+        χ b.val.1 * (Nat.card (BoundedLengthPartitionDegree m
+          (d - cochargeDegree b.val.2)) : ℂ))).symm
+  have hS : S = N * (elementaryParameterSeriesUnit ℂ m).val := by
+    apply PowerSeries.ext
+    intro d
+    rw [hcoeff, N, Finset.sum_mul, map_sum]
+    apply Finset.sum_congr rfl
+    intro b _
+    rw [mul_assoc, PowerSeries.coeff_C_mul, PowerSeries.coeff_X_pow_mul']
+    by_cases hb : cochargeDegree b.val.2 ≤ d
+    · rw [if_pos hb, if_pos hb, coeff_elementaryParameterSeriesUnit_partitions]
+    · rw [if_neg hb, if_neg hb, mul_zero]
+  change S * (∏ i : Fin m, (1 - (PowerSeries.X : PowerSeries ℂ) ^ (i.val + 1))) = N
+  rw [hS, ← elementaryParameterSeriesUnit_inv ℂ m, mul_assoc, Units.mul_inv, mul_one]
+
 end HigherSpecht

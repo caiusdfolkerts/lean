@@ -10,7 +10,8 @@
   "selected_results": [
     "Corollary 5.3: graded character-valued Frobenius formula for finite Griffin ideal expressions",
     "Corollary 6.7: graded character-valued Frobenius formula for untruncated Griffin ideal expressions",
-    "Corollary 5.6: graded character-valued Frobenius formula of the actual Springer intersection"
+    "Corollary 5.6: graded character-valued Frobenius formula of the actual Springer intersection",
+    "Theorem 6.1: exact rational parameter-denominator Frobenius formula in character-valued form"
   ],
   "coverage": [
     {
@@ -48,6 +49,19 @@
       "declarations": [
         {
           "name": "HigherSpecht.springer_intersection_graded_specht_character",
+          "source_path": "source/Solution.lean"
+        }
+      ]
+    },
+    {
+      "paper_result": "Theorem 6.1",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        23
+      ],
+      "declarations": [
+        {
+          "name": "HigherSpecht.untruncated_graded_character_rational",
           "source_path": "source/Solution.lean"
         }
       ]
