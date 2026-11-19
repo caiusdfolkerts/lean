@@ -125,6 +125,19 @@ The rank-selected cohomology factor in the relative formula of Theorem 1.2.
 All data definitions remain explicit. No expected rank or cohomology formula defines either side. -/
 
 @[expose] public section
+namespace PalomarBarycentricTor
+/-- Canonical cancellation and scalar-action laws used by the actual complexes. -/
+theorem natRightCancelAdd : IsRightCancelAdd ℕ := by infer_instance
+def naturalDown : ComplexShape ℕ := @ComplexShape.down ℕ _ natRightCancelAdd _
+def naturalUp : ComplexShape ℕ := @ComplexShape.up ℕ _ natRightCancelAdd _
+attribute [reducible] naturalDown naturalUp
+
+theorem coefficientSMulComm {K : Type*} [CommRing K] : SMulCommClass K K K := by infer_instance
+theorem functionScalarTower {V K : Type*} [CommRing K] : IsScalarTower K K (V → K) := by infer_instance
+theorem exteriorScalarComm {V K : Type*} [CommRing K] : SMulCommClass K K (ExteriorAlgebra K (V → K)) := by infer_instance
+theorem tensorPreservesZero {R : Type*} [CommRing R] (M : ModuleCat R) : ((CategoryTheory.MonoidalCategory.curriedTensor (ModuleCat R)).flip.obj M).PreservesZeroMorphisms := by infer_instance
+attribute [instance 2200] natRightCancelAdd coefficientSMulComm functionScalarTower exteriorScalarComm tensorPreservesZero
+end PalomarBarycentricTor
 noncomputable section
 set_option autoImplicit false
 set_option maxRecDepth 4000
@@ -146,7 +159,7 @@ noncomputable def koszulComplex.d (n : ℕ) : ⋀[R]^(n + 1) M →ₗ[R] ⋀[R]^
 lemma koszulComplex.d_comp_eq_zero (n : ℕ) :
     koszulComplex.d φ n ∘ₗ koszulComplex.d φ (n + 1) = 0 := by sorry
 /-- Literal koszulComplex; source theorem12.lean:753. -/
-noncomputable def koszulComplex : ChainComplex (ModuleCat R) ℕ :=
+noncomputable def koszulComplex : HomologicalComplex (ModuleCat R) PalomarBarycentricTor.naturalDown :=
   ChainComplex.of (fun n ↦ ModuleCat.of R (⋀[R]^n M))
     (fun n ↦ ModuleCat.ofHom (koszulComplex.d φ n))
     (fun n ↦ by rw [← ModuleCat.ofHom_comp, koszulComplex.d_comp_eq_zero, ModuleCat.ofHom_zero])
@@ -159,7 +172,7 @@ universe u v
 variable {R : Type u} {V : Type} [CommRing R] [Fintype V] [LinearOrder V]
 /-- Literal CommAlg.Koszul.familyCoefficientComplex; source theorem12.lean:5030. -/
 abbrev familyCoefficientComplex (x : V → R) (M : ModuleCat.{u} R) :
-    ChainComplex (ModuleCat.{u} R) ℕ :=
+    HomologicalComplex (ModuleCat.{u} R) PalomarBarycentricTor.naturalDown :=
   (((CategoryTheory.MonoidalCategory.tensoringRight (ModuleCat R)).obj M).mapHomologicalComplex (ComplexShape.down ℕ)).obj
       (koszulComplex (Fintype.linearCombination R x))
 /-- Literal CommAlg.Koszul.coefficientCoordinates; source theorem12.lean:5036. -/
@@ -479,7 +492,7 @@ theorem relativeAugmentedCoboundary_square (Λ Λ₀ : Finset V → Prop)
 /-- Literal FourPapers.Universal.relativeAugmentedCochainComplex; source theorem12.lean:17420. -/
 def relativeAugmentedCochainComplex (Λ Λ₀ : Finset V → Prop)
     (hΛ : Simplicial.Downward Λ) (hΛ₀ : Simplicial.Downward Λ₀) :
-    CochainComplex (ModuleCat.{max u v} K) ℕ :=
+    HomologicalComplex (ModuleCat.{max u v} K) PalomarBarycentricTor.naturalUp :=
   CochainComplex.of
     (fun i => ModuleCat.of K (Module.Dual K (RelativeAugmentedChains (K := K) Λ Λ₀ i)))
     (fun i => ModuleCat.ofHom (relativeAugmentedCoboundary Λ Λ₀ hΛ hΛ₀ i))
@@ -587,7 +600,7 @@ theorem parameterKoszulDifferential_comp (γ : C → B) (i : ℕ) :
     (parameterKoszulDifferential (K := K) γ i).comp
       (parameterKoszulDifferential (K := K) γ (i + 1)) = 0 := by sorry
 /-- Literal FourPapers.Universal.parameterKoszulComplex; source theorem12.lean:19852. -/
-def parameterKoszulComplex (γ : C → B) : ChainComplex (ModuleCat.{u} K) ℕ :=
+def parameterKoszulComplex (γ : C → B) : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown :=
   ChainComplex.of (fun i => ModuleCat.of K (Set.powersetCard C i →₀ B))
     (fun i => ModuleCat.ofHom (parameterKoszulDifferential (K := K) γ i))
     (fun i => ModuleCat.hom_ext (parameterKoszulDifferential_comp (K := K) γ i))
@@ -601,7 +614,7 @@ universe u v
 variable {P K : Type u} [PartialOrder P] [OrderBot P] [Fintype P] [CommRing K]
 variable (K) (hs : IsSimplicialPoset P) (d : ℕ) (hrank : ∀ p : P, faceRank p ≤ d)
 /-- Literal FourPapers.Universal.barycentricKoszulComplex; source theorem12.lean:19903. -/
-abbrev barycentricKoszulComplex : ChainComplex (ModuleCat.{u} K) ℕ :=
+abbrev barycentricKoszulComplex : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown :=
   parameterKoszulComplex (K := K)
     (fun i : Fin d => barycentricRankParameter (P := P) K (i.val + 1))
 end
@@ -629,10 +642,10 @@ open Classical CategoryTheory FourPapers.FilteredHomology
 universe u
 variable {K : Type u} [CommRing K]
 /-- Literal FourPapers.Universal.complexIncoming; source theorem12.lean:20422. -/
-abbrev complexIncoming (C : ChainComplex (ModuleCat.{u} K) ℕ) (i : ℕ) :=
+abbrev complexIncoming (C : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown) (i : ℕ) :=
   (C.d (i + 1) i).hom
 /-- Literal FourPapers.Universal.complexOutgoing; source theorem12.lean:20424. -/
-abbrev complexOutgoing (C : ChainComplex (ModuleCat.{u} K) ℕ) (i : ℕ) :=
+abbrev complexOutgoing (C : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown) (i : ℕ) :=
   (C.d i (i - 1)).hom
 end
 end FourPapers.Universal
@@ -666,7 +679,7 @@ open Classical CategoryTheory FourPapers.FilteredHomology
 universe u
 variable {K : Type u} [CommRing K]
 /-- Literal FourPapers.Universal.submoduleComplex_outgoing_mem; source theorem12.lean:21528. -/
-theorem submoduleComplex_outgoing_mem (C : ChainComplex (ModuleCat.{u} K) ℕ)
+theorem submoduleComplex_outgoing_mem (C : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown)
     (N : ∀ i, Submodule K (C.X i))
     (hN : ∀ i x, x ∈ N (i + 1) → complexIncoming C i x ∈ N i)
     (i : ℕ) (x : C.X i) (hx : x ∈ N i) : complexOutgoing C i x ∈ N (i - 1) := by sorry

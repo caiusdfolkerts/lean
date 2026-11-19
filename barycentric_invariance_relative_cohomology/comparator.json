@@ -19,7 +19,12 @@
     "FourPapers.Universal.submoduleComplex_outgoing_mem",
     "FourPapers.Universal.barycentricRelativeDegreeTerm_preserved",
     "FourPapers.Universal.barycentricRelativeBigraded_complex",
-    "FourPapers.Universal.palomarRelativeRankSelectedFactor"
+    "FourPapers.Universal.palomarRelativeRankSelectedFactor",
+    "PalomarBarycentricTor.natRightCancelAdd",
+    "PalomarBarycentricTor.coefficientSMulComm",
+    "PalomarBarycentricTor.functionScalarTower",
+    "PalomarBarycentricTor.exteriorScalarComm",
+    "PalomarBarycentricTor.tensorPreservesZero"
   ],
   "definition_names": [],
   "permitted_axioms": [
