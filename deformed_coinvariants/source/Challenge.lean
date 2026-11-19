@@ -967,3 +967,12 @@ variable {K : Type*} [Field K] {n : ℕ}
   PowerSeries.mk fun d => (Module.finrank K (tailQuotientDegree c lam m d) : ℤ)
 theorem weighted_tail_theorem (c : Fin n → K) (lam : K) (m : ℕ) (hm : 0 < m) (hnr : Nonresonant c lam m) : (∃ B : Basis (ArtinIndex n m) K (MvPolynomial (Fin n) K ⧸ tailHit c lam m), ∀ a, B a = (tailHit c lam m).mkQ (monomial a.val 1)) ∧ (tailHilbertSeries c lam m = ((∏ j ∈ Finset.Ico m (m+n), qIntegerPolynomial j : Polynomial ℤ) : PowerSeries ℤ)) ∧ (∀ (G : Subgroup (Equiv.Perm (Fin n))) (hfix : ∀ g : G, ∀ i, c ((g : Equiv.Perm (Fin n)) i) = c i), GradedRepresentationEquivalent (tailQuotientAction G c lam m hfix) (completeHomogeneousAction G m) (tailQuotientDegree c lam m) (ordinaryQuotientDegree (completeHomogeneousFamily K n m))) ∧ (∀ a : K, (∀ i, c i = a) → ∀ G : Subgroup (Equiv.Perm (Fin n)), GradedRepresentationEquivalent (tailQuotientAction G (fun _ : Fin n => a) lam m (fun _ _ => rfl)) (powerSumAction G m) (tailQuotientDegree (fun _ : Fin n => a) lam m) (ordinaryQuotientDegree (powerSumFamily K n m))) ∧ (∀ hlow : ∀ i, ∀ a : ℕ, a < m → c i + lam * (a : K) ≠ 0, (∃ B : Basis (ArtinIndex n m) K (MvPolynomial (Fin n) K ⧸ originalTailHit c lam m), ∀ a, B a = (originalTailHit c lam m).mkQ (monomial a.val 1)) ∧ (originalHilbertSeries c lam m = ((∏ j ∈ Finset.Ico m (m+n), qIntegerPolynomial j : Polynomial ℤ) : PowerSeries ℤ)) ∧ (∀ (G : Subgroup (Equiv.Perm (Fin n))) (hfix : ∀ g : G, ∀ i, c ((g : Equiv.Perm (Fin n)) i) = c i), GradedRepresentationEquivalent (originalTailQuotientAction G c lam m hfix) (completeHomogeneousAction G m) (originalTailQuotientDegree c lam m) (ordinaryQuotientDegree (completeHomogeneousFamily K n m))) ∧ (∀ a : K, (∀ i, c i = a) → ∀ G : Subgroup (Equiv.Perm (Fin n)), GradedRepresentationEquivalent (originalTailQuotientAction G (fun _ : Fin n => a) lam m (fun _ _ => rfl)) (powerSumAction G m) (originalTailQuotientDegree (fun _ : Fin n => a) lam m) (ordinaryQuotientDegree (powerSumFamily K n m)))) := by sorry
 end PalomarDeformed
+
+
+namespace PaperVerification.JacobianDivergence
+/-- The class map sends a polynomial to its divergence quotient class and then
+identifies that quotient with the module on which the potential acts. -/
+theorem classOf_formula {K ι : Type*} [Field K] [Fintype ι] (F : MvPolynomial ι K) :
+    classOf F = (Module.AEval'.of (potentialAction F)).toLinearMap.comp (divergenceSpace F).mkQ := by
+  rfl
+end PaperVerification.JacobianDivergence

@@ -86,3 +86,12 @@ theorem weighted_tail_theorem
     exact hh
 
 end PalomarDeformed
+
+
+namespace PaperVerification.JacobianDivergence
+/-- The class map sends a polynomial to its divergence quotient class and then
+identifies that quotient with the module on which the potential acts. -/
+theorem classOf_formula {K ι : Type*} [Field K] [Fintype ι] (F : MvPolynomial ι K) :
+    classOf F = (Module.AEval'.of (potentialAction F)).toLinearMap.comp (divergenceSpace F).mkQ := by
+  rfl
+end PaperVerification.JacobianDivergence
