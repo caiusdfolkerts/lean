@@ -3,6 +3,7 @@ public import two_fermion
 @[expose] public section
 noncomputable section
 namespace PaperVerification.Fermion
+open scoped Classical BigOperators
 theorem localFactorPresentation {F : Type} [Field F] [CharZero F] [IsAlgClosed F] {n : ℕ}
     (d : SeparatedPairedData F n) :
     ∀ (rho : d.O.SupportPoint) (c : Fin (Fintype.card (d.O.PointCluster rho))),

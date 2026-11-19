@@ -13,5 +13,6 @@
       "line": 95034
     }
   ],
-  "paper_theorem": "7.2"
+  "paper_theorem": "7.2",
+  "baseline_project": "two_fermion_coinvariants"
 }
