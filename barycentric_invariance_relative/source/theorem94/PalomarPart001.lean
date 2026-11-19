@@ -2766,6 +2766,8 @@ variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
 variable (K : Type*) [CommRing K]
 
 abbrev Family := ∀ p : P, PolynomialStalk K p →ₗ[K] BarycentricStalk K p
+def palomarStalkMapModule (p : P) : Module K (PolynomialStalk K p →ₗ[K] BarycentricStalk K p) := inferInstance
+attribute [instance 2400] palomarStalkMapModule
 
 def coherent : Submodule K (Family (P := P) K) where
   carrier := {F | ∀ p q (h : q ≤ p) x,

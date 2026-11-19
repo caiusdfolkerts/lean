@@ -1,0 +1,22 @@
+{
+  "status": "applied pending full verification",
+  "source_patches": [
+    {
+      "path": "source/Challenge.lean",
+      "before_sha256": "56a2234f9400757c9d9195c49c1e47bd94c522a7c52749d09f7e72b7b32b0b9a",
+      "after_sha256": "7b9ded6d7b8c01906a021bcbcaca6aa6a6abbe55939007a468da1cb914efdf4b"
+    },
+    {
+      "path": "source/theorem94/PalomarPart001.lean",
+      "before_sha256": "2f6815dc0a07f99e07f8ec5b3a68c9936acf8fed39558607129c57041e4086fc",
+      "after_sha256": "01804677d9a2eb9d81e0ed067595eb566a754269b9f87c6cb7782dbac216339e"
+    }
+  ],
+  "data_holes_added": false,
+  "theorem_selection_unchanged": true,
+  "basis": "Validated exact current parent probe44487201787 identifies LinearMap.module capture of coherent._proof_2. Name the original actual stalk-map module, preserving literal dependency comparison.",
+  "canonical_control": "rfl against original inferInstance, before registering named instance",
+  "canonical_run": 44488061682,
+  "input_and_log_hashes_verified": true,
+  "applied_at": "2026-11-19T08:35:28.085607+00:00"
+}

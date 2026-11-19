@@ -44,18 +44,17 @@ automation:
       not been reconstructed from the snapshot.
 review:
   status: unchecked
-  notes: The actual barycentric stalk module is named identically in both
-    presentations. Canonical run44480760287 verified the interface and its
-    equality with the original inferred module; full run44481635641 compiled
-    the Source and Solution. Its configuration error listed the new data
-    definition as a theorem; this is corrected. The literal definition remains
-    an ordinary dependency subject to full body comparison. All 29 previously
-    selected theorems remain. Full comparison and independent replay are pending.
+  notes: Preparation record dated 2026-11-19 at 08:35 UTC. Canonical run44488061682
+    verified the revised independent interface and definitional equality of the named
+    stalk-map module with the original inferred module. Earlier run44481635641 compiled
+    Source and Solution. All 29 selected statements remain; named data structures remain
+    ordinary dependencies subject to body comparison. Full verification and editorial
+    outcomes for this revised snapshot are recorded separately by Palomar.
 scope:
   known_gaps:
   - Other theorem groups from the same paper have separate configurations because
     independently concatenated proof bundles redeclare their common core.
-  - Current Challenge elaboration passed; full comparison and kernel replay of this snapshot remain pending.
+  - At the preparation timestamp above, full comparison and kernel replay of this revision had not yet run; subsequent workflow reports determine its verification status.
   notes: The submitted project contains the substantive historical proof development
     copied from the pinned source snapshot; this is not a thin wrapper. Historical
     upstream dependencies and license notices are retained. See map.json for exact

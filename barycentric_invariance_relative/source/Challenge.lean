@@ -493,6 +493,8 @@ variable (K : Type*) [CommRing K]
 
 /-- Facewise coefficient-linear maps from the polynomial stalks to their barycentric stalks. -/
 abbrev Family := ∀ p : P, PolynomialStalk K p →ₗ[K] BarycentricStalk K p
+def palomarStalkMapModule (p : P) : Module K (PolynomialStalk K p →ₗ[K] BarycentricStalk K p) := inferInstance
+attribute [instance 2400] palomarStalkMapModule
 /-- Every restriction square of the facewise maps commutes. -/
 def coherent : Submodule K (Family (P := P) K) where
   carrier := {F | ∀ p q (h : q ≤ p) x,
