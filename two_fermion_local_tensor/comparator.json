@@ -29,12 +29,21 @@
     "PaperVerification.Fermion.multigradedTensor_tmul_mem",
     "PaperVerification.Fermion.naturalMultigradedTensorPart_total",
     "PaperVerification.Fermion.homogeneousCluster_bigraded_total",
-    "PaperVerification.Fermion.localTensorDecomposition"
+    "PaperVerification.Fermion.localTensorDecomposition",
+    "PaperVerification.Fermion.polynomialSelfCommute",
+    "PaperVerification.Fermion.polynomialSelfTower",
+    "PaperVerification.Fermion.exteriorSelfCommute",
+    "PaperVerification.Fermion.exteriorSelfTower",
+    "PaperVerification.Fermion.superQuotientTensorRing_formula",
+    "PaperVerification.Fermion.superQuotientTensorAlgebra_formula"
   ],
   "permitted_axioms": [
     "propext",
     "Quot.sound",
     "Classical.choice"
   ],
-  "definition_names": []
+  "definition_names": [
+    "PaperVerification.Fermion.superQuotientTensorRing",
+    "PaperVerification.Fermion.superQuotientTensorAlgebra"
+  ]
 }
