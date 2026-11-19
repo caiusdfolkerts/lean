@@ -8,16 +8,16 @@
       "module": "Challenge",
       "case_dir": "cases/wishart_full20_canonical",
       "original_package": "reports/wishart/full20-canonical",
-      "original_challenge": "reports/wishart/full20-canonical/complete-measured-repair/Challenge.lean",
+      "original_challenge": "reports/wishart/full20-canonical/complete-measured-repair/revision-02/Challenge.lean",
       "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
       "hashes": {
-        "Challenge.lean": "92740b399d0187ee7b93811bd1c140e8596d8df514e9df31b54a0f213ffb7fbf",
+        "Challenge.lean": "c12b58dc1519cc4a66491f6c75def7772aad852c004b71017a06fe4820899a3c",
         "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
         "lake-manifest.json": "5619bb28ae7f2972522467eccf712e99876805a4fb0b7298a3c8de5918224147",
         "original-lakefile.toml": "e429ab885c0b86124ac6b748b01715efdede7f476661ead3634e0c69b6521ccb"
       },
       "challenge_lines": 962,
-      "challenge_bytes": 100906,
+      "challenge_bytes": 101419,
       "dependency_pins": [
         {
           "name": "mathlib",
@@ -135,7 +135,6 @@
     }
   ],
   "default_case_ids": [
-    "wishart_shared_proof_witnesses",
     "wishart_full20_canonical"
   ],
   "operator_resource_policy": {
