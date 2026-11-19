@@ -1,0 +1,53 @@
+version: v0.4
+project:
+  name: The canonical associated graded comparison for barycentric subdivision
+  description: For a finite simplicial poset of rank at most d over a commutative
+    ring, the parameter-module comparison between the barycentric and original face
+    rings preserves ordinary degree and the weight filtration. On every associated
+    graded piece it induces the prescribed canonical comparison.
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.CO
+  - math.AC
+  msc2020:
+  - 13F55
+  - 05E45
+sources:
+- type: paper
+  title: Barycentric invariance and universal parameters for face rings
+  authors:
+  - Caius Folkerts
+  relationship: formalizes
+  author_endorsement: participated
+  url: https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/barycentric_invariance/paper.pdf
+  note: 'Exact included paper SHA-256: 44902437462f2861ab65c112f77ec1f19e594753d3c9b277d9adcb63c6e523e4.
+    Scope and declaration locations are recorded in map.json; novelty is not independently
+    established.'
+automation:
+  methods:
+  - method: agent
+    tool_setup: OpenAI Codex
+    notes: Codex extracted the statement and connected it to the existing proof of
+      Theorem 1.1.
+  - method: other
+    tool_setup: Historical AI assistance reported in the included paper
+    notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing
+      its proofs. The exact model roles and extent of historical Lean automation have
+      not been reconstructed from the snapshot.
+review:
+  status: unchecked
+  notes: On 19 November 2026 the independent Challenge elaborated in run 44514350443.
+    Full verification results are recorded separately for each commit.
+scope:
+  current_selection: For a finite simplicial poset of rank at most d over a commutative
+    ring, the parameter-module comparison between the barycentric and original face
+    rings preserves ordinary degree and the weight filtration. On every associated
+    graded piece it induces the prescribed canonical comparison.
+  known_gaps:
+  - This entry covers the associated graded clause of Theorem 1.1. Other principal
+    results of the paper belong to separate entries.

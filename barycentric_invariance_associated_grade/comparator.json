@@ -1,0 +1,41 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "FourPapers.Universal.mem_faceVertices",
+    "FourPapers.Universal.faceVertices_mono",
+    "FourPapers.Universal.existsUnique_subface",
+    "FourPapers.Universal.polynomialRestriction_refl",
+    "FourPapers.Universal.polynomialRestriction_comp",
+    "FourPapers.Universal.stalkVertexSet_bot",
+    "FourPapers.Universal.faceEvaluation_relation",
+    "FourPapers.Universal.standardCoefficients_surjective",
+    "FourPapers.Universal.standardCoefficients_ker",
+    "FourPapers.Universal.stalkVertexSet_subfaceOfVertexSet",
+    "FourPapers.Universal.booleanFaceInclusion_le",
+    "FourPapers.Universal.barycentricAllowed_divisorClosed",
+    "FourPapers.Universal.barycentricIdeal_eq_forbiddenIdeal",
+    "FourPapers.Universal.standardCarrier_le_iff",
+    "FourPapers.Universal.booleanFaceInclusion_range_iff",
+    "FourPapers.Universal.standardExponent_map_booleanFaceInclusion",
+    "FourPapers.Universal.chainExponent_comap_booleanFaceInclusion",
+    "FourPapers.Universal.coefficientRestriction_apply",
+    "FourPapers.Universal.coefficientAssembly_section",
+    "FourPapers.Universal.coefficientSection_assembly",
+    "FourPapers.Universal.layerExponent_isChain",
+    "FourPapers.Universal.chainVertexMap_layerExponent",
+    "FourPapers.Universal.chainVertexMap_chain_injective",
+    "FourPapers.Universal.faceRingEvaluation_naturality",
+    "FourPapers.Universal.polynomialStandardCoordinates_naturality",
+    "FourPapers.Universal.standardFaceCombination_surjective",
+    "FourPapers.Universal.standardFaceCombination_coefficients",
+    "FourPapers.Universal.weightFiltrationLevelEquiv_lower",
+    "FourPapers.Universal.canonicalOriginalComparison_usualFiltered",
+    "PalomarBarycentricAssociatedGrade.prescribedAssociatedGrade"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

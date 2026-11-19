@@ -1,0 +1,8 @@
+{
+  "selected_results": [
+    "Theorem 1.1, prescribed associated graded comparison"
+  ],
+  "source_endpoint": "FourPapers.Universal.theorem_1_1",
+  "projection": "TheoremOneComparison.associatedGrade",
+  "paper_sha256": "44902437462f2861ab65c112f77ec1f19e594753d3c9b277d9adcb63c6e523e4"
+}
