@@ -1,0 +1,7 @@
+{
+  "parent_commit": "04b939b191d7b01561b7a416e51a0dc334d592f5",
+  "path": "packages/deformed_coinvariants/source/PaperVerification/CompleteIntersectionCodimensionFull.lean",
+  "before_sha256": "7adbc394b2ea56b399a0426ec309382e8e7de295672cd1489376d77c96d119ce",
+  "after_sha256": "30dfb095dcd0b37e7cd98de96b0164380ee2e43b7de0bb382b8fabdc4c4b359e",
+  "change": "Unfold the existing literal map wrapper before mkQ_map_self. Only this proof step changes; selected statements and mathematical data remain unchanged."
+}

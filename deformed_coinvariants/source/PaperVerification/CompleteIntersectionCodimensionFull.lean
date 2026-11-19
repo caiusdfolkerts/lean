@@ -51,7 +51,7 @@ theorem regular_hit_ne_at_occurring_resonance
   let e := homogeneousDefectEquiv F h w t d hh hF
     (regular_coefficient_injective F h w hw hh hF hreg) hres
   have hbot : defectImage F h t = ⊥ := by
-    rw [defectImage, ← heq, Submodule.mkQ_map_self]
+    rw [defectImage, ← heq, PalomarDeformedSupport.explicitMap, Submodule.mkQ_map_self]
   have hz : e ⟨p, hp⟩ = 0 := by
     apply Subtype.ext
     change (e ⟨p, hp⟩ : (Fin n → P) ⧸ hit F h t) = 0
