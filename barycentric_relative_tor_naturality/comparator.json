@@ -56,7 +56,12 @@
     "FourPapers.Universal.parameterIdealTerm_preserved",
     "FourPapers.Universal.originalRelativeTorDegreeMap_injective",
     "FourPapers.Universal.faceRingOrderAut_parameterAction",
-    "FourPapers.Universal.originalRelativeTorDegreeMap_equivariant"
+    "FourPapers.Universal.originalRelativeTorDegreeMap_equivariant",
+    "PalomarBarycentricTor.natRightCancelAdd",
+    "PalomarBarycentricTor.coefficientSMulComm",
+    "PalomarBarycentricTor.functionScalarTower",
+    "PalomarBarycentricTor.exteriorScalarComm",
+    "PalomarBarycentricTor.tensorPreservesZero"
   ],
   "definition_names": [],
   "permitted_axioms": [
