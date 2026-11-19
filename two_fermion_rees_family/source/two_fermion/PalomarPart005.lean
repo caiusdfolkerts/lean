@@ -3512,7 +3512,7 @@ def lowerSubmodule (b : Module.Basis J P M) (weight : J → ℕ) (r : ℕ) : Sub
   zero_mem' := by intro i hi; exact (hi (by simp)).elim
   add_mem' := by
     intro x y hx hy i hi
-    by_cases hxi : b.repr x i=0
+    by_cases hxi : PalomarFermion.coordinates b x i=0
     · apply hy i
       simpa only [map_add,Finsupp.add_apply,hxi,zero_add] using hi
     · exact hx i hxi

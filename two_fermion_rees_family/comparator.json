@@ -29,7 +29,22 @@
     "PaperVerification.Fermion.WeightRees.parameterLaurentEquiv_symm_coeff",
     "PaperVerification.Fermion.WeightRees.filtrationEquiv_coeff",
     "PaperVerification.Fermion.TypeA.colorFiltration_eq_basisTail",
-    "PaperVerification.Fermion.TypeA.palomarColorFamily"
+    "PaperVerification.Fermion.TypeA.palomarColorFamily",
+    "PalomarFermion.coefficientIdentityInvPair",
+    "PalomarFermion.coefficientCommutativeIdentityInvPair",
+    "PalomarFermion.coefficientIdentitySurjective",
+    "PalomarFermion.coefficientCommutativeIdentitySurjective",
+    "PalomarFermion.finiteCoordinates",
+    "PalomarFermion.finiteOddCoordinates",
+    "PalomarFermion.coordinates_apply",
+    "PaperVerification.Fermion.polynomialSelfCommute",
+    "PaperVerification.Fermion.polynomialSelfTower",
+    "PaperVerification.Fermion.exteriorSelfCommute",
+    "PaperVerification.Fermion.exteriorSelfTower",
+    "PaperVerification.Fermion.Newton.rectangleForwardBounds",
+    "PaperVerification.Fermion.Newton.rectangleBackwardBounds",
+    "PaperVerification.Fermion.Newton.rectangleLeftInverse",
+    "PaperVerification.Fermion.Newton.rectangleRightInverse"
   ],
   "permitted_axioms": [
     "propext",

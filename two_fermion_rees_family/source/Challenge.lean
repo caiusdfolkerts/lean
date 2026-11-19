@@ -3,9 +3,27 @@ public import Mathlib
 
 /-! Theorem 8.1: initial ideals and an equivariant degeneration of the two-fermion quotient. -/
 @[expose] public section
+attribute [-instance] MvPolynomial.instModuleSelf MvPolynomial.instModule
 noncomputable section
 set_option autoImplicit false
 open scoped BigOperators
+namespace PalomarFermion
+universe uDictionary
+public theorem coefficientIdentityInvPair {R : Type uDictionary} [CommRing R] : RingHomInvPair (RingHom.id R) (RingHom.id R) := by sorry
+public theorem coefficientCommutativeIdentityInvPair {R : Type uDictionary} [hR : CommRing R] : @RingHomInvPair R R hR.toCommSemiring.toSemiring hR.toCommSemiring.toSemiring (@RingHom.id R hR.toCommSemiring.toSemiring.toNonAssocSemiring) (@RingHom.id R hR.toCommSemiring.toSemiring.toNonAssocSemiring) := by sorry
+public theorem coefficientIdentitySurjective {R : Type uDictionary} [CommRing R] : RingHomSurjective (RingHom.id R) := by sorry
+public theorem coefficientCommutativeIdentitySurjective {R : Type uDictionary} [hR : CommRing R] : @RingHomSurjective R R hR.toCommSemiring.toSemiring hR.toCommSemiring.toSemiring (@RingHom.id R hR.toCommSemiring.toSemiring.toNonAssocSemiring) := by sorry
+public theorem finiteCoordinates (n : ℕ) : Finite (Fin n) := by sorry
+public theorem finiteOddCoordinates (n : ℕ) : Finite (Fin n ⊕ Fin n) := by sorry
+attribute [instance 2000] coefficientIdentityInvPair coefficientIdentitySurjective
+attribute [instance 2100] coefficientCommutativeIdentityInvPair coefficientCommutativeIdentitySurjective finiteCoordinates finiteOddCoordinates
+universe uCoordinateModule uCoordinateIndex
+public abbrev coordinates {R : Type uDictionary} [CommRing R] {M : Type uCoordinateModule} {I : Type uCoordinateIndex} [AddCommGroup M] [Module R M] (b : Module.Basis I R M) : M →ₗ[R] (I →₀ R) :=
+  @LinearEquiv.toLinearMap R R _ _ (RingHom.id R) (RingHom.id R)
+    (coefficientCommutativeIdentityInvPair (R := R)) (coefficientCommutativeIdentityInvPair (R := R))
+    M (I →₀ R) _ _ _ _ b.repr
+@[simp] public theorem coordinates_apply {R : Type uDictionary} [CommRing R] {M : Type uCoordinateModule} {I : Type uCoordinateIndex} [AddCommGroup M] [Module R M] (b : Module.Basis I R M) (x : M) : coordinates b x = b.repr x := by sorry
+end PalomarFermion
 namespace PaperVerification.Fermion.WeightRees
 open scoped Classical BigOperators LaurentPolynomial
 variable (K A : Type*) [CommRing K] [Ring A] [Algebra K A]
@@ -52,7 +70,7 @@ variable {K P M N Q J : Type*} [CommRing K] [CommRing P] [Algebra K P]
   [AddCommGroup M] [Module P M] [Module K M] [IsScalarTower K P M]
   [AddCommGroup N] [Module K N] [AddCommGroup Q] [Module K Q] [Fintype J]
   (b : Module.Basis J P M) (weight : J → ℕ)
-def LowerBound (r : ℕ) (x : M) : Prop := ∀ j,b.repr x j≠0 → r≤weight j
+def LowerBound (r : ℕ) (x : M) : Prop := ∀ j,PalomarFermion.coordinates b x j≠0 → r≤weight j
 variable (q : M →ₗ[K] Q) (D : J → Type*) [∀ j,Fintype (D j)]
 structure TriangularPresentation where
   polynomial : (j : J) → D j → P
@@ -86,6 +104,11 @@ variable (K : Type u) [CommRing K] (n : ℕ)
 abbrev PolynomialRing := MvPolynomial (Fin n) K
 abbrev OddIndex := Fin n ⊕ Fin n
 abbrev OddModule := OddIndex n → K
+theorem polynomialSelfCommute : SMulCommClass K (PolynomialRing K n) (PolynomialRing K n) := by sorry
+theorem polynomialSelfTower : IsScalarTower K (PolynomialRing K n) (PolynomialRing K n) := by sorry
+theorem exteriorSelfCommute : SMulCommClass K (ExteriorAlgebra K (OddModule K n)) (ExteriorAlgebra K (OddModule K n)) := by sorry
+theorem exteriorSelfTower : IsScalarTower K (ExteriorAlgebra K (OddModule K n)) (ExteriorAlgebra K (OddModule K n)) := by sorry
+attribute [instance 2100] polynomialSelfCommute polynomialSelfTower exteriorSelfCommute exteriorSelfTower
 abbrev SuperRing := PolynomialRing K n ⊗[K] ExteriorAlgebra K (OddModule K n)
 @[reducible] noncomputable instance superQuotientModule (I : TwoSidedIdeal (SuperRing K n)) :
     Module K I.ringCon.Quotient := by
@@ -102,6 +125,12 @@ inductive MomentKind
   | polynomial | theta | xi | mixed
   deriving DecidableEq
 variable {K n}
+noncomputable def pairedCoefficients (β : Fin n → K)
+    (a b : Fin n → PolynomialRing K n) : MomentKind → Fin n → SuperRing K n
+  | .polynomial, i => (MvPolynomial.C (β i) * a i * b i) • (1 : SuperRing K n)
+  | .theta, i => b i • theta K n i
+  | .xi, i => (MvPolynomial.C (β i) * a i) • xi K n i
+  | .mixed, i => theta K n i * xi K n i
 noncomputable def strictCoefficients (β : Fin n → K)
     (φ : Fin n → PolynomialRing K n) : MomentKind → Fin n → SuperRing K n
   | .polynomial, i => (MvPolynomial.C (β i) * φ i) • (1 : SuperRing K n)
@@ -159,19 +188,23 @@ open MvPolynomial
 open scoped BigOperators
 variable {F : Type*} [Field F] {n : ℕ}
 abbrev RectangleIndex (h : Fin n → ℕ) := {a : Fin n →₀ ℕ // ∀ i, a i < h i}
-def rectangleIndexEquiv (h : Fin n → ℕ) :
-    RectangleIndex h ≃ (∀ i : Fin n, Fin (h i)) where
-  toFun a i := ⟨a.val i,a.property i⟩
-  invFun a := ⟨Finsupp.equivFunOnFinite.symm (fun i ↦ (a i).val),fun i ↦ (a i).isLt⟩
-  left_inv a := by apply Subtype.ext; ext i; rfl
-  right_inv a := by funext i; apply Fin.ext; rfl
+theorem rectangleForwardBounds (h : Fin n → ℕ) (a : RectangleIndex h) : ∀ i, a.val i < h i := by sorry
+theorem rectangleBackwardBounds (h : Fin n → ℕ) (a : ∀ i, Fin (h i)) : ∀ i, Finsupp.equivFunOnFinite.symm (fun j => (a j).val) i < h i := by sorry
+def rectangleForward (h : Fin n → ℕ) (a : RectangleIndex h) : ∀ i, Fin (h i) := fun i => ⟨a.val i,rectangleForwardBounds h a i⟩
+def rectangleBackward (h : Fin n → ℕ) (a : ∀ i, Fin (h i)) : RectangleIndex h := ⟨Finsupp.equivFunOnFinite.symm (fun i => (a i).val),rectangleBackwardBounds h a⟩
+theorem rectangleLeftInverse (h : Fin n → ℕ) : Function.LeftInverse (rectangleBackward h) (rectangleForward h) := by sorry
+theorem rectangleRightInverse (h : Fin n → ℕ) : Function.RightInverse (rectangleBackward h) (rectangleForward h) := by sorry
+ def rectangleIndexEquiv (h : Fin n → ℕ) : RectangleIndex h ≃ (∀ i : Fin n, Fin (h i)) where
+  toFun := rectangleForward h
+  invFun := rectangleBackward h
+  left_inv := rectangleLeftInverse h
+  right_inv := rectangleRightInverse h
 instance rectangleIndex_fintype (h : Fin n → ℕ) : Fintype (RectangleIndex h) :=
   Fintype.ofEquiv _ (rectangleIndexEquiv h).symm
 end PaperVerification.Fermion.Newton
 namespace PaperVerification.Fermion.Exterior
-def interleavedOddRank {n : ℕ} : Fin n ⊕ Fin n → ℕ
-  | .inl i => 2 * i.val + 1
-  | .inr i => 2 * i.val
+def interleavedOddRank {n : ℕ} : Fin n ⊕ Fin n → ℕ :=
+  Sum.elim (fun i => 2 * i.val + 1) (fun i => 2 * i.val)
 theorem interleavedOddRank_injective (n : ℕ) : Function.Injective (@interleavedOddRank n) := by sorry
 def interleavedOddOrder (n : ℕ) : LinearOrder (Fin n ⊕ Fin n) := LinearOrder.lift' interleavedOddRank (interleavedOddRank_injective n)
 def pairedPrefix (n i : ℕ) : Finset (Fin n ⊕ Fin n) := (Finset.univ.filter (fun j : Fin n ↦ j.val < i)).disjSum (Finset.univ.filter
@@ -317,7 +350,7 @@ def lowerSubmodule (b : Module.Basis J P M) (weight : J → ℕ) (r : ℕ) : Sub
   zero_mem' := by intro i hi; exact (hi (by simp)).elim
   add_mem' := by
     intro x y hx hy i hi
-    by_cases hxi : b.repr x i=0
+    by_cases hxi : PalomarFermion.coordinates b x i=0
     · apply hy i
       simpa only [map_add,Finsupp.add_apply,hxi,zero_add] using hi
     · exact hx i hxi
