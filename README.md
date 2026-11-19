@@ -7,3 +7,5 @@ The independently compiled canonical Mathlib-only primitive module is preserved 
 The tested ordered runner and bounds are retained: one8GiB compiler at a time,40minutes for the entire exact source closure and40minutes for the final bridge, bounded phase logs with hashes and always-uploaded receipts. Root canonical dependencies and Lean4.36rc1/Mathlib2cab/TauCeti06d5bb remain exactly pinned. No official full-root verification obligation is claimed discharged by this diagnostic.
 
 The exact canonical primitive module passed run44464838345 independently before dispatching this source bridge. Full twenty-target interface elaboration, original source proofs, Comparator and independent kernels remain separate obligations.
+
+Revision02 addresses the sole measured source-bridge error: two elaborations of the real quaternion carrier were not reduced through unexposed canonical real arithmetic dictionaries. The bridge now imports all of canonical Mathlib.Basic.Real.Basic, without changing any source definition, and records the three complete bounded type arguments of both quaternion homomorphisms. Every source specification proof remains genuine and unchanged.

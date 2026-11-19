@@ -1,4 +1,7 @@
 module
+public meta import Lean.Elab.Command
+public meta import Lean.Data.Json
+import all Mathlib.Basic.Real.Basic
 
 public import WishartLiteralPrimitives
 public import TauCeti.Probability.Distributions.Wishart.Nonsingular
@@ -91,6 +94,24 @@ theorem inverseWishartMeasure_eq {p : ℕ} :
 
 end WishartLiteralLaws
 
+
+-- Bounded direct type-argument observations, never environment enumeration.
+run_cmd do
+  let env ← Lean.getEnv
+  for name in [`Quaternion.toComplexMatrix, `WishartLiteralStructures.quaternionRepresentation] do
+    match env.find? name with
+    | none => Lean.logInfo m!"missing {name}"
+    | some ci =>
+      for i in [0, 1, 2] do
+        let a := ci.type.getAppArgs[i]!
+        let text := reprStr a
+        let row := Lean.Json.mkObj [
+          ("kind", Lean.toJson "QUATERNION_FUNCTION_TYPE_ARGUMENT"),
+          ("name", Lean.toJson name.toString), ("argument", Lean.toJson i),
+          ("characters", Lean.toJson text.length),
+          ("truncated", Lean.toJson (decide (12000 < text.length))),
+          ("ast", Lean.toJson (String.ofList (text.toList.take 12000)))]
+        Lean.logInfo m!"{row.compress}"
 
 namespace WishartLiteralSpecification
 /-- Whole record equality to the actual source Frobenius structure. -/
