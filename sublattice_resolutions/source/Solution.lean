@@ -2183,6 +2183,54 @@ theorem sublattice_deformation_rees_generation (o : MonomialOrder (FiniteVariabl
 
 end PalomarSublattice
 
+/- Keep these canonical data ahead of the refinement proof bridge so Lean
+uses the same first-occurrence names for auxiliary instance proofs in both modules. -/
+namespace PalomarSublattice.OrdinaryQuotientKoszul
+open Classical MvPolynomial
+universe u
+variable {V k : Type u} [Fintype V] [LinearOrder V] [Field k]
+/-- The image of the genuine polynomial homogeneous component in the actual
+quotient. Integer weights include negative strands with their actual zero
+polynomial component. -/
+def coefficientPiece (I : Ideal (MvPolynomial V k)) (q : ℤ) :
+    Submodule k (MvPolynomial V k ⧸ I) :=
+  (weightedHomogeneousSubmodule k (fun _ : V => (1 : ℤ)) q).map
+    (Ideal.Quotient.mkₐ k I).toLinearMap
+/-- Exterior degree p contributes p to ordinary internal degree. Each actual
+quotient coefficient has polynomial degree q-p. -/
+def piece (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
+    Submodule k (FineKoszul.Coordinates (V := V) (MvPolynomial V k ⧸ I) p) :=
+  ⨅ s : Set.powersetCard V p,
+    (coefficientPiece I (q - (p : ℤ))).comap (Finsupp.lapply s)
+/-- Genuine cycles of the signed variable-multiplication Koszul differential
+inside the actual ordinary integer strand. -/
+def cycles (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
+    Submodule k (FineKoszul.Coordinates (V := V) (MvPolynomial V k ⧸ I) p) :=
+  LinearMap.ker (FineKoszul.previous (k := k) p) ⊓ piece I q p
+instance cyclesAddCommGroup (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
+    AddCommGroup (cycles I q p) :=
+  Submodule.addCommGroup (R := k)
+    (M := FineKoszul.Coordinates (V := V) (MvPolynomial V k ⧸ I) p) (cycles I q p)
+/-- The actual preceding homogeneous component mapped by the Koszul
+ differential, viewed inside its cycle submodule. -/
+def boundaries (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
+    Submodule k (cycles I q p) :=
+  (Submodule.map (FineKoszul.differential (k := k) p) (piece I q (p+1))).comap
+    (cycles I q p).subtype
+/-- Literal homogeneous Koszul homology: actual cycles modulo actual boundaries. -/
+abbrev Homology (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :=
+  _root_.Quotient (Submodule.quotientRel (R := k) (M := cycles I q p) (boundaries I q p))
+instance homologyAddCommGroup (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
+    AddCommGroup (Homology I q p) :=
+  Submodule.Quotient.addCommGroup (R := k) (M := cycles I q p) (boundaries I q p)
+instance homologyModule (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
+    Module k (Homology I q p) :=
+  Submodule.Quotient.module (R := k) (M := cycles I q p) (boundaries I q p)
+/-- The dimension of the genuine ordinary integer Koszul homology strand. -/
+def betti (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) : ℕ :=
+  Module.finrank k (Homology I q p)
+end PalomarSublattice.OrdinaryQuotientKoszul
+
 /- Literal arbitrary additive grading for the final finer-grading clause of
 Theorem4.3; unelaborated, separate from frozen complete-main494. -/
 namespace PalomarSublattice.RefinedKoszul
@@ -2416,58 +2464,6 @@ theorem sublattice_first_power_finer_propagation
 
 end PalomarSublattice
 
-/- Literal ordinary integer strands for actual quotient coefficients. This
-fragment extends the existing canonical-only Challenge; no derived-Tor value
-is defined by a summation formula. -/
-namespace PalomarSublattice.OrdinaryQuotientKoszul
-open Classical MvPolynomial
-universe u
-variable {V k : Type u} [Fintype V] [LinearOrder V] [Field k]
-/-- The image of the genuine polynomial homogeneous component in the actual
-quotient. Integer weights include negative strands with their actual zero
-polynomial component. -/
-def coefficientPiece (I : Ideal (MvPolynomial V k)) (q : ℤ) :
-    Submodule k (MvPolynomial V k ⧸ I) :=
-  (weightedHomogeneousSubmodule k (fun _ : V => (1 : ℤ)) q).map
-    (Ideal.Quotient.mkₐ k I).toLinearMap
-/-- Exterior degree p contributes p to ordinary internal degree. Each actual
-quotient coefficient has polynomial degree q-p. -/
-def piece (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
-    Submodule k (FineKoszul.Coordinates (V := V) (MvPolynomial V k ⧸ I) p) :=
-  ⨅ s : Set.powersetCard V p,
-    (coefficientPiece I (q - (p : ℤ))).comap (Finsupp.lapply s)
-/-- Genuine cycles of the signed variable-multiplication Koszul differential
-inside the actual ordinary integer strand. -/
-def cycles (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
-    Submodule k (FineKoszul.Coordinates (V := V) (MvPolynomial V k ⧸ I) p) :=
-  LinearMap.ker (FineKoszul.previous (k := k) p) ⊓ piece I q p
-instance cyclesAddCommGroup (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
-    AddCommGroup (cycles I q p) :=
-  Submodule.addCommGroup (R := k)
-    (M := FineKoszul.Coordinates (V := V) (MvPolynomial V k ⧸ I) p) (cycles I q p)
-/-- The actual preceding homogeneous component mapped by the Koszul
- differential, viewed inside its cycle submodule. -/
-def boundaries (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
-    Submodule k (cycles I q p) :=
-  (Submodule.map (FineKoszul.differential (k := k) p) (piece I q (p+1))).comap
-    (cycles I q p).subtype
-/-- Literal homogeneous Koszul homology: actual cycles modulo actual boundaries. -/
-abbrev Homology (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :=
-  _root_.Quotient (Submodule.quotientRel (R := k) (M := cycles I q p) (boundaries I q p))
-instance homologyAddCommGroup (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
-    AddCommGroup (Homology I q p) :=
-  Submodule.Quotient.addCommGroup (R := k) (M := cycles I q p) (boundaries I q p)
-instance homologyModule (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
-    Module k (Homology I q p) :=
-  Submodule.Quotient.module (R := k) (M := cycles I q p) (boundaries I q p)
-/-- The dimension of the genuine ordinary integer Koszul homology strand. -/
-def betti (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) : ℕ :=
-  @Module.finrank k _ _
-    (@Submodule.Quotient.addCommMonoid k (cycles I q p) _ (cyclesAddCommGroup I q p) _
-      (boundaries I q p))
-    (@Submodule.Quotient.module k (cycles I q p) _ (cyclesAddCommGroup I q p) _
-      (boundaries I q p))
-end PalomarSublattice.OrdinaryQuotientKoszul
 
 /- Actual chain-level bridge for the ordinary quotient strands. Draft only;
 requires the literal prefix and the existing full Solution's FineKoszul helpers. -/
