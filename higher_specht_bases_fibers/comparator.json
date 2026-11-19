@@ -1,0 +1,14 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "HigherSpecht.theorem_7_1_parameter_fiber_exists",
+    "HigherSpecht.theorem_7_1_algebraicClosure_exists",
+    "HigherSpecht.theorem_7_1_algebraicClosure_number_of_factors"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

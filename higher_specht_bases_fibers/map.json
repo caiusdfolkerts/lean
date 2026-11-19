@@ -1,0 +1,37 @@
+{
+  "project": "higher_specht_bases_fibers",
+  "baseline_project": "higher_specht_bases",
+  "paper_sha256": "931c0ee33b94c7a77d373c4040abb40151a8f1cd049b977006df188e31013a0c",
+  "companion_to": {
+    "entry": "higher_specht_bases_status",
+    "commit": "fb5ab9354a764e61ae08d5e8f631614d1920f776"
+  },
+  "status": "fiber_decomposition_candidate_awaiting_full_preflight",
+  "selected_results": [
+    "Theorem 7.1: split fibers, every fiber after algebraic closure, and canonical factor count"
+  ],
+  "coverage": [
+    {
+      "paper_result": "Theorem 7.1",
+      "paper_file": "paper.pdf",
+      "declarations": [
+        {
+          "name": "HigherSpecht.theorem_7_1_parameter_fiber_exists",
+          "source_path": "source/Solution.lean",
+          "original_construction": "HigherSpecht.theorem_7_1_parameter_fiber"
+        },
+        {
+          "name": "HigherSpecht.theorem_7_1_algebraicClosure_exists",
+          "source_path": "source/Solution.lean",
+          "original_construction": "HigherSpecht.theorem_7_1_algebraicClosure"
+        },
+        {
+          "name": "HigherSpecht.theorem_7_1_algebraicClosure_number_of_factors",
+          "source_path": "source/Solution.lean",
+          "original_construction": "HigherSpecht.theorem_7_1_algebraicClosure_number_of_factors"
+        }
+      ]
+    }
+  ],
+  "coverage_status": "partial_principal_selection_not_whole_paper"
+}
