@@ -990,6 +990,7 @@ theorem basisOrdinaryDegreePiece_map (b : Module.Basis I K M) (c : Module.Basis 
     (n : ℕ) (x : M) (hx : x ∈ basisOrdinaryDegreePiece b degree n) :
     f x ∈ basisOrdinaryDegreePiece c degree n := by
   intro j hj
+  change c.repr (f x) j = 0
   rw [basis_repr_linear_map]
   apply Finset.sum_eq_zero
   intro i hi
@@ -2340,6 +2341,7 @@ theorem booleanRestriction_degree (e : V ↪ W) (n : ℕ)
     booleanRestriction e x ∈ basisOrdinaryDegreePiece booleanChainBasis
       (fun a => booleanOrdinaryDegree a.val) n := by
   intro a ha
+  change booleanChainBasis.repr (booleanRestriction e x) a = 0
   rw [booleanRestriction_coefficient]
   apply hx
   change booleanOrdinaryDegree (a.val.mapDomain (booleanFaceEmbedding e)) ≠ n
@@ -2767,7 +2769,8 @@ theorem degreeZero_eq_smul_one (x : BooleanBarycentricRing V K)
       intro h
       apply ha
       exact Subtype.ext ((booleanOrdinaryDegree_zero_iff a.val).mp h)
-    rw [hx a hdegree]
+    have hx' : booleanChainBasis.repr x a = 0 := hx a hdegree
+    rw [hx']
     simp [ha, Ne.symm ha]
 
 end Coefficients
@@ -3036,6 +3039,7 @@ variable {I K M : Type*} [CommRing K] [AddCommGroup M] [Module K M]
 theorem scalarOrdinaryBasis_mem_piece (b : Module.Basis I K M) (w : I → ℕ) (i : I) :
     b i ∈ basisOrdinaryDegreePiece b w (w i) := by
   intro j hj
+  change b.repr (b i) j = 0
   by_cases h : i = j
   · subst j
     exact (hj rfl).elim
@@ -3148,8 +3152,10 @@ theorem scalarPolynomialChainDegreePiece_eq [LinearOrder V] (n : ℕ) :
       rw [← vertexDegree_eq_chainOrdinaryDegree, hc]
       exact ha
     have hh := hf c hn
+    change polynomialChainBasis.repr f c = 0 at hh
     simpa only [polynomialChainBasis_repr, hc] using hh
   · intro hf c hc
+    change polynomialChainBasis.repr f c = 0
     rw [polynomialChainBasis_repr]
     apply hf
     change chainOrdinaryDegree c.val ≠ n at hc
@@ -8195,6 +8201,7 @@ theorem primeFixedFaceKernelProjection_degree (n : ℕ)
     (primeFixedFaceKernelProjection p K x).val ∈ basisOrdinaryDegreePiece booleanChainBasis
       (fun a => booleanOrdinaryDegree a.val) n := by
   intro a ha
+  change booleanChainBasis.repr (primeFixedFaceKernelProjection p K x).val a = 0
   rw [primeFixedFaceKernelProjection_coefficient]
   split_ifs
   · rfl
@@ -8476,6 +8483,7 @@ theorem primeFixedFaceQuotient_degree (n : ℕ)
     primeFixedFaceQuotient p K x ∈ basisOrdinaryDegreePiece booleanChainBasis
       (fun a => booleanOrdinaryDegree a.val) (n / p) := by
   intro a ha
+  change booleanChainBasis.repr (primeFixedFaceQuotient p K x) a = 0
   rw [primeFixedFaceQuotient_coefficient]
   apply hx
   change booleanOrdinaryDegree (primeFixedChainEmbedding p a).val ≠ n
@@ -8503,6 +8511,7 @@ theorem primeFixedFaceSection_degree (n : ℕ) (x : BooleanBarycentricRing W K)
     primeFixedFaceSection p K x ∈ basisOrdinaryDegreePiece booleanChainBasis
       (fun a => booleanOrdinaryDegree a.val) (p * n) := by
   intro a ha
+  change booleanChainBasis.repr (primeFixedFaceSection p K x) a = 0
   by_cases hmem : a ∈ Set.range (primeFixedChainEmbedding (W := W) p)
   · obtain ⟨b, rfl⟩ := hmem
     rw [primeFixedFaceSection_coefficient]

@@ -1,0 +1,46 @@
+{
+  "parent_commit": "d7e71c4e3d933c6d79d13d2c608438bccdc6b639",
+  "before_sha256": "cde25d337c489772a0317c5813e0833d9e9359146c5aba754ec61cf787ecf3a4",
+  "after_sha256": "f0cca1f581d51dd027f4138379040c07b678f1f3c2e87e36ca86290f84ea4bd2",
+  "proof_only_changes": [
+    [
+      "  intro j hj\n  rw [basis_repr_linear_map]",
+      "  intro j hj\n  change c.repr (f x) j = 0\n  rw [basis_repr_linear_map]"
+    ],
+    [
+      "  intro a ha\n  rw [booleanRestriction_coefficient]",
+      "  intro a ha\n  change booleanChainBasis.repr (booleanRestriction e x) a = 0\n  rw [booleanRestriction_coefficient]"
+    ],
+    [
+      "    rw [hx a hdegree]\n    simp [ha, Ne.symm ha]",
+      "    have hx' : booleanChainBasis.repr x a = 0 := hx a hdegree\n    rw [hx']\n    simp [ha, Ne.symm ha]"
+    ],
+    [
+      "  intro j hj\n  by_cases h : i = j",
+      "  intro j hj\n  change b.repr (b i) j = 0\n  by_cases h : i = j"
+    ],
+    [
+      "    have hh := hf c hn\n    simpa only [polynomialChainBasis_repr, hc] using hh",
+      "    have hh := hf c hn\n    change polynomialChainBasis.repr f c = 0 at hh\n    simpa only [polynomialChainBasis_repr, hc] using hh"
+    ],
+    [
+      "  \u00b7 intro hf c hc\n    rw [polynomialChainBasis_repr]",
+      "  \u00b7 intro hf c hc\n    change polynomialChainBasis.repr f c = 0\n    rw [polynomialChainBasis_repr]"
+    ],
+    [
+      "  intro a ha\n  rw [primeFixedFaceKernelProjection_coefficient]",
+      "  intro a ha\n  change booleanChainBasis.repr (primeFixedFaceKernelProjection p K x).val a = 0\n  rw [primeFixedFaceKernelProjection_coefficient]"
+    ],
+    [
+      "  intro a ha\n  rw [primeFixedFaceQuotient_coefficient]",
+      "  intro a ha\n  change booleanChainBasis.repr (primeFixedFaceQuotient p K x) a = 0\n  rw [primeFixedFaceQuotient_coefficient]"
+    ],
+    [
+      "  intro a ha\n  by_cases hmem : a \u2208 Set.range (primeFixedChainEmbedding (W := W) p)",
+      "  intro a ha\n  change booleanChainBasis.repr (primeFixedFaceSection p K x) a = 0\n  by_cases hmem : a \u2208 Set.range (primeFixedChainEmbedding (W := W) p)"
+    ]
+  ],
+  "statement_types_and_data_unchanged": true,
+  "all_nine_reported_errors_addressed": true,
+  "full_verification_required": true
+}
