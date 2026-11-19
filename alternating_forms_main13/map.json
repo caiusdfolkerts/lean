@@ -3,9 +3,9 @@
   "baseline_project": "alternating_forms",
   "baseline_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
   "parent_passed_commit": "f99b0e657e8e3ca478876ff6a90ea28ef30039be",
-  "prepared_at": "2026-11-19T09:51:18.229475+00:00",
-  "status": "canonical_challenge_and_typed_commutativity_passed_genuine_bridges_authored",
-  "verification_note": "Preparation-time status only. Subsequent exact-commit workflow reports determine Source/Solution/Comparator/kernel verification.",
+  "prepared_at": "2026-11-19T10:45:59.896578+00:00",
+  "status": "canonical_existing_data_identity_controls_passed_source_bridge_update",
+  "verification_note": "Preparation-time record only. Subsequent exact-commit full workflow reports determine verification.",
   "selected_results": [
     {
       "declaration": "PalomarAlternatingDegeneration.TauCeti.InternalGrading.mapInternal",
@@ -899,5 +899,11 @@
     "input_sha256": "f6b794ccefb718cb1945697c6c6af763042547df37de772940bda91b0dacdd27",
     "status": "pass",
     "scope": "Actual concrete polynomial commutativity proof; Root source-definitional Tor bridges still require full Source compilation."
+  },
+  "data_identity_control": {
+    "run": 44507472610,
+    "input_sha256": "9dd2acd8ade2f39cfb3b0263f1fae7ab95e1abb912b5b837137c4cdc253498d1",
+    "status": "pass",
+    "scope": "Genuine generic path/bar identities against literal retained-source pattern constructors; no new paper result or excluded section formalization."
   }
 }

@@ -1,0 +1,17 @@
+{
+  "prepared_at": "2026-11-19T10:37:16.703147+00:00",
+  "parent_commit": "2c4c1ba134c363832c52ebab9cd28c47df593f77",
+  "actual_failed_run": 44500470195,
+  "complete_error_count": 7,
+  "all25_written_types_and_all_data_unchanged": true,
+  "source_proofs_contain_no_holes": true,
+  "canonical_control_lines": 864,
+  "canonical_control_sha256": "9dd2acd8ade2f39cfb3b0263f1fae7ab95e1abb912b5b837137c4cdc253498d1",
+  "Source_before_sha256": "5e9e1a618b72cfe81361de97d5d9a3eb74fb9d56d260fecaf2195f1b77408bc4",
+  "Source_after_sha256": "81c1fc72e575aab3a562dd730fbcedeaa10c9406928ed99e0c1e952309ba1458",
+  "scope": "Only explicit identities/normalization needed to re-express existing proved main1.3; no excluded-section mathematical formalization.",
+  "installed_at": "2026-11-19T10:45:59.896578+00:00",
+  "canonical_control_run": 44507472610,
+  "canonical_control_receipt_sha256": "963d2a55df9a0f7d9af9e525010c2ab252269360ffc5ca2b8fc9514600265cbf",
+  "all25_public_statement_types_and_all_data_unchanged": true
+}
