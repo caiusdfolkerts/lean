@@ -5650,17 +5650,11 @@ def untruncatedMonomialDegreeBasis (K : Type*) [Field K]
     (fun _ => MvPolynomial.isHomogeneous_monomial 1 rfl)
     (untruncatedStandardMonomialBasis_apply hk) d
 
-theorem hilbertPolynomialScalarTower (K : Type palomarFiberCoeffU) [Field K] (n : ℕ) :
-    IsScalarTower K (PolynomialRing n K) (PolynomialRing n K) :=
-  inferInstance
-
 def untruncatedHilbertFunction (K : Type palomarFiberCoeffU) [Field K]
     (n : ℕ) (lam : YoungDiagram) (d : ℕ) : ℕ :=
   let I := untruncatedIdeal K n lam
   let P := homogeneousQuotientPiece I d
-  let M := @Submodule.Quotient.module' (PolynomialRing n K) (PolynomialRing n K)
-    inferInstance inferInstance inferInstance K inferInstance inferInstance
-    inferInstance (hilbertPolynomialScalarTower K n) I
+  let M := homogeneousQuotientModule K I
   @Module.finrank K P inferInstance
     (@Submodule.addCommMonoid K (PolynomialRing n K ⧸ I) inferInstance inferInstance M P)
     (@Submodule.module K (PolynomialRing n K ⧸ I) inferInstance inferInstance M P)

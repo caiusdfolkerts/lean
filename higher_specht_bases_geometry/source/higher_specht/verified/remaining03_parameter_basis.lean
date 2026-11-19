@@ -1380,8 +1380,19 @@ attribute [local instance] MvPolynomial.gradedAlgebra
 
 variable {R : Type palomarFiberCoeffU} [CommRing R] {n : ℕ}
 
+theorem homogeneousQuotientScalarTower (R : Type palomarFiberCoeffU) [CommRing R] (n : ℕ) :
+    IsScalarTower R (PolynomialRing n R) (PolynomialRing n R) :=
+  inferInstance
+
+abbrev homogeneousQuotientModule (R : Type palomarFiberCoeffU) [CommRing R] {n : ℕ}
+    (I : Ideal (PolynomialRing n R)) : Module R (PolynomialRing n R ⧸ I) :=
+  @Submodule.Quotient.module' (PolynomialRing n R) (PolynomialRing n R)
+    inferInstance inferInstance inferInstance R inferInstance inferInstance
+    inferInstance (homogeneousQuotientScalarTower R n) I
+
 def homogeneousQuotientPiece (I : Ideal (PolynomialRing n R)) (d : ℕ) :
-    Submodule R (PolynomialRing n R ⧸ I) :=
+    @Submodule R (PolynomialRing n R ⧸ I) inferInstance inferInstance
+      (homogeneousQuotientModule R I) :=
   (homogeneousSubmodule (Fin n) R d).map (Ideal.Quotient.mkₐ R I).toLinearMap
 
 theorem mem_homogeneousQuotientPiece (I : Ideal (PolynomialRing n R)) (d : ℕ)
