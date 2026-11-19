@@ -225,9 +225,20 @@ def homogeneousQuotientPiece (I : Ideal (PolynomialRing n R)) (d : ℕ) :
 
 end GradedPiece
 
+theorem hilbertPolynomialScalarTower (K : Type palomarFiberCoeffU) [Field K] (n : ℕ) :
+    IsScalarTower K (PolynomialRing n K) (PolynomialRing n K) :=
+  inferInstance
+
 def untruncatedHilbertFunction (K : Type palomarFiberCoeffU) [Field K]
     (n : ℕ) (lam : YoungDiagram) (d : ℕ) : ℕ :=
-  Module.finrank K (homogeneousQuotientPiece (untruncatedIdeal K n lam) d)
+  let I := untruncatedIdeal K n lam
+  let P := homogeneousQuotientPiece I d
+  let M := @Submodule.Quotient.module' (PolynomialRing n K) (PolynomialRing n K)
+    inferInstance inferInstance inferInstance K inferInstance inferInstance
+    inferInstance (hilbertPolynomialScalarTower K n) I
+  @Module.finrank K P inferInstance
+    (@Submodule.addCommMonoid K (PolynomialRing n K ⧸ I) inferInstance inferInstance M P)
+    (@Submodule.module K (PolynomialRing n K ⧸ I) inferInstance inferInstance M P)
 
 /-- Both conventional multiplicities: actual local length and the leading
 coefficient of the eventual Hilbert polynomial of the actual quotient. -/

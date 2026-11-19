@@ -5650,14 +5650,26 @@ def untruncatedMonomialDegreeBasis (K : Type*) [Field K]
     (fun _ => MvPolynomial.isHomogeneous_monomial 1 rfl)
     (untruncatedStandardMonomialBasis_apply hk) d
 
+theorem hilbertPolynomialScalarTower (K : Type palomarFiberCoeffU) [Field K] (n : ℕ) :
+    IsScalarTower K (PolynomialRing n K) (PolynomialRing n K) :=
+  inferInstance
+
 def untruncatedHilbertFunction (K : Type palomarFiberCoeffU) [Field K]
     (n : ℕ) (lam : YoungDiagram) (d : ℕ) : ℕ :=
-  Module.finrank K (homogeneousQuotientPiece (untruncatedIdeal K n lam) d)
+  let I := untruncatedIdeal K n lam
+  let P := homogeneousQuotientPiece I d
+  let M := @Submodule.Quotient.module' (PolynomialRing n K) (PolynomialRing n K)
+    inferInstance inferInstance inferInstance K inferInstance inferInstance
+    inferInstance (hilbertPolynomialScalarTower K n) I
+  @Module.finrank K P inferInstance
+    (@Submodule.addCommMonoid K (PolynomialRing n K ⧸ I) inferInstance inferInstance M P)
+    (@Submodule.module K (PolynomialRing n K ⧸ I) inferInstance inferInstance M P)
 
 theorem untruncatedHilbertFunction_eq_card (K : Type*) [Field K]
     (n : ℕ) (lam : YoungDiagram) (hk : lam.card ≤ n) (d : ℕ) :
     untruncatedHilbertFunction K n lam d = Nat.card (UntruncatedMonomialDegreeIndex n lam d) := by
-  rw [untruncatedHilbertFunction, Module.finrank_eq_card_basis
+  change Module.finrank K (homogeneousQuotientPiece (untruncatedIdeal K n lam) d) = _
+  rw [Module.finrank_eq_card_basis
     (untruncatedMonomialDegreeBasis K n lam hk d), Nat.card_eq_fintype_card]
 
 theorem untruncatedHilbertFunction_independent_field (K L : Type*) [Field K] [Field L]
