@@ -53,13 +53,18 @@ automation:
       comparing the supplied manuscript, README table, and Lean declarations.
 review:
   status: unchecked
-  notes: At preparation, the exact21-target Challenge prefix and two genuine named
-    implicit-class proof helpers passed canonical elaboration in run44380113477. An
-    appended actual rfl equality confirms that the normalized spectralNorm remains
-    the original literal Euclidean operator norm. The prior19-target Source/Solution
-    build passed before the measured raw comparison failures. The revised Source/Solution,
-    actual Comparator, independent kernels and clean editorial review remain pending.
-    No local Lean compilation was launched.
+  notes: >-
+    The preceding exact21-target Source/Solution built successfully at commit
+    2eb0b1801cd56296e9d0a9920df75f2cec197193. Its complete read-only raw comparison
+    diagnostic found four remaining failures caused by an earlier unrelated
+    ground-proof alias and the resulting generated-helper number shift in spectralNorm.
+    This candidate changes only Challenge declaration order: the identical literal
+    norm is elaborated before the unrelated polytope declarations. The exact candidate
+    plus an actual norm rfl and three measured type lookups passed canonical-only
+    run44391777414. All three helper-name predictions were observed; the ground proof
+    type was fully captured and matched, while the generic type was explicitly truncated
+    to8192 of41790 characters. Source/Solution, actual Comparator, independent kernels
+    and clean editorial review for this reordered candidate remain pending.
 limitations:
 - Six supplied record constructors are uniquely fixed by complete independently literal
   projection equations; their remaining fields are proof certificates. Original11
@@ -74,8 +79,8 @@ fidelity:
     complete independently literal equations fixing every non-Prop record field: filtered
     extreme vertices, standard basis face images, exact nonempty input faces, complement
     duality, deleted-join Bier faces and the absent ghost label. Two exact source
-    universe contexts are copied. Named identity inverse-pair and Euclidean scalar-commutation
-    theorem proofs replace the measured generated class-proof aliases in the spectral
-    norm; canonical rfl confirms its literal value is unchanged. All original mathematical
+    universe contexts are copied. The two named class-proof supports are retained. The new declaration order
+    matches the measured Source helper names and avoids reusing an unrelated earlier
+    generated proof; canonical rfl confirms the literal norm value is unchanged. All original mathematical
     hypotheses and conclusions remain fixed. Current actual Source/Solution and comparison
     validation remain pending.'

@@ -33,6 +33,24 @@ Apache-2.0 source and third-party attribution is retained in the full project.
 noncomputable section
 open Set
 open scoped Classical Pointwise Topology BigOperators
+namespace Bier.Forster
+universe u
+/-- The measured real identity inverse-pair proof, given a stable public name. -/
+theorem realIdentityInvPair : RingHomInvPair (RingHom.id ℝ) (RingHom.id ℝ) := by
+  infer_instance
+/-- The measured commutation of real scalar multiplication on the actual
+Euclidean function space, fixed independently of generated auxiliary names. -/
+theorem euclideanSelfSMulComm (I : Type u) : SMulCommClass ℝ ℝ (EuclideanSpace ℝ I) := by
+  infer_instance
+variable {R C : Type*} [Fintype R] [Fintype C]
+/-- The usual Euclidean operator norm of a real matrix. -/
+def spectralNorm (H : Matrix R C ℝ) : ℝ :=
+  letI : RingHomInvPair (RingHom.id ℝ) (RingHom.id ℝ) := realIdentityInvPair
+  letI : SMulCommClass ℝ ℝ (EuclideanSpace ℝ R) := euclideanSelfSMulComm R
+  letI : SMulCommClass ℝ ℝ (EuclideanSpace ℝ C) := euclideanSelfSMulComm C
+  ‖H.toEuclideanLin.toContinuousLinearMap‖
+end Bier.Forster
+
 namespace LeanEval.Geometry.PlatonicClassification
 
 /-- Euclidean n-space, with Mathlib's usual real inner product. -/
@@ -301,21 +319,7 @@ theorem allColumnSigns_signRank :
     signRank (allColumnSigns R) = Fintype.card R + 1 := by sorry
 end Bier
 namespace Bier.Forster
-universe u
-/-- The measured real identity inverse-pair proof, given a stable public name. -/
-theorem realIdentityInvPair : RingHomInvPair (RingHom.id ℝ) (RingHom.id ℝ) := by
-  infer_instance
-/-- The measured commutation of real scalar multiplication on the actual
-Euclidean function space, fixed independently of generated auxiliary names. -/
-theorem euclideanSelfSMulComm (I : Type u) : SMulCommClass ℝ ℝ (EuclideanSpace ℝ I) := by
-  infer_instance
 variable {R C : Type*} [Fintype R] [Fintype C]
-/-- The usual Euclidean operator norm of a real matrix. -/
-def spectralNorm (H : Matrix R C ℝ) : ℝ :=
-  letI : RingHomInvPair (RingHom.id ℝ) (RingHom.id ℝ) := realIdentityInvPair
-  letI : SMulCommClass ℝ ℝ (EuclideanSpace ℝ R) := euclideanSelfSMulComm R
-  letI : SMulCommClass ℝ ℝ (EuclideanSpace ℝ C) := euclideanSelfSMulComm C
-  ‖H.toEuclideanLin.toContinuousLinearMap‖
 /-- Forster's lower bound with no general-position assumption on a realizing matrix. -/
 theorem signRank_spectral (H : Matrix R C ℝ) (hH : Bier.IsSignMatrix H) :
     Real.sqrt ((Fintype.card R : ℝ) * Fintype.card C) ≤

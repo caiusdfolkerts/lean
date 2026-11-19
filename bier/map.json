@@ -1,7 +1,7 @@
 {
   "project": "bier",
   "baseline_revision": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
-  "status": "canonical21_Challenge_and_literal_norm_rfl_PASS_full_repair_pending",
+  "status": "frozen_measured_declaration_order_repair_canonical_prediction_PASS_full_pending",
   "result_map": [
     {
       "paper_result": "Theorem 1, principal example",
@@ -13,12 +13,12 @@
           "readme_name": "principal_example",
           "file": "source/bier/nonpolytopal_examples.lean",
           "line": 42,
-          "statement_prefix": "theorem principal_example :\n    principalInput.dimension = 9 \u2227 principalSphere.IsSphere 145181 \u2227\n      principalSphere.dimension = 145181 \u2227 principalSphere.vertices.card = 290365 \u2227\n        \u00ac Polytopal principalSphere "
+          "statement_prefix": "theorem principal_example :\n    principalInput.dimension = 9 ∧ principalSphere.IsSphere 145181 ∧\n      principalSphere.dimension = 145181 ∧ principalSphere.vertices.card = 290365 ∧\n        ¬ Polytopal principalSphere "
         }
       ]
     },
     {
-      "paper_result": "Theorem 1 and \u00a74.1, removing the ghost",
+      "paper_result": "Theorem 1 and §4.1, removing the ghost",
       "readme_names": [
         "all_labels_example"
       ],
@@ -27,12 +27,12 @@
           "readme_name": "all_labels_example",
           "file": "source/bier/isolated_nonpolytopal.lean",
           "line": 35,
-          "statement_prefix": "theorem all_labels_example :\n    allLabelsInput.vertices = Finset.univ \u2227 allLabelsInput.dimension = 9 \u2227\n    allLabelsSphere.vertices = Finset.univ \u2227 allLabelsSphere.vertices.card = 290366 \u2227\n    allLabelsSphere.dimension = 145181 \u2227 allLabelsSphere.IsSphere 145181 \u2227\n    \u00ac Polytopal allLabelsSphere "
+          "statement_prefix": "theorem all_labels_example :\n    allLabelsInput.vertices = Finset.univ ∧ allLabelsInput.dimension = 9 ∧\n    allLabelsSphere.vertices = Finset.univ ∧ allLabelsSphere.vertices.card = 290366 ∧\n    allLabelsSphere.dimension = 145181 ∧ allLabelsSphere.IsSphere 145181 ∧\n    ¬ Polytopal allLabelsSphere "
         }
       ]
     },
     {
-      "paper_result": "Theorem 1 and \u00a74.2, self-dual input",
+      "paper_result": "Theorem 1 and §4.2, self-dual input",
       "readme_names": [
         "self_dual_example"
       ],
@@ -41,12 +41,12 @@
           "readme_name": "self_dual_example",
           "file": "source/bier/nonpolytopal_examples.lean",
           "line": 112,
-          "statement_prefix": "theorem self_dual_example :\n    (\u2200 F, (selfDualInput.dual principalCore.selfDualSuspension_proper).face F \u2194\n      selfDualInput.face F) \u2227\n      selfDualSphere.IsSphere 145182 \u2227 selfDualSphere.dimension = 145182 \u2227\n      selfDualSphere.vertices.card = 290368 \u2227 selfDualSphere.IsCentrallySymmetric \u2227\n      \u00ac Polytopal selfDualSphere "
+          "statement_prefix": "theorem self_dual_example :\n    (∀ F, (selfDualInput.dual principalCore.selfDualSuspension_proper).face F ↔\n      selfDualInput.face F) ∧\n      selfDualSphere.IsSphere 145182 ∧ selfDualSphere.dimension = 145182 ∧\n      selfDualSphere.vertices.card = 290368 ∧ selfDualSphere.IsCentrallySymmetric ∧\n      ¬ Polytopal selfDualSphere "
         }
       ]
     },
     {
-      "paper_result": "Theorem 1 and \u00a74.3, input dimension three",
+      "paper_result": "Theorem 1 and §4.3, input dimension three",
       "readme_names": [
         "three_dimensional_example"
       ],
@@ -55,7 +55,7 @@
           "readme_name": "three_dimensional_example",
           "file": "source/bier/nonpolytopal_examples.lean",
           "line": 60,
-          "statement_prefix": "theorem three_dimensional_example :\n    threeDimensionalInput.dimension = 3 \u2227\n      threeDimensionalSphere.IsSphere (2 ^ 73 + 8) \u2227\n      threeDimensionalSphere.dimension = 2 ^ 73 + 8 \u2227\n      threeDimensionalSphere.vertices.card = 2 ^ 74 + 19 \u2227\n      \u00ac Polytopal threeDimensionalSphere "
+          "statement_prefix": "theorem three_dimensional_example :\n    threeDimensionalInput.dimension = 3 ∧\n      threeDimensionalSphere.IsSphere (2 ^ 73 + 8) ∧\n      threeDimensionalSphere.dimension = 2 ^ 73 + 8 ∧\n      threeDimensionalSphere.vertices.card = 2 ^ 74 + 19 ∧\n      ¬ Polytopal threeDimensionalSphere "
         }
       ]
     },
@@ -69,7 +69,7 @@
           "readme_name": "ghost_signRank_bound_fixedCard",
           "file": "source/bier/obstruction.lean",
           "line": 77,
-          "statement_prefix": "theorem ghost_signRank_bound_fixedCard (K : Complex (U \u2295 C)) (hK : K.Proper)\n    (hv : \u2200 i, K.face {i}) (S : R \u2192 Finset U) (k : \u2115) (hk : 0 < k)\n    (hcard : \u2200 r, (S r).card = k) (hSface : \u2200 r, K.face ((S r).disjSum \u2205))\n    (H : Matrix R C \u211d) (hH : IsSignMatrix H)\n    (hsign : \u2200 r c, H r c = 1 \u2194 K.face ((S r).disjSum {c}))\n    (hP : Polytopal (ghostBier K)) :\n    signRank H \u2264 Fintype.card U ^ 2 - Fintype.card U + 1 "
+          "statement_prefix": "theorem ghost_signRank_bound_fixedCard (K : Complex (U ⊕ C)) (hK : K.Proper)\n    (hv : ∀ i, K.face {i}) (S : R → Finset U) (k : ℕ) (hk : 0 < k)\n    (hcard : ∀ r, (S r).card = k) (hSface : ∀ r, K.face ((S r).disjSum ∅))\n    (H : Matrix R C ℝ) (hH : IsSignMatrix H)\n    (hsign : ∀ r c, H r c = 1 ↔ K.face ((S r).disjSum {c}))\n    (hP : Polytopal (ghostBier K)) :\n    signRank H ≤ Fintype.card U ^ 2 - Fintype.card U + 1 "
         }
       ]
     },
@@ -83,7 +83,7 @@
           "readme_name": "ghost_signRank_bound_arbitrary",
           "file": "source/bier/obstruction.lean",
           "line": 91,
-          "statement_prefix": "theorem ghost_signRank_bound_arbitrary (K : Complex (U \u2295 C)) (hK : K.Proper)\n    (hv : \u2200 i, K.face {i}) (S : R \u2192 Finset U)\n    (hSface : \u2200 r, K.face ((S r).disjSum \u2205))\n    (H : Matrix R C \u211d) (hH : IsSignMatrix H)\n    (hsign : \u2200 r c, H r c = 1 \u2194 K.face ((S r).disjSum {c}))\n    (hP : Polytopal (ghostBier K)) :\n    signRank H \u2264 Fintype.card U ^ 2 - Fintype.card U + 2 "
+          "statement_prefix": "theorem ghost_signRank_bound_arbitrary (K : Complex (U ⊕ C)) (hK : K.Proper)\n    (hv : ∀ i, K.face {i}) (S : R → Finset U)\n    (hSface : ∀ r, K.face ((S r).disjSum ∅))\n    (H : Matrix R C ℝ) (hH : IsSignMatrix H)\n    (hsign : ∀ r c, H r c = 1 ↔ K.face ((S r).disjSum {c}))\n    (hP : Polytopal (ghostBier K)) :\n    signRank H ≤ Fintype.card U ^ 2 - Fintype.card U + 2 "
         }
       ]
     },
@@ -97,7 +97,7 @@
           "readme_name": "exists_core_schur_realization",
           "file": "source/bier/obstruction.lean",
           "line": 25,
-          "statement_prefix": "theorem exists_core_schur_realization (K : Complex (U \u2295 C)) (hK : K.Proper)\n    (hv : \u2200 i, K.face {i}) (S : R \u2192 Finset U)\n    (hSface : \u2200 r, K.face ((S r).disjSum \u2205))\n    (H : Matrix R C \u211d) (hH : IsSignMatrix H)\n    (hsign : \u2200 r c, H r c = 1 \u2194 K.face ((S r).disjSum {c}))\n    (hP : Polytopal (ghostBier K)) :\n    \u2203 (G : Matrix U U \u211d) (d : C \u2192 \u211d) (u v : C \u2192 U \u2192 \u211d),\n      (\u2200 r, IsUnit (principalMatrix G (S r)).det) \u2227\n        SignRealizes H (schurFeatureMatrix G S d u v) "
+          "statement_prefix": "theorem exists_core_schur_realization (K : Complex (U ⊕ C)) (hK : K.Proper)\n    (hv : ∀ i, K.face {i}) (S : R → Finset U)\n    (hSface : ∀ r, K.face ((S r).disjSum ∅))\n    (H : Matrix R C ℝ) (hH : IsSignMatrix H)\n    (hsign : ∀ r c, H r c = 1 ↔ K.face ((S r).disjSum {c}))\n    (hP : Polytopal (ghostBier K)) :\n    ∃ (G : Matrix U U ℝ) (d : C → ℝ) (u v : C → U → ℝ),\n      (∀ r, IsUnit (principalMatrix G (S r)).det) ∧\n        SignRealizes H (schurFeatureMatrix G S d u v) "
         }
       ]
     },
@@ -111,7 +111,7 @@
           "readme_name": "paddedPrincipalInverse_span_finrank",
           "file": "source/bier/padded_inverse_span.lean",
           "line": 271,
-          "statement_prefix": "theorem paddedPrincipalInverse_span_finrank (G : Matrix \u03b9 \u03b9 \u211d)\n    {R : Type*} (S : R \u2192 Finset \u03b9) (hS : \u2200 r, IsUnit (principalMatrix G (S r)).det) :\n    Module.finrank \u211d (Submodule.span \u211d (Set.range (fun r => paddedPrincipalInverse G (S r)))) \u2264\n      Fintype.card \u03b9 ^ 2 - Fintype.card \u03b9 + 1 "
+          "statement_prefix": "theorem paddedPrincipalInverse_span_finrank (G : Matrix ι ι ℝ)\n    {R : Type*} (S : R → Finset ι) (hS : ∀ r, IsUnit (principalMatrix G (S r)).det) :\n    Module.finrank ℝ (Submodule.span ℝ (Set.range (fun r => paddedPrincipalInverse G (S r)))) ≤\n      Fintype.card ι ^ 2 - Fintype.card ι + 1 "
         }
       ]
     },
@@ -125,7 +125,7 @@
           "readme_name": "Forster.signRank_spectral",
           "file": "source/bier/forster/operator_norm.lean",
           "line": 57,
-          "statement_prefix": "theorem signRank_spectral (H : Matrix R C \u211d) (hH : Bier.IsSignMatrix H) :\n    Real.sqrt ((Fintype.card R : \u211d) * Fintype.card C) \u2264\n      (Bier.signRank H : \u211d) * spectralNorm H "
+          "statement_prefix": "theorem signRank_spectral (H : Matrix R C ℝ) (hH : Bier.IsSignMatrix H) :\n    Real.sqrt ((Fintype.card R : ℝ) * Fintype.card C) ≤\n      (Bier.signRank H : ℝ) * spectralNorm H "
         }
       ]
     },
@@ -139,7 +139,7 @@
           "readme_name": "Forster.hadamard_columnRestriction_signRank",
           "file": "source/bier/forster/hadamard.lean",
           "line": 63,
-          "statement_prefix": "theorem hadamard_columnRestriction_signRank (A : Matrix R R \u211d)\n    (hA : A.IsHadamard) (e : C \u21aa R) :\n    Fintype.card C \u2264 Bier.signRank (A.submatrix id e) ^ 2 "
+          "statement_prefix": "theorem hadamard_columnRestriction_signRank (A : Matrix R R ℝ)\n    (hA : A.IsHadamard) (e : C ↪ R) :\n    Fintype.card C ≤ Bier.signRank (A.submatrix id e) ^ 2 "
         }
       ]
     },
@@ -153,7 +153,7 @@
           "readme_name": "Complex.bier_isSphere",
           "file": "source/bier/sphere.lean",
           "line": 66,
-          "statement_prefix": "theorem bier_isSphere (K : Complex V) (hK : K.Proper) (hcard : 2 \u2264 Fintype.card V) :\n    (K.bier hK).IsSphere (Fintype.card V - 2) "
+          "statement_prefix": "theorem bier_isSphere (K : Complex V) (hK : K.Proper) (hcard : 2 ≤ Fintype.card V) :\n    (K.bier hK).IsSphere (Fintype.card V - 2) "
         }
       ]
     },
@@ -172,7 +172,7 @@
       ]
     },
     {
-      "paper_result": "Final paragraph of \u00a74.3",
+      "paper_result": "Final paragraph of §4.3",
       "readme_names": [
         "general_allSign_construction_unrestricted"
       ],
@@ -181,7 +181,7 @@
           "readme_name": "general_allSign_construction_unrestricted",
           "file": "source/bier/general_construction.lean",
           "line": 10,
-          "statement_prefix": "theorem general_allSign_construction_unrestricted (m k : \u2115)\n    (hchoose : m ^ 2 - m + 2 \u2264 m.choose k) :\n    \u2203 h : (m ^ 2 - m + 1) + 1 \u2264 m.choose k,\n      (patternInput m k (m ^ 2 - m + 1) h).dimension = k \u2227\n      (patternSphere m k (m ^ 2 - m + 1) h).IsSphere\n        (m + 2 ^ (m ^ 2 - m + 1) - 1) \u2227\n      (patternSphere m k (m ^ 2 - m + 1) h).vertices.card =\n        2 * (m + 2 ^ (m ^ 2 - m + 1)) + 1 \u2227\n      \u00ac Polytopal (patternSphere m k (m ^ 2 - m + 1) h) "
+          "statement_prefix": "theorem general_allSign_construction_unrestricted (m k : ℕ)\n    (hchoose : m ^ 2 - m + 2 ≤ m.choose k) :\n    ∃ h : (m ^ 2 - m + 1) + 1 ≤ m.choose k,\n      (patternInput m k (m ^ 2 - m + 1) h).dimension = k ∧\n      (patternSphere m k (m ^ 2 - m + 1) h).IsSphere\n        (m + 2 ^ (m ^ 2 - m + 1) - 1) ∧\n      (patternSphere m k (m ^ 2 - m + 1) h).vertices.card =\n        2 * (m + 2 ^ (m ^ 2 - m + 1)) + 1 ∧\n      ¬ Polytopal (patternSphere m k (m ^ 2 - m + 1) h) "
         }
       ]
     }
@@ -193,10 +193,15 @@
     "symlinks": [],
     "compiled_artifacts": []
   },
-  "validation": "Exact21-target Challenge prefix plus genuine literal operator-norm rfl passed canonical-only run44380113477; actual revised Source/Solution, Comparator and independent kernels pending.",
+  "validation": {
+    "previous_Source_Solution": "PASS_exact2eb0_full44382860470",
+    "previous_complete_raw_diagnostic": "reports/bier/raw-diagnostic21/run-44387583482/collection-verification.json",
+    "current_order_candidate_canonical_check": "PASS_norm_rfl_and_all_three_name_type_predictions_run44391777414",
+    "current_actual_Comparator_and_independent_kernels": "pending"
+  },
   "blockers": [
-    "Build the actual revised Source/Solution and compare all21 selected targets.",
-    "Actual Comparator and independent kernels, then a clean editorial review, remain pending."
+    "Actual full reordered candidate Source/Solution, Comparator and independent kernel verification pending.",
+    "Clean editorial review pending."
   ],
   "challenge": {
     "lines": 395,
@@ -210,49 +215,49 @@
       "original_declaration": "Bier.Complex.bier_isSphere",
       "source_file": "source/bier/sphere.lean",
       "source_line": 66,
-      "challenge_line": 230
+      "challenge_line": 248
     },
     {
       "declaration": "Bier.ghost_signRank_bound_fixedCard",
       "original_declaration": "Bier.ghost_signRank_bound_fixedCard",
       "source_file": "source/bier/obstruction.lean",
       "source_line": 77,
-      "challenge_line": 273
+      "challenge_line": 291
     },
     {
       "declaration": "Bier.ghost_signRank_bound_arbitrary",
       "original_declaration": "Bier.ghost_signRank_bound_arbitrary",
       "source_file": "source/bier/obstruction.lean",
       "source_line": 91,
-      "challenge_line": 282
+      "challenge_line": 300
     },
     {
       "declaration": "Bier.allColumnSigns_signRank",
       "original_declaration": "Bier.allColumnSigns_signRank",
       "source_file": "source/bier/all_signs.lean",
       "source_line": 76,
-      "challenge_line": 300
+      "challenge_line": 318
     },
     {
       "declaration": "Bier.Forster.signRank_spectral",
       "original_declaration": "Bier.Forster.signRank_spectral",
       "source_file": "source/bier/forster/operator_norm.lean",
       "source_line": 69,
-      "challenge_line": 320
+      "challenge_line": 324
     },
     {
       "declaration": "Bier.Forster.hadamard_columnRestriction_signRank",
       "original_declaration": "Bier.Forster.hadamard_columnRestriction_signRank",
       "source_file": "source/bier/forster/hadamard.lean",
       "source_line": 63,
-      "challenge_line": 324
+      "challenge_line": 328
     },
     {
       "declaration": "PalomarBier.principal_example",
       "original_declaration": "Bier.principal_example",
       "source_file": "source/bier/nonpolytopal_examples.lean",
       "source_line": 42,
-      "challenge_line": 333,
+      "challenge_line": 337,
       "solution_file": "Solution.lean",
       "solution_line": 10
     },
@@ -261,7 +266,7 @@
       "original_declaration": "Bier.all_labels_example",
       "source_file": "source/bier/isolated_nonpolytopal.lean",
       "source_line": 35,
-      "challenge_line": 339,
+      "challenge_line": 343,
       "solution_file": "Solution.lean",
       "solution_line": 18
     },
@@ -270,7 +275,7 @@
       "original_declaration": "Bier.self_dual_example",
       "source_file": "source/bier/nonpolytopal_examples.lean",
       "source_line": 112,
-      "challenge_line": 346,
+      "challenge_line": 350,
       "solution_file": "Solution.lean",
       "solution_line": 28
     },
@@ -279,7 +284,7 @@
       "original_declaration": "Bier.three_dimensional_example",
       "source_file": "source/bier/nonpolytopal_examples.lean",
       "source_line": 60,
-      "challenge_line": 353,
+      "challenge_line": 357,
       "solution_file": "Solution.lean",
       "solution_line": 37
     },
@@ -288,7 +293,7 @@
       "original_declaration": "Bier.general_allSign_construction_unrestricted",
       "source_file": "source/bier/general_construction.lean",
       "source_line": 10,
-      "challenge_line": 359,
+      "challenge_line": 363,
       "solution_file": "Solution.lean",
       "solution_line": 46
     },
@@ -297,21 +302,21 @@
       "original_declaration": "LeanEval.Geometry.PlatonicClassification.finite_isFace",
       "source_file": "source/cubical/polytope/faces.lean",
       "source_line": 23,
-      "challenge_line": 75
+      "challenge_line": 93
     },
     {
       "declaration": "Bier.Complex.ghost_proper",
       "original_declaration": "Bier.Complex.ghost_proper",
       "source_file": "source/bier/encoding.lean",
       "source_line": 29,
-      "challenge_line": 219
+      "challenge_line": 237
     },
     {
       "declaration": "PalomarBier.Spec.facePolytope_vertices",
       "original_declaration": "LeanEval.Geometry.PlatonicClassification.facePolytope",
       "source_file": "source/cubical/polytope/sotto_politopo.lean",
       "source_line": 38,
-      "challenge_line": 373,
+      "challenge_line": 377,
       "solution_file": "Solution.lean",
       "solution_line": 65,
       "source_declaration_kind": "definition_characterized",
@@ -322,7 +327,7 @@
       "original_declaration": "DifferentialGeometry.Topology.Engulfing.standardRealization",
       "source_file": "source/differential_geometry/topology/simplicial_complex/realization/simplicial_gluing.lean",
       "source_line": 21,
-      "challenge_line": 377,
+      "challenge_line": 381,
       "solution_file": "Solution.lean",
       "solution_line": 69,
       "source_declaration_kind": "definition_characterized",
@@ -333,7 +338,7 @@
       "original_declaration": "Bier.Complex.toAbstract",
       "source_file": "source/bier/complex.lean",
       "source_line": 56,
-      "challenge_line": 382,
+      "challenge_line": 386,
       "solution_file": "Solution.lean",
       "solution_line": 74,
       "source_declaration_kind": "definition_characterized",
@@ -344,7 +349,7 @@
       "original_declaration": "Bier.Complex.dual",
       "source_file": "source/bier/complex.lean",
       "source_line": 65,
-      "challenge_line": 385,
+      "challenge_line": 389,
       "solution_file": "Solution.lean",
       "solution_line": 77,
       "source_declaration_kind": "definition_characterized",
@@ -355,7 +360,7 @@
       "original_declaration": "Bier.Complex.bier",
       "source_file": "source/bier/complex.lean",
       "source_line": 83,
-      "challenge_line": 388,
+      "challenge_line": 392,
       "solution_file": "Solution.lean",
       "solution_line": 80,
       "source_declaration_kind": "definition_characterized",
@@ -366,7 +371,7 @@
       "original_declaration": "Bier.Complex.ghost",
       "source_file": "source/bier/encoding.lean",
       "source_line": 20,
-      "challenge_line": 393,
+      "challenge_line": 397,
       "solution_file": "Solution.lean",
       "solution_line": 85,
       "source_declaration_kind": "definition_characterized",
@@ -377,7 +382,7 @@
       "original_declaration": "Bier.Forster.realIdentityInvPair",
       "source_file": "source/bier/forster/operator_norm.lean",
       "role": "measured_implicit_class_proof_support",
-      "challenge_line": 306,
+      "challenge_line": 39,
       "source_line": 18
     },
     {
@@ -385,7 +390,7 @@
       "original_declaration": "Bier.Forster.euclideanSelfSMulComm",
       "source_file": "source/bier/forster/operator_norm.lean",
       "role": "measured_implicit_class_proof_support",
-      "challenge_line": 310,
+      "challenge_line": 43,
       "source_line": 22
     }
   ],
@@ -410,7 +415,7 @@
     "data_uniqueness": "Each record has exactly one non-Prop field, fixed for every input by the literal projection equation; all remaining fields are proof certificates."
   },
   "measured_raw_repair21": {
-    "status": "frozen_canonical_Challenge_plus_norm_rfl_PASS_actual_full_pending",
+    "status": "Source_Solution_PASS_but_raw_spectralNorm_alias_failure_observed",
     "report": "reports/bier/measured-raw-repair21/repair.json",
     "new_selected_supports": [
       {
@@ -432,5 +437,11 @@
     "smoke_sha256": "a68b4c3546905eb4a35b33a8f1e5517bb59acc78afcf0ff3d877c4ab5903fb26",
     "package_Challenge_prefix_sha256": "f44876ffb0f714639342c02f49d77718ab574b49ed841a60ec6b45fb860c02e3",
     "literal_norm_rfl": true
+  },
+  "measured_order_repair": {
+    "changed": "Only declaration order in Challenge; no type/body edits. Mathematical Source/Solution/config unchanged.",
+    "receipt": "reports/bier/measured-declaration-order-repair/canonical-order-result.json",
+    "generic_type_capture_limit": "8192 of41790 chars; complete generic type equality not claimed",
+    "inverse_move_identity_proved_in": "reports/bier/measured-declaration-order-repair/probe-kind-receipt.json"
   }
 }
