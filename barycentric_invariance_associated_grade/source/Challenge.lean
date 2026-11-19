@@ -235,6 +235,10 @@ def faceRelations (hs : IsSimplicialPoset P) : Set (FacePolynomial (P := P) K) :
 /-- Source theorem13.lean:717. -/
 def faceIdeal (hs : IsSimplicialPoset P) : Ideal (FacePolynomial (P := P) K) :=
   Ideal.span (faceRelations K hs)
+/-- The face ideal in the coefficient polynomial ring is two-sided. -/
+theorem palomarFaceIdealTwoSided (hs : IsSimplicialPoset P) :
+    (faceIdeal K hs).IsTwoSided := by sorry
+attribute [instance 2100] palomarFaceIdealTwoSided
 /-- Source theorem13.lean:721. -/
 abbrev FaceRing (hs : IsSimplicialPoset P) :=
   FacePolynomial (P := P) K ⧸ faceIdeal K hs

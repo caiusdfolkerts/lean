@@ -46,7 +46,8 @@
     "FourPapers.Universal.faceRingSection_palomar_formula",
     "FourPapers.Universal.coefficientSection_palomar_formula",
     "FourPapers.Universal.coefficientDiagram_palomar_formula",
-    "FourPapers.Universal.standardFaceBasis_apply"
+    "FourPapers.Universal.standardFaceBasis_apply",
+    "FourPapers.Universal.palomarFaceIdealTwoSided"
   ],
   "permitted_axioms": [
     "propext",
