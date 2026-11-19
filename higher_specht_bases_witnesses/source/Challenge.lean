@@ -933,10 +933,11 @@ def literalUntruncatedHarmonicVector {n : ℕ} (i : UnboundedHarmonicIndex n)
 theorem finite_harmonics_literal_witnesses
     (n s : ℕ) (hn : 0 < n) (hs : 0 < s)
     (T : (part : n.Partition) → YoungTableau (YoungDiagram.ofPartition part)) :
+    ∃ S : (part : n.Partition) → YoungTableau (YoungDiagram.ofPartition part),
     ∃ W : FiniteHarmonicIndex n s → Subrepresentation (polynomialRepresentation ℂ n),
       (∀ i, (W i).toSubmodule = cyclicPolynomialCopy (finiteCommonHarmonicVectorWithTableau i (T i.part)) ∧
         Nonempty (Representation.Equiv
-          (paperYoungIdealRepresentation i.part (T i.part)) (W i).toRepresentation) ∧
+          (paperYoungIdealRepresentation i.part (S i.part)) (W i).toRepresentation) ∧
         (W i).toRepresentation.IsIrreducible ∧
         (W i).toSubmodule ≤
           homogeneousSubmodule (Fin n) ℂ i.toUnboundedHarmonicIndex.degree) ∧
@@ -949,10 +950,11 @@ theorem finite_harmonics_literal_witnesses
 
 theorem untruncated_harmonics_literal_witnesses
     (n : ℕ) (T : (part : n.Partition) → YoungTableau (YoungDiagram.ofPartition part)) :
+    ∃ S : (part : n.Partition) → YoungTableau (YoungDiagram.ofPartition part),
     ∃ W : UnboundedHarmonicIndex n → Subrepresentation (polynomialRepresentation ℂ n),
       (∀ i, (W i).toSubmodule = cyclicPolynomialCopy (literalUntruncatedHarmonicVector i (T i.part)) ∧
         Nonempty (Representation.Equiv
-          (paperYoungIdealRepresentation i.part (T i.part)) (W i).toRepresentation) ∧
+          (paperYoungIdealRepresentation i.part (S i.part)) (W i).toRepresentation) ∧
         (W i).toRepresentation.IsIrreducible ∧
         (W i).toSubmodule ≤ homogeneousSubmodule (Fin n) ℂ i.degree) ∧
       iSupIndep (fun i => (W i).toSubmodule) ∧
