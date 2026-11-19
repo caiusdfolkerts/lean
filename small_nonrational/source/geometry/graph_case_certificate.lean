@@ -1,6 +1,7 @@
 module
 prelude
 public import GraphCoreCertificate
+public import GraphDirectCore
 public import SharedSmallRootReplay
 public import SharedSix0IncidenceChecked
 public import GraphRowSpecifications
@@ -11,8 +12,10 @@ public import GraphRowSpecifications
 # Complete finite evidence for a graph case
 
 These propositions retain every input needed by geometric soundness. A packed
-case carries exact incidence meanings, complete candidate coverage, all growth
-checks, genuine frame witnesses, and a checked disposition for every leaf.
+case carries exact incidence meanings, complete candidate coverage, genuine
+frame witnesses, and a checked disposition for every leaf. Coverage can be
+proved either by the original growth checks or by a direct proof that every
+complete boundary reaches a certified leaf under those same relabelings.
 An empty-root case uses the original root-exclusion checker on the complete
 global eligible universe. A triangle exclusion records the original exact
 triangle count. The row code fixes every numerical parameter.
@@ -50,6 +53,15 @@ def Six (row : Row) (complement : Nat) : Prop :=
   ∃ D : RawData, Core D ∧ Parameters D row complement ∧
     Coverage D FacetUniverses.FullSix0.cells SharedSix0Incidence.graphRows complement
 
+/-- Direct coverage retains the original leaf certificates and exact geometry. -/
+def DirectSmall (row : Row) (complement : Nat) : Prop :=
+  ∃ D : RawData, DirectCore D ∧ Parameters D row complement ∧
+    Coverage D FacetUniverses.FullSmall.cells SharedSmallGraph.graphRows complement
+
+def DirectSix (row : Row) (complement : Nat) : Prop :=
+  ∃ D : RawData, DirectCore D ∧ Parameters D row complement ∧
+    Coverage D FacetUniverses.FullSix0.cells SharedSix0Incidence.graphRows complement
+
 def EmptyRoot (row : Row) (complement : Nat) : Prop :=
   ∃ code : Nat, SharedSmallRootReplay.complement code = complement ∧
     SharedSmallRootReplay.check (fun j => row.quota.getD j 0)
@@ -58,8 +70,8 @@ def EmptyRoot (row : Row) (complement : Nat) : Prop :=
 def Result (key : Key) : Prop :=
   let row := rowOfCode key.1
   TenGraphTriangles.count key.2 < row.minimum ∨
-    if key.1 = 32 then Six row key.2
-    else Small row key.2 ∨ EmptyRoot row key.2
+    if key.1 = 32 then Six row key.2 ∨ DirectSix row key.2
+    else Small row key.2 ∨ EmptyRoot row key.2 ∨ DirectSmall row key.2
 
 theorem of_triangle (row : Row) (hrow : rowOfCode row.code = row)
     (complement : Nat) (h : TenGraphTriangles.count complement < row.minimum) :
@@ -77,17 +89,29 @@ theorem of_small (code complement : Nat) (hcode : code ≠ 32)
 
 theorem of_six (complement : Nat) (h : Six (rowOfCode 32) complement) :
     Result (32, complement) := by
-  exact Or.inr h
+  exact Or.inr (Or.inl h)
 
 theorem of_empty (code complement : Nat) (hcode : code ≠ 32)
     (h : EmptyRoot (rowOfCode code) complement) : Result (code, complement) := by
   apply Or.inr
   simp only [hcode, ite_false]
-  exact Or.inr h
+  exact Or.inr (Or.inl h)
+
+theorem of_direct_small (code complement : Nat) (hcode : code ≠ 32)
+    (h : DirectSmall (rowOfCode code) complement) : Result (code, complement) := by
+  apply Or.inr
+  simp only [hcode, ite_false]
+  exact Or.inr (Or.inr h)
+
+theorem of_direct_six (complement : Nat)
+    (h : DirectSix (rowOfCode 32) complement) : Result (32, complement) := by
+  exact Or.inr (Or.inr h)
 
 #print axioms of_triangle
 #print axioms of_small
 #print axioms of_six
 #print axioms of_empty
+#print axioms of_direct_small
+#print axioms of_direct_six
 
 end Papers.RationalityTen.GraphCaseCertificate
