@@ -1,5 +1,1 @@
-# Palomar submission: alternating_forms
-
-Substantive source snapshot of [caiusdfolkerts/research](https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms), revision `e0696fddcd3d10b5d6461e62e9b2f02c4195be37`.
-
-The complete selected development, paper, metadata, and Comparator configuration are in `alternating_forms/`. This branch prepares a registry submission; it does not claim registry acceptance. See `alternating_forms/formalization.yaml` for exact scope and provenance.
+Canonical-only check of the full current Alternating interface, with the nine newly named constructor support propositions genuinely proved. Other preexisting selected theorem proofs remain intentional Challenge holes. This is not a full Source/Solution/Comparator check.
