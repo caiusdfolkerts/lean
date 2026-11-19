@@ -3760,11 +3760,13 @@ local instance FermionMultiplicityBlocks_localInst_1 : LinearOrder (OddIndex n) 
 
 abbrev MultiplicityVector (n : ℕ) := Fin n → Fin 3
 
+theorem wordMultiplicity_lt_three (T : Finset (OddIndex n)) (i : Fin n) :
+    wordMultiplicity T i < 3 := by
+  classical
+  by_cases hθ : Sum.inl i ∈ T <;> by_cases hξ : Sum.inr i ∈ T <;>
+    simp only [wordMultiplicity, hθ, hξ, if_true, if_false] <;> omega
 def wordMultiplicityVector (T : Finset (OddIndex n)) : MultiplicityVector n :=
-  fun i ↦ ⟨wordMultiplicity T i,by
-    classical
-    by_cases hθ : Sum.inl i∈T <;> by_cases hξ : Sum.inr i∈T <;>
-      simp only [wordMultiplicity,hθ,hξ,if_true,if_false] <;> omega⟩
+  fun i => ⟨wordMultiplicity T i, wordMultiplicity_lt_three T i⟩
 
 def multiplicityFactor (φ : Fin n → PolynomialRing F n) (m : MultiplicityVector n) :
     PolynomialRing F n :=

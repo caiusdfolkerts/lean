@@ -18,7 +18,21 @@
     "PaperVerification.Fermion.TypeA.equation_22_diagonal_trace",
     "PaperVerification.Fermion.TypeA.equation_23_character",
     "PaperVerification.Fermion.TypeA.color_preserves_polynomialPiece",
-    "PaperVerification.Fermion.TypeA.equation_22_character"
+    "PaperVerification.Fermion.TypeA.equation_22_character",
+    "PalomarFermion.coefficientIdentityInvPair",
+    "PalomarFermion.coefficientCommutativeIdentityInvPair",
+    "PalomarFermion.coefficientIdentitySurjective",
+    "PalomarFermion.coefficientCommutativeIdentitySurjective",
+    "PalomarFermion.finiteCoordinates",
+    "PalomarFermion.finiteOddCoordinates",
+    "PalomarFermion.coordinates_apply",
+    "PaperVerification.Fermion.polynomialSelfCommute",
+    "PaperVerification.Fermion.polynomialSelfTower",
+    "PaperVerification.Fermion.exteriorSelfCommute",
+    "PaperVerification.Fermion.exteriorSelfTower",
+    "PaperVerification.Fermion.BasisFiltered.homogeneousZero",
+    "PaperVerification.Fermion.BasisFiltered.homogeneousAdd",
+    "PaperVerification.Fermion.BasisFiltered.homogeneousSmul"
   ],
   "permitted_axioms": [
     "propext",
