@@ -1,8 +1,0 @@
-{
-  "status": "applied_pending_repeat_diagnostic",
-  "previous_snapshot_sha256": "79f98e841903912fd4fd52fa05e85e4fa199ecf8267023ea8755aa75aa0280d2",
-  "challenge_sha256": "f5b53b34902091feaa311f27f3f6c00ec710de76d4688688ba7fc86066c93f05",
-  "lines": 691,
-  "bytes": 32266,
-  "change": "Restore the exact original named comparisonModuleAddCommGroup instance. Its value is Module.addCommMonoidToAddCommGroup K, unchanged from theorem94.lean:11155."
-}
