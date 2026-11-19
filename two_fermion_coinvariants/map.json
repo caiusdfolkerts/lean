@@ -1003,12 +1003,11 @@
     }
   ],
   "known_gaps": [
-    "Principal local-structure and equivariant/character results in Sections7\u20138 remain unextracted.",
-    "Expanded actual associated-graded, exterior-Hilbert, homogenized flat-family/fiber interfaces passed canonical Challenge elaboration; Source/Solution/Comparator replay remains unverified."
+    "Principal local-structure and equivariant/character results in Sections7\u20138 remain unextracted."
   ],
   "checks": {
     "source_copy": "complete including retained reading files and licenses",
-    "build": "All genericBasisFiltered/FilteredInitial source declarations/proofs passed canonical44484625145; entirecurrentSource/Solution pendingfullpreflight",
+    "build": "As of preparation 2026-11-19T08:53:50.496153+00:00, all exact generic source controls and measured eliminator controls passed; subsequent full workflow is authoritative.",
     "comparator": "parentall40_statementtypes_andlevels_equal_whole57_rawfindings_repaired_pending",
     "nanoda": "pending_current_candidate",
     "editorial_review": "not_run_for_current_hash",
@@ -1502,5 +1501,80 @@
     "canonical_run": 44484625145,
     "canonical_verification_sha256": "c514cf2769478df4f364a335c32f363ac081aaadddf390624f72c0c1f590ef19",
     "source_model_statement_signature_changes": false
-  }
+  },
+  "explicit_sum_eliminator_proof_repair": {
+    "status": "installed_proof_only_actual_eliminator_reductions_canonical_passed",
+    "parent_commit": "529b928400639ceb2765534bb07fd8b768cfe531",
+    "actual_failed_run": 44486518379,
+    "actual_error_union": "FourOmega failures inside originalinterleavedOddRank_injective; Sum.elim applications on known constructors remained opaque to simp-only.",
+    "repair": "Retain every original proof calculation, explicitly unfold Sum.elim in every affected simp list for the two measured branch functions (interleavedOddRank/pairedOddWeight). This proactively covers the identical already-changed accessor shape in later modules. No data/model or statement change.",
+    "changes": [
+      {
+        "name": "PaperVerification.Fermion.Exterior.interleavedOddRank_injective",
+        "source_path": "source/two_fermion/PalomarPart003.lean",
+        "explicit_simp_lists": 4,
+        "statement_unchanged": true,
+        "before_body": "theorem interleavedOddRank_injective (n : \u2115) :\n    Function.Injective (@interleavedOddRank n) := by\n  intro i j h\n  cases i with\n  | inl i =>\n    cases j with\n    | inl j =>\n      have hij : i.val = j.val := by simp only [interleavedOddRank] at h; omega\n      exact congrArg Sum.inl (Fin.ext hij)\n    | inr j => simp only [interleavedOddRank] at h; omega\n  | inr i =>\n    cases j with\n    | inl j => simp only [interleavedOddRank] at h; omega\n    | inr j =>\n      have hij : i.val = j.val := by simp only [interleavedOddRank] at h; omega\n      exact congrArg Sum.inr (Fin.ext hij)",
+        "after_body": "theorem interleavedOddRank_injective (n : \u2115) :\n    Function.Injective (@interleavedOddRank n) := by\n  intro i j h\n  cases i with\n  | inl i =>\n    cases j with\n    | inl j =>\n      have hij : i.val = j.val := by simp only [Sum.elim, interleavedOddRank] at h; omega\n      exact congrArg Sum.inl (Fin.ext hij)\n    | inr j => simp only [Sum.elim, interleavedOddRank] at h; omega\n  | inr i =>\n    cases j with\n    | inl j => simp only [Sum.elim, interleavedOddRank] at h; omega\n    | inr j =>\n      have hij : i.val = j.val := by simp only [Sum.elim, interleavedOddRank] at h; omega\n      exact congrArg Sum.inr (Fin.ext hij)"
+      },
+      {
+        "name": "PaperVerification.Fermion.Exterior.thetaOnly_last_completion_bound",
+        "source_path": "source/two_fermion/PalomarPart004.lean",
+        "explicit_simp_lists": 1,
+        "statement_unchanged": true,
+        "before_body": "theorem thetaOnly_last_completion_bound\n    (\u03c6 \u03b2 a c : Fin (n + 1) \u2192 R) (N : \u2115) (h\u03c6 : \u2200 j, \u03c6 j ^ N = 0)\n    (hfac : IsUnit ((n + 1).factorial : R))\n    (k : \u2115) (hk : k \u2264 n + 1) (w : ExteriorAlgebra R V) (hwdegree : w \u2208 \u22c0[R]^k V)\n    (hw : IsHarmonic b \u03c6 \u03b2 a c w) (T : Finset (Fin (n + 1) \u2295 Fin (n + 1)))\n    (hmax : \u2200 U, b.ExteriorAlgebra.repr w U \u2260 0 \u2192 toColex U \u2264 toColex T)\n    (h\u03b8 : Sum.inl (Fin.last n) \u2208 T) (h\u03be : Sum.inr (Fin.last n) \u2209 T) :\n    CoefficientBound (completedWordPolynomial \u03c6 N (c (Fin.last n)) T\n      (b.ExteriorAlgebra.repr w T) (Fin.last n)) ((n + 1) - k) := by\n  let v := xiCreatorVector b \u03c6 c 1\n  have hv : \u2200 j, Sum.inr (Fin.last n) < j \u2192 b.repr v j = 0 := by\n    intro j hj\n    cases j with\n    | inl j => exact coord_xiCreatorVector_left b \u03c6 c 1 j\n    | inr j =>\n      change interleavedOddRank (.inr (Fin.last n)) < interleavedOddRank (.inr j) at hj\n      simp only [interleavedOddRank, Fin.val_last] at hj\n      have hjlt := j.isLt\n      omega\n  have hcoef := completion_coefficient b w T hmax (.inr (Fin.last n)) h\u03be v hv\n  have hcoef' : b.ExteriorAlgebra.repr (creation v w) (insert (.inr (Fin.last n)) T) =\n      TauCeti.ExteriorAlgebra.basisEraseSign (.inr (Fin.last n))\n        (insert (.inr (Fin.last n)) T) \u2022 (c (Fin.last n) * b.ExteriorAlgebra.repr w T) := by\n    rw [show b.repr v (.inr (Fin.last n)) = c (Fin.last n) by\n      simpa only [v, Module.Basis.coord_apply, Polynomial.eval_one, mul_one] using\n        coord_xiCreatorVector_right b \u03c6 c 1 (Fin.last n)] at hcoef\n    simpa only [smul_comm (c (Fin.last n)), smul_eq_mul] using hcoef\n  exact completedWordPolynomial_bound b \u03c6 N h\u03c6 hfac k hk w v hwdegree\n    (xiCompletion_preserves_mixed b \u03c6 c w hw.2.2 hw.1) T (Fin.last n) (.inr (Fin.last n))\n    (c (Fin.last n)) _\n    (gaussOccupationPolynomial_insert_inr (fun j \u21a6 -\u03c6 j) N T (Fin.last n) h\u03b8 h\u03be) hcoef'",
+        "after_body": "theorem thetaOnly_last_completion_bound\n    (\u03c6 \u03b2 a c : Fin (n + 1) \u2192 R) (N : \u2115) (h\u03c6 : \u2200 j, \u03c6 j ^ N = 0)\n    (hfac : IsUnit ((n + 1).factorial : R))\n    (k : \u2115) (hk : k \u2264 n + 1) (w : ExteriorAlgebra R V) (hwdegree : w \u2208 \u22c0[R]^k V)\n    (hw : IsHarmonic b \u03c6 \u03b2 a c w) (T : Finset (Fin (n + 1) \u2295 Fin (n + 1)))\n    (hmax : \u2200 U, b.ExteriorAlgebra.repr w U \u2260 0 \u2192 toColex U \u2264 toColex T)\n    (h\u03b8 : Sum.inl (Fin.last n) \u2208 T) (h\u03be : Sum.inr (Fin.last n) \u2209 T) :\n    CoefficientBound (completedWordPolynomial \u03c6 N (c (Fin.last n)) T\n      (b.ExteriorAlgebra.repr w T) (Fin.last n)) ((n + 1) - k) := by\n  let v := xiCreatorVector b \u03c6 c 1\n  have hv : \u2200 j, Sum.inr (Fin.last n) < j \u2192 b.repr v j = 0 := by\n    intro j hj\n    cases j with\n    | inl j => exact coord_xiCreatorVector_left b \u03c6 c 1 j\n    | inr j =>\n      change interleavedOddRank (.inr (Fin.last n)) < interleavedOddRank (.inr j) at hj\n      simp only [Sum.elim, interleavedOddRank, Fin.val_last] at hj\n      have hjlt := j.isLt\n      omega\n  have hcoef := completion_coefficient b w T hmax (.inr (Fin.last n)) h\u03be v hv\n  have hcoef' : b.ExteriorAlgebra.repr (creation v w) (insert (.inr (Fin.last n)) T) =\n      TauCeti.ExteriorAlgebra.basisEraseSign (.inr (Fin.last n))\n        (insert (.inr (Fin.last n)) T) \u2022 (c (Fin.last n) * b.ExteriorAlgebra.repr w T) := by\n    rw [show b.repr v (.inr (Fin.last n)) = c (Fin.last n) by\n      simpa only [v, Module.Basis.coord_apply, Polynomial.eval_one, mul_one] using\n        coord_xiCreatorVector_right b \u03c6 c 1 (Fin.last n)] at hcoef\n    simpa only [smul_comm (c (Fin.last n)), smul_eq_mul] using hcoef\n  exact completedWordPolynomial_bound b \u03c6 N h\u03c6 hfac k hk w v hwdegree\n    (xiCompletion_preserves_mixed b \u03c6 c w hw.2.2 hw.1) T (Fin.last n) (.inr (Fin.last n))\n    (c (Fin.last n)) _\n    (gaussOccupationPolynomial_insert_inr (fun j \u21a6 -\u03c6 j) N T (Fin.last n) h\u03b8 h\u03be) hcoef'"
+      },
+      {
+        "name": "PaperVerification.Fermion.Exterior.xiOnly_last_completion_bound",
+        "source_path": "source/two_fermion/PalomarPart004.lean",
+        "explicit_simp_lists": 1,
+        "statement_unchanged": true,
+        "before_body": "theorem xiOnly_last_completion_bound\n    (\u03c6 \u03b2 a c : Fin (n + 1) \u2192 R) (N : \u2115) (h\u03c6 : \u2200 j, \u03c6 j ^ N = 0)\n    (hfac : IsUnit ((n + 1).factorial : R)) (h\u03b2 : IsUnit (\u03b2 (Fin.last n)))\n    (k : \u2115) (hk : k \u2264 n + 1) (w : ExteriorAlgebra R V) (hwdegree : w \u2208 \u22c0[R]^k V)\n    (hw : IsHarmonic b \u03c6 \u03b2 a c w) (T : Finset (Fin (n + 1) \u2295 Fin (n + 1)))\n    (hmax : \u2200 U, b.ExteriorAlgebra.repr w U \u2260 0 \u2192 toColex U \u2264 toColex T)\n    (h\u03b8 : Sum.inl (Fin.last n) \u2209 T) (h\u03be : Sum.inr (Fin.last n) \u2208 T) :\n    CoefficientBound (completedWordPolynomial \u03c6 N (a (Fin.last n)) T\n      (b.ExteriorAlgebra.repr w T) (Fin.last n)) ((n + 1) - k) := by\n  let v := thetaCreatorVector b \u03c6 \u03b2 a 1\n  have hv : \u2200 j, Sum.inl (Fin.last n) < j \u2192 b.repr v j = 0 := by\n    intro j hj\n    cases j with\n    | inr j => exact coord_thetaCreatorVector_right b \u03c6 \u03b2 a 1 j\n    | inl j =>\n      change interleavedOddRank (.inl (Fin.last n)) < interleavedOddRank (.inl j) at hj\n      simp only [interleavedOddRank, Fin.val_last] at hj\n      have hjlt := j.isLt\n      omega\n  have hcoef := completion_coefficient b w T hmax (.inl (Fin.last n)) h\u03b8 v hv\n  have hcoef' : b.ExteriorAlgebra.repr (creation v w) (insert (.inl (Fin.last n)) T) =\n      TauCeti.ExteriorAlgebra.basisEraseSign (.inl (Fin.last n))\n        (insert (.inl (Fin.last n)) T) \u2022\n          (\u03b2 (Fin.last n) * a (Fin.last n) * b.ExteriorAlgebra.repr w T) := by\n    rw [show b.repr v (.inl (Fin.last n)) = \u03b2 (Fin.last n) * a (Fin.last n) by\n      simpa only [v, Module.Basis.coord_apply, Polynomial.eval_one, mul_one] using\n        coord_thetaCreatorVector_left b \u03c6 \u03b2 a 1 (Fin.last n)] at hcoef\n    simpa only [smul_comm (\u03b2 (Fin.last n) * a (Fin.last n)), smul_eq_mul] using hcoef\n  have hb := completedWordPolynomial_bound b \u03c6 N h\u03c6 hfac k hk w v hwdegree\n    (thetaCompletion_preserves_mixed b \u03c6 \u03b2 a w hw.2.2 hw.2.1) T (Fin.last n) (.inl (Fin.last n))\n    (\u03b2 (Fin.last n) * a (Fin.last n)) _\n    (gaussOccupationPolynomial_insert_inl (fun j \u21a6 -\u03c6 j) N T (Fin.last n) h\u03b8 h\u03be) hcoef'\n  have hpoly : completedWordPolynomial \u03c6 N (\u03b2 (Fin.last n) * a (Fin.last n)) T\n      (b.ExteriorAlgebra.repr w T) (Fin.last n) =\n      C (\u03b2 (Fin.last n)) * completedWordPolynomial \u03c6 N (a (Fin.last n)) T\n        (b.ExteriorAlgebra.repr w T) (Fin.last n) := by\n    simp only [completedWordPolynomial, map_mul, mul_assoc]\n  intro j hj\n  have hh := hb j hj\n  rw [hpoly, coeff_C_mul] at hh\n  exact h\u03b2.mul_right_eq_zero.mp hh",
+        "after_body": "theorem xiOnly_last_completion_bound\n    (\u03c6 \u03b2 a c : Fin (n + 1) \u2192 R) (N : \u2115) (h\u03c6 : \u2200 j, \u03c6 j ^ N = 0)\n    (hfac : IsUnit ((n + 1).factorial : R)) (h\u03b2 : IsUnit (\u03b2 (Fin.last n)))\n    (k : \u2115) (hk : k \u2264 n + 1) (w : ExteriorAlgebra R V) (hwdegree : w \u2208 \u22c0[R]^k V)\n    (hw : IsHarmonic b \u03c6 \u03b2 a c w) (T : Finset (Fin (n + 1) \u2295 Fin (n + 1)))\n    (hmax : \u2200 U, b.ExteriorAlgebra.repr w U \u2260 0 \u2192 toColex U \u2264 toColex T)\n    (h\u03b8 : Sum.inl (Fin.last n) \u2209 T) (h\u03be : Sum.inr (Fin.last n) \u2208 T) :\n    CoefficientBound (completedWordPolynomial \u03c6 N (a (Fin.last n)) T\n      (b.ExteriorAlgebra.repr w T) (Fin.last n)) ((n + 1) - k) := by\n  let v := thetaCreatorVector b \u03c6 \u03b2 a 1\n  have hv : \u2200 j, Sum.inl (Fin.last n) < j \u2192 b.repr v j = 0 := by\n    intro j hj\n    cases j with\n    | inr j => exact coord_thetaCreatorVector_right b \u03c6 \u03b2 a 1 j\n    | inl j =>\n      change interleavedOddRank (.inl (Fin.last n)) < interleavedOddRank (.inl j) at hj\n      simp only [Sum.elim, interleavedOddRank, Fin.val_last] at hj\n      have hjlt := j.isLt\n      omega\n  have hcoef := completion_coefficient b w T hmax (.inl (Fin.last n)) h\u03b8 v hv\n  have hcoef' : b.ExteriorAlgebra.repr (creation v w) (insert (.inl (Fin.last n)) T) =\n      TauCeti.ExteriorAlgebra.basisEraseSign (.inl (Fin.last n))\n        (insert (.inl (Fin.last n)) T) \u2022\n          (\u03b2 (Fin.last n) * a (Fin.last n) * b.ExteriorAlgebra.repr w T) := by\n    rw [show b.repr v (.inl (Fin.last n)) = \u03b2 (Fin.last n) * a (Fin.last n) by\n      simpa only [v, Module.Basis.coord_apply, Polynomial.eval_one, mul_one] using\n        coord_thetaCreatorVector_left b \u03c6 \u03b2 a 1 (Fin.last n)] at hcoef\n    simpa only [smul_comm (\u03b2 (Fin.last n) * a (Fin.last n)), smul_eq_mul] using hcoef\n  have hb := completedWordPolynomial_bound b \u03c6 N h\u03c6 hfac k hk w v hwdegree\n    (thetaCompletion_preserves_mixed b \u03c6 \u03b2 a w hw.2.2 hw.2.1) T (Fin.last n) (.inl (Fin.last n))\n    (\u03b2 (Fin.last n) * a (Fin.last n)) _\n    (gaussOccupationPolynomial_insert_inl (fun j \u21a6 -\u03c6 j) N T (Fin.last n) h\u03b8 h\u03be) hcoef'\n  have hpoly : completedWordPolynomial \u03c6 N (\u03b2 (Fin.last n) * a (Fin.last n)) T\n      (b.ExteriorAlgebra.repr w T) (Fin.last n) =\n      C (\u03b2 (Fin.last n)) * completedWordPolynomial \u03c6 N (a (Fin.last n)) T\n        (b.ExteriorAlgebra.repr w T) (Fin.last n) := by\n    simp only [completedWordPolynomial, map_mul, mul_assoc]\n  intro j hj\n  have hh := hb j hj\n  rw [hpoly, coeff_C_mul] at hh\n  exact h\u03b2.mul_right_eq_zero.mp hh"
+      },
+      {
+        "name": "PaperVerification.Fermion.pairedCoefficientDegree_add_word",
+        "source_path": "source/two_fermion/PalomarPart004.lean",
+        "explicit_simp_lists": 1,
+        "statement_unchanged": true,
+        "before_body": "theorem pairedCoefficientDegree_add_word (d : PairedData (K := K) (n := n))\n    (kind : MomentKind) (i : Fin n) :\n    pairedCoefficientDegree d kind i +\n      wordPolynomialWeight (pairedOddWeight d) (pairedMomentWord kind i) = d.s * \u220f j, d.r j := by\n  have hd : d.u i * coveringWeight d.r i+d.v i * coveringWeight d.r i = d.s * \u220f j,d.r j := by\n    rw [\u2190 Nat.add_mul,d.degree_split i]\n    have hw := coveringWeight_mul d.r i\n    nlinarith\n  cases kind <;>\n    simp only [pairedCoefficientDegree,wordPolynomialWeight,pairedMomentWord,\n      Finset.sum_empty,Finset.sum_singleton,Finset.sum_pair (Sum.inl_ne_inr),\n      pairedOddWeight,add_zero,zero_add] <;> omega",
+        "after_body": "theorem pairedCoefficientDegree_add_word (d : PairedData (K := K) (n := n))\n    (kind : MomentKind) (i : Fin n) :\n    pairedCoefficientDegree d kind i +\n      wordPolynomialWeight (pairedOddWeight d) (pairedMomentWord kind i) = d.s * \u220f j, d.r j := by\n  have hd : d.u i * coveringWeight d.r i+d.v i * coveringWeight d.r i = d.s * \u220f j,d.r j := by\n    rw [\u2190 Nat.add_mul,d.degree_split i]\n    have hw := coveringWeight_mul d.r i\n    nlinarith\n  cases kind <;>\n    simp only [Sum.elim, pairedCoefficientDegree,wordPolynomialWeight,pairedMomentWord,\n      Finset.sum_empty,Finset.sum_singleton,Finset.sum_pair (Sum.inl_ne_inr),\n      pairedOddWeight,add_zero,zero_add] <;> omega"
+      },
+      {
+        "name": "PaperVerification.Fermion.pairedRationalOddWeight_mul_product",
+        "source_path": "source/two_fermion/PalomarPart010.lean",
+        "explicit_simp_lists": 2,
+        "statement_unchanged": true,
+        "before_body": "theorem pairedRationalOddWeight_mul_product (d : PairedData (K := R) (n := n))\n    (j : OddIndex n) :\n    pairedRationalOddWeight d j*(\u220f i,d.r i : \u2115)=(pairedOddWeight d j : \u211a) := by\n  cases j with\n  | inl i =>\n      have hr : (d.r i : \u211a) \u2260 0 := by exact_mod_cast (d.positive_r i).ne'\n      rw [show (\u220f j,d.r j : \u2115)=d.r i*coveringWeight d.r i from (coveringWeight_mul d.r i).symm]\n      simp only [pairedRationalOddWeight,pairedOddWeight,Nat.cast_mul]\n      field_simp\n  | inr i =>\n      have hr : (d.r i : \u211a) \u2260 0 := by exact_mod_cast (d.positive_r i).ne'\n      rw [show (\u220f j,d.r j : \u2115)=d.r i*coveringWeight d.r i from (coveringWeight_mul d.r i).symm]\n      simp only [pairedRationalOddWeight,pairedOddWeight,Nat.cast_mul]\n      field_simp",
+        "after_body": "theorem pairedRationalOddWeight_mul_product (d : PairedData (K := R) (n := n))\n    (j : OddIndex n) :\n    pairedRationalOddWeight d j*(\u220f i,d.r i : \u2115)=(pairedOddWeight d j : \u211a) := by\n  cases j with\n  | inl i =>\n      have hr : (d.r i : \u211a) \u2260 0 := by exact_mod_cast (d.positive_r i).ne'\n      rw [show (\u220f j,d.r j : \u2115)=d.r i*coveringWeight d.r i from (coveringWeight_mul d.r i).symm]\n      simp only [Sum.elim, pairedRationalOddWeight,pairedOddWeight,Nat.cast_mul]\n      field_simp\n  | inr i =>\n      have hr : (d.r i : \u211a) \u2260 0 := by exact_mod_cast (d.positive_r i).ne'\n      rw [show (\u220f j,d.r j : \u2115)=d.r i*coveringWeight d.r i from (coveringWeight_mul d.r i).symm]\n      simp only [Sum.elim, pairedRationalOddWeight,pairedOddWeight,Nat.cast_mul]\n      field_simp"
+      }
+    ],
+    "source_patches": [
+      {
+        "path": "source/two_fermion/PalomarPart003.lean",
+        "before_sha256": "d1b50dfb6921515570ecbf5302a3fb9490aaf3f66b5bcda668d1f24689206d80",
+        "after_sha256": "72dbc752e3c52b3dd85e30b12f854c626422605a9cb59f88a8d13c8cbb8a777d"
+      },
+      {
+        "path": "source/two_fermion/PalomarPart004.lean",
+        "before_sha256": "24aa8d7de0f5ca34964ab08689076318a6f72cac228f2927b3fe2f34f33a9a9f",
+        "after_sha256": "5ee0d8927177730b07e05d3feb18ce879bfdd70a41f15a23a40c73353a08ab79"
+      },
+      {
+        "path": "source/two_fermion/PalomarPart010.lean",
+        "before_sha256": "acb7cededc7b9ec937be923d222d26244c6afb5e329dbd7d85ee2e9e0c28e36c",
+        "after_sha256": "183bcb05b0105763a571af6a7df313a8368034aef3e3796a2f29ba0a0ea1913d"
+      }
+    ],
+    "original65targets_and_Challenge_Solution_config_unchanged": true,
+    "canonical_lines": 938,
+    "canonical_input_sha256": "b23345c3980f2f7cdf3818b4aac397889c4ea5f5c54bd3c548fa443ff4a88c0f",
+    "prepared_at_utc": "2026-11-19T08:53:50.496153+00:00",
+    "canonical_run": 44488524696,
+    "canonical_verification_sha256": "bcc268acdcbf116f6efa19a87e01d5b5b71ec60237e7725ad20c72f1a335d4bb",
+    "verification_note": "Preparation record; subsequent pinned workflow reports determine the verification outcome of the exact submitted commit."
+  },
+  "preparation_recorded_at_utc": "2026-11-19T08:53:50.496153+00:00",
+  "verification_note": "This map records preparation observations as of its dated snapshot. Subsequent pinned workflow reports determine mechanical verification for the exact commit."
 }

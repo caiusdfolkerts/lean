@@ -1529,7 +1529,7 @@ theorem thetaOnly_last_completion_bound
     | inl j => exact coord_xiCreatorVector_left b φ c 1 j
     | inr j =>
       change interleavedOddRank (.inr (Fin.last n)) < interleavedOddRank (.inr j) at hj
-      simp only [interleavedOddRank, Fin.val_last] at hj
+      simp only [Sum.elim, interleavedOddRank, Fin.val_last] at hj
       have hjlt := j.isLt
       omega
   have hcoef := completion_coefficient b w T hmax (.inr (Fin.last n)) hξ v hv
@@ -1563,7 +1563,7 @@ theorem xiOnly_last_completion_bound
     | inr j => exact coord_thetaCreatorVector_right b φ β a 1 j
     | inl j =>
       change interleavedOddRank (.inl (Fin.last n)) < interleavedOddRank (.inl j) at hj
-      simp only [interleavedOddRank, Fin.val_last] at hj
+      simp only [Sum.elim, interleavedOddRank, Fin.val_last] at hj
       have hjlt := j.isLt
       omega
   have hcoef := completion_coefficient b w T hmax (.inl (Fin.last n)) hθ v hv
@@ -7556,7 +7556,7 @@ theorem pairedCoefficientDegree_add_word (d : PairedData (K := K) (n := n))
     have hw := coveringWeight_mul d.r i
     nlinarith
   cases kind <;>
-    simp only [pairedCoefficientDegree,wordPolynomialWeight,pairedMomentWord,
+    simp only [Sum.elim, pairedCoefficientDegree,wordPolynomialWeight,pairedMomentWord,
       Finset.sum_empty,Finset.sum_singleton,Finset.sum_pair (Sum.inl_ne_inr),
       pairedOddWeight,add_zero,zero_add] <;> omega
 

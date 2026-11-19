@@ -37,3 +37,7 @@ Here's a guide to help you navigate this repo! All verified theorems/proposition
 | §8.2 and equation (22) | `TypeA.polynomialPiece_paper_module_decomposition`, `TypeA.equation_22_character`, `TypeA.equation_22_diagonal_trace` |
 | §8.2: Schur decomposition | `ColorSchur.polynomialPiece_schur_decomposition`, `ColorSchur.schurCopyMultiplicity_eq_coefficient`, `ColorSchur.every_schur_summand_irreducible`, `ColorSchur.summand_equivalent_iff_label` |
 | §8.3 and equation (23) | `TypeA.equation_23_character`, `TypeA.diagonal_trace_eq_eulerian` |
+
+## Preparation record
+
+Prepared 2026-11-19T08:53:50.496153+00:00. The current entry selects full original Theorems 1.1 and 1.2, including actual graded/Hilbert and flat-family/fiber clauses. Local-structure and equivariant character results from Sections 7–8 are outside this selection. Canonical proof controls and preparation details are recorded in map.json and packaging/. Subsequent pinned workflow reports determine mechanical verification for the exact commit; editorial review and registry publication are separate.

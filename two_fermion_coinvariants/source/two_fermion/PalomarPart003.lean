@@ -4964,14 +4964,14 @@ def interleavedOddRank {n : ℕ} : Fin n ⊕ Fin n → ℕ :=
   | inl i =>
     cases j with
     | inl j =>
-      have hij : i.val = j.val := by simp only [interleavedOddRank] at h; omega
+      have hij : i.val = j.val := by simp only [Sum.elim, interleavedOddRank] at h; omega
       exact congrArg Sum.inl (Fin.ext hij)
-    | inr j => simp only [interleavedOddRank] at h; omega
+    | inr j => simp only [Sum.elim, interleavedOddRank] at h; omega
   | inr i =>
     cases j with
-    | inl j => simp only [interleavedOddRank] at h; omega
+    | inl j => simp only [Sum.elim, interleavedOddRank] at h; omega
     | inr j =>
-      have hij : i.val = j.val := by simp only [interleavedOddRank] at h; omega
+      have hij : i.val = j.val := by simp only [Sum.elim, interleavedOddRank] at h; omega
       exact congrArg Sum.inr (Fin.ext hij)
 
 /-- The actual linear order used for exact-suffix leading terms. -/

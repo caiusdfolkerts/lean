@@ -34,13 +34,13 @@ automation:
   methods:
   - method: agent
     tool_setup: OpenAI Codex
-    notes: Agent-assisted extraction and module migration preserve the full principal1.1/1.2
-      statements, coupled terms and all-ring hypotheses. The whole measured raw comparison found
-      all40 theorem types/universes equal and57 dependent proof/matcher discrepancies. Exact
-      primitive dictionary propositions, constructor closure propositions and eliminators normalize
-      those artifacts without changing values or hypotheses; all25 new propositions and original
-      coordinate calculations passed canonical run44481634442. Current full Source/Solution/Comparator/kernel
-      validation remains pending.
+    notes: Preparation recorded 2026-11-19T08:53:50.496153+00:00. Agent-assisted extraction
+      and module migration preserve the full original Theorems1.1/1.2, coupled lower terms and
+      all-ring hypotheses. All40 prior theorem types/universes were equal in measured raw audit44471268764.
+      The25 exact constructor/dictionary propositions and pointwise coordinate controls passed
+      canonical44481634442; complete generic source batches passed44484625145; explicit Sum.elim
+      source-proof reductions passed44488524696. Subsequent pinned workflow reports determine
+      the verification outcome for the exact submitted commit.
   - method: other
     tool_setup: Historical AI assistance reported in the included paper
     notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing
@@ -48,20 +48,21 @@ automation:
       reconstructed from the snapshot.
 review:
   status: unchecked
-  notes: Exact complete principal mapping and provenance retained. All40 previous statement
-    headers are unchanged; the independent972-line interface adds25 precise semantic constructor/dictionary
-    obligations. Actual ring, index, grading, quotient and flat-family definitions remain substantive.
-    See packaging/measured-semantic-installation.json for the measured causes and proof-only/computationally
-    equal changes; rejected toFun experiment was never installed.
+  notes: Preparation review recorded 2026-11-19T08:53:50.496153+00:00; no independent human
+    review is claimed. All40 previous statement headers are unchanged. The972-line interface
+    adds25 semantic constructor/dictionary obligations and retains the actual moment rings,
+    indices, graded quotients and flat family. Scope exclusions for Sections7–8 remain explicitly
+    recorded. Later workflow reports, not these preparation notes, determine mechanical verification;
+    the Palomar editorial review is separate.
 scope:
   known_gaps:
   - Principal local-structure and equivariant/character results in Sections7–8 remain unextracted.
-  - Expanded actual associated-graded, exterior-Hilbert, homogenized flat-family/fiber interfaces
-    passed canonical Challenge elaboration; Source/Solution/Comparator replay remains unverified.
-  notes: The submitted project contains the substantive historical proof development copied
-    from the pinned source snapshot; this is not a thin wrapper. Historical upstream dependencies
-    and license notices are retained. See map.json for exact proposed selections and unresolved
-    source mapping.
+  notes: This entry selects the complete original Theorems1.1/1.2 and the actual associated-graded,
+    exterior-Hilbert and flat-family/fiber conclusions stated in the selection. It retains the
+    substantive historical proof development, dependencies, licensing and source audits. It
+    does not claim the unselected local-structure or character results of Sections7–8. Preparation
+    and validation observations are dated in automation/review notes; subsequent workflow artifacts
+    determine the exact commit verdict.
   current_selection: Full original Theorems1.1 and1.2, including actual associated graded, Hilbert
     pieces, genuine paired homogenized flat family and both algebra fibers, retaining all4 original
     basis/free-rank targets.

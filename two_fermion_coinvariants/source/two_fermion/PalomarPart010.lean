@@ -2067,12 +2067,12 @@ theorem pairedRationalOddWeight_mul_product (d : PairedData (K := R) (n := n))
   | inl i =>
       have hr : (d.r i : ℚ) ≠ 0 := by exact_mod_cast (d.positive_r i).ne'
       rw [show (∏ j,d.r j : ℕ)=d.r i*coveringWeight d.r i from (coveringWeight_mul d.r i).symm]
-      simp only [pairedRationalOddWeight,pairedOddWeight,Nat.cast_mul]
+      simp only [Sum.elim, pairedRationalOddWeight,pairedOddWeight,Nat.cast_mul]
       field_simp
   | inr i =>
       have hr : (d.r i : ℚ) ≠ 0 := by exact_mod_cast (d.positive_r i).ne'
       rw [show (∏ j,d.r j : ℕ)=d.r i*coveringWeight d.r i from (coveringWeight_mul d.r i).symm]
-      simp only [pairedRationalOddWeight,pairedOddWeight,Nat.cast_mul]
+      simp only [Sum.elim, pairedRationalOddWeight,pairedOddWeight,Nat.cast_mul]
       field_simp
 
 theorem pairedRationalSuperWeight_mul_product (d : PairedData (K := R) (n := n))

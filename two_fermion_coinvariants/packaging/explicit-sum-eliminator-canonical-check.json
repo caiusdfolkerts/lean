@@ -1,0 +1,41 @@
+{
+  "status": "validated_actual_challenge-elaborated",
+  "checked_utc": "2026-11-19T08:53:48.340300+00:00",
+  "owned_bundle_folder": "reports/two_fermion_coinvariants/sum-eliminator-proof-smoke",
+  "workflow_run": "44488524696",
+  "case": "fermion_explicit_sum_eliminator_proofs",
+  "source_commit": "165ca56102ef8fd7e4de5a92d5728c034afc98e5",
+  "artifact_id": 14511827262,
+  "artifact_zip_digest_matches_GitHub_metadata": true,
+  "input_script_log_dependency_hashes_match_frozen_case": true,
+  "challenge_sha256": "b23345c3980f2f7cdf3818b4aac397889c4ea5f5c54bd3c548fa443ff4a88c0f",
+  "receipt_sha256": "eb90c7a5ce6020062c960d4c38062ecad1457bea59cf942ed7f02bdeb5ff0b0d",
+  "bounded_log_sha256": "82112833a25b3fde43a2441e82328b839e9d80940715632353ac1fb4c05988a8",
+  "actual_elaboration": {
+    "phase": "challenge-elaboration",
+    "command": [
+      "elan",
+      "run",
+      "leanprover/lean4:v4.36.0-rc2",
+      "lake",
+      "--keep-toolchain",
+      "env",
+      "lean",
+      "--trust=0",
+      "-j1",
+      "-M8192",
+      "-DElab.async=false",
+      "-Ddebug.skipKernelTC=false",
+      "--root=/home/runner/work/_temp/challenge-work/workspace",
+      "-o",
+      "/home/runner/work/_temp/challenge-work/workspace/diagnostic-output/Challenge.olean",
+      "/home/runner/work/_temp/challenge-work/workspace/Challenge.lean"
+    ],
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 11.043,
+    "output_bytes": 8313,
+    "output_sha256": "87de753ba4e9490b270015449ce28bfc3568e83f1c5603acc9bcf1adb7ff3368"
+  },
+  "no_full_source_solution_comparator_verdict": true
+}
