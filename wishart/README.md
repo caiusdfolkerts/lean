@@ -87,6 +87,13 @@ in the spectral-attainment argument. All three original statements and
 matrix operations are unchanged. The genuine 190-line proof model passed
 run 44503460697; the revised full package still requires its own full workflow.
 
+The subsequent 1901eb2f full run passed the matrix module and retained one
+missing Borel instance at the complex multiple-row support proof. This revision
+supplies the inherited Borel witness of the same finite Hermitian product and
+specifies that carrier explicitly at the generic lemma application. The genuine
+148-line canonical witness model passed run 44508592000; the theorem statement,
+measurable space and topology are unchanged. Full replay remains pending.
+
 The earlier full snapshot built the paper proofs and Solution successfully,
 then failed strict Comparator. The repair retains every original principal
 result and its complete input model. It names only the measured proposition

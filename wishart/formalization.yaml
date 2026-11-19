@@ -58,6 +58,13 @@ review:
     All three source signatures and matrix definitions are unchanged.
     The genuine 190-line generic canonical proof model passed run 44503460697;
     no placeholders or new hypotheses are used.
+    Full snapshot 1901eb2f9498715e6cd3099f59fa522b6b45cace passed the
+    matrix support module, then retained one missing BorelSpace instance in
+    the complex multiple-row comparison proof. This revision provides the
+    canonical inherited Borel witness for its same finite dependent product
+    of Hermitian spaces and fixes the generic application type explicitly.
+    The genuine 148-line canonical witness model passed run 44508592000.
+    No theorem signature, measurable space, topology or data definition changes.
     Later immutable workflow reports for this exact source snapshot determine
     the subsequent verification outcome; this dated note does not assert it.
     The preceding canonical full snapshot 141c03dd3526da7106331c9a20456f11e53b26e2
@@ -115,6 +122,9 @@ fidelity:
     Three coordinate-frame support proofs now use explicit scalar finite sums
     and the same compression equality. Their original signatures, mathematical
     operations and all principal results are unchanged.
+    The complex multiple-row support proof now supplies its existing
+    finite-product Borel witness explicitly and specifies the same carrier
+    at the generic lemma application; no additional hypothesis is imposed.
     Source snapshot is caiusdfolkerts/research at
     e0696fddcd3d10b5d6461e62e9b2f02c4195be37.
 

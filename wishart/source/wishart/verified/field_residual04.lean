@@ -200,6 +200,16 @@ theorem complex_multiple_rows_spectral_comparison {r m n : ℕ} {ι : Type*} [Fi
         (Q i + ∑ a, compressedRowContribution ℂ (B i) (z a + Real.sqrt (lam a) • v a)))
       ∂Measure.pi (fun _ : Fin n => gaussianRowWithFactor ℂ R)) (Ici 0) := by
   let E := ∀ i, FieldSpectral.Hermitian ℂ (k i)
+  letI : BorelSpace E := by
+    change BorelSpace (∀ i, FieldSpectral.Hermitian ℂ (k i))
+    letI : ∀ i, SecondCountableTopology (FieldSpectral.Hermitian ℂ (k i)) := fun i => by
+      letI : ProperSpace (FieldSpectral.Hermitian ℂ (k i)) :=
+        FiniteDimensional.proper ℝ (FieldSpectral.Hermitian ℂ (k i))
+      infer_instance
+    letI : ∀ i, BorelSpace (FieldSpectral.Hermitian ℂ (k i)) := fun i => by
+      dsimp only [FieldSpectral.Hermitian]
+      infer_instance
+    exact Pi.borelSpace (X := fun i => FieldSpectral.Hermitian ℂ (k i))
   let P : E → Prop := fun A => ∀ i, (A i : Matrix (Fin (k i)) (Fin (k i)) ℂ).PosSemidef
   let G : Row ℂ m → E := fun z i => compressedRowContribution ℂ (B i) z
   let H : E → ℝ≥0∞ := fun A => ENNReal.ofReal
@@ -224,7 +234,7 @@ theorem complex_multiple_rows_spectral_comparison {r m n : ℕ} {ι : Type*} [Fi
     intro A hA w
     simpa only [E, H, G, Pi.add_apply, compressedRowGram_eq_add] using
       complex_single_row_spectral_lintegral_comparison R w k B A hA h hc hm L
-  have hmono := monotone_lintegral_shiftedRowSum (gaussianRowWithFactor ℂ R)
+  have hmono := monotone_lintegral_shiftedRowSum (E := E) (gaussianRowWithFactor ℂ R)
     hzero hadd G hG hrow H hH hsingle Q hQ v
   simpa only [E, H, G, shiftedRowSum, Pi.add_apply, Finset.sum_apply] using hmono
 
