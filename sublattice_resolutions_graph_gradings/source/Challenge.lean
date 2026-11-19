@@ -246,6 +246,453 @@ theorem closed_graph_betti_preservation (G : SimpleGraph (Fin N)) (hG : ClosedLa
       Koszul.betti ((graphMonomialIdeal (K := K) G) ^ s) p q := by sorry
 end PalomarSublattice
 
+namespace PalomarSublattice.Rees
+open Classical MvPolynomial
+open scoped TensorProduct
+universe u
+variable {d : ℕ} {n : Fin d → ℕ} {E : Finset (FiniteTuple n)}
+variable {k : Type u} [Field k]
+/-- The actual image of the finite Rees polynomial presentation in S[t]. -/
+def Image (E : Finset (FiniteTuple n)) (k : Type u) [Field k] :=
+  (finiteReesPresentationMap.{u} E k).range
+/-- The literal ordinary exterior algebra of the row-variable coordinate space. -/
+abbrev Wedge := ExteriorAlgebra k (FiniteVariable.{u} n → k)
+/-- The actual ordinary Koszul algebra with its genuine Rees-image coefficients. -/
+abbrev TensorAlgebra := Image E k ⊗[k] Wedge (n := n) (k := k)
+instance (priority := 2000) tensorRing : Ring (TensorAlgebra (E := E) (k := k)) := Algebra.TensorProduct.instRing
+instance (priority := 2000) tensorAlgebra : Algebra k (TensorAlgebra (E := E) (k := k)) := Algebra.TensorProduct.instAlgebra
+/-- Every base polynomial variable belongs to the displayed presentation image. -/
+theorem base_mem (v : FiniteVariable.{u} n) :
+    X (some v) ∈ Image E k := by sorry
+/-- The actual base variable, as an element of the Rees image. -/
+def baseVariable (v : FiniteVariable.{u} n) : Image E k := ⟨X (some v), base_mem v⟩
+/-- Ordinary exterior contraction by the v-th coordinate functional. -/
+def contraction (v : FiniteVariable.{u} n) : Wedge (n := n) (k := k) →ₗ[k] Wedge (n := n) (k := k) :=
+  CliffordAlgebra.contractLeft (Q := (0 : QuadraticForm k (FiniteVariable.{u} n → k)))
+    ((Pi.basisFun k (FiniteVariable.{u} n)).coord v)
+/-- The literal Koszul differential: variable multiplication tensor contraction. -/
+def differential : Module.End k (TensorAlgebra (E := E) (k := k)) :=
+  ∑ v : FiniteVariable.{u} n,
+    TensorProduct.map (LinearMap.mulLeft k (baseVariable (E := E) v)) (contraction v)
+/-- The literal Koszul differential kills the unit. -/
+theorem d_one (hE : finiteLatticeClosed n E) : differential (E := E) (k := k) 1 = 0 := by sorry
+/-- Products of actual Koszul cycles are actual Koszul cycles. -/
+theorem cycles_mul (hE : finiteLatticeClosed n E) (x y : TensorAlgebra (E := E) (k := k))
+    (hx : differential x = 0) (hy : differential y = 0) : differential (x * y) = 0 := by sorry
+/-- The actual cycles subalgebra of the literal ordinary Koszul differential. -/
+def Cycles (hE : finiteLatticeClosed n E) : Subalgebra k (TensorAlgebra (E := E) (k := k)) :=
+  (LinearMap.ker differential).toSubalgebra (d_one hE) (cycles_mul hE)
+/-- The canonical noncommutative cycle ring, explicitly selected. -/
+instance (priority := 2000) cyclesRing (hE : finiteLatticeClosed n E) : Ring (Cycles (k := k) hE) :=
+  Subalgebra.toRing (Cycles (k := k) hE)
+/-- The canonical scalar action on actual cycles, explicitly selected. -/
+instance (priority := 2000) cyclesAlgebra (hE : finiteLatticeClosed n E) : Algebra k (Cycles (k := k) hE) :=
+  Subalgebra.algebra (Cycles (k := k) hE)
+/-- Zero is an actual Koszul boundary. -/
+theorem boundary_zero (hE : finiteLatticeClosed n E) :
+    (0 : Cycles (k := k) hE).val ∈ LinearMap.range differential := by exact ⟨0, map_zero _⟩
+/-- Sums of actual boundaries are actual boundaries. -/
+theorem boundary_add (hE : finiteLatticeClosed n E) {x y : Cycles (k := k) hE}
+    (hx : x.val ∈ LinearMap.range differential) (hy : y.val ∈ LinearMap.range differential) :
+    (x + y).val ∈ LinearMap.range differential := by
+  obtain ⟨a, ha⟩ := hx
+  obtain ⟨b, hb⟩ := hy
+  exact ⟨a + b, by simpa only [map_add, ha, hb, Subalgebra.coe_add]⟩
+/-- Negatives of actual boundaries are actual boundaries. -/
+theorem boundary_neg (hE : finiteLatticeClosed n E) {x : Cycles (k := k) hE}
+    (hx : x.val ∈ LinearMap.range differential) :
+    (-x).val ∈ LinearMap.range differential := by
+  obtain ⟨a, ha⟩ := hx
+  exact ⟨-a, by simpa only [map_neg, ha, Subalgebra.coe_neg]⟩
+/-- Left multiplication by an actual cycle preserves actual boundaries. -/
+theorem boundary_left (hE : finiteLatticeClosed n E) {x y : Cycles (k := k) hE}
+    (hy : y.val ∈ LinearMap.range differential) :
+    (x * y).val ∈ LinearMap.range differential := by sorry
+/-- Right multiplication by an actual cycle preserves actual boundaries. -/
+theorem boundary_right (hE : finiteLatticeClosed n E) {x y : Cycles (k := k) hE}
+    (hx : x.val ∈ LinearMap.range differential) :
+    (x * y).val ∈ LinearMap.range differential := by sorry
+/-- The genuine two-sided ideal of Koszul boundaries in actual cycles. -/
+def Boundaries (hE : finiteLatticeClosed n E) : TwoSidedIdeal (Cycles (k := k) hE) :=
+  TwoSidedIdeal.mk' {z | z.val ∈ LinearMap.range differential}
+    (boundary_zero hE) (boundary_add hE) (boundary_neg hE)
+    (boundary_left hE) (boundary_right hE)
+/-- The actual homology algebra, cycles modulo actual boundaries. -/
+abbrev Homology (hE : finiteLatticeClosed n E) :=
+  _root_.Quotient (Submodule.quotientRel (R := Cycles (k := k) hE) (M := Cycles (k := k) hE)
+    (Boundaries (k := k) hE).asIdeal)
+instance (priority := 2000) homologyRing (hE : finiteLatticeClosed n E) : Ring (Homology (k := k) hE) :=
+  Ideal.Quotient.ring (Boundaries (k := k) hE).asIdeal
+instance (priority := 2000) homologyAlgebra (hE : finiteLatticeClosed n E) : Algebra k (Homology (k := k) hE) :=
+  Ideal.Quotient.algebra k (A := Cycles (k := k) hE) (I := (Boundaries (k := k) hE).asIdeal)
+/-- The actual projection from cycles to their homology classes. -/
+def classMap (hE : finiteLatticeClosed n E) : Cycles (k := k) hE →ₐ[k] Homology (k := k) hE :=
+  Ideal.Quotient.mkₐ k (Boundaries (k := k) hE).asIdeal
+/-- All exponent vectors actually occurring in the image monomial algebra. -/
+def ExponentMonoid := AddMonoidHom.mrange (finiteReesExponentMap.{u} E)
+/-- Every genuine image-monoid monomial belongs to the presentation image. -/
+theorem monomial_mem (a : ExponentMonoid (E := E)) :
+    monomial a.val (1 : k) ∈ Image E k := by sorry
+/-- The literal image monomial represented by that exponent. -/
+def coefficientMonomial (a : ExponentMonoid (E := E)) : Image E k :=
+  ⟨monomial a.val 1, monomial_mem a⟩
+/-- The actual standard exterior wedge indexed by a coordinate subset. -/
+def wedgeBasis : Module.Basis (Finset (FiniteVariable.{u} n)) k (Wedge (n := n) (k := k)) :=
+  (Pi.basisFun k (FiniteVariable.{u} n)).ExteriorAlgebra
+/-- Rees degree one in the actual tensor algebra: the auxiliary exponent is
+exactly one, and every exterior wedge is allowed. -/
+def DegreeOnePiece : Submodule k (TensorAlgebra (E := E) (k := k)) :=
+  Submodule.span k {z | ∃ a : ExponentMonoid (E := E), a.val none = 1 ∧
+    ∃ F : Finset (FiniteVariable.{u} n), z = coefficientMonomial a ⊗ₜ[k] wedgeBasis F}
+/-- Actual homology classes admitting an actual Rees-degree-one cycle representative. -/
+def FirstClasses (hE : finiteLatticeClosed n E) : Set (Homology (k := k) hE) :=
+  {z | ∃ x : Cycles (k := k) hE, x.val ∈ DegreeOnePiece ∧ classMap (k := k) hE x = z}
+/-- The homology-algebra assertion of Theorem1.2, in the ordinary Koszul
+algebra over its literal Rees image. -/
+theorem generated_in_degree_one (hE : finiteLatticeClosed n E) :
+    Algebra.adjoin k (FirstClasses (k := k) hE) = ⊤ := by sorry
+end PalomarSublattice.Rees
+
+/- Independent signed fine polynomial Koszul model draft; unelaborated.
+   All coefficient modules below are actual ideals or actual polynomial quotients. -/
+namespace PalomarSublattice.FineKoszul
+open Classical MvPolynomial
+open scoped BigOperators
+universe u
+variable {V k : Type u} [Fintype V] [LinearOrder V] [CommRing k]
+/-- The actual signed fine degree of one polynomial variable. -/
+def variableDegree (v : V) : V →₀ ℤ := Finsupp.single v 1
+/-- The signed fine degree carried by an exterior wedge. -/
+def exteriorDegree (s : Finset V) : V →₀ ℤ := ∑ v ∈ s, variableDegree v
+/-- The literal signed fine homogeneous polynomial submodule. -/
+def polynomialPiece (a : V →₀ ℤ) : Submodule k (MvPolynomial V k) :=
+  weightedHomogeneousSubmodule k variableDegree a
+/-- The actual ideal's homogeneous coefficient submodule, as a submodule of that ideal. -/
+def idealCoefficientPiece (I : Ideal (MvPolynomial V k)) (a : V →₀ ℤ) : Submodule k I :=
+  (polynomialPiece a).comap (I.subtype.restrictScalars k)
+/-- The actual polynomial quotient's homogeneous coefficient submodule, obtained
+by the literal quotient map on homogeneous polynomials. -/
+def quotientCoefficientPiece (I : Ideal (MvPolynomial V k)) (a : V →₀ ℤ) :
+    Submodule k (MvPolynomial V k ⧸ I) :=
+  (polynomialPiece a).map (Ideal.Quotient.mkₐ k I).toLinearMap
+section Coefficients
+variable {M : Type u} [AddCommGroup M] [Module (MvPolynomial V k) M]
+  [Module k M] [IsScalarTower k (MvPolynomial V k) M]
+/-- Actual coefficient Koszul chains in exterior degree p. -/
+abbrev Coordinates (M : Type u) [AddCommGroup M] (p : ℕ) := Set.powersetCard V p →₀ M
+/-- The ordinary signed variable-multiplication differential on actual coefficient chains. -/
+def differential (p : ℕ) : Coordinates (V := V) M (p + 1) →ₗ[k] Coordinates (V := V) M p :=
+  (Finsupp.lsum (MvPolynomial V k) (fun s : Set.powersetCard V (p + 1) =>
+    ∑ j : {j // j ∈ s.val},
+      (Finsupp.lsingle (Koszul.eraseIndex s j)).comp
+        (LinearMap.lsmul (MvPolynomial V k) M
+          (X j.val * (((Koszul.eraseSign j.val s.val : ℤˣ) : ℤ) : MvPolynomial V k))))).restrictScalars k
+/-- Outgoing degree-zero differential is exactly zero. -/
+def previous : ∀ p : ℕ, Coordinates (V := V) M p →ₗ[k] Coordinates (V := V) M p.pred
+  | 0 => 0
+  | p + 1 => differential p
+/-- Signed fine degree alpha: each actual coefficient has degree alpha minus
+its exterior-wedge degree, including negative coordinates without a zero convention. -/
+def piece (C : (V →₀ ℤ) → Submodule k M) (a : V →₀ ℤ) (p : ℕ) :
+    Submodule k (Coordinates (V := V) M p) :=
+  ⨅ s : Set.powersetCard V p, (C (a - exteriorDegree s.val)).comap (Finsupp.lapply s)
+/-- Genuine signed-fine cycles in the actual coefficient Koszul chains. -/
+def cycles (C : (V →₀ ℤ) → Submodule k M) (a : V →₀ ℤ) (p : ℕ) :
+    Submodule k (Coordinates (V := V) M p) :=
+  LinearMap.ker (previous (k := k) (M := M) p) ⊓ piece C a p
+/-- Canonical additive group of the actual signed-fine cycle submodule. -/
+instance cyclesAddCommGroup (C : (V →₀ ℤ) → Submodule k M) (a : V →₀ ℤ) (p : ℕ) :
+    AddCommGroup (cycles C a p) :=
+  Submodule.addCommGroup (R := k) (M := Coordinates (V := V) M p) (cycles C a p)
+/-- Boundaries coming from the actual preceding signed-fine component. -/
+def boundaries (C : (V →₀ ℤ) → Submodule k M) (a : V →₀ ℤ) (p : ℕ) :
+    Submodule k (cycles C a p) :=
+  (Submodule.map (differential (k := k) (M := M) p) (piece C a (p + 1))).comap
+    (cycles C a p).subtype
+/-- Actual signed-fine Koszul homology as the literal cycle/boundary quotient. -/
+abbrev Homology (C : (V →₀ ℤ) → Submodule k M) (a : V →₀ ℤ) (p : ℕ) :=
+  (cycles C a p) ⧸ boundaries C a p
+/-- Canonical additive group on the literal signed-fine cycle/boundary quotient. -/
+instance homologyAddCommGroup (C : (V →₀ ℤ) → Submodule k M)
+    (a : V →₀ ℤ) (p : ℕ) : AddCommGroup (Homology C a p) :=
+  Submodule.Quotient.addCommGroup (R := k) (M := cycles C a p) (boundaries C a p)
+/-- Canonical coefficient module on that same signed-fine homology quotient. -/
+instance homologyModule (C : (V →₀ ℤ) → Submodule k M)
+    (a : V →₀ ℤ) (p : ℕ) : Module k (Homology C a p) :=
+  Submodule.Quotient.module (R := k) (M := cycles C a p) (boundaries C a p)
+end Coefficients
+end PalomarSublattice.FineKoszul
+namespace PalomarSublattice.FineKoszul
+open Classical MvPolynomial
+universe u
+variable {V k : Type u} [Fintype V] [LinearOrder V] [Field k]
+/-- Dimension of actual ideal-coefficient signed-fine Koszul homology. -/
+def idealBetti (I : Ideal (MvPolynomial V k)) (a : V →₀ ℤ) (p : ℕ) : ℕ :=
+  Module.finrank k (Homology (idealCoefficientPiece I) a p)
+/-- Dimension of actual quotient-coefficient signed-fine Koszul homology. -/
+def quotientBetti (I : Ideal (MvPolynomial V k)) (a : V →₀ ℤ) (p : ℕ) : ℕ :=
+  Module.finrank k (Homology (quotientCoefficientPiece I) a p)
+end PalomarSublattice.FineKoszul
+namespace PalomarSublattice
+open Classical MvPolynomial
+open scoped BigOperators
+universe u
+variable {d : ℕ} (n : Fin d → ℕ)
+/-- The actual row monomial selecting one variable from every row. -/
+def rowMonomial {k : Type u} [Field k] (a : FiniteTuple n) :
+    MvPolynomial (FiniteVariable.{u} n) k := ∏ r, X ⟨r, ULift.up (a r)⟩
+/-- The literal sublattice ideal generated by the row monomials. -/
+def sublatticeIdeal {k : Type u} [Field k] (E : Finset (FiniteTuple n)) :
+    Ideal (MvPolynomial (FiniteVariable.{u} n) k) :=
+  Ideal.span (rowMonomial n '' (E : Set (FiniteTuple n)))
+/-- The manuscript's exact lexicographic predecessor relation. -/
+def lexBefore (b a : FiniteTuple n) : Prop :=
+  ∃ r, b r < a r ∧ ∀ s < r, b s = a s
+/-- Exactly the tuples before the displayed generator, with the original labels. -/
+def lexPrefix (E : Finset (FiniteTuple n)) (a : FiniteTuple n) : Finset (FiniteTuple n) :=
+  E.filter (fun b => lexBefore n b a)
+/-- The genuine predecessor colon in the actual polynomial ring. -/
+def predecessorColon {k : Type u} [Field k] (E : Finset (FiniteTuple n)) (a : FiniteTuple n) :
+    Ideal (MvPolynomial (FiniteVariable.{u} n) k) :=
+  (sublatticeIdeal n (lexPrefix n E a)).colon {rowMonomial n a}
+/-- Monotone multichains, allowing repetitions, of exactly the displayed length. -/
+def Multichain (E : Finset (FiniteTuple n)) (m : ℕ) :=
+  {w : Fin m → E // Monotone (fun s => (w s).val)}
+/-- Every such multichain belongs to the actual finite product of the finite tuple set. -/
+theorem multichain_finite (E : Finset (FiniteTuple n)) (m : ℕ) : Finite (Multichain n E m) :=
+  Finite.of_injective (fun w : Multichain n E m => w.val) Subtype.val_injective
+noncomputable instance (priority := 2000) multichainFintype (E : Finset (FiniteTuple n)) (m : ℕ) :
+    Fintype (Multichain n E m) := @Fintype.ofFinite _ (multichain_finite n E m)
+/-- The exact sum of generator exponents along the full multichain. -/
+def chainShift {E : Finset (FiniteTuple n)} {m : ℕ} (w : Multichain n E m) :=
+  ∑ s, finiteRowExponent n (w.val s).val
+/-- Ordinary coordinatewise inclusion of natural exponents into signed fine degrees. -/
+def integerExponent {V : Type u} (a : V →₀ ℕ) : V →₀ ℤ := a.mapRange Int.ofNat (by rfl)
+/-- The actual sum of all predecessor colons along the multichain. -/
+def chainCoefficientIdeal {k : Type u} [Field k] {E : Finset (FiniteTuple n)} {m : ℕ}
+    (w : Multichain n E m) : Ideal (MvPolynomial (FiniteVariable.{u} n) k) :=
+  ⨆ s : Fin m, predecessorColon n E (w.val s).val
+/-- The signed fine Betti formula of Theorem1.2: actual ideal powers on the
+left and actual polynomial quotients by the summed predecessor colons on the
+right. Every field, positive power, homological degree and signed degree occurs. -/
+theorem all_powers_signed_fine_betti {k : Type u} [Field k] {E : Finset (FiniteTuple n)}
+    (hE : finiteLatticeClosed n E) (m : ℕ) (hm : 0 < m) (p : ℕ)
+    (a : FiniteVariable.{u} n →₀ ℤ) :
+    FineKoszul.idealBetti ((sublatticeIdeal n (k := k) E) ^ m) a p =
+      ∑ w : Multichain n E m,
+        FineKoszul.quotientBetti (chainCoefficientIdeal n (k := k) w)
+          (a - integerExponent (chainShift n w)) p := by sorry
+end PalomarSublattice
+
+/- Additional Theorem4.3 ideal-identity and Betti-propagation interfaces.
+Unelaborated separate source work; full homology-generation clause remains distinct. -/
+namespace PalomarSublattice
+open Classical MvPolynomial
+universe u
+/-- The actual polynomial ideal generated by the leading terms of every element. -/
+def initialIdeal {V k : Type*} [CommRing k]
+    (o : MonomialOrder V) (J : Ideal (MvPolynomial V k)) : Ideal (MvPolynomial V k) :=
+  Ideal.span (o.leadingTerm '' (J : Set (MvPolynomial V k)))
+/-- The actual contraction of J^s from each localization at a minimal prime. -/
+def symbolicPower {R : Type*} [CommRing R] (J : Ideal R) (s : ℕ) : Ideal R :=
+  ⨅ P : J.minimalPrimes, by
+    letI : P.val.IsPrime := P.property.isPrime
+    exact ((J ^ s).map (algebraMap R (Localization.AtPrime P.val))).comap
+      (algebraMap R (Localization.AtPrime P.val))
+/-- The same minimal-prime construction using each prime's ordinary power. -/
+def radicalSymbolicPower {R : Type*} [CommRing R] (J : Ideal R) (s : ℕ) : Ideal R :=
+  ⨅ P : J.minimalPrimes, by
+    letI : P.val.IsPrime := P.property.isPrime
+    exact ((P.val ^ s).map (algebraMap R (Localization.AtPrime P.val))).comap
+      (algebraMap R (Localization.AtPrime P.val))
+variable {d : ℕ} (n : Fin d → ℕ) {k : Type u} [Field k]
+/-- Theorem4.3, all four ideal identities: no first-power Betti or homogeneous
+hypothesis is required for these equalities. This is the ideal-identity part only. -/
+theorem sublattice_initial_ideal_identities (o : MonomialOrder (FiniteVariable.{u} n))
+    (J : Ideal (MvPolynomial (FiniteVariable.{u} n) k))
+    (E : Finset (FiniteTuple n)) (hE : finiteLatticeClosed n E)
+    (hinit : initialIdeal o J = sublatticeIdeal n E) (s : ℕ) :
+    symbolicPower J s = J ^ s ∧ radicalSymbolicPower J s = J ^ s ∧
+      initialIdeal o (symbolicPower J s) = (sublatticeIdeal n E) ^ s ∧
+      initialIdeal o (J ^ s) = (sublatticeIdeal n E) ^ s := by sorry
+/-- Theorem4.3, Betti propagation: the exact first-power equality for every
+ordinary integer degree implies the equality in every power. The separate
+Rees-homology-generation assertion of that theorem is not assumed or encoded here. -/
+theorem sublattice_first_power_propagation (o : MonomialOrder (FiniteVariable.{u} n))
+    (J : Ideal (MvPolynomial (FiniteVariable.{u} n) k))
+    (E : Finset (FiniteTuple n)) (hE : finiteLatticeClosed n E)
+    (hinit : initialIdeal o J = sublatticeIdeal n E)
+    (hJ : J.IsHomogeneous (weightedHomogeneousSubmodule k
+      (fun _ : FiniteVariable.{u} n => (1 : ℕ))))
+    (hβ : ∀ p q, Koszul.betti J p q = Koszul.betti (sublatticeIdeal n (k := k) E) p q)
+    (s p : ℕ) (q : ℤ) :
+    Koszul.betti (J ^ s) p q = Koszul.betti ((sublatticeIdeal n (k := k) E) ^ s) p q := by sorry
+end PalomarSublattice
+
+/- Independent general-ideal Rees model for the homology clause of Theorem4.3.
+Unelaborated source work; does not alter the frozen complete-main494 candidate. -/
+namespace PalomarSublattice.GeneralRees
+open Classical MvPolynomial
+open scoped TensorProduct
+universe u
+variable {k V : Type u} [Field k] [Fintype V] [LinearOrder V]
+/-- The canonical actual Rees subalgebra of S[t]: its s-th polynomial
+coefficient belongs to J^s, with the actual polynomial multiplication. -/
+abbrev Coefficients (J : Ideal (MvPolynomial V k)) := (reesAlgebra J).restrictScalars k
+/-- The ordinary exterior algebra on the polynomial-variable coordinate space. -/
+abbrev Wedge := ExteriorAlgebra k (V → k)
+/-- The actual tensor Koszul algebra of the genuine general-ideal Rees algebra. -/
+abbrev Total (J : Ideal (MvPolynomial V k)) := Coefficients J ⊗[k] Wedge (V := V) (k := k)
+instance (priority := 2000) totalRing (J : Ideal (MvPolynomial V k)) : Ring (Total J) :=
+  Algebra.TensorProduct.instRing
+instance (priority := 2000) totalAlgebra (J : Ideal (MvPolynomial V k)) : Algebra k (Total J) :=
+  Algebra.TensorProduct.instAlgebra
+variable (J : Ideal (MvPolynomial V k))
+/-- Every actual base variable occurs in auxiliary degree zero of R(J). -/
+theorem base_mem (v : V) : Polynomial.C (X v) ∈ (reesAlgebra J).restrictScalars k := by sorry
+/-- The genuine polynomial variable in the actual Rees subalgebra. -/
+def baseVariable (v : V) : Coefficients J := ⟨Polynomial.C (X v), base_mem J v⟩
+/-- Ordinary exterior contraction by the actual v-th coordinate functional. -/
+def contraction (v : V) : Wedge (V := V) (k := k) →ₗ[k] Wedge (V := V) (k := k) :=
+  CliffordAlgebra.contractLeft (Q := (0 : QuadraticForm k (V → k)))
+    ((Pi.basisFun k V).coord v)
+/-- The actual Koszul differential: multiplication by each base variable
+combined with ordinary exterior contraction. Auxiliary degree is preserved. -/
+def differential : Module.End k (Total J) :=
+  ∑ v : V, TensorProduct.map (LinearMap.mulLeft k (baseVariable J v)) (contraction v)
+/-- The literal Koszul differential kills the algebra unit. -/
+theorem d_one : differential J 1 = 0 := by sorry
+/-- Products of actual Koszul cycles remain actual cycles. -/
+theorem cycles_mul (x y : Total J) (hx : differential J x = 0)
+    (hy : differential J y = 0) : differential J (x * y) = 0 := by sorry
+/-- The actual cycles subalgebra, not an abstract homology certificate. -/
+def Cycles : Subalgebra k (Total J) :=
+  (LinearMap.ker (differential J)).toSubalgebra (d_one J) (cycles_mul J)
+instance (priority := 2000) cyclesRing : Ring (Cycles J) := Subalgebra.toRing (Cycles J)
+instance (priority := 2000) cyclesAlgebra : Algebra k (Cycles J) := Subalgebra.algebra (Cycles J)
+/-- Zero is the differential of zero. -/
+theorem boundary_zero : (0 : Cycles J).val ∈ LinearMap.range (differential J) := by
+  exact ⟨0,map_zero _⟩
+/-- Sums of genuine boundaries are boundaries. -/
+theorem boundary_add {x y : Cycles J}
+    (hx : x.val ∈ LinearMap.range (differential J))
+    (hy : y.val ∈ LinearMap.range (differential J)) :
+    (x+y).val ∈ LinearMap.range (differential J) := by
+  obtain ⟨a,ha⟩ := hx
+  obtain ⟨b,hb⟩ := hy
+  exact ⟨a+b,by simpa only [map_add,ha,hb,Subalgebra.coe_add]⟩
+/-- Negatives of genuine boundaries are boundaries. -/
+theorem boundary_neg {x : Cycles J} (hx : x.val ∈ LinearMap.range (differential J)) :
+    (-x).val ∈ LinearMap.range (differential J) := by
+  obtain ⟨a,ha⟩ := hx
+  exact ⟨-a,by simpa only [map_neg,ha,Subalgebra.coe_neg]⟩
+/-- Left multiplication by an actual cycle preserves actual boundaries. -/
+theorem boundary_left {x y : Cycles J}
+    (hy : y.val ∈ LinearMap.range (differential J)) :
+    (x*y).val ∈ LinearMap.range (differential J) := by sorry
+/-- Right multiplication by an actual cycle preserves actual boundaries. -/
+theorem boundary_right {x y : Cycles J}
+    (hx : x.val ∈ LinearMap.range (differential J)) :
+    (x*y).val ∈ LinearMap.range (differential J) := by sorry
+/-- The genuine two-sided ideal of actual boundaries in actual cycles. -/
+def Boundaries : TwoSidedIdeal (Cycles J) :=
+  TwoSidedIdeal.mk' {z | z.val ∈ LinearMap.range (differential J)}
+    (boundary_zero J) (boundary_add J) (boundary_neg J) (boundary_left J) (boundary_right J)
+/-- The actual homology algebra: actual cycles modulo actual boundaries. -/
+abbrev Homology :=
+  _root_.Quotient (Submodule.quotientRel (R := Cycles J) (M := Cycles J) (Boundaries J).asIdeal)
+instance (priority := 2000) homologyRing : Ring (Homology J) :=
+  Ideal.Quotient.ring (Boundaries J).asIdeal
+instance (priority := 2000) homologyAlgebra : Algebra k (Homology J) :=
+  Ideal.Quotient.algebra k (A := Cycles J) (I := (Boundaries J).asIdeal)
+/-- Projection of an actual cycle onto its genuine homology class. -/
+def classMap : Cycles J →ₐ[k] Homology J := Ideal.Quotient.mkₐ k (Boundaries J).asIdeal
+/-- Every coefficient f in J yields the actual degree-one term f t in R(J). -/
+theorem oneCoefficient_mem (f : (J ^ 1).restrictScalars k) :
+    Polynomial.monomial 1 f.val ∈ (reesAlgebra J).restrictScalars k := by sorry
+/-- Actual inclusion of the auxiliary-degree-one coefficient module. -/
+def oneCoefficient : (J ^ 1).restrictScalars k →ₗ[k] Coefficients J :=
+  (((Polynomial.monomial 1 : MvPolynomial V k →ₗ[MvPolynomial V k]
+      Polynomial (MvPolynomial V k)).restrictScalars k).comp
+    ((J ^ 1).restrictScalars k).subtype).codRestrict
+      ((reesAlgebra J).restrictScalars k).toSubmodule (oneCoefficient_mem J)
+/-- The genuine auxiliary-degree-one tensor component: every f t tensor every
+exterior vector, and all their linear combinations. No Groebner basis is assumed. -/
+def DegreeOnePiece : Submodule k (Total J) :=
+  LinearMap.range (TensorProduct.map (oneCoefficient J)
+    (LinearMap.id : Wedge (V := V) (k := k) →ₗ[k] _))
+/-- All actual classes admitting an auxiliary-degree-one cycle representative. -/
+def FirstClasses : Set (Homology J) :=
+  {z | ∃ x : Cycles J, x.val ∈ DegreeOnePiece J ∧ classMap J x = z}
+end PalomarSublattice.GeneralRees
+namespace PalomarSublattice
+open Classical MvPolynomial
+universe u
+variable {d : ℕ} (n : Fin d → ℕ) {k : Type u} [Field k]
+/-- The Rees-homology assertion of Theorem4.3 for an arbitrary homogeneous
+ideal with sublattice initial ideal and exact first-power ordinary Betti equality.
+The conclusion concerns its actual canonical Rees algebra and literal Koszul
+cycles, boundaries and auxiliary-degree-one classes. -/
+theorem sublattice_deformation_rees_generation (o : MonomialOrder (FiniteVariable.{u} n))
+    (J : Ideal (MvPolynomial (FiniteVariable.{u} n) k))
+    (E : Finset (FiniteTuple n)) (hE : finiteLatticeClosed n E)
+    (hinit : initialIdeal o J = sublatticeIdeal n E)
+    (hJ : J.IsHomogeneous (weightedHomogeneousSubmodule k
+      (fun _ : FiniteVariable.{u} n => (1 : ℕ))))
+    (hβ : ∀ p q, Koszul.betti J p q = Koszul.betti (sublatticeIdeal n (k := k) E) p q) :
+    Algebra.adjoin k (GeneralRees.FirstClasses J) = ⊤ := by sorry
+end PalomarSublattice
+
+/- Keep these canonical data ahead of the refinement proof bridge so Lean
+uses the same first-occurrence names for auxiliary instance proofs in both modules. -/
+namespace PalomarSublattice.OrdinaryQuotientKoszul
+open Classical MvPolynomial
+universe u
+variable {V k : Type u} [Fintype V] [LinearOrder V] [Field k]
+/-- The image of the genuine polynomial homogeneous component in the actual
+quotient. Integer weights include negative strands with their actual zero
+polynomial component. -/
+def coefficientPiece (I : Ideal (MvPolynomial V k)) (q : ℤ) :
+    Submodule k (MvPolynomial V k ⧸ I) :=
+  (weightedHomogeneousSubmodule k (fun _ : V => (1 : ℤ)) q).map
+    (Ideal.Quotient.mkₐ k I).toLinearMap
+/-- Exterior degree p contributes p to ordinary internal degree. Each actual
+quotient coefficient has polynomial degree q-p. -/
+def piece (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
+    Submodule k (FineKoszul.Coordinates (V := V) (MvPolynomial V k ⧸ I) p) :=
+  ⨅ s : Set.powersetCard V p,
+    (coefficientPiece I (q - (p : ℤ))).comap (Finsupp.lapply s)
+/-- Genuine cycles of the signed variable-multiplication Koszul differential
+inside the actual ordinary integer strand. -/
+def cycles (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
+    Submodule k (FineKoszul.Coordinates (V := V) (MvPolynomial V k ⧸ I) p) :=
+  LinearMap.ker (FineKoszul.previous (k := k) p) ⊓ piece I q p
+instance cyclesAddCommGroup (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
+    AddCommGroup (cycles I q p) :=
+  Submodule.addCommGroup (R := k)
+    (M := FineKoszul.Coordinates (V := V) (MvPolynomial V k ⧸ I) p) (cycles I q p)
+/-- The actual preceding homogeneous component mapped by the Koszul
+ differential, viewed inside its cycle submodule. -/
+def boundaries (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
+    Submodule k (cycles I q p) :=
+  (Submodule.map (FineKoszul.differential (k := k) p) (piece I q (p+1))).comap
+    (cycles I q p).subtype
+/-- Literal homogeneous Koszul homology: actual cycles modulo actual boundaries. -/
+abbrev Homology (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :=
+  _root_.Quotient (Submodule.quotientRel (R := k) (M := cycles I q p) (boundaries I q p))
+instance homologyAddCommGroup (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
+    AddCommGroup (Homology I q p) :=
+  Submodule.Quotient.addCommGroup (R := k) (M := cycles I q p) (boundaries I q p)
+instance homologyModule (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
+    Module k (Homology I q p) :=
+  Submodule.Quotient.module (R := k) (M := cycles I q p) (boundaries I q p)
+/-- The dimension of the genuine ordinary integer Koszul homology strand. -/
+def betti (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) : ℕ :=
+  Module.finrank k (Homology I q p)
+end PalomarSublattice.OrdinaryQuotientKoszul
+
+/- Literal arbitrary additive grading for the final finer-grading clause of
+Theorem4.3; unelaborated, separate from frozen complete-main494. -/
 namespace PalomarSublattice.RefinedKoszul
 open Classical MvPolynomial
 universe u v
