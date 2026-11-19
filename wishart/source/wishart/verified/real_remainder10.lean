@@ -28,7 +28,7 @@ def identitySymmetric (p : ℕ) : Sym p :=
   ⟨1, WishartSharedProof.realIdentitySelfAdjoint _⟩
 
 def shiftSymmetric {p : ℕ} (c : ℝ) (X : Sym p) : Sym p :=
-  X + c • identitySymmetric p
+  WishartLiteralOperations.addScaledSymmetric X (identitySymmetric p) c
 
 @[simp] theorem coe_shiftSymmetric {p : ℕ} (c : ℝ) (X : Sym p) :
     (shiftSymmetric c X : Matrix (Fin p) (Fin p) ℝ) =

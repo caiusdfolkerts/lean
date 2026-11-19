@@ -794,7 +794,7 @@ theorem identityGaugeCompression_matrix {q : ℕ}
     add_comm]
 
 def shiftedGaugeValue {q : ℕ} (Φ : SpectralGauge q) (c : ℝ) (S : SymmetricMatrix q) : ℝ :=
-  Φ.value (S + c • SpectralGauge.identitySymmetric q)
+  Φ.value (WishartLiteralOperations.addScaledSymmetric S (SpectralGauge.identitySymmetric q) c)
 
 theorem measurable_shiftedGaugeValue {q : ℕ} (Φ : SpectralGauge q) (c : ℝ) :
     Measurable (shiftedGaugeValue Φ c) := Φ.measurable_value.comp (measurable_id.add measurable_const)

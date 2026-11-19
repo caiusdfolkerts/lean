@@ -139,3 +139,15 @@ def secondOfTwo {n : ℕ} (h : 2 ≤ n) : Fin n := ⟨1, one_lt_of_two_le h⟩
 @[instance 2200] theorem finRealMatrixNonnegSpectrum (p : ℕ) :
     NonnegSpectrumClass ℝ (Matrix (Fin p) (Fin p) ℝ) := by infer_instance
 end WishartSharedProof
+
+namespace WishartLiteralOperations
+open scoped MatrixOrder Matrix.Norms.L2Operator
+noncomputable abbrev inverseSquareRoot {p : ℕ} (A : Matrix (Fin p) (Fin p) ℝ) :=
+  (CFC.sqrt A)⁻¹
+noncomputable abbrev addScaledSymmetric {p : ℕ}
+    (X I : selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℝ)) (c : ℝ) :=
+  X + c • I
+noncomputable abbrev scaleMeasure {Ω : Type*} [MeasurableSpace Ω]
+    (a : ENNReal) (μ : MeasureTheory.Measure Ω) := a • μ
+end WishartLiteralOperations
+

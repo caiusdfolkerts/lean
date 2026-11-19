@@ -936,7 +936,7 @@ def compressionNormalization {p q : ℕ}
 
 def normalizedCompressionRows {p q : ℕ} (Sigma : Matrix (Fin p) (Fin p) ℝ)
     (B : Matrix (Fin p) (Fin q) ℝ) : Matrix (Fin q) (Fin p) ℝ :=
-  (CFC.sqrt (compressionScale Sigma B))⁻¹ * Bᵀ
+  WishartLiteralOperations.inverseSquareRoot (compressionScale Sigma B) * Bᵀ
 
 def normalizedCompression {p q : ℕ} (Sigma : Matrix (Fin p) (Fin p) ℝ)
     (B : Matrix (Fin p) (Fin q) ℝ) : SymmetricMatrix p → SymmetricMatrix q :=

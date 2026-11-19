@@ -109,6 +109,18 @@ def secondOfTwo {n : ℕ} (h : 2 ≤ n) : Fin n := ⟨1, one_lt_of_two_le h⟩
     NonnegSpectrumClass ℝ (Matrix (Fin p) (Fin p) ℝ) := by infer_instance
 end WishartSharedProof
 
+namespace WishartLiteralOperations
+open scoped MatrixOrder Matrix.Norms.L2Operator
+noncomputable abbrev inverseSquareRoot {p : ℕ} (A : Matrix (Fin p) (Fin p) ℝ) :=
+  (CFC.sqrt A)⁻¹
+noncomputable abbrev addScaledSymmetric {p : ℕ}
+    (X I : selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℝ)) (c : ℝ) :=
+  X + c • I
+noncomputable abbrev scaleMeasure {Ω : Type*} [MeasurableSpace Ω]
+    (a : ENNReal) (μ : MeasureTheory.Measure Ω) := a • μ
+end WishartLiteralOperations
+
+
 namespace WishartLiteralStructures
 section MatrixInner
 variable {m n:Type*} [Fintype m] [Fintype n]
@@ -382,7 +394,7 @@ abbrev SymmetricMatrix (p:ℕ):=selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p
 def principalSymmetricBlock {p q:ℕ} (f:Fin q → Fin p) (X:SymmetricMatrix p):SymmetricMatrix q:=⟨(X:Matrix (Fin p) (Fin p) ℝ).submatrix f f,Matrix.isHermitian_iff_isSelfAdjoint.mp ((Matrix.isHermitian_iff_isSelfAdjoint.mpr X.property).submatrix f)⟩
 def blockDiagonalMatrix {q m:ℕ} (A:Matrix (Fin q) (Fin q) ℝ) (C:Matrix (Fin m) (Fin m) ℝ):Matrix (Fin (q + m)) (Fin (q + m)) ℝ:=(Matrix.fromBlocks A 0 0 C).submatrix finSumFinEquiv.symm finSumFinEquiv.symm
 def leadingScale (q m:ℕ) (S:Matrix (Fin (q + m)) (Fin (q + m)) ℝ):Matrix (Fin q) (Fin q) ℝ:=S.submatrix (Fin.castAdd m) (Fin.castAdd m)
-def selectedInverseRoot (q m:ℕ) (S:Matrix (Fin (q + m)) (Fin (q + m)) ℝ):Matrix (Fin q) (Fin q) ℝ:=(CFC.sqrt (leadingScale q m S))⁻¹
+def selectedInverseRoot (q m:ℕ) (S:Matrix (Fin (q + m)) (Fin (q + m)) ℝ):Matrix (Fin q) (Fin q) ℝ:=WishartLiteralOperations.inverseSquareRoot (leadingScale q m S)
 def selectedWhitening (q m:ℕ) (S:Matrix (Fin (q + m)) (Fin (q + m)) ℝ):Matrix (Fin (q + m)) (Fin (q + m)) ℝ:=blockDiagonalMatrix (selectedInverseRoot q m S) (1:Matrix (Fin m) (Fin m) ℝ)
 end end Wishart
 namespace WishartVerification section open scoped BigOperators Matrix
@@ -450,7 +462,7 @@ namespace WishartVerification section open scoped Classical variable {p d:ℕ}
 end end WishartVerification
 namespace Wishart section open scoped Matrix MatrixOrder Matrix.Norms.L2Operator
 def compressionScale {p q:ℕ} (Sigma:Matrix (Fin p) (Fin p) ℝ) (B:Matrix (Fin p) (Fin q) ℝ):Matrix (Fin q) (Fin q) ℝ:=Bᵀ * Sigma * B
-def normalizedCompressionRows {p q:ℕ} (Sigma:Matrix (Fin p) (Fin p) ℝ) (B:Matrix (Fin p) (Fin q) ℝ):Matrix (Fin q) (Fin p) ℝ:=(CFC.sqrt (compressionScale Sigma B))⁻¹ * Bᵀ
+def normalizedCompressionRows {p q:ℕ} (Sigma:Matrix (Fin p) (Fin p) ℝ) (B:Matrix (Fin p) (Fin q) ℝ):Matrix (Fin q) (Fin p) ℝ:=WishartLiteralOperations.inverseSquareRoot (compressionScale Sigma B) * Bᵀ
 def normalizedCompression {p q:ℕ} (Sigma:Matrix (Fin p) (Fin p) ℝ) (B:Matrix (Fin p) (Fin q) ℝ):SymmetricMatrix p → SymmetricMatrix q:=Matrix.symmetricCongruenceLinearMap (normalizedCompressionRows Sigma B)
 /-- Literal normalizedCompression_posDef. -/ theorem normalizedCompression_posDef {p k:ℕ} {Omega:Matrix (Fin p) (Fin p) ℝ} (hOmega:Omega.PosDef) (B:Matrix (Fin p) (Fin k) ℝ) (hB:B.rank=k) {Y:SymmetricMatrix p} (hY:(Y:Matrix (Fin p) (Fin p) ℝ).PosDef):(normalizedCompression Omega B Y:Matrix (Fin k) (Fin k) ℝ).PosDef:=by sorry
 end end Wishart
@@ -529,7 +541,7 @@ abbrev Hermitian (p:ℕ):=selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℂ)
 def hermitianLebesgue (p:ℕ):Measure (Hermitian p):=(Module.finBasis ℝ (Hermitian p)).addHaar
 /-- The unnormalized literal complex density (b = 2). -/ def wishartWeight {p:ℕ} (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℂ) (X:Hermitian p):ℝ≥0∞:=if (X:Matrix (Fin p) (Fin p) ℂ).PosDef then ENNReal.ofReal (realDeterminant (X:Matrix (Fin p) (Fin p) ℂ) ^ (α - p) * Real.exp (-((Sigma⁻¹ * (X:Matrix (Fin p) (Fin p) ℂ)).trace).re)) else 0
 def wishartNormalizer {p:ℕ} (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℂ):ℝ≥0∞:=∫⁻ X,wishartWeight α Sigma X ∂hermitianLebesgue p
-def wishartMeasure {p:ℕ} (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℂ):Measure (Hermitian p):=(wishartNormalizer α Sigma)⁻¹ • (hermitianLebesgue p).withDensity (wishartWeight α Sigma)
+def wishartMeasure {p:ℕ} (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℂ):Measure (Hermitian p):=WishartLiteralOperations.scaleMeasure (wishartNormalizer α Sigma)⁻¹ ((hermitianLebesgue p).withDensity (wishartWeight α Sigma))
 /-- The genuine n-row field Gaussian Gram law, including singular sample sizes. -/ def gramMeasure {p:ℕ} (n:ℕ) (Sigma:Matrix (Fin p) (Fin p) ℂ):Measure (Hermitian p):=Wishart.FieldGaussian.gramWithFactor ℂ n (CFC.sqrt Sigma)
 def compressionCovariance {p k:ℕ} (B:Matrix (Fin p) (Fin k) ℂ) (Sigma:Matrix (Fin p) (Fin p) ℂ):Matrix (Fin k) (Fin k) ℂ:=Bᴴ * Sigma * B
 /-- The exact standardized compression. The congruence form makes the total function Hermitian even outside its intended positive-definite parameters. -/ def normalizedCompression {p k:ℕ} (B:Matrix (Fin p) (Fin k) ℂ) (Sigma:Matrix (Fin p) (Fin p) ℂ) (X:Hermitian p):Hermitian k :=
@@ -549,7 +561,7 @@ set_option backward.isDefEq.respectTransparency false in
 def hermitianLebesgue (p:ℕ):Measure (Hermitian p):=(Module.finBasis ℝ (Hermitian p)).addHaar
 /-- The unnormalized literal quaternion density (b = 4). -/ def wishartWeight {p:ℕ} (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℍ[ℝ]) (X:Hermitian p):ℝ≥0∞:=if PosDef (X:Matrix (Fin p) (Fin p) ℍ[ℝ]) then ENNReal.ofReal (positiveDeterminant (X:Matrix (Fin p) (Fin p) ℍ[ℝ]) ^ (2 * (α - p + 1) - 1) * Real.exp (-2 * ((Sigma⁻¹ʳ * (X:Matrix (Fin p) (Fin p) ℍ[ℝ])).trace).re)) else 0
 def wishartNormalizer {p:ℕ} (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℍ[ℝ]):ℝ≥0∞:=∫⁻ X,wishartWeight α Sigma X ∂hermitianLebesgue p
-def wishartMeasure {p:ℕ} (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℍ[ℝ]):Measure (Hermitian p):=(wishartNormalizer α Sigma)⁻¹ • (hermitianLebesgue p).withDensity (wishartWeight α Sigma)
+def wishartMeasure {p:ℕ} (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℍ[ℝ]):Measure (Hermitian p):=WishartLiteralOperations.scaleMeasure (wishartNormalizer α Sigma)⁻¹ ((hermitianLebesgue p).withDensity (wishartWeight α Sigma))
 def gramMeasure {p:ℕ} (n:ℕ) (Sigma:Matrix (Fin p) (Fin p) ℍ[ℝ]):Measure (Hermitian p):=Wishart.FieldGaussian.gramWithFactor ℍ[ℝ] n (sqrt Sigma)
 def compressionCovariance {p k:ℕ} (B:Matrix (Fin p) (Fin k) ℍ[ℝ]) (Sigma:Matrix (Fin p) (Fin p) ℍ[ℝ]):Matrix (Fin k) (Fin k) ℍ[ℝ]:=Bᴴ * Sigma * B
 def normalizedCompression {p k:ℕ} (B:Matrix (Fin p) (Fin k) ℍ[ℝ]) (Sigma:Matrix (Fin p) (Fin p) ℍ[ℝ]) (X:Hermitian p):Hermitian k :=
@@ -625,7 +637,7 @@ def supportSequence:ℕ → SymmetricMatrix k:=Classical.choose Φ.exists_counta
 def supportMaximum (n:ℕ) (X:SymmetricMatrix k):ℝ:=finiteMaximum (fun l:Fin (n + 1) => ⟪Φ.supportSequence l,X⟫)
 end end Wishart.SpectralGauge
 namespace Wishart section open scoped Matrix MatrixOrder Matrix.Norms.Operator
-def shiftedGaugeValue {q:ℕ} (Φ:SpectralGauge q) (c:ℝ) (S:SymmetricMatrix q):ℝ:=Φ.value (S + c • SpectralGauge.identitySymmetric q)
+def shiftedGaugeValue {q:ℕ} (Φ:SpectralGauge q) (c:ℝ) (S:SymmetricMatrix q):ℝ:=Φ.value (WishartLiteralOperations.addScaledSymmetric S (SpectralGauge.identitySymmetric q) c)
 def normalizedGaugeValue {p q:ℕ} (Sigma:Matrix (Fin p) (Fin p) ℝ) (B:Matrix (Fin p) (Fin q) ℝ) (Φ:SpectralGauge q) (c:ℝ) (X:SymmetricMatrix p):ℝ:=shiftedGaugeValue Φ c (normalizedCompression Sigma B X)
 end end Wishart
 namespace WishartVerification.MomentAssembly section open scoped Classical ENNReal BigOperators variable {ι:Type*} [DecidableEq ι]
@@ -730,7 +742,7 @@ def TheoremSevenOne:Prop:=SectionSevenComplexNormalization ∧ SectionSevenQuate
 end end Wishart
 namespace Wishart.Spectral section open scoped Classical BigOperators Matrix.Norms.Operator
 def identitySymmetric (p:ℕ):Sym p:=⟨1,WishartSharedProof.realIdentitySelfAdjoint _⟩
-def shiftSymmetric {p:ℕ} (c:ℝ) (X:Sym p):Sym p:=X + c • identitySymmetric p
+def shiftSymmetric {p:ℕ} (c:ℝ) (X:Sym p):Sym p:=WishartLiteralOperations.addScaledSymmetric X (identitySymmetric p) c
 end end Wishart.Spectral
 namespace Wishart.Spectral section open scoped Classical BigOperators ENNReal
 def FiniteConvexIncreasingSymmetric {k:ℕ} (h:(Fin k → ℝ) → ℝ):Prop:=ConvexOn ℝ Set.univ h ∧ Monotone h ∧ SymmetricProfile h
