@@ -1,5 +1,3 @@
-# Palomar submission: sublattice_resolutions
+# Sublattice Corollaries5.1 and5.2 independent interface diagnostic
 
-Substantive source snapshot of [caiusdfolkerts/research](https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/sublattice_resolutions), revision `e0696fddcd3d10b5d6461e62e9b2f02c4195be37`.
-
-The complete selected development, paper, metadata, and Comparator configuration are in `sublattice_resolutions/`. This branch prepares a registry submission; it does not claim registry acceptance. See `sublattice_resolutions/formalization.yaml` for exact scope and provenance.
+This904-line canonical-only Challenge retains every current28target and adds exact Corollary5.1, grouped5.2, the full rational-polynomial/all-forward-differences/actual categorical projective-dimension/Ext-depth consequences, and their general homogeneous-deformation transfer. All fields, integer ordinary degrees, empty lattice/zero-row cases and exactly the first-power criterion hypotheses are retained. The numerical coefficients use actual quotient Koszul homology by sums of predecessor-colon ideals. No semantic bridge is a theorem hypothesis. All new proof fragments are uncompiled; intended Challenge placeholders are permitted. No full Solution/Comparator/kernel/registry claim, and no live package changes.
