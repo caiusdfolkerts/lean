@@ -247,6 +247,8 @@ abbrev BarycentricRing := FacePolynomial (P := P) K ⧸ barycentricIdeal (P := P
 /-- Source theorem13.lean:731. -/
 def faceRingGenerator (hs : IsSimplicialPoset P) (p : P) : FaceRing K hs :=
   Ideal.Quotient.mk (faceIdeal K hs) (faceSymbol K p)
+theorem faceRingGenerator_palomar_formula (hs : IsSimplicialPoset P) (p : P) :
+    faceRingGenerator K hs p = Ideal.Quotient.mk (faceIdeal K hs) (faceSymbol K p) := by sorry
 /-- Source theorem13.lean:734. -/
 def barycentricGenerator (p : P) : BarycentricRing (P := P) K :=
   Ideal.Quotient.mk (barycentricIdeal K) (faceSymbol K p)
@@ -306,6 +308,8 @@ def faceRingEvaluation (hs : IsSimplicialPoset P) (r : P) :
     apply Ideal.span_le.mpr
     intro f hf
     exact faceEvaluation_relation K hs r hf)
+theorem faceRingEvaluation_palomar_formula (hs : IsSimplicialPoset P) (r : P) (f : FacePolynomial (P := P) K) :
+    faceRingEvaluation K hs r (Ideal.Quotient.mk (faceIdeal K hs) f) = faceEvaluation K r f := by sorry
 end
 end FourPapers.Universal
 namespace FourPapers.Universal
@@ -385,6 +389,8 @@ def booleanFaceInclusion (hs : IsSimplicialPoset P) (p : P) :
         (subfaceOfVertexSet hs p G.val).val := congrArg (fun z : NonzeroFace P => z.val) h
     have hv := congrArg (stalkVertexSet p) he
     simpa only [stalkVertexSet_subfaceOfVertexSet] using hv
+theorem booleanFaceInclusion_palomar_formula (hs : IsSimplicialPoset P) (p : P) (F : BooleanFace (FaceVertex p)) :
+    (booleanFaceInclusion hs p F).val = (subfaceOfVertexSet hs p F.val).val := by sorry
 /-- Source theorem13.lean:2012. -/
 theorem booleanFaceInclusion_le (hs : IsSimplicialPoset P) (p : P)
     (F : BooleanFace (FaceVertex p)) : (booleanFaceInclusion hs p F).val ≤ p := by sorry
@@ -504,6 +510,8 @@ abbrev coefficientDiagram : ModuleDiagram K P where
     · have hiq := hi.trans hrq
       simp [hi, hiq]
     · simp [hi]
+theorem coefficientDiagram_palomar_formula {p q : P} (h : q ≤ p) :
+    (coefficientDiagram K carrier).res h = coefficientRestriction K carrier h := by sorry
 /-- Source theorem13.lean:2585. -/
 def coefficientSection : (I →₀ K) →ₗ[K] (coefficientDiagram K carrier).sections where
   toFun x := ⟨fun p => Finsupp.restrictDom K K {i | carrier i ≤ p} x, by
@@ -525,6 +533,8 @@ def coefficientSection : (I →₀ K) →ₗ[K] (coefficientDiagram K carrier).s
     apply Subtype.ext
     funext p
     exact map_smul (Finsupp.restrictDom K K {i | carrier i ≤ p}) c x
+theorem coefficientSection_palomar_formula (x : I →₀ K) (p : P) :
+    (coefficientSection K carrier x).val p = Finsupp.restrictDom K K {i | carrier i ≤ p} x := by sorry
 /-- Source theorem13.lean:2610. -/
 def coefficientAtCarrier (x : (coefficientDiagram K carrier).sections) (i : I) : K :=
   (x.val (carrier i)).val i
@@ -574,6 +584,8 @@ variable (K : Type*) [CommRing K] (hs : IsSimplicialPoset P)
 /-- Source theorem13.lean:2911. -/
 def faceRingMonomial (a : NonzeroFace P →₀ ℕ) : FaceRing K hs :=
   Ideal.Quotient.mk (faceIdeal K hs) (monomial a 1)
+theorem faceRingMonomial_palomar_formula (a : NonzeroFace P →₀ ℕ) :
+    faceRingMonomial K hs a = Ideal.Quotient.mk (faceIdeal K hs) (monomial a 1) := by sorry
 end
 end FourPapers.Universal
 namespace FourPapers.Universal
@@ -673,6 +685,8 @@ def faceRingSection : FaceRing K hs →ₗ[K] (polynomialDiagram (P := P) K).sec
     apply Subtype.ext
     funext p
     exact map_smul (faceRingEvaluation K hs p) c f
+theorem faceRingSection_palomar_formula (f : FaceRing K hs) (p : P) :
+    (faceRingSection K hs f).val p = faceRingEvaluation K hs p f := by sorry
 end
 end FourPapers.Universal
 namespace FourPapers.Universal
@@ -704,6 +718,8 @@ def polynomialSectionCoordinates :
 /-- Source theorem13.lean:4121. -/
 def standardFaceCombination : (StandardFaceIndex P →₀ K) →ₗ[K] FaceRing K hs :=
   Finsupp.linearCombination K (fun a => faceRingMonomial K hs a.val)
+theorem standardFaceCombination_palomar_formula  :
+    standardFaceCombination (P := P) K hs = Finsupp.linearCombination K (fun a : StandardFaceIndex P => faceRingMonomial K hs a.val) := by sorry
 /-- Source theorem13.lean:4124. -/
 theorem standardFaceCombination_surjective : Function.Surjective (standardFaceCombination K hs) := by sorry
 /-- Source theorem13.lean:4137. -/
@@ -717,6 +733,8 @@ def standardFaceBasis : Module.Basis (StandardFaceIndex P) K (FaceRing K hs) :=
       have h := congrArg (fun f => polynomialSectionCoordinates K hs (faceRingSection K hs f)) hxy
       simpa only [standardFaceCombination_coefficients] using h,
       standardFaceCombination_surjective K hs⟩).symm
+@[simp] theorem standardFaceBasis_apply (a : StandardFaceIndex P) :
+    standardFaceBasis K hs a = faceRingMonomial K hs a.val := by sorry
 end
 end FourPapers.Universal
 namespace FourPapers.Universal
@@ -783,6 +801,8 @@ variable (K : Type*) [CommRing K] (hs : IsSimplicialPoset P)
 def barycentricGlobalStandardBasis :
     Module.Basis (StandardFaceIndex P) K (BarycentricRing (P := P) K) :=
   Module.Basis.ofRepr (barycentricMonomialEquiv K)
+theorem barycentricGlobalStandardBasis_palomar_formula  :
+    barycentricGlobalStandardBasis (P := P) K = Module.Basis.ofRepr (barycentricMonomialEquiv K) := by sorry
 end
 end FourPapers.Universal
 namespace FourPapers.Universal
@@ -793,6 +813,8 @@ variable (K : Type*) [CommRing K] (hs : IsSimplicialPoset P)
 /-- Source theorem13.lean:9096. -/
 def canonicalOriginalComparison : BarycentricRing (P := P) K ≃ₗ[K] FaceRing K hs :=
   canonicalBasisEquiv (barycentricGlobalStandardBasis K) (standardFaceBasis K hs)
+theorem canonicalOriginalComparison_palomar_formula  :
+    (canonicalOriginalComparison (P := P) K hs) = canonicalBasisEquiv (barycentricGlobalStandardBasis K) (standardFaceBasis K hs) := by sorry
 end
 end FourPapers.Universal
 namespace FourPapers.Universal
@@ -807,6 +829,8 @@ variable (K) (hs : IsSimplicialPoset P)
 def usualFaceDegreePiece (n : ℕ) : Submodule K (FaceRing K hs) :=
   (weightedHomogeneousSubmodule K (fun q : NonzeroFace P => faceRank q.val) n).map
     (Ideal.Quotient.mkₐ K (faceIdeal K hs)).toLinearMap
+theorem usualFaceDegreePiece_palomar_formula (n : ℕ) :
+    usualFaceDegreePiece K hs n = (weightedHomogeneousSubmodule K (fun q : NonzeroFace P => faceRank q.val) n).map (Ideal.Quotient.mkₐ K (faceIdeal K hs)).toLinearMap := by sorry
 /-- Source theorem13.lean:9423. -/
 def usualBarycentricDegreePiece (n : ℕ) : Submodule K (BarycentricRing (P := P) K) :=
   (weightedHomogeneousSubmodule K (fun q : NonzeroFace P => faceRank q.val) n).map
@@ -849,6 +873,8 @@ def originalPolynomialWeight (d : ℕ) (a : NonzeroFace P →₀ ℕ) : ℤ :=
 def usualFaceWeightLevel (d : ℕ) (n : ℤ) : Submodule K (FaceRing K hs) :=
   (presentationWeightLevel (originalPolynomialWeight (P := P) d) n).map
     (Ideal.Quotient.mkₐ K (faceIdeal K hs)).toLinearMap
+theorem usualFaceWeightLevel_palomar_formula (d : ℕ) (n : ℤ) :
+    usualFaceWeightLevel K hs d n = (presentationWeightLevel (originalPolynomialWeight (P := P) d) n).map (Ideal.Quotient.mkₐ K (faceIdeal K hs)).toLinearMap := by sorry
 /-- Source theorem13.lean:9786. -/
 def usualBarycentricWeightLevel (d : ℕ) (n : ℤ) : Submodule K (BarycentricRing (P := P) K) :=
   (presentationWeightLevel (originalPolynomialWeight (P := P) d) n).map

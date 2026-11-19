@@ -618,6 +618,8 @@ variable (K : Type*) [CommRing K] (hs : IsSimplicialPoset P)
 def barycentricGlobalStandardBasis :
     Module.Basis (StandardFaceIndex P) K (BarycentricRing (P := P) K) :=
   Module.Basis.ofRepr (barycentricMonomialEquiv K)
+theorem barycentricGlobalStandardBasis_palomar_formula  :
+    barycentricGlobalStandardBasis (P := P) K = Module.Basis.ofRepr (barycentricMonomialEquiv K) := rfl
 
 @[simp] theorem barycentricGlobalStandardBasis_coordinates (a : StandardFaceIndex P) :
     barycentricMonomialEquiv K (barycentricGlobalStandardBasis K a) = Finsupp.single a 1 := by
@@ -738,6 +740,8 @@ def originalFaceWeightLevel (d : ℕ) (n : ℤ) : Submodule K (FaceRing K hs) :=
 
 def canonicalOriginalComparison : BarycentricRing (P := P) K ≃ₗ[K] FaceRing K hs :=
   canonicalBasisEquiv (barycentricGlobalStandardBasis K) (standardFaceBasis K hs)
+theorem canonicalOriginalComparison_palomar_formula  :
+    (canonicalOriginalComparison (P := P) K hs) = canonicalBasisEquiv (barycentricGlobalStandardBasis K) (standardFaceBasis K hs) := rfl
 
 set_option backward.isDefEq.respectTransparency false in
 theorem universalOriginalParameterComparison_hasWeightLeading (d : ℕ)
@@ -1074,6 +1078,8 @@ polynomials in the original presentation. -/
 def usualFaceDegreePiece (n : ℕ) : Submodule K (FaceRing K hs) :=
   (weightedHomogeneousSubmodule K (fun q : NonzeroFace P => faceRank q.val) n).map
     (Ideal.Quotient.mkₐ K (faceIdeal K hs)).toLinearMap
+theorem usualFaceDegreePiece_palomar_formula (n : ℕ) :
+    usualFaceDegreePiece K hs n = (weightedHomogeneousSubmodule K (fun q : NonzeroFace P => faceRank q.val) n).map (Ideal.Quotient.mkₐ K (faceIdeal K hs)).toLinearMap := rfl
 
 theorem usualFaceDegreePiece_eq (n : ℕ) :
     usualFaceDegreePiece K hs n =
@@ -1458,6 +1464,8 @@ theorem originalFace_monomial_weight (d : ℕ) (a : NonzeroFace P →₀ ℕ) (r
 def usualFaceWeightLevel (d : ℕ) (n : ℤ) : Submodule K (FaceRing K hs) :=
   (presentationWeightLevel (originalPolynomialWeight (P := P) d) n).map
     (Ideal.Quotient.mkₐ K (faceIdeal K hs)).toLinearMap
+theorem usualFaceWeightLevel_palomar_formula (d : ℕ) (n : ℤ) :
+    usualFaceWeightLevel K hs d n = (presentationWeightLevel (originalPolynomialWeight (P := P) d) n).map (Ideal.Quotient.mkₐ K (faceIdeal K hs)).toLinearMap := rfl
 
 def usualBarycentricWeightLevel (d : ℕ) (n : ℤ) : Submodule K (BarycentricRing (P := P) K) :=
   (presentationWeightLevel (originalPolynomialWeight (P := P) d) n).map

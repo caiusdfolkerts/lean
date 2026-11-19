@@ -756,6 +756,8 @@ abbrev BarycentricRing := FacePolynomial (P := P) K ⧸ barycentricIdeal (P := P
 
 def faceRingGenerator (hs : IsSimplicialPoset P) (p : P) : FaceRing K hs :=
   Ideal.Quotient.mk (faceIdeal K hs) (faceSymbol K p)
+theorem faceRingGenerator_palomar_formula (hs : IsSimplicialPoset P) (p : P) :
+    faceRingGenerator K hs p = Ideal.Quotient.mk (faceIdeal K hs) (faceSymbol K p) := rfl
 
 def barycentricGenerator (p : P) : BarycentricRing (P := P) K :=
   Ideal.Quotient.mk (barycentricIdeal K) (faceSymbol K p)
@@ -1209,6 +1211,8 @@ def faceRingEvaluation (hs : IsSimplicialPoset P) (r : P) :
     apply Ideal.span_le.mpr
     intro f hf
     exact faceEvaluation_relation K hs r hf)
+theorem faceRingEvaluation_palomar_formula (hs : IsSimplicialPoset P) (r : P) (f : FacePolynomial (P := P) K) :
+    faceRingEvaluation K hs r (Ideal.Quotient.mk (faceIdeal K hs) f) = faceEvaluation K r f := rfl
 
 @[simp] theorem faceRingEvaluation_generator (hs : IsSimplicialPoset P) (r p : P) :
     faceRingEvaluation K hs r (faceRingGenerator K hs p) = faceValue K r p :=
@@ -2052,6 +2056,8 @@ def booleanFaceInclusion (hs : IsSimplicialPoset P) (p : P) :
     BooleanFace (FaceVertex p) ↪ NonzeroFace P where
   toFun := palomarBooleanFaceInclusionValue hs p
   inj' := palomarBooleanFaceInclusionValue_injective hs p
+theorem booleanFaceInclusion_palomar_formula (hs : IsSimplicialPoset P) (p : P) (F : BooleanFace (FaceVertex p)) :
+    (booleanFaceInclusion hs p F).val = (subfaceOfVertexSet hs p F.val).val := rfl
 
 theorem booleanFaceInclusion_le (hs : IsSimplicialPoset P) (p : P)
     (F : BooleanFace (FaceVertex p)) : (booleanFaceInclusion hs p F).val ≤ p :=
@@ -2625,6 +2631,8 @@ abbrev coefficientDiagram : ModuleDiagram K P where
     · have hiq := hi.trans hrq
       simp [hi, hiq]
     · simp [hi]
+theorem coefficientDiagram_palomar_formula {p q : P} (h : q ≤ p) :
+    (coefficientDiagram K carrier).res h = coefficientRestriction K carrier h := rfl
 
 def coefficientSection : (I →₀ K) →ₗ[K] (coefficientDiagram K carrier).sections where
   toFun x := ⟨fun p => Finsupp.restrictDom K K {i | carrier i ≤ p} x, by
@@ -2646,6 +2654,8 @@ def coefficientSection : (I →₀ K) →ₗ[K] (coefficientDiagram K carrier).s
     apply Subtype.ext
     funext p
     exact map_smul (Finsupp.restrictDom K K {i | carrier i ≤ p}) c x
+theorem coefficientSection_palomar_formula (x : I →₀ K) (p : P) :
+    (coefficientSection K carrier x).val p = Finsupp.restrictDom K K {i | carrier i ≤ p} x := rfl
 
 @[simp] theorem coefficientSection_apply (x : I →₀ K) (p : P) (i : I) :
     ((coefficientSection K carrier x).val p).val i =
@@ -2964,6 +2974,8 @@ variable (K : Type*) [CommRing K] (hs : IsSimplicialPoset P)
 
 def faceRingMonomial (a : NonzeroFace P →₀ ℕ) : FaceRing K hs :=
   Ideal.Quotient.mk (faceIdeal K hs) (monomial a 1)
+theorem faceRingMonomial_palomar_formula (a : NonzeroFace P →₀ ℕ) :
+    faceRingMonomial K hs a = Ideal.Quotient.mk (faceIdeal K hs) (monomial a 1) := rfl
 
 theorem faceRingMonomial_add (a b : NonzeroFace P →₀ ℕ) :
     faceRingMonomial K hs (a + b) = faceRingMonomial K hs a * faceRingMonomial K hs b := by
@@ -4058,6 +4070,8 @@ def faceRingSection : FaceRing K hs →ₗ[K] (polynomialDiagram (P := P) K).sec
     apply Subtype.ext
     funext p
     exact map_smul (faceRingEvaluation K hs p) c f
+theorem faceRingSection_palomar_formula (f : FaceRing K hs) (p : P) :
+    (faceRingSection K hs f).val p = faceRingEvaluation K hs p f := rfl
 
 @[simp] theorem faceRingSection_apply (f : FaceRing K hs) (p : P) :
     (faceRingSection K hs f).val p = faceRingEvaluation K hs p f := rfl
@@ -4174,6 +4188,8 @@ def polynomialSectionCoordinates :
 
 def standardFaceCombination : (StandardFaceIndex P →₀ K) →ₗ[K] FaceRing K hs :=
   Finsupp.linearCombination K (fun a => faceRingMonomial K hs a.val)
+theorem standardFaceCombination_palomar_formula  :
+    standardFaceCombination (P := P) K hs = Finsupp.linearCombination K (fun a : StandardFaceIndex P => faceRingMonomial K hs a.val) := rfl
 
 theorem standardFaceCombination_surjective : Function.Surjective (standardFaceCombination K hs) := by
   rw [← LinearMap.range_eq_top, standardFaceCombination, Finsupp.range_linearCombination]

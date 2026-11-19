@@ -33,11 +33,39 @@
     "FourPapers.Universal.canonicalOriginalComparison_usualFiltered",
     "PalomarBarycentricAssociatedGrade.prescribedAssociatedGrade",
     "FourPapers.Universal.palomarPresentationWeightLevel_smul",
-    "FourPapers.Universal.mem_presentationWeightLevel_iff"
+    "FourPapers.Universal.mem_presentationWeightLevel_iff",
+    "FourPapers.Universal.canonicalOriginalComparison_palomar_formula",
+    "FourPapers.Universal.standardFaceCombination_palomar_formula",
+    "FourPapers.Universal.faceRingMonomial_palomar_formula",
+    "FourPapers.Universal.barycentricGlobalStandardBasis_palomar_formula",
+    "FourPapers.Universal.usualFaceWeightLevel_palomar_formula",
+    "FourPapers.Universal.usualFaceDegreePiece_palomar_formula",
+    "FourPapers.Universal.faceRingGenerator_palomar_formula",
+    "FourPapers.Universal.booleanFaceInclusion_palomar_formula",
+    "FourPapers.Universal.faceRingEvaluation_palomar_formula",
+    "FourPapers.Universal.faceRingSection_palomar_formula",
+    "FourPapers.Universal.coefficientSection_palomar_formula",
+    "FourPapers.Universal.coefficientDiagram_palomar_formula",
+    "FourPapers.Universal.standardFaceBasis_apply"
   ],
   "permitted_axioms": [
     "propext",
     "Quot.sound",
     "Classical.choice"
+  ],
+  "definition_names": [
+    "FourPapers.Universal.canonicalOriginalComparison",
+    "FourPapers.Universal.standardFaceCombination",
+    "FourPapers.Universal.faceRingMonomial",
+    "FourPapers.Universal.barycentricGlobalStandardBasis",
+    "FourPapers.Universal.usualFaceWeightLevel",
+    "FourPapers.Universal.usualFaceDegreePiece",
+    "FourPapers.Universal.faceRingGenerator",
+    "FourPapers.Universal.booleanFaceInclusion",
+    "FourPapers.Universal.faceRingEvaluation",
+    "FourPapers.Universal.faceRingSection",
+    "FourPapers.Universal.coefficientSection",
+    "FourPapers.Universal.coefficientDiagram",
+    "FourPapers.Universal.standardFaceBasis"
   ]
 }
