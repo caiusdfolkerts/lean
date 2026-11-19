@@ -1,5 +1,1 @@
-# Palomar submission: wishart
-
-Substantive source snapshot of [caiusdfolkerts/research](https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/wishart), revision `e0696fddcd3d10b5d6461e62e9b2f02c4195be37`.
-
-The complete selected development, paper, metadata, and Comparator configuration are in `wishart/`. This branch prepares a registry submission; it does not claim registry acceptance. See `wishart/formalization.yaml` for exact scope and provenance.
+Fallback-only genuine canonical matrix second-countability witness tested against BOTH actual missing-class contexts: finite dependent complex Hermitian products and singular Schur chart domain. Mathematical data/topology unchanged. No new paper claim. Do not install into current frozen full run; use only if measured later result warrants a common instance foundation. Not full preflight.
