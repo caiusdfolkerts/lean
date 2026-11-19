@@ -176,6 +176,8 @@ variable {V k : Type*} [Fintype V] [LinearOrder V] [CommRing k]
 /-- Literal CommAlg.Simplicial.boundary; source theorem12.lean:5608. -/ abbrev boundary : Ambient V k →ₗ[k] Ambient V k :=
   contractLeft (Q := (0 : QuadraticForm k (V → k)))
     (Fintype.linearCombination k (fun _ : V => (1 : k)))
+/-- Defining formula for the differential used in the Tor comparison. -/
+theorem boundary_palomar_formula  : boundary (V := V) (k := k) = contractLeft (Q := (0 : QuadraticForm k (V → k))) (Fintype.linearCombination k (fun _ : V => (1 : k))) := by sorry
 /-- Literal CommAlg.Simplicial.boundary_mem; source theorem12.lean:5696. -/ lemma boundary_mem {K : Finset V → Prop} (hK : Downward K) {i : ℕ} {z : Ambient V k} (hz : z ∈ Chains K (i + 1)) : boundary z ∈ Chains K i := by sorry
 end CommAlg.Simplicial
 namespace FourPapers.Universal
@@ -223,7 +225,11 @@ universe u v
 open CategoryTheory Category Limits Module ExteriorAlgebra
 variable {R : Type u} [CommRing R] {M : Type v} [AddCommGroup M] [Module R M] (φ : M →ₗ[R] R)
 /-- Literal koszulComplex.dAlternating; source theorem12.lean:720. -/ noncomputable def koszulComplex.dAlternating (n : ℕ) : M [⋀^Fin (n + 1)]→ₗ[R] ⋀[R]^n M := AlternatingMap.alternatizeUncurryFin (φ.smulRight (exteriorPower.ιMulti R n))
+/-- Defining formula for the differential used in the Tor comparison. -/
+theorem koszulComplex.dAlternating_palomar_formula (n : ℕ) : koszulComplex.dAlternating φ n = AlternatingMap.alternatizeUncurryFin (φ.smulRight (exteriorPower.ιMulti R n)) := by sorry
 /-- Literal koszulComplex.d; source theorem12.lean:734. -/ noncomputable def koszulComplex.d (n : ℕ) : ⋀[R]^(n + 1) M →ₗ[R] ⋀[R]^n M := exteriorPower.alternatingMapLinearEquiv (koszulComplex.dAlternating φ n)
+/-- Defining formula for the differential used in the Tor comparison. -/
+theorem koszulComplex.d_palomar_formula (n : ℕ) : koszulComplex.d φ n = exteriorPower.alternatingMapLinearEquiv (koszulComplex.dAlternating φ n) := by sorry
 /-- Literal koszulComplex.d_comp_eq_zero; source theorem12.lean:737. -/ lemma koszulComplex.d_comp_eq_zero (n : ℕ) : koszulComplex.d φ n ∘ₗ koszulComplex.d φ (n + 1) = 0 := by sorry
 /-- Literal koszulComplex; source theorem12.lean:753. -/ noncomputable def koszulComplex : HomologicalComplex (ModuleCat R) PalomarBarycentricTor.naturalDown :=
   ChainComplex.of (fun n ↦ ModuleCat.of R (⋀[R]^n M))
@@ -245,6 +251,8 @@ variable {R : Type u} {V : Type} [CommRing R] [Fintype V] [LinearOrder V]
     ((familyCoefficientComplex.{u} x M).d (i + 1) i).hom
   (coefficientCoordinates.{u} x M i).toLinearMap.comp
     (δ.comp (coefficientCoordinates.{u} x M (i + 1)).symm.toLinearMap)
+/-- Defining formula for the differential used in the Tor comparison. -/
+theorem coordinateDifferential_palomar_formula (x : V → R) (M : ModuleCat.{u} R) (i : ℕ) : coordinateDifferential x M i = (coefficientCoordinates.{u} x M i).toLinearMap.comp (((familyCoefficientComplex.{u} x M).d (i + 1) i).hom.comp (coefficientCoordinates.{u} x M (i + 1)).symm.toLinearMap) := by sorry
 end CommAlg.Koszul
 namespace CommAlg.Koszul
 set_option backward.isDefEq.respectTransparency false

@@ -45,10 +45,18 @@
     "FourPapers.Universal.palomarRankColorBound",
     "FourPapers.Universal.palomarRankFaceDownward",
     "FourPapers.Universal.palomarRankColorProper",
-    "FourPapers.Universal.augmentedCochainComplex_formula"
+    "FourPapers.Universal.augmentedCochainComplex_formula",
+    "CommAlg.Simplicial.boundary_palomar_formula",
+    "koszulComplex.dAlternating_palomar_formula",
+    "koszulComplex.d_palomar_formula",
+    "CommAlg.Koszul.coordinateDifferential_palomar_formula"
   ],
   "definition_names": [
-    "FourPapers.Universal.augmentedCochainComplex"
+    "FourPapers.Universal.augmentedCochainComplex",
+    "CommAlg.Simplicial.boundary",
+    "koszulComplex.dAlternating",
+    "koszulComplex.d",
+    "CommAlg.Koszul.coordinateDifferential"
   ],
   "permitted_axioms": [
     "propext",

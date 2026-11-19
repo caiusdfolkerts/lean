@@ -735,6 +735,8 @@ variable {R : Type u} [CommRing R] {M : Type v} [AddCommGroup M] [Module R M] (�
 noncomputable def koszulComplex.dAlternating (n : ℕ) :
     M [⋀^Fin (n + 1)]→ₗ[R] ⋀[R]^n M :=
   AlternatingMap.alternatizeUncurryFin (φ.smulRight (exteriorPower.ιMulti R n))
+/-- Defining formula for the differential used in the Tor comparison. -/
+theorem koszulComplex.dAlternating_palomar_formula (n : ℕ) : koszulComplex.dAlternating φ n = AlternatingMap.alternatizeUncurryFin (φ.smulRight (exteriorPower.ιMulti R n)) := rfl
 
 lemma koszulComplex.dAlternating_apply (n : ℕ) (x : Fin (n + 1) → M) :
     koszulComplex.dAlternating φ n x =
@@ -748,6 +750,8 @@ lemma koszulComplex.dAlternating_apply (n : ℕ) (x : Fin (n + 1) → M) :
 /-- The differential for Koszul complex. -/
 noncomputable def koszulComplex.d (n : ℕ) : ⋀[R]^(n + 1) M →ₗ[R] ⋀[R]^n M :=
   exteriorPower.alternatingMapLinearEquiv (koszulComplex.dAlternating φ n)
+/-- Defining formula for the differential used in the Tor comparison. -/
+theorem koszulComplex.d_palomar_formula (n : ℕ) : koszulComplex.d φ n = exteriorPower.alternatingMapLinearEquiv (koszulComplex.dAlternating φ n) := rfl
 
 lemma koszulComplex.d_comp_eq_zero (n : ℕ) :
     koszulComplex.d φ n ∘ₗ koszulComplex.d φ (n + 1) = 0 := by
@@ -5061,6 +5065,8 @@ def coordinateDifferential (x : V → R) (M : ModuleCat.{u} R) (i : ℕ) :
     ((familyCoefficientComplex.{u} x M).d (i + 1) i).hom
   (coefficientCoordinates.{u} x M i).toLinearMap.comp
     (δ.comp (coefficientCoordinates.{u} x M (i + 1)).symm.toLinearMap)
+/-- Defining formula for the differential used in the Tor comparison. -/
+theorem coordinateDifferential_palomar_formula (x : V → R) (M : ModuleCat.{u} R) (i : ℕ) : coordinateDifferential x M i = (coefficientCoordinates.{u} x M i).toLinearMap.comp (((familyCoefficientComplex.{u} x M).d (i + 1) i).hom.comp (coefficientCoordinates.{u} x M (i + 1)).symm.toLinearMap) := rfl
 
 lemma coordinateDifferential_comp (x : V → R) (M : ModuleCat.{u} R) (i : ℕ) :
     coordinateDifferential x M i ∘ₗ coordinateDifferential x M (i + 1) = 0 := by
@@ -5623,6 +5629,8 @@ lemma downward_link {K : Finset V → Prop} (hK : Downward K) (e : V) :
 abbrev boundary : Ambient V k →ₗ[k] Ambient V k :=
   contractLeft (Q := (0 : QuadraticForm k (V → k)))
     (Fintype.linearCombination k (fun _ : V => (1 : k)))
+/-- Defining formula for the differential used in the Tor comparison. -/
+theorem boundary_palomar_formula  : boundary (V := V) (k := k) = contractLeft (Q := (0 : QuadraticForm k (V → k))) (Fintype.linearCombination k (fun _ : V => (1 : k))) := rfl
 
 abbrev contraction (e : V) : Ambient V k →ₗ[k] Ambient V k :=
   contractLeft (Q := (0 : QuadraticForm k (V → k))) ((Pi.basisFun k V).coord e)
