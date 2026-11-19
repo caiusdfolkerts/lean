@@ -10,6 +10,8 @@ open MvPolynomial Exterior
 variable {F : Type*} [Field F] [CharZero F] {n : ℕ}
 attribute [local instance] theoremEightOneOrder
 -- PALOMAR_CONTEXT_ORIGIN 55724
+set_option maxHeartbeats 2000000 in
+set_option maxRecDepth 8192 in
 theorem palomarColorGradedBlocks (hn : 0<n) :
     let d := data (F := F) hn
     ∃ E : StrictMultiplicityAssociatedGraded d ≃ₐ[F] StrictMultiplicityInitialQuotient d,
