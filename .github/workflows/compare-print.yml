@@ -1,0 +1,70 @@
+name: Measure repeated axiom reporting on graph proof compilation
+on:
+  push:
+    branches: ['timing/nonrational-axiom-print-comparison']
+permissions:
+  contents: read
+jobs:
+  measure:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - name: Prepare the pinned compiler and external dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$(dirname "$(find . -mindepth 2 -maxdepth 2 -name comparator.json -print -quit)")"
+          echo "project_dir=$PWD" >> "$GITHUB_ENV"
+          curl -fsSL --retry 3 https://github.com/leanprover/elan/releases/download/v4.2.3/elan-x86_64-unknown-linux-gnu.tar.gz -o "$RUNNER_TEMP/elan.tar.gz"
+          echo "df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2  $RUNNER_TEMP/elan.tar.gz" | sha256sum -c -
+          tar -xzf "$RUNNER_TEMP/elan.tar.gz" -C "$RUNNER_TEMP"
+          "$RUNNER_TEMP/elan-init" -y --no-modify-path --default-toolchain none
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          elan toolchain install "$(cat lean-toolchain)"
+          python3 - <<'PY'
+          import pathlib, re, subprocess
+          names=set()
+          for p in pathlib.Path('.').rglob('*.lean'):
+              names.update(re.findall(r'^(?:public\s+)?(?:meta\s+)?import\s+(?:all\s+)?(Mathlib(?:\.[\w]+)*)\s*$',p.read_text(),re.M))
+          assert names
+          subprocess.run(['lake','exe','cache','get',*sorted(names)],check=True)
+          PY
+          test -z "$(find .lake/build -name '*.olean' -print -quit 2>/dev/null || true)"
+
+      - name: Compare fresh graph proof closures and audit their public results
+        run: |
+          set -euo pipefail
+          cd "$project_dir"
+          mkdir -p "$RUNNER_TEMP/measurement" "$RUNNER_TEMP/candidate/.lake"
+          rsync -a --exclude=.lake ./ "$RUNNER_TEMP/candidate/"
+          ln -s "$PWD/.lake/packages" "$RUNNER_TEMP/candidate/.lake/packages"
+          python3 "$GITHUB_WORKSPACE/diagnostic/defer_print.py" "$RUNNER_TEMP/candidate"
+          for version in baseline candidate; do
+            if [[ "$version" == candidate ]]; then cd "$RUNNER_TEMP/candidate"; fi
+            target=GraphInputsRow29Part00003Cases
+            out="$RUNNER_TEMP/measurement"
+            /usr/bin/time -v -o "$out/time-$version.txt" lake build "+$target" > "$RUNNER_TEMP/$version.log" 2>&1 || { tail -60 "$RUNNER_TEMP/$version.log"; exit 1; }
+            python3 - <<'PYAUDIT' > AuditMatched.lean
+          import re
+          from pathlib import Path
+          name="GraphInputsRow29Part00003"
+          source=Path(name+"Cases.lean").read_text()
+          indices=sorted(set(re.findall(r"^certified_graph_case (record\d+)",source,re.M))|set(re.findall(r"^theorem (record\d+)_result\s*:",source,re.M)))
+          assert indices
+          print("import "+name+"Cases")
+          for index in indices:
+              decl="Papers.RationalityTen.CompactReplay."+name+"."+index+"_result"
+              print("#check "+decl+"\n#print axioms "+decl)
+          PYAUDIT
+            lake env lean AuditMatched.lean > "$out/audit-$version.txt"
+          done
+          cmp "$out/audit-baseline.txt" "$out/audit-candidate.txt"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: same-graph-closure
+          path: ${{ runner.temp }}/measurement
