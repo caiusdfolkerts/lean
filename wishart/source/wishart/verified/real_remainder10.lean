@@ -1065,8 +1065,8 @@ theorem rankPairThreshold_iff_largest_second {d : ℕ} (hd : 2 ≤ d)
 
 def orderedPairRankThreshold (rank : ι → ℕ) (A : Finset ι) (p : ℕ) (n : ℝ) : Prop :=
   ∀ h : 2 ≤ Fintype.card A,
-    min ((descendingRanks rank A ⟨0, WishartSharedProof.zero_lt_of_two_le h⟩ : ℝ) +
-      descendingRanks rank A ⟨1, WishartSharedProof.one_lt_of_two_le h⟩) ((p : ℝ) + 1) ≤ n
+    min ((descendingRanks rank A (WishartSharedProof.firstOfTwo h) : ℝ) +
+      descendingRanks rank A (WishartSharedProof.secondOfTwo h)) ((p : ℝ) + 1) ≤ n
 
 theorem orderedPairRankThreshold_iff (rank : ι → ℕ) (A : Finset ι) (p : ℕ) (n : ℝ) :
     orderedPairRankThreshold rank A p n ↔ rankPairThreshold rank A p n := by

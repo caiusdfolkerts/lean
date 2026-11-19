@@ -87,6 +87,14 @@ universe u
     IsScalarTower ℝ ℝ (Matrix n n ℝ):=by infer_instance
 /-- The source's real-scalar tower on complex matrices. -/ @[instance 2000] theorem complexMatrixSelfScalarTower (n:Type u) :
     IsScalarTower ℝ ℝ (Matrix n n ℂ):=by infer_instance
+/-- Position 1 in a list of at least 3 ranked factors. -/
+def firstOfThree {n : ℕ} (h : 3 ≤ n) : Fin n := ⟨0, zero_lt_of_three_le h⟩
+/-- Position 3 in a list of at least 3 ranked factors. -/
+def thirdOfThree {n : ℕ} (h : 3 ≤ n) : Fin n := ⟨2, two_lt_of_three_le h⟩
+/-- Position 1 in a list of at least 2 ranked factors. -/
+def firstOfTwo {n : ℕ} (h : 2 ≤ n) : Fin n := ⟨0, zero_lt_of_two_le h⟩
+/-- Position 2 in a list of at least 2 ranked factors. -/
+def secondOfTwo {n : ℕ} (h : 2 ≤ n) : Fin n := ⟨1, one_lt_of_two_le h⟩
 @[instance 2200] theorem finRealMatrixStarModule (p : ℕ) :
     StarModule ℝ (Matrix (Fin p) (Fin p) ℝ) := by infer_instance
 @[instance 2200] theorem finRealMatrixScalarComm (p : ℕ) :
@@ -558,8 +566,8 @@ namespace WishartVerification.MomentAssembly section open scoped Classical varia
 /-- Literal descendingRanks. -/ def descendingRanks (rank:ι → ℕ) (A:Finset ι):Fin (Fintype.card A) → ℕ:=fun i => rank (descendingRankEquiv rank A i)
 /-- The condition is vacuous when at most two active proper factors remain; otherwise it reads precisely `n ≥ min(k_(1)+k_(3), p+1)` in descending order. -/ def orderedRankThreshold (rank:ι → ℕ) (A:Finset ι) (p:ℕ) (n:ℝ):Prop :=
   ∀ h:3 ≤ Fintype.card A,
-    min ((descendingRanks rank A ⟨0,WishartSharedProof.zero_lt_of_three_le h⟩:ℝ) +
-      descendingRanks rank A ⟨2,WishartSharedProof.two_lt_of_three_le h⟩) ((p:ℝ) + 1) ≤ n
+    min ((descendingRanks rank A (WishartSharedProof.firstOfThree h):ℝ) +
+      descendingRanks rank A (WishartSharedProof.thirdOfThree h)) ((p:ℝ) + 1) ≤ n
 end end WishartVerification.MomentAssembly
 namespace Wishart section open scoped Classical BigOperators ENNReal Matrix MatrixOrder Matrix.Norms.Operator
 /-- Literal GeometricCompressionFamily. -/ structure GeometricCompressionFamily (p:ℕ) (ι:Type*) where
@@ -624,7 +632,7 @@ end end Wishart
 namespace WishartVerification.MomentAssembly section open scoped Classical ENNReal BigOperators variable {ι:Type*} [DecidableEq ι]
 /-- Literal orderedGaugeRankThreshold. -/
 def orderedGaugeRankThreshold (rank:ι → ℕ) (A:Finset ι) (n:ℝ):Prop :=
-  ∀ h:3 ≤ Fintype.card A,(descendingRanks rank A ⟨2,WishartSharedProof.two_lt_of_three_le h⟩:ℝ) + 1 ≤ n
+  ∀ h:3 ≤ Fintype.card A,(descendingRanks rank A (WishartSharedProof.thirdOfThree h):ℝ) + 1 ≤ n
 end end WishartVerification.MomentAssembly
 namespace Wishart section open scoped Classical BigOperators ENNReal Matrix MatrixOrder Matrix.Norms.Operator
 /-- Literal GeometricGaugeFamily. -/
@@ -766,8 +774,8 @@ namespace WishartVerification.MomentAssembly section open scoped Classical ENNRe
 /-- Literal orderedPairRankThreshold. -/
 def orderedPairRankThreshold (rank:ι → ℕ) (A:Finset ι) (p:ℕ) (n:ℝ):Prop :=
   ∀ h:2 ≤ Fintype.card A,
-    min ((descendingRanks rank A ⟨0,WishartSharedProof.zero_lt_of_two_le h⟩:ℝ) +
-      descendingRanks rank A ⟨1,WishartSharedProof.one_lt_of_two_le h⟩) ((p:ℝ) + 1) ≤ n
+    min ((descendingRanks rank A (WishartSharedProof.firstOfTwo h):ℝ) +
+      descendingRanks rank A (WishartSharedProof.secondOfTwo h)) ((p:ℝ) + 1) ≤ n
 end end WishartVerification.MomentAssembly
 namespace Wishart section open scoped Classical BigOperators ENNReal Matrix MatrixOrder Matrix.Norms.Operator
 /-- Literal LogSpectralCompressionFamily. -/
@@ -803,8 +811,8 @@ namespace WishartVerification.MomentAssembly section open scoped Classical ENNRe
 /-- The condition is vacuous when at most two active proper factors remain; otherwise it reads precisely `n ≥ k_(1)+k_(3)` in descending order. -/
 def gramOrderedRankThreshold (rank:ι → ℕ) (A:Finset ι) (n:ℕ):Prop :=
   ∀ h:3 ≤ Fintype.card A,
-    descendingRanks rank A ⟨0,WishartSharedProof.zero_lt_of_three_le h⟩ +
-      descendingRanks rank A ⟨2,WishartSharedProof.two_lt_of_three_le h⟩ ≤ n
+    descendingRanks rank A (WishartSharedProof.firstOfThree h) +
+      descendingRanks rank A (WishartSharedProof.thirdOfThree h) ≤ n
 end end WishartVerification.MomentAssembly
 namespace Wishart section open scoped Classical BigOperators ENNReal Matrix MatrixOrder Matrix.Norms.Operator
 /-- Literal GramGeometricCompressionFamily. -/

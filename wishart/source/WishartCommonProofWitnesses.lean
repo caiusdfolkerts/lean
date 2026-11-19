@@ -118,6 +118,14 @@ theorem realIdentitySelfAdjoint (p : ℕ) : IsSelfAdjoint (1 : Matrix (Fin p) (F
 /-- The source's real-scalar tower on complex matrices. -/
 @[instance 2000] theorem complexMatrixSelfScalarTower (n : Type u) :
     IsScalarTower ℝ ℝ (Matrix n n ℂ) := by infer_instance
+/-- Position 1 in a list of at least 3 ranked factors. -/
+def firstOfThree {n : ℕ} (h : 3 ≤ n) : Fin n := ⟨0, zero_lt_of_three_le h⟩
+/-- Position 3 in a list of at least 3 ranked factors. -/
+def thirdOfThree {n : ℕ} (h : 3 ≤ n) : Fin n := ⟨2, two_lt_of_three_le h⟩
+/-- Position 1 in a list of at least 2 ranked factors. -/
+def firstOfTwo {n : ℕ} (h : 2 ≤ n) : Fin n := ⟨0, zero_lt_of_two_le h⟩
+/-- Position 2 in a list of at least 2 ranked factors. -/
+def secondOfTwo {n : ℕ} (h : 2 ≤ n) : Fin n := ⟨1, one_lt_of_two_le h⟩
 @[instance 2200] theorem finRealMatrixStarModule (p : ℕ) :
     StarModule ℝ (Matrix (Fin p) (Fin p) ℝ) := by infer_instance
 @[instance 2200] theorem finRealMatrixScalarComm (p : ℕ) :
