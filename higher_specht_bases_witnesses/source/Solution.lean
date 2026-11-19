@@ -86,7 +86,7 @@ theorem finite_harmonics_literal_witnesses
   refine ⟨T, W, ?_, ?_, ?_⟩
   · intro i
     let f := Classical.choose (hcopy i).1
-    let E := f.equivOfRange (Classical.choose_spec (hcopy i).1).1 rfl
+    let E := f.equivOfRange (Classical.choose_spec (hcopy i).1).1 (P := W i) rfl
     letI := complexYoungIdealRepresentation_isIrreducible i.part
     exact ⟨hW i, ⟨E⟩, irreducible_of_representation_equiv E,
       by simpa only [hW] using (hcopy i).2⟩
@@ -122,7 +122,7 @@ theorem untruncated_harmonics_literal_witnesses
   refine ⟨T, W, ?_, ?_, hfinite, ?_⟩
   · intro i
     let f := Classical.choose (hcopy i).1
-    let E := f.equivOfRange (Classical.choose_spec (hcopy i).1).1 rfl
+    let E := f.equivOfRange (Classical.choose_spec (hcopy i).1).1 (P := W i) rfl
     letI := complexYoungIdealRepresentation_isIrreducible i.part
     exact ⟨by rw [literalUntruncatedHarmonicVector_eq]; exact hW i, ⟨E⟩, irreducible_of_representation_equiv E,
       by simpa only [hW] using (hcopy i).2⟩

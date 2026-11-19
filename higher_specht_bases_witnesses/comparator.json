@@ -34,7 +34,9 @@
     "HigherSpecht.finite_harmonics_literal_witnesses",
     "HigherSpecht.untruncated_harmonics_literal_witnesses",
     "HigherSpecht.descentNumber_lt_card",
-    "HigherSpecht.springer_literal_column_witness"
+    "HigherSpecht.springer_literal_column_witness",
+    "HigherSpecht.polynomialRename_one",
+    "HigherSpecht.polynomialRename_mul"
   ],
   "permitted_axioms": [
     "propext",
