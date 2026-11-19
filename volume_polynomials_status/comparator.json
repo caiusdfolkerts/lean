@@ -1,0 +1,30 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "PalomarVolumePolynomials.semialgebraicity_iff",
+    "PalomarVolumePolynomials.polytope_locus_not_semialgebraic",
+    "PalomarVolumePolynomials.shape_forcing",
+    "PalomarVolumePolynomials.countable_characterization",
+    "PalomarVolumePolynomials.nonrealizable_strict_inequality",
+    "PalomarVolumePolynomials.finite_rational_certificate",
+    "PalomarVolumePolynomials.rational_rejection_terminates",
+    "PalomarVolumePolynomials.rational_polytope_reconstruction",
+    "VolumePolynomials.positive_nhds_le_cofinite",
+    "VolumePolynomials.polynomial_evaluation_germ_isUnit",
+    "VolumePolynomials.RationalHulls.realPoint_zero",
+    "VolumePolynomials.RationalHulls.vertices_finite",
+    "VolumePolynomials.ShapeConditions.palomarBodyAIndexBound",
+    "VolumePolynomials.ShapeConditions.palomarAssignmentIndexBound"
+  ],
+  "definition_names": [
+    "VolumePolynomials.Main.volumeInequalityMatrix",
+    "VolumePolynomials.Main.volumeInequalityPolynomial",
+    "VolumePolynomials.RationalReconstruction.reconstruct"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}
