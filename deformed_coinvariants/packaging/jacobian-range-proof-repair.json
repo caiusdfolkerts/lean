@@ -1,0 +1,8 @@
+{
+  "parent_commit": "863058c15978b13625b25e823f168ddf9b41cda0",
+  "path": "packages/deformed_coinvariants/source/PaperVerification/JacobianDefect.lean",
+  "before_sha256": "77b781d05924ffd42682b348cfc2643604298bfc314ca1084cc27e2afd3c78d3",
+  "after_sha256": "275d5f46e017e2e58b017d79f67fee3c8329910c959453474a9642c4b1ce0a4c",
+  "change": "Unfold exact explicitMap in two downstream proof scripts; all declarations, data, selection, and hypotheses unchanged.",
+  "full_preflight_required": true
+}

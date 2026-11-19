@@ -183,7 +183,7 @@ theorem defectToHit_kernel (F : P) (t : K) :
 
 theorem defectToHit_range (F : P) (t : K) :
     LinearMap.range (defectToHit F t) = defectImage F t := by
-  rw [defectToHit, LinearMap.range_comp, Submodule.range_subtype, defectImage]
+  rw [defectToHit, LinearMap.range_comp, Submodule.range_subtype, defectImage, PalomarDeformedSupport.explicitMap]
 
 def defectQuotientEquivImage (F : P) (t : K) :
     DefectQuotient F t ≃ₗ[K] defectImage F t :=
@@ -201,7 +201,7 @@ theorem potentialToHitQuotient_range [CharZero K]
   change LinearMap.range (coefficientMap F) =
     LinearMap.range (aggregateOperator F t) ⊔ LinearMap.range (LinearMap.mulLeft K F) at hJ
   rw [coefficientMap_range, aggregate_range_eq_hit] at hJ
-  rw [potentialToHitQuotient, LinearMap.range_comp, defectImage, hJ,
+  rw [potentialToHitQuotient, LinearMap.range_comp, defectImage, PalomarDeformedSupport.explicitMap, hJ,
     Submodule.map_sup, Submodule.mkQ_map_self, bot_sup_eq]
 
 theorem potentialToHitQuotient_kernel [CharZero K]
