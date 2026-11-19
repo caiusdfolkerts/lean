@@ -14,8 +14,8 @@ in all powers*. The variables are exactly the row/column variables and one
 variable per lattice element. The target is the actual polynomial ring with
 one homogenizing variable; sorting and predecessor relations give a monic
 Gröbner basis, generate the kernel, and have the displayed initial ideal.
-This is the Rees-presentation group. Betti preservation and integral derived
-homology decompositions remain separate outstanding groups for this paper.
+The selected entry also includes the actual ordinary and fine Koszul
+homology comparisons, all four Theorem4.3 clauses, and full Corollaries5.1/5.2.
 -/
 
 @[expose] public noncomputable section
@@ -1713,7 +1713,7 @@ theorem all_powers_signed_fine_betti {k : Type u} [Field k] {E : Finset (FiniteT
 end PalomarSublattice
 
 /- Additional Theorem4.3 ideal-identity and Betti-propagation interfaces.
-Unelaborated separate source work; full homology-generation clause remains distinct. -/
+The full homology-generation clause is stated separately below. -/
 namespace PalomarSublattice
 open Classical MvPolynomial
 universe u
@@ -2545,7 +2545,7 @@ private theorem ordinaryPiece_map (B : Family V) (q : ℤ) (p : ℕ) :
       (quotientChains_repr (k := k) B p x t) ▸ ht
     have hd := (ordinaryCoefficientPiece_mem_iff B _ _).mp hs t.2 hc
     rw [quotientTotalDegree]
-    omega
+    exact (eq_sub_iff_add_eq).mp hd
   · intro y hy
     obtain ⟨x,rfl⟩ := (quotientChainsEquiv (k := k) B p).surjective y
     refine ⟨x,?_,rfl⟩
@@ -2559,7 +2559,8 @@ private theorem ordinaryPiece_map (B : Family V) (q : ℤ) (p : ℕ) :
     rw [integerOrdinaryQuotientPiece_eq] at hy
     have hd := (Grading.mem_piece _ _ _ _).mp hy ⟨s,b⟩ hc
     rw [quotientTotalDegree] at hd
-    omega
+    change (b.val.degree : ℤ) + (p : ℤ) = q at hd
+    exact (eq_sub_iff_add_eq).mpr hd
 private def ordinaryPieceEquiv (B : Family V) (q : ℤ) (p : ℕ) :
     OrdinaryQuotientKoszul.piece (monomialIdeal k B) q p ≃ₗ[k]
       integerOrdinaryQuotientPiece (k := k) B q p :=
@@ -2585,6 +2586,16 @@ private theorem ordinaryPrevious_val (B : Family V) (q : ℤ) (p : ℕ)
     have h := LinearMap.congr_fun (quotientDifferential_comm (k := k) B p)
       ((quotientChainsEquiv (k := k) B (p+1)).symm x.val)
     simpa only [LinearMap.comp_apply,LinearEquiv.coe_coe,LinearEquiv.apply_symm_apply] using h.symm
+/-- Fix the canonical source kernel structures explicitly. The actual
+integer quotient differential and its kernel remain unchanged. -/
+local instance (priority := 2100) ordinarySourceKernelGroup (B : Family V) (q : ℤ) (p : ℕ) :
+    AddCommGroup (LinearMap.ker (integerOrdinaryQuotientPrevious (k := k) B q p)) :=
+  Submodule.addCommGroup (R := k)
+    (M := integerOrdinaryQuotientPiece (k := k) B q p) _
+local instance (priority := 2100) ordinarySourceKernelModule (B : Family V) (q : ℤ) (p : ℕ) :
+    Module k (LinearMap.ker (integerOrdinaryQuotientPrevious (k := k) B q p)) :=
+  Submodule.module (R := k)
+    (M := integerOrdinaryQuotientPiece (k := k) B q p) _
 private def ordinaryCyclesEquiv (B : Family V) (q : ℤ) (p : ℕ) :
     OrdinaryQuotientKoszul.cycles (monomialIdeal k B) q p ≃ₗ[k]
       LinearMap.ker (integerOrdinaryQuotientPrevious (k := k) B q p) where
@@ -2742,12 +2753,12 @@ private theorem bettiBinomialCoefficient_eq_source (E : Finset (FiniteTuple n))
   apply Fintype.sum_equiv (supportEquiv n E).symm
   intro s
   by_cases hc : s.val.card = r
-  · simp only [supportEquiv,Equiv.refl_apply,if_pos hc]
+  · simp only [supportEquiv,Equiv.refl_symm,Equiv.refl_apply,if_pos hc]
     rw [FourPapers.Sublattice.integerStrictSupportBettiCoefficient,
       ← FineKoszul.ordinaryQuotientBetti_eq_source,
       supportCoefficientIdeal_eq_source]
     rfl
-  · simp only [supportEquiv,Equiv.refl_apply,if_neg hc]
+  · simp only [supportEquiv,Equiv.refl_symm,Equiv.refl_apply,if_neg hc]
 /-- Corollary5.1 through actual integer ordinary ideal Tor and actual
 integer ordinary quotient Koszul homology, preserving every q in Z. -/
 theorem corollary51_integer {E : Finset (FiniteTuple n)} (hE : finiteLatticeClosed n E)
@@ -2755,7 +2766,10 @@ theorem corollary51_integer {E : Finset (FiniteTuple n)} (hE : finiteLatticeClos
     Koszul.betti ((sublatticeIdeal n (k := k) E)^m) p ((m*d : ℕ)+q) =
       ∑ s : StrictSupport n E, (m-1).choose (s.val.card-1) *
         OrdinaryQuotientKoszul.betti (supportCoefficientIdeal n (k := k) s) q p := by
-  let o : MonomialOrder (FiniteVariable.{u} n) := MonomialOrder.degLex
+  let o : MonomialOrder (FiniteVariable.{u} n) :=
+    @MonomialOrder.degLex (FiniteVariable.{u} n) (finiteVariableLinearOrder n)
+      (@Finite.to_wellFoundedGT (FiniteVariable.{u} n) (inferInstance)
+        (finiteVariableLinearOrder n).toPreorder)
   rw [transfer_monomial_bridge n o E m p ((m*d : ℕ)+q)]
   rw [FourPapers.Sublattice.corollary51_integer o hE m hm p q]
   apply Fintype.sum_equiv (supportEquiv n E)
@@ -2764,21 +2778,24 @@ theorem corollary51_integer {E : Finset (FiniteTuple n)} (hE : finiteLatticeClos
     supportCoefficientIdeal_eq_source]
   rfl
 /-- The printed grouped coefficient expansion, with actual coefficient
-quotients and every integer normalized degree. Further polynomial, difference,
-projective-dimension and depth clauses of Corollary5.2 remain separate here. -/
+quotients and every integer normalized degree. The polynomial, difference,
+projective-dimension and depth clauses of Corollary5.2 follow below. -/
 theorem corollary52_integer_grouped_expansion {E : Finset (FiniteTuple n)}
     (hE : finiteLatticeClosed n E) (q : ℤ) (p m : ℕ) (hm : 0 < m) :
     Koszul.betti ((sublatticeIdeal n (k := k) E)^m) p ((m*d : ℕ)+q) =
       ∑ r ∈ Finset.Icc 1 E.card,
         bettiBinomialCoefficient n (k := k) E q p r * (m-1).choose (r-1) := by
-  let o : MonomialOrder (FiniteVariable.{u} n) := MonomialOrder.degLex
+  let o : MonomialOrder (FiniteVariable.{u} n) :=
+    @MonomialOrder.degLex (FiniteVariable.{u} n) (finiteVariableLinearOrder n)
+      (@Finite.to_wellFoundedGT (FiniteVariable.{u} n) (inferInstance)
+        (finiteVariableLinearOrder n).toPreorder)
   rw [transfer_monomial_bridge n o E m p ((m*d : ℕ)+q)]
   simp_rw [bettiBinomialCoefficient_eq_source]
   exact FourPapers.Sublattice.corollary52_integer_grouped_expansion o hE q p m hm
 end PalomarSublattice
 
-/- Remaining literal clauses of Corollaries5.1 and5.2. Unelaborated source
-work only; this does not modify any running or frozen entry. -/
+/- Remaining literal clauses of Corollaries5.1 and5.2. These preserve the full
+original integer, categorical dimension and Ext-depth assertions. -/
 namespace PalomarSublattice
 open Classical MvPolynomial CategoryTheory
 open scoped BigOperators
@@ -2810,7 +2827,7 @@ def quotientPowerDepth (I : Ideal (MvPolynomial (FiniteVariable.{u} n) k)) (m : 
 end PalomarSublattice
 
 /- Actual complete Corollary5.2 and general-J transfer proof drafts. These
-require paper_results.numerical_transfer and remain unelaborated source work. -/
+use paper_results.numerical_transfer and its original proved statements. -/
 namespace PalomarSublattice
 open Classical MvPolynomial CommAlg.Polymatroid
 open FourPapers.Sublattice
@@ -2848,7 +2865,10 @@ theorem corollary52_full {E : Finset (FiniteTuple n)} (hE : finiteLatticeClosed 
     (∀ m N : ℕ, 0 < m → m ≤ N →
       quotientPowerDepth n (sublatticeIdeal n (k := k) E) N ≤
         quotientPowerDepth n (sublatticeIdeal n (k := k) E) m) := by
-  let o : MonomialOrder (FiniteVariable.{u} n) := MonomialOrder.degLex
+  let o : MonomialOrder (FiniteVariable.{u} n) :=
+    @MonomialOrder.degLex (FiniteVariable.{u} n) (finiteVariableLinearOrder n)
+      (@Finite.to_wellFoundedGT (FiniteVariable.{u} n) (inferInstance)
+        (finiteVariableLinearOrder n).toPreorder)
   refine ⟨?_,?_,?_,?_⟩
   · intro q p m hm
     rw [normalizedBettiPolynomial_eq_source,
@@ -2858,13 +2878,13 @@ theorem corollary52_full {E : Finset (FiniteTuple n)} (hE : finiteLatticeClosed 
     rw [normalizedBettiSequence_eq_source n o E q p]
     exact FourPapers.Sublattice.corollary52_integer_forward_differences o hE q p j t
   · intro m N hm hMN
-    simpa only [powerProjectiveDimension,sublatticeIdeal_eq_source] using
-      (FourPapers.Sublattice.corollary52_projectiveDimension_monotone
-        (k := k) (n := n) (E := E) hE hm hMN)
+    rw [sublatticeIdeal_eq_source n E]
+    exact FourPapers.Sublattice.corollary52_projectiveDimension_monotone
+      (k := k) (n := n) (E := E) hE hm hMN
   · intro m N hm hMN
-    simpa only [quotientPowerDepth,sublatticeIdeal_eq_source] using
-      (FourPapers.Sublattice.corollary52_depth_antitone
-        (k := k) (n := n) (E := E) hE hm hMN)
+    rw [sublatticeIdeal_eq_source n E]
+    exact FourPapers.Sublattice.corollary52_depth_antitone
+      (k := k) (n := n) (E := E) hE hm hMN
 /-- Exact ordinary first-power comparison transfers all Corollary5.1/5.2
 clauses to J; it is not strengthened to a graded Betti, depth, or dimension premise. -/
 theorem corollaries51_52_transfer (o : MonomialOrder (FiniteVariable.{u} n))
