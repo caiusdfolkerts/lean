@@ -65,9 +65,10 @@ def main():
  receipt['elapsed_seconds']=round(time.monotonic()-started,3)
  receipt['max_rss_kib']=resource.getrusage(resource.RUSAGE_CHILDREN).ru_maxrss
  text=raw.read_text(errors='replace');lines=text.splitlines()
- kept=lines if len(lines)<=400 else lines[:200]+['... bounded output omitted ...']+lines[-200:]
+ kept=lines if len(lines)<=2000 else lines[:1000]+['... bounded output omitted ...']+lines[-1000:]
  bounded='\n'.join(kept)
- (o.output_dir/'audit-bounded.log').write_text(bounded[:250000]+'\n')
+ (o.output_dir/'audit-bounded.log').write_text(bounded[:1048576]+'\n')
+ receipt['raw_log_lines']=len(lines);receipt['retained_log_lines']=len(kept);receipt['log_line_limit']=2000;receipt['log_character_limit']=1048576;receipt['log_incomplete']=len(lines)>2000 or len(bounded)>1048576
  receipt['bounded_log_sha256']=sha(o.output_dir/'audit-bounded.log');receipt['raw_log_bytes']=raw.stat().st_size
  write(o.output_dir/'audit-receipt.json',receipt)
 if __name__=='__main__':main()
