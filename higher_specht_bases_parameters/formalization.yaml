@@ -1,0 +1,51 @@
+version: v0.4
+project:
+  name: Higher Specht bases for Springer and Δ-Springer rings
+  description: >
+    The prescribed higher Specht cosets form a basis of the untruncated
+    Griffin ring over its elementary parameters in characteristic zero,
+    with the exact factorial rank. Over any commutative coefficient ring,
+    the elementary-parameter algebra is finite free and flat. Algebraic
+    independence and the rank formula hold over nontrivial coefficient rings.
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.CO
+  - math.RT
+  msc2020:
+  - 05E10
+  - 20C30
+sources:
+- type: paper
+  title: Higher Specht bases for Springer and Δ-Springer rings
+  authors:
+  - Caius Folkerts
+  relationship: formalizes
+  author_endorsement: participated
+  url: https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases/paper.pdf
+  note: 'Exact included paper SHA-256: 931c0ee33b94c7a77d373c4040abb40151a8f1cd049b977006df188e31013a0c.
+    Scope and declaration locations are recorded in map.json; novelty is not independently established.'
+automation:
+  methods:
+  - method: agent
+    tool_setup: OpenAI Codex
+    notes: Codex adapted the independent definitions from the core entry and extracted the
+      parameter-family statements from the retained proofs.
+  - method: other
+    tool_setup: Historical AI assistance reported in the included paper
+    notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing its proofs.
+      The exact model roles and extent of historical Lean automation have not been reconstructed from
+      the snapshot.
+review:
+  status: unchecked
+  notes: The parameter-family selection requires its own full preflight.
+scope:
+  current_selection: Theorem 6.1 prescribed parameter basis, algebraic independence and rank. Corollary 6.5 integral and all-field freeness, finiteness and parameter rank, including flatness.
+  known_gaps:
+  - The explicit all-coefficient monomial basis, graded characters, dimension and Cohen–Macaulayness are outside this comparison.
+  - The fiber decomposition and its geometric consequences are outside this comparison.
+  notes: See map.json for precise declarations.

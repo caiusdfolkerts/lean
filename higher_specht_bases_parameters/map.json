@@ -1,0 +1,59 @@
+{
+  "project": "higher_specht_bases_parameters",
+  "baseline_project": "higher_specht_bases",
+  "paper_sha256": "931c0ee33b94c7a77d373c4040abb40151a8f1cd049b977006df188e31013a0c",
+  "companion_to": {
+    "entry": "higher_specht_bases_status",
+    "commit": "fb5ab9354a764e61ae08d5e8f631614d1920f776"
+  },
+  "status": "parameter_basis_candidate_awaiting_full_preflight",
+  "selected_results": [
+    "Theorem 6.1: prescribed basis and rank over the elementary parameters",
+    "Corollary 6.5: freeness, finiteness, flatness, algebraic independence and rank over the stated general coefficient rings"
+  ],
+  "coverage": [
+    {
+      "paper_result": "Theorem 6.1",
+      "paper_file": "paper.pdf",
+      "declarations": [
+        {
+          "name": "HigherSpecht.theorem_6_1_basis_and_rank",
+          "source_path": "source/higher_specht/verified/remaining03_parameter_basis.lean",
+          "source_line": 516
+        }
+      ]
+    },
+    {
+      "paper_result": "Corollary 6.5",
+      "paper_file": "paper.pdf",
+      "declarations": [
+        {
+          "name": "HigherSpecht.untruncated_parameter_free_allCoefficients",
+          "source_path": "source/higher_specht/verified/remaining03_parameter_basis.lean",
+          "source_line": 1255
+        },
+        {
+          "name": "HigherSpecht.untruncated_parameter_finite_allCoefficients",
+          "source_path": "source/higher_specht/verified/remaining03_parameter_basis.lean",
+          "source_line": 1260
+        },
+        {
+          "name": "HigherSpecht.untruncated_parameter_flat_allCoefficients",
+          "source_path": "source/higher_specht/verified/remaining03_parameter_basis.lean",
+          "source_line": 1267
+        },
+        {
+          "name": "HigherSpecht.elementaryParameters_algebraicIndependent_allCoefficients",
+          "source_path": "source/higher_specht/verified/remaining03_parameter_basis.lean",
+          "source_line": 1290
+        },
+        {
+          "name": "HigherSpecht.untruncated_parameter_rank_allCoefficients",
+          "source_path": "source/higher_specht/verified/remaining03_parameter_basis.lean",
+          "source_line": 1299
+        }
+      ]
+    }
+  ],
+  "coverage_status": "partial_principal_selection_not_whole_paper"
+}
