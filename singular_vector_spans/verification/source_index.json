@@ -3,17 +3,17 @@
     {
       "module": "SegreVerified.Stage001",
       "path": "source/segre/stage001.lean",
-      "source_sha256": "62680ee4fd4d76f47b67dcaf1067ef8e9acaa4357812229e479b9f095950edde"
+      "source_sha256": "711c9bf5e04ac6eb7341b31c91fbaee8b15b2acd9ea6c3e2157f735c2e858a33"
     },
     {
       "module": "SegreVerified.Stage002",
       "path": "source/segre/stage002.lean",
-      "source_sha256": "522aee731525b0abbea2f542e5f77e2649dc2f099d4f0731947d3212559a7213"
+      "source_sha256": "bbc502eda9ad5eddc74466b1e3c6d473294ec29445d56140f1d917b38bc2c4a3"
     },
     {
       "module": "SegreVerified.Stage003",
       "path": "source/segre/stage003.lean",
-      "source_sha256": "749425a1310fd3134a4935e7c6baccc50db37b4ae9ce94a7a5eecfda8e09d42e"
+      "source_sha256": "520a38be243b2c8317be017a36a5deaa5675048549ffc6e5d7296d10d38171bc"
     },
     {
       "module": "SegreVerified.Stage004",
@@ -23,7 +23,7 @@
     {
       "module": "SegreVerified.Stage005",
       "path": "source/segre/stage005.lean",
-      "source_sha256": "91c44c06b8a4e6b90bc80f7e3542f1ceef863b76ec2a550c0249d974214fad2b"
+      "source_sha256": "76cf42e61af4b33a856838fe99e8c178108c796990c3c688b7c38b56001189fe"
     },
     {
       "module": "SegreVerified.Stage006",
@@ -113,7 +113,7 @@
     {
       "module": "SegreVerified.Stage019",
       "path": "source/segre/stage019.lean",
-      "source_sha256": "ffe01a009e84e78f2930ffba45eadc6346b190c70beff982aba3280e1d7aca3a"
+      "source_sha256": "c42ed5d794c332a47095894b8aeb23918ca028852e7eb3650ff8ca835ac0ebd6"
     },
     {
       "module": "SegreVerified.Stage020",
