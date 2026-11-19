@@ -1,0 +1,9 @@
+{
+  "status": "applied after exact Source target exit0 and receipt hash validation",
+  "source_run": 44492525859,
+  "source_commit": "154aa156a201cfb339b5f390632bb18464332e9f",
+  "canonical_lines": 1000,
+  "selected_statements_unchanged": true,
+  "full_verification_required": true,
+  "at": "2026-11-19T09:07:34.494874+00:00"
+}

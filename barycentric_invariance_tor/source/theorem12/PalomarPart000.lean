@@ -127,6 +127,7 @@ namespace PalomarBarycentricTor
 theorem natRightCancelAdd : IsRightCancelAdd ℕ := by infer_instance
 def naturalDown : ComplexShape ℕ := @ComplexShape.down ℕ _ natRightCancelAdd _
 def naturalUp : ComplexShape ℕ := @ComplexShape.up ℕ _ natRightCancelAdd _
+attribute [reducible] naturalDown naturalUp
 
 theorem coefficientSMulComm {K : Type*} [CommRing K] : SMulCommClass K K K := by infer_instance
 theorem functionScalarTower {V K : Type*} [CommRing K] : IsScalarTower K K (V → K) := by infer_instance
@@ -1066,7 +1067,7 @@ noncomputable def toAppendMap : koszulComplex φ ⟶ koszulComplex (appendMap φ
 
 /-- Augumentation of Koszul complex by zero object. -/
 noncomputable abbrev upOne : HomologicalComplex (ModuleCat R) PalomarBarycentricTor.naturalDown :=
-  (koszulComplex φ).augment (X := ModuleCat.of R PUnit) 0 (by simp)
+  ChainComplex.augment (show ChainComplex (ModuleCat R) ℕ from koszulComplex φ) (X := ModuleCat.of R PUnit) 0 (by simp)
 
 /-- The canonical isomorphism of homology for augumenting with zero object. -/
 noncomputable def upOneHomologyIso (i : ℕ) :
@@ -1078,7 +1079,7 @@ noncomputable def upOneHomologyIso (i : ℕ) :
         (ShortComplex.opcyclesIsoCokernel (S := (upOne φ).sc' 2 1 0)) ≪≫
           (ShortComplex.opcyclesIsoCokernel (S := (koszulComplex φ).sc' 1 0 0)).symm ≪≫
             ((koszulComplex φ).opcyclesIsoSc' 1 0 0 (by simp) (by simp)).symm ≪≫
-              (koszulComplex φ).isoHomologyι₀.symm
+              (ChainComplex.isoHomologyι₀ (show ChainComplex (ModuleCat R) ℕ from koszulComplex φ)).symm
   | n + 1 =>
     ((upOne φ).homologyIsoSc' (n + 3) (n + 2) (n + 1) (by simp) (by simp)) ≪≫
       ((koszulComplex φ).homologyIsoSc' (n + 2) (n + 1) n (by simp) (by simp)).symm
@@ -1209,7 +1210,7 @@ lemma shortComplexProd_δ_eq (i : ℕ) :
   have hmain : (koszulComplex φ).liftCycles ((upOne φ).iCycles (i + 1)) (i - 1) hk hd ≫
     (koszulComplex φ).homologyπ i = (upOne φ).homologyπ (i + 1) ≫ (upOneHomologyIso φ i).hom := by
     rcases i with _ | n
-    · rw [← cancel_mono ((koszulComplex φ).isoHomologyι₀.hom)]
+    · rw [← cancel_mono ((ChainComplex.isoHomologyι₀ (koszulComplex φ)).hom)]
       trans ((upOne φ).iCycles 1) ≫ (koszulComplex φ).pOpcycles 0
       · rw [Category.assoc, HomologicalComplex.isoHomologyι_hom, HomologicalComplex.homology_π_ι,
           ← Category.assoc, HomologicalComplex.liftCycles_i]
@@ -1243,7 +1244,7 @@ variable (φ : M →ₗ[R] R)
 /-- The equivalence between zeroth homology and cokernel of the differential. -/
 noncomputable def zeroHomologyLinearEquivAux : (koszulComplex φ).homology 0 ≃ₗ[R]
     (⋀[R]^0 M) ⧸ (koszulComplex.d φ 0).range :=
-  (((koszulComplex φ).isoHomologyι₀.trans
+  (((ChainComplex.isoHomologyι₀ (koszulComplex φ)).trans
     ((koszulComplex φ).opcyclesIsoSc' 1 0 0 (by simp) (by simp))).trans
       ((koszulComplex φ).sc' 1 0 0).moduleCatOpcyclesIso).toLinearEquiv
 
@@ -1498,7 +1499,7 @@ def regularSequenceResolution (l : List R) (hl : RingTheory.Sequence.IsRegular R
         change Projective (ModuleCat.of R (⋀[R]^n (Fin l.length → R)))
         infer_instance)
       (fun n => koszulComplex.exactAt_of_isRegular l hl (n + 1) (by omega)))
-    ((koszulComplex.ofList l).isoHomologyι₀.symm ≪≫
+    ((ChainComplex.isoHomologyι₀ (koszulComplex.ofList l)).symm ≪≫
       (koszulComplex.zeroHomologyOfListLinearEquiv l).toModuleIso)
 
 @[simp] theorem regularSequenceResolution_complex (l : List R)
@@ -4267,12 +4268,12 @@ section HomologyZero
 def homologyZeroIso :
     (koszulComplex φ).homology 0 ≅
       ModuleCat.of R (⋀[R]^0 M ⧸ LinearMap.range (koszulDifferential φ 0)) :=
-  (koszulComplex φ).isoHomologyι₀ ≪≫
+  (ChainComplex.isoHomologyι₀ (koszulComplex φ)) ≪≫
     (koszulComplex φ).opcyclesIsoSc' 1 0 0 (by simp) (by simp) ≪≫
       ((koszulComplex φ).sc' 1 0 0).moduleCatOpcyclesIso
 
 private theorem pOpcycles_comp_homologyZeroIso_hom :
-    (koszulComplex φ).pOpcycles 0 ≫ (koszulComplex φ).isoHomologyι₀.inv ≫
+    (koszulComplex φ).pOpcycles 0 ≫ (ChainComplex.isoHomologyι₀ (koszulComplex φ)).inv ≫
         (homologyZeroIso φ).hom =
       ModuleCat.ofHom (LinearMap.range (koszulDifferential φ 0)).mkQ := by
   have h := ((koszulComplex φ).pOpcycles_opcyclesIsoSc'_hom_assoc 1 0 0 (by simp) (by simp)
@@ -4293,10 +4294,10 @@ def homologyZeroEquiv : (koszulComplex φ).homology 0 ≃ₗ[R] R ⧸ LinearMap.
 @[simp]
 theorem homologyZeroEquiv_apply (x : ⋀[R]^0 M) :
     homologyZeroEquiv φ
-        ((koszulComplex φ).isoHomologyι₀.inv.hom (((koszulComplex φ).pOpcycles 0).hom x)) =
+        ((ChainComplex.isoHomologyι₀ (koszulComplex φ)).inv.hom (((koszulComplex φ).pOpcycles 0).hom x)) =
       Ideal.Quotient.mk _ (exteriorPower.zeroEquiv R M x) := by
   have hx : (homologyZeroIso φ).hom.hom
-      ((koszulComplex φ).isoHomologyι₀.inv.hom (((koszulComplex φ).pOpcycles 0).hom x)) =
+      ((ChainComplex.isoHomologyι₀ (koszulComplex φ)).inv.hom (((koszulComplex φ).pOpcycles 0).hom x)) =
       (LinearMap.range (koszulDifferential φ 0)).mkQ x :=
     congr(($(pOpcycles_comp_homologyZeroIso_hom φ)).hom x)
   -- `simp` does not rewrite with `Iso.toLinearEquiv_apply` here, so expose `hx` by `rw` first.
@@ -4316,7 +4317,7 @@ scalar modulo `(xᵢ)`. -/
 theorem homologyZeroEquivSpan_apply {ι : Type*} [Fintype ι] (x : ι → R)
     (y : ⋀[R]^0 (ι → R)) :
     homologyZeroEquivSpan x
-        ((koszulComplex (Fintype.linearCombination R x)).isoHomologyι₀.inv.hom
+        ((ChainComplex.isoHomologyι₀ (koszulComplex (Fintype.linearCombination R x))).inv.hom
           (((koszulComplex (Fintype.linearCombination R x)).pOpcycles 0).hom y)) =
       Ideal.Quotient.mk _ (exteriorPower.zeroEquiv R (ι → R) y) := by
   simpa [homologyZeroEquivSpan] using Submodule.quotEquivOfEq_mk _ _

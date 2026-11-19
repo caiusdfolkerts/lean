@@ -125,6 +125,7 @@ namespace PalomarBarycentricTor
 theorem natRightCancelAdd : IsRightCancelAdd ℕ := by infer_instance
 def naturalDown : ComplexShape ℕ := @ComplexShape.down ℕ _ natRightCancelAdd _
 def naturalUp : ComplexShape ℕ := @ComplexShape.up ℕ _ natRightCancelAdd _
+attribute [reducible] naturalDown naturalUp
 theorem coefficientSMulComm {K : Type*} [CommRing K] : SMulCommClass K K K := by infer_instance
 theorem functionScalarTower {V K : Type*} [CommRing K] : IsScalarTower K K (V → K) := by infer_instance
 theorem exteriorScalarComm {V K : Type*} [CommRing K] : SMulCommClass K K (ExteriorAlgebra K (V → K)) := by infer_instance
