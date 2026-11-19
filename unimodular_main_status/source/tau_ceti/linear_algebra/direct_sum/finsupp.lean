@@ -1,0 +1,77 @@
+/-
+Copyright (c) 2026 The Tau Ceti contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: The Tau Ceti contributors
+-/
+module
+
+public import Mathlib.LinearAlgebra.DirectSum.Finsupp
+
+/-!
+# Coefficients in a tensor product with a free module
+
+Two facts about Mathlib's `TensorProduct.finsuppScalarLeft`, which identifies `(ι →₀ R) ⊗[R] N`
+with `ι →₀ N` by taking coefficients against the standard basis.
+
+## Main results
+
+* `TensorProduct.finsuppScalarLeft_lTensor_apply`: taking coefficients is natural in `N`.
+* `TensorProduct.sum_single_tmul_finsuppScalarLeft`: an element is the sum of its coefficients
+  against the basis vectors.
+* `finsuppTensorFinsupp'_mapDomain`: the identification of the tensor product of two spaces of
+  finitely supported functions with functions on the product of the index types is natural in the
+  index types.
+-/
+
+public section
+
+namespace TensorProduct
+
+variable {R : Type*} [CommSemiring R] {ι : Type*} [DecidableEq ι] {N N' : Type*}
+  [AddCommMonoid N] [Module R N] [AddCommMonoid N'] [Module R N']
+
+/-- The coefficients of `(1 ⊗ g) t` in `(ι →₀ R) ⊗ N'` are the images under `g` of the
+coefficients of `t`. -/
+@[simp]
+lemma finsuppScalarLeft_lTensor_apply (g : N →ₗ[R] N') (t : (ι →₀ R) ⊗[R] N) (i : ι) :
+    finsuppScalarLeft R N' ι (g.lTensor _ t) i = g (finsuppScalarLeft R N ι t i) := by
+  induction t using TensorProduct.inductionOn with
+  | tmul p n => simp
+  | add a b ha hb => simp [ha, hb]
+
+/-- An element of `(ι →₀ R) ⊗ N` is the sum of its coefficients against the basis vectors. -/
+lemma sum_single_tmul_finsuppScalarLeft (t : (ι →₀ R) ⊗[R] N) :
+    ∑ i ∈ (finsuppScalarLeft R N ι t).support,
+      Finsupp.single i (1 : R) ⊗ₜ finsuppScalarLeft R N ι t i = t := by
+  conv_rhs => rw [← (finsuppScalarLeft R N ι).symm_apply_apply t,
+    ← Finsupp.sum_single (finsuppScalarLeft R N ι t)]
+  simp [Finsupp.sum, finsuppScalarLeft_symm_apply_single]
+
+end TensorProduct
+
+section FinsuppTensorFinsupp
+
+variable {R : Type*} [CommSemiring R] {α β α' β' : Type*}
+
+/-- The identification `(α →₀ R) ⊗ (β →₀ R) ≃ (α × β →₀ R)` is natural in the index types: the
+tensor product of two pushforwards is the pushforward along the product map. -/
+theorem finsuppTensorFinsupp'_mapDomain (g₁ : α → α') (g₂ : β → β') (c : α →₀ R) (d : β →₀ R) :
+    finsuppTensorFinsupp' R α' β' (Finsupp.mapDomain g₁ c ⊗ₜ[R] Finsupp.mapDomain g₂ d) =
+      Finsupp.mapDomain (Prod.map g₁ g₂) (finsuppTensorFinsupp' R α β (c ⊗ₜ[R] d)) := by
+  induction c using Finsupp.induction_linear with
+  | zero => simp
+  | add c₁ c₂ h₁ h₂ =>
+    simp only [Finsupp.mapDomain_add, TensorProduct.add_tmul, map_add, h₁, h₂]
+  | single a s =>
+    induction d using Finsupp.induction_linear with
+    | zero => simp
+    | add d₁ d₂ h₁ h₂ =>
+      simp only [Finsupp.mapDomain_add, TensorProduct.tmul_add, map_add, h₁, h₂]
+    | single b t =>
+      classical
+      rw [Finsupp.mapDomain_single, Finsupp.mapDomain_single,
+        finsuppTensorFinsupp'_single_tmul_single,
+        finsuppTensorFinsupp'_single_tmul_single, Finsupp.mapDomain_single]
+      rfl
+
+end FinsuppTensorFinsupp

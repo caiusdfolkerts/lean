@@ -1,0 +1,80 @@
+version: v0.4
+project:
+  name: Exact minor class and networks of deeply monotone polytopes
+  description: The actual represented matroid of the original primitive geometric facet normals of a deeply
+    monotone smooth reflexive polytope is in the ordinary constructive series-parallel class. Every ordinary
+    matroid minor remains in the class, retaining the original integral dual labels. The matroid is the
+    finite direct sum of its actual connected loopless component restrictions; each component has a genuine
+    eligible rooted-network cycle-matroid model. Conversely every ordinary ground-series-parallel matroid
+    embeds, on its full actual ground, as a minor of the primitive-normal matroid of a positive-dimensional
+    deeply monotone coordinate polytope. Every real-independent full selection of actual primitive geometric
+    facet normals is an integral basis in the original integral dual.
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.CO
+  - math.AG
+  msc2020:
+  - 52B20
+  - 05B35
+  - 14M25
+sources:
+- title: Unimodular configurations and complete fans
+  authors:
+  - Caius Folkerts
+  type: paper
+  relationship: formalizes
+  location: paper.pdf
+  note: Theorem1.2 original-lattice direct-sum network, necessity, ordinary-minor and exact minor-realization
+    assertions; Corollary6.2 actual original-lattice uniform unimodularity.
+related_formalizations:
+- title: Complete-fan degree-one cycle entry
+  id: https://github.com/caiusdfolkerts/research/tree/232c744f9152210fa907985383a4dd5a7a3400e7/unimodular
+  relationship: other
+  note: Separate passing13-target fan entry; none of its selected targets is repeated.
+- title: Complete original proof development
+  id: https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/unimodular
+  relationship: other
+  note: All original substantive sources and licensing notices remain retained.
+automation:
+  methods:
+  - method: agent
+    tool_setup: OpenAI Codex using GPT-6.1 Sol inspected the actual paper and retained source, prepared
+      independent literal geometric and matroid definitions, explicit source bridges, comparison configuration
+      and provenance metadata. Original historical assistance acknowledgements remain in paper and source;
+      historical roles have not been independently reconstructed.
+review:
+  status: unchecked
+  notes: 'Verification account updated 2026-11-19T09:29:31.105182+00:00. Exact snapshot 3725147f10c25d85ba2bb7500dccc9adc1bafb7e
+    subsequently passed full mechanical verification, including Source/Solution builds, Comparator and
+    mandatory independent kernel checks. The older preparation note below is historical, not the current
+    verification status. This metadata-only successor preserves all formal statements, proofs, selections
+    and pins; its subsequent exact-commit reports determine mechanical and editorial status. Historical
+    preparation note: Exact338-line Challenge SHA61b5d581 passed canonical elaboration in run44391777414/sourcef41e86bc.
+    All input hashes, entire canonical manifest, bounded-log hash and all1621 frozen project-file hashes
+    were checked. This separate candidate incorporates the measured679-line main proof-only repair of
+    all seven Solution errors in fullrun44386770990, then appends the unchanged actual Corollary6.2 original-integral-dual
+    proof bridge. All13 target statements, original sources and canonical pins are unchanged. The709-line
+    combined actual Solution and raw comparison remain unbuilt. No full preflight, registry/intake or
+    mathematical peer review is claimed.'
+fidelity:
+  divergences: The old free-support partition implementation is renamed PalomarLegacyPartition in its
+    materialized modules to avoid colliding with canonical Mathlib fixed-support partitions. The definitions
+    and original source files are preserved exactly. Actual scalar extension of the finite free lattice,
+    real convex hulls, primitive edge segments, maximal proper convex faces, entire real unit corners
+    and full represented Mathlib matroids are inlined. The ordinary construction class uses deletion,
+    contraction and genuine circuit predicates, not excluded minors or a numerical rank surrogate. Source
+    conversions preserve the whole carrier, every edge direction, facet label and independent subset.
+limitations:
+- 'Historical preparation limitation, superseded by the full mechanical pass recorded above: The exact322-line
+  independent Challenge passed; the new Solution bridges, complete source build and comparison remain
+  unverified.'
+- 'Historical preparation limitation, superseded by the full mechanical pass recorded above: The new coordinate-realization
+  bridge uses genuine primitive-edge, full real unit-corner and facet-exhaustiveness theorems; it has
+  not yet been elaborated.'
+- Deep-monotone sufficiency, extremal-ray, section-ring and exceptional-example groups remain outside
+  this candidate; whole-paper completion is not claimed.
