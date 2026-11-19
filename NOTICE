@@ -1,0 +1,11 @@
+Small nonrational four-polytopes
+Copyright 2026 Caius Folkerts
+
+The source code and documentation are licensed under Apache License 2.0.
+The accompanying paper.pdf remains copyright Caius Folkerts, all rights reserved.
+Lean and Mathlib and their dependencies are obtained separately at the pinned
+revisions and retain their respective upstream licences.
+
+The retained polytope foundations in source/cubical/polytope/ include code
+copyright 2026 Daniele Cappello, licensed under Apache-2.0. The original
+source notices are preserved.

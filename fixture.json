@@ -1,0 +1,824 @@
+{
+  "package": "integrated-832",
+  "package_modules_sha256": "984b443502f43748e6a7a5e91fe741f31287179f653a1c160f70bff549d81c82",
+  "samples": {
+    "Batches.B000": {
+      "theorem": "Nonrational.TerminalVerification.certified_B000",
+      "type": "\u2200 j : Fin 30, Nonrational.TerminalVerification.Certifies (0 + j.val)",
+      "published_projections": [
+        [
+          "projection_0000",
+          0
+        ],
+        [
+          "projection_0001",
+          1
+        ],
+        [
+          "projection_0002",
+          2
+        ],
+        [
+          "projection_0003",
+          3
+        ],
+        [
+          "projection_0004",
+          4
+        ],
+        [
+          "projection_0005",
+          5
+        ],
+        [
+          "projection_0006",
+          6
+        ],
+        [
+          "projection_0007",
+          7
+        ],
+        [
+          "projection_0008",
+          8
+        ],
+        [
+          "projection_0009",
+          9
+        ],
+        [
+          "projection_0010",
+          10
+        ],
+        [
+          "projection_0011",
+          11
+        ],
+        [
+          "projection_0012",
+          12
+        ],
+        [
+          "projection_0013",
+          13
+        ],
+        [
+          "projection_0014",
+          14
+        ],
+        [
+          "projection_0015",
+          15
+        ],
+        [
+          "projection_0016",
+          16
+        ],
+        [
+          "projection_0017",
+          17
+        ],
+        [
+          "projection_0018",
+          18
+        ],
+        [
+          "projection_0019",
+          19
+        ],
+        [
+          "projection_0020",
+          20
+        ],
+        [
+          "projection_0021",
+          21
+        ],
+        [
+          "projection_0022",
+          22
+        ],
+        [
+          "projection_0023",
+          23
+        ],
+        [
+          "projection_0024",
+          24
+        ],
+        [
+          "projection_0025",
+          25
+        ],
+        [
+          "projection_0026",
+          26
+        ],
+        [
+          "projection_0027",
+          27
+        ],
+        [
+          "projection_0028",
+          28
+        ],
+        [
+          "projection_0029",
+          29
+        ]
+      ],
+      "targets": 30,
+      "start": 0,
+      "bundles": 30,
+      "plane_priorities": 515,
+      "incident_pairs": 1726,
+      "candidate_pairs": 4635,
+      "endpoint": "ProjectionTargets.B000",
+      "common": [
+        "ProjectionVertexSets",
+        "NumericProofSchema",
+        "Papers.ProjectedRelationTemplate",
+        "RawBoundaryData",
+        "LowerSchemas.Batches.Part0",
+        "LowerSchemas.RawTargetChunks.Part0",
+        "Papers.FiniteProjectionData",
+        "RawTargetChunks.C000",
+        "RawTargetChunks.C001",
+        "RawTargetChunks.C002",
+        "RawTargetChunks.C003",
+        "RawTargetChunks.C004",
+        "RawTargetChunks.C005",
+        "RawTargetChunks.C006",
+        "RawTargetChunks.C007",
+        "RawTargetChunks.C008",
+        "RawTargetChunks.C009",
+        "RawTargetChunks.C010",
+        "RawTargetChunks.C011",
+        "RawTargetChunks.C012",
+        "RawTargetChunks.C013",
+        "RawTargetChunks.C014",
+        "RawTargetChunks.C015",
+        "RawTargetChunks.C016",
+        "RawTargetChunks.C017",
+        "RawTargetChunks.C018A",
+        "RawTargetChunks.C018B",
+        "RawTargetChunks.C019A",
+        "RawTargetChunks.C019B",
+        "RawTargetChunks.C020A",
+        "RawTargetChunks.C020B",
+        "RawTargetChunks.C021A",
+        "RawTargetChunks.C021B",
+        "RawTargetChunks.C022A",
+        "RawTargetChunks.C022B",
+        "RawTargetChunks.C023A",
+        "RawTargetChunks.C023B",
+        "RawTargetChunks.C024A",
+        "RawTargetChunks.C024B",
+        "RawTargetChunks.C025A",
+        "RawTargetChunks.C025B",
+        "RawTargetChunks.C026A",
+        "RawTargetChunks.C026B",
+        "RawTargetChunks.C027A",
+        "RawTargetChunks.C027B",
+        "RawTargetChunks.C028A",
+        "RawTargetChunks.C028B",
+        "RawTargetChunks.C029A",
+        "RawTargetChunks.C029B",
+        "RawTargetChunks.C030A",
+        "RawTargetChunks.C030B",
+        "RawTargetChunks.C031A",
+        "RawTargetChunks.C031B",
+        "RawTargetChunks.C032A",
+        "RawTargetChunks.C032B",
+        "RawTargetChunks.C033A",
+        "RawTargetChunks.C033B",
+        "RawTargetChunks.C034A",
+        "RawTargetChunks.C034B",
+        "RawTargetChunks.C035A",
+        "RawTargetChunks.C035B",
+        "RawTargetChunks.C036A",
+        "RawTargetChunks.C036B",
+        "LowerSchemas.Batches",
+        "LowerSchemas.RawTargetChunks",
+        "Papers.FiniteProjectionChecks",
+        "RawTargetChunks.C018",
+        "RawTargetChunks.C019",
+        "RawTargetChunks.C020",
+        "RawTargetChunks.C021",
+        "RawTargetChunks.C022",
+        "RawTargetChunks.C023",
+        "RawTargetChunks.C024",
+        "RawTargetChunks.C025",
+        "RawTargetChunks.C026",
+        "RawTargetChunks.C027",
+        "RawTargetChunks.C028",
+        "RawTargetChunks.C029",
+        "RawTargetChunks.C030",
+        "RawTargetChunks.C031",
+        "RawTargetChunks.C032",
+        "RawTargetChunks.C033",
+        "RawTargetChunks.C034",
+        "RawTargetChunks.C035",
+        "RawTargetChunks.C036",
+        "RawTargets",
+        "TerminalGeometry"
+      ],
+      "external": [
+        "Init",
+        "Lean.Elab.Command",
+        "Mathlib.Algebra.BigOperators.Group.Finset.Defs",
+        "Mathlib.Data.Fin.VecNotation",
+        "Mathlib.Data.Finset.Card",
+        "Mathlib.Data.Fintype.Basic",
+        "Mathlib.Data.Fintype.Sum",
+        "Mathlib.Data.Nat.Bitwise",
+        "Mathlib.Tactic.FinCases"
+      ],
+      "variants": {
+        "baseline": "983d95ce6985f886738cb0f6fad9479acfd0c85782273b71b608f4c7ffa0c349",
+        "incidence": "e676f5c9241b03fed270df985bd971d3d73ec2aa6faf4ae31eb1f168684f8f1b",
+        "numeric": "bd4e1a85ca186395a8b19945bfea6c5951834704ca35a3b5c82c3ba767d4e9a6"
+      }
+    },
+    "Batches.B012": {
+      "theorem": "Nonrational.TerminalVerification.certified_B012",
+      "type": "\u2200 j : Fin 30, Nonrational.TerminalVerification.Certifies (360 + j.val)",
+      "published_projections": [
+        [
+          "projection_0360",
+          360
+        ],
+        [
+          "projection_0361",
+          361
+        ],
+        [
+          "projection_0362",
+          362
+        ],
+        [
+          "projection_0363",
+          363
+        ],
+        [
+          "projection_0364",
+          364
+        ],
+        [
+          "projection_0365",
+          365
+        ],
+        [
+          "projection_0366",
+          366
+        ],
+        [
+          "projection_0367",
+          367
+        ],
+        [
+          "projection_0368",
+          368
+        ],
+        [
+          "projection_0369",
+          369
+        ],
+        [
+          "projection_0370",
+          370
+        ],
+        [
+          "projection_0371",
+          371
+        ],
+        [
+          "projection_0372",
+          372
+        ],
+        [
+          "projection_0373",
+          373
+        ],
+        [
+          "projection_0374",
+          374
+        ],
+        [
+          "projection_0375",
+          375
+        ],
+        [
+          "projection_0376",
+          376
+        ],
+        [
+          "projection_0377",
+          377
+        ],
+        [
+          "projection_0378",
+          378
+        ],
+        [
+          "projection_0379",
+          379
+        ],
+        [
+          "projection_0380",
+          380
+        ],
+        [
+          "projection_0381",
+          381
+        ],
+        [
+          "projection_0382",
+          382
+        ],
+        [
+          "projection_0383",
+          383
+        ],
+        [
+          "projection_0384",
+          384
+        ],
+        [
+          "projection_0385",
+          385
+        ],
+        [
+          "projection_0386",
+          386
+        ],
+        [
+          "projection_0387",
+          387
+        ],
+        [
+          "projection_0388",
+          388
+        ],
+        [
+          "projection_0389",
+          389
+        ]
+      ],
+      "targets": 30,
+      "start": 360,
+      "bundles": 30,
+      "plane_priorities": 559,
+      "incident_pairs": 1868,
+      "candidate_pairs": 5031,
+      "endpoint": "Batches.B012",
+      "common": [
+        "ProjectionVertexSets",
+        "NumericProofSchema",
+        "Papers.ProjectedRelationTemplate",
+        "RawBoundaryData",
+        "LowerSchemas.Batches.Part0",
+        "LowerSchemas.RawTargetChunks.Part0",
+        "Papers.FiniteProjectionData",
+        "RawTargetChunks.C000",
+        "RawTargetChunks.C001",
+        "RawTargetChunks.C002",
+        "RawTargetChunks.C003",
+        "RawTargetChunks.C004",
+        "RawTargetChunks.C005",
+        "RawTargetChunks.C006",
+        "RawTargetChunks.C007",
+        "RawTargetChunks.C008",
+        "RawTargetChunks.C009",
+        "RawTargetChunks.C010",
+        "RawTargetChunks.C011",
+        "RawTargetChunks.C012",
+        "RawTargetChunks.C013",
+        "RawTargetChunks.C014",
+        "RawTargetChunks.C015",
+        "RawTargetChunks.C016",
+        "RawTargetChunks.C017",
+        "RawTargetChunks.C018A",
+        "RawTargetChunks.C018B",
+        "RawTargetChunks.C019A",
+        "RawTargetChunks.C019B",
+        "RawTargetChunks.C020A",
+        "RawTargetChunks.C020B",
+        "RawTargetChunks.C021A",
+        "RawTargetChunks.C021B",
+        "RawTargetChunks.C022A",
+        "RawTargetChunks.C022B",
+        "RawTargetChunks.C023A",
+        "RawTargetChunks.C023B",
+        "RawTargetChunks.C024A",
+        "RawTargetChunks.C024B",
+        "RawTargetChunks.C025A",
+        "RawTargetChunks.C025B",
+        "RawTargetChunks.C026A",
+        "RawTargetChunks.C026B",
+        "RawTargetChunks.C027A",
+        "RawTargetChunks.C027B",
+        "RawTargetChunks.C028A",
+        "RawTargetChunks.C028B",
+        "RawTargetChunks.C029A",
+        "RawTargetChunks.C029B",
+        "RawTargetChunks.C030A",
+        "RawTargetChunks.C030B",
+        "RawTargetChunks.C031A",
+        "RawTargetChunks.C031B",
+        "RawTargetChunks.C032A",
+        "RawTargetChunks.C032B",
+        "RawTargetChunks.C033A",
+        "RawTargetChunks.C033B",
+        "RawTargetChunks.C034A",
+        "RawTargetChunks.C034B",
+        "RawTargetChunks.C035A",
+        "RawTargetChunks.C035B",
+        "RawTargetChunks.C036A",
+        "RawTargetChunks.C036B",
+        "LowerSchemas.Batches",
+        "LowerSchemas.RawTargetChunks",
+        "Papers.FiniteProjectionChecks",
+        "RawTargetChunks.C018",
+        "RawTargetChunks.C019",
+        "RawTargetChunks.C020",
+        "RawTargetChunks.C021",
+        "RawTargetChunks.C022",
+        "RawTargetChunks.C023",
+        "RawTargetChunks.C024",
+        "RawTargetChunks.C025",
+        "RawTargetChunks.C026",
+        "RawTargetChunks.C027",
+        "RawTargetChunks.C028",
+        "RawTargetChunks.C029",
+        "RawTargetChunks.C030",
+        "RawTargetChunks.C031",
+        "RawTargetChunks.C032",
+        "RawTargetChunks.C033",
+        "RawTargetChunks.C034",
+        "RawTargetChunks.C035",
+        "RawTargetChunks.C036",
+        "RawTargets",
+        "TerminalGeometry"
+      ],
+      "external": [
+        "Init",
+        "Lean.Elab.Command",
+        "Mathlib.Algebra.BigOperators.Group.Finset.Defs",
+        "Mathlib.Data.Fin.VecNotation",
+        "Mathlib.Data.Finset.Card",
+        "Mathlib.Data.Fintype.Basic",
+        "Mathlib.Data.Fintype.Sum",
+        "Mathlib.Data.Nat.Bitwise",
+        "Mathlib.Tactic.FinCases"
+      ],
+      "variants": {
+        "baseline": "6d38d4d83bf2760cb99e1e0c69ce80dc5b7ffdc2e79765db73899ff4ab748698",
+        "incidence": "735ec35ff25d839063200dc03609c9bcaa9123555d87c1e830508f51c14726e4",
+        "numeric": "4021bee65d5fae450ea1bee43029424956f9efe0f0535c90d7564a9dd73fa376"
+      }
+    },
+    "Batches.B078": {
+      "theorem": "Nonrational.TerminalVerification.certified_B078",
+      "type": "\u2200 j : Fin 30, Nonrational.TerminalVerification.Certifies (2373 + j.val)",
+      "published_projections": [
+        [
+          "projection_2373",
+          2373
+        ],
+        [
+          "projection_2374",
+          2374
+        ],
+        [
+          "projection_2375",
+          2375
+        ],
+        [
+          "projection_2376",
+          2376
+        ],
+        [
+          "projection_2377",
+          2377
+        ],
+        [
+          "projection_2378",
+          2378
+        ],
+        [
+          "projection_2379",
+          2379
+        ],
+        [
+          "projection_2380",
+          2380
+        ],
+        [
+          "projection_2381",
+          2381
+        ],
+        [
+          "projection_2382",
+          2382
+        ],
+        [
+          "projection_2383",
+          2383
+        ],
+        [
+          "projection_2384",
+          2384
+        ],
+        [
+          "projection_2385",
+          2385
+        ],
+        [
+          "projection_2386",
+          2386
+        ],
+        [
+          "projection_2387",
+          2387
+        ],
+        [
+          "projection_2388",
+          2388
+        ],
+        [
+          "projection_2389",
+          2389
+        ],
+        [
+          "projection_2390",
+          2390
+        ],
+        [
+          "projection_2391",
+          2391
+        ],
+        [
+          "projection_2392",
+          2392
+        ],
+        [
+          "projection_2393",
+          2393
+        ],
+        [
+          "projection_2394",
+          2394
+        ],
+        [
+          "projection_2395",
+          2395
+        ],
+        [
+          "projection_2396",
+          2396
+        ],
+        [
+          "projection_2397",
+          2397
+        ],
+        [
+          "projection_2398",
+          2398
+        ],
+        [
+          "projection_2399",
+          2399
+        ],
+        [
+          "projection_2400",
+          2400
+        ],
+        [
+          "projection_2401",
+          2401
+        ],
+        [
+          "projection_2402",
+          2402
+        ]
+      ],
+      "targets": 30,
+      "start": 2373,
+      "bundles": 30,
+      "plane_priorities": 568,
+      "incident_pairs": 1884,
+      "candidate_pairs": 5112,
+      "endpoint": "Batches.B078",
+      "common": [
+        "ProjectionVertexSets",
+        "NumericProofSchema",
+        "Papers.ProjectedRelationTemplate",
+        "RawBoundaryData",
+        "LowerSchemas.Batches.Part0",
+        "LowerSchemas.RawTargetChunks.Part0",
+        "Papers.FiniteProjectionData",
+        "RawTargetChunks.C000",
+        "RawTargetChunks.C001",
+        "RawTargetChunks.C002",
+        "RawTargetChunks.C003",
+        "RawTargetChunks.C004",
+        "RawTargetChunks.C005",
+        "RawTargetChunks.C006",
+        "RawTargetChunks.C007",
+        "RawTargetChunks.C008",
+        "RawTargetChunks.C009",
+        "RawTargetChunks.C010",
+        "RawTargetChunks.C011",
+        "RawTargetChunks.C012",
+        "RawTargetChunks.C013",
+        "RawTargetChunks.C014",
+        "RawTargetChunks.C015",
+        "RawTargetChunks.C016",
+        "RawTargetChunks.C017",
+        "RawTargetChunks.C018A",
+        "RawTargetChunks.C018B",
+        "RawTargetChunks.C019A",
+        "RawTargetChunks.C019B",
+        "RawTargetChunks.C020A",
+        "RawTargetChunks.C020B",
+        "RawTargetChunks.C021A",
+        "RawTargetChunks.C021B",
+        "RawTargetChunks.C022A",
+        "RawTargetChunks.C022B",
+        "RawTargetChunks.C023A",
+        "RawTargetChunks.C023B",
+        "RawTargetChunks.C024A",
+        "RawTargetChunks.C024B",
+        "RawTargetChunks.C025A",
+        "RawTargetChunks.C025B",
+        "RawTargetChunks.C026A",
+        "RawTargetChunks.C026B",
+        "RawTargetChunks.C027A",
+        "RawTargetChunks.C027B",
+        "RawTargetChunks.C028A",
+        "RawTargetChunks.C028B",
+        "RawTargetChunks.C029A",
+        "RawTargetChunks.C029B",
+        "RawTargetChunks.C030A",
+        "RawTargetChunks.C030B",
+        "RawTargetChunks.C031A",
+        "RawTargetChunks.C031B",
+        "RawTargetChunks.C032A",
+        "RawTargetChunks.C032B",
+        "RawTargetChunks.C033A",
+        "RawTargetChunks.C033B",
+        "RawTargetChunks.C034A",
+        "RawTargetChunks.C034B",
+        "RawTargetChunks.C035A",
+        "RawTargetChunks.C035B",
+        "RawTargetChunks.C036A",
+        "RawTargetChunks.C036B",
+        "LowerSchemas.Batches",
+        "LowerSchemas.RawTargetChunks",
+        "Papers.FiniteProjectionChecks",
+        "RawTargetChunks.C018",
+        "RawTargetChunks.C019",
+        "RawTargetChunks.C020",
+        "RawTargetChunks.C021",
+        "RawTargetChunks.C022",
+        "RawTargetChunks.C023",
+        "RawTargetChunks.C024",
+        "RawTargetChunks.C025",
+        "RawTargetChunks.C026",
+        "RawTargetChunks.C027",
+        "RawTargetChunks.C028",
+        "RawTargetChunks.C029",
+        "RawTargetChunks.C030",
+        "RawTargetChunks.C031",
+        "RawTargetChunks.C032",
+        "RawTargetChunks.C033",
+        "RawTargetChunks.C034",
+        "RawTargetChunks.C035",
+        "RawTargetChunks.C036",
+        "RawTargets",
+        "TerminalGeometry"
+      ],
+      "external": [
+        "Init",
+        "Lean.Elab.Command",
+        "Mathlib.Algebra.BigOperators.Group.Finset.Defs",
+        "Mathlib.Data.Fin.VecNotation",
+        "Mathlib.Data.Finset.Card",
+        "Mathlib.Data.Fintype.Basic",
+        "Mathlib.Data.Fintype.Sum",
+        "Mathlib.Data.Nat.Bitwise",
+        "Mathlib.Tactic.FinCases"
+      ],
+      "variants": {
+        "baseline": "5964c7a1e8241c3b9aa6070edf1b4dbfc702a31a9b6a41e55aec980d0223f623",
+        "incidence": "dd21f15c9f47d45eb176fb2b3d04b1d27a8c1be18d7af181b011a1412804f081",
+        "numeric": "9fd7f7e8dd8cc6909a93da43c8af2a7797875cae686130841d23d47ef51f3a79"
+      }
+    }
+  },
+  "files": {
+    ".github/workflows/projection-pooled-paired.yml": "1ecdd5b08abe755f5ea1a4d6990994a048ec3714c9ee7ab52ae862df082b9193",
+    "LICENSE": "cacb9b966903a68a7b55e83ee5c5004d9178206d7f6ac5ab61b8b5f15244147f",
+    "NOTICE": "e2af102b9599056f984ea036280b13207b8e6098d8fdef57256840d7b82b5a90",
+    "Papers/ProjectionIncidenceSpeed.lean": "04ef2101381e9c2559159ea7925fb4802bf52e2bbcf9ce2d842eff7ac03d1c85",
+    "lake-manifest.json": "f0bf992666a450775481275b2f108bae85323de1fc01c096081fd35c59ca05c5",
+    "lakefile.toml": "9a21c0cc541171e2e5a2e225184a0012bae3ffa8f8f2058e9713b1912e1ee985",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+    "lean_export_reader.py": "e72b455ecd7ab15b8e0e9e771bc24458bbab74430d9633985f4840356d000c7e",
+    "projection_transform.py": "c8ee1b5b7023fd033a08f51fcf7654526538111d1ca1ba73912bc27f257d25ab",
+    "run_paired.py": "de97deeb8bcaff9b25ee4c45c62606d34ad944867f6336252b4b59ae1c6dd5ef",
+    "scope.py": "49811865e789abd349c9c7adc4c2925da54666ce6ad24be8c6893ababc965a46",
+    "source/Batches/B000.lean": "983d95ce6985f886738cb0f6fad9479acfd0c85782273b71b608f4c7ffa0c349",
+    "source/Batches/B012.lean": "6d38d4d83bf2760cb99e1e0c69ce80dc5b7ffdc2e79765db73899ff4ab748698",
+    "source/Batches/B078.lean": "5964c7a1e8241c3b9aa6070edf1b4dbfc702a31a9b6a41e55aec980d0223f623",
+    "source/LowerSchemas/Batches/Part0.lean": "7b381b25afc43fea05cf2f7a01cac4a1b0f9679a63f305bb427f06e5fc4a4833",
+    "source/LowerSchemas/Batches.lean": "8d05fbeef6afe575675c1bae78678f96ed8fb443544978decce00cd6fa3d2a4f",
+    "source/LowerSchemas/RawTargetChunks/Part0.lean": "ac0d956c4262a669213535cb8bc6437f4da3b2ae213e96ea7ea4e98c07e31a1b",
+    "source/LowerSchemas/RawTargetChunks.lean": "3d5a9906fe960f07e437b10a47205f4302d7f5ee37d15f26bb3dd3a092da8169",
+    "source/NumericProofSchema.lean": "7d357d60f06e0b45b7219e6fa8ee7ad7a34edfa5b62185f93a922537d55950df",
+    "source/Papers/FiniteProjectionChecks.lean": "f5542e9bb50e1a5ce2111b1e3d5d9d50ea8cecfe34ab6f5164ccffbfdd9491bc",
+    "source/Papers/FiniteProjectionData.lean": "e6f2b392e66b18f9487f2fdbdc55df25f7067067f7d9bd1544313d9a1a9bb45c",
+    "source/Papers/ProjectedRelationTemplate.lean": "5b850b72006205ef28220267e5908a6108dfb04fb09d48304da98fe1ca3bc5c2",
+    "source/ProjectionTargets/B000.lean": "aa75ddaa640cf05bd5b925a6ddf99d3413e8640a0cd7f02b401cbecc70335499",
+    "source/ProjectionVertexSets.lean": "1f760a90fa064fb384d2c13d84ee3796639e863b465f34037cc384dc62f7d43e",
+    "source/RawBoundaryData.lean": "2da0fea85f12eeaef68ef66c51b890a84de5f5953b4cf5f3133a178c61c2dc67",
+    "source/RawTargetChunks/C000.lean": "2f9642da9c52e1a73f2dc477d9e9c7d16896802653b2efce6ba1246feec20cb7",
+    "source/RawTargetChunks/C001.lean": "9f2cec738603b79121913e7a26b210fb4004c77beca3b519d165f3de95e925f8",
+    "source/RawTargetChunks/C002.lean": "1e490f1d7d1605be7144ddbd87c93f4746fe09302f83ad8bfb419735d61d884a",
+    "source/RawTargetChunks/C003.lean": "f1566839374e2086efda1ce4c25ac6f7754c1ce8a8da0d0f5dbdc903799a5dd4",
+    "source/RawTargetChunks/C004.lean": "482c598e4e80efe1fa638556c91dfbc7662224f61d7e1405b55f4413c8046bfc",
+    "source/RawTargetChunks/C005.lean": "81947eb9ef17a94c65b24d0a16ef951924bd55c393b93a55f2ae1c6f1dce5afd",
+    "source/RawTargetChunks/C006.lean": "43b1e5915168453d202dca83dd246686d31594b37c4f4a32718a36527bd6b947",
+    "source/RawTargetChunks/C007.lean": "871b908d5c1ecbc7d35964201cdcf6b9257fc94cc7678f174382fd175893e3a1",
+    "source/RawTargetChunks/C008.lean": "8ab523e72de32b2620984d44bf79874f71fcfd9c230df6622e9e2c04f747eb58",
+    "source/RawTargetChunks/C009.lean": "90f1fd30d1f1afed0d9f5331390d939d7eafdb69683ce817dd89ef06cbb3f777",
+    "source/RawTargetChunks/C010.lean": "c6b4ff32935eef6b775d10d5e150f91c4ef751fbcbfd27cf470b08a635f595db",
+    "source/RawTargetChunks/C011.lean": "101a1fdb0dbb935b799e7fb134c05481dca0d4cb1485898c7d6dd4d40029633b",
+    "source/RawTargetChunks/C012.lean": "bfd73fde2a231a3e7c12707341eeccf8bee99758b3e741273b2531e76de2a8ad",
+    "source/RawTargetChunks/C013.lean": "897183569c73ff9ce6a9b36acafd359634418dc1df1d017e9cd2b808ce4b3fba",
+    "source/RawTargetChunks/C014.lean": "366170e53e0a4f5f40128850281d939f3246d7e5560aed6ffea9cbb77c794441",
+    "source/RawTargetChunks/C015.lean": "48f05713a45e17e87172e2203041ae334113ad61e4a7f69742f1702512a4ecef",
+    "source/RawTargetChunks/C016.lean": "82918ba10fb1d94c8135b93ef3f053896cc42dbd2cff3b532b7a3e8b473eef5b",
+    "source/RawTargetChunks/C017.lean": "fc52185aa965999b1747de36660eddc7a8c72fecbe656e2d2a21d4be30d26c30",
+    "source/RawTargetChunks/C018.lean": "4d5cb0fc29ea0e523fddb3f89b007e5e71e40f76b96ddb2629482635a3eb0b0a",
+    "source/RawTargetChunks/C018A.lean": "5cefa8aee533a914cb0e2488adc0663d32f2c6bc388f4b140bc6e65cb81b440e",
+    "source/RawTargetChunks/C018B.lean": "8be2e59d67765aef4605af3c958b1109573af9a6a29e0d6c661996a2a67f649b",
+    "source/RawTargetChunks/C019.lean": "a57eaaae3fb6f64cc68b87a0d1c820ee64a0889cc62a2b41c525f23119241c4e",
+    "source/RawTargetChunks/C019A.lean": "d6acf9f5a60c4facf1c89c43262556cfc19e2157746995083db1861bba689dbf",
+    "source/RawTargetChunks/C019B.lean": "2dee2d1c4d16b139dbcec79373e680e7e9fcff7882e63930da4625704980e443",
+    "source/RawTargetChunks/C020.lean": "ce2fe50b4814c3d166c637d1c7eeec8888be1774182c5720ef613c57d6ee5463",
+    "source/RawTargetChunks/C020A.lean": "c5d0d3ee0b62e7dc4d796278e5a94815451719c15d8d8eec69ce721c4ff54102",
+    "source/RawTargetChunks/C020B.lean": "334ac8dc011c3d7be6c4704ff8ce9f27a38e0fff3357a30889119292ceeb7d5d",
+    "source/RawTargetChunks/C021.lean": "6dfe51235ad6855dc32a6f464df01b59c039241c0142f8d25a38d3906d77f14b",
+    "source/RawTargetChunks/C021A.lean": "f283255d1d969a7dbbed9602e58bee8f824ea3fb3420d0fea2d9ba2c664a2fcc",
+    "source/RawTargetChunks/C021B.lean": "cb455c83723c8ec08f234aabafe786c6c0abe2db10e17ba48d66448646b72153",
+    "source/RawTargetChunks/C022.lean": "5825c6de8809925e4b3e7eab74cf687fe68ebe8379e79ee020e8ca7e5d9ecb97",
+    "source/RawTargetChunks/C022A.lean": "60267d39f60a0d088972570b8fb56195f62c980e157c59afd548118df63ab1ed",
+    "source/RawTargetChunks/C022B.lean": "bb69515fcbf7ac18b11a564735fea976d219cc6b14287918b1f55ee7bc977281",
+    "source/RawTargetChunks/C023.lean": "561fc4003f61166ad2ab21b824a6db9e4faa155a20fb379d02e384a1c6c3ef39",
+    "source/RawTargetChunks/C023A.lean": "3682cacb1bfc82f42bbc1214d96d09bf3309803519e71544ebcc0d4d585ea3eb",
+    "source/RawTargetChunks/C023B.lean": "0b10a0edfa3982f4d19bcc30d8712173b39564fa1715c01b65adf75edd819c92",
+    "source/RawTargetChunks/C024.lean": "3496849bba57e54da8821ed1c63f9ef97c60effb6171004f0c9bb027aef52fee",
+    "source/RawTargetChunks/C024A.lean": "66968ebc5ced75b9eb957c31bf4dadef2d582ecf34b8983f012bdf92fd5a8c02",
+    "source/RawTargetChunks/C024B.lean": "26eb89fe364e95ac525dd5219d826e91153b54b727dd8ff87e8dbcb84851b009",
+    "source/RawTargetChunks/C025.lean": "827ab0a519e9de84d96f2c248ddb6ac91c7dd8db699383a1abfb6acd57120275",
+    "source/RawTargetChunks/C025A.lean": "8ddaf7724e2f4eefa7fe9b582ac6e39feed163e4573ce354fb99be769a71d1ad",
+    "source/RawTargetChunks/C025B.lean": "96883b5e4f9087a1ecfadd00b99b17167017d91b2fb11b6e94ee73911ea92dab",
+    "source/RawTargetChunks/C026.lean": "db202fa8432f6bffc0feaa9529c15786244d8c7a3b2e4f1e04d0c853a53eed5d",
+    "source/RawTargetChunks/C026A.lean": "ff37f004dd398894c2174fb294b6e49dcd1d67db971a0fb6ae62c0136ed1933e",
+    "source/RawTargetChunks/C026B.lean": "203facb907436bc6d0a5635b92a92ed4d9f6d6de89d830308e81d771b8097603",
+    "source/RawTargetChunks/C027.lean": "1f097092816084e6c90f26a1c86420102c73062000542b76e30787d37378c243",
+    "source/RawTargetChunks/C027A.lean": "53ce51252d229219af45a09a7fdc5543f80fd8736f56f39b81abe33d2d099e4d",
+    "source/RawTargetChunks/C027B.lean": "f4eb8457497d4bce4d72f44dd06f8ab4b53ea4c4df1c72d3108fd57fd6cb2f69",
+    "source/RawTargetChunks/C028.lean": "a3e394e68a3b091a1bcfd36f1cae3a65199aeccdbf9c7dce606de29b119566d8",
+    "source/RawTargetChunks/C028A.lean": "5fbec57bba28fc4ff518ceacfadf70d9b9307e33340bc03fec8567fc7b950dff",
+    "source/RawTargetChunks/C028B.lean": "b0c8280c2d216d2965af0c29a193acd3c66bb367a079f1747eec331fdaac8e76",
+    "source/RawTargetChunks/C029.lean": "634f3880091b2ced6abecdeb17fdd68c0b8d5d83468f3c8906d4a10f15df557f",
+    "source/RawTargetChunks/C029A.lean": "a6e6420e9b714ec8978628e3706b582b89f5a926b82fe59c29cfef4b1352ce1d",
+    "source/RawTargetChunks/C029B.lean": "f461b488fd97b387b957656bf4211857a8bcb5f5f81401f978d1fd1d1cab4b9a",
+    "source/RawTargetChunks/C030.lean": "761fc88070d56c27ed342be5ab5103e87db95c8120caa95635d92b8e5703d36b",
+    "source/RawTargetChunks/C030A.lean": "4ca85bd45f996aed1bf1fbb3b435b72697a2dd0ba0676a115b263fa1506f2644",
+    "source/RawTargetChunks/C030B.lean": "d626829011ae05f1a44c4227d660bfc45c836fb370b465a6995b739ef62ef85e",
+    "source/RawTargetChunks/C031.lean": "95a1aef470bf4efbf3fcd7421379de2237b2f85f028a7417f854f0beade5ea63",
+    "source/RawTargetChunks/C031A.lean": "0ece32cdf855b3f04f40bdf3ecf9a3a3177d2caacbb2a85416182978eb014199",
+    "source/RawTargetChunks/C031B.lean": "334c87928cada7723e98f70dc602632e14e429cbe7ca06e1c6817d3975bec8d0",
+    "source/RawTargetChunks/C032.lean": "fc68116e6de5bfea89f69a838204287b01f9751d427557a3b40131434335fd78",
+    "source/RawTargetChunks/C032A.lean": "ed5338cc73eb8a271927b4be5073542d4849a94cc18b6447ef1aeb692cc0bd60",
+    "source/RawTargetChunks/C032B.lean": "d0234a47444163ea1e26f1a28c84261b1abb73e89579233aad3942a9e89b5b76",
+    "source/RawTargetChunks/C033.lean": "17c59a42a6fbe83ce90a5d64db702253040e39003eebaa41db46f6b5deb88480",
+    "source/RawTargetChunks/C033A.lean": "af57d0e0b895fa511ef58389ab8e6cc0009f431b018b1632c20fe98b6c9c206c",
+    "source/RawTargetChunks/C033B.lean": "603f6d7f3cbe73cf0ad4b1b12cdae806d716fcbb6d8c0398ccdb09616bc57940",
+    "source/RawTargetChunks/C034.lean": "cfe7b219466d0db7963c03f417afb8fc10308f878c689a3cbf3176b2afe6ed2b",
+    "source/RawTargetChunks/C034A.lean": "6af4a7e628d5484b4f12de1403d7032a4b9d43bd0a3f5fd4511a2a4feb342ada",
+    "source/RawTargetChunks/C034B.lean": "17a7a7e0ec68be3f2579e6fe92f6a1f95c403e8f661d9f5c8cf648d51d6a387e",
+    "source/RawTargetChunks/C035.lean": "391ef6223ed4b4764e2831059b7a34b28431be72238327e46b3f1c0e28e83ff7",
+    "source/RawTargetChunks/C035A.lean": "2e9fe2abceeab4e4bb87dcad8bc7181cf6adba0a2b1d31d3e2b28dfb50b9f7b3",
+    "source/RawTargetChunks/C035B.lean": "5dde5499200a7e2cde1fdb4efeb37ca02014d6deac49329e142ccd7932fb4094",
+    "source/RawTargetChunks/C036.lean": "c57a24ddc7a52505f9371d38e8d834e473abe9ecaadd8e421459f8b6f50496c6",
+    "source/RawTargetChunks/C036A.lean": "d98ffbb4aba8a28401fe21160567a35be9df6f37fb8fb6fef5471cf58476f7de",
+    "source/RawTargetChunks/C036B.lean": "b425fa2c4085e132a3e1cef08673b82b947e9dde4aaf553016d703566cbe4047",
+    "source/RawTargets.lean": "27b3adaf7ea74a9ee83504b100b1b13ba7919533d8967d431354cbf325be9f38",
+    "source/TerminalGeometry.lean": "b9a5af9dcb1a580c946f24e4ab3ebd72b5ab05e1120fac97325eb4fce898170d"
+  }
+}
