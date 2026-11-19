@@ -1,0 +1,95 @@
+version: v0.4
+project:
+  name: The first explicit nonpolytopal Bier spheres
+  description: 'Explicit finite complexes have nonpolytopal Bier spheres. The principal input has dimension
+    9 and yields a sphere of dimension 145181 with 290365 actual vertices; the all-label and self-dual
+    centrally symmetric variants are also included. Two formalized adaptations differ from the cited manuscript:
+    an all-column-sign construction gives an input-dimension-three example with sphere dimension 2^73+8
+    and 2^74+19 actual vertices, and the general family works under binomial(m,k) >= m^2-m+2, strengthening
+    the manuscript threshold m^2-m+3. A universal sign-rank obstruction gives bounds m^2-m+1 for fixed
+    positive face cardinality and m^2-m+2 for arbitrary cardinalities. Bier’s PL-sphere theorem, Forster’s
+    inequality, Hadamard restrictions, and all-sign matrix rank are included.'
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.CO
+  - math.MG
+  msc2020:
+  - 52B05
+  - 52B11
+sources:
+- title: The first explicit nonpolytopal Bier spheres
+  authors:
+  - Caius Folkerts
+  type: paper
+  relationship: adapts
+  location: paper.pdf
+  note: 'Formalizes Theorems1 and2 and the all-label and self-dual variants. Adapts Section4.3: the manuscript
+    uses75 selected triples and binomial(75,37) anchors, giving sphere dimension binomial(75,37)+8; the
+    Lean example instead uses all-column signs with2^73 anchors, giving dimension2^73+8. The general Lean
+    construction strengthens the manuscript threshold from m^2-m+3 to m^2-m+2. These are proved adaptations,
+    not the manuscript’s unchanged quantitative constructions.'
+related_formalizations:
+- title: caiusdfolkerts/research bier
+  relationship: repackages
+  id: https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/bier
+  note: The complete substantive development is copied here from this exact revision. Palomar packaging
+    adds the independent Challenge statement, Solution import, Comparator configuration, and this metadata.
+- title: SolarYs431/lean-eval-platonic-classification
+  relationship: adapts
+  id: https://github.com/SolarYs431/lean-eval-platonic-classification
+  note: Daniele Cappello's Apache-2.0 polytope infrastructure is adapted in the substantive sources. Original
+    attribution headers and licences are retained.
+automation:
+  methods:
+  - method: agent
+    tool_setup: The manuscript discloses GPT-6 Astra, GPT-5.6 Sol, and Kimi K3 assistance in developing
+      its proofs. Historical roles beyond that disclosure have not been independently reconstructed.
+  - method: agent
+    tool_setup: OpenAI Codex GPT-6.1 Sol prepared the Palomar statement and metadata, comparing the supplied
+      manuscript, README table, and Lean declarations.
+review:
+  status: unchecked
+  notes: 'Preparation update 2026-11-19T09:21:05.074828+00:00: Earlier snapshot a13d011870ffcb4eb22874da12209a060ebaa4bb
+    passed full mechanical verification. Editorial review ba7795aab85be4af4915af8f8d72a911b3f6644e4ff0f0e707e043c02dd5f088
+    identified inaccurate manuscript provenance for the two adaptations. This successor corrects the account
+    and descriptive comments, preserving all formal statements, definitions, proof bodies, and selections.
+    Its subsequent exact-commit mechanical and editorial reports determine validation status. Historical
+    preparation note for the earlier snapshot: The preceding exact21-target Source/Solution built successfully
+    at commit 2eb0b1801cd56296e9d0a9920df75f2cec197193. Its complete read-only raw comparison diagnostic
+    found four remaining failures caused by an earlier unrelated ground-proof alias and the resulting
+    generated-helper number shift in spectralNorm. This candidate changes only Challenge declaration order:
+    the identical literal norm is elaborated before the unrelated polytope declarations. The exact candidate
+    plus an actual norm rfl and three measured type lookups passed canonical-only run44391777414. All
+    three helper-name predictions were observed; the ground proof type was fully captured and matched,
+    while the generic type was explicitly truncated to8192 of41790 characters. Source/Solution, actual
+    Comparator, independent kernels and clean editorial review for this reordered candidate remain pending.'
+limitations:
+- Six supplied record constructors are uniquely fixed by complete independently literal projection equations;
+  their remaining fields are proof certificates. Original11 substantive roots and8 existing support/specification
+  targets are retained, with2 genuine measured class-proof supports added. The21-target original snapshot
+  subsequently passed full mechanical verification; the corrected successor requires its own exact-commit
+  check.
+- The registry entry records all principal example variants, both universal obstruction regimes, and the
+  final construction family; the Schur-realization and padded-inverse-span lemmas remain proved dependencies
+  rather than separate registry conclusions.
+- The balanced-column-sign construction with binomial(75,37) anchors in manuscript Section4.3 is not the
+  selected three-dimensional example. The entry records the separately proved all-column-sign adaptation
+  instead.
+fidelity:
+  divergences: 'Six proof-bearing record constructors are supplied definitions with complete independently
+    literal equations fixing every non-Prop record field: filtered extreme vertices, standard basis face
+    images, exact nonempty input faces, complement duality, deleted-join Bier faces and the absent ghost
+    label. Two exact source universe contexts are copied. The two named class-proof supports are retained.
+    The new declaration order matches the measured Source helper names and avoids reusing an unrelated
+    earlier generated proof; canonical rfl confirms the literal norm value is unchanged. All formalized
+    hypotheses and conclusions are unchanged by this presentation correction. Relative to the manuscript,
+    the general threshold is strengthened from m^2-m+3 to m^2-m+2, and the input-dimension-three construction
+    uses all-column signs and2^73 anchors instead of balanced signs and binomial(75,37) anchors. These
+    adaptations must not be read as the manuscript’s identical parameter range or quantitative example.
+    The earlier exact snapshot passed full mechanical verification; this successor requires its own subsequent
+    report.'
