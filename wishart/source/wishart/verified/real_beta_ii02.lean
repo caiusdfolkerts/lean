@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import wishart.verified.real_beta_ii01
 public import TauCeti.LinearAlgebra.Matrix.Rank

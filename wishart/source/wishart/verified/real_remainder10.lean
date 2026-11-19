@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import wishart.verified.real_remainder09
 public import TauCeti.Probability.Distributions.Wishart.Agreement
@@ -24,7 +25,7 @@ namespace Wishart.Spectral
 open WishartVerification
 
 def identitySymmetric (p : ℕ) : Sym p :=
-  ⟨1, Matrix.isHermitian_one.isSelfAdjoint⟩
+  ⟨1, WishartSharedProof.realIdentitySelfAdjoint _⟩
 
 def shiftSymmetric {p : ℕ} (c : ℝ) (X : Sym p) : Sym p :=
   X + c • identitySymmetric p
@@ -1064,8 +1065,8 @@ theorem rankPairThreshold_iff_largest_second {d : ℕ} (hd : 2 ≤ d)
 
 def orderedPairRankThreshold (rank : ι → ℕ) (A : Finset ι) (p : ℕ) (n : ℝ) : Prop :=
   ∀ h : 2 ≤ Fintype.card A,
-    min ((descendingRanks rank A ⟨0, by omega⟩ : ℝ) +
-      descendingRanks rank A ⟨1, by omega⟩) ((p : ℝ) + 1) ≤ n
+    min ((descendingRanks rank A ⟨0, WishartSharedProof.zero_lt_of_two_le h⟩ : ℝ) +
+      descendingRanks rank A ⟨1, WishartSharedProof.one_lt_of_two_le h⟩) ((p : ℝ) + 1) ≤ n
 
 theorem orderedPairRankThreshold_iff (rank : ι → ℕ) (A : Finset ι) (p : ℕ) (n : ℝ) :
     orderedPairRankThreshold rank A p n ↔ rankPairThreshold rank A p n := by

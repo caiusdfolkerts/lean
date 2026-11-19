@@ -1,4 +1,5 @@
 module
+public import WishartCommonProofWitnesses
 public import Mathlib
 /-! Literal canonical primitives for all twenty Wishart targets.
 Data and genuine constructor proofs adapted from pinned TauCeti06d5bb;

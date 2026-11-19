@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import Mathlib.Data.Fin.Basic
 public import Mathlib.Logic.Equiv.Basic

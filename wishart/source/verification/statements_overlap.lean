@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import wishart.verified.overlap_obstruction
 

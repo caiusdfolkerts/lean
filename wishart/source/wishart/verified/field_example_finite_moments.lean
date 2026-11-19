@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import wishart.verified.field_analytic01
 public import wishart.verified.field_spectral_moments

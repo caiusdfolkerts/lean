@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import wishart.verified.field_frontier02
 public import Mathlib.MeasureTheory.Constructions.Pi

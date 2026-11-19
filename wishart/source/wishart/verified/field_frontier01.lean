@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import wishart.verified.field_analytic_union
 public import Mathlib.Analysis.Calculus.FDeriv.Star

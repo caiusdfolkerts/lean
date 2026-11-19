@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import Mathlib.MeasureTheory.Integral.Lebesgue.Add
 public import Mathlib.Topology.Instances.ENNReal.Lemmas

@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import wishart.verified.real_remainder06
 
@@ -614,7 +615,7 @@ theorem exists_positive_linear_support {Q : SymmetricMatrix k}
   nlinarith
 
 def identitySymmetric (k : ℕ) : SymmetricMatrix k :=
-  ⟨1, Matrix.isHermitian_one.isSelfAdjoint⟩
+  ⟨1, WishartSharedProof.realIdentitySelfAdjoint _⟩
 
 @[simp] theorem coe_identitySymmetric :
     (identitySymmetric k : Matrix (Fin k) (Fin k) ℝ) = 1 := rfl

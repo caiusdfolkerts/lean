@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import wishart.verified.lemma_3_1_integer
 public import wishart.verified.real_radial_c2

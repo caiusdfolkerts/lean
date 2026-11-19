@@ -9,8 +9,14 @@ selections are specific to Wishart. This module is audit infrastructure, not a p
 mathematical axioms or theorem statements.
 -/
 module
+public import WishartSourceContext
 
 /- BEGIN GENERATED LOCAL IMPORTS -/
+import all WishartCommonProofWitnesses
+import all WishartSourceContext
+import all WishartValuePreservation
+import all WishartLiteralPrimitives
+import all WishartLiteralPrimitivesSourceBridge
 import all TauCeti.Algebra.Module.Equiv.Basic
 import all TauCeti.Algebra.Order.Field.Basic
 import all TauCeti.Algebra.Quaternion.ComplexMatrix
@@ -623,6 +629,12 @@ run_cmd do
     liftIO <| IO.FS.removeFile outputPath
   -- BEGIN GENERATED OWNED MODULES
   let projectModules : Array Name := #[
+    `WishartCommonProofWitnesses,
+    `WishartSourceContext,
+    `WishartValuePreservation,
+    `WishartLiteralPrimitives,
+    `WishartLiteralPrimitivesSourceBridge,
+
     `TauCeti.Algebra.Module.Equiv.Basic,
     `TauCeti.Algebra.Order.Field.Basic,
     `TauCeti.Algebra.Quaternion.ComplexMatrix,
@@ -1113,7 +1125,8 @@ run_cmd do
     | none => env.mainModule
   -- A changed mathematical import graph must regenerate the explicit list.
   for moduleName in moduleNames do
-    let localPrefix := moduleName.toString.startsWith "wishart." ||
+    let localPrefix := moduleName.toString.startsWith "Wishart" ||
+      moduleName.toString.startsWith "wishart." ||
       moduleName == `wishart_main ||
       moduleName.toString.startsWith "TauCeti." ||
       moduleName.toString.startsWith "verification.statements_"

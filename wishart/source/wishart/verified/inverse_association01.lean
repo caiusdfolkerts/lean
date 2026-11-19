@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import wishart.verified.core05
 public import TauCeti.Probability.Distributions.Wishart.Inverse.Basic

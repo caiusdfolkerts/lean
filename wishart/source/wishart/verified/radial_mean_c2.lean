@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import wishart.verified.finite_order_stein
 public import wishart.verified.finite_order_integral

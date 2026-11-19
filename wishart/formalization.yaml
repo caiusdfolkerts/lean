@@ -22,7 +22,11 @@ sources:
     note: >-
       Theorem 1.1, proportional shifts and Proposition 4.1, Theorems 5.1-5.3,
       Corollary 5.4, Theorems 6.1 and 6.3, Corollary 6.2, and Theorem 7.1.
-      Exact all-rank moment statements include zero-column compressions.
+      Exact all-rank moment statements include zero-column compressions. The
+      corrected archived manuscript ba59bf8832e2d13d233c440b9a1808a1cb979dbfec6f8ae473adaa8f068b3cf1
+      explicitly sums only positive-rank compression exponents in Corollary 6.2.
+      The exact baseline and pre-disclosure original, and the separate historical
+      correction receipt, are distinguished in verification/paper-versions.json.
 classification:
   arxiv: [math.PR]
   msc2020: [60E15, 62H10]
@@ -31,30 +35,40 @@ automation:
     - method: agent
       tool_setup: OpenAI Codex with GPT-6.1 Sol, preparing Palomar packaging.
       notes: >-
-        The supplied paper discloses GPT-6 Astra, GPT-5.6 Sol, and Kimi K3
+        The archived baseline paper discloses GPT-6 Astra, GPT-5.6 Sol, and Kimi K3
         assistance in developing the proofs. Prior prompt history was not
         reconstructed. Packaging copies substantive proofs and extracts an
         independent custom-definition closure for all selected principal results.
+        Packaging also names canonical proposition witnesses and uses genuine
+        whole-value equalities and built-in definition equations for fidelity.
 review:
   status: unchecked
   notes: >-
-    Canonical independent elaboration of the complete 996-line Challenge
-    passed run 44467724333. Independent genuine primitive constructors passed
-    run 44464838345. The ordered source-equivalence diagnostic 44467755545
-    preserved the independently compiled module, verified and compiled all
-    47 exact upstream source files, and proved all ten complete value
-    specifications plus eight underlying real-law transport identities.
-    These are component checks. The complete original paper proof replay,
-    strict Comparator and mandatory Lean/NanoDa verification of this full
-    candidate remain pending. No registry acceptance or human review is claimed.
+    The preceding canonical full snapshot 141c03dd3526da7106331c9a20456f11e53b26e2
+    built Source and Solution successfully, then failed strict Comparator.
+    Exact raw diagnostics 44473421580 and 44481298711 retained all 167
+    mismatch names and 138 bounded definition-value leaves. This candidate
+    normalizes only measured proposition witnesses and superclass syntax,
+    preserving all original 20 paper/support targets and literal data.
+    Its complete 962-line independent interface passed current-hash elaboration
+    in run 44487625189; all 27 complete equation declarations were retained.
+    The 37 genuine canonical witness/record-equality proofs passed 44486271637.
+    Actual Source/Solution,
+    strict Comparator and mandatory Lean/NanoDa checks remain required. No full pass,
+    registry acceptance or human review is claimed for this revision.
+    Genuine original-formula preservation proofs for all four complete finite
+    rank thresholds, the full spectral index permutation and identity subtype
+    value passed canonical proof smoke44488469049 with zero placeholders.
+
 fidelity:
   notes: >-
     No Gaussian-row restriction is imposed on the real shape in Theorem 1.1.
     All rank restrictions on real overlaps, actual almost surely constant
     beta-II factor removals, extended integrals, singular spectral boundary
-    values, and positive-rank effective exponent sums are retained. The
-    corrected manuscript and original-paper provenance are retained under
-    verification/. Supporting radial identities and analytic lemmas remain
+    values, and positive-rank effective exponent sums are retained. The corrected archived manuscript is paper.pdf. The exact baseline with
+    its AI disclosure and the pre-disclosure original are retained under
+    verification/. The paper-version manifest distinguishes every actual
+    input from the older historical correction receipt. Supporting radial identities and analytic lemmas remain
     in the full substantive source and are not separately selected targets.
     The Challenge imports canonical Mathlib only. It gives complete literal
     values for the real laws, Gaussian-Gram statistic and law, Frobenius matrix
@@ -70,14 +84,23 @@ fidelity:
     The unused lower-case support modules are outside the default build roots;
     every actual canonical import and new bridge module is explicitly registered.
     The Mathlib dependency closure and Lean toolchain pins are unchanged.
+    Measured proof-reference normalization imports proved canonical witnesses
+    into own paper modules; four finite-index proofs, two identity subtype
+    proofs and spectral cardinality proof terms use named genuine lemmas.
+    Original paper theorem proofs, hypotheses and functional input models
+    are retained. Whole real and complex superclass record equalities and
+    original-formula equalities provide explicit semantic preservation checks.
+    Built-in Lean equation lemmas fully fix 27 mathematical definition values
+    whose raw reducibility heights differed; no unrestricted value is supplied.
     Source snapshot is caiusdfolkerts/research at
     e0696fddcd3d10b5d6461e62e9b2f02c4195be37.
 
 comparison_support:
   note: >-
     The original twenty principal/support targets are retained. Ten additional
-    complete primitive value specifications and four constructor/Hermitian
-    support theorems are compared without increasing the paper-result count.
+    complete primitive value specifications, gauge record specifications,
+    proved proposition witnesses, constructor support and 27 built-in exact
+    definition equations are compared without increasing the paper-result count.
     The semantic definition targets have genuine literal values in Challenge
     and their entire records/functions are fixed by the compared equality
     specifications; they are not unconstrained function or geometry holes.

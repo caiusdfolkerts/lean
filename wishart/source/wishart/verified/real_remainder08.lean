@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import wishart.verified.real_remainder07
 public import Mathlib.Algebra.Order.Rearrangement
@@ -1504,7 +1505,7 @@ def gaugeRankTripleThreshold (rank : ι → ℕ) (A : Finset ι) (n : ℝ) : Pro
     i ≠ j → i ≠ k → j ≠ k → rank i ≤ rank j → rank i ≤ rank k → (rank i : ℝ) + 1 ≤ n
 
 def orderedGaugeRankThreshold (rank : ι → ℕ) (A : Finset ι) (n : ℝ) : Prop :=
-  ∀ h : 3 ≤ Fintype.card A, (descendingRanks rank A ⟨2, by omega⟩ : ℝ) + 1 ≤ n
+  ∀ h : 3 ≤ Fintype.card A, (descendingRanks rank A ⟨2, WishartSharedProof.two_lt_of_three_le h⟩ : ℝ) + 1 ≤ n
 
 theorem gaugeRankTripleThreshold_of_card_le_two (rank : ι → ℕ) (A : Finset ι)
     (n : ℝ) (hA : A.card ≤ 2) : gaugeRankTripleThreshold rank A n := by

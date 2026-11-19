@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import wishart.verified.real_remainder05
 public import Mathlib.Analysis.InnerProductSpace.EuclideanDist
@@ -833,8 +834,8 @@ theorem rankTripleThreshold_iff_largest_third {d : ℕ} (hd : 3 ≤ d)
 otherwise it reads precisely `n ≥ min(k_(1)+k_(3), p+1)` in descending order. -/
 def orderedRankThreshold (rank : ι → ℕ) (A : Finset ι) (p : ℕ) (n : ℝ) : Prop :=
   ∀ h : 3 ≤ Fintype.card A,
-    min ((descendingRanks rank A ⟨0, by omega⟩ : ℝ) +
-      descendingRanks rank A ⟨2, by omega⟩) ((p : ℝ) + 1) ≤ n
+    min ((descendingRanks rank A ⟨0, WishartSharedProof.zero_lt_of_three_le h⟩ : ℝ) +
+      descendingRanks rank A ⟨2, WishartSharedProof.two_lt_of_three_le h⟩) ((p : ℝ) + 1) ≤ n
 
 theorem orderedRankThreshold_iff (rank : ι → ℕ) (A : Finset ι) (p : ℕ) (n : ℝ) :
     orderedRankThreshold rank A p n ↔ rankTripleThreshold rank A p n := by

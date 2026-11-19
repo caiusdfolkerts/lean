@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import TauCeti.Algebra.Quaternion.ComplexMatrix
 public import Mathlib.Analysis.Matrix.PosDef

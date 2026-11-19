@@ -2,7 +2,7 @@
 
 [![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/research/project-wishart.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/research/actions/workflows/project-wishart.yml)
 
-This project contains the full Lean4 formalisation for all principal results in my paper *The Wishart product inequality and spectral correlation*. I've included the paper as paper.pdf.
+This project contains the full Lean4 formalisation for all principal results in my paper *The Wishart product inequality and spectral correlation*. The corrected manuscript is included as paper.pdf; the exact baseline manuscript with its AI assistance disclosure is preserved under verification/.
 
 ## Verification
 
@@ -42,42 +42,60 @@ Here's a guide to help you navigate this repo! All verified theorems/proposition
 The independently extracted `Challenge.lean` selects all principal theorems and
 substantive corollaries: Theorem 1.1, proportional shifts and Proposition 4.1,
 Theorems 5.1-5.3, Corollary 5.4, Theorem 6.1, Corollary 6.2, Theorem 6.3 and
-Theorem 7.1, with the full exact all-rank moment ranges and gamma identities.
-`Solution.lean` imports the substantive proofs under their original names.
-The 15 principal declarations are listed in `comparator.json`, alongside five
-supporting theorems and two proof-valued BorelSpace interface definitions.
+Theorem 7.1, including the exact all-rank moment ranges and gamma identities.
+Its fifteen principal declarations and five original supporting theorems remain
+selected. Ten additional complete primitive-value specifications and four genuine
+constructor/Hermitian supports are comparison obligations, not additional paper
+results. Seven proof-instance targets are propositions. Ten semantic definition
+values are entirely fixed by the complete literal value specifications.
 
 The real nonsingular range is the full real-shape range alpha > p-1; a
 Gaussian-row representation is not inserted as a hypothesis. Real overlap
 rank conditions remove actual constant/full-rank factors as in the source.
-The inverse comparison is on the actual positive ordered spectrum and retains
-all single, remaining and joint integrability hypotheses and the common
-monotonicity direction. Zero-column determinant factors contribute exponent
-zero in exact inverse and beta-II moment criteria. Beta-II rank removal tests
-actual almost sure constancy. Complex and quaternion laws include actual
-Lebesgue-density normalization, singular Gaussian Gram alternatives, extended
-spectral boundary values and finite determinant powers.
+The inverse comparison uses the actual positive ordered spectrum and retains
+all integrability hypotheses and the common monotonicity direction.
+Zero-column determinant factors contribute exponent zero in the exact inverse
+and beta-II moment criteria. Beta-II rank removal tests actual almost sure
+constancy. Complex and quaternion laws include the exact Lebesgue-density
+normalization, singular Gaussian-Gram alternatives, spectral boundary values
+and finite determinant powers.
 
-The Challenge imports Mathlib and canonical TauCeti at the recorded support
-revision. The canonical toolchain and dependency manifest were verified to
-match this project's rc1 toolchain and Mathlib pin. Solution proof imports have also been normalized to the exact canonical
-TauCeti paths, so private constant module identities match the Challenge.
-The supplied local support files and their notices remain retained but unused. Supporting analytic and
-radial lemmas remain in the proof source and are not separate Comparator
-targets. Manuscript corrections and the original paper are preserved under
-`verification/`.
+Challenge imports only canonical Mathlib. Its complete literal primitives fix
+Frobenius norms and inner products with the exact subtype uniformity, upper-
+triangular Lebesgue normalization, the complete real and inverse laws including
+invalid parameters, all rectangular congruence maps, Gaussian-Gram sampling at
+every integer size and scale, and the standard quaternion representation.
+The exact 215-module canonical Tau Ceti closure is retained only for the proofs
+under `source/TauCeti`, with unchanged upstream bytes and licence provenance
+under `licenses/vendor/tauceti`. Original paper proofs and unused readable
+lower-case support copies are retained. Default proof roots register the actual
+canonical closure and own paper modules. Mathlib and Lean pins are unchanged.
 
-The independent Challenge elaborates with the exact pinned canonical TauCeti
-support closure and only its 20 intended theorem placeholders. Full Solution
-compilation, strict dependency comparison and independent kernel checking
-remain pending. This is an unchecked packaging draft.
+The previous full snapshot built the paper proofs and Solution successfully,
+then failed strict Comparator. The repair retains every original principal
+result and its complete input model. It names only the measured proposition
+witnesses, proves whole superclass-record equalities, and constrains every
+selected mathematical definition by its complete literal value. The finite
+index and identity proof replacements also have original-formula equality
+checks. The current962-line independent Challenge passed run 44487625189, including all 27
+complete value equations. All 37 genuine canonical witness and whole-record
+identity proofs passed 44486271637. Source/Solution replay, strict Comparator
+and mandatory kernel verification remain separate required checks.
+The six genuine original-formula preservation proofs passed run 44488469049
+without placeholders. No full pass or registry acceptance is claimed for this
+prepared revision.
 
-## Canonical statement and source provenance
+## Paper versions and AI disclosure
 
-This candidate retains all twenty previously selected principal/support declarations, including unrestricted real shape, finite and extended moments, equality and independence clauses, real overlaps, inverse laws, spectral boundary values, and complex/quaternion density and singular Gaussian-Gram results. Challenge imports only canonical Mathlib. Its complete literal primitives fix Frobenius norms/inner products and subtype uniformity, normalized real and inverse laws (including invalid parameters), rectangular congruence, Gaussian-Gram sampling at every integer size and scale, and the standard quaternion representation. Ten additional complete value specifications and four constructor supports are comparison obligations rather than additional paper results.
-
-The exact 215-module canonical Tau Ceti source closure is retained under source/TauCeti, with unchanged upstream bytes and licence provenance under licenses/vendor/tauceti. Original paper proofs and unused readable source files are retained. Default proof roots use the actual canonical closure and own paper modules, avoiding the unrelated upstream all-module build.
-
-Verification is pending for this complete candidate. Independent canonical primitive proofs passed run44464838345; the complete interface and exact source equivalences are separate checks. No current full Source/Solution/Comparator/kernel pass is claimed by component elaboration.
-
-Exact component results: complete996-line canonical Challenge PASS run44467724333; all10 complete primitive-value equivalences and8 underlying transport identities PASS run44467755545 after checking47 canonical source files and preserving the independently compiled primitive artifacts. Complete Source/Solution replay, strict Comparator and independent mandatory kernels remain pending. The seven proof-instance comparison targets are propositions, rather than additional paper results or free semantic data.
+`paper.pdf` is the exact corrected archival manuscript, SHA256
+`ba59bf8832e2d13d233c440b9a1808a1cb979dbfec6f8ae473adaa8f068b3cf1`.
+All principal theorem statements agree with the baseline, apart from the
+positive-rank index in Corollary 6.2's exact moment threshold, which agrees
+with the selected formal statements. Its Gaussian-section proof uses convex
+sections and Brunn-Minkowski. The original baseline with its AI assistance
+disclosure and the pre-disclosure original remain under `verification/`.
+`verification/paper-versions.json` records their exact hashes and distinguishes
+the older correction receipt from the currently included PDF. The baseline
+abstract discloses assistance from GPT-6 Astra, GPT-5.6 Sol and Kimi K3;
+that disclosure is preserved here and in `formalization.yaml`. No prior prompt
+history or division of work among systems is reconstructed.

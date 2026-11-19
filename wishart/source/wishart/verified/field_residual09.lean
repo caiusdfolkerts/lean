@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import wishart.verified.field_residual08
 public import Mathlib.Topology.Order.MonotoneConvergence

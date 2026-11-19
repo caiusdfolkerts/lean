@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import wishart.verified.field_analytic01
 public import wishart.verified.real_remainder09
@@ -136,11 +137,11 @@ theorem permutation_diagonal {p : ℕ} (e : Equiv.Perm (Fin p)) (lam : Fin p →
   simp [Matrix.submatrix_apply, Matrix.diagonal_apply, Equiv.Perm.inv_def, e.injective.eq_iff]
 
 def orderedIndex (p : ℕ) : Equiv.Perm (Fin p) :=
-  (finCongr (Fintype.card_fin p).symm).trans
+  (finCongr (WishartSharedProof.finCard_symm p)).trans
     (Fintype.equivOfCardEq (Fintype.card_fin (Fintype.card (Fin p))))
 
 def orderedValues {p : ℕ} {A : Matrix (Fin p) (Fin p) 𝕜} (hA : A.IsHermitian) : Fin p → ℝ :=
-  fun i => hA.eigenvalues₀ (Fin.cast (Fintype.card_fin p).symm i)
+  fun i => hA.eigenvalues₀ (Fin.cast (WishartSharedProof.finCard_symm p) i)
 
 theorem orderedValues_eq {p : ℕ} {A : Matrix (Fin p) (Fin p) 𝕜}
     (hA : A.IsHermitian) : orderedValues hA = hA.eigenvalues ∘ orderedIndex p := by

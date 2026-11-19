@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import wishart.verified.real_remainder08
 public import Mathlib.LinearAlgebra.ExteriorPower.Basis

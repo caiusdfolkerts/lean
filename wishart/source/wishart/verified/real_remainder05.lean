@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import wishart.verified.real_remainder04
 public import Mathlib.Analysis.Convex.Approximation

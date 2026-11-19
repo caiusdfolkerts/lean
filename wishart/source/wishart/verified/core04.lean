@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import wishart.verified.core03
 public import TauCeti.Probability.Distributions.Gaussian.Density

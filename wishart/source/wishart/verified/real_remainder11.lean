@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import wishart.verified.real_remainder10
 
@@ -615,8 +616,8 @@ theorem gramRankTripleThreshold_iff_largest_third {d : ℕ} (hd : 3 ≤ d)
 otherwise it reads precisely `n ≥ k_(1)+k_(3)` in descending order. -/
 def gramOrderedRankThreshold (rank : ι → ℕ) (A : Finset ι) (n : ℕ) : Prop :=
   ∀ h : 3 ≤ Fintype.card A,
-    descendingRanks rank A ⟨0, by omega⟩ +
-      descendingRanks rank A ⟨2, by omega⟩ ≤ n
+    descendingRanks rank A ⟨0, WishartSharedProof.zero_lt_of_three_le h⟩ +
+      descendingRanks rank A ⟨2, WishartSharedProof.two_lt_of_three_le h⟩ ≤ n
 
 theorem gramOrderedRankThreshold_iff (rank : ι → ℕ) (A : Finset ι) (n : ℕ) :
     gramOrderedRankThreshold rank A n ↔ gramRankTripleThreshold rank A n := by

@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import wishart.verified.core02
 public import Mathlib.Analysis.Calculus.FDeriv.OfCompLeft

@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import wishart.verified.field_residual06
 public import Mathlib.Analysis.Matrix.PosDef

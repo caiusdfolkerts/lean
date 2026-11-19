@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import wishart.verified.radial_mean_c2
 public import wishart.verified.finite_order_congruence

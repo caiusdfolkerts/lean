@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import wishart.verified.field_residual01
 public import Mathlib.Analysis.SpecialFunctions.Log.Basic

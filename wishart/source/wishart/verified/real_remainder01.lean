@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import wishart.verified.real_core_extensions
 public import TauCeti.Probability.Distributions.Wishart.LowDimension

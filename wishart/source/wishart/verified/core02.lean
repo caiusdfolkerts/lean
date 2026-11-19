@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import wishart.verified.core01
 public import Mathlib.Analysis.Normed.Operator.Prod
@@ -3482,7 +3483,7 @@ open scoped Classical
 namespace Wishart.Spectral
 
 noncomputable def ascendingIndexEquiv (p : ℕ) : Equiv.Perm (Fin p) :=
-  Fin.revPerm.trans ((finCongr (Fintype.card_fin p).symm).trans
+  Fin.revPerm.trans ((finCongr (WishartSharedProof.finCard_symm p)).trans
     (Fintype.equivOfCardEq (Fintype.card_fin (Fintype.card (Fin p)))))
 
 noncomputable def ascendingSpectrum {p : ℕ} (S : Sym p) : Fin p → ℝ :=

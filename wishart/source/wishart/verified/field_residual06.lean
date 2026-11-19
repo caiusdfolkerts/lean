@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import wishart.verified.field_residual05
 public import Mathlib.MeasureTheory.Group.Measure

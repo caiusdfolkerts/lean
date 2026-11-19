@@ -1,4 +1,5 @@
 module
+public import WishartSourceContext
 
 public import TauCeti.Probability.Distributions.Wishart.Bartlett
 public import TauCeti.Probability.Distributions.Gaussian.ChiSquared

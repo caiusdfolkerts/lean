@@ -301,6 +301,9 @@ roots = [
   "TauCeti.Topology.Instances.Matrix",
   "TauCeti.Topology.Order.Compact",
   "TauCeti.Topology.Semicontinuity.Approximation",
+  "WishartCommonProofWitnesses",
+  "WishartSourceContext",
+  "WishartValuePreservation",
   "WishartLiteralPrimitives",
   "WishartLiteralPrimitivesSourceBridge"
 ]
