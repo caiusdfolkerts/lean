@@ -1,5 +1,3 @@
-# Palomar submission: sublattice_resolutions
+# Rees exact noncommutative ideal/value transport API proof
 
-Substantive source snapshot of [caiusdfolkerts/research](https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/sublattice_resolutions), revision `e0696fddcd3d10b5d6461e62e9b2f02c4195be37`.
-
-The complete selected development, paper, metadata, and Comparator configuration are in `sublattice_resolutions/`. This branch prepares a registry submission; it does not claim registry acceptance. See `sublattice_resolutions/formalization.yaml` for exact scope and provenance.
+All prior138-line controls are retained. The two new propositions have complete actual proofs: ring equivalences transport the underlying actual ideals of two-sided ideals under a proved membership iff, and submodule equivalences preserve the actual underlying-value inverse law. These exact reusable proofs will be inlined in Source, with explicit concrete ring dictionaries and an actually proved boundary membership equivalence; no additional paper hypothesis. No full Source, Comparator or paper proof pass is claimed.
