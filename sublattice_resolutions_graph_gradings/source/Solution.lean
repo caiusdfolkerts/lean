@@ -3131,11 +3131,14 @@ private theorem graphWeightedMonomialBetti_bridge {Γ : Type v} [AddCommMonoid �
     (FourPapers.Sublattice.monomialIdeal_weighted_homogeneous
       (FourPapers.Sublattice.graphMonomialPowerFamily G s) ω) p γ
 
+set_option maxHeartbeats 4000000 in
 private theorem graphOrdinaryBinomialBetti_bridge
     (G : SimpleGraph (Fin N)) (s p : ℕ) (q : ℤ) :
     Koszul.betti ((graphBinomialIdeal (K := K) G)^s) p q =
-      FourPapers.Sublattice.graphBinomialIntegerBetti (K := K) G s p q :=
-  Koszul.betti_eq_derivedTor _ (FourPapers.Sublattice.graphBinomialPower_homogeneous G s) p q
+      FourPapers.Sublattice.graphBinomialIntegerBetti (K := K) G s p q := by
+  change Koszul.betti (FourPapers.Sublattice.graphBinomialPowerData (K := K) G s).ideal p q = _
+  exact Koszul.betti_eq_derivedTor (FourPapers.Sublattice.graphBinomialPowerData (K := K) G s)
+    (FourPapers.Sublattice.graphBinomialPower_homogeneous G s) p q
 
 private theorem graphOrdinaryMonomialBetti_bridge
     (G : SimpleGraph (Fin N)) (s p : ℕ) (q : ℤ) :
