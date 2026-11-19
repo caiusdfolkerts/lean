@@ -1,5 +1,3 @@
-# Palomar submission: toric_power_maps
+# Exact Toric original-source error diagnostic
 
-Substantive source snapshot of [caiusdfolkerts/research](https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/toric_power_maps), revision `e0696fddcd3d10b5d6461e62e9b2f02c4195be37`.
-
-The complete selected development, paper, metadata, and Comparator configuration are in `toric_power_maps/`. This branch prepares a registry submission; it does not claim registry acceptance. See `toric_power_maps/formalization.yaml` for exact scope and provenance.
+Build only the exact three failing source targets from immutable4e3c0d23, after materializing the entire exact canonical manifest and building their selected canonical imports. Original source file bytes, original Lake configuration and toolchain are checked before/after; all dependency revisions and source cleanliness are checked. Each target has600second/8GiB-address-space/4MiB-output bounds; all error-location counts and excerpt/output truncation flags are explicit. This source-only diagnostic does not run a full source closure, Comparator, kernel replay or intake and cannot replace mandatory full preflight.
