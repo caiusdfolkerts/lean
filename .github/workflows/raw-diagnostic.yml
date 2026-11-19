@@ -147,6 +147,17 @@ jobs:
           SUBMISSION_TOOLCHAIN: ${{ steps.prepare.outputs.lean_toolchain }}
         run: elan toolchain install "$SUBMISSION_TOOLCHAIN"
 
+      - name: Validate exact core-only helper before any project build
+        id: helpercheck
+        if: true && steps.prepare.outputs.ready == 'true'
+        env:
+          SUBMISSION_TOOLCHAIN: ${{ steps.prepare.outputs.lean_toolchain }}
+        run: |
+          python3 diagnostic-tools/reports/raw_value_diagnostic/validate_helper.py \
+            --toolchain "$SUBMISSION_TOOLCHAIN" \
+            --helper diagnostic-tools/reports/raw_value_diagnostic/AuditExportsFirstDifferences.lean \
+            --output "$RUNNER_TEMP/helper-check"
+
       - name: Build pinned bubblewrap
         id: bwrap
         if: true && steps.prepare.outputs.ready == 'true'
@@ -189,5 +200,7 @@ jobs:
             ${{ runner.temp }}/raw-metadata-diagnostic/audit-bounded.log
             ${{ runner.temp }}/raw-metadata-diagnostic/mechanical-report-at-audit.json
             ${{ runner.temp }}/mechanical-report.json
+            ${{ runner.temp }}/helper-check/helper-check.json
+            ${{ runner.temp }}/helper-check/helper-check-bounded.log
           if-no-files-found: warn
           retention-days: 30

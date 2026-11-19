@@ -152,17 +152,17 @@ def main (args : List String) : IO UInt32 := do
     let emitted := candidates.extract 0 (min 1 (64 - typeLeaves))
     IO.println (selectedTypeSummary a b candidates emitted.size).compress
     if n.toString.startsWith "PalomarProjectionAreas.NumericProofs." then
-      let at := reprStr a.type
-      let bt := reprStr b.type
+      let challengeTypeText := reprStr a.type
+      let solutionTypeText := reprStr b.type
       IO.println (Json.mkObj [("kind", toJson "NUMERIC_SUPPORT_COMPLETE_TYPE"),
         ("name", toJson n.toString),
-        ("challenge_type", toJson (String.ofList (at.toList.take 8000))),
-        ("solution_type", toJson (String.ofList (bt.toList.take 8000))),
-        ("challenge_type_characters", toJson at.length),
-        ("solution_type_characters", toJson bt.length),
+        ("challenge_type", toJson (String.ofList (challengeTypeText.toList.take 8000))),
+        ("solution_type", toJson (String.ofList (solutionTypeText.toList.take 8000))),
+        ("challenge_type_characters", toJson challengeTypeText.length),
+        ("solution_type_characters", toJson solutionTypeText.length),
         ("type_text_limit", toJson (8000 : Nat)),
-        ("challenge_type_truncated", toJson (decide (8000 < at.length))),
-        ("solution_type_truncated", toJson (decide (8000 < bt.length)))]).compress
+        ("challenge_type_truncated", toJson (decide (8000 < challengeTypeText.length))),
+        ("solution_type_truncated", toJson (decide (8000 < solutionTypeText.length)))]).compress
     principalReported := principalReported + 1
     if !(a.type == b.type) && candidates.isEmpty then
       unequalWithoutLeaves := unequalWithoutLeaves + 1
