@@ -1856,13 +1856,18 @@ theorem linearMap_range_eq_span_standard
   rw [← Submodule.map_top, ← standardPolytabloidOver_span R mu,
     Submodule.map_span, ← Set.range_comp']
 
+/-- Cardinal identification used to transport a standard tableau's variable labels. -/
+theorem fixedSpan_shapeCard {n : ℕ} (part : n.Partition) :
+    (YoungDiagram.ofPartition part).card = n :=
+  YoungDiagram.card_ofPartition part
+
 def griffinFixedCopySpanOver (K : Type*) [Field K]
     {n : ℕ} (lam : YoungDiagram) (hk : lam.card ≤ n) (s : ℕ)
     (part : n.Partition) (i : PartitionGriffinCopies n lam hk s part) :
     Submodule K (GriffinRing K n lam s) :=
   Submodule.span K (Set.range (fun T : StandardYoungTableau (YoungDiagram.ofPartition part) =>
     Ideal.Quotient.mk (griffinIdeal K n lam s)
-      (rename (finCongr (YoungDiagram.card_ofPartition part))
+      (rename (finCongr (fixedSpan_shapeCard part))
         (higherSpechtPolynomial i.left T) *
         elementaryMultiplier n (n - lam.card) i.multiplier.rowLen)))
 
@@ -1977,7 +1982,7 @@ def springerFixedCopySpanOver (K : Type*) [Field K]
     Submodule K (SpringerRing K lam) :=
   Submodule.span K (Set.range (fun T : StandardYoungTableau (YoungDiagram.ofPartition part) =>
     Ideal.Quotient.mk (springerIdeal K lam)
-      (rename (finCongr (YoungDiagram.card_ofPartition part))
+      (rename (finCongr (fixedSpan_shapeCard part))
         (higherSpechtPolynomial S T))))
 
 def springerFixedCopyOver (K : Type*) [Field K]

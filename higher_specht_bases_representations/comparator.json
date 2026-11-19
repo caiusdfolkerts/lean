@@ -20,7 +20,14 @@
     "HigherSpecht.permutationStable_untruncatedIdeal",
     "HigherSpecht.permutationStable_griffinIdeal",
     "HigherSpecht.springer_fixedSpan_irreducible",
-    "HigherSpecht.griffin_fixedSpan_irreducible"
+    "HigherSpecht.griffin_fixedSpan_irreducible",
+    "HigherSpecht.polynomialRename_one",
+    "HigherSpecht.polynomialRename_mul",
+    "HigherSpecht.polynomialRing_scalarTower",
+    "HigherSpecht.springerIdeal_isTwoSided",
+    "HigherSpecht.griffinIdeal_isTwoSided",
+    "HigherSpecht.springerIdeal_permutationStable",
+    "HigherSpecht.fixedSpan_shapeCard"
   ],
   "permitted_axioms": [
     "propext",

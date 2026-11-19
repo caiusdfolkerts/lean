@@ -147,6 +147,8 @@ abbrev colSubgroup (t : YoungTableau μ) : Subgroup (Equiv.Perm (Fin μ.card)) :
 end YoungTableau
 end TauCeti
 
+universe palomarRepU
+
 namespace HigherSpecht
 open TauCeti TauCeti.YoungTableau Finset MvPolynomial Module
 
@@ -227,6 +229,13 @@ def CatDominates {μ : YoungDiagram} (S : StandardYoungTableau μ)
 /-- Literal source definition of PolynomialRing. -/
 abbrev PolynomialRing (n : ℕ) (R : Type*) [CommRing R] := MvPolynomial (Fin n) R
 
+/-- The natural coefficient action commutes with polynomial multiplication. -/
+theorem polynomialRing_scalarTower (R : Type*) [CommRing R] (n : ℕ) :
+    IsScalarTower R (PolynomialRing n R) (PolynomialRing n R) :=
+  IsScalarTower.right
+
+attribute [instance 20000] polynomialRing_scalarTower
+
 section PolynomialDefinitions
 attribute [local instance] Classical.propDecidable
 variable {R : Type*} [CommRing R]
@@ -260,9 +269,21 @@ def powerIdeal (R : Type*) [CommRing R] (n s : ℕ) :
 def griffinIdeal (R : Type*) [CommRing R] (n : ℕ) (μ : YoungDiagram) (s : ℕ) :
     Ideal (PolynomialRing n R) := untruncatedIdeal R n μ ⊔ powerIdeal R n s
 
+theorem griffinIdeal_isTwoSided (R : Type*) [CommRing R] (n : ℕ)
+    (lam : YoungDiagram) (s : ℕ) : (griffinIdeal R n lam s).IsTwoSided :=
+  Ideal.instIsTwoSided_1 (griffinIdeal R n lam s)
+
+attribute [instance 1200] griffinIdeal_isTwoSided
+
 /-- Literal source definition of springerIdeal. -/
 def springerIdeal (R : Type*) [CommRing R] (μ : YoungDiagram) :
     Ideal (PolynomialRing μ.card R) := untruncatedIdeal R μ.card μ
+
+theorem springerIdeal_isTwoSided (R : Type*) [CommRing R]
+    (lam : YoungDiagram) : (springerIdeal R lam).IsTwoSided :=
+  Ideal.instIsTwoSided_1 (springerIdeal R lam)
+
+attribute [instance 1200] springerIdeal_isTwoSided
 
 /-- Literal source definition of UntruncatedRing. -/
 abbrev UntruncatedRing (R : Type*) [CommRing R] (n : ℕ) (μ : YoungDiagram) :=
@@ -444,17 +465,27 @@ theorem permutationStable_untruncatedIdeal (μ : YoungDiagram) :
 theorem permutationStable_griffinIdeal (μ : YoungDiagram) (s : ℕ) :
     PermutationStable (griffinIdeal R n μ s) := by sorry
 
-def polynomialRepresentation (R : Type*) [CommRing R] (n : ℕ) :
+theorem polynomialRename_one (R : Type palomarRepU) [CommRing R] (n : ℕ) :
+    (MvPolynomial.rename (1 : Equiv.Perm (Fin n))).toLinearMap =
+      (1 : Module.End R (PolynomialRing n R)) := by
+  apply LinearMap.ext
+  intro p
+  exact MvPolynomial.rename_id_apply p
+
+theorem polynomialRename_mul (R : Type palomarRepU) [CommRing R] (n : ℕ)
+    (e f : Equiv.Perm (Fin n)) :
+    (MvPolynomial.rename (e * f)).toLinearMap =
+      ((MvPolynomial.rename e).toLinearMap : Module.End R (PolynomialRing n R)) *
+        (MvPolynomial.rename f).toLinearMap := by
+  apply LinearMap.ext
+  intro p
+  exact (MvPolynomial.rename_rename f e p).symm
+
+def polynomialRepresentation (R : Type palomarRepU) [CommRing R] (n : ℕ) :
     Representation R (Equiv.Perm (Fin n)) (PolynomialRing n R) where
   toFun e := (MvPolynomial.rename e).toLinearMap
-  map_one' := by
-    apply LinearMap.ext
-    intro p
-    exact MvPolynomial.rename_id_apply p
-  map_mul' e f := by
-    apply LinearMap.ext
-    intro p
-    exact (MvPolynomial.rename_rename f e p).symm
+  map_one' := polynomialRename_one R n
+  map_mul' e f := polynomialRename_mul R n e f
 
 def idealSubrepresentation (I : Ideal (PolynomialRing n R)) (hI : PermutationStable I) :
     Subrepresentation (polynomialRepresentation R n) where
@@ -465,11 +496,15 @@ def quotientRepresentation (I : Ideal (PolynomialRing n R)) (hI : PermutationSta
     Representation R (Equiv.Perm (Fin n)) (PolynomialRing n R ⧸ I) :=
   (idealSubrepresentation I hI).quotient
 
-def springerRepresentation (R : Type*) [CommRing R] (μ : YoungDiagram) :
-    Representation R (Equiv.Perm (Fin μ.card)) (SpringerRing R μ) :=
-  quotientRepresentation (springerIdeal R μ) (permutationStable_untruncatedIdeal μ)
+theorem springerIdeal_permutationStable (R : Type palomarRepU) [CommRing R]
+    (lam : YoungDiagram) : PermutationStable (springerIdeal R lam) :=
+  permutationStable_untruncatedIdeal lam
 
-def griffinRepresentation (R : Type*) [CommRing R] (n : ℕ) (μ : YoungDiagram) (s : ℕ) :
+def springerRepresentation (R : Type palomarRepU) [CommRing R] (μ : YoungDiagram) :
+    Representation R (Equiv.Perm (Fin μ.card)) (SpringerRing R μ) :=
+  quotientRepresentation (springerIdeal R μ) (springerIdeal_permutationStable R μ)
+
+def griffinRepresentation (R : Type palomarRepU) [CommRing R] (n : ℕ) (μ : YoungDiagram) (s : ℕ) :
     Representation R (Equiv.Perm (Fin n)) (GriffinRing R n μ s) :=
   quotientRepresentation (griffinIdeal R n μ s) (permutationStable_griffinIdeal μ s)
 
@@ -488,13 +523,18 @@ abbrev PartitionGriffinCopies (n : ℕ) (lam : YoungDiagram) (hk : lam.card ≤ 
   FixedGriffinIndex (YoungDiagram.ofPartition part) lam
     (by simpa only [YoungDiagram.card_ofPartition] using hk) s
 
+/-- Cardinal identification used to transport a standard tableau's variable labels. -/
+theorem fixedSpan_shapeCard {n : ℕ} (part : n.Partition) :
+    (YoungDiagram.ofPartition part).card = n :=
+  YoungDiagram.card_ofPartition part
+
 def springerFixedCopySpanOver (K : Type*) [Field K]
     (lam : YoungDiagram) (part : lam.card.Partition)
     (S : StandardYoungTableau (YoungDiagram.ofPartition part)) :
     Submodule K (SpringerRing K lam) :=
   Submodule.span K (Set.range (fun T : StandardYoungTableau (YoungDiagram.ofPartition part) =>
     Ideal.Quotient.mk (springerIdeal K lam)
-      (rename (finCongr (YoungDiagram.card_ofPartition part))
+      (rename (finCongr (fixedSpan_shapeCard part))
         (higherSpechtPolynomial S T))))
 
 def griffinFixedCopySpanOver (K : Type*) [Field K]
@@ -503,7 +543,7 @@ def griffinFixedCopySpanOver (K : Type*) [Field K]
     Submodule K (GriffinRing K n lam s) :=
   Submodule.span K (Set.range (fun T : StandardYoungTableau (YoungDiagram.ofPartition part) =>
     Ideal.Quotient.mk (griffinIdeal K n lam s)
-      (rename (finCongr (YoungDiagram.card_ofPartition part))
+      (rename (finCongr (fixedSpan_shapeCard part))
         (higherSpechtPolynomial i.left T) *
         elementaryMultiplier n (n - lam.card) i.multiplier.rowLen)))
 

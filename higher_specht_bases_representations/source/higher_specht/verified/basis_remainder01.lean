@@ -1961,6 +1961,13 @@ namespace HigherSpecht
 
 abbrev PolynomialRing (n : ℕ) (R : Type*) [CommRing R] := MvPolynomial (Fin n) R
 
+/-- The natural coefficient action commutes with polynomial multiplication. -/
+theorem polynomialRing_scalarTower (R : Type*) [CommRing R] (n : ℕ) :
+    IsScalarTower R (PolynomialRing n R) (PolynomialRing n R) :=
+  IsScalarTower.right
+
+attribute [instance 20000] polynomialRing_scalarTower
+
 variable {R : Type*} [CommRing R]
 
 /-- The elementary symmetric polynomial in precisely the variables in Y. -/
@@ -2022,8 +2029,20 @@ def powerIdeal (R : Type*) [CommRing R] (n s : ℕ) :
 def griffinIdeal (R : Type*) [CommRing R] (n : ℕ) (μ : YoungDiagram) (s : ℕ) :
     Ideal (PolynomialRing n R) := untruncatedIdeal R n μ ⊔ powerIdeal R n s
 
+theorem griffinIdeal_isTwoSided (R : Type*) [CommRing R] (n : ℕ)
+    (lam : YoungDiagram) (s : ℕ) : (griffinIdeal R n lam s).IsTwoSided :=
+  Ideal.instIsTwoSided_1 (griffinIdeal R n lam s)
+
+attribute [instance 1200] griffinIdeal_isTwoSided
+
 def springerIdeal (R : Type*) [CommRing R] (μ : YoungDiagram) :
     Ideal (PolynomialRing μ.card R) := untruncatedIdeal R μ.card μ
+
+theorem springerIdeal_isTwoSided (R : Type*) [CommRing R]
+    (lam : YoungDiagram) : (springerIdeal R lam).IsTwoSided :=
+  Ideal.instIsTwoSided_1 (springerIdeal R lam)
+
+attribute [instance 1200] springerIdeal_isTwoSided
 
 abbrev UntruncatedRing (R : Type*) [CommRing R] (n : ℕ) (μ : YoungDiagram) :=
   PolynomialRing n R ⧸ untruncatedIdeal R n μ
