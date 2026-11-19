@@ -26,7 +26,22 @@
     "PaperVerification.Fermion.NaturalColor.assemble_basis_unit",
     "PaperVerification.Fermion.TypeA.exteriorCoefficientBlock_eq_zero_of_inadmissible",
     "PaperVerification.Fermion.NaturalColor.assemblyScalar_ne_zero",
-    "PaperVerification.Fermion.TypeA.palomarColorIndependent"
+    "PaperVerification.Fermion.TypeA.palomarColorIndependent",
+    "PalomarFermion.coefficientIdentityInvPair",
+    "PalomarFermion.coefficientCommutativeIdentityInvPair",
+    "PalomarFermion.coefficientIdentitySurjective",
+    "PalomarFermion.coefficientCommutativeIdentitySurjective",
+    "PalomarFermion.finiteCoordinates",
+    "PalomarFermion.finiteOddCoordinates",
+    "PalomarFermion.coordinates_apply",
+    "PaperVerification.Fermion.polynomialSelfCommute",
+    "PaperVerification.Fermion.polynomialSelfTower",
+    "PaperVerification.Fermion.exteriorSelfCommute",
+    "PaperVerification.Fermion.exteriorSelfTower",
+    "PaperVerification.Fermion.Newton.rectangleForwardBounds",
+    "PaperVerification.Fermion.Newton.rectangleBackwardBounds",
+    "PaperVerification.Fermion.Newton.rectangleLeftInverse",
+    "PaperVerification.Fermion.Newton.rectangleRightInverse"
   ],
   "permitted_axioms": [
     "propext",
