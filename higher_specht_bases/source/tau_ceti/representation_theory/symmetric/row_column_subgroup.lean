@@ -63,15 +63,11 @@ theorem mem_colSubgroup {t : YoungTableau μ} {σ : Equiv.Perm (Fin μ.card)} :
 
 /-- The row group of `t` is the group of permutations preserving the fibers of `rowIndex t`. -/
 theorem rowSubgroup_def (t : YoungTableau μ) :
-    rowSubgroup t = fiberSubgroup (rowIndex t) := by
-  ext σ
-  rw [mem_rowSubgroup, mem_fiberSubgroup]
+    rowSubgroup t = fiberSubgroup (rowIndex t) := rfl
 
 /-- The column group of `t` is the group of permutations preserving the fibers of `colIndex t`. -/
 theorem colSubgroup_def (t : YoungTableau μ) :
-    colSubgroup t = fiberSubgroup (colIndex t) := by
-  ext σ
-  rw [mem_colSubgroup, mem_fiberSubgroup]
+    colSubgroup t = fiberSubgroup (colIndex t) := rfl
 
 /-- The transposition of two labels lying in a common row of `t` belongs to the row group. -/
 theorem swap_mem_rowSubgroup {t : YoungTableau μ} {x y : Fin μ.card}

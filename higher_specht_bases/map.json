@@ -1602,5 +1602,43 @@
     "original487_active_package_unchanged": true,
     "local_compilation": false
   },
-  "canonical_receipt": "reports/higher_specht_bases/challenge-diagnostic/run-44387460587/higher_specht_multiplier_corollary43/receipt.json"
+  "canonical_receipt": "reports/higher_specht_bases/challenge-diagnostic/run-44387460587/higher_specht_multiplier_corollary43/receipt.json",
+  "measured_row_column_proof_repair": {
+    "status": "frozen proof-only repair of the complete two-error source report; uncompiled",
+    "failed_commit": "3ccc08e5050659d18b3e2faeff7d4bb1d77c7cc7",
+    "failed_run": "44391461523",
+    "report_sha256": "2ca957ff15e134d7e0438afd3f2a5f757c8ac3dc460182401a7ce50ae1104501",
+    "complete_error_excerpts": {
+      "errors": [
+        {
+          "excerpt": "error: source/tau_ceti/representation_theory/symmetric/row_column_subgroup.lean:68:23: Tactic `rewrite` failed: Did not find an occurrence of the pattern\n  ?m.21 \u2208 fiberSubgroup ?m.20\nin the target expression\n  (\u2200 (k : Fin \u03bc.card), t.rowIndex (\u03c3 k) = t.rowIndex k) \u2194 \u2200 (k : Fin \u03bc.card), t.rowIndex (\u03c3 k) = t.rowIndex k\n\n\u03bc : YoungDiagram\nt : YoungTableau \u03bc\n\u03c3 : Equiv.Perm (Fin \u03bc.card)\n\u22a2 (\u2200 (k : Fin \u03bc.card), t.rowIndex (\u03c3 k) = t.rowIndex k) \u2194 \u2200 (k : Fin \u03bc.card), t.rowIndex (\u03c3 k) = t.rowIndex k",
+          "location": {
+            "column": 23,
+            "line": 68,
+            "path": "source/tau_ceti/representation_theory/symmetric/row_column_subgroup.lean"
+          },
+          "truncated": false
+        },
+        {
+          "excerpt": "error: source/tau_ceti/representation_theory/symmetric/row_column_subgroup.lean:74:23: Tactic `rewrite` failed: Did not find an occurrence of the pattern\n  ?m.21 \u2208 fiberSubgroup ?m.20\nin the target expression\n  (\u2200 (k : Fin \u03bc.card), t.colIndex (\u03c3 k) = t.colIndex k) \u2194 \u2200 (k : Fin \u03bc.card), t.colIndex (\u03c3 k) = t.colIndex k\n\n\u03bc : YoungDiagram\nt : YoungTableau \u03bc\n\u03c3 : Equiv.Perm (Fin \u03bc.card)\n\u22a2 (\u2200 (k : Fin \u03bc.card), t.colIndex (\u03c3 k) = t.colIndex k) \u2194 \u2200 (k : Fin \u03bc.card), t.colIndex (\u03c3 k) = t.colIndex k",
+          "location": {
+            "column": 23,
+            "line": 74,
+            "path": "source/tau_ceti/representation_theory/symmetric/row_column_subgroup.lean"
+          },
+          "truncated": false
+        }
+      ],
+      "omitted_error_count": 0,
+      "output_truncated": false,
+      "schema_version": 1
+    },
+    "source": "source/tau_ceti/representation_theory/symmetric/row_column_subgroup.lean",
+    "source_before_sha256": "9df319fe78acd295418b7a287f3c1c73353c9af1c761436f2849dff74c822799",
+    "source_after_sha256": "4338b078eecb9bd1924ba0d6d0384fba09f725adcd52147f134d8b65f60d463e",
+    "repair": "rowSubgroup and colSubgroup are literal abbrev fiberSubgroup. Replace their two over-rewriting subgroup-def proofs by direct reflexivity. Every theorem type, definition, instance, import, license and source guard remains unchanged.",
+    "all5principal_and_Cor43_targets_unchanged": true,
+    "mathematical_scope": "All current full Springer/Griffin basis and exact characteristic ranges including empty partitions, plus full Cor4.3 arbitrary nonzero-leading-coefficient/admissible multiplier basis; all selected semantic support retained.",
+    "no_local_Lean": true
+  }
 }
