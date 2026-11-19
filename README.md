@@ -1,5 +1,3 @@
-# Palomar submission: homological_shifts
+# Complete principal Homological raw diagnostic
 
-Substantive source snapshot of [caiusdfolkerts/research](https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts), revision `e0696fddcd3d10b5d6461e62e9b2f02c4195be37`.
-
-The complete selected development, paper, metadata, and Comparator configuration are in `homological_shifts/`. This branch prepares a registry submission; it does not claim registry acceptance. See `homological_shifts/formalization.yaml` for exact scope and provenance.
+Exact3e106710 snapshot; no project mutation. The canonical629-line interface and all expanded actual Source/Solution proofs build; Comparator reports CommAlg.powerProduct. This read-only diagnostic inspects all45 selected type/level summaries and their whole reachable union. The exact alpha-aware bounded helper62ac4aa0 includes an early1GiB120s DAG/alpha stress gate before Source.
