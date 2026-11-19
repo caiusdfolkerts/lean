@@ -7,6 +7,8 @@ no norm, scalar action, order, measure, functional calculus value or data record
 is chosen by an unrestricted definition. All proof bodies are genuine. -/
 @[expose] public section
 noncomputable section
+-- Use the same multiplicative involution when forming the matrix StarModule.
+attribute [instance 2100] StarMul.toInvolutiveStar
 namespace WishartSharedProof
 open scoped MatrixOrder Matrix.Norms.L2Operator
 universe u

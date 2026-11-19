@@ -13,6 +13,8 @@ Wishart raw audit44473421580 and canonical class-type probe44481534659.
 These declarations supply only proofs of fully literal canonical propositions;
 no norm, scalar action, order, measure, functional calculus value or data record
 is chosen by an unrestricted definition. All proof bodies are genuine. -/
+-- Use the same multiplicative involution when forming the matrix StarModule.
+attribute [instance 2100] StarMul.toInvolutiveStar
 namespace WishartSharedProof
 open scoped MatrixOrder Matrix.Norms.L2Operator
 universe u
