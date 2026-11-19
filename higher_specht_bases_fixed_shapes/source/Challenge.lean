@@ -164,7 +164,7 @@ abbrev youngSortedParts {n : ℕ} (p : n.Partition) : List ℕ :=
 def shapePartition (μ : YoungDiagram) : μ.card.Partition :=
   μ.toPartition rfl
 
-theorem shapePartition_parts_sort (μ : YoungDiagram) :
+theorem shapePartition_parts_youngSort (μ : YoungDiagram) :
     youngSortedParts (shapePartition μ) = μ.rowLens := by sorry
 
 noncomputable def youngBlocksEquiv {n : ℕ} (μ : n.Partition) :
@@ -206,7 +206,7 @@ noncomputable def rowCellsEquiv (μ : YoungDiagram) :
 
 noncomputable def sortedBlocksEquivRows (μ : YoungDiagram) :
     rowBlocks (youngSortedParts (shapePartition μ)) ≃ rowBlocks μ.rowLens :=
-  Equiv.cast (congrArg rowBlocks (shapePartition_parts_sort μ))
+  Equiv.cast (congrArg rowBlocks (shapePartition_parts_youngSort μ))
 
 noncomputable def rowYoungConjugator {μ : YoungDiagram} (t : YoungTableau μ) :
     Equiv.Perm (Fin μ.card) :=

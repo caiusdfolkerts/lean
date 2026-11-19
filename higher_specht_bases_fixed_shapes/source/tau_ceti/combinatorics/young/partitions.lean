@@ -140,8 +140,12 @@ theorem shapePartition_parts (μ : YoungDiagram) :
 are already decreasing.  This is not a `simp` lemma: `simp` reaches the same normal form through
 `TauCeti.shapePartition_parts` and `YoungDiagram.sort_coe_rowLens`. -/
 theorem shapePartition_parts_sort (μ : YoungDiagram) :
+    (shapePartition μ).parts.sort (· ≥ ·) = μ.rowLens := by
+  rw [shapePartition_parts, YoungDiagram.sort_coe_rowLens]
+
+theorem shapePartition_parts_youngSort (μ : YoungDiagram) :
     youngSortedParts (shapePartition μ) = μ.rowLens := by
   unfold youngSortedParts
-  rw [shapePartition_parts, YoungDiagram.sort_coe_rowLens]
+  exact shapePartition_parts_sort μ
 
 end TauCeti

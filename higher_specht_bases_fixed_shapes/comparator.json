@@ -21,7 +21,7 @@
     "HigherSpecht.permutationStable_griffinIdeal",
     "HigherSpecht.springer_fixedSpan_specht",
     "HigherSpecht.griffin_fixedSpan_specht",
-    "TauCeti.shapePartition_parts_sort",
+    "TauCeti.shapePartition_parts_youngSort",
     "HigherSpecht.polytabloidSpan_stable",
     "TauCeti.youngSortOrder_isTrans",
     "HigherSpecht.polynomialRename_one",
