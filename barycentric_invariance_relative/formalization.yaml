@@ -44,11 +44,13 @@ automation:
       not been reconstructed from the snapshot.
 review:
   status: unchecked
-  notes: The actual barycentric stalk module structure is now named in both
-    presentations. Canonical run44480760287 verified the complete interface and
-    a definitional equality control against the original inferred module. All
-    previously selected claims are retained. Full source, Solution, Comparator
-    and independent kernel verification of this exact repair remain pending.
+  notes: The actual barycentric stalk module is named identically in both
+    presentations. Canonical run44480760287 verified the interface and its
+    equality with the original inferred module; full run44481635641 compiled
+    the Source and Solution. Its configuration error listed the new data
+    definition as a theorem; this is corrected. The literal definition remains
+    an ordinary dependency subject to full body comparison. All 29 previously
+    selected theorems remain. Full comparison and independent replay are pending.
 scope:
   known_gaps:
   - Other theorem groups from the same paper have separate configurations because

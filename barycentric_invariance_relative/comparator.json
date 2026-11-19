@@ -30,8 +30,7 @@
     "FourPapers.Universal.palomarBasisOrdinaryDegreePiece_smul",
     "PalomarBarycentricRelative.coefficientIdentityCompTriple",
     "PalomarBarycentricRelative.polynomialQuotientTower",
-    "FourPapers.Universal.palomarBarycentricPolynomialSelfTower",
-    "FourPapers.Universal.palomarBarycentricStalkModule"
+    "FourPapers.Universal.palomarBarycentricPolynomialSelfTower"
   ],
   "permitted_axioms": [
     "propext",
