@@ -818,12 +818,12 @@ section
 set_option backward.isDefEq.respectTransparency false
 open Classical Finset MvPolynomial
 variable {I V K M : Type*} [CommRing K] [AddCommGroup M] [Module K M]
-/-- Source theorem13.lean:9660. -/
 /-- The original scalar-closure proof for the unchanged coefficient predicate. -/
 theorem palomarPresentationWeightLevel_smul (w : (V →₀ ℕ) → ℤ) (n : ℤ) :
     ∀ (c : K) (f : MvPolynomial V K), (∀ a, n ≤ w a → f.coeff a = 0) →
       ∀ a, n ≤ w a → (c • f).coeff a = 0 := by intro c f hf a ha; simp only [coeff_smul, hf a ha, smul_zero]
 
+/-- Source theorem13.lean:9660. -/
 def presentationWeightLevel (w : (V →₀ ℕ) → ℤ) (n : ℤ) : Submodule K (MvPolynomial V K) where
   carrier := {f | ∀ a, n ≤ w a → f.coeff a = 0}
   zero_mem' := by intro a ha; simp
