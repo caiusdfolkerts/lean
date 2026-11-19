@@ -1,0 +1,54 @@
+{
+  "project": "higher_specht_bases_geometry",
+  "baseline_project": "higher_specht_bases",
+  "paper_sha256": "931c0ee33b94c7a77d373c4040abb40151a8f1cd049b977006df188e31013a0c",
+  "companion_to": {
+    "entry": "higher_specht_bases_status",
+    "commit": "fb5ab9354a764e61ae08d5e8f631614d1920f776"
+  },
+  "status": "geometry_candidate_awaiting_full_preflight",
+  "selected_results": [
+    "Proposition 7.3: actual irredundant primary decomposition and radicals",
+    "Corollary 7.4: reducedness, geometric reducedness, fibers and the full base-local \u00e9tale locus"
+  ],
+  "coverage": [
+    {
+      "paper_result": "Proposition 7.3",
+      "paper_file": "paper.pdf",
+      "declarations": [
+        {
+          "name": "HigherSpecht.proposition_7_3_primary_decomposition",
+          "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+          "source_line": 4742
+        }
+      ]
+    },
+    {
+      "paper_result": "Corollary 7.4",
+      "paper_file": "paper.pdf",
+      "declarations": [
+        {
+          "name": "HigherSpecht.untruncated_isReduced_iff",
+          "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+          "source_line": 6276
+        },
+        {
+          "name": "HigherSpecht.parameterFiber_etale_iff_polynomial",
+          "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+          "source_line": 6769
+        },
+        {
+          "name": "HigherSpecht.parameterFiber_geometricallyReduced_iff_squarefree",
+          "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+          "source_line": 6807
+        },
+        {
+          "name": "HigherSpecht.parameter_etale_atPrime_iff_polynomial",
+          "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+          "source_line": 6883
+        }
+      ]
+    }
+  ],
+  "coverage_status": "partial_principal_selection_not_whole_paper"
+}
