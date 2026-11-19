@@ -234,9 +234,13 @@ theorem gradeMap_comp (F : Filtration (K := K) X) (G : Filtration (K := K) Y)
 def boundaryMap (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) :
     X →ₗ[K] LinearMap.ker g :=
   f.codRestrict _ (fun x => LinearMap.congr_fun hfg x)
+theorem boundaryMap_palomar_formula (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) (x : X) :
+    (boundaryMap f g hfg x).val = f x := rfl
 
 abbrev Homology (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) :=
   LinearMap.ker g ⧸ LinearMap.range (boundaryMap f g hfg)
+theorem Homology_palomar_formula (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) :
+    Homology f g hfg = (LinearMap.ker g ⧸ LinearMap.range (boundaryMap f g hfg)) := rfl
 
 def homologyClass (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) :
     LinearMap.ker g →ₗ[K] Homology f g hfg := (LinearMap.range (boundaryMap f g hfg)).mkQ

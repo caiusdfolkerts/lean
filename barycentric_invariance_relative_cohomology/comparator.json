@@ -30,7 +30,9 @@
     "FourPapers.Universal.standardCoefficients_apply",
     "CommAlg.Koszul.coordinateDifferential_palomar_formula",
     "koszulComplex.dAlternating_palomar_formula",
-    "koszulComplex.d_palomar_formula"
+    "koszulComplex.d_palomar_formula",
+    "FourPapers.FilteredHomology.boundaryMap_palomar_formula",
+    "FourPapers.FilteredHomology.Homology_palomar_formula"
   ],
   "definition_names": [
     "FourPapers.Universal.barycentricMonomialEquiv",
@@ -38,7 +40,9 @@
     "FourPapers.Universal.standardCoefficients",
     "CommAlg.Koszul.coordinateDifferential",
     "koszulComplex.dAlternating",
-    "koszulComplex.d"
+    "koszulComplex.d",
+    "FourPapers.FilteredHomology.boundaryMap",
+    "FourPapers.FilteredHomology.Homology"
   ],
   "permitted_axioms": [
     "propext",
