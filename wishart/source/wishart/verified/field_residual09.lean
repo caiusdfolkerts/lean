@@ -106,8 +106,7 @@ theorem shiftedCompressionDeterminant_eq_covariance_mul
   have h := realDeterminant_congruence hS K
   rw [hgram] at h
   have hu := unnormalize_shiftedCompression hSigma B hB X c
-  change Kᴴ * (S : Matrix (Fin k) (Fin k) _) * K =
-    Bᴴ * (X : Matrix (Fin p) (Fin p) _) * B + c • C at hu
+  change Kᴴ * (S : Matrix (Fin k) (Fin k) ℂ) * K = _ at hu
   rw [hu] at h
   exact h
 
