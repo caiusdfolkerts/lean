@@ -1,0 +1,7 @@
+{
+  "parent_commit": "11606e0c9526881c72203b54ce14a36d1db7964b",
+  "path": "packages/deformed_coinvariants/source/PaperVerification/VectorEulerGrading.lean",
+  "before_sha256": "6c9485cae5a9eb4386960bd4ff70b7cf603fa171e2f761b6157cd5609f4b48e2",
+  "after_sha256": "9a282dcc953cb48d33cc31a3db99cc9232c43ba4f69832f63c3ebc16cb9d7501",
+  "change": "Unfold literal map wrapper in the finite-dimensional quotient proof and its range calculation. Statement/data/selection unchanged."
+}

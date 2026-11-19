@@ -337,7 +337,7 @@ theorem quotientTargetPiece_finite [Fintype κ] (w : ι → ℕ) (h : κ → ℕ
     (U : Submodule K M) (hw : ∀ i, 0 < w i) :
     Module.Finite K (quotientTargetPiece w h e U) := by
   letI := targetPiece_finite (K := K) w h e hw
-  unfold quotientTargetPiece
+  unfold quotientTargetPiece PalomarDeformedSupport.explicitMap
   infer_instance
 
 theorem potential_mem_targetPiece (F : κ → P) (h : κ → ℕ) (w : ι → ℕ) (d : ℕ)
@@ -387,7 +387,7 @@ theorem quotientTargetPiece_finrank_add [Fintype κ]
   have hrange : LinearMap.range f = quotientTargetPiece w h e V := by
     dsimp only [f, LinearMap.domRestrict]
     rw [LinearMap.range_comp, Submodule.range_subtype]
-    dsimp only [S, quotientTargetPiece]
+    dsimp only [S, quotientTargetPiece, PalomarDeformedSupport.explicitMap]
     rw [← Submodule.map_comp, Submodule.factor_comp_mk]
   have hfactor : LinearMap.ker (Submodule.factor hUV) = V.map U.mkQ := by
     rw [Submodule.factor, Submodule.ker_mapQ, Submodule.comap_id]
