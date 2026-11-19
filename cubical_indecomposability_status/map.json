@@ -1,0 +1,232 @@
+{
+  "baseline_project": "cubical_indecomposability",
+  "baseline_revision": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
+  "status": "fresh_comparison_prepared_uncompiled",
+  "main_results": [
+    {
+      "paper_result": "Theorem1: one rational full-dimensional cubical witness, exact f-vector, all redrawings and arbitrary convex summands",
+      "challenge_declaration": "PalomarCubical.Results.theorem_one",
+      "challenge": {
+        "file": "Challenge.lean",
+        "line": 232
+      },
+      "solution": {
+        "file": "Solution.lean",
+        "line": 251
+      },
+      "source_declaration": "CubicalIndecomposability.theorem_one",
+      "source": {
+        "file": "source/verification_bundle/PalomarPart021.lean",
+        "line": 6128
+      },
+      "status": "prepared-uncompiled"
+    },
+    {
+      "paper_result": "Lemma2: actual deformation quotient criterion and arbitrary convex summands",
+      "challenge_declaration": "PalomarCubical.Results.lemma_two",
+      "challenge": {
+        "file": "Challenge.lean",
+        "line": 243
+      },
+      "solution": {
+        "file": "Solution.lean",
+        "line": 267
+      },
+      "source_declaration": "CubicalIndecomposability.lemma_two",
+      "source": {
+        "file": "source/block_verification_bundle/PalomarPart000.lean",
+        "line": 245
+      },
+      "status": "prepared-uncompiled"
+    },
+    {
+      "paper_result": "Lemma3(i): affinely independent4cycle redrawings",
+      "challenge_declaration": "PalomarCubical.Results.lemma_three_one",
+      "challenge": {
+        "file": "Challenge.lean",
+        "line": 251
+      },
+      "solution": {
+        "file": "Solution.lean",
+        "line": 276
+      },
+      "source_declaration": "CubicalIndecomposability.lemma_three_one",
+      "source": {
+        "file": "source/block_verification_bundle/PalomarPart000.lean",
+        "line": 674
+      },
+      "status": "prepared-uncompiled"
+    },
+    {
+      "paper_result": "Lemma3(ii): vanishing from two actual neighboring vertices",
+      "challenge_declaration": "PalomarCubical.Polytopes.redrawing_zero_of_two_neighbors",
+      "challenge": {
+        "file": "Challenge.lean",
+        "line": 194
+      },
+      "solution": {
+        "file": "Solution.lean",
+        "line": 212
+      },
+      "source_declaration": "Papers.Polytopes.redrawing_zero_of_two_neighbors",
+      "source": {
+        "file": "source/block_verification_bundle/PalomarPart000.lean",
+        "line": 770
+      },
+      "status": "prepared-uncompiled"
+    },
+    {
+      "paper_result": "Proposition5: literal32vertex cubical block, quotient restriction and projective interfaces",
+      "challenge_declaration": "PalomarCubical.Results.Block.proposition_five",
+      "challenge": {
+        "file": "Challenge.lean",
+        "line": 262
+      },
+      "solution": {
+        "file": "Solution.lean",
+        "line": 288
+      },
+      "source_declaration": "CubicalIndecomposability.Block.proposition_five",
+      "source": {
+        "file": "source/block_verification_bundle/PalomarPart005.lean",
+        "line": 1381
+      },
+      "status": "prepared-uncompiled"
+    }
+  ],
+  "supporting_compared_obligations": [
+    {
+      "declaration": "PalomarCubical.Geometry.finite_isFace",
+      "challenge": {
+        "file": "Challenge.lean",
+        "line": 69
+      },
+      "solution": {
+        "file": "Solution.lean",
+        "line": 75
+      }
+    },
+    {
+      "declaration": "PalomarCubical.Geometry.facePolytope_vertices_nonempty",
+      "challenge": {
+        "file": "Challenge.lean",
+        "line": 78
+      },
+      "solution": {
+        "file": "Solution.lean",
+        "line": 85
+      }
+    },
+    {
+      "declaration": "PalomarCubical.Geometry.facePolytope_vertices_extreme",
+      "challenge": {
+        "file": "Challenge.lean",
+        "line": 80
+      },
+      "solution": {
+        "file": "Solution.lean",
+        "line": 88
+      }
+    },
+    {
+      "declaration": "PalomarCubical.Geometry.cube_vertices_nonempty",
+      "challenge": {
+        "file": "Challenge.lean",
+        "line": 95
+      },
+      "solution": {
+        "file": "Solution.lean",
+        "line": 104
+      }
+    },
+    {
+      "declaration": "PalomarCubical.Geometry.cube_vertices_extreme",
+      "challenge": {
+        "file": "Challenge.lean",
+        "line": 96
+      },
+      "solution": {
+        "file": "Solution.lean",
+        "line": 106
+      }
+    },
+    {
+      "declaration": "PalomarCubical.Polytopes.parallelAssignment_zero",
+      "challenge": {
+        "file": "Challenge.lean",
+        "line": 144
+      },
+      "solution": {
+        "file": "Solution.lean",
+        "line": 155
+      }
+    },
+    {
+      "declaration": "PalomarCubical.Polytopes.parallelAssignment_add",
+      "challenge": {
+        "file": "Challenge.lean",
+        "line": 145
+      },
+      "solution": {
+        "file": "Solution.lean",
+        "line": 157
+      }
+    },
+    {
+      "declaration": "PalomarCubical.Polytopes.parallelAssignment_smul",
+      "challenge": {
+        "file": "Challenge.lean",
+        "line": 148
+      },
+      "solution": {
+        "file": "Solution.lean",
+        "line": 161
+      }
+    },
+    {
+      "declaration": "PalomarCubical.Polytopes.translation_parallel",
+      "challenge": {
+        "file": "Challenge.lean",
+        "line": 156
+      },
+      "solution": {
+        "file": "Solution.lean",
+        "line": 170
+      }
+    },
+    {
+      "declaration": "PalomarCubical.Polytopes.redrawing_restriction_parallel",
+      "challenge": {
+        "file": "Challenge.lean",
+        "line": 178
+      },
+      "solution": {
+        "file": "Solution.lean",
+        "line": 193
+      }
+    },
+    {
+      "declaration": "PalomarCubical.Polytopes.redrawing_restriction_translation",
+      "challenge": {
+        "file": "Challenge.lean",
+        "line": 185
+      },
+      "solution": {
+        "file": "Solution.lean",
+        "line": 201
+      }
+    }
+  ],
+  "definition_semantics": "Independent exact finite extreme-vertex hulls; literal filtered face vertices and complete sign-vector cube; actual-edge redrawing space modulo translations. All constructor proof fields reference named compared supporting theorem obligations. No data definition holes or definition_names.",
+  "bridge": "Fieldwise conversion between fresh and source ConvexPolytope; decomposability transport explicitly converts both summands and homothety witnesses.",
+  "migration_reports": [
+    "module-migration.json",
+    "split-migration.json",
+    "split-header-fix.json",
+    "split-lake-membership.json"
+  ],
+  "blockers": [
+    "Fresh Challenge/Solution bridge compilation pending.",
+    "Actual Comparator and independent kernel validation pending."
+  ]
+}

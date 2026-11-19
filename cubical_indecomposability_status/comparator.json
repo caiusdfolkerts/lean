@@ -1,0 +1,27 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "PalomarCubical.Results.theorem_one",
+    "PalomarCubical.Results.lemma_two",
+    "PalomarCubical.Results.lemma_three_one",
+    "PalomarCubical.Polytopes.redrawing_zero_of_two_neighbors",
+    "PalomarCubical.Results.Block.proposition_five",
+    "PalomarCubical.Geometry.finite_isFace",
+    "PalomarCubical.Geometry.facePolytope_vertices_nonempty",
+    "PalomarCubical.Geometry.facePolytope_vertices_extreme",
+    "PalomarCubical.Geometry.cube_vertices_nonempty",
+    "PalomarCubical.Geometry.cube_vertices_extreme",
+    "PalomarCubical.Polytopes.parallelAssignment_zero",
+    "PalomarCubical.Polytopes.parallelAssignment_add",
+    "PalomarCubical.Polytopes.parallelAssignment_smul",
+    "PalomarCubical.Polytopes.translation_parallel",
+    "PalomarCubical.Polytopes.redrawing_restriction_parallel",
+    "PalomarCubical.Polytopes.redrawing_restriction_translation"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

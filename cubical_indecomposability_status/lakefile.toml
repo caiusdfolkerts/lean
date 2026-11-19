@@ -1,0 +1,26 @@
+name = "cubical_indecomposability"
+version = "1.0.0"
+defaultTargets = ["proof", "verification"]
+enableArtifactCache = false
+moreLeanArgs = ["-j1", "-t0", "-M16384", "-s65536", "-DElab.async=false", "-Ddebug.skipKernelTC=false"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "56a005855ea17e0b0958f73ec801ae140b0a1679"
+
+[[lean_lib]]
+name = "proof"
+srcDir = "source"
+roots = ["foundation_bundle", "incidence_bundle", "verification_bundle", "block_verification_bundle", "cubical_indecomposability", "block_verification_bundle.PalomarPart000", "block_verification_bundle.PalomarPart001", "block_verification_bundle.PalomarPart002", "block_verification_bundle.PalomarPart003", "block_verification_bundle.PalomarPart004", "block_verification_bundle.PalomarPart005", "foundation_bundle.PalomarPart000", "foundation_bundle.PalomarPart001", "foundation_bundle.PalomarPart002", "foundation_bundle.PalomarPart003", "foundation_bundle.PalomarPart004", "incidence_bundle.PalomarPart000", "incidence_bundle.PalomarPart001", "incidence_bundle.PalomarPart002", "incidence_bundle.PalomarPart003", "incidence_bundle.PalomarPart004", "verification_bundle.PalomarPart000", "verification_bundle.PalomarPart001", "verification_bundle.PalomarPart002", "verification_bundle.PalomarPart003", "verification_bundle.PalomarPart004", "verification_bundle.PalomarPart005", "verification_bundle.PalomarPart006", "verification_bundle.PalomarPart007", "verification_bundle.PalomarPart008", "verification_bundle.PalomarPart009", "verification_bundle.PalomarPart010", "verification_bundle.PalomarPart011", "verification_bundle.PalomarPart012", "verification_bundle.PalomarPart013", "verification_bundle.PalomarPart014", "verification_bundle.PalomarPart015", "verification_bundle.PalomarPart016", "verification_bundle.PalomarPart017", "verification_bundle.PalomarPart018", "verification_bundle.PalomarPart019", "verification_bundle.PalomarPart020", "verification_bundle.PalomarPart021"]
+allowImportAll = true
+
+[[lean_lib]]
+name = "verification"
+srcDir = "source"
+roots = ["verification.complete"]
+allowImportAll = true
+
+[[lean_lib]]
+name = "Palomar"
+roots = ["Challenge", "Solution"]

@@ -1,0 +1,3 @@
+module
+public import foundation_bundle.PalomarPart004
+import all foundation_bundle.PalomarPart004

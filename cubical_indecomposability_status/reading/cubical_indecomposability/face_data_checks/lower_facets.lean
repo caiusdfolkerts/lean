@@ -1,0 +1,3 @@
+module
+public import cubical_indecomposability.face_data_checks.lower_facets.PalomarPart003
+import all cubical_indecomposability.face_data_checks.lower_facets.PalomarPart003

@@ -1,0 +1,3 @@
+module
+public import cubical_indecomposability.block.face_data_checks.pairing.PalomarPart001
+import all cubical_indecomposability.block.face_data_checks.pairing.PalomarPart001
