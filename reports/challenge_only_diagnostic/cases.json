@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "kind": "2026-11-19 actual generic source kernel-element construction, no proof holes",
+  "pipeline_commit": "14aa8d6b3c2f14a8540605e37144560b9a00e7e7",
+  "cases": [
+    {
+      "id": "rees_cor53_actual_generic_proofs",
+      "module": "Challenge",
+      "case_dir": "cases/rees_cor53_actual_generic_proofs",
+      "original_package": "sublattice_resolutions final measured kernel membership proof control",
+      "original_challenge": "source/Solution.lean:2664",
+      "lean_toolchain": "leanprover/lean4:v4.35.0",
+      "hashes": {
+        "Challenge.lean": "a4c608efcb7e8c230197829dd2771584ee01c3335b9db4a73cc4f6be59a746e3",
+        "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+        "lake-manifest.json": "d7a35b5c5854a8cb356e75a36105bfaefc92a473494125e5b9a897d3dfd5d46d",
+        "original-lakefile.toml": "e3934467dcd417ff65b4a39916006746b69e1890d1799a38b777f97702be0dfd"
+      },
+      "challenge_lines": 16,
+      "challenge_bytes": 724,
+      "dependency_pins": [
+        {
+          "name": "mathlib",
+          "url": "https://github.com/leanprover-community/mathlib4.git",
+          "rev": "56a005855ea17e0b0958f73ec801ae140b0a1679"
+        },
+        {
+          "name": "plausible",
+          "url": "https://github.com/leanprover-community/plausible",
+          "rev": "dfa4f38190d07c37e315953e08b90fe2d95b3c24"
+        },
+        {
+          "name": "LeanSearchClient",
+          "url": "https://github.com/leanprover-community/LeanSearchClient",
+          "rev": "d6b4c7be5be75ec4917c873ac50c756dc1436372"
+        },
+        {
+          "name": "importGraph",
+          "url": "https://github.com/leanprover-community/import-graph",
+          "rev": "a41f0e9a4dea23188ea9cc1c41ac9f8bbafe0b93"
+        },
+        {
+          "name": "proofwidgets",
+          "url": "https://github.com/leanprover-community/ProofWidgets4",
+          "rev": "df72b022e558978a1c50264cfc4d7fec86fa8e04"
+        },
+        {
+          "name": "aesop",
+          "url": "https://github.com/leanprover-community/aesop",
+          "rev": "4a174c490d8707121c4a9290800489f105d85e07"
+        },
+        {
+          "name": "Qq",
+          "url": "https://github.com/leanprover-community/quote4",
+          "rev": "dce0ad79c486cb1fb504af04f953c3466b0c6db8"
+        },
+        {
+          "name": "batteries",
+          "url": "https://github.com/leanprover-community/batteries",
+          "rev": "66e469188fe07963e5cf666c7d4433f45b8131c5"
+        },
+        {
+          "name": "Cli",
+          "url": "https://github.com/leanprover/lean4-cli",
+          "rev": "c24fe6078c630e89b489bffe59b3e20ac30d12c8"
+        }
+      ],
+      "diagnostic_class": "canonical-only-genuine-bridge-proof-smoke",
+      "remote_memory_mib": 8192,
+      "proof_holes": false,
+      "source_project_import": false,
+      "proof_scope": "Actual support/ideal/polynomial/basis/quotient/chain-complex API proofs from observed Solution failures only"
+    }
+  ],
+  "default_case_ids": [
+    "rees_cor53_actual_generic_proofs"
+  ],
+  "revision": "owned-explicit-transport-api",
+  "operator_resource_policy": {
+    "memory_mib": 8192,
+    "runner_memory_gib": 16,
+    "compiler_processes_per_job": 1,
+    "matrix_max_parallel": 1,
+    "compile_timeout_seconds": 2400
+  }
+}
