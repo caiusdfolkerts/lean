@@ -1,0 +1,3 @@
+module
+public import consolidated.rigidity_combined02_part3
+import all consolidated.rigidity_combined02_part3
