@@ -1,0 +1,57 @@
+{
+  "project": "higher_specht_bases_witnesses",
+  "baseline_project": "higher_specht_bases",
+  "paper_sha256": "931c0ee33b94c7a77d373c4040abb40151a8f1cd049b977006df188e31013a0c",
+  "companion_to": {
+    "entry": "higher_specht_bases_status",
+    "commit": "fb5ab9354a764e61ae08d5e8f631614d1920f776"
+  },
+  "status": "witness_formula_candidate_awaiting_full_preflight",
+  "selected_results": [
+    "Theorem 5.2: simultaneous graded irreducible harmonic decomposition with the literal cyclic polynomial witnesses, with their exact Specht shape isomorphisms",
+    "Theorem 6.6: simultaneous untruncated graded irreducible harmonic decomposition, locally finite in degree with the literal cyclic polynomial witnesses, with their exact Specht shape isomorphisms",
+    "Corollary 5.5: explicit Springer full-prefix witness formula"
+  ],
+  "coverage": [
+    {
+      "paper_result": "Theorem 5.2",
+      "paper_file": "paper.pdf",
+      "declarations": [
+        {
+          "name": "HigherSpecht.finite_harmonics_literal_witnesses",
+          "source_path": "source/Solution.lean"
+        }
+      ],
+      "paper_pdf_pages": [
+        17
+      ]
+    },
+    {
+      "paper_result": "Theorem 6.6",
+      "paper_file": "paper.pdf",
+      "declarations": [
+        {
+          "name": "HigherSpecht.untruncated_harmonics_literal_witnesses",
+          "source_path": "source/Solution.lean"
+        }
+      ],
+      "paper_pdf_pages": [
+        26
+      ]
+    },
+    {
+      "paper_result": "Corollary 5.5",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        19
+      ],
+      "declarations": [
+        {
+          "name": "HigherSpecht.springer_literal_column_witness",
+          "source_path": "source/Solution.lean"
+        }
+      ]
+    }
+  ],
+  "coverage_status": "partial_principal_selection_not_whole_paper"
+}

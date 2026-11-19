@@ -1,0 +1,52 @@
+version: v0.4
+project:
+  name: Higher Specht bases for Springer and Δ-Springer rings
+  description: >
+    Each summand is the cyclic subrepresentation of the literal polynomial
+    witness from column insertion, with the original factorial normalization.
+    One family of independent homogeneous irreducible polynomial
+    subrepresentations gives the harmonic decompositions simultaneously
+    for all allowed shapes. The untruncated family is locally finite by
+    degree. Harmonic membership is expressed by the coefficient formula
+    for the ordinary apolar pairing.
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.CO
+  - math.RT
+  msc2020:
+  - 05E10
+  - 20C30
+sources:
+- type: paper
+  title: Higher Specht bases for Springer and Δ-Springer rings
+  authors:
+  - Caius Folkerts
+  relationship: formalizes
+  author_endorsement: participated
+  url: https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases/paper.pdf
+  note: 'Exact included paper SHA-256: 931c0ee33b94c7a77d373c4040abb40151a8f1cd049b977006df188e31013a0c.
+    Scope and declaration locations are recorded in map.json; novelty is not independently established.'
+automation:
+  methods:
+  - method: agent
+    tool_setup: OpenAI Codex
+    notes: Codex extracted independent simultaneous existence statements and connected
+      the coefficient pairing to the retained harmonic-space proofs.
+  - method: other
+    tool_setup: Historical AI assistance reported in the included paper
+    notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing its proofs.
+      The exact model roles and extent of historical Lean automation have not been reconstructed from
+      the snapshot.
+review:
+  status: unchecked
+  notes: This selection requires its own full preflight.
+scope:
+  current_selection: Theorems 5.2 and 6.6 simultaneous homogeneous irreducible decompositions, literal witness formulas, exact Specht shape isomorphisms and local finiteness. The literal full-prefix witness of Corollary 5.5 is also compared.
+  known_gaps:
+  - The full master-family decomposition for the Springer specialization in Corollary 5.5 is outside this comparison.
+  notes: See map.json for precise declarations.
