@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "kind": "Canonical small-context proof-type observation, not mathematical full preflight",
+  "pipeline_commit": "14aa8d6b3c2f14a8540605e37144560b9a00e7e7",
+  "cases": [
+    {
+      "id": "wishart_source_context_instance_types",
+      "module": "InstanceTypeProbe",
+      "case_dir": "cases/wishart_source_context_instance_types",
+      "original_package": "reports/wishart/full20-canonical/instance-type-probes",
+      "original_challenge": "reports/wishart/full20-canonical/instance-type-probes/bundle/reports/challenge_only_diagnostic/cases/wishart_source_context_instance_types/Challenge.lean",
+      "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
+      "hashes": {
+        "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
+        "lake-manifest.json": "300eaa0ed216e52b46ddf86c28acbaef4a78c623986d47503b9ef4639ecdfd7a",
+        "original-lakefile.toml": "d90686b28700434d823fbfe7fc03afb991d77ff566bd1c53b8c4f2525189ebc0",
+        "Challenge.lean": "8f237b139f118b16cb911fdb138f3952e7c46e328a098a6a7409be514206213e"
+      },
+      "challenge_lines": 84,
+      "challenge_bytes": 4987,
+      "dependency_pins": [
+        {
+          "name": "mathlib",
+          "url": "https://github.com/leanprover-community/mathlib4",
+          "rev": "2cabef97b63d3275776b8b060d802de6a6fa1055"
+        },
+        {
+          "name": "plausible",
+          "url": "https://github.com/leanprover-community/plausible",
+          "rev": "c2d7840c65673533e15b499f25beecdc6227f7d8"
+        },
+        {
+          "name": "LeanSearchClient",
+          "url": "https://github.com/leanprover-community/LeanSearchClient",
+          "rev": "9d39f9bb0c30aa2f6200808805ff16e6ce950890"
+        },
+        {
+          "name": "importGraph",
+          "url": "https://github.com/leanprover-community/import-graph",
+          "rev": "b3cc36c295aa5e3e3c0197b09a6556298e710447"
+        },
+        {
+          "name": "proofwidgets",
+          "url": "https://github.com/leanprover-community/ProofWidgets4",
+          "rev": "17137fad38a2cc782ff00b323a13c3a991d085ab"
+        },
+        {
+          "name": "aesop",
+          "url": "https://github.com/leanprover-community/aesop",
+          "rev": "29c64c56cc38211d39b306db2df11701e3d3de11"
+        },
+        {
+          "name": "Qq",
+          "url": "https://github.com/leanprover-community/quote4",
+          "rev": "6d26f8bb4b2bb78f929ad160feac508866821316"
+        },
+        {
+          "name": "batteries",
+          "url": "https://github.com/leanprover-community/batteries",
+          "rev": "30691c775364967184547c94468bf6b5f25400fb"
+        },
+        {
+          "name": "Cli",
+          "url": "https://github.com/leanprover/lean4-cli",
+          "rev": "34d2efffcb6dc8d5f3537cf6a7f88bfaa999ec49"
+        },
+        {
+          "name": "TauCeti",
+          "url": "https://github.com/TauCetiProject/TauCeti",
+          "rev": "06d5bb4e3ebb737dc6538567f5c53bf8800b9362"
+        }
+      ],
+      "diagnostic_class": "canonical-only-bounded-instance-proof-type-probe-not-full-Wishart",
+      "remote_memory_mib": 8192
+    },
+    {
+      "id": "wishart_broad_context_instance_types",
+      "module": "InstanceTypeProbe",
+      "case_dir": "cases/wishart_broad_context_instance_types",
+      "original_package": "reports/wishart/full20-canonical/instance-type-probes",
+      "original_challenge": "reports/wishart/full20-canonical/instance-type-probes/bundle/reports/challenge_only_diagnostic/cases/wishart_broad_context_instance_types/Challenge.lean",
+      "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
+      "hashes": {
+        "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
+        "lake-manifest.json": "300eaa0ed216e52b46ddf86c28acbaef4a78c623986d47503b9ef4639ecdfd7a",
+        "original-lakefile.toml": "d90686b28700434d823fbfe7fc03afb991d77ff566bd1c53b8c4f2525189ebc0",
+        "Challenge.lean": "33d9e1b68fb92acb2cf964f4a6b7e3d577aa3c738ed80ed94c23dbd60ebafbc7"
+      },
+      "challenge_lines": 85,
+      "challenge_bytes": 5009,
+      "dependency_pins": [
+        {
+          "name": "mathlib",
+          "url": "https://github.com/leanprover-community/mathlib4",
+          "rev": "2cabef97b63d3275776b8b060d802de6a6fa1055"
+        },
+        {
+          "name": "plausible",
+          "url": "https://github.com/leanprover-community/plausible",
+          "rev": "c2d7840c65673533e15b499f25beecdc6227f7d8"
+        },
+        {
+          "name": "LeanSearchClient",
+          "url": "https://github.com/leanprover-community/LeanSearchClient",
+          "rev": "9d39f9bb0c30aa2f6200808805ff16e6ce950890"
+        },
+        {
+          "name": "importGraph",
+          "url": "https://github.com/leanprover-community/import-graph",
+          "rev": "b3cc36c295aa5e3e3c0197b09a6556298e710447"
+        },
+        {
+          "name": "proofwidgets",
+          "url": "https://github.com/leanprover-community/ProofWidgets4",
+          "rev": "17137fad38a2cc782ff00b323a13c3a991d085ab"
+        },
+        {
+          "name": "aesop",
+          "url": "https://github.com/leanprover-community/aesop",
+          "rev": "29c64c56cc38211d39b306db2df11701e3d3de11"
+        },
+        {
+          "name": "Qq",
+          "url": "https://github.com/leanprover-community/quote4",
+          "rev": "6d26f8bb4b2bb78f929ad160feac508866821316"
+        },
+        {
+          "name": "batteries",
+          "url": "https://github.com/leanprover-community/batteries",
+          "rev": "30691c775364967184547c94468bf6b5f25400fb"
+        },
+        {
+          "name": "Cli",
+          "url": "https://github.com/leanprover/lean4-cli",
+          "rev": "34d2efffcb6dc8d5f3537cf6a7f88bfaa999ec49"
+        },
+        {
+          "name": "TauCeti",
+          "url": "https://github.com/TauCetiProject/TauCeti",
+          "rev": "06d5bb4e3ebb737dc6538567f5c53bf8800b9362"
+        }
+      ],
+      "diagnostic_class": "canonical-only-bounded-instance-proof-type-probe-not-full-Wishart",
+      "remote_memory_mib": 8192
+    }
+  ],
+  "default_case_ids": [
+    "wishart_source_context_instance_types",
+    "wishart_broad_context_instance_types"
+  ],
+  "operator_resource_policy": {
+    "memory_mib": 8192,
+    "runner_memory_gib": 16,
+    "compiler_processes_per_job": 1,
+    "matrix_max_parallel": 2,
+    "compile_timeout_seconds": 2400
+  }
+}
