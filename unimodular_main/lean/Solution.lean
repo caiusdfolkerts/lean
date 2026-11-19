@@ -677,3 +677,33 @@ theorem exact_minor_class {E : Type*} (M : Matroid E) :
       (Bridge.coordinate_deeplyMonotone_agrees P).mp hP,?_⟩
     rwa [← Bridge.coordinate_normalMatroid_agrees]
 end PalomarDeepMonotone
+
+/- Exact Corollary6.2 extension; its literal338-line Challenge passed canonical
+elaboration in run44391777414. The actual source proof bridge remains unbuilt. -/
+namespace PalomarDeepMonotone.Presentation
+universe u v
+variable {N : Type u} [AddCommGroup N] {V : Type v} [AddCommGroup V] [Module ℝ V]
+  {n : ℕ} {ι : N →+ V} (P : Presentation n ι)
+/-- Corollary6.2 in the original integral dual: every real-independent full
+selection from all actual primitive geometric facet normals is an integral
+basis. There is no coordinate-change hypothesis, sampled normal list, generic
+field assumption or numerical determinant surrogate. -/
+theorem primitive_facet_normals_uniform (hP : P.DeeplyMonotone)
+    (a : Fin n → {m // m ∈ P.geometricFacetNormals})
+    (ha : LinearIndependent ℝ (fun i => P.lattice.realCharacter (a i).val)) :
+    ∃ b : Module.Basis (Fin n) ℤ (N →+ ℤ), ∀ i, b i = (a i).val := by
+  let Q := Bridge.sourcePresentation P
+  let a' : Fin n → {m // m ∈ Q.geometricFacetNormals} := fun i =>
+    ⟨(a i).val,by
+      change (a i).val ∈ (Bridge.sourcePresentation P).geometricFacetNormals
+      rw [← Bridge.facet_normals_agree]
+      exact (a i).property⟩
+  have ha' : LinearIndependent ℝ (fun i => Q.lattice.realCharacter (a' i).val) := by
+    change LinearIndependent ℝ
+      (fun i => (Bridge.sourceLattice P.lattice).realCharacter (a i).val)
+    rw [← Bridge.character_agrees]
+    exact ha
+  obtain ⟨b,hb⟩ := Q.deeplyMonotone_facetNormals_uniform
+    ((Bridge.deeplyMonotone_agrees P).mp hP) a' ha'
+  exact ⟨b,hb⟩
+end PalomarDeepMonotone.Presentation

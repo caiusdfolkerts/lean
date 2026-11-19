@@ -13,7 +13,8 @@
     "PalomarDeepMonotone.Components.pairwise_disjoint",
     "PalomarDeepMonotone.Presentation.direct_sum_networks",
     "PalomarDeepMonotone.Coordinates.Presentation.primitiveEdgeDirections_finite",
-    "PalomarDeepMonotone.exact_minor_class"
+    "PalomarDeepMonotone.exact_minor_class",
+    "PalomarDeepMonotone.Presentation.primitive_facet_normals_uniform"
   ],
   "permitted_axioms": [
     "propext",

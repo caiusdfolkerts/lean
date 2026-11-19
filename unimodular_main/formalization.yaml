@@ -10,7 +10,9 @@ project:
     each component has a genuine eligible rooted-network cycle-matroid model.
     Conversely every ordinary ground-series-parallel matroid embeds, on its
     full actual ground, as a minor of the primitive-normal matroid of a
-    positive-dimensional deeply monotone coordinate polytope.
+    positive-dimensional deeply monotone coordinate polytope. Every real-independent
+    full selection of actual primitive geometric facet normals is an integral
+    basis in the original integral dual.
   authors: [Caius Folkerts]
   responsible_maintainers: [Caius Folkerts]
   license: Apache-2.0
@@ -23,7 +25,7 @@ sources:
     type: paper
     relationship: formalizes
     location: paper.pdf
-    note: Theorem1.2 original-lattice direct-sum network, necessity, ordinary-minor and exact minor-realization assertions.
+    note: Theorem1.2 original-lattice direct-sum network, necessity, ordinary-minor and exact minor-realization assertions; Corollary6.2 actual original-lattice uniform unimodularity.
 related_formalizations:
   - title: Complete-fan degree-one cycle entry
     id: https://github.com/caiusdfolkerts/research/tree/232c744f9152210fa907985383a4dd5a7a3400e7/unimodular
@@ -45,15 +47,15 @@ automation:
 review:
   status: unchecked
   notes: >-
-    Exact322-line Challenge passed canonical elaboration in run44380113477.
-    Full run44386770990 passed the repaired legacy-partition import collision
-    and built all reachable original proof imports through OriginalPolytopeNetworks.
-    Its complete untruncated report contains seven Solution-only errors. This
-    proof-only repair removes two completed-goal steps, closes two definitionally
-    equal vertex-subtype goals, separates the augmentation tuple obligations,
-    and composes the exact independent-set equivalences without over-rewriting.
-    All mathematical statements, definitions, source modules and canonical pins
-    remain unchanged. The repaired Solution and raw comparison are unverified.
+    Exact338-line Challenge SHA61b5d581 passed canonical elaboration in
+    run44391777414/sourcef41e86bc. All input hashes, entire canonical manifest,
+    bounded-log hash and all1621 frozen project-file hashes were checked.
+    This separate candidate incorporates the measured679-line main proof-only
+    repair of all seven Solution errors in fullrun44386770990, then appends
+    the unchanged actual Corollary6.2 original-integral-dual proof bridge.
+    All13 target statements, original sources and canonical pins are unchanged.
+    The709-line combined actual Solution and raw comparison remain unbuilt.
+    No full preflight, registry/intake or mathematical peer review is claimed.
 fidelity:
   divergences: >-
     The old free-support partition implementation is renamed PalomarLegacyPartition

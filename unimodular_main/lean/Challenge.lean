@@ -320,3 +320,19 @@ theorem exact_minor_class {E : Type*} (M : Matroid E) :
         (f : M.E ↪ Coordinates.Lattice n), P.DeeplyMonotone ∧
         (M.restrictSubtype M.E).mapEmbedding f ≤m P.normalMatroid := by sorry
 end PalomarDeepMonotone
+
+/- Separate exact Corollary6.2 extension; unelaborated and not merged into
+any frozen322-line or passing13-target package. -/
+namespace PalomarDeepMonotone.Presentation
+universe u v
+variable {N : Type u} [AddCommGroup N] {V : Type v} [AddCommGroup V] [Module ℝ V]
+  {n : ℕ} {ι : N →+ V} (P : Presentation n ι)
+/-- Corollary6.2 in the original integral dual: every real-independent full
+selection from all actual primitive geometric facet normals is an integral
+basis. There is no coordinate-change hypothesis, sampled normal list, generic
+field assumption or numerical determinant surrogate. -/
+theorem primitive_facet_normals_uniform (hP : P.DeeplyMonotone)
+    (a : Fin n → {m // m ∈ P.geometricFacetNormals})
+    (ha : LinearIndependent ℝ (fun i => P.lattice.realCharacter (a i).val)) :
+    ∃ b : Module.Basis (Fin n) ℤ (N →+ ℤ), ∀ i, b i = (a i).val := by sorry
+end PalomarDeepMonotone.Presentation
