@@ -1,0 +1,40 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "PaperVerification.Fermion.Endpoint.HomogeneousPolynomial.eval",
+    "PaperVerification.Fermion.ringCon_le_ker_of_kills",
+    "PaperVerification.Fermion.quotientMk_eq_zero_of_mem",
+    "PaperVerification.Fermion.twoSided_map_killed",
+    "PaperVerification.Fermion.tensorQuotientForward_tmul_mk",
+    "PaperVerification.Fermion.tensorQuotientBackward_mk_tmul",
+    "PaperVerification.Fermion.basisDegreePart_iSup_eq_top",
+    "PaperVerification.Fermion.basisDegreePart_independent",
+    "PaperVerification.Fermion.exteriorWeightedPart_one",
+    "PaperVerification.Fermion.exteriorWeightedPart_basis_mul",
+    "PaperVerification.Fermion.gradedImageDecomposeSource_coe",
+    "PaperVerification.Fermion.gradedImageDecomposeSource_recompose",
+    "PaperVerification.Fermion.gradedImageDecomposeSource_ker",
+    "PaperVerification.Fermion.gradedImageDecompose_q",
+    "PaperVerification.Fermion.twoSided_span_multihomogeneous",
+    "PaperVerification.Fermion.residueAlgHom_surjective",
+    "PaperVerification.Fermion.SeparatedOrdinaryData.pointEval_kills",
+    "PaperVerification.Fermion.SeparatedPairedData.ordinary_scalar_ideal_mem",
+    "PaperVerification.Fermion.clusterOddCurrent_bidegree",
+    "PaperVerification.Fermion.clusterOddCurrent_degree",
+    "PaperVerification.Fermion.gradedTensorBasis_apply",
+    "PaperVerification.Fermion.gradedTensor_homogeneous_tmul_mem",
+    "PaperVerification.Fermion.homogeneousBasis_mem",
+    "PaperVerification.Fermion.multihomogeneousBasis_mem",
+    "PaperVerification.Fermion.multigradedTensor_tmul_mem",
+    "PaperVerification.Fermion.naturalMultigradedTensorPart_total",
+    "PaperVerification.Fermion.homogeneousCluster_bigraded_total",
+    "PaperVerification.Fermion.localTensorDecomposition"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "definition_names": []
+}
