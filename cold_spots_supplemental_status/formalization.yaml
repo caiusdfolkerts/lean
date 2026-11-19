@@ -1,0 +1,68 @@
+version: v0.4
+project:
+  name: Exact cold-spot minima and translation classes
+  description: Exact Gaussian minimum values and complete coordinate equality loci for E6, E8, the dual
+    E7 lattice, BW16, and D_n plus in every even dimension n at least eight. Counts of actual deep-hole
+    translation classes are 2, 135, 36, 120, and choose(n,n/2) respectively, the last for even n greater
+    than eight. Gaussian sums are infinite series over explicit lattice sets; quotient classes contain
+    actual real deep holes. This supplements the distinct entry for universal cold spots, positive mixtures
+    and radii.
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
+  license: Apache-2.0
+sources:
+- type: article
+  title: Universal cold spots of E8 and related lattices
+  authors:
+  - Caius Folkerts
+  identifier: paper.pdf
+  relationship: formalizes
+  note: Introduction translation-class table, Theorem3.3 and Equation10, Theorem6.2 and Equation26, Equation28
+    with Section7.5 root union, and Equation32 with Section8.3 E6 equality descriptions.
+classification:
+  arxiv:
+  - math.MG
+  - math.NT
+  msc2020:
+  - 52C07
+  - 11H31
+automation:
+  methods:
+  - method: agent
+    tool_setup: OpenAI Codex agents preparing Palomar statements and packaging.
+    notes: The paper discloses GPT-6 Astra, GPT-5.6 Sol and Kimi K3 assistance developing proofs. Full
+      prior prompt history was not reconstructed. The present packaging independently inlines exact definitions,
+      introduces literal wrappers and copies the substantive source.
+review:
+  status: unchecked
+  notes: 'Verification record updated on 2026-11-19. Commit fdc698b2eba9e01784ab2d2be125279a154de5c3 passed
+    the complete pinned full workflow (run 44381728971, report dated 2026-11-18T19:46:38Z), including
+    Source and Solution builds, Comparator and mandatory independent kernel checks. This revision changes
+    formalization.yaml only: every Lean file and theorem selection is byte-identical to that verified
+    snapshot. The historical preparation notes below do not describe the subsequent mechanical verification
+    outcome. Mathematical scope exclusions remain in force. Fresh verification and editorial decisions
+    for this metadata revision are recorded separately; a clean editorial review is still required before
+    registration. Historical preparation note, written before the complete mechanical verification of
+    commit fdc698b2eba9e01784ab2d2be125279a154de5c3: The exact independent Challenge passed pinned canonical
+    remote elaboration in run44360360113 at diagnostic commit224234d543551423d12e2db058ef4a0dccba5679.
+    Its18 intentional theorem placeholders check statement interfaces only. New Solution wrapper compilation,
+    full preflight, Comparator and independent kernel checks remain pending. The first full run compiled
+    the substantive source but rejected closure transport wrappers; explicit carrier congruence and canonical
+    Mathlib body visibility repairs are source-prepared, uncompiled.'
+fidelity:
+  notes: All ambient points, positive Gaussian parameters and even-dimension ranges of the selected results
+    are preserved. E7 dual uses its actual zero-sum hyperplane. The class-count types are ambient additive
+    quotient classes containing actual deep holes, not a finite list of presumed representatives. The
+    literal lattice sets have canonical AddSubgroup.closure; Solution proves these closures equal the
+    source lattice subgroups. Exact printed theta values and complete coordinate/root-union equality loci
+    are retained. The already submitted Cold Spots entry is unchanged. The underlying full proof source
+    comes from baseline e0696fddcd3d10b5d6461e62e9b2f02c4195be37 through verified source snapshot 9fcbca1143471e6e25c337def9897b58377e0b4c;
+    that prior pass does not verify this supplemental Challenge or its wrappers.
+comparison_support:
+  principal_result_count: 12
+  supporting_theorem_count: 6
+  note: Six compared supporting theorems fix proof-valued fields in the explicit integer embedding, zero-sum
+    subspace and projection. No semantic definition value is unspecified. Solution supplies actual supporting
+    proofs.
