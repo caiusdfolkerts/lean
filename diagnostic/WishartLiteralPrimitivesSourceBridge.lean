@@ -1,7 +1,6 @@
 module
 public meta import Lean.Elab.Command
 public meta import Lean.Data.Json
-import all Mathlib.Basic.Real.Basic
 
 public import WishartLiteralPrimitives
 public import TauCeti.Probability.Distributions.Wishart.Nonsingular
@@ -134,7 +133,7 @@ theorem congruence_exact {p q : ℕ} (M : Matrix (Fin q) (Fin p) ℝ) :
   apply Subtype.ext
   rfl
 /-- The actual source star-algebra embedding has every literal complex entry. -/
-theorem quaternion_exact (q : ℍ[ℝ]) :
+theorem quaternion_exact (q : @Quaternion ℝ Real.instZero Real.instOne Real.instNeg) :
     Quaternion.toComplexMatrix q = WishartLiteralStructures.quaternionRepresentation q := by
   change Quaternion.toComplexMatrix q = WishartLiteralStructures.complexMatrixBasis.liftHom q
   rw [Quaternion.toComplexMatrix_apply, WishartLiteralStructures.complexMatrixBasis_liftHom_apply]
