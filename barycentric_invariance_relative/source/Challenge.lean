@@ -310,6 +310,10 @@ theorem palomarBarycentricPolynomialSelfTower (p : P) :
       (MvPolynomial (BooleanFace (FaceVertex p)) K) := by
   infer_instance
 attribute [instance 2300] palomarBarycentricPolynomialSelfTower
+/-- The original scalar module structure of the actual barycentric stalk. -/
+def palomarBarycentricStalkModule (p : P) : Module K (BarycentricStalk K p) := inferInstance
+attribute [instance 2400] palomarBarycentricStalkModule
+
 
 end
 end FourPapers.Universal

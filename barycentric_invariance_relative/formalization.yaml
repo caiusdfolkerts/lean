@@ -44,12 +44,11 @@ automation:
       not been reconstructed from the snapshot.
 review:
   status: unchecked
-  notes: The current independent Challenge, including a genuine polynomial
-    self-action scalar-tower support specialized to the original face parameters,
-    passed canonical elaboration in run44474988258. The support matches the
-    measured auxiliary type from run44474405031. The original mathematical
-    selection is unchanged. Full source, Solution, Comparator and independent
-    kernel verification of this exact repair are pending.
+  notes: The actual barycentric stalk module structure is now named in both
+    presentations. Canonical run44480760287 verified the complete interface and
+    a definitional equality control against the original inferred module. All
+    previously selected claims are retained. Full source, Solution, Comparator
+    and independent kernel verification of this exact repair remain pending.
 scope:
   known_gaps:
   - Other theorem groups from the same paper have separate configurations because
