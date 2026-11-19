@@ -1681,5 +1681,45 @@
     "all_statements_data_instances_guards_pins_unchanged": true,
     "scope": "All5 principal/fullCor4.3 endpoints plus all selected semantic support preserved.",
     "not_a_diagnosis_guarantee": "The stack identifies simp equation generation and the failing module. This proof-only repair removes that operation from the immediately changed proof; its compiler result remains unverified."
+  },
+  "measured_griffin_descent_proof_repair": {
+    "status": "frozen exact-trigger proof-only repair; source/Comparator uncompiled",
+    "actual_failed_full_commit": "83d7e435dcef512d553c3184b7968edbed88fd1e",
+    "actual_failed_full_run": 44462907839,
+    "diagnostic_commit": "706a977bb93889ed44ef91eb9206b951f7e0e5e6",
+    "diagnostic_run": 44466008409,
+    "diagnostic_report_sha256": "21d2649f36b7ee322030802a67957b79ad30f5bba2657bed858ae27e6ed77cba",
+    "complete_error_excerpts": {
+      "errors": [
+        {
+          "excerpt": "error: source/higher_specht/verified/basis_remainder01.lean:3993:4: Type mismatch: After simplification, term\n  hs\n has type\n  0 < s\nbut is expected to have type\n  (\u2211 i \u2208 range (n - 1),\n      if\n          tableauRows (StandardYoungTableau.rowSuperstandard (oneRowShape n)) i <\n            tableauRows (StandardYoungTableau.rowSuperstandard (oneRowShape n)) (i + 1) then\n        1\n      else 0) <\n    s",
+          "location": {
+            "column": 4,
+            "line": 3993,
+            "path": "source/higher_specht/verified/basis_remainder01.lean"
+          },
+          "truncated": false
+        },
+        {
+          "excerpt": "error: source/higher_specht/verified/basis_remainder01.lean:3982:4: (kernel) declaration has metavariables 'HigherSpecht.oneRowGriffinIndex'",
+          "location": {
+            "column": 4,
+            "line": 3982,
+            "path": "source/higher_specht/verified/basis_remainder01.lean"
+          },
+          "truncated": false
+        }
+      ],
+      "omitted_error_count": 0,
+      "output_truncated": false,
+      "schema_version": 1
+    },
+    "trigger": "last flushed marker BEFORE original2620 oneRowGriffinIndex; its descents_lt simp fails, then kernel reports structure declaration has metavariables and later equation generation panics.",
+    "source": "source/higher_specht/verified/basis_remainder01.lean",
+    "before_sha256": "343cdba1d46aeff8780708e44dc4c161bf5208dfecdf631d0c2bff1f1f75366d",
+    "after_sha256": "03f4d4f9f51e54eb3931873e6a145d65b26fb853fc71f083ccf978366ae11280",
+    "repair": "Preserve every index datum/hypothesis and all declaration types. In descents_lt explicitly unfold to the actual row function and actual card-1 ascent count, rewrite the proved whole function tableauRows=0, and prove the literal finite zero sum before applying the original hs. No diagnostic markers remain.",
+    "all5principal_Cor43_targets_and_selected_support_unchanged": true,
+    "known_row_zero_simp_occurrences_audited": "Other same-file occurrence cochargeLabel_eq_zero_of_one_row already uses the proved whole-function rewrite and literal finite-sum proof; no other unresolved tableauRows_eq_zero/ascentCount simp remains."
   }
 }

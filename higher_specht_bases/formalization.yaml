@@ -54,13 +54,14 @@ review:
   status: unchecked
   notes: >-
     Exact521-line Challenge passed canonical elaboration in run44387460587.
-    Fullrun44461248433 ended with a compiler metavariable panic during simp
-    equation-theorem generation in basis_remainder01, exit134 and no ordinary
-    Lean error excerpts. The cocharge-zero proof now rewrites the proved zero
-    row function and proves the literal finite sum by sum_eq_zero/rfl, avoiding
-    simp equation generation in that proof. All statements, mathematical data,
-    source guards, measured raw normalization and selected support are unchanged.
-    Repaired full source/Solution/Comparator and kernel checks remain unverified.
+    Diagnosticrun44466008409, based on exact83d7 source plus reversible stdout
+    markers, located the compiler panic's preceding failed descents_lt field
+    in oneRowGriffinIndex. Its zero row function is now rewritten explicitly
+    and its actual finite ascent sum proved zero before using the original
+    positive bound. No diagnostic markers remain in this candidate. All index
+    data, hypotheses, declaration types, guards, measured raw normalization,
+    selected support and canonical pins remain unchanged. The corrected full
+    Source/Solution/Comparator and kernel replay remain unverified.
 scope:
   known_gaps:
   - The fixed-copy irreducible representation assertions, column-insertion result,

@@ -2628,8 +2628,19 @@ def oneRowGriffinIndex (n : ℕ) (lam : YoungDiagram) (hk : lam.card ≤ n)
     · exact le_of_eq (prefixShape_card (oneRowPair n).left lam.card
         (by simpa only [oneRowPair, oneRowShape_card] using hk)).symm
   descents_lt := by
-    simpa [descentNumber, oneRowPair,
-      tableauRows_eq_zero_of_one_row _ (oneRowShape_colLen_le_one n), ascentCount] using hs
+    change ascentCount
+      (tableauRows (StandardYoungTableau.rowSuperstandard (oneRowShape n)))
+      ((oneRowShape n).card - 1) < s
+    rw [tableauRows_eq_zero_of_one_row _ (oneRowShape_colLen_le_one n)]
+    change (Finset.range ((oneRowShape n).card - 1)).sum
+      (fun _ => if (0 : ℕ) < 0 then 1 else 0) < s
+    have hz : (Finset.range ((oneRowShape n).card - 1)).sum
+        (fun _ => if (0 : ℕ) < 0 then 1 else 0) = 0 := by
+      apply Finset.sum_eq_zero
+      intro j hj
+      rfl
+    rw [hz]
+    exact hs
   multiplier_length := by simp
   multiplier_width := by simp
 
