@@ -1,0 +1,37 @@
+{
+  "project": "higher_specht_bases_harmonics",
+  "baseline_project": "higher_specht_bases",
+  "paper_sha256": "931c0ee33b94c7a77d373c4040abb40151a8f1cd049b977006df188e31013a0c",
+  "companion_to": {
+    "entry": "higher_specht_bases_status",
+    "commit": "fb5ab9354a764e61ae08d5e8f631614d1920f776"
+  },
+  "status": "harmonics_candidate_awaiting_full_preflight",
+  "selected_results": [
+    "Theorem 5.2: simultaneous graded irreducible harmonic decomposition",
+    "Theorem 6.6: simultaneous untruncated graded irreducible harmonic decomposition, locally finite in degree"
+  ],
+  "coverage": [
+    {
+      "paper_result": "Theorem 5.2",
+      "paper_file": "paper.pdf",
+      "declarations": [
+        {
+          "name": "HigherSpecht.finite_harmonics_simultaneous",
+          "source_path": "source/Solution.lean"
+        }
+      ]
+    },
+    {
+      "paper_result": "Theorem 6.6",
+      "paper_file": "paper.pdf",
+      "declarations": [
+        {
+          "name": "HigherSpecht.untruncated_harmonics_simultaneous",
+          "source_path": "source/Solution.lean"
+        }
+      ]
+    }
+  ],
+  "coverage_status": "partial_principal_selection_not_whole_paper"
+}
