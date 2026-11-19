@@ -275,3 +275,292 @@ theorem universalSharpness (i : ℕ) (hi : 1 ≤ i) (hcard : Fintype.card V = i+
   simpa only [agrees_with_derivedTor, sharpIdeal, he,
     CommAlg.Polymatroid.squarefreeVeroneseIdeal] using h
 end PalomarHomological
+
+namespace PalomarHomological
+open CommAlg CommAlg.Polymatroid
+open scoped BigOperators
+universe uInterval
+variable {V k : Type uInterval} [Fintype V] [LinearOrder V] [Field k]
+/-- Exact clamped integer ceiling threshold over every partition of A.
+Zero-defect partitions contribute zero; the empty set is included. -/
+def intervalThreshold (ρ : RankFunction V) (i : ℕ) (A : Finset V) : ℕ :=
+  Finset.univ.sup (fun P : Finpartition A =>
+    if partitionDefect ρ P = 0 then 0 else
+      (min i (eventualOffset ρ A) - partitionSlack P) ⌈/⌉ partitionDefect ρ P)
+/-- Maximum of the actual thresholds over every subset, including the empty set. -/
+def intervalGlobalThreshold (ρ : RankFunction V) (i : ℕ) : ℕ :=
+  Finset.univ.sup (intervalThreshold ρ i)
+/-- Actual minimality under Rees monomial divisibility, including degree-zero
+polynomial factors; the module pieces use genuine nonzero Koszul homology. -/
+def intervalMinimal (I : Ideal (MvPolynomial V k))
+    (hI : IsPolymatroidalIdeal I) (i s : ℕ) (a : Exponent V) : Prop :=
+  MvPolynomial.monomial a (1 : k) ∈ powerPiece I hI i s ∧
+    ∀ r b, r ≤ s → b ≤ a →
+      MvPolynomial.monomial b (1 : k) ∈ powerPiece I hI i r →
+      MvPolynomial.monomial (a - b) (1 : k) ∈ I ^ (s - r) →
+      r = s ∧ b = a
+/-- All actual module monomials through Rees degree q, in the actual ordinary Rees algebra. -/
+def intervalBoundedMonomials (I : Ideal (MvPolynomial V k))
+    (hI : IsPolymatroidalIdeal I) (i q : ℕ) : Set (reesAlgebra I) :=
+  {p | ∃ s a, MvPolynomial.monomial a (1 : k) ∈ powerPiece I hI i s ∧
+    s ≤ q ∧ p.val = Polynomial.monomial s (MvPolynomial.monomial a 1)}
+
+private theorem intervalThreshold_eq_source (ρ : RankFunction V) (i : ℕ) (A : Finset V) :
+    intervalThreshold ρ i A = CommAlg.Polymatroid.powerThreshold ρ i A := by rfl
+private theorem intervalGlobalThreshold_eq_source (ρ : RankFunction V) (i : ℕ) :
+    intervalGlobalThreshold ρ i = CommAlg.Polymatroid.globalPowerThreshold ρ i := by rfl
+private theorem intervalMinimal_iff_source (I : Ideal (MvPolynomial V k))
+    (hI : IsPolymatroidalIdeal I) (i s : ℕ) (a : Exponent V) :
+    intervalMinimal I hI i s a ↔ CommAlg.IsMinimalHomologicalPowerMonomial I hI i s a := by
+  simp only [intervalMinimal, CommAlg.IsMinimalHomologicalPowerMonomial, powerPiece_eq_source]
+private theorem intervalBoundedMonomials_eq_source (I : Ideal (MvPolynomial V k))
+    (hI : IsPolymatroidalIdeal I) (i q : ℕ) :
+    intervalBoundedMonomials I hI i q = CommAlg.boundedHomologicalPowerMonomials I hI i q := by
+  ext a
+  simp only [intervalBoundedMonomials, CommAlg.boundedHomologicalPowerMonomials, powerPiece_eq_source]
+/-- The complete zero-Rees-module case of Theorem4.4. -/
+theorem zeroPowerModule (ρ : RankFunction V) (hρ : ρ.Active)
+    (i : ℕ) (hi : eventualOffset ρ Finset.univ < i) :
+    powerIdeal (rankIdeal k ρ) (rankIdealPolymatroidal ρ) i = ⊥ := by
+  simpa only [powerIdeal_eq_source] using
+    (FourPapers.Homological.theorem_4_4_zero (k := k) ρ hρ i hi)
+
+/-- Full Theorem4.4: endpoints, first nonzero piece, every actual minimal
+monomial Rees-generator degree and the exact least ideal-span generation bound. -/
+theorem exactGeneratorInterval (ρ : RankFunction V) (hρ : ρ.Active)
+    (i : ℕ) (hi0 : 0 < i) (hi : i ≤ eventualOffset ρ Finset.univ) :
+    (1 ≤ intervalThreshold ρ i Finset.univ ∧
+      intervalThreshold ρ i Finset.univ ≤ intervalGlobalThreshold ρ i ∧
+      intervalGlobalThreshold ρ i ≤ i) ∧
+    (∀ s : ℕ, 1 ≤ s →
+      (homologicalShiftIdeal (rankIdeal k ρ ^ s)
+        (powPolymatroidal (rankIdealPolymatroidal ρ) s) i ≠ ⊥ ↔
+          intervalThreshold ρ i Finset.univ ≤ s)) ∧
+    (∀ s : ℕ,
+      (∃ a, intervalMinimal (rankIdeal k ρ)
+        (rankIdealPolymatroidal ρ) i s a) ↔
+          intervalThreshold ρ i Finset.univ ≤ s ∧ s ≤ intervalGlobalThreshold ρ i) ∧
+    (∀ q : ℕ,
+      powerIdeal (rankIdeal k ρ) (rankIdealPolymatroidal ρ) i =
+        Ideal.span (intervalBoundedMonomials (rankIdeal k ρ)
+          (rankIdealPolymatroidal ρ) i q) ↔
+            intervalGlobalThreshold ρ i ≤ q) := by
+  simpa only [agrees_with_derivedTor, intervalThreshold_eq_source,
+    intervalGlobalThreshold_eq_source, intervalMinimal_iff_source,
+    powerIdeal_eq_source, intervalBoundedMonomials_eq_source] using
+      (FourPapers.Homological.theorem_4_4 (k := k) ρ hρ i hi0 hi)
+
+/-- The signed rational-ceiling formula, with negative numerators and all
+empty index collections handled by the literal sup/toNat conventions. -/
+theorem thresholdRationalCeiling (ρ : RankFunction V) (i : ℕ) (A : Finset V) :
+    intervalThreshold ρ i A = Finset.univ.sup (fun P : Finpartition A =>
+      if 0 < partitionDefect ρ P then
+        (Int.ceil (((((min i (eventualOffset ρ A)) : ℕ) : ℚ) - partitionSlack P) /
+          (partitionDefect ρ P : ℚ))).toNat else 0) := by
+  simpa only [intervalThreshold_eq_source, CommAlg.Polymatroid.eventualCorrection] using
+    (FourPapers.Homological.theorem_4_4_threshold_formula ρ i A)
+
+end PalomarHomological
+
+namespace PalomarHomological
+open CommAlg CommAlg.Polymatroid
+open scoped BigOperators
+universe uTotal
+variable {V k : Type uTotal} [Fintype V] [LinearOrder V] [Field k]
+/-- The loop-compatible partition rank of g+cardinality, with all coordinates retained. -/
+def totalAugmentedValue (g : RankFunction V) (A : Finset V) : ℕ :=
+  partitionRank (fun B => g B + B.card) A
+/-- The exact degree excess, later identified with genuine projective dimension. -/
+def totalShiftLength (g : RankFunction V) : ℕ := totalAugmentedValue g Finset.univ - g Finset.univ
+/-- Both branches of the canonical rank on the actual added coordinate `none`. -/
+def totalHomogenizedValue (g : RankFunction V) (A : Finset (Option V)) : ℕ :=
+  if none ∈ A then totalShiftLength g + g A.eraseNone else totalAugmentedValue g A.eraseNone
+/-- Literal homogenized sum of genuine homological-shift ideals, in the polynomial
+ring with one new coordinate. Every degree from0 throughp is included. -/
+def totalHomogenizedIdeal (I : Ideal (MvPolynomial V k))
+    (hI : IsPolymatroidalIdeal I) (p : ℕ) : Ideal (MvPolynomial (Option V) k) :=
+  ∑ i ∈ Finset.range (p + 1),
+    Ideal.span {MvPolynomial.X (R := k) none ^ (p - i)} *
+      Ideal.map (MvPolynomial.rename some).toRingHom (homologicalShiftIdeal I hI i)
+
+
+private theorem totalAugmentedValue_eq_source (g : RankFunction V) (A : Finset V) :
+    totalAugmentedValue g A = universalAugmentedRank g A := by
+  rw [universalAugmentedRank_apply]
+  apply congrArg (fun f : Finset V → ℕ => partitionRank f A)
+  funext B
+  exact (cardinalLift_apply g B).symm
+private theorem totalShiftLength_eq_source (g : RankFunction V) :
+    totalShiftLength g = shiftLength g := by
+  have h := shiftLength_add_degree g
+  rw [← totalAugmentedValue_eq_source g Finset.univ] at h
+  unfold totalShiftLength
+  omega
+private theorem totalHomogenizedValue_eq_source (g : RankFunction V)
+    (A : Finset (Option V)) :
+    totalHomogenizedValue g A = homogenizedShiftRank g A := by
+  simp only [totalHomogenizedValue, totalShiftLength_eq_source, totalAugmentedValue_eq_source,
+    homogenizedShiftRank, RankFunction.homogenize_apply, homogenizedRankValue, shiftLength, rankGap]
+private theorem totalHomogenizedIdeal_eq_source (I : Ideal (MvPolynomial V k))
+    (hI : IsPolymatroidalIdeal I) (p : ℕ) :
+    totalHomogenizedIdeal I hI p = homogenizedHomologicalIdeal I hI p := by
+  simp only [totalHomogenizedIdeal, homogenizedHomologicalIdeal, agrees_with_derivedTor]
+
+/-- Complete Theorem5.1: actual homogenized ideal, genuine projective dimension,
+equigeneration, canonical rank on every subset and every actual nonzero Tor multidegree.
+No positivity assumption on the rank and no inactive coordinate is discarded. -/
+theorem totalSupportHomogenization (I : Ideal (MvPolynomial V k))
+    (hI : IsPolymatroidalIdeal I) (g : RankFunction V) (he : I = rankIdeal k g) :
+    ∃ p : ℕ, p = totalShiftLength g ∧
+      CategoryTheory.projectiveDimension (ModuleCat.of (MvPolynomial V k) I) =
+        (p : WithBot ℕ∞) ∧
+      ∃ hH : IsPolymatroidalIdeal (totalHomogenizedIdeal I hI p),
+        Equigenerated (idealGenerators (totalHomogenizedIdeal I hI p) hH) (g Finset.univ + p) ∧
+        (∀ A : Finset (Option V),
+          upperRank (idealGenerators (totalHomogenizedIdeal I hI p) hH) A =
+            totalHomogenizedValue g A) ∧
+        (∀ e : Exponent (Option V),
+          e ∈ idealGenerators (totalHomogenizedIdeal I hI p) hH ↔
+            ∃ i ≤ p, ∃ a : Exponent V,
+              Simplicial.literalNonzeroHomology (k := k)
+                (Koszul.koszulFaces (idealGenerators I hI) a) i ∧
+              e = a.optionElim (p - i)) := by
+  simpa only [totalShiftLength_eq_source, totalHomogenizedIdeal_eq_source,
+    totalHomogenizedValue_eq_source, Simplicial.literalNonzeroHomology_iff,
+    Koszul.gradedBettiNonzero_iff_faces] using
+      (FourPapers.Homological.theorem_5_1 I hI g he)
+
+/-- Both displayed canonical rank formulas of Theorem5.1 on every original subset. -/
+theorem totalCanonicalRankFormulas (g : RankFunction V) (hg : g.Active) (A : Finset V) :
+    totalHomogenizedValue g (A.image some) = A.card + partitionRank g A ∧
+      totalHomogenizedValue g A.insertNone = totalShiftLength g + g A := by
+  simpa only [totalHomogenizedValue_eq_source, totalShiftLength_eq_source] using
+    (FourPapers.Homological.theorem_5_1_rank g hg A)
+
+end PalomarHomological
+
+namespace PalomarHomological
+open CommAlg CommAlg.Polymatroid
+open scoped BigOperators
+universe uMixed uMixedColor
+variable {V k : Type uMixed} [Fintype V] [LinearOrder V] [Field k]
+variable {C : Type uMixedColor} [Fintype C] [DecidableEq C]
+
+
+/-- Polymatroidality of the exact finite product of color powers. -/
+theorem mixedProductPolymatroidal (I : C → Ideal (MvPolynomial V k))
+    (hI : ∀ c, IsPolymatroidalIdeal (I c)) (s : C →₀ ℕ) :
+    IsPolymatroidalIdeal (powerProduct I s) := by exact CommAlg.polymatroidal_powerProduct I hI s
+
+/-- Actual homological-shift coefficient ideal at each color multidegree;
+no positive-coordinate restriction and no replacement by a predicted rank. -/
+def mixedPiece (J : Ideal (MvPolynomial V k)) (I : C → Ideal (MvPolynomial V k))
+    (hJ : IsPolymatroidalIdeal J) (hI : ∀ c, IsPolymatroidalIdeal (I c))
+    (i : ℕ) (s : C →₀ ℕ) : Ideal (MvPolynomial V k) :=
+  homologicalShiftIdeal (J * powerProduct I s)
+    (mulPolymatroidal hJ (mixedProductPolymatroidal I hI s)) i
+
+private theorem mixedPiece_eq_source (J : Ideal (MvPolynomial V k))
+    (I : C → Ideal (MvPolynomial V k)) (hJ : IsPolymatroidalIdeal J)
+    (hI : ∀ c, IsPolymatroidalIdeal (I c)) (i : ℕ) (s : C →₀ ℕ) :
+    mixedPiece J I hJ hI i s = CommAlg.homologicalMultiPiece J I hJ hI i s := by
+  simp only [mixedPiece, CommAlg.homologicalMultiPiece, agrees_with_derivedTor]
+
+/-- Zero closure of the literal coefficientwise homological multi-Rees ideal. -/
+theorem mixedZero (J : Ideal (MvPolynomial V k)) (I : C → Ideal (MvPolynomial V k))
+    (hJ : IsPolymatroidalIdeal J) (hI : ∀ c, IsPolymatroidalIdeal (I c)) (i : ℕ) :
+    ∀ s, (0 : multiReesAlgebra I).val.coeff s ∈ mixedPiece J I hJ hI i s := by
+  intro s
+  simpa only [Subalgebra.coe_zero, MvPolynomial.coeff_zero] using
+    (mixedPiece J I hJ hI i s).zero_mem
+
+/-- Addition closure of the exact actual coefficient ideals. -/
+theorem mixedAdd (J : Ideal (MvPolynomial V k)) (I : C → Ideal (MvPolynomial V k))
+    (hJ : IsPolymatroidalIdeal J) (hI : ∀ c, IsPolymatroidalIdeal (I c)) (i : ℕ)
+    {p q : multiReesAlgebra I}
+    (hp : ∀ s, p.val.coeff s ∈ mixedPiece J I hJ hI i s)
+    (hq : ∀ s, q.val.coeff s ∈ mixedPiece J I hJ hI i s) :
+    ∀ s, (p + q).val.coeff s ∈ mixedPiece J I hJ hI i s := by
+  intro s
+  simpa only [Subalgebra.coe_add, MvPolynomial.coeff_add] using
+    (mixedPiece J I hJ hI i s).add_mem (hp s) (hq s)
+
+/-- Closure under actual multi-Rees multiplication, from the genuine shift action. -/
+theorem mixedMul (J : Ideal (MvPolynomial V k)) (I : C → Ideal (MvPolynomial V k))
+    (hJ : IsPolymatroidalIdeal J) (hI : ∀ c, IsPolymatroidalIdeal (I c)) (i : ℕ)
+    (r p : multiReesAlgebra I) (hp : ∀ s, p.val.coeff s ∈ mixedPiece J I hJ hI i s) :
+    ∀ s, (r * p).val.coeff s ∈ mixedPiece J I hJ hI i s := by
+  intro s
+  change (r.val * p.val).coeff s ∈ mixedPiece J I hJ hI i s
+  rw [MvPolynomial.coeff_mul]
+  apply Ideal.sum_mem
+  intro uv huv
+  have he : uv.1 + uv.2 = s := Finset.mem_antidiagonal.mp huv
+  have hpv : p.val.coeff uv.2 ∈ CommAlg.homologicalMultiPiece J I hJ hI i uv.2 := by
+    simpa only [mixedPiece_eq_source] using hp uv.2
+  rw [← he, mixedPiece_eq_source]
+  exact CommAlg.homologicalMultiPiece_action J I hJ hI i uv.1 uv.2
+    (Ideal.mul_mem_mul (r.property uv.1) hpv)
+
+/-- Literal ideal in the actual multi-Rees algebra, containing precisely the
+polynomials whose coefficients lie in the actual homological-shift pieces. -/
+def mixedIdeal (J : Ideal (MvPolynomial V k)) (I : C → Ideal (MvPolynomial V k))
+    (hJ : IsPolymatroidalIdeal J) (hI : ∀ c, IsPolymatroidalIdeal (I c))
+    (i : ℕ) : Ideal (multiReesAlgebra I) where
+  carrier := {p | ∀ s, p.val.coeff s ∈ mixedPiece J I hJ hI i s}
+  zero_mem' := mixedZero J I hJ hI i
+  add_mem' := mixedAdd J I hJ hI i
+  smul_mem' := mixedMul J I hJ hI i
+/-- Every actual homogeneous module element in the closed coordinate box;
+its polynomial coefficient is unrestricted inside the corresponding shift ideal. -/
+def mixedBoxGenerators (J : Ideal (MvPolynomial V k)) (I : C → Ideal (MvPolynomial V k))
+    (hJ : IsPolymatroidalIdeal J) (hI : ∀ c, IsPolymatroidalIdeal (I c))
+    (i : ℕ) : Set (multiReesAlgebra I) :=
+  {p | ∃ s r, (∀ c, s c ≤ i) ∧ r ∈ mixedPiece J I hJ hI i s ∧
+    p.val = MvPolynomial.monomial s r}
+
+private theorem mixedIdeal_eq_source (J : Ideal (MvPolynomial V k))
+    (I : C → Ideal (MvPolynomial V k)) (hJ : IsPolymatroidalIdeal J)
+    (hI : ∀ c, IsPolymatroidalIdeal (I c)) (i : ℕ) :
+    mixedIdeal J I hJ hI i = CommAlg.homologicalMultiIdeal J I hJ hI i := by
+  ext p
+  change (∀ s, p.val.coeff s ∈ mixedPiece J I hJ hI i s) ↔
+    ∀ s, p.val.coeff s ∈ CommAlg.homologicalMultiPiece J I hJ hI i s
+  simp only [mixedPiece_eq_source]
+private theorem mixedBoxGenerators_eq_source (J : Ideal (MvPolynomial V k))
+    (I : C → Ideal (MvPolynomial V k)) (hJ : IsPolymatroidalIdeal J)
+    (hI : ∀ c, IsPolymatroidalIdeal (I c)) (i : ℕ) :
+    mixedBoxGenerators J I hJ hI i =
+      CommAlg.reesBoxGenerators I (CommAlg.homologicalMultiPiece J I hJ hI i) i := by
+  ext p
+  simp only [mixedBoxGenerators, CommAlg.reesBoxGenerators, mixedPiece_eq_source]
+
+/-- Full Corollary4.1 coordinatewise stabilization with arbitrary fixed twist,
+all finite color sets and all untouched zero coordinates. -/
+theorem mixedStabilization (I : C → Ideal (MvPolynomial V k))
+    (J : Ideal (MvPolynomial V k)) (hI : ∀ c, IsPolymatroidalIdeal (I c))
+    (hJ : IsPolymatroidalIdeal J) (s : C →₀ ℕ) (i : ℕ) (c : C)
+    (hi : 0 < i) (hs : i ≤ s c) :
+    mixedPiece J I hJ hI i (s + Finsupp.single c 1) = I c * mixedPiece J I hJ hI i s := by
+  simpa only [mixedPiece, agrees_with_derivedTor] using
+    (FourPapers.Homological.corollary_4_1 I J hI hJ s i c hi hs)
+
+/-- The complete actual multi-Rees module generation clause of Corollary4.1. -/
+theorem mixedGeneration (I : C → Ideal (MvPolynomial V k))
+    (J : Ideal (MvPolynomial V k)) (hI : ∀ c, IsPolymatroidalIdeal (I c))
+    (hJ : IsPolymatroidalIdeal J) (i : ℕ) :
+    mixedIdeal J I hJ hI i = Ideal.span (mixedBoxGenerators J I hJ hI i) := by
+  simpa only [mixedIdeal_eq_source, mixedBoxGenerators_eq_source] using
+    (FourPapers.Homological.corollary_4_1_generation I J hI hJ i)
+
+/-- Full Corollary6.2: actual multi-Rees integral closure for arbitrary finite
+colors, all fixed polymatroidal twists and all multidegrees including zero coordinates. -/
+theorem mixedIntegralClosure (I : C → Ideal (MvPolynomial V k))
+    (J : Ideal (MvPolynomial V k)) (hI : ∀ c, IsPolymatroidalIdeal (I c))
+    (hJ : IsPolymatroidalIdeal J) (hIne : ∀ c, I c ≠ ⊥) (i : ℕ) :
+    IsIntegrallyClosedIdeal (mixedIdeal J I hJ hI i) := by
+  rw [mixedIdeal_eq_source]
+  change CommAlg.IsIntegrallyClosedIdeal (CommAlg.homologicalMultiIdeal J I hJ hI i)
+  exact FourPapers.Homological.corollary_6_2 I J hI hJ hIne i
+
+end PalomarHomological

@@ -4,7 +4,7 @@
   "baseline_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
   "paper_sha256": "174c3153cdc92a4868e0516cdf444b0e364112495716eeb41e2872b4c664c0b8",
   "one_entry_per_paper": true,
-  "status": "frozen_full_sharpness_actual_literal_boundary_interface_canonical_controls_passed_ready_full_preflight",
+  "status": "complete_requested_principal_scope_interface_canonical_passed_genuine_source_bridges_pending_full_preflight",
   "source_selection": [
     "paper.pdf",
     "README.md",
@@ -31,7 +31,7 @@
             }
           ],
           "resolution": "found",
-          "challenge_status": "selected_current_exact_interface_pending_full_validation"
+          "challenge_status": "selected_complete_requested_scope_current_full_validation_pending"
         },
         {
           "name": "FourPapers.Homological.theorem_1_1_twisted",
@@ -46,7 +46,7 @@
             }
           ],
           "resolution": "found",
-          "challenge_status": "selected_current_exact_interface_pending_full_validation"
+          "challenge_status": "selected_complete_requested_scope_current_full_validation_pending"
         },
         {
           "name": "FourPapers.Homological.theorem_1_1_generation",
@@ -61,7 +61,7 @@
             }
           ],
           "resolution": "found",
-          "challenge_status": "selected_current_exact_interface_pending_full_validation"
+          "challenge_status": "selected_complete_requested_scope_current_full_validation_pending"
         }
       ],
       "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf#page=2"
@@ -87,7 +87,7 @@
             }
           ],
           "resolution": "found",
-          "challenge_status": "selected_current_exact_interface_pending_full_validation"
+          "challenge_status": "selected_complete_requested_scope_current_full_validation_pending"
         },
         {
           "name": "FourPapers.Homological.theorem_1_2_canonical",
@@ -102,7 +102,7 @@
             }
           ],
           "resolution": "found",
-          "challenge_status": "selected_current_exact_interface_pending_full_validation"
+          "challenge_status": "selected_complete_requested_scope_current_full_validation_pending"
         }
       ],
       "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf#page=9"
@@ -125,7 +125,7 @@
             }
           ],
           "resolution": "found",
-          "challenge_status": "not_extracted"
+          "challenge_status": "selected_complete_requested_scope_current_full_validation_pending"
         },
         {
           "name": "FourPapers.Homological.corollary_4_1_generation",
@@ -140,7 +140,7 @@
             }
           ],
           "resolution": "found",
-          "challenge_status": "not_extracted"
+          "challenge_status": "selected_complete_requested_scope_current_full_validation_pending"
         }
       ],
       "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf"
@@ -165,7 +165,7 @@
             }
           ],
           "resolution": "found",
-          "challenge_status": "selected_current_exact_interface_pending_full_validation"
+          "challenge_status": "selected_complete_requested_scope_current_full_validation_pending"
         }
       ],
       "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf#page=10"
@@ -188,7 +188,7 @@
             }
           ],
           "resolution": "found",
-          "challenge_status": "selected_current_exact_interface_pending_full_validation"
+          "challenge_status": "selected_complete_requested_scope_current_full_validation_pending"
         },
         {
           "name": "FourPapers.Homological.corollary_4_3_eventual",
@@ -203,7 +203,7 @@
             }
           ],
           "resolution": "found",
-          "challenge_status": "selected_current_exact_interface_pending_full_validation"
+          "challenge_status": "selected_complete_requested_scope_current_full_validation_pending"
         }
       ],
       "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf"
@@ -228,7 +228,7 @@
             }
           ],
           "resolution": "found",
-          "challenge_status": "not_extracted"
+          "challenge_status": "selected_complete_requested_scope_current_full_validation_pending"
         },
         {
           "name": "FourPapers.Homological.theorem_4_4",
@@ -243,7 +243,7 @@
             }
           ],
           "resolution": "found",
-          "challenge_status": "not_extracted"
+          "challenge_status": "selected_complete_requested_scope_current_full_validation_pending"
         },
         {
           "name": "FourPapers.Homological.theorem_4_4_threshold_formula",
@@ -258,7 +258,7 @@
             }
           ],
           "resolution": "found",
-          "challenge_status": "not_extracted"
+          "challenge_status": "selected_complete_requested_scope_current_full_validation_pending"
         }
       ],
       "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf#page=3"
@@ -281,7 +281,7 @@
             }
           ],
           "resolution": "found",
-          "challenge_status": "not_extracted"
+          "challenge_status": "selected_complete_requested_scope_current_full_validation_pending"
         },
         {
           "name": "FourPapers.Homological.theorem_5_1_rank",
@@ -296,7 +296,7 @@
             }
           ],
           "resolution": "found",
-          "challenge_status": "not_extracted"
+          "challenge_status": "selected_complete_requested_scope_current_full_validation_pending"
         },
         {
           "name": "FourPapers.Homological.theorem_5_1_field_independent",
@@ -311,7 +311,7 @@
             }
           ],
           "resolution": "found",
-          "challenge_status": "selected_current_exact_interface_pending_full_validation"
+          "challenge_status": "selected_complete_requested_scope_current_full_validation_pending"
         }
       ],
       "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf"
@@ -336,7 +336,7 @@
             }
           ],
           "resolution": "found",
-          "challenge_status": "selected_current_exact_interface_pending_full_validation"
+          "challenge_status": "selected_complete_requested_scope_current_full_validation_pending"
         },
         {
           "name": "FourPapers.Homological.corollary_6_2",
@@ -351,25 +351,24 @@
             }
           ],
           "resolution": "found",
-          "challenge_status": "not_extracted"
+          "challenge_status": "selected_complete_requested_scope_current_full_validation_pending"
         }
       ],
       "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf#page=14"
     }
   ],
   "known_gaps": [
-    "Full independent current Source/Solution/Comparator/kernel validation remains pending.",
-    "Corollary4.1 mixed coordinate powers/Rees generation, Theorem4.4 exact generator interval/threshold, remaining total-support homogenized ideal/canonical-rank/equigeneration clauses of Theorem5.1, and multi-Rees integral closureCorollary6.2 remain required independent interfaces."
+    "Current expanded genuine Source/Solution bridges, Comparator and independent kernel replay remain unverified."
   ],
   "checks": {
     "source_copy": "complete including retained reading files and licenses",
-    "build": "Exactbdab retained Source including literal iff built; sole Solution92 set membership rewrite repaired; current full pending",
-    "comparator": "prior_c7_failed_generated_boundary_proof_names_current_pending",
-    "nanoda": "not_run_for_current_hash",
-    "editorial_review": "not_run_for_current_hash",
-    "challenge_elaboration": "passed44463606794_exact375prefix_with_two_genuine_rfl_controls"
+    "build": "pending_current_complete_principal_Source_and_Solution",
+    "comparator": "pending_current_complete_principal_scope",
+    "nanoda": "pending_current_complete_principal_scope",
+    "editorial_review": "not_run",
+    "challenge_elaboration": "passed44471557578"
   },
-  "current_selection": "Actual augmented Koszul/derived-Tor stabilization and fixed twist, exact partition rank and canonicality, genuine projective dimensions of positive powers/eventually, actual ordinary-Rees generation1.1, monic integral closure6.1, field independence5.1 on every actual nonzero Koszul multidegree, and full universal squarefree-Veronese sharpness4.2 including all positive below-threshold zeros and exact nonzero threshold coordinate-product ideal.",
+  "current_selection": "Full Theorems1.1/1.2/4.4/5.1/6.1 and Corollaries4.1/4.3/6.2, plus previously selected universal sharpness4.2: actual Koszul/derived-Tor ideals, exact generator intervals and signed thresholds, actual homogenized total-support ideal/pdim/equigeneration/canonical rank/all generators/field independence, and actual ordinary/multi-Rees generation/integral closure with arbitrary finite colors, fixed twists and zero coordinates.",
   "selected_wrapper_provenance": [
     [
       "PalomarHomological.stabilization",
@@ -421,7 +420,26 @@
       "PalomarHomological.sharpUniform_mono",
       "PalomarHomological.sharpUniform_submodular",
       "PalomarHomological.sharpIdealPolymatroidal",
-      "PalomarHomological.universalSharpness"
+      "PalomarHomological.universalSharpness",
+      "PalomarHomological.zeroPowerModule",
+      "PalomarHomological.exactGeneratorInterval",
+      "PalomarHomological.thresholdRationalCeiling",
+      "PalomarHomological.totalSupportHomogenization",
+      "PalomarHomological.totalCanonicalRankFormulas",
+      "CommAlg.powerProduct_add",
+      "CommAlg.powerProduct_zero",
+      "CommAlg.PalomarMultiReesSupport.zero",
+      "CommAlg.PalomarMultiReesSupport.one",
+      "CommAlg.PalomarMultiReesSupport.add",
+      "CommAlg.PalomarMultiReesSupport.mul",
+      "CommAlg.PalomarMultiReesSupport.algebraMap",
+      "PalomarHomological.mixedProductPolymatroidal",
+      "PalomarHomological.mixedZero",
+      "PalomarHomological.mixedAdd",
+      "PalomarHomological.mixedMul",
+      "PalomarHomological.mixedStabilization",
+      "PalomarHomological.mixedGeneration",
+      "PalomarHomological.mixedIntegralClosure"
     ],
     "permitted_axioms": [
       "propext",
@@ -431,76 +449,23 @@
   },
   "challenge": {
     "path": "source/Challenge.lean",
-    "sha256": "7b8997fc9ca232a829a71f385cd75bc27859b39011025503e3eb44ee132586f2",
-    "lines": 375,
-    "semantic_model": "Actual literal signed contraction; original iff bridge retained.",
-    "validation": "passed44463606794_exact375prefix_with_two_genuine_rfl_controls"
+    "sha256": "ab2991d7b116b96d5524a33e5f26c4a1ac4b709883e85e7527282569221b49fd",
+    "lines": 629,
+    "bytes": 35419,
+    "validation": "passed44471557578 actual written types; diagnostic controls replace7 support holes with genuine proofs"
   },
-  "coverage_status": "partial_principal_selection_not_whole_paper",
+  "coverage_status": "all_requested_main_and_substantive_corollary_interfaces_selected_full_validation_pending",
   "current_independent_challenge": {
     "path": "source/Challenge.lean",
-    "sha256": "7b8997fc9ca232a829a71f385cd75bc27859b39011025503e3eb44ee132586f2",
-    "lines": 375,
-    "semantic_model": "Actual literal signed contraction; original iff bridge retained.",
-    "validation": "passed44463606794_exact375prefix_with_two_genuine_rfl_controls"
+    "sha256": "ab2991d7b116b96d5524a33e5f26c4a1ac4b709883e85e7527282569221b49fd",
+    "lines": 629,
+    "bytes": 35419,
+    "validation": "passed44471557578 actual written types; diagnostic controls replace7 support holes with genuine proofs"
   },
-  "uncovered_main_results_and_corollaries": [
-    {
-      "paper_result": "Theorem 1.1 generation",
-      "uncovered_scope": "Actual ordinary Rees-module generation in the full stated range.",
-      "blocker_or_preparation": "Selected in current375 exact interface with genuine Source bridge. Canonical/full Source/Solution/Comparator validation pending; not yet validated-covered.",
-      "goal_status": "required_not_optional",
-      "validated_covered": false,
-      "interface_status": "selected_current_pending_full_validation"
-    },
-    {
-      "paper_result": "Corollary 4.1",
-      "uncovered_scope": "All finite-color coordinatewise stabilization and actual multigraded Rees generation.",
-      "blocker_or_preparation": "Source exists; no independent complete extraction yet.",
-      "goal_status": "required_not_optional",
-      "validated_covered": false
-    },
-    {
-      "paper_result": "Proposition 4.2",
-      "uncovered_scope": "Universal sharpness family in every positive degree.",
-      "blocker_or_preparation": "Selected in current375 exact interface with genuine Source bridge. Canonical/full Source/Solution/Comparator validation pending; not yet validated-covered.",
-      "goal_status": "required_not_optional",
-      "validated_covered": false,
-      "interface_status": "selected_current_pending_full_validation"
-    },
-    {
-      "paper_result": "Theorem 4.4",
-      "uncovered_scope": "Zero-module case, exact minimal-generator interval/endpoints/least generation bound and signed rational-ceiling threshold.",
-      "blocker_or_preparation": "Source exists; no independent complete extraction yet.",
-      "goal_status": "required_not_optional",
-      "validated_covered": false
-    },
-    {
-      "paper_result": "Theorem 5.1",
-      "uncovered_scope": "Actual total-support homogenized ideal, genuine projective dimension, equigeneration and canonical rank.",
-      "blocker_or_preparation": "Current selection includes full field-independence clause on actual Koszul nonzero multidegrees. Other total-support homogenized ideal/rank/equigeneration clauses still require independent interfaces.",
-      "goal_status": "required_not_optional",
-      "validated_covered": false
-    },
-    {
-      "paper_result": "Theorem 6.1",
-      "uncovered_scope": "Actual monic-equation integral closure inside the ordinary Rees algebra.",
-      "blocker_or_preparation": "Selected in current375 exact interface with genuine Source bridge. Canonical/full Source/Solution/Comparator validation pending; not yet validated-covered.",
-      "goal_status": "required_not_optional",
-      "validated_covered": false,
-      "interface_status": "selected_current_pending_full_validation"
-    },
-    {
-      "paper_result": "Corollary 6.2",
-      "uncovered_scope": "Actual finite-color multi-Rees integral closure, fixed twists and zero coordinates.",
-      "blocker_or_preparation": "Source exists; no independent extraction yet.",
-      "goal_status": "required_not_optional",
-      "validated_covered": false
-    }
-  ],
+  "uncovered_main_results_and_corollaries": [],
   "coverage_note": "A source theorem, a prepared candidate, a Challenge elaboration pass, and a full Comparator/replay pass are separate states. No partial entry is counted as whole-paper coverage.",
-  "current_interface_status": "actual375_interface_prefix_and_two_genuine_rfl_identity_controls_passed44463606794_full_source_solution_comparator_pending",
-  "current_challenge_sha256": "7b8997fc9ca232a829a71f385cd75bc27859b39011025503e3eb44ee132586f2",
+  "current_interface_status": "exact629_interface_with7_genuine_constructor_controls_passed44471557578_full_source_pending",
+  "current_challenge_sha256": "ab2991d7b116b96d5524a33e5f26c4a1ac4b709883e85e7527282569221b49fd",
   "added_current_principal_interfaces": [
     {
       "name": "PalomarHomological.reesGeneration",
@@ -527,8 +492,8 @@
       "validation": "Current exact Challenge passed; Solution bridge/full comparison unverified."
     }
   ],
-  "canonical_challenge_receipt": "reports/homological_shifts/challenge-diagnostic/run-44463606794/homological_literal_boundary_and_bridge/receipt.json",
-  "canonical_challenge_verification": "reports/homological_shifts/challenge-diagnostic/run-44463606794/homological_literal_boundary_and_bridge/collection-verification.json",
+  "canonical_challenge_receipt": "reports/homological_shifts/challenge-diagnostic/run-44471557578/homological_complete_principal_interface_r3/receipt.json",
+  "canonical_challenge_verification": "reports/homological_shifts/challenge-diagnostic/run-44471557578/homological_complete_principal_interface_r3/collection-verification.json",
   "shared_literal_solution_data_audit": {
     "declarations": [
       "PalomarHomological.rankValue",
@@ -578,5 +543,230 @@
     "solution_before_sha256": "457784530004a125172fbe5f450e3e1a3a7da81e04f0f897feef180c23a4741d",
     "solution_after_sha256": "5c325ce2b33ffba35ff21f57066ba69ab37882e1ffe9e5d21675deff425bc75c",
     "current_full_validation": "pending"
+  },
+  "selected_principal_groups": [
+    {
+      "paper_result": "Theorem1.1",
+      "selected_names": [
+        "PalomarHomological.stabilization",
+        "PalomarHomological.twistedStabilization",
+        "PalomarHomological.reesGeneration"
+      ],
+      "genuine_original_proofs": [
+        {
+          "name": "FourPapers.Homological.theorem_1_1",
+          "baseline_source_path": "source/four_papers/homological/complete.lean",
+          "baseline_source_line": 17163,
+          "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf"
+        },
+        {
+          "name": "FourPapers.Homological.theorem_1_1_twisted",
+          "baseline_source_path": "source/four_papers/homological/complete.lean",
+          "baseline_source_line": 17170,
+          "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf"
+        },
+        {
+          "name": "FourPapers.Homological.theorem_1_1_generation",
+          "baseline_source_path": "source/four_papers/homological/complete.lean",
+          "baseline_source_line": 17178,
+          "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf"
+        }
+      ],
+      "validation": "canonical interface passed; current full Source/Solution/Comparator/kernel pending"
+    },
+    {
+      "paper_result": "Theorem1.2",
+      "selected_names": [
+        "PalomarHomological.exactRankFormula",
+        "PalomarHomological.canonicalRank"
+      ],
+      "genuine_original_proofs": [
+        {
+          "name": "FourPapers.Homological.theorem_1_2",
+          "baseline_source_path": "source/four_papers/homological/complete.lean",
+          "baseline_source_line": 17186,
+          "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf"
+        },
+        {
+          "name": "FourPapers.Homological.theorem_1_2_canonical",
+          "baseline_source_path": "source/four_papers/homological/complete.lean",
+          "baseline_source_line": 17194,
+          "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf"
+        }
+      ],
+      "validation": "canonical interface passed; current full Source/Solution/Comparator/kernel pending"
+    },
+    {
+      "paper_result": "Corollary4.1",
+      "selected_names": [
+        "PalomarHomological.mixedStabilization",
+        "PalomarHomological.mixedGeneration"
+      ],
+      "genuine_original_proofs": [
+        {
+          "name": "FourPapers.Homological.corollary_4_1",
+          "baseline_source_path": "source/four_papers/homological/complete.lean",
+          "baseline_source_line": 17323,
+          "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf"
+        },
+        {
+          "name": "FourPapers.Homological.corollary_4_1_generation",
+          "baseline_source_path": "source/four_papers/homological/complete.lean",
+          "baseline_source_line": 17334,
+          "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf"
+        }
+      ],
+      "validation": "canonical interface passed; current full Source/Solution/Comparator/kernel pending"
+    },
+    {
+      "paper_result": "Proposition4.2 retained sharpness",
+      "selected_names": [
+        "PalomarHomological.universalSharpness"
+      ],
+      "genuine_original_proofs": [
+        {
+          "name": "FourPapers.Homological.proposition_4_2",
+          "baseline_source_path": "source/four_papers/homological/complete.lean",
+          "baseline_source_line": 17204,
+          "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf"
+        }
+      ],
+      "validation": "canonical interface passed; current full Source/Solution/Comparator/kernel pending"
+    },
+    {
+      "paper_result": "Corollary4.3",
+      "selected_names": [
+        "FourPapers.Homological.corollary_4_3",
+        "FourPapers.Homological.corollary_4_3_eventual"
+      ],
+      "genuine_original_proofs": [
+        {
+          "name": "FourPapers.Homological.corollary_4_3",
+          "baseline_source_path": "source/four_papers/homological/complete.lean",
+          "baseline_source_line": 17219,
+          "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf"
+        },
+        {
+          "name": "FourPapers.Homological.corollary_4_3_eventual",
+          "baseline_source_path": "source/four_papers/homological/complete.lean",
+          "baseline_source_line": 17227,
+          "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf"
+        }
+      ],
+      "validation": "canonical interface passed; current full Source/Solution/Comparator/kernel pending"
+    },
+    {
+      "paper_result": "Theorem4.4",
+      "selected_names": [
+        "PalomarHomological.zeroPowerModule",
+        "PalomarHomological.exactGeneratorInterval",
+        "PalomarHomological.thresholdRationalCeiling"
+      ],
+      "genuine_original_proofs": [
+        {
+          "name": "FourPapers.Homological.theorem_4_4_zero",
+          "baseline_source_path": "source/four_papers/homological/complete.lean",
+          "baseline_source_line": 17235,
+          "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf"
+        },
+        {
+          "name": "FourPapers.Homological.theorem_4_4",
+          "baseline_source_path": "source/four_papers/homological/complete.lean",
+          "baseline_source_line": 17242,
+          "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf"
+        },
+        {
+          "name": "FourPapers.Homological.theorem_4_4_threshold_formula",
+          "baseline_source_path": "source/four_papers/homological/complete.lean",
+          "baseline_source_line": 17267,
+          "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf"
+        }
+      ],
+      "validation": "canonical interface passed; current full Source/Solution/Comparator/kernel pending"
+    },
+    {
+      "paper_result": "Theorem5.1",
+      "selected_names": [
+        "PalomarHomological.totalSupportHomogenization",
+        "PalomarHomological.totalCanonicalRankFormulas",
+        "PalomarHomological.fieldIndependence"
+      ],
+      "genuine_original_proofs": [
+        {
+          "name": "FourPapers.Homological.theorem_5_1",
+          "baseline_source_path": "source/four_papers/homological/complete.lean",
+          "baseline_source_line": 17278,
+          "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf"
+        },
+        {
+          "name": "FourPapers.Homological.theorem_5_1_rank",
+          "baseline_source_path": "source/four_papers/homological/complete.lean",
+          "baseline_source_line": 17298,
+          "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf"
+        },
+        {
+          "name": "FourPapers.Homological.theorem_5_1_field_independent",
+          "baseline_source_path": "source/four_papers/homological/complete.lean",
+          "baseline_source_line": 17306,
+          "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf"
+        }
+      ],
+      "validation": "canonical interface passed; current full Source/Solution/Comparator/kernel pending"
+    },
+    {
+      "paper_result": "Theorem6.1",
+      "selected_names": [
+        "PalomarHomological.reesIntegralClosure"
+      ],
+      "genuine_original_proofs": [
+        {
+          "name": "FourPapers.Homological.theorem_6_1",
+          "baseline_source_path": "source/four_papers/homological/complete.lean",
+          "baseline_source_line": 17313,
+          "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf"
+        }
+      ],
+      "validation": "canonical interface passed; current full Source/Solution/Comparator/kernel pending"
+    },
+    {
+      "paper_result": "Corollary6.2",
+      "selected_names": [
+        "PalomarHomological.mixedIntegralClosure"
+      ],
+      "genuine_original_proofs": [
+        {
+          "name": "FourPapers.Homological.corollary_6_2",
+          "baseline_source_path": "source/four_papers/homological/complete.lean",
+          "baseline_source_line": 17342,
+          "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf"
+        }
+      ],
+      "validation": "canonical interface passed; current full Source/Solution/Comparator/kernel pending"
+    }
+  ],
+  "required_principal_clause_omissions": [],
+  "whole_paper_text_coverage": false,
+  "scope_boundary": "Main theorems and substantive corollaries, not every supporting lemma/proposition or all paper text. Previously tested universal sharpness retained; other support selections only make exact model definitions independently comparable.",
+  "complete_principal_installation": {
+    "status": "installed_full_principal_scope_genuine_source_bridges_pending_full_preflight",
+    "parent_passed_commit": "3383c08c75a997edf315afc1e26951103088e217",
+    "parent_passed_run": 44465541716,
+    "canonical_full_interface_run": 44471557578,
+    "canonical_proof_controls": "Seven exact product/constructor obligations genuinely proved in canonical smoke; all629 written interface types checked.",
+    "all_preexisting_declarations_retained": true,
+    "only_preexisting_declaration_body_changed": "CommAlg.multiReesAlgebra proof fields; identical literal coefficient carrier and generic hypotheses.",
+    "proof_calculations": "Five original closure calculations named and compared. Unit/C-map zero branches explicitly use existing powerProduct_zero; original full constructor text retained verbatim in packaging.",
+    "source_patch": {
+      "path": "source/four_papers/homological/complete/PalomarPart001.lean",
+      "before_sha256": "9e70daafc1343cbce43b6bda82324bdc84493ec72a8e44ea59150b7fb4fa0355",
+      "after_sha256": "de03b6a74106986b3180f26e5b123e6830bab87852927ba0163a044a88f9db4c",
+      "description": "Original generic multiReesAlgebra computational carrier unchanged; its exact existing five closure proof calculations moved into named, selected semantic propositions. All original definitions/results/audits retained."
+    },
+    "all_other_original_proof_bodies_byte_identical": true,
+    "no_math_source_axiom_or_conclusion_assumption_added": true,
+    "no_verifier_or_trust_change": true,
+    "new_helpers_use_atomic_underlying_parameters": "Generic color/ring parameters and class fvars in algebra; primitive V/k/C variables and given class fvars in mixed ideal closure helpers.",
+    "actual_models": "Original multi-Rees subalgebra; literal actual Koszul-shift coefficient ideals; actual homogenized polynomial ideal and original chain-derived-Tor bridge.",
+    "source_and_full_kernel_status": "pending_current_candidate"
   }
 }

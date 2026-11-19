@@ -1,0 +1,24 @@
+def multiReesAlgebra (I : J → Ideal R) : Subalgebra R (MvPolynomial J R) where
+  carrier := {p | ∀ s, p.coeff s ∈ powerProduct I s}
+  zero_mem' := by simp
+  one_mem' := by
+    intro s
+    by_cases hs : s = 0
+    · subst s; simp
+    · simp [MvPolynomial.coeff_one, hs, Ne.symm hs]
+  add_mem' hp hq := fun s => by
+    simpa only [MvPolynomial.coeff_add] using Ideal.add_mem _ (hp s) (hq s)
+  mul_mem' hp hq := by
+    intro s
+    rw [MvPolynomial.coeff_mul]
+    apply Ideal.sum_mem
+    intro uv huv
+    have he : uv.1 + uv.2 = s := Finset.mem_antidiagonal.mp huv
+    have h := Ideal.mul_mem_mul (hp uv.1) (hq uv.2)
+    rwa [← powerProduct_add, he] at h
+  algebraMap_mem' r := by
+    intro s
+    change (MvPolynomial.C r).coeff s ∈ powerProduct I s
+    by_cases hs : s = 0
+    · subst s; simp
+    · simp [MvPolynomial.coeff_C, hs, Ne.symm hs]

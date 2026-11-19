@@ -4209,30 +4209,61 @@ theorem powerProduct_add (I : J → Ideal R) (s t : J →₀ ℕ) :
     powerProduct I (s + t) = powerProduct I s * powerProduct I t := by
   simp only [powerProduct, Finsupp.add_apply, pow_add, Finset.prod_mul_distrib]
 
+end CommAlg
+
+namespace CommAlg.PalomarMultiReesSupport
+section
+open Classical Finset
+universe uColorSupport uRingSupport
+variable {C : Type uColorSupport} {S : Type uRingSupport}
+  [Fintype C] [DecidableEq C] [CommRing S]
+/-- Exact existing multi-Rees zero closure proposition. -/
+theorem zero (I : C → Ideal S) :
+    ∀ s, (0 : MvPolynomial C S).coeff s ∈ powerProduct I s := by simp
+/-- Exact existing multi-Rees one closure proposition. -/
+theorem one (I : C → Ideal S) :
+    ∀ s, (1 : MvPolynomial C S).coeff s ∈ powerProduct I s := by
+  intro s
+  by_cases hs : s = 0
+  · subst s; simp only [powerProduct_zero, Submodule.mem_top]
+  · simp [MvPolynomial.coeff_one, hs, Ne.symm hs]
+/-- Exact existing multi-Rees add closure proposition. -/
+theorem add (I : C → Ideal S) {p q : MvPolynomial C S}
+    (hp : ∀ s, p.coeff s ∈ powerProduct I s) (hq : ∀ s, q.coeff s ∈ powerProduct I s) :
+    ∀ s, (p + q).coeff s ∈ powerProduct I s := by
+  intro s
+  simpa only [MvPolynomial.coeff_add] using Ideal.add_mem _ (hp s) (hq s)
+/-- Exact existing multi-Rees mul closure proposition. -/
+theorem mul (I : C → Ideal S) {p q : MvPolynomial C S}
+    (hp : ∀ s, p.coeff s ∈ powerProduct I s) (hq : ∀ s, q.coeff s ∈ powerProduct I s) :
+    ∀ s, (p * q).coeff s ∈ powerProduct I s := by
+  intro s
+  rw [MvPolynomial.coeff_mul]
+  apply Ideal.sum_mem
+  intro uv huv
+  have he : uv.1 + uv.2 = s := Finset.mem_antidiagonal.mp huv
+  have h := Ideal.mul_mem_mul (hp uv.1) (hq uv.2)
+  rwa [← powerProduct_add, he] at h
+/-- Exact existing multi-Rees algebraMap closure proposition. -/
+theorem algebraMap (I : C → Ideal S) (r : S) :
+    ∀ s, (MvPolynomial.C r).coeff s ∈ powerProduct I s := by
+  intro s
+  by_cases hs : s = 0
+  · subst s; simp only [powerProduct_zero, Submodule.mem_top]
+  · simp [MvPolynomial.coeff_C, hs, Ne.symm hs]
+end
+end CommAlg.PalomarMultiReesSupport
+
+namespace CommAlg
+open Classical Finset
+variable {J R : Type*} [Fintype J] [DecidableEq J] [CommRing R]
 def multiReesAlgebra (I : J → Ideal R) : Subalgebra R (MvPolynomial J R) where
   carrier := {p | ∀ s, p.coeff s ∈ powerProduct I s}
-  zero_mem' := by simp
-  one_mem' := by
-    intro s
-    by_cases hs : s = 0
-    · subst s; simp
-    · simp [MvPolynomial.coeff_one, hs, Ne.symm hs]
-  add_mem' hp hq := fun s => by
-    simpa only [MvPolynomial.coeff_add] using Ideal.add_mem _ (hp s) (hq s)
-  mul_mem' hp hq := by
-    intro s
-    rw [MvPolynomial.coeff_mul]
-    apply Ideal.sum_mem
-    intro uv huv
-    have he : uv.1 + uv.2 = s := Finset.mem_antidiagonal.mp huv
-    have h := Ideal.mul_mem_mul (hp uv.1) (hq uv.2)
-    rwa [← powerProduct_add, he] at h
-  algebraMap_mem' r := by
-    intro s
-    change (MvPolynomial.C r).coeff s ∈ powerProduct I s
-    by_cases hs : s = 0
-    · subst s; simp
-    · simp [MvPolynomial.coeff_C, hs, Ne.symm hs]
+  zero_mem' := PalomarMultiReesSupport.zero I
+  one_mem' := PalomarMultiReesSupport.one I
+  add_mem' := PalomarMultiReesSupport.add I
+  mul_mem' := PalomarMultiReesSupport.mul I
+  algebraMap_mem' := PalomarMultiReesSupport.algebraMap I
 
 @[simp] theorem mem_multiReesAlgebra (I : J → Ideal R) (p : MvPolynomial J R) :
     p ∈ multiReesAlgebra I ↔ ∀ s, p.coeff s ∈ powerProduct I s := Iff.rfl

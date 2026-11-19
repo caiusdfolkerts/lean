@@ -1,0 +1,41 @@
+{
+  "status": "validated_actual_challenge-elaborated",
+  "checked_utc": "2026-11-19T06:30:23.368471+00:00",
+  "owned_bundle_folder": "reports/homological_shifts/complete-principal-diagnostic-r3",
+  "workflow_run": "44471557578",
+  "case": "homological_complete_principal_interface_r3",
+  "source_commit": "bd7fa930257d739aabab404fbd65534162809e93",
+  "artifact_id": 14503949849,
+  "artifact_zip_digest_matches_GitHub_metadata": true,
+  "input_script_log_dependency_hashes_match_frozen_case": true,
+  "challenge_sha256": "bf733cefcecf235bfe2d68965021fcdac27ef0a6adf972095bfca4a202564ee6",
+  "receipt_sha256": "23b00716021b64f77bdc01bad5ed78f1cc75ce7a76d4530fc720f2665894151d",
+  "bounded_log_sha256": "354633f3cfa0c36eda57e6cba7395ad3201ff9eec7f869593489dcc73dbcac5e",
+  "actual_elaboration": {
+    "phase": "challenge-elaboration",
+    "command": [
+      "elan",
+      "run",
+      "leanprover/lean4:v4.35.0",
+      "lake",
+      "--keep-toolchain",
+      "env",
+      "lean",
+      "--trust=0",
+      "-j1",
+      "-M8192",
+      "-DElab.async=false",
+      "-Ddebug.skipKernelTC=false",
+      "--root=/home/runner/work/_temp/challenge-work/workspace",
+      "-o",
+      "/home/runner/work/_temp/challenge-work/workspace/diagnostic-output/Challenge.olean",
+      "/home/runner/work/_temp/challenge-work/workspace/Challenge.lean"
+    ],
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 3.321,
+    "output_bytes": 6952,
+    "output_sha256": "0cb668ede997913ba3dbd3530b150bfb9fe1268317fc5762d85ca8d41363724a"
+  },
+  "no_full_source_solution_comparator_verdict": true
+}

@@ -1,0 +1,22 @@
+{
+  "status": "installed_full_principal_scope_genuine_source_bridges_pending_full_preflight",
+  "parent_passed_commit": "3383c08c75a997edf315afc1e26951103088e217",
+  "parent_passed_run": 44465541716,
+  "canonical_full_interface_run": 44471557578,
+  "canonical_proof_controls": "Seven exact product/constructor obligations genuinely proved in canonical smoke; all629 written interface types checked.",
+  "all_preexisting_declarations_retained": true,
+  "only_preexisting_declaration_body_changed": "CommAlg.multiReesAlgebra proof fields; identical literal coefficient carrier and generic hypotheses.",
+  "proof_calculations": "Five original closure calculations named and compared. Unit/C-map zero branches explicitly use existing powerProduct_zero; original full constructor text retained verbatim in packaging.",
+  "source_patch": {
+    "path": "source/four_papers/homological/complete/PalomarPart001.lean",
+    "before_sha256": "9e70daafc1343cbce43b6bda82324bdc84493ec72a8e44ea59150b7fb4fa0355",
+    "after_sha256": "de03b6a74106986b3180f26e5b123e6830bab87852927ba0163a044a88f9db4c",
+    "description": "Original generic multiReesAlgebra computational carrier unchanged; its exact existing five closure proof calculations moved into named, selected semantic propositions. All original definitions/results/audits retained."
+  },
+  "all_other_original_proof_bodies_byte_identical": true,
+  "no_math_source_axiom_or_conclusion_assumption_added": true,
+  "no_verifier_or_trust_change": true,
+  "new_helpers_use_atomic_underlying_parameters": "Generic color/ring parameters and class fvars in algebra; primitive V/k/C variables and given class fvars in mixed ideal closure helpers.",
+  "actual_models": "Original multi-Rees subalgebra; literal actual Koszul-shift coefficient ideals; actual homogenized polynomial ideal and original chain-derived-Tor bridge.",
+  "source_and_full_kernel_status": "pending_current_candidate"
+}
