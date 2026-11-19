@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "kind": "Challenge-only elaboration diagnostic; not full preflight",
+  "pipeline_commit": "14aa8d6b3c2f14a8540605e37144560b9a00e7e7",
+  "default_case_ids": [
+    "homological_power_tower_repair"
+  ],
+  "operator_resource_policy": {
+    "memory_mib": 8192,
+    "runner_memory_gib": 16,
+    "compiler_processes_per_job": 1,
+    "matrix_max_parallel": 2,
+    "compile_timeout_seconds": 2400
+  },
+  "revision": "homological_power_tower_repair",
+  "cases": [
+    {
+      "id": "homological_power_tower_repair",
+      "module": "Challenge",
+      "case_dir": "cases/homological_power_tower_repair",
+      "original_package": "packages/homological_shifts",
+      "original_challenge": "reports/homological_shifts/power-tower-repair/Challenge.control.lean",
+      "lean_toolchain": "leanprover/lean4:v4.35.0",
+      "hashes": {
+        "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+        "lake-manifest.json": "c19929a5111909242f1ca954a78a934cf2ad5972f7f3ee68310ad6bcfbb186ed",
+        "original-lakefile.toml": "c5561b9961b90517b289a2fc7ea1c3cb61a2afa62609c597a18ef35a9a4c9b4a",
+        "Challenge.lean": "3595214e6cda39eb8cb9f0bdb9982d5d4a0edd8ee813e02d690e138bb386d485"
+      },
+      "challenge_lines": 635,
+      "challenge_bytes": 35809,
+      "dependency_pins": [
+        {
+          "name": "mathlib",
+          "url": "https://github.com/leanprover-community/mathlib4.git",
+          "rev": "56a005855ea17e0b0958f73ec801ae140b0a1679"
+        },
+        {
+          "name": "plausible",
+          "url": "https://github.com/leanprover-community/plausible",
+          "rev": "dfa4f38190d07c37e315953e08b90fe2d95b3c24"
+        },
+        {
+          "name": "LeanSearchClient",
+          "url": "https://github.com/leanprover-community/LeanSearchClient",
+          "rev": "d6b4c7be5be75ec4917c873ac50c756dc1436372"
+        },
+        {
+          "name": "importGraph",
+          "url": "https://github.com/leanprover-community/import-graph",
+          "rev": "a41f0e9a4dea23188ea9cc1c41ac9f8bbafe0b93"
+        },
+        {
+          "name": "proofwidgets",
+          "url": "https://github.com/leanprover-community/ProofWidgets4",
+          "rev": "df72b022e558978a1c50264cfc4d7fec86fa8e04"
+        },
+        {
+          "name": "aesop",
+          "url": "https://github.com/leanprover-community/aesop",
+          "rev": "4a174c490d8707121c4a9290800489f105d85e07"
+        },
+        {
+          "name": "Qq",
+          "url": "https://github.com/leanprover-community/quote4",
+          "rev": "dce0ad79c486cb1fb504af04f953c3466b0c6db8"
+        },
+        {
+          "name": "batteries",
+          "url": "https://github.com/leanprover-community/batteries",
+          "rev": "66e469188fe07963e5cf666c7d4433f45b8131c5"
+        },
+        {
+          "name": "Cli",
+          "url": "https://github.com/leanprover/lean4-cli",
+          "rev": "c24fe6078c630e89b489bffe59b3e20ac30d12c8"
+        }
+      ],
+      "diagnostic_class": "Full45 principal types retained; genuine measured primitive scalar tower and exact old/new ideal-power product rfl control",
+      "remote_memory_mib": 8192
+    }
+  ]
+}
