@@ -37,7 +37,10 @@ def structuralDependencies : ConstantInfo → Array Name
   | _ => #[]
 
 def namesJson (names : Array Name) : Json :=
-  toJson ((names.toList.eraseDups.map Name.toString).mergeSort (· ≤ ·))
+  -- Large proof terms can mention hundreds of auxiliary declarations. Keep
+  -- the same name-level deduplication and sorted display names without the
+  -- quadratic scan performed by List.eraseDups.
+  toJson (((NameSet.ofList names.toList).toArray.toList.map Name.toString).mergeSort (· ≤ ·))
 
 def declarationJson (moduleName : String) (info : ConstantInfo) : Json :=
   Json.mkObj [
@@ -99,22 +102,38 @@ def exportModule (mode moduleName path : String) (stream : IO.FS.Handle) : IO Na
     stream.putStrLn row.compress
   return entries.length
 
+/-- A bounded comparison batch keeps each artifact in memory at most once.
+The values are indexed by display name without parsing quoted identifiers. -/
+abbrev TheoremDisplayIndex := Std.HashMap String (Array ConstantInfo)
+abbrev ComparisonCache := Std.HashMap String TheoremDisplayIndex
+
+def comparisonDeclarations (path : String) (cache : IO.Ref ComparisonCache) :
+    IO TheoremDisplayIndex := do
+  if let some declarations := (← cache.get)[path]? then return declarations
+  let (_, _, declarations) ← readCompleteModule path
+  let mut indexed : TheoremDisplayIndex := {}
+  for (name, info) in declarations.toList do
+    indexed := indexed.insert name.toString ((indexed[name.toString]?.getD #[]).push info)
+  cache.modify (·.insert path indexed)
+  return indexed
+
 /-- Lean may generate the same equational theorem on demand in several modules.
 For these occurrences, compare the complete types directly in Lean;
 this is precisely the theorem/theorem branch of the pinned importer's
 `subsumesInfo`, and does not rely on a type hash or pretty-printed comparison. -/
-def compareTheorems (left right names : String) (stream : IO.FS.Handle) : IO Nat := do
-  let (_, _, leftDecls) ← readCompleteModule left
-  let (_, _, rightDecls) ← readCompleteModule right
+def compareTheorems (left right names : String) (stream : IO.FS.Handle)
+    (cache : IO.Ref ComparisonCache) : IO Nat := do
+  let leftDecls ← comparisonDeclarations left cache
+  let rightDecls ← comparisonDeclarations right cache
   -- Resolve display names against actual declaration names rather than parsing
   -- quoted Lean identifiers with String.toName.
   let mut count := 0
   for displayName in names.splitOn "\t" do
-    let leftMatches := leftDecls.toList.filter (fun entry => entry.1.toString == displayName)
-    let rightMatches := rightDecls.toList.filter (fun entry => entry.1.toString == displayName)
-    let [(_, .thmInfo a)] := leftMatches |
+    let leftMatches := leftDecls[displayName]?.getD #[]
+    let rightMatches := rightDecls[displayName]?.getD #[]
+    let #[.thmInfo a] := leftMatches |
       throw <| IO.userError s!"Left duplicate is not a unique theorem: {displayName}"
-    let [(_, .thmInfo b)] := rightMatches |
+    let #[.thmInfo b] := rightMatches |
       throw <| IO.userError s!"Right duplicate is not a unique theorem: {displayName}"
     unless a.name == b.name && a.type == b.type && a.levelParams == b.levelParams && a.all == b.all do
       throw <| IO.userError s!"Incompatible repeated theorem: {displayName}"
@@ -127,13 +146,14 @@ def compareTheorems (left right names : String) (stream : IO.FS.Handle) : IO Nat
 def exportArtifacts (args : List String) : IO UInt32 := do
   let [input, output] := args | throw <| IO.userError "expected input.tsv output.jsonl"
   let stream ← IO.FS.Handle.mk output .write
+  let comparisonCache ← IO.mkRef ({} : ComparisonCache)
   let mut count := 0
   for line in (← IO.FS.lines input) do
     if line.isEmpty then continue
     match line.splitOn "\t" with
     | "compare" :: left :: right :: names =>
       if names.isEmpty then throw <| IO.userError "No duplicate names to compare"
-      count := count + (← compareTheorems left right (String.intercalate "\t" names) stream)
+      count := count + (← compareTheorems left right (String.intercalate "\t" names) stream comparisonCache)
     | [mode, name, path] =>
       unless mode == "project" || mode == "boundary" do
         throw <| IO.userError s!"Unknown extraction mode: {mode}"

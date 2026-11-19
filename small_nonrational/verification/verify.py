@@ -34,6 +34,10 @@ ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 FORMAT = "fresh-source-verifier-v1"
 LIBRARY_NAMESPACES = {"Mathlib", "Init", "Lean", "Std", "Lake", "Batteries", "Qq",
                       "Aesop", "ProofWidgets", "Plausible", "LeanSearchClient", "ImportGraph", "Cli"}
+NATIVE_PRODUCERS = {"RupProofTerm": "initialize_RupProofTerm",
+                    "FacetSatInitials": "initialize_FacetSatInitials",
+                    "FacetSatFacts": "initialize_FacetSatFacts"}
+NATIVE_FORMAT = "fresh-native-proof-producer-v1"
 
 
 def digest(data):
@@ -160,6 +164,178 @@ def artifact_inventory(paths):
     return records
 
 
+def native_toolchain_inventory(prefix):
+    """Bind native code generation to the bundled compiler, headers and libraries.
+
+    Lean artifacts are already authenticated by artifact_inventory. The native
+    driver also reads C headers, archives and its bundled sysroot, so include
+    those inputs instead of trusting a system compiler or inherited flags.
+    """
+    prefix = Path(prefix).resolve()
+    paths = {prefix / "bin" / name for name in ("leanc", "clang", "ld.lld")}
+    for directory in (prefix / "include", prefix / "lib"):
+        if not directory.is_dir():
+            raise RuntimeError(f"Missing bundled native toolchain directory: {directory}")
+        for path in directory.rglob("*"):
+            if path.is_file() and not path.name.endswith(FACETS):
+                resolved = path.resolve()
+                if not resolved.is_relative_to(prefix):
+                    raise RuntimeError(f"Native toolchain input escapes its pinned prefix: {path}")
+                paths.add(path)
+    values, resolved_hashes = {}, {}
+    for path in sorted(paths):
+        resolved = path.resolve()
+        if not resolved.is_relative_to(prefix):
+            raise RuntimeError(f"Native compiler input escapes its pinned prefix: {path}")
+        if resolved not in resolved_hashes:
+            resolved_hashes[resolved] = hash_file(resolved)
+        values[str(path)] = resolved_hashes[resolved]
+    return values
+
+
+def native_compile_environment(env):
+    """Do not allow user compiler configuration to replace bundled inputs."""
+    clean = dict(env)
+    for key in ("LEAN_CC", "LEAN_CFLAGS", "LEAN_LDFLAGS", "CC", "CXX", "CFLAGS",
+                "CPPFLAGS", "CXXFLAGS", "LDFLAGS", "LIBRARY_PATH", "CPATH",
+                "C_INCLUDE_PATH", "CPLUS_INCLUDE_PATH", "OBJC_INCLUDE_PATH",
+                "GCC_EXEC_PREFIX", "COMPILER_PATH", "LD_PRELOAD", "LD_LIBRARY_PATH",
+                "SDKROOT", "MACOSX_DEPLOYMENT_TARGET", "LEAN_PLUGIN_PATH", "LEAN_SYSROOT"):
+        clean.pop(key, None)
+    for key in list(clean):
+        if key.startswith(("CLANG_", "CCC_", "DYLD_")):
+            clean.pop(key)
+    return clean
+
+
+def run_native_command(command, cwd, env, logfile, timeout):
+    """Stop the compiler driver and its children together on a bounded timeout."""
+    with Path(logfile).open("w") as log:
+        process = subprocess.Popen(command, cwd=cwd, env=env, stdout=log,
+                                   stderr=subprocess.STDOUT, start_new_session=True)
+        try:
+            return process.wait(timeout=timeout)
+        except subprocess.TimeoutExpired:
+            try:
+                os.killpg(process.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+            process.wait()
+            return 124
+
+
+def native_producer_spec(name, prefix, toolchain):
+    if name not in NATIVE_PRODUCERS:
+        raise RuntimeError(f"Native compilation is not permitted for module {name}")
+    return {"format": NATIVE_FORMAT, "module": name,
+            "initializer": NATIVE_PRODUCERS[name],
+            "compiler": str(Path(prefix) / "bin/leanc"),
+            "toolchain_sha256": digest_json(toolchain)}
+
+
+def native_commands(spec, c_source, plugins=(), root=None):
+    c_source = Path(c_source)
+    obj = c_source.with_suffix(".o")
+    library = c_source.with_name("lib" + spec["module"] + ".so")
+    native_plugin_flags(plugins, root)
+    dependencies = [str(Path(root) / plugin["path"]) for plugin in plugins]
+    # Disable clang's implicit user/system configuration files. Its complete
+    # bundled sysroot and the explicit arguments are authenticated above.
+    return ([spec["compiler"], "--no-default-config", "-O3", "-DNDEBUG",
+             "-DLEAN_EXPORTING", "-fPIC", "-c", "-o", str(obj), str(c_source)],
+            [spec["compiler"], "--no-default-config", "-shared", "-o", str(library), str(obj),
+             *dependencies])
+
+
+def native_artifact_values(record, root, spec, hasher=hash_file):
+    """Validate every fresh native input/output without admitting extra plugins."""
+    producer = record.get("native_producer")
+    if spec is None:
+        if producer is not None:
+            raise RuntimeError(f"Unexpected native producer receipt: {record['module']}")
+        return {}
+    if (producer is None or any(producer.get(key) != value for key, value in spec.items())
+            or producer.get("source_sha256") != record.get("source_sha256")
+            or producer.get("passed") is not True
+            or producer.get("compile_exit_code") != 0 or producer.get("link_exit_code") != 0):
+        raise RuntimeError(f"Missing or stale native producer receipt: {record['module']}")
+    root = Path(root).resolve()
+    name = spec["module"]
+    directory = root / ".lake/build/verification/native" / name
+    expected = {str((directory / filename).relative_to(root)) for filename in
+                (name + ".c", name + ".o", "lib" + name + ".so", "compile.log", "link.log")}
+    values = {}
+    for artifact in producer.get("artifacts", []):
+        relative = artifact["path"]
+        path = root / relative
+        if (relative not in expected or relative in values or path.is_symlink()
+                or path.resolve() != directory / path.name):
+            raise RuntimeError(f"Unexpected native artifact: {relative}")
+        value = hasher(path)
+        if value != artifact["sha256"]:
+            raise RuntimeError(f"Changed native producer artifact: {path}")
+        values[relative] = value
+    if values.keys() != expected:
+        raise RuntimeError(f"Incomplete native artifact inventory: {name}")
+    if ({str(path.relative_to(root)) for path in directory.iterdir()} != expected
+            or any(not path.is_file() for path in directory.iterdir())):
+        raise RuntimeError(f"Unexpected native producer directory contents: {name}")
+    command = record["command"]
+    if command.count("-c") != 1:
+        raise RuntimeError(f"Missing unique native code-generation output: {name}")
+    c_source = Path(command[command.index("-c") + 1])
+    if (c_source.name != name + ".c"
+            or not c_source.resolve().is_relative_to(root / ".lake/build/verification/staging")
+            or c_source.parent != Path(command[command.index("-o") + 1]).parent):
+        raise RuntimeError(f"Unexpected native code-generation path: {name}")
+    plugins = record.get("native_plugins", [])
+    if any(plugin.get("module") == name for plugin in plugins):
+        raise RuntimeError(f"Native producer links itself: {name}")
+    compile_command, link_command = native_commands(spec, c_source, plugins, root)
+    if (producer.get("compile_command") != compile_command
+            or producer.get("link_command") != link_command):
+        raise RuntimeError(f"Unrecognized native build commands: {name}")
+    return values
+
+
+def native_plugin(record, root, spec, hasher=hash_file):
+    values = native_artifact_values(record, root, spec, hasher)
+    name = spec["module"]
+    path = f".lake/build/verification/native/{name}/lib{name}.so"
+    return {"module": name, "path": path, "sha256": values[path],
+            "initializer": spec["initializer"]}
+
+
+def native_plugin_flags(plugins, root):
+    names, flags = [], []
+    for plugin in plugins:
+        name = plugin.get("module")
+        if (set(plugin) != {"module", "path", "sha256", "initializer"}
+                or name not in NATIVE_PRODUCERS
+                or plugin["initializer"] != NATIVE_PRODUCERS[name]
+                or plugin["path"] != f".lake/build/verification/native/{name}/lib{name}.so"
+                or not re.fullmatch(r"[0-9a-f]{64}", plugin["sha256"])):
+            raise RuntimeError("Unrecognized native producer plugin")
+        path = Path(root).resolve() / plugin["path"]
+        if "=" in str(path):
+            raise RuntimeError("The native plugin path cannot contain an equals sign")
+        flags.append(f"--plugin={path}={plugin['initializer']}")
+        names.append(name)
+    if names != sorted(set(names)):
+        raise RuntimeError("Native plugins must be unique and ordered")
+    return flags
+
+
+def source_fingerprint(source, environment, flags, dependencies, plugins=(), producer=None):
+    payload = {"format": FORMAT, "source": source, "external_environment": environment,
+               "flags": flags, "dependencies": dependencies}
+    if plugins:
+        payload["native_plugins"] = list(plugins)
+    if producer is not None:
+        payload["native_producer"] = producer
+    return digest_json(payload)
+
+
 def closure_axiom_batch(roots, modules, lean, flags, env, audits, timeout, memory_budget=None):
     """Ask Lean to audit every available declaration from the selected modules.
 
@@ -198,10 +374,21 @@ run_cmd do
   let mut count : Nat := 0
   for idx in [:moduleNames.size] do
     if project.contains moduleNames[idx]! then
+      unless idx < axiomExtension.importedModuleEntries.size do
+        throwError "Missing serialized axiom table for module {moduleNames[idx]!}"
+      let ownAxioms := axiomExtension.importedModuleEntries[idx]!
       for name in env.header.moduleData[idx]!.constNames do
         unless (env.find? name).isSome do
           throwError "Missing declaration {name} from selected module {moduleNames[idx]!}"
         count := count + 1
+        -- Imports can merge repeated theorem names. Inspect this occurrence's
+        -- own serialized axioms before the ordinary environment traversal,
+        -- which may resolve the name to another compatible occurrence.
+        if let some (_, axioms) := ownAxioms.binSearch (name, #[])
+            (fun a b => Name.quickLt a.1 b.1) then
+          for axiomName in axioms do
+            unless allowed.contains axiomName do
+              throwError "Unapproved axiom {axiomName} in {name} from module {moduleNames[idx]!}"
         let (axioms, nextState) := ((Lean.CollectAxioms.collectAndGet axiomExtension.find? name).run privateEnv).run axiomState
         axiomState := nextState
         for axiomName in axioms do
@@ -427,6 +614,8 @@ def main():
     parser.add_argument("--keep-going", action="store_true", help="Continue independent branches after a failure")
     parser.add_argument("--plan", action="store_true", help="Validate sources and print order without compiling")
     parser.add_argument("--audit-retry-memory", type=int, default=0)
+    parser.add_argument("--no-native-producers", action="store_true",
+                        help="Interpret proof producers instead of compiling fresh allowlisted native plugins")
     args = parser.parse_args()
     memory_overrides = {}
     for setting in args.module_memory:
@@ -537,6 +726,18 @@ def main():
 
     for name in roots:
         visit(name)
+    native_names = set() if args.no_native_producers else selected & NATIVE_PRODUCERS.keys()
+    native_dependencies = {}
+    for name in order:
+        ancestors = set()
+        for dep in entries[name]["imports"]:
+            ancestors.update(native_dependencies.get(dep, ()))
+            if dep in native_names:
+                ancestors.add(dep)
+        native_dependencies[name] = sorted(ancestors)
+        if name in native_names and any(dep in selected and dep not in native_names
+                                        for dep in entries[name]["imports"]):
+            raise RuntimeError(f"Native proof producer imports a non-producer project module: {name}")
     if set(memory_overrides) - selected:
         parser.error("Module memory overrides must belong to the selected source closure: "
                      + ", ".join(sorted(set(memory_overrides) - selected)))
@@ -589,6 +790,11 @@ def main():
                    "revisions": revisions, "artifacts": external_artifacts,
                    "verifier_sha256": hash_file(Path(__file__).resolve()),
                    "import_parser_sha256": hash_file(root / "scripts/ParseImports.lean")}
+    native_toolchain = native_toolchain_inventory(prefix) if native_names else {}
+    native_specs = {name: native_producer_spec(name, prefix, native_toolchain)
+                    for name in native_names}
+    if native_names:
+        environment["native_toolchain"] = native_toolchain
     environment_identity = {k: v for k, v in environment.items()
                             if k not in {"verifier_sha256", "import_parser_sha256"}}
     environment_key = digest_json(environment_identity)
@@ -635,16 +841,23 @@ def main():
             if value != artifact["sha256"]:
                 raise RuntimeError(f"Changed project artifact: {path}")
             values[artifact["path"]] = value
+        native_artifact_values(record, root, native_specs.get(record["module"]),
+                               hash_file if force else hash_cache.get)
         return values
+
+    def plugins_for(name):
+        return [native_plugin(completed[dep], root, native_specs[dep], hash_cache.get)
+                for dep in native_dependencies[name]]
 
     def dependency_context(name):
         return {dep: {"key": completed[dep]["key"], "artifacts": artifact_values(completed[dep])}
                 for dep in entries[name]["imports"] if dep in selected}
 
     def fingerprint(name, dependencies):
-        return digest_json({"format": FORMAT, "source": entries[name]["source_sha256"],
-                            "external_environment": environment_key, "flags": logical_flags,
-                            "dependencies": dependencies})
+        plugins = plugins_for(name)
+        return source_fingerprint(entries[name]["source_sha256"], environment_key,
+                                  logical_flags + native_plugin_flags(plugins, root),
+                                  dependencies, plugins, native_specs.get(name))
 
     def reusable(name, key, dependencies):
         path = receipt_path(name)
@@ -658,8 +871,12 @@ def main():
                 return None
             if record.get("external_environment") not in compatible_environments:
                 return None
+            plugins = plugins_for(name)
+            if record.get("native_plugins", []) != plugins:
+                return None
             old_flags = record["command"][1:record["command"].index("-R")]
-            if [flag for flag in old_flags if not flag.startswith("-M")] != logical_flags:
+            if [flag for flag in old_flags if not flag.startswith("-M")] != (
+                    logical_flags + native_plugin_flags(plugins, root)):
                 return None
             if set(record.get("dependencies", {})) != set(dependencies):
                 return None
@@ -690,7 +907,12 @@ def main():
         logfile = receipt_path(name).with_suffix(".log")
         logfile.parent.mkdir(parents=True, exist_ok=True)
         module_flags = [f"-M{memory_for(name)}" if flag.startswith("-M") else flag for flag in flags]
-        command = [str(lean), *module_flags, "-R", str(sources), "-o", str(staged), str(source)]
+        plugins = plugins_for(name)
+        spec = native_specs.get(name)
+        c_source = stage / (name + ".c") if spec is not None else None
+        command = [str(lean), *module_flags, *native_plugin_flags(plugins, root),
+                   "-R", str(sources), "-o", str(staged),
+                   *(["-c", str(c_source)] if c_source is not None else []), str(source)]
         started = time.monotonic()
         with logfile.open("w") as log:
             try:
@@ -705,9 +927,35 @@ def main():
         bad_axioms = sorted(axioms - ALLOWED_AXIOMS)
         passed = (code == 0 and staged.is_file() and not bad_axioms
                   and not re.search(r"sorryAx|declaration uses [^\n]*sorry|PANIC", text))
+        producer = None
+        if passed and spec is not None:
+            compile_command, link_command = native_commands(spec, c_source, plugins, root)
+            producer = {**spec, "source_sha256": entries[name]["source_sha256"],
+                        "compile_command": compile_command, "link_command": link_command,
+                        "artifacts": [], "passed": False}
+            if not c_source.is_file():
+                passed = False
+            else:
+                native_env = native_compile_environment(env)
+                for native_command, filename in ((compile_command, "compile.log"),
+                                                  (link_command, "link.log")):
+                    native_code = run_native_command(native_command, root, native_env,
+                                                     stage / filename, args.timeout)
+                    producer[filename.removesuffix(".log") + "_exit_code"] = native_code
+                    if native_code:
+                        passed = False
+                        with logfile.open("a") as log:
+                            log.write("\nNative producer build failure:\n")
+                            log.write((stage / filename).read_text(errors="replace"))
+                        print(f"Native producer compilation failed for {name}: "
+                              + (stage / filename).read_text(errors="replace")[-6000:],
+                              file=sys.stderr, flush=True)
+                        break
+                producer["passed"] = passed
         source_unchanged = hash_file(source) == entries[name]["source_sha256"]
         dependencies_unchanged = dependency_context(name) == dependencies
-        passed = passed and source_unchanged and dependencies_unchanged
+        plugins_unchanged = plugins_for(name) == plugins
+        passed = passed and source_unchanged and dependencies_unchanged and plugins_unchanged
         record = {"format": FORMAT, "module": name, "key": key, "passed": passed,
                   "source_sha256": entries[name]["source_sha256"], "dependencies": dependencies,
                   "external_environment": environment_key, "exit_code": code,
@@ -717,7 +965,28 @@ def main():
                   "reported_axioms": sorted(axioms), "unexpected_axioms": bad_axioms,
                   "source_unchanged": source_unchanged, "dependencies_unchanged": dependencies_unchanged,
                   "artifacts": [], "created_unix": time.time()}
+        if plugins:
+            record["native_plugins"] = plugins
+            record["native_plugins_unchanged"] = plugins_unchanged
+        if spec is not None:
+            record["native_producer"] = producer
         if passed:
+            if producer is not None:
+                directory = audits / "native" / name
+                if directory.resolve() != directory:
+                    raise RuntimeError(f"Native producer output is redirected by a symlink: {directory}")
+                directory.mkdir(parents=True, exist_ok=True)
+                expected_native = {name + ".c", name + ".o", "lib" + name + ".so",
+                                   "compile.log", "link.log"}
+                if any(path.name not in expected_native or not path.is_file()
+                       for path in directory.iterdir()):
+                    raise RuntimeError(f"Unexpected file in native producer directory: {directory}")
+                for filename in sorted(expected_native):
+                    produced, target = stage / filename, directory / filename
+                    value = hash_file(produced)
+                    produced.replace(target)
+                    producer["artifacts"].append({"path": str(target.relative_to(root)), "sha256": value})
+                native_artifact_values(record, root, spec)
             # Publish the main olean last. Dependents are scheduled only after receipt completion.
             for facet in (*FACETS[1:], FACETS[0]):
                 target = output.with_suffix(facet)
@@ -732,6 +1001,8 @@ def main():
             # Remove obsolete outputs from this verifier so failed modules cannot be imported.
             for facet in FACETS:
                 output.with_suffix(facet).unlink(missing_ok=True)
+            if spec is not None:
+                shutil.rmtree(audits / "native" / name, ignore_errors=True)
         write_json(receipt_path(name), record)
         shutil.rmtree(stage)
         if not passed:
@@ -811,6 +1082,8 @@ def main():
     for path, expected in external_artifacts.items():
         if not Path(path).is_file() or hash_file(path) != expected:
             changed.append(path)
+    if native_names and native_toolchain_inventory(prefix) != native_toolchain:
+        changed.append("Bundled native producer toolchain")
     if hash_file(lean) != environment["compiler_sha256"]:
         changed.append(str(lean))
     result = {"format": FORMAT, "passed": (not failures and not pending and not changed
@@ -824,6 +1097,7 @@ def main():
                                   "mathlib_memory_mib": args.memory, "heavy_jobs": heavy_jobs,
                                   "reserved_memory_budget_mib": memory_budget,
                                   "module_memory_overrides_mib": memory_overrides,
+                                  "native_producers": sorted(native_names),
                                   "audit_memory_mib": args.audit_memory, "audit_jobs": args.audit_jobs, "audit_retry_memory_mib": args.audit_retry_memory},
               "blocked_modules": sorted(pending), "changed_at_closeout": changed,
               "closure_axiom_audit": axiom_audit}
