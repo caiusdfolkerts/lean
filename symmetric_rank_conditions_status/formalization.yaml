@@ -1,0 +1,73 @@
+version: v0.4
+project:
+  name: Gröbner bases for symmetric rank conditions
+  description: Every realizable symmetric northwest rank profile defines a prime ideal over every coefficient
+    field, with the prescribed folded-antidiagonal initial ideal and the actual rank-locus vanishing ideal
+    over algebraically closed fields. For every symmetric nonnegative rank array and finite valid list
+    of symbolic powers of full symmetric determinantal ideals, the prescribed minors and exact-score minor
+    products give a Gröbner basis. Its integral monic normalization yields a fixed standard-monomial basis
+    after arbitrary commutative base change. Selected applications include domain and geometric-fiber
+    consequences and arbitrary base change of finite compatible sums and intersections with free standard-monomial
+    quotients. The actual single symbolic Rees algebra has the displayed finite SAGBI basis.
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.AG
+  - math.CO
+  msc2020:
+  - 13P10
+  - 14M12
+  - 13C40
+sources:
+- title: Gröbner bases for symmetric rank conditions
+  authors:
+  - Caius Folkerts
+  type: paper
+  relationship: formalizes
+  location: paper.pdf
+  note: Theorems 1.1–1.2, pages 2–3. Proposition4.1 and Corollaries6.1/6.3/7.1 are also selected; other
+    later applications remain unselected.
+related_formalizations:
+- title: caiusdfolkerts/research symmetric_rank_conditions
+  relationship: other
+  id: https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/symmetric_rank_conditions
+  note: Complete substantive project copied at the pinned baseline; original proof and licence notices
+    retained.
+automation:
+  methods:
+  - method: agent
+    tool_setup: The supplied paper credits GPT-6 Astra, GPT-5.6 Sol, and Kimi K3 assistance in developing
+      its proofs. The precise historical roles have not been independently reconstructed.
+  - method: agent
+    tool_setup: OpenAI Codex prepared the independent Challenge, Solution import, Comparator configuration,
+      declaration map, and this metadata by reading the supplied paper, README, and source declarations.
+review:
+  status: unchecked
+  notes: 'Verification record updated on 2026-11-19. Commit d599096e28820ee24afc367d45480c57e41f1a8d passed
+    the complete pinned full workflow (run 44382220020, report dated 2026-11-18T19:47:46Z), including
+    Source and Solution builds, Comparator and mandatory independent kernel checks. This revision changes
+    formalization.yaml only: every Lean file and theorem selection is byte-identical to that verified
+    snapshot. The historical preparation notes below do not describe the subsequent mechanical verification
+    outcome. Mathematical scope exclusions remain in force. Fresh verification and editorial decisions
+    for this metadata revision are recorded separately; a clean editorial review is still required before
+    registration. The preceding exact49-comparison Challenge and original Solution built in full run44367062019;
+    raw comparison failed four statement types. Exactsource28466061 diagnostic44377975294 reports all49
+    targets and equal universe lists, exposing the remaining canonical polynomial-module alias. The current
+    Challenge disables that measured alias to reproduce the original curated import context; this correction
+    is unelaborated. No raw Comparator, NanoDa, registry or mathematical peer-review pass is claimed.'
+fidelity:
+  divergences: Theorem statements preserve the exact source definitions and quantifiers. The oversized
+    combinatorics aggregate is split at a fully closed original source boundary into two public modules;
+    its old import path is retained. Tactic-generated grevlex instance proofs and coefficient-subalgebra
+    closure proofs are named as selected supporting propositions in both the original copied source and
+    independent interface. Carriers, orders and mathematical laws are retained.
+limitations:
+- This preparation currently compares the principal algebraic theorems 1.1 and 1.2 and Corollaries6.1/6.3/7.1;
+  substantial other application corollaries are not yet included in the comparison and must be added for
+  the requested complete paper entry.
+- The current measured instance-visibility correction requires a fresh canonical Challenge and raw comparison;
+  the preceding source/Solution build pass does not establish this correction.
