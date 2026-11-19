@@ -8,16 +8,16 @@
       "module": "MatrixRewriteProof",
       "case_dir": "cases/wishart_matrix_rewrite_proof",
       "original_package": "reports/wishart/full20-canonical",
-      "original_challenge": "reports/wishart/full20-canonical/complete-measured-repair/matrix-rewrite-repair/ProofSmoke.lean",
+      "original_challenge": "reports/wishart/full20-canonical/complete-measured-repair/matrix-rewrite-repair/revision-02/ProofSmoke.lean",
       "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
       "hashes": {
         "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
         "lake-manifest.json": "5619bb28ae7f2972522467eccf712e99876805a4fb0b7298a3c8de5918224147",
         "original-lakefile.toml": "e429ab885c0b86124ac6b748b01715efdede7f476661ead3634e0c69b6521ccb",
-        "Challenge.lean": "65da854718cb21f86cfb37cae71d534cef6d49b16a8ad7b42b3449a8f36fca6f"
+        "Challenge.lean": "8d001bda9e1d23d7c90a120b154067b0602ec59e107fd6b0ad076d7bd123fa03"
       },
-      "challenge_lines": 184,
-      "challenge_bytes": 11624,
+      "challenge_lines": 190,
+      "challenge_bytes": 11750,
       "dependency_pins": [
         {
           "name": "mathlib",

@@ -132,19 +132,21 @@ theorem coordinateFrame_compression {j p : ℕ} (e : Fin j ↪ Fin p)
     (A : Matrix (Fin p) (Fin p) 𝕜) :
     (coordinateFrame (𝕜 := 𝕜) e)ᴴ * A * coordinateFrame e = A.submatrix e e := by
   with_unfolding_all
-    unfold coordinateFrame
-    rw [Matrix.conjTranspose_submatrix, Matrix.conjTranspose_one]
-    change (1 : Matrix (Fin p) (Fin p) _).submatrix e (Equiv.refl (Fin p)) * A * (1 : Matrix (Fin p) (Fin p) _).submatrix (Equiv.refl (Fin p)) e = _
-    rw [Matrix.one_submatrix_mul e (Equiv.refl (Fin p)) A,
-      Matrix.mul_submatrix_one (Equiv.refl (Fin p)) e]
-    simp only [Equiv.refl_symm, Equiv.coe_refl, Function.id_comp,
-      Matrix.submatrix_submatrix, Function.comp_id]
+    ext i k
+    change (∑ x : Fin p, (∑ y : Fin p,
+      star ((1 : Matrix (Fin p) (Fin p) 𝕜) y (e i)) * A y x) *
+        (1 : Matrix (Fin p) (Fin p) 𝕜) x (e k)) = A (e i) (e k)
+    simp [Matrix.one_apply]
 
 theorem coordinateFrame_orthonormal {j p : ℕ} (e : Fin j ↪ Fin p) :
     (coordinateFrame (𝕜 := 𝕜) e)ᴴ * coordinateFrame (𝕜 := 𝕜) e = 1 := by
   with_unfolding_all
-    simpa only [Matrix.mul_one, Matrix.submatrix_one_embedding] using
-      coordinateFrame_compression (𝕜 := 𝕜) e (1 : Matrix (Fin p) (Fin p) 𝕜)
+    ext i k
+    change (∑ x : Fin p,
+      star ((1 : Matrix (Fin p) (Fin p) 𝕜) x (e i)) *
+        (1 : Matrix (Fin p) (Fin p) 𝕜) x (e k)) =
+      (1 : Matrix (Fin j) (Fin j) 𝕜) i k
+    simp [Matrix.one_apply, e.injective.eq_iff]
 
 def OrthonormalFrame (𝕜 : Type*) [RCLike 𝕜] (p j : ℕ) :=
   {U : Matrix (Fin p) (Fin j) 𝕜 // Uᴴ * U = 1}
@@ -176,8 +178,12 @@ theorem exists_compression_eq_of_diagonalization {p j : ℕ} (hj : j ≤ p)
           simp only [Matrix.mul_assoc, Matrix.star_eq_conjTranspose]
         _ = _ := by rw [hdiag]
     change RCLike.re (Uᴴ * A * U).det = _
-    rw [heq, coordinateFrame_compression,
-      Matrix.submatrix_diagonal_embedding, Matrix.det_diagonal]
+    have hc : Eᴴ * Matrix.diagonal (fun i => (lam i : 𝕜)) * E =
+        (Matrix.diagonal (fun i => (lam i : 𝕜))).submatrix
+          (Fin.castLEEmb hj) (Fin.castLEEmb hj) := by
+      convert coordinateFrame_compression (𝕜 := 𝕜) (Fin.castLEEmb hj)
+        (Matrix.diagonal (fun i => (lam i : 𝕜))) using 1 <;> rfl
+    rw [heq, hc, Matrix.submatrix_diagonal_embedding, Matrix.det_diagonal]
     simp [E, ← map_prod, RCLike.ofReal_re]
 
 
