@@ -725,11 +725,12 @@ instance isMaximal_toIdeal_irrelevant (K : Type*) [Field K] [Module K M] : (Homo
 end end TauCeti.SymmetricAlgebra
 namespace TauCeti.SymmetricAlgebra section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.CategoryTheory _root_.AlgebraicGeometry universe u variable (R : Type u) (M : Type u) [CommRing R] [AddCommMonoid M] [Module R M]
 /-- The structural morphism from the projective spectrum of a symmetric algebra to the spectrum of its coefficient ring. -/
-noncomputable def projToSpec : @Quiver.Hom Scheme (inferInstance : CategoryTheory.Category Scheme).toCategoryStruct.toQuiver (Proj (homogeneousSubmodule R M)) (Spec (.of R)) := Proj.toSpecZero (homogeneousSubmodule R M) ≫ Spec.map (CommRingCat.ofHom (algebraMap R (homogeneousSubmodule R M 0)))
+noncomputable def projToSpec : @Quiver.Hom Scheme AlgebraicGeometry.Scheme.instCategory.toCategoryStruct.toQuiver (Proj (homogeneousSubmodule R M)) (Spec (.of R)) := Proj.toSpecZero (homogeneousSubmodule R M) ≫ Spec.map (CommRingCat.ofHom (algebraMap R (homogeneousSubmodule R M 0)))
 /-- The coefficient morphism is `Proj.toSpecZero` followed by the scalar identification. -/
 theorem projToSpec_def : projToSpec R M = Proj.toSpecZero (homogeneousSubmodule R M) ≫ Spec.map (CommRingCat.ofHom (algebraMap R (homogeneousSubmodule R M 0))) := by sorry
 /-- Exact source definition of isIso_scalarSpecMap. -/
 public theorem isIso_scalarSpecMap : IsIso (Spec.map (CommRingCat.ofHom (algebraMap R (homogeneousSubmodule R M 0)))) := by sorry
+attribute [local instance 2500] ConditionallyCompletePartialOrderSup.toSupSet in
 /-- The standard opens `D₊(v j)` of a spanning family `v` of linear forms cover the projective spectrum of the symmetric algebra. -/
 theorem iSup_basicOpen_ι_eq_top {κ : Type*} (v : κ → M) (hv : Submodule.span R (Set.range v) = ⊤) : ⨆ j, Proj.basicOpen (homogeneousSubmodule R M) (_root_.SymmetricAlgebra.ι R M (v j)) = ⊤ := by sorry
 /-- The projective spectrum of a finite module is proper over the coefficient ring. Freeness and projectivity are not required. -/
@@ -753,6 +754,7 @@ instance instIsNoetherianProj [Module.Finite R M] [IsNoetherianRing R] :
 instance instJacobsonSpaceProj [Module.Finite R M] [JacobsonSpace (Spec (.of R))] : JacobsonSpace (Proj (homogeneousSubmodule R M)) := LocallyOfFiniteType.jacobsonSpace (projToSpec R M)
 end end TauCeti.SymmetricAlgebra
 namespace AlgebraicGeometry.Proj section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.CategoryTheory _root_.TopologicalSpace universe u variable {A : Type u} {σ : Type*} [CommRing A] [SetLike σ A] [AddSubgroupClass σ A] variable {𝒜 : ℕ → σ} [GradedRing 𝒜]
+attribute [local instance 2500] ConditionallyCompletePartialOrderSup.toSupSet in
 /-- All integer twists are invertible if the standard opens of a family of degree-one elements cover `Proj`. -/
 theorem isInvertible_twistingSheaf_of_iSup_eq_top {ι : Type u} (f : ι → A) (hf : ∀ i, f i ∈ 𝒜 1) (hcover : ⨆ i, basicOpen 𝒜 (f i) = ⊤) (n : ℤ) : TauCeti.SheafOfModules.IsInvertible (R := (Proj 𝒜).ringCatSheaf) (twistingSheaf 𝒜 n) := by sorry
 end end AlgebraicGeometry.Proj
