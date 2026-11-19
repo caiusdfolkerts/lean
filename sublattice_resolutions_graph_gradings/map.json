@@ -2,7 +2,7 @@
   "baseline_project": "sublattice_resolutions",
   "baseline_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
   "status": "prepared, exact full preflight pending",
-  "scope": "Corollaries 6.2 and 6.3, all six actual graded comparisons",
+  "scope": "Corollaries 6.2\u20136.4, including the closed-graph linear strand with explicit interval relabeling.",
   "selected_results": [
     {
       "declaration": "PalomarSublattice.corollary62_natural",
@@ -27,14 +27,19 @@
     {
       "declaration": "PalomarSublattice.corollary63_ordinary",
       "paper_reference": "Corollary 6.3"
+    },
+    {
+      "declaration": "PalomarSublattice.GraphStrand.corollary64_closed",
+      "paper_reference": "Corollary 6.4"
     }
   ],
   "source_proofs": [
     "source/graph_results/closed_graph_natural_grading.lean",
-    "source/graph_results/closed_graph_all_powers_characteristic.lean"
+    "source/graph_results/closed_graph_all_powers_characteristic.lean",
+    "source/graph_results/closed_graph_linear_strand.lean"
   ],
   "blockers": [
     "Full exact-commit mechanical preflight"
   ],
-  "selection_count": 7
+  "selection_count": 11
 }

@@ -5,7 +5,8 @@ project:
     Betti preservation and field independence for powers of closed binomial edge
     ideals and their specified monomial initial ideals. Natural signed vertex and
     row degrees, independent component-row counts, signed ordinary degree, and the
-    finest signed grading on the monomial ideal are retained.
+    finest signed grading on the monomial ideal are retained. The linear strand
+    uses the exact strict support chains and the explicit linear colon intervals.
   authors: [Caius Folkerts]
   responsible_maintainers: [Caius Folkerts]
   license: Apache-2.0
@@ -17,7 +18,7 @@ sources:
     authors: [Caius Folkerts]
     type: paper
     relationship: formalizes
-    location: paper.pdf, Corollaries 6.2 and 6.3
+    location: paper.pdf, Corollaries 6.2–6.4
 related_formalizations:
   - title: caiusdfolkerts/research sublattice_resolutions
     id: https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/sublattice_resolutions
@@ -39,4 +40,4 @@ fidelity:
     Stronger boundary cases proven in the retained source include exponent zero and
     signed negative internal degrees. Original vertex labels are retained.
 limitations:
-  - Scope is Corollaries 6.2 and 6.3; the linear-strand formula and higher-minor extensions are separate.
+  - Scope is Corollaries 6.2–6.4; higher-minor extensions are separate.

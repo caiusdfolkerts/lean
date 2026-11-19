@@ -8,6 +8,7 @@ public import graph_results.canonical_finer_monomial_homology
 public import paper_results.finite_rees_presentation
 public import graph_results.closed_graph_integer_betti
 public import graph_results.closed_graph_all_powers_characteristic
+public import graph_results.closed_graph_linear_strand
 
 /-!
 # A literal finite Rees Gröbner presentation for sublattice ideals
@@ -3210,3 +3211,84 @@ theorem corollary63_ordinary (G : SimpleGraph (Fin N)) (hG : ClosedLabeling G)
     graphOrdinaryBinomialBetti_bridge (K := K), graphOrdinaryBinomialBetti_bridge (K := L)]
   exact FourPapers.Sublattice.corollary63_integer_ordinary_all K L G hG s p q
 end PalomarSublattice
+
+namespace PalomarSublattice.GraphStrand
+open Classical SimpleGraph
+universe u
+variable {N : ℕ} (G : SimpleGraph (Fin N))
+
+/-- A finite enumeration of the components, followed by original label order. -/
+def componentFintype : Fintype G.ConnectedComponent := Fintype.ofFinite _
+attribute [local instance] componentFintype
+
+def componentNumber (v : Fin N) : Fin (Fintype.card G.ConnectedComponent) :=
+  Fintype.equivFin G.ConnectedComponent (G.connectedComponentMk v)
+
+def componentKey (v : Fin N) : Lex (Fin (Fintype.card G.ConnectedComponent) × Fin N) :=
+  toLex (componentNumber G v, v)
+
+theorem componentKey_injective : Function.Injective (componentKey G) := by
+  intro v w h
+  exact congrArg (fun x => (ofLex x).2) h
+
+def rangeFintype : Fintype (Set.range (componentKey G)) := Fintype.ofFinite _
+attribute [local instance] rangeFintype
+
+def rangeEquiv : Fin N ≃ Set.range (componentKey G) :=
+  Equiv.ofInjective _ (componentKey_injective G)
+
+theorem rangeCard : Fintype.card (Set.range (componentKey G)) = N := by
+  rw [← Fintype.card_congr (rangeEquiv G), Fintype.card_fin]
+
+/-- Sort by component and retain the original order inside each component. -/
+def componentRelabeling : Fin N ≃ Fin N :=
+  (rangeEquiv G).trans (Fintype.orderIsoFinOfCardEq (Set.range (componentKey G))
+    (rangeCard G)).symm.toEquiv
+
+def relabeled : SimpleGraph (Fin N) :=
+  G.comap (componentRelabeling G).symm
+
+def edgeLattice : Finset (FiniteTuple (GraphRows N)) :=
+  Finset.univ.filter (fun a => a 0 < a 1 ∧ G.Adj (a 0) (a 1))
+
+def lowerNeighbors (j : Fin N) : Finset (Fin N) :=
+  Finset.univ.filter (fun i => i < j ∧ G.Adj i j)
+
+/-- The least smaller neighbor of j, or j when there is none. -/
+def neighborCutoff (j : Fin N) : Fin N :=
+  if h : (lowerNeighbors G j).Nonempty then (lowerNeighbors G j).min' h else j
+
+/-- The x- and y-variable intervals of the paper's linear predecessor colon. -/
+def linearVariables (a : FiniteTuple (GraphRows N)) :
+    Finset (FiniteVariable.{u} (GraphRows N)) :=
+  Finset.univ.filter (fun v =>
+    (v.1 = 0 ∧ neighborCutoff G (a 1) ≤ v.2.down ∧ v.2.down < a 0) ∨
+    (v.1 = 1 ∧ a 0 < v.2.down ∧ v.2.down < a 1))
+
+def supportVariables (s : StrictSupport (GraphRows N) (edgeLattice G)) :
+    Finset (FiniteVariable.{u} (GraphRows N)) :=
+  s.val.biUnion (fun a => linearVariables G a.val)
+
+variable {K : Type u} [Field K]
+
+/-- Corollary 6.4. Betti numbers use the original labeling and the summation uses
+the explicit component-interval relabeling from Section 6.1. -/
+theorem corollary64_closed (hG : ClosedLabeling G) (m : ℕ) (hm : 0 < m) (p : ℕ) :
+    Koszul.betti ((graphBinomialIdeal (K := K) G)^m) p ((2*m+p : ℕ) : ℤ) =
+      Koszul.betti ((graphMonomialIdeal (K := K) G)^m) p ((2*m+p : ℕ) : ℤ) ∧
+    Koszul.betti ((graphMonomialIdeal (K := K) G)^m) p ((2*m+p : ℕ) : ℤ) =
+      ∑ s : StrictSupport (GraphRows N) (edgeLattice (relabeled G)),
+        (m-1).choose (s.val.card-1) * (supportVariables.{u} (relabeled G) s).card.choose p := by
+  rw [graphOrdinaryBinomialBetti_bridge, graphOrdinaryMonomialBetti_bridge,
+    FourPapers.Sublattice.graphBinomialIntegerBetti_nat,
+    FourPapers.Sublattice.graphMonomialIntegerBetti_nat]
+  have hs := FourPapers.Sublattice.corollary64_closed (k := K) G hG m hm p
+  refine ⟨hs.1, hs.2.trans ?_⟩
+  let H := FourPapers.Sublattice.graphComponentRelabeled G
+  have hInterval := FourPapers.Sublattice.graphComponentRelabeled_interval G hG
+  let e : FourPapers.MultichainCounting.StrictSupport (FourPapers.Sublattice.graphEdgeLattice H) ≃
+      StrictSupport (GraphRows N) (edgeLattice (relabeled G)) := Equiv.refl _
+  apply Fintype.sum_equiv e
+  intro s
+  rw [FourPapers.Sublattice.graphSupportLinearVariables_eq_paper H hInterval s] <;> rfl
+end PalomarSublattice.GraphStrand

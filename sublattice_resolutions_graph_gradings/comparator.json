@@ -8,7 +8,11 @@
     "PalomarSublattice.corollary63_monomial_fine",
     "PalomarSublattice.corollary63_binomial_natural",
     "PalomarSublattice.corollary63_binomial_component_rows",
-    "PalomarSublattice.corollary63_ordinary"
+    "PalomarSublattice.corollary63_ordinary",
+    "PalomarSublattice.strictSupportFinset_mem",
+    "PalomarSublattice.GraphStrand.componentKey_injective",
+    "PalomarSublattice.GraphStrand.rangeCard",
+    "PalomarSublattice.GraphStrand.corollary64_closed"
   ],
   "permitted_axioms": [
     "propext",

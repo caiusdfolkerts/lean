@@ -348,3 +348,94 @@ theorem corollary63_ordinary (G : SimpleGraph (Fin N)) (hG : ClosedLabeling G)
     Koszul.betti ((graphBinomialIdeal (K := K) G)^s) p q =
         Koszul.betti ((graphBinomialIdeal (K := L) G)^s) p q := by sorry
 end PalomarSublattice
+
+namespace PalomarSublattice
+open Classical
+variable {d : ℕ} (n : Fin d → ℕ)
+
+def StrictSupport (E : Finset (FiniteTuple n)) :=
+  {s : Finset E // s.Nonempty ∧ IsChain (· < ·) (s : Set E)}
+/-- Literal finite enumeration with an explicit canonical classical decision,
+so source-specific Fintype aliases cannot enter the independent data body. -/
+def strictSupportFinset (E : Finset (FiniteTuple n)) : Finset (Finset E) :=
+  @Finset.filter (Finset E) (fun s => s.Nonempty ∧ IsChain (· < ·) (s : Set E))
+    (Classical.decPred _) Finset.univ
+/-- Exact enumeration law; this supporting proposition must be selected for
+comparison when the candidate is assembled. -/
+theorem strictSupportFinset_mem (E : Finset (FiniteTuple n)) (s : Finset E) :
+    s ∈ strictSupportFinset n E ↔ s.Nonempty ∧ IsChain (· < ·) (s : Set E) := by
+  classical
+  simp [strictSupportFinset]
+noncomputable instance strictSupportFintype (E : Finset (FiniteTuple n)) :
+    Fintype (StrictSupport n E) :=
+  Fintype.subtype (strictSupportFinset n E) (strictSupportFinset_mem n E)
+end PalomarSublattice
+
+namespace PalomarSublattice.GraphStrand
+open Classical SimpleGraph
+universe u
+variable {N : ℕ} (G : SimpleGraph (Fin N))
+
+/-- A finite enumeration of the components, followed by original label order. -/
+def componentFintype : Fintype G.ConnectedComponent := Fintype.ofFinite _
+attribute [local instance] componentFintype
+
+def componentNumber (v : Fin N) : Fin (Fintype.card G.ConnectedComponent) :=
+  Fintype.equivFin G.ConnectedComponent (G.connectedComponentMk v)
+
+def componentKey (v : Fin N) : Lex (Fin (Fintype.card G.ConnectedComponent) × Fin N) :=
+  toLex (componentNumber G v, v)
+
+theorem componentKey_injective : Function.Injective (componentKey G) := by
+  intro v w h
+  exact congrArg (fun x => (ofLex x).2) h
+
+def rangeFintype : Fintype (Set.range (componentKey G)) := Fintype.ofFinite _
+attribute [local instance] rangeFintype
+
+def rangeEquiv : Fin N ≃ Set.range (componentKey G) :=
+  Equiv.ofInjective _ (componentKey_injective G)
+
+theorem rangeCard : Fintype.card (Set.range (componentKey G)) = N := by
+  rw [← Fintype.card_congr (rangeEquiv G), Fintype.card_fin]
+
+/-- Sort by component and retain the original order inside each component. -/
+def componentRelabeling : Fin N ≃ Fin N :=
+  (rangeEquiv G).trans (Fintype.orderIsoFinOfCardEq (Set.range (componentKey G))
+    (rangeCard G)).symm.toEquiv
+
+def relabeled : SimpleGraph (Fin N) :=
+  G.comap (componentRelabeling G).symm
+
+def edgeLattice : Finset (FiniteTuple (GraphRows N)) :=
+  Finset.univ.filter (fun a => a 0 < a 1 ∧ G.Adj (a 0) (a 1))
+
+def lowerNeighbors (j : Fin N) : Finset (Fin N) :=
+  Finset.univ.filter (fun i => i < j ∧ G.Adj i j)
+
+/-- The least smaller neighbor of j, or j when there is none. -/
+def neighborCutoff (j : Fin N) : Fin N :=
+  if h : (lowerNeighbors G j).Nonempty then (lowerNeighbors G j).min' h else j
+
+/-- The x- and y-variable intervals of the paper's linear predecessor colon. -/
+def linearVariables (a : FiniteTuple (GraphRows N)) :
+    Finset (FiniteVariable.{u} (GraphRows N)) :=
+  Finset.univ.filter (fun v =>
+    (v.1 = 0 ∧ neighborCutoff G (a 1) ≤ v.2.down ∧ v.2.down < a 0) ∨
+    (v.1 = 1 ∧ a 0 < v.2.down ∧ v.2.down < a 1))
+
+def supportVariables (s : StrictSupport (GraphRows N) (edgeLattice G)) :
+    Finset (FiniteVariable.{u} (GraphRows N)) :=
+  s.val.biUnion (fun a => linearVariables G a.val)
+
+variable {K : Type u} [Field K]
+
+/-- Corollary 6.4. Betti numbers use the original labeling and the summation uses
+the explicit component-interval relabeling from Section 6.1. -/
+theorem corollary64_closed (hG : ClosedLabeling G) (m : ℕ) (hm : 0 < m) (p : ℕ) :
+    Koszul.betti ((graphBinomialIdeal (K := K) G)^m) p ((2*m+p : ℕ) : ℤ) =
+      Koszul.betti ((graphMonomialIdeal (K := K) G)^m) p ((2*m+p : ℕ) : ℤ) ∧
+    Koszul.betti ((graphMonomialIdeal (K := K) G)^m) p ((2*m+p : ℕ) : ℤ) =
+      ∑ s : StrictSupport (GraphRows N) (edgeLattice (relabeled G)),
+        (m-1).choose (s.val.card-1) * (supportVariables.{u} (relabeled G) s).card.choose p := by sorry
+end PalomarSublattice.GraphStrand
