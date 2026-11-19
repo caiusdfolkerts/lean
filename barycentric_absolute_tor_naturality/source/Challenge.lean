@@ -1,9 +1,18 @@
 module
 public import Mathlib
-
 /-! Order automorphisms on ordinary Tor and its internal degrees. -/
-
 @[expose] public section
+namespace PalomarBarycentricTor
+theorem natRightCancelAdd : IsRightCancelAdd ℕ := by infer_instance
+def naturalDown : ComplexShape ℕ := @ComplexShape.down ℕ _ natRightCancelAdd _
+def naturalUp : ComplexShape ℕ := @ComplexShape.up ℕ _ natRightCancelAdd _
+attribute [reducible] naturalDown naturalUp
+theorem coefficientSMulComm {K : Type*} [CommRing K] : SMulCommClass K K K := by infer_instance
+theorem functionScalarTower {V K : Type*} [CommRing K] : IsScalarTower K K (V → K) := by infer_instance
+theorem exteriorScalarComm {V K : Type*} [CommRing K] : SMulCommClass K K (ExteriorAlgebra K (V → K)) := by infer_instance
+theorem tensorPreservesZero {R : Type*} [CommRing R] (M : ModuleCat R) : ((CategoryTheory.MonoidalCategory.curriedTensor (ModuleCat R)).flip.obj M).PreservesZeroMorphisms := by infer_instance
+attribute [instance 2200] natRightCancelAdd coefficientSMulComm functionScalarTower exteriorScalarComm tensorPreservesZero
+end PalomarBarycentricTor
 noncomputable section
 set_option autoImplicit false
 set_option maxRecDepth 4000
@@ -18,7 +27,7 @@ variable {R : Type u} [CommRing R] {M : Type v} [AddCommGroup M] [Module R M] (�
 noncomputable def koszulComplex.dAlternating (n : ℕ) : M [⋀^Fin (n + 1)]→ₗ[R] ⋀[R]^n M := AlternatingMap.alternatizeUncurryFin (φ.smulRight (exteriorPower.ιMulti R n))
 noncomputable def koszulComplex.d (n : ℕ) : ⋀[R]^(n + 1) M →ₗ[R] ⋀[R]^n M := exteriorPower.alternatingMapLinearEquiv (koszulComplex.dAlternating φ n)
 lemma koszulComplex.d_comp_eq_zero (n : ℕ) : koszulComplex.d φ n ∘ₗ koszulComplex.d φ (n + 1) = 0 := by sorry
-noncomputable def koszulComplex : ChainComplex (ModuleCat R) ℕ := ChainComplex.of (fun n ↦ ModuleCat.of R (⋀[R]^n M))
+noncomputable def koszulComplex : HomologicalComplex (ModuleCat R) PalomarBarycentricTor.naturalDown := ChainComplex.of (fun n ↦ ModuleCat.of R (⋀[R]^n M))
     (fun n ↦ ModuleCat.ofHom (koszulComplex.d φ n))
     (fun n ↦ by rw [← ModuleCat.ofHom_comp, koszulComplex.d_comp_eq_zero, ModuleCat.ofHom_zero])
 lemma koszulComplex.X_eq_exteriorPower (i : ℕ) : (koszulComplex φ).X i = ModuleCat.of R (⋀[R]^i M) := by sorry
@@ -28,8 +37,8 @@ namespace koszulComplex
 open Category Limits Module ExteriorAlgebra
 variable {R : Type u} [CommRing R] {M : Type v} [AddCommGroup M] [Module R M] (φ : M →ₗ[R] R) {N : Type v} [AddCommGroup N] [Module R N]
 noncomputable def ofList (l : List R) := koszulComplex (Fintype.linearCombination R l.get)
-lemma map_d_comm (f : M →ₗ[R] N) (φ' : N →ₗ[R] R) (h : φ' ∘ₗ f = φ) (i : ℕ) : ModuleCat.ofHom (exteriorPower.map (i + 1) f) ≫ ModuleCat.ofHom (koszulComplex.d φ' i) =
-  ModuleCat.ofHom (koszulComplex.d φ i) ≫ ModuleCat.ofHom (exteriorPower.map i f) := by sorry
+lemma map_d_comm (f : M →ₗ[R] N) (φ' : N →ₗ[R] R) (h : φ' ∘ₗ f = φ) (i : ℕ) : ModuleCat.ofHom.{max v u, u} (exteriorPower.map (i + 1) f) ≫ ModuleCat.ofHom.{max v u, u} (koszulComplex.d φ' i) =
+  ModuleCat.ofHom.{max v u, u} (koszulComplex.d φ i) ≫ ModuleCat.ofHom.{max v u, u} (exteriorPower.map i f) := by sorry
 noncomputable def map (f : M →ₗ[R] N) (φ' : N →ₗ[R] R) (h : φ' ∘ₗ f = φ) :
     koszulComplex φ ⟶ koszulComplex φ' := ChainComplex.ofHom
     (fun i ↦ ModuleCat.ofHom (exteriorPower.map i f))
@@ -54,7 +63,7 @@ end
 section
 variable (φ : M →ₗ[R] R)
 noncomputable def zeroHomologyLinearEquivAux : (koszulComplex φ).homology 0 ≃ₗ[R]
-    (⋀[R]^0 M) ⧸ (koszulComplex.d φ 0).range := (((koszulComplex φ).isoHomologyι₀.trans
+    (⋀[R]^0 M) ⧸ (koszulComplex.d φ 0).range := (((ChainComplex.isoHomologyι₀ (koszulComplex φ)).trans
     ((koszulComplex φ).opcyclesIsoSc' 1 0 0 (by simp) (by simp))).trans
       ((koszulComplex φ).sc' 1 0 0).moduleCatOpcyclesIso).toLinearEquiv
 lemma d_zero_range_map : (koszulComplex.d φ 0).range.map (exteriorPower.zeroEquiv R _).toLinearMap = φ.range := by sorry
@@ -69,7 +78,7 @@ namespace CommAlg.Koszul
 section
 open CategoryTheory.Limits HomologicalComplex
 variable {R : Type u} [CommRing R]
-def resolutionOpcycles (K : ChainComplex (ModuleCat.{u} R) ℕ)
+def resolutionOpcycles (K : HomologicalComplex (ModuleCat.{u} R) PalomarBarycentricTor.naturalDown)
     (hproj : ∀ n, Projective (K.X n)) (hexact : ∀ n, K.ExactAt (n + 1)) :
     ProjectiveResolution (K.opcycles 0) where
   complex := K
@@ -101,9 +110,9 @@ def regularSequenceResolution (l : List R) (hl : RingTheory.Sequence.IsRegular R
         change Projective (ModuleCat.of R (⋀[R]^n (Fin l.length → R)))
         infer_instance)
       (fun n => koszulComplex.exactAt_of_isRegular l hl (n + 1) (by omega)))
-    ((koszulComplex.ofList l).isoHomologyι₀.symm ≪≫
+    ((ChainComplex.isoHomologyι₀ (koszulComplex.ofList l)).symm ≪≫
       (koszulComplex.zeroHomologyOfListLinearEquiv l).toModuleIso)
-def coefficientComplex (l : List R) (M : ModuleCat.{u} R) : ChainComplex (ModuleCat.{u} R) ℕ := (((CategoryTheory.MonoidalCategory.tensoringRight (ModuleCat R)).obj
+def coefficientComplex (l : List R) (M : ModuleCat.{u} R) : HomologicalComplex (ModuleCat.{u} R) PalomarBarycentricTor.naturalDown := (((CategoryTheory.MonoidalCategory.tensoringRight (ModuleCat R)).obj
   M).mapHomologicalComplex (ComplexShape.down ℕ)).obj (koszulComplex.ofList l)
 end
 section
@@ -117,7 +126,7 @@ end
 section
 open TensorProduct
 variable {R : Type u} {V : Type} [CommRing R] [Fintype V] [LinearOrder V]
-abbrev familyCoefficientComplex (x : V → R) (M : ModuleCat.{u} R) : ChainComplex (ModuleCat.{u} R) ℕ := (((CategoryTheory.MonoidalCategory.tensoringRight (ModuleCat R)).obj
+abbrev familyCoefficientComplex (x : V → R) (M : ModuleCat.{u} R) : HomologicalComplex (ModuleCat.{u} R) PalomarBarycentricTor.naturalDown := (((CategoryTheory.MonoidalCategory.tensoringRight (ModuleCat R)).obj
   M).mapHomologicalComplex (ComplexShape.down ℕ)).obj (koszulComplex (Fintype.linearCombination R x))
 def coefficientCoordinates (x : V → R) (M : ModuleCat.{u} R) (i : ℕ) : (familyCoefficientComplex x M).X i ≃ₗ[R] (Set.powersetCard V i →₀ M) :=
   TensorProduct.equivFinsuppOfBasisLeft ((Pi.basisFun R V).exteriorPower i)
@@ -128,7 +137,7 @@ def coordinateDifferential (x : V → R) (M : ModuleCat.{u} R) (i : ℕ) :
   (coefficientCoordinates.{u} x M i).toLinearMap.comp
     (δ.comp (coefficientCoordinates.{u} x M (i + 1)).symm.toLinearMap)
 lemma coordinateDifferential_comp (x : V → R) (M : ModuleCat.{u} R) (i : ℕ) : coordinateDifferential x M i ∘ₗ coordinateDifferential x M (i + 1) = 0 := by sorry
-def coordinateComplex (x : V → R) (M : ModuleCat.{u} R) : ChainComplex (ModuleCat.{u} R) ℕ := ChainComplex.of (fun i => ModuleCat.of R (Set.powersetCard V i →₀ M)) (fun i =>
+def coordinateComplex (x : V → R) (M : ModuleCat.{u} R) : HomologicalComplex (ModuleCat.{u} R) PalomarBarycentricTor.naturalDown := ChainComplex.of (fun i => ModuleCat.of R (Set.powersetCard V i →₀ M)) (fun i =>
   ModuleCat.ofHom (coordinateDifferential x M i)) (fun i => ModuleCat.hom_ext (coordinateDifferential_comp x M i))
 @[simp] lemma coordinateComplex_d (x : V → R) (M : ModuleCat.{u} R) (i : ℕ) :
     (coordinateComplex x M).d (i + 1) i = ModuleCat.ofHom (coordinateDifferential x M i) := by sorry
@@ -653,14 +662,14 @@ variable {K B B' : Type u} {C : Type} [CommRing K] [CommRing B] [CommRing B']
 def parameterKoszulDifferential (γ : C → B) (i : ℕ) : (Set.powersetCard C (i + 1) →₀ B) →ₗ[K] (Set.powersetCard C i →₀ B) := (Koszul.coordinateDifferential γ (ModuleCat.of B
   B) i).restrictScalars K
 theorem parameterKoszulDifferential_comp (γ : C → B) (i : ℕ) : (parameterKoszulDifferential (K := K) γ i).comp (parameterKoszulDifferential (K := K) γ (i + 1)) = 0 := by sorry
-def parameterKoszulComplex (γ : C → B) : ChainComplex (ModuleCat.{u} K) ℕ := ChainComplex.of (fun i => ModuleCat.of K (Set.powersetCard C i →₀ B)) (fun i => ModuleCat.ofHom
+def parameterKoszulComplex (γ : C → B) : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown := ChainComplex.of (fun i => ModuleCat.of K (Set.powersetCard C i →₀ B)) (fun i => ModuleCat.ofHom
   (parameterKoszulDifferential (K := K) γ i)) (fun i => ModuleCat.hom_ext (parameterKoszulDifferential_comp (K := K) γ i))
 @[simp] theorem parameterKoszulComplex_d (γ : C → B) (i : ℕ) :
     (parameterKoszulComplex (K := K) γ).d (i + 1) i = ModuleCat.ofHom (parameterKoszulDifferential (K := K) γ i) := by sorry
 end
 variable {P K : Type u} [PartialOrder P] [OrderBot P] [Fintype P] [CommRing K]
 variable (K) (hs : IsSimplicialPoset P) (d : ℕ) (hrank : ∀ p : P, faceRank p ≤ d)
-abbrev originalKoszulComplex : ChainComplex (ModuleCat.{u} K) ℕ := parameterKoszulComplex (K := K) (fun i : Fin d => faceRankParameter K hs (i.val + 1))
+abbrev originalKoszulComplex : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown := parameterKoszulComplex (K := K) (fun i : Fin d => faceRankParameter K hs (i.val + 1))
 end
 section
 open FourPapers.FilteredHomology
@@ -672,17 +681,17 @@ def originalKoszulDegreePiece (i j : ℕ) := FourPapers.BasisGrading.Piece (orig
 end
 section
 variable {K : Type u} [CommRing K]
-abbrev complexIncoming (C : ChainComplex (ModuleCat.{u} K) ℕ) (i : ℕ) := (C.d (i + 1) i).hom
-abbrev complexOutgoing (C : ChainComplex (ModuleCat.{u} K) ℕ) (i : ℕ) := (C.d i (i - 1)).hom
-theorem complexIncomingOutgoing (C : ChainComplex (ModuleCat.{u} K) ℕ) (i : ℕ) : (complexOutgoing C i).comp (complexIncoming C i) = 0 := by sorry
-abbrev complexKernelHomology (C : ChainComplex (ModuleCat.{u} K) ℕ) (i : ℕ) := Homology (complexIncoming C i) (complexOutgoing C i) (complexIncomingOutgoing C i)
-def complexKernelHomologyIso (C : ChainComplex (ModuleCat.{u} K) ℕ) (i : ℕ) :
+abbrev complexIncoming (C : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown) (i : ℕ) := (C.d (i + 1) i).hom
+abbrev complexOutgoing (C : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown) (i : ℕ) := (C.d i (i - 1)).hom
+theorem complexIncomingOutgoing (C : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown) (i : ℕ) : (complexOutgoing C i).comp (complexIncoming C i) = 0 := by sorry
+abbrev complexKernelHomology (C : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown) (i : ℕ) := Homology (complexIncoming C i) (complexOutgoing C i) (complexIncomingOutgoing C i)
+def complexKernelHomologyIso (C : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown) (i : ℕ) :
     C.homology i ≅ ModuleCat.of K (complexKernelHomology C i) := C.homologyIsoSc' (i + 1) i (i - 1) (ChainComplex.prev ℕ i)
     (by cases i <;> simp) ≪≫ (C.sc' (i + 1) i (i - 1)).moduleCatHomologyIso
-def submoduleComplex (C : ChainComplex (ModuleCat.{u} K) ℕ)
+def submoduleComplex (C : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown)
     (N : ∀ i, Submodule K (C.X i))
     (hN : ∀ i x, x ∈ N (i + 1) → complexIncoming C i x ∈ N i) :
-    ChainComplex (ModuleCat.{u} K) ℕ := ChainComplex.of (fun i => ModuleCat.of K (N i))
+    HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown := ChainComplex.of (fun i => ModuleCat.of K (N i))
     (fun i => ModuleCat.ofHom (restrictedMap (complexIncoming C i) _ _ (hN i))) (by
       intro i
       apply ModuleCat.hom_ext
@@ -690,7 +699,7 @@ def submoduleComplex (C : ChainComplex (ModuleCat.{u} K) ℕ)
       intro x
       apply Subtype.ext
       exact congrArg (fun f => f x.val) (C.d_comp_d (i + 2) (i + 1) i))
-@[simp] theorem submoduleComplex_d (C : ChainComplex (ModuleCat.{u} K) ℕ)
+@[simp] theorem submoduleComplex_d (C : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown)
     (N : ∀ i, Submodule K (C.X i))
     (hN : ∀ i x, x ∈ N (i + 1) → complexIncoming C i x ∈ N i) (i : ℕ) :
     (submoduleComplex C N hN).d (i + 1) i = ModuleCat.ofHom (restrictedMap (complexIncoming C i) _ _ (hN i)) := by sorry
@@ -711,7 +720,7 @@ variable (Q : Set P) (hQ : ∀ ⦃p q : P⦄, p ≤ q → q ∈ Q → p ∈ Q)
 def originalRelativeKoszulTerm (i : ℕ) : Submodule K ((originalKoszulComplex K hs d).X i) := idealCoefficientSubmodule _ (faceRestrictionIdeal K hs Q)
 theorem originalRelativeKoszulTerm_preserved (i : ℕ) (x : (originalKoszulComplex K hs d).X (i + 1)) (hx : x ∈ originalRelativeKoszulTerm K hs d Q (i + 1)) : complexIncoming
   (originalKoszulComplex K hs d) i x ∈ originalRelativeKoszulTerm K hs d Q i := by sorry
-def originalRelativeKoszulComplex : ChainComplex (ModuleCat.{u} K) ℕ := submoduleComplex (originalKoszulComplex K hs d) (originalRelativeKoszulTerm K hs d Q)
+def originalRelativeKoszulComplex : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown := submoduleComplex (originalKoszulComplex K hs d) (originalRelativeKoszulTerm K hs d Q)
   (originalRelativeKoszulTerm_preserved K hs d Q)
 variable (hrank : ∀ p : P, faceRank p ≤ d)
 def originalRelativeDegreeTerm (j i : ℕ) : Submodule K ((originalKoszulComplex K hs d).X i) := originalRelativeKoszulTerm K hs d Q i ⊓ originalKoszulDegreePiece K hs d i j
@@ -720,7 +729,7 @@ include hrank
 theorem originalRelativeDegreeTerm_preserved (j i : ℕ) (x : (originalKoszulComplex K hs d).X (i + 1)) (hx : x ∈ originalRelativeDegreeTerm K hs d Q j (i + 1)) :
   complexIncoming (originalKoszulComplex K hs d) i x ∈ originalRelativeDegreeTerm K hs d Q j i := by sorry
 end
-def originalRelativeDegreeComplex (j : ℕ) : ChainComplex (ModuleCat.{u} K) ℕ := submoduleComplex (originalKoszulComplex K hs d) (originalRelativeDegreeTerm K hs d Q j)
+def originalRelativeDegreeComplex (j : ℕ) : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown := submoduleComplex (originalKoszulComplex K hs d) (originalRelativeDegreeTerm K hs d Q j)
   (originalRelativeDegreeTerm_preserved K hs d Q hrank j)
 abbrev originalRelativeInternalHomology (j i : ℕ) := complexKernelHomology (originalRelativeDegreeComplex K hs d Q hrank j) i
 end
@@ -728,7 +737,7 @@ theorem faceRestrictionIdeal_empty : faceRestrictionIdeal K hs (∅ : Set P) = �
 end
 section
 variable {K : Type u} [CommRing K]
-variable {C D E : ChainComplex (ModuleCat.{u} K) ℕ}
+variable {C D E : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown}
 def complexKernelHomologyMap (f : C ⟶ D) (i : ℕ) : complexKernelHomology C i →ₗ[K] complexKernelHomology D i := inducedHomologyMap _ _ (complexIncomingOutgoing C i) _ _
   (complexIncomingOutgoing D i) (f.f (i + 1)).hom (f.f i).hom (f.f (i - 1)).hom (congrArg (fun q => q.hom) (f.comm (i + 1) i)).symm (congrArg (fun q => q.hom) (f.comm i (i -
   1))).symm
@@ -786,7 +795,7 @@ def ordinaryModuleParameterTor (M : ModuleCat.{u} (MvPolynomial C K)) (i : ℕ) 
   (ModuleCat (MvPolynomial C K)) i).obj M).obj (Koszul.residueCoefficientModule (V := C) (k := K)))
 def ordinaryModuleParameterTorMap {M N : ModuleCat.{u} (MvPolynomial C K)} (f : M ⟶ N) (i : ℕ) : ordinaryModuleParameterTor M i ⟶ ordinaryModuleParameterTor N i :=
   (ModuleCat.restrictScalars (algebraMap K (MvPolynomial C K))).map (((Tor (ModuleCat (MvPolynomial C K)) i).map f).app (Koszul.residueCoefficientModule (V := C) (k := K)))
-def moduleTorCoordinateComplex (M : ModuleCat.{u} (MvPolynomial C K)) : ChainComplex (ModuleCat.{u} K) ℕ := ((ModuleCat.restrictScalars (algebraMap K (MvPolynomial C
+def moduleTorCoordinateComplex (M : ModuleCat.{u} (MvPolynomial C K)) : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown := ((ModuleCat.restrictScalars (algebraMap K (MvPolynomial C
   K))).mapHomologicalComplex (ComplexShape.down ℕ)).obj (Koszul.coordinateComplex (MvPolynomial.X : C → MvPolynomial C K) M)
 def ordinaryModuleTorCoordinateIsoNontrivial [Nontrivial K]
     (M : ModuleCat.{u} (MvPolynomial C K)) (i : ℕ) :
@@ -839,7 +848,7 @@ def idealParameterCoefficientModule : ModuleCat.{u} (MvPolynomial C K) := by
 def ordinaryIdealParameterTor (i : ℕ) : ModuleCat.{u} K := ordinaryModuleParameterTor (idealParameterCoefficientModule φ I) i
 theorem parameterIdealTerm_preserved (i : ℕ) (x : (parameterKoszulComplex (K := K) (fun c => φ (MvPolynomial.X c))).X (i + 1)) (hx : x ∈ idealCoefficientSubmodule (K := K) _
   I) : complexIncoming (parameterKoszulComplex (K := K) (fun c => φ (MvPolynomial.X c))) i x ∈ idealCoefficientSubmodule (K := K) _ I := by sorry
-def idealParameterKoszulComplex : ChainComplex (ModuleCat.{u} K) ℕ := submoduleComplex (parameterKoszulComplex (K := K) (fun c => φ (MvPolynomial.X c))) (fun i =>
+def idealParameterKoszulComplex : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalDown := submoduleComplex (parameterKoszulComplex (K := K) (fun c => φ (MvPolynomial.X c))) (fun i =>
   idealCoefficientSubmodule (K := K) (Set.powersetCard C i) I) (parameterIdealTerm_preserved φ I)
 def idealParameterTermEquiv (i : ℕ) :
     (moduleTorCoordinateComplex (idealParameterCoefficientModule φ I)).X i ≃ₗ[K] (idealParameterKoszulComplex φ I).X i := by

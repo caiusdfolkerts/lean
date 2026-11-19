@@ -54,7 +54,12 @@
     "FourPapers.Universal.parameterIdealTerm_preserved",
     "FourPapers.Universal.faceRingOrderAut_parameterAction",
     "FourPapers.Universal.originalEmptyRelativeTorIso_equivariant",
-    "FourPapers.Universal.palomarAbsoluteTorDegreeNaturality"
+    "FourPapers.Universal.palomarAbsoluteTorDegreeNaturality",
+    "PalomarBarycentricTor.natRightCancelAdd",
+    "PalomarBarycentricTor.coefficientSMulComm",
+    "PalomarBarycentricTor.functionScalarTower",
+    "PalomarBarycentricTor.exteriorScalarComm",
+    "PalomarBarycentricTor.tensorPreservesZero"
   ],
   "definition_names": [],
   "permitted_axioms": [
