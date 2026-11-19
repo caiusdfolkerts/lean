@@ -27,3 +27,9 @@ Here's a guide to help you navigate this repo! All verified theorems/proposition
 | Theorem 4.4, exact generator interval | `theorem_4_4_zero`, `theorem_4_4`, `theorem_4_4_threshold_formula` |
 | Theorem 5.1, total actual-Tor support | `theorem_5_1`, `theorem_5_1_rank`, `theorem_5_1_field_independent` |
 | Theorem 6.1 and Corollary 6.2, integral closure | `theorem_6_1`, `corollary_6_2` |
+
+## Independent Palomar interface
+
+The current selection includes stabilization and fixed twists, exact and canonical rank, actual projective dimensions, ordinary-Rees generation, monic integral closure, field independence on every actual nonzero Koszul multidegree, and universal squarefree-Veronese sharpness in every positive degree. The interface uses the actual signed exterior differential and original chain submodules, with a genuine source iff to the retained homology definition.
+
+The exact375-line interface and both differential/homology identity controls passed canonical run44463606794. The full source bridge, Comparator and kernel replay remain pending. This selection is not whole-paper coverage: mixed coordinate powers/Rees generation, exact generator intervals/thresholds, remaining total-support homogenized-ideal/rank clauses, and multi-Rees integral closure still require independent interfaces. See map.json for exact source and paper links.

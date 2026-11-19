@@ -1,0 +1,92 @@
+{
+  "status": "source_prepared_literal_boundary_model_and_actual_iff_bridge_unelaborated",
+  "project": "homological_shifts",
+  "challenge_sha256": "7b8997fc9ca232a829a71f385cd75bc27859b39011025503e3eb44ee132586f2",
+  "challenge_lines": 375,
+  "challenge_bytes": 21690,
+  "all357_selected_clauses_preserved": true,
+  "actual_model": "The identical signed exterior contraction and identical original chain submodules; actual nonzero homology, no rank surrogate or arbitrary proof data.",
+  "core_data_is_first_custom_declaration_in_both_modules": true,
+  "genuine_source_bridge": "CommAlg.Simplicial.literalNonzeroHomology_iff, proved by rfl in original owner module; Solution composes this with existing gradedBettiNonzero_iff_faces.",
+  "existing_original_boundary_and_nonzero_definitions_and_all_proofs_retained": true,
+  "source_proof_files": [
+    {
+      "path": "source/Challenge.lean",
+      "sha256": "7b8997fc9ca232a829a71f385cd75bc27859b39011025503e3eb44ee132586f2"
+    },
+    {
+      "path": "source/PalomarAudit.lean",
+      "sha256": "2c2152f6d3464242dd003e5a8fa8cb9dab466bb698b2d04ebb181ca950eba537"
+    },
+    {
+      "path": "source/PalomarHomologicalBoundary.lean",
+      "sha256": "ca203b3b81323c2fe9512b522fa9c5351768ea78c125c3486d4458b47f958927"
+    },
+    {
+      "path": "source/Solution.lean",
+      "sha256": "457784530004a125172fbe5f450e3e1a3a7da81e04f0f897feef180c23a4741d"
+    },
+    {
+      "path": "source/four_papers/homological/complete/PalomarPart000.lean",
+      "sha256": "42723e670c17af52a48dbbe12ab276596d08f2870becd6211db7028d5392666a"
+    },
+    {
+      "path": "source/four_papers/homological/complete/PalomarPart001.lean",
+      "sha256": "9e70daafc1343cbce43b6bda82324bdc84493ec72a8e44ea59150b7fb4fa0355"
+    },
+    {
+      "path": "source/four_papers/homological/complete.lean",
+      "sha256": "298689fd39de518d4b414d32c6a63e63651550d022d895c5ced97a41211f7c57"
+    },
+    {
+      "path": "source/verification/check_1.lean",
+      "sha256": "0f17531bcc4b30510e5bedd54c61d6194e1c3f8f54518f3c34fcc3c8da2b074c"
+    }
+  ],
+  "library_membership": "Dedicated PalomarHomologicalBoundary library, explicit root; no library dependency cycle.",
+  "measured_reason": "Exactc7whole5findings all arise from generated boundary auxiliary proof-name reuse. R28 actual supports have distinct scalar dictionaries; isolated identical literal data removes dependence on that prior same-module proof chronology.",
+  "no_local_compiler": true,
+  "full_source_solution_comparator": "not_passed",
+  "files": [
+    {
+      "path": "Challenge.lean",
+      "sha256": "7b8997fc9ca232a829a71f385cd75bc27859b39011025503e3eb44ee132586f2"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "cacb9b966903a68a7b55e83ee5c5004d9178206d7f6ac5ab61b8b5f15244147f"
+    },
+    {
+      "path": "NOTICE",
+      "sha256": "6becd117167b8652540f4b3660c8795c0dd21db900de5fd35c7c2822e738477f"
+    },
+    {
+      "path": "Solution.lean",
+      "sha256": "457784530004a125172fbe5f450e3e1a3a7da81e04f0f897feef180c23a4741d"
+    },
+    {
+      "path": "comparator.json",
+      "sha256": "a993e2a8baecf218ccdeef0eb7adc0b27fa473587d483b7903f0e755c8b3ac8f"
+    },
+    {
+      "path": "formalization.yaml",
+      "sha256": "ee39016194589b0eb836a63fdba82aed529e8c12264541fa9ded69b1ccc574d8"
+    },
+    {
+      "path": "lake-manifest.json",
+      "sha256": "c19929a5111909242f1ca954a78a934cf2ad5972f7f3ee68310ad6bcfbb186ed"
+    },
+    {
+      "path": "lakefile.toml",
+      "sha256": "45a63ae480339252c42baf15aa590314d40c82e55494b2a091d90be3f40675c6"
+    },
+    {
+      "path": "lean-toolchain",
+      "sha256": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c"
+    },
+    {
+      "path": "map.json",
+      "sha256": "011c3ca298f87f99d4d42c856cb7699e80f06b21387eca0890c6071cc6d36356"
+    }
+  ]
+}

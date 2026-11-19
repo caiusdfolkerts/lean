@@ -1,0 +1,41 @@
+{
+  "status": "validated_actual_challenge-elaborated",
+  "checked_utc": "2026-11-19T05:17:49.750917+00:00",
+  "owned_bundle_folder": "reports/homological_shifts/literal-boundary-diagnostic",
+  "workflow_run": "44463606794",
+  "case": "homological_literal_boundary_and_bridge",
+  "source_commit": "319a82a8f4a42306fa12d8925e024216071ecffe",
+  "artifact_id": 14501172478,
+  "artifact_zip_digest_matches_GitHub_metadata": true,
+  "input_script_log_dependency_hashes_match_frozen_case": true,
+  "challenge_sha256": "ebe7874715e3d059d1029ef03d6272abd64e7decd9357d6fd14f30ae027c6b1a",
+  "receipt_sha256": "b1eaf0bc617ab02d3fc610836f4c7cf9608226bb7da25f6257f1764d8e0ebe5d",
+  "bounded_log_sha256": "be63d45b5b709ff2043dd13d98c06315dd554a8dcfba718da11641be4f8aac88",
+  "actual_elaboration": {
+    "phase": "challenge-elaboration",
+    "command": [
+      "elan",
+      "run",
+      "leanprover/lean4:v4.35.0",
+      "lake",
+      "--keep-toolchain",
+      "env",
+      "lean",
+      "--trust=0",
+      "-j1",
+      "-M8192",
+      "-DElab.async=false",
+      "-Ddebug.skipKernelTC=false",
+      "--root=/home/runner/work/_temp/challenge-work/workspace",
+      "-o",
+      "/home/runner/work/_temp/challenge-work/workspace/diagnostic-output/Challenge.olean",
+      "/home/runner/work/_temp/challenge-work/workspace/Challenge.lean"
+    ],
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 2.419,
+    "output_bytes": 2730,
+    "output_sha256": "3ef027cffdec580af0ecac308118859bbd05dfcf979623d81a0e4f0b49f4a65c"
+  },
+  "no_full_source_solution_comparator_verdict": true
+}

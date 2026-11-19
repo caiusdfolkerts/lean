@@ -111,6 +111,7 @@ public import Mathlib.Tactic.Push
 public import Mathlib.Tactic.Ring
 public import Mathlib.Tactic.SplitIfs
 public import Mathlib.Tactic.Tauto
+public import PalomarHomologicalBoundary
 
 -- Generated verification output directories.
 run_cmd Lean.Elab.Command.liftIO do
@@ -6094,6 +6095,17 @@ def ExactIn (K : Finset V → Prop) (i : ℕ) : Prop :=
 def NonzeroHomology (K : Finset V → Prop) (i : ℕ) : Prop :=
   ∃ z : Ambient V k, z ∈ Chains K i ∧ boundary z = 0 ∧
     ∀ y : Ambient V k, y ∈ Chains K (i + 1) → boundary y ≠ z
+/-- Actual nonzero augmented homology using the literal signed contraction.
+The retained-source bridge proves this predicate identical to NonzeroHomology. -/
+def literalNonzeroHomology (K : Finset V → Prop) (i : ℕ) : Prop :=
+  ∃ z : Ambient V k, z ∈ Chains K i ∧ PalomarHomologicalBoundary.differential z = 0 ∧
+    ∀ y : Ambient V k, y ∈ Chains K (i + 1) → PalomarHomologicalBoundary.differential y ≠ z
+
+/-- The literal signed-contraction model is the original actual augmented homology. -/
+theorem literalNonzeroHomology_iff (K : Finset V → Prop) (i : ℕ) :
+    literalNonzeroHomology (k := k) K i ↔ NonzeroHomology (k := k) K i := by
+  rfl
+
 
 lemma nonzeroHomology_iff_not_exactIn (K : Finset V → Prop) (i : ℕ) :
     NonzeroHomology (k := k) K i ↔ ¬ExactIn (k := k) K i := by

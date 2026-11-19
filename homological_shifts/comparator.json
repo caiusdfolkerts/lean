@@ -22,7 +22,12 @@
     "PalomarHomological.fieldIndependence",
     "CommAlg.Simplicial.palomarBoundaryScalarComm",
     "CommAlg.Simplicial.palomarBoundaryPiScalarTower",
-    "CommAlg.Simplicial.palomarBoundaryExteriorScalarComm"
+    "CommAlg.Simplicial.palomarBoundaryExteriorScalarComm",
+    "PalomarHomological.sharpUniform_empty",
+    "PalomarHomological.sharpUniform_mono",
+    "PalomarHomological.sharpUniform_submodular",
+    "PalomarHomological.sharpIdealPolymatroidal",
+    "PalomarHomological.universalSharpness"
   ],
   "permitted_axioms": [
     "propext",

@@ -30,3 +30,9 @@ allowImportAll = true
 name = "PalomarAudit"
 srcDir = "source"
 roots = ["PalomarAudit"]
+
+[[lean_lib]]
+name = "PalomarHomologicalBoundary"
+srcDir = "source"
+roots = ["PalomarHomologicalBoundary"]
+allowImportAll = true

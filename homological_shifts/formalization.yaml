@@ -1,13 +1,12 @@
 version: v0.4
 project:
   name: Rank formulas for homological shifts of polymatroidal ideals
-  description: Over every field, actual homological shifts of polymatroidal ideals
-    obey the uniform power-stabilization equality, also with a fixed polymatroidal
-    twist. An explicit partition minimum gives the exact integral polymatroid rank
-    and its canonicality in every nonzero shift. The same partition data compute the
-    genuine categorical projective dimension of every positive power and its eventual
-    value. The independent statement uses actual augmented Koszul homology, identified
-    with genuine derived Tor by the Solution.
+  description: Over every field, actual augmented Koszul/derived-Tor homological shifts of polymatroidal
+    ideals satisfy uniform power stabilization, also with a fixed polymatroidal twist. Exact
+    partition rank/canonicality and genuine projective dimensions, ordinary-Rees generation
+    and monic integral closure, complete Koszul field independence and universal squarefree-Veronese
+    sharpness are selected. The latter includes every positive below-threshold zero and the
+    exact nonzero threshold product ideal.
   authors:
   - Caius Folkerts
   responsible_maintainers:
@@ -29,39 +28,41 @@ sources:
   author_endorsement: participated
   url: https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts/paper.pdf
   note: 'Exact included paper SHA-256: 174c3153cdc92a4868e0516cdf444b0e364112495716eeb41e2872b4c664c0b8.
-    Scope and declaration locations are recorded in map.json; novelty is not independently
-    established.'
+    Scope and declaration locations are recorded in map.json; novelty is not independently established.'
 automation:
   methods:
   - method: agent
     tool_setup: OpenAI Codex
-    notes: Agent-assisted exact statement/source extraction, module migration and
-      canonical proposition normalization. Current exact expanded independent Challenge
-      elaboration passed remotely; no current expanded Source/Solution/Comparator/replay
-      pass is claimed.
+    notes: Agent-assisted exact source extraction, module migration and literal actual signed-contraction
+      interface with a genuine Source iff bridge. Exact375 interface prefix plus both genuine
+      differential and homology rfl controls passed canonical run44463606794. Current full Source/Solution/Comparator/kernel
+      replay remains pending.
   - method: other
     tool_setup: Historical AI assistance reported in the included paper
     notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing
-      its proofs. The exact model roles and extent of historical Lean automation have
-      not been reconstructed from the snapshot.
+      its proofs. The exact model roles and extent of historical Lean automation have not been
+      reconstructed from the snapshot.
 review:
   status: unchecked
-  notes: Exact319 Challenge passed run44368529809. Full retained source and audits
-    built in exact6e47/run44372598060. The sole Solution error rewrote a dependent
-    coefficient hypothesis as a whole; the same existing Rees action proof now instantiates
-    it pointwise. Current proof repair, Comparator and replay remain unverified.
+  notes: Exactc7 Source/Solution built; complete raw audit identified only5 generated boundary
+    auxiliary discrepancies. Current candidate isolates the identical literal differential before
+    custom proof chronology and retains original definitions and a genuine rfl homology iff.
+    The complete selected scope plus universal sharpness is preserved; no current full-pass
+    claim. Current canonical375 prefix and both genuine rfl semantic controls passed44463606794;
+    current full proof development/replay pending.
 scope:
   known_gaps:
-  - Current full Source/Solution bridge, Comparator and independent kernel replay
-    remain unverified.
-  - Mixed coordinate stabilization/module generation Cor4.1, universal sharpness Prop4.2,
-    full generator interval/threshold Theorem4.4, remaining actual homogenized ideal/canonical-rank
-    clauses of Theorem5.1, and actual multi-Rees Cor6.2 remain required uncovered
-    goals.
-  notes: The submitted project contains the substantive historical proof development
-    copied from the pinned source snapshot; this is not a thin wrapper. Historical
-    upstream dependencies and license notices are retained. See map.json for exact
-    proposed selections and unresolved source mapping.
-  current_selection: All current stabilization/fixed-twist/exact-rank/canonical-rank/pdim
-    claims, plus actual ordinary-Rees generation1.1, actual monic-equation integral
-    closure6.1 and full field-independence5.1 on actual Koszul nonzero multidegrees.
+  - Full independent current Source/Solution/Comparator/kernel validation remains pending.
+  - Corollary4.1 mixed coordinate powers/Rees generation, Theorem4.4 exact generator interval/threshold,
+    remaining total-support homogenized ideal/canonical-rank/equigeneration clauses of Theorem5.1,
+    and multi-Rees integral closureCorollary6.2 remain required independent interfaces.
+  notes: The submitted project contains the substantive historical proof development copied
+    from the pinned source snapshot; this is not a thin wrapper. Historical upstream dependencies
+    and license notices are retained. See map.json for exact proposed selections and unresolved
+    source mapping.
+  current_selection: Actual augmented Koszul/derived-Tor stabilization and fixed twist, exact
+    partition rank and canonicality, genuine projective dimensions of positive powers/eventually,
+    actual ordinary-Rees generation1.1, monic integral closure6.1, field independence5.1 on
+    every actual nonzero Koszul multidegree, and full universal squarefree-Veronese sharpness4.2
+    including all positive below-threshold zeros and exact nonzero threshold coordinate-product
+    ideal.
