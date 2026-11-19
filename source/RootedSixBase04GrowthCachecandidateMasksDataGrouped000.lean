@@ -1,0 +1,67 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedSixBase.Part0
+public meta import CertificateNumbers
+import HexNatLiteral
+public import SignatureCompatibility
+public import FiniteChecks
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option palomar.groupedCertificateSource "RootedSixBase04GrowthCachecandidateMasksData000.lean"
+namespace Papers.RationalityTen.RootedCaches.RootedSixBase04
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+cert_candidateMasksBlock_7 0000 0
+cert_candidateMasksBlock_7 0001 1
+cert_candidateMasksBlock_5 0002 2
+end Papers.RationalityTen.RootedCaches.RootedSixBase04
+end
+end
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option palomar.groupedCertificateSource "RootedSixBase04GrowthCachecandidateMasksData001.lean"
+namespace Papers.RationalityTen.RootedCaches.RootedSixBase04
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+cert_candidateMasksBlock_7 0003 0
+cert_candidateMasksBlock_7 0004 1
+cert_candidateMasksBlock_7 0005 2
+cert_candidateMasksBlock_5 0006 3
+end Papers.RationalityTen.RootedCaches.RootedSixBase04
+end
+end
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option palomar.groupedCertificateSource "RootedSixBase04GrowthCachecandidateMasksData002.lean"
+namespace Papers.RationalityTen.RootedCaches.RootedSixBase04
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+cert_candidateMasksBlock_7 0007 0
+cert_candidateMasksBlock_7 0008 1
+cert_candidateMasksBlock_7 0009 2
+cert_candidateMasksBlock_5 0010 3
+end Papers.RationalityTen.RootedCaches.RootedSixBase04
+end
+end
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option palomar.groupedCertificateSource "RootedSixBase04GrowthCachecandidateMasksData003.lean"
+namespace Papers.RationalityTen.RootedCaches.RootedSixBase04
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+cert_candidateMasksBlock_7 0011 0
+cert_candidateMasksBlock_7 0012 1
+cert_candidateMasksBlock_7 0013 2
+cert_candidateMasksBlock_7 0014 3
+cert_candidateMasksBlock_6 0015 4
+end Papers.RationalityTen.RootedCaches.RootedSixBase04
+end
+end
