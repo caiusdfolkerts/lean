@@ -54,14 +54,15 @@ review:
   status: unchecked
   notes: >-
     Exact521-line Challenge passed canonical elaboration in run44387460587.
-    Diagnosticrun44466008409, based on exact83d7 source plus reversible stdout
-    markers, located the compiler panic's preceding failed descents_lt field
-    in oneRowGriffinIndex. Its zero row function is now rewritten explicitly
-    and its actual finite ascent sum proved zero before using the original
-    positive bound. No diagnostic markers remain in this candidate. All index
-    data, hypotheses, declaration types, guards, measured raw normalization,
-    selected support and canonical pins remain unchanged. The corrected full
-    Source/Solution/Comparator and kernel replay remain unverified.
+    Full run44467518949 progressed beyond the previously diagnosed Griffin
+    descent proof and reported exactly one source error, with no omitted or
+    truncated errors: transportedBoosted_sub_cocharge retained definitionally
+    equal cocharge terms under different wrappers. That proof now changes both
+    transported exponents to their identical literal label and applies natural
+    addition/subtraction cancellation directly. All data, target types, source
+    guards, measured raw normalization, selected support and canonical pins
+    remain unchanged. Full Source/Solution/Comparator and kernel replay remain
+    unverified.
 scope:
   known_gaps:
   - The fixed-copy irreducible representation assertions, column-insertion result,

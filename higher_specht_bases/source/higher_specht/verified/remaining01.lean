@@ -514,9 +514,11 @@ theorem transportedBoosted_sub_cocharge {mu : YoungDiagram}
     transportedBoosted S T eta - transportedCocharge S T =
       permutedExponent (boostExponent eta mu.card) (tableauLabelEquiv S T) := by
   ext i
-  simp only [Finsupp.tsub_apply, transportedBoosted_apply_labelEquiv,
-    transportedCocharge_apply_labelEquiv, boostedLabel, Nat.add_sub_cancel_left,
-    permutedExponent_apply, boostExponent, Finsupp.equivFunOnFinite_symm_apply_apply]
+  change (cochargeLabel S (tableauLabelEquiv S T i) +
+      boostLabel eta mu.card (tableauLabelEquiv S T i)) -
+      cochargeLabel S (tableauLabelEquiv S T i) =
+    boostLabel eta mu.card (tableauLabelEquiv S T i)
+  exact Nat.add_sub_cancel_left _ _
 
 theorem elementaryMultiplier_transportedBoostCoefficient {mu : YoungDiagram}
     (S : StandardYoungTableau mu) (T : YoungTableau mu)
