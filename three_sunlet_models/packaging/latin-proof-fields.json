@@ -1,0 +1,21 @@
+{
+  "status": "applied pending full verification",
+  "source_patches": [
+    {
+      "path": "Challenge.lean",
+      "before_sha256": "571d0c1bc774337c50449a0beca2bf283b2ac75838f63111fe1b4b6f46088b07",
+      "after_sha256": "c0eddade06684c380230caee517f4334f1508c3d90d365e18ba238bb5a6bf968"
+    },
+    {
+      "path": "source/sunlet/main_dimension.lean",
+      "before_sha256": "f73c942482cdf52e026fa6081e94cbd905feeadba8f10dcbf8b9e07c968cd60e",
+      "after_sha256": "eeb01b04aff3babbfb87ab1e9aff5c2c984233557a81db7bf35a9c15b16359d2"
+    }
+  ],
+  "all_prior_targets_retained": true,
+  "data_holes_added": false,
+  "basis": "raw44483973020 has precisely two residual mismatches, the translationLatinSystem normalized and column-bijective proof bodies. Extract original proofs into explicitly selected named propositions; permutation and identity remain literal.",
+  "canonical_run": 44488486605,
+  "input_and_log_hashes_verified": true,
+  "applied_at": "2026-11-19T08:39:45.868233+00:00"
+}
