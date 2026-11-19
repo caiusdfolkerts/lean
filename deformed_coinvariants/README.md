@@ -1,5 +1,9 @@
 # The Hivert–Thiéry conjecture and differential normal forms
 
+This Palomar entry selects Theorems 1.1, 2.2, 6.2 and 6.3 and Proposition 6.5, with the clauses specified in formalization.yaml. It does not claim the general normal-form results in Sections 3–5, intermediate-codimension Theorem 6.4, or Corollary 2.4. Exact snapshot verification and editorial review are recorded separately. The source-project badge and navigation retained below are not a verification receipt for this entry.
+
+## Retained source-project guide
+
 [![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/research/project-deformed_coinvariants.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/research/actions/workflows/project-deformed_coinvariants.yml)
 
 This project contains the full Lean4 formalisation of the principal coinvariant theorems and most algebraic results in my paper *The Hivert–Thiéry conjecture and differential normal forms*. I’m still working on the remaining results, which I expect to be ready in a few days. I've included the paper as paper.pdf.

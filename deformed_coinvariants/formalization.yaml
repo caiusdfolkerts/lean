@@ -61,8 +61,9 @@ scope:
   - Retained verification/theorem-scope.md explicitly excludes the general normal-form
     theorems in sections3–5 (including noncommutative Theorem5.1) and intermediate-codimension
     Theorem6.4. Auxiliary source is not a complete endpoint proof.
-  - The exact expanded Challenge passed canonical remote elaboration; complete Source/Solution
-    build, Comparator, independent kernel replay and editorial review remain pending.
+  - At the preparation timestamp above, complete independent verification had not
+    passed. Subsequent exact-snapshot reports determine mechanical status; editorial
+    review is separate.
   notes: The submitted project contains the substantive historical proof development
     copied from the pinned source snapshot; this is not a thin wrapper. Historical
     upstream dependencies and license notices are retained. See map.json for exact
