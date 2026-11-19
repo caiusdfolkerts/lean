@@ -604,6 +604,9 @@ def pairedExteriorPiece (d : PairedData (K := R) (n := n)) (j : ℕ) :
     Submodule R (PairedQuotient d.beta d.phi d.a d.b) :=
   (BasisFiltered.homogeneousPiece (superMonomialBasis (K := R)) (fun i ↦ i.2.card) j).map
     ((pairedIdeal d.beta d.phi d.a d.b).ringCon.mkₐ R).toLinearMap
+theorem pairedExteriorPiece_formula (d : PairedData (K := R) (n := n)) (j : ℕ) :
+    pairedExteriorPiece d j =
+      (BasisFiltered.homogeneousPiece (superMonomialBasis (K := R)) (fun i ↦ i.2.card) j).map ((pairedIdeal d.beta d.phi d.a d.b).ringCon.mkₐ R).toLinearMap := rfl
 
 abbrev PairedExteriorIndex (d : PairedData (K := R) (n := n)) (j : ℕ) :=
   {z : PairedPowerIndex d.r d.u d.v d.s // z.1.card=j}

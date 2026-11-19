@@ -81,7 +81,6 @@ theorem exteriorSelfCommute : SMulCommClass K (ExteriorAlgebra K (OddModule K n)
 /-- Exact exterior-factor scalar tower at primitive K,n. -/
 theorem exteriorSelfTower : IsScalarTower K (ExteriorAlgebra K (OddModule K n)) (ExteriorAlgebra K (OddModule K n)) := by sorry
 attribute [instance 2100] polynomialSelfCommute polynomialSelfTower exteriorSelfCommute exteriorSelfTower
-
 /-- Literal PaperVerification.Fermion.SuperRing; precise source and scope recorded in the extraction map. -/ abbrev SuperRing := PolynomialRing K n ⊗[K] ExteriorAlgebra K (OddModule K n)
 /-- Literal PaperVerification.Fermion.superQuotientModule; precise source and scope recorded in the extraction map. -/ @[reducible] noncomputable instance superQuotientModule (I : TwoSidedIdeal (SuperRing K n)) :
     Module K I.ringCon.Quotient := by
@@ -616,6 +615,9 @@ local instance FermionPairedExteriorPieces_localInst_1 : LinearOrder (Fin n ⊕ 
 /-- Literal PaperVerification.Fermion.pairedExteriorPiece; precise source and scope recorded in the extraction map. -/ def pairedExteriorPiece (d : PairedData (K := R) (n := n)) (j : ℕ) : Submodule R (PairedQuotient d.beta d.phi d.a d.b) :=
   (BasisFiltered.homogeneousPiece (superMonomialBasis (K := R)) (fun i ↦ i.2.card) j).map
     ((pairedIdeal d.beta d.phi d.a d.b).ringCon.mkₐ R).toLinearMap
+theorem pairedExteriorPiece_formula (d : PairedData (K := R) (n := n)) (j : ℕ) :
+    pairedExteriorPiece d j =
+      (BasisFiltered.homogeneousPiece (superMonomialBasis (K := R)) (fun i ↦ i.2.card) j).map ((pairedIdeal d.beta d.phi d.a d.b).ringCon.mkₐ R).toLinearMap := by sorry
 /-- Literal PaperVerification.Fermion.PairedExteriorIndex; precise source and scope recorded in the extraction map. -/ abbrev PairedExteriorIndex (d : PairedData (K := R) (n := n)) (j : ℕ) :=
   {z : PairedPowerIndex d.r d.u d.v d.s // z.1.card=j}
 end PaperVerification.Fermion
@@ -867,12 +869,21 @@ local instance FermionPairedAssociatedGraded_localInst_1 : LinearOrder (Fin n �
     ((pairedIdeal d.beta d.phi d.a d.b).ringCon.mkₐ R)
     (super_weighted_one_homogeneous (R := R) (coveringWeight d.r) (pairedOddWeight d))
     (super_weighted_basis_mul_homogeneous (R := R) (coveringWeight d.r) (pairedOddWeight d))
+theorem pairedQuotientFiltration_formula (d : PairedData (K := R) (n := n))  :
+    pairedQuotientFiltration d =
+      BasisFiltered.quotientFiltration (superMonomialBasis (K := R)) (pairedSuperWeight d) ((pairedIdeal d.beta d.phi d.a d.b).ringCon.mkₐ R)
+        (super_weighted_one_homogeneous (R := R) (coveringWeight d.r) (pairedOddWeight d)) (super_weighted_basis_mul_homogeneous (R := R) (coveringWeight d.r)
+        (pairedOddWeight d)) := by sorry
 /-- Literal PaperVerification.Fermion.PairedAssociatedGraded; precise source and scope recorded in the extraction map. -/ abbrev PairedAssociatedGraded (d : PairedData (K := R) (n := n)) :=
   FilteredAlgebra.AssociatedGraded (pairedQuotientFiltration d)
 /-- Literal PaperVerification.Fermion.pairedPowerWeightedPiece; precise source and scope recorded in the extraction map. -/ def pairedPowerWeightedPiece (d : PairedData (K := R) (n := n)) (k : ℕ) : Submodule R (PairedQuotient d.beta (fun i ↦ X i^d.r i) (fun i ↦ X i^d.u i) (fun i ↦ X i^d.v i)) :=
   (BasisFiltered.homogeneousPiece (superMonomialBasis (K := R)) (pairedSuperWeight d) k).map
     ((pairedIdeal d.beta (fun i ↦ X i^d.r i)
       (fun i ↦ X i^d.u i) (fun i ↦ X i^d.v i)).ringCon.mkₐ R).toLinearMap
+theorem pairedPowerWeightedPiece_formula (d : PairedData (K := R) (n := n)) (k : ℕ) :
+    pairedPowerWeightedPiece d k =
+      (BasisFiltered.homogeneousPiece (superMonomialBasis (K := R)) (pairedSuperWeight d) k).map ((pairedIdeal d.beta (fun i ↦ X i^d.r i) (fun i ↦ X i^d.u i)
+        (fun i ↦ X i^d.v i)).ringCon.mkₐ R).toLinearMap := by sorry
 end PaperVerification.Fermion
 namespace PaperVerification.Fermion
 set_option backward.isDefEq.respectTransparency false
@@ -886,11 +897,20 @@ local instance FermionStrictAssociatedGraded_localInst_1 : LinearOrder (Fin n �
     ((strictIdeal d.beta d.phi).ringCon.mkₐ R)
     (super_weighted_one_homogeneous (R := R) (coveringWeight d.r) (fun _ : OddIndex n ↦ 0))
     (super_weighted_basis_mul_homogeneous (R := R) (coveringWeight d.r) (fun _ : OddIndex n ↦ 0))
+theorem strictQuotientFiltration_formula (d : StrictData (K := R) (n := n))  :
+    strictQuotientFiltration d =
+      BasisFiltered.quotientFiltration (superMonomialBasis (K := R)) (strictSuperWeight d) ((strictIdeal d.beta d.phi).ringCon.mkₐ R)
+        (super_weighted_one_homogeneous (R := R) (coveringWeight d.r) (fun _ : OddIndex n ↦ 0)) (super_weighted_basis_mul_homogeneous (R := R) (coveringWeight
+        d.r) (fun _ : OddIndex n ↦ 0)) := by sorry
 /-- Literal PaperVerification.Fermion.StrictAssociatedGraded; precise source and scope recorded in the extraction map. -/ abbrev StrictAssociatedGraded (d : StrictData (K := R) (n := n)) :=
   FilteredAlgebra.AssociatedGraded (strictQuotientFiltration d)
 /-- Literal PaperVerification.Fermion.strictPowerWeightedPiece; precise source and scope recorded in the extraction map. -/ def strictPowerWeightedPiece (d : StrictData (K := R) (n := n)) (k : ℕ) : Submodule R (StrictQuotient d.beta (fun i ↦ X i^d.r i)) :=
   (BasisFiltered.homogeneousPiece (superMonomialBasis (K := R)) (strictSuperWeight d) k).map
     ((strictIdeal d.beta (fun i ↦ X i^d.r i)).ringCon.mkₐ R).toLinearMap
+theorem strictPowerWeightedPiece_formula (d : StrictData (K := R) (n := n)) (k : ℕ) :
+    strictPowerWeightedPiece d k =
+      (BasisFiltered.homogeneousPiece (superMonomialBasis (K := R)) (strictSuperWeight d) k).map ((strictIdeal d.beta (fun i ↦ X i^d.r i)).ringCon.mkₐ
+        R).toLinearMap := by sorry
 end PaperVerification.Fermion
 namespace PaperVerification.Fermion
 open Exterior
@@ -934,12 +954,10 @@ local instance FermionStrictExteriorPieces_localInst_1 : LinearOrder (Fin n ⊕ 
 /-- Literal PaperVerification.Fermion.strictExteriorPiece; precise source and scope recorded in the extraction map. -/ def strictExteriorPiece (d : StrictData (K := R) (n := n)) (j : ℕ) : Submodule R (StrictQuotient d.beta d.phi) :=
   (BasisFiltered.homogeneousPiece (superMonomialBasis (K := R)) (fun i ↦ i.2.card) j).map
     ((strictIdeal d.beta d.phi).ringCon.mkₐ R).toLinearMap
-
 theorem strictExteriorPiece_formula (d : StrictData (K := R) (n := n)) (j : ℕ) :
     strictExteriorPiece d j =
   (BasisFiltered.homogeneousPiece (superMonomialBasis (K := R)) (fun i ↦ i.2.card) j).map
     ((strictIdeal d.beta d.phi).ringCon.mkₐ R).toLinearMap := by rfl
-
 /-- Literal PaperVerification.Fermion.StrictExteriorIndex; precise source and scope recorded in the extraction map. -/ abbrev StrictExteriorIndex (d : StrictData (K := R) (n := n)) (j : ℕ) :=
   {z : StrictPowerIndex d.r // z.1.card=j}
 end PaperVerification.Fermion
@@ -958,21 +976,17 @@ local instance FermionTheoremOneTwo_localInst_1 : LinearOrder (Fin n ⊕ Fin n) 
 /-- Literal PaperVerification.Fermion.theorem_1_2_rank; precise source and scope recorded in the extraction map. -/ theorem theorem_1_2_rank [Nontrivial R] (d : StrictData (K := R) (n := n)) : Module.finrank R (StrictQuotient d.beta d.phi)=2^(n-1)*(∏ i,d.r i)*n.factorial ∧ ∀
   j,Module.finrank R (strictExteriorPiece d j)= (Polynomial.C ((∏ i,d.r i)*n.factorial)*(1+Polynomial.X)^(n-1) : Polynomial ℕ).coeff j := by sorry
 end PaperVerification.Fermion
-
 namespace PalomarFermion
 open PaperVerification.Fermion
 universe uPalomar
-
 /-- The paired quotient is free of the printed finite rank over every ring. -/
 theorem pairedFreeRank {R : Type uPalomar} [CommRing R] {n : ℕ}
     (d : PairedData (K := R) (n := n)) :
     Nonempty (PairedQuotient d.beta d.phi d.a d.b ≃ₗ[R]
       (Fin (2^n * (∏ i, d.r i) * d.s.ascFactorial n) → R)) := by sorry
-
 /-- The strict quotient is free of the printed finite rank over every ring. -/
 theorem strictFreeRank {R : Type uPalomar} [CommRing R] {n : ℕ}
     (d : StrictData (K := R) (n := n)) :
     Nonempty (StrictQuotient d.beta d.phi ≃ₗ[R]
       (Fin (2^(n-1) * (∏ i, d.r i) * n.factorial) → R)) := by sorry
-
 end PalomarFermion

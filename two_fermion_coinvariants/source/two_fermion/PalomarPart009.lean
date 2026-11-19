@@ -6632,6 +6632,11 @@ def pairedQuotientFiltration (d : PairedData (K := R) (n := n)) :
     ((pairedIdeal d.beta d.phi d.a d.b).ringCon.mkₐ R)
     (super_weighted_one_homogeneous (R := R) (coveringWeight d.r) (pairedOddWeight d))
     (super_weighted_basis_mul_homogeneous (R := R) (coveringWeight d.r) (pairedOddWeight d))
+theorem pairedQuotientFiltration_formula (d : PairedData (K := R) (n := n))  :
+    pairedQuotientFiltration d =
+      BasisFiltered.quotientFiltration (superMonomialBasis (K := R)) (pairedSuperWeight d) ((pairedIdeal d.beta d.phi d.a d.b).ringCon.mkₐ R)
+        (super_weighted_one_homogeneous (R := R) (coveringWeight d.r) (pairedOddWeight d)) (super_weighted_basis_mul_homogeneous (R := R) (coveringWeight d.r)
+        (pairedOddWeight d)) := rfl
 
 abbrev PairedAssociatedGraded (d : PairedData (K := R) (n := n)) :=
   FilteredAlgebra.AssociatedGraded (pairedQuotientFiltration d)
@@ -6643,6 +6648,10 @@ def pairedPowerWeightedPiece (d : PairedData (K := R) (n := n)) (k : ℕ) :
   (BasisFiltered.homogeneousPiece (superMonomialBasis (K := R)) (pairedSuperWeight d) k).map
     ((pairedIdeal d.beta (fun i ↦ X i^d.r i)
       (fun i ↦ X i^d.u i) (fun i ↦ X i^d.v i)).ringCon.mkₐ R).toLinearMap
+theorem pairedPowerWeightedPiece_formula (d : PairedData (K := R) (n := n)) (k : ℕ) :
+    pairedPowerWeightedPiece d k =
+      (BasisFiltered.homogeneousPiece (superMonomialBasis (K := R)) (pairedSuperWeight d) k).map ((pairedIdeal d.beta (fun i ↦ X i^d.r i) (fun i ↦ X i^d.u i)
+        (fun i ↦ X i^d.v i)).ringCon.mkₐ R).toLinearMap := rfl
 
 theorem pairedPower_kernel_eq_relationSpan (d : PairedData (K := R) (n := n)) :
     (((pairedIdeal d.beta (fun i ↦ X i^d.r i)
@@ -6924,6 +6933,11 @@ def strictQuotientFiltration (d : StrictData (K := R) (n := n)) :
     ((strictIdeal d.beta d.phi).ringCon.mkₐ R)
     (super_weighted_one_homogeneous (R := R) (coveringWeight d.r) (fun _ : OddIndex n ↦ 0))
     (super_weighted_basis_mul_homogeneous (R := R) (coveringWeight d.r) (fun _ : OddIndex n ↦ 0))
+theorem strictQuotientFiltration_formula (d : StrictData (K := R) (n := n))  :
+    strictQuotientFiltration d =
+      BasisFiltered.quotientFiltration (superMonomialBasis (K := R)) (strictSuperWeight d) ((strictIdeal d.beta d.phi).ringCon.mkₐ R)
+        (super_weighted_one_homogeneous (R := R) (coveringWeight d.r) (fun _ : OddIndex n ↦ 0)) (super_weighted_basis_mul_homogeneous (R := R) (coveringWeight
+        d.r) (fun _ : OddIndex n ↦ 0)) := rfl
 
 abbrev StrictAssociatedGraded (d : StrictData (K := R) (n := n)) :=
   FilteredAlgebra.AssociatedGraded (strictQuotientFiltration d)
@@ -6932,6 +6946,10 @@ def strictPowerWeightedPiece (d : StrictData (K := R) (n := n)) (k : ℕ) :
     Submodule R (StrictQuotient d.beta (fun i ↦ X i^d.r i)) :=
   (BasisFiltered.homogeneousPiece (superMonomialBasis (K := R)) (strictSuperWeight d) k).map
     ((strictIdeal d.beta (fun i ↦ X i^d.r i)).ringCon.mkₐ R).toLinearMap
+theorem strictPowerWeightedPiece_formula (d : StrictData (K := R) (n := n)) (k : ℕ) :
+    strictPowerWeightedPiece d k =
+      (BasisFiltered.homogeneousPiece (superMonomialBasis (K := R)) (strictSuperWeight d) k).map ((strictIdeal d.beta (fun i ↦ X i^d.r i)).ringCon.mkₐ
+        R).toLinearMap := rfl
 
 theorem strictPower_kernel_component (d : StrictData (K := R) (n := n))
     (k : ℕ) (x : SuperRing R n)

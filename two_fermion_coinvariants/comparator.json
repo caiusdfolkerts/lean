@@ -67,7 +67,12 @@
     "PaperVerification.Fermion.exteriorSelfCommute",
     "PaperVerification.Fermion.exteriorSelfTower",
     "PalomarFermion.coordinates_apply",
-    "PaperVerification.Fermion.strictExteriorPiece_formula"
+    "PaperVerification.Fermion.strictExteriorPiece_formula",
+    "PaperVerification.Fermion.strictPowerWeightedPiece_formula",
+    "PaperVerification.Fermion.pairedPowerWeightedPiece_formula",
+    "PaperVerification.Fermion.pairedExteriorPiece_formula",
+    "PaperVerification.Fermion.strictQuotientFiltration_formula",
+    "PaperVerification.Fermion.pairedQuotientFiltration_formula"
   ],
   "permitted_axioms": [
     "propext",
@@ -75,6 +80,11 @@
     "Classical.choice"
   ],
   "definition_names": [
-    "PaperVerification.Fermion.strictExteriorPiece"
+    "PaperVerification.Fermion.strictExteriorPiece",
+    "PaperVerification.Fermion.strictPowerWeightedPiece",
+    "PaperVerification.Fermion.pairedPowerWeightedPiece",
+    "PaperVerification.Fermion.pairedExteriorPiece",
+    "PaperVerification.Fermion.strictQuotientFiltration",
+    "PaperVerification.Fermion.pairedQuotientFiltration"
   ]
 }
