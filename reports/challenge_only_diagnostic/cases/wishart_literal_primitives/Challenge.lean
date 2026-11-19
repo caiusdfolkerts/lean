@@ -35,13 +35,11 @@ end MatrixInner
 section SymmetricInner
 variable (p : ℕ)
 /-- Frobenius norm with the unchanged subtype uniformity. -/
-def symmetricNormedAddCommGroup :
+@[instance_reducible] def symmetricNormedAddCommGroup :
     NormedAddCommGroup (selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℝ)) :=
   letI : NormedAddCommGroup (Matrix (Fin p) (Fin p) ℝ) := Matrix.frobeniusNormedAddCommGroup
   letI base : NormedAddCommGroup (selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℝ)) :=
     Submodule.normedAddCommGroup _
-  -- Forces the uniformity field of the metric to be the subtype uniformity itself, so that
-  -- downstream instance search unifies the two syntactically rather than only up to `rfl`.
   { base with toMetricSpace := base.toMetricSpace.replaceUniformity rfl }
 
 /-- The symmetric subspace carries the Frobenius inner product `⟪A, B⟫ = ∑ i, ∑ j, A i j * B i j`
@@ -62,11 +60,12 @@ def symmetricInnerProductSpace :
     conj_inner_symm A B :=
       InnerProductSpace.conj_inner_symm (𝕜 := ℝ) (A : Matrix (Fin p) (Fin p) ℝ) ↑B
     add_left A B C := by
-      rw [Submodule.coe_add]
-      exact InnerProductSpace.add_left (𝕜 := ℝ) (A : Matrix (Fin p) (Fin p) ℝ) ↑B ↑C
+      change (∑ i, ∑ j, ((A : Matrix (Fin p) (Fin p) ℝ) i j +
+        (B : Matrix (Fin p) (Fin p) ℝ) i j) * (C : Matrix (Fin p) (Fin p) ℝ) i j) =
+        (∑ i, ∑ j, (A : Matrix (Fin p) (Fin p) ℝ) i j * (C : Matrix (Fin p) (Fin p) ℝ) i j) +
+        (∑ i, ∑ j, (B : Matrix (Fin p) (Fin p) ℝ) i j * (C : Matrix (Fin p) (Fin p) ℝ) i j)
+      simp only [add_mul, Finset.sum_add_distrib]
     smul_left A B r := by
-      -- `InnerProductSpace.smul_left` phrases the ambient scalar action through the unexposed
-      -- body of `matrixInnerProductSpace`, so expand the inner product instead.
       change (∑ i, ∑ j, (r * (A : Matrix (Fin p) (Fin p) ℝ) i j) *
         (B : Matrix (Fin p) (Fin p) ℝ) i j) =
         r * (∑ i, ∑ j, (A : Matrix (Fin p) (Fin p) ℝ) i j *
@@ -119,13 +118,22 @@ def symmetricCongruence {p q : ℕ} (M : Matrix (Fin q) (Fin p) ℝ) :
     selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℝ) →ₗ[ℝ]
       selfAdjoint.submodule ℝ (Matrix (Fin q) (Fin q) ℝ) :=
   LinearMap.codRestrict _
-    (Matrix.mulRightLinearMap (Fin q) ℝ Mᵀ ∘ₗ Matrix.mulLeftLinearMap (Fin p) ℝ M ∘ₗ
+    (mulRightLinearMap (Fin q) ℝ Mᵀ ∘ₗ mulLeftLinearMap (Fin p) ℝ M ∘ₗ
       (selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℝ)).subtype)
     fun A => by
       have h := Matrix.isHermitian_mul_mul_conjTranspose M
         (Matrix.isHermitian_iff_isSelfAdjoint.mpr A.property)
       exact Matrix.isHermitian_iff_isSelfAdjoint.mp
         (by simpa only [Matrix.conjTranspose_eq_transpose_of_trivial] using h)
+/-- The literal Gram statistic of a finite real Gaussian sample. -/
+def wishartGram {p ν : ℕ} (X : Fin ν → EuclideanSpace ℝ (Fin p)) :
+    selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℝ) :=
+  ⟨Matrix.gram ℝ fun i => WithLp.toLp 2 fun r => X r i,
+    Matrix.isHermitian_iff_isSelfAdjoint.mp (Matrix.isHermitian_gram ℝ _)⟩
+/-- Every Gaussian-Gram scale, including the canonical singular/invalid cases. -/
+def wishartGramMeasure {p : ℕ} (ν : ℕ) (S : Matrix (Fin p) (Fin p) ℝ) :
+    Measure (selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℝ)) :=
+  (Measure.pi fun _ : Fin ν => ProbabilityTheory.multivariateGaussian 0 S).map wishartGram
 end WishartLiteralStructures
 
 @[expose] public section

@@ -11,13 +11,13 @@
       "original_challenge": "reports/wishart/full20-canonical/Challenge.lean",
       "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
       "hashes": {
-        "Challenge.lean": "77683f9638a84ea88395c5e810639bdc439d5e558f0f8c50b1f538004ccd444c",
+        "Challenge.lean": "3942393820125e5989105527fcd6298b7ea0b360f9092e130b304bcbc9a5d94b",
         "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
         "lake-manifest.json": "5619bb28ae7f2972522467eccf712e99876805a4fb0b7298a3c8de5918224147",
         "original-lakefile.toml": "e429ab885c0b86124ac6b748b01715efdede7f476661ead3634e0c69b6521ccb"
       },
-      "challenge_lines": 972,
-      "challenge_bytes": 95259,
+      "challenge_lines": 990,
+      "challenge_bytes": 96674,
       "dependency_pins": [
         {
           "name": "mathlib",
@@ -76,13 +76,13 @@
       "original_challenge": "reports/wishart/full20-canonical/WishartLiteralPrimitives.lean",
       "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
       "hashes": {
-        "Challenge.lean": "793886a251d8d07f7d5bb9ce68cc3bb75b5e572a2e2c175505642109fccd8d50",
+        "Challenge.lean": "34743fca5f54bef64f095afe7f51bba2384b2bc49e4d487446a993631db48d47",
         "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
         "lake-manifest.json": "5619bb28ae7f2972522467eccf712e99876805a4fb0b7298a3c8de5918224147",
         "original-lakefile.toml": "e429ab885c0b86124ac6b748b01715efdede7f476661ead3634e0c69b6521ccb"
       },
-      "challenge_lines": 216,
-      "challenge_bytes": 10342,
+      "challenge_lines": 224,
+      "challenge_bytes": 10942,
       "dependency_pins": [
         {
           "name": "mathlib",
