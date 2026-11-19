@@ -3178,10 +3178,10 @@ def insertionRejections (S : StandardYoungTableau μ) (T : YoungTableau μ)
   (columnInsertion S).rejection ((scanLabelEquiv T).symm i)
 
 def insertionAlpha (S : StandardYoungTableau μ) (T : YoungTableau μ) : Fin μ.card →₀ ℕ :=
-  Finsupp.equivFunOnFinite.symm (insertionRow S T)
+  (witnessFinFinsupp μ.card).symm (insertionRow S T)
 
 def insertionRejectionExponent (S : StandardYoungTableau μ) (T : YoungTableau μ) :
-    Fin μ.card →₀ ℕ := Finsupp.equivFunOnFinite.symm (insertionRejections S T)
+    Fin μ.card →₀ ℕ := (witnessFinFinsupp μ.card).symm (insertionRejections S T)
 
 def insertionColumnGroup (S : StandardYoungTableau μ) (T : YoungTableau μ) :
     Subgroup (Equiv.Perm (Fin μ.card)) := colorPermutationGroup (insertionColumn S T)
@@ -3928,10 +3928,19 @@ namespace HigherSpecht
 
 variable {μ : YoungDiagram}
 
+theorem witnessPrefixCellMem (S : StandardYoungTableau μ) (k : ℕ)
+    (c : ↥(prefixShape S k).cells) : c.val ∈ μ :=
+  prefixShape_le S k c.property
+
+theorem witnessPrefixCellInjective (S : StandardYoungTableau μ) (k : ℕ) :
+    Function.Injective (fun c : ↥(prefixShape S k).cells =>
+      (⟨c.val, witnessPrefixCellMem S k c⟩ : ↥μ.cells)) :=
+  fun _ _ h => Subtype.ext (congrArg (fun z : ↥μ.cells => z.val) h)
+
 def prefixCellsEmbedding (S : StandardYoungTableau μ) (k : ℕ) :
     ↥(prefixShape S k).cells ↪ ↥μ.cells where
-  toFun c := ⟨c.val, prefixShape_le S k c.property⟩
-  inj' c d h := Subtype.ext (congrArg (fun z : ↥μ.cells => z.val) h)
+  toFun c := ⟨c.val, witnessPrefixCellMem S k c⟩
+  inj' := witnessPrefixCellInjective S k
 
 @[simp] theorem prefixCellsEmbedding_apply (S : StandardYoungTableau μ) (k : ℕ)
     (c : ↥(prefixShape S k).cells) :
@@ -4702,7 +4711,7 @@ namespace HigherSpecht
 variable {k n : ℕ} {μ : YoungDiagram} {R : Type*} [CommRing R]
 
 def exteriorExponent (e : Fin k ↪ Fin n) (s : ℕ) : Fin n →₀ ℕ :=
-  Finsupp.equivFunOnFinite.symm fun i => if i ∈ Set.range e then 0 else s - 1
+  (witnessFinFinsupp n).symm fun i => if i ∈ Set.range e then 0 else s - 1
 
 @[simp] theorem exteriorExponent_inside (e : Fin k ↪ Fin n) (s : ℕ) (i : Fin k) :
     exteriorExponent e s (e i) = 0 := by

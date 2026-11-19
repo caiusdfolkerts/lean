@@ -767,7 +767,7 @@ def griffinWitnessTiedColumn (S : StandardYoungTableau μ) (T : YoungTableau μ)
 
 variable {R : Type*} [CommRing R]
 
-def griffinApolarWitness (S : StandardYoungTableau μ) (T : YoungTableau μ)
+abbrev griffinApolarWitness (S : StandardYoungTableau μ) (T : YoungTableau μ)
     (k : ℕ) (hk : k ≤ μ.card) (s : ℕ) : PolynomialRing μ.card R :=
   columnWitness (((insertionFilling (prefixTableau S k hk)
     (prefixTableau S k hk).toTableau).toEmbedding).trans (prefixAmbientEmbedding S T k hk)) s

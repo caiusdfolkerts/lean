@@ -48,8 +48,8 @@ theorem springer_literal_column_witness {n : ℕ} (hn : 0 < n)
 
 /-- The same irreducible Springer witnesses decompose the entire coinvariant
 harmonic space and give each Springer harmonic space by its admissible indices. -/
-theorem springer_harmonics_full_decomposition (n : ℕ) (hn : 0 < n) :
-    ∃ T : (part : n.Partition) → YoungTableau (YoungDiagram.ofPartition part),
+theorem springer_harmonics_full_decomposition (n : ℕ) (hn : 0 < n)
+    (T : (part : n.Partition) → YoungTableau (YoungDiagram.ofPartition part)) :
     ∃ W : SpringerCommonIndex n → Subrepresentation (polynomialRepresentation ℂ n),
       (∀ z, (W z).toSubmodule =
           cyclicPolynomialCopy (springerCommonHarmonicVectorWithTableau hn z (T z.1)) ∧
@@ -65,14 +65,12 @@ theorem springer_harmonics_full_decomposition (n : ℕ) (hn : 0 < n) :
         (∀ f ∈ untruncatedIdeal ℂ n mu, apolarCoefficientPairing f p = 0) ↔
         p ∈ ⨆ z : {z : SpringerCommonIndex n // CatDominates z.2 mu}, (W z.val).toSubmodule := by
   classical
-  let T : (part : n.Partition) → YoungTableau (YoungDiagram.ofPartition part) :=
-    fun part => (StandardYoungTableau.rowSuperstandard _).toTableau
   obtain ⟨hcopy, hind, hmaster, hdecomp⟩ := corollary_5_5_any_right_tableaux n hn T
   let W : SpringerCommonIndex n → Subrepresentation (polynomialRepresentation ℂ n) :=
     fun z => (Classical.choose (hcopy z).1).range
   have hW (z) : (W z).toSubmodule = springerCommonHarmonicCopyWithTableau hn z (T z.1) :=
     (Classical.choose_spec (hcopy z).1).2
-  refine ⟨T, W, ?_, ?_, ?_, ?_⟩
+  refine ⟨W, ?_, ?_, ?_, ?_⟩
   · intro z
     let f := Classical.choose (hcopy z).1
     let E := f.equivOfRange (Classical.choose_spec (hcopy z).1).1 (P := W z) rfl

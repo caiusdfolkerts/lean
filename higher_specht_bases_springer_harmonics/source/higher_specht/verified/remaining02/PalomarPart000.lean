@@ -8098,9 +8098,22 @@ theorem ordinaryAction_monomial_coeff {n : ℕ} (r a : Fin n →₀ ℕ) (p : Po
     (factorialNormalize (contractMonomial r (factorialDenormalize p))).coeff a at hc
   simpa only [coeff_factorialNormalize, coeff_contractMonomial, coeff_factorialDenormalize] using hc
 
+theorem witnessDerivativeSMulComm (n : ℕ) :
+    SMulCommClass ℂ ℂ (AddMonoidAlgebra ℂ (Fin n →₀ ℕ)) := inferInstance
+
+theorem witnessDerivativeScalarTower (n : ℕ) :
+    IsScalarTower ℂ ℂ (AddMonoidAlgebra ℂ (Fin n →₀ ℕ)) := inferInstance
+
+abbrev witnessDerivativeEndAlgebra (n : ℕ) : Algebra ℂ (Module.End ℂ (PolynomialRing n ℂ)) :=
+  @Module.End.instAlgebra ℂ ℂ (PolynomialRing n ℂ) _ _ _ _ _
+    (witnessDerivativeSMulComm n) _ (witnessDerivativeScalarTower n)
+
 def normalizedOrdinaryDerivative {n : ℕ} (r : Fin n →₀ ℕ) (g : PolynomialRing n ℂ) :
     PolynomialRing n ℂ :=
-  (exponentFactorial r : ℂ)⁻¹ • ordinaryAction (MvPolynomial.monomial r (1 : ℂ)) g
+  (exponentFactorial r : ℂ)⁻¹ •
+    (@AlgHom.toLinearMap ℂ (PolynomialRing n ℂ) (Module.End ℂ (PolynomialRing n ℂ))
+      _ _ _ _ (witnessDerivativeEndAlgebra n) ordinaryAction)
+      (MvPolynomial.monomial r (1 : ℂ)) g
 
 theorem ordinaryApolar_normalizedDerivative {n : ℕ} (r : Fin n →₀ ℕ)
     (g f : PolynomialRing n ℂ) :
@@ -8518,7 +8531,7 @@ open scoped Classical
 namespace HigherSpecht
 
 def exteriorPart {k n : ℕ} (e : Fin k ↪ Fin n) (b : Fin n →₀ ℕ) : Fin n →₀ ℕ :=
-  Finsupp.equivFunOnFinite.symm fun i => if i ∈ Set.range e then 0 else b i
+  (witnessFinFinsupp n).symm fun i => if i ∈ Set.range e then 0 else b i
 
 @[simp] theorem exteriorPart_inside {k n : ℕ} (e : Fin k ↪ Fin n)
     (b : Fin n →₀ ℕ) (i : Fin k) : exteriorPart e b (e i) = 0 := by
