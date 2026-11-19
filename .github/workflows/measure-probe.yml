@@ -1,0 +1,36 @@
+name: Compare exact standard Wishart law and norm types
+on:
+  push:
+    branches: [palomar-diagnostics/wishart-hermitian-instance]
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - name: Install pinned Lean
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 https://github.com/leanprover/elan/releases/download/v4.2.3/elan-x86_64-unknown-linux-gnu.tar.gz -o "$RUNNER_TEMP/elan.tar.gz"
+          echo "df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2  $RUNNER_TEMP/elan.tar.gz" | sha256sum -c -
+          tar -xzf "$RUNNER_TEMP/elan.tar.gz" -C "$RUNNER_TEMP"
+          "$RUNNER_TEMP/elan-init" -y --no-modify-path --default-toolchain none
+          cd wishart
+          "$HOME/.elan/bin/elan" toolchain install "$(cat lean-toolchain)"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Test exact types in the pinned Mathlib environment
+        run: |
+          set -euo pipefail
+          cd wishart
+          lake exe cache get Mathlib
+          lake build +TauCeti.Probability.Distributions.Wishart.Nonsingular +WishartSourceContext
+          lake env lean ../MeasureProbe.lean 2>&1 | tee ../measure-probe.log
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: wishart-instance-paths
+          path: measure-probe.log
