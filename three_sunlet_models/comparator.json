@@ -24,7 +24,14 @@
     "Sunlet.CyclicSparseWitness.shift_ne_zero",
     "Sunlet.NormalizedLatinSystem.generic_normalized_equation_iff",
     "PolynomialImage.rational_form_of_mem",
-    "Sunlet.CyclicSelectedField.observedNormalizedField_eq_modelImageField"
+    "Sunlet.CyclicSelectedField.observedNormalizedField_eq_modelImageField",
+    "Sunlet.palomarSixNeZero",
+    "Sunlet.palomarNeZeroOfFiveLe",
+    "Sunlet.palomarNeZeroOfSixLe",
+    "Sunlet.palomarTranslationLeft",
+    "Sunlet.palomarTranslationRight",
+    "Sunlet.ToricPairAlgebra.palomarPolynomialIsDomain",
+    "Sunlet.CyclicSelectedField.palomarNormalizedEquation"
   ],
   "definition_names": [
     "Sunlet.ComplexPaper.normalizedGaloisEquiv"

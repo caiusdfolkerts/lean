@@ -388,6 +388,11 @@ theorem observedNormalizedField_eq_modelImageField (hm : 6 ≤ m) :
     rintro _ ⟨ab,rfl⟩
     exact normalized_coordinate_mem_observed m hm ab
 
+/-- The original polynomial-kernel equivalence, specialized to the cyclic parameters. -/
+theorem palomarNormalizedEquation (f : MvPolynomial (ZMod m × ZMod m) k) :
+    MvPolynomial.aeval (normalizedCoordinates (k := k) m) f = 0 ↔
+      PolynomialImage.comorphism (Sunlet.coordinatePolynomial (cyclicLatin m).perm) f = 0 :=
+  (cyclicLatin m).generic_normalized_equation_iff (k := k) 0 f
 /-- The coordinate projection induces an isomorphism of the actual
 function fields, obtained from the two original substitution quotients. -/
 def originalProjectionFieldEquiv (hm : 6 ≤ m) :
@@ -399,7 +404,7 @@ def originalProjectionFieldEquiv (hm : 6 ≤ m) :
   PolynomialImage.projectionFunctionFieldEquiv
     (Sunlet.coordinatePolynomial (K := k) (addTranslationPerm (G := ZMod m)))
     (normalizedCoordinates (k := k) m) (fullObservationIndex m hm)
-    (fun f => (cyclicLatin m).generic_normalized_equation_iff (k := k) 0 f)
+    (palomarNormalizedEquation (k := k) m)
     (observedNormalizedField_eq_modelImageField (k := k) m hm)
 
 @[simp] theorem originalProjectionFieldEquiv_coordinate (hm : 6 ≤ m)
@@ -422,7 +427,7 @@ def originalModelRationalInverse (hm : 6 ≤ m) :
   PolynomialImage.rationalCoordinateInverseOfFieldEquality
     (Sunlet.coordinatePolynomial (K := k) (addTranslationPerm (G := ZMod m)))
     (normalizedCoordinates (k := k) m) (fullObservationIndex m hm)
-    (fun f => (cyclicLatin m).generic_normalized_equation_iff (k := k) 0 f)
+    (palomarNormalizedEquation (k := k) m)
     (observedNormalizedField_eq_modelImageField (k := k) m hm)
 
 include hchar in
@@ -525,20 +530,20 @@ namespace Sunlet.CyclicSelectedField
 /-- The coordinate projection of Theorem 6.1 is birational over ℚ,
 with no nonzero-modulus hypothesis beyond the displayed bound m ≥ 6. -/
 def paper_projectionFunctionFieldEquiv (m : ℕ) (hm : 6 ≤ m) :
-    letI : NeZero m := ⟨by omega⟩
+    letI : NeZero m := Sunlet.palomarNeZeroOfSixLe m hm
     PolynomialImage.OriginalFunctionField
       (Sunlet.coordinatePolynomial (K := ℚ) (addTranslationPerm (G := ZMod m)) ∘
         fullObservationIndex m hm) ≃ₐ[ℚ]
       PolynomialImage.OriginalFunctionField
         (Sunlet.coordinatePolynomial (K := ℚ) (addTranslationPerm (G := ZMod m))) := by
-  letI : NeZero m := ⟨by omega⟩
+  letI : NeZero m := Sunlet.palomarNeZeroOfSixLe m hm
   exact originalProjectionFieldEquiv (k := ℚ) m hm
 
 /-- All orders m ≥ 6, precisely the literal observations, and rational
 reconstruction on a nonempty dense open of the original full model. -/
 theorem paper_theorem_6_1_all_orders {k : Type*} [Field k] [CharZero k]
     (m : ℕ) (hm : 6 ≤ m) :
-    letI : NeZero m := ⟨by omega⟩
+    letI : NeZero m := Sunlet.palomarNeZeroOfSixLe m hm
     Fintype.card (FullObserved m hm) = 8*m-12 ∧
     Function.Injective (fullObservationIndex m hm) ∧
     Set.range (fullObservationIndex m hm) = {ab | LiteralRetained m ab} ∧
@@ -547,7 +552,7 @@ theorem paper_theorem_6_1_all_orders {k : Type*} [Field k] [CharZero k]
     MvPolynomial.zeroLocus k (MvPolynomial.vanishingIdeal k R.inverseOpen) =
       GroupCoordinates.imageClosure (K := k) (G := ZMod m) ∧
     ∀ x ∈ R.inverseOpen, R.inverse (x ∘ fullObservationIndex m hm) = x := by
-  letI : NeZero m := ⟨by omega⟩
+  letI : NeZero m := Sunlet.palomarNeZeroOfSixLe m hm
   exact paper_theorem_6_1 (k := k) m hm
 
 end Sunlet.CyclicSelectedField

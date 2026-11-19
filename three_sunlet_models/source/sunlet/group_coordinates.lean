@@ -14,18 +14,30 @@ assumed or asserted in this module.
 -/
 
 @[expose] public section
+
+namespace Sunlet
+/-- Explicit numeral and lower-bound witnesses; no extra hypotheses. -/
+theorem palomarSixNeZero : NeZero (5 + 1) := ⟨by decide⟩
+attribute [instance 2200] palomarSixNeZero
+theorem palomarNeZeroOfFiveLe (n : ℕ) (hn : 5 ≤ n) : NeZero n := ⟨Nat.ne_of_gt (lt_of_lt_of_le (by decide : 0 < 5) hn)⟩
+theorem palomarNeZeroOfSixLe (n : ℕ) (hn : 6 ≤ n) : NeZero n := ⟨Nat.ne_of_gt (lt_of_lt_of_le (by decide : 0 < 6) hn)⟩
+end Sunlet
+
 noncomputable section
 
 namespace Sunlet
 
 variable {G : Type*} [AddCommGroup G]
 
+/-- The actual left and right inverse equations of translation. -/
+theorem palomarTranslationLeft (a b : G) : -a + (a + b) = b := by simp [← add_assoc]
+theorem palomarTranslationRight (a b : G) : a + (-a + b) = b := by simp [← add_assoc]
 /-- Translation by a group element, as the permutation used in the Latin map. -/
 def addTranslationPerm (a : G) : Equiv.Perm G where
   toFun b := a + b
   invFun b := -a + b
-  left_inv b := by simp [← add_assoc]
-  right_inv b := by simp [← add_assoc]
+  left_inv b := palomarTranslationLeft a b
+  right_inv b := palomarTranslationRight a b
 
 @[simp] theorem addTranslationPerm_apply (a b : G) : addTranslationPerm a b = a + b := rfl
 

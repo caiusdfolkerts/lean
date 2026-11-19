@@ -1517,6 +1517,10 @@ variable {ι Ω k : Type*} [Fintype ι] [Fintype Ω] [DecidableEq ι] [Decidable
   [Field k] (o : Ω)
 
 abbrev Index := Bool × NormalizedVariations.Index ι Ω o
+/-- The domain law for the actual polynomial presentation of this function field. -/
+theorem palomarPolynomialIsDomain : IsDomain (MvPolynomial (Index (ι := ι) o) k) := by infer_instance
+attribute [instance 2200] palomarPolynomialIsDomain
+
 abbrev PolynomialRing := MvPolynomial (Index (ι := ι) o) k
 abbrev FunctionField := FractionRing (PolynomialRing (k := k) (ι := ι) o)
 

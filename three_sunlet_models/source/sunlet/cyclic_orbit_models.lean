@@ -136,12 +136,12 @@ theorem cyclic_orbit_imageClosure_dimension {K : Type*} [Field K] [IsAlgClosed K
 constructed from the stated lower bound, so it is not an additional hypothesis. -/
 theorem paper_corollary_7_4 {K : Type*} [Field K] [IsAlgClosed K]
     (n : ℕ) (hn : 5 ≤ n) (B : AddSubgroup (AddAut (ZMod n))) :
-    letI : NeZero n := ⟨by omega⟩
+    letI : NeZero n := Sunlet.palomarNeZeroOfFiveLe n hn
     ringKrullDim (MvPolynomial (GroupCoordinates.FlowIndex (ZMod n)) K ⧸
       MvPolynomial.vanishingIdeal K
         (ClassGroupCoordinates.tripleImageClosure (K := K) (classOf B))) =
       (if n.Prime ∧ B = ⊤ then (5 : ℕ) else 5 * Fintype.card (Class B) - 4) := by
-  letI : NeZero n := ⟨by omega⟩
+  letI : NeZero n := Sunlet.palomarNeZeroOfFiveLe n hn
   exact cyclic_orbit_imageClosure_dimension n hn B
 
 end Sunlet.OrbitClasses

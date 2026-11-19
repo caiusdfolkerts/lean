@@ -147,6 +147,15 @@ public import Mathlib.RingTheory.Algebraic.Basic
 public import Mathlib.RingTheory.Localization.BaseChange
 public import Mathlib.RingTheory.TotallySplit
 @[expose] public section
+
+namespace Sunlet
+/-- Explicit numeral and lower-bound witnesses; no extra hypotheses. -/
+theorem palomarSixNeZero : NeZero (5 + 1) := ⟨by decide⟩
+attribute [instance 2200] palomarSixNeZero
+theorem palomarNeZeroOfFiveLe (n : ℕ) (hn : 5 ≤ n) : NeZero n := ⟨Nat.ne_of_gt (lt_of_lt_of_le (by decide : 0 < 5) hn)⟩
+theorem palomarNeZeroOfSixLe (n : ℕ) (hn : 6 ≤ n) : NeZero n := ⟨Nat.ne_of_gt (lt_of_lt_of_le (by decide : 0 < 6) hn)⟩
+end Sunlet
+
 /-!
 # Dimension and identifiability of three-sunlet models
 
@@ -269,12 +278,15 @@ abbrev PolynomialRing (K : Type*) [CommRing K] (e : ι) (o : Ω) := MvPolynomial
 def denominator (K : Type*) [CommRing K] (e : ι) (o : Ω) : Sunlet.Normalization.PolynomialRing K e o := ∏ b : {b : Ω // b ≠ o}, MvPolynomial.X (.k b) * MvPolynomial.X (.l b)
 end end Sunlet.Normalization
 namespace Sunlet section variable {G : Type*} [AddCommGroup G]
+/-- The actual left and right inverse equations of translation. -/
+theorem palomarTranslationLeft (a b : G) : -a + (a + b) = b := by simp [← add_assoc]
+theorem palomarTranslationRight (a b : G) : a + (-a + b) = b := by simp [← add_assoc]
 /-- Translation by a group element, as the permutation used in the Latin map. -/
 def addTranslationPerm (a : G) : Equiv.Perm G where
   toFun b := a + b
   invFun b := -a + b
-  left_inv b := by simp [← add_assoc]
-  right_inv b := by simp [← add_assoc]
+  left_inv b := palomarTranslationLeft a b
+  right_inv b := palomarTranslationRight a b
 /-- Exact source definition of addTranslationPerm_apply. -/
 @[simp] theorem addTranslationPerm_apply (a b : G) : addTranslationPerm a b = a + b := by sorry
 end end Sunlet
@@ -406,6 +418,10 @@ end end Sunlet.LoopData
 namespace Sunlet.ToricPairAlgebra section open scoped BigOperators variable {ι Ω k : Type*} [Fintype ι] [Fintype Ω] [DecidableEq ι] [DecidableEq Ω] [Field k] (o : Ω)
 /-- Exact source definition of Index. -/
 abbrev Index := Bool × NormalizedVariations.Index ι Ω o
+/-- The domain law for the actual polynomial presentation of this function field. -/
+theorem palomarPolynomialIsDomain : IsDomain (MvPolynomial (Index (ι := ι) o) k) := by infer_instance
+attribute [instance 2200] palomarPolynomialIsDomain
+
 /-- Exact source definition of PolynomialRing. -/
 abbrev PolynomialRing := MvPolynomial (Sunlet.ToricPairAlgebra.Index (ι := ι) o) k
 /-- Exact source definition of FunctionField. -/
@@ -539,7 +555,7 @@ namespace Sunlet.OrbitClasses section attribute [local instance 0] Classical.pro
 /-- Corollary 7.4 in the original six-family flow coordinates. -/
 theorem paper_corollary_7_4 {K : Type*} [Field K] [IsAlgClosed K]
     (n : ℕ) (hn : 5 ≤ n) (B : AddSubgroup (AddAut (ZMod n))) :
-    letI : NeZero n := ⟨by omega⟩
+    letI : NeZero n := Sunlet.palomarNeZeroOfFiveLe n hn
     ringKrullDim (MvPolynomial (GroupCoordinates.FlowIndex (ZMod n)) K ⧸
       MvPolynomial.vanishingIdeal K
         (ClassGroupCoordinates.tripleImageClosure (K := K) (classOf B))) =
@@ -664,14 +680,19 @@ def observedNormalizedCoordinates (hm : 6 ≤ m) : FullObserved m hm → Normali
 abbrev ObservedNormalizedField (hm : 6 ≤ m) := IntermediateField.adjoin k (Set.range (observedNormalizedCoordinates (k := k) m hm))
 /-- Exact source definition of observedNormalizedField_eq_modelImageField. -/
 theorem observedNormalizedField_eq_modelImageField (hm : 6 ≤ m) : ObservedNormalizedField (k := k) m hm = (cyclicLatin m).NormalizedImageField (k := k) 0 := by sorry
+/-- The original polynomial-kernel equivalence, specialized to the cyclic parameters. -/
+theorem palomarNormalizedEquation (f : MvPolynomial (ZMod m × ZMod m) k) :
+    MvPolynomial.aeval (normalizedCoordinates (k := k) m) f = 0 ↔
+      PolynomialImage.comorphism (Sunlet.coordinatePolynomial (cyclicLatin m).perm) f = 0 :=
+  (cyclicLatin m).generic_normalized_equation_iff (k := k) 0 f
 /-- A rational inverse over the ground field for the original, unnormalized polynomial model and the exact coordinate projection in... -/
-def originalModelRationalInverse (hm : 6 ≤ m) : PolynomialImage.RationalCoordinateInverse (Sunlet.coordinatePolynomial (K := k) (addTranslationPerm (G := ZMod m))) (fullObservationIndex m hm) := PolynomialImage.rationalCoordinateInverseOfFieldEquality (Sunlet.coordinatePolynomial (K := k) (addTranslationPerm (G := ZMod m))) (normalizedCoordinates (k := k) m) (fullObservationIndex m hm) (fun f => (cyclicLatin m).generic_normalized_equation_iff (k := k) 0 f) (observedNormalizedField_eq_modelImageField (k := k) m hm)
+def originalModelRationalInverse (hm : 6 ≤ m) : PolynomialImage.RationalCoordinateInverse (Sunlet.coordinatePolynomial (K := k) (addTranslationPerm (G := ZMod m))) (fullObservationIndex m hm) := PolynomialImage.rationalCoordinateInverseOfFieldEquality (Sunlet.coordinatePolynomial (K := k) (addTranslationPerm (G := ZMod m))) (normalizedCoordinates (k := k) m) (fullObservationIndex m hm) (palomarNormalizedEquation (k := k) m) (observedNormalizedField_eq_modelImageField (k := k) m hm)
 end end Sunlet.CyclicSelectedField
 namespace Sunlet.CyclicSelectedField section set_option Elab.async false
 /-- All orders m ≥ 6, precisely the literal observations, and rational reconstruction on a nonempty dense open of the original full... -/
 theorem paper_theorem_6_1_all_orders {k : Type*} [Field k] [CharZero k]
     (m : ℕ) (hm : 6 ≤ m) :
-    letI : NeZero m := ⟨by omega⟩
+    letI : NeZero m := Sunlet.palomarNeZeroOfSixLe m hm
     Fintype.card (FullObserved m hm) = 8*m-12 ∧
     Function.Injective (fullObservationIndex m hm) ∧
     Set.range (fullObservationIndex m hm) = {ab | LiteralRetained m ab} ∧
@@ -805,7 +826,7 @@ structure ReticulationData (H : SimpleGraph V) where
   common_vertex : ∀ c,∃ v : V,v∈(incoming c false).val ∧ v∈(incoming c true).val
 /-- Exact source definition of Choice. -/
 abbrev Choice (H : SimpleGraph V) := Cycle H → Bool
-instance (H : SimpleGraph V) : Fintype H.edgeSet := Fintype.ofFinite H.edgeSet
+instance activeEdgeFintype (H : SimpleGraph V) : Fintype H.edgeSet := Fintype.ofFinite H.edgeSet
 instance (H : SimpleGraph V) : Fintype (Leaf H) := Fintype.ofFinite (Leaf H)
 instance (H : SimpleGraph V) : Fintype (Cycle H) := Fintype.ofFinite (Cycle H)
 /-- Exact source definition of activeEdges. -/

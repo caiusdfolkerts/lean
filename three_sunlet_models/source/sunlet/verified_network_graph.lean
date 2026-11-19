@@ -2196,7 +2196,7 @@ structure ReticulationData (H : SimpleGraph V) where
 
 abbrev Choice (H : SimpleGraph V) := Cycle H → Bool
 
-instance (H : SimpleGraph V) : Fintype H.edgeSet := Fintype.ofFinite H.edgeSet
+instance activeEdgeFintype (H : SimpleGraph V) : Fintype H.edgeSet := Fintype.ofFinite H.edgeSet
 instance (H : SimpleGraph V) : Fintype (Leaf H) := Fintype.ofFinite (Leaf H)
 instance (H : SimpleGraph V) : Fintype (Cycle H) := Fintype.ofFinite (Cycle H)
 
