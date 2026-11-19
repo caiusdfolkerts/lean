@@ -1,5 +1,1 @@
-# Palomar submission: alternating_forms
-
-Substantive source snapshot of [caiusdfolkerts/research](https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms), revision `e0696fddcd3d10b5d6461e62e9b2f02c4195be37`.
-
-The complete selected development, paper, metadata, and Comparator configuration are in `alternating_forms/`. This branch prepares a registry submission; it does not claim registry acceptance. See `alternating_forms/formalization.yaml` for exact scope and provenance.
+Canonical-only main1.3 geometric extension preserving all26 current targets. The actual original isotropy ideal prime/saturation clauses (including one-plane boundary) and normalized affine coordinate algebras are stated with complete original characteristic/rank hypotheses. Four exact Fin/tuple constructor propositions are genuinely proved. Source bodies/visibility bridges are staged separately; no full Source/Solution/Comparator or scheme/section-ring comparison pass claimed.
