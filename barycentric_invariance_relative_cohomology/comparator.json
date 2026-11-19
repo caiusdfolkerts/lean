@@ -26,11 +26,13 @@
     "PalomarBarycentricTor.exteriorScalarComm",
     "PalomarBarycentricTor.tensorPreservesZero",
     "FourPapers.Universal.barycentricMonomialEquiv_mk",
-    "FourPapers.Universal.barycentricGlobalStandardBasis_coordinates"
+    "FourPapers.Universal.barycentricGlobalStandardBasis_coordinates",
+    "FourPapers.Universal.standardCoefficients_apply"
   ],
   "definition_names": [
     "FourPapers.Universal.barycentricMonomialEquiv",
-    "FourPapers.Universal.barycentricGlobalStandardBasis"
+    "FourPapers.Universal.barycentricGlobalStandardBasis",
+    "FourPapers.Universal.standardCoefficients"
   ],
   "permitted_axioms": [
     "propext",

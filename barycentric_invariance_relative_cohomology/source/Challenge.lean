@@ -294,6 +294,9 @@ def standardCoefficients (P : (V →₀ ℕ) → Prop) :
     MvPolynomial V K →ₗ[K] ({a // P a} →₀ K) :=
   (Finsupp.lsubtypeDomain {a | P a}).comp
     (MvPolynomial.basisMonomials V K).repr.toLinearMap
+/-- In every allowed exponent the coordinate is the original polynomial coefficient. -/
+lemma standardCoefficients_apply (P : (V →₀ ℕ) → Prop) (f : MvPolynomial V K) (a : {a // P a}) :
+    standardCoefficients P f a = f.coeff a.val := by sorry
 /-- Literal FourPapers.Universal.standardCoefficients_surjective; source theorem12.lean:7030. -/
 lemma standardCoefficients_surjective (P : (V →₀ ℕ) → Prop) :
     Function.Surjective (standardCoefficients (K := K) P) := by sorry
