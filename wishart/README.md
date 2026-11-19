@@ -71,6 +71,10 @@ under `licenses/vendor/tauceti`. Original paper proofs and unused readable
 lower-case support copies are retained. Default proof roots register the actual
 canonical closure and own paper modules. Mathlib and Lean pins are unchanged.
 
+Preparation record dated 2026-11-19, before full workflow dispatch. Later
+immutable workflow reports for this exact snapshot determine its subsequent
+verification outcome.
+
 The previous full snapshot built the paper proofs and Solution successfully,
 then failed strict Comparator. The repair retains every original principal
 result and its complete input model. It names only the measured proposition
@@ -80,10 +84,10 @@ index and identity proof replacements also have original-formula equality
 checks. The current962-line independent Challenge passed run 44487625189, including all 27
 complete value equations. All 37 genuine canonical witness and whole-record
 identity proofs passed 44486271637. Source/Solution replay, strict Comparator
-and mandatory kernel verification remain separate required checks.
+and mandatory kernel verification were still pending at preparation.
 The six genuine original-formula preservation proofs passed run 44488469049
-without placeholders. No full pass or registry acceptance is claimed for this
-prepared revision.
+without placeholders. This preparation record claims no registry acceptance
+or completed human review.
 
 ## Paper versions and AI disclosure
 

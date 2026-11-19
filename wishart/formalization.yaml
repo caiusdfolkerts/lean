@@ -44,6 +44,9 @@ automation:
 review:
   status: unchecked
   notes: >-
+    Preparation assessment recorded on 2026-11-19 before full workflow dispatch.
+    Later immutable workflow reports for this exact source snapshot determine
+    the subsequent verification outcome; this dated note does not assert it.
     The preceding canonical full snapshot 141c03dd3526da7106331c9a20456f11e53b26e2
     built Source and Solution successfully, then failed strict Comparator.
     Exact raw diagnostics 44473421580 and 44481298711 retained all 167
@@ -53,9 +56,10 @@ review:
     Its complete 962-line independent interface passed current-hash elaboration
     in run 44487625189; all 27 complete equation declarations were retained.
     The 37 genuine canonical witness/record-equality proofs passed 44486271637.
-    Actual Source/Solution,
-    strict Comparator and mandatory Lean/NanoDa checks remain required. No full pass,
-    registry acceptance or human review is claimed for this revision.
+    At preparation, actual Source/Solution,
+    strict Comparator and mandatory Lean/NanoDa checks remained pending.
+    No registry acceptance or completed human review is claimed by this
+    preparation record.
     Genuine original-formula preservation proofs for all four complete finite
     rank thresholds, the full spectral index permutation and identity subtype
     value passed canonical proof smoke44488469049 with zero placeholders.
