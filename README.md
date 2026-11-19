@@ -1,5 +1,1 @@
-# Palomar submission: wishart
-
-Substantive source snapshot of [caiusdfolkerts/research](https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/wishart), revision `e0696fddcd3d10b5d6461e62e9b2f02c4195be37`.
-
-The complete selected development, paper, metadata, and Comparator configuration are in `wishart/`. This branch prepares a registry submission; it does not claim registry acceptance. See `wishart/formalization.yaml` for exact scope and provenance.
+Exact canonical singular Schur chart-domain measurability foundations after sole actual c8df Source error at field_residual06:1674. All n,k,q including0 retained. Proves component countability and full original product Borel structure and continuity-to-measurability, without changing chart/noise maps/measures. Not full preflight.
