@@ -1,0 +1,30 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "koszulComplex.d_comp_eq_zero",
+    "CommAlg.Simplicial.boundary_mem",
+    "FourPapers.Universal.faceRank_bot",
+    "FourPapers.Universal.faceRank_strictMono",
+    "FourPapers.Universal.standardCoefficients_surjective",
+    "FourPapers.Universal.standardCoefficients_ker",
+    "FourPapers.Universal.barycentricAllowed_divisorClosed",
+    "FourPapers.Universal.barycentricIdeal_eq_forbiddenIdeal",
+    "FourPapers.Universal.relativeAugmentedCoboundary_square",
+    "FourPapers.Universal.rankSelection_downward",
+    "FourPapers.BasisGrading.map_piece",
+    "FourPapers.Universal.parameterKoszulDifferential_comp",
+    "FourPapers.Universal.barycentricIncoming_weight",
+    "FourPapers.Universal.barycentricOutgoing_weight",
+    "FourPapers.Universal.submoduleComplex_outgoing_mem",
+    "FourPapers.Universal.barycentricRelativeDegreeTerm_preserved",
+    "FourPapers.Universal.barycentricRelativeBigraded_complex",
+    "FourPapers.Universal.palomarRelativeRankSelectedFactor"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

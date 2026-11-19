@@ -1,0 +1,13 @@
+{
+  "baseline_project": "barycentric_invariance",
+  "snapshot_source_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
+  "paper_result": "Theorem 1.2, rank-selected cohomology factor of the relative formula",
+  "selected_result": "FourPapers.Universal.palomarRelativeRankSelectedFactor",
+  "source_result": "FourPapers.Universal.barycentricRelativeBigradedCohomologyEquiv",
+  "source_file": "barycentric_invariance/source/theorem12.lean",
+  "source_line": 33489,
+  "scope": "For a finite simplicial poset and a downward subposet, each bigraded piece of relative barycentric homology is linearly equivalent to the product of the reduced cohomology groups of the rank-selected pairs. The indices have prescribed total degree and weight, and the cohomological degree for a rank set S is |S| − i − 1. This gives the cohomology factor in the relative formula of Theorem 1.2 over a commutative coefficient ring.",
+  "known_gaps": [
+    "The passage from the filtered original Tor module to the relative barycentric homology used here requires a separate comparison. The equivariant, product and representation-ring clauses also require separate entries."
+  ]
+}
