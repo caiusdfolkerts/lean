@@ -36,7 +36,7 @@ run_cmd do
     let mismatches := (List.range (min a.size b.size)).filter (fun i => a[i]! != b[i]!)
     logInfo m!"WISHART_TYPE {name} exact={actual == expected} differing_arguments={mismatches}"
   liftTermElabM do
-    withOptions (fun o => (((o.setBool `pp.all true).setBool `pp.universes false).setBool `pp.proofs true).setNat `pp.maxSteps 1000000) do
+    withOptions (fun o => ((o.setBool `pp.all true).setBool `pp.universes false).setBool `pp.proofs true) do
       for i in [:expected.getAppArgs.size] do
         let term ← ppExpr expected.getAppArgs[i]!
         logInfo m!"WISHART_SOURCE_ARG {i} {term}"
