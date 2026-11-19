@@ -47,9 +47,11 @@ automation:
       not been reconstructed from the snapshot.
 review:
   status: unchecked
-  notes: The current independent Challenge passed canonical elaboration. Full
-    source, Solution, Comparator and independent kernel verification of this
-    exact snapshot remain pending; uncovered principal clauses remain explicit.
+  notes: The explicit basis projection passed pinned canonical elaboration in
+    run44478456497. It supplies the existing genuine inverse-pair laws directly
+    to the underlying linear-map projection; the original carrier predicate
+    and all selected conclusions are unchanged. Full comparison and independent
+    kernel verification of this snapshot remain pending.
 scope:
   known_gaps:
   - The canonical chain-monomial associated-grade identification of Theorem 1.1 has

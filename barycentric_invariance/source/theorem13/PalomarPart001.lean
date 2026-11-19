@@ -947,7 +947,11 @@ theorem palomarBasisOrdinaryDegreePiece_smul (b : Module.Basis I K M)
       ∀ i, degree i ≠ n → b.repr (c • x) i = 0 := by intro c x hx i hi; simp only [map_smul, Finsupp.smul_apply, hx i hi, smul_zero]
 
 def basisOrdinaryDegreePiece (b : Module.Basis I K M) (degree : I → ℕ) (n : ℕ) : Submodule K M where
-  carrier := {x | ∀ i, degree i ≠ n → b.repr x i = 0}
+  carrier := {x | ∀ i, degree i ≠ n →
+    (@LinearEquiv.toLinearMap K K _ _ (RingHom.id K) (RingHom.id K)
+      (PalomarBarycentric.commutativeCoefficientIdentityInvPair (K := K))
+      (PalomarBarycentric.commutativeCoefficientIdentityInvPair (K := K))
+      M (I →₀ K) _ _ _ _ b.repr) x i = 0}
   zero_mem' := palomarBasisOrdinaryDegreePiece_zero b degree n
   add_mem' := fun {x y} => palomarBasisOrdinaryDegreePiece_add b degree n x y
   smul_mem' := palomarBasisOrdinaryDegreePiece_smul b degree n
