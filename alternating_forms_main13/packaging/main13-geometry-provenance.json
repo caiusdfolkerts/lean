@@ -1,0 +1,85 @@
+{
+  "prepared_at": "2026-11-19T09:28:59.485541+00:00",
+  "status": "source_prepared_not_installed",
+  "parent_full_commit": "460ea17bb0237d718ef42ebec650feb46285890e",
+  "purpose": "Identify the same actual ring appearing in main1.3 via prime/saturated equations and the literal affine isotropy chart comparison. This is support for the principal degeneration/presentation claim, not a new secondary-paper result. No general geometric Theorem1.2 or full section-sheaf claim.",
+  "all_original20_types_preserved": true,
+  "new_selected_names": [
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.odd_isotropicPluckerIdeal_isPrime",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.onePlane_ideal_isPrime",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.odd_isotropicPluckerIdeal_saturated",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.onePlane_PluckerIdeal_saturated",
+    "PalomarAlternatingDegeneration.PalomarAlternatingGeometry.oddAffineCharts"
+  ],
+  "source_provenance": [
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.PluckerChartVariable",
+      "original_source_name": "PaperVerification.AlternatingForms.PluckerChartVariable",
+      "copied_from_previous_canonical_geometry_check": 44473209528,
+      "source_body": "abbrev PluckerChartVariable (p : PluckerIndex s n) :=\n  Fin s \u00d7 {j : Fin n // j \u2209 Set.range p.val}"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.pluckerChartMatrix",
+      "original_source_name": "PaperVerification.AlternatingForms.pluckerChartMatrix",
+      "copied_from_previous_canonical_geometry_check": 44473209528,
+      "source_body": "def pluckerChartMatrix (p : PluckerIndex s n) :\n    Matrix (Fin s) (Fin n) (MvPolynomial (PluckerChartVariable p) K) :=\n  Matrix.of fun i j => if j=p.val i then 1 else if h : j \u2208 Set.range p.val then 0\n    else X (i,\u27e8j,h\u27e9)"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.alternatingRowPair",
+      "original_source_name": "PaperVerification.AlternatingForms.alternatingRowPair",
+      "copied_from_previous_canonical_geometry_check": 44473209528,
+      "source_body": "def alternatingRowPair {R : Type*} [CommRing R] [Algebra K R]\n    (f : StrictPairs n \u2192 K) (A : Matrix (Fin (t+2)) (Fin n) R)\n    (i j : Fin (t+2)) : R :=\n  \u2211 a : StrictPairs n, f a \u2022\n    (A i a.val.1*A j a.val.2 - A i a.val.2*A j a.val.1)"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.isotropicChartIdeal",
+      "original_source_name": "PaperVerification.AlternatingForms.isotropicChartIdeal",
+      "copied_from_previous_canonical_geometry_check": 44473209528,
+      "source_body": "def isotropicChartIdeal (p : PluckerIndex (t+2) n) (forms : Fin m \u2192 StrictPairs n \u2192 K) :\n    Ideal (MvPolynomial (PluckerChartVariable p) K) :=\n  Ideal.span (Set.range fun a : Fin m \u00d7 StrictPairs (t+2) =>\n    alternatingRowPair (forms a.1) (pluckerChartMatrix p) a.2.val.1 a.2.val.2)"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.WeightedInitialFiber.IsSaturatedWithRespectTo",
+      "original_source_name": "PaperVerification.WeightedInitialFiber.IsSaturatedWithRespectTo",
+      "copied_from_previous_canonical_geometry_check": 44473209528,
+      "source_body": "def IsSaturatedWithRespectTo (Q J : Ideal R) : Prop :=\n  \u2200 f : R, (\u2203 m : \u2115, \u2200 g\u2208J^m,g*f\u2208Q) \u2194 f\u2208Q"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.pluckerIrrelevantIdeal",
+      "original_source_name": "PaperVerification.AlternatingForms.pluckerIrrelevantIdeal",
+      "copied_from_previous_canonical_geometry_check": 44473209528,
+      "source_body": "def pluckerIrrelevantIdeal (s n : \u2115) : Ideal (MvPolynomial (PluckerIndex s n) K) :=\n  Ideal.span (Set.range (X : PluckerIndex s n \u2192 MvPolynomial (PluckerIndex s n) K))"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.odd_isotropicPluckerIdeal_isPrime",
+      "original_source_name": "PaperVerification.AlternatingForms.odd_isotropicPluckerIdeal_isPrime",
+      "copied_from_previous_canonical_geometry_check": 44473209528,
+      "source_body": "theorem odd_isotropicPluckerIdeal_isPrime (k t : \u2115) (hs : t+2\u2264k+1) :\n    (isotropicPluckerIdeal (K := K) (t := t) (oddPluckerForms k)).IsPrime := by\n  exact _root_.PaperVerification.AlternatingForms.odd_isotropicPluckerIdeal_isPrime (K := K) (k := k) (t := t) (hs := hs)"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.onePlane_ideal_isPrime",
+      "original_source_name": "PaperVerification.AlternatingForms.onePlane_ideal_isPrime",
+      "copied_from_previous_canonical_geometry_check": 44473209528,
+      "source_body": "theorem onePlane_ideal_isPrime (n : \u2115) :\n    (matrixPluckerIdeal (K := K) (s := 1) (n := n)).IsPrime := by\n  exact _root_.PaperVerification.AlternatingForms.onePlane_ideal_isPrime (K := K) (n := n)"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.odd_isotropicPluckerIdeal_saturated",
+      "original_source_name": "PaperVerification.AlternatingForms.odd_isotropicPluckerIdeal_saturated",
+      "copied_from_previous_canonical_geometry_check": 44473209528,
+      "source_body": "theorem odd_isotropicPluckerIdeal_saturated (k t : \u2115) (hs : t+2\u2264k+1) :\n    IsSaturatedWithRespectTo\n      (isotropicPluckerIdeal (K := K) (t := t) (oddPluckerForms k))\n      (pluckerIrrelevantIdeal (t+2) (2*k+1)) := by\n  exact _root_.PaperVerification.AlternatingForms.odd_isotropicPluckerIdeal_saturated (K := K) (k := k) (t := t) (hs := hs)"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.onePlane_PluckerIdeal_saturated",
+      "original_source_name": "PaperVerification.AlternatingForms.onePlane_PluckerIdeal_saturated",
+      "copied_from_previous_canonical_geometry_check": 44473209528,
+      "source_body": "theorem onePlane_PluckerIdeal_saturated (k : \u2115) :\n    IsSaturatedWithRespectTo\n      (matrixPluckerIdeal (K := K) (s := 1) (n := 2*k+1))\n      (pluckerIrrelevantIdeal 1 (2*k+1)) := by\n  exact _root_.PaperVerification.AlternatingForms.onePlane_PluckerIdeal_saturated (K := K) (k := k)"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PalomarAlternatingGeometry.oddAffineCharts",
+      "original_source_name": "PaperVerification.AlternatingForms.isotropicPluckerBigCellEquiv",
+      "copied_from_previous_canonical_geometry_check": 44473209528,
+      "source_body": "theorem oddAffineCharts {K : Type uChart} [Field K] [CharZero K]\n    (k t : \u2115) (hs : t+2 \u2264 k+1) (p : PluckerIndex (t+2) (2*k+1)) :\n    Nonempty ((MvPolynomial (PluckerIndex (t+2) (2*k+1)) K \u29f8\n      (isotropicPluckerIdeal (t := t) (oddPluckerForms (K := K) k) \u2294 Ideal.span {X p-1})) \u2243\u2090[K]\n      (MvPolynomial (PluckerChartVariable p) K \u29f8\n        isotropicChartIdeal p (oddPluckerForms (K := K) k))) := by\n  exact \u27e8_root_.PaperVerification.AlternatingForms.isotropicPluckerBigCellEquiv p\n    (_root_.PaperVerification.AlternatingForms.oddPluckerForms (K := K) k)\u27e9"
+    }
+  ],
+  "challenge_lines": 826,
+  "challenge_sha256": "1acd709ca0474ab5671b6aa32c47c3fa1ec88d951af773239e56d215efe0da19",
+  "new_proof_module_contains_no_holes": true
+}

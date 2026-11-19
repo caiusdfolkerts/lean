@@ -3,9 +3,9 @@
   "baseline_project": "alternating_forms",
   "baseline_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
   "parent_passed_commit": "f99b0e657e8e3ca478876ff6a90ea28ef30039be",
-  "prepared_at": "2026-11-19T09:20:14.659816+00:00",
-  "status": "source_prepared_canonical_challenge_passed",
-  "verification_note": "Preparation-time record only; subsequent exact-commit workflow reports determine verification.",
+  "prepared_at": "2026-11-19T09:51:18.229475+00:00",
+  "status": "canonical_challenge_and_typed_commutativity_passed_genuine_bridges_authored",
+  "verification_note": "Preparation-time status only. Subsequent exact-commit workflow reports determine Source/Solution/Comparator/kernel verification.",
   "selected_results": [
     {
       "declaration": "PalomarAlternatingDegeneration.TauCeti.InternalGrading.mapInternal",
@@ -199,6 +199,51 @@
         "oddNormalizedBarTorIso"
       ],
       "literal_declaration_source": "source/PalomarMain13Proofs.lean"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.odd_isotropicPluckerIdeal_isPrime",
+      "paper_result": "Support identifying the actual Pl\u00fccker ring in Theorem 1.3",
+      "source_declarations": [
+        "PaperVerification.AlternatingForms.odd_isotropicPluckerIdeal_isPrime"
+      ],
+      "literal_declaration_source": "source/PalomarMain13Geometry.lean",
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.onePlane_ideal_isPrime",
+      "paper_result": "Support identifying the actual Pl\u00fccker ring in Theorem 1.3",
+      "source_declarations": [
+        "PaperVerification.AlternatingForms.onePlane_ideal_isPrime"
+      ],
+      "literal_declaration_source": "source/PalomarMain13Geometry.lean",
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.odd_isotropicPluckerIdeal_saturated",
+      "paper_result": "Support identifying the actual Pl\u00fccker ring in Theorem 1.3",
+      "source_declarations": [
+        "PaperVerification.AlternatingForms.odd_isotropicPluckerIdeal_saturated"
+      ],
+      "literal_declaration_source": "source/PalomarMain13Geometry.lean",
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.onePlane_PluckerIdeal_saturated",
+      "paper_result": "Support identifying the actual Pl\u00fccker ring in Theorem 1.3",
+      "source_declarations": [
+        "PaperVerification.AlternatingForms.onePlane_PluckerIdeal_saturated"
+      ],
+      "literal_declaration_source": "source/PalomarMain13Geometry.lean",
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PalomarAlternatingGeometry.oddAffineCharts",
+      "paper_result": "Support identifying the actual Pl\u00fccker ring in Theorem 1.3",
+      "source_declarations": [
+        "PaperVerification.AlternatingForms.isotropicPluckerBigCellEquiv"
+      ],
+      "literal_declaration_source": "source/PalomarMain13Geometry.lean",
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf"
     }
   ],
   "source_definition_provenance": [
@@ -813,10 +858,10 @@
   ],
   "blockers": [],
   "canonical_check": {
-    "run": 44487738971,
-    "challenge_sha256": "ab9ffc9ba6984e19a924d75565286be3df8e4e578e32d4ee3fad67e55b6276b2",
+    "run": 44496862635,
+    "challenge_sha256": "1acd709ca0474ab5671b6aa32c47c3fa1ec88d951af773239e56d215efe0da19",
     "status": "pass",
-    "scope": "Canonical Challenge elaboration only"
+    "scope": "Exact826-line25-target independent Challenge only"
   },
   "source_bridges": {
     "paper13_weight_families": [
@@ -848,5 +893,11 @@
       "OnePlaneKoszul.actual_onePlane_Tor_degree"
     ]
   },
-  "visibility_patch_record": "packaging/main13-visibility-patches.json"
+  "visibility_patch_record": "packaging/main13-visibility-patches.json",
+  "typed_commutativity_check": {
+    "run": "44499210104",
+    "input_sha256": "f6b794ccefb718cb1945697c6c6af763042547df37de772940bda91b0dacdd27",
+    "status": "pass",
+    "scope": "Actual concrete polynomial commutativity proof; Root source-definitional Tor bridges still require full Source compilation."
+  }
 }

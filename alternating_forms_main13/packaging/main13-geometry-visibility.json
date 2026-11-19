@@ -1,0 +1,57 @@
+{
+  "prepared_at": "2026-11-19T09:33:26.997622+00:00",
+  "status": "source_prepared_not_installed",
+  "baseline_project": "alternating_forms",
+  "parent_package_commit": "460ea17bb0237d718ef42ebec650feb46285890e",
+  "patches": [
+    {
+      "path": "source/paper_verification/literal001/PalomarPart000.lean",
+      "before_sha256": "1d6faebe049a62304f242a99d9eea995d33a0976c88bf716bf19ed237c3b3e29",
+      "after_sha256": "d1c421e5a9705a4a11f867da553ad94f82cdf15200be061d7b878c63f6feae2b",
+      "new_declaration_local_expose": [
+        "PaperVerification.AlternatingForms.isotropicChartIdeal",
+        "PaperVerification.AlternatingForms.alternatingRowPair",
+        "PaperVerification.AlternatingForms.pluckerChartMatrix"
+      ],
+      "already_exposed": [],
+      "original_bodies_unchanged": true,
+      "lines": 8988
+    },
+    {
+      "path": "source/paper_verification/literal005/PalomarPart000.lean",
+      "before_sha256": "bbed308ceb10e30edef8ddc8b1d67dda9ed31394763eca4fd6ec677acd0681ba",
+      "after_sha256": "1fa1a0ec17dff90a83514c3f77ccca5115bdd751e6c81b8966bdda76336c9acf",
+      "new_declaration_local_expose": [
+        "PaperVerification.AlternatingForms.pluckerIrrelevantIdeal",
+        "PaperVerification.WeightedInitialFiber.IsSaturatedWithRespectTo"
+      ],
+      "already_exposed": [],
+      "original_bodies_unchanged": true,
+      "lines": 8995
+    }
+  ],
+  "found": {
+    "PaperVerification.AlternatingForms.isotropicChartIdeal": {
+      "path": "source/paper_verification/literal001/PalomarPart000.lean",
+      "line": 7571
+    },
+    "PaperVerification.AlternatingForms.alternatingRowPair": {
+      "path": "source/paper_verification/literal001/PalomarPart000.lean",
+      "line": 7433
+    },
+    "PaperVerification.AlternatingForms.pluckerChartMatrix": {
+      "path": "source/paper_verification/literal001/PalomarPart000.lean",
+      "line": 6952
+    },
+    "PaperVerification.AlternatingForms.pluckerIrrelevantIdeal": {
+      "path": "source/paper_verification/literal005/PalomarPart000.lean",
+      "line": 2780
+    },
+    "PaperVerification.WeightedInitialFiber.IsSaturatedWithRespectTo": {
+      "path": "source/paper_verification/literal005/PalomarPart000.lean",
+      "line": 2686
+    }
+  },
+  "missing": [],
+  "no_original_body_changes": true
+}

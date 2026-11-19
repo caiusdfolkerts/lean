@@ -1,2 +1,2 @@
 module
-public import PalomarMain13Proofs
+public import PalomarMain13Geometry

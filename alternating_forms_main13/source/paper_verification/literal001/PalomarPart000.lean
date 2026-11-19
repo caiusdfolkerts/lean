@@ -6949,6 +6949,7 @@ abbrev PluckerChartVariable (p : PluckerIndex s n) :=
   Fin s × {j : Fin n // j ∉ Set.range p.val}
 
 /-- The literal row-reduced matrix in a Plücker chart. -/
+@[expose]
 def pluckerChartMatrix (p : PluckerIndex s n) :
     Matrix (Fin s) (Fin n) (MvPolynomial (PluckerChartVariable p) K) :=
   Matrix.of fun i j => if j=p.val i then 1 else if h : j ∈ Set.range p.val then 0
@@ -7430,6 +7431,7 @@ namespace PaperVerification.AlternatingForms
 variable {K : Type*} [Field K] {t n m : ℕ}
 
 /-- Evaluation of the alternating form with the displayed independent coefficients. -/
+@[expose]
 def alternatingRowPair {R : Type*} [CommRing R] [Algebra K R]
     (f : StrictPairs n → K) (A : Matrix (Fin (t+2)) (Fin n) R)
     (i j : Fin (t+2)) : R :=
@@ -7568,6 +7570,7 @@ theorem matrixMinorEvaluation_isotropy_eq_zero
   rw [matrixMinorEvaluation_isotropy_rowPairs]
   simp only [hA, zero_mul, smul_zero, Finset.sum_const_zero]
 
+@[expose]
 def isotropicChartIdeal (p : PluckerIndex (t+2) n) (forms : Fin m → StrictPairs n → K) :
     Ideal (MvPolynomial (PluckerChartVariable p) K) :=
   Ideal.span (Set.range fun a : Fin m × StrictPairs (t+2) =>

@@ -2683,6 +2683,7 @@ variable {R : Type*} [CommRing R]
 
 /-- The ordinary saturation condition `Q : J^∞ = Q`, stated with ideal powers
 so that no auxiliary saturation convention or finiteness premise is hidden. -/
+@[expose]
 def IsSaturatedWithRespectTo (Q J : Ideal R) : Prop :=
   ∀ f : R, (∃ m : ℕ, ∀ g∈J^m,g*f∈Q) ↔ f∈Q
 
@@ -2777,6 +2778,7 @@ theorem odd_isotropicPluckerIdeal_isPrime (k t : ℕ) (hs : t+2≤k+1) :
     (oddIntervalUpper_strictMono k (t+2) hs).monotone (by omega)
 
 /-- The actual irrelevant ideal in the displayed Plücker polynomial ring. -/
+@[expose]
 def pluckerIrrelevantIdeal (s n : ℕ) : Ideal (MvPolynomial (PluckerIndex s n) K) :=
   Ideal.span (Set.range (X : PluckerIndex s n → MvPolynomial (PluckerIndex s n) K))
 

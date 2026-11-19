@@ -21,7 +21,12 @@
     "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.paper13_weight_families",
     "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.paper13_oneplane_quadratic",
     "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.paper13_quadratic",
-    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.paper13_higher_koszul"
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.paper13_higher_koszul",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.odd_isotropicPluckerIdeal_isPrime",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.onePlane_ideal_isPrime",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.odd_isotropicPluckerIdeal_saturated",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.onePlane_PluckerIdeal_saturated",
+    "PalomarAlternatingDegeneration.PalomarAlternatingGeometry.oddAffineCharts"
   ],
   "permitted_axioms": [
     "propext",

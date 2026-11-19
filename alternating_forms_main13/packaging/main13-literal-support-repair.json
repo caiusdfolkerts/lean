@@ -1,0 +1,32 @@
+{
+  "prepared_at": "2026-11-19T09:52:12.291333+00:00",
+  "parent_commit": "460ea17bb0237d718ef42ebec650feb46285890e",
+  "actual_failed_run": 44495605609,
+  "complete_error_count": 4,
+  "source_file_before_sha256": "578c62a53c685561a903d9ced100c7a232fe813ec47954a9dc1eef5e558bc891",
+  "source_file_after_sha256": "61bbd9d45fdbad057b79be5ac945a8965ce6192eba4feea25115f57b1271ce99",
+  "proof_only_changes": [
+    {
+      "name": "PalomarAlternatingDegeneration.PaperVerification.WeightedInitialFiber.reesMultiplicationCommutes",
+      "before": "theorem reesMultiplicationCommutes (Q : Ideal P) (w : \u03c3 \u2192 \u2115) (a b : reesAlgebra Q w) : a*b=b*a := by\n  apply Subtype.ext\n  change (a : Polynomial (P \u29f8 Q)) * (b : Polynomial (P \u29f8 Q)) = (b : Polynomial (P \u29f8 Q)) * (a : Polynomial (P \u29f8 Q))\n  exact mul_comm _ _",
+      "after": "theorem reesMultiplicationCommutes (Q : Ideal P) (w : \u03c3 \u2192 \u2115) (a b : reesAlgebra Q w) : a*b=b*a := by\n  apply Subtype.ext\n  change (a : Polynomial (P \u29f8 Q)) * (b : Polynomial (P \u29f8 Q)) = (b : Polynomial (P \u29f8 Q)) * (a : Polynomial (P \u29f8 Q))\n  exact _root_.mul_comm (a : Polynomial (P \u29f8 Q)) (b : Polynomial (P \u29f8 Q))",
+      "same_mathematical_type": true
+    },
+    {
+      "name": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.OnePlaneKoszul.tensorDegreePiece_eq_bot",
+      "before": "theorem tensorDegreePiece_eq_bot (r N : \u2115) (hNr : N\u2260r) :\n    tensorDegreePiece K n r N=\u22a5 := by\n  apply le_antisymm ?_ bot_le\n  rintro z \u27e8w,hw,rfl\u27e9\n  change specializeFree K n r w=0\n  change w\u2208BasisDegree.piece (freeMonomialBasis K n r) (fun a \u21a6 a.1.degree+r) N at hw\n  rw [BasisDegree.piece_eq_span] at hw\n  induction hw using Submodule.span_induction with\n  | mem w hw =>\n    obtain \u27e8\u27e8d,I\u27e9,hd,rfl\u27e9 := hw\n    apply specializeFree_monomial_ne_zero K n r d I\n    intro hz\n    subst d\n    simp only [map_zero,zero_add,Set.mem_setOf_eq] at hd\n    exact hNr hd.symm\n  | zero => exact map_zero _\n  | add x y hx hy ihx ihy => rw [map_add,ihx,ihy,add_zero]\n  | smul c x hx ih => rw [map_smul,ih,smul_zero]",
+      "after": "theorem tensorDegreePiece_eq_bot (r N : \u2115) (hNr : N\u2260r) :\n    tensorDegreePiece K n r N=\u22a5 := by\n  change _root_.PaperVerification.AlternatingForms.OnePlaneKoszul.tensorDegreePiece K n r N=\u22a5\n  exact _root_.PaperVerification.AlternatingForms.OnePlaneKoszul.tensorDegreePiece_eq_bot K n r N hNr",
+      "same_mathematical_type": true
+    },
+    {
+      "name": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.OnePlaneKoszul.actual_onePlane_Tor_degree",
+      "before": "theorem actual_onePlane_Tor_degree (r N : \u2115) :\n    (torGrading K n r).piece N=if N=r then \u22a4 else \u22a5 := by\n  rw [torGrading,TauCeti.InternalGrading.map_piece]\n  change (tensorDegreePiece K n r N).map _=_\n  rw [tensorDegreePiece_eq]\n  by_cases h : N=r\n  \u00b7 simp only [if_pos h,Submodule.map_top]\n    exact LinearMap.range_eq_top.mpr (torTermIsoOverK K n r).toLinearEquiv.symm.surjective\n  \u00b7 simp only [if_neg h,Submodule.map_bot]",
+      "after": "theorem actual_onePlane_Tor_degree (r N : \u2115) :\n    (torGrading K n r).piece N=if N=r then \u22a4 else \u22a5 := by\n  change (_root_.PaperVerification.AlternatingForms.OnePlaneKoszul.torGrading K n r).piece N=if N=r then \u22a4 else \u22a5\n  exact _root_.PaperVerification.AlternatingForms.OnePlaneKoszul.actual_onePlane_Tor_degree K n r N",
+      "same_mathematical_type": true
+    }
+  ],
+  "all_declaration_types_and_data_bodies_preserved": true,
+  "explanation": "The commutativity proof now supplies its concrete polynomial type explicitly. The two original one-plane Tor proofs are applied directly after changing to their definitionally identical original degree-piece/grading expressions. This uses the actual retained resolution, not a rank model or new assumptions. Missing fresh helper names and accidental root-name rewrite heads are avoided. Kernel elaboration of the explicit definitional bridges remains to be checked by the full workflow.",
+  "canonical_control_lines": 829,
+  "canonical_control_sha256": "f6b794ccefb718cb1945697c6c6af763042547df37de772940bda91b0dacdd27"
+}

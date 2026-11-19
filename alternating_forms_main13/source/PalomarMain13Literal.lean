@@ -203,7 +203,7 @@ def reesAlgebra (Q : Ideal P) (w : σ → ℕ) : Subalgebra K (Polynomial (P ⧸
 theorem reesMultiplicationCommutes (Q : Ideal P) (w : σ → ℕ) (a b : reesAlgebra Q w) : a*b=b*a := by
   apply Subtype.ext
   change (a : Polynomial (P ⧸ Q)) * (b : Polynomial (P ⧸ Q)) = (b : Polynomial (P ⧸ Q)) * (a : Polynomial (P ⧸ Q))
-  exact mul_comm _ _
+  exact _root_.mul_comm (a : Polynomial (P ⧸ Q)) (b : Polynomial (P ⧸ Q))
 instance reesAlgebraCommRing (Q : Ideal P) (w : σ → ℕ) : CommRing (reesAlgebra Q w) := by
   let ringInst : Ring (reesAlgebra Q w) := inferInstance
   exact {ringInst with mul_comm := reesMultiplicationCommutes Q w}
@@ -656,22 +656,8 @@ def tensorDegreePiece (r N : ℕ) : Submodule K (tensorTermOverK K n r) :=
 /-- Literal PaperVerification.AlternatingForms.OnePlaneKoszul.tensorDegreePiece_eq_bot; exact original coordinate/Tor semantics. -/
 theorem tensorDegreePiece_eq_bot (r N : ℕ) (hNr : N≠r) :
     tensorDegreePiece K n r N=⊥ := by
-  apply le_antisymm ?_ bot_le
-  rintro z ⟨w,hw,rfl⟩
-  change specializeFree K n r w=0
-  change w∈BasisDegree.piece (freeMonomialBasis K n r) (fun a ↦ a.1.degree+r) N at hw
-  rw [BasisDegree.piece_eq_span] at hw
-  induction hw using Submodule.span_induction with
-  | mem w hw =>
-    obtain ⟨⟨d,I⟩,hd,rfl⟩ := hw
-    apply specializeFree_monomial_ne_zero K n r d I
-    intro hz
-    subst d
-    simp only [map_zero,zero_add,Set.mem_setOf_eq] at hd
-    exact hNr hd.symm
-  | zero => exact map_zero _
-  | add x y hx hy ihx ihy => rw [map_add,ihx,ihy,add_zero]
-  | smul c x hx ih => rw [map_smul,ih,smul_zero]
+  change _root_.PaperVerification.AlternatingForms.OnePlaneKoszul.tensorDegreePiece K n r N=⊥
+  exact _root_.PaperVerification.AlternatingForms.OnePlaneKoszul.tensorDegreePiece_eq_bot K n r N hNr
 /-- Literal PaperVerification.AlternatingForms.OnePlaneKoszul.tensorDegreePieces_iSup; exact original coordinate/Tor semantics. -/
 theorem tensorDegreePieces_iSup (r : ℕ) : (⨆ N,tensorDegreePiece K n r N)=⊤ := by
   simp only [tensorDegreePiece]
@@ -711,13 +697,8 @@ def torGrading (r : ℕ) : TauCeti.InternalGrading K (TorOverK K n r) ℕ :=
 /-- Literal PaperVerification.AlternatingForms.OnePlaneKoszul.actual_onePlane_Tor_degree; exact original coordinate/Tor semantics. -/
 theorem actual_onePlane_Tor_degree (r N : ℕ) :
     (torGrading K n r).piece N=if N=r then ⊤ else ⊥ := by
-  rw [torGrading,TauCeti.InternalGrading.map_piece]
-  change (tensorDegreePiece K n r N).map _=_
-  rw [tensorDegreePiece_eq]
-  by_cases h : N=r
-  · simp only [if_pos h,Submodule.map_top]
-    exact LinearMap.range_eq_top.mpr (torTermIsoOverK K n r).toLinearEquiv.symm.surjective
-  · simp only [if_neg h,Submodule.map_bot]
+  change (_root_.PaperVerification.AlternatingForms.OnePlaneKoszul.torGrading K n r).piece N=if N=r then ⊤ else ⊥
+  exact _root_.PaperVerification.AlternatingForms.OnePlaneKoszul.actual_onePlane_Tor_degree K n r N
 end
 end PaperVerification.AlternatingForms.OnePlaneKoszul
 namespace PaperVerification.AlternatingForms
