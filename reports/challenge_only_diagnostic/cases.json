@@ -8,16 +8,16 @@
       "module": "HaarProductProbe",
       "case_dir": "cases/wishart_product_haar_explicit_proof",
       "original_package": "reports/wishart/full20-canonical",
-      "original_challenge": "reports/wishart/full20-canonical/complete-measured-repair/haar-product-repair/revision-02/ProofSmoke.lean",
+      "original_challenge": "reports/wishart/full20-canonical/complete-measured-repair/haar-product-repair/revision-03/ProofSmoke.lean",
       "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
       "hashes": {
         "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
         "lake-manifest.json": "5619bb28ae7f2972522467eccf712e99876805a4fb0b7298a3c8de5918224147",
         "original-lakefile.toml": "e429ab885c0b86124ac6b748b01715efdede7f476661ead3634e0c69b6521ccb",
-        "Challenge.lean": "e409715f18997e770579afd37dedfeaaa2caaf7d0765608547561d1832486a47"
+        "Challenge.lean": "0956b2e0bd0999ed7ab9dbfd46d70012be002a45a163d87427142393e799ab1e"
       },
       "challenge_lines": 185,
-      "challenge_bytes": 11528,
+      "challenge_bytes": 11543,
       "dependency_pins": [
         {
           "name": "mathlib",
