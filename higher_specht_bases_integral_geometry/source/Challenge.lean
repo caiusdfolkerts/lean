@@ -100,6 +100,27 @@ attribute [local instance 1200] dualScalarModule
 variable (k : Type u) (N : Type w) {A : Type v} [CommSemiring k] [Semiring A] [AddCommMonoid N]
   [Module k N] [Module Aᵐᵒᵖ N] [SMulCommClass Aᵐᵒᵖ k N]
 
+abbrev dualRightOperator (a : A) : Module.End k (Module.Dual k N) :=
+  (Module.toModuleEnd k N (MulOpposite.op a)).dualMap
+
+theorem dualRightOperator_one : dualRightOperator k N (1 : A) = 1 := by
+  ext φ x
+  simp [dualRightOperator]
+
+theorem dualRightOperator_mul (a b : A) :
+    dualRightOperator k N (a * b) = dualRightOperator k N a * dualRightOperator k N b := by
+  ext φ x
+  simp [dualRightOperator, mul_smul]
+
+theorem dualRightOperator_zero : dualRightOperator k N (0 : A) = 0 := by
+  ext φ x
+  simp [dualRightOperator]
+
+theorem dualRightOperator_add (a b : A) :
+    dualRightOperator k N (a + b) = dualRightOperator k N a + dualRightOperator k N b := by
+  ext φ x
+  simp [dualRightOperator, add_smul]
+
 /-- The **duality** `D = Hom_k(-, k)` turns a right `A`-module `N` into a left `A`-module: the
 scalar `a` sends a functional `φ` to `x ↦ φ (x * a)`.  This records that action as a ring
 homomorphism from `A` to the `k`-linear endomorphisms of `Module.Dual k N`.
@@ -108,11 +129,11 @@ Precomposition reverses composition, which is exactly what makes a *right* actio
 *left* action on its dual; the hypothesis `SMulCommClass Aᵐᵒᵖ k N` is what makes multiplication by
 `a` a `k`-linear endomorphism of `N` in the first place. -/
 def dualRightAction : A →+* Module.End k (Module.Dual k N) where
-  toFun a := (Module.toModuleEnd k N (MulOpposite.op a)).dualMap
-  map_one' := by ext φ x; simp
-  map_mul' a b := by ext φ x; simp [mul_smul]
-  map_zero' := by ext φ x; simp
-  map_add' a b := by ext φ x; simp [add_smul]
+  toFun := dualRightOperator k N
+  map_one' := dualRightOperator_one k N
+  map_mul' := dualRightOperator_mul k N
+  map_zero' := dualRightOperator_zero k N
+  map_add' := dualRightOperator_add k N
 
 end TauCeti
 
