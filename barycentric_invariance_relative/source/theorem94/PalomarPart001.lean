@@ -938,11 +938,17 @@ open Classical Finset MvPolynomial
 variable {I V K M N : Type*} [CommRing K]
   [AddCommGroup M] [Module K M] [AddCommGroup N] [Module K N]
 
+/-- The original scalar-closure calculation for the unchanged coefficient predicate. -/
+theorem palomarBasisOrdinaryDegreePiece_smul (b : Module.Basis I K M)
+    (degree : I → ℕ) (n : ℕ) :
+    ∀ (c : K) (x : M), (∀ i, degree i ≠ n → b.repr x i = 0) →
+      ∀ i, degree i ≠ n → b.repr (c • x) i = 0 := by intro c x hx i hi; simp only [map_smul, Finsupp.smul_apply, hx i hi, smul_zero]
+
 def basisOrdinaryDegreePiece (b : Module.Basis I K M) (degree : I → ℕ) (n : ℕ) : Submodule K M where
   carrier := {x | ∀ i, degree i ≠ n → b.repr x i = 0}
   zero_mem' := by intro i hi; simp
   add_mem' := by intro x y hx hy i hi; simp only [map_add, Finsupp.add_apply, hx i hi, hy i hi, add_zero]
-  smul_mem' := by intro c x hx i hi; simp only [map_smul, Finsupp.smul_apply, hx i hi, smul_zero]
+  smul_mem' := palomarBasisOrdinaryDegreePiece_smul b degree n
 
 theorem weightedPresentationPiece_eq (q : MvPolynomial V K →ₗ[K] M)
     (b : Module.Basis I K M) (a : I → V →₀ ℕ) (w : V → ℕ) (degree : I → ℕ)
@@ -2522,17 +2528,29 @@ def kernelSubrepresentation : Subrepresentation ρ where
 abbrev kernelRepresentation : Rep K G :=
   Rep.of (kernelSubrepresentation ρ ε hε).toRepresentation
 
+
+include hε in
+/-- The original value rho(g)x-x belongs to the actual invariant scalar kernel. -/
+theorem palomarConnectingValue_mem_kernel (x : E) (g : G) :
+    ρ g x - x ∈ LinearMap.ker ε := by
+  change ε (ρ g x - x) = 0
+  rw [map_sub, hε, sub_self]
+/-- The literal original kernel-valued connecting cochain. -/
+def palomarConnectingFunction (x : E) : G → kernelRepresentation ρ ε hε :=
+  fun g => ⟨ρ g x - x, palomarConnectingValue_mem_kernel ρ ε hε x g⟩
+/-- The original group-cocycle calculation, recorded as a semantic support fact. -/
+theorem palomarConnectingFunction_isCocycle (x : E) :
+    palomarConnectingFunction ρ ε hε x ∈ cocycles₁ (kernelRepresentation ρ ε hε) := by
+  apply (mem_cocycles₁_iff _).mpr
+  intro g h
+  apply Subtype.ext
+  change ρ (g * h) x - x = ρ g (ρ h x - x) + (ρ g x - x)
+  rw [map_mul, Module.End.mul_apply, map_sub]
+  abel
+
 /-- The usual connecting cocycle `g ↦ g x - x`, valued in `ker ε`. -/
 def connectingCocycle (x : E) : cocycles₁ (kernelRepresentation ρ ε hε) :=
-  ⟨fun g => ⟨ρ g x - x, by
-    change ε (ρ g x - x) = 0
-    rw [map_sub, hε, sub_self]⟩, by
-    apply (mem_cocycles₁_iff _).mpr
-    intro g h
-    apply Subtype.ext
-    change ρ (g * h) x - x = ρ g (ρ h x - x) + (ρ g x - x)
-    rw [map_mul, Module.End.mul_apply, map_sub]
-    abel⟩
+  ⟨palomarConnectingFunction ρ ε hε x, palomarConnectingFunction_isCocycle ρ ε hε x⟩
 
 def connectingCocycleLinear : E →ₗ[K] cocycles₁ (kernelRepresentation ρ ε hε) where
   toFun := connectingCocycle ρ ε hε

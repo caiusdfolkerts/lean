@@ -22,7 +22,13 @@
     "FourPapers.Universal.simplexOrderAction_mul",
     "FourPapers.Universal.ScalarFamilies.theorem_9_4_universalAnnihilator",
     "PalomarBarycentricScalar.exactScalarIdeal",
-    "PalomarBarycentricScalar.cohomologicalObstructionModule"
+    "PalomarBarycentricScalar.cohomologicalObstructionModule",
+    "FourPapers.Universal.ScalarObstruction.palomarConnectingValue_mem_kernel",
+    "FourPapers.Universal.ScalarObstruction.palomarConnectingFunction_isCocycle",
+    "PalomarBarycentricRelative.coefficientIdentityInvPair",
+    "PalomarBarycentricRelative.polynomialSelfTower",
+    "FourPapers.Universal.palomarBasisOrdinaryDegreePiece_smul",
+    "PalomarBarycentricRelative.coefficientIdentityCompTriple"
   ],
   "permitted_axioms": [
     "propext",

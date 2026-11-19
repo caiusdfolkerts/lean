@@ -44,11 +44,11 @@ automation:
       not been reconstructed from the snapshot.
 review:
   status: unchecked
-  notes: Paper, README and source declarations inspected. The current independent
-    Challenge restores literal source definition bodies and original binder/universe
-    contexts; only theorem proofs are holes. Stable explicit names were added to existing
-    instances without changing their values. Current Challenge elaboration, rebuilt
-    Solution, Comparator and independent kernel replay remain pending.
+  notes: Original691-line Challenge and exact39e0625 source/Solution built. Raw compiled-type
+    diagnostics measured common ScalarFamilies proof-class aliases and connecting-cocycle
+    proof sharing. Current693-line revision moves only the original explicit cocycle
+    calculations to selected named support facts and has not been elaborated. The
+    exact implicit classes await the canonical smoke. Comparator/replay remain pending.
 scope:
   known_gaps:
   - Other theorem groups from the same paper have separate configurations because

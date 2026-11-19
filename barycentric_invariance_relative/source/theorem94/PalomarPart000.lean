@@ -98,6 +98,23 @@ public import Mathlib.LinearAlgebra.StdBasis
 public import Mathlib.RingTheory.Ideal.Nonunits
 public import Mathlib.RingTheory.Ideal.Quotient.Basic
 public import Mathlib.RingTheory.Localization.FractionRing
+
+@[expose] public section
+namespace PalomarBarycentricRelative
+universe uScalarK uScalarV
+/-- The measured identity-coefficient composition triple used by the literal linear maps. -/
+theorem coefficientIdentityCompTriple {K : Type uScalarK} [CommRing K] :
+    RingHomCompTriple (RingHom.id K) (RingHom.id K) (RingHom.id K) := by infer_instance
+/-- The measured identity-coefficient inverse pair, with the actual coefficient map. -/
+theorem coefficientIdentityInvPair {K : Type uScalarK} [CommRing K] :
+    RingHomInvPair (RingHom.id K) (RingHom.id K) := by infer_instance
+/-- The measured polynomial self-action tower used by the literal comparison families. -/
+theorem polynomialSelfTower {K : Type uScalarK} {V : Type uScalarV} [CommRing K] :
+    IsScalarTower K (MvPolynomial V K) (MvPolynomial V K) := by infer_instance
+attribute [instance 2000] coefficientIdentityCompTriple coefficientIdentityInvPair polynomialSelfTower
+end PalomarBarycentricRelative
+end
+
 @[expose] public section
 -- Keep editor information enabled for the stock Lean command processor.
 set_option Elab.async false

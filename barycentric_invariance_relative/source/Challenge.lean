@@ -13,6 +13,23 @@ public import Mathlib.Data.Nat.Factorial.Basic
 public import Mathlib.Order.Atoms.Finite
 public import Lean.Elab.Tactic.Omega
 
+@[expose] public section
+namespace PalomarBarycentricRelative
+universe uScalarK uScalarV
+/-- The measured identity-coefficient composition triple used by the literal linear maps. -/
+theorem coefficientIdentityCompTriple {K : Type uScalarK} [CommRing K] :
+    RingHomCompTriple (RingHom.id K) (RingHom.id K) (RingHom.id K) := by sorry
+/-- The measured identity-coefficient inverse pair, with the actual coefficient map. -/
+theorem coefficientIdentityInvPair {K : Type uScalarK} [CommRing K] :
+    RingHomInvPair (RingHom.id K) (RingHom.id K) := by sorry
+/-- The measured polynomial self-action tower used by the literal comparison families. -/
+theorem polynomialSelfTower {K : Type uScalarK} {V : Type uScalarV} [CommRing K] :
+    IsScalarTower K (MvPolynomial V K) (MvPolynomial V K) := by sorry
+attribute [instance 2000] coefficientIdentityCompTriple coefficientIdentityInvPair polynomialSelfTower
+end PalomarBarycentricRelative
+end
+
+
 /-!
 # Scalar and first-cohomology obstructions for coherent face-ring comparisons
 
@@ -312,12 +329,18 @@ open Classical Finset MvPolynomial
 variable {I V K M N : Type*} [CommRing K]
   [AddCommGroup M] [Module K M] [AddCommGroup N] [Module K N]
 
+/-- The original scalar-closure calculation for the unchanged coefficient predicate. -/
+theorem palomarBasisOrdinaryDegreePiece_smul (b : Module.Basis I K M)
+    (degree : I → ℕ) (n : ℕ) :
+    ∀ (c : K) (x : M), (∀ i, degree i ≠ n → b.repr x i = 0) →
+      ∀ i, degree i ≠ n → b.repr (c • x) i = 0 := by sorry
+
 /-- Literal retained-source def; original position theorem94.lean:9301. -/
 def basisOrdinaryDegreePiece (b : Module.Basis I K M) (degree : I → ℕ) (n : ℕ) : Submodule K M where
   carrier := {x | ∀ i, degree i ≠ n → b.repr x i = 0}
   zero_mem' := by intro i hi; simp
   add_mem' := by intro x y hx hy i hi; simp only [map_add, Finsupp.add_apply, hx i hi, hy i hi, add_zero]
-  smul_mem' := by intro c x hx i hi; simp only [map_smul, Finsupp.smul_apply, hx i hi, smul_zero]
+  smul_mem' := palomarBasisOrdinaryDegreePiece_smul b degree n
 end
 end FourPapers.Universal
 
@@ -411,17 +434,21 @@ def kernelSubrepresentation : Subrepresentation ρ where
 /-- The representation object carried by the actual invariant scalar kernel. -/
 abbrev kernelRepresentation : Rep K G :=
   Rep.of (kernelSubrepresentation ρ ε hε).toRepresentation
+
+include hε in
+/-- The original value rho(g)x-x belongs to the actual invariant scalar kernel. -/
+theorem palomarConnectingValue_mem_kernel (x : E) (g : G) :
+    ρ g x - x ∈ LinearMap.ker ε := by sorry
+/-- The literal original kernel-valued connecting cochain. -/
+def palomarConnectingFunction (x : E) : G → kernelRepresentation ρ ε hε :=
+  fun g => ⟨ρ g x - x, palomarConnectingValue_mem_kernel ρ ε hε x g⟩
+/-- The original group-cocycle calculation, recorded as a semantic support fact. -/
+theorem palomarConnectingFunction_isCocycle (x : E) :
+    palomarConnectingFunction ρ ε hε x ∈ cocycles₁ (kernelRepresentation ρ ε hε) := by sorry
+
 /-- The actual kernel-valued cocycle sending g to rho(g)x minus x. -/
 def connectingCocycle (x : E) : cocycles₁ (kernelRepresentation ρ ε hε) :=
-  ⟨fun g => ⟨ρ g x - x, by
-    change ε (ρ g x - x) = 0
-    rw [map_sub, hε, sub_self]⟩, by
-    apply (mem_cocycles₁_iff _).mpr
-    intro g h
-    apply Subtype.ext
-    change ρ (g * h) x - x = ρ g (ρ h x - x) + (ρ g x - x)
-    rw [map_mul, Module.End.mul_apply, map_sub]
-    abel⟩
+  ⟨palomarConnectingFunction ρ ε hε x, palomarConnectingFunction_isCocycle ρ ε hε x⟩
 /-- Literal retained-source def; original position theorem94.lean:10913. -/
 def obstruction (x : E) : H1 (kernelRepresentation ρ ε hε) :=
   H1π _ (connectingCocycle ρ ε hε x)

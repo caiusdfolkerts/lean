@@ -289,11 +289,11 @@
   ],
   "checks": {
     "source_copy": "complete including retained reading files and licenses",
-    "build": "not_run_for_current_hash",
-    "comparator": "not_run_for_current_hash",
-    "nanoda": "not_run_for_current_hash",
-    "editorial_review": "not_run_for_current_hash",
-    "challenge_elaboration": "not_run_for_current_hash"
+    "build": "not_run",
+    "comparator": "not_run",
+    "nanoda": "not_run",
+    "editorial_review": "not_run",
+    "challenge_elaboration": "previous_draft_or_scope_only_current_candidate_pending"
   },
   "current_selection": "Theorem9.4 exact scalar ideal, genuine H1 obstruction module, and universal factorial annihilator.",
   "selected_wrapper_provenance": [
@@ -346,23 +346,96 @@
   },
   "challenge": {
     "path": "source/Challenge.lean",
-    "sha256": "f5b53b34902091feaa311f27f3f6c00ec710de76d4688688ba7fc86066c93f05",
-    "physical_lines": 691,
-    "bytes": 32266,
-    "local_elaboration": "not_run_for_current_hash",
-    "solution_build": "not_run_for_current_hash",
-    "comparator": "not_run_for_current_hash"
+    "sha256": "79f98e841903912fd4fd52fa05e85e4fa199ecf8267023ea8755aa75aa0280d2",
+    "physical_lines": 688,
+    "bytes": 32047,
+    "local_elaboration": "pending_after_literal_context_repair",
+    "solution_build": "pending_after_stable_instance_headers",
+    "comparator": "pending_after_literal_context_repair"
   },
   "packaging_changes": [
     {
       "kind": "literal_context_correction",
       "description": "All independent definition values and source variable/universe contexts restored. Exact theorem statements replace proof terms only. Original local/Fintype instances receive explicit stable names in both environments; all instance values and substantive proof bodies are retained. Fresh wrapper headers are literal in Challenge and Solution.",
       "evidence": "packaging/literal-correction-applied.json"
+    }
+  ],
+  "coverage_status": "partial_principal_selection_not_whole_paper",
+  "current_independent_challenge": {
+    "path": "packages/barycentric_invariance_relative/source/Challenge.lean",
+    "sha256": "f5b53b34902091feaa311f27f3f6c00ec710de76d4688688ba7fc86066c93f05"
+  },
+  "uncovered_main_results_and_corollaries": [
+    {
+      "paper_result": "Theorem 1.1 canonical associated grade",
+      "uncovered_scope": "Canonical chain-monomial/multiplicative associated-graded identification beyond the selected ordinary-graded, rank-filtered parameter-module comparison.",
+      "blocker_or_preparation": "Source exists; explicit independent canonical graded-algebra interface still required.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
     },
     {
-      "kind": "literal_interface_repair",
-      "evidence": "packaging/targeted-check-repair.json",
-      "description": "Exact current source/context correction and hash-bound pending validation receipt."
+      "paper_result": "Theorem 1.2 group/product clauses",
+      "uncovered_scope": "The actual stable Tor filtration, equivariant associated-graded identification, induced resolution product and multiplicativity.",
+      "blocker_or_preparation": "Scalar homogeneous-Tor version is prepared in separate barycentric_invariance_tor; full group/product structure not independently selected.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Theorem 1.2 relative clauses",
+      "uncovered_scope": "Full relative pair Tor and rank-selected reduced relative cohomology, with equivariance.",
+      "blocker_or_preparation": "Source exists in incompatible theorem12 bundle; scalar/H1 obstruction entry does not cover relative Tor.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Theorem 1.2 Grothendieck consequences",
+      "uncovered_scope": "Absolute and relative representation-ring identities over every field, including modular characteristic.",
+      "blocker_or_preparation": "Source exists (theorem_1_2_grothendieck and theorem_1_2_relative_grothendieck); independent actual representations/classes not extracted.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Theorem 9.4 scalar/H1 obstruction",
+      "uncovered_scope": "Actual scalar ideal, cyclic H1 obstruction module and universal annihilator.",
+      "blocker_or_preparation": "Prepared in separate barycentric_invariance_relative; full Comparator verification pending. No coverage credit from Challenge-only pass.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
     }
-  ]
+  ],
+  "coverage_note": "A source theorem, a prepared candidate, a Challenge elaboration pass, and a full Comparator/replay pass are separate states. No partial entry is counted as whole-paper coverage.",
+  "packaging_support_declarations": [
+    {
+      "name": "FourPapers.Universal.ScalarObstruction.palomarConnectingValue_mem_kernel",
+      "origin_kind": "fresh_name_for_original_semantic_proof_field",
+      "original_declaration": "FourPapers.Universal.ScalarObstruction.connectingCocycle",
+      "original_source_path": "source/theorem94.lean",
+      "original_source_line": 10886,
+      "original_source_sha256": "9d8d8f8cd0e4fde586d338b5cfac688d3e341754bce2c80ed5f33f4ef49f983b",
+      "original_source_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/barycentric_invariance/source/theorem94.lean#L10886",
+      "original_proof_field": "kernel-membership subtype proof",
+      "source_proof_body": "Original field calculation moved verbatim; independently selected exact theorem type.",
+      "paper_scope": "Support only; no additional principal-result coverage claim."
+    },
+    {
+      "name": "FourPapers.Universal.ScalarObstruction.palomarConnectingFunction_isCocycle",
+      "origin_kind": "fresh_name_for_original_semantic_proof_field",
+      "original_declaration": "FourPapers.Universal.ScalarObstruction.connectingCocycle",
+      "original_source_path": "source/theorem94.lean",
+      "original_source_line": 10886,
+      "original_source_sha256": "9d8d8f8cd0e4fde586d338b5cfac688d3e341754bce2c80ed5f33f4ef49f983b",
+      "original_source_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/barycentric_invariance/source/theorem94.lean#L10886",
+      "original_proof_field": "group-cocycle membership proof",
+      "source_proof_body": "Original field calculation moved verbatim; independently selected exact theorem type.",
+      "paper_scope": "Support only; no additional principal-result coverage claim."
+    }
+  ],
+  "current_interface_status": "partial_explicit_proof_normalization_not_frozen_not_elaborated",
+  "current_challenge_sha256": "f763a89cbe044b4c30841ee820d11fd4b331670a7a48849bdb35b2a9bd162c68",
+  "measured_packaging_repairs": [
+    {
+      "receipt": "packaging/connecting-cocycle-proof-normalization.json",
+      "sha256": "a7e69eda1789b2171695bd26beb0065855f8f94198a47a8e60f349a8070cd991"
+    }
+  ],
+  "validation_scope_note": "Original691-line scalar Challenge passed R3; its exact39e0625 full source/Solution built but selected theorem types rejected. Current693-line interface is source-prepared only. Required principal/corollary gaps remain explicitly uncovered."
 }
