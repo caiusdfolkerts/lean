@@ -12,7 +12,12 @@ project:
     homogeneous deformation with this initial ideal, the first-power criterion
     gives the symbolic and initial identities, Betti preservation in all powers
     in every respected additive grading refining ordinary degree, and generation
-    of its actual Rees Koszul homology in auxiliary degree one.
+    of its actual Rees Koszul homology in auxiliary degree one. The complete
+    Corollaries5.1 and5.2 use actual quotient Koszul homology by sums of
+    predecessor-colon ideals, give the rational polynomial and every
+    nonnegative integer forward difference, and preserve the actual categorical
+    projective-dimension and Ext-depth monotonicities, including empty-family
+    and zero-row cases and the exact general homogeneous deformation transfer.
   authors: [Caius Folkerts]
   responsible_maintainers: [Caius Folkerts]
   license: Apache-2.0
@@ -24,7 +29,7 @@ sources:
     authors: [Caius Folkerts]
     type: paper
     relationship: formalizes
-    location: paper.pdf, Theorems1.1,1.2,4.3 and Proposition2.2
+    location: paper.pdf, Theorems1.1,1.2,4.3, Proposition2.2 and complete Corollaries5.1,5.2
 related_formalizations:
   - title: caiusdfolkerts/research sublattice_resolutions
     id: https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/sublattice_resolutions
@@ -39,21 +44,25 @@ automation:
 review:
   status: unchecked
   notes: >-
-    Exact726-line Challenge passed canonical elaboration. Canonical actual API
-    proofs passed runs44383675339,44460937968 and44467525676. The latter proves
-    the mixed ideal/ModuleCat scalar actions and protected equivalence laws.
-    Full run44469097025 reduced the remaining Solution failures to five, with
-    no omitted or truncated errors. Three quotient-cycle coercion goals now
-    use explicit underlying-chain linearity and the canonical coerced-zero
-    law. The private Rees boundary-map equality disables the fourteen specific
-    fresh/source instance aliases in a command scope, permitting the same
-    canonical Subalgebra/quotient structures to be inferred without comparing
-    distinct cycle predicates. All aliases are restored immediately afterward;
-    no instance definition is removed. This diagnosis of its header timeout
-    remains an inference until full compilation; scoped diagnostics will retain
-    reduction counters if it recurs. No heartbeat limit changes. All28 selected
-    headers, Challenge, original sources and canonical pins remain unchanged.
-    The repaired full Solution, Comparator and kernel replay are unverified.
+    The complete904-line independent Challenge passed canonical elaboration in
+    run44472886294, preserving all prior28 statements and adding four
+    substantive Corollary5.1/5.2 targets plus a finite-enumeration support law.
+    Actual canonical API proof runs44383675339,44460937968,44467525676 and
+    44479164930 passed with exact input, entire manifest and bounded-log hashes
+    verified. The last run proves the exact generic noncommutative ideal
+    transport and typed submodule-value inverse laws now inlined byte-for-byte.
+    Their concrete DGA application supplies the existing ring dictionaries
+    explicitly and proves actual boundary membership transport from the
+    differential equality; no new hypothesis or instance suppression remains.
+    Full run44474950676 had four errors, all recovered without omission; this
+    repair addresses its ideal-map class inference and inverse coercion.
+    All prior28 target headers, original source modules, guards, canonical
+    pins and heartbeat limits remain. The33 comparison selection includes
+    twelve substantive assertions and twenty-one supports. The assembled
+    actual Solution and the new quotient-homology, coefficient-sum and full
+    numerical-transfer bridges remain unelaborated as a complete project.
+    No full Solution, Comparator, kernel replay, intake or paper-completion
+    claim is made until the new full run succeeds.
 fidelity:
   divergences: >-
     Actual polynomial Koszul homology is used as the independent interface for
@@ -64,6 +73,6 @@ fidelity:
     remain quantified. The graph uses the given closed labeling without a
     connectivity assumption. The Rees conclusion uses the actual homology algebra.
 limitations:
-  - The exact726-line extended Challenge passed. The merged actual Solution, full source build, raw Comparator and NanoDa remain unverified.
-  - This candidate drafts Theorems1.1,1.2,4.3 and Proposition2.2; the remaining substantive corollary groups require their own exact interfaces and are not claimed here.
+  - The exact904-line extended Challenge passed. The complete33-target actual Solution, raw Comparator and kernel replay remain unverified.
+  - This candidate selects Theorems1.1,1.2,4.3, Proposition2.2 and complete Corollaries5.1,5.2. Thirteen further paper groups remain outside this selection; whole-paper completion is not claimed.
   - Optional filesystem report writes catch IO failures individually; all mathematical audit assertions and source guards are retained.

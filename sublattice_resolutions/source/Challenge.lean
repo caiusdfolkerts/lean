@@ -724,3 +724,181 @@ theorem sublattice_first_power_finer_propagation
     RefinedKoszul.betti ω (J ^ s) p γ =
       RefinedKoszul.betti ω ((sublatticeIdeal n (k := k) E) ^ s) p γ := by sorry
 end PalomarSublattice
+
+/- Literal ordinary integer strands for actual quotient coefficients. This
+fragment extends the existing canonical-only Challenge; no derived-Tor value
+is defined by a summation formula. -/
+namespace PalomarSublattice.OrdinaryQuotientKoszul
+open Classical MvPolynomial
+universe u
+variable {V k : Type u} [Fintype V] [LinearOrder V] [Field k]
+/-- The image of the genuine polynomial homogeneous component in the actual
+quotient. Integer weights include negative strands with their actual zero
+polynomial component. -/
+def coefficientPiece (I : Ideal (MvPolynomial V k)) (q : ℤ) :
+    Submodule k (MvPolynomial V k ⧸ I) :=
+  (weightedHomogeneousSubmodule k (fun _ : V => (1 : ℤ)) q).map
+    (Ideal.Quotient.mkₐ k I).toLinearMap
+/-- Exterior degree p contributes p to ordinary internal degree. Each actual
+quotient coefficient has polynomial degree q-p. -/
+def piece (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
+    Submodule k (FineKoszul.Coordinates (V := V) (MvPolynomial V k ⧸ I) p) :=
+  ⨅ s : Set.powersetCard V p,
+    (coefficientPiece I (q - (p : ℤ))).comap (Finsupp.lapply s)
+/-- Genuine cycles of the signed variable-multiplication Koszul differential
+inside the actual ordinary integer strand. -/
+def cycles (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
+    Submodule k (FineKoszul.Coordinates (V := V) (MvPolynomial V k ⧸ I) p) :=
+  LinearMap.ker (FineKoszul.previous (k := k) p) ⊓ piece I q p
+instance cyclesAddCommGroup (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
+    AddCommGroup (cycles I q p) :=
+  Submodule.addCommGroup (R := k)
+    (M := FineKoszul.Coordinates (V := V) (MvPolynomial V k ⧸ I) p) (cycles I q p)
+/-- The actual preceding homogeneous component mapped by the Koszul
+ differential, viewed inside its cycle submodule. -/
+def boundaries (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
+    Submodule k (cycles I q p) :=
+  (Submodule.map (FineKoszul.differential (k := k) p) (piece I q (p+1))).comap
+    (cycles I q p).subtype
+/-- Literal homogeneous Koszul homology: actual cycles modulo actual boundaries. -/
+abbrev Homology (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :=
+  _root_.Quotient (Submodule.quotientRel (R := k) (M := cycles I q p) (boundaries I q p))
+instance homologyAddCommGroup (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
+    AddCommGroup (Homology I q p) :=
+  Submodule.Quotient.addCommGroup (R := k) (M := cycles I q p) (boundaries I q p)
+instance homologyModule (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
+    Module k (Homology I q p) :=
+  Submodule.Quotient.module (R := k) (M := cycles I q p) (boundaries I q p)
+/-- The dimension of the genuine ordinary integer Koszul homology strand. -/
+def betti (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) : ℕ :=
+  Module.finrank k (Homology I q p)
+end PalomarSublattice.OrdinaryQuotientKoszul
+
+/- Literal Corollaries5.1 and5.2. Every normalized degree is integer-valued;
+the coefficient quotients are actual sums of the displayed predecessor colons. -/
+namespace PalomarSublattice
+open Classical MvPolynomial
+open scoped BigOperators
+universe u
+variable {d : ℕ} (n : Fin d → ℕ) {k : Type u} [Field k]
+/-- Exactly the nonempty chains of distinct tuples in E. The strict ordering
+is inherited from the original coordinatewise partial order. -/
+def StrictSupport (E : Finset (FiniteTuple n)) :=
+  {s : Finset E // s.Nonempty ∧ IsChain (· < ·) (s : Set E)}
+/-- Literal finite enumeration with an explicit canonical classical decision,
+so source-specific Fintype aliases cannot enter the independent data body. -/
+def strictSupportFinset (E : Finset (FiniteTuple n)) : Finset (Finset E) :=
+  @Finset.filter (Finset E) (fun s => s.Nonempty ∧ IsChain (· < ·) (s : Set E))
+    (Classical.decPred _) Finset.univ
+/-- Exact enumeration law; this supporting proposition must be selected for
+comparison when the candidate is assembled. -/
+theorem strictSupportFinset_mem (E : Finset (FiniteTuple n)) (s : Finset E) :
+    s ∈ strictSupportFinset n E ↔ s.Nonempty ∧ IsChain (· < ·) (s : Set E) := by
+  classical
+  simp [strictSupportFinset]
+noncomputable instance strictSupportFintype (E : Finset (FiniteTuple n)) :
+    Fintype (StrictSupport n E) :=
+  Fintype.subtype (strictSupportFinset n E) (strictSupportFinset_mem n E)
+/-- The genuine sum of predecessor-colon ideals over a strict support. -/
+def supportCoefficientIdeal {E : Finset (FiniteTuple n)} (s : StrictSupport n E) :
+    Ideal (MvPolynomial (FiniteVariable.{u} n) k) :=
+  ⨆ a : s.val, predecessorColon n E a.val.val
+/-- Printed nonnegative integer coefficient, grouped by strict-support
+cardinality r. Every summand is an actual homogeneous quotient homology dimension. -/
+def bettiBinomialCoefficient (E : Finset (FiniteTuple n)) (q : ℤ) (p r : ℕ) : ℕ :=
+  ∑ s ∈ Finset.univ.filter (fun s : StrictSupport n E => s.val.card = r),
+    OrdinaryQuotientKoszul.betti (supportCoefficientIdeal n (k := k) s) q p
+/-- Corollary5.1 in every integer normalized degree and every positive power.
+The binomial counts multiplicities of strict supports, rather than defining
+the actual ideal or quotient Betti invariants. -/
+theorem corollary51_integer {E : Finset (FiniteTuple n)} (hE : finiteLatticeClosed n E)
+    (m : ℕ) (hm : 0 < m) (p : ℕ) (q : ℤ) :
+    Koszul.betti ((sublatticeIdeal n (k := k) E) ^ m) p ((m*d : ℕ)+q) =
+      ∑ s : StrictSupport n E, (m-1).choose (s.val.card-1) *
+        OrdinaryQuotientKoszul.betti (supportCoefficientIdeal n (k := k) s) q p := by sorry
+/-- Corollary5.2, exactly the printed grouping by1≤r≤|E|, with the literal
+quotient-Betti coefficients above, every positive power and every integer
+normalized degree. -/
+theorem corollary52_integer_grouped_expansion {E : Finset (FiniteTuple n)}
+    (hE : finiteLatticeClosed n E) (q : ℤ) (p m : ℕ) (hm : 0 < m) :
+    Koszul.betti ((sublatticeIdeal n (k := k) E) ^ m) p ((m*d : ℕ)+q) =
+      ∑ r ∈ Finset.Icc 1 E.card,
+        bettiBinomialCoefficient n (k := k) E q p r * (m-1).choose (r-1) := by sorry
+end PalomarSublattice
+
+/- Remaining literal clauses of Corollaries5.1 and5.2. Unelaborated source
+work only; this does not modify any running or frozen entry. -/
+namespace PalomarSublattice
+open Classical MvPolynomial CategoryTheory
+open scoped BigOperators
+universe u
+variable {d : ℕ} (n : Fin d → ℕ) {k : Type u} [Field k]
+/-- The actual rational binomial polynomial, including its factorial normalization. -/
+def bettiBinomialPolynomial (r : ℕ) : Polynomial ℚ :=
+  Polynomial.C ((r.factorial : ℚ)⁻¹) * descPochhammer ℚ r
+/-- The printed rational polynomial, with actual quotient-Betti coefficients;
+its argument is the positive power m, so the grouped basis is binom(m-1,r-1). -/
+def normalizedBettiPolynomial (E : Finset (FiniteTuple n)) (q : ℤ) (p : ℕ) : Polynomial ℚ :=
+  (∑ r ∈ Finset.Icc 1 E.card,
+    Polynomial.C (bettiBinomialCoefficient n (k := k) E q p r : ℚ) *
+      bettiBinomialPolynomial (r-1)).comp (Polynomial.X-Polynomial.C 1)
+/-- Every sequence value is the actual Betti number of an actual ideal power.
+The t+1 index makes all forward differences range over positive powers. -/
+def normalizedBettiSequence (I : Ideal (MvPolynomial (FiniteVariable.{u} n) k))
+    (q : ℤ) (p t : ℕ) : ℤ :=
+  (Koszul.betti (I^(t+1)) p (((t+1)*d : ℕ)+q) : ℤ)
+/-- Genuine categorical projective dimension of the actual ideal power. -/
+def powerProjectiveDimension (I : Ideal (MvPolynomial (FiniteVariable.{u} n) k)) (m : ℕ) :
+    WithBot ℕ∞ := projectiveDimension (ModuleCat.of (MvPolynomial (FiniteVariable.{u} n) k) ↥(I^m))
+/-- Actual Mathlib Ext-defined depth of the actual quotient at the homogeneous
+maximal ideal; the zero quotient has its canonical infinite-depth value. -/
+def quotientPowerDepth (I : Ideal (MvPolynomial (FiniteVariable.{u} n) k)) (m : ℕ) : ℕ∞ :=
+  (MvPolynomial.idealOfVars (FiniteVariable.{u} n) k).depth
+    (ModuleCat.of (MvPolynomial (FiniteVariable.{u} n) k)
+      (MvPolynomial (FiniteVariable.{u} n) k ⧸ I^m))
+/-- Corollary5.2, all printed consequences: one actual rational polynomial
+for every normalized integer degree, every integer forward difference
+nonnegative, genuine projective dimensions nondecreasing and quotient depths
+nonincreasing. Empty E and zero-row cases are included. -/
+theorem corollary52_full {E : Finset (FiniteTuple n)} (hE : finiteLatticeClosed n E) :
+    (∀ q : ℤ, ∀ p m : ℕ, 0 < m →
+      (normalizedBettiPolynomial n (k := k) E q p).eval (m : ℚ) =
+        (Koszul.betti ((sublatticeIdeal n (k := k) E)^m) p ((m*d : ℕ)+q) : ℚ)) ∧
+    (∀ q : ℤ, ∀ p j t : ℕ,
+      0 ≤ ((fwdDiff (1 : ℕ))^[j]
+        (normalizedBettiSequence n (sublatticeIdeal n (k := k) E) q p)) t) ∧
+    (∀ m N : ℕ, 0 < m → m ≤ N →
+      powerProjectiveDimension n (sublatticeIdeal n (k := k) E) m ≤
+        powerProjectiveDimension n (sublatticeIdeal n (k := k) E) N) ∧
+    (∀ m N : ℕ, 0 < m → m ≤ N →
+      quotientPowerDepth n (sublatticeIdeal n (k := k) E) N ≤
+        quotientPowerDepth n (sublatticeIdeal n (k := k) E) m) := by sorry
+/-- The same complete Corollaries5.1/5.2 conclusions for every homogeneous
+ideal J satisfying exactly the original initial-ideal and first-power ordinary
+Betti comparison. No finer-grading, projective-dimension or depth conclusion
+is assumed as a hypothesis. -/
+theorem corollaries51_52_transfer (o : MonomialOrder (FiniteVariable.{u} n))
+    (J : Ideal (MvPolynomial (FiniteVariable.{u} n) k))
+    (E : Finset (FiniteTuple n)) (hE : finiteLatticeClosed n E)
+    (hinit : initialIdeal o J = sublatticeIdeal n E)
+    (hJ : J.IsHomogeneous (weightedHomogeneousSubmodule k
+      (fun _ : FiniteVariable.{u} n => (1 : ℕ))))
+    (hβ : ∀ p q, Koszul.betti J p q = Koszul.betti (sublatticeIdeal n (k := k) E) p q) :
+    (∀ m : ℕ, 0 < m → ∀ p : ℕ, ∀ q : ℤ,
+      Koszul.betti (J^m) p ((m*d : ℕ)+q) =
+        ∑ s : StrictSupport n E, (m-1).choose (s.val.card-1) *
+          OrdinaryQuotientKoszul.betti (supportCoefficientIdeal n (k := k) s) q p) ∧
+    (∀ q : ℤ, ∀ p m : ℕ, 0 < m →
+      Koszul.betti (J^m) p ((m*d : ℕ)+q) =
+        ∑ r ∈ Finset.Icc 1 E.card,
+          bettiBinomialCoefficient n (k := k) E q p r * (m-1).choose (r-1)) ∧
+    (∀ q : ℤ, ∀ p m : ℕ, 0 < m →
+      (normalizedBettiPolynomial n (k := k) E q p).eval (m : ℚ) =
+        (Koszul.betti (J^m) p ((m*d : ℕ)+q) : ℚ)) ∧
+    (∀ q : ℤ, ∀ p j t : ℕ,
+      0 ≤ ((fwdDiff (1 : ℕ))^[j] (normalizedBettiSequence n J q p)) t) ∧
+    (∀ m N : ℕ, 0 < m → m ≤ N →
+      powerProjectiveDimension n J m ≤ powerProjectiveDimension n J N) ∧
+    (∀ m N : ℕ, 0 < m → m ≤ N →
+      quotientPowerDepth n J N ≤ quotientPowerDepth n J m) := by sorry
+end PalomarSublattice

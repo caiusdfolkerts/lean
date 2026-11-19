@@ -29,7 +29,12 @@
     "PalomarSublattice.GeneralRees.boundary_right",
     "PalomarSublattice.GeneralRees.oneCoefficient_mem",
     "PalomarSublattice.sublattice_deformation_rees_generation",
-    "PalomarSublattice.sublattice_first_power_finer_propagation"
+    "PalomarSublattice.sublattice_first_power_finer_propagation",
+    "PalomarSublattice.strictSupportFinset_mem",
+    "PalomarSublattice.corollary51_integer",
+    "PalomarSublattice.corollary52_integer_grouped_expansion",
+    "PalomarSublattice.corollary52_full",
+    "PalomarSublattice.corollaries51_52_transfer"
   ],
   "permitted_axioms": [
     "propext",

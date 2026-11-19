@@ -1,6 +1,7 @@
 module
 public import Mathlib
 public import paper_results.transfer_formulas
+public import paper_results.numerical_transfer
 public import graph_results.canonical_finer_monomial_homology
 public import paper_results.finite_rees_presentation
 public import graph_results.closed_graph_integer_betti
@@ -20,6 +21,34 @@ homology decompositions remain separate outstanding groups for this paper.
 @[expose] public noncomputable section
 attribute [local instance] MvPolynomial.weightedGradedAlgebra
 set_option backward.isDefEq.respectTransparency false
+namespace PalomarSublattice.NoncommBridgeAPI
+universe u v
+variable {R : Type u} {S : Type v} [Ring R] [Ring S]
+/-- A ring equivalence transports the actual underlying left ideals of two-sided
+ideals whenever it transports their actual membership predicates. -/
+theorem map_asIdeal_of_mem_iff (e : R ≃+* S) (I : TwoSidedIdeal R)
+    (J : TwoSidedIdeal S) (h : ∀ x, x ∈ I ↔ e x ∈ J) :
+    Ideal.map e.toRingHom I.asIdeal = J.asIdeal := by
+  ext y
+  rw [Ideal.mem_map_iff_of_surjective e.toRingHom e.surjective]
+  constructor
+  · rintro ⟨x,hx,rfl⟩
+    exact TwoSidedIdeal.mem_asIdeal.mpr ((h x).mp (TwoSidedIdeal.mem_asIdeal.mp hx))
+  · intro hy
+    refine ⟨e.symm y,?_,e.apply_symm_apply y⟩
+    apply TwoSidedIdeal.mem_asIdeal.mpr
+    apply (h (e.symm y)).mpr
+    simpa only [e.apply_symm_apply] using (TwoSidedIdeal.mem_asIdeal.mp hy)
+/-- The inverse law on actual submodule values, with its domain pinned before
+congruence elaboration. No unfolding of the underlying Finsupp construction. -/
+theorem submoduleEquiv_symm_apply_apply_val
+    {K M N : Type*} [Semiring K] [AddCommMonoid M] [AddCommMonoid N]
+    [Module K M] [Module K N]
+    (U : Submodule K M) (W : Submodule K N) (e : U ≃ₗ[K] W) (x : U) :
+    (e.symm (e x)).val = x.val :=
+  congrArg (fun z : U => z.val) (e.symm_apply_apply x)
+end PalomarSublattice.NoncommBridgeAPI
+
 namespace PalomarSublattice.BridgeAPI
 universe u v w x
 variable {R : Type u} [CommRing R] {X : Type v} {Y : Type w} {Z : Type x}
@@ -694,42 +723,23 @@ private theorem mem_boundaries (x : Cycles (k := k) hE) :
     x ∈ Boundaries hE ↔ x.val ∈ LinearMap.range differential :=
   TwoSidedIdeal.mem_mk' _ _ _ _ _ _ _
 
--- Keep these canonical structures, but avoid asking specific fresh/source
--- aliases to unify distinct cycle predicates during this private transport.
--- The command scope restores every instance immediately after this lemma.
-attribute [-instance] tensorRing tensorAlgebra cyclesRing cyclesAlgebra
-  homologyRing homologyAlgebra sourceCyclesRing sourceCyclesAlgebra
-  sourceHomologyRing sourceHomologyAlgebra
-  FourPapers.ParityDifferential.cyclesRing FourPapers.ParityDifferential.cyclesAlgebra
-  FourPapers.ParityDifferential.homologyRing FourPapers.ParityDifferential.homologyAlgebra in
-set_option diagnostics true in
-private theorem cyclesEquiv_map_boundaries :
-    Ideal.map (cyclesEquiv (k := k) hE).toRingEquiv.toRingHom (Boundaries hE).asIdeal =
-      (FourPapers.Sublattice.reesKoszulTensorDGA (k := k) (sourceClosed hE)).boundaries.asIdeal := by
-  ext y
-  rw [Ideal.mem_map_iff_of_surjective (cyclesEquiv hE).toRingEquiv.toRingHom
-    (cyclesEquiv hE).surjective]
-  constructor
-  · rintro ⟨x, hx, rfl⟩
-    rw [TwoSidedIdeal.mem_asIdeal,
-      FourPapers.ParityDifferential.mem_boundaries]
-    change x.val ∈ LinearMap.range (FourPapers.Sublattice.reesKoszulTensorDGA (k := k) (sourceClosed hE)).d
-    rw [← differential_eq_DGA hE]
-    exact (mem_boundaries hE x).mp (TwoSidedIdeal.mem_asIdeal.mp hx)
-  · intro hy
-    refine ⟨(cyclesEquiv hE).symm y, ?_, (cyclesEquiv hE).apply_symm_apply y⟩
-    apply TwoSidedIdeal.mem_asIdeal.mpr
-    apply (mem_boundaries hE _).mpr
-    change y.val ∈ LinearMap.range differential
-    rw [differential_eq_DGA hE]
-    exact (FourPapers.ParityDifferential.mem_boundaries _ y).mp
-      (TwoSidedIdeal.mem_asIdeal.mp hy)
-
 private def homologyEquiv :
     Homology (k := k) hE ≃ₐ[k] FourPapers.Sublattice.ReesKoszulHomology (k := k) (sourceClosed hE) :=
   Ideal.quotientEquivAlg (Boundaries hE).asIdeal
     (FourPapers.Sublattice.reesKoszulTensorDGA (k := k) (sourceClosed hE)).boundaries.asIdeal
-    (cyclesEquiv hE) (cyclesEquiv_map_boundaries hE).symm
+    (cyclesEquiv hE)
+    (@NoncommBridgeAPI.map_asIdeal_of_mem_iff
+      (Cycles (k := k) hE)
+      (FourPapers.Sublattice.reesKoszulTensorDGA (k := k) (sourceClosed hE)).cycles
+      (cyclesRing hE) (sourceCyclesRing hE)
+      (cyclesEquiv hE).toRingEquiv (Boundaries hE)
+      (FourPapers.Sublattice.reesKoszulTensorDGA (k := k) (sourceClosed hE)).boundaries
+      (by
+        intro x
+        rw [mem_boundaries,FourPapers.ParityDifferential.mem_boundaries]
+        change x.val ∈ LinearMap.range differential ↔ x.val ∈ LinearMap.range
+          (FourPapers.Sublattice.reesKoszulTensorDGA (k := k) (sourceClosed hE)).d
+        rw [← differential_eq_DGA hE])).symm
 
 private theorem classMap_transport (x : Cycles (k := k) hE) :
     homologyEquiv hE (classMap hE x) =
@@ -1455,8 +1465,10 @@ private def quotientCyclesEquiv (B : Family V) (a : Exponent V) (p : ℕ) :
       quotientChainsEquiv_zero] using hx⟩
   left_inv x := by
     apply Subtype.ext
-    exact congrArg Subtype.val ((quotientHomogeneousPieceEquiv (k := k) B a p).symm_apply_apply
-      ⟨x.val,x.property.2⟩)
+    change ((quotientHomogeneousPieceEquiv (k := k) B a p).symm
+      (quotientHomogeneousPieceEquiv (k := k) B a p ⟨x.val,x.property.2⟩)).val = x.val
+    exact NoncommBridgeAPI.submoduleEquiv_symm_apply_apply_val (K := k)
+      _ _ (quotientHomogeneousPieceEquiv (k := k) B a p) ⟨x.val,x.property.2⟩
   right_inv x := by
     apply Subtype.ext
     exact (quotientHomogeneousPieceEquiv (k := k) B a p).apply_symm_apply x.val
@@ -2400,4 +2412,516 @@ theorem sublattice_first_power_finer_propagation
   exact FourPapers.Sublattice.theorem43_finer_betti_of_refines n o J E hE hinit hJ ω hJω
     href hβsource s p γ
 
+end PalomarSublattice
+
+/- Literal ordinary integer strands for actual quotient coefficients. This
+fragment extends the existing canonical-only Challenge; no derived-Tor value
+is defined by a summation formula. -/
+namespace PalomarSublattice.OrdinaryQuotientKoszul
+open Classical MvPolynomial
+universe u
+variable {V k : Type u} [Fintype V] [LinearOrder V] [Field k]
+/-- The image of the genuine polynomial homogeneous component in the actual
+quotient. Integer weights include negative strands with their actual zero
+polynomial component. -/
+def coefficientPiece (I : Ideal (MvPolynomial V k)) (q : ℤ) :
+    Submodule k (MvPolynomial V k ⧸ I) :=
+  (weightedHomogeneousSubmodule k (fun _ : V => (1 : ℤ)) q).map
+    (Ideal.Quotient.mkₐ k I).toLinearMap
+/-- Exterior degree p contributes p to ordinary internal degree. Each actual
+quotient coefficient has polynomial degree q-p. -/
+def piece (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
+    Submodule k (FineKoszul.Coordinates (V := V) (MvPolynomial V k ⧸ I) p) :=
+  ⨅ s : Set.powersetCard V p,
+    (coefficientPiece I (q - (p : ℤ))).comap (Finsupp.lapply s)
+/-- Genuine cycles of the signed variable-multiplication Koszul differential
+inside the actual ordinary integer strand. -/
+def cycles (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
+    Submodule k (FineKoszul.Coordinates (V := V) (MvPolynomial V k ⧸ I) p) :=
+  LinearMap.ker (FineKoszul.previous (k := k) p) ⊓ piece I q p
+instance cyclesAddCommGroup (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
+    AddCommGroup (cycles I q p) :=
+  Submodule.addCommGroup (R := k)
+    (M := FineKoszul.Coordinates (V := V) (MvPolynomial V k ⧸ I) p) (cycles I q p)
+/-- The actual preceding homogeneous component mapped by the Koszul
+ differential, viewed inside its cycle submodule. -/
+def boundaries (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
+    Submodule k (cycles I q p) :=
+  (Submodule.map (FineKoszul.differential (k := k) p) (piece I q (p+1))).comap
+    (cycles I q p).subtype
+/-- Literal homogeneous Koszul homology: actual cycles modulo actual boundaries. -/
+abbrev Homology (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :=
+  _root_.Quotient (Submodule.quotientRel (R := k) (M := cycles I q p) (boundaries I q p))
+instance homologyAddCommGroup (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
+    AddCommGroup (Homology I q p) :=
+  Submodule.Quotient.addCommGroup (R := k) (M := cycles I q p) (boundaries I q p)
+instance homologyModule (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
+    Module k (Homology I q p) :=
+  Submodule.Quotient.module (R := k) (M := cycles I q p) (boundaries I q p)
+/-- The dimension of the genuine ordinary integer Koszul homology strand. -/
+def betti (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) : ℕ :=
+  Module.finrank k (Homology I q p)
+end PalomarSublattice.OrdinaryQuotientKoszul
+
+/- Actual chain-level bridge for the ordinary quotient strands. Draft only;
+requires the literal prefix and the existing full Solution's FineKoszul helpers. -/
+namespace PalomarSublattice.FineKoszul
+open Classical MvPolynomial CommAlg CommAlg.Koszul CommAlg.Polymatroid
+open FourPapers.Sublattice FourPapers.FilteredHomology
+universe u
+variable {V k : Type u} [Fintype V] [LinearOrder V] [Field k]
+private theorem ordinaryPolynomialPiece_eq_monomialSpan (q : ℤ) :
+    weightedHomogeneousSubmodule k (fun _ : V => (1 : ℤ)) q =
+      Submodule.span k ((fun b : V →₀ ℕ => MvPolynomial.monomial b (1 : k)) ''
+        {b | (b.degree : ℤ) = q}) := by
+  have h : weightedHomogeneousSubmodule k (fun _ : V => (1 : ℤ)) q =
+      Grading.Piece (MvPolynomial.basisMonomials V k) (fun b => (b.degree : ℤ)) q := by
+    ext f
+    rw [Grading.mem_piece]
+    change f.IsWeightedHomogeneous (fun _ : V => (1 : ℤ)) q ↔ _
+    simp only [MvPolynomial.IsWeightedHomogeneous, Koszul.integerWeight_degree]
+    rfl
+  rw [h,Grading.Piece]
+  rfl
+private theorem ordinaryCoefficientPiece_map (B : Family V) (q : ℤ) :
+    (OrdinaryQuotientKoszul.coefficientPiece (monomialIdeal k B) q).map
+      (quotientCoefficientEquiv (k := k) B).toLinearMap =
+    Grading.Piece (quotientMonomialBasis (k := k) B)
+      (fun b => (b.val.degree : ℤ)) q := by
+  rw [OrdinaryQuotientKoszul.coefficientPiece, ordinaryPolynomialPiece_eq_monomialSpan,
+    ← Submodule.map_comp,Submodule.map_span]
+  apply le_antisymm
+  · apply Submodule.span_le.mpr
+    rintro y ⟨x,⟨b,hb,rfl⟩,rfl⟩
+    change quotientCoefficientEquiv (k := k) B
+      (Ideal.Quotient.mk _ (MvPolynomial.monomial b (1 : k))) ∈ _
+    rw [quotientCoefficientEquiv,Ideal.quotientEquivAlgOfEq_mk]
+    change quotientMonomial (k := k) B b ∈ _
+    by_cases hallowed : QuotientAllowed B b
+    · rw [← quotientMonomialBasis_apply B ⟨b,hallowed⟩]
+      have hmem := Grading.basis_mem_piece (quotientMonomialBasis (k := k) B)
+        (fun b => (b.val.degree : ℤ)) ⟨b,hallowed⟩
+      rw [show (b.degree : ℤ)=q from hb] at hmem
+      exact hmem
+    · rw [quotientMonomial_zero B b hallowed]
+      exact Submodule.zero_mem _
+  · apply Submodule.span_le.mpr
+    rintro y ⟨b,hb,rfl⟩
+    rw [quotientMonomialBasis_apply]
+    apply Submodule.subset_span
+    refine ⟨MvPolynomial.monomial b.val 1,⟨b.val,hb,rfl⟩,?_⟩
+    exact Ideal.quotientEquivAlgOfEq_mk k
+      (forbiddenIdeal_eq_monomialIdeal (k := k) B).symm
+      (MvPolynomial.monomial b.val (1 : k))
+private theorem ordinaryCoefficientPiece_mem_iff (B : Family V) (q : ℤ)
+    (x : MvPolynomial V k ⧸ monomialIdeal k B) :
+    x ∈ OrdinaryQuotientKoszul.coefficientPiece (monomialIdeal k B) q ↔
+      ∀ b : {b : Exponent V // QuotientAllowed B b},
+        (quotientMonomialBasis (k := k) B).repr (quotientCoefficientEquiv (k := k) B x) b ≠ 0 →
+          (b.val.degree : ℤ)=q := by
+  have hi : x ∈ OrdinaryQuotientKoszul.coefficientPiece (monomialIdeal k B) q ↔
+      quotientCoefficientEquiv (k := k) B x ∈
+        (OrdinaryQuotientKoszul.coefficientPiece (monomialIdeal k B) q).map
+          (quotientCoefficientEquiv (k := k) B).toLinearMap := by
+    constructor
+    · intro hx; exact ⟨x,hx,rfl⟩
+    · rintro ⟨y,hy,he⟩
+      exact (quotientCoefficientEquiv (k := k) B).injective he ▸ hy
+  rw [hi,ordinaryCoefficientPiece_map,Grading.mem_piece]
+private theorem quotientTotalDegree (B : Family V) (p : ℕ) (t : QuotientIndex B p) :
+    ((quotientDegree t).degree : ℤ)=(t.2.val.degree : ℤ)+(p : ℤ) := by
+  simp only [quotientDegree,map_add,degree_faceExponent,Set.powersetCard.card_eq,Nat.cast_add]
+private theorem ordinaryPiece_map (B : Family V) (q : ℤ) (p : ℕ) :
+    (OrdinaryQuotientKoszul.piece (monomialIdeal k B) q p).map
+      (quotientChainsEquiv (k := k) B p).toLinearMap =
+        integerOrdinaryQuotientPiece (k := k) B q p := by
+  apply le_antisymm
+  · rintro y ⟨x,hx,rfl⟩
+    rw [integerOrdinaryQuotientPiece_eq,Grading.mem_piece]
+    intro t ht
+    have hs := (Submodule.mem_iInf _).mp hx t.1
+    have hc : (quotientMonomialBasis (k := k) B).repr
+        (quotientCoefficientEquiv (k := k) B (x t.1)) t.2 ≠ 0 :=
+      (quotientChains_repr (k := k) B p x t) ▸ ht
+    have hd := (ordinaryCoefficientPiece_mem_iff B _ _).mp hs t.2 hc
+    rw [quotientTotalDegree]
+    omega
+  · intro y hy
+    obtain ⟨x,rfl⟩ := (quotientChainsEquiv (k := k) B p).surjective y
+    refine ⟨x,?_,rfl⟩
+    apply (Submodule.mem_iInf _).mpr
+    intro s
+    apply (ordinaryCoefficientPiece_mem_iff B _ _).mpr
+    intro b hb
+    have hc : (quotientCoefficientBasis (k := k) B p).repr
+        (quotientChainsEquiv (k := k) B p x) ⟨s,b⟩ ≠ 0 :=
+      (quotientChains_repr (k := k) B p x ⟨s,b⟩).symm ▸ hb
+    rw [integerOrdinaryQuotientPiece_eq] at hy
+    have hd := (Grading.mem_piece _ _ _ _).mp hy ⟨s,b⟩ hc
+    rw [quotientTotalDegree] at hd
+    omega
+private def ordinaryPieceEquiv (B : Family V) (q : ℤ) (p : ℕ) :
+    OrdinaryQuotientKoszul.piece (monomialIdeal k B) q p ≃ₗ[k]
+      integerOrdinaryQuotientPiece (k := k) B q p :=
+  ((quotientChainsEquiv (k := k) B p).submoduleMap _).trans
+    (LinearEquiv.ofEq _ _ (ordinaryPiece_map B q p))
+private theorem ordinaryPieceEquiv_val (B : Family V) (q : ℤ) (p : ℕ)
+    (x : OrdinaryQuotientKoszul.piece (monomialIdeal k B) q p) :
+    (ordinaryPieceEquiv B q p x).val=quotientChainsEquiv (k := k) B p x.val := rfl
+private theorem ordinaryPrevious_val (B : Family V) (q : ℤ) (p : ℕ)
+    (x : integerOrdinaryQuotientPiece (k := k) B q p) :
+    (integerOrdinaryQuotientPrevious (k := k) B q p x).val =
+      quotientChainsEquiv (k := k) B p.pred
+        (previous (k := k) (M := MvPolynomial V k ⧸ monomialIdeal k B) p
+          ((quotientChainsEquiv (k := k) B p).symm x.val)) := by
+  cases p with
+  | zero => simp only [integerOrdinaryQuotientPrevious,previous,
+      LinearMap.zero_apply,ZeroMemClass.coe_zero,quotientChainsEquiv_zero]
+  | succ p =>
+    change FourPapers.Sublattice.quotientDifferential (k := k) B p x.val =
+      quotientChainsEquiv (k := k) B p
+        (differential (k := k) (M := MvPolynomial V k ⧸ monomialIdeal k B) p
+          ((quotientChainsEquiv (k := k) B (p+1)).symm x.val))
+    have h := LinearMap.congr_fun (quotientDifferential_comm (k := k) B p)
+      ((quotientChainsEquiv (k := k) B (p+1)).symm x.val)
+    simpa only [LinearMap.comp_apply,LinearEquiv.coe_coe,LinearEquiv.apply_symm_apply] using h.symm
+private def ordinaryCyclesEquiv (B : Family V) (q : ℤ) (p : ℕ) :
+    OrdinaryQuotientKoszul.cycles (monomialIdeal k B) q p ≃ₗ[k]
+      LinearMap.ker (integerOrdinaryQuotientPrevious (k := k) B q p) where
+  toFun x := ⟨ordinaryPieceEquiv B q p ⟨x.val,x.property.2⟩,by
+    apply Subtype.ext
+    rw [ordinaryPrevious_val,ordinaryPieceEquiv_val,LinearEquiv.symm_apply_apply,
+      show previous (k := k) (M := MvPolynomial V k ⧸ monomialIdeal k B) p x.val=0 from x.property.1,
+      quotientChainsEquiv_zero]
+    rfl⟩
+  invFun x := ⟨(ordinaryPieceEquiv B q p).symm x.val |>.val,by
+    refine ⟨?_,((ordinaryPieceEquiv B q p).symm x.val).property⟩
+    change previous (k := k) (M := MvPolynomial V k ⧸ monomialIdeal k B) p
+      ((ordinaryPieceEquiv B q p).symm x.val).val=0
+    apply (quotientChainsEquiv (k := k) B p.pred).injective
+    have hx := congrArg Subtype.val x.property
+    rw [ordinaryPrevious_val] at hx
+    simpa only [ordinaryPieceEquiv,LinearEquiv.trans_symm,LinearEquiv.trans_apply,
+      LinearEquiv.ofEq_symm,LinearEquiv.coe_ofEq_apply,LinearEquiv.submoduleMap_symm_apply,
+      ZeroMemClass.coe_zero,quotientChainsEquiv_zero] using hx⟩
+  left_inv x := by
+    apply Subtype.ext
+    change ((ordinaryPieceEquiv B q p).symm
+      (ordinaryPieceEquiv B q p ⟨x.val,x.property.2⟩)).val = x.val
+    exact NoncommBridgeAPI.submoduleEquiv_symm_apply_apply_val (K := k)
+      _ _ (ordinaryPieceEquiv B q p) ⟨x.val,x.property.2⟩
+  right_inv x := by
+    apply Subtype.ext
+    exact (ordinaryPieceEquiv B q p).apply_symm_apply x.val
+  map_add' x y := by
+    apply Subtype.ext
+    apply Subtype.ext
+    simpa only [ordinaryPieceEquiv_val,Submodule.coe_add] using
+      (quotientChainsEquiv (k := k) B p).map_add x.val y.val
+  map_smul' r x := by
+    apply Subtype.ext
+    apply Subtype.ext
+    simpa only [ordinaryPieceEquiv_val,Submodule.coe_smul,RingHom.id_apply] using
+      (quotientChainsEquiv (k := k) B p).map_smul r x.val
+private theorem ordinaryBoundaries_map (B : Family V) (q : ℤ) (p : ℕ) :
+    (OrdinaryQuotientKoszul.boundaries (monomialIdeal k B) q p).map
+      (ordinaryCyclesEquiv B q p).toLinearMap =
+    LinearMap.range (FourPapers.FilteredHomology.boundaryMap
+      (integerOrdinaryQuotientDifferential (k := k) B q p)
+      (integerOrdinaryQuotientPrevious (k := k) B q p)
+      (integerOrdinaryQuotientDifferential_comp (k := k) B q p)) := by
+  apply le_antisymm
+  · rintro y ⟨x,hx,rfl⟩
+    rcases hx with ⟨z,hz,hzx⟩
+    refine ⟨ordinaryPieceEquiv B q (p+1) ⟨z,hz⟩,?_⟩
+    apply Subtype.ext
+    apply Subtype.ext
+    change FourPapers.Sublattice.quotientDifferential (k := k) B p
+      (quotientChainsEquiv (k := k) B (p+1) z)=quotientChainsEquiv (k := k) B p x.val
+    have he := LinearMap.congr_fun (quotientDifferential_comm (k := k) B p) z
+    simp only [LinearMap.comp_apply,LinearEquiv.coe_coe] at he
+    rw [← he]
+    exact congrArg (quotientChainsEquiv (k := k) B p) hzx
+  · rintro y ⟨z,rfl⟩
+    let b := FourPapers.FilteredHomology.boundaryMap
+      (integerOrdinaryQuotientDifferential (k := k) B q p)
+      (integerOrdinaryQuotientPrevious (k := k) B q p)
+      (integerOrdinaryQuotientDifferential_comp (k := k) B q p) z
+    refine ⟨(ordinaryCyclesEquiv B q p).symm b,?_,by simp [b]⟩
+    let t := (ordinaryPieceEquiv B q (p+1)).symm z
+    refine ⟨t.val,t.property,?_⟩
+    apply (quotientChainsEquiv (k := k) B p).injective
+    have he := LinearMap.congr_fun (quotientDifferential_comm (k := k) B p) t.val
+    simp only [LinearMap.comp_apply,LinearEquiv.coe_coe] at he
+    rw [he]
+    have ht : quotientChainsEquiv (k := k) B (p+1) t.val=z.val :=
+      congrArg Subtype.val ((ordinaryPieceEquiv B q (p+1)).apply_symm_apply z)
+    rw [ht]
+    exact (congrArg (fun x => x.val.val) ((ordinaryCyclesEquiv B q p).apply_symm_apply b)).symm
+private def ordinaryHomologyEquiv (B : Family V) (q : ℤ) (p : ℕ) :
+    OrdinaryQuotientKoszul.Homology (monomialIdeal k B) q p ≃ₗ[k]
+      integerOrdinaryQuotientHomology (k := k) B q p :=
+  Submodule.Quotient.equiv _ _ (ordinaryCyclesEquiv B q p) (ordinaryBoundaries_map B q p)
+theorem ordinaryQuotientBetti_eq_source (B : Family V) (q : ℤ) (p : ℕ) :
+    OrdinaryQuotientKoszul.betti (monomialIdeal k B) q p =
+      integerOrdinaryQuotientBettiNumber (K := k) B q p :=
+  (ordinaryHomologyEquiv B q p).finrank_eq
+end PalomarSublattice.FineKoszul
+
+/- Literal Corollaries5.1 and5.2. Every normalized degree is integer-valued;
+the coefficient quotients are actual sums of the displayed predecessor colons. -/
+namespace PalomarSublattice
+open Classical MvPolynomial
+open scoped BigOperators
+universe u
+variable {d : ℕ} (n : Fin d → ℕ) {k : Type u} [Field k]
+/-- Exactly the nonempty chains of distinct tuples in E. The strict ordering
+is inherited from the original coordinatewise partial order. -/
+def StrictSupport (E : Finset (FiniteTuple n)) :=
+  {s : Finset E // s.Nonempty ∧ IsChain (· < ·) (s : Set E)}
+/-- Literal finite enumeration with an explicit canonical classical decision,
+so source-specific Fintype aliases cannot enter the independent data body. -/
+def strictSupportFinset (E : Finset (FiniteTuple n)) : Finset (Finset E) :=
+  @Finset.filter (Finset E) (fun s => s.Nonempty ∧ IsChain (· < ·) (s : Set E))
+    (Classical.decPred _) Finset.univ
+/-- Exact enumeration law; this supporting proposition must be selected for
+comparison when the candidate is assembled. -/
+theorem strictSupportFinset_mem (E : Finset (FiniteTuple n)) (s : Finset E) :
+    s ∈ strictSupportFinset n E ↔ s.Nonempty ∧ IsChain (· < ·) (s : Set E) := by
+  classical
+  simp [strictSupportFinset]
+noncomputable instance strictSupportFintype (E : Finset (FiniteTuple n)) :
+    Fintype (StrictSupport n E) :=
+  Fintype.subtype (strictSupportFinset n E) (strictSupportFinset_mem n E)
+/-- The genuine sum of predecessor-colon ideals over a strict support. -/
+def supportCoefficientIdeal {E : Finset (FiniteTuple n)} (s : StrictSupport n E) :
+    Ideal (MvPolynomial (FiniteVariable.{u} n) k) :=
+  ⨆ a : s.val, predecessorColon n E a.val.val
+/-- Printed nonnegative integer coefficient, grouped by strict-support
+cardinality r. Every summand is an actual homogeneous quotient homology dimension. -/
+def bettiBinomialCoefficient (E : Finset (FiniteTuple n)) (q : ℤ) (p r : ℕ) : ℕ :=
+  ∑ s ∈ Finset.univ.filter (fun s : StrictSupport n E => s.val.card = r),
+    OrdinaryQuotientKoszul.betti (supportCoefficientIdeal n (k := k) s) q p
+end PalomarSublattice
+
+/- Exact predecessor-colon sums and source endpoint transport. Unelaborated
+source work, separate from every running full28 package. -/
+namespace PalomarSublattice
+open Classical MvPolynomial CommAlg.Polymatroid
+open FourPapers.Sublattice FourPapers.MultichainCounting
+open scoped BigOperators
+universe u
+variable {d : ℕ} (n : Fin d → ℕ) {k : Type u} [Field k]
+private def supportEquiv (E : Finset (FiniteTuple n)) :
+    FourPapers.MultichainCounting.StrictSupport E ≃ StrictSupport n E := Equiv.refl _
+private theorem supportCoefficientIdeal_eq_source {E : Finset (FiniteTuple n)}
+    (s : FourPapers.MultichainCounting.StrictSupport E) :
+    monomialIdeal k (FourPapers.Sublattice.strictSupportCoefficientFamily s) =
+      supportCoefficientIdeal n (k := k) (supportEquiv n E s) := by
+  change monomialIdeal k (s.val.biUnion fun a => finitePredecessorFamily n E a.val) =
+    ⨆ a : s.val, finitePredecessorColon n (k := k) E a.val.val
+  simp_rw [finitePredecessorColon_eq]
+  apply le_antisymm
+  · apply Ideal.span_le.mpr
+    rintro f ⟨a,ha,rfl⟩
+    obtain ⟨b,hb,ha⟩ := Finset.mem_biUnion.mp ha
+    exact (le_iSup (fun b : s.val => monomialIdeal k
+      (finitePredecessorFamily n E b.val.val)) ⟨b,hb⟩) (Ideal.subset_span ⟨a,ha,rfl⟩)
+  · apply iSup_le
+    intro b
+    apply Ideal.span_mono
+    apply Set.image_mono
+    intro a ha
+    exact Finset.mem_biUnion.mpr ⟨b.val,b.property,ha⟩
+private theorem bettiBinomialCoefficient_eq_source (E : Finset (FiniteTuple n))
+    (q : ℤ) (p r : ℕ) :
+    bettiBinomialCoefficient n (k := k) E q p r =
+      FourPapers.Sublattice.integerBettiBinomialCoefficient (K := k) (E := E) q p r := by
+  unfold bettiBinomialCoefficient FourPapers.Sublattice.integerBettiBinomialCoefficient
+  simp only [Finset.sum_filter]
+  apply Fintype.sum_equiv (supportEquiv n E).symm
+  intro s
+  by_cases hc : s.val.card = r
+  · simp only [supportEquiv,Equiv.refl_apply,if_pos hc]
+    rw [FourPapers.Sublattice.integerStrictSupportBettiCoefficient,
+      ← FineKoszul.ordinaryQuotientBetti_eq_source,
+      supportCoefficientIdeal_eq_source]
+    rfl
+  · simp only [supportEquiv,Equiv.refl_apply,if_neg hc]
+/-- Corollary5.1 through actual integer ordinary ideal Tor and actual
+integer ordinary quotient Koszul homology, preserving every q in Z. -/
+theorem corollary51_integer {E : Finset (FiniteTuple n)} (hE : finiteLatticeClosed n E)
+    (m : ℕ) (hm : 0 < m) (p : ℕ) (q : ℤ) :
+    Koszul.betti ((sublatticeIdeal n (k := k) E)^m) p ((m*d : ℕ)+q) =
+      ∑ s : StrictSupport n E, (m-1).choose (s.val.card-1) *
+        OrdinaryQuotientKoszul.betti (supportCoefficientIdeal n (k := k) s) q p := by
+  let o : MonomialOrder (FiniteVariable.{u} n) := MonomialOrder.degLex
+  rw [transfer_monomial_bridge n o E m p ((m*d : ℕ)+q)]
+  rw [FourPapers.Sublattice.corollary51_integer o hE m hm p q]
+  apply Fintype.sum_equiv (supportEquiv n E)
+  intro s
+  rw [← FineKoszul.ordinaryQuotientBetti_eq_source,
+    supportCoefficientIdeal_eq_source]
+  rfl
+/-- The printed grouped coefficient expansion, with actual coefficient
+quotients and every integer normalized degree. Further polynomial, difference,
+projective-dimension and depth clauses of Corollary5.2 remain separate here. -/
+theorem corollary52_integer_grouped_expansion {E : Finset (FiniteTuple n)}
+    (hE : finiteLatticeClosed n E) (q : ℤ) (p m : ℕ) (hm : 0 < m) :
+    Koszul.betti ((sublatticeIdeal n (k := k) E)^m) p ((m*d : ℕ)+q) =
+      ∑ r ∈ Finset.Icc 1 E.card,
+        bettiBinomialCoefficient n (k := k) E q p r * (m-1).choose (r-1) := by
+  let o : MonomialOrder (FiniteVariable.{u} n) := MonomialOrder.degLex
+  rw [transfer_monomial_bridge n o E m p ((m*d : ℕ)+q)]
+  simp_rw [bettiBinomialCoefficient_eq_source]
+  exact FourPapers.Sublattice.corollary52_integer_grouped_expansion o hE q p m hm
+end PalomarSublattice
+
+/- Remaining literal clauses of Corollaries5.1 and5.2. Unelaborated source
+work only; this does not modify any running or frozen entry. -/
+namespace PalomarSublattice
+open Classical MvPolynomial CategoryTheory
+open scoped BigOperators
+universe u
+variable {d : ℕ} (n : Fin d → ℕ) {k : Type u} [Field k]
+/-- The actual rational binomial polynomial, including its factorial normalization. -/
+def bettiBinomialPolynomial (r : ℕ) : Polynomial ℚ :=
+  Polynomial.C ((r.factorial : ℚ)⁻¹) * descPochhammer ℚ r
+/-- The printed rational polynomial, with actual quotient-Betti coefficients;
+its argument is the positive power m, so the grouped basis is binom(m-1,r-1). -/
+def normalizedBettiPolynomial (E : Finset (FiniteTuple n)) (q : ℤ) (p : ℕ) : Polynomial ℚ :=
+  (∑ r ∈ Finset.Icc 1 E.card,
+    Polynomial.C (bettiBinomialCoefficient n (k := k) E q p r : ℚ) *
+      bettiBinomialPolynomial (r-1)).comp (Polynomial.X-Polynomial.C 1)
+/-- Every sequence value is the actual Betti number of an actual ideal power.
+The t+1 index makes all forward differences range over positive powers. -/
+def normalizedBettiSequence (I : Ideal (MvPolynomial (FiniteVariable.{u} n) k))
+    (q : ℤ) (p t : ℕ) : ℤ :=
+  (Koszul.betti (I^(t+1)) p (((t+1)*d : ℕ)+q) : ℤ)
+/-- Genuine categorical projective dimension of the actual ideal power. -/
+def powerProjectiveDimension (I : Ideal (MvPolynomial (FiniteVariable.{u} n) k)) (m : ℕ) :
+    WithBot ℕ∞ := projectiveDimension (ModuleCat.of (MvPolynomial (FiniteVariable.{u} n) k) ↥(I^m))
+/-- Actual Mathlib Ext-defined depth of the actual quotient at the homogeneous
+maximal ideal; the zero quotient has its canonical infinite-depth value. -/
+def quotientPowerDepth (I : Ideal (MvPolynomial (FiniteVariable.{u} n) k)) (m : ℕ) : ℕ∞ :=
+  (MvPolynomial.idealOfVars (FiniteVariable.{u} n) k).depth
+    (ModuleCat.of (MvPolynomial (FiniteVariable.{u} n) k)
+      (MvPolynomial (FiniteVariable.{u} n) k ⧸ I^m))
+end PalomarSublattice
+
+/- Actual complete Corollary5.2 and general-J transfer proof drafts. These
+require paper_results.numerical_transfer and remain unelaborated source work. -/
+namespace PalomarSublattice
+open Classical MvPolynomial CommAlg.Polymatroid
+open FourPapers.Sublattice
+universe u
+variable {d : ℕ} (n : Fin d → ℕ) {k : Type u} [Field k]
+private theorem normalizedBettiPolynomial_eq_source (E : Finset (FiniteTuple n))
+    (q : ℤ) (p : ℕ) :
+    normalizedBettiPolynomial n (k := k) E q p =
+      FourPapers.Sublattice.integerNormalizedBettiPolynomial (K := k) (E := E) q p := by
+  rw [FourPapers.Sublattice.integerNormalizedBettiPolynomial_grouped]
+  unfold normalizedBettiPolynomial
+  simp_rw [bettiBinomialCoefficient_eq_source]
+  rfl
+private theorem normalizedBettiSequence_eq_source
+    (o : MonomialOrder (FiniteVariable.{u} n)) (E : Finset (FiniteTuple n)) (q : ℤ) (p : ℕ) :
+    normalizedBettiSequence n (sublatticeIdeal n (k := k) E) q p =
+      fun t => (FourPapers.Sublattice.integerNormalizedBettiSequence (K := k) o
+        (E := E) q p t : ℤ) := by
+  funext t
+  unfold normalizedBettiSequence FourPapers.Sublattice.integerNormalizedBettiSequence
+  rw [transfer_monomial_bridge n o E (t+1) p]
+/-- Every printed Corollary5.2 conclusion, with actual categorical dimension
+and Ext depth, follows from the original retained proofs and the exact
+ordinary-quotient coefficient equivalence. -/
+theorem corollary52_full {E : Finset (FiniteTuple n)} (hE : finiteLatticeClosed n E) :
+    (∀ q : ℤ, ∀ p m : ℕ, 0 < m →
+      (normalizedBettiPolynomial n (k := k) E q p).eval (m : ℚ) =
+        (Koszul.betti ((sublatticeIdeal n (k := k) E)^m) p ((m*d : ℕ)+q) : ℚ)) ∧
+    (∀ q : ℤ, ∀ p j t : ℕ,
+      0 ≤ ((fwdDiff (1 : ℕ))^[j]
+        (normalizedBettiSequence n (sublatticeIdeal n (k := k) E) q p)) t) ∧
+    (∀ m N : ℕ, 0 < m → m ≤ N →
+      powerProjectiveDimension n (sublatticeIdeal n (k := k) E) m ≤
+        powerProjectiveDimension n (sublatticeIdeal n (k := k) E) N) ∧
+    (∀ m N : ℕ, 0 < m → m ≤ N →
+      quotientPowerDepth n (sublatticeIdeal n (k := k) E) N ≤
+        quotientPowerDepth n (sublatticeIdeal n (k := k) E) m) := by
+  let o : MonomialOrder (FiniteVariable.{u} n) := MonomialOrder.degLex
+  refine ⟨?_,?_,?_,?_⟩
+  · intro q p m hm
+    rw [normalizedBettiPolynomial_eq_source,
+      transfer_monomial_bridge n o E m p]
+    exact FourPapers.Sublattice.corollary52_integer_polynomial o hE q p m hm
+  · intro q p j t
+    rw [normalizedBettiSequence_eq_source n o E q p]
+    exact FourPapers.Sublattice.corollary52_integer_forward_differences o hE q p j t
+  · intro m N hm hMN
+    simpa only [powerProjectiveDimension,sublatticeIdeal_eq_source] using
+      (FourPapers.Sublattice.corollary52_projectiveDimension_monotone
+        (k := k) (n := n) (E := E) hE hm hMN)
+  · intro m N hm hMN
+    simpa only [quotientPowerDepth,sublatticeIdeal_eq_source] using
+      (FourPapers.Sublattice.corollary52_depth_antitone
+        (k := k) (n := n) (E := E) hE hm hMN)
+/-- Exact ordinary first-power comparison transfers all Corollary5.1/5.2
+clauses to J; it is not strengthened to a graded Betti, depth, or dimension premise. -/
+theorem corollaries51_52_transfer (o : MonomialOrder (FiniteVariable.{u} n))
+    (J : Ideal (MvPolynomial (FiniteVariable.{u} n) k))
+    (E : Finset (FiniteTuple n)) (hE : finiteLatticeClosed n E)
+    (hinit : initialIdeal o J = sublatticeIdeal n E)
+    (hJ : J.IsHomogeneous (weightedHomogeneousSubmodule k
+      (fun _ : FiniteVariable.{u} n => (1 : ℕ))))
+    (hβ : ∀ p q, Koszul.betti J p q = Koszul.betti (sublatticeIdeal n (k := k) E) p q) :
+    (∀ m : ℕ, 0 < m → ∀ p : ℕ, ∀ q : ℤ,
+      Koszul.betti (J^m) p ((m*d : ℕ)+q) =
+        ∑ s : StrictSupport n E, (m-1).choose (s.val.card-1) *
+          OrdinaryQuotientKoszul.betti (supportCoefficientIdeal n (k := k) s) q p) ∧
+    (∀ q : ℤ, ∀ p m : ℕ, 0 < m →
+      Koszul.betti (J^m) p ((m*d : ℕ)+q) =
+        ∑ r ∈ Finset.Icc 1 E.card,
+          bettiBinomialCoefficient n (k := k) E q p r * (m-1).choose (r-1)) ∧
+    (∀ q : ℤ, ∀ p m : ℕ, 0 < m →
+      (normalizedBettiPolynomial n (k := k) E q p).eval (m : ℚ) =
+        (Koszul.betti (J^m) p ((m*d : ℕ)+q) : ℚ)) ∧
+    (∀ q : ℤ, ∀ p j t : ℕ,
+      0 ≤ ((fwdDiff (1 : ℕ))^[j] (normalizedBettiSequence n J q p)) t) ∧
+    (∀ m N : ℕ, 0 < m → m ≤ N →
+      powerProjectiveDimension n J m ≤ powerProjectiveDimension n J N) ∧
+    (∀ m N : ℕ, 0 < m → m ≤ N →
+      quotientPowerDepth n J N ≤ quotientPowerDepth n J m) := by
+  have hβsource := (FourPapers.Sublattice.sublattice_first_power_integer_iff
+    n o J E hE hinit hJ).mp (fun p q => by
+      rw [← transfer_ideal_bridge n o J E hE hinit hJ 1 p q,
+        ← transfer_monomial_bridge n o E 1 p q,pow_one,pow_one]
+      exact hβ p q)
+  have hprop : ∀ m p q, Koszul.betti (J^m) p q =
+      Koszul.betti ((sublatticeIdeal n (k := k) E)^m) p q :=
+    fun m p q => sublattice_first_power_propagation n o J E hE hinit hJ hβ m p q
+  have hseq : ∀ q p, normalizedBettiSequence n J q p =
+      normalizedBettiSequence n (sublatticeIdeal n (k := k) E) q p := by
+    intro q p
+    funext t
+    exact congrArg (fun z : ℕ => (z : ℤ)) (hprop (t+1) p (((t+1)*d : ℕ)+q))
+  obtain ⟨hpoly,hdiff,hpd,hdepth⟩ := corollary52_full n (k := k) hE
+  refine ⟨?_,?_,?_,?_,?_,?_⟩
+  · intro m hm p q
+    rw [hprop]
+    exact corollary51_integer n hE m hm p q
+  · intro q p m hm
+    rw [hprop]
+    exact corollary52_integer_grouped_expansion n hE q p m hm
+  · intro q p m hm
+    rw [hprop]
+    exact hpoly q p m hm
+  · intro q p j t
+    rw [hseq]
+    exact hdiff q p j t
+  · intro m N hm hMN
+    exact FourPapers.Sublattice.corollary52_projectiveDimension_monotone_transfer
+      n o J E hE hinit hJ hβsource hm hMN
+  · intro m N hm hMN
+    exact FourPapers.Sublattice.corollary52_depth_antitone_transfer
+      n o J E hE hinit hJ hβsource hm hMN
 end PalomarSublattice
