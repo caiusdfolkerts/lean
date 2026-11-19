@@ -27,12 +27,14 @@
     "PalomarBarycentricTor.tensorPreservesZero",
     "FourPapers.Universal.barycentricMonomialEquiv_mk",
     "FourPapers.Universal.barycentricGlobalStandardBasis_coordinates",
-    "FourPapers.Universal.standardCoefficients_apply"
+    "FourPapers.Universal.standardCoefficients_apply",
+    "CommAlg.Koszul.coordinateDifferential_palomar_formula"
   ],
   "definition_names": [
     "FourPapers.Universal.barycentricMonomialEquiv",
     "FourPapers.Universal.barycentricGlobalStandardBasis",
-    "FourPapers.Universal.standardCoefficients"
+    "FourPapers.Universal.standardCoefficients",
+    "CommAlg.Koszul.coordinateDifferential"
   ],
   "permitted_axioms": [
     "propext",

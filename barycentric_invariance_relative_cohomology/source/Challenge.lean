@@ -187,6 +187,7 @@ def coordinateDifferential (x : V → R) (M : ModuleCat.{u} R) (i : ℕ) :
     ((familyCoefficientComplex.{u} x M).d (i + 1) i).hom
   (coefficientCoordinates.{u} x M i).toLinearMap.comp
     (δ.comp (coefficientCoordinates.{u} x M (i + 1)).symm.toLinearMap)
+theorem coordinateDifferential_palomar_formula (x : V → R) (M : ModuleCat.{u} R) (i : ℕ) : coordinateDifferential x M i = (coefficientCoordinates.{u} x M i).toLinearMap.comp (((familyCoefficientComplex.{u} x M).d (i + 1) i).hom.comp (coefficientCoordinates.{u} x M (i + 1)).symm.toLinearMap) := by sorry
 end
 end CommAlg.Koszul
 namespace CommAlg.Simplicial
