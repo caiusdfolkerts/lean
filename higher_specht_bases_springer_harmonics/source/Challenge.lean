@@ -904,12 +904,12 @@ theorem maximalUntruncatedPrefix_le {n : ℕ} (i : UnboundedHarmonicIndex n) :
     maximalUntruncatedPrefix i ≤ (YoungDiagram.ofPartition i.part).card := by
   rw [YoungDiagram.card_ofPartition]
   exact Nat.sub_le _ _
-theorem witnessPartitionCard {n : ℕ} (p : n.Partition) :
-    (YoungDiagram.ofPartition p).card = n := YoungDiagram.card_ofPartition p
+theorem finiteWitnessIndexCard {n s : ℕ} (i : FiniteHarmonicIndex n s) :
+    (YoungDiagram.ofPartition i.part).card = n := YoungDiagram.card_ofPartition i.part
 
 def finiteCommonHarmonicVectorWithTableau {n s : ℕ} (i : FiniteHarmonicIndex n s)
     (T : YoungTableau (YoungDiagram.ofPartition i.part)) : PolynomialRing n ℂ :=
-  MvPolynomial.rename (finCongr (witnessPartitionCard i.part))
+  MvPolynomial.rename (finCongr (finiteWitnessIndexCard i))
     (adjointYoungApply T (normalizedOrdinaryDerivative
       (griffinWitnessRejection i.left T i.multiplier (maximalFinitePrefix i)
         (maximalFinitePrefix_le i) s)
