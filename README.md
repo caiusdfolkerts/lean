@@ -1,5 +1,3 @@
-# Palomar submission: barycentric_invariance_tor
+# Tor named-shape Source repair diagnostic
 
-Substantive source snapshot of [caiusdfolkerts/research](https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/barycentric_invariance), revision `e0696fddcd3d10b5d6461e62e9b2f02c4195be37`.
-
-The complete selected development, paper, metadata, and Comparator configuration are in `barycentric_invariance_tor/`. This branch prepares a registry submission; it does not claim registry acceptance. See `barycentric_invariance_tor/formalization.yaml` for exact scope and provenance.
+Build the first actual repaired Source module under the original toolchain, manifest and Lake configuration. A successful workflow means the diagnostic collected evidence; only each target exit code determines source build success. This does not verify Comparator, independent kernels, complete paper coverage, or registry eligibility.
