@@ -1,0 +1,73 @@
+version: v0.4
+project:
+  name: First strands and minimum-generator Tor injections
+  description: >-
+    For sublattice monomial ideals over any field, a nonzero positive
+    homological strand of a power already occurs in a positive power at most
+    the homological degree. Multiplication by the minimum row monomial is
+    injective on the actual Tor groups of successive powers and on every
+    signed homogeneous Koszul homology component, with its original degree
+    shift. For every homogeneous deformation with the prescribed initial
+    ideal and original first-power Betti equality, the same first-occurrence
+    assertion holds, and multiplication by its specified corresponding
+    homogeneous generator is injective without a monic normalization. Both
+    actual Tor conventions are included through natural derived tensor braiding.
+  authors: [Caius Folkerts]
+  responsible_maintainers: [Caius Folkerts]
+  license: Apache-2.0
+classification:
+  arxiv: [math.AC, math.CO]
+  msc2020: [13D02, 13P10, 06D05]
+sources:
+  - title: Sublattice resolutions and Betti preservation in all powers
+    authors: [Caius Folkerts]
+    type: paper
+    relationship: formalizes
+    location: paper.pdf, Corollary5.3 and its proof, pages13-14
+related_formalizations:
+  - title: Original sublattice resolutions project
+    id: https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/sublattice_resolutions
+    relationship: other
+    note: Original substantive proofs and licences retained. The independent interface and actual graded and functorial bridges are new packaging work.
+  - title: Companion main theorems and preceding corollaries
+    id: https://github.com/caiusdfolkerts/research/tree/468937f193f28b58aa489a4efd9e742c529f7fb4/sublattice_resolutions
+    relationship: other
+    note: The separate sublattice_resolutions entry selects33 different targets for Theorems1.1,1.2,4.3, Proposition2.2 and Corollaries5.1,5.2; verification status is separate.
+automation:
+  methods:
+    - method: agent
+      tool_setup: The manuscript credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 assistance; historical roles have not been independently reconstructed.
+    - method: agent
+      tool_setup: OpenAI Codex prepared the independent interface, actual semantic bridges, source-preserving package and bounded verification controls on2026-11-19. New proofs use explicit chain and functor transport plus standard Lean tactics.
+review:
+  status: unchecked
+  notes: >-
+    Historical preparation status dated2026-11-19: the complete281-line
+    ten-target independent interface passed canonical run44498521421 with
+    exact input, whole manifest and bounded log hashes verified. The
+    actual generic coefficient multiplication, homogeneous cycles/boundaries
+    and quotient injectivity criterion proofs passed canonical run44502732621
+    without proof holes, with exact hashes and printed axiom lists verified.
+    The actual Source bridges are being checked in a separate bounded diagnostic;
+    the current complete package has not passed the mandatory full workflow.
+    Subsequent exact-snapshot workflow reports supersede these historical
+    build-status notes without changing scope or remaining paper groups.
+    Ten comparisons comprise four substantive assertions and six supports.
+    No peer review or whole-paper-completion claim is made.
+fidelity:
+  divergences: >-
+    The independent graded component is the actual polynomial Koszul complex
+    with the deletion differential and coefficient degree q-p, followed by
+    its cycles and boundary quotient. A genuine existing graded derived-Tor
+    isomorphism connects it to the original proof. Multiplication is the
+    supplied polynomial on actual ideal coefficients. Module coefficient
+    isomorphisms commute with that multiplication; natural derived tensor
+    braiding identifies both actual canonical Tor conventions. Graded
+    injectivity follows from original actual Rees boundary reflection and
+    the actual homogeneous filling projector. No nonvanishing surrogate,
+    normalization premise or assumed injection is introduced. All signed
+    degrees, fields and the zero-row case remain quantified.
+limitations:
+  - Historical2026-11-19 preparation status: complete canonical interface passed; current actual Source, raw Comparator and kernel replay await exact-snapshot full verification.
+  - This selection contains Corollary5.3 only, with four substantive targets and six genuine supporting propositions; other source-present main and corollary clauses remain outside this and the separate companion33-target selection; coverage-gaps.json records the current inventory and distinguishes supporting examples.
+  - Optional filesystem report writes in retained audit modules catch IO failures individually; all mathematical assertions and guards remain.

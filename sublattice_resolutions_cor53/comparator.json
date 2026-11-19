@@ -1,0 +1,21 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "PalomarSublatticeCor53.Koszul.eraseIndex_card",
+    "PalomarSublatticeCor53.multiplication_mem",
+    "PalomarSublatticeCor53.multiplication_cycles",
+    "PalomarSublatticeCor53.multiplication_boundaries",
+    "PalomarSublatticeCor53.corollary53_first_occurrence",
+    "PalomarSublatticeCor53.corollary53_chosen_generator_graded",
+    "PalomarSublatticeCor53.corollary53_first_occurrence_transfer",
+    "PalomarSublatticeCor53.minimum_monomial_mem",
+    "PalomarSublatticeCor53.rowMonomial_homogeneous",
+    "PalomarSublatticeCor53.corollary53_minimum_monomial_graded"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

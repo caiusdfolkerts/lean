@@ -1,0 +1,859 @@
+{
+  "baseline_project": "sublattice_resolutions",
+  "baseline_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
+  "paper_pdf_sha256": "dc8fd0239670c107968b689c21c60f9447529fefd5fafefb2800dc5c6f927d33",
+  "status": "2026-11-19 preparation: full canonical281 interface and generic proofs passed; actual Core/Data/Support Source passed; measured2 proof-only extensionality repairs under check",
+  "scope": "Complete Corollary5.3: first occurrence, exact homogeneous deformation transfer, specified non-monic corresponding generator injection, and explicit minimum monomial injection. Both actual Tor conventions and every signed graded Koszul quotient map retained. Four substantive targets plus six supports. Separate from companion33.",
+  "selected_results": [
+    {
+      "declaration": "PalomarSublatticeCor53.corollary53_first_occurrence",
+      "source_declaration": "FourPapers.Sublattice.corollary53_integer_first_occurrence",
+      "source_path": "source/paper_results/characteristic_consequences.lean:623",
+      "source_file_sha256": "b646566c23acbbfed9100a4dc38ae5613d8290aba17a5999a47fd81f6beb6883",
+      "paper_reference": "Corollary5.3, pages13-14"
+    },
+    {
+      "declaration": "PalomarSublatticeCor53.corollary53_chosen_generator_graded",
+      "source_declaration": "FourPapers.Sublattice.corollary53_chosenMinimumGenerator_paperTor",
+      "source_path": "source/paper_results/minimum_tor_injection_core.lean:1060",
+      "source_file_sha256": "ec6427d068a4eba4a1ba7eebd9e7064ca3291e88a624853a6aaf58a9524888ad",
+      "paper_reference": "Corollary5.3, pages13-14"
+    },
+    {
+      "declaration": "PalomarSublatticeCor53.corollary53_first_occurrence_transfer",
+      "source_declaration": "FourPapers.Sublattice.corollary53_integer_first_occurrence_transfer",
+      "source_path": "source/paper_results/characteristic_consequences.lean:650",
+      "source_file_sha256": "b646566c23acbbfed9100a4dc38ae5613d8290aba17a5999a47fd81f6beb6883",
+      "paper_reference": "Corollary5.3, pages13-14"
+    },
+    {
+      "declaration": "PalomarSublatticeCor53.corollary53_minimum_monomial_graded",
+      "source_declaration": "FourPapers.Sublattice.corollary53_minimumMonomial_paperTor",
+      "source_path": "source/paper_results/minimum_tor_injection_core.lean:1080",
+      "source_file_sha256": "ec6427d068a4eba4a1ba7eebd9e7064ca3291e88a624853a6aaf58a9524888ad",
+      "paper_reference": "Corollary5.3, pages13-14"
+    }
+  ],
+  "supporting_propositions": [
+    "PalomarSublatticeCor53.Koszul.eraseIndex_card",
+    "PalomarSublatticeCor53.multiplication_mem",
+    "PalomarSublatticeCor53.multiplication_cycles",
+    "PalomarSublatticeCor53.multiplication_boundaries",
+    "PalomarSublatticeCor53.minimum_monomial_mem",
+    "PalomarSublatticeCor53.rowMonomial_homogeneous"
+  ],
+  "selection_count": 10,
+  "substantive_count": 4,
+  "support_count": 6,
+  "zero_overlap_with_core33": true,
+  "source_preservation": {
+    "original_proof_modules_and_guards_retained": true,
+    "all_retained_Lean_max10000lines": true,
+    "prior_generated_companion_wrapper_pair_replaced": "Only source/Challenge.lean and source/Solution.lean from the companion packaging are replaced by this independent pair; exact old wrappers remain in the companion snapshots/history. No original proof module is removed.",
+    "new_modules": [
+      {
+        "path": "source/Cor53Core.lean",
+        "sha256": "b3fc292889cdec6e455948921cc154472726b42bcee38116c0434d257889fe60"
+      },
+      {
+        "path": "source/Cor53Data.lean",
+        "sha256": "12c9bce81d9eb8c16eed8b45f5899f85691d8af8dba0a2fba420c5c1821e3758"
+      },
+      {
+        "path": "source/Cor53GradedSupport.lean",
+        "sha256": "8503750ad1958de41ac92e63be727b611cc75e44e96d66934082486c3e0d4951"
+      },
+      {
+        "path": "source/SourceBridges.lean",
+        "sha256": "900395ad699d7a23b74e1ef3f95367615fa2d86a103937690bcc6afec5a4af52"
+      },
+      {
+        "path": "source/GradedMultiplication.lean",
+        "sha256": "1a85c260c7c53e519d420512d9f9b89511b165f413c824639c20c687309de739"
+      }
+    ],
+    "all_original_proof_module_bytes_match_companion": true
+  },
+  "genuine_bridges": [
+    {
+      "claim": "graded actual Koszul and derivedTor comparison",
+      "module": "Cor53Core.lean",
+      "note": "Exact differential, previous map, cycle and boundary isomorphisms; original genuine derivedTor equivalence retained."
+    },
+    {
+      "claim": "actual coefficient multiplication naturality",
+      "module": "SourceBridges.lean",
+      "note": "Native and scalar-restricted ideal coefficients are isomorphic on the same actual polynomials; the multiplication square commutes before applying the actual Tor functor."
+    },
+    {
+      "claim": "both actual Tor conventions",
+      "source": "source/paper_results/part002.lean:1823",
+      "declaration": "torPrimeSwapIso_naturality_right",
+      "note": "Genuine natural derived tensor braiding; no balanced-Tor assumption.",
+      "source_file_sha256": "e3b886516f56bd115ad3f6d65c0a6416a92b762a5a56f06451b70f324b5558c9"
+    },
+    {
+      "claim": "every signed homogeneous injection",
+      "source": "source/shared_results/part011.lean:1436",
+      "note": "Actual original homogeneous boundary-filling projector plus actual Rees boundary reflection, including negative actual polynomial pieces.",
+      "source_file_sha256": "cb72b7c4f89157cff09d77a70458c0dd25c5202487571e7aa399f44ba24ec345"
+    },
+    {
+      "claim": "specified non-monic Rees multiplication boundary reflection",
+      "declaration": "chosenMinimumGeneratorRees_homology_mul_injective",
+      "source": "source/paper_results/minimum_tor_injection_core.lean:919",
+      "source_file_sha256": "ec6427d068a4eba4a1ba7eebd9e7064ca3291e88a624853a6aaf58a9524888ad"
+    },
+    {
+      "claim": "minimum monomial Rees multiplication boundary reflection",
+      "declaration": "minimumMonomialRees_homology_mul_injective",
+      "source": "source/paper_results/minimum_tor_injection_core.lean:692",
+      "source_file_sha256": "ec6427d068a4eba4a1ba7eebd9e7064ca3291e88a624853a6aaf58a9524888ad"
+    }
+  ],
+  "verification": {
+    "preparation_date": "2026-11-19",
+    "canonical_complete_interface_run": 44498521421,
+    "canonical_receipt": "reports/sublattice_resolutions/cor53-canonical-interface-r4/run-44498521421/rees_cor53_full_interface/collection-verification.json",
+    "current_genuine_Source_run": 44502746595,
+    "current_generic_actual_proof_run": 44502732621,
+    "full_preflight_pending": true,
+    "actual_generic_proofs_pass": "reports/sublattice_resolutions/cor53-canonical-generic-proofs-r5/run-44502732621/collection-verification.json",
+    "actual_Source_R2_receipt": "reports/sublattice_resolutions/cor53-source-diagnostic-r2/run-44502746595/collection-verification.json",
+    "actual_Source_R2_compiled_modules": [
+      "Cor53Data",
+      "Cor53GradedSupport",
+      "Cor53Core"
+    ],
+    "actual_Source_R3_run": 44507143954
+  },
+  "unselected_paper_groups": [
+    {
+      "key": "th55",
+      "result": "Theorem5.5 full mixed Betti propagation and actual coordinate-unit multi-Rees homology generation",
+      "classification": "main theorem or substantive corollary clause",
+      "source_refs": [
+        {
+          "declaration_suffix": "theorem55_monomial_homogeneous_generation",
+          "source": "source/mixed_results/mixed_monomial_homogeneous_generation.lean:82",
+          "source_file_sha256": "d15e5e534163fd7604e082c87a1eae2b72895875046b62db6f4dfaadcebdcd3e",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "theorem55_monomial_generation",
+          "source": "source/shared_results/part020_mixed_unit_color_generation.lean:65",
+          "source_file_sha256": "b186e80551663653d0e857d72010c8a879844047e607fa43c00c5592b50f88c1",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem55_betti",
+          "source": "source/shared_results/part024.lean:627",
+          "source_file_sha256": "7cf20db31348f6a990e1ad826751f5243baeddb2ff2b41cde8a5a62fe4a314ff",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem55_generation",
+          "source": "source/shared_results/part024.lean:639",
+          "source_file_sha256": "7cf20db31348f6a990e1ad826751f5243baeddb2ff2b41cde8a5a62fe4a314ff",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem55_betti_of_individual_integer_premise",
+          "source": "source/shared_results/part024.lean:816",
+          "source_file_sha256": "7cf20db31348f6a990e1ad826751f5243baeddb2ff2b41cde8a5a62fe4a314ff",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem55_literal_monomial_generation",
+          "source": "source/shared_results/part024.lean:1033",
+          "source_file_sha256": "7cf20db31348f6a990e1ad826751f5243baeddb2ff2b41cde8a5a62fe4a314ff",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem55_literal_generation",
+          "source": "source/shared_results/part024.lean:1042",
+          "source_file_sha256": "7cf20db31348f6a990e1ad826751f5243baeddb2ff2b41cde8a5a62fe4a314ff",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        }
+      ]
+    },
+    {
+      "key": "cor56",
+      "result": "Corollary5.6 finite colored initial condition, all mixed initial ideals, Betti preservation and generation",
+      "classification": "main theorem or substantive corollary clause",
+      "source_refs": [
+        {
+          "declaration_suffix": "corollary56_initial",
+          "source": "source/shared_results/part017_colored.lean:154",
+          "source_file_sha256": "4a5ca0f31f1b21ccbc4ffbb1380b9b1a1864552d424b8ec268c20aa49eef033f",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "corollary56_betti",
+          "source": "source/shared_results/part024.lean:1103",
+          "source_file_sha256": "7cf20db31348f6a990e1ad826751f5243baeddb2ff2b41cde8a5a62fe4a314ff",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "corollary56_generation",
+          "source": "source/shared_results/part024.lean:1112",
+          "source_file_sha256": "7cf20db31348f6a990e1ad826751f5243baeddb2ff2b41cde8a5a62fe4a314ff",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        }
+      ]
+    },
+    {
+      "key": "cor57",
+      "result": "Corollary5.7 all cumulative-prefix ideal identities, mixed Betti preservation and generation",
+      "classification": "main theorem or substantive corollary clause",
+      "source_refs": [
+        {
+          "declaration_suffix": "corollary57_ideal_identities",
+          "source": "source/shared_results/part017_intersection.lean:120",
+          "source_file_sha256": "0deab57fee8968d4001c1e23bf92c215c03d44c145a07506cd23d6302dcddb97",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "corollary57_betti",
+          "source": "source/shared_results/part024.lean:1128",
+          "source_file_sha256": "7cf20db31348f6a990e1ad826751f5243baeddb2ff2b41cde8a5a62fe4a314ff",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "corollary57_generation",
+          "source": "source/shared_results/part024.lean:1137",
+          "source_file_sha256": "7cf20db31348f6a990e1ad826751f5243baeddb2ff2b41cde8a5a62fe4a314ff",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        }
+      ]
+    },
+    {
+      "key": "cor58",
+      "result": "Corollary5.8 actual minimal finite free power resolutions, fine weighted regrading, Rees generation and first-power propagation",
+      "classification": "main theorem or substantive corollary clause",
+      "source_refs": [
+        {
+          "declaration_suffix": "corollary58_disjoint_monomial_generation",
+          "source": "source/mixed_results/disjoint_monomial_generation.lean:35",
+          "source_file_sha256": "4965042f9c51df8c9c1ed1a34737148f2f61c0945d57ae7f231d14a7291be6d6",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "corollary58_propagation",
+          "source": "source/mixed_results/regular_substitution_propagation.lean:82",
+          "source_file_sha256": "6f262cdb1aec665f16605d2913ffee55df012375745f71d8a61f8351331794bd",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "corollary58_generation",
+          "source": "source/mixed_results/regular_substitution_rees_generation.lean:138",
+          "source_file_sha256": "87c3174767d0ea79c740b3ef5482366866ac8a2905cb70d79a4348ad5c7b3d6d",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "corollary58_powerFreeResolution",
+          "source": "source/resolution_existence/part009.lean:207",
+          "source_file_sha256": "4ea380609705fd77e0baa22dd2371239d67407770540f04da229f6459eb7db61",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "corollary58_powerFreeResolution_minimal",
+          "source": "source/resolution_existence/part009.lean:250",
+          "source_file_sha256": "4ea380609705fd77e0baa22dd2371239d67407770540f04da229f6459eb7db61",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "corollary58_powerFreeResolution_regraded",
+          "source": "source/resolution_existence/part009.lean:263",
+          "source_file_sha256": "4ea380609705fd77e0baa22dd2371239d67407770540f04da229f6459eb7db61",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "corollary58_powerFreeResolution_degree",
+          "source": "source/resolution_existence/part009.lean:279",
+          "source_file_sha256": "4ea380609705fd77e0baa22dd2371239d67407770540f04da229f6459eb7db61",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "corollary58_powerFreeResolution_bounded",
+          "source": "source/resolution_existence/part009.lean:292",
+          "source_file_sha256": "4ea380609705fd77e0baa22dd2371239d67407770540f04da229f6459eb7db61",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "corollary58_powerFreeResolution_augmentation_regraded",
+          "source": "source/resolution_existence/part009.lean:303",
+          "source_file_sha256": "4ea380609705fd77e0baa22dd2371239d67407770540f04da229f6459eb7db61",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "corollary58_powerFreeResolution_shift_multiplicity",
+          "source": "source/resolution_existence/part009.lean:318",
+          "source_file_sha256": "4ea380609705fd77e0baa22dd2371239d67407770540f04da229f6459eb7db61",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        }
+      ]
+    },
+    {
+      "key": "cor62",
+      "result": "Corollary6.2 natural signed multigrading and separate component-row counts",
+      "classification": "main theorem or substantive corollary clause",
+      "source_refs": [
+        {
+          "declaration_suffix": "corollary62_natural",
+          "source": "source/graph_results/closed_graph_natural_grading.lean:235",
+          "source_file_sha256": "45531b1435fe71db689e42f9ae726d2d5af29be320bb088911c335873e318ac5",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "corollary62_component_rows",
+          "source": "source/graph_results/closed_graph_natural_grading.lean:245",
+          "source_file_sha256": "45531b1435fe71db689e42f9ae726d2d5af29be320bb088911c335873e318ac5",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        }
+      ]
+    },
+    {
+      "key": "cor64",
+      "result": "Corollary6.4 arbitrary closed-graph linear-strand formula",
+      "classification": "main theorem or substantive corollary clause",
+      "source_refs": [
+        {
+          "declaration_suffix": "corollary64_closed",
+          "source": "source/graph_results/closed_graph_linear_strand.lean:142",
+          "source_file_sha256": "053fdb85389cfc8f68d2dddbb7d1c14606150652da8915ddf6c311a531604f29",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        }
+      ]
+    },
+    {
+      "key": "th71",
+      "result": "Theorem7.1 actual integral fine chain decomposition, constant parameter family and arbitrary coefficient-ring Tor base change",
+      "classification": "main theorem or substantive corollary clause",
+      "source_refs": [
+        {
+          "declaration_suffix": "theorem71_sourceIdeal",
+          "source": "source/paper_results/part009.lean:1497",
+          "source_file_sha256": "eaf81fb6f82ecd9ae92017c104735bd7342ccac72aeca440adb363371165f336",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem71_coefficientIdeal",
+          "source": "source/paper_results/part009.lean:1504",
+          "source_file_sha256": "eaf81fb6f82ecd9ae92017c104735bd7342ccac72aeca440adb363371165f336",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem71_integral",
+          "source": "source/paper_results/part009.lean:1511",
+          "source_file_sha256": "eaf81fb6f82ecd9ae92017c104735bd7342ccac72aeca440adb363371165f336",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem71_actualIntegral",
+          "source": "source/paper_results/part009.lean:1524",
+          "source_file_sha256": "eaf81fb6f82ecd9ae92017c104735bd7342ccac72aeca440adb363371165f336",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem71_familyIso",
+          "source": "source/paper_results/part009.lean:1548",
+          "source_file_sha256": "eaf81fb6f82ecd9ae92017c104735bd7342ccac72aeca440adb363371165f336",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem71_family",
+          "source": "source/paper_results/part009.lean:1557",
+          "source_file_sha256": "eaf81fb6f82ecd9ae92017c104735bd7342ccac72aeca440adb363371165f336",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem71_baseChange",
+          "source": "source/paper_results/part009.lean:1565",
+          "source_file_sha256": "eaf81fb6f82ecd9ae92017c104735bd7342ccac72aeca440adb363371165f336",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem71_signedFamilyIso",
+          "source": "source/paper_results/part009.lean:1623",
+          "source_file_sha256": "eaf81fb6f82ecd9ae92017c104735bd7342ccac72aeca440adb363371165f336",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem71_signedFamily",
+          "source": "source/paper_results/part009.lean:1633",
+          "source_file_sha256": "eaf81fb6f82ecd9ae92017c104735bd7342ccac72aeca440adb363371165f336",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem71_actualSignedFamily",
+          "source": "source/paper_results/part009.lean:1837",
+          "source_file_sha256": "eaf81fb6f82ecd9ae92017c104735bd7342ccac72aeca440adb363371165f336",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem71_literalSignedFamily",
+          "source": "source/paper_results/part009.lean:2030",
+          "source_file_sha256": "eaf81fb6f82ecd9ae92017c104735bd7342ccac72aeca440adb363371165f336",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem71_generatorFamily",
+          "source": "source/paper_results/part009.lean:2258",
+          "source_file_sha256": "eaf81fb6f82ecd9ae92017c104735bd7342ccac72aeca440adb363371165f336",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem71_arbitraryWeightFamily",
+          "source": "source/paper_results/part009.lean:2267",
+          "source_file_sha256": "eaf81fb6f82ecd9ae92017c104735bd7342ccac72aeca440adb363371165f336",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        }
+      ]
+    },
+    {
+      "key": "cor72",
+      "result": "Corollary7.2 actual arbitrary-coefficient integral mixed formula",
+      "classification": "main theorem or substantive corollary clause",
+      "source_refs": [
+        {
+          "declaration_suffix": "corollary72",
+          "source": "source/shared_results/part018_mixed_integer_tor.lean:108",
+          "source_file_sha256": "9b3efab9d80fae91718a3694606765c7680db876c4358d6e6b02342c48f2bfaf",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        }
+      ]
+    },
+    {
+      "key": "th81",
+      "result": "Theorem8.1 actual integral cellular resolution and base change; analytic spread, height bounds, support stabilization, eventual projective dimension, depth and regularity",
+      "classification": "main theorem or substantive corollary clause",
+      "source_refs": [
+        {
+          "declaration_suffix": "theorem81_support_stabilization",
+          "source": "source/paper_results/dimension_core.lean:483",
+          "source_file_sha256": "648ef231bdc015315adbc3ca6a500c47720529279d4525b9dd76042b9054848e",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem81_projectiveDimension_lower",
+          "source": "source/paper_results/dimension_core.lean:826",
+          "source_file_sha256": "648ef231bdc015315adbc3ca6a500c47720529279d4525b9dd76042b9054848e",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem81_projectiveDimension",
+          "source": "source/paper_results/dimension_core.lean:864",
+          "source_file_sha256": "648ef231bdc015315adbc3ca6a500c47720529279d4525b9dd76042b9054848e",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem81_regularity",
+          "source": "source/paper_results/numerical_invariants.lean:243",
+          "source_file_sha256": "044f7ccf14cdf01ff23806df258e53179f499edf9d7104bb562eeb9e0401877d",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem81_height_add_one_le_variables",
+          "source": "source/paper_results/numerical_invariants.lean:410",
+          "source_file_sha256": "044f7ccf14cdf01ff23806df258e53179f499edf9d7104bb562eeb9e0401877d",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem81_depth",
+          "source": "source/paper_results/numerical_invariants.lean:420",
+          "source_file_sha256": "044f7ccf14cdf01ff23806df258e53179f499edf9d7104bb562eeb9e0401877d",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem81_depth_integer",
+          "source": "source/paper_results/numerical_invariants.lean:443",
+          "source_file_sha256": "044f7ccf14cdf01ff23806df258e53179f499edf9d7104bb562eeb9e0401877d",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem81",
+          "source": "source/paper_results/numerical_invariants.lean:519",
+          "source_file_sha256": "044f7ccf14cdf01ff23806df258e53179f499edf9d7104bb562eeb9e0401877d",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem81_depthClause",
+          "source": "source/paper_results/numerical_invariants.lean:552",
+          "source_file_sha256": "044f7ccf14cdf01ff23806df258e53179f499edf9d7104bb562eeb9e0401877d",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem81_integer_support",
+          "source": "source/paper_results/numerical_invariants.lean:649",
+          "source_file_sha256": "044f7ccf14cdf01ff23806df258e53179f499edf9d7104bb562eeb9e0401877d",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem81_integer_regularity",
+          "source": "source/paper_results/numerical_invariants.lean:671",
+          "source_file_sha256": "044f7ccf14cdf01ff23806df258e53179f499edf9d7104bb562eeb9e0401877d",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem81_cellularResolution",
+          "source": "source/paper_results/part004.lean:1657",
+          "source_file_sha256": "eb0c16cd16d5c586d2d1981cd553b75fe09490239ac4aca5dd0d6b1365d88ecd",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem81_cellularBasis",
+          "source": "source/paper_results/part004.lean:1673",
+          "source_file_sha256": "eb0c16cd16d5c586d2d1981cd553b75fe09490239ac4aca5dd0d6b1365d88ecd",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem81_cellular_free",
+          "source": "source/paper_results/part004.lean:1680",
+          "source_file_sha256": "eb0c16cd16d5c586d2d1981cd553b75fe09490239ac4aca5dd0d6b1365d88ecd",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem81_cellular_finite",
+          "source": "source/paper_results/part004.lean:1685",
+          "source_file_sha256": "eb0c16cd16d5c586d2d1981cd553b75fe09490239ac4aca5dd0d6b1365d88ecd",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem81_cellular_length",
+          "source": "source/paper_results/part004.lean:1691",
+          "source_file_sha256": "eb0c16cd16d5c586d2d1981cd553b75fe09490239ac4aca5dd0d6b1365d88ecd",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem81_projectiveDimension_upper",
+          "source": "source/paper_results/part004.lean:1697",
+          "source_file_sha256": "eb0c16cd16d5c586d2d1981cd553b75fe09490239ac4aca5dd0d6b1365d88ecd",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem81_cellularShift",
+          "source": "source/paper_results/part004.lean:1708",
+          "source_file_sha256": "eb0c16cd16d5c586d2d1981cd553b75fe09490239ac4aca5dd0d6b1365d88ecd",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem81_cellularTermBaseChange",
+          "source": "source/paper_results/part005.lean:112",
+          "source_file_sha256": "88740ab5b4002e04ec40b48db92212e41ab7501ed98cd5cf7280eac0f23b3804",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem81_cellularDifferential_baseChange",
+          "source": "source/paper_results/part005.lean:129",
+          "source_file_sha256": "88740ab5b4002e04ec40b48db92212e41ab7501ed98cd5cf7280eac0f23b3804",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem81_cellularAugmentation_baseChange",
+          "source": "source/paper_results/part005.lean:191",
+          "source_file_sha256": "88740ab5b4002e04ec40b48db92212e41ab7501ed98cd5cf7280eac0f23b3804",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem81_specialFiberHibiEquiv",
+          "source": "source/paper_results/theorem81_analytic_spread.lean:112",
+          "source_file_sha256": "0922805648cc1d20a828eb66c7c9e3fe71aded8e51bbf38d17f015c251d4bd34",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem81_analyticSpread",
+          "source": "source/paper_results/theorem81_analytic_spread.lean:124",
+          "source_file_sha256": "0922805648cc1d20a828eb66c7c9e3fe71aded8e51bbf38d17f015c251d4bd34",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        }
+      ]
+    },
+    {
+      "key": "th91",
+      "result": "Theorem9.1 actual universal finite minimal graded graph complex, arbitrary base change and equal specialized ranks/shifts",
+      "classification": "main theorem or substantive corollary clause",
+      "source_refs": [
+        {
+          "declaration_suffix": "theorem91",
+          "source": "source/graph_results/theorem91.lean:50",
+          "source_file_sha256": "ed6c623bc0dc5b2e5debfd7d48ebdcede53fc1f2e506a2f008eecdf3a00020d5",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "theorem91_same_ranks",
+          "source": "source/graph_results/theorem91.lean:80",
+          "source_file_sha256": "ed6c623bc0dc5b2e5debfd7d48ebdcede53fc1f2e506a2f008eecdf3a00020d5",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        }
+      ]
+    },
+    {
+      "key": "cor104_expansion",
+      "result": "Corollary10.4 signed integer grouped nonnegative characteristic excess and all forward differences",
+      "classification": "main theorem or substantive corollary clause",
+      "source_refs": [
+        {
+          "declaration_suffix": "corollary104_integer_excessExpansion",
+          "source": "source/paper_results/characteristic_consequences.lean:371",
+          "source_file_sha256": "b646566c23acbbfed9100a4dc38ae5613d8290aba17a5999a47fd81f6beb6883",
+          "compiled_dependency_evidence": "Cor5.3 Core PASS44507143954 dependency closure"
+        },
+        {
+          "declaration_suffix": "corollary104_integer_forward_differences",
+          "source": "source/paper_results/characteristic_consequences.lean:385",
+          "source_file_sha256": "b646566c23acbbfed9100a4dc38ae5613d8290aba17a5999a47fd81f6beb6883",
+          "compiled_dependency_evidence": "Cor5.3 Core PASS44507143954 dependency closure"
+        },
+        {
+          "declaration_suffix": "corollary104_integer_grouped_expansion",
+          "source": "source/paper_results/characteristic_consequences.lean:520",
+          "source_file_sha256": "b646566c23acbbfed9100a4dc38ae5613d8290aba17a5999a47fd81f6beb6883",
+          "compiled_dependency_evidence": "Cor5.3 Core PASS44507143954 dependency closure"
+        }
+      ]
+    },
+    {
+      "key": "cor104_characteristic",
+      "result": "Corollary10.4 actual characteristic independence of one positive power iff all powers",
+      "classification": "main theorem or substantive corollary clause",
+      "source_refs": [
+        {
+          "declaration_suffix": "corollary104_integer_global_one_power_iff_all_powers",
+          "source": "source/paper_results/characteristic_consequences.lean:550",
+          "source_file_sha256": "b646566c23acbbfed9100a4dc38ae5613d8290aba17a5999a47fd81f6beb6883",
+          "compiled_dependency_evidence": "Cor5.3 Core PASS44507143954 dependency closure"
+        },
+        {
+          "declaration_suffix": "corollary104_integer_global_exists_iff_all_powers",
+          "source": "source/paper_results/characteristic_consequences.lean:584",
+          "source_file_sha256": "b646566c23acbbfed9100a4dc38ae5613d8290aba17a5999a47fd81f6beb6883",
+          "compiled_dependency_evidence": "Cor5.3 Core PASS44507143954 dependency closure"
+        }
+      ]
+    },
+    {
+      "key": "th41",
+      "result": "Theorem4.1 literal minimal-cover coordinate-prime intersection as well as symbolic/ordinary identities",
+      "classification": "main theorem or substantive corollary clause",
+      "source_refs": [
+        {
+          "declaration_suffix": "theorem41",
+          "source": "source/paper_results/part009.lean:1014",
+          "source_file_sha256": "eaf81fb6f82ecd9ae92017c104735bd7342ccac72aeca440adb363371165f336",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        }
+      ]
+    },
+    {
+      "key": "cor63",
+      "result": "Corollary6.3 actual finest monomial/natural graph field independence, including component-row and ordinary gradings",
+      "classification": "main theorem or substantive corollary clause",
+      "source_refs": [
+        {
+          "declaration_suffix": "corollary63_monomial_integer_fine_all",
+          "source": "source/graph_results/closed_graph_all_powers_characteristic.lean:93",
+          "source_file_sha256": "a974429da10d2e7e75f5f7f2f69b90be20f166791ececbfcaa9b2db58d7a5b0a",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "corollary63_binomial_natural_all",
+          "source": "source/graph_results/closed_graph_all_powers_characteristic.lean:106",
+          "source_file_sha256": "a974429da10d2e7e75f5f7f2f69b90be20f166791ececbfcaa9b2db58d7a5b0a",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "corollary63_binomial_component_rows_all",
+          "source": "source/graph_results/closed_graph_all_powers_characteristic.lean:118",
+          "source_file_sha256": "a974429da10d2e7e75f5f7f2f69b90be20f166791ececbfcaa9b2db58d7a5b0a",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "corollary63_integer_ordinary_all",
+          "source": "source/graph_results/closed_graph_all_powers_characteristic.lean:152",
+          "source_file_sha256": "a974429da10d2e7e75f5f7f2f69b90be20f166791ececbfcaa9b2db58d7a5b0a",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "corollary63_monomial_fine",
+          "source": "source/graph_results/closed_graph_characteristic.lean:95",
+          "source_file_sha256": "9be8cf049cc97bbb435d4f73a65257c957b3d516e1400028422cb7d3b3331926",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "corollary63_monomial_integer_fine",
+          "source": "source/graph_results/closed_graph_characteristic.lean:114",
+          "source_file_sha256": "9be8cf049cc97bbb435d4f73a65257c957b3d516e1400028422cb7d3b3331926",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "corollary63_binomial_natural",
+          "source": "source/graph_results/closed_graph_characteristic.lean:129",
+          "source_file_sha256": "9be8cf049cc97bbb435d4f73a65257c957b3d516e1400028422cb7d3b3331926",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "corollary63_binomial_component_rows",
+          "source": "source/graph_results/closed_graph_characteristic.lean:141",
+          "source_file_sha256": "9be8cf049cc97bbb435d4f73a65257c957b3d516e1400028422cb7d3b3331926",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "corollary63_monomial_ordinary",
+          "source": "source/graph_results/closed_graph_characteristic.lean:153",
+          "source_file_sha256": "9be8cf049cc97bbb435d4f73a65257c957b3d516e1400028422cb7d3b3331926",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "corollary63_ordinary",
+          "source": "source/graph_results/closed_graph_characteristic.lean:172",
+          "source_file_sha256": "9be8cf049cc97bbb435d4f73a65257c957b3d516e1400028422cb7d3b3331926",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "corollary63_integer_ordinary",
+          "source": "source/graph_results/closed_graph_characteristic.lean:182",
+          "source_file_sha256": "9be8cf049cc97bbb435d4f73a65257c957b3d516e1400028422cb7d3b3331926",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        }
+      ]
+    },
+    {
+      "key": "th65",
+      "result": "Theorem6.5 actual higher unit-interval minors, Betti preservation, field independence and support congruence",
+      "classification": "main theorem or substantive corollary clause",
+      "source_refs": [
+        {
+          "declaration_suffix": "theorem65_bettiEquality",
+          "source": "source/unit_interval_results/part001.lean:325",
+          "source_file_sha256": "f2748a806ab83e6df48abcb6565f72141c84831e9071da1387f433eff64213ec",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "theorem65_bettiEquality_fineSum",
+          "source": "source/unit_interval_results/part001.lean:336",
+          "source_file_sha256": "f2748a806ab83e6df48abcb6565f72141c84831e9071da1387f433eff64213ec",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "theorem65_fieldIndependence",
+          "source": "source/unit_interval_results/part001.lean:347",
+          "source_file_sha256": "f2748a806ab83e6df48abcb6565f72141c84831e9071da1387f433eff64213ec",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "theorem65_supportCongruence",
+          "source": "source/unit_interval_results/part001.lean:359",
+          "source_file_sha256": "f2748a806ab83e6df48abcb6565f72141c84831e9071da1387f433eff64213ec",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "theorem65",
+          "source": "source/unit_interval_results/part001.lean:369",
+          "source_file_sha256": "f2748a806ab83e6df48abcb6565f72141c84831e9071da1387f433eff64213ec",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "theorem65_integer_bettiEquality",
+          "source": "source/unit_interval_results/part001.lean:461",
+          "source_file_sha256": "f2748a806ab83e6df48abcb6565f72141c84831e9071da1387f433eff64213ec",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "theorem65_integer_fieldIndependence",
+          "source": "source/unit_interval_results/part001.lean:474",
+          "source_file_sha256": "f2748a806ab83e6df48abcb6565f72141c84831e9071da1387f433eff64213ec",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "theorem65_integer_supportCongruence",
+          "source": "source/unit_interval_results/part001.lean:488",
+          "source_file_sha256": "f2748a806ab83e6df48abcb6565f72141c84831e9071da1387f433eff64213ec",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "theorem65_integer",
+          "source": "source/unit_interval_results/part001.lean:503",
+          "source_file_sha256": "f2748a806ab83e6df48abcb6565f72141c84831e9071da1387f433eff64213ec",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        }
+      ]
+    },
+    {
+      "key": "prop102",
+      "result": "Proposition10.2 explicit1087-element30-row lattice and exact characteristic2 Betti/torsion example",
+      "classification": "supporting explicit example for principal Cor10.3; combine if interface limit permits; no independent entry proposed",
+      "source_refs": [
+        {
+          "declaration_suffix": "theorem102_ordinary_column",
+          "source": "source/paper_results/projective_plane_theorem102.lean:82",
+          "source_file_sha256": "bdf9b075a5c7703a21db906bb8dd6d1107ea168a0676def964f2ccb3d77211db",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "theorem102_betti",
+          "source": "source/paper_results/projective_plane_theorem102.lean:99",
+          "source_file_sha256": "bdf9b075a5c7703a21db906bb8dd6d1107ea168a0676def964f2ccb3d77211db",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "theorem102_integral",
+          "source": "source/paper_results/projective_plane_theorem102.lean:122",
+          "source_file_sha256": "bdf9b075a5c7703a21db906bb8dd6d1107ea168a0676def964f2ccb3d77211db",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "theorem102_integral_other",
+          "source": "source/paper_results/projective_plane_theorem102.lean:133",
+          "source_file_sha256": "bdf9b075a5c7703a21db906bb8dd6d1107ea168a0676def964f2ccb3d77211db",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        },
+        {
+          "declaration_suffix": "theorem102",
+          "source": "source/paper_results/projective_plane_theorem102.lean:147",
+          "source_file_sha256": "bdf9b075a5c7703a21db906bb8dd6d1107ea168a0676def964f2ccb3d77211db",
+          "compiled_dependency_evidence": "source-present; no current targeted compile receipt checked"
+        }
+      ]
+    },
+    {
+      "key": "cor103",
+      "result": "Corollary10.3 actual finite-complex homology realization in every positive power and all field degrees",
+      "classification": "main theorem or substantive corollary clause",
+      "source_refs": [
+        {
+          "declaration_suffix": "theorem103_realization",
+          "source": "source/paper_results/part009.lean:890",
+          "source_file_sha256": "eaf81fb6f82ecd9ae92017c104735bd7342ccac72aeca440adb363371165f336",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem103_all_degrees",
+          "source": "source/paper_results/part009.lean:906",
+          "source_file_sha256": "eaf81fb6f82ecd9ae92017c104735bd7342ccac72aeca440adb363371165f336",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem103_field_betti",
+          "source": "source/paper_results/part009.lean:921",
+          "source_file_sha256": "eaf81fb6f82ecd9ae92017c104735bd7342ccac72aeca440adb363371165f336",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "incidenceRealizationDegree_one",
+          "source": "source/paper_results/part009.lean:957",
+          "source_file_sha256": "eaf81fb6f82ecd9ae92017c104735bd7342ccac72aeca440adb363371165f336",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        },
+        {
+          "declaration_suffix": "theorem103_field_betti_all_degrees",
+          "source": "source/paper_results/part009.lean:972",
+          "source_file_sha256": "eaf81fb6f82ecd9ae92017c104735bd7342ccac72aeca440adb363371165f336",
+          "compiled_dependency_evidence": "full33 prior runs,123-module closure"
+        }
+      ]
+    }
+  ],
+  "no_whole_paper_completion_claim": true,
+  "coverage_inventory_note": "Current source-present main/corollary scope audit is in coverage-gaps.json. Seventeen endpoint/example groups represent15 distinct remaining numbered main/corollary labels (Cor10.4 has2 groups) plus supporting Prop10.2; provisional grouping is7companions, not17entries. Unnumbered section6.3 consequences also require audit. Final entry count depends on independent closure limits."
+}
