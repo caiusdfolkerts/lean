@@ -8,16 +8,16 @@
       "module": "Challenge",
       "case_dir": "cases/wishart_full20_canonical",
       "original_package": "reports/wishart/full20-canonical",
-      "original_challenge": "reports/wishart/full20-canonical/complex-hierarchy-repair/revision-02/Challenge.lean",
+      "original_challenge": "reports/wishart/full20-canonical/shared-witness-repair/Challenge.lean",
       "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
       "hashes": {
-        "Challenge.lean": "d87fae2d074d16f23cd47fbfd976d99d87cd18a6e0fac3cd67027d1117bd4179",
+        "Challenge.lean": "2c267b41e3e2d7c09dc870204d54a5a9410c4cce573573a7723560e4c5e5bd57",
         "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
         "lake-manifest.json": "5619bb28ae7f2972522467eccf712e99876805a4fb0b7298a3c8de5918224147",
         "original-lakefile.toml": "e429ab885c0b86124ac6b748b01715efdede7f476661ead3634e0c69b6521ccb"
       },
-      "challenge_lines": 1000,
-      "challenge_bytes": 97992,
+      "challenge_lines": 988,
+      "challenge_bytes": 98562,
       "dependency_pins": [
         {
           "name": "mathlib",
@@ -65,11 +65,77 @@
           "rev": "34d2efffcb6dc8d5f3537cf6a7f88bfaa999ec49"
         }
       ],
-      "diagnostic_class": "measured complex superclass and gauge context repair canonical Challenge; original principal scope unchanged",
+      "diagnostic_class": "complete Wishart20 interface with genuine measured Prop witness normalization; no data holes added",
+      "remote_memory_mib": 8192
+    },
+    {
+      "id": "wishart_shared_proof_witnesses",
+      "module": "WishartCommonProofWitnesses",
+      "case_dir": "cases/wishart_shared_proof_witnesses",
+      "original_package": "reports/wishart/full20-canonical",
+      "original_challenge": "reports/wishart/full20-canonical/shared-witness-repair/WishartCommonProofWitnesses.lean",
+      "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
+      "hashes": {
+        "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
+        "lake-manifest.json": "5619bb28ae7f2972522467eccf712e99876805a4fb0b7298a3c8de5918224147",
+        "original-lakefile.toml": "e429ab885c0b86124ac6b748b01715efdede7f476661ead3634e0c69b6521ccb",
+        "Challenge.lean": "67faa8a1ccbb53ebec8e780f7062955bb6c009ee87645c062871f533bb33e302"
+      },
+      "challenge_lines": 53,
+      "challenge_bytes": 3628,
+      "dependency_pins": [
+        {
+          "name": "mathlib",
+          "url": "https://github.com/leanprover-community/mathlib4",
+          "rev": "2cabef97b63d3275776b8b060d802de6a6fa1055"
+        },
+        {
+          "name": "plausible",
+          "url": "https://github.com/leanprover-community/plausible",
+          "rev": "c2d7840c65673533e15b499f25beecdc6227f7d8"
+        },
+        {
+          "name": "LeanSearchClient",
+          "url": "https://github.com/leanprover-community/LeanSearchClient",
+          "rev": "9d39f9bb0c30aa2f6200808805ff16e6ce950890"
+        },
+        {
+          "name": "importGraph",
+          "url": "https://github.com/leanprover-community/import-graph",
+          "rev": "b3cc36c295aa5e3e3c0197b09a6556298e710447"
+        },
+        {
+          "name": "proofwidgets",
+          "url": "https://github.com/leanprover-community/ProofWidgets4",
+          "rev": "17137fad38a2cc782ff00b323a13c3a991d085ab"
+        },
+        {
+          "name": "aesop",
+          "url": "https://github.com/leanprover-community/aesop",
+          "rev": "29c64c56cc38211d39b306db2df11701e3d3de11"
+        },
+        {
+          "name": "Qq",
+          "url": "https://github.com/leanprover-community/quote4",
+          "rev": "6d26f8bb4b2bb78f929ad160feac508866821316"
+        },
+        {
+          "name": "batteries",
+          "url": "https://github.com/leanprover-community/batteries",
+          "rev": "30691c775364967184547c94468bf6b5f25400fb"
+        },
+        {
+          "name": "Cli",
+          "url": "https://github.com/leanprover/lean4-cli",
+          "rev": "34d2efffcb6dc8d5f3537cf6a7f88bfaa999ec49"
+        }
+      ],
+      "diagnostic_class": "genuine canonical proposition witnesses only; no placeholders and no mathematical data supplied",
       "remote_memory_mib": 8192
     }
   ],
   "default_case_ids": [
+    "wishart_shared_proof_witnesses",
     "wishart_full20_canonical"
   ],
   "operator_resource_policy": {
