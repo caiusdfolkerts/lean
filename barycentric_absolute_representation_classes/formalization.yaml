@@ -1,0 +1,55 @@
+version: v0.4
+project:
+  name: The ordinary rank-selected cohomology formula for representation classes
+  description: For a finite simplicial poset with a group action and coefficients in any field, each homogeneous
+    Koszul homology group has the same class in the Grothendieck group of finite-dimensional representations
+    as the sum of the ordinary rank-selected reduced cohomology groups of the prescribed internal degree.
+    The left side uses the coefficient complex relative to the empty subposet, whose homogeneous homology
+    identifies equivariantly with the internal degree of ordinary Tor. On both sides the group acts by
+    the given poset automorphisms.
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.CO
+  - math.AC
+  msc2020:
+  - 13F55
+  - 05E45
+sources:
+- type: paper
+  title: Barycentric invariance and universal parameters for face rings
+  authors:
+  - Caius Folkerts
+  relationship: formalizes
+  author_endorsement: participated
+  url: https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/barycentric_invariance/paper.pdf
+  note: 'Exact included paper SHA-256: 44902437462f2861ab65c112f77ec1f19e594753d3c9b277d9adcb63c6e523e4.
+    Scope and declaration locations are recorded in map.json; novelty is not independently established.'
+automation:
+  methods:
+  - method: agent
+    tool_setup: OpenAI Codex
+    notes: Codex extracted the independent statement from the pinned Lean source and packaged the existing
+      proof.
+  - method: other
+    tool_setup: Historical AI assistance reported in the included paper
+    notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing its proofs.
+      The exact model roles and extent of historical Lean automation have not been reconstructed from
+      the snapshot.
+review:
+  status: unchecked
+  notes: The exact-snapshot mechanical report records verification. The Palomar review records editorial
+    findings.
+scope:
+  current_selection: For a finite simplicial poset with a group action and coefficients in any field,
+    each homogeneous Koszul homology group has the same class in the Grothendieck group of finite-dimensional
+    representations as the sum of the ordinary rank-selected reduced cohomology groups of the prescribed
+    internal degree. The left side uses the coefficient complex relative to the empty subposet, whose
+    homogeneous homology identifies equivariantly with the internal degree of ordinary Tor. On both sides
+    the group acts by the given poset automorphisms.
+  known_gaps: []
+  notes: Companion entries cover other parts of Theorem 1.2.
