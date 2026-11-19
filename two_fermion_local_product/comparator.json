@@ -16,12 +16,21 @@
     "PaperVerification.Fermion.SeparatedPairedData.localSuper_finrank",
     "PaperVerification.Fermion.SeparatedPairedData.localSuper_exterior_hilbert_coefficient",
     "PaperVerification.Fermion.SeparatedPairedData.globalSuper_finrank_closed",
-    "PaperVerification.Fermion.SeparatedPairedData.globalSuper_exterior_hilbert_coefficient"
+    "PaperVerification.Fermion.SeparatedPairedData.globalSuper_exterior_hilbert_coefficient",
+    "PaperVerification.Fermion.polynomialSelfCommute",
+    "PaperVerification.Fermion.polynomialSelfTower",
+    "PaperVerification.Fermion.exteriorSelfCommute",
+    "PaperVerification.Fermion.exteriorSelfTower",
+    "PaperVerification.Fermion.superQuotientTensorRing_formula",
+    "PaperVerification.Fermion.superQuotientTensorAlgebra_formula"
   ],
   "permitted_axioms": [
     "propext",
     "Quot.sound",
     "Classical.choice"
   ],
-  "definition_names": []
+  "definition_names": [
+    "PaperVerification.Fermion.superQuotientTensorRing",
+    "PaperVerification.Fermion.superQuotientTensorAlgebra"
+  ]
 }

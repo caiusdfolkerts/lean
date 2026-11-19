@@ -59,7 +59,20 @@ variable (K : Type u) [CommRing K] (n : ℕ)
 abbrev PolynomialRing := MvPolynomial (Fin n) K
 abbrev OddIndex := Fin n ⊕ Fin n
 abbrev OddModule := OddIndex n → K
+theorem polynomialSelfCommute : SMulCommClass K (PolynomialRing K n) (PolynomialRing K n) := by sorry
+theorem polynomialSelfTower : IsScalarTower K (PolynomialRing K n) (PolynomialRing K n) := by sorry
+theorem exteriorSelfCommute : SMulCommClass K (ExteriorAlgebra K (OddModule K n)) (ExteriorAlgebra K (OddModule K n)) := by sorry
+theorem exteriorSelfTower : IsScalarTower K (ExteriorAlgebra K (OddModule K n)) (ExteriorAlgebra K (OddModule K n)) := by sorry
+attribute [instance 2100] polynomialSelfCommute polynomialSelfTower exteriorSelfCommute exteriorSelfTower
 abbrev SuperRing := PolynomialRing K n ⊗[K] ExteriorAlgebra K (OddModule K n)
+@[reducible] noncomputable instance superQuotientModule (I : TwoSidedIdeal (SuperRing K n)) :
+    Module K I.ringCon.Quotient := by
+  let q : SuperRing K n →+ I.ringCon.Quotient :=
+    { toFun := fun x ↦ (x : I.ringCon.Quotient)
+      map_zero' := rfl
+      map_add' := fun _ _ ↦ rfl }
+  exact Function.Surjective.module K q
+    (fun x ↦ I.ringCon.mk'_surjective x) (fun _ _ ↦ rfl)
 noncomputable def theta (i : Fin n) : SuperRing K n :=
   Algebra.TensorProduct.includeRight
     (ExteriorAlgebra.ι K (Pi.single (Sum.inl i) 1))
@@ -305,6 +318,19 @@ set_option autoImplicit false
 open scoped TensorProduct
 variable (R S A : Type*) [CommRing R] [CommRing S] [Ring A]
   [Algebra R S] [Algebra R A]
+section
+variable (R S : Type*) [CommRing R] [CommRing S] [Algebra R S] {n : ℕ}
+instance superQuotientTensorRing (I : TwoSidedIdeal (SuperRing R n)) :
+    Ring (S ⊗[R] I.ringCon.Quotient) := by
+  exact Algebra.TensorProduct.instRing (R := R) (A := S) (B := I.ringCon.Quotient)
+theorem superQuotientTensorRing_formula (I : TwoSidedIdeal (SuperRing R n)) :
+    superQuotientTensorRing R S I = Algebra.TensorProduct.instRing (R := R) (A := S) (B := I.ringCon.Quotient) := by sorry
+instance superQuotientTensorAlgebra (I : TwoSidedIdeal (SuperRing R n)) :
+    Algebra S (S ⊗[R] I.ringCon.Quotient) := by
+  exact Algebra.TensorProduct.leftAlgebra (R := R) (S := S) (A := S) (B := I.ringCon.Quotient)
+theorem superQuotientTensorAlgebra_formula (I : TwoSidedIdeal (SuperRing R n)) :
+    superQuotientTensorAlgebra R S I = Algebra.TensorProduct.leftAlgebra (R := R) (S := S) (A := S) (B := I.ringCon.Quotient) := by sorry
+end
 def tensorTwoSidedIdeal (I : TwoSidedIdeal A) : TwoSidedIdeal (S ⊗[R] A) :=
   TwoSidedIdeal.map
     (Algebra.TensorProduct.includeRight : A →ₐ[R] S ⊗[R] A).toRingHom I
@@ -618,6 +644,7 @@ instance superQuotientFieldAlgebra : Algebra F d.SuperQuotient :=
 @[reducible] instance superQuotientFieldModule : Module F d.SuperQuotient :=
   @Algebra.toModule _ _ _ _ d.superQuotientFieldAlgebra
 def superMk : SuperRing F n →ₐ[F] d.SuperQuotient := d.superIdeal.ringCon.mkₐ F
+attribute [local instance 2450] AddMonoidAlgebra.instModule in
 theorem ordinary_scalar_ideal_mem
     (p : PolynomialRing F n)
     (hp : p∈separatedOrdinaryIdeal d.beta d.G d.phi) :
