@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "kind": "Challenge-only elaboration diagnostic; not full preflight",
+  "pipeline_commit": "14aa8d6b3c2f14a8540605e37144560b9a00e7e7",
+  "default_case_ids": [
+    "alternating_full_main13_interface_r2"
+  ],
+  "operator_resource_policy": {
+    "memory_mib": 8192,
+    "runner_memory_gib": 16,
+    "compiler_processes_per_job": 1,
+    "matrix_max_parallel": 2,
+    "compile_timeout_seconds": 2400
+  },
+  "revision": "alternating_full_main13_interface_r2",
+  "cases": [
+    {
+      "id": "alternating_full_main13_interface_r2",
+      "module": "Challenge",
+      "case_dir": "cases/alternating_full_main13_interface_r2",
+      "original_package": "packages/alternating_forms",
+      "original_challenge": "reports/alternating_forms/full-main13-candidate/Challenge.lean",
+      "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
+      "hashes": {
+        "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
+        "lake-manifest.json": "278783d3f5e31e0fd077543189744b7a2cd02e30e95be7b5b73d119a1becc6ed",
+        "original-lakefile.toml": "95a983976a76ef5a993fe24912dac9d4f3514a23b8c8b5db7b91bbc65faa6fae",
+        "Challenge.lean": "1af86dda37fc470065f0d37f62ca7aea42961a7452d15e6e2d155e0a605d0bf9"
+      },
+      "challenge_lines": 670,
+      "challenge_bytes": 41345,
+      "dependency_pins": [
+        {
+          "name": "mathlib",
+          "url": "https://github.com/leanprover-community/mathlib4",
+          "rev": "2cabef97b63d3275776b8b060d802de6a6fa1055"
+        },
+        {
+          "name": "plausible",
+          "url": "https://github.com/leanprover-community/plausible",
+          "rev": "c2d7840c65673533e15b499f25beecdc6227f7d8"
+        },
+        {
+          "name": "LeanSearchClient",
+          "url": "https://github.com/leanprover-community/LeanSearchClient",
+          "rev": "9d39f9bb0c30aa2f6200808805ff16e6ce950890"
+        },
+        {
+          "name": "importGraph",
+          "url": "https://github.com/leanprover-community/import-graph",
+          "rev": "b3cc36c295aa5e3e3c0197b09a6556298e710447"
+        },
+        {
+          "name": "proofwidgets",
+          "url": "https://github.com/leanprover-community/ProofWidgets4",
+          "rev": "17137fad38a2cc782ff00b323a13c3a991d085ab"
+        },
+        {
+          "name": "aesop",
+          "url": "https://github.com/leanprover-community/aesop",
+          "rev": "29c64c56cc38211d39b306db2df11701e3d3de11"
+        },
+        {
+          "name": "Qq",
+          "url": "https://github.com/leanprover-community/quote4",
+          "rev": "6d26f8bb4b2bb78f929ad160feac508866821316"
+        },
+        {
+          "name": "batteries",
+          "url": "https://github.com/leanprover-community/batteries",
+          "rev": "30691c775364967184547c94468bf6b5f25400fb"
+        },
+        {
+          "name": "Cli",
+          "url": "https://github.com/leanprover/lean4-cli",
+          "rev": "34d2efffcb6dc8d5f3537cf6a7f88bfaa999ec49"
+        }
+      ],
+      "diagnostic_class": "Complete Theorem1.3 algebra clauses with actualcoordinate-graded families,allpositiveplane quadratic Groebnerincludingoneplane,andactualTor/barKoszul; measuredclosure/context/Reesconstructor fixes only; Sourcebridgespending",
+      "remote_memory_mib": 8192
+    }
+  ]
+}
