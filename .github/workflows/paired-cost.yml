@@ -1,0 +1,60 @@
+name: Timed original and structural graph proof closures
+on:
+  push:
+    branches: [validation/nonrational-paired-cost]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+    defaults:
+      run:
+        working-directory: small_nonrational
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          sparse-checkout: small_nonrational
+          persist-credentials: false
+      - name: Install the pinned compiler
+        run: |
+          curl -fsSL --retry 3 https://github.com/leanprover/elan/releases/download/v4.2.3/elan-x86_64-unknown-linux-gnu.tar.gz -o "$RUNNER_TEMP/elan.tar.gz"
+          echo "df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2  $RUNNER_TEMP/elan.tar.gz" | sha256sum -c -
+          tar -xzf "$RUNNER_TEMP/elan.tar.gz" -C "$RUNNER_TEMP"
+          "$RUNNER_TEMP/elan-init" -y --no-modify-path --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          "$HOME/.elan/bin/elan" toolchain install "$(cat lean-toolchain)"
+
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: e5e855d2ac7590bbed11ce3445194de5ff3246c7
+          path: original
+          sparse-checkout: small_nonrational
+          persist-credentials: false
+      - name: Prepare independently indexed workspaces with common pinned dependencies
+        run: |
+          set -euo pipefail
+          mkdir -p .lake/packages ../original/small_nonrational/.lake
+          ln -s "$PWD/.lake/packages" ../original/small_nonrational/.lake/packages
+          cmp lean-toolchain ../original/small_nonrational/lean-toolchain
+          cmp lake-manifest.json ../original/small_nonrational/lake-manifest.json
+          python3 verification/run.py --prepare-only
+          (cd ../original/small_nonrational && python3 verification/run.py --prepare-only)
+          cd .lake/verification_workspace
+          lake env python3 scripts/fetch_mathlib_cache.py
+      - name: Time both complete dependency closures
+        run: |
+          set -euo pipefail
+          for variant in original structural; do
+            project="$GITHUB_WORKSPACE/small_nonrational"
+            if [ "$variant" = original ]; then project="$GITHUB_WORKSPACE/original/small_nonrational"; fi
+            cd "$project/.lake/verification_workspace"
+            target=GraphInputsRow29Part00003Cases
+            /usr/bin/time -v -o "$RUNNER_TEMP/time-$variant.txt" lake build "+$target"
+            cat "$RUNNER_TEMP/time-$variant.txt"
+          done
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: paired-closure-timings
+          path: ${{ runner.temp }}/time-*.txt
