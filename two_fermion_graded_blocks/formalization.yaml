@@ -1,0 +1,53 @@
+version: v0.4
+project:
+  name: The associated graded algebra and exterior blocks of two-fermion coinvariants
+  description: Over a characteristic-zero field, for a positive number of variables, the associated graded
+    two-fermion algebra is isomorphic to its initial quotient and decomposes linearly into admissible
+    exterior coefficient blocks. The algebra comparison identifies each graded basis class with its initial
+    representative. The block coordinates are specified on polynomial–exterior tensors, and the block
+    decomposition intertwines the induced GL₂ action on all elements.
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.CO
+  - math.AC
+  msc2020:
+  - 05E10
+  - 13A50
+sources:
+- type: paper
+  title: Monomial bases for two-fermion coinvariants
+  authors:
+  - Caius Folkerts
+  relationship: formalizes
+  author_endorsement: participated
+  url: https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf
+  note: 'Exact included paper SHA-256: c4a3dd3f2e102d6b4bcc8d50c58ea8007c412cea8d762a8fbb5b105db09bc19a.
+    Scope and declaration locations are recorded in map.json; novelty is not independently established.'
+automation:
+  methods:
+  - method: agent
+    tool_setup: OpenAI Codex
+    notes: Codex extracted the independent statements and packaged the proofs from the original Lean development.
+      The pinned verification workflow records the checks on this exact revision.
+  - method: other
+    tool_setup: Historical AI assistance reported in the included paper
+    notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing its proofs.
+      The exact model roles and extent of historical Lean automation have not been reconstructed from
+      the snapshot.
+review:
+  status: unchecked
+  notes: The selected statements have been checked during preparation. The verification report and editorial
+    review provide separate assessments.
+scope:
+  current_selection: Over a characteristic-zero field, for a positive number of variables, the associated
+    graded two-fermion algebra is isomorphic to its initial quotient and decomposes linearly into admissible
+    exterior coefficient blocks. The algebra comparison identifies each graded basis class with its initial
+    representative. The block coordinates are specified on polynomial–exterior tensors, and the block
+    decomposition intertwines the induced GL₂ action on all elements.
+  known_gaps: []
+  notes: This entry covers the stated clauses of Theorem 8.1. Other clauses are tracked separately.
