@@ -1,0 +1,40 @@
+{
+  "baseline_project": "sublattice_resolutions",
+  "baseline_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
+  "status": "prepared, exact full preflight pending",
+  "scope": "Corollaries 6.2 and 6.3, all six actual graded comparisons",
+  "selected_results": [
+    {
+      "declaration": "PalomarSublattice.corollary62_natural",
+      "paper_reference": "Corollary 6.2"
+    },
+    {
+      "declaration": "PalomarSublattice.corollary62_component_rows",
+      "paper_reference": "Corollary 6.2"
+    },
+    {
+      "declaration": "PalomarSublattice.corollary63_monomial_fine",
+      "paper_reference": "Corollary 6.3"
+    },
+    {
+      "declaration": "PalomarSublattice.corollary63_binomial_natural",
+      "paper_reference": "Corollary 6.3"
+    },
+    {
+      "declaration": "PalomarSublattice.corollary63_binomial_component_rows",
+      "paper_reference": "Corollary 6.3"
+    },
+    {
+      "declaration": "PalomarSublattice.corollary63_ordinary",
+      "paper_reference": "Corollary 6.3"
+    }
+  ],
+  "source_proofs": [
+    "source/graph_results/closed_graph_natural_grading.lean",
+    "source/graph_results/closed_graph_all_powers_characteristic.lean"
+  ],
+  "blockers": [
+    "Full exact-commit mechanical preflight"
+  ],
+  "selection_count": 7
+}

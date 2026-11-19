@@ -1,0 +1,18 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "PalomarSublattice.Koszul.eraseIndex_card",
+    "PalomarSublattice.corollary62_natural",
+    "PalomarSublattice.corollary62_component_rows",
+    "PalomarSublattice.corollary63_monomial_fine",
+    "PalomarSublattice.corollary63_binomial_natural",
+    "PalomarSublattice.corollary63_binomial_component_rows",
+    "PalomarSublattice.corollary63_ordinary"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

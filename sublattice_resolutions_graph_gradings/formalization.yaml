@@ -1,0 +1,42 @@
+version: v0.4
+project:
+  name: Sublattice resolutions and Betti preservation in all powers
+  description: >-
+    Betti preservation and field independence for powers of closed binomial edge
+    ideals and their specified monomial initial ideals. Natural signed vertex and
+    row degrees, independent component-row counts, signed ordinary degree, and the
+    finest signed grading on the monomial ideal are retained.
+  authors: [Caius Folkerts]
+  responsible_maintainers: [Caius Folkerts]
+  license: Apache-2.0
+classification:
+  arxiv: [math.AC, math.CO]
+  msc2020: [13D02, 13P10, 06D05]
+sources:
+  - title: Sublattice resolutions and Betti preservation in all powers
+    authors: [Caius Folkerts]
+    type: paper
+    relationship: formalizes
+    location: paper.pdf, Corollaries 6.2 and 6.3
+related_formalizations:
+  - title: caiusdfolkerts/research sublattice_resolutions
+    id: https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/sublattice_resolutions
+    relationship: other
+    note: Exact substantive baseline project copied with original provenance and licences retained.
+automation:
+  methods:
+    - method: agent
+      tool_setup: The manuscript credits GPT-6 Astra, GPT-5.6 Sol, and Kimi K3 assistance. Historical roles have not been independently reconstructed.
+    - method: agent
+      tool_setup: OpenAI Codex using GPT-6.1 Sol compared the actual paper and original source, inlined literal presentation and polynomial/exterior Koszul data, and prepared explicit graded chain and genuine derived-Tor bridges. As of 2026-11-19 preparation, these new bridges had not completed full verification; subsequent exact-snapshot workflow reports are separate evidence.
+review:
+  status: unchecked
+  notes: >-
+    Original source proofs are linked to a canonical polynomial Koszul interface
+    through explicit chain, boundary, and derived Tor comparisons.
+fidelity:
+  divergences: >-
+    Stronger boundary cases proven in the retained source include exponent zero and
+    signed negative internal degrees. Original vertex labels are retained.
+limitations:
+  - Scope is Corollaries 6.2 and 6.3; the linear-strand formula and higher-minor extensions are separate.
