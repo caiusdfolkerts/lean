@@ -1,0 +1,29 @@
+{
+  "project": "higher_specht_bases_adapted",
+  "baseline_project": "higher_specht_bases",
+  "paper_sha256": "931c0ee33b94c7a77d373c4040abb40151a8f1cd049b977006df188e31013a0c",
+  "companion_to": {
+    "entry": "higher_specht_bases_status",
+    "commit": "fb5ab9354a764e61ae08d5e8f631614d1920f776"
+  },
+  "status": "adapted_family_candidate_awaiting_full_preflight",
+  "selected_results": [
+    "Corollary 5.7: simultaneous triangular adapted basing and ineligible vanishing in the factorial-unit range"
+  ],
+  "coverage": [
+    {
+      "paper_result": "Corollary 5.7",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        21
+      ],
+      "declarations": [
+        {
+          "name": "HigherSpecht.adapted_master_triangular_basis_and_vanishing",
+          "source_path": "source/Solution.lean"
+        }
+      ]
+    }
+  ],
+  "coverage_status": "partial_principal_selection_not_whole_paper"
+}

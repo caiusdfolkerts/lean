@@ -1,0 +1,30 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "HigherSpecht.mem_prefixShape",
+    "HigherSpecht.prefixShape_le",
+    "HigherSpecht.prefixShape_card",
+    "TauCeti.StandardYoungTableau.row_strict",
+    "TauCeti.StandardYoungTableau.col_strict",
+    "HigherSpecht.standardTableau_monotoneCells",
+    "HigherSpecht.prefixLabelEquiv_apply_val",
+    "YoungDiagram.isAddable_def",
+    "YoungDiagram.palomarAddCell_isLowerSet",
+    "YoungDiagram.palomarIsAddable_decision_iff",
+    "TauCeti.palomarFiber_mul",
+    "TauCeti.palomarFiber_one",
+    "TauCeti.palomarFiber_inv",
+    "HigherSpecht.prefixTableau._proof_2",
+    "HigherSpecht.prefixTableau._proof_3",
+    "HigherSpecht.fixedMasterIndex_bound",
+    "HigherSpecht.finiteHarmonic_master_eligible",
+    "HigherSpecht.finiteHarmonic_master_length",
+    "HigherSpecht.adapted_master_triangular_basis_and_vanishing"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}
