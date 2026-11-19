@@ -290,11 +290,11 @@ theorem hit_le_jacobian [CharZero K] (F : P) (w : ι → ℕ) (h : ℕ) (t : K) 
  def defectToHit (F : P) (t : K) : jacobianSubmodule F →ₗ[K] (P ⧸ EulerJacobian.hit (gradient F) F t) :=
   (EulerJacobian.hit (gradient F) F t).mkQ.comp (jacobianSubmodule F).subtype
 theorem defectToHit_kernel (F : P) (t : K) : LinearMap.ker (defectToHit F t) = (EulerJacobian.hit (gradient F) F t).comap (jacobianSubmodule F).subtype := by sorry
-theorem defectToHit_range (F : P) (t : K) : LinearMap.range (defectToHit F t) = defectImage F t := by sorry
+theorem defectToHit_range (F : P) (t : K) : (@LinearMap.range K K _ _ _ _ _ _ _ _ (RingHom.id K) PalomarDeformedSupport.fieldDivisionIdentitySurjective (defectToHit F t)) = defectImage F t := by sorry
  def defectQuotientEquivImage (F : P) (t : K) : DefectQuotient F t ≃ₗ[K] defectImage F t :=
   (Submodule.quotEquivOfEq _ _ (defectToHit_kernel F t).symm).trans
-    ((defectToHit F t).quotKerEquivRange.trans
-      (LinearEquiv.ofEq _ _ (defectToHit_range F t)))
+    (LinearEquiv.trans (M₂ := (@LinearMap.range K K _ _ _ _ _ _ _ _ (RingHom.id K) PalomarDeformedSupport.fieldDivisionIdentitySurjective (defectToHit F t))) (module_M₂ := (inferInstance : Module K (@LinearMap.range K K _ _ _ _ _ _ _ _ (RingHom.id K) PalomarDeformedSupport.fieldDivisionIdentitySurjective (defectToHit F t)))) (defectToHit F t).quotKerEquivRange
+      (LinearEquiv.ofEq (@LinearMap.range K K _ _ _ _ _ _ _ _ (RingHom.id K) PalomarDeformedSupport.fieldDivisionIdentitySurjective (defectToHit F t)) _ (defectToHit_range F t)))
 end PaperVerification.JacobianDivergence
 namespace PaperVerification.JacobianLinearAction
 open MvPolynomial JacobianDivergence
@@ -360,6 +360,8 @@ open MvPolynomial Polynomial Module
 variable {K ι : Type*} [Field K] [Fintype ι]
 local notation "P" => MvPolynomial ι K
  def potentialSubalgebraModule [IsAlgClosed K] (F : P) (w : ι → ℕ) (h : ℕ) (hne : F ≠ 0) (hh : 0 < h) (hF : F.IsWeightedHomogeneous w h) : Module (Algebra.adjoin K {F}) (BrieskornModule F) :=
+  letI : AddCommMonoid (BrieskornModule F) := (palomarBrieskornAddCommGroup F).toAddCommMonoid
+  letI : Module K[X] (BrieskornModule F) := palomarBrieskornPolynomialModule F
   Module.compHom (BrieskornModule F)
     (potentialParameterEquiv F w h hne hh hF).symm.toRingHom
 end PaperVerification.JacobianDivergence

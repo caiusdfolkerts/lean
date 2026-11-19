@@ -182,14 +182,14 @@ theorem defectToHit_kernel (F : P) (t : K) :
     Submodule.subtype_apply]
 
 theorem defectToHit_range (F : P) (t : K) :
-    LinearMap.range (defectToHit F t) = defectImage F t := by
+    (@LinearMap.range K K _ _ _ _ _ _ _ _ (RingHom.id K) PalomarDeformedSupport.fieldDivisionIdentitySurjective (defectToHit F t)) = defectImage F t := by
   rw [defectToHit, LinearMap.range_comp, Submodule.range_subtype, defectImage, PalomarDeformedSupport.explicitMap]
 
 def defectQuotientEquivImage (F : P) (t : K) :
     DefectQuotient F t ≃ₗ[K] defectImage F t :=
   (Submodule.quotEquivOfEq _ _ (defectToHit_kernel F t).symm).trans
-    ((defectToHit F t).quotKerEquivRange.trans
-      (LinearEquiv.ofEq _ _ (defectToHit_range F t)))
+    (LinearEquiv.trans (M₂ := (@LinearMap.range K K _ _ _ _ _ _ _ _ (RingHom.id K) PalomarDeformedSupport.fieldDivisionIdentitySurjective (defectToHit F t))) (module_M₂ := (inferInstance : Module K (@LinearMap.range K K _ _ _ _ _ _ _ _ (RingHom.id K) PalomarDeformedSupport.fieldDivisionIdentitySurjective (defectToHit F t)))) (defectToHit F t).quotKerEquivRange
+      (LinearEquiv.ofEq (@LinearMap.range K K _ _ _ _ _ _ _ _ (RingHom.id K) PalomarDeformedSupport.fieldDivisionIdentitySurjective (defectToHit F t)) _ (defectToHit_range F t)))
 
 theorem potentialToHitQuotient_range [CharZero K]
     (F : P) (w : ι → ℕ) (h : ℕ) (t : K)

@@ -83,6 +83,8 @@ def potentialSubalgebraModule [IsAlgClosed K]
     (F : P) (w : ι → ℕ) (h : ℕ) (hne : F ≠ 0)
     (hh : 0 < h) (hF : F.IsWeightedHomogeneous w h) :
     Module (Algebra.adjoin K {F}) (BrieskornModule F) :=
+  letI : AddCommMonoid (BrieskornModule F) := (palomarBrieskornAddCommGroup F).toAddCommMonoid
+  letI : Module K[X] (BrieskornModule F) := palomarBrieskornPolynomialModule F
   Module.compHom (BrieskornModule F)
     (potentialParameterEquiv F w h hne hh hF).symm.toRingHom
 
