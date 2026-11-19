@@ -8,7 +8,6 @@ theorem natRightCancelAdd : IsRightCancelAdd ℕ := by infer_instance
 def naturalDown : ComplexShape ℕ := @ComplexShape.down ℕ _ natRightCancelAdd _
 def naturalUp : ComplexShape ℕ := @ComplexShape.up ℕ _ natRightCancelAdd _
 attribute [reducible] naturalDown naturalUp
-
 theorem coefficientSMulComm {K : Type*} [CommRing K] : SMulCommClass K K K := by infer_instance
 theorem functionScalarTower {V K : Type*} [CommRing K] : IsScalarTower K K (V → K) := by infer_instance
 theorem exteriorScalarComm {V K : Type*} [CommRing K] : SMulCommClass K K (ExteriorAlgebra K (V → K)) := by infer_instance
@@ -510,6 +509,7 @@ def faceRingSection : FaceRing K hs →ₗ[K] (polynomialDiagram (P := P) K).sec
     exact map_smul (faceRingEvaluation K hs p) c f
 def polynomialStandardCoordinates (p : P) : PolynomialStalk K p ≃ₗ[K] coefficientStalk K (standardCarrier (P := P)) p := (polynomialStandardBasis (K := K) hs p).repr.trans
   (Finsupp.supportedEquivFinsupp {a : StandardFaceIndex P | standardCarrier a ≤ p}).symm
+attribute [local instance 2450] AddMonoidAlgebra.instModule in
 theorem polynomialStandardCoordinates_naturality {p q : P} (hqp : q ≤ p) (f : PolynomialStalk K p) : coefficientRestriction K standardCarrier hqp
   (polynomialStandardCoordinates K hs p f) = polynomialStandardCoordinates K hs q (polynomialRestriction K hqp f) := by sorry
 def polynomialCoefficientEquiv : CoherentEquiv (polynomialDiagram (P := P) K) (coefficientDiagram K (standardCarrier (P := P))) where
