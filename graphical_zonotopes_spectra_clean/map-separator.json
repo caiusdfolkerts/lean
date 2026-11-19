@@ -1,0 +1,754 @@
+{
+  "baseline_project": "graphical_zonotopes",
+  "baseline_revision": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
+  "entry": "separator",
+  "status": "frozen_challenge_passed_solution_and_full_preflight_pending",
+  "description": "Complete positive-response gluing, exact kernel dimension and extremality criterion, unique positive relation, closing-boundary lift invariance, and induced/clique separator capacities.",
+  "comparator_config": "comparator-separator.json",
+  "claims": [
+    {
+      "paper_results": [
+        "Theorem 5.4, exact boundary-lift invariance"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.Separator.assembled_boundary_lift_transfer",
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 438
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 446
+      },
+      "source_declaration": "GraphicalZonotopes.Separator.assembled_boundary_lift_transfer",
+      "source": {
+        "file": "source/verified/parts/part014.lean",
+        "line": 596
+      },
+      "status": "prepared-uncompiled"
+    },
+    {
+      "paper_results": [
+        "Theorem 5.4"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.Separator.positive_response_gluing_finite",
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 484
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 496
+      },
+      "source_declaration": "GraphicalZonotopes.Separator.positive_response_gluing_finite",
+      "source": {
+        "file": "source/verified/parts/part014.lean",
+        "line": 653
+      },
+      "status": "prepared-uncompiled"
+    },
+    {
+      "paper_results": [
+        "Lemma 5.1"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.Separator.induced_separator_capacity_finite",
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 465
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 475
+      },
+      "source_declaration": "GraphicalZonotopes.Separator.induced_separator_capacity_finite",
+      "source": {
+        "file": "source/verified/parts/part014.lean",
+        "line": 564
+      },
+      "status": "prepared-uncompiled"
+    },
+    {
+      "paper_results": [
+        "Theorem 7.2"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.Separator.clique_separator_capacity_finite",
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 476
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 487
+      },
+      "source_declaration": "GraphicalZonotopes.Separator.clique_separator_capacity_finite",
+      "source": {
+        "file": "source/verified/parts/part014.lean",
+        "line": 578
+      },
+      "status": "prepared-uncompiled"
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal construction semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.Separator.Partition.clique_unique_branch",
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 235
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 239
+      },
+      "source_declaration": "GraphicalZonotopes.Separator.Partition.clique_unique_branch",
+      "source": {
+        "file": "source/verified/parts/part007.lean",
+        "line": 2018
+      },
+      "status": "prepared-uncompiled"
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal construction semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.Separator.globalFunction_mem",
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 285
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 290
+      },
+      "source_declaration": "GraphicalZonotopes.Separator.functionEquiv",
+      "source": {
+        "file": "source/verified/parts/part007.lean",
+        "line": 2164
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "The subtype membership field of the original exact coordinate equivalence supplies the literal zeta function membership."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal construction semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.Separator.componentPartition",
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 337
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 343
+      },
+      "source_declaration": "GraphicalZonotopes.Separator.componentPartition",
+      "source": {
+        "file": "source/verified/parts/part007.lean",
+        "line": 2191
+      },
+      "status": "prepared-uncompiled"
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal construction semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.zeta_injective",
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 45
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 46
+      },
+      "source_declaration": "GraphicalZonotopes.zeta_injective",
+      "source": {
+        "file": "source/verified/parts/part000.lean",
+        "line": 1101
+      },
+      "status": "prepared-uncompiled"
+    },
+    {
+      "paper_results": [
+        "Theorem 5.4, ordered coordinate formulation"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.Separator.positive_response_gluing",
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 447
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 456
+      },
+      "source_declaration": "GraphicalZonotopes.Separator.positive_response_gluing",
+      "source": {
+        "file": "source/verified/parts/part014.lean",
+        "line": 629
+      },
+      "status": "prepared-uncompiled"
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.zeta_add",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 35
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 36
+      },
+      "source": {
+        "file": "SolutionSeparator.lean",
+        "line": 36
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.zeta_smul",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 38
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 39
+      },
+      "source": {
+        "file": "SolutionSeparator.lean",
+        "line": 39
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.Separator.branchOf_spec",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 249
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 254
+      },
+      "source": {
+        "file": "SolutionSeparator.lean",
+        "line": 250
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.coefficientFill_add",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 67
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 69
+      },
+      "source": {
+        "file": "SolutionSeparator.lean",
+        "line": 69
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.coefficientFill_smul",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 71
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 73
+      },
+      "source": {
+        "file": "SolutionSeparator.lean",
+        "line": 73
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.graphicalSpace_zero",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 81
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 83
+      },
+      "source": {
+        "file": "SolutionSeparator.lean",
+        "line": 83
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.graphicalSpace_add",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 86
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 88
+      },
+      "source": {
+        "file": "SolutionSeparator.lean",
+        "line": 88
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.graphicalSpace_smul",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 99
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 101
+      },
+      "source": {
+        "file": "SolutionSeparator.lean",
+        "line": 101
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.delta_add",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 118
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 120
+      },
+      "source": {
+        "file": "SolutionSeparator.lean",
+        "line": 120
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.delta_smul",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 120
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 122
+      },
+      "source": {
+        "file": "SolutionSeparator.lean",
+        "line": 122
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.Gluing.response_add",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 158
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 160
+      },
+      "source": {
+        "file": "SolutionSeparator.lean",
+        "line": 160
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.Gluing.response_smul",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 160
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 162
+      },
+      "source": {
+        "file": "SolutionSeparator.lean",
+        "line": 162
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.Gluing.privateKernel_zero",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 171
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 173
+      },
+      "source": {
+        "file": "SolutionSeparator.lean",
+        "line": 173
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.Gluing.privateKernel_add",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 178
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 180
+      },
+      "source": {
+        "file": "SolutionSeparator.lean",
+        "line": 180
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.Gluing.privateKernel_smul",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 186
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 188
+      },
+      "source": {
+        "file": "SolutionSeparator.lean",
+        "line": 188
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.Polyhedral.tightKernel_zero",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 212
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 214
+      },
+      "source": {
+        "file": "SolutionSeparator.lean",
+        "line": 210
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.Polyhedral.tightKernel_add",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 214
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 216
+      },
+      "source": {
+        "file": "SolutionSeparator.lean",
+        "line": 212
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.Polyhedral.tightKernel_smul",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 216
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 218
+      },
+      "source": {
+        "file": "SolutionSeparator.lean",
+        "line": 214
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.Separator.joinCoordinates_add",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 268
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 273
+      },
+      "source": {
+        "file": "SolutionSeparator.lean",
+        "line": 269
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.Separator.joinCoordinates_smul",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 272
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 277
+      },
+      "source": {
+        "file": "SolutionSeparator.lean",
+        "line": 273
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.Separator.privateEmbed_add",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 307
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 313
+      },
+      "source": {
+        "file": "SolutionSeparator.lean",
+        "line": 309
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.Separator.privateEmbed_smul",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 312
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 318
+      },
+      "source": {
+        "file": "SolutionSeparator.lean",
+        "line": 314
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.boundarySlack_add",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 356
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 364
+      },
+      "source": {
+        "file": "SolutionSeparator.lean",
+        "line": 360
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.boundarySlack_smul",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 360
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 368
+      },
+      "source": {
+        "file": "SolutionSeparator.lean",
+        "line": 364
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.Separator.boundaryEmbed_smul",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 298
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 304
+      },
+      "source": {
+        "file": "SolutionSeparator.lean",
+        "line": 300
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSeparator.Separator.boundaryEmbed_add",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSeparator.lean",
+        "line": 294
+      },
+      "solution": {
+        "file": "SolutionSeparator.lean",
+        "line": 300
+      },
+      "source": {
+        "file": "SolutionSeparator.lean",
+        "line": 296
+      },
+      "status": "prepared-uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    }
+  ],
+  "definition_semantics": "Every nontrivial proof-valued constructor argument is factored through a named compared supporting theorem. All data and carrier definitions are literal and independently present in both fresh modules. Canonical Fintype subtype/quotient constructions are explicit. No definition_names or opaque supplied values.",
+  "blockers": [
+    "Fresh Challenge and Solution/source-bridge compilation pending.",
+    "Actual Comparator and independent kernel checks have not run."
+  ],
+  "local_validation": {
+    "Challenge": {
+      "module": "ChallengeSeparator",
+      "exit_code": 0,
+      "elapsed_seconds": 120.31,
+      "sha256": "c78f349eabe71c1c7d15835afc7c78b0c93347d306768ed9ddb34af7a5e20109",
+      "log": "fresh-challenge-separator-check3.log"
+    },
+    "Solution": "Source bridge draft, not compiled locally.",
+    "Comparator_and_kernels": "Not yet run."
+  },
+  "validation": "Prior exact source/Solution compiled remotely and locally. Full retained-export audit found24 mismatches caused by module-generated anonymous DecidableEq names and one source Fintype instance leak. The bounded two-cause interface repair is source-audited but not rebuilt because local disk crossed the10GiB floor; full remote validation remains required."
+}

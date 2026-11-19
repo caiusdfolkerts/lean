@@ -1,0 +1,596 @@
+{
+  "baseline_project": "graphical_zonotopes",
+  "baseline_revision": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
+  "entry": "spectra",
+  "status": "frozen_complete9_error_Solution_repair_uncompiled",
+  "comparator_config": "comparator-spectra.json",
+  "claims": [
+    {
+      "paper_results": [
+        "Corollary5.2"
+      ],
+      "challenge_declaration": "PalomarGraphicalSpectra.paper_corollary_5_2",
+      "challenge": {
+        "file": "ChallengeSpectra.lean",
+        "line": 405
+      },
+      "solution": {
+        "file": "SolutionSpectra.lean",
+        "line": 580
+      },
+      "source_declaration": "GraphicalZonotopes.paper_corollary_5_2",
+      "source": {
+        "file": "source/verified/parts/part041.lean",
+        "line": 1697
+      },
+      "status": "Challenge_passed_repaired_Solution_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Corollary5.3"
+      ],
+      "challenge_declaration": "PalomarGraphicalSpectra.triangle_components_le_three",
+      "challenge": {
+        "file": "ChallengeSpectra.lean",
+        "line": 416
+      },
+      "solution": {
+        "file": "SolutionSpectra.lean",
+        "line": 592
+      },
+      "source_declaration": "GraphicalZonotopes.SupportsFullIndecomposable.triangle_components_le_three",
+      "source": {
+        "file": "source/verified/parts/part008.lean",
+        "line": 1720
+      },
+      "status": "Challenge_passed_repaired_Solution_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Corollary6.7"
+      ],
+      "challenge_declaration": "PalomarGraphicalSpectra.threeTree_dimension_and_spectrum",
+      "challenge": {
+        "file": "ChallengeSpectra.lean",
+        "line": 423
+      },
+      "solution": {
+        "file": "SolutionSpectra.lean",
+        "line": 602
+      },
+      "source_declaration": "GraphicalZonotopes.threeTree_dimension_and_spectrum",
+      "source": {
+        "file": "source/verified/parts/part010.lean",
+        "line": 1313
+      },
+      "status": "Challenge_passed_repaired_Solution_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Corollary6.8"
+      ],
+      "challenge_declaration": "PalomarGraphicalSpectra.partial_threeTree_piecewise_maximum",
+      "challenge": {
+        "file": "ChallengeSpectra.lean",
+        "line": 431
+      },
+      "solution": {
+        "file": "SolutionSpectra.lean",
+        "line": 611
+      },
+      "source_declaration": "GraphicalZonotopes.partial_threeTree_piecewise_maximum",
+      "source": {
+        "file": "source/verified/parts/part020.lean",
+        "line": 1661
+      },
+      "status": "Challenge_passed_repaired_Solution_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Corollaries6.7–6.8, full positive spectrum"
+      ],
+      "challenge_declaration": "PalomarGraphicalSpectra.partial_threeTree_full_dimension_spectrum",
+      "challenge": {
+        "file": "ChallengeSpectra.lean",
+        "line": 436
+      },
+      "solution": {
+        "file": "SolutionSpectra.lean",
+        "line": 617
+      },
+      "source_declaration": "GraphicalZonotopes.partial_threeTree_full_dimension_spectrum",
+      "source": {
+        "file": "source/verified/parts/part020.lean",
+        "line": 1682
+      },
+      "status": "Challenge_passed_repaired_Solution_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Corollary6.9, tree join"
+      ],
+      "challenge_declaration": "PalomarGraphicalSpectra.paper_corollary_6_9_tree_join",
+      "challenge": {
+        "file": "ChallengeSpectra.lean",
+        "line": 444
+      },
+      "solution": {
+        "file": "SolutionSpectra.lean",
+        "line": 626
+      },
+      "source_declaration": "GraphicalZonotopes.TreeJoin.paper_corollary_6_9_tree_join",
+      "source": {
+        "file": "source/verified/parts/part010.lean",
+        "line": 1499
+      },
+      "status": "Challenge_passed_repaired_Solution_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Corollary6.6"
+      ],
+      "challenge_declaration": "PalomarGraphicalSpectra.partial_threeTree_support_classification",
+      "challenge": {
+        "file": "ChallengeSpectra.lean",
+        "line": 458
+      },
+      "solution": {
+        "file": "SolutionSpectra.lean",
+        "line": 643
+      },
+      "source_declaration": "GraphicalZonotopes.partial_threeTree_support_classification",
+      "source": {
+        "file": "source/verified/parts/part010.lean",
+        "line": 993
+      },
+      "status": "Challenge_passed_repaired_Solution_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Corollary6.9, three-hub book"
+      ],
+      "challenge_declaration": "PalomarGraphicalSpectra.three_hub_book_maximum",
+      "challenge": {
+        "file": "ChallengeSpectra.lean",
+        "line": 466
+      },
+      "solution": {
+        "file": "SolutionSpectra.lean",
+        "line": 652
+      },
+      "source_declaration": "GraphicalZonotopes.three_hub_book_maximum",
+      "source": {
+        "file": "source/verified/parts/part014.lean",
+        "line": 874
+      },
+      "status": "Challenge_passed_repaired_Solution_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Corollary8.5"
+      ],
+      "challenge_declaration": "PalomarGraphicalSpectra.paper_corollary_8_5",
+      "challenge": {
+        "file": "ChallengeSpectra.lean",
+        "line": 470
+      },
+      "solution": {
+        "file": "SolutionSpectra.lean",
+        "line": 657
+      },
+      "source_declaration": "GraphicalZonotopes.TwoHub.paper_corollary_8_5",
+      "source": {
+        "file": "source/verified/parts/part024.lean",
+        "line": 1759
+      },
+      "status": "Challenge_passed_repaired_Solution_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Corollary4.4"
+      ],
+      "challenge_declaration": "PalomarGraphicalSpectra.refined_support_of_dimension_ge_three",
+      "challenge": {
+        "file": "ChallengeSpectra.lean",
+        "line": 477
+      },
+      "solution": {
+        "file": "SolutionSpectra.lean",
+        "line": 665
+      },
+      "source_declaration": "GraphicalZonotopes.RefinedTriangleComponents.refined_support_of_dimension_ge_three",
+      "source": {
+        "file": "source/verified/parts/part010.lean",
+        "line": 822
+      },
+      "status": "Challenge_passed_repaired_Solution_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Corollary6.4"
+      ],
+      "challenge_declaration": "PalomarGraphicalSpectra.planar_full_iff_threeTree",
+      "challenge": {
+        "file": "ChallengeSpectra.lean",
+        "line": 487
+      },
+      "solution": {
+        "file": "SolutionSpectra.lean",
+        "line": 684
+      },
+      "source_declaration": "GraphicalZonotopes.HasPlaneDrawing.full_polytopal_iff_threeTree",
+      "source": {
+        "file": "source/verified/parts/part041.lean",
+        "line": 1559
+      },
+      "status": "Challenge_passed_repaired_Solution_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Corollary6.5"
+      ],
+      "challenge_declaration": "PalomarGraphicalSpectra.planar_component_dimension_spectrum",
+      "challenge": {
+        "file": "ChallengeSpectra.lean",
+        "line": 493
+      },
+      "solution": {
+        "file": "SolutionSpectra.lean",
+        "line": 692
+      },
+      "source_declaration": "GraphicalZonotopes.paper_corollary_6_5",
+      "source": {
+        "file": "source/verified/parts/part041.lean",
+        "line": 1636
+      },
+      "status": "Challenge_passed_repaired_Solution_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal direction-graph constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSpectra.actualRootEdge_symm",
+      "challenge": {
+        "file": "ChallengeSpectra.lean",
+        "line": 136
+      },
+      "solution": {
+        "file": "SolutionSpectra.lean",
+        "line": 137
+      },
+      "source_declaration": "GraphicalZonotopes.actualRootEdge_symm",
+      "source": {
+        "file": "source/verified/parts/part001.lean",
+        "line": 692
+      },
+      "status": "Challenge_passed_repaired_Solution_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal direction-graph constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSpectra.PathJoin.adjacency_symm",
+      "challenge": {
+        "file": "ChallengeSpectra.lean",
+        "line": 193
+      },
+      "solution": {
+        "file": "SolutionSpectra.lean",
+        "line": 194
+      },
+      "source_declaration": null,
+      "source": {
+        "file": "SolutionSpectra.lean",
+        "line": 194
+      },
+      "status": "Challenge_passed_repaired_Solution_uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSpectra.tetrahedronIntersection_symm",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSpectra.lean",
+        "line": 254
+      },
+      "solution": {
+        "file": "SolutionSpectra.lean",
+        "line": 255
+      },
+      "source": {
+        "file": "SolutionSpectra.lean",
+        "line": 255
+      },
+      "status": "Challenge_passed_repaired_Solution_uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSpectra.fourFamilyEdges_symm",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSpectra.lean",
+        "line": 284
+      },
+      "solution": {
+        "file": "SolutionSpectra.lean",
+        "line": 285
+      },
+      "source": {
+        "file": "SolutionSpectra.lean",
+        "line": 285
+      },
+      "status": "Challenge_passed_repaired_Solution_uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSpectra.TreeJoin.hubAdjacency_symm",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSpectra.lean",
+        "line": 302
+      },
+      "solution": {
+        "file": "SolutionSpectra.lean",
+        "line": 303
+      },
+      "source": {
+        "file": "SolutionSpectra.lean",
+        "line": 303
+      },
+      "status": "Challenge_passed_repaired_Solution_uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSpectra.TreeJoin.hubAdjacency_irrefl",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSpectra.lean",
+        "line": 309
+      },
+      "solution": {
+        "file": "SolutionSpectra.lean",
+        "line": 310
+      },
+      "source": {
+        "file": "SolutionSpectra.lean",
+        "line": 310
+      },
+      "status": "Challenge_passed_repaired_Solution_uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSpectra.incidenceAdjacency_symm",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSpectra.lean",
+        "line": 385
+      },
+      "solution": {
+        "file": "SolutionSpectra.lean",
+        "line": 386
+      },
+      "source": {
+        "file": "SolutionSpectra.lean",
+        "line": 386
+      },
+      "status": "Challenge_passed_repaired_Solution_uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Supporting obligation fixing literal constructor semantics"
+      ],
+      "challenge_declaration": "PalomarGraphicalSpectra.incidenceAdjacency_irrefl",
+      "source_declaration": null,
+      "challenge": {
+        "file": "ChallengeSpectra.lean",
+        "line": 388
+      },
+      "solution": {
+        "file": "SolutionSpectra.lean",
+        "line": 389
+      },
+      "source": {
+        "file": "SolutionSpectra.lean",
+        "line": 389
+      },
+      "status": "Challenge_passed_repaired_Solution_uncompiled",
+      "bridge": "Fresh supporting theorem proved directly in Solution; no prior source declaration is claimed."
+    },
+    {
+      "paper_results": [
+        "Corollary6.7: actual clique-triangle incidence tree"
+      ],
+      "challenge_declaration": "PalomarGraphicalSpectra.threeTree_incidence_isTree",
+      "source_declaration": "GraphicalZonotopes.ThreeTreeOn.incidence_isTree",
+      "challenge": {
+        "file": "ChallengeSpectra.lean",
+        "line": 503
+      },
+      "solution": {
+        "file": "SolutionSpectra.lean",
+        "line": 716
+      },
+      "source": {
+        "file": "source/verified/parts/part005.lean",
+        "line": 1720
+      },
+      "status": "Challenge_passed_repaired_Solution_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Corollary6.8: intrinsic incidence forest"
+      ],
+      "challenge_declaration": "PalomarGraphicalSpectra.partial_threeTree_incidence_isAcyclic",
+      "source_declaration": "GraphicalZonotopes.IsPartialThreeTree.incidence_isAcyclic",
+      "challenge": {
+        "file": "ChallengeSpectra.lean",
+        "line": 506
+      },
+      "solution": {
+        "file": "SolutionSpectra.lean",
+        "line": 720
+      },
+      "source": {
+        "file": "source/verified/parts/part041.lean",
+        "line": 2162
+      },
+      "status": "Challenge_passed_repaired_Solution_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Corollary6.9: Hamiltonian3tree full-dimensional lattice witness and exact actual direction graph"
+      ],
+      "challenge_declaration": "PalomarGraphicalSpectra.hamiltonian_threeTree_lattice_witness",
+      "source_declaration": "GraphicalZonotopes.hamiltonian_threeTree_lattice_polytopal_finite",
+      "challenge": {
+        "file": "ChallengeSpectra.lean",
+        "line": 509
+      },
+      "solution": {
+        "file": "SolutionSpectra.lean",
+        "line": 727
+      },
+      "source": {
+        "file": "source/verified/parts/part009.lean",
+        "line": 746
+      },
+      "status": "Challenge_passed_repaired_Solution_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Corollary6.4: arbitrary finite ground set, order supplied internally"
+      ],
+      "challenge_declaration": "PalomarGraphicalSpectra.planar_full_iff_threeTree_finite",
+      "source_declaration": "GraphicalZonotopes.paper_corollary_6_4",
+      "challenge": {
+        "file": "ChallengeSpectra.lean",
+        "line": 518
+      },
+      "solution": {
+        "file": "SolutionSpectra.lean",
+        "line": 746
+      },
+      "source": {
+        "file": "source/verified/parts/part041.lean",
+        "line": 1598
+      },
+      "status": "Challenge_passed_repaired_Solution_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Corollary6.5: arbitrary finite ground set and every positive dimension"
+      ],
+      "challenge_declaration": "PalomarGraphicalSpectra.planar_component_dimension_spectrum_finite",
+      "source_declaration": "GraphicalZonotopes.paper_corollary_6_5",
+      "challenge": {
+        "file": "ChallengeSpectra.lean",
+        "line": 524
+      },
+      "solution": {
+        "file": "SolutionSpectra.lean",
+        "line": 754
+      },
+      "source": {
+        "file": "source/verified/parts/part041.lean",
+        "line": 1636
+      },
+      "status": "Challenge_passed_repaired_Solution_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Corollary6.6: every actual support has exactly dimension |U|-1"
+      ],
+      "challenge_declaration": "PalomarGraphicalSpectra.partial_threeTree_polytope_support",
+      "source_declaration": "GraphicalZonotopes.partial_threeTree_polytope_support",
+      "challenge": {
+        "file": "ChallengeSpectra.lean",
+        "line": 536
+      },
+      "solution": {
+        "file": "SolutionSpectra.lean",
+        "line": 768
+      },
+      "source": {
+        "file": "source/verified/parts/part010.lean",
+        "line": 959
+      },
+      "status": "Challenge_passed_repaired_Solution_uncompiled"
+    },
+    {
+      "paper_results": [
+        "Corollary6.6: every admissible induced support attains |U|-1 with a lattice witness"
+      ],
+      "challenge_declaration": "PalomarGraphicalSpectra.induced_admissible_threeTree_witness",
+      "source_declaration": "GraphicalZonotopes.induced_admissible_threeTree_witness",
+      "challenge": {
+        "file": "ChallengeSpectra.lean",
+        "line": 546
+      },
+      "solution": {
+        "file": "SolutionSpectra.lean",
+        "line": 783
+      },
+      "source": {
+        "file": "source/verified/parts/part010.lean",
+        "line": 979
+      },
+      "status": "Challenge_passed_repaired_Solution_uncompiled"
+    }
+  ],
+  "definition_semantics": "Every nontrivial proof-valued constructor argument is factored through a named compared supporting theorem. All data and carrier definitions are literal and independently present in both fresh modules. Canonical Fintype subtype/quotient constructions are explicit. No definition_names or opaque supplied values.",
+  "scope_notes": [
+    "Corollaries6.7/6.8 exact maxima and all positive dimensions are selected, together with actual incidence tree/forest.",
+    "Both Corollaries6.7 and6.8 also assert linear-time algorithms and recovery of a maximizing support. No executable algorithm plus certified time complexity endpoint was located; those clauses are not claimed.",
+    "Corollary6.9 includes both named dimension formulas and its Hamiltonian3tree consequence.",
+    "Planar6.4/6.5 use genuine continuous edge-arc drawings and exact tetrahedron-component dimension values, with finite-type wrappers supplying an order internally."
+  ],
+  "unselected_supporting_gaps": [
+    "Proposition5.5 restriction gluing endpoint not located",
+    "PropositionA.1 arbitrary-field polymatroid rank endpoint not located"
+  ],
+  "optional_unselected_appendix_results": [
+    "PropositionA.2",
+    "CorollaryA.3",
+    "TheoremB.1"
+  ],
+  "blockers": [
+    "Revised793-line Solution has not compiled.",
+    "Official Comparator and independent kernel validation remain pending.",
+    "A clean editorial review is required before registration."
+  ],
+  "remaining_selected": [
+    "Corollaries6.7/6.8: executable dynamic programming, direct enumeration and certified linear time/recovery claims."
+  ],
+  "local_interface_status": "All9 errors from the complete preceding report addressed together by atomic whole-function/recursive-predicate interfaces and exact decision-procedure coherence. No local Lean or success claim for the current Solution.",
+  "Challenge_check": {
+    "status": "PASS_canonical_only_not_full_preflight",
+    "run_id": 44372929933,
+    "sha256": "c99e7f6d40808efb5991ffb78046283ec435abdb52df8b9261df02c7d23e810a",
+    "receipt": "reports/challenge_only_diagnostic/run-44372929933/graphical_zonotopes_spectra/collection-verification.json",
+    "exit_code": 0
+  },
+  "previous_full_failure": {
+    "commit": "59f3c14525408a156d5521f77f6cc97546588d1a",
+    "run_id": 44375295782,
+    "Source_import_closure": "PASS_before_wrapper_errors",
+    "stage": "Solution_wrapper_elaboration",
+    "errors_in_complete_report": 9,
+    "repair_report": "reports/graphical_zonotopes/spectra-full-repair/repair.json"
+  }
+}
