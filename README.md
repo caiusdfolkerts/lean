@@ -1,5 +1,3 @@
-# Palomar submission: higher_specht_bases
+# Higher command-progress diagnostic
 
-Substantive source snapshot of [caiusdfolkerts/research](https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases), revision `e0696fddcd3d10b5d6461e62e9b2f02c4195be37`.
-
-The complete selected development, paper, metadata, and Comparator configuration are in `higher_specht_bases/`. This branch prepares a registry submission; it does not claim registry acceptance. See `higher_specht_bases/formalization.yaml` for exact scope and provenance.
+Diagnostic-only full source build against the pinned pipeline. The mathematical source is unchanged except stdout progress markers before complete declaration blocks in the failing basis_remainder01 module. No paper proof, corrected-entry pass, registry submission or acceptance is claimed from this diagnostic.

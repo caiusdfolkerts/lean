@@ -38,6 +38,12 @@ open scoped Classical
 
 namespace HigherSpecht.Lascoux
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_41_OptionKnuth.bind"
+  out.flush
+
+
 theorem OptionKnuth.bind {u v : Option (List ℕ)} {f g : List ℕ → Option (List ℕ)}
     (huv : OptionKnuth u v)
     (hfg : ∀ {x y}, KnuthEquivalent x y → OptionKnuth (f x) (g y)) :
@@ -49,6 +55,12 @@ theorem OptionKnuth.bind {u v : Option (List ℕ)} {f g : List ℕ → Option (L
       | none => exact huv.elim
       | some y => exact hfg huv
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_52_listString_lowerIterate_of_knuth"
+  out.flush
+
+
 theorem listString_lowerIterate_of_knuth (r k : ℕ) {u v : List ℕ}
     (h : KnuthEquivalent u v) :
     OptionKnuth ((listString r).lowerIterate k u) ((listString r).lowerIterate k v) := by
@@ -58,6 +70,12 @@ theorem listString_lowerIterate_of_knuth (r k : ℕ) {u v : List ℕ}
       change OptionKnuth (((listString r).lower u).bind ((listString r).lowerIterate k))
         (((listString r).lower v).bind ((listString r).lowerIterate k))
       exact (listString_lower_of_knuth r h).bind (fun hxy => ih hxy)
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_62_listString_raiseIterate_of_knuth"
+  out.flush
+
 
 theorem listString_raiseIterate_of_knuth (r k : ℕ) {u v : List ℕ}
     (h : KnuthEquivalent u v) :
@@ -69,6 +87,12 @@ theorem listString_raiseIterate_of_knuth (r k : ℕ) {u v : List ℕ}
       change OptionKnuth (((listString r).raise u).bind ((listString r).reverse.lowerIterate k))
         (((listString r).raise v).bind ((listString r).reverse.lowerIterate k))
       exact (listString_raise_of_knuth r h).bind (fun hxy => ih hxy)
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_73_listString_reflection_of_knuth"
+  out.flush
+
 
 theorem listString_reflection_of_knuth (r : ℕ) {u v : List ℕ}
     (h : KnuthEquivalent u v) :
@@ -104,6 +128,12 @@ theorem listString_reflection_of_knuth (r : ℕ) {u v : List ℕ}
       ((listString r).epsilon u - (listString r).phi u) u (Nat.sub_le _ _), hv] at hh
     exact hh
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_107_listString_lowerIterate_ofFn"
+  out.flush
+
+
 theorem listString_lowerIterate_ofFn (r n k : ℕ) (u : Fin n → ℕ) :
     (listString r).lowerIterate k (List.ofFn u) =
       ((wordString r n).lowerIterate k u).map List.ofFn := by
@@ -115,6 +145,12 @@ theorem listString_lowerIterate_ofFn (r n k : ℕ) (u : Fin n → ℕ) :
       rw [listString_lower_ofFn]
       cases h : (wordString r n).lower u <;> simp [h, ih]
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_118_listString_raiseIterate_ofFn"
+  out.flush
+
+
 theorem listString_raiseIterate_ofFn (r n k : ℕ) (u : Fin n → ℕ) :
     (listString r).reverse.lowerIterate k (List.ofFn u) =
       ((wordString r n).reverse.lowerIterate k u).map List.ofFn := by
@@ -125,6 +161,12 @@ theorem listString_raiseIterate_ofFn (r n k : ℕ) (u : Fin n → ℕ) :
         (((wordString r n).raise u).bind ((wordString r n).reverse.lowerIterate k)).map List.ofFn
       rw [listString_raise_ofFn]
       cases h : (wordString r n).raise u <;> simp [h, ih]
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_129_listString_reflection_ofFn"
+  out.flush
+
 
 theorem listString_reflection_ofFn (r n : ℕ) (u : Fin n → ℕ) :
     (listString r).reflection (List.ofFn u) = List.ofFn (wordReflection r n u) := by
@@ -154,12 +196,30 @@ theorem listString_reflection_ofFn (r n : ℕ) (u : Fin n → ℕ) :
     rw [ht] at hs
     exact (Option.some.inj hs).symm
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_157_PreservesWordKnuth"
+  out.flush
+
+
 def PreservesWordKnuth {n : ℕ} (e : (Fin n → ℕ) ≃ (Fin n → ℕ)) : Prop :=
   ∀ u v, KnuthEquivalent (List.ofFn (e u)) (List.ofFn (e v)) ↔
     KnuthEquivalent (List.ofFn u) (List.ofFn v)
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_161_PreservesWordKnuth.refl"
+  out.flush
+
+
 theorem PreservesWordKnuth.refl (n : ℕ) :
     PreservesWordKnuth (Equiv.refl (Fin n → ℕ)) := fun _ _ => Iff.rfl
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_164_PreservesWordKnuth.trans"
+  out.flush
+
 
 theorem PreservesWordKnuth.trans {n : ℕ} {e f : (Fin n → ℕ) ≃ (Fin n → ℕ)}
     (he : PreservesWordKnuth e) (hf : PreservesWordKnuth f) :
@@ -167,10 +227,22 @@ theorem PreservesWordKnuth.trans {n : ℕ} {e f : (Fin n → ℕ) ≃ (Fin n →
   intro u v
   exact (hf (e u) (e v)).trans (he u v)
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_170_PreservesWordKnuth.symm"
+  out.flush
+
+
 theorem PreservesWordKnuth.symm {n : ℕ} {e : (Fin n → ℕ) ≃ (Fin n → ℕ)}
     (he : PreservesWordKnuth e) : PreservesWordKnuth e.symm := by
   intro u v
   simpa only [Equiv.apply_symm_apply] using (he (e.symm u) (e.symm v)).symm
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_175_wordReflection_preserves_knuth"
+  out.flush
+
 
 theorem wordReflection_preserves_knuth (r n : ℕ) :
     PreservesWordKnuth (wordReflection r n) := by
@@ -184,6 +256,12 @@ theorem wordReflection_preserves_knuth (r n : ℕ) :
     simpa only [wordReflection_involutive r n u, wordReflection_involutive r n v] using hf h
   · exact hf
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_187_wordSwapZero_preserves_knuth"
+  out.flush
+
+
 theorem wordSwapZero_preserves_knuth (n j : ℕ) :
     PreservesWordKnuth (wordSwapZero n j) := by
   induction j using Nat.twoStepInduction with
@@ -192,6 +270,12 @@ theorem wordSwapZero_preserves_knuth (n j : ℕ) :
   | more j ih ih' =>
       exact (wordReflection_preserves_knuth (j + 1) n).trans
         (ih'.trans (wordReflection_preserves_knuth (j + 1) n))
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_196_wordContentSwap_preserves_knuth"
+  out.flush
+
 
 theorem wordContentSwap_preserves_knuth (n i j : ℕ) :
     PreservesWordKnuth (wordContentSwap n i j) := by
@@ -202,6 +286,12 @@ theorem wordContentSwap_preserves_knuth (n i j : ℕ) :
   · exact wordSwapZero_preserves_knuth n i
   · exact (wordSwapZero_preserves_knuth n i).trans
       ((wordSwapZero_preserves_knuth n j).trans (wordSwapZero_preserves_knuth n i))
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_206_wordBringPair_preserves_knuth"
+  out.flush
+
 
 theorem wordBringPair_preserves_knuth (n i j : ℕ) :
     PreservesWordKnuth (wordBringPair n i j) :=
@@ -234,6 +324,12 @@ namespace HigherSpecht.Lascoux
 
 variable {mu : YoungDiagram}
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_237_exists_tableau_of_word_lowerIterate"
+  out.flush
+
+
 theorem exists_tableau_of_word_lowerIterate (T : SemistandardYoungTableau mu) (v k : ℕ)
     {output : List ℕ} (h : (listString v).lowerIterate k (tableauWord T) = some output) :
     ∃ U : SemistandardYoungTableau mu, tableauWord U = output := by
@@ -243,6 +339,12 @@ theorem exists_tableau_of_word_lowerIterate (T : SemistandardYoungTableau mu) (v
       obtain ⟨word, hword, hrest⟩ := Option.bind_eq_some_iff.mp h
       obtain ⟨U, hU⟩ := exists_tableau_of_word_lowering T v hword
       exact ih U (hU.symm ▸ hrest)
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_247_exists_tableau_of_word_raiseIterate"
+  out.flush
+
 
 theorem exists_tableau_of_word_raiseIterate (T : SemistandardYoungTableau mu) (v k : ℕ)
     {output : List ℕ} (h : (listString v).reverse.lowerIterate k (tableauWord T) = some output) :
@@ -254,6 +356,12 @@ theorem exists_tableau_of_word_raiseIterate (T : SemistandardYoungTableau mu) (v
       obtain ⟨U, hU⟩ := exists_tableau_of_word_raising T v hword
       exact ih U (hU.symm ▸ hrest)
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_257_exists_tableau_of_word_reflection"
+  out.flush
+
+
 theorem exists_tableau_of_word_reflection (T : SemistandardYoungTableau mu) (v : ℕ) :
     ∃ U : SemistandardYoungTableau mu,
       tableauWord U = (listString v).reflection (tableauWord T) := by
@@ -264,15 +372,33 @@ theorem exists_tableau_of_word_reflection (T : SemistandardYoungTableau mu) (v :
   · exact exists_tableau_of_word_raiseIterate T v _
       ((listString v).reverse.lowerAt_spec _ (tableauWord T) (Nat.sub_le _ _))
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_267_PreservesTableauWord"
+  out.flush
+
+
 def PreservesTableauWord {n : ℕ} (f : (Fin n → ℕ) → (Fin n → ℕ)) : Prop :=
   ∀ {mu : YoungDiagram} (T : SemistandardYoungTableau mu) (u : Fin n → ℕ),
     List.ofFn u = tableauWord T →
       ∃ U : SemistandardYoungTableau mu, List.ofFn (f u) = tableauWord U
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_272_PreservesTableauWord.id"
+  out.flush
+
+
 theorem PreservesTableauWord.id (n : ℕ) :
     PreservesTableauWord (id : (Fin n → ℕ) → (Fin n → ℕ)) := by
   intro mu T u hu
   exact ⟨T, hu⟩
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_277_PreservesTableauWord.comp"
+  out.flush
+
 
 theorem PreservesTableauWord.comp {n : ℕ}
     {f g : (Fin n → ℕ) → (Fin n → ℕ)}
@@ -282,12 +408,30 @@ theorem PreservesTableauWord.comp {n : ℕ}
   obtain ⟨U, hU⟩ := hf T u hu
   exact hg U (f u) hU
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_285_PreservesTableauWordEquiv"
+  out.flush
+
+
 def PreservesTableauWordEquiv {n : ℕ} (e : (Fin n → ℕ) ≃ (Fin n → ℕ)) : Prop :=
   PreservesTableauWord e ∧ PreservesTableauWord e.symm
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_288_PreservesTableauWordEquiv.refl"
+  out.flush
+
 
 theorem PreservesTableauWordEquiv.refl (n : ℕ) :
     PreservesTableauWordEquiv (Equiv.refl (Fin n → ℕ)) :=
   ⟨PreservesTableauWord.id n, PreservesTableauWord.id n⟩
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_292_PreservesTableauWordEquiv.trans"
+  out.flush
+
 
 theorem PreservesTableauWordEquiv.trans {n : ℕ}
     {e f : (Fin n → ℕ) ≃ (Fin n → ℕ)}
@@ -296,6 +440,12 @@ theorem PreservesTableauWordEquiv.trans {n : ℕ}
   constructor
   · exact PreservesTableauWord.comp he.1 hf.1
   · exact PreservesTableauWord.comp hf.2 he.2
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_300_wordReflection_preserves_tableau"
+  out.flush
+
 
 theorem wordReflection_preserves_tableau (v n : ℕ) :
     PreservesTableauWordEquiv (wordReflection v n) := by
@@ -316,6 +466,12 @@ theorem wordReflection_preserves_tableau (v n : ℕ) :
   intro mu T u hu
   exact hf T u hu
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_319_wordSwapZero_preserves_tableau"
+  out.flush
+
+
 theorem wordSwapZero_preserves_tableau (n j : ℕ) :
     PreservesTableauWordEquiv (wordSwapZero n j) := by
   induction j using Nat.twoStepInduction with
@@ -324,6 +480,12 @@ theorem wordSwapZero_preserves_tableau (n j : ℕ) :
   | more j ih ih' =>
       exact (wordReflection_preserves_tableau (j + 1) n).trans
         (ih'.trans (wordReflection_preserves_tableau (j + 1) n))
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_328_wordContentSwap_preserves_tableau"
+  out.flush
+
 
 theorem wordContentSwap_preserves_tableau (n i j : ℕ) :
     PreservesTableauWordEquiv (wordContentSwap n i j) := by
@@ -334,6 +496,12 @@ theorem wordContentSwap_preserves_tableau (n i j : ℕ) :
   · exact wordSwapZero_preserves_tableau n i
   · exact (wordSwapZero_preserves_tableau n i).trans
       ((wordSwapZero_preserves_tableau n j).trans (wordSwapZero_preserves_tableau n i))
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_338_wordBringPair_preserves_tableau"
+  out.flush
+
 
 theorem wordBringPair_preserves_tableau (n i j : ℕ) :
     PreservesTableauWordEquiv (wordBringPair n i j) :=
@@ -368,14 +536,38 @@ open scoped Classical
 
 namespace HigherSpecht.Lascoux
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_371_LowerOnly"
+  out.flush
+
+
 def LowerOnly (r a b : ℕ) : Prop := b = a ∨ a = r ∧ b = r + 1
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_373_LowerOnly.refl"
+  out.flush
+
+
 theorem LowerOnly.refl (r a : ℕ) : LowerOnly r a a := Or.inl rfl
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_375_LowerOnly.trans"
+  out.flush
+
 
 theorem LowerOnly.trans {r a b c : ℕ}
     (hab : LowerOnly r a b) (hbc : LowerOnly r b c) : LowerOnly r a c := by
   unfold LowerOnly at *
   rcases hab with hab | ⟨ha, hb⟩ <;> rcases hbc with hbc | ⟨hb', hc⟩ <;> omega
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_380_word_lowerIterate_lowerOnly"
+  out.flush
+
 
 theorem word_lowerIterate_lowerOnly (r n k : ℕ) {u v : Fin n → ℕ}
     (h : (wordString r n).lowerIterate k u = some v) :
@@ -396,6 +588,12 @@ theorem word_lowerIterate_lowerOnly (r n k : ℕ) {u v : Fin n → ℕ}
         exact Or.inr ⟨huj, Function.update_self _ _ _⟩
       · exact Or.inl (Function.update_of_ne hij _ _)
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_399_wordReflection_lowerOnly_of_count_ge"
+  out.flush
+
+
 theorem wordReflection_lowerOnly_of_count_ge (r n : ℕ) (u : Fin n → ℕ)
     (hc : (List.ofFn u).count (r + 1) ≤ (List.ofFn u).count r) :
     ∀ i, LowerOnly r (u i) (wordReflection r n u i) := by
@@ -404,6 +602,12 @@ theorem wordReflection_lowerOnly_of_count_ge (r n : ℕ) (u : Fin n → ℕ)
   change ∀ i, LowerOnly r (u i) ((wordString r n).reflection u i)
   rw [StringSystem.reflection, dif_pos hdir]
   exact word_lowerIterate_lowerOnly r n _ ((wordString r n).lowerAt_spec _ u (Nat.sub_le _ _))
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_408_forall\u2082_ofFn_of_forall"
+  out.flush
+
 
 theorem forall₂_ofFn_of_forall {A B : Type*} (rel : A → B → Prop)
     (n : ℕ) (f : Fin n → A) (g : Fin n → B) (h : ∀ i, rel (f i) (g i)) :
@@ -414,6 +618,12 @@ theorem forall₂_ofFn_of_forall {A B : Type*} (rel : A → B → Prop)
       rw [List.ofFn_succ, List.ofFn_succ]
       exact .cons (h 0) (ih (Fin.tail f) (Fin.tail g) (fun i => h i.succ))
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_417_forall\u2082_map_same_list_iff"
+  out.flush
+
+
 theorem forall₂_map_same_list_iff {A B C : Type*} (rel : B → C → Prop)
     (xs : List A) (f : A → B) (g : A → C) :
     List.Forall₂ rel (xs.map f) (xs.map g) ↔ ∀ x ∈ xs, rel (f x) (g x) := by
@@ -422,6 +632,12 @@ theorem forall₂_map_same_list_iff {A B C : Type*} (rel : B → C → Prop)
   | cons x xs ih =>
       simp only [List.map_cons, List.forall₂_cons, List.mem_cons,
         forall_eq_or_imp, ih]
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_426_listString_reflection_lowerOnly_of_count_ge"
+  out.flush
+
 
 theorem listString_reflection_lowerOnly_of_count_ge (r : ℕ) (w : List ℕ)
     (hc : w.count (r + 1) ≤ w.count r) :
@@ -433,6 +649,12 @@ theorem listString_reflection_lowerOnly_of_count_ge (r : ℕ) (w : List ℕ)
   rw [listString_reflection_ofFn]
   exact forall₂_ofFn_of_forall (LowerOnly r) n u (wordReflection r n u)
     (wordReflection_lowerOnly_of_count_ge r n u hc)
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_437_listString_reflection_count"
+  out.flush
+
 
 theorem listString_reflection_count (r a : ℕ) (w : List ℕ) :
     ((listString r).reflection w).count a =
@@ -446,6 +668,12 @@ theorem listString_reflection_count (r a : ℕ) (w : List ℕ) :
   exact wordReflection_count r n a u
 
 variable {mu : YoungDiagram}
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_452_reflectedTableau_lowerOnly"
+  out.flush
+
 
 /-- When the actual word reflection only lowers, its same-shape tableau
 representative changes precisely those same cell positions. -/
@@ -463,6 +691,12 @@ theorem reflectedTableau_lowerOnly (T U : SemistandardYoungTableau mu) (r : ℕ)
   · rw [T.zeros hij, U.zeros hij]
     exact LowerOnly.refl r 0
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_466_reflectedTableau_upper_saturated"
+  out.flush
+
+
 theorem reflectedTableau_upper_saturated (T U : SemistandardYoungTableau mu) (r : ℕ)
     (hc : (contentCells T r).card = mu.rowLen 0)
     (hU : tableauWord U = (listString r).reflection (tableauWord T)) :
@@ -471,6 +705,12 @@ theorem reflectedTableau_upper_saturated (T U : SemistandardYoungTableau mu) (r 
   simp only [show r + 1 ≠ r by omega, if_false, if_pos rfl]
   rw [tableauWord_count_eq_contentCells]
   exact hc
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_479_reflectedTableau_saturated_entry"
+  out.flush
+
 
 /-- The exact cell formula for an actual signature reflection at a
 saturated lower letter.  Every occurrence of the upper letter is fixed;
@@ -521,14 +761,32 @@ theorem reflectedTableau_saturated_entry (T U : SemistandardYoungTableau mu) (r 
     · exact heq
     · exact (hTi hlow).elim
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_524_signatureReflectionTableau"
+  out.flush
+
+
 def signatureReflectionTableau (T : SemistandardYoungTableau mu) (r : ℕ) :
     SemistandardYoungTableau mu :=
   Classical.choose (exists_tableau_of_word_reflection T r)
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_528_signatureReflectionTableau_word"
+  out.flush
+
 
 @[simp] theorem signatureReflectionTableau_word (T : SemistandardYoungTableau mu) (r : ℕ) :
     tableauWord (signatureReflectionTableau T r) =
       (listString r).reflection (tableauWord T) :=
   Classical.choose_spec (exists_tableau_of_word_reflection T r)
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_533_signatureReflectionTableau_saturated_entry"
+  out.flush
+
 
 theorem signatureReflectionTableau_saturated_entry
     (T : SemistandardYoungTableau mu) (r : ℕ)
@@ -539,6 +797,12 @@ theorem signatureReflectionTableau_saturated_entry
       then r + 1 else T i j :=
   reflectedTableau_saturated_entry T (signatureReflectionTableau T r) r hc
     (signatureReflectionTableau_word T r) i j hij
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_543_signatureReflectionTableau_upper_saturated"
+  out.flush
+
 
 theorem signatureReflectionTableau_upper_saturated
     (T : SemistandardYoungTableau mu) (r : ℕ)
@@ -575,8 +839,20 @@ namespace HigherSpecht.Lascoux
 
 variable {mu : YoungDiagram}
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_578_HasColumnValue"
+  out.flush
+
+
 def HasColumnValue (T : SemistandardYoungTableau mu) (j a : ℕ) : Prop :=
   ∃ i, (i, j) ∈ mu ∧ T i j = a
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_581_not_hasColumnValue_of_width_le"
+  out.flush
+
 
 theorem not_hasColumnValue_of_width_le (T : SemistandardYoungTableau mu)
     {j a : ℕ} (hj : mu.rowLen 0 ≤ j) : ¬HasColumnValue T j a := by
@@ -585,11 +861,23 @@ theorem not_hasColumnValue_of_width_le (T : SemistandardYoungTableau mu)
     (mu.up_left_mem (Nat.zero_le i) le_rfl hij)
   omega
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_588_saturated_hasColumnValue"
+  out.flush
+
+
 theorem saturated_hasColumnValue (T : SemistandardYoungTableau mu) (a : ℕ)
     (hs : (contentCells T a).card = mu.rowLen 0) {j : ℕ} (hj : j < mu.rowLen 0) :
     HasColumnValue T j a := by
   obtain ⟨i, hi, _⟩ := existsUnique_entry_in_each_column T a hs j hj
   exact ⟨i, hi⟩
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_596_signatureReflectionTableau_column_values"
+  out.flush
+
 
 /-- On each literal column the saturated adjacent reflection is exactly
 the transposition of the two adjacent alphabet values. -/
@@ -650,9 +938,21 @@ theorem signatureReflectionTableau_column_values
     exact ⟨fun h => (not_hasColumnValue_of_width_le U hj' h).elim,
       fun h => (not_hasColumnValue_of_width_le T hj' h).elim⟩
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_653_alphabetSweep"
+  out.flush
+
+
 def alphabetSweep : ℕ → Equiv.Perm ℕ
   | 0 => Equiv.refl ℕ
   | k + 1 => (alphabetSweep k).trans (Equiv.swap k (k + 1))
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_657_alphabetSweep_zero"
+  out.flush
+
 
 @[simp] theorem alphabetSweep_zero (k : ℕ) : alphabetSweep k 0 = k := by
   induction k with
@@ -660,12 +960,24 @@ def alphabetSweep : ℕ → Equiv.Perm ℕ
   | succ k ih =>
       simp only [alphabetSweep, Equiv.trans_apply, ih, Equiv.swap_apply_left]
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_663_alphabetSweep_of_gt"
+  out.flush
+
+
 theorem alphabetSweep_of_gt {k a : ℕ} (hka : k < a) : alphabetSweep k a = a := by
   induction k with
   | zero => rfl
   | succ k ih =>
       rw [alphabetSweep, Equiv.trans_apply, ih (by omega)]
       exact Equiv.swap_apply_of_ne_of_ne (by omega) (by omega)
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_670_alphabetSweep_of_pos_le"
+  out.flush
+
 
 theorem alphabetSweep_of_pos_le {k a : ℕ} (ha : 0 < a) (hak : a ≤ k) :
     alphabetSweep k a = a - 1 := by
@@ -681,13 +993,31 @@ theorem alphabetSweep_of_pos_le {k a : ℕ} (ha : 0 < a) (hak : a ≤ k) :
         rw [alphabetSweep_of_gt (by omega), Equiv.swap_apply_right]
         omega
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_684_saturatedSweep"
+  out.flush
+
+
 def saturatedSweep (T : SemistandardYoungTableau mu) : ℕ → SemistandardYoungTableau mu
   | 0 => T
   | k + 1 => signatureReflectionTableau (saturatedSweep T k) k
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_688_wordReflectionSweep"
+  out.flush
+
+
 def wordReflectionSweep : ℕ → List ℕ → List ℕ
   | 0, w => w
   | k + 1, w => (listString k).reflection (wordReflectionSweep k w)
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_692_saturatedSweep_word"
+  out.flush
+
 
 theorem saturatedSweep_word (T : SemistandardYoungTableau mu) (k : ℕ) :
     tableauWord (saturatedSweep T k) = wordReflectionSweep k (tableauWord T) := by
@@ -697,12 +1027,24 @@ theorem saturatedSweep_word (T : SemistandardYoungTableau mu) (k : ℕ) :
       rw [saturatedSweep, signatureReflectionTableau_word, ih]
       rfl
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_700_saturatedSweep_saturated"
+  out.flush
+
+
 theorem saturatedSweep_saturated (T : SemistandardYoungTableau mu)
     (hs : (contentCells T 0).card = mu.rowLen 0) (k : ℕ) :
     (contentCells (saturatedSweep T k) k).card = mu.rowLen 0 := by
   induction k with
   | zero => exact hs
   | succ k ih => exact signatureReflectionTableau_upper_saturated (saturatedSweep T k) k ih
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_707_saturatedSweep_column_values"
+  out.flush
+
 
 theorem saturatedSweep_column_values (T : SemistandardYoungTableau mu)
     (hs : (contentCells T 0).card = mu.rowLen 0) (k j a : ℕ) :
@@ -715,21 +1057,51 @@ theorem saturatedSweep_column_values (T : SemistandardYoungTableau mu)
         (saturatedSweep T k) k (saturatedSweep_saturated T hs k), ih]
       rfl
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_718_tableauColumn"
+  out.flush
+
+
 def tableauColumn (T : SemistandardYoungTableau mu) (j : ℕ) : List ℕ :=
   List.ofFn (fun i : Fin (mu.colLen j) => T i.val j)
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_721_tableauColumn_length"
+  out.flush
+
 
 @[simp] theorem tableauColumn_length (T : SemistandardYoungTableau mu) (j : ℕ) :
     (tableauColumn T j).length = mu.colLen j := List.length_ofFn
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_724_tableauColumn_getElem"
+  out.flush
+
+
 @[simp] theorem tableauColumn_getElem (T : SemistandardYoungTableau mu)
     (j i : ℕ) (hi : i < (tableauColumn T j).length) :
     (tableauColumn T j)[i] = T i j := by simp only [tableauColumn, List.getElem_ofFn]
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_728_tableauColumn_sortedLT"
+  out.flush
+
 
 theorem tableauColumn_sortedLT (T : SemistandardYoungTableau mu) (j : ℕ) :
     (tableauColumn T j).SortedLT := by
   apply List.sortedLT_ofFn_iff.mpr
   intro i k hik
   exact T.col_strict hik (YoungDiagram.mem_iff_lt_colLen.mpr k.isLt)
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_734_mem_tableauColumn"
+  out.flush
+
 
 theorem mem_tableauColumn (T : SemistandardYoungTableau mu) (j a : ℕ) :
     a ∈ tableauColumn T j ↔ HasColumnValue T j a := by
@@ -739,6 +1111,12 @@ theorem mem_tableauColumn (T : SemistandardYoungTableau mu) (j a : ℕ) :
     exact ⟨i.val, YoungDiagram.mem_iff_lt_colLen.mpr i.isLt, hi⟩
   · rintro ⟨i, hij, hia⟩
     exact List.mem_ofFn.mpr ⟨⟨i, YoungDiagram.mem_iff_lt_colLen.mp hij⟩, hia⟩
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_743_saturatedSweep_column_perm"
+  out.flush
+
 
 theorem saturatedSweep_column_perm (T : SemistandardYoungTableau mu)
     (hs : (contentCells T 0).card = mu.rowLen 0) (k j : ℕ) :
@@ -757,6 +1135,12 @@ theorem saturatedSweep_column_perm (T : SemistandardYoungTableau mu)
     rw [← hba, Equiv.symm_apply_apply]
     exact (mem_tableauColumn T j b).mp hb
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_760_tableauColumn_zero_cons"
+  out.flush
+
+
 theorem tableauColumn_zero_cons (T : SemistandardYoungTableau mu)
     (hs : (contentCells T 0).card = mu.rowLen 0) {j : ℕ} (hj : j < mu.rowLen 0) :
     tableauColumn T j = 0 :: (tableauColumn T j).tail := by
@@ -774,6 +1158,12 @@ theorem tableauColumn_zero_cons (T : SemistandardYoungTableau mu)
       simp only [hcol, List.getElem_cons_zero] at hfirst
       subst a
       rfl
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_780_saturatedSweep_column_eq"
+  out.flush
+
 
 /-- The entire literal column after the actual sweep, in English
 top-to-bottom order.  Its final maximal letter is at the bottom. -/
@@ -820,6 +1210,12 @@ theorem saturatedSweep_column_eq (T : SemistandardYoungTableau mu)
   subst b
   obtain ⟨c, hc, rfl⟩ := List.mem_map.mp ha
   exact (Nat.sub_le _ _).trans (htailBound c hc)
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_826_saturatedSweep_entry"
+  out.flush
+
 
 /-- The cellwise version of the sweep, with the boundary condition stated
 as actual membership of the next cell in the same original column. -/
@@ -878,6 +1274,12 @@ namespace HigherSpecht.Lascoux
 
 variable {mu : YoungDiagram}
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_881_firstRowTail"
+  out.flush
+
+
 def firstRowTail (mu : YoungDiagram) : YoungDiagram where
   cells := mu.cells.filter (fun c => (c.1 + 1, c.2) ∈ mu)
   isLowerSet := by
@@ -886,11 +1288,23 @@ def firstRowTail (mu : YoungDiagram) : YoungDiagram where
     exact Finset.mem_filter.mpr ⟨mu.isLowerSet hab hbm,
       mu.up_left_mem (Nat.add_le_add_right hab.1 1) hab.2 hbs⟩
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_889_mem_firstRowTail"
+  out.flush
+
+
 @[simp] theorem mem_firstRowTail (mu : YoungDiagram) (i j : ℕ) :
     (i, j) ∈ firstRowTail mu ↔ (i + 1, j) ∈ mu := by
   change (i, j) ∈ mu.cells.filter (fun c => (c.1 + 1, c.2) ∈ mu) ↔ _
   rw [Finset.mem_filter]
   exact ⟨And.right, fun h => ⟨mu.up_left_mem (by omega) le_rfl h, h⟩⟩
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_895_firstRowTail_rowLen"
+  out.flush
+
 
 @[simp] theorem firstRowTail_rowLen (mu : YoungDiagram) (i : ℕ) :
     (firstRowTail mu).rowLen i = mu.rowLen (i + 1) := by
@@ -901,6 +1315,12 @@ def firstRowTail (mu : YoungDiagram) : YoungDiagram where
   have h₂ := h (mu.rowLen (i + 1))
   omega
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_904_firstRowTail_colLen"
+  out.flush
+
+
 @[simp] theorem firstRowTail_colLen (mu : YoungDiagram) (j : ℕ) :
     (firstRowTail mu).colLen j = mu.colLen j - 1 := by
   have h (i : ℕ) : i < (firstRowTail mu).colLen j ↔ i + 1 < mu.colLen j := by
@@ -909,6 +1329,12 @@ def firstRowTail (mu : YoungDiagram) : YoungDiagram where
   have h₁ := h ((firstRowTail mu).colLen j)
   have h₂ := h (mu.colLen j - 1)
   omega
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_913_firstRowTail_card_add_width"
+  out.flush
+
 
 theorem firstRowTail_card_add_width (mu : YoungDiagram) :
     (firstRowTail mu).card + mu.rowLen 0 = mu.card := by
@@ -950,6 +1376,12 @@ theorem firstRowTail_card_add_width (mu : YoungDiagram) :
   change (firstRowTail mu).cells.card + mu.rowLen 0 = mu.cells.card
   omega
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_955_firstRowTailPred"
+  out.flush
+
+
 /-- The original first row is deleted and every remaining entry is
 decreased by one.  Strict columns guarantee positivity before subtraction. -/
 def firstRowTailPred (T : SemistandardYoungTableau mu) :
@@ -969,8 +1401,20 @@ def firstRowTailPred (T : SemistandardYoungTableau mu) :
     have hn : (i + 1, j) ∉ mu := by simpa only [mem_firstRowTail] using hc
     rw [T.zeros hn]
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_972_firstRowTailPred_apply"
+  out.flush
+
+
 @[simp] theorem firstRowTailPred_apply (T : SemistandardYoungTableau mu) (i j : ℕ) :
     firstRowTailPred T i j = T (i + 1) j - 1 := rfl
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_975_saturated_zero_firstRow"
+  out.flush
+
 
 theorem saturated_zero_firstRow (T : SemistandardYoungTableau mu)
     (hs : (contentCells T 0).card = mu.rowLen 0) {j : ℕ} (hj : j < mu.rowLen 0) :
@@ -978,6 +1422,12 @@ theorem saturated_zero_firstRow (T : SemistandardYoungTableau mu)
   obtain ⟨i, hij, hi0⟩ := saturated_hasColumnValue T 0 hs hj
   have hi := zero_cell_row hij hi0
   simpa only [hi] using hi0
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_982_firstRowTailPred_content"
+  out.flush
+
 
 theorem firstRowTailPred_content (T : SemistandardYoungTableau mu)
     (hs : (contentCells T 0).card = mu.rowLen 0) (a : ℕ) :
@@ -1012,6 +1462,12 @@ theorem firstRowTailPred_content (T : SemistandardYoungTableau mu)
         simpa only [hpred, YoungDiagram.mem_cells, Prod.eta] using hcm)
     · simp only [firstRowTailPred_apply, hpred, hca, Nat.add_sub_cancel]
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1017_alphabetRestrictionShape"
+  out.flush
+
+
 /-- Restriction to an initial interval of alphabet values is an actual
 Young diagram, using the original row and column orders. -/
 def alphabetRestrictionShape (T : SemistandardYoungTableau mu) (M : ℕ) : YoungDiagram where
@@ -1024,10 +1480,22 @@ def alphabetRestrictionShape (T : SemistandardYoungTableau mu) (M : ℕ) : Young
     exact Finset.mem_filter.mpr ⟨mu.isLowerSet hab hbm, lt_of_le_of_lt
       (hcol.trans hrow) hbM⟩
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1027_mem_alphabetRestrictionShape"
+  out.flush
+
+
 @[simp] theorem mem_alphabetRestrictionShape (T : SemistandardYoungTableau mu)
     (M i j : ℕ) :
     (i, j) ∈ alphabetRestrictionShape T M ↔ (i, j) ∈ mu ∧ T i j < M :=
   Finset.mem_filter
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1032_alphabetRestriction"
+  out.flush
+
 
 def alphabetRestriction (T : SemistandardYoungTableau mu) (M : ℕ) :
     SemistandardYoungTableau (alphabetRestrictionShape T M) where
@@ -1042,10 +1510,22 @@ def alphabetRestriction (T : SemistandardYoungTableau mu) (M : ℕ) :
     exact T.col_strict hik ((mem_alphabetRestrictionShape T M k j).mp hk).1
   zeros' hc := if_neg hc
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1045_alphabetRestriction_apply"
+  out.flush
+
+
 @[simp] theorem alphabetRestriction_apply (T : SemistandardYoungTableau mu)
     (M i j : ℕ) :
     alphabetRestriction T M i j =
       if (i, j) ∈ alphabetRestrictionShape T M then T i j else 0 := rfl
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1050_saturatedSweep_restrictionShape"
+  out.flush
+
 
 theorem saturatedSweep_restrictionShape (T : SemistandardYoungTableau mu)
     (hs : (contentCells T 0).card = mu.rowLen 0) (M : ℕ)
@@ -1068,6 +1548,12 @@ theorem saturatedSweep_restrictionShape (T : SemistandardYoungTableau mu)
     have hb := hbound (i + 1) j hn
     omega
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1071_saturatedSweep_restriction_entry"
+  out.flush
+
+
 theorem saturatedSweep_restriction_entry (T : SemistandardYoungTableau mu)
     (hs : (contentCells T 0).card = mu.rowLen 0) (M : ℕ)
     (hbound : ∀ i j, (i, j) ∈ mu → T i j ≤ M) (i j : ℕ) :
@@ -1083,6 +1569,12 @@ theorem saturatedSweep_restriction_entry (T : SemistandardYoungTableau mu)
       firstRowTailPred_apply]
   · rw [(firstRowTailPred T).zeros hc,
       (alphabetRestriction (saturatedSweep T M) M).zeros (by simpa only [hshape] using hc)]
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1090_saturatedSweep_restriction"
+  out.flush
+
 
 /-- Exact equality of both the recursive shape and the actual tableau.
 The heterogeneous equality merely accounts for the initially different
@@ -1127,6 +1619,12 @@ namespace HigherSpecht.Lascoux.StringSystem
 
 variable {A B : Type*}
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1130_lowerAt_succ_step"
+  out.flush
+
+
 theorem lowerAt_succ_step (c : StringSystem A) (x : A) (k : ℕ)
     (hk : k ≤ c.phi x) (hks : k + 1 ≤ c.phi x) :
     c.lower (c.lowerAt k x hk) = some (c.lowerAt (k + 1) x hks) := by
@@ -1137,15 +1635,39 @@ theorem lowerAt_succ_step (c : StringSystem A) (x : A) (k : ℕ)
   rw [c.lowerAt_spec k x hk, Option.bind_some] at h
   exact h
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1140_tensorFirstSteps"
+  out.flush
+
+
 def tensorFirstSteps (c : StringSystem A) (d : StringSystem B) (x : A) (y : B) (k : ℕ) : ℕ :=
   min k (c.phi x - d.epsilon y)
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1143_tensorSecondSteps"
+  out.flush
+
 
 def tensorSecondSteps (c : StringSystem A) (d : StringSystem B) (x : A) (y : B) (k : ℕ) : ℕ :=
   k - tensorFirstSteps c d x y k
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1146_tensorFirstSteps_le"
+  out.flush
+
+
 theorem tensorFirstSteps_le (c : StringSystem A) (d : StringSystem B) (x : A) (y : B) (k : ℕ) :
     tensorFirstSteps c d x y k ≤ c.phi x :=
   (min_le_right _ _).trans (Nat.sub_le _ _)
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1150_tensorSecondSteps_le"
+  out.flush
+
 
 theorem tensorSecondSteps_le (c : StringSystem A) (d : StringSystem B) (x : A) (y : B) (k : ℕ)
     (hk : k ≤ (c.tensor d).phi (x, y)) :
@@ -1153,6 +1675,12 @@ theorem tensorSecondSteps_le (c : StringSystem A) (d : StringSystem B) (x : A) (
   change k ≤ d.phi y + (c.phi x - d.epsilon y) at hk
   unfold tensorSecondSteps tensorFirstSteps
   omega
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1159_tensor_lowerAt_split"
+  out.flush
+
 
 /-- The exact literal tensor lowering iterate, with all component bounds
 derived from the actual tensor string length. -/
@@ -1212,11 +1740,23 @@ theorem tensor_lowerAt_split (c : StringSystem A) (d : StringSystem B)
             Option.some.injEq, eq_comm] using hstep
         simpa only [hfirst0, hfirst1, hsecond1] using hs
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1215_tensor_weight_balance"
+  out.flush
+
+
 theorem tensor_weight_balance (c : StringSystem A) (d : StringSystem B) (x : A) (y : B) :
     ((c.tensor d).phi (x, y) : ℤ) - (c.tensor d).epsilon (x, y) =
       (c.phi x : ℤ) + d.phi y - c.epsilon x - d.epsilon y := by
   simp only [tensor]
   omega
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1221_tensor_reflection_direction_swap"
+  out.flush
+
 
 theorem tensor_reflection_direction_swap (c : StringSystem A) (d : StringSystem B)
     (x : A) (y : B) :
@@ -1226,6 +1766,12 @@ theorem tensor_reflection_direction_swap (c : StringSystem A) (d : StringSystem 
   have h' := tensor_weight_balance d c y x
   omega
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1229_tensor_reflection_lower_count_swap"
+  out.flush
+
+
 theorem tensor_reflection_lower_count_swap (c : StringSystem A) (d : StringSystem B)
     (x : A) (y : B) :
     (c.tensor d).phi (x, y) - (c.tensor d).epsilon (x, y) =
@@ -1233,6 +1779,12 @@ theorem tensor_reflection_lower_count_swap (c : StringSystem A) (d : StringSyste
   have h := tensor_weight_balance c d x y
   have h' := tensor_weight_balance d c y x
   omega
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1239_tensor_reflection_steps_swap"
+  out.flush
+
 
 /-- At the full reflection length, the first factor's step count is the
 second factor's count after swapping the factors. -/
@@ -1246,6 +1798,12 @@ theorem tensor_reflection_steps_swap (c : StringSystem A) (d : StringSystem B)
   simp only [tensorSecondSteps, tensorFirstSteps]
   rw [← hsame]
   omega
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1250_tensor_reflection_swap_of_lower_direction"
+  out.flush
+
 
 theorem tensor_reflection_swap_of_lower_direction (c : StringSystem A) (d : StringSystem B)
     (x : A) (y : B)
@@ -1261,6 +1819,12 @@ theorem tensor_reflection_swap_of_lower_direction (c : StringSystem A) (d : Stri
   · simp only [hs']
   · simp only [hs]
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1264_ext_functions"
+  out.flush
+
+
 theorem ext_functions {c d : StringSystem A}
     (hr : c.raise = d.raise) (hl : c.lower = d.lower)
     (he : c.epsilon = d.epsilon) (hp : c.phi = d.phi) : c = d := by
@@ -1271,6 +1835,12 @@ theorem ext_functions {c d : StringSystem A}
   cases he
   cases hp
   rfl
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1275_reverse_tensor_swap"
+  out.flush
+
 
 theorem reverse_tensor_swap (c : StringSystem A) (d : StringSystem B) :
     (c.tensor d).reverse =
@@ -1293,6 +1863,12 @@ theorem reverse_tensor_swap (c : StringSystem A) (d : StringSystem B) :
   · rfl
   · rfl
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1296_transport_lowerIterate"
+  out.flush
+
+
 theorem transport_lowerIterate (c : StringSystem A) (e : A ≃ B) (k : ℕ) (y : B) :
     (c.transport e).lowerIterate k y = (c.lowerIterate k (e.symm y)).map e := by
   induction k generalizing y with
@@ -1304,8 +1880,20 @@ theorem transport_lowerIterate (c : StringSystem A) (e : A ≃ B) (k : ℕ) (y :
       | none => simp [h]
       | some x => simp [h, ih]
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1307_reverse_transport"
+  out.flush
+
+
 theorem reverse_transport (c : StringSystem A) (e : A ≃ B) :
     (c.transport e).reverse = c.reverse.transport e := rfl
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1310_transport_reflection"
+  out.flush
+
 
 theorem transport_reflection (c : StringSystem A) (e : A ≃ B) (y : B) :
     (c.transport e).reflection y = e (c.reflection (e.symm y)) := by
@@ -1332,6 +1920,12 @@ theorem transport_reflection (c : StringSystem A) (e : A ≃ B) (y : B) :
       (reverse_transport c e)
     exact Option.some.inj (hs.symm.trans (hsame.trans ht))
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1335_reflection_reverse"
+  out.flush
+
+
 theorem reflection_reverse (c : StringSystem A) (x : A) :
     c.reverse.reflection x = c.reflection x := by
   rcases lt_trichotomy (c.epsilon x) (c.phi x) with h | h | h
@@ -1346,12 +1940,24 @@ theorem reflection_reverse (c : StringSystem A) (x : A) :
     rw [reflection, dif_pos hr, reflection, dif_neg (not_le.mpr h)]
     rfl
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1349_tensor_reflection_reverse_formula"
+  out.flush
+
+
 theorem tensor_reflection_reverse_formula (c : StringSystem A) (d : StringSystem B)
     (x : A) (y : B) :
     (c.tensor d).reflection (x, y) =
       Prod.swap ((d.reverse.tensor c.reverse).reflection (y, x)) := by
   rw [← reflection_reverse, reverse_tensor_swap, transport_reflection]
   rfl
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1359_tensor_reflection_swap"
+  out.flush
+
 
 /-- Rank-one string reflection commutes with exchanging two complete tensor
 factors.  This is a statement about reflection, not a false assertion that
@@ -1372,6 +1978,12 @@ theorem tensor_reflection_swap (c : StringSystem A) (d : StringSystem B)
       tensor_reflection_reverse_formula c d x y, Prod.swap_swap]
     exact hh.symm
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1375_lowerIterate_map"
+  out.flush
+
+
 theorem lowerIterate_map (c : StringSystem A) (d : StringSystem B) (f : A → B)
     (hl : ∀ x, d.lower (f x) = (c.lower x).map f) (k : ℕ) (x : A) :
     d.lowerIterate k (f x) = (c.lowerIterate k x).map f := by
@@ -1382,6 +1994,12 @@ theorem lowerIterate_map (c : StringSystem A) (d : StringSystem B) (f : A → B)
         ((c.lower x).bind (c.lowerIterate k)).map f
       rw [hl]
       cases h : c.lower x <;> simp [h, ih]
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1386_reflection_map"
+  out.flush
+
 
 theorem reflection_map (c : StringSystem A) (d : StringSystem B) (f : A → B)
     (he : ∀ x, d.epsilon (f x) = c.epsilon x)
@@ -1434,12 +2052,30 @@ open scoped Classical
 
 namespace HigherSpecht.Lascoux
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1437_alphabetFilter"
+  out.flush
+
+
 def alphabetFilter (K : ℕ) (w : List ℕ) : List ℕ := w.filter (fun a => decide (a < K))
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1439_alphabetFilter_cons"
+  out.flush
+
 
 theorem alphabetFilter_cons (K a : ℕ) (w : List ℕ) :
     alphabetFilter K (a :: w) =
       if a < K then a :: alphabetFilter K w else alphabetFilter K w := by
   by_cases ha : a < K <;> simp [alphabetFilter, ha]
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1444_listString_epsilon_filter"
+  out.flush
+
 
 theorem listString_epsilon_filter (K r : ℕ) (hr : r + 1 < K) (w : List ℕ) :
     (listString r).epsilon (alphabetFilter K w) = (listString r).epsilon w := by
@@ -1464,6 +2100,12 @@ theorem listString_epsilon_filter (K r : ℕ) (hr : r + 1 < K) (w : List ℕ) :
         have har' : a ≠ r + 1 := by omega
         rw [if_neg ha, listString_neutral_epsilon r a w har har', ih]
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1467_listString_phi_filter"
+  out.flush
+
+
 theorem listString_phi_filter (K r : ℕ) (hr : r + 1 < K) (w : List ℕ) :
     (listString r).phi (alphabetFilter K w) = (listString r).phi w := by
   have he := listString_epsilon_filter K r hr w
@@ -1475,6 +2117,12 @@ theorem listString_phi_filter (K r : ℕ) (hr : r + 1 < K) (w : List ℕ) :
     simp [alphabetFilter, hr]
   rw [hc0, hc1, he] at hb
   omega
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1479_listString_lower_filter"
+  out.flush
+
 
 theorem listString_lower_filter (K r : ℕ) (hr : r + 1 < K) (w : List ℕ) :
     (listString r).lower (alphabetFilter K w) =
@@ -1499,6 +2147,12 @@ theorem listString_lower_filter (K r : ℕ) (hr : r + 1 < K) (w : List ℕ) :
         rw [if_neg ha, listString_neutral_lower r a w har har', ih]
         simp only [Option.map_map, Function.comp_def, alphabetFilter_cons, if_neg ha]
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1502_listString_raise_filter"
+  out.flush
+
+
 theorem listString_raise_filter (K r : ℕ) (hr : r + 1 < K) (w : List ℕ) :
     (listString r).raise (alphabetFilter K w) =
       ((listString r).raise w).map (alphabetFilter K) := by
@@ -1522,6 +2176,12 @@ theorem listString_raise_filter (K r : ℕ) (hr : r + 1 < K) (w : List ℕ) :
         rw [if_neg ha, listString_neutral_raise r a w har har', ih]
         simp only [Option.map_map, Function.comp_def, alphabetFilter_cons, if_neg ha]
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1525_listString_reflection_filter"
+  out.flush
+
+
 theorem listString_reflection_filter (K r : ℕ) (hr : r + 1 < K) (w : List ℕ) :
     (listString r).reflection (alphabetFilter K w) =
       alphabetFilter K ((listString r).reflection w) := by
@@ -1529,14 +2189,32 @@ theorem listString_reflection_filter (K r : ℕ) (hr : r + 1 < K) (w : List ℕ)
     (listString_epsilon_filter K r hr) (listString_phi_filter K r hr)
     (listString_lower_filter K r hr) (listString_raise_filter K r hr) w
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1532_PreservesWordFilter"
+  out.flush
+
+
 def PreservesWordFilter (K : ℕ) {N L : ℕ}
     (e : (Fin N → ℕ) ≃ (Fin N → ℕ)) (f : (Fin L → ℕ) ≃ (Fin L → ℕ)) : Prop :=
   ∀ u v, alphabetFilter K (List.ofFn (e u)) = List.ofFn (f v) ↔
     alphabetFilter K (List.ofFn u) = List.ofFn v
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1537_PreservesWordFilter.refl"
+  out.flush
+
+
 theorem PreservesWordFilter.refl (K N L : ℕ) :
     PreservesWordFilter K (Equiv.refl (Fin N → ℕ)) (Equiv.refl (Fin L → ℕ)) :=
   fun _ _ => Iff.rfl
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1541_PreservesWordFilter.trans"
+  out.flush
+
 
 theorem PreservesWordFilter.trans {K N L : ℕ}
     {e₁ e₂ : (Fin N → ℕ) ≃ (Fin N → ℕ)}
@@ -1546,11 +2224,23 @@ theorem PreservesWordFilter.trans {K N L : ℕ}
   intro u v
   exact (h₂ (e₁ u) (f₁ v)).trans (h₁ u v)
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1549_PreservesWordFilter.symm"
+  out.flush
+
+
 theorem PreservesWordFilter.symm {K N L : ℕ}
     {e : (Fin N → ℕ) ≃ (Fin N → ℕ)} {f : (Fin L → ℕ) ≃ (Fin L → ℕ)}
     (h : PreservesWordFilter K e f) : PreservesWordFilter K e.symm f.symm := by
   intro u v
   simpa only [Equiv.apply_symm_apply] using (h (e.symm u) (f.symm v)).symm
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1555_wordReflection_preserves_filter"
+  out.flush
+
 
 theorem wordReflection_preserves_filter (K r N L : ℕ) (hr : r + 1 < K) :
     PreservesWordFilter K (wordReflection r N) (wordReflection r L) := by
@@ -1568,6 +2258,12 @@ theorem wordReflection_preserves_filter (K r N L : ℕ) (hr : r + 1 < K) :
     exact hh
   · exact hf
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1571_wordSwapZero_preserves_filter"
+  out.flush
+
+
 theorem wordSwapZero_preserves_filter (K j N L : ℕ) (hj : j < K) :
     PreservesWordFilter K (wordSwapZero N j) (wordSwapZero L j) := by
   revert hj
@@ -1579,6 +2275,12 @@ theorem wordSwapZero_preserves_filter (K j N L : ℕ) (hj : j < K) :
       exact (wordReflection_preserves_filter K (j + 1) N L hj).trans
         ((ih' (by omega)).trans (wordReflection_preserves_filter K (j + 1) N L hj))
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1582_wordContentSwap_preserves_filter"
+  out.flush
+
+
 theorem wordContentSwap_preserves_filter (K i j N L : ℕ) (hi : i < K) (hj : j < K) :
     PreservesWordFilter K (wordContentSwap N i j) (wordContentSwap L i j) := by
   unfold wordContentSwap
@@ -1589,6 +2291,12 @@ theorem wordContentSwap_preserves_filter (K i j N L : ℕ) (hi : i < K) (hj : j 
   · exact (wordSwapZero_preserves_filter K i N L hi).trans
       ((wordSwapZero_preserves_filter K j N L hj).trans
         (wordSwapZero_preserves_filter K i N L hi))
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1593_wordBringPair_preserves_filter"
+  out.flush
+
 
 theorem wordBringPair_preserves_filter (K i j N L : ℕ) (hi : i < K) (hj : j < K)
     (hij : i ≠ j) :
@@ -1630,6 +2338,12 @@ namespace HigherSpecht.Lascoux
 
 variable {mu : YoungDiagram}
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1633_alphabetRestrictionShape_rowLen"
+  out.flush
+
+
 theorem alphabetRestrictionShape_rowLen (T : SemistandardYoungTableau mu)
     (M r : ℕ) : (alphabetRestrictionShape T M).rowLen r = T.rowCountLt r M := by
   have h (j : ℕ) : j < (alphabetRestrictionShape T M).rowLen r ↔
@@ -1645,6 +2359,12 @@ theorem alphabetRestrictionShape_rowLen (T : SemistandardYoungTableau mu)
   have h₂ := h (T.rowCountLt r M)
   omega
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1648_alphabetRestrictionShape_height_le"
+  out.flush
+
+
 theorem alphabetRestrictionShape_height_le (T : SemistandardYoungTableau mu) (M : ℕ) :
     (alphabetRestrictionShape T M).colLen 0 ≤ mu.colLen 0 := by
   by_contra h
@@ -1654,11 +2374,23 @@ theorem alphabetRestrictionShape_height_le (T : SemistandardYoungTableau mu) (M 
     ((mem_alphabetRestrictionShape T M _ _).mp hm).1
   exact (Nat.lt_irrefl _) hp
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1657_tableauRowWord_nil_of_height_le"
+  out.flush
+
+
 theorem tableauRowWord_nil_of_height_le (T : SemistandardYoungTableau mu)
     {r : ℕ} (hr : mu.colLen 0 ≤ r) : tableauRowWord T r = [] := by
   apply List.length_eq_zero_iff.mp
   rw [tableauRowWord_length]
   exact YoungDiagram.rowLen_eq_zero_of_colLen_le hr
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1663_tableauWord_withHeight"
+  out.flush
+
 
 theorem tableauWord_withHeight (T : SemistandardYoungTableau mu)
     (H : ℕ) (hH : mu.colLen 0 ≤ H) :
@@ -1674,6 +2406,12 @@ theorem tableauWord_withHeight (T : SemistandardYoungTableau mu)
         exact ih hh
       · have heq : mu.colLen 0 = H + 1 := by omega
         simp only [tableauWord, heq]
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1678_tableauRowWord_alphabetRestriction"
+  out.flush
+
 
 theorem tableauRowWord_alphabetRestriction (T : SemistandardYoungTableau mu)
     (M r : ℕ) :
@@ -1725,6 +2463,12 @@ theorem tableauRowWord_alphabetRestriction (T : SemistandardYoungTableau mu)
     omega
   rw [hbefore, hafter, List.append_nil]
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1728_tableauWord_alphabetRestriction"
+  out.flush
+
+
 theorem tableauWord_alphabetRestriction (T : SemistandardYoungTableau mu) (M : ℕ) :
     tableauWord (alphabetRestriction T M) = alphabetFilter M (tableauWord T) := by
   rw [← tableauWord_withHeight (alphabetRestriction T M) (mu.colLen 0)
@@ -1734,6 +2478,12 @@ theorem tableauWord_alphabetRestriction (T : SemistandardYoungTableau mu) (M : �
   apply List.flatMap_congr
   intro r hr
   exact tableauRowWord_alphabetRestriction T M r
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1738_prependZeroRow"
+  out.flush
+
 
 def prependZeroRow (U : SemistandardYoungTableau (firstRowTail mu)) :
     SemistandardYoungTableau mu where
@@ -1761,10 +2511,22 @@ def prependZeroRow (U : SemistandardYoungTableau (firstRowTail mu)) :
       exact (mem_firstRowTail mu _ _).mpr (by simpa only [Nat.sub_add_cancel (by omega : 1 ≤ k)] using hk)
   zeros' {i j} hij := by simp only [if_neg hij]
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1764_prependZeroRow_zero"
+  out.flush
+
+
 @[simp] theorem prependZeroRow_zero (U : SemistandardYoungTableau (firstRowTail mu))
     (j : ℕ) : prependZeroRow U 0 j = 0 := by
   change (if (0, j) ∈ mu then 0 else 0) = 0
   split_ifs <;> rfl
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1769_prependZeroRow_succ"
+  out.flush
+
 
 theorem prependZeroRow_succ (U : SemistandardYoungTableau (firstRowTail mu))
     (i j : ℕ) (hij : (i, j) ∈ firstRowTail mu) :
@@ -1773,6 +2535,12 @@ theorem prependZeroRow_succ (U : SemistandardYoungTableau (firstRowTail mu))
     if i + 1 = 0 then 0 else U (i + 1 - 1) j + 1 else 0) = U i j + 1
   simp only [if_pos ((mem_firstRowTail mu i j).mp hij),
     Nat.add_one_ne_zero, if_false, Nat.add_sub_cancel]
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1777_firstRowTailPred_prependZeroRow"
+  out.flush
+
 
 @[simp] theorem firstRowTailPred_prependZeroRow
     (U : SemistandardYoungTableau (firstRowTail mu)) :
@@ -1783,6 +2551,12 @@ theorem prependZeroRow_succ (U : SemistandardYoungTableau (firstRowTail mu))
   · rw [firstRowTailPred_apply, prependZeroRow_succ U i j hij]
     omega
   · rw [(firstRowTailPred (prependZeroRow U)).zeros hij, U.zeros hij]
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1787_prependZeroRow_saturated"
+  out.flush
+
 
 theorem prependZeroRow_saturated (U : SemistandardYoungTableau (firstRowTail mu)) :
     (contentCells (prependZeroRow U) 0).card = mu.rowLen 0 := by
@@ -1805,6 +2579,12 @@ theorem prependZeroRow_saturated (U : SemistandardYoungTableau (firstRowTail mu)
     intro a b hab
     exact congrArg Prod.snd hab), Finset.card_range]
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1808_prependZeroRow_bound"
+  out.flush
+
+
 theorem prependZeroRow_bound (U : SemistandardYoungTableau (firstRowTail mu))
     (M : ℕ) (hU : ∀ i j, (i, j) ∈ firstRowTail mu → U i j < M) :
     ∀ i j, (i, j) ∈ mu → prependZeroRow U i j ≤ M := by
@@ -1821,6 +2601,12 @@ theorem prependZeroRow_bound (U : SemistandardYoungTableau (firstRowTail mu))
     rw [his] at he
     omega
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1824_descendingRows_succ_map"
+  out.flush
+
+
 theorem descendingRows_succ_map (H : ℕ) :
     descendingRows (H + 1) = (descendingRows H).map Nat.succ ++ [0] := by
   induction H with
@@ -1828,6 +2614,12 @@ theorem descendingRows_succ_map (H : ℕ) :
   | succ H ih =>
       simp only [descendingRows, List.map_cons, List.cons_append]
       exact congrArg (List.cons (H + 1)) ih
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1832_tableauRowWord_prependZeroRow_succ"
+  out.flush
+
 
 theorem tableauRowWord_prependZeroRow_succ
     (Q : SemistandardYoungTableau (firstRowTail mu)) (r : ℕ) :
@@ -1842,6 +2634,12 @@ theorem tableauRowWord_prependZeroRow_succ
     exact YoungDiagram.mem_iff_lt_rowLen.mpr (by
       simpa only [List.length_map, tableauRowWord_length] using hj')
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1845_tableauRowWord_prependZeroRow_zero"
+  out.flush
+
+
 theorem tableauRowWord_prependZeroRow_zero
     (Q : SemistandardYoungTableau (firstRowTail mu)) :
     tableauRowWord (prependZeroRow Q) 0 = List.replicate (mu.rowLen 0) 0 := by
@@ -1849,6 +2647,12 @@ theorem tableauRowWord_prependZeroRow_zero
   · rw [tableauRowWord_length, List.length_replicate]
   · intro j hj hj'
     rw [tableauRowWord_getElem, prependZeroRow_zero, List.getElem_replicate]
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1853_tableauWord_prependZeroRow"
+  out.flush
+
 
 theorem tableauWord_prependZeroRow
     (Q : SemistandardYoungTableau (firstRowTail mu)) :
@@ -1873,11 +2677,23 @@ theorem tableauWord_prependZeroRow
     intro r hr
     exact tableauRowWord_prependZeroRow_succ Q r
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1876_tableauWord_eq_of_heq"
+  out.flush
+
+
 theorem tableauWord_eq_of_heq {nu : YoungDiagram}
     {T : SemistandardYoungTableau mu} {U : SemistandardYoungTableau nu}
     (hshape : mu = nu) (h : HEq T U) : tableauWord T = tableauWord U := by
   subst nu
   exact congrArg tableauWord (eq_of_heq h)
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1882_alphabetFilter_saturatedSweep"
+  out.flush
+
 
 theorem alphabetFilter_saturatedSweep (T : SemistandardYoungTableau mu)
     (hs : (contentCells T 0).card = mu.rowLen 0) (M : ℕ)
@@ -1887,6 +2703,12 @@ theorem alphabetFilter_saturatedSweep (T : SemistandardYoungTableau mu)
   rw [← tableauWord_alphabetRestriction]
   exact tableauWord_eq_of_heq (saturatedSweep_restriction T hs M hbound).1
     (saturatedSweep_restriction T hs M hbound).2
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1893_tableau_eq_of_alphabetFilter"
+  out.flush
+
 
 /-- A maximal-letter completion of a fixed-shape tableau is determined
 by its literal subalphabet word.  The equality is about all cells. -/
@@ -1922,6 +2744,12 @@ theorem tableau_eq_of_alphabetFilter (T U : SemistandardYoungTableau mu) (M : �
       have hub := hU i j hc
       omega
   · rw [T.zeros hc, U.zeros hc]
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1926_saturatedSweep_bound"
+  out.flush
+
 
 theorem saturatedSweep_bound (T : SemistandardYoungTableau mu)
     (hs : (contentCells T 0).card = mu.rowLen 0) (M : ℕ)
@@ -1959,25 +2787,61 @@ open TauCeti.YoungTableau
 
 namespace HigherSpecht
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1962_PolynomialRing"
+  out.flush
+
+
 abbrev PolynomialRing (n : ℕ) (R : Type*) [CommRing R] := MvPolynomial (Fin n) R
 
 variable {R : Type*} [CommRing R]
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1967_elementaryOn"
+  out.flush
+
 
 /-- The elementary symmetric polynomial in precisely the variables in Y. -/
 def elementaryOn {n : ℕ} (Y : Finset (Fin n)) (d : ℕ) : PolynomialRing n R :=
   ∑ A ∈ Y.powersetCard d, ∏ i ∈ A, X i
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1970_elementaryOn_zero"
+  out.flush
+
+
 @[simp] theorem elementaryOn_zero {n : ℕ} (Y : Finset (Fin n)) :
     elementaryOn (R := R) Y 0 = 1 := by
   simp [elementaryOn]
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1974_elementaryOn_eq_zero_of_card_lt"
+  out.flush
+
 
 theorem elementaryOn_eq_zero_of_card_lt {n : ℕ} {Y : Finset (Fin n)} {d : ℕ}
     (hd : Y.card < d) : elementaryOn (R := R) Y d = 0 := by
   simp [elementaryOn, Finset.powersetCard_eq_empty.mpr hd]
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1978_elementaryOn_univ"
+  out.flush
+
+
 @[simp] theorem elementaryOn_univ {n : ℕ} (d : ℕ) :
     elementaryOn (R := R) (Finset.univ : Finset (Fin n)) d =
       MvPolynomial.esymm (Fin n) R d := rfl
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1982_constantCoeff_elementaryOn"
+  out.flush
+
 
 theorem constantCoeff_elementaryOn {n : ℕ} (Y : Finset (Fin n)) {d : ℕ}
     (hd : 0 < d) : constantCoeff (elementaryOn (R := R) Y d) = 0 := by
@@ -1989,21 +2853,45 @@ theorem constantCoeff_elementaryOn {n : ℕ} (Y : Finset (Fin n)) {d : ℕ}
   have hne : A.Nonempty := Finset.card_pos.mp (by omega)
   exact Finset.prod_eq_zero hne.choose_spec rfl
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1992_map_elementaryOn"
+  out.flush
+
+
 theorem map_elementaryOn {S : Type*} [CommRing S] (f : R →+* S)
     {n : ℕ} (Y : Finset (Fin n)) (d : ℕ) :
     MvPolynomial.map f (elementaryOn (R := R) Y d) = elementaryOn Y d := by
   simp only [elementaryOn, map_sum, map_prod, MvPolynomial.map_X]
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_1999_conjugateTail"
+  out.flush
+
 
 /-- Conjugate tail, using zero-based column indices.  The interval
 `[n-m,n)` is the printed interval `n-m+1,…,n`. -/
 def conjugateTail (n : ℕ) (μ : YoungDiagram) (m : ℕ) : ℕ :=
   ∑ j ∈ Finset.Ico (n - m) n, μ.colLen j
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2002_conjugateTail_mono"
+  out.flush
+
+
 theorem conjugateTail_mono {n m : ℕ} {μ ν : YoungDiagram} (h : μ ≤ ν) :
     conjugateTail n μ m ≤ conjugateTail n ν m := by
   apply Finset.sum_le_sum
   intro j hj
   exact YoungDiagram.colLen_le_of_le h j
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2010_IsElementaryGenerator"
+  out.flush
+
 
 /-- A generator of the untruncated Griffin ideal.  The comparison is made in
 the integers so that no natural subtraction can change its mathematical content. -/
@@ -2013,32 +2901,86 @@ def IsElementaryGenerator (n : ℕ) (μ : YoungDiagram)
     (Y.card : ℤ) - (conjugateTail n μ Y.card : ℤ) < (d : ℤ) ∧
     p = elementaryOn Y d
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2016_untruncatedIdeal"
+  out.flush
+
+
 def untruncatedIdeal (R : Type*) [CommRing R] (n : ℕ) (μ : YoungDiagram) :
     Ideal (PolynomialRing n R) := Ideal.span {p | IsElementaryGenerator n μ p}
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2019_powerIdeal"
+  out.flush
+
 
 def powerIdeal (R : Type*) [CommRing R] (n s : ℕ) :
     Ideal (PolynomialRing n R) := Ideal.span (Set.range fun i : Fin n => (X i) ^ s)
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2022_griffinIdeal"
+  out.flush
+
+
 def griffinIdeal (R : Type*) [CommRing R] (n : ℕ) (μ : YoungDiagram) (s : ℕ) :
     Ideal (PolynomialRing n R) := untruncatedIdeal R n μ ⊔ powerIdeal R n s
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2025_springerIdeal"
+  out.flush
+
 
 def springerIdeal (R : Type*) [CommRing R] (μ : YoungDiagram) :
     Ideal (PolynomialRing μ.card R) := untruncatedIdeal R μ.card μ
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2028_UntruncatedRing"
+  out.flush
+
+
 abbrev UntruncatedRing (R : Type*) [CommRing R] (n : ℕ) (μ : YoungDiagram) :=
   PolynomialRing n R ⧸ untruncatedIdeal R n μ
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2031_GriffinRing"
+  out.flush
+
 
 abbrev GriffinRing (R : Type*) [CommRing R] (n : ℕ) (μ : YoungDiagram) (s : ℕ) :=
   PolynomialRing n R ⧸ griffinIdeal R n μ s
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2034_SpringerRing"
+  out.flush
+
+
 abbrev SpringerRing (R : Type*) [CommRing R] (μ : YoungDiagram) :=
   PolynomialRing μ.card R ⧸ springerIdeal R μ
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2037_elementaryOn_mem_untruncatedIdeal"
+  out.flush
+
 
 theorem elementaryOn_mem_untruncatedIdeal {n : ℕ} {μ : YoungDiagram}
     (Y : Finset (Fin n)) {d : ℕ} (hd : 0 < d) (hcard : d ≤ Y.card)
     (hthreshold : (Y.card : ℤ) - (conjugateTail n μ Y.card : ℤ) < (d : ℤ)) :
     elementaryOn (R := R) Y d ∈ untruncatedIdeal R n μ :=
   Ideal.subset_span ⟨Y, d, hd, hcard, hthreshold, rfl⟩
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2043_untruncatedIdeal_mono"
+  out.flush
+
 
 theorem untruncatedIdeal_mono {n : ℕ} {μ ν : YoungDiagram} (h : μ ≤ ν) :
     untruncatedIdeal R n μ ≤ untruncatedIdeal R n ν := by
@@ -2048,15 +2990,33 @@ theorem untruncatedIdeal_mono {n : ℕ} {μ ν : YoungDiagram} (h : μ ≤ ν) :
   have htail := conjugateTail_mono (n := n) (m := Y.card) h
   exact lt_of_le_of_lt (sub_le_sub_left (by exact_mod_cast htail) _) hthreshold
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2051_griffinIdeal_mono"
+  out.flush
+
+
 theorem griffinIdeal_mono {n s : ℕ} {μ ν : YoungDiagram} (h : μ ≤ ν) :
     griffinIdeal R n μ s ≤ griffinIdeal R n ν s :=
   sup_le_sup (untruncatedIdeal_mono h) le_rfl
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2055_untruncatedIdeal_le_constantCoeff_ker"
+  out.flush
+
 
 theorem untruncatedIdeal_le_constantCoeff_ker (n : ℕ) (μ : YoungDiagram) :
     untruncatedIdeal R n μ ≤ RingHom.ker constantCoeff := by
   apply Ideal.span_le.mpr
   rintro p ⟨Y, d, hd, hcard, hthreshold, rfl⟩
   exact constantCoeff_elementaryOn Y hd
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2061_powerIdeal_le_constantCoeff_ker"
+  out.flush
+
 
 theorem powerIdeal_le_constantCoeff_ker (n : ℕ) {s : ℕ} (hs : 0 < s) :
     powerIdeal R n s ≤ RingHom.ker constantCoeff := by
@@ -2065,11 +3025,23 @@ theorem powerIdeal_le_constantCoeff_ker (n : ℕ) {s : ℕ} (hs : 0 < s) :
   change constantCoeff ((X i : PolynomialRing n R) ^ s) = 0
   rw [map_pow, constantCoeff_X, zero_pow (by omega : s ≠ 0)]
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2068_griffinIdeal_le_constantCoeff_ker"
+  out.flush
+
+
 theorem griffinIdeal_le_constantCoeff_ker (n : ℕ) (μ : YoungDiagram)
     {s : ℕ} (hs : 0 < s) :
     griffinIdeal R n μ s ≤ RingHom.ker constantCoeff :=
   sup_le (untruncatedIdeal_le_constantCoeff_ker n μ)
     (powerIdeal_le_constantCoeff_ker n hs)
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2074_one_not_mem_griffinIdeal"
+  out.flush
+
 
 theorem one_not_mem_griffinIdeal [Nontrivial R] (n : ℕ) (μ : YoungDiagram)
     {s : ℕ} (hs : 0 < s) : (1 : PolynomialRing n R) ∉ griffinIdeal R n μ s := by
@@ -2077,10 +3049,22 @@ theorem one_not_mem_griffinIdeal [Nontrivial R] (n : ℕ) (μ : YoungDiagram)
   have hk := griffinIdeal_le_constantCoeff_ker (R := R) n μ hs h
   simpa only [RingHom.mem_ker, map_one, one_ne_zero] using hk
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2081_rowSymmetrize"
+  out.flush
+
+
 /-- The literal row symmetrizer on polynomials. -/
 def rowSymmetrize {n : ℕ} (G : Subgroup (Equiv.Perm (Fin n)))
     (p : PolynomialRing n R) : PolynomialRing n R :=
   ∑ ρ : G, MvPolynomial.rename (ρ : Equiv.Perm (Fin n)) p
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2086_columnAlternate"
+  out.flush
+
 
 /-- The literal column antisymmetrizer; its sign is transported from the integers. -/
 def columnAlternate {n : ℕ} (G : Subgroup (Equiv.Perm (Fin n)))
@@ -2088,19 +3072,43 @@ def columnAlternate {n : ℕ} (G : Subgroup (Equiv.Perm (Fin n)))
   ∑ σ : G, (((Equiv.Perm.sign (σ : Equiv.Perm (Fin n)) : ℤ) : R)) •
     MvPolynomial.rename (σ : Equiv.Perm (Fin n)) p
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2091_youngApply"
+  out.flush
+
+
 def youngApply {μ : YoungDiagram} (T : YoungTableau μ)
     (p : PolynomialRing μ.card R) : PolynomialRing μ.card R :=
   columnAlternate (colSubgroup T) (rowSymmetrize (rowSubgroup T) p)
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2095_transportedCocharge"
+  out.flush
+
+
 abbrev transportedCocharge {μ : YoungDiagram} (S : StandardYoungTableau μ)
     (T : YoungTableau μ) : Fin μ.card →₀ ℕ :=
   Finsupp.equivFunOnFinite.symm fun i => cochargeFilling S (T.symm i)
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2101_higherSpechtPolynomial"
+  out.flush
+
 
 /-- The manuscript's unnormalized polynomial, with column alternation applied
 after row symmetrization. -/
 def higherSpechtPolynomial {μ : YoungDiagram} (S T : StandardYoungTableau μ) :
     PolynomialRing μ.card R :=
   youngApply T.toTableau (MvPolynomial.monomial (transportedCocharge S T.toTableau) 1)
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2105_higherSpechtPolynomial_eq_sum"
+  out.flush
+
 
 theorem higherSpechtPolynomial_eq_sum {μ : YoungDiagram}
     (S T : StandardYoungTableau μ) :
@@ -2113,15 +3121,33 @@ theorem higherSpechtPolynomial_eq_sum {μ : YoungDiagram}
   simp only [higherSpechtPolynomial, youngApply, columnAlternate, rowSymmetrize,
     map_sum, Finset.smul_sum]
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2118_elementaryMultiplier"
+  out.flush
+
+
 /-- The symmetric factor is indexed by its partition itself, padded by zeros.
 Its argument is a finite weakly decreasing sequence in the final basis theorem. -/
 def elementaryMultiplier (n m : ℕ) (eta : ℕ → ℕ) : PolynomialRing n R :=
   ∏ j ∈ Finset.range m,
     MvPolynomial.esymm (Fin n) R (j + 1) ^ (eta j - eta (j + 1))
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2122_rowSymmetrize_C"
+  out.flush
+
+
 @[simp] theorem rowSymmetrize_C {n : ℕ} (G : Subgroup (Equiv.Perm (Fin n))) (c : R) :
     rowSymmetrize G (C c) = Fintype.card G • C c := by
   simp [rowSymmetrize]
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2126_columnAlternate_bot"
+  out.flush
+
 
 @[simp] theorem columnAlternate_bot {n : ℕ} (p : PolynomialRing n R) :
     columnAlternate (⊥ : Subgroup (Equiv.Perm (Fin n))) p = p := by
@@ -2129,6 +3155,12 @@ def elementaryMultiplier (n m : ℕ) (eta : ℕ → ℕ) : PolynomialRing n R :=
   have h (σ : (⊥ : Subgroup (Equiv.Perm (Fin n)))) :
       (σ : Equiv.Perm (Fin n)) = 1 := Subgroup.mem_bot.mp σ.property
   simp [columnAlternate, h]
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2135_youngApply_one_of_rowSubgroup_top"
+  out.flush
+
 
 /-- On a one-row tableau the unnormalized symmetrizer sends 1 to n!·1.
 This equality is integral and persists in every coefficient characteristic. -/
@@ -2165,6 +3197,12 @@ open Finset TauCeti
 
 namespace HigherSpecht
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2168_standardTableau_monotoneCells"
+  out.flush
+
+
 theorem standardTableau_monotoneCells {μ : YoungDiagram} (S : StandardYoungTableau μ)
     {a b : ↥μ.cells} (hab : a.val ≤ b.val) : S a ≤ S b := by
   let mid : ↥μ.cells := ⟨(a.val.1, b.val.2), μ.up_left_mem hab.1 le_rfl b.property⟩
@@ -2180,6 +3218,12 @@ theorem standardTableau_monotoneCells {μ : YoungDiagram} (S : StandardYoungTabl
     · exact (S.col_strict hlt b.property).le
   exact ham.trans hmb
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2183_prefixShape"
+  out.flush
+
+
 def prefixShape {μ : YoungDiagram} (S : StandardYoungTableau μ) (k : ℕ) : YoungDiagram where
   cells := μ.cells.filter fun c => if hc : c ∈ μ.cells then (S ⟨c, hc⟩).val < k else False
   isLowerSet := by
@@ -2194,6 +3238,12 @@ def prefixShape {μ : YoungDiagram} (S : StandardYoungTableau μ) (k : ℕ) : Yo
     exact lt_of_le_of_lt
       (standardTableau_monotoneCells S (a := ⟨a, haμ⟩) (b := ⟨b, hbμ⟩) hab) hbk'
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2197_mem_prefixShape"
+  out.flush
+
+
 theorem mem_prefixShape {μ : YoungDiagram} (S : StandardYoungTableau μ) (k : ℕ)
     (c : ℕ × ℕ) :
     c ∈ prefixShape S k ↔ ∃ hc : c ∈ μ.cells, (S ⟨c, hc⟩).val < k := by
@@ -2203,10 +3253,22 @@ theorem mem_prefixShape {μ : YoungDiagram} (S : StandardYoungTableau μ) (k : �
   · simp [hc]
   · simp [hc]
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2206_prefixShape_le"
+  out.flush
+
+
 theorem prefixShape_le {μ : YoungDiagram} (S : StandardYoungTableau μ) (k : ℕ) :
     prefixShape S k ≤ μ := by
   intro c hc
   exact ((mem_prefixShape S k c).mp hc).choose
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2211_prefixCellEquiv"
+  out.flush
+
 
 def prefixCellEquiv {μ : YoungDiagram} (S : StandardYoungTableau μ) (k : ℕ) :
     ↥(prefixShape S k).cells ≃ {c : ↥μ.cells // (S c).val < k} where
@@ -2216,6 +3278,12 @@ def prefixCellEquiv {μ : YoungDiagram} (S : StandardYoungTableau μ) (k : ℕ) 
   left_inv c := rfl
   right_inv c := rfl
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2219_initialLabelsEquiv"
+  out.flush
+
+
 def initialLabelsEquiv {n k : ℕ} (hk : k ≤ n) :
     {i : Fin n // i.val < k} ≃ Fin k where
   toFun i := ⟨i.val.val, i.property⟩
@@ -2223,20 +3291,44 @@ def initialLabelsEquiv {n k : ℕ} (hk : k ≤ n) :
   left_inv i := rfl
   right_inv i := rfl
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2226_prefixLabelEquiv"
+  out.flush
+
+
 def prefixLabelEquiv {μ : YoungDiagram} (S : StandardYoungTableau μ)
     (k : ℕ) (hk : k ≤ μ.card) : ↥(prefixShape S k).cells ≃ Fin k :=
   (prefixCellEquiv S k).trans
     ((S.toTableau.subtypeEquiv (fun c => Iff.rfl)).trans (initialLabelsEquiv hk))
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2231_prefixLabelEquiv_apply_val"
+  out.flush
+
 
 @[simp] theorem prefixLabelEquiv_apply_val {μ : YoungDiagram}
     (S : StandardYoungTableau μ) (k : ℕ) (hk : k ≤ μ.card)
     (c : ↥(prefixShape S k).cells) :
     (prefixLabelEquiv S k hk c).val = (S ⟨c.val, prefixShape_le S k c.property⟩).val := rfl
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2236_prefixShape_card"
+  out.flush
+
+
 @[simp] theorem prefixShape_card {μ : YoungDiagram}
     (S : StandardYoungTableau μ) (k : ℕ) (hk : k ≤ μ.card) :
     (prefixShape S k).card = k := by
   simpa only [Fintype.card_coe, Fintype.card_fin] using Fintype.card_congr (prefixLabelEquiv S k hk)
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2241_prefixTableau"
+  out.flush
+
 
 def prefixTableau {μ : YoungDiagram} (S : StandardYoungTableau μ)
     (k : ℕ) (hk : k ≤ μ.card) : StandardYoungTableau (prefixShape S k) where
@@ -2250,10 +3342,22 @@ def prefixTableau {μ : YoungDiagram} (S : StandardYoungTableau μ)
     simp only [prefixLabelEquiv_apply_val]
     exact S.col_strict h (prefixShape_le S k hcell)
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2253_prefixTableau_apply_val"
+  out.flush
+
+
 @[simp] theorem prefixTableau_apply_val {μ : YoungDiagram}
     (S : StandardYoungTableau μ) (k : ℕ) (hk : k ≤ μ.card)
     (c : ↥(prefixShape S k).cells) :
     (prefixTableau S k hk c).val = (S ⟨c.val, prefixShape_le S k c.property⟩).val := rfl
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2258_prefixShape_mono"
+  out.flush
+
 
 theorem prefixShape_mono {μ : YoungDiagram} (S : StandardYoungTableau μ)
     {k l : ℕ} (hkl : k ≤ l) : prefixShape S k ≤ prefixShape S l := by
@@ -2261,11 +3365,23 @@ theorem prefixShape_mono {μ : YoungDiagram} (S : StandardYoungTableau μ)
   obtain ⟨hcμ, hck⟩ := (mem_prefixShape S k c).mp hc
   exact (mem_prefixShape S l c).mpr ⟨hcμ, hck.trans_le hkl⟩
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2264_prefixShape_full"
+  out.flush
+
+
 @[simp] theorem prefixShape_full {μ : YoungDiagram} (S : StandardYoungTableau μ) :
     prefixShape S μ.card = μ := by
   apply le_antisymm (prefixShape_le S _)
   intro c hc
   exact (mem_prefixShape S μ.card c).mpr ⟨hc, (S ⟨c, hc⟩).isLt⟩
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2270_prefixShape_zero"
+  out.flush
+
 
 @[simp] theorem prefixShape_zero {μ : YoungDiagram} (S : StandardYoungTableau μ) :
     prefixShape S 0 = ⊥ := by
@@ -2301,27 +3417,63 @@ open TauCeti MvPolynomial Module
 
 namespace HigherSpecht
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2304_StandardPair"
+  out.flush
+
+
 structure StandardPair (n : ℕ) where
   shape : YoungDiagram
   card_eq : shape.card = n
   left : StandardYoungTableau shape
   right : StandardYoungTableau shape
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2310_pairPolynomial"
+  out.flush
+
+
 def pairPolynomial {R : Type*} [CommRing R] {n : ℕ} (P : StandardPair n) :
     PolynomialRing n R :=
   MvPolynomial.rename (finCongr P.card_eq)
     (higherSpechtPolynomial P.left P.right)
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2315_prefixEligible"
+  out.flush
+
+
 def prefixEligible {n : ℕ} (lam : YoungDiagram) (hk : lam.card ≤ n)
     (P : StandardPair n) : Prop :=
   CatDominates (prefixTableau P.left lam.card (by simpa only [P.card_eq] using hk)) lam
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2319_SpringerIndex"
+  out.flush
+
+
 abbrev SpringerIndex (lam : YoungDiagram) :=
   {P : StandardPair lam.card // CatDominates P.left lam}
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2322_springerFamily"
+  out.flush
+
 
 def springerFamily (R : Type*) [CommRing R] (lam : YoungDiagram) :
     SpringerIndex lam → SpringerRing R lam :=
   fun i => Ideal.Quotient.mk (springerIdeal R lam) (pairPolynomial i.val)
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2326_GriffinIndex"
+  out.flush
+
 
 structure GriffinIndex (n : ℕ) (lam : YoungDiagram) (hk : lam.card ≤ n) (s : ℕ) where
   pair : StandardPair n
@@ -2331,44 +3483,104 @@ structure GriffinIndex (n : ℕ) (lam : YoungDiagram) (hk : lam.card ≤ n) (s :
   multiplier_length : multiplier.colLen 0 ≤ n - lam.card
   multiplier_width : multiplier.rowLen 0 ≤ s - descentNumber pair.left - 1
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2334_griffinPolynomial"
+  out.flush
+
+
 def griffinPolynomial {R : Type*} [CommRing R] {n : ℕ} {lam : YoungDiagram}
     {hk : lam.card ≤ n} {s : ℕ} (i : GriffinIndex n lam hk s) : PolynomialRing n R :=
   pairPolynomial i.pair * elementaryMultiplier n (n - lam.card) i.multiplier.rowLen
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2338_griffinFamily"
+  out.flush
+
 
 def griffinFamily (R : Type*) [CommRing R] (n : ℕ) (lam : YoungDiagram)
     (hk : lam.card ≤ n) (s : ℕ) :
     GriffinIndex n lam hk s → GriffinRing R n lam s :=
   fun i => Ideal.Quotient.mk (griffinIdeal R n lam s) (griffinPolynomial i)
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2343_UntruncatedIndex"
+  out.flush
+
+
 abbrev UntruncatedIndex (n : ℕ) (lam : YoungDiagram) (hk : lam.card ≤ n) :=
   {P : StandardPair n // prefixEligible lam hk P}
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2346_untruncatedFamily"
+  out.flush
+
 
 def untruncatedFamily (R : Type*) [CommRing R] (n : ℕ) (lam : YoungDiagram)
     (hk : lam.card ≤ n) : UntruncatedIndex n lam hk → UntruncatedRing R n lam :=
   fun i => Ideal.Quotient.mk (untruncatedIdeal R n lam) (pairPolynomial i.val)
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2350_UntruncatedVectorIndex"
+  out.flush
+
 
 structure UntruncatedVectorIndex (n : ℕ) (lam : YoungDiagram) (hk : lam.card ≤ n) where
   base : UntruncatedIndex n lam hk
   multiplier : YoungDiagram
   multiplier_length : multiplier.colLen 0 ≤ n - lam.card
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2355_untruncatedVectorFamily"
+  out.flush
+
+
 def untruncatedVectorFamily (R : Type*) [CommRing R] (n : ℕ) (lam : YoungDiagram)
     (hk : lam.card ≤ n) : UntruncatedVectorIndex n lam hk → UntruncatedRing R n lam :=
   fun i => Ideal.Quotient.mk (untruncatedIdeal R n lam)
     (pairPolynomial i.base.val * elementaryMultiplier n (n - lam.card) i.multiplier.rowLen)
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2361_IsSpecifiedBasis"
+  out.flush
+
 
 /-- A basis assertion retaining the prescribed vector at every actual index. -/
 def IsSpecifiedBasis {R V ι : Type*} [CommRing R] [AddCommGroup V] [Module R V]
     (v : ι → V) : Prop :=
   ∃ b : Basis ι R V, ∀ i, b i = v i
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2365_SpringerBasisTarget"
+  out.flush
+
+
 def SpringerBasisTarget (R : Type*) [Field R] : Prop :=
   ∀ lam : YoungDiagram, IsSpecifiedBasis (R := R) (springerFamily R lam)
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2368_GriffinBasisTarget"
+  out.flush
+
 
 def GriffinBasisTarget (R : Type*) [Field R] : Prop :=
   ∀ (n : ℕ) (lam : YoungDiagram) (hk : lam.card ≤ n) (s : ℕ),
     0 < lam.card → lam.colLen 0 ≤ s →
       IsSpecifiedBasis (R := R) (griffinFamily R n lam hk s)
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2375_UntruncatedVectorBasisTarget"
+  out.flush
+
 
 /-- The degreewise-stabilized vector-space statement preceding the free-module
 assertion in Section 6.1.  The empty partition is included. -/
@@ -2376,12 +3588,24 @@ def UntruncatedVectorBasisTarget (R : Type*) [Field R] : Prop :=
   ∀ (n : ℕ) (lam : YoungDiagram) (hk : lam.card ≤ n),
     IsSpecifiedBasis (R := R) (untruncatedVectorFamily R n lam hk)
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2381_GriffinCharacteristicTarget"
+  out.flush
+
+
 /-- The basis portion of Corollary 8.1, with the exact field characteristic
 range; the associated irreducible-module assertions are separate conclusions. -/
 def GriffinCharacteristicTarget (R : Type*) [Field R] : Prop :=
   ∀ (n : ℕ) (lam : YoungDiagram) (hk : lam.card ≤ n) (s : ℕ),
     0 < lam.card → lam.colLen 0 ≤ s →
       (IsSpecifiedBasis (R := R) (griffinFamily R n lam hk s) ↔ ringChar R = 0 ∨ n < ringChar R)
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2386_SpringerCharacteristicTarget"
+  out.flush
+
 
 def SpringerCharacteristicTarget (R : Type*) [Field R] : Prop :=
   ∀ lam : YoungDiagram,
@@ -2413,6 +3637,12 @@ namespace HigherSpecht
 
 variable {R : Type*} [CommRing R]
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2416_tableauRows_eq_zero_of_one_row"
+  out.flush
+
+
 theorem tableauRows_eq_zero_of_one_row {μ : YoungDiagram}
     (S : StandardYoungTableau μ) (hμ : μ.colLen 0 ≤ 1) : tableauRows S = 0 := by
   funext i
@@ -2420,6 +3650,12 @@ theorem tableauRows_eq_zero_of_one_row {μ : YoungDiagram}
   split_ifs with hi
   · exact rowIndex_eq_zero_of_colLen_le_one S.toTableau hμ _
   · rfl
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2424_cochargeLabel_eq_zero_of_one_row"
+  out.flush
+
 
 theorem cochargeLabel_eq_zero_of_one_row {μ : YoungDiagram}
     (S : StandardYoungTableau μ) (hμ : μ.colLen 0 ≤ 1) (i : Fin μ.card) :
@@ -2431,11 +3667,23 @@ theorem cochargeLabel_eq_zero_of_one_row {μ : YoungDiagram}
   intro j hj
   rfl
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2434_transportedCocharge_eq_zero_of_one_row"
+  out.flush
+
+
 theorem transportedCocharge_eq_zero_of_one_row {μ : YoungDiagram}
     (S : StandardYoungTableau μ) (T : YoungTableau μ) (hμ : μ.colLen 0 ≤ 1) :
     transportedCocharge S T = 0 := by
   ext i
   simp [transportedCocharge, cochargeFilling, cochargeLabel_eq_zero_of_one_row S hμ]
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2440_higherSpechtPolynomial_one_row"
+  out.flush
+
 
 theorem higherSpechtPolynomial_one_row {μ : YoungDiagram}
     (S T : StandardYoungTableau μ) (hμ : μ.colLen 0 ≤ 1) :
@@ -2446,6 +3694,12 @@ theorem higherSpechtPolynomial_one_row {μ : YoungDiagram}
   exact youngApply_one_of_rowSubgroup_top T.toTableau hr
     (colSubgroup_eq_bot_of_rowSubgroup_eq_top T.toTableau hr)
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2449_higherSpechtPolynomial_one_row_eq_zero"
+  out.flush
+
+
 theorem higherSpechtPolynomial_one_row_eq_zero {p : ℕ} [CharP R p]
     (hp : 0 < p) {μ : YoungDiagram} (S T : StandardYoungTableau μ)
     (hμ : μ.colLen 0 ≤ 1) (hpn : p ≤ μ.card) :
@@ -2454,6 +3708,12 @@ theorem higherSpechtPolynomial_one_row_eq_zero {p : ℕ} [CharP R p]
   have hz : (μ.card.factorial : R) = 0 :=
     (CharP.cast_eq_zero_iff R p μ.card.factorial).mpr (Nat.dvd_factorial hp hpn)
   simpa only [map_natCast, map_zero] using congrArg (C : R →+* PolynomialRing μ.card R) hz
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2460_not_linearIndependent_of_contains_one_row"
+  out.flush
+
 
 /-- A family containing this literal one-row candidate is dependent in every
 positive characteristic at most the number of variables. -/
@@ -2465,6 +3725,12 @@ theorem not_linearIndependent_of_contains_one_row
     (hi : v i = higherSpechtPolynomial S T) : ¬ LinearIndependent R v := by
   intro hv
   exact hv.ne_zero i (hi.trans (higherSpechtPolynomial_one_row_eq_zero hp S T hμ hpn))
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2471_not_linearIndependent_quotient_of_contains_one_row"
+  out.flush
+
 
 /-- The same obstruction survives quotienting by the actual Griffin ideal.
 In particular quotient relations cannot repair the zero basis vector. -/
@@ -2505,6 +3771,12 @@ open Finset TauCeti MvPolynomial
 
 namespace HigherSpecht
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2508_oneRowShape"
+  out.flush
+
+
 def oneRowShape (n : ℕ) : YoungDiagram where
   cells := {0} ×ˢ Finset.range n
   isLowerSet := by
@@ -2512,13 +3784,31 @@ def oneRowShape (n : ℕ) : YoungDiagram where
     simp only [Finset.mem_coe, Finset.mem_product, Finset.mem_singleton, Finset.mem_range] at h ⊢
     exact ⟨by omega, hbd.trans_lt h.2⟩
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2515_oneRowShape_card"
+  out.flush
+
+
 @[simp] theorem oneRowShape_card (n : ℕ) : (oneRowShape n).card = n := by
   simp [oneRowShape, YoungDiagram.card]
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2518_mem_oneRowShape"
+  out.flush
+
 
 @[simp] theorem mem_oneRowShape (n : ℕ) (c : ℕ × ℕ) :
     c ∈ oneRowShape n ↔ c.1 = 0 ∧ c.2 < n := by
   change c ∈ ({0} ×ˢ Finset.range n) ↔ _
   simp only [Finset.mem_product, Finset.mem_singleton, Finset.mem_range]
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2523_oneRowShape_rowLen"
+  out.flush
+
 
 @[simp] theorem oneRowShape_rowLen (n r : ℕ) :
     (oneRowShape n).rowLen r = if r = 0 then n else 0 := by
@@ -2527,14 +3817,32 @@ def oneRowShape (n : ℕ) : YoungDiagram where
   rw [← YoungDiagram.mem_iff_lt_rowLen, mem_oneRowShape]
   by_cases hr : r = 0 <;> simp [hr]
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2530_oneRowShape_colLen_le_one"
+  out.flush
+
+
 theorem oneRowShape_colLen_le_one (n : ℕ) : (oneRowShape n).colLen 0 ≤ 1 := by
   by_contra h
   have hm : (1, 0) ∈ oneRowShape n := YoungDiagram.mem_iff_lt_colLen.mpr (by omega)
   simp at hm
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2535_oneRowShape_zero"
+  out.flush
+
+
 @[simp] theorem oneRowShape_zero : oneRowShape 0 = ⊥ := by
   ext c
   simp
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2539_oneRowShape_add"
+  out.flush
+
 
 lemma oneRowShape_add (n : ℕ) :
     (oneRowShape n).addCell (0, (oneRowShape n).rowLen 0) = oneRowShape (n + 1) := by
@@ -2544,6 +3852,12 @@ lemma oneRowShape_add (n : ℕ) :
   simp only [YoungDiagram.mem_addCell, oneRowShape_rowLen, if_pos rfl,
     mem_oneRowShape, Prod.le_def, ite_true]
   omega
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2548_catRun_replicate_zero"
+  out.flush
+
 
 lemma catRun_replicate_zero (m n : ℕ) :
     catRun m ⟨List.replicate m 0, oneRowShape n⟩ = ⟨[], oneRowShape (n + m)⟩ := by
@@ -2563,10 +3877,22 @@ lemma catRun_replicate_zero (m n : ℕ) :
     rw [catRun_add, hstep, ih]
     simp only [Nat.add_assoc, Nat.add_comm, Nat.add_left_comm]
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2566_catWordOutput_replicate_zero"
+  out.flush
+
+
 theorem catWordOutput_replicate_zero (n : ℕ) :
     CatWordOutput (List.replicate n 0) (oneRowShape n) := by
   refine ⟨n, ?_⟩
   simpa only [oneRowShape_zero, Nat.zero_add] using catRun_replicate_zero n 0
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2571_cochargeWord_one_row"
+  out.flush
+
 
 theorem cochargeWord_one_row {μ : YoungDiagram} (S : StandardYoungTableau μ)
     (hμ : μ.colLen 0 ≤ 1) : cochargeWord S = List.replicate μ.card 0 := by
@@ -2577,6 +3903,12 @@ theorem cochargeWord_one_row {μ : YoungDiagram} (S : StandardYoungTableau μ)
     exact cochargeLabel_eq_zero_of_one_row S hμ (S c)
   rw [cochargeWord, hmap, List.map_const']
   simp [rowReadingCells, YoungDiagram.card]
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2581_oneRowShape_dominates"
+  out.flush
+
 
 theorem oneRowShape_dominates {n : ℕ} (μ : YoungDiagram) (hμ : μ.card ≤ n) :
     Dominates (oneRowShape n) μ := by
@@ -2593,6 +3925,12 @@ theorem oneRowShape_dominates {n : ℕ} (μ : YoungDiagram) (hμ : μ.card ≤ n
     rw [hright]
     exact hleft.trans hμ
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2596_catDominates_one_row"
+  out.flush
+
+
 theorem catDominates_one_row {μ : YoungDiagram} (S : StandardYoungTableau μ)
     (hμ : μ.colLen 0 ≤ 1) (lam : YoungDiagram) (hcard : lam.card ≤ μ.card) :
     CatDominates S lam := by
@@ -2601,11 +3939,23 @@ theorem catDominates_one_row {μ : YoungDiagram} (S : StandardYoungTableau μ)
   rw [cochargeWord_one_row S hμ]
   exact catWordOutput_replicate_zero _
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2604_oneRowPair"
+  out.flush
+
+
 def oneRowPair (n : ℕ) : StandardPair n where
   shape := oneRowShape n
   card_eq := oneRowShape_card n
   left := StandardYoungTableau.rowSuperstandard (oneRowShape n)
   right := StandardYoungTableau.rowSuperstandard (oneRowShape n)
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2610_pairPolynomial_oneRow"
+  out.flush
+
 
 theorem pairPolynomial_oneRow {R : Type*} [CommRing R] (n : ℕ) :
     pairPolynomial (R := R) (oneRowPair n) = (n.factorial : PolynomialRing n R) := by
@@ -2613,9 +3963,21 @@ theorem pairPolynomial_oneRow {R : Type*} [CommRing R] (n : ℕ) :
   rw [higherSpechtPolynomial_one_row _ _ (oneRowShape_colLen_le_one n), map_natCast,
     oneRowShape_card]
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2616_oneRowSpringerIndex"
+  out.flush
+
+
 def oneRowSpringerIndex (lam : YoungDiagram) : SpringerIndex lam :=
   ⟨oneRowPair lam.card, catDominates_one_row _ (oneRowShape_colLen_le_one _) lam
     (by simp [oneRowPair])⟩
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2620_oneRowGriffinIndex"
+  out.flush
+
 
 def oneRowGriffinIndex (n : ℕ) (lam : YoungDiagram) (hk : lam.card ≤ n)
     (s : ℕ) (hs : 0 < s) : GriffinIndex n lam hk s where
@@ -2633,11 +3995,23 @@ def oneRowGriffinIndex (n : ℕ) (lam : YoungDiagram) (hk : lam.card ≤ n)
   multiplier_length := by simp
   multiplier_width := by simp
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2636_griffinPolynomial_oneRow"
+  out.flush
+
+
 theorem griffinPolynomial_oneRow {R : Type*} [CommRing R]
     (n : ℕ) (lam : YoungDiagram) (hk : lam.card ≤ n) (s : ℕ) (hs : 0 < s) :
     griffinPolynomial (R := R) (oneRowGriffinIndex n lam hk s hs) =
       (n.factorial : PolynomialRing n R) := by
   simp [griffinPolynomial, oneRowGriffinIndex, pairPolynomial_oneRow, elementaryMultiplier]
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2644_not_springerBasis_of_small_characteristic"
+  out.flush
+
 
 /-- The necessary characteristic restriction for the full specified Springer
 family, for every partition. -/
@@ -2652,6 +4026,12 @@ theorem not_springerBasis_of_small_characteristic {R : Type*} [Field R]
     simpa only [map_natCast, map_zero] using congrArg (algebraMap R (SpringerRing R lam)) hz
   exact B.linearIndependent.ne_zero (oneRowSpringerIndex lam)
     ((hB _).trans hzero)
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2658_not_griffinBasis_of_small_characteristic"
+  out.flush
+
 
 /-- The necessary characteristic restriction for every full Griffin family;
 all its prescribed parameters and all its actual indices are retained. -/
@@ -2692,21 +4072,57 @@ open TauCeti Function
 
 namespace HigherSpecht
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2695_prependRowFunction"
+  out.flush
+
+
 def prependRowFunction (m : ℕ) (r : ℕ → ℕ) : ℕ → ℕ
   | 0 => m
   | j + 1 => r j
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2699_prependRowFunction_zero"
+  out.flush
+
+
 @[simp] theorem prependRowFunction_zero (m : ℕ) (r : ℕ → ℕ) :
     prependRowFunction m r 0 = m := rfl
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2702_prependRowFunction_succ"
+  out.flush
+
 
 @[simp] theorem prependRowFunction_succ (m : ℕ) (r : ℕ → ℕ) (j : ℕ) :
     prependRowFunction m r (j + 1) = r j := rfl
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2705_liftRawCat"
+  out.flush
+
+
 def liftRawCat (m : ℕ) (s : RawCatState) : RawCatState :=
   (s.1.map Nat.succ, prependRowFunction m s.2)
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2708_FirstRowCapacity"
+  out.flush
+
+
 def FirstRowCapacity (m : ℕ) (s : RawCatState) : Prop :=
   s.2 0 + s.1.count 0 ≤ m
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2711_prependRowFunction_update"
+  out.flush
+
 
 theorem prependRowFunction_update (m : ℕ) (r : ℕ → ℕ) (a b : ℕ) :
     prependRowFunction m (Function.update r a b) =
@@ -2716,12 +4132,24 @@ theorem prependRowFunction_update (m : ℕ) (r : ℕ → ℕ) (a b : ℕ) :
   | zero => simp [Function.update_apply]
   | succ j => simp [Function.update_apply]
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2719_rawCanInsert_prependRowFunction"
+  out.flush
+
+
 theorem rawCanInsert_prependRowFunction {m : ℕ} {r : ℕ → ℕ} {a : ℕ}
     (hzero : a = 0 → r 0 < m) :
     rawCanInsert (prependRowFunction m r) (a + 1) ↔ rawCanInsert r a := by
   cases a with
   | zero => simp [rawCanInsert, hzero rfl]
   | succ a => simp [rawCanInsert, Nat.add_sub_cancel]
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2726_firstRowCapacity_step"
+  out.flush
+
 
 theorem firstRowCapacity_step {m : ℕ} {s : RawCatState}
     (hs : FirstRowCapacity m s) : FirstRowCapacity m (rawCatStep s) := by
@@ -2741,6 +4169,12 @@ theorem firstRowCapacity_step {m : ℕ} {s : RawCatState}
     · rw [if_neg ha]
       have ha0 : a ≠ 0 := fun h => ha (Or.inl h)
       simpa [FirstRowCapacity, List.count_append, ha0, Ne.symm ha0] using hs
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2745_rawCatStep_liftRawCat"
+  out.flush
+
 
 theorem rawCatStep_liftRawCat {m : ℕ} {s : RawCatState}
     (hs : FirstRowCapacity m s) :
@@ -2763,12 +4197,24 @@ theorem rawCatStep_liftRawCat {m : ℕ} {s : RawCatState}
     · rw [if_neg ha, if_neg (fun h => ha (hcan.mp h))]
       rfl
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2766_firstRowCapacity_run"
+  out.flush
+
+
 theorem firstRowCapacity_run {m : ℕ} {s : RawCatState}
     (hs : FirstRowCapacity m s) (N : ℕ) : FirstRowCapacity m (rawCatRun N s) := by
   induction N with
   | zero => exact hs
   | succ N ih =>
     simpa only [rawCatRun, Function.iterate_succ_apply'] using firstRowCapacity_step ih
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2773_rawCatRun_liftRawCat"
+  out.flush
+
 
 theorem rawCatRun_liftRawCat {m : ℕ} {s : RawCatState}
     (hs : FirstRowCapacity m s) (N : ℕ) :
@@ -2778,6 +4224,12 @@ theorem rawCatRun_liftRawCat {m : ℕ} {s : RawCatState}
   | succ N ih =>
     simpa only [rawCatRun, Function.iterate_succ_apply'] using
       (congrArg rawCatStep ih).trans (rawCatStep_liftRawCat (firstRowCapacity_run hs N))
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2785_catRun_firstRow_lift"
+  out.flush
+
 
 /-- The comparison is stated on the actual Young-diagram machine.  Its
 conclusion gives every row of the final output, not an unspecified output
@@ -2827,6 +4279,12 @@ open TauCeti Function
 
 namespace HigherSpecht
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2830_catRun_corotate_positive_tail"
+  out.flush
+
+
 theorem catRun_corotate_positive_tail (before tail : List ℕ)
     (hpos : ∀ a ∈ tail, 0 < a) :
     catRun tail.length ⟨before ++ tail, ⊥⟩ =
@@ -2846,6 +4304,12 @@ theorem catRun_corotate_positive_tail (before tail : List ℕ)
       ih _ htail]
     simp only [List.map_append, List.map_singleton, List.append_assoc, List.singleton_append]
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2849_catRun_insert_zero_tail"
+  out.flush
+
+
 theorem catRun_insert_zero_tail (before : List ℕ) (m n : ℕ) :
     catRun m ⟨before ++ List.replicate m 0, oneRowShape n⟩ =
       ⟨before, oneRowShape (n + m)⟩ := by
@@ -2863,6 +4327,12 @@ theorem catRun_insert_zero_tail (before : List ℕ) (m n : ℕ) :
     rw [catRun_add, hstep, ih]
     simp only [Nat.add_assoc, Nat.add_comm, Nat.add_left_comm]
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2866_catRun_greedy_first_phase"
+  out.flush
+
+
 theorem catRun_greedy_first_phase (upper bottom : List ℕ) (m : ℕ)
     (hbottom : ∀ a ∈ bottom, 0 < a) :
     catRun (m + bottom.length) ⟨upper ++ List.replicate m 0 ++ bottom, ⊥⟩ =
@@ -2871,6 +4341,12 @@ theorem catRun_greedy_first_phase (upper bottom : List ℕ) (m : ℕ)
   rw [← List.append_assoc, ← oneRowShape_zero]
   simpa only [Nat.zero_add] using
     catRun_insert_zero_tail (bottom.map Nat.succ ++ upper) m 0
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2875_succ_map_pred_of_positive"
+  out.flush
+
 
 theorem succ_map_pred_of_positive (w : List ℕ) (hpos : ∀ a ∈ w, 0 < a) :
     (w.map Nat.pred).map Nat.succ = w := by
@@ -2882,12 +4358,30 @@ theorem succ_map_pred_of_positive (w : List ℕ) (hpos : ∀ a ∈ w, 0 < a) :
       exact Nat.succ_pred_eq_of_pos (hpos a ha)
     _ = w := List.map_id w
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2885_greedyTailWord"
+  out.flush
+
+
 def greedyTailWord (upper bottom : List ℕ) : List ℕ := bottom ++ upper.map Nat.pred
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2887_greedyTailWord_succ"
+  out.flush
+
 
 theorem greedyTailWord_succ (upper bottom : List ℕ)
     (hupper : ∀ a ∈ upper, 0 < a) :
     (greedyTailWord upper bottom).map Nat.succ = bottom.map Nat.succ ++ upper := by
   rw [greedyTailWord, List.map_append, succ_map_pred_of_positive upper hupper]
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2894_catWordOutput_greedy_rows"
+  out.flush
+
 
 /-- Exact row-by-row greedy recursion, from genuine terminating runs of both
 words.  It is valid before any appeal to standard tableaux or RSK. -/
@@ -2938,6 +4432,12 @@ open TauCeti
 
 namespace HigherSpecht
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2941_standardPairSigmaEquiv"
+  out.flush
+
+
 def standardPairSigmaEquiv (n : ℕ) : StandardPair n ≃
     Σ μ : {μ : YoungDiagram | μ.card = n},
       StandardYoungTableau μ.val × StandardYoungTableau μ.val where
@@ -2946,44 +4446,110 @@ def standardPairSigmaEquiv (n : ℕ) : StandardPair n ≃
   left_inv P := by cases P; rfl
   right_inv x := by rcases x with ⟨⟨μ, hμ⟩, S, T⟩; rfl
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2949_standardPairPartitionEquiv"
+  out.flush
+
+
 def standardPairPartitionEquiv (n : ℕ) : StandardPair n ≃
     Σ μ : n.Partition,
       StandardYoungTableau (YoungDiagram.ofPartition μ) ×
         StandardYoungTableau (YoungDiagram.ofPartition μ) :=
   (standardPairSigmaEquiv n).trans (Equiv.sigmaCongrLeft' YoungDiagram.equivPartition)
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2955_rskPair"
+  out.flush
+
+
 def rskPair (n : ℕ) : Equiv.Perm (Fin n) ≃ StandardPair n :=
   (TauCeti.rsk n).trans (standardPairPartitionEquiv n).symm
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2958_rskPair_shape"
+  out.flush
+
 
 @[simp] theorem rskPair_shape (n : ℕ) (σ : Equiv.Perm (Fin n)) :
     (rskPair n σ).shape = YoungDiagram.ofPartition (TauCeti.rsk n σ).1 := rfl
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2961_rskPair_left"
+  out.flush
+
+
 @[simp] theorem rskPair_left (n : ℕ) (σ : Equiv.Perm (Fin n)) :
     (rskPair n σ).left = (TauCeti.rsk n σ).2.1 := rfl
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2964_rskPair_right"
+  out.flush
+
+
 @[simp] theorem rskPair_right (n : ℕ) (σ : Equiv.Perm (Fin n)) :
     (rskPair n σ).right = (TauCeti.rsk n σ).2.2 := rfl
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2967_rskPair_left_rows"
+  out.flush
+
 
 theorem rskPair_left_rows (n : ℕ) (σ : Equiv.Perm (Fin n)) :
     (rskPair n σ).left.toRows.map (List.map Fin.val) =
       (TauCeti.robinsonSchensted (List.ofFn σ)).1.map (List.map Fin.val) :=
   σ.map_val_toRows_rsk_apply
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2972_rskPair_recording_word"
+  out.flush
+
+
 theorem rskPair_recording_word (n : ℕ) (σ : Equiv.Perm (Fin n)) :
     (rskPair n σ).right.rowWord =
       (TauCeti.robinsonSchensted (List.ofFn σ)).2 :=
   σ.rowWord_rsk_apply
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2977_instFintypeStandardPair"
+  out.flush
+
+
 noncomputable instance instFintypeStandardPair (n : ℕ) : Fintype (StandardPair n) :=
   Fintype.ofEquiv (Equiv.Perm (Fin n)) (rskPair n)
 
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2980_card_standardPair"
+  out.flush
+
+
 theorem card_standardPair (n : ℕ) : Fintype.card (StandardPair n) = n.factorial := by
   rw [← Fintype.card_congr (rskPair n), Fintype.card_perm, Fintype.card_fin]
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2983_rskEligibleEquiv"
+  out.flush
+
 
 def rskEligibleEquiv (n : ℕ) (lam : YoungDiagram) (hk : lam.card ≤ n) :
     {σ : Equiv.Perm (Fin n) | prefixEligible lam hk (rskPair n σ)} ≃
       UntruncatedIndex n lam hk :=
   (rskPair n).subtypeEquiv (fun σ => Iff.rfl)
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_BEFORE_2988_card_untruncatedIndex"
+  out.flush
+
 
 theorem card_untruncatedIndex (n : ℕ) (lam : YoungDiagram) (hk : lam.card ≤ n) :
     Nat.card (UntruncatedIndex n lam hk) =
@@ -2993,3 +4559,8 @@ theorem card_untruncatedIndex (n : ℕ) (lam : YoungDiagram) (hk : lam.card ≤ 
 end HigherSpecht
 end
 end CanonicalSource15
+
+#eval show IO Unit from do
+  let out ← IO.getStdout
+  out.putStrLn "PALOMAR_HIGHER_SOURCE_END"
+  out.flush
