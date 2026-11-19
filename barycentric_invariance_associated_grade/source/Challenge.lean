@@ -16,6 +16,25 @@ public import Mathlib.LinearAlgebra.StdBasis
 public import Mathlib.LinearAlgebra.Isomorphisms
 
 @[expose] public section
+namespace PalomarBarycentric
+universe uCoefficient
+/-- The canonical inverse-pair law for the identity coefficient homomorphism. -/
+theorem coefficientIdentityInvPair {K : Type uCoefficient} [CommRing K] :
+    RingHomInvPair (RingHom.id K) (RingHom.id K) := by infer_instance
+/-- Every ideal of a commutative coefficient algebra is two-sided. -/
+theorem coefficientIdealTwoSided {R : Type uCoefficient} [CommRing R] (I : Ideal R) :
+    I.IsTwoSided := by infer_instance
+/-- Identity inverse-pair with the commutative-semiring projection used by the basis representation. -/
+theorem commutativeCoefficientIdentityInvPair {K : Type uCoefficient} [hK : CommRing K] :
+    @RingHomInvPair K K hK.toCommSemiring.toSemiring hK.toCommSemiring.toSemiring
+      (@RingHom.id K hK.toCommSemiring.toSemiring.toNonAssocSemiring)
+      (@RingHom.id K hK.toCommSemiring.toSemiring.toNonAssocSemiring) := by infer_instance
+attribute [instance 2100] commutativeCoefficientIdentityInvPair
+attribute [instance 2000] coefficientIdentityInvPair coefficientIdealTwoSided
+end PalomarBarycentric
+end
+
+@[expose] public section
 noncomputable section
 set_option autoImplicit false
 set_option maxRecDepth 4000
