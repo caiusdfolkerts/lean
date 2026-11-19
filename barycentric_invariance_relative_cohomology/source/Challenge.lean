@@ -368,6 +368,8 @@ def barycentricMonomialEquiv :
     BarycentricRing (P := P) K ≃ₗ[K] (StandardFaceIndex P →₀ K) :=
   (barycentricPresentationEquiv K).toLinearEquiv.trans
     (standardMonomialEquiv BarycentricAllowed barycentricAllowed_divisorClosed)
+theorem barycentricMonomialEquiv_mk (f : FacePolynomial (P := P) K) :
+    barycentricMonomialEquiv K (Ideal.Quotient.mk (barycentricIdeal K) f) = standardCoefficients BarycentricAllowed f := by sorry
 end
 end FourPapers.Universal
 namespace FourPapers.Universal
@@ -380,6 +382,8 @@ variable (K : Type*) [CommRing K] (hs : IsSimplicialPoset P)
 def barycentricGlobalStandardBasis :
     Module.Basis (StandardFaceIndex P) K (BarycentricRing (P := P) K) :=
   Module.Basis.ofRepr (barycentricMonomialEquiv K)
+theorem barycentricGlobalStandardBasis_coordinates (a : StandardFaceIndex P) :
+    barycentricMonomialEquiv K (barycentricGlobalStandardBasis K a) = Finsupp.single a 1 := by sorry
 /-- Literal FourPapers.Universal.barycentricRestrictionIdeal; source theorem12.lean:15270. -/
 def barycentricRestrictionIdeal (Q : Set P) : Ideal (BarycentricRing (P := P) K) :=
   Ideal.span {x | ∃ p : P, p ∉ Q ∧ x = barycentricGenerator K p}

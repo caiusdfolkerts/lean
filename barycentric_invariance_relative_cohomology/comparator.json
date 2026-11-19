@@ -24,9 +24,14 @@
     "PalomarBarycentricTor.coefficientSMulComm",
     "PalomarBarycentricTor.functionScalarTower",
     "PalomarBarycentricTor.exteriorScalarComm",
-    "PalomarBarycentricTor.tensorPreservesZero"
+    "PalomarBarycentricTor.tensorPreservesZero",
+    "FourPapers.Universal.barycentricMonomialEquiv_mk",
+    "FourPapers.Universal.barycentricGlobalStandardBasis_coordinates"
   ],
-  "definition_names": [],
+  "definition_names": [
+    "FourPapers.Universal.barycentricMonomialEquiv",
+    "FourPapers.Universal.barycentricGlobalStandardBasis"
+  ],
   "permitted_axioms": [
     "propext",
     "Quot.sound",
