@@ -6357,15 +6357,23 @@ def RelativeDual := Module.Dual B A
 
 namespace RelativeDual
 
-instance : AddCommGroup (RelativeDual B A) :=
-  inferInstanceAs (AddCommGroup (Module.Dual B A))
+attribute [local instance 1200] TauCeti.dualScalarModule
 
-instance : Module B (RelativeDual B A) :=
-  inferInstanceAs (Module B (Module.Dual B A))
+abbrev instAddCommGroup : AddCommGroup (RelativeDual B A) :=
+  @LinearMap.addCommGroup B B A B _ _ _ _ _ _ (RingHom.id B)
 
-instance : Module A (RelativeDual B A) :=
+attribute [instance] instAddCommGroup
+
+abbrev instModule : Module B (RelativeDual B A) :=
+  TauCeti.dualScalarModule B A
+
+attribute [instance] instModule
+
+abbrev instModule_1 : Module A (RelativeDual B A) :=
   show Module A (Module.Dual B A) from
     Module.compHom (Module.Dual B A) (TauCeti.dualRightAction B A)
+
+attribute [instance] instModule_1
 
 def toLinearMap (f : RelativeDual B A) : Module.Dual B A := f
 

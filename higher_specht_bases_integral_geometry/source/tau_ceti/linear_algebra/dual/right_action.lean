@@ -45,11 +45,20 @@ particular dual builds it with `Module.compHom`, which pins the right-module str
 dualized.
 -/
 
-public section
+@[expose] public section
 
 namespace TauCeti
 
 universe u v w
+
+theorem dualScalarComm (k : Type u) [CommSemiring k] : SMulCommClass k k k :=
+  ⟨fun a b x => mul_left_comm a b x⟩
+
+abbrev dualScalarModule (k : Type u) (N : Type w) [CommSemiring k] [AddCommMonoid N]
+    [Module k N] : Module k (Module.Dual k N) :=
+  @LinearMap.module k k k N k _ _ _ _ _ _ (RingHom.id k) _ _ (dualScalarComm k)
+
+attribute [local instance 1200] dualScalarModule
 
 variable (k : Type u) (N : Type w) {A : Type v} [CommSemiring k] [Semiring A] [AddCommMonoid N]
   [Module k N] [Module Aᵐᵒᵖ N] [SMulCommClass Aᵐᵒᵖ k N]

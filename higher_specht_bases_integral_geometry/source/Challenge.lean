@@ -88,6 +88,15 @@ end TauCeti
 section DualOperator
 namespace TauCeti
 
+theorem dualScalarComm (k : Type u) [CommSemiring k] : SMulCommClass k k k :=
+  ⟨fun a b x => mul_left_comm a b x⟩
+
+abbrev dualScalarModule (k : Type u) (N : Type w) [CommSemiring k] [AddCommMonoid N]
+    [Module k N] : Module k (Module.Dual k N) :=
+  @LinearMap.module k k k N k _ _ _ _ _ _ (RingHom.id k) _ _ (dualScalarComm k)
+
+attribute [local instance 1200] dualScalarModule
+
 variable (k : Type u) (N : Type w) {A : Type v} [CommSemiring k] [Semiring A] [AddCommMonoid N]
   [Module k N] [Module Aᵐᵒᵖ N] [SMulCommClass Aᵐᵒᵖ k N]
 
@@ -108,6 +117,9 @@ def dualRightAction : A →+* Module.End k (Module.Dual k N) where
 end TauCeti
 
 end DualOperator
+
+
+universe palomarIntegralU
 
 namespace HigherSpecht
 open Finset MvPolynomial Module
@@ -150,7 +162,7 @@ attribute [instance 1200] untruncatedIdeal_isTwoSided
 end PolynomialDefinitions
 
 /-- Literal source definition of UntruncatedRing. -/
-abbrev UntruncatedRing (R : Type*) [CommRing R] (n : ℕ) (μ : YoungDiagram) :=
+abbrev UntruncatedRing (R : Type palomarIntegralU) [CommRing R] (n : ℕ) (μ : YoungDiagram) :=
   PolynomialRing n R ⧸ untruncatedIdeal R n μ
 
 def elementaryParameterClasses (K : Type*) [CommRing K] (n : ℕ) (lam : YoungDiagram) :
@@ -174,8 +186,11 @@ def IsSpecifiedBasis {R V ι : Type*} [CommRing R] [AddCommGroup V] [Module R V]
 section Staircases
 variable {n : ℕ} {μ : YoungDiagram}
 
+theorem integralColumnMem (mu : YoungDiagram) (j : ℕ) (i : Fin (mu.colLen j)) :
+    (i.val, j) ∈ mu := YoungDiagram.mem_iff_lt_colLen.mpr i.isLt
+
 def columnEmbedding (U : ↥μ.cells ↪ Fin n) (j : ℕ) : Fin (μ.colLen j) ↪ Fin n where
-  toFun i := U ⟨(i.val, j), YoungDiagram.mem_iff_lt_colLen.mpr i.isLt⟩
+  toFun i := U ⟨(i.val, j), integralColumnMem μ j i⟩
   inj' i l h := by
     have hi := congrArg (fun c : ↥μ.cells => c.val.1) (U.injective h)
     exact Fin.ext hi
@@ -218,7 +233,7 @@ def adjoinOnes (μ : YoungDiagram) (m : ℕ) : YoungDiagram where
 abbrev SpecialFiberMonomialIndex (n : ℕ) (lam : YoungDiagram) :=
   UntruncatedStaircaseExponents n (adjoinOnes lam (n - lam.card))
 
-def parameterMonomialClass (R : Type*) [CommRing R] (n : ℕ) (lam : YoungDiagram)
+def parameterMonomialClass (R : Type palomarIntegralU) [CommRing R] (n : ℕ) (lam : YoungDiagram)
     (a : Fin n →₀ ℕ) : UntruncatedRing R n lam :=
   Ideal.Quotient.mk (untruncatedIdeal R n lam) (MvPolynomial.monomial a 1)
 
@@ -334,15 +349,23 @@ def RelativeDual := Module.Dual B A
 
 namespace RelativeDual
 
-instance : AddCommGroup (RelativeDual B A) :=
-  inferInstanceAs (AddCommGroup (Module.Dual B A))
+attribute [local instance 1200] TauCeti.dualScalarModule
 
-instance : Module B (RelativeDual B A) :=
-  inferInstanceAs (Module B (Module.Dual B A))
+abbrev instAddCommGroup : AddCommGroup (RelativeDual B A) :=
+  @LinearMap.addCommGroup B B A B _ _ _ _ _ _ (RingHom.id B)
 
-instance : Module A (RelativeDual B A) :=
+attribute [instance] instAddCommGroup
+
+abbrev instModule : Module B (RelativeDual B A) :=
+  TauCeti.dualScalarModule B A
+
+attribute [instance] instModule
+
+abbrev instModule_1 : Module A (RelativeDual B A) :=
   show Module A (Module.Dual B A) from
     Module.compHom (Module.Dual B A) (TauCeti.dualRightAction B A)
+
+attribute [instance] instModule_1
 
 def toLinearMap (f : RelativeDual B A) : Module.Dual B A := f
 

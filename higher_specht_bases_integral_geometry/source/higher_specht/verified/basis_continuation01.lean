@@ -1905,8 +1905,11 @@ namespace HigherSpecht
 
 variable {R : Type*} [CommRing R] {n : ℕ} {μ : YoungDiagram}
 
+theorem integralColumnMem (mu : YoungDiagram) (j : ℕ) (i : Fin (mu.colLen j)) :
+    (i.val, j) ∈ mu := YoungDiagram.mem_iff_lt_colLen.mpr i.isLt
+
 def columnEmbedding (U : ↥μ.cells ↪ Fin n) (j : ℕ) : Fin (μ.colLen j) ↪ Fin n where
-  toFun i := U ⟨(i.val, j), YoungDiagram.mem_iff_lt_colLen.mpr i.isLt⟩
+  toFun i := U ⟨(i.val, j), integralColumnMem μ j i⟩
   inj' i l h := by
     have hi := congrArg (fun c : ↥μ.cells => c.val.1) (U.injective h)
     exact Fin.ext hi

@@ -17,6 +17,9 @@ public import tau_ceti.combinatorics.young.rsk
 /- Generated ordinary proof stage. See audit/staged_specht_basis_batched/BasisRemainder01/manifest.json. -/
 
 @[expose] public section
+universe palomarIntegralU
+
+
 
 section CanonicalSource0
 /- Source: HigherSpecht/LascouxKnuthReflections.lean -/
@@ -2032,7 +2035,7 @@ def griffinIdeal (R : Type*) [CommRing R] (n : ℕ) (μ : YoungDiagram) (s : ℕ
 def springerIdeal (R : Type*) [CommRing R] (μ : YoungDiagram) :
     Ideal (PolynomialRing μ.card R) := untruncatedIdeal R μ.card μ
 
-abbrev UntruncatedRing (R : Type*) [CommRing R] (n : ℕ) (μ : YoungDiagram) :=
+abbrev UntruncatedRing (R : Type palomarIntegralU) [CommRing R] (n : ℕ) (μ : YoungDiagram) :=
   PolynomialRing n R ⧸ untruncatedIdeal R n μ
 
 abbrev GriffinRing (R : Type*) [CommRing R] (n : ℕ) (μ : YoungDiagram) (s : ℕ) :=

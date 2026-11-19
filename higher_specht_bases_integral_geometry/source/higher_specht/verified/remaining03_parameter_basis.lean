@@ -13,6 +13,9 @@ public import Mathlib.RingTheory.PowerSeries.WellKnown
 /- Generated ordinary source-preserving proof stage. See audit/staged_specht_remaining/Remaining03ParameterBasis/manifest.json. -/
 
 @[expose] public section
+universe palomarIntegralU
+
+
 
 section CanonicalSource44
 /- Source: HigherSpecht/SpringerDimension.lean -/
@@ -875,7 +878,7 @@ theorem untruncatedCoefficientMap_smul (phi : R →+* S)
   rw [Algebra.smul_def, map_mul, untruncatedCoefficientMap_algebraMap,
     Algebra.smul_def]
 
-def parameterMonomialClass (R : Type*) [CommRing R] (n : ℕ) (lam : YoungDiagram)
+def parameterMonomialClass (R : Type palomarIntegralU) [CommRing R] (n : ℕ) (lam : YoungDiagram)
     (a : Fin n →₀ ℕ) : UntruncatedRing R n lam :=
   Ideal.Quotient.mk (untruncatedIdeal R n lam) (MvPolynomial.monomial a 1)
 
