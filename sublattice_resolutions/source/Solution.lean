@@ -2462,7 +2462,11 @@ instance homologyModule (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) :
   Submodule.Quotient.module (R := k) (M := cycles I q p) (boundaries I q p)
 /-- The dimension of the genuine ordinary integer Koszul homology strand. -/
 def betti (I : Ideal (MvPolynomial V k)) (q : ℤ) (p : ℕ) : ℕ :=
-  Module.finrank k ((cycles I q p) ⧸ boundaries I q p)
+  @Module.finrank k _ _
+    (@Submodule.Quotient.addCommMonoid k (cycles I q p) _ (cyclesAddCommGroup I q p) _
+      (boundaries I q p))
+    (@Submodule.Quotient.module k (cycles I q p) _ (cyclesAddCommGroup I q p) _
+      (boundaries I q p))
 end PalomarSublattice.OrdinaryQuotientKoszul
 
 /- Actual chain-level bridge for the ordinary quotient strands. Draft only;
@@ -3029,10 +3033,11 @@ theorem corollary104_characteristic_excess (hE : finiteLatticeClosed n E) :
       let a := (supportEquiv n E).symm s
       have h := FourPapers.Sublattice.integerOrdinaryQuotientBetti_charZero_le Q K
         (FourPapers.Sublattice.strictSupportCoefficientFamily a) q p
-      rw [← FineKoszul.ordinaryQuotientBetti_eq_source,
-        ← FineKoszul.ordinaryQuotientBetti_eq_source,
-        supportCoefficientIdeal_eq_source, supportCoefficientIdeal_eq_source] at h
-      simpa only [(supportEquiv n E).apply_symm_apply s] using h)
+      rw [← FineKoszul.ordinaryQuotientBetti_eq_source (k := Q),
+        ← FineKoszul.ordinaryQuotientBetti_eq_source (k := K),
+        supportCoefficientIdeal_eq_source (k := Q) n,
+        supportCoefficientIdeal_eq_source (k := K) n] at h
+      simpa only [a, (supportEquiv n E).apply_symm_apply s] using h)
   · intro q p t
     unfold characteristicExcess normalizedBettiSequence
     rw [corollary52_integer_grouped_expansion n (k := K) hE q p (t+1) (by omega),
@@ -3069,7 +3074,17 @@ theorem corollary104_field_independence (hE : finiteLatticeClosed n E) :
     @MonomialOrder.degLex (FiniteVariable.{u} n) (finiteVariableLinearOrder n)
       (@Finite.to_wellFoundedGT (FiniteVariable.{u} n) (inferInstance)
         (finiteVariableLinearOrder n).toPreorder)
-  unfold IntegerPowerBettiFieldIndependent
-  simp only [transfer_monomial_bridge n o]
+  have h (m : ℕ) : IntegerPowerBettiFieldIndependent n (E := E) m ↔
+      FourPapers.Sublattice.IntegerPowerBettiFieldIndependent (E := E) o m := by
+    constructor
+    · intro h F L _ _ q p
+      rw [← transfer_monomial_bridge (k := F) n o E m p q,
+        ← transfer_monomial_bridge (k := L) n o E m p q]
+      exact h F L q p
+    · intro h F L _ _ q p
+      rw [transfer_monomial_bridge (k := F) n o E m p q,
+        transfer_monomial_bridge (k := L) n o E m p q]
+      exact h F L q p
+  simp only [h]
   exact FourPapers.Sublattice.corollary104_integer_global_exists_iff_all_powers o hE
 end PalomarSublattice
