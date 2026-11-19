@@ -985,15 +985,15 @@ theorem wordBoxBounds_disjSum_cast (d : PairedData (K := R) (n := n))
   unfold pairedBound
   omega
 
-def pairedIndexToPower (d : PairedData (K := R) (n := n)) (z : PairedIndex d) :
-    PairedPowerIndex d.r d.u d.v d.s := by
-  let W := z.val.1.1.disjSum z.val.1.2
-  have hW : ValidWord W := (validWord_disjSum_iff _ _).mpr z.property.1
-  refine ⟨W,⟨⟨Finsupp.equivFunOnFinite.symm z.val.2,?_⟩,hW⟩⟩
-  intro i
-  have hi := z.property.2 i
-  rw [← wordBoxBounds_disjSum_cast d _ _ hW i] at hi
+/-- Actual admissibility of the paired index's two exterior supports. -/
+theorem pairedIndexValid (d : PairedData (K := R) (n := n)) (z : PairedIndex d) : ValidWord (z.val.1.1.disjSum z.val.1.2) := (validWord_disjSum_iff _ _).mpr z.property.1
+/-- Exact paired power-box inequalities for the unchanged coordinate function. -/
+theorem pairedIndexPowerBounds (d : PairedData (K := R) (n := n)) (z : PairedIndex d) : ∀ i, Finsupp.equivFunOnFinite.symm z.val.2 i < wordBoxBounds d.r d.u d.v d.s (z.val.1.1.disjSum z.val.1.2) i := by
+  intro i; have hi := z.property.2 i
+  rw [← wordBoxBounds_disjSum_cast d _ _ (pairedIndexValid d z) i] at hi
   exact_mod_cast hi
+def pairedIndexToPower (d : PairedData (K := R) (n := n)) (z : PairedIndex d) : PairedPowerIndex d.r d.u d.v d.s :=
+  ⟨z.val.1.1.disjSum z.val.1.2,⟨⟨Finsupp.equivFunOnFinite.symm z.val.2,pairedIndexPowerBounds d z⟩,pairedIndexValid d z⟩⟩
 
 def pairedPowerToIndex (d : PairedData (K := R) (n := n))
     (z : PairedPowerIndex d.r d.u d.v d.s) : PairedIndex d := by
@@ -5540,20 +5540,22 @@ variable {R M Q I E : Type*} [CommRing R] [AddCommGroup M] [Module R M]
   [AddCommGroup Q] [Module R Q]
   (b : Module.Basis I R M) (w : I → ℕ)
 
+/-- Zero is homogeneous in every literal basis degree. -/
+theorem homogeneousZero (d : ℕ) : Homogeneous b w d (0 : M) := by intro i hi; exact (hi (by simp)).elim
+/-- Addition preserves the exact basis degree. -/
+theorem homogeneousAdd {d : ℕ} {x y : M} (hx : Homogeneous b w d x) (hy : Homogeneous b w d y) : Homogeneous b w d (x+y) := by
+  intro i hi
+  by_cases hxi : PalomarFermion.coordinates b x i=0
+  · apply hy i; simpa only [map_add,Finsupp.add_apply,hxi,zero_add] using hi
+  · exact hx i hxi
+/-- Scalars preserve the exact basis degree. -/
+theorem homogeneousSmul {d : ℕ} {x : M} (hx : Homogeneous b w d x) (c : R) : Homogeneous b w d (c • x) := by
+  intro i hi; apply hx i; intro hz; exact hi (by simp only [map_smul,Finsupp.smul_apply,hz,smul_zero])
 def homogeneousPiece (d : ℕ) : Submodule R M where
   carrier := {x | Homogeneous b w d x}
-  zero_mem' := by intro i hi; exact (hi (by simp)).elim
-  add_mem' := by
-    intro x y hx hy i hi
-    by_cases hxi : b.repr x i=0
-    · apply hy i
-      simpa only [map_add,Finsupp.add_apply,hxi,zero_add] using hi
-    · exact hx i hxi
-  smul_mem' := by
-    intro c x hx i hi
-    apply hx i
-    intro hz
-    exact hi (by simp only [map_smul,Finsupp.smul_apply,hz,smul_zero])
+  zero_mem' := homogeneousZero b w d
+  add_mem' := homogeneousAdd b w
+  smul_mem' := fun c _ hx => homogeneousSmul b w hx c
 
 variable [Fintype E]
 
@@ -8830,16 +8832,15 @@ theorem strictWordBoxBounds_disjSum_cast (r : Fin n → ℕ) (T S : Finset (Fin 
     (strictWordBoxBounds r (T.disjSum S) i : ℤ)=(r i : ℤ)*height T S i := by
   rw [strictWordBoxBounds,Nat.cast_mul,wordHeight_arrival_cast T S h i]
 
-def strictIndexToPower (d : StrictData (K := R) (n := n)) (z : StrictIndex d) :
-    StrictPowerIndex d.r := by
-  let W := z.val.1.1.disjSum z.val.1.2
-  have hW : ValidWord W := (validWord_disjSum_iff _ _).mpr
-    (fun i ↦ le_trans (by decide : (0 : ℤ)≤1) (z.property.1 i))
-  refine ⟨W,⟨⟨Finsupp.equivFunOnFinite.symm z.val.2,?_⟩,hW⟩⟩
-  intro i
-  have hi := z.property.2 i
-  rw [←strictWordBoxBounds_disjSum_cast d.r _ _ hW i] at hi
+/-- Actual admissibility of the strict index's two exterior supports. -/
+theorem strictIndexValid (d : StrictData (K := R) (n := n)) (z : StrictIndex d) : ValidWord (z.val.1.1.disjSum z.val.1.2) := (validWord_disjSum_iff _ _).mpr (fun i => le_trans (by decide : (0 : ℤ)≤1) (z.property.1 i))
+/-- Exact strict power-box inequalities for the unchanged coordinate function. -/
+theorem strictIndexPowerBounds (d : StrictData (K := R) (n := n)) (z : StrictIndex d) : ∀ i, Finsupp.equivFunOnFinite.symm z.val.2 i < strictWordBoxBounds d.r (z.val.1.1.disjSum z.val.1.2) i := by
+  intro i; have hi := z.property.2 i
+  rw [← strictWordBoxBounds_disjSum_cast d.r _ _ (strictIndexValid d z) i] at hi
   exact_mod_cast hi
+def strictIndexToPower (d : StrictData (K := R) (n := n)) (z : StrictIndex d) : StrictPowerIndex d.r :=
+  ⟨z.val.1.1.disjSum z.val.1.2,⟨⟨Finsupp.equivFunOnFinite.symm z.val.2,strictIndexPowerBounds d z⟩,strictIndexValid d z⟩⟩
 
 def strictPowerToIndex (d : StrictData (K := R) (n := n)) (z : StrictPowerIndex d.r) :
     StrictIndex d := by

@@ -6085,18 +6085,21 @@ def boundPiece (d : ℕ) : Submodule R A where
 theorem boundPiece_mono : Monotone (boundPiece b w) :=
   fun _ _ h _ hx ↦ bound_mono b w h hx
 
+/-- Monotonicity of the actual quotient image pieces. -/
+theorem quotientPieceMonotone (q : A →ₐ[R] Q) : Monotone (fun d => (boundPiece b w d).map q.toLinearMap) := fun _ _ h => Submodule.map_mono (boundPiece_mono b w h)
+/-- The image filtration contains the unit in degree zero. -/
+theorem quotientPieceUnit (q : A →ₐ[R] Q) (hone : Homogeneous b w 0 (1 : A)) : (1 : Q) ∈ (boundPiece b w 0).map q.toLinearMap := ⟨1,homogeneous_bound b w hone,map_one q⟩
+/-- Products of actual quotient images have the sum of the filtration bounds. -/
+theorem quotientPieceProduct (q : A →ₐ[R] Q) (hmul : ∀ i j,Homogeneous b w (w i+w j) (b i*b j)) {i j : ℕ} {x y : Q} (hx : x ∈ (boundPiece b w i).map q.toLinearMap) (hy : y ∈ (boundPiece b w j).map q.toLinearMap) : x*y ∈ (boundPiece b w (i+j)).map q.toLinearMap := by
+  rcases hx with ⟨a,ha,rfl⟩; rcases hy with ⟨c,hc,rfl⟩
+  exact ⟨a*c,bound_mul b w hmul ha hc,map_mul q a c⟩
 /-- The actual quotient filtration is obtained from the ambient weighted
 monomial bounds by the original quotient algebra homomorphism. -/
-def quotientFiltration (q : A →ₐ[R] Q)
-    (hone : Homogeneous b w 0 (1 : A))
-    (hmul : ∀ i j,Homogeneous b w (w i+w j) (b i*b j)) :
-    FilteredAlgebra.Filtration R Q where
+def quotientFiltration (q : A →ₐ[R] Q) (hone : Homogeneous b w 0 (1 : A)) (hmul : ∀ i j,Homogeneous b w (w i+w j) (b i*b j)) : FilteredAlgebra.Filtration R Q where
   piece d := (boundPiece b w d).map q.toLinearMap
-  mono := fun _ _ h ↦ Submodule.map_mono (boundPiece_mono b w h)
-  one_mem := ⟨1,homogeneous_bound b w hone,map_one q⟩
-  mul_mem := by
-    rintro i j x y ⟨a,ha,rfl⟩ ⟨c,hc,rfl⟩
-    exact ⟨a*c,bound_mul b w hmul ha hc,map_mul q a c⟩
+  mono := quotientPieceMonotone b w q
+  one_mem := quotientPieceUnit b w q hone
+  mul_mem := quotientPieceProduct b w q hmul
 
 end PaperVerification.Fermion.BasisFiltered
 end

@@ -3163,11 +3163,8 @@ def extendNat (a : Fin n → ℕ) (j : ℕ) : ℕ :=
 
 /-- The four polynomial side lengths, with the incoming height as argument.
 These are exactly the four formulas of Theorem 1.1. -/
-def pairedBoxBound (r u v s h : ℕ) : Mark → ℕ
-  | .unmarked => r * (s + h)
-  | .theta => r * h + v
-  | .xi => r * h + u
-  | .double => r * h
+def pairedBoxBound (r u v s h : ℕ) : Mark → ℕ :=
+  Mark.rec (r * (s + h)) (r * h + v) (r * h + u) (r * h)
 
 theorem localBoundDegree_eq_weighted_box
     (r u v : Fin n → ℕ) (s h : ℕ) (m : Mark) (i : Fin n) :
@@ -7541,9 +7538,8 @@ theorem pairedMoment_eq_tensor_sum (β : Fin n → K)
         (Pi.basisFun K (OddIndex n)).ExteriorAlgebra (pairedMomentWord kind i) := by
   simp only [moment,pairedCoefficients_eq_tensor,TensorProduct.smul_tmul',smul_eq_mul]
 
-def pairedOddWeight (d : PairedData (K := K) (n := n)) : OddIndex n → ℕ
-  | .inl i => d.u i * coveringWeight d.r i
-  | .inr i => d.v i * coveringWeight d.r i
+def pairedOddWeight (d : PairedData (K := K) (n := n)) : OddIndex n → ℕ :=
+  Sum.elim (fun i => d.u i * coveringWeight d.r i) (fun i => d.v i * coveringWeight d.r i)
 
 def pairedCoefficientDegree (d : PairedData (K := K) (n := n)) : MomentKind → Fin n → ℕ
   | .polynomial,_ => d.s * ∏ j, d.r j

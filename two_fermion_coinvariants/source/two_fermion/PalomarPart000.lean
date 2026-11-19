@@ -504,6 +504,32 @@ set_option Elab.async true
 
 set_option linter.all false
 
+namespace PalomarFermion
+universe uDictionary
+/-- Exact identity inverse-pair law at the ring dictionary. -/
+public theorem coefficientIdentityInvPair {R : Type uDictionary} [CommRing R] : RingHomInvPair (RingHom.id R) (RingHom.id R) := by infer_instance
+/-- Exact identity inverse-pair law at the commutative-semiring dictionary. -/
+public theorem coefficientCommutativeIdentityInvPair {R : Type uDictionary} [hR : CommRing R] : @RingHomInvPair R R hR.toCommSemiring.toSemiring hR.toCommSemiring.toSemiring (@RingHom.id R hR.toCommSemiring.toSemiring.toNonAssocSemiring) (@RingHom.id R hR.toCommSemiring.toSemiring.toNonAssocSemiring) := by infer_instance
+/-- Exact identity-surjectivity law at the ring dictionary. -/
+public theorem coefficientIdentitySurjective {R : Type uDictionary} [CommRing R] : RingHomSurjective (RingHom.id R) := by infer_instance
+/-- Exact identity-surjectivity law at the commutative-semiring dictionary. -/
+public theorem coefficientCommutativeIdentitySurjective {R : Type uDictionary} [hR : CommRing R] : @RingHomSurjective R R hR.toCommSemiring.toSemiring hR.toCommSemiring.toSemiring (@RingHom.id R hR.toCommSemiring.toSemiring.toNonAssocSemiring) := by infer_instance
+/-- The primitive finite set of polynomial indices. -/
+public theorem finiteCoordinates (n : ℕ) : Finite (Fin n) := by infer_instance
+/-- The primitive finite set of the two separately labeled exterior families. -/
+public theorem finiteOddCoordinates (n : ℕ) : Finite (Fin n ⊕ Fin n) := by infer_instance
+attribute [instance 2000] coefficientIdentityInvPair coefficientIdentitySurjective
+attribute [instance 2100] coefficientCommutativeIdentityInvPair coefficientCommutativeIdentitySurjective finiteCoordinates finiteOddCoordinates
+universe uCoordinateModule uCoordinateIndex
+/-- The same exact basis coordinates, with both identity inverse-pair projection arguments explicit. -/
+public abbrev coordinates {R : Type uDictionary} [CommRing R] {M : Type uCoordinateModule} {I : Type uCoordinateIndex} [AddCommGroup M] [Module R M] (b : Module.Basis I R M) : M →ₗ[R] (I →₀ R) :=
+  @LinearEquiv.toLinearMap R R _ _ (RingHom.id R) (RingHom.id R)
+    (coefficientCommutativeIdentityInvPair (R := R)) (coefficientCommutativeIdentityInvPair (R := R))
+    M (I →₀ R) _ _ _ _ b.repr
+/-- Pointwise equality with the original imported basis coordinate accessor. -/
+@[simp] public theorem coordinates_apply {R : Type uDictionary} [CommRing R] {M : Type uCoordinateModule} {I : Type uCoordinateIndex} [AddCommGroup M] [Module R M] (b : Module.Basis I R M) (x : M) : coordinates b x = b.repr x := rfl
+end PalomarFermion
+
 section BatchFile_0
 /- Literal source: Audit/FermionAuditImports.lean -/
 
@@ -844,9 +870,9 @@ def component (d : ℕ) : M →ₗ[R] M where
   simp only [component,LinearMap.coe_mk,AddHom.coe_mk,LinearEquiv.apply_symm_apply,
     Finsupp.filter_apply]
 
-def Bound (d : ℕ) (x : M) : Prop := ∀ i, b.repr x i ≠ 0 → w i ≤ d
+def Bound (d : ℕ) (x : M) : Prop := ∀ i, PalomarFermion.coordinates b x i ≠ 0 → w i ≤ d
 
-def Homogeneous (d : ℕ) (x : M) : Prop := ∀ i, b.repr x i ≠ 0 → w i = d
+def Homogeneous (d : ℕ) (x : M) : Prop := ∀ i, PalomarFermion.coordinates b x i ≠ 0 → w i = d
 
 def HasTop (d : ℕ) (x y : M) : Prop := Bound b w d x ∧ component b w d x = y
 
@@ -856,6 +882,9 @@ theorem bound_zero (d : ℕ) : Bound b w d 0 := by
 
 theorem bound_add {d : ℕ} {x y : M} (hx : Bound b w d x) (hy : Bound b w d y) :
     Bound b w d (x+y) := by
+  change ∀ i, b.repr x i ≠ 0 → w i ≤ d at hx
+  change ∀ i, b.repr y i ≠ 0 → w i ≤ d at hy
+  change ∀ i, b.repr (x+y) i ≠ 0 → w i ≤ d
   intro i hi
   by_cases hxi : b.repr x i = 0
   · apply hy i
@@ -864,6 +893,9 @@ theorem bound_add {d : ℕ} {x y : M} (hx : Bound b w d x) (hy : Bound b w d y) 
 
 theorem bound_sub {d : ℕ} {x y : M} (hx : Bound b w d x) (hy : Bound b w d y) :
     Bound b w d (x-y) := by
+  change ∀ i, b.repr x i ≠ 0 → w i ≤ d at hx
+  change ∀ i, b.repr y i ≠ 0 → w i ≤ d at hy
+  change ∀ i, b.repr (x-y) i ≠ 0 → w i ≤ d
   intro i hi
   by_cases hxi : b.repr x i = 0
   · apply hy i
@@ -1763,6 +1795,16 @@ abbrev OddIndex := Fin n ⊕ Fin n
 
 /-- The free module on the exterior generators. -/
 abbrev OddModule := OddIndex n → K
+/-- Exact polynomial-factor scalar commutation at primitive K,n. -/
+theorem polynomialSelfCommute : SMulCommClass K (PolynomialRing K n) (PolynomialRing K n) := by infer_instance
+/-- Exact polynomial-factor scalar tower at primitive K,n. -/
+theorem polynomialSelfTower : IsScalarTower K (PolynomialRing K n) (PolynomialRing K n) := by infer_instance
+/-- Exact exterior-factor scalar commutation at primitive K,n. -/
+theorem exteriorSelfCommute : SMulCommClass K (ExteriorAlgebra K (OddModule K n)) (ExteriorAlgebra K (OddModule K n)) := by infer_instance
+/-- Exact exterior-factor scalar tower at primitive K,n. -/
+theorem exteriorSelfTower : IsScalarTower K (ExteriorAlgebra K (OddModule K n)) (ExteriorAlgebra K (OddModule K n)) := by infer_instance
+attribute [instance 2100] polynomialSelfCommute polynomialSelfTower exteriorSelfCommute exteriorSelfTower
+
 
 /-- The ambient algebra `K[x] ⊗ Λ(θ, ξ)`. -/
 abbrev SuperRing := PolynomialRing K n ⊗[K] ExteriorAlgebra K (OddModule K n)

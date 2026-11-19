@@ -1,14 +1,13 @@
 version: v0.4
 project:
   name: Monomial bases for two-fermion coinvariants
-  description: Literal ordered monomial classes form bases of the paired and strict
-    weighted two-fermion moment quotients over every commutative coefficient ring
-    with the stated factorial and nonempty weight-subset units. The polynomial inputs
-    retain arbitrary coupled lower terms satisfying the exact highest-weight hypotheses.
-    The quotients have the printed finite free ranks, including over the zero ring.
-    The complete original Theorems1.1 and1.2 also give their actual associated graded
-    and exterior-Hilbert pieces, with the genuine paired homogenized finite-free flat
-    family and its zero and one algebra fibers.
+  description: Literal ordered monomial classes form bases of the paired and strict weighted
+    two-fermion moment quotients over every commutative coefficient ring with the stated factorial
+    and nonempty weight-subset units. The polynomial inputs retain arbitrary coupled lower terms
+    satisfying the exact highest-weight hypotheses. The quotients have the printed finite free
+    ranks, including over the zero ring. The complete original Theorems1.1 and1.2 also give
+    their actual associated graded and exterior-Hilbert pieces, with the genuine paired homogenized
+    finite-free flat family and its zero and one algebra fibers.
   authors:
   - Caius Folkerts
   responsible_maintainers:
@@ -30,40 +29,39 @@ sources:
   author_endorsement: participated
   url: https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf
   note: 'Exact included paper SHA-256: c4a3dd3f2e102d6b4bcc8d50c58ea8007c412cea8d762a8fbb5b105db09bc19a.
-    Scope and declaration locations are recorded in map.json; novelty is not independently
-    established.'
+    Scope and declaration locations are recorded in map.json; novelty is not independently established.'
 automation:
   methods:
   - method: agent
     tool_setup: OpenAI Codex
-    notes: Packaging and literal extraction are agent-assisted. Full936-line principal
-      interface preserves all40 selected statements, including actual associated graded/Hilbert/paired
-      flat family and both fibers. Original Source/Solution built in44383823108. Exact
-      compiled-type evidence identifies a second imported canonical module forwarding
-      instance; instance search now selects the original AddMonoidAlgebra scalar dictionary.
-      Current full Comparator/kernel replay remains pending. The all40 diagnostic
-      stopped after34 summaries at a Lean heap limit and is not represented as complete.
+    notes: Agent-assisted extraction and module migration preserve the full principal1.1/1.2
+      statements, coupled terms and all-ring hypotheses. The whole measured raw comparison found
+      all40 theorem types/universes equal and57 dependent proof/matcher discrepancies. Exact
+      primitive dictionary propositions, constructor closure propositions and eliminators normalize
+      those artifacts without changing values or hypotheses; all25 new propositions and original
+      coordinate calculations passed canonical run44481634442. Current full Source/Solution/Comparator/kernel
+      validation remains pending.
   - method: other
     tool_setup: Historical AI assistance reported in the included paper
     notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing
-      its proofs. The exact model roles and extent of historical Lean automation have
-      not been reconstructed from the snapshot.
+      its proofs. The exact model roles and extent of historical Lean automation have not been
+      reconstructed from the snapshot.
 review:
   status: unchecked
-  notes: Paper/README/source mapping inspected by the preparation agent. Solution
-    build, Comparator, independent kernel replay and expert review remain incomplete.
-    No Palomar review or registration is claimed.
+  notes: Exact complete principal mapping and provenance retained. All40 previous statement
+    headers are unchanged; the independent972-line interface adds25 precise semantic constructor/dictionary
+    obligations. Actual ring, index, grading, quotient and flat-family definitions remain substantive.
+    See packaging/measured-semantic-installation.json for the measured causes and proof-only/computationally
+    equal changes; rejected toFun experiment was never installed.
 scope:
   known_gaps:
-  - Principal local-structure and equivariant/character results in Sections7–8 remain
-    unextracted.
-  - Expanded actual associated-graded, exterior-Hilbert, homogenized flat-family/fiber
-    interfaces passed canonical Challenge elaboration; Source/Solution/Comparator
-    replay remains unverified.
-  notes: The submitted project contains the substantive historical proof development
-    copied from the pinned source snapshot; this is not a thin wrapper. Historical
-    upstream dependencies and license notices are retained. See map.json for exact
-    proposed selections and unresolved source mapping.
-  current_selection: Full original Theorems1.1 and1.2, including actual associated
-    graded, Hilbert pieces, genuine paired homogenized flat family and both algebra
-    fibers, retaining all4 original basis/free-rank targets.
+  - Principal local-structure and equivariant/character results in Sections7–8 remain unextracted.
+  - Expanded actual associated-graded, exterior-Hilbert, homogenized flat-family/fiber interfaces
+    passed canonical Challenge elaboration; Source/Solution/Comparator replay remains unverified.
+  notes: The submitted project contains the substantive historical proof development copied
+    from the pinned source snapshot; this is not a thin wrapper. Historical upstream dependencies
+    and license notices are retained. See map.json for exact proposed selections and unresolved
+    source mapping.
+  current_selection: Full original Theorems1.1 and1.2, including actual associated graded, Hilbert
+    pieces, genuine paired homogenized flat family and both algebra fibers, retaining all4 original
+    basis/free-rank targets.

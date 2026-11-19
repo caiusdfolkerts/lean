@@ -1,0 +1,41 @@
+{
+  "status": "validated_actual_challenge-elaborated",
+  "checked_utc": "2026-11-19T07:47:59.272976+00:00",
+  "owned_bundle_folder": "reports/two_fermion_coinvariants/measured-semantic-smoke-r4",
+  "workflow_run": "44481634442",
+  "case": "fermion_measured_semantic_repair_r4",
+  "source_commit": "5a93a3c714161b3757210bf72a6aca85f9ba3a98",
+  "artifact_id": 14508448781,
+  "artifact_zip_digest_matches_GitHub_metadata": true,
+  "input_script_log_dependency_hashes_match_frozen_case": true,
+  "challenge_sha256": "4c7f7067b332b303e0c54a5249d97cb4c0dbbeaad2feb306ef58dfbe431fb114",
+  "receipt_sha256": "85bdcc06b384e6ac31debb123a4593652f2cda5fc99d77a3191c75cb6da2d08f",
+  "bounded_log_sha256": "1c919efa9b4af195c50cf7040e62445ba8a969a0e8ec0482352aa8d239fc0c77",
+  "actual_elaboration": {
+    "phase": "challenge-elaboration",
+    "command": [
+      "elan",
+      "run",
+      "leanprover/lean4:v4.36.0-rc2",
+      "lake",
+      "--keep-toolchain",
+      "env",
+      "lean",
+      "--trust=0",
+      "-j1",
+      "-M8192",
+      "-DElab.async=false",
+      "-Ddebug.skipKernelTC=false",
+      "--root=/home/runner/work/_temp/challenge-work/workspace",
+      "-o",
+      "/home/runner/work/_temp/challenge-work/workspace/diagnostic-output/Challenge.olean",
+      "/home/runner/work/_temp/challenge-work/workspace/Challenge.lean"
+    ],
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 10.585,
+    "output_bytes": 5693,
+    "output_sha256": "1284b211ae354ef238e7327bfc47d17a6645f47c81e0c0dcf207a2147ffeca7a"
+  },
+  "no_full_source_solution_comparator_verdict": true
+}

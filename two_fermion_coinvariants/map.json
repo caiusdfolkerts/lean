@@ -4,7 +4,7 @@
   "baseline_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
   "paper_sha256": "c4a3dd3f2e102d6b4bcc8d50c58ea8007c412cea8d762a8fbb5b105db09bc19a",
   "one_entry_per_paper": true,
-  "status": "measured_second_forwarder_repair_full_preflight_pending",
+  "status": "complete_main1_1_main1_2_measured_raw_class_repair_canonical_passed_full_preflight_pending",
   "source_selection": [
     "paper.pdf",
     "README.md",
@@ -1008,11 +1008,11 @@
   ],
   "checks": {
     "source_copy": "complete including retained reading files and licenses",
-    "build": "not_run_for_current_hash",
-    "comparator": "not_run_for_current_hash",
-    "nanoda": "not_run_for_current_hash",
+    "build": "parentfull_Source_Solution_passed_current_measuredbody_repair_pending",
+    "comparator": "parentall40_statementtypes_andlevels_equal_whole57_rawfindings_repaired_pending",
+    "nanoda": "pending_current_candidate",
     "editorial_review": "not_run_for_current_hash",
-    "challenge_elaboration": "not_run_for_current_hash"
+    "challenge_elaboration": "passed44481634442 exact972 mathematical interface,25 genuine support proofs,original bound_add and4 controls; comments omitted only in canonical probe"
   },
   "current_selection": "Full original Theorems1.1 and1.2, including actual associated graded, Hilbert pieces, genuine paired homogenized flat family and both algebra fibers, retaining all4 original basis/free-rank targets.",
   "selected_wrapper_provenance": [
@@ -1031,10 +1031,71 @@
     "challenge_module": "Challenge",
     "solution_module": "Solution",
     "theorem_names": [
+      "PaperVerification.Fermion.BasisFiltered.bound_zero",
+      "PaperVerification.Fermion.BasisFiltered.bound_add",
+      "PaperVerification.Fermion.BasisFiltered.bound_smul",
+      "PaperVerification.Fermion.BasisFiltered.homogeneous_bound",
+      "PaperVerification.Fermion.Exterior.modeRank_injective",
+      "PaperVerification.Fermion.Exterior.interleavedOddRank_injective",
+      "PaperVerification.Fermion.HasHighestPower.map",
+      "PaperVerification.Fermion.validWord_disjSum_iff",
+      "PaperVerification.Fermion.wordBoxBounds_disjSum_cast",
+      "PaperVerification.Fermion.pairedPowerIndex_ext",
       "PaperVerification.Fermion.paired_basis_claim",
+      "PaperVerification.Fermion.weightedHomogenize_hasHighestPower",
+      "PaperVerification.Fermion.strictWord_of_polynomialIndex",
+      "PaperVerification.Fermion.wordHeight_arrival_cast",
+      "PaperVerification.Fermion.strictWordBoxBounds_disjSum_cast",
+      "PaperVerification.Fermion.strictPowerIndex_ext",
       "PaperVerification.Fermion.strict_basis_claim",
+      "PaperVerification.Fermion.FilteredAlgebra.mul_mem_filtration",
+      "PaperVerification.Fermion.FilteredAlgebra.one_mem_filtration",
+      "PaperVerification.Fermion.FilteredAlgebra.algebraMap_mem_filtration",
+      "PaperVerification.Fermion.FilteredAlgebra.gradedPreMul_mem_ker_left",
+      "PaperVerification.Fermion.FilteredAlgebra.gradedPreMul_mem_ker_right",
+      "PaperVerification.Fermion.FilteredAlgebra.gradedMul_assoc",
+      "PaperVerification.Fermion.FilteredAlgebra.gradedAlgebraMap\u2080_one",
+      "PaperVerification.Fermion.FilteredAlgebra.gradedOne_mul",
+      "PaperVerification.Fermion.FilteredAlgebra.gradedMul_one",
+      "PaperVerification.Fermion.FilteredAlgebra.gradedAlgebraMap\u2080_mul",
+      "PaperVerification.Fermion.FilteredAlgebra.gradedAlgebraMap\u2080_mul_algebraMap\u2080",
+      "PaperVerification.Fermion.FilteredAlgebra.gradedAlgebraMap\u2080_commutes",
+      "PaperVerification.Fermion.BasisFiltered.bound_mul",
+      "PaperVerification.Fermion.BasisFiltered.boundPiece_mono",
+      "PaperVerification.Fermion.super_weighted_one_homogeneous",
+      "PaperVerification.Fermion.super_weighted_basis_mul_homogeneous",
+      "PaperVerification.Fermion.theorem_1_1",
+      "PaperVerification.Fermion.theorem_1_1_rank",
+      "PaperVerification.Fermion.theorem_1_2",
+      "PaperVerification.Fermion.theorem_1_2_rank",
       "PalomarFermion.pairedFreeRank",
-      "PalomarFermion.strictFreeRank"
+      "PalomarFermion.strictFreeRank",
+      "PaperVerification.Fermion.FilteredAlgebra.mem_previousRestricted_iff",
+      "PaperVerification.Fermion.BasisFiltered.homogeneousZero",
+      "PaperVerification.Fermion.BasisFiltered.homogeneousAdd",
+      "PaperVerification.Fermion.BasisFiltered.homogeneousSmul",
+      "PaperVerification.Fermion.BasisFiltered.quotientPieceMonotone",
+      "PaperVerification.Fermion.BasisFiltered.quotientPieceUnit",
+      "PaperVerification.Fermion.BasisFiltered.quotientPieceProduct",
+      "PaperVerification.Fermion.Newton.rectangleForwardBounds",
+      "PaperVerification.Fermion.Newton.rectangleBackwardBounds",
+      "PaperVerification.Fermion.Newton.rectangleLeftInverse",
+      "PaperVerification.Fermion.Newton.rectangleRightInverse",
+      "PaperVerification.Fermion.pairedIndexValid",
+      "PaperVerification.Fermion.pairedIndexPowerBounds",
+      "PaperVerification.Fermion.strictIndexValid",
+      "PaperVerification.Fermion.strictIndexPowerBounds",
+      "PalomarFermion.coefficientIdentityInvPair",
+      "PalomarFermion.coefficientCommutativeIdentityInvPair",
+      "PalomarFermion.coefficientIdentitySurjective",
+      "PalomarFermion.coefficientCommutativeIdentitySurjective",
+      "PalomarFermion.finiteCoordinates",
+      "PalomarFermion.finiteOddCoordinates",
+      "PaperVerification.Fermion.polynomialSelfCommute",
+      "PaperVerification.Fermion.polynomialSelfTower",
+      "PaperVerification.Fermion.exteriorSelfCommute",
+      "PaperVerification.Fermion.exteriorSelfTower",
+      "PalomarFermion.coordinates_apply"
     ],
     "permitted_axioms": [
       "propext",
@@ -1044,8 +1105,10 @@
   },
   "challenge": {
     "path": "source/Challenge.lean",
-    "sha256": "fc734791e50d0e7bace8977438705b513f14a63723ded5d2356b55d8294ab831",
-    "lines": 936
+    "sha256": "58bb5cf959c219c82c840e8235e17b356f8720615ae0b8fc5b62828604cd7c55",
+    "lines": 972,
+    "bytes": 75026,
+    "validation": "canonical44481634442 full written types and25 genuine support proof controls"
   },
   "packaging_changes": [
     {
@@ -1303,5 +1366,103 @@
     "canonical_challenge_new_snapshot": "not_yet_run",
     "partial_diagnostic_not_complete_union": true,
     "full_preflight_pending": true
-  }
+  },
+  "measured_semantic_repair": {
+    "status": "installed_self_reviewed_measured_whole_class_repair_full_validation_pending",
+    "parent_commit": "fda3f4ddbde18d8ea13c0ce5c76f8af5cb57b3c6",
+    "parent_failed_run": 44461998078,
+    "actual_whole_raw_diagnostic": 44471268764,
+    "all40_parent_type_and_universe_lists_equal": true,
+    "actual_auxiliary_semantic_type_probe": 44477161915,
+    "canonical_genuine25_support_and_original_bound_add_controls_run": 44481634442,
+    "canonical_verification_sha256": "83e3a82b94b43f35d3f4fabfe17721a58c4f0d6539961b267c00e0a43a86e77a",
+    "all40_original_written_statement_headers_preserved": true,
+    "new_selected_support_count": 25,
+    "complete_selected_count": 65,
+    "semantic_models": "Original moment ideals, exact paired/strict index sets, actual exterior/associated-graded quotients and the genuine homogenized finite-free family with both actual fibers.",
+    "mathematical_change": false,
+    "actual_changes": "Primitive polynomial/exterior scalar-action and finite/identity-hom proofs given stable compared names before compound expected types. Three exact computational branches use eliminators. Actual rectangular/power-box coordinate maps and homogeneous/filtered submodules retain every value, inequality and carrier; proof fields call compared semantic propositions. Both imported inverse-pair projection arguments are explicit in the unchanged basis-coordinate map, with a genuine pointwise rfl bridge. Original bound_add/sub proof calculations explicitly change to their original coordinate predicates.",
+    "changed_original_declarations": [
+      "PaperVerification.Fermion.BasisFiltered.Bound",
+      "PaperVerification.Fermion.BasisFiltered.Homogeneous",
+      "PaperVerification.Fermion.BasisFiltered.bound_add",
+      "PaperVerification.Fermion.BasisFiltered.bound_sub",
+      "PaperVerification.Fermion.BasisFiltered.homogeneousPiece",
+      "PaperVerification.Fermion.BasisFiltered.quotientFiltration",
+      "PaperVerification.Fermion.Endpoint.pairedBoxBound",
+      "PaperVerification.Fermion.Exterior.interleavedOddRank",
+      "PaperVerification.Fermion.Newton.rectangleIndexEquiv",
+      "PaperVerification.Fermion.pairedIndexToPower",
+      "PaperVerification.Fermion.pairedOddWeight",
+      "PaperVerification.Fermion.strictIndexToPower"
+    ],
+    "added_source_declarations": [
+      "PalomarFermion.coefficientCommutativeIdentityInvPair",
+      "PalomarFermion.coefficientCommutativeIdentitySurjective",
+      "PalomarFermion.coefficientIdentityInvPair",
+      "PalomarFermion.coefficientIdentitySurjective",
+      "PalomarFermion.coordinates",
+      "PalomarFermion.coordinates_apply",
+      "PalomarFermion.finiteCoordinates",
+      "PalomarFermion.finiteOddCoordinates",
+      "PaperVerification.Fermion.BasisFiltered.homogeneousAdd",
+      "PaperVerification.Fermion.BasisFiltered.homogeneousSmul",
+      "PaperVerification.Fermion.BasisFiltered.homogeneousZero",
+      "PaperVerification.Fermion.BasisFiltered.quotientPieceMonotone",
+      "PaperVerification.Fermion.BasisFiltered.quotientPieceProduct",
+      "PaperVerification.Fermion.BasisFiltered.quotientPieceUnit",
+      "PaperVerification.Fermion.Newton.rectangleBackward",
+      "PaperVerification.Fermion.Newton.rectangleBackwardBounds",
+      "PaperVerification.Fermion.Newton.rectangleForward",
+      "PaperVerification.Fermion.Newton.rectangleForwardBounds",
+      "PaperVerification.Fermion.Newton.rectangleLeftInverse",
+      "PaperVerification.Fermion.Newton.rectangleRightInverse",
+      "PaperVerification.Fermion.exteriorSelfCommute",
+      "PaperVerification.Fermion.exteriorSelfTower",
+      "PaperVerification.Fermion.pairedIndexPowerBounds",
+      "PaperVerification.Fermion.pairedIndexValid",
+      "PaperVerification.Fermion.polynomialSelfCommute",
+      "PaperVerification.Fermion.polynomialSelfTower",
+      "PaperVerification.Fermion.strictIndexPowerBounds",
+      "PaperVerification.Fermion.strictIndexValid"
+    ],
+    "source_patch_files": [
+      {
+        "path": "source/two_fermion/PalomarPart000.lean",
+        "before_sha256": "bb946519a257f2fc6789ea0e9b422c07b3b90b618feebff78549345f9502ebcf",
+        "after_sha256": "b9c0af8644f8cb7b3de9a5321f3c392f6b6b9abb0d5319abb90c28831b610577"
+      },
+      {
+        "path": "source/two_fermion/PalomarPart003.lean",
+        "before_sha256": "84290395958f4ec9f573ad532c3e3cdb3dce7e0e2dc8c9fb22a5a3c8a3e88621",
+        "after_sha256": "d1b50dfb6921515570ecbf5302a3fb9490aaf3f66b5bcda668d1f24689206d80"
+      },
+      {
+        "path": "source/two_fermion/PalomarPart004.lean",
+        "before_sha256": "2eb35508ec149fdb26c76c1d636f1e26d8fc10844f01448ebd538134435aa89b",
+        "after_sha256": "24aa8d7de0f5ca34964ab08689076318a6f72cac228f2927b3fe2f34f33a9a9f"
+      },
+      {
+        "path": "source/two_fermion/PalomarPart005.lean",
+        "before_sha256": "6f66f2e07ff6c135dc1cb62f5962a423344456199ee1e0859e95675db1874266",
+        "after_sha256": "e1a0273db7e531c4fbec33856a07be0925ae13eefec87af4fbe154a34600e8c9"
+      },
+      {
+        "path": "source/two_fermion/PalomarPart009.lean",
+        "before_sha256": "842fcd043a33f2c460652c12770a264cbc8d9e582fe9605de989d7d0eb07a93a",
+        "after_sha256": "70f7437f44ea6ddcbe537fed66f4cbf09781451b3d5e89042d0ed315b8f1ce62"
+      }
+    ],
+    "rejected_probe_candidates": "Bare toFun projection r3 failed its pointwise control and was never installed; only validated toLinearMap accessor retained.",
+    "source_solution_comparator_independent_kernel": "pending_current_candidate"
+  },
+  "current_challenge_sha256": "58bb5cf959c219c82c840e8235e17b356f8720615ae0b8fc5b62828604cd7c55",
+  "current_independent_challenge": {
+    "path": "source/Challenge.lean",
+    "sha256": "58bb5cf959c219c82c840e8235e17b356f8720615ae0b8fc5b62828604cd7c55",
+    "lines": 972,
+    "bytes": 75026,
+    "validation": "canonical44481634442 full written types and25 genuine support proof controls"
+  },
+  "canonical_challenge_verification": "reports/two_fermion_coinvariants/challenge-diagnostic/run-44481634442/fermion_measured_semantic_repair_r4/collection-verification.json"
 }

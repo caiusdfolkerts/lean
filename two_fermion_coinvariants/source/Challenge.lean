@@ -1,13 +1,11 @@
 module
 public import Mathlib
 /-!
-# Literal monomial bases for weighted two-fermion quotients
-This draft independently states the exact paired and strict monomial-basis
-clauses of Theorems 1.1 and 1.2, with their finite free ranks over every
-commutative ring, including the zero ring. The hypotheses retain coupled lower
-polynomial terms, factorial units and every nonempty weight subset sum.
-Other clauses and later principal results still require independent extraction;
-this is not yet the complete paper entry.
+# Weighted two-fermion quotients over every commutative ring
+Theorems1.1/1.2 retain both prescribed monomial bases and ranks, actual
+exterior-degree/Hilbert and associated-graded clauses, and the genuine finite-free
+flat homogenized family with both fibers. Coupled lower terms, factorial units,
+every nonempty weight sum and the zero ring remain in the exact hypotheses.
 -/
 @[expose] public section
 -- Match the measured original canonical polynomial scalar action.
@@ -15,11 +13,36 @@ attribute [-instance] MvPolynomial.instModuleSelf MvPolynomial.instModule
 noncomputable section
 set_option autoImplicit false
 open scoped BigOperators
+namespace PalomarFermion
+universe uDictionary
+/-- Exact identity inverse-pair law at the ring dictionary. -/
+public theorem coefficientIdentityInvPair {R : Type uDictionary} [CommRing R] : RingHomInvPair (RingHom.id R) (RingHom.id R) := by sorry
+/-- Exact identity inverse-pair law at the commutative-semiring dictionary. -/
+public theorem coefficientCommutativeIdentityInvPair {R : Type uDictionary} [hR : CommRing R] : @RingHomInvPair R R hR.toCommSemiring.toSemiring hR.toCommSemiring.toSemiring (@RingHom.id R hR.toCommSemiring.toSemiring.toNonAssocSemiring) (@RingHom.id R hR.toCommSemiring.toSemiring.toNonAssocSemiring) := by sorry
+/-- Exact identity-surjectivity law at the ring dictionary. -/
+public theorem coefficientIdentitySurjective {R : Type uDictionary} [CommRing R] : RingHomSurjective (RingHom.id R) := by sorry
+/-- Exact identity-surjectivity law at the commutative-semiring dictionary. -/
+public theorem coefficientCommutativeIdentitySurjective {R : Type uDictionary} [hR : CommRing R] : @RingHomSurjective R R hR.toCommSemiring.toSemiring hR.toCommSemiring.toSemiring (@RingHom.id R hR.toCommSemiring.toSemiring.toNonAssocSemiring) := by sorry
+/-- The primitive finite set of polynomial indices. -/
+public theorem finiteCoordinates (n : ℕ) : Finite (Fin n) := by sorry
+/-- The primitive finite set of the two separately labeled exterior families. -/
+public theorem finiteOddCoordinates (n : ℕ) : Finite (Fin n ⊕ Fin n) := by sorry
+attribute [instance 2000] coefficientIdentityInvPair coefficientIdentitySurjective
+attribute [instance 2100] coefficientCommutativeIdentityInvPair coefficientCommutativeIdentitySurjective finiteCoordinates finiteOddCoordinates
+universe uCoordinateModule uCoordinateIndex
+/-- The same exact basis coordinates, with both identity inverse-pair projection arguments explicit. -/
+public abbrev coordinates {R : Type uDictionary} [CommRing R] {M : Type uCoordinateModule} {I : Type uCoordinateIndex} [AddCommGroup M] [Module R M] (b : Module.Basis I R M) : M →ₗ[R] (I →₀ R) :=
+  @LinearEquiv.toLinearMap R R _ _ (RingHom.id R) (RingHom.id R)
+    (coefficientCommutativeIdentityInvPair (R := R)) (coefficientCommutativeIdentityInvPair (R := R))
+    M (I →₀ R) _ _ _ _ b.repr
+/-- Pointwise equality with the original imported basis coordinate accessor. -/
+@[simp] public theorem coordinates_apply {R : Type uDictionary} [CommRing R] {M : Type uCoordinateModule} {I : Type uCoordinateIndex} [AddCommGroup M] [Module R M] (b : Module.Basis I R M) (x : M) : coordinates b x = b.repr x := by sorry
+end PalomarFermion
 namespace PaperVerification.Fermion.BasisFiltered
 open scoped BigOperators
 variable {R M I J E : Type*} [CommRing R] [AddCommGroup M] [Module R M] (b : Module.Basis I R M) (w : I → ℕ)
-/-- Literal PaperVerification.Fermion.BasisFiltered.Bound; precise source and scope recorded in the extraction map. -/ def Bound (d : ℕ) (x : M) : Prop := ∀ i, b.repr x i ≠ 0 → w i ≤ d
-/-- Literal PaperVerification.Fermion.BasisFiltered.Homogeneous; precise source and scope recorded in the extraction map. -/ def Homogeneous (d : ℕ) (x : M) : Prop := ∀ i, b.repr x i ≠ 0 → w i = d
+/-- Literal PaperVerification.Fermion.BasisFiltered.Bound; precise source and scope recorded in the extraction map. -/ def Bound (d : ℕ) (x : M) : Prop := ∀ i, PalomarFermion.coordinates b x i ≠ 0 → w i ≤ d
+/-- Literal PaperVerification.Fermion.BasisFiltered.Homogeneous; precise source and scope recorded in the extraction map. -/ def Homogeneous (d : ℕ) (x : M) : Prop := ∀ i, PalomarFermion.coordinates b x i ≠ 0 → w i = d
 /-- Literal PaperVerification.Fermion.BasisFiltered.bound_zero; precise source and scope recorded in the extraction map. -/ theorem bound_zero (d : ℕ) : Bound b w d 0 := by sorry
 /-- Literal PaperVerification.Fermion.BasisFiltered.bound_add; precise source and scope recorded in the extraction map. -/ theorem bound_add {d : ℕ} {x y : M} (hx : Bound b w d x) (hy : Bound b w d y) : Bound b w d (x+y) := by sorry
 /-- Literal PaperVerification.Fermion.BasisFiltered.bound_smul; precise source and scope recorded in the extraction map. -/ theorem bound_smul {d : ℕ} {x : M} (hx : Bound b w d x) (a : R) : Bound b w d (a • x) := by sorry
@@ -49,6 +72,16 @@ variable (K : Type u) [CommRing K] (n : ℕ)
 /-- Literal PaperVerification.Fermion.PolynomialRing; precise source and scope recorded in the extraction map. -/ abbrev PolynomialRing := MvPolynomial (Fin n) K
 /-- Literal PaperVerification.Fermion.OddIndex; precise source and scope recorded in the extraction map. -/ abbrev OddIndex := Fin n ⊕ Fin n
 /-- Literal PaperVerification.Fermion.OddModule; precise source and scope recorded in the extraction map. -/ abbrev OddModule := OddIndex n → K
+/-- Exact polynomial-factor scalar commutation at primitive K,n. -/
+theorem polynomialSelfCommute : SMulCommClass K (PolynomialRing K n) (PolynomialRing K n) := by sorry
+/-- Exact polynomial-factor scalar tower at primitive K,n. -/
+theorem polynomialSelfTower : IsScalarTower K (PolynomialRing K n) (PolynomialRing K n) := by sorry
+/-- Exact exterior-factor scalar commutation at primitive K,n. -/
+theorem exteriorSelfCommute : SMulCommClass K (ExteriorAlgebra K (OddModule K n)) (ExteriorAlgebra K (OddModule K n)) := by sorry
+/-- Exact exterior-factor scalar tower at primitive K,n. -/
+theorem exteriorSelfTower : IsScalarTower K (ExteriorAlgebra K (OddModule K n)) (ExteriorAlgebra K (OddModule K n)) := by sorry
+attribute [instance 2100] polynomialSelfCommute polynomialSelfTower exteriorSelfCommute exteriorSelfTower
+
 /-- Literal PaperVerification.Fermion.SuperRing; precise source and scope recorded in the extraction map. -/ abbrev SuperRing := PolynomialRing K n ⊗[K] ExteriorAlgebra K (OddModule K n)
 /-- Literal PaperVerification.Fermion.superQuotientModule; precise source and scope recorded in the extraction map. -/ @[reducible] noncomputable instance superQuotientModule (I : TwoSidedIdeal (SuperRing K n)) :
     Module K I.ringCon.Quotient := by
@@ -183,19 +216,30 @@ open scoped BigOperators
 variable {F : Type*} [Field F] {n : ℕ}
 /-- Literal PaperVerification.Fermion.Newton.RectangleIndex; precise source and scope recorded in the extraction map. -/ abbrev RectangleIndex (h : Fin n → ℕ) :=
   {a : Fin n →₀ ℕ // ∀ i, a i < h i}
+/-- Forward coordinates of the literal rectangular exponent box are in bounds. -/
+theorem rectangleForwardBounds (h : Fin n → ℕ) (a : RectangleIndex h) : ∀ i, a.val i < h i := by sorry
+/-- The unchanged inverse coordinate function lies in the literal rectangular box. -/
+theorem rectangleBackwardBounds (h : Fin n → ℕ) (a : ∀ i, Fin (h i)) : ∀ i, Finsupp.equivFunOnFinite.symm (fun j => (a j).val) i < h i := by sorry
+/-- Exact forward coordinate function, retaining the actual exponent values. -/
+def rectangleForward (h : Fin n → ℕ) (a : RectangleIndex h) : ∀ i, Fin (h i) := fun i => ⟨a.val i,rectangleForwardBounds h a i⟩
+/-- Exact inverse coordinate function, retaining the actual exponent values. -/
+def rectangleBackward (h : Fin n → ℕ) (a : ∀ i, Fin (h i)) : RectangleIndex h := ⟨Finsupp.equivFunOnFinite.symm (fun i => (a i).val),rectangleBackwardBounds h a⟩
+/-- The literal exponent coordinates recover the original rectangular index. -/
+theorem rectangleLeftInverse (h : Fin n → ℕ) : Function.LeftInverse (rectangleBackward h) (rectangleForward h) := by sorry
+/-- The literal rectangular index recovers its bounded coordinate function. -/
+theorem rectangleRightInverse (h : Fin n → ℕ) : Function.RightInverse (rectangleBackward h) (rectangleForward h) := by sorry
 /-- Literal PaperVerification.Fermion.Newton.rectangleIndexEquiv; precise source and scope recorded in the extraction map. -/ def rectangleIndexEquiv (h : Fin n → ℕ) : RectangleIndex h ≃ (∀ i : Fin n, Fin (h i)) where
-  toFun a i := ⟨a.val i,a.property i⟩
-  invFun a := ⟨Finsupp.equivFunOnFinite.symm (fun i ↦ (a i).val),fun i ↦ (a i).isLt⟩
-  left_inv a := by apply Subtype.ext; ext i; rfl
-  right_inv a := by funext i; apply Fin.ext; rfl
+  toFun := rectangleForward h
+  invFun := rectangleBackward h
+  left_inv := rectangleLeftInverse h
+  right_inv := rectangleRightInverse h
 /-- Literal PaperVerification.Fermion.Newton.rectangleIndex_fintype; precise source and scope recorded in the extraction map. -/
 instance rectangleIndex_fintype (h : Fin n → ℕ) : Fintype (RectangleIndex h) :=
   Fintype.ofEquiv _ (rectangleIndexEquiv h).symm
 end PaperVerification.Fermion.Newton
 namespace PaperVerification.Fermion.Exterior
-/-- Literal PaperVerification.Fermion.Exterior.interleavedOddRank; precise source and scope recorded in the extraction map. -/ def interleavedOddRank {n : ℕ} : Fin n ⊕ Fin n → ℕ
-  | .inl i => 2 * i.val + 1
-  | .inr i => 2 * i.val
+/-- Literal PaperVerification.Fermion.Exterior.interleavedOddRank; precise source and scope recorded in the extraction map. -/ def interleavedOddRank {n : ℕ} : Fin n ⊕ Fin n → ℕ :=
+  Sum.elim (fun i => 2 * i.val + 1) (fun i => 2 * i.val)
 /-- Literal PaperVerification.Fermion.Exterior.interleavedOddRank_injective; precise source and scope recorded in the extraction map. -/ theorem interleavedOddRank_injective (n : ℕ) : Function.Injective (@interleavedOddRank n) := by sorry
 /-- Literal PaperVerification.Fermion.Exterior.interleavedOddOrder; precise source and scope recorded in the extraction map. -/ def interleavedOddOrder (n : ℕ) : LinearOrder (Fin n ⊕ Fin n) :=
   LinearOrder.lift' interleavedOddRank (interleavedOddRank_injective n)
@@ -238,11 +282,8 @@ set_option backward.isDefEq.respectTransparency false
 open scoped BigOperators
 variable {K : Type*} [Field K] {n : ℕ}
 local notation "P" => MvPolynomial (Fin n) K
-/-- Literal PaperVerification.Fermion.Endpoint.pairedBoxBound; precise source and scope recorded in the extraction map. -/ def pairedBoxBound (r u v s h : ℕ) : Mark → ℕ
-  | .unmarked => r * (s + h)
-  | .theta => r * h + v
-  | .xi => r * h + u
-  | .double => r * h
+/-- Literal PaperVerification.Fermion.Endpoint.pairedBoxBound; precise source and scope recorded in the extraction map. -/ def pairedBoxBound (r u v s h : ℕ) : Mark → ℕ :=
+  Mark.rec (r * (s + h)) (r * h + v) (r * h + u) (r * h)
 end PaperVerification.Fermion.Endpoint
 namespace PaperVerification.Fermion
 set_option backward.isDefEq.respectTransparency false
@@ -323,9 +364,8 @@ local instance FermionPairedMomentHighest_localInst_5 : LT (Fin n ⊕ Fin n) :=
   (LinearOrder.lift' modeRank modeRank_injective).toLT
 local instance FermionPairedMomentHighest_localInst_6 : DecidableEq (Fin n ⊕ Fin n) :=
   (LinearOrder.lift' modeRank modeRank_injective).toDecidableEq
-/-- Literal PaperVerification.Fermion.pairedOddWeight; precise source and scope recorded in the extraction map. -/ def pairedOddWeight (d : PairedData (K := K) (n := n)) : OddIndex n → ℕ
-  | .inl i => d.u i * coveringWeight d.r i
-  | .inr i => d.v i * coveringWeight d.r i
+/-- Literal PaperVerification.Fermion.pairedOddWeight; precise source and scope recorded in the extraction map. -/ def pairedOddWeight (d : PairedData (K := K) (n := n)) : OddIndex n → ℕ :=
+  Sum.elim (fun i => d.u i * coveringWeight d.r i) (fun i => d.v i * coveringWeight d.r i)
 end PaperVerification.Fermion
 namespace PaperVerification.Fermion
 set_option backward.isDefEq.respectTransparency false
@@ -356,14 +396,12 @@ local instance FermionPairedIndex_localInst_1 : DecidableEq (Fin n ⊕ Fin n) :=
 /-- Literal PaperVerification.Fermion.validWord_disjSum_iff; precise source and scope recorded in the extraction map. -/ theorem validWord_disjSum_iff (T S : Finset (Fin n)) : ValidWord (T.disjSum S) ↔ ∀ i, 0 ≤ height T S i := by sorry
 /-- Literal PaperVerification.Fermion.wordBoxBounds_disjSum_cast; precise source and scope recorded in the extraction map. -/ theorem wordBoxBounds_disjSum_cast (d : PairedData (K := R) (n := n)) (T S : Finset (Fin n)) (h : ValidWord (T.disjSum S)) (i : Fin n) : (wordBoxBounds d.r d.u
   d.v d.s (T.disjSum S) i : ℤ) = pairedBound d T S i := by sorry
-/-- Literal PaperVerification.Fermion.pairedIndexToPower; precise source and scope recorded in the extraction map. -/ def pairedIndexToPower (d : PairedData (K := R) (n := n)) (z : PairedIndex d) : PairedPowerIndex d.r d.u d.v d.s := by
-  let W := z.val.1.1.disjSum z.val.1.2
-  have hW : ValidWord W := (validWord_disjSum_iff _ _).mpr z.property.1
-  refine ⟨W,⟨⟨Finsupp.equivFunOnFinite.symm z.val.2,?_⟩,hW⟩⟩
-  intro i
-  have hi := z.property.2 i
-  rw [← wordBoxBounds_disjSum_cast d _ _ hW i] at hi
-  exact_mod_cast hi
+/-- Actual admissibility of the paired index's two exterior supports. -/
+theorem pairedIndexValid (d : PairedData (K := R) (n := n)) (z : PairedIndex d) : ValidWord (z.val.1.1.disjSum z.val.1.2) := by sorry
+/-- Exact paired power-box inequalities for the unchanged coordinate function. -/
+theorem pairedIndexPowerBounds (d : PairedData (K := R) (n := n)) (z : PairedIndex d) : ∀ i, Finsupp.equivFunOnFinite.symm z.val.2 i < wordBoxBounds d.r d.u d.v d.s (z.val.1.1.disjSum z.val.1.2) i := by sorry
+/-- Literal PaperVerification.Fermion.pairedIndexToPower; precise source and scope recorded in the extraction map. -/ def pairedIndexToPower (d : PairedData (K := R) (n := n)) (z : PairedIndex d) : PairedPowerIndex d.r d.u d.v d.s :=
+  ⟨z.val.1.1.disjSum z.val.1.2,⟨⟨Finsupp.equivFunOnFinite.symm z.val.2,pairedIndexPowerBounds d z⟩,pairedIndexValid d z⟩⟩
 /-- Literal PaperVerification.Fermion.pairedPowerToIndex; precise source and scope recorded in the extraction map. -/ def pairedPowerToIndex (d : PairedData (K := R) (n := n)) (z : PairedPowerIndex d.r d.u d.v d.s) : PairedIndex d := by
   have hW : ValidWord (z.1.toLeft.disjSum z.1.toRight) := by
     rw [Finset.toLeft_disjSum_toRight]
@@ -491,20 +529,17 @@ end PaperVerification.Fermion
 namespace PaperVerification.Fermion.BasisFiltered
 open scoped BigOperators
 variable {R M Q I E : Type*} [CommRing R] [AddCommGroup M] [Module R M] [AddCommGroup Q] [Module R Q] (b : Module.Basis I R M) (w : I → ℕ)
+/-- Zero is homogeneous in every literal basis degree. -/
+theorem homogeneousZero (d : ℕ) : Homogeneous b w d (0 : M) := by sorry
+/-- Addition preserves the exact basis degree. -/
+theorem homogeneousAdd {d : ℕ} {x y : M} (hx : Homogeneous b w d x) (hy : Homogeneous b w d y) : Homogeneous b w d (x+y) := by sorry
+/-- Scalars preserve the exact basis degree. -/
+theorem homogeneousSmul {d : ℕ} {x : M} (hx : Homogeneous b w d x) (c : R) : Homogeneous b w d (c • x) := by sorry
 /-- Literal PaperVerification.Fermion.BasisFiltered.homogeneousPiece; precise source and scope recorded in the extraction map. -/ def homogeneousPiece (d : ℕ) : Submodule R M where
   carrier := {x | Homogeneous b w d x}
-  zero_mem' := by intro i hi; exact (hi (by simp)).elim
-  add_mem' := by
-    intro x y hx hy i hi
-    by_cases hxi : b.repr x i=0
-    · apply hy i
-      simpa only [map_add,Finsupp.add_apply,hxi,zero_add] using hi
-    · exact hx i hxi
-  smul_mem' := by
-    intro c x hx i hi
-    apply hx i
-    intro hz
-    exact hi (by simp only [map_smul,Finsupp.smul_apply,hz,smul_zero])
+  zero_mem' := homogeneousZero b w d
+  add_mem' := homogeneousAdd b w
+  smul_mem' := fun c _ hx => homogeneousSmul b w hx c
 end PaperVerification.Fermion.BasisFiltered
 namespace PaperVerification.Fermion
 set_option backward.isDefEq.respectTransparency false
@@ -517,15 +552,12 @@ local instance FermionStrictIndex_localInst_1 : DecidableEq (Fin n ⊕ Fin n) :=
   sorry
 /-- Literal PaperVerification.Fermion.strictWordBoxBounds_disjSum_cast; precise source and scope recorded in the extraction map. -/ theorem strictWordBoxBounds_disjSum_cast (r : Fin n → ℕ) (T S : Finset (Fin n)) (h : ValidWord (T.disjSum S)) (i : Fin n) : (strictWordBoxBounds r (T.disjSum S)
   i : ℤ)=(r i : ℤ)*height T S i := by sorry
-/-- Literal PaperVerification.Fermion.strictIndexToPower; precise source and scope recorded in the extraction map. -/ def strictIndexToPower (d : StrictData (K := R) (n := n)) (z : StrictIndex d) : StrictPowerIndex d.r := by
-  let W := z.val.1.1.disjSum z.val.1.2
-  have hW : ValidWord W := (validWord_disjSum_iff _ _).mpr
-    (fun i ↦ le_trans (by decide : (0 : ℤ)≤1) (z.property.1 i))
-  refine ⟨W,⟨⟨Finsupp.equivFunOnFinite.symm z.val.2,?_⟩,hW⟩⟩
-  intro i
-  have hi := z.property.2 i
-  rw [←strictWordBoxBounds_disjSum_cast d.r _ _ hW i] at hi
-  exact_mod_cast hi
+/-- Actual admissibility of the strict index's two exterior supports. -/
+theorem strictIndexValid (d : StrictData (K := R) (n := n)) (z : StrictIndex d) : ValidWord (z.val.1.1.disjSum z.val.1.2) := by sorry
+/-- Exact strict power-box inequalities for the unchanged coordinate function. -/
+theorem strictIndexPowerBounds (d : StrictData (K := R) (n := n)) (z : StrictIndex d) : ∀ i, Finsupp.equivFunOnFinite.symm z.val.2 i < strictWordBoxBounds d.r (z.val.1.1.disjSum z.val.1.2) i := by sorry
+/-- Literal PaperVerification.Fermion.strictIndexToPower; precise source and scope recorded in the extraction map. -/ def strictIndexToPower (d : StrictData (K := R) (n := n)) (z : StrictIndex d) : StrictPowerIndex d.r :=
+  ⟨z.val.1.1.disjSum z.val.1.2,⟨⟨Finsupp.equivFunOnFinite.symm z.val.2,strictIndexPowerBounds d z⟩,strictIndexValid d z⟩⟩
 /-- Literal PaperVerification.Fermion.strictPowerToIndex; precise source and scope recorded in the extraction map. -/ def strictPowerToIndex (d : StrictData (K := R) (n := n)) (z : StrictPowerIndex d.r) : StrictIndex d := by
   have hW : ValidWord (z.1.toLeft.disjSum z.1.toRight) := by
     rw [Finset.toLeft_disjSum_toRight]
@@ -805,13 +837,17 @@ variable {R A Q I : Type*} [CommRing R] [Ring A] [Algebra R A] [Ring Q] [Algebra
   add_mem' := bound_add b w
   smul_mem' := fun c x hx ↦ bound_smul b w hx c
 /-- Literal PaperVerification.Fermion.BasisFiltered.boundPiece_mono; precise source and scope recorded in the extraction map. -/ theorem boundPiece_mono : Monotone (boundPiece b w) := by sorry
+/-- Monotonicity of the actual quotient image pieces. -/
+theorem quotientPieceMonotone (q : A →ₐ[R] Q) : Monotone (fun d => (boundPiece b w d).map q.toLinearMap) := by sorry
+/-- The image filtration contains the unit in degree zero. -/
+theorem quotientPieceUnit (q : A →ₐ[R] Q) (hone : Homogeneous b w 0 (1 : A)) : (1 : Q) ∈ (boundPiece b w 0).map q.toLinearMap := by sorry
+/-- Products of actual quotient images have the sum of the filtration bounds. -/
+theorem quotientPieceProduct (q : A →ₐ[R] Q) (hmul : ∀ i j,Homogeneous b w (w i+w j) (b i*b j)) {i j : ℕ} {x y : Q} (hx : x ∈ (boundPiece b w i).map q.toLinearMap) (hy : y ∈ (boundPiece b w j).map q.toLinearMap) : x*y ∈ (boundPiece b w (i+j)).map q.toLinearMap := by sorry
 /-- Literal PaperVerification.Fermion.BasisFiltered.quotientFiltration; precise source and scope recorded in the extraction map. -/ def quotientFiltration (q : A →ₐ[R] Q) (hone : Homogeneous b w 0 (1 : A)) (hmul : ∀ i j,Homogeneous b w (w i+w j) (b i*b j)) : FilteredAlgebra.Filtration R Q where
   piece d := (boundPiece b w d).map q.toLinearMap
-  mono := fun _ _ h ↦ Submodule.map_mono (boundPiece_mono b w h)
-  one_mem := ⟨1,homogeneous_bound b w hone,map_one q⟩
-  mul_mem := by
-    rintro i j x y ⟨a,ha,rfl⟩ ⟨c,hc,rfl⟩
-    exact ⟨a*c,bound_mul b w hmul ha hc,map_mul q a c⟩
+  mono := quotientPieceMonotone b w q
+  one_mem := quotientPieceUnit b w q hone
+  mul_mem := quotientPieceProduct b w q hmul
 end PaperVerification.Fermion.BasisFiltered
 namespace PaperVerification.Fermion
 set_option backward.isDefEq.respectTransparency false

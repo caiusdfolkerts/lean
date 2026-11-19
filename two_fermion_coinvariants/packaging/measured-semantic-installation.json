@@ -1,0 +1,89 @@
+{
+  "status": "installed_self_reviewed_measured_whole_class_repair_full_validation_pending",
+  "parent_commit": "fda3f4ddbde18d8ea13c0ce5c76f8af5cb57b3c6",
+  "parent_failed_run": 44461998078,
+  "actual_whole_raw_diagnostic": 44471268764,
+  "all40_parent_type_and_universe_lists_equal": true,
+  "actual_auxiliary_semantic_type_probe": 44477161915,
+  "canonical_genuine25_support_and_original_bound_add_controls_run": 44481634442,
+  "canonical_verification_sha256": "83e3a82b94b43f35d3f4fabfe17721a58c4f0d6539961b267c00e0a43a86e77a",
+  "all40_original_written_statement_headers_preserved": true,
+  "new_selected_support_count": 25,
+  "complete_selected_count": 65,
+  "semantic_models": "Original moment ideals, exact paired/strict index sets, actual exterior/associated-graded quotients and the genuine homogenized finite-free family with both actual fibers.",
+  "mathematical_change": false,
+  "actual_changes": "Primitive polynomial/exterior scalar-action and finite/identity-hom proofs given stable compared names before compound expected types. Three exact computational branches use eliminators. Actual rectangular/power-box coordinate maps and homogeneous/filtered submodules retain every value, inequality and carrier; proof fields call compared semantic propositions. Both imported inverse-pair projection arguments are explicit in the unchanged basis-coordinate map, with a genuine pointwise rfl bridge. Original bound_add/sub proof calculations explicitly change to their original coordinate predicates.",
+  "changed_original_declarations": [
+    "PaperVerification.Fermion.BasisFiltered.Bound",
+    "PaperVerification.Fermion.BasisFiltered.Homogeneous",
+    "PaperVerification.Fermion.BasisFiltered.bound_add",
+    "PaperVerification.Fermion.BasisFiltered.bound_sub",
+    "PaperVerification.Fermion.BasisFiltered.homogeneousPiece",
+    "PaperVerification.Fermion.BasisFiltered.quotientFiltration",
+    "PaperVerification.Fermion.Endpoint.pairedBoxBound",
+    "PaperVerification.Fermion.Exterior.interleavedOddRank",
+    "PaperVerification.Fermion.Newton.rectangleIndexEquiv",
+    "PaperVerification.Fermion.pairedIndexToPower",
+    "PaperVerification.Fermion.pairedOddWeight",
+    "PaperVerification.Fermion.strictIndexToPower"
+  ],
+  "added_source_declarations": [
+    "PalomarFermion.coefficientCommutativeIdentityInvPair",
+    "PalomarFermion.coefficientCommutativeIdentitySurjective",
+    "PalomarFermion.coefficientIdentityInvPair",
+    "PalomarFermion.coefficientIdentitySurjective",
+    "PalomarFermion.coordinates",
+    "PalomarFermion.coordinates_apply",
+    "PalomarFermion.finiteCoordinates",
+    "PalomarFermion.finiteOddCoordinates",
+    "PaperVerification.Fermion.BasisFiltered.homogeneousAdd",
+    "PaperVerification.Fermion.BasisFiltered.homogeneousSmul",
+    "PaperVerification.Fermion.BasisFiltered.homogeneousZero",
+    "PaperVerification.Fermion.BasisFiltered.quotientPieceMonotone",
+    "PaperVerification.Fermion.BasisFiltered.quotientPieceProduct",
+    "PaperVerification.Fermion.BasisFiltered.quotientPieceUnit",
+    "PaperVerification.Fermion.Newton.rectangleBackward",
+    "PaperVerification.Fermion.Newton.rectangleBackwardBounds",
+    "PaperVerification.Fermion.Newton.rectangleForward",
+    "PaperVerification.Fermion.Newton.rectangleForwardBounds",
+    "PaperVerification.Fermion.Newton.rectangleLeftInverse",
+    "PaperVerification.Fermion.Newton.rectangleRightInverse",
+    "PaperVerification.Fermion.exteriorSelfCommute",
+    "PaperVerification.Fermion.exteriorSelfTower",
+    "PaperVerification.Fermion.pairedIndexPowerBounds",
+    "PaperVerification.Fermion.pairedIndexValid",
+    "PaperVerification.Fermion.polynomialSelfCommute",
+    "PaperVerification.Fermion.polynomialSelfTower",
+    "PaperVerification.Fermion.strictIndexPowerBounds",
+    "PaperVerification.Fermion.strictIndexValid"
+  ],
+  "source_patch_files": [
+    {
+      "path": "source/two_fermion/PalomarPart000.lean",
+      "before_sha256": "bb946519a257f2fc6789ea0e9b422c07b3b90b618feebff78549345f9502ebcf",
+      "after_sha256": "b9c0af8644f8cb7b3de9a5321f3c392f6b6b9abb0d5319abb90c28831b610577"
+    },
+    {
+      "path": "source/two_fermion/PalomarPart003.lean",
+      "before_sha256": "84290395958f4ec9f573ad532c3e3cdb3dce7e0e2dc8c9fb22a5a3c8a3e88621",
+      "after_sha256": "d1b50dfb6921515570ecbf5302a3fb9490aaf3f66b5bcda668d1f24689206d80"
+    },
+    {
+      "path": "source/two_fermion/PalomarPart004.lean",
+      "before_sha256": "2eb35508ec149fdb26c76c1d636f1e26d8fc10844f01448ebd538134435aa89b",
+      "after_sha256": "24aa8d7de0f5ca34964ab08689076318a6f72cac228f2927b3fe2f34f33a9a9f"
+    },
+    {
+      "path": "source/two_fermion/PalomarPart005.lean",
+      "before_sha256": "6f66f2e07ff6c135dc1cb62f5962a423344456199ee1e0859e95675db1874266",
+      "after_sha256": "e1a0273db7e531c4fbec33856a07be0925ae13eefec87af4fbe154a34600e8c9"
+    },
+    {
+      "path": "source/two_fermion/PalomarPart009.lean",
+      "before_sha256": "842fcd043a33f2c460652c12770a264cbc8d9e582fe9605de989d7d0eb07a93a",
+      "after_sha256": "70f7437f44ea6ddcbe537fed66f4cbf09781451b3d5e89042d0ed315b8f1ce62"
+    }
+  ],
+  "rejected_probe_candidates": "Bare toFun projection r3 failed its pointwise control and was never installed; only validated toLinearMap accessor retained.",
+  "source_solution_comparator_independent_kernel": "pending_current_candidate"
+}

@@ -1330,12 +1330,23 @@ variable {F : Type*} [Field F] {n : ℕ}
 abbrev RectangleIndex (h : Fin n → ℕ) :=
   {a : Fin n →₀ ℕ // ∀ i, a i < h i}
 
-def rectangleIndexEquiv (h : Fin n → ℕ) :
-    RectangleIndex h ≃ (∀ i : Fin n, Fin (h i)) where
-  toFun a i := ⟨a.val i,a.property i⟩
-  invFun a := ⟨Finsupp.equivFunOnFinite.symm (fun i ↦ (a i).val),fun i ↦ (a i).isLt⟩
-  left_inv a := by apply Subtype.ext; ext i; rfl
-  right_inv a := by funext i; apply Fin.ext; rfl
+/-- Forward coordinates of the literal rectangular exponent box are in bounds. -/
+theorem rectangleForwardBounds (h : Fin n → ℕ) (a : RectangleIndex h) : ∀ i, a.val i < h i := a.property
+/-- The unchanged inverse coordinate function lies in the literal rectangular box. -/
+theorem rectangleBackwardBounds (h : Fin n → ℕ) (a : ∀ i, Fin (h i)) : ∀ i, Finsupp.equivFunOnFinite.symm (fun j => (a j).val) i < h i := fun i => (a i).isLt
+/-- Exact forward coordinate function, retaining the actual exponent values. -/
+def rectangleForward (h : Fin n → ℕ) (a : RectangleIndex h) : ∀ i, Fin (h i) := fun i => ⟨a.val i,rectangleForwardBounds h a i⟩
+/-- Exact inverse coordinate function, retaining the actual exponent values. -/
+def rectangleBackward (h : Fin n → ℕ) (a : ∀ i, Fin (h i)) : RectangleIndex h := ⟨Finsupp.equivFunOnFinite.symm (fun i => (a i).val),rectangleBackwardBounds h a⟩
+/-- The literal exponent coordinates recover the original rectangular index. -/
+theorem rectangleLeftInverse (h : Fin n → ℕ) : Function.LeftInverse (rectangleBackward h) (rectangleForward h) := by intro a; apply Subtype.ext; ext i; rfl
+/-- The literal rectangular index recovers its bounded coordinate function. -/
+theorem rectangleRightInverse (h : Fin n → ℕ) : Function.RightInverse (rectangleBackward h) (rectangleForward h) := by intro a; funext i; apply Fin.ext; rfl
+def rectangleIndexEquiv (h : Fin n → ℕ) : RectangleIndex h ≃ (∀ i : Fin n, Fin (h i)) where
+  toFun := rectangleForward h
+  invFun := rectangleBackward h
+  left_inv := rectangleLeftInverse h
+  right_inv := rectangleRightInverse h
 
 instance rectangleIndex_fintype (h : Fin n → ℕ) : Fintype (RectangleIndex h) :=
   Fintype.ofEquiv _ (rectangleIndexEquiv h).symm
@@ -4943,9 +4954,8 @@ namespace PaperVerification.Fermion.Exterior
 
 /-- The numerical order of the paper's interleaved bits: theta is compared
 before xi at a fixed index, and later indices are compared before earlier ones. -/
-def interleavedOddRank {n : ℕ} : Fin n ⊕ Fin n → ℕ
-  | .inl i => 2 * i.val + 1
-  | .inr i => 2 * i.val
+def interleavedOddRank {n : ℕ} : Fin n ⊕ Fin n → ℕ :=
+  Sum.elim (fun i => 2 * i.val + 1) (fun i => 2 * i.val)
 
  theorem interleavedOddRank_injective (n : ℕ) :
     Function.Injective (@interleavedOddRank n) := by
