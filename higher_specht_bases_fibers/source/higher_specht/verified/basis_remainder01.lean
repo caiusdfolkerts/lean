@@ -18,6 +18,8 @@ public import tau_ceti.combinatorics.young.rsk
 
 @[expose] public section
 
+universe palomarFiberCoeffU
+
 section CanonicalSource0
 /- Source: HigherSpecht/LascouxKnuthReflections.lean -/
 
@@ -2022,7 +2024,7 @@ def powerIdeal (R : Type*) [CommRing R] (n s : ℕ) :
 def griffinIdeal (R : Type*) [CommRing R] (n : ℕ) (μ : YoungDiagram) (s : ℕ) :
     Ideal (PolynomialRing n R) := untruncatedIdeal R n μ ⊔ powerIdeal R n s
 
-def springerIdeal (R : Type*) [CommRing R] (μ : YoungDiagram) :
+def springerIdeal (R : Type palomarFiberCoeffU) [CommRing R] (μ : YoungDiagram) :
     Ideal (PolynomialRing μ.card R) := untruncatedIdeal R μ.card μ
 
 abbrev UntruncatedRing (R : Type*) [CommRing R] (n : ℕ) (μ : YoungDiagram) :=
@@ -2031,7 +2033,7 @@ abbrev UntruncatedRing (R : Type*) [CommRing R] (n : ℕ) (μ : YoungDiagram) :=
 abbrev GriffinRing (R : Type*) [CommRing R] (n : ℕ) (μ : YoungDiagram) (s : ℕ) :=
   PolynomialRing n R ⧸ griffinIdeal R n μ s
 
-abbrev SpringerRing (R : Type*) [CommRing R] (μ : YoungDiagram) :=
+abbrev SpringerRing (R : Type palomarFiberCoeffU) [CommRing R] (μ : YoungDiagram) :=
   PolynomialRing μ.card R ⧸ springerIdeal R μ
 
 theorem elementaryOn_mem_untruncatedIdeal {n : ℕ} {μ : YoungDiagram}

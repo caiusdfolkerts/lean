@@ -10,10 +10,12 @@ public import Mathlib.FieldTheory.IsAlgClosed.AlgebraicClosure
 /-! # Every elementary-parameter fiber -/
 
 @[expose] public section
+
+universe palomarFiberCoeffU
 noncomputable section
 set_option autoImplicit false
 open Finset MvPolynomial
-open scoped BigOperators TensorProduct Polynomial
+open scoped BigOperators TensorProduct Polynomial Classical
 
 namespace HigherSpecht
 
@@ -45,15 +47,15 @@ def IsElementaryGenerator (n : ℕ) (μ : YoungDiagram)
 def untruncatedIdeal (R : Type*) [CommRing R] (n : ℕ) (μ : YoungDiagram) :
     Ideal (PolynomialRing n R) := Ideal.span {p | IsElementaryGenerator n μ p}
 
+end PolynomialDefinitions
+
 /-- Literal source definition of springerIdeal. -/
-def springerIdeal (R : Type*) [CommRing R] (μ : YoungDiagram) :
+def springerIdeal (R : Type palomarFiberCoeffU) [CommRing R] (μ : YoungDiagram) :
     Ideal (PolynomialRing μ.card R) := untruncatedIdeal R μ.card μ
 
 /-- Literal source definition of SpringerRing. -/
-abbrev SpringerRing (R : Type*) [CommRing R] (μ : YoungDiagram) :=
+abbrev SpringerRing (R : Type palomarFiberCoeffU) [CommRing R] (μ : YoungDiagram) :=
   PolynomialRing μ.card R ⧸ springerIdeal R μ
-
-end PolynomialDefinitions
 
 theorem adjoinOnes_isLowerSet (μ : YoungDiagram) (m : ℕ) :
     IsLowerSet (↑(μ.cells ∪ (Finset.range (μ.colLen 0 + m) ×ˢ {0})) : Set (ℕ × ℕ)) := by
@@ -70,13 +72,13 @@ def adjoinOnes (μ : YoungDiagram) (m : ℕ) : YoungDiagram where
 
 def columnPartition (k : ℕ) : YoungDiagram := adjoinOnes ⊥ k
 
-def parameterFiberIdeal (R : Type*) [CommRing R] (n : ℕ) (lam : YoungDiagram)
+def parameterFiberIdeal (R : Type palomarFiberCoeffU) [CommRing R] (n : ℕ) (lam : YoungDiagram)
     (m : ℕ) (a : Fin m → R) : Ideal (PolynomialRing n R) :=
   untruncatedIdeal R n lam ⊔
     Ideal.span (Set.range fun i : Fin m =>
       elementaryOn (Finset.univ : Finset (Fin n)) (i.val + 1) - MvPolynomial.C (a i))
 
-abbrev ParameterFiber (R : Type*) [CommRing R] (n : ℕ) (lam : YoungDiagram)
+abbrev ParameterFiber (R : Type palomarFiberCoeffU) [CommRing R] (n : ℕ) (lam : YoungDiagram)
     (m : ℕ) (a : Fin m → R) :=
   PolynomialRing n R ⧸ parameterFiberIdeal R n lam m a
 
@@ -91,8 +93,6 @@ def parameterPolynomial {m : ℕ} (a : Fin m → R) : Polynomial R :=
     Polynomial.C ((-1) ^ (m - j.val) * a ⟨m - j.val - 1, parameterPolynomial_index_lt j⟩) *
       Polynomial.X ^ j.val
 
-open scoped Classical
-
 abbrev PrescribedRootAssignments (n : ℕ) (r : ι → ℕ) :=
   {f : Fin n → ι // ∀ i, Fintype.card {j : Fin n // f j = i} = r i}
 
@@ -103,8 +103,6 @@ def splitRootParameter (r0 : ℕ) (c : ι → R) (r : ι → ℕ) : R[X] :=
   Polynomial.X ^ r0 * ∏ i : ι, (Polynomial.X - Polynomial.C (c i)) ^ r i
 
 end RootData
-
-open scoped Classical
 
 section CanonicalRoots
 variable {L : Type*} [Field L]

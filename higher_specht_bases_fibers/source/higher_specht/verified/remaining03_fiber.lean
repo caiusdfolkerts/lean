@@ -9,6 +9,8 @@ public import Mathlib.Algebra.MvPolynomial.Coeff
 
 @[expose] public section
 
+universe palomarFiberCoeffU
+
 section CanonicalSource0
 /- Source: HigherSpecht/ElementaryCharacteristic.lean -/
 
@@ -313,13 +315,13 @@ namespace HigherSpecht
 
 variable {R : Type*} [CommRing R]
 
-def parameterFiberIdeal (R : Type*) [CommRing R] (n : ℕ) (lam : YoungDiagram)
+def parameterFiberIdeal (R : Type palomarFiberCoeffU) [CommRing R] (n : ℕ) (lam : YoungDiagram)
     (m : ℕ) (a : Fin m → R) : Ideal (PolynomialRing n R) :=
   untruncatedIdeal R n lam ⊔
     Ideal.span (Set.range fun i : Fin m =>
       elementaryOn (Finset.univ : Finset (Fin n)) (i.val + 1) - MvPolynomial.C (a i))
 
-abbrev ParameterFiber (R : Type*) [CommRing R] (n : ℕ) (lam : YoungDiagram)
+abbrev ParameterFiber (R : Type palomarFiberCoeffU) [CommRing R] (n : ℕ) (lam : YoungDiagram)
     (m : ℕ) (a : Fin m → R) :=
   PolynomialRing n R ⧸ parameterFiberIdeal R n lam m a
 
