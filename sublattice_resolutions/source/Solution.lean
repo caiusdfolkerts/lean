@@ -3085,6 +3085,11 @@ theorem corollary104_field_independence (hE : finiteLatticeClosed n E) :
       rw [transfer_monomial_bridge (k := F) n o E m p q,
         transfer_monomial_bridge (k := L) n o E m p q]
       exact h F L q p
-  simp only [h]
-  exact FourPapers.Sublattice.corollary104_integer_global_exists_iff_all_powers o hE
+  have hsource := FourPapers.Sublattice.corollary104_integer_global_exists_iff_all_powers o hE
+  constructor
+  · rintro ⟨m,hm,hM⟩ r hr
+    exact (h r).mpr (hsource.mp ⟨m,hm,(h m).mp hM⟩ r hr)
+  · intro hAll
+    obtain ⟨m,hm,hM⟩ := hsource.mpr (fun r hr => (h r).mp (hAll r hr))
+    exact ⟨m,hm,(h m).mpr hM⟩
 end PalomarSublattice
