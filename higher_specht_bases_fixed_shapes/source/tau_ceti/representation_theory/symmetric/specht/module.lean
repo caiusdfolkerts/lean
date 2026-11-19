@@ -90,7 +90,7 @@ variable {μ : YoungDiagram}
 
 /-- The **tabloid** `{t}` of a `μ`-tableau `t`: the row-equivalence class of `t`, presented as the
 coset of the Young subgroup of the shape of `μ` given by `rowYoungConjugator t`. -/
-noncomputable def tabloid (t : YoungTableau μ) :
+noncomputable abbrev tabloid (t : YoungTableau μ) :
     Equiv.Perm (Fin μ.card) ⧸ youngSubgroup (shapePartition μ) :=
   QuotientGroup.mk (rowYoungConjugator t)
 

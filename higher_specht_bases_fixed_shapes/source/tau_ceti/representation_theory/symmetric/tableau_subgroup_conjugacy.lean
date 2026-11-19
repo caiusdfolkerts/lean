@@ -33,26 +33,49 @@ namespace YoungTableau
 abbrev rowBlocks (l : List ℕ) : Type :=
   Σ i : Fin l.length, Fin (l.get i)
 
+theorem rowCells_fwd_mem (μ : YoungDiagram) (x : rowBlocks μ.rowLens) :
+    ((x.1, x.2) : ℕ × ℕ) ∈ μ.cells := by
+  rw [YoungDiagram.mem_cells, YoungDiagram.mem_iff_lt_rowLen, ← YoungDiagram.get_rowLens]
+  exact x.2.2
+
+theorem rowCells_inv_row_lt (μ : YoungDiagram) (c : ↥μ.cells) :
+    c.1.1 < μ.rowLens.length := by
+  rw [YoungDiagram.length_rowLens]
+  exact (_root_.YoungDiagram.mem_iff_lt_colLen.mp c.2).trans_le
+    (μ.colLen_anti 0 c.1.2 c.1.2.zero_le)
+
+theorem rowCells_inv_col_lt (μ : YoungDiagram) (c : ↥μ.cells) :
+    c.1.2 < μ.rowLens.get ⟨c.1.1, rowCells_inv_row_lt μ c⟩ := by
+  have hj := _root_.YoungDiagram.mem_iff_lt_rowLen.mp c.2
+  rw [← YoungDiagram.get_rowLens] at hj
+  exact hj
+
+abbrev rowCellsForward (μ : YoungDiagram) (x : rowBlocks μ.rowLens) : ↥μ.cells :=
+  ⟨(x.1, x.2), rowCells_fwd_mem μ x⟩
+
+abbrev rowCellsInverse (μ : YoungDiagram) (c : ↥μ.cells) : rowBlocks μ.rowLens :=
+  ⟨⟨c.1.1, rowCells_inv_row_lt μ c⟩, ⟨c.1.2, rowCells_inv_col_lt μ c⟩⟩
+
+theorem rowCells_left_inv (μ : YoungDiagram) :
+    Function.LeftInverse (rowCellsInverse μ) (rowCellsForward μ) := fun _ => rfl
+
+theorem rowCells_right_inv (μ : YoungDiagram) :
+    Function.RightInverse (rowCellsInverse μ) (rowCellsForward μ) := fun _ => rfl
+
 noncomputable def rowCellsEquiv (μ : YoungDiagram) :
     rowBlocks μ.rowLens ≃ ↥μ.cells where
-  toFun x := ⟨(x.1, x.2), by
-    rw [YoungDiagram.mem_cells, YoungDiagram.mem_iff_lt_rowLen, ← YoungDiagram.get_rowLens]
-    exact x.2.2⟩
-  invFun c :=
-    ⟨⟨c.1.1, by
-      rw [YoungDiagram.length_rowLens]
-      exact (_root_.YoungDiagram.mem_iff_lt_colLen.mp c.2).trans_le
-        (μ.colLen_anti 0 c.1.2 c.1.2.zero_le)⟩,
-      ⟨c.1.2, by
-        have hj := _root_.YoungDiagram.mem_iff_lt_rowLen.mp c.2
-        rw [← YoungDiagram.get_rowLens] at hj
-        exact hj⟩⟩
-  left_inv _ := rfl
-  right_inv _ := rfl
+  toFun := rowCellsForward μ
+  invFun := rowCellsInverse μ
+  left_inv := rowCells_left_inv μ
+  right_inv := rowCells_right_inv μ
 
-noncomputable def sortedBlocksEquivRows (μ : YoungDiagram) :
+theorem sortedBlocks_type_eq (μ : YoungDiagram) :
+    rowBlocks (youngSortedParts (shapePartition μ)) = rowBlocks μ.rowLens :=
+  congrArg rowBlocks (shapePartition_parts_youngSort μ)
+
+noncomputable abbrev sortedBlocksEquivRows (μ : YoungDiagram) :
     rowBlocks (youngSortedParts (shapePartition μ)) ≃ rowBlocks μ.rowLens :=
-  Equiv.cast (congrArg rowBlocks (shapePartition_parts_youngSort μ))
+  Equiv.cast (sortedBlocks_type_eq μ)
 
 private theorem cast_rowBlocks_fst {l₁ l₂ : List ℕ} (h : l₁ = l₂)
     (x : rowBlocks l₁) :
@@ -78,7 +101,7 @@ private theorem sortedBlocksEquivRows_snd (μ : YoungDiagram)
 
 /-- The permutation carrying the consecutive-block labeling of a Young diagram to the labeling
 of `t`. It sends each block of the shape partition to the correspondingly numbered row of `t`. -/
-noncomputable def rowYoungConjugator {μ : YoungDiagram} (t : YoungTableau μ) :
+noncomputable abbrev rowYoungConjugator {μ : YoungDiagram} (t : YoungTableau μ) :
     Equiv.Perm (Fin μ.card) :=
   (youngBlocksEquiv (shapePartition μ)).symm |>.trans <|
     (sortedBlocksEquivRows μ).trans ((rowCellsEquiv μ).trans t)

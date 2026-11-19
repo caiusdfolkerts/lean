@@ -8,6 +8,8 @@ public import Mathlib.Algebra.Field.ZMod
 
 @[expose] public section
 
+universe palomarRepU
+
 section CanonicalSource26
 /- Source: HigherSpecht/FactorialUnits.lean -/
 
@@ -172,7 +174,7 @@ namespace HigherSpecht
 
 abbrev TabloidSpaceOver (R : Type*) (mu : YoungDiagram) := TableauTabloid mu → R
 
-def tabloidRepresentationOver (R : Type*) [CommRing R] (mu : YoungDiagram) :
+abbrev tabloidRepresentationOver (R : Type*) [CommRing R] (mu : YoungDiagram) :
     Representation R (Equiv.Perm (Fin mu.card)) (TabloidSpaceOver R mu) where
   toFun g :=
     { toFun f := fun q => f (g⁻¹ • q)
@@ -222,7 +224,7 @@ theorem columnActionOver_eq_asAlgebraHom {R V : Type*} [CommRing R]
   simp only [columnElementOver, map_sum, LinearMap.sum_apply,
     Representation.asAlgebraHom_single, columnActionOver_apply, LinearMap.smul_apply]
 
-def polytabloidOver (R : Type*) [CommRing R] {mu : YoungDiagram}
+abbrev polytabloidOver (R : Type*) [CommRing R] {mu : YoungDiagram}
     (T : YoungTableau mu) : TabloidSpaceOver R mu :=
   ∑ g : colSubgroup T, ((Equiv.Perm.sign g.val : ℤ) : R) •
     Pi.single (g.val • tabloid T) 1
@@ -295,7 +297,7 @@ theorem polytabloidSpan_stable (R : Type*) [CommRing R] (mu : YoungDiagram)
     exact Submodule.subset_span ⟨relabel g T, polytabloidOver_relabel g T⟩
   exact h hv
 
-def spechtSubrepresentationOver (R : Type*) [CommRing R] (mu : YoungDiagram) :
+abbrev spechtSubrepresentationOver (R : Type*) [CommRing R] (mu : YoungDiagram) :
     Subrepresentation (tabloidRepresentationOver R mu) where
   toSubmodule := Submodule.span R (Set.range (polytabloidOver R (mu := mu)))
   apply_mem_toSubmodule := polytabloidSpan_stable R mu
@@ -690,7 +692,7 @@ def higherSpechtIntertwinerOver (S : StandardYoungTableau mu) :
     Representation.IntertwiningMap.coe_mk, standardPolytabloidOver]
   exact tabloidPolynomialLinearOver_polytabloid S T.toTableau
 
-abbrev partitionSpechtRepresentationOver (R : Type*) [CommRing R] {n : ℕ}
+abbrev partitionSpechtRepresentationOver (R : Type palomarRepU) [CommRing R] {n : ℕ}
     (part : n.Partition) :=
   (spechtSubrepresentationOver R (YoungDiagram.ofPartition part)).toRepresentation.comp
     (finCongr (YoungDiagram.card_ofPartition part).symm).permCongrHom.toMonoidHom
@@ -1867,11 +1869,24 @@ theorem fixedSpan_shapeCard {n : ℕ} (part : n.Partition) :
     (YoungDiagram.ofPartition part).card = n :=
   YoungDiagram.card_ofPartition part
 
+theorem griffinSpan_fieldTower (K : Type*) [Field K] (n : ℕ) :
+    IsScalarTower K (PolynomialRing n K) (PolynomialRing n K) :=
+  polynomialRing_scalarTower K n
+
+theorem griffinSpan_fieldTwoSided (K : Type*) [Field K] (n : ℕ)
+    (lam : YoungDiagram) (s : ℕ) : (griffinIdeal K n lam s).IsTwoSided :=
+  griffinIdeal_isTwoSided K n lam s
+
 def griffinFixedCopySpanOver (K : Type*) [Field K]
     {n : ℕ} (lam : YoungDiagram) (hk : lam.card ≤ n) (s : ℕ)
     (part : n.Partition) (i : PartitionGriffinCopies n lam hk s part) :
     Submodule K (GriffinRing K n lam s) :=
-  Submodule.span K (Set.range (fun T : StandardYoungTableau (YoungDiagram.ofPartition part) =>
+  letI : (griffinIdeal K n lam s).IsTwoSided := griffinSpan_fieldTwoSided K n lam s
+  @Submodule.span K (GriffinRing K n lam s) inferInstance inferInstance
+    (@Submodule.Quotient.module' (PolynomialRing n K) (PolynomialRing n K)
+      inferInstance inferInstance inferInstance K inferInstance inferInstance
+      inferInstance (griffinSpan_fieldTower K n) (griffinIdeal K n lam s))
+    (Set.range (fun T : StandardYoungTableau (YoungDiagram.ofPartition part) =>
     Ideal.Quotient.mk (griffinIdeal K n lam s)
       (rename (finCongr (fixedSpan_shapeCard part))
         (higherSpechtPolynomial i.left T) *
@@ -1982,13 +1997,30 @@ def partitionSpringerIntertwinerOver {R : Type*} [CommRing R]
   rw [partitionSpringerIntertwinerOver_standard]
   rfl
 
+theorem springerSpan_fieldTower (K : Type*) [Field K] (lam : YoungDiagram) :
+    IsScalarTower K (PolynomialRing lam.card K) (PolynomialRing lam.card K) :=
+  polynomialRing_scalarTower K lam.card
+
+theorem springerSpan_fieldTwoSided (K : Type*) [Field K] (lam : YoungDiagram) :
+    (springerIdeal K lam).IsTwoSided :=
+  springerIdeal_isTwoSided K lam
+
+theorem springerSpan_shapeCard (lam : YoungDiagram) (part : lam.card.Partition) :
+    (YoungDiagram.ofPartition part).card = lam.card :=
+  YoungDiagram.card_ofPartition part
+
 def springerFixedCopySpanOver (K : Type*) [Field K]
     (lam : YoungDiagram) (part : lam.card.Partition)
     (S : StandardYoungTableau (YoungDiagram.ofPartition part)) :
     Submodule K (SpringerRing K lam) :=
-  Submodule.span K (Set.range (fun T : StandardYoungTableau (YoungDiagram.ofPartition part) =>
+  letI : (springerIdeal K lam).IsTwoSided := springerSpan_fieldTwoSided K lam
+  @Submodule.span K (SpringerRing K lam) inferInstance inferInstance
+    (@Submodule.Quotient.module' (PolynomialRing lam.card K) (PolynomialRing lam.card K)
+      inferInstance inferInstance inferInstance K inferInstance inferInstance
+      inferInstance (springerSpan_fieldTower K lam) (springerIdeal K lam))
+    (Set.range (fun T : StandardYoungTableau (YoungDiagram.ofPartition part) =>
     Ideal.Quotient.mk (springerIdeal K lam)
-      (rename (finCongr (fixedSpan_shapeCard part))
+      (rename (finCongr (springerSpan_shapeCard lam part))
         (higherSpechtPolynomial S T))))
 
 def springerFixedCopyOver (K : Type*) [Field K]

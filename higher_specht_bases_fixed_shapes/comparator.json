@@ -30,7 +30,20 @@
     "HigherSpecht.springerIdeal_isTwoSided",
     "HigherSpecht.griffinIdeal_isTwoSided",
     "HigherSpecht.springerIdeal_permutationStable",
-    "HigherSpecht.fixedSpan_shapeCard"
+    "HigherSpecht.fixedSpan_shapeCard",
+    "HigherSpecht.griffinSpan_fieldTower",
+    "HigherSpecht.griffinSpan_fieldTwoSided",
+    "HigherSpecht.springerSpan_fieldTower",
+    "HigherSpecht.springerSpan_fieldTwoSided",
+    "HigherSpecht.springerSpan_shapeCard",
+    "TauCeti.shapePartition_selfCard",
+    "TauCeti.youngSortedParts_size",
+    "TauCeti.YoungTableau.rowCells_fwd_mem",
+    "TauCeti.YoungTableau.rowCells_inv_row_lt",
+    "TauCeti.YoungTableau.rowCells_inv_col_lt",
+    "TauCeti.YoungTableau.rowCells_left_inv",
+    "TauCeti.YoungTableau.rowCells_right_inv",
+    "TauCeti.YoungTableau.sortedBlocks_type_eq"
   ],
   "permitted_axioms": [
     "propext",

@@ -44,12 +44,15 @@ open Equiv
 of `μ`.
 
 The coordinate `⟨i, j⟩` denotes position `j` in block `i`. -/
+theorem youngSortedParts_size {n : ℕ} (μ : n.Partition) :
+    (∑ i : Fin (youngSortedParts μ).length, (youngSortedParts μ).get i) = n := by
+  simp_rw [List.get_eq_getElem]
+  rw [Fin.sum_univ_getElem, ← Multiset.sum_coe, Multiset.sort_eq, μ.parts_sum]
+
 noncomputable def youngBlocksEquiv {n : ℕ} (μ : n.Partition) :
     (Σ i : Fin (youngSortedParts μ).length,
       Fin ((youngSortedParts μ).get i)) ≃ Fin n :=
-  finSigmaFinEquiv.trans <| finCongr <| by
-    simp_rw [List.get_eq_getElem]
-    rw [Fin.sum_univ_getElem, ← Multiset.sum_coe, Multiset.sort_eq, μ.parts_sum]
+  finSigmaFinEquiv.trans (finCongr (youngSortedParts_size μ))
 
 /-- The consecutive-block equivalence sends a local coordinate to the preceding block sizes
 plus that coordinate. -/

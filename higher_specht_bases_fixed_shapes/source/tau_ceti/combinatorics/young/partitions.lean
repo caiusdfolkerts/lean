@@ -115,8 +115,10 @@ namespace TauCeti
 
 /-- The **shape partition** of a Young diagram: the partition of `μ.card` whose parts are the row
 lengths. -/
+theorem shapePartition_selfCard (μ : YoungDiagram) : μ.card = μ.card := rfl
+
 def shapePartition (μ : YoungDiagram) : μ.card.Partition :=
-  μ.toPartition rfl
+  μ.toPartition (shapePartition_selfCard μ)
 
 /-- A partition built from a Young diagram along the trivial equality of sizes is its shape
 partition. -/

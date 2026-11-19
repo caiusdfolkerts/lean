@@ -161,18 +161,23 @@ abbrev youngSortedParts {n : ℕ} (p : n.Partition) : List ℕ :=
   letI : IsTrans ℕ (fun a b : ℕ => a ≥ b) := youngSortOrder_isTrans
   p.parts.sort (· ≥ ·)
 
+theorem shapePartition_selfCard (μ : YoungDiagram) : μ.card = μ.card := rfl
+
 def shapePartition (μ : YoungDiagram) : μ.card.Partition :=
-  μ.toPartition rfl
+  μ.toPartition (shapePartition_selfCard μ)
 
 theorem shapePartition_parts_youngSort (μ : YoungDiagram) :
     youngSortedParts (shapePartition μ) = μ.rowLens := by sorry
 
+theorem youngSortedParts_size {n : ℕ} (μ : n.Partition) :
+    (∑ i : Fin (youngSortedParts μ).length, (youngSortedParts μ).get i) = n := by
+  simp_rw [List.get_eq_getElem]
+  rw [Fin.sum_univ_getElem, ← Multiset.sum_coe, Multiset.sort_eq, μ.parts_sum]
+
 noncomputable def youngBlocksEquiv {n : ℕ} (μ : n.Partition) :
     (Σ i : Fin (youngSortedParts μ).length,
       Fin ((youngSortedParts μ).get i)) ≃ Fin n :=
-  finSigmaFinEquiv.trans <| finCongr <| by
-    simp_rw [List.get_eq_getElem]
-    rw [Fin.sum_univ_getElem, ← Multiset.sum_coe, Multiset.sort_eq, μ.parts_sum]
+  finSigmaFinEquiv.trans (finCongr (youngSortedParts_size μ))
 
 noncomputable def youngBlock {n : ℕ} (μ : n.Partition) (j : Fin n) :
     Fin (youngSortedParts μ).length :=
@@ -187,35 +192,58 @@ namespace YoungTableau
 abbrev rowBlocks (l : List ℕ) : Type :=
   Σ i : Fin l.length, Fin (l.get i)
 
+theorem rowCells_fwd_mem (μ : YoungDiagram) (x : rowBlocks μ.rowLens) :
+    ((x.1, x.2) : ℕ × ℕ) ∈ μ.cells := by
+  rw [YoungDiagram.mem_cells, YoungDiagram.mem_iff_lt_rowLen, ← YoungDiagram.get_rowLens]
+  exact x.2.2
+
+theorem rowCells_inv_row_lt (μ : YoungDiagram) (c : ↥μ.cells) :
+    c.1.1 < μ.rowLens.length := by
+  rw [YoungDiagram.length_rowLens]
+  exact (_root_.YoungDiagram.mem_iff_lt_colLen.mp c.2).trans_le
+    (μ.colLen_anti 0 c.1.2 c.1.2.zero_le)
+
+theorem rowCells_inv_col_lt (μ : YoungDiagram) (c : ↥μ.cells) :
+    c.1.2 < μ.rowLens.get ⟨c.1.1, rowCells_inv_row_lt μ c⟩ := by
+  have hj := _root_.YoungDiagram.mem_iff_lt_rowLen.mp c.2
+  rw [← YoungDiagram.get_rowLens] at hj
+  exact hj
+
+abbrev rowCellsForward (μ : YoungDiagram) (x : rowBlocks μ.rowLens) : ↥μ.cells :=
+  ⟨(x.1, x.2), rowCells_fwd_mem μ x⟩
+
+abbrev rowCellsInverse (μ : YoungDiagram) (c : ↥μ.cells) : rowBlocks μ.rowLens :=
+  ⟨⟨c.1.1, rowCells_inv_row_lt μ c⟩, ⟨c.1.2, rowCells_inv_col_lt μ c⟩⟩
+
+theorem rowCells_left_inv (μ : YoungDiagram) :
+    Function.LeftInverse (rowCellsInverse μ) (rowCellsForward μ) := fun _ => rfl
+
+theorem rowCells_right_inv (μ : YoungDiagram) :
+    Function.RightInverse (rowCellsInverse μ) (rowCellsForward μ) := fun _ => rfl
+
 noncomputable def rowCellsEquiv (μ : YoungDiagram) :
     rowBlocks μ.rowLens ≃ ↥μ.cells where
-  toFun x := ⟨(x.1, x.2), by
-    rw [YoungDiagram.mem_cells, YoungDiagram.mem_iff_lt_rowLen, ← YoungDiagram.get_rowLens]
-    exact x.2.2⟩
-  invFun c :=
-    ⟨⟨c.1.1, by
-      rw [YoungDiagram.length_rowLens]
-      exact (_root_.YoungDiagram.mem_iff_lt_colLen.mp c.2).trans_le
-        (μ.colLen_anti 0 c.1.2 c.1.2.zero_le)⟩,
-      ⟨c.1.2, by
-        have hj := _root_.YoungDiagram.mem_iff_lt_rowLen.mp c.2
-        rw [← YoungDiagram.get_rowLens] at hj
-        exact hj⟩⟩
-  left_inv _ := rfl
-  right_inv _ := rfl
+  toFun := rowCellsForward μ
+  invFun := rowCellsInverse μ
+  left_inv := rowCells_left_inv μ
+  right_inv := rowCells_right_inv μ
 
-noncomputable def sortedBlocksEquivRows (μ : YoungDiagram) :
+theorem sortedBlocks_type_eq (μ : YoungDiagram) :
+    rowBlocks (youngSortedParts (shapePartition μ)) = rowBlocks μ.rowLens :=
+  congrArg rowBlocks (shapePartition_parts_youngSort μ)
+
+noncomputable abbrev sortedBlocksEquivRows (μ : YoungDiagram) :
     rowBlocks (youngSortedParts (shapePartition μ)) ≃ rowBlocks μ.rowLens :=
-  Equiv.cast (congrArg rowBlocks (shapePartition_parts_youngSort μ))
+  Equiv.cast (sortedBlocks_type_eq μ)
 
-noncomputable def rowYoungConjugator {μ : YoungDiagram} (t : YoungTableau μ) :
+noncomputable abbrev rowYoungConjugator {μ : YoungDiagram} (t : YoungTableau μ) :
     Equiv.Perm (Fin μ.card) :=
   (youngBlocksEquiv (shapePartition μ)).symm |>.trans <|
     (sortedBlocksEquivRows μ).trans ((rowCellsEquiv μ).trans t)
 
 variable {μ : YoungDiagram}
 
-noncomputable def tabloid (t : YoungTableau μ) :
+noncomputable abbrev tabloid (t : YoungTableau μ) :
     Equiv.Perm (Fin μ.card) ⧸ youngSubgroup (shapePartition μ) :=
   QuotientGroup.mk (rowYoungConjugator t)
 
@@ -603,20 +631,50 @@ theorem fixedSpan_shapeCard {n : ℕ} (part : n.Partition) :
     (YoungDiagram.ofPartition part).card = n :=
   YoungDiagram.card_ofPartition part
 
+theorem springerSpan_fieldTower (K : Type*) [Field K] (lam : YoungDiagram) :
+    IsScalarTower K (PolynomialRing lam.card K) (PolynomialRing lam.card K) :=
+  polynomialRing_scalarTower K lam.card
+
+theorem springerSpan_fieldTwoSided (K : Type*) [Field K] (lam : YoungDiagram) :
+    (springerIdeal K lam).IsTwoSided :=
+  springerIdeal_isTwoSided K lam
+
+theorem springerSpan_shapeCard (lam : YoungDiagram) (part : lam.card.Partition) :
+    (YoungDiagram.ofPartition part).card = lam.card :=
+  YoungDiagram.card_ofPartition part
+
 def springerFixedCopySpanOver (K : Type*) [Field K]
     (lam : YoungDiagram) (part : lam.card.Partition)
     (S : StandardYoungTableau (YoungDiagram.ofPartition part)) :
     Submodule K (SpringerRing K lam) :=
-  Submodule.span K (Set.range (fun T : StandardYoungTableau (YoungDiagram.ofPartition part) =>
+  letI : (springerIdeal K lam).IsTwoSided := springerSpan_fieldTwoSided K lam
+  @Submodule.span K (SpringerRing K lam) inferInstance inferInstance
+    (@Submodule.Quotient.module' (PolynomialRing lam.card K) (PolynomialRing lam.card K)
+      inferInstance inferInstance inferInstance K inferInstance inferInstance
+      inferInstance (springerSpan_fieldTower K lam) (springerIdeal K lam))
+    (Set.range (fun T : StandardYoungTableau (YoungDiagram.ofPartition part) =>
     Ideal.Quotient.mk (springerIdeal K lam)
-      (rename (finCongr (fixedSpan_shapeCard part))
+      (rename (finCongr (springerSpan_shapeCard lam part))
         (higherSpechtPolynomial S T))))
+
+theorem griffinSpan_fieldTower (K : Type*) [Field K] (n : ℕ) :
+    IsScalarTower K (PolynomialRing n K) (PolynomialRing n K) :=
+  polynomialRing_scalarTower K n
+
+theorem griffinSpan_fieldTwoSided (K : Type*) [Field K] (n : ℕ)
+    (lam : YoungDiagram) (s : ℕ) : (griffinIdeal K n lam s).IsTwoSided :=
+  griffinIdeal_isTwoSided K n lam s
 
 def griffinFixedCopySpanOver (K : Type*) [Field K]
     {n : ℕ} (lam : YoungDiagram) (hk : lam.card ≤ n) (s : ℕ)
     (part : n.Partition) (i : PartitionGriffinCopies n lam hk s part) :
     Submodule K (GriffinRing K n lam s) :=
-  Submodule.span K (Set.range (fun T : StandardYoungTableau (YoungDiagram.ofPartition part) =>
+  letI : (griffinIdeal K n lam s).IsTwoSided := griffinSpan_fieldTwoSided K n lam s
+  @Submodule.span K (GriffinRing K n lam s) inferInstance inferInstance
+    (@Submodule.Quotient.module' (PolynomialRing n K) (PolynomialRing n K)
+      inferInstance inferInstance inferInstance K inferInstance inferInstance
+      inferInstance (griffinSpan_fieldTower K n) (griffinIdeal K n lam s))
+    (Set.range (fun T : StandardYoungTableau (YoungDiagram.ofPartition part) =>
     Ideal.Quotient.mk (griffinIdeal K n lam s)
       (rename (finCongr (fixedSpan_shapeCard part))
         (higherSpechtPolynomial i.left T) *
@@ -630,7 +688,7 @@ abbrev TableauTabloid (mu : YoungDiagram) :=
 
 abbrev TabloidSpaceOver (R : Type*) (mu : YoungDiagram) := TableauTabloid mu → R
 
-def tabloidRepresentationOver (R : Type*) [CommRing R] (mu : YoungDiagram) :
+abbrev tabloidRepresentationOver (R : Type*) [CommRing R] (mu : YoungDiagram) :
     Representation R (Equiv.Perm (Fin mu.card)) (TabloidSpaceOver R mu) where
   toFun g :=
     { toFun f := fun q => f (g⁻¹ • q)
@@ -639,7 +697,7 @@ def tabloidRepresentationOver (R : Type*) [CommRing R] (mu : YoungDiagram) :
   map_one' := by ext f q; simp
   map_mul' g h := by ext f q; simp [mul_smul]
 
-def polytabloidOver (R : Type*) [CommRing R] {mu : YoungDiagram}
+abbrev polytabloidOver (R : Type*) [CommRing R] {mu : YoungDiagram}
     (T : YoungTableau mu) : TabloidSpaceOver R mu :=
   ∑ g : colSubgroup T, ((Equiv.Perm.sign g.val : ℤ) : R) •
     Pi.single (g.val • tabloid T) 1
@@ -650,12 +708,12 @@ theorem polytabloidSpan_stable (R : Type*) [CommRing R] (mu : YoungDiagram)
     tabloidRepresentationOver R mu g v ∈
       Submodule.span R (Set.range (polytabloidOver R (mu := mu))) := by sorry
 
-def spechtSubrepresentationOver (R : Type*) [CommRing R] (mu : YoungDiagram) :
+abbrev spechtSubrepresentationOver (R : Type*) [CommRing R] (mu : YoungDiagram) :
     Subrepresentation (tabloidRepresentationOver R mu) where
   toSubmodule := Submodule.span R (Set.range (polytabloidOver R (mu := mu)))
   apply_mem_toSubmodule := polytabloidSpan_stable R mu
 
-abbrev partitionSpechtRepresentationOver (R : Type*) [CommRing R] {n : ℕ}
+abbrev partitionSpechtRepresentationOver (R : Type palomarRepU) [CommRing R] {n : ℕ}
     (part : n.Partition) :=
   (spechtSubrepresentationOver R (YoungDiagram.ofPartition part)).toRepresentation.comp
     (finCongr (YoungDiagram.card_ofPartition part).symm).permCongrHom.toMonoidHom
