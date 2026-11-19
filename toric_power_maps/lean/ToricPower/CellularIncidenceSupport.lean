@@ -32,19 +32,19 @@ homology at that point. This is the actual map of the actual spaces. -/
 theorem attaching_homology_local_zero {n : ℕ}
     (x : TauCeti.skeletonObj C (n + 1))
     (j : cell C (n + 1))
-    (hmiss : ∀ z, TauCeti.cellAttachingMap C j z ≠ x) :
-    SSet.homologyMap (TopCat.toSSet.map (TauCeti.cellAttachingMap C j))
+    (hmiss : ∀ z, TauCeti.cellAttachingMap j z ≠ x) :
+    SSet.homologyMap (TopCat.toSSet.map (TauCeti.cellAttachingMap j))
         (ModuleCat.of R R) n ≫
       (TopPair.ofSubset ({x}ᶜ : Set (TauCeti.skeletonObj C (n + 1)))).singularHomologyπ
         (ModuleCat.of R R) n = 0 := by
   let P := TopPair.ofSubset ({x}ᶜ : Set (TauCeti.skeletonObj C (n + 1)))
   let g : TopCat.diskBoundary.{u} (n + 1) ⟶ P.snd :=
-    TopCat.ofHom ⟨fun z => ⟨TauCeti.cellAttachingMap C j z, hmiss z⟩,
-      (TauCeti.cellAttachingMap C j).hom.continuous.subtype_mk _⟩
-  have hfac : g ≫ P.map = TauCeti.cellAttachingMap C j := by
+    TopCat.ofHom ⟨fun z => ⟨TauCeti.cellAttachingMap j z, hmiss z⟩,
+      (TauCeti.cellAttachingMap j).hom.continuous.subtype_mk _⟩
+  have hfac : g ≫ P.map = TauCeti.cellAttachingMap j := by
     ext z
     rfl
-  change SSet.homologyMap (TopCat.toSSet.map (TauCeti.cellAttachingMap C j))
+  change SSet.homologyMap (TopCat.toSSet.map (TauCeti.cellAttachingMap j))
     (ModuleCat.of R R) n ≫ P.singularHomologyπ (ModuleCat.of R R) n = 0
   rw [← hfac, Functor.map_comp, SSet.homologyMap_comp, Category.assoc,
     P.homologyMap_comp_singularHomologyπ, comp_zero]
@@ -54,7 +54,7 @@ actual point in the open target cell. -/
 theorem cellularIncidence_eq_zero_of_attaching_misses {n : ℕ} {i : cell C n}
     (x : TauCeti.skeletonObj C (n + 1))
     (hx : (x : X) ∈ openCell n i) (j : cell C (n + 1))
-    (hmiss : ∀ z, TauCeti.cellAttachingMap C j z ≠ x) :
+    (hmiss : ∀ z, TauCeti.cellAttachingMap j z ≠ x) :
     TauCeti.cellularIncidence C R n i j = 0 := by
   rw [TauCeti.cellularIncidence_eq_inv_cellLocalClass C R x hx j]
   have hzero := attaching_homology_local_zero C R x j hmiss

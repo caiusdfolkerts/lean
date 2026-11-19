@@ -45,6 +45,7 @@ theorem invariantCartierDivisor_zero (fan : Fan i) (nonempty : Nonempty fan.cone
   apply atlas.existsUnique_cartierDivisor.unique
   · exact atlas.cartierDivisor_restrict
   · intro cone
+    change ↥fan.cones at cone
     letI := chartOpen_nonempty fan cone
     let q := coneDivisorCharacter fan regular (0 : fan.Ray → ℤ) cone
     have positive : q ∈ dualSemigroup fan.lattice cone.val := by
@@ -63,18 +64,25 @@ theorem invariantCartierDivisor_zero (fan : Fan i) (nonempty : Nonempty fan.cone
       (toricMonomialUnit fan.lattice cone.val q positive negative)
     have unit_germ : Units.map
         (fan.algebraicRealization.germToFunctionField (fan.affineToricChartι cone).opensRange).hom unit =
-      rationalCharacterUnit fan nonempty q :=
-        (chartCoordinateGerm_regularUnit fan nonempty cone
+      rationalCharacterUnit fan nonempty q := by
+      calc
+        _ = TauCeti.AlgebraicGeometry.Scheme.regularUnitToFunctionField
+            fan.algebraicRealization (fan.affineToricChartι cone).opensRange unit :=
+          (TauCeti.AlgebraicGeometry.Scheme.regularUnitToFunctionField_apply
+            fan.algebraicRealization (fan.affineToricChartι cone).opensRange unit).symm
+        _ = _ := (chartCoordinateGerm_regularUnit fan nonempty cone
           (toricMonomialUnit fan.lattice cone.val q positive negative)).trans
             (chartCoordinateGerm_monomialUnit fan nonempty cone q positive negative)
     have zero_class := TauCeti.AlgebraicGeometry.Scheme.rationalUnitClass_germToFunctionField_eq_zero
       fan.algebraicRealization (fan.affineToricChartι cone).opensRange unit
-    rw [unit_germ] at zero_class
+    have unit_class := congrArg (fun z =>
+      TauCeti.AlgebraicGeometry.Scheme.rationalUnitClass fan.algebraicRealization
+        (fan.affineToricChartι cone).opensRange (Additive.ofMul z)) unit_germ
     change (0 : TauCeti.AlgebraicGeometry.Scheme.CartierDivisor fan.algebraicRealization) |_
       (fan.affineToricChartι cone).opensRange =
         TauCeti.AlgebraicGeometry.Scheme.rationalUnitClass fan.algebraicRealization
           (fan.affineToricChartι cone).opensRange (Additive.ofMul (rationalCharacterUnit fan nonempty q))
-    simpa only [TopCat.Presheaf.restrictOpen, TopCat.Presheaf.restrict, map_zero] using zero_class.symm
+    simpa only [TopCat.Presheaf.restrictOpen, TopCat.Presheaf.restrict, map_zero] using zero_class.symm.trans unit_class
 
 /-- The actual zero-coefficient divisor sheaf is the structure sheaf. -/
 def invariantCartierZeroSheafIso (fan : Fan i) (nonempty : Nonempty fan.cones)

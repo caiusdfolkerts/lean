@@ -119,12 +119,18 @@ def simultaneousPatch (patches : Index → Set E) (radius : ℝ) (index : Active
 
 theorem simultaneousPatch_isOpen (patches : Index → Set E) (radius : ℝ) (index : ActiveIndex patches) :
     IsOpen (simultaneousPatch patches radius index) := by
-  apply IsOpen.inter
-  · exact isOpen_lt continuous_const
+  unfold simultaneousPatch
+  have h1 : IsOpen {point | 0 < (subdivisionBarycenterMap patches point).val index} :=
+    isOpen_lt continuous_const
       ((continuous_into_realization_iff (activeNerve patches) _).mp
         (subdivisionBarycenterMap patches).continuous index)
-  · exact Metric.isOpen_thickening.preimage
+  have h2 : IsOpen {point | (barycentricWitnessMap patches point).val ∈
+      Metric.thickening radius (corePatch patches index.val)} :=
+    Metric.isOpen_thickening.preimage
       (continuous_subtype_val.comp (barycentricWitnessMap patches).continuous)
+  convert h1.inter h2 using 1
+  ext point
+  simp only [Set.mem_inter_iff, Set.mem_setOf_eq]
 
 theorem simultaneousPatch_cover (patches : Index → Set E)
     (patches_convex : ∀ index, Convex ℝ (patches index)) (radius : ℝ) (positive : 0 < radius) :
