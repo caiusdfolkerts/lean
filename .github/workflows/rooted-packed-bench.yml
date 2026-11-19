@@ -1,0 +1,40 @@
+name: Rooted packed node block comparison
+on:
+  push:
+    branches: [palomar/diagnostic-rooted-blocks-8]
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 28
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Install the pinned Lean compiler
+        timeout-minutes: 6
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 --max-time 150 https://github.com/leanprover/elan/releases/download/v4.2.3/elan-x86_64-unknown-linux-gnu.tar.gz -o "$RUNNER_TEMP/elan.tar.gz"
+          echo "df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2  $RUNNER_TEMP/elan.tar.gz" | sha256sum --check
+          tar -xzf "$RUNNER_TEMP/elan.tar.gz" -C "$RUNNER_TEMP"
+          "$RUNNER_TEMP/elan-init" -y --no-modify-path --default-toolchain none
+          "$HOME/.elan/bin/elan" toolchain install "$(cat common/lean-toolchain)"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Compare the exact before and after scopes
+        timeout-minutes: 21
+        run: python3 -u benchmark_remote.py
+      - name: Retain timing and kernel audit logs
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: rooted-grouping-comparison
+          path: |
+            fixture.json
+            benchmark-result.json
+            '*.log'
+            samples/**/*.log
+            common-logs/**/*.log
+          retention-days: 5
+          if-no-files-found: warn
