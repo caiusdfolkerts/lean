@@ -144,7 +144,7 @@ theorem untruncated_graded_character_rational
           χ b.val.1 * (Nat.card (BoundedLengthPartitionDegree m (d - cochargeDegree b.val.2)) : ℂ)
         else 0 := by
     dsimp only [S]
-    rw [PowerSeries.coeff_mk, character_untruncatedGradedPiece]
+    rw [PowerSeries.coeff_mk, character_untruncatedGradedPiece n lam hk d g]
     have hchar (part : n.Partition) : (spechtModuleℂ part).ρ.character g = χ part :=
       (congrFun (Representation.char_iso (complexYoungIdealSpechtEquiv part)) g).symm
     simp_rw [hchar]
