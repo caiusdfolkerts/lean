@@ -3484,17 +3484,27 @@ theorem PermutationStable.rename_mem_iff {I : Ideal (PolynomialRing n R)}
     simpa only [rename_rename, Equiv.symm_comp_self, rename_id_apply] using h
   · exact hI e p
 
+theorem polynomialRename_one (R : Type*) [CommRing R] (n : ℕ) :
+    (MvPolynomial.rename (1 : Equiv.Perm (Fin n))).toLinearMap =
+      (1 : Module.End R (PolynomialRing n R)) := by
+  apply LinearMap.ext
+  intro p
+  exact MvPolynomial.rename_id_apply p
+
+theorem polynomialRename_mul (R : Type*) [CommRing R] (n : ℕ)
+    (e f : Equiv.Perm (Fin n)) :
+    (MvPolynomial.rename (e * f)).toLinearMap =
+      ((MvPolynomial.rename e).toLinearMap : Module.End R (PolynomialRing n R)) *
+        (MvPolynomial.rename f).toLinearMap := by
+  apply LinearMap.ext
+  intro p
+  exact (MvPolynomial.rename_rename f e p).symm
+
 def polynomialRepresentation (R : Type*) [CommRing R] (n : ℕ) :
     Representation R (Equiv.Perm (Fin n)) (PolynomialRing n R) where
   toFun e := (MvPolynomial.rename e).toLinearMap
-  map_one' := by
-    apply LinearMap.ext
-    intro p
-    exact MvPolynomial.rename_id_apply p
-  map_mul' e f := by
-    apply LinearMap.ext
-    intro p
-    exact (MvPolynomial.rename_rename f e p).symm
+  map_one' := polynomialRename_one R n
+  map_mul' e f := polynomialRename_mul R n e f
 
 @[simp] theorem polynomialRepresentation_apply (e : Equiv.Perm (Fin n))
     (p : PolynomialRing n R) : polynomialRepresentation R n e p = MvPolynomial.rename e p := rfl

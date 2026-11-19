@@ -457,17 +457,27 @@ def UnboundedHarmonicIndex.eligible {n : ℕ} (i : UnboundedHarmonicIndex n)
     CatDominates (prefixTableau i.left lam.card
       (by simpa only [YoungDiagram.card_ofPartition] using hk)) lam
 
+theorem polynomialRename_one (R : Type*) [CommRing R] (n : ℕ) :
+    (MvPolynomial.rename (1 : Equiv.Perm (Fin n))).toLinearMap =
+      (1 : Module.End R (PolynomialRing n R)) := by
+  apply LinearMap.ext
+  intro p
+  exact MvPolynomial.rename_id_apply p
+
+theorem polynomialRename_mul (R : Type*) [CommRing R] (n : ℕ)
+    (e f : Equiv.Perm (Fin n)) :
+    (MvPolynomial.rename (e * f)).toLinearMap =
+      ((MvPolynomial.rename e).toLinearMap : Module.End R (PolynomialRing n R)) *
+        (MvPolynomial.rename f).toLinearMap := by
+  apply LinearMap.ext
+  intro p
+  exact (MvPolynomial.rename_rename f e p).symm
+
 def polynomialRepresentation (R : Type*) [CommRing R] (n : ℕ) :
     Representation R (Equiv.Perm (Fin n)) (PolynomialRing n R) where
   toFun e := (MvPolynomial.rename e).toLinearMap
-  map_one' := by
-    apply LinearMap.ext
-    intro p
-    exact MvPolynomial.rename_id_apply p
-  map_mul' e f := by
-    apply LinearMap.ext
-    intro p
-    exact (MvPolynomial.rename_rename f e p).symm
+  map_one' := polynomialRename_one R n
+  map_mul' e f := polynomialRename_mul R n e f
 
 /-- The ordinary apolar pairing written in monomial coefficients. -/
 def apolarCoefficientPairing {n : ℕ} (f p : PolynomialRing n ℂ) : ℂ :=
