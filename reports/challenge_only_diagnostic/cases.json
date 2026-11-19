@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "kind": "Challenge-only elaboration diagnostic; not full preflight",
+  "pipeline_commit": "14aa8d6b3c2f14a8540605e37144560b9a00e7e7",
+  "default_case_ids": [
+    "fermion_measured_semantic_repair_r4"
+  ],
+  "operator_resource_policy": {
+    "memory_mib": 8192,
+    "runner_memory_gib": 16,
+    "compiler_processes_per_job": 1,
+    "matrix_max_parallel": 2,
+    "compile_timeout_seconds": 2400
+  },
+  "revision": "fermion_measured_semantic_repair_r4",
+  "cases": [
+    {
+      "id": "fermion_measured_semantic_repair_r4",
+      "module": "Challenge",
+      "case_dir": "cases/fermion_measured_semantic_repair_r4",
+      "original_package": "packages/two_fermion_coinvariants",
+      "original_challenge": "reports/two_fermion_coinvariants/measured-semantic-smoke-r4/Challenge.lean",
+      "lean_toolchain": "leanprover/lean4:v4.36.0-rc2",
+      "hashes": {
+        "lean-toolchain": "11c697aebe5b539d74f5069e497a588e7dfab1c4eeb74313f28357e351c55ca3",
+        "lake-manifest.json": "84d0d4d3f5d44f03f67ad9b7c5996361c865690a3d6483f91d368e052696c608",
+        "original-lakefile.toml": "37a7fb18cad12b774bc336dd117e0a4db04bbec737f4396b609dd1ab44e358e0",
+        "Challenge.lean": "4c7f7067b332b303e0c54a5249d97cb4c0dbbeaad2feb306ef58dfbe431fb114"
+      },
+      "challenge_lines": 947,
+      "challenge_bytes": 72893,
+      "dependency_pins": [
+        {
+          "name": "mathlib",
+          "url": "https://github.com/leanprover-community/mathlib4",
+          "rev": "428aa8288d061ec3ae75c1b85ac178e2cb9def23"
+        },
+        {
+          "name": "plausible",
+          "url": "https://github.com/leanprover-community/plausible",
+          "rev": "129d1ba9a16bc0660f46c79e9fb041ef5d5d80de"
+        },
+        {
+          "name": "LeanSearchClient",
+          "url": "https://github.com/leanprover-community/LeanSearchClient",
+          "rev": "c61286b7b63cbfd563b28e11e81d0a18233a044a"
+        },
+        {
+          "name": "importGraph",
+          "url": "https://github.com/leanprover-community/import-graph",
+          "rev": "b8cc5dd0a36233b88a6ed5a7dbf1207d09338c60"
+        },
+        {
+          "name": "proofwidgets",
+          "url": "https://github.com/leanprover-community/ProofWidgets4",
+          "rev": "16259c0d07d61ee37d999d05b5cf96338b8daa11"
+        },
+        {
+          "name": "aesop",
+          "url": "https://github.com/leanprover-community/aesop",
+          "rev": "7d11bfa88558f8d3d90afdf6bd877ed70001498d"
+        },
+        {
+          "name": "Qq",
+          "url": "https://github.com/leanprover-community/quote4",
+          "rev": "b0256621cb88178e9ad932a53633077b3029e621"
+        },
+        {
+          "name": "batteries",
+          "url": "https://github.com/leanprover-community/batteries",
+          "rev": "6d971e7e6b3f7d0a501c5418815aa9022edd3499"
+        },
+        {
+          "name": "Cli",
+          "url": "https://github.com/leanprover/lean4-cli",
+          "rev": "c09cb1e4f1e6e1c231a1175a12b681b075054a1b"
+        }
+      ],
+      "diagnostic_class": "All40 full principal types,25 genuine support proofs,original bound_add proof adapted by exact change and4 computation controls; rejected toFun experiment excluded",
+      "remote_memory_mib": 8192
+    }
+  ]
+}
