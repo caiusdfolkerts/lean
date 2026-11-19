@@ -4,6 +4,12 @@ public import Mathlib
 /-! Naturality of ordinary rank-selected cohomology. -/
 
 @[expose] public section
+namespace PalomarBarycentricTor
+theorem natRightCancelAdd : IsRightCancelAdd ℕ := by infer_instance
+def naturalUp : ComplexShape ℕ := @ComplexShape.up ℕ _ natRightCancelAdd _
+attribute [reducible] naturalUp
+attribute [instance 2200] natRightCancelAdd
+end PalomarBarycentricTor
 noncomputable section
 set_option autoImplicit false
 set_option maxRecDepth 4000
@@ -39,6 +45,7 @@ def faceRank (p : P) : ℕ := (faceVertices p).card
 theorem faceRank_strictMono (hs : IsSimplicialPoset P) : StrictMono (faceRank : P → ℕ) := by sorry
 theorem faceRank_eq_of_orderIso {Q : Type*} [PartialOrder Q] [OrderBot Q] [Fintype Q] (e : P ≃o Q) (p : P) : faceRank (e p) = faceRank p := by sorry
 abbrev NonzeroFace (P : Type*) [Preorder P] [OrderBot P] := {p : P // p ≠ ⊥}
+instance palomarNonzeroFaceFintype : Fintype (NonzeroFace P) := Fintype.ofFinite _
 end
 section
 variable {V C : Type*} [Fintype V] [Fintype C]
@@ -95,7 +102,7 @@ def relativeAugmentedCoboundary (Λ Λ₀ : Finset V → Prop) (hΛ : Simplicial
   Λ Λ₀ i) →ₗ[K] Module.Dual K (RelativeAugmentedChains (K := K) Λ Λ₀ (i + 1)) := (relativeAugmentedBoundary Λ Λ₀ hΛ hΛ₀ i).dualMap
 theorem relativeAugmentedCoboundary_square (Λ Λ₀ : Finset V → Prop) (hΛ : Simplicial.Downward Λ) (hΛ₀ : Simplicial.Downward Λ₀) (i : ℕ) : (relativeAugmentedCoboundary (K := K)
   Λ Λ₀ hΛ hΛ₀ (i + 1)).comp (relativeAugmentedCoboundary (K := K) Λ Λ₀ hΛ hΛ₀ i) = 0 := by sorry
-def relativeAugmentedCochainComplex (Λ Λ₀ : Finset V → Prop) (hΛ : Simplicial.Downward Λ) (hΛ₀ : Simplicial.Downward Λ₀) : CochainComplex (ModuleCat.{max u v} K) ℕ :=
+def relativeAugmentedCochainComplex (Λ Λ₀ : Finset V → Prop) (hΛ : Simplicial.Downward Λ) (hΛ₀ : Simplicial.Downward Λ₀) : HomologicalComplex (ModuleCat.{max u v} K) PalomarBarycentricTor.naturalUp :=
   CochainComplex.of (fun i => ModuleCat.of K (Module.Dual K (RelativeAugmentedChains (K := K) Λ Λ₀ i))) (fun i => ModuleCat.ofHom (relativeAugmentedCoboundary Λ Λ₀ hΛ hΛ₀ i))
   (fun i => ModuleCat.hom_ext (relativeAugmentedCoboundary_square Λ Λ₀ hΛ hΛ₀ i))
 def reducedRelativeCohomology (Λ Λ₀ : Finset V → Prop)
@@ -185,7 +192,7 @@ variable [D : FourPapers.Universal.ProperlyColoredComplex V C] (Q : D.Subcomplex
 local instance : DecidableEq C := Classical.decEq C
 set_option synthInstance.checkSynthOrder false in
 local instance relativeSquarefreeHomologyVertexOrder : LinearOrder V := D.colorLinearOrder
-abbrev rankCochainComplex (S : Finset C) : CochainComplex (ModuleCat.{u} K) ℕ := relativeAugmentedCochainComplex (K := K) (rankSelection D S) (rankSelection Q.toColoredComplex
+abbrev rankCochainComplex (S : Finset C) : HomologicalComplex (ModuleCat.{u} K) PalomarBarycentricTor.naturalUp := relativeAugmentedCochainComplex (K := K) (rankSelection D S) (rankSelection Q.toColoredComplex
   S) (rankSelection_downward D S) (rankSelection_downward Q.toColoredComplex S)
 end
 open CommAlg
@@ -323,7 +330,7 @@ def augmentedCoboundary (Λ : Finset V → Prop) (hΛ : Simplicial.Downward Λ) 
   := K) Λ (i + 1)) := (augmentedFaceBoundary Λ hΛ i).dualMap
 theorem augmentedCoboundary_square (Λ : Finset V → Prop) (hΛ : Simplicial.Downward Λ) (i : ℕ) : (augmentedCoboundary (K := K) Λ hΛ (i + 1)).comp (augmentedCoboundary (K := K)
   Λ hΛ i) = 0 := by sorry
-def augmentedCochainComplex (Λ : Finset V → Prop) (hΛ : Simplicial.Downward Λ) : CochainComplex (ModuleCat.{max u v} K) ℕ := CochainComplex.of (fun i => ModuleCat.of K
+def augmentedCochainComplex (Λ : Finset V → Prop) (hΛ : Simplicial.Downward Λ) : HomologicalComplex (ModuleCat.{max u v} K) PalomarBarycentricTor.naturalUp := CochainComplex.of (fun i => ModuleCat.of K
   (Module.Dual K (Simplicial.Chains (k := K) Λ i))) (fun i => ModuleCat.ofHom (augmentedCoboundary Λ hΛ i)) (fun i => ModuleCat.hom_ext (augmentedCoboundary_square Λ hΛ i))
 @[simp] theorem augmentedCochainComplex_d (Λ : Finset V → Prop)
     (hΛ : Simplicial.Downward Λ) (i : ℕ) :
@@ -364,10 +371,10 @@ set_option backward.isDefEq.respectTransparency.types false
 open CommAlg
 variable {V : Type u} {C : Type} {K : Type u} [Fintype V] [Fintype C] [LinearOrder C] [CommRing K]
 variable [D : FourPapers.Universal.ProperlyColoredComplex V C] {Q : D.Subcomplex}
-local instance : DecidableEq C := Classical.decEq C
+local instance instDecidableEq_4 : DecidableEq C := Classical.decEq C
 set_option synthInstance.checkSynthOrder false in
 local instance absoluteCochainsVertexOrder : LinearOrder V := D.colorLinearOrder
-local instance : DecidableEq V := Classical.decEq V
+local instance instDecidableEq_5 : DecidableEq V := Classical.decEq V
 theorem rankSelection_void (hvoid : ∀ F, ¬ Q.face F) (S : Finset C) (F : Finset V) : ¬ rankSelection Q.toColoredComplex S F := by sorry
 end FourPapers.Universal.ProperlyColoredComplex.Subcomplex
 namespace FourPapers.Universal.ProperlyColoredComplex.Subcomplex.ColorPairAutomorphism
@@ -375,10 +382,10 @@ set_option backward.isDefEq.respectTransparency.types false
 open CommAlg
 variable {V : Type u} {C : Type} {K : Type u} [Fintype V] [Fintype C] [LinearOrder C] [CommRing K]
 variable [D : FourPapers.Universal.ProperlyColoredComplex V C] {Q : D.Subcomplex}
-local instance : DecidableEq C := Classical.decEq C
+attribute [local instance] instDecidableEq_4
 set_option synthInstance.checkSynthOrder false in
 attribute [local instance] absoluteCochainsVertexOrder
-local instance : DecidableEq V := Classical.decEq V
+attribute [local instance] instDecidableEq_5
 variable (e : Q.ColorPairAutomorphism) (K)
 def absoluteInverseFace (S : Finset C) (i : ℕ)
     (F : AugmentedFaceIndex (rankSelection D S) i) :
