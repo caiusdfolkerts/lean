@@ -9208,9 +9208,12 @@ theorem untruncatedCommonVector_relabel {μ : YoungDiagram}
     normalizedOrdinaryDerivative_rename, adjointYoungApply_relabel]
 
 /-- The same literal finite formula, with its reference tableau explicit. -/
+theorem witnessPartitionCard {n : ℕ} (p : n.Partition) :
+    (YoungDiagram.ofPartition p).card = n := YoungDiagram.card_ofPartition p
+
 def finiteCommonHarmonicVectorWithTableau {n s : ℕ} (i : FiniteHarmonicIndex n s)
     (T : YoungTableau (YoungDiagram.ofPartition i.part)) : PolynomialRing n ℂ :=
-  MvPolynomial.rename (finCongr (YoungDiagram.card_ofPartition i.part))
+  MvPolynomial.rename (finCongr (witnessPartitionCard i.part))
     (adjointYoungApply T (normalizedOrdinaryDerivative
       (griffinWitnessRejection i.left T i.multiplier (maximalFinitePrefix i)
         (maximalFinitePrefix_le i) s)

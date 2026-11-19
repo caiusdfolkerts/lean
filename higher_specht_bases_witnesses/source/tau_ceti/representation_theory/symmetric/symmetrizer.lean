@@ -326,16 +326,18 @@ theorem asAlgebraHom_columnAntisymmetrizer_apply {V : Type*} [AddCommGroup V] [M
   rw [columnAntisymmetrizer_eq_subgroupCharSum, asAlgebraHom_subgroupCharSum_apply]
   simp
 
+universe palomarYoungU
+
 section Transport
 
-variable (k : Type*) [Semiring k] [Algebra ℚ k]
+variable (k : Type palomarYoungU) [Semiring k] [Algebra ℚ k]
 
 /-- The Young symmetrizer `c_t` with the coefficients of its rational form transported into a
 `ℚ`-algebra `k`, so that it can act on a `k`-module. The algebra `k` need not be commutative.
 
 The `ℚ`-algebra hypothesis comes from `youngSymmetrizer` being defined over `ℚ` here, not from
 `c_t`, whose coefficients are integral. -/
-@[expose] noncomputable def youngSymmetrizerOver (t : YoungTableau μ) :
+@[expose] noncomputable abbrev youngSymmetrizerOver (t : YoungTableau μ) :
     MonoidAlgebra k (Equiv.Perm (Fin μ.card)) :=
   MonoidAlgebra.mapAlgHom _ (Algebra.ofId ℚ k) (youngSymmetrizer t)
 

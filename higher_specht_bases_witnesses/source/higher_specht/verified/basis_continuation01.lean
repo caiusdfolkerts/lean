@@ -1905,8 +1905,11 @@ namespace HigherSpecht
 
 variable {R : Type*} [CommRing R] {n : ℕ} {μ : YoungDiagram}
 
+theorem witnessColumnMem (mu : YoungDiagram) (j : ℕ) (i : Fin (mu.colLen j)) :
+    (i.val, j) ∈ mu := YoungDiagram.mem_iff_lt_colLen.mpr i.isLt
+
 def columnEmbedding (U : ↥μ.cells ↪ Fin n) (j : ℕ) : Fin (μ.colLen j) ↪ Fin n where
-  toFun i := U ⟨(i.val, j), YoungDiagram.mem_iff_lt_colLen.mpr i.isLt⟩
+  toFun i := U ⟨(i.val, j), witnessColumnMem μ j i⟩
   inj' i l h := by
     have hi := congrArg (fun c : ↥μ.cells => c.val.1) (U.injective h)
     exact Fin.ext hi
@@ -1933,7 +1936,7 @@ theorem range_columnEmbedding (U : ↥μ.cells ↪ Fin n) (j : ℕ) :
   ext i
   simp
 
-def columnAlternant (U : ↥μ.cells ↪ Fin n) (j : ℕ) : PolynomialRing n R :=
+abbrev columnAlternant (U : ↥μ.cells ↪ Fin n) (j : ℕ) : PolynomialRing n R :=
   MvPolynomial.rename (columnEmbedding U j)
     (TauCeti.alternant (Fin (μ.colLen j)) R fun i => i.val)
 
@@ -1944,7 +1947,7 @@ def outsidePower (U : ↥μ.cells ↪ Fin n) (s : ℕ) : PolynomialRing n R :=
 
 /-- The manuscript's column product with its outside exponents.  The use of
 n padded columns is harmless because zero-height alternants are 1. -/
-def columnWitness (U : ↥μ.cells ↪ Fin n) (s : ℕ) : PolynomialRing n R :=
+abbrev columnWitness (U : ↥μ.cells ↪ Fin n) (s : ℕ) : PolynomialRing n R :=
   (∏ j ∈ Finset.range n, columnAlternant U j) * outsidePower U s
 
 theorem rename_esymm_embedding {k : ℕ} (e : Fin k ↪ Fin n) (d : ℕ) :
@@ -5555,9 +5558,14 @@ def boostedLabel (S : StandardYoungTableau μ) (eta : YoungDiagram) (i : Fin μ.
 def boostedFilling (S : StandardYoungTableau μ) (eta : YoungDiagram) (c : ↥μ.cells) : ℕ :=
   boostedLabel S eta (S c)
 
+theorem witnessFinFinite (n : ℕ) : Finite (Fin n) := inferInstance
+
+abbrev witnessFinFinsupp (n : ℕ) : (Fin n →₀ ℕ) ≃ (Fin n → ℕ) :=
+  @Finsupp.equivFunOnFinite (Fin n) ℕ _ (witnessFinFinite n)
+
 def transportedBoosted (S : StandardYoungTableau μ) (T : YoungTableau μ)
     (eta : YoungDiagram) : Fin μ.card →₀ ℕ :=
-  Finsupp.equivFunOnFinite.symm fun i => boostedFilling S eta (T.symm i)
+  (witnessFinFinsupp μ.card).symm fun i => boostedFilling S eta (T.symm i)
 
 theorem boostedLabel_mono (S : StandardYoungTableau μ) (eta : YoungDiagram) :
     Monotone (boostedLabel S eta) :=

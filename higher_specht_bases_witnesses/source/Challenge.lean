@@ -176,6 +176,8 @@ theorem colLen_bot (j : ℕ) : (⊥ : YoungDiagram).colLen j = 0 :=
 
 end YoungDiagram
 
+universe palomarYoungU
+
 namespace TauCeti.YoungTableau
 
 variable {μ : YoungDiagram}
@@ -207,7 +209,7 @@ noncomputable def youngSymmetrizer (t : YoungTableau μ) :
     MonoidAlgebra ℚ (Equiv.Perm (Fin μ.card)) :=
   rowSymmetrizer t * columnAntisymmetrizer t
 
-noncomputable def youngSymmetrizerOver (k : Type*) [Semiring k] [Algebra ℚ k] (t : YoungTableau μ) :
+noncomputable abbrev youngSymmetrizerOver (k : Type palomarYoungU) [Semiring k] [Algebra ℚ k] (t : YoungTableau μ) :
     MonoidAlgebra k (Equiv.Perm (Fin μ.card)) :=
   MonoidAlgebra.mapAlgHom _ (Algebra.ofId ℚ k) (youngSymmetrizer t)
 
@@ -668,21 +670,31 @@ def insertionFilling (S : StandardYoungTableau μ) (T : YoungTableau μ) :
 
 def insertionRow (S : StandardYoungTableau μ) (T : YoungTableau μ) (i : Fin μ.card) : ℕ :=
   (columnInsertion S).row ((scanLabelEquiv T).symm i)
+theorem witnessFinFinite (n : ℕ) : Finite (Fin n) := inferInstance
+abbrev witnessFinFinsupp (n : ℕ) : (Fin n →₀ ℕ) ≃ (Fin n → ℕ) :=
+  @Finsupp.equivFunOnFinite (Fin n) ℕ _ (witnessFinFinite n)
 
 def insertionAlpha (S : StandardYoungTableau μ) (T : YoungTableau μ) : Fin μ.card →₀ ℕ :=
-  Finsupp.equivFunOnFinite.symm (insertionRow S T)
+  (witnessFinFinsupp μ.card).symm (insertionRow S T)
 
 def insertionRejections (S : StandardYoungTableau μ) (T : YoungTableau μ)
     (i : Fin μ.card) : ℕ :=
   (columnInsertion S).rejection ((scanLabelEquiv T).symm i)
 
 def insertionRejectionExponent (S : StandardYoungTableau μ) (T : YoungTableau μ) :
-    Fin μ.card →₀ ℕ := Finsupp.equivFunOnFinite.symm (insertionRejections S T)
+    Fin μ.card →₀ ℕ := (witnessFinFinsupp μ.card).symm (insertionRejections S T)
+theorem witnessPrefixCellMem (S : StandardYoungTableau μ) (k : ℕ)
+    (c : ↥(prefixShape S k).cells) : c.val ∈ μ :=
+  prefixShape_le S k c.property
+theorem witnessPrefixCellInjective (S : StandardYoungTableau μ) (k : ℕ) :
+    Function.Injective (fun c : ↥(prefixShape S k).cells =>
+      (⟨c.val, witnessPrefixCellMem S k c⟩ : ↥μ.cells)) :=
+  fun _ _ h => Subtype.ext (congrArg (fun z : ↥μ.cells => z.val) h)
 
 def prefixCellsEmbedding (S : StandardYoungTableau μ) (k : ℕ) :
     ↥(prefixShape S k).cells ↪ ↥μ.cells where
-  toFun c := ⟨c.val, prefixShape_le S k c.property⟩
-  inj' c d h := Subtype.ext (congrArg (fun z : ↥μ.cells => z.val) h)
+  toFun c := ⟨c.val, witnessPrefixCellMem S k c⟩
+  inj' := witnessPrefixCellInjective S k
 
 def prefixAmbientEmbedding (S : StandardYoungTableau μ) (T : YoungTableau μ)
     (k : ℕ) (hk : k ≤ μ.card) : Fin (prefixShape S k).card ↪ Fin μ.card :=
@@ -700,20 +712,22 @@ def boostedFilling (S : StandardYoungTableau μ) (eta : YoungDiagram) (c : ↥μ
 
 def transportedBoosted (S : StandardYoungTableau μ) (T : YoungTableau μ)
     (eta : YoungDiagram) : Fin μ.card →₀ ℕ :=
-  Finsupp.equivFunOnFinite.symm fun i => boostedFilling S eta (T.symm i)
+  (witnessFinFinsupp μ.card).symm fun i => boostedFilling S eta (T.symm i)
 
 end PrefixWitness
 
 section ColumnProduct
 variable {R : Type*} [CommRing R] {n : ℕ} {μ : YoungDiagram}
+theorem witnessColumnMem (mu : YoungDiagram) (j : ℕ) (i : Fin (mu.colLen j)) :
+    (i.val, j) ∈ mu := YoungDiagram.mem_iff_lt_colLen.mpr i.isLt
 
 def columnEmbedding (U : ↥μ.cells ↪ Fin n) (j : ℕ) : Fin (μ.colLen j) ↪ Fin n where
-  toFun i := U ⟨(i.val, j), YoungDiagram.mem_iff_lt_colLen.mpr i.isLt⟩
+  toFun i := U ⟨(i.val, j), witnessColumnMem μ j i⟩
   inj' i l h := by
     have hi := congrArg (fun c : ↥μ.cells => c.val.1) (U.injective h)
     exact Fin.ext hi
 
-def columnAlternant (U : ↥μ.cells ↪ Fin n) (j : ℕ) : PolynomialRing n R :=
+abbrev columnAlternant (U : ↥μ.cells ↪ Fin n) (j : ℕ) : PolynomialRing n R :=
   MvPolynomial.rename (columnEmbedding U j)
     (TauCeti.alternant (Fin (μ.colLen j)) R fun i => i.val)
 
@@ -724,7 +738,7 @@ def outsidePower (U : ↥μ.cells ↪ Fin n) (s : ℕ) : PolynomialRing n R :=
 
 /-- The manuscript's column product with its outside exponents.  The use of
 n padded columns is harmless because zero-height alternants are 1. -/
-def columnWitness (U : ↥μ.cells ↪ Fin n) (s : ℕ) : PolynomialRing n R :=
+abbrev columnWitness (U : ↥μ.cells ↪ Fin n) (s : ℕ) : PolynomialRing n R :=
   (∏ j ∈ Finset.range n, columnAlternant U j) * outsidePower U s
 
 end ColumnProduct
@@ -733,7 +747,7 @@ section Exterior
 variable {k n : ℕ}
 
 def exteriorExponent (e : Fin k ↪ Fin n) (s : ℕ) : Fin n →₀ ℕ :=
-  Finsupp.equivFunOnFinite.symm fun i => if i ∈ Set.range e then 0 else s - 1
+  (witnessFinFinsupp n).symm fun i => if i ∈ Set.range e then 0 else s - 1
 
 def embeddedWitnessAlpha (e : Fin k ↪ Fin n) (a : Fin k →₀ ℕ) (s : ℕ) : Fin n →₀ ℕ :=
   a.mapDomain e + exteriorExponent e s
@@ -754,7 +768,7 @@ def griffinWitnessRejection (S : StandardYoungTableau μ) (T : YoungTableau μ)
 
 variable {R : Type*} [CommRing R]
 
-def griffinApolarWitness (S : StandardYoungTableau μ) (T : YoungTableau μ)
+abbrev griffinApolarWitness (S : StandardYoungTableau μ) (T : YoungTableau μ)
     (k : ℕ) (hk : k ≤ μ.card) (s : ℕ) : PolynomialRing μ.card R :=
   columnWitness (((insertionFilling (prefixTableau S k hk)
     (prefixTableau S k hk).toTableau).toEmbedding).trans (prefixAmbientEmbedding S T k hk)) s
@@ -762,7 +776,7 @@ def griffinApolarWitness (S : StandardYoungTableau μ) (T : YoungTableau μ)
 end GriffinWitness
 
 def exteriorPart {k n : ℕ} (e : Fin k ↪ Fin n) (b : Fin n →₀ ℕ) : Fin n →₀ ℕ :=
-  Finsupp.equivFunOnFinite.symm fun i => if i ∈ Set.range e then 0 else b i
+  (witnessFinFinsupp n).symm fun i => if i ∈ Set.range e then 0 else b i
 
 section UntruncatedWitness
 variable {mu : YoungDiagram}
@@ -849,10 +863,20 @@ def ordinaryAction : MvPolynomial σ K →ₐ[K] Module.End K (MvPolynomial σ K
   ((factorialTransport (σ := σ) (K := K)).conjAlgEquiv K).toAlgHom.comp dividedAction
 
 end OrdinaryAction
+theorem witnessDerivativeSMulComm (n : ℕ) :
+    SMulCommClass ℂ ℂ (AddMonoidAlgebra ℂ (Fin n →₀ ℕ)) := inferInstance
+theorem witnessDerivativeScalarTower (n : ℕ) :
+    IsScalarTower ℂ ℂ (AddMonoidAlgebra ℂ (Fin n →₀ ℕ)) := inferInstance
+abbrev witnessDerivativeEndAlgebra (n : ℕ) : Algebra ℂ (Module.End ℂ (PolynomialRing n ℂ)) :=
+  @Module.End.instAlgebra ℂ ℂ (PolynomialRing n ℂ) _ _ _ _ _
+    (witnessDerivativeSMulComm n) _ (witnessDerivativeScalarTower n)
 
 def normalizedOrdinaryDerivative {n : ℕ} (r : Fin n →₀ ℕ) (g : PolynomialRing n ℂ) :
     PolynomialRing n ℂ :=
-  (exponentFactorial r : ℂ)⁻¹ • ordinaryAction (MvPolynomial.monomial r (1 : ℂ)) g
+  (exponentFactorial r : ℂ)⁻¹ •
+    (@AlgHom.toLinearMap ℂ (PolynomialRing n ℂ) (Module.End ℂ (PolynomialRing n ℂ))
+      _ _ _ _ (witnessDerivativeEndAlgebra n) ordinaryAction)
+      (MvPolynomial.monomial r (1 : ℂ)) g
 
 def adjointYoungApply {mu : YoungDiagram} (T : YoungTableau mu)
     (f : PolynomialRing mu.card ℂ) : PolynomialRing mu.card ℂ :=
@@ -878,10 +902,12 @@ theorem maximalUntruncatedPrefix_le {n : ℕ} (i : UnboundedHarmonicIndex n) :
     maximalUntruncatedPrefix i ≤ (YoungDiagram.ofPartition i.part).card := by
   rw [YoungDiagram.card_ofPartition]
   exact Nat.sub_le _ _
+theorem witnessPartitionCard {n : ℕ} (p : n.Partition) :
+    (YoungDiagram.ofPartition p).card = n := YoungDiagram.card_ofPartition p
 
 def finiteCommonHarmonicVectorWithTableau {n s : ℕ} (i : FiniteHarmonicIndex n s)
     (T : YoungTableau (YoungDiagram.ofPartition i.part)) : PolynomialRing n ℂ :=
-  MvPolynomial.rename (finCongr (YoungDiagram.card_ofPartition i.part))
+  MvPolynomial.rename (finCongr (witnessPartitionCard i.part))
     (adjointYoungApply T (normalizedOrdinaryDerivative
       (griffinWitnessRejection i.left T i.multiplier (maximalFinitePrefix i)
         (maximalFinitePrefix_le i) s)
