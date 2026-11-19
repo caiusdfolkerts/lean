@@ -6645,12 +6645,14 @@ theorem ordinaryBasis_mem_piece (b : Module.Basis I K M) (w : I → ℕ) (i : I)
   by_cases h : i = j
   · subst j
     exact (hj rfl).elim
-  · simp only [Module.Basis.repr_self, Finsupp.single_apply, if_neg h]
+  · change b.repr (b i) j = 0
+    simp only [Module.Basis.repr_self, Finsupp.single_apply, if_neg h]
 
 theorem ordinaryProjection_mem_piece (b : Module.Basis I K M) (w : I → ℕ)
     (n : ℕ) (x : M) :
     basisDegreeProjection b w n x ∈ basisOrdinaryDegreePiece b w n := by
   intro i hi
+  change b.repr (basisDegreeProjection b w n x) i = 0
   rw [basisDegreeProjection_repr, if_neg hi]
 
 theorem ordinaryProjection_natural (b : Module.Basis I K M) (c : Module.Basis J K N)
@@ -7571,6 +7573,7 @@ theorem barycentricCarrierBoundaryExtension_graded (p : P) (n : ℕ)
   have hid : (standardInsideEquiv hs p).symm ⟨b.val, b.property⟩ = a :=
     (standardInsideEquiv hs p).symm_apply_apply a
   rw [hid] at hc
+  change booleanChainBasis.repr (barycentricCarrierBoundaryExtension K hs p x) a = 0
   rw [← hc, barycentricCarrierBoundaryExtension_coefficient]
   split_ifs with hb
   · rw [barycentricStandardCoordinates_apply_of_inside K hs (standardCarrier b.val)
@@ -7655,6 +7658,8 @@ theorem barycentricTop_predecessor_degree (p : P) [Nonempty (FaceVertex p)]
     rw [barycentricTop_degree_shift]
     exact fun he => ha (Nat.add_right_cancel he)
   have hh := hx b hb
+  change booleanChainBasis.repr (booleanTop * x) b = 0 at hh
+  change booleanChainBasis.repr x a = 0
   rwa [barycentricTop_shift_coefficient] at hh
 
 theorem barycentricTop_homogeneous_zero_below (p : P) [Nonempty (FaceVertex p)]
@@ -7669,6 +7674,7 @@ theorem barycentricTop_homogeneous_zero_below (p : P) [Nonempty (FaceVertex p)]
     rw [barycentricTop_degree_shift]
     omega
   have hh := hx b hb
+  change booleanChainBasis.repr (booleanTop * x) b = 0 at hh
   rw [barycentricTop_shift_coefficient] at hh
   exact hh
 

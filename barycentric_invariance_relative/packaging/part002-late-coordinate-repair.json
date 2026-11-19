@@ -1,0 +1,13 @@
+{
+  "parent_commit": "b5115a9759bfa58267bd3451981e455fa769b57c",
+  "before_sha256": "53dc94fb44d03315108abf3d53f4b25eaf7aff748b97d9dcd490ad81f2c1b742",
+  "after_sha256": "be9ffa19958689be1ca403ce0c1094c985fa973435921d2b99ee9580a8320ee1",
+  "original_lines": [
+    6648,
+    6654,
+    7574,
+    7658,
+    7672
+  ],
+  "change": "Five proof-local definitional coordinate changes for the complete observed error set; all statement/data/selection definitions unchanged."
+}
