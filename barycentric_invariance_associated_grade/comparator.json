@@ -31,7 +31,9 @@
     "FourPapers.Universal.standardFaceCombination_coefficients",
     "FourPapers.Universal.weightFiltrationLevelEquiv_lower",
     "FourPapers.Universal.canonicalOriginalComparison_usualFiltered",
-    "PalomarBarycentricAssociatedGrade.prescribedAssociatedGrade"
+    "PalomarBarycentricAssociatedGrade.prescribedAssociatedGrade",
+    "FourPapers.Universal.palomarPresentationWeightLevel_smul",
+    "FourPapers.Universal.mem_presentationWeightLevel_iff"
   ],
   "permitted_axioms": [
     "propext",

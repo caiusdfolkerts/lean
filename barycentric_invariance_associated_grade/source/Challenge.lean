@@ -821,7 +821,7 @@ variable {I V K M : Type*} [CommRing K] [AddCommGroup M] [Module K M]
 /-- The original scalar-closure proof for the unchanged coefficient predicate. -/
 theorem palomarPresentationWeightLevel_smul (w : (V →₀ ℕ) → ℤ) (n : ℤ) :
     ∀ (c : K) (f : MvPolynomial V K), (∀ a, n ≤ w a → f.coeff a = 0) →
-      ∀ a, n ≤ w a → (c • f).coeff a = 0 := by intro c f hf a ha; simp only [coeff_smul, hf a ha, smul_zero]
+      ∀ a, n ≤ w a → (c • f).coeff a = 0 := by sorry
 
 /-- Source theorem13.lean:9660. -/
 def presentationWeightLevel (w : (V →₀ ℕ) → ℤ) (n : ℤ) : Submodule K (MvPolynomial V K) where
@@ -829,6 +829,10 @@ def presentationWeightLevel (w : (V →₀ ℕ) → ℤ) (n : ℤ) : Submodule K
   zero_mem' := by intro a ha; simp
   add_mem' := by intro f g hf hg a ha; simp only [MvPolynomial.coeff_add, hf a ha, hg a ha, add_zero]
   smul_mem' := palomarPresentationWeightLevel_smul w n
+
+/-- Membership is determined by every monomial coefficient of weight at least n. -/
+theorem mem_presentationWeightLevel_iff (w : (V →₀ ℕ) → ℤ) (n : ℤ) (f : MvPolynomial V K) :
+    f ∈ presentationWeightLevel w n ↔ ∀ a, n ≤ w a → f.coeff a = 0 := by sorry
 end
 end FourPapers.Universal
 namespace FourPapers.Universal

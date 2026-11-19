@@ -1335,6 +1335,10 @@ def presentationWeightLevel (w : (V →₀ ℕ) → ℤ) (n : ℤ) : Submodule K
   add_mem' := by intro f g hf hg a ha; simp only [MvPolynomial.coeff_add, hf a ha, hg a ha, add_zero]
   smul_mem' := palomarPresentationWeightLevel_smul w n
 
+/-- Membership is determined by every monomial coefficient of weight at least n. -/
+theorem mem_presentationWeightLevel_iff (w : (V →₀ ℕ) → ℤ) (n : ℤ) (f : MvPolynomial V K) :
+    f ∈ presentationWeightLevel w n ↔ ∀ a, n ≤ w a → f.coeff a = 0 := Iff.rfl
+
 theorem weightedPresentationFiltration_eq (q : MvPolynomial V K →ₗ[K] M)
     (b : Module.Basis I K M) (a : I → V →₀ ℕ)
     (w : (V →₀ ℕ) → ℤ) (weight : I → ℤ)
