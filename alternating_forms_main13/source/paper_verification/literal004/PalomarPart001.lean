@@ -2652,7 +2652,6 @@ with `K(φ)ₙ = ⋀ⁿ M` and differential `koszulDifferential φ`, the contrac
 
 The body is exposed so that the terms of the complex are definitionally the exterior powers, and
 elements of `(koszulComplex φ).X n` can be used as elements of `⋀ⁿ M`. -/
-@[expose]
 @[expose] def koszulComplex (φ : Module.Dual R M) : ChainComplex (ModuleCat.{max u v} R) ℕ :=
   ChainComplex.of (fun n ↦ ModuleCat.of R (⋀[R]^n M))
     (fun n ↦ ModuleCat.ofHom (koszulDifferential φ n))

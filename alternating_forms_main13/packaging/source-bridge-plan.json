@@ -1,5 +1,5 @@
 {
-  "status": "complete_principal_statement_candidate_source_bridges_preparing_not_installed_not_elaborated",
+  "status": "literal_interface_and_genuine_source_bridges_assembled_for_full_preflight",
   "paper_scope": "Main1.3 flat coordinate-graded weight families in allpositiveplane dimensions, finitequadratic Groebner presentation and actualhomologicalKoszulness. Exteriorbasis isalreadyFULLPASS in parentf99b. OneplaneactualordinaryTor concentration isselectedliterally through existing canonicalKoszulprojectiveresolution; higherplaneKoszulness uses actualnormalizedbar differential with an actualhomogeneousbasis. Generalmain1.2 remains README-explicitunformalized, not claimed.",
   "baseline_project": "alternating_forms",
   "parent_passed_commit": "f99b0e657e8e3ca478876ff6a90ea28ef30039be",
@@ -642,11 +642,10 @@
     ]
   },
   "remaining_concrete_bridges": [
-    "Literal coefficientwise Rees pieces equal actual reesCoordinateGrading pieces via mem_reesCoordinateGrading_iff; quotient images equal actual zero/parameter fiber pieces, preserving each original coordinate degree.",
-    "Literal normalizedbar differential equals actual ReducedBarBasis differential by induction on List; barPiece equality follows actual oddBarWord_length_eq_degree. Existing oddNormalizedBarTorIso supplies genuine ordinaryTor comparison.",
-    "Expose every original data body needed for definitional applications declaration-locally; retain all original source/audits/licensing.",
-    "Canonical elaboration must check all typed grading/chain complex instances and constructor obligations; Sourcefile is intentionally not labeled a Solution until genuine proofs are complete."
+    "The actual graded-family and normalized-bar bridge proofs are authored in source/PalomarMain13Proofs.lean. Their verification outcome is reported by the exact-commit workflow."
   ],
   "no_model_or_definition_holes": true,
-  "support_theorem_holes_are_selected_obligations": true
+  "support_theorem_holes_are_selected_obligations": true,
+  "prepared_at": "2026-11-19T09:18:38.933323+00:00",
+  "verification_note": "Preparation-time record only. Subsequent exact-commit workflow reports determine Source/Solution/Comparator/kernel verification."
 }

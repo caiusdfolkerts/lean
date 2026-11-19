@@ -1,0 +1,17 @@
+{
+  "prepared_at": "2026-11-19T09:20:14.659816+00:00",
+  "actual_failed_run": 44493177906,
+  "complete_errors": 1,
+  "repair": "Remove the one newly inserted duplicate expose block before the already exposed koszulComplex; all9 affected files scanned for adjacent attribute blocks. No original declaration, mathematical body, binder or selected target changed.",
+  "all9_files_attribute_pattern_checked": true,
+  "new_expose_attributes": 93,
+  "original_already_exposed_found": 2,
+  "changes": [
+    {
+      "path": "source/paper_verification/literal004/PalomarPart001.lean",
+      "before_sha256": "615e64bb149d07bf31f389440fddb29e952bdd51560d37e9f672876580830b02",
+      "removed_duplicate_attributes": 1,
+      "same_original_body": true
+    }
+  ]
+}

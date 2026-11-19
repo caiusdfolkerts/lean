@@ -58,6 +58,7 @@ scope:
     not selected in this algebraic configuration.
   - The original README explicitly reports incomplete general geometric Theorem 1.2 and parts of Theorem
     4.1; this entry does not claim those results.
+  - Theorem 6.1 and Theorems 7.1–7.2 are not selected by this characteristic-zero Theorem 1.3 configuration.
   notes: This project retains the complete substantive historical development and all licensing from the
     parent snapshot; it is not an external thin wrapper. The newly introduced literal interface and original-proof
     bridges are documented in map.json. Preparation notes are dated; exact-commit workflow reports supply

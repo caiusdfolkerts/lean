@@ -3,9 +3,9 @@
   "baseline_project": "alternating_forms",
   "baseline_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
   "parent_passed_commit": "f99b0e657e8e3ca478876ff6a90ea28ef30039be",
-  "prepared_at": "2026-11-19T09:03:50.446978+00:00",
+  "prepared_at": "2026-11-19T09:20:14.659816+00:00",
   "status": "source_prepared_canonical_challenge_passed",
-  "verification_note": "Preparation-time status only; subsequent exact-commit workflow reports determine verification.",
+  "verification_note": "Preparation-time record only; subsequent exact-commit workflow reports determine verification.",
   "selected_results": [
     {
       "declaration": "PalomarAlternatingDegeneration.TauCeti.InternalGrading.mapInternal",
@@ -801,6 +801,14 @@
     {
       "paper_result": "Theorem 1.1, exterior basis part of Theorem 1.3, Corollary 5.2",
       "status": "Selected in companion alternating_forms configuration, parent full pass f99b"
+    },
+    {
+      "paper_result": "Theorem 6.1",
+      "status": "Multiple-form exterior Koszul exactness and cohomology/dimension comparison not selected by this entry."
+    },
+    {
+      "paper_result": "Theorems 7.1 and 7.2",
+      "status": "Positive-characteristic range and Frobenius dimension-excess theorems not selected by this characteristic-zero entry."
     }
   ],
   "blockers": [],

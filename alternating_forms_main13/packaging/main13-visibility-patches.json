@@ -1,5 +1,5 @@
 {
-  "status": "source_prepared_visibility_only_not_installed",
+  "status": "installed_declaration_local_visibility_only_original_bodies_preserved",
   "baseline_project": "alternating_forms",
   "parent_full_pass": "f99b0e657e8e3ca478876ff6a90ea28ef30039be",
   "all_original_declarations_and_bodies_preserved": true,
@@ -833,16 +833,17 @@
     {
       "path": "source/paper_verification/literal004/PalomarPart001.lean",
       "before_sha256": "0d844c667095065191e172d59497f96d91d609be231eba67e2bcba4506757e9d",
-      "after_sha256": "615e64bb149d07bf31f389440fddb29e952bdd51560d37e9f672876580830b02",
+      "after_sha256": "353d53bf1195235690d4d7f718304187ca6cee54f03e3bf763d3a267db76033d",
       "declaration_local_expose": [
-        "TauCeti.koszulComplex",
         "TauCeti.koszulDifferential",
         "PaperVerification.AlternatingForms.onePlaneIndex",
         "PaperVerification.AlternatingForms.BarDegrees.totalDegree"
       ],
-      "already_exposed": [],
+      "already_exposed": [
+        "TauCeti.koszulComplex"
+      ],
       "all_original_bodies_unchanged": true,
-      "lines": 3050
+      "lines": 3049
     },
     {
       "path": "source/paper_verification/literal005/PalomarPart000.lean",
@@ -893,5 +894,7 @@
       "all_original_bodies_unchanged": true,
       "lines": 751
     }
-  ]
+  ],
+  "prepared_at": "2026-11-19T09:20:14.659816+00:00",
+  "verification_note": "Assembly-time status. Subsequent exact-commit workflow reports determine elaboration and verification."
 }
