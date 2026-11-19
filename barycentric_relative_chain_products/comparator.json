@@ -64,9 +64,12 @@
     "FourPapers.Universal.barycentricRelativeDegreeProduct_mem",
     "FourPapers.Universal.originalRelativeInternalProduct_filtered",
     "FourPapers.Universal.barycentricRelativeInternalProduct_filtered",
-    "FourPapers.Universal.relativeInternalGradeCoefficientEquiv_multiplicative"
+    "FourPapers.Universal.relativeInternalGradeCoefficientEquiv_multiplicative",
+    "FourPapers.Universal.standardCoefficients_apply"
   ],
-  "definition_names": [],
+  "definition_names": [
+    "FourPapers.Universal.standardCoefficients"
+  ],
   "permitted_axioms": [
     "propext",
     "Quot.sound",

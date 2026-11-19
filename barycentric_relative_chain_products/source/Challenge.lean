@@ -4,6 +4,7 @@ public import Mathlib
 /-! Multiplication on the weight-graded relative Koszul complexes. -/
 
 @[expose] public section
+attribute [-instance] MvPolynomial.instModuleSelf
 noncomputable section
 set_option autoImplicit false
 set_option maxRecDepth 4000
@@ -191,6 +192,8 @@ def forbiddenIdeal (P : (V →₀ ℕ) → Prop) : Ideal (MvPolynomial V K) := I
 abbrev MonomialQuotient (P : (V →₀ ℕ) → Prop) := MvPolynomial V K ⧸ forbiddenIdeal P
 def standardCoefficients (P : (V →₀ ℕ) → Prop) : MvPolynomial V K →ₗ[K] ({a // P a} →₀ K) := (Finsupp.lsubtypeDomain {a | P a}).comp (MvPolynomial.basisMonomials V
   K).repr.toLinearMap
+lemma standardCoefficients_apply (P : (V →₀ ℕ) → Prop) (f : MvPolynomial V K) (a : {a // P a}) :
+    standardCoefficients P f a = f.coeff a.val := by sorry
 lemma standardCoefficients_surjective (P : (V →₀ ℕ) → Prop) : Function.Surjective (standardCoefficients (K := K) P) := by sorry
 lemma standardCoefficients_ker (P : (V →₀ ℕ) → Prop) (hP : IsDivisorClosed P) : LinearMap.ker (standardCoefficients (K := K) P) = (forbiddenIdeal P).restrictScalars K := by
   sorry
