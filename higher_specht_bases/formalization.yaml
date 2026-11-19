@@ -53,16 +53,18 @@ automation:
 review:
   status: unchecked
   notes: >-
-    Exact521-line Challenge passed canonical elaboration in run44387460587.
-    Full run44467518949 progressed beyond the previously diagnosed Griffin
-    descent proof and reported exactly one source error, with no omitted or
-    truncated errors: transportedBoosted_sub_cocharge retained definitionally
-    equal cocharge terms under different wrappers. That proof now changes both
-    transported exponents to their identical literal label and applies natural
-    addition/subtraction cancellation directly. All data, target types, source
-    guards, measured raw normalization, selected support and canonical pins
-    remain unchanged. Full Source/Solution/Comparator and kernel replay remain
-    unverified.
+    Full run44469251922 built the actual source and Solution, then Comparator
+    rejected one raw declaration. Exact-source diagnostic44471405402 reported
+    all20selected types and universe parameters identical and traversed12785
+    reachable declarations. Its complete five findings consist of two data
+    values and three missing generated proof auxiliaries, with four bounded
+    leaves and no omissions or truncation. Reducibility hints already match.
+    Both Source and Challenge now use explicit named selected propositions
+    for partition-sort transitivity and the reflexive partition-cardinality
+    equality. All20 original targets, including full admissible non-monic
+    Corollary4.3, remain; two supporting propositions bring comparison count
+    to22. Existing statement headers, hypotheses, data meanings, guards and
+    canonical pins are unchanged. Corrected full verification is pending.
 scope:
   known_gaps:
   - The fixed-copy irreducible representation assertions, column-insertion result,

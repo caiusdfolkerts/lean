@@ -524,11 +524,14 @@ namespace HigherSpecht
 
 variable {R : Type*} [CommRing R]
 
+/-- Named literal partition-cardinality equality; no generated proof sharing. -/
+theorem palomarPartitionCard_refl (eta : YoungDiagram) : eta.card = eta.card := rfl
+
 def IsDominanceTriangularMultiplier (n : ℕ) (eta : YoungDiagram)
     (f : PolynomialRing n R) : Prop :=
   ∃ c : eta.card.Partition → R,
-    c (eta.toPartition rfl) ≠ 0 ∧
-    (∀ zeta, c zeta ≠ 0 → (eta.toPartition rfl).Dominates zeta) ∧
+    c (eta.toPartition (palomarPartitionCard_refl eta)) ≠ 0 ∧
+    (∀ zeta, c zeta ≠ 0 → (eta.toPartition (palomarPartitionCard_refl eta)).Dominates zeta) ∧
     f = ∑ zeta, c zeta • MvPolynomial.msymm (Fin n) R zeta
 
 /-- Equivalence with the manuscript's displayed leading term plus terms

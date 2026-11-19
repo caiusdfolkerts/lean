@@ -21,7 +21,9 @@
     "TauCeti.palomarFiber_inv",
     "HigherSpecht.prefixTableau._proof_2",
     "HigherSpecht.prefixTableau._proof_3",
-    "HigherSpecht.corollary_4_3_on_admissible_multipliers"
+    "HigherSpecht.corollary_4_3_on_admissible_multipliers",
+    "Nat.Partition.palomarGe_isTrans",
+    "HigherSpecht.palomarPartitionCard_refl"
   ],
   "permitted_axioms": [
     "propext",

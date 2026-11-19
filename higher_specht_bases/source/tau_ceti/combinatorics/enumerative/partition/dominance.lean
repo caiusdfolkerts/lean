@@ -60,6 +60,10 @@ end TauCeti.PartitionLex
 
 namespace Nat.Partition
 
+/-- The canonical transitivity proof for decreasing natural-number order. -/
+theorem palomarGe_isTrans : IsTrans ℕ (fun a b : ℕ => a ≥ b) := by
+  infer_instance
+
 /-- A partition `μ` dominates a partition `ν` when every partial sum of the decreasingly
 sorted parts of `μ` is at least the corresponding partial sum of `ν`.
 
@@ -68,6 +72,7 @@ The definition quantifies over all of `ℕ`, following the form prepared for
 `dominates_iff` to unfold it outside this module and `dominates_iff_forall_fin` to reduce
 to the first `n + 1` partial sums. -/
 def Dominates {n : ℕ} (μ ν : n.Partition) : Prop :=
+  letI : IsTrans ℕ (fun a b : ℕ => a ≥ b) := palomarGe_isTrans
   ∀ k : ℕ,
     ((ν.parts.sort (· ≥ ·)).take k).sum ≤ ((μ.parts.sort (· ≥ ·)).take k).sum
 

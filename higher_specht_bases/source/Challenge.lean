@@ -489,19 +489,27 @@ theorem corollary_8_1_griffin_characteristic_all_partitions
 end HigherSpecht
 
 namespace Nat.Partition
+/-- The canonical transitivity proof for decreasing natural-number order. -/
+theorem palomarGe_isTrans : IsTrans ℕ (fun a b : ℕ => a ≥ b) := by
+  infer_instance
+
 /-- Exact dominance: every initial sum of decreasing parts is at least the other sum. -/
 def Dominates {n : ℕ} (μ ν : n.Partition) : Prop :=
+  letI : IsTrans ℕ (fun a b : ℕ => a ≥ b) := palomarGe_isTrans
   ∀ k : ℕ, ((ν.parts.sort (· ≥ ·)).take k).sum ≤ ((μ.parts.sort (· ≥ ·)).take k).sum
 end Nat.Partition
 namespace HigherSpecht
 open Module
+/-- Named literal partition-cardinality equality; no generated proof sharing. -/
+theorem palomarPartitionCard_refl (eta : YoungDiagram) : eta.card = eta.card := rfl
+
 /-- The literal finite monomial-symmetric expansion with arbitrary nonzero leading
 coefficient and only dominance-lower terms, as in Corollary4.3. -/
 def IsDominanceTriangularMultiplier {R : Type*} [CommRing R] (n : ℕ) (eta : YoungDiagram)
     (f : PolynomialRing n R) : Prop :=
   ∃ c : eta.card.Partition → R,
-    c (eta.toPartition rfl) ≠ 0 ∧
-    (∀ zeta, c zeta ≠ 0 → (eta.toPartition rfl).Dominates zeta) ∧
+    c (eta.toPartition (palomarPartitionCard_refl eta)) ≠ 0 ∧
+    (∀ zeta, c zeta ≠ 0 → (eta.toPartition (palomarPartitionCard_refl eta)).Dominates zeta) ∧
     f = ∑ zeta, c zeta • MvPolynomial.msymm (Fin n) R zeta
 /-- The original Griffin quotient classes with the specified multiplier f at
 exactly the same eligible rectangle/prefix/descent index; no changed quotient. -/
