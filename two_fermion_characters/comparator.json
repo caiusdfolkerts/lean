@@ -1,0 +1,29 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "PaperVerification.Fermion.Exterior.modeRank_injective",
+    "PaperVerification.Fermion.Exterior.interleavedOddRank_injective",
+    "PaperVerification.Fermion.highestPower_X_pow",
+    "PaperVerification.Fermion.ringCon_le_ker_of_kills",
+    "PaperVerification.Fermion.quotientMk_eq_zero_of_mem",
+    "PaperVerification.Fermion.ColorAction.ambient_one",
+    "PaperVerification.Fermion.ColorAction.ambient_mul",
+    "PaperVerification.Fermion.ColorAction.ambient_preserves_strictIdeal",
+    "PaperVerification.Fermion.ColorAction.quotientEquiv_one",
+    "PaperVerification.Fermion.ColorAction.quotientEquiv_mul",
+    "PaperVerification.Fermion.TypeA.diagonal_trace_eq_eulerian",
+    "PaperVerification.Fermion.TypeA.palomarColorCoefficients",
+    "PaperVerification.Fermion.TypeA.diagonal_preserves_polynomialPiece",
+    "PaperVerification.Fermion.TypeA.equation_22_diagonal_trace",
+    "PaperVerification.Fermion.TypeA.equation_23_character",
+    "PaperVerification.Fermion.TypeA.color_preserves_polynomialPiece",
+    "PaperVerification.Fermion.TypeA.equation_22_character"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "definition_names": []
+}
