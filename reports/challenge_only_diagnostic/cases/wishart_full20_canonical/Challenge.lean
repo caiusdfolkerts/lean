@@ -41,8 +41,7 @@ variable (p : ℕ)
     Submodule.normedAddCommGroup _
   { base with toMetricSpace := base.toMetricSpace.replaceUniformity rfl }
 /-- The symmetric subspace carries the Frobenius inner product `⟪A, B⟫ = ∑ i, ∑ j, A i j * B i j`
-of the underlying matrices, which on this subspace is the trace pairing
-`selfAdjoint.inner_eq_trace_mul`. -/
+of the underlying matrices, which on this subspace is the trace pairing `selfAdjoint.inner_eq_trace_mul`. -/
 def symmetricInnerProductSpace :
     letI : NormedAddCommGroup (selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℝ)) := symmetricNormedAddCommGroup p
     InnerProductSpace ℝ (selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℝ)) :=
@@ -198,7 +197,6 @@ def inverseWishartMeasure {p : ℕ} (n : ℝ) (S : Matrix (Fin p) (Fin p) ℝ) :
     Measure (SymmetricMatrix p) :=
   (nonsingularWishartMeasure n S⁻¹).map symmetricInv
 end WishartLiteralLaws
--- Match the source complex NormedField superclass path after literal primitives.
 attribute [-instance] instCommCStarAlgebraComplex
 end
 end
