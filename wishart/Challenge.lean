@@ -910,4 +910,9 @@ end end Wishart
 
 #print equations Wishart.SpectralGauge.supportSet
 #print equations Wishart.normalizedSelectedMatrix
-#print equations TauCeti.symmetricMatrixContinuousENorm
+section
+attribute [local instance 4100] Matrix.instStarModule
+theorem TauCeti.symmetricMatrixContinuousENorm_formula (p : ℕ) :
+    TauCeti.symmetricMatrixContinuousENorm p = ESeminormedAddMonoid.toContinuousENorm := by
+  rfl
+end

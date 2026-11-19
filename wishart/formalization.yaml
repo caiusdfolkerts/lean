@@ -81,7 +81,7 @@ fidelity:
     Original paper theorem proofs, hypotheses and functional input models
     are retained. Whole real and complex superclass record equalities and
     original-formula equalities provide explicit semantic preservation checks.
-    Seventeen generated Lean equations and sixteen explicitly stated identities
+    Sixteen generated Lean equations and seventeen explicitly stated identities
     specify complete defining formulas. Lean checks the explicit identities
     by reflexivity against the definitions in the proof development.
     The product-Haar support instance now gives a proved local product

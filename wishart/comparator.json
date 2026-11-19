@@ -117,7 +117,7 @@
     "TauCeti.symmetricMatrixSecondCountableTopology",
     "TauCeti.symmetricMatrixCompleteSpace",
     "TauCeti.symmetricMatrixBorelSpace",
-    "TauCeti.symmetricMatrixContinuousENorm.eq_1"
+    "TauCeti.symmetricMatrixContinuousENorm_formula"
   ],
   "definition_names": [
     "Matrix.frobeniusInnerProductSpace",
