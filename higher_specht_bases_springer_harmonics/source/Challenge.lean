@@ -974,10 +974,11 @@ def springerCommonHarmonicVectorWithTableau {n : ℕ} (hn : 0 < n)
 harmonic space and give each Springer harmonic space by its admissible indices. -/
 theorem springer_harmonics_full_decomposition (n : ℕ) (hn : 0 < n)
     (T : (part : n.Partition) → YoungTableau (YoungDiagram.ofPartition part)) :
+    ∃ S : (part : n.Partition) → YoungTableau (YoungDiagram.ofPartition part),
     ∃ W : SpringerCommonIndex n → Subrepresentation (polynomialRepresentation ℂ n),
       (∀ z, (W z).toSubmodule =
           cyclicPolynomialCopy (springerCommonHarmonicVectorWithTableau hn z (T z.1)) ∧
-        Nonempty (Representation.Equiv (paperYoungIdealRepresentation z.1 (T z.1))
+        Nonempty (Representation.Equiv (paperYoungIdealRepresentation z.1 (S z.1))
           (W z).toRepresentation) ∧
         (W z).toRepresentation.IsIrreducible ∧
         (W z).toSubmodule ≤ homogeneousSubmodule (Fin n) ℂ (cochargeDegree z.2)) ∧
