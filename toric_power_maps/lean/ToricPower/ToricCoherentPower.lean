@@ -1,5 +1,7 @@
 module
 
+import all TauCeti.AlgebraicGeometry.FinitelyPresentedSheaf.Pushforward
+
 public import ToricPower.GeometricCore
 public import ToricPower.CoherentDerived
 
@@ -47,6 +49,8 @@ abbrev toricCoherentPowerPushforward (fan : Fan i) (regular : fan.IsRegular)
     (toricPowerMap fan ell)
 
 /-- Forgetting the coherent wrapper recovers the ordinary scheme-module
+
+import all TauCeti.AlgebraicGeometry.FinitelyPresentedSheaf.Pushforward
 pushforward along the actual toric power map. -/
 @[simp]
 theorem toricCoherentPowerPushforward_obj_underlying

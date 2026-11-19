@@ -1,5 +1,7 @@
 module
 
+import all TauCeti.Algebra.Homology.DerivedCategory.Equivalence
+
 public import ToricPower.BaseRestrictionDerivedComparison
 
 /-! # Exact restriction equivalences retain original complex representatives -/

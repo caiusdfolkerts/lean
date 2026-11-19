@@ -1,6 +1,7 @@
 module
 
 public import ToricPower.FinitePushforward
+public import ToricPower.CategoricalFoundations
 
 /-! ## Source module `ToricPower.CoherentDerived`
 Original SHA256: 245fb150018157ec380fad4fe2f21f99232e83b2801558864bf4b0e3f5a3a4df.

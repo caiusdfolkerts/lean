@@ -4,6 +4,8 @@ public import ToricPower.GeometricCore
 public import ToricPower.RestrictedFan
 public import ToricPower.FinitePushforward
 public import ToricPower.Cohomology.SchemeBasic
+public import Mathlib.Algebra.Homology.DerivedCategory.TStructure
+public import TauCeti.AlgebraicGeometry.CartierDivisor.Sheaf
 
 /-! ## Literal sheaf and derived-category interfaces for the manuscript
 

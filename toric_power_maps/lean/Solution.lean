@@ -51,7 +51,7 @@ theorem trace_integral (Φ : Fan i) (W : Submodule ℝ V) (hW : IsRationalSubspa
   exact ToricPower.latticeTrace_isIntegralLattice i Φ.lattice W hW
 /-- Restriction retains a finite cone family. -/
 theorem restriction_finite (Φ : Fan i) (W : Submodule ℝ V) : (restrictedCones Φ W).Finite := by
-  exact (Φ.finite_cones.subset (fun _ h => h.1)).image _
+  exact (Φ.finite_cones.sep fun σ => σ ≤ (W : PointedCone ℝ V)).image _
 /-- Every restricted cone is genuinely rational and salient in the trace lattice. -/
 theorem restriction_toric (Φ : Fan i) (W : Submodule ℝ V) {σ : PointedCone ℝ W}
     (hσ : σ ∈ restrictedCones Φ W) : IsToricCone (latticeTraceMap (i := i) W) σ := by

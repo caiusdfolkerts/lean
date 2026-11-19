@@ -218,7 +218,8 @@ theorem rationalScalarUnit_class_zero (fan : Fan i) (nonempty : Nonempty fan.con
   rw [← rationalScalarUnit_chart fan nonempty cone c,
     ← chartCoordinateGerm_regularUnit fan nonempty cone unit]
   exact TauCeti.AlgebraicGeometry.Scheme.rationalUnitClass_germToFunctionField_eq_zero
-    fan.algebraicRealization _ _
+    fan.algebraicRealization (fan.affineToricChartι cone).opensRange
+      (Units.map (chartCoordinateSectionsEquiv fan cone).toMonoidHom unit)
 
 def torusCoordinateSectionsEquiv (fan : Fan i) (nonempty : Nonempty fan.cones) :
     affineCoordinateRing fan.lattice ⊥ ≃+*

@@ -72,8 +72,8 @@ def stellarGenerators (p : V) : Set (PointedCone ℝ V) :=
     rayJoin p '' {τ ∈ fan.cones | p ∉ τ ∧ ∃ σ ∈ fan.cones, p ∈ σ ∧ τ ≤ σ}
 
 theorem stellarGenerators_finite (p : V) : (stellarGenerators fan p).Finite := by
-  exact (fan.finite_cones.subset fun _ h => h.1).union
-    ((fan.finite_cones.subset fun _ h => h.1).image (rayJoin p))
+  exact (fan.finite_cones.sep (fun σ => p ∉ σ)).union
+    ((fan.finite_cones.sep (fun τ => p ∉ τ ∧ ∃ σ ∈ fan.cones, p ∈ σ ∧ τ ≤ σ)).image (rayJoin p))
 
 theorem stellarGenerators_refines {S : PointedCone ℝ V}
     (member : S ∈ stellarGenerators fan p) : ∃ σ ∈ fan.cones, S ≤ σ := by

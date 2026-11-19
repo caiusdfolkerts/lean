@@ -1,5 +1,7 @@
 module
 
+import all TauCeti.Algebra.Homology.DerivedCategory.Equivalence
+
 public import ToricPower.DiscreteComponentDetection
 public import ToricPower.ExactDerivedFunctorIso
 public import Mathlib.CategoryTheory.Functor.Currying

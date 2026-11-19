@@ -1,6 +1,11 @@
 module
 
 public import TauCeti.AlgebraicGeometry.Modules.Restriction
+public import TauCeti.AlgebraicGeometry.Modules.FinitePresentation
+public import TauCeti.AlgebraicGeometry.Modules.Pullback.Basic
+public import Mathlib.AlgebraicGeometry.Noetherian
+public import Mathlib.CategoryTheory.Abelian.Subcategory
+public import Mathlib.Algebra.Category.ModuleCat.Sheaf.Abelian
 
 /-! ## Source module `ToricPower.CoherentCategory`
 Original SHA256: 0ccb445f9b4f8b2cb127554300e114135d91929fffa040b86e7d2c7e15630ad8.

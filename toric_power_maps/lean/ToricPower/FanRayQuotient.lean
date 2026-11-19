@@ -36,7 +36,7 @@ def rayStarSeedCones : Set (PointedCone ℝ W) :=
     {σ : PointedCone ℝ V | σ ∈ fan.cones ∧ ray.toCone.val ≤ σ}
 
 theorem rayStarSeedCones_finite : (rayStarSeedCones fan ray projection).Finite :=
-  (fan.finite_cones.subset (fun _ member => member.1)).image _
+  (fan.finite_cones.sep (fun σ => ray.toCone.val ≤ σ)).image _
 
 include compatible kernel in
 theorem rayStarImage_isToricCone (σ : PointedCone ℝ V)
