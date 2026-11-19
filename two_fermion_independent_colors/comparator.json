@@ -1,0 +1,37 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "PaperVerification.Fermion.Exterior.modeRank_injective",
+    "PaperVerification.Fermion.Exterior.interleavedOddRank_injective",
+    "PaperVerification.Fermion.highestPower_X_pow",
+    "PaperVerification.Fermion.Paths.wordOfMarks_inl",
+    "PaperVerification.Fermion.Paths.wordOfMarks_inr",
+    "PaperVerification.Fermion.Paths.wordMark_wordOfMarks",
+    "PaperVerification.Fermion.Paths.wordMultiplicity_wordOfMarks",
+    "PaperVerification.Fermion.ringCon_le_ker_of_kills",
+    "PaperVerification.Fermion.quotientMk_eq_zero_of_mem",
+    "PaperVerification.Fermion.ColorAction.indexAmbient_one",
+    "PaperVerification.Fermion.ColorAction.indexAmbient_mul",
+    "PaperVerification.Fermion.ColorAction.indexAmbient_preserves_initialIdeal",
+    "PaperVerification.Fermion.ColorAction.initialQuotientEquiv_mk",
+    "PaperVerification.Fermion.NaturalColor.colorLinear_one",
+    "PaperVerification.Fermion.NaturalColor.colorLinear_mul",
+    "PaperVerification.Fermion.ColorPaths.markDegree_wordMark",
+    "PaperVerification.Fermion.TypeA.coefficientProjection_surjective",
+    "PaperVerification.Fermion.TypeA.coefficientProjection_kernel",
+    "PaperVerification.Fermion.ColorPaths.subsetMark_markSubset",
+    "PaperVerification.Fermion.ColorPaths.markSubset_subsetMark",
+    "PaperVerification.Fermion.ColorPaths.markSubset_card",
+    "PaperVerification.Fermion.NaturalColor.assemble_basis_unit",
+    "PaperVerification.Fermion.TypeA.exteriorCoefficientBlock_eq_zero_of_inadmissible",
+    "PaperVerification.Fermion.NaturalColor.assemblyScalar_ne_zero",
+    "PaperVerification.Fermion.TypeA.palomarColorIndependent"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "definition_names": []
+}
