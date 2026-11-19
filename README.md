@@ -7,3 +7,5 @@ This bounded independent check uses exact Lean4.36rc1 and canonical Mathlib2cab/
 Revision02 repairs the complete first error union: explicit canonical Frobenius additivity proof/reducible norm record, global linear-map constructor names, exact symmetric-element Hermitian witness, and the previously omitted integer Gaussian-Gram law (all scales, including singular/invalid). It retains every original endpoint and every new value specification.
 
 Revision03 addresses the complete revision02 error union: explicit canonical evaluation rewrites for the rectangular congruence constructor, and the canonical subtype second-countability witness for the unchanged subtype topology. No theorem statement or formula is weakened.
+
+Revision04 checks only the changed full interface. The sole revision03 error was the missing TopologicalSpace namespace on the actual canonical subtype second-countability witness. The already-passing genuine primitive module is not rerun.

@@ -11,13 +11,13 @@
       "original_challenge": "reports/wishart/full20-canonical/Challenge.lean",
       "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
       "hashes": {
-        "Challenge.lean": "4c933346cf7392810d85e8f83a182441768c9492c77f22c14ebfc26f389b3294",
+        "Challenge.lean": "0dc16eff0787c2723a12fcd23e58d8938beee9cbc01f08e46282f6899f5b2121",
         "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
         "lake-manifest.json": "5619bb28ae7f2972522467eccf712e99876805a4fb0b7298a3c8de5918224147",
         "original-lakefile.toml": "e429ab885c0b86124ac6b748b01715efdede7f476661ead3634e0c69b6521ccb"
       },
       "challenge_lines": 992,
-      "challenge_bytes": 96803,
+      "challenge_bytes": 96820,
       "dependency_pins": [
         {
           "name": "mathlib",
@@ -67,76 +67,10 @@
       ],
       "diagnostic_class": "canonical-only-full20-complete-literal-interface",
       "remote_memory_mib": 8192
-    },
-    {
-      "id": "wishart_literal_primitives",
-      "module": "WishartLiteralPrimitives",
-      "case_dir": "cases/wishart_literal_primitives",
-      "original_package": "reports/wishart/full20-canonical",
-      "original_challenge": "reports/wishart/full20-canonical/WishartLiteralPrimitives.lean",
-      "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
-      "hashes": {
-        "Challenge.lean": "ae85305fd9f13141fcf1491a38246104bcc33db94581bbfba12db92f1921b487",
-        "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
-        "lake-manifest.json": "5619bb28ae7f2972522467eccf712e99876805a4fb0b7298a3c8de5918224147",
-        "original-lakefile.toml": "e429ab885c0b86124ac6b748b01715efdede7f476661ead3634e0c69b6521ccb"
-      },
-      "challenge_lines": 226,
-      "challenge_bytes": 11063,
-      "dependency_pins": [
-        {
-          "name": "mathlib",
-          "url": "https://github.com/leanprover-community/mathlib4",
-          "rev": "2cabef97b63d3275776b8b060d802de6a6fa1055"
-        },
-        {
-          "name": "plausible",
-          "url": "https://github.com/leanprover-community/plausible",
-          "rev": "c2d7840c65673533e15b499f25beecdc6227f7d8"
-        },
-        {
-          "name": "LeanSearchClient",
-          "url": "https://github.com/leanprover-community/LeanSearchClient",
-          "rev": "9d39f9bb0c30aa2f6200808805ff16e6ce950890"
-        },
-        {
-          "name": "importGraph",
-          "url": "https://github.com/leanprover-community/import-graph",
-          "rev": "b3cc36c295aa5e3e3c0197b09a6556298e710447"
-        },
-        {
-          "name": "proofwidgets",
-          "url": "https://github.com/leanprover-community/ProofWidgets4",
-          "rev": "17137fad38a2cc782ff00b323a13c3a991d085ab"
-        },
-        {
-          "name": "aesop",
-          "url": "https://github.com/leanprover-community/aesop",
-          "rev": "29c64c56cc38211d39b306db2df11701e3d3de11"
-        },
-        {
-          "name": "Qq",
-          "url": "https://github.com/leanprover-community/quote4",
-          "rev": "6d26f8bb4b2bb78f929ad160feac508866821316"
-        },
-        {
-          "name": "batteries",
-          "url": "https://github.com/leanprover-community/batteries",
-          "rev": "30691c775364967184547c94468bf6b5f25400fb"
-        },
-        {
-          "name": "Cli",
-          "url": "https://github.com/leanprover/lean4-cli",
-          "rev": "34d2efffcb6dc8d5f3537cf6a7f88bfaa999ec49"
-        }
-      ],
-      "diagnostic_class": "canonical-only-genuine-bridge-proof-smoke",
-      "remote_memory_mib": 8192
     }
   ],
   "default_case_ids": [
-    "wishart_full20_canonical",
-    "wishart_literal_primitives"
+    "wishart_full20_canonical"
   ],
   "operator_resource_policy": {
     "memory_mib": 8192,

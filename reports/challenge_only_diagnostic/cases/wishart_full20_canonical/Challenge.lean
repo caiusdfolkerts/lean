@@ -236,7 +236,7 @@ instance symmetricMatrixIsUniformAddGroup (p : ℕ) :
     IsUniformAddGroup (selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℝ)) :=
   SeminormedAddCommGroup.to_isUniformAddGroup
 instance symmetricMatrixSecondCountableTopology (p : ℕ) :
-    SecondCountableTopology (selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℝ)) := Subtype.secondCountableTopology _
+    SecondCountableTopology (selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℝ)) := TopologicalSpace.Subtype.secondCountableTopology _
 instance symmetricMatrixCompleteSpace (p : ℕ) :
     CompleteSpace (selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℝ)) := FiniteDimensional.complete ℝ _
 instance symmetricMatrixContinuousENorm (p : ℕ) :
