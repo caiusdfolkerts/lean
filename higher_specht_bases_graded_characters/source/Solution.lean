@@ -144,7 +144,7 @@ theorem untruncated_graded_character_rational
         else 0 := by
     dsimp only [S]
     rw [PowerSeries.coeff_mk, character_untruncatedGradedPiece n lam hk d g]
-    have hchar (part : n.Partition) : (spechtModuleℂ part).ρ.character g = χ part :=
+    have hchar (part : n.Partition) : Representation.character (spechtModuleℂ part).ρ g = χ part :=
       (congrFun (Representation.char_iso (complexYoungIdealSpechtEquiv part)) g).symm
     simp_rw [hchar]
     rw [← Equiv.sum_comp (untruncatedDegreeCopyPartitionEquiv n lam hk d).symm
@@ -168,7 +168,9 @@ theorem untruncated_graded_character_rational
   have hS : S = N * (elementaryParameterSeriesUnit ℂ m).val := by
     apply PowerSeries.ext
     intro d
-    rw [hcoeff, N, Finset.sum_mul, map_sum]
+    rw [hcoeff]
+    dsimp only [N]
+    rw [Finset.sum_mul, map_sum]
     apply Finset.sum_congr rfl
     intro b _
     rw [mul_assoc, PowerSeries.coeff_C_mul, PowerSeries.coeff_X_pow_mul']
