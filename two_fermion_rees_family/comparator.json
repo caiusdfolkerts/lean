@@ -1,0 +1,40 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "PaperVerification.Fermion.WeightRees.parameterMap_C",
+    "PaperVerification.Fermion.WeightRees.parameterMap_monomial",
+    "PaperVerification.Fermion.WeightRees.parameterMap_central",
+    "PaperVerification.Fermion.WeightRees.one_mem_span",
+    "PaperVerification.Fermion.WeightRees.span_mul_mem",
+    "PaperVerification.Fermion.Exterior.modeRank_injective",
+    "PaperVerification.Fermion.Exterior.interleavedOddRank_injective",
+    "PaperVerification.Fermion.highestPower_X_pow",
+    "PaperVerification.Fermion.strictCoupledClasses_linearIndependent",
+    "PaperVerification.Fermion.card_strictPowerIndex",
+    "PaperVerification.Fermion.strictCoupled_quotient_finite",
+    "PaperVerification.Fermion.strictCoupled_finrank",
+    "PaperVerification.Fermion.WeightRees.mem_algebra_iff_filtration",
+    "PaperVerification.Fermion.strictBasisMultiplicityWeight_multiplicative",
+    "PaperVerification.Fermion.DescendingBasis.tail_mul",
+    "PaperVerification.Fermion.ringCon_le_ker_of_kills",
+    "PaperVerification.Fermion.quotientMk_eq_zero_of_mem",
+    "PaperVerification.Fermion.ColorAction.ambient_one",
+    "PaperVerification.Fermion.ColorAction.ambient_mul",
+    "PaperVerification.Fermion.ColorAction.ambient_preserves_strictIdeal",
+    "PaperVerification.Fermion.ColorAction.quotientEquiv_one",
+    "PaperVerification.Fermion.ColorAction.quotientEquiv_mul",
+    "PaperVerification.Fermion.ColorAction.quotientEquiv_filtration_iff",
+    "PaperVerification.Fermion.WeightRees.parameterLaurentEquiv_coeff",
+    "PaperVerification.Fermion.WeightRees.parameterLaurentEquiv_symm_coeff",
+    "PaperVerification.Fermion.WeightRees.filtrationEquiv_coeff",
+    "PaperVerification.Fermion.TypeA.colorFiltration_eq_basisTail",
+    "PaperVerification.Fermion.TypeA.palomarColorFamily"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "definition_names": []
+}
