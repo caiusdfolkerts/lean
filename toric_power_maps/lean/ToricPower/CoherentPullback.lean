@@ -63,6 +63,12 @@ instance (f : X ⟶ Y) : (pullback f).Additive := by
 
 variable [IsLocallyNoetherian X] [IsLocallyNoetherian Y]
 
+/-- The ambient and finitely presented direct images agree through the canonical inclusion. -/
+def pushforwardInclusionIso (f : X ⟶ Y) [IsFinite f] :
+    (SheafOfModules.isFinitePresentation X.ringCatSheaf).ι ⋙ Scheme.Modules.pushforward f ≅
+      pushforward f ⋙ (SheafOfModules.isFinitePresentation Y.ringCatSheaf).ι :=
+  eqToIso (pushforward_comp_inclusion f).symm
+
 /-- The actual scheme pullback--pushforward adjunction restricted along the
 fully faithful coherent inclusions. -/
 def pullbackPushforwardAdjunction (f : X ⟶ Y) [IsFinite f] :
@@ -71,7 +77,7 @@ def pullbackPushforwardAdjunction (f : X ⟶ Y) [IsFinite f] :
     (L := pullback f) (R := pushforward f)
     (SheafOfModules.isFinitePresentation Y.ringCatSheaf).fullyFaithfulι
     (SheafOfModules.isFinitePresentation X.ringCatSheaf).fullyFaithfulι
-    (Iso.refl _) (Iso.refl _)
+    (Iso.refl _) (pushforwardInclusionIso f)
 
 instance (f : X ⟶ Y) [IsFinite f] : (pullback f).IsLeftAdjoint :=
   (pullbackPushforwardAdjunction f).isLeftAdjoint
@@ -92,31 +98,55 @@ instance (f : X ⟶ Y) [PreservesFiniteLimits (Scheme.Modules.pullback f)] :
   letI := hFI
   exact preservesFiniteLimits_of_reflects_of_preserves F I
 
-/-- Forgetting the coherent wrapper recovers the ordinary adjunction unit. -/
-@[simp]
+/-- The underlying coherent unit recovers the ordinary unit via the canonical
+direct-image comparison. -/
 theorem pullbackPushforwardAdjunction_unit_underlying
     (f : X ⟶ Y) [IsFinite f] (M : FinitelyPresentedSheaf Y) :
     ((pullbackPushforwardAdjunction f).unit.app M).hom =
-      (Scheme.Modules.pullbackPushforwardAdjunction f).unit.app M.obj := by
+      (Scheme.Modules.pullbackPushforwardAdjunction f).unit.app M.obj ≫
+        (pushforwardInclusionIso f).hom.app ((pullback f).obj M) := by
   have h :=
     (Scheme.Modules.pullbackPushforwardAdjunction f).map_restrictFullyFaithful_unit_app
       (L := pullback f) (R := pushforward f)
       (SheafOfModules.isFinitePresentation Y.ringCatSheaf).fullyFaithfulι
       (SheafOfModules.isFinitePresentation X.ringCatSheaf).fullyFaithfulι
-      (Iso.refl _) (Iso.refl _) M
-  refine h.trans ?_
-  change (Scheme.Modules.pullbackPushforwardAdjunction f).unit.app M.obj ≫
+      (Iso.refl _) (pushforwardInclusionIso f) M
+  change ((pullbackPushforwardAdjunction f).unit.app M).hom =
+    (Scheme.Modules.pullbackPushforwardAdjunction f).unit.app M.obj ≫
       (Scheme.Modules.pushforward f).map (𝟙 ((Scheme.Modules.pullback f).obj M.obj)) ≫
-      𝟙 ((Scheme.Modules.pushforward f).obj ((Scheme.Modules.pullback f).obj M.obj)) = _
-  rw [CategoryTheory.Functor.map_id, Category.comp_id]
-  exact Category.comp_id _
+        (pushforwardInclusionIso f).hom.app ((pullback f).obj M) at h
+  let unit := (Scheme.Modules.pullbackPushforwardAdjunction f).unit.app M.obj
+  let comparison := (pushforwardInclusionIso f).hom.app ((pullback f).obj M)
+  have mapIdentity := (Scheme.Modules.pushforward f).map_id ((Scheme.Modules.pullback f).obj M.obj)
+  exact h.trans <| (congrArg (fun t => unit ≫ t ≫ comparison) mapIdentity).trans
+    (congrArg (fun t => unit ≫ t) (Category.id_comp comparison))
+
+/-- The actual projection, after forgetting the coherent wrapper and applying
+the inverse direct-image comparison. -/
+def unitProjectionAmbient (f : X ⟶ Y) [IsFinite f]
+    (ρ : Scheme.Modules.pullback f ⋙ Scheme.Modules.pushforward f ⟶ 𝟭 Y.Modules) :
+    (pullback f ⋙ pushforward f) ⋙
+        (SheafOfModules.isFinitePresentation Y.ringCatSheaf).ι ⟶
+      (SheafOfModules.isFinitePresentation Y.ringCatSheaf).ι where
+  app M := (pushforwardInclusionIso f).inv.app ((pullback f).obj M) ≫ ρ.app M.obj
+  naturality M N φ := by
+    change ((pushforward f ⋙
+      (SheafOfModules.isFinitePresentation Y.ringCatSheaf).ι).map ((pullback f).map φ)) ≫
+        ((pushforwardInclusionIso f).inv.app ((pullback f).obj N) ≫ ρ.app N.obj) =
+      ((pushforwardInclusionIso f).inv.app ((pullback f).obj M) ≫ ρ.app M.obj) ≫ φ.hom
+    rw [← Category.assoc, (pushforwardInclusionIso f).inv.naturality ((pullback f).map φ),
+      Category.assoc]
+    rw [Category.assoc]
+    exact congrArg (fun t => (pushforwardInclusionIso f).inv.app ((pullback f).obj M) ≫ t)
+      (ρ.naturality φ.hom)
 
 /-- Restrict an actual natural module-sheaf projection to coherent objects. -/
 def unitProjection (f : X ⟶ Y) [IsFinite f]
     (ρ : Scheme.Modules.pullback f ⋙ Scheme.Modules.pushforward f ⟶ 𝟭 Y.Modules) :
     pullback f ⋙ pushforward f ⟶ 𝟭 (FinitelyPresentedSheaf Y) where
-  app M := ObjectProperty.homMk (ρ.app M.obj)
-  naturality _ _ φ := ObjectProperty.hom_ext _ (ρ.naturality φ.hom)
+  app M := ObjectProperty.homMk ((unitProjectionAmbient f ρ).app M)
+  naturality _ _ φ :=
+    ObjectProperty.hom_ext _ ((unitProjectionAmbient f ρ).naturality φ)
 
 /-- The coherent unit and projection satisfy the same splitting equation
 as the actual scheme-module unit and projection. -/
@@ -128,8 +158,9 @@ theorem unitProjection_retract (f : X ⟶ Y) [IsFinite f]
   apply NatTrans.ext
   funext M
   apply ObjectProperty.hom_ext _
-  change ((pullbackPushforwardAdjunction f).unit.app M).hom ≫ ρ.app M.obj = 𝟙 M.obj
-  rw [pullbackPushforwardAdjunction_unit_underlying]
+  change ((pullbackPushforwardAdjunction f).unit.app M).hom ≫
+      ((pushforwardInclusionIso f).inv.app ((pullback f).obj M) ≫ ρ.app M.obj) = 𝟙 M.obj
+  rw [pullbackPushforwardAdjunction_unit_underlying, Category.assoc, Iso.hom_inv_id_app_assoc]
   exact NatTrans.congr_app hρ M.obj
 
 end TauCeti.AlgebraicGeometry.FinitelyPresentedSheaf

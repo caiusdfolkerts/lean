@@ -78,7 +78,8 @@ def quasicoherentCartierDerivedTensorEquivalence (D : CartierDivisor X) :
 termwise tensoring and the ordinary derived localization. -/
 theorem quasicoherentCartierDerivedTensor_functor (D : CartierDivisor X) :
     (quasicoherentCartierDerivedTensorEquivalence D).functor =
-      (quasicoherentCartierTensorEquivalence D).functor.mapDerivedCategory := rfl
+      (quasicoherentCartierTensorEquivalence D).functor.mapDerivedCategory :=
+  (quasicoherentCartierTensorEquivalence D).mapDerivedCategory_functor
 
 /-- On an arbitrary complex, including an unbounded one, this is the
 actual localization of the termwise tensor complex. -/
@@ -89,7 +90,9 @@ def quasicoherentCartierDerivedTensorComplexIso (D : CartierDivisor X)
       DerivedCategory.Q.obj
         (((quasicoherentCartierTensorEquivalence D).functor.mapHomologicalComplex
           (.up ℤ)).obj K) :=
-  (quasicoherentCartierTensorEquivalence D).functor.mapDerivedCategoryFactors.app K
+  eqToIso (congrArg (fun F : DerivedQCoh X ⥤ DerivedQCoh X => F.obj (DerivedCategory.Q.obj K))
+    (quasicoherentCartierDerivedTensor_functor D)) ≪≫
+      (quasicoherentCartierTensorEquivalence D).functor.mapDerivedCategoryFactors.app K
 
 end ToricPower
 

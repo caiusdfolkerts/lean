@@ -39,17 +39,17 @@ variable (k : Type) [Ring k]
 its literal closed polyhedron. -/
 theorem periodicAttachingMap_mem_closedCell {d : ℕ}
     (j : Cell (augmentedForms A) d) (z : TopCat.diskBoundary d) :
-    ((TauCeti.cellAttachingMap (arrangementCarrier A) j z :
+    ((TauCeti.cellAttachingMap j z :
       TauCeti.skeletonObj (arrangementCarrier A) d) : Fin n → ℝ) ∈
       closedCell (augmentedForms A) j.val.1 j.val.2 := by
   let zd : TopCat.disk d := TopCat.diskBoundaryInclusion d z
   have hmem :
-      ((TauCeti.cellAttachingMap (arrangementCarrier A) j z :
+      ((TauCeti.cellAttachingMap j z :
         TauCeti.skeletonObj (arrangementCarrier A) d) : Fin n → ℝ) ∈
       Topology.RelCWComplex.closedCell (C := arrangementCarrier A) d j := by
     erw [TauCeti.coe_cellAttachingMap_apply]
-    exact ⟨_, ((EuclideanSpace.equiv (Fin d) ℝ).image_unitBallHomeomorph_closedBall ▸
-      Set.mem_image_of_mem _ zd.down.2), rfl⟩
+    exact ⟨_, (TauCeti.diskHomeomorphClosedBall d
+      (TopCat.diskBoundaryInclusion d z)).property, rfl⟩
   change _ ∈ periodicCellMap A j '' Metric.closedBall 0 1 at hmem
   rwa [periodicCellMap_image_closedBall] at hmem
 
@@ -74,7 +74,7 @@ theorem point_mem_closedCell_of_incidence_ne_zero {d : ℕ}
   intro z hz
   have hc := periodicAttachingMap_mem_closedCell A j z
   have he :
-      ((TauCeti.cellAttachingMap (arrangementCarrier A) j z :
+      ((TauCeti.cellAttachingMap j z :
         TauCeti.skeletonObj (arrangementCarrier A) (d+1)) : Fin n → ℝ) = x :=
     congrArg Subtype.val hz
   exact hnot (he ▸ hc)

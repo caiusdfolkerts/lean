@@ -59,9 +59,9 @@ variable (cone : fan.cones)
 /-- Exactly the fan rays contained in the chosen affine cone. The
 coordinate hyperplanes used to make the arrangement bounded are absent. -/
 def universalThetaSelected : Set J :=
-  fun j => match j with
+  {j | match j with
     | .inl r => (rays r).toCone ≤ cone
-    | .inr _ => False
+    | .inr _ => False}
 
 def universalThetaLower (m : N →+ ℤ) : J → ℤ :=
   Sum.elim (fun r => -m (fanRayPrimitiveGenerator fan (rays r))) (fun _ => 0)
@@ -79,11 +79,14 @@ theorem universalChartAllowed_iff_strict (c : U) (m : N →+ ℤ) :
   · intro h j selected
     cases j with
     | inl r =>
+        change (rays r).toCone ≤ cone at selected
         have bound := h (rays r) selected
         simp only [universalDualCoefficients,Equiv.symm_apply_apply] at bound
         change -m (fanRayPrimitiveGenerator fan (rays r)) < c.2.val.1 (.inl r)
         omega
-    | inr r => exact selected.elim
+    | inr r =>
+        change False at selected
+        exact selected.elim
   · intro h ρ included
     have bound := h (.inl (rays.symm ρ)) (by
       change (rays (rays.symm ρ)).toCone ≤ cone

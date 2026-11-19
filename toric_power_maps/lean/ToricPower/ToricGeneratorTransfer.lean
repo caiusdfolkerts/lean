@@ -67,12 +67,17 @@ def toricCoherentPowerPushforwardCompIso
     (M : Coh fan.algebraicRealization) :
     (toricCoherentPowerPushforward fan regular k hk).obj
         ((toricCoherentPowerPushforward fan regular ell hell).obj M) ≅
-      (toricCoherentPowerPushforward fan regular (ell * k) (Nat.mul_pos hell hk)).obj M :=
-  (SheafOfModules.isFinitePresentation fan.algebraicRealization.ringCatSheaf).fullyFaithfulι.preimageIso
-      ((Scheme.Modules.pushforwardComp (toricPowerMap fan ell)
-          (toricPowerMap fan k)).app M.obj ≪≫
-        eqToIso (congrArg (fun f => (Scheme.Modules.pushforward f).obj M.obj)
-          (toricPowerMap_comp fan ell k)))
+      (toricCoherentPowerPushforward fan regular (ell * k) (Nat.mul_pos hell hk)).obj M := by
+  let A := (toricCoherentPowerPushforward fan regular ell hell).obj M
+  let F := Scheme.Modules.pushforward (toricPowerMap fan k)
+  refine (SheafOfModules.isFinitePresentation fan.algebraicRealization.ringCatSheaf).fullyFaithfulι.preimageIso
+    (eqToIso (toricCoherentPowerPushforward_obj_underlying fan regular k hk A) ≪≫
+      F.mapIso (eqToIso (toricCoherentPowerPushforward_obj_underlying fan regular ell hell M)) ≪≫
+      (Scheme.Modules.pushforwardComp (toricPowerMap fan ell) (toricPowerMap fan k)).app M.obj ≪≫
+      eqToIso (congrArg (fun f => (Scheme.Modules.pushforward f).obj M.obj)
+        (toricPowerMap_comp fan ell k)) ≪≫
+      eqToIso (toricCoherentPowerPushforward_obj_underlying
+        fan regular (ell * k) (Nat.mul_pos hell hk) M).symm)
 
 /-- Once one positive power pushforward is a generator and has an actual
 finite invertible splitting, every positive multiple is a generator.

@@ -91,8 +91,9 @@ theorem coherentToModuleDerivedPlus_isZero_iff (X : Scheme.{u})
   constructor
   · intro h
     have h' := (DerivedCategory.Plus.ι (C := X.Modules)).map_isZero h
+    let comparison := (coherentModuleInclusion X).mapBoundedDerivedCategoryCompιIso.app K
     have hK : IsZero K.obj := exactDerived_reflects_isZero
-      (coherentModuleInclusion X) K.obj h'
+      (coherentModuleInclusion X) K.obj (h'.of_iso comparison.symm)
     apply (IsZero.iff_id_eq_zero _).mpr
     apply ObjectProperty.hom_ext
     exact (IsZero.iff_id_eq_zero K.obj).mp hK
