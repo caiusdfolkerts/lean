@@ -9,3 +9,5 @@ Revision02 repairs the complete first error union: explicit canonical Frobenius 
 Revision03 addresses the complete revision02 error union: explicit canonical evaluation rewrites for the rectangular congruence constructor, and the canonical subtype second-countability witness for the unchanged subtype topology. No theorem statement or formula is weakened.
 
 Revision04 checks only the changed full interface. The sole revision03 error was the missing TopologicalSpace namespace on the actual canonical subtype second-countability witness. The already-passing genuine primitive module is not rerun.
+
+Revision05 explicitly supplies the ordinary finite-function topology and its second-countability witness to the canonical subtype instance. Revision04 exposed that expected-type inference had requested the Frobenius matrix topology as an unresolved dictionary. No topology or norm value is replaced.

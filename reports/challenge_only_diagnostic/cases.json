@@ -11,13 +11,13 @@
       "original_challenge": "reports/wishart/full20-canonical/Challenge.lean",
       "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
       "hashes": {
-        "Challenge.lean": "0dc16eff0787c2723a12fcd23e58d8938beee9cbc01f08e46282f6899f5b2121",
+        "Challenge.lean": "c0e26bc6583f8ae1bc5eb957fb030c6acc0d324f446ef3965d4402638d21cbe0",
         "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
         "lake-manifest.json": "5619bb28ae7f2972522467eccf712e99876805a4fb0b7298a3c8de5918224147",
         "original-lakefile.toml": "e429ab885c0b86124ac6b748b01715efdede7f476661ead3634e0c69b6521ccb"
       },
-      "challenge_lines": 992,
-      "challenge_bytes": 96820,
+      "challenge_lines": 995,
+      "challenge_bytes": 96940,
       "dependency_pins": [
         {
           "name": "mathlib",
