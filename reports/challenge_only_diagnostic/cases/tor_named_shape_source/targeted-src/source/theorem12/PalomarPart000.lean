@@ -127,6 +127,7 @@ namespace PalomarBarycentricTor
 theorem natRightCancelAdd : IsRightCancelAdd ℕ := by infer_instance
 def naturalDown : ComplexShape ℕ := @ComplexShape.down ℕ _ natRightCancelAdd _
 def naturalUp : ComplexShape ℕ := @ComplexShape.up ℕ _ natRightCancelAdd _
+attribute [reducible] naturalDown naturalUp
 
 theorem coefficientSMulComm {K : Type*} [CommRing K] : SMulCommClass K K K := by infer_instance
 theorem functionScalarTower {V K : Type*} [CommRing K] : IsScalarTower K K (V → K) := by infer_instance
@@ -1066,7 +1067,7 @@ noncomputable def toAppendMap : koszulComplex φ ⟶ koszulComplex (appendMap φ
 
 /-- Augumentation of Koszul complex by zero object. -/
 noncomputable abbrev upOne : HomologicalComplex (ModuleCat R) PalomarBarycentricTor.naturalDown :=
-  (koszulComplex φ).augment (X := ModuleCat.of R PUnit) 0 (by simp)
+  ChainComplex.augment (show ChainComplex (ModuleCat R) ℕ from koszulComplex φ) (X := ModuleCat.of R PUnit) 0 (by simp)
 
 /-- The canonical isomorphism of homology for augumenting with zero object. -/
 noncomputable def upOneHomologyIso (i : ℕ) :
@@ -1078,7 +1079,7 @@ noncomputable def upOneHomologyIso (i : ℕ) :
         (ShortComplex.opcyclesIsoCokernel (S := (upOne φ).sc' 2 1 0)) ≪≫
           (ShortComplex.opcyclesIsoCokernel (S := (koszulComplex φ).sc' 1 0 0)).symm ≪≫
             ((koszulComplex φ).opcyclesIsoSc' 1 0 0 (by simp) (by simp)).symm ≪≫
-              (koszulComplex φ).isoHomologyι₀.symm
+              (ChainComplex.isoHomologyι₀ (show ChainComplex (ModuleCat R) ℕ from koszulComplex φ)).symm
   | n + 1 =>
     ((upOne φ).homologyIsoSc' (n + 3) (n + 2) (n + 1) (by simp) (by simp)) ≪≫
       ((koszulComplex φ).homologyIsoSc' (n + 2) (n + 1) n (by simp) (by simp)).symm
