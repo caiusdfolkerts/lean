@@ -2,6 +2,7 @@ module
 
 public import ToricPower.InternalDualComplex
 public import ToricPower.SheafClosed
+public import TauCeti.AlgebraicGeometry.Modules.Dual
 
 /-!
 # Actual internal duality for scheme modules

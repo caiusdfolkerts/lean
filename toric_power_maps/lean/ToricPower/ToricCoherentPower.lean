@@ -53,7 +53,12 @@ theorem toricCoherentPowerPushforward_obj_underlying
     (fan : Fan i) (regular : fan.IsRegular) (ell : ℕ) (hell : 0 < ell)
     (M : Coh fan.algebraicRealization) :
     ((toricCoherentPowerPushforward fan regular ell hell).obj M).obj =
-      (Scheme.Modules.pushforward (toricPowerMap fan ell)).obj M.obj := rfl
+      (Scheme.Modules.pushforward (toricPowerMap fan ell)).obj M.obj := by
+  letI := toricPowerMap_finite fan regular ell hell
+  exact congrArg (fun F : Coh fan.algebraicRealization ⥤ fan.algebraicRealization.Modules =>
+    F.obj M)
+    (TauCeti.AlgebraicGeometry.FinitelyPresentedSheaf.pushforward_comp_inclusion
+      (toricPowerMap fan ell))
 
 
 end ToricPower

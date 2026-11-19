@@ -44,7 +44,7 @@ abbrev coherentInvertible (L : TauCeti.AlgebraicGeometry.InvertibleSheaf Y) : Co
   (TauCeti.AlgebraicGeometry.InvertibleSheaf.toFinitelyPresented Y).obj L
 
 /-- The invertible projection-formula retract lives in the full coherent
-subcategory: its maps are the same underlying sheaf morphisms. -/
+subcategory via the canonical comparison with ordinary pushforward. -/
 def coherentInvertibleRetractPushforwardPullback (f : X ⟶ Y) [IsFinite f]
     (r : Retract (SheafOfModules.unit Y.ringCatSheaf)
       ((Scheme.Modules.pushforward f).obj (SheafOfModules.unit X.ringCatSheaf)))
@@ -54,10 +54,13 @@ def coherentInvertibleRetractPushforwardPullback (f : X ⟶ Y) [IsFinite f]
         ((TauCeti.AlgebraicGeometry.FinitelyPresentedSheaf.pullback f).obj
           (coherentInvertible L))) := by
   let s := invertibleSheafRetractPushforwardPullback f r L
+  let comparison := (TauCeti.AlgebraicGeometry.FinitelyPresentedSheaf.pushforwardInclusionIso f).app
+    ((TauCeti.AlgebraicGeometry.FinitelyPresentedSheaf.pullback f).obj (coherentInvertible L))
+  let t := s.trans (Retract.ofIso comparison)
   exact
-    { i := ObjectProperty.homMk s.i
-      r := ObjectProperty.homMk s.r
-      retract := ObjectProperty.hom_ext _ s.retract }
+    { i := ObjectProperty.homMk t.i
+      r := ObjectProperty.homMk t.r
+      retract := ObjectProperty.hom_ext _ t.retract }
 
 /-- The same retraction after placing coherent sheaves in degree zero,
 with its target identified with the actual finite derived direct image. -/

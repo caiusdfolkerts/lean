@@ -135,9 +135,14 @@ theorem exists_nonzero_into_repetition (i : I)
     (E : DerivedCategory (Discrete I × C ⥤ ModuleCat.{0} k)) (K : DerivedCategory Diag)
     (f : (restriction k i).mapDerivedCategory.obj E ⟶ K) (nonzero : f ≠ 0) :
     ∃ g : E ⟶ (repetition (I := I) k).mapDerivedCategory.obj K, g ≠ 0 := by
-  let equivalence := (currying (C := Discrete I) (D := C) (E := ModuleCat.{0} k)).symm.mapDerivedCategory
+  let original := (currying (C := Discrete I) (D := C) (E := ModuleCat.{0} k)).symm
+  let F := (curry (C := Discrete I) (D := C) (E := ModuleCat.{0} k)).mapDerivedCategory
+  let faithful : F.FullyFaithful := by
+    change original.functor.mapDerivedCategory.FullyFaithful
+    rw [← original.mapDerivedCategory_functor]
+    exact original.mapDerivedCategory.fullyFaithfulFunctor
   let e : ((evaluation (Discrete I) Diag).obj (Discrete.mk i)).mapDerivedCategory.obj
-      (equivalence.functor.obj E) ≅ (restriction k i).mapDerivedCategory.obj E :=
+      (F.obj E) ≅ (restriction k i).mapDerivedCategory.obj E :=
     (derivedCurryEvaluationIso k i).app E
   have fNonzero : e.hom ≫ f ≠ 0 := by
     intro h
@@ -145,13 +150,13 @@ theorem exists_nonzero_into_repetition (i : I)
     rw [← cancel_epi e.hom,comp_zero]
     exact h
   obtain ⟨g,hg⟩ := DiscreteComponent.exists_nonzero_into_constant i
-    (equivalence.functor.obj E) K (e.hom ≫ f) fNonzero
+    (F.obj E) K (e.hom ≫ f) fNonzero
   let q := (derivedCurryRepetitionIso (I := I) k).app K
-  let a := equivalence.fullyFaithfulFunctor.preimage (g ≫ q.inv)
+  let a := faithful.preimage (g ≫ q.inv)
   refine ⟨a,?_⟩
   intro zero
-  have mapped := congrArg equivalence.functor.map zero
-  rw [equivalence.fullyFaithfulFunctor.map_preimage,Functor.map_zero] at mapped
+  have mapped := congrArg F.map zero
+  rw [faithful.map_preimage,Functor.map_zero] at mapped
   apply hg
   rw [← cancel_mono q.inv,zero_comp]
   exact mapped
