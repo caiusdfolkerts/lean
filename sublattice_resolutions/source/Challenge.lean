@@ -935,3 +935,41 @@ theorem theorem41 {k : Type v} [Field k] (E : Finset (Tuple n))
       ⨅ C : {C : Finset (Label n) // IsMinimalCover n E C},
         (Ideal.span (X '' (C.val : Set (Label n)))) ^ s := by sorry
 end PalomarSublattice.RowCovers
+
+namespace PalomarSublattice
+open Classical MvPolynomial
+universe u
+variable {d : ℕ} (n : Fin d → ℕ) (Q K : Type u) [Field Q] [CharZero Q] [Field K]
+variable {E : Finset (FiniteTuple n)}
+
+/-- Actual quotient Betti excess summed over all strict supports of size r. -/
+def characteristicCoefficient (q : ℤ) (p r : ℕ) : ℤ :=
+  (bettiBinomialCoefficient n (k := K) E q p r : ℤ) -
+    (bettiBinomialCoefficient n (k := Q) E q p r : ℤ)
+
+/-- The difference compares the actual signed ordinary strata in positive powers. -/
+def characteristicExcess (q : ℤ) (p t : ℕ) : ℤ :=
+  normalizedBettiSequence n (sublatticeIdeal n (k := K) E) q p t -
+    normalizedBettiSequence n (sublatticeIdeal n (k := Q) E) q p t
+
+/-- Corollary 10.4, the grouped expansion, positivity of the actual integer
+coefficients, and nonnegativity of every positive-power forward difference. -/
+theorem corollary104_characteristic_excess (hE : finiteLatticeClosed n E) :
+    (∀ q : ℤ, ∀ p r : ℕ, 0 ≤ characteristicCoefficient n Q K (E := E) q p r) ∧
+    (∀ q : ℤ, ∀ p t : ℕ, characteristicExcess n Q K (E := E) q p t =
+      ∑ r ∈ Finset.Icc 1 E.card, characteristicCoefficient n Q K (E := E) q p r *
+        (t.choose (r-1) : ℤ)) ∧
+    (∀ q : ℤ, ∀ p j t : ℕ,
+      0 ≤ ((fwdDiff (1 : ℕ))^[j] (characteristicExcess n Q K (E := E) q p)) t) := by sorry
+
+/-- The complete ordinary integer Betti table over every pair of fields. -/
+def IntegerPowerBettiFieldIndependent (m : ℕ) : Prop :=
+  ∀ (F L : Type u) [Field F] [Field L] (q : ℤ) (p : ℕ),
+    Koszul.betti ((sublatticeIdeal n (k := F) E)^m) p q =
+      Koszul.betti ((sublatticeIdeal n (k := L) E)^m) p q
+
+/-- Corollary 10.4, existence of one field-independent positive power. -/
+theorem corollary104_field_independence (hE : finiteLatticeClosed n E) :
+    (∃ m : ℕ, 0 < m ∧ IntegerPowerBettiFieldIndependent n (E := E) m) ↔
+      ∀ r : ℕ, 0 < r → IntegerPowerBettiFieldIndependent n (E := E) r := by sorry
+end PalomarSublattice

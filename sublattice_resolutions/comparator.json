@@ -35,7 +35,9 @@
     "PalomarSublattice.corollary52_integer_grouped_expansion",
     "PalomarSublattice.corollary52_full",
     "PalomarSublattice.corollaries51_52_transfer",
-    "PalomarSublattice.RowCovers.theorem41"
+    "PalomarSublattice.RowCovers.theorem41",
+    "PalomarSublattice.corollary104_characteristic_excess",
+    "PalomarSublattice.corollary104_field_independence"
   ],
   "permitted_axioms": [
     "propext",

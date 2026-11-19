@@ -2,6 +2,7 @@ module
 public import Mathlib
 public import paper_results.transfer_formulas
 public import paper_results.part009
+public import paper_results.characteristic_consequences
 public import paper_results.numerical_transfer
 public import graph_results.canonical_finer_monomial_homology
 public import paper_results.finite_rees_presentation
@@ -2994,3 +2995,81 @@ theorem theorem41 {k : Type v} [Field k] (E : Finset (Tuple n))
         (Ideal.span (X '' (C.val : Set (Label n)))) ^ s := by
   exact FourPapers.Sublattice.RowCutNetwork.theorem41 n E hinf hsup s
 end PalomarSublattice.RowCovers
+
+namespace PalomarSublattice
+open Classical MvPolynomial
+universe u
+variable {d : ℕ} (n : Fin d → ℕ) (Q K : Type u) [Field Q] [CharZero Q] [Field K]
+variable {E : Finset (FiniteTuple n)}
+
+/-- Actual quotient Betti excess summed over all strict supports of size r. -/
+def characteristicCoefficient (q : ℤ) (p r : ℕ) : ℤ :=
+  (bettiBinomialCoefficient n (k := K) E q p r : ℤ) -
+    (bettiBinomialCoefficient n (k := Q) E q p r : ℤ)
+
+/-- The difference compares the actual signed ordinary strata in positive powers. -/
+def characteristicExcess (q : ℤ) (p t : ℕ) : ℤ :=
+  normalizedBettiSequence n (sublatticeIdeal n (k := K) E) q p t -
+    normalizedBettiSequence n (sublatticeIdeal n (k := Q) E) q p t
+
+/-- Corollary 10.4, the grouped expansion, positivity of the actual integer
+coefficients, and nonnegativity of every positive-power forward difference. -/
+theorem corollary104_characteristic_excess (hE : finiteLatticeClosed n E) :
+    (∀ q : ℤ, ∀ p r : ℕ, 0 ≤ characteristicCoefficient n Q K (E := E) q p r) ∧
+    (∀ q : ℤ, ∀ p t : ℕ, characteristicExcess n Q K (E := E) q p t =
+      ∑ r ∈ Finset.Icc 1 E.card, characteristicCoefficient n Q K (E := E) q p r *
+        (t.choose (r-1) : ℤ)) ∧
+    (∀ q : ℤ, ∀ p j t : ℕ,
+      0 ≤ ((fwdDiff (1 : ℕ))^[j] (characteristicExcess n Q K (E := E) q p)) t) := by
+  refine ⟨?_, ?_, ?_⟩
+  · intro q p r
+    unfold characteristicCoefficient bettiBinomialCoefficient
+    apply sub_nonneg.mpr
+    exact_mod_cast Finset.sum_le_sum (fun s _ => by
+      let a := (supportEquiv n E).symm s
+      have h := FourPapers.Sublattice.integerOrdinaryQuotientBetti_charZero_le Q K
+        (FourPapers.Sublattice.strictSupportCoefficientFamily a) q p
+      rw [← FineKoszul.ordinaryQuotientBetti_eq_source,
+        ← FineKoszul.ordinaryQuotientBetti_eq_source,
+        supportCoefficientIdeal_eq_source, supportCoefficientIdeal_eq_source] at h
+      simpa only [(supportEquiv n E).apply_symm_apply s] using h)
+  · intro q p t
+    unfold characteristicExcess normalizedBettiSequence
+    rw [corollary52_integer_grouped_expansion n (k := K) hE q p (t+1) (by omega),
+      corollary52_integer_grouped_expansion n (k := Q) hE q p (t+1) (by omega)]
+    simp only [Nat.add_sub_cancel, Nat.cast_sum, Nat.cast_mul]
+    rw [← Finset.sum_sub_distrib]
+    apply Finset.sum_congr rfl
+    intro r _
+    simp only [characteristicCoefficient, sub_mul]
+  · intro q p j t
+    let o : MonomialOrder (FiniteVariable.{u} n) :=
+      @MonomialOrder.degLex (FiniteVariable.{u} n) (finiteVariableLinearOrder n)
+        (@Finite.to_wellFoundedGT (FiniteVariable.{u} n) (inferInstance)
+          (finiteVariableLinearOrder n).toPreorder)
+    have h : characteristicExcess n Q K (E := E) q p =
+        FourPapers.Sublattice.integerCharacteristicBettiExcess Q K o (E := E) q p := by
+      funext t
+      unfold characteristicExcess normalizedBettiSequence
+      simp only [transfer_monomial_bridge n o] <;> rfl
+    rw [h]
+    exact FourPapers.Sublattice.corollary104_integer_forward_differences Q K o hE q p j t
+
+/-- The complete ordinary integer Betti table over every pair of fields. -/
+def IntegerPowerBettiFieldIndependent (m : ℕ) : Prop :=
+  ∀ (F L : Type u) [Field F] [Field L] (q : ℤ) (p : ℕ),
+    Koszul.betti ((sublatticeIdeal n (k := F) E)^m) p q =
+      Koszul.betti ((sublatticeIdeal n (k := L) E)^m) p q
+
+/-- Corollary 10.4, existence of one field-independent positive power. -/
+theorem corollary104_field_independence (hE : finiteLatticeClosed n E) :
+    (∃ m : ℕ, 0 < m ∧ IntegerPowerBettiFieldIndependent n (E := E) m) ↔
+      ∀ r : ℕ, 0 < r → IntegerPowerBettiFieldIndependent n (E := E) r := by
+  let o : MonomialOrder (FiniteVariable.{u} n) :=
+    @MonomialOrder.degLex (FiniteVariable.{u} n) (finiteVariableLinearOrder n)
+      (@Finite.to_wellFoundedGT (FiniteVariable.{u} n) (inferInstance)
+        (finiteVariableLinearOrder n).toPreorder)
+  unfold IntegerPowerBettiFieldIndependent
+  simp only [transfer_monomial_bridge n o]
+  exact FourPapers.Sublattice.corollary104_integer_global_exists_iff_all_powers o hE
+end PalomarSublattice
