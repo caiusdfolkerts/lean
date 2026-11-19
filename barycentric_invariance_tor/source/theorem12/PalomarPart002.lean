@@ -234,12 +234,18 @@ theorem gradeMap_comp (F : Filtration (K := K) X) (G : Filtration (K := K) Y)
 def boundaryMap (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) :
     X →ₗ[K] LinearMap.ker g :=
   f.codRestrict _ (fun x => LinearMap.congr_fun hfg x)
+theorem boundaryMap_palomar_formula (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) (x : X) :
+    (boundaryMap f g hfg x).val = f x := rfl
 
 abbrev Homology (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) :=
   LinearMap.ker g ⧸ LinearMap.range (boundaryMap f g hfg)
+theorem Homology_palomar_formula (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) :
+    Homology f g hfg = (LinearMap.ker g ⧸ LinearMap.range (boundaryMap f g hfg)) := rfl
 
 def homologyClass (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) :
     LinearMap.ker g →ₗ[K] Homology f g hfg := (LinearMap.range (boundaryMap f g hfg)).mkQ
+theorem homologyClass_palomar_formula (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) :
+    homologyClass f g hfg = (LinearMap.range (boundaryMap f g hfg)).mkQ := rfl
 
 theorem homologyClass_eq_iff (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0)
     (z w : LinearMap.ker g) : homologyClass f g hfg z = homologyClass f g hfg w ↔
@@ -257,6 +263,8 @@ def cycleLevel (F : Filtration (K := K) Y) (g : Y →ₗ[K] Z) (n : ℕ) :
 def homologyLevel (F : Filtration (K := K) Y) (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z)
     (hfg : g.comp f = 0) (n : ℕ) : Submodule K (Homology f g hfg) :=
   (cycleLevel F g n).map (homologyClass f g hfg)
+theorem homologyLevel_palomar_formula (F : Filtration (K := K) Y) (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) (n : ℕ) :
+    homologyLevel F f g hfg n = (cycleLevel F g n).map (homologyClass f g hfg) := rfl
 
 def homologyFiltration (F : Filtration (K := K) Y) (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z)
     (hfg : g.comp f = 0) : Filtration (K := K) (Homology f g hfg) where
@@ -267,6 +275,8 @@ def homologyFiltration (F : Filtration (K := K) Y) (f : X →ₗ[K] Y) (g : Y �
     obtain ⟨z, rfl⟩ := (LinearMap.range (boundaryMap f g hfg)).mkQ_surjective x
     obtain ⟨n, hn⟩ := F.exhaustive z.val
     exact ⟨n, z, hn, rfl⟩
+theorem homologyFiltration_palomar_formula (F : Filtration (K := K) Y) (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) (n : ℕ) :
+    (homologyFiltration F f g hfg).level n = homologyLevel F f g hfg n := rfl
 
 section Comparison
 variable (F : Filtration (K := K) X) (G : Filtration (K := K) Y)
@@ -6728,6 +6738,8 @@ def originalParameterTor (m : ℕ) : ModuleCat.{u} K :=
     (((Tor (ModuleCat (MvPolynomial (Fin d) K)) m).obj
       (ModuleCat.of (MvPolynomial (Fin d) K) (FaceRing K hs))).obj
         (CommAlg.Koszul.residueCoefficientModule (V := Fin d) (k := K)))
+theorem originalParameterTor_palomar_formula (m : ℕ) :
+    originalParameterTor K hs d m = (ModuleCat.restrictScalars (algebraMap K (MvPolynomial (Fin d) K))).obj (((Tor (ModuleCat (MvPolynomial (Fin d) K)) m).obj (ModuleCat.of (MvPolynomial (Fin d) K) (FaceRing K hs))).obj (CommAlg.Koszul.residueCoefficientModule (V := Fin d) (k := K))) := rfl
 
 def barycentricParameterTor (m : ℕ) : ModuleCat.{u} K :=
   (ModuleCat.restrictScalars (algebraMap K (MvPolynomial (Fin d) K))).obj

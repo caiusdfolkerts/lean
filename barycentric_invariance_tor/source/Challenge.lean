@@ -313,6 +313,8 @@ def symm (e : CoherentEquiv D E) : CoherentEquiv E D where
   naturality p q h x := by
     apply (e.component q).injective
     simpa using (e.naturality p q h ((e.component p).symm x)).symm
+theorem symm_palomar_formula (e : CoherentEquiv D E) (p : P) :
+    e.symm.component p = (e.component p).symm := by sorry
 def sectionEquiv (e : CoherentEquiv D E) : D.sections ≃ₗ[K] E.sections where
   toFun x := ⟨fun p => e.component p (x.val p), by
     intro p q h
@@ -339,6 +341,8 @@ def sectionEquiv (e : CoherentEquiv D E) : D.sections ≃ₗ[K] E.sections where
     apply Subtype.ext
     funext p
     exact map_smul (e.component p) c (x.val p)
+theorem sectionEquiv_palomar_formula (e : CoherentEquiv D E) (x : D.sections) (p : P) :
+    (e.sectionEquiv x).val p = e.component p (x.val p) := by sorry
 end
 end FourPapers.Universal.CoherentEquiv
 namespace FourPapers.Universal
@@ -385,6 +389,8 @@ open Classical Finset MvPolynomial
 variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
 variable (K : Type*) [CommRing K] (hs : IsSimplicialPoset P)
 /-- Literal FourPapers.Universal.faceRingMonomial; source theorem12.lean:8687. -/ def faceRingMonomial (a : NonzeroFace P →₀ ℕ) : FaceRing K hs := Ideal.Quotient.mk (faceIdeal K hs) (monomial a 1)
+theorem faceRingMonomial_palomar_formula (a : NonzeroFace P →₀ ℕ) :
+    faceRingMonomial K hs a = Ideal.Quotient.mk (faceIdeal K hs) (monomial a 1) := by sorry
 /-- Literal FourPapers.Universal.standardOrdinaryDegree; source theorem12.lean:13414. -/ def standardOrdinaryDegree (a : StandardFaceIndex P) : ℕ := a.val.sum (fun F n => n * faceRank F.val)
 end FourPapers.Universal
 namespace FourPapers.Universal
@@ -469,6 +475,8 @@ variable {P : Type*} [PartialOrder P] [OrderBot P] [Fintype P]
         (subfaceOfVertexSet hs p G.val).val := congrArg (fun z : NonzeroFace P => z.val) h
     have hv := congrArg (stalkVertexSet p) he
     simpa only [stalkVertexSet_subfaceOfVertexSet] using hv
+theorem booleanFaceInclusion_palomar_formula (hs : IsSimplicialPoset P) (p : P) (F : BooleanFace (FaceVertex p)) :
+    (booleanFaceInclusion hs p F).val = (subfaceOfVertexSet hs p F.val).val := by sorry
 /-- Literal FourPapers.Universal.booleanFaceInclusion_le; source theorem12.lean:7788. -/ theorem booleanFaceInclusion_le (hs : IsSimplicialPoset P) (p : P) (F : BooleanFace (FaceVertex p)) : (booleanFaceInclusion hs p F).val ≤ p := by sorry
 /-- Literal FourPapers.Universal.booleanFaceInclusion_range_iff; source theorem12.lean:7963. -/ theorem booleanFaceInclusion_range_iff (hs : IsSimplicialPoset P) (p : P) (q : NonzeroFace P) : q ∈ Set.range (booleanFaceInclusion hs p) ↔ q.val ≤ p := by
   sorry
@@ -506,6 +514,8 @@ variable (K : Type*) [CommRing K] (carrier : I → P)
 /-- Literal FourPapers.Universal.coefficientRestriction; source theorem12.lean:8330. -/ def coefficientRestriction {p q : P} (_hqp : q ≤ p) : coefficientStalk K carrier p →ₗ[K] coefficientStalk K carrier q :=
   (Finsupp.restrictDom K K {i | carrier i ≤ q}).comp
     (coefficientStalk K carrier p).subtype
+theorem coefficientRestriction_palomar_formula {p q : P} (h : q ≤ p) :
+    coefficientRestriction K carrier h = (Finsupp.restrictDom K K {i | carrier i ≤ q}).comp (coefficientStalk K carrier p).subtype := by sorry
 /-- Literal FourPapers.Universal.coefficientRestriction_apply; source theorem12.lean:8335. -/ @[simp] theorem coefficientRestriction_apply {p q : P} (hqp : q ≤ p) (x : coefficientStalk K carrier p) (i : I) : (coefficientRestriction K carrier hqp x).val i
   = if carrier i ≤ q then x.val i else 0 := by sorry
 /-- Literal FourPapers.Universal.coefficientDiagram; source theorem12.lean:8340. -/ abbrev coefficientDiagram : ModuleDiagram K P where
@@ -528,6 +538,8 @@ variable (K : Type*) [CommRing K] (carrier : I → P)
     · have hiq := hi.trans hrq
       simp [hi, hiq]
     · simp [hi]
+theorem coefficientDiagram_palomar_formula {p q : P} (h : q ≤ p) :
+    (coefficientDiagram K carrier).res h = coefficientRestriction K carrier h := by sorry
 /-- Literal FourPapers.Universal.coefficientSection; source theorem12.lean:8361. -/ def coefficientSection : (I →₀ K) →ₗ[K] (coefficientDiagram K carrier).sections where
   toFun x := ⟨fun p => Finsupp.restrictDom K K {i | carrier i ≤ p} x, by
     intro p q hqp
@@ -572,7 +584,11 @@ variable [Fintype P]
   right_inv := coefficientSection_assembly K carrier
   map_add' := (coefficientSection K carrier).map_add
   map_smul' := (coefficientSection K carrier).map_smul
+theorem coefficientSectionEquiv_palomar_formula (x : I →₀ K) :
+    coefficientSectionEquiv K carrier x = coefficientSection K carrier x := by sorry
 /-- Literal FourPapers.Universal.sectionsFromCoherentCoefficients; source theorem12.lean:8442. -/ def sectionsFromCoherentCoefficients (D : ModuleDiagram K P) (e : CoherentEquiv D (coefficientDiagram K carrier)) : D.sections ≃ₗ[K] (I →₀ K) := e.sectionEquiv.trans (coefficientSectionEquiv K carrier).symm
+theorem sectionsFromCoherentCoefficients_palomar_formula (D : ModuleDiagram K P) (e : CoherentEquiv D (coefficientDiagram K carrier)) :
+    sectionsFromCoherentCoefficients K carrier D e = e.sectionEquiv.trans (coefficientSectionEquiv K carrier).symm := by sorry
 end FourPapers.Universal
 namespace FourPapers.Universal
 set_option backward.isDefEq.respectTransparency false
@@ -626,6 +642,8 @@ variable (K : Type*) [CommRing K] (hs : IsSimplicialPoset P)
 /-- Literal FourPapers.Universal.polynomialStandardCoordinates; source theorem12.lean:9813. -/ def polynomialStandardCoordinates (p : P) : PolynomialStalk K p ≃ₗ[K] coefficientStalk K (standardCarrier (P := P)) p :=
   (polynomialStandardBasis (K := K) hs p).repr.trans
     (Finsupp.supportedEquivFinsupp {a : StandardFaceIndex P | standardCarrier a ≤ p}).symm
+theorem polynomialStandardCoordinates_palomar_formula (p : P) :
+    polynomialStandardCoordinates K hs p = (polynomialStandardBasis (K := K) hs p).repr.trans (Finsupp.supportedEquivFinsupp {a : StandardFaceIndex P | standardCarrier a ≤ p}).symm := by sorry
 /-- Literal FourPapers.Universal.polynomialStandardCoordinates_naturality; source theorem12.lean:9857. -/ theorem polynomialStandardCoordinates_naturality {p q : P} (hqp : q ≤ p) (f : PolynomialStalk K p) : coefficientRestriction K standardCarrier hqp
   (polynomialStandardCoordinates K hs p f) = polynomialStandardCoordinates K hs q (polynomialRestriction K hqp f) := by sorry
 /-- Literal FourPapers.Universal.polynomialCoefficientEquiv; source theorem12.lean:9885. -/ def polynomialCoefficientEquiv : CoherentEquiv (polynomialDiagram (P := P) K) (coefficientDiagram K (standardCarrier (P := P))) where
@@ -645,6 +663,8 @@ variable (K : Type*) [CommRing K] (hs : IsSimplicialPoset P)
       have h := congrArg (fun f => polynomialSectionCoordinates K hs (faceRingSection K hs f)) hxy
       simpa only [standardFaceCombination_coefficients] using h,
       standardFaceCombination_surjective K hs⟩).symm
+theorem standardFaceBasis_apply (a : StandardFaceIndex P) :
+    standardFaceBasis K hs a = faceRingMonomial K hs a.val := by sorry
 end FourPapers.Universal
 namespace FourPapers.Universal
 set_option backward.isDefEq.respectTransparency false
@@ -724,10 +744,18 @@ variable {X Y Z : Type*} [AddCommGroup X] [Module K X] [AddCommGroup Y] [Module 
 /-- Literal FourPapers.FilteredHomology.lowerInLevel; source theorem12.lean:16698. -/ def lowerInLevel (F : Filtration (K := K) X) (n : ℕ) : Submodule K (F.level (n + 1)) := (F.level n).comap (F.level (n + 1)).subtype
 /-- Literal FourPapers.FilteredHomology.Grade; source theorem12.lean:16701. -/ abbrev Grade (F : Filtration (K := K) X) (n : ℕ) := F.level (n + 1) ⧸ lowerInLevel F n
 /-- Literal FourPapers.FilteredHomology.boundaryMap; source theorem12.lean:16731. -/ def boundaryMap (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) : X →ₗ[K] LinearMap.ker g := f.codRestrict _ (fun x => LinearMap.congr_fun hfg x)
+theorem boundaryMap_palomar_formula (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) (x : X) :
+    (boundaryMap f g hfg x).val = f x := by sorry
 /-- Literal FourPapers.FilteredHomology.Homology; source theorem12.lean:16735. -/ abbrev Homology (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) := LinearMap.ker g ⧸ LinearMap.range (boundaryMap f g hfg)
+theorem Homology_palomar_formula (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) :
+    Homology f g hfg = (LinearMap.ker g ⧸ LinearMap.range (boundaryMap f g hfg)) := by sorry
 /-- Literal FourPapers.FilteredHomology.homologyClass; source theorem12.lean:16738. -/ def homologyClass (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) : LinearMap.ker g →ₗ[K] Homology f g hfg := (LinearMap.range (boundaryMap f g hfg)).mkQ
+theorem homologyClass_palomar_formula (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) :
+    homologyClass f g hfg = (LinearMap.range (boundaryMap f g hfg)).mkQ := by sorry
 /-- Literal FourPapers.FilteredHomology.cycleLevel; source theorem12.lean:16751. -/ def cycleLevel (F : Filtration (K := K) Y) (g : Y →ₗ[K] Z) (n : ℕ) : Submodule K (LinearMap.ker g) := (F.level n).comap (LinearMap.ker g).subtype
 /-- Literal FourPapers.FilteredHomology.homologyLevel; source theorem12.lean:16754. -/ def homologyLevel (F : Filtration (K := K) Y) (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) (n : ℕ) : Submodule K (Homology f g hfg) := (cycleLevel F g n).map (homologyClass f g hfg)
+theorem homologyLevel_palomar_formula (F : Filtration (K := K) Y) (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) (n : ℕ) :
+    homologyLevel F f g hfg n = (cycleLevel F g n).map (homologyClass f g hfg) := by sorry
 /-- Literal FourPapers.FilteredHomology.homologyFiltration; source theorem12.lean:16758. -/ def homologyFiltration (F : Filtration (K := K) Y) (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) : Filtration (K := K) (Homology f g hfg) where
   level := homologyLevel F f g hfg
   zero := by simp [homologyLevel, cycleLevel, F.zero]
@@ -736,6 +764,8 @@ variable {X Y Z : Type*} [AddCommGroup X] [Module K X] [AddCommGroup Y] [Module 
     obtain ⟨z, rfl⟩ := (LinearMap.range (boundaryMap f g hfg)).mkQ_surjective x
     obtain ⟨n, hn⟩ := F.exhaustive z.val
     exact ⟨n, z, hn, rfl⟩
+theorem homologyFiltration_palomar_formula (F : Filtration (K := K) Y) (f : X →ₗ[K] Y) (g : Y →ₗ[K] Z) (hfg : g.comp f = 0) (n : ℕ) :
+    (homologyFiltration F f g hfg).level n = homologyLevel F f g hfg n := by sorry
 end FourPapers.FilteredHomology
 namespace FourPapers.FilteredHomology
 set_option backward.isDefEq.respectTransparency false
@@ -891,6 +921,8 @@ local instance originalParameterModule : Module (MvPolynomial (Fin d) K) (FaceRi
     (((Tor (ModuleCat (MvPolynomial (Fin d) K)) m).obj
       (ModuleCat.of (MvPolynomial (Fin d) K) (FaceRing K hs))).obj
         (CommAlg.Koszul.residueCoefficientModule (V := Fin d) (k := K)))
+theorem originalParameterTor_palomar_formula (m : ℕ) :
+    originalParameterTor K hs d m = (ModuleCat.restrictScalars (algebraMap K (MvPolynomial (Fin d) K))).obj (((Tor (ModuleCat (MvPolynomial (Fin d) K)) m).obj (ModuleCat.of (MvPolynomial (Fin d) K) (FaceRing K hs))).obj (CommAlg.Koszul.residueCoefficientModule (V := Fin d) (k := K))) := by sorry
 end FourPapers.Universal
 namespace FourPapers.Universal
 set_option backward.isDefEq.respectTransparency false

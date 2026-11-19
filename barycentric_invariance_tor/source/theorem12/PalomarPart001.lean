@@ -384,6 +384,8 @@ variable (K : Type*) [CommRing K] (hs : IsSimplicialPoset P)
 
 def faceRingMonomial (a : NonzeroFace P →₀ ℕ) : FaceRing K hs :=
   Ideal.Quotient.mk (faceIdeal K hs) (monomial a 1)
+theorem faceRingMonomial_palomar_formula (a : NonzeroFace P →₀ ℕ) :
+    faceRingMonomial K hs a = Ideal.Quotient.mk (faceIdeal K hs) (monomial a 1) := rfl
 
 theorem faceRingMonomial_add (a b : NonzeroFace P →₀ ℕ) :
     faceRingMonomial K hs (a + b) = faceRingMonomial K hs a * faceRingMonomial K hs b := by
@@ -1512,6 +1514,8 @@ def polynomialStandardCoordinates (p : P) :
     PolynomialStalk K p ≃ₗ[K] coefficientStalk K (standardCarrier (P := P)) p :=
   (polynomialStandardBasis (K := K) hs p).repr.trans
     (Finsupp.supportedEquivFinsupp {a : StandardFaceIndex P | standardCarrier a ≤ p}).symm
+theorem polynomialStandardCoordinates_palomar_formula (p : P) :
+    polynomialStandardCoordinates K hs p = (polynomialStandardBasis (K := K) hs p).repr.trans (Finsupp.supportedEquivFinsupp {a : StandardFaceIndex P | standardCarrier a ≤ p}).symm := rfl
 
 @[simp] theorem polynomialStandardCoordinates_basis (p : P) (a : StandardInside p) :
     (polynomialStandardCoordinates K hs p (polynomialStandardBasis hs p a)).val =

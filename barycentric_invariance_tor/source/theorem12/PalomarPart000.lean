@@ -6179,6 +6179,8 @@ def symm (e : CoherentEquiv D E) : CoherentEquiv E D where
   naturality p q h x := by
     apply (e.component q).injective
     simpa using (e.naturality p q h ((e.component p).symm x)).symm
+theorem symm_palomar_formula (e : CoherentEquiv D E) (p : P) :
+    e.symm.component p = (e.component p).symm := rfl
 
 def trans (e : CoherentEquiv D E) (f : CoherentEquiv E F) : CoherentEquiv D F where
   component p := (e.component p).trans (f.component p)
@@ -6214,6 +6216,8 @@ def sectionEquiv (e : CoherentEquiv D E) : D.sections ≃ₗ[K] E.sections where
     apply Subtype.ext
     funext p
     exact map_smul (e.component p) c (x.val p)
+theorem sectionEquiv_palomar_formula (e : CoherentEquiv D E) (x : D.sections) (p : P) :
+    (e.sectionEquiv x).val p = e.component p (x.val p) := rfl
 
 @[simp] theorem sectionEquiv_apply (e : CoherentEquiv D E)
     (x : D.sections) (p : P) :
@@ -7810,6 +7814,8 @@ def booleanFaceInclusion (hs : IsSimplicialPoset P) (p : P) :
         (subfaceOfVertexSet hs p G.val).val := congrArg (fun z : NonzeroFace P => z.val) h
     have hv := congrArg (stalkVertexSet p) he
     simpa only [stalkVertexSet_subfaceOfVertexSet] using hv
+theorem booleanFaceInclusion_palomar_formula (hs : IsSimplicialPoset P) (p : P) (F : BooleanFace (FaceVertex p)) :
+    (booleanFaceInclusion hs p F).val = (subfaceOfVertexSet hs p F.val).val := rfl
 
 theorem booleanFaceInclusion_le (hs : IsSimplicialPoset P) (p : P)
     (F : BooleanFace (FaceVertex p)) : (booleanFaceInclusion hs p F).val ≤ p :=
@@ -8357,6 +8363,8 @@ def coefficientRestriction {p q : P} (_hqp : q ≤ p) :
     coefficientStalk K carrier p →ₗ[K] coefficientStalk K carrier q :=
   (Finsupp.restrictDom K K {i | carrier i ≤ q}).comp
     (coefficientStalk K carrier p).subtype
+theorem coefficientRestriction_palomar_formula {p q : P} (h : q ≤ p) :
+    coefficientRestriction K carrier h = (Finsupp.restrictDom K K {i | carrier i ≤ q}).comp (coefficientStalk K carrier p).subtype := rfl
 
 @[simp] theorem coefficientRestriction_apply {p q : P} (hqp : q ≤ p)
     (x : coefficientStalk K carrier p) (i : I) :
@@ -8383,6 +8391,8 @@ abbrev coefficientDiagram : ModuleDiagram K P where
     · have hiq := hi.trans hrq
       simp [hi, hiq]
     · simp [hi]
+theorem coefficientDiagram_palomar_formula {p q : P} (h : q ≤ p) :
+    (coefficientDiagram K carrier).res h = coefficientRestriction K carrier h := rfl
 
 def coefficientSection : (I →₀ K) →ₗ[K] (coefficientDiagram K carrier).sections where
   toFun x := ⟨fun p => Finsupp.restrictDom K K {i | carrier i ≤ p} x, by
@@ -8461,6 +8471,8 @@ def coefficientSectionEquiv : (I →₀ K) ≃ₗ[K] (coefficientDiagram K carri
   right_inv := coefficientSection_assembly K carrier
   map_add' := (coefficientSection K carrier).map_add
   map_smul' := (coefficientSection K carrier).map_smul
+theorem coefficientSectionEquiv_palomar_formula (x : I →₀ K) :
+    coefficientSectionEquiv K carrier x = coefficientSection K carrier x := rfl
 
 /-- Any actual diagram with these coherent coefficient coordinates has the
 same explicit global basis. The required coherent coordinates remain an
@@ -8469,6 +8481,8 @@ def sectionsFromCoherentCoefficients (D : ModuleDiagram K P)
     (e : CoherentEquiv D (coefficientDiagram K carrier)) :
     D.sections ≃ₗ[K] (I →₀ K) :=
   e.sectionEquiv.trans (coefficientSectionEquiv K carrier).symm
+theorem sectionsFromCoherentCoefficients_palomar_formula (D : ModuleDiagram K P) (e : CoherentEquiv D (coefficientDiagram K carrier)) :
+    sectionsFromCoherentCoefficients K carrier D e = e.sectionEquiv.trans (coefficientSectionEquiv K carrier).symm := rfl
 
 end FourPapers.Universal
 end
