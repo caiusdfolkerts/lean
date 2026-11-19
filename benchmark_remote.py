@@ -2,6 +2,8 @@
 """Run the fixture on a separate Linux host with the pinned Elan toolchain."""
 from __future__ import annotations
 
+from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
+import graphlib
 import hashlib
 import json
 import os
@@ -32,6 +34,44 @@ def run(args, cwd, limit, env=None, log=None):
     return round(time.monotonic() - started, 4), proc.stdout
 
 
+def build_common(common, flags):
+    graph = fixture["common_imports"]
+    bundled = {name for deps in graph.values() for name in deps if name not in graph}
+    if any(name.split(".", 1)[0] not in {"Init", "Lean", "Std"} for name in bundled):
+        raise ValueError("bounded comparison requires only toolchain imports")
+    order = graphlib.TopologicalSorter({m: [n for n in deps if n in graph]
+                                        for m, deps in graph.items()})
+    order.prepare()
+    env = dict(os.environ, LEAN_PATH=str(common))
+    started = time.monotonic()
+    completed = 0
+    tasks = {}
+
+    def compile_module(module):
+        path = Path(*module.split(".")).with_suffix(".lean")
+        out = (root / "common-logs" / Path(*module.split("."))).with_suffix(".log")
+        out.parent.mkdir(parents=True, exist_ok=True)
+        return run([*flags, "-o", str(path.with_suffix(".olean")), str(path)],
+                   common, 110, env, log=out)[0]
+
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        while order.is_active():
+            for module in order.get_ready():
+                tasks[pool.submit(compile_module, module)] = module
+            done, _ = wait(tasks, return_when=FIRST_COMPLETED)
+            for job in done:
+                module = tasks.pop(job)
+                elapsed = job.result()
+                order.done(module)
+                completed += 1
+                with (root / "shared-build.log").open("a") as log:
+                    log.write(f"{module} {elapsed:.4f} s\n")
+            if time.monotonic() - started > 560:
+                raise TimeoutError("common dependency budget exceeded")
+    assert completed == len(graph)
+    return round(time.monotonic() - started, 4)
+
+
 def main():
     if platform.system() != "Linux":
         raise SystemExit("This benchmark is for a separate Linux runner.")
@@ -50,20 +90,11 @@ def main():
     try:
         _, version = run(["lean", "--version"], common, 25)
         receipt["lean"] = version.strip()
-        receipt["dependency_seconds"] = run(
-            ["lake", "exe", "cache", "get", *fixture["mathlib_imports"]],
-            common, 420, log=root / "dependency-cache.log"
-        )[0]
-        receipt["shared_build_seconds"] = run(
-            ["lake", "build", *["+" + m for m in fixture["common_targets"]]],
-            common, 560, log=root / "shared-build.log"
-        )[0]
-        _, path = run(["lake", "env", "printenv", "LEAN_PATH"], common, 25)
-        shared_path = os.pathsep.join(str((common / value).resolve())
-                                      for value in path.strip().split(os.pathsep) if value)
         _, lean = run(["elan", "which", "lean"], common, 25)
         flags = [lean.strip(), "-t1", "-j1", "-s65536", "-M3072",
                  "-DElab.async=false", "-Ddebug.skipKernelTC=false", "-DmaxHeartbeats=0"]
+        shared_path = str(common)
+        receipt["shared_build_seconds"] = build_common(common, flags)
         save()
         for group in fixture["groups"]:
             sample = dict(group, audit=None, timings={"before": [], "after": []})

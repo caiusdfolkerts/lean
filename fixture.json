@@ -46,7 +46,7 @@
   "mathlib_imports": [],
   "shared_reader": "grouped reader uses its original default on every before source",
   "sha256": {
-    "benchmark_remote.py": "2a13860b207b3b7029142284d0016e1081e356ef2b3ff459f089fb605e8aff0e",
+    "benchmark_remote.py": "bf11d689efad0d4b72dd73983fe4b10f59a96b779071db5cf8954f7e0df9604b",
     "common/BatchedGrowthPruning.lean": "90017809631d00b6e3114f6ac20b145106fd4a159876cb02653718e7b55c42f3",
     "common/BatchedOrbitGrowth.lean": "4bc9c541def34f03104b090a1674b7dbdef0d568c78bce2df1bfa68a08c7c7b4",
     "common/BatchedSearchLeaves.lean": "e079d8ef616bd40928b33d9673b224d8574647c23ae99e364782aca116e18098",
@@ -409,5 +409,1217 @@
   "forwarder_comparison": {
     "LowerSchemas.FiniteRootedSubsumedForest": "LowerSchemas.FiniteRootedSubsumedForest.Part0",
     "LowerSchemas.FiniteRootedSixBase": "LowerSchemas.FiniteRootedSixBase.Part0"
+  },
+  "common_imports": {
+    "BatchedGrowthPruning": [
+      "GrowthBitsets",
+      "GrowthRenaming"
+    ],
+    "BatchedOrbitGrowth": [
+      "BatchedGrowthPruning",
+      "OrbitGrowthDAG"
+    ],
+    "BatchedSearchLeaves": [
+      "FastBatchedGrowth"
+    ],
+    "CertificateNumbers": [
+      "GraphNumerals"
+    ],
+    "ConcreteGrowth": [
+      "WitnessGrowthDAG",
+      "Init.Data.Nat.Bitwise.Basic"
+    ],
+    "CounterGrowthReplay": [
+      "StreamingRawGrowth",
+      "NoCarryKindDigits",
+      "Init.Data.Nat.Bitwise.Lemmas"
+    ],
+    "FastBatchedGrowth": [
+      "BatchedOrbitGrowth"
+    ],
+    "FastGeneratorWords": [
+      "RawGeneratorWords",
+      "RawNatGrowthSoundness",
+      "FiniteChecks"
+    ],
+    "FastGraphConditionedGrowth": [
+      "RawGraphConditionedGrowth",
+      "FastGraphRuleCheck"
+    ],
+    "FastGraphRuleCheck": [
+      "GraphGrowthRuleSoundness"
+    ],
+    "FastGrowthCompatibility": [
+      "FiniteChecks"
+    ],
+    "FastRawCacheCertificate": [
+      "RawGrowthCacheCertificate"
+    ],
+    "FiniteChecks": [
+      "PackedGrowthData",
+      "Init.Data.List.Nat.Range",
+      "Init.Data.Fin.Lemmas"
+    ],
+    "FiniteMaskSets": [
+      "GrowthBitsets",
+      "GrowthRenaming",
+      "Init.Data.List.Nat.Pairwise",
+      "Init.Data.List.Perm"
+    ],
+    "GraphCatalogueCore": [
+      "FastBatchedGrowth",
+      "IdentityGrowthRenaming",
+      "Init.Data.List.Nat.Pairwise"
+    ],
+    "GraphConditionedGrowth": [
+      "GraphGrowthRuleSoundness",
+      "SubsumptionSearch"
+    ],
+    "GraphGrowthConstraints": [
+      "FiniteMaskSets",
+      "UnsupportedRidgePruning",
+      "PrimitiveBitsetGrowth"
+    ],
+    "GraphGrowthRuleSoundness": [
+      "GraphGrowthConstraints"
+    ],
+    "GraphNumerals": [
+      "Lean.Elab.Term"
+    ],
+    "GrowthBitsets": [
+      "FastGrowthCompatibility",
+      "Init.Data.Nat.Bitwise.Lemmas"
+    ],
+    "GrowthDAG": [
+      "Init.Data.Nat.Lemmas",
+      "Init.Data.List.Lemmas",
+      "Init.WF",
+      "Init.ByCases",
+      "Init.Omega"
+    ],
+    "GrowthPruning": [
+      "SparseGrowthDAG",
+      "Init.Data.List.Perm",
+      "Init.Data.List.Pairwise"
+    ],
+    "GrowthRenaming": [
+      "WitnessGrowthDAG"
+    ],
+    "HexNatLiteral": [
+      "Lean.Elab.Term"
+    ],
+    "IdentityGrowthRenaming": [
+      "OrbitGrowthDAG"
+    ],
+    "LowerSchemas.FiniteRootedSixBase": [
+      "LowerSchemas.FiniteRootedSixBase.Part0"
+    ],
+    "LowerSchemas.FiniteRootedSixBase.Part0": [
+      "NumericProofSchema"
+    ],
+    "LowerSchemas.FiniteRootedSubsumedForest": [
+      "LowerSchemas.FiniteRootedSubsumedForest.Part0"
+    ],
+    "LowerSchemas.FiniteRootedSubsumedForest.Part0": [
+      "NumericProofSchema"
+    ],
+    "NoCarryKindDigits": [
+      "Init.Data.Bool",
+      "Init.Data.List.Lemmas",
+      "Init.Data.List.Nat.Sum",
+      "Init.Data.Nat.Lemmas",
+      "Init.Data.Nat.Div.Lemmas",
+      "Init.Omega"
+    ],
+    "NumericProofSchema": [
+      "Lean.Elab.Command"
+    ],
+    "OrbitGrowthDAG": [
+      "GrowthRenaming"
+    ],
+    "PackedFacetCells": [
+      "ConcreteGrowth"
+    ],
+    "PackedGrowthData": [
+      "ConcreteGrowth"
+    ],
+    "PackedListAppend": [
+      "PackedRawNatGrowth"
+    ],
+    "PackedRawNatGrowth": [
+      "RawNatGrowthCheck",
+      "ConcreteGrowth"
+    ],
+    "PrimitiveBitsetGrowth": [
+      "BatchedSearchLeaves"
+    ],
+    "RawBatchGrowth": [
+      "FastBatchedGrowth",
+      "ConcreteGrowth"
+    ],
+    "RawBoundaryMatch": [
+      "TenGraphEdges",
+      "PrimitiveBitsetGrowth"
+    ],
+    "RawClosedGrowthClassification": [
+      "RawNatGrowthCompleteness"
+    ],
+    "RawFacetEmbedding": [
+      "FiniteChecks",
+      "GrowthBitsets"
+    ],
+    "RawGeneratorWords": [
+      "Init.Data.List.Basic"
+    ],
+    "RawGraphConditionedGrowth": [
+      "GraphConditionedGrowth"
+    ],
+    "RawGraphGrowthFrames": [
+      "RawBoundaryMatch"
+    ],
+    "RawGrowthCacheCertificate": [
+      "RawNatGrowthSoundness"
+    ],
+    "RawNatGrowthCheck": [
+      "RawBatchGrowth"
+    ],
+    "RawNatGrowthCompleteness": [
+      "RawNatGrowthSoundness"
+    ],
+    "RawNatGrowthSoundness": [
+      "RawNatGrowthCheck",
+      "PrimitiveBitsetGrowth",
+      "FastGraphConditionedGrowth"
+    ],
+    "RootedSixBase03": [
+      "RootedSixBase03Data000",
+      "RootedSixBase03Data001",
+      "RootedSixBase03Data002",
+      "RootedSixBase03Data003",
+      "RootedSixBase03Data004",
+      "RootedSixBase03Data005",
+      "RootedSixBase03Data006",
+      "RootedSixBase03Data007",
+      "RootedSixBase03Data008",
+      "RootedSixBase03Data009",
+      "RootedSixBase03Data010"
+    ],
+    "RootedSixBase03Data000": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase03Data001": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase03Data002": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase03Data003": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase03Data004": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase03Data005": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase03Data006": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase03Data007": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase03Data008": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase03Data009": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase03Data010": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase03GrowthCacheData": [
+      "CertificateNumbers",
+      "RootedSixBase03",
+      "SignatureCompatibility",
+      "PackedRawNatGrowth",
+      "FiniteChecks",
+      "RawFacetEmbedding",
+      "RootedSixBase03GrowthCachecandidateMasksData000",
+      "RootedSixBase03GrowthCachecandidateMasksData001",
+      "RootedSixBase03GrowthCachecandidateMasksData002",
+      "RootedSixBase03GrowthCachecandidateMasksData003",
+      "RootedSixBase03GrowthCachecandidateMasksData004",
+      "RootedSixBase03GrowthCachecandidateMasksData005",
+      "RootedSixBase03GrowthCachecandidateMasksData006",
+      "RootedSixBase03GrowthCachecandidateMasksData007",
+      "RootedSixBase03GrowthCachebadMasksData000",
+      "RootedSixBase03GrowthCachebadMasksData001",
+      "RootedSixBase03GrowthCachebadMasksData002",
+      "RootedSixBase03GrowthCachebadMasksData003",
+      "RootedSixBase03GrowthCachebadMasksData004",
+      "RootedSixBase03GrowthCachebadMasksData005",
+      "RootedSixBase03GrowthCachebadMasksData006",
+      "RootedSixBase03GrowthCachebadMasksData007",
+      "RootedSixBase03GrowthCachebadMasksData008",
+      "RootedSixBase03GrowthCachebadMasksData009",
+      "RootedSixBase03GrowthCachebadMasksData010",
+      "RootedSixBase03GrowthCachebadMasksData011",
+      "RootedSixBase03GrowthCachebadMasksData012",
+      "RootedSixBase03GrowthCachebadMasksData013",
+      "RootedSixBase03GrowthCachebadMasksData014",
+      "RootedSixBase03GrowthCachebadMasksData015",
+      "RootedSixBase03GrowthCachebadMasksData016",
+      "RootedSixBase03GrowthCachebadMasksData017",
+      "RootedSixBase03GrowthCachebadMasksData018",
+      "RootedSixBase03GrowthCachebadMasksData019",
+      "RootedSixBase03GrowthCachebadMasksData020",
+      "RootedSixBase03GrowthCachebadMasksData021",
+      "RootedSixBase03GrowthCachebadMasksData022",
+      "RootedSixBase03GrowthCachebadMasksData023",
+      "RootedSixBase03GrowthCachebadMasksData024",
+      "RootedSixBase03GrowthCachebadMasksData025",
+      "RootedSixBase03GrowthCachebadMasksData026",
+      "RootedSixBase03GrowthCachebadMasksData027",
+      "RootedSixBase03GrowthCachebadMasksData028",
+      "RootedSixBase03GrowthCachebadMasksData029",
+      "RootedSixBase03GrowthCachebadMasksData030",
+      "RootedSixBase03GrowthCachebadMasksData031",
+      "RootedSixBase03GrowthCachebadMasksData032",
+      "RootedSixBase03GrowthCachebadMasksData033",
+      "RootedSixBase03GrowthCachebadMasksData034",
+      "RootedSixBase03GrowthCachebadMasksData035",
+      "RootedSixBase03GrowthCachebadMasksData036",
+      "RootedSixBase03GrowthCachebadMasksData037",
+      "RootedSixBase03GrowthCachebadMasksData038",
+      "RootedSixBase03GrowthCachebadMasksData039",
+      "RootedSixBase03GrowthCachebadMasksData040",
+      "RootedSixBase03GrowthCachebadMasksData041",
+      "RootedSixBase03GrowthCachebadMasksData042",
+      "RootedSixBase03GrowthCachebadMasksData043",
+      "RootedSixBase03GrowthCachebadMasksData044",
+      "RootedSixBase03GrowthCachebadMasksData045",
+      "RootedSixBase03GrowthCachebadMasksData046",
+      "RootedSixBase03GrowthCachebadMasksData047",
+      "RootedSixBase03GrowthCachebadMasksData048",
+      "RootedSixBase03GrowthCachebadMasksData049",
+      "RootedSixBase03GrowthCachebadMasksData050",
+      "RootedSixBase03GrowthCachebadMasksData051",
+      "RootedSixBase03GrowthCachebadMasksData052",
+      "RootedSixBase03GrowthCachebadMasksData053",
+      "RootedSixBase03GrowthCachebadMasksData054",
+      "RootedSixBase03GrowthCachebadMasksData055",
+      "RootedSixBase03GrowthCachebadMasksData056",
+      "RootedSixBase03GrowthCachebadMasksData057",
+      "RootedSixBase03GrowthCachebadMasksData058",
+      "RootedSixBase03GrowthCachebadMasksData059",
+      "RootedSixBase03GrowthCachebadMasksData060",
+      "RootedSixBase03GrowthCachebadMasksData061",
+      "RootedSixBase03GrowthCachebadMasksData062",
+      "RootedSixBase03GrowthCachebadMasksData063",
+      "RootedSixBase03GrowthCachebadMasksData064",
+      "RootedSixBase03GrowthCachebadMasksData065",
+      "RootedSixBase03GrowthCachebadMasksData066",
+      "RootedSixBase03GrowthCachebadMasksData067",
+      "RootedSixBase03GrowthCachebadMasksData068",
+      "RootedSixBase03GrowthCachebadMasksData069",
+      "RootedSixBase03GrowthCachebadMasksData070",
+      "RootedSixBase03GrowthCachebadMasksData071",
+      "RootedSixBase03GrowthCachebadMasksData072",
+      "RootedSixBase03GrowthCachebadMasksData073",
+      "RootedSixBase03GrowthCachebadMasksData074",
+      "RootedSixBase03GrowthCachebadMasksData075",
+      "RootedSixBase03GrowthCachebadMasksData076",
+      "RootedSixBase03GrowthCachebadMasksData077",
+      "RootedSixBase03GrowthCachebadMasksData078",
+      "RootedSixBase03GrowthCachebadMasksData079",
+      "RootedSixBase03GrowthCachebadMasksData080",
+      "RootedSixBase03GrowthCachesignatureMasksData000",
+      "RootedSixBase03GrowthCachesignatureMasksData001",
+      "RootedSixBase03GrowthCachesignatureMasksData002",
+      "RootedSixBase03GrowthCachesignatureMasksData003",
+      "RootedSixBase03GrowthCachesignatureMasksData004"
+    ],
+    "RootedSixBase03GrowthCacheRidgeSupport448Data": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "RootedSixBase03GrowthCacheData",
+      "PackedListAppend"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData000": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData001": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData002": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData003": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData004": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData005": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData006": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData007": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData008": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData009": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData010": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData011": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData012": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData013": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData014": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData015": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData016": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData017": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData018": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData019": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData020": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData021": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData022": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData023": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData024": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData025": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData026": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData027": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData028": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData029": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData030": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData031": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData032": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData033": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData034": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData035": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData036": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData037": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData038": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData039": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData040": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData041": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData042": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData043": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData044": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData045": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData046": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData047": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData048": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData049": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData050": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData051": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData052": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData053": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData054": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData055": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData056": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData057": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData058": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData059": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData060": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData061": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData062": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData063": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData064": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData065": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData066": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData067": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData068": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData069": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData070": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData071": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData072": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData073": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData074": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData075": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData076": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData077": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData078": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData079": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData080": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachecandidateMasksData000": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachecandidateMasksData001": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachecandidateMasksData002": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachecandidateMasksData003": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachecandidateMasksData004": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachecandidateMasksData005": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachecandidateMasksData006": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachecandidateMasksData007": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachesignatureMasksData000": [
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachesignatureMasksData001": [
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachesignatureMasksData002": [
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachesignatureMasksData003": [
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachesignatureMasksData004": [
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04": [
+      "RootedSixBase04Data000",
+      "RootedSixBase04Data001",
+      "RootedSixBase04Data002",
+      "RootedSixBase04Data003",
+      "RootedSixBase04Data004",
+      "RootedSixBase04Data005"
+    ],
+    "RootedSixBase04Data000": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase04Data001": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase04Data002": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase04Data003": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase04Data004": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase04Data005": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase04FastGenerators": [
+      "RootedSixBase04FastGeneratorsCheck00",
+      "RootedSixBase04FastGeneratorsCheck01",
+      "RootedSixBase04FastGeneratorsCheck02",
+      "RootedSixBase04FastGeneratorsCheck03",
+      "RootedSixBase04FastGeneratorsCheck04",
+      "FastGeneratorWords"
+    ],
+    "RootedSixBase04FastGeneratorsCheck00": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "RootedSixBase04FastGeneratorsData",
+      "FastGeneratorWords"
+    ],
+    "RootedSixBase04FastGeneratorsCheck01": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "RootedSixBase04FastGeneratorsData",
+      "FastGeneratorWords"
+    ],
+    "RootedSixBase04FastGeneratorsCheck02": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "RootedSixBase04FastGeneratorsData",
+      "FastGeneratorWords"
+    ],
+    "RootedSixBase04FastGeneratorsCheck03": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "RootedSixBase04FastGeneratorsData",
+      "FastGeneratorWords"
+    ],
+    "RootedSixBase04FastGeneratorsCheck04": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "RootedSixBase04FastGeneratorsData",
+      "FastGeneratorWords"
+    ],
+    "RootedSixBase04FastGeneratorsData": [
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "RootedSixBase04GeneratorsData",
+      "FastGeneratorWords"
+    ],
+    "RootedSixBase04FastWordsData": [
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "RootedSixBase04FastGenerators"
+    ],
+    "RootedSixBase04GeneratorsData": [
+      "RootedSixBase04",
+      "RawGraphGrowthFrames",
+      "RawGeneratorWords",
+      "PackedRawNatGrowth",
+      "RawNatGrowthSoundness",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCacheData": [
+      "CertificateNumbers",
+      "RootedSixBase04",
+      "SignatureCompatibility",
+      "PackedRawNatGrowth",
+      "FiniteChecks",
+      "RawFacetEmbedding",
+      "RootedSixBase04GrowthCachecandidateMasksData000",
+      "RootedSixBase04GrowthCachecandidateMasksData001",
+      "RootedSixBase04GrowthCachecandidateMasksData002",
+      "RootedSixBase04GrowthCachecandidateMasksData003",
+      "RootedSixBase04GrowthCachebadMasksData000",
+      "RootedSixBase04GrowthCachebadMasksData001",
+      "RootedSixBase04GrowthCachebadMasksData002",
+      "RootedSixBase04GrowthCachebadMasksData003",
+      "RootedSixBase04GrowthCachebadMasksData004",
+      "RootedSixBase04GrowthCachebadMasksData005",
+      "RootedSixBase04GrowthCachebadMasksData006",
+      "RootedSixBase04GrowthCachebadMasksData007",
+      "RootedSixBase04GrowthCachebadMasksData008",
+      "RootedSixBase04GrowthCachebadMasksData009",
+      "RootedSixBase04GrowthCachebadMasksData010",
+      "RootedSixBase04GrowthCachebadMasksData011",
+      "RootedSixBase04GrowthCachebadMasksData012",
+      "RootedSixBase04GrowthCachebadMasksData013",
+      "RootedSixBase04GrowthCachebadMasksData014",
+      "RootedSixBase04GrowthCachesignatureMasksData000",
+      "RootedSixBase04GrowthCachesignatureMasksData001"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData000": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData001": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData002": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData003": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData004": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData005": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData006": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData007": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData008": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData009": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData010": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData011": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData012": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData013": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData014": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachecandidateMasksData000": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachecandidateMasksData001": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachecandidateMasksData002": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachecandidateMasksData003": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachesignatureMasksData000": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachesignatureMasksData001": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSubsumedForest0699Data": [
+      "LowerSchemas.FiniteRootedSubsumedForest",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "RootedSixBase04GrowthCacheData",
+      "RootedSixBase04FastWordsData",
+      "CounterGrowthReplay",
+      "RawNatGrowthCompleteness",
+      "FiniteChecks",
+      "SubsumedClassification"
+    ],
+    "SignatureCompatibility": [
+      "FastRawCacheCertificate"
+    ],
+    "SparseGrowthDAG": [
+      "GrowthDAG",
+      "Init.Data.Bool"
+    ],
+    "StreamingRawGrowth": [
+      "PackedRawNatGrowth",
+      "RawNatGrowthSoundness"
+    ],
+    "SubsumedClassification": [
+      "SubsumedStreaming",
+      "RawClosedGrowthClassification"
+    ],
+    "SubsumedGrowth": [
+      "RawNatGrowthCompleteness",
+      "CounterGrowthReplay"
+    ],
+    "SubsumedStreaming": [
+      "SubsumedGrowth"
+    ],
+    "SubsumptionSearch": [
+      "UnsupportedRidgePruning"
+    ],
+    "TenGraphEdges": [
+      "GraphCatalogueCore"
+    ],
+    "UnsupportedRidgePruning": [
+      "BatchedGrowthPruning",
+      "PrimitiveBitsetGrowth"
+    ],
+    "WitnessGrowthDAG": [
+      "GrowthPruning"
+    ]
   }
 }
