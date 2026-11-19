@@ -38,10 +38,15 @@ automation:
 review:
   status: unchecked
   notes: >-
-    The independently extracted Challenge elaborates against the exact pinned
-    canonical TauCeti support closure, with only the 20 intended theorem
-    placeholders. This does not verify the full Solution build, strict
-    dependency comparison, or independent kernel checking, which remain pending.
+    Canonical independent elaboration of the complete 996-line Challenge
+    passed run 44467724333. Independent genuine primitive constructors passed
+    run 44464838345. The ordered source-equivalence diagnostic 44467755545
+    preserved the independently compiled module, verified and compiled all
+    47 exact upstream source files, and proved all ten complete value
+    specifications plus eight underlying real-law transport identities.
+    These are component checks. The complete original paper proof replay,
+    strict Comparator and mandatory Lean/NanoDa verification of this full
+    candidate remain pending. No registry acceptance or human review is claimed.
 fidelity:
   notes: >-
     No Gaussian-row restriction is imposed on the real shape in Theorem 1.1.
@@ -51,17 +56,34 @@ fidelity:
     corrected manuscript and original-paper provenance are retained under
     verification/. Supporting radial identities and analytic lemmas remain
     in the full substantive source and are not separately selected targets.
-    The Challenge imports canonical pinned TauCeti; retained local vendored TauCeti
-    is unused by both comparison modules. Both use the exact same canonical
-    recorded support revision 06d5bb4e3ebb737dc6538567f5c53bf8800b9362 and
-    Mathlib pin. Source snapshot is caiusdfolkerts/research at
+    The Challenge imports canonical Mathlib only. It gives complete literal
+    values for the real laws, Gaussian-Gram statistic and law, Frobenius matrix
+    and symmetric-space structures, exact subtype uniformity, rectangular
+    congruence and standard quaternion representation. Ten complete value
+    equality specifications pin every supplied semantic primitive. Their
+    actual source-equivalence proofs are required in the Solution; they do not
+    replace any original paper result. The exact 215-module Tau Ceti source
+    closure at 06d5bb4e3ebb737dc6538567f5c53bf8800b9362 is vendored only for
+    the proof development. Every canonical source blob and its licence is
+    retained unchanged and hashed. All original paper proof source files,
+    including unused readable lower-case support copies, are retained.
+    The unused lower-case support modules are outside the default build roots;
+    every actual canonical import and new bridge module is explicitly registered.
+    The Mathlib dependency closure and Lean toolchain pins are unchanged.
+    Source snapshot is caiusdfolkerts/research at
     e0696fddcd3d10b5d6461e62e9b2f02c4195be37.
 
 comparison_support:
   note: >-
-    Exact supporting theorem types used by inlined definitions are separately
-    compared. Two local quaternion BorelSpace instances are proof-valued
-    definition targets; their types are propositions, so proof irrelevance
-    leaves no unspecified semantic data. Their actual source proofs are supplied
-    by the Solution. All measures, topologies, matrix operations and profiles
-    retain explicit source values.
+    The original twenty principal/support targets are retained. Ten additional
+    complete primitive value specifications and four constructor/Hermitian
+    support theorems are compared without increasing the paper-result count.
+    The semantic definition targets have genuine literal values in Challenge
+    and their entire records/functions are fixed by the compared equality
+    specifications; they are not unconstrained function or geometry holes.
+    Seven proof-instance targets (two existing quaternion BorelSpace instances
+    and five symmetric-space topology/uniformity instances) are fully specified
+    propositions with genuine canonical witnesses in Challenge and actual source
+    proofs in Solution. They fix no unspecified semantic datum. All measures, normalizations,
+    topologies, norms, matrix operations, parameter ranges and profiles retain
+    explicit source values.

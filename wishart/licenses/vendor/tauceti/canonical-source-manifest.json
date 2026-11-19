@@ -1,0 +1,2976 @@
+{
+  "upstream": "https://github.com/TauCetiProject/TauCeti",
+  "commit": "06d5bb4e3ebb737dc6538567f5c53bf8800b9362",
+  "meaning": "All exact files are proof-only; no TauCeti import is present in Challenge. All source bytes and canonical module names are unchanged.",
+  "source_files": [
+    {
+      "bytes": 9126,
+      "git_blob_sha1": "33c5e4482c22b57fc081fd1f2faddcef4b05fd6a",
+      "imports": [
+        "Mathlib.Algebra.Algebra.Basic",
+        "Mathlib.Algebra.Group.Action.End",
+        "Mathlib.Algebra.Group.Action.Pointwise.Set.Basic",
+        "Mathlib.Algebra.Module.Submodule.Equiv",
+        "Mathlib.LinearAlgebra.BilinearMap"
+      ],
+      "path": "TauCeti/Algebra/Module/Equiv/Basic.lean",
+      "sha256": "68d9c7da276778cd7f2086186626fb7186fff1d0cf5fa0c3788a1780e8f942c3",
+      "module": "TauCeti.Algebra.Module.Equiv.Basic",
+      "submitted_path": "source/TauCeti/Algebra/Module/Equiv/Basic.lean"
+    },
+    {
+      "bytes": 6312,
+      "git_blob_sha1": "ed70fbe92ba0afeb91ce4757ef64f7b137bf9076",
+      "imports": [
+        "Mathlib.Algebra.Order.Field.Basic",
+        "Mathlib.Tactic.FieldSimp",
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.Positivity"
+      ],
+      "path": "TauCeti/Algebra/Order/Field/Basic.lean",
+      "sha256": "a6559339d4dd616480866d637ecf54601115dc2f492d002d6e34dd7edb74b571",
+      "module": "TauCeti.Algebra.Order.Field.Basic",
+      "submitted_path": "source/TauCeti/Algebra/Order/Field/Basic.lean"
+    },
+    {
+      "bytes": 13716,
+      "git_blob_sha1": "70b924b13fad0939efcfe451d407553c47cf7f93",
+      "imports": [
+        "Mathlib.Algebra.QuaternionBasis",
+        "Mathlib.Analysis.Quaternion",
+        "Mathlib.Algebra.Star.StarAlgHom",
+        "Mathlib.LinearAlgebra.UnitaryGroup",
+        "Mathlib.LinearAlgebra.Matrix.Adjugate",
+        "TauCeti.Algebra.Quaternion.NormForm",
+        "TauCeti.LinearAlgebra.UnitaryGroup"
+      ],
+      "path": "TauCeti/Algebra/Quaternion/ComplexMatrix.lean",
+      "sha256": "94374a0ee3b42d8fe93e5954313ca1f1212eb9f8c4d3c5a4e9841e61b7efebcc",
+      "module": "TauCeti.Algebra.Quaternion.ComplexMatrix",
+      "submitted_path": "source/TauCeti/Algebra/Quaternion/ComplexMatrix.lean"
+    },
+    {
+      "bytes": 12912,
+      "git_blob_sha1": "5397e5c033d9707fd154a4aa7d79929d949b0f3b",
+      "imports": [
+        "Mathlib.Algebra.Quaternion",
+        "Mathlib.Algebra.Star.Unitary",
+        "Mathlib.LinearAlgebra.QuadraticForm.IsometryEquiv"
+      ],
+      "path": "TauCeti/Algebra/Quaternion/NormForm.lean",
+      "sha256": "f3d0295cf2f704eef7552ae6fa54f63382c1cab5988e2e409a291fe518bdacce",
+      "module": "TauCeti.Algebra.Quaternion.NormForm",
+      "submitted_path": "source/TauCeti/Algebra/Quaternion/NormForm.lean"
+    },
+    {
+      "bytes": 614,
+      "git_blob_sha1": "e319d7a7c8f3f32634db6e67a243a2a6212b9dca",
+      "imports": [
+        "Mathlib.Algebra.Ring.Invertible"
+      ],
+      "path": "TauCeti/Algebra/Ring/Invertible.lean",
+      "sha256": "5a9902595b1071d513a8f66fbf7b7f064332b9df65c7ef80aa43ce6de35674f4",
+      "module": "TauCeti.Algebra.Ring.Invertible",
+      "submitted_path": "source/TauCeti/Algebra/Ring/Invertible.lean"
+    },
+    {
+      "bytes": 8135,
+      "git_blob_sha1": "f9fdbd8fc67088da5d36125abffbf9b41f1025cc",
+      "imports": [
+        "Mathlib.Analysis.Analytic.Composition",
+        "Mathlib.Analysis.Analytic.OfScalars",
+        "Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas"
+      ],
+      "path": "TauCeti/Analysis/Analytic/OfScalars.lean",
+      "sha256": "0c6a5ad23c99fe8775ad2af264e936e90655eca65819dd0b805bd3b4b0579158",
+      "module": "TauCeti.Analysis.Analytic.OfScalars",
+      "submitted_path": "source/TauCeti/Analysis/Analytic/OfScalars.lean"
+    },
+    {
+      "bytes": 1952,
+      "git_blob_sha1": "8ec4af38ed7e4df165d54524718801db89714d34",
+      "imports": [
+        "Mathlib.Analysis.CStarAlgebra.ContinuousFunctionalCalculus.Continuity"
+      ],
+      "path": "TauCeti/Analysis/CStarAlgebra/ContinuousFunctionalCalculus/Continuity.lean",
+      "sha256": "851829b20d28562c7e698426b29a48268692e2fb27a2de7d9baf71a4898a3b0b",
+      "module": "TauCeti.Analysis.CStarAlgebra.ContinuousFunctionalCalculus.Continuity",
+      "submitted_path": "source/TauCeti/Analysis/CStarAlgebra/ContinuousFunctionalCalculus/Continuity.lean"
+    },
+    {
+      "bytes": 1311,
+      "git_blob_sha1": "ea7daa403a0b3349202beaa979d72a5364e8bcbf",
+      "imports": [
+        "Mathlib.Analysis.Calculus.ContDiff.Operations"
+      ],
+      "path": "TauCeti/Analysis/Calculus/ContDiff/Translation.lean",
+      "sha256": "88b820ccccd06a8b14d6074907fa5ccba2658544320866d864a7ec206ba172cb",
+      "module": "TauCeti.Analysis.Calculus.ContDiff.Translation",
+      "submitted_path": "source/TauCeti/Analysis/Calculus/ContDiff/Translation.lean"
+    },
+    {
+      "bytes": 6697,
+      "git_blob_sha1": "90fa2d0398e98348053328e5b33b3ba331e6a276",
+      "imports": [
+        "Mathlib.Analysis.Calculus.Deriv.CompMul",
+        "Mathlib.Analysis.Calculus.IteratedDeriv.Defs",
+        "Mathlib.Analysis.SpecialFunctions.Sqrt",
+        "Mathlib.Analysis.Calculus.Deriv.Add",
+        "Mathlib.Analysis.Calculus.Deriv.Inv"
+      ],
+      "path": "TauCeti/Analysis/Calculus/Deriv/Second.lean",
+      "sha256": "266a9b459694aa91bdab9267b5e304cb82055c82520a74f8d720b80d8260fb48",
+      "module": "TauCeti.Analysis.Calculus.Deriv.Second",
+      "submitted_path": "source/TauCeti/Analysis/Calculus/Deriv/Second.lean"
+    },
+    {
+      "bytes": 6917,
+      "git_blob_sha1": "91b83b48f14980fb0e5b3ec5bfa4b9eb829230e9",
+      "imports": [
+        "Mathlib.Analysis.Calculus.DerivativeTest",
+        "TauCeti.Analysis.Calculus.TaylorIntegral"
+      ],
+      "path": "TauCeti/Analysis/Calculus/DerivativeTest.lean",
+      "sha256": "96677f47b4fe052848d2f1d579ff32f3ab4615e3c9e39bef7041fc6bd3b9e965",
+      "module": "TauCeti.Analysis.Calculus.DerivativeTest",
+      "submitted_path": "source/TauCeti/Analysis/Calculus/DerivativeTest.lean"
+    },
+    {
+      "bytes": 12190,
+      "git_blob_sha1": "4e9117cd51e45d2c84be6045e7ec168af8a986c4",
+      "imports": [
+        "Mathlib.Analysis.Calculus.FDeriv.CompCLM",
+        "Mathlib.Analysis.Calculus.FDeriv.Add",
+        "Mathlib.Analysis.Calculus.Deriv.Basic",
+        "Mathlib.LinearAlgebra.FiniteDimensional.Defs",
+        "Mathlib.Analysis.Normed.Module.FiniteDimension",
+        "Mathlib.Analysis.Calculus.FDeriv.Equiv",
+        "Mathlib.Analysis.Calculus.FDeriv.Pi",
+        "Mathlib.Analysis.Calculus.Deriv.Mul"
+      ],
+      "path": "TauCeti/Analysis/Calculus/FDeriv/ContinuousLinearMap.lean",
+      "sha256": "9a74d6a8e3e5b89bbef18c64981dd37a8aaf8309190c32ee8e3fcfcc0ee2a6c5",
+      "module": "TauCeti.Analysis.Calculus.FDeriv.ContinuousLinearMap",
+      "submitted_path": "source/TauCeti/Analysis/Calculus/FDeriv/ContinuousLinearMap.lean"
+    },
+    {
+      "bytes": 5567,
+      "git_blob_sha1": "0d0426a0d512e7e43de06d66780a38e37cafa465",
+      "imports": [
+        "Mathlib.Analysis.Calculus.Deriv.Comp",
+        "Mathlib.Analysis.Calculus.Deriv.Polynomial",
+        "Mathlib.Analysis.Calculus.FDeriv.Mul",
+        "Mathlib.Analysis.Matrix.Normed",
+        "Mathlib.LinearAlgebra.Matrix.Charpoly.Coeff",
+        "Mathlib.Analysis.Calculus.Deriv.Mul"
+      ],
+      "path": "TauCeti/Analysis/Calculus/FDeriv/Det.lean",
+      "sha256": "83e21f35bb0318222df1cfe6979be7e36d1095d05981a4b0665612896b0e35ad",
+      "module": "TauCeti.Analysis.Calculus.FDeriv.Det",
+      "submitted_path": "source/TauCeti/Analysis/Calculus/FDeriv/Det.lean"
+    },
+    {
+      "bytes": 8275,
+      "git_blob_sha1": "9c1a566df457da709de8eadb83dd6305447b76fa",
+      "imports": [
+        "Mathlib.Analysis.Calculus.FDeriv.Add",
+        "Mathlib.Analysis.Calculus.FDeriv.Prod"
+      ],
+      "path": "TauCeti/Analysis/Calculus/FDeriv/Prod.lean",
+      "sha256": "982167eeac13b1e10c10ac72d38c7770c9a541ee674561518f01767d2bb4c0ee",
+      "module": "TauCeti.Analysis.Calculus.FDeriv.Prod",
+      "submitted_path": "source/TauCeti/Analysis/Calculus/FDeriv/Prod.lean"
+    },
+    {
+      "bytes": 13153,
+      "git_blob_sha1": "a633872c6af8b1289b40524cd339756e443a900c",
+      "imports": [
+        "Mathlib.Analysis.Calculus.Gradient.Basic",
+        "Mathlib.Analysis.Calculus.ContDiff.Comp",
+        "Mathlib.Analysis.Calculus.FDeriv.Measurable",
+        "Mathlib.Analysis.InnerProductSpace.Symmetric",
+        "Mathlib.MeasureTheory.Function.LpSpace.Indicator",
+        "Mathlib.Analysis.Calculus.FDeriv.Add",
+        "Mathlib.Analysis.Calculus.FDeriv.Symmetric",
+        "Mathlib.Analysis.InnerProductSpace.Calculus",
+        "TauCeti.Analysis.Calculus.FDeriv.ContinuousLinearMap"
+      ],
+      "path": "TauCeti/Analysis/Calculus/Gradient.lean",
+      "sha256": "9054cb42ba13fd79100150c723e958c801325cc56072f5033363ede2c37a4c20",
+      "module": "TauCeti.Analysis.Calculus.Gradient",
+      "submitted_path": "source/TauCeti/Analysis/Calculus/Gradient.lean"
+    },
+    {
+      "bytes": 1673,
+      "git_blob_sha1": "9fc3e6ff44489d3b07126f13eadd37fa8ee093ad",
+      "imports": [
+        "Mathlib.Analysis.Calculus.LineDeriv.Basic",
+        "Mathlib.Analysis.Calculus.Deriv.Shift"
+      ],
+      "path": "TauCeti/Analysis/Calculus/LineDeriv/Basic.lean",
+      "sha256": "d70b618ac12bc8e7eb9d2a88393641929a8c6f15c0381b8bc3ecf333877f82c6",
+      "module": "TauCeti.Analysis.Calculus.LineDeriv.Basic",
+      "submitted_path": "source/TauCeti/Analysis/Calculus/LineDeriv/Basic.lean"
+    },
+    {
+      "bytes": 30812,
+      "git_blob_sha1": "edd18fcf479f0def5e3d569fa8ca1010229345f7",
+      "imports": [
+        "Mathlib.Analysis.Calculus.ParametricIntervalIntegral",
+        "Mathlib.Analysis.Calculus.ContDiff.Operations",
+        "TauCeti.Topology.Compactness.Normed"
+      ],
+      "path": "TauCeti/Analysis/Calculus/ParametricIntegral.lean",
+      "sha256": "0688bff5629ae4da88f7d938cb86444b0ba8b3fa808f905c3a1bce263429b4d6",
+      "module": "TauCeti.Analysis.Calculus.ParametricIntegral",
+      "submitted_path": "source/TauCeti/Analysis/Calculus/ParametricIntegral.lean"
+    },
+    {
+      "bytes": 23263,
+      "git_blob_sha1": "b822614490a4131fed7823820709e2ce12c2edb4",
+      "imports": [
+        "Mathlib.Analysis.Complex.Basic",
+        "Mathlib.Analysis.Calculus.ContDiff.Comp",
+        "Mathlib.Analysis.Calculus.ContDiff.RestrictScalars",
+        "Mathlib.Analysis.Calculus.FDeriv.Mul",
+        "Mathlib.Analysis.Calculus.IteratedDeriv.Defs",
+        "Mathlib.Analysis.Calculus.FDeriv.Equiv",
+        "Mathlib.Analysis.Calculus.FDeriv.Symmetric",
+        "Mathlib.Topology.Algebra.Module.Spaces.ContinuousLinearMap",
+        "TauCeti.Analysis.Calculus.FDeriv.Prod",
+        "Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas",
+        "TauCeti.Analysis.Calculus.Deriv.Second",
+        "TauCeti.Analysis.Calculus.FDeriv.ContinuousLinearMap"
+      ],
+      "path": "TauCeti/Analysis/Calculus/SecondDerivative.lean",
+      "sha256": "ba8978ee4870557a181dc5bbe4bb1f196cd24b5b5c423261237859d30811a78a",
+      "module": "TauCeti.Analysis.Calculus.SecondDerivative",
+      "submitted_path": "source/TauCeti/Analysis/Calculus/SecondDerivative.lean"
+    },
+    {
+      "bytes": 2017,
+      "git_blob_sha1": "d8cc218874cab41ce4a641e44b1a2e886f1dfb94",
+      "imports": [
+        "Mathlib.Analysis.Calculus.TaylorIntegral"
+      ],
+      "path": "TauCeti/Analysis/Calculus/TaylorIntegral.lean",
+      "sha256": "890d77f1aa9330d0d185433c0f80d7292d30a4cd0d19b5d9d7b848e4749d57ce",
+      "module": "TauCeti.Analysis.Calculus.TaylorIntegral",
+      "submitted_path": "source/TauCeti/Analysis/Calculus/TaylorIntegral.lean"
+    },
+    {
+      "bytes": 20206,
+      "git_blob_sha1": "fd7e31f9a7316989fed9a576a6c664aac33bcded",
+      "imports": [
+        "Mathlib.Analysis.Distribution.AEEqOfIntegralContDiff",
+        "Mathlib.Analysis.Calculus.BumpFunction.Normed",
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus",
+        "Mathlib.MeasureTheory.Measure.Lebesgue.Basic",
+        "Mathlib.Analysis.Calculus.ContDiff.Deriv",
+        "Mathlib.Analysis.Calculus.Deriv.MeanValue",
+        "Mathlib.Analysis.Distribution.TestFunction"
+      ],
+      "path": "TauCeti/Analysis/Distribution/DuBoisReymond.lean",
+      "sha256": "cf1ee672614cc335fba0f3254b6340af7dad0d19e0073103f9d726dafdc40428",
+      "module": "TauCeti.Analysis.Distribution.DuBoisReymond",
+      "submitted_path": "source/TauCeti/Analysis/Distribution/DuBoisReymond.lean"
+    },
+    {
+      "bytes": 10582,
+      "git_blob_sha1": "d8dd1d575286d05d7b042245ea4571035063eefe",
+      "imports": [
+        "Mathlib.Analysis.Distribution.TestFunction",
+        "Mathlib.Analysis.Calculus.FDeriv.Symmetric",
+        "Mathlib.Analysis.InnerProductSpace.Laplacian"
+      ],
+      "path": "TauCeti/Analysis/Distribution/TestFunction/LineDeriv.lean",
+      "sha256": "3103964a696188e7b50378ed37921d31127191b67379128c909141dc0dcaeb3f",
+      "module": "TauCeti.Analysis.Distribution.TestFunction.LineDeriv",
+      "submitted_path": "source/TauCeti/Analysis/Distribution/TestFunction/LineDeriv.lean"
+    },
+    {
+      "bytes": 7711,
+      "git_blob_sha1": "9106bc87879676442b3ad42bdff42b0ee6e427a8",
+      "imports": [
+        "Mathlib.Analysis.InnerProductSpace.PiL2",
+        "Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional"
+      ],
+      "path": "TauCeti/Analysis/InnerProductSpace/BasisSpan.lean",
+      "sha256": "5235ba0d25c6c08aab3b88ec2de244d5f0546d24a9814c619f446063be672fca",
+      "module": "TauCeti.Analysis.InnerProductSpace.BasisSpan",
+      "submitted_path": "source/TauCeti/Analysis/InnerProductSpace/BasisSpan.lean"
+    },
+    {
+      "bytes": 9486,
+      "git_blob_sha1": "1fc969bb35d6aa81e0a5b109fc29397ebd06981c",
+      "imports": [
+        "Mathlib.Analysis.InnerProductSpace.Basic"
+      ],
+      "path": "TauCeti/Analysis/InnerProductSpace/CompleteSquare.lean",
+      "sha256": "6aa24154abe593e0102fdaf119121bc39e5c1ce45d9f42e97a4179fade7ccc72",
+      "module": "TauCeti.Analysis.InnerProductSpace.CompleteSquare",
+      "submitted_path": "source/TauCeti/Analysis/InnerProductSpace/CompleteSquare.lean"
+    },
+    {
+      "bytes": 29911,
+      "git_blob_sha1": "60a5f5dca4a213d341ab4dc264ebdd9b8a67e2d6",
+      "imports": [
+        "Mathlib.Analysis.InnerProductSpace.PiL2",
+        "Mathlib.Analysis.InnerProductSpace.Spectrum",
+        "Mathlib.Analysis.InnerProductSpace.Adjoint",
+        "TauCeti.Analysis.InnerProductSpace.BasisSpan",
+        "TauCeti.LinearAlgebra.Dimension.Submodule"
+      ],
+      "path": "TauCeti/Analysis/InnerProductSpace/CourantFischer.lean",
+      "sha256": "62d35ded0fb5370caea3932912982616d88de38a112ea32f368698d698a1f0ca",
+      "module": "TauCeti.Analysis.InnerProductSpace.CourantFischer",
+      "submitted_path": "source/TauCeti/Analysis/InnerProductSpace/CourantFischer.lean"
+    },
+    {
+      "bytes": 3231,
+      "git_blob_sha1": "206549a5932a91d234a1fd134d08399eb15d0707",
+      "imports": [
+        "Mathlib.Analysis.InnerProductSpace.PiL2",
+        "Mathlib.LinearAlgebra.Complex.FiniteDimensional",
+        "Mathlib.RingTheory.AlgebraTower"
+      ],
+      "path": "TauCeti/Analysis/InnerProductSpace/Euclidean/Space.lean",
+      "sha256": "8d66ac2b653a2f00b00c7fb09053c69811ee11e503483fc57a3849fcb08b11c0",
+      "module": "TauCeti.Analysis.InnerProductSpace.Euclidean.Space",
+      "submitted_path": "source/TauCeti/Analysis/InnerProductSpace/Euclidean/Space.lean"
+    },
+    {
+      "bytes": 7245,
+      "git_blob_sha1": "e846c747990d29309ed0ce532e979ec0547534a9",
+      "imports": [
+        "Mathlib.Analysis.InnerProductSpace.Continuous",
+        "Mathlib.Analysis.InnerProductSpace.GramSchmidtOrtho"
+      ],
+      "path": "TauCeti/Analysis/InnerProductSpace/GramSchmidtOrtho.lean",
+      "sha256": "054f5fb35504c89750b9cea05edddf83d3dbacab336be4e03a6805334ed32439",
+      "module": "TauCeti.Analysis.InnerProductSpace.GramSchmidtOrtho",
+      "submitted_path": "source/TauCeti/Analysis/InnerProductSpace/GramSchmidtOrtho.lean"
+    },
+    {
+      "bytes": 4081,
+      "git_blob_sha1": "a86b484a48ab30670716d9c4dec1d17911a9cfc8",
+      "imports": [
+        "TauCeti.Analysis.InnerProductSpace.Harmonic.Dilation",
+        "TauCeti.Analysis.Normed.Module.Ball"
+      ],
+      "path": "TauCeti/Analysis/InnerProductSpace/Harmonic/Ball.lean",
+      "sha256": "9b87db848c4fa70c21c3a8f449f4b452641b424b576a855dc9a25c77cbdbe0fd",
+      "module": "TauCeti.Analysis.InnerProductSpace.Harmonic.Ball",
+      "submitted_path": "source/TauCeti/Analysis/InnerProductSpace/Harmonic/Ball.lean"
+    },
+    {
+      "bytes": 6157,
+      "git_blob_sha1": "d6d8378de2006517b605ffc2ba329d24e303685e",
+      "imports": [
+        "TauCeti.Analysis.InnerProductSpace.Harmonic.Isometry"
+      ],
+      "path": "TauCeti/Analysis/InnerProductSpace/Harmonic/Dilation.lean",
+      "sha256": "a9c581a1500976d01fab531dcc3e604223a4204083944b2866efcbff19dca0b4",
+      "module": "TauCeti.Analysis.InnerProductSpace.Harmonic.Dilation",
+      "submitted_path": "source/TauCeti/Analysis/InnerProductSpace/Harmonic/Dilation.lean"
+    },
+    {
+      "bytes": 7771,
+      "git_blob_sha1": "011fb5a3c100647ea2c9e36b358ac683c0954f79",
+      "imports": [
+        "Mathlib.Analysis.InnerProductSpace.Harmonic.Basic",
+        "Mathlib.Analysis.Normed.Affine.Isometry",
+        "TauCeti.Analysis.InnerProductSpace.Laplacian.Basic"
+      ],
+      "path": "TauCeti/Analysis/InnerProductSpace/Harmonic/Isometry.lean",
+      "sha256": "59eadf2e5320e87e5bd78511ffbdb66ce3e2e348903b7baec27b77a72021f949",
+      "module": "TauCeti.Analysis.InnerProductSpace.Harmonic.Isometry",
+      "submitted_path": "source/TauCeti/Analysis/InnerProductSpace/Harmonic/Isometry.lean"
+    },
+    {
+      "bytes": 27681,
+      "git_blob_sha1": "b4d2c7e04875b18ce92eba3acd0bda5da4d71f7e",
+      "imports": [
+        "TauCeti.Analysis.InnerProductSpace.Harmonic.Ball",
+        "Mathlib.MeasureTheory.Constructions.HaarToSphere",
+        "Mathlib.MeasureTheory.Integral.Average",
+        "Mathlib.Topology.MetricSpace.ProperSpace.Lemmas",
+        "TauCeti.Analysis.Calculus.ContDiff.Translation",
+        "TauCeti.Analysis.Distribution.DuBoisReymond",
+        "TauCeti.Analysis.InnerProductSpace.Laplacian.Basic",
+        "TauCeti.Analysis.Sobolev.WeakDeriv.Laplacian",
+        "TauCeti.MeasureTheory.Constructions.HaarToSphere",
+        "TauCeti.MeasureTheory.Group.Integral",
+        "Mathlib.Analysis.SpecialFunctions.Integrals.Basic",
+        "Mathlib.Analysis.SpecialFunctions.Sqrt"
+      ],
+      "path": "TauCeti/Analysis/InnerProductSpace/Harmonic/MeanValue/Basic.lean",
+      "sha256": "075a849332d3bfdbe39b930e4f384c7d1ec0792e9bbbc55c754af1e0601f29e1",
+      "module": "TauCeti.Analysis.InnerProductSpace.Harmonic.MeanValue.Basic",
+      "submitted_path": "source/TauCeti/Analysis/InnerProductSpace/Harmonic/MeanValue/Basic.lean"
+    },
+    {
+      "bytes": 6998,
+      "git_blob_sha1": "340b04b7859d77308e9b31d0175f09db69ef115a",
+      "imports": [
+        "Mathlib.Analysis.InnerProductSpace.Harmonic.Basic",
+        "Mathlib.MeasureTheory.Integral.Average",
+        "Mathlib.MeasureTheory.Measure.Haar.Basic",
+        "TauCeti.Analysis.InnerProductSpace.Harmonic.MeanValue.Basic",
+        "TauCeti.Analysis.PDE.PoissonIntegral.Ball",
+        "TauCeti.MeasureTheory.Integral.SubMeanValue"
+      ],
+      "path": "TauCeti/Analysis/InnerProductSpace/Harmonic/MeanValue/Converse.lean",
+      "sha256": "39f1a7e214f4502a4c59a9315837e46fead7f2deb0fd98f32e32e6cf06a43303",
+      "module": "TauCeti.Analysis.InnerProductSpace.Harmonic.MeanValue.Converse",
+      "submitted_path": "source/TauCeti/Analysis/InnerProductSpace/Harmonic/MeanValue/Converse.lean"
+    },
+    {
+      "bytes": 16644,
+      "git_blob_sha1": "2de7164c6433fa996c86222792354dfbcdd4902f",
+      "imports": [
+        "Mathlib.Analysis.InnerProductSpace.Harmonic.Basic",
+        "Mathlib.MeasureTheory.Integral.Average",
+        "Mathlib.MeasureTheory.Measure.Haar.OfBasis",
+        "TauCeti.Analysis.InnerProductSpace.Harmonic.MeanValue.Basic",
+        "TauCeti.Analysis.InnerProductSpace.Harmonic.MeanValue.Converse",
+        "TauCeti.Analysis.InnerProductSpace.Laplacian.StrongMaximumPrinciple",
+        "TauCeti.Analysis.PDE.PoissonIntegral.Ball",
+        "TauCeti.MeasureTheory.Integral.SubMeanValue"
+      ],
+      "path": "TauCeti/Analysis/InnerProductSpace/Harmonic/Subharmonic.lean",
+      "sha256": "a7e0163ebdd59a55fea20816129a29581a8fb48e2b7a7bf6454b7947ee47f5c4",
+      "module": "TauCeti.Analysis.InnerProductSpace.Harmonic.Subharmonic",
+      "submitted_path": "source/TauCeti/Analysis/InnerProductSpace/Harmonic/Subharmonic.lean"
+    },
+    {
+      "bytes": 3712,
+      "git_blob_sha1": "c92aef3b4aaf16d0e551e2b45b8bafda321531e6",
+      "imports": [
+        "Mathlib.Algebra.Module.LinearMap.FiniteRange",
+        "Mathlib.Analysis.InnerProductSpace.l2Space"
+      ],
+      "path": "TauCeti/Analysis/InnerProductSpace/HilbertBasis/Basic.lean",
+      "sha256": "a67be884d9de4e9357b9904ac8b5b850ba2a06abcf86e92b2d0944e05b2c3eb6",
+      "module": "TauCeti.Analysis.InnerProductSpace.HilbertBasis.Basic",
+      "submitted_path": "source/TauCeti/Analysis/InnerProductSpace/HilbertBasis/Basic.lean"
+    },
+    {
+      "bytes": 3770,
+      "git_blob_sha1": "b1842de9b992ac0b4916e25e8bc9083be992298f",
+      "imports": [
+        "TauCeti.Analysis.InnerProductSpace.Laplacian.Basic",
+        "TauCeti.Analysis.InnerProductSpace.Laplacian.DriftMaximumPrinciple"
+      ],
+      "path": "TauCeti/Analysis/InnerProductSpace/Laplacian/BarrierMaximizer.lean",
+      "sha256": "3a0c6eb20f874bc42678e00e2a0fe21e44c854217a1eeb462e81dea1cc4c3fca",
+      "module": "TauCeti.Analysis.InnerProductSpace.Laplacian.BarrierMaximizer",
+      "submitted_path": "source/TauCeti/Analysis/InnerProductSpace/Laplacian/BarrierMaximizer.lean"
+    },
+    {
+      "bytes": 31555,
+      "git_blob_sha1": "99b5bd46b2a3a6a565e333d6198063896ed0b950",
+      "imports": [
+        "Mathlib.Analysis.Calculus.Gradient.Basic",
+        "Mathlib.Analysis.InnerProductSpace.Calculus",
+        "Mathlib.Analysis.InnerProductSpace.Laplacian",
+        "Mathlib.Analysis.LocallyConvex.SeparatingDual",
+        "Mathlib.Analysis.Normed.Affine.Isometry",
+        "TauCeti.Analysis.Matrix.EuclideanLin",
+        "TauCeti.Analysis.Normed.Operator.Basic"
+      ],
+      "path": "TauCeti/Analysis/InnerProductSpace/Laplacian/Basic.lean",
+      "sha256": "d0681e9b7f686039b960c74fd681f05fc36aebccca92361966a119f10e685615",
+      "module": "TauCeti.Analysis.InnerProductSpace.Laplacian.Basic",
+      "submitted_path": "source/TauCeti/Analysis/InnerProductSpace/Laplacian/Basic.lean"
+    },
+    {
+      "bytes": 7951,
+      "git_blob_sha1": "6871c01c40b26507b5cecf59e64456df83170ab2",
+      "imports": [
+        "Mathlib.Analysis.InnerProductSpace.Harmonic.Basic",
+        "TauCeti.Analysis.InnerProductSpace.Laplacian.WeakMaximumPrinciple"
+      ],
+      "path": "TauCeti/Analysis/InnerProductSpace/Laplacian/Comparison.lean",
+      "sha256": "900efb5aab9cf9079b941938c904cce28d832a0af8e91829ce7b424734c17072",
+      "module": "TauCeti.Analysis.InnerProductSpace.Laplacian.Comparison",
+      "submitted_path": "source/TauCeti/Analysis/InnerProductSpace/Laplacian/Comparison.lean"
+    },
+    {
+      "bytes": 21684,
+      "git_blob_sha1": "fe66c29d934a25120a8af7b8498be653656adb43",
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.ExpDeriv",
+        "TauCeti.Analysis.InnerProductSpace.Laplacian.WeakMaximumPrinciple"
+      ],
+      "path": "TauCeti/Analysis/InnerProductSpace/Laplacian/DriftMaximumPrinciple.lean",
+      "sha256": "1dc99da3b69fba1431a303727e2f99bd04ceee45a8cb46f2f5eab5966f9a8cbc",
+      "module": "TauCeti.Analysis.InnerProductSpace.Laplacian.DriftMaximumPrinciple",
+      "submitted_path": "source/TauCeti/Analysis/InnerProductSpace/Laplacian/DriftMaximumPrinciple.lean"
+    },
+    {
+      "bytes": 32593,
+      "git_blob_sha1": "d62e4df62d77406285288a2933081979739fc9f2",
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Pow.Deriv",
+        "TauCeti.Analysis.InnerProductSpace.Laplacian.LowerOrderMaximumPrinciple",
+        "TauCeti.Analysis.InnerProductSpace.NormPow",
+        "Mathlib.Analysis.InnerProductSpace.Harmonic.Basic",
+        "Mathlib.Analysis.Calculus.Deriv.Comp",
+        "Mathlib.Analysis.Calculus.Deriv.Slope",
+        "Mathlib.Analysis.Normed.Module.RCLike.Real",
+        "Mathlib.Topology.MetricSpace.Bounded"
+      ],
+      "path": "TauCeti/Analysis/InnerProductSpace/Laplacian/HopfLemma.lean",
+      "sha256": "7b1884c1c410da17736f0a27b5344149d0d76c0d789cc998fea9a9cd496a95df",
+      "module": "TauCeti.Analysis.InnerProductSpace.Laplacian.HopfLemma",
+      "submitted_path": "source/TauCeti/Analysis/InnerProductSpace/Laplacian/HopfLemma.lean"
+    },
+    {
+      "bytes": 2798,
+      "git_blob_sha1": "c8f7e1315f1694a215c763d8e618109ce12b222e",
+      "imports": [
+        "Mathlib.Analysis.InnerProductSpace.Laplacian",
+        "TauCeti.Analysis.Calculus.DerivativeTest"
+      ],
+      "path": "TauCeti/Analysis/InnerProductSpace/Laplacian/LocalExtr.lean",
+      "sha256": "8d8e39723648dcf676c42b619680b59dbfd5cdf5dbf457ba3eebcac49548209c",
+      "module": "TauCeti.Analysis.InnerProductSpace.Laplacian.LocalExtr",
+      "submitted_path": "source/TauCeti/Analysis/InnerProductSpace/Laplacian/LocalExtr.lean"
+    },
+    {
+      "bytes": 8859,
+      "git_blob_sha1": "dc47c12f4535ff13cf8b386c4f2eafebae55c484",
+      "imports": [
+        "TauCeti.Analysis.InnerProductSpace.Laplacian.DriftMaximumPrinciple",
+        "TauCeti.Analysis.InnerProductSpace.Laplacian.BarrierMaximizer"
+      ],
+      "path": "TauCeti/Analysis/InnerProductSpace/Laplacian/LowerOrderMaximumPrinciple.lean",
+      "sha256": "4eed600530bb5921841cbf170eaff2c33d6f47c723f59575da256709dde0e0d6",
+      "module": "TauCeti.Analysis.InnerProductSpace.Laplacian.LowerOrderMaximumPrinciple",
+      "submitted_path": "source/TauCeti/Analysis/InnerProductSpace/Laplacian/LowerOrderMaximumPrinciple.lean"
+    },
+    {
+      "bytes": 3108,
+      "git_blob_sha1": "768acadd90b1208b2918fcf6e5196fbb86b0f2fb",
+      "imports": [
+        "TauCeti.Analysis.InnerProductSpace.Laplacian.LocalExtr",
+        "TauCeti.Topology.Order.Compact"
+      ],
+      "path": "TauCeti/Analysis/InnerProductSpace/Laplacian/MaximumPrinciple.lean",
+      "sha256": "ba30dcf0176ef7002bbdf7677ebacad74e3f87f4377c6a6018d0b38fc760d075",
+      "module": "TauCeti.Analysis.InnerProductSpace.Laplacian.MaximumPrinciple",
+      "submitted_path": "source/TauCeti/Analysis/InnerProductSpace/Laplacian/MaximumPrinciple.lean"
+    },
+    {
+      "bytes": 4837,
+      "git_blob_sha1": "eb94fe75dbfd5b7c1157f3377e0000f4921df379",
+      "imports": [
+        "Mathlib.Analysis.InnerProductSpace.Harmonic.Basic",
+        "TauCeti.Analysis.Calculus.ParametricIntegral",
+        "TauCeti.Analysis.InnerProductSpace.Laplacian.Basic"
+      ],
+      "path": "TauCeti/Analysis/InnerProductSpace/Laplacian/ParametricIntegral.lean",
+      "sha256": "3979e74a58906305466f6c54dfe51e90ebe82fc08cbd05c967696939a9eafccd",
+      "module": "TauCeti.Analysis.InnerProductSpace.Laplacian.ParametricIntegral",
+      "submitted_path": "source/TauCeti/Analysis/InnerProductSpace/Laplacian/ParametricIntegral.lean"
+    },
+    {
+      "bytes": 27883,
+      "git_blob_sha1": "418d8d62daff63743292091577c7adbc7a633332",
+      "imports": [
+        "Mathlib.Analysis.InnerProductSpace.Harmonic.Basic",
+        "TauCeti.Analysis.InnerProductSpace.Laplacian.HopfLemma",
+        "Mathlib.Analysis.Calculus.LocalExtr.Basic",
+        "Mathlib.Topology.MetricSpace.HausdorffDistance"
+      ],
+      "path": "TauCeti/Analysis/InnerProductSpace/Laplacian/StrongMaximumPrinciple.lean",
+      "sha256": "8a55798599b8c232e5efa636787b53b39d0a9b269477ad686c5c431a897d275d",
+      "module": "TauCeti.Analysis.InnerProductSpace.Laplacian.StrongMaximumPrinciple",
+      "submitted_path": "source/TauCeti/Analysis/InnerProductSpace/Laplacian/StrongMaximumPrinciple.lean"
+    },
+    {
+      "bytes": 10350,
+      "git_blob_sha1": "e5a10370a32cacfb7697f7c3de0f527f24b2c97a",
+      "imports": [
+        "Mathlib.Analysis.InnerProductSpace.Calculus",
+        "Mathlib.Analysis.InnerProductSpace.Harmonic.Basic",
+        "TauCeti.Algebra.Order.Field.Basic",
+        "TauCeti.Analysis.InnerProductSpace.Laplacian.Basic",
+        "TauCeti.Analysis.InnerProductSpace.Laplacian.MaximumPrinciple"
+      ],
+      "path": "TauCeti/Analysis/InnerProductSpace/Laplacian/WeakMaximumPrinciple.lean",
+      "sha256": "13214c042938260c6a07d6fc8c08101bcb418b1be26f5582aa5f16b0dfa02042",
+      "module": "TauCeti.Analysis.InnerProductSpace.Laplacian.WeakMaximumPrinciple",
+      "submitted_path": "source/TauCeti/Analysis/InnerProductSpace/Laplacian/WeakMaximumPrinciple.lean"
+    },
+    {
+      "bytes": 21130,
+      "git_blob_sha1": "5b471f7dd982d43773027422e48e48a879f3cdb5",
+      "imports": [
+        "Mathlib.Analysis.InnerProductSpace.Harmonic.Basic",
+        "Mathlib.Analysis.InnerProductSpace.NormPow",
+        "TauCeti.Analysis.InnerProductSpace.Laplacian.Basic",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Deriv",
+        "Mathlib.Analysis.SpecialFunctions.Log.Deriv",
+        "TauCeti.Analysis.Calculus.Gradient"
+      ],
+      "path": "TauCeti/Analysis/InnerProductSpace/NormPow.lean",
+      "sha256": "d6d32d211dad86a761774521c06c8ed0f261f71434d8df4545d66aa7892a3503",
+      "module": "TauCeti.Analysis.InnerProductSpace.NormPow",
+      "submitted_path": "source/TauCeti/Analysis/InnerProductSpace/NormPow.lean"
+    },
+    {
+      "bytes": 45606,
+      "git_blob_sha1": "27526034a2888b098e4d751b067d46d939f41e9f",
+      "imports": [
+        "TauCeti.Analysis.InnerProductSpace.CourantFischer",
+        "TauCeti.Analysis.InnerProductSpace.Spectrum",
+        "TauCeti.Analysis.InnerProductSpace.Symmetric.FunctionalCalculus"
+      ],
+      "path": "TauCeti/Analysis/InnerProductSpace/PointSpectrum.lean",
+      "sha256": "fd6249bf03651fb8484cc73b9eb0bd967be96b8a943c0ae51454b3f2798b36c7",
+      "module": "TauCeti.Analysis.InnerProductSpace.PointSpectrum",
+      "submitted_path": "source/TauCeti/Analysis/InnerProductSpace/PointSpectrum.lean"
+    },
+    {
+      "bytes": 29017,
+      "git_blob_sha1": "828c2d30b5bcccb719f427ae328875fde80ccccc",
+      "imports": [
+        "Mathlib.Analysis.InnerProductSpace.Positive",
+        "Mathlib.Analysis.InnerProductSpace.Spectrum",
+        "TauCeti.Analysis.InnerProductSpace.HilbertBasis.Basic",
+        "TauCeti.Analysis.InnerProductSpace.BasisSpan",
+        "TauCeti.Data.Fin.Tuple.Sort",
+        "TauCeti.LinearAlgebra.Eigenspace.Anticommute",
+        "Mathlib.LinearAlgebra.Eigenspace.ContinuousLinearMap"
+      ],
+      "path": "TauCeti/Analysis/InnerProductSpace/Spectrum.lean",
+      "sha256": "66edca14f699adf7166968ac595bf4eb07b14fe3959239c984cfd7306b8dd679",
+      "module": "TauCeti.Analysis.InnerProductSpace.Spectrum",
+      "submitted_path": "source/TauCeti/Analysis/InnerProductSpace/Spectrum.lean"
+    },
+    {
+      "bytes": 14670,
+      "git_blob_sha1": "36f64474cde58dedf40147fa0fd81612bb4fe849",
+      "imports": [
+        "Mathlib.Analysis.InnerProductSpace.Positive"
+      ],
+      "path": "TauCeti/Analysis/InnerProductSpace/Symmetric/FunctionalCalculus.lean",
+      "sha256": "83b7af3df2325eaef93474471c15914effa3a65e70deb459a1cf5c219fb83cf5",
+      "module": "TauCeti.Analysis.InnerProductSpace.Symmetric.FunctionalCalculus",
+      "submitted_path": "source/TauCeti/Analysis/InnerProductSpace/Symmetric/FunctionalCalculus.lean"
+    },
+    {
+      "bytes": 17113,
+      "git_blob_sha1": "6253b0b1de762b7fbbbab35cd6ceab69f6089df6",
+      "imports": [
+        "Mathlib.Analysis.CStarAlgebra.Matrix",
+        "Mathlib.Analysis.Matrix.PosDef",
+        "TauCeti.Analysis.InnerProductSpace.CourantFischer",
+        "TauCeti.Analysis.Matrix.EntrywiseOpNorm",
+        "TauCeti.LinearAlgebra.Matrix.Rank"
+      ],
+      "path": "TauCeti/Analysis/Matrix/Eigenvalues.lean",
+      "sha256": "7ab39a12785bba3cf3a39295f5769a08c4992eb7f8a5703fd07928359efed077",
+      "module": "TauCeti.Analysis.Matrix.Eigenvalues",
+      "submitted_path": "source/TauCeti/Analysis/Matrix/Eigenvalues.lean"
+    },
+    {
+      "bytes": 5883,
+      "git_blob_sha1": "5449d3c2302fd029a24e7d8ad324be69a632ee1f",
+      "imports": [
+        "Mathlib.Analysis.InnerProductSpace.PiL2",
+        "TauCeti.Analysis.Normed.Lp.PiLp"
+      ],
+      "path": "TauCeti/Analysis/Matrix/EntrywiseOpNorm.lean",
+      "sha256": "e21f8c6fd0138f00d3c596417fd36f80b6b2a78cd49856f826bf13bec2c27d9f",
+      "module": "TauCeti.Analysis.Matrix.EntrywiseOpNorm",
+      "submitted_path": "source/TauCeti/Analysis/Matrix/EntrywiseOpNorm.lean"
+    },
+    {
+      "bytes": 9084,
+      "git_blob_sha1": "5148f15f97fe6e269eecf2aa51b082cb1f6b1fd0",
+      "imports": [
+        "Mathlib.Analysis.CStarAlgebra.Matrix",
+        "Mathlib.LinearAlgebra.Matrix.Rank",
+        "Mathlib.Tactic.FieldSimp",
+        "Mathlib.Tactic.Ring"
+      ],
+      "path": "TauCeti/Analysis/Matrix/EuclideanLin.lean",
+      "sha256": "dfc4d61be12eb27e166216c41d649efaff145fbf1f6784b1813c0898ff51c5f9",
+      "module": "TauCeti.Analysis.Matrix.EuclideanLin",
+      "submitted_path": "source/TauCeti/Analysis/Matrix/EuclideanLin.lean"
+    },
+    {
+      "bytes": 3307,
+      "git_blob_sha1": "6992dda944700b7e4707e291212c3ea5eb894e28",
+      "imports": [
+        "Mathlib.Analysis.Matrix.Normed"
+      ],
+      "path": "TauCeti/Analysis/Matrix/Frobenius.lean",
+      "sha256": "29beb3e44f0eaae4d8c74599f0f49228f9f73ede288aeb6178fe01b27a0b6a10",
+      "module": "TauCeti.Analysis.Matrix.Frobenius",
+      "submitted_path": "source/TauCeti/Analysis/Matrix/Frobenius.lean"
+    },
+    {
+      "bytes": 18243,
+      "git_blob_sha1": "ee8fb7829dfda3bb8b41cc0909cda72200a5eda2",
+      "imports": [
+        "Mathlib.Analysis.CStarAlgebra.ContinuousFunctionalCalculus.Continuity",
+        "Mathlib.Analysis.Matrix.MeasurableSpace",
+        "Mathlib.Analysis.Matrix.Order",
+        "Mathlib.MeasureTheory.Constructions.BorelSpace.Complex",
+        "Mathlib.MeasureTheory.Constructions.BorelSpace.Metrizable",
+        "TauCeti.Analysis.InnerProductSpace.PointSpectrum",
+        "Mathlib.LinearAlgebra.Lagrange",
+        "Mathlib.Topology.MetricSpace.ThickenedIndicator",
+        "TauCeti.Analysis.CStarAlgebra.ContinuousFunctionalCalculus.Continuity",
+        "TauCeti.Analysis.Matrix.L2OpNorm",
+        "TauCeti.Topology.Instances.Matrix"
+      ],
+      "path": "TauCeti/Analysis/Matrix/FunctionalCalculus.lean",
+      "sha256": "13769968b05eb84a5b661732c3425ea6b7d93801a0062fd921215a93ecdeeb79",
+      "module": "TauCeti.Analysis.Matrix.FunctionalCalculus",
+      "submitted_path": "source/TauCeti/Analysis/Matrix/FunctionalCalculus.lean"
+    },
+    {
+      "bytes": 1573,
+      "git_blob_sha1": "c4c8c0204b8ca92ec0974a0939ecd69610e1be4e",
+      "imports": [
+        "Mathlib.Analysis.CStarAlgebra.Matrix"
+      ],
+      "path": "TauCeti/Analysis/Matrix/L2OpNorm.lean",
+      "sha256": "9d0fadee3d3f5f5c8be50bfc5c19513249403971be59f037680bc6a47d9ddd32",
+      "module": "TauCeti.Analysis.Matrix.L2OpNorm",
+      "submitted_path": "source/TauCeti/Analysis/Matrix/L2OpNorm.lean"
+    },
+    {
+      "bytes": 2537,
+      "git_blob_sha1": "5d5e5f3aee86c7dde07249e21775b1c4ad5b3d53",
+      "imports": [
+        "Mathlib.Analysis.Matrix.LDL",
+        "TauCeti.Analysis.InnerProductSpace.GramSchmidtOrtho",
+        "TauCeti.LinearAlgebra.Matrix.Triangular"
+      ],
+      "path": "TauCeti/Analysis/Matrix/LDL.lean",
+      "sha256": "f9135b5ff7223bf200e781c1bb2566e8a213abdac1b4545d7f76f122f187bb0c",
+      "module": "TauCeti.Analysis.Matrix.LDL",
+      "submitted_path": "source/TauCeti/Analysis/Matrix/LDL.lean"
+    },
+    {
+      "bytes": 5493,
+      "git_blob_sha1": "5581a5bdbf50b22f0a24edaee1632afed06065be",
+      "imports": [
+        "Mathlib.Analysis.Matrix.MeasurableSpace",
+        "Mathlib.Analysis.Normed.Lp.MeasurableSpace",
+        "Mathlib.LinearAlgebra.Matrix.NonsingularInverse",
+        "Mathlib.LinearAlgebra.Matrix.Vec",
+        "TauCeti.LinearAlgebra.Matrix.BlockSucc"
+      ],
+      "path": "TauCeti/Analysis/Matrix/MeasurableSpace.lean",
+      "sha256": "e9c88b848dbbbda5af40a5d1385d9b7bced0a1f5f9814f64a33204cb146eca9c",
+      "module": "TauCeti.Analysis.Matrix.MeasurableSpace",
+      "submitted_path": "source/TauCeti/Analysis/Matrix/MeasurableSpace.lean"
+    },
+    {
+      "bytes": 5004,
+      "git_blob_sha1": "f13fe98e7337ff340cbb3dcc4670e1d804de9ccd",
+      "imports": [
+        "Mathlib.Analysis.InnerProductSpace.PiL2"
+      ],
+      "path": "TauCeti/Analysis/Matrix/OrthogonalRows.lean",
+      "sha256": "525af384846225e0e8f142f398b670b6160391d4210bcf73befa5235cdd2b1c7",
+      "module": "TauCeti.Analysis.Matrix.OrthogonalRows",
+      "submitted_path": "source/TauCeti/Analysis/Matrix/OrthogonalRows.lean"
+    },
+    {
+      "bytes": 4850,
+      "git_blob_sha1": "195d1e20cbae8a749b3993b37f851da8afb6dd6e",
+      "imports": [
+        "Mathlib.Analysis.Convex.Basic",
+        "Mathlib.Analysis.Matrix.MeasurableSpace",
+        "Mathlib.Analysis.Matrix.Normed",
+        "Mathlib.LinearAlgebra.Matrix.PosDef",
+        "Mathlib.Algebra.Order.Star.Real"
+      ],
+      "path": "TauCeti/Analysis/Matrix/PosDef.lean",
+      "sha256": "16be6e199d7ec2cc589666fa2f9f987538480f089a98088cca3183b4a9a215a8",
+      "module": "TauCeti.Analysis.Matrix.PosDef",
+      "submitted_path": "source/TauCeti/Analysis/Matrix/PosDef.lean"
+    },
+    {
+      "bytes": 8388,
+      "git_blob_sha1": "6da3973adcaf41bd1440c2e8bc6ae0e817e3bd1e",
+      "imports": [
+        "TauCeti.LinearAlgebra.Matrix.PosSemidef",
+        "TauCeti.Analysis.SpecificLimits.SqLeMulDoubling"
+      ],
+      "path": "TauCeti/Analysis/Matrix/PosSemidef/Basic.lean",
+      "sha256": "eeccd377a18aa5f45fbf6130eb3531f57f169a11a9dbfc1c77046f93e4d4273b",
+      "module": "TauCeti.Analysis.Matrix.PosSemidef.Basic",
+      "submitted_path": "source/TauCeti/Analysis/Matrix/PosSemidef/Basic.lean"
+    },
+    {
+      "bytes": 12211,
+      "git_blob_sha1": "7057132d9b3b1d590eb53f55d984ee05bcca22c2",
+      "imports": [
+        "Mathlib.Analysis.Matrix.PosDef"
+      ],
+      "path": "TauCeti/Analysis/Matrix/Spectrum.lean",
+      "sha256": "453e8adb754550f0fc4c5cc643861892bc1fdd345e60fa09434feac9898eb1d4",
+      "module": "TauCeti.Analysis.Matrix.Spectrum",
+      "submitted_path": "source/TauCeti/Analysis/Matrix/Spectrum.lean"
+    },
+    {
+      "bytes": 11715,
+      "git_blob_sha1": "f06d4b005d1c905476118f32e9dce8cf7f724476",
+      "imports": [
+        "Mathlib.Analysis.Matrix.Order",
+        "Mathlib.Analysis.SpecialFunctions.ContinuousFunctionalCalculus.Rpow.ConjSqrt",
+        "Mathlib.LinearAlgebra.Matrix.SchurComplement",
+        "TauCeti.Analysis.Matrix.EuclideanLin"
+      ],
+      "path": "TauCeti/Analysis/Matrix/Sqrt.lean",
+      "sha256": "39bf70c37920e16b0d1247f0dab06bf7825114fd40b08ea8b4b1465344f189cc",
+      "module": "TauCeti.Analysis.Matrix.Sqrt",
+      "submitted_path": "source/TauCeti/Analysis/Matrix/Sqrt.lean"
+    },
+    {
+      "bytes": 10201,
+      "git_blob_sha1": "1d709fea814b434aba8c86647190ef42ee017152",
+      "imports": [
+        "Mathlib.Analysis.Normed.Lp.PiLp"
+      ],
+      "path": "TauCeti/Analysis/Normed/Lp/PiLp.lean",
+      "sha256": "765bb3c045058a8e71bfbb904a2fbe385c0f9403d59f37617e834643720f3e02",
+      "module": "TauCeti.Analysis.Normed.Lp.PiLp",
+      "submitted_path": "source/TauCeti/Analysis/Normed/Lp/PiLp.lean"
+    },
+    {
+      "bytes": 11010,
+      "git_blob_sha1": "5b90aceb13ea2de48c6034ebb40326bc05541677",
+      "imports": [
+        "Mathlib.Analysis.Normed.Group.AddTorsor",
+        "Mathlib.Analysis.Normed.Group.BallSphere",
+        "Mathlib.Analysis.Normed.Module.Basic",
+        "Mathlib.Analysis.Normed.Module.Ball.Pointwise",
+        "Mathlib.LinearAlgebra.Span.Defs",
+        "TauCeti.Analysis.Normed.Module.RCLike.Real",
+        "Mathlib.Tactic.Module"
+      ],
+      "path": "TauCeti/Analysis/Normed/Module/Ball.lean",
+      "sha256": "a568f8d7127b14d80e98a4620fb91baa30b40c535479e8ec15a59f386a3ece87",
+      "module": "TauCeti.Analysis.Normed.Module.Ball",
+      "submitted_path": "source/TauCeti/Analysis/Normed/Module/Ball.lean"
+    },
+    {
+      "bytes": 1883,
+      "git_blob_sha1": "b6b584f38138080ac496d1778adfc7ca178ad673",
+      "imports": [
+        "Mathlib.Analysis.Normed.Module.RCLike.Real",
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.NormNum"
+      ],
+      "path": "TauCeti/Analysis/Normed/Module/RCLike/Real.lean",
+      "sha256": "af93da289b296f6cc9dff036f8dd6da1d1af472ab2d4933770bd3e3ece543329",
+      "module": "TauCeti.Analysis.Normed.Module.RCLike.Real",
+      "submitted_path": "source/TauCeti/Analysis/Normed/Module/RCLike/Real.lean"
+    },
+    {
+      "bytes": 9493,
+      "git_blob_sha1": "9c4e6dd5940c804919d13a8c21fe2971334e17bc",
+      "imports": [
+        "Mathlib.Analysis.Normed.Module.RCLike.Basic",
+        "Mathlib.Analysis.Normed.Operator.Basic"
+      ],
+      "path": "TauCeti/Analysis/Normed/Operator/Basic.lean",
+      "sha256": "d7605232c56e917f675041b54c02097857dfa9c6bb061b88ddf2ba28835f34ac",
+      "module": "TauCeti.Analysis.Normed.Operator.Basic",
+      "submitted_path": "source/TauCeti/Analysis/Normed/Operator/Basic.lean"
+    },
+    {
+      "bytes": 16939,
+      "git_blob_sha1": "a9a3ec92f2b9b5bb24994396b65ab43180e4a828",
+      "imports": [
+        "TauCeti.Analysis.InnerProductSpace.Harmonic.Isometry",
+        "TauCeti.Analysis.InnerProductSpace.Euclidean.Space",
+        "TauCeti.Analysis.InnerProductSpace.NormPow",
+        "Mathlib.MeasureTheory.Measure.Lebesgue.VolumeOfBalls",
+        "TauCeti.Analysis.SpecialFunctions.Pow.Real"
+      ],
+      "path": "TauCeti/Analysis/PDE/FundamentalSolution/Euclidean/Basic.lean",
+      "sha256": "b85ae32b713f1039ab72a8e8d767ec7a85286cf08181fb7a4c5c495c62802fa0",
+      "module": "TauCeti.Analysis.PDE.FundamentalSolution.Euclidean.Basic",
+      "submitted_path": "source/TauCeti/Analysis/PDE/FundamentalSolution/Euclidean/Basic.lean"
+    },
+    {
+      "bytes": 27682,
+      "git_blob_sha1": "e5ec6b29ccdd774524a42f49effc624eea0d5fa6",
+      "imports": [
+        "TauCeti.Analysis.PDE.FundamentalSolution.Euclidean.Basic",
+        "TauCeti.Analysis.InnerProductSpace.Harmonic.Dilation",
+        "Mathlib.MeasureTheory.Constructions.HaarToSphere",
+        "TauCeti.Analysis.InnerProductSpace.CompleteSquare",
+        "TauCeti.Analysis.SpecialFunctions.Pow.Real"
+      ],
+      "path": "TauCeti/Analysis/PDE/GreenFunction/Ball.lean",
+      "sha256": "240a08623c3b3268bc5ba9a1040714011152683789b7168054e199822d523459",
+      "module": "TauCeti.Analysis.PDE.GreenFunction.Ball",
+      "submitted_path": "source/TauCeti/Analysis/PDE/GreenFunction/Ball.lean"
+    },
+    {
+      "bytes": 7628,
+      "git_blob_sha1": "f50497bd22efedb4fcd75d99f064f84925204077",
+      "imports": [
+        "TauCeti.Analysis.PDE.GreenFunction.Ball"
+      ],
+      "path": "TauCeti/Analysis/PDE/GreenFunction/BoundaryConcentration.lean",
+      "sha256": "1b04e40bc9f47c34e3b738f7f12facd29d06cc16b3d9f48ec0b494976a3f9594",
+      "module": "TauCeti.Analysis.PDE.GreenFunction.BoundaryConcentration",
+      "submitted_path": "source/TauCeti/Analysis/PDE/GreenFunction/BoundaryConcentration.lean"
+    },
+    {
+      "bytes": 25147,
+      "git_blob_sha1": "82d000f159d034ac8f7edb77d4d1097523e2b1d4",
+      "imports": [
+        "TauCeti.Analysis.PDE.GreenFunction.BoundaryConcentration",
+        "TauCeti.Analysis.InnerProductSpace.Harmonic.Ball",
+        "TauCeti.Analysis.InnerProductSpace.Harmonic.Isometry",
+        "TauCeti.Analysis.InnerProductSpace.Harmonic.MeanValue.Basic",
+        "TauCeti.Analysis.InnerProductSpace.Laplacian.Comparison",
+        "TauCeti.Analysis.InnerProductSpace.Laplacian.ParametricIntegral"
+      ],
+      "path": "TauCeti/Analysis/PDE/PoissonIntegral/Ball.lean",
+      "sha256": "02ce97bab3bab5586e4bc29a386977bc793b726b992615042d057b630d364441",
+      "module": "TauCeti.Analysis.PDE.PoissonIntegral.Ball",
+      "submitted_path": "source/TauCeti/Analysis/PDE/PoissonIntegral/Ball.lean"
+    },
+    {
+      "bytes": 52315,
+      "git_blob_sha1": "40379660a4050f1a4f5216e38151cbcdcae57a4f",
+      "imports": [
+        "Mathlib.Analysis.Distribution.TestFunction",
+        "Mathlib.Analysis.Calculus.LineDeriv.IntegrationByParts",
+        "Mathlib.Analysis.Distribution.AEEqOfIntegralContDiff",
+        "TauCeti.Analysis.Calculus.LineDeriv.Basic",
+        "Mathlib.Analysis.Calculus.Gradient.Basic",
+        "Mathlib.LinearAlgebra.Basis.Defs"
+      ],
+      "path": "TauCeti/Analysis/Sobolev/WeakDeriv/Basic.lean",
+      "sha256": "6473b902418f104ac3a9fad1743d36546a34daedfb56ec86d1762d0923fd0075",
+      "module": "TauCeti.Analysis.Sobolev.WeakDeriv.Basic",
+      "submitted_path": "source/TauCeti/Analysis/Sobolev/WeakDeriv/Basic.lean"
+    },
+    {
+      "bytes": 14891,
+      "git_blob_sha1": "56e40dee61b7f1d4e12f20ca66cd435b3f966607",
+      "imports": [
+        "TauCeti.Analysis.Sobolev.WeakDeriv.Basic",
+        "Mathlib.Analysis.InnerProductSpace.Harmonic.Basic",
+        "TauCeti.Analysis.Distribution.TestFunction.LineDeriv",
+        "TauCeti.Analysis.Calculus.SecondDerivative",
+        "TauCeti.Analysis.InnerProductSpace.Laplacian.Basic"
+      ],
+      "path": "TauCeti/Analysis/Sobolev/WeakDeriv/Laplacian.lean",
+      "sha256": "a774c002059e9a3b68ad9b8a7896f1fdc6c50060f1068e99a0faee31726c9e19",
+      "module": "TauCeti.Analysis.Sobolev.WeakDeriv.Laplacian",
+      "submitted_path": "source/TauCeti/Analysis/Sobolev/WeakDeriv/Laplacian.lean"
+    },
+    {
+      "bytes": 16679,
+      "git_blob_sha1": "573ebe8b0c53bac691d1690531d482b912ac45e0",
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral",
+        "Mathlib.MeasureTheory.Integral.IntegralEqImproper"
+      ],
+      "path": "TauCeti/Analysis/SpecialFunctions/Erf.lean",
+      "sha256": "f0ed0ac452d92bb95362e1a77f4c2d6a2f24dd5c1c2f35ed1d95443d831ed91f",
+      "module": "TauCeti.Analysis.SpecialFunctions.Erf",
+      "submitted_path": "source/TauCeti/Analysis/SpecialFunctions/Erf.lean"
+    },
+    {
+      "bytes": 10588,
+      "git_blob_sha1": "75a98fa291b5fd25cdedb5797b4df56d5d7272b8",
+      "imports": [
+        "Mathlib.Analysis.Asymptotics.AsymptoticEquivalent",
+        "Mathlib.Analysis.SpecialFunctions.Gamma.Beta",
+        "Mathlib.MeasureTheory.Constructions.BorelSpace.Basic",
+        "Mathlib.RingTheory.Polynomial.Pochhammer",
+        "Mathlib.Analysis.Asymptotics.Lemmas",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics"
+      ],
+      "path": "TauCeti/Analysis/SpecialFunctions/Gamma.lean",
+      "sha256": "dcaf99abe775bcc29acf45c05ef154baa770eadfc9b4b6285bdb4b34887b01a8",
+      "module": "TauCeti.Analysis.SpecialFunctions.Gamma",
+      "submitted_path": "source/TauCeti/Analysis/SpecialFunctions/Gamma.lean"
+    },
+    {
+      "bytes": 26434,
+      "git_blob_sha1": "10551b0e2bae2ac2fcf0ce8e4913b28d17023287",
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Gamma.Basic",
+        "TauCeti.Analysis.SpecialFunctions.Erf",
+        "TauCeti.Analysis.SpecialFunctions.Gamma"
+      ],
+      "path": "TauCeti/Analysis/SpecialFunctions/IncompleteGamma.lean",
+      "sha256": "8896a9555f92a58b32f9b79682d6e9d10fdd5cf87a667cd8904108fca3af0ea1",
+      "module": "TauCeti.Analysis.SpecialFunctions.IncompleteGamma",
+      "submitted_path": "source/TauCeti/Analysis/SpecialFunctions/IncompleteGamma.lean"
+    },
+    {
+      "bytes": 3584,
+      "git_blob_sha1": "9fb4173989a73965b4dafe45a7262492e513474f",
+      "imports": [
+        "Mathlib.Analysis.Calculus.IteratedDeriv.Defs",
+        "Mathlib.Analysis.SpecialFunctions.Log.Deriv"
+      ],
+      "path": "TauCeti/Analysis/SpecialFunctions/Log/SumLogOneSub.lean",
+      "sha256": "6b6b87edca0ad0880664c05e5da01cdf290c72ead756288d3aa4a245f549c39a",
+      "module": "TauCeti.Analysis.SpecialFunctions.Log.SumLogOneSub",
+      "submitted_path": "source/TauCeti/Analysis/SpecialFunctions/Log/SumLogOneSub.lean"
+    },
+    {
+      "bytes": 7195,
+      "git_blob_sha1": "111da803e3ecc9a2804c447344c23296ae5af83f",
+      "imports": [
+        "TauCeti.Analysis.SpecialFunctions.Gamma"
+      ],
+      "path": "TauCeti/Analysis/SpecialFunctions/MultivariateGamma/Basic.lean",
+      "sha256": "4a1f97e06ba5d7a252932ddec9143ff94a7a95b50a75c65a2861ba41a00746db",
+      "module": "TauCeti.Analysis.SpecialFunctions.MultivariateGamma.Basic",
+      "submitted_path": "source/TauCeti/Analysis/SpecialFunctions/MultivariateGamma/Basic.lean"
+    },
+    {
+      "bytes": 9989,
+      "git_blob_sha1": "812eb115eae15c8bd5369c78be2bd7b254bcea91",
+      "imports": [
+        "TauCeti.Analysis.SpecialFunctions.MultivariateGamma.Basic",
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Cholesky",
+        "Mathlib.MeasureTheory.Integral.Pi",
+        "Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral",
+        "Mathlib.MeasureTheory.Integral.Gamma"
+      ],
+      "path": "TauCeti/Analysis/SpecialFunctions/MultivariateGamma/Cholesky.lean",
+      "sha256": "1827df8f522525ee0203179de815a1daaf0d6cee8973555060ccce13930aaad1",
+      "module": "TauCeti.Analysis.SpecialFunctions.MultivariateGamma.Cholesky",
+      "submitted_path": "source/TauCeti/Analysis/SpecialFunctions/MultivariateGamma/Cholesky.lean"
+    },
+    {
+      "bytes": 20638,
+      "git_blob_sha1": "b7ed110146f67d26038eeb6919aa95ee7f12070f",
+      "imports": [
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Lebesgue",
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.PosDef",
+        "Mathlib.Analysis.Matrix.PosDef",
+        "Mathlib.MeasureTheory.Function.SpecialFunctions.Basic",
+        "Mathlib.MeasureTheory.Integral.IntegrableOn",
+        "Mathlib.Algebra.Order.Star.Real",
+        "Mathlib.Analysis.PSeries",
+        "Mathlib.Topology.Instances.Matrix"
+      ],
+      "path": "TauCeti/Analysis/SpecialFunctions/MultivariateGamma/Divergence.lean",
+      "sha256": "368b810522972ca7aebb7e7a7459cd5f48544f6bd1a97335de102b8bbda9bc29",
+      "module": "TauCeti.Analysis.SpecialFunctions.MultivariateGamma.Divergence",
+      "submitted_path": "source/TauCeti/Analysis/SpecialFunctions/MultivariateGamma/Divergence.lean"
+    },
+    {
+      "bytes": 23704,
+      "git_blob_sha1": "fbf25397225d06e3eb6668dcc9759f7e7b1c8bd4",
+      "imports": [
+        "TauCeti.Analysis.Matrix.Sqrt",
+        "TauCeti.Analysis.SpecialFunctions.MultivariateGamma.Cholesky",
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Cholesky",
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Congruence",
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.PosDef"
+      ],
+      "path": "TauCeti/Analysis/SpecialFunctions/MultivariateGamma/Integral.lean",
+      "sha256": "17d06bab61de69e2df68ed25e1eb62f07a9604bed77693fce062e5c6bbf5e5c0",
+      "module": "TauCeti.Analysis.SpecialFunctions.MultivariateGamma.Integral",
+      "submitted_path": "source/TauCeti/Analysis/SpecialFunctions/MultivariateGamma/Integral.lean"
+    },
+    {
+      "bytes": 9674,
+      "git_blob_sha1": "db2859b98fb74071d01a653aff583496b7a7117f",
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics"
+      ],
+      "path": "TauCeti/Analysis/SpecialFunctions/Pow/Real.lean",
+      "sha256": "cf4e50c4a88ff8dd848d4fcee9a725a9cae57e68c4ab14133df10a302d516f01",
+      "module": "TauCeti.Analysis.SpecialFunctions.Pow.Real",
+      "submitted_path": "source/TauCeti/Analysis/SpecialFunctions/Pow/Real.lean"
+    },
+    {
+      "bytes": 2737,
+      "git_blob_sha1": "0d8cfbc4878af924f02d3beb0310d44900a3cf33",
+      "imports": [
+        "Mathlib.Basic.Real.Basic",
+        "Mathlib.Algebra.Order.Archimedean.Real.Basic",
+        "Mathlib.Tactic.Linarith"
+      ],
+      "path": "TauCeti/Analysis/SpecificLimits/SqLeMulDoubling.lean",
+      "sha256": "dbcce654714fa018c6e182ed1a381eb0784bf546349ed282ee91beb18f01720c",
+      "module": "TauCeti.Analysis.SpecificLimits.SqLeMulDoubling",
+      "submitted_path": "source/TauCeti/Analysis/SpecificLimits/SqLeMulDoubling.lean"
+    },
+    {
+      "bytes": 5978,
+      "git_blob_sha1": "b13afe0a67c8a7e02ae03608ad8e52d3346aaadb",
+      "imports": [
+        "Mathlib.Combinatorics.Enumerative.Partition.Basic"
+      ],
+      "path": "TauCeti/Combinatorics/Enumerative/Partition/Basic.lean",
+      "sha256": "5682174af161536cd16631ea367e7e3577af43a8e0146f24af51b8751707f038",
+      "module": "TauCeti.Combinatorics.Enumerative.Partition.Basic",
+      "submitted_path": "source/TauCeti/Combinatorics/Enumerative/Partition/Basic.lean"
+    },
+    {
+      "bytes": 11822,
+      "git_blob_sha1": "c77c309d026942de9f045e8fe2022a81f2fb588e",
+      "imports": [
+        "TauCeti.Combinatorics.Enumerative.Partition.Dominance",
+        "TauCeti.Combinatorics.Young.Partitions"
+      ],
+      "path": "TauCeti/Combinatorics/Enumerative/Partition/Conjugate.lean",
+      "sha256": "65200230d99d780851b4f5fd3ceba38a9596e7dea9c71de826565ed5f56ef486",
+      "module": "TauCeti.Combinatorics.Enumerative.Partition.Conjugate",
+      "submitted_path": "source/TauCeti/Combinatorics/Enumerative/Partition/Conjugate.lean"
+    },
+    {
+      "bytes": 8626,
+      "git_blob_sha1": "da61816d2c9176fa709b14806520d4c16825e8d8",
+      "imports": [
+        "Mathlib.Combinatorics.Enumerative.Partition.Basic",
+        "TauCeti.Combinatorics.Enumerative.Partition.Basic",
+        "TauCeti.Data.List.Lex"
+      ],
+      "path": "TauCeti/Combinatorics/Enumerative/Partition/Dominance.lean",
+      "sha256": "61e3f1099909394d7084f5a4a59886230aedba13fcbf4b0d3b9978512383d199",
+      "module": "TauCeti.Combinatorics.Enumerative.Partition.Dominance",
+      "submitted_path": "source/TauCeti/Combinatorics/Enumerative/Partition/Dominance.lean"
+    },
+    {
+      "bytes": 37780,
+      "git_blob_sha1": "5b242e28aedd24cb647e52207936142fad1ade08",
+      "imports": [
+        "TauCeti.Combinatorics.Young.Diagram",
+        "TauCeti.Combinatorics.Young.Kostka"
+      ],
+      "path": "TauCeti/Combinatorics/Young/BenderKnuth.lean",
+      "sha256": "deb488bde28190715886a89311ccf5df8f7a36f28ab3133e26d1b23104f906f6",
+      "module": "TauCeti.Combinatorics.Young.BenderKnuth",
+      "submitted_path": "source/TauCeti/Combinatorics/Young/BenderKnuth.lean"
+    },
+    {
+      "bytes": 21414,
+      "git_blob_sha1": "638a8dbba808a9ef0ba1c83b2128500a44e4479a",
+      "imports": [
+        "Mathlib.Algebra.BigOperators.Group.Finset.Basic",
+        "Mathlib.Algebra.BigOperators.Group.Finset.Sigma",
+        "Mathlib.Algebra.Order.BigOperators.Group.Finset",
+        "Mathlib.Combinatorics.Young.YoungDiagram",
+        "Mathlib.Data.Finset.Powerset",
+        "Mathlib.Data.List.GetD",
+        "Mathlib.Data.Multiset.Sort"
+      ],
+      "path": "TauCeti/Combinatorics/Young/Diagram.lean",
+      "sha256": "9b39863c01abc682ed15b5cbf89ab1c57c6c17715252d9b1edb442d90f8b7f29",
+      "module": "TauCeti.Combinatorics.Young.Diagram",
+      "submitted_path": "source/TauCeti/Combinatorics/Young/Diagram.lean"
+    },
+    {
+      "bytes": 18351,
+      "git_blob_sha1": "3e44778d4ff93fd57331a93734d18a61a6a4b7d0",
+      "imports": [
+        "Mathlib.Combinatorics.Young.SemistandardTableau",
+        "Mathlib.Data.Finsupp.Multiset",
+        "Mathlib.SetTheory.Cardinal.Finite",
+        "TauCeti.Combinatorics.Enumerative.Partition.Conjugate",
+        "TauCeti.Combinatorics.Young.SemistandardTableau"
+      ],
+      "path": "TauCeti/Combinatorics/Young/Kostka.lean",
+      "sha256": "8d9b312861d842acb86b7dce4677ed1f7dab12e7d77b651b320efdcb433f056d",
+      "module": "TauCeti.Combinatorics.Young.Kostka",
+      "submitted_path": "source/TauCeti/Combinatorics/Young/Kostka.lean"
+    },
+    {
+      "bytes": 6768,
+      "git_blob_sha1": "69739978a65c8a5afce9017e12de251d31efebea",
+      "imports": [
+        "Mathlib.Combinatorics.Enumerative.Partition.YoungDiagram",
+        "TauCeti.Combinatorics.Enumerative.Partition.Basic",
+        "TauCeti.Combinatorics.Young.Diagram"
+      ],
+      "path": "TauCeti/Combinatorics/Young/Partitions.lean",
+      "sha256": "141332f14bd6e94ec4b72852dff51e97e199998594d6f99a994a4cd51dbf2c32",
+      "module": "TauCeti.Combinatorics.Young.Partitions",
+      "submitted_path": "source/TauCeti/Combinatorics/Young/Partitions.lean"
+    },
+    {
+      "bytes": 2034,
+      "git_blob_sha1": "eddbfe34d4db00ea066acf110ebb38a2d2f21fe1",
+      "imports": [
+        "Mathlib.Combinatorics.Young.SemistandardTableau"
+      ],
+      "path": "TauCeti/Combinatorics/Young/SemistandardTableau.lean",
+      "sha256": "7a5ad760cbb2ec67fa509017c333889d983d5d45c18b0a23debfcdaede5ba6be",
+      "module": "TauCeti.Combinatorics.Young.SemistandardTableau",
+      "submitted_path": "source/TauCeti/Combinatorics/Young/SemistandardTableau.lean"
+    },
+    {
+      "bytes": 1758,
+      "git_blob_sha1": "b91fa9c6daba74654ec8713460f97e4dc2d9c10f",
+      "imports": [
+        "Mathlib.Data.Fin.Tuple.Sort",
+        "Mathlib.Data.Fintype.Fin"
+      ],
+      "path": "TauCeti/Data/Fin/Tuple/Sort.lean",
+      "sha256": "3445e4f75c62855eb9f4d5330e83dc3a586b92430bd39718a808d9b53dfbe18e",
+      "module": "TauCeti.Data.Fin.Tuple.Sort",
+      "submitted_path": "source/TauCeti/Data/Fin/Tuple/Sort.lean"
+    },
+    {
+      "bytes": 1559,
+      "git_blob_sha1": "aea78c54c49c95443c29b010f01ac64a20b77471",
+      "imports": [
+        "Mathlib.Data.List.Lex"
+      ],
+      "path": "TauCeti/Data/List/Lex.lean",
+      "sha256": "29c3241ab71eeb900c2d4d10610a1d6a13367ff6fa05f08bfcc5980690124c9d",
+      "module": "TauCeti.Data.List.Lex",
+      "submitted_path": "source/TauCeti/Data/List/Lex.lean"
+    },
+    {
+      "bytes": 7248,
+      "git_blob_sha1": "45c64b259b9964e8c4f64a80f2858a3df589aee5",
+      "imports": [
+        "Mathlib.LinearAlgebra.Dimension.LinearMap",
+        "Mathlib.LinearAlgebra.FiniteDimensional.Lemmas",
+        "Mathlib.LinearAlgebra.Dimension.Constructions",
+        "TauCeti.Algebra.Module.Equiv.Basic"
+      ],
+      "path": "TauCeti/LinearAlgebra/Dimension/Submodule.lean",
+      "sha256": "2765bd0fd51cbe14a82f4564a1ef4da84d5186a58f9ed07996ddec9128f5a8e4",
+      "module": "TauCeti.LinearAlgebra.Dimension.Submodule",
+      "submitted_path": "source/TauCeti/LinearAlgebra/Dimension/Submodule.lean"
+    },
+    {
+      "bytes": 7072,
+      "git_blob_sha1": "c46c77c9a16250da1b8cdaaff4f82d65f3e46bbe",
+      "imports": [
+        "Mathlib.LinearAlgebra.Dimension.Finrank",
+        "Mathlib.LinearAlgebra.Eigenspace.Basic"
+      ],
+      "path": "TauCeti/LinearAlgebra/Eigenspace/Anticommute.lean",
+      "sha256": "259cbca1b8cb2c45e4c5ef5c10551d0981ed2bd578d45ee8c2111a34a0ac7897",
+      "module": "TauCeti.LinearAlgebra.Eigenspace.Anticommute",
+      "submitted_path": "source/TauCeti/LinearAlgebra/Eigenspace/Anticommute.lean"
+    },
+    {
+      "bytes": 14308,
+      "git_blob_sha1": "eeaa5a3b581366818171ddd915444e7fda6dd5ab",
+      "imports": [
+        "Mathlib.Algebra.Group.Subgroup.Ker",
+        "Mathlib.Data.Matrix.Basic",
+        "Mathlib.Data.Matrix.Basis",
+        "Mathlib.Algebra.CharP.Defs",
+        "Mathlib.LinearAlgebra.Matrix.Trace",
+        "Mathlib.SetTheory.Cardinal.Finite",
+        "TauCeti.Algebra.Ring.Invertible"
+      ],
+      "path": "TauCeti/LinearAlgebra/Matrix/Alternating.lean",
+      "sha256": "fbd955a91a5c358a08758d2b1a41127c21df78f44367a22a2661e37d1a5de1a0",
+      "module": "TauCeti.LinearAlgebra.Matrix.Alternating",
+      "submitted_path": "source/TauCeti/LinearAlgebra/Matrix/Alternating.lean"
+    },
+    {
+      "bytes": 7713,
+      "git_blob_sha1": "5fa1969e04a7e8231e450d87777202cebfe4c4c2",
+      "imports": [
+        "Mathlib.LinearAlgebra.Matrix.Determinant.Basic",
+        "Mathlib.LinearAlgebra.Matrix.Trace"
+      ],
+      "path": "TauCeti/LinearAlgebra/Matrix/BlockSucc.lean",
+      "sha256": "09937a19d89f9db646c58da6196c1d56e993ccc2212a5e4ef15015797f2ec0a8",
+      "module": "TauCeti.LinearAlgebra.Matrix.BlockSucc",
+      "submitted_path": "source/TauCeti/LinearAlgebra/Matrix/BlockSucc.lean"
+    },
+    {
+      "bytes": 8605,
+      "git_blob_sha1": "3e021aacc2e288dcdacbbfb2fa7e408dc8a80419",
+      "imports": [
+        "Mathlib.Analysis.Matrix.LDL",
+        "Mathlib.LinearAlgebra.Matrix.GeneralLinearGroup.Defs",
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.PosDef",
+        "Mathlib.Algebra.Order.Star.Real",
+        "Mathlib.LinearAlgebra.Matrix.Swap",
+        "TauCeti.Analysis.Matrix.LDL"
+      ],
+      "path": "TauCeti/LinearAlgebra/Matrix/Cholesky/Basic.lean",
+      "sha256": "5a515623e1a725af36e261bbad8b0292d2b39770272940302b97e083a543724f",
+      "module": "TauCeti.LinearAlgebra.Matrix.Cholesky.Basic",
+      "submitted_path": "source/TauCeti/LinearAlgebra/Matrix/Cholesky/Basic.lean"
+    },
+    {
+      "bytes": 12573,
+      "git_blob_sha1": "f45256fb234fd2109f2d3cb971be97e187ca08c7",
+      "imports": [
+        "TauCeti.LinearAlgebra.Matrix.Cholesky.Basic",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+        "Mathlib.Analysis.SpecialFunctions.Pow.NNReal",
+        "Mathlib.Topology.Algebra.Module.FiniteDimension"
+      ],
+      "path": "TauCeti/LinearAlgebra/Matrix/Cholesky/Coordinates.lean",
+      "sha256": "94418f892899391976d0639b2abcadfb187febd58d5a741a83af93fd45dbfdc4",
+      "module": "TauCeti.LinearAlgebra.Matrix.Cholesky.Coordinates",
+      "submitted_path": "source/TauCeti/LinearAlgebra/Matrix/Cholesky/Coordinates.lean"
+    },
+    {
+      "bytes": 2768,
+      "git_blob_sha1": "19228bc3fce0a6bc144aefaf9725d85b5867a842",
+      "imports": [
+        "TauCeti.LinearAlgebra.Matrix.Cholesky.Basic",
+        "TauCeti.LinearAlgebra.Matrix.Triangular"
+      ],
+      "path": "TauCeti/LinearAlgebra/Matrix/Cholesky/Equiv.lean",
+      "sha256": "62344919779f30bdbe87d9bab5dc50aa4d2fa7934abe4c6d0ba293a6efb578e7",
+      "module": "TauCeti.LinearAlgebra.Matrix.Cholesky.Equiv",
+      "submitted_path": "source/TauCeti/LinearAlgebra/Matrix/Cholesky/Equiv.lean"
+    },
+    {
+      "bytes": 15724,
+      "git_blob_sha1": "c373f6a369b5d8be37ceda771b01cf30e3febc34",
+      "imports": [
+        "TauCeti.LinearAlgebra.Matrix.Cholesky.Coordinates",
+        "Mathlib.Analysis.Calculus.FDeriv.Mul",
+        "Mathlib.Analysis.Calculus.FDeriv.Prod",
+        "Mathlib.Topology.Algebra.Module.FiniteDimension",
+        "TauCeti.LinearAlgebra.Matrix.Triangular",
+        "Mathlib.Order.Prod.Lex.Basic",
+        "Mathlib.LinearAlgebra.Determinant",
+        "Mathlib.LinearAlgebra.Matrix.Block",
+        "Mathlib.Order.Interval.Finset.Fin"
+      ],
+      "path": "TauCeti/LinearAlgebra/Matrix/Cholesky/Jacobian.lean",
+      "sha256": "cb79697644f7bc77bfa7298a3d84129e3ddbdb167144a9094300c33d69998206",
+      "module": "TauCeti.LinearAlgebra.Matrix.Cholesky.Jacobian",
+      "submitted_path": "source/TauCeti/LinearAlgebra/Matrix/Cholesky/Jacobian.lean"
+    },
+    {
+      "bytes": 8481,
+      "git_blob_sha1": "692d10c95a657e5317d61d48649b4b932d4511f3",
+      "imports": [
+        "TauCeti.LinearAlgebra.Matrix.Cholesky.Equiv",
+        "Mathlib.Topology.Maps.Proper.CompactlyGenerated"
+      ],
+      "path": "TauCeti/LinearAlgebra/Matrix/Cholesky/Topology.lean",
+      "sha256": "8e4fc1ab3e8c0cd31d856caa62d25417d2cbfde048586d204c349ef3e24122fb",
+      "module": "TauCeti.LinearAlgebra.Matrix.Cholesky.Topology",
+      "submitted_path": "source/TauCeti/LinearAlgebra/Matrix/Cholesky/Topology.lean"
+    },
+    {
+      "bytes": 8055,
+      "git_blob_sha1": "ccddb38cbfdd6d89ecb3855da633798e548518b8",
+      "imports": [
+        "Mathlib.LinearAlgebra.Matrix.Determinant.Basic",
+        "Mathlib.LinearAlgebra.Matrix.Trace",
+        "Mathlib.LinearAlgebra.Matrix.SchurComplement"
+      ],
+      "path": "TauCeti/LinearAlgebra/Matrix/Congruence.lean",
+      "sha256": "40a229a626aeaa4360883994e7ca570f80dbcccd48ca81c0b5b103b4d108ff08",
+      "module": "TauCeti.LinearAlgebra.Matrix.Congruence",
+      "submitted_path": "source/TauCeti/LinearAlgebra/Matrix/Congruence.lean"
+    },
+    {
+      "bytes": 4091,
+      "git_blob_sha1": "f3103b6db1711bb7e21b65fad281c1c3e28acbfb",
+      "imports": [
+        "Mathlib.LinearAlgebra.Matrix.GeneralLinearGroup.Defs",
+        "Mathlib.LinearAlgebra.UnitaryGroup"
+      ],
+      "path": "TauCeti/LinearAlgebra/Matrix/GeneralLinearGroup/SpecialUnitary.lean",
+      "sha256": "03e48da59577c14008562b9bfeae17a48d4d224f8c5b1eb0055bafde0c18169a",
+      "module": "TauCeti.LinearAlgebra.Matrix.GeneralLinearGroup.SpecialUnitary",
+      "submitted_path": "source/TauCeti/LinearAlgebra/Matrix/GeneralLinearGroup/SpecialUnitary.lean"
+    },
+    {
+      "bytes": 3204,
+      "git_blob_sha1": "373967fd91713de25b7ff9f2fbdfb08a6ec2572d",
+      "imports": [
+        "Mathlib.LinearAlgebra.Matrix.SchurComplement"
+      ],
+      "path": "TauCeti/LinearAlgebra/Matrix/InvSub.lean",
+      "sha256": "64cb1bbdd7f9d006c7237bb2093f10bb5a48337d0c87d628c5d2926e59a5593c",
+      "module": "TauCeti.LinearAlgebra.Matrix.InvSub",
+      "submitted_path": "source/TauCeti/LinearAlgebra/Matrix/InvSub.lean"
+    },
+    {
+      "bytes": 5363,
+      "git_blob_sha1": "c152100333cb75aa0bba35e915f2d0f8227cd499",
+      "imports": [
+        "Mathlib.Algebra.MvPolynomial.Degrees",
+        "Mathlib.LinearAlgebra.Matrix.Determinant.Basic",
+        "Mathlib.LinearAlgebra.Matrix.MvPolynomial",
+        "Mathlib.RingTheory.MvPowerSeries.NoZeroDivisors",
+        "Mathlib.Algebra.MvPolynomial.CommRing"
+      ],
+      "path": "TauCeti/LinearAlgebra/Matrix/MvPolynomial.lean",
+      "sha256": "be2dd7eba26a57f7a8221c5db5cc561603c17f083760fcc450679bf2e183bde5",
+      "module": "TauCeti.LinearAlgebra.Matrix.MvPolynomial",
+      "submitted_path": "source/TauCeti/LinearAlgebra/Matrix/MvPolynomial.lean"
+    },
+    {
+      "bytes": 13168,
+      "git_blob_sha1": "9747a9eb71a6af6e1ad72c8678a889cdbf920db1",
+      "imports": [
+        "Mathlib.Analysis.Matrix.Order"
+      ],
+      "path": "TauCeti/LinearAlgebra/Matrix/PosSemidef.lean",
+      "sha256": "41ee8583b280d53363f887fb8b063cbe789fa51264ce8f17e5b90b259da4a991",
+      "module": "TauCeti.LinearAlgebra.Matrix.PosSemidef",
+      "submitted_path": "source/TauCeti/LinearAlgebra/Matrix/PosSemidef.lean"
+    },
+    {
+      "bytes": 11322,
+      "git_blob_sha1": "1e0a23eb5648af275831ea096bd2dc6e2b28f793",
+      "imports": [
+        "Mathlib.Algebra.MvPolynomial.Funext",
+        "Mathlib.Topology.Instances.Matrix",
+        "TauCeti.LinearAlgebra.Matrix.MvPolynomial",
+        "TauCeti.LinearAlgebra.Matrix.Rank",
+        "TauCeti.Topology.Algebra.MvPolynomial.ZeroLocus"
+      ],
+      "path": "TauCeti/LinearAlgebra/Matrix/Rank/Closed.lean",
+      "sha256": "be07f2bfcd13d0eaef3fb4455d1df414979b39406d3b86b03f18468da173d3aa",
+      "module": "TauCeti.LinearAlgebra.Matrix.Rank.Closed",
+      "submitted_path": "source/TauCeti/LinearAlgebra/Matrix/Rank/Closed.lean"
+    },
+    {
+      "bytes": 22238,
+      "git_blob_sha1": "e94326541e549805804c9a1bc3210592c999f5ac",
+      "imports": [
+        "Mathlib.GroupTheory.GroupAction.ConjAct",
+        "Mathlib.LinearAlgebra.Matrix.GeneralLinearGroup.Defs",
+        "Mathlib.LinearAlgebra.Matrix.Hermitian",
+        "Mathlib.LinearAlgebra.Matrix.Rank",
+        "Mathlib.Data.Matrix.ColumnRowPartitioned",
+        "Mathlib.FieldTheory.Finiteness",
+        "Mathlib.LinearAlgebra.LinearIndependent.BaseChange"
+      ],
+      "path": "TauCeti/LinearAlgebra/Matrix/Rank.lean",
+      "sha256": "1c1f61c652af88d7a7cfbaf3ce79bf7fbf343449abb8320a8e7277b99814e804",
+      "module": "TauCeti.LinearAlgebra.Matrix.Rank",
+      "submitted_path": "source/TauCeti/LinearAlgebra/Matrix/Rank.lean"
+    },
+    {
+      "bytes": 1315,
+      "git_blob_sha1": "7938d2ce8f4571589a034161ae7d984e58d545cb",
+      "imports": [
+        "Mathlib.LinearAlgebra.Matrix.Trace",
+        "Mathlib.Tactic.Ring"
+      ],
+      "path": "TauCeti/LinearAlgebra/Matrix/Trace/Basic.lean",
+      "sha256": "0bf5a095ed0ea6d72a2ad5659fc942bf925409cfe3843355e77ab675aee7b8d0",
+      "module": "TauCeti.LinearAlgebra.Matrix.Trace.Basic",
+      "submitted_path": "source/TauCeti/LinearAlgebra/Matrix/Trace/Basic.lean"
+    },
+    {
+      "bytes": 23153,
+      "git_blob_sha1": "a1d2ab6370e745372ce9d00db0132ece1ea8472c",
+      "imports": [
+        "Mathlib.LinearAlgebra.Matrix.Block",
+        "Mathlib.RingTheory.Nilpotent.Defs",
+        "Mathlib.LinearAlgebra.Matrix.Reindex"
+      ],
+      "path": "TauCeti/LinearAlgebra/Matrix/Triangular.lean",
+      "sha256": "7931fc69ce1365a14354ca2809a34bfdd7555fbd6dba8906f8d7882182d85dcc",
+      "module": "TauCeti.LinearAlgebra.Matrix.Triangular",
+      "submitted_path": "source/TauCeti/LinearAlgebra/Matrix/Triangular.lean"
+    },
+    {
+      "bytes": 2192,
+      "git_blob_sha1": "79fe2422d62b50e2c6440288da0cf7df5e9838df",
+      "imports": [
+        "Mathlib.LinearAlgebra.Matrix.Adjugate",
+        "Mathlib.LinearAlgebra.UnitaryGroup"
+      ],
+      "path": "TauCeti/LinearAlgebra/UnitaryGroup.lean",
+      "sha256": "60157956b8fef9b89145cc6c90c64976b021e898897fab21cb160f1b34edc4cc",
+      "module": "TauCeti.LinearAlgebra.UnitaryGroup",
+      "submitted_path": "source/TauCeti/LinearAlgebra/UnitaryGroup.lean"
+    },
+    {
+      "bytes": 19542,
+      "git_blob_sha1": "8c6c7eb484d1cdcd5aff9414e7bc5a76ec92be68",
+      "imports": [
+        "Mathlib.MeasureTheory.Constructions.HaarToSphere",
+        "Mathlib.MeasureTheory.Integral.IntegralEqImproper",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Integral"
+      ],
+      "path": "TauCeti/MeasureTheory/Constructions/HaarToSphere.lean",
+      "sha256": "f28f7429aaad16cc9d66654a1633da0c7ef5b047d134676e90f95cdbdeace3c2",
+      "module": "TauCeti.MeasureTheory.Constructions.HaarToSphere",
+      "submitted_path": "source/TauCeti/MeasureTheory/Constructions/HaarToSphere.lean"
+    },
+    {
+      "bytes": 26195,
+      "git_blob_sha1": "34b92d170598efea1d9b3f1b9799a4da61faa172",
+      "imports": [
+        "Mathlib.MeasureTheory.Constructions.Pi",
+        "Mathlib.Probability.Independence.Basic"
+      ],
+      "path": "TauCeti/MeasureTheory/Constructions/Pi.lean",
+      "sha256": "3699b72165c925cc3283dd84534f7f245698dc87a3a17adec2f89fe5d9e971cd",
+      "module": "TauCeti.MeasureTheory.Constructions.Pi",
+      "submitted_path": "source/TauCeti/MeasureTheory/Constructions/Pi.lean"
+    },
+    {
+      "bytes": 3611,
+      "git_blob_sha1": "5810bfb668874a73445f31442f8c0c5a37a1957f",
+      "imports": [
+        "Mathlib.MeasureTheory.Function.L1Space.Integrable",
+        "Mathlib.MeasureTheory.Integral.Bochner.SumMeasure",
+        "Mathlib.Tactic.NormNum"
+      ],
+      "path": "TauCeti/MeasureTheory/Function/L1Space/Integrable.lean",
+      "sha256": "f3380b0b50ea96a88886dee66799951159a1160253521c5185f8260d1f9bd5f0",
+      "module": "TauCeti.MeasureTheory.Function.L1Space.Integrable",
+      "submitted_path": "source/TauCeti/MeasureTheory/Function/L1Space/Integrable.lean"
+    },
+    {
+      "bytes": 9655,
+      "git_blob_sha1": "8621c37d344d177738f487b6955b57fbea166be4",
+      "imports": [
+        "Mathlib.MeasureTheory.Function.LpSeminorm.Basic",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Continuity",
+        "Mathlib.MeasureTheory.Function.LpSeminorm.CompareExp"
+      ],
+      "path": "TauCeti/MeasureTheory/Function/Lp/LIntegralRpow.lean",
+      "sha256": "6954ce124fb51025e4afe01c0992d2afedfb83740ee5f2835471f09f6f9c4c77",
+      "module": "TauCeti.MeasureTheory.Function.Lp.LIntegralRpow",
+      "submitted_path": "source/TauCeti/MeasureTheory/Function/Lp/LIntegralRpow.lean"
+    },
+    {
+      "bytes": 2034,
+      "git_blob_sha1": "15f78bb974cdbc1740e952a59f3ac511fbf9f08f",
+      "imports": [
+        "Mathlib.MeasureTheory.Constructions.BorelSpace.Order"
+      ],
+      "path": "TauCeti/MeasureTheory/Function/Monotone.lean",
+      "sha256": "ff0e2af1d860ee4875179d9b4a3968c29213bda790b945c9635fc891655b4c4a",
+      "module": "TauCeti.MeasureTheory.Function.Monotone",
+      "submitted_path": "source/TauCeti/MeasureTheory/Function/Monotone.lean"
+    },
+    {
+      "bytes": 3692,
+      "git_blob_sha1": "dc86ae991065bb1ba6c0d09704967f7066d696e1",
+      "imports": [
+        "Mathlib.MeasureTheory.Group.Action",
+        "Mathlib.MeasureTheory.Group.Measure",
+        "Mathlib.MeasureTheory.Integral.Bochner.Set"
+      ],
+      "path": "TauCeti/MeasureTheory/Group/Integral.lean",
+      "sha256": "7fee9e43fefb509b720323108853aa1b9b7525f2fa8f545fa260156c9903b724",
+      "module": "TauCeti.MeasureTheory.Group.Integral",
+      "submitted_path": "source/TauCeti/MeasureTheory/Group/Integral.lean"
+    },
+    {
+      "bytes": 9954,
+      "git_blob_sha1": "0b9fddb0d45bc1ded96a1df49b30fa1d2718f129",
+      "imports": [
+        "Mathlib.MeasureTheory.Group.Measure",
+        "Mathlib.MeasureTheory.Measure.WithDensity",
+        "Mathlib.MeasureTheory.Integral.Lebesgue.Map"
+      ],
+      "path": "TauCeti/MeasureTheory/Group/Measure.lean",
+      "sha256": "c05c03ef7a44675161760f758a922d461b90baee8788b983c57cbbd8a1ac8f83",
+      "module": "TauCeti.MeasureTheory.Group.Measure",
+      "submitted_path": "source/TauCeti/MeasureTheory/Group/Measure.lean"
+    },
+    {
+      "bytes": 3028,
+      "git_blob_sha1": "e9c5021a8a9fe8f9846f5df9fbfe1288b27b93d4",
+      "imports": [
+        "Mathlib.Algebra.Group.EvenFunction",
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic",
+        "Mathlib.MeasureTheory.Group.Integral"
+      ],
+      "path": "TauCeti/MeasureTheory/Integral/OddSymmetric.lean",
+      "sha256": "09c76dffccb295759ae66c1365385ce8652713f18f905a5298a27dde04d25975",
+      "module": "TauCeti.MeasureTheory.Integral.OddSymmetric",
+      "submitted_path": "source/TauCeti/MeasureTheory/Integral/OddSymmetric.lean"
+    },
+    {
+      "bytes": 12374,
+      "git_blob_sha1": "ac180ecf15514cd1da983be5278dc4030761ef02",
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Exp",
+        "Mathlib.MeasureTheory.Integral.Pi",
+        "Mathlib.MeasureTheory.Integral.Prod",
+        "TauCeti.MeasureTheory.Constructions.Pi"
+      ],
+      "path": "TauCeti/MeasureTheory/Integral/Pi.lean",
+      "sha256": "8593daa1577a87266f95abc39926d241dedf0379016895af14238d4996952494",
+      "module": "TauCeti.MeasureTheory.Integral.Pi",
+      "submitted_path": "source/TauCeti/MeasureTheory/Integral/Pi.lean"
+    },
+    {
+      "bytes": 7613,
+      "git_blob_sha1": "0b309536985f6e77c409869c931f88fdead993e3",
+      "imports": [
+        "Mathlib.MeasureTheory.Integral.Average",
+        "Mathlib.MeasureTheory.Measure.OpenPos",
+        "Mathlib.Analysis.Normed.Module.RCLike.Real",
+        "Mathlib.MeasureTheory.Function.LocallyIntegrable"
+      ],
+      "path": "TauCeti/MeasureTheory/Integral/SubMeanValue.lean",
+      "sha256": "fa88acaaee32ad033c22f8f936b27ea0ad47d9101373c2b21f7dd483bfe27d1c",
+      "module": "TauCeti.MeasureTheory.Integral.SubMeanValue",
+      "submitted_path": "source/TauCeti/MeasureTheory/Integral/SubMeanValue.lean"
+    },
+    {
+      "bytes": 8052,
+      "git_blob_sha1": "de567cfd883e8622e251f98cc8e85c1b41b65f74",
+      "imports": [
+        "Mathlib.Dynamics.Ergodic.MeasurePreserving",
+        "Mathlib.MeasureTheory.Constructions.BorelSpace.Basic",
+        "Mathlib.MeasureTheory.Measure.Dirac.Basic",
+        "Mathlib.MeasureTheory.Measure.Support"
+      ],
+      "path": "TauCeti/MeasureTheory/Measure/Dirac.lean",
+      "sha256": "bc283f414fd07902f1dedf2318da238154f96e26ad4d0e022b32063c076f439c",
+      "module": "TauCeti.MeasureTheory.Measure.Dirac",
+      "submitted_path": "source/TauCeti/MeasureTheory/Measure/Dirac.lean"
+    },
+    {
+      "bytes": 2864,
+      "git_blob_sha1": "65939d59fe80c50c233659608e2acb267cc42e52",
+      "imports": [
+        "Mathlib.MeasureTheory.Measure.Haar.OfBasis",
+        "Mathlib.MeasureTheory.Measure.Lebesgue.EqHaar"
+      ],
+      "path": "TauCeti/MeasureTheory/Measure/Haar/OfBasis.lean",
+      "sha256": "9c15a4d4a0b226a9627ed55b34e67659b198e0485c17b4348178b6ce0dde0770",
+      "module": "TauCeti.MeasureTheory.Measure.Haar.OfBasis",
+      "submitted_path": "source/TauCeti/MeasureTheory/Measure/Haar/OfBasis.lean"
+    },
+    {
+      "bytes": 14576,
+      "git_blob_sha1": "84fe75545f9fcd947a35b3afd9c3c456147bf9de",
+      "imports": [
+        "Mathlib.MeasureTheory.Measure.ProbabilityMeasure",
+        "TauCeti.Topology.Semicontinuity.Approximation"
+      ],
+      "path": "TauCeti/MeasureTheory/Measure/LowerSemicontinuousLintegral.lean",
+      "sha256": "c6a9a4aeea3640ee353ccc449ced7c274af9f2532daae2b4200c7234cf5dc832",
+      "module": "TauCeti.MeasureTheory.Measure.LowerSemicontinuousLintegral",
+      "submitted_path": "source/TauCeti/MeasureTheory/Measure/LowerSemicontinuousLintegral.lean"
+    },
+    {
+      "bytes": 5433,
+      "git_blob_sha1": "03ff33d0b15e5fddce590564d64b8642100d2a51",
+      "imports": [
+        "Mathlib.MeasureTheory.Measure.GiryMonad",
+        "Mathlib.MeasureTheory.Measure.ProbabilityMeasure",
+        "Mathlib.MeasureTheory.Measure.Prod"
+      ],
+      "path": "TauCeti/MeasureTheory/Measure/Measurability.lean",
+      "sha256": "8a697245047dfa9db6cda3e11b9b776e92873eb908dd20153fcc404841cd24c4",
+      "module": "TauCeti.MeasureTheory.Measure.Measurability",
+      "submitted_path": "source/TauCeti/MeasureTheory/Measure/Measurability.lean"
+    },
+    {
+      "bytes": 11503,
+      "git_blob_sha1": "c578e157d12a9c0028eb41f6e742d7c947d384fa",
+      "imports": [
+        "Mathlib.MeasureTheory.Constructions.Polish.EmbeddingReal",
+        "Mathlib.MeasureTheory.Constructions.UnitInterval",
+        "Mathlib.MeasureTheory.Measure.Map",
+        "Mathlib.MeasureTheory.Measure.QuasiMeasurePreserving"
+      ],
+      "path": "TauCeti/MeasureTheory/Measure/Mod0MeasureIso.lean",
+      "sha256": "5716375e5c6039dca0ca2a9d4252baa67ded0b5f7ed311d218477f2ffaf7278f",
+      "module": "TauCeti.MeasureTheory.Measure.Mod0MeasureIso",
+      "submitted_path": "source/TauCeti/MeasureTheory/Measure/Mod0MeasureIso.lean"
+    },
+    {
+      "bytes": 6187,
+      "git_blob_sha1": "2e799accca0534d97fcacaa90b97ed5aefe66f7b",
+      "imports": [
+        "Mathlib.Algebra.MvPolynomial.Equiv",
+        "Mathlib.Algebra.Polynomial.Roots",
+        "Mathlib.MeasureTheory.Constructions.Pi",
+        "Mathlib.MeasureTheory.Measure.Lebesgue.Basic",
+        "Mathlib.MeasureTheory.Measure.Prod"
+      ],
+      "path": "TauCeti/MeasureTheory/Measure/MvPolynomialZeroLocus.lean",
+      "sha256": "a0162aa9923c959256972e7dab50c39deff9e8b6d2ac53e941216ae75e6269de",
+      "module": "TauCeti.MeasureTheory.Measure.MvPolynomialZeroLocus",
+      "submitted_path": "source/TauCeti/MeasureTheory/Measure/MvPolynomialZeroLocus.lean"
+    },
+    {
+      "bytes": 5070,
+      "git_blob_sha1": "3d6806b741df8f9e59e10622c7f4938e7488d838",
+      "imports": [
+        "TauCeti.MeasureTheory.Integral.Pi",
+        "Mathlib.MeasureTheory.Measure.Decomposition.RadonNikodym"
+      ],
+      "path": "TauCeti/MeasureTheory/Measure/PiWithDensity.lean",
+      "sha256": "61327d00783c36e856420f61463fae1b76c8460ca05f0c796b9a4411c649f614",
+      "module": "TauCeti.MeasureTheory.Measure.PiWithDensity",
+      "submitted_path": "source/TauCeti/MeasureTheory/Measure/PiWithDensity.lean"
+    },
+    {
+      "bytes": 3182,
+      "git_blob_sha1": "cbe8dbeb9d365997f71fa34c6d739f0726704ff5",
+      "imports": [
+        "Mathlib.MeasureTheory.Measure.ProbabilityMeasure",
+        "Mathlib.MeasureTheory.Function.ConvergenceInDistribution"
+      ],
+      "path": "TauCeti/MeasureTheory/Measure/ProbabilityMeasure/Map.lean",
+      "sha256": "54503a659cbb4374bb5aac862a4df08154d0c7675489d4f4ab4a5e1016c8f96e",
+      "module": "TauCeti.MeasureTheory.Measure.ProbabilityMeasure.Map",
+      "submitted_path": "source/TauCeti/MeasureTheory/Measure/ProbabilityMeasure/Map.lean"
+    },
+    {
+      "bytes": 4590,
+      "git_blob_sha1": "db7e54b30a1eccedf577f9d64a178714b2013c3e",
+      "imports": [
+        "Mathlib.MeasureTheory.Group.Arithmetic",
+        "Mathlib.MeasureTheory.Measure.Prod",
+        "Mathlib.MeasureTheory.Measure.Real"
+      ],
+      "path": "TauCeti/MeasureTheory/Measure/Prod.lean",
+      "sha256": "058a743dfc4bc8465c2daa62e060b331532a36ea112bd285f565e0fcb3ef044a",
+      "module": "TauCeti.MeasureTheory.Measure.Prod",
+      "submitted_path": "source/TauCeti/MeasureTheory/Measure/Prod.lean"
+    },
+    {
+      "bytes": 23888,
+      "git_blob_sha1": "e221190faf9be6590c6997745f4a8e98df9cc27c",
+      "imports": [
+        "Mathlib.MeasureTheory.Measure.FiniteMeasurePi",
+        "Mathlib.Probability.ProductMeasure",
+        "Mathlib.Probability.Kernel.Basic",
+        "Mathlib.Probability.Independence.InfinitePi"
+      ],
+      "path": "TauCeti/MeasureTheory/Measure/ProductKernel.lean",
+      "sha256": "83ebfd6ed67573a53a4ddd1a5e58cef7f3c4e368ad967590f83129b4a9f8605d",
+      "module": "TauCeti.MeasureTheory.Measure.ProductKernel",
+      "submitted_path": "source/TauCeti/MeasureTheory/Measure/ProductKernel.lean"
+    },
+    {
+      "bytes": 13325,
+      "git_blob_sha1": "c919d32ef3f2bfb735174da84132046f57c139f2",
+      "imports": [
+        "Mathlib.MeasureTheory.Measure.Lebesgue.Basic",
+        "Mathlib.Probability.CDF"
+      ],
+      "path": "TauCeti/MeasureTheory/Measure/Real.lean",
+      "sha256": "b14772e7febb8b20d47cf50da54a6fc8dfc17fe35cc55cbb24b508b0fb3464c3",
+      "module": "TauCeti.MeasureTheory.Measure.Real",
+      "submitted_path": "source/TauCeti/MeasureTheory/Measure/Real.lean"
+    },
+    {
+      "bytes": 3370,
+      "git_blob_sha1": "e699a3db476a6d27a8d3c2e1516057735b204755",
+      "imports": [
+        "Mathlib.MeasureTheory.Measure.Support"
+      ],
+      "path": "TauCeti/MeasureTheory/Measure/Support.lean",
+      "sha256": "0547fb815faeb7caea35d2798b95967ced87cab2b0bf0772c7ed16872bd65c6e",
+      "module": "TauCeti.MeasureTheory.Measure.Support",
+      "submitted_path": "source/TauCeti/MeasureTheory/Measure/Support.lean"
+    },
+    {
+      "bytes": 24503,
+      "git_blob_sha1": "24c5bd3792c4af6fbb10c6dc0e9350bee30a0cde",
+      "imports": [
+        "TauCeti.Analysis.Matrix.Frobenius",
+        "Mathlib.Analysis.InnerProductSpace.Subspace",
+        "Mathlib.Analysis.Matrix.MeasurableSpace",
+        "Mathlib.Data.Sym.Card",
+        "Mathlib.Order.Sym2",
+        "Mathlib.LinearAlgebra.Matrix.FiniteDimensional",
+        "Mathlib.LinearAlgebra.Matrix.Hermitian",
+        "Mathlib.MeasureTheory.Constructions.BorelSpace.Basic",
+        "Mathlib.MeasureTheory.Measure.Haar.OfBasis",
+        "Mathlib.Topology.Algebra.Module.FiniteDimension",
+        "Mathlib.Topology.UniformSpace.Matrix"
+      ],
+      "path": "TauCeti/MeasureTheory/Measure/SymmetricMatrix/Basic.lean",
+      "sha256": "f9f7f6fcd29f5a1763216651b899252d5e59c85443c48d74122f0f9ae1614f66",
+      "module": "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Basic",
+      "submitted_path": "source/TauCeti/MeasureTheory/Measure/SymmetricMatrix/Basic.lean"
+    },
+    {
+      "bytes": 23063,
+      "git_blob_sha1": "e52cdb1a4cd99ce9300c4487909332797b31a306",
+      "imports": [
+        "TauCeti.LinearAlgebra.Matrix.Cholesky.Jacobian",
+        "TauCeti.LinearAlgebra.Matrix.Cholesky.Topology",
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Lebesgue",
+        "Mathlib.MeasureTheory.Function.Jacobian"
+      ],
+      "path": "TauCeti/MeasureTheory/Measure/SymmetricMatrix/Cholesky.lean",
+      "sha256": "d8f2192c01fccd1e5f47ac4f665b8d4ffb0e0dd65383c39c29aac9cb73b49897",
+      "module": "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Cholesky",
+      "submitted_path": "source/TauCeti/MeasureTheory/Measure/SymmetricMatrix/Cholesky.lean"
+    },
+    {
+      "bytes": 31810,
+      "git_blob_sha1": "571bbfbb32945265bf78eee6f98f767e78548ed1",
+      "imports": [
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Lebesgue",
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.PosDef",
+        "Mathlib.LinearAlgebra.Matrix.Bilinear",
+        "Mathlib.LinearAlgebra.Matrix.Permutation",
+        "Mathlib.MeasureTheory.Integral.Bochner.Basic",
+        "Mathlib.LinearAlgebra.Matrix.GeneralLinearGroup.Defs",
+        "Mathlib.LinearAlgebra.Matrix.Transvection",
+        "Mathlib.MeasureTheory.Measure.CharacteristicFunction.Basic",
+        "TauCeti.LinearAlgebra.Matrix.Congruence",
+        "TauCeti.LinearAlgebra.Matrix.Triangular"
+      ],
+      "path": "TauCeti/MeasureTheory/Measure/SymmetricMatrix/Congruence.lean",
+      "sha256": "416b0bb566048f455bf1e781012220865a9c4400f022e26bbeb86f0ad5a3af2e",
+      "module": "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Congruence",
+      "submitted_path": "source/TauCeti/MeasureTheory/Measure/SymmetricMatrix/Congruence.lean"
+    },
+    {
+      "bytes": 4434,
+      "git_blob_sha1": "03d21183674f6f7a59badd49213d697e86b74d81",
+      "imports": [
+        "TauCeti.MeasureTheory.Measure.MvPolynomialZeroLocus",
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Lebesgue"
+      ],
+      "path": "TauCeti/MeasureTheory/Measure/SymmetricMatrix/Determinant.lean",
+      "sha256": "39d22f8e17100ef423a26e170a4d4adec4f94846c533ac3e16964b83221880ce",
+      "module": "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Determinant",
+      "submitted_path": "source/TauCeti/MeasureTheory/Measure/SymmetricMatrix/Determinant.lean"
+    },
+    {
+      "bytes": 2250,
+      "git_blob_sha1": "8648f0873adbc46534c258da82ba1d6c2146891e",
+      "imports": [
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Basic",
+        "Mathlib.MeasureTheory.Function.L1Space.Integrable",
+        "Mathlib.MeasureTheory.SpecificCodomains.Pi"
+      ],
+      "path": "TauCeti/MeasureTheory/Measure/SymmetricMatrix/Integrable.lean",
+      "sha256": "3d37f951faeb954268b05eb6b13a0a972528598d72eabcaf3ea788e8847f35ce",
+      "module": "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Integrable",
+      "submitted_path": "source/TauCeti/MeasureTheory/Measure/SymmetricMatrix/Integrable.lean"
+    },
+    {
+      "bytes": 14921,
+      "git_blob_sha1": "99f108117cfd126de9ec3d10a0bd59099cbeb9a4",
+      "imports": [
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Congruence",
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.PosDef",
+        "Mathlib.Analysis.Calculus.FDeriv.Mul",
+        "Mathlib.Analysis.Matrix.PosDef",
+        "Mathlib.MeasureTheory.Function.Jacobian",
+        "Mathlib.Topology.Instances.Matrix"
+      ],
+      "path": "TauCeti/MeasureTheory/Measure/SymmetricMatrix/Inv.lean",
+      "sha256": "206a4bcc3d1e89a5f81f4a3b6b6a767b64e08a8c0493e9d46a567d51e2a02a75",
+      "module": "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Inv",
+      "submitted_path": "source/TauCeti/MeasureTheory/Measure/SymmetricMatrix/Inv.lean"
+    },
+    {
+      "bytes": 11063,
+      "git_blob_sha1": "861d7af8316ca03dcf58fc958421053bad24f7a4",
+      "imports": [
+        "TauCeti.MeasureTheory.Measure.Haar.OfBasis",
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Basic",
+        "Mathlib.MeasureTheory.Measure.Haar.InnerProductSpace"
+      ],
+      "path": "TauCeti/MeasureTheory/Measure/SymmetricMatrix/Lebesgue.lean",
+      "sha256": "b7decd67c7a21847975bc425167c1fcc272d53ae1ea66b376da6761a111ef7bb",
+      "module": "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Lebesgue",
+      "submitted_path": "source/TauCeti/MeasureTheory/Measure/SymmetricMatrix/Lebesgue.lean"
+    },
+    {
+      "bytes": 2635,
+      "git_blob_sha1": "42d3af32557ff1c94adf4b4994258561720997e7",
+      "imports": [
+        "TauCeti.Analysis.Matrix.PosDef",
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Basic",
+        "Mathlib.LinearAlgebra.Matrix.PosDef"
+      ],
+      "path": "TauCeti/MeasureTheory/Measure/SymmetricMatrix/PosDef.lean",
+      "sha256": "00974fd2ea3c0a567f77e581c459695ea7e42b37b31b38ab10259e6962ecd56c",
+      "module": "TauCeti.MeasureTheory.Measure.SymmetricMatrix.PosDef",
+      "submitted_path": "source/TauCeti/MeasureTheory/Measure/SymmetricMatrix/PosDef.lean"
+    },
+    {
+      "bytes": 1644,
+      "git_blob_sha1": "0bd4a3ddff2d110f3814e04a2a12fb526f9d9b56",
+      "imports": [
+        "TauCeti.LinearAlgebra.Matrix.Rank.Closed",
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Basic"
+      ],
+      "path": "TauCeti/MeasureTheory/Measure/SymmetricMatrix/Rank.lean",
+      "sha256": "cb3871dbe9f1260a07a8d9656536a99da2615a30981e1fac77fe6092c1141f66",
+      "module": "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Rank",
+      "submitted_path": "source/TauCeti/MeasureTheory/Measure/SymmetricMatrix/Rank.lean"
+    },
+    {
+      "bytes": 18849,
+      "git_blob_sha1": "f50274b81e96ba031b868641703cc44eb6dd4b46",
+      "imports": [
+        "Mathlib.Analysis.Calculus.Deriv.Pow",
+        "Mathlib.MeasureTheory.Function.JacobianOneDim",
+        "Mathlib.MeasureTheory.Integral.Lebesgue.Map",
+        "Mathlib.MeasureTheory.Measure.Lebesgue.EqHaar",
+        "Mathlib.MeasureTheory.Measure.Lebesgue.Integral",
+        "Mathlib.MeasureTheory.Measure.Support",
+        "Mathlib.MeasureTheory.Measure.WithDensity",
+        "TauCeti.MeasureTheory.Measure.Real"
+      ],
+      "path": "TauCeti/MeasureTheory/Measure/WithDensity.lean",
+      "sha256": "67a441dc7920b02c7497a27c2a3087a46034a19dd6261fc1f13b3b1753c08c56",
+      "module": "TauCeti.MeasureTheory.Measure.WithDensity",
+      "submitted_path": "source/TauCeti/MeasureTheory/Measure/WithDensity.lean"
+    },
+    {
+      "bytes": 18708,
+      "git_blob_sha1": "2d8fb2b7714a43b155bf5cb2fa5e821210fcada7",
+      "imports": [
+        "Mathlib.MeasureTheory.Measure.RegularityCompacts",
+        "Mathlib.MeasureTheory.Measure.Tight",
+        "Mathlib.Topology.MetricSpace.Polish",
+        "TauCeti.MeasureTheory.OptimalTransport.Coupling",
+        "Mathlib.MeasureTheory.Measure.Prokhorov",
+        "TauCeti.MeasureTheory.Measure.ProbabilityMeasure.Map"
+      ],
+      "path": "TauCeti/MeasureTheory/OptimalTransport/Compactness.lean",
+      "sha256": "2fad324319ea8824bafff95915c6061f5d7f528e7bee702eec2a8a821ca07ca9",
+      "module": "TauCeti.MeasureTheory.OptimalTransport.Compactness",
+      "submitted_path": "source/TauCeti/MeasureTheory/OptimalTransport/Compactness.lean"
+    },
+    {
+      "bytes": 22387,
+      "git_blob_sha1": "fb48f0695c893602b03fa002e6f0fe478ba92b06",
+      "imports": [
+        "Mathlib.MeasureTheory.Integral.Lebesgue.Countable",
+        "TauCeti.MeasureTheory.OptimalTransport.GraphPlan.Basic"
+      ],
+      "path": "TauCeti/MeasureTheory/OptimalTransport/Cost/Basic.lean",
+      "sha256": "744cea5e64ed6211f466c4a4caad699124a879044cd647e2b7727392f892014c",
+      "module": "TauCeti.MeasureTheory.OptimalTransport.Cost.Basic",
+      "submitted_path": "source/TauCeti/MeasureTheory/OptimalTransport/Cost/Basic.lean"
+    },
+    {
+      "bytes": 39859,
+      "git_blob_sha1": "2f4b7e98f58bb3e305929a1be821b9f0bdc600a7",
+      "imports": [
+        "Mathlib.MeasureTheory.Constructions.Pi",
+        "Mathlib.MeasureTheory.Integral.Bochner.Basic",
+        "Mathlib.MeasureTheory.Measure.FiniteMeasureProd",
+        "Mathlib.MeasureTheory.Measure.Sub"
+      ],
+      "path": "TauCeti/MeasureTheory/OptimalTransport/Coupling.lean",
+      "sha256": "4f2378a5ae8eeff522ca1e956d8e94d49112c290d9c548b18b2143b634a61661",
+      "module": "TauCeti.MeasureTheory.OptimalTransport.Coupling",
+      "submitted_path": "source/TauCeti/MeasureTheory/OptimalTransport/Coupling.lean"
+    },
+    {
+      "bytes": 15262,
+      "git_blob_sha1": "d203330d80e11b1d2beb1cefd3e747f004d231e5",
+      "imports": [
+        "TauCeti.MeasureTheory.Measure.LowerSemicontinuousLintegral",
+        "TauCeti.MeasureTheory.OptimalTransport.Compactness",
+        "TauCeti.MeasureTheory.OptimalTransport.Cost.Basic",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Continuity"
+      ],
+      "path": "TauCeti/MeasureTheory/OptimalTransport/Existence/Basic.lean",
+      "sha256": "9da86f0befcc74652e322585d78b6cdd2c4dd96698393340d4a7145fdec6dd81",
+      "module": "TauCeti.MeasureTheory.OptimalTransport.Existence.Basic",
+      "submitted_path": "source/TauCeti/MeasureTheory/OptimalTransport/Existence/Basic.lean"
+    },
+    {
+      "bytes": 29837,
+      "git_blob_sha1": "f4de18f2efcabbec555bd766574c9542c0ca7b37",
+      "imports": [
+        "Mathlib.MeasureTheory.Function.LpSeminorm.TriangleInequality",
+        "Mathlib.Probability.Kernel.Composition.MeasureComp",
+        "Mathlib.Probability.Kernel.Disintegration.StandardBorel",
+        "TauCeti.Probability.Kernel.Composition.MeasureCompProd",
+        "TauCeti.Probability.Kernel.Disintegration.Countable",
+        "TauCeti.MeasureTheory.Measure.ProductKernel"
+      ],
+      "path": "TauCeti/MeasureTheory/OptimalTransport/Gluing.lean",
+      "sha256": "4be516d72b38855fefde837018e6b73ee97c1987097442f1f4241b37ee968b5e",
+      "module": "TauCeti.MeasureTheory.OptimalTransport.Gluing",
+      "submitted_path": "source/TauCeti/MeasureTheory/OptimalTransport/Gluing.lean"
+    },
+    {
+      "bytes": 25138,
+      "git_blob_sha1": "9dcb6c26af4e5956d2589303bece30fc942dcfe1",
+      "imports": [
+        "Mathlib.MeasureTheory.Integral.Lebesgue.Map",
+        "Mathlib.Probability.HasLaw",
+        "TauCeti.MeasureTheory.OptimalTransport.Coupling",
+        "TauCeti.MeasureTheory.Measure.Dirac"
+      ],
+      "path": "TauCeti/MeasureTheory/OptimalTransport/GraphPlan/Basic.lean",
+      "sha256": "65aa557f603fc07485834724948e9c2aaf0f8afa7a83301a134825f5588641c7",
+      "module": "TauCeti.MeasureTheory.OptimalTransport.GraphPlan.Basic",
+      "submitted_path": "source/TauCeti/MeasureTheory/OptimalTransport/GraphPlan/Basic.lean"
+    },
+    {
+      "bytes": 69748,
+      "git_blob_sha1": "200a1dfe444e438ab4ac15346614c8a36d93e0ce",
+      "imports": [
+        "Mathlib.MeasureTheory.Function.LpSeminorm.CompareExp",
+        "Mathlib.MeasureTheory.Function.LpSeminorm.Count",
+        "Mathlib.MeasureTheory.Function.LpSeminorm.TriangleInequality",
+        "TauCeti.MeasureTheory.Function.Lp.LIntegralRpow",
+        "TauCeti.MeasureTheory.OptimalTransport.Existence.Basic",
+        "TauCeti.MeasureTheory.OptimalTransport.GraphPlan.Basic",
+        "TauCeti.MeasureTheory.OptimalTransport.Gluing",
+        "TauCeti.Topology.EMetricSpace.Rpow"
+      ],
+      "path": "TauCeti/MeasureTheory/OptimalTransport/Wasserstein/Basic.lean",
+      "sha256": "e98a43b442ce9c721dab91a7389054eb3b447eb627ae9e7542e876e626bec073",
+      "module": "TauCeti.MeasureTheory.OptimalTransport.Wasserstein.Basic",
+      "submitted_path": "source/TauCeti/MeasureTheory/OptimalTransport/Wasserstein/Basic.lean"
+    },
+    {
+      "bytes": 8059,
+      "git_blob_sha1": "2ee099acea1c16e1f099364529bb229d09f06c34",
+      "imports": [
+        "TauCeti.MeasureTheory.OptimalTransport.Wasserstein.Basic",
+        "TauCeti.Probability.Quantile",
+        "TauCeti.MeasureTheory.Measure.Real"
+      ],
+      "path": "TauCeti/MeasureTheory/OptimalTransport/Wasserstein/Quantile/Basic.lean",
+      "sha256": "1764ef333c97d82a0566f0cb74387011828f9e629a774d774484f33135218f24",
+      "module": "TauCeti.MeasureTheory.OptimalTransport.Wasserstein.Quantile.Basic",
+      "submitted_path": "source/TauCeti/MeasureTheory/OptimalTransport/Wasserstein/Quantile/Basic.lean"
+    },
+    {
+      "bytes": 5479,
+      "git_blob_sha1": "af20afa0f3add92029c2b23e7006144cf2105529",
+      "imports": [
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.AbsolutelyContinuousFun",
+        "TauCeti.Probability.Cdf",
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus",
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.LebesgueDifferentiationThm",
+        "TauCeti.Probability.Density"
+      ],
+      "path": "TauCeti/Probability/Cdf/Density.lean",
+      "sha256": "7914f63950898ba879132fa865b0a82cdde2aed10623ca057c3d536f00f16c82",
+      "module": "TauCeti.Probability.Cdf.Density",
+      "submitted_path": "source/TauCeti/Probability/Cdf/Density.lean"
+    },
+    {
+      "bytes": 22358,
+      "git_blob_sha1": "b6d7930730753e3279bf2d609f78c89a6b47932a",
+      "imports": [
+        "Mathlib.MeasureTheory.Measure.Haar.OfBasis",
+        "Mathlib.MeasureTheory.Group.IntegralConvolution",
+        "Mathlib.MeasureTheory.Measure.Support",
+        "Mathlib.MeasureTheory.Measure.Stieltjes",
+        "Mathlib.Probability.CDF",
+        "Mathlib.Topology.Order.LeftRightLim",
+        "TauCeti.MeasureTheory.Group.Measure"
+      ],
+      "path": "TauCeti/Probability/Cdf.lean",
+      "sha256": "19232b53f35295f46da8672dc7269d3f617905b4b9b3fc6f1f7e910908fecd28",
+      "module": "TauCeti.Probability.Cdf",
+      "submitted_path": "source/TauCeti/Probability/Cdf.lean"
+    },
+    {
+      "bytes": 6433,
+      "git_blob_sha1": "b5c69b848fc1cf1fe439ba9ce4457fb8906dab29",
+      "imports": [
+        "Mathlib.Probability.Density",
+        "Mathlib.Probability.HasLaw"
+      ],
+      "path": "TauCeti/Probability/Density.lean",
+      "sha256": "7190cd4d2d95a70503ac667d72f0302a482cdce91344e6f68435c415587faf08",
+      "module": "TauCeti.Probability.Density",
+      "submitted_path": "source/TauCeti/Probability/Density.lean"
+    },
+    {
+      "bytes": 22860,
+      "git_blob_sha1": "db4cfc91c6478fd33d7194e89131571d5874942d",
+      "imports": [
+        "TauCeti.Probability.Distributions.Dirac",
+        "TauCeti.Probability.Distributions.Gamma.Cdf",
+        "TauCeti.Probability.Distributions.Gamma.CharFun",
+        "TauCeti.Probability.Distributions.Gamma.Measurability",
+        "TauCeti.Probability.Distributions.Gamma.PDF",
+        "Mathlib.Probability.Distributions.Exponential"
+      ],
+      "path": "TauCeti/Probability/Distributions/ChiSquared/Basic.lean",
+      "sha256": "7528f298e131bfccdd6ef5585019e77084955bd8c20ad70128fff09804090c39",
+      "module": "TauCeti.Probability.Distributions.ChiSquared.Basic",
+      "submitted_path": "source/TauCeti/Probability/Distributions/ChiSquared/Basic.lean"
+    },
+    {
+      "bytes": 1263,
+      "git_blob_sha1": "20bdfaf79fba426e93a3cc3684fe7255204f18be",
+      "imports": [
+        "TauCeti.Probability.Distributions.ChiSquared.Basic",
+        "TauCeti.Probability.Distributions.Gamma.Support",
+        "TauCeti.MeasureTheory.Measure.Dirac"
+      ],
+      "path": "TauCeti/Probability/Distributions/ChiSquared/Support.lean",
+      "sha256": "9c7249918e973e3e3433a1e56b69c70e1c8e8b351e4c0889abf22b7e6becf46e",
+      "module": "TauCeti.Probability.Distributions.ChiSquared.Support",
+      "submitted_path": "source/TauCeti/Probability/Distributions/ChiSquared/Support.lean"
+    },
+    {
+      "bytes": 3353,
+      "git_blob_sha1": "bb38e4170bda1efc960cacb4bf6902dc374b27f2",
+      "imports": [
+        "Mathlib.Probability.Moments.Basic",
+        "Mathlib.Probability.Moments.IntegrableExpMul",
+        "TauCeti.Probability.Quantile"
+      ],
+      "path": "TauCeti/Probability/Distributions/Dirac.lean",
+      "sha256": "634673e155ef4f56e35d480c162591116d9f7d19dfb8d0c8de373e7fac62cacc",
+      "module": "TauCeti.Probability.Distributions.Dirac",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Dirac.lean"
+    },
+    {
+      "bytes": 26345,
+      "git_blob_sha1": "9af8811594b8de28dd6ba732cdd293b8290d9e2a",
+      "imports": [
+        "Mathlib.Probability.Distributions.Gamma",
+        "Mathlib.Probability.Moments.Basic",
+        "Mathlib.Probability.Moments.IntegrableExpMul",
+        "Mathlib.Probability.Moments.Variance",
+        "Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral",
+        "Mathlib.Analysis.SpecialFunctions.ImproperIntegrals",
+        "TauCeti.Probability.Distributions.Gamma.PDF",
+        "TauCeti.Probability.Moments.Basic",
+        "TauCeti.Probability.Moments.Determinacy"
+      ],
+      "path": "TauCeti/Probability/Distributions/Gamma/Basic.lean",
+      "sha256": "78b3ad790ba3e8eca97ec687343486116235f9d72d0d1980713e6ed02b313444",
+      "module": "TauCeti.Probability.Distributions.Gamma.Basic",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Gamma/Basic.lean"
+    },
+    {
+      "bytes": 8757,
+      "git_blob_sha1": "0ea8acdec8858fe5b2a98ace8c5cac3262210cd3",
+      "imports": [
+        "TauCeti.Analysis.SpecialFunctions.IncompleteGamma",
+        "TauCeti.Probability.Distributions.Gamma.Basic",
+        "TauCeti.Probability.Cdf"
+      ],
+      "path": "TauCeti/Probability/Distributions/Gamma/Cdf.lean",
+      "sha256": "c7f8d2421ed6791d07f12a55af7c7b1964bbcaec8ece8ab44c1ee5e4f354d6be",
+      "module": "TauCeti.Probability.Distributions.Gamma.Cdf",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Gamma/Cdf.lean"
+    },
+    {
+      "bytes": 4355,
+      "git_blob_sha1": "b89e16f6ef7fce0ca3ede06994f7048b0a1085f9",
+      "imports": [
+        "TauCeti.Probability.Distributions.Gamma.Basic",
+        "TauCeti.Probability.Moments.ComplexMGF"
+      ],
+      "path": "TauCeti/Probability/Distributions/Gamma/CharFun.lean",
+      "sha256": "9b32868d5781a1242ea5adb8fe1bb44bfd53138354a3a864324392d726c8f618",
+      "module": "TauCeti.Probability.Distributions.Gamma.CharFun",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Gamma/CharFun.lean"
+    },
+    {
+      "bytes": 1287,
+      "git_blob_sha1": "bf43067fc652be1130411f263194cea5ca6c74d5",
+      "imports": [
+        "Mathlib.Probability.Distributions.Gamma",
+        "TauCeti.Analysis.SpecialFunctions.Gamma",
+        "TauCeti.MeasureTheory.Measure.Measurability"
+      ],
+      "path": "TauCeti/Probability/Distributions/Gamma/Measurability.lean",
+      "sha256": "05dd178c96e284fe5f11d1f2455938c2cf9ffc1ea172bd8574aa67390fbc9ea1",
+      "module": "TauCeti.Probability.Distributions.Gamma.Measurability",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Gamma/Measurability.lean"
+    },
+    {
+      "bytes": 2704,
+      "git_blob_sha1": "0c57b0b61f751fc44ff7c40cf1658fb40fd659dc",
+      "imports": [
+        "TauCeti.Probability.Density",
+        "Mathlib.Probability.Distributions.Gamma"
+      ],
+      "path": "TauCeti/Probability/Distributions/Gamma/PDF.lean",
+      "sha256": "27ecaba6f689d62334db81ee7de5af5df39dc6187c1f98de35a30f5716fee20c",
+      "module": "TauCeti.Probability.Distributions.Gamma.PDF",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Gamma/PDF.lean"
+    },
+    {
+      "bytes": 7168,
+      "git_blob_sha1": "19953f219cf9b7e0d4003b08e7b6f60b3b4f37f2",
+      "imports": [
+        "TauCeti.MeasureTheory.Measure.Real",
+        "TauCeti.MeasureTheory.Measure.WithDensity",
+        "TauCeti.Probability.Distributions.ChiSquared.Basic",
+        "TauCeti.Probability.Distributions.Gamma.Basic"
+      ],
+      "path": "TauCeti/Probability/Distributions/Gamma/Sqrt.lean",
+      "sha256": "51f8f8fd6ae417519450d60c850c1a3a740f581052a3d23c9c065e3d34009a5e",
+      "module": "TauCeti.Probability.Distributions.Gamma.Sqrt",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Gamma/Sqrt.lean"
+    },
+    {
+      "bytes": 1445,
+      "git_blob_sha1": "ce4608880526b8e5297270b18efa96fcb4960236",
+      "imports": [
+        "TauCeti.MeasureTheory.Measure.WithDensity",
+        "TauCeti.Probability.Distributions.Gamma.PDF"
+      ],
+      "path": "TauCeti/Probability/Distributions/Gamma/Support.lean",
+      "sha256": "8eb652a53e006c2cf6b42f676fa9e9d37810110ecbc4baa32c4097f5df832b35",
+      "module": "TauCeti.Probability.Distributions.Gamma.Support",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Gamma/Support.lean"
+    },
+    {
+      "bytes": 7650,
+      "git_blob_sha1": "d88f5528aea44f42ec7b239dce74d41f73d3ca9a",
+      "imports": [
+        "TauCeti.Probability.Distributions.Gaussian.Multivariate",
+        "Mathlib.Probability.Distributions.Gaussian.CharFun",
+        "Mathlib.Probability.Distributions.Gaussian.Fernique"
+      ],
+      "path": "TauCeti/Probability/Distributions/Gaussian/Affine.lean",
+      "sha256": "d286bbdf3b448fc729859db8bc6370f1a25c155fd428943c6a10fd3c59f6e797",
+      "module": "TauCeti.Probability.Distributions.Gaussian.Affine",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Gaussian/Affine.lean"
+    },
+    {
+      "bytes": 6168,
+      "git_blob_sha1": "505c0c2dd0a408a733f9c2bcfb93844847fbcaea",
+      "imports": [
+        "Mathlib.Probability.Distributions.Gaussian.Real",
+        "Mathlib.Analysis.SpecialFunctions.Gaussian.PoissonSummation"
+      ],
+      "path": "TauCeti/Probability/Distributions/Gaussian/Basic.lean",
+      "sha256": "a13b3f458f64393c3e11b247cc311844b22fe061b638dd004ab8a4988e8484ec",
+      "module": "TauCeti.Probability.Distributions.Gaussian.Basic",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Gaussian/Basic.lean"
+    },
+    {
+      "bytes": 18247,
+      "git_blob_sha1": "dddbf6d2bdccf736bedb24acdc19d271741eb084",
+      "imports": [
+        "TauCeti.Analysis.SpecialFunctions.Erf",
+        "Mathlib.Probability.Distributions.Gaussian.Real",
+        "Mathlib.Probability.CDF",
+        "TauCeti.Probability.Distributions.Gaussian.Basic",
+        "TauCeti.MeasureTheory.Measure.Real",
+        "TauCeti.Probability.Cdf.Density"
+      ],
+      "path": "TauCeti/Probability/Distributions/Gaussian/Cdf.lean",
+      "sha256": "ab062366c6289ff61c82598132388c90cf0fea3ab2bddb4bd9cd3922a4a52e43",
+      "module": "TauCeti.Probability.Distributions.Gaussian.Cdf",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Gaussian/Cdf.lean"
+    },
+    {
+      "bytes": 12438,
+      "git_blob_sha1": "ea58f9ffaa5f481a71033ff3b74ab1d506b20f13",
+      "imports": [
+        "TauCeti.Probability.Distributions.ChiSquared.Basic",
+        "TauCeti.Probability.Distributions.Gaussian.Cdf",
+        "TauCeti.Probability.Moments.Pi"
+      ],
+      "path": "TauCeti/Probability/Distributions/Gaussian/ChiSquared.lean",
+      "sha256": "446848bf83a01525e8df7a53be8a4104cf320659abd4b0a20b572b70c5e874a1",
+      "module": "TauCeti.Probability.Distributions.Gaussian.ChiSquared",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Gaussian/ChiSquared.lean"
+    },
+    {
+      "bytes": 18988,
+      "git_blob_sha1": "f02a369aaec2c44ddb6950f91d102e9a20aec402",
+      "imports": [
+        "TauCeti.Analysis.Matrix.Sqrt",
+        "TauCeti.MeasureTheory.Measure.Support",
+        "TauCeti.MeasureTheory.Measure.WithDensity",
+        "TauCeti.Probability.Density",
+        "TauCeti.Probability.Distributions.Gaussian.Multivariate",
+        "TauCeti.Probability.Distributions.Gaussian.Pi",
+        "Mathlib.MeasureTheory.Measure.Haar.InnerProductSpace"
+      ],
+      "path": "TauCeti/Probability/Distributions/Gaussian/Density.lean",
+      "sha256": "f53d1cac1b6c5af07b98f904a6b0fe49641bf65469b737f79c7cd846eac06f61",
+      "module": "TauCeti.Probability.Distributions.Gaussian.Density",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Gaussian/Density.lean"
+    },
+    {
+      "bytes": 9657,
+      "git_blob_sha1": "9d1581bfc7a3e8ec3e557658c9193dd8abe82457",
+      "imports": [
+        "Mathlib.Probability.Distributions.Gaussian.Multivariate",
+        "TauCeti.Probability.Moments.Covariance",
+        "Mathlib.Probability.Distributions.Gaussian.HasGaussianLaw.Independence",
+        "Mathlib.Probability.Distributions.Gaussian.Fernique",
+        "Mathlib.Probability.Distributions.Gaussian.HasGaussianLaw.Basic"
+      ],
+      "path": "TauCeti/Probability/Distributions/Gaussian/Multivariate.lean",
+      "sha256": "24d14dcb1c24941200c08ae978db5745206bb164bf89e04a6976c3d5941e1f61",
+      "module": "TauCeti.Probability.Distributions.Gaussian.Multivariate",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Gaussian/Multivariate.lean"
+    },
+    {
+      "bytes": 5346,
+      "git_blob_sha1": "be7c17c1e99d1f0fdbc9a79e3c3e996deeaaf50d",
+      "imports": [
+        "TauCeti.MeasureTheory.Measure.PiWithDensity",
+        "TauCeti.Probability.Distributions.Gaussian.Basic"
+      ],
+      "path": "TauCeti/Probability/Distributions/Gaussian/Pi.lean",
+      "sha256": "58074a68c2ce187a2e0474521e5d7da68e46ef45ad8c2ed72b356808f968f4fb",
+      "module": "TauCeti.Probability.Distributions.Gaussian.Pi",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Gaussian/Pi.lean"
+    },
+    {
+      "bytes": 9660,
+      "git_blob_sha1": "e6e941d623df3fbb00f8334f169cd77fa2fc91cc",
+      "imports": [
+        "TauCeti.Analysis.Matrix.Spectrum",
+        "TauCeti.Analysis.Matrix.Sqrt",
+        "TauCeti.Probability.Distributions.Gaussian.ChiSquared",
+        "TauCeti.Probability.Distributions.Gaussian.Multivariate"
+      ],
+      "path": "TauCeti/Probability/Distributions/Gaussian/QuadraticForm.lean",
+      "sha256": "43d61d50f68132b5f747344970855f84f77fb6539f7fe39137e812d1e81afbed",
+      "module": "TauCeti.Probability.Distributions.Gaussian.QuadraticForm",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Gaussian/QuadraticForm.lean"
+    },
+    {
+      "bytes": 14499,
+      "git_blob_sha1": "8211aaf96407f1b4a5ec778750e8364a96d6534f",
+      "imports": [
+        "TauCeti.Probability.Density",
+        "TauCeti.Probability.Distributions.Gamma.Basic",
+        "TauCeti.Probability.Distributions.Gamma.Measurability",
+        "TauCeti.MeasureTheory.Measure.WithDensity"
+      ],
+      "path": "TauCeti/Probability/Distributions/InverseGamma/Basic.lean",
+      "sha256": "cd65292b17225677d88cb5525f8db20fcf6035edbe4072268371c67f74274dce",
+      "module": "TauCeti.Probability.Distributions.InverseGamma.Basic",
+      "submitted_path": "source/TauCeti/Probability/Distributions/InverseGamma/Basic.lean"
+    },
+    {
+      "bytes": 7880,
+      "git_blob_sha1": "b5c360a48959ba1cd7678bdd9b4df6d4d53755b4",
+      "imports": [
+        "TauCeti.Probability.Distributions.InverseGamma.Basic",
+        "Mathlib.Probability.Moments.Variance",
+        "TauCeti.Probability.Moments.IntegrableExpMul"
+      ],
+      "path": "TauCeti/Probability/Distributions/InverseGamma/Moments.lean",
+      "sha256": "64d982f549c382e8056ab26e0e0f5f67163a317073e2cf530339c5b6d35a4392",
+      "module": "TauCeti.Probability.Distributions.InverseGamma.Moments",
+      "submitted_path": "source/TauCeti/Probability/Distributions/InverseGamma/Moments.lean"
+    },
+    {
+      "bytes": 11410,
+      "git_blob_sha1": "92b65a5b107efa7e2b3544c78cc4fb354560f743",
+      "imports": [
+        "TauCeti.Probability.Distributions.ChiSquared.Support",
+        "TauCeti.Probability.Distributions.Poisson.Measurability"
+      ],
+      "path": "TauCeti/Probability/Distributions/NoncentralChiSquared/Basic.lean",
+      "sha256": "3c93c6af67294f2845176151661d3dad58fdb806f15f5df23c0a056851319717",
+      "module": "TauCeti.Probability.Distributions.NoncentralChiSquared.Basic",
+      "submitted_path": "source/TauCeti/Probability/Distributions/NoncentralChiSquared/Basic.lean"
+    },
+    {
+      "bytes": 3762,
+      "git_blob_sha1": "651e76ee0b88476b70cb3ec792740b45199d8983",
+      "imports": [
+        "TauCeti.Probability.Distributions.NoncentralChiSquared.Basic"
+      ],
+      "path": "TauCeti/Probability/Distributions/NoncentralChiSquared/Convolution.lean",
+      "sha256": "1bd0c8a9c8c0d3be5a88b5933f0042f4801fe89beb38de7fb06bb49bbbc51c45",
+      "module": "TauCeti.Probability.Distributions.NoncentralChiSquared.Convolution",
+      "submitted_path": "source/TauCeti/Probability/Distributions/NoncentralChiSquared/Convolution.lean"
+    },
+    {
+      "bytes": 5975,
+      "git_blob_sha1": "861554687a67ede4c2ba02a0639fa8f4911576c6",
+      "imports": [
+        "TauCeti.Probability.Distributions.Gaussian.ChiSquared",
+        "TauCeti.Probability.Distributions.Gaussian.Affine",
+        "TauCeti.Probability.Distributions.NoncentralChiSquared.Transforms",
+        "TauCeti.Probability.Moments.Determinacy"
+      ],
+      "path": "TauCeti/Probability/Distributions/NoncentralChiSquared/Gaussian.lean",
+      "sha256": "a4b9f4904911716a0d19bfd34639dd4abab3e8ee7e70f6a4e23ae8c2ad74ba48",
+      "module": "TauCeti.Probability.Distributions.NoncentralChiSquared.Gaussian",
+      "submitted_path": "source/TauCeti/Probability/Distributions/NoncentralChiSquared/Gaussian.lean"
+    },
+    {
+      "bytes": 5858,
+      "git_blob_sha1": "b71688f45d4691b613ad7d10c966974f9f1128d3",
+      "imports": [
+        "TauCeti.Probability.Distributions.NoncentralChiSquared.Transforms"
+      ],
+      "path": "TauCeti/Probability/Distributions/NoncentralChiSquared/Moments.lean",
+      "sha256": "0b4728572b1e8d4cb4236b1c89be56284f0ba45a6ee24e3b73c15d6d871c51ac",
+      "module": "TauCeti.Probability.Distributions.NoncentralChiSquared.Moments",
+      "submitted_path": "source/TauCeti/Probability/Distributions/NoncentralChiSquared/Moments.lean"
+    },
+    {
+      "bytes": 3981,
+      "git_blob_sha1": "550b95e297055423c6a7f1182a732f5577e273fe",
+      "imports": [
+        "TauCeti.Probability.Distributions.NoncentralChiSquared.Convolution",
+        "TauCeti.Probability.StochasticOrder"
+      ],
+      "path": "TauCeti/Probability/Distributions/NoncentralChiSquared/StochasticOrder.lean",
+      "sha256": "51b9ab6a5c9060ff71c57702ebc69548287b28c564d38742980c82ebdc174b2b",
+      "module": "TauCeti.Probability.Distributions.NoncentralChiSquared.StochasticOrder",
+      "submitted_path": "source/TauCeti/Probability/Distributions/NoncentralChiSquared/StochasticOrder.lean"
+    },
+    {
+      "bytes": 6335,
+      "git_blob_sha1": "e1c57baed01b08121081226bbba94d21d9d2505a",
+      "imports": [
+        "TauCeti.Probability.Distributions.NoncentralChiSquared.Basic",
+        "TauCeti.Probability.Distributions.Poisson.Basic"
+      ],
+      "path": "TauCeti/Probability/Distributions/NoncentralChiSquared/Transforms.lean",
+      "sha256": "3e722f41f18e52a98ef67f81a2a3137b43ceadeaae3c9da925190bd42f057b83",
+      "module": "TauCeti.Probability.Distributions.NoncentralChiSquared.Transforms",
+      "submitted_path": "source/TauCeti/Probability/Distributions/NoncentralChiSquared/Transforms.lean"
+    },
+    {
+      "bytes": 10737,
+      "git_blob_sha1": "f09e4014baea2d848fd97c52a93f8b39e9b59431",
+      "imports": [
+        "Mathlib.Probability.Distributions.Poisson.Basic",
+        "Mathlib.Probability.Moments.MGFAnalytic",
+        "TauCeti.Probability.GeneratingFunction"
+      ],
+      "path": "TauCeti/Probability/Distributions/Poisson/Basic.lean",
+      "sha256": "7d1fcb1e2f9f20489a4e37f0293edebaeb171d3f880009bee8fa2c1e3aba1a32",
+      "module": "TauCeti.Probability.Distributions.Poisson.Basic",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Poisson/Basic.lean"
+    },
+    {
+      "bytes": 2044,
+      "git_blob_sha1": "1e9a3d2d223fa128364ed7ca2cb03760a42324fd",
+      "imports": [
+        "Mathlib.Probability.Distributions.Poisson.Basic",
+        "TauCeti.MeasureTheory.Measure.Measurability",
+        "TauCeti.MeasureTheory.Measure.ProductKernel"
+      ],
+      "path": "TauCeti/Probability/Distributions/Poisson/Measurability.lean",
+      "sha256": "05e7b0576896a7e540dda951da317c74ac66380345d3faf8f5a10d94ffede4a1",
+      "module": "TauCeti.Probability.Distributions.Poisson.Measurability",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Poisson/Measurability.lean"
+    },
+    {
+      "bytes": 6905,
+      "git_blob_sha1": "3cd0c49b9ef5dc4bc8f8f09ea87a0af6aa043fbf",
+      "imports": [
+        "TauCeti.Probability.Distributions.Wishart.CharFun",
+        "TauCeti.Probability.Distributions.Wishart.Congruence"
+      ],
+      "path": "TauCeti/Probability/Distributions/Wishart/Agreement.lean",
+      "sha256": "deb1a0924ff17e466f6b6569e41cb92cb9f31300809e6762fd28f736e3bfb177",
+      "module": "TauCeti.Probability.Distributions.Wishart.Agreement",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Wishart/Agreement.lean"
+    },
+    {
+      "bytes": 28213,
+      "git_blob_sha1": "4ec26665550b89642711d1ec917618d74ecf0faa",
+      "imports": [
+        "TauCeti.Analysis.SpecialFunctions.MultivariateGamma.Basic",
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Cholesky",
+        "TauCeti.Probability.Distributions.Gamma.Sqrt",
+        "TauCeti.Probability.Distributions.Wishart.Nonsingular",
+        "Mathlib.Probability.Distributions.Gaussian.Real",
+        "Mathlib.Probability.HasLaw",
+        "Mathlib.Probability.Independence.Basic",
+        "Mathlib.Algebra.Order.Star.Real",
+        "TauCeti.LinearAlgebra.Matrix.Cholesky.Coordinates",
+        "TauCeti.MeasureTheory.Constructions.Pi",
+        "TauCeti.MeasureTheory.Measure.PiWithDensity"
+      ],
+      "path": "TauCeti/Probability/Distributions/Wishart/Bartlett.lean",
+      "sha256": "9ce103c5850576dbda02f265388b37d022de6a021b3ab8e74ba2d633370e7b79",
+      "module": "TauCeti.Probability.Distributions.Wishart.Bartlett",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Wishart/Bartlett.lean"
+    },
+    {
+      "bytes": 19937,
+      "git_blob_sha1": "47ca4251ba70656cbd2d3955f76688be7a79c997",
+      "imports": [
+        "Mathlib.Analysis.InnerProductSpace.GramMatrix",
+        "Mathlib.Probability.HasLaw",
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Congruence",
+        "TauCeti.Probability.Distributions.Gaussian.Affine",
+        "Mathlib.MeasureTheory.Group.Convolution",
+        "Mathlib.Probability.ProductMeasure",
+        "TauCeti.Analysis.Matrix.Sqrt",
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Determinant",
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Rank"
+      ],
+      "path": "TauCeti/Probability/Distributions/Wishart/Basic.lean",
+      "sha256": "999ac0c1e7ec8769c0af065c4aa2cba477195d1cf07f0aefd4f5dbabb7c0f562",
+      "module": "TauCeti.Probability.Distributions.Wishart.Basic",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Wishart/Basic.lean"
+    },
+    {
+      "bytes": 10008,
+      "git_blob_sha1": "86dde35729df6575c68417528fa08c884f9a8748",
+      "imports": [
+        "TauCeti.Probability.Distributions.Wishart.Transforms",
+        "TauCeti.Probability.Moments.ComplexMGF",
+        "Mathlib.MeasureTheory.Group.Convolution",
+        "TauCeti.Probability.Distributions.Wishart.Congruence"
+      ],
+      "path": "TauCeti/Probability/Distributions/Wishart/CharFun.lean",
+      "sha256": "358844500330a37100717beee038c11207de79efd0e946e5c4092ad14b85eabb",
+      "module": "TauCeti.Probability.Distributions.Wishart.CharFun",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Wishart/CharFun.lean"
+    },
+    {
+      "bytes": 17366,
+      "git_blob_sha1": "6809046abd6f439d46c875868d696fb9291c7b2b",
+      "imports": [
+        "Mathlib.Analysis.Matrix.Order",
+        "Mathlib.Analysis.SpecialFunctions.ContinuousFunctionalCalculus.Rpow.Basic",
+        "TauCeti.Analysis.SpecialFunctions.MultivariateGamma.Integral",
+        "TauCeti.MeasureTheory.Measure.WithDensity",
+        "TauCeti.Probability.Distributions.Wishart.Nonsingular"
+      ],
+      "path": "TauCeti/Probability/Distributions/Wishart/Congruence.lean",
+      "sha256": "c05549a777934ff6b71086f0559e2c2249b07e5b651f8099a7a5ba4a831636fb",
+      "module": "TauCeti.Probability.Distributions.Wishart.Congruence",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Wishart/Congruence.lean"
+    },
+    {
+      "bytes": 29589,
+      "git_blob_sha1": "82bf0b0946389e7806038390cb1154039ca22df2",
+      "imports": [
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Inv",
+        "TauCeti.MeasureTheory.Measure.WithDensity",
+        "TauCeti.Probability.Distributions.Wishart.Congruence"
+      ],
+      "path": "TauCeti/Probability/Distributions/Wishart/Inverse/Basic.lean",
+      "sha256": "6de18a4fbcd990664a398f01532ee9928fe39358f8deebe19dbc26a1213ac336",
+      "module": "TauCeti.Probability.Distributions.Wishart.Inverse.Basic",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Wishart/Inverse/Basic.lean"
+    },
+    {
+      "bytes": 2962,
+      "git_blob_sha1": "bae1ee73e710044769f520eba5d52142250b0951",
+      "imports": [
+        "TauCeti.Probability.Distributions.Wishart.Inverse.Basic"
+      ],
+      "path": "TauCeti/Probability/Distributions/Wishart/Inverse/Measurability.lean",
+      "sha256": "099c0cd25d08f9d27cc37072b2bffc17e9222d68f488ef7bf7bf57edd5acb334",
+      "module": "TauCeti.Probability.Distributions.Wishart.Inverse.Measurability",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Wishart/Inverse/Measurability.lean"
+    },
+    {
+      "bytes": 25876,
+      "git_blob_sha1": "5dee437af4da965f3b0ec183e5a09e0031939957",
+      "imports": [
+        "TauCeti.Probability.Distributions.InverseGamma.Moments",
+        "TauCeti.Probability.Distributions.Wishart.Inverse.Basic",
+        "TauCeti.Analysis.Matrix.PosSemidef.Basic",
+        "TauCeti.Analysis.Matrix.Sqrt",
+        "TauCeti.LinearAlgebra.Matrix.Triangular",
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Integrable",
+        "TauCeti.Probability.Distributions.Wishart.Bartlett",
+        "Mathlib.LinearAlgebra.Matrix.Swap",
+        "Mathlib.MeasureTheory.SpecificCodomains.Pi"
+      ],
+      "path": "TauCeti/Probability/Distributions/Wishart/Inverse/Moments.lean",
+      "sha256": "6b86656dba43c18c4f2bcca34b5f6528fe518fe557d0e470228f4ab4c3f01bc5",
+      "module": "TauCeti.Probability.Distributions.Wishart.Inverse.Moments",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Wishart/Inverse/Moments.lean"
+    },
+    {
+      "bytes": 8091,
+      "git_blob_sha1": "f9ffda9992a48bb5e57398d67cba425e7e86ee05",
+      "imports": [
+        "TauCeti.Probability.Distributions.Wishart.Basic",
+        "TauCeti.Probability.Distributions.Wishart.Nonsingular",
+        "TauCeti.Probability.Distributions.ChiSquared.Basic",
+        "TauCeti.Probability.Distributions.Gaussian.ChiSquared",
+        "TauCeti.Probability.Distributions.Gamma.Basic",
+        "TauCeti.MeasureTheory.Measure.WithDensity"
+      ],
+      "path": "TauCeti/Probability/Distributions/Wishart/LowDimension.lean",
+      "sha256": "bedb117ee627acdefe4542500afb0b0808a6404018fabf025f1247da1cfde8da",
+      "module": "TauCeti.Probability.Distributions.Wishart.LowDimension",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Wishart/LowDimension.lean"
+    },
+    {
+      "bytes": 14780,
+      "git_blob_sha1": "b3b84988e01f34d8b6b616769765ee0d4f9db53a",
+      "imports": [
+        "TauCeti.Probability.Distributions.Wishart.Bartlett",
+        "TauCeti.Probability.Distributions.Wishart.Congruence",
+        "TauCeti.Analysis.Matrix.OrthogonalRows",
+        "TauCeti.LinearAlgebra.Matrix.Rank",
+        "TauCeti.LinearAlgebra.Matrix.Triangular",
+        "TauCeti.MeasureTheory.Constructions.Pi"
+      ],
+      "path": "TauCeti/Probability/Distributions/Wishart/Marginal.lean",
+      "sha256": "ff70d9eeb242c3b9eb76614ce4e76b26b23595a525ff36550e6a5dbf3854e10a",
+      "module": "TauCeti.Probability.Distributions.Wishart.Marginal",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Wishart/Marginal.lean"
+    },
+    {
+      "bytes": 35451,
+      "git_blob_sha1": "effdedc7a4074891f86df456de65310e22bd55cc",
+      "imports": [
+        "TauCeti.Probability.Distributions.Wishart.Transforms",
+        "TauCeti.Analysis.SpecialFunctions.Log.SumLogOneSub",
+        "TauCeti.LinearAlgebra.Matrix.Trace.Basic",
+        "TauCeti.Probability.Moments.Basic",
+        "Mathlib.MeasureTheory.SpecificCodomains.Pi"
+      ],
+      "path": "TauCeti/Probability/Distributions/Wishart/Moments.lean",
+      "sha256": "31dd6f470aaf2d7828fe0a9e320914886e11c5d84e2c973829ca4fd2199d4160",
+      "module": "TauCeti.Probability.Distributions.Wishart.Moments",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Wishart/Moments.lean"
+    },
+    {
+      "bytes": 25458,
+      "git_blob_sha1": "05d282233c7f94f0ff13669a20e5872cdfb7a8f3",
+      "imports": [
+        "TauCeti.Analysis.Matrix.MeasurableSpace",
+        "TauCeti.Analysis.Matrix.PosDef",
+        "TauCeti.Analysis.SpecialFunctions.MultivariateGamma.Basic",
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.Lebesgue",
+        "TauCeti.MeasureTheory.Measure.SymmetricMatrix.PosDef",
+        "TauCeti.Probability.Density",
+        "Mathlib.Algebra.Order.Star.Real",
+        "Mathlib.Analysis.Matrix.PosDef",
+        "TauCeti.MeasureTheory.Measure.WithDensity"
+      ],
+      "path": "TauCeti/Probability/Distributions/Wishart/Nonsingular.lean",
+      "sha256": "2957d45e807effc6d30e9bbc381e0c0126d340925fc69945e9dadaac403a19f8",
+      "module": "TauCeti.Probability.Distributions.Wishart.Nonsingular",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Wishart/Nonsingular.lean"
+    },
+    {
+      "bytes": 28792,
+      "git_blob_sha1": "5b987cb3ed2a341398cf2bb9cf60d569ef860d32",
+      "imports": [
+        "TauCeti.Probability.Distributions.Gaussian.QuadraticForm",
+        "TauCeti.Probability.Distributions.Wishart.Basic",
+        "TauCeti.Probability.Distributions.Wishart.Nonsingular",
+        "TauCeti.Analysis.SpecialFunctions.MultivariateGamma.Divergence",
+        "TauCeti.Analysis.SpecialFunctions.MultivariateGamma.Integral",
+        "TauCeti.LinearAlgebra.Matrix.InvSub",
+        "TauCeti.Probability.Moments.Pi"
+      ],
+      "path": "TauCeti/Probability/Distributions/Wishart/Transforms.lean",
+      "sha256": "cdb416e552f986a82e5feb192f99bf24ab522c846662503441f0ac4b10d22905",
+      "module": "TauCeti.Probability.Distributions.Wishart.Transforms",
+      "submitted_path": "source/TauCeti/Probability/Distributions/Wishart/Transforms.lean"
+    },
+    {
+      "bytes": 26379,
+      "git_blob_sha1": "28a9e42dfb0a6d1e13e9a3f4606df7affa00823a",
+      "imports": [
+        "TauCeti.Analysis.Analytic.OfScalars",
+        "Mathlib.Analysis.Calculus.IteratedDeriv.Defs",
+        "Mathlib.MeasureTheory.Group.IntegralConvolution",
+        "Mathlib.Probability.IdentDistrib",
+        "Mathlib.Probability.Moments.Basic",
+        "Mathlib.Analysis.Analytic.Uniqueness",
+        "Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas",
+        "Mathlib.MeasureTheory.Integral.Bochner.SumMeasure",
+        "Mathlib.MeasureTheory.Integral.DominatedConvergence",
+        "Mathlib.Probability.Independence.Integration",
+        "Mathlib.Probability.Moments.IntegrableExpMul",
+        "TauCeti.MeasureTheory.Function.L1Space.Integrable"
+      ],
+      "path": "TauCeti/Probability/GeneratingFunction.lean",
+      "sha256": "1ea98fcb7e2e9531f089c6df4c70a29526a327e78332603461b370e7f46572dc",
+      "module": "TauCeti.Probability.GeneratingFunction",
+      "submitted_path": "source/TauCeti/Probability/GeneratingFunction.lean"
+    },
+    {
+      "bytes": 2963,
+      "git_blob_sha1": "6f995fa0e15701a88442085dd69b3bb890559f27",
+      "imports": [
+        "Mathlib.Probability.Kernel.Composition.MeasureCompProd"
+      ],
+      "path": "TauCeti/Probability/Kernel/Composition/MeasureCompProd.lean",
+      "sha256": "712c6fd2ba591c88f6cb080c4656351f81469009cb939da54f5fad78cd1fa06d",
+      "module": "TauCeti.Probability.Kernel.Composition.MeasureCompProd",
+      "submitted_path": "source/TauCeti/Probability/Kernel/Composition/MeasureCompProd.lean"
+    },
+    {
+      "bytes": 11975,
+      "git_blob_sha1": "c6d1712a9352d2047d0ad8296a6ad64abc045c85",
+      "imports": [
+        "Mathlib.Probability.Kernel.Disintegration.Basic",
+        "TauCeti.MeasureTheory.Measure.Prod"
+      ],
+      "path": "TauCeti/Probability/Kernel/Disintegration/Countable.lean",
+      "sha256": "af8a4d1ed531ad09c8028bec967c6b3ada644fa1a9bf3736f51495922c9f8d8f",
+      "module": "TauCeti.Probability.Kernel.Disintegration.Countable",
+      "submitted_path": "source/TauCeti/Probability/Kernel/Disintegration/Countable.lean"
+    },
+    {
+      "bytes": 5222,
+      "git_blob_sha1": "caa1c459a582b2436a4443b71e08ddd31df40040",
+      "imports": [
+        "Mathlib.MeasureTheory.Group.Convolution",
+        "Mathlib.Probability.Moments.Basic",
+        "Mathlib.Probability.Moments.IntegrableExpMul",
+        "Mathlib.MeasureTheory.Integral.Prod"
+      ],
+      "path": "TauCeti/Probability/Moments/Basic.lean",
+      "sha256": "73d2b0dabf823f677bd9ac0c560eab2aa6ee8370407d41048a083c3d6fa6ee6c",
+      "module": "TauCeti.Probability.Moments.Basic",
+      "submitted_path": "source/TauCeti/Probability/Moments/Basic.lean"
+    },
+    {
+      "bytes": 10593,
+      "git_blob_sha1": "79ccc38994466b514cc6595e9ab16bae71d51104",
+      "imports": [
+        "Mathlib.Probability.Moments.ComplexMGF",
+        "Mathlib.Analysis.SpecialFunctions.Complex.Analytic",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real"
+      ],
+      "path": "TauCeti/Probability/Moments/ComplexMGF.lean",
+      "sha256": "4b06e3251569a62da29800c628f526bb8b8b6f75357546cad92f49b39a2d657e",
+      "module": "TauCeti.Probability.Moments.ComplexMGF",
+      "submitted_path": "source/TauCeti/Probability/Moments/ComplexMGF.lean"
+    },
+    {
+      "bytes": 10621,
+      "git_blob_sha1": "a557b30d727c2a532a3ab8dae392d798294b1ef5",
+      "imports": [
+        "Mathlib.Probability.Moments.CovarianceBilin",
+        "Mathlib.Analysis.Matrix.Hermitian",
+        "Mathlib.Analysis.InnerProductSpace.Projection.Reflection",
+        "TauCeti.MeasureTheory.Integral.OddSymmetric"
+      ],
+      "path": "TauCeti/Probability/Moments/Covariance.lean",
+      "sha256": "fe0634c4dd3a044d52c57d4797b6b0531fc4de7c74c6a02b1a3db80b22873416",
+      "module": "TauCeti.Probability.Moments.Covariance",
+      "submitted_path": "source/TauCeti/Probability/Moments/Covariance.lean"
+    },
+    {
+      "bytes": 14522,
+      "git_blob_sha1": "67f8f8d7ce6f82ef412c47e7a10ed0d86e4da347",
+      "imports": [
+        "Mathlib.Probability.Moments.ComplexMGF",
+        "Mathlib.MeasureTheory.Measure.CharacteristicFunction.Basic",
+        "Mathlib.Analysis.Analytic.Order",
+        "TauCeti.Probability.Moments.Basic"
+      ],
+      "path": "TauCeti/Probability/Moments/Determinacy.lean",
+      "sha256": "1310af6ac0355fff433983be1c43be3eb87cd1e212dba07082ccfc76a2de9832",
+      "module": "TauCeti.Probability.Moments.Determinacy",
+      "submitted_path": "source/TauCeti/Probability/Moments/Determinacy.lean"
+    },
+    {
+      "bytes": 4539,
+      "git_blob_sha1": "ef173c1e4fa91d885e66954f42d742d6c3ce6a3d",
+      "imports": [
+        "Mathlib.Probability.Moments.IntegrableExpMul",
+        "Mathlib.Probability.Moments.Basic"
+      ],
+      "path": "TauCeti/Probability/Moments/IntegrableExpMul.lean",
+      "sha256": "635faa30ce5713deef08fae352d43709e26221dfbe4e1978163b1288f7b4df88",
+      "module": "TauCeti.Probability.Moments.IntegrableExpMul",
+      "submitted_path": "source/TauCeti/Probability/Moments/IntegrableExpMul.lean"
+    },
+    {
+      "bytes": 8287,
+      "git_blob_sha1": "030142c428cfc12bf49639aaeb805bf4da87ffde",
+      "imports": [
+        "Mathlib.MeasureTheory.Integral.Pi",
+        "Mathlib.Probability.Moments.Basic",
+        "Mathlib.Probability.Moments.IntegrableExpMul",
+        "Mathlib.Probability.Moments.Variance",
+        "Mathlib.Data.Nat.Choose.Multinomial"
+      ],
+      "path": "TauCeti/Probability/Moments/Pi.lean",
+      "sha256": "f18a95efada80f707f1b0608c13a6375b07369ae32dffa6397dbd87f88c5a855",
+      "module": "TauCeti.Probability.Moments.Pi",
+      "submitted_path": "source/TauCeti/Probability/Moments/Pi.lean"
+    },
+    {
+      "bytes": 56593,
+      "git_blob_sha1": "e311e76b8b6e1816af4b1a87d1b90ac90f764953",
+      "imports": [
+        "Mathlib.MeasureTheory.Measure.Lebesgue.Basic",
+        "Mathlib.MeasureTheory.Measure.ProbabilityMeasure",
+        "Mathlib.Topology.Instances.EReal.Lemmas",
+        "TauCeti.MeasureTheory.Function.Monotone",
+        "TauCeti.MeasureTheory.Measure.Mod0MeasureIso",
+        "TauCeti.Probability.Cdf"
+      ],
+      "path": "TauCeti/Probability/Quantile.lean",
+      "sha256": "f6c2f3fd65ebf7381dea8e9408e8d6daf334948b66962109d44fa30d0cc9f3d0",
+      "module": "TauCeti.Probability.Quantile",
+      "submitted_path": "source/TauCeti/Probability/Quantile.lean"
+    },
+    {
+      "bytes": 9458,
+      "git_blob_sha1": "11bacd6dba60bb28e4570bc6c1b4c2b5e67bd335",
+      "imports": [
+        "TauCeti.MeasureTheory.OptimalTransport.Wasserstein.Quantile.Basic"
+      ],
+      "path": "TauCeti/Probability/StochasticOrder.lean",
+      "sha256": "f07df8378f2b4a1c231ddecf62a1872aaf62bc7dd9916f8ec3303f26511adc41",
+      "module": "TauCeti.Probability.StochasticOrder",
+      "submitted_path": "source/TauCeti/Probability/StochasticOrder.lean"
+    },
+    {
+      "bytes": 5799,
+      "git_blob_sha1": "9b477561f6365351caddda03bf1b32de6089bc07",
+      "imports": [
+        "Mathlib.MeasureTheory.Measure.Haar.Unique",
+        "Mathlib.MeasureTheory.Measure.ProbabilityMeasure"
+      ],
+      "path": "TauCeti/RepresentationTheory/Compact/Haar.lean",
+      "sha256": "88e51587989763767f1340d552350420cde82f693814ff86396975eeb5e5b9e0",
+      "module": "TauCeti.RepresentationTheory.Compact.Haar",
+      "submitted_path": "source/TauCeti/RepresentationTheory/Compact/Haar.lean"
+    },
+    {
+      "bytes": 25874,
+      "git_blob_sha1": "63f911d9b6262bc70441ba3b09679a14cf9ebf3b",
+      "imports": [
+        "Mathlib.Data.Fintype.EquivFin",
+        "Mathlib.RingTheory.MvPolynomial.Homogeneous",
+        "TauCeti.Combinatorics.Young.Kostka"
+      ],
+      "path": "TauCeti/RingTheory/MvPolynomial/Symmetric/Schur/Basic.lean",
+      "sha256": "ddd6aaba22feed682f8b1a54d6ca018490d13e36f671c4f2d2d911a37163c08a",
+      "module": "TauCeti.RingTheory.MvPolynomial.Symmetric.Schur.Basic",
+      "submitted_path": "source/TauCeti/RingTheory/MvPolynomial/Symmetric/Schur/Basic.lean"
+    },
+    {
+      "bytes": 9735,
+      "git_blob_sha1": "a325e1fdfc64d5d3401a9445f46eda862e914cf9",
+      "imports": [
+        "Mathlib.GroupTheory.Perm.Sign",
+        "Mathlib.RingTheory.MvPolynomial.Symmetric.Defs",
+        "TauCeti.Combinatorics.Young.BenderKnuth",
+        "TauCeti.RingTheory.MvPolynomial.Symmetric.Schur.Basic"
+      ],
+      "path": "TauCeti/RingTheory/MvPolynomial/Symmetric/Schur/Symmetric.lean",
+      "sha256": "eda51aa7cbc29a487fae9538df67e05b612b2378a79465677c6ba49ab3131ded",
+      "module": "TauCeti.RingTheory.MvPolynomial.Symmetric.Schur.Symmetric",
+      "submitted_path": "source/TauCeti/RingTheory/MvPolynomial/Symmetric/Schur/Symmetric.lean"
+    },
+    {
+      "bytes": 3894,
+      "git_blob_sha1": "7475559e6c70032c2e4feddfafc82b495ac9f249",
+      "imports": [
+        "Mathlib.RingTheory.Nullstellensatz",
+        "Mathlib.Topology.Algebra.MvPolynomial"
+      ],
+      "path": "TauCeti/Topology/Algebra/MvPolynomial/ZeroLocus.lean",
+      "sha256": "1f85a53e19af6065f72344e88149a21a2ee7523e89e892ae97093a2bd4f8ed59",
+      "module": "TauCeti.Topology.Algebra.MvPolynomial.ZeroLocus",
+      "submitted_path": "source/TauCeti/Topology/Algebra/MvPolynomial/ZeroLocus.lean"
+    },
+    {
+      "bytes": 3545,
+      "git_blob_sha1": "5675c9d212e45762f43031c30267e256afba8f8d",
+      "imports": [
+        "Mathlib.Topology.Algebra.Star.Unitary"
+      ],
+      "path": "TauCeti/Topology/Algebra/Star/Unitary.lean",
+      "sha256": "216a9b9ce0c075b49245a9f7016c7dc77f5d2ef2c538fe4895356b369c8ef826",
+      "module": "TauCeti.Topology.Algebra.Star.Unitary",
+      "submitted_path": "source/TauCeti/Topology/Algebra/Star/Unitary.lean"
+    },
+    {
+      "bytes": 6736,
+      "git_blob_sha1": "a6e7e370ec51bf4c7c2714bd42f630dda5b801bf",
+      "imports": [
+        "Mathlib.Analysis.CStarAlgebra.Matrix",
+        "Mathlib.Analysis.RCLike.Lemmas",
+        "Mathlib.Topology.Algebra.Star.Unitary",
+        "TauCeti.LinearAlgebra.Matrix.GeneralLinearGroup.SpecialUnitary",
+        "TauCeti.Topology.Algebra.Star.Unitary"
+      ],
+      "path": "TauCeti/Topology/Algebra/UnitaryGroup.lean",
+      "sha256": "da494c04dc05d86d6f0dfb41fa66da68d1014da31b7b996f4f8cf8fe36545312",
+      "module": "TauCeti.Topology.Algebra.UnitaryGroup",
+      "submitted_path": "source/TauCeti/Topology/Algebra/UnitaryGroup.lean"
+    },
+    {
+      "bytes": 1879,
+      "git_blob_sha1": "1ae71a3a0786719083b53cecb5e339529d0471c9",
+      "imports": [
+        "Mathlib.Analysis.Normed.Group.Bounded"
+      ],
+      "path": "TauCeti/Topology/Compactness/Normed.lean",
+      "sha256": "f43bca8524ac4ae01c271cfb0c3f796ac08468f9bd0fd3e618ca5b7cf120ce47",
+      "module": "TauCeti.Topology.Compactness.Normed",
+      "submitted_path": "source/TauCeti/Topology/Compactness/Normed.lean"
+    },
+    {
+      "bytes": 1483,
+      "git_blob_sha1": "5671615298877cf979922933167e76a45547ce58",
+      "imports": [
+        "Mathlib.Analysis.MeanInequalitiesPow",
+        "Mathlib.Topology.EMetricSpace.Defs"
+      ],
+      "path": "TauCeti/Topology/EMetricSpace/Rpow.lean",
+      "sha256": "e111cba7954fae85b6e303f6f24b008fa965273092e744771b6e95a0cb6a96e4",
+      "module": "TauCeti.Topology.EMetricSpace.Rpow",
+      "submitted_path": "source/TauCeti/Topology/EMetricSpace/Rpow.lean"
+    },
+    {
+      "bytes": 4961,
+      "git_blob_sha1": "f491203e852b3c50f175d2cc465b27a4eb2f3ca3",
+      "imports": [
+        "Mathlib.LinearAlgebra.Matrix.Kronecker",
+        "Mathlib.Topology.Algebra.GroupWithZero",
+        "Mathlib.Topology.Instances.Matrix",
+        "Mathlib.Topology.MetricSpace.Pseudo.Defs",
+        "Mathlib.Topology.Metrizable.Basic"
+      ],
+      "path": "TauCeti/Topology/Instances/Matrix.lean",
+      "sha256": "df2301ffd97662723ccd6430e2d5abb0c6631e36b17ec112a2e62011cbecf3d8",
+      "module": "TauCeti.Topology.Instances.Matrix",
+      "submitted_path": "source/TauCeti/Topology/Instances/Matrix.lean"
+    },
+    {
+      "bytes": 3339,
+      "git_blob_sha1": "aa5571e8a414dc70072d6bbdd872d81fa8ebaa30",
+      "imports": [
+        "Mathlib.Topology.Connected.Clopen",
+        "Mathlib.Topology.Order.Compact"
+      ],
+      "path": "TauCeti/Topology/Order/Compact.lean",
+      "sha256": "e366b3fc65329cdf34f8aa7675f25a721576ed18c7d988b2f216820e84ff3ed9",
+      "module": "TauCeti.Topology.Order.Compact",
+      "submitted_path": "source/TauCeti/Topology/Order/Compact.lean"
+    },
+    {
+      "bytes": 10220,
+      "git_blob_sha1": "87a49b5444f5121d1df2b81b0a62b8bd730649ea",
+      "imports": [
+        "Mathlib.Topology.ContinuousMap.Bounded.Normed",
+        "Mathlib.Topology.Instances.ENNReal.Lemmas",
+        "Mathlib.Topology.MetricSpace.Lipschitz",
+        "Mathlib.Topology.Semicontinuity.Basic"
+      ],
+      "path": "TauCeti/Topology/Semicontinuity/Approximation.lean",
+      "sha256": "c0d2706f172281290f6d9494e819b5f1ac77bab647d4641b7919cee793961c43",
+      "module": "TauCeti.Topology.Semicontinuity.Approximation",
+      "submitted_path": "source/TauCeti/Topology/Semicontinuity/Approximation.lean"
+    }
+  ]
+}

@@ -71,3 +71,13 @@ The independent Challenge elaborates with the exact pinned canonical TauCeti
 support closure and only its 20 intended theorem placeholders. Full Solution
 compilation, strict dependency comparison and independent kernel checking
 remain pending. This is an unchecked packaging draft.
+
+## Canonical statement and source provenance
+
+This candidate retains all twenty previously selected principal/support declarations, including unrestricted real shape, finite and extended moments, equality and independence clauses, real overlaps, inverse laws, spectral boundary values, and complex/quaternion density and singular Gaussian-Gram results. Challenge imports only canonical Mathlib. Its complete literal primitives fix Frobenius norms/inner products and subtype uniformity, normalized real and inverse laws (including invalid parameters), rectangular congruence, Gaussian-Gram sampling at every integer size and scale, and the standard quaternion representation. Ten additional complete value specifications and four constructor supports are comparison obligations rather than additional paper results.
+
+The exact 215-module canonical Tau Ceti source closure is retained under source/TauCeti, with unchanged upstream bytes and licence provenance under licenses/vendor/tauceti. Original paper proofs and unused readable source files are retained. Default proof roots use the actual canonical closure and own paper modules, avoiding the unrelated upstream all-module build.
+
+Verification is pending for this complete candidate. Independent canonical primitive proofs passed run44464838345; the complete interface and exact source equivalences are separate checks. No current full Source/Solution/Comparator/kernel pass is claimed by component elaboration.
+
+Exact component results: complete996-line canonical Challenge PASS run44467724333; all10 complete primitive-value equivalences and8 underlying transport identities PASS run44467755545 after checking47 canonical source files and preserving the independently compiled primitive artifacts. Complete Source/Solution replay, strict Comparator and independent mandatory kernels remain pending. The seven proof-instance comparison targets are propositions, rather than additional paper results or free semantic data.
