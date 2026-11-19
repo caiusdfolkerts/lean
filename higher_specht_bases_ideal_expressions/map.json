@@ -1,0 +1,63 @@
+{
+  "project": "higher_specht_bases_ideal_expressions",
+  "baseline_project": "higher_specht_bases",
+  "paper_sha256": "931c0ee33b94c7a77d373c4040abb40151a8f1cd049b977006df188e31013a0c",
+  "companion_to": {
+    "entry": "higher_specht_bases_status",
+    "commit": "fb5ab9354a764e61ae08d5e8f631614d1920f776"
+  },
+  "status": "ideal_expression_candidate_awaiting_full_preflight",
+  "selected_results": [
+    "Corollaries 5.3 and 6.7: prescribed bases and distributivity of the generated ideal lattices",
+    "Corollary 5.6: prescribed Springer intersection basis"
+  ],
+  "coverage": [
+    {
+      "paper_result": "Corollary 5.3",
+      "paper_file": "paper.pdf",
+      "declarations": [
+        {
+          "name": "HigherSpecht.GriffinIdealExpression.ideal_eq_of_eligible_eq",
+          "source_path": "source/higher_specht/verified/remaining03_complete.lean"
+        },
+        {
+          "name": "HigherSpecht.GriffinIdealExpression.corollary_5_3_basis",
+          "source_path": "source/higher_specht/verified/remaining03_complete.lean"
+        },
+        {
+          "name": "HigherSpecht.corollary_5_3_distributive",
+          "source_path": "source/higher_specht/verified/remaining03_complete.lean"
+        }
+      ]
+    },
+    {
+      "paper_result": "Corollary 6.7",
+      "paper_file": "paper.pdf",
+      "declarations": [
+        {
+          "name": "HigherSpecht.UntruncatedIdealExpression.ideal_eq_of_eligible_eq",
+          "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean"
+        },
+        {
+          "name": "HigherSpecht.UntruncatedIdealExpression.corollary_6_7_basis",
+          "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean"
+        },
+        {
+          "name": "HigherSpecht.corollary_6_7_distributive",
+          "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean"
+        }
+      ]
+    },
+    {
+      "paper_result": "Corollary 5.6",
+      "paper_file": "paper.pdf",
+      "declarations": [
+        {
+          "name": "HigherSpecht.corollary_5_6_basis",
+          "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean"
+        }
+      ]
+    }
+  ],
+  "coverage_status": "partial_principal_selection_not_whole_paper"
+}

@@ -1,0 +1,61 @@
+{
+  "status": "frozen measured proof-auxiliary raw data repair; full22 preflight pending",
+  "failed_commit": "59f31e38f714939c801667016086a97ba3080579",
+  "failed_run": 44469251922,
+  "exact_raw_diagnostic": {
+    "status": "validated exact whole20target/reachableunion diagnostic; not full pass",
+    "source_commit": "59f31e38f714939c801667016086a97ba3080579",
+    "diagnostic_commit": "01d3aa68e86c9625902a45e6e1934f91891bc2e0",
+    "workflow_run": 44471405402,
+    "all20raw_types_and_levelparams_identical": true,
+    "visited": 12785,
+    "raw_mismatch_count": 5,
+    "data_value_mismatches": 2,
+    "missing_generated_auxiliary_names": 3,
+    "raw_leaves": 4,
+    "type_leaves": 0,
+    "all_enumeration_bounds_complete": true,
+    "bounded_log_truncated": false,
+    "helper_early1GiB_alpha_and_DAG_controls_passed": true,
+    "receipt_sha256": "8c432efe5d0e7ede971ca5990d9d62fba11cd7868308bd8e35ed58b2bffafc15",
+    "log_sha256": "807642a443e496a8e4db14db9967ea6bdcc89afe905f77ecdb47ccb412011ae9",
+    "artifact_sha256": "6e5bae3a02133474e990f19f844fcfab5b155047fd7a3a60e363b70f19eb115e",
+    "actual_raw_mismatches": [
+      "RAW_VALUE_OR_METADATA_MISMATCH HigherSpecht.IsDominanceTriangularMultiplier theorem=false type_eq=true levels_eq=true value_eq=false hints_challenge=regular(20) hints_solution=regular(20) safety_eq=true mutual_names_eq=true",
+      "RAW_VALUE_OR_METADATA_MISMATCH Nat.Partition.Dominates theorem=false type_eq=true levels_eq=true value_eq=false hints_challenge=regular(8) hints_solution=regular(8) safety_eq=true mutual_names_eq=true",
+      "MISSING_SOLUTION Nat.Partition.Dominates._proof_1",
+      "MISSING_CHALLENGE HigherSpecht.monomialMultiplier._proof_1",
+      "MISSING_SOLUTION HigherSpecht.IsDominanceTriangularMultiplier._proof_1"
+    ]
+  },
+  "repair": "All20 selected types/universes match. Two data bodies reference inconsistent generated proof auxiliaries: the partition sort transitivity and reflexivity argument to toPartition. Both Source/Challenge now use literal named selected transitivity/reflexivity propositions. Every old declaration header, parameter, coefficient model, arbitrary nonzero leading coefficient and admissible multiplier remains unchanged. No reducibility-hint or abbreviation change is made.",
+  "existing20_targets": [
+    "HigherSpecht.springer_basis_target",
+    "HigherSpecht.theorem_4_1",
+    "HigherSpecht.corollary_8_1_springer_characteristic",
+    "HigherSpecht.corollary_8_1_griffin_characteristic_all_partitions",
+    "HigherSpecht.mem_prefixShape",
+    "HigherSpecht.prefixShape_le",
+    "HigherSpecht.prefixShape_card",
+    "TauCeti.StandardYoungTableau.row_strict",
+    "TauCeti.StandardYoungTableau.col_strict",
+    "HigherSpecht.standardTableau_monotoneCells",
+    "HigherSpecht.prefixLabelEquiv_apply_val",
+    "YoungDiagram.isAddable_def",
+    "YoungDiagram.palomarAddCell_isLowerSet",
+    "YoungDiagram.palomarIsAddable_decision_iff",
+    "TauCeti.palomarFiber_mul",
+    "TauCeti.palomarFiber_one",
+    "TauCeti.palomarFiber_inv",
+    "HigherSpecht.prefixTableau._proof_2",
+    "HigherSpecht.prefixTableau._proof_3",
+    "HigherSpecht.corollary_4_3_on_admissible_multipliers"
+  ],
+  "new_selected_support": [
+    "Nat.Partition.palomarGe_isTrans",
+    "HigherSpecht.palomarPartitionCard_refl"
+  ],
+  "all5substantive_targets_preserved": true,
+  "reducibility_hints_were_already_equal": true,
+  "no_local_Lean": true
+}
