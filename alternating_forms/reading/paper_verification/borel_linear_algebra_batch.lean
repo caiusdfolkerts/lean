@@ -1,6 +1,0 @@
-module
-
-public import PaperVerification.AlternatingFormsCanonicalUnipotent
-public import PaperVerification.AlternatingFormsBorelWeights
-
-public import PaperVerification.PolynomialOrbitFixedPoint
