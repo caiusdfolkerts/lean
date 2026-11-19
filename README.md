@@ -1,1 +1,1 @@
-Wishart generic matrix compression proof diagnostic after full44498172349. Exact statements and operations are preserved; the candidate changes only proof transparency. This is not a full preflight.
+Canonical-only generic matrix compression proof test after full44498172349. Compression and spectral attainment passed prior model44502495780; remaining orthonormality predicate orientation is fixed using equality symmetry. All3original signatures and data are unchanged. No full preflight is claimed.

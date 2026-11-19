@@ -146,7 +146,7 @@ theorem coordinateFrame_orthonormal {j p : ℕ} (e : Fin j ↪ Fin p) :
       star ((1 : Matrix (Fin p) (Fin p) 𝕜) x (e i)) *
         (1 : Matrix (Fin p) (Fin p) 𝕜) x (e k)) =
       (1 : Matrix (Fin j) (Fin j) 𝕜) i k
-    simp [Matrix.one_apply, e.injective.eq_iff]
+    simp [Matrix.one_apply, e.injective.eq_iff, eq_comm]
 
 def OrthonormalFrame (𝕜 : Type*) [RCLike 𝕜] (p j : ℕ) :=
   {U : Matrix (Fin p) (Fin j) 𝕜 // Uᴴ * U = 1}
