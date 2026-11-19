@@ -4,6 +4,7 @@ public import Mathlib
 /-! Representation classes in the relative Tor formula. -/
 
 @[expose] public section
+attribute [-instance] MvPolynomial.instModuleSelf
 noncomputable section
 set_option autoImplicit false
 set_option maxRecDepth 4000
