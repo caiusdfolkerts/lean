@@ -8,16 +8,16 @@
       "module": "Challenge",
       "case_dir": "cases/wishart_full20_canonical",
       "original_package": "reports/wishart/full20-canonical",
-      "original_challenge": "reports/wishart/full20-canonical/shared-witness-repair/revision-02/Challenge.lean",
+      "original_challenge": "reports/wishart/full20-canonical/late-proof-goal-probe/Challenge.lean",
       "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
       "hashes": {
-        "Challenge.lean": "9455c636e1d233bf7ce666416118db9819b9bde13475675b7d7b493918222350",
+        "Challenge.lean": "ab2adf0ff159fa30a1d3ddf98892801185a495e93959d70eeee6dbbd20b0da76",
         "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
         "lake-manifest.json": "5619bb28ae7f2972522467eccf712e99876805a4fb0b7298a3c8de5918224147",
         "original-lakefile.toml": "e429ab885c0b86124ac6b748b01715efdede7f476661ead3634e0c69b6521ccb"
       },
-      "challenge_lines": 980,
-      "challenge_bytes": 100923,
+      "challenge_lines": 982,
+      "challenge_bytes": 101433,
       "dependency_pins": [
         {
           "name": "mathlib",
@@ -65,7 +65,7 @@
           "rev": "34d2efffcb6dc8d5f3537cf6a7f88bfaa999ec49"
         }
       ],
-      "diagnostic_class": "complete Wishart20 interface with genuine measured Prop witness normalization; no data holes added",
+      "diagnostic_class": "bounded direct late synthetic proof-goal probe after exact expanded raw evidence; full source not claimed",
       "remote_memory_mib": 8192
     },
     {
@@ -135,7 +135,6 @@
     }
   ],
   "default_case_ids": [
-    "wishart_shared_proof_witnesses",
     "wishart_full20_canonical"
   ],
   "operator_resource_policy": {

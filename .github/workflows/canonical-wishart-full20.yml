@@ -3,7 +3,7 @@ run-name: Challenge-only diagnostic ${{ github.run_id }}
 # Separate diagnostic only. No full project/Solution build, Comparator or intake.
 on:
   push:
-    branches: [palomar-diagnostics/wishart-shared-proof-witness-canonical]
+    branches: [palomar-diagnostics/wishart-late-proof-goals]
   workflow_dispatch:
     inputs:
       cases:

@@ -1,4 +1,5 @@
 module
+public meta import Lean
 public import Mathlib
 /-! Literal canonical primitives for all twenty Wishart targets.
 Data and genuine constructor proofs adapted from pinned TauCeti06d5bb;
@@ -978,3 +979,4 @@ namespace Wishart section open scoped Classical Quaternion ENNReal
 /-- The full Section 7 target, with both literal laws, both fields, nonvacuous normalization, the selected-factor chains, and finite powers. -/
 theorem theorem_7_1 : TheoremSevenOne := by sorry
 end end Wishart
+run_cmd do let env ← Lean.getEnv; for name in [`WishartVerification.normalizedWeight._proof_1, `Wishart.Spectral.ascendingIndexEquiv._proof_1, `Wishart.SpectralGauge.identitySymmetric._proof_1, `Wishart.shiftedGaugeValue._proof_1, `Wishart.ComplexMatrix.hermitianLebesgue._proof_3] do if let some ci := env.find? name then let txt ← Lean.Elab.Command.liftTermElabM do return (← Lean.Meta.ppExpr ci.type).pretty; Lean.logInfo m!"{name}: {txt}" else Lean.logInfo m!"MISSING {name}"
