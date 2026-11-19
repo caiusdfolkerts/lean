@@ -27,6 +27,10 @@ variable {R : Type u} [CommRing R] {X : Type v} {Y : Type w} {Z : Type x}
   [Module R X] [Module R Y] [Module R Z]
 theorem boundaryMap_val (f : X →ₗ[R] Y) (g : Y →ₗ[R] Z) (h : g.comp f = 0) (z : X) :
     (FourPapers.FilteredHomology.boundaryMap f g h z).val = f z := rfl
+/-- The actual signed coefficient action, uniformly for every ring module. -/
+theorem signed_unit_action (a : R) (e : ℤˣ) (x : X) :
+    (a * ((e : ℤ) : R)) • x = a • (e • x) := by
+  rw [mul_smul,Units.smul_def,Int.cast_smul_eq_zsmul]
 end PalomarSublattice.BridgeAPI
 
 namespace PalomarSublattice
@@ -299,7 +303,8 @@ private theorem differential_eq_source (I : Ideal (MvPolynomial V K)) (p : ℕ) 
   apply Finset.sum_congr rfl
   intro j hj
   congr 1
-  simp [mul_smul, Units.smul_def, Int.cast_smul_eq_zsmul]
+  apply Subtype.ext
+  simp only [Submodule.coe_smul,mul_smul,Units.smul_def,Int.cast_smul_eq_zsmul]
 
 private theorem previous_eq_source (I : Ideal (MvPolynomial V K)) (p : ℕ) :
     previous I p = FourPapers.Sublattice.actualIdealPreviousDifferential I p := by
@@ -522,7 +527,7 @@ def contraction (v : FiniteVariable.{u} n) : Wedge (n := n) (k := k) →ₗ[k] W
 def differential : Module.End k (TensorAlgebra (E := E) (k := k)) :=
   ∑ v : FiniteVariable.{u} n,
     TensorProduct.map (LinearMap.mulLeft k (baseVariable (E := E) v)) (contraction v)
-private theorem sourceClosed (hE : finiteLatticeClosed n E) :
+theorem sourceClosed (hE : finiteLatticeClosed n E) :
     FourPapers.Sublattice.finiteLatticeClosed n E := by
   exact hE
 
@@ -1074,7 +1079,8 @@ private theorem quotientCoefficientPiece_map (B : Family V) (a : V →₀ ℤ) :
     rw [quotientMonomialBasis_apply]
     apply Submodule.subset_span
     refine ⟨MvPolynomial.monomial b.val 1, ⟨b.val,hb,rfl⟩, ?_⟩
-    exact Ideal.quotientEquivAlgOfEq_mk k _ _
+    exact Ideal.quotientEquivAlgOfEq_mk k
+      (forbiddenIdeal_eq_monomialIdeal (k := k) B).symm (MvPolynomial.monomial b.val (1 : k))
 
 end PalomarSublattice.FineKoszul
 
@@ -1101,7 +1107,8 @@ private theorem idealDifferential_eq_source (B : Family V) (p : ℕ) :
   apply Finset.sum_congr rfl
   intro j hj
   congr 1
-  simp [mul_smul, Units.smul_def, Int.cast_smul_eq_zsmul]
+  apply Subtype.ext
+  simp only [Submodule.coe_smul,mul_smul,Units.smul_def,Int.cast_smul_eq_zsmul]
 
 private def idealSourcePrevious (B : Family V) (a : Exponent V) :
     ∀ p : ℕ, homogeneousPiece (k := k) B a p →ₗ[k] homogeneousPiece (k := k) B a p.pred
@@ -1234,6 +1241,17 @@ private def quotientChainsEquiv (B : Family V) (p : ℕ) :
       (Set.powersetCard V p →₀ CoefficientQuotient (k := k) B) :=
   Finsupp.mapRange.linearEquiv (quotientCoefficientEquiv B).toLinearEquiv
 
+private theorem quotientChainsEquiv_zero (B : Family V) (p : ℕ) :
+    quotientChainsEquiv (k := k) B p 0 = 0 :=
+  LinearEquiv.map_zero (quotientChainsEquiv (k := k) B p)
+
+private theorem quotientChainsEquiv_sum (B : Family V) (p : ℕ) {α : Type*}
+    (t : Finset α)
+    (f : α → Coordinates (V := V) (MvPolynomial V k ⧸ monomialIdeal k B) p) :
+    quotientChainsEquiv (k := k) B p (∑ a ∈ t, f a) =
+      ∑ a ∈ t, quotientChainsEquiv (k := k) B p (f a) :=
+  map_sum (quotientChainsEquiv (k := k) B p).toLinearMap f t
+
 private theorem quotientChains_repr (B : Family V) (p : ℕ)
     (x : Coordinates (V := V) (MvPolynomial V k ⧸ monomialIdeal k B) p)
     (t : QuotientIndex B p) :
@@ -1328,13 +1346,16 @@ private theorem quotientDifferential_comm (B : Family V) (p : ℕ) :
   rw [coordinateDifferential_single]
   simp only [differential, LinearMap.restrictScalars_apply, Finsupp.lsum_single,
     LinearMap.sum_apply, LinearMap.comp_apply, Finsupp.lsingle_apply,
-    LinearMap.lsmul_apply, map_sum, quotientChainsEquiv_single,
+    LinearMap.lsmul_apply, quotientChainsEquiv_sum, quotientChainsEquiv_single,
     quotientCoefficientEquiv_smul, PalomarSublattice.Koszul.eraseIndex_eq_source,
     PalomarSublattice.Koszul.eraseSign_eq_source]
   apply Finset.sum_congr rfl
   intro j hj
   congr 1
-  simp [mul_smul, Units.smul_def, Int.cast_smul_eq_zsmul]
+  exact BridgeAPI.signed_unit_action
+    (R := MvPolynomial V k) (X := CoefficientQuotient (k := k) B)
+    (X j.val) (TauCeti.ExteriorAlgebra.basisEraseSign j.val s.val)
+    (quotientCoefficientEquiv (k := k) B x)
 
 private def quotientSourcePrevious (B : Family V) (a : Exponent V) :
     ∀ p : ℕ, quotientPiece (k := k) B a p →ₗ[k] quotientPiece (k := k) B a p.pred
@@ -1354,11 +1375,14 @@ private theorem quotientPrevious_comm (B : Family V) (p : ℕ)
         (quotientChainsEquiv (k := k) B p x) := by
   cases p with
   | zero => simp only [previous, FourPapers.Sublattice.quotientPreviousDifferential,
-      LinearMap.zero_apply, map_zero]
+      LinearMap.zero_apply, quotientChainsEquiv_zero]
   | succ p =>
-    simpa only [previous, FourPapers.Sublattice.quotientPreviousDifferential,
-      LinearMap.comp_apply, LinearEquiv.coe_coe] using
-      LinearMap.congr_fun (quotientDifferential_comm (k := k) B p) x
+    change quotientChainsEquiv (k := k) B p
+      (differential (k := k) (M := MvPolynomial V k ⧸ monomialIdeal k B) p x) =
+        FourPapers.Sublattice.quotientDifferential (k := k) B p
+          (quotientChainsEquiv (k := k) B (p+1) x)
+    have h := LinearMap.congr_fun (quotientDifferential_comm (k := k) B p) x
+    simpa only [LinearMap.comp_apply,LinearEquiv.coe_coe] using h
 
 end PalomarSublattice.FineKoszul
 
@@ -1390,7 +1414,7 @@ private theorem quotientPrevious_val (B : Family V) (a : Exponent V) (p : ℕ)
         ((quotientChainsEquiv (k := k) B p).symm x.val)) := by
   cases p with
   | zero => simp only [quotientSourcePrevious, previous, LinearMap.zero_apply,
-      ZeroMemClass.coe_zero, map_zero]
+      ZeroMemClass.coe_zero, quotientChainsEquiv_zero]
   | succ p =>
     have h := LinearMap.congr_fun (quotientDifferential_comm (k := k) B p)
       ((quotientChainsEquiv (k := k) B (p + 1)).symm x.val)
@@ -1408,7 +1432,7 @@ private def quotientCyclesEquiv (B : Family V) (a : Exponent V) (p : ℕ) :
   toFun x := ⟨quotientHomogeneousPieceEquiv (k := k) B a p ⟨x.val,x.property.2⟩,by
     apply Subtype.ext
     rw [quotientPrevious_val, quotientHomogeneousPieceEquiv_val,
-      LinearEquiv.symm_apply_apply, x.property.1, map_zero]
+      LinearEquiv.symm_apply_apply, x.property.1, quotientChainsEquiv_zero]
     rfl⟩
   invFun x := ⟨(quotientHomogeneousPieceEquiv (k := k) B a p).symm x.val |>.val,by
     refine ⟨?_,((quotientHomogeneousPieceEquiv (k := k) B a p).symm x.val).property⟩
@@ -1418,7 +1442,7 @@ private def quotientCyclesEquiv (B : Family V) (a : Exponent V) (p : ℕ) :
     rw [quotientPrevious_val] at hx
     simpa only [quotientHomogeneousPieceEquiv, LinearEquiv.trans_symm,
       LinearEquiv.trans_apply, LinearEquiv.ofEq_symm, LinearEquiv.coe_ofEq_apply,
-      LinearEquiv.submoduleMap_symm_apply, map_zero] using hx⟩
+      LinearEquiv.submoduleMap_symm_apply, quotientChainsEquiv_zero] using hx⟩
   left_inv x := by
     apply Subtype.ext
     exact congrArg Subtype.val ((quotientHomogeneousPieceEquiv (k := k) B a p).symm_apply_apply
@@ -2008,8 +2032,8 @@ theorem cyclesEquiv_map_boundaries :
     refine ⟨(tensorEquiv J).symm a,?_⟩
     apply (tensorEquiv J).injective
     rw [tensorEquiv_d]
-    rw [cyclesEquiv_symm_val, AlgEquiv.apply_symm_apply]
-    exact ha
+    rw [cyclesEquiv_symm_val]
+    simpa only [AlgEquiv.apply_symm_apply] using ha
 
 /-- Genuine algebra isomorphism between actual cycle/boundary quotients. -/
 def homologyEquiv : Homology J ≃ₐ[k] (FourPapers.Sublattice.idealReesKoszulDGA J).Homology :=
@@ -2117,6 +2141,7 @@ theorem sublattice_deformation_rees_generation (o : MonomialOrder (FiniteVariabl
       exact hz
     obtain ⟨x,hx,rfl⟩ := hz'
     change e.symm (e x) ∈ S
+    rw [e.symm_apply_apply]
     change x ∈ Algebra.adjoin k (GeneralRees.FirstClasses J)
     exact Algebra.subset_adjoin hx
   rw [FourPapers.Sublattice.theorem43_rees_homology_generation
