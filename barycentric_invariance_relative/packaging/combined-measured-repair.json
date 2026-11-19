@@ -1,0 +1,26 @@
+{
+  "source_parent_commit": "13e5445937ab14970f335f5a95d4b04ec21f33b2",
+  "canonical_run": 44494921048,
+  "canonical_commit": "bc545037a1dce14c68d7c46d2ca016a63375c5e2",
+  "controls": "literal coordinate maps rfl; actual coherence scalar closure proof",
+  "selection_unchanged": true,
+  "new_data_holes": false,
+  "changes": [
+    {
+      "path": "source/Challenge.lean",
+      "before_sha256": "7b9ded6d7b8c01906a021bcbcaca6aa6a6abbe55939007a468da1cb914efdf4b",
+      "after_sha256": "b42d9955ec90bcdae0efe348657d8d7338d8884a554defd8e77037ecc2c198d6"
+    },
+    {
+      "path": "source/theorem94/PalomarPart000.lean",
+      "before_sha256": "85e789cb3039a005930fb66310c810c722a5adb8fa9ba4916973e3a286fe1dcd",
+      "after_sha256": "da706f38c11c6a65f8e3fa77d7742aecc68717806617270c608b083c66260b76"
+    },
+    {
+      "path": "source/theorem94/PalomarPart001.lean",
+      "before_sha256": "01804677d9a2eb9d81e0ed067595eb566a754269b9f87c6cb7782dbac216339e",
+      "after_sha256": "cde25d337c489772a0317c5813e0833d9e9359146c5aba754ec61cf787ecf3a4"
+    }
+  ],
+  "full_verification_required": true
+}

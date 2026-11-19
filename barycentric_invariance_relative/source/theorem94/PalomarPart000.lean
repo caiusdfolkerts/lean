@@ -2743,7 +2743,10 @@ theorem palomarBarycentricPolynomialSelfTower (p : P) :
   infer_instance
 attribute [instance 2300] palomarBarycentricPolynomialSelfTower
 /-- The original scalar module structure of the actual barycentric stalk. -/
-def palomarBarycentricStalkModule (p : P) : Module K (BarycentricStalk K p) := inferInstance
+def palomarBarycentricStalkModule (p : P) : Module K (BarycentricStalk K p) :=
+  @Submodule.Quotient.module' (MvPolynomial (BooleanFace (FaceVertex p)) K)
+    (MvPolynomial (BooleanFace (FaceVertex p)) K) _ _ _ K _ _ _
+    (palomarBarycentricPolynomialSelfTower K p) (forbiddenIdeal IsChainExponent)
 attribute [instance 2400] palomarBarycentricStalkModule
 
 

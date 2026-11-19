@@ -938,14 +938,20 @@ open Classical Finset MvPolynomial
 variable {I V K M N : Type*} [CommRing K]
   [AddCommGroup M] [Module K M] [AddCommGroup N] [Module K N]
 
+/-- The literal basis coordinate map, with the coefficient inverse pair explicit. -/
+def palomarBasisCoordinates (b : Module.Basis I K M) : M →ₗ[K] (I →₀ K) :=
+  @LinearEquiv.toLinearMap K K _ _ (RingHom.id K) (RingHom.id K)
+    (PalomarBarycentricRelative.coefficientIdentityInvPair (K := K))
+    (PalomarBarycentricRelative.coefficientIdentityInvPair (K := K))
+    M (I →₀ K) _ _ _ _ b.repr
 /-- The original scalar-closure calculation for the unchanged coefficient predicate. -/
 theorem palomarBasisOrdinaryDegreePiece_smul (b : Module.Basis I K M)
     (degree : I → ℕ) (n : ℕ) :
-    ∀ (c : K) (x : M), (∀ i, degree i ≠ n → b.repr x i = 0) →
-      ∀ i, degree i ≠ n → b.repr (c • x) i = 0 := by intro c x hx i hi; simp only [map_smul, Finsupp.smul_apply, hx i hi, smul_zero]
+    ∀ (c : K) (x : M), (∀ i, degree i ≠ n → (palomarBasisCoordinates b) x i = 0) →
+      ∀ i, degree i ≠ n → (palomarBasisCoordinates b) (c • x) i = 0 := by intro c x hx i hi; simp only [map_smul, Finsupp.smul_apply, hx i hi, smul_zero]
 
 def basisOrdinaryDegreePiece (b : Module.Basis I K M) (degree : I → ℕ) (n : ℕ) : Submodule K M where
-  carrier := {x | ∀ i, degree i ≠ n → b.repr x i = 0}
+  carrier := {x | ∀ i, degree i ≠ n → (palomarBasisCoordinates b) x i = 0}
   zero_mem' := by intro i hi; simp
   add_mem' := by intro x y hx hy i hi; simp only [map_add, Finsupp.add_apply, hx i hi, hy i hi, add_zero]
   smul_mem' := palomarBasisOrdinaryDegreePiece_smul b degree n
@@ -2684,7 +2690,12 @@ section Coefficients
 variable {V W K : Type*} [Fintype V] [Fintype W] [CommRing K]
 
 def constantCoefficient : BooleanBarycentricRing V K →ₗ[K] K :=
-  (Finsupp.lapply ⟨0, isChainExponent_zero⟩).comp booleanChainBasis.repr.toLinearMap
+  (Finsupp.lapply ⟨0, isChainExponent_zero⟩).comp
+    (@LinearEquiv.toLinearMap K K _ _ (RingHom.id K) (RingHom.id K)
+      (PalomarBarycentricRelative.coefficientIdentityInvPair (K := K))
+      (PalomarBarycentricRelative.coefficientIdentityInvPair (K := K))
+      (BooleanBarycentricRing V K) ({a : BooleanFace V →₀ ℕ // IsChainExponent a} →₀ K)
+      _ _ _ _ booleanChainBasis.repr)
 
 theorem zeroBasis_eq_one :
     booleanChainBasis (V := V) (K := K) ⟨0, isChainExponent_zero⟩ = 1 := by
@@ -2769,6 +2780,17 @@ abbrev Family := ∀ p : P, PolynomialStalk K p →ₗ[K] BarycentricStalk K p
 def palomarStalkMapModule (p : P) : Module K (PolynomialStalk K p →ₗ[K] BarycentricStalk K p) := inferInstance
 attribute [instance 2400] palomarStalkMapModule
 
+/-- The original scalar-closure proof for commuting face restriction squares. -/
+theorem palomarCoherentSmul (c : K) (F : Family (P := P) K)
+    (hF : ∀ p q (h : q ≤ p) x,
+      booleanRestriction (faceVertexInclusion h) (F p x) = F q (polynomialRestriction K h x)) :
+    ∀ p q (h : q ≤ p) x,
+      booleanRestriction (faceVertexInclusion h) ((c • F) p x) =
+        (c • F) q (polynomialRestriction K h x) := by
+  intro p q h x
+  change booleanRestriction (faceVertexInclusion h) (c • F p x) = _
+  rw [map_smul, hF]
+  rfl
 def coherent : Submodule K (Family (P := P) K) where
   carrier := {F | ∀ p q (h : q ≤ p) x,
     booleanRestriction (faceVertexInclusion h) (F p x) = F q (polynomialRestriction K h x)}
@@ -2778,11 +2800,7 @@ def coherent : Submodule K (Family (P := P) K) where
     change booleanRestriction (faceVertexInclusion h) (F p x + H p x) = _
     rw [map_add, hF, hH]
     rfl
-  smul_mem' := by
-    intro c F hF p q h x
-    change booleanRestriction (faceVertexInclusion h) (c • F p x) = _
-    rw [map_smul, hF]
-    rfl
+  smul_mem' := palomarCoherentSmul K
 
 def parameterLinear : Submodule K (Family (P := P) K) where
   carrier := {F | ∀ p r x, F p (polynomialParameter K p (r + 1) * x) =
