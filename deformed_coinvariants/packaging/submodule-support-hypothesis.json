@@ -1,0 +1,8 @@
+{
+  "source": "source/TauCeti/Algebra/Module/GradedModule/Quotient.lean",
+  "before_sha256": "5f37de20975ff969e3afd28417b1b9cc7ef3f5f67b1a7cd9eef32f2f0228a8ab",
+  "after_sha256": "4dedaef3ab20163db49301ca65ebdbc49cc5d34b6bae5f1b7cbff3a3f82db102",
+  "repair": "Retain hU explicitly in the extracted support theorem, matching the already validated Challenge declaration. Original proof body and all selected statements unchanged.",
+  "evidence": "full44489440638: unknown hU and dependent argument cascades",
+  "status": "applied pending full verification"
+}

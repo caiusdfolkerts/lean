@@ -95,6 +95,7 @@ variable {S : Type*} [Semiring R] [Semiring S] [SMul R S]
   [AddCommMonoid M] [Module R M] [Module S M] [IsScalarTower R S M]
   (G : InternalGrading R M ι) (U : Submodule S M) (hU : SetLike.IsHomogeneous G.piece U)
 
+include hU in
 theorem palomarSubmoduleIsInternal : DirectSum.IsInternal (fun p => (G.piece p).comap (U.subtype.restrictScalars R)) :=
   DirectSum.isInternal_comap G.piece _ (U.subtype.restrictScalars R)
     Subtype.val_injective
