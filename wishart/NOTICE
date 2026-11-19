@@ -1,9 +1,0 @@
-Copyright 2026 Caius Folkerts. Original code and documentation are licensed under the Apache License, Version 2.0. The included paper retains its existing copyright. Third-party source headers and license terms remain in force.
-
-The `source/tau_ceti` directory contains vendored support mathematics from the TauCeti development, upstream revision `06d5bb4e3ebb737dc6538567f5c53bf8800b9362`. Copyright and attribution notices are retained in the source, and its license is in `licenses/TauCeti-LICENSE`. The source provenance is recorded in `verification/vendored-support-provenance.json`.
-
-The Prékopa–Leindler argument in `source/wishart/verified/real_remainder06.lean` is adapted from Junwei Lu's Lean-Asymptotic-Statistical-Theory, commit `8e7f22c88cc3280e898005b6445d94c581dd8b4d`. Copyright 2024 Junwei Lu. Its original attribution remains in the source header and the license in `licenses/AsymptoticStatistics-APACHE-2.0.txt`.
-
-The verification code in `source/verification/complete.lean` adapts the audit infrastructure of the deformed-coinvariants and sublattice-resolutions projects in this repository.
-
-The accompanying manuscript contains corrections on pages 14, 18, and 20. The changes and original manuscript are preserved in `verification/manuscript-corrections.json` and `verification/original-paper.pdf`.

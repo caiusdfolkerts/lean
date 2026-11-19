@@ -1,0 +1,32 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "CommAlg.Simplicial.boundary_mem",
+    "FourPapers.Universal.faceRank_bot",
+    "FourPapers.Universal.faceRank_strictMono",
+    "FourPapers.Universal.faceRank_eq_of_orderIso",
+    "FourPapers.Universal.relativeAugmentedCoboundary_square",
+    "FourPapers.Universal.rankSelection_downward",
+    "FourPapers.Universal.relativeCochainCoordinates_injective",
+    "FourPapers.Universal.relativeCochainCoordinates_surjective",
+    "FourPapers.Universal.rankColoredSubcomplex_empty_face",
+    "FourPapers.Universal.ProperlyColoredComplex.Subcomplex.ColorPairAutomorphism.rankSelection_iff",
+    "FourPapers.Universal.ProperlyColoredComplex.Subcomplex.ColorPairAutomorphism.relativeRankSelection_iff",
+    "FourPapers.Universal.ProperlyColoredComplex.Subcomplex.ColorPairAutomorphism.cochainEquiv_differential",
+    "FourPapers.Universal.rankColored_face_order_iff",
+    "FourPapers.Universal.relativeFaceSubmodule_eq_bot_of_void",
+    "FourPapers.Universal.augmentedCoboundary_square",
+    "FourPapers.Universal.augmentedCochainComplex_d",
+    "FourPapers.Universal.relativeVoidCochainsEquiv_differential",
+    "FourPapers.Universal.ProperlyColoredComplex.Subcomplex.rankSelection_void",
+    "FourPapers.Universal.ProperlyColoredComplex.Subcomplex.ColorPairAutomorphism.absoluteCochainTermMap_differential",
+    "FourPapers.Universal.rankSelectedEmptyRelativeIso_natural"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}
