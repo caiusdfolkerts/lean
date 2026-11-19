@@ -54,7 +54,7 @@ theorem defectToQuotient_kernel (C : U →ₗ[K] V) (D : U →ₗ[K] W)
 theorem defectToQuotient_range (C : U →ₗ[K] V) (D : U →ₗ[K] W)
     (L : W →ₗ[K] V) (t : K) :
     LinearMap.range (defectToQuotient C D L t) = defectImage C D L t := by
-  rw [defectToQuotient, LinearMap.range_comp, Submodule.range_subtype, defectImage]
+  rw [defectToQuotient, LinearMap.range_comp, Submodule.range_subtype, defectImage, PalomarDeformedSupport.explicitMap]
 
 def defectEquivImage (C : U →ₗ[K] V) (D : U →ₗ[K] W)
     (L : W →ₗ[K] V) (t : K) : Defect C D L t ≃ₗ[K] defectImage C D L t :=
@@ -69,6 +69,7 @@ def potentialMap (C : U →ₗ[K] V) (D : U →ₗ[K] W) (L : W →ₗ[K] V) (t 
 theorem hit_le_coefficient (C : U →ₗ[K] V) (D : U →ₗ[K] W)
     (E : W →ₗ[K] U) (L : W →ₗ[K] V) (t : K) (hE : C.comp E = L) :
     hit C D L t ≤ PalomarDeformedSupport.explicitRange C := by
+  change hit C D L t ≤ LinearMap.range C
   rw [EulerReduction.coefficient_range C D E L t hE]
   exact le_sup_left
 
@@ -76,6 +77,7 @@ theorem potentialMap_range (C : U →ₗ[K] V) (D : U →ₗ[K] W)
     (E : W →ₗ[K] U) (L : W →ₗ[K] V) (t : K) (hE : C.comp E = L) :
     LinearMap.range (potentialMap C D L t) = defectImage C D L t := by
   rw [potentialMap, LinearMap.range_comp, defectImage,
+    PalomarDeformedSupport.explicitMap, PalomarDeformedSupport.explicitRange,
     EulerReduction.coefficient_range C D E L t hE,
     Submodule.map_sup]
   change (LinearMap.range L).map (hit C D L t).mkQ =

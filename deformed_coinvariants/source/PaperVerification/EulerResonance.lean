@@ -120,7 +120,7 @@ theorem projection_range (w : ι → ℕ) (d : ℕ) :
 
 theorem quotientComponent_eq_map (w : ι → ℕ) (d : ℕ) (U : Submodule K P) :
     quotientComponent w d U = (weightedHomogeneousSubmodule K w d).map U.mkQ := by
-  rw [quotientComponent, LinearMap.range_comp, projection_range]
+  rw [quotientComponent, PalomarDeformedSupport.explicitRange, LinearMap.range_comp, projection_range]
 
 def resonantQuotientEquiv (w : ι → ℕ) (a t : K) (d : ℕ)
     (hd : a + t * (d : K) = 0)

@@ -345,10 +345,13 @@ attribute [instance 2200] brieskornScalarComm brieskornScalarSelfTower brieskorn
  abbrev BrieskornModule (F : P) := Module.AEval' (potentialAction F)
 def palomarBrieskornAddCommGroup (F : P) : AddCommGroup (BrieskornModule F) := inferInstance
 attribute [instance 2400] palomarBrieskornAddCommGroup
+attribute [reducible] palomarBrieskornAddCommGroup
 def palomarBrieskornModule (F : P) : Module K (BrieskornModule F) := inferInstance
 attribute [instance 2400] palomarBrieskornModule
+attribute [reducible] palomarBrieskornModule
 def palomarBrieskornPolynomialModule (F : P) : Module K[X] (BrieskornModule F) := inferInstance
 attribute [instance 2400] palomarBrieskornPolynomialModule
+attribute [reducible] palomarBrieskornPolynomialModule
  def classOf (F : P) : P →ₗ[K] BrieskornModule F :=
   (Module.AEval'.of (potentialAction F)).toLinearMap.comp (divergenceSpace F).mkQ
 end PaperVerification.JacobianDivergence
@@ -419,6 +422,7 @@ variable (R : Type*) [CommRing R] (n : ℕ)
   Ideal.span (Set.range fun i : Fin n => esymm (Fin n) R (i.val+1))
 def palomarOrdinaryCoinvariantModule : Module R (MvPolynomial (Fin n) R ⧸ ordinaryCoinvariantIdeal R n) := inferInstance
 attribute [instance 2400] palomarOrdinaryCoinvariantModule
+attribute [reducible] palomarOrdinaryCoinvariantModule
 end PaperVerification.PowerOperators
 namespace PaperVerification.PowerOperators
 open MvPolynomial

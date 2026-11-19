@@ -1,0 +1,99 @@
+{
+  "parent_commit": "84afb88f30aa556d43cb66c37bca6889f20944ed",
+  "reason": "Nine actual Source errors: expose literal named module instances to typeclass reduction; unfold exact map/range wrappers only in proofs. No theorem selection, hypothesis, data body, or proof hole changes. Full independent verification still required.",
+  "at": "2026-11-19T09:03:34.324683+00:00",
+  "patches": [
+    {
+      "path": "source/Challenge.lean",
+      "old": "attribute [instance 2400] palomarBrieskornAddCommGroup",
+      "new": "attribute [instance 2400] palomarBrieskornAddCommGroup\nattribute [reducible] palomarBrieskornAddCommGroup",
+      "before_sha256": "dbcc2810e83a9c58604422749b8f55dbc0e4c9dc45bc992c7ff45fcb2d97fcbc",
+      "after_sha256": "1aa569fe26ba73d1835eef489979ccb1ca979eb0d3b94c8a6851f1b35ae6af63"
+    },
+    {
+      "path": "source/Challenge.lean",
+      "old": "attribute [instance 2400] palomarBrieskornModule",
+      "new": "attribute [instance 2400] palomarBrieskornModule\nattribute [reducible] palomarBrieskornModule",
+      "before_sha256": "1aa569fe26ba73d1835eef489979ccb1ca979eb0d3b94c8a6851f1b35ae6af63",
+      "after_sha256": "9dc1f0611615bae85391602890a4fa83cb9e8e1b19ba0d21d80e4636acd7c455"
+    },
+    {
+      "path": "source/Challenge.lean",
+      "old": "attribute [instance 2400] palomarBrieskornPolynomialModule",
+      "new": "attribute [instance 2400] palomarBrieskornPolynomialModule\nattribute [reducible] palomarBrieskornPolynomialModule",
+      "before_sha256": "9dc1f0611615bae85391602890a4fa83cb9e8e1b19ba0d21d80e4636acd7c455",
+      "after_sha256": "38f7dd92bcaf2ccea6cb5d393ef0477e01e53d729b8877ab1f1343d2f9bac374"
+    },
+    {
+      "path": "source/Challenge.lean",
+      "old": "attribute [instance 2400] palomarOrdinaryCoinvariantModule",
+      "new": "attribute [instance 2400] palomarOrdinaryCoinvariantModule\nattribute [reducible] palomarOrdinaryCoinvariantModule",
+      "before_sha256": "38f7dd92bcaf2ccea6cb5d393ef0477e01e53d729b8877ab1f1343d2f9bac374",
+      "after_sha256": "b44aab85a8259dcae363c5a331faa604d676004ffdfbf7e7508bc4b0df8bac83"
+    },
+    {
+      "path": "source/PaperVerification/JacobianPolynomialModule.lean",
+      "old": "attribute [instance 2400] palomarBrieskornAddCommGroup",
+      "new": "attribute [instance 2400] palomarBrieskornAddCommGroup\nattribute [reducible] palomarBrieskornAddCommGroup",
+      "before_sha256": "43875271f4c75a0803f5b98281cf3ad1edb48c69a3d1dec71b86b4484a985b7c",
+      "after_sha256": "e5134c54f6e6afd5a285a19a9b49881b6b33e29c561b208e1022e2135a438599"
+    },
+    {
+      "path": "source/PaperVerification/JacobianPolynomialModule.lean",
+      "old": "attribute [instance 2400] palomarBrieskornModule",
+      "new": "attribute [instance 2400] palomarBrieskornModule\nattribute [reducible] palomarBrieskornModule",
+      "before_sha256": "e5134c54f6e6afd5a285a19a9b49881b6b33e29c561b208e1022e2135a438599",
+      "after_sha256": "e4499381a7adbfb0f507bc6393bcba08130d790fd88c25733fd25c2242b38249"
+    },
+    {
+      "path": "source/PaperVerification/JacobianPolynomialModule.lean",
+      "old": "attribute [instance 2400] palomarBrieskornPolynomialModule",
+      "new": "attribute [instance 2400] palomarBrieskornPolynomialModule\nattribute [reducible] palomarBrieskornPolynomialModule",
+      "before_sha256": "e4499381a7adbfb0f507bc6393bcba08130d790fd88c25733fd25c2242b38249",
+      "after_sha256": "d26302551b1ff7d4b4aa3159a4db8867917c7346a0be9bdbfcc0deec0eb17a51"
+    },
+    {
+      "path": "source/PaperVerification/PowerCoinvariantComparator.lean",
+      "old": "attribute [instance 2400] palomarOrdinaryCoinvariantModule",
+      "new": "attribute [instance 2400] palomarOrdinaryCoinvariantModule\nattribute [reducible] palomarOrdinaryCoinvariantModule",
+      "before_sha256": "e3fc94f25b952acc732dc0604f587ec0cd8ba005699e4fb8c05e578e1a0481e7",
+      "after_sha256": "5cf52e4001e4c4c7ade9e9c0edde497d12b94ee910cbecbde8f63d0f45c5d3d9"
+    },
+    {
+      "path": "source/PaperVerification/PowerOriginalDegreePresentation.lean",
+      "old": "simp only [Nat.sub_zero,originalTailQuotientDegree]",
+      "new": "simp only [Nat.sub_zero,originalTailQuotientDegree, PalomarDeformedSupport.explicitMap]",
+      "before_sha256": "942c8875c11c3c5ebff754208352391d79f03d7dbee1d00ef1cd433abe3cf34e",
+      "after_sha256": "406d99b7fc9cb5f45146dcf03030bb1003ea574cd42e1b33a716e7928fbc4fc3"
+    },
+    {
+      "path": "source/PaperVerification/EulerResonance.lean",
+      "old": "rw [quotientComponent, LinearMap.range_comp, projection_range]",
+      "new": "rw [quotientComponent, PalomarDeformedSupport.explicitRange, LinearMap.range_comp, projection_range]",
+      "before_sha256": "52086b575f348e78c065359559e723c29778c74620aac4ddafb67a03bf683848",
+      "after_sha256": "d7a85a23526340387c36d4cf40bfe5c2ef124b9a1fc67d025bd2d5fcc74b7f49"
+    },
+    {
+      "path": "source/PaperVerification/EulerInjective.lean",
+      "old": "rw [defectToQuotient, LinearMap.range_comp, Submodule.range_subtype, defectImage]",
+      "new": "rw [defectToQuotient, LinearMap.range_comp, Submodule.range_subtype, defectImage, PalomarDeformedSupport.explicitMap]",
+      "before_sha256": "085d0d4b4806820180df428fa1aa462febfb210400100cb15a9a01d13c8e9d47",
+      "after_sha256": "af89ed0e3bdfc087fa3137bb77c9ee5acf51cf15e8b625597de16419920abdf9"
+    },
+    {
+      "path": "source/PaperVerification/EulerInjective.lean",
+      "old": "  rw [EulerReduction.coefficient_range C D E L t hE]\n  exact le_sup_left",
+      "new": "  change hit C D L t \u2264 LinearMap.range C\n  rw [EulerReduction.coefficient_range C D E L t hE]\n  exact le_sup_left",
+      "before_sha256": "af89ed0e3bdfc087fa3137bb77c9ee5acf51cf15e8b625597de16419920abdf9",
+      "after_sha256": "8900b04eaf8d2f20df62528e930e7e5121273b31a3c008f1d4019bc8749b810f"
+    },
+    {
+      "path": "source/PaperVerification/EulerInjective.lean",
+      "old": "rw [potentialMap, LinearMap.range_comp, defectImage,\n    EulerReduction.coefficient_range",
+      "new": "rw [potentialMap, LinearMap.range_comp, defectImage,\n    PalomarDeformedSupport.explicitMap, PalomarDeformedSupport.explicitRange,\n    EulerReduction.coefficient_range",
+      "before_sha256": "8900b04eaf8d2f20df62528e930e7e5121273b31a3c008f1d4019bc8749b810f",
+      "after_sha256": "e0f1dd23796f316491c2e5df119519f56b4e02758f3f731199cba57f394fcf4e"
+    }
+  ],
+  "comparator_sha256": "fc9c1a84806b01747617596c4a9476cbae9f03429bd4d5dc2b015b343ea9cdf7"
+}

@@ -24,7 +24,7 @@ theorem originalTailQuotientDegree_eq_shifted (c : Fin n → K) (lam : K) (m d :
     originalTailQuotientDegree c lam m d =
       (shiftedPiece K n 0 d).map (originalTailHit c lam m).mkQ := by
   rw [shiftedPiece_eq_homogeneous (Nat.zero_le d)]
-  simp only [Nat.sub_zero,originalTailQuotientDegree]
+  simp only [Nat.sub_zero,originalTailQuotientDegree, PalomarDeformedSupport.explicitMap]
 
 instance originalTailQuotientDegree_finite (c : Fin n → K) (lam : K) (m d : ℕ) :
     Module.Finite K (originalTailQuotientDegree c lam m d) := by

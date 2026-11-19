@@ -28,6 +28,7 @@ def ordinaryCoinvariantIdeal : Ideal (MvPolynomial (Fin n) R) :=
   Ideal.span (Set.range fun i : Fin n => esymm (Fin n) R (i.val+1))
 def palomarOrdinaryCoinvariantModule : Module R (MvPolynomial (Fin n) R ⧸ ordinaryCoinvariantIdeal R n) := inferInstance
 attribute [instance 2400] palomarOrdinaryCoinvariantModule
+attribute [reducible] palomarOrdinaryCoinvariantModule
 
 def completeCoinvariantIdeal : Ideal (MvPolynomial (Fin n) R) :=
   Ideal.span (Set.range fun i : Fin n => hsymm (Fin n) R (i.val+1))

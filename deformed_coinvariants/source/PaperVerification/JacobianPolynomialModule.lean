@@ -44,10 +44,13 @@ def potentialAction (F : P) : BrieskornQuotient F →ₗ[K] BrieskornQuotient F 
 abbrev BrieskornModule (F : P) := Module.AEval' (potentialAction F)
 def palomarBrieskornAddCommGroup (F : P) : AddCommGroup (BrieskornModule F) := inferInstance
 attribute [instance 2400] palomarBrieskornAddCommGroup
+attribute [reducible] palomarBrieskornAddCommGroup
 def palomarBrieskornModule (F : P) : Module K (BrieskornModule F) := inferInstance
 attribute [instance 2400] palomarBrieskornModule
+attribute [reducible] palomarBrieskornModule
 def palomarBrieskornPolynomialModule (F : P) : Module K[X] (BrieskornModule F) := inferInstance
 attribute [instance 2400] palomarBrieskornPolynomialModule
+attribute [reducible] palomarBrieskornPolynomialModule
 
 def classOf (F : P) : P →ₗ[K] BrieskornModule F :=
   (Module.AEval'.of (potentialAction F)).toLinearMap.comp (divergenceSpace F).mkQ
