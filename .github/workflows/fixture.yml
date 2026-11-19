@@ -30,12 +30,12 @@ jobs:
       - name: Compile exact core-only fixture
         run: |
           set +e
-          elan run leanprover/lean4:v4.36.0-rc1 lean -j1 -M512 -DElab.async=false -Ddebug.skipKernelTC=false -o "$RUNNER_TEMP/Fixture.olean" fixture/Fixture.lean > fixture.log 2>&1
+          elan run leanprover/lean4:v4.36.0-rc1 lean -j1 -M2048 -DElab.async=false -Ddebug.skipKernelTC=false -o "$RUNNER_TEMP/Fixture.olean" fixture/Fixture.lean > fixture.log 2>&1
           code=$?
           python3 - "$code" <<'PYCODE'
           import json,hashlib,pathlib,sys
           p=pathlib.Path('fixture/Fixture.lean');l=pathlib.Path('fixture.log');code=int(sys.argv[1]);assert l.stat().st_size<65536
-          pathlib.Path('receipt.json').write_text(json.dumps({'kind':'core-only genuine complete literal value equation fixture; no Mathlib/project build','exit_code':code,'source_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'log_sha256':hashlib.sha256(l.read_bytes()).hexdigest(),'memory_mib':512,'toolchain':'leanprover/lean4:v4.36.0-rc1'},indent=2)+'\n')
+          pathlib.Path('receipt.json').write_text(json.dumps({'kind':'core-only genuine complete literal value equation fixture; no Mathlib/project build','exit_code':code,'source_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'log_sha256':hashlib.sha256(l.read_bytes()).hexdigest(),'memory_mib':2048,'toolchain':'leanprover/lean4:v4.36.0-rc1'},indent=2)+'\n')
           PYCODE
           cat fixture.log
           exit "$code"
