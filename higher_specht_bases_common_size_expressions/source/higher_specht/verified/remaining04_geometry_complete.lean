@@ -325,8 +325,6 @@ def ideal (R : Type*) [CommRing R] : UntruncatedIdealExpression n →
 theorem ideal_isTwoSided (e : UntruncatedIdealExpression n) : (e.ideal ℂ).IsTwoSided :=
   Ideal.instIsTwoSided_1 (e.ideal ℂ)
 
-attribute [instance 1200] ideal_isTwoSided
-
 def eligible : UntruncatedIdealExpression n → Set (UnboundedHarmonicIndex n)
   | .atom a => {i | i.eligible a.diagram a.card_le}
   | .sum e f => e.eligible ∩ f.eligible
@@ -841,6 +839,8 @@ abbrev UntruncatedBaseCopyIndex (n : ℕ) :=
   Σ part : n.Partition, StandardYoungTableau (YoungDiagram.ofPartition part)
 
 namespace UntruncatedIdealExpression
+
+attribute [local instance 1200] ideal_isTwoSided
 
 variable {n : ℕ} (e : UntruncatedIdealExpression n)
 
