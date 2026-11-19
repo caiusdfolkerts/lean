@@ -63,8 +63,9 @@ theorem invariantCartierDivisor_zero (fan : Fan i) (nonempty : Nonempty fan.cone
       (toricMonomialUnit fan.lattice cone.val q positive negative)
     have unit_germ : Units.map
         (fan.algebraicRealization.germToFunctionField (fan.affineToricChartι cone).opensRange).hom unit =
-      rationalCharacterUnit fan nonempty q :=
-        (chartCoordinateGerm_regularUnit fan nonempty cone
+      rationalCharacterUnit fan nonempty q := by
+      rw [← TauCeti.AlgebraicGeometry.Scheme.regularUnitToFunctionField_apply]
+      exact (chartCoordinateGerm_regularUnit fan nonempty cone
           (toricMonomialUnit fan.lattice cone.val q positive negative)).trans
             (chartCoordinateGerm_monomialUnit fan nonempty cone q positive negative)
     have zero_class := TauCeti.AlgebraicGeometry.Scheme.rationalUnitClass_germToFunctionField_eq_zero

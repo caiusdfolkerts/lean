@@ -52,8 +52,9 @@ theorem rightDerivedPrecomposeEquivalence_isRightDerivedFunctor
         exact inferInstanceAs (QuasiIso ((E.functor.mapHomologicalComplex (.up ℤ)).map f)) }
   letI : Φ.functor.IsEquivalence :=
     inferInstanceAs ((E.mapHomologicalComplex (.up ℤ)).functor.IsEquivalence)
-  letI : E.functor.mapDerivedCategory.IsEquivalence :=
-    inferInstanceAs (E.mapDerivedCategory.functor.IsEquivalence)
+  letI : E.functor.mapDerivedCategory.IsEquivalence := by
+    rw [← E.mapDerivedCategory_functor]
+    infer_instance
   letI : CatCommSq Φ.functor DerivedCategory.Q DerivedCategory.Q E.functor.mapDerivedCategory :=
     ⟨E.functor.mapDerivedCategoryFactors.symm⟩
   letI : Φ.IsLocalizedEquivalence := LocalizerMorphism.IsLocalizedEquivalence.mk' Φ

@@ -77,7 +77,7 @@ def restrictedFan (Φ : Fan i) (W : Submodule ℝ V) (hW : IsRationalSubspace i 
   lattice := latticeTrace_isIntegralLattice i Φ.lattice W hW
   cones := (fun σ : PointedCone ℝ V => σ.comap W.subtype) ''
     {σ | σ ∈ Φ.cones ∧ σ ≤ (W : PointedCone ℝ V)}
-  finite_cones := (Φ.finite_cones.subset (fun _ h => h.1)).image _
+  finite_cones := (Φ.finite_cones.sep (fun σ => σ ≤ (W : PointedCone ℝ V))).image _
   isToricCone := by
     rintro τ ⟨σ, ⟨hσ, hσW⟩, rfl⟩
     exact toricCone_comap_latticeTrace W (Φ.isToricCone hσ) hσW

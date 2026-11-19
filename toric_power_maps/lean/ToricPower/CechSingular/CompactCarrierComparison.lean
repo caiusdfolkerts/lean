@@ -73,6 +73,8 @@ theorem carrierSimultaneousPatch_isOpen (core : Set E) (patches : Index → Set 
     (witness : C(AbstractSimplicialComplex.Realization (nerveBarycentricComplex patches),core))
     (radius : ℝ) (index : ActiveIndex patches) :
     IsOpen (carrierSimultaneousPatch core patches witness radius index) := by
+  change IsOpen ({point | 0 < (subdivisionBarycenterMap patches point).val index} ∩
+    {point | (witness point).val ∈ Metric.thickening radius (carrierPatch core patches index.val)})
   apply IsOpen.inter
   · exact isOpen_lt continuous_const
       ((continuous_into_realization_iff (activeNerve patches) _).mp
