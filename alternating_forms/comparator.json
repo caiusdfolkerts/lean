@@ -18,7 +18,16 @@
     "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.SymmetricPencil.original_relations_invariant",
     "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.SymmetricPencil.bigradedPiece_invariant",
     "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopRepresentation.paper_corollary_5_2",
-    "PalomarAlternatingLiteral.PaperVerification.MainStatements.genericHilbertSeriesAndVanishing"
+    "PalomarAlternatingLiteral.PaperVerification.MainStatements.genericHilbertSeriesAndVanishing",
+    "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.oddPathFirstLeftBound",
+    "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.oddPathMiddleBound",
+    "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.oddPathSecondRightBound",
+    "PalomarAlternatingLiteral.TauCeti.symFinTwoPredicate",
+    "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopInterlacing.abEvenBound",
+    "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopInterlacing.abEvenHalfBound",
+    "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopInterlacing.abOddHalfBound",
+    "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopInterlacing.abLeftInverse",
+    "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopInterlacing.abRightInverse"
   ],
   "permitted_axioms": [
     "propext",

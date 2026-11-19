@@ -88,15 +88,24 @@ namespace PaperVerification.AlternatingForms
 section
 open scoped BigOperators
 variable {K M : Type*} [Field K] [AddCommGroup M] [Module K M]
+/-- Exact constructor proposition; named to make its statement independently comparable. -/
+theorem oddPathFirstLeftBound {k : ℕ} (i : Fin k) :
+    2 * i.val < 2 * k + 1 := by have := i.isLt; omega
+/-- Exact constructor proposition; named to make its statement independently comparable. -/
+theorem oddPathMiddleBound {k : ℕ} (i : Fin k) :
+    2 * i.val + 1 < 2 * k + 1 := by have := i.isLt; omega
+/-- Exact constructor proposition; named to make its statement independently comparable. -/
+theorem oddPathSecondRightBound {k : ℕ} (i : Fin k) :
+    2 * i.val + 2 < 2 * k + 1 := by have := i.isLt; omega
 /-- Literal PaperVerification.AlternatingForms.oddPathFirstLeft; precise source and scope recorded in the extraction map. -/
 def oddPathFirstLeft {k : ℕ} (i : Fin k) : Fin (2 * k + 1) :=
-  ⟨2 * i.val, by have := i.isLt; omega⟩
+  ⟨2 * i.val, oddPathFirstLeftBound i⟩
 /-- Literal PaperVerification.AlternatingForms.oddPathMiddle; precise source and scope recorded in the extraction map. -/
 def oddPathMiddle {k : ℕ} (i : Fin k) : Fin (2 * k + 1) :=
-  ⟨2 * i.val + 1, by have := i.isLt; omega⟩
+  ⟨2 * i.val + 1, oddPathMiddleBound i⟩
 /-- Literal PaperVerification.AlternatingForms.oddPathSecondRight; precise source and scope recorded in the extraction map. -/
 def oddPathSecondRight {k : ℕ} (i : Fin k) : Fin (2 * k + 1) :=
-  ⟨2 * i.val + 2, by have := i.isLt; omega⟩
+  ⟨2 * i.val + 2, oddPathSecondRightBound i⟩
 /-- Literal PaperVerification.AlternatingForms.oddPathFirstQuadratic; precise source and scope recorded in the extraction map. -/
 def oddPathFirstQuadratic {k : ℕ} (z : Fin (2 * k + 1) → M) : ⋀[K]^2 M :=
   matchingQuadratic (fun i => z (oddPathFirstLeft i)) (fun i => z (oddPathMiddle i))
@@ -214,11 +223,13 @@ end TauCeti.Sym
 namespace TauCeti
 section
 
+/-- Exact constructor proposition; named to make its statement independently comparable. -/
+theorem symFinTwoPredicate (d : ℕ) (x : Fin 2 → ℕ) :
+    (∑ i, x i) = d ↔ (finTwoArrowEquiv ℕ x) ∈ Finset.antidiagonal d := by simp [Fin.sum_univ_two, Finset.mem_antidiagonal]
 /-- Literal TauCeti.symFinTwoEquiv; precise source and scope recorded in the extraction map. -/
 noncomputable def symFinTwoEquiv (d : ℕ) : Sym (Fin 2) d ≃ Fin (d + 1) :=
   (Sym.equivNatSumOfFintype (Fin 2) d).trans <|
-    ((finTwoArrowEquiv ℕ).subtypeEquiv fun _ => by
-      simp [Fin.sum_univ_two, Finset.mem_antidiagonal]).trans
+    ((finTwoArrowEquiv ℕ).subtypeEquiv (symFinTwoPredicate d)).trans
         (Finset.Nat.antidiagonalEquivFin d)
 end
 end TauCeti
@@ -226,30 +237,55 @@ end TauCeti
 namespace PaperVerification.AlternatingForms.TopInterlacing
 section
 open scoped Classical BigOperators
-/-- Literal PaperVerification.AlternatingForms.TopInterlacing.abIndex; precise source and scope recorded in the extraction map. -/
+/-- Exact constructor proposition; named to make its statement independently comparable. -/
+theorem abEvenBound {k : ℕ} (j : Fin (k + 1)) :
+    2 * j.val < 2 * k + 1 := by have := j.isLt; omega
+/-- Exact constructor proposition; named to make its statement independently comparable. -/
+theorem abEvenHalfBound {k : ℕ} (j : Fin (2 * k + 1)) :
+    j.val / 2 < k + 1 := by have := j.isLt; omega
+/-- Exact constructor proposition; named to make its statement independently comparable. -/
+theorem abOddHalfBound {k : ℕ} (j : Fin (2 * k + 1)) (h : ¬ j.val % 2 = 0) :
+    j.val / 2 < k := by have := j.isLt; omega
+/-- Odd indices represent the first summand; even indices the second. -/
+def abForward (k : ℕ) : Fin k ⊕ Fin (k + 1) → Fin (2 * k + 1)
+  | .inl i => ⟨2 * i.val + 1, oddPathMiddleBound i⟩
+  | .inr j => ⟨2 * j.val, abEvenBound j⟩
+/-- The inverse separates parity and takes the integer half. -/
+def abBackward (k : ℕ) (j : Fin (2 * k + 1)) : Fin k ⊕ Fin (k + 1) :=
+  if h : j.val % 2 = 0 then .inr ⟨j.val / 2, abEvenHalfBound j⟩
+  else .inl ⟨j.val / 2, abOddHalfBound j h⟩
+/-- Exact constructor proposition; named to make its statement independently comparable. -/
+theorem abLeftInverse (k : ℕ) :
+    Function.LeftInverse (abBackward k) (abForward k) := by
+  intro i
+  cases i with
+  | inl i =>
+      have h : ¬ (2 * i.val + 1) % 2 = 0 := by omega
+      dsimp only [abForward, abBackward]
+      simp only [h, dite_false, Sum.inl.injEq]
+      apply Fin.ext
+      dsimp only
+      omega
+  | inr i =>
+      have h : (2 * i.val) % 2 = 0 := by omega
+      dsimp only [abForward, abBackward]
+      simp only [h, dite_true, Sum.inr.injEq]
+      apply Fin.ext
+      dsimp only
+      omega
+/-- Exact constructor proposition; named to make its statement independently comparable. -/
+theorem abRightInverse (k : ℕ) :
+    Function.RightInverse (abBackward k) (abForward k) := by
+  intro i
+  dsimp only [abForward, abBackward]
+  split_ifs <;> apply Fin.ext <;> dsimp only <;> omega
+/-- Literal odd/even interlacing equivalence, with its exact constructor proofs named. -/
 def abIndex (k : ℕ) : Fin k ⊕ Fin (k+1) ≃ Fin (2*k+1) where
-  toFun
-    | .inl i => ⟨2*i.val+1, by have := i.isLt; omega⟩
-    | .inr j => ⟨2*j.val, by have := j.isLt; omega⟩
-  invFun j := if h : j.val%2=0 then .inr ⟨j.val/2, by have := j.isLt; omega⟩
-    else .inl ⟨j.val/2, by have := j.isLt; omega⟩
-  left_inv i := by
-    cases i with
-    | inl i =>
-        have h : ¬(2*i.val+1)%2=0 := by omega
-        simp only [h, dite_false, Sum.inl.injEq]
-        apply Fin.ext
-        dsimp only
-        omega
-    | inr i =>
-        have h : (2*i.val)%2=0 := by omega
-        simp only [h, dite_true, Sum.inr.injEq]
-        apply Fin.ext
-        dsimp only
-        omega
-  right_inv i := by
-    dsimp only
-    split_ifs <;> apply Fin.ext <;> dsimp only <;> omega
+  toFun := abForward k
+  invFun := abBackward k
+  left_inv := abLeftInverse k
+  right_inv := abRightInverse k
+
 end
 end PaperVerification.AlternatingForms.TopInterlacing
 

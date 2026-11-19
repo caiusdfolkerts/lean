@@ -4,7 +4,7 @@
   "baseline_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
   "paper_sha256": "8b5fdb74a6c9c61ebf2ee4d89f71b6c07831524412731ff3f646074b6d416161",
   "one_entry_per_paper": true,
-  "status": "fresh_literal_challenge_passed_measured_original_exposure_bridge_repair_unverified",
+  "status": "frozen_complete_measured_constructor_normalization_canonical_support_proofs_passed_ready_full_preflight",
   "source_selection": [
     "paper.pdf",
     "README.md",
@@ -557,15 +557,15 @@
   "known_gaps": [
     "Remaining algebraic, degeneration and Koszul clauses of Theorem 1.3 and other substantive corollaries still require independent statement extraction.",
     "README explicitly excludes the general geometric statement of Theorem 1.2 and parts of Theorem 4.1.",
-    "Source migration and the private-name inventory normalization require a complete fresh Solution/default-target build."
+    "Current normalized independent interface, full Source/Solution/Comparator and kernel replay remain pending."
   ],
   "checks": {
     "source_copy": "complete including retained reading files and licenses",
-    "build": "not_run_for_current_hash",
-    "comparator": "not_run_for_current_hash",
+    "build": "exact997 Source/Solution passed; current constructor support normalization pending",
+    "comparator": "exact997 failed abIndex; complete raw union18933visited/25findings collected and measured constructor family normalized; current pending",
     "nanoda": "not_run_for_current_hash",
     "editorial_review": "not_run_for_current_hash",
-    "challenge_elaboration": "not_run_for_current_hash"
+    "challenge_elaboration": "passed44464500349 current762 interface with all9 new support propositions genuinely proved"
   },
   "current_selection": "Theorem 1.1 generic Hilbert series and vanishing, exact strip-walk determinant coefficients, Theorem 1.3 prescribed exterior basis in every degree, and full Corollary 5.2 actual SL2 representation isomorphism and dimension on every top bidegree piece.",
   "selected_wrapper_provenance": [],
@@ -573,23 +573,32 @@
     "challenge_module": "Challenge",
     "solution_module": "Solution",
     "theorem_names": [
-      "PaperVerification.AlternatingForms.paper_theorem_1_3_exterior_basis",
-      "PaperVerification.AlternatingForms.PathDeterminant.paperWalkCount_determinant",
-      "TauCeti.Sym.ofFn_surjective",
-      "SymmetricPower.ext",
-      "SymmetricPower.map_rel",
-      "SymmetricPower.lift_rel",
-      "SymmetricPower.map_id",
-      "SymmetricPower.map_comp",
-      "SymmetricPower.ofFn_orderOfSym",
-      "SymmetricPower.tprodOfSym_ofFn",
-      "SymmetricPower.toFinsuppMultilinear_domDomCongr",
-      "SymmetricPower.toFinsupp_tprod_basis",
-      "Representation.exteriorPower_apply",
-      "PaperVerification.AlternatingForms.SymmetricPencil.original_relations_invariant",
-      "PaperVerification.AlternatingForms.SymmetricPencil.bigradedPiece_invariant",
-      "PaperVerification.AlternatingForms.TopRepresentation.paper_corollary_5_2",
-      "PaperVerification.MainStatements.genericHilbertSeriesAndVanishing"
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.paper_theorem_1_3_exterior_basis",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.PathDeterminant.paperWalkCount_determinant",
+      "PalomarAlternatingLiteral.TauCeti.Sym.ofFn_surjective",
+      "PalomarAlternatingLiteral.SymmetricPower.ext",
+      "PalomarAlternatingLiteral.SymmetricPower.map_rel",
+      "PalomarAlternatingLiteral.SymmetricPower.lift_rel",
+      "PalomarAlternatingLiteral.SymmetricPower.map_id",
+      "PalomarAlternatingLiteral.SymmetricPower.map_comp",
+      "PalomarAlternatingLiteral.SymmetricPower.ofFn_orderOfSym",
+      "PalomarAlternatingLiteral.SymmetricPower.tprodOfSym_ofFn",
+      "PalomarAlternatingLiteral.SymmetricPower.toFinsuppMultilinear_domDomCongr",
+      "PalomarAlternatingLiteral.SymmetricPower.toFinsupp_tprod_basis",
+      "PalomarAlternatingLiteral.Representation.exteriorPower_apply",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.SymmetricPencil.original_relations_invariant",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.SymmetricPencil.bigradedPiece_invariant",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopRepresentation.paper_corollary_5_2",
+      "PalomarAlternatingLiteral.PaperVerification.MainStatements.genericHilbertSeriesAndVanishing",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.oddPathFirstLeftBound",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.oddPathMiddleBound",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.oddPathSecondRightBound",
+      "PalomarAlternatingLiteral.TauCeti.symFinTwoPredicate",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopInterlacing.abEvenBound",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopInterlacing.abEvenHalfBound",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopInterlacing.abOddHalfBound",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopInterlacing.abLeftInverse",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopInterlacing.abRightInverse"
     ],
     "permitted_axioms": [
       "propext",
@@ -599,8 +608,8 @@
   },
   "challenge": {
     "path": "source/Challenge.lean",
-    "sha256": "1a8200eb1e626093772ae90317803a0459e2ce7f47b1382713bf2d82693cf4a6",
-    "lines": 745
+    "sha256": "dde7c0f15ade56d55dd13bbd693743eb522ca971bd48f9c48699219053a11074",
+    "lines": 762
   },
   "packaging_changes": [
     {
@@ -616,6 +625,11 @@
     {
       "kind": "literal_context_or_instance_repair",
       "evidence": "packaging/targeted-check-repair-r4.json"
+    },
+    {
+      "kind": "exact_constructor_proposition_normalization",
+      "evidence": "packaging/named-constructor-proof-repair.json",
+      "description": "All25 measured complete fresh raw findings addressed by9 exact selected support propositions. Five proof-bearing data constructors use these named facts; odd/even maps factor into2 exact computational helpers. All17 principal/support Source proof applications unchanged."
     }
   ],
   "coverage_status": "partial_principal_selection_not_whole_paper",
@@ -674,7 +688,7 @@
   "baseline_project": "alternating_forms",
   "fresh_literal_interface": {
     "namespace": "PalomarAlternatingLiteral",
-    "data_declarations": 59,
+    "data_declarations": 61,
     "selected_names": [
       "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.paper_theorem_1_3_exterior_basis",
       "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.PathDeterminant.paperWalkCount_determinant",
@@ -692,7 +706,16 @@
       "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.SymmetricPencil.original_relations_invariant",
       "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.SymmetricPencil.bigradedPiece_invariant",
       "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopRepresentation.paper_corollary_5_2",
-      "PalomarAlternatingLiteral.PaperVerification.MainStatements.genericHilbertSeriesAndVanishing"
+      "PalomarAlternatingLiteral.PaperVerification.MainStatements.genericHilbertSeriesAndVanishing",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.oddPathFirstLeftBound",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.oddPathMiddleBound",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.oddPathSecondRightBound",
+      "PalomarAlternatingLiteral.TauCeti.symFinTwoPredicate",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopInterlacing.abEvenBound",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopInterlacing.abEvenHalfBound",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopInterlacing.abOddHalfBound",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopInterlacing.abLeftInverse",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopInterlacing.abRightInverse"
     ],
     "all17_actual_source_bridges": [
       {
@@ -781,11 +804,11 @@
         "proof_application": "_root_.PaperVerification.MainStatements.genericHilbertSeriesAndVanishing (n := n) (hdim := hdim)"
       }
     ],
-    "qualification_mapping": "qualification-rewrites.json",
-    "canonical_receipt": "reports/alternating_forms/challenge-diagnostic/run-44380113477/alternating_fresh_literal_r2/receipt.json",
+    "qualification_mapping": "packaging/fresh-literal-qualification-rewrites.json",
+    "canonical_receipt": "reports/alternating_forms/challenge-diagnostic/run-44464500349/alternating_named_constructor_proofs_r2/receipt.json",
     "whole_original_audited_source_preserved": "All original declaration/proof bodies and generated names retained. Declaration-local expose annotations on52 original defs;7abbrevs exposed by default. No declaration/assertion removed.",
     "original_visibility_repair": {
-      "status": "full_measured_exposure_family_repair_prepared_unelaborated",
+      "status": "exact997_source_solution_built_original_bodies_exported_comparator_later_failed_constructor_auxiliaries",
       "failed_run": "44383546499",
       "failed_source_commit": "0b85c7bc7cf7d2c3126f17f0ffb30a0fd1d6f484",
       "all59_original_data_definitions_exported_for_bridges": true,
@@ -946,6 +969,28 @@
         "already_exposed_abbrevs": 7
       },
       "pinned_Lean_API_check": "Lean/Elab/MutualDef.lean30\u201334 rejects attribute-command exposure; now only declaration-local @[expose] on52defs. Lines1354\u201355 establish7abbrevs are already exposed."
-    }
+    },
+    "data_declarations_before_repair": 59,
+    "additional_computational_helpers": [
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopInterlacing.abForward",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopInterlacing.abBackward"
+    ],
+    "principal_support_statement_count_before_repair": 17,
+    "new_exact_constructor_support_statements": [
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.oddPathFirstLeftBound",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.oddPathMiddleBound",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.oddPathSecondRightBound",
+      "PalomarAlternatingLiteral.TauCeti.symFinTwoPredicate",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopInterlacing.abEvenBound",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopInterlacing.abEvenHalfBound",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopInterlacing.abOddHalfBound",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopInterlacing.abLeftInverse",
+      "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopInterlacing.abRightInverse"
+    ],
+    "current_challenge_sha256": "dde7c0f15ade56d55dd13bbd693743eb522ca971bd48f9c48699219053a11074",
+    "current_challenge_lines": 762,
+    "proof_normalization": "Exact arithmetic bounds, parity inverse laws and finTwo subtype predicate named and selected. Odd/even index and symmetric-multiset functions unchanged mathematically; original17 Source theorem applications unchanged.",
+    "complete_raw_evidence": "reports/alternating_forms/fresh-raw-diagnostic/run-44460494772/collection-verification.json",
+    "current_source_bridge_status": "Original17 Source applications byte-identical; current9 named support proofs passed canonical44464500349; full current Source context/Comparator pending."
   }
 }
