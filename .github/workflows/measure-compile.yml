@@ -1,0 +1,57 @@
+name: Time complete small nonrational Solution compilation
+on:
+  push:
+    branches: ['timing/nonrational-full-*']
+permissions:
+  contents: read
+jobs:
+  measure:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - name: Prepare the pinned compiler and external dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$(dirname "$(find . -mindepth 2 -maxdepth 2 -name comparator.json -print -quit)")"
+          echo "project_dir=$PWD" >> "$GITHUB_ENV"
+          curl -fsSL --retry 3 https://github.com/leanprover/elan/releases/download/v4.2.3/elan-x86_64-unknown-linux-gnu.tar.gz -o "$RUNNER_TEMP/elan.tar.gz"
+          echo "df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2  $RUNNER_TEMP/elan.tar.gz" | sha256sum -c -
+          tar -xzf "$RUNNER_TEMP/elan.tar.gz" -C "$RUNNER_TEMP"
+          "$RUNNER_TEMP/elan-init" -y --no-modify-path --default-toolchain none
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          elan toolchain install "$(cat lean-toolchain)"
+          python3 - <<'PY'
+          import pathlib, re, subprocess
+          names=set()
+          for p in pathlib.Path('.').rglob('*.lean'):
+              names.update(re.findall(r'^(?:public\s+)?(?:meta\s+)?import\s+(?:all\s+)?(Mathlib(?:\.[\w]+)*)\s*$',p.read_text(),re.M))
+          assert names
+          subprocess.run(['lake','exe','cache','get',*sorted(names)],check=True)
+          PY
+          test -z "$(find .lake/build -name '*.olean' -print -quit 2>/dev/null || true)"
+      - name: Time the complete clean proof closure
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$project_dir"
+          mkdir "$RUNNER_TEMP/measurement"
+          out="$RUNNER_TEMP/measurement"
+          { date -u; git rev-parse HEAD; lean --version; nproc; cat /sys/fs/cgroup/cpu.max; free -b; df -h .; lscpu; sha256sum Challenge.lean Solution.lean paper.pdf comparator.json lake-manifest.json; } > "$out/host.txt"
+          target="$(jq -er .solution_module comparator.json)"
+          test "$target" = Solution
+          { /usr/bin/time -v -o "$out/time.txt" timeout --signal=TERM --kill-after=30s 19080 lake build "$target" > "$RUNNER_TEMP/build.log" 2>&1; } && code=0 || code=$?
+          tail -200 "$RUNNER_TEMP/build.log" > "$out/build-tail.txt"
+          echo "$code" > "$out/exit-code.txt"
+          find .lake/build -name '*.olean' | wc -l > "$out/compiled-modules.txt"
+          df -h . >> "$out/host.txt"
+          exit "$code"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: full-compilation-measurement
+          path: ${{ runner.temp }}/measurement
