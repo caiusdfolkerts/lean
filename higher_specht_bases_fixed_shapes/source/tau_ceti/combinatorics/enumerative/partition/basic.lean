@@ -131,3 +131,14 @@ theorem sort_parts_injective {n : ℕ} :
   fun μ ν h => Nat.Partition.ext <| by simpa using congrArg ((↑) : List ℕ → Multiset ℕ) h
 
 end Nat.Partition
+
+namespace TauCeti
+
+theorem youngSortOrder_isTrans : IsTrans ℕ (fun a b : ℕ => a ≥ b) := by
+  infer_instance
+
+abbrev youngSortedParts {n : ℕ} (p : n.Partition) : List ℕ :=
+  letI : IsTrans ℕ (fun a b : ℕ => a ≥ b) := youngSortOrder_isTrans
+  p.parts.sort (· ≥ ·)
+
+end TauCeti

@@ -51,7 +51,7 @@ noncomputable def rowCellsEquiv (μ : YoungDiagram) :
   right_inv _ := rfl
 
 noncomputable def sortedBlocksEquivRows (μ : YoungDiagram) :
-    rowBlocks ((shapePartition μ).parts.sort (· ≥ ·)) ≃ rowBlocks μ.rowLens :=
+    rowBlocks (youngSortedParts (shapePartition μ)) ≃ rowBlocks μ.rowLens :=
   Equiv.cast (congrArg rowBlocks (shapePartition_parts_sort μ))
 
 private theorem cast_rowBlocks_fst {l₁ l₂ : List ℕ} (h : l₁ = l₂)

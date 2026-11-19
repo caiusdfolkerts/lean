@@ -45,8 +45,8 @@ of `μ`.
 
 The coordinate `⟨i, j⟩` denotes position `j` in block `i`. -/
 noncomputable def youngBlocksEquiv {n : ℕ} (μ : n.Partition) :
-    (Σ i : Fin (μ.parts.sort (· ≥ ·)).length,
-      Fin ((μ.parts.sort (· ≥ ·)).get i)) ≃ Fin n :=
+    (Σ i : Fin (youngSortedParts μ).length,
+      Fin ((youngSortedParts μ).get i)) ≃ Fin n :=
   finSigmaFinEquiv.trans <| finCongr <| by
     simp_rw [List.get_eq_getElem]
     rw [Fin.sum_univ_getElem, ← Multiset.sum_coe, Multiset.sort_eq, μ.parts_sum]
@@ -55,16 +55,16 @@ noncomputable def youngBlocksEquiv {n : ℕ} (μ : n.Partition) :
 plus that coordinate. -/
 @[simp]
 theorem youngBlocksEquiv_apply {n : ℕ} (μ : n.Partition)
-    (x : Σ i : Fin (μ.parts.sort (· ≥ ·)).length,
-      Fin ((μ.parts.sort (· ≥ ·)).get i)) :
+    (x : Σ i : Fin (youngSortedParts μ).length,
+      Fin ((youngSortedParts μ).get i)) :
     (youngBlocksEquiv μ x : ℕ) =
       ∑ i : Fin x.1,
-        (μ.parts.sort (· ≥ ·)).get (Fin.castLE x.1.2.le i) + x.2 := by
+        (youngSortedParts μ).get (Fin.castLE x.1.2.le i) + x.2 := by
   simp [youngBlocksEquiv]
 
 /-- The block containing an element of `Fin n`. -/
 noncomputable def youngBlock {n : ℕ} (μ : n.Partition) (j : Fin n) :
-    Fin (μ.parts.sort (· ≥ ·)).length :=
+    Fin (youngSortedParts μ).length :=
   ((youngBlocksEquiv μ).symm j).1
 
 /-- The block-coordinate equivalence sends a local coordinate to its block label. -/

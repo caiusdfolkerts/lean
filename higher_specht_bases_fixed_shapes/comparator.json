@@ -22,7 +22,15 @@
     "HigherSpecht.springer_fixedSpan_specht",
     "HigherSpecht.griffin_fixedSpan_specht",
     "TauCeti.shapePartition_parts_sort",
-    "HigherSpecht.polytabloidSpan_stable"
+    "HigherSpecht.polytabloidSpan_stable",
+    "TauCeti.youngSortOrder_isTrans",
+    "HigherSpecht.polynomialRename_one",
+    "HigherSpecht.polynomialRename_mul",
+    "HigherSpecht.polynomialRing_scalarTower",
+    "HigherSpecht.springerIdeal_isTwoSided",
+    "HigherSpecht.griffinIdeal_isTwoSided",
+    "HigherSpecht.springerIdeal_permutationStable",
+    "HigherSpecht.fixedSpan_shapeCard"
   ],
   "permitted_axioms": [
     "propext",
