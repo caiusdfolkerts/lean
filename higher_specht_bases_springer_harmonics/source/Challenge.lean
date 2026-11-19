@@ -875,9 +875,10 @@ abbrev witnessDerivativeEndAlgebra (n : ℕ) : Algebra ℂ (Module.End ℂ (Poly
 def normalizedOrdinaryDerivative {n : ℕ} (r : Fin n →₀ ℕ) (g : PolynomialRing n ℂ) :
     PolynomialRing n ℂ :=
   (exponentFactorial r : ℂ)⁻¹ •
-    (@AlgHom.toLinearMap ℂ (PolynomialRing n ℂ) (Module.End ℂ (PolynomialRing n ℂ))
-      _ _ _ _ (witnessDerivativeEndAlgebra n) ordinaryAction)
-      (MvPolynomial.monomial r (1 : ℂ)) g
+    (@DFunLike.coe _ _ _
+      (@AlgHom.funLike ℂ (PolynomialRing n ℂ) (Module.End ℂ (PolynomialRing n ℂ))
+        _ _ _ _ (witnessDerivativeEndAlgebra n))
+      ordinaryAction (MvPolynomial.monomial r (1 : ℂ))) g
 
 def adjointYoungApply {mu : YoungDiagram} (T : YoungTableau mu)
     (f : PolynomialRing mu.card ℂ) : PolynomialRing mu.card ℂ :=

@@ -8111,9 +8111,10 @@ abbrev witnessDerivativeEndAlgebra (n : ℕ) : Algebra ℂ (Module.End ℂ (Poly
 def normalizedOrdinaryDerivative {n : ℕ} (r : Fin n →₀ ℕ) (g : PolynomialRing n ℂ) :
     PolynomialRing n ℂ :=
   (exponentFactorial r : ℂ)⁻¹ •
-    (@AlgHom.toLinearMap ℂ (PolynomialRing n ℂ) (Module.End ℂ (PolynomialRing n ℂ))
-      _ _ _ _ (witnessDerivativeEndAlgebra n) ordinaryAction)
-      (MvPolynomial.monomial r (1 : ℂ)) g
+    (@DFunLike.coe _ _ _
+      (@AlgHom.funLike ℂ (PolynomialRing n ℂ) (Module.End ℂ (PolynomialRing n ℂ))
+        _ _ _ _ (witnessDerivativeEndAlgebra n))
+      ordinaryAction (MvPolynomial.monomial r (1 : ℂ))) g
 
 theorem ordinaryApolar_normalizedDerivative {n : ℕ} (r : Fin n →₀ ℕ)
     (g f : PolynomialRing n ℂ) :
