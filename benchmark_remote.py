@@ -124,10 +124,14 @@ def main():
             with_axioms = re.findall(r"depends on axioms: \[([^\]]*)\]", stdout["after"])
             if no_axioms + len(with_axioms) != group["declarations"]:
                 raise ValueError("did not observe one axiom report per declaration")
-            axioms = {x.strip() for item in with_axioms for x in item.split(",")}
+            printed_axioms = {x.strip() for item in with_axioms for x in item.split(",")}
+            # pp.universes is enabled for the statement comparison. The
+            # suffix is printer output, while the allowlist is by Lean name.
+            axioms = {re.sub(r"\.\{[A-Za-z_0-9]+\}$", "", x) for x in printed_axioms}
             if axioms - foundational:
                 raise ValueError(f"unexpected axioms: {sorted(axioms - foundational)}")
             sample["audit"] = {"comparison_equal": True, "axioms": sorted(axioms),
+                               "printed_axioms": sorted(printed_axioms),
                                "stdout_sha256": hashlib.sha256(stdout["after"].encode()).hexdigest()}
             sample["median_seconds"] = {mode: statistics.median(t["sum_seconds"] for t in times)
                                          for mode, times in sample["timings"].items()}
