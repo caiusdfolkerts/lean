@@ -8,16 +8,16 @@
       "module": "InstanceTypeProbe",
       "case_dir": "cases/wishart_source_context_instance_types",
       "original_package": "reports/wishart/full20-canonical/instance-type-probes",
-      "original_challenge": "reports/wishart/full20-canonical/instance-type-probes/bundle/reports/challenge_only_diagnostic/cases/wishart_source_context_instance_types/Challenge.lean",
+      "original_challenge": "reports/wishart/full20-canonical/instance-type-probes/revision-02/bundle/reports/challenge_only_diagnostic/cases/wishart_source_context_instance_types/Challenge.lean",
       "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
       "hashes": {
         "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
         "lake-manifest.json": "300eaa0ed216e52b46ddf86c28acbaef4a78c623986d47503b9ef4639ecdfd7a",
         "original-lakefile.toml": "d90686b28700434d823fbfe7fc03afb991d77ff566bd1c53b8c4f2525189ebc0",
-        "Challenge.lean": "8f237b139f118b16cb911fdb138f3952e7c46e328a098a6a7409be514206213e"
+        "Challenge.lean": "e5fa38f161896cf69c9e9b02fff799fa9557f74d66f23022e9447bdb1b288ef1"
       },
       "challenge_lines": 84,
-      "challenge_bytes": 4987,
+      "challenge_bytes": 4979,
       "dependency_pins": [
         {
           "name": "mathlib",
@@ -78,16 +78,16 @@
       "module": "InstanceTypeProbe",
       "case_dir": "cases/wishart_broad_context_instance_types",
       "original_package": "reports/wishart/full20-canonical/instance-type-probes",
-      "original_challenge": "reports/wishart/full20-canonical/instance-type-probes/bundle/reports/challenge_only_diagnostic/cases/wishart_broad_context_instance_types/Challenge.lean",
+      "original_challenge": "reports/wishart/full20-canonical/instance-type-probes/revision-02/bundle/reports/challenge_only_diagnostic/cases/wishart_broad_context_instance_types/Challenge.lean",
       "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
       "hashes": {
         "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
         "lake-manifest.json": "300eaa0ed216e52b46ddf86c28acbaef4a78c623986d47503b9ef4639ecdfd7a",
         "original-lakefile.toml": "d90686b28700434d823fbfe7fc03afb991d77ff566bd1c53b8c4f2525189ebc0",
-        "Challenge.lean": "33d9e1b68fb92acb2cf964f4a6b7e3d577aa3c738ed80ed94c23dbd60ebafbc7"
+        "Challenge.lean": "5d179b61c7f3ede0d749f65a180dbc41dac33651768fe3abed7adeb502f73092"
       },
       "challenge_lines": 85,
-      "challenge_bytes": 5009,
+      "challenge_bytes": 5001,
       "dependency_pins": [
         {
           "name": "mathlib",

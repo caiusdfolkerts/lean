@@ -1,6 +1,6 @@
 module
 public meta import Lean.Elab.Command
-public meta import Lean.Meta.PP
+public meta import Lean
 public meta import Lean.Data.Json
 public meta import Lean.Util.FoldConsts
 public import TauCeti.Algebra.Quaternion.ComplexMatrix
