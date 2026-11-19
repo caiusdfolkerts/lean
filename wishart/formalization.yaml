@@ -65,6 +65,14 @@ review:
     of Hermitian spaces and fixes the generic application type explicitly.
     The genuine 148-line canonical witness model passed run 44508592000.
     No theorem signature, measurable space, topology or data definition changes.
+    Full snapshot c8df71d49ce919d9f3f9975df22580575d9bd1ab passed the
+    dependent-product Borel proof, then retained one missing opens-measurable
+    instance at the singular complex Schur chart. This revision explicitly
+    proves component countability and the inherited Borel structure of that
+    same profile/unitary/rectangular-matrix product. The genuine 162-line
+    canonical domain and continuity-to-measurability model passed run 44512721424.
+    The chart, all noise measures, original statement and dimensions including
+    zero remain unchanged; this only repairs an existing support proof.
     Later immutable workflow reports for this exact source snapshot determine
     the subsequent verification outcome; this dated note does not assert it.
     The preceding canonical full snapshot 141c03dd3526da7106331c9a20456f11e53b26e2
@@ -125,6 +133,9 @@ fidelity:
     The complex multiple-row support proof now supplies its existing
     finite-product Borel witness explicitly and specifies the same carrier
     at the generic lemma application; no additional hypothesis is imposed.
+    The existing singular Schur chart measurability proof now supplies proved
+    component countability and product Borel instances. Its chart function,
+    Haar/matrix-Gaussian noise law and all numerical input ranges are unchanged.
     Source snapshot is caiusdfolkerts/research at
     e0696fddcd3d10b5d6461e62e9b2f02c4195be37.
 

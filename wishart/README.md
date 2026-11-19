@@ -94,6 +94,13 @@ specifies that carrier explicitly at the generic lemma application. The genuine
 148-line canonical witness model passed run 44508592000; the theorem statement,
 measurable space and topology are unchanged. Full replay remains pending.
 
+The subsequent c8df71d4 full run passed that Borel proof and retained one
+missing opens-measurable instance for the singular complex Schur chart.
+This revision supplies proved component countability and the inherited Borel
+structure of the same product domain. The genuine 162-line canonical domain
+and continuity-to-measurability model passed run 44512721424. The existing chart,
+noise law and theorem statement are unchanged. Revised full replay is pending.
+
 The earlier full snapshot built the paper proofs and Solution successfully,
 then failed strict Comparator. The repair retains every original principal
 result and its complete input model. It names only the measured proposition

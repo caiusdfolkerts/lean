@@ -1670,8 +1670,21 @@ def singularSchurBuild (hnk : n ≤ k)
   singularSchurGram ℂ hnk z.2.1 z.1 z.2.2
 
 theorem measurable_singularSchurBuild (hnk : n ≤ k) :
-    Measurable (@singularSchurBuild n k q hnk) :=
-  (continuous_singularSchurGram ℂ hnk).measurable
+    Measurable (@singularSchurBuild n k q hnk) := by
+  letI : SecondCountableTopology (Matrix (Fin k) (Fin k) ℂ) := by
+    letI : ProperSpace (Matrix (Fin k) (Fin k) ℂ) :=
+      FiniteDimensional.proper ℝ (Matrix (Fin k) (Fin k) ℂ)
+    infer_instance
+  letI : SecondCountableTopology (unitary (Matrix (Fin k) (Fin k) ℂ)) := by
+    infer_instance
+  letI : SecondCountableTopology (Matrix (Fin n) (Fin q) ℂ) := by
+    letI : ProperSpace (Matrix (Fin n) (Fin q) ℂ) :=
+      FiniteDimensional.proper ℝ (Matrix (Fin n) (Fin q) ℂ)
+    infer_instance
+  letI : BorelSpace ((Fin n → ℝ) ×
+      unitary (Matrix (Fin k) (Fin k) ℂ) × Matrix (Fin n) (Fin q) ℂ) := by
+    infer_instance
+  exact (continuous_singularSchurGram ℂ hnk).measurable
 
 theorem singularSchurNoiseLaw_probability (n k q : ℕ) :
     IsProbabilityMeasure (singularSchurNoiseLaw n k q) := by
