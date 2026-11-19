@@ -1,2 +1,0 @@
-module
-public import SemanticParts.Batch10P00Coverage
