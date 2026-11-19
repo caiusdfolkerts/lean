@@ -1,0 +1,30 @@
+{
+  "project": "higher_specht_bases_fixed_shapes",
+  "baseline_project": "higher_specht_bases",
+  "paper_sha256": "931c0ee33b94c7a77d373c4040abb40151a8f1cd049b977006df188e31013a0c",
+  "companion_to": {
+    "entry": "higher_specht_bases_status",
+    "commit": "fb5ab9354a764e61ae08d5e8f631614d1920f776"
+  },
+  "status": "fixed_shapes_candidate_awaiting_full_preflight",
+  "selected_results": [
+    "Theorems 1.1 and 4.1 and Corollary 8.1: irreducibility of the actual fixed spans and exact isomorphisms to the ordinary Specht module of the indicated shape"
+  ],
+  "coverage": [
+    {
+      "paper_result": "Theorems 1.1 and 4.1 and Corollary 8.1",
+      "paper_file": "paper.pdf",
+      "declarations": [
+        {
+          "name": "HigherSpecht.springer_fixedSpan_specht",
+          "source_path": "source/Solution.lean"
+        },
+        {
+          "name": "HigherSpecht.griffin_fixedSpan_specht",
+          "source_path": "source/Solution.lean"
+        }
+      ]
+    }
+  ],
+  "coverage_status": "partial_principal_selection_not_whole_paper"
+}
