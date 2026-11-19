@@ -175,6 +175,11 @@ def blockLebesgue (p q : ℕ) : Measure (BlockSpace F p q) :=
 
 set_option backward.isDefEq.respectTransparency false in
 instance blockLebesgue_isAddHaar (p q : ℕ) : IsAddHaarMeasure (blockLebesgue F p q) := by
+  letI : MeasurableAdd (Matrix (Fin p) (Fin q) F × Hermitian F q) where
+    measurable_const_add c :=
+      (measurable_fst.const_add c.1).prodMk (measurable_snd.const_add c.2)
+    measurable_add_const c :=
+      (measurable_fst.add_const c.1).prodMk (measurable_snd.add_const c.2)
   unfold blockLebesgue
-  constructor <;> infer_instance
+  infer_instance
 end Wishart.FieldHermitian

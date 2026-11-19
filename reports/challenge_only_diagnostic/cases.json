@@ -8,81 +8,16 @@
       "module": "HaarProductProbe",
       "case_dir": "cases/wishart_product_haar_explicit_proof",
       "original_package": "reports/wishart/full20-canonical",
-      "original_challenge": "reports/wishart/full20-canonical/complete-measured-repair/haar-product-repair/bundle/reports/challenge_only_diagnostic/cases/wishart_product_haar_explicit_proof/Challenge.lean",
+      "original_challenge": "reports/wishart/full20-canonical/complete-measured-repair/haar-product-repair/revision-02/ProofSmoke.lean",
       "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
       "hashes": {
         "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
         "lake-manifest.json": "5619bb28ae7f2972522467eccf712e99876805a4fb0b7298a3c8de5918224147",
         "original-lakefile.toml": "e429ab885c0b86124ac6b748b01715efdede7f476661ead3634e0c69b6521ccb",
-        "Challenge.lean": "129663de81a157bd7fd613305e08ffc0ed58ea47c668496ec1b3e6ba145f0eef"
+        "Challenge.lean": "e409715f18997e770579afd37dedfeaaa2caaf7d0765608547561d1832486a47"
       },
-      "challenge_lines": 180,
-      "challenge_bytes": 11261,
-      "dependency_pins": [
-        {
-          "name": "mathlib",
-          "url": "https://github.com/leanprover-community/mathlib4",
-          "rev": "2cabef97b63d3275776b8b060d802de6a6fa1055"
-        },
-        {
-          "name": "plausible",
-          "url": "https://github.com/leanprover-community/plausible",
-          "rev": "c2d7840c65673533e15b499f25beecdc6227f7d8"
-        },
-        {
-          "name": "LeanSearchClient",
-          "url": "https://github.com/leanprover-community/LeanSearchClient",
-          "rev": "9d39f9bb0c30aa2f6200808805ff16e6ce950890"
-        },
-        {
-          "name": "importGraph",
-          "url": "https://github.com/leanprover-community/import-graph",
-          "rev": "b3cc36c295aa5e3e3c0197b09a6556298e710447"
-        },
-        {
-          "name": "proofwidgets",
-          "url": "https://github.com/leanprover-community/ProofWidgets4",
-          "rev": "17137fad38a2cc782ff00b323a13c3a991d085ab"
-        },
-        {
-          "name": "aesop",
-          "url": "https://github.com/leanprover-community/aesop",
-          "rev": "29c64c56cc38211d39b306db2df11701e3d3de11"
-        },
-        {
-          "name": "Qq",
-          "url": "https://github.com/leanprover-community/quote4",
-          "rev": "6d26f8bb4b2bb78f929ad160feac508866821316"
-        },
-        {
-          "name": "batteries",
-          "url": "https://github.com/leanprover-community/batteries",
-          "rev": "30691c775364967184547c94468bf6b5f25400fb"
-        },
-        {
-          "name": "Cli",
-          "url": "https://github.com/leanprover/lean4-cli",
-          "rev": "34d2efffcb6dc8d5f3537cf6a7f88bfaa999ec49"
-        }
-      ],
-      "diagnostic_class": "genuine exact canonical original field-measure proof model; no theorem placeholders or data holes",
-      "remote_memory_mib": 8192
-    },
-    {
-      "id": "wishart_product_haar_component_goals",
-      "module": "HaarProductProbe",
-      "case_dir": "cases/wishart_product_haar_component_goals",
-      "original_package": "reports/wishart/full20-canonical",
-      "original_challenge": "reports/wishart/full20-canonical/complete-measured-repair/haar-product-repair/bundle/reports/challenge_only_diagnostic/cases/wishart_product_haar_component_goals/Challenge.lean",
-      "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
-      "hashes": {
-        "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
-        "lake-manifest.json": "5619bb28ae7f2972522467eccf712e99876805a4fb0b7298a3c8de5918224147",
-        "original-lakefile.toml": "e429ab885c0b86124ac6b748b01715efdede7f476661ead3634e0c69b6521ccb",
-        "Challenge.lean": "8b04908de6285d7d4d67afd42a2bd8ba7e008e0e03725767507d54da88a75ef7"
-      },
-      "challenge_lines": 186,
-      "challenge_bytes": 11974,
+      "challenge_lines": 185,
+      "challenge_bytes": 11528,
       "dependency_pins": [
         {
           "name": "mathlib",
@@ -135,8 +70,7 @@
     }
   ],
   "default_case_ids": [
-    "wishart_product_haar_explicit_proof",
-    "wishart_product_haar_component_goals"
+    "wishart_product_haar_explicit_proof"
   ],
   "operator_resource_policy": {
     "memory_mib": 8192,
