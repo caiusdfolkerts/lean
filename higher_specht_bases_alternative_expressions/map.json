@@ -1,0 +1,30 @@
+{
+  "project": "higher_specht_bases_alternative_expressions",
+  "baseline_project": "higher_specht_bases",
+  "paper_sha256": "931c0ee33b94c7a77d373c4040abb40151a8f1cd049b977006df188e31013a0c",
+  "companion_to": {
+    "entry": "higher_specht_bases_status",
+    "commit": "fb5ab9354a764e61ae08d5e8f631614d1920f776"
+  },
+  "status": "alternative_multipliers_candidate_awaiting_full_preflight",
+  "selected_results": [
+    "Corollary 5.3: simultaneous alternative multipliers at all eligible indices of every finite Griffin ideal expression"
+  ],
+  "coverage": [
+    {
+      "paper_result": "Corollary 5.3",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        18
+      ],
+      "declarations": [
+        {
+          "name": "HigherSpecht.GriffinIdealExpression.corollary_5_3_alternative_basis_onEligible",
+          "source_path": "source/higher_specht/verified/remaining03_complete.lean",
+          "source_line": 1818
+        }
+      ]
+    }
+  ],
+  "coverage_status": "partial_principal_selection_not_whole_paper"
+}
