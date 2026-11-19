@@ -17,11 +17,26 @@
     "LeanEval.Geometry.PlatonicClassification.IsStackedCubical.edge_equality_real",
     "LeanEval.Geometry.PlatonicClassification.IsStackedCubical.face_equality_real",
     "LeanEval.Geometry.PlatonicClassification.IsStackedCubical.facet_equality_real",
-    "Cubical.PL.CubeComplex.cubical_pl_lower_bound"
+    "Cubical.PL.CubeComplex.cubical_pl_lower_bound",
+    "LeanEval.Geometry.PlatonicClassification.finite_isFace",
+    "PalomarCubicalLower.standardCube_vertices",
+    "PalomarCubicalLower.facePolytope_vertices",
+    "PalomarCubicalLower.polytopeGraph_adj",
+    "PalomarCubicalLower.cubeComplex_graph_adj",
+    "PalomarCubicalLower.cubeComplex_orderComplex_faces",
+    "PalomarCubicalLower.standardRealization_faces"
   ],
   "permitted_axioms": [
     "propext",
     "Quot.sound",
     "Classical.choice"
+  ],
+  "definition_names": [
+    "LeanEval.Geometry.PlatonicClassification.standardCube",
+    "LeanEval.Geometry.PlatonicClassification.facePolytope",
+    "LeanEval.Geometry.PlatonicClassification.polytopeGraph",
+    "Cubical.PL.CubeComplex.graph",
+    "Cubical.PL.CubeComplex.orderComplex",
+    "DifferentialGeometry.Topology.Engulfing.standardRealization"
   ]
 }

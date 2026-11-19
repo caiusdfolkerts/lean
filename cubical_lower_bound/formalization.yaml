@@ -31,7 +31,7 @@ related_formalizations:
     note: >-
       The complete substantive development is copied here from this exact
       revision. Palomar packaging adds the independent Challenge statement,
-      Solution import, Comparator configuration, and this metadata.
+      Solution import and independently literal constructor specifications, Comparator configuration, and this metadata.
   - title: SolarYs431/lean-eval-platonic-classification
     relationship: adapts
     id: https://github.com/SolarYs431/lean-eval-platonic-classification
@@ -52,10 +52,22 @@ automation:
 review:
   status: unchecked
   notes: >-
-    Packaging has undergone source-level statement comparison only. No fresh
-    Lean build, Comparator run, NanoDa check, or independent mathematical
-    peer review is claimed in this metadata. Consult reports and CI for actual
-    later validation. No weakening of the original selected statements is intended.
+    The preceding sixteen-result snapshot e806a9b92d8feb996c4240d204ce0a7ed280f021
+    passed actual Challenge and Source/Solution builds, then failed raw Comparator
+    comparison. Its complete read-only diagnostic found proof-constructor and
+    universe-context mismatches. This revised comparison layer preserves all
+    sixteen research statements, supplies six proof-bearing record values under
+    complete independent mathematical-field specifications, and separately checks
+    finite face-set existence as a support obligation. These revisions are not yet
+    compiled or compared. Independent kernel and clean editorial verdicts remain pending.
 limitations:
-  - Challenge data definitions duplicate exact source semantics and original names; only proof-valued construction fields are holes. Fresh Comparator validation is required.
-  - The registry entry records the principal lower bounds, substantive corollaries, and sharpness statements; the generic local-propagation and facet-determination lemmas remain substantive proved dependencies rather than separately advertised registry conclusions.
+  - >-
+    Six supplied constructors are fixed by complete independently literal specifications:
+    cube vertices, face vertices, both graph adjacency relations, every nonempty
+    order-complex chain, and every standard-basis realization face. All other fields
+    of these records are propositions. Their support obligations are not advertised
+    as independent research results.
+  - >-
+    The registry entry records the principal lower bounds, substantive corollaries,
+    and sharpness statements; generic local-propagation and facet-determination
+    lemmas remain proved dependencies rather than separately advertised conclusions.
