@@ -1,0 +1,2 @@
+module
+public meta import LowerSchemas.FiniteSharedFrameGroups.Part0

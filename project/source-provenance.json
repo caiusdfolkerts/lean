@@ -1,0 +1,14 @@
+{
+  "original_repository": "https://github.com/caiusdfolkerts/research",
+  "commit": "a39e089d37e218063266ecf9b612552741b1ddab",
+  "source_index": "small_nonrational/verification/source_index.json",
+  "source_index_sha256": "ba0607b1aa267f45cc732f4197f89cbb8c612deeef0061eebf331bc32579d550",
+  "root_modules": [
+    "Consolidated.Seventeen",
+    "Consolidated.SixActualAssembly",
+    "Consolidated.RankFourTheorems",
+    "CompletedResidualCoverage",
+    "VerifiedTargets"
+  ],
+  "corrected_paper_sha256": "2092c7b5705fcda1b8efeec8c0be08b76bf5d7d92090564c30917a154a223d7e"
+}
