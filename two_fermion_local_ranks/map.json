@@ -1,0 +1,34 @@
+{
+  "baseline_repository": "caiusdfolkerts/research",
+  "baseline_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
+  "paper_sha256": "c4a3dd3f2e102d6b4bcc8d50c58ea8007c412cea8d762a8fbb5b105db09bc19a",
+  "project": "two_fermion_local_ranks",
+  "selected_results": [
+    "PaperVerification.Fermion.SeparatedPairedData.localSuper_finrank",
+    "PaperVerification.Fermion.SeparatedPairedData.localSuper_exterior_hilbert_coefficient",
+    "PaperVerification.Fermion.SeparatedPairedData.globalSuper_finrank_closed",
+    "PaperVerification.Fermion.SeparatedPairedData.globalSuper_exterior_hilbert_coefficient"
+  ],
+  "coverage": [
+    {
+      "name": "PaperVerification.Fermion.SeparatedPairedData.globalSuper_exterior_hilbert_coefficient",
+      "source": "source/two_fermion.lean",
+      "line": 95939
+    },
+    {
+      "name": "PaperVerification.Fermion.SeparatedPairedData.globalSuper_finrank_closed",
+      "source": "source/two_fermion.lean",
+      "line": 95920
+    },
+    {
+      "name": "PaperVerification.Fermion.SeparatedPairedData.localSuper_exterior_hilbert_coefficient",
+      "source": "source/two_fermion.lean",
+      "line": 95795
+    },
+    {
+      "name": "PaperVerification.Fermion.SeparatedPairedData.localSuper_finrank",
+      "source": "source/two_fermion.lean",
+      "line": 95175
+    }
+  ]
+}

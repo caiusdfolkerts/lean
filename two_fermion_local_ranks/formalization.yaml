@@ -1,0 +1,52 @@
+version: v0.4
+project:
+  name: Local ranks and exterior Hilbert functions of two-fermion coinvariants
+  description: For separated paired two-fermion data over an algebraically closed field of characteristic
+    zero, the dimension at each support point is a product of the ramification orders, cluster multiplicities
+    and a power of two. The exterior Hilbert polynomial determines the dimension in each exterior degree.
+    For a positive number of variables the global formulas give the corresponding dimensions in terms
+    of the degrees of the input polynomials.
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.CO
+  - math.AC
+  msc2020:
+  - 05E10
+  - 13A50
+sources:
+- type: paper
+  title: Monomial bases for two-fermion coinvariants
+  authors:
+  - Caius Folkerts
+  relationship: formalizes
+  author_endorsement: participated
+  url: https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants/paper.pdf
+  note: 'Exact included paper SHA-256: c4a3dd3f2e102d6b4bcc8d50c58ea8007c412cea8d762a8fbb5b105db09bc19a.
+    Scope and declaration locations are recorded in map.json; novelty is not independently established.'
+automation:
+  methods:
+  - method: agent
+    tool_setup: OpenAI Codex
+    notes: Codex extracted the four local and global dimension statements and their dependencies from
+      the published Lean development. Palomar runs its independent checks on the submitted commit.
+  - method: other
+    tool_setup: Historical AI assistance reported in the included paper
+    notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing its proofs.
+      The exact model roles and extent of historical Lean automation have not been reconstructed from
+      the snapshot.
+review:
+  status: unchecked
+  notes: The selected statements have been checked during preparation. The verification report and editorial
+    review provide separate assessments.
+scope:
+  known_gaps:
+  - The full algebra decomposition in Theorem 7.2 and the equivariant results of Section 8 lie outside
+    this selection.
+  notes: The local and global algebras, exterior components and numerical formulas are explicit in the
+    Challenge. The proof uses the original Lean development.
+  current_selection: Four local and global rank and exterior Hilbert consequences of Theorem 7.2.
