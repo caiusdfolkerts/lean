@@ -54,12 +54,13 @@ review:
   status: unchecked
   notes: >-
     Exact521-line Challenge passed canonical elaboration in run44387460587.
-    The two subgroup abbreviation proof repairs progressed through the original
-    source in fullrun44460018126, whose complete report contains one new source
-    proof failure. This repair rewrites the proved one-row tableauRows=0 function
-    before simplifying the literal ascent count, preserving all statements,
-    definitions, measured raw normalization and selected support. Repaired full
-    source/Solution/Comparator and independent kernel replay remain unverified.
+    Fullrun44461248433 ended with a compiler metavariable panic during simp
+    equation-theorem generation in basis_remainder01, exit134 and no ordinary
+    Lean error excerpts. The cocharge-zero proof now rewrites the proved zero
+    row function and proves the literal finite sum by sum_eq_zero/rfl, avoiding
+    simp equation generation in that proof. All statements, mathematical data,
+    source guards, measured raw normalization and selected support are unchanged.
+    Repaired full source/Solution/Comparator and kernel checks remain unverified.
 scope:
   known_gaps:
   - The fixed-copy irreducible representation assertions, column-insertion result,

@@ -2426,7 +2426,10 @@ theorem cochargeLabel_eq_zero_of_one_row {μ : YoungDiagram}
     cochargeLabel S i = 0 := by
   change ascentCount (tableauRows S) i.val = 0
   rw [tableauRows_eq_zero_of_one_row S hμ]
-  simp [ascentCount]
+  change (Finset.range i.val).sum (fun _ => if (0 : ℕ) < 0 then 1 else 0) = 0
+  apply Finset.sum_eq_zero
+  intro j hj
+  rfl
 
 theorem transportedCocharge_eq_zero_of_one_row {μ : YoungDiagram}
     (S : StandardYoungTableau μ) (T : YoungTableau μ) (hμ : μ.colLen 0 ≤ 1) :
