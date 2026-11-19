@@ -1,5 +1,3 @@
-# Palomar submission: wishart
+# Wishart measured proposition-witness normalization
 
-Substantive source snapshot of [caiusdfolkerts/research](https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/wishart), revision `e0696fddcd3d10b5d6461e62e9b2f02c4195be37`.
-
-The complete selected development, paper, metadata, and Comparator configuration are in `wishart/`. This branch prepares a registry submission; it does not claim registry acceptance. See `wishart/formalization.yaml` for exact scope and provenance.
+Genuine canonical witnesses correspond to actual types retained in44481534659: source exact two-dimensional NeZero/Nat.AtLeastTwo, real-matrix StarModule, scalar commutation/tower, matrix star-order, real functional calculus and nonnegative spectra. Every witness is proposition-valued, kernel-checked, and supplies no mathematical data. One case compiles these actual proofs only; the other retains all original20 main/support targets and literal data, adding these named witnesses to stabilize implicit proof references. This is a canonical interface test, not a full Source/Comparator/kernel preflight. Exact Mathlib/Lean pins unchanged.
