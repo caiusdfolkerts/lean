@@ -54,12 +54,12 @@ review:
   status: unchecked
   notes: >-
     Exact521-line Challenge passed canonical elaboration in run44387460587.
-    Full run44391461523 reported exactly two source proof errors, with zero
-    omitted/truncated excerpts. Both subgroup-def equalities are literal
-    abbrev reflexivity; their over-rewriting proofs are replaced by rfl.
-    All mathematical statements, data definitions, measured raw normalization,
-    selected support facts and canonical pins remain unchanged. The repaired
-    source/Solution/Comparator and independent kernel replay are unverified.
+    The two subgroup abbreviation proof repairs progressed through the original
+    source in fullrun44460018126, whose complete report contains one new source
+    proof failure. This repair rewrites the proved one-row tableauRows=0 function
+    before simplifying the literal ascent count, preserving all statements,
+    definitions, measured raw normalization and selected support. Repaired full
+    source/Solution/Comparator and independent kernel replay remain unverified.
 scope:
   known_gaps:
   - The fixed-copy irreducible representation assertions, column-insertion result,

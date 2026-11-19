@@ -2424,7 +2424,9 @@ theorem tableauRows_eq_zero_of_one_row {μ : YoungDiagram}
 theorem cochargeLabel_eq_zero_of_one_row {μ : YoungDiagram}
     (S : StandardYoungTableau μ) (hμ : μ.colLen 0 ≤ 1) (i : Fin μ.card) :
     cochargeLabel S i = 0 := by
-  simp [cochargeLabel, tableauRows_eq_zero_of_one_row S hμ, ascentCount]
+  change ascentCount (tableauRows S) i.val = 0
+  rw [tableauRows_eq_zero_of_one_row S hμ]
+  simp [ascentCount]
 
 theorem transportedCocharge_eq_zero_of_one_row {μ : YoungDiagram}
     (S : StandardYoungTableau μ) (T : YoungTableau μ) (hμ : μ.colLen 0 ≤ 1) :

@@ -45,3 +45,5 @@ Here's a guide to help you navigate this repo! All verified theorems/proposition
 | **Corollary 8.1** | `corollary_8_1_griffin_characteristic_all_partitions`, `corollary_8_1_springer_characteristic`, `corollary_8_1_griffin_copy_irreducible`, `corollary_8_1_springer_copy_irreducible`, `corollary_8_1_griffin_localized`, `corollary_8_1_springer_localized` |
 
 Measured source proof repair after full run44391461523: the complete report contains two errors in the row/column subgroup-def proofs. Each subgroup is a literal abbreviation for its displayed fiber subgroup, so both equalities now use reflexivity. All statement types, mathematical definitions, guards, source licenses and the full five-target substantive scope remain unchanged. Full source/Solution/Comparator verification remains pending.
+
+The next full run44460018126 progressed beyond both subgroup repairs and reported one cocharge proof failure. Its repair rewrites the proved one-row tableauRows=0 function before simplifying the actual ascent count. No theorem statement, mathematical definition, assumption, guard, canonical pin or selected scope changes. Full verification remains pending.

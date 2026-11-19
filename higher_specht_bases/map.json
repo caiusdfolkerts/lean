@@ -1640,5 +1640,32 @@
     "all5principal_and_Cor43_targets_unchanged": true,
     "mathematical_scope": "All current full Springer/Griffin basis and exact characteristic ranges including empty partitions, plus full Cor4.3 arbitrary nonzero-leading-coefficient/admissible multiplier basis; all selected semantic support retained.",
     "no_local_Lean": true
+  },
+  "measured_cocharge_proof_repair": {
+    "status": "frozen measured one-error source proof repair; uncompiled",
+    "failed_commit": "6b03d4aa889dfdc27a9a5f335dfeda7d4b6f6bbc",
+    "failed_run": 44460018126,
+    "report_sha256": "92cb8a2364b275d540611aa2fb9a555d7ab049fdb782c23e8f1a4162d7fdc1b3",
+    "complete_error_excerpts": {
+      "errors": [
+        {
+          "excerpt": "error: source/higher_specht/verified/basis_remainder01.lean:2426:29: unsolved goals\n\u03bc : YoungDiagram\nS : StandardYoungTableau \u03bc\nh\u03bc : \u03bc.colLen 0 \u2264 1\ni : Fin \u03bc.card\n\u22a2 \u2200 \u2983x : \u2115\u2984, x < \u2191i \u2192 tableauRows S (x + 1) \u2264 tableauRows S x",
+          "location": {
+            "column": 29,
+            "line": 2426,
+            "path": "source/higher_specht/verified/basis_remainder01.lean"
+          },
+          "truncated": false
+        }
+      ],
+      "omitted_error_count": 0,
+      "output_truncated": false,
+      "schema_version": 1
+    },
+    "source": "source/higher_specht/verified/basis_remainder01.lean",
+    "before_sha256": "a27926ac397fcad9a6a802709a7399fa6160907b2946568526de5a02a9ceec26",
+    "after_sha256": "0bff2436e20804ef0e8fe7c336f0118e2c62680ddfed5ee538b901198cd4f124",
+    "repair": "Change to the literal ascentCount of tableauRows, rewrite the proved whole function tableauRows=0 first, then simplify the actual finite ascent sum. This avoids simplifier unfolding the normalized abbreviation before rewriting its function argument. All theorem types, definitions, instances, assumptions and guards are unchanged.",
+    "scope": "All5 prescribed Springer/Griffin/characteristic/corollary4.3 endpoints plus all existing selected semantic support remain unchanged."
   }
 }
