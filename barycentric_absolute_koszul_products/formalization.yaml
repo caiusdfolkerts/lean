@@ -1,0 +1,55 @@
+version: v0.4
+project:
+  name: Multiplication in the associated graded of Koszul homology
+  description: For a finite simplicial poset over a commutative ring, the comparison from the associated
+    graded of the original Koszul homology to barycentric graded Koszul homology preserves the exterior
+    product in every pair of homological degrees and filtration weights. The compared equations specify
+    both standard bases on every monomial index. They identify the comparison on each chain grade with
+    its canonical basis comparison, and its map on homology with the map induced by that chain comparison.
+    This is the Koszul homology product comparison used for Theorem 1.2.
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.CO
+  - math.AC
+  msc2020:
+  - 13F55
+  - 05E45
+sources:
+- type: paper
+  title: Barycentric invariance and universal parameters for face rings
+  authors:
+  - Caius Folkerts
+  relationship: formalizes
+  author_endorsement: participated
+  url: https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/barycentric_invariance/paper.pdf
+  note: 'Exact included paper SHA-256: 44902437462f2861ab65c112f77ec1f19e594753d3c9b277d9adcb63c6e523e4.
+    Scope and declaration locations are recorded in map.json; novelty is not independently established.'
+automation:
+  methods:
+  - method: agent
+    tool_setup: OpenAI Codex
+    notes: Codex extracted the independent statement from the pinned Lean source and packaged the existing
+      proof.
+  - method: other
+    tool_setup: Historical AI assistance reported in the included paper
+    notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing its proofs.
+      The exact model roles and extent of historical Lean automation have not been reconstructed from
+      the snapshot.
+review:
+  status: unchecked
+  notes: The exact-snapshot mechanical report records verification. The Palomar review records editorial
+    findings.
+scope:
+  current_selection: For a finite simplicial poset over a commutative ring, the comparison from the associated
+    graded of the original Koszul homology to barycentric graded Koszul homology preserves the exterior
+    product in every pair of homological degrees and filtration weights. The compared equations specify
+    both standard bases on every monomial index. They identify the comparison on each chain grade with
+    its canonical basis comparison, and its map on homology with the map induced by that chain comparison.
+    This is the Koszul homology product comparison used for Theorem 1.2.
+  known_gaps: []
+  notes: Companion entries cover other parts of Theorem 1.2.

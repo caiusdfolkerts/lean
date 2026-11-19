@@ -1,0 +1,20 @@
+{
+  "baseline_project": "barycentric_invariance",
+  "snapshot_source_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
+  "paper_result": "Multiplication in the associated graded of Koszul homology in Theorem 1.2",
+  "source_file": "barycentric_invariance/source/theorem12.lean",
+  "scope": "For a finite simplicial poset over a commutative ring, the comparison from the associated graded of the original Koszul homology to barycentric graded Koszul homology preserves the exterior product in every pair of homological degrees and filtration weights. The compared equations specify both standard bases on every monomial index. They identify the comparison on each chain grade with its canonical basis comparison, and its map on homology with the map induced by that chain comparison. This is the Koszul homology product comparison used for Theorem 1.2.",
+  "known_gaps": [],
+  "selected_results": [
+    "FourPapers.Universal.originalAssociatedBarycentricHomology_multiplicative",
+    "FourPapers.Universal.standardFaceBasis_apply",
+    "FourPapers.Universal.barycentricGlobalStandardBasis_monomial",
+    "FourPapers.Universal.koszulGradeComparison_eq_canonical",
+    "FourPapers.Universal.koszulGradedHomologyComparison_formula"
+  ],
+  "source_results": {
+    "originalAssociatedBarycentricHomology_multiplicative": 28390,
+    "koszulGradeComparison_eq_canonical": 20764,
+    "barycentricGlobalStandardBasis_monomial": 15203
+  }
+}
