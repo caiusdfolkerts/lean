@@ -4569,7 +4569,7 @@ theorem homogeneous_single (j : J) (p : P) :
   intro t ht
   by_cases htj : t=j
   · exact congrArg weight htj
-  · exact (ht (by simp only [map_smul,Finsupp.smul_apply,Module.Basis.repr_self,
+  · exact (ht (by simp only [PalomarFermion.coordinates_apply, map_smul,Finsupp.smul_apply,Module.Basis.repr_self,
       Finsupp.single_eq_of_ne htj,smul_zero])).elim
 
 theorem component_smul_scalar (r : ℕ) (c : K) (x : M) :
