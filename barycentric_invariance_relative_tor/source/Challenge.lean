@@ -63,7 +63,7 @@ end
 section
 variable (φ : M →ₗ[R] R)
 noncomputable def zeroHomologyLinearEquivAux : (koszulComplex φ).homology 0 ≃ₗ[R] (⋀[R]^0 M) ⧸ (koszulComplex.d φ 0).range :=
-  (((koszulComplex φ).isoHomologyι₀.trans
+  (((ChainComplex.isoHomologyι₀ (koszulComplex φ)).trans
     ((koszulComplex φ).opcyclesIsoSc' 1 0 0 (by simp) (by simp))).trans
       ((koszulComplex φ).sc' 1 0 0).moduleCatOpcyclesIso).toLinearEquiv
 lemma d_zero_range_map : (koszulComplex.d φ 0).range.map (exteriorPower.zeroEquiv R _).toLinearMap = φ.range := by sorry
@@ -107,7 +107,7 @@ def regularSequenceResolution (l : List R) (hl : RingTheory.Sequence.IsRegular R
         change Projective (ModuleCat.of R (⋀[R]^n (Fin l.length → R)))
         infer_instance)
       (fun n => koszulComplex.exactAt_of_isRegular l hl (n + 1) (by omega)))
-    ((koszulComplex.ofList l).isoHomologyι₀.symm ≪≫ (koszulComplex.zeroHomologyOfListLinearEquiv l).toModuleIso)
+    ((ChainComplex.isoHomologyι₀ (koszulComplex.ofList l)).symm ≪≫ (koszulComplex.zeroHomologyOfListLinearEquiv l).toModuleIso)
 def coefficientComplex (l : List R) (M : ModuleCat.{u} R) : HomologicalComplex (ModuleCat.{u} R) PalomarBarycentricTor.naturalDown := (((CategoryTheory.MonoidalCategory.tensoringRight (ModuleCat R)).obj
   M).mapHomologicalComplex (ComplexShape.down ℕ)).obj (koszulComplex.ofList l)
 end
