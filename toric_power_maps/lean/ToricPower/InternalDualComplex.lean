@@ -2,6 +2,7 @@ module
 
 public import TauCeti.CategoryTheory.Monoidal.Rigid.Functor
 public import Mathlib.Algebra.Homology.Opposite
+public import Mathlib.CategoryTheory.Monoidal.Preadditive
 
 /-!
 # Internal duals of actual complexes and monoidal pullback
