@@ -26,3 +26,9 @@ name = "submission"
 srcDir = "source"
 roots = ["Challenge", "Solution"]
 allowImportAll = true
+
+[[lean_lib]]
+name = "cor53Diagnostic"
+srcDir = "source"
+roots = ["Cor53Core", "Cor53Data", "SourceBridges", "GradedMultiplication"]
+allowImportAll = true
