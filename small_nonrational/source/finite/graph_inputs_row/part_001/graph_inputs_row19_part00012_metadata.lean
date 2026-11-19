@@ -855,7 +855,8 @@ theorem record014_local_1 : Interval (localCheck record014) 64 87 :=
   interval_of_check _ 64 23 (by decide +kernel)
 
 theorem record014_local_checked : Interval (localCheck record014) 0 87 :=
-  (interval_append _ 0 64 87 record014_local_0 record014_local_1)
+  interval_of_check _ 0 87 (by decide +kernel)
+
 theorem record014_kind_checked : Interval record014.data.kindTest 0 record014.k :=
   interval_of_check _ 0 5 (by decide +kernel)
 
@@ -2979,7 +2980,8 @@ theorem record050_local_1 : Interval (localCheck record050) 64 73 :=
   interval_of_check _ 64 9 (by decide +kernel)
 
 theorem record050_local_checked : Interval (localCheck record050) 0 73 :=
-  (interval_append _ 0 64 73 record050_local_0 record050_local_1)
+  interval_of_check _ 0 73 (by decide +kernel)
+
 theorem record050_kind_checked : Interval record050.data.kindTest 0 record050.k :=
   interval_of_check _ 0 5 (by decide +kernel)
 

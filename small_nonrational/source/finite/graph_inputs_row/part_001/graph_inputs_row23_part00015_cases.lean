@@ -326,16 +326,6 @@ theorem record010_result : Result (23, 24666066386944) :=
   of_small 23 24666066386944 (by decide) ⟨record010, record010_core, record010_parameters, record010_coverage⟩
 #print axioms record010_result
 
-theorem record011_core : Core record011 where
-  matrix := record011_matrix_checked
-  valid := record011_validity
-  literal := record011_literal
-  nodes := record011_raw_node_checks record011_validity
-  leaf_nodup := record011_leaves_nodup
-  frames := record011_frames_supported record011_cells_exact
-  root_empty := by decide +kernel
-  leaves_checked := ⟨record011_certificates, record011_leaf_certificates_checked⟩
-
 theorem record011_parameters : Parameters record011 (rowOfCode 23) 24666198507520 where
   kind_count := by decide +kernel
   quota := by decide +kernel
@@ -351,7 +341,7 @@ theorem record011_coverage : Coverage record011 FacetUniverses.FullSmall.cells S
     GraphEmbeddingCoverage.small_edges GraphCoverageDescriptions.GraphCoverageBatch053.candidate05367_checked
 
 theorem record011_result : Result (23, 24666198507520) :=
-  of_small 23 24666198507520 (by decide) ⟨record011, record011_core, record011_parameters, record011_coverage⟩
+  of_direct_small 23 24666198507520 (by decide) ⟨record011, Papers.RationalityTen.StructuralGraphCases.GraphInputsRow23Part00015.record011.direct_core, record011_parameters, record011_coverage⟩
 #print axioms record011_result
 
 theorem record012_core : Core record012 where
@@ -1818,16 +1808,6 @@ theorem record064_result : Result (23, 25126112330240) :=
   of_small 23 25126112330240 (by decide) ⟨record064, record064_core, record064_parameters, record064_coverage⟩
 #print axioms record064_result
 
-theorem record065_core : Core record065 where
-  matrix := record065_matrix_checked
-  valid := record065_validity
-  literal := record065_literal
-  nodes := record065_raw_node_checks record065_validity
-  leaf_nodup := record065_leaves_nodup
-  frames := record065_frames_supported record065_cells_exact
-  root_empty := by decide +kernel
-  leaves_checked := ⟨record065_certificates, record065_leaf_certificates_checked⟩
-
 theorem record065_parameters : Parameters record065 (rowOfCode 23) 25152471466240 where
   kind_count := by decide +kernel
   quota := by decide +kernel
@@ -1843,18 +1823,8 @@ theorem record065_coverage : Coverage record065 FacetUniverses.FullSmall.cells S
     GraphEmbeddingCoverage.small_edges GraphCoverageDescriptions.GraphCoverageBatch054.candidate05421_checked
 
 theorem record065_result : Result (23, 25152471466240) :=
-  of_small 23 25152471466240 (by decide) ⟨record065, record065_core, record065_parameters, record065_coverage⟩
+  of_direct_small 23 25152471466240 (by decide) ⟨record065, Papers.RationalityTen.StructuralGraphCases.GraphInputsRow23Part00015.record065.direct_core, record065_parameters, record065_coverage⟩
 #print axioms record065_result
-
-theorem record066_core : Core record066 where
-  matrix := record066_matrix_checked
-  valid := record066_validity
-  literal := record066_literal
-  nodes := record066_raw_node_checks record066_validity
-  leaf_nodup := record066_leaves_nodup
-  frames := record066_frames_supported record066_cells_exact
-  root_empty := by decide +kernel
-  leaves_checked := ⟨record066_certificates, record066_leaf_certificates_checked⟩
 
 theorem record066_parameters : Parameters record066 (rowOfCode 23) 25154688188416 where
   kind_count := by decide +kernel
@@ -1871,6 +1841,6 @@ theorem record066_coverage : Coverage record066 FacetUniverses.FullSmall.cells S
     GraphEmbeddingCoverage.small_edges GraphCoverageDescriptions.GraphCoverageBatch054.candidate05422_checked
 
 theorem record066_result : Result (23, 25154688188416) :=
-  of_small 23 25154688188416 (by decide) ⟨record066, record066_core, record066_parameters, record066_coverage⟩
+  of_direct_small 23 25154688188416 (by decide) ⟨record066, Papers.RationalityTen.StructuralGraphCases.GraphInputsRow23Part00015.record066.direct_core, record066_parameters, record066_coverage⟩
 #print axioms record066_result
 end Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00015

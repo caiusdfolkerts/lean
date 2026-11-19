@@ -350,7 +350,8 @@ theorem record005_local_2 : Interval (localCheck record005) 128 135 :=
   interval_of_check _ 128 7 (by decide +kernel)
 
 theorem record005_local_checked : Interval (localCheck record005) 0 135 :=
-  (interval_append _ 0 64 135 record005_local_0 (interval_append _ 64 128 135 record005_local_1 record005_local_2))
+  interval_of_check _ 0 135 (by decide +kernel)
+
 theorem record005_kind_checked : Interval record005.data.kindTest 0 record005.k :=
   Papers.RationalityTen.CompactReplay.GraphInputsRow25Part00005.record053_kind_checked
 
@@ -413,7 +414,8 @@ theorem record006_local_1 : Interval (localCheck record006) 64 111 :=
   interval_of_check _ 64 47 (by decide +kernel)
 
 theorem record006_local_checked : Interval (localCheck record006) 0 111 :=
-  (interval_append _ 0 64 111 record006_local_0 record006_local_1)
+  interval_of_check _ 0 111 (by decide +kernel)
+
 theorem record006_kind_checked : Interval record006.data.kindTest 0 record006.k :=
   Papers.RationalityTen.CompactReplay.GraphInputsRow25Part00005.record054_kind_checked
 
@@ -539,7 +541,8 @@ theorem record008_local_1 : Interval (localCheck record008) 64 115 :=
   interval_of_check _ 64 51 (by decide +kernel)
 
 theorem record008_local_checked : Interval (localCheck record008) 0 115 :=
-  (interval_append _ 0 64 115 record008_local_0 record008_local_1)
+  interval_of_check _ 0 115 (by decide +kernel)
+
 theorem record008_kind_checked : Interval record008.data.kindTest 0 record008.k :=
   Papers.RationalityTen.CompactReplay.GraphInputsRow25Part00005.record056_kind_checked
 
@@ -791,7 +794,8 @@ theorem record012_local_1 : Interval (localCheck record012) 64 105 :=
   interval_of_check _ 64 41 (by decide +kernel)
 
 theorem record012_local_checked : Interval (localCheck record012) 0 105 :=
-  (interval_append _ 0 64 105 record012_local_0 record012_local_1)
+  interval_of_check _ 0 105 (by decide +kernel)
+
 theorem record012_kind_checked : Interval record012.data.kindTest 0 record012.k :=
   Papers.RationalityTen.CompactReplay.GraphInputsRow25Part00005.record060_kind_checked
 

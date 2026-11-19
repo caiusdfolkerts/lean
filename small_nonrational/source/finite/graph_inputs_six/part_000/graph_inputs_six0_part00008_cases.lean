@@ -7,6 +7,7 @@ public import GraphInputsSix0Part00008Leaves
 public import GraphSixEmbeddingCoverage
 public import GraphCoverageBatch177
 public import GraphCoverageBatch178
+public import GraphInputsSix0Part00008Structural000
 
 
 @[expose] public section
@@ -297,16 +298,6 @@ theorem record009_result : Result (32, 3162259898624) :=
   of_six 3162259898624 ⟨record009, record009_core, record009_parameters, record009_coverage⟩
 #print axioms record009_result
 
-theorem record010_core : Core record010 where
-  matrix := record010_matrix_checked
-  valid := record010_validity
-  literal := record010_literal
-  nodes := record010_raw_node_checks record010_validity
-  leaf_nodup := record010_leaves_nodup
-  frames := record010_frames_supported record010_cells_exact
-  root_empty := by decide +kernel
-  leaves_checked := ⟨record010_certificates, record010_leaf_certificates_checked⟩
-
 theorem record010_parameters : Parameters record010 (rowOfCode 32) 3162325958912 where
   kind_count := by decide +kernel
   quota := by decide +kernel
@@ -322,7 +313,7 @@ theorem record010_coverage : Coverage record010 FacetUniverses.FullSix0.cells Sh
     GraphEmbeddingCoverage.six_edges GraphCoverageDescriptions.GraphCoverageBatch177.candidate17723_checked
 
 theorem record010_result : Result (32, 3162325958912) :=
-  of_six 3162325958912 ⟨record010, record010_core, record010_parameters, record010_coverage⟩
+  of_direct_six 3162325958912 ⟨record010, Papers.RationalityTen.StructuralGraphCases.GraphInputsSix0Part00008.record010.direct_core, record010_parameters, record010_coverage⟩
 #print axioms record010_result
 
 theorem record011_core : Core record011 where

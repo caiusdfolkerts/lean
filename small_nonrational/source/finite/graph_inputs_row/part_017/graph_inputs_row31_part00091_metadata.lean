@@ -35,7 +35,8 @@ theorem record000_local_2 : Interval (localCheck record000) 128 130 :=
   interval_of_check _ 128 2 (by decide +kernel)
 
 theorem record000_local_checked : Interval (localCheck record000) 0 130 :=
-  (interval_append _ 0 64 130 record000_local_0 (interval_append _ 64 128 130 record000_local_1 record000_local_2))
+  interval_of_check _ 0 130 (by decide +kernel)
+
 theorem record000_kind_checked : Interval record000.data.kindTest 0 record000.k :=
   interval_of_check _ 0 5 (by decide +kernel)
 
@@ -537,7 +538,8 @@ theorem record008_local_2 : Interval (localCheck record008) 128 135 :=
   interval_of_check _ 128 7 (by decide +kernel)
 
 theorem record008_local_checked : Interval (localCheck record008) 0 135 :=
-  (interval_append _ 0 64 135 record008_local_0 (interval_append _ 64 128 135 record008_local_1 record008_local_2))
+  interval_of_check _ 0 135 (by decide +kernel)
+
 theorem record008_kind_checked : Interval record008.data.kindTest 0 record008.k :=
   interval_of_check _ 0 5 (by decide +kernel)
 
@@ -667,7 +669,8 @@ theorem record010_local_2 : Interval (localCheck record010) 128 135 :=
   interval_of_check _ 128 7 (by decide +kernel)
 
 theorem record010_local_checked : Interval (localCheck record010) 0 135 :=
-  (interval_append _ 0 64 135 record010_local_0 (interval_append _ 64 128 135 record010_local_1 record010_local_2))
+  interval_of_check _ 0 135 (by decide +kernel)
+
 theorem record010_kind_checked : Interval record010.data.kindTest 0 record010.k :=
   interval_of_check _ 0 5 (by decide +kernel)
 
@@ -732,7 +735,8 @@ theorem record011_local_2 : Interval (localCheck record011) 128 145 :=
   interval_of_check _ 128 17 (by decide +kernel)
 
 theorem record011_local_checked : Interval (localCheck record011) 0 145 :=
-  (interval_append _ 0 64 145 record011_local_0 (interval_append _ 64 128 145 record011_local_1 record011_local_2))
+  interval_of_check _ 0 145 (by decide +kernel)
+
 theorem record011_kind_checked : Interval record011.data.kindTest 0 record011.k :=
   interval_of_check _ 0 5 (by decide +kernel)
 

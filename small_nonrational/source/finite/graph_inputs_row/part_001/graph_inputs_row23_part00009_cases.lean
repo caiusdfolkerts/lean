@@ -1278,16 +1278,6 @@ theorem record044_result : Result (23, 17154376269824) :=
   of_small 23 17154376269824 (by decide) ⟨record044, record044_core, record044_parameters, record044_coverage⟩
 #print axioms record044_result
 
-theorem record045_core : Core record045 where
-  matrix := record045_matrix_checked
-  valid := record045_validity
-  literal := record045_literal
-  nodes := record045_raw_node_checks record045_validity
-  leaf_nodup := record045_leaves_nodup
-  frames := record045_frames_supported record045_cells_exact
-  root_empty := by decide +kernel
-  leaves_checked := ⟨record045_certificates, record045_leaf_certificates_checked⟩
-
 theorem record045_parameters : Parameters record045 (rowOfCode 23) 17171556073472 where
   kind_count := by decide +kernel
   quota := by decide +kernel
@@ -1303,7 +1293,7 @@ theorem record045_coverage : Coverage record045 FacetUniverses.FullSmall.cells S
     GraphEmbeddingCoverage.small_edges GraphCoverageDescriptions.GraphCoverageBatch048.candidate04833_checked
 
 theorem record045_result : Result (23, 17171556073472) :=
-  of_small 23 17171556073472 (by decide) ⟨record045, record045_core, record045_parameters, record045_coverage⟩
+  of_direct_small 23 17171556073472 (by decide) ⟨record045, Papers.RationalityTen.StructuralGraphCases.GraphInputsRow23Part00009.record045.direct_core, record045_parameters, record045_coverage⟩
 #print axioms record045_result
 
 theorem record046_core : Core record046 where
@@ -2006,16 +1996,6 @@ theorem record070_result : Result (23, 17326451720720) :=
   of_small 23 17326451720720 (by decide) ⟨record070, record070_core, record070_parameters, record070_coverage⟩
 #print axioms record070_result
 
-theorem record071_core : Core record071 where
-  matrix := record071_matrix_checked
-  valid := record071_validity
-  literal := record071_literal
-  nodes := record071_raw_node_checks record071_validity
-  leaf_nodup := record071_leaves_nodup
-  frames := record071_frames_supported record071_cells_exact
-  root_empty := by decide +kernel
-  leaves_checked := ⟨record071_certificates, record071_leaf_certificates_checked⟩
-
 theorem record071_parameters : Parameters record071 (rowOfCode 23) 17457033052160 where
   kind_count := by decide +kernel
   quota := by decide +kernel
@@ -2031,18 +2011,8 @@ theorem record071_coverage : Coverage record071 FacetUniverses.FullSmall.cells S
     GraphEmbeddingCoverage.small_edges GraphCoverageDescriptions.GraphCoverageBatch048.candidate04859_checked
 
 theorem record071_result : Result (23, 17457033052160) :=
-  of_small 23 17457033052160 (by decide) ⟨record071, record071_core, record071_parameters, record071_coverage⟩
+  of_direct_small 23 17457033052160 (by decide) ⟨record071, Papers.RationalityTen.StructuralGraphCases.GraphInputsRow23Part00009.record071.direct_core, record071_parameters, record071_coverage⟩
 #print axioms record071_result
-
-theorem record072_core : Core record072 where
-  matrix := record072_matrix_checked
-  valid := record072_validity
-  literal := record072_literal
-  nodes := record072_raw_node_checks record072_validity
-  leaf_nodup := record072_leaves_nodup
-  frames := record072_frames_supported record072_cells_exact
-  root_empty := by decide +kernel
-  leaves_checked := ⟨record072_certificates, record072_leaf_certificates_checked⟩
 
 theorem record072_parameters : Parameters record072 (rowOfCode 23) 17493678620672 where
   kind_count := by decide +kernel
@@ -2059,7 +2029,7 @@ theorem record072_coverage : Coverage record072 FacetUniverses.FullSmall.cells S
     GraphEmbeddingCoverage.small_edges GraphCoverageDescriptions.GraphCoverageBatch048.candidate04860_checked
 
 theorem record072_result : Result (23, 17493678620672) :=
-  of_small 23 17493678620672 (by decide) ⟨record072, record072_core, record072_parameters, record072_coverage⟩
+  of_direct_small 23 17493678620672 (by decide) ⟨record072, Papers.RationalityTen.StructuralGraphCases.GraphInputsRow23Part00009.record072.direct_core, record072_parameters, record072_coverage⟩
 #print axioms record072_result
 
 theorem record073_parameters : Parameters record073 (rowOfCode 23) 17502528602112 where

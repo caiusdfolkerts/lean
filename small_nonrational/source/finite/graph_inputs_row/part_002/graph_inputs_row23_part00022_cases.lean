@@ -260,16 +260,6 @@ theorem record008_result : Result (23, 28845201981440) :=
   of_small 23 28845201981440 (by decide) ⟨record008, record008_core, record008_parameters, record008_coverage⟩
 #print axioms record008_result
 
-theorem record009_core : Core record009 where
-  matrix := record009_matrix_checked
-  valid := record009_validity
-  literal := record009_literal
-  nodes := record009_raw_node_checks record009_validity
-  leaf_nodup := record009_leaves_nodup
-  frames := record009_frames_supported record009_cells_exact
-  root_empty := by decide +kernel
-  leaves_checked := ⟨record009_certificates, record009_leaf_certificates_checked⟩
-
 theorem record009_parameters : Parameters record009 (rowOfCode 23) 28866766704672 where
   kind_count := by decide +kernel
   quota := by decide +kernel
@@ -285,7 +275,7 @@ theorem record009_coverage : Coverage record009 FacetUniverses.FullSmall.cells S
     GraphEmbeddingCoverage.small_edges GraphCoverageDescriptions.GraphCoverageBatch056.candidate05697_checked
 
 theorem record009_result : Result (23, 28866766704672) :=
-  of_small 23 28866766704672 (by decide) ⟨record009, record009_core, record009_parameters, record009_coverage⟩
+  of_direct_small 23 28866766704672 (by decide) ⟨record009, Papers.RationalityTen.StructuralGraphCases.GraphInputsRow23Part00022.record009.direct_core, record009_parameters, record009_coverage⟩
 #print axioms record009_result
 
 theorem record010_core : Core record010 where
@@ -652,16 +642,6 @@ theorem record022_result : Result (23, 28967562149888) :=
   of_small 23 28967562149888 (by decide) ⟨record022, record022_core, record022_parameters, record022_coverage⟩
 #print axioms record022_result
 
-theorem record023_core : Core record023 where
-  matrix := record023_matrix_checked
-  valid := record023_validity
-  literal := record023_literal
-  nodes := record023_raw_node_checks record023_validity
-  leaf_nodup := record023_leaves_nodup
-  frames := record023_frames_supported record023_cells_exact
-  root_empty := by decide +kernel
-  leaves_checked := ⟨record023_certificates, record023_leaf_certificates_checked⟩
-
 theorem record023_parameters : Parameters record023 (rowOfCode 23) 28967694270464 where
   kind_count := by decide +kernel
   quota := by decide +kernel
@@ -677,18 +657,8 @@ theorem record023_coverage : Coverage record023 FacetUniverses.FullSmall.cells S
     GraphEmbeddingCoverage.small_edges GraphCoverageDescriptions.GraphCoverageBatch057.candidate05711_checked
 
 theorem record023_result : Result (23, 28967694270464) :=
-  of_small 23 28967694270464 (by decide) ⟨record023, record023_core, record023_parameters, record023_coverage⟩
+  of_direct_small 23 28967694270464 (by decide) ⟨record023, Papers.RationalityTen.StructuralGraphCases.GraphInputsRow23Part00022.record023.direct_core, record023_parameters, record023_coverage⟩
 #print axioms record023_result
-
-theorem record024_core : Core record024 where
-  matrix := record024_matrix_checked
-  valid := record024_validity
-  literal := record024_literal
-  nodes := record024_raw_node_checks record024_validity
-  leaf_nodup := record024_leaves_nodup
-  frames := record024_frames_supported record024_cells_exact
-  root_empty := by decide +kernel
-  leaves_checked := ⟨record024_certificates, record024_leaf_certificates_checked⟩
 
 theorem record024_parameters : Parameters record024 (rowOfCode 23) 28967698432000 where
   kind_count := by decide +kernel
@@ -705,7 +675,7 @@ theorem record024_coverage : Coverage record024 FacetUniverses.FullSmall.cells S
     GraphEmbeddingCoverage.small_edges GraphCoverageDescriptions.GraphCoverageBatch057.candidate05712_checked
 
 theorem record024_result : Result (23, 28967698432000) :=
-  of_small 23 28967698432000 (by decide) ⟨record024, record024_core, record024_parameters, record024_coverage⟩
+  of_direct_small 23 28967698432000 (by decide) ⟨record024, Papers.RationalityTen.StructuralGraphCases.GraphInputsRow23Part00022.record024.direct_core, record024_parameters, record024_coverage⟩
 #print axioms record024_result
 
 theorem record025_core : Core record025 where

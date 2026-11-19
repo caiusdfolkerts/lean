@@ -1548,7 +1548,8 @@ theorem record024_local_1 : Interval (localCheck record024) 64 85 :=
   interval_of_check _ 64 21 (by decide +kernel)
 
 theorem record024_local_checked : Interval (localCheck record024) 0 85 :=
-  (interval_append _ 0 64 85 record024_local_0 record024_local_1)
+  interval_of_check _ 0 85 (by decide +kernel)
+
 theorem record024_kind_checked : Interval record024.data.kindTest 0 record024.k :=
   Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00129.record007_kind_checked
 

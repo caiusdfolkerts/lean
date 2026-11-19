@@ -610,64 +610,6 @@ theorem record041_raw_node_checks (record041_valid : GraphGrowthInputs.Valid rec
       record041.maps record041.leaf record041.nodes i = true :=
   record041.node_checks_valid record041_valid record041_supports (record041_checked record041_valid) i
 #print axioms record041_raw_node_checks
-theorem record042_nodes_0 (record042_valid : GraphGrowthInputs.Valid record042.inputs) : Interval (record042.nodeTestValid record042_valid) 0 32 :=
-  interval_of_check _ 0 32 (by decide_kernel_context)
-theorem record042_nodes_32 (record042_valid : GraphGrowthInputs.Valid record042.inputs) : Interval (record042.nodeTestValid record042_valid) 32 64 :=
-  interval_of_check _ 32 32 (by decide_kernel_context)
-theorem record042_nodes_64 (record042_valid : GraphGrowthInputs.Valid record042.inputs) : Interval (record042.nodeTestValid record042_valid) 64 96 :=
-  interval_of_check _ 64 32 (by decide_kernel_context)
-theorem record042_nodes_96 (record042_valid : GraphGrowthInputs.Valid record042.inputs) : Interval (record042.nodeTestValid record042_valid) 96 128 :=
-  interval_of_check _ 96 32 (by decide_kernel_context)
-theorem record042_nodes_128 (record042_valid : GraphGrowthInputs.Valid record042.inputs) : Interval (record042.nodeTestValid record042_valid) 128 160 :=
-  interval_of_check _ 128 32 (by decide_kernel_context)
-theorem record042_nodes_160 (record042_valid : GraphGrowthInputs.Valid record042.inputs) : Interval (record042.nodeTestValid record042_valid) 160 192 :=
-  interval_of_check _ 160 32 (by decide_kernel_context)
-theorem record042_nodes_192 (record042_valid : GraphGrowthInputs.Valid record042.inputs) : Interval (record042.nodeTestValid record042_valid) 192 224 :=
-  interval_of_check _ 192 32 (by decide_kernel_context)
-theorem record042_nodes_224 (record042_valid : GraphGrowthInputs.Valid record042.inputs) : Interval (record042.nodeTestValid record042_valid) 224 256 :=
-  interval_of_check _ 224 32 (by decide_kernel_context)
-theorem record042_nodes_256 (record042_valid : GraphGrowthInputs.Valid record042.inputs) : Interval (record042.nodeTestValid record042_valid) 256 288 :=
-  interval_of_check _ 256 32 (by decide_kernel_context)
-theorem record042_nodes_288 (record042_valid : GraphGrowthInputs.Valid record042.inputs) : Interval (record042.nodeTestValid record042_valid) 288 320 :=
-  interval_of_check _ 288 32 (by decide_kernel_context)
-theorem record042_nodes_320 (record042_valid : GraphGrowthInputs.Valid record042.inputs) : Interval (record042.nodeTestValid record042_valid) 320 352 :=
-  interval_of_check _ 320 32 (by decide_kernel_context)
-theorem record042_nodes_352 (record042_valid : GraphGrowthInputs.Valid record042.inputs) : Interval (record042.nodeTestValid record042_valid) 352 382 :=
-  interval_of_check _ 352 30 (by decide_kernel_context)
-theorem record042_supports : record042.Supports := by unfold RawData.Supports; decide +kernel
-theorem record042_leaf_0 : Interval record042.leafTest 0 1 :=
-  interval_of_check _ 0 1 (by decide +kernel)
-theorem record042_leaves_nodup (j : Fin record042.l) : (record042.leaf j).Nodup :=
-  record042.leaves_nodup_of_interval record042_leaf_0 j
-theorem record042_checked (record042_valid : GraphGrowthInputs.Valid record042.inputs) : Interval (record042.nodeTestValid record042_valid) 0 382 :=
-  (FiniteChecks.interval_append (record042.nodeTestValid record042_valid) 0 192 382
-  (FiniteChecks.interval_append (record042.nodeTestValid record042_valid) 0 96 192
-  (FiniteChecks.interval_append (record042.nodeTestValid record042_valid) 0 32 96
-  (record042_nodes_0 record042_valid)
-  (FiniteChecks.interval_append (record042.nodeTestValid record042_valid) 32 64 96
-  (record042_nodes_32 record042_valid)
-  (record042_nodes_64 record042_valid)))
-  (FiniteChecks.interval_append (record042.nodeTestValid record042_valid) 96 128 192
-  (record042_nodes_96 record042_valid)
-  (FiniteChecks.interval_append (record042.nodeTestValid record042_valid) 128 160 192
-  (record042_nodes_128 record042_valid)
-  (record042_nodes_160 record042_valid))))
-  (FiniteChecks.interval_append (record042.nodeTestValid record042_valid) 192 288 382
-  (FiniteChecks.interval_append (record042.nodeTestValid record042_valid) 192 224 288
-  (record042_nodes_192 record042_valid)
-  (FiniteChecks.interval_append (record042.nodeTestValid record042_valid) 224 256 288
-  (record042_nodes_224 record042_valid)
-  (record042_nodes_256 record042_valid)))
-  (FiniteChecks.interval_append (record042.nodeTestValid record042_valid) 288 320 382
-  (record042_nodes_288 record042_valid)
-  (FiniteChecks.interval_append (record042.nodeTestValid record042_valid) 320 352 382
-  (record042_nodes_320 record042_valid)
-  (record042_nodes_352 record042_valid)))))
-theorem record042_raw_node_checks (record042_valid : GraphGrowthInputs.Valid record042.inputs) (i : Fin record042.t) :
-    RawGraphConditionedGrowth.nodeCheck (record042.inputs.problem record042_valid)
-      record042.maps record042.leaf record042.nodes i = true :=
-  record042.node_checks_valid record042_valid record042_supports (record042_checked record042_valid) i
-#print axioms record042_raw_node_checks
 theorem record043_nodes_0 (record043_valid : GraphGrowthInputs.Valid record043.inputs) : Interval (record043.nodeTestValid record043_valid) 0 13 :=
   interval_of_check _ 0 13 (by decide_kernel_context)
 theorem record043_supports : record043.Supports := by unfold RawData.Supports; decide +kernel

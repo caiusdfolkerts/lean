@@ -943,16 +943,6 @@ theorem record032_result : Result (19, 31763472719872) :=
   of_small 19 31763472719872 (by decide) ⟨record032, record032_core, record032_parameters, record032_coverage⟩
 #print axioms record032_result
 
-theorem record033_core : Core record033 where
-  matrix := record033_matrix_checked
-  valid := record033_validity
-  literal := record033_literal
-  nodes := record033_raw_node_checks record033_validity
-  leaf_nodup := record033_leaves_nodup
-  frames := record033_frames_supported record033_cells_exact
-  root_empty := by decide +kernel
-  leaves_checked := ⟨record033_certificates, record033_leaf_certificates_checked⟩
-
 theorem record033_parameters : Parameters record033 (rowOfCode 19) 31763473630208 where
   kind_count := by decide +kernel
   quota := by decide +kernel
@@ -968,7 +958,7 @@ theorem record033_coverage : Coverage record033 FacetUniverses.FullSmall.cells S
     GraphEmbeddingCoverage.small_edges GraphCoverageDescriptions.GraphCoverageBatch037.candidate03702_checked
 
 theorem record033_result : Result (19, 31763473630208) :=
-  of_small 19 31763473630208 (by decide) ⟨record033, record033_core, record033_parameters, record033_coverage⟩
+  of_direct_small 19 31763473630208 (by decide) ⟨record033, Papers.RationalityTen.StructuralGraphCases.GraphInputsRow19Part00032.record033.direct_core, record033_parameters, record033_coverage⟩
 #print axioms record033_result
 
 theorem record034_core : Core record034 where

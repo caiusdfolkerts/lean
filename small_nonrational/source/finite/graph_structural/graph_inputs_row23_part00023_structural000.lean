@@ -1,13 +1,20 @@
 module
 prelude
 public import FacetCliqueRaw
+public import FacetSatEdges
+public import FacetSatGroups
+public import FacetSatRaw
 public import GraphDirectCore
 public import GraphInputsRow23Part00023Data
 public import GraphInputsRow23Part00023Frames
 public import GraphInputsRow23Part00023Leaves
 public import GraphInputsRow23Part00023Metadata
+public meta import FacetSatFacts
+public meta import FacetSatInitials
 public meta import HexNatLiteral
 public meta import KernelDecideContext
+public meta import RupProofTerm
+public meta import SparseNatLiteral
 
 @[expose] public section
 set_option maxHeartbeats 0
@@ -85,3 +92,86 @@ theorem direct_core : DirectCore raw where
   complete := fun B H => False.elim (local_excluded Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record063_validity Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record063_matrix_checked B H)
 #print axioms local_excluded
 end Papers.RationalityTen.StructuralGraphCases.GraphInputsRow23Part00023.record063
+
+@[expose] public section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option maxErrors 5
+set_option autoImplicit false
+set_option linter.unusedVariables false
+namespace Papers.RationalityTen.StructuralGraphCases.GraphInputsRow23Part00023.record062
+open Papers.RationalityTen
+
+def vertexColumn : PackedGraphCertificate.Fields :=
+  ⟨10, sparse_nat% "256558768b8ae1ba1e745a966565c559595475c358d5362d4b4ad1b61d474e3a4d9394d5334cb31ce8b62e2b1ae1b26e4751e2729d1725c3743c8f13c1f550aa19a1615a0e0b991545892a54519615454558350d0b4a318e1324c5382c8b0ae0711c2705c0f"⟩
+def kindColumn : PackedGraphCertificate.Fields :=
+  ⟨3, sparse_nat% "2492492492492492492492492492492492492249249249249249249249249"⟩
+def data : FacetSat.Data :=
+  FacetSat.RawProjection.data Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record062 vertexColumn kindColumn
+theorem projection_checked :
+    FacetSat.RawProjection.check Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record062 vertexColumn kindColumn = true := by
+  decide +kernel
+
+def facetIndex (i : Nat) : Fin data.count :=
+  ⟨i % data.count, Nat.mod_lt _ (by decide)⟩
+def ridgeIndex (i : Nat) : Fin 1024 :=
+  ⟨i % 1024, Nat.mod_lt _ (by decide)⟩
+def edgeCount : Nat := 45
+def requiredEdges : Nat := Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record062.data.requiredEdges
+def edgeRows : Fin edgeCount → Nat := Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record062.data.edgeRows
+def edgeIndex (i : Nat) : Fin edgeCount :=
+  ⟨i % edgeCount, Nat.mod_lt _ (by decide)⟩
+
+def requirements : Nat → Nat := Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record062.data.quota
+
+theorem ridge_matrix_checked :
+    data.ridgeMatrix = PackedIncidenceMatrix.code (ConcreteGrowth.ridgeList data.cells) :=
+  FacetSat.RawProjection.ridge_matrix Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record062 vertexColumn kindColumn
+    Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record062_matrix_checked
+
+def leafCount : Nat := 0
+def kindKeys : List Nat := [1, 2]
+theorem kindKeys_checked : FacetSat.RawProjection.kindKeysCheck data.toData.kind kindKeys = true := by
+  decide +kernel
+def leaves (j : Fin leafCount) : List (Fin data.count) := Fin.elim0 j
+
+facet_model% "Papers.RationalityTen.StructuralGraphCases.GraphInputsRow23Part00023.record062" "{\"atoms\":[{\"tag\":\"facet\",\"index\":9},{\"tag\":\"facet\",\"index\":14},{\"tag\":\"facet\",\"index\":22},{\"tag\":\"facet\",\"index\":35},{\"tag\":\"facet\",\"index\":37},{\"tag\":\"facet\",\"index\":47},{\"tag\":\"facet\",\"index\":50},{\"tag\":\"facet\",\"index\":51},{\"tag\":\"facet\",\"index\":55},{\"tag\":\"facet\",\"index\":57},{\"tag\":\"facet\",\"index\":61},{\"tag\":\"facet\",\"index\":63},{\"tag\":\"facet\",\"index\":64},{\"tag\":\"facet\",\"index\":65},{\"tag\":\"facet\",\"index\":71},{\"tag\":\"facet\",\"index\":72}]}"
+facet_atoms% "Papers.RationalityTen.StructuralGraphCases.GraphInputsRow23Part00023.record062" 16
+
+facet_facts% "Papers.RationalityTen.StructuralGraphCases.GraphInputsRow23Part00023.record062" "{\"ridges\":[[9,146],[14,268],[22,265],[35,268],[37,146],[47,265],[50,146],[51,146],[55,146],[57,268],[61,268],[63,268],[64,268],[65,268],[71,145],[72,265]],\"owners\":[[71,145,[9,37,50,51,55],[24,43,68,73]],[9,146,[],[37,43,50,51,54,55]],[37,146,[],[9,43,50,51,54,55]],[50,146,[],[9,37,43,51,54,55]],[51,146,[],[9,37,43,50,54,55]],[55,146,[],[9,37,43,50,51,54]],[22,265,[14,35,57,61,63,65],[47,71,72]],[47,265,[14,57,61,63,65],[22,35,71,72]],[72,265,[14,35,57,63,65],[22,47,61,71]],[14,268,[],[35,57,61,63,64,65]],[35,268,[],[14,57,61,63,64,65]],[57,268,[],[14,35,61,63,64,65]],[61,268,[],[14,35,57,63,64,65]],[63,268,[],[14,35,57,61,64,65]],[64,268,[],[14,35,57,61,63,65]],[65,268,[],[14,35,57,61,63,64]]],\"edges\":[[28,[14,22,35,47,57,61,63,64,65,71,72]]],\"groupings\":[]}"
+
+facet_refute% "Papers.RationalityTen.StructuralGraphCases.GraphInputsRow23Part00023.record062" "{\"namespace\":\"Papers.RationalityTen.StructuralGraphCases.GraphInputsRow23Part00023.record062\",\"lower_only\":false,\"coverage\":true,\"edge_cover\":true,\"clauses\":[[-15,1,5,7,8,9],[-1],[-5],[-7],[-8],[-9],[-3,2,4,10,11,12,14],[-6,2,10,11,12,14],[-16,2,4,10,12,14],[-2],[-4],[-10],[-11],[-12],[-13],[-14],[2,3,4,6,10,11,12,13,14,15,16]],\"atoms\":[{\"tag\":\"facet\",\"index\":9},{\"tag\":\"facet\",\"index\":14},{\"tag\":\"facet\",\"index\":22},{\"tag\":\"facet\",\"index\":35},{\"tag\":\"facet\",\"index\":37},{\"tag\":\"facet\",\"index\":47},{\"tag\":\"facet\",\"index\":50},{\"tag\":\"facet\",\"index\":51},{\"tag\":\"facet\",\"index\":55},{\"tag\":\"facet\",\"index\":57},{\"tag\":\"facet\",\"index\":61},{\"tag\":\"facet\",\"index\":63},{\"tag\":\"facet\",\"index\":64},{\"tag\":\"facet\",\"index\":65},{\"tag\":\"facet\",\"index\":71},{\"tag\":\"facet\",\"index\":72}],\"rules\":[{\"tag\":\"mate\",\"ridge\":145,\"a\":71,\"owners\":[9,37,50,51,55]},{\"tag\":\"mate\",\"ridge\":146,\"a\":9,\"owners\":[]},{\"tag\":\"mate\",\"ridge\":146,\"a\":37,\"owners\":[]},{\"tag\":\"mate\",\"ridge\":146,\"a\":50,\"owners\":[]},{\"tag\":\"mate\",\"ridge\":146,\"a\":51,\"owners\":[]},{\"tag\":\"mate\",\"ridge\":146,\"a\":55,\"owners\":[]},{\"tag\":\"mate\",\"ridge\":265,\"a\":22,\"owners\":[14,35,57,61,63,65]},{\"tag\":\"mate\",\"ridge\":265,\"a\":47,\"owners\":[14,57,61,63,65]},{\"tag\":\"mate\",\"ridge\":265,\"a\":72,\"owners\":[14,35,57,63,65]},{\"tag\":\"mate\",\"ridge\":268,\"a\":14,\"owners\":[]},{\"tag\":\"mate\",\"ridge\":268,\"a\":35,\"owners\":[]},{\"tag\":\"mate\",\"ridge\":268,\"a\":57,\"owners\":[]},{\"tag\":\"mate\",\"ridge\":268,\"a\":61,\"owners\":[]},{\"tag\":\"mate\",\"ridge\":268,\"a\":63,\"owners\":[]},{\"tag\":\"mate\",\"ridge\":268,\"a\":64,\"owners\":[]},{\"tag\":\"mate\",\"ridge\":268,\"a\":65,\"owners\":[]},{\"tag\":\"edge\",\"edge\":28,\"owners\":[14,22,35,47,57,61,63,64,65,71,72]}]}"
+  "p cnf 16 17\n-15 1 5 7 8 9 0\n-1 0\n-5 0\n-7 0\n-8 0\n-9 0\n-3 2 4 10 11 12 14 0\n-6 2 10 11 12 14 0\n-16 2 4 10 12 14 0\n-2 0\n-4 0\n-10 0\n-11 0\n-12 0\n-13 0\n-14 0\n2 3 4 6 10 11 12 13 14 15 16 0\n"
+  "18 -15 0 6 2 3 4 5 1 0\n19 -16 0 16 10 11 12 14 9 0\n20 -6 0 16 10 12 13 14 8 0\n21 -3 0 16 10 11 12 13 14 7 0\n22 0 10 21 11 20 12 13 14 15 16 18 19 17 0\n"
+
+theorem local_coverage
+    (valid : GraphGrowthInputs.Valid Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record062.inputs)
+    (matrix : MatrixGraphProblem.Checked Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record062.data)
+    (B : List (Fin Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record062.n))
+    (H : GraphGrowthConstraints.Target (Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record062.inputs.problem valid) B) :
+    ∃ j : Fin leafCount, GrowthDAG.Same (SparseGrowthDAG.family (leaves j))
+      (SparseGrowthDAG.family B) := by
+  apply FacetSat.RawProjection.coverage_with_edges Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record062 valid matrix
+    vertexColumn kindColumn projection_checked leaves _ B H
+  intro S HS edgeCover noSame
+  exact boundary_unsat S HS edgeCover noSame
+def originalLeaf (j : Fin leafCount) : Fin Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record062.l := Fin.elim0 j
+def orbitWord (j : Fin leafCount) : List (Fin Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record062.g) := Fin.elim0 j
+theorem orbit_words_checked : ∀ j : Fin leafCount,
+    SparseGrowthDAG.sameCheck (Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record062.leaf (originalLeaf j))
+      (GraphCaseCertificate.rawApplyWord Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record062.maps (orbitWord j) (leaves j)) = true := by
+  decide +kernel
+
+theorem direct_core : GraphCaseCertificate.DirectCore Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record062 where
+  matrix := Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record062_matrix_checked
+  valid := Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record062_validity
+  literal := Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record062_literal
+  leaf_nodup := by decide +kernel
+  frames := Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record062_frames_supported Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record062_cells_exact
+  leaves_checked := ⟨Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record062_certificates, Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record062_leaf_certificates_checked⟩
+  complete := GraphCaseCertificate.complete_of_orbits Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record062 Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record062_validity
+    leaves originalLeaf orbitWord orbit_words_checked
+    (local_coverage Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record062_validity Papers.RationalityTen.CompactReplay.GraphInputsRow23Part00023.record062_matrix_checked)
+
+
+end Papers.RationalityTen.StructuralGraphCases.GraphInputsRow23Part00023.record062
