@@ -1,17 +1,3 @@
-# Wishart complete twenty-target canonical interface diagnostic
+# Exact named gauge-instance interface check
 
-The protected candidate preserves all twenty existing theorem/support endpoints and every original paper hypothesis, real/complex/quaternion field, integrability range, rank condition, and equality clause. It removes trusted TauCeti imports by inlining complete canonical literals: the exact upper-triangle Wishart and inverse laws, Frobenius norm/inner-product records with subtype uniformity, Borel context, rectangular congruence, and standard quaternion star-algebra representation. All new constructor/value definitions have genuine proof bodies, with no new data placeholders. Ten complete value specifications pin all supplied primitive records/functions; four genuine constructor supports are compared separately. These fourteen additional obligations are not additional paper results. The prior two Borel proof-instance targets remain.
-
-This bounded independent check uses exact Lean4.36rc1 and canonical Mathlib2cab/full unchanged canonical dependency manifest. One case elaborates the complete990-line interface; a second checks its genuine primitive proofs independently. Intentional theorem placeholders in the interface are not proof verification. Actual Source bridges for every new specification, proof-only vendoring of the exact215module closure, the original complete paper proofs, Comparator and independent kernels remain required before any full Wishart claim. No live Wishart package is changed by this diagnostic.
-
-Revision02 repairs the complete first error union: explicit canonical Frobenius additivity proof/reducible norm record, global linear-map constructor names, exact symmetric-element Hermitian witness, and the previously omitted integer Gaussian-Gram law (all scales, including singular/invalid). It retains every original endpoint and every new value specification.
-
-Revision03 addresses the complete revision02 error union: explicit canonical evaluation rewrites for the rectangular congruence constructor, and the canonical subtype second-countability witness for the unchanged subtype topology. No theorem statement or formula is weakened.
-
-Revision04 checks only the changed full interface. The sole revision03 error was the missing TopologicalSpace namespace on the actual canonical subtype second-countability witness. The already-passing genuine primitive module is not rerun.
-
-Revision05 explicitly supplies the ordinary finite-function topology and its second-countability witness to the canonical subtype instance. Revision04 exposed that expected-type inference had requested the Frobenius matrix topology as an unresolved dictionary. No topology or norm value is replaced.
-
-Revision6: Canonical finite-function second-countability transferred to Matrix via inferInstanceAs, then the unchanged subtype topology; no mathematical value or theorem changed.
-
-Revision7: Pin only the new quaternion specification input to the complete identical function-domain AST observed in both actual Source and the literal primitive; all20 old theorem endpoints unchanged.
+Two omitted original local Frobenius instances from source real_remainder07 are copied literally, with genuine record values and two entire-record value specifications. All20 original principal/support targets and all prior literal value specifications are preserved. No full retry until the original exact141c whole raw audit is collected. This independent1000line Mathlib-only interface has intentional compared theorem obligations and is not a full proof/Comparator/kernel claim.

@@ -3,7 +3,7 @@ run-name: Challenge-only diagnostic ${{ github.run_id }}
 # Separate diagnostic only. No full project/Solution build, Comparator or intake.
 on:
   push:
-    branches: [palomar-diagnostics/wishart-full20-canonical]
+    branches: [palomar-diagnostics/wishart-gauge-instance-canonical]
   workflow_dispatch:
     inputs:
       cases:

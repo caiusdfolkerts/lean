@@ -646,6 +646,10 @@ structure SpectralGauge (k : ℕ) where
 instance {k : ℕ} : CoeFun (SpectralGauge k) (fun _ => SymmetricMatrix k → ℝ) := ⟨SpectralGauge.toFun⟩
 end end Wishart
 namespace Wishart.SpectralGauge section open scoped Matrix MatrixOrder Matrix.Norms.Operator RealInnerProductSpace InnerProductSpace variable {k : ℕ} (Φ : SpectralGauge k)
+/-- The exact named Frobenius seminormed parent used in the source gauge section. -/ local instance gaugeSymmetricSeminormedAddCommGroup : SeminormedAddCommGroup (SymmetricMatrix k) := (TauCeti.symmetricMatrixNormedAddCommGroup k).toSeminormedAddCommGroup
+/-- The exact named compatible Frobenius inner-product record used in the source. -/ local instance gaugeSymmetricInnerProductSpace : InnerProductSpace ℝ (SymmetricMatrix k) := TauCeti.symmetricMatrixInnerProductSpace k
+/-- The entire gauge seminormed record is fixed at every dimension. -/ theorem gaugeSeminormed_value {k : ℕ} : @gaugeSymmetricSeminormedAddCommGroup k = (TauCeti.symmetricMatrixNormedAddCommGroup k).toSeminormedAddCommGroup := by sorry
+/-- The entire gauge inner-product record is fixed at every dimension. -/ theorem gaugeInner_value {k : ℕ} : @gaugeSymmetricInnerProductSpace k = TauCeti.symmetricMatrixInnerProductSpace k := by sorry
 /-- Exact source definition of identitySymmetric. -/
 def identitySymmetric (k : ℕ) : SymmetricMatrix k := ⟨1, Matrix.isHermitian_one.isSelfAdjoint⟩
 /-- The canonical compact set of all positive linear trace minorants. -/
