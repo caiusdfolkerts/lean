@@ -1,0 +1,31 @@
+{
+  "status": "partial_measured_normalization_applied_not_frozen",
+  "raw_evidence_run": "44351424654",
+  "selected_support_theorems": [
+    "FourPapers.Universal.palomarPolynomialDegreePiece_smul",
+    "FourPapers.Universal.palomarBasisOrdinaryDegreePiece_smul",
+    "FourPapers.Universal.palomarPresentationWeightLevel_smul"
+  ],
+  "changes": [
+    {
+      "path": "packages/barycentric_invariance/source/Challenge.lean",
+      "before": "867010c3602279995a1538d49a3ac992c98f0fb62d430c2c9958f0f1a4fc25df",
+      "after": "ec808e8a19632b51c688e952eaf0f838140b03cd0931b0386fc153307653837b"
+    },
+    {
+      "path": "packages/barycentric_invariance/source/theorem13/PalomarPart000.lean",
+      "before": "a5d5c01e1f16ccc682269a09d8f8b48bdde8641dda16ba1352a892733a2b4aef",
+      "after": "e6757f131c239d70d87d6c562a753e0c26f5a4a24e79796fa4967a4369098502"
+    },
+    {
+      "path": "packages/barycentric_invariance/source/theorem13/PalomarPart001.lean",
+      "before": "68b851b00c0c9a653d6423e55a4e4783160ab85968a37daf00d13528bfca8688",
+      "after": "d7c268786f0272ff1090339383cd2c48a60099ab6b1845306590ff4d5fb5820d"
+    }
+  ],
+  "challenge_lines": 942,
+  "challenge_bytes": 50361,
+  "challenge_sha256": "9de14564ef2b7abfdb7730de4c29884dfea767eaffbf9e07d4a7282a3698c6c3",
+  "semantics": "The coefficient predicates, scalar actions and submodules are unchanged. Each original smul_mem proof body is moved verbatim to a named semantic closure theorem and used by the same field. No conclusion hypothesis or data hole.",
+  "validation": "Source prepared only; no compiler run. Remaining implicit proof-class and barycentric diagram causes not yet normalized."
+}

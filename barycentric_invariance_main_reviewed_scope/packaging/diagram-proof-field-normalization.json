@@ -1,0 +1,25 @@
+{
+  "status": "partial_measured_normalization_applied_not_frozen",
+  "raw_evidence_run": "44351424654",
+  "selected_support_theorems": [
+    "FourPapers.Universal.palomarBarycentricDiagram_res_refl",
+    "FourPapers.Universal.palomarBarycentricDiagram_res_comp"
+  ],
+  "changes": [
+    {
+      "path": "packages/barycentric_invariance/source/Challenge.lean",
+      "before": "9de14564ef2b7abfdb7730de4c29884dfea767eaffbf9e07d4a7282a3698c6c3",
+      "after": "7e6c9db714bf6de725daf62d269c6a96fd244b8df5999329729d8f342ae154b3"
+    },
+    {
+      "path": "packages/barycentric_invariance/source/theorem13/PalomarPart000.lean",
+      "before": "e6757f131c239d70d87d6c562a753e0c26f5a4a24e79796fa4967a4369098502",
+      "after": "152c2421bcd7621e9d3a59131486afc81da5c24b024cfed415c1cc45499a7370"
+    }
+  ],
+  "challenge_lines": 943,
+  "challenge_bytes": 50583,
+  "challenge_sha256": "992027f3ae463b43f11d89a99ab384444d24caeca6a72716796965a2be9e54c3",
+  "semantics": "The actual stalks and Boolean restriction maps remain identical. Original identity/composition proof bodies are moved verbatim to named laws, which supply the original structure fields.",
+  "validation": "Source prepared only; no compiler run. Common implicit generated proof-class obligations await exact canonical type smoke."
+}

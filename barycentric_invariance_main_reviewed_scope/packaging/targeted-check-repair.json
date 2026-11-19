@@ -1,0 +1,12 @@
+{
+  "status": "applied_pending_repeat_diagnostic",
+  "previous_snapshot_sha256": "f516df0e2a21d8a6e19d12cfd1cee2d8e0f62733a267051010a4e2497ac2e589",
+  "challenge_sha256": "d4b9fd01951ec93af6bbd2e89bdd61108afa4aa079c1b53be7fb1e1ad2c48e8f",
+  "lines": 915,
+  "bytes": 48685,
+  "changes": [
+    "Restore literal source mem_faceVertices typing lemma and compare its original proof.",
+    "Restore literal ProperlyColoredComplex.Ring abbreviation at the same original V/C/K/D context; all mathematical data unchanged.",
+    "Remove blank lines only to preserve the independent Challenge line cap."
+  ]
+}
