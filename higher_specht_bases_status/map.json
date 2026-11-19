@@ -1,0 +1,1813 @@
+{
+  "project": "higher_specht_bases",
+  "baseline_repository": "caiusdfolkerts/research",
+  "baseline_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
+  "paper_sha256": "931c0ee33b94c7a77d373c4040abb40151a8f1cd049b977006df188e31013a0c",
+  "one_entry_per_paper": true,
+  "status": "measured_repair_and_multiplier_corollary_challenge_passed_full_source_comparator_unverified",
+  "source_selection": [
+    "paper.pdf",
+    "README.md",
+    "source/**/*.lean"
+  ],
+  "coverage": [
+    {
+      "paper_result": "Theorem 1.1",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        2,
+        10
+      ],
+      "declarations": [
+        {
+          "name": "HigherSpecht.springer_basis_target",
+          "locations": [
+            {
+              "name": "HigherSpecht.springer_basis_target",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining02.lean",
+              "source_line": 10160,
+              "source_sha256": "5b4fa6bbe984c810c60113af41803f425c3de414b856f503f22c110890f6abad",
+              "source_spelling": "springer_basis_target"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "selected_challenge_only_passed"
+        },
+        {
+          "name": "HigherSpecht.FinalStatementAudit.theorem_1_1_basis",
+          "locations": [
+            {
+              "name": "HigherSpecht.FinalStatementAudit.theorem_1_1_basis",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/final.lean",
+              "source_line": 11692,
+              "source_sha256": "7813615bca3206387b8a7285b345bbe8b83b6418ebec344ea25bd89ac1ae3a08",
+              "source_spelling": "theorem_1_1_basis"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases/paper.pdf#page=2"
+    },
+    {
+      "paper_result": "Theorem 3.2",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [],
+      "declarations": [
+        {
+          "name": "HigherSpecht.theorem_3_2_selected_family",
+          "locations": [
+            {
+              "name": "HigherSpecht.theorem_3_2_selected_family",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining03_complete.lean",
+              "source_line": 104,
+              "source_sha256": "7882f0560fe813b9593d25e7304370b435ddfd097fb9a44befe76e9b3dd228b2",
+              "source_spelling": "theorem_3_2_selected_family"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.columnInsertion_state",
+          "locations": [
+            {
+              "name": "HigherSpecht.columnInsertion_state",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/basis_continuation01.lean",
+              "source_line": 2805,
+              "source_sha256": "a915681855d2c90416cd225670ef6265ae77153cdcefee1176e5ed775e753e92",
+              "source_spelling": "columnInsertion_state"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.columnInsertion_agrees_with_completed_run",
+          "locations": [
+            {
+              "name": "HigherSpecht.columnInsertion_agrees_with_completed_run",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/basis_continuation01.lean",
+              "source_line": 2832,
+              "source_sha256": "a915681855d2c90416cd225670ef6265ae77153cdcefee1176e5ed775e753e92",
+              "source_spelling": "columnInsertion_agrees_with_completed_run"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.columnInsertion_rearrangementWitness",
+          "locations": [
+            {
+              "name": "HigherSpecht.columnInsertion_rearrangementWitness",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/basis_continuation01.lean",
+              "source_line": 2850,
+              "source_sha256": "a915681855d2c90416cd225670ef6265ae77153cdcefee1176e5ed775e753e92",
+              "source_spelling": "columnInsertion_rearrangementWitness"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases/paper.pdf"
+    },
+    {
+      "paper_result": "Theorem 4.1",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        14
+      ],
+      "declarations": [
+        {
+          "name": "HigherSpecht.griffin_specifiedBasis",
+          "locations": [
+            {
+              "name": "HigherSpecht.griffin_specifiedBasis",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining02.lean",
+              "source_line": 6674,
+              "source_sha256": "5b4fa6bbe984c810c60113af41803f425c3de414b856f503f22c110890f6abad",
+              "source_spelling": "griffin_specifiedBasis"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.theorem_4_1",
+          "locations": [
+            {
+              "name": "HigherSpecht.theorem_4_1",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining02.lean",
+              "source_line": 10087,
+              "source_sha256": "5b4fa6bbe984c810c60113af41803f425c3de414b856f503f22c110890f6abad",
+              "source_spelling": "theorem_4_1"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "selected_challenge_only_passed"
+        },
+        {
+          "name": "HigherSpecht.FinalStatementAudit.theorem_4_1_basis",
+          "locations": [
+            {
+              "name": "HigherSpecht.FinalStatementAudit.theorem_4_1_basis",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/final.lean",
+              "source_line": 11729,
+              "source_sha256": "7813615bca3206387b8a7285b345bbe8b83b6418ebec344ea25bd89ac1ae3a08",
+              "source_spelling": "theorem_4_1_basis"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases/paper.pdf#page=14"
+    },
+    {
+      "paper_result": "Corollary 4.3",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        18
+      ],
+      "declarations": [
+        {
+          "name": "HigherSpecht.corollary_4_3_on_admissible_multipliers",
+          "locations": [
+            {
+              "name": "HigherSpecht.corollary_4_3_on_admissible_multipliers",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining03_complete.lean",
+              "source_line": 1835,
+              "source_sha256": "7882f0560fe813b9593d25e7304370b435ddfd097fb9a44befe76e9b3dd228b2",
+              "source_spelling": "corollary_4_3_on_admissible_multipliers"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "selected_canonical_challenge_passed_full_comparator_unverified"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases/paper.pdf#page=18"
+    },
+    {
+      "paper_result": "Theorem 5.2",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        20
+      ],
+      "declarations": [
+        {
+          "name": "HigherSpecht.theorem_5_2",
+          "locations": [
+            {
+              "name": "HigherSpecht.theorem_5_2",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining02.lean",
+              "source_line": 10208,
+              "source_sha256": "5b4fa6bbe984c810c60113af41803f425c3de414b856f503f22c110890f6abad",
+              "source_spelling": "theorem_5_2"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.theorem_5_2_any_right_tableaux",
+          "locations": [
+            {
+              "name": "HigherSpecht.theorem_5_2_any_right_tableaux",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 9371,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "theorem_5_2_any_right_tableaux"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.theorem_5_2_actual_specht",
+          "locations": [
+            {
+              "name": "HigherSpecht.theorem_5_2_actual_specht",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 9588,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "theorem_5_2_actual_specht"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.FinalStatementAudit.theorem_5_2_literal",
+          "locations": [
+            {
+              "name": "HigherSpecht.FinalStatementAudit.theorem_5_2_literal",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/final.lean",
+              "source_line": 11774,
+              "source_sha256": "7813615bca3206387b8a7285b345bbe8b83b6418ebec344ea25bd89ac1ae3a08",
+              "source_spelling": "theorem_5_2_literal"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.finiteCommonHarmonicVectorWithTableau_covariant",
+          "locations": [
+            {
+              "name": "HigherSpecht.finiteCommonHarmonicVectorWithTableau_covariant",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 9251,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "finiteCommonHarmonicVectorWithTableau_covariant"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.finiteCommonHarmonicCopyWithTableau_eq",
+          "locations": [
+            {
+              "name": "HigherSpecht.finiteCommonHarmonicCopyWithTableau_eq",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 9310,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "finiteCommonHarmonicCopyWithTableau_eq"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases/paper.pdf#page=20"
+    },
+    {
+      "paper_result": "Corollary 5.3",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        20,
+        27
+      ],
+      "declarations": [
+        {
+          "name": "HigherSpecht.corollary_5_3_distributive",
+          "locations": [
+            {
+              "name": "HigherSpecht.corollary_5_3_distributive",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining03_complete.lean",
+              "source_line": 1207,
+              "source_sha256": "7882f0560fe813b9593d25e7304370b435ddfd097fb9a44befe76e9b3dd228b2",
+              "source_spelling": "corollary_5_3_distributive"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.GriffinIdealExpression.corollary_5_3_basis",
+          "locations": [
+            {
+              "name": "HigherSpecht.GriffinIdealExpression.corollary_5_3_basis",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining03_complete.lean",
+              "source_line": 1443,
+              "source_sha256": "7882f0560fe813b9593d25e7304370b435ddfd097fb9a44befe76e9b3dd228b2",
+              "source_spelling": "corollary_5_3_basis"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.GriffinIdealExpression.corollary_5_3_frobenius",
+          "locations": [
+            {
+              "name": "HigherSpecht.GriffinIdealExpression.corollary_5_3_frobenius",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 245,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "corollary_5_3_frobenius"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases/paper.pdf#page=20"
+    },
+    {
+      "paper_result": "Corollary 5.5",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [],
+      "declarations": [
+        {
+          "name": "HigherSpecht.corollary_5_5_decomposition",
+          "locations": [
+            {
+              "name": "HigherSpecht.corollary_5_5_decomposition",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 2389,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "corollary_5_5_decomposition"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.corollary_5_5_master",
+          "locations": [
+            {
+              "name": "HigherSpecht.corollary_5_5_master",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 2444,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "corollary_5_5_master"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.corollary_5_5_any_right_tableaux",
+          "locations": [
+            {
+              "name": "HigherSpecht.corollary_5_5_any_right_tableaux",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 9385,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "corollary_5_5_any_right_tableaux"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.corollary_5_5_actual_specht",
+          "locations": [
+            {
+              "name": "HigherSpecht.corollary_5_5_actual_specht",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 9611,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "corollary_5_5_actual_specht"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.griffinApolarWitness_full",
+          "locations": [
+            {
+              "name": "HigherSpecht.griffinApolarWitness_full",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 2235,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "griffinApolarWitness_full"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.griffinWitnessAlpha_full",
+          "locations": [
+            {
+              "name": "HigherSpecht.griffinWitnessAlpha_full",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 2261,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "griffinWitnessAlpha_full"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.griffinWitnessRejection_full",
+          "locations": [
+            {
+              "name": "HigherSpecht.griffinWitnessRejection_full",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 2283,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "griffinWitnessRejection_full"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.springerCommonHarmonicVector_literal_formula",
+          "locations": [
+            {
+              "name": "HigherSpecht.springerCommonHarmonicVector_literal_formula",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 2299,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "springerCommonHarmonicVector_literal_formula"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.springerCommonHarmonicVectorWithTableau_literal_formula",
+          "locations": [
+            {
+              "name": "HigherSpecht.springerCommonHarmonicVectorWithTableau_literal_formula",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 9337,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "springerCommonHarmonicVectorWithTableau_literal_formula"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.springerCommonHarmonicCopyWithTableau_eq",
+          "locations": [
+            {
+              "name": "HigherSpecht.springerCommonHarmonicCopyWithTableau_eq",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 9365,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "springerCommonHarmonicCopyWithTableau_eq"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases/paper.pdf"
+    },
+    {
+      "paper_result": "Corollary 5.6",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [],
+      "declarations": [
+        {
+          "name": "HigherSpecht.corollary_5_6_basis",
+          "locations": [
+            {
+              "name": "HigherSpecht.corollary_5_6_basis",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 2610,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "corollary_5_6_basis"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.corollary_5_6_frobenius",
+          "locations": [
+            {
+              "name": "HigherSpecht.corollary_5_6_frobenius",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 2619,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "corollary_5_6_frobenius"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.finiteEligibility_weakDominanceJoin",
+          "locations": [
+            {
+              "name": "HigherSpecht.finiteEligibility_weakDominanceJoin",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 2859,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "finiteEligibility_weakDominanceJoin"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases/paper.pdf"
+    },
+    {
+      "paper_result": "Corollary 5.7",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [],
+      "declarations": [
+        {
+          "name": "HigherSpecht.corollary_5_7_localized",
+          "locations": [
+            {
+              "name": "HigherSpecht.corollary_5_7_localized",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 4187,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "corollary_5_7_localized"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.corollary_5_7_field",
+          "locations": [
+            {
+              "name": "HigherSpecht.corollary_5_7_field",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 4200,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "corollary_5_7_field"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.adaptedGriffinCopy_eq_span",
+          "locations": [
+            {
+              "name": "HigherSpecht.adaptedGriffinCopy_eq_span",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 4308,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "adaptedGriffinCopy_eq_span"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases/paper.pdf"
+    },
+    {
+      "paper_result": "Theorem 6.1",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        25
+      ],
+      "declarations": [
+        {
+          "name": "HigherSpecht.theorem_6_1_basis_and_rank",
+          "locations": [
+            {
+              "name": "HigherSpecht.theorem_6_1_basis_and_rank",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining03_parameter_basis.lean",
+              "source_line": 516,
+              "source_sha256": "09cd11c5d53046262cffcfa32686f98c2ae143e27d4dc2515581ac0d17c0e5c1",
+              "source_spelling": "theorem_6_1_basis_and_rank"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.theorem_6_1_dimension_and_cohenMacaulay",
+          "locations": [
+            {
+              "name": "HigherSpecht.theorem_6_1_dimension_and_cohenMacaulay",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining03_parameter_basis.lean",
+              "source_line": 669,
+              "source_sha256": "09cd11c5d53046262cffcfa32686f98c2ae143e27d4dc2515581ac0d17c0e5c1",
+              "source_spelling": "theorem_6_1_dimension_and_cohenMacaulay"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.theorem_6_1_frobenius_series",
+          "locations": [
+            {
+              "name": "HigherSpecht.theorem_6_1_frobenius_series",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining03_parameter_basis.lean",
+              "source_line": 2516,
+              "source_sha256": "09cd11c5d53046262cffcfa32686f98c2ae143e27d4dc2515581ac0d17c0e5c1",
+              "source_spelling": "theorem_6_1_frobenius_series"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases/paper.pdf#page=25"
+    },
+    {
+      "paper_result": "Remark 6.2",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [],
+      "declarations": [
+        {
+          "name": "HigherSpecht.untruncated_specified_parameter_basis_of_factorial_isUnit",
+          "locations": [
+            {
+              "name": "HigherSpecht.untruncated_specified_parameter_basis_of_factorial_isUnit",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/final.lean",
+              "source_line": 10518,
+              "source_sha256": "7813615bca3206387b8a7285b345bbe8b83b6418ebec344ea25bd89ac1ae3a08",
+              "source_spelling": "untruncated_specified_parameter_basis_of_factorial_isUnit"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.remark_6_2_untruncated_characteristic",
+          "locations": [
+            {
+              "name": "HigherSpecht.remark_6_2_untruncated_characteristic",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/final.lean",
+              "source_line": 10552,
+              "source_sha256": "7813615bca3206387b8a7285b345bbe8b83b6418ebec344ea25bd89ac1ae3a08",
+              "source_spelling": "remark_6_2_untruncated_characteristic"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.remark_6_2_untruncated_localized",
+          "locations": [
+            {
+              "name": "HigherSpecht.remark_6_2_untruncated_localized",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/final.lean",
+              "source_line": 10569,
+              "source_sha256": "7813615bca3206387b8a7285b345bbe8b83b6418ebec344ea25bd89ac1ae3a08",
+              "source_spelling": "remark_6_2_untruncated_localized"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases/paper.pdf"
+    },
+    {
+      "paper_result": "Proposition 6.3",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [],
+      "declarations": [
+        {
+          "name": "HigherSpecht.proposition_6_3",
+          "locations": [
+            {
+              "name": "HigherSpecht.proposition_6_3",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining03_parameter_basis.lean",
+              "source_line": 1725,
+              "source_sha256": "09cd11c5d53046262cffcfa32686f98c2ae143e27d4dc2515581ac0d17c0e5c1",
+              "source_spelling": "proposition_6_3"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.specialFiberPrescribedLiftBasis_apply",
+          "locations": [
+            {
+              "name": "HigherSpecht.specialFiberPrescribedLiftBasis_apply",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining03_parameter_basis.lean",
+              "source_line": 2734,
+              "source_sha256": "09cd11c5d53046262cffcfa32686f98c2ae143e27d4dc2515581ac0d17c0e5c1",
+              "source_spelling": "specialFiberPrescribedLiftBasis_apply"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.zeroParameterBaseChangeEquiv_one_tmul_mk",
+          "locations": [
+            {
+              "name": "HigherSpecht.zeroParameterBaseChangeEquiv_one_tmul_mk",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining03_parameter_basis.lean",
+              "source_line": 2690,
+              "source_sha256": "09cd11c5d53046262cffcfa32686f98c2ae143e27d4dc2515581ac0d17c0e5c1",
+              "source_spelling": "zeroParameterBaseChangeEquiv_one_tmul_mk"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases/paper.pdf"
+    },
+    {
+      "paper_result": "Corollary 6.5",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        28
+      ],
+      "declarations": [
+        {
+          "name": "HigherSpecht.untruncatedMonomialParameterBasis",
+          "locations": [
+            {
+              "name": "HigherSpecht.untruncatedMonomialParameterBasis",
+              "declaration_kind": "def",
+              "source_path": "source/higher_specht/verified/remaining03_parameter_basis.lean",
+              "source_line": 1237,
+              "source_sha256": "09cd11c5d53046262cffcfa32686f98c2ae143e27d4dc2515581ac0d17c0e5c1",
+              "source_spelling": "untruncatedMonomialParameterBasis"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.corollary_6_5_allFields",
+          "locations": [
+            {
+              "name": "HigherSpecht.corollary_6_5_allFields",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining03_parameter_basis.lean",
+              "source_line": 1334,
+              "source_sha256": "09cd11c5d53046262cffcfa32686f98c2ae143e27d4dc2515581ac0d17c0e5c1",
+              "source_spelling": "corollary_6_5_allFields"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.griffinHilbertFunction_independent_field",
+          "locations": [
+            {
+              "name": "HigherSpecht.griffinHilbertFunction_independent_field",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining03_parameter_basis.lean",
+              "source_line": 1594,
+              "source_sha256": "09cd11c5d53046262cffcfa32686f98c2ae143e27d4dc2515581ac0d17c0e5c1",
+              "source_spelling": "griffinHilbertFunction_independent_field"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases/paper.pdf#page=28"
+    },
+    {
+      "paper_result": "Theorem 6.6",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [],
+      "declarations": [
+        {
+          "name": "HigherSpecht.theorem_6_6",
+          "locations": [
+            {
+              "name": "HigherSpecht.theorem_6_6",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining02.lean",
+              "source_line": 10213,
+              "source_sha256": "5b4fa6bbe984c810c60113af41803f425c3de414b856f503f22c110890f6abad",
+              "source_spelling": "theorem_6_6"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.theorem_6_6_any_right_tableaux",
+          "locations": [
+            {
+              "name": "HigherSpecht.theorem_6_6_any_right_tableaux",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 9410,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "theorem_6_6_any_right_tableaux"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.theorem_6_6_actual_specht",
+          "locations": [
+            {
+              "name": "HigherSpecht.theorem_6_6_actual_specht",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 9636,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "theorem_6_6_actual_specht"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.FinalStatementAudit.theorem_6_6_literal",
+          "locations": [
+            {
+              "name": "HigherSpecht.FinalStatementAudit.theorem_6_6_literal",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/final.lean",
+              "source_line": 11796,
+              "source_sha256": "7813615bca3206387b8a7285b345bbe8b83b6418ebec344ea25bd89ac1ae3a08",
+              "source_spelling": "theorem_6_6_literal"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.untruncatedCommonHarmonicVectorWithTableau_covariant",
+          "locations": [
+            {
+              "name": "HigherSpecht.untruncatedCommonHarmonicVectorWithTableau_covariant",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 9265,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "untruncatedCommonHarmonicVectorWithTableau_covariant"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.untruncatedCommonHarmonicCopyWithTableau_eq",
+          "locations": [
+            {
+              "name": "HigherSpecht.untruncatedCommonHarmonicCopyWithTableau_eq",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 9320,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "untruncatedCommonHarmonicCopyWithTableau_eq"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases/paper.pdf"
+    },
+    {
+      "paper_result": "Corollary 6.7",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [],
+      "declarations": [
+        {
+          "name": "HigherSpecht.corollary_6_7_distributive",
+          "locations": [
+            {
+              "name": "HigherSpecht.corollary_6_7_distributive",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 438,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "corollary_6_7_distributive"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.UntruncatedIdealExpression.corollary_6_7_basis",
+          "locations": [
+            {
+              "name": "HigherSpecht.UntruncatedIdealExpression.corollary_6_7_basis",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 622,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "corollary_6_7_basis"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.UntruncatedIdealExpression.corollary_6_7_frobenius",
+          "locations": [
+            {
+              "name": "HigherSpecht.UntruncatedIdealExpression.corollary_6_7_frobenius",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 791,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "corollary_6_7_frobenius"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.UntruncatedIdealExpression.corollary_6_7_parameters",
+          "locations": [
+            {
+              "name": "HigherSpecht.UntruncatedIdealExpression.corollary_6_7_parameters",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 1075,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "corollary_6_7_parameters"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases/paper.pdf"
+    },
+    {
+      "paper_result": "Theorem 7.1",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        32
+      ],
+      "declarations": [
+        {
+          "name": "HigherSpecht.theorem_7_1_parameter_fiber",
+          "locations": [
+            {
+              "name": "HigherSpecht.theorem_7_1_parameter_fiber",
+              "declaration_kind": "def",
+              "source_path": "source/higher_specht/verified/remaining03_fiber.lean",
+              "source_line": 3494,
+              "source_sha256": "0cd3449a6abe27b4d134c7d8a83f5b6c81de1b6a6fedb3a5b9dd77307718ca47",
+              "source_spelling": "theorem_7_1_parameter_fiber"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.theorem_7_1_number_of_factors",
+          "locations": [
+            {
+              "name": "HigherSpecht.theorem_7_1_number_of_factors",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining03_fiber.lean",
+              "source_line": 3526,
+              "source_sha256": "0cd3449a6abe27b4d134c7d8a83f5b6c81de1b6a6fedb3a5b9dd77307718ca47",
+              "source_spelling": "theorem_7_1_number_of_factors"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.theorem_7_1_after_scalar_extension",
+          "locations": [
+            {
+              "name": "HigherSpecht.theorem_7_1_after_scalar_extension",
+              "declaration_kind": "def",
+              "source_path": "source/higher_specht/verified/remaining03_fiber.lean",
+              "source_line": 3593,
+              "source_sha256": "0cd3449a6abe27b4d134c7d8a83f5b6c81de1b6a6fedb3a5b9dd77307718ca47",
+              "source_spelling": "theorem_7_1_after_scalar_extension"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.theorem_7_1_algebraicClosure",
+          "locations": [
+            {
+              "name": "HigherSpecht.theorem_7_1_algebraicClosure",
+              "declaration_kind": "def",
+              "source_path": "source/higher_specht/verified/remaining03_fiber.lean",
+              "source_line": 3715,
+              "source_sha256": "0cd3449a6abe27b4d134c7d8a83f5b6c81de1b6a6fedb3a5b9dd77307718ca47",
+              "source_spelling": "theorem_7_1_algebraicClosure"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases/paper.pdf#page=32"
+    },
+    {
+      "paper_result": "Proposition 7.2",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [],
+      "declarations": [
+        {
+          "name": "HigherSpecht.proposition_7_2_integral_trivialization",
+          "locations": [
+            {
+              "name": "HigherSpecht.proposition_7_2_integral_trivialization",
+              "declaration_kind": "def",
+              "source_path": "source/higher_specht/verified/remaining03_ordered.lean",
+              "source_line": 1433,
+              "source_sha256": "e6456fbd53bf32cd66a2f8fcd667b5726060aa911a4839743cfa580dc25b10b7",
+              "source_spelling": "proposition_7_2_integral_trivialization"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.proposition_7_2_integral_trivialization_coordinate",
+          "locations": [
+            {
+              "name": "HigherSpecht.proposition_7_2_integral_trivialization_coordinate",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining03_ordered.lean",
+              "source_line": 4590,
+              "source_sha256": "e6456fbd53bf32cd66a2f8fcd667b5726060aa911a4839743cfa580dc25b10b7",
+              "source_spelling": "proposition_7_2_integral_trivialization_coordinate"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.proposition_7_2_integral_trivialization_permutation",
+          "locations": [
+            {
+              "name": "HigherSpecht.proposition_7_2_integral_trivialization_permutation",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining03_ordered.lean",
+              "source_line": 2982,
+              "source_sha256": "e6456fbd53bf32cd66a2f8fcd667b5726060aa911a4839743cfa580dc25b10b7",
+              "source_spelling": "proposition_7_2_integral_trivialization_permutation"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.proposition_7_2_integral_induced_tensor",
+          "locations": [
+            {
+              "name": "HigherSpecht.proposition_7_2_integral_induced_tensor",
+              "declaration_kind": "def",
+              "source_path": "source/higher_specht/verified/remaining03_ordered.lean",
+              "source_line": 3665,
+              "source_sha256": "e6456fbd53bf32cd66a2f8fcd667b5726060aa911a4839743cfa580dc25b10b7",
+              "source_spelling": "proposition_7_2_integral_induced_tensor"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.proposition_7_2_after_field_baseChange",
+          "locations": [
+            {
+              "name": "HigherSpecht.proposition_7_2_after_field_baseChange",
+              "declaration_kind": "def",
+              "source_path": "source/higher_specht/verified/remaining03_ordered.lean",
+              "source_line": 4000,
+              "source_sha256": "e6456fbd53bf32cd66a2f8fcd667b5726060aa911a4839743cfa580dc25b10b7",
+              "source_spelling": "proposition_7_2_after_field_baseChange"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases/paper.pdf"
+    },
+    {
+      "paper_result": "Proposition 7.3",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [],
+      "declarations": [
+        {
+          "name": "HigherSpecht.proposition_7_3_primary_decomposition",
+          "locations": [
+            {
+              "name": "HigherSpecht.proposition_7_3_primary_decomposition",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 4742,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "proposition_7_3_primary_decomposition"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.proposition_7_3_generic_component_length",
+          "locations": [
+            {
+              "name": "HigherSpecht.proposition_7_3_generic_component_length",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 5320,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "proposition_7_3_generic_component_length"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.proposition_7_3_multiplicities",
+          "locations": [
+            {
+              "name": "HigherSpecht.proposition_7_3_multiplicities",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 6081,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "proposition_7_3_multiplicities"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases/paper.pdf"
+    },
+    {
+      "paper_result": "Corollary 7.4",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [],
+      "declarations": [
+        {
+          "name": "HigherSpecht.parameterFiber_geometricallyReduced_iff_polynomial",
+          "locations": [
+            {
+              "name": "HigherSpecht.parameterFiber_geometricallyReduced_iff_polynomial",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 6782,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "parameterFiber_geometricallyReduced_iff_polynomial"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.parameterPolynomial_separable_iff_geometric_squarefree",
+          "locations": [
+            {
+              "name": "HigherSpecht.parameterPolynomial_separable_iff_geometric_squarefree",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 6799,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "parameterPolynomial_separable_iff_geometric_squarefree"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.parameter_etale_atPrime_iff_polynomial",
+          "locations": [
+            {
+              "name": "HigherSpecht.parameter_etale_atPrime_iff_polynomial",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining04_geometry_complete.lean",
+              "source_line": 6903,
+              "source_sha256": "4a27a466cb3b7b98851db73643a3c8e9b3e3e5c74bd7bff1621e761dcff96558",
+              "source_spelling": "parameter_etale_atPrime_iff_polynomial"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases/paper.pdf"
+    },
+    {
+      "paper_result": "Corollary 7.5",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [],
+      "declarations": [
+        {
+          "name": "SpechtHomologicalAudit.regularity_statement",
+          "locations": [
+            {
+              "name": "SpechtHomologicalAudit.regularity_statement",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/final.lean",
+              "source_line": 10948,
+              "source_sha256": "7813615bca3206387b8a7285b345bbe8b83b6418ebec344ea25bd89ac1ae3a08",
+              "source_spelling": "regularity_statement"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases/paper.pdf"
+    },
+    {
+      "paper_result": "Corollary 7.6",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [],
+      "declarations": [
+        {
+          "name": "HigherSpecht.springer_socle_concentrated_and_type",
+          "locations": [
+            {
+              "name": "HigherSpecht.springer_socle_concentrated_and_type",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/final.lean",
+              "source_line": 1795,
+              "source_sha256": "7813615bca3206387b8a7285b345bbe8b83b6418ebec344ea25bd89ac1ae3a08",
+              "source_spelling": "springer_socle_concentrated_and_type"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.corollary_7_6_canonical_module",
+          "locations": [
+            {
+              "name": "HigherSpecht.corollary_7_6_canonical_module",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/final.lean",
+              "source_line": 8188,
+              "source_sha256": "7813615bca3206387b8a7285b345bbe8b83b6418ebec344ea25bd89ac1ae3a08",
+              "source_spelling": "corollary_7_6_canonical_module"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.corollary_7_6_gorenstein_iff",
+          "locations": [
+            {
+              "name": "HigherSpecht.corollary_7_6_gorenstein_iff",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/final.lean",
+              "source_line": 10432,
+              "source_sha256": "7813615bca3206387b8a7285b345bbe8b83b6418ebec344ea25bd89ac1ae3a08",
+              "source_spelling": "corollary_7_6_gorenstein_iff"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.corollary_7_6_completeIntersection_iff",
+          "locations": [
+            {
+              "name": "HigherSpecht.corollary_7_6_completeIntersection_iff",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/final.lean",
+              "source_line": 10369,
+              "source_sha256": "7813615bca3206387b8a7285b345bbe8b83b6418ebec344ea25bd89ac1ae3a08",
+              "source_spelling": "corollary_7_6_completeIntersection_iff"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases/paper.pdf"
+    },
+    {
+      "paper_result": "Corollary 8.1",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        21
+      ],
+      "declarations": [
+        {
+          "name": "HigherSpecht.corollary_8_1_griffin_characteristic_all_partitions",
+          "locations": [
+            {
+              "name": "HigherSpecht.corollary_8_1_griffin_characteristic_all_partitions",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining03_coefficients.lean",
+              "source_line": 2285,
+              "source_sha256": "c1b8289147b575b6aa46f694b9430005c6b667d8b4e543b97e936056ce349fb7",
+              "source_spelling": "corollary_8_1_griffin_characteristic_all_partitions"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "selected_challenge_only_passed"
+        },
+        {
+          "name": "HigherSpecht.corollary_8_1_springer_characteristic",
+          "locations": [
+            {
+              "name": "HigherSpecht.corollary_8_1_springer_characteristic",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining03_coefficients.lean",
+              "source_line": 1589,
+              "source_sha256": "c1b8289147b575b6aa46f694b9430005c6b667d8b4e543b97e936056ce349fb7",
+              "source_spelling": "corollary_8_1_springer_characteristic"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "selected_challenge_only_passed"
+        },
+        {
+          "name": "HigherSpecht.corollary_8_1_griffin_copy_irreducible",
+          "locations": [
+            {
+              "name": "HigherSpecht.corollary_8_1_griffin_copy_irreducible",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining03_coefficients.lean",
+              "source_line": 1916,
+              "source_sha256": "c1b8289147b575b6aa46f694b9430005c6b667d8b4e543b97e936056ce349fb7",
+              "source_spelling": "corollary_8_1_griffin_copy_irreducible"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.corollary_8_1_springer_copy_irreducible",
+          "locations": [
+            {
+              "name": "HigherSpecht.corollary_8_1_springer_copy_irreducible",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining03_coefficients.lean",
+              "source_line": 2026,
+              "source_sha256": "c1b8289147b575b6aa46f694b9430005c6b667d8b4e543b97e936056ce349fb7",
+              "source_spelling": "corollary_8_1_springer_copy_irreducible"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.corollary_8_1_griffin_localized",
+          "locations": [
+            {
+              "name": "HigherSpecht.corollary_8_1_griffin_localized",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining03_coefficients.lean",
+              "source_line": 2237,
+              "source_sha256": "c1b8289147b575b6aa46f694b9430005c6b667d8b4e543b97e936056ce349fb7",
+              "source_spelling": "corollary_8_1_griffin_localized"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "HigherSpecht.corollary_8_1_springer_localized",
+          "locations": [
+            {
+              "name": "HigherSpecht.corollary_8_1_springer_localized",
+              "declaration_kind": "theorem",
+              "source_path": "source/higher_specht/verified/remaining03_coefficients.lean",
+              "source_line": 2251,
+              "source_sha256": "c1b8289147b575b6aa46f694b9430005c6b667d8b4e543b97e936056ce349fb7",
+              "source_spelling": "corollary_8_1_springer_localized"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases/paper.pdf#page=21"
+    }
+  ],
+  "known_gaps": [
+    "The fixed-copy irreducible representation assertions, column-insertion result, simultaneous harmonic/sum-intersection results, untruncated parameter-module freeness, fiber/primary-component geometry and other substantive corollaries remain outside this Comparator selection.",
+    "Both oversized original source bundles were split into complete source blocks with public-import/import-all chains and explicit Lake library roots. The complete fresh Solution/default-target build must verify cross-module visibility and private declarations.",
+    "Only the independent Challenge has been locally elaborated. Solution compilation, Comparator, independent kernel replay and Palomar review remain pending."
+  ],
+  "checks": {
+    "source_copy": "complete including retained reading files and licenses",
+    "build": "not_run",
+    "comparator": "not_run",
+    "nanoda": "not_run",
+    "editorial_review": "not_run",
+    "challenge_elaboration": "passed"
+  },
+  "current_selection": "Prescribed Springer and Griffin bases, exact basis characteristic ranges including empty partitions, and full Corollary4.3 admissible dominance-triangular alternative multiplier basis with arbitrary nonzero leading coefficients.",
+  "selected_wrapper_provenance": [],
+  "comparator": {
+    "challenge_module": "Challenge",
+    "solution_module": "Solution",
+    "theorem_names": [
+      "HigherSpecht.springer_basis_target",
+      "HigherSpecht.theorem_4_1",
+      "HigherSpecht.corollary_8_1_springer_characteristic",
+      "HigherSpecht.corollary_8_1_griffin_characteristic_all_partitions",
+      "HigherSpecht.mem_prefixShape",
+      "HigherSpecht.prefixShape_le",
+      "HigherSpecht.prefixShape_card",
+      "TauCeti.StandardYoungTableau.row_strict",
+      "TauCeti.StandardYoungTableau.col_strict",
+      "HigherSpecht.standardTableau_monotoneCells",
+      "HigherSpecht.prefixLabelEquiv_apply_val",
+      "YoungDiagram.isAddable_def",
+      "YoungDiagram.palomarAddCell_isLowerSet",
+      "YoungDiagram.palomarIsAddable_decision_iff",
+      "TauCeti.palomarFiber_mul",
+      "TauCeti.palomarFiber_one",
+      "TauCeti.palomarFiber_inv",
+      "HigherSpecht.prefixTableau._proof_2",
+      "HigherSpecht.prefixTableau._proof_3",
+      "HigherSpecht.corollary_4_3_on_admissible_multipliers"
+    ],
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ]
+  },
+  "challenge": {
+    "path": "source/Challenge.lean",
+    "sha256": "f8748bec00037dc1a21966467a7f7c6e8942dc30ff4a1433735f301d5a462f80",
+    "lines": 521,
+    "canonical_run": "44387460587",
+    "canonical_status": "passed",
+    "full_source_comparator": "unverified"
+  },
+  "coverage_status": "partial_principal_selection_not_whole_paper",
+  "current_independent_challenge": {
+    "path": "source/Challenge.lean",
+    "sha256": "f8748bec00037dc1a21966467a7f7c6e8942dc30ff4a1433735f301d5a462f80",
+    "lines": 521,
+    "canonical_run": "44387460587",
+    "canonical_status": "passed",
+    "full_source_comparator": "unverified"
+  },
+  "uncovered_main_results_and_corollaries": [
+    {
+      "paper_result": "Theorem 3.2",
+      "uncovered_scope": "Full higher Specht pairing and column insertion, beyond the selected basis assertions.",
+      "blocker_or_preparation": "Source exists; independent full interface/proof closure not selected.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Corollary 4.3",
+      "uncovered_scope": "Dominance-triangular symmetric multipliers.",
+      "blocker_or_preparation": "Full literal interface and genuine original proof import selected; canonical521Challenge passed run44387460587. Full Source/Solution/Comparator remains required.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Theorem 5.2; Corollaries 5.3, 5.5, 5.6, 5.7",
+      "uncovered_scope": "Fixed irreducible harmonic copies, sums/intersections and simultaneous adapted bases.",
+      "blocker_or_preparation": "Source exists; not independently selected.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Theorems 6.1, 6.6; Corollaries 6.5, 6.7",
+      "uncovered_scope": "Untruncated parameter-module free basis, integral/all-field freeness and simultaneous harmonic/sum-intersection assertions.",
+      "blocker_or_preparation": "Source exists; independent interfaces and bridges still required.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Theorem 7.1; Corollaries 7.4, 7.5, 7.6",
+      "uncovered_scope": "Every fiber and primary geometry, reduced/etale locus, regularity, levelness/type/Gorenstein assertions.",
+      "blocker_or_preparation": "Source exists; not independently selected.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Corollary 8.1 remaining clauses",
+      "uncovered_scope": "Fixed-copy irreducibility and localized variants, beyond selected exact characteristic basis statements.",
+      "blocker_or_preparation": "Source exists; not independently selected.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    }
+  ],
+  "coverage_note": "A source theorem, a prepared candidate, a Challenge elaboration pass, and a full Comparator/replay pass are separate states. No partial entry is counted as whole-paper coverage.",
+  "current_measured_dependency_repair": {
+    "path": "measured-raw-normalization.json",
+    "challenge_sha256": "277c7953849f5b01b88b8a1f0dc1d20ca628fed83581fa738d8c5501d684400a",
+    "canonical_case_run": "44385512169",
+    "full_source_solution_comparator": "unverified"
+  },
+  "baseline_project": "higher_specht_bases",
+  "whole_paper_coverage": false,
+  "multiplier_corollary_provenance": {
+    "status": "source_prepared_frozen_full_corollary_extension_unelaborated",
+    "project": "higher_specht_bases",
+    "challenge_sha256": "f8748bec00037dc1a21966467a7f7c6e8942dc30ff4a1433735f301d5a462f80",
+    "challenge_lines": 521,
+    "retains_all487_statements_and_measured_repairs": true,
+    "adds": "Corollary4.3 prescribed Griffin basis under every dominance-triangular multiplier, arbitrary nonzero leading coefficient and hypotheses only at used admissible indices.",
+    "definitions": [
+      {
+        "name": "Nat.Partition.Dominates",
+        "actual_source": "source/tau_ceti/combinatorics/enumerative/partition/dominance.lean:70",
+        "semantics": "All initial sorted-part sums, exact literal source predicate."
+      },
+      {
+        "name": "HigherSpecht.IsDominanceTriangularMultiplier",
+        "actual_source": "source/higher_specht/verified/remaining03_complete.lean:527",
+        "semantics": "Literal finite msymm expansion, nonzero leading coefficient, all supported lower partitions dominated."
+      },
+      {
+        "name": "HigherSpecht.alternativeGriffinFamily",
+        "actual_source": "source/higher_specht/verified/remaining03_complete.lean:1703",
+        "semantics": "Exact same Griffin ideal quotient and every original GriffinIndex."
+      }
+    ],
+    "genuine_source_theorem": "source/higher_specht/verified/remaining03_complete.lean:1835 HigherSpecht.corollary_4_3_on_admissible_multipliers",
+    "solution": "Imports original substantive proof; no hypotheses/conclusions narrowed or new proof data.",
+    "canonical_imports_added": [
+      "Mathlib.Combinatorics.Enumerative.Partition.YoungDiagram",
+      "Mathlib.Analysis.Complex.Basic"
+    ],
+    "original487_active_package_unchanged": true,
+    "local_compilation": false
+  },
+  "canonical_receipt": "reports/higher_specht_bases/challenge-diagnostic/run-44387460587/higher_specht_multiplier_corollary43/receipt.json",
+  "measured_row_column_proof_repair": {
+    "status": "frozen proof-only repair of the complete two-error source report; uncompiled",
+    "failed_commit": "3ccc08e5050659d18b3e2faeff7d4bb1d77c7cc7",
+    "failed_run": "44391461523",
+    "report_sha256": "2ca957ff15e134d7e0438afd3f2a5f757c8ac3dc460182401a7ce50ae1104501",
+    "complete_error_excerpts": {
+      "errors": [
+        {
+          "excerpt": "error: source/tau_ceti/representation_theory/symmetric/row_column_subgroup.lean:68:23: Tactic `rewrite` failed: Did not find an occurrence of the pattern\n  ?m.21 \u2208 fiberSubgroup ?m.20\nin the target expression\n  (\u2200 (k : Fin \u03bc.card), t.rowIndex (\u03c3 k) = t.rowIndex k) \u2194 \u2200 (k : Fin \u03bc.card), t.rowIndex (\u03c3 k) = t.rowIndex k\n\n\u03bc : YoungDiagram\nt : YoungTableau \u03bc\n\u03c3 : Equiv.Perm (Fin \u03bc.card)\n\u22a2 (\u2200 (k : Fin \u03bc.card), t.rowIndex (\u03c3 k) = t.rowIndex k) \u2194 \u2200 (k : Fin \u03bc.card), t.rowIndex (\u03c3 k) = t.rowIndex k",
+          "location": {
+            "column": 23,
+            "line": 68,
+            "path": "source/tau_ceti/representation_theory/symmetric/row_column_subgroup.lean"
+          },
+          "truncated": false
+        },
+        {
+          "excerpt": "error: source/tau_ceti/representation_theory/symmetric/row_column_subgroup.lean:74:23: Tactic `rewrite` failed: Did not find an occurrence of the pattern\n  ?m.21 \u2208 fiberSubgroup ?m.20\nin the target expression\n  (\u2200 (k : Fin \u03bc.card), t.colIndex (\u03c3 k) = t.colIndex k) \u2194 \u2200 (k : Fin \u03bc.card), t.colIndex (\u03c3 k) = t.colIndex k\n\n\u03bc : YoungDiagram\nt : YoungTableau \u03bc\n\u03c3 : Equiv.Perm (Fin \u03bc.card)\n\u22a2 (\u2200 (k : Fin \u03bc.card), t.colIndex (\u03c3 k) = t.colIndex k) \u2194 \u2200 (k : Fin \u03bc.card), t.colIndex (\u03c3 k) = t.colIndex k",
+          "location": {
+            "column": 23,
+            "line": 74,
+            "path": "source/tau_ceti/representation_theory/symmetric/row_column_subgroup.lean"
+          },
+          "truncated": false
+        }
+      ],
+      "omitted_error_count": 0,
+      "output_truncated": false,
+      "schema_version": 1
+    },
+    "source": "source/tau_ceti/representation_theory/symmetric/row_column_subgroup.lean",
+    "source_before_sha256": "9df319fe78acd295418b7a287f3c1c73353c9af1c761436f2849dff74c822799",
+    "source_after_sha256": "4338b078eecb9bd1924ba0d6d0384fba09f725adcd52147f134d8b65f60d463e",
+    "repair": "rowSubgroup and colSubgroup are literal abbrev fiberSubgroup. Replace their two over-rewriting subgroup-def proofs by direct reflexivity. Every theorem type, definition, instance, import, license and source guard remains unchanged.",
+    "all5principal_and_Cor43_targets_unchanged": true,
+    "mathematical_scope": "All current full Springer/Griffin basis and exact characteristic ranges including empty partitions, plus full Cor4.3 arbitrary nonzero-leading-coefficient/admissible multiplier basis; all selected semantic support retained.",
+    "no_local_Lean": true
+  },
+  "measured_cocharge_proof_repair": {
+    "status": "frozen measured one-error source proof repair; uncompiled",
+    "failed_commit": "6b03d4aa889dfdc27a9a5f335dfeda7d4b6f6bbc",
+    "failed_run": 44460018126,
+    "report_sha256": "92cb8a2364b275d540611aa2fb9a555d7ab049fdb782c23e8f1a4162d7fdc1b3",
+    "complete_error_excerpts": {
+      "errors": [
+        {
+          "excerpt": "error: source/higher_specht/verified/basis_remainder01.lean:2426:29: unsolved goals\n\u03bc : YoungDiagram\nS : StandardYoungTableau \u03bc\nh\u03bc : \u03bc.colLen 0 \u2264 1\ni : Fin \u03bc.card\n\u22a2 \u2200 \u2983x : \u2115\u2984, x < \u2191i \u2192 tableauRows S (x + 1) \u2264 tableauRows S x",
+          "location": {
+            "column": 29,
+            "line": 2426,
+            "path": "source/higher_specht/verified/basis_remainder01.lean"
+          },
+          "truncated": false
+        }
+      ],
+      "omitted_error_count": 0,
+      "output_truncated": false,
+      "schema_version": 1
+    },
+    "source": "source/higher_specht/verified/basis_remainder01.lean",
+    "before_sha256": "a27926ac397fcad9a6a802709a7399fa6160907b2946568526de5a02a9ceec26",
+    "after_sha256": "0bff2436e20804ef0e8fe7c336f0118e2c62680ddfed5ee538b901198cd4f124",
+    "repair": "Change to the literal ascentCount of tableauRows, rewrite the proved whole function tableauRows=0 first, then simplify the actual finite ascent sum. This avoids simplifier unfolding the normalized abbreviation before rewriting its function argument. All theorem types, definitions, instances, assumptions and guards are unchanged.",
+    "scope": "All5 prescribed Springer/Griffin/characteristic/corollary4.3 endpoints plus all existing selected semantic support remain unchanged."
+  },
+  "measured_literal_ascent_proof_repair": {
+    "status": "frozen literal finite-sum proof repair for compiler panic; uncompiled",
+    "failed_commit": "36ad792702e949d95422c9f5d5ccc1cdcece7508",
+    "failed_run": 44461248433,
+    "report_sha256": "262864968e1bf1d8fa7ece63ed65bb4bd0405439257dfe48bc84c8df25830fe4",
+    "failure": "No Lean error excerpts; PANIC unknown metavariable in equation-theorem generation used by simp unfolding, exit134, failing basis_remainder01. Full bounded stack retained in report.",
+    "repair": "Retain the proved tableauRows=0 rewrite, then change directly to the genuine finite sum of the false0<0 branch; apply Finset.sum_eq_zero with every summand rfl. No simp/ascentCount equation-theorem generation remains in this proof.",
+    "source": "source/higher_specht/verified/basis_remainder01.lean",
+    "before_sha256": "0bff2436e20804ef0e8fe7c336f0118e2c62680ddfed5ee538b901198cd4f124",
+    "after_sha256": "343cdba1d46aeff8780708e44dc4c161bf5208dfecdf631d0c2bff1f1f75366d",
+    "all_statements_data_instances_guards_pins_unchanged": true,
+    "scope": "All5 principal/fullCor4.3 endpoints plus all selected semantic support preserved.",
+    "not_a_diagnosis_guarantee": "The stack identifies simp equation generation and the failing module. This proof-only repair removes that operation from the immediately changed proof; its compiler result remains unverified."
+  },
+  "measured_griffin_descent_proof_repair": {
+    "status": "frozen exact-trigger proof-only repair; source/Comparator uncompiled",
+    "actual_failed_full_commit": "83d7e435dcef512d553c3184b7968edbed88fd1e",
+    "actual_failed_full_run": 44462907839,
+    "diagnostic_commit": "706a977bb93889ed44ef91eb9206b951f7e0e5e6",
+    "diagnostic_run": 44466008409,
+    "diagnostic_report_sha256": "21d2649f36b7ee322030802a67957b79ad30f5bba2657bed858ae27e6ed77cba",
+    "complete_error_excerpts": {
+      "errors": [
+        {
+          "excerpt": "error: source/higher_specht/verified/basis_remainder01.lean:3993:4: Type mismatch: After simplification, term\n  hs\n has type\n  0 < s\nbut is expected to have type\n  (\u2211 i \u2208 range (n - 1),\n      if\n          tableauRows (StandardYoungTableau.rowSuperstandard (oneRowShape n)) i <\n            tableauRows (StandardYoungTableau.rowSuperstandard (oneRowShape n)) (i + 1) then\n        1\n      else 0) <\n    s",
+          "location": {
+            "column": 4,
+            "line": 3993,
+            "path": "source/higher_specht/verified/basis_remainder01.lean"
+          },
+          "truncated": false
+        },
+        {
+          "excerpt": "error: source/higher_specht/verified/basis_remainder01.lean:3982:4: (kernel) declaration has metavariables 'HigherSpecht.oneRowGriffinIndex'",
+          "location": {
+            "column": 4,
+            "line": 3982,
+            "path": "source/higher_specht/verified/basis_remainder01.lean"
+          },
+          "truncated": false
+        }
+      ],
+      "omitted_error_count": 0,
+      "output_truncated": false,
+      "schema_version": 1
+    },
+    "trigger": "last flushed marker BEFORE original2620 oneRowGriffinIndex; its descents_lt simp fails, then kernel reports structure declaration has metavariables and later equation generation panics.",
+    "source": "source/higher_specht/verified/basis_remainder01.lean",
+    "before_sha256": "343cdba1d46aeff8780708e44dc4c161bf5208dfecdf631d0c2bff1f1f75366d",
+    "after_sha256": "03f4d4f9f51e54eb3931873e6a145d65b26fb853fc71f083ccf978366ae11280",
+    "repair": "Preserve every index datum/hypothesis and all declaration types. In descents_lt explicitly unfold to the actual row function and actual card-1 ascent count, rewrite the proved whole function tableauRows=0, and prove the literal finite zero sum before applying the original hs. No diagnostic markers remain.",
+    "all5principal_Cor43_targets_and_selected_support_unchanged": true,
+    "known_row_zero_simp_occurrences_audited": "Other same-file occurrence cochargeLabel_eq_zero_of_one_row already uses the proved whole-function rewrite and literal finite-sum proof; no other unresolved tableauRows_eq_zero/ascentCount simp remains."
+  },
+  "measured_cocharge_cancellation_proof_repair": {
+    "status": "frozen measured sole source proof repair; full verification pending",
+    "actual_failed_commit": "d18ef5b11250170548e2e62e8bf60d8383028a1f",
+    "actual_failed_run": 44467518949,
+    "report_sha256": "a73185c83ceddd6508682565e7c1228a0f47d3808b1cf9295ee5751e7aa21e1c",
+    "complete_error_excerpts": {
+      "errors": [
+        {
+          "excerpt": "error: source/higher_specht/verified/remaining01.lean:515:78: unsolved goals\nmu : YoungDiagram\nS : StandardYoungTableau mu\nT : YoungTableau mu\neta : YoungDiagram\ni : Fin mu.card\n\u22a2 cochargeLabel S ((tableauLabelEquiv S T) i) + boostLabel eta mu.card ((tableauLabelEquiv S T) i) -\n      cochargeFilling S ((Equiv.symm T) i) =\n    boostLabel eta mu.card ((tableauLabelEquiv S T) i)",
+          "location": {
+            "column": 78,
+            "line": 515,
+            "path": "source/higher_specht/verified/remaining01.lean"
+          },
+          "truncated": false
+        }
+      ],
+      "omitted_error_count": 0,
+      "output_truncated": false,
+      "schema_version": 1
+    },
+    "source": "source/higher_specht/verified/remaining01.lean",
+    "repair": "The simp residual contains cochargeLabel at tableauLabelEquiv versus the definitionally equal cochargeFilling at T.symm. Expose both transported exponents at the identical literal label, then apply Nat.add_sub_cancel_left directly. All definitions, type/universe/binder contexts and hypotheses remain unchanged.",
+    "before_sha256": "f75a73a174c24c5faa0dd175e532cdf96289ce2a55b7015aff0b0014713984e8",
+    "after_sha256": "615ff45dc61ac6770816fc0f833b1b78cc6fadef4ce576ab6b3aa74a908f44fb",
+    "all5principal_Cor43_targets_and_selected_support_unchanged": true
+  },
+  "measured_named_proof_support_repair": {
+    "status": "frozen measured proof-auxiliary raw data repair; full22 preflight pending",
+    "failed_commit": "59f31e38f714939c801667016086a97ba3080579",
+    "failed_run": 44469251922,
+    "exact_raw_diagnostic": {
+      "status": "validated exact whole20target/reachableunion diagnostic; not full pass",
+      "source_commit": "59f31e38f714939c801667016086a97ba3080579",
+      "diagnostic_commit": "01d3aa68e86c9625902a45e6e1934f91891bc2e0",
+      "workflow_run": 44471405402,
+      "all20raw_types_and_levelparams_identical": true,
+      "visited": 12785,
+      "raw_mismatch_count": 5,
+      "data_value_mismatches": 2,
+      "missing_generated_auxiliary_names": 3,
+      "raw_leaves": 4,
+      "type_leaves": 0,
+      "all_enumeration_bounds_complete": true,
+      "bounded_log_truncated": false,
+      "helper_early1GiB_alpha_and_DAG_controls_passed": true,
+      "receipt_sha256": "8c432efe5d0e7ede971ca5990d9d62fba11cd7868308bd8e35ed58b2bffafc15",
+      "log_sha256": "807642a443e496a8e4db14db9967ea6bdcc89afe905f77ecdb47ccb412011ae9",
+      "artifact_sha256": "6e5bae3a02133474e990f19f844fcfab5b155047fd7a3a60e363b70f19eb115e",
+      "actual_raw_mismatches": [
+        "RAW_VALUE_OR_METADATA_MISMATCH HigherSpecht.IsDominanceTriangularMultiplier theorem=false type_eq=true levels_eq=true value_eq=false hints_challenge=regular(20) hints_solution=regular(20) safety_eq=true mutual_names_eq=true",
+        "RAW_VALUE_OR_METADATA_MISMATCH Nat.Partition.Dominates theorem=false type_eq=true levels_eq=true value_eq=false hints_challenge=regular(8) hints_solution=regular(8) safety_eq=true mutual_names_eq=true",
+        "MISSING_SOLUTION Nat.Partition.Dominates._proof_1",
+        "MISSING_CHALLENGE HigherSpecht.monomialMultiplier._proof_1",
+        "MISSING_SOLUTION HigherSpecht.IsDominanceTriangularMultiplier._proof_1"
+      ]
+    },
+    "repair": "All20 selected types/universes match. Two data bodies reference inconsistent generated proof auxiliaries: the partition sort transitivity and reflexivity argument to toPartition. Both Source/Challenge now use literal named selected transitivity/reflexivity propositions. Every old declaration header, parameter, coefficient model, arbitrary nonzero leading coefficient and admissible multiplier remains unchanged. No reducibility-hint or abbreviation change is made.",
+    "existing20_targets": [
+      "HigherSpecht.springer_basis_target",
+      "HigherSpecht.theorem_4_1",
+      "HigherSpecht.corollary_8_1_springer_characteristic",
+      "HigherSpecht.corollary_8_1_griffin_characteristic_all_partitions",
+      "HigherSpecht.mem_prefixShape",
+      "HigherSpecht.prefixShape_le",
+      "HigherSpecht.prefixShape_card",
+      "TauCeti.StandardYoungTableau.row_strict",
+      "TauCeti.StandardYoungTableau.col_strict",
+      "HigherSpecht.standardTableau_monotoneCells",
+      "HigherSpecht.prefixLabelEquiv_apply_val",
+      "YoungDiagram.isAddable_def",
+      "YoungDiagram.palomarAddCell_isLowerSet",
+      "YoungDiagram.palomarIsAddable_decision_iff",
+      "TauCeti.palomarFiber_mul",
+      "TauCeti.palomarFiber_one",
+      "TauCeti.palomarFiber_inv",
+      "HigherSpecht.prefixTableau._proof_2",
+      "HigherSpecht.prefixTableau._proof_3",
+      "HigherSpecht.corollary_4_3_on_admissible_multipliers"
+    ],
+    "new_selected_support": [
+      "Nat.Partition.palomarGe_isTrans",
+      "HigherSpecht.palomarPartitionCard_refl"
+    ],
+    "all5substantive_targets_preserved": true,
+    "reducibility_hints_were_already_equal": true,
+    "no_local_Lean": true
+  }
+}
