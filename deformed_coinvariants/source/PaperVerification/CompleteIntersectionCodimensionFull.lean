@@ -2,6 +2,7 @@ module
 
 public import PaperVerification.HomogeneousModuleFinite
 public import PaperVerification.VectorEulerAction
+public import PalomarDeformedSupport
 
 /-!
 # Proposition 6.5: the complete-intersection family in full codimension

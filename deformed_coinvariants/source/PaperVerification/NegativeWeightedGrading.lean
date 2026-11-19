@@ -2,6 +2,7 @@ module
 
 public import PaperVerification.JacobianGrading
 public import TauCeti.Algebra.Module.GradedModule.Quotient
+public import PalomarDeformedSupport
 
 /-!
 # The bounded integer grading on a positive-weight polynomial ring

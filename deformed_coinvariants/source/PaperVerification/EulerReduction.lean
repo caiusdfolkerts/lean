@@ -3,6 +3,7 @@ module
 public import Mathlib.LinearAlgebra.Quotient.Basic
 public import Mathlib.Tactic.Module
 public import Mathlib.Tactic.Abel
+public import PalomarDeformedSupport
 
 /-!
 # The linear algebra of Euler reduction

@@ -3,6 +3,7 @@ module
 public import PaperVerification.JacobianMilnorReduction
 public import Mathlib.Algebra.Polynomial.Module.AEval
 public import Mathlib.LinearAlgebra.Quotient.Basic
+public import PalomarDeformedSupport
 
 /-!
 # The actual polynomial-module structure on the divergence quotient

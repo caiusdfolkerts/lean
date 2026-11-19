@@ -3,6 +3,7 @@ module
 public import PaperVerification.JacobianEquivariantTowers
 public import PaperVerification.JacobianEquivariantDefect
 public import PaperVerification.JacobianHilbertFormula
+public import PalomarDeformedSupport
 
 /-!
 # The actual exceptional defect as a finite-group representation

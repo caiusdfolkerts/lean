@@ -3,6 +3,7 @@ module
 public import PaperVerification.PowerSpanning
 public import Mathlib.RingTheory.MvPolynomial.Basic
 public import Mathlib.LinearAlgebra.Basis.SMul
+public import PalomarDeformedSupport
 
 /-!
 # The actual diagonal conjugation of the two power families

@@ -5,6 +5,7 @@ public import Mathlib.Algebra.BigOperators.Ring.Finset
 public import Mathlib.Algebra.Module.BigOperators
 public import Mathlib.Tactic.Ring
 public import Lean.Elab.Tactic.Omega
+public import PalomarDeformedSupport
 
 /-!
 # Exact parameter conditions for weighted power tails

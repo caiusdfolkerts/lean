@@ -7,6 +7,7 @@ module
 
 public import Mathlib.Algebra.DirectSum.Decomposition
 public import Mathlib.Algebra.GradedMulAction
+public import PalomarDeformedSupport
 
 /-!
 # Internal direct sums from explicit equivalences

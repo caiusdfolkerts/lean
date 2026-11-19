@@ -3,6 +3,7 @@ module
 public import PaperVerification.DerivationFiniteConstants
 public import Mathlib.Algebra.MvPolynomial.PDeriv
 public import Mathlib.LinearAlgebra.Pi
+public import PalomarDeformedSupport
 
 /-!
 # The Jacobian kernel of a finite polynomial map in characteristic zero

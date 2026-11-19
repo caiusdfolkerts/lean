@@ -2,6 +2,7 @@ module
 
 public import PaperVerification.PowerSumComparator
 public import PaperVerification.PowerOriginalHilbert
+public import PalomarDeformedSupport
 
 /-!
 # All clauses of Theorem 2.2

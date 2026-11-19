@@ -2,6 +2,7 @@ module
 
 public import PaperVerification.EulerJacobian
 public import PaperVerification.KoszulSyzygies
+public import PalomarDeformedSupport
 
 /-!
 # The polynomial divergence model of the Brieskorn quotient

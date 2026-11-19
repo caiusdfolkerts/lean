@@ -39,7 +39,19 @@
     "PaperVerification.JacobianDivergence.milnorRepresentation_preserves_negativeGrading",
     "PaperVerification.JacobianDivergence.paper_theorem_6_3_equivariant",
     "PalomarDeformed.weighted_tail_theorem",
-    "iSupIndep.map_of_ker_inf_iSup_le"
+    "iSupIndep.map_of_ker_inf_iSup_le",
+    "PalomarDeformedSupport.fieldIdentitySurjective",
+    "PalomarDeformedSupport.fieldIdentityCompTriple",
+    "PalomarDeformedSupport.fieldIdentityInvPair",
+    "PalomarDeformedSupport.ringIdentitySurjective",
+    "PalomarDeformedSupport.permutationSubmonoid",
+    "PalomarDeformedSupport.submoduleAddSubmonoid",
+    "PalomarDeformedSupport.subtypeScalarCompatible",
+    "PalomarDeformedSupport.quotientScalarCompatible",
+    "TauCeti.InternalGrading.palomarDecomposition_isInternal",
+    "TauCeti.InternalGrading.palomarQuotient_isInternal",
+    "PaperVerification.PowerOperators.palomarOrdinaryAction_preserves",
+    "PaperVerification.PowerOperators.palomarOriginalTailAction_preserves"
   ],
   "permitted_axioms": [
     "propext",

@@ -3,6 +3,7 @@ module
 public import TauCeti.RingTheory.MvPolynomial.Symmetric.Complete.Elementary
 public import Mathlib.RingTheory.Ideal.Operations
 public import Lean.Elab.Tactic.Omega
+public import PalomarDeformedSupport
 
 /-!
 # The literal ordinary coinvariant ideal

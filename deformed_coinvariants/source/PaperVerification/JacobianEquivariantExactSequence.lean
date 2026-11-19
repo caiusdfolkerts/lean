@@ -3,6 +3,7 @@ module
 public import PaperVerification.JacobianEquivariantTowers
 public import PaperVerification.JacobianEquivariantDefect
 public import Mathlib.Algebra.Exact.Basic
+public import PalomarDeformedSupport
 
 /-!
 # The natural equivariant short exact sequence

@@ -5,6 +5,7 @@ public import Mathlib.Algebra.Module.LinearMap.Basic
 public import Mathlib.Algebra.BigOperators.Group.Finset.Sigma
 public import Mathlib.LinearAlgebra.Span.Defs
 public import Mathlib.Tactic.Ring
+public import PalomarDeformedSupport
 
 /-!
 # Weighted power operators and their commutator

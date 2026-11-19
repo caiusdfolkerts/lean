@@ -2,6 +2,7 @@ module
 
 public import PaperVerification.JacobianDegree
 public import PaperVerification.GradedComponentBasis
+public import PalomarDeformedSupport
 
 /-!
 # Homogeneous bases of the actual polynomial quotient components

@@ -2,6 +2,7 @@ module
 
 public import PaperVerification.PowerDegreeMatrices
 public import Mathlib.LinearAlgebra.FiniteDimensional.Lemmas
+public import PalomarDeformedSupport
 
 /-!
 # Rank comparison for the actual graded tail quotient

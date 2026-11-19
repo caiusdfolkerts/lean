@@ -5,6 +5,7 @@ public import PaperVerification.PowerGroupedParameters
 public import PaperVerification.QuotientLinearAction
 public import Mathlib.RepresentationTheory.Basic
 public import Mathlib.RepresentationTheory.Subrepresentation
+public import PalomarDeformedSupport
 
 /-!
 # The actual permutation action on the differential tail

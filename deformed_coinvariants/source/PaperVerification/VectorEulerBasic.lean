@@ -4,6 +4,7 @@ public import PaperVerification.VectorJacobianKernel
 public import PaperVerification.EulerInjective
 public import PaperVerification.EulerParameters
 public import PaperVerification.JacobianDefect
+public import PalomarDeformedSupport
 
 /-!
 # The normalized vector-valued Euler family

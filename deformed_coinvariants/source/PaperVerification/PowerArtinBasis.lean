@@ -5,6 +5,7 @@ public import Mathlib.RingTheory.MvPolynomial.Basic
 public import Mathlib.LinearAlgebra.Dimension.Free
 public import Mathlib.LinearAlgebra.Basis.VectorSpace
 public import Mathlib.Data.Fintype.BigOperators
+public import PalomarDeformedSupport
 
 /-!
 # The finite Artin space and its actual quotient map

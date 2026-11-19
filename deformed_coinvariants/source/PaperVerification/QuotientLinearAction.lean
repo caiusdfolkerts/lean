@@ -2,6 +2,7 @@ module
 
 public import Mathlib.LinearAlgebra.Quotient.Basic
 public import Mathlib.Algebra.Module.LinearMap.End
+public import PalomarDeformedSupport
 
 /-! # The actual linear action on a stable quotient -/
 

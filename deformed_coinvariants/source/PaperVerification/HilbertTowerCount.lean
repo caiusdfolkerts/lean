@@ -3,6 +3,7 @@ module
 public import Mathlib.SetTheory.Cardinal.Finite
 public import Mathlib.RingTheory.PowerSeries.Inverse
 public import Lean.Elab.Tactic.Omega
+public import PalomarDeformedSupport
 
 /-!
 # The Hilbert series of homogeneous polynomial towers

@@ -2,6 +2,7 @@ module
 
 public import PaperVerification.VectorEulerGrading
 public import PaperVerification.JacobianLinearAction
+public import PalomarDeformedSupport
 
 /-!
 # Arbitrary linear-group naturality for the vector Euler defect
@@ -26,7 +27,7 @@ local notation "P" => MvPolynomial ι K
 local notation "M" => κ → P
 local notation "GL" => (Matrix ι ι K)ˣ
 
-def targetRepresentation (ρ : G →* GL) : Representation K G M where
+abbrev targetRepresentation (ρ : G →* GL) : Representation K G M where
   toFun g := LinearMap.pi fun a =>
     (JacobianLinearAction.polynomialRepresentation ρ g).comp (LinearMap.proj a)
   map_one' := by

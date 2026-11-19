@@ -3,6 +3,7 @@ module
 public import PaperVerification.VectorEulerBasic
 public import Mathlib.LinearAlgebra.FiniteDimensional.Lemmas
 public import Mathlib.Algebra.FiniteSupport.Basic
+public import PalomarDeformedSupport
 
 /-!
 # The actual integer target grading and its exceptional Hilbert function

@@ -1,6 +1,7 @@
 module
 
 public import PaperVerification.JacobianMilnorReduction
+public import PalomarDeformedSupport
 
 /-!
 # Identifying the literal Hamiltonian relation space

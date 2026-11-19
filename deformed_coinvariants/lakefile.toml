@@ -33,3 +33,9 @@ allowImportAll = true
 name = "PalomarAudit"
 srcDir = "source"
 roots = ["PalomarAudit"]
+
+[[lean_lib]]
+name = "PalomarDeformedSupport"
+srcDir = "source"
+roots = ["PalomarDeformedSupport"]
+allowImportAll = true

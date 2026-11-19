@@ -3,6 +3,7 @@ module
 public import PaperVerification.PowerEquivariantSpecialization
 public import PaperVerification.PowerCompleteHomogeneousRegular
 public import PaperVerification.HomogeneousKoszulSpecialization
+public import PalomarDeformedSupport
 
 /-!
 # The complete homogeneous representation comparator

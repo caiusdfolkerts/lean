@@ -3,6 +3,7 @@ module
 public import PaperVerification.HypersurfaceFreeness
 public import PaperVerification.JacobianEquivariantFormula
 public import PaperVerification.JacobianEquivariantExactSequence
+public import PalomarDeformedSupport
 
 /-!
 # The complete isolated-hypersurface statement

@@ -9,6 +9,7 @@ public import Mathlib.LinearAlgebra.Quotient.Basic
 public import TauCeti.Algebra.DirectSum.Internal
 public import TauCeti.Algebra.Module.GradedModule.Internal
 public import TauCeti.LinearAlgebra.Graded.LinearMap
+public import PalomarDeformedSupport
 
 /-!
 # Gradings of homogeneous submodules and of their quotients
@@ -166,22 +167,25 @@ variable {S : Type*} [Ring R] [Ring S] [SMul R S]
   (G : InternalGrading R M ι) (U : Submodule S M) (hU : SetLike.IsHomogeneous G.piece U)
 
 include hU in
+/-- The original quotient images form an internal direct sum, with the actual homogeneous-submodule hypothesis. -/
+theorem palomarQuotient_isInternal : DirectSum.IsInternal (fun p => (G.piece p).map (U.mkQ.restrictScalars R)) := by
+  refine DirectSum.isInternal_submodule_of_iSupIndep_of_iSup_eq_top
+    (G.isInternal.submodule_iSupIndep.map_of_ker_inf_iSup_le (U.mkQ.restrictScalars R) ?_) ?_
+  · -- Map the internal decomposition of `U` into the ambient module.
+    have hspan := congrArg (Submodule.map (U.subtype.restrictScalars R))
+      (G.submodule U hU).isInternal.submodule_iSup_eq_top
+    simp only [Submodule.map_iSup, submodule_piece, Submodule.map_comap_eq,
+      Submodule.map_top, LinearMap.range_restrictScalars, Submodule.range_subtype] at hspan
+    simpa only [LinearMap.ker_restrictScalars, Submodule.ker_mkQ, inf_comm] using
+      inf_le_left.trans_eq hspan.symm
+  · rw [← Submodule.map_iSup, G.isInternal.submodule_iSup_eq_top, Submodule.map_top,
+      LinearMap.range_restrictScalars, Submodule.range_mkQ, Submodule.restrictScalars_top]
+include hU in
 /-- The internal grading of the quotient by a homogeneous `S`-submodule: its degree-`p` piece is
 the image of the degree-`p` piece of `M`. -/
 noncomputable def quotient : InternalGrading R (M ⧸ U) ι where
   piece p := (G.piece p).map (U.mkQ.restrictScalars R)
-  isInternal := by
-    refine DirectSum.isInternal_submodule_of_iSupIndep_of_iSup_eq_top
-      (G.isInternal.submodule_iSupIndep.map_of_ker_inf_iSup_le (U.mkQ.restrictScalars R) ?_) ?_
-    · -- Map the internal decomposition of `U` into the ambient module.
-      have hspan := congrArg (Submodule.map (U.subtype.restrictScalars R))
-        (G.submodule U hU).isInternal.submodule_iSup_eq_top
-      simp only [Submodule.map_iSup, submodule_piece, Submodule.map_comap_eq,
-        Submodule.map_top, LinearMap.range_restrictScalars, Submodule.range_subtype] at hspan
-      simpa only [LinearMap.ker_restrictScalars, Submodule.ker_mkQ, inf_comm] using
-        inf_le_left.trans_eq hspan.symm
-    · rw [← Submodule.map_iSup, G.isInternal.submodule_iSup_eq_top, Submodule.map_top,
-        LinearMap.range_restrictScalars, Submodule.range_mkQ, Submodule.restrictScalars_top]
+  isInternal := palomarQuotient_isInternal G U hU
 
 @[simp]
 theorem quotient_piece (p : ι) :

@@ -1,6 +1,7 @@
 module
 
 public import PaperVerification.PowerBoundary
+public import PalomarDeformedSupport
 
 /-!
 # The exact Artin monomial bounds in the coordinate induction

@@ -17,6 +17,30 @@ public import Mathlib.LinearAlgebra.Quotient.Basic
 public import Mathlib.RingTheory.PowerSeries.Basic
 public import Mathlib.Analysis.Complex.Basic
 public import Mathlib.Order.Interval.Finset.Nat
+
+@[expose] public section
+namespace PalomarDeformedSupport
+universe uK uR uM uS
+/-- The actual identity map on the coefficient field is surjective. -/
+theorem fieldIdentitySurjective {K : Type uK} [Field K] : RingHomSurjective (RingHom.id K) := by sorry
+/-- The literal identity coefficient maps compose. -/
+theorem fieldIdentityCompTriple {K : Type uK} [Field K] : RingHomCompTriple (RingHom.id K) (RingHom.id K) (RingHom.id K) := by sorry
+/-- The actual coefficient identity map is its own inverse. -/
+theorem fieldIdentityInvPair {K : Type uK} [Field K] : RingHomInvPair (RingHom.id K) (RingHom.id K) := by sorry
+/-- The identity map on any coefficient ring is surjective. -/
+theorem ringIdentitySurjective {R : Type uR} [Ring R] : RingHomSurjective (RingHom.id R) := by sorry
+/-- Permutation subgroups carry their actual submonoid membership laws. -/
+theorem permutationSubmonoid (n : ℕ) : SubmonoidClass (Subgroup (Equiv.Perm (Fin n))) (Equiv.Perm (Fin n)) := by sorry
+/-- Submodules retain their actual additive-submonoid laws. -/
+theorem submoduleAddSubmonoid {R : Type uR} {M : Type uM} [Semiring R] [AddCommMonoid M] [Module R M] : AddSubmonoidClass (Submodule R M) M := by sorry
+/-- Scalar restriction on the actual subtype uses the original scalar actions. -/
+theorem subtypeScalarCompatible {R : Type uR} {M : Type uM} {S : Type uS} [Semiring R] [Semiring S] [SMul R S] [AddCommMonoid M] [Module R M] [Module S M] [IsScalarTower R S M] (U : Submodule S M) : LinearMap.CompatibleSMul U M R S := by sorry
+/-- Scalar restriction on the actual quotient uses the original scalar actions. -/
+theorem quotientScalarCompatible {R : Type uR} {M : Type uM} {S : Type uS} [Ring R] [Ring S] [SMul R S] [AddCommGroup M] [Module R M] [Module S M] [IsScalarTower R S M] (U : Submodule S M) : LinearMap.CompatibleSMul M (M ⧸ U) R S := by sorry
+attribute [instance 2000] fieldIdentitySurjective fieldIdentityCompTriple fieldIdentityInvPair permutationSubmonoid submoduleAddSubmonoid subtypeScalarCompatible quotientScalarCompatible
+attribute [instance 1900] ringIdentitySurjective
+end PalomarDeformedSupport
+end
 /-!
 # Coinvariants of weighted differential power operators
 The joint image is the vector-space sum of the actual differential-operator
@@ -483,23 +507,25 @@ open MvPolynomial Matrix Representation
 open scoped BigOperators
 variable {K : Type*} [Field K] {n : ℕ}
 local notation "P" => MvPolynomial (Fin n) K
-/-- Literal PaperVerification.PowerOperators.ordinaryQuotientAction; precise source and scope recorded in the extraction map. -/ def ordinaryQuotientAction (G : Subgroup (Equiv.Perm (Fin n))) (f : Fin n → P) (hinv : ∀ g : G, ∀ i, MvPolynomial.rename (g : Equiv.Perm (Fin n)) (f i) = f i) : Representation K G (P ⧸ ordinaryFamilyIdeal f) := by
-  refine QuotientLinearAction.action (polynomialPermutationAction K G)
-    ((ordinaryFamilyIdeal f).restrictScalars K) ?_
-  intro g p hp
-  change MvPolynomial.rename (g : Equiv.Perm (Fin n)) p ∈ ordinaryFamilyIdeal f
-  exact rename_mem_ordinaryFamilyIdeal (g : Equiv.Perm (Fin n)) f (hinv g) hp
+/-- Original invariance of the actual quotient relation submodule under the stated permutation action. -/
+theorem palomarOrdinaryAction_preserves (G : Subgroup (Equiv.Perm (Fin n))) (f : Fin n → P) (hinv : ∀ g : G, ∀ i, MvPolynomial.rename (g : Equiv.Perm (Fin n)) (f i) = f i) :
+    ∀ (g : G) (p : P), p ∈ ordinaryFamilyIdeal f → polynomialPermutationAction K G g p ∈ ordinaryFamilyIdeal f := by
+  sorry
+/-- Literal PaperVerification.PowerOperators.ordinaryQuotientAction; precise source and scope recorded in the extraction map. -/ def ordinaryQuotientAction (G : Subgroup (Equiv.Perm (Fin n))) (f : Fin n → P) (hinv : ∀ g : G, ∀ i, MvPolynomial.rename (g : Equiv.Perm (Fin n)) (f i) = f i) : Representation K G (P ⧸ ordinaryFamilyIdeal f) :=
+  QuotientLinearAction.action (polynomialPermutationAction K G)
+    ((ordinaryFamilyIdeal f).restrictScalars K) (palomarOrdinaryAction_preserves G f hinv)
 end PaperVerification.PowerOperators
 namespace PaperVerification.PowerOperators
 open MvPolynomial Representation
 open scoped BigOperators
 variable {K : Type*} [Field K] {n : ℕ}
-/-- Literal PaperVerification.PowerOperators.originalTailQuotientAction; precise source and scope recorded in the extraction map. -/ def originalTailQuotientAction (G : Subgroup (Equiv.Perm (Fin n))) (c : Fin n → K) (lam : K) (m : ℕ) (hfix : ∀ g : G, ∀ i, c ((g : Equiv.Perm (Fin n)) i) = c i) : Representation K G (MvPolynomial (Fin n) K ⧸ originalTailHit c lam m) := by
-  refine QuotientLinearAction.action (polynomialPermutationAction K G)
-    (originalTailHit c lam m) ?_
-  intro g p hp
-  change MvPolynomial.rename (g : Equiv.Perm (Fin n)) p ∈ originalTailHit c lam m
-  exact rename_mem_originalTailHit (g : Equiv.Perm (Fin n)) c lam (hfix g) m hp
+/-- Original invariance of the actual quotient relation submodule under the stated permutation action. -/
+theorem palomarOriginalTailAction_preserves (G : Subgroup (Equiv.Perm (Fin n))) (c : Fin n → K) (lam : K) (m : ℕ) (hfix : ∀ g : G, ∀ i, c ((g : Equiv.Perm (Fin n)) i) = c i) :
+    ∀ (g : G) (p : MvPolynomial (Fin n) K), p ∈ originalTailHit c lam m → polynomialPermutationAction K G g p ∈ originalTailHit c lam m := by
+  sorry
+/-- Literal PaperVerification.PowerOperators.originalTailQuotientAction; precise source and scope recorded in the extraction map. -/ def originalTailQuotientAction (G : Subgroup (Equiv.Perm (Fin n))) (c : Fin n → K) (lam : K) (m : ℕ) (hfix : ∀ g : G, ∀ i, c ((g : Equiv.Perm (Fin n)) i) = c i) : Representation K G (MvPolynomial (Fin n) K ⧸ originalTailHit c lam m) :=
+  QuotientLinearAction.action (polynomialPermutationAction K G)
+    (originalTailHit c lam m) (palomarOriginalTailAction_preserves G c lam m hfix)
 /-- Literal PaperVerification.PowerOperators.powerSumAction; precise source and scope recorded in the extraction map. -/ def powerSumAction (G : Subgroup (Equiv.Perm (Fin n))) (m : ℕ) : Representation K G (MvPolynomial (Fin n) K ⧸ powerSumIdeal K n m) :=
   ordinaryQuotientAction G (powerSumFamily K n m) (powerSumFamily_invariant G m)
 end PaperVerification.PowerOperators
@@ -679,8 +705,10 @@ variable {R M} {ι : Type} [DecidableEq ι]
 /-- Literal TauCeti.InternalGrading.canonicalDecomposition; precise source and scope recorded in the extraction map. -/
 noncomputable instance canonicalDecomposition (G : InternalGrading R M ι) : DirectSum.Decomposition G.piece :=
   G.isInternal.chooseDecomposition
+/-- The actual given direct-sum decomposition is internal. -/
+theorem palomarDecomposition_isInternal (ℳ : ι → Submodule R M) [DirectSum.Decomposition ℳ] : DirectSum.IsInternal ℳ := by sorry
 /-- Literal TauCeti.InternalGrading.ofDecomposition; precise source and scope recorded in the extraction map. -/ noncomputable def ofDecomposition (ℳ : ι → Submodule R M) [DirectSum.Decomposition ℳ] : InternalGrading R M ι :=
-  ⟨ℳ, DirectSum.Decomposition.isInternal ℳ⟩
+  ⟨ℳ, palomarDecomposition_isInternal ℳ⟩
 end TauCeti.InternalGrading
 namespace PaperVerification.GradedTowers
 open scoped DirectSum
@@ -731,20 +759,13 @@ open _root_.DirectSum
 variable {R M : Type*} {ι : Type} [DecidableEq ι]
 variable {S : Type*} [Ring R] [Ring S] [SMul R S] [AddCommGroup M] [Module R M] [Module S M] [IsScalarTower R S M] (G : InternalGrading R M ι) (U : Submodule S M) (hU : SetLike.IsHomogeneous G.piece U)
 include hU
+include hU in
+/-- The original quotient images form an internal direct sum, with the actual homogeneous-submodule hypothesis. -/
+theorem palomarQuotient_isInternal : DirectSum.IsInternal (fun p => (G.piece p).map (U.mkQ.restrictScalars R)) := by
+  sorry
 /-- Literal TauCeti.InternalGrading.quotient; precise source and scope recorded in the extraction map. -/ noncomputable def quotient : InternalGrading R (M ⧸ U) ι where
   piece p := (G.piece p).map (U.mkQ.restrictScalars R)
-  isInternal := by
-    refine DirectSum.isInternal_submodule_of_iSupIndep_of_iSup_eq_top
-      (G.isInternal.submodule_iSupIndep.map_of_ker_inf_iSup_le (U.mkQ.restrictScalars R) ?_) ?_
-    · -- Map the internal decomposition of `U` into the ambient module.
-      have hspan := congrArg (Submodule.map (U.subtype.restrictScalars R))
-        (G.submodule U hU).isInternal.submodule_iSup_eq_top
-      simp only [Submodule.map_iSup, submodule_piece, Submodule.map_comap_eq,
-        Submodule.map_top, LinearMap.range_restrictScalars, Submodule.range_subtype] at hspan
-      simpa only [LinearMap.ker_restrictScalars, Submodule.ker_mkQ, inf_comm] using
-        inf_le_left.trans_eq hspan.symm
-    · rw [← Submodule.map_iSup, G.isInternal.submodule_iSup_eq_top, Submodule.map_top,
-        LinearMap.range_restrictScalars, Submodule.range_mkQ, Submodule.restrictScalars_top]
+  isInternal := palomarQuotient_isInternal G U hU
 end TauCeti.InternalGrading
 namespace PaperVerification.NegativeWeightedGrading
 open MvPolynomial
@@ -789,7 +810,7 @@ variable {K ι : Type*} [Field K] [Fintype ι] [DecidableEq ι]
 local notation "P" => MvPolynomial ι K
 local notation "GL" => (Matrix ι ι K)ˣ
 variable {G : Type*} [Group G]
-/-- Literal PaperVerification.JacobianLinearAction.polynomialRepresentation; precise source and scope recorded in the extraction map. -/ def polynomialRepresentation (ρ : G →* GL) : Representation K G P where
+/-- Literal PaperVerification.JacobianLinearAction.polynomialRepresentation; precise source and scope recorded in the extraction map. -/ abbrev polynomialRepresentation (ρ : G →* GL) : Representation K G P where
   toFun g := (linearSubst (ρ g⁻¹ : Matrix ι ι K)).toLinearMap
   map_one' := by
     apply LinearMap.ext
@@ -819,7 +840,7 @@ variable {K ι κ G : Type*} [Field K] [CharZero K] [Fintype ι] [DecidableEq ι
 local notation "P" => MvPolynomial ι K
 local notation "M" => κ → P
 local notation "GL" => (Matrix ι ι K)ˣ
-/-- Literal PaperVerification.VectorEuler.targetRepresentation; precise source and scope recorded in the extraction map. -/ def targetRepresentation (ρ : G →* GL) : Representation K G M where
+/-- Literal PaperVerification.VectorEuler.targetRepresentation; precise source and scope recorded in the extraction map. -/ abbrev targetRepresentation (ρ : G →* GL) : Representation K G M where
   toFun g := LinearMap.pi fun a =>
     (JacobianLinearAction.polynomialRepresentation ρ g).comp (LinearMap.proj a)
   map_one' := by

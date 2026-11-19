@@ -4,6 +4,7 @@ public import PaperVerification.NegativeWeightedGrading
 public import PaperVerification.HomogeneousQuotientBasis
 public import PaperVerification.JacobianFreeness
 import Lean.Elab.Tactic.Omega
+public import PalomarDeformedSupport
 
 /-!
 # The exact integer grading of the Milnor quotient

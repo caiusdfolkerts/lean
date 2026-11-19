@@ -2,6 +2,7 @@ module
 
 public import PaperVerification.JacobianLinearAction
 public import PaperVerification.JacobianHilbertBasis
+public import PalomarDeformedSupport
 
 /-!
 # Equivariance of the canonical exceptional defect

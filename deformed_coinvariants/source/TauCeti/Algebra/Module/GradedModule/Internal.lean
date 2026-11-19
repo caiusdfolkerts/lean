@@ -13,6 +13,7 @@ public import Mathlib.RingTheory.Finiteness.Basic
 public import TauCeti.LinearAlgebra.Graded.LinearMap
 import TauCeti.Algebra.DirectSum.Internal
 import TauCeti.Algebra.Module.Submodule.Finite
+public import PalomarDeformedSupport
 
 /-!
 # Internally graded modules
@@ -112,12 +113,14 @@ theorem ext : ∀ {G H : InternalGrading R M ι}, (∀ p, G.piece p = H.piece p)
 noncomputable instance canonicalDecomposition (G : InternalGrading R M ι) : DirectSum.Decomposition G.piece :=
   G.isInternal.chooseDecomposition
 
+/-- The actual given direct-sum decomposition is internal. -/
+theorem palomarDecomposition_isInternal (ℳ : ι → Submodule R M) [DirectSum.Decomposition ℳ] : DirectSum.IsInternal ℳ := by exact DirectSum.Decomposition.isInternal ℳ
 /-- The internal grading carried by a family of submodules with a `DirectSum.Decomposition`.  This
 is the bridge from Mathlib's decomposition typeclass, under which graded algebras are stated, to
 the bundled internal grading of this file. -/
 noncomputable def ofDecomposition (ℳ : ι → Submodule R M) [DirectSum.Decomposition ℳ] :
     InternalGrading R M ι :=
-  ⟨ℳ, DirectSum.Decomposition.isInternal ℳ⟩
+  ⟨ℳ, palomarDecomposition_isInternal ℳ⟩
 
 @[simp]
 theorem ofDecomposition_piece (ℳ : ι → Submodule R M) [DirectSum.Decomposition ℳ] :

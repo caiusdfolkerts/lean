@@ -2,6 +2,7 @@ module
 
 public import PaperVerification.EulerJacobian
 public import Mathlib.Analysis.Complex.Basic
+public import PalomarDeformedSupport
 
 /-!
 # The exact exceptional set in the weighted Jacobian theorem

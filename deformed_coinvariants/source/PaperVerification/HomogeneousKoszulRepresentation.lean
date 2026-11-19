@@ -1,6 +1,7 @@
 module
 
 public import PaperVerification.HomogeneousKoszulMatrices
+public import PalomarDeformedSupport
 
 /-!
 # Equivariant presentations of homogeneous complete intersections
@@ -166,14 +167,17 @@ theorem ordinaryDegreeQuotientMap_kernel (f : Fin n → P) (m d : ℕ)
     exact shiftedProjection_of_mem (shiftedDecode_mem _ _ _)
 
 set_option maxHeartbeats 800000 in
-def ordinaryQuotientAction (G : Subgroup (Equiv.Perm (Fin n))) (f : Fin n → P)
-    (hinv : ∀ g : G, ∀ i, MvPolynomial.rename (g : Equiv.Perm (Fin n)) (f i) = f i) :
-    Representation K G (P ⧸ ordinaryFamilyIdeal f) := by
-  refine QuotientLinearAction.action (polynomialPermutationAction K G)
-    ((ordinaryFamilyIdeal f).restrictScalars K) ?_
+/-- Original invariance of the actual quotient relation submodule under the stated permutation action. -/
+theorem palomarOrdinaryAction_preserves (G : Subgroup (Equiv.Perm (Fin n))) (f : Fin n → P) (hinv : ∀ g : G, ∀ i, MvPolynomial.rename (g : Equiv.Perm (Fin n)) (f i) = f i) :
+    ∀ (g : G) (p : P), p ∈ ordinaryFamilyIdeal f → polynomialPermutationAction K G g p ∈ ordinaryFamilyIdeal f := by
   intro g p hp
   change MvPolynomial.rename (g : Equiv.Perm (Fin n)) p ∈ ordinaryFamilyIdeal f
   exact rename_mem_ordinaryFamilyIdeal (g : Equiv.Perm (Fin n)) f (hinv g) hp
+def ordinaryQuotientAction (G : Subgroup (Equiv.Perm (Fin n))) (f : Fin n → P)
+    (hinv : ∀ g : G, ∀ i, MvPolynomial.rename (g : Equiv.Perm (Fin n)) (f i) = f i) :
+    Representation K G (P ⧸ ordinaryFamilyIdeal f) :=
+  QuotientLinearAction.action (polynomialPermutationAction K G)
+    ((ordinaryFamilyIdeal f).restrictScalars K) (palomarOrdinaryAction_preserves G f hinv)
 
 @[simp] theorem ordinaryQuotientAction_mkQ (G : Subgroup (Equiv.Perm (Fin n))) (f : Fin n → P)
     (hinv : ∀ g : G, ∀ i, MvPolynomial.rename (g : Equiv.Perm (Fin n)) (f i) = f i)

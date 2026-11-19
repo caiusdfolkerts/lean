@@ -2,6 +2,7 @@ module
 
 public import PaperVerification.EulerReduction
 public import Mathlib.LinearAlgebra.Isomorphisms
+public import PalomarDeformedSupport
 
 /-!
 # Euler reduction when the coefficient map has zero kernel

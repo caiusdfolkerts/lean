@@ -4,6 +4,7 @@ public import PaperVerification.JacobianHilbertBasis
 public import PaperVerification.JacobianHilbertDefect
 public import PaperVerification.HomogeneousQuotientBasis
 public import PaperVerification.HilbertTowerCount
+public import PalomarDeformedSupport
 
 /-!
 # The full scalar exceptional Hilbert-series formula

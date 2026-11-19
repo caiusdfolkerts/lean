@@ -1,6 +1,7 @@
 module
 
 public import PaperVerification.PowerExceptionalArtin
+public import PalomarDeformedSupport
 
 /-!
 # All clauses of Theorem 1.1

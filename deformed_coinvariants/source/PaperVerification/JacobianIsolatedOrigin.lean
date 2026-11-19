@@ -7,6 +7,7 @@ public import Mathlib.Tactic.Ring
 public import Mathlib.Analysis.Complex.Basic
 public import Mathlib.Analysis.Complex.Polynomial.Basic
 public import Mathlib.Topology.Algebra.Monoid
+public import PalomarDeformedSupport
 
 /-!
 # Isolated weighted homogeneous critical points give regular gradients

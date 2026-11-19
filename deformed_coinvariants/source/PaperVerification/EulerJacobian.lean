@@ -4,6 +4,7 @@ public import Mathlib.RingTheory.MvPolynomial.EulerIdentity
 public import Mathlib.LinearAlgebra.Span.Defs
 public import Mathlib.Tactic.Ring
 public import Mathlib.Tactic.FieldSimp
+public import PalomarDeformedSupport
 
 /-!
 # Weighted Euler reduction for Jacobian operator images

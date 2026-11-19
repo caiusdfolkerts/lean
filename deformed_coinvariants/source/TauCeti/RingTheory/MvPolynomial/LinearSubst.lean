@@ -9,6 +9,7 @@ public import Mathlib.LinearAlgebra.Matrix.Nondegenerate
 public import Mathlib.RepresentationTheory.Basic
 public import TauCeti.Algebra.MvPolynomial.PDeriv
 public import TauCeti.RingTheory.MvPolynomial.Homogeneous
+public import PalomarDeformedSupport
 
 /-!
 # Linear changes of variables in multivariate polynomials

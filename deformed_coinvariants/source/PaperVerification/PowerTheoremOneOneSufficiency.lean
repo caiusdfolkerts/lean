@@ -2,6 +2,7 @@ module
 
 public import PaperVerification.PowerTheoremTwoTwo
 public import PaperVerification.PowerCoinvariantComparator
+public import PalomarDeformedSupport
 
 /-!
 # The full symmetric-group sufficiency assertion of Theorem 1.1

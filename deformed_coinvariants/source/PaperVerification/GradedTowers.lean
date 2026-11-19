@@ -5,6 +5,7 @@ public import TauCeti.Algebra.Module.GradedModule.DirectSum
 public import TauCeti.Algebra.Module.GradedModule.Shift
 public import Mathlib.Tactic.Abel
 public import Mathlib.RepresentationTheory.Basic
+public import PalomarDeformedSupport
 
 /-!
 # The homogeneous pieces of the complete tower decomposition

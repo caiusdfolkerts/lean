@@ -1,6 +1,7 @@
 module
 
 public import PaperVerification.PowerOriginalRepresentation
+public import PalomarDeformedSupport
 
 /-!
 # The equal-coefficient power-sum comparison

@@ -3,6 +3,7 @@ module
 public import TauCeti.RingTheory.KoszulComplex.Regular
 public import Mathlib.Algebra.BigOperators.Group.Finset.Sigma
 public import Mathlib.Tactic.Ring
+public import PalomarDeformedSupport
 
 /-!
 # Explicit first syzygies of a regular sequence

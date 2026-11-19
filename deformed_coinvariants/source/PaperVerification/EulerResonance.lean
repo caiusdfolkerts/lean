@@ -2,6 +2,7 @@ module
 
 public import PaperVerification.JacobianGrading
 public import PaperVerification.ProjectionQuotient
+public import PalomarDeformedSupport
 
 /-!
 # The single resonant weighted degree

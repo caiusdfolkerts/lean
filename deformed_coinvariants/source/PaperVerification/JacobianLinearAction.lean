@@ -7,6 +7,7 @@ public import TauCeti.RingTheory.MvPolynomial.LinearSubst
 public import TauCeti.RingTheory.MvPolynomial.WeightedHomogeneous
 public import Mathlib.LinearAlgebra.Matrix.Trace
 public import Mathlib.RepresentationTheory.Basic
+public import PalomarDeformedSupport
 
 /-!
 # Naturality under arbitrary invertible linear changes of coordinates
@@ -252,7 +253,7 @@ section GroupAction
 variable {G : Type*} [Group G]
 
 /-- The usual left action on polynomial functions: `g` substitutes `g⁻¹ x`. -/
-def polynomialRepresentation (ρ : G →* GL) : Representation K G P where
+abbrev polynomialRepresentation (ρ : G →* GL) : Representation K G P where
   toFun g := (linearSubst (ρ g⁻¹ : Matrix ι ι K)).toLinearMap
   map_one' := by
     apply LinearMap.ext

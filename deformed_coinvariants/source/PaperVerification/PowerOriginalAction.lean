@@ -3,6 +3,7 @@ module
 public import PaperVerification.PowerOriginalBasis
 public import PaperVerification.PowerPermutationAction
 public import Mathlib.RepresentationTheory.Intertwining
+public import PalomarDeformedSupport
 
 /-!
 # Equivariant transport to the original power operators
@@ -154,15 +155,18 @@ def originalTailQuotientGrading (c : Fin n → K) (lam : K) (m : ℕ)
       diagonalQuotientEquiv_preserves_degree c lam m h d hx,
       (diagonalQuotientEquiv c lam m h).symm_apply_apply x⟩
 
-def originalTailQuotientAction (G : Subgroup (Equiv.Perm (Fin n)))
-    (c : Fin n → K) (lam : K) (m : ℕ)
-    (hfix : ∀ g : G, ∀ i, c ((g : Equiv.Perm (Fin n)) i) = c i) :
-    Representation K G (MvPolynomial (Fin n) K ⧸ originalTailHit c lam m) := by
-  refine QuotientLinearAction.action (polynomialPermutationAction K G)
-    (originalTailHit c lam m) ?_
+/-- Original invariance of the actual quotient relation submodule under the stated permutation action. -/
+theorem palomarOriginalTailAction_preserves (G : Subgroup (Equiv.Perm (Fin n))) (c : Fin n → K) (lam : K) (m : ℕ) (hfix : ∀ g : G, ∀ i, c ((g : Equiv.Perm (Fin n)) i) = c i) :
+    ∀ (g : G) (p : MvPolynomial (Fin n) K), p ∈ originalTailHit c lam m → polynomialPermutationAction K G g p ∈ originalTailHit c lam m := by
   intro g p hp
   change MvPolynomial.rename (g : Equiv.Perm (Fin n)) p ∈ originalTailHit c lam m
   exact rename_mem_originalTailHit (g : Equiv.Perm (Fin n)) c lam (hfix g) m hp
+def originalTailQuotientAction (G : Subgroup (Equiv.Perm (Fin n)))
+    (c : Fin n → K) (lam : K) (m : ℕ)
+    (hfix : ∀ g : G, ∀ i, c ((g : Equiv.Perm (Fin n)) i) = c i) :
+    Representation K G (MvPolynomial (Fin n) K ⧸ originalTailHit c lam m) :=
+  QuotientLinearAction.action (polynomialPermutationAction K G)
+    (originalTailHit c lam m) (palomarOriginalTailAction_preserves G c lam m hfix)
 
 @[simp] theorem originalTailQuotientAction_mkQ (G : Subgroup (Equiv.Perm (Fin n)))
     (c : Fin n → K) (lam : K) (m : ℕ)

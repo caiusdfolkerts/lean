@@ -2,6 +2,7 @@ module
 
 public import PaperVerification.PowerGradedRepresentation
 public import PaperVerification.GradedRepresentationAssembly
+public import PalomarDeformedSupport
 
 /-!
 # The graded representation assertion of Theorem 2.2

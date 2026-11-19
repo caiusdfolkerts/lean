@@ -3,6 +3,7 @@ module
 public import PaperVerification.PowerRegularComparator
 public import PaperVerification.FermionRadical
 public import PaperVerification.FermionCompleteIntersectionLength
+public import PalomarDeformedSupport
 
 /-!
 # The actual complete homogeneous comparator and its length

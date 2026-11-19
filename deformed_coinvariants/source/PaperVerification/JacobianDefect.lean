@@ -3,6 +3,7 @@ module
 public import PaperVerification.JacobianFreeness
 public import PaperVerification.EulerReduction
 public import PaperVerification.EulerResonance
+public import PalomarDeformedSupport
 
 /-!
 # The actual Euler relation space of a Jacobian perturbation
