@@ -82,4 +82,38 @@ theorem complexNormedCommRing_path_eq :
 /-- Changing only a proposition witness cannot change the resulting mathematical value. -/
 theorem propositionWitness_value_eq {P : Prop} {α : Sort u} (f : P → α) (h₁ h₂ : P) :
     f h₁ = f h₂ := by rfl
+/-- The two source real-semiring superclass paths give the same whole record. -/
+theorem realSemiring_path_eq :
+    @CommSemiring.toSemiring ℝ (@CommRing.toCommSemiring ℝ Real.commRing) =
+      @Ring.toSemiring ℝ (@DivisionRing.toRing ℝ Real.instDivisionRing) := by rfl
+/-- The literal zeroth index lies below every cardinality at least three. -/
+theorem zero_lt_of_three_le {n : ℕ} (h : 3 ≤ n) : 0 < n := by omega
+/-- The literal third index lies below every cardinality at least three. -/
+theorem two_lt_of_three_le {n : ℕ} (h : 3 ≤ n) : 2 < n := by omega
+/-- The literal zeroth index lies below every cardinality at least two. -/
+theorem zero_lt_of_two_le {n : ℕ} (h : 2 ≤ n) : 0 < n := by omega
+/-- The literal second index lies below every cardinality at least two. -/
+theorem one_lt_of_two_le {n : ℕ} (h : 2 ≤ n) : 1 < n := by omega
+/-- The exact reversed cardinality identity used by both spectral index maps. -/
+theorem finCard_symm (p : ℕ) : p = Fintype.card (Fin p) := (Fintype.card_fin p).symm
+/-- The real identity matrix is self-adjoint at every dimension. -/
+theorem realIdentitySelfAdjoint (p : ℕ) : IsSelfAdjoint (1 : Matrix (Fin p) (Fin p) ℝ) :=
+  Matrix.isHermitian_one.isSelfAdjoint
+/-- A real vector subspace is free over the real field. -/
+@[instance 2000] theorem submoduleFree (E : Type u) [AddCommGroup E] [Module ℝ E]
+    (S : Submodule ℝ E) : Module.Free ℝ S := by infer_instance
+/-- A subspace of a finite real module is finite. -/
+@[instance 2000] theorem submoduleFinite (E : Type u) [AddCommGroup E] [Module ℝ E]
+    [Module.Finite ℝ E] (S : Submodule ℝ E) : Module.Finite ℝ S := by infer_instance
+/-- A normed real vector subspace inherits its ambient Borel structure. -/
+@[instance 2000] theorem submoduleBorel (E : Type u) [NormedAddCommGroup E] [NormedSpace ℝ E]
+    [MeasurableSpace E] [BorelSpace E] (S : Submodule ℝ E) : BorelSpace S := by infer_instance
+/-- The scalar tower used by the normalized nonnegative density measure. -/
+@[instance 2000] theorem ennrealSelfScalarTower : IsScalarTower ENNReal ENNReal ENNReal := by infer_instance
+/-- The source's real-scalar tower on real matrices. -/
+@[instance 2000] theorem realMatrixSelfScalarTower (n : Type u) :
+    IsScalarTower ℝ ℝ (Matrix n n ℝ) := by infer_instance
+/-- The source's real-scalar tower on complex matrices. -/
+@[instance 2000] theorem complexMatrixSelfScalarTower (n : Type u) :
+    IsScalarTower ℝ ℝ (Matrix n n ℂ) := by infer_instance
 end WishartSharedProof
