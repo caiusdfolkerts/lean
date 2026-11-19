@@ -78,8 +78,8 @@ run_cmd do
           ("readable", Lean.toJson (String.ofList (pretty.toList.take 6000))),
           ("readable_characters", Lean.toJson pretty.length),
           ("readable_truncated", Lean.toJson (decide (6000 < pretty.length))),
-          ("raw", Lean.toJson (String.ofList (raw.toList.take 6000))),
+          ("raw", Lean.toJson (String.ofList (raw.toList.take 500))),
           ("raw_characters", Lean.toJson raw.length),
-          ("raw_truncated", Lean.toJson (decide (6000 < raw.length))),
-          ("type_constants", Lean.toJson consts)]
+          ("raw_truncated", Lean.toJson (decide (500 < raw.length))),
+          ("type_constant_count", Lean.toJson consts.size), ("type_constants_first8", Lean.toJson (consts.take 8))]
         Lean.logInfo m!"{row.compress}"
