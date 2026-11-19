@@ -1,2 +1,0 @@
-module
-public import shared_results.part020_closed_graph_first_power_betti
