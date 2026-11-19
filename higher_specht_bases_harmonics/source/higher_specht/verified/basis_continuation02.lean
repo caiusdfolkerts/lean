@@ -10,6 +10,8 @@ public import Mathlib.Data.Fin.Tuple.Sort
 
 @[expose] public section
 
+universe palomarRepU
+
 section CanonicalSource32
 /- Source: HigherSpecht/StaircaseIndependence.lean -/
 
@@ -3484,14 +3486,14 @@ theorem PermutationStable.rename_mem_iff {I : Ideal (PolynomialRing n R)}
     simpa only [rename_rename, Equiv.symm_comp_self, rename_id_apply] using h
   · exact hI e p
 
-theorem polynomialRename_one (R : Type*) [CommRing R] (n : ℕ) :
+theorem polynomialRename_one (R : Type palomarRepU) [CommRing R] (n : ℕ) :
     (MvPolynomial.rename (1 : Equiv.Perm (Fin n))).toLinearMap =
       (1 : Module.End R (PolynomialRing n R)) := by
   apply LinearMap.ext
   intro p
   exact MvPolynomial.rename_id_apply p
 
-theorem polynomialRename_mul (R : Type*) [CommRing R] (n : ℕ)
+theorem polynomialRename_mul (R : Type palomarRepU) [CommRing R] (n : ℕ)
     (e f : Equiv.Perm (Fin n)) :
     (MvPolynomial.rename (e * f)).toLinearMap =
       ((MvPolynomial.rename e).toLinearMap : Module.End R (PolynomialRing n R)) *
@@ -3500,7 +3502,7 @@ theorem polynomialRename_mul (R : Type*) [CommRing R] (n : ℕ)
   intro p
   exact (MvPolynomial.rename_rename f e p).symm
 
-def polynomialRepresentation (R : Type*) [CommRing R] (n : ℕ) :
+def polynomialRepresentation (R : Type palomarRepU) [CommRing R] (n : ℕ) :
     Representation R (Equiv.Perm (Fin n)) (PolynomialRing n R) where
   toFun e := (MvPolynomial.rename e).toLinearMap
   map_one' := polynomialRename_one R n
@@ -3523,11 +3525,11 @@ def quotientRepresentation (I : Ideal (PolynomialRing n R)) (hI : PermutationSta
     quotientRepresentation I hI e (Ideal.Quotient.mk I p) =
       Ideal.Quotient.mk I (MvPolynomial.rename e p) := rfl
 
-def springerRepresentation (R : Type*) [CommRing R] (μ : YoungDiagram) :
+def springerRepresentation (R : Type palomarRepU) [CommRing R] (μ : YoungDiagram) :
     Representation R (Equiv.Perm (Fin μ.card)) (SpringerRing R μ) :=
   quotientRepresentation (springerIdeal R μ) (permutationStable_untruncatedIdeal μ)
 
-def griffinRepresentation (R : Type*) [CommRing R] (n : ℕ) (μ : YoungDiagram) (s : ℕ) :
+def griffinRepresentation (R : Type palomarRepU) [CommRing R] (n : ℕ) (μ : YoungDiagram) (s : ℕ) :
     Representation R (Equiv.Perm (Fin n)) (GriffinRing R n μ s) :=
   quotientRepresentation (griffinIdeal R n μ s) (permutationStable_griffinIdeal μ s)
 
