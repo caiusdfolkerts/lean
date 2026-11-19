@@ -1,6 +1,5 @@
 module
 public import Mathlib
-
 /-! The roots-and-ramification decomposition of the separated two-fermion quotient. -/
 @[expose] public section
 noncomputable section
@@ -8,28 +7,29 @@ set_option autoImplicit false
 open scoped BigOperators
 namespace PaperVerification.Fermion
 section
-open scoped BigOperators
 open Polynomial
-variable {R M : Type*} [CommRing R] [AddCommGroup M] [Module R M]
-variable {n : ℕ}
+variable {R M : Type*} [CommRing R] [AddCommGroup M] [Module R M] {n : ℕ}
 def moment (x : Fin n → R) (v : Fin n → M) (k : ℕ) : M := ∑ i, x i ^ k • v i
 end
 section
-open scoped BigOperators
 open Polynomial
-variable {R : Type*} [CommRing R]
-variable {n : ℕ}
+variable {R : Type*} [CommRing R] {n : ℕ}
 variable {A : Type*} [Ring A] [Algebra R A]
 def momentIdeal {κ : Type*} (x : Fin n → R) (v : κ → Fin n → A) : TwoSidedIdeal A := TwoSidedIdeal.span (Set.range fun p : κ × ℕ ↦
   moment x (v p.1) p.2)
 end
 section
-open scoped BigOperators TensorProduct
+open scoped TensorProduct
 universe u
 variable (K : Type u) [CommRing K] (n : ℕ)
 abbrev PolynomialRing := MvPolynomial (Fin n) K
 abbrev OddIndex := Fin n ⊕ Fin n
 abbrev OddModule := OddIndex n → K
+theorem polynomialSelfCommute : SMulCommClass K (PolynomialRing K n) (PolynomialRing K n) := by sorry
+theorem polynomialSelfTower : IsScalarTower K (PolynomialRing K n) (PolynomialRing K n) := by sorry
+theorem exteriorSelfCommute : SMulCommClass K (ExteriorAlgebra K (OddModule K n)) (ExteriorAlgebra K (OddModule K n)) := by sorry
+theorem exteriorSelfTower : IsScalarTower K (ExteriorAlgebra K (OddModule K n)) (ExteriorAlgebra K (OddModule K n)) := by sorry
+attribute [instance 2100] polynomialSelfCommute polynomialSelfTower exteriorSelfCommute exteriorSelfTower
 abbrev SuperRing := PolynomialRing K n ⊗[K] ExteriorAlgebra K (OddModule K n)
 @[reducible] noncomputable instance superQuotientModule (I : TwoSidedIdeal (SuperRing K n)) :
     Module K I.ringCon.Quotient := by
@@ -47,7 +47,7 @@ inductive MomentKind
   deriving DecidableEq
 end
 section
-open scoped BigOperators TensorProduct
+open scoped TensorProduct
 universe u
 variable (K : Type u) [CommRing K] (n : ℕ)
 variable {K n}
@@ -83,13 +83,11 @@ structure PairedData where
   highest_b : ∀ i, HasHighestPower r (b i) i (v i)
 end
 section
-open scoped BigOperators
 variable {K A : Type*} [CommRing K] [CommRing A] [Algebra K A] {n : ℕ}
 def ordinaryMomentIdeal (x : Fin n → A) (β : Fin n → K) (G : Polynomial K) : Ideal A := Ideal.span (Set.range fun k : Fin n ↦ moment x
   (fun i ↦ algebraMap K A (β i) * Polynomial.aeval (x i) G) k)
 end
 section
-open scoped BigOperators
 variable {K : Type*} [CommRing K] {n : ℕ}
 def separatedOrdinaryIdeal (β : Fin n → K) (G : Polynomial K)
     (φ : Fin n → Polynomial K) : Ideal (MvPolynomial (Fin n) K) :=
@@ -99,13 +97,11 @@ end
 end PaperVerification.Fermion
 namespace PaperVerification.Fermion.Endpoint
 section
-open scoped BigOperators
 open Polynomial
 variable {R : Type*} [CommRing R]
 def CoefficientBound (p : R[X]) (h : ℕ) : Prop := ∀ j : ℕ, h ≤ j → p.coeff j = 0
 end
 section
-open scoped BigOperators
 open Polynomial
 variable {K ι : Type*} [Field K]
 local notation "P" => MvPolynomial ι K
@@ -119,7 +115,6 @@ namespace PaperVerification.Fermion.Universal
 section
 set_option backward.isDefEq.respectTransparency false
 open MvPolynomial
-open scoped BigOperators
 inductive Kind
   | phi
   | left
@@ -129,7 +124,6 @@ end
 section
 set_option backward.isDefEq.respectTransparency false
 open MvPolynomial
-open scoped BigOperators
 variable {K : Type*} [CommRing K] {n : ℕ}
 def degree (d : PairedData (K := K) (n := n)) : Kind → Fin n → ℕ
   | .phi,i => d.r i
@@ -168,6 +162,19 @@ section
 open scoped TensorProduct
 variable (R S A : Type*) [CommRing R] [CommRing S] [Ring A]
   [Algebra R S] [Algebra R A]
+section
+variable (R S : Type*) [CommRing R] [CommRing S] [Algebra R S] {n : ℕ}
+instance superQuotientTensorRing (I : TwoSidedIdeal (SuperRing R n)) :
+    Ring (S ⊗[R] I.ringCon.Quotient) := by
+  exact Algebra.TensorProduct.instRing (R := R) (A := S) (B := I.ringCon.Quotient)
+theorem superQuotientTensorRing_formula (I : TwoSidedIdeal (SuperRing R n)) :
+    superQuotientTensorRing R S I = Algebra.TensorProduct.instRing (R := R) (A := S) (B := I.ringCon.Quotient) := by sorry
+instance superQuotientTensorAlgebra (I : TwoSidedIdeal (SuperRing R n)) :
+    Algebra S (S ⊗[R] I.ringCon.Quotient) := by
+  exact Algebra.TensorProduct.leftAlgebra (R := R) (S := S) (A := S) (B := I.ringCon.Quotient)
+theorem superQuotientTensorAlgebra_formula (I : TwoSidedIdeal (SuperRing R n)) :
+    superQuotientTensorAlgebra R S I = Algebra.TensorProduct.leftAlgebra (R := R) (S := S) (A := S) (B := I.ringCon.Quotient) := by sorry
+end
 def tensorTwoSidedIdeal (I : TwoSidedIdeal A) : TwoSidedIdeal (S ⊗[R] A) := TwoSidedIdeal.map (Algebra.TensorProduct.includeRight : A
   →ₐ[R] S ⊗[R] A).toRingHom I
 abbrev TensorTwoSidedQuotient (I : TwoSidedIdeal A) := (tensorTwoSidedIdeal R S A I).ringCon.Quotient
@@ -324,7 +331,7 @@ def basisDegreeGradedAlgebra (b : Module.Basis ι R A) (degree : ι → Γ)
         exact (basisDegreePart b degree (m+n)).smul_mem r ih
 end
 section
-open scoped Classical BigOperators
+open scoped Classical
 variable {A ι Γ : Type*} [CommRing A] [Fintype ι] [LinearOrder ι]
   [AddCommMonoid Γ] [DecidableEq Γ]
 def exteriorWordDegree (w : ι → Γ) (T : Finset ι) : Γ := ∑ i∈T,w i
@@ -445,7 +452,6 @@ def restrictGradedAlgebra : GradedAlgebra (restrictGradedPart (R := R) piece) :=
   n).restrictScalars R))
 end
 section
-open scoped BigOperators
 variable {R A Γ : Type*} [CommRing R] [Ring A] [Algebra R A]
   [AddMonoid Γ] [DecidableEq Γ]
 variable (part : Γ → Submodule R A) [GradedAlgebra part]
@@ -472,7 +478,7 @@ end
 section
 set_option backward.isDefEq.respectTransparency false
 open Polynomial
-open scoped BigOperators Classical
+open scoped Classical
 variable {F : Type*} [Field F] {n : ℕ}
 structure SeparatedOrdinaryData (F : Type*) [Field F] (n : ℕ) where
   beta : Fin n → F
@@ -488,7 +494,7 @@ end PaperVerification.Fermion
 namespace PaperVerification.Fermion.SeparatedOrdinaryData
 set_option backward.isDefEq.respectTransparency false
 open Polynomial
-open scoped BigOperators Classical
+open scoped Classical
 variable {F : Type*} [Field F] {n : ℕ}
 variable (d : SeparatedOrdinaryData F n)
 abbrev Ordinary := MvPolynomial (Fin n) F ⧸ separatedOrdinaryIdeal d.beta d.G d.phi
@@ -507,7 +513,7 @@ instance localOrdinary_localRing (rho : d.SupportPoint) : IsLocalRing (d.LocalOr
   IsLocalization.AtPrime.isLocalRing _ (d.pointMaximal rho)
 end PaperVerification.Fermion.SeparatedOrdinaryData
 namespace PaperVerification.Fermion
-open scoped Classical BigOperators
+open scoped Classical
 variable {R ι κ : Type*} [CommRing R] [Fintype ι]
 def clusterPowerMoment (beta : ι → R) (cluster : ι → κ) (r : ι → ℕ) (s : κ → ℕ) (c : κ) (k : ℕ) : MvPolynomial ι R := ∑ i : {i : ι //
   cluster i=c}, MvPolynomial.C (beta i.1)*MvPolynomial.X i.1^(r i.1*(s c+k))
@@ -522,7 +528,7 @@ namespace PaperVerification.Fermion.SeparatedOrdinaryData
 section
 set_option backward.isDefEq.respectTransparency false
 open Polynomial
-open scoped BigOperators Classical
+open scoped Classical
 variable {F : Type*} [Field F] [CharZero F] [IsAlgClosed F] {n : ℕ}
 variable (d : SeparatedOrdinaryData F n) (rho : d.SupportPoint)
 abbrev PointCluster := Set.range (fun i : Fin n ↦ (d.phi i).eval (rho.1 i))
@@ -530,7 +536,7 @@ end
 section
 set_option backward.isDefEq.respectTransparency false
 open Polynomial
-open scoped BigOperators Classical
+open scoped Classical
 variable {F : Type*} [Field F] [CharZero F] [IsAlgClosed F] {n : ℕ}
 variable (d : SeparatedOrdinaryData F n) (rho : d.SupportPoint)
 local instance FermionLocalCoordinates_clusterDecidableEq : DecidableEq (d.PointCluster rho) :=
@@ -544,7 +550,7 @@ end
 end PaperVerification.Fermion.SeparatedOrdinaryData
 namespace PaperVerification.Fermion
 section
-open scoped Classical BigOperators
+open scoped Classical
 inductive LocalOddFamily
   | theta
   | xi
@@ -552,7 +558,7 @@ inductive LocalOddFamily
   deriving DecidableEq
 end
 section
-open scoped Classical BigOperators
+open scoped Classical
 variable {A B ι κ : Type*} [CommRing A] [Ring B] [Algebra A B]
   [Fintype ι] [Fintype κ]
 def clusterOddCurrent (cluster : ι → κ) (z beta : ι → A) (r u v : ι → ℕ)
@@ -571,7 +577,7 @@ end
 section
 set_option backward.isDefEq.respectTransparency false
 open Polynomial
-open scoped Classical BigOperators
+open scoped Classical
 structure SeparatedPairedData (F : Type*) [Field F] (n : ℕ)
     extends SeparatedOrdinaryData F n where
   a : Fin n → Polynomial F
@@ -585,7 +591,7 @@ namespace PaperVerification.Fermion.SeparatedPairedData
 section
 set_option backward.isDefEq.respectTransparency false
 open Polynomial
-open scoped Classical BigOperators
+open scoped Classical
 variable {F : Type*} [Field F] [CharZero F] [IsAlgClosed F] {n : ℕ}
 variable (d : SeparatedPairedData F n)
 variable (rho : d.toSeparatedOrdinaryData.SupportPoint)
@@ -597,7 +603,7 @@ theorem local_exponent_balance (i : Fin n) : d.thetaOrder rho i+d.xiOrder rho i=
 end
 section
 set_option backward.isDefEq.respectTransparency false
-open scoped TensorProduct BigOperators Classical
+open scoped TensorProduct Classical
 variable {F : Type*} [Field F] {n : ℕ}
 variable (d : SeparatedPairedData F n)
 def phiPolynomial (i : Fin n) : PolynomialRing F n := Polynomial.aeval (MvPolynomial.X i) (d.phi i)
@@ -612,6 +618,7 @@ instance superQuotientFieldAlgebra : Algebra F d.SuperQuotient :=
 @[reducible] instance superQuotientFieldModule : Module F d.SuperQuotient :=
   @Algebra.toModule _ _ _ _ d.superQuotientFieldAlgebra
 def superMk : SuperRing F n →ₐ[F] d.SuperQuotient := d.superIdeal.ringCon.mkₐ F
+attribute [local instance 2450] AddMonoidAlgebra.instModule in
 theorem ordinary_scalar_ideal_mem (p : PolynomialRing F n) (hp : p∈separatedOrdinaryIdeal d.beta d.G d.phi) :
   (Algebra.TensorProduct.includeLeft : PolynomialRing F n →ₐ[F] SuperRing F n) p ∈d.superIdeal := by sorry
 def ordinaryToSuper : d.toSeparatedOrdinaryData.Ordinary →ₐ[F] d.SuperQuotient := Ideal.Quotient.liftₐ (separatedOrdinaryIdeal d.beta
@@ -652,7 +659,7 @@ end
 end PaperVerification.Fermion.SeparatedPairedData
 namespace PaperVerification.Fermion
 section
-open scoped Classical BigOperators
+open scoped Classical
 def oddBidegree {ι : Type*} : ι ⊕ ι → ℕ×ℕ := Sum.elim (fun _ ↦ (1,0)) (fun _ ↦ (0,1))
 def oddFamilyBidegree : LocalOddFamily → ℕ×ℕ
   | .theta => (1,0)
@@ -664,7 +671,7 @@ def oddFamilyDegree : LocalOddFamily → ℕ
   | .mixed => 2
 end
 section
-open scoped Classical BigOperators
+open scoped Classical
 variable {A ι κ : Type*} [CommRing A] [Fintype ι] [Fintype κ]
   [LinearOrder (ι⊕ι)]
 abbrev exteriorBigradedPart : ℕ×ℕ → Submodule A (ClusterExterior A ι) := exteriorWeightedPart (A := A) (oddBidegree (ι := ι))
@@ -696,14 +703,14 @@ def clusterOddTotalGrading (cluster : ι → κ) (z beta : ι → A) (r u v : ι
 end
 section
 set_option backward.isDefEq.respectTransparency false
-open scoped Classical BigOperators
+open scoped Classical
 variable {F ι κ : Type*} [Field F] [CharZero F] [Fintype ι] [Fintype κ]
 abbrev HomogeneousClusterAlgebra (beta : ι → F) (cluster : ι → κ) (r : ι → ℕ) (s : κ → ℕ) (u v : ι → ℕ) := ClusterOddQuotient cluster
   (clusterZ beta cluster r s) (fun i ↦ algebraMap F (ClusterOrdinary beta cluster r s) (beta i)) r u v
 end
 section
 set_option backward.isDefEq.respectTransparency false
-open scoped Classical BigOperators
+open scoped Classical
 variable {F ι κ : Type*} [Field F] [CharZero F] [Fintype ι] [Fintype κ]
   [LinearOrder (ι⊕ι)]
   (beta : ι → F) (cluster : ι → κ) (r : ι → ℕ) (s : κ → ℕ) (u v : ι → ℕ)
@@ -729,7 +736,7 @@ attribute [instance] NGradedAlgebra.ring NGradedAlgebra.algebra NGradedAlgebra.g
 end
 section
 set_option backward.isDefEq.respectTransparency false
-open scoped Classical BigOperators TensorProduct
+open scoped Classical TensorProduct
 universe u
 def finiteIndexLinearOrder (ι : Type u) [Fintype ι] : LinearOrder ι := LinearOrder.lift' (Fintype.equivFin ι) (Fintype.equivFin
   ι).injective
@@ -746,7 +753,7 @@ end
 end PaperVerification.Fermion
 namespace PaperVerification.Fermion.ClusterFamilyData
 set_option backward.isDefEq.respectTransparency false
-open scoped Classical BigOperators TensorProduct
+open scoped Classical TensorProduct
 universe u
 variable {F : Type u} [Field F] [CharZero F] {m : ℕ}
   (d : ClusterFamilyData F m)
@@ -785,7 +792,7 @@ structure Bigrading (A : NGradedAlgebra F) where
 attribute [instance] Bigrading.graded
 end PaperVerification.Fermion.NGradedAlgebra
 namespace PaperVerification.Fermion
-open scoped Classical BigOperators
+open scoped Classical
 variable {F ι κ : Type*} [Field F] [CharZero F] [Fintype ι] [Fintype κ]
   [LinearOrder (ι⊕ι)]
   (beta : ι → F) (cluster : ι → κ) (r : ι → ℕ) (s : κ → ℕ) (u v : ι → ℕ)
@@ -833,7 +840,7 @@ def localClusterFamily : ClusterFamilyData F (Fintype.card (d.O.PointCluster rho
 end
 section
 set_option backward.isDefEq.respectTransparency false
-open scoped TensorProduct BigOperators Classical
+open scoped TensorProduct Classical
 variable {F : Type*} [Field F] {n : ℕ} (d : SeparatedPairedData F n)
 local instance (priority := 2250) palomarSelfActionglobalSuperPolynomialBaseEquiv : DistribMulAction d.toSeparatedOrdinaryData.Ordinary d.toSeparatedOrdinaryData.Ordinary := (Semiring.toModule (R := d.toSeparatedOrdinaryData.Ordinary)).toDistribMulAction
 def globalSuperPolynomialBaseEquiv :
@@ -854,7 +861,7 @@ end
 end PaperVerification.Fermion.SeparatedPairedData
 namespace PaperVerification.Fermion
 set_option backward.isDefEq.respectTransparency false
-open scoped Classical BigOperators
+open scoped Classical
 variable {F : Type*} [Field F] {n : ℕ}
   (beta : Fin n → F)
   (hbeta : ∀ U : Finset (Fin n),U.Nonempty → IsUnit (∑ i∈U,beta i))
@@ -878,7 +885,7 @@ def powerSeparatedData : SeparatedPairedData F n where
 end PaperVerification.Fermion
 namespace PaperVerification.Fermion.SeparatedPairedData
 section
-open scoped Classical BigOperators
+open scoped Classical
 variable {F : Type} [Field F] [CharZero F] [IsAlgClosed F] {n : ℕ}
   (d : SeparatedPairedData F n) (rho : d.O.SupportPoint)
   (c : Fin (Fintype.card (d.O.PointCluster rho)))
@@ -930,7 +937,7 @@ end
 end PaperVerification.Fermion.SeparatedPairedData
 namespace PaperVerification.Fermion
 set_option backward.isDefEq.respectTransparency false
-open scoped Classical BigOperators
+open scoped Classical
 variable {F : Type*} [Field F] [CharZero F] {n : ℕ}
   (beta : Fin n → F)
   (hbeta : ∀ U : Finset (Fin n),U.Nonempty → IsUnit (∑ i∈U,beta i))
@@ -984,7 +991,7 @@ def localFactorPairedBigradedPart (g : ℕ×ℕ) :
     p.u p.v p.degree_split g
 end PaperVerification.Fermion.SeparatedPairedData
 namespace PaperVerification.Fermion
-open scoped Classical BigOperators
+open scoped Classical
 theorem localFactorPresentation {F : Type} [Field F] [CharZero F] [IsAlgClosed F] {n : ℕ} (d : SeparatedPairedData F n) : ∀ (rho :
   d.O.SupportPoint) (c : Fin (Fintype.card (d.O.PointCluster rho))), ∃ e : ((d.localClusterFamily rho).factor c).Carrier ≃ₐ[F]
   PairedQuotient (d.localFactorPairedData rho c).beta (d.localFactorPairedData rho c).phi (d.localFactorPairedData rho c).a

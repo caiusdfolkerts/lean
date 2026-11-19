@@ -30,12 +30,21 @@
     "PaperVerification.Fermion.SeparatedPairedData.localFactorIndex_cluster",
     "PaperVerification.Fermion.SeparatedPairedData.localFactor_card_pos",
     "PaperVerification.Fermion.SeparatedPairedData.localFactor_subset_units",
-    "PaperVerification.Fermion.localFactorPresentation"
+    "PaperVerification.Fermion.localFactorPresentation",
+    "PaperVerification.Fermion.polynomialSelfCommute",
+    "PaperVerification.Fermion.polynomialSelfTower",
+    "PaperVerification.Fermion.exteriorSelfCommute",
+    "PaperVerification.Fermion.exteriorSelfTower",
+    "PaperVerification.Fermion.superQuotientTensorRing_formula",
+    "PaperVerification.Fermion.superQuotientTensorAlgebra_formula"
   ],
   "permitted_axioms": [
     "propext",
     "Quot.sound",
     "Classical.choice"
   ],
-  "definition_names": []
+  "definition_names": [
+    "PaperVerification.Fermion.superQuotientTensorRing",
+    "PaperVerification.Fermion.superQuotientTensorAlgebra"
+  ]
 }
