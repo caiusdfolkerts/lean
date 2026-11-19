@@ -694,6 +694,15 @@ private theorem mem_boundaries (x : Cycles (k := k) hE) :
     x ∈ Boundaries hE ↔ x.val ∈ LinearMap.range differential :=
   TwoSidedIdeal.mem_mk' _ _ _ _ _ _ _
 
+-- Keep these canonical structures, but avoid asking specific fresh/source
+-- aliases to unify distinct cycle predicates during this private transport.
+-- The command scope restores every instance immediately after this lemma.
+attribute [-instance] tensorRing tensorAlgebra cyclesRing cyclesAlgebra
+  homologyRing homologyAlgebra sourceCyclesRing sourceCyclesAlgebra
+  sourceHomologyRing sourceHomologyAlgebra
+  FourPapers.ParityDifferential.cyclesRing FourPapers.ParityDifferential.cyclesAlgebra
+  FourPapers.ParityDifferential.homologyRing FourPapers.ParityDifferential.homologyAlgebra in
+set_option diagnostics true in
 private theorem cyclesEquiv_map_boundaries :
     Ideal.map (cyclesEquiv (k := k) hE).toRingEquiv.toRingHom (Boundaries hE).asIdeal =
       (FourPapers.Sublattice.reesKoszulTensorDGA (k := k) (sourceClosed hE)).boundaries.asIdeal := by
@@ -1442,7 +1451,8 @@ private def quotientCyclesEquiv (B : Family V) (a : Exponent V) (p : ℕ) :
     rw [quotientPrevious_val] at hx
     simpa only [quotientHomogeneousPieceEquiv, LinearEquiv.trans_symm,
       LinearEquiv.trans_apply, LinearEquiv.ofEq_symm, LinearEquiv.coe_ofEq_apply,
-      LinearEquiv.submoduleMap_symm_apply, quotientChainsEquiv_zero] using hx⟩
+      LinearEquiv.submoduleMap_symm_apply, ZeroMemClass.coe_zero,
+      quotientChainsEquiv_zero] using hx⟩
   left_inv x := by
     apply Subtype.ext
     exact congrArg Subtype.val ((quotientHomogeneousPieceEquiv (k := k) B a p).symm_apply_apply
@@ -1452,10 +1462,15 @@ private def quotientCyclesEquiv (B : Family V) (a : Exponent V) (p : ℕ) :
     exact (quotientHomogeneousPieceEquiv (k := k) B a p).apply_symm_apply x.val
   map_add' x y := by
     apply Subtype.ext
-    exact (quotientHomogeneousPieceEquiv (k := k) B a p).map_add _ _
+    apply Subtype.ext
+    simpa only [quotientHomogeneousPieceEquiv_val, Submodule.coe_add] using
+      (quotientChainsEquiv (k := k) B p).map_add x.val y.val
   map_smul' r x := by
     apply Subtype.ext
-    exact (quotientHomogeneousPieceEquiv (k := k) B a p).map_smul r _
+    apply Subtype.ext
+    simpa only [quotientHomogeneousPieceEquiv_val, Submodule.coe_smul,
+      RingHom.id_apply] using
+      (quotientChainsEquiv (k := k) B p).map_smul r x.val
 
 private theorem quotientCyclesEquiv_val (B : Family V) (a : Exponent V) (p : ℕ)
     (x : cycles (quotientCoefficientPiece (monomialIdeal k B))

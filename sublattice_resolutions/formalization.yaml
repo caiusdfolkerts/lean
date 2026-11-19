@@ -39,23 +39,21 @@ automation:
 review:
   status: unchecked
   notes: >-
-    Exact726-line Challenge passed canonical elaboration in run44380113477.
-    The first actual canonical API proof smoke passed run44383675339, and
-    the106-line API proof smoke passed run44460937968. Full run44461711589
-    reached Solution and reported22 errors; all22 were recovered without
-    omission. This proof-only repair exposes the existing sourceClosed proof
-    where local instance declarations require public access, pins the actual
-    quotient ideal equality, proves the mixed integral-unit scalar actions,
-    and explicitly transports sums, zero, previous differentials and inverse
-    algebra maps. The138-line canonical actual-proof smoke passed
-    run44467525676/source71add66f, including the mixed ideal/ModuleCat actions
-    and protected equivalence zero/sum laws. All four input hashes, the entire
-    canonical manifest, artifact and bounded-log hashes were checked; no proof
-    holes or uses-sorry warnings occurred. All28 target headers, Challenge,
-    original sources, dependency pins and heartbeat limits remain unchanged.
-    The repaired2388-line Solution is unbuilt. These API checks do not establish
-    the full source instance inventory, complete Solution, Comparator or NanoDa.
-    No registry or peer-review pass is claimed.
+    Exact726-line Challenge passed canonical elaboration. Canonical actual API
+    proofs passed runs44383675339,44460937968 and44467525676. The latter proves
+    the mixed ideal/ModuleCat scalar actions and protected equivalence laws.
+    Full run44469097025 reduced the remaining Solution failures to five, with
+    no omitted or truncated errors. Three quotient-cycle coercion goals now
+    use explicit underlying-chain linearity and the canonical coerced-zero
+    law. The private Rees boundary-map equality disables the fourteen specific
+    fresh/source instance aliases in a command scope, permitting the same
+    canonical Subalgebra/quotient structures to be inferred without comparing
+    distinct cycle predicates. All aliases are restored immediately afterward;
+    no instance definition is removed. This diagnosis of its header timeout
+    remains an inference until full compilation; scoped diagnostics will retain
+    reduction counters if it recurs. No heartbeat limit changes. All28 selected
+    headers, Challenge, original sources and canonical pins remain unchanged.
+    The repaired full Solution, Comparator and kernel replay are unverified.
 fidelity:
   divergences: >-
     Actual polynomial Koszul homology is used as the independent interface for
