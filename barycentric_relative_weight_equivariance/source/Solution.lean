@@ -41,7 +41,7 @@ theorem palomarRelativeWeightEquivariance (j i : ℕ) :
   let C := barycentricRelativeBigradedCohomologyEquiv K hs d hrank Q hQ j n i
   refine ⟨B.trans C, ?_⟩
   intro e h x S
-  change C (B _) S = _ (C (B x) S)
-  rw [show B _ = _ from originalRelativeAssociatedBigradedHomology_equivariant K d e Q h hs hQ hrank j i n x]
-  exact barycentricRelativeBigradedCohomologyEquiv_natural K hs d hrank Q hQ e h j n i (B x) S
+  exact (congrArg (fun y => C y S)
+    (originalRelativeAssociatedBigradedHomology_equivariant K d e Q h hs hQ hrank j i n x)).trans
+    (barycentricRelativeBigradedCohomologyEquiv_natural K hs d hrank Q hQ e h j n i (B x) S)
 end FourPapers.Universal
