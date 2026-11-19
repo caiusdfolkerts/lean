@@ -91,9 +91,14 @@ theorem exists_nonzero_into_pullback
     (i : I) (E : DerivedCategory (X ⥤ Modk)) (K : DerivedCategory (C ⥤ Modk))
     (f : (restriction k e i).mapDerivedCategory.obj E ⟶ K) (nonzero : f ≠ 0) :
     ∃ g : E ⟶ (pull).mapDerivedCategory.obj K, g ≠ 0 := by
-  let equivalence := (e.congrLeft (E := Modk)).mapDerivedCategory
+  let original := e.congrLeft (E := Modk)
+  let derived := (F).mapDerivedCategory
+  let faithful : derived.FullyFaithful := by
+    change original.functor.mapDerivedCategory.FullyFaithful
+    rw [← original.mapDerivedCategory_functor]
+    exact original.mapDerivedCategory.fullyFaithfulFunctor
   let r : (ProductComponent.restriction k i).mapDerivedCategory.obj
-      (equivalence.functor.obj E) ≅ (restriction k e i).mapDerivedCategory.obj E :=
+      (derived.obj E) ≅ (restriction k e i).mapDerivedCategory.obj E :=
     (derivedRestrictionIso k e i).app E
   have nonzeroComponent : r.hom ≫ f ≠ 0 := by
     intro zero
@@ -101,13 +106,13 @@ theorem exists_nonzero_into_pullback
     rw [← cancel_epi r.hom,comp_zero]
     exact zero
   obtain ⟨a,ha⟩ := ProductComponent.exists_nonzero_into_repetition k i
-    (equivalence.functor.obj E) K (r.hom ≫ f) nonzeroComponent
+    (derived.obj E) K (r.hom ≫ f) nonzeroComponent
   let q := (derivedRepetitionIso k e P projection).app K
-  let g := equivalence.fullyFaithfulFunctor.preimage (a ≫ q.inv)
+  let g := faithful.preimage (a ≫ q.inv)
   refine ⟨g,?_⟩
   intro zero
-  have mapped := congrArg equivalence.functor.map zero
-  rw [equivalence.fullyFaithfulFunctor.map_preimage,Functor.map_zero] at mapped
+  have mapped := congrArg derived.map zero
+  rw [faithful.map_preimage,Functor.map_zero] at mapped
   apply ha
   rw [← cancel_mono q.inv,zero_comp]
   exact mapped

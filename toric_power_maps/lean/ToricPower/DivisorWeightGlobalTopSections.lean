@@ -70,10 +70,8 @@ theorem toricResidueSheafMap_chart_top_sections (fan : Fan i)
   rw [← Category.assoc, schemeHom_comp_apply]
   erw [frame]
   erw [toricResidueSheafMap_frame_sections fan nonempty regular b ell hell character cone a]
-  change Scheme.Modules.Hom.app
-    (toricCartierPushforwardChartIso fan nonempty regular b ell hell cone).hom ⊤
-      (D.sheaf.presheaf.map _ (D.sheaf.presheaf.map _ _)) = _
-  rw [addPresheaf_map_map D.sheaf.presheaf]
+  rw [Scheme.Modules.pushforward_obj_presheaf_map]
+  erw [addPresheaf_map_map D.sheaf.presheaf]
   exact toricCartierPushforwardChartIso_top_frame fan nonempty regular b ell hell cone
     (chartPowerRingHom fan cone ell a *
       normalizedToricResidueMonomial fan regular b ell hell character cone)

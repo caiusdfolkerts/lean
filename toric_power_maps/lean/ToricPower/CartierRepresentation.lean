@@ -1,6 +1,8 @@
 module
 
 public import TauCeti.AlgebraicGeometry.CartierDivisor.Representation
+public import TauCeti.AlgebraicGeometry.Modules.RationalEmbedding
+import all TauCeti.AlgebraicGeometry.Modules.RationalEmbedding
 
 /-!
 # Actual Cartier representation with a chosen dense trivialization
@@ -30,13 +32,24 @@ variable {X : Scheme.{u}} [IrreducibleSpace X] (M : X.Modules)
   (e : SheafOfModules.free (R := X.ringCatSheaf.over U) PUnit ≅ M.over U)
   (hU : Dense (U : Set X))
 
+/-- Literal normalization formula for the actual canonical rationalFunction.
+The canonical module keeps this unfolding lemma private; this local proof
+retains its exact definition, open restrictions, chosen coordinate and germ. -/
+private lemma rationalFunction_apply_compat (V : X.Opens) [Nonempty V]
+    [Nonempty (V ⊓ U : X.Opens)] (sectionValue : Γ(M, V)) :
+    rationalFunction M e hU V sectionValue = X.germToFunctionField (V ⊓ U)
+      (trivializationCoordinate M e (homOfLE (inf_le_right : V ⊓ U ≤ U))
+        (M.presheaf.map (homOfLE (inf_le_left : V ⊓ U ≤ V)).op sectionValue)) := by
+  rw [trivializationCoordinate_apply]
+  rfl
+
 /-- Reading the basis section in the very same chosen rational
 trivialization gives the rational function one. -/
 theorem rationalFunction_trivializationGenerator_self [Nonempty U] :
     rationalFunction M e hU U (trivializationGenerator M e) = 1 := by
   have : Nonempty (U ⊓ U : X.Opens) := by
     simpa only [inf_idem] using (inferInstance : Nonempty U)
-  rw [rationalFunction_apply]
+  rw [rationalFunction_apply_compat]
   have hi : (homOfLE (inf_le_left : U ⊓ U ≤ U)) =
       homOfLE (inf_le_right : U ⊓ U ≤ U) := Subsingleton.elim _ _
   rw [hi, trivializationCoordinate_map_trivializationGenerator, map_one]

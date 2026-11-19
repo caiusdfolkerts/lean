@@ -1,6 +1,7 @@
 module
 
 public import ToricPower.DivisorWeightAdditive
+import all TauCeti.Algebra.Category.ModuleCat.Sheaf.TensorProduct.Monoidal
 
 /-!
 # Tensor multiplication intertwines the actual monomial maps
@@ -84,6 +85,7 @@ theorem schemeTensorSection_eq_sheafification (M N : X.Modules) (U : X.Opens)
           (s ⊗ₜ[X.sheaf.obj.obj (op U)] t)) := by
   unfold schemeTensorSection
   erw [TauCeti.SheafOfModules.forget_μ X.sheaf M N]
+  unfold TauCeti.SheafOfModules.sheafificationForgetAdjunction
   rfl
 
 variable [IsIntegral X]

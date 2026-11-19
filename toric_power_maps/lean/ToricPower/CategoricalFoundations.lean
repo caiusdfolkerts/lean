@@ -385,26 +385,44 @@ theorem mapDerivedCategory_comp (τ : F ⟶ G) (σ : G ⟶ H) :
     mapHomologicalComplex_comp, CategoryTheory.Functor.map_comp, Category.assoc,
     Iso.inv_hom_id_app_assoc]
 
+/-- The canonical inclusion isomorphisms transport the actual derived
+components to the underlying objects of the canonical bounded functors. -/
+noncomputable def mapBoundedDerivedCategoryAmbient (τ : F ⟶ G) :
+    F.mapBoundedDerivedCategory ⋙ DerivedCategory.Bounded.ι ⟶
+      G.mapBoundedDerivedCategory ⋙ DerivedCategory.Bounded.ι :=
+  F.mapBoundedDerivedCategoryCompιIso.hom ≫
+    Functor.whiskerLeft DerivedCategory.Bounded.ι τ.mapDerivedCategory ≫
+      G.mapBoundedDerivedCategoryCompιIso.inv
+
 /-- Restriction of the actual derived natural transformation to bounded objects. -/
 noncomputable def mapBoundedDerivedCategory (τ : F ⟶ G) :
     F.mapBoundedDerivedCategory ⟶ G.mapBoundedDerivedCategory where
-  app X := ObjectProperty.homMk (τ.mapDerivedCategory.app X.obj)
-  naturality {_ _} f := ObjectProperty.hom_ext _ (τ.mapDerivedCategory.naturality f.hom)
+  app X := ObjectProperty.homMk ((mapBoundedDerivedCategoryAmbient τ).app X)
+  naturality {_ _} f := ObjectProperty.hom_ext _
+    ((mapBoundedDerivedCategoryAmbient τ).naturality f)
 
-/-- The bounded restriction has exactly the original derived components. -/
+/-- The bounded restriction has exactly the original derived components,
+transported by the canonical inclusion isomorphisms. -/
 @[simp]
 theorem mapBoundedDerivedCategory_app_hom (τ : F ⟶ G)
     (X : DerivedCategory.Bounded A) :
-    (τ.mapBoundedDerivedCategory.app X).hom = τ.mapDerivedCategory.app X.obj := rfl
+    (τ.mapBoundedDerivedCategory.app X).hom =
+      (mapBoundedDerivedCategoryAmbient τ).app X := rfl
 
 @[simp]
 theorem mapBoundedDerivedCategory_id (F : A ⥤ B) [F.Additive]
     [PreservesFiniteLimits F] [PreservesFiniteColimits F] :
     (𝟙 F : F ⟶ F).mapBoundedDerivedCategory = 𝟙 F.mapBoundedDerivedCategory := by
+  have hAmbient : mapBoundedDerivedCategoryAmbient (𝟙 F : F ⟶ F) =
+      𝟙 (F.mapBoundedDerivedCategory ⋙ DerivedCategory.Bounded.ι) := by
+    simp only [mapBoundedDerivedCategoryAmbient,mapDerivedCategory_id,
+      Functor.whiskerLeft_id',Category.id_comp,Category.comp_id,Iso.hom_inv_id]
   apply NatTrans.ext
   funext X
   apply ObjectProperty.hom_ext _
-  exact NatTrans.congr_app (mapDerivedCategory_id F) X.obj
+  rw [mapBoundedDerivedCategory_app_hom,hAmbient]
+  simpa only [NatTrans.id_app,Functor.comp_obj,ObjectProperty.ι_map] using
+    (DerivedCategory.Bounded.ι.map_id (F.mapBoundedDerivedCategory.obj X)).symm
 
 @[simp]
 theorem mapBoundedDerivedCategory_comp (τ : F ⟶ G) (σ : G ⟶ H) :
@@ -413,7 +431,10 @@ theorem mapBoundedDerivedCategory_comp (τ : F ⟶ G) (σ : G ⟶ H) :
   apply NatTrans.ext
   funext X
   apply ObjectProperty.hom_ext _
-  exact NatTrans.congr_app (mapDerivedCategory_comp τ σ) X.obj
+  simp only [NatTrans.comp_app, ObjectProperty.FullSubcategory.comp_hom,
+    mapBoundedDerivedCategory_app_hom, mapBoundedDerivedCategoryAmbient,
+    NatTrans.comp_app, Functor.whiskerLeft_app, mapDerivedCategory_comp,
+    Category.assoc, Iso.inv_hom_id_app_assoc]
 
 end CategoryTheory.NatTrans
 
