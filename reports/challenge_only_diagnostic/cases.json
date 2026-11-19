@@ -8,16 +8,16 @@
       "module": "Challenge",
       "case_dir": "cases/wishart_full20_canonical",
       "original_package": "reports/wishart/full20-canonical",
-      "original_challenge": "reports/wishart/full20-canonical/shared-witness-repair/revision-02/Challenge.lean",
+      "original_challenge": "reports/wishart/full20-canonical/complete-measured-repair/Challenge.lean",
       "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
       "hashes": {
-        "Challenge.lean": "9455c636e1d233bf7ce666416118db9819b9bde13475675b7d7b493918222350",
+        "Challenge.lean": "92740b399d0187ee7b93811bd1c140e8596d8df514e9df31b54a0f213ffb7fbf",
         "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
         "lake-manifest.json": "5619bb28ae7f2972522467eccf712e99876805a4fb0b7298a3c8de5918224147",
         "original-lakefile.toml": "e429ab885c0b86124ac6b748b01715efdede7f476661ead3634e0c69b6521ccb"
       },
-      "challenge_lines": 980,
-      "challenge_bytes": 100923,
+      "challenge_lines": 962,
+      "challenge_bytes": 100906,
       "dependency_pins": [
         {
           "name": "mathlib",
@@ -65,7 +65,7 @@
           "rev": "34d2efffcb6dc8d5f3537cf6a7f88bfaa999ec49"
         }
       ],
-      "diagnostic_class": "complete Wishart20 interface with genuine measured Prop witness normalization; no data holes added",
+      "diagnostic_class": "complete measured literal20interface with full canonical equation constraints",
       "remote_memory_mib": 8192
     },
     {
@@ -73,16 +73,16 @@
       "module": "WishartCommonProofWitnesses",
       "case_dir": "cases/wishart_shared_proof_witnesses",
       "original_package": "reports/wishart/full20-canonical",
-      "original_challenge": "reports/wishart/full20-canonical/shared-witness-repair/WishartCommonProofWitnessesExtended.lean",
+      "original_challenge": "reports/wishart/full20-canonical/shared-witness-repair/WishartCommonProofWitnessesComplete.lean",
       "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
       "hashes": {
         "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
         "lake-manifest.json": "5619bb28ae7f2972522467eccf712e99876805a4fb0b7298a3c8de5918224147",
         "original-lakefile.toml": "e429ab885c0b86124ac6b748b01715efdede7f476661ead3634e0c69b6521ccb",
-        "Challenge.lean": "be86b890c8e7ec84284e3a5993d73b0bf10c6867a640b7d7d5a2113a382f4670"
+        "Challenge.lean": "d7c21ea360d9779df59f671253eb08539f1fa07bae53bf0063ba6c617169f9ee"
       },
-      "challenge_lines": 85,
-      "challenge_bytes": 5989,
+      "challenge_lines": 119,
+      "challenge_bytes": 8492,
       "dependency_pins": [
         {
           "name": "mathlib",
@@ -130,7 +130,7 @@
           "rev": "34d2efffcb6dc8d5f3537cf6a7f88bfaa999ec49"
         }
       ],
-      "diagnostic_class": "genuine canonical proposition witnesses only; no placeholders and no mathematical data supplied",
+      "diagnostic_class": "genuine measured proposition proofs and whole data hierarchy record equalities; no holes",
       "remote_memory_mib": 8192
     }
   ],
