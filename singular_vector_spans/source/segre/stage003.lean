@@ -2089,6 +2089,9 @@ theorem map_symmetricParameterIdeal (A : Matrix (Cell n) D F) :
   funext d
   exact symmetricSegreEquiv_parameter A d
 
+@[expose] public theorem palomarSymmetricParameterTwoSided (A : Matrix (Cell n) D F) : (symmetricParameterIdeal A).IsTwoSided := by infer_instance
+attribute [instance 2400] palomarSymmetricParameterTwoSided
+
 abbrev SymmetricReduction (A : Matrix (Cell n) D F) :=
   SymmetricSegre (F := F) (n := n) ⧸ symmetricParameterIdeal A
 
@@ -2667,6 +2670,9 @@ noncomputable def rigidityMatrix {R : Type*} [CommRing R]
   exact fun e vi =>
     (if vi.1 = (edges e).1 then p (edges e).1 vi.2 - p (edges e).2 vi.2 else 0) -
       (if vi.1 = (edges e).2 then p (edges e).1 vi.2 - p (edges e).2 vi.2 else 0)
+
+@[expose] public theorem palomarFlattenIdentityInvPair : RingHomInvPair (RingHom.id K) (RingHom.id K) := by infer_instance
+attribute [instance 2400] palomarFlattenIdentityInvPair
 
 /-- Flatten the vertex-indexed velocity coordinates into matrix-column
 coordinates. -/

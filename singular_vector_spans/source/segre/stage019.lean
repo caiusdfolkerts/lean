@@ -1952,7 +1952,7 @@ variable (R : Type u) (M : Type v) [CommSemiring R] [AddCommMonoid M] [Module R 
 
 /-- A version of `SymmetricAlgebra.ι` that maps directly into the graded structure. This is
 primarily an auxiliary construction used to provide `gradedAlgebra`. -/
-noncomputable def GradedAlgebra.ι : M →ₗ[R] ⨁ n, homogeneousSubmodule R M n :=
+@[expose] public noncomputable def GradedAlgebra.ι : M →ₗ[R] ⨁ n, homogeneousSubmodule R M n :=
   DirectSum.lof R ℕ (fun n ↦ homogeneousSubmodule R M n) 1 ∘ₗ
     (SymmetricAlgebra.ι R M).codRestrict _ (ι_mem_homogeneousSubmodule R M)
 
@@ -2080,7 +2080,7 @@ variable (R : Type u) (M : Type u) [CommRing R] [AddCommMonoid M] [Module R M]
 
 /-- The structural morphism from the projective spectrum of a symmetric algebra to the
 spectrum of its coefficient ring. -/
-noncomputable def projToSpec : Proj (homogeneousSubmodule R M) ⟶ Spec (.of R) :=
+@[expose] public noncomputable def projToSpec : Proj (homogeneousSubmodule R M) ⟶ Spec (.of R) :=
   Proj.toSpecZero (homogeneousSubmodule R M) ≫
     Spec.map (CommRingCat.ofHom (algebraMap R (homogeneousSubmodule R M 0)))
 

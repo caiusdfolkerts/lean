@@ -3504,6 +3504,9 @@ variable {I D : Type*} [Fintype I] [DecidableEq I] [Nonempty I]
   [Fintype D] [DecidableEq D] {n : I → ℕ}
 variable {F : Type} [Field F]
 
+@[expose] public theorem palomarSymmetricReductionScalarTower (A : Matrix (Cell n) D F) : IsScalarTower F F (SymmetricReduction A) := by infer_instance
+attribute [instance 2400] palomarSymmetricReductionScalarTower
+
 /-- General forms are defined in coordinates of a basis of the entire actual
 first homogeneous piece of the symmetric-tensor quotient. -/
 def GenericSymmetricForms (A : Matrix (Cell n) D F)

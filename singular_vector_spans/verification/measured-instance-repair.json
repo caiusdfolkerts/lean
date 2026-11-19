@@ -1,0 +1,64 @@
+{
+  "status": "applied after canonical receipt and input/log hash validation",
+  "canonical_run": 44496169823,
+  "selection_sha256": "04e8a8731ab39bdf2b93458df2e6ae4898bf718bd19fc3be43fa5076af271bcc",
+  "theorem_count": 51,
+  "changes": [
+    {
+      "path": "Challenge.lean",
+      "before_sha256": "7e80bd1c872c18e92fca3f25bc4376164ec38f1b91f1c90365fa911b33b1a218",
+      "after_sha256": "33b20c8060649bc498fd48a51d0e62bbb082306c00ca964b27bf6c9cd9abda18"
+    },
+    {
+      "path": "modules/SegreVerified/Stage001.lean",
+      "before_sha256": "62680ee4fd4d76f47b67dcaf1067ef8e9acaa4357812229e479b9f095950edde",
+      "after_sha256": "711c9bf5e04ac6eb7341b31c91fbaee8b15b2acd9ea6c3e2157f735c2e858a33"
+    },
+    {
+      "path": "modules/SegreVerified/Stage003.lean",
+      "before_sha256": "749425a1310fd3134a4935e7c6baccc50db37b4ae9ce94a7a5eecfda8e09d42e",
+      "after_sha256": "520a38be243b2c8317be017a36a5deaa5675048549ffc6e5d7296d10d38171bc"
+    },
+    {
+      "path": "modules/SegreVerified/Stage005.lean",
+      "before_sha256": "91c44c06b8a4e6b90bc80f7e3542f1ceef863b76ec2a550c0249d974214fad2b",
+      "after_sha256": "76cf42e61af4b33a856838fe99e8c178108c796990c3c688b7c38b56001189fe"
+    },
+    {
+      "path": "modules/SegreVerified/Stage002.lean",
+      "before_sha256": "522aee731525b0abbea2f542e5f77e2649dc2f099d4f0731947d3212559a7213",
+      "after_sha256": "bbc502eda9ad5eddc74466b1e3c6d473294ec29445d56140f1d917b38bc2c4a3"
+    },
+    {
+      "path": "modules/SegreVerified/Stage019.lean",
+      "before_sha256": "ffe01a009e84e78f2930ffba45eadc6346b190c70beff982aba3280e1d7aca3a",
+      "after_sha256": "c42ed5d794c332a47095894b8aeb23918ca028852e7eb3650ff8ca835ac0ebd6"
+    },
+    {
+      "path": "source/segre/stage001.lean",
+      "before_sha256": "62680ee4fd4d76f47b67dcaf1067ef8e9acaa4357812229e479b9f095950edde",
+      "after_sha256": "711c9bf5e04ac6eb7341b31c91fbaee8b15b2acd9ea6c3e2157f735c2e858a33"
+    },
+    {
+      "path": "source/segre/stage003.lean",
+      "before_sha256": "749425a1310fd3134a4935e7c6baccc50db37b4ae9ce94a7a5eecfda8e09d42e",
+      "after_sha256": "520a38be243b2c8317be017a36a5deaa5675048549ffc6e5d7296d10d38171bc"
+    },
+    {
+      "path": "source/segre/stage005.lean",
+      "before_sha256": "91c44c06b8a4e6b90bc80f7e3542f1ceef863b76ec2a550c0249d974214fad2b",
+      "after_sha256": "76cf42e61af4b33a856838fe99e8c178108c796990c3c688b7c38b56001189fe"
+    },
+    {
+      "path": "source/segre/stage002.lean",
+      "before_sha256": "522aee731525b0abbea2f542e5f77e2649dc2f099d4f0731947d3212559a7213",
+      "after_sha256": "bbc502eda9ad5eddc74466b1e3c6d473294ec29445d56140f1d917b38bc2c4a3"
+    },
+    {
+      "path": "source/segre/stage019.lean",
+      "before_sha256": "ffe01a009e84e78f2930ffba45eadc6346b190c70beff982aba3280e1d7aca3a",
+      "after_sha256": "c42ed5d794c332a47095894b8aeb23918ca028852e7eb3650ff8ca835ac0ebd6"
+    }
+  ],
+  "full_verification_required": true
+}

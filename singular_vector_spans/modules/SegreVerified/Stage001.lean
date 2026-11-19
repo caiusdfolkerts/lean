@@ -2997,7 +2997,7 @@ public theorem lift_rel (hf : ∀ e : Equiv.Perm ι, f.domDomCongr e = f) :
 
 /-- **The universal property of the symmetric tensor power**: a multilinear map that is unchanged
 by permuting its arguments descends to a linear map on the symmetric power. -/
-noncomputable def lift (hf : ∀ e : Equiv.Perm ι, f.domDomCongr e = f) : Sym[R] ι M →ₗ[R] N where
+@[expose] public noncomputable def lift (hf : ∀ e : Equiv.Perm ι, f.domDomCongr e = f) : Sym[R] ι M →ₗ[R] N where
   toFun := (addConGen (Rel R ι M)).lift (PiTensorProduct.lift f).toAddMonoidHom (lift_rel f hf)
   map_add' := map_add _
   map_smul' r x := AddCon.induction_on x fun x => (PiTensorProduct.lift f).map_smul r x
@@ -4139,6 +4139,9 @@ namespace TauCeti.SymmetricAlgebra
 universe u v
 
 variable (R : Type u) (M : Type v) [CommSemiring R] [AddCommMonoid M] [Module R M]
+
+@[expose] public theorem palomarSymmetricSubmoduleAdd : AddSubmonoidClass (Submodule R (SymmetricAlgebra R M)) (SymmetricAlgebra R M) := by infer_instance
+attribute [instance 2400] palomarSymmetricSubmoduleAdd
 
 /-- The degree-`n` homogeneous part of `SymmetricAlgebra R M`: the `n`-th power of the range of
 the canonical generator map. -/

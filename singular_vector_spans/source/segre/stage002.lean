@@ -759,7 +759,7 @@ theorem _root_.SymmetricAlgebra.equivMvPolynomial_isHomogeneous_iff {ι : Type w
   simp
 
 /-- The restriction of the polynomial equivalence induced by `b` to homogeneous components. -/
-noncomputable def homogeneousSubmoduleEquivMvPolynomial {ι : Type w} (b : Basis ι R M) (n : ℕ) :
+@[expose] public noncomputable def homogeneousSubmoduleEquivMvPolynomial {ι : Type w} (b : Basis ι R M) (n : ℕ) :
     homogeneousSubmodule R M n ≃ₗ[R] MvPolynomial.homogeneousSubmodule ι R n :=
   (Submodule.equivMapOfInjective (SymmetricAlgebra.equivMvPolynomial b).toLinearMap
       (SymmetricAlgebra.equivMvPolynomial b).injective _).trans

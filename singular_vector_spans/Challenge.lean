@@ -1,6 +1,12 @@
 module
+public import Lean.Elab.Command
 public import Mathlib
 @[expose] public section
+-- Match the retained source's general polynomial-module constructor.
+attribute [-instance] MvPolynomial.instModuleSelf
+example {K V : Type*} [Field K] :
+    (inferInstance : Module K (MvPolynomial V K)) = MvPolynomial.instModuleSelf := rfl
+
 /-!
 # Singular-vector spans beyond boundary format
 
@@ -121,6 +127,8 @@ namespace SymmetricAlgebra section set_option maxRecDepth 2048 set_option synthI
 theorem ker_map_of_surjective (f : M →ₗ[R] N) (hf : Function.Surjective f) : RingHom.ker (map R f) = Ideal.span (ι R M '' LinearMap.ker f) := by sorry
 end end SymmetricAlgebra
 namespace TauCeti.SymmetricAlgebra section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 universe u v variable (R : Type u) (M : Type v) [CommSemiring R] [AddCommMonoid M] [Module R M]
+theorem palomarSymmetricSubmoduleAdd : AddSubmonoidClass (Submodule R (SymmetricAlgebra R M)) (SymmetricAlgebra R M) := by infer_instance
+attribute [instance 2400] palomarSymmetricSubmoduleAdd
 /-- The degree-`n` homogeneous part of `SymmetricAlgebra R M`: the `n`-th power of the range of the canonical generator map. -/
 abbrev homogeneousSubmodule (n : ℕ) : Submodule R (SymmetricAlgebra R M) := LinearMap.range (SymmetricAlgebra.ι R M) ^ n
 /-- A symmetric-algebra generator is homogeneous of degree one. -/
@@ -392,6 +400,8 @@ noncomputable def symmetricCoordinate (u : Cell n) : SymmetricSegre (F := F) (n 
 noncomputable def symmetricParameter (A : Matrix (Cell n) D F) (d : D) : SymmetricSegre (F := F) (n := n) := ∑ u, A u d • symmetricCoordinate u
 /-- Exact source definition of symmetricParameterIdeal. -/
 noncomputable def symmetricParameterIdeal (A : Matrix (Cell n) D F) : Ideal (SymmetricSegre (F := F) (n := n)) := Ideal.span (Set.range (symmetricParameter A))
+theorem palomarSymmetricParameterTwoSided (A : Matrix (Cell n) D F) : (symmetricParameterIdeal A).IsTwoSided := by infer_instance
+attribute [instance 2400] palomarSymmetricParameterTwoSided
 /-- Exact source definition of SymmetricReduction. -/
 abbrev SymmetricReduction (A : Matrix (Cell n) D F) := SymmetricSegre (F := F) (n := n) ⧸ symmetricParameterIdeal A
 /-- These are the standard ideal-quotient instances on the literal reduction. -/
@@ -418,6 +428,8 @@ noncomputable def rigidityMatrix {R : Type*} [CommRing R] (p : Matrix V I R) (ed
   exact fun e vi =>
     (if vi.1 = (edges e).1 then p (edges e).1 vi.2 - p (edges e).2 vi.2 else 0) -
       (if vi.1 = (edges e).2 then p (edges e).1 vi.2 - p (edges e).2 vi.2 else 0)
+theorem palomarFlattenIdentityInvPair : RingHomInvPair (RingHom.id K) (RingHom.id K) := by infer_instance
+attribute [instance 2400] palomarFlattenIdentityInvPair
 /-- Flatten the vertex-indexed velocity coordinates into matrix-column coordinates. -/
 def flattenVelocity : (V → I → K) ≃ₗ[K] (V × I → K) where
   toFun u vi := u vi.1 vi.2
@@ -487,6 +499,8 @@ noncomputable def kernelDefect (k : ℕ) (n : Fin k → ℕ) : ℕ := by
     else 0
 end end PaperVerification.Segre.Principal
 namespace PaperVerification.Segre.SymmetricPrincipal section set_option maxRecDepth 2048 set_option autoImplicit false set_option backward.isDefEq.respectTransparency false set_option synthInstance.maxHeartbeats 100000 open PaperVerification.Segre.Staircase PaperVerification.Segre.Monomials PaperVerification.Segre.RankParameters PaperVerification.Segre.SymmetricRealization variable {I D : Type*} [Fintype I] [DecidableEq I] [Nonempty I] [Fintype D] [DecidableEq D] {n : I → ℕ} variable {F : Type} [Field F]
+theorem palomarSymmetricReductionScalarTower (A : Matrix (Cell n) D F) : IsScalarTower F F (SymmetricReduction A) := by infer_instance
+attribute [instance 2400] palomarSymmetricReductionScalarTower
 /-- General forms are defined in coordinates of a basis of the entire actual first homogeneous piece of the symmetric-tensor quotient. -/
 def GenericSymmetricForms (A : Matrix (Cell n) D F) (P : symmetricActualPiece A 1 → Prop) : Prop := ∃ b : Module.Basis (Fin (Module.finrank F (symmetricActualPiece A 1))) F (symmetricActualPiece A 1), ∃ h : MvPolynomial (Fin (Module.finrank F (symmetricActualPiece A 1))) F, h≠0 ∧ ∀ c : Fin (Module.finrank F (symmetricActualPiece A 1)) → F, MvPolynomial.eval c h≠0 → P (∑ i,c i • b i)
 /-- The same literal symmetric-tensor theorem with maximal rank expressed as the minimum of the two actual homogeneous dimensions. Their finiteness comes from the quotient certificate and is not an extra hypothesis. -/
@@ -711,7 +725,7 @@ instance isMaximal_toIdeal_irrelevant (K : Type*) [Field K] [Module K M] : (Homo
 end end TauCeti.SymmetricAlgebra
 namespace TauCeti.SymmetricAlgebra section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open _root_.CategoryTheory _root_.AlgebraicGeometry universe u variable (R : Type u) (M : Type u) [CommRing R] [AddCommMonoid M] [Module R M]
 /-- The structural morphism from the projective spectrum of a symmetric algebra to the spectrum of its coefficient ring. -/
-noncomputable def projToSpec : Proj (homogeneousSubmodule R M) ⟶ Spec (.of R) := Proj.toSpecZero (homogeneousSubmodule R M) ≫ Spec.map (CommRingCat.ofHom (algebraMap R (homogeneousSubmodule R M 0)))
+noncomputable def projToSpec : @Quiver.Hom Scheme (inferInstance : CategoryTheory.Category Scheme).toCategoryStruct.toQuiver (Proj (homogeneousSubmodule R M)) (Spec (.of R)) := Proj.toSpecZero (homogeneousSubmodule R M) ≫ Spec.map (CommRingCat.ofHom (algebraMap R (homogeneousSubmodule R M 0)))
 /-- The coefficient morphism is `Proj.toSpecZero` followed by the scalar identification. -/
 theorem projToSpec_def : projToSpec R M = Proj.toSpecZero (homogeneousSubmodule R M) ≫ Spec.map (CommRingCat.ofHom (algebraMap R (homogeneousSubmodule R M 0))) := by sorry
 /-- Exact source definition of isIso_scalarSpecMap. -/
@@ -870,9 +884,16 @@ theorem three_factor_sqrt_bound (e : ℕ) (he : 2 ≤ e) (n : Fin 3 → ℕ) (hn
 /-- The exact real-root bound following Theorem 6.3 for every number of smaller factors at least four, with the full generic projective conclusion. The root and ceiling are actual real operations, not asymptotic estimates. -/
 theorem many_factor_root_bound (k e : ℕ) (hk : 4 ≤ k) (he : 2 ≤ e) (n : Fin k → ℕ) (hn : ∀ i, e + 2 * ⌈(((k + 1) * e : ℕ) : ℝ) ^ (1 / (((k + 1) / 2 : ℕ) : ℝ))⌉₊ + 4 * k - 2 ≤ n i) (ρ : Equiv.Perm (Option (Fin k))) : GenericProjectiveFullSpan K (fun i => FullFactor n (Option (Fin (sideSum n + e))) (ρ i)) := by sorry
 end end PaperVerification.Segre.OriginalProjectivePrincipal
+namespace PaperVerification.Segre.ThreeChainCores
+open PaperVerification.Segre.Staircase PaperVerification.Segre.RankParameters
+/-- Literal decidability construction from Stage004, used by the source Proposition 5.1. -/
+def chainGraph_decidable {J : Type*} [Fintype J] [DecidableEq J] (n : J → ℕ) : DecidableRel (chainGraph n).Adj :=
+  fun _ _ => inferInstanceAs (Decidable (_ ∧ (_ ∨ _)))
+end PaperVerification.Segre.ThreeChainCores
 namespace PaperVerification.Segre.RigidityPrincipal section set_option maxRecDepth 2048 set_option synthInstance.maxHeartbeats 200000 open scoped BigOperators TensorProduct set_option autoImplicit false open _root_.Matrix PaperVerification.Segre.RigidityRank PaperVerification.Segre.GenericRigidity PaperVerification.Segre.Staircase PaperVerification.Segre.RankParameters variable {K I V : Type*} [Field K] [Fintype I] [DecidableEq I] [Fintype V]
 /-- Proposition 5.1, the nonexceptional case, on an explicitly nonempty open of all actual placements, with no bound on the positive chain lengths. -/
 theorem proposition_5_1_rigid [Infinite K] (k : ℕ) (hk : 3 ≤ k) (n : Fin k → ℕ) (hpos : ∀ i, 1 ≤ n i) (hex : ∀ h : k = 3, ¬ ChainClassification.ExceptionalTriple (fun i => n (Fin.cast h.symm i))) : ∃ f : MvPolynomial (Cell n × Fin (sideSum n + 1)) K, f ≠ 0 ∧ (∃ p : Matrix (Cell n) (Fin (sideSum n + 1)) K, MvPolynomial.eval (flattenVelocity p) f ≠ 0) ∧ ∀ p : Matrix (Cell n) (Fin (sideSum n + 1)) K, MvPolynomial.eval (flattenVelocity p) f ≠ 0 → affineSpan K (Set.range p) = ⊤ ∧ InfinitesimallyRigidOn (chainGraph n) p Set.univ := by sorry
+attribute [local instance] PaperVerification.Segre.ThreeChainCores.chainGraph_decidable in
 /-- Proposition 5.1, all three exceptional triples and every factor order, on an explicitly nonempty open of actual stress-free placements. -/
 theorem proposition_5_1_stress_free [Infinite K] (n : Fin 3 → ℕ) (hex : ChainClassification.ExceptionalTriple n) : ∃ f : MvPolynomial (Cell n × Fin (sideSum n + 1)) K, f ≠ 0 ∧ (∃ p : Matrix (Cell n) (Fin (sideSum n + 1)) K, MvPolynomial.eval (flattenVelocity p) f ≠ 0) ∧ ∀ p : Matrix (Cell n) (Fin (sideSum n + 1)) K, MvPolynomial.eval (flattenVelocity p) f ≠ 0 → affineSpan K (Set.range p) = ⊤ ∧ 2 * (rigidityMatrix p (endpoints (chainGraph n))).rank = Fintype.card (Edges (chainGraph n)) ∧ ¬ InfinitesimallyRigidOn (chainGraph n) p Set.univ := by sorry
 end end PaperVerification.Segre.RigidityPrincipal

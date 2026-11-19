@@ -1,62 +1,64 @@
 version: v0.4
 project:
   name: Singular-vector spans beyond boundary format
-  description: >-
-    The first multiplication map of every positive-format Segre ring has
-    maximal rank in every characteristic, with the exact exceptional kernel
-    dimensions. This determines every first-excess singular-vector span
-    defect, including factor permutations, matrix and projective-line families.
-    A generic tensor of every format lies in the ordinary span of its singular
-    pure tensors. Positive products of chains have the complete stated rigidity
-    and stress-free classifications. Full-span criteria hold at arbitrary
-    excess for sufficiently many or sufficiently large factors, with the exact
-    explicit thresholds and their asymptotic growth.
-  authors: [Caius Folkerts]
-  responsible_maintainers: [Caius Folkerts]
+  description: The first multiplication map of every positive-format Segre ring has maximal rank in every
+    characteristic, with the exact exceptional kernel dimensions. This determines every first-excess singular-vector
+    span defect, including factor permutations, matrix and projective-line families. A generic tensor
+    of every format lies in the ordinary span of its singular pure tensors. Positive products of chains
+    have the complete stated rigidity and stress-free classifications. Full-span criteria hold at arbitrary
+    excess for sufficiently many or sufficiently large factors, with the exact explicit thresholds and
+    their asymptotic growth.
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
   license: Apache-2.0
 sources:
-  - type: article
-    title: Singular-vector spans beyond boundary format
-    authors: [Caius Folkerts]
-    identifier: paper.pdf
-    relationship: formalizes
-    note: >-
-      Theorem 1.1 and its nonemptiness and small-format clauses; Corollary 1.2
-      and all factor orders; Theorem 1.3 including finite sums and empty format;
-      Proposition 5.1; Theorems 6.1 and 6.3; final explicit and asymptotic bounds.
+- type: article
+  title: Singular-vector spans beyond boundary format
+  authors:
+  - Caius Folkerts
+  identifier: paper.pdf
+  relationship: formalizes
+  note: Theorem 1.1 and its nonemptiness and small-format clauses; Corollary 1.2 and all factor orders;
+    Theorem 1.3 including finite sums and empty format; Proposition 5.1; Theorems 6.1 and 6.3; final explicit
+    and asymptotic bounds.
 classification:
-  arxiv: [math.AG, math.CO]
-  msc2020: [14M12, 15A69, 52C25]
+  arxiv:
+  - math.AG
+  - math.CO
+  msc2020:
+  - 14M12
+  - 15A69
+  - 52C25
 automation:
   methods:
-    - method: agent
-      tool_setup: OpenAI Codex with GPT-6.1 Sol, preparing Palomar packaging.
-      notes: >-
-        The supplied paper discloses GPT-6 Astra, GPT-5.6 Sol, and Kimi K3
-        assistance in developing the proofs. Prior prompt history was not
-        reconstructed. Packaging preserves original source and adds independent
-        statements with their exact custom-definition semantics.
+  - method: agent
+    tool_setup: OpenAI Codex with GPT-6.1 Sol, preparing Palomar packaging.
+    notes: The supplied paper discloses GPT-6 Astra, GPT-5.6 Sol, and Kimi K3 assistance in developing
+      the proofs. Prior prompt history was not reconstructed. Packaging preserves original source and
+      adds independent statements with their exact custom-definition semantics.
 review:
   status: unchecked
-  notes: >-
-    The independent Challenge passed pinned rc2 remote elaboration at diagnostic
-    commit 61cecd364f2d5d41817bc7e362421de6015daf51, run 44351576861. The 22
-    principal results remain separate from 29 supporting theorem obligations.
-    This is a statement-interface check with intentional placeholders, not a
-    substantive Solution build, Comparator or independent kernel result; those
-    full checks remain pending. The first full run failed because the ordinary
-    package omitted the original -t0 argument. That argument is now restored
-    with one worker and synchronous elaboration; all source audit assertions
-    remain unchanged.
+  notes: 'Preparation update 2026-11-19T09:31:48.521704+00:00: The measured constructor support candidate
+    passed canonical elaboration in run44496169823 at0f726777d205b13956f069c9bd55a10c9b08b1d7, including
+    an rfl check that the polynomial-module instance has its original value. Four actual class proofs,
+    exact category/quiver instance annotations and the literal stress-free graph decidability construction
+    address measured comparison differences. Source visibility changes expose four existing data constructors;
+    source formulas and proof bodies are retained. All51 selected statements and all original supplied-definition
+    obligations are retained. This is not a full verification claim: the subsequent exact-commit full
+    report is authoritative. Historical preparation note: The independent Challenge passed pinned rc2
+    remote elaboration at diagnostic commit 61cecd364f2d5d41817bc7e362421de6015daf51, run 44351576861.
+    The 22 principal results remain separate from 29 supporting theorem obligations. This is a statement-interface
+    check with intentional placeholders, not a substantive Solution build, Comparator or independent kernel
+    result; those full checks remain pending. The first full run failed because the ordinary package omitted
+    the original -t0 argument. That argument is now restored with one worker and synchronous elaboration;
+    all source audit assertions remain unchanged.'
 fidelity:
-  notes: >-
-    The principal rank statement uses the actual symmetric-power Segre quotient,
-    with its actual homogeneous pieces and multiplication. Tensor conclusions
-    use ordinary finite tensor products, bilinear contractions and projective
-    spans. No rank, regularity, reducedness, or characteristic surrogate is
-    substituted. Supporting embedded-scheme lemmas remain in the substantive
-    source but are not separate Comparator targets. Original module identities
-    are materialized as regular unchanged copies under modules/ using the
-    supplied verification/source_index.json; the original lowercase source is
-    retained. Source snapshot: caiusdfolkerts/research at
-    e0696fddcd3d10b5d6461e62e9b2f02c4195be37.
+  notes: 'The principal rank statement uses the actual symmetric-power Segre quotient, with its actual
+    homogeneous pieces and multiplication. Tensor conclusions use ordinary finite tensor products, bilinear
+    contractions and projective spans. No rank, regularity, reducedness, or characteristic surrogate is
+    substituted. Supporting embedded-scheme lemmas remain in the substantive source but are not separate
+    Comparator targets. Original module identities are materialized as regular unchanged copies under
+    modules/ using the supplied verification/source_index.json; the original lowercase source is retained.
+    Source snapshot: caiusdfolkerts/research at e0696fddcd3d10b5d6461e62e9b2f02c4195be37.'
