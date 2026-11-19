@@ -805,8 +805,8 @@ lemma map_dAlternating_apply (f : M →ₗ[R] N) (φ' : N →ₗ[R] R) (h : φ' 
       simp [map_sum, map_smul, exteriorPower.map_apply_ιMulti]
 
 lemma map_d_comm (f : M →ₗ[R] N) (φ' : N →ₗ[R] R) (h : φ' ∘ₗ f = φ) (i : ℕ) :
-    ModuleCat.ofHom (exteriorPower.map (i + 1) f) ≫ ModuleCat.ofHom (koszulComplex.d φ' i) =
-      ModuleCat.ofHom (koszulComplex.d φ i) ≫ ModuleCat.ofHom (exteriorPower.map i f) := by
+    ModuleCat.ofHom.{max v u, u} (exteriorPower.map (i + 1) f) ≫ ModuleCat.ofHom.{max v u, u} (koszulComplex.d φ' i) =
+      ModuleCat.ofHom.{max v u, u} (koszulComplex.d φ i) ≫ ModuleCat.ofHom.{max v u, u} (exteriorPower.map i f) := by
   ext v
   simp [koszulComplex.d, map_dAlternating_apply (φ := φ) (f := f) (φ' := φ') h]
 

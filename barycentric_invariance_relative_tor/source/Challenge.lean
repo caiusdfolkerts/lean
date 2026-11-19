@@ -39,8 +39,8 @@ namespace koszulComplex
 open Category Limits Module ExteriorAlgebra
 variable {R : Type u} [CommRing R] {M : Type v} [AddCommGroup M] [Module R M] (φ : M →ₗ[R] R) {N : Type v} [AddCommGroup N] [Module R N]
 noncomputable def ofList (l : List R) := koszulComplex (Fintype.linearCombination R l.get)
-lemma map_d_comm (f : M →ₗ[R] N) (φ' : N →ₗ[R] R) (h : φ' ∘ₗ f = φ) (i : ℕ) : ModuleCat.ofHom (exteriorPower.map (i + 1) f) ≫ ModuleCat.ofHom (koszulComplex.d φ' i) =
-  ModuleCat.ofHom (koszulComplex.d φ i) ≫ ModuleCat.ofHom (exteriorPower.map i f) := by sorry
+lemma map_d_comm (f : M →ₗ[R] N) (φ' : N →ₗ[R] R) (h : φ' ∘ₗ f = φ) (i : ℕ) : ModuleCat.ofHom.{max v u, u} (exteriorPower.map (i + 1) f) ≫ ModuleCat.ofHom.{max v u, u} (koszulComplex.d φ' i) =
+  ModuleCat.ofHom.{max v u, u} (koszulComplex.d φ i) ≫ ModuleCat.ofHom.{max v u, u} (exteriorPower.map i f) := by sorry
 noncomputable def map (f : M →ₗ[R] N) (φ' : N →ₗ[R] R) (h : φ' ∘ₗ f = φ) : koszulComplex φ ⟶ koszulComplex φ' := ChainComplex.ofHom
     (fun i ↦ ModuleCat.ofHom (exteriorPower.map i f))
     (fun i ↦ by simpa [d_eq_d] using! map_d_comm φ f φ' h i)
@@ -315,6 +315,8 @@ def faceRelations (hs : IsSimplicialPoset P) : Set (FacePolynomial (P := P) K) :
   faceSymbol K (faceMeetBelow hs p q w hpw hqw) * ∑ u ∈ minimalCommonUppers p q, faceSymbol K u) ∨ (∃ p q, (¬ ∃ w, p ≤ w ∧ q ≤ w) ∧ f = faceSymbol K p * faceSymbol K q)}
 def faceIdeal (hs : IsSimplicialPoset P) : Ideal (FacePolynomial (P := P) K) := Ideal.span (faceRelations K hs)
 abbrev FaceRing (hs : IsSimplicialPoset P) := FacePolynomial (P := P) K ⧸ faceIdeal K hs
+def palomarFaceRingModule (hs : IsSimplicialPoset P) : Module K (FaceRing K hs) := inferInstance
+attribute [instance 2400] palomarFaceRingModule
 def faceRingGenerator (hs : IsSimplicialPoset P) (p : P) : FaceRing K hs := Ideal.Quotient.mk (faceIdeal K hs) (faceSymbol K p)
 def faceRankParameter (hs : IsSimplicialPoset P) (i : ℕ) : FaceRing K hs := ∑ p ∈ univ.filter (fun p : P => faceRank p = i), faceRingGenerator K hs p
 def faceParameterAction (hs : IsSimplicialPoset P) (d : ℕ) : MvPolynomial (Fin d) K →ₐ[K] FaceRing K hs := MvPolynomial.aeval fun i => faceRankParameter K hs (i.val + 1)
