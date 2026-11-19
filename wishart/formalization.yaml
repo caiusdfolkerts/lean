@@ -45,6 +45,12 @@ review:
   status: unchecked
   notes: >-
     Preparation assessment recorded on 2026-11-19 before full workflow dispatch.
+    Full snapshot 36b8139a0dc35c1c1f9738555b77b33dbfa4f85a subsequently failed
+    Source compilation at the product-Haar support proof, with one retained
+    error and none omitted. This revision proves the missing product
+    translation measurability locally; its exact generic proof passed
+    run 44496902908 with zero placeholders. Measures, all 20 original targets,
+    independent Challenge and Comparator configuration are unchanged.
     Later immutable workflow reports for this exact source snapshot determine
     the subsequent verification outcome; this dated note does not assert it.
     The preceding canonical full snapshot 141c03dd3526da7106331c9a20456f11e53b26e2
@@ -96,6 +102,9 @@ fidelity:
     original-formula equalities provide explicit semantic preservation checks.
     Built-in Lean equation lemmas fully fix 27 mathematical definition values
     whose raw reducibility heights differed; no unrestricted value is supplied.
+    The product-Haar support instance now gives a proved local product
+    translation-measurability record. All three component measures and the
+    exact nested product formula are unchanged.
     Source snapshot is caiusdfolkerts/research at
     e0696fddcd3d10b5d6461e62e9b2f02c4195be37.
 

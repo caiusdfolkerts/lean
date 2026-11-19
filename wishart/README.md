@@ -75,7 +75,12 @@ Preparation record dated 2026-11-19, before full workflow dispatch. Later
 immutable workflow reports for this exact snapshot determine its subsequent
 verification outcome.
 
-The previous full snapshot built the paper proofs and Solution successfully,
+The subsequent 36b8139a full run failed at one product-Haar support instance.
+The missing product translation-measurability proof is now explicit and passed
+the generic canonical test 44496902908 with no placeholders. All component
+measures, the exact product formula, Challenge and theorem selection are unchanged.
+
+The earlier full snapshot built the paper proofs and Solution successfully,
 then failed strict Comparator. The repair retains every original principal
 result and its complete input model. It names only the measured proposition
 witnesses, proves whole superclass-record equalities, and constrains every
