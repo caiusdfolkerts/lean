@@ -1,0 +1,49 @@
+version: v0.4
+project:
+  name: Higher Specht bases for Springer and Δ-Springer rings
+  description: >
+    The prescribed unnormalized higher Specht families form bases over the
+    localization of the integers at the applicable factorial. The Springer
+    statement applies to every diagram. The Griffin statement includes the
+    empty partition under the stated positive exponent bound.
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.CO
+  - math.RT
+  msc2020:
+  - 05E10
+  - 20C30
+sources:
+- type: paper
+  title: Higher Specht bases for Springer and Δ-Springer rings
+  authors:
+  - Caius Folkerts
+  relationship: formalizes
+  author_endorsement: participated
+  url: https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases/paper.pdf
+  note: 'Exact included paper SHA-256: 931c0ee33b94c7a77d373c4040abb40151a8f1cd049b977006df188e31013a0c.
+    Scope and declaration locations are recorded in map.json; novelty is not independently established.'
+automation:
+  methods:
+  - method: agent
+    tool_setup: OpenAI Codex
+    notes: Codex adapted the independent prescribed-family definitions from the core entry
+      and extracted both localized basis statements from the retained proofs.
+  - method: other
+    tool_setup: Historical AI assistance reported in the included paper
+    notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing its proofs.
+      The exact model roles and extent of historical Lean automation have not been reconstructed from
+      the snapshot.
+review:
+  status: unchecked
+  notes: The localized basis selection requires its own full preflight.
+scope:
+  current_selection: Both localized basis clauses of Corollary 8.1 over ℤ[1/n!].
+  known_gaps:
+  - Fixed-copy representations, simultaneous harmonic decompositions, parameter freeness, and fiber geometry are tracked separately.
+  notes: Companion to the selected basis and characteristic-range entry at fb5ab9354a764e61ae08d5e8f631614d1920f776. See map.json for precise declarations.
