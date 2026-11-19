@@ -59,13 +59,13 @@ end Wishart
 
 run_cmd do
   let env ← Lean.getEnv
-  for prefix in ["Wishart.SymmetricMatrix", "Wishart.selectedInverseRoot",
+  for namePrefix in ["Wishart.SymmetricMatrix", "Wishart.selectedInverseRoot",
       "Wishart.QuaternionMatrix.complexRepresentation", "Wishart.QuaternionMatrix.sqrt",
       "Wishart.QuaternionMatrix.representationLeftInverse", "Wishart.FieldGaussian.Row",
       "Wishart.FieldGaussian.rowFactorLinearMap", "Wishart.FieldGaussian.rowFactorCLM",
       "Wishart.ComplexMatrix.hermitianLebesgue"] do
     for i in List.range 12 do
-      let name := (prefix ++ "._proof_" ++ toString (i+1)).toName
+      let name := (namePrefix ++ "._proof_" ++ toString (i+1)).toName
       if let some ci := env.find? name then
         let pretty ← Lean.Elab.Command.liftTermElabM do
           return (← Lean.Meta.ppExpr ci.type).pretty
