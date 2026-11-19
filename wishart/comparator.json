@@ -108,7 +108,9 @@
     "WishartVerification.principalMoment_formula",
     "Wishart.Spectral.coordinateSpectrum_formula",
     "Wishart.normalizedCompression_formula",
-    "Wishart.Theorem53PrincipalTarget_formula"
+    "Wishart.Theorem53PrincipalTarget_formula",
+    "Wishart.SpectralGauge.supportSet.eq_1",
+    "Wishart.normalizedSelectedMatrix.eq_1"
   ],
   "definition_names": [
     "Wishart.QuaternionMatrix.matrixBorelSpace",
@@ -159,7 +161,9 @@
     "WishartVerification.principalMoment",
     "Wishart.Spectral.coordinateSpectrum",
     "Wishart.normalizedCompression",
-    "Wishart.Theorem53PrincipalTarget"
+    "Wishart.Theorem53PrincipalTarget",
+    "Wishart.SpectralGauge.supportSet",
+    "Wishart.normalizedSelectedMatrix"
   ],
   "permitted_axioms": [
     "propext",

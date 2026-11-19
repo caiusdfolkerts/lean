@@ -791,6 +791,7 @@ def factor (i:ι) (X:SymmetricMatrix p):ℝ:=F.outer i (shiftedCompressionDeterm
 def subproduct (J:Finset ι) (X:SymmetricMatrix p):ℝ:=∏ i ∈ J,F.factor Sigma i X
 def moment (n:ℕ) (J:Finset ι):ℝ≥0∞:=∫⁻ X,ENNReal.ofReal (F.subproduct Sigma J X) ∂wishartGramMeasure n Sigma
 def AEConstantFactor (n:ℕ) (i:ι):Prop:=∃ c:ℝ,∀ᵐ X ∂wishartGramMeasure n Sigma,F.factor Sigma i X=c
+omit [DecidableEq ι] in
 theorem AEConstantFactor_formula (n:ℕ) (i:ι) : AEConstantFactor F Sigma n i = (∃ c:ℝ,∀ᵐ X ∂wishartGramMeasure n Sigma,F.factor Sigma i X=c) := by rfl
 def activeProper [Fintype ι] (n:ℕ):Finset ι:=Finset.univ.filter (fun i => F.size i < p ∧ ¬ F.AEConstantFactor Sigma n i)
 end end Wishart.GramGeometricCompressionFamily
@@ -906,3 +907,6 @@ end end Wishart
 namespace Wishart section open scoped Classical BigOperators ENNReal MatrixOrder Matrix.Norms.L2Operator
 theorem Theorem53PrincipalTarget_formula : Theorem53PrincipalTarget = (∀ (p d:ℕ) (n:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℝ) (I:Fin d → Finset (Fin p)) (c:Fin d → ℝ) (h:∀ i,(Fin (Fintype.card (I i)) → ℝ) → ℝ),Sigma.PosDef → (p:ℝ) - 1 < n → (∀ i,(I i).Nonempty) → Pairwise (fun i j => Disjoint (I i) (I j)) → (3 ≤ d ∨ (p:ℝ) ≤ n) → (∀ i,0 ≤ c i) → (∀ i,FiniteConvexIncreasingSymmetric (h i)) → (∀ J,∀ i ∈ J,selectedExtendedBound (nonsingularWishartMeasure n Sigma) (principalLogSpectralFactor Sigma I c h) J i) ∧ (∀ J,productExtendedBound (nonsingularWishartMeasure n Sigma) (principalLogSpectralFactor Sigma I c h) J)) := by rfl
 end end Wishart
+
+#print equations Wishart.SpectralGauge.supportSet
+#print equations Wishart.normalizedSelectedMatrix

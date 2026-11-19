@@ -61,6 +61,7 @@ namespace Wishart section open scoped Classical ENNReal MatrixOrder Matrix.Norms
 theorem inverseDeterminantMoment_formula {p d:ℕ} (β:ℝ) (Omega:Matrix (Fin p) (Fin p) ℝ) (k:Fin d → ℕ) (B:∀ i,Matrix (Fin p) (Fin (k i)) ℝ) (c ν:Fin d → ℝ) (J:Finset (Fin d)) : inverseDeterminantMoment β Omega k B c ν J = (∫ Y,inverseDeterminantProduct Omega k B c ν J Y ∂inverseWishartMeasure β Omega) := by rfl
 end end Wishart
 namespace Wishart.GramGeometricCompressionFamily section open scoped Classical BigOperators ENNReal Matrix MatrixOrder Matrix.Norms.Operator variable {p:ℕ} {ι:Type*} [DecidableEq ι] variable (F:GramGeometricCompressionFamily p ι) (Sigma:Matrix (Fin p) (Fin p) ℝ)
+omit [DecidableEq ι] in
 theorem AEConstantFactor_formula (n:ℕ) (i:ι) : AEConstantFactor F Sigma n i = (∃ c:ℝ,∀ᵐ X ∂wishartGramMeasure n Sigma,F.factor Sigma i X=c) := by rfl
 end end Wishart.GramGeometricCompressionFamily
 namespace Wishart section open scoped Classical ENNReal MatrixOrder Matrix.Norms.L2Operator
@@ -97,3 +98,6 @@ end end Wishart
 namespace Wishart section open scoped Classical BigOperators ENNReal MatrixOrder Matrix.Norms.L2Operator
 theorem Theorem53PrincipalTarget_formula : Theorem53PrincipalTarget = (∀ (p d:ℕ) (n:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℝ) (I:Fin d → Finset (Fin p)) (c:Fin d → ℝ) (h:∀ i,(Fin (Fintype.card (I i)) → ℝ) → ℝ),Sigma.PosDef → (p:ℝ) - 1 < n → (∀ i,(I i).Nonempty) → Pairwise (fun i j => Disjoint (I i) (I j)) → (3 ≤ d ∨ (p:ℝ) ≤ n) → (∀ i,0 ≤ c i) → (∀ i,FiniteConvexIncreasingSymmetric (h i)) → (∀ J,∀ i ∈ J,selectedExtendedBound (nonsingularWishartMeasure n Sigma) (principalLogSpectralFactor Sigma I c h) J i) ∧ (∀ J,productExtendedBound (nonsingularWishartMeasure n Sigma) (principalLogSpectralFactor Sigma I c h) J)) := by rfl
 end end Wishart
+
+#print equations Wishart.SpectralGauge.supportSet
+#print equations Wishart.normalizedSelectedMatrix
