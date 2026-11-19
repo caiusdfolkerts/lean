@@ -63,13 +63,14 @@ def main():
                     raise ValueError('alternative certificate differs from its manifest')
                 other = json.loads(other_bytes)
                 if any(other.get(key) != original.get(key)
-                       for key in ('record', 'row', 'complement', 'quota', 'cells', 'orbits')):
+                       for key in ('record', 'row', 'complement', 'quota', 'cells', 'orbits', 'required_edges')):
                     raise ValueError('alternative certificate has different geometry or terminal orbits')
                 if proof_cost(other['core']) < proof_cost(result['core']):
                     result = other
             grouped = solve([SatCell(**cell) for cell in original['cells']], tuple(original['quota']),
                             args.solver, args.output / 'solver-temporary', seconds=args.seconds,
-                            counter='grouped', orbits=original.get('orbits'))
+                            counter='grouped', orbits=original.get('orbits'),
+                            required_edges=original.get('required_edges'))
             grouped.update({key: original[key] for key in ('record', 'row', 'complement', 'method')
                             if key in original})
             if grouped['status'] == 'sat':
