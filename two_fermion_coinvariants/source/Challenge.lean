@@ -11,7 +11,7 @@ this is not yet the complete paper entry.
 -/
 @[expose] public section
 -- Match the measured original canonical polynomial scalar action.
-attribute [-instance] MvPolynomial.instModuleSelf
+attribute [-instance] MvPolynomial.instModuleSelf MvPolynomial.instModule
 noncomputable section
 set_option autoImplicit false
 open scoped BigOperators

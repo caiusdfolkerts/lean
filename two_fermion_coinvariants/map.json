@@ -4,7 +4,7 @@
   "baseline_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
   "paper_sha256": "c4a3dd3f2e102d6b4bcc8d50c58ea8007c412cea8d762a8fbb5b105db09bc19a",
   "one_entry_per_paper": true,
-  "status": "principal_expanded_challenge_passed_full_source_comparator_unverified",
+  "status": "measured_second_forwarder_repair_full_preflight_pending",
   "source_selection": [
     "paper.pdf",
     "README.md",
@@ -1058,7 +1058,7 @@
   "coverage_status": "partial_principal_selection_not_whole_paper",
   "whole_paper_coverage": false,
   "current_principal_expansion": {
-    "challenge_sha256": "fc734791e50d0e7bace8977438705b513f14a63723ded5d2356b55d8294ab831",
+    "challenge_sha256": "fc904787ddc81eb38a6917eff8e4b411ef39268ef69c4dd95efdec9e1070a558",
     "selected_names": [
       "PaperVerification.Fermion.BasisFiltered.bound_zero",
       "PaperVerification.Fermion.BasisFiltered.bound_add",
@@ -1103,8 +1103,8 @@
     ],
     "source_contexts": "packaging/principal-source-contexts.json",
     "visibility": "packaging/principal-helper-visibility.json",
-    "canonical_receipt": "reports/two_fermion_coinvariants/challenge-diagnostic/run-44380113477/two_fermion_principal_smoke_r3/receipt.json",
-    "source_solution_comparator": "unverified"
+    "canonical_receipt": "Previous936 input passed; current extra attribute awaits full preflight.",
+    "source_solution_comparator": "New full preflight pending; original unchanged Source/Solution built in44383823108."
   },
   "uncovered_main_results_and_corollaries": [
     {
@@ -1286,5 +1286,22 @@
         "PaperVerification.Fermion.TypeA.diagonal_trace_eq_eulerian"
       ]
     }
-  ]
+  ],
+  "second_forwarder_repair": {
+    "status": "measured_second_forwarding_instance_repair_ready_for_full_preflight",
+    "actual_partial_type_diagnostic": "principal-type-diagnostic/run-44390912816/collection-verification.json",
+    "original_source_commit": "396cdb5360ccf72a9dbaeff056a19cd4af6240bc",
+    "changes": "Remove MvPolynomial.instModule from independent-interface instance search, in addition to already removed instModuleSelf. Native definitions and actual polynomial actions remain unchanged.",
+    "canonical_primary_source": "https://github.com/leanprover-community/mathlib4/blob/428aa8288d061ec3ae75c1b85ac178e2cb9def23/Mathlib/RingTheory/MvPolynomial.lean#L50",
+    "canonical_forwarder_source_sha256": "d6c43de76bfb441f719695f11773c274973b2987834a638e31bee1063c2eb9ef",
+    "canonical_definition": "instance : Module K (MvPolynomial \u03c3 K) := inferInstanceAs <| Module K (AddMonoidAlgebra K (\u03c3 \u2192\u2080 \u2115))",
+    "actual_measured_difference": "Ch MvPolynomial.instModule vs Source AddMonoidAlgebra.instModule in super_weighted_one_homogeneous, super_weighted_basis_mul_homogeneous and full theorem_1_1.",
+    "before_challenge_sha256": "fc734791e50d0e7bace8977438705b513f14a63723ded5d2356b55d8294ab831",
+    "after_challenge_sha256": "fc904787ddc81eb38a6917eff8e4b411ef39268ef69c4dd95efdec9e1070a558",
+    "all40_selected_names_and_full_statements_unchanged": true,
+    "all_source_and_solution_proof_code_unchanged": true,
+    "canonical_challenge_new_snapshot": "not_yet_run",
+    "partial_diagnostic_not_complete_union": true,
+    "full_preflight_pending": true
+  }
 }

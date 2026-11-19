@@ -1,0 +1,17 @@
+{
+  "status": "measured_second_forwarding_instance_repair_ready_for_full_preflight",
+  "actual_partial_type_diagnostic": "principal-type-diagnostic/run-44390912816/collection-verification.json",
+  "original_source_commit": "396cdb5360ccf72a9dbaeff056a19cd4af6240bc",
+  "changes": "Remove MvPolynomial.instModule from independent-interface instance search, in addition to already removed instModuleSelf. Native definitions and actual polynomial actions remain unchanged.",
+  "canonical_primary_source": "https://github.com/leanprover-community/mathlib4/blob/428aa8288d061ec3ae75c1b85ac178e2cb9def23/Mathlib/RingTheory/MvPolynomial.lean#L50",
+  "canonical_forwarder_source_sha256": "d6c43de76bfb441f719695f11773c274973b2987834a638e31bee1063c2eb9ef",
+  "canonical_definition": "instance : Module K (MvPolynomial \u03c3 K) := inferInstanceAs <| Module K (AddMonoidAlgebra K (\u03c3 \u2192\u2080 \u2115))",
+  "actual_measured_difference": "Ch MvPolynomial.instModule vs Source AddMonoidAlgebra.instModule in super_weighted_one_homogeneous, super_weighted_basis_mul_homogeneous and full theorem_1_1.",
+  "before_challenge_sha256": "fc734791e50d0e7bace8977438705b513f14a63723ded5d2356b55d8294ab831",
+  "after_challenge_sha256": "fc904787ddc81eb38a6917eff8e4b411ef39268ef69c4dd95efdec9e1070a558",
+  "all40_selected_names_and_full_statements_unchanged": true,
+  "all_source_and_solution_proof_code_unchanged": true,
+  "canonical_challenge_new_snapshot": "not_yet_run",
+  "partial_diagnostic_not_complete_union": true,
+  "full_preflight_pending": true
+}
