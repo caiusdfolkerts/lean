@@ -86,6 +86,14 @@ review:
     and inverse-value projections, and simplifies each actual support branch
     after the source rewrites. All33 headers, Challenge, configuration,
     original sources, canonical pins and heartbeat limits are unchanged.
+    Full33 run44498091720 atf7ea6174 subsequently reduced the four
+    wrapper errors to three, with no omitted compiler errors. The original
+    source proof modules compiled. This 2026-11-19 proof-only repair uses a
+    fully typed source kernel element with the original differential and
+    exact square-zero proof, and explicit equivalence value and inverse
+    laws for the same strict-support coefficients. All33 statements,
+    mathematical data, original sources, pins and heartbeat limits remain
+    unchanged. Actual current full verification remains pending.
 fidelity:
   divergences: >-
     Actual polynomial Koszul homology is used as the independent interface for

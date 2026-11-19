@@ -2659,10 +2659,11 @@ private def ordinaryHomologyEquiv (B : Family V) (q : ℤ) (p : ℕ) :
       rw [← he]
       exact congrArg (quotientChainsEquiv (k := k) B p) hzx
     · rintro y ⟨z,rfl⟩
-      let b := FourPapers.FilteredHomology.boundaryMap
-        (integerOrdinaryQuotientDifferential (k := k) B q p)
-        (integerOrdinaryQuotientPrevious (k := k) B q p)
-        (integerOrdinaryQuotientDifferential_comp (k := k) B q p) z
+      let b : LinearMap.ker (integerOrdinaryQuotientPrevious (k := k) B q p) :=
+        ⟨integerOrdinaryQuotientDifferential (k := k) B q p z, by
+          simpa only [LinearMap.comp_apply, LinearMap.zero_apply] using
+            LinearMap.congr_fun
+              (integerOrdinaryQuotientDifferential_comp (k := k) B q p) z⟩
       refine ⟨(ordinaryCyclesEquiv B q p).symm b,?_,
         (ordinaryCyclesEquiv B q p).apply_symm_apply b⟩
       simp only [OrdinaryQuotientKoszul.boundaries,Submodule.mem_comap]
@@ -2764,13 +2765,14 @@ private theorem bettiBinomialCoefficient_eq_source (E : Finset (FiniteTuple n))
   simp only [Finset.sum_filter]
   apply Fintype.sum_equiv (supportEquiv n E).symm
   intro s
-  by_cases hc : s.val.card = r
-  · simp only [supportEquiv,Equiv.refl_symm,Equiv.refl_apply,if_pos hc]
-    rw [FourPapers.Sublattice.integerStrictSupportBettiCoefficient,
+  have hval : ((supportEquiv n E).symm s).val = s.val := rfl
+  rw [hval]
+  split_ifs with hc
+  · rw [FourPapers.Sublattice.integerStrictSupportBettiCoefficient,
       ← FineKoszul.ordinaryQuotientBetti_eq_source,
       supportCoefficientIdeal_eq_source]
-    simp [supportEquiv,hc]
-  · simp [supportEquiv,hc]
+    rw [(supportEquiv n E).apply_symm_apply s]
+  · rfl
 /-- Corollary5.1 through actual integer ordinary ideal Tor and actual
 integer ordinary quotient Koszul homology, preserving every q in Z. -/
 theorem corollary51_integer {E : Finset (FiniteTuple n)} (hE : finiteLatticeClosed n E)

@@ -2,7 +2,7 @@
   "baseline_project": "sublattice_resolutions",
   "baseline_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
   "paper_pdf_sha256": "dc8fd0239670c107968b689c21c60f9447529fefd5fafefb2800dc5c6f927d33",
-  "status": "2026-11-19 complete33 measured four-error proof repair prepared; full preflight pending",
+  "status": "2026-11-19 complete33 measured three-error proof-only repair prepared; full preflight pending",
   "scope": "Theorems1.1,1.2 (both conjuncts),4.3 (all four clauses), Proposition2.2 and complete Corollaries5.1,5.2: twelve substantive endpoints and twenty-one genuine supporting propositions. All33 statements are selected; full verification is pending. Thirteen further paper groups remain outside this selection; whole-paper completion is not claimed.",
   "selected_results": [
     {
@@ -339,11 +339,11 @@
   "latest_measured_full_repair": {
     "preparation_date": "2026-11-19",
     "all33_header_bytes_unchanged": true,
-    "same_boundary_membership_transport_in_expected_quotient_type": true,
-    "typed_value_and_inverse_projections": true,
-    "post_rewrite_support_branch_simplification": true,
+    "explicit_source_kernel_constructor": true,
+    "same_differential_and_square_zero_proof": true,
+    "support_equivalence_value_and_inverse_laws": true,
     "no_heartbeat_increase": true,
-    "source_Solution_sha256": "945fd1690d6c788612daec89b394f5f1ecc2544e5e90086198153c0aa4861743"
+    "source_Solution_sha256": "cab5d495d303a8aeb8e70dfcbf98d7b9546bc87709ec7e64a0e910d0e13229cd"
   },
   "selection_count": 33,
   "substantive_count": 12,
@@ -438,10 +438,10 @@
     }
   ],
   "latest_full_failure": {
-    "commit": "08efef4da1ee2903cc389ef4ccd5b3e0fad75cf5",
-    "run": 44490040422,
-    "error_count": 4,
+    "commit": "f7ea617489d715c3d6819f776c9fd5bebb21e266",
+    "run": 44498091720,
+    "error_count": 3,
     "omitted_error_count": 0,
-    "report_sha256": "36528d3ce231bb38c038a878551f11808e7db1d72b0b0b0d78965c70785a0df6"
+    "report_sha256": "c3ba4b9e14a79f32ecf2c8409de36c8560b801ba75d0379bb1bcb92d9cfca031"
   }
 }
