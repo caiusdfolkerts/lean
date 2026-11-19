@@ -132,15 +132,17 @@ variable {ι : Type*} [Fintype ι] (k : ι → ℕ)
 example (i : ι) : BorelSpace (FieldSpectral.Hermitian ℂ (k i)) := by
   dsimp only [FieldSpectral.Hermitian]
   infer_instance
-example : BorelSpace (∀ i, FieldSpectral.Hermitian ℂ (k i)) := by
-  infer_instance
 example : True := by
   let E := ∀ i, FieldSpectral.Hermitian ℂ (k i)
   letI : BorelSpace E := by
-    dsimp only [E, FieldSpectral.Hermitian]
-    infer_instance
-  haveI : SecondCountableTopology E := by
-    dsimp only [E, FieldSpectral.Hermitian]
-    infer_instance
+    change BorelSpace (∀ i, FieldSpectral.Hermitian ℂ (k i))
+    letI : ∀ i, SecondCountableTopology (FieldSpectral.Hermitian ℂ (k i)) := fun i => by
+      letI : ProperSpace (FieldSpectral.Hermitian ℂ (k i)) :=
+        FiniteDimensional.proper ℝ (FieldSpectral.Hermitian ℂ (k i))
+      infer_instance
+    letI : ∀ i, BorelSpace (FieldSpectral.Hermitian ℂ (k i)) := fun i => by
+      dsimp only [FieldSpectral.Hermitian]
+      infer_instance
+    exact Pi.borelSpace (X := fun i => FieldSpectral.Hermitian ℂ (k i))
   trivial
 end Wishart.FieldGaussian

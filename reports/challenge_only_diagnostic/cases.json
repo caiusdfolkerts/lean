@@ -8,16 +8,16 @@
       "module": "HermitianPiBorelProof",
       "case_dir": "cases/wishart_hermitian_pi_borel_proof",
       "original_package": "reports/wishart/full20-canonical",
-      "original_challenge": "reports/wishart/full20-canonical/complete-measured-repair/hermitian-pi-borel-repair/ProofSmoke.lean",
+      "original_challenge": "reports/wishart/full20-canonical/complete-measured-repair/hermitian-pi-borel-repair/revision-02/ProofSmoke.lean",
       "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
       "hashes": {
         "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
         "lake-manifest.json": "5619bb28ae7f2972522467eccf712e99876805a4fb0b7298a3c8de5918224147",
         "original-lakefile.toml": "e429ab885c0b86124ac6b748b01715efdede7f476661ead3634e0c69b6521ccb",
-        "Challenge.lean": "69f8bbc7a35155de253e3519e9f33540cf573e83fb7ecad24c0a24a7bbed11a6"
+        "Challenge.lean": "4cea2a3232a485950c735bc02cca942c656fa62b0fa9d47d3b422c6f87df0b39"
       },
-      "challenge_lines": 146,
-      "challenge_bytes": 9516,
+      "challenge_lines": 148,
+      "challenge_bytes": 9795,
       "dependency_pins": [
         {
           "name": "mathlib",
