@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "kind": "Canonical exact selected support TYPE probe, not full preflight",
+  "pipeline_commit": "14aa8d6b3c2f14a8540605e37144560b9a00e7e7",
+  "cases": [
+    {
+      "id": "projection_explicit_zero_types",
+      "module": "Challenge",
+      "case_dir": "cases/projection_explicit_zero_types",
+      "original_package": "packages/projection_areas",
+      "original_challenge": "reports/projection_areas/explicit-zero-repair/ExplicitZeroTypesProbe.lean",
+      "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
+      "hashes": {
+        "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
+        "lake-manifest.json": "a1ec65315c409ef3b5f2857f0be290dc749a16905b04e41d565d57c0fad583bb",
+        "original-lakefile.toml": "fd9630659135ab2994eb1b710ec5ab37892a19e058fa9f4869e1a6d172a59ece",
+        "Challenge.lean": "fe73ba9b3a1fd26fc5486eab5eeff11e97588eb8d2b2a217d90c4898de252c8a"
+      },
+      "challenge_lines": 660,
+      "challenge_bytes": 32877,
+      "dependency_pins": [
+        {
+          "name": "mathlib",
+          "url": "https://github.com/leanprover-community/mathlib4",
+          "rev": "2cabef97b63d3275776b8b060d802de6a6fa1055"
+        },
+        {
+          "name": "plausible",
+          "url": "https://github.com/leanprover-community/plausible",
+          "rev": "c2d7840c65673533e15b499f25beecdc6227f7d8"
+        },
+        {
+          "name": "LeanSearchClient",
+          "url": "https://github.com/leanprover-community/LeanSearchClient",
+          "rev": "9d39f9bb0c30aa2f6200808805ff16e6ce950890"
+        },
+        {
+          "name": "importGraph",
+          "url": "https://github.com/leanprover-community/import-graph",
+          "rev": "b3cc36c295aa5e3e3c0197b09a6556298e710447"
+        },
+        {
+          "name": "proofwidgets",
+          "url": "https://github.com/leanprover-community/ProofWidgets4",
+          "rev": "17137fad38a2cc782ff00b323a13c3a991d085ab"
+        },
+        {
+          "name": "aesop",
+          "url": "https://github.com/leanprover-community/aesop",
+          "rev": "29c64c56cc38211d39b306db2df11701e3d3de11"
+        },
+        {
+          "name": "Qq",
+          "url": "https://github.com/leanprover-community/quote4",
+          "rev": "6d26f8bb4b2bb78f929ad160feac508866821316"
+        },
+        {
+          "name": "batteries",
+          "url": "https://github.com/leanprover-community/batteries",
+          "rev": "30691c775364967184547c94468bf6b5f25400fb"
+        },
+        {
+          "name": "Cli",
+          "url": "https://github.com/leanprover/lean4-cli",
+          "rev": "34d2efffcb6dc8d5f3537cf6a7f88bfaa999ec49"
+        }
+      ],
+      "diagnostic_class": "canonical-only-complete-three-support-types-after-measured-zero-dictionary-repair",
+      "remote_memory_mib": 8192
+    }
+  ],
+  "default_case_ids": [
+    "projection_explicit_zero_types"
+  ],
+  "operator_resource_policy": {
+    "memory_mib": 8192,
+    "runner_memory_gib": 16,
+    "compiler_processes_per_job": 1,
+    "matrix_max_parallel": 2,
+    "compile_timeout_seconds": 2400
+  }
+}

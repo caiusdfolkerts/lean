@@ -1,4 +1,6 @@
 module
+public meta import Lean.Elab.Command
+public meta import Lean.Data.Json
 
 public import Mathlib.Algebra.BigOperators.Finsupp.Fin
 public import Mathlib.Algebra.BigOperators.Group.Finset.Basic
@@ -307,11 +309,11 @@ end ProjectionAreaEscape
 
 namespace PalomarProjectionAreas.NumericProofs
 /-- The measured nonzero dimension proof for two coordinate positions. -/
-theorem twoNeZero : NeZero (1 + 1 : ℕ) := by infer_instance
+theorem twoNeZero : @NeZero ℕ (@Zero.ofOfNat0 ℕ (instOfNatNat 0)) (1 + 1 : ℕ) := by infer_instance
 /-- The measured lower bound used by the literal exponent two. -/
 theorem twoAtLeastTwo : Nat.AtLeastTwo (1 + 1 : ℕ) := by infer_instance
 /-- The measured nonzero dimension proof for four coordinate positions. -/
-theorem fourNeZero : NeZero (3 + 1 : ℕ) := by infer_instance
+theorem fourNeZero : @NeZero ℕ (@Zero.ofOfNat0 ℕ (instOfNatNat 0)) (3 + 1 : ℕ) := by infer_instance
 end PalomarProjectionAreas.NumericProofs
 
 namespace ProjectionAreaTopology
@@ -631,3 +633,28 @@ theorem rank_at_most_three_classification {n : ℕ} (Q : ProjectionAreaRankThree
       (Q.entries ∈ realizationLocus n ↔ Nat.card (Quot (fun i j : {i : Fin n // Q.entries i ≠ 0} => Q.entries i.val j.val = 0)) ≤ 4) := by sorry
 
 end PalomarProjectionAreas
+
+-- Three direct environment lookups only. No whole-environment enumeration,
+-- dependency traversal, proof/value expansion, project import or source build.
+run_cmd do
+  let env ← Lean.getEnv
+  for name in [`PalomarProjectionAreas.NumericProofs.twoNeZero,
+      `PalomarProjectionAreas.NumericProofs.twoAtLeastTwo,
+      `PalomarProjectionAreas.NumericProofs.fourNeZero] do
+    match env.find? name with
+    | none =>
+      let row := Lean.Json.mkObj [
+        ("kind", Lean.toJson "GEOMETRY_AUXILIARY_TYPE"),
+        ("name", Lean.toJson name.toString), ("found", Lean.toJson false)]
+      Lean.logInfo m!"{row.compress}"
+    | some ci =>
+      let text := reprStr ci.type
+      let row := Lean.Json.mkObj [
+        ("kind", Lean.toJson "GEOMETRY_AUXILIARY_TYPE"),
+        ("name", Lean.toJson name.toString), ("found", Lean.toJson true),
+        ("level_params", Lean.toJson (ci.levelParams.map Lean.Name.toString)),
+        ("type_characters", Lean.toJson text.length),
+        ("type_text_limit", Lean.toJson (8000 : Nat)),
+        ("type_truncated", Lean.toJson (decide (8000 < text.length))),
+        ("type_ast", Lean.toJson (String.ofList (text.toList.take 8000)))]
+      Lean.logInfo m!"{row.compress}"
