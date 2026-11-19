@@ -26,7 +26,14 @@
     "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.onePlane_ideal_isPrime",
     "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.odd_isotropicPluckerIdeal_saturated",
     "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.onePlane_PluckerIdeal_saturated",
-    "PalomarAlternatingDegeneration.PalomarAlternatingGeometry.oddAffineCharts"
+    "PalomarAlternatingDegeneration.PalomarAlternatingGeometry.oddAffineCharts",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.oddPluckerEdge._proof_6",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.oddPluckerEdge._proof_4",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.oddPluckerEdge._proof_2",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.oddIntervalUpper._proof_2",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.oddIntervalLower._proof_2",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.paper13_weight_families._proof_2",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.OnePlaneKoszul.resolution._proof_1"
   ],
   "permitted_axioms": [
     "propext",

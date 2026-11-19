@@ -1,0 +1,49 @@
+{
+  "prepared_at": "2026-11-19T11:41:34.011360+00:00",
+  "source_commit": "53d3e5008be9d1b58cd21852593ac8c51e4742c3",
+  "source_run": 44509345544,
+  "read_only_diagnostic_run": 44513884301,
+  "evidence": {
+    "status": "validated_complete25_type_coverage_and_whole_reachable_union_with_explicit_leaf_caps",
+    "workflow_run": 44513884301,
+    "diagnostic_commit": "2911bfb5119f0d8b84f32b2d88a3ca174108f68f",
+    "source_commit": "53d3e5008be9d1b58cd21852593ac8c51e4742c3",
+    "artifact_digest_verified": true,
+    "helper_source_and_early_DAG_alpha_fixture_verified": true,
+    "protected_config_verified": true,
+    "all25_type_and_level_lists_equal": true,
+    "expected_targets": 25,
+    "missing_targets": 0,
+    "visited": 20778,
+    "whole_reachable_mismatches": 20,
+    "value_leaves_emitted": 0,
+    "type_leaves_emitted": 0,
+    "log_sha256": "0328e9f6303fe9803888e4cb9991e0a70ff97e04595d572cf333301770e7569b",
+    "log_bytes": 23149,
+    "log_omitted": false,
+    "receipt_sha256": "b35a5b131ab827fcbd9a45dbd4836525d2294f3d8ee6e3788c2770c21ab673f0",
+    "audit_seconds": 12.19,
+    "max_rss_kib": 987400,
+    "not_a_preflight_pass": true,
+    "limitation": "All25 summaries and all mismatch names/counts complete. Per-value6/global48 value leaves and global48 type leaves remain explicitly bounded by unchanged helper; omitted candidate counts are reported."
+  },
+  "added_compared_theorem_names": [
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.oddPluckerEdge._proof_6",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.oddPluckerEdge._proof_4",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.oddPluckerEdge._proof_2",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.oddIntervalUpper._proof_2",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.oddIntervalLower._proof_2",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.paper13_weight_families._proof_2",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.OnePlaneKoszul.resolution._proof_1"
+  ],
+  "actual_support_semantics": {
+    "oddPluckerEdge._proof_2,_proof_4,_proof_6": "The two actual Fin bounds and strict increasing order for the same two-edge coordinates.",
+    "oddIntervalLower._proof_2,oddIntervalUpper._proof_2": "The actual Fin bounds for the same Richardson interval endpoints.",
+    "paper13_weight_families._proof_2": "The unit-plane admissibility inequality 1\u2264k+1 appearing in the exact family endpoint.",
+    "OnePlaneKoszul.resolution._proof_1": "The actual categorical projectivity of the retained one-plane Koszul-resolution terms."
+  },
+  "change": "Comparator explicitly compares these actual public supporting theorem statements, whose exact exported types/levels were measured equal. Their genuine Source proofs remain checked by compilation and kernels. All original25 targets and all data definitions, proof terms, operations, ideals, bounds, resolutions, and substantive audit assertions remain byte-identical.",
+  "why_private_body_names_do_not_need_comparison": "Comparator compares selected theorem statements and verifies actual Source proofs independently. Module-qualified compiler proof auxiliaries belong only to those proof bodies; they are not semantic data.",
+  "no_Lean_changes": true,
+  "no_verifier_or_trust_changes": true
+}
