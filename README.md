@@ -1,5 +1,3 @@
-# Palomar submission: higher_specht_bases
+# Higher Specht exact-source raw declaration diagnostic
 
-Substantive source snapshot of [caiusdfolkerts/research](https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases), revision `e0696fddcd3d10b5d6461e62e9b2f02c4195be37`.
-
-The complete selected development, paper, metadata, and Comparator configuration are in `higher_specht_bases/`. This branch prepares a registry submission; it does not claim registry acceptance. See `higher_specht_bases/formalization.yaml` for exact scope and provenance.
+Use the unchanged full59f source whose Source build passed but Comparator found a raw declaration mismatch. Report all20selected target types and the entire reachable raw union with explicit truncation/missing counters. The helper uses exact Lean Expr equality conventions, shallow rendering, a six-candidate/96-depth bounded walker, global48leaf bounds and an early1GiB shared-DAG/alpha-renaming/body-change control. No package edits, full pass, kernel verdict or registry submission is claimed.
