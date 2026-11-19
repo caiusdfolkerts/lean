@@ -235,6 +235,11 @@ theorem polytabloid_coeff_smul_tabloid (t : YoungTableau μ) (q : colSubgroup t)
     have hne : (r : Equiv.Perm (Fin μ.card)) • tabloid t ≠
         (q : Equiv.Perm (Fin μ.card)) • tabloid t := fun h =>
       hr (smul_tabloid_injective t h)
+    change (Finsupp.single
+      ((r : Equiv.Perm (Fin μ.card)) • tabloid t)
+      (((Equiv.Perm.sign (r : Equiv.Perm (Fin μ.card)) : ℤ) : ℚ)) :
+      (Equiv.Perm (Fin μ.card) ⧸ youngSubgroup (shapePartition μ)) →₀ ℚ)
+      ((q : Equiv.Perm (Fin μ.card)) • tabloid t) = 0
     exact Finsupp.single_eq_of_ne hne.symm
   · intro h
     exact absurd (Finset.mem_univ _) h
