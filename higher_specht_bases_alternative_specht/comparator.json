@@ -38,7 +38,9 @@
     "TauCeti.YoungTableau.sortedBlocks_type_eq",
     "HigherSpecht.GriffinIdealExpression.permutationStable",
     "HigherSpecht.GriffinIdealExpression.alternative_specht_spans",
-    "HigherSpecht.griffin_alternative_specht_spans"
+    "HigherSpecht.griffin_alternative_specht_spans",
+    "Nat.Partition.palomarGe_isTrans",
+    "HigherSpecht.palomarPartitionCard_refl"
   ],
   "permitted_axioms": [
     "propext",
