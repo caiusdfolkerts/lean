@@ -43,7 +43,7 @@ variable {N V : Type*} [AddCommGroup N] [AddCommGroup V] [Module ℝ V]
 indexed by `degree` for reduced degree `degree - 1`. -/
 abbrev fanPatternCohomology (negative : Set fan.Ray) (degree : ℕ) :=
   reducedSingularCohomology 𝕜
-    (incidenceRealization (fanNegativeRayIncidence fan charts rays negative) (fun _ => True)) degree
+    (incidenceRealization (fanNegativeRayIncidence fan charts rays (fun ρ => ρ ∈ negative)) (fun _ => True)) degree
 
 def fanCharacterNegativeSet (b : fan.Ray → ℤ) (m : N →+ ℤ) : Set fan.Ray :=
   {ρ | b ρ + m (fanRayPrimitiveGenerator fan ρ) < 0}
@@ -73,11 +73,11 @@ theorem fanPattern_recession_zero (negative : Set fan.Ray)
     apply hd
     ext x
     exact LinearMap.congr_fun equality x
-  letI := fanNegativeIncidence_contractible fan charts surjective rays negative regular complete
+  letI := fanNegativeIncidence_contractible fan charts surjective rays (fun ρ => ρ ∈ negative) regular complete
     d.toLinearMap linear_nonzero inside outside
   obtain ⟨degree, nontrivial⟩ := nonzero
   letI := CechContractibleVanishing.reducedSingularCohomology_subsingleton
-    (fanNegativeRayIncidence fan charts rays negative) (fun _ => True) 𝕜 degree
+    (fanNegativeRayIncidence fan charts rays (fun ρ => ρ ∈ negative)) (fun _ => True) 𝕜 degree
   obtain ⟨a, b, different⟩ := nontrivial.exists_pair_ne
   exact different (Subsingleton.elim a b)
 

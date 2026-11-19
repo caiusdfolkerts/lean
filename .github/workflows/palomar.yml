@@ -12,7 +12,7 @@ jobs:
       repository: ${{ github.repository }}
       commit: ${{ github.sha }}
       pipeline_commit: 14aa8d6b3c2f14a8540605e37144560b9a00e7e7
-      request_id: "adab5ba64f72"
+      request_id: "75728cce9836"
       mode: full
       execution_profile: palomar-standard-v1
       options: '{"project_path": "toric_power_maps", "comparator_config_path": "toric_power_maps/comparator.json", "authorization_relationship": "I am a responsible author or maintainer"}'

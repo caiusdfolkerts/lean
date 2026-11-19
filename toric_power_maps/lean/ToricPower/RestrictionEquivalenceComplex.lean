@@ -35,7 +35,8 @@ local instance restrictionEquivalenceInverseAdditive :
 /-- Restriction along an actual equivalence is faithful after localization. -/
 theorem restrictionEquivalenceDerived_faithful :
     (baseRestriction e.functor (D := ModuleCat.{0} R)).mapDerivedCategory.Faithful := by
-  change ((e.congrLeft (E := ModuleCat.{0} R)).mapDerivedCategory).inverse.Faithful
+  change ((e.congrLeft (E := ModuleCat.{0} R)).inverse).mapDerivedCategory.Faithful
+  rw [← Equivalence.mapDerivedCategory_inverse]
   infer_instance
 
 /-- Pulling back the genuine mapped representative returns the entire
@@ -45,11 +46,16 @@ def restrictionEquivalenceInverseComplexIso
     (baseRestriction e.functor (D := ModuleCat.{0} R)).mapDerivedCategory.obj
       (DerivedCategory.Q.obj
         (((baseRestriction e.inverse (D := ModuleCat.{0} R)).mapHomologicalComplex (.up ℤ)).obj K)) ≅
-      DerivedCategory.Q.obj K :=
-  (baseRestriction e.functor (D := ModuleCat.{0} R)).mapDerivedCategory.mapIso
+      DerivedCategory.Q.obj K := by
+  refine (baseRestriction e.functor (D := ModuleCat.{0} R)).mapDerivedCategory.mapIso
       ((baseRestriction e.inverse (D := ModuleCat.{0} R)).mapDerivedCategoryFactors.app K).symm ≪≫
-    ((e.congrLeft (E := ModuleCat.{0} R)).mapDerivedCategory.unitIso.app
-      (DerivedCategory.Q.obj K)).symm
+    ?_
+  change (((e.congrLeft (E := ModuleCat.{0} R)).functor).mapDerivedCategory ⋙
+    ((e.congrLeft (E := ModuleCat.{0} R)).inverse).mapDerivedCategory).obj
+      (DerivedCategory.Q.obj K) ≅ DerivedCategory.Q.obj K
+  rw [← Equivalence.mapDerivedCategory_functor, ← Equivalence.mapDerivedCategory_inverse]
+  exact ((e.congrLeft (E := ModuleCat.{0} R)).mapDerivedCategory.unitIso.app
+    (DerivedCategory.Q.obj K)).symm
 
 end ToricPower.ElementPushdown
 

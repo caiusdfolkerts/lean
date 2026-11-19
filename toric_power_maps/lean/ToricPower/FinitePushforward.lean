@@ -1,6 +1,9 @@
 module
 
 public import ToricPower.CoherentCategory
+public import TauCeti.AlgebraicGeometry.FinitelyPresentedSheaf.Pushforward
+public import TauCeti.AlgebraicGeometry.Modules.Quasicoherent.Pushforward.Exact
+public import Mathlib.CategoryTheory.Preadditive.LeftExact
 
 /-! ## Source module `ToricPower.FinitePushforward`
 Original SHA256: 3dd7e70f0c49215c6b6f171af738dcf2a59dd5eb59cd32ba792e6fb516309a40.
@@ -72,17 +75,7 @@ No exactness assertion is made for arbitrary module sheaves. -/
 theorem affinePushforward_epi {M N : X.Modules} (φ : M ⟶ N) [Epi φ]
     [M.IsQuasicoherent] [N.IsQuasicoherent] :
     Epi ((pushforward f).map φ) := by
-  apply (SheafOfModules.toSheaf.{u} Y.ringCatSheaf).epi_of_epi_map
-  let η := (SheafOfModules.toSheaf.{u} Y.ringCatSheaf).map ((pushforward f).map φ)
-  have hη : TopCat.Presheaf.IsLocallySurjective η.hom := by
-    apply (TopCat.Presheaf.isLocallySurjective_iff η.hom).2
-    intro U t y hy
-    obtain ⟨_, ⟨V, hV, rfl⟩, hyV, hVU⟩ :=
-      Y.isBasis_affineOpens.exists_subset_of_mem_open hy U.isOpen
-    refine ⟨V, hVU, ?_, hyV⟩
-    exact affineSections_surjective_of_epi φ (hV.preimage f) _
-  letI : CategoryTheory.Sheaf.IsLocallySurjective η := hη
-  exact inferInstanceAs (Epi η)
+  exact f.epi_pushforward_map_of_isAffineHom φ
 
 /-- The ordinary pushforward of a short exact sequence of quasicoherent
 sheaves under an affine morphism is short exact. -/

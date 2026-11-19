@@ -1,4 +1,5 @@
 module
+import all Mathlib.Algebra.Category.ModuleCat.Sheaf.PushforwardContinuous
 
 public import ToricPower.CartierCore
 public import ToricPower.DivisorWeightGeometry
@@ -204,7 +205,7 @@ theorem cartierDivisor_restrict (index : atlas.Index) :
   atlas.existsUnique_cartierDivisor.exists.choose_spec index
 
 noncomputable def invertibleSheaf : TauCeti.AlgebraicGeometry.InvertibleSheaf SchemeModel :=
-  atlas.cartierDivisor.toInvertibleSheaf
+  ⟨atlas.cartierDivisor.sheaf, atlas.cartierDivisor.isInvertible_sheaf⟩
 
 noncomputable def chartTrivialization (index : atlas.Index) :
     (SheafOfModules.unit SchemeModel.ringCatSheaf).over (atlas.chart index) ≅
@@ -230,6 +231,8 @@ theorem chartTrivialization_hom_ι (index : atlas.Index) :
   letI := atlas.nonempty_chart index
   simp only [chartTrivialization, Iso.trans_hom, Functor.mapIso_hom, Category.assoc,
     TauCeti.AlgebraicGeometry.Scheme.CartierDivisor.sheafOverIsoOfRestrictEq_hom_ι]
+  rw [TauCeti.AlgebraicGeometry.Scheme.CartierDivisor.unitIsoSheafPrincipalCartierDivisor_hom]
+  simp only [SheafOfModules.Hom.over]
   change (SheafOfModules.overFunctor SchemeModel.ringCatSheaf (atlas.chart index)).map
       (TauCeti.AlgebraicGeometry.Scheme.CartierDivisor.unitToSheafPrincipalCartierDivisor
         SchemeModel (atlas.equation index)) ≫

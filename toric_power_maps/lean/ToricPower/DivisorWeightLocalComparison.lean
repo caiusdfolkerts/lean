@@ -313,11 +313,11 @@ theorem toricResidueSheafMap_frame_sections (fan : Fan i) (nonempty : Nonempty f
       (eqToHom (toricPower_preimage_chartOpen fan ell hell cone)).op
       (Scheme.Modules.Hom.app target.sheafι U targetSection) at restriction
   change TauCeti.AlgebraicGeometry.Scheme.rationalFunctionsEquiv _
-    (Scheme.Modules.Hom.app target.sheafι _
+    (Scheme.Modules.Hom.app target.sheafι (toricPowerMap fan ell ⁻¹ᵁ U)
       (Scheme.Modules.Hom.app (toricResidueSheafMap fan nonempty regular b ell hell character)
         U sourceSection)) =
     TauCeti.AlgebraicGeometry.Scheme.rationalFunctionsEquiv _
-      (Scheme.Modules.Hom.app target.sheafι _
+      (Scheme.Modules.Hom.app target.sheafι (toricPowerMap fan ell ⁻¹ᵁ U)
         (target.sheaf.presheaf.map
           (eqToHom (toricPower_preimage_chartOpen fan ell hell cone)).op targetSection))
   rw [factor, restriction,
