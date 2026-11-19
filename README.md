@@ -1,5 +1,1 @@
-# Palomar submission: two_fermion_coinvariants
-
-Substantive source snapshot of [caiusdfolkerts/research](https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants), revision `e0696fddcd3d10b5d6461e62e9b2f02c4195be37`.
-
-The complete selected development, paper, metadata, and Comparator configuration are in `two_fermion_coinvariants/`. This branch prepares a registry submission; it does not claim registry acceptance. See `two_fermion_coinvariants/formalization.yaml` for exact scope and provenance.
+Exact-source Fermion full fda3f4dd/run44461998078 Source/Solution built; Comparator first raw mismatch strictExteriorPiece. This read-only audit reports all40 actual selected types/universes and the complete reachable raw data/type union. It never renders a whole Expr as text: shallow constructor/head summaries are explicitly labeled, candidate traversal short-circuits6/depth96, value/type leaves each capped48. All mismatch names/counts remain uncapped; every selected target receives a summary before union traversal. Early1GiB120s core-only compile+shared-DAG stress control gates source execution, with mandatory finalized report upload. No math/source change or preflight pass is claimed.
