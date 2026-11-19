@@ -1,5 +1,3 @@
-# Palomar submission: sublattice_resolutions
+# Exact Toric original independent failure-leaf diagnostic
 
-Substantive source snapshot of [caiusdfolkerts/research](https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/sublattice_resolutions), revision `e0696fddcd3d10b5d6461e62e9b2f02c4195be37`.
-
-The complete selected development, paper, metadata, and Comparator configuration are in `sublattice_resolutions/`. This branch prepares a registry submission; it does not claim registry acceptance. See `sublattice_resolutions/formalization.yaml` for exact scope and provenance.
+Nine independent submitted failure leaves plus the legacy HomologicalComplex configuration probe, found from the original447-target failure graph. All1474 materialized Lean source files match the published4e3 git blob IDs; each source/configuration/dependency is hash checked before/after. Canonical selected imports only, then separate600second/8GiB-resident/4MiB-output target builds. All error-location and truncation counters are explicit; unpositioned missing-file/import diagnostics are recorded as source configuration failures. No full Source/Solution/Comparator/kernel or intake claim; mandatory full preflight remains required for a corrected candidate.
