@@ -1,0 +1,29 @@
+module
+prelude
+public meta import LowerSchemas.FiniteSmallSubsumedForest
+public import SmallSubsumedForest11DispositionData
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.SmallRawForests.SmallSubsumedForest11
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open GrowthDAG SparseGrowthDAG GrowthPruning GrowthRenaming
+open GrowthBitsets BatchedGrowthPruning BatchedOrbitGrowth
+open RawNatGrowthSoundness RawNatGrowthCompleteness
+cert_disposition_at_12 32
+cert_disposition_at_12 33
+cert_disposition_at_12 34
+cert_disposition_at_12 35
+cert_disposition_at_12 36
+cert_disposition_at_12 37
+cert_disposition_at_12 38
+cert_disposition_interval_5 32 33
+cert_disposition_interval_5 33 34
+cert_disposition_interval_5 34 35
+cert_disposition_interval_5 35 36
+cert_disposition_interval_5 36 37
+cert_disposition_interval_5 37 38
+cert_disposition_interval_6 38 39
+end Papers.RationalityTen.SmallRawForests.SmallSubsumedForest11

@@ -1,0 +1,312 @@
+module
+prelude
+public meta import LowerSchemas.Frames
+public meta import CertificateNumbers
+public import GraphInputsRow19Part00019Data
+public import RawFrameSupport
+public import SharedFrameGroups088Checked
+public import SharedFrameGroups089Checked
+public import SharedFrameGroups100Checked
+public import SharedFrameGroups109Checked
+public import SharedFrameGroups116Checked
+public import SharedFrameGroups118Checked
+public import SharedFrameGroups119Checked
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.CompactReplay.GraphInputsRow19Part00019
+open Papers.RationalityTen PackedGraphCertificate SharedGraphCellPool
+open SharedGraphFramePairs RawFrameSupport FiniteChecks
+cert_graph_frame_supported_2 000
+cert_graph_frames_supported_18 000
+cert_graph_frame_supported_2 001
+cert_graph_frames_supported_18 001
+cert_graph_frame_supported_2 002
+cert_graph_frames_supported_18 002
+cert_graph_frame_supported_2 003
+cert_graph_frames_supported_18 003
+cert_graph_frame_supported_2 004
+cert_graph_frames_supported_18 004
+cert_graph_frame_supported_2 005
+cert_graph_frames_supported_18 005
+cert_graph_frame_supported_2 006
+cert_graph_frame_indices 006 001 1115 13 0
+cert_graph_frame_graph 006 001 1115
+cert_graph_frame_links_5 006 001 0000 1115 1 0 64 64
+cert_graph_frame_links_5 006 001 0064 1115 1 64 72 8
+cert_graph_frame_links_3 006 001 1115 1 72
+cert_graph_frame_supported 006 001 1 1115
+cert_graph_frames_supported_20 006
+cert_graph_frame_supported_2 007
+cert_graph_frames_supported_18 007
+cert_graph_frame_supported_2 008
+cert_graph_frames_supported_18 008
+cert_graph_frame_supported_2 009
+cert_graph_frames_supported_18 009
+cert_graph_frame_supported_2 010
+cert_graph_frames_supported_18 010
+cert_graph_frame_supported_2 011
+cert_graph_frames_supported_18 011
+cert_graph_frame_supported_2 012
+cert_graph_frames_supported_18 012
+cert_graph_frame_supported_2 013
+cert_graph_frames_supported_18 013
+cert_graph_frame_supported_2 014
+cert_graph_frames_supported_18 014
+cert_graph_frame_supported_2 015
+cert_graph_frames_supported_18 015
+cert_graph_frame_supported_2 016
+cert_graph_frames_supported_18 016
+cert_graph_frame_supported_2 017
+cert_graph_frames_supported_18 017
+cert_graph_frame_supported_2 018
+cert_graph_frames_supported_18 018
+cert_graph_frame_supported_2 019
+cert_graph_frames_supported_18 019
+cert_graph_frame_supported_2 020
+cert_graph_frames_supported_18 020
+cert_graph_frame_supported_2 021
+cert_graph_frames_supported_18 021
+cert_graph_frame_supported_2 022
+cert_graph_frames_supported_18 022
+cert_graph_frame_supported_2 023
+cert_graph_frames_supported_18 023
+cert_graph_frame_supported_2 024
+cert_graph_frames_supported_18 024
+cert_graph_frame_supported_2 025
+cert_graph_frames_supported_18 025
+cert_graph_frame_supported_2 026
+cert_graph_frames_supported_18 026
+cert_graph_frame_supported_2 027
+cert_graph_frames_supported_18 027
+cert_graph_frame_supported_2 028
+cert_graph_frames_supported_18 028
+cert_graph_frame_supported_2 029
+cert_graph_frame_indices 029 001 1115 13 1
+cert_graph_frame_graph 029 001 1115
+cert_graph_frame_links_5 029 001 0000 1115 1 0 64 64
+cert_graph_frame_links_5 029 001 0064 1115 1 64 72 8
+cert_graph_frame_links_3 029 001 1115 1 72
+cert_graph_frame_supported 029 001 1 1115
+cert_graph_frames_supported_20 029
+cert_graph_frame_supported_2 030
+cert_graph_frames_supported_18 030
+cert_graph_frame_supported_2 031
+cert_graph_frame_indices 031 001 1115 13 2
+cert_graph_frame_graph 031 001 1115
+cert_graph_frame_links_5 031 001 0000 1115 1 0 64 64
+cert_graph_frame_links_5 031 001 0064 1115 1 64 77 13
+cert_graph_frame_links_3 031 001 1115 1 77
+cert_graph_frame_supported 031 001 1 1115
+cert_graph_frames_supported_20 031
+cert_graph_frame_supported_2 032
+cert_graph_frames_supported_18 032
+cert_graph_frame_supported_2 033
+cert_graph_frames_supported_18 033
+cert_graph_frame_supported_2 034
+cert_graph_frames_supported_18 034
+cert_graph_frame_supported_2 035
+cert_graph_frames_supported_18 035
+cert_graph_frame_supported_2 036
+cert_graph_frame_indices 036 001 1114 13 3
+cert_graph_frame_graph 036 001 1114
+cert_graph_frame_links_5 036 001 0000 1114 1 0 64 64
+cert_graph_frame_links_5 036 001 0064 1114 1 64 82 18
+cert_graph_frame_links_3 036 001 1114 1 82
+cert_graph_frame_supported 036 001 1 1114
+cert_graph_frames_supported_20 036
+cert_graph_frame_supported_2 037
+cert_graph_frames_supported_18 037
+cert_graph_frame_supported_2 038
+cert_graph_frames_supported_18 038
+cert_graph_frame_supported_2 039
+cert_graph_frames_supported_18 039
+cert_graph_frame_supported_2 040
+cert_graph_frames_supported_18 040
+cert_graph_frame_supported_2 041
+cert_graph_frame_indices 041 001 1110 13 4
+cert_graph_frame_graph 041 001 1110
+cert_graph_frame_links_5 041 001 0000 1110 1 0 64 64
+cert_graph_frame_links_5 041 001 0064 1110 1 64 69 5
+cert_graph_frame_links_3 041 001 1110 1 69
+cert_graph_frame_supported 041 001 1 1110
+cert_graph_frames_supported_20 041
+cert_graph_frame_supported_2 042
+cert_graph_frames_supported_18 042
+cert_graph_frame_supported_2 043
+cert_graph_frames_supported_18 043
+cert_graph_frame_supported_2 044
+cert_graph_frames_supported_18 044
+cert_graph_frame_supported_2 045
+cert_graph_frames_supported_18 045
+cert_graph_frame_supported_2 046
+cert_graph_frame_indices 046 001 1115 13 5
+cert_graph_frame_graph 046 001 1115
+cert_graph_frame_links_5 046 001 0000 1115 1 0 64 64
+cert_graph_frame_links_5 046 001 0064 1115 1 64 72 8
+cert_graph_frame_links_3 046 001 1115 1 72
+cert_graph_frame_supported 046 001 1 1115
+cert_graph_frames_supported_20 046
+cert_graph_frame_supported_2 047
+cert_graph_frames_supported_18 047
+cert_graph_frame_supported_2 048
+cert_graph_frames_supported_18 048
+cert_graph_frame_supported_2 049
+cert_graph_frames_supported_18 049
+cert_graph_frame_supported_2 050
+cert_graph_frames_supported_18 050
+cert_graph_frame_supported_2 051
+cert_graph_frames_supported_18 051
+cert_graph_frame_supported_2 052
+cert_graph_frame_indices 052 001 1110 13 6
+cert_graph_frame_graph 052 001 1110
+cert_graph_frame_links_5 052 001 0000 1110 1 0 64 64
+cert_graph_frame_links_5 052 001 0064 1110 1 64 78 14
+cert_graph_frame_links_3 052 001 1110 1 78
+cert_graph_frame_supported 052 001 1 1110
+cert_graph_frames_supported_20 052
+cert_graph_frame_supported_2 053
+cert_graph_frames_supported_18 053
+cert_graph_frame_supported_2 054
+cert_graph_frames_supported_18 054
+cert_graph_frame_supported_2 055
+cert_graph_frames_supported_18 055
+cert_graph_frame_supported_2 056
+cert_graph_frames_supported_18 056
+cert_graph_frame_supported_2 057
+cert_graph_frames_supported_18 057
+cert_graph_frame_supported_2 058
+cert_graph_frames_supported_18 058
+cert_graph_frame_supported_2 059
+cert_graph_frames_supported_18 059
+cert_graph_frame_supported_2 060
+cert_graph_frames_supported_18 060
+cert_graph_frame_supported_2 061
+cert_graph_frames_supported_18 061
+cert_graph_frame_supported_2 062
+cert_graph_frame_indices 062 001 1114 13 7
+cert_graph_frame_graph 062 001 1114
+cert_graph_frame_links_5 062 001 0000 1114 1 0 64 64
+cert_graph_frame_links_5 062 001 0064 1114 1 64 83 19
+cert_graph_frame_links_3 062 001 1114 1 83
+cert_graph_frame_supported 062 001 1 1114
+cert_graph_frames_supported_20 062
+cert_graph_frame_supported_2 063
+cert_graph_frame_indices 063 001 1114 13 8
+cert_graph_frame_graph 063 001 1114
+cert_graph_frame_links_5 063 001 0000 1114 1 0 62 62
+cert_graph_frame_links_6 063 001 1114 1
+cert_graph_frame_supported 063 001 1 1114
+cert_graph_frames_supported_20 063
+cert_graph_frame_supported_2 064
+cert_graph_frames_supported_18 064
+cert_graph_frame_supported_2 065
+cert_graph_frames_supported_18 065
+cert_graph_frame_supported_2 066
+cert_graph_frames_supported_18 066
+cert_graph_frame_supported_2 067
+cert_graph_frames_supported_18 067
+cert_graph_frame_supported_2 068
+cert_graph_frames_supported_18 068
+cert_graph_frame_supported_2 069
+cert_graph_frames_supported_18 069
+cert_graph_frame_supported_2 070
+cert_graph_frame_indices 070 001 1115 13 9
+cert_graph_frame_graph 070 001 1115
+cert_graph_frame_links_5 070 001 0000 1115 1 0 64 64
+cert_graph_frame_links_5 070 001 0064 1115 1 64 73 9
+cert_graph_frame_links_3 070 001 1115 1 73
+cert_graph_frame_supported 070 001 1 1115
+cert_graph_frame_indices 070 002 1081 13 10
+cert_graph_frame_graph 070 002 1081
+cert_graph_frame_links_5 070 002 0000 1081 2 0 64 64
+cert_graph_frame_links_5 070 002 0064 1081 2 64 73 9
+cert_graph_frame_links_3 070 002 1081 2 73
+cert_graph_frame_supported 070 002 2 1081
+cert_graph_frames_supported_16 070
+cert_graph_frame_supported_2 071
+cert_graph_frames_supported_18 071
+cert_graph_frame_supported_2 072
+cert_graph_frames_supported_18 072
+cert_graph_frame_supported_2 073
+cert_graph_frames_supported_18 073
+cert_graph_frame_supported_2 074
+cert_graph_frames_supported_18 074
+cert_graph_frame_supported_2 075
+cert_graph_frames_supported_18 075
+cert_graph_frame_supported_2 076
+cert_graph_frames_supported_18 076
+cert_graph_frame_supported_2 077
+cert_graph_frames_supported_18 077
+cert_graph_frame_supported_2 078
+cert_graph_frames_supported_18 078
+cert_graph_frame_supported_2 079
+cert_graph_frames_supported_18 079
+cert_graph_frame_supported_2 080
+cert_graph_frames_supported_18 080
+cert_graph_frame_supported_2 081
+cert_graph_frames_supported_18 081
+cert_graph_frame_supported_2 082
+cert_graph_frames_supported_18 082
+cert_graph_frame_supported_2 083
+cert_graph_frames_supported_18 083
+cert_graph_frame_supported_2 084
+cert_graph_frames_supported_18 084
+cert_graph_frame_supported_2 085
+cert_graph_frame_indices 085 001 1046 12 11
+cert_graph_frame_graph 085 001 1046
+cert_graph_frame_links_5 085 001 0000 1046 1 0 61 61
+cert_graph_frame_links_6 085 001 1046 1
+cert_graph_frame_supported 085 001 1 1046
+cert_graph_frames_supported_20 085
+cert_graph_frame_supported_2 086
+cert_graph_frames_supported_18 086
+cert_graph_frame_supported_2 087
+cert_graph_frames_supported_18 087
+cert_graph_frame_supported_2 088
+cert_graph_frames_supported_18 088
+cert_graph_frame_supported_2 089
+cert_graph_frames_supported_18 089
+cert_graph_frame_supported_2 090
+cert_graph_frames_supported_18 090
+cert_graph_frame_supported_2 091
+cert_graph_frames_supported_18 091
+cert_graph_frame_supported_2 092
+cert_graph_frame_indices 092 001 0995 12 12
+cert_graph_frame_graph 092 001 0995
+cert_graph_frame_links_5 092 001 0000 0995 1 0 57 57
+cert_graph_frame_links_6 092 001 0995 1
+cert_graph_frame_supported 092 001 1 0995
+cert_graph_frame_indices 092 002 1115 13 13
+cert_graph_frame_graph 092 002 1115
+cert_graph_frame_links_5 092 002 0000 1115 2 0 57 57
+cert_graph_frame_links_6 092 002 1115 2
+cert_graph_frame_supported 092 002 2 1115
+cert_graph_frame_indices 092 003 0994 11 14
+cert_graph_frame_graph 092 003 0994
+cert_graph_frame_links_5 092 003 0000 0994 3 0 57 57
+cert_graph_frame_links_6 092 003 0994 3
+cert_graph_frame_supported 092 003 3 0994
+cert_graph_frames_supported_6 092
+cert_graph_frame_supported_2 093
+cert_graph_frames_supported_18 093
+cert_graph_frame_supported_2 094
+cert_graph_frame_indices 094 001 1110 13 15
+cert_graph_frame_graph 094 001 1110
+cert_graph_frame_links_5 094 001 0000 1110 1 0 63 63
+cert_graph_frame_links_6 094 001 1110 1
+cert_graph_frame_supported 094 001 1 1110
+cert_graph_frames_supported_20 094
+cert_graph_frame_supported_2 095
+cert_graph_frames_supported_18 095
+cert_graph_frame_supported_2 096
+cert_graph_frames_supported_18 096
+cert_graph_frame_supported_2 097
+cert_graph_frames_supported_18 097
+cert_graph_frame_supported_2 098
+cert_graph_frames_supported_18 098
+cert_graph_frame_supported_2 099
+cert_graph_frames_supported_18 099
+end Papers.RationalityTen.CompactReplay.GraphInputsRow19Part00019

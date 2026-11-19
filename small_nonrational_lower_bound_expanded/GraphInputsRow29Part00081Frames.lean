@@ -1,0 +1,91 @@
+module
+prelude
+public meta import LowerSchemas.Frames
+public meta import CertificateNumbers
+public import GraphInputsRow29Part00081Data
+public import RawFrameSupport
+public import SharedFrameGroups052Checked
+public import SharedFrameGroups099Checked
+public import SharedFrameGroups113Checked
+public import SharedFrameGroups116Checked
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.CompactReplay.GraphInputsRow29Part00081
+open Papers.RationalityTen PackedGraphCertificate SharedGraphCellPool
+open SharedGraphFramePairs RawFrameSupport FiniteChecks
+cert_graph_frame_supported_2 000
+cert_graph_frames_supported_18 000
+cert_graph_frame_supported_2 001
+cert_graph_frames_supported_18 001
+cert_graph_frame_supported_2 002
+cert_graph_frames_supported_18 002
+cert_graph_frame_supported_2 003
+cert_graph_frames_supported_18 003
+cert_graph_frame_supported_2 004
+cert_graph_frames_supported_18 004
+cert_graph_frame_supported_2 005
+cert_graph_frame_indices 005 001 1100 13 0
+cert_graph_frame_graph 005 001 1100
+cert_graph_frame_links_5 005 001 0000 1100 1 0 64 64
+cert_graph_frame_links_5 005 001 0064 1100 1 64 114 50
+cert_graph_frame_links_3 005 001 1100 1 114
+cert_graph_frame_supported 005 001 1 1100
+cert_graph_frames_supported_20 005
+cert_graph_frame_supported_2 006
+cert_graph_frames_supported_18 006
+cert_graph_frame_supported_2 007
+cert_graph_frame_indices 007 001 0646 11 1
+cert_graph_frame_graph 007 001 0646
+cert_graph_frame_links_5 007 001 0000 0646 1 0 64 64
+cert_graph_frame_links_5 007 001 0064 0646 1 64 100 36
+cert_graph_frame_links_3 007 001 0646 1 100
+cert_graph_frame_supported 007 001 1 0646
+cert_graph_frames_supported_20 007
+cert_graph_frame_supported_2 008
+cert_graph_frames_supported_18 008
+cert_graph_frame_supported_2 009
+cert_graph_frames_supported_18 009
+cert_graph_frame_supported_2 010
+cert_graph_frames_supported_18 010
+cert_graph_frame_supported_2 011
+cert_graph_frames_supported_18 011
+cert_graph_frame_supported_2 012
+cert_graph_frames_supported_18 012
+cert_graph_frame_supported_2 013
+cert_graph_frame_indices 013 001 1041 12 2
+cert_graph_frame_graph 013 001 1041
+cert_graph_frame_links_5 013 001 0000 1041 1 0 64 64
+cert_graph_frame_links_5 013 001 0064 1041 1 64 108 44
+cert_graph_frame_links_3 013 001 1041 1 108
+cert_graph_frame_supported 013 001 1 1041
+cert_graph_frames_supported_20 013
+cert_graph_frame_supported_2 014
+cert_graph_frames_supported_18 014
+cert_graph_frame_supported_2 015
+cert_graph_frames_supported_18 015
+cert_graph_frame_supported_2 016
+cert_graph_frame_indices 016 001 1100 13 3
+cert_graph_frame_graph 016 001 1100
+cert_graph_frame_links_5 016 001 0000 1100 1 0 64 64
+cert_graph_frame_links_5 016 001 0064 1100 1 64 113 49
+cert_graph_frame_links_3 016 001 1100 1 113
+cert_graph_frame_supported 016 001 1 1100
+cert_graph_frames_supported_20 016
+cert_graph_frame_supported_2 017
+cert_graph_frames_supported_18 017
+cert_graph_frame_supported_2 018
+cert_graph_frame_indices 018 001 1110 13 4
+cert_graph_frame_graph 018 001 1110
+cert_graph_frame_links_5 018 001 0000 1110 1 0 64 64
+cert_graph_frame_links_5 018 001 0064 1110 1 64 92 28
+cert_graph_frame_links_3 018 001 1110 1 92
+cert_graph_frame_supported 018 001 1 1110
+cert_graph_frames_supported_20 018
+cert_graph_frame_supported_2 019
+cert_graph_frames_supported_18 019
+cert_graph_frame_supported_2 020
+cert_graph_frames_supported_18 020
+end Papers.RationalityTen.CompactReplay.GraphInputsRow29Part00081

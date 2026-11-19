@@ -1,0 +1,18 @@
+module
+prelude
+public meta import LowerSchemas.Frames
+public import GraphInputsRow29Part00208Data
+public import RawFrameSupport
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.CompactReplay.GraphInputsRow29Part00208
+open Papers.RationalityTen PackedGraphCertificate SharedGraphCellPool
+open SharedGraphFramePairs RawFrameSupport FiniteChecks
+cert_graph_frame_supported_2 000
+cert_graph_frames_supported_18 000
+cert_graph_frame_supported_2 001
+cert_graph_frames_supported_18 001
+end Papers.RationalityTen.CompactReplay.GraphInputsRow29Part00208

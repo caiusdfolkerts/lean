@@ -1,0 +1,51 @@
+module
+prelude
+public meta import LowerSchemas.Frames
+public meta import CertificateNumbers
+public import GraphInputsRow29Part00202Data
+public import RawFrameSupport
+public import SharedFrameGroups088Checked
+public import SharedFrameGroups089Checked
+public import SharedFrameGroups118Checked
+public import SharedFrameGroups119Checked
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.CompactReplay.GraphInputsRow29Part00202
+open Papers.RationalityTen PackedGraphCertificate SharedGraphCellPool
+open SharedGraphFramePairs RawFrameSupport FiniteChecks
+cert_graph_frame_supported_2 000
+cert_graph_frames_supported_18 000
+cert_graph_frame_supported_2 001
+cert_graph_frame_indices 001 001 1115 13 0
+cert_graph_frame_graph 001 001 1115
+cert_graph_frame_links_5 001 001 0000 1115 1 0 64 64
+cert_graph_frame_links_5 001 001 0064 1115 1 64 113 49
+cert_graph_frame_links_3 001 001 1115 1 113
+cert_graph_frame_supported 001 001 1 1115
+cert_graph_frames_supported_20 001
+cert_graph_frame_supported_2 002
+cert_graph_frame_indices 002 001 1114 13 1
+cert_graph_frame_graph 002 001 1114
+cert_graph_frame_links_5 002 001 0000 1114 1 0 64 64
+cert_graph_frame_links_5 002 001 0064 1114 1 64 109 45
+cert_graph_frame_links_3 002 001 1114 1 109
+cert_graph_frame_supported 002 001 1 1114
+cert_graph_frame_indices 002 002 0995 12 2
+cert_graph_frame_graph 002 002 0995
+cert_graph_frame_links_5 002 002 0000 0995 2 0 64 64
+cert_graph_frame_links_5 002 002 0064 0995 2 64 109 45
+cert_graph_frame_links_3 002 002 0995 2 109
+cert_graph_frame_supported 002 002 2 0995
+cert_graph_frame_indices 002 003 0993 11 3
+cert_graph_frame_graph 002 003 0993
+cert_graph_frame_links_5 002 003 0000 0993 3 0 64 64
+cert_graph_frame_links_5 002 003 0064 0993 3 64 109 45
+cert_graph_frame_links_3 002 003 0993 3 109
+cert_graph_frame_supported 002 003 3 0993
+cert_graph_frames_supported_6 002
+cert_graph_frame_supported_2 003
+cert_graph_frames_supported_18 003
+end Papers.RationalityTen.CompactReplay.GraphInputsRow29Part00202

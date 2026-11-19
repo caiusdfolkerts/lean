@@ -1,0 +1,199 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedSixBase.Part0
+public meta import CertificateNumbers
+import HexNatLiteral
+public import SignatureCompatibility
+public import FiniteChecks
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option palomar.groupedCertificateSource "RootedSixBase00GrowthCachebadMasksData204.lean"
+namespace Papers.RationalityTen.RootedCaches.RootedSixBase00
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+cert_badMasksBlock_7 0208 0
+end Papers.RationalityTen.RootedCaches.RootedSixBase00
+end
+end
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option palomar.groupedCertificateSource "RootedSixBase00GrowthCachebadMasksData205.lean"
+namespace Papers.RationalityTen.RootedCaches.RootedSixBase00
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+cert_badMasksBlock_7 0209 0
+end Papers.RationalityTen.RootedCaches.RootedSixBase00
+end
+end
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option palomar.groupedCertificateSource "RootedSixBase00GrowthCachebadMasksData206.lean"
+namespace Papers.RationalityTen.RootedCaches.RootedSixBase00
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+cert_badMasksBlock_7 0210 0
+end Papers.RationalityTen.RootedCaches.RootedSixBase00
+end
+end
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option palomar.groupedCertificateSource "RootedSixBase00GrowthCachebadMasksData207.lean"
+namespace Papers.RationalityTen.RootedCaches.RootedSixBase00
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+cert_badMasksBlock_7 0211 0
+end Papers.RationalityTen.RootedCaches.RootedSixBase00
+end
+end
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option palomar.groupedCertificateSource "RootedSixBase00GrowthCachebadMasksData208.lean"
+namespace Papers.RationalityTen.RootedCaches.RootedSixBase00
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+cert_badMasksBlock_7 0212 0
+end Papers.RationalityTen.RootedCaches.RootedSixBase00
+end
+end
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option palomar.groupedCertificateSource "RootedSixBase00GrowthCachebadMasksData209.lean"
+namespace Papers.RationalityTen.RootedCaches.RootedSixBase00
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+cert_badMasksBlock_7 0213 0
+end Papers.RationalityTen.RootedCaches.RootedSixBase00
+end
+end
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option palomar.groupedCertificateSource "RootedSixBase00GrowthCachebadMasksData210.lean"
+namespace Papers.RationalityTen.RootedCaches.RootedSixBase00
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+cert_badMasksBlock_7 0214 0
+end Papers.RationalityTen.RootedCaches.RootedSixBase00
+end
+end
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option palomar.groupedCertificateSource "RootedSixBase00GrowthCachebadMasksData211.lean"
+namespace Papers.RationalityTen.RootedCaches.RootedSixBase00
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+cert_badMasksBlock_7 0215 0
+end Papers.RationalityTen.RootedCaches.RootedSixBase00
+end
+end
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option palomar.groupedCertificateSource "RootedSixBase00GrowthCachebadMasksData212.lean"
+namespace Papers.RationalityTen.RootedCaches.RootedSixBase00
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+cert_badMasksBlock_7 0216 0
+end Papers.RationalityTen.RootedCaches.RootedSixBase00
+end
+end
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option palomar.groupedCertificateSource "RootedSixBase00GrowthCachebadMasksData213.lean"
+namespace Papers.RationalityTen.RootedCaches.RootedSixBase00
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+cert_badMasksBlock_7 0217 0
+end Papers.RationalityTen.RootedCaches.RootedSixBase00
+end
+end
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option palomar.groupedCertificateSource "RootedSixBase00GrowthCachebadMasksData214.lean"
+namespace Papers.RationalityTen.RootedCaches.RootedSixBase00
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+cert_badMasksBlock_7 0218 0
+end Papers.RationalityTen.RootedCaches.RootedSixBase00
+end
+end
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option palomar.groupedCertificateSource "RootedSixBase00GrowthCachebadMasksData215.lean"
+namespace Papers.RationalityTen.RootedCaches.RootedSixBase00
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+cert_badMasksBlock_7 0219 0
+end Papers.RationalityTen.RootedCaches.RootedSixBase00
+end
+end
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option palomar.groupedCertificateSource "RootedSixBase00GrowthCachebadMasksData216.lean"
+namespace Papers.RationalityTen.RootedCaches.RootedSixBase00
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+cert_badMasksBlock_7 0220 0
+end Papers.RationalityTen.RootedCaches.RootedSixBase00
+end
+end
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option palomar.groupedCertificateSource "RootedSixBase00GrowthCachebadMasksData217.lean"
+namespace Papers.RationalityTen.RootedCaches.RootedSixBase00
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+cert_badMasksBlock_7 0221 0
+end Papers.RationalityTen.RootedCaches.RootedSixBase00
+end
+end
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option palomar.groupedCertificateSource "RootedSixBase00GrowthCachebadMasksData218.lean"
+namespace Papers.RationalityTen.RootedCaches.RootedSixBase00
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+cert_badMasksBlock_7 0222 0
+end Papers.RationalityTen.RootedCaches.RootedSixBase00
+end
+end
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option palomar.groupedCertificateSource "RootedSixBase00GrowthCachebadMasksData220.lean"
+namespace Papers.RationalityTen.RootedCaches.RootedSixBase00
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+cert_badMasksBlock_7 0225 0
+end Papers.RationalityTen.RootedCaches.RootedSixBase00
+end
+end

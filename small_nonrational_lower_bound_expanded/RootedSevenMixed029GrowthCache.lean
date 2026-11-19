@@ -1,0 +1,40 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedSevenMixed
+public import RootedSevenMixed029GrowthCacheCells000
+public import RootedSevenMixed029GrowthCacheCells001
+public import RootedSevenMixed029GrowthCacheBad000
+public import RootedSevenMixed029GrowthCacheBad001
+public import RootedSevenMixed029GrowthCacheRidges000
+public import RootedSevenMixed029GrowthCacheRidges001
+public import RootedSevenMixed029GrowthCacheRidges002
+public import RootedSevenMixed029GrowthCacheRidges003
+public import RootedSevenMixed029GrowthCacheRidges004
+public import RootedSevenMixed029GrowthCacheRidges005
+public import RootedSevenMixed029GrowthCacheRidges006
+public import RootedSevenMixed029GrowthCacheRidges007
+public import RootedSevenMixed029GrowthCacheKinds000
+public import RootedSevenMixed029GrowthCacheWellFormed000
+public import RootedSevenMixed029GrowthCacheWellFormed001
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSevenMixed029
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+theorem cellTest_complete : Interval cellTest 0 376 := (interval_append cellTest 0 256 376 cellTestInterval0 cellTestInterval256)
+theorem badTest_complete : Interval badTest 0 376 := (interval_append badTest 0 256 376 badTestInterval0 badTestInterval256)
+cert_ridgeTest_complete_2
+cert_kindTest_complete_4
+theorem wellFormedTest_complete : Interval wellFormedTest 0 376 := (interval_append wellFormedTest 0 256 376 wellFormedTestInterval0 wellFormedTestInterval256)
+
+cert_cell_facts_2 376
+cert_ridge_facts_2
+cert_bad_disjoint 376
+cert_cache_2
+cert_raw_kind_exact_2 376
+cert_facts 376
+cert_well_formed 376
+
+end Papers.RationalityTen.RootedCaches.RootedSevenMixed029

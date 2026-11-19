@@ -1,0 +1,25 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedSubsumedForest.Part0
+public import RootedSixExtra06GrowthCache
+public import RootedSixExtra06FastWords
+public import SubsumedClassification
+public import RootedSubsumedForest0844Leaves
+public import RootedSubsumedForest0844ProofGrouped000
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedForests.RootedSubsumedForest0844
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open GrowthDAG SparseGrowthDAG GrowthPruning GrowthRenaming
+open GrowthBitsets BatchedGrowthPruning BatchedOrbitGrowth
+open RawNatGrowthSoundness RawNatGrowthCompleteness
+
+cert_nodeTest_complete_4 997
+cert_root_7 996
+cert_nodes_3 240
+cert_boundary_classification_4 240 06
+
+end Papers.RationalityTen.RootedForests.RootedSubsumedForest0844

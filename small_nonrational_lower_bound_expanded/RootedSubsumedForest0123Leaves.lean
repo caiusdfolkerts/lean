@@ -1,0 +1,17 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedSubsumedForest.Part0
+public import RootedSubsumedForest0123Data
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedForests.RootedSubsumedForest0123
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open GrowthDAG SparseGrowthDAG GrowthPruning GrowthRenaming
+open GrowthBitsets BatchedGrowthPruning BatchedOrbitGrowth
+open RawNatGrowthSoundness RawNatGrowthCompleteness
+cert_leafTest_block_3 0 1
+cert_leafTest_complete_3
+end Papers.RationalityTen.RootedForests.RootedSubsumedForest0123

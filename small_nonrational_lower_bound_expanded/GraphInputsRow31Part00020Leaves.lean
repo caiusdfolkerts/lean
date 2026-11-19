@@ -1,0 +1,69 @@
+module
+prelude
+public meta import LowerSchemas.Leaves
+public import GraphInputsRow31Part00020Data
+public import FastRawLeafCertificate
+public import InducedTerminalMatches.M077
+
+@[expose] public section
+namespace Papers.RationalityTen.CompactReplay.GraphInputsRow31Part00020
+open Papers.RationalityTen ConcreteGrowth RawLeafCertificate FastRawLeafCertificate
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+
+cert_graph_rawLeaves 000
+cert_graph_raw_exact 000
+cert_graph_certificateTable_6 000 077 077 077 077 2480 2481 2482 2483 2484 2485 2486 2487
+cert_graph_certificates 000
+cert_graph_leaf_checked_2 000 0 077 2480
+cert_graph_leaf_checked_2 000 1 077 2481
+cert_graph_leaf_checked_2 000 2 077 2482
+cert_graph_leaf_checked_2 000 3 077 2483
+cert_graph_leaf_checked_2 000 4 077 2484
+cert_graph_leaf_checked_2 000 5 077 2485
+cert_graph_leaf_checked_2 000 6 077 2486
+cert_graph_leaf_checked_2 000 7 077 2487
+cert_graph_leaf_certificates_checked_8 000
+
+cert_graph_rawLeaves 001
+cert_graph_raw_exact 001
+cert_graph_certificateTable_5 001
+cert_graph_certificates 001
+cert_graph_leaf_checked_3 001
+cert_graph_leaf_certificates_checked_7 001
+
+cert_graph_rawLeaves 002
+cert_graph_raw_exact 002
+cert_graph_certificateTable_5 002
+cert_graph_certificates 002
+cert_graph_leaf_checked_3 002
+cert_graph_leaf_certificates_checked_7 002
+
+cert_graph_rawLeaves 003
+cert_graph_raw_exact 003
+cert_graph_certificateTable_5 003
+cert_graph_certificates 003
+cert_graph_leaf_checked_3 003
+cert_graph_leaf_certificates_checked_7 003
+
+cert_graph_rawLeaves 004
+cert_graph_raw_exact 004
+cert_graph_certificateTable_5 004
+cert_graph_certificates 004
+cert_graph_leaf_checked_3 004
+cert_graph_leaf_certificates_checked_7 004
+
+cert_graph_rawLeaves 005
+cert_graph_raw_exact 005
+cert_graph_certificateTable_5 005
+cert_graph_certificates 005
+cert_graph_leaf_checked_3 005
+cert_graph_leaf_certificates_checked_7 005
+
+cert_graph_rawLeaves 006
+cert_graph_raw_exact 006
+cert_graph_certificateTable_5 006
+cert_graph_certificates 006
+cert_graph_leaf_checked_3 006
+cert_graph_leaf_certificates_checked_7 006
+end Papers.RationalityTen.CompactReplay.GraphInputsRow31Part00020

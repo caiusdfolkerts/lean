@@ -1,0 +1,76 @@
+module
+prelude
+public meta import GraphCases
+public import GraphInputsRow29Part00112Checked
+public import GraphInputsRow29Part00112Metadata
+public import GraphInputsRow29Part00112Frames
+public import GraphInputsRow29Part00112Leaves
+public import GraphEmbeddingCoverage
+public import GraphCoverageBatch115
+public import GraphCoverageBatch149
+public import GraphInputsRow29Part00112Structural000
+
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.CompactReplay.GraphInputsRow29Part00112
+open Papers.RationalityTen PackedGraphCertificate SharedGraphCellPool
+open GraphCaseCertificate GraphRowSpecifications
+
+theorem record000_parameters : Parameters record000 (rowOfCode 29) 19564259704832 where
+  kind_count := by decide +kernel
+  quota := by decide +kernel
+  required := by decide +kernel
+  internal_missing := by decide +kernel
+  minimum_incidence := by decide +kernel
+
+theorem record000_coverage : Coverage record000 FacetUniverses.FullSmall.cells SharedSmallGraph.graphRows 19564259704832 :=
+  GraphCoverageDescriptions.coverage_of_checked record000 GraphCoverageDescriptions.GraphCoverageBatch115.candidate11571 FacetUniverses.FullSmall.cells SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (GraphCoverageDescriptions.quota 14)) 19564259704832
+    (by rfl) record000_cells_exact
+    (GraphCoverageDescriptions.small_allowed record000 14 (by decide +kernel))
+    GraphEmbeddingCoverage.small_edges GraphCoverageDescriptions.GraphCoverageBatch115.candidate11571_checked
+
+theorem record000_result : Result (29, 19564259704832) :=
+  of_direct_small 29 19564259704832 (by decide) ⟨record000, Papers.RationalityTen.StructuralGraphCases.GraphInputsRow29Part00112.record000.direct_core, record000_parameters, record000_coverage⟩
+
+certified_graph_case record001 29 19572837057152 GraphCoverageDescriptions.GraphCoverageBatch149.candidate14917 14
+
+certified_graph_case record002 29 19573914992640 GraphCoverageDescriptions.GraphCoverageBatch115.candidate11572 14
+
+theorem record003_parameters : Parameters record003 (rowOfCode 29) 19586326233344 where
+  kind_count := by decide +kernel
+  quota := by decide +kernel
+  required := by decide +kernel
+  internal_missing := by decide +kernel
+  minimum_incidence := by decide +kernel
+
+theorem record003_coverage : Coverage record003 FacetUniverses.FullSmall.cells SharedSmallGraph.graphRows 19586326233344 :=
+  GraphCoverageDescriptions.coverage_of_checked record003 GraphCoverageDescriptions.GraphCoverageBatch115.candidate11573 FacetUniverses.FullSmall.cells SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (GraphCoverageDescriptions.quota 14)) 19586326233344
+    (by rfl) record003_cells_exact
+    (GraphCoverageDescriptions.small_allowed record003 14 (by decide +kernel))
+    GraphEmbeddingCoverage.small_edges GraphCoverageDescriptions.GraphCoverageBatch115.candidate11573_checked
+
+theorem record003_result : Result (29, 19586326233344) :=
+  of_direct_small 29 19586326233344 (by decide) ⟨record003, Papers.RationalityTen.StructuralGraphCases.GraphInputsRow29Part00112.record003.direct_core, record003_parameters, record003_coverage⟩
+
+theorem record004_parameters : Parameters record004 (rowOfCode 29) 19588947443712 where
+  kind_count := by decide +kernel
+  quota := by decide +kernel
+  required := by decide +kernel
+  internal_missing := by decide +kernel
+  minimum_incidence := by decide +kernel
+
+theorem record004_coverage : Coverage record004 FacetUniverses.FullSmall.cells SharedSmallGraph.graphRows 19588947443712 :=
+  GraphCoverageDescriptions.coverage_of_checked record004 GraphCoverageDescriptions.GraphCoverageBatch115.candidate11574 FacetUniverses.FullSmall.cells SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (GraphCoverageDescriptions.quota 14)) 19588947443712
+    (by rfl) record004_cells_exact
+    (GraphCoverageDescriptions.small_allowed record004 14 (by decide +kernel))
+    GraphEmbeddingCoverage.small_edges GraphCoverageDescriptions.GraphCoverageBatch115.candidate11574_checked
+
+theorem record004_result : Result (29, 19588947443712) :=
+  of_direct_small 29 19588947443712 (by decide) ⟨record004, Papers.RationalityTen.StructuralGraphCases.GraphInputsRow29Part00112.record004.direct_core, record004_parameters, record004_coverage⟩
+end Papers.RationalityTen.CompactReplay.GraphInputsRow29Part00112

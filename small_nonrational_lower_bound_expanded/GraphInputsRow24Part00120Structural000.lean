@@ -1,0 +1,783 @@
+module
+prelude
+public meta import CertificateNumbers
+public import FacetCliqueRaw
+public import FacetSatEdges
+public import FacetSatGroups
+public import FacetSatRaw
+public import GraphDirectCore
+public import GraphInputsRow24Part00120Data
+public import GraphInputsRow24Part00120Frames
+public import GraphInputsRow24Part00120Leaves
+public import GraphInputsRow24Part00120Metadata
+public meta import FacetSatFacts
+public meta import FacetSatInitials
+public meta import HexNatLiteral
+public meta import KernelDecideContext
+public meta import RupProofTerm
+public meta import SparseNatLiteral
+
+@[expose] public section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record000
+open Papers.RationalityTen PackedGraphCertificate GraphCaseCertificate
+abbrev raw := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record000
+def vertexColumn : Fields := ⟨10, (certNat% 0)⟩
+def kindColumn : Fields := ⟨3, (certNat% 1)⟩
+def data := FacetSat.RawProjection.data raw vertexColumn kindColumn
+theorem projection_checked : FacetSat.RawProjection.check raw vertexColumn kindColumn = true :=
+  by decide_kernel_context
+def selectedKinds : List Nat := [2]
+def candidates : List (Fin raw.n) := [⟨24, by decide⟩, ⟨25, by decide⟩, ⟨26, by decide⟩, ⟨27, by decide⟩, ⟨28, by decide⟩, ⟨29, by decide⟩, ⟨30, by decide⟩, ⟨31, by decide⟩, ⟨32, by decide⟩, ⟨36, by decide⟩, ⟨38, by decide⟩, ⟨39, by decide⟩, ⟨40, by decide⟩, ⟨42, by decide⟩, ⟨47, by decide⟩, ⟨48, by decide⟩, ⟨49, by decide⟩, ⟨50, by decide⟩, ⟨51, by decide⟩, ⟨52, by decide⟩, ⟨53, by decide⟩, ⟨58, by decide⟩, ⟨59, by decide⟩, ⟨61, by decide⟩, ⟨65, by decide⟩, ⟨66, by decide⟩, ⟨67, by decide⟩, ⟨69, by decide⟩, ⟨73, by decide⟩, ⟨74, by decide⟩, ⟨75, by decide⟩, ⟨76, by decide⟩, ⟨78, by decide⟩]
+def requirements : Nat → Nat := GraphFacetClique.restrictedQuota selectedKinds raw.data.quota
+theorem candidates_complete : FacetSat.cliqueCoverageCheck data.kind selectedKinds candidates = true :=
+  by decide_kernel_context
+def certificate : CliqueExclusion.QuotaCertificate raw.n :=
+  let c0 : CliqueExclusion.QuotaCertificate raw.n := .classes 2 [(certNat% 2), (certNat% 3), (certNat% 4), (certNat% 5), 9007199254740992]
+  let c1 : CliqueExclusion.QuotaCertificate raw.n := .classes 2 [(certNat% 6), (certNat% 7), (certNat% 8), (certNat% 9), 585467951558164480, (certNat% 10)]
+  let c2 : CliqueExclusion.QuotaCertificate raw.n := .split ⟨58, by decide⟩ c1 c0
+  let c3 : CliqueExclusion.QuotaCertificate raw.n := .classes 2 [(certNat% 11), (certNat% 12), 864691132750102528, (certNat% 13), (certNat% 14), 4398583382016]
+  let c4 : CliqueExclusion.QuotaCertificate raw.n := .classes 2 [(certNat% 15), (certNat% 16), (certNat% 17)]
+  let c5 : CliqueExclusion.QuotaCertificate raw.n := .classes 2 [(certNat% 18), (certNat% 19), 576460754585124864, (certNat% 20), (certNat% 21)]
+  let c6 : CliqueExclusion.QuotaCertificate raw.n := .split ⟨58, by decide⟩ c5 c4
+  let c7 : CliqueExclusion.QuotaCertificate raw.n := .classes 2 [(certNat% 22), (certNat% 19), (certNat% 23), 578712554264592384, (certNat% 24), (certNat% 5)]
+  let c8 : CliqueExclusion.QuotaCertificate raw.n := .split ⟨69, by decide⟩ c7 c6
+  let c9 : CliqueExclusion.QuotaCertificate raw.n := .classes 2 [(certNat% 25), (certNat% 26), 586593851465007104, (certNat% 27), 422212465065984, 288230376151711744]
+  let c10 : CliqueExclusion.QuotaCertificate raw.n := .classes 2 [(certNat% 28), 576460754450907136, 1374389534720, (certNat% 29), (certNat% 30)]
+  let c11 : CliqueExclusion.QuotaCertificate raw.n := .classes 2 [(certNat% 31), (certNat% 32), 2305844658514690048, 588845651278692352, (certNat% 12), 703687441776640]
+  let c12 : CliqueExclusion.QuotaCertificate raw.n := .split ⟨48, by decide⟩ c11 c10
+  let c13 : CliqueExclusion.QuotaCertificate raw.n := .classes 2 [(certNat% 33), (certNat% 26), 2305844658514690048, (certNat% 34), 985162418487296, (certNat% 35)]
+  let c14 : CliqueExclusion.QuotaCertificate raw.n := .classes 2 [(certNat% 36), (certNat% 37), 2305844108758876160, (certNat% 38), 9992361673228288, (certNat% 39)]
+  let c15 : CliqueExclusion.QuotaCertificate raw.n := .classes 2 [(certNat% 40), 2305844658514690048, (certNat% 34), (certNat% 41), (certNat% 35), (certNat% 5), 9992361673228288]
+  let c16 : CliqueExclusion.QuotaCertificate raw.n := .split ⟨31, by decide⟩ c15 c14
+  let c17 : CliqueExclusion.QuotaCertificate raw.n := .split ⟨59, by decide⟩ c16 c13
+  let c18 : CliqueExclusion.QuotaCertificate raw.n := .split ⟨29, by decide⟩ c17 c12
+  let c19 : CliqueExclusion.QuotaCertificate raw.n := .split ⟨30, by decide⟩ c18 c9
+  let c20 : CliqueExclusion.QuotaCertificate raw.n := .split ⟨52, by decide⟩ c19 c8
+  let c21 : CliqueExclusion.QuotaCertificate raw.n := .split ⟨26, by decide⟩ c20 c3
+  let c22 : CliqueExclusion.QuotaCertificate raw.n := .split ⟨36, by decide⟩ c21 c2
+  c22
+theorem checked : CliqueExclusion.checkQuotas data.relation data.kind
+    candidates requirements certificate = true := by decide_kernel_context
+theorem local_excluded (valid : GraphGrowthInputs.Valid raw.inputs)
+    (matrix : MatrixGraphProblem.Checked raw.data) (B : List (Fin raw.n))
+    (H : GraphGrowthConstraints.Target (raw.inputs.problem valid) B) : False :=
+  FacetSat.RawProjection.excluded_of_clique raw valid matrix vertexColumn kindColumn
+    projection_checked selectedKinds candidates candidates_complete certificate checked B H
+theorem direct_core : DirectCore raw where
+  matrix := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record000_matrix_checked
+  valid := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record000_validity
+  literal := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record000_literal
+  leaf_nodup := by decide +kernel
+  frames := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record000_frames_supported Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record000_cells_exact
+  leaves_checked := ⟨Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record000_certificates, Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record000_leaf_certificates_checked⟩
+  complete := fun B H => False.elim (local_excluded Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record000_validity Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record000_matrix_checked B H)
+end Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record000
+
+@[expose] public section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record005
+open Papers.RationalityTen PackedGraphCertificate GraphCaseCertificate
+abbrev raw := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record005
+def vertexColumn : Fields := ⟨10, (certNat% 42)⟩
+def kindColumn : Fields := ⟨3, (certNat% 43)⟩
+def data := FacetSat.RawProjection.data raw vertexColumn kindColumn
+theorem projection_checked : FacetSat.RawProjection.check raw vertexColumn kindColumn = true :=
+  by decide_kernel_context
+def selectedKinds : List Nat := [2]
+def candidates : List (Fin raw.n) := [⟨24, by decide⟩, ⟨25, by decide⟩, ⟨28, by decide⟩, ⟨29, by decide⟩, ⟨30, by decide⟩, ⟨31, by decide⟩, ⟨32, by decide⟩, ⟨33, by decide⟩, ⟨34, by decide⟩, ⟨35, by decide⟩, ⟨36, by decide⟩, ⟨38, by decide⟩, ⟨39, by decide⟩, ⟨40, by decide⟩, ⟨41, by decide⟩, ⟨42, by decide⟩, ⟨46, by decide⟩, ⟨50, by decide⟩, ⟨54, by decide⟩, ⟨59, by decide⟩, ⟨60, by decide⟩, ⟨67, by decide⟩, ⟨68, by decide⟩, ⟨71, by decide⟩, ⟨72, by decide⟩, ⟨74, by decide⟩, ⟨75, by decide⟩, ⟨76, by decide⟩, ⟨80, by decide⟩, ⟨86, by decide⟩]
+def requirements : Nat → Nat := GraphFacetClique.restrictedQuota selectedKinds raw.data.quota
+theorem candidates_complete : FacetSat.cliqueCoverageCheck data.kind selectedKinds candidates = true :=
+  by decide_kernel_context
+def certificate : CliqueExclusion.QuotaCertificate raw.n :=
+  let c0 : CliqueExclusion.QuotaCertificate raw.n := .classes 2 [1152993523692208128, (certNat% 44), (certNat% 45), (certNat% 46), (certNat% 47), 6871947673600, 79993765888]
+  c0
+theorem checked : CliqueExclusion.checkQuotas data.relation data.kind
+    candidates requirements certificate = true := by decide_kernel_context
+theorem local_excluded (valid : GraphGrowthInputs.Valid raw.inputs)
+    (matrix : MatrixGraphProblem.Checked raw.data) (B : List (Fin raw.n))
+    (H : GraphGrowthConstraints.Target (raw.inputs.problem valid) B) : False :=
+  FacetSat.RawProjection.excluded_of_clique raw valid matrix vertexColumn kindColumn
+    projection_checked selectedKinds candidates candidates_complete certificate checked B H
+theorem direct_core : DirectCore raw where
+  matrix := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record005_matrix_checked
+  valid := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record005_validity
+  literal := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record005_literal
+  leaf_nodup := by decide +kernel
+  frames := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record005_frames_supported Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record005_cells_exact
+  leaves_checked := ⟨Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record005_certificates, Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record005_leaf_certificates_checked⟩
+  complete := fun B H => False.elim (local_excluded Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record005_validity Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record005_matrix_checked B H)
+end Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record005
+
+@[expose] public section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option maxErrors 5
+set_option autoImplicit false
+set_option linter.unusedVariables false
+namespace Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record004
+open Papers.RationalityTen
+
+def vertexColumn : PackedGraphCertificate.Fields :=
+  ⟨10, sparse_nat% "1d46d1cccb0dc7497272b2a369c6c9996558d68d936c398e538ce8b92e2785e724d9715a5356352d68d6354d3362d4b49d175c358cd38cc7362e4b52ccb8ad2b26c5b61d4731d2785c9715d0f23c4f0bc1f7218c52a26498368390e344c9894950d60d2362314c3382c4b81c2705c0f"⟩
+def kindColumn : PackedGraphCertificate.Fields :=
+  ⟨3, sparse_nat% "369b6d36d36d249349b49b4924d269b6926924da6da492492249249249249249249"⟩
+def data : FacetSat.Data :=
+  FacetSat.RawProjection.data Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record004 vertexColumn kindColumn
+theorem projection_checked :
+    FacetSat.RawProjection.check Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record004 vertexColumn kindColumn = true := by
+  decide +kernel
+
+def facetIndex (i : Nat) : Fin data.count :=
+  ⟨i % data.count, Nat.mod_lt _ (by decide)⟩
+def ridgeIndex (i : Nat) : Fin 1024 :=
+  ⟨i % 1024, Nat.mod_lt _ (by decide)⟩
+def edgeCount : Nat := 45
+def requiredEdges : Nat := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record004.data.requiredEdges
+def edgeRows : Fin edgeCount → Nat := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record004.data.edgeRows
+def edgeIndex (i : Nat) : Fin edgeCount :=
+  ⟨i % edgeCount, Nat.mod_lt _ (by decide)⟩
+
+def requirements : Nat → Nat := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record004.data.quota
+
+def groupMembers3 : ConcreteGrowth.Table (List (Fin data.count)) :=
+(.branch 4
+ (.branch 2
+ (.branch 1
+ (.leaf ([(facetIndex 38), (facetIndex 80)]))
+ (.leaf ([(facetIndex 51), (facetIndex 85)])))
+ (.branch 3
+ (.leaf ([(facetIndex 75), (facetIndex 76), (facetIndex 82), (facetIndex 87)]))
+ (.leaf ([(facetIndex 34), (facetIndex 35), (facetIndex 47), (facetIndex 60)]))))
+ (.branch 6
+ (.branch 5
+ (.leaf ([(facetIndex 33), (facetIndex 37), (facetIndex 43), (facetIndex 83)]))
+ (.leaf ([(facetIndex 49), (facetIndex 65), (facetIndex 68)])))
+ (.branch 7
+ (.leaf ([(facetIndex 64), (facetIndex 74), (facetIndex 79)]))
+ (.branch 8
+ (.leaf ([(facetIndex 54), (facetIndex 78), (facetIndex 84), (facetIndex 88)]))
+ (.leaf ([(facetIndex 48), (facetIndex 61)]))))))
+def groupColors3 : PackedGraphCertificate.Fields :=
+  ⟨4, sparse_nat% "72017420067022600000500560083000007001058300040000040334z21;"⟩
+def grouping3 : FacetSat.Grouping data.count where
+  count := 9
+  members := fun g => groupMembers3.get g
+  color := fun c => groupColors3.get c.val
+def groupKind3 : List Nat := List.range grouping3.count
+
+def grouped3_0000 : List Nat := [0]
+def grouped3_0001 : List Nat := [0, 1]
+def grouped3_0002 : List Nat := [0, 1, 2, 3]
+def grouped3_0004 : List Nat := [1]
+def grouped3_0005 : List Nat := [2]
+def grouped3_0006 : List Nat := [2, 3]
+def grouped3_0007 : List Nat := [3]
+def grouped3_0008 : List Nat := [4]
+def grouped3_0009 : List Nat := [4, 5]
+def grouped3_0010 : List Nat := [4, 5, 6, 7, 8]
+def grouped3_0011 : List Nat := [5]
+def grouped3_0012 : List Nat := [6]
+def grouped3_0013 : List Nat := [6, 7, 8]
+def grouped3_0014 : List Nat := [7]
+def grouped3_0015 : List Nat := [7, 8]
+def grouped3_0016 : List Nat := [8]
+
+theorem ridge_matrix_checked :
+    data.ridgeMatrix = PackedIncidenceMatrix.code (ConcreteGrowth.ridgeList data.cells) :=
+  FacetSat.RawProjection.ridge_matrix Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record004 vertexColumn kindColumn
+    Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record004_matrix_checked
+
+def leafCount : Nat := 0
+def kindKeys : List Nat := [1, 2, 3]
+theorem kindKeys_checked : FacetSat.RawProjection.kindKeysCheck data.toData.kind kindKeys = true := by
+  decide +kernel
+def leaves (j : Fin leafCount) : List (Fin data.count) := Fin.elim0 j
+
+facet_model% "Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record004" "{\"atoms\":[{\"tag\":\"facet\",\"index\":7},{\"tag\":\"facet\",\"index\":12},{\"tag\":\"facet\",\"index\":15},{\"tag\":\"facet\",\"index\":19},{\"tag\":\"facet\",\"index\":22},{\"tag\":\"facet\",\"index\":23},{\"tag\":\"facet\",\"index\":29},{\"tag\":\"facet\",\"index\":30},{\"tag\":\"facet\",\"index\":32},{\"tag\":\"facet\",\"index\":34},{\"tag\":\"facet\",\"index\":35},{\"tag\":\"facet\",\"index\":36},{\"tag\":\"facet\",\"index\":37},{\"tag\":\"facet\",\"index\":38},{\"tag\":\"facet\",\"index\":43},{\"tag\":\"facet\",\"index\":44},{\"tag\":\"facet\",\"index\":46},{\"tag\":\"facet\",\"index\":47},{\"tag\":\"facet\",\"index\":48},{\"tag\":\"facet\",\"index\":49},{\"tag\":\"facet\",\"index\":50},{\"tag\":\"facet\",\"index\":51},{\"tag\":\"facet\",\"index\":55},{\"tag\":\"facet\",\"index\":57},{\"tag\":\"facet\",\"index\":59},{\"tag\":\"facet\",\"index\":60},{\"tag\":\"facet\",\"index\":61},{\"tag\":\"facet\",\"index\":62},{\"tag\":\"facet\",\"index\":63},{\"tag\":\"facet\",\"index\":64},{\"tag\":\"facet\",\"index\":65},{\"tag\":\"facet\",\"index\":66},{\"tag\":\"facet\",\"index\":70},{\"tag\":\"facet\",\"index\":72},{\"tag\":\"facet\",\"index\":74},{\"tag\":\"facet\",\"index\":75},{\"tag\":\"facet\",\"index\":76},{\"tag\":\"facet\",\"index\":77},{\"tag\":\"facet\",\"index\":78},{\"tag\":\"facet\",\"index\":79},{\"tag\":\"facet\",\"index\":80},{\"tag\":\"facet\",\"index\":81},{\"tag\":\"facet\",\"index\":82},{\"tag\":\"facet\",\"index\":83},{\"tag\":\"facet\",\"index\":84},{\"tag\":\"facet\",\"index\":85},{\"tag\":\"facet\",\"index\":86},{\"tag\":\"facet\",\"index\":87},{\"tag\":\"facet\",\"index\":88},{\"tag\":\"group\",\"kind\":3,\"index\":0},{\"tag\":\"group\",\"kind\":3,\"index\":1},{\"tag\":\"group\",\"kind\":3,\"index\":2},{\"tag\":\"group\",\"kind\":3,\"index\":3},{\"tag\":\"group\",\"kind\":3,\"index\":4},{\"tag\":\"group\",\"kind\":3,\"index\":5},{\"tag\":\"group\",\"kind\":3,\"index\":6},{\"tag\":\"group\",\"kind\":3,\"index\":7},{\"tag\":\"group\",\"kind\":3,\"index\":8},{\"tag\":\"group_totalizer\",\"kind\":3,\"threshold\":1,\"list_name\":\"grouped3_0001\"},{\"tag\":\"group_totalizer\",\"kind\":3,\"threshold\":1,\"list_name\":\"grouped3_0006\"},{\"tag\":\"group_totalizer\",\"kind\":3,\"threshold\":1,\"list_name\":\"grouped3_0002\"},{\"tag\":\"group_totalizer\",\"kind\":3,\"threshold\":2,\"list_name\":\"grouped3_0002\"},{\"tag\":\"group_totalizer\",\"kind\":3,\"threshold\":1,\"list_name\":\"grouped3_0009\"},{\"tag\":\"group_totalizer\",\"kind\":3,\"threshold\":1,\"list_name\":\"grouped3_0015\"},{\"tag\":\"group_totalizer\",\"kind\":3,\"threshold\":1,\"list_name\":\"grouped3_0013\"},{\"tag\":\"group_totalizer\",\"kind\":3,\"threshold\":2,\"list_name\":\"grouped3_0013\"},{\"tag\":\"group_totalizer\",\"kind\":3,\"threshold\":1,\"list_name\":\"grouped3_0010\"},{\"tag\":\"group_totalizer\",\"kind\":3,\"threshold\":2,\"list_name\":\"grouped3_0010\"},{\"tag\":\"group_totalizer\",\"kind\":3,\"threshold\":3,\"list_name\":\"groupKind3\"}]}"
+facet_atoms% "Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record004" 69
+
+facet_facts% "Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record004" "{\"ridges\":[[7,81],[7,82],[12,148],[15,208],[19,292],[22,388],[23,448],[29,82],[30,148],[32,292],[36,81],[36,82],[44,81],[44,82],[46,82],[46,208],[47,353],[48,387],[49,92],[50,148],[55,388],[57,148],[59,148],[59,208],[60,417],[62,208],[63,448],[66,290],[70,388],[72,292],[75,340],[77,292],[79,154],[81,322],[82,368],[83,402],[84,92],[86,388],[87,432],[88,340]],\"owners\":[[7,81,[15,49,59,62],[29,36,44]],[36,81,[15,59],[7,29,44,49,62]],[44,81,[15,49,59,62],[7,29,36]],[7,82,[64,74,75,79,82,83],[29,36,44,46]],[29,82,[79,82,83],[7,36,44,46,64,74,75]],[36,82,[74,75,82,83],[7,29,44,46,64,79]],[44,82,[64,74,75,79,83],[7,29,36,46,82]],[46,82,[64,75,82],[7,29,36,44,74,79,83]],[12,148,[65,74,76,84,87,88],[30,50,57,59]],[30,148,[84,87,88],[12,50,57,59,65,74,76]],[50,148,[74,76,87,88],[12,30,57,59,65,84]],[57,148,[65,74,76,84,88],[12,30,50,59,87]],[59,148,[65,76,87],[12,30,50,57,74,84,88]],[15,208,[74,79,83,84,88],[46,59,62]],[46,208,[84,88],[15,59,62,74,79,83]],[59,208,[79,83],[15,46,62,74,84,88]],[62,208,[74,83,88],[15,46,59,79,84]],[66,290,[47,82],[19,32,38,72,77,80]],[19,292,[51,60,85,87],[32,66,72,77]],[32,292,[85,87],[19,51,60,66,72,77]],[72,292,[51,60,85],[19,32,66,77,87]],[77,292,[51,60,87],[19,32,66,72,85]],[81,322,[34,47,75,82],[21,41,48,69,78,83]],[22,388,[35,60,61,76,78,87,88],[55,70,86]],[55,388,[76,78,87,88],[22,35,60,61,70,86]],[70,388,[60,61,87,88],[22,35,55,76,78,86]],[86,388,[35,60,76,87],[22,55,61,70,78,88]],[23,448,[48,61,78,83,88],[63,81,86]],[63,448,[78,83,88],[23,48,61,81,86]],[48,387,[35,43],[]],[79,154,[37,65],[]],[47,353,[],[]],[49,92,[64,84],[]],[84,92,[49,64],[]],[60,417,[],[]],[75,340,[88],[]],[88,340,[75],[]],[83,402,[76],[]],[82,368,[],[]],[87,432,[],[]]],\"edges\":[[31,[7,15,29,36,44,46,49,59,62,64,74,75,79,82,83,84,88]],[32,[12,15,30,37,46,50,57,59,62,65,74,76,79,83,84,87,88]],[37,[19,32,38,47,51,60,66,72,77,80,82,85,87]],[42,[22,23,35,43,48,55,60,61,63,70,76,78,81,83,86,87,88]]],\"groupings\":[3]}"
+
+facet_refute_shared% "Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record004" "{\"namespace\":\"Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record004\",\"lower_only\":false,\"coverage\":true,\"edge_cover\":true,\"clauses\":[[-1,3,20,25,28],[-12,3,25],[-16,3,20,25,28],[-1,30,35,36,40,43,44],[-7,40,43,44],[-12,35,36,43,44],[-16,30,35,36,40,44],[-17,30,36,43],[-2,31,35,37,45,48,49],[-8,45,48,49],[-21,35,37,48,49],[-24,31,35,37,45,49],[-25,31,37,48],[-3,35,40,44,45,49],[-17,45,49],[-25,40,44],[-28,35,44,49],[-32,18,43],[-4,22,26,46,48],[-9,46,48],[-34,22,26,46],[-38,22,26,48],[-42,10,18,36,43],[-5,11,26,27,37,39,48,49],[-23,37,39,48,49],[-33,26,27,48,49],[-47,11,26,37,48],[-6,19,27,39,44,49],[-29,39,44,49],[-19,11,15],[-40,13,31],[-18],[-20,30,45],[-45,20,30],[-26],[-36,49],[-49,36],[-44,37],[-43],[-48],[-14,50],[-41,50],[-22,51],[-46,51],[-36,52],[-37,52],[-10,53],[-11,53],[-13,54],[-15,54],[-44,54],[-20,55],[-31,55],[-30,56],[-35,56],[-40,56],[-39,57],[-45,57],[-49,57],[-27,58],[-51,59],[-50,59],[-53,60],[-52,60],[-59,61],[-59,-60,62],[-55,63],[-54,63],[-58,64],[-57,64],[-64,65],[-56,65],[-56,-64,66],[-65,67],[-66,68],[-63,67],[-63,-65,68],[-61,-68,69],[-62,-67,69],[-69],[1,3,7,12,16,17,20,25,28,30,35,36,40,43,44,45,49],[2,3,8,13,17,21,24,25,28,31,35,37,40,44,45,48,49],[4,9,14,18,22,26,32,34,38,41,43,46,48],[5,6,11,15,19,23,26,27,29,33,37,39,42,44,47,48,49]],\"atoms\":[{\"tag\":\"facet\",\"index\":7},{\"tag\":\"facet\",\"index\":12},{\"tag\":\"facet\",\"index\":15},{\"tag\":\"facet\",\"index\":19},{\"tag\":\"facet\",\"index\":22},{\"tag\":\"facet\",\"index\":23},{\"tag\":\"facet\",\"index\":29},{\"tag\":\"facet\",\"index\":30},{\"tag\":\"facet\",\"index\":32},{\"tag\":\"facet\",\"index\":34},{\"tag\":\"facet\",\"index\":35},{\"tag\":\"facet\",\"index\":36},{\"tag\":\"facet\",\"index\":37},{\"tag\":\"facet\",\"index\":38},{\"tag\":\"facet\",\"index\":43},{\"tag\":\"facet\",\"index\":44},{\"tag\":\"facet\",\"index\":46},{\"tag\":\"facet\",\"index\":47},{\"tag\":\"facet\",\"index\":48},{\"tag\":\"facet\",\"index\":49},{\"tag\":\"facet\",\"index\":50},{\"tag\":\"facet\",\"index\":51},{\"tag\":\"facet\",\"index\":55},{\"tag\":\"facet\",\"index\":57},{\"tag\":\"facet\",\"index\":59},{\"tag\":\"facet\",\"index\":60},{\"tag\":\"facet\",\"index\":61},{\"tag\":\"facet\",\"index\":62},{\"tag\":\"facet\",\"index\":63},{\"tag\":\"facet\",\"index\":64},{\"tag\":\"facet\",\"index\":65},{\"tag\":\"facet\",\"index\":66},{\"tag\":\"facet\",\"index\":70},{\"tag\":\"facet\",\"index\":72},{\"tag\":\"facet\",\"index\":74},{\"tag\":\"facet\",\"index\":75},{\"tag\":\"facet\",\"index\":76},{\"tag\":\"facet\",\"index\":77},{\"tag\":\"facet\",\"index\":78},{\"tag\":\"facet\",\"index\":79},{\"tag\":\"facet\",\"index\":80},{\"tag\":\"facet\",\"index\":81},{\"tag\":\"facet\",\"index\":82},{\"tag\":\"facet\",\"index\":83},{\"tag\":\"facet\",\"index\":84},{\"tag\":\"facet\",\"index\":85},{\"tag\":\"facet\",\"index\":86},{\"tag\":\"facet\",\"index\":87},{\"tag\":\"facet\",\"index\":88},{\"tag\":\"group\",\"index\":0,\"kind\":3},{\"tag\":\"group\",\"index\":1,\"kind\":3},{\"tag\":\"group\",\"index\":2,\"kind\":3},{\"tag\":\"group\",\"index\":3,\"kind\":3},{\"tag\":\"group\",\"index\":4,\"kind\":3},{\"tag\":\"group\",\"index\":5,\"kind\":3},{\"tag\":\"group\",\"index\":6,\"kind\":3},{\"tag\":\"group\",\"index\":7,\"kind\":3},{\"tag\":\"group\",\"index\":8,\"kind\":3},{\"tag\":\"group_totalizer\",\"kind\":3},{\"tag\":\"group_totalizer\",\"kind\":3},{\"tag\":\"group_totalizer\",\"kind\":3},{\"tag\":\"group_totalizer\",\"kind\":3},{\"tag\":\"group_totalizer\",\"kind\":3},{\"tag\":\"group_totalizer\",\"kind\":3},{\"tag\":\"group_totalizer\",\"kind\":3},{\"tag\":\"group_totalizer\",\"kind\":3},{\"tag\":\"group_totalizer\",\"kind\":3},{\"tag\":\"group_totalizer\",\"kind\":3},{\"tag\":\"group_totalizer\",\"kind\":3}],\"rules\":[{\"tag\":\"mate\",\"ridge\":81,\"a\":7,\"owners\":[15,49,59,62]},{\"tag\":\"mate\",\"ridge\":81,\"a\":36,\"owners\":[15,59]},{\"tag\":\"mate\",\"ridge\":81,\"a\":44,\"owners\":[15,49,59,62]},{\"tag\":\"mate\",\"ridge\":82,\"a\":7,\"owners\":[64,74,75,79,82,83]},{\"tag\":\"mate\",\"ridge\":82,\"a\":29,\"owners\":[79,82,83]},{\"tag\":\"mate\",\"ridge\":82,\"a\":36,\"owners\":[74,75,82,83]},{\"tag\":\"mate\",\"ridge\":82,\"a\":44,\"owners\":[64,74,75,79,83]},{\"tag\":\"mate\",\"ridge\":82,\"a\":46,\"owners\":[64,75,82]},{\"tag\":\"mate\",\"ridge\":148,\"a\":12,\"owners\":[65,74,76,84,87,88]},{\"tag\":\"mate\",\"ridge\":148,\"a\":30,\"owners\":[84,87,88]},{\"tag\":\"mate\",\"ridge\":148,\"a\":50,\"owners\":[74,76,87,88]},{\"tag\":\"mate\",\"ridge\":148,\"a\":57,\"owners\":[65,74,76,84,88]},{\"tag\":\"mate\",\"ridge\":148,\"a\":59,\"owners\":[65,76,87]},{\"tag\":\"mate\",\"ridge\":208,\"a\":15,\"owners\":[74,79,83,84,88]},{\"tag\":\"mate\",\"ridge\":208,\"a\":46,\"owners\":[84,88]},{\"tag\":\"mate\",\"ridge\":208,\"a\":59,\"owners\":[79,83]},{\"tag\":\"mate\",\"ridge\":208,\"a\":62,\"owners\":[74,83,88]},{\"tag\":\"mate\",\"ridge\":290,\"a\":66,\"owners\":[47,82]},{\"tag\":\"mate\",\"ridge\":292,\"a\":19,\"owners\":[51,60,85,87]},{\"tag\":\"mate\",\"ridge\":292,\"a\":32,\"owners\":[85,87]},{\"tag\":\"mate\",\"ridge\":292,\"a\":72,\"owners\":[51,60,85]},{\"tag\":\"mate\",\"ridge\":292,\"a\":77,\"owners\":[51,60,87]},{\"tag\":\"mate\",\"ridge\":322,\"a\":81,\"owners\":[34,47,75,82]},{\"tag\":\"mate\",\"ridge\":388,\"a\":22,\"owners\":[35,60,61,76,78,87,88]},{\"tag\":\"mate\",\"ridge\":388,\"a\":55,\"owners\":[76,78,87,88]},{\"tag\":\"mate\",\"ridge\":388,\"a\":70,\"owners\":[60,61,87,88]},{\"tag\":\"mate\",\"ridge\":388,\"a\":86,\"owners\":[35,60,76,87]},{\"tag\":\"mate\",\"ridge\":448,\"a\":23,\"owners\":[48,61,78,83,88]},{\"tag\":\"mate\",\"ridge\":448,\"a\":63,\"owners\":[78,83,88]},{\"tag\":\"mate\",\"ridge\":387,\"a\":48,\"owners\":[35,43]},{\"tag\":\"mate\",\"ridge\":154,\"a\":79,\"owners\":[37,65]},{\"tag\":\"mate\",\"ridge\":353,\"a\":47,\"owners\":[]},{\"tag\":\"mate\",\"ridge\":92,\"a\":49,\"owners\":[64,84]},{\"tag\":\"mate\",\"ridge\":92,\"a\":84,\"owners\":[49,64]},{\"tag\":\"mate\",\"ridge\":417,\"a\":60,\"owners\":[]},{\"tag\":\"mate\",\"ridge\":340,\"a\":75,\"owners\":[88]},{\"tag\":\"mate\",\"ridge\":340,\"a\":88,\"owners\":[75]},{\"tag\":\"mate\",\"ridge\":402,\"a\":83,\"owners\":[76]},{\"tag\":\"mate\",\"ridge\":368,\"a\":82,\"owners\":[]},{\"tag\":\"mate\",\"ridge\":432,\"a\":87,\"owners\":[]},{\"tag\":\"group_take\",\"kind\":3,\"index\":0,\"member\":38,\"full_literals\":[-14,50]},{\"tag\":\"group_take\",\"kind\":3,\"index\":0,\"member\":80,\"full_literals\":[-41,50]},{\"tag\":\"group_take\",\"kind\":3,\"index\":1,\"member\":51,\"full_literals\":[-22,51]},{\"tag\":\"group_take\",\"kind\":3,\"index\":1,\"member\":85,\"full_literals\":[-46,51]},{\"tag\":\"group_take\",\"kind\":3,\"index\":2,\"member\":75,\"full_literals\":[-36,52]},{\"tag\":\"group_take\",\"kind\":3,\"index\":2,\"member\":76,\"full_literals\":[-37,52]},{\"tag\":\"group_take\",\"kind\":3,\"index\":3,\"member\":34,\"full_literals\":[-10,53]},{\"tag\":\"group_take\",\"kind\":3,\"index\":3,\"member\":35,\"full_literals\":[-11,53]},{\"tag\":\"group_take\",\"kind\":3,\"index\":4,\"member\":37,\"full_literals\":[-13,54]},{\"tag\":\"group_take\",\"kind\":3,\"index\":4,\"member\":43,\"full_literals\":[-15,54]},{\"tag\":\"group_take\",\"kind\":3,\"index\":4,\"member\":83,\"full_literals\":[-44,54]},{\"tag\":\"group_take\",\"kind\":3,\"index\":5,\"member\":49,\"full_literals\":[-20,55]},{\"tag\":\"group_take\",\"kind\":3,\"index\":5,\"member\":65,\"full_literals\":[-31,55]},{\"tag\":\"group_take\",\"kind\":3,\"index\":6,\"member\":64,\"full_literals\":[-30,56]},{\"tag\":\"group_take\",\"kind\":3,\"index\":6,\"member\":74,\"full_literals\":[-35,56]},{\"tag\":\"group_take\",\"kind\":3,\"index\":6,\"member\":79,\"full_literals\":[-40,56]},{\"tag\":\"group_take\",\"kind\":3,\"index\":7,\"member\":78,\"full_literals\":[-39,57]},{\"tag\":\"group_take\",\"kind\":3,\"index\":7,\"member\":84,\"full_literals\":[-45,57]},{\"tag\":\"group_take\",\"kind\":3,\"index\":7,\"member\":88,\"full_literals\":[-49,57]},{\"tag\":\"group_take\",\"kind\":3,\"index\":8,\"member\":61,\"full_literals\":[-27,58]},{\"tag\":\"merge\",\"left\":[0],\"right\":[1],\"left_name\":\"grouped3_0000\",\"right_name\":\"grouped3_0004\",\"joined_name\":\"grouped3_0001\",\"a\":0,\"b\":1,\"direction\":\"forward\",\"full_literals\":[false,-51,59],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[0],\"right\":[1],\"left_name\":\"grouped3_0000\",\"right_name\":\"grouped3_0004\",\"joined_name\":\"grouped3_0001\",\"a\":1,\"b\":0,\"direction\":\"forward\",\"full_literals\":[-50,false,59],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[2],\"right\":[3],\"left_name\":\"grouped3_0005\",\"right_name\":\"grouped3_0007\",\"joined_name\":\"grouped3_0006\",\"a\":0,\"b\":1,\"direction\":\"forward\",\"full_literals\":[false,-53,60],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[2],\"right\":[3],\"left_name\":\"grouped3_0005\",\"right_name\":\"grouped3_0007\",\"joined_name\":\"grouped3_0006\",\"a\":1,\"b\":0,\"direction\":\"forward\",\"full_literals\":[-52,false,60],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[0,1],\"right\":[2,3],\"left_name\":\"grouped3_0001\",\"right_name\":\"grouped3_0006\",\"joined_name\":\"grouped3_0002\",\"a\":1,\"b\":0,\"direction\":\"forward\",\"full_literals\":[-59,false,61],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[0,1],\"right\":[2,3],\"left_name\":\"grouped3_0001\",\"right_name\":\"grouped3_0006\",\"joined_name\":\"grouped3_0002\",\"a\":1,\"b\":1,\"direction\":\"forward\",\"full_literals\":[-59,-60,62],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[4],\"right\":[5],\"left_name\":\"grouped3_0008\",\"right_name\":\"grouped3_0011\",\"joined_name\":\"grouped3_0009\",\"a\":0,\"b\":1,\"direction\":\"forward\",\"full_literals\":[false,-55,63],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[4],\"right\":[5],\"left_name\":\"grouped3_0008\",\"right_name\":\"grouped3_0011\",\"joined_name\":\"grouped3_0009\",\"a\":1,\"b\":0,\"direction\":\"forward\",\"full_literals\":[-54,false,63],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[7],\"right\":[8],\"left_name\":\"grouped3_0014\",\"right_name\":\"grouped3_0016\",\"joined_name\":\"grouped3_0015\",\"a\":0,\"b\":1,\"direction\":\"forward\",\"full_literals\":[false,-58,64],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[7],\"right\":[8],\"left_name\":\"grouped3_0014\",\"right_name\":\"grouped3_0016\",\"joined_name\":\"grouped3_0015\",\"a\":1,\"b\":0,\"direction\":\"forward\",\"full_literals\":[-57,false,64],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[6],\"right\":[7,8],\"left_name\":\"grouped3_0012\",\"right_name\":\"grouped3_0015\",\"joined_name\":\"grouped3_0013\",\"a\":0,\"b\":1,\"direction\":\"forward\",\"full_literals\":[false,-64,65],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[6],\"right\":[7,8],\"left_name\":\"grouped3_0012\",\"right_name\":\"grouped3_0015\",\"joined_name\":\"grouped3_0013\",\"a\":1,\"b\":0,\"direction\":\"forward\",\"full_literals\":[-56,false,65],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[6],\"right\":[7,8],\"left_name\":\"grouped3_0012\",\"right_name\":\"grouped3_0015\",\"joined_name\":\"grouped3_0013\",\"a\":1,\"b\":1,\"direction\":\"forward\",\"full_literals\":[-56,-64,66],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[4,5],\"right\":[6,7,8],\"left_name\":\"grouped3_0009\",\"right_name\":\"grouped3_0013\",\"joined_name\":\"grouped3_0010\",\"a\":0,\"b\":1,\"direction\":\"forward\",\"full_literals\":[false,-65,67],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[4,5],\"right\":[6,7,8],\"left_name\":\"grouped3_0009\",\"right_name\":\"grouped3_0013\",\"joined_name\":\"grouped3_0010\",\"a\":0,\"b\":2,\"direction\":\"forward\",\"full_literals\":[false,-66,68],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[4,5],\"right\":[6,7,8],\"left_name\":\"grouped3_0009\",\"right_name\":\"grouped3_0013\",\"joined_name\":\"grouped3_0010\",\"a\":1,\"b\":0,\"direction\":\"forward\",\"full_literals\":[-63,false,67],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[4,5],\"right\":[6,7,8],\"left_name\":\"grouped3_0009\",\"right_name\":\"grouped3_0013\",\"joined_name\":\"grouped3_0010\",\"a\":1,\"b\":1,\"direction\":\"forward\",\"full_literals\":[-63,-65,68],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[0,1,2,3],\"right\":[4,5,6,7,8],\"left_name\":\"grouped3_0002\",\"right_name\":\"grouped3_0010\",\"joined_name\":\"groupKind3\",\"a\":1,\"b\":2,\"direction\":\"forward\",\"full_literals\":[-61,-68,69],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[0,1,2,3],\"right\":[4,5,6,7,8],\"left_name\":\"grouped3_0002\",\"right_name\":\"grouped3_0010\",\"joined_name\":\"groupKind3\",\"a\":2,\"b\":1,\"direction\":\"forward\",\"full_literals\":[-62,-67,69],\"grouped\":true,\"kind\":3},{\"tag\":\"quota_upper\",\"kind\":3,\"quota\":2,\"grouped\":true},{\"tag\":\"edge\",\"edge\":31,\"owners\":[7,15,29,36,44,46,49,59,62,64,74,75,79,82,83,84,88]},{\"tag\":\"edge\",\"edge\":32,\"owners\":[12,15,30,37,46,50,57,59,62,65,74,76,79,83,84,87,88]},{\"tag\":\"edge\",\"edge\":37,\"owners\":[19,32,38,47,51,60,66,72,77,80,82,85,87]},{\"tag\":\"edge\",\"edge\":42,\"owners\":[22,23,35,43,48,55,60,61,63,70,76,78,81,83,86,87,88]}]}"
+  "85 -32 0 39 32 18 0\n86 1 3 7 12 16 17 20 25 28 30 35 36 40 44 45 49 0 39 81 0\n87 2 3 8 13 17 21 24 25 28 31 35 37 40 44 45 49 0 40 82 0\n88 4 9 14 22 34 38 41 46 0 32 35 85 39 40 83 0\n89 5 6 11 15 19 23 27 29 33 37 39 42 44 47 49 0 35 40 84 0\n90 59 0 40 35 61 62 43 44 41 42 22 20 19 21 88 0\n91 61 0 90 65 0\n92 -68 0 91 80 78 0\n93 -66 0 92 75 0\n94 56 63 52 0 39 40 68 49 67 53 31 46 13 52 38 45 37 54 55 8 34 11 14 17 9 12 10 87 0\n95 63 60 0 32 39 93 35 40 63 48 64 46 27 38 47 45 23 37 68 50 30 94 73 69 70 60 57 26 24 28 29 25 89 0\n96 60 0 92 39 64 45 46 37 38 95 77 71 72 70 54 55 56 58 4 7 8 33 6 14 17 5 16 86 0\n97 62 0 96 90 66 0\n98 -67 0 97 80 79 0\n99 -65 0 98 74 0\n100 -63 0 98 76 0\n101 -64 0 99 71 0\n102 -56 0 99 72 0\n103 -55 0 100 67 0\n104 -54 0 100 68 0\n105 -57 0 101 70 0\n106 -30 0 102 54 0\n107 -35 0 102 55 0\n108 -40 0 102 56 0\n109 -20 0 103 52 0\n110 -44 0 104 51 0\n111 -45 0 105 58 0\n112 -49 0 105 59 0\n113 -3 0 107 108 110 111 112 14 0\n114 -28 0 107 110 112 17 0\n115 -7 0 108 39 110 5 0\n116 -25 0 108 110 16 0\n117 -17 0 111 112 15 0\n118 -36 0 112 36 0\n119 -1 0 113 109 116 114 1 0\n120 -16 0 113 109 116 114 3 0\n121 -12 0 113 116 2 0\n122 0 114 121 119 115 113 120 117 116 109 106 107 118 108 110 111 112 86 0\n"
+
+theorem local_coverage
+    (valid : GraphGrowthInputs.Valid Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record004.inputs)
+    (matrix : MatrixGraphProblem.Checked Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record004.data)
+    (B : List (Fin Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record004.n))
+    (H : GraphGrowthConstraints.Target (Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record004.inputs.problem valid) B) :
+    ∃ j : Fin leafCount, GrowthDAG.Same (SparseGrowthDAG.family (leaves j))
+      (SparseGrowthDAG.family B) := by
+  apply FacetSat.RawProjection.coverage_with_edges Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record004 valid matrix
+    vertexColumn kindColumn projection_checked leaves _ B H
+  intro S HS edgeCover noSame
+  exact boundary_unsat S HS edgeCover noSame
+def originalLeaf (j : Fin leafCount) : Fin Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record004.l := Fin.elim0 j
+def orbitWord (j : Fin leafCount) : List (Fin Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record004.g) := Fin.elim0 j
+theorem orbit_words_checked : ∀ j : Fin leafCount,
+    SparseGrowthDAG.sameCheck (Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record004.leaf (originalLeaf j))
+      (GraphCaseCertificate.rawApplyWord Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record004.maps (orbitWord j) (leaves j)) = true := by
+  decide +kernel
+
+theorem direct_core : GraphCaseCertificate.DirectCore Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record004 where
+  matrix := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record004_matrix_checked
+  valid := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record004_validity
+  literal := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record004_literal
+  leaf_nodup := by decide +kernel
+  frames := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record004_frames_supported Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record004_cells_exact
+  leaves_checked := ⟨Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record004_certificates, Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record004_leaf_certificates_checked⟩
+  complete := GraphCaseCertificate.complete_of_orbits Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record004 Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record004_validity
+    leaves originalLeaf orbitWord orbit_words_checked
+    (local_coverage Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record004_validity Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record004_matrix_checked)
+
+
+end Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record004
+
+@[expose] public section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option maxErrors 5
+set_option autoImplicit false
+set_option linter.unusedVariables false
+namespace Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record006
+open Papers.RationalityTen
+
+def vertexColumn : PackedGraphCertificate.Fields :=
+  ⟨10, sparse_nat% "761d4cb1ca6a8da7196635a2e4ba1e0f9d1727296a599564d97172559595554d5c362d4b61d4743d70da358e8b62d4b32d2b2ae1b16c3b61e4751cc749c6785c970de0f43c2f07cd28a89a89856704d1626294a499516254945530e2324c5382c8b0ac1b81c4709c17"⟩
+def kindColumn : PackedGraphCertificate.Fields :=
+  ⟨3, sparse_nat% "6db69b49b69249a49349a4db4da4d249269249249a449249249249249249249"⟩
+def data : FacetSat.Data :=
+  FacetSat.RawProjection.data Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record006 vertexColumn kindColumn
+theorem projection_checked :
+    FacetSat.RawProjection.check Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record006 vertexColumn kindColumn = true := by
+  decide +kernel
+
+def facetIndex (i : Nat) : Fin data.count :=
+  ⟨i % data.count, Nat.mod_lt _ (by decide)⟩
+def ridgeIndex (i : Nat) : Fin 1024 :=
+  ⟨i % 1024, Nat.mod_lt _ (by decide)⟩
+def edgeCount : Nat := 45
+def requiredEdges : Nat := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record006.data.requiredEdges
+def edgeRows : Fin edgeCount → Nat := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record006.data.edgeRows
+def edgeIndex (i : Nat) : Fin edgeCount :=
+  ⟨i % edgeCount, Nat.mod_lt _ (by decide)⟩
+
+def requirements : Nat → Nat := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record006.data.quota
+
+def groupMembers2 : ConcreteGrowth.Table (List (Fin data.count)) :=
+(.branch 4
+ (.branch 2
+ (.branch 1
+ (.leaf ([(facetIndex 27), (facetIndex 28), (facetIndex 30), (facetIndex 55), (facetIndex 56), (facetIndex 74)]))
+ (.leaf ([(facetIndex 32), (facetIndex 41), (facetIndex 75), (facetIndex 78)])))
+ (.branch 3
+ (.leaf ([(facetIndex 34), (facetIndex 35), (facetIndex 61), (facetIndex 62)]))
+ (.leaf ([(facetIndex 43), (facetIndex 44), (facetIndex 67), (facetIndex 68)]))))
+ (.branch 6
+ (.branch 5
+ (.leaf ([(facetIndex 36), (facetIndex 58), (facetIndex 59), (facetIndex 63), (facetIndex 70)]))
+ (.leaf ([(facetIndex 31), (facetIndex 33), (facetIndex 37), (facetIndex 38)])))
+ (.branch 7
+ (.leaf ([(facetIndex 45), (facetIndex 47), (facetIndex 48), (facetIndex 66)]))
+ (.branch 8
+ (.leaf ([(facetIndex 51), (facetIndex 64), (facetIndex 69)]))
+ (.leaf ([(facetIndex 40), (facetIndex 42)]))))))
+def groupColors2 : PackedGraphCertificate.Fields :=
+  ⟨4, sparse_nat% "100100004733607422044000000700660633818055422515z1f;"⟩
+def grouping2 : FacetSat.Grouping data.count where
+  count := 9
+  members := fun g => groupMembers2.get g
+  color := fun c => groupColors2.get c.val
+def groupKind2 : List Nat := List.range grouping2.count
+
+def groupMembers3 : ConcreteGrowth.Table (List (Fin data.count)) :=
+(.branch 3
+ (.branch 1
+ (.leaf ([(facetIndex 53), (facetIndex 60), (facetIndex 65)]))
+ (.branch 2
+ (.leaf ([(facetIndex 82), (facetIndex 83)]))
+ (.leaf ([(facetIndex 29), (facetIndex 52), (facetIndex 54), (facetIndex 57)]))))
+ (.branch 4
+ (.leaf ([(facetIndex 71), (facetIndex 72), (facetIndex 73), (facetIndex 81)]))
+ (.branch 5
+ (.leaf ([(facetIndex 39), (facetIndex 46), (facetIndex 49), (facetIndex 50)]))
+ (.leaf ([(facetIndex 76), (facetIndex 77), (facetIndex 79), (facetIndex 80)])))))
+def groupColors3 : PackedGraphCertificate.Fields :=
+  ⟨3, sparse_nat% "25da2d01b60000000001008212010000080000001z16;"⟩
+def grouping3 : FacetSat.Grouping data.count where
+  count := 6
+  members := fun g => groupMembers3.get g
+  color := fun c => groupColors3.get c.val
+def groupKind3 : List Nat := List.range grouping3.count
+
+def grouped2_0000 : List Nat := [0]
+def grouped2_0001 : List Nat := [0, 1]
+def grouped2_0002 : List Nat := [0, 1, 2, 3]
+def grouped2_0004 : List Nat := [1]
+def grouped2_0005 : List Nat := [2]
+def grouped2_0006 : List Nat := [2, 3]
+def grouped2_0007 : List Nat := [3]
+def grouped2_0008 : List Nat := [4]
+def grouped2_0009 : List Nat := [4, 5]
+def grouped2_0010 : List Nat := [4, 5, 6, 7, 8]
+def grouped2_0011 : List Nat := [5]
+def grouped2_0012 : List Nat := [6]
+def grouped2_0013 : List Nat := [6, 7, 8]
+def grouped2_0014 : List Nat := [7]
+def grouped2_0015 : List Nat := [7, 8]
+def grouped2_0016 : List Nat := [8]
+def grouped3_0017 : List Nat := [0]
+def grouped3_0018 : List Nat := [0, 1, 2]
+def grouped3_0020 : List Nat := [1]
+def grouped3_0021 : List Nat := [1, 2]
+def grouped3_0022 : List Nat := [2]
+def grouped3_0023 : List Nat := [3]
+def grouped3_0024 : List Nat := [3, 4, 5]
+def grouped3_0025 : List Nat := [4]
+def grouped3_0026 : List Nat := [4, 5]
+def grouped3_0027 : List Nat := [5]
+
+theorem ridge_matrix_checked :
+    data.ridgeMatrix = PackedIncidenceMatrix.code (ConcreteGrowth.ridgeList data.cells) :=
+  FacetSat.RawProjection.ridge_matrix Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record006 vertexColumn kindColumn
+    Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record006_matrix_checked
+
+def leafCount : Nat := 0
+def kindKeys : List Nat := [1, 2, 3]
+theorem kindKeys_checked : FacetSat.RawProjection.kindKeysCheck data.toData.kind kindKeys = true := by
+  decide +kernel
+def leaves (j : Fin leafCount) : List (Fin data.count) := Fin.elim0 j
+
+facet_model% "Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record006" "{\"atoms\":[{\"tag\":\"facet\",\"index\":4},{\"tag\":\"facet\",\"index\":7},{\"tag\":\"facet\",\"index\":11},{\"tag\":\"facet\",\"index\":19},{\"tag\":\"facet\",\"index\":21},{\"tag\":\"facet\",\"index\":27},{\"tag\":\"facet\",\"index\":28},{\"tag\":\"facet\",\"index\":29},{\"tag\":\"facet\",\"index\":30},{\"tag\":\"facet\",\"index\":31},{\"tag\":\"facet\",\"index\":32},{\"tag\":\"facet\",\"index\":33},{\"tag\":\"facet\",\"index\":34},{\"tag\":\"facet\",\"index\":35},{\"tag\":\"facet\",\"index\":36},{\"tag\":\"facet\",\"index\":37},{\"tag\":\"facet\",\"index\":38},{\"tag\":\"facet\",\"index\":39},{\"tag\":\"facet\",\"index\":40},{\"tag\":\"facet\",\"index\":41},{\"tag\":\"facet\",\"index\":42},{\"tag\":\"facet\",\"index\":43},{\"tag\":\"facet\",\"index\":44},{\"tag\":\"facet\",\"index\":45},{\"tag\":\"facet\",\"index\":46},{\"tag\":\"facet\",\"index\":47},{\"tag\":\"facet\",\"index\":48},{\"tag\":\"facet\",\"index\":49},{\"tag\":\"facet\",\"index\":50},{\"tag\":\"facet\",\"index\":51},{\"tag\":\"facet\",\"index\":52},{\"tag\":\"facet\",\"index\":53},{\"tag\":\"facet\",\"index\":54},{\"tag\":\"facet\",\"index\":55},{\"tag\":\"facet\",\"index\":56},{\"tag\":\"facet\",\"index\":57},{\"tag\":\"facet\",\"index\":58},{\"tag\":\"facet\",\"index\":59},{\"tag\":\"facet\",\"index\":60},{\"tag\":\"facet\",\"index\":61},{\"tag\":\"facet\",\"index\":62},{\"tag\":\"facet\",\"index\":63},{\"tag\":\"facet\",\"index\":64},{\"tag\":\"facet\",\"index\":65},{\"tag\":\"facet\",\"index\":66},{\"tag\":\"facet\",\"index\":67},{\"tag\":\"facet\",\"index\":68},{\"tag\":\"facet\",\"index\":69},{\"tag\":\"facet\",\"index\":70},{\"tag\":\"facet\",\"index\":73},{\"tag\":\"facet\",\"index\":74},{\"tag\":\"facet\",\"index\":75},{\"tag\":\"facet\",\"index\":77},{\"tag\":\"facet\",\"index\":78},{\"tag\":\"facet\",\"index\":79},{\"tag\":\"facet\",\"index\":80},{\"tag\":\"facet\",\"index\":81},{\"tag\":\"facet\",\"index\":82},{\"tag\":\"facet\",\"index\":83},{\"tag\":\"group\",\"kind\":2,\"index\":0},{\"tag\":\"group\",\"kind\":2,\"index\":1},{\"tag\":\"group\",\"kind\":2,\"index\":2},{\"tag\":\"group\",\"kind\":2,\"index\":3},{\"tag\":\"group\",\"kind\":2,\"index\":4},{\"tag\":\"group\",\"kind\":2,\"index\":5},{\"tag\":\"group\",\"kind\":2,\"index\":6},{\"tag\":\"group\",\"kind\":2,\"index\":7},{\"tag\":\"group\",\"kind\":2,\"index\":8},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":2,\"list_name\":\"grouped2_0001\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":2,\"list_name\":\"grouped2_0006\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":4,\"list_name\":\"grouped2_0002\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":2,\"list_name\":\"grouped2_0009\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":1,\"list_name\":\"grouped2_0015\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":2,\"list_name\":\"grouped2_0015\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":2,\"list_name\":\"grouped2_0013\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":3,\"list_name\":\"grouped2_0013\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":4,\"list_name\":\"grouped2_0010\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":5,\"list_name\":\"grouped2_0010\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":8,\"list_name\":\"groupKind2\"},{\"tag\":\"group\",\"kind\":3,\"index\":0},{\"tag\":\"group\",\"kind\":3,\"index\":1},{\"tag\":\"group\",\"kind\":3,\"index\":2},{\"tag\":\"group\",\"kind\":3,\"index\":4},{\"tag\":\"group\",\"kind\":3,\"index\":5},{\"tag\":\"group_totalizer\",\"kind\":3,\"threshold\":1,\"list_name\":\"grouped3_0021\"},{\"tag\":\"group_totalizer\",\"kind\":3,\"threshold\":1,\"list_name\":\"grouped3_0018\"},{\"tag\":\"group_totalizer\",\"kind\":3,\"threshold\":2,\"list_name\":\"grouped3_0026\"},{\"tag\":\"group_totalizer\",\"kind\":3,\"threshold\":2,\"list_name\":\"grouped3_0024\"},{\"tag\":\"group_totalizer\",\"kind\":3,\"threshold\":3,\"list_name\":\"groupKind3\"}]}"
+facet_atoms% "Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record006" 89
+
+facet_facts% "Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record006" "{\"ridges\":[[11,193],[19,385],[21,193],[21,385],[35,292],[37,324],[42,25],[44,296],[47,392],[48,521],[51,448],[52,25],[53,284],[54,521],[56,521],[59,321],[61,292],[63,448],[64,25],[64,193],[66,25],[67,296],[68,296],[68,521],[69,392],[69,448],[73,270],[74,522],[75,194],[77,390],[79,418],[81,780]],\"owners\":[[64,25,[4,27,40,42,52,53,54],[16,41,65,66]],[56,521,[7,42,48],[18,30,54,57,68]],[74,522,[7,42,48],[25,30,72]],[75,194,[11,45,51,80],[26,36,77,78]],[35,292,[81],[13,55,61,62,73,76]],[61,292,[73,81],[13,35,55,62,76]],[59,321,[21,46,49,51,69],[15,37,61,65,70]],[37,324,[82],[15,59,61,63,76,77]],[44,296,[81],[17,55,67,68,73,79]],[67,296,[73,81],[17,44,55,68,79]],[68,296,[73,79],[17,44,55,67,81]],[19,385,[21,39,50,51,60,63,70],[47,66,67]],[21,385,[19,39,47,50,60,66,67],[51,63,70]],[47,392,[83],[19,66,67,69,79,80]],[69,392,[79],[19,47,66,67,80,83]],[51,448,[82,83],[21,63,69,70,77,80]],[63,448,[80,83],[21,51,69,70,77,82]],[69,448,[77,82],[21,51,63,70,80,83]],[73,270,[29],[]],[77,390,[39],[]],[79,418,[50],[]],[53,284,[],[]],[81,780,[57],[]]],\"edges\":[[42,[19,21,39,47,50,51,60,63,66,67,69,70,77,79,80,82,83]]],\"groupings\":[2,3]}"
+
+facet_refute_shared% "Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record006" "{\"namespace\":\"Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record006\",\"lower_only\":false,\"coverage\":true,\"edge_cover\":true,\"clauses\":[[-13,-10],[-15,-3],[-17,-13],[-19,-2],[-19,-6],[-19,-7],[-19,-9],[-21,-8],[-21,-12],[-22,-19],[-22,-21],[-23,-19],[-23,-21],[-24,-19],[-24,-21],[-26,-19],[-26,-21],[-27,-1],[-27,-6],[-27,-8],[-27,-19],[-27,-21],[-27,-22],[-27,-23],[-29,-28],[-30,-24],[-30,-26],[-33,-21],[-43,-11],[-43,-20],[-43,-24],[-43,-25],[-43,-26],[-43,-37],[-45,-22],[-45,-39],[-45,-43],[-45,-44],[-46,-34],[-46,-36],[-46,-45],[-47,-19],[-47,-31],[-47,-36],[-47,-41],[-48,-18],[-48,-26],[-48,-29],[-49,-43],[-52,-18],[-53,-52],[-54,-43],[-55,-28],[-55,-30],[-56,-43],[-58,-45],[-59,-45],[-43,1,6,19,21,31,32,33],[-21,-31,-45],[-35,2,21,27],[-27,-33,-47],[-51,2,21,27],[-3,-5,-43],[-52,3,24,30,56],[-14,57],[-40,50,57],[-38,5,25,28,30,48],[-16,58],[-23,57],[-46,50,57],[-47,50,55],[-4,5,18,29,30,39,42,49],[-5,4,18,26,29,39,45,46],[-26,59],[-48,55],[-30,58,59],[-42,56,59],[-48,53,58],[-50,8],[-53,18],[-55,29],[-32],[-57,36],[-60,6,7,9,34,35,51],[-61,11,20,52,54],[-62,13,14,40,41],[-63,22,23,46,47],[-64,15,37,38,42,49],[-65,10,12,16,17],[-66,24,26,27,45],[-67,30,43,48],[-68,19,21],[-69,60],[-69,61],[-70,62],[-70,63],[-71,69],[-71,70],[-72,64],[-72,65],[-73,67,68],[-74,67],[-74,68],[-75,66,74],[-76,66],[-75,73],[-76,74],[-77,72,76],[-77,75],[-78,76],[-79,71,78],[-79,77],[79],[-80,32,39,44],[-39,80],[-81,58,59],[-58,81],[-59,81],[-82,8,31,33,36],[-8,82],[-31,82],[-33,82],[-36,82],[-29,83],[-55,84],[-85,81,82],[-82,85],[-81,85],[-86,80,85],[-85,86],[-80,86],[-83,-84,87],[-87,88],[-86,-88,89],[-89],[4,5,18,26,29,30,39,42,45,46,48,49,53,55,56,58,59]],\"atoms\":[{\"tag\":\"facet\",\"index\":4},{\"tag\":\"facet\",\"index\":7},{\"tag\":\"facet\",\"index\":11},{\"tag\":\"facet\",\"index\":19},{\"tag\":\"facet\",\"index\":21},{\"tag\":\"facet\",\"index\":27},{\"tag\":\"facet\",\"index\":28},{\"tag\":\"facet\",\"index\":29},{\"tag\":\"facet\",\"index\":30},{\"tag\":\"facet\",\"index\":31},{\"tag\":\"facet\",\"index\":32},{\"tag\":\"facet\",\"index\":33},{\"tag\":\"facet\",\"index\":34},{\"tag\":\"facet\",\"index\":35},{\"tag\":\"facet\",\"index\":36},{\"tag\":\"facet\",\"index\":37},{\"tag\":\"facet\",\"index\":38},{\"tag\":\"facet\",\"index\":39},{\"tag\":\"facet\",\"index\":40},{\"tag\":\"facet\",\"index\":41},{\"tag\":\"facet\",\"index\":42},{\"tag\":\"facet\",\"index\":43},{\"tag\":\"facet\",\"index\":44},{\"tag\":\"facet\",\"index\":45},{\"tag\":\"facet\",\"index\":46},{\"tag\":\"facet\",\"index\":47},{\"tag\":\"facet\",\"index\":48},{\"tag\":\"facet\",\"index\":49},{\"tag\":\"facet\",\"index\":50},{\"tag\":\"facet\",\"index\":51},{\"tag\":\"facet\",\"index\":52},{\"tag\":\"facet\",\"index\":53},{\"tag\":\"facet\",\"index\":54},{\"tag\":\"facet\",\"index\":55},{\"tag\":\"facet\",\"index\":56},{\"tag\":\"facet\",\"index\":57},{\"tag\":\"facet\",\"index\":58},{\"tag\":\"facet\",\"index\":59},{\"tag\":\"facet\",\"index\":60},{\"tag\":\"facet\",\"index\":61},{\"tag\":\"facet\",\"index\":62},{\"tag\":\"facet\",\"index\":63},{\"tag\":\"facet\",\"index\":64},{\"tag\":\"facet\",\"index\":65},{\"tag\":\"facet\",\"index\":66},{\"tag\":\"facet\",\"index\":67},{\"tag\":\"facet\",\"index\":68},{\"tag\":\"facet\",\"index\":69},{\"tag\":\"facet\",\"index\":70},{\"tag\":\"facet\",\"index\":73},{\"tag\":\"facet\",\"index\":74},{\"tag\":\"facet\",\"index\":75},{\"tag\":\"facet\",\"index\":77},{\"tag\":\"facet\",\"index\":78},{\"tag\":\"facet\",\"index\":79},{\"tag\":\"facet\",\"index\":80},{\"tag\":\"facet\",\"index\":81},{\"tag\":\"facet\",\"index\":82},{\"tag\":\"facet\",\"index\":83},{\"tag\":\"group\",\"index\":0,\"kind\":2},{\"tag\":\"group\",\"index\":1,\"kind\":2},{\"tag\":\"group\",\"index\":2,\"kind\":2},{\"tag\":\"group\",\"index\":3,\"kind\":2},{\"tag\":\"group\",\"index\":4,\"kind\":2},{\"tag\":\"group\",\"index\":5,\"kind\":2},{\"tag\":\"group\",\"index\":6,\"kind\":2},{\"tag\":\"group\",\"index\":7,\"kind\":2},{\"tag\":\"group\",\"index\":8,\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group\",\"index\":0,\"kind\":3},{\"tag\":\"group\",\"index\":1,\"kind\":3},{\"tag\":\"group\",\"index\":2,\"kind\":3},{\"tag\":\"group\",\"index\":4,\"kind\":3},{\"tag\":\"group\",\"index\":5,\"kind\":3},{\"tag\":\"group_totalizer\",\"kind\":3},{\"tag\":\"group_totalizer\",\"kind\":3},{\"tag\":\"group_totalizer\",\"kind\":3},{\"tag\":\"group_totalizer\",\"kind\":3},{\"tag\":\"group_totalizer\",\"kind\":3}],\"rules\":[{\"tag\":\"incompatible\",\"a\":34,\"b\":31},{\"tag\":\"incompatible\",\"a\":36,\"b\":11},{\"tag\":\"incompatible\",\"a\":38,\"b\":34},{\"tag\":\"incompatible\",\"a\":40,\"b\":7},{\"tag\":\"incompatible\",\"a\":40,\"b\":27},{\"tag\":\"incompatible\",\"a\":40,\"b\":28},{\"tag\":\"incompatible\",\"a\":40,\"b\":30},{\"tag\":\"incompatible\",\"a\":42,\"b\":29},{\"tag\":\"incompatible\",\"a\":42,\"b\":33},{\"tag\":\"incompatible\",\"a\":43,\"b\":40},{\"tag\":\"incompatible\",\"a\":43,\"b\":42},{\"tag\":\"incompatible\",\"a\":44,\"b\":40},{\"tag\":\"incompatible\",\"a\":44,\"b\":42},{\"tag\":\"incompatible\",\"a\":45,\"b\":40},{\"tag\":\"incompatible\",\"a\":45,\"b\":42},{\"tag\":\"incompatible\",\"a\":47,\"b\":40},{\"tag\":\"incompatible\",\"a\":47,\"b\":42},{\"tag\":\"incompatible\",\"a\":48,\"b\":4},{\"tag\":\"incompatible\",\"a\":48,\"b\":27},{\"tag\":\"incompatible\",\"a\":48,\"b\":29},{\"tag\":\"incompatible\",\"a\":48,\"b\":40},{\"tag\":\"incompatible\",\"a\":48,\"b\":42},{\"tag\":\"incompatible\",\"a\":48,\"b\":43},{\"tag\":\"incompatible\",\"a\":48,\"b\":44},{\"tag\":\"incompatible\",\"a\":50,\"b\":49},{\"tag\":\"incompatible\",\"a\":51,\"b\":45},{\"tag\":\"incompatible\",\"a\":51,\"b\":47},{\"tag\":\"incompatible\",\"a\":54,\"b\":42},{\"tag\":\"incompatible\",\"a\":64,\"b\":32},{\"tag\":\"incompatible\",\"a\":64,\"b\":41},{\"tag\":\"incompatible\",\"a\":64,\"b\":45},{\"tag\":\"incompatible\",\"a\":64,\"b\":46},{\"tag\":\"incompatible\",\"a\":64,\"b\":47},{\"tag\":\"incompatible\",\"a\":64,\"b\":58},{\"tag\":\"incompatible\",\"a\":66,\"b\":43},{\"tag\":\"incompatible\",\"a\":66,\"b\":60},{\"tag\":\"incompatible\",\"a\":66,\"b\":64},{\"tag\":\"incompatible\",\"a\":66,\"b\":65},{\"tag\":\"incompatible\",\"a\":67,\"b\":55},{\"tag\":\"incompatible\",\"a\":67,\"b\":57},{\"tag\":\"incompatible\",\"a\":67,\"b\":66},{\"tag\":\"incompatible\",\"a\":68,\"b\":40},{\"tag\":\"incompatible\",\"a\":68,\"b\":52},{\"tag\":\"incompatible\",\"a\":68,\"b\":57},{\"tag\":\"incompatible\",\"a\":68,\"b\":62},{\"tag\":\"incompatible\",\"a\":69,\"b\":39},{\"tag\":\"incompatible\",\"a\":69,\"b\":47},{\"tag\":\"incompatible\",\"a\":69,\"b\":50},{\"tag\":\"incompatible\",\"a\":70,\"b\":64},{\"tag\":\"incompatible\",\"a\":75,\"b\":39},{\"tag\":\"incompatible\",\"a\":77,\"b\":75},{\"tag\":\"incompatible\",\"a\":78,\"b\":64},{\"tag\":\"incompatible\",\"a\":79,\"b\":49},{\"tag\":\"incompatible\",\"a\":79,\"b\":51},{\"tag\":\"incompatible\",\"a\":80,\"b\":64},{\"tag\":\"incompatible\",\"a\":82,\"b\":66},{\"tag\":\"incompatible\",\"a\":83,\"b\":66},{\"tag\":\"mate\",\"ridge\":25,\"a\":64,\"owners\":[4,27,40,42,52,53,54]},{\"tag\":\"three\",\"ridge\":25,\"vertices\":[42,52,66]},{\"tag\":\"mate\",\"ridge\":521,\"a\":56,\"owners\":[7,42,48]},{\"tag\":\"three\",\"ridge\":521,\"vertices\":[48,54,68]},{\"tag\":\"mate\",\"ridge\":522,\"a\":74,\"owners\":[7,42,48]},{\"tag\":\"three\",\"ridge\":193,\"vertices\":[11,21,64]},{\"tag\":\"mate\",\"ridge\":194,\"a\":75,\"owners\":[11,45,51,80]},{\"tag\":\"mate\",\"ridge\":292,\"a\":35,\"owners\":[81]},{\"tag\":\"mate\",\"ridge\":292,\"a\":61,\"owners\":[73,81]},{\"tag\":\"mate\",\"ridge\":321,\"a\":59,\"owners\":[21,46,49,51,69]},{\"tag\":\"mate\",\"ridge\":324,\"a\":37,\"owners\":[82]},{\"tag\":\"mate\",\"ridge\":296,\"a\":44,\"owners\":[81]},{\"tag\":\"mate\",\"ridge\":296,\"a\":67,\"owners\":[73,81]},{\"tag\":\"mate\",\"ridge\":296,\"a\":68,\"owners\":[73,79]},{\"tag\":\"mate\",\"ridge\":385,\"a\":19,\"owners\":[21,39,50,51,60,63,70]},{\"tag\":\"mate\",\"ridge\":385,\"a\":21,\"owners\":[19,39,47,50,60,66,67]},{\"tag\":\"mate\",\"ridge\":392,\"a\":47,\"owners\":[83]},{\"tag\":\"mate\",\"ridge\":392,\"a\":69,\"owners\":[79]},{\"tag\":\"mate\",\"ridge\":448,\"a\":51,\"owners\":[82,83]},{\"tag\":\"mate\",\"ridge\":448,\"a\":63,\"owners\":[80,83]},{\"tag\":\"mate\",\"ridge\":448,\"a\":69,\"owners\":[77,82]},{\"tag\":\"mate\",\"ridge\":270,\"a\":73,\"owners\":[29]},{\"tag\":\"mate\",\"ridge\":390,\"a\":77,\"owners\":[39]},{\"tag\":\"mate\",\"ridge\":418,\"a\":79,\"owners\":[50]},{\"tag\":\"mate\",\"ridge\":284,\"a\":53,\"owners\":[]},{\"tag\":\"mate\",\"ridge\":780,\"a\":81,\"owners\":[57]},{\"tag\":\"group_or\",\"kind\":2,\"index\":0,\"members\":[27,28,30,55,56,74],\"full_literals\":[-60,6,7,9,34,35,51]},{\"tag\":\"group_or\",\"kind\":2,\"index\":1,\"members\":[32,41,75,78],\"full_literals\":[-61,11,20,52,54]},{\"tag\":\"group_or\",\"kind\":2,\"index\":2,\"members\":[34,35,61,62],\"full_literals\":[-62,13,14,40,41]},{\"tag\":\"group_or\",\"kind\":2,\"index\":3,\"members\":[43,44,67,68],\"full_literals\":[-63,22,23,46,47]},{\"tag\":\"group_or\",\"kind\":2,\"index\":4,\"members\":[36,58,59,63,70],\"full_literals\":[-64,15,37,38,42,49]},{\"tag\":\"group_or\",\"kind\":2,\"index\":5,\"members\":[31,33,37,38],\"full_literals\":[-65,10,12,16,17]},{\"tag\":\"group_or\",\"kind\":2,\"index\":6,\"members\":[45,47,48,66],\"full_literals\":[-66,24,26,27,45]},{\"tag\":\"group_or\",\"kind\":2,\"index\":7,\"members\":[51,64,69],\"full_literals\":[-67,30,43,48]},{\"tag\":\"group_or\",\"kind\":2,\"index\":8,\"members\":[40,42],\"full_literals\":[-68,19,21]},{\"tag\":\"merge\",\"left\":[0],\"right\":[1],\"left_name\":\"grouped2_0000\",\"right_name\":\"grouped2_0004\",\"joined_name\":\"grouped2_0001\",\"a\":0,\"b\":1,\"direction\":\"backward\",\"full_literals\":[-69,60,false],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[0],\"right\":[1],\"left_name\":\"grouped2_0000\",\"right_name\":\"grouped2_0004\",\"joined_name\":\"grouped2_0001\",\"a\":1,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-69,false,61],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[2],\"right\":[3],\"left_name\":\"grouped2_0005\",\"right_name\":\"grouped2_0007\",\"joined_name\":\"grouped2_0006\",\"a\":0,\"b\":1,\"direction\":\"backward\",\"full_literals\":[-70,62,false],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[2],\"right\":[3],\"left_name\":\"grouped2_0005\",\"right_name\":\"grouped2_0007\",\"joined_name\":\"grouped2_0006\",\"a\":1,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-70,false,63],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[0,1],\"right\":[2,3],\"left_name\":\"grouped2_0001\",\"right_name\":\"grouped2_0006\",\"joined_name\":\"grouped2_0002\",\"a\":1,\"b\":2,\"direction\":\"backward\",\"full_literals\":[-71,69,false],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[0,1],\"right\":[2,3],\"left_name\":\"grouped2_0001\",\"right_name\":\"grouped2_0006\",\"joined_name\":\"grouped2_0002\",\"a\":2,\"b\":1,\"direction\":\"backward\",\"full_literals\":[-71,false,70],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[4],\"right\":[5],\"left_name\":\"grouped2_0008\",\"right_name\":\"grouped2_0011\",\"joined_name\":\"grouped2_0009\",\"a\":0,\"b\":1,\"direction\":\"backward\",\"full_literals\":[-72,64,false],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[4],\"right\":[5],\"left_name\":\"grouped2_0008\",\"right_name\":\"grouped2_0011\",\"joined_name\":\"grouped2_0009\",\"a\":1,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-72,false,65],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[7],\"right\":[8],\"left_name\":\"grouped2_0014\",\"right_name\":\"grouped2_0016\",\"joined_name\":\"grouped2_0015\",\"a\":0,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-73,67,68],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[7],\"right\":[8],\"left_name\":\"grouped2_0014\",\"right_name\":\"grouped2_0016\",\"joined_name\":\"grouped2_0015\",\"a\":0,\"b\":1,\"direction\":\"backward\",\"full_literals\":[-74,67,false],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[7],\"right\":[8],\"left_name\":\"grouped2_0014\",\"right_name\":\"grouped2_0016\",\"joined_name\":\"grouped2_0015\",\"a\":1,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-74,false,68],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[6],\"right\":[7,8],\"left_name\":\"grouped2_0012\",\"right_name\":\"grouped2_0015\",\"joined_name\":\"grouped2_0013\",\"a\":0,\"b\":1,\"direction\":\"backward\",\"full_literals\":[-75,66,74],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[6],\"right\":[7,8],\"left_name\":\"grouped2_0012\",\"right_name\":\"grouped2_0015\",\"joined_name\":\"grouped2_0013\",\"a\":0,\"b\":2,\"direction\":\"backward\",\"full_literals\":[-76,66,false],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[6],\"right\":[7,8],\"left_name\":\"grouped2_0012\",\"right_name\":\"grouped2_0015\",\"joined_name\":\"grouped2_0013\",\"a\":1,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-75,false,73],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[6],\"right\":[7,8],\"left_name\":\"grouped2_0012\",\"right_name\":\"grouped2_0015\",\"joined_name\":\"grouped2_0013\",\"a\":1,\"b\":1,\"direction\":\"backward\",\"full_literals\":[-76,false,74],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[4,5],\"right\":[6,7,8],\"left_name\":\"grouped2_0009\",\"right_name\":\"grouped2_0013\",\"joined_name\":\"grouped2_0010\",\"a\":1,\"b\":2,\"direction\":\"backward\",\"full_literals\":[-77,72,76],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[4,5],\"right\":[6,7,8],\"left_name\":\"grouped2_0009\",\"right_name\":\"grouped2_0013\",\"joined_name\":\"grouped2_0010\",\"a\":2,\"b\":1,\"direction\":\"backward\",\"full_literals\":[-77,false,75],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[4,5],\"right\":[6,7,8],\"left_name\":\"grouped2_0009\",\"right_name\":\"grouped2_0013\",\"joined_name\":\"grouped2_0010\",\"a\":2,\"b\":2,\"direction\":\"backward\",\"full_literals\":[-78,false,76],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[0,1,2,3],\"right\":[4,5,6,7,8],\"left_name\":\"grouped2_0002\",\"right_name\":\"grouped2_0010\",\"joined_name\":\"groupKind2\",\"a\":3,\"b\":4,\"direction\":\"backward\",\"full_literals\":[-79,71,78],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[0,1,2,3],\"right\":[4,5,6,7,8],\"left_name\":\"grouped2_0002\",\"right_name\":\"grouped2_0010\",\"joined_name\":\"groupKind2\",\"a\":4,\"b\":3,\"direction\":\"backward\",\"full_literals\":[-79,false,77],\"grouped\":true,\"kind\":2},{\"tag\":\"quota_lower\",\"kind\":2,\"quota\":8,\"grouped\":true},{\"tag\":\"group_or\",\"kind\":3,\"index\":0,\"members\":[53,60,65],\"full_literals\":[-80,32,39,44]},{\"tag\":\"group_take\",\"kind\":3,\"index\":0,\"member\":60,\"full_literals\":[-39,80]},{\"tag\":\"group_or\",\"kind\":3,\"index\":1,\"members\":[82,83],\"full_literals\":[-81,58,59]},{\"tag\":\"group_take\",\"kind\":3,\"index\":1,\"member\":82,\"full_literals\":[-58,81]},{\"tag\":\"group_take\",\"kind\":3,\"index\":1,\"member\":83,\"full_literals\":[-59,81]},{\"tag\":\"group_or\",\"kind\":3,\"index\":2,\"members\":[29,52,54,57],\"full_literals\":[-82,8,31,33,36]},{\"tag\":\"group_take\",\"kind\":3,\"index\":2,\"member\":29,\"full_literals\":[-8,82]},{\"tag\":\"group_take\",\"kind\":3,\"index\":2,\"member\":52,\"full_literals\":[-31,82]},{\"tag\":\"group_take\",\"kind\":3,\"index\":2,\"member\":54,\"full_literals\":[-33,82]},{\"tag\":\"group_take\",\"kind\":3,\"index\":2,\"member\":57,\"full_literals\":[-36,82]},{\"tag\":\"group_take\",\"kind\":3,\"index\":4,\"member\":50,\"full_literals\":[-29,83]},{\"tag\":\"group_take\",\"kind\":3,\"index\":5,\"member\":79,\"full_literals\":[-55,84]},{\"tag\":\"merge\",\"left\":[1],\"right\":[2],\"left_name\":\"grouped3_0020\",\"right_name\":\"grouped3_0022\",\"joined_name\":\"grouped3_0021\",\"a\":0,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-85,81,82],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[1],\"right\":[2],\"left_name\":\"grouped3_0020\",\"right_name\":\"grouped3_0022\",\"joined_name\":\"grouped3_0021\",\"a\":0,\"b\":1,\"direction\":\"forward\",\"full_literals\":[false,-82,85],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[1],\"right\":[2],\"left_name\":\"grouped3_0020\",\"right_name\":\"grouped3_0022\",\"joined_name\":\"grouped3_0021\",\"a\":1,\"b\":0,\"direction\":\"forward\",\"full_literals\":[-81,false,85],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[0],\"right\":[1,2],\"left_name\":\"grouped3_0017\",\"right_name\":\"grouped3_0021\",\"joined_name\":\"grouped3_0018\",\"a\":0,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-86,80,85],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[0],\"right\":[1,2],\"left_name\":\"grouped3_0017\",\"right_name\":\"grouped3_0021\",\"joined_name\":\"grouped3_0018\",\"a\":0,\"b\":1,\"direction\":\"forward\",\"full_literals\":[false,-85,86],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[0],\"right\":[1,2],\"left_name\":\"grouped3_0017\",\"right_name\":\"grouped3_0021\",\"joined_name\":\"grouped3_0018\",\"a\":1,\"b\":0,\"direction\":\"forward\",\"full_literals\":[-80,false,86],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[4],\"right\":[5],\"left_name\":\"grouped3_0025\",\"right_name\":\"grouped3_0027\",\"joined_name\":\"grouped3_0026\",\"a\":1,\"b\":1,\"direction\":\"forward\",\"full_literals\":[-83,-84,87],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[3],\"right\":[4,5],\"left_name\":\"grouped3_0023\",\"right_name\":\"grouped3_0026\",\"joined_name\":\"grouped3_0024\",\"a\":0,\"b\":2,\"direction\":\"forward\",\"full_literals\":[false,-87,88],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[0,1,2],\"right\":[3,4,5],\"left_name\":\"grouped3_0018\",\"right_name\":\"grouped3_0024\",\"joined_name\":\"groupKind3\",\"a\":1,\"b\":2,\"direction\":\"forward\",\"full_literals\":[-86,-88,89],\"grouped\":true,\"kind\":3},{\"tag\":\"quota_upper\",\"kind\":3,\"quota\":2,\"grouped\":true},{\"tag\":\"edge\",\"edge\":42,\"owners\":[19,21,39,47,50,51,60,63,66,67,69,70,77,79,80,82,83]}]}"
+  "137 77 0 113 112 0\n138 75 0 137 109 0\n139 73 0 138 106 0\n140 -80 39 44 0 82 114 0\n141 29 4 59 26 18 30 39 42 45 46 48 49 53 55 56 58 0 136 73 0\n142 -43 56 3 -61 30 0 29 30 31 52 64 85 0\n143 -48 58 0 46 78 80 0\n144 -76 85 0 82 128 117 143 118 74 76 127 122 121 105 107 102 91 31 37 90 18 21 22 58 19 0\n145 -43 86 0 137 113 130 144 110 111 97 94 108 99 128 117 143 127 120 79 123 83 70 118 74 76 131 115 29 30 32 34 37 49 52 55 142 85 77 2 63 50 51 88 67 25 53 141 72 0\n146 -27 -68 0 21 22 92 0\n147 -24 -68 0 14 15 92 0\n148 86 0 137 113 139 138 130 127 128 120 123 117 118 79 83 68 76 74 65 69 66 70 143 144 110 108 111 100 98 95 96 145 91 101 102 104 146 147 90 35 87 42 45 92 86 9 1 3 89 0\n149 -88 0 148 135 134 0\n150 -87 0 149 133 0\n151 -21 -45 -63 0 148 57 56 116 38 36 140 129 126 41 35 8 13 28 59 87 119 44 0\n152 -45 67 0 139 113 102 107 110 111 98 96 101 35 41 151 92 12 42 87 0\n153 67 0 139 138 101 102 146 147 104 152 90 16 17 92 0\n154 -26 0 153 27 33 47 91 0\n155 -47 -27 0 82 153 20 79 22 21 19 18 43 71 61 58 54 81 91 48 0\n156 -27 0 113 20 23 24 146 79 103 107 110 111 98 96 155 87 40 70 83 0\n157 21 66 0 138 113 156 105 110 111 98 96 97 93 104 103 92 4 5 6 7 10 12 42 60 62 87 84 39 0\n158 -46 50 0 40 70 83 0\n159 -55 0 150 81 125 124 132 0\n160 -48 0 159 75 0\n161 66 23 47 46 0 113 105 157 110 11 111 87 98 96 0\n162 -24 0 153 160 26 31 91 0\n163 66 0 159 157 8 13 79 71 158 161 0\n164 45 0 163 154 162 156 90 0\n165 -43 0 164 37 0\n166 -58 0 164 56 0\n167 -59 0 164 57 0\n168 30 0 165 160 153 91 0\n169 0 168 166 167 76 0\n"
+
+theorem local_coverage
+    (valid : GraphGrowthInputs.Valid Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record006.inputs)
+    (matrix : MatrixGraphProblem.Checked Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record006.data)
+    (B : List (Fin Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record006.n))
+    (H : GraphGrowthConstraints.Target (Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record006.inputs.problem valid) B) :
+    ∃ j : Fin leafCount, GrowthDAG.Same (SparseGrowthDAG.family (leaves j))
+      (SparseGrowthDAG.family B) := by
+  apply FacetSat.RawProjection.coverage_with_edges Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record006 valid matrix
+    vertexColumn kindColumn projection_checked leaves _ B H
+  intro S HS edgeCover noSame
+  exact boundary_unsat S HS edgeCover noSame
+def originalLeaf (j : Fin leafCount) : Fin Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record006.l := Fin.elim0 j
+def orbitWord (j : Fin leafCount) : List (Fin Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record006.g) := Fin.elim0 j
+theorem orbit_words_checked : ∀ j : Fin leafCount,
+    SparseGrowthDAG.sameCheck (Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record006.leaf (originalLeaf j))
+      (GraphCaseCertificate.rawApplyWord Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record006.maps (orbitWord j) (leaves j)) = true := by
+  decide +kernel
+
+theorem direct_core : GraphCaseCertificate.DirectCore Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record006 where
+  matrix := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record006_matrix_checked
+  valid := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record006_validity
+  literal := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record006_literal
+  leaf_nodup := by decide +kernel
+  frames := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record006_frames_supported Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record006_cells_exact
+  leaves_checked := ⟨Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record006_certificates, Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record006_leaf_certificates_checked⟩
+  complete := GraphCaseCertificate.complete_of_orbits Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record006 Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record006_validity
+    leaves originalLeaf orbitWord orbit_words_checked
+    (local_coverage Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record006_validity Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record006_matrix_checked)
+
+
+end Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record006
+
+@[expose] public section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option maxErrors 5
+set_option autoImplicit false
+set_option linter.unusedVariables false
+namespace Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record007
+open Papers.RationalityTen
+
+def vertexColumn : PackedGraphCertificate.Fields :=
+  ⟨10, sparse_nat% "760dc74b2a6a99a598d68b92e8789e0f9d1727296a599564d9594d5534cd4b61d2745d0f72368d6364d53c2e8b62e2b4acab86d1b26c3b91d4731d2719e1725c3783d0f23c2f07e2c708d289856704d1626294a499894558342d0758350cc388d2324c5381c4709c17"⟩
+def kindColumn : PackedGraphCertificate.Fields :=
+  ⟨3, sparse_nat% "6d36da4db69249a69b49249249b4936d34924924da449249249249249249249"⟩
+def data : FacetSat.Data :=
+  FacetSat.RawProjection.data Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record007 vertexColumn kindColumn
+theorem projection_checked :
+    FacetSat.RawProjection.check Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record007 vertexColumn kindColumn = true := by
+  decide +kernel
+
+def facetIndex (i : Nat) : Fin data.count :=
+  ⟨i % data.count, Nat.mod_lt _ (by decide)⟩
+def ridgeIndex (i : Nat) : Fin 1024 :=
+  ⟨i % 1024, Nat.mod_lt _ (by decide)⟩
+
+def requirements : Nat → Nat := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record007.data.quota
+
+def groupMembers2 : ConcreteGrowth.Table (List (Fin data.count)) :=
+(.branch 4
+ (.branch 2
+ (.branch 1
+ (.leaf ([(facetIndex 37), (facetIndex 50), (facetIndex 76), (facetIndex 81)]))
+ (.leaf ([(facetIndex 45), (facetIndex 59), (facetIndex 67), (facetIndex 68)])))
+ (.branch 3
+ (.leaf ([(facetIndex 27), (facetIndex 28), (facetIndex 31), (facetIndex 41), (facetIndex 46), (facetIndex 47), (facetIndex 75)]))
+ (.leaf ([(facetIndex 55), (facetIndex 56), (facetIndex 57), (facetIndex 58)]))))
+ (.branch 6
+ (.branch 5
+ (.leaf ([(facetIndex 36), (facetIndex 52), (facetIndex 53), (facetIndex 54)]))
+ (.leaf ([(facetIndex 33), (facetIndex 62), (facetIndex 64)])))
+ (.branch 7
+ (.leaf ([(facetIndex 32), (facetIndex 34), (facetIndex 35), (facetIndex 38), (facetIndex 39)]))
+ (.leaf ([(facetIndex 51), (facetIndex 66), (facetIndex 69), (facetIndex 70)])))))
+def groupColors2 : PackedGraphCertificate.Fields :=
+  ⟨3, sparse_nat% "4001f93c51402db724e00488010d84dae4024z14;"⟩
+def grouping2 : FacetSat.Grouping data.count where
+  count := 8
+  members := fun g => groupMembers2.get g
+  color := fun c => groupColors2.get c.val
+def groupKind2 : List Nat := List.range grouping2.count
+
+def grouped2_0000 : List Nat := [0]
+def grouped2_0001 : List Nat := [0, 1]
+def grouped2_0002 : List Nat := [0, 1, 2, 3]
+def grouped2_0004 : List Nat := [1]
+def grouped2_0005 : List Nat := [2]
+def grouped2_0006 : List Nat := [2, 3]
+def grouped2_0007 : List Nat := [3]
+def grouped2_0008 : List Nat := [4]
+def grouped2_0009 : List Nat := [4, 5]
+def grouped2_0010 : List Nat := [4, 5, 6, 7]
+def grouped2_0011 : List Nat := [5]
+def grouped2_0012 : List Nat := [6]
+def grouped2_0013 : List Nat := [6, 7]
+def grouped2_0014 : List Nat := [7]
+
+theorem ridge_matrix_checked :
+    data.ridgeMatrix = PackedIncidenceMatrix.code (ConcreteGrowth.ridgeList data.cells) :=
+  FacetSat.RawProjection.ridge_matrix Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record007 vertexColumn kindColumn
+    Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record007_matrix_checked
+
+def leafCount : Nat := 0
+def kindKeys : List Nat := [1, 2, 3]
+theorem kindKeys_checked : FacetSat.RawProjection.kindKeysCheck data.toData.kind kindKeys = true := by
+  decide +kernel
+def leaves (j : Fin leafCount) : List (Fin data.count) := Fin.elim0 j
+
+facet_model% "Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record007" "{\"atoms\":[{\"tag\":\"facet\",\"index\":27},{\"tag\":\"facet\",\"index\":28},{\"tag\":\"facet\",\"index\":31},{\"tag\":\"facet\",\"index\":33},{\"tag\":\"facet\",\"index\":41},{\"tag\":\"facet\",\"index\":45},{\"tag\":\"facet\",\"index\":46},{\"tag\":\"facet\",\"index\":47},{\"tag\":\"facet\",\"index\":51},{\"tag\":\"facet\",\"index\":55},{\"tag\":\"facet\",\"index\":56},{\"tag\":\"facet\",\"index\":57},{\"tag\":\"facet\",\"index\":58},{\"tag\":\"facet\",\"index\":59},{\"tag\":\"facet\",\"index\":62},{\"tag\":\"facet\",\"index\":64},{\"tag\":\"facet\",\"index\":66},{\"tag\":\"facet\",\"index\":67},{\"tag\":\"facet\",\"index\":68},{\"tag\":\"facet\",\"index\":69},{\"tag\":\"facet\",\"index\":70},{\"tag\":\"facet\",\"index\":71},{\"tag\":\"facet\",\"index\":72},{\"tag\":\"facet\",\"index\":73},{\"tag\":\"facet\",\"index\":74},{\"tag\":\"facet\",\"index\":75},{\"tag\":\"facet\",\"index\":79},{\"tag\":\"facet\",\"index\":80},{\"tag\":\"group\",\"kind\":2,\"index\":1},{\"tag\":\"group\",\"kind\":2,\"index\":2},{\"tag\":\"group\",\"kind\":2,\"index\":3},{\"tag\":\"group\",\"kind\":2,\"index\":5},{\"tag\":\"group\",\"kind\":2,\"index\":7},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":2,\"list_name\":\"grouped2_0001\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":2,\"list_name\":\"grouped2_0006\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":4,\"list_name\":\"grouped2_0002\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":2,\"list_name\":\"grouped2_0009\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":2,\"list_name\":\"grouped2_0013\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":4,\"list_name\":\"grouped2_0010\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":8,\"list_name\":\"groupKind2\"}]}"
+facet_atoms% "Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record007" 40
+
+facet_facts% "Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record007" "{\"ridges\":[[45,296],[56,28],[57,28],[59,296],[67,296],[68,296]],\"owners\":[[56,28,[71,72,73],[11,27,55,57,58,82]],[57,28,[71,73],[11,27,55,56,58,72,82]],[45,296,[],[17,59,67,68,74,79,80]],[59,296,[79,80],[17,45,67,68,74]],[67,296,[74,80],[17,45,59,68,79]],[68,296,[74,79],[17,45,59,67,80]]],\"edges\":[],\"groupings\":[2]}"
+
+facet_refute_shared% "Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record007" "{\"namespace\":\"Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record007\",\"lower_only\":false,\"coverage\":true,\"edge_cover\":false,\"clauses\":[[-5,-4],[-9,-8],[-10,-1],[-10,-3],[-11,-1],[-12,-1],[-13,-1],[-13,-3],[-14,-2],[-14,-7],[-15,-5],[-16,-5],[-17,-8],[-19,-2],[-19,-7],[-20,-8],[-21,-8],[-22,-3],[-23,-3],[-24,-3],[-25,-2],[-25,-7],[-26,-25],[-27,-26],[-28,-2],[-28,-7],[-28,-26],[-11,22,23,24],[-12,22,24],[-6],[-14,27,28],[-18,25,28],[-19,25,27],[-29,6,14,18,19],[-30,1,2,3,5,7,8,26],[-31,10,11,12,13],[-32,4,15,16],[-33,9,17,20,21],[-34,29],[-35,30],[-35,31],[-36,34],[-36,35],[-37,32],[-38,33],[-39,37],[-39,38],[-40,36],[-40,39],[40]],\"atoms\":[{\"tag\":\"facet\",\"index\":27},{\"tag\":\"facet\",\"index\":28},{\"tag\":\"facet\",\"index\":31},{\"tag\":\"facet\",\"index\":33},{\"tag\":\"facet\",\"index\":41},{\"tag\":\"facet\",\"index\":45},{\"tag\":\"facet\",\"index\":46},{\"tag\":\"facet\",\"index\":47},{\"tag\":\"facet\",\"index\":51},{\"tag\":\"facet\",\"index\":55},{\"tag\":\"facet\",\"index\":56},{\"tag\":\"facet\",\"index\":57},{\"tag\":\"facet\",\"index\":58},{\"tag\":\"facet\",\"index\":59},{\"tag\":\"facet\",\"index\":62},{\"tag\":\"facet\",\"index\":64},{\"tag\":\"facet\",\"index\":66},{\"tag\":\"facet\",\"index\":67},{\"tag\":\"facet\",\"index\":68},{\"tag\":\"facet\",\"index\":69},{\"tag\":\"facet\",\"index\":70},{\"tag\":\"facet\",\"index\":71},{\"tag\":\"facet\",\"index\":72},{\"tag\":\"facet\",\"index\":73},{\"tag\":\"facet\",\"index\":74},{\"tag\":\"facet\",\"index\":75},{\"tag\":\"facet\",\"index\":79},{\"tag\":\"facet\",\"index\":80},{\"tag\":\"group\",\"index\":1,\"kind\":2},{\"tag\":\"group\",\"index\":2,\"kind\":2},{\"tag\":\"group\",\"index\":3,\"kind\":2},{\"tag\":\"group\",\"index\":5,\"kind\":2},{\"tag\":\"group\",\"index\":7,\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2}],\"rules\":[{\"tag\":\"incompatible\",\"a\":41,\"b\":33},{\"tag\":\"incompatible\",\"a\":51,\"b\":47},{\"tag\":\"incompatible\",\"a\":55,\"b\":27},{\"tag\":\"incompatible\",\"a\":55,\"b\":31},{\"tag\":\"incompatible\",\"a\":56,\"b\":27},{\"tag\":\"incompatible\",\"a\":57,\"b\":27},{\"tag\":\"incompatible\",\"a\":58,\"b\":27},{\"tag\":\"incompatible\",\"a\":58,\"b\":31},{\"tag\":\"incompatible\",\"a\":59,\"b\":28},{\"tag\":\"incompatible\",\"a\":59,\"b\":46},{\"tag\":\"incompatible\",\"a\":62,\"b\":41},{\"tag\":\"incompatible\",\"a\":64,\"b\":41},{\"tag\":\"incompatible\",\"a\":66,\"b\":47},{\"tag\":\"incompatible\",\"a\":68,\"b\":28},{\"tag\":\"incompatible\",\"a\":68,\"b\":46},{\"tag\":\"incompatible\",\"a\":69,\"b\":47},{\"tag\":\"incompatible\",\"a\":70,\"b\":47},{\"tag\":\"incompatible\",\"a\":71,\"b\":31},{\"tag\":\"incompatible\",\"a\":72,\"b\":31},{\"tag\":\"incompatible\",\"a\":73,\"b\":31},{\"tag\":\"incompatible\",\"a\":74,\"b\":28},{\"tag\":\"incompatible\",\"a\":74,\"b\":46},{\"tag\":\"incompatible\",\"a\":75,\"b\":74},{\"tag\":\"incompatible\",\"a\":79,\"b\":75},{\"tag\":\"incompatible\",\"a\":80,\"b\":28},{\"tag\":\"incompatible\",\"a\":80,\"b\":46},{\"tag\":\"incompatible\",\"a\":80,\"b\":75},{\"tag\":\"mate\",\"ridge\":28,\"a\":56,\"owners\":[71,72,73]},{\"tag\":\"mate\",\"ridge\":28,\"a\":57,\"owners\":[71,73]},{\"tag\":\"mate\",\"ridge\":296,\"a\":45,\"owners\":[]},{\"tag\":\"mate\",\"ridge\":296,\"a\":59,\"owners\":[79,80]},{\"tag\":\"mate\",\"ridge\":296,\"a\":67,\"owners\":[74,80]},{\"tag\":\"mate\",\"ridge\":296,\"a\":68,\"owners\":[74,79]},{\"tag\":\"group_or\",\"kind\":2,\"index\":1,\"members\":[45,59,67,68],\"full_literals\":[-29,6,14,18,19]},{\"tag\":\"group_or\",\"kind\":2,\"index\":2,\"members\":[27,28,31,41,46,47,75],\"full_literals\":[-30,1,2,3,5,7,8,26]},{\"tag\":\"group_or\",\"kind\":2,\"index\":3,\"members\":[55,56,57,58],\"full_literals\":[-31,10,11,12,13]},{\"tag\":\"group_or\",\"kind\":2,\"index\":5,\"members\":[33,62,64],\"full_literals\":[-32,4,15,16]},{\"tag\":\"group_or\",\"kind\":2,\"index\":7,\"members\":[51,66,69,70],\"full_literals\":[-33,9,17,20,21]},{\"tag\":\"merge\",\"left\":[0],\"right\":[1],\"left_name\":\"grouped2_0000\",\"right_name\":\"grouped2_0004\",\"joined_name\":\"grouped2_0001\",\"a\":1,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-34,false,29],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[2],\"right\":[3],\"left_name\":\"grouped2_0005\",\"right_name\":\"grouped2_0007\",\"joined_name\":\"grouped2_0006\",\"a\":0,\"b\":1,\"direction\":\"backward\",\"full_literals\":[-35,30,false],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[2],\"right\":[3],\"left_name\":\"grouped2_0005\",\"right_name\":\"grouped2_0007\",\"joined_name\":\"grouped2_0006\",\"a\":1,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-35,false,31],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[0,1],\"right\":[2,3],\"left_name\":\"grouped2_0001\",\"right_name\":\"grouped2_0006\",\"joined_name\":\"grouped2_0002\",\"a\":1,\"b\":2,\"direction\":\"backward\",\"full_literals\":[-36,34,false],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[0,1],\"right\":[2,3],\"left_name\":\"grouped2_0001\",\"right_name\":\"grouped2_0006\",\"joined_name\":\"grouped2_0002\",\"a\":2,\"b\":1,\"direction\":\"backward\",\"full_literals\":[-36,false,35],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[4],\"right\":[5],\"left_name\":\"grouped2_0008\",\"right_name\":\"grouped2_0011\",\"joined_name\":\"grouped2_0009\",\"a\":1,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-37,false,32],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[6],\"right\":[7],\"left_name\":\"grouped2_0012\",\"right_name\":\"grouped2_0014\",\"joined_name\":\"grouped2_0013\",\"a\":1,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-38,false,33],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[4,5],\"right\":[6,7],\"left_name\":\"grouped2_0009\",\"right_name\":\"grouped2_0013\",\"joined_name\":\"grouped2_0010\",\"a\":1,\"b\":2,\"direction\":\"backward\",\"full_literals\":[-39,37,false],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[4,5],\"right\":[6,7],\"left_name\":\"grouped2_0009\",\"right_name\":\"grouped2_0013\",\"joined_name\":\"grouped2_0010\",\"a\":2,\"b\":1,\"direction\":\"backward\",\"full_literals\":[-39,false,38],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[0,1,2,3],\"right\":[4,5,6,7],\"left_name\":\"grouped2_0002\",\"right_name\":\"grouped2_0010\",\"joined_name\":\"groupKind2\",\"a\":3,\"b\":4,\"direction\":\"backward\",\"full_literals\":[-40,36,false],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[0,1,2,3],\"right\":[4,5,6,7],\"left_name\":\"grouped2_0002\",\"right_name\":\"grouped2_0010\",\"joined_name\":\"groupKind2\",\"a\":4,\"b\":3,\"direction\":\"backward\",\"full_literals\":[-40,false,39],\"grouped\":true,\"kind\":2},{\"tag\":\"quota_lower\",\"kind\":2,\"quota\":8,\"grouped\":true}]}"
+  "51 -29 14 18 19 0 30 34 0\n52 36 0 50 48 0\n53 39 0 50 49 0\n54 34 0 52 42 0\n55 35 0 52 43 0\n56 37 0 53 46 0\n57 38 0 53 47 0\n58 29 0 54 39 0\n59 30 0 55 40 0\n60 31 0 55 41 0\n61 32 0 56 44 0\n62 33 0 57 45 0\n63 -3 0 60 4 8 18 19 20 28 29 36 0\n64 -1 0 60 3 5 6 7 36 0\n65 -2 0 58 9 14 21 25 51 32 0\n66 -5 0 61 1 11 12 37 0\n67 -8 0 62 2 13 16 17 38 0\n68 -7 0 58 10 15 22 26 51 32 0\n69 26 0 68 59 66 64 65 63 67 35 0\n70 -25 0 69 23 0\n71 -27 0 69 24 0\n72 -28 0 69 27 0\n73 -14 0 71 72 31 0\n74 -19 0 71 70 33 0\n75 -18 0 72 70 32 0\n76 0 73 75 58 74 51 0\n"
+
+theorem local_coverage
+    (valid : GraphGrowthInputs.Valid Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record007.inputs)
+    (matrix : MatrixGraphProblem.Checked Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record007.data)
+    (B : List (Fin Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record007.n))
+    (H : GraphGrowthConstraints.Target (Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record007.inputs.problem valid) B) :
+    ∃ j : Fin leafCount, GrowthDAG.Same (SparseGrowthDAG.family (leaves j))
+      (SparseGrowthDAG.family B) := by
+  apply FacetSat.RawProjection.coverage Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record007 valid matrix
+    vertexColumn kindColumn projection_checked leaves _ B H
+  intro S HS noSame
+  exact boundary_unsat S HS noSame
+def originalLeaf (j : Fin leafCount) : Fin Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record007.l := Fin.elim0 j
+def orbitWord (j : Fin leafCount) : List (Fin Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record007.g) := Fin.elim0 j
+theorem orbit_words_checked : ∀ j : Fin leafCount,
+    SparseGrowthDAG.sameCheck (Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record007.leaf (originalLeaf j))
+      (GraphCaseCertificate.rawApplyWord Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record007.maps (orbitWord j) (leaves j)) = true := by
+  decide +kernel
+
+theorem direct_core : GraphCaseCertificate.DirectCore Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record007 where
+  matrix := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record007_matrix_checked
+  valid := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record007_validity
+  literal := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record007_literal
+  leaf_nodup := by decide +kernel
+  frames := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record007_frames_supported Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record007_cells_exact
+  leaves_checked := ⟨Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record007_certificates, Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record007_leaf_certificates_checked⟩
+  complete := GraphCaseCertificate.complete_of_orbits Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record007 Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record007_validity
+    leaves originalLeaf orbitWord orbit_words_checked
+    (local_coverage Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record007_validity Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record007_matrix_checked)
+
+
+end Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record007
+
+@[expose] public section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option maxErrors 5
+set_option autoImplicit false
+set_option linter.unusedVariables false
+namespace Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record012
+open Papers.RationalityTen
+
+def vertexColumn : PackedGraphCertificate.Fields :=
+  ⟨10, sparse_nat% "8f0da8e9c6698e655a36638ce8b8ae8785e0faa936639715a53965555635634cd2b45d0f5a338d5334e3362ccb8ae1b26c5b0ed8731e2749ca719e1745c3783d0f23c4f8b21c708aa518560b81e706292a61951625854558342d0758350cc328c5322c2b06d0711c2705c0f"⟩
+def kindColumn : PackedGraphCertificate.Fields :=
+  ⟨3, sparse_nat% "1369b4db49249a4da49b492493492492492492492249249249249249249249249"⟩
+def data : FacetSat.Data :=
+  FacetSat.RawProjection.data Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record012 vertexColumn kindColumn
+theorem projection_checked :
+    FacetSat.RawProjection.check Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record012 vertexColumn kindColumn = true := by
+  decide +kernel
+
+def facetIndex (i : Nat) : Fin data.count :=
+  ⟨i % data.count, Nat.mod_lt _ (by decide)⟩
+def ridgeIndex (i : Nat) : Fin 1024 :=
+  ⟨i % 1024, Nat.mod_lt _ (by decide)⟩
+def edgeCount : Nat := 45
+def requiredEdges : Nat := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record012.data.requiredEdges
+def edgeRows : Fin edgeCount → Nat := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record012.data.edgeRows
+def edgeIndex (i : Nat) : Fin edgeCount :=
+  ⟨i % edgeCount, Nat.mod_lt _ (by decide)⟩
+
+def requirements : Nat → Nat := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record012.data.quota
+
+def groupMembers2 : ConcreteGrowth.Table (List (Fin data.count)) :=
+(.branch 4
+ (.branch 2
+ (.branch 1
+ (.leaf ([(facetIndex 45), (facetIndex 49), (facetIndex 57), (facetIndex 59), (facetIndex 68), (facetIndex 70)]))
+ (.leaf ([(facetIndex 37), (facetIndex 38), (facetIndex 58), (facetIndex 63), (facetIndex 64)])))
+ (.branch 3
+ (.leaf ([(facetIndex 32), (facetIndex 72), (facetIndex 79)]))
+ (.leaf ([(facetIndex 33), (facetIndex 40), (facetIndex 43), (facetIndex 44), (facetIndex 67), (facetIndex 74), (facetIndex 82)]))))
+ (.branch 6
+ (.branch 5
+ (.leaf ([(facetIndex 35), (facetIndex 36), (facetIndex 62), (facetIndex 71), (facetIndex 85)]))
+ (.leaf ([(facetIndex 47), (facetIndex 50), (facetIndex 51), (facetIndex 53), (facetIndex 55), (facetIndex 56)])))
+ (.branch 7
+ (.leaf ([(facetIndex 34), (facetIndex 39), (facetIndex 41), (facetIndex 42)]))
+ (.branch 8
+ (.leaf ([(facetIndex 48), (facetIndex 73), (facetIndex 75)]))
+ (.leaf ([(facetIndex 46), (facetIndex 54)]))))))
+def groupColors2 : PackedGraphCertificate.Fields :=
+  ⟨4, sparse_nat% "400300200073724000300114000105585055075803366361144632z20;"⟩
+def grouping2 : FacetSat.Grouping data.count where
+  count := 9
+  members := fun g => groupMembers2.get g
+  color := fun c => groupColors2.get c.val
+def groupKind2 : List Nat := List.range grouping2.count
+
+def groupMembers3 : ConcreteGrowth.Table (List (Fin data.count)) :=
+(.branch 3
+ (.branch 1
+ (.leaf ([(facetIndex 52)]))
+ (.branch 2
+ (.leaf ([(facetIndex 78)]))
+ (.leaf ([(facetIndex 83)]))))
+ (.branch 5
+ (.branch 4
+ (.leaf ([(facetIndex 60), (facetIndex 69)]))
+ (.leaf ([(facetIndex 76), (facetIndex 84)])))
+ (.branch 6
+ (.leaf ([(facetIndex 61), (facetIndex 65), (facetIndex 66)]))
+ (.leaf ([(facetIndex 77), (facetIndex 80), (facetIndex 81)])))))
+def groupColors3 : PackedGraphCertificate.Fields :=
+  ⟨3, sparse_nat% "443607400001816802bz2d;"⟩
+def grouping3 : FacetSat.Grouping data.count where
+  count := 7
+  members := fun g => groupMembers3.get g
+  color := fun c => groupColors3.get c.val
+def groupKind3 : List Nat := List.range grouping3.count
+
+def grouped2_0000 : List Nat := [0]
+def grouped2_0001 : List Nat := [0, 1]
+def grouped2_0002 : List Nat := [0, 1, 2, 3]
+def grouped2_0004 : List Nat := [1]
+def grouped2_0005 : List Nat := [2]
+def grouped2_0006 : List Nat := [2, 3]
+def grouped2_0007 : List Nat := [3]
+def grouped2_0008 : List Nat := [4]
+def grouped2_0009 : List Nat := [4, 5]
+def grouped2_0010 : List Nat := [4, 5, 6, 7, 8]
+def grouped2_0011 : List Nat := [5]
+def grouped2_0012 : List Nat := [6]
+def grouped2_0013 : List Nat := [6, 7, 8]
+def grouped2_0014 : List Nat := [7]
+def grouped2_0015 : List Nat := [7, 8]
+def grouped2_0016 : List Nat := [8]
+def grouped3_0017 : List Nat := [0]
+def grouped3_0018 : List Nat := [0, 1, 2]
+def grouped3_0020 : List Nat := [1]
+def grouped3_0021 : List Nat := [1, 2]
+def grouped3_0022 : List Nat := [2]
+def grouped3_0023 : List Nat := [3]
+def grouped3_0024 : List Nat := [3, 4]
+def grouped3_0025 : List Nat := [3, 4, 5, 6]
+def grouped3_0026 : List Nat := [4]
+def grouped3_0027 : List Nat := [5]
+def grouped3_0028 : List Nat := [5, 6]
+def grouped3_0029 : List Nat := [6]
+
+theorem ridge_matrix_checked :
+    data.ridgeMatrix = PackedIncidenceMatrix.code (ConcreteGrowth.ridgeList data.cells) :=
+  FacetSat.RawProjection.ridge_matrix Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record012 vertexColumn kindColumn
+    Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record012_matrix_checked
+
+def leafCount : Nat := 0
+def kindKeys : List Nat := [1, 2, 3]
+theorem kindKeys_checked : FacetSat.RawProjection.kindKeysCheck data.toData.kind kindKeys = true := by
+  decide +kernel
+def leaves (j : Fin leafCount) : List (Fin data.count) := Fin.elim0 j
+
+facet_model% "Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record012" "{\"atoms\":[{\"tag\":\"facet\",\"index\":0},{\"tag\":\"facet\",\"index\":2},{\"tag\":\"facet\",\"index\":3},{\"tag\":\"facet\",\"index\":6},{\"tag\":\"facet\",\"index\":7},{\"tag\":\"facet\",\"index\":9},{\"tag\":\"facet\",\"index\":10},{\"tag\":\"facet\",\"index\":11},{\"tag\":\"facet\",\"index\":16},{\"tag\":\"facet\",\"index\":19},{\"tag\":\"facet\",\"index\":21},{\"tag\":\"facet\",\"index\":24},{\"tag\":\"facet\",\"index\":26},{\"tag\":\"facet\",\"index\":27},{\"tag\":\"facet\",\"index\":28},{\"tag\":\"facet\",\"index\":32},{\"tag\":\"facet\",\"index\":33},{\"tag\":\"facet\",\"index\":34},{\"tag\":\"facet\",\"index\":35},{\"tag\":\"facet\",\"index\":36},{\"tag\":\"facet\",\"index\":37},{\"tag\":\"facet\",\"index\":38},{\"tag\":\"facet\",\"index\":39},{\"tag\":\"facet\",\"index\":40},{\"tag\":\"facet\",\"index\":41},{\"tag\":\"facet\",\"index\":42},{\"tag\":\"facet\",\"index\":43},{\"tag\":\"facet\",\"index\":44},{\"tag\":\"facet\",\"index\":45},{\"tag\":\"facet\",\"index\":46},{\"tag\":\"facet\",\"index\":47},{\"tag\":\"facet\",\"index\":48},{\"tag\":\"facet\",\"index\":49},{\"tag\":\"facet\",\"index\":50},{\"tag\":\"facet\",\"index\":51},{\"tag\":\"facet\",\"index\":52},{\"tag\":\"facet\",\"index\":53},{\"tag\":\"facet\",\"index\":54},{\"tag\":\"facet\",\"index\":55},{\"tag\":\"facet\",\"index\":56},{\"tag\":\"facet\",\"index\":58},{\"tag\":\"facet\",\"index\":59},{\"tag\":\"facet\",\"index\":60},{\"tag\":\"facet\",\"index\":61},{\"tag\":\"facet\",\"index\":62},{\"tag\":\"facet\",\"index\":63},{\"tag\":\"facet\",\"index\":64},{\"tag\":\"facet\",\"index\":65},{\"tag\":\"facet\",\"index\":66},{\"tag\":\"facet\",\"index\":67},{\"tag\":\"facet\",\"index\":69},{\"tag\":\"facet\",\"index\":70},{\"tag\":\"facet\",\"index\":71},{\"tag\":\"facet\",\"index\":72},{\"tag\":\"facet\",\"index\":73},{\"tag\":\"facet\",\"index\":74},{\"tag\":\"facet\",\"index\":75},{\"tag\":\"facet\",\"index\":76},{\"tag\":\"facet\",\"index\":77},{\"tag\":\"facet\",\"index\":78},{\"tag\":\"facet\",\"index\":79},{\"tag\":\"facet\",\"index\":80},{\"tag\":\"facet\",\"index\":81},{\"tag\":\"facet\",\"index\":82},{\"tag\":\"facet\",\"index\":83},{\"tag\":\"facet\",\"index\":84},{\"tag\":\"facet\",\"index\":85},{\"tag\":\"group\",\"kind\":2,\"index\":1},{\"tag\":\"group\",\"kind\":2,\"index\":2},{\"tag\":\"group\",\"kind\":2,\"index\":3},{\"tag\":\"group\",\"kind\":2,\"index\":4},{\"tag\":\"group\",\"kind\":2,\"index\":5},{\"tag\":\"group\",\"kind\":2,\"index\":6},{\"tag\":\"group\",\"kind\":2,\"index\":7},{\"tag\":\"group\",\"kind\":2,\"index\":8},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":2,\"list_name\":\"grouped2_0001\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":1,\"list_name\":\"grouped2_0006\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":2,\"list_name\":\"grouped2_0006\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":3,\"list_name\":\"grouped2_0002\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":4,\"list_name\":\"grouped2_0002\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":2,\"list_name\":\"grouped2_0009\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":1,\"list_name\":\"grouped2_0015\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":2,\"list_name\":\"grouped2_0015\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":2,\"list_name\":\"grouped2_0013\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":3,\"list_name\":\"grouped2_0013\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":4,\"list_name\":\"grouped2_0010\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":5,\"list_name\":\"grouped2_0010\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":8,\"list_name\":\"groupKind2\"},{\"tag\":\"group\",\"kind\":3,\"index\":0},{\"tag\":\"group\",\"kind\":3,\"index\":1},{\"tag\":\"group\",\"kind\":3,\"index\":2},{\"tag\":\"group\",\"kind\":3,\"index\":3},{\"tag\":\"group\",\"kind\":3,\"index\":4},{\"tag\":\"group\",\"kind\":3,\"index\":5},{\"tag\":\"group\",\"kind\":3,\"index\":6},{\"tag\":\"group_totalizer\",\"kind\":3,\"threshold\":1,\"list_name\":\"grouped3_0021\"},{\"tag\":\"group_totalizer\",\"kind\":3,\"threshold\":1,\"list_name\":\"grouped3_0018\"},{\"tag\":\"group_totalizer\",\"kind\":3,\"threshold\":1,\"list_name\":\"grouped3_0024\"},{\"tag\":\"group_totalizer\",\"kind\":3,\"threshold\":2,\"list_name\":\"grouped3_0024\"},{\"tag\":\"group_totalizer\",\"kind\":3,\"threshold\":1,\"list_name\":\"grouped3_0028\"},{\"tag\":\"group_totalizer\",\"kind\":3,\"threshold\":2,\"list_name\":\"grouped3_0028\"},{\"tag\":\"group_totalizer\",\"kind\":3,\"threshold\":2,\"list_name\":\"grouped3_0025\"},{\"tag\":\"group_totalizer\",\"kind\":3,\"threshold\":3,\"list_name\":\"grouped3_0025\"},{\"tag\":\"group_totalizer\",\"kind\":3,\"threshold\":2,\"list_name\":\"groupKind3\"},{\"tag\":\"group_totalizer\",\"kind\":3,\"threshold\":3,\"list_name\":\"groupKind3\"}]}"
+facet_atoms% "Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record012" 105
+
+facet_facts% "Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record012" "{\"ridges\":[[6,35],[7,11],[11,259],[16,81],[19,69],[21,137],[24,14],[26,82],[27,70],[28,138],[34,11],[34,259],[41,35],[41,38],[41,259],[46,11],[46,26],[46,67],[47,138],[51,137],[51,138],[51,259],[54,81],[54,82],[54,259],[55,35],[55,193],[56,259],[59,137],[60,204],[64,81],[67,193],[69,81],[69,137],[69,193],[70,137],[75,14],[75,38],[75,42],[76,204],[77,14],[77,138],[77,396],[80,38],[80,228],[81,420],[84,82],[84,138],[84,216]],\"owners\":[[46,11,[0,6,7,34,35,49,51],[5,32,48,50]],[75,38,[2,36,39,40,41,80,81],[25,42,71,74,78]],[46,67,[3,10,11,39,55],[8,32,50]],[19,69,[3,16,32,39,43,58,60,64,65],[67]],[27,70,[3,26,32,39,43,72,76,80],[82]],[46,26,[24,71,73,83],[5,45,47,48,72,84]],[75,42,[6,28,45],[25,49,71,83]],[21,137,[7,33,47,50,51,60,61,69],[59,70]],[59,137,[7,47,50,51,69],[21,33,60,61,70]],[70,137,[7,33,47,50,51,60,61,69],[21,59]],[28,138,[7,33,47,50,51,76,77,84],[74]],[60,204,[76],[]],[76,204,[60],[]],[77,396,[61],[]],[80,228,[65],[]],[81,420,[66],[]],[84,216,[69],[]]],\"edges\":[[20,[3,16,19,26,27,32,39,43,58,60,63,64,65,67,72,76,79,80,82]],[27,[7,21,28,33,47,50,51,59,60,61,69,70,74,76,77,84]],[36,[9,21,28,40,55,56,59,65,66,70,74,80,81]]],\"groupings\":[2,3]}"
+
+facet_refute_shared% "Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record012" "{\"namespace\":\"Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record012\",\"lower_only\":false,\"coverage\":true,\"edge_cover\":true,\"clauses\":[[-18,-2],[-19,-18],[-20,-18],[-22,-18],[-23,-16],[-23,-19],[-23,-20],[-24,-18],[-24,-23],[-25,-1],[-25,-3],[-25,-16],[-25,-17],[-25,-19],[-25,-20],[-25,-24],[-26,-19],[-26,-20],[-26,-24],[-28,-25],[-29,-19],[-29,-20],[-31,-4],[-31,-18],[-31,-30],[-32,-26],[-32,-30],[-32,-31],[-34,-24],[-34,-30],[-35,-6],[-35,-7],[-35,-18],[-35,-24],[-36,-32],[-37,-30],[-38,-3],[-38,-23],[-38,-27],[-38,-34],[-38,-37],[-39,-5],[-39,-24],[-39,-35],[-39,-38],[-40,-24],[-40,-25],[-43,-16],[-43,-17],[-43,-24],[-43,-27],[-43,-28],[-44,-17],[-44,-18],[-44,-24],[-44,-27],[-44,-28],[-45,-29],[-45,-36],[-46,-38],[-47,-45],[-48,-17],[-48,-24],[-48,-27],[-48,-28],[-49,-17],[-49,-24],[-49,-27],[-49,-28],[-50,-38],[-50,-42],[-50,-43],[-50,-44],[-50,-48],[-50,-49],[-51,-16],[-51,-30],[-51,-31],[-51,-32],[-51,-34],[-51,-37],[-51,-41],[-53,-16],[-53,-18],[-53,-29],[-53,-36],[-54,-30],[-54,-43],[-54,-51],[-54,-53],[-55,-22],[-55,-26],[-55,-33],[-55,-36],[-55,-53],[-55,-54],[-56,-27],[-56,-43],[-56,-44],[-56,-48],[-56,-49],[-56,-50],[-56,-53],[-57,-26],[-57,-36],[-57,-53],[-57,-55],[-57,-56],[-58,-56],[-59,-18],[-59,-56],[-60,-32],[-60,-45],[-60,-53],[-60,-55],[-60,-57],[-61,-21],[-61,-23],[-61,-27],[-61,-38],[-61,-46],[-61,-58],[-62,-56],[-63,-25],[-63,-56],[-64,-38],[-64,-43],[-64,-44],[-64,-48],[-64,-49],[-64,-56],[-64,-61],[-65,-32],[-65,-45],[-65,-53],[-65,-55],[-65,-57],[-67,-29],[-67,-36],[-67,-55],[-67,-60],[-67,-65],[-30,1,4,5,18,19,33,35],[-5,-18,-30],[-12,-57,-59],[-4,-25,-39],[-57,2,20,23,24,25,62,63],[-25,-57,-62],[-30,3,7,8,23,39],[-10,3,9,16,23,27,41,43,47,48],[-14,3,13,16,23,27,54,58,62],[-8,-25,-35],[-18,-38,-40],[-25,-35,-38],[-30,12,53,55,65],[-57,4,15,29],[-11,5,17,31,34,35,43,44,51],[-42,5,31,34,35,51],[-52,5,17,31,34,35,43,44,51],[-11,-35,-51],[-35,-51,-52],[-15,5,17,31,34,35,58,59,66],[-15,-31,-59],[-15,-35,-66],[-9,-38,-51],[-38,-47,-51],[-13,-38,-66],[-39,-50,-51],[-43,58],[-58,43],[-59,44],[-62,48],[-63,49],[-66,51],[-68,21,22,41,46,47],[-69,16,54,61],[-61,69],[-70,17,24,27,28,50,56,64],[-17,70],[-71,19,20,45,53,67],[-72,31,34,35,37,39,40],[-73,18,23,25,26],[-74,32,55,57],[-75,30,38],[-76,68],[-77,69,70],[-78,69],[-78,70],[-80,76],[-79,77],[-80,78],[-81,71],[-81,72],[-82,74,75],[-83,74],[-83,75],[-84,73,83],[-85,73],[-84,82],[-85,83],[-86,81,85],[-87,81],[-86,84],[-87,85],[-88,79],[-88,80,87],[-88,86],[88],[-89,36],[-90,60],[-91,65],[-65,91],[-92,43,51],[-43,92],[-51,92],[-93,58,66],[-58,93],[-66,93],[-94,44,48,49],[-44,94],[-48,94],[-49,94],[-95,59,62,63],[-96,90,91],[-91,96],[-97,89,96],[-96,97],[-98,92,93],[-93,98],[-99,92],[-92,98],[-99,93],[-100,94,95],[-101,94],[-101,95],[-102,98,101],[-102,99,100],[-98,-101,103],[-104,97,102],[-103,105],[-97,-102,105],[104],[-105],[3,9,10,13,14,16,23,27,41,43,46,47,48,50,54,58,61,62,64],[5,11,15,17,31,34,35,42,43,44,51,52,56,58,59,66],[6,11,15,24,39,40,42,48,49,52,56,62,63]],\"atoms\":[{\"tag\":\"facet\",\"index\":0},{\"tag\":\"facet\",\"index\":2},{\"tag\":\"facet\",\"index\":3},{\"tag\":\"facet\",\"index\":6},{\"tag\":\"facet\",\"index\":7},{\"tag\":\"facet\",\"index\":9},{\"tag\":\"facet\",\"index\":10},{\"tag\":\"facet\",\"index\":11},{\"tag\":\"facet\",\"index\":16},{\"tag\":\"facet\",\"index\":19},{\"tag\":\"facet\",\"index\":21},{\"tag\":\"facet\",\"index\":24},{\"tag\":\"facet\",\"index\":26},{\"tag\":\"facet\",\"index\":27},{\"tag\":\"facet\",\"index\":28},{\"tag\":\"facet\",\"index\":32},{\"tag\":\"facet\",\"index\":33},{\"tag\":\"facet\",\"index\":34},{\"tag\":\"facet\",\"index\":35},{\"tag\":\"facet\",\"index\":36},{\"tag\":\"facet\",\"index\":37},{\"tag\":\"facet\",\"index\":38},{\"tag\":\"facet\",\"index\":39},{\"tag\":\"facet\",\"index\":40},{\"tag\":\"facet\",\"index\":41},{\"tag\":\"facet\",\"index\":42},{\"tag\":\"facet\",\"index\":43},{\"tag\":\"facet\",\"index\":44},{\"tag\":\"facet\",\"index\":45},{\"tag\":\"facet\",\"index\":46},{\"tag\":\"facet\",\"index\":47},{\"tag\":\"facet\",\"index\":48},{\"tag\":\"facet\",\"index\":49},{\"tag\":\"facet\",\"index\":50},{\"tag\":\"facet\",\"index\":51},{\"tag\":\"facet\",\"index\":52},{\"tag\":\"facet\",\"index\":53},{\"tag\":\"facet\",\"index\":54},{\"tag\":\"facet\",\"index\":55},{\"tag\":\"facet\",\"index\":56},{\"tag\":\"facet\",\"index\":58},{\"tag\":\"facet\",\"index\":59},{\"tag\":\"facet\",\"index\":60},{\"tag\":\"facet\",\"index\":61},{\"tag\":\"facet\",\"index\":62},{\"tag\":\"facet\",\"index\":63},{\"tag\":\"facet\",\"index\":64},{\"tag\":\"facet\",\"index\":65},{\"tag\":\"facet\",\"index\":66},{\"tag\":\"facet\",\"index\":67},{\"tag\":\"facet\",\"index\":69},{\"tag\":\"facet\",\"index\":70},{\"tag\":\"facet\",\"index\":71},{\"tag\":\"facet\",\"index\":72},{\"tag\":\"facet\",\"index\":73},{\"tag\":\"facet\",\"index\":74},{\"tag\":\"facet\",\"index\":75},{\"tag\":\"facet\",\"index\":76},{\"tag\":\"facet\",\"index\":77},{\"tag\":\"facet\",\"index\":78},{\"tag\":\"facet\",\"index\":79},{\"tag\":\"facet\",\"index\":80},{\"tag\":\"facet\",\"index\":81},{\"tag\":\"facet\",\"index\":82},{\"tag\":\"facet\",\"index\":83},{\"tag\":\"facet\",\"index\":84},{\"tag\":\"facet\",\"index\":85},{\"tag\":\"group\",\"index\":1,\"kind\":2},{\"tag\":\"group\",\"index\":2,\"kind\":2},{\"tag\":\"group\",\"index\":3,\"kind\":2},{\"tag\":\"group\",\"index\":4,\"kind\":2},{\"tag\":\"group\",\"index\":5,\"kind\":2},{\"tag\":\"group\",\"index\":6,\"kind\":2},{\"tag\":\"group\",\"index\":7,\"kind\":2},{\"tag\":\"group\",\"index\":8,\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group\",\"index\":0,\"kind\":3},{\"tag\":\"group\",\"index\":1,\"kind\":3},{\"tag\":\"group\",\"index\":2,\"kind\":3},{\"tag\":\"group\",\"index\":3,\"kind\":3},{\"tag\":\"group\",\"index\":4,\"kind\":3},{\"tag\":\"group\",\"index\":5,\"kind\":3},{\"tag\":\"group\",\"index\":6,\"kind\":3},{\"tag\":\"group_totalizer\",\"kind\":3},{\"tag\":\"group_totalizer\",\"kind\":3},{\"tag\":\"group_totalizer\",\"kind\":3},{\"tag\":\"group_totalizer\",\"kind\":3},{\"tag\":\"group_totalizer\",\"kind\":3},{\"tag\":\"group_totalizer\",\"kind\":3},{\"tag\":\"group_totalizer\",\"kind\":3},{\"tag\":\"group_totalizer\",\"kind\":3},{\"tag\":\"group_totalizer\",\"kind\":3},{\"tag\":\"group_totalizer\",\"kind\":3}],\"rules\":[{\"tag\":\"incompatible\",\"a\":34,\"b\":2},{\"tag\":\"incompatible\",\"a\":35,\"b\":34},{\"tag\":\"incompatible\",\"a\":36,\"b\":34},{\"tag\":\"incompatible\",\"a\":38,\"b\":34},{\"tag\":\"incompatible\",\"a\":39,\"b\":32},{\"tag\":\"incompatible\",\"a\":39,\"b\":35},{\"tag\":\"incompatible\",\"a\":39,\"b\":36},{\"tag\":\"incompatible\",\"a\":40,\"b\":34},{\"tag\":\"incompatible\",\"a\":40,\"b\":39},{\"tag\":\"incompatible\",\"a\":41,\"b\":0},{\"tag\":\"incompatible\",\"a\":41,\"b\":3},{\"tag\":\"incompatible\",\"a\":41,\"b\":32},{\"tag\":\"incompatible\",\"a\":41,\"b\":33},{\"tag\":\"incompatible\",\"a\":41,\"b\":35},{\"tag\":\"incompatible\",\"a\":41,\"b\":36},{\"tag\":\"incompatible\",\"a\":41,\"b\":40},{\"tag\":\"incompatible\",\"a\":42,\"b\":35},{\"tag\":\"incompatible\",\"a\":42,\"b\":36},{\"tag\":\"incompatible\",\"a\":42,\"b\":40},{\"tag\":\"incompatible\",\"a\":44,\"b\":41},{\"tag\":\"incompatible\",\"a\":45,\"b\":35},{\"tag\":\"incompatible\",\"a\":45,\"b\":36},{\"tag\":\"incompatible\",\"a\":47,\"b\":6},{\"tag\":\"incompatible\",\"a\":47,\"b\":34},{\"tag\":\"incompatible\",\"a\":47,\"b\":46},{\"tag\":\"incompatible\",\"a\":48,\"b\":42},{\"tag\":\"incompatible\",\"a\":48,\"b\":46},{\"tag\":\"incompatible\",\"a\":48,\"b\":47},{\"tag\":\"incompatible\",\"a\":50,\"b\":40},{\"tag\":\"incompatible\",\"a\":50,\"b\":46},{\"tag\":\"incompatible\",\"a\":51,\"b\":9},{\"tag\":\"incompatible\",\"a\":51,\"b\":10},{\"tag\":\"incompatible\",\"a\":51,\"b\":34},{\"tag\":\"incompatible\",\"a\":51,\"b\":40},{\"tag\":\"incompatible\",\"a\":52,\"b\":48},{\"tag\":\"incompatible\",\"a\":53,\"b\":46},{\"tag\":\"incompatible\",\"a\":54,\"b\":3},{\"tag\":\"incompatible\",\"a\":54,\"b\":39},{\"tag\":\"incompatible\",\"a\":54,\"b\":43},{\"tag\":\"incompatible\",\"a\":54,\"b\":50},{\"tag\":\"incompatible\",\"a\":54,\"b\":53},{\"tag\":\"incompatible\",\"a\":55,\"b\":7},{\"tag\":\"incompatible\",\"a\":55,\"b\":40},{\"tag\":\"incompatible\",\"a\":55,\"b\":51},{\"tag\":\"incompatible\",\"a\":55,\"b\":54},{\"tag\":\"incompatible\",\"a\":56,\"b\":40},{\"tag\":\"incompatible\",\"a\":56,\"b\":41},{\"tag\":\"incompatible\",\"a\":60,\"b\":32},{\"tag\":\"incompatible\",\"a\":60,\"b\":33},{\"tag\":\"incompatible\",\"a\":60,\"b\":40},{\"tag\":\"incompatible\",\"a\":60,\"b\":43},{\"tag\":\"incompatible\",\"a\":60,\"b\":44},{\"tag\":\"incompatible\",\"a\":61,\"b\":33},{\"tag\":\"incompatible\",\"a\":61,\"b\":34},{\"tag\":\"incompatible\",\"a\":61,\"b\":40},{\"tag\":\"incompatible\",\"a\":61,\"b\":43},{\"tag\":\"incompatible\",\"a\":61,\"b\":44},{\"tag\":\"incompatible\",\"a\":62,\"b\":45},{\"tag\":\"incompatible\",\"a\":62,\"b\":52},{\"tag\":\"incompatible\",\"a\":63,\"b\":54},{\"tag\":\"incompatible\",\"a\":64,\"b\":62},{\"tag\":\"incompatible\",\"a\":65,\"b\":33},{\"tag\":\"incompatible\",\"a\":65,\"b\":40},{\"tag\":\"incompatible\",\"a\":65,\"b\":43},{\"tag\":\"incompatible\",\"a\":65,\"b\":44},{\"tag\":\"incompatible\",\"a\":66,\"b\":33},{\"tag\":\"incompatible\",\"a\":66,\"b\":40},{\"tag\":\"incompatible\",\"a\":66,\"b\":43},{\"tag\":\"incompatible\",\"a\":66,\"b\":44},{\"tag\":\"incompatible\",\"a\":67,\"b\":54},{\"tag\":\"incompatible\",\"a\":67,\"b\":59},{\"tag\":\"incompatible\",\"a\":67,\"b\":60},{\"tag\":\"incompatible\",\"a\":67,\"b\":61},{\"tag\":\"incompatible\",\"a\":67,\"b\":65},{\"tag\":\"incompatible\",\"a\":67,\"b\":66},{\"tag\":\"incompatible\",\"a\":69,\"b\":32},{\"tag\":\"incompatible\",\"a\":69,\"b\":46},{\"tag\":\"incompatible\",\"a\":69,\"b\":47},{\"tag\":\"incompatible\",\"a\":69,\"b\":48},{\"tag\":\"incompatible\",\"a\":69,\"b\":50},{\"tag\":\"incompatible\",\"a\":69,\"b\":53},{\"tag\":\"incompatible\",\"a\":69,\"b\":58},{\"tag\":\"incompatible\",\"a\":71,\"b\":32},{\"tag\":\"incompatible\",\"a\":71,\"b\":34},{\"tag\":\"incompatible\",\"a\":71,\"b\":45},{\"tag\":\"incompatible\",\"a\":71,\"b\":52},{\"tag\":\"incompatible\",\"a\":72,\"b\":46},{\"tag\":\"incompatible\",\"a\":72,\"b\":60},{\"tag\":\"incompatible\",\"a\":72,\"b\":69},{\"tag\":\"incompatible\",\"a\":72,\"b\":71},{\"tag\":\"incompatible\",\"a\":73,\"b\":38},{\"tag\":\"incompatible\",\"a\":73,\"b\":42},{\"tag\":\"incompatible\",\"a\":73,\"b\":49},{\"tag\":\"incompatible\",\"a\":73,\"b\":52},{\"tag\":\"incompatible\",\"a\":73,\"b\":71},{\"tag\":\"incompatible\",\"a\":73,\"b\":72},{\"tag\":\"incompatible\",\"a\":74,\"b\":43},{\"tag\":\"incompatible\",\"a\":74,\"b\":60},{\"tag\":\"incompatible\",\"a\":74,\"b\":61},{\"tag\":\"incompatible\",\"a\":74,\"b\":65},{\"tag\":\"incompatible\",\"a\":74,\"b\":66},{\"tag\":\"incompatible\",\"a\":74,\"b\":67},{\"tag\":\"incompatible\",\"a\":74,\"b\":71},{\"tag\":\"incompatible\",\"a\":75,\"b\":42},{\"tag\":\"incompatible\",\"a\":75,\"b\":52},{\"tag\":\"incompatible\",\"a\":75,\"b\":71},{\"tag\":\"incompatible\",\"a\":75,\"b\":73},{\"tag\":\"incompatible\",\"a\":75,\"b\":74},{\"tag\":\"incompatible\",\"a\":76,\"b\":74},{\"tag\":\"incompatible\",\"a\":77,\"b\":34},{\"tag\":\"incompatible\",\"a\":77,\"b\":74},{\"tag\":\"incompatible\",\"a\":78,\"b\":48},{\"tag\":\"incompatible\",\"a\":78,\"b\":62},{\"tag\":\"incompatible\",\"a\":78,\"b\":71},{\"tag\":\"incompatible\",\"a\":78,\"b\":73},{\"tag\":\"incompatible\",\"a\":78,\"b\":75},{\"tag\":\"incompatible\",\"a\":79,\"b\":37},{\"tag\":\"incompatible\",\"a\":79,\"b\":39},{\"tag\":\"incompatible\",\"a\":79,\"b\":43},{\"tag\":\"incompatible\",\"a\":79,\"b\":54},{\"tag\":\"incompatible\",\"a\":79,\"b\":63},{\"tag\":\"incompatible\",\"a\":79,\"b\":76},{\"tag\":\"incompatible\",\"a\":80,\"b\":74},{\"tag\":\"incompatible\",\"a\":81,\"b\":41},{\"tag\":\"incompatible\",\"a\":81,\"b\":74},{\"tag\":\"incompatible\",\"a\":82,\"b\":54},{\"tag\":\"incompatible\",\"a\":82,\"b\":60},{\"tag\":\"incompatible\",\"a\":82,\"b\":61},{\"tag\":\"incompatible\",\"a\":82,\"b\":65},{\"tag\":\"incompatible\",\"a\":82,\"b\":66},{\"tag\":\"incompatible\",\"a\":82,\"b\":74},{\"tag\":\"incompatible\",\"a\":82,\"b\":79},{\"tag\":\"incompatible\",\"a\":83,\"b\":48},{\"tag\":\"incompatible\",\"a\":83,\"b\":62},{\"tag\":\"incompatible\",\"a\":83,\"b\":71},{\"tag\":\"incompatible\",\"a\":83,\"b\":73},{\"tag\":\"incompatible\",\"a\":83,\"b\":75},{\"tag\":\"incompatible\",\"a\":85,\"b\":45},{\"tag\":\"incompatible\",\"a\":85,\"b\":52},{\"tag\":\"incompatible\",\"a\":85,\"b\":73},{\"tag\":\"incompatible\",\"a\":85,\"b\":78},{\"tag\":\"incompatible\",\"a\":85,\"b\":83},{\"tag\":\"mate\",\"ridge\":11,\"a\":46,\"owners\":[0,6,7,34,35,49,51]},{\"tag\":\"three\",\"ridge\":11,\"vertices\":[7,34,46]},{\"tag\":\"three\",\"ridge\":14,\"vertices\":[24,75,77]},{\"tag\":\"three\",\"ridge\":35,\"vertices\":[6,41,55]},{\"tag\":\"mate\",\"ridge\":38,\"a\":75,\"owners\":[2,36,39,40,41,80,81]},{\"tag\":\"three\",\"ridge\":38,\"vertices\":[41,75,80]},{\"tag\":\"mate\",\"ridge\":67,\"a\":46,\"owners\":[3,10,11,39,55]},{\"tag\":\"mate\",\"ridge\":69,\"a\":19,\"owners\":[3,16,32,39,43,58,60,64,65]},{\"tag\":\"mate\",\"ridge\":70,\"a\":27,\"owners\":[3,26,32,39,43,72,76,80]},{\"tag\":\"three\",\"ridge\":259,\"vertices\":[11,41,51]},{\"tag\":\"three\",\"ridge\":259,\"vertices\":[34,54,56]},{\"tag\":\"three\",\"ridge\":259,\"vertices\":[41,51,54]},{\"tag\":\"mate\",\"ridge\":26,\"a\":46,\"owners\":[24,71,73,83]},{\"tag\":\"mate\",\"ridge\":42,\"a\":75,\"owners\":[6,28,45]},{\"tag\":\"mate\",\"ridge\":137,\"a\":21,\"owners\":[7,33,47,50,51,60,61,69]},{\"tag\":\"mate\",\"ridge\":137,\"a\":59,\"owners\":[7,47,50,51,69]},{\"tag\":\"mate\",\"ridge\":137,\"a\":70,\"owners\":[7,33,47,50,51,60,61,69]},{\"tag\":\"three\",\"ridge\":137,\"vertices\":[21,51,69]},{\"tag\":\"three\",\"ridge\":137,\"vertices\":[51,69,70]},{\"tag\":\"mate\",\"ridge\":138,\"a\":28,\"owners\":[7,33,47,50,51,76,77,84]},{\"tag\":\"three\",\"ridge\":138,\"vertices\":[28,47,77]},{\"tag\":\"three\",\"ridge\":138,\"vertices\":[28,51,84]},{\"tag\":\"three\",\"ridge\":81,\"vertices\":[16,54,69]},{\"tag\":\"three\",\"ridge\":81,\"vertices\":[54,64,69]},{\"tag\":\"three\",\"ridge\":82,\"vertices\":[26,54,84]},{\"tag\":\"three\",\"ridge\":193,\"vertices\":[55,67,69]},{\"tag\":\"mate\",\"ridge\":204,\"a\":60,\"owners\":[76]},{\"tag\":\"mate\",\"ridge\":204,\"a\":76,\"owners\":[60]},{\"tag\":\"mate\",\"ridge\":396,\"a\":77,\"owners\":[61]},{\"tag\":\"mate\",\"ridge\":228,\"a\":80,\"owners\":[65]},{\"tag\":\"mate\",\"ridge\":420,\"a\":81,\"owners\":[66]},{\"tag\":\"mate\",\"ridge\":216,\"a\":84,\"owners\":[69]},{\"tag\":\"group_or\",\"kind\":2,\"index\":1,\"members\":[37,38,58,63,64],\"full_literals\":[-68,21,22,41,46,47]},{\"tag\":\"group_or\",\"kind\":2,\"index\":2,\"members\":[32,72,79],\"full_literals\":[-69,16,54,61]},{\"tag\":\"group_take\",\"kind\":2,\"index\":2,\"member\":79,\"full_literals\":[-61,69]},{\"tag\":\"group_or\",\"kind\":2,\"index\":3,\"members\":[33,40,43,44,67,74,82],\"full_literals\":[-70,17,24,27,28,50,56,64]},{\"tag\":\"group_take\",\"kind\":2,\"index\":3,\"member\":33,\"full_literals\":[-17,70]},{\"tag\":\"group_or\",\"kind\":2,\"index\":4,\"members\":[35,36,62,71,85],\"full_literals\":[-71,19,20,45,53,67]},{\"tag\":\"group_or\",\"kind\":2,\"index\":5,\"members\":[47,50,51,53,55,56],\"full_literals\":[-72,31,34,35,37,39,40]},{\"tag\":\"group_or\",\"kind\":2,\"index\":6,\"members\":[34,39,41,42],\"full_literals\":[-73,18,23,25,26]},{\"tag\":\"group_or\",\"kind\":2,\"index\":7,\"members\":[48,73,75],\"full_literals\":[-74,32,55,57]},{\"tag\":\"group_or\",\"kind\":2,\"index\":8,\"members\":[46,54],\"full_literals\":[-75,30,38]},{\"tag\":\"merge\",\"left\":[0],\"right\":[1],\"left_name\":\"grouped2_0000\",\"right_name\":\"grouped2_0004\",\"joined_name\":\"grouped2_0001\",\"a\":1,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-76,false,68],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[2],\"right\":[3],\"left_name\":\"grouped2_0005\",\"right_name\":\"grouped2_0007\",\"joined_name\":\"grouped2_0006\",\"a\":0,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-77,69,70],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[2],\"right\":[3],\"left_name\":\"grouped2_0005\",\"right_name\":\"grouped2_0007\",\"joined_name\":\"grouped2_0006\",\"a\":0,\"b\":1,\"direction\":\"backward\",\"full_literals\":[-78,69,false],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[2],\"right\":[3],\"left_name\":\"grouped2_0005\",\"right_name\":\"grouped2_0007\",\"joined_name\":\"grouped2_0006\",\"a\":1,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-78,false,70],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[0,1],\"right\":[2,3],\"left_name\":\"grouped2_0001\",\"right_name\":\"grouped2_0006\",\"joined_name\":\"grouped2_0002\",\"a\":1,\"b\":2,\"direction\":\"backward\",\"full_literals\":[-80,76,false],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[0,1],\"right\":[2,3],\"left_name\":\"grouped2_0001\",\"right_name\":\"grouped2_0006\",\"joined_name\":\"grouped2_0002\",\"a\":2,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-79,false,77],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[0,1],\"right\":[2,3],\"left_name\":\"grouped2_0001\",\"right_name\":\"grouped2_0006\",\"joined_name\":\"grouped2_0002\",\"a\":2,\"b\":1,\"direction\":\"backward\",\"full_literals\":[-80,false,78],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[4],\"right\":[5],\"left_name\":\"grouped2_0008\",\"right_name\":\"grouped2_0011\",\"joined_name\":\"grouped2_0009\",\"a\":0,\"b\":1,\"direction\":\"backward\",\"full_literals\":[-81,71,false],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[4],\"right\":[5],\"left_name\":\"grouped2_0008\",\"right_name\":\"grouped2_0011\",\"joined_name\":\"grouped2_0009\",\"a\":1,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-81,false,72],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[7],\"right\":[8],\"left_name\":\"grouped2_0014\",\"right_name\":\"grouped2_0016\",\"joined_name\":\"grouped2_0015\",\"a\":0,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-82,74,75],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[7],\"right\":[8],\"left_name\":\"grouped2_0014\",\"right_name\":\"grouped2_0016\",\"joined_name\":\"grouped2_0015\",\"a\":0,\"b\":1,\"direction\":\"backward\",\"full_literals\":[-83,74,false],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[7],\"right\":[8],\"left_name\":\"grouped2_0014\",\"right_name\":\"grouped2_0016\",\"joined_name\":\"grouped2_0015\",\"a\":1,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-83,false,75],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[6],\"right\":[7,8],\"left_name\":\"grouped2_0012\",\"right_name\":\"grouped2_0015\",\"joined_name\":\"grouped2_0013\",\"a\":0,\"b\":1,\"direction\":\"backward\",\"full_literals\":[-84,73,83],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[6],\"right\":[7,8],\"left_name\":\"grouped2_0012\",\"right_name\":\"grouped2_0015\",\"joined_name\":\"grouped2_0013\",\"a\":0,\"b\":2,\"direction\":\"backward\",\"full_literals\":[-85,73,false],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[6],\"right\":[7,8],\"left_name\":\"grouped2_0012\",\"right_name\":\"grouped2_0015\",\"joined_name\":\"grouped2_0013\",\"a\":1,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-84,false,82],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[6],\"right\":[7,8],\"left_name\":\"grouped2_0012\",\"right_name\":\"grouped2_0015\",\"joined_name\":\"grouped2_0013\",\"a\":1,\"b\":1,\"direction\":\"backward\",\"full_literals\":[-85,false,83],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[4,5],\"right\":[6,7,8],\"left_name\":\"grouped2_0009\",\"right_name\":\"grouped2_0013\",\"joined_name\":\"grouped2_0010\",\"a\":1,\"b\":2,\"direction\":\"backward\",\"full_literals\":[-86,81,85],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[4,5],\"right\":[6,7,8],\"left_name\":\"grouped2_0009\",\"right_name\":\"grouped2_0013\",\"joined_name\":\"grouped2_0010\",\"a\":1,\"b\":3,\"direction\":\"backward\",\"full_literals\":[-87,81,false],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[4,5],\"right\":[6,7,8],\"left_name\":\"grouped2_0009\",\"right_name\":\"grouped2_0013\",\"joined_name\":\"grouped2_0010\",\"a\":2,\"b\":1,\"direction\":\"backward\",\"full_literals\":[-86,false,84],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[4,5],\"right\":[6,7,8],\"left_name\":\"grouped2_0009\",\"right_name\":\"grouped2_0013\",\"joined_name\":\"grouped2_0010\",\"a\":2,\"b\":2,\"direction\":\"backward\",\"full_literals\":[-87,false,85],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[0,1,2,3],\"right\":[4,5,6,7,8],\"left_name\":\"grouped2_0002\",\"right_name\":\"grouped2_0010\",\"joined_name\":\"groupKind2\",\"a\":2,\"b\":5,\"direction\":\"backward\",\"full_literals\":[-88,79,false],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[0,1,2,3],\"right\":[4,5,6,7,8],\"left_name\":\"grouped2_0002\",\"right_name\":\"grouped2_0010\",\"joined_name\":\"groupKind2\",\"a\":3,\"b\":4,\"direction\":\"backward\",\"full_literals\":[-88,80,87],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[0,1,2,3],\"right\":[4,5,6,7,8],\"left_name\":\"grouped2_0002\",\"right_name\":\"grouped2_0010\",\"joined_name\":\"groupKind2\",\"a\":4,\"b\":3,\"direction\":\"backward\",\"full_literals\":[-88,false,86],\"grouped\":true,\"kind\":2},{\"tag\":\"quota_lower\",\"kind\":2,\"quota\":8,\"grouped\":true},{\"tag\":\"group_or\",\"kind\":3,\"index\":0,\"members\":[52],\"full_literals\":[-89,36]},{\"tag\":\"group_or\",\"kind\":3,\"index\":1,\"members\":[78],\"full_literals\":[-90,60]},{\"tag\":\"group_or\",\"kind\":3,\"index\":2,\"members\":[83],\"full_literals\":[-91,65]},{\"tag\":\"group_take\",\"kind\":3,\"index\":2,\"member\":83,\"full_literals\":[-65,91]},{\"tag\":\"group_or\",\"kind\":3,\"index\":3,\"members\":[60,69],\"full_literals\":[-92,43,51]},{\"tag\":\"group_take\",\"kind\":3,\"index\":3,\"member\":60,\"full_literals\":[-43,92]},{\"tag\":\"group_take\",\"kind\":3,\"index\":3,\"member\":69,\"full_literals\":[-51,92]},{\"tag\":\"group_or\",\"kind\":3,\"index\":4,\"members\":[76,84],\"full_literals\":[-93,58,66]},{\"tag\":\"group_take\",\"kind\":3,\"index\":4,\"member\":76,\"full_literals\":[-58,93]},{\"tag\":\"group_take\",\"kind\":3,\"index\":4,\"member\":84,\"full_literals\":[-66,93]},{\"tag\":\"group_or\",\"kind\":3,\"index\":5,\"members\":[61,65,66],\"full_literals\":[-94,44,48,49]},{\"tag\":\"group_take\",\"kind\":3,\"index\":5,\"member\":61,\"full_literals\":[-44,94]},{\"tag\":\"group_take\",\"kind\":3,\"index\":5,\"member\":65,\"full_literals\":[-48,94]},{\"tag\":\"group_take\",\"kind\":3,\"index\":5,\"member\":66,\"full_literals\":[-49,94]},{\"tag\":\"group_or\",\"kind\":3,\"index\":6,\"members\":[77,80,81],\"full_literals\":[-95,59,62,63]},{\"tag\":\"merge\",\"left\":[1],\"right\":[2],\"left_name\":\"grouped3_0020\",\"right_name\":\"grouped3_0022\",\"joined_name\":\"grouped3_0021\",\"a\":0,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-96,90,91],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[1],\"right\":[2],\"left_name\":\"grouped3_0020\",\"right_name\":\"grouped3_0022\",\"joined_name\":\"grouped3_0021\",\"a\":0,\"b\":1,\"direction\":\"forward\",\"full_literals\":[false,-91,96],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[0],\"right\":[1,2],\"left_name\":\"grouped3_0017\",\"right_name\":\"grouped3_0021\",\"joined_name\":\"grouped3_0018\",\"a\":0,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-97,89,96],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[0],\"right\":[1,2],\"left_name\":\"grouped3_0017\",\"right_name\":\"grouped3_0021\",\"joined_name\":\"grouped3_0018\",\"a\":0,\"b\":1,\"direction\":\"forward\",\"full_literals\":[false,-96,97],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[3],\"right\":[4],\"left_name\":\"grouped3_0023\",\"right_name\":\"grouped3_0026\",\"joined_name\":\"grouped3_0024\",\"a\":0,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-98,92,93],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[3],\"right\":[4],\"left_name\":\"grouped3_0023\",\"right_name\":\"grouped3_0026\",\"joined_name\":\"grouped3_0024\",\"a\":0,\"b\":1,\"direction\":\"forward\",\"full_literals\":[false,-93,98],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[3],\"right\":[4],\"left_name\":\"grouped3_0023\",\"right_name\":\"grouped3_0026\",\"joined_name\":\"grouped3_0024\",\"a\":0,\"b\":1,\"direction\":\"backward\",\"full_literals\":[-99,92,false],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[3],\"right\":[4],\"left_name\":\"grouped3_0023\",\"right_name\":\"grouped3_0026\",\"joined_name\":\"grouped3_0024\",\"a\":1,\"b\":0,\"direction\":\"forward\",\"full_literals\":[-92,false,98],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[3],\"right\":[4],\"left_name\":\"grouped3_0023\",\"right_name\":\"grouped3_0026\",\"joined_name\":\"grouped3_0024\",\"a\":1,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-99,false,93],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[5],\"right\":[6],\"left_name\":\"grouped3_0027\",\"right_name\":\"grouped3_0029\",\"joined_name\":\"grouped3_0028\",\"a\":0,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-100,94,95],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[5],\"right\":[6],\"left_name\":\"grouped3_0027\",\"right_name\":\"grouped3_0029\",\"joined_name\":\"grouped3_0028\",\"a\":0,\"b\":1,\"direction\":\"backward\",\"full_literals\":[-101,94,false],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[5],\"right\":[6],\"left_name\":\"grouped3_0027\",\"right_name\":\"grouped3_0029\",\"joined_name\":\"grouped3_0028\",\"a\":1,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-101,false,95],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[3,4],\"right\":[5,6],\"left_name\":\"grouped3_0024\",\"right_name\":\"grouped3_0028\",\"joined_name\":\"grouped3_0025\",\"a\":0,\"b\":1,\"direction\":\"backward\",\"full_literals\":[-102,98,101],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[3,4],\"right\":[5,6],\"left_name\":\"grouped3_0024\",\"right_name\":\"grouped3_0028\",\"joined_name\":\"grouped3_0025\",\"a\":1,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-102,99,100],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[3,4],\"right\":[5,6],\"left_name\":\"grouped3_0024\",\"right_name\":\"grouped3_0028\",\"joined_name\":\"grouped3_0025\",\"a\":1,\"b\":2,\"direction\":\"forward\",\"full_literals\":[-98,-101,103],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[0,1,2],\"right\":[3,4,5,6],\"left_name\":\"grouped3_0018\",\"right_name\":\"grouped3_0025\",\"joined_name\":\"groupKind3\",\"a\":0,\"b\":1,\"direction\":\"backward\",\"full_literals\":[-104,97,102],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[0,1,2],\"right\":[3,4,5,6],\"left_name\":\"grouped3_0018\",\"right_name\":\"grouped3_0025\",\"joined_name\":\"groupKind3\",\"a\":0,\"b\":3,\"direction\":\"forward\",\"full_literals\":[false,-103,105],\"grouped\":true,\"kind\":3},{\"tag\":\"merge\",\"left\":[0,1,2],\"right\":[3,4,5,6],\"left_name\":\"grouped3_0018\",\"right_name\":\"grouped3_0025\",\"joined_name\":\"groupKind3\",\"a\":1,\"b\":2,\"direction\":\"forward\",\"full_literals\":[-97,-102,105],\"grouped\":true,\"kind\":3},{\"tag\":\"quota_lower\",\"kind\":3,\"quota\":2,\"grouped\":true},{\"tag\":\"quota_upper\",\"kind\":3,\"quota\":2,\"grouped\":true},{\"tag\":\"edge\",\"edge\":20,\"owners\":[3,16,19,26,27,32,39,43,58,60,63,64,65,67,72,76,79,80,82]},{\"tag\":\"edge\",\"edge\":27,\"owners\":[7,21,28,33,47,50,51,59,60,61,69,70,74,76,77,84]},{\"tag\":\"edge\",\"edge\":36,\"owners\":[9,21,28,40,55,56,59,65,66,70,74,80,81]}]}"
+  "247 79 0 208 205 0\n248 86 0 208 207 0\n249 77 0 247 190 0\n250 84 0 248 203 0\n251 82 0 250 199 0\n252 -103 0 243 240 0\n253 -26 57 -74 0 26 92 183 0\n254 -29 -71 0 21 22 58 85 138 180 0\n255 -20 -73 0 3 7 15 18 182 0\n256 -53 -69 -83 0 196 195 83 90 95 106 176 183 120 27 184 0\n257 -19 -73 0 2 6 14 17 182 0\n258 -44 24 56 -70 0 53 56 57 73 128 178 0\n259 -48 24 56 -70 0 62 64 65 74 129 178 0\n260 24 56 -70 -94 0 258 259 219 66 68 69 75 130 178 0\n261 -24 25 26 -73 0 8 9 182 0\n262 -56 -94 0 99 100 101 219 0\n263 -24 -73 0 16 19 261 0\n264 -23 -69 -75 0 5 38 118 184 176 87 0\n265 5 15 44 17 66 11 35 34 43 31 51 52 56 58 59 0 245 158 0\n266 -30 -18 17 -101 0 252 110 54 33 24 234 262 238 231 215 214 229 218 217 30 144 157 162 159 265 0\n267 -18 -87 -101 0 234 262 204 198 263 260 179 200 196 202 193 24 33 266 184 40 41 45 153 181 0\n268 -26 -74 0 104 253 0\n269 -38 31 34 35 40 -72 0 41 45 181 0\n270 31 34 35 57 -25 18 19 -75 -74 -72 0 47 10 269 184 27 36 183 181 93 42 146 143 0\n271 -31 57 16 -69 -75 -74 0 25 28 184 183 120 96 176 0\n272 -34 -75 0 30 40 184 0\n273 -35 -25 23 -75 0 11 32 44 154 152 149 184 0\n274 31 35 -25 18 53 19 -75 -74 -72 -95 65 0 272 124 47 270 269 107 148 184 155 223 145 0\n275 -87 -101 65 0 249 234 262 235 202 204 192 193 198 200 195 196 254 257 263 260 186 256 264 267 268 182 12 124 273 274 23 271 156 148 163 223 0\n276 -70 -94 56 0 260 55 63 67 219 0\n277 -101 65 0 208 234 262 275 206 191 188 276 0\n278 -24 -92 0 248 29 34 43 46 50 263 213 198 78 81 201 181 193 0\n279 -51 -75 -69 0 76 77 89 184 176 120 0\n280 -43 24 56 -70 0 49 51 52 72 127 178 0\n281 25 -71 -73 46 23 21 -74 -68 41 32 24 63 62 0 257 255 268 182 1 4 84 147 175 183 61 140 180 0\n282 -80 -66 -51 24 56 -70 0 251 250 248 78 89 82 81 80 79 76 276 222 173 221 172 189 191 185 187 279 176 196 194 117 118 119 121 132 200 197 201 192 193 281 13 20 47 178 71 168 181 31 160 161 164 246 0\n283 56 -70 -102 0 208 276 220 221 222 171 172 173 223 233 237 230 232 278 280 170 213 216 76 77 82 89 282 206 204 200 196 279 184 177 37 38 39 60 70 126 165 166 167 150 151 244 0\n284 -75 -66 -51 64 62 58 50 48 43 27 0 89 82 77 76 279 184 177 37 38 60 165 166 167 150 151 244 0\n285 -56 -102 0 251 250 248 208 97 98 100 102 103 108 109 111 123 125 131 262 223 233 237 230 232 213 216 76 79 82 89 284 196 194 200 197 183 204 201 255 257 91 140 206 192 180 189 191 61 185 187 176 117 121 175 0\n286 -43 -69 0 48 88 169 176 122 0\n287 101 -102 0 208 249 236 285 283 188 186 191 206 204 200 196 279 174 286 170 213 216 228 0\n288 -102 0 243 241 227 225 212 277 287 0\n289 97 0 288 242 239 0\n290 -67 0 289 139 141 142 209 210 211 226 224 0\n291 -32 0 289 35 112 133 209 210 211 226 224 0\n292 -55 0 289 94 115 136 209 210 211 226 224 0\n293 -57 0 289 105 116 137 209 210 211 226 224 0\n294 -74 0 293 292 291 183 0\n295 -83 0 294 195 0\n296 -85 0 295 200 0\n297 73 0 295 250 197 0\n298 81 0 296 248 201 0\n299 -20 0 297 255 0\n300 -19 0 297 257 0\n301 71 0 298 192 0\n302 -45 0 289 59 113 134 209 210 211 226 224 0\n303 53 0 302 299 290 301 300 180 0\n304 -36 0 303 86 0\n305 -60 0 303 114 0\n306 -65 0 303 135 0\n307 -89 0 304 209 0\n308 -90 0 305 210 0\n309 -91 0 306 211 0\n310 96 0 307 289 226 0\n311 0 308 309 310 224 0\n"
+
+theorem local_coverage
+    (valid : GraphGrowthInputs.Valid Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record012.inputs)
+    (matrix : MatrixGraphProblem.Checked Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record012.data)
+    (B : List (Fin Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record012.n))
+    (H : GraphGrowthConstraints.Target (Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record012.inputs.problem valid) B) :
+    ∃ j : Fin leafCount, GrowthDAG.Same (SparseGrowthDAG.family (leaves j))
+      (SparseGrowthDAG.family B) := by
+  apply FacetSat.RawProjection.coverage_with_edges Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record012 valid matrix
+    vertexColumn kindColumn projection_checked leaves _ B H
+  intro S HS edgeCover noSame
+  exact boundary_unsat S HS edgeCover noSame
+def originalLeaf (j : Fin leafCount) : Fin Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record012.l := Fin.elim0 j
+def orbitWord (j : Fin leafCount) : List (Fin Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record012.g) := Fin.elim0 j
+theorem orbit_words_checked : ∀ j : Fin leafCount,
+    SparseGrowthDAG.sameCheck (Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record012.leaf (originalLeaf j))
+      (GraphCaseCertificate.rawApplyWord Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record012.maps (orbitWord j) (leaves j)) = true := by
+  decide +kernel
+
+theorem direct_core : GraphCaseCertificate.DirectCore Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record012 where
+  matrix := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record012_matrix_checked
+  valid := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record012_validity
+  literal := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record012_literal
+  leaf_nodup := by decide +kernel
+  frames := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record012_frames_supported Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record012_cells_exact
+  leaves_checked := ⟨Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record012_certificates, Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record012_leaf_certificates_checked⟩
+  complete := GraphCaseCertificate.complete_of_orbits Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record012 Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record012_validity
+    leaves originalLeaf orbitWord orbit_words_checked
+    (local_coverage Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record012_validity Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record012_matrix_checked)
+
+
+end Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record012
+
+@[expose] public section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option maxErrors 5
+set_option autoImplicit false
+set_option linter.unusedVariables false
+namespace Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record013
+open Papers.RationalityTen
+
+def vertexColumn : PackedGraphCertificate.Fields :=
+  ⟨10, sparse_nat% "1d8749caaa99a568da718e655a2e8791e0f9d1726a96a599564d9715a53970d8b52d8751d0f5c3a8ce364d5334e8b62d4b32e1b46c9b16c3b61e4751cc729c6785d170de0f43c2f07d548a8aa8985670551626292a519516254545530e2328c5382c8b0ac1b81c4709c17"⟩
+def kindColumn : PackedGraphCertificate.Fields :=
+  ⟨3, sparse_nat% "36d36db49b6924934db4da6926924d249269249249a449249249249249249249"⟩
+def data : FacetSat.Data :=
+  FacetSat.RawProjection.data Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record013 vertexColumn kindColumn
+theorem projection_checked :
+    FacetSat.RawProjection.check Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record013 vertexColumn kindColumn = true := by
+  decide +kernel
+
+def facetIndex (i : Nat) : Fin data.count :=
+  ⟨i % data.count, Nat.mod_lt _ (by decide)⟩
+def ridgeIndex (i : Nat) : Fin 1024 :=
+  ⟨i % 1024, Nat.mod_lt _ (by decide)⟩
+
+def requirements : Nat → Nat := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record013.data.quota
+
+def groupMembers2 : ConcreteGrowth.Table (List (Fin data.count)) :=
+(.branch 4
+ (.branch 2
+ (.branch 1
+ (.leaf ([(facetIndex 32), (facetIndex 37), (facetIndex 43), (facetIndex 47), (facetIndex 50), (facetIndex 54), (facetIndex 75)]))
+ (.leaf ([(facetIndex 28), (facetIndex 40), (facetIndex 48), (facetIndex 53), (facetIndex 68), (facetIndex 81)])))
+ (.branch 3
+ (.leaf ([(facetIndex 27), (facetIndex 30), (facetIndex 56), (facetIndex 59), (facetIndex 74)]))
+ (.leaf ([(facetIndex 66), (facetIndex 67), (facetIndex 69)]))))
+ (.branch 6
+ (.branch 5
+ (.leaf ([(facetIndex 63), (facetIndex 65), (facetIndex 70)]))
+ (.leaf ([(facetIndex 31), (facetIndex 33), (facetIndex 34), (facetIndex 35), (facetIndex 36), (facetIndex 38)])))
+ (.branch 7
+ (.leaf ([(facetIndex 41), (facetIndex 42), (facetIndex 44), (facetIndex 45)]))
+ (.leaf ([(facetIndex 49), (facetIndex 52)])))))
+def groupColors2 : PackedGraphCertificate.Fields :=
+  ⟨3, sparse_nat% "80000801196e080040200f0390361b1145b68a814z14;"⟩
+def grouping2 : FacetSat.Grouping data.count where
+  count := 8
+  members := fun g => groupMembers2.get g
+  color := fun c => groupColors2.get c.val
+def groupKind2 : List Nat := List.range grouping2.count
+
+def grouped2_0000 : List Nat := [0]
+def grouped2_0001 : List Nat := [0, 1]
+def grouped2_0002 : List Nat := [0, 1, 2, 3]
+def grouped2_0004 : List Nat := [1]
+def grouped2_0005 : List Nat := [2]
+def grouped2_0006 : List Nat := [2, 3]
+def grouped2_0007 : List Nat := [3]
+def grouped2_0008 : List Nat := [4]
+def grouped2_0009 : List Nat := [4, 5]
+def grouped2_0010 : List Nat := [4, 5, 6, 7]
+def grouped2_0011 : List Nat := [5]
+def grouped2_0012 : List Nat := [6]
+def grouped2_0013 : List Nat := [6, 7]
+def grouped2_0014 : List Nat := [7]
+
+theorem ridge_matrix_checked :
+    data.ridgeMatrix = PackedIncidenceMatrix.code (ConcreteGrowth.ridgeList data.cells) :=
+  FacetSat.RawProjection.ridge_matrix Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record013 vertexColumn kindColumn
+    Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record013_matrix_checked
+
+def leafCount : Nat := 0
+def kindKeys : List Nat := [1, 2, 3]
+theorem kindKeys_checked : FacetSat.RawProjection.kindKeysCheck data.toData.kind kindKeys = true := by
+  decide +kernel
+def leaves (j : Fin leafCount) : List (Fin data.count) := Fin.elim0 j
+
+facet_model% "Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record013" "{\"atoms\":[{\"tag\":\"facet\",\"index\":1},{\"tag\":\"facet\",\"index\":2},{\"tag\":\"facet\",\"index\":3},{\"tag\":\"facet\",\"index\":4},{\"tag\":\"facet\",\"index\":12},{\"tag\":\"facet\",\"index\":14},{\"tag\":\"facet\",\"index\":27},{\"tag\":\"facet\",\"index\":28},{\"tag\":\"facet\",\"index\":30},{\"tag\":\"facet\",\"index\":31},{\"tag\":\"facet\",\"index\":32},{\"tag\":\"facet\",\"index\":33},{\"tag\":\"facet\",\"index\":34},{\"tag\":\"facet\",\"index\":35},{\"tag\":\"facet\",\"index\":36},{\"tag\":\"facet\",\"index\":37},{\"tag\":\"facet\",\"index\":38},{\"tag\":\"facet\",\"index\":39},{\"tag\":\"facet\",\"index\":40},{\"tag\":\"facet\",\"index\":42},{\"tag\":\"facet\",\"index\":43},{\"tag\":\"facet\",\"index\":44},{\"tag\":\"facet\",\"index\":47},{\"tag\":\"facet\",\"index\":49},{\"tag\":\"facet\",\"index\":50},{\"tag\":\"facet\",\"index\":52},{\"tag\":\"facet\",\"index\":54},{\"tag\":\"facet\",\"index\":55},{\"tag\":\"facet\",\"index\":56},{\"tag\":\"facet\",\"index\":57},{\"tag\":\"facet\",\"index\":58},{\"tag\":\"facet\",\"index\":59},{\"tag\":\"facet\",\"index\":60},{\"tag\":\"facet\",\"index\":61},{\"tag\":\"facet\",\"index\":62},{\"tag\":\"facet\",\"index\":63},{\"tag\":\"facet\",\"index\":65},{\"tag\":\"facet\",\"index\":70},{\"tag\":\"facet\",\"index\":74},{\"tag\":\"facet\",\"index\":75},{\"tag\":\"facet\",\"index\":76},{\"tag\":\"facet\",\"index\":77},{\"tag\":\"facet\",\"index\":82},{\"tag\":\"group\",\"kind\":2,\"index\":0},{\"tag\":\"group\",\"kind\":2,\"index\":2},{\"tag\":\"group\",\"kind\":2,\"index\":4},{\"tag\":\"group\",\"kind\":2,\"index\":5},{\"tag\":\"group\",\"kind\":2,\"index\":7},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":2,\"list_name\":\"grouped2_0001\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":2,\"list_name\":\"grouped2_0006\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":4,\"list_name\":\"grouped2_0002\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":2,\"list_name\":\"grouped2_0009\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":2,\"list_name\":\"grouped2_0013\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":4,\"list_name\":\"grouped2_0010\"},{\"tag\":\"group_totalizer\",\"kind\":2,\"threshold\":8,\"list_name\":\"groupKind2\"}]}"
+facet_atoms% "Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record013" 55
+
+facet_facts% "Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record013" "{\"ridges\":[[1,7],[3,7],[4,19],[12,21],[14,37],[31,21],[33,19],[33,21],[36,7],[38,517],[40,19],[49,19],[49,194],[56,21],[58,300],[59,37],[59,517],[60,780],[62,420],[63,69],[65,25],[70,448],[74,38],[74,518],[76,228],[77,390]],\"owners\":[[14,37,[1,28,31,34,35,55,58,61,62],[59]],[59,37,[1,31,34,35,61,62],[14,28,55,58]],[74,38,[1,31,34,35,76],[23,28,71]],[63,69,[2,12,34,38],[15,36,61]],[38,517,[14,57,59,60],[3,30,33]],[59,517,[3,33,38],[14,30,57,60]],[74,518,[3,33,38],[23,30,73]],[65,25,[4,27,40,42,44,55,57],[16,41,56,64,66]],[49,194,[76,77,82],[11,36,45,52,54,78,83]],[70,448,[77,82],[21,54,63,69,83,84]],[77,390,[39],[]],[58,300,[],[]],[60,780,[],[]],[76,228,[61],[]],[62,420,[],[]]],\"edges\":[],\"groupings\":[2]}"
+
+facet_refute_shared% "Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record013" "{\"namespace\":\"Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record013\",\"lower_only\":false,\"coverage\":true,\"edge_cover\":false,\"clauses\":[[-10,-2],[-10,-3],[-10,-7],[-10,-9],[-12,-1],[-12,-2],[-12,-7],[-12,-9],[-12,-10],[-17,-1],[-17,-7],[-17,-8],[-17,-9],[-17,-10],[-17,-12],[-18,-10],[-18,-12],[-22,-12],[-24,-13],[-24,-15],[-24,-17],[-24,-20],[-26,-13],[-26,-14],[-26,-15],[-29,-28],[-30,-12],[-30,-29],[-32,-28],[-34,-15],[-34,-26],[-36,-34],[-37,-29],[-39,-28],[-41,-14],[-41,-26],[-41,-36],[-42,-14],[-43,-11],[-43,-16],[-43,-21],[-43,-23],[-43,-25],[-43,-27],[-43,-40],[-1,-3,-15],[-4,-12,-24],[-12,-19,-24],[-5,-10,-29],[-5,-12,-29],[-6,1,8,10,13,14,28,31,34,35],[-32,1,10,13,14,34,35],[-39,1,10,13,14,41],[-36,2,5,13,17],[-17,6,30,32,33],[-32,3,12,17],[-39,3,12,17],[-37,4,7,19,20,22,28,30],[-24,41,42,43],[-38,42,43],[-42,18],[-31],[-33],[-41,34],[-35],[-44,11,16,21,23,25,27,40],[-45,7,9,29,32,39],[-46,36,37,38],[-47,10,12,13,14,15,17],[-48,24,26],[-49,44],[-50,45],[-51,49],[-51,50],[-52,46],[-52,47],[-53,48],[-54,52],[-54,53],[-55,51],[-55,54],[55]],\"atoms\":[{\"tag\":\"facet\",\"index\":1},{\"tag\":\"facet\",\"index\":2},{\"tag\":\"facet\",\"index\":3},{\"tag\":\"facet\",\"index\":4},{\"tag\":\"facet\",\"index\":12},{\"tag\":\"facet\",\"index\":14},{\"tag\":\"facet\",\"index\":27},{\"tag\":\"facet\",\"index\":28},{\"tag\":\"facet\",\"index\":30},{\"tag\":\"facet\",\"index\":31},{\"tag\":\"facet\",\"index\":32},{\"tag\":\"facet\",\"index\":33},{\"tag\":\"facet\",\"index\":34},{\"tag\":\"facet\",\"index\":35},{\"tag\":\"facet\",\"index\":36},{\"tag\":\"facet\",\"index\":37},{\"tag\":\"facet\",\"index\":38},{\"tag\":\"facet\",\"index\":39},{\"tag\":\"facet\",\"index\":40},{\"tag\":\"facet\",\"index\":42},{\"tag\":\"facet\",\"index\":43},{\"tag\":\"facet\",\"index\":44},{\"tag\":\"facet\",\"index\":47},{\"tag\":\"facet\",\"index\":49},{\"tag\":\"facet\",\"index\":50},{\"tag\":\"facet\",\"index\":52},{\"tag\":\"facet\",\"index\":54},{\"tag\":\"facet\",\"index\":55},{\"tag\":\"facet\",\"index\":56},{\"tag\":\"facet\",\"index\":57},{\"tag\":\"facet\",\"index\":58},{\"tag\":\"facet\",\"index\":59},{\"tag\":\"facet\",\"index\":60},{\"tag\":\"facet\",\"index\":61},{\"tag\":\"facet\",\"index\":62},{\"tag\":\"facet\",\"index\":63},{\"tag\":\"facet\",\"index\":65},{\"tag\":\"facet\",\"index\":70},{\"tag\":\"facet\",\"index\":74},{\"tag\":\"facet\",\"index\":75},{\"tag\":\"facet\",\"index\":76},{\"tag\":\"facet\",\"index\":77},{\"tag\":\"facet\",\"index\":82},{\"tag\":\"group\",\"index\":0,\"kind\":2},{\"tag\":\"group\",\"index\":2,\"kind\":2},{\"tag\":\"group\",\"index\":4,\"kind\":2},{\"tag\":\"group\",\"index\":5,\"kind\":2},{\"tag\":\"group\",\"index\":7,\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2},{\"tag\":\"group_totalizer\",\"kind\":2}],\"rules\":[{\"tag\":\"incompatible\",\"a\":31,\"b\":2},{\"tag\":\"incompatible\",\"a\":31,\"b\":3},{\"tag\":\"incompatible\",\"a\":31,\"b\":27},{\"tag\":\"incompatible\",\"a\":31,\"b\":30},{\"tag\":\"incompatible\",\"a\":33,\"b\":1},{\"tag\":\"incompatible\",\"a\":33,\"b\":2},{\"tag\":\"incompatible\",\"a\":33,\"b\":27},{\"tag\":\"incompatible\",\"a\":33,\"b\":30},{\"tag\":\"incompatible\",\"a\":33,\"b\":31},{\"tag\":\"incompatible\",\"a\":38,\"b\":1},{\"tag\":\"incompatible\",\"a\":38,\"b\":27},{\"tag\":\"incompatible\",\"a\":38,\"b\":28},{\"tag\":\"incompatible\",\"a\":38,\"b\":30},{\"tag\":\"incompatible\",\"a\":38,\"b\":31},{\"tag\":\"incompatible\",\"a\":38,\"b\":33},{\"tag\":\"incompatible\",\"a\":39,\"b\":31},{\"tag\":\"incompatible\",\"a\":39,\"b\":33},{\"tag\":\"incompatible\",\"a\":44,\"b\":33},{\"tag\":\"incompatible\",\"a\":49,\"b\":34},{\"tag\":\"incompatible\",\"a\":49,\"b\":36},{\"tag\":\"incompatible\",\"a\":49,\"b\":38},{\"tag\":\"incompatible\",\"a\":49,\"b\":42},{\"tag\":\"incompatible\",\"a\":52,\"b\":34},{\"tag\":\"incompatible\",\"a\":52,\"b\":35},{\"tag\":\"incompatible\",\"a\":52,\"b\":36},{\"tag\":\"incompatible\",\"a\":56,\"b\":55},{\"tag\":\"incompatible\",\"a\":57,\"b\":33},{\"tag\":\"incompatible\",\"a\":57,\"b\":56},{\"tag\":\"incompatible\",\"a\":59,\"b\":55},{\"tag\":\"incompatible\",\"a\":61,\"b\":36},{\"tag\":\"incompatible\",\"a\":61,\"b\":52},{\"tag\":\"incompatible\",\"a\":63,\"b\":61},{\"tag\":\"incompatible\",\"a\":65,\"b\":56},{\"tag\":\"incompatible\",\"a\":74,\"b\":55},{\"tag\":\"incompatible\",\"a\":76,\"b\":35},{\"tag\":\"incompatible\",\"a\":76,\"b\":52},{\"tag\":\"incompatible\",\"a\":76,\"b\":63},{\"tag\":\"incompatible\",\"a\":77,\"b\":35},{\"tag\":\"incompatible\",\"a\":82,\"b\":32},{\"tag\":\"incompatible\",\"a\":82,\"b\":37},{\"tag\":\"incompatible\",\"a\":82,\"b\":43},{\"tag\":\"incompatible\",\"a\":82,\"b\":47},{\"tag\":\"incompatible\",\"a\":82,\"b\":50},{\"tag\":\"incompatible\",\"a\":82,\"b\":54},{\"tag\":\"incompatible\",\"a\":82,\"b\":75},{\"tag\":\"three\",\"ridge\":7,\"vertices\":[1,3,36]},{\"tag\":\"three\",\"ridge\":19,\"vertices\":[4,33,49]},{\"tag\":\"three\",\"ridge\":19,\"vertices\":[33,40,49]},{\"tag\":\"three\",\"ridge\":21,\"vertices\":[12,31,56]},{\"tag\":\"three\",\"ridge\":21,\"vertices\":[12,33,56]},{\"tag\":\"mate\",\"ridge\":37,\"a\":14,\"owners\":[1,28,31,34,35,55,58,61,62]},{\"tag\":\"mate\",\"ridge\":37,\"a\":59,\"owners\":[1,31,34,35,61,62]},{\"tag\":\"mate\",\"ridge\":38,\"a\":74,\"owners\":[1,31,34,35,76]},{\"tag\":\"mate\",\"ridge\":69,\"a\":63,\"owners\":[2,12,34,38]},{\"tag\":\"mate\",\"ridge\":517,\"a\":38,\"owners\":[14,57,59,60]},{\"tag\":\"mate\",\"ridge\":517,\"a\":59,\"owners\":[3,33,38]},{\"tag\":\"mate\",\"ridge\":518,\"a\":74,\"owners\":[3,33,38]},{\"tag\":\"mate\",\"ridge\":25,\"a\":65,\"owners\":[4,27,40,42,44,55,57]},{\"tag\":\"mate\",\"ridge\":194,\"a\":49,\"owners\":[76,77,82]},{\"tag\":\"mate\",\"ridge\":448,\"a\":70,\"owners\":[77,82]},{\"tag\":\"mate\",\"ridge\":390,\"a\":77,\"owners\":[39]},{\"tag\":\"mate\",\"ridge\":300,\"a\":58,\"owners\":[]},{\"tag\":\"mate\",\"ridge\":780,\"a\":60,\"owners\":[]},{\"tag\":\"mate\",\"ridge\":228,\"a\":76,\"owners\":[61]},{\"tag\":\"mate\",\"ridge\":420,\"a\":62,\"owners\":[]},{\"tag\":\"group_or\",\"kind\":2,\"index\":0,\"members\":[32,37,43,47,50,54,75],\"full_literals\":[-44,11,16,21,23,25,27,40]},{\"tag\":\"group_or\",\"kind\":2,\"index\":2,\"members\":[27,30,56,59,74],\"full_literals\":[-45,7,9,29,32,39]},{\"tag\":\"group_or\",\"kind\":2,\"index\":4,\"members\":[63,65,70],\"full_literals\":[-46,36,37,38]},{\"tag\":\"group_or\",\"kind\":2,\"index\":5,\"members\":[31,33,34,35,36,38],\"full_literals\":[-47,10,12,13,14,15,17]},{\"tag\":\"group_or\",\"kind\":2,\"index\":7,\"members\":[49,52],\"full_literals\":[-48,24,26]},{\"tag\":\"merge\",\"left\":[0],\"right\":[1],\"left_name\":\"grouped2_0000\",\"right_name\":\"grouped2_0004\",\"joined_name\":\"grouped2_0001\",\"a\":0,\"b\":1,\"direction\":\"backward\",\"full_literals\":[-49,44,false],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[2],\"right\":[3],\"left_name\":\"grouped2_0005\",\"right_name\":\"grouped2_0007\",\"joined_name\":\"grouped2_0006\",\"a\":0,\"b\":1,\"direction\":\"backward\",\"full_literals\":[-50,45,false],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[0,1],\"right\":[2,3],\"left_name\":\"grouped2_0001\",\"right_name\":\"grouped2_0006\",\"joined_name\":\"grouped2_0002\",\"a\":1,\"b\":2,\"direction\":\"backward\",\"full_literals\":[-51,49,false],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[0,1],\"right\":[2,3],\"left_name\":\"grouped2_0001\",\"right_name\":\"grouped2_0006\",\"joined_name\":\"grouped2_0002\",\"a\":2,\"b\":1,\"direction\":\"backward\",\"full_literals\":[-51,false,50],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[4],\"right\":[5],\"left_name\":\"grouped2_0008\",\"right_name\":\"grouped2_0011\",\"joined_name\":\"grouped2_0009\",\"a\":0,\"b\":1,\"direction\":\"backward\",\"full_literals\":[-52,46,false],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[4],\"right\":[5],\"left_name\":\"grouped2_0008\",\"right_name\":\"grouped2_0011\",\"joined_name\":\"grouped2_0009\",\"a\":1,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-52,false,47],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[6],\"right\":[7],\"left_name\":\"grouped2_0012\",\"right_name\":\"grouped2_0014\",\"joined_name\":\"grouped2_0013\",\"a\":1,\"b\":0,\"direction\":\"backward\",\"full_literals\":[-53,false,48],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[4,5],\"right\":[6,7],\"left_name\":\"grouped2_0009\",\"right_name\":\"grouped2_0013\",\"joined_name\":\"grouped2_0010\",\"a\":1,\"b\":2,\"direction\":\"backward\",\"full_literals\":[-54,52,false],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[4,5],\"right\":[6,7],\"left_name\":\"grouped2_0009\",\"right_name\":\"grouped2_0013\",\"joined_name\":\"grouped2_0010\",\"a\":2,\"b\":1,\"direction\":\"backward\",\"full_literals\":[-54,false,53],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[0,1,2,3],\"right\":[4,5,6,7],\"left_name\":\"grouped2_0002\",\"right_name\":\"grouped2_0010\",\"joined_name\":\"groupKind2\",\"a\":3,\"b\":4,\"direction\":\"backward\",\"full_literals\":[-55,51,false],\"grouped\":true,\"kind\":2},{\"tag\":\"merge\",\"left\":[0,1,2,3],\"right\":[4,5,6,7],\"left_name\":\"grouped2_0002\",\"right_name\":\"grouped2_0010\",\"joined_name\":\"groupKind2\",\"a\":4,\"b\":3,\"direction\":\"backward\",\"full_literals\":[-55,false,54],\"grouped\":true,\"kind\":2},{\"tag\":\"quota_lower\",\"kind\":2,\"quota\":8,\"grouped\":true}]}"
+  "83 51 0 82 80 0\n84 54 0 82 81 0\n85 49 0 83 73 0\n86 50 0 83 74 0\n87 52 0 84 78 0\n88 53 0 84 79 0\n89 44 0 85 71 0\n90 45 0 86 72 0\n91 46 0 87 75 0\n92 47 0 87 76 0\n93 48 0 88 77 0\n94 -43 0 89 39 40 41 42 43 44 45 66 0\n95 -1 -32 13 10 12 14 0 92 10 56 69 46 0\n96 -34 13 10 12 14 0 92 93 30 31 69 70 21 0\n97 -32 13 10 12 14 0 65 96 95 52 0\n98 -17 1 32 34 13 10 14 0 90 65 62 63 64 53 11 12 13 67 26 28 51 55 0\n99 -15 0 93 20 25 70 0\n100 13 10 14 12 0 92 99 96 97 69 10 98 0\n101 -13 0 93 19 23 70 0\n102 12 14 0 101 91 94 90 100 1 2 3 4 14 16 57 56 61 67 60 33 49 68 54 0\n103 -29 -12 0 94 91 101 17 61 60 15 6 33 50 68 54 0\n104 -39 14 0 94 101 93 91 102 17 61 60 27 18 9 7 5 34 53 36 37 70 68 22 48 47 58 0\n105 14 0 94 90 65 101 93 91 102 5 7 8 9 17 18 27 61 60 103 104 67 29 52 31 32 70 68 22 48 47 58 0\n106 -26 0 105 24 0\n107 -41 0 105 35 0\n108 -42 0 105 38 0\n109 24 0 106 93 70 0\n110 0 109 107 108 94 59 0\n"
+
+theorem local_coverage
+    (valid : GraphGrowthInputs.Valid Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record013.inputs)
+    (matrix : MatrixGraphProblem.Checked Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record013.data)
+    (B : List (Fin Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record013.n))
+    (H : GraphGrowthConstraints.Target (Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record013.inputs.problem valid) B) :
+    ∃ j : Fin leafCount, GrowthDAG.Same (SparseGrowthDAG.family (leaves j))
+      (SparseGrowthDAG.family B) := by
+  apply FacetSat.RawProjection.coverage Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record013 valid matrix
+    vertexColumn kindColumn projection_checked leaves _ B H
+  intro S HS noSame
+  exact boundary_unsat S HS noSame
+def originalLeaf (j : Fin leafCount) : Fin Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record013.l := Fin.elim0 j
+def orbitWord (j : Fin leafCount) : List (Fin Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record013.g) := Fin.elim0 j
+theorem orbit_words_checked : ∀ j : Fin leafCount,
+    SparseGrowthDAG.sameCheck (Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record013.leaf (originalLeaf j))
+      (GraphCaseCertificate.rawApplyWord Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record013.maps (orbitWord j) (leaves j)) = true := by
+  decide +kernel
+
+theorem direct_core : GraphCaseCertificate.DirectCore Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record013 where
+  matrix := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record013_matrix_checked
+  valid := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record013_validity
+  literal := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record013_literal
+  leaf_nodup := by decide +kernel
+  frames := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record013_frames_supported Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record013_cells_exact
+  leaves_checked := ⟨Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record013_certificates, Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record013_leaf_certificates_checked⟩
+  complete := GraphCaseCertificate.complete_of_orbits Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record013 Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record013_validity
+    leaves originalLeaf orbitWord orbit_words_checked
+    (local_coverage Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record013_validity Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00120.record013_matrix_checked)
+
+
+end Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00120.record013

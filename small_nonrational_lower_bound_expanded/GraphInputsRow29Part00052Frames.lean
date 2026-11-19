@@ -1,0 +1,61 @@
+module
+prelude
+public meta import LowerSchemas.Frames
+public meta import CertificateNumbers
+public import GraphInputsRow29Part00052Data
+public import RawFrameSupport
+public import SharedFrameGroups116Checked
+public import SharedFrameGroups119Checked
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.CompactReplay.GraphInputsRow29Part00052
+open Papers.RationalityTen PackedGraphCertificate SharedGraphCellPool
+open SharedGraphFramePairs RawFrameSupport FiniteChecks
+cert_graph_frame_supported_2 000
+cert_graph_frame_indices 000 001 1115 13 0
+cert_graph_frame_graph 000 001 1115
+cert_graph_frame_links_5 000 001 0000 1115 1 0 64 64
+cert_graph_frame_links_5 000 001 0064 1115 1 64 101 37
+cert_graph_frame_links_3 000 001 1115 1 101
+cert_graph_frame_supported 000 001 1 1115
+cert_graph_frames_supported_20 000
+cert_graph_frame_supported_2 001
+cert_graph_frames_supported_18 001
+cert_graph_frame_supported_2 002
+cert_graph_frames_supported_18 002
+cert_graph_frame_supported_2 003
+cert_graph_frames_supported_18 003
+cert_graph_frame_supported_2 004
+cert_graph_frames_supported_18 004
+cert_graph_frame_supported_2 005
+cert_graph_frames_supported_18 005
+cert_graph_frame_supported_2 006
+cert_graph_frame_indices 006 001 1110 13 1
+cert_graph_frame_graph 006 001 1110
+cert_graph_frame_links_5 006 001 0000 1110 1 0 64 64
+cert_graph_frame_links_5 006 001 0064 1110 1 64 103 39
+cert_graph_frame_links_3 006 001 1110 1 103
+cert_graph_frame_supported 006 001 1 1110
+cert_graph_frames_supported_20 006
+cert_graph_frame_supported_2 007
+cert_graph_frames_supported_18 007
+cert_graph_frame_supported_2 008
+cert_graph_frames_supported_18 008
+cert_graph_frame_supported_2 009
+cert_graph_frame_indices 009 001 1115 13 2
+cert_graph_frame_graph 009 001 1115
+cert_graph_frame_links_5 009 001 0000 1115 1 0 64 64
+cert_graph_frame_links_5 009 001 0064 1115 1 64 115 51
+cert_graph_frame_links_3 009 001 1115 1 115
+cert_graph_frame_supported 009 001 1 1115
+cert_graph_frames_supported_20 009
+cert_graph_frame_supported_2 010
+cert_graph_frames_supported_18 010
+cert_graph_frame_supported_2 011
+cert_graph_frames_supported_18 011
+cert_graph_frame_supported_2 012
+cert_graph_frames_supported_18 012
+end Papers.RationalityTen.CompactReplay.GraphInputsRow29Part00052

@@ -1,0 +1,30 @@
+module
+prelude
+public meta import LowerSchemas.Frames
+public meta import CertificateNumbers
+public import GraphInputsRow24Part00069Data
+public import RawFrameSupport
+public import SharedFrameGroups116Checked
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00069
+open Papers.RationalityTen PackedGraphCertificate SharedGraphCellPool
+open SharedGraphFramePairs RawFrameSupport FiniteChecks
+cert_graph_frame_supported_2 000
+cert_graph_frames_supported_18 000
+cert_graph_frame_supported_2 001
+cert_graph_frame_indices 001 001 1110 13 0
+cert_graph_frame_graph 001 001 1110
+cert_graph_frame_links_5 001 001 0000 1110 1 0 64 64
+cert_graph_frame_links_5 001 001 0064 1110 1 64 78 14
+cert_graph_frame_links_3 001 001 1110 1 78
+cert_graph_frame_supported 001 001 1 1110
+cert_graph_frames_supported_20 001
+cert_graph_frame_supported_2 002
+cert_graph_frames_supported_18 002
+cert_graph_frame_supported_2 003
+cert_graph_frames_supported_18 003
+end Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00069

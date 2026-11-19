@@ -1,0 +1,16 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedSevenPure
+public import RootedSevenPure067OutsideVerifiedCheck0
+public import RootedSevenPure067OutsideVerifiedCheck1
+
+@[expose] public section
+noncomputable section
+namespace Papers.RationalityTen.FacetUniverses.RootedSevenPure067.Outside.Verified
+open Papers.RationalityTen FiniteChecks
+open Papers.RationalityTen.FacetUniverses.RootedSevenPure067.Outside
+cert_fast_checked_2 406
+end Papers.RationalityTen.FacetUniverses.RootedSevenPure067.Outside.Verified
+namespace Papers.RationalityTen.FacetUniverses.RootedSevenPure067.Outside
+cert_cell_checked_2 406 067
+end Papers.RationalityTen.FacetUniverses.RootedSevenPure067.Outside

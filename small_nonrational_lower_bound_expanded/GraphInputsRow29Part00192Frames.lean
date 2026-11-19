@@ -1,0 +1,35 @@
+module
+prelude
+public meta import LowerSchemas.Frames
+public meta import CertificateNumbers
+public import GraphInputsRow29Part00192Data
+public import RawFrameSupport
+public import SharedFrameGroups116Checked
+public import SharedFrameGroups119Checked
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.CompactReplay.GraphInputsRow29Part00192
+open Papers.RationalityTen PackedGraphCertificate SharedGraphCellPool
+open SharedGraphFramePairs RawFrameSupport FiniteChecks
+cert_graph_frame_supported_2 000
+cert_graph_frame_indices 000 001 1115 13 0
+cert_graph_frame_graph 000 001 1115
+cert_graph_frame_links_5 000 001 0000 1115 1 0 64 64
+cert_graph_frame_links_5 000 001 0064 1115 1 64 105 41
+cert_graph_frame_links_3 000 001 1115 1 105
+cert_graph_frame_supported 000 001 1 1115
+cert_graph_frames_supported_20 000
+cert_graph_frame_supported_2 001
+cert_graph_frame_indices 001 001 1110 13 1
+cert_graph_frame_graph 001 001 1110
+cert_graph_frame_links_5 001 001 0000 1110 1 0 64 64
+cert_graph_frame_links_5 001 001 0064 1110 1 64 112 48
+cert_graph_frame_links_3 001 001 1110 1 112
+cert_graph_frame_supported 001 001 1 1110
+cert_graph_frames_supported_20 001
+cert_graph_frame_supported_2 002
+cert_graph_frames_supported_18 002
+end Papers.RationalityTen.CompactReplay.GraphInputsRow29Part00192

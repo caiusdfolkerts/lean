@@ -1,0 +1,49 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedSixExtra
+public meta import CertificateNumbers
+public import RootedSixExtra00GrowthCacheData
+public import PackedListAppend
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSixExtra00
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open RawGrowthCacheCertificate RawNatGrowthSoundness
+def ridgeSupport416_000 : List Nat := [88,108,118,125,128,1080,1081,1082,1083,1090,1091,1236,1237,1238,1239,1246,1247,1357,1358,1359,1362,1363,1368,1369,1374,1376,1419,1420,1424,1426,1427,1431]
+def ridgeSupport416_001 : List Nat := [1433,1434,1436,1501,1502,1503,1504,1511,1512,1622,1623,1624,1627,1628,1633,1634,1639,1641,1684,1685,1689,1691,1692,1696,1698,1699,1701,1731,1732,1733,1736,1737]
+def ridgeSupport416_002 : List Nat := [1742,1743,1748,1750,1793,1794,1798,1800,1801,1805,1807,1808,1810,1839,1842,1843,1844,1847,1848,1849,1851,1856,1857,1859,1860,5465,5467,5484,5486,5544,5545,5550]
+def ridgeSupport416_003 : List Nat := [5551,5564,5565,5567,5570,5573,5576,5578,5579,5592,5593,5598,5599,5633,5635,5640,5641,5646,5647,5652,5654,5660,5661,5674,5675,5684,5685,5698,5699,5705,5707,5724]
+def ridgeSupport416_004 : List Nat := [5726,5784,5785,5790,5791,5804,5805,5807,5810,5813,5816,5818,5819,5832,5833,5838,5839,5873,5875,5880,5881,5886,5887,5892,5894,5900,5901,5914,5915,5924,5925,5938]
+def ridgeSupport416_005 : List Nat := [5939,5952,5954,5964,5966,5980,5981,5992,5993,6167,6169,6179,6181,6200,6201,6212,6213,6233,6235,6252,6254,6312,6313,6318,6319,6332,6333,6335,6338,6341,6344,6346]
+def ridgeSupport416_006 : List Nat := [6347,6360,6361,6366,6367,6401,6403,6408,6409,6414,6415,6420,6422,6428,6429,6442,6443,6452,6453,6466,6467,6480,6482,6492,6494,6508,6509,6520,6521,6695,6697,6707]
+def ridgeSupport416_007 : List Nat := [6709,6728,6729,6740,6741,6768,6770,6780,6782,6796,6797,6808,6809,6983,6985,6995,6997,7016,7017,7028,7029,7520,7521,7556,7557,7616,7617,8472,8473,8478,8479,8488]
+def ridgeSupport416_008 : List Nat := [8490,8492,8493,8496,8499,8520,8521,8526,8527,8536,8538,8540,8541,8544,8547,8560,8561,8563,8565,8614,8616,8618,8619,8640,8641,8646,8647,8656,8658,8660,8661,8664]
+def ridgeSupport416_009 : List Nat := [8667,8680,8681,8683,8685,8734,8736,8738,8739,8752,8753,8755,8757,8806,8808,8810,8811]
+cert_ridgeSupport_code_3 416
+cert_ridgeSupport_rest_2 416 000 0
+cert_ridgeSupport_rest_2 416 001 448
+cert_ridgeSupport_rest_2 416 002 896
+cert_ridgeSupport_rest_2 416 003 1344
+cert_ridgeSupport_rest_2 416 004 1792
+cert_ridgeSupport_rest_2 416 005 2240
+cert_ridgeSupport_rest_2 416 006 2688
+cert_ridgeSupport_rest_2 416 007 3136
+cert_ridgeSupport_rest_2 416 008 3584
+cert_ridgeSupport_rest_2 416 009 4032
+cert_ridgeSupport_rest_2 416 010 4270
+cert_ridgeSupport_suffix_4 416 010
+cert_ridgeSupport_suffix_3 416 009 010
+cert_ridgeSupport_suffix_3 416 008 009
+cert_ridgeSupport_suffix_3 416 007 008
+cert_ridgeSupport_suffix_3 416 006 007
+cert_ridgeSupport_suffix_3 416 005 006
+cert_ridgeSupport_suffix_3 416 004 005
+cert_ridgeSupport_suffix_3 416 003 004
+cert_ridgeSupport_suffix_3 416 002 003
+cert_ridgeSupport_suffix_3 416 001 002
+cert_ridgeSupport_suffix_3 416 000 001
+cert_ridgeSupport_source_3 416 14 305
+end Papers.RationalityTen.RootedCaches.RootedSixExtra00

@@ -1,0 +1,27 @@
+module
+prelude
+public meta import LowerSchemas.FiniteSmallSubsumedForest
+public import RootedSmallCache
+public import RootedSmallGeneratorWords
+public import SubsumedClassification
+public import SmallSubsumedForest12Leaves
+public import SmallSubsumedForest12Proof000
+public import SmallSubsumedForest12Proof001
+public import SmallSubsumedForest12Proof002
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.SmallRawForests.SmallSubsumedForest12
+open Papers.RationalityTen ConcreteGrowth FiniteChecks
+open GrowthDAG SparseGrowthDAG GrowthPruning GrowthRenaming
+open GrowthBitsets BatchedGrowthPruning BatchedOrbitGrowth
+open RawNatGrowthSoundness RawNatGrowthCompleteness
+
+theorem nodeTest_complete : Interval nodeTest 0 nodeCount := (interval_append nodeTest 0 640 1415 nodeInterval0 (interval_append nodeTest 640 1280 1415 nodeInterval640 nodeInterval1280))
+cert_root_8 1414
+cert_nodes_4
+cert_boundary_classification_6
+
+end Papers.RationalityTen.SmallRawForests.SmallSubsumedForest12

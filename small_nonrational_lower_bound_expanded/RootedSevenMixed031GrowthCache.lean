@@ -1,0 +1,43 @@
+module
+prelude
+public meta import LowerSchemas.FiniteRootedSevenMixed
+public import RootedSevenMixed031GrowthCacheCells000
+public import RootedSevenMixed031GrowthCacheCells001
+public import RootedSevenMixed031GrowthCacheCells002
+public import RootedSevenMixed031GrowthCacheBad000
+public import RootedSevenMixed031GrowthCacheBad001
+public import RootedSevenMixed031GrowthCacheBad002
+public import RootedSevenMixed031GrowthCacheRidges000
+public import RootedSevenMixed031GrowthCacheRidges001
+public import RootedSevenMixed031GrowthCacheRidges002
+public import RootedSevenMixed031GrowthCacheRidges003
+public import RootedSevenMixed031GrowthCacheRidges004
+public import RootedSevenMixed031GrowthCacheRidges005
+public import RootedSevenMixed031GrowthCacheRidges006
+public import RootedSevenMixed031GrowthCacheRidges007
+public import RootedSevenMixed031GrowthCacheKinds000
+public import RootedSevenMixed031GrowthCacheWellFormed000
+public import RootedSevenMixed031GrowthCacheWellFormed001
+public import RootedSevenMixed031GrowthCacheWellFormed002
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.RootedCaches.RootedSevenMixed031
+open Papers.RationalityTen ConcreteGrowth RawNatGrowthSoundness RawGrowthCacheCertificate FiniteChecks
+theorem cellTest_complete : Interval cellTest 0 655 := (interval_append cellTest 0 256 655 cellTestInterval0 (interval_append cellTest 256 512 655 cellTestInterval256 cellTestInterval512))
+theorem badTest_complete : Interval badTest 0 655 := (interval_append badTest 0 256 655 badTestInterval0 (interval_append badTest 256 512 655 badTestInterval256 badTestInterval512))
+cert_ridgeTest_complete_2
+cert_kindTest_complete_4
+theorem wellFormedTest_complete : Interval wellFormedTest 0 655 := (interval_append wellFormedTest 0 256 655 wellFormedTestInterval0 (interval_append wellFormedTest 256 512 655 wellFormedTestInterval256 wellFormedTestInterval512))
+
+cert_cell_facts_2 655
+cert_ridge_facts_2
+cert_bad_disjoint 655
+cert_cache_2
+cert_raw_kind_exact_2 655
+cert_facts 655
+cert_well_formed 655
+
+end Papers.RationalityTen.RootedCaches.RootedSevenMixed031

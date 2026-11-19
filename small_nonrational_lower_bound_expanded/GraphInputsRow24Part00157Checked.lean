@@ -1,0 +1,11 @@
+module
+prelude
+public import GraphInputsRow24Part00157Data
+public meta import KernelDecideContext
+
+@[expose] public section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00157
+open Papers.RationalityTen PackedGraphCertificate FiniteChecks
+end Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00157

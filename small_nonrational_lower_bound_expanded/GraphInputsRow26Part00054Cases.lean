@@ -1,0 +1,127 @@
+module
+prelude
+public meta import GraphCases
+public import GraphInputsRow26Part00054Checked
+public import GraphInputsRow26Part00054Metadata
+public import GraphInputsRow26Part00054Frames
+public import GraphInputsRow26Part00054Leaves
+public import GraphEmbeddingCoverage
+public import GraphCoverageBatch093
+public import GraphCoverageBatch094
+public import GraphCoverageBatch129
+public import GraphInputsRow26Part00054Structural000
+
+
+@[expose] public section
+noncomputable section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.CompactReplay.GraphInputsRow26Part00054
+open Papers.RationalityTen PackedGraphCertificate SharedGraphCellPool
+open GraphCaseCertificate GraphRowSpecifications
+
+certified_graph_case record000 26 25787052984320 GraphCoverageDescriptions.GraphCoverageBatch093.candidate09370 14
+
+certified_graph_case record001 26 25787184972296 GraphCoverageDescriptions.GraphCoverageBatch093.candidate09371 14
+
+certified_graph_case record002 26 25839756935424 GraphCoverageDescriptions.GraphCoverageBatch093.candidate09373 14
+
+certified_graph_case record003 26 25839757000704 GraphCoverageDescriptions.GraphCoverageBatch093.candidate09374 14
+
+certified_graph_case record004 26 25839891136768 GraphCoverageDescriptions.GraphCoverageBatch093.candidate09375 14
+
+certified_graph_case record005 26 25839891202048 GraphCoverageDescriptions.GraphCoverageBatch093.candidate09376 14
+
+certified_graph_case record006 26 25840156938496 GraphCoverageDescriptions.GraphCoverageBatch129.candidate12947 14
+
+certified_graph_case record007 26 25840159604736 GraphCoverageDescriptions.GraphCoverageBatch093.candidate09377 14
+
+certified_graph_case record008 26 25840163229760 GraphCoverageDescriptions.GraphCoverageBatch129.candidate12948 14
+
+certified_graph_case record009 26 25843112349952 GraphCoverageDescriptions.GraphCoverageBatch093.candidate09378 14
+
+certified_graph_case record010 26 25843112415232 GraphCoverageDescriptions.GraphCoverageBatch093.candidate09379 14
+
+certified_graph_case record011 26 25843376591104 GraphCoverageDescriptions.GraphCoverageBatch093.candidate09380 14
+
+certified_graph_case record012 26 25843376656384 GraphCoverageDescriptions.GraphCoverageBatch093.candidate09381 14
+
+certified_graph_case record013 26 25843384455184 GraphCoverageDescriptions.GraphCoverageBatch129.candidate12949 14
+
+theorem record014_parameters : Parameters record014 (rowOfCode 26) 25843401230352 where
+  kind_count := by decide +kernel
+  quota := by decide +kernel
+  required := by decide +kernel
+  internal_missing := by decide +kernel
+  minimum_incidence := by decide +kernel
+
+theorem record014_coverage : Coverage record014 FacetUniverses.FullSmall.cells SharedSmallGraph.graphRows 25843401230352 :=
+  GraphCoverageDescriptions.coverage_of_checked record014 GraphCoverageDescriptions.GraphCoverageBatch129.candidate12950 FacetUniverses.FullSmall.cells SharedSmallGraph.graphRows
+    (SharedSmallGraph.allowedMask (GraphCoverageDescriptions.quota 14)) 25843401230352
+    (by rfl) record014_cells_exact
+    (GraphCoverageDescriptions.small_allowed record014 14 (by decide +kernel))
+    GraphEmbeddingCoverage.small_edges GraphCoverageDescriptions.GraphCoverageBatch129.candidate12950_checked
+
+theorem record014_result : Result (26, 25843401230352) :=
+  of_direct_small 26 25843401230352 (by decide) ⟨record014, Papers.RationalityTen.StructuralGraphCases.GraphInputsRow26Part00054.record014.direct_core, record014_parameters, record014_coverage⟩
+
+certified_graph_case record015 26 25844063994112 GraphCoverageDescriptions.GraphCoverageBatch093.candidate09382 14
+
+certified_graph_case record016 26 25844168986624 GraphCoverageDescriptions.GraphCoverageBatch093.candidate09384 14
+
+certified_graph_case record017 26 25844437389312 GraphCoverageDescriptions.GraphCoverageBatch093.candidate09385 14
+
+certified_graph_case record018 26 25844474970113 GraphCoverageDescriptions.GraphCoverageBatch129.candidate12951 14
+
+certified_graph_case record019 26 25847675752512 GraphCoverageDescriptions.GraphCoverageBatch093.candidate09387 14
+
+certified_graph_case record020 26 25847677325328 GraphCoverageDescriptions.GraphCoverageBatch093.candidate09388 14
+
+certified_graph_case record021 26 25847694100496 GraphCoverageDescriptions.GraphCoverageBatch093.candidate09389 14
+
+certified_graph_case record022 26 25848767840257 GraphCoverageDescriptions.GraphCoverageBatch093.candidate09390 14
+
+certified_graph_case record023 26 25855883479056 GraphCoverageDescriptions.GraphCoverageBatch129.candidate12952 14
+
+certified_graph_case record024 26 25856015599632 GraphCoverageDescriptions.GraphCoverageBatch093.candidate09391 14
+
+certified_graph_case record025 26 25856261492800 GraphCoverageDescriptions.GraphCoverageBatch129.candidate12953 14
+
+certified_graph_case record026 26 25856263065616 GraphCoverageDescriptions.GraphCoverageBatch129.candidate12954 14
+
+certified_graph_case record027 26 25856279840784 GraphCoverageDescriptions.GraphCoverageBatch129.candidate12955 14
+
+certified_graph_case record028 26 25857353580545 GraphCoverageDescriptions.GraphCoverageBatch129.candidate12956 14
+
+certified_graph_case record029 26 25878927048704 GraphCoverageDescriptions.GraphCoverageBatch093.candidate09392 14
+
+certified_graph_case record030 26 25907536597248 GraphCoverageDescriptions.GraphCoverageBatch093.candidate09393 14
+
+certified_graph_case record031 26 25912091902208 GraphCoverageDescriptions.GraphCoverageBatch093.candidate09394 14
+
+certified_graph_case record032 26 25913219678208 GraphCoverageDescriptions.GraphCoverageBatch093.candidate09395 14
+
+certified_graph_case record033 26 25916378056720 GraphCoverageDescriptions.GraphCoverageBatch129.candidate12957 14
+
+certified_graph_case record034 26 25916395225089 GraphCoverageDescriptions.GraphCoverageBatch093.candidate09397 14
+
+certified_graph_case record035 26 25924699555856 GraphCoverageDescriptions.GraphCoverageBatch093.candidate09398 14
+
+certified_graph_case record036 26 25924980965377 GraphCoverageDescriptions.GraphCoverageBatch129.candidate12958 14
+
+certified_graph_case record037 26 25925701926912 GraphCoverageDescriptions.GraphCoverageBatch093.candidate09399 14
+
+certified_graph_case record038 26 25947248066560 GraphCoverageDescriptions.GraphCoverageBatch094.candidate09400 14
+
+certified_graph_case record039 26 25963115118592 GraphCoverageDescriptions.GraphCoverageBatch094.candidate09401 14
+
+certified_graph_case record040 26 25964427870208 GraphCoverageDescriptions.GraphCoverageBatch094.candidate09402 14
+
+certified_graph_case record041 26 25964956352512 GraphCoverageDescriptions.GraphCoverageBatch094.candidate09403 14
+
+certified_graph_case record042 26 25976121856256 GraphCoverageDescriptions.GraphCoverageBatch094.candidate09404 14
+
+certified_graph_case record043 26 25976524509248 GraphCoverageDescriptions.GraphCoverageBatch094.candidate09405 14
+
+certified_graph_case record044 26 25993284814864 GraphCoverageDescriptions.GraphCoverageBatch094.candidate09406 14
+end Papers.RationalityTen.CompactReplay.GraphInputsRow26Part00054
