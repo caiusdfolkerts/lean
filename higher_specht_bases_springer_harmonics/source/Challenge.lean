@@ -191,13 +191,13 @@ local instance decidablePredMemColSubgroup (t : YoungTableau μ) :
   Classical.decPred _
 
 /-- The **row symmetrizer** `a_t`, the sum of the permutations preserving the rows of `t`. -/
-noncomputable abbrev rowSymmetrizer (t : YoungTableau μ) :
+noncomputable def rowSymmetrizer (t : YoungTableau μ) :
     MonoidAlgebra ℚ (Equiv.Perm (Fin μ.card)) :=
   ∑ p : rowSubgroup t, MonoidAlgebra.of ℚ (Equiv.Perm (Fin μ.card)) p
 
 /-- The **column antisymmetrizer** `b_t`, the signed sum of the permutations preserving the
 columns of `t`. -/
-noncomputable abbrev columnAntisymmetrizer (t : YoungTableau μ) :
+noncomputable def columnAntisymmetrizer (t : YoungTableau μ) :
     MonoidAlgebra ℚ (Equiv.Perm (Fin μ.card)) :=
   ∑ q : colSubgroup t,
     ((Equiv.Perm.sign (q : Equiv.Perm (Fin μ.card)) : ℤ) : ℚ) •
@@ -205,7 +205,7 @@ noncomputable abbrev columnAntisymmetrizer (t : YoungTableau μ) :
 
 /-- The **Young symmetrizer** of `t`, with the convention `c_t = a_t b_t`. On a left module it
 acts by column-antisymmetrization followed by row-symmetrization. -/
-noncomputable abbrev youngSymmetrizer (t : YoungTableau μ) :
+noncomputable def youngSymmetrizer (t : YoungTableau μ) :
     MonoidAlgebra ℚ (Equiv.Perm (Fin μ.card)) :=
   rowSymmetrizer t * columnAntisymmetrizer t
 
