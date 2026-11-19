@@ -110,11 +110,16 @@
     "Wishart.normalizedCompression_formula",
     "Wishart.Theorem53PrincipalTarget_formula",
     "Wishart.SpectralGauge.supportSet.eq_1",
-    "Wishart.normalizedSelectedMatrix.eq_1"
-  ],
-  "definition_names": [
+    "Wishart.normalizedSelectedMatrix.eq_1",
     "Wishart.QuaternionMatrix.matrixBorelSpace",
     "Wishart.QuaternionMatrix.hermitianBorelSpace",
+    "TauCeti.symmetricMatrixIsUniformAddGroup",
+    "TauCeti.symmetricMatrixSecondCountableTopology",
+    "TauCeti.symmetricMatrixCompleteSpace",
+    "TauCeti.symmetricMatrixBorelSpace",
+    "TauCeti.symmetricMatrixContinuousENorm.eq_1"
+  ],
+  "definition_names": [
     "Matrix.frobeniusInnerProductSpace",
     "TauCeti.symmetricMatrixNormedAddCommGroup",
     "TauCeti.symmetricMatrixInnerProductSpace",
@@ -125,11 +130,6 @@
     "TauCeti.Probability.nonsingularWishartMeasure",
     "TauCeti.Probability.inverseWishartMeasure",
     "TauCeti.Probability.wishartGramMeasure",
-    "TauCeti.symmetricMatrixIsUniformAddGroup",
-    "TauCeti.symmetricMatrixSecondCountableTopology",
-    "TauCeti.symmetricMatrixCompleteSpace",
-    "TauCeti.symmetricMatrixContinuousENorm",
-    "TauCeti.symmetricMatrixBorelSpace",
     "Wishart.SpectralGauge.gaugeSymmetricSeminormedAddCommGroup",
     "Wishart.SpectralGauge.gaugeSymmetricInnerProductSpace",
     "Wishart.QuaternionMatrix.complexRepresentation",
@@ -163,7 +163,8 @@
     "Wishart.normalizedCompression",
     "Wishart.Theorem53PrincipalTarget",
     "Wishart.SpectralGauge.supportSet",
-    "Wishart.normalizedSelectedMatrix"
+    "Wishart.normalizedSelectedMatrix",
+    "TauCeti.symmetricMatrixContinuousENorm"
   ],
   "permitted_axioms": [
     "propext",

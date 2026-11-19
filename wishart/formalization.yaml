@@ -81,7 +81,7 @@ fidelity:
     Original paper theorem proofs, hypotheses and functional input models
     are retained. Whole real and complex superclass record equalities and
     original-formula equalities provide explicit semantic preservation checks.
-    Sixteen generated Lean equations and sixteen explicitly stated identities
+    Seventeen generated Lean equations and sixteen explicitly stated identities
     specify complete defining formulas. Lean checks the explicit identities
     by reflexivity against the definitions in the proof development.
     The product-Haar support instance now gives a proved local product
@@ -103,14 +103,15 @@ comparison_support:
   note: >-
     The original twenty principal/support targets are retained. Ten additional
     complete primitive value specifications, gauge record specifications,
-    proved proposition witnesses, constructor support, and thirty-two defining
+    proved proposition witnesses, constructor support, and thirty-three defining
     equations support the comparison of those twenty results.
     The semantic definition targets have genuine literal values in Challenge
     and their entire records/functions are fixed by the compared equality
     specifications; they are not unconstrained function or geometry holes.
-    Seven proof-instance targets (two existing quaternion BorelSpace instances
-    and five symmetric-space topology/uniformity instances) are fully specified
+    Six proof-instance targets (two quaternion BorelSpace instances
+    and four symmetric-space topology or uniformity instances) are fully specified
     propositions with genuine canonical witnesses in Challenge and actual source
-    proofs in Solution. They fix no unspecified semantic datum. All measures, normalizations,
+    proofs in Solution. The symmetric-matrix continuous extended norm is a data-bearing record
+    whose full defining equation is checked. All measures, normalizations,
     topologies, norms, matrix operations, parameter ranges and profiles retain
     explicit source values.

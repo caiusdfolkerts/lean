@@ -46,7 +46,7 @@ Theorem 7.1, including the exact all-rank moment ranges and gamma identities.
 Its fifteen principal declarations and five original supporting theorems remain
 selected. Ten additional complete primitive-value specifications and four genuine
 constructor/Hermitian supports are comparison obligations, not additional paper
-results. Seven proof-instance targets are propositions. Ten semantic definition
+results. Six proof-instance targets are propositions. The complete symmetric-matrix continuous extended norm record is fixed by its defining equation. Ten semantic definition
 values are entirely fixed by the complete literal value specifications.
 
 The real nonsingular range is the full real-shape range alpha > p-1; a

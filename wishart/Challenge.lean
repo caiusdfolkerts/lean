@@ -910,3 +910,4 @@ end end Wishart
 
 #print equations Wishart.SpectralGauge.supportSet
 #print equations Wishart.normalizedSelectedMatrix
+#print equations TauCeti.symmetricMatrixContinuousENorm
