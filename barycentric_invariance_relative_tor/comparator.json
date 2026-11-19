@@ -54,7 +54,12 @@
     "FourPapers.Universal.parameterRestriction_differential",
     "FourPapers.Universal.parameterIdealTerm_preserved",
     "FourPapers.Universal.originalRelativeTorDegreeMap_injective",
-    "FourPapers.Universal.relativeTorRankSelectedComparison"
+    "FourPapers.Universal.relativeTorRankSelectedComparison",
+    "PalomarBarycentricTor.natRightCancelAdd",
+    "PalomarBarycentricTor.coefficientSMulComm",
+    "PalomarBarycentricTor.functionScalarTower",
+    "PalomarBarycentricTor.exteriorScalarComm",
+    "PalomarBarycentricTor.tensorPreservesZero"
   ],
   "definition_names": [],
   "permitted_axioms": [
