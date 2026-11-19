@@ -1,0 +1,38 @@
+{
+  "challenge_module": "ChallengeSpectra",
+  "solution_module": "SolutionSpectra",
+  "theorem_names": [
+    "PalomarGraphicalSpectra.paper_corollary_5_2",
+    "PalomarGraphicalSpectra.triangle_components_le_three",
+    "PalomarGraphicalSpectra.threeTree_dimension_and_spectrum",
+    "PalomarGraphicalSpectra.partial_threeTree_piecewise_maximum",
+    "PalomarGraphicalSpectra.partial_threeTree_full_dimension_spectrum",
+    "PalomarGraphicalSpectra.paper_corollary_6_9_tree_join",
+    "PalomarGraphicalSpectra.partial_threeTree_support_classification",
+    "PalomarGraphicalSpectra.three_hub_book_maximum",
+    "PalomarGraphicalSpectra.paper_corollary_8_5",
+    "PalomarGraphicalSpectra.refined_support_of_dimension_ge_three",
+    "PalomarGraphicalSpectra.planar_full_iff_threeTree",
+    "PalomarGraphicalSpectra.planar_component_dimension_spectrum",
+    "PalomarGraphicalSpectra.actualRootEdge_symm",
+    "PalomarGraphicalSpectra.PathJoin.adjacency_symm",
+    "PalomarGraphicalSpectra.tetrahedronIntersection_symm",
+    "PalomarGraphicalSpectra.fourFamilyEdges_symm",
+    "PalomarGraphicalSpectra.TreeJoin.hubAdjacency_symm",
+    "PalomarGraphicalSpectra.TreeJoin.hubAdjacency_irrefl",
+    "PalomarGraphicalSpectra.incidenceAdjacency_symm",
+    "PalomarGraphicalSpectra.incidenceAdjacency_irrefl",
+    "PalomarGraphicalSpectra.threeTree_incidence_isTree",
+    "PalomarGraphicalSpectra.partial_threeTree_incidence_isAcyclic",
+    "PalomarGraphicalSpectra.hamiltonian_threeTree_lattice_witness",
+    "PalomarGraphicalSpectra.planar_full_iff_threeTree_finite",
+    "PalomarGraphicalSpectra.planar_component_dimension_spectrum_finite",
+    "PalomarGraphicalSpectra.partial_threeTree_polytope_support",
+    "PalomarGraphicalSpectra.induced_admissible_threeTree_witness"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

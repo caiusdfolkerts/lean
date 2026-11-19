@@ -1,0 +1,233 @@
+version: v0.4
+project:
+  name: 'Sharp bounds for indecomposable graphical-zonotope summands: consequences'
+  description: Graphical-zonotope constructions, book spectra, prescribed-coordinate
+    criteria and lattice decompositions, together with the sharp least positive
+    real dilation admitting a full-dimensional lattice indecomposable summand
+    for path joins and path cubes.
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.CO
+  - math.MG
+  msc2020:
+  - 52B11
+  - 52B12
+  - 05C10
+sources:
+- title: Sharp bounds for indecomposable summands of graphical zonotopes
+  authors:
+  - Caius Folkerts
+  type: paper
+  relationship: formalizes
+  location: paper.pdf; map-consequences.json identifies exact selected results
+related_formalizations:
+- title: caiusdfolkerts/research graphical_zonotopes
+  relationship: repackages
+  id: https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/graphical_zonotopes
+  note: The complete substantive development is copied at this immutable baseline
+    revision, with documented module migrations and optional report IO adjustments.
+    Fresh literal statements and proof bridges form the comparison layer.
+status:
+  scope: On 2026-11-19, full verification of commit b12eb1925fd11368dccd6e7c2e9d21dbc2a4ad88 passed (GitHub run 44369531573), including Source and Solution builds, Comparator and independent kernel checks. This revision changes presentation metadata only; all Lean sources and theorem selections are byte-identical. Verification of this new snapshot is recorded separately by its full preflight.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: PalomarGraphicalConsequences.small_count_lattice_books
+    file: SolutionConsequences.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-consequences.json
+  - declaration: PalomarGraphicalConsequences.threshold_book_interval
+    file: SolutionConsequences.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-consequences.json
+  - declaration: PalomarGraphicalConsequences.two_threshold_four_bridge
+    file: SolutionConsequences.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-consequences.json
+  - declaration: PalomarGraphicalConsequences.two_threshold_five_bridge
+    file: SolutionConsequences.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-consequences.json
+  - declaration: PalomarGraphicalConsequences.book_upper_interval
+    file: SolutionConsequences.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-consequences.json
+  - declaration: PalomarGraphicalConsequences.lattice_dimension_spectrum
+    file: SolutionConsequences.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-consequences.json
+  - declaration: PalomarGraphicalConsequences.positive_dimension_spectrum
+    file: SolutionConsequences.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-consequences.json
+  - declaration: PalomarGraphicalConsequences.prescribed_coordinate_criterion
+    file: SolutionConsequences.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-consequences.json
+  - declaration: PalomarGraphicalConsequences.exponential_family
+    file: SolutionConsequences.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-consequences.json
+  - declaration: PalomarGraphicalConsequences.corollary_nine_four
+    file: SolutionConsequences.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-consequences.json
+  - declaration: PalomarGraphicalConsequences.one_singleton_decomposition
+    file: SolutionConsequences.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-consequences.json
+  - declaration: PalomarGraphicalConsequences.four_small_parts_decomposition
+    file: SolutionConsequences.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-consequences.json
+  - declaration: PalomarGraphicalConsequences.boolean_decomposition_every_dimension
+    file: SolutionConsequences.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator-consequences.json
+automation:
+  methods:
+  - method: agent
+    tool_setup: The manuscript discloses GPT-6 Astra, GPT-5.6 Sol, and Kimi K3 assistance
+      in developing its proofs. Historical roles beyond that disclosure have not been
+      independently reconstructed.
+  - method: agent
+    models:
+    - GPT-6.1 Sol
+    framework: OpenAI Codex
+    tool_setup: Prepared independent literal mathematical statements, source proof
+      bridges, module migrations, provenance and result mapping. Compared the manuscript,
+      README and actual Lean declarations.
+fidelity:
+  divergences: Fresh independently literal statements are proved through explicit
+    bridges to the original development. Exact mathematical hypotheses and conclusions
+    are preserved for the selected claim clauses. Supporting construction propositions7.8/7.9
+    are separately identified.
+review:
+  status: unchecked
+  notes: The prior review of commit b12eb1925fd11368dccd6e7c2e9d21dbc2a4ad88 found no blocking problem but reported a presentation warning. This metadata revision addresses that warning and awaits a fresh editorial review. Prior mechanical verification passed as stated above; no clean editorial outcome is claimed for this revision.
+
+alignment:
+  namespace: PalomarGraphicalConsequences
+  statements:
+  - source: Theorem7.5, actual integral construction
+    lean: PalomarGraphicalConsequences.small_count_lattice_books
+    module: SolutionConsequences.lean
+    status: in-progress
+  - source: Proposition7.8, supporting refined dilation
+    lean: PalomarGraphicalConsequences.threshold_book_interval
+    module: SolutionConsequences.lean
+    status: in-progress
+  - source: Proposition7.9, four hubs
+    lean: PalomarGraphicalConsequences.two_threshold_four_bridge
+    module: SolutionConsequences.lean
+    status: in-progress
+  - source: Proposition7.9, five hubs
+    lean: PalomarGraphicalConsequences.two_threshold_five_bridge
+    module: SolutionConsequences.lean
+    status: in-progress
+  - source: Theorem7.10
+    lean: PalomarGraphicalConsequences.book_upper_interval
+    module: SolutionConsequences.lean
+    status: in-progress
+  - source: Corollary7.11, lattice attainment
+    lean: PalomarGraphicalConsequences.lattice_dimension_spectrum
+    module: SolutionConsequences.lean
+    status: in-progress
+  - source: Corollary7.11, complete positive spectrum
+    lean: PalomarGraphicalConsequences.positive_dimension_spectrum
+    module: SolutionConsequences.lean
+    status: in-progress
+  - source: Corollary7.11, prescribed coordinates
+    lean: PalomarGraphicalConsequences.prescribed_coordinate_criterion
+    module: SolutionConsequences.lean
+    status: in-progress
+  - source: Theorem8.4, exact exponential family
+    lean: PalomarGraphicalConsequences.exponential_family
+    module: SolutionConsequences.lean
+    status: in-progress
+  - source: Corollary9.4, exact real dilation minima
+    lean: PalomarGraphicalConsequences.corollary_nine_four
+    module: SolutionConsequences.lean
+    status: in-progress
+  - source: Corollary9.10
+    lean: PalomarGraphicalConsequences.one_singleton_decomposition
+    module: SolutionConsequences.lean
+    status: in-progress
+  - source: Corollary9.11
+    lean: PalomarGraphicalConsequences.four_small_parts_decomposition
+    module: SolutionConsequences.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal direction-graph constructor semantics
+    lean: PalomarGraphicalConsequences.actualRootEdge_symm
+    module: SolutionConsequences.lean
+    status: in-progress
+  - source: Supporting obligation fixing literal direction-graph constructor semantics
+    lean: PalomarGraphicalConsequences.PathJoin.adjacency_symm
+    module: SolutionConsequences.lean
+    status: in-progress
+  - source: 'Corollary9.11: both actual lattice indecomposable Boolean summands in
+      every dimension≥3'
+    lean: PalomarGraphicalConsequences.boolean_decomposition_every_dimension
+    module: SolutionConsequences.lean
+    status: in-progress
