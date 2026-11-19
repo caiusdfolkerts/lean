@@ -2016,6 +2016,13 @@ def IsElementaryGenerator (n : ℕ) (μ : YoungDiagram)
 def untruncatedIdeal (R : Type*) [CommRing R] (n : ℕ) (μ : YoungDiagram) :
     Ideal (PolynomialRing n R) := Ideal.span {p | IsElementaryGenerator n μ p}
 
+/-- Stable name for the commutative ideal's two-sidedness in quotient data. -/
+theorem untruncatedIdeal_isTwoSided (R : Type*) [CommRing R]
+    (n : ℕ) (lam : YoungDiagram) : (untruncatedIdeal R n lam).IsTwoSided :=
+  Ideal.instIsTwoSided_1 (untruncatedIdeal R n lam)
+
+attribute [instance 1200] untruncatedIdeal_isTwoSided
+
 def powerIdeal (R : Type*) [CommRing R] (n s : ℕ) :
     Ideal (PolynomialRing n R) := Ideal.span (Set.range fun i : Fin n => (X i) ^ s)
 

@@ -22,7 +22,8 @@
     "HigherSpecht.untruncated_parameter_finite_allCoefficients",
     "HigherSpecht.untruncated_parameter_flat_allCoefficients",
     "HigherSpecht.elementaryParameters_algebraicIndependent_allCoefficients",
-    "HigherSpecht.untruncated_parameter_rank_allCoefficients"
+    "HigherSpecht.untruncated_parameter_rank_allCoefficients",
+    "HigherSpecht.untruncatedIdeal_isTwoSided"
   ],
   "permitted_axioms": [
     "propext",
