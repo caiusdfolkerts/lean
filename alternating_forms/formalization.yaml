@@ -1,12 +1,11 @@
 version: v0.4
 project:
   name: Hilbert series of exterior algebras modulo two quadrics
-  description: The genuine exterior-algebra quotient by a general pair of two-forms has the
-    full strip-walk Hilbert series, its exact binomial determinant coefficients, and literal
-    vanishing above ceiling(n/2). The canonical odd pencil has the specified exterior-monomial
-    basis in every degree. Over the complex numbers, each top bidegree component has the actual
-    SL2 representation Sym^(2p+1)(Sym^q U) and dimension binomial(2p+q+1,q), for every p,q including
-    zero.
+  description: The genuine exterior-algebra quotient by a general pair of two-forms has the full strip-walk
+    Hilbert series, its exact binomial determinant coefficients, and literal vanishing above ceiling(n/2).
+    The canonical odd pencil has the specified exterior-monomial basis in every degree. Over the complex
+    numbers, each top bidegree component has the actual SL2 representation Sym^(2p+1)(Sym^q U) and dimension
+    binomial(2p+q+1,q), for every p,q including zero.
   authors:
   - Caius Folkerts
   responsible_maintainers:
@@ -33,36 +32,34 @@ automation:
   methods:
   - method: agent
     tool_setup: OpenAI Codex
-    notes: Agent-assisted exact source extraction, module migration, declaration-local exposure
-      of original literal bodies and independently compared exact constructor propositions.
-      Exact997 full Source/Solution built; complete fresh raw audit measured only constructor
-      proof-auxiliary naming differences. Nine precise arithmetic/inverse/subtype propositions
-      now replace anonymous proofs; all9 new support propositions genuinely proved in canonical
-      run44464500349; current full Source/Solution/Comparator/kernel replay pending.
+    notes: 'Preparation 2026-11-19T10:01:04.654907+00:00: Agent-assisted exact extraction and module migration,
+      declaration-local exposure of original data bodies, and exact named constructor propositions. Prior
+      exact snapshot f99b0e657e8e3ca478876ff6a90ea28ef30039be passed full workflow44465251883, including
+      Comparator, Lean default, NanoDa and con-ron. This update changes only descriptive/provenance files;
+      every Lean source, Comparator configuration and dependency pin is byte-identical to that verified
+      snapshot. Subsequent exact-commit workflow reports determine verification of this metadata successor.'
   - method: other
     tool_setup: Historical AI assistance reported in the included paper
-    notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing
-      its proofs. The exact model roles and extent of historical Lean automation have not been
-      reconstructed from the snapshot.
+    notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing its proofs.
+      The exact model roles and extent of historical Lean automation have not been reconstructed from
+      the snapshot.
 review:
   status: unchecked
-  notes: All17 original principal/support theorem types and genuine Source applications retained.
-    Complete exact997 reachable audit visited18933 declarations and found25 discrepancies confined
-    to abIndex, oddPath bounds and symFinTwoEquiv proof auxiliaries. Current normalizations
-    name those exact semantic propositions; full current Source/Solution/Comparator/kernel replay
-    has not passed. All9 exact new constructor propositions passed canonical44464500349. All17
-    old written statement signatures and Source proof application bodies remain byte-identical.
+  notes: 'Preparation 2026-11-19T10:01:04.654907+00:00: the prior exact f99b mechanical pass is recorded
+    in packaging/verified-source-metadata-update.json. No independent human or editorial approval is claimed.
+    Subsequent exact-commit mechanical/editorial reports determine their respective outcomes.'
 scope:
   known_gaps:
-  - Remaining algebraic, degeneration and Koszul clauses of Theorem 1.3 and other substantive
-    corollaries still require independent statement extraction.
-  - README explicitly excludes the general geometric statement of Theorem 1.2 and parts of Theorem
-    4.1.
-  - Current exact constructor-normalized Source/Solution/Comparator/kernel replay remains pending.
-  notes: The submitted project contains the substantive historical proof development copied
-    from the pinned source snapshot; this is not a thin wrapper. Historical upstream dependencies
-    and license notices are retained. See map.json for exact proposed selections and unresolved
-    source mapping.
-  current_selection: Theorem 1.1 generic Hilbert series and vanishing, exact strip-walk determinant
-    coefficients, Theorem 1.3 prescribed exterior basis in every degree, and full Corollary
-    5.2 actual SL2 representation isomorphism and dimension on every top bidegree piece.
+  - The general geometric Theorem 1.2 and parts of Theorem 4.1 are explicitly incomplete in the original
+    README and are not claimed.
+  - The remaining algebraic degeneration/presentation/Koszul clauses of Theorem 1.3 are selected separately
+    in alternating_forms_main13. Its exact workflow reports determine that entry's verification.
+  - Other retained results, including the multiple-form Theorem 6.1 and positive-characteristic Theorems
+    7.1–7.2, are not selected by this configuration.
+  notes: The complete substantive historical proof development and licensing are retained from the pinned
+    source. This is not an external thin wrapper. The selected statement surface and its mathematical
+    coverage are recorded in map.json; the historical README is preserved verbatim in packaging/README-historical-source.md.
+    Preparation notes are dated; mechanical status is supplied by exact-commit workflow reports.
+  current_selection: Theorem 1.1 generic Hilbert series and vanishing, exact strip-walk determinant coefficients,
+    Theorem 1.3 prescribed exterior basis in every degree, and full Corollary 5.2 actual SL2 representation
+    isomorphism and dimension on every top bidegree piece.

@@ -1,35 +1,11 @@
-# Hilbert series of exterior algebras modulo two quadrics
+# Exterior quotients by two quadrics and their top bidegrees
 
-[![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/research/project-alternating_forms.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/research/actions/workflows/project-alternating_forms.yml)
+For a general pair of two-forms, the actual exterior-algebra quotient has the full strip-walk Hilbert series, its binomial-determinant coefficients, and vanishes above ceiling(n/2). For the canonical pencil in odd dimension, the specified exterior monomials form a basis in every degree. Over the complex numbers the top bidegree representation is the actual SL₂ representation Sym^(2p+1)(Sym^q U), with dimension binomial(2p+q+1,q), for all p,q≥0, including zero.
 
-This project contains the full Lean4 formalisation to Theorems 1.1, 1.3 and most algebraic results in Sections 5 and 7 from my paper *Hilbert series of exterior algebras modulo two quadrics*. I’m still working on the formalisation of the general geometric statement of Theorem 1.2 and parts of Theorem 4.1, but I expect them to be ready in a few days. I've included the paper as paper.pdf.
+This configuration selects Theorem 1.1, its exact determinant formula, the exterior-basis clause of Theorem 1.3 and full Corollary 5.2, together with the precise support obligations needed to specify those models. Its independent Challenge has 762 lines and 26 compared declarations. The original theorem applications are in `source/PalomarLiteralInterface.lean`; all historical substantive source and licensing are retained.
 
-## Verification
+The companion `alternating_forms_main13` configuration selects the remaining algebraic degeneration/presentation/Koszul clauses of Theorem 1.3. Its verification is a separate exact-commit workflow result. The general geometric Theorem 1.2 and parts of Theorem 4.1 remain explicitly incomplete in the historical README. Other retained multiple-form and positive-characteristic results are not selected here. See `map.json` for exact declaration and paper mappings. The original source README is preserved verbatim in `packaging/README-historical-source.md`.
 
-If you have Elan and Git installed, run below commands from this directory. 
+Preparation record: 2026-11-19T10:01:04.654907+00:00. Exact snapshot `f99b0e657e8e3ca478876ff6a90ea28ef30039be` passed full workflow 44465251883: Comparator, Lean's default kernel, NanoDa and con-ron accepted the selected solution. This metadata successor preserves every Lean source, Comparator configuration and dependency pin byte for byte. Subsequent exact-commit workflow reports determine its own verification outcome. No independent human or editorial approval is claimed.
 
-```sh
-lake exe cache get
-lake build
-```
-
-## Guide
-
-Here's a guide to help you navigate this repo! All verified theorems/propositions/corollaries are linked to their corresponding Lean4 declarations in the table below. Note declaration names use `PaperVerification.AlternatingForms`.
-
-| Paper result | Lean statement |
-| --- | --- |
-| Theorem 1.1, pp. 1–2 | `paper_theorem_1_1`, `paper_theorem_1_1_hilbertSeries` |
-| Theorem 1.1, combined reader-facing form | `PaperVerification.MainStatements.genericHilbertSeriesAndVanishing` |
-| Theorem 1.3, combined statement | `paper_theorem_1_3_fully_graded` |
-| Theorem 1.3, exterior basis, p. 3 | `paper_theorem_1_3_exterior_basis` |
-| Theorem 1.3, algebraic and section-ring clauses | `paper_theorem_1_3`, `paper_theorem_1_3_complete_section_ring` |
-| Proposition 5.1, p. 16 | `paper_proposition_5_1` |
-| Corollary 5.2, p. 16 | `TopRepresentation.paper_corollary_5_2` |
-| Proposition 5.3, p. 17 | `paper_proposition_5_3_koszul_classification` |
-| Proposition 5.3, quadratic dual | `paper_proposition_5_3_dual_clause` |
-| Proposition 5.4, pp. 17–18 | `paper_proposition_5_4`, `paper_proposition_5_4_origin`, `exteriorOriginBettiPolynomial_is_ordinary` |
-| Lie-cohomology formulas after Proposition 5.4, p. 18 | `PaperVerification.TwoStepOriginalLieCohomology.paper_lie_cohomology_poincare`, `PaperVerification.TwoStepOriginalLieCohomology.paper_lie_cohomology_degree`, `PaperVerification.TwoStepOriginalLieCohomology.total_dimension_four` |
-| Theorem 7.1, p. 20 | `paper_theorem_7_1_exterior_basis`, `paper_theorem_7_1_initial_ideal`, `paper_theorem_7_1_initial_ideal_one_plane`, `paper_theorem_7_1_full_hilbert` |
-| Integral extension after Theorem 7.1, p. 20 | `IntegralOdd.paper_theorem_7_1_integral_full_basis`, `IntegralOdd.paper_theorem_7_1_integral_arbitrary_base_change`, `IntegralOdd.paper_theorem_7_1_integral_arbitrary_base_change_apply` |
-| Theorem 7.2, pp. 20–21 | `paper_theorem_7_2` |
+Build the selected solution with `lake build Solution` using the committed toolchain and dependency manifest.

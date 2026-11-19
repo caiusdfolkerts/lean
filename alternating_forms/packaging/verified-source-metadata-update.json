@@ -1,0 +1,11 @@
+{
+  "prepared_at": "2026-11-19T10:01:04.654907+00:00",
+  "previous_exact_passed_commit": "f99b0e657e8e3ca478876ff6a90ea28ef30039be",
+  "previous_run": 44465251883,
+  "previous_mechanical_report_sha256": "addfa2dc52a8a36cc9a21f4638fca519d27eff984a7bc58f21bc5044bf011974",
+  "all_lean_sources_byte_identical": true,
+  "all_comparator_pins_and_build_config_byte_identical": true,
+  "Source_Lean_files": 1509,
+  "metadata_changes_only": true,
+  "subsequent_workflows_authoritative_for_successor": true
+}

@@ -4,7 +4,7 @@
   "baseline_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
   "paper_sha256": "8b5fdb74a6c9c61ebf2ee4d89f71b6c07831524412731ff3f646074b6d416161",
   "one_entry_per_paper": true,
-  "status": "frozen_complete_measured_constructor_normalization_canonical_support_proofs_passed_ready_full_preflight",
+  "status": "metadata_successor_of_exact_full_pass_with_identical_lean_sources",
   "source_selection": [
     "paper.pdf",
     "README.md",
@@ -73,7 +73,7 @@
             }
           ],
           "resolution": "found",
-          "challenge_status": "selected_pending_current_elaboration"
+          "challenge_status": "selected_Lean_source_identical_to_verified_f99b"
         }
       ],
       "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf#page=1"
@@ -123,7 +123,7 @@
             }
           ],
           "resolution": "found",
-          "challenge_status": "selected_pending_current_elaboration"
+          "challenge_status": "selected_Lean_source_identical_to_verified_f99b"
         }
       ],
       "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf#page=3"
@@ -213,7 +213,7 @@
             }
           ],
           "resolution": "found",
-          "challenge_status": "selected_pending_current_elaboration"
+          "challenge_status": "selected_Lean_source_identical_to_verified_f99b"
         }
       ],
       "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf#page=16"
@@ -548,24 +548,28 @@
             }
           ],
           "resolution": "found",
-          "challenge_status": "selected_pending_current_elaboration"
+          "challenge_status": "selected_Lean_source_identical_to_verified_f99b"
         }
       ],
       "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf#page=1"
     }
   ],
   "known_gaps": [
-    "Remaining algebraic, degeneration and Koszul clauses of Theorem 1.3 and other substantive corollaries still require independent statement extraction.",
-    "README explicitly excludes the general geometric statement of Theorem 1.2 and parts of Theorem 4.1.",
-    "Current normalized independent interface, full Source/Solution/Comparator and kernel replay remain pending."
+    "The general geometric Theorem 1.2 and parts of Theorem 4.1 are explicitly incomplete in the original README and are not claimed.",
+    "The remaining algebraic degeneration/presentation/Koszul clauses of Theorem 1.3 are selected separately in alternating_forms_main13. Its exact workflow reports determine that entry's verification.",
+    "Other retained results, including the multiple-form Theorem 6.1 and positive-characteristic Theorems 7.1\u20137.2, are not selected by this configuration."
   ],
   "checks": {
-    "source_copy": "complete including retained reading files and licenses",
-    "build": "exact997 Source/Solution passed; current constructor support normalization pending",
-    "comparator": "exact997 failed abIndex; complete raw union18933visited/25findings collected and measured constructor family normalized; current pending",
-    "nanoda": "not_run_for_current_hash",
-    "editorial_review": "not_run_for_current_hash",
-    "challenge_elaboration": "passed44464500349 current762 interface with all9 new support propositions genuinely proved"
+    "recorded_at": "2026-11-19T10:01:04.654907+00:00",
+    "previous_exact_full_pass": {
+      "commit": "f99b0e657e8e3ca478876ff6a90ea28ef30039be",
+      "run": 44465251883,
+      "mechanical_report_sha256": "addfa2dc52a8a36cc9a21f4638fca519d27eff984a7bc58f21bc5044bf011974",
+      "Comparator_Lean_default_NanoDa_con_ron": "accepted"
+    },
+    "source_equality": "Every Lean source, Comparator config, toolchain, manifest and Lakefile is byte-identical to the prior verified snapshot.",
+    "current_commit_outcome": "Subsequent exact-commit workflow reports determine the metadata successor verification.",
+    "independent_human_review": "not_claimed"
   },
   "current_selection": "Theorem 1.1 generic Hilbert series and vanishing, exact strip-walk determinant coefficients, Theorem 1.3 prescribed exterior basis in every degree, and full Corollary 5.2 actual SL2 representation isomorphism and dimension on every top bidegree piece.",
   "selected_wrapper_provenance": [],
@@ -620,7 +624,7 @@
     {
       "kind": "literal_interface_repair",
       "evidence": "packaging/targeted-check-repair.json",
-      "description": "Exact current source/context correction and hash-bound pending validation receipt."
+      "description": "Historical source/context correction and hash-bound preparation receipt; later exact f99b verification is recorded in checks."
     },
     {
       "kind": "literal_context_or_instance_repair",
@@ -644,14 +648,14 @@
     {
       "paper_result": "Theorem 1.3 remaining algebraic/geometric clauses",
       "uncovered_scope": "Literal ideal primality/saturation, affine charts, actual projective scheme/gluing and complete section-ring comparison.",
-      "blocker_or_preparation": "Source exists.882-line geometry extension prepares primality/saturation and exact affine coordinate charts; not applied or validated. Full scheme/section-ring interface remains uncovered.",
+      "blocker_or_preparation": "Selected separately by the alternating_forms_main13 configuration, which preserves literal graded families, endpoint pieces, quadratic presentation, actual homological Koszulness and actual ring/chart identification. See its exact workflow reports; no cross-entry pass is inferred.",
       "goal_status": "required_not_optional",
       "validated_covered": false
     },
     {
       "paper_result": "Theorem 1.3 degenerations and Tor",
       "uncovered_scope": "Both genuine coordinate-graded flat families, all endpoint fibers and actual ordinary graded Tor/Koszul clauses over complete section algebras.",
-      "blocker_or_preparation": "Full source closure is446 declarations/4646lines/236071bytes before compaction; independent split interfaces or explicit genuine bridges still required.",
+      "blocker_or_preparation": "Selected separately by the alternating_forms_main13 configuration, which preserves literal graded families, endpoint pieces, quadratic presentation, actual homological Koszulness and actual ring/chart identification. See its exact workflow reports; no cross-entry pass is inferred.",
       "goal_status": "required_not_optional",
       "validated_covered": false
     },
@@ -659,13 +663,6 @@
       "paper_result": "Theorem 4.1",
       "uncovered_scope": "Remaining tautological Chern-class/evaluation conclusions.",
       "blocker_or_preparation": "Retained README explicitly excludes parts; independent scope not selected.",
-      "goal_status": "required_not_optional",
-      "validated_covered": false
-    },
-    {
-      "paper_result": "Propositions 5.1, 5.3, 5.4",
-      "uncovered_scope": "Full bigraded Hilbert function, exact Koszul classification and graded Betti polynomials.",
-      "blocker_or_preparation": "Source/paper mapping retained; not independently selected.",
       "goal_status": "required_not_optional",
       "validated_covered": false
     },
@@ -991,6 +988,16 @@
     "current_challenge_lines": 762,
     "proof_normalization": "Exact arithmetic bounds, parity inverse laws and finTwo subtype predicate named and selected. Odd/even index and symmetric-multiset functions unchanged mathematically; original17 Source theorem applications unchanged.",
     "complete_raw_evidence": "reports/alternating_forms/fresh-raw-diagnostic/run-44460494772/collection-verification.json",
-    "current_source_bridge_status": "Original17 Source applications byte-identical; current9 named support proofs passed canonical44464500349; full current Source context/Comparator pending."
-  }
+    "current_source_bridge_status": "Exact f99b Source/Solution, Comparator, Lean default, NanoDa and con-ron passed run44465251883. Every current Lean source is byte-identical to that snapshot. Subsequent exact-commit workflow reports determine this metadata successor outcome."
+  },
+  "prepared_at": "2026-11-19T10:01:04.654907+00:00",
+  "unselected_supporting_paper_results": [
+    {
+      "paper_result": "Propositions 5.1, 5.3, 5.4",
+      "uncovered_scope": "Full bigraded Hilbert function, exact Koszul classification and graded Betti polynomials.",
+      "blocker_or_preparation": "Source/paper mapping retained; not independently selected.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    }
+  ]
 }
