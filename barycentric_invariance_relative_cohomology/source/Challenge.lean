@@ -888,6 +888,18 @@ abbrev rankSelectedRelativeCohomology (S : Finset (Fin d)) (i : ℕ) :=
     (rankSelection_downward (rankColoredOrderComplex hs d hrank) S)
     (rankSelection_downward (rankColoredSubcomplex hs d hrank Q).toColoredComplex S)
     ((S.card : ℤ) - i - 1)
+theorem rankSelectedRelativeCohomology_formula (S : Finset (Fin d)) (i : ℕ) :
+    rankSelectedRelativeCohomology K hs d hrank Q S i = (
+  letI : LinearOrder (NonzeroFace P) :=
+    (rankColoredOrderComplex hs d hrank).colorLinearOrder
+  letI : DecidableEq (Fin d) := Classical.decEq _
+  letI : DecidableEq (NonzeroFace P) := Classical.decEq _
+  reducedRelativeCohomology (K := K)
+    (rankSelection (rankColoredOrderComplex hs d hrank) S)
+    (rankSelection (rankColoredSubcomplex hs d hrank Q).toColoredComplex S)
+    (rankSelection_downward (rankColoredOrderComplex hs d hrank) S)
+    (rankSelection_downward (rankColoredSubcomplex hs d hrank Q).toColoredComplex S)
+    ((S.card : ℤ) - i - 1)) := by sorry
 include hQ in
 /-- Literal FourPapers.Universal.barycentricRelativeBigradedCohomologyEquiv; source theorem12.lean:33489. -/
 theorem palomarRelativeRankSelectedFactor (j n i : ℕ) :

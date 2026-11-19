@@ -32,7 +32,8 @@
     "koszulComplex.dAlternating_palomar_formula",
     "koszulComplex.d_palomar_formula",
     "FourPapers.FilteredHomology.boundaryMap_palomar_formula",
-    "FourPapers.FilteredHomology.Homology_palomar_formula"
+    "FourPapers.FilteredHomology.Homology_palomar_formula",
+    "FourPapers.Universal.rankSelectedRelativeCohomology_formula"
   ],
   "definition_names": [
     "FourPapers.Universal.barycentricMonomialEquiv",
@@ -42,7 +43,8 @@
     "koszulComplex.dAlternating",
     "koszulComplex.d",
     "FourPapers.FilteredHomology.boundaryMap",
-    "FourPapers.FilteredHomology.Homology"
+    "FourPapers.FilteredHomology.Homology",
+    "FourPapers.Universal.rankSelectedRelativeCohomology"
   ],
   "permitted_axioms": [
     "propext",
