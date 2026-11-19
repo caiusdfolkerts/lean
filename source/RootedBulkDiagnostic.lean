@@ -1,0 +1,16 @@
+module
+public import RootedSubsumedForest0707
+public import RootedSubsumedForest0707Dispositions
+public import RootedSubsumedForest0740
+public import RootedSubsumedForest0740Dispositions
+public import RootedSubsumedForest0869
+public import RootedSubsumedForest0869Dispositions
+
+public section
+
+#print axioms Papers.RationalityTen.RootedForests.RootedSubsumedForest0707.boundary_classification
+#print axioms Papers.RationalityTen.RootedForests.RootedSubsumedForest0707.disposition_checked
+#print axioms Papers.RationalityTen.RootedForests.RootedSubsumedForest0740.boundary_classification
+#print axioms Papers.RationalityTen.RootedForests.RootedSubsumedForest0740.disposition_checked
+#print axioms Papers.RationalityTen.RootedForests.RootedSubsumedForest0869.boundary_classification
+#print axioms Papers.RationalityTen.RootedForests.RootedSubsumedForest0869.disposition_checked
