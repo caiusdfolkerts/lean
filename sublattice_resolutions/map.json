@@ -2,7 +2,7 @@
   "baseline_project": "sublattice_resolutions",
   "baseline_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
   "paper_pdf_sha256": "dc8fd0239670c107968b689c21c60f9447529fefd5fafefb2800dc5c6f927d33",
-  "status": "complete33 selected main/corollary scope with measured eleven-error proof repair; full preflight pending",
+  "status": "2026-11-19 complete33 measured four-error proof repair prepared; full preflight pending",
   "scope": "Theorems1.1,1.2 (both conjuncts),4.3 (all four clauses), Proposition2.2 and complete Corollaries5.1,5.2: twelve substantive endpoints and twenty-one genuine supporting propositions. All33 statements are selected; full verification is pending. Thirteen further paper groups remain outside this selection; whole-paper completion is not claimed.",
   "selected_results": [
     {
@@ -337,20 +337,13 @@
     "meaning": "Actual signed ideal/ModuleCat action and protected equivalence zero/sum APIs proved in addition to all prior106-line controls; full source instance inventory and full28 Solution require full preflight."
   },
   "latest_measured_full_repair": {
-    "all33headers_literal_unchanged": true,
-    "all_prior28_scope_retained": true,
-    "source_proofs_without_holes": true,
+    "preparation_date": "2026-11-19",
+    "all33_header_bytes_unchanged": true,
+    "same_boundary_membership_transport_in_expected_quotient_type": true,
+    "typed_value_and_inverse_projections": true,
+    "post_rewrite_support_branch_simplification": true,
     "no_heartbeat_increase": true,
-    "canonical_order_control_run": 44489153488,
-    "canonical_order_control_receipt_sha256": "b733991dab4e1c539b9cf3e37a8fb61be627a9456ad00955858536d20be0a5a0",
-    "repairs": [
-      "exact quotient-degree projection",
-      "canonical source quotient kernel additive and module structures",
-      "inverse refl-support enumeration in both branches",
-      "fully instantiated finite degree-lex order",
-      "ideal equality at actual pd and Ext-depth arguments"
-    ],
-    "actual_source_Solution_sha256": "81e213dcc7a24817546704847ed3e32e1e8a980567be832ab6915e1cd43e843e"
+    "source_Solution_sha256": "945fd1690d6c788612daec89b394f5f1ecc2544e5e90086198153c0aa4861743"
   },
   "selection_count": 33,
   "substantive_count": 12,
@@ -445,10 +438,10 @@
     }
   ],
   "latest_full_failure": {
-    "commit": "2a5cd0a1987506c76cc562d81dc4cb12e81d41e8",
-    "run": 44481846361,
-    "errors": 11,
-    "omitted": 0,
-    "report_sha256": "865129cb8c14bf9e6438fd3de9824bc222b8fa8ab00dd0316e08150f37dda9bc"
+    "commit": "08efef4da1ee2903cc389ef4ccd5b3e0fad75cf5",
+    "run": 44490040422,
+    "error_count": 4,
+    "omitted_error_count": 0,
+    "report_sha256": "36528d3ce231bb38c038a878551f11808e7db1d72b0b0b0d78965c70785a0df6"
   }
 }

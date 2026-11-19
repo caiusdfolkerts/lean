@@ -40,10 +40,13 @@ automation:
     - method: agent
       tool_setup: The manuscript credits GPT-6 Astra, GPT-5.6 Sol, and Kimi K3 assistance. Historical roles have not been independently reconstructed.
     - method: agent
-      tool_setup: OpenAI Codex using GPT-6.1 Sol compared the actual paper and original source, inlined literal presentation and polynomial/exterior Koszul data, and prepared explicit graded chain and genuine derived-Tor bridges. These new bridges remain unelaborated.
+      tool_setup: OpenAI Codex using GPT-6.1 Sol compared the actual paper and original source, inlined literal presentation and polynomial/exterior Koszul data, and prepared explicit graded chain and genuine derived-Tor bridges. As of 2026-11-19 preparation, these new bridges had not completed full verification; subsequent exact-snapshot workflow reports are separate evidence.
 review:
   status: unchecked
   notes: >-
+    Preparation history recorded on 2026-11-19. Subsequent exact-snapshot
+    workflow reports supersede historical build-status notes below; they do
+    not change the stated mathematical coverage or remaining paper groups.
     The complete904-line independent Challenge passed canonical elaboration in
     run44472886294, preserving all prior28 statements and adding four
     substantive Corollary5.1/5.2 targets plus a finite-enumeration support law.
@@ -74,6 +77,15 @@ review:
     instantiated degree-lex order proof passed canonical run44489153488
     alongside the separate full Corollary5.3 interface and literal
     multiplication proof control. No current full verification is claimed.
+    Full33 run44490040422 at08efef4d subsequently reduced the eleven
+    wrapper errors to four, with no omitted compiler errors: the standalone
+    ordinary-boundary range header timed out, its dependent name was absent,
+    and two post-rewrite support conditionals remained. This 2026-11-19
+    proof repair moves the same boundary transport into the quotient
+    equivalence's already fixed expected type, uses explicit typed value laws
+    and inverse-value projections, and simplifies each actual support branch
+    after the source rewrites. All33 headers, Challenge, configuration,
+    original sources, canonical pins and heartbeat limits are unchanged.
 fidelity:
   divergences: >-
     Actual polynomial Koszul homology is used as the independent interface for
@@ -84,6 +96,6 @@ fidelity:
     remain quantified. The graph uses the given closed labeling without a
     connectivity assumption. The Rees conclusion uses the actual homology algebra.
 limitations:
-  - The exact904-line extended Challenge passed. The complete33-target actual Solution, raw Comparator and kernel replay remain unverified.
+  - As of 2026-11-19 preparation, the exact904-line Challenge had passed and the complete33-target Solution, raw Comparator and kernel replay had not completed verification; later exact-snapshot reports are separate evidence.
   - This candidate selects Theorems1.1,1.2,4.3, Proposition2.2 and complete Corollaries5.1,5.2. Thirteen further paper groups remain outside this selection; whole-paper completion is not claimed.
   - Optional filesystem report writes catch IO failures individually; all mathematical audit assertions and source guards are retained.

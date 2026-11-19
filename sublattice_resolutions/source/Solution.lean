@@ -2634,45 +2634,57 @@ private def ordinaryCyclesEquiv (B : Family V) (q : ℤ) (p : ℕ) :
     apply Subtype.ext
     simpa only [ordinaryPieceEquiv_val,Submodule.coe_smul,RingHom.id_apply] using
       (quotientChainsEquiv (k := k) B p).map_smul r x.val
-private theorem ordinaryBoundaries_map (B : Family V) (q : ℤ) (p : ℕ) :
-    (OrdinaryQuotientKoszul.boundaries (monomialIdeal k B) q p).map
-      (ordinaryCyclesEquiv B q p).toLinearMap =
-    LinearMap.range (FourPapers.FilteredHomology.boundaryMap
-      (integerOrdinaryQuotientDifferential (k := k) B q p)
-      (integerOrdinaryQuotientPrevious (k := k) B q p)
-      (integerOrdinaryQuotientDifferential_comp (k := k) B q p)) := by
-  apply le_antisymm
-  · rintro y ⟨x,hx,rfl⟩
-    rcases hx with ⟨z,hz,hzx⟩
-    refine ⟨ordinaryPieceEquiv B q (p+1) ⟨z,hz⟩,?_⟩
-    apply Subtype.ext
-    apply Subtype.ext
-    change FourPapers.Sublattice.quotientDifferential (k := k) B p
-      (quotientChainsEquiv (k := k) B (p+1) z)=quotientChainsEquiv (k := k) B p x.val
-    have he := LinearMap.congr_fun (quotientDifferential_comm (k := k) B p) z
-    simp only [LinearMap.comp_apply,LinearEquiv.coe_coe] at he
-    rw [← he]
-    exact congrArg (quotientChainsEquiv (k := k) B p) hzx
-  · rintro y ⟨z,rfl⟩
-    let b := FourPapers.FilteredHomology.boundaryMap
-      (integerOrdinaryQuotientDifferential (k := k) B q p)
-      (integerOrdinaryQuotientPrevious (k := k) B q p)
-      (integerOrdinaryQuotientDifferential_comp (k := k) B q p) z
-    refine ⟨(ordinaryCyclesEquiv B q p).symm b,?_,by simp [b]⟩
-    let t := (ordinaryPieceEquiv B q (p+1)).symm z
-    refine ⟨t.val,t.property,?_⟩
-    apply (quotientChainsEquiv (k := k) B p).injective
-    have he := LinearMap.congr_fun (quotientDifferential_comm (k := k) B p) t.val
-    simp only [LinearMap.comp_apply,LinearEquiv.coe_coe] at he
-    rw [he]
-    have ht : quotientChainsEquiv (k := k) B (p+1) t.val=z.val :=
-      congrArg Subtype.val ((ordinaryPieceEquiv B q (p+1)).apply_symm_apply z)
-    rw [ht]
-    exact (congrArg (fun x => x.val.val) ((ordinaryCyclesEquiv B q p).apply_symm_apply b)).symm
+private theorem ordinaryCyclesEquiv_val (B : Family V) (q : ℤ) (p : ℕ)
+    (x : OrdinaryQuotientKoszul.cycles (monomialIdeal k B) q p) :
+    (ordinaryCyclesEquiv B q p x).val.val = quotientChainsEquiv (k := k) B p x.val := rfl
+private theorem ordinaryDifferential_val (B : Family V) (q : ℤ) (p : ℕ)
+    (x : integerOrdinaryQuotientPiece (k := k) B q (p+1)) :
+    (integerOrdinaryQuotientDifferential (k := k) B q p x).val =
+      FourPapers.Sublattice.quotientDifferential (k := k) B p x.val := rfl
 private def ordinaryHomologyEquiv (B : Family V) (q : ℤ) (p : ℕ) :
     OrdinaryQuotientKoszul.Homology (monomialIdeal k B) q p ≃ₗ[k]
       integerOrdinaryQuotientHomology (k := k) B q p :=
-  Submodule.Quotient.equiv _ _ (ordinaryCyclesEquiv B q p) (ordinaryBoundaries_map B q p)
+  Submodule.Quotient.equiv _ _ (ordinaryCyclesEquiv B q p) (by
+    apply le_antisymm
+    · rintro y ⟨x,hx,rfl⟩
+      simp only [OrdinaryQuotientKoszul.boundaries,Submodule.mem_comap] at hx
+      rcases hx with ⟨z,hz,hzx⟩
+      refine ⟨ordinaryPieceEquiv B q (p+1) ⟨z,hz⟩,?_⟩
+      apply Subtype.ext
+      apply Subtype.ext
+      simp only [BridgeAPI.boundaryMap_val,ordinaryDifferential_val,
+        ordinaryPieceEquiv_val,ordinaryCyclesEquiv_val]
+      have he := LinearMap.congr_fun (quotientDifferential_comm (k := k) B p) z
+      simp only [LinearMap.comp_apply,LinearEquiv.coe_coe] at he
+      rw [← he]
+      exact congrArg (quotientChainsEquiv (k := k) B p) hzx
+    · rintro y ⟨z,rfl⟩
+      let b := FourPapers.FilteredHomology.boundaryMap
+        (integerOrdinaryQuotientDifferential (k := k) B q p)
+        (integerOrdinaryQuotientPrevious (k := k) B q p)
+        (integerOrdinaryQuotientDifferential_comp (k := k) B q p) z
+      refine ⟨(ordinaryCyclesEquiv B q p).symm b,?_,
+        (ordinaryCyclesEquiv B q p).apply_symm_apply b⟩
+      simp only [OrdinaryQuotientKoszul.boundaries,Submodule.mem_comap]
+      let t := (ordinaryPieceEquiv B q (p+1)).symm z
+      refine ⟨t.val,t.property,?_⟩
+      apply (quotientChainsEquiv (k := k) B p).injective
+      have he := LinearMap.congr_fun (quotientDifferential_comm (k := k) B p) t.val
+      simp only [LinearMap.comp_apply,LinearEquiv.coe_coe] at he
+      rw [he]
+      have ht : quotientChainsEquiv (k := k) B (p+1) t.val=z.val :=
+        congrArg (fun x : integerOrdinaryQuotientPiece (k := k) B q (p+1) => x.val)
+          ((ordinaryPieceEquiv B q (p+1)).apply_symm_apply z)
+      rw [ht]
+      have hb := congrArg
+        (fun x : LinearMap.ker (integerOrdinaryQuotientPrevious (k := k) B q p) => x.val.val)
+        ((ordinaryCyclesEquiv B q p).apply_symm_apply b)
+      have hb' : quotientChainsEquiv (k := k) B p
+          ((ordinaryCyclesEquiv B q p).symm b).val =
+            FourPapers.Sublattice.quotientDifferential (k := k) B p z.val := by
+        simpa only [ordinaryCyclesEquiv_val,b,BridgeAPI.boundaryMap_val,
+          ordinaryDifferential_val] using hb
+      exact hb'.symm)
 theorem ordinaryQuotientBetti_eq_source (B : Family V) (q : ℤ) (p : ℕ) :
     OrdinaryQuotientKoszul.betti (monomialIdeal k B) q p =
       integerOrdinaryQuotientBettiNumber (K := k) B q p :=
@@ -2757,8 +2769,8 @@ private theorem bettiBinomialCoefficient_eq_source (E : Finset (FiniteTuple n))
     rw [FourPapers.Sublattice.integerStrictSupportBettiCoefficient,
       ← FineKoszul.ordinaryQuotientBetti_eq_source,
       supportCoefficientIdeal_eq_source]
-    rfl
-  · simp only [supportEquiv,Equiv.refl_symm,Equiv.refl_apply,if_neg hc]
+    simp [supportEquiv,hc]
+  · simp [supportEquiv,hc]
 /-- Corollary5.1 through actual integer ordinary ideal Tor and actual
 integer ordinary quotient Koszul homology, preserving every q in Z. -/
 theorem corollary51_integer {E : Finset (FiniteTuple n)} (hE : finiteLatticeClosed n E)
