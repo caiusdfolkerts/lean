@@ -3064,13 +3064,13 @@ def IntegerPowerBettiFieldIndependent (m : ℕ) : Prop :=
 
 /-- Corollary 10.4, existence of one field-independent positive power. -/
 theorem corollary104_field_independence (hE : finiteLatticeClosed n E) :
-    (∃ m : ℕ, 0 < m ∧ IntegerPowerBettiFieldIndependent n (E := E) m) ↔
-      ∀ r : ℕ, 0 < r → IntegerPowerBettiFieldIndependent n (E := E) r := by
+    (∃ m : ℕ, 0 < m ∧ IntegerPowerBettiFieldIndependent.{u} n (E := E) m) ↔
+      ∀ r : ℕ, 0 < r → IntegerPowerBettiFieldIndependent.{u} n (E := E) r := by
   let o : MonomialOrder (FiniteVariable.{u} n) :=
     @MonomialOrder.degLex (FiniteVariable.{u} n) (finiteVariableLinearOrder n)
       (@Finite.to_wellFoundedGT (FiniteVariable.{u} n) (inferInstance)
         (finiteVariableLinearOrder n).toPreorder)
-  have h (m : ℕ) : IntegerPowerBettiFieldIndependent n (E := E) m ↔
+  have h (m : ℕ) : IntegerPowerBettiFieldIndependent.{u} n (E := E) m ↔
       FourPapers.Sublattice.IntegerPowerBettiFieldIndependent (E := E) o m := by
     constructor
     · intro h F L _ _ q p

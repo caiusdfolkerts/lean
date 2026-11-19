@@ -970,6 +970,6 @@ def IntegerPowerBettiFieldIndependent (m : ℕ) : Prop :=
 
 /-- Corollary 10.4, existence of one field-independent positive power. -/
 theorem corollary104_field_independence (hE : finiteLatticeClosed n E) :
-    (∃ m : ℕ, 0 < m ∧ IntegerPowerBettiFieldIndependent n (E := E) m) ↔
-      ∀ r : ℕ, 0 < r → IntegerPowerBettiFieldIndependent n (E := E) r := by sorry
+    (∃ m : ℕ, 0 < m ∧ IntegerPowerBettiFieldIndependent.{u} n (E := E) m) ↔
+      ∀ r : ℕ, 0 < r → IntegerPowerBettiFieldIndependent.{u} n (E := E) r := by sorry
 end PalomarSublattice
