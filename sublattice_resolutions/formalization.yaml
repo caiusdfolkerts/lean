@@ -39,15 +39,22 @@ automation:
 review:
   status: unchecked
   notes: >-
-    Exact726-line Challenge SHA51c9d4bc passed canonical elaboration in
-    run44380113477/source863d32aa. All inputs, canonical pins and bounded-log
-    hash were independently checked. The2277-line repaired actual Solution
-    retains the complete first-power-criterion proof draft and incorporates
-    measured fixes for the63 earlier main-wrapper errors in run44371585714.
-    The genuine canonical API proof smoke passed in run44383675339 with
-    exact inputs and pins verified. This merged proof draft remains
-    unelaborated; that bounded check is not a full proof replay. No Solution,
-    Comparator, NanoDa, registry or mathematical peer-review pass is claimed.
+    Exact726-line Challenge passed canonical elaboration in run44380113477;
+    the first canonical API proof smoke passed in run44383675339. Full
+    run44385218736 reached the actual Solution and reported32 errors. The
+    complete error union was reconstructed from20 excerpts plus12 omitted
+    errors in the bounded log. This proof-only repair pins actual coefficient
+    maps, evaluates scalar restrictions and source projection laws explicitly,
+    corrects dependent previous-map and quotient-isomorphism interfaces, and
+    supplies direct canonical structures for fixed source strands and cycles.
+    The28 target headers, Challenge, original sources and canonical pins remain
+    unchanged. No heartbeat limits are raised. The repaired Solution remains
+    unelaborated. The corrected106-line actual canonical API proof smoke passed
+    run44460937968/sourcea30cb602 with all inputs, complete canonical pins and
+    bounded-log hashes checked, without proof holes or uses-sorry warnings.
+    This proves the identified canonical API mechanisms, not the full source
+    instance inventory or entire Solution. No full Solution, Comparator,
+    NanoDa, registry or peer-review pass is claimed.
 fidelity:
   divergences: >-
     Actual polynomial Koszul homology is used as the independent interface for
