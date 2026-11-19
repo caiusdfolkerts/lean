@@ -1,0 +1,86 @@
+{
+  "project": "higher_specht_bases_integral_geometry",
+  "baseline_project": "higher_specht_bases",
+  "paper_sha256": "931c0ee33b94c7a77d373c4040abb40151a8f1cd049b977006df188e31013a0c",
+  "companion_to": {
+    "entry": "higher_specht_bases_status",
+    "commit": "fb5ab9354a764e61ae08d5e8f631614d1920f776"
+  },
+  "status": "integral_staircase_candidate_awaiting_full_preflight",
+  "selected_results": [
+    "Theorem 6.1 and Corollary 6.5: dimension and local Cohen\u2013Macaulayness in every field",
+    "Corollary 6.5: explicit fixed staircase monomials over every coefficient ring",
+    "Corollary 7.6: exact Gorenstein and complete-intersection cases in every field",
+    "Corollary 7.5: sharp genuine Koszul support",
+    "Corollary 7.6: actual canonical module, type and homogeneous generator degree"
+  ],
+  "coverage": [
+    {
+      "paper_result": "Theorem 6.1 and Corollary 6.5",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        23,
+        25
+      ],
+      "declarations": [
+        {
+          "name": "HigherSpecht.parameter_family_dimension_and_cohenMacaulay",
+          "source_path": "source/Solution.lean"
+        }
+      ]
+    },
+    {
+      "paper_result": "Corollary 6.5",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        25
+      ],
+      "declarations": [
+        {
+          "name": "HigherSpecht.untruncated_parameter_staircase_basis",
+          "source_path": "source/Solution.lean"
+        }
+      ]
+    },
+    {
+      "paper_result": "Corollary 7.6",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        33
+      ],
+      "declarations": [
+        {
+          "name": "HigherSpecht.untruncated_gorenstein_and_ci_cases",
+          "source_path": "source/Solution.lean"
+        }
+      ]
+    },
+    {
+      "paper_result": "Corollary 7.5",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        33
+      ],
+      "declarations": [
+        {
+          "name": "HigherSpecht.untruncated_koszul_regularity_exact",
+          "source_path": "source/Solution.lean"
+        }
+      ]
+    },
+    {
+      "paper_result": "Corollary 7.6",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        33
+      ],
+      "declarations": [
+        {
+          "name": "HigherSpecht.untruncated_canonical_intrinsic_degree_and_type",
+          "source_path": "source/Solution.lean"
+        }
+      ]
+    }
+  ],
+  "coverage_status": "partial_principal_selection_not_whole_paper"
+}

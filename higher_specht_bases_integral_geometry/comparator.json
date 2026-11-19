@@ -1,0 +1,18 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "HigherSpecht.untruncatedIdeal_isTwoSided",
+    "HigherSpecht.adjoinOnes_isLowerSet",
+    "HigherSpecht.untruncated_parameter_staircase_basis",
+    "HigherSpecht.parameter_family_dimension_and_cohenMacaulay",
+    "HigherSpecht.untruncated_gorenstein_and_ci_cases",
+    "HigherSpecht.untruncated_koszul_regularity_exact",
+    "HigherSpecht.untruncated_canonical_intrinsic_degree_and_type"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}
