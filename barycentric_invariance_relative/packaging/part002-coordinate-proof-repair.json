@@ -1,0 +1,19 @@
+{
+  "parent_commit": "8fee98289a187580fa4c0bea951fb80ba650e44e",
+  "before_sha256": "7119be3700b00eb3a4eed1dc229f5ef3ed194c4692408932f0b9d44d7fc958e9",
+  "after_sha256": "53dc94fb44d03315108abf3d53f4b25eaf7aff748b97d9dcd490ad81f2c1b742",
+  "original_lines": [
+    250,
+    264,
+    523,
+    552,
+    701,
+    918,
+    939,
+    1486,
+    2196,
+    5591,
+    5605
+  ],
+  "change": "Explicit definitional coordinate goals before rewrites; no mathematical statements, definitions or selections changed. Downstream failed declarations are rechecked by full preflight."
+}

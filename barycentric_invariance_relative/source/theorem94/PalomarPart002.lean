@@ -247,6 +247,8 @@ theorem booleanTopOrdinary_predecessor_degree (m : ℕ) (x : BooleanBarycentricR
     rw [booleanTopOrdinary_degree_shift]
     exact fun he => ha (Nat.add_right_cancel he)
   have hh := hx b hb
+  change booleanChainBasis.repr (booleanTop * x) b = 0 at hh
+  change booleanChainBasis.repr x a = 0
   rwa [booleanTopOrdinary_shift_coefficient] at hh
 
 theorem booleanTopOrdinary_homogeneous_zero_below (n : ℕ) (hn : n < Fintype.card V)
@@ -261,6 +263,7 @@ theorem booleanTopOrdinary_homogeneous_zero_below (n : ℕ) (hn : n < Fintype.ca
     rw [booleanTopOrdinary_degree_shift]
     omega
   have hh := hx b hb
+  change booleanChainBasis.repr (booleanTop * x) b = 0 at hh
   rw [booleanTopOrdinary_shift_coefficient] at hh
   exact hh
 
@@ -520,6 +523,7 @@ def basisDegreeSupportedEquiv (n : ℕ) :
     exact x.property⟩
   invFun x := ⟨b.repr.symm x.val, by
     intro i hi
+    change b.repr (b.repr.symm x.val) i = 0
     rw [LinearEquiv.apply_symm_apply]
     exact (Finsupp.mem_supported' K x.val).mp x.property i hi⟩
   left_inv x := by apply Subtype.ext; exact b.repr.symm_apply_apply x.val
@@ -549,6 +553,7 @@ theorem basisDegreePiece_invariant (n : ℕ) (g : G) (x : M)
     (hx : x ∈ basisOrdinaryDegreePiece b degree n) :
     ρ g x ∈ basisOrdinaryDegreePiece b degree n := by
   intro i hi
+  change b.repr (ρ g x) i = 0
   rw [hcoeff]
   exact hx (g⁻¹ • i) (by rwa [hdegree])
 
@@ -698,6 +703,7 @@ theorem mem_primeFixedKernelDegreePiece_iff (n : ℕ)
     · have hh := hx ⟨a, hr⟩ ha
       exact (primeFixedFaceKernelBasis_repr p K x ⟨a, hr⟩).symm.trans hh
   · intro hx a ha
+    change (primeFixedFaceKernelBasis p K).repr x a = 0
     rw [primeFixedFaceKernelBasis_repr]
     exact hx a.val ha
 
@@ -915,6 +921,7 @@ theorem generator_mem_piece (i : I) :
 
 theorem coefficient_mem_piece (j : J) : s.coefficientBasis j ∈ s.piece (s.degree j) := by
   intro k hk
+  change s.coefficientBasis.repr (s.coefficientBasis j) k = 0
   rw [Module.Basis.repr_self]
   have hne : j ≠ k := by
     intro h
@@ -936,6 +943,7 @@ def projection (n : ℕ) : M →ₗ[K] s.piece n :=
   LinearMap.codRestrict (s.piece n)
     (basisDegreeProjection s.coefficientBasis s.degree n) (by
       intro x j hj
+      change s.coefficientBasis.repr (basisDegreeProjection s.coefficientBasis s.degree n x) j = 0
       simp only [basisDegreeProjection_repr, if_neg hj])
 
 @[simp] theorem projection_coefficient (n : ℕ) (j : J) (hj : s.degree j = n) :
@@ -1483,6 +1491,7 @@ theorem booleanTopPartProjection_degree (n : ℕ) (x : BooleanBarycentricRing V 
     booleanTopPartProjection x ∈ basisOrdinaryDegreePiece booleanChainBasis
       (fun a => booleanOrdinaryDegree a.val) n := by
   intro a ha
+  change booleanChainBasis.repr (booleanTopPartProjection x) a = 0
   rw [booleanTopPartProjection_coefficient]
   split_ifs
   · exact hx a ha
@@ -2193,7 +2202,8 @@ theorem basisDegreeProjection_eq_self_iff_mem
     rw [basisDegreeProjection_repr]
     by_cases hi : degree i = n
     · rw [if_pos hi]
-    · rw [if_neg hi, hx i hi]
+    · have hxi : b.repr x i = 0 := hx i hi
+      rw [if_neg hi, hxi]
 
 theorem booleanParameterDegreeProjection_eq (n : ℕ) :
     basisDegreeProjection (booleanChainBasis (V := V) (K := K))
@@ -5588,6 +5598,8 @@ theorem booleanTop_predecessor_degree (m : ℕ) (x : BooleanBarycentricRing V K)
     rw [chainOrdinaryDegree_add_top]
     exact fun he => ha (Nat.add_right_cancel he)
   have hh := hx b hb
+  change booleanChainBasis.repr (booleanTop * x) b = 0 at hh
+  change booleanChainBasis.repr x a = 0
   rwa [booleanTop_mul_shift_coefficient] at hh
 
 theorem booleanTop_homogeneous_zero_below (n : ℕ) (hn : n < Fintype.card V)
@@ -5602,6 +5614,7 @@ theorem booleanTop_homogeneous_zero_below (n : ℕ) (hn : n < Fintype.card V)
     rw [chainOrdinaryDegree_add_top]
     omega
   have hh := hx b hb
+  change booleanChainBasis.repr (booleanTop * x) b = 0 at hh
   rw [booleanTop_mul_shift_coefficient] at hh
   exact hh
 
