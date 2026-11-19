@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "kind": "Targeted original Source error diagnostic; NOT full preflight",
+  "pipeline_commit": "14aa8d6b3c2f14a8540605e37144560b9a00e7e7",
+  "cases": [
+    {
+      "id": "toric_original_failure_leaves",
+      "module": "Challenge",
+      "case_dir": "cases/toric_original_failure_leaves",
+      "original_package": "toric_power_maps exact4e3 source-target diagnostic",
+      "original_challenge": "canonical-import setup only; no paper statement",
+      "lean_toolchain": "leanprover/lean4:v4.35.0",
+      "hashes": {
+        "Challenge.lean": "94a57910693a6bf79920048690241b25cd01541ca3bb219c073139e0ff32927c",
+        "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+        "lake-manifest.json": "96e3f94b5d60e9194735df8cda3fe9c3b76a11dd12ef14eb9f32b0d78da9e1af",
+        "original-lakefile.toml": "34be57067a306b86e96dad921a2227b242cdfb1ecd5c18f55001d6c836452d0e"
+      },
+      "challenge_lines": 51,
+      "challenge_bytes": 3013,
+      "canonical_direct_roots": [
+        "TauCeti"
+      ],
+      "dependency_pins": [
+        {
+          "name": "TauCeti",
+          "url": "https://github.com/TauCetiProject/TauCeti",
+          "rev": "1f9b4414105d86e487a4ac4c3d3397076a44d0d2"
+        },
+        {
+          "name": "mathlib",
+          "url": "https://github.com/leanprover-community/mathlib4",
+          "rev": "074063781836922cb02701cd12943c9f51731afa"
+        },
+        {
+          "name": "plausible",
+          "url": "https://github.com/leanprover-community/plausible",
+          "rev": "dfa4f38190d07c37e315953e08b90fe2d95b3c24"
+        },
+        {
+          "name": "LeanSearchClient",
+          "url": "https://github.com/leanprover-community/LeanSearchClient",
+          "rev": "d6b4c7be5be75ec4917c873ac50c756dc1436372"
+        },
+        {
+          "name": "importGraph",
+          "url": "https://github.com/leanprover-community/import-graph",
+          "rev": "a41f0e9a4dea23188ea9cc1c41ac9f8bbafe0b93"
+        },
+        {
+          "name": "proofwidgets",
+          "url": "https://github.com/leanprover-community/ProofWidgets4",
+          "rev": "df72b022e558978a1c50264cfc4d7fec86fa8e04"
+        },
+        {
+          "name": "aesop",
+          "url": "https://github.com/leanprover-community/aesop",
+          "rev": "4a174c490d8707121c4a9290800489f105d85e07"
+        },
+        {
+          "name": "Qq",
+          "url": "https://github.com/leanprover-community/quote4",
+          "rev": "dce0ad79c486cb1fb504af04f953c3466b0c6db8"
+        },
+        {
+          "name": "batteries",
+          "url": "https://github.com/leanprover-community/batteries",
+          "rev": "66e469188fe07963e5cf666c7d4433f45b8131c5"
+        },
+        {
+          "name": "Cli",
+          "url": "https://github.com/leanprover/lean4-cli",
+          "rev": "c24fe6078c630e89b489bffe59b3e20ac30d12c8"
+        }
+      ]
+    }
+  ]
+}
