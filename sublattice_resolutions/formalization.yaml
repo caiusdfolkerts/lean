@@ -8,7 +8,9 @@ project:
     satisfy the full signed fine-degree multichain Betti formula, with actual
     polynomial quotients by sums of predecessor colons, and their actual Rees
     Koszul homology algebra is generated in degree one. The literal finite
-    Rees kernel has the displayed monic Groebner presentation. For every
+    Rees kernel has the displayed monic Groebner presentation. Theorem 4.1
+    identifies every ordinary power with the symbolic powers and the intersection
+    of the corresponding powers of the minimal-cover coordinate primes. For every
     homogeneous deformation with this initial ideal, the first-power criterion
     gives the symbolic and initial identities, Betti preservation in all powers
     in every respected additive grading refining ordinary degree, and generation
@@ -29,7 +31,7 @@ sources:
     authors: [Caius Folkerts]
     type: paper
     relationship: formalizes
-    location: paper.pdf, Theorems1.1,1.2,4.3, Proposition2.2 and complete Corollaries5.1,5.2
+    location: paper.pdf, Theorems1.1,1.2,4.1,4.3, Proposition2.2 and complete Corollaries5.1,5.2
 related_formalizations:
   - title: caiusdfolkerts/research sublattice_resolutions
     id: https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/sublattice_resolutions
@@ -115,6 +117,7 @@ fidelity:
     remain quantified. The graph uses the given closed labeling without a
     connectivity assumption. The Rees conclusion uses the actual homology algebra.
 limitations:
+  - The exact selection includes the independently stated Theorem 4.1. The exact-commit full preflight report establishes its current verification status.
   - As of 2026-11-19 preparation, the exact904-line Challenge had passed and the complete33-target Solution, raw Comparator and kernel replay had not completed verification; later exact-snapshot reports are separate evidence.
-  - This candidate selects Theorems1.1,1.2,4.3, Proposition2.2 and complete Corollaries5.1,5.2. Thirteen further paper groups remain outside this selection; whole-paper completion is not claimed.
+  - This candidate selects Theorems1.1,1.2,4.1,4.3, Proposition2.2 and complete Corollaries5.1,5.2. Further paper groups remain outside this selection; whole-paper completion is not claimed.
   - Optional filesystem report writes catch IO failures individually; all mathematical audit assertions and source guards are retained.

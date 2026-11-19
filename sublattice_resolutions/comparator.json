@@ -34,7 +34,8 @@
     "PalomarSublattice.corollary51_integer",
     "PalomarSublattice.corollary52_integer_grouped_expansion",
     "PalomarSublattice.corollary52_full",
-    "PalomarSublattice.corollaries51_52_transfer"
+    "PalomarSublattice.corollaries51_52_transfer",
+    "PalomarSublattice.RowCovers.theorem41"
   ],
   "permitted_axioms": [
     "propext",

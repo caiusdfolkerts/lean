@@ -902,3 +902,36 @@ theorem corollaries51_52_transfer (o : MonomialOrder (FiniteVariable.{u} n))
     (∀ m N : ℕ, 0 < m → m ≤ N →
       quotientPowerDepth n J N ≤ quotientPowerDepth n J m) := by sorry
 end PalomarSublattice
+
+namespace PalomarSublattice.RowCovers
+open Classical MvPolynomial
+universe u v
+variable {ι : Type u} [Fintype ι] (n : ι → ℕ)
+abbrev Tuple := ∀ i, Fin (n i)
+abbrev Label := Σ i, Fin (n i)
+
+/-- The indicated row variables meet every generating squarefree monomial. -/
+def IsCover (E : Finset (Tuple n)) (C : Finset (Label n)) : Prop :=
+  ∀ a ∈ E, ∃ i, (⟨i, a i⟩ : Label n) ∈ C
+
+def IsMinimalCover (E : Finset (Tuple n)) (C : Finset (Label n)) : Prop :=
+  IsCover n E C ∧ ∀ D, D ⊆ C → IsCover n E D → C ⊆ D
+
+def exponent (a : Tuple n) : Label n →₀ ℕ :=
+  ∑ i, Finsupp.single ⟨i, a i⟩ 1
+
+def monomialIdeal (k : Type v) [CommSemiring k] (E : Finset (Tuple n)) :
+    Ideal (MvPolynomial (Label n) k) :=
+  Ideal.span ((fun a => monomial (exponent n a) (1 : k)) '' (E : Set (Tuple n)))
+
+/-- Theorem 4.1, including the actual intersection of minimal-cover coordinate
+prime powers and both minimal-prime localization conventions. -/
+theorem theorem41 {k : Type v} [Field k] (E : Finset (Tuple n))
+    (hinf : ∀ a ∈ E, ∀ b ∈ E, a ⊓ b ∈ E)
+    (hsup : ∀ a ∈ E, ∀ b ∈ E, a ⊔ b ∈ E) (s : ℕ) :
+    (monomialIdeal n k E)^s = radicalSymbolicPower (monomialIdeal n k E) s ∧
+    (monomialIdeal n k E)^s = symbolicPower (monomialIdeal n k E) s ∧
+    (monomialIdeal n k E)^s =
+      ⨅ C : {C : Finset (Label n) // IsMinimalCover n E C},
+        (Ideal.span (X '' (C.val : Set (Label n)))) ^ s := by sorry
+end PalomarSublattice.RowCovers
