@@ -12,6 +12,7 @@ universe u
 variable {P K : Type u} [PartialOrder P] [OrderBot P] [Fintype P] [CommRing K]
 variable (K) (hs : IsSimplicialPoset P) (d : ℕ) (hrank : ∀ p : P, faceRank p ≤ d)
 variable (Q : Set P) (hQ : ∀ ⦃p q : P⦄, p ≤ q → q ∈ Q → p ∈ Q)
+include hQ in
 theorem palomarRelativeRankSelectedFactor (j n i : ℕ) :
     Nonempty (barycentricRelativeBigradedHomology (P := P) K d Q j n i ≃ₗ[K]
       ∀ S : {S : Finset (Fin d) // rankSubsetDegree S = j ∧ rankSubsetWeight d S = n},
