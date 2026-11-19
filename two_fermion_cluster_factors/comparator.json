@@ -1,0 +1,41 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "PaperVerification.Fermion.Endpoint.HomogeneousPolynomial.eval",
+    "PaperVerification.Fermion.highestPower_X_pow",
+    "PaperVerification.Fermion.ringCon_le_ker_of_kills",
+    "PaperVerification.Fermion.quotientMk_eq_zero_of_mem",
+    "PaperVerification.Fermion.twoSided_map_killed",
+    "PaperVerification.Fermion.tensorQuotientForward_tmul_mk",
+    "PaperVerification.Fermion.tensorQuotientBackward_mk_tmul",
+    "PaperVerification.Fermion.basisDegreePart_iSup_eq_top",
+    "PaperVerification.Fermion.basisDegreePart_independent",
+    "PaperVerification.Fermion.exteriorWeightedPart_one",
+    "PaperVerification.Fermion.exteriorWeightedPart_basis_mul",
+    "PaperVerification.Fermion.gradedImageDecomposeSource_coe",
+    "PaperVerification.Fermion.gradedImageDecomposeSource_recompose",
+    "PaperVerification.Fermion.gradedImageDecomposeSource_ker",
+    "PaperVerification.Fermion.gradedImageDecompose_q",
+    "PaperVerification.Fermion.twoSided_span_multihomogeneous",
+    "PaperVerification.Fermion.residueAlgHom_surjective",
+    "PaperVerification.Fermion.SeparatedOrdinaryData.pointEval_kills",
+    "PaperVerification.Fermion.SeparatedOrdinaryData.ramificationOrder_pos",
+    "PaperVerification.Fermion.SeparatedOrdinaryData.clusterMultiplicity_pos",
+    "PaperVerification.Fermion.SeparatedPairedData.local_exponent_balance",
+    "PaperVerification.Fermion.SeparatedPairedData.ordinary_scalar_ideal_mem",
+    "PaperVerification.Fermion.clusterOddCurrent_bidegree",
+    "PaperVerification.Fermion.clusterOddCurrent_degree",
+    "PaperVerification.Fermion.homogeneousCluster_bigraded_total",
+    "PaperVerification.Fermion.SeparatedPairedData.localFactorIndex_cluster",
+    "PaperVerification.Fermion.SeparatedPairedData.localFactor_card_pos",
+    "PaperVerification.Fermion.SeparatedPairedData.localFactor_subset_units",
+    "PaperVerification.Fermion.localFactorPresentation"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "definition_names": []
+}
