@@ -3093,7 +3093,7 @@ end PalomarSublattice
 
 namespace PalomarSublattice
 open Classical MvPolynomial
-universe u
+universe u v
 variable {N : ℕ} {K L : Type u} [Field K] [Field L]
 
 /-- The vertex coordinates and total x-row count, in signed degrees. -/
@@ -3107,7 +3107,7 @@ def componentGraphWeight (G : SimpleGraph (Fin N))
     if v.1 = 0 then Finsupp.single (G.connectedComponentMk v.2.down) 1 else 0)
 
 
-private theorem graphWeightedBinomialBetti_bridge {Γ : Type u} [AddCommMonoid Γ]
+private theorem graphWeightedBinomialBetti_bridge {Γ : Type v} [AddCommMonoid Γ]
     (G : SimpleGraph (Fin N)) (ω : FiniteVariable.{u} (GraphRows N) → Γ)
     (hJ : FourPapers.Sublattice.graphWeightedHomogeneous (K := K) G ω)
     (s p : ℕ) (γ : Γ) :
@@ -3119,7 +3119,7 @@ private theorem graphWeightedBinomialBetti_bridge {Γ : Type u} [AddCommMonoid �
     (FourPapers.Sublattice.homogeneousIdealPowerWeighted (GraphRows N)
       (FourPapers.Sublattice.graphBinomialIdeal G) ω hJ s) p γ
 
-private theorem graphWeightedMonomialBetti_bridge {Γ : Type u} [AddCommMonoid Γ]
+private theorem graphWeightedMonomialBetti_bridge {Γ : Type v} [AddCommMonoid Γ]
     (G : SimpleGraph (Fin N)) (ω : FiniteVariable.{u} (GraphRows N) → Γ)
     (s p : ℕ) (γ : Γ) :
     RefinedKoszul.betti ω ((graphMonomialIdeal (K := K) G)^s) p γ =
