@@ -2,6 +2,7 @@ module
 public import Mathlib
 /-! Theorem 1.2 for relative pairs: the associated graded of each homogeneous Tor module is computed by the reduced cohomology of the rank-selected pairs. -/
 @[expose] public section
+attribute [-instance] MvPolynomial.instModuleSelf
 namespace PalomarBarycentricTor
 /-- Canonical cancellation and scalar-action laws used by the actual complexes. -/
 theorem natRightCancelAdd : IsRightCancelAdd ℕ := by infer_instance
@@ -509,7 +510,6 @@ def faceRingSection : FaceRing K hs →ₗ[K] (polynomialDiagram (P := P) K).sec
     exact map_smul (faceRingEvaluation K hs p) c f
 def polynomialStandardCoordinates (p : P) : PolynomialStalk K p ≃ₗ[K] coefficientStalk K (standardCarrier (P := P)) p := (polynomialStandardBasis (K := K) hs p).repr.trans
   (Finsupp.supportedEquivFinsupp {a : StandardFaceIndex P | standardCarrier a ≤ p}).symm
-attribute [local instance 2450] AddMonoidAlgebra.instModule in
 theorem polynomialStandardCoordinates_naturality {p q : P} (hqp : q ≤ p) (f : PolynomialStalk K p) : coefficientRestriction K standardCarrier hqp
   (polynomialStandardCoordinates K hs p f) = polynomialStandardCoordinates K hs q (polynomialRestriction K hqp f) := by sorry
 def polynomialCoefficientEquiv : CoherentEquiv (polynomialDiagram (P := P) K) (coefficientDiagram K (standardCarrier (P := P))) where
