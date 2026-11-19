@@ -89,13 +89,13 @@ local instance decidablePredMemColSubgroup (t : YoungTableau μ) :
   Classical.decPred _
 
 /-- The **row symmetrizer** `a_t`, the sum of the permutations preserving the rows of `t`. -/
-noncomputable def rowSymmetrizer (t : YoungTableau μ) :
+noncomputable abbrev rowSymmetrizer (t : YoungTableau μ) :
     MonoidAlgebra ℚ (Equiv.Perm (Fin μ.card)) :=
   ∑ p : rowSubgroup t, MonoidAlgebra.of ℚ (Equiv.Perm (Fin μ.card)) p
 
 /-- The **column antisymmetrizer** `b_t`, the signed sum of the permutations preserving the
 columns of `t`. -/
-noncomputable def columnAntisymmetrizer (t : YoungTableau μ) :
+noncomputable abbrev columnAntisymmetrizer (t : YoungTableau μ) :
     MonoidAlgebra ℚ (Equiv.Perm (Fin μ.card)) :=
   ∑ q : colSubgroup t,
     ((Equiv.Perm.sign (q : Equiv.Perm (Fin μ.card)) : ℤ) : ℚ) •
@@ -103,7 +103,7 @@ noncomputable def columnAntisymmetrizer (t : YoungTableau μ) :
 
 /-- The **Young symmetrizer** of `t`, with the convention `c_t = a_t b_t`. On a left module it
 acts by column-antisymmetrization followed by row-symmetrization. -/
-noncomputable def youngSymmetrizer (t : YoungTableau μ) :
+noncomputable abbrev youngSymmetrizer (t : YoungTableau μ) :
     MonoidAlgebra ℚ (Equiv.Perm (Fin μ.card)) :=
   rowSymmetrizer t * columnAntisymmetrizer t
 
@@ -326,16 +326,18 @@ theorem asAlgebraHom_columnAntisymmetrizer_apply {V : Type*} [AddCommGroup V] [M
   rw [columnAntisymmetrizer_eq_subgroupCharSum, asAlgebraHom_subgroupCharSum_apply]
   simp
 
+universe palomarYoungU
+
 section Transport
 
-variable (k : Type*) [Semiring k] [Algebra ℚ k]
+variable (k : Type palomarYoungU) [Semiring k] [Algebra ℚ k]
 
 /-- The Young symmetrizer `c_t` with the coefficients of its rational form transported into a
 `ℚ`-algebra `k`, so that it can act on a `k`-module. The algebra `k` need not be commutative.
 
 The `ℚ`-algebra hypothesis comes from `youngSymmetrizer` being defined over `ℚ` here, not from
 `c_t`, whose coefficients are integral. -/
-@[expose] noncomputable def youngSymmetrizerOver (t : YoungTableau μ) :
+@[expose] noncomputable abbrev youngSymmetrizerOver (t : YoungTableau μ) :
     MonoidAlgebra k (Equiv.Perm (Fin μ.card)) :=
   MonoidAlgebra.mapAlgHom _ (Algebra.ofId ℚ k) (youngSymmetrizer t)
 

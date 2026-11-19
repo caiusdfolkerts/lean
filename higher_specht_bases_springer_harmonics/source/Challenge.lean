@@ -176,6 +176,8 @@ theorem colLen_bot (j : ℕ) : (⊥ : YoungDiagram).colLen j = 0 :=
 
 end YoungDiagram
 
+universe palomarYoungU
+
 namespace TauCeti.YoungTableau
 
 variable {μ : YoungDiagram}
@@ -189,13 +191,13 @@ local instance decidablePredMemColSubgroup (t : YoungTableau μ) :
   Classical.decPred _
 
 /-- The **row symmetrizer** `a_t`, the sum of the permutations preserving the rows of `t`. -/
-noncomputable def rowSymmetrizer (t : YoungTableau μ) :
+noncomputable abbrev rowSymmetrizer (t : YoungTableau μ) :
     MonoidAlgebra ℚ (Equiv.Perm (Fin μ.card)) :=
   ∑ p : rowSubgroup t, MonoidAlgebra.of ℚ (Equiv.Perm (Fin μ.card)) p
 
 /-- The **column antisymmetrizer** `b_t`, the signed sum of the permutations preserving the
 columns of `t`. -/
-noncomputable def columnAntisymmetrizer (t : YoungTableau μ) :
+noncomputable abbrev columnAntisymmetrizer (t : YoungTableau μ) :
     MonoidAlgebra ℚ (Equiv.Perm (Fin μ.card)) :=
   ∑ q : colSubgroup t,
     ((Equiv.Perm.sign (q : Equiv.Perm (Fin μ.card)) : ℤ) : ℚ) •
@@ -203,11 +205,11 @@ noncomputable def columnAntisymmetrizer (t : YoungTableau μ) :
 
 /-- The **Young symmetrizer** of `t`, with the convention `c_t = a_t b_t`. On a left module it
 acts by column-antisymmetrization followed by row-symmetrization. -/
-noncomputable def youngSymmetrizer (t : YoungTableau μ) :
+noncomputable abbrev youngSymmetrizer (t : YoungTableau μ) :
     MonoidAlgebra ℚ (Equiv.Perm (Fin μ.card)) :=
   rowSymmetrizer t * columnAntisymmetrizer t
 
-noncomputable def youngSymmetrizerOver (k : Type*) [Semiring k] [Algebra ℚ k] (t : YoungTableau μ) :
+noncomputable abbrev youngSymmetrizerOver (k : Type palomarYoungU) [Semiring k] [Algebra ℚ k] (t : YoungTableau μ) :
     MonoidAlgebra k (Equiv.Perm (Fin μ.card)) :=
   MonoidAlgebra.mapAlgHom _ (Algebra.ofId ℚ k) (youngSymmetrizer t)
 
