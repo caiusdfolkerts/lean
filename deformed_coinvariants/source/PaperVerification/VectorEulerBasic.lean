@@ -47,7 +47,7 @@ def aggregate (F : κ → P) (h : κ → ℕ) (t : K) : (ι → P) →ₗ[K] M :
     JacobianDivergence.divergence (potential F) t
 
 def coefficientSpace (F : κ → P) (h : κ → ℕ) : Submodule K M :=
-  LinearMap.range (VectorJacobian.normalizedJacobianMap F h)
+  PalomarDeformedSupport.explicitRange (VectorJacobian.normalizedJacobianMap F h)
 
 /-- The literal normalized Jacobian column `A_i`. -/
 def coefficientColumn (F : κ → P) (h : κ → ℕ) (i : ι) : M :=
@@ -98,13 +98,13 @@ theorem coefficientSpace_eq_polynomial_span (F : κ → P) (h : κ → ℕ) :
   simp only [coefficientMapPolynomial_apply]
 
 def hit (F : κ → P) (h : κ → ℕ) (t : K) : Submodule K M :=
-  LinearMap.range (aggregate F h t)
+  PalomarDeformedSupport.explicitRange (aggregate F h t)
 
 abbrev Defect (F : κ → P) (h : κ → ℕ) (t : K) :=
   coefficientSpace F h ⧸ (hit F h t).comap (coefficientSpace F h).subtype
 
 def defectImage (F : κ → P) (h : κ → ℕ) (t : K) : Submodule K (M ⧸ hit F h t) :=
-  (coefficientSpace F h).map (hit F h t).mkQ
+  PalomarDeformedSupport.explicitMap (hit F h t).mkQ (coefficientSpace F h)
 
 def potentialToQuotient (F : κ → P) (h : κ → ℕ) (t : K) :
     P →ₗ[K] (M ⧸ hit F h t) := (hit F h t).mkQ.comp (potential F)

@@ -41,5 +41,29 @@ theorem finitePolynomialSelfTower {K : Type uK} [hK : Field K] (n : ℕ) :
 theorem ringSubmoduleAddSubmonoid {R : Type uR} {M : Type uM} [Ring R] [AddCommGroup M] [Module R M] : AddSubmonoidClass (Submodule R M) M := by infer_instance
 theorem submoduleScalarTower {R : Type uR} {M : Type uM} {S : Type uS} [Semiring R] [Semiring S] [SMul R S] [AddCommMonoid M] [Module R M] [Module S M] [IsScalarTower R S M] (U : Submodule S M) : IsScalarTower R S U := by infer_instance
 attribute [instance 2200] fieldDivisionIdentityInvPair fieldDivisionIdentitySurjective commRingIdentitySurjective finitePolynomialSelfTower ringSubmoduleAddSubmonoid submoduleScalarTower
+section
+universe u v w
+theorem mapIdentitySurjective {K : Type u} [CommRing K] : RingHomSurjective (RingHom.id K) := by infer_instance
+variable {K : Type u} {M : Type v} {N : Type w} [CommRing K]
+  [AddCommGroup M] [AddCommGroup N] [Module K M] [Module K N]
+def explicitMap (f : M →ₗ[K] N) (p : Submodule K M) : Submodule K N :=
+  @Submodule.map K K M N _ _ _ _ _ _ (RingHom.id K) mapIdentitySurjective f p
+def explicitRange (f : M →ₗ[K] N) : Submodule K N :=
+  @LinearMap.range K K M N _ _ _ _ _ _ (RingHom.id K) mapIdentitySurjective f
+end
+section
+universe u v w z
+theorem explicitIdentityComp {K : Type u} [Field K] : RingHomCompTriple (RingHom.id K) (RingHom.id K) (RingHom.id K) := by infer_instance
+theorem explicitIdentityInv {K : Type u} [Field K] : RingHomInvPair (RingHom.id K) (RingHom.id K) := by infer_instance
+variable {K : Type u} {M : Type v} {N : Type w} {O : Type z} [Field K]
+  [AddCommGroup M] [AddCommGroup N] [AddCommGroup O] [Module K M] [Module K N] [Module K O]
+def explicitEquivTrans (e : M ≃ₗ[K] N) (f : N ≃ₗ[K] O) : M ≃ₗ[K] O :=
+  @LinearEquiv.trans K K K M N O _ _ _ _ _ _ _ _ _
+    (RingHom.id K) (RingHom.id K) (RingHom.id K)
+    (RingHom.id K) (RingHom.id K) (RingHom.id K)
+    explicitIdentityComp explicitIdentityComp
+    explicitIdentityInv explicitIdentityInv explicitIdentityInv
+    explicitIdentityInv explicitIdentityInv explicitIdentityInv e f
+end
 end PalomarDeformedSupport
 end

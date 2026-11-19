@@ -98,7 +98,7 @@ variable {K : Type*} [Field K] {n : ℕ}
 local notation "P" => MvPolynomial (Fin n) K
 
 def ordinaryQuotientDegree (f : Fin n → P) (d : ℕ) : Submodule K (P ⧸ ordinaryFamilyIdeal f) :=
-  (homogeneousSubmodule (Fin n) K d).map ((ordinaryFamilyIdeal f).mkQ.restrictScalars K)
+  PalomarDeformedSupport.explicitMap ((ordinaryFamilyIdeal f).mkQ.restrictScalars K) (homogeneousSubmodule (Fin n) K d)
 
 theorem ordinaryQuotientDegree_eq_shifted (f : Fin n → P) (d : ℕ) :
     ordinaryQuotientDegree f d =

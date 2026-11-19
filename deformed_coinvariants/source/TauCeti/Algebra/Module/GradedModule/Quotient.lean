@@ -95,14 +95,17 @@ variable {S : Type*} [Semiring R] [Semiring S] [SMul R S]
   [AddCommMonoid M] [Module R M] [Module S M] [IsScalarTower R S M]
   (G : InternalGrading R M ι) (U : Submodule S M) (hU : SetLike.IsHomogeneous G.piece U)
 
+theorem palomarSubmoduleIsInternal : DirectSum.IsInternal (fun p => (G.piece p).comap (U.subtype.restrictScalars R)) :=
+  DirectSum.isInternal_comap G.piece _ (U.subtype.restrictScalars R)
+    Subtype.val_injective
+    (fun _ _ ↦ Iff.rfl) fun p x ↦ ⟨⟨_, hU p x.2⟩, rfl⟩
+
 include hU in
 /-- The internal grading of a homogeneous `S`-submodule: its degree-`p` piece consists of the
 elements lying in the degree-`p` piece of the ambient `R`-grading. -/
 noncomputable def submodule : InternalGrading R U ι where
   piece p := (G.piece p).comap (U.subtype.restrictScalars R)
-  isInternal := DirectSum.isInternal_comap G.piece _ (U.subtype.restrictScalars R)
-    Subtype.val_injective
-    (fun _ _ ↦ Iff.rfl) fun p x ↦ ⟨⟨_, hU p x.2⟩, rfl⟩
+  isInternal := palomarSubmoduleIsInternal G U hU
 
 @[simp]
 theorem submodule_piece (p : ι) :

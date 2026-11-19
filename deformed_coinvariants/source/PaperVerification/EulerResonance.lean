@@ -106,7 +106,7 @@ theorem homogeneous_projection_idempotent (w : ι → ℕ) (d : ℕ) (f : P) :
 /-- The actual degree-`d` part of a polynomial quotient, presented as an image. -/
 def quotientComponent (w : ι → ℕ) (d : ℕ) (U : Submodule K P) :
     Submodule K (P ⧸ U) :=
-  LinearMap.range (U.mkQ.comp (weightedHomogeneousComponent w d))
+  PalomarDeformedSupport.explicitRange (U.mkQ.comp (weightedHomogeneousComponent w d))
 
 theorem projection_range (w : ι → ℕ) (d : ℕ) :
     LinearMap.range (weightedHomogeneousComponent w d : P →ₗ[K] P) =

@@ -245,7 +245,7 @@ theorem targetComponent_mem_coefficient [Fintype κ]
   exact ⟨JacobianDivergence.eulerShift w g, (targetEuler_coefficient F h w hF g).symm⟩
 
 def quotientTargetPiece (w : ι → ℕ) (h : κ → ℕ) (e : ℤ) (U : Submodule K M) :
-    Submodule K (M ⧸ U) := (targetPiece w h e).map U.mkQ
+    Submodule K (M ⧸ U) := PalomarDeformedSupport.explicitMap U.mkQ (targetPiece w h e)
 
 def quotientTargetComponent (w : ι → ℕ) (h : κ → ℕ) (U : Submodule K M)
     (hU : ∀ e v, v ∈ U → targetComponent w h e v ∈ U) (e : ℤ) :

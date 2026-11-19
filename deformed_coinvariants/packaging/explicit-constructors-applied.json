@@ -1,0 +1,72 @@
+{
+  "status": "applied pending full verification",
+  "source_patches": [
+    {
+      "path": "source/PalomarDeformedSupport.lean",
+      "before_sha256": "78bc4214a14154417c12f9d4d62de137e6df3fa90eac4c34129dabe2ebd10f2a",
+      "after_sha256": "be9f89e3b0af8c353c758631ff85817c5653d5741d1613ddc5efb310b1276b75"
+    },
+    {
+      "path": "source/Challenge.lean",
+      "before_sha256": "aa06512cbc8ccbaa6afa06d058669a53ec28842e583a395c3ed6bb8f9e51f384",
+      "after_sha256": "dbcc2810e83a9c58604422749b8f55dbc0e4c9dc45bc992c7ff45fcb2d97fcbc"
+    },
+    {
+      "path": "source/PaperVerification/JacobianPolynomialModule.lean",
+      "before_sha256": "3f3c11b0d6ebdaca42c64667ca7182712187f684e8ef945819275f421151c8b0",
+      "after_sha256": "43875271f4c75a0803f5b98281cf3ad1edb48c69a3d1dec71b86b4484a985b7c"
+    },
+    {
+      "path": "source/PaperVerification/HomogeneousKoszulRepresentation.lean",
+      "before_sha256": "2596bd53aac9e57fe1beab9a4da65b6e956bdad0e9a75789ac11b78202d3aa6a",
+      "after_sha256": "24e2bd6cfabf19a63efb4400364a2e9da97c6d374c965ce40d2416ce0ef8fb84"
+    },
+    {
+      "path": "source/PaperVerification/PowerCoinvariantComparator.lean",
+      "before_sha256": "6609114d822aac2cc0134a8560000d0f585fa2661b40506d306b323564d4cf5d",
+      "after_sha256": "e3fc94f25b952acc732dc0604f587ec0cd8ba005699e4fb8c05e578e1a0481e7"
+    },
+    {
+      "path": "source/PaperVerification/VectorEulerGrading.lean",
+      "before_sha256": "48a57ed91c52d29009005d0f892ec28a755786eb66f28c1e3692eab8b8414fa5",
+      "after_sha256": "6c9485cae5a9eb4386960bd4ff70b7cf603fa171e2f761b6157cd5609f4b48e2"
+    },
+    {
+      "path": "source/PaperVerification/JacobianDefect.lean",
+      "before_sha256": "58e7690983770a2f89fe4f70c985c54afb976a4d97d15277201156fd80af2713",
+      "after_sha256": "77b781d05924ffd42682b348cfc2643604298bfc314ca1084cc27e2afd3c78d3"
+    },
+    {
+      "path": "source/PaperVerification/PowerConjugation.lean",
+      "before_sha256": "9444e93cd9811d04791de499942e3ef9010c26e1073a950cc060d53f316651d0",
+      "after_sha256": "21b5b651f132d1c727bc82584051cb2885995a0fda88c955c11de42ece8754bc"
+    },
+    {
+      "path": "source/PaperVerification/EulerInjective.lean",
+      "before_sha256": "dae8ffa1a053a300797396579c523caab1cf98e3ddede1233995b1d3c56dfae5",
+      "after_sha256": "085d0d4b4806820180df428fa1aa462febfb210400100cb15a9a01d13c8e9d47"
+    },
+    {
+      "path": "source/PaperVerification/EulerResonance.lean",
+      "before_sha256": "d8729d4fc7c7225e19ec14168878dc5769d4ed85625247478e9060ed5074837c",
+      "after_sha256": "52086b575f348e78c065359559e723c29778c74620aac4ddafb67a03bf683848"
+    },
+    {
+      "path": "source/PaperVerification/VectorEulerBasic.lean",
+      "before_sha256": "15b8ddbd6a912ea189b1c69628cb94fce58a6847d1a0158b2812dc1cf2e1b533",
+      "after_sha256": "06dedf72bc90bc3124143d3146a03b849f21a34dc034d681228bbc0a3914e68f"
+    },
+    {
+      "path": "source/TauCeti/Algebra/Module/GradedModule/Quotient.lean",
+      "before_sha256": "efaceade9de261c3c8da99e6e159bfca771aeeac1b4689e06b20fb27dcb9d6cf",
+      "after_sha256": "5f37de20975ff969e3afd28417b1b9cc7ef3f5f67b1a7cd9eef32f2f0228a8ab"
+    }
+  ],
+  "all_prior_targets_retained": true,
+  "data_holes_added": false,
+  "line_count": 963,
+  "scope": "Measured map/range, quotient module, internal grading proof and explicit equivalence composition repairs. Original mathematical constructions retained.",
+  "canonical_run": 44488304915,
+  "input_and_log_hashes_verified": true,
+  "applied_at": "2026-11-19T08:38:53.087137+00:00"
+}

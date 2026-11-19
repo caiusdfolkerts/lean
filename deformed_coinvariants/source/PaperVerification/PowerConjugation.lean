@@ -139,7 +139,7 @@ def originalTailHit (c : ι → K) (lam : K) (m : ℕ) :
 joint-image quotient. The definition also applies at resonant parameters. -/
 def originalTailQuotientDegree (c : ι → K) (lam : K) (m d : ℕ) :
     Submodule K (MvPolynomial ι K ⧸ originalTailHit c lam m) :=
-  (homogeneousSubmodule ι K d).map (originalTailHit c lam m).mkQ
+  PalomarDeformedSupport.explicitMap (originalTailHit c lam m).mkQ (homogeneousSubmodule ι K d)
 
 theorem diagonalEquiv_map_originalTailHit (c : ι → K) (lam : K)
     (h : ∀ i, ∀ a : ℕ, c i + lam * (a : K) ≠ 0) (m : ℕ) :

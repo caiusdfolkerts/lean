@@ -27,25 +27,25 @@ variable [AddCommGroup V] [Module K V]
 variable [AddCommGroup W] [Module K W]
 
 def hit (C : U →ₗ[K] V) (D : U →ₗ[K] W) (L : W →ₗ[K] V) (t : K) :
-    Submodule K V := LinearMap.range (perturbed C D L t)
+    Submodule K V := PalomarDeformedSupport.explicitRange (perturbed C D L t)
 
 /-- The paper's quotient `J/H`, with the relations pulled back to `J`. -/
 abbrev Defect (C : U →ₗ[K] V) (D : U →ₗ[K] W) (L : W →ₗ[K] V) (t : K) :=
-  LinearMap.range C ⧸ (hit C D L t).comap (LinearMap.range C).subtype
+  PalomarDeformedSupport.explicitRange C ⧸ (hit C D L t).comap (PalomarDeformedSupport.explicitRange C).subtype
 
 def defectImage (C : U →ₗ[K] V) (D : U →ₗ[K] W) (L : W →ₗ[K] V) (t : K) :
     Submodule K (V ⧸ hit C D L t) :=
-  (LinearMap.range C).map (hit C D L t).mkQ
+  PalomarDeformedSupport.explicitMap (hit C D L t).mkQ (PalomarDeformedSupport.explicitRange C)
 
 def defectToQuotient (C : U →ₗ[K] V) (D : U →ₗ[K] W)
     (L : W →ₗ[K] V) (t : K) :
-    LinearMap.range C →ₗ[K] (V ⧸ hit C D L t) :=
-  (hit C D L t).mkQ.comp (LinearMap.range C).subtype
+    PalomarDeformedSupport.explicitRange C →ₗ[K] (V ⧸ hit C D L t) :=
+  (hit C D L t).mkQ.comp (PalomarDeformedSupport.explicitRange C).subtype
 
 theorem defectToQuotient_kernel (C : U →ₗ[K] V) (D : U →ₗ[K] W)
     (L : W →ₗ[K] V) (t : K) :
     LinearMap.ker (defectToQuotient C D L t) =
-      (hit C D L t).comap (LinearMap.range C).subtype := by
+      (hit C D L t).comap (PalomarDeformedSupport.explicitRange C).subtype := by
   ext x
   change (hit C D L t).mkQ (x : V) = 0 ↔ _
   simp only [Submodule.mkQ_apply, Submodule.Quotient.mk_eq_zero,
@@ -58,8 +58,9 @@ theorem defectToQuotient_range (C : U →ₗ[K] V) (D : U →ₗ[K] W)
 
 def defectEquivImage (C : U →ₗ[K] V) (D : U →ₗ[K] W)
     (L : W →ₗ[K] V) (t : K) : Defect C D L t ≃ₗ[K] defectImage C D L t :=
-  (Submodule.quotEquivOfEq _ _ (defectToQuotient_kernel C D L t).symm).trans
-    ((defectToQuotient C D L t).quotKerEquivRange.trans
+  PalomarDeformedSupport.explicitEquivTrans
+    (Submodule.quotEquivOfEq _ _ (defectToQuotient_kernel C D L t).symm)
+    (PalomarDeformedSupport.explicitEquivTrans (defectToQuotient C D L t).quotKerEquivRange
       (LinearEquiv.ofEq _ _ (defectToQuotient_range C D L t)))
 
 def potentialMap (C : U →ₗ[K] V) (D : U →ₗ[K] W) (L : W →ₗ[K] V) (t : K) :
@@ -67,7 +68,7 @@ def potentialMap (C : U →ₗ[K] V) (D : U →ₗ[K] W) (L : W →ₗ[K] V) (t 
 
 theorem hit_le_coefficient (C : U →ₗ[K] V) (D : U →ₗ[K] W)
     (E : W →ₗ[K] U) (L : W →ₗ[K] V) (t : K) (hE : C.comp E = L) :
-    hit C D L t ≤ LinearMap.range C := by
+    hit C D L t ≤ PalomarDeformedSupport.explicitRange C := by
   rw [EulerReduction.coefficient_range C D E L t hE]
   exact le_sup_left
 
@@ -118,14 +119,14 @@ coefficient image. This statement does not even require injectivity of `C`. -/
 theorem hit_eq_coefficient_of_surjective (C : U →ₗ[K] V) (D : U →ₗ[K] W)
     (E : W →ₗ[K] U) (L : W →ₗ[K] V) (t : K)
     (hE : C.comp E = L) (hs : Function.Surjective (eulerScalar D E t)) :
-    hit C D L t = LinearMap.range C := by
+    hit C D L t = PalomarDeformedSupport.explicitRange C := by
   have hL : LinearMap.range L ≤ hit C D L t := by
     rintro _ ⟨w, rfl⟩
     obtain ⟨v, hv⟩ := hs w
     refine ⟨E v, ?_⟩
     rw [EulerReduction.perturbed_euler C D E L t hE, hv]
   have he := EulerReduction.coefficient_range C D E L t hE
-  change LinearMap.range C = hit C D L t ⊔ LinearMap.range L at he
+  change PalomarDeformedSupport.explicitRange C = hit C D L t ⊔ LinearMap.range L at he
   rw [sup_eq_left.mpr hL] at he
   exact he.symm
 

@@ -60,7 +60,11 @@
     "PalomarDeformedSupport.submoduleScalarTower",
     "PaperVerification.JacobianDivergence.brieskornScalarComm",
     "PaperVerification.JacobianDivergence.brieskornScalarSelfTower",
-    "PaperVerification.JacobianDivergence.brieskornEndScalarTower"
+    "PaperVerification.JacobianDivergence.brieskornEndScalarTower",
+    "PalomarDeformedSupport.mapIdentitySurjective",
+    "TauCeti.InternalGrading.palomarSubmoduleIsInternal",
+    "PalomarDeformedSupport.explicitIdentityComp",
+    "PalomarDeformedSupport.explicitIdentityInv"
   ],
   "permitted_axioms": [
     "propext",

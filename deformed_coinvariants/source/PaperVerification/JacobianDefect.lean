@@ -150,7 +150,7 @@ def potentialToHitQuotient (F : P) (t : K) :
 /-- The image of the Jacobian ideal in the literal differential quotient. -/
 def defectImage (F : P) (t : K) :
     Submodule K (P ⧸ EulerJacobian.hit (gradient F) F t) :=
-  (jacobianSubmodule F).map (EulerJacobian.hit (gradient F) F t).mkQ
+  PalomarDeformedSupport.explicitMap (EulerJacobian.hit (gradient F) F t).mkQ (jacobianSubmodule F)
 
 /-- The hit space is contained in the actual Jacobian ideal at every parameter. -/
 theorem hit_le_jacobian [CharZero K] (F : P) (w : ι → ℕ) (h : ℕ) (t : K)
