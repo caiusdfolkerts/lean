@@ -1519,7 +1519,7 @@ variable {ι Ω k : Type*} [Fintype ι] [Fintype Ω] [DecidableEq ι] [Decidable
 abbrev Index := Bool × NormalizedVariations.Index ι Ω o
 /-- The domain law for the actual polynomial presentation of this function field. -/
 theorem palomarPolynomialIsDomain : IsDomain (MvPolynomial (Index (ι := ι) o) k) := by infer_instance
-attribute [instance 2200] palomarPolynomialIsDomain
+
 
 abbrev PolynomialRing := MvPolynomial (Index (ι := ι) o) k
 abbrev FunctionField := FractionRing (PolynomialRing (k := k) (ι := ι) o)
@@ -2193,6 +2193,8 @@ theorem genericLogDifferential_injective
   exact hvw
 
 def genericCoordinates (π : ι → Equiv.Perm Ω) (ab : ι × Ω) : FunctionField (k := k) (ι := ι) o :=
+  letI : IsDomain (MvPolynomial (Index (ι := ι) o) k) := palomarPolynomialIsDomain (k := k) (ι := ι) o
+ 
   coordinate π (genericCoefficient (k := k) o false)
     (fun x => (genericTorus (k := k) (ι := ι) o false x).val) ab.1 ab.2 +
   coordinate π (genericCoefficient (k := k) o true)

@@ -40,12 +40,12 @@ automation:
         extracts an independent exact-definition Challenge for all main results.
 review:
   status: unchecked
-  notes: >-
-    The 917-line independent Challenge with seven genuine named proof supports
-    and a stable name for the actual edge-set Fintype passed pinned canonical
-    elaboration in run 44477725357. All original mathematical constructions,
-    hypotheses and conclusions are retained. Full source, Solution, comparison
-    and independent kernel replay of this exact snapshot remain pending.
+  notes: Named proof witnesses and the original translation equations are retained.
+    The polynomial domain witness is now local to the coordinate expression,
+    avoiding changes to unrelated field-instance inference. Canonical run44481016339
+    passed, including a definitional equality check against the original coordinate
+    formula. All prior selected claims are retained; full source, Solution,
+    Comparator and independent kernel verification of this snapshot are pending.
 fidelity:
   notes: >-
     The dimension statements retain every characteristic, literal affine image

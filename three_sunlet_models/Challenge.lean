@@ -420,7 +420,7 @@ namespace Sunlet.ToricPairAlgebra section open scoped BigOperators variable {ι 
 abbrev Index := Bool × NormalizedVariations.Index ι Ω o
 /-- The domain law for the actual polynomial presentation of this function field. -/
 theorem palomarPolynomialIsDomain : IsDomain (MvPolynomial (Index (ι := ι) o) k) := by infer_instance
-attribute [instance 2200] palomarPolynomialIsDomain
+
 
 /-- Exact source definition of PolynomialRing. -/
 abbrev PolynomialRing := MvPolynomial (Sunlet.ToricPairAlgebra.Index (ι := ι) o) k
@@ -439,7 +439,9 @@ def genericTorus (b : Bool) (x : Ω) : (Sunlet.ToricPairAlgebra.FunctionField (k
 end end Sunlet.ToricPairAlgebra
 namespace Sunlet.ToricPairAlgebra section open scoped BigOperators Matrix open Sunlet.NormalizedVariations Sunlet.ToricDifferential variable {ι Ω k : Type*} [Fintype ι] [Fintype Ω] [DecidableEq ι] [DecidableEq Ω] [Field k] [CharZero k] (o : Ω)
 /-- Exact source definition of genericCoordinates. -/
-def genericCoordinates (π : ι → Equiv.Perm Ω) (ab : ι × Ω) : Sunlet.ToricPairAlgebra.FunctionField (k := k) (ι := ι) o := Sunlet.ToricDifferential.coordinate π (genericCoefficient (k := k) o false) (fun x => (genericTorus (k := k) (ι := ι) o false x).val) ab.1 ab.2 + Sunlet.ToricDifferential.coordinate π (genericCoefficient (k := k) o true) (fun x => (genericTorus (k := k) (ι := ι) o true x).val) ab.1 ab.2
+def genericCoordinates (π : ι → Equiv.Perm Ω) (ab : ι × Ω) : Sunlet.ToricPairAlgebra.FunctionField (k := k) (ι := ι) o :=
+  letI : IsDomain (MvPolynomial (Index (ι := ι) o) k) := palomarPolynomialIsDomain (k := k) (ι := ι) o
+  Sunlet.ToricDifferential.coordinate π (genericCoefficient (k := k) o false) (fun x => (genericTorus (k := k) (ι := ι) o false x).val) ab.1 ab.2 + Sunlet.ToricDifferential.coordinate π (genericCoefficient (k := k) o true) (fun x => (genericTorus (k := k) (ι := ι) o true x).val) ab.1 ab.2
 end end Sunlet.ToricPairAlgebra
 namespace Sunlet.NormalizedLatinSystem section open Finset open Sunlet.ToricDifferential variable {ι Ω K : Type*} [Fintype ι] [Fintype Ω] [DecidableEq ι] [DecidableEq Ω] [Field K] [CharZero K] (L : NormalizedLatinSystem ι Ω)
 /-- Exact source definition of NonidentityColor. -/
