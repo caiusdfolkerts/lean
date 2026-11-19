@@ -21,8 +21,8 @@
       ],
       "declarations": [
         {
-          "name": "HigherSpecht.corollary_4_3_copy_on_admissible_multipliers",
-          "source_path": "source/higher_specht/verified/remaining03_complete.lean"
+          "name": "HigherSpecht.griffin_alternative_specht_spans",
+          "source_path": "source/Solution.lean"
         }
       ]
     },

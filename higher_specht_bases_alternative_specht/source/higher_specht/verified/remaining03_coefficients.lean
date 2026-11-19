@@ -174,7 +174,7 @@ namespace HigherSpecht
 
 abbrev TabloidSpaceOver (R : Type*) (mu : YoungDiagram) := TableauTabloid mu → R
 
-abbrev tabloidRepresentationOver (R : Type*) [CommRing R] (mu : YoungDiagram) :
+def tabloidRepresentationOver (R : Type*) [CommRing R] (mu : YoungDiagram) :
     Representation R (Equiv.Perm (Fin mu.card)) (TabloidSpaceOver R mu) where
   toFun g :=
     { toFun f := fun q => f (g⁻¹ • q)
@@ -224,7 +224,7 @@ theorem columnActionOver_eq_asAlgebraHom {R V : Type*} [CommRing R]
   simp only [columnElementOver, map_sum, LinearMap.sum_apply,
     Representation.asAlgebraHom_single, columnActionOver_apply, LinearMap.smul_apply]
 
-abbrev polytabloidOver (R : Type*) [CommRing R] {mu : YoungDiagram}
+def polytabloidOver (R : Type*) [CommRing R] {mu : YoungDiagram}
     (T : YoungTableau mu) : TabloidSpaceOver R mu :=
   ∑ g : colSubgroup T, ((Equiv.Perm.sign g.val : ℤ) : R) •
     Pi.single (g.val • tabloid T) 1
@@ -297,7 +297,7 @@ theorem polytabloidSpan_stable (R : Type*) [CommRing R] (mu : YoungDiagram)
     exact Submodule.subset_span ⟨relabel g T, polytabloidOver_relabel g T⟩
   exact h hv
 
-abbrev spechtSubrepresentationOver (R : Type*) [CommRing R] (mu : YoungDiagram) :
+def spechtSubrepresentationOver (R : Type*) [CommRing R] (mu : YoungDiagram) :
     Subrepresentation (tabloidRepresentationOver R mu) where
   toSubmodule := Submodule.span R (Set.range (polytabloidOver R (mu := mu)))
   apply_mem_toSubmodule := polytabloidSpan_stable R mu
