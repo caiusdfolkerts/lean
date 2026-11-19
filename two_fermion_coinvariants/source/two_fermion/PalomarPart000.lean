@@ -936,6 +936,7 @@ theorem HasTop.sum {J : Type*} (S : Finset J) (x y : J → M) (d : ℕ)
         (ih (fun k hk ↦ h k (Finset.mem_insert_of_mem hk)))
 
 theorem homogeneous_component (d : ℕ) (x : M) : Homogeneous b w d (component b w d x) := by
+  change ∀ i, b.repr (component b w d x) i ≠ 0 → w i = d
   intro i hi
   by_contra hn
   exact hi (by simp only [repr_component,if_neg hn])
@@ -960,6 +961,7 @@ theorem component_of_homogeneous {d : ℕ} {x : M} (hx : Homogeneous b w d x) (e
     · simp only [hw,if_neg he,if_neg (Ne.symm he),map_zero,Finsupp.zero_apply]
 
 theorem homogeneous_basis (i : I) : Homogeneous b w (w i) (b i) := by
+  change ∀ j, b.repr (b i) j ≠ 0 → w j = w i
   classical
   intro j hj
   have hij : i=j := by
@@ -979,6 +981,8 @@ theorem exists_bound (x : M) : ∃ d, Bound b w d x := by
 
 theorem bound_pred_of_component_zero {d : ℕ} {x : M}
     (hx : Bound b w (d+1) x) (hz : component b w (d+1) x=0) : Bound b w d x := by
+  change ∀ i, b.repr x i ≠ 0 → w i ≤ d+1 at hx
+  change ∀ i, b.repr x i ≠ 0 → w i ≤ d
   intro i hi
   have hle := hx i hi
   have hne : w i ≠ d+1 := by

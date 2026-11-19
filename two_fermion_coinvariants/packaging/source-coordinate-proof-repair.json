@@ -1,0 +1,38 @@
+{
+  "status": "installed_self_reviewed_proof_only_complete_generic_source_controls_passed_full_preflight_pending",
+  "parent_commit": "704ec1f7cb94bf8f8ad815770170230aca8a1b8e",
+  "actual_failed_run": 44482817979,
+  "actual_complete_report_errors": 3,
+  "actual_cause": "Original repr-only simp calculations see the explicit toLinearMap accessor after Homogeneous/Bound unfolding. Pointwise rfl equality is already proved; expose original predicates with exact change, then retain every original proof step.",
+  "source_path": "source/two_fermion/PalomarPart000.lean",
+  "before_sha256": "b9c0af8644f8cb7b3de9a5321f3c392f6b6b9abb0d5319abb90c28831b610577",
+  "after_sha256": "ab1734838f4415a153fd472c892f5a5b8060881ff7434c3e5bb01348090eec93",
+  "modified": [
+    {
+      "name": "PaperVerification.Fermion.BasisFiltered.homogeneous_component",
+      "before_body": "theorem homogeneous_component (d : \u2115) (x : M) : Homogeneous b w d (component b w d x) := by\n  intro i hi\n  by_contra hn\n  exact hi (by simp only [repr_component,if_neg hn])",
+      "after_body": "theorem homogeneous_component (d : \u2115) (x : M) : Homogeneous b w d (component b w d x) := by\n  change \u2200 i, b.repr (component b w d x) i \u2260 0 \u2192 w i = d\n  intro i hi\n  by_contra hn\n  exact hi (by simp only [repr_component,if_neg hn])",
+      "statement_unchanged": true
+    },
+    {
+      "name": "PaperVerification.Fermion.BasisFiltered.homogeneous_basis",
+      "before_body": "theorem homogeneous_basis (i : I) : Homogeneous b w (w i) (b i) := by\n  classical\n  intro j hj\n  have hij : i=j := by\n    by_contra hn\n    exact hj (by simp only [Module.Basis.repr_self,Finsupp.single_eq_of_ne (Ne.symm hn)])\n  exact congrArg w hij.symm",
+      "after_body": "theorem homogeneous_basis (i : I) : Homogeneous b w (w i) (b i) := by\n  change \u2200 j, b.repr (b i) j \u2260 0 \u2192 w j = w i\n  classical\n  intro j hj\n  have hij : i=j := by\n    by_contra hn\n    exact hj (by simp only [Module.Basis.repr_self,Finsupp.single_eq_of_ne (Ne.symm hn)])\n  exact congrArg w hij.symm",
+      "statement_unchanged": true
+    },
+    {
+      "name": "PaperVerification.Fermion.BasisFiltered.bound_pred_of_component_zero",
+      "before_body": "theorem bound_pred_of_component_zero {d : \u2115} {x : M}\n    (hx : Bound b w (d+1) x) (hz : component b w (d+1) x=0) : Bound b w d x := by\n  intro i hi\n  have hle := hx i hi\n  have hne : w i \u2260 d+1 := by\n    intro he\n    have hh := congrArg (fun y \u21a6 b.repr y i) hz\n    apply hi\n    simpa only [repr_component,if_pos he,map_zero,Finsupp.zero_apply] using hh\n  omega",
+      "after_body": "theorem bound_pred_of_component_zero {d : \u2115} {x : M}\n    (hx : Bound b w (d+1) x) (hz : component b w (d+1) x=0) : Bound b w d x := by\n  change \u2200 i, b.repr x i \u2260 0 \u2192 w i \u2264 d+1 at hx\n  change \u2200 i, b.repr x i \u2260 0 \u2192 w i \u2264 d\n  intro i hi\n  have hle := hx i hi\n  have hne : w i \u2260 d+1 := by\n    intro he\n    have hh := congrArg (fun y \u21a6 b.repr y i) hz\n    apply hi\n    simpa only [repr_component,if_pos he,map_zero,Finsupp.zero_apply] using hh\n  omega",
+      "statement_unchanged": true
+    }
+  ],
+  "all_other_original_declaration_bodies_unchanged": true,
+  "challenge_solution_config_unchanged": true,
+  "source_proof_control_lines": 426,
+  "source_control_scope": "Complete actual original generic BasisFiltered and FilteredInitial source batches2/3, all proofs and no placeholders, plus exact primitive coordinate helper prefix. No full Source/project build claim.",
+  "source_control_sha256": "c21d2a94b16c91cb78916a2710f2b83860e29e3e4b4e875719b85f86b8157723",
+  "canonical_run": 44484625145,
+  "canonical_verification_sha256": "c514cf2769478df4f364a335c32f363ac081aaadddf390624f72c0c1f590ef19",
+  "source_model_statement_signature_changes": false
+}

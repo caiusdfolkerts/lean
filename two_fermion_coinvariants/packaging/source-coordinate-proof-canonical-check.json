@@ -1,0 +1,41 @@
+{
+  "status": "validated_actual_challenge-elaborated",
+  "checked_utc": "2026-11-19T08:10:46.549394+00:00",
+  "owned_bundle_folder": "reports/two_fermion_coinvariants/source-coordinate-head-smoke",
+  "workflow_run": "44484625145",
+  "case": "fermion_generic_source_coordinate_heads",
+  "source_commit": "146ea2dca24a7a8322b41df9a721cc10b7bcf1cc",
+  "artifact_id": 14510321530,
+  "artifact_zip_digest_matches_GitHub_metadata": true,
+  "input_script_log_dependency_hashes_match_frozen_case": true,
+  "challenge_sha256": "c21d2a94b16c91cb78916a2710f2b83860e29e3e4b4e875719b85f86b8157723",
+  "receipt_sha256": "1e97eedb8605cc720c801b33aaf7c12fe6fdaeda4d005f9c5ee0a085d403a57f",
+  "bounded_log_sha256": "b75719281d4a92820281bbfb41b09780aafe2ea5b0a2838dd907e0500df512bb",
+  "actual_elaboration": {
+    "phase": "challenge-elaboration",
+    "command": [
+      "elan",
+      "run",
+      "leanprover/lean4:v4.36.0-rc2",
+      "lake",
+      "--keep-toolchain",
+      "env",
+      "lean",
+      "--trust=0",
+      "-j1",
+      "-M8192",
+      "-DElab.async=false",
+      "-Ddebug.skipKernelTC=false",
+      "--root=/home/runner/work/_temp/challenge-work/workspace",
+      "-o",
+      "/home/runner/work/_temp/challenge-work/workspace/diagnostic-output/Challenge.olean",
+      "/home/runner/work/_temp/challenge-work/workspace/Challenge.lean"
+    ],
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 4.573,
+    "output_bytes": 2505,
+    "output_sha256": "bb85da9ba8793ac6463c0b25872d1f75e62d00e33fbf73843055ddcce05be2c0"
+  },
+  "no_full_source_solution_comparator_verdict": true
+}
