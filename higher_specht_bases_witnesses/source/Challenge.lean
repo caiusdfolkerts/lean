@@ -873,10 +873,10 @@ abbrev witnessDerivativeEndAlgebra (n : ℕ) : Algebra ℂ (Module.End ℂ (Poly
 
 def normalizedOrdinaryDerivative {n : ℕ} (r : Fin n →₀ ℕ) (g : PolynomialRing n ℂ) :
     PolynomialRing n ℂ :=
-  (exponentFactorial r : ℂ)⁻¹ •
-    (@AlgHom.toLinearMap ℂ (PolynomialRing n ℂ) (Module.End ℂ (PolynomialRing n ℂ))
-      _ _ _ _ (witnessDerivativeEndAlgebra n) ordinaryAction)
-      (MvPolynomial.monomial r (1 : ℂ)) g
+  (exponentFactorial r : ℂ)⁻¹ • (@DFunLike.coe _ _ _
+      (@AlgHom.funLike ℂ (PolynomialRing n ℂ) (Module.End ℂ (PolynomialRing n ℂ))
+        _ _ _ _ (witnessDerivativeEndAlgebra n))
+      ordinaryAction (MvPolynomial.monomial r (1 : ℂ))) g
 
 def adjointYoungApply {mu : YoungDiagram} (T : YoungTableau mu)
     (f : PolynomialRing mu.card ℂ) : PolynomialRing mu.card ℂ :=
@@ -931,8 +931,8 @@ def literalUntruncatedHarmonicVector {n : ℕ} (i : UnboundedHarmonicIndex n)
       (untruncatedWitnessRejection i.left T i.multiplier k hk) G))
 
 theorem finite_harmonics_literal_witnesses
-    (n s : ℕ) (hn : 0 < n) (hs : 0 < s) :
-    ∃ T : (part : n.Partition) → YoungTableau (YoungDiagram.ofPartition part),
+    (n s : ℕ) (hn : 0 < n) (hs : 0 < s)
+    (T : (part : n.Partition) → YoungTableau (YoungDiagram.ofPartition part)) :
     ∃ W : FiniteHarmonicIndex n s → Subrepresentation (polynomialRepresentation ℂ n),
       (∀ i, (W i).toSubmodule = cyclicPolynomialCopy (finiteCommonHarmonicVectorWithTableau i (T i.part)) ∧
         Nonempty (Representation.Equiv
@@ -948,8 +948,7 @@ theorem finite_harmonics_literal_witnesses
             i.toUnboundedHarmonicIndex.eligible lam hk}, (W i.val).toSubmodule := by sorry
 
 theorem untruncated_harmonics_literal_witnesses
-    (n : ℕ) :
-    ∃ T : (part : n.Partition) → YoungTableau (YoungDiagram.ofPartition part),
+    (n : ℕ) (T : (part : n.Partition) → YoungTableau (YoungDiagram.ofPartition part)) :
     ∃ W : UnboundedHarmonicIndex n → Subrepresentation (polynomialRepresentation ℂ n),
       (∀ i, (W i).toSubmodule = cyclicPolynomialCopy (literalUntruncatedHarmonicVector i (T i.part)) ∧
         Nonempty (Representation.Equiv

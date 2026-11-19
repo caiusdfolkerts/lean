@@ -60,8 +60,8 @@ private theorem literalUntruncatedHarmonicVector_eq {n : ℕ}
     untruncatedApolarWitness_eq]
 
 theorem finite_harmonics_literal_witnesses
-    (n s : ℕ) (hn : 0 < n) (hs : 0 < s) :
-    ∃ T : (part : n.Partition) → YoungTableau (YoungDiagram.ofPartition part),
+    (n s : ℕ) (hn : 0 < n) (hs : 0 < s)
+    (T : (part : n.Partition) → YoungTableau (YoungDiagram.ofPartition part)) :
     ∃ W : FiniteHarmonicIndex n s → Subrepresentation (polynomialRepresentation ℂ n),
       (∀ i, (W i).toSubmodule = cyclicPolynomialCopy (finiteCommonHarmonicVectorWithTableau i (T i.part)) ∧
         Nonempty (Representation.Equiv
@@ -76,14 +76,12 @@ theorem finite_harmonics_literal_witnesses
           p ∈ ⨆ i : {i : FiniteHarmonicIndex n s //
             i.toUnboundedHarmonicIndex.eligible lam hk}, (W i.val).toSubmodule := by
   classical
-  let T : (part : n.Partition) → YoungTableau (YoungDiagram.ofPartition part) :=
-    fun part => (StandardYoungTableau.rowSuperstandard _).toTableau
   obtain ⟨hcopy, hind, hdecomp⟩ := theorem_5_2_any_right_tableaux n s hn hs T
   let W : FiniteHarmonicIndex n s → Subrepresentation (polynomialRepresentation ℂ n) :=
     fun i => (Classical.choose (hcopy i).1).range
   have hW (i) : (W i).toSubmodule = finiteCommonHarmonicCopyWithTableau i (T i.part) :=
     (Classical.choose_spec (hcopy i).1).2
-  refine ⟨T, W, ?_, ?_, ?_⟩
+  refine ⟨W, ?_, ?_, ?_⟩
   · intro i
     let f := Classical.choose (hcopy i).1
     let E := f.equivOfRange (Classical.choose_spec (hcopy i).1).1 (P := W i) rfl
@@ -98,8 +96,7 @@ theorem finite_harmonics_literal_witnesses
           finiteCommonHarmonicCopyWithTableau i.val (T i.val.part) from by rw [hdecomp lam hk hheight])
 
 theorem untruncated_harmonics_literal_witnesses
-    (n : ℕ) :
-    ∃ T : (part : n.Partition) → YoungTableau (YoungDiagram.ofPartition part),
+    (n : ℕ) (T : (part : n.Partition) → YoungTableau (YoungDiagram.ofPartition part)) :
     ∃ W : UnboundedHarmonicIndex n → Subrepresentation (polynomialRepresentation ℂ n),
       (∀ i, (W i).toSubmodule = cyclicPolynomialCopy (literalUntruncatedHarmonicVector i (T i.part)) ∧
         Nonempty (Representation.Equiv
@@ -112,14 +109,12 @@ theorem untruncated_harmonics_literal_witnesses
         (∀ f ∈ untruncatedIdeal ℂ n lam, apolarCoefficientPairing f p = 0) ↔
         p ∈ ⨆ i : {i : UnboundedHarmonicIndex n // i.eligible lam hk}, (W i.val).toSubmodule := by
   classical
-  let T : (part : n.Partition) → YoungTableau (YoungDiagram.ofPartition part) :=
-    fun part => (StandardYoungTableau.rowSuperstandard _).toTableau
   obtain ⟨hcopy, hind, hfinite, hdecomp⟩ := theorem_6_6_any_right_tableaux n T
   let W : UnboundedHarmonicIndex n → Subrepresentation (polynomialRepresentation ℂ n) :=
     fun i => (Classical.choose (hcopy i).1).range
   have hW (i) : (W i).toSubmodule = untruncatedCommonHarmonicCopyWithTableau i (T i.part) :=
     (Classical.choose_spec (hcopy i).1).2
-  refine ⟨T, W, ?_, ?_, hfinite, ?_⟩
+  refine ⟨W, ?_, ?_, hfinite, ?_⟩
   · intro i
     let f := Classical.choose (hcopy i).1
     let E := f.equivOfRange (Classical.choose_spec (hcopy i).1).1 (P := W i) rfl
