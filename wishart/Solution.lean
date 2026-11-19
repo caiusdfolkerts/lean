@@ -1,3 +1,0 @@
-module
-public import WishartLiteralPrimitivesSourceBridge
-public import wishart_main
