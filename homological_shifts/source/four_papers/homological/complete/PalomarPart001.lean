@@ -4200,7 +4200,11 @@ open Classical Finset
 
 variable {J R : Type*} [Fintype J] [DecidableEq J] [CommRing R]
 
-def powerProduct (I : J → Ideal R) (s : J →₀ ℕ) : Ideal R := ∏ j, (I j) ^ (s j)
+/-- The measured primitive scalar tower used by the actual ideal-power operation. -/
+public theorem powerCoefficientTower : IsScalarTower R R R := by infer_instance
+def powerProduct (I : J → Ideal R) (s : J →₀ ℕ) : Ideal R :=
+  letI : IsScalarTower R R R := powerCoefficientTower (R := R)
+  ∏ j, (I j) ^ (s j)
 
 @[simp] theorem powerProduct_zero (I : J → Ideal R) : powerProduct I 0 = ⊤ := by
   simp [powerProduct]

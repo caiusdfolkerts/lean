@@ -46,7 +46,8 @@
     "PalomarHomological.mixedMul",
     "PalomarHomological.mixedStabilization",
     "PalomarHomological.mixedGeneration",
-    "PalomarHomological.mixedIntegralClosure"
+    "PalomarHomological.mixedIntegralClosure",
+    "CommAlg.powerCoefficientTower"
   ],
   "permitted_axioms": [
     "propext",

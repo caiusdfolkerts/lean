@@ -1,0 +1,18 @@
+{
+  "status": "installed_measured_single_raw_proof_argument_repair_pending_full_preflight",
+  "parent_commit": "3e1067106eb2e5af15152772df2d031fef488b85",
+  "actual_raw_diagnostic": 44476818360,
+  "exact_auxiliary_type_probe": 44478771279,
+  "canonical_genuine_tower_and_old_new_power_rfl_run": 44479703030,
+  "primitive_class": "IsScalarTower R R R",
+  "change": "Explicit named primitive scalar-tower proof supplied locally inside unchanged standard ideal power product. No global instance mutation, ambient model or hypothesis change.",
+  "original45_endpoint_types_preserved": true,
+  "full_selected_count": 46,
+  "source_patch": {
+    "path": "source/four_papers/homological/complete/PalomarPart001.lean",
+    "before_sha256": "de03b6a74106986b3180f26e5b123e6830bab87852927ba0163a044a88f9db4c",
+    "after_sha256": "1cab9bb77225ef64c0b67b9f5e42c3c58a5daf70c264e3c8ab34f6077bd24bd1"
+  },
+  "canonical_verification_sha256": "4c629db04b70c116af08fcdbd8960b3db0f87d34dae633560787e3163e88017b",
+  "mathematical_change": false
+}

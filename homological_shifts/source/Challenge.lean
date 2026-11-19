@@ -495,8 +495,12 @@ namespace CommAlg
 section
 open Classical Finset
 variable {J R : Type*} [Fintype J] [DecidableEq J] [CommRing R]
+/-- The measured primitive scalar tower used by the actual ideal-power operation. -/
+public theorem powerCoefficientTower : IsScalarTower R R R := by sorry
 /-- Product of all color powers; zero coordinates and the empty color set are retained. -/
-def powerProduct (I : J → Ideal R) (s : J →₀ ℕ) : Ideal R := ∏ j, (I j) ^ (s j)
+def powerProduct (I : J → Ideal R) (s : J →₀ ℕ) : Ideal R :=
+  letI : IsScalarTower R R R := powerCoefficientTower (R := R)
+  ∏ j, (I j) ^ (s j)
 /-- Literal product law for the exact color-power product. -/
 theorem powerProduct_add (I : J → Ideal R) (s t : J →₀ ℕ) :
     powerProduct I (s + t) = powerProduct I s * powerProduct I t := by sorry

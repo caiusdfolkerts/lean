@@ -1,0 +1,41 @@
+{
+  "status": "validated_actual_challenge-elaborated",
+  "checked_utc": "2026-11-19T07:32:26.867359+00:00",
+  "owned_bundle_folder": "reports/homological_shifts/power-tower-repair-smoke",
+  "workflow_run": "44479703030",
+  "case": "homological_power_tower_repair",
+  "source_commit": "acd93f6d35fee3456723d4805aaf50f7ec0eff94",
+  "artifact_id": 14508660263,
+  "artifact_zip_digest_matches_GitHub_metadata": true,
+  "input_script_log_dependency_hashes_match_frozen_case": true,
+  "challenge_sha256": "3595214e6cda39eb8cb9f0bdb9982d5d4a0edd8ee813e02d690e138bb386d485",
+  "receipt_sha256": "cb0d56671db3b2286c2d2107decc241f38b0ce68f87f80bb0a66d92c6bf611b8",
+  "bounded_log_sha256": "3562b6a1516615d9b99867c3aedfa620002c2a911ca0350f696ab4ace895ba94",
+  "actual_elaboration": {
+    "phase": "challenge-elaboration",
+    "command": [
+      "elan",
+      "run",
+      "leanprover/lean4:v4.35.0",
+      "lake",
+      "--keep-toolchain",
+      "env",
+      "lean",
+      "--trust=0",
+      "-j1",
+      "-M8192",
+      "-DElab.async=false",
+      "-Ddebug.skipKernelTC=false",
+      "--root=/home/runner/work/_temp/challenge-work/workspace",
+      "-o",
+      "/home/runner/work/_temp/challenge-work/workspace/diagnostic-output/Challenge.olean",
+      "/home/runner/work/_temp/challenge-work/workspace/Challenge.lean"
+    ],
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 3.222,
+    "output_bytes": 4725,
+    "output_sha256": "590feadd71c0283d42e610421b9038e337ab52a20c9b25e052b0e206eadaf7fb"
+  },
+  "no_full_source_solution_comparator_verdict": true
+}
