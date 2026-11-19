@@ -343,6 +343,7 @@ attribute [local instance 3100] NormedField.toNormedCommRing StarAddMonoid.toInv
 end
 end Quaternion
 namespace selfAdjoint
+attribute [local instance 4100] StarAddMonoid.toInvolutiveStar
 /-- Exact Hermitian property of a real symmetric-submodule element. -/ theorem isHermitian_coe {p:ℕ} (A:selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℝ)) :
     (A:Matrix (Fin p) (Fin p) ℝ).IsHermitian:=A.property
 end selfAdjoint
