@@ -1,0 +1,18 @@
+{
+  "baseline_repository": "caiusdfolkerts/research",
+  "baseline_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
+  "paper_sha256": "c4a3dd3f2e102d6b4bcc8d50c58ea8007c412cea8d762a8fbb5b105db09bc19a",
+  "project": "two_fermion_zero_fiber",
+  "selected_results": [
+    "PaperVerification.Fermion.TypeA.palomarColorZeroFiber"
+  ],
+  "coverage": [
+    {
+      "name": "PaperVerification.Fermion.TypeA.palomarColorZeroFiber",
+      "source": "source/two_fermion.lean",
+      "line": 55866
+    }
+  ],
+  "baseline_project": "two_fermion_coinvariants",
+  "paper_theorem": "Theorem 8.1"
+}
