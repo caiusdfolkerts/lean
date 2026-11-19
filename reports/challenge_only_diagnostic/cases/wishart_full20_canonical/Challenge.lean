@@ -13,11 +13,11 @@ Wishart raw audit44473421580 and canonical class-type probe44481534659.
 These declarations supply only proofs of fully literal canonical propositions;
 no norm, scalar action, order, measure, functional calculus value or data record
 is chosen by an unrestricted definition. All proof bodies are genuine. -/
-open scoped MatrixOrder Matrix.Norms.L2Operator
 namespace WishartSharedProof
+open scoped MatrixOrder Matrix.Norms.L2Operator
 universe u
 /-- The source's exact natural-zero interpretation of the nonzero dimension two. -/ @[instance 2000] theorem natTwoNeZero :
-    @NeZero ℕ (@Zero.ofOfNat0 ℕ (instOfNatNat (nat_lit 0))) (1+1 : ℕ) := by norm_num
+    @NeZero ℕ (@Zero.ofOfNat0 ℕ (instOfNatNat (nat_lit 0))) (1+1 : ℕ) := ⟨by decide⟩
 /-- Dimension two satisfies the canonical lower-bound class used by `PiLp` numerals. -/ @[instance 2000] theorem natTwoAtLeastTwo : Nat.AtLeastTwo (1+1) := by infer_instance
 /-- Real scalar multiplication commutes with matrix conjugate transpose. -/ @[instance 2000] theorem realMatrixStarModule (n : Type u) :
     StarModule ℝ (Matrix n n ℝ) := by infer_instance
@@ -42,6 +42,28 @@ universe u
     NonUnitalContinuousFunctionalCalculus ℝ (Matrix n n ℂ) IsSelfAdjoint := by infer_instance
 /-- Nonnegative complex-matrix order has nonnegative real spectrum. -/ @[instance 2000] theorem complexMatrixNonnegSpectrum (n : Type u) [Fintype n] :
     NonnegSpectrumClass ℝ (Matrix n n ℂ) := by infer_instance
+/-- The identity real scalar homomorphisms are mutually inverse. -/ @[instance 2000] theorem realIdentityInvPair :
+    RingHomInvPair (RingHom.id ℝ) (RingHom.id ℝ) := by infer_instance
+/-- Addition is continuous on the literal Gaussian row space. -/ @[instance 2000] theorem rowContinuousAdd (F : Type u) [NormedRing F] (m : ℕ) :
+    ContinuousAdd (PiLp 2 (fun _ : Fin m => F)) := by infer_instance
+/-- The two real scalar actions on the literal row space commute. -/ @[instance 2000] theorem rowScalarComm (F : Type u) [NormedRing F] [InnerProductSpace ℝ F] (m : ℕ) :
+    SMulCommClass ℝ ℝ (PiLp 2 (fun _ : Fin m => F)) := by infer_instance
+/-- Constant real scaling is continuous on the literal row space. -/ @[instance 2000] theorem rowContinuousConstSMul (F : Type u) [NormedRing F] [InnerProductSpace ℝ F] (m : ℕ) :
+    ContinuousConstSMul ℝ (PiLp 2 (fun _ : Fin m => F)) := by infer_instance
+/-- The literal row space is a topological additive group. -/ @[instance 2000] theorem rowTopologicalAddGroup (F : Type u) [NormedRing F] (m : ℕ) :
+    IsTopologicalAddGroup (PiLp 2 (fun _ : Fin m => F)) := by infer_instance
+/-- Joint real scaling is continuous on the literal row space. -/ @[instance 2000] theorem rowContinuousSMul (F : Type u) [NormedRing F] [InnerProductSpace ℝ F] (m : ℕ) :
+    ContinuousSMul ℝ (PiLp 2 (fun _ : Fin m => F)) := by infer_instance
+/-- The literal row space is Hausdorff. -/ @[instance 2000] theorem rowT2Space (F : Type u) [NormedRing F] (m : ℕ) :
+    T2Space (PiLp 2 (fun _ : Fin m => F)) := by infer_instance
+/-- Finitely many finite-dimensional coordinates form a finite real module. -/ @[instance 2000] theorem rowFinite (F : Type u) [NormedRing F] [InnerProductSpace ℝ F]
+    [FiniteDimensional ℝ F] (m : ℕ) :
+    Module.Finite ℝ (PiLp 2 (fun _ : Fin m => F)) := by infer_instance
+/-- The measured alternative complex normed-ring hierarchy paths have the same whole record. -/ theorem complexNormedCommRing_path_eq :
+    @CommCStarAlgebra.toNormedCommRing ℂ instCommCStarAlgebraComplex =
+      @NormedField.toNormedCommRing ℂ Complex.instNormedField := by rfl
+/-- Changing only a proposition witness cannot change the resulting mathematical value. -/ theorem propositionWitness_value_eq {P : Prop} {α : Sort u} (f : P → α) (h₁ h₂ : P) :
+    f h₁ = f h₂ := by rfl
 end WishartSharedProof
 
 namespace WishartLiteralStructures
@@ -310,57 +332,38 @@ namespace Wishart section open scoped Matrix MatrixOrder Matrix.Norms.L2Operator
 /-- Literal SymmetricMatrix. -/ abbrev SymmetricMatrix (p : ℕ) := selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℝ)
 /-- Literal principalSymmetricBlock. -/ def principalSymmetricBlock {p q : ℕ} (f : Fin q → Fin p) (X : SymmetricMatrix p) : SymmetricMatrix q := ⟨(X : Matrix (Fin p) (Fin p) ℝ).submatrix f f, Matrix.isHermitian_iff_isSelfAdjoint.mp ((Matrix.isHermitian_iff_isSelfAdjoint.mpr X.property).submatrix f)⟩
 /-- Literal blockDiagonalMatrix. -/ def blockDiagonalMatrix {q m : ℕ} (A : Matrix (Fin q) (Fin q) ℝ) (C : Matrix (Fin m) (Fin m) ℝ) : Matrix (Fin (q + m)) (Fin (q + m)) ℝ := (Matrix.fromBlocks A 0 0 C).submatrix finSumFinEquiv.symm finSumFinEquiv.symm
-/-- Literal leadingScale. -/
-def leadingScale (q m : ℕ) (S : Matrix (Fin (q + m)) (Fin (q + m)) ℝ) : Matrix (Fin q) (Fin q) ℝ := S.submatrix (Fin.castAdd m) (Fin.castAdd m)
-/-- Literal selectedInverseRoot. -/
-def selectedInverseRoot (q m : ℕ) (S : Matrix (Fin (q + m)) (Fin (q + m)) ℝ) : Matrix (Fin q) (Fin q) ℝ := (CFC.sqrt (leadingScale q m S))⁻¹
-/-- Literal selectedWhitening. -/
-def selectedWhitening (q m : ℕ) (S : Matrix (Fin (q + m)) (Fin (q + m)) ℝ) : Matrix (Fin (q + m)) (Fin (q + m)) ℝ := blockDiagonalMatrix (selectedInverseRoot q m S) (1 : Matrix (Fin m) (Fin m) ℝ)
+/-- Literal leadingScale. -/ def leadingScale (q m : ℕ) (S : Matrix (Fin (q + m)) (Fin (q + m)) ℝ) : Matrix (Fin q) (Fin q) ℝ := S.submatrix (Fin.castAdd m) (Fin.castAdd m)
+/-- Literal selectedInverseRoot. -/ def selectedInverseRoot (q m : ℕ) (S : Matrix (Fin (q + m)) (Fin (q + m)) ℝ) : Matrix (Fin q) (Fin q) ℝ := (CFC.sqrt (leadingScale q m S))⁻¹
+/-- Literal selectedWhitening. -/ def selectedWhitening (q m : ℕ) (S : Matrix (Fin (q + m)) (Fin (q + m)) ℝ) : Matrix (Fin (q + m)) (Fin (q + m)) ℝ := blockDiagonalMatrix (selectedInverseRoot q m S) (1 : Matrix (Fin m) (Fin m) ℝ)
 end end Wishart
 namespace WishartVerification section open scoped BigOperators Matrix
-/-- Literal SymmetricMatrix. -/
-abbrev SymmetricMatrix (p : ℕ) := selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℝ)
-/-- A partition into labelled nonempty principal blocks. -/
-structure PrincipalPartition (p d : ℕ) where
+/-- Literal SymmetricMatrix. -/ abbrev SymmetricMatrix (p : ℕ) := selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℝ)
+/-- A partition into labelled nonempty principal blocks. -/ structure PrincipalPartition (p d : ℕ) where
   block : Fin d → Finset (Fin p)
   nonempty : ∀ i, (block i).Nonempty
   unique_block : ∀ x : Fin p, ∃! i : Fin d, x ∈ block i
-/-- Literal principalMinor. -/
-def principalMinor {p : ℕ} (I : Finset (Fin p)) (X : SymmetricMatrix p) : ℝ := ((X : Matrix (Fin p) (Fin p) ℝ).submatrix (fun i : I => (i : Fin p)) (fun i : I => (i : Fin p))).det
-/-- Literal principalMomentIntegrand. -/
-def principalMomentIntegrand {p d : ℕ} (P : PrincipalPartition p d) (ν : Fin d → ℝ) (J : Finset (Fin d)) (X : SymmetricMatrix p) : ℝ := ∏ i ∈ J, (principalMinor (P.block i) X) ^ (ν i)
-/-- Literal principalMoment. -/
-def principalMoment {p d : ℕ} (α : ℝ) (Sigma : Matrix (Fin p) (Fin p) ℝ) (P : PrincipalPartition p d) (ν : Fin d → ℝ) (J : Finset (Fin d)) : ℝ := ∫ X, principalMomentIntegrand P ν J X ∂TauCeti.Probability.nonsingularWishartMeasure α Sigma
-/-- Literal independentActiveScaleBlocks. -/
-def independentActiveScaleBlocks {p d : ℕ} (Sigma : Matrix (Fin p) (Fin p) ℝ) (P : PrincipalPartition p d) (ν : Fin d → ℝ) : Prop := ∀ i j : Fin d, i ≠ j → 0 < ν i → 0 < ν j → ∀ a ∈ P.block i, ∀ b ∈ P.block j, Sigma a b = 0
-/-- The whole content of manuscript Theorem 1.1: arbitrary real shape in its full nonsingular range, all nonnegative real exponents, all selected splits, joint integrability, and the exact equality characterization. -/
-def PrincipalTheorem : Prop := ∀ (p d : ℕ) (α : ℝ) (Sigma : Matrix (Fin p) (Fin p) ℝ) (P : PrincipalPartition p d) (ν : Fin d → ℝ), 0 < p → 0 < d → (p : ℝ) - 1 < α → Sigma.PosDef → (∀ i, 0 ≤ ν i) → (∀ J : Finset (Fin d), Integrable (principalMomentIntegrand P ν J) (TauCeti.Probability.nonsingularWishartMeasure α Sigma)) ∧ (∀ j : Fin d, principalMoment α Sigma P ν {j} * principalMoment α Sigma P ν (Finset.univ.erase j) ≤ principalMoment α Sigma P ν Finset.univ ∧ (∏ i : Fin d, principalMoment α Sigma P ν {i}) ≤ principalMoment α Sigma P ν {j} * principalMoment α Sigma P ν (Finset.univ.erase j)) ∧ ((principalMoment α Sigma P ν Finset.univ = ∏ i : Fin d, principalMoment α Sigma P ν {i}) ↔ independentActiveScaleBlocks Sigma P ν)
+/-- Literal principalMinor. -/ def principalMinor {p : ℕ} (I : Finset (Fin p)) (X : SymmetricMatrix p) : ℝ := ((X : Matrix (Fin p) (Fin p) ℝ).submatrix (fun i : I => (i : Fin p)) (fun i : I => (i : Fin p))).det
+/-- Literal principalMomentIntegrand. -/ def principalMomentIntegrand {p d : ℕ} (P : PrincipalPartition p d) (ν : Fin d → ℝ) (J : Finset (Fin d)) (X : SymmetricMatrix p) : ℝ := ∏ i ∈ J, (principalMinor (P.block i) X) ^ (ν i)
+/-- Literal principalMoment. -/ def principalMoment {p d : ℕ} (α : ℝ) (Sigma : Matrix (Fin p) (Fin p) ℝ) (P : PrincipalPartition p d) (ν : Fin d → ℝ) (J : Finset (Fin d)) : ℝ := ∫ X, principalMomentIntegrand P ν J X ∂TauCeti.Probability.nonsingularWishartMeasure α Sigma
+/-- Literal independentActiveScaleBlocks. -/ def independentActiveScaleBlocks {p d : ℕ} (Sigma : Matrix (Fin p) (Fin p) ℝ) (P : PrincipalPartition p d) (ν : Fin d → ℝ) : Prop := ∀ i j : Fin d, i ≠ j → 0 < ν i → 0 < ν j → ∀ a ∈ P.block i, ∀ b ∈ P.block j, Sigma a b = 0
+/-- The whole content of manuscript Theorem 1.1: arbitrary real shape in its full nonsingular range, all nonnegative real exponents, all selected splits, joint integrability, and the exact equality characterization. -/ def PrincipalTheorem : Prop := ∀ (p d : ℕ) (α : ℝ) (Sigma : Matrix (Fin p) (Fin p) ℝ) (P : PrincipalPartition p d) (ν : Fin d → ℝ), 0 < p → 0 < d → (p : ℝ) - 1 < α → Sigma.PosDef → (∀ i, 0 ≤ ν i) → (∀ J : Finset (Fin d), Integrable (principalMomentIntegrand P ν J) (TauCeti.Probability.nonsingularWishartMeasure α Sigma)) ∧ (∀ j : Fin d, principalMoment α Sigma P ν {j} * principalMoment α Sigma P ν (Finset.univ.erase j) ≤ principalMoment α Sigma P ν Finset.univ ∧ (∏ i : Fin d, principalMoment α Sigma P ν {i}) ≤ principalMoment α Sigma P ν {j} * principalMoment α Sigma P ν (Finset.univ.erase j)) ∧ ((principalMoment α Sigma P ν Finset.univ = ∏ i : Fin d, principalMoment α Sigma P ν {i}) ↔ independentActiveScaleBlocks Sigma P ν)
 end end WishartVerification
 namespace Wishart section open scoped Matrix MatrixOrder Matrix.Norms.L2Operator
-/-- Literal selectedDimension. -/
-abbrev selectedDimension {p : ℕ} (I : Finset (Fin p)) : ℕ := Fintype.card I
-/-- Literal complementDimension. -/
-abbrev complementDimension {p : ℕ} (I : Finset (Fin p)) : ℕ := Fintype.card {a : Fin p // a ∉ I}
-/-- Literal selectedCoordinatesEquiv. -/
-def selectedCoordinatesEquiv {p : ℕ} (I : Finset (Fin p)) : Fin (selectedDimension I + complementDimension I) ≃ Fin p := finSumFinEquiv.symm.trans ((Equiv.sumCongr (Fintype.equivFin I).symm (Fintype.equivFin {a : Fin p // a ∉ I}).symm).trans (Equiv.sumCompl (fun a : Fin p => a ∈ I)))
-/-- Literal normalizedSelectedMatrix. -/
-def normalizedSelectedMatrix {p : ℕ} (I : Finset (Fin p)) (S : Matrix (Fin p) (Fin p) ℝ) (X : SymmetricMatrix p) : SymmetricMatrix (selectedDimension I + complementDimension I) := Matrix.symmetricCongruenceLinearMap (selectedWhitening (selectedDimension I) (complementDimension I) (S.submatrix (selectedCoordinatesEquiv I) (selectedCoordinatesEquiv I))) (principalSymmetricBlock (selectedCoordinatesEquiv I) X)
+/-- Literal selectedDimension. -/ abbrev selectedDimension {p : ℕ} (I : Finset (Fin p)) : ℕ := Fintype.card I
+/-- Literal complementDimension. -/ abbrev complementDimension {p : ℕ} (I : Finset (Fin p)) : ℕ := Fintype.card {a : Fin p // a ∉ I}
+/-- Literal selectedCoordinatesEquiv. -/ def selectedCoordinatesEquiv {p : ℕ} (I : Finset (Fin p)) : Fin (selectedDimension I + complementDimension I) ≃ Fin p := finSumFinEquiv.symm.trans ((Equiv.sumCongr (Fintype.equivFin I).symm (Fintype.equivFin {a : Fin p // a ∉ I}).symm).trans (Equiv.sumCompl (fun a : Fin p => a ∈ I)))
+/-- Literal normalizedSelectedMatrix. -/ def normalizedSelectedMatrix {p : ℕ} (I : Finset (Fin p)) (S : Matrix (Fin p) (Fin p) ℝ) (X : SymmetricMatrix p) : SymmetricMatrix (selectedDimension I + complementDimension I) := Matrix.symmetricCongruenceLinearMap (selectedWhitening (selectedDimension I) (complementDimension I) (S.submatrix (selectedCoordinatesEquiv I) (selectedCoordinatesEquiv I))) (principalSymmetricBlock (selectedCoordinatesEquiv I) X)
 end end Wishart
 namespace WishartVerification section open scoped ENNReal variable {Ω : Type*} [MeasurableSpace Ω] {μ : Measure Ω}
-/-- Literal HasAllFiniteMoments. -/
-def HasAllFiniteMoments (f : Ω → ℝ) (μ : Measure Ω) : Prop := ∀ p : ℝ≥0∞, p ≠ ∞ → MemLp f p μ
+/-- Literal HasAllFiniteMoments. -/ def HasAllFiniteMoments (f : Ω → ℝ) (μ : Measure Ω) : Prop := ∀ p : ℝ≥0∞, p ≠ ∞ → MemLp f p μ
 end end WishartVerification
 namespace WishartVerification section open scoped Classical Matrix variable {p d : ℕ}
-/-- Literal selectedRank. -/
-abbrev selectedRank (P : PrincipalPartition p d) (j : Fin d) : ℕ := Wishart.selectedDimension (P.block j)
-/-- Literal remainingRank. -/
-abbrev remainingRank (P : PrincipalPartition p d) (j : Fin d) : ℕ := Wishart.complementDimension (P.block j)
-/-- Literal normalizedPrincipalMatrix. -/
-abbrev normalizedPrincipalMatrix (P : PrincipalPartition p d) (Sigma : Matrix (Fin p) (Fin p) ℝ) (j : Fin d) := Wishart.normalizedSelectedMatrix (P.block j) Sigma
+/-- Literal selectedRank. -/ abbrev selectedRank (P : PrincipalPartition p d) (j : Fin d) : ℕ := Wishart.selectedDimension (P.block j)
+/-- Literal remainingRank. -/ abbrev remainingRank (P : PrincipalPartition p d) (j : Fin d) : ℕ := Wishart.complementDimension (P.block j)
+/-- Literal normalizedPrincipalMatrix. -/ abbrev normalizedPrincipalMatrix (P : PrincipalPartition p d) (Sigma : Matrix (Fin p) (Fin p) ℝ) (j : Fin d) := Wishart.normalizedSelectedMatrix (P.block j) Sigma
 end end WishartVerification
 namespace Wishart.Spectral section open scoped ENNReal
-/-- Literal Sym. -/
-abbrev Sym (p : ℕ) := selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℝ)
+/-- Literal Sym. -/ abbrev Sym (p : ℕ) := selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℝ)
 /-- Literal coordinateSpectrum. -/
 noncomputable def coordinateSpectrum {p : ℕ} (S : Sym p) : Fin p → ℝ := (selfAdjoint.isHermitian_coe S).eigenvalues
 end end Wishart.Spectral
@@ -371,38 +374,27 @@ noncomputable def ascendingIndexEquiv (p : ℕ) : Equiv.Perm (Fin p) := Fin.revP
 noncomputable def ascendingSpectrum {p : ℕ} (S : Sym p) : Fin p → ℝ := coordinateSpectrum S ∘ ascendingIndexEquiv p
 end end Wishart.Spectral
 namespace WishartVerification section open scoped Classical ENNReal variable {ι : Type*} [Fintype ι] [LinearOrder ι]
-/-- Literal orderedChamber. -/
-def orderedChamber (s : Set ℝ) : Set (ι → ℝ) := {x | StrictMono x ∧ ∀ i, x i ∈ s}
+/-- Literal orderedChamber. -/ def orderedChamber (s : Set ℝ) : Set (ι → ℝ) := {x | StrictMono x ∧ ∀ i, x i ∈ s}
 end end WishartVerification
 namespace WishartVerification section open scoped Classical ENNReal variable {ι : Type*} [Fintype ι] [LinearOrder ι] variable {Ω : Type*} [MeasurableSpace Ω]
 /-- Normalizing a nonnegative real density by its nonnegative integral. -/
 noncomputable def normalizedWeight (μ : Measure Ω) (w : Ω → ℝ) : Measure Ω := (∫⁻ x, ENNReal.ofReal (w x) ∂μ)⁻¹ • μ.withDensity (fun x ↦ ENNReal.ofReal (w x))
 end end WishartVerification
 namespace WishartVerification section open scoped Classical variable {p d : ℕ}
-/-- Literal principalSetCoordinates. -/
-def principalSetCoordinates (I : Finset (Fin p)) : Fin (Fintype.card I) → Fin p := fun a ↦ ((Fintype.equivFin I).symm a : Fin p)
-/-- Literal principalSetMatrix. -/
-def principalSetMatrix (I : Finset (Fin p)) : SymmetricMatrix p → SymmetricMatrix (Fintype.card I) := Wishart.principalSymmetricBlock (principalSetCoordinates I)
-/-- Theorem 1.1, with all original quantifiers and parameter ranges, joint moment finiteness, every selected split, the product lower bound, and the exact active-block equality characterization. -/
-theorem theorem_1_1 : PrincipalTheorem := by sorry
+/-- Literal principalSetCoordinates. -/ def principalSetCoordinates (I : Finset (Fin p)) : Fin (Fintype.card I) → Fin p := fun a ↦ ((Fintype.equivFin I).symm a : Fin p)
+/-- Literal principalSetMatrix. -/ def principalSetMatrix (I : Finset (Fin p)) : SymmetricMatrix p → SymmetricMatrix (Fintype.card I) := Wishart.principalSymmetricBlock (principalSetCoordinates I)
+/-- Theorem 1.1, with all original quantifiers and parameter ranges, joint moment finiteness, every selected split, the product lower bound, and the exact active-block equality characterization. -/ theorem theorem_1_1 : PrincipalTheorem := by sorry
 end end WishartVerification
 namespace WishartVerification section open scoped Classical ENNReal variable {Ω : Type*} [MeasurableSpace Ω]
-/-- Comparison against every bounded Borel increasing real-valued test. The order restriction is only on the common support set. -/
-def IncreasingExpectationLE [Preorder Ω] (s : Set Ω) (μ ν : Measure Ω) : Prop := ∀ f : Ω → ℝ, Measurable f → MonotoneOn f s → (∃ M : ℝ, ∀ x, |f x| ≤ M) → (∫ x, f x ∂μ) ≤ ∫ x, f x ∂ν
+/-- Comparison against every bounded Borel increasing real-valued test. The order restriction is only on the common support set. -/ def IncreasingExpectationLE [Preorder Ω] (s : Set Ω) (μ ν : Measure Ω) : Prop := ∀ f : Ω → ℝ, Measurable f → MonotoneOn f s → (∃ M : ℝ, ∀ x, |f x| ≤ M) → (∫ x, f x ∂μ) ≤ ∫ x, f x ∂ν
 end end WishartVerification
 namespace WishartVerification section open scoped Classical variable {p d : ℕ}
-/-- Literal shiftedPrincipalMinor. -/
-def shiftedPrincipalMinor (Sigma : Matrix (Fin p) (Fin p) ℝ) (I : Finset (Fin p)) (c : ℝ) (X : SymmetricMatrix p) : ℝ := (((X : Matrix (Fin p) (Fin p) ℝ).submatrix (fun i : I ↦ (i : Fin p)) (fun i : I ↦ (i : Fin p))) + c • Sigma.submatrix (fun i : I ↦ (i : Fin p)) (fun i : I ↦ (i : Fin p))).det
-/-- Literal shiftedMomentIntegrand. -/
-def shiftedMomentIntegrand (Sigma : Matrix (Fin p) (Fin p) ℝ) (P : PrincipalPartition p d) (c ν : Fin d → ℝ) (J : Finset (Fin d)) (X : SymmetricMatrix p) : ℝ := ∏ i ∈ J, shiftedPrincipalMinor Sigma (P.block i) (c i) X ^ ν i
-/-- Literal shiftedMoment. -/
-def shiftedMoment (α : ℝ) (Sigma : Matrix (Fin p) (Fin p) ℝ) (P : PrincipalPartition p d) (c ν : Fin d → ℝ) (J : Finset (Fin d)) : ℝ := ∫ X, shiftedMomentIntegrand Sigma P c ν J X ∂TauCeti.Probability.nonsingularWishartMeasure α Sigma
-/-- Literal shiftedMomentRatio. -/
-def shiftedMomentRatio (α : ℝ) (Sigma : Matrix (Fin p) (Fin p) ℝ) (P : PrincipalPartition p d) (c ν : Fin d → ℝ) : ℝ := shiftedMoment α Sigma P c ν Finset.univ / ∏ i : Fin d, shiftedMoment α Sigma P c ν {i}
-/-- Literal shiftedTiltLaw. -/
-def shiftedTiltLaw (α : ℝ) (Sigma : Matrix (Fin p) (Fin p) ℝ) (P : PrincipalPartition p d) (c ν : Fin d → ℝ) (J : Finset (Fin d)) : Measure (SymmetricMatrix p) := normalizedWeight (TauCeti.Probability.nonsingularWishartMeasure α Sigma) (shiftedMomentIntegrand Sigma P c ν J)
-/-- Literal selectedEigenvalues. -/
-def selectedEigenvalues (Sigma : Matrix (Fin p) (Fin p) ℝ) (P : PrincipalPartition p d) (j : Fin d) (X : SymmetricMatrix p) : Fin (selectedRank P j) → ℝ := Wishart.Spectral.ascendingSpectrum (Wishart.principalSymmetricBlock (Fin.castAdd (remainingRank P j)) (normalizedPrincipalMatrix P Sigma j X))
+/-- Literal shiftedPrincipalMinor. -/ def shiftedPrincipalMinor (Sigma : Matrix (Fin p) (Fin p) ℝ) (I : Finset (Fin p)) (c : ℝ) (X : SymmetricMatrix p) : ℝ := (((X : Matrix (Fin p) (Fin p) ℝ).submatrix (fun i : I ↦ (i : Fin p)) (fun i : I ↦ (i : Fin p))) + c • Sigma.submatrix (fun i : I ↦ (i : Fin p)) (fun i : I ↦ (i : Fin p))).det
+/-- Literal shiftedMomentIntegrand. -/ def shiftedMomentIntegrand (Sigma : Matrix (Fin p) (Fin p) ℝ) (P : PrincipalPartition p d) (c ν : Fin d → ℝ) (J : Finset (Fin d)) (X : SymmetricMatrix p) : ℝ := ∏ i ∈ J, shiftedPrincipalMinor Sigma (P.block i) (c i) X ^ ν i
+/-- Literal shiftedMoment. -/ def shiftedMoment (α : ℝ) (Sigma : Matrix (Fin p) (Fin p) ℝ) (P : PrincipalPartition p d) (c ν : Fin d → ℝ) (J : Finset (Fin d)) : ℝ := ∫ X, shiftedMomentIntegrand Sigma P c ν J X ∂TauCeti.Probability.nonsingularWishartMeasure α Sigma
+/-- Literal shiftedMomentRatio. -/ def shiftedMomentRatio (α : ℝ) (Sigma : Matrix (Fin p) (Fin p) ℝ) (P : PrincipalPartition p d) (c ν : Fin d → ℝ) : ℝ := shiftedMoment α Sigma P c ν Finset.univ / ∏ i : Fin d, shiftedMoment α Sigma P c ν {i}
+/-- Literal shiftedTiltLaw. -/ def shiftedTiltLaw (α : ℝ) (Sigma : Matrix (Fin p) (Fin p) ℝ) (P : PrincipalPartition p d) (c ν : Fin d → ℝ) (J : Finset (Fin d)) : Measure (SymmetricMatrix p) := normalizedWeight (TauCeti.Probability.nonsingularWishartMeasure α Sigma) (shiftedMomentIntegrand Sigma P c ν J)
+/-- Literal selectedEigenvalues. -/ def selectedEigenvalues (Sigma : Matrix (Fin p) (Fin p) ℝ) (P : PrincipalPartition p d) (j : Fin d) (X : SymmetricMatrix p) : Fin (selectedRank P j) → ℝ := Wishart.Spectral.ascendingSpectrum (Wishart.principalSymmetricBlock (Fin.castAdd (remainingRank P j)) (normalizedPrincipalMatrix P Sigma j X))
 end end WishartVerification
 namespace WishartVerification section open scoped Classical Matrix variable {p d : ℕ}
 /-- Section 4.1: both inequalities with arbitrary proportional nonnegative shifts, with the original real shape and all nonnegative real powers. -/

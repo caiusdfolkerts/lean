@@ -8,16 +8,16 @@
       "module": "Challenge",
       "case_dir": "cases/wishart_full20_canonical",
       "original_package": "reports/wishart/full20-canonical",
-      "original_challenge": "reports/wishart/full20-canonical/shared-witness-repair/Challenge.lean",
+      "original_challenge": "reports/wishart/full20-canonical/shared-witness-repair/revision-02/Challenge.lean",
       "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
       "hashes": {
-        "Challenge.lean": "2c267b41e3e2d7c09dc870204d54a5a9410c4cce573573a7723560e4c5e5bd57",
+        "Challenge.lean": "9455c636e1d233bf7ce666416118db9819b9bde13475675b7d7b493918222350",
         "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
         "lake-manifest.json": "5619bb28ae7f2972522467eccf712e99876805a4fb0b7298a3c8de5918224147",
         "original-lakefile.toml": "e429ab885c0b86124ac6b748b01715efdede7f476661ead3634e0c69b6521ccb"
       },
-      "challenge_lines": 988,
-      "challenge_bytes": 98562,
+      "challenge_lines": 980,
+      "challenge_bytes": 100923,
       "dependency_pins": [
         {
           "name": "mathlib",
@@ -73,16 +73,16 @@
       "module": "WishartCommonProofWitnesses",
       "case_dir": "cases/wishart_shared_proof_witnesses",
       "original_package": "reports/wishart/full20-canonical",
-      "original_challenge": "reports/wishart/full20-canonical/shared-witness-repair/WishartCommonProofWitnesses.lean",
+      "original_challenge": "reports/wishart/full20-canonical/shared-witness-repair/WishartCommonProofWitnessesExtended.lean",
       "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
       "hashes": {
         "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
         "lake-manifest.json": "5619bb28ae7f2972522467eccf712e99876805a4fb0b7298a3c8de5918224147",
         "original-lakefile.toml": "e429ab885c0b86124ac6b748b01715efdede7f476661ead3634e0c69b6521ccb",
-        "Challenge.lean": "67faa8a1ccbb53ebec8e780f7062955bb6c009ee87645c062871f533bb33e302"
+        "Challenge.lean": "be86b890c8e7ec84284e3a5993d73b0bf10c6867a640b7d7d5a2113a382f4670"
       },
-      "challenge_lines": 53,
-      "challenge_bytes": 3628,
+      "challenge_lines": 85,
+      "challenge_bytes": 5989,
       "dependency_pins": [
         {
           "name": "mathlib",

@@ -7,12 +7,12 @@ no norm, scalar action, order, measure, functional calculus value or data record
 is chosen by an unrestricted definition. All proof bodies are genuine. -/
 @[expose] public section
 noncomputable section
-open scoped MatrixOrder Matrix.Norms.L2Operator
 namespace WishartSharedProof
+open scoped MatrixOrder Matrix.Norms.L2Operator
 universe u
 /-- The source's exact natural-zero interpretation of the nonzero dimension two. -/
 @[instance 2000] theorem natTwoNeZero :
-    @NeZero ℕ (@Zero.ofOfNat0 ℕ (instOfNatNat (nat_lit 0))) (1+1 : ℕ) := by norm_num
+    @NeZero ℕ (@Zero.ofOfNat0 ℕ (instOfNatNat (nat_lit 0))) (1+1 : ℕ) := ⟨by decide⟩
 /-- Dimension two satisfies the canonical lower-bound class used by `PiLp` numerals. -/
 @[instance 2000] theorem natTwoAtLeastTwo : Nat.AtLeastTwo (1+1) := by infer_instance
 /-- Real scalar multiplication commutes with matrix conjugate transpose. -/
@@ -50,4 +50,36 @@ universe u
 /-- Nonnegative complex-matrix order has nonnegative real spectrum. -/
 @[instance 2000] theorem complexMatrixNonnegSpectrum (n : Type u) [Fintype n] :
     NonnegSpectrumClass ℝ (Matrix n n ℂ) := by infer_instance
+/-- The identity real scalar homomorphisms are mutually inverse. -/
+@[instance 2000] theorem realIdentityInvPair :
+    RingHomInvPair (RingHom.id ℝ) (RingHom.id ℝ) := by infer_instance
+/-- Addition is continuous on the literal Gaussian row space. -/
+@[instance 2000] theorem rowContinuousAdd (F : Type u) [NormedRing F] (m : ℕ) :
+    ContinuousAdd (PiLp 2 (fun _ : Fin m => F)) := by infer_instance
+/-- The two real scalar actions on the literal row space commute. -/
+@[instance 2000] theorem rowScalarComm (F : Type u) [NormedRing F] [InnerProductSpace ℝ F] (m : ℕ) :
+    SMulCommClass ℝ ℝ (PiLp 2 (fun _ : Fin m => F)) := by infer_instance
+/-- Constant real scaling is continuous on the literal row space. -/
+@[instance 2000] theorem rowContinuousConstSMul (F : Type u) [NormedRing F] [InnerProductSpace ℝ F] (m : ℕ) :
+    ContinuousConstSMul ℝ (PiLp 2 (fun _ : Fin m => F)) := by infer_instance
+/-- The literal row space is a topological additive group. -/
+@[instance 2000] theorem rowTopologicalAddGroup (F : Type u) [NormedRing F] (m : ℕ) :
+    IsTopologicalAddGroup (PiLp 2 (fun _ : Fin m => F)) := by infer_instance
+/-- Joint real scaling is continuous on the literal row space. -/
+@[instance 2000] theorem rowContinuousSMul (F : Type u) [NormedRing F] [InnerProductSpace ℝ F] (m : ℕ) :
+    ContinuousSMul ℝ (PiLp 2 (fun _ : Fin m => F)) := by infer_instance
+/-- The literal row space is Hausdorff. -/
+@[instance 2000] theorem rowT2Space (F : Type u) [NormedRing F] (m : ℕ) :
+    T2Space (PiLp 2 (fun _ : Fin m => F)) := by infer_instance
+/-- Finitely many finite-dimensional coordinates form a finite real module. -/
+@[instance 2000] theorem rowFinite (F : Type u) [NormedRing F] [InnerProductSpace ℝ F]
+    [FiniteDimensional ℝ F] (m : ℕ) :
+    Module.Finite ℝ (PiLp 2 (fun _ : Fin m => F)) := by infer_instance
+/-- The measured alternative complex normed-ring hierarchy paths have the same whole record. -/
+theorem complexNormedCommRing_path_eq :
+    @CommCStarAlgebra.toNormedCommRing ℂ instCommCStarAlgebraComplex =
+      @NormedField.toNormedCommRing ℂ Complex.instNormedField := by rfl
+/-- Changing only a proposition witness cannot change the resulting mathematical value. -/
+theorem propositionWitness_value_eq {P : Prop} {α : Sort u} (f : P → α) (h₁ h₂ : P) :
+    f h₁ = f h₂ := by rfl
 end WishartSharedProof
