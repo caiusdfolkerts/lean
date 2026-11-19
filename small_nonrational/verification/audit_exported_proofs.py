@@ -24,10 +24,6 @@ import subprocess
 import time
 
 
-def read(path):
-    return json.loads(Path(path).read_text())
-
-
 def sha(path):
     with Path(path).open("rb") as stream:
         return hashlib.file_digest(stream, "sha256").hexdigest()
@@ -180,27 +176,38 @@ def main():
     require(1 <= args.batch_modules <= 64 and args.memory >= 1024 and args.timeout > 0,
             "Invalid bounded audit resource limits")
     root, export, output = args.project.resolve(), args.export.resolve(), args.output.resolve()
-    verifier = load(root / "scripts/verify.py", "body_audit_verifier")
+    verifier_path = root / "scripts/verify.py"
+    verifier = load(verifier_path, "body_audit_verifier")
     exporter = load(root / "scripts/export_dependencies.py", "body_audit_exporter")
     manifest_path = export / "extraction-manifest.json"
-    manifest = read(manifest_path)
+    manifest, manifest_hash = verifier.read_json_identity(manifest_path)
     require(manifest.get("extraction_passed") is True, "A successful declaration export is required")
     complete = manifest.get("mode") == "complete-successful-build"
     require(complete or (args.allow_diagnostic and manifest.get("mode") == "accepted-subgraph-NON-FINAL"),
             "Final auditing requires a complete successful export")
-    lock = (root / ".lake/build/verification/build.lock").open("a+")
+    audits = root / ".lake/build/verification"
+    lock = (audits / "build.lock").open("a+")
     if complete:
         try:
             fcntl.flock(lock, fcntl.LOCK_SH | fcntl.LOCK_NB)
         except BlockingIOError:
             raise RuntimeError("A source build is active")
-    index_path = root / "audit/source-index.json"
-    index = read(index_path)
-    require(manifest["source_index_sha256"] == sha(index_path), "Stale exported source index")
+    index_path = root / "audit/source-index.json.gz"
+    if not index_path.exists():
+        index_path = root / "audit/source-index.json"
+    index, index_hash = verifier.read_json_identity(index_path)
+    require(manifest["source_index_sha256"] == index_hash, "Stale exported source index")
+    policy_hash = sha(verifier_path)
     if complete:
         entries = {entry["module"]: entry for entry in index["entries"]}
-        result = read(root / ".lake/build/verification/result.json")
-        exporter.validate_complete_build_result(result, entries, set(entries), verifier.FORMAT)
+        result_path = audits / "result.json"
+        result, result_hash = verifier.read_json_identity(result_path)
+        audited_order = exporter.validate_complete_build_result(
+            result, entries, set(entries), index_hash, policy_hash, verifier)
+        binding = result["verification_binding"]
+        require(manifest.get("build_result_sha256") == result_hash
+                and manifest.get("verification_binding") == binding,
+                "Export belongs to a different successful closure axiom audit")
         require(result["external_environment"] == manifest["external_environment"], "Build/export environment mismatch")
         require(manifest["wrapper_sha256"] == sha(root / "scripts/export_dependencies.py")
                 and manifest["exporter_sha256"] == sha(root / "scripts/ExportDependencies.lean"),
@@ -216,16 +223,20 @@ def main():
     mathlib = (args.mathlib or root / ".lake/packages/mathlib").resolve()
     paths, _, revisions, prefix, _ = verifier.library_environment(lean, mathlib, root)
     require(revisions == manifest["library_revisions"], "Different library revisions")
-    identities = {str(manifest_path): sha(manifest_path), str(graph_path): sha(graph_path),
-                  str(index_path): sha(index_path), str(lean): sha(lean),
+    identities = {str(manifest_path): manifest_hash, str(graph_path): manifest["files"][graph_path.name],
+                  str(index_path.resolve()): index_hash, str(lean): manifest["compiler_sha256"],
+                  str(verifier_path.resolve()): policy_hash,
                   str(Path(__file__).resolve()): sha(__file__)}
+    if complete:
+        identities[str(result_path.resolve())] = result_hash
     # Bind the supplement to every input that produced the accepted export,
     # including project sources, receipts, full artifact facets and the final
     # build result. A graph detached from changed inputs is not current evidence.
     inputs_path = export / "verified-inputs.jsonl.gz"
     require(sha(inputs_path) == manifest["files"][inputs_path.name], "Exported input inventory changed")
     identities[str(inputs_path)] = sha(inputs_path)
-    input_identities = 0
+    input_identities = set()
+    exported_receipts = {}
     for line in gzip.open(inputs_path, "rt"):
         item = json.loads(line)
         if item.get("record") == "identity":
@@ -234,14 +245,31 @@ def main():
                     f"Conflicting input identity: {path}")
             require(sha(path) == expected, f"An export input changed before the audit: {path}")
             identities[path] = expected
-            input_identities += 1
-    require(input_identities > 0, "The export has no authenticated input identities")
-    environment = read(root / ".lake/build/verification/external-environment.json")
+            input_identities.add(path)
+        elif complete and item.get("scope") == "project":
+            name = item["module"]
+            require(name not in exported_receipts, f"Export repeats an audited receipt: {name}")
+            exported_receipts[name] = item["receipt_sha256"]
+    require(input_identities, "The export has no authenticated input identities")
+    if complete:
+        receipt_hashes = {}
+        for name in audited_order:
+            path = str(verifier.module_receipt_path(audits, name).resolve())
+            require(path in input_identities, f"Export is missing the audited receipt identity: {name}")
+            receipt_hashes[name] = identities[path]
+        verifier.check_accepted_receipts(binding, audited_order, receipt_hashes)
+        require(exported_receipts == receipt_hashes, "Exported project receipt rows differ from the audited receipts")
+    environment_path = audits / "external-environment.json"
+    environment, environment_hash = verifier.read_json_identity(environment_path)
+    require(identities.get(str(environment_path.resolve())) == environment_hash,
+            "Recorded external environment changed after export")
     environment_key = verifier.digest_json({key: value for key, value in environment.items()
                                             if key not in {"verifier_sha256", "import_parser_sha256"}})
     require(environment_key == manifest["external_environment"], "Current library artifact environment differs from export")
     require(verifier.artifact_inventory(paths) == environment["artifacts"],
             "The complete pinned library artifact inventory differs from the build")
+    native_toolchain = environment.get("native_toolchain", {})
+    verifier.check_native_toolchain(prefix, native_toolchain)
     for path, expected in environment["artifacts"].items():
         identities[path] = expected
     require(not output.exists() or not any(output.iterdir()), "Output must be new or empty")
@@ -296,9 +324,10 @@ def main():
     verifier.library_environment(lean, mathlib, root)
     require(verifier.artifact_inventory(paths) == environment["artifacts"],
             "The library artifact inventory changed during the audit")
+    verifier.check_native_toolchain(prefix, native_toolchain)
     report = {"passed": True, "mode": "complete" if complete else "diagnostic-NON-FINAL",
               "scope": "Original project declaration occurrences and referenced library logical names; not proof replay.",
-              "source_index_sha256": sha(index_path), "extraction_manifest_sha256": sha(manifest_path),
+              "source_index_sha256": index_hash, "extraction_manifest_sha256": manifest_hash,
               "script_sha256": sha(__file__), "graph": graph_report,
               "boundary_declarations": len(boundary), "boundary_axioms": all_axioms,
               "allowed_axioms": sorted(verifier.ALLOWED_AXIOMS), "batches": reports,

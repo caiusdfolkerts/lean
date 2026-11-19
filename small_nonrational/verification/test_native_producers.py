@@ -45,7 +45,7 @@ class NativeProducerTests(unittest.TestCase):
 
     def test_bundled_toolchain_inventory_binds_library_aliases(self):
         with tempfile.TemporaryDirectory() as tmp:
-            prefix = Path(tmp) / 'toolchain'
+            prefix = Path(tmp).resolve() / 'toolchain'
             for directory in ['bin', 'include', 'lib']:
                 (prefix / directory).mkdir(parents=True)
             for name in ['leanc', 'clang', 'ld.lld']:
@@ -56,10 +56,13 @@ class NativeProducerTests(unittest.TestCase):
             alias = prefix / 'lib/selected.so'
             alias.symlink_to('first.so')
             before = verify.native_toolchain_inventory(prefix)
+            verify.check_native_toolchain(prefix, before)
             alias.unlink()
             alias.symlink_to('second.so')
             after = verify.native_toolchain_inventory(prefix)
             self.assertNotEqual(before[str(alias)], after[str(alias)])
+            with self.assertRaisesRegex(RuntimeError, 'toolchain inventory changed'):
+                verify.check_native_toolchain(prefix, before)
             outside = Path(tmp) / 'external-clang'
             outside.write_text('not bundled')
             clang = prefix / 'bin/clang'

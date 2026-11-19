@@ -32,6 +32,7 @@ MATHLIB_COMMIT = "56a005855ea17e0b0958f73ec801ae140b0a1679"
 FACETS = (".olean", ".olean.private", ".olean.server", ".ir", ".ir.sig")
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 FORMAT = "fresh-source-verifier-v1"
+FINAL_BINDING_FORMAT = "closure-audited-receipts-v1"
 LIBRARY_NAMESPACES = {"Mathlib", "Init", "Lean", "Std", "Lake", "Batteries", "Qq",
                       "Aesop", "ProofWidgets", "Plausible", "LeanSearchClient", "ImportGraph", "Cli"}
 NATIVE_PRODUCERS = {"RupProofTerm": "initialize_RupProofTerm",
@@ -59,11 +60,30 @@ def read_json(path):
         return json.load(stream)
 
 
-def write_json(path, value):
+def read_json_identity(path):
+    data = Path(path).read_bytes()
+    return json.loads(gzip.decompress(data) if str(path).endswith(".gz") else data), digest(data)
+
+
+def write_json(path, value, *, identify=False):
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_name(path.name + "." + uuid.uuid4().hex + ".tmp")
-    temporary.write_text(json.dumps(value, indent=2) + "\n")
+    data = (json.dumps(value, indent=2) + "\n").encode("utf-8")
+    temporary.write_bytes(data)
     temporary.replace(path)
+    if identify:
+        return digest(data)
+
+
+def accepted_receipt_digest(order, receipt_hashes):
+    # Each receipt hash covers its complete artifact and native producer inventory.
+    return digest_json([(name, receipt_hashes[name]) for name in order])
+
+
+def check_accepted_receipts(binding, order, receipt_hashes):
+    if (receipt_hashes.keys() != set(order)
+            or accepted_receipt_digest(order, receipt_hashes) != binding["accepted_receipts_sha256"]):
+        raise RuntimeError("Current receipts differ from the successful closure axiom audit")
 
 
 def module_path(name):
@@ -71,6 +91,10 @@ def module_path(name):
     if any(not part or any(c in part for c in "/\\\n\r\0") for part in parts):
         raise ValueError(f"Invalid module name: {name!r}")
     return Path(*parts)
+
+
+def module_receipt_path(audits, name):
+    return audits / "modules" / module_path(name).with_suffix(".json")
 
 
 def run(*command, **kwargs):
@@ -191,6 +215,11 @@ def native_toolchain_inventory(prefix):
             resolved_hashes[resolved] = hash_file(resolved)
         values[str(path)] = resolved_hashes[resolved]
     return values
+
+
+def check_native_toolchain(prefix, expected):
+    if expected and native_toolchain_inventory(prefix) != expected:
+        raise RuntimeError("The bundled native producer toolchain inventory changed")
 
 
 def native_compile_environment(env):
@@ -651,6 +680,12 @@ def main():
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
     except BlockingIOError:
         raise RuntimeError("Another verifier is already using this project's build directory")
+    result_path = audits / "result.json"
+    if not args.plan:
+        # An interrupted attempt may leave reusable receipts, but no final success.
+        result_path.unlink(missing_ok=True)
+    policy_path = Path(__file__).resolve()
+    policy_hash = hash_file(policy_path)
 
     lean_name = shutil.which(args.lean)
     if lean_name is None:
@@ -665,7 +700,7 @@ def main():
     index_path = args.index or root / "audit/source-index.json.gz"
     if not args.index and not index_path.exists():
         index_path = root / "audit/source-index.json"
-    index = read_json(index_path)
+    index, index_hash = read_json_identity(index_path)
     entries = {}
     for entry in index["entries"]:
         name = entry["module"]
@@ -777,9 +812,12 @@ def main():
     if not marker.exists():
         if build.exists() and any(build.rglob("*.olean")):
             raise RuntimeError("Refusing existing project artifacts without a fresh-build origin")
-        write_json(marker, {"format": FORMAT, "created_unix": time.time(), "nonce": uuid.uuid4().hex})
-    elif read_json(marker).get("format") != FORMAT:
-        raise RuntimeError("Unrecognized project artifact provenance")
+        origin = {"format": FORMAT, "created_unix": time.time(), "nonce": uuid.uuid4().hex}
+        write_json(marker, origin)
+    else:
+        origin = read_json(marker)
+        if origin.get("format") != FORMAT or not origin.get("nonce"):
+            raise RuntimeError("Unrecognized project artifact provenance")
     build.mkdir(parents=True, exist_ok=True)
     for namespace in LIBRARY_NAMESPACES:
         if (build / namespace).exists() or (build / (namespace + ".olean")).exists():
@@ -788,7 +826,7 @@ def main():
     external_artifacts = artifact_inventory(external_paths)
     environment = {"lean": version, "compiler_sha256": hash_file(lean),
                    "revisions": revisions, "artifacts": external_artifacts,
-                   "verifier_sha256": hash_file(Path(__file__).resolve()),
+                   "verifier_sha256": policy_hash,
                    "import_parser_sha256": hash_file(root / "scripts/ParseImports.lean")}
     native_toolchain = native_toolchain_inventory(prefix) if native_names else {}
     native_specs = {name: native_producer_spec(name, prefix, native_toolchain)
@@ -827,13 +865,13 @@ def main():
              "-DElab.async=false", "-Ddebug.skipKernelTC=false"]
     logical_flags = [flag for flag in flags if not flag.startswith("-M")]
     hash_cache = HashCache()
-    completed, failures, running = {}, {}, {}
+    completed, receipt_hashes, failures, running = {}, {}, {}, {}
     pending = set(order)
 
     def receipt_path(name):
-        return audits / "modules" / module_path(name).with_suffix(".json")
+        return module_receipt_path(audits, name)
 
-    def artifact_values(record, force=False):
+    def artifact_values(record, force=False, check_facets=False):
         values = {}
         for artifact in record["artifacts"]:
             path = root / artifact["path"]
@@ -841,6 +879,12 @@ def main():
             if value != artifact["sha256"]:
                 raise RuntimeError(f"Changed project artifact: {path}")
             values[artifact["path"]] = value
+        if check_facets:
+            base = build / module_path(record["module"]).with_suffix(".olean")
+            actual = {str(base.with_suffix(facet).relative_to(root)) for facet in FACETS
+                      if base.with_suffix(facet).exists()}
+            if actual != values.keys() or len(record["artifacts"]) != len(values):
+                raise RuntimeError(f"Project artifact facet inventory changed: {base}")
         native_artifact_values(record, root, native_specs.get(record["module"]),
                                hash_file if force else hash_cache.get)
         return values
@@ -864,19 +908,26 @@ def main():
         if args.fresh or not path.is_file():
             return None
         try:
-            record = read_json(path)
-            if record.get("format") != FORMAT or record.get("passed") is not True:
+            record, receipt_hash = read_json_identity(path)
+            if (record.get("format") != FORMAT or record.get("module") != name
+                    or record.get("passed") is not True or record.get("exit_code") != 0
+                    or record.get("source_unchanged") is not True
+                    or record.get("dependencies_unchanged") is not True
+                    or record.get("created_unix", 0) < origin["created_unix"]
+                    or record.get("unexpected_axioms")
+                    or set(record.get("reported_axioms", [])) - ALLOWED_AXIOMS):
                 return None
             if record.get("source_sha256") != entries[name]["source_sha256"]:
                 return None
             if record.get("external_environment") not in compatible_environments:
                 return None
             plugins = plugins_for(name)
-            if record.get("native_plugins", []) != plugins:
+            if (record.get("native_plugins", []) != plugins
+                    or (plugins and record.get("native_plugins_unchanged") is not True)):
                 return None
             old_flags = record["command"][1:record["command"].index("-R")]
-            if [flag for flag in old_flags if not flag.startswith("-M")] != (
-                    logical_flags + native_plugin_flags(plugins, root)):
+            expected_flags = logical_flags + native_plugin_flags(plugins, root)
+            if [flag for flag in old_flags if not flag.startswith("-M")] != expected_flags:
                 return None
             if set(record.get("dependencies", {})) != set(dependencies):
                 return None
@@ -884,14 +935,18 @@ def main():
                 return None
             if not any(a["path"].endswith(".olean") for a in record.get("artifacts", [])):
                 return None
-            artifact_values(record)
+            if record["key"] != source_fingerprint(
+                    record["source_sha256"], record["external_environment"], expected_flags,
+                    record["dependencies"], plugins, native_specs.get(name)):
+                return None
+            artifact_values(record, check_facets=True)
             if record["key"] != key:
                 record["revalidated_from_key"] = record["key"]
                 record["key"] = key
                 record["dependencies"] = dependencies
                 record["external_environment"] = environment_key
-                write_json(path, record)
-            return record
+                receipt_hash = write_json(path, record, identify=True)
+            return record, receipt_hash
         except (ValueError, KeyError, OSError, RuntimeError):
             return None
 
@@ -1003,17 +1058,18 @@ def main():
                 output.with_suffix(facet).unlink(missing_ok=True)
             if spec is not None:
                 shutil.rmtree(audits / "native" / name, ignore_errors=True)
-        write_json(receipt_path(name), record)
+        receipt_hash = write_json(receipt_path(name), record, identify=True)
         shutil.rmtree(stage)
         if not passed:
             print(f"FAILED {name}\n{text[-6000:]}", file=sys.stderr, flush=True)
-        return record
+        return record, receipt_hash
 
     ready = ReadyModules(order, {name: entries[name]["imports"] for name in order},
                          memory_for, mathlib_dependent)
 
-    def accept(name, record):
+    def accept(name, record, receipt_hash):
         completed[name] = record
+        receipt_hashes[name] = receipt_hash
         ready.complete(name)
 
     # A requested stop drains ordinary Lean invocations and preserves their
@@ -1040,7 +1096,7 @@ def main():
                     previous = reusable(name, key, dependencies)
                     pending.remove(name)
                     if previous:
-                        accept(name, previous)
+                        accept(name, *previous)
                     else:
                         running[executor.submit(compile_one, name, key, dependencies)] = name
                         reserved += memory_for(name)
@@ -1051,9 +1107,9 @@ def main():
             for future in done:
                 name = running.pop(future)
                 try:
-                    record = future.result()
+                    record, receipt_hash = future.result()
                     if record["passed"]:
-                        accept(name, record)
+                        accept(name, record, receipt_hash)
                         print(f"[{len(completed)}/{len(order)}] {name} ({record['seconds']:.1f}s)", flush=True)
                     else:
                         failures[name] = {"receipt": str(receipt_path(name))}
@@ -1076,16 +1132,23 @@ def main():
         if hash_file(source_path(name)) != entries[name]["source_sha256"]:
             changed.append(str(source_path(name)))
         try:
-            artifact_values(record, force=True)
+            artifact_values(record, force=True, check_facets=True)
+            if hash_file(receipt_path(name)) != receipt_hashes[name]:
+                changed.append(str(receipt_path(name)))
         except (OSError, RuntimeError) as exc:
             changed.append(str(exc))
     for path, expected in external_artifacts.items():
         if not Path(path).is_file() or hash_file(path) != expected:
             changed.append(path)
-    if native_names and native_toolchain_inventory(prefix) != native_toolchain:
-        changed.append("Bundled native producer toolchain")
+    try:
+        check_native_toolchain(prefix, native_toolchain)
+    except (OSError, RuntimeError) as exc:
+        changed.append(str(exc))
     if hash_file(lean) != environment["compiler_sha256"]:
         changed.append(str(lean))
+    for path, expected in ((index_path, index_hash), (policy_path, policy_hash)):
+        if hash_file(path) != expected:
+            changed.append(str(path))
     result = {"format": FORMAT, "passed": (not failures and not pending and not changed
                                              and len(completed) == len(order)
                                              and axiom_audit is not None and axiom_audit["passed"]),
@@ -1101,7 +1164,14 @@ def main():
                                   "audit_memory_mib": args.audit_memory, "audit_jobs": args.audit_jobs, "audit_retry_memory_mib": args.audit_retry_memory},
               "blocked_modules": sorted(pending), "changed_at_closeout": changed,
               "closure_axiom_audit": axiom_audit}
-    write_json(audits / "result.json", result)
+    if result["passed"]:
+        result["verification_binding"] = {
+            "format": FINAL_BINDING_FORMAT,
+            "source_index_sha256": index_hash,
+            "axiom_policy_sha256": policy_hash,
+            "accepted_receipts_sha256": accepted_receipt_digest(order, receipt_hashes),
+        }
+    write_json(result_path, result)
     print(json.dumps(result, indent=2))
     return 0 if result["passed"] else 1
 

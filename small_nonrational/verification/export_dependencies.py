@@ -79,7 +79,7 @@ def comparison_batches(comparisons, bases, module_limit, byte_limit):
         yield batch, sorted(modules), total
 
 
-def validate_complete_build_result(result, entries, selected, expected_format):
+def validate_complete_build_result(result, entries, selected, index_hash, policy_hash, verifier):
     """Require exactly the requested closure, allowing redundant priority roots.
 
     Root order is a scheduling choice. Independently reconstruct the build's
@@ -89,7 +89,7 @@ def validate_complete_build_result(result, entries, selected, expected_format):
     roots = result.get("roots", [])
     if not roots or len(set(roots)) != len(roots):
         raise RuntimeError("Missing or duplicated source-build roots")
-    actual, active = set(), set()
+    actual, active, order = set(), set(), []
 
     def visit(name):
         if name in active or name not in entries:
@@ -102,20 +102,28 @@ def validate_complete_build_result(result, entries, selected, expected_format):
                 visit(dep)
         active.remove(name)
         actual.add(name)
+        order.append(name)
 
     for root in roots:
         visit(root)
     audit = result.get("closure_axiom_audit") or {}
     covered = audit.get("covered_modules", [])
-    if (result.get("format") != expected_format or result.get("passed") is not True
+    if (result.get("format") != verifier.FORMAT or result.get("passed") is not True
             or actual != selected
             or result.get("checked_modules") != len(selected)
             or result.get("total_modules") != len(selected)
             or result.get("failures") or result.get("blocked_modules")
             or result.get("changed_at_closeout")
             or audit.get("passed") is not True
-            or len(covered) != len(selected) or set(covered) != selected):
+            or covered != order):
         raise RuntimeError("Final mode requires the complete successful build and full closure axiom audit")
+    binding = result.get("verification_binding") or {}
+    if (binding.get("format") != verifier.FINAL_BINDING_FORMAT
+            or binding.get("source_index_sha256") != index_hash
+            or binding.get("axiom_policy_sha256") != policy_hash
+            or not binding.get("accepted_receipts_sha256")):
+        raise RuntimeError("Final mode requires a fresh closure audit bound to this source index and verifier")
+    return order
 
 
 def main():
@@ -154,19 +162,23 @@ def main():
     spec.loader.exec_module(verifier)
     if (verifier.LEAN_COMMIT, verifier.MATHLIB_COMMIT) != (LEAN_COMMIT, MATHLIB_COMMIT):
         raise RuntimeError("The source verifier and exporter disagree on the exact pins")
-    read_json, hash_file, digest_json = verifier.read_json, verifier.hash_file, verifier.digest_json
+    hash_file, digest_json = verifier.hash_file, verifier.digest_json
     module_path = verifier.module_path
     identities = {}
 
-    def remember(path, expected=None):
+    def remember(path, expected=None, *, measured=None):
         path = path.resolve()
-        value = hash_file(path)
+        value = hash_file(path) if measured is None else measured
         if expected is not None and value != expected:
             raise RuntimeError(f"Identity mismatch: {path}")
         previous = identities.setdefault(str(path), value)
         if previous != value:
             raise RuntimeError(f"Input changed during extraction: {path}")
         return value
+
+    def remember_json(path):
+        value, checksum = verifier.read_json_identity(path)
+        return value, remember(path, measured=checksum)
 
     lean_name = shutil.which(args.lean)
     if lean_name is None:
@@ -178,7 +190,7 @@ def main():
     version = verifier.run(str(lean), "--version")
     mathlib = (args.mathlib or root / ".lake/packages/mathlib").resolve()
     external_paths, _, revisions, prefix, external_owners = verifier.library_environment(lean, mathlib, root)
-    remember(verifier_path)
+    policy_hash = remember(verifier_path)
     exporter = Path(__file__).with_name("ExportDependencies.lean").resolve()
     remember(exporter)
     remember(Path(__file__))
@@ -194,15 +206,13 @@ def main():
     # Diagnostic mode may coexist with compilation of unrelated modules. Every
     # selected receipt and input byte is still rehashed at the end.
     origin_path = audits / "fresh-build-origin.json"
-    origin = read_json(origin_path)
-    remember(origin_path)
+    origin, _ = remember_json(origin_path)
     if origin.get("format") != verifier.FORMAT or not origin.get("nonce"):
         raise RuntimeError("Missing fresh-build origin")
     index_path = args.index or root / "audit/source-index.json.gz"
     if args.index is None and not index_path.exists():
         index_path = root / "audit/source-index.json"
-    index = read_json(index_path)
-    index_hash = remember(index_path)
+    index, index_hash = remember_json(index_path)
     entries = {}
     for entry in index["entries"]:
         if entry["module"] in entries:
@@ -232,15 +242,15 @@ def main():
 
     for name in roots:
         visit(name)
-    build_result = None
+    build_result = result_hash = None
+    receipt_hashes = {}
     if not args.accepted_subgraph:
         result_path = audits / "result.json"
-        build_result = read_json(result_path)
-        remember(result_path)
-        validate_complete_build_result(build_result, entries, selected, verifier.FORMAT)
+        build_result, result_hash = remember_json(result_path)
+        audited_order = validate_complete_build_result(
+            build_result, entries, selected, index_hash, policy_hash, verifier)
     environment_path = audits / "external-environment.json"
-    environment = read_json(environment_path)
-    remember(environment_path)
+    environment, _ = remember_json(environment_path)
     environment_identity = {k: v for k, v in environment.items()
                             if k not in {"verifier_sha256", "import_parser_sha256"}}
     environment_key = digest_json(environment_identity)
@@ -258,11 +268,9 @@ def main():
         for path, expected in environment["artifacts"].items():
             remember(Path(path), expected)
     native_toolchain = environment.get("native_toolchain", {})
-    if native_toolchain:
-        if verifier.native_toolchain_inventory(prefix) != native_toolchain:
-            raise RuntimeError("The bundled native producer toolchain changed")
-        for path, expected in native_toolchain.items():
-            remember(Path(path), expected)
+    # The recorded environment contains the lexical native inventory. Rebuild
+    # it at both ends to check alias paths as well as the bytes they resolve to.
+    verifier.check_native_toolchain(prefix, native_toolchain)
     native_specs = {name: verifier.native_producer_spec(name, prefix, native_toolchain)
                     for name in selected if native_toolchain and name in verifier.NATIVE_PRODUCERS}
     native_dependencies = {}
@@ -280,8 +288,7 @@ def main():
         if key in old_environments:
             return
         path = audits / "environments" / (key + ".json")
-        old = read_json(path)
-        remember(path)
+        old, _ = remember_json(path)
         logical = {k: v for k, v in old.items() if k not in {"verifier_sha256", "import_parser_sha256"}}
         if key not in {digest_json(old), digest_json(logical)}:
             raise RuntimeError(f"Incorrect environment identity: {key}")
@@ -297,9 +304,9 @@ def main():
     for name in order:
         source = sources / module_path(name).with_suffix(".lean")
         remember(source, entries[name]["source_sha256"])
-        receipt_path = audits / "modules" / module_path(name).with_suffix(".json")
-        record = read_json(receipt_path)
-        receipt_hash = remember(receipt_path)
+        receipt_path = verifier.module_receipt_path(audits, name)
+        record, receipt_hash = remember_json(receipt_path)
+        receipt_hashes[name] = receipt_hash
         if (record.get("format") != verifier.FORMAT or record.get("module") != name
                 or record.get("passed") is not True or record.get("exit_code") != 0
                 or record.get("source_unchanged") is not True
@@ -367,6 +374,9 @@ def main():
                        "receipt_sha256": receipt_hash, "receipt_key": key,
                        "artifacts": artifacts, "base": str(base),
                        "native_artifacts": native_artifacts, "native_plugins": plugins})
+
+    if build_result:
+        verifier.check_accepted_receipts(build_result["verification_binding"], audited_order, receipt_hashes)
 
     output = args.output.resolve()
     if output.exists() and any(output.iterdir()):
@@ -711,6 +721,7 @@ def main():
             raise RuntimeError(f"Input changed before extraction closeout: {path}")
     check_reader_inventory()
     verifier.library_environment(lean, mathlib, root)  # recheck pinned clean source checkouts
+    verifier.check_native_toolchain(prefix, native_toolchain)
     input_path = output / "verified-inputs.jsonl.gz"
     with gzip.open(input_path, "wt", encoding="utf-8", compresslevel=args.compression_level) as stream:
         for item in inputs:
@@ -721,6 +732,8 @@ def main():
                 "mode": "accepted-subgraph-NON-FINAL" if args.accepted_subgraph else "complete-successful-build",
                 "mathematical_verification_claim": False, "explanation": DISCLAIMER,
                 "build_passed": build_result["passed"] if build_result else None,
+                "build_result_sha256": result_hash,
+                "verification_binding": build_result["verification_binding"] if build_result else None,
                 "roots": roots, "project_modules": len(order), "library_boundary_modules": len(boundary_seen),
                 "project_declarations": project_declarations, "boundary_declarations_referenced": boundary_count,
                 "distinct_project_declarations": distinct_project_declarations,

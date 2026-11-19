@@ -5,6 +5,16 @@ on:
 permissions:
   contents: read
 jobs:
+  verifier-tests:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          sparse-checkout: small_nonrational/verification
+          persist-credentials: false
+      - name: Check audit identity, dependency export and native producers
+        working-directory: small_nonrational/verification
+        run: python3 -m unittest -v test_final_audit_binding test_export_reader test_native_producers
   check:
     runs-on: ubuntu-24.04
     timeout-minutes: 350
