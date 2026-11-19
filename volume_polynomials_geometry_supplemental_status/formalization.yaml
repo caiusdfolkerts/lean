@@ -1,0 +1,72 @@
+version: v0.4
+project:
+  name: Quantitative logarithmic gaps and forced-series geometry
+  description: This separate supplement records the explicit area-deficit bound of Corollary 5.3, the
+    attained normalized minimum and two-sided logarithmic gap with polygon witnesses of Theorem 5.5, and
+    the complete compact-convex uniqueness, positive-area, explicit area-series formula, exposed-segment,
+    nonparallel-direction and nonsemialgebraicity conclusions of Theorem 7.3.
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.MG
+  msc2020:
+  - 52A38
+  - 14P10
+sources:
+- title: Volume polynomials and the Heine–Shephard problem
+  type: paper
+  authors:
+  - Caius Folkerts
+  relationship: formalizes
+  location: paper.pdf
+  notes: Included paper at the reviewed snapshot. This is a source-based account; the packaging does not
+    assert novelty or independent human review.
+- title: Supporting polytope proofs adapted from openai/math
+  type: other
+  relationship: adapts
+  url: https://github.com/openai/math/tree/adc7f1241b42e322a6451854ab7e4b4c146bf78a
+  notes: Source headers identify supporting polytope geometry adapted from this Apache-2.0 snapshot. Original
+    attribution and applicable licence notices are retained. This credit concerns supporting formal code,
+    rather than a claim that the paper's principal results appeared in that source.
+- title: Mathlib and Tau Ceti supporting formal libraries
+  type: other
+  relationship: background
+  notes: Canonical dependency revisions are pinned in lake-manifest.json. Vendored supporting modules
+    retain their source copyright headers and licences. These libraries supply background formal mathematics.
+automation:
+  methods:
+  - method: agent
+    tool_setup: The included paper discloses assistance from GPT-6 Astra, GPT-5.6 Sol and Kimi K3 in developing
+      its proofs. The supplied project snapshot contains the substantive Lean development; exact division
+      of prior formalization work among systems is not reconstructed here.
+  - method: agent
+    tool_setup: Palomar Challenge/Solution packaging and source inspection prepared with OpenAI Codex;
+      new wrappers and metadata require fresh verification.
+review:
+  status: unchecked
+  notes: 'Verification account updated 2026-11-19T09:29:32.602427+00:00. Exact snapshot 48103c07faaf4dd644403e6af0fccab6ae24810a
+    subsequently passed full mechanical verification, including Source/Solution builds, Comparator and
+    mandatory independent kernel checks. The older preparation note below is historical, not the current
+    verification status. This metadata-only successor preserves all formal statements, proofs, selections
+    and pins; its subsequent exact-commit reports determine mechanical and editorial status. Historical
+    preparation note: The source endpoints and literal fresh definitions were inspected. The exact 599-line
+    canonical Challenge passed run 44385950187 at source snapshot a3a563018d65f1ea3c432da6b918ac6a7087fc5f,
+    with Challenge SHA256 8524d9c44973b4116e670f7c41bb39d3346097e8631b47c8a0d2377fe79f0049. Solution,
+    actual source bridges, Comparator and independent kernels remain pending. The separate main entry''s
+    mandatory pass does not verify this supplement. No independent human review or registry acceptance
+    is claimed.'
+status:
+  notes: Prepared as a separate source-preserving extension of volume_polynomials at commit 870831c623aca75b7579240dd49084370e0f1869,
+    itself based on research e0696fddcd3d10b5d6461e62e9b2f02c4195be37. Every original mathematical source
+    and original Challenge/Solution is retained byte-for-byte.
+fidelity:
+  notes: 'All geometric primitives are literal: compact convex sets, product Lebesgue measure, finite
+    convex hulls, mixed-volume coefficients uniquely determined by complete Minkowski volume evaluations,
+    and the actual infinite segment sum. Explicit source equalities transport every selected quantitative
+    constant, hypothesis and fixed-point/face-direction conclusion. The polynomial choices have completely
+    specified values; no definition_names holes are used. This supplement does not assert the three remaining
+    uniform code-existence results or the exact printed grid-net statement of Theorem 8.2.'

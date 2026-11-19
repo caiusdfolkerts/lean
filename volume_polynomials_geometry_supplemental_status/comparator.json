@@ -1,0 +1,21 @@
+{
+  "challenge_module": "ChallengeSupplement",
+  "solution_module": "SolutionSupplement",
+  "theorem_names": [
+    "PalomarVolumeSupplement.corollary_5_3",
+    "PalomarVolumeSupplement.threshold_attained",
+    "PalomarVolumeSupplement.logarithmic_gap",
+    "PalomarVolumeSupplement.lower_polygon_witness",
+    "PalomarVolumeSupplement.forced_body_unique",
+    "PalomarVolumeSupplement.forced_body_geometric",
+    "PalomarVolumeSupplement.map_convex",
+    "PalomarVolumeSupplement.map_compact",
+    "PalomarVolumeSupplement.map_nonempty"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}
