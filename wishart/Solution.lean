@@ -45,7 +45,8 @@ end Wishart.SpectralGauge
 #print equations WishartVerification.PrincipalTheorem
 #print equations WishartVerification.principalMoment
 
-open Filter Function Matrix MeasureTheory MeasureTheory.Measure ProbabilityTheory Set Set.powersetCard TauCeti TauCeti.Proba Module
+open Matrix MeasureTheory ProbabilityTheory TauCeti TauCeti.Probability
+open WishartVerification WishartVerification.MomentAssembly Wishart.Spectral
 open scoped RealInnerProductSpace Quaternion BigOperators
 namespace WishartVerification section open scoped BigOperators Matrix
 theorem principalMoment_formula {p d:ℕ} (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℝ) (P:PrincipalPartition p d) (ν:Fin d → ℝ) (J:Finset (Fin d)) : principalMoment α Sigma P ν J = (∫ X,principalMomentIntegrand P ν J X ∂TauCeti.Probability.nonsingularWishartMeasure α Sigma) := by rfl
