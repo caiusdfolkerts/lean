@@ -121,6 +121,8 @@ def symmetricCongruence {p q : ℕ} (M : Matrix (Fin q) (Fin p) ℝ) :
     (mulRightLinearMap (Fin q) ℝ Mᵀ ∘ₗ mulLeftLinearMap (Fin p) ℝ M ∘ₗ
       (selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℝ)).subtype)
     fun A => by
+      simp only [LinearMap.comp_apply, mulRightLinearMap_apply, mulLeftLinearMap_apply,
+        Submodule.subtype_apply]
       have h := Matrix.isHermitian_mul_mul_conjTranspose M
         (Matrix.isHermitian_iff_isSelfAdjoint.mpr A.property)
       exact Matrix.isHermitian_iff_isSelfAdjoint.mp
