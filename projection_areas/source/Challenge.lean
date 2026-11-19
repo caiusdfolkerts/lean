@@ -307,11 +307,11 @@ end ProjectionAreaEscape
 
 namespace PalomarProjectionAreas.NumericProofs
 /-- The measured nonzero dimension proof for two coordinate positions. -/
-theorem twoNeZero : NeZero (1 + 1 : ℕ) := by infer_instance
+theorem twoNeZero : @NeZero ℕ (@Zero.ofOfNat0 ℕ (instOfNatNat (nat_lit 0))) (1 + 1 : ℕ) := by infer_instance
 /-- The measured lower bound used by the literal exponent two. -/
 theorem twoAtLeastTwo : Nat.AtLeastTwo (1 + 1 : ℕ) := by infer_instance
 /-- The measured nonzero dimension proof for four coordinate positions. -/
-theorem fourNeZero : NeZero (3 + 1 : ℕ) := by infer_instance
+theorem fourNeZero : @NeZero ℕ (@Zero.ofOfNat0 ℕ (instOfNatNat (nat_lit 0))) (3 + 1 : ℕ) := by infer_instance
 end PalomarProjectionAreas.NumericProofs
 
 namespace ProjectionAreaTopology

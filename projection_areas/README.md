@@ -37,3 +37,5 @@ Here's a guide to help you navigate this repo! All verified theorems/proposition
 | Corollary 5.3: an open family of nonrealizable strict quartets | `ProjectionAreaPaper.exists_open_nonrealizable_strict_quartets` |
 | Proposition 6.1: general zero-row reduction under the local spectral hypothesis | `ProjectionAreaSpectralZero.local_spectral_zero_reduction` |
 | Theorem 6.2: the complete nonnegative rank-at-most-three classification | `ProjectionAreaPaper.NonnegativeHollowMatrix.rank_at_most_three_classification` |
+
+The two selected nonzero-dimension support theorem signatures were subsequently pinned to the exact zero dictionary measured in Source. Probe run44465283393 elaborated the complete Challenge body and confirmed all three complete support type ASTs equal Source without truncation. The preceding full run compiled Source/Solution; full Comparator and independent kernel verification of this revised snapshot remain required. All other mathematical files are byte-identical to that preceding snapshot.

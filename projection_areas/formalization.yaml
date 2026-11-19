@@ -55,11 +55,15 @@ automation:
 review:
   status: unchecked
   notes: >-
-    Source statements and the paper were inspected. The corrected independent
-    633-line Challenge passed canonical elaboration in run 44389397024 at
-    SHA256 78cf8cdef535e3b7e18575eb78a62f63e9735ce03916e0b0f610a91a9e526de4.
-    The corrected source wrappers, full Comparator and mandatory kernels remain
-    pending. No independent human review or registry acceptance is claimed.
+    The preceding full run 44392553582 compiled the complete Source and
+    Solution, then rejected two NeZero support theorem signatures. The full
+    read-only raw dependency audit 44462363796 visited 35,455 constants and
+    found only those two type differences; all remaining data types, values
+    and heights matched. Canonical probe 44465283393 elaborated the revised
+    Challenge body and checked that all three complete support type ASTs
+    exactly match the actual Source, without truncation. The revised complete
+    Comparator and mandatory kernel checks remain pending. No independent
+    human review or registry acceptance is claimed.
 status:
   notes: >-
     Prepared from caiusdfolkerts/research at commit
@@ -74,5 +78,7 @@ fidelity:
     genuine named proofs and are explicitly compared. Local instances use
     these witnesses in the affected literal projection, coordinate equivalence
     and boundary predicates. All mathematical expressions, carriers, measures,
-    hypotheses and original paper proofs are retained. The corrected Challenge passed its canonical-only check; corrected source
-    wrappers, full Comparator and independent kernels remain pending.
+    hypotheses and original paper proofs are retained. Only the two NeZero support signatures now explicitly name the exact Source
+    zero dictionary, including its raw natural-number index. No source proof
+    or mathematical formula changed in this follow-up. The revised complete
+    Comparator and mandatory kernels remain pending.
