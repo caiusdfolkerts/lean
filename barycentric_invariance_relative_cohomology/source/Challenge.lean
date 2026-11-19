@@ -861,8 +861,8 @@ abbrev rankSelectedRelativeCohomology (S : Finset (Fin d)) (i : ℕ) :=
     (rankSelection_downward (rankColoredOrderComplex hs d hrank) S)
     (rankSelection_downward (rankColoredSubcomplex hs d hrank Q).toColoredComplex S)
     ((S.card : ℤ) - i - 1)
-/-- Literal FourPapers.Universal.barycentricRelativeBigradedCohomologyEquiv; source theorem12.lean:33489. -/
 include hQ in
+/-- Literal FourPapers.Universal.barycentricRelativeBigradedCohomologyEquiv; source theorem12.lean:33489. -/
 theorem palomarRelativeRankSelectedFactor (j n i : ℕ) :
     Nonempty (barycentricRelativeBigradedHomology (P := P) K d Q j n i ≃ₗ[K]
       ∀ S : {S : Finset (Fin d) // rankSubsetDegree S = j ∧ rankSubsetWeight d S = n},
