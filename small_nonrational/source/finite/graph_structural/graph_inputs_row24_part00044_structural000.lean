@@ -1,0 +1,84 @@
+module
+prelude
+public import FacetCliqueRaw
+public import GraphDirectCore
+public import GraphInputsRow24Part00044Data
+public import GraphInputsRow24Part00044Frames
+public import GraphInputsRow24Part00044Leaves
+public import GraphInputsRow24Part00044Metadata
+public meta import HexNatLiteral
+public meta import KernelDecideContext
+
+@[expose] public section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00044.record002
+open Papers.RationalityTen PackedGraphCertificate GraphCaseCertificate
+abbrev raw := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00044.record002
+def vertexColumn : Fields := ⟨10, hexnat% "f08bae1b46a99a6a59962da4e5386e17bc12e785d16a569695654b59354d1b45de0f43b0dc3a8da3a4d9392d4b2ac6b26c5bc1e8761e2749ca719e1745c9715e0f43c3c2c83a919460d84e0b81e2c439915450d44d0b41da0d8390d4328c930cc4b0ac1b81d0711c2705c0f"⟩
+def kindColumn : Fields := ⟨3, hexnat% "1a69b6d24934d36da492492492492492492492491249249249249249249249249"⟩
+def data := FacetSat.RawProjection.data raw vertexColumn kindColumn
+theorem projection_checked : FacetSat.RawProjection.check raw vertexColumn kindColumn = true :=
+  by decide_kernel_context
+def selectedKinds : List Nat := [2]
+def candidates : List (Fin raw.n) := [⟨33, by decide⟩, ⟨34, by decide⟩, ⟨35, by decide⟩, ⟨36, by decide⟩, ⟨37, by decide⟩, ⟨38, by decide⟩, ⟨39, by decide⟩, ⟨40, by decide⟩, ⟨41, by decide⟩, ⟨42, by decide⟩, ⟨43, by decide⟩, ⟨44, by decide⟩, ⟨45, by decide⟩, ⟨46, by decide⟩, ⟨47, by decide⟩, ⟨48, by decide⟩, ⟨49, by decide⟩, ⟨50, by decide⟩, ⟨51, by decide⟩, ⟨52, by decide⟩, ⟨53, by decide⟩, ⟨54, by decide⟩, ⟨55, by decide⟩, ⟨56, by decide⟩, ⟨57, by decide⟩, ⟨58, by decide⟩, ⟨59, by decide⟩, ⟨60, by decide⟩, ⟨61, by decide⟩, ⟨62, by decide⟩, ⟨63, by decide⟩, ⟨64, by decide⟩, ⟨69, by decide⟩, ⟨71, by decide⟩, ⟨73, by decide⟩, ⟨74, by decide⟩, ⟨75, by decide⟩, ⟨76, by decide⟩, ⟨77, by decide⟩, ⟨82, by decide⟩, ⟨84, by decide⟩]
+def requirements : Nat → Nat := GraphFacetClique.restrictedQuota selectedKinds raw.data.quota
+theorem candidates_complete : FacetSat.cliqueCoverageCheck data.kind selectedKinds candidates = true :=
+  by decide_kernel_context
+def certificate : CliqueExclusion.QuotaCertificate raw.n :=
+  let c0 : CliqueExclusion.QuotaCertificate raw.n := .classes 2 [hexnat% "1000800002800000000000", hexnat% "20010000191000000000", hexnat% "20f000000000000000", hexnat% "41e000000000000000000", 291959919593127936, 860187528827764736, 42803644071936]
+  c0
+theorem checked : CliqueExclusion.checkQuotas data.relation data.kind
+    candidates requirements certificate = true := by decide_kernel_context
+theorem local_excluded (valid : GraphGrowthInputs.Valid raw.inputs)
+    (matrix : MatrixGraphProblem.Checked raw.data) (B : List (Fin raw.n))
+    (H : GraphGrowthConstraints.Target (raw.inputs.problem valid) B) : False :=
+  FacetSat.RawProjection.excluded_of_clique raw valid matrix vertexColumn kindColumn
+    projection_checked selectedKinds candidates candidates_complete certificate checked B H
+theorem direct_core : DirectCore raw where
+  matrix := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00044.record002_matrix_checked
+  valid := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00044.record002_validity
+  literal := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00044.record002_literal
+  leaf_nodup := by decide +kernel
+  frames := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00044.record002_frames_supported Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00044.record002_cells_exact
+  leaves_checked := ⟨Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00044.record002_certificates, Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00044.record002_leaf_certificates_checked⟩
+  complete := fun B H => False.elim (local_excluded Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00044.record002_validity Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00044.record002_matrix_checked B H)
+#print axioms local_excluded
+end Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00044.record002
+
+@[expose] public section
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+namespace Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00044.record005
+open Papers.RationalityTen PackedGraphCertificate GraphCaseCertificate
+abbrev raw := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00044.record005
+def vertexColumn : Fields := ⟨10, hexnat% "3c2e2b4aaa9aa9695ab19c62d876a398e9394e2b85ef0789d26a96a659566c5714b51d68d6364d534ad17783d0ec370ea368e5354cb31cf0ba2d8b92d4b8ad2b2ae1b46c5ba1d8791d4731c6725e0f43c8f13c3c0e8a6158360b81e0e4a5154350b41da0d8390d4328c530ce0b42c2b06c8711c2705c0f"⟩
+def kindColumn : Fields := ⟨3, hexnat% "db6db6d26db49b6db6da4db692492492492492492492492491249249249249249249249"⟩
+def data := FacetSat.RawProjection.data raw vertexColumn kindColumn
+theorem projection_checked : FacetSat.RawProjection.check raw vertexColumn kindColumn = true :=
+  by decide_kernel_context
+def selectedKinds : List Nat := [2]
+def candidates : List (Fin raw.n) := [⟨29, by decide⟩, ⟨30, by decide⟩, ⟨31, by decide⟩, ⟨32, by decide⟩, ⟨33, by decide⟩, ⟨34, by decide⟩, ⟨35, by decide⟩, ⟨36, by decide⟩, ⟨37, by decide⟩, ⟨38, by decide⟩, ⟨39, by decide⟩, ⟨40, by decide⟩, ⟨41, by decide⟩, ⟨42, by decide⟩, ⟨43, by decide⟩, ⟨44, by decide⟩, ⟨45, by decide⟩, ⟨46, by decide⟩, ⟨47, by decide⟩, ⟨48, by decide⟩, ⟨49, by decide⟩, ⟨50, by decide⟩, ⟨51, by decide⟩, ⟨52, by decide⟩, ⟨53, by decide⟩, ⟨54, by decide⟩, ⟨55, by decide⟩, ⟨56, by decide⟩, ⟨57, by decide⟩, ⟨58, by decide⟩, ⟨59, by decide⟩, ⟨60, by decide⟩, ⟨61, by decide⟩, ⟨62, by decide⟩, ⟨67, by decide⟩, ⟨68, by decide⟩, ⟨78, by decide⟩, ⟨79, by decide⟩, ⟨84, by decide⟩, ⟨85, by decide⟩]
+def requirements : Nat → Nat := GraphFacetClique.restrictedQuota selectedKinds raw.data.quota
+theorem candidates_complete : FacetSat.cliqueCoverageCheck data.kind selectedKinds candidates = true :=
+  by decide_kernel_context
+def certificate : CliqueExclusion.QuotaCertificate raw.n :=
+  let c0 : CliqueExclusion.QuotaCertificate raw.n := .classes 2 [hexnat% "182000000200000000", hexnat% "3040000000000000000000", hexnat% "80004000080440000000", 6756498952683520, 1035828154813382656, 1261853145227591680, 1396386746597376]
+  c0
+theorem checked : CliqueExclusion.checkQuotas data.relation data.kind
+    candidates requirements certificate = true := by decide_kernel_context
+theorem local_excluded (valid : GraphGrowthInputs.Valid raw.inputs)
+    (matrix : MatrixGraphProblem.Checked raw.data) (B : List (Fin raw.n))
+    (H : GraphGrowthConstraints.Target (raw.inputs.problem valid) B) : False :=
+  FacetSat.RawProjection.excluded_of_clique raw valid matrix vertexColumn kindColumn
+    projection_checked selectedKinds candidates candidates_complete certificate checked B H
+theorem direct_core : DirectCore raw where
+  matrix := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00044.record005_matrix_checked
+  valid := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00044.record005_validity
+  literal := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00044.record005_literal
+  leaf_nodup := by decide +kernel
+  frames := Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00044.record005_frames_supported Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00044.record005_cells_exact
+  leaves_checked := ⟨Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00044.record005_certificates, Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00044.record005_leaf_certificates_checked⟩
+  complete := fun B H => False.elim (local_excluded Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00044.record005_validity Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00044.record005_matrix_checked B H)
+#print axioms local_excluded
+end Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00044.record005

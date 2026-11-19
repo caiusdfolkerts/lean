@@ -410,27 +410,4 @@ theorem record020_raw_node_checks (record020_valid : GraphGrowthInputs.Valid rec
       record020.maps record020.leaf record020.nodes i = true :=
   record020.node_checks_valid record020_valid record020_supports (record020_checked record020_valid) i
 #print axioms record020_raw_node_checks
-theorem record021_nodes_0 (record021_valid : GraphGrowthInputs.Valid record021.inputs) : Interval (record021.nodeTestValid record021_valid) 0 32 :=
-  interval_of_check _ 0 32 (by decide_kernel_context)
-theorem record021_nodes_32 (record021_valid : GraphGrowthInputs.Valid record021.inputs) : Interval (record021.nodeTestValid record021_valid) 32 64 :=
-  interval_of_check _ 32 32 (by decide_kernel_context)
-theorem record021_nodes_64 (record021_valid : GraphGrowthInputs.Valid record021.inputs) : Interval (record021.nodeTestValid record021_valid) 64 88 :=
-  interval_of_check _ 64 24 (by decide_kernel_context)
-theorem record021_supports : record021.Supports := by unfold RawData.Supports; decide +kernel
-theorem record021_leaf_0 : Interval record021.leafTest 0 1 :=
-  interval_of_check _ 0 1 (by decide +kernel)
-theorem record021_leaves_nodup (j : Fin record021.l) : (record021.leaf j).Nodup :=
-  record021.leaves_nodup_of_interval record021_leaf_0 j
-theorem record021_checked (record021_valid : GraphGrowthInputs.Valid record021.inputs) : Interval (record021.nodeTestValid record021_valid) 0 88 :=
-  (FiniteChecks.interval_append (record021.nodeTestValid record021_valid) 0 32 88
-  (record021_nodes_0 record021_valid)
-  (FiniteChecks.interval_append (record021.nodeTestValid record021_valid) 32 64 88
-  (record021_nodes_32 record021_valid)
-  (record021_nodes_64 record021_valid)))
-theorem record021_raw_node_checks (record021_valid : GraphGrowthInputs.Valid record021.inputs) (i : Fin record021.t) :
-    RawGraphConditionedGrowth.nodeCheck (record021.inputs.problem record021_valid)
-      record021.maps record021.leaf record021.nodes i = true :=
-  record021.node_checks_valid record021_valid record021_supports (record021_checked record021_valid) i
-#print axioms record021_raw_node_checks
-
 end Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00130

@@ -222,7 +222,8 @@ theorem record003_local_1 : Interval (localCheck record003) 64 98 :=
   interval_of_check _ 64 34 (by decide +kernel)
 
 theorem record003_local_checked : Interval (localCheck record003) 0 98 :=
-  (interval_append _ 0 64 98 record003_local_0 record003_local_1)
+  interval_of_check _ 0 98 (by decide +kernel)
+
 theorem record003_kind_checked : Interval record003.data.kindTest 0 record003.k :=
   Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00059.record005_kind_checked
 
@@ -726,7 +727,8 @@ theorem record011_local_1 : Interval (localCheck record011) 64 98 :=
   interval_of_check _ 64 34 (by decide +kernel)
 
 theorem record011_local_checked : Interval (localCheck record011) 0 98 :=
-  (interval_append _ 0 64 98 record011_local_0 record011_local_1)
+  interval_of_check _ 0 98 (by decide +kernel)
+
 theorem record011_kind_checked : Interval record011.data.kindTest 0 record011.k :=
   Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00059.record013_kind_checked
 
@@ -789,7 +791,8 @@ theorem record012_local_1 : Interval (localCheck record012) 64 89 :=
   interval_of_check _ 64 25 (by decide +kernel)
 
 theorem record012_local_checked : Interval (localCheck record012) 0 89 :=
-  (interval_append _ 0 64 89 record012_local_0 record012_local_1)
+  interval_of_check _ 0 89 (by decide +kernel)
+
 theorem record012_kind_checked : Interval record012.data.kindTest 0 record012.k :=
   Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00059.record014_kind_checked
 
@@ -2659,7 +2662,8 @@ theorem record042_local_1 : Interval (localCheck record042) 64 93 :=
   interval_of_check _ 64 29 (by decide +kernel)
 
 theorem record042_local_checked : Interval (localCheck record042) 0 93 :=
-  (interval_append _ 0 64 93 record042_local_0 record042_local_1)
+  interval_of_check _ 0 93 (by decide +kernel)
+
 theorem record042_kind_checked : Interval record042.data.kindTest 0 record042.k :=
   Papers.RationalityTen.CompactReplay.GraphInputsRow24Part00059.record041_kind_checked
 

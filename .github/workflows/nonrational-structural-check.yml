@@ -1,0 +1,50 @@
+name: Small nonrational structural verification
+on:
+  push:
+    branches: [integration/nonrational-structural-replay]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+    defaults:
+      run:
+        working-directory: small_nonrational
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          sparse-checkout: small_nonrational
+          persist-credentials: false
+      - name: Install the pinned compiler
+        run: |
+          curl -fsSL --retry 3 https://github.com/leanprover/elan/releases/download/v4.2.3/elan-x86_64-unknown-linux-gnu.tar.gz -o "$RUNNER_TEMP/elan.tar.gz"
+          echo "df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2  $RUNNER_TEMP/elan.tar.gz" | sha256sum -c -
+          tar -xzf "$RUNNER_TEMP/elan.tar.gz" -C "$RUNNER_TEMP"
+          "$RUNNER_TEMP/elan-init" -y --no-modify-path --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          "$HOME/.elan/bin/elan" toolchain install "$(cat lean-toolchain)"
+      - name: Rebuild source index with Lean and check all indexed hashes
+        run: |
+          python3 verification/refresh_source_index.py --lean "$(elan which lean)" --write --report verification/index-refresh-report.json
+          python3 verification/run.py --prepare-only
+      - name: Retain compiler-parsed index
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: structural-source-index
+          path: |
+            small_nonrational/verification/source_index.json
+            small_nonrational/verification/index-refresh-report.json
+      - name: Check representative integrated case modules
+        run: |
+          cd .lake/verification_workspace
+          lake env python3 scripts/fetch_mathlib_cache.py
+          python3 - <<'PY'
+          import json, pathlib, subprocess
+          entries = json.loads(pathlib.Path('../../verification/structural-selection.json').read_text())['cases']
+          for row in sorted({e['row'] for e in entries}):
+              e = max((e for e in entries if e['row'] == row), key=lambda e: e['old_nodes'])
+              target = e['record'].split('.')[-2] + 'Cases'
+              print('Checking', target, 'including', e['record'], flush=True)
+              subprocess.run(['lake', 'build', '+' + target], check=True)
+          PY

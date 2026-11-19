@@ -2235,7 +2235,8 @@ theorem record035_local_1 : Interval (localCheck record035) 64 89 :=
   interval_of_check _ 64 25 (by decide +kernel)
 
 theorem record035_local_checked : Interval (localCheck record035) 0 89 :=
-  (interval_append _ 0 64 89 record035_local_0 record035_local_1)
+  interval_of_check _ 0 89 (by decide +kernel)
+
 theorem record035_kind_checked : Interval record035.data.kindTest 0 record035.k :=
   interval_of_check _ 0 5 (by decide +kernel)
 

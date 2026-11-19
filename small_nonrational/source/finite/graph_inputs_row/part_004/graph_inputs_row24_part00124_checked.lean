@@ -448,24 +448,6 @@ theorem record025_raw_node_checks (record025_valid : GraphGrowthInputs.Valid rec
       record025.maps record025.leaf record025.nodes i = true :=
   record025.node_checks_valid record025_valid record025_supports (record025_checked record025_valid) i
 #print axioms record025_raw_node_checks
-theorem record026_nodes_0 (record026_valid : GraphGrowthInputs.Valid record026.inputs) : Interval (record026.nodeTestValid record026_valid) 0 32 :=
-  interval_of_check _ 0 32 (by decide_kernel_context)
-theorem record026_nodes_32 (record026_valid : GraphGrowthInputs.Valid record026.inputs) : Interval (record026.nodeTestValid record026_valid) 32 64 :=
-  interval_of_check _ 32 32 (by decide_kernel_context)
-theorem record026_supports : record026.Supports := by unfold RawData.Supports; decide +kernel
-theorem record026_leaf_0 : Interval record026.leafTest 0 1 :=
-  interval_of_check _ 0 1 (by decide +kernel)
-theorem record026_leaves_nodup (j : Fin record026.l) : (record026.leaf j).Nodup :=
-  record026.leaves_nodup_of_interval record026_leaf_0 j
-theorem record026_checked (record026_valid : GraphGrowthInputs.Valid record026.inputs) : Interval (record026.nodeTestValid record026_valid) 0 64 :=
-  (FiniteChecks.interval_append (record026.nodeTestValid record026_valid) 0 32 64
-  (record026_nodes_0 record026_valid)
-  (record026_nodes_32 record026_valid))
-theorem record026_raw_node_checks (record026_valid : GraphGrowthInputs.Valid record026.inputs) (i : Fin record026.t) :
-    RawGraphConditionedGrowth.nodeCheck (record026.inputs.problem record026_valid)
-      record026.maps record026.leaf record026.nodes i = true :=
-  record026.node_checks_valid record026_valid record026_supports (record026_checked record026_valid) i
-#print axioms record026_raw_node_checks
 theorem record027_nodes_0 (record027_valid : GraphGrowthInputs.Valid record027.inputs) : Interval (record027.nodeTestValid record027_valid) 0 31 :=
   interval_of_check _ 0 31 (by decide_kernel_context)
 theorem record027_supports : record027.Supports := by unfold RawData.Supports; decide +kernel

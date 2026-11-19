@@ -7,6 +7,7 @@ public import GraphInputsRow24Part00109Leaves
 public import GraphEmbeddingCoverage
 public import GraphCoverageBatch094
 public import GraphCoverageBatch095
+public import GraphInputsRow24Part00109Structural000
 
 
 @[expose] public section
@@ -297,16 +298,6 @@ theorem record009_result : Result (24, 27216445456512) :=
   of_small 24 27216445456512 (by decide) ⟨record009, record009_core, record009_parameters, record009_coverage⟩
 #print axioms record009_result
 
-theorem record010_core : Core record010 where
-  matrix := record010_matrix_checked
-  valid := record010_validity
-  literal := record010_literal
-  nodes := record010_raw_node_checks record010_validity
-  leaf_nodup := record010_leaves_nodup
-  frames := record010_frames_supported record010_cells_exact
-  root_empty := by decide +kernel
-  leaves_checked := ⟨record010_certificates, record010_leaf_certificates_checked⟩
-
 theorem record010_parameters : Parameters record010 (rowOfCode 24) 27216478486656 where
   kind_count := by decide +kernel
   quota := by decide +kernel
@@ -322,7 +313,7 @@ theorem record010_coverage : Coverage record010 FacetUniverses.FullSmall.cells S
     GraphEmbeddingCoverage.small_edges GraphCoverageDescriptions.GraphCoverageBatch094.candidate09498_checked
 
 theorem record010_result : Result (24, 27216478486656) :=
-  of_small 24 27216478486656 (by decide) ⟨record010, record010_core, record010_parameters, record010_coverage⟩
+  of_direct_small 24 27216478486656 (by decide) ⟨record010, Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00109.record010.direct_core, record010_parameters, record010_coverage⟩
 #print axioms record010_result
 
 theorem record011_core : Core record011 where
@@ -437,16 +428,6 @@ theorem record014_result : Result (24, 27248640934016) :=
   of_small 24 27248640934016 (by decide) ⟨record014, record014_core, record014_parameters, record014_coverage⟩
 #print axioms record014_result
 
-theorem record015_core : Core record015 where
-  matrix := record015_matrix_checked
-  valid := record015_validity
-  literal := record015_literal
-  nodes := record015_raw_node_checks record015_validity
-  leaf_nodup := record015_leaves_nodup
-  frames := record015_frames_supported record015_cells_exact
-  root_empty := by decide +kernel
-  leaves_checked := ⟨record015_certificates, record015_leaf_certificates_checked⟩
-
 theorem record015_parameters : Parameters record015 (rowOfCode 24) 27248905175168 where
   kind_count := by decide +kernel
   quota := by decide +kernel
@@ -462,7 +443,7 @@ theorem record015_coverage : Coverage record015 FacetUniverses.FullSmall.cells S
     GraphEmbeddingCoverage.small_edges GraphCoverageDescriptions.GraphCoverageBatch095.candidate09503_checked
 
 theorem record015_result : Result (24, 27248905175168) :=
-  of_small 24 27248905175168 (by decide) ⟨record015, record015_core, record015_parameters, record015_coverage⟩
+  of_direct_small 24 27248905175168 (by decide) ⟨record015, Papers.RationalityTen.StructuralGraphCases.GraphInputsRow24Part00109.record015.direct_core, record015_parameters, record015_coverage⟩
 #print axioms record015_result
 
 theorem record016_core : Core record016 where
