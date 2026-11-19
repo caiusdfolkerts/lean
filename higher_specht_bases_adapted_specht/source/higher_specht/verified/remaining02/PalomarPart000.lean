@@ -8237,8 +8237,11 @@ theorem ordinaryAction_coefficientWitness_coeff {n : ℕ}
     (exponentFactorial a) (exponentFactorial_pos a)
     (fun e _ => exponentFactorial_permuted a e.val) f r
 
+theorem fixedMasterIndex_bound (mu : YoungDiagram) :
+    (⊥ : YoungDiagram).card ≤ mu.card := by simp [YoungDiagram.card]
+
 abbrev FixedFiniteHarmonicIndex (mu : YoungDiagram) (s : ℕ) :=
-  FixedGriffinIndex mu ⊥ (by simp [YoungDiagram.card]) s
+  FixedGriffinIndex mu ⊥ (fixedMasterIndex_bound mu) s
 
 def fixedCommonCut {mu : YoungDiagram} {s : ℕ} (i : FixedFiniteHarmonicIndex mu s) : ℕ :=
   min (mu.card - i.multiplier.colLen 0)

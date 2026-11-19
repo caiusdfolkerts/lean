@@ -122,8 +122,11 @@ theorem adapted_specht_lattices_and_specialization (n s : ℕ) (hs : 0 < s) :
       simpa only [map_natCast] using hA.map f
     refine ⟨adaptedGriffinCopy (R := R) lam i.val, ?_,
       ⟨adaptedGriffinSpechtEquiv hfac lam hk hs hheight i⟩⟩
-    simpa only [map_adaptedMasterPolynomial f hA] using
-      adaptedGriffinCopy_eq_span (R := R) lam i.val
+    have hm (T : StandardYoungTableau (YoungDiagram.ofPartition i.val.part)) :
+        MvPolynomial.map f (adaptedMasterPolynomial A i.val T) =
+          adaptedMasterPolynomial R i.val T :=
+      map_adaptedMasterPolynomial (R := A) (S := R) f hA i.val T
+    simpa only [hm] using adaptedGriffinCopy_eq_span (R := R) lam i.val
   · intro K _ hchar
     have hfac : IsUnit (n.factorial : K) :=
       isUnit_iff_ne_zero.mpr ((factorial_ne_zero_iff_characteristic_range K n).mpr hchar)
@@ -132,7 +135,10 @@ theorem adapted_specht_lattices_and_specialization (n s : ℕ) (hs : 0 < s) :
     intro lam hk hheight i
     have h := corollary_5_7_field_copy K hchar lam hk hs hheight i
     refine ⟨adaptedGriffinCopy (R := K) lam i.val, ?_, h⟩
-    simpa only [map_adaptedMasterPolynomial f hA] using
-      adaptedGriffinCopy_eq_span (R := K) lam i.val
+    have hm (T : StandardYoungTableau (YoungDiagram.ofPartition i.val.part)) :
+        MvPolynomial.map f (adaptedMasterPolynomial A i.val T) =
+          adaptedMasterPolynomial K i.val T :=
+      map_adaptedMasterPolynomial (R := A) (S := K) f hA i.val T
+    simpa only [hm] using adaptedGriffinCopy_eq_span (R := K) lam i.val
 
 end HigherSpecht
