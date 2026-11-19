@@ -1,0 +1,176 @@
+version: v0.4
+project:
+  name: Normal-projective equivalence and the exact cube bound
+  description: PN equivalence of realizations of a simple polytope is exactly membership in the same connected
+    component of its labelled realization space modulo affine transformations. Local changes use d projective
+    and d normal moves. Every simple convex three-polytope is PN-unique. For every d at least 2, the largest
+    distance from a combinatorial d-cube to the geometric cube is exactly 2d-3, with separate sharp projective
+    and normal counts. The cyclic family forces the lower bound for every target facet labelling. A full-dimensional
+    convex hull of d labelled pairs with an interior point in each open paired segment has precisely those
+    extreme vertices and the complete labelled crosspolytope face lattice.
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.CO
+  - math.MG
+  msc2020:
+  - 52B05
+  - 52B11
+sources:
+- title: Normal-projective equivalence and the exact cube bound
+  authors:
+  - Caius Folkerts
+  type: paper
+  relationship: formalizes
+  location: paper.pdf
+  note: Theorems1 and3, Corollaries2 and7, and the local word bound of Lemma4, with their genuine mathematical
+    proof/specification supports. The boundary-origin source example is retained but unselected.
+related_formalizations:
+- title: caiusdfolkerts/research normal_projective
+  relationship: repackages
+  id: https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/normal_projective
+  note: The complete substantive development is copied from this exact revision, preserving original attribution
+    and licences. The registry selection records the principal canonical theorem formulations and their
+    genuine proof/specification dependencies. The auxiliary boundary-origin source check remains present
+    without a separate result claim.
+automation:
+  methods:
+  - method: agent
+    tool_setup: The manuscript discloses GPT-6 Astra, GPT-5.6 Sol, and Kimi K3 assistance in developing
+      its proofs. Historical roles beyond that disclosure have not been independently reconstructed.
+  - method: agent
+    tool_setup: OpenAI Codex GPT-6.1 Sol prepared the Palomar statement and metadata, comparing the supplied
+      manuscript, README table, and Lean declarations.
+  - method: agent
+    models:
+    - GPT-6.1 Sol
+    framework: OpenAI Codex
+    tool_setup: 'Historical preparation note, written before the complete mechanical verification of commit
+      17cc5b95153fe8103de8b99250c274b04ae9483d: Prepared the standalone actual convex-hull Corollary7
+      statement and explicit proof interfaces using existing paired-halfspace results, with genuine midpoint
+      supporting functionals and exact exposed-face/vertex conclusions. Source-prepared; elaboration and
+      verification pending.'
+review:
+  status: unchecked
+  notes: 'Verification record updated on 2026-11-19. Commit 17cc5b95153fe8103de8b99250c274b04ae9483d passed
+    the complete pinned full workflow (run 44386895548, report dated 2026-11-18T20:16:10Z), including
+    Source and Solution builds, Comparator and mandatory independent kernel checks. This revision changes
+    formalization.yaml only: every Lean file and theorem selection is byte-identical to that verified
+    snapshot. The historical preparation notes below do not describe the subsequent mechanical verification
+    outcome. Mathematical scope exclusions remain in force. Fresh verification and editorial decisions
+    for this metadata revision are recorded separately; a clean editorial review is still required before
+    registration. Historical preparation note, written before the complete mechanical verification of
+    commit 17cc5b95153fe8103de8b99250c274b04ae9483d: All17 retained statements and existing Solution proof
+    bodies are preserved verbatim, as is the complete substantive source. Exact standalone39-line Corollary7
+    Challenge and112-line generic exposure proofs passed canonical checks. In fullrun44384186711 the combined460-line
+    Challenge and all3 new Source bridge modules compiled before one final proof failed because ext chose
+    basis vectors rather than arbitrary points. Explicit LinearMap.ext and ContinuousLinearMap.ext now
+    fix both corresponding conversions; the revised final Solution is uncompiled. Actual Comparator, independent
+    kernels and clean editorial review remain pending.'
+limitations:
+- 'Historical preparation note, written before the complete mechanical verification of commit 17cc5b95153fe8103de8b99250c274b04ae9483d:
+  The exact new18-target snapshot and new Corollary7 proof interfaces have not compiled. Prior mechanical
+  verification of an older normal snapshot is historical evidence only.'
+- Five supplied definitions retain complete independently literal specifications; new Corollary7 data
+  definitions are independently literal in Challenge and Solution.
+- The boundary-origin example remains in the complete source, unselected and not claimed as a dependency
+  of the principal results.
+definition_specifications:
+  note: 'Comparator compares raw ConstantInfo, including proof fields and reducibility heights. The five
+    recorded definition values therefore use its definition-hole interface. This does not leave their
+    mathematics unspecified: compared normal and support projections fix relabelling and both cube families
+    completely; a literal iff fixes geometric word length, and IsLeast uniquely fixes distance. All specifications
+    are independent statements using only the ordinary literal definitions shown in Challenge.lean, and
+    their Solution proofs use the actual original constructions. No numerical distance is manufactured
+    by a definition.'
+  details: map.json
+status:
+  scope: 'Historical preparation note, written before the complete mechanical verification of commit 17cc5b95153fe8103de8b99250c274b04ae9483d:
+    Complete source-prepared18-target candidate: all17 retained original main/support endpoints plus literal
+    standalone Corollary7. Its exact39-line standalone Challenge and112-line generic supporting-level/extremality
+    proof module passed canonical checks. Remaining Source bridge modules, combined460-line Challenge
+    and final Solution are uncompiled as this new snapshot.'
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: NormalProjective.CanonicalModel.Realization.pnRelated_iff_same_component
+    file: Solution.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator.json
+  - declaration: NormalProjective.CanonicalModel.Realization.local_word_neighbourhood
+    file: Solution.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator.json
+  - declaration: NormalProjective.simple_three_pn_unique
+    file: Solution.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator.json
+  - declaration: NormalProjective.simple_three_faceOrderIso_pn
+    file: Solution.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator.json
+  - declaration: NormalProjective.CubeUpper.every_cube_exact_word_of_faceOrderIso
+    file: Solution.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator.json
+  - declaration: NormalProjective.CubeTargetLabels.cyclic_to_geometric_cube_lower_bound
+    file: Solution.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator.json
+  - declaration: NormalProjective.CubeTargetLabels.geometric_largest_PN_distance
+    file: Solution.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator.json
+  - declaration: PalomarNormalCorollary7.paired_segment_crosspolytope
+    file: Solution.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator.json
+  supporting_obligations: The remaining10 selected targets are actual supporting proof identities or complete
+    supplied-definition specifications. They are not advertised as standalone research results.
+alignment:
+  namespace: PalomarNormalCorollary7
+  statements:
+  - source: 'Corollary7, paper.pdf p7: exact actual convex-hull crosspolytope recognition'
+    lean: PalomarNormalCorollary7.paired_segment_crosspolytope
+    module: Solution.lean
+    status: in-progress
