@@ -284,7 +284,7 @@ theorem symmetricInner_exact (p : ℕ) : TauCeti.symmetricMatrixInnerProductSpac
 /-- Every coordinate of congruence is fixed by the literal matrix formula. -/
 theorem congruence_exact {p q : ℕ} (M : Matrix (Fin q) (Fin p) ℝ) : Matrix.symmetricCongruenceLinearMap M = WishartLiteralStructures.symmetricCongruence M := by sorry
 /-- Every entry of the supplied star-algebra embedding is fixed. -/
-theorem quaternion_exact (q : ℍ[ℝ]) : Quaternion.toComplexMatrix q = WishartLiteralStructures.quaternionRepresentation q := by sorry
+theorem quaternion_exact (q : @Quaternion ℝ Real.instZero Real.instOne Real.instNeg) : Quaternion.toComplexMatrix q = WishartLiteralStructures.quaternionRepresentation q := by sorry
 /-- Exact Lebesgue normalization in every dimension, including zero. -/
 theorem lebesgue_exact (p : ℕ) : TauCeti.symmetricLebesgue p = WishartLiteralLaws.symmetricLebesgue p := by sorry
 /-- Exact Gamma value, including every totalized argument. -/

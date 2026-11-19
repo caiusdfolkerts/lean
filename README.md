@@ -13,3 +13,5 @@ Revision04 checks only the changed full interface. The sole revision03 error was
 Revision05 explicitly supplies the ordinary finite-function topology and its second-countability witness to the canonical subtype instance. Revision04 exposed that expected-type inference had requested the Frobenius matrix topology as an unresolved dictionary. No topology or norm value is replaced.
 
 Revision6: Canonical finite-function second-countability transferred to Matrix via inferInstanceAs, then the unchanged subtype topology; no mathematical value or theorem changed.
+
+Revision7: Pin only the new quaternion specification input to the complete identical function-domain AST observed in both actual Source and the literal primitive; all20 old theorem endpoints unchanged.
