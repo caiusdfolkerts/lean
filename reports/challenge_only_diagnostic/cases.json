@@ -14,10 +14,10 @@
         "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
         "lake-manifest.json": "a1ec65315c409ef3b5f2857f0be290dc749a16905b04e41d565d57c0fad583bb",
         "original-lakefile.toml": "fd9630659135ab2994eb1b710ec5ab37892a19e058fa9f4869e1a6d172a59ece",
-        "Challenge.lean": "fe73ba9b3a1fd26fc5486eab5eeff11e97588eb8d2b2a217d90c4898de252c8a"
+        "Challenge.lean": "18c62ab5eaf5ed104944c77931be52bf680eae1f19d01ee4f86f5e5ccf45fab6"
       },
       "challenge_lines": 660,
-      "challenge_bytes": 32877,
+      "challenge_bytes": 32897,
       "dependency_pins": [
         {
           "name": "mathlib",
