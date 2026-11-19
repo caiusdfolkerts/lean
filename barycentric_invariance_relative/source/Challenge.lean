@@ -525,10 +525,15 @@ theorem palomarCoherentSmul (c : K) (F : Family (P := P) K)
   rw [map_smul, hF]
   rfl
 /-- Every restriction square of the facewise maps commutes. -/
+theorem palomarCoherentZero :
+    ∀ p q (h : q ≤ p) x,
+      booleanRestriction (faceVertexInclusion h) ((0 : Family (P := P) K) p x) =
+        (0 : Family (P := P) K) q (polynomialRestriction K h x) := by
+  intros; simp
 def coherent : Submodule K (Family (P := P) K) where
   carrier := {F | ∀ p q (h : q ≤ p) x,
     booleanRestriction (faceVertexInclusion h) (F p x) = F q (polynomialRestriction K h x)}
-  zero_mem' := by intros; simp
+  zero_mem' := palomarCoherentZero K
   add_mem' := by
     intro F H hF hH p q h x
     change booleanRestriction (faceVertexInclusion h) (F p x + H p x) = _
@@ -551,7 +556,8 @@ def parameterLinear : Submodule K (Family (P := P) K) where
 /-- Each facewise map preserves the ordinary homogeneous degree. -/
 def graded : Submodule K (Family (P := P) K) where
   carrier := {F | ∀ p n x, x ∈ polynomialDegreePiece n → F p x ∈
-    basisOrdinaryDegreePiece booleanChainBasis (fun a => booleanOrdinaryDegree a.val) n}
+    @basisOrdinaryDegreePiece _ K _ _ _ (palomarBarycentricStalkModule K p)
+      booleanChainBasis (fun a => booleanOrdinaryDegree a.val) n}
   zero_mem' := by
     intro p n x hx
     exact (basisOrdinaryDegreePiece (booleanChainBasis (V := FaceVertex p) (K := K))

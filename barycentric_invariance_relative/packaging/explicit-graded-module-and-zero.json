@@ -1,0 +1,21 @@
+{
+  "status": "applied pending full verification",
+  "canonical_run": "44510898614",
+  "canonical_commit": "b0dfc81dd3aa3b9032c3d82a6789a5d1346b5015",
+  "changes": [
+    {
+      "path": "source/Challenge.lean",
+      "before_sha256": "b42d9955ec90bcdae0efe348657d8d7338d8884a554defd8e77037ecc2c198d6",
+      "after_sha256": "272a134b03fda819e1a5d875562f62566b8538ad137be76d370d48a0f39eaad3"
+    },
+    {
+      "path": "source/theorem94/PalomarPart001.lean",
+      "before_sha256": "f0cca1f581d51dd027f4138379040c07b678f1f3c2e87e36ca86290f84ea4bd2",
+      "after_sha256": "c6545604dad97d5548d1f42b4f6190b68eb5b25a72714c10cd81d60b941938d2"
+    }
+  ],
+  "selected_targets_unchanged": 29,
+  "new_holes": 0,
+  "mathematical_change": "None: explicit original module argument and genuine named zero-closure proof",
+  "applied_at": "2026-11-19T11:07:30.056879+00:00"
+}

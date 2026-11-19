@@ -1,5 +1,9 @@
 # Barycentric invariance and universal parameters for face rings
 
+This Palomar entry selects Theorem 9.4: the exact scalar ideal, genuine first-cohomology obstruction module, and universal factorial annihilator. Other theorem groups use separate configurations. Exact snapshot verification and editorial review are recorded separately; the source-project guide below is not a verification receipt for this entry.
+
+## Retained source-project guide
+
 [![Build](https://img.shields.io/github/actions/workflow/status/caiusdfolkerts/research/project-barycentric_invariance.yml?branch=main&label=&style=flat)](https://github.com/caiusdfolkerts/research/actions/workflows/project-barycentric_invariance.yml)
 
 This project contains the full Lean4 formalisation for all principal results in my paper *Barycentric invariance and universal parameters for face rings*. I've included the paper as paper.pdf.
