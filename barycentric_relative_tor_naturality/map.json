@@ -1,0 +1,16 @@
+{
+  "baseline_project": "barycentric_invariance",
+  "snapshot_source_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
+  "paper_result": "Theorem 1.2, relative equivariance",
+  "source_file": "barycentric_invariance/source/theorem12.lean",
+  "scope": "For a finite simplicial poset and a downward closed subposet, the canonical map from each homogeneous relative Koszul homology group into ordinary derived Tor is injective. Every order automorphism preserving the subposet acts compatibly with this inclusion. These two results identify the action on each internal degree of Tor in Theorem 1.2.",
+  "known_gaps": [],
+  "selected_results": [
+    "FourPapers.Universal.originalRelativeTorDegreeMap_injective",
+    "FourPapers.Universal.originalRelativeTorDegreeMap_equivariant"
+  ],
+  "source_results": {
+    "originalRelativeTorDegreeMap_injective": 24113,
+    "originalRelativeTorDegreeMap_equivariant": 24463
+  }
+}
