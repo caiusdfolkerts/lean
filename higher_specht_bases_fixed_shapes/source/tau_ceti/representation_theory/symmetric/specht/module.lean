@@ -235,7 +235,7 @@ theorem polytabloid_coeff_smul_tabloid (t : YoungTableau μ) (q : colSubgroup t)
     have hne : (r : Equiv.Perm (Fin μ.card)) • tabloid t ≠
         (q : Equiv.Perm (Fin μ.card)) • tabloid t := fun h =>
       hr (smul_tabloid_injective t h)
-    simp only [MonoidAlgebra.coeff_single, Finsupp.single_apply, hne, if_false]
+    exact Finsupp.single_eq_of_ne hne.symm
   · intro h
     exact absurd (Finset.mem_univ _) h
 
