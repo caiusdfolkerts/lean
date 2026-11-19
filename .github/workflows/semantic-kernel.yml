@@ -1,0 +1,62 @@
+name: Small nonrational semantic and rank-four kernel comparison
+on:
+  push:
+    branches: [palomar/diagnostic-semantic-kernel-20261119-r3]
+  workflow_dispatch:
+    inputs:
+      profile:
+        type: boolean
+        default: false
+        description: Collect separate Lean profiler logs after the paired timings
+permissions:
+  contents: read
+jobs:
+  compare:
+    strategy:
+      fail-fast: false
+      matrix:
+        sample: [semantic07, semantic08, semantic09, charts08, charts11, charts16]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 160
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Install pinned Lean
+        timeout-minutes: 10
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 --max-time 180 https://github.com/leanprover/elan/releases/download/v4.2.3/elan-x86_64-unknown-linux-gnu.tar.gz -o "$RUNNER_TEMP/elan.tar.gz"
+          echo "df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2  $RUNNER_TEMP/elan.tar.gz" | sha256sum --check
+          tar -xzf "$RUNNER_TEMP/elan.tar.gz" -C "$RUNNER_TEMP"
+          "$RUNNER_TEMP/elan-init" -y --no-modify-path --default-toolchain none
+          "$HOME/.elan/bin/elan" toolchain install "$(cat lean-toolchain)"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Fetch pinned Mathlib import closure
+        timeout-minutes: 20
+        env:
+          SAMPLE: ${{ matrix.sample }}
+          MATHLIB_NO_CACHE_ON_UPDATE: "1"
+        run: |
+          set -euo pipefail
+          read -r -a modules <<< "$(python3 run_remote.py "$SAMPLE" --external)"
+          test "${#modules[@]}" -gt 0
+          lake exe cache get "${modules[@]}"
+      - name: Compare kernel-checked before and after builds
+        env:
+          SAMPLE: ${{ matrix.sample }}
+          PROFILE: ${{ inputs.profile }}
+        run: |
+          set -euo pipefail
+          extra=()
+          if [ "$PROFILE" = true ]; then extra+=(--profile); fi
+          lake env python3 -u run_remote.py "$SAMPLE" "${extra[@]}"
+      - name: Retain measurements and audit logs
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: semantic-kernel-${{ matrix.sample }}-${{ github.run_attempt }}
+          path: |
+            fixture.json
+            results/
+          retention-days: 5
