@@ -1,0 +1,14 @@
+{
+  "status": "frozen literal finite-sum proof repair for compiler panic; uncompiled",
+  "failed_commit": "36ad792702e949d95422c9f5d5ccc1cdcece7508",
+  "failed_run": 44461248433,
+  "report_sha256": "262864968e1bf1d8fa7ece63ed65bb4bd0405439257dfe48bc84c8df25830fe4",
+  "failure": "No Lean error excerpts; PANIC unknown metavariable in equation-theorem generation used by simp unfolding, exit134, failing basis_remainder01. Full bounded stack retained in report.",
+  "repair": "Retain the proved tableauRows=0 rewrite, then change directly to the genuine finite sum of the false0<0 branch; apply Finset.sum_eq_zero with every summand rfl. No simp/ascentCount equation-theorem generation remains in this proof.",
+  "source": "source/higher_specht/verified/basis_remainder01.lean",
+  "before_sha256": "0bff2436e20804ef0e8fe7c336f0118e2c62680ddfed5ee538b901198cd4f124",
+  "after_sha256": "343cdba1d46aeff8780708e44dc4c161bf5208dfecdf631d0c2bff1f1f75366d",
+  "all_statements_data_instances_guards_pins_unchanged": true,
+  "scope": "All5 principal/fullCor4.3 endpoints plus all selected semantic support preserved.",
+  "not_a_diagnosis_guarantee": "The stack identifies simp equation generation and the failing module. This proof-only repair removes that operation from the immediately changed proof; its compiler result remains unverified."
+}

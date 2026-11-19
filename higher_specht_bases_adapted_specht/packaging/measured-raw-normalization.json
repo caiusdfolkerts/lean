@@ -1,0 +1,59 @@
+{
+  "status": "coherent_measured_raw_normalization_prepared_unelaborated",
+  "diagnostic_run": "44365784502",
+  "original_findings": 23,
+  "raw_data_leaves": 5,
+  "changes": [
+    {
+      "path": "source/Challenge.lean",
+      "before": "cf5e4afd1fcf2fb43a2ac9a2a5b897caef3b7fe046597b2553ca0a55ab6de90e",
+      "after": "277c7953849f5b01b88b8a1f0dc1d20ca628fed83581fa738d8c5501d684400a"
+    },
+    {
+      "path": "source/higher_specht/verified/basis_remainder01.lean",
+      "before": "710fd9d240f3b9f929e9427de88cb5affa020a28731ddf4cbd0914ebe9bf1fae",
+      "after": "a27926ac397fcad9a6a802709a7399fa6160907b2946568526de5a02a9ceec26"
+    },
+    {
+      "path": "source/higher_specht/verified/normal_form01.lean",
+      "before": "bdfaf8f07cef09ddfabebef0bf93dcbc67a488fe0d71bc98314a05faf6c6be0d",
+      "after": "676d06d1e92feff352e789c5d3ea70a84963092b2f93780142711786cb8d68db"
+    },
+    {
+      "path": "source/tau_ceti/representation_theory/symmetric/row_column_subgroup.lean",
+      "before": "bfd719676d3aba6479f3e8988ff028bef945b69306e7af143460932afb963da1",
+      "after": "9df319fe78acd295418b7a287f3c1c73353c9af1c761436f2849dff74c822799"
+    },
+    {
+      "path": "source/tau_ceti/combinatorics/young/addable.lean",
+      "before": "9bca0e082c4367623896ae93fbcd4821f071209c8ee0d807531856f92a0775db",
+      "after": "efeb56a04a259cf9f05615d24dfb00ba69da995f630a137ab51dca4e228333a5"
+    },
+    {
+      "path": "source/tau_ceti/group_theory/perm/fiber_subgroup.lean",
+      "before": "e71f09f34f3ce507f696dc5078812a5fc36912e08fdcf20fa21e393b58d66abd",
+      "after": "63d129675b00e03099eba0578aba0d76af436dacc7ab3716dbc4884dc263731c"
+    },
+    {
+      "path": "comparator.json",
+      "before": "e47cad9b827efa332cc6a926202615377a118dfe0321e83b5951470fa225fa58",
+      "after": "db350fa31d3472f42bfad776cbcbf48065752d23ca87239ec46b0b77a5cdde8d"
+    }
+  ],
+  "reducibility_only_definitions": [
+    "cochargeFilling",
+    "cochargeLabel",
+    "cochargeWord",
+    "colSubgroup",
+    "descentNumber",
+    "rowSubgroup",
+    "tableauRows",
+    "transportedCocharge"
+  ],
+  "proof_semantics": "Original lower-set, finite decision iff and fiber subgroup closure calculations moved into selected named semantic support theorems; all data fields/carriers preserved. Existing prefixTableau generated proof declarations have measured equal types and are explicitly selected.",
+  "mathematical_source_scope_unchanged": true,
+  "original_principal_targets_preserved": true,
+  "no_local_compilation": true,
+  "challenge_sha256": "277c7953849f5b01b88b8a1f0dc1d20ca628fed83581fa738d8c5501d684400a",
+  "challenge_lines": 487
+}
