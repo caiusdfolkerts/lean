@@ -37,6 +37,7 @@ jobs:
             small_nonrational/verification/index-refresh-report.json
       - name: Check representative integrated case modules
         run: |
+          mkdir -p .lake/packages
           cd .lake/verification_workspace
           lake env python3 scripts/fetch_mathlib_cache.py
           python3 - <<'PY'
