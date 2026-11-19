@@ -41,6 +41,44 @@ DISCLAIMER = (
 )
 
 
+def comparison_batches(comparisons, bases, module_limit, byte_limit):
+    """Group exact theorem comparisons while bounding unique mapped inputs.
+
+    The Lean reader caches a module only for the lifetime of one batch.  All
+    comparisons, including several with the same first owner, remain separate
+    equality checks; this only shares artifact loading and process startup.
+    """
+    if module_limit < 1 or byte_limit < 1:
+        raise ValueError("Theorem comparison batches need positive module and byte budgets")
+    sizes = {}
+    batch, modules, total = [], set(), 0
+    for first_owner, other_owner, names in comparisons:
+        if first_owner == other_owner or not names or len(names) != len(set(names)):
+            raise RuntimeError("Invalid repeated-theorem comparison")
+        pair = {first_owner, other_owner}
+        if len(pair) > module_limit:
+            raise RuntimeError("Repeated-theorem comparison exceeds --batch-modules")
+        for name in pair:
+            if name not in sizes:
+                base = Path(bases[name])
+                sizes[name] = sum(Path(str(base) + suffix).stat().st_size
+                                  for suffix in ("", ".server", ".private")
+                                  if Path(str(base) + suffix).is_file())
+        if sum(sizes[name] for name in pair) > byte_limit:
+            raise RuntimeError("Repeated-theorem comparison exceeds --batch-input-mib")
+        incoming = pair - modules
+        additional = sum(sizes[name] for name in incoming)
+        if batch and (len(modules | pair) > module_limit or total + additional > byte_limit):
+            yield batch, sorted(modules), total
+            batch, modules, total = [], set(), 0
+            incoming, additional = pair, sum(sizes[name] for name in pair)
+        batch.append((first_owner, other_owner, names))
+        modules.update(incoming)
+        total += additional
+    if batch:
+        yield batch, sorted(modules), total
+
+
 def validate_complete_build_result(result, entries, selected, expected_format):
     """Require exactly the requested closure, allowing redundant priority roots.
 
@@ -219,6 +257,22 @@ def main():
         # The diagnostic mode checks only the boundary facets actually read.
         for path, expected in environment["artifacts"].items():
             remember(Path(path), expected)
+    native_toolchain = environment.get("native_toolchain", {})
+    if native_toolchain:
+        if verifier.native_toolchain_inventory(prefix) != native_toolchain:
+            raise RuntimeError("The bundled native producer toolchain changed")
+        for path, expected in native_toolchain.items():
+            remember(Path(path), expected)
+    native_specs = {name: verifier.native_producer_spec(name, prefix, native_toolchain)
+                    for name in selected if native_toolchain and name in verifier.NATIVE_PRODUCERS}
+    native_dependencies = {}
+    for name in order:
+        ancestors = set()
+        for dep in entries[name]["imports"]:
+            ancestors.update(native_dependencies.get(dep, ()))
+            if dep in native_specs:
+                ancestors.add(dep)
+        native_dependencies[name] = sorted(ancestors)
 
     old_environments = {}
 
@@ -239,7 +293,7 @@ def main():
             raise RuntimeError("A receipt's library artifact environment is incompatible")
         old_environments[key] = old
 
-    records, artifact_maps, inputs = {}, {}, []
+    records, artifact_maps, inputs, native_plugins = {}, {}, [], {}
     for name in order:
         source = sources / module_path(name).with_suffix(".lean")
         remember(source, entries[name]["source_sha256"])
@@ -256,26 +310,34 @@ def main():
                 or record.get("created_unix", 0) < origin["created_unix"]):
             raise RuntimeError(f"Invalid accepted source-build receipt: {name}")
         command = record["command"]
+        plugins = [native_plugins[dep] for dep in native_dependencies[name]]
+        if (record.get("native_plugins", []) != plugins
+                or (plugins and record.get("native_plugins_unchanged") is not True)):
+            raise RuntimeError(f"Incorrect native producer plugin identities: {name}")
+        logical_flags = LOGICAL_FLAGS + verifier.native_plugin_flags(plugins, root)
         flags = command[1:command.index("-R")]
-        if ([flag for flag in flags if not flag.startswith("-M")] != LOGICAL_FLAGS
+        if ([flag for flag in flags if not flag.startswith("-M")] != logical_flags
                 or len([flag for flag in flags if flag.startswith("-M")]) != 1
                 or Path(command[0]).resolve() != lean
                 or Path(command[command.index("-R") + 1]).resolve() != sources.resolve()
                 or Path(command[-1]).resolve() != source.resolve()):
             raise RuntimeError(f"Unrecognized source-build command: {name}")
         tail = command[command.index("-R"):]
-        if (len(tail) != 5 or tail[2] != "-o"
+        spec = native_specs.get(name)
+        if (len(tail) != (7 if spec is not None else 5) or tail[2] != "-o"
                 or not Path(tail[3]).resolve().is_relative_to((audits / "staging").resolve())
                 or Path(tail[3]).name != source.with_suffix(".olean").name):
             raise RuntimeError(f"Unexpected source-build output command: {name}")
+        if spec is not None and (tail[4] != "-c"
+                or Path(tail[5]) != Path(tail[3]).with_suffix(".c")):
+            raise RuntimeError(f"Unexpected native code-generation command: {name}")
         receipt_environment(record["external_environment"])
         expected_dependencies = {dep: {"key": records[dep]["key"], "artifacts": artifact_maps[dep]}
                                  for dep in entries[name]["imports"] if dep in selected}
         if record["dependencies"] != expected_dependencies:
             raise RuntimeError(f"Receipt dependency identities disagree: {name}")
-        key = digest_json({"format": verifier.FORMAT, "source": record["source_sha256"],
-                           "external_environment": record["external_environment"],
-                           "flags": LOGICAL_FLAGS, "dependencies": record["dependencies"]})
+        key = verifier.source_fingerprint(record["source_sha256"], record["external_environment"],
+                                          logical_flags, record["dependencies"], plugins, spec)
         if record["key"] != key:
             raise RuntimeError(f"Receipt fingerprint mismatch: {name}")
         base = build / module_path(name).with_suffix(".olean")
@@ -293,10 +355,18 @@ def main():
             path = base.with_suffix(facet)
             if path.exists() != (str(path.relative_to(root)) in artifacts):
                 raise RuntimeError(f"Unrecorded or missing artifact facet: {path}")
+        native_artifacts = verifier.native_artifact_values(record, root, spec,
+                                                           lambda path: remember(path))
+        if spec is not None:
+            path = f".lake/build/verification/native/{name}/lib{name}.so"
+            native_plugins[name] = {"module": name, "path": path,
+                                    "sha256": native_artifacts[path],
+                                    "initializer": spec["initializer"]}
         records[name], artifact_maps[name] = record, artifacts
         inputs.append({"scope": "project", "module": name, "source_sha256": record["source_sha256"],
                        "receipt_sha256": receipt_hash, "receipt_key": key,
-                       "artifacts": artifacts, "base": str(base)})
+                       "artifacts": artifacts, "base": str(base),
+                       "native_artifacts": native_artifacts, "native_plugins": plugins})
 
     output = args.output.resolve()
     if output.exists() and any(output.iterdir()):
@@ -323,6 +393,46 @@ def main():
     env.pop("LEAN_PLUGIN_PATH", None)
     env["PATH"] = str(prefix / "bin") + os.pathsep + env.get("PATH", "")
 
+    # Compile this exact, hashed reader once. Re-running `lean --run` on its
+    # full source would elaborate the same extraction code for every batch.
+    # The runner imports only these freshly compiled tool artifacts and the
+    # pinned compiler libraries, never any project module. All generated tool
+    # bytes are included in the extraction's authenticated input inventory.
+    reader_directory = output / "reader"
+    reader_directory.mkdir()
+    reader_artifact = reader_directory / "ExportDependencies.olean"
+    reader_log = reader_directory / "compile.log"
+    reader_command = [str(lean), "-t1", "-j1", f"-M{args.memory}", "-DElab.async=false",
+                      "-Ddebug.skipKernelTC=false", "-R", str(exporter.parent),
+                      "-o", str(reader_artifact), str(exporter)]
+    memory_budget = verifier.LeanMemoryBudget(args.memory_budget, args.retry_memory)
+    began = time.monotonic()
+    reader_command, code = memory_budget.run(reader_command, env, reader_log, args.timeout)
+    if code or not reader_artifact.is_file():
+        raise RuntimeError(f"Fresh dependency-reader compilation failed; see {reader_log}")
+    reader_facets = {}
+    for suffix in verifier.FACETS:
+        path = reader_artifact.with_suffix(suffix)
+        if path.is_file():
+            reader_facets[path.name] = remember(path)
+    runner = reader_directory / "RunExport.lean"
+    runner.write_text("import ExportDependencies\n")
+    runner_hash = remember(runner)
+    reader_log_hash = remember(reader_log)
+    reader_files = set(reader_facets) | {runner.name, reader_log.name}
+
+    def check_reader_inventory():
+        actual = list(reader_directory.iterdir())
+        if (any(not path.is_file() for path in actual)
+                or {path.name for path in actual} != reader_files):
+            raise RuntimeError("The private reader import directory contains unexpected inputs")
+
+    check_reader_inventory()
+    reader_build = {"command": reader_command, "seconds": round(time.monotonic() - began, 3),
+                    "source_sha256": identities[str(exporter)], "artifacts": reader_facets,
+                    "runner_sha256": runner_hash, "log_sha256": reader_log_hash}
+    env["LEAN_PATH"] = str(reader_directory) + os.pathsep + env["LEAN_PATH"]
+
     # The manifest records written imports. Compiled metadata also contains
     # Lean's implicit Init import, except in a prelude module. Ask the pinned
     # parser for both forms instead of silently allowing an extra import.
@@ -332,7 +442,7 @@ def main():
     header_input.write_text("".join(
         f"{name}\t{sources / module_path(name).with_suffix('.lean')}\n" for name in order))
     header_command = [str(lean), "-t1", "-j1", f"-M{args.memory}", "-DElab.async=false",
-                      "-Ddebug.skipKernelTC=false", "--run", str(exporter), "source-imports",
+                      "-Ddebug.skipKernelTC=false", "--run", str(runner), "source-imports",
                       str(header_input), str(header_output)]
     with header_log.open("w") as stream:
         header_result = subprocess.run(header_command, env=env, stdout=stream,
@@ -353,7 +463,6 @@ def main():
     header_check = {"command": header_command, "modules": len(source_headers),
                     "input_sha256": hash_file(header_input),
                     "output_sha256": hash_file(header_output), "log_sha256": hash_file(header_log)}
-    memory_budget = verifier.LeanMemoryBudget(args.memory_budget, args.retry_memory)
     batches, summaries, boundary_pending, boundary_seen = [], {}, set(), set()
     project_declarations = 0
 
@@ -424,7 +533,7 @@ def main():
             tsv, jsonl, log = (stem.with_suffix(s) for s in (".tsv", ".jsonl", ".log"))
             tsv.write_text("".join(f"{mode}\t{item['module']}\t{item['base']}\n" for item in items_batch))
             command = [str(lean), "-t1", "-j1", f"-M{args.memory}", "-DElab.async=false",
-                       "-Ddebug.skipKernelTC=false", "--run", str(exporter), str(tsv), str(jsonl)]
+                       "-Ddebug.skipKernelTC=false", "--run", str(runner), str(tsv), str(jsonl)]
             started = time.monotonic()
             command, code = memory_budget.run(command, env, log, args.timeout)
             if code:
@@ -519,40 +628,48 @@ def main():
     first_comparison = len(batches)
 
     def comparison_inputs():
-        for index, (first_owner, other_owner) in enumerate(pairs):
+        for first_owner, other_owner in pairs:
             names = [row[0] for row in db.execute(
                 "SELECT name FROM repeated_theorems WHERE first_owner=? AND other_owner=? ORDER BY name",
                 (first_owner, other_owner))]
-            yield first_comparison + index, first_owner, other_owner, names
+            yield first_owner, other_owner, names
 
     def compare(task):
-        number, first_owner, other_owner, names = task
-        left, right = bases[first_owner], bases[other_owner]
-        mapped_bytes = sum(Path(str(base) + suffix).stat().st_size for base in (left, right)
-                           for suffix in ("", ".server", ".private") if Path(str(base) + suffix).is_file())
-        if mapped_bytes > args.batch_input_mib * 1024 * 1024:
-            raise RuntimeError("Repeated-theorem comparison exceeds --batch-input-mib")
+        index, (comparisons, modules, mapped_bytes) = task
+        number = first_comparison + index
         stem = batches_dir / f"{number:05d}"
         tsv, jsonl, log = (stem.with_suffix(s) for s in (".tsv", ".jsonl", ".log"))
-        tsv.write_text("\t".join(["compare", str(left), str(right), *names]) + "\n")
+        tsv.write_text("".join("\t".join(["compare", str(bases[left]), str(bases[right]), *names])
+                               + "\n" for left, right, names in comparisons))
         command = [str(lean), "-t1", "-j1", f"-M{args.memory}", "-DElab.async=false",
-                   "-Ddebug.skipKernelTC=false", "--run", str(exporter), str(tsv), str(jsonl)]
+                   "-Ddebug.skipKernelTC=false", "--run", str(runner), str(tsv), str(jsonl)]
         started = time.monotonic()
         command, code = memory_budget.run(command, env, log, args.timeout)
         if code:
             raise RuntimeError(f"Repeated-theorem compatibility check failed; see {log}")
-        comparisons = [json.loads(line) for line in jsonl.read_text().splitlines()]
-        if ([row["name"] for row in comparisons] != names
-                or any(row["record"] != "compatible_theorem" or row["left"] != str(left)
-                       or row["right"] != str(right) for row in comparisons)):
-            raise RuntimeError("Incomplete repeated-theorem compatibility check")
+        expected = [(name, str(bases[left]), str(bases[right]))
+                    for left, right, names in comparisons for name in names]
+        with jsonl.open() as stream:
+            for name, left, right in expected:
+                line = stream.readline()
+                if not line:
+                    raise RuntimeError("Incomplete repeated-theorem compatibility check")
+                row = json.loads(line)
+                if (row.get("record"), row.get("name"), row.get("left"), row.get("right")) != (
+                        "compatible_theorem", name, left, right):
+                    raise RuntimeError("Incorrect repeated-theorem compatibility check")
+            if stream.readline():
+                raise RuntimeError("Unexpected repeated-theorem compatibility row")
         return {"number": number, "mode": "theorem-compatibility",
-                "modules": [first_owner, other_owner], "mapped_input_bytes": mapped_bytes,
+                "modules": modules, "mapped_input_bytes": mapped_bytes,
                 "seconds": round(time.monotonic() - started, 3), "command": command,
                 "input_sha256": hash_file(tsv), "output_sha256": hash_file(jsonl),
-                "log_sha256": hash_file(log), "repeated_theorems": len(names)}
+                "log_sha256": hash_file(log), "repeated_theorems": len(expected),
+                "comparison_pairs": len(comparisons)}
 
-    for report in verifier.bounded_parallel_map(compare, comparison_inputs(), args.jobs):
+    tasks = enumerate(comparison_batches(comparison_inputs(), bases, args.batch_modules,
+                                         args.batch_input_mib * 1024 * 1024))
+    for report in verifier.bounded_parallel_map(compare, tasks, args.jobs):
         repeated_count += report["repeated_theorems"]
         batches.append(report)
         print(f"Checked theorem compatibility batch {report['number']}: {report['repeated_theorems']} repeated theorems", flush=True)
@@ -592,6 +709,7 @@ def main():
     for path, expected in identities.items():
         if hash_file(path) != expected:
             raise RuntimeError(f"Input changed before extraction closeout: {path}")
+    check_reader_inventory()
     verifier.library_environment(lean, mathlib, root)  # recheck pinned clean source checkouts
     input_path = output / "verified-inputs.jsonl.gz"
     with gzip.open(input_path, "wt", encoding="utf-8", compresslevel=args.compression_level) as stream:
@@ -614,6 +732,7 @@ def main():
                 "external_environment": environment_key,
                 "exporter_sha256": identities[str(exporter)],
                 "wrapper_sha256": identities[str(Path(__file__).resolve())],
+                "reader_build": reader_build,
                 "source_import_check": header_check,
                 "batch_limits": {"modules": args.batch_modules, "mapped_input_mib": args.batch_input_mib,
                                  "lean_memory_mib": args.memory, "seconds": args.timeout, "processes": args.jobs, "memory_budget_mib": args.memory_budget, "retry_memory_mib": args.retry_memory},
