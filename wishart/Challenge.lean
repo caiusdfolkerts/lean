@@ -372,72 +372,69 @@ namespace Wishart.QuaternionMatrix
 instance quaternionBorelSpace:BorelSpace ℍ[ℝ]:=⟨rfl⟩
 end Wishart.QuaternionMatrix
 namespace Wishart section open scoped Matrix MatrixOrder Matrix.Norms.L2Operator
-/-- Literal SymmetricMatrix. -/ abbrev SymmetricMatrix (p:ℕ):=selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℝ)
-/-- Literal principalSymmetricBlock. -/ def principalSymmetricBlock {p q:ℕ} (f:Fin q → Fin p) (X:SymmetricMatrix p):SymmetricMatrix q:=⟨(X:Matrix (Fin p) (Fin p) ℝ).submatrix f f,Matrix.isHermitian_iff_isSelfAdjoint.mp ((Matrix.isHermitian_iff_isSelfAdjoint.mpr X.property).submatrix f)⟩
-/-- Literal blockDiagonalMatrix. -/ def blockDiagonalMatrix {q m:ℕ} (A:Matrix (Fin q) (Fin q) ℝ) (C:Matrix (Fin m) (Fin m) ℝ):Matrix (Fin (q + m)) (Fin (q + m)) ℝ:=(Matrix.fromBlocks A 0 0 C).submatrix finSumFinEquiv.symm finSumFinEquiv.symm
-/-- Literal leadingScale. -/ def leadingScale (q m:ℕ) (S:Matrix (Fin (q + m)) (Fin (q + m)) ℝ):Matrix (Fin q) (Fin q) ℝ:=S.submatrix (Fin.castAdd m) (Fin.castAdd m)
-/-- Literal selectedInverseRoot. -/ def selectedInverseRoot (q m:ℕ) (S:Matrix (Fin (q + m)) (Fin (q + m)) ℝ):Matrix (Fin q) (Fin q) ℝ:=(CFC.sqrt (leadingScale q m S))⁻¹
-/-- Literal selectedWhitening. -/ def selectedWhitening (q m:ℕ) (S:Matrix (Fin (q + m)) (Fin (q + m)) ℝ):Matrix (Fin (q + m)) (Fin (q + m)) ℝ:=blockDiagonalMatrix (selectedInverseRoot q m S) (1:Matrix (Fin m) (Fin m) ℝ)
+abbrev SymmetricMatrix (p:ℕ):=selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℝ)
+def principalSymmetricBlock {p q:ℕ} (f:Fin q → Fin p) (X:SymmetricMatrix p):SymmetricMatrix q:=⟨(X:Matrix (Fin p) (Fin p) ℝ).submatrix f f,Matrix.isHermitian_iff_isSelfAdjoint.mp ((Matrix.isHermitian_iff_isSelfAdjoint.mpr X.property).submatrix f)⟩
+def blockDiagonalMatrix {q m:ℕ} (A:Matrix (Fin q) (Fin q) ℝ) (C:Matrix (Fin m) (Fin m) ℝ):Matrix (Fin (q + m)) (Fin (q + m)) ℝ:=(Matrix.fromBlocks A 0 0 C).submatrix finSumFinEquiv.symm finSumFinEquiv.symm
+def leadingScale (q m:ℕ) (S:Matrix (Fin (q + m)) (Fin (q + m)) ℝ):Matrix (Fin q) (Fin q) ℝ:=S.submatrix (Fin.castAdd m) (Fin.castAdd m)
+def selectedInverseRoot (q m:ℕ) (S:Matrix (Fin (q + m)) (Fin (q + m)) ℝ):Matrix (Fin q) (Fin q) ℝ:=(CFC.sqrt (leadingScale q m S))⁻¹
+def selectedWhitening (q m:ℕ) (S:Matrix (Fin (q + m)) (Fin (q + m)) ℝ):Matrix (Fin (q + m)) (Fin (q + m)) ℝ:=blockDiagonalMatrix (selectedInverseRoot q m S) (1:Matrix (Fin m) (Fin m) ℝ)
 end end Wishart
 namespace WishartVerification section open scoped BigOperators Matrix
-/-- Literal SymmetricMatrix. -/ abbrev SymmetricMatrix (p:ℕ):=selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℝ)
+abbrev SymmetricMatrix (p:ℕ):=selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℝ)
 /-- A partition into labelled nonempty principal blocks. -/ structure PrincipalPartition (p d:ℕ) where
   block:Fin d → Finset (Fin p)
   nonempty:∀ i,(block i).Nonempty
   unique_block:∀ x:Fin p,∃! i:Fin d,x ∈ block i
-/-- Literal principalMinor. -/ def principalMinor {p:ℕ} (I:Finset (Fin p)) (X:SymmetricMatrix p):ℝ:=((X:Matrix (Fin p) (Fin p) ℝ).submatrix (fun i:I => (i:Fin p)) (fun i:I => (i:Fin p))).det
-/-- Literal principalMomentIntegrand. -/ def principalMomentIntegrand {p d:ℕ} (P:PrincipalPartition p d) (ν:Fin d → ℝ) (J:Finset (Fin d)) (X:SymmetricMatrix p):ℝ:=∏ i ∈ J,(principalMinor (P.block i) X) ^ (ν i)
-/-- Literal principalMoment. -/ def principalMoment {p d:ℕ} (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℝ) (P:PrincipalPartition p d) (ν:Fin d → ℝ) (J:Finset (Fin d)):ℝ:=∫ X,principalMomentIntegrand P ν J X ∂TauCeti.Probability.nonsingularWishartMeasure α Sigma
-/-- Literal independentActiveScaleBlocks. -/ def independentActiveScaleBlocks {p d:ℕ} (Sigma:Matrix (Fin p) (Fin p) ℝ) (P:PrincipalPartition p d) (ν:Fin d → ℝ):Prop:=∀ i j:Fin d,i ≠ j → 0 < ν i → 0 < ν j → ∀ a ∈ P.block i,∀ b ∈ P.block j,Sigma a b=0
+def principalMinor {p:ℕ} (I:Finset (Fin p)) (X:SymmetricMatrix p):ℝ:=((X:Matrix (Fin p) (Fin p) ℝ).submatrix (fun i:I => (i:Fin p)) (fun i:I => (i:Fin p))).det
+def principalMomentIntegrand {p d:ℕ} (P:PrincipalPartition p d) (ν:Fin d → ℝ) (J:Finset (Fin d)) (X:SymmetricMatrix p):ℝ:=∏ i ∈ J,(principalMinor (P.block i) X) ^ (ν i)
+def principalMoment {p d:ℕ} (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℝ) (P:PrincipalPartition p d) (ν:Fin d → ℝ) (J:Finset (Fin d)):ℝ:=∫ X,principalMomentIntegrand P ν J X ∂TauCeti.Probability.nonsingularWishartMeasure α Sigma
+def independentActiveScaleBlocks {p d:ℕ} (Sigma:Matrix (Fin p) (Fin p) ℝ) (P:PrincipalPartition p d) (ν:Fin d → ℝ):Prop:=∀ i j:Fin d,i ≠ j → 0 < ν i → 0 < ν j → ∀ a ∈ P.block i,∀ b ∈ P.block j,Sigma a b=0
 /-- The whole content of manuscript Theorem 1.1: arbitrary real shape in its full nonsingular range, all nonnegative real exponents, all selected splits, joint integrability, and the exact equality characterization. -/ def PrincipalTheorem:Prop:=∀ (p d:ℕ) (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℝ) (P:PrincipalPartition p d) (ν:Fin d → ℝ),0 < p → 0 < d → (p:ℝ) - 1 < α → Sigma.PosDef → (∀ i,0 ≤ ν i) → (∀ J:Finset (Fin d),Integrable (principalMomentIntegrand P ν J) (TauCeti.Probability.nonsingularWishartMeasure α Sigma)) ∧ (∀ j:Fin d,principalMoment α Sigma P ν {j} * principalMoment α Sigma P ν (Finset.univ.erase j) ≤ principalMoment α Sigma P ν Finset.univ ∧ (∏ i:Fin d,principalMoment α Sigma P ν {i}) ≤ principalMoment α Sigma P ν {j} * principalMoment α Sigma P ν (Finset.univ.erase j)) ∧ ((principalMoment α Sigma P ν Finset.univ=∏ i:Fin d,principalMoment α Sigma P ν {i}) ↔ independentActiveScaleBlocks Sigma P ν)
 end end WishartVerification
 namespace Wishart section open scoped Matrix MatrixOrder Matrix.Norms.L2Operator
-/-- Literal selectedDimension. -/ abbrev selectedDimension {p:ℕ} (I:Finset (Fin p)):ℕ:=Fintype.card I
-/-- Literal complementDimension. -/ abbrev complementDimension {p:ℕ} (I:Finset (Fin p)):ℕ:=Fintype.card {a:Fin p // a ∉ I}
-/-- Literal selectedCoordinatesEquiv. -/ def selectedCoordinatesEquiv {p:ℕ} (I:Finset (Fin p)):Fin (selectedDimension I + complementDimension I) ≃ Fin p:=finSumFinEquiv.symm.trans ((Equiv.sumCongr (Fintype.equivFin I).symm (Fintype.equivFin {a:Fin p // a ∉ I}).symm).trans (Equiv.sumCompl (fun a:Fin p => a ∈ I)))
-/-- Literal normalizedSelectedMatrix. -/ def normalizedSelectedMatrix {p:ℕ} (I:Finset (Fin p)) (S:Matrix (Fin p) (Fin p) ℝ) (X:SymmetricMatrix p):SymmetricMatrix (selectedDimension I + complementDimension I):=Matrix.symmetricCongruenceLinearMap (selectedWhitening (selectedDimension I) (complementDimension I) (S.submatrix (selectedCoordinatesEquiv I) (selectedCoordinatesEquiv I))) (principalSymmetricBlock (selectedCoordinatesEquiv I) X)
+abbrev selectedDimension {p:ℕ} (I:Finset (Fin p)):ℕ:=Fintype.card I
+abbrev complementDimension {p:ℕ} (I:Finset (Fin p)):ℕ:=Fintype.card {a:Fin p // a ∉ I}
+def selectedCoordinatesEquiv {p:ℕ} (I:Finset (Fin p)):Fin (selectedDimension I + complementDimension I) ≃ Fin p:=finSumFinEquiv.symm.trans ((Equiv.sumCongr (Fintype.equivFin I).symm (Fintype.equivFin {a:Fin p // a ∉ I}).symm).trans (Equiv.sumCompl (fun a:Fin p => a ∈ I)))
+def normalizedSelectedMatrix {p:ℕ} (I:Finset (Fin p)) (S:Matrix (Fin p) (Fin p) ℝ) (X:SymmetricMatrix p):SymmetricMatrix (selectedDimension I + complementDimension I):=Matrix.symmetricCongruenceLinearMap (selectedWhitening (selectedDimension I) (complementDimension I) (S.submatrix (selectedCoordinatesEquiv I) (selectedCoordinatesEquiv I))) (principalSymmetricBlock (selectedCoordinatesEquiv I) X)
 end end Wishart
 namespace WishartVerification section open scoped ENNReal variable {Ω:Type*} [MeasurableSpace Ω] {μ:Measure Ω}
-/-- Literal HasAllFiniteMoments. -/ def HasAllFiniteMoments (f:Ω → ℝ) (μ:Measure Ω):Prop:=∀ p:ℝ≥0∞,p ≠ ∞ → MemLp f p μ
+def HasAllFiniteMoments (f:Ω → ℝ) (μ:Measure Ω):Prop:=∀ p:ℝ≥0∞,p ≠ ∞ → MemLp f p μ
 end end WishartVerification
 namespace WishartVerification section open scoped Classical Matrix variable {p d:ℕ}
-/-- Literal selectedRank. -/ abbrev selectedRank (P:PrincipalPartition p d) (j:Fin d):ℕ:=Wishart.selectedDimension (P.block j)
-/-- Literal remainingRank. -/ abbrev remainingRank (P:PrincipalPartition p d) (j:Fin d):ℕ:=Wishart.complementDimension (P.block j)
-/-- Literal normalizedPrincipalMatrix. -/ abbrev normalizedPrincipalMatrix (P:PrincipalPartition p d) (Sigma:Matrix (Fin p) (Fin p) ℝ) (j:Fin d):=Wishart.normalizedSelectedMatrix (P.block j) Sigma
+abbrev selectedRank (P:PrincipalPartition p d) (j:Fin d):ℕ:=Wishart.selectedDimension (P.block j)
+abbrev remainingRank (P:PrincipalPartition p d) (j:Fin d):ℕ:=Wishart.complementDimension (P.block j)
+abbrev normalizedPrincipalMatrix (P:PrincipalPartition p d) (Sigma:Matrix (Fin p) (Fin p) ℝ) (j:Fin d):=Wishart.normalizedSelectedMatrix (P.block j) Sigma
 end end WishartVerification
 namespace Wishart.Spectral section open scoped ENNReal
-/-- Literal Sym. -/ abbrev Sym (p:ℕ):=selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℝ)
-/-- Literal coordinateSpectrum. -/
+abbrev Sym (p:ℕ):=selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℝ)
 noncomputable def coordinateSpectrum {p:ℕ} (S:Sym p):Fin p → ℝ:=(selfAdjoint.isHermitian_coe S).eigenvalues
 end end Wishart.Spectral
 namespace Wishart.Spectral section open scoped Classical
-/-- Literal ascendingIndexEquiv. -/
 noncomputable def ascendingIndexEquiv (p:ℕ):Equiv.Perm (Fin p):=Fin.revPerm.trans ((finCongr (WishartSharedProof.finCard_symm p)).trans (Fintype.equivOfCardEq (Fintype.card_fin (Fintype.card (Fin p)))))
-/-- Literal ascendingSpectrum. -/
 noncomputable def ascendingSpectrum {p:ℕ} (S:Sym p):Fin p → ℝ:=coordinateSpectrum S ∘ ascendingIndexEquiv p
 end end Wishart.Spectral
 namespace WishartVerification section open scoped Classical ENNReal variable {ι:Type*} [Fintype ι] [LinearOrder ι]
-/-- Literal orderedChamber. -/ def orderedChamber (s:Set ℝ):Set (ι → ℝ):={x | StrictMono x ∧ ∀ i,x i ∈ s}
+def orderedChamber (s:Set ℝ):Set (ι → ℝ):={x | StrictMono x ∧ ∀ i,x i ∈ s}
 end end WishartVerification
 namespace WishartVerification section open scoped Classical ENNReal variable {ι:Type*} [Fintype ι] [LinearOrder ι] variable {Ω:Type*} [MeasurableSpace Ω]
 /-- Normalizing a nonnegative real density by its nonnegative integral. -/
 noncomputable def normalizedWeight (μ:Measure Ω) (w:Ω → ℝ):Measure Ω:=(∫⁻ x,ENNReal.ofReal (w x) ∂μ)⁻¹ • μ.withDensity (fun x ↦ ENNReal.ofReal (w x))
 end end WishartVerification
 namespace WishartVerification section open scoped Classical variable {p d:ℕ}
-/-- Literal principalSetCoordinates. -/ def principalSetCoordinates (I:Finset (Fin p)):Fin (Fintype.card I) → Fin p:=fun a ↦ ((Fintype.equivFin I).symm a:Fin p)
-/-- Literal principalSetMatrix. -/ def principalSetMatrix (I:Finset (Fin p)):SymmetricMatrix p → SymmetricMatrix (Fintype.card I):=Wishart.principalSymmetricBlock (principalSetCoordinates I)
+def principalSetCoordinates (I:Finset (Fin p)):Fin (Fintype.card I) → Fin p:=fun a ↦ ((Fintype.equivFin I).symm a:Fin p)
+def principalSetMatrix (I:Finset (Fin p)):SymmetricMatrix p → SymmetricMatrix (Fintype.card I):=Wishart.principalSymmetricBlock (principalSetCoordinates I)
 /-- Theorem 1.1, with all original quantifiers and parameter ranges, joint moment finiteness, every selected split, the product lower bound, and the exact active-block equality characterization. -/ theorem theorem_1_1:PrincipalTheorem:=by sorry
 end end WishartVerification
 namespace WishartVerification section open scoped Classical ENNReal variable {Ω:Type*} [MeasurableSpace Ω]
 /-- Comparison against every bounded Borel increasing real-valued test. The order restriction is only on the common support set. -/ def IncreasingExpectationLE [Preorder Ω] (s:Set Ω) (μ ν:Measure Ω):Prop:=∀ f:Ω → ℝ,Measurable f → MonotoneOn f s → (∃ M:ℝ,∀ x,|f x| ≤ M) → (∫ x,f x ∂μ) ≤ ∫ x,f x ∂ν
 end end WishartVerification
 namespace WishartVerification section open scoped Classical variable {p d:ℕ}
-/-- Literal shiftedPrincipalMinor. -/ def shiftedPrincipalMinor (Sigma:Matrix (Fin p) (Fin p) ℝ) (I:Finset (Fin p)) (c:ℝ) (X:SymmetricMatrix p):ℝ:=(((X:Matrix (Fin p) (Fin p) ℝ).submatrix (fun i:I ↦ (i:Fin p)) (fun i:I ↦ (i:Fin p))) + c • Sigma.submatrix (fun i:I ↦ (i:Fin p)) (fun i:I ↦ (i:Fin p))).det
-/-- Literal shiftedMomentIntegrand. -/ def shiftedMomentIntegrand (Sigma:Matrix (Fin p) (Fin p) ℝ) (P:PrincipalPartition p d) (c ν:Fin d → ℝ) (J:Finset (Fin d)) (X:SymmetricMatrix p):ℝ:=∏ i ∈ J,shiftedPrincipalMinor Sigma (P.block i) (c i) X ^ ν i
-/-- Literal shiftedMoment. -/ def shiftedMoment (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℝ) (P:PrincipalPartition p d) (c ν:Fin d → ℝ) (J:Finset (Fin d)):ℝ:=∫ X,shiftedMomentIntegrand Sigma P c ν J X ∂TauCeti.Probability.nonsingularWishartMeasure α Sigma
-/-- Literal shiftedMomentRatio. -/ def shiftedMomentRatio (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℝ) (P:PrincipalPartition p d) (c ν:Fin d → ℝ):ℝ:=shiftedMoment α Sigma P c ν Finset.univ / ∏ i:Fin d,shiftedMoment α Sigma P c ν {i}
-/-- Literal shiftedTiltLaw. -/ def shiftedTiltLaw (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℝ) (P:PrincipalPartition p d) (c ν:Fin d → ℝ) (J:Finset (Fin d)):Measure (SymmetricMatrix p):=normalizedWeight (TauCeti.Probability.nonsingularWishartMeasure α Sigma) (shiftedMomentIntegrand Sigma P c ν J)
-/-- Literal selectedEigenvalues. -/ def selectedEigenvalues (Sigma:Matrix (Fin p) (Fin p) ℝ) (P:PrincipalPartition p d) (j:Fin d) (X:SymmetricMatrix p):Fin (selectedRank P j) → ℝ:=Wishart.Spectral.ascendingSpectrum (Wishart.principalSymmetricBlock (Fin.castAdd (remainingRank P j)) (normalizedPrincipalMatrix P Sigma j X))
+def shiftedPrincipalMinor (Sigma:Matrix (Fin p) (Fin p) ℝ) (I:Finset (Fin p)) (c:ℝ) (X:SymmetricMatrix p):ℝ:=(((X:Matrix (Fin p) (Fin p) ℝ).submatrix (fun i:I ↦ (i:Fin p)) (fun i:I ↦ (i:Fin p))) + c • Sigma.submatrix (fun i:I ↦ (i:Fin p)) (fun i:I ↦ (i:Fin p))).det
+def shiftedMomentIntegrand (Sigma:Matrix (Fin p) (Fin p) ℝ) (P:PrincipalPartition p d) (c ν:Fin d → ℝ) (J:Finset (Fin d)) (X:SymmetricMatrix p):ℝ:=∏ i ∈ J,shiftedPrincipalMinor Sigma (P.block i) (c i) X ^ ν i
+def shiftedMoment (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℝ) (P:PrincipalPartition p d) (c ν:Fin d → ℝ) (J:Finset (Fin d)):ℝ:=∫ X,shiftedMomentIntegrand Sigma P c ν J X ∂TauCeti.Probability.nonsingularWishartMeasure α Sigma
+def shiftedMomentRatio (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℝ) (P:PrincipalPartition p d) (c ν:Fin d → ℝ):ℝ:=shiftedMoment α Sigma P c ν Finset.univ / ∏ i:Fin d,shiftedMoment α Sigma P c ν {i}
+def shiftedTiltLaw (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℝ) (P:PrincipalPartition p d) (c ν:Fin d → ℝ) (J:Finset (Fin d)):Measure (SymmetricMatrix p):=normalizedWeight (TauCeti.Probability.nonsingularWishartMeasure α Sigma) (shiftedMomentIntegrand Sigma P c ν J)
+def selectedEigenvalues (Sigma:Matrix (Fin p) (Fin p) ℝ) (P:PrincipalPartition p d) (j:Fin d) (X:SymmetricMatrix p):Fin (selectedRank P j) → ℝ:=Wishart.Spectral.ascendingSpectrum (Wishart.principalSymmetricBlock (Fin.castAdd (remainingRank P j)) (normalizedPrincipalMatrix P Sigma j X))
 end end WishartVerification
 namespace WishartVerification section open scoped Classical Matrix variable {p d:ℕ}
 /-- Section 4.1: both inequalities with arbitrary proportional nonnegative shifts, with the original real shape and all nonnegative real powers. -/ theorem proportional_shift_product_inequalities (P:PrincipalPartition p d) {α:ℝ} {Sigma:Matrix (Fin p) (Fin p) ℝ} (hSigma:Sigma.PosDef) (hα:(p:ℝ) - 1 < α) (c ν:Fin d → ℝ) (hc:∀ i,0 ≤ c i) (hν:∀ i,0 ≤ ν i):(∀ J,Integrable (shiftedMomentIntegrand Sigma P c ν J) (TauCeti.Probability.nonsingularWishartMeasure α Sigma)) ∧ ∀ j:Fin d,shiftedMoment α Sigma P c ν {j} * shiftedMoment α Sigma P c ν (Finset.univ.erase j) ≤ shiftedMoment α Sigma P c ν Finset.univ ∧ (∏ i:Fin d,shiftedMoment α Sigma P c ν {i}) ≤ shiftedMoment α Sigma P c ν {j} * shiftedMoment α Sigma P c ν (Finset.univ.erase j):=by sorry
@@ -446,28 +443,28 @@ namespace WishartVerification section open scoped Classical variable {p d:ℕ}
 /-- Proposition 4.1 in full: the normalized determinant-product ratio is increasing in every exponent, and the full determinant tilt stochastically dominates the single-factor tilt on the entire ordered selected spectrum. -/ theorem proposition_4_1 (P:PrincipalPartition p d) {α:ℝ} {Sigma:Matrix (Fin p) (Fin p) ℝ} (hSigma:Sigma.PosDef) (hα:(p:ℝ) - 1 < α) (c:Fin d → ℝ) (hc:∀ i,0 ≤ c i):MonotoneOn (shiftedMomentRatio α Sigma P c) (Set.Ici (0:Fin d → ℝ)) ∧ ∀ (ν:Fin d → ℝ),(∀ i,0 ≤ ν i) → ∀ j:Fin d,IncreasingExpectationLE (orderedChamber (Set.Ioi 0)) ((shiftedTiltLaw α Sigma P c ν {j}).map (selectedEigenvalues Sigma P j)) ((shiftedTiltLaw α Sigma P c ν Finset.univ).map (selectedEigenvalues Sigma P j)):=by sorry
 end end WishartVerification
 namespace Wishart section open scoped Matrix MatrixOrder Matrix.Norms.L2Operator
-/-- Literal compressionScale. -/ def compressionScale {p q:ℕ} (Sigma:Matrix (Fin p) (Fin p) ℝ) (B:Matrix (Fin p) (Fin q) ℝ):Matrix (Fin q) (Fin q) ℝ:=Bᵀ * Sigma * B
-/-- Literal normalizedCompressionRows. -/ def normalizedCompressionRows {p q:ℕ} (Sigma:Matrix (Fin p) (Fin p) ℝ) (B:Matrix (Fin p) (Fin q) ℝ):Matrix (Fin q) (Fin p) ℝ:=(CFC.sqrt (compressionScale Sigma B))⁻¹ * Bᵀ
-/-- Literal normalizedCompression. -/ def normalizedCompression {p q:ℕ} (Sigma:Matrix (Fin p) (Fin p) ℝ) (B:Matrix (Fin p) (Fin q) ℝ):SymmetricMatrix p → SymmetricMatrix q:=Matrix.symmetricCongruenceLinearMap (normalizedCompressionRows Sigma B)
+def compressionScale {p q:ℕ} (Sigma:Matrix (Fin p) (Fin p) ℝ) (B:Matrix (Fin p) (Fin q) ℝ):Matrix (Fin q) (Fin q) ℝ:=Bᵀ * Sigma * B
+def normalizedCompressionRows {p q:ℕ} (Sigma:Matrix (Fin p) (Fin p) ℝ) (B:Matrix (Fin p) (Fin q) ℝ):Matrix (Fin q) (Fin p) ℝ:=(CFC.sqrt (compressionScale Sigma B))⁻¹ * Bᵀ
+def normalizedCompression {p q:ℕ} (Sigma:Matrix (Fin p) (Fin p) ℝ) (B:Matrix (Fin p) (Fin q) ℝ):SymmetricMatrix p → SymmetricMatrix q:=Matrix.symmetricCongruenceLinearMap (normalizedCompressionRows Sigma B)
 /-- Literal normalizedCompression_posDef. -/ theorem normalizedCompression_posDef {p k:ℕ} {Omega:Matrix (Fin p) (Fin p) ℝ} (hOmega:Omega.PosDef) (B:Matrix (Fin p) (Fin k) ℝ) (hB:B.rank=k) {Y:SymmetricMatrix p} (hY:(Y:Matrix (Fin p) (Fin p) ℝ).PosDef):(normalizedCompression Omega B Y:Matrix (Fin k) (Fin k) ℝ).PosDef:=by sorry
 end end Wishart
 namespace Wishart.Spectral section open scoped Classical MatrixOrder Matrix.Norms.L2Operator
-/-- Literal positiveOrderedSpectrum. -/ def positiveOrderedSpectrum (p:ℕ):Set (Fin p → ℝ):={lam | Monotone lam ∧ ∀ i,0 < lam i}
+def positiveOrderedSpectrum (p:ℕ):Set (Fin p → ℝ):={lam | Monotone lam ∧ ∀ i,0 < lam i}
 /-- Literal ascendingSpectrum_mem_positiveOrderedSpectrum. -/ theorem ascendingSpectrum_mem_positiveOrderedSpectrum {p:ℕ} (S:Sym p) (hS:(S:Matrix (Fin p) (Fin p) ℝ).PosDef):ascendingSpectrum S ∈ positiveOrderedSpectrum p:=by sorry
 end end Wishart.Spectral
 namespace Wishart.Spectral section open scoped Classical ENNReal MatrixOrder Matrix.Norms.L2Operator
-/-- Literal PositiveSpectrum. -/ abbrev PositiveSpectrum (p:ℕ):={lam:Fin p → ℝ // lam ∈ positiveOrderedSpectrum p}
+abbrev PositiveSpectrum (p:ℕ):={lam:Fin p → ℝ // lam ∈ positiveOrderedSpectrum p}
 end end Wishart.Spectral
 namespace Wishart section open scoped Classical ENNReal MatrixOrder Matrix.Norms.L2Operator
 /-- The original domain-valued test at an actual positive compression; its arbitrary value off the positive matrix cone is fixed to zero. -/ def domainInverseCompressionFactor {p k:ℕ} {Omega:Matrix (Fin p) (Fin p) ℝ} (hOmega:Omega.PosDef) (B:Matrix (Fin p) (Fin k) ℝ) (hB:B.rank=k) (f:PositiveSpectrum k → ℝ) (Y:SymmetricMatrix p):ℝ:=if hY:(Y:Matrix (Fin p) (Fin p) ℝ).PosDef then f ⟨ascendingSpectrum (normalizedCompression Omega B Y),ascendingSpectrum_mem_positiveOrderedSpectrum _ (normalizedCompression_posDef hOmega B hB hY)⟩ else 0
-/-- Literal domainInverseCompressionProduct. -/ def domainInverseCompressionProduct {p d:ℕ} {Omega:Matrix (Fin p) (Fin p) ℝ} (hOmega:Omega.PosDef) (k:Fin d → ℕ) (B:∀ i,Matrix (Fin p) (Fin (k i)) ℝ) (hB:∀ i,(B i).rank=k i) (f:∀ i,PositiveSpectrum (k i) → ℝ) (J:Finset (Fin d)) (Y:SymmetricMatrix p):ℝ:=∏ i ∈ J,domainInverseCompressionFactor hOmega (B i) (hB i) (f i) Y
+def domainInverseCompressionProduct {p d:ℕ} {Omega:Matrix (Fin p) (Fin p) ℝ} (hOmega:Omega.PosDef) (k:Fin d → ℕ) (B:∀ i,Matrix (Fin p) (Fin (k i)) ℝ) (hB:∀ i,(B i).rank=k i) (f:∀ i,PositiveSpectrum (k i) → ℝ) (J:Finset (Fin d)) (Y:SymmetricMatrix p):ℝ:=∏ i ∈ J,domainInverseCompressionFactor hOmega (B i) (hB i) (f i) Y
 /-- The full finite-expectation chain of Theorem6.1 for functions whose domain is literally only the ordered positive spectrum. No extension hypothesis is imposed on the user-supplied functions. -/ theorem theorem_6_1_on_positiveOrderedSpectrum {p d:ℕ} {β:ℝ} {Omega:Matrix (Fin p) (Fin p) ℝ} (hOmega:Omega.PosDef) (hβ:(p:ℝ) - 1 < β) (k:Fin d → ℕ) (B:∀ i,Matrix (Fin p) (Fin (k i)) ℝ) (hB:∀ i,(B i).rank=k i) (f:∀ i,PositiveSpectrum (k i) → ℝ) (hfm:∀ i,Measurable (f i)) (hf0:∀ i x,0 ≤ f i x) (hdir:(∀ i,Monotone (f i)) ∨ (∀ i,Antitone (f i))) (hIsingle:∀ i,Integrable (domainInverseCompressionFactor hOmega (B i) (hB i) (f i)) (inverseWishartMeasure β Omega)) (hIremaining:∀ j,Integrable (domainInverseCompressionProduct hOmega k B hB f (Finset.univ.erase j)) (inverseWishartMeasure β Omega)) (hIjoint:Integrable (domainInverseCompressionProduct hOmega k B hB f Finset.univ) (inverseWishartMeasure β Omega)):(∏ i,∫ Y,domainInverseCompressionProduct hOmega k B hB f {i} Y ∂inverseWishartMeasure β Omega) ≤ (∫ Y,domainInverseCompressionProduct hOmega k B hB f Finset.univ Y ∂inverseWishartMeasure β Omega) ∧ ∀ j:Fin d,(∏ i,∫ Y,domainInverseCompressionProduct hOmega k B hB f {i} Y ∂inverseWishartMeasure β Omega) ≤ (∫ Y,domainInverseCompressionProduct hOmega k B hB f {j} Y ∂inverseWishartMeasure β Omega) * (∫ Y,domainInverseCompressionProduct hOmega k B hB f (Finset.univ.erase j) Y ∂inverseWishartMeasure β Omega) ∧ (∫ Y,domainInverseCompressionProduct hOmega k B hB f {j} Y ∂inverseWishartMeasure β Omega) * (∫ Y,domainInverseCompressionProduct hOmega k B hB f (Finset.univ.erase j) Y ∂inverseWishartMeasure β Omega) ≤ (∫ Y,domainInverseCompressionProduct hOmega k B hB f Finset.univ Y ∂inverseWishartMeasure β Omega):=by sorry
-/-- Literal inverseCompressionDeterminant. -/ def inverseCompressionDeterminant {p k:ℕ} (S:Matrix (Fin p) (Fin p) ℝ) (B:Matrix (Fin p) (Fin k) ℝ) (c:ℝ) (Y:SymmetricMatrix p):ℝ:=(Bᵀ * (Y:Matrix (Fin p) (Fin p) ℝ) * B + c • compressionScale S B).det
-/-- Literal inverseDeterminantProduct. -/ def inverseDeterminantProduct {p d:ℕ} (S:Matrix (Fin p) (Fin p) ℝ) (k:Fin d → ℕ) (B:∀ i,Matrix (Fin p) (Fin (k i)) ℝ) (c ν:Fin d → ℝ) (J:Finset (Fin d)) (Y:SymmetricMatrix p):ℝ:=∏ i ∈ J,inverseCompressionDeterminant S (B i) (c i) Y ^ ν i
-/-- Literal inverseDeterminantMoment. -/ def inverseDeterminantMoment {p d:ℕ} (β:ℝ) (Omega:Matrix (Fin p) (Fin p) ℝ) (k:Fin d → ℕ) (B:∀ i,Matrix (Fin p) (Fin (k i)) ℝ) (c ν:Fin d → ℝ) (J:Finset (Fin d)):ℝ:=∫ Y,inverseDeterminantProduct Omega k B c ν J Y ∂inverseWishartMeasure β Omega
+def inverseCompressionDeterminant {p k:ℕ} (S:Matrix (Fin p) (Fin p) ℝ) (B:Matrix (Fin p) (Fin k) ℝ) (c:ℝ) (Y:SymmetricMatrix p):ℝ:=(Bᵀ * (Y:Matrix (Fin p) (Fin p) ℝ) * B + c • compressionScale S B).det
+def inverseDeterminantProduct {p d:ℕ} (S:Matrix (Fin p) (Fin p) ℝ) (k:Fin d → ℕ) (B:∀ i,Matrix (Fin p) (Fin (k i)) ℝ) (c ν:Fin d → ℝ) (J:Finset (Fin d)) (Y:SymmetricMatrix p):ℝ:=∏ i ∈ J,inverseCompressionDeterminant S (B i) (c i) Y ^ ν i
+def inverseDeterminantMoment {p d:ℕ} (β:ℝ) (Omega:Matrix (Fin p) (Fin p) ℝ) (k:Fin d → ℕ) (B:∀ i,Matrix (Fin p) (Fin (k i)) ℝ) (c ν:Fin d → ℝ) (J:Finset (Fin d)):ℝ:=∫ Y,inverseDeterminantProduct Omega k B c ν J Y ∂inverseWishartMeasure β Omega
 end end Wishart
 namespace WishartVerification section open scoped BigOperators variable {ι:Type*} [Fintype ι] [Nonempty ι]
-/-- Literal finiteMaximum. -/ def finiteMaximum (x:ι → ℝ):ℝ:=Finset.univ.sup' Finset.univ_nonempty x
+def finiteMaximum (x:ι → ℝ):ℝ:=Finset.univ.sup' Finset.univ_nonempty x
 end end WishartVerification
 namespace WishartVerification section 
 /-- The paper's condition on a positive outer function, on its actual domain `(0,∞)`. Values at nonpositive arguments do not enter this definition. -/ structure GeometricallyLogConvex (f:ℝ → ℝ):Prop where
@@ -476,7 +473,7 @@ namespace WishartVerification section
   monotone_log:Monotone (fun s => Real.log (f (Real.exp s)))
 end end WishartVerification
 namespace Wishart.QuaternionMatrix section open scoped Matrix Quaternion BigOperators Classical ComplexOrder
-/-- Literal Hermitian. -/ abbrev Hermitian (p:ℕ):=selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℍ[ℝ])
+abbrev Hermitian (p:ℕ):=selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℍ[ℝ])
 end end Wishart.QuaternionMatrix
 namespace Wishart.QuaternionMatrix section open scoped Matrix Quaternion BigOperators Classical ComplexOrder variable {m n k:Type*}
 /-- The standard real-algebra representation, with each quaternion replaced by its two-by-two complex matrix. This also applies to rectangular matrices. -/ def complexRepresentation (A:Matrix m n ℍ[ℝ]):Matrix (m× Fin 2) (n× Fin 2) ℂ:=Matrix.comp m n (Fin 2) (Fin 2) ℂ (A.map Quaternion.toComplexMatrix)
@@ -494,13 +491,13 @@ namespace Wishart.QuaternionMatrix section open scoped Classical Quaternion Matr
       -(A (i,1) (j,0)).re,(A (i,1) (j,0)).im⟩
   map_add' A B:=by ext i j <;> simp [add_comm]
   map_smul' r A:=by ext i j <;> simp [QuaternionAlgebra.smul_mk]
-/-- Literal sqrt. -/ def sqrt (A:Matrix n n ℍ[ℝ]):Matrix n n ℍ[ℝ]:=representationLeftInverse (CFC.sqrt (complexRepresentation A))
+def sqrt (A:Matrix n n ℍ[ℝ]):Matrix n n ℍ[ℝ]:=representationLeftInverse (CFC.sqrt (complexRepresentation A))
 end end Wishart.QuaternionMatrix
 namespace Wishart.ComplexMatrix section open scoped Matrix ComplexOrder InnerProductSpace RealInnerProductSpace BigOperators Classical variable {n:Type*} [Fintype n] [DecidableEq n]
-/-- Literal realDeterminant. -/ def realDeterminant (A:Matrix n n ℂ):ℝ:=A.det.re
+def realDeterminant (A:Matrix n n ℂ):ℝ:=A.det.re
 end end Wishart.ComplexMatrix
 namespace Wishart.FieldGaussian section open scoped Classical Matrix BigOperators Quaternion ENNReal variable (F:Type*) [NormedRing F] [StarRing F] [CStarRing F] [InnerProductSpace ℝ F] [FiniteDimensional ℝ F] [SMulCommClass ℝ F F] [IsScalarTower ℝ F F] [MeasurableSpace F] [BorelSpace F]
-/-- Literal Row. -/ abbrev Row (m:ℕ):=PiLp 2 (fun _:Fin m => F)
+abbrev Row (m:ℕ):=PiLp 2 (fun _:Fin m => F)
 /-- Right multiplication by a genuinely arbitrary rectangular field matrix, viewed as a real continuous linear map. -/ def rowFactorLinearMap {r m:ℕ} (R:Matrix (Fin r) (Fin m) F) :
     Row F r →ₗ[ℝ] Row F m where
   toFun z:=WithLp.toLp 2 fun j => ∑ i,z i * R i j
@@ -510,25 +507,25 @@ namespace Wishart.FieldGaussian section open scoped Classical Matrix BigOperator
   map_smul' c z:=by
     ext j
     simp [smul_mul_assoc,Finset.smul_sum]
-/-- Literal rowFactorCLM. -/ def rowFactorCLM {r m:ℕ} (R:Matrix (Fin r) (Fin m) F):Row F r →L[ℝ] Row F m:=(rowFactorLinearMap F R).toContinuousLinearMap
-/-- Literal standardDeviation. -/ def standardDeviation:ℝ:=(Real.sqrt (Module.finrank ℝ F))⁻¹
-/-- Literal normalizedRowFactorCLM. -/ def normalizedRowFactorCLM {r m:ℕ} (R:Matrix (Fin r) (Fin m) F):Row F r →L[ℝ] Row F m:=standardDeviation F • rowFactorCLM F R
+def rowFactorCLM {r m:ℕ} (R:Matrix (Fin r) (Fin m) F):Row F r →L[ℝ] Row F m:=(rowFactorLinearMap F R).toContinuousLinearMap
+def standardDeviation:ℝ:=(Real.sqrt (Module.finrank ℝ F))⁻¹
+def normalizedRowFactorCLM {r m:ℕ} (R:Matrix (Fin r) (Fin m) F):Row F r →L[ℝ] Row F m:=standardDeviation F • rowFactorCLM F R
 /-- The actual centered field Gaussian row with rectangular covariance factor `R`; for an identity factor each real component has variance `1 / dim ℝ F`. -/ def gaussianRowWithFactor {r m:ℕ} (R:Matrix (Fin r) (Fin m) F):Measure (Row F m):=(stdGaussian (Row F r)).map (normalizedRowFactorCLM F R)
 end end Wishart.FieldGaussian
 namespace Wishart.FieldGaussian section open scoped Classical Quaternion Matrix ComplexOrder MatrixOrder Matrix.Norms.L2Operator Ring ENNReal variable (F:Type*) [NormedRing F] [StarRing F] [CStarRing F] [InnerProductSpace ℝ F] [FiniteDimensional ℝ F] [SMulCommClass ℝ F F] [IsScalarTower ℝ F F] [StarModule ℝ F] [MeasurableSpace F] [BorelSpace F]
-/-- Literal Hermitian. -/ abbrev Hermitian (p:ℕ):=selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) F)
-/-- Literal rowsMatrix. -/ def rowsMatrix {n p:ℕ} (z:Fin n → Row F p):Matrix (Fin n) (Fin p) F:=Matrix.of fun i j => z i j
-/-- Literal rowsGram. -/ def rowsGram {n p:ℕ} (z:Fin n → Row F p):Hermitian F p:=⟨(rowsMatrix F z)ᴴ * rowsMatrix F z,(Matrix.isHermitian_conjTranspose_mul_self (rowsMatrix F z)).isSelfAdjoint⟩
-/-- Literal gramWithFactor. -/ def gramWithFactor {r p:ℕ} (n:ℕ) (R:Matrix (Fin r) (Fin p) F):Measure (Hermitian F p):=(Measure.pi (fun _:Fin n => gaussianRowWithFactor F R)).map (rowsGram F)
+abbrev Hermitian (p:ℕ):=selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) F)
+def rowsMatrix {n p:ℕ} (z:Fin n → Row F p):Matrix (Fin n) (Fin p) F:=Matrix.of fun i j => z i j
+def rowsGram {n p:ℕ} (z:Fin n → Row F p):Hermitian F p:=⟨(rowsMatrix F z)ᴴ * rowsMatrix F z,(Matrix.isHermitian_conjTranspose_mul_self (rowsMatrix F z)).isSelfAdjoint⟩
+def gramWithFactor {r p:ℕ} (n:ℕ) (R:Matrix (Fin r) (Fin p) F):Measure (Hermitian F p):=(Measure.pi (fun _:Fin n => gaussianRowWithFactor F R)).map (rowsGram F)
 end end Wishart.FieldGaussian
 namespace Wishart.ComplexMatrix section open scoped Classical Quaternion Matrix ComplexOrder MatrixOrder Matrix.Norms.L2Operator Ring ENNReal
-/-- Literal Hermitian. -/ abbrev Hermitian (p:ℕ):=selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℂ)
-/-- Literal hermitianLebesgue. -/ def hermitianLebesgue (p:ℕ):Measure (Hermitian p):=(Module.finBasis ℝ (Hermitian p)).addHaar
+abbrev Hermitian (p:ℕ):=selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) ℂ)
+def hermitianLebesgue (p:ℕ):Measure (Hermitian p):=(Module.finBasis ℝ (Hermitian p)).addHaar
 /-- The unnormalized literal complex density (b = 2). -/ def wishartWeight {p:ℕ} (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℂ) (X:Hermitian p):ℝ≥0∞:=if (X:Matrix (Fin p) (Fin p) ℂ).PosDef then ENNReal.ofReal (realDeterminant (X:Matrix (Fin p) (Fin p) ℂ) ^ (α - p) * Real.exp (-((Sigma⁻¹ * (X:Matrix (Fin p) (Fin p) ℂ)).trace).re)) else 0
-/-- Literal wishartNormalizer. -/ def wishartNormalizer {p:ℕ} (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℂ):ℝ≥0∞:=∫⁻ X,wishartWeight α Sigma X ∂hermitianLebesgue p
-/-- Literal wishartMeasure. -/ def wishartMeasure {p:ℕ} (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℂ):Measure (Hermitian p):=(wishartNormalizer α Sigma)⁻¹ • (hermitianLebesgue p).withDensity (wishartWeight α Sigma)
+def wishartNormalizer {p:ℕ} (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℂ):ℝ≥0∞:=∫⁻ X,wishartWeight α Sigma X ∂hermitianLebesgue p
+def wishartMeasure {p:ℕ} (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℂ):Measure (Hermitian p):=(wishartNormalizer α Sigma)⁻¹ • (hermitianLebesgue p).withDensity (wishartWeight α Sigma)
 /-- The genuine n-row field Gaussian Gram law, including singular sample sizes. -/ def gramMeasure {p:ℕ} (n:ℕ) (Sigma:Matrix (Fin p) (Fin p) ℂ):Measure (Hermitian p):=Wishart.FieldGaussian.gramWithFactor ℂ n (CFC.sqrt Sigma)
-/-- Literal compressionCovariance. -/ def compressionCovariance {p k:ℕ} (B:Matrix (Fin p) (Fin k) ℂ) (Sigma:Matrix (Fin p) (Fin p) ℂ):Matrix (Fin k) (Fin k) ℂ:=Bᴴ * Sigma * B
+def compressionCovariance {p k:ℕ} (B:Matrix (Fin p) (Fin k) ℂ) (Sigma:Matrix (Fin p) (Fin p) ℂ):Matrix (Fin k) (Fin k) ℂ:=Bᴴ * Sigma * B
 /-- The exact standardized compression. The congruence form makes the total function Hermitian even outside its intended positive-definite parameters. -/ def normalizedCompression {p k:ℕ} (B:Matrix (Fin p) (Fin k) ℂ) (Sigma:Matrix (Fin p) (Fin p) ℂ) (X:Hermitian p):Hermitian k :=
   let R:=B * (CFC.sqrt (compressionCovariance B Sigma))⁻¹
   ⟨Rᴴ * (X:Matrix (Fin p) (Fin p) ℂ) * R,
@@ -543,13 +540,13 @@ set_option backward.isDefEq.respectTransparency false in
 local instance hermitianBorelSpace (p:ℕ):BorelSpace (Hermitian p) :=
   inferInstanceAs (BorelSpace {X:Matrix (Fin p) (Fin p) ℍ[ℝ] // X ∈ selfAdjoint.submodule ℝ _})
 set_option backward.isDefEq.respectTransparency false in
-/-- Literal hermitianLebesgue. -/ def hermitianLebesgue (p:ℕ):Measure (Hermitian p):=(Module.finBasis ℝ (Hermitian p)).addHaar
+def hermitianLebesgue (p:ℕ):Measure (Hermitian p):=(Module.finBasis ℝ (Hermitian p)).addHaar
 /-- The unnormalized literal quaternion density (b = 4). -/ def wishartWeight {p:ℕ} (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℍ[ℝ]) (X:Hermitian p):ℝ≥0∞:=if PosDef (X:Matrix (Fin p) (Fin p) ℍ[ℝ]) then ENNReal.ofReal (positiveDeterminant (X:Matrix (Fin p) (Fin p) ℍ[ℝ]) ^ (2 * (α - p + 1) - 1) * Real.exp (-2 * ((Sigma⁻¹ʳ * (X:Matrix (Fin p) (Fin p) ℍ[ℝ])).trace).re)) else 0
-/-- Literal wishartNormalizer. -/ def wishartNormalizer {p:ℕ} (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℍ[ℝ]):ℝ≥0∞:=∫⁻ X,wishartWeight α Sigma X ∂hermitianLebesgue p
-/-- Literal wishartMeasure. -/ def wishartMeasure {p:ℕ} (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℍ[ℝ]):Measure (Hermitian p):=(wishartNormalizer α Sigma)⁻¹ • (hermitianLebesgue p).withDensity (wishartWeight α Sigma)
-/-- Literal gramMeasure. -/ def gramMeasure {p:ℕ} (n:ℕ) (Sigma:Matrix (Fin p) (Fin p) ℍ[ℝ]):Measure (Hermitian p):=Wishart.FieldGaussian.gramWithFactor ℍ[ℝ] n (sqrt Sigma)
-/-- Literal compressionCovariance. -/ def compressionCovariance {p k:ℕ} (B:Matrix (Fin p) (Fin k) ℍ[ℝ]) (Sigma:Matrix (Fin p) (Fin p) ℍ[ℝ]):Matrix (Fin k) (Fin k) ℍ[ℝ]:=Bᴴ * Sigma * B
-/-- Literal normalizedCompression. -/ def normalizedCompression {p k:ℕ} (B:Matrix (Fin p) (Fin k) ℍ[ℝ]) (Sigma:Matrix (Fin p) (Fin p) ℍ[ℝ]) (X:Hermitian p):Hermitian k :=
+def wishartNormalizer {p:ℕ} (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℍ[ℝ]):ℝ≥0∞:=∫⁻ X,wishartWeight α Sigma X ∂hermitianLebesgue p
+def wishartMeasure {p:ℕ} (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℍ[ℝ]):Measure (Hermitian p):=(wishartNormalizer α Sigma)⁻¹ • (hermitianLebesgue p).withDensity (wishartWeight α Sigma)
+def gramMeasure {p:ℕ} (n:ℕ) (Sigma:Matrix (Fin p) (Fin p) ℍ[ℝ]):Measure (Hermitian p):=Wishart.FieldGaussian.gramWithFactor ℍ[ℝ] n (sqrt Sigma)
+def compressionCovariance {p k:ℕ} (B:Matrix (Fin p) (Fin k) ℍ[ℝ]) (Sigma:Matrix (Fin p) (Fin p) ℍ[ℝ]):Matrix (Fin k) (Fin k) ℍ[ℝ]:=Bᴴ * Sigma * B
+def normalizedCompression {p k:ℕ} (B:Matrix (Fin p) (Fin k) ℍ[ℝ]) (Sigma:Matrix (Fin p) (Fin p) ℍ[ℝ]) (X:Hermitian p):Hermitian k :=
   let R:=B * (sqrt (compressionCovariance B Sigma))⁻¹ʳ
   ⟨Rᴴ * (X:Matrix (Fin p) (Fin p) ℍ[ℝ]) * R,
     (Matrix.isHermitian_conjTranspose_mul_mul R
@@ -559,11 +556,11 @@ namespace WishartVerification section
 /-- Literal hermitian_matrix_coe. -/ theorem hermitian_matrix_coe {F ι:Type*} [AddCommGroup F] [Module ℝ F] [StarAddMonoid F] [StarModule ℝ F] (X:selfAdjoint.submodule ℝ (Matrix ι ι F)):(X:Matrix ι ι F).IsHermitian:=by sorry
 end end WishartVerification
 namespace Wishart section open scoped BigOperators ENNReal Matrix MatrixOrder Matrix.Norms.Operator
-/-- Literal shiftedCompressionDeterminant. -/ def shiftedCompressionDeterminant {p q:ℕ} (Sigma:Matrix (Fin p) (Fin p) ℝ) (Q:Matrix (Fin p) (Fin q) ℝ) (c:ℝ) (X:SymmetricMatrix p):ℝ:=(Qᵀ * (X:Matrix (Fin p) (Fin p) ℝ) * Q + c • compressionScale Sigma Q).det
+def shiftedCompressionDeterminant {p q:ℕ} (Sigma:Matrix (Fin p) (Fin p) ℝ) (Q:Matrix (Fin p) (Fin q) ℝ) (c:ℝ) (X:SymmetricMatrix p):ℝ:=(Qᵀ * (X:Matrix (Fin p) (Fin p) ℝ) * Q + c • compressionScale Sigma Q).det
 end end Wishart
 namespace WishartVerification.MomentAssembly section open scoped Classical variable {ι:Type*} [DecidableEq ι]
-/-- Literal descendingRankEquiv. -/ def descendingRankEquiv (rank:ι → ℕ) (A:Finset ι):Fin (Fintype.card A) ≃ A:=(Tuple.sortDesc (fun i => rank ((Fintype.equivFin A).symm i))).trans (Fintype.equivFin A).symm
-/-- Literal descendingRanks. -/ def descendingRanks (rank:ι → ℕ) (A:Finset ι):Fin (Fintype.card A) → ℕ:=fun i => rank (descendingRankEquiv rank A i)
+def descendingRankEquiv (rank:ι → ℕ) (A:Finset ι):Fin (Fintype.card A) ≃ A:=(Tuple.sortDesc (fun i => rank ((Fintype.equivFin A).symm i))).trans (Fintype.equivFin A).symm
+def descendingRanks (rank:ι → ℕ) (A:Finset ι):Fin (Fintype.card A) → ℕ:=fun i => rank (descendingRankEquiv rank A i)
 /-- The condition is vacuous when at most two active proper factors remain; otherwise it reads precisely `n ≥ min(k_(1)+k_(3), p+1)` in descending order. -/ def orderedRankThreshold (rank:ι → ℕ) (A:Finset ι) (p:ℕ) (n:ℝ):Prop :=
   ∀ h:3 ≤ Fintype.card A,
     min ((descendingRanks rank A (WishartSharedProof.firstOfThree h):ℝ) +
@@ -580,14 +577,14 @@ namespace Wishart section open scoped Classical BigOperators ENNReal Matrix Matr
   geometric:∀ i,GeometricallyLogConvex (outer i)
 end end Wishart
 namespace Wishart.GeometricCompressionFamily section open scoped Classical BigOperators ENNReal Matrix MatrixOrder Matrix.Norms.Operator variable {p:ℕ} {ι:Type*} [DecidableEq ι] variable (F:GeometricCompressionFamily p ι) (Sigma:Matrix (Fin p) (Fin p) ℝ)
-/-- Literal factor. -/ def factor (i:ι) (X:SymmetricMatrix p):ℝ:=F.outer i (shiftedCompressionDeterminant Sigma (F.matrix i) (F.shift i) X)
-/-- Literal subproduct. -/ def subproduct (J:Finset ι) (X:SymmetricMatrix p):ℝ:=∏ i ∈ J,F.factor Sigma i X
-/-- Literal moment. -/ def moment (n:ℝ) (J:Finset ι):ℝ≥0∞:=∫⁻ X,ENNReal.ofReal (F.subproduct Sigma J X) ∂nonsingularWishartMeasure n Sigma
+def factor (i:ι) (X:SymmetricMatrix p):ℝ:=F.outer i (shiftedCompressionDeterminant Sigma (F.matrix i) (F.shift i) X)
+def subproduct (J:Finset ι) (X:SymmetricMatrix p):ℝ:=∏ i ∈ J,F.factor Sigma i X
+def moment (n:ℝ) (J:Finset ι):ℝ≥0∞:=∫⁻ X,ENNReal.ofReal (F.subproduct Sigma J X) ∂nonsingularWishartMeasure n Sigma
 /-- Constancy is tested on the entire positive definite cone, the actual support of the nonsingular law. It is not a premise about an unknown conditional moment. -/ def ConstantFactor (i:ι):Prop:=∃ c:ℝ,∀ X:SymmetricMatrix p,(X:Matrix (Fin p) (Fin p) ℝ).PosDef → F.factor Sigma i X=c
-/-- Literal activeProper. -/ def activeProper [Fintype ι]:Finset ι:=Finset.univ.filter (fun i => F.size i < p ∧ ¬ F.ConstantFactor Sigma i)
+def activeProper [Fintype ι]:Finset ι:=Finset.univ.filter (fun i => F.size i < p ∧ ¬ F.ConstantFactor Sigma i)
 end end Wishart.GeometricCompressionFamily
 namespace Wishart section open scoped Matrix MatrixOrder Matrix.Norms.Operator ENNReal
-/-- Literal positiveSemidefiniteCone. -/ def positiveSemidefiniteCone (k:ℕ):Set (SymmetricMatrix k):={X | (X:Matrix (Fin k) (Fin k) ℝ).PosSemidef}
+def positiveSemidefiniteCone (k:ℕ):Set (SymmetricMatrix k):={X | (X:Matrix (Fin k) (Fin k) ℝ).PosSemidef}
 /-- A nonzero continuous convex homogeneous Loewner-increasing orthogonally invariant function on the positive semidefinite cone, precisely as defined in the manuscript. -/ structure SpectralGauge (k:ℕ) where
   toFun:SymmetricMatrix k → ℝ
   nonnegative:∀ X ∈ positiveSemidefiniteCone k,0 ≤ toFun X
@@ -610,7 +607,7 @@ namespace Wishart.SpectralGauge section open scoped Matrix MatrixOrder Matrix.No
 /-- The exact named compatible Frobenius inner-product record used in the source. -/ local instance gaugeSymmetricInnerProductSpace:InnerProductSpace ℝ (SymmetricMatrix k):=TauCeti.symmetricMatrixInnerProductSpace k
 /-- The entire gauge seminormed record is fixed at every dimension. -/ theorem gaugeSeminormed_value {k:ℕ}:@gaugeSymmetricSeminormedAddCommGroup k=(TauCeti.symmetricMatrixNormedAddCommGroup k).toSeminormedAddCommGroup:=by sorry
 /-- The entire gauge inner-product record is fixed at every dimension. -/ theorem gaugeInner_value {k:ℕ}:@gaugeSymmetricInnerProductSpace k=TauCeti.symmetricMatrixInnerProductSpace k:=by sorry
-/-- Literal identitySymmetric. -/ def identitySymmetric (k:ℕ):SymmetricMatrix k:=⟨1,WishartSharedProof.realIdentitySelfAdjoint _⟩
+def identitySymmetric (k:ℕ):SymmetricMatrix k:=⟨1,WishartSharedProof.realIdentitySelfAdjoint _⟩
 /-- The canonical compact set of all positive linear trace minorants. -/ def supportSet:Set (SymmetricMatrix k):={H | (H:Matrix (Fin k) (Fin k) ℝ).PosSemidef ∧ ∀ X ∈ positiveSemidefiniteCone k,⟪H,X⟫_ℝ ≤ Φ X}
 /-- A single countable family of positive trace minorants recovers the gauge at every PSD input. This supplies finite maxima for subsequent regularization. -/ theorem exists_countable_positive_support:∃ H:ℕ → SymmetricMatrix k,(∀ n,H n ∈ Φ.supportSet) ∧ ∀ X ∈ positiveSemidefiniteCone k,(⨆ n,⟪H n,X⟫_ℝ)=Φ X:=by sorry
 end end Wishart.SpectralGauge
@@ -618,19 +615,14 @@ namespace Wishart.SpectralGauge section open scoped Matrix MatrixOrder Matrix.No
 /-- A measurable extension used only to express random variables on the whole ambient measurable space. It equals the original gauge at every PSD matrix. -/ def value (X:SymmetricMatrix k):ℝ:=(positiveSemidefiniteCone k).indicator Φ X
 end end Wishart.SpectralGauge
 namespace Wishart.SpectralGauge section open scoped Matrix MatrixOrder Matrix.Norms.Operator RealInnerProductSpace variable {k:ℕ} (Φ:SpectralGauge k)
-/-- Literal supportSequence. -/
 def supportSequence:ℕ → SymmetricMatrix k:=Classical.choose Φ.exists_countable_positive_support
-/-- Literal supportMaximum. -/
 def supportMaximum (n:ℕ) (X:SymmetricMatrix k):ℝ:=finiteMaximum (fun l:Fin (n + 1) => ⟪Φ.supportSequence l,X⟫)
 end end Wishart.SpectralGauge
 namespace Wishart section open scoped Matrix MatrixOrder Matrix.Norms.Operator
-/-- Literal shiftedGaugeValue. -/
 def shiftedGaugeValue {q:ℕ} (Φ:SpectralGauge q) (c:ℝ) (S:SymmetricMatrix q):ℝ:=Φ.value (S + c • SpectralGauge.identitySymmetric q)
-/-- Literal normalizedGaugeValue. -/
 def normalizedGaugeValue {p q:ℕ} (Sigma:Matrix (Fin p) (Fin p) ℝ) (B:Matrix (Fin p) (Fin q) ℝ) (Φ:SpectralGauge q) (c:ℝ) (X:SymmetricMatrix p):ℝ:=shiftedGaugeValue Φ c (normalizedCompression Sigma B X)
 end end Wishart
 namespace WishartVerification.MomentAssembly section open scoped Classical ENNReal BigOperators variable {ι:Type*} [DecidableEq ι]
-/-- Literal orderedGaugeRankThreshold. -/
 def orderedGaugeRankThreshold (rank:ι → ℕ) (A:Finset ι) (n:ℝ):Prop :=
   ∀ h:3 ≤ Fintype.card A,(descendingRanks rank A (WishartSharedProof.thirdOfThree h):ℝ) + 1 ≤ n
 end end WishartVerification.MomentAssembly
@@ -647,19 +639,13 @@ structure GeometricGaugeFamily (p:ℕ) (ι:Type*) where
   geometric:∀ i,GeometricallyLogConvex (outer i)
 end end Wishart
 namespace Wishart.GeometricGaugeFamily section open scoped Classical BigOperators ENNReal Matrix MatrixOrder Matrix.Norms.Operator variable {p:ℕ} {ι:Type*} [DecidableEq ι] variable (F:GeometricGaugeFamily p ι) (Sigma:Matrix (Fin p) (Fin p) ℝ)
-/-- Literal factor. -/
 def factor (i:ι) (X:SymmetricMatrix p):ℝ:=F.outer i (normalizedGaugeValue Sigma (F.matrix i) (F.gauge i) (F.shift i) X)
-/-- Literal subproduct. -/
 def subproduct (J:Finset ι) (X:SymmetricMatrix p):ℝ:=∏ i ∈ J,F.factor Sigma i X
-/-- Literal moment. -/
 def moment (n:ℝ) (J:Finset ι):ℝ≥0∞:=∫⁻ X,ENNReal.ofReal (F.subproduct Sigma J X) ∂nonsingularWishartMeasure n Sigma
-/-- Literal ConstantFactor. -/
 def ConstantFactor (i:ι):Prop:=∃ c:ℝ,∀ X:SymmetricMatrix p,(X:Matrix (Fin p) (Fin p) ℝ).PosDef → F.factor Sigma i X=c
-/-- Literal activeProper. -/
 def activeProper [Fintype ι]:Finset ι:=Finset.univ.filter (fun i => F.size i < p ∧ ¬ F.ConstantFactor Sigma i)
 end end Wishart.GeometricGaugeFamily
 namespace Wishart.Spectral section open scoped Classical
-/-- Literal SymmetricProfile. -/
 def SymmetricProfile {k:ℕ} (h:(Fin k → ℝ) → ℝ):Prop:=∀ (σ:Equiv.Perm (Fin k)) (x:Fin k → ℝ),h (x ∘ σ)=h x
 end end Wishart.Spectral
 namespace Wishart.Spectral section open scoped Classical Matrix.Norms.Operator
@@ -667,31 +653,23 @@ namespace Wishart.Spectral section open scoped Classical Matrix.Norms.Operator
 noncomputable def descendingSpectrum {p:ℕ} (S:Sym p):Fin p → ℝ:=ascendingSpectrum S ∘ Fin.rev
 end end Wishart.Spectral
 namespace Wishart.QuaternionMatrix section open scoped Classical Quaternion Matrix ComplexOrder variable {m n:Type*} [Fintype m] [Fintype n]
-/-- Literal FullColumnRank. -/
 def FullColumnRank (B:Matrix m n ℍ[ℝ]):Prop:=Function.Injective B.mulVec
 end end Wishart.QuaternionMatrix
 namespace Wishart.FieldSpectral section open scoped Classical ComplexOrder Matrix.Norms.L2Operator variable {𝕜:Type*} [RCLike 𝕜]
-/-- Literal orderedValues. -/
 def orderedValues {p:ℕ} {A:Matrix (Fin p) (Fin p) 𝕜} (hA:A.IsHermitian):Fin p → ℝ:=fun i => hA.eigenvalues₀ (Fin.cast (WishartSharedProof.finCard_symm p) i)
-/-- Literal Hermitian. -/
 abbrev Hermitian (𝕜:Type*) [RCLike 𝕜] (p:ℕ):=selfAdjoint.submodule ℝ (Matrix (Fin p) (Fin p) 𝕜)
 end end Wishart.FieldSpectral
 namespace Wishart.QuaternionMatrix section open scoped Classical Quaternion Matrix ComplexOrder MatrixOrder Matrix.Norms.L2Operator open scoped Matrix.Norms.Frobenius
 /-- Flatten the two scalar coordinates in the actual complex representation. -/
 def flatRepresentation {p j:ℕ} (A:Matrix (Fin p) (Fin j) ℍ[ℝ]):Matrix (Fin (p * 2)) (Fin (j * 2)) ℂ:=(complexRepresentation A).submatrix finProdFinEquiv.symm finProdFinEquiv.symm
-/-- Literal flatHermitian. -/
 def flatHermitian {p:ℕ} (A:Hermitian p):Wishart.FieldSpectral.Hermitian ℂ (p * 2):=⟨flatRepresentation (A:Matrix (Fin p) (Fin p) ℍ[ℝ]),(((isHermitian_complexRepresentation_iff _).mpr (WishartVerification.hermitian_matrix_coe A)).submatrix finProdFinEquiv.symm).eq⟩
 end end Wishart.QuaternionMatrix
 namespace Wishart.QuaternionMatrix section open scoped Classical Quaternion Matrix ComplexOrder Matrix.Norms.L2Operator open scoped Matrix.Norms.Frobenius
-/-- Literal doubledIndex. -/
 def doubledIndex {p:ℕ} (i:Fin p):Fin (p * 2):=finProdFinEquiv (i,0)
-/-- Literal orderedValues. -/
 def orderedValues {p:ℕ} (A:Hermitian p):Fin p → ℝ:=fun i => Wishart.FieldSpectral.orderedValues (WishartVerification.hermitian_matrix_coe (flatHermitian A)) (doubledIndex i)
 end end Wishart.QuaternionMatrix
 namespace Wishart.Spectral section open scoped Classical BigOperators variable {k:ℕ}
-/-- Literal spectralRegularization. -/
 def spectralRegularization (h:(Fin k → ℝ) → ℝ) (x:Fin k → ℝ) (t:ℝ):ℝ:=Real.exp (h (fun i => Real.log (x i + Real.exp t)))
-/-- Literal spectralBoundaryValue. -/
 def spectralBoundaryValue (h:(Fin k → ℝ) → ℝ) (x:Fin k → ℝ):ℝ:=⨅ t:ℝ,spectralRegularization h x t
 end end Wishart.Spectral
 namespace Wishart section open scoped Classical Quaternion ComplexOrder BigOperators ENNReal
@@ -721,57 +699,42 @@ structure QuaternionSpectralFamily (p:ℕ) (ι:Type*) where
   symmetric:∀ i,Spectral.SymmetricProfile (profile i)
 end end Wishart
 namespace Wishart.ComplexSpectralFamily section open scoped Classical Quaternion ComplexOrder BigOperators ENNReal variable {p:ℕ} {ι:Type*} (F:ComplexSpectralFamily p ι)
-/-- Literal shiftedCompression. -/
 def shiftedCompression (Sigma:Matrix (Fin p) (Fin p) ℂ) (i:ι) (X:ComplexMatrix.Hermitian p):ComplexMatrix.Hermitian (F.size i):=ComplexMatrix.normalizedCompression (F.matrix i) Sigma X + F.shift i • (⟨1,Matrix.isHermitian_one⟩:ComplexMatrix.Hermitian (F.size i))
-/-- Literal factor. -/
 def factor (Sigma:Matrix (Fin p) (Fin p) ℂ) (i:ι) (X:ComplexMatrix.Hermitian p):ℝ:=Spectral.spectralBoundaryValue (F.profile i) (FieldSpectral.orderedValues (WishartVerification.hermitian_matrix_coe (F.shiftedCompression Sigma i X)))
 end end Wishart.ComplexSpectralFamily
 namespace Wishart.QuaternionSpectralFamily section open scoped Classical Quaternion ComplexOrder BigOperators ENNReal variable {p:ℕ} {ι:Type*} (F:QuaternionSpectralFamily p ι)
-/-- Literal shiftedCompression. -/
 def shiftedCompression (Sigma:Matrix (Fin p) (Fin p) ℍ[ℝ]) (i:ι) (X:QuaternionMatrix.Hermitian p):QuaternionMatrix.Hermitian (F.size i):=QuaternionMatrix.normalizedCompression (F.matrix i) Sigma X + F.shift i • (⟨1,Matrix.isHermitian_one⟩:QuaternionMatrix.Hermitian (F.size i))
-/-- Literal factor. -/
 def factor (Sigma:Matrix (Fin p) (Fin p) ℍ[ℝ]) (i:ι) (X:QuaternionMatrix.Hermitian p):ℝ:=Spectral.spectralBoundaryValue (F.profile i) (QuaternionMatrix.orderedValues (F.shiftedCompression Sigma i X))
 end end Wishart.QuaternionSpectralFamily
 namespace Wishart section open scoped Classical Quaternion ComplexOrder BigOperators ENNReal
 /-- The two allowed actual complex laws; the real-shape normalization must still be established, rather than built into this predicate as an assumption. -/
 def IsSectionSevenComplexLaw {p:ℕ} (Sigma:Matrix (Fin p) (Fin p) ℂ) (μ:Measure (ComplexMatrix.Hermitian p)):Prop:=(∃ α:ℝ,(p:ℝ) - 1 < α ∧ μ=ComplexMatrix.wishartMeasure α Sigma) ∨ (∃ n:ℕ,1 ≤ n ∧ μ=ComplexMatrix.gramMeasure n Sigma)
-/-- Literal IsSectionSevenQuaternionLaw. -/
 def IsSectionSevenQuaternionLaw {p:ℕ} (Sigma:Matrix (Fin p) (Fin p) ℍ[ℝ]) (μ:Measure (QuaternionMatrix.Hermitian p)):Prop:=(∃ α:ℝ,(p:ℝ) - 1 < α ∧ μ=QuaternionMatrix.wishartMeasure α Sigma) ∨ (∃ n:ℕ,1 ≤ n ∧ μ=QuaternionMatrix.gramMeasure n Sigma)
 /-- This is a required conclusion in the final Section 7 package. It prevents the normalization convention `∞⁻¹ = 0` from making a malformed density law produce a vacuous zero-measure comparison. -/
 def SectionSevenComplexNormalization:Prop:=∀ (p:ℕ) (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℂ),(p:ℝ) - 1 < α → Sigma.PosDef → 0 < ComplexMatrix.wishartNormalizer α Sigma ∧ ComplexMatrix.wishartNormalizer α Sigma < ⊤ ∧ IsProbabilityMeasure (ComplexMatrix.wishartMeasure α Sigma)
-/-- Literal SectionSevenQuaternionNormalization. -/
 def SectionSevenQuaternionNormalization:Prop:=∀ (p:ℕ) (α:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℍ[ℝ]),(p:ℝ) - 1 < α → QuaternionMatrix.PosDef Sigma → 0 < QuaternionMatrix.wishartNormalizer α Sigma ∧ QuaternionMatrix.wishartNormalizer α Sigma < ⊤ ∧ IsProbabilityMeasure (QuaternionMatrix.wishartMeasure α Sigma)
 /-- Full complex principal target: all admissible real shapes and all positive integer sample sizes, all finite families and all full-column-rank overlaps. -/
 def TheoremSevenOneComplex:Prop:=∀ (p:ℕ) (ι:Type) [Fintype ι] [DecidableEq ι] (Sigma:Matrix (Fin p) (Fin p) ℂ),Sigma.PosDef → ∀ (F:ComplexSpectralFamily p ι) (μ:Measure (ComplexMatrix.Hermitian p)),IsSectionSevenComplexLaw Sigma μ → ExtendedSelectedProductComparison μ (F.factor Sigma)
-/-- Literal TheoremSevenOneQuaternion. -/
 def TheoremSevenOneQuaternion:Prop:=∀ (p:ℕ) (ι:Type) [Fintype ι] [DecidableEq ι] (Sigma:Matrix (Fin p) (Fin p) ℍ[ℝ]),QuaternionMatrix.PosDef Sigma → ∀ (F:QuaternionSpectralFamily p ι) (μ:Measure (QuaternionMatrix.Hermitian p)),IsSectionSevenQuaternionLaw Sigma μ → ExtendedSelectedProductComparison μ (F.factor Sigma)
 /-- The finite determinant-power assertion is a separate part of 7.1; it is not silently inferred from the extended comparison. -/
 def TheoremSevenOneComplexFinitePowers:Prop:=∀ (p:ℕ) (ι:Type) [Fintype ι] [DecidableEq ι] (Sigma:Matrix (Fin p) (Fin p) ℂ),Sigma.PosDef → ∀ (k:ι → ℕ) (B:∀ i,Matrix (Fin p) (Fin (k i)) ℂ),(∀ i,Function.Injective (B i).mulVec) → ∀ (c ν:ι → ℝ),(∀ i,0 ≤ c i) → (∀ i,0 ≤ ν i) → ∀ μ:Measure (ComplexMatrix.Hermitian p),IsSectionSevenComplexLaw Sigma μ → (∫⁻ X,ENNReal.ofReal (∏ i,ComplexMatrix.realDeterminant ((B i)ᴴ * (X:Matrix (Fin p) (Fin p) ℂ) * B i + c i • ComplexMatrix.compressionCovariance (B i) Sigma) ^ ν i) ∂μ) < ⊤
-/-- Literal TheoremSevenOneQuaternionFinitePowers. -/
 def TheoremSevenOneQuaternionFinitePowers:Prop:=∀ (p:ℕ) (ι:Type) [Fintype ι] [DecidableEq ι] (Sigma:Matrix (Fin p) (Fin p) ℍ[ℝ]),QuaternionMatrix.PosDef Sigma → ∀ (k:ι → ℕ) (B:∀ i,Matrix (Fin p) (Fin (k i)) ℍ[ℝ]),(∀ i,QuaternionMatrix.FullColumnRank (B i)) → ∀ (c ν:ι → ℝ),(∀ i,0 ≤ c i) → (∀ i,0 ≤ ν i) → ∀ μ:Measure (QuaternionMatrix.Hermitian p),IsSectionSevenQuaternionLaw Sigma μ → (∫⁻ X,ENNReal.ofReal (∏ i,QuaternionMatrix.positiveDeterminant ((B i)ᴴ * (X:Matrix (Fin p) (Fin p) ℍ[ℝ]) * B i + c i • QuaternionMatrix.compressionCovariance (B i) Sigma) ^ ν i) ∂μ) < ⊤
 /-- The required combined Section 7 target, including law nonvacuity and finite moments. Defining this proposition does not assert it. -/
 def TheoremSevenOne:Prop:=SectionSevenComplexNormalization ∧ SectionSevenQuaternionNormalization ∧ TheoremSevenOneComplex ∧ TheoremSevenOneQuaternion ∧ TheoremSevenOneComplexFinitePowers ∧ TheoremSevenOneQuaternionFinitePowers
 end end Wishart
 namespace Wishart.Spectral section open scoped Classical BigOperators Matrix.Norms.Operator
-/-- Literal identitySymmetric. -/
 def identitySymmetric (p:ℕ):Sym p:=⟨1,WishartSharedProof.realIdentitySelfAdjoint _⟩
-/-- Literal shiftSymmetric. -/
 def shiftSymmetric {p:ℕ} (c:ℝ) (X:Sym p):Sym p:=X + c • identitySymmetric p
 end end Wishart.Spectral
 namespace Wishart.Spectral section open scoped Classical BigOperators ENNReal
-/-- Literal FiniteConvexIncreasingSymmetric. -/
 def FiniteConvexIncreasingSymmetric {k:ℕ} (h:(Fin k → ℝ) → ℝ):Prop:=ConvexOn ℝ Set.univ h ∧ Monotone h ∧ SymmetricProfile h
-/-- Literal logSpectralFactor. -/
 def logSpectralFactor {k:ℕ} (h:(Fin k → ℝ) → ℝ) (S:Sym k):ℝ:=Real.exp (h (fun i => Real.log (descendingSpectrum S i)))
 end end Wishart.Spectral
 namespace Wishart.Spectral section open scoped Classical BigOperators ENNReal Matrix MatrixOrder Matrix.Norms.Operator variable {κ ι:Type*} [Fintype κ] [Fintype ι] [Nonempty ι]
-/-- Literal normalizedShiftedMatrix. -/
 def normalizedShiftedMatrix {p q:ℕ} (Sigma:Matrix (Fin p) (Fin p) ℝ) (B:Matrix (Fin p) (Fin q) ℝ) (c:ℝ) (X:Sym p):Sym q:=shiftSymmetric c (normalizedCompression Sigma B X)
-/-- Literal normalizedLogSpectralFactor. -/
 def normalizedLogSpectralFactor {p q:ℕ} (Sigma:Matrix (Fin p) (Fin p) ℝ) (B:Matrix (Fin p) (Fin q) ℝ) (c:ℝ) (h:(Fin q → ℝ) → ℝ) (X:Sym p):ℝ:=logSpectralFactor h (normalizedShiftedMatrix Sigma B c X)
 end end Wishart.Spectral
 namespace WishartVerification.MomentAssembly section open scoped Classical ENNReal BigOperators variable {ι:Type*} [DecidableEq ι]
-/-- Literal orderedPairRankThreshold. -/
 def orderedPairRankThreshold (rank:ι → ℕ) (A:Finset ι) (p:ℕ) (n:ℝ):Prop :=
   ∀ h:2 ≤ Fintype.card A,
     min ((descendingRanks rank A (WishartSharedProof.firstOfTwo h):ℝ) +
@@ -789,15 +752,10 @@ structure LogSpectralCompressionFamily (p:ℕ) (ι:Type*) where
   profile_class:∀ i,FiniteConvexIncreasingSymmetric (profile i)
 end end Wishart
 namespace Wishart.LogSpectralCompressionFamily section open scoped Classical BigOperators ENNReal Matrix MatrixOrder Matrix.Norms.Operator variable {p:ℕ} {ι:Type*} [DecidableEq ι] variable (F:LogSpectralCompressionFamily p ι) (Sigma:Matrix (Fin p) (Fin p) ℝ)
-/-- Literal factor. -/
 def factor (i:ι) (X:SymmetricMatrix p):ℝ:=normalizedLogSpectralFactor Sigma (F.matrix i) (F.shift i) (F.profile i) X
-/-- Literal subproduct. -/
 def subproduct (J:Finset ι) (X:SymmetricMatrix p):ℝ:=∏ i ∈ J,F.factor Sigma i X
-/-- Literal moment. -/
 def moment (n:ℝ) (J:Finset ι):ℝ≥0∞:=∫⁻ X,ENNReal.ofReal (F.subproduct Sigma J X) ∂nonsingularWishartMeasure n Sigma
-/-- Literal ConstantFactor. -/
 def ConstantFactor (i:ι):Prop:=∃ c:ℝ,∀ X:SymmetricMatrix p,(X:Matrix (Fin p) (Fin p) ℝ).PosDef → F.factor Sigma i X=c
-/-- Literal activeProper. -/
 def activeProper [Fintype ι]:Finset ι:=Finset.univ.filter (fun i => F.size i < p ∧ ¬ F.ConstantFactor Sigma i)
 end end Wishart.LogSpectralCompressionFamily
 namespace WishartVerification section 
@@ -826,43 +784,28 @@ structure GramGeometricCompressionFamily (p:ℕ) (ι:Type*) where
   boundary:∀ i,GeometricOuterOnNonnegative (outer i)
 end end Wishart
 namespace Wishart.GramGeometricCompressionFamily section open scoped Classical BigOperators ENNReal Matrix MatrixOrder Matrix.Norms.Operator variable {p:ℕ} {ι:Type*} [DecidableEq ι] variable (F:GramGeometricCompressionFamily p ι) (Sigma:Matrix (Fin p) (Fin p) ℝ)
-/-- Literal factor. -/
 def factor (i:ι) (X:SymmetricMatrix p):ℝ:=F.outer i (shiftedCompressionDeterminant Sigma (F.matrix i) (F.shift i) X)
-/-- Literal subproduct. -/
 def subproduct (J:Finset ι) (X:SymmetricMatrix p):ℝ:=∏ i ∈ J,F.factor Sigma i X
-/-- Literal moment. -/
 def moment (n:ℕ) (J:Finset ι):ℝ≥0∞:=∫⁻ X,ENNReal.ofReal (F.subproduct Sigma J X) ∂wishartGramMeasure n Sigma
-/-- Literal AEConstantFactor. -/
 def AEConstantFactor (n:ℕ) (i:ι):Prop:=∃ c:ℝ,∀ᵐ X ∂wishartGramMeasure n Sigma,F.factor Sigma i X=c
-/-- Literal activeProper. -/
 def activeProper [Fintype ι] (n:ℕ):Finset ι:=Finset.univ.filter (fun i => F.size i < p ∧ ¬ F.AEConstantFactor Sigma n i)
 end end Wishart.GramGeometricCompressionFamily
 namespace Wishart section open scoped Classical ENNReal MatrixOrder Matrix.Norms.L2Operator
-/-- Literal matrixBetaIIConstant. -/
 def matrixBetaIIConstant {p:ℕ} (α β:ℝ) (Omega:Matrix (Fin p) (Fin p) ℝ):ℝ:=multivariateGamma p ((α + β) / 2) / (multivariateGamma p (α / 2) * multivariateGamma p (β / 2)) * Omega.det ^ (β / 2)
-/-- Literal matrixBetaIIPDFReal. -/
 def matrixBetaIIPDFReal {p:ℕ} (α β:ℝ) (Omega:Matrix (Fin p) (Fin p) ℝ) (X:SymmetricMatrix p):ℝ:=if (X:Matrix (Fin p) (Fin p) ℝ).PosDef then matrixBetaIIConstant α β Omega * (X:Matrix (Fin p) (Fin p) ℝ).det ^ ((α - p - 1) / 2) * (Omega + (X:Matrix (Fin p) (Fin p) ℝ)).det ^ (-((α + β) / 2)) else 0
-/-- Literal matrixBetaIIPDF. -/
 def matrixBetaIIPDF {p:ℕ} (α β:ℝ) (Omega:Matrix (Fin p) (Fin p) ℝ) (X:SymmetricMatrix p):ℝ≥0∞:=ENNReal.ofReal (matrixBetaIIPDFReal α β Omega X)
 /-- The beta-II law is defined by the paper's density, not by an assumed hierarchy. Equality to the hierarchy is proved in the next module. -/
 def matrixBetaIIMeasure {p:ℕ} (α β:ℝ) (Omega:Matrix (Fin p) (Fin p) ℝ):Measure (SymmetricMatrix p):=(symmetricLebesgue p).withDensity (matrixBetaIIPDF α β Omega)
-/-- Literal compressionDeterminantProduct. -/
 def compressionDeterminantProduct {p d:ℕ} (k:Fin d → ℕ) (B:∀ i,Matrix (Fin p) (Fin (k i)) ℝ) (ν:Fin d → ℝ) (J:Finset (Fin d)) (X:SymmetricMatrix p):ℝ:=∏ i ∈ J,((B i)ᵀ * (X:Matrix (Fin p) (Fin p) ℝ) * B i).det ^ ν i
 end end Wishart
 namespace Wishart section open scoped Classical BigOperators ENNReal MatrixOrder Matrix.Norms.L2Operator
 /-- The actual normalized principal matrix, with the covariance inverse square root on both sides, in an arbitrary fixed enumeration of the coordinate set. -/
 def normalizedPrincipalGaugeMatrix {p:ℕ} (Sigma:Matrix (Fin p) (Fin p) ℝ) (I:Finset (Fin p)) (X:SymmetricMatrix p):SymmetricMatrix (Fintype.card I):=Matrix.symmetricCongruenceLinearMap (CFC.sqrt (Sigma.submatrix (principalSetCoordinates I) (principalSetCoordinates I)))⁻¹ (principalSetMatrix I X)
-/-- Literal principalGaugeFactor. -/
 def principalGaugeFactor {p d:ℕ} (Sigma:Matrix (Fin p) (Fin p) ℝ) (I:Fin d → Finset (Fin p)) (Φ:∀ i,SpectralGauge (Fintype.card (I i))) (c:Fin d → ℝ) (f:Fin d → ℝ → ℝ) (i:Fin d) (X:SymmetricMatrix p):ℝ:=f i (Φ i (normalizedPrincipalGaugeMatrix Sigma (I i) X + c i • SpectralGauge.identitySymmetric (Fintype.card (I i))))
-/-- Literal principalShiftedDeterminant. -/
 def principalShiftedDeterminant {p:ℕ} (Sigma:Matrix (Fin p) (Fin p) ℝ) (I:Finset (Fin p)) (c:ℝ) (X:SymmetricMatrix p):ℝ:=((X:Matrix (Fin p) (Fin p) ℝ).submatrix (principalSetCoordinates I) (principalSetCoordinates I) + c • Sigma.submatrix (principalSetCoordinates I) (principalSetCoordinates I)).det
-/-- Literal principalLogSpectralFactor. -/
 def principalLogSpectralFactor {p d:ℕ} (Sigma:Matrix (Fin p) (Fin p) ℝ) (I:Fin d → Finset (Fin p)) (c:Fin d → ℝ) (h:∀ i,(Fin (Fintype.card (I i)) → ℝ) → ℝ) (i:Fin d) (X:SymmetricMatrix p):ℝ:=Real.exp (h i (fun j => Real.log (ascendingSpectrum (normalizedPrincipalGaugeMatrix Sigma (I i) X + c i • Spectral.identitySymmetric (Fintype.card (I i))) j)))
-/-- Literal selectedExtendedBound. -/
 def selectedExtendedBound {Ω ι:Type*} [MeasurableSpace Ω] [DecidableEq ι] (μ:Measure Ω) (f:ι → Ω → ℝ) (J:Finset ι) (i:ι):Prop:=(∫⁻ X,ENNReal.ofReal (f i X) ∂μ) * (∫⁻ X,ENNReal.ofReal (∏ j ∈ J.erase i,f j X) ∂μ) ≤ ∫⁻ X,ENNReal.ofReal (∏ j ∈ J,f j X) ∂μ
-/-- Literal productExtendedBound. -/
 def productExtendedBound {Ω ι:Type*} [MeasurableSpace Ω] (μ:Measure Ω) (f:ι → Ω → ℝ) (J:Finset ι):Prop:=(∏ i ∈ J,∫⁻ X,ENNReal.ofReal (f i X) ∂μ) ≤ ∫⁻ X,ENNReal.ofReal (∏ i ∈ J,f i X) ∂μ
-/-- Literal realPairBound. -/
 def realPairBound {Ω:Type*} [MeasurableSpace Ω] (μ:Measure Ω) (f g:Ω → ℝ):Prop:=(∫ X,f X ∂μ) * (∫ X,g X ∂μ) ≤ ∫ X,f X * g X ∂μ
 /-- The literal maximum in (10). The empty remaining product is handled by the separate trivial-small-family clause whenever that clause applies. -/
 def selectedCompressionRankBound {ι:Type*} [DecidableEq ι] (rank:ι → ℕ) (J:Finset ι) (i:ι) (p:ℕ) (n:ℝ):Prop:=min ((rank i:ℝ) + (J.erase i).sup rank) ((p:ℝ) + 1) ≤ n
@@ -899,27 +842,16 @@ structure LogSpectralCompressionConclusion {p d:ℕ}
     ∀ J,productExtendedBound (nonsingularWishartMeasure n Sigma) (F.factor Sigma) J
   constants:∀ i,F.ConstantFactor Sigma i ↔
     ∃ c:ℝ,∀ᵐ X ∂nonsingularWishartMeasure n Sigma,F.factor Sigma i X=c
-/-- Literal Theorem51GeometricTarget. -/
 def Theorem51GeometricTarget:Prop:=∀ (p d:ℕ) (n:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℝ) (F:GeometricCompressionFamily p (Fin d)),Sigma.PosDef → (p:ℝ) - 1 < n → DeterminantCompressionConclusion F Sigma n
-/-- Literal Theorem52GeometricTarget. -/
 def Theorem52GeometricTarget:Prop:=∀ (p d:ℕ) (n:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℝ) (F:GeometricGaugeFamily p (Fin d)),Sigma.PosDef → (p:ℝ) - 1 < n → GaugeCompressionConclusion F Sigma n
-/-- Literal Theorem53SpectralTarget. -/
 def Theorem53SpectralTarget:Prop:=∀ (p d:ℕ) (n:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℝ) (F:LogSpectralCompressionFamily p (Fin d)),Sigma.PosDef → (p:ℝ) - 1 < n → LogSpectralCompressionConclusion F Sigma n
-/-- Literal Theorem51MonotonePairTarget. -/
 def Theorem51MonotonePairTarget:Prop:=∀ (p q k:ℕ) (n c d:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℝ) (Q:Matrix (Fin p) (Fin q) ℝ) (M:Matrix (Fin p) (Fin k) ℝ) (f g:ℝ → ℝ),Sigma.PosDef → (p:ℝ) - 1 < n → Q.rank=q → M.rank=k → 0 ≤ c → 0 ≤ d → (∀ t ∈ Set.Ioi (0:ℝ),0 ≤ f t) → (∀ t ∈ Set.Ioi (0:ℝ),0 ≤ g t) → MonotoneOn f (Set.Ioi 0) → MonotoneOn g (Set.Ioi 0) → Integrable (fun X => f (shiftedCompressionDeterminant Sigma Q c X)) (nonsingularWishartMeasure n Sigma) → Integrable (fun X => g (shiftedCompressionDeterminant Sigma M d X)) (nonsingularWishartMeasure n Sigma) → Integrable (fun X => f (shiftedCompressionDeterminant Sigma Q c X) * g (shiftedCompressionDeterminant Sigma M d X)) (nonsingularWishartMeasure n Sigma) → realPairBound (nonsingularWishartMeasure n Sigma) (fun X => f (shiftedCompressionDeterminant Sigma Q c X)) (fun X => g (shiftedCompressionDeterminant Sigma M d X))
-/-- Literal Theorem52MonotonePairTarget. -/
 def Theorem52MonotonePairTarget:Prop:=∀ (p q k:ℕ) (n c d:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℝ) (Q:Matrix (Fin p) (Fin q) ℝ) (M:Matrix (Fin p) (Fin k) ℝ) (Φ:SpectralGauge q) (Ψ:SpectralGauge k) (f g:ℝ → ℝ),Sigma.PosDef → (p:ℝ) - 1 < n → Q.rank=q → M.rank=k → 0 ≤ c → 0 ≤ d → (∀ t ∈ Set.Ioi (0:ℝ),0 ≤ f t) → (∀ t ∈ Set.Ioi (0:ℝ),0 ≤ g t) → MonotoneOn f (Set.Ioi 0) → MonotoneOn g (Set.Ioi 0) → Integrable (fun X => f (normalizedGaugeValue Sigma Q Φ c X)) (nonsingularWishartMeasure n Sigma) → Integrable (fun X => g (normalizedGaugeValue Sigma M Ψ d X)) (nonsingularWishartMeasure n Sigma) → Integrable (fun X => f (normalizedGaugeValue Sigma Q Φ c X) * g (normalizedGaugeValue Sigma M Ψ d X)) (nonsingularWishartMeasure n Sigma) → realPairBound (nonsingularWishartMeasure n Sigma) (fun X => f (normalizedGaugeValue Sigma Q Φ c X)) (fun X => g (normalizedGaugeValue Sigma M Ψ d X))
-/-- Literal Theorem51PrincipalTarget. -/
 def Theorem51PrincipalTarget:Prop:=∀ (p d:ℕ) (n:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℝ) (I:Fin d → Finset (Fin p)) (c:Fin d → ℝ) (f:Fin d → ℝ → ℝ),Sigma.PosDef → (p:ℝ) - 1 < n → Pairwise (fun i j => Disjoint (I i) (I j)) → (∀ i,0 ≤ c i) → (∀ i,GeometricallyLogConvex (f i)) → (∀ J,∀ i ∈ J,selectedExtendedBound (nonsingularWishartMeasure n Sigma) (fun i X => f i (principalShiftedDeterminant Sigma (I i) (c i) X)) J i) ∧ (∀ J,productExtendedBound (nonsingularWishartMeasure n Sigma) (fun i X => f i (principalShiftedDeterminant Sigma (I i) (c i) X)) J)
-/-- Literal Theorem52PrincipalTarget. -/
 def Theorem52PrincipalTarget:Prop:=∀ (p d:ℕ) (n:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℝ) (I:Fin d → Finset (Fin p)) (Φ:∀ i,SpectralGauge (Fintype.card (I i))) (c:Fin d → ℝ) (f:Fin d → ℝ → ℝ),Sigma.PosDef → (p:ℝ) - 1 < n → (∀ i,(I i).Nonempty) → Pairwise (fun i j => Disjoint (I i) (I j)) → (∀ i,0 ≤ c i) → (∀ i,GeometricallyLogConvex (f i)) → (∀ J,∀ i ∈ J,selectedExtendedBound (nonsingularWishartMeasure n Sigma) (principalGaugeFactor Sigma I Φ c f) J i) ∧ (∀ J,productExtendedBound (nonsingularWishartMeasure n Sigma) (principalGaugeFactor Sigma I Φ c f) J)
-/-- Literal Theorem53PrincipalTarget. -/
 def Theorem53PrincipalTarget:Prop:=∀ (p d:ℕ) (n:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℝ) (I:Fin d → Finset (Fin p)) (c:Fin d → ℝ) (h:∀ i,(Fin (Fintype.card (I i)) → ℝ) → ℝ),Sigma.PosDef → (p:ℝ) - 1 < n → (∀ i,(I i).Nonempty) → Pairwise (fun i j => Disjoint (I i) (I j)) → (3 ≤ d ∨ (p:ℝ) ≤ n) → (∀ i,0 ≤ c i) → (∀ i,FiniteConvexIncreasingSymmetric (h i)) → (∀ J,∀ i ∈ J,selectedExtendedBound (nonsingularWishartMeasure n Sigma) (principalLogSpectralFactor Sigma I c h) J i) ∧ (∀ J,productExtendedBound (nonsingularWishartMeasure n Sigma) (principalLogSpectralFactor Sigma I c h) J)
-/-- Literal Corollary54ProductTarget. -/
 def Corollary54ProductTarget:Prop:=∀ (p d n:ℕ) (Sigma:Matrix (Fin p) (Fin p) ℝ) (F:GramGeometricCompressionFamily p (Fin d)),1 ≤ n → Sigma.PosDef → gramOrderedRankThreshold F.size (F.activeProper Sigma n) n → ∀ J,productExtendedBound (wishartGramMeasure n Sigma) (F.factor Sigma) J
-/-- Literal Corollary54MonotonePairTarget. -/
 def Corollary54MonotonePairTarget:Prop:=∀ (p q k n:ℕ) (c d:ℝ) (Sigma:Matrix (Fin p) (Fin p) ℝ) (Q:Matrix (Fin p) (Fin q) ℝ) (M:Matrix (Fin p) (Fin k) ℝ) (f g:ℝ → ℝ),1 ≤ n → Sigma.PosDef → Q.rank=q → M.rank=k → 0 ≤ c → 0 ≤ d → (∀ t ∈ Set.Ici (0:ℝ),0 ≤ f t) → (∀ t ∈ Set.Ici (0:ℝ),0 ≤ g t) → MonotoneOn f (Set.Ici 0) → MonotoneOn g (Set.Ici 0) → Integrable (fun X => f (shiftedCompressionDeterminant Sigma Q c X)) (wishartGramMeasure n Sigma) → Integrable (fun X => g (shiftedCompressionDeterminant Sigma M d X)) (wishartGramMeasure n Sigma) → Integrable (fun X => f (shiftedCompressionDeterminant Sigma Q c X) * g (shiftedCompressionDeterminant Sigma M d X)) (wishartGramMeasure n Sigma) → realPairBound (wishartGramMeasure n Sigma) (fun X => f (shiftedCompressionDeterminant Sigma Q c X)) (fun X => g (shiftedCompressionDeterminant Sigma M d X))
-/-- Literal Corollary54PowerTarget. -/
 def Corollary54PowerTarget:Prop:=∀ (p d n:ℕ) (Sigma:Matrix (Fin p) (Fin p) ℝ) (k:Fin d → ℕ) (B:∀ i,Matrix (Fin p) (Fin (k i)) ℝ) (c ν:Fin d → ℝ),1 ≤ n → Sigma.PosDef → (∀ i,(B i).rank=k i) → (∀ i,0 ≤ c i) → (∀ i,0 ≤ ν i) → HasAllFiniteMoments (fun X:SymmetricMatrix p => ∏ i,shiftedCompressionDeterminant Sigma (B i) (c i) X ^ ν i) (wishartGramMeasure n Sigma)
 /-- Literal theorem_5_1_complete. -/
 theorem theorem_5_1_complete:Theorem51GeometricTarget ∧ Theorem51MonotonePairTarget ∧ Theorem51PrincipalTarget:=by sorry
