@@ -1,5 +1,1 @@
-# Palomar submission: homological_shifts
-
-Substantive source snapshot of [caiusdfolkerts/research](https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/homological_shifts), revision `e0696fddcd3d10b5d6461e62e9b2f02c4195be37`.
-
-The complete selected development, paper, metadata, and Comparator configuration are in `homological_shifts/`. This branch prepares a registry submission; it does not claim registry acceptance. See `homological_shifts/formalization.yaml` for exact scope and provenance.
+Canonical-only complete Homological principal interface: all Theorems1.1/1.2/4.4/5.1/6.1, Proposition4.2, Corollaries4.1/4.3/6.2, preserving exact actual ideals/modules/Koszul homology/field ranges. Six original product and multi-Rees closure calculations are genuinely proved in this smoke. Original375 full-pass package is untouched. Genuine full Source/Solution proof bridges prepared separately but not yet validated. Not a full preflight.
