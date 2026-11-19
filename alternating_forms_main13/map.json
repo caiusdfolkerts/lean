@@ -1,0 +1,844 @@
+{
+  "entry": "alternating_forms_main13",
+  "baseline_project": "alternating_forms",
+  "baseline_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
+  "parent_passed_commit": "f99b0e657e8e3ca478876ff6a90ea28ef30039be",
+  "prepared_at": "2026-11-19T09:03:50.446978+00:00",
+  "status": "source_prepared_canonical_challenge_passed",
+  "verification_note": "Preparation-time status only; subsequent exact-commit workflow reports determine verification.",
+  "selected_results": [
+    {
+      "declaration": "PalomarAlternatingDegeneration.TauCeti.InternalGrading.mapInternal",
+      "paper_result": "Exact supporting obligation for Theorem 1.3 literal model",
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf",
+      "source_declarations": [
+        "TauCeti.InternalGrading.mapInternal"
+      ],
+      "literal_declaration_source": "source/PalomarMain13Literal.lean"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.WeightedInitialFiber.reesMultiplicationCommutes",
+      "paper_result": "Exact supporting obligation for Theorem 1.3 literal model",
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf",
+      "source_declarations": [
+        "PaperVerification.WeightedInitialFiber.reesMultiplicationCommutes"
+      ],
+      "literal_declaration_source": "source/PalomarMain13Literal.lean"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.TauCeti.ExteriorAlgebra.contractLeft_mem_exteriorPower",
+      "paper_result": "Exact supporting obligation for Theorem 1.3 literal model",
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf",
+      "source_declarations": [
+        "TauCeti.ExteriorAlgebra.contractLeft_mem_exteriorPower"
+      ],
+      "literal_declaration_source": "source/PalomarMain13Literal.lean"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.onePlaneIndex_eta",
+      "paper_result": "Exact supporting obligation for Theorem 1.3 literal model",
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf",
+      "source_declarations": [
+        "PaperVerification.AlternatingForms.onePlaneIndex_eta"
+      ],
+      "literal_declaration_source": "source/PalomarMain13Literal.lean"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.onePlane_matrixPluckerIdeal",
+      "paper_result": "Exact supporting obligation for Theorem 1.3 literal model",
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf",
+      "source_declarations": [
+        "PaperVerification.AlternatingForms.onePlane_matrixPluckerIdeal"
+      ],
+      "literal_declaration_source": "source/PalomarMain13Literal.lean"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.TauCeti.koszulDifferential_comp_koszulDifferential",
+      "paper_result": "Exact supporting obligation for Theorem 1.3 literal model",
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf",
+      "source_declarations": [
+        "TauCeti.koszulDifferential_comp_koszulDifferential"
+      ],
+      "literal_declaration_source": "source/PalomarMain13Literal.lean"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.OnePlaneKoszul.complex_exactAt_succ",
+      "paper_result": "Exact supporting obligation for Theorem 1.3 literal model",
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf",
+      "source_declarations": [
+        "PaperVerification.AlternatingForms.OnePlaneKoszul.complex_exactAt_succ"
+      ],
+      "literal_declaration_source": "source/PalomarMain13Literal.lean"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.OnePlaneKoszul.d_augmentation",
+      "paper_result": "Exact supporting obligation for Theorem 1.3 literal model",
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf",
+      "source_declarations": [
+        "PaperVerification.AlternatingForms.OnePlaneKoszul.d_augmentation"
+      ],
+      "literal_declaration_source": "source/PalomarMain13Literal.lean"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.OnePlaneKoszul.augmentation_exact",
+      "paper_result": "Exact supporting obligation for Theorem 1.3 literal model",
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf",
+      "source_declarations": [
+        "PaperVerification.AlternatingForms.OnePlaneKoszul.augmentation_exact"
+      ],
+      "literal_declaration_source": "source/PalomarMain13Literal.lean"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.OnePlaneKoszul.augmentationEpi",
+      "paper_result": "Exact supporting obligation for Theorem 1.3 literal model",
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf",
+      "source_declarations": [
+        "PaperVerification.AlternatingForms.OnePlaneKoszul.augmentationEpi"
+      ],
+      "literal_declaration_source": "source/PalomarMain13Literal.lean"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.OnePlaneKoszul.residueTensorComplex_d",
+      "paper_result": "Exact supporting obligation for Theorem 1.3 literal model",
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf",
+      "source_declarations": [
+        "PaperVerification.AlternatingForms.OnePlaneKoszul.residueTensorComplex_d"
+      ],
+      "literal_declaration_source": "source/PalomarMain13Literal.lean"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.BasisDegree.piece_iSupIndep",
+      "paper_result": "Exact supporting obligation for Theorem 1.3 literal model",
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf",
+      "source_declarations": [
+        "PaperVerification.AlternatingForms.BasisDegree.piece_iSupIndep"
+      ],
+      "literal_declaration_source": "source/PalomarMain13Literal.lean"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.BasisDegree.piece_iSup",
+      "paper_result": "Exact supporting obligation for Theorem 1.3 literal model",
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf",
+      "source_declarations": [
+        "PaperVerification.AlternatingForms.BasisDegree.piece_iSup"
+      ],
+      "literal_declaration_source": "source/PalomarMain13Literal.lean"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.OnePlaneKoszul.tensorDegreePiece_eq_bot",
+      "paper_result": "Exact supporting obligation for Theorem 1.3 literal model",
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf",
+      "source_declarations": [
+        "PaperVerification.AlternatingForms.OnePlaneKoszul.tensorDegreePiece_eq_bot"
+      ],
+      "literal_declaration_source": "source/PalomarMain13Literal.lean"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.OnePlaneKoszul.tensorDegreePieces_iSup",
+      "paper_result": "Exact supporting obligation for Theorem 1.3 literal model",
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf",
+      "source_declarations": [
+        "PaperVerification.AlternatingForms.OnePlaneKoszul.tensorDegreePieces_iSup"
+      ],
+      "literal_declaration_source": "source/PalomarMain13Literal.lean"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.OnePlaneKoszul.actual_onePlane_Tor_degree",
+      "paper_result": "Theorem 1.3",
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf",
+      "source_declarations": [
+        "PaperVerification.AlternatingForms.OnePlaneKoszul.actual_onePlane_Tor_degree"
+      ],
+      "literal_declaration_source": "source/PalomarMain13Literal.lean"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.paper13_weight_families",
+      "paper_result": "Theorem 1.3",
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf",
+      "source_declarations": [
+        "onePlaneOddRichardsonGradedFlatDegeneration",
+        "oddRichardsonGradedFlatDegeneration",
+        "Hibi.hibiGradedFlatDegeneration"
+      ],
+      "literal_declaration_source": "source/PalomarMain13Proofs.lean"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.paper13_oneplane_quadratic",
+      "paper_result": "Theorem 1.3",
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf",
+      "source_declarations": [
+        "odd_onePlane_conclusions.quadratic"
+      ],
+      "literal_declaration_source": "source/PalomarMain13Proofs.lean"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.paper13_quadratic",
+      "paper_result": "Theorem 1.3",
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf",
+      "source_declarations": [
+        "odd_higherPlane_conclusions.good_coordinates",
+        "odd_higherPlane_conclusions.quadratic"
+      ],
+      "literal_declaration_source": "source/PalomarMain13Proofs.lean"
+    },
+    {
+      "declaration": "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.paper13_higher_koszul",
+      "paper_result": "Theorem 1.3",
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf",
+      "source_declarations": [
+        "oddAugmentedBasis",
+        "oddAugmentation",
+        "oddPositiveDegree",
+        "oddAugmentedBasis_none",
+        "oddAugmentation_positive",
+        "oddAugmentedBasis_homogeneous",
+        "oddPositiveDegree_pos",
+        "isotropicAugmentation_X",
+        "odd_normalized_bar_off_diagonal",
+        "oddInternalDegree_zero_eq_zero",
+        "oddNormalizedBarTorIso"
+      ],
+      "literal_declaration_source": "source/PalomarMain13Proofs.lean"
+    }
+  ],
+  "source_definition_provenance": [
+    {
+      "name": "TauCeti.InternalGrading",
+      "source_path": "source/paper_verification/literal000.lean",
+      "line": 10440
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.pathVertexCost",
+      "source_path": "source/paper_verification/literal001.lean",
+      "line": 3607
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.positiveWeightShift",
+      "source_path": "source/paper_verification/literal001.lean",
+      "line": 3620
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.bandEntryCoefficient",
+      "source_path": "source/paper_verification/literal001.lean",
+      "line": 6306
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.bandMatrix",
+      "source_path": "source/paper_verification/literal001.lean",
+      "line": 6309
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.bandMinor",
+      "source_path": "source/paper_verification/literal001.lean",
+      "line": 6319
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.minorTermExponent",
+      "source_path": "source/paper_verification/literal001.lean",
+      "line": 6322
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.PluckerIndex",
+      "source_path": "source/paper_verification/literal001.lean",
+      "line": 6620
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.genericPluckerMinor",
+      "source_path": "source/paper_verification/literal001.lean",
+      "line": 6627
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.genericPluckerMap",
+      "source_path": "source/paper_verification/literal001.lean",
+      "line": 6632
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.matrixPluckerIdeal",
+      "source_path": "source/paper_verification/literal001.lean",
+      "line": 6636
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.intervalPluckerIdeal",
+      "source_path": "source/paper_verification/literal001.lean",
+      "line": 6665
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.sortedPluckerIndex",
+      "source_path": "source/paper_verification/literal001.lean",
+      "line": 6757
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.orderedPluckerCoordinate",
+      "source_path": "source/paper_verification/literal001.lean",
+      "line": 6763
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.StrictPairs",
+      "source_path": "source/paper_verification/literal001.lean",
+      "line": 7150
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.pluckerIsotropyEquation",
+      "source_path": "source/paper_verification/literal001.lean",
+      "line": 7440
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.isotropicPluckerIdeal",
+      "source_path": "source/paper_verification/literal001.lean",
+      "line": 7570
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.oddPathEdgeCost",
+      "source_path": "source/paper_verification/literal001.lean",
+      "line": 10711
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.oddPathVertexCost",
+      "source_path": "source/paper_verification/literal001.lean",
+      "line": 10715
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.oddPathVertexWeight",
+      "source_path": "source/paper_verification/literal001.lean",
+      "line": 10719
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.oddPluckerEdge",
+      "source_path": "source/paper_verification/literal001.lean",
+      "line": 11005
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.oddPluckerForms",
+      "source_path": "source/paper_verification/literal001.lean",
+      "line": 11011
+    },
+    {
+      "name": "PaperVerification.WeightedInitialFiber.scaledPolynomial",
+      "source_path": "source/paper_verification/literal002.lean",
+      "line": 205
+    },
+    {
+      "name": "PaperVerification.WeightedInitialFiber.scaledQuotient",
+      "source_path": "source/paper_verification/literal002.lean",
+      "line": 208
+    },
+    {
+      "name": "PaperVerification.WeightedInitialFiber.reesMap",
+      "source_path": "source/paper_verification/literal002.lean",
+      "line": 228
+    },
+    {
+      "name": "PaperVerification.WeightedInitialFiber.reesAlgebra",
+      "source_path": "source/paper_verification/literal002.lean",
+      "line": 303
+    },
+    {
+      "name": "PaperVerification.WeightedInitialFiber.reesCover",
+      "source_path": "source/paper_verification/literal002.lean",
+      "line": 317
+    },
+    {
+      "name": "PaperVerification.WeightedInitialFiber.reesParameter",
+      "source_path": "source/paper_verification/literal002.lean",
+      "line": 323
+    },
+    {
+      "name": "PaperVerification.WeightedInitialFiber.ZeroFiber",
+      "source_path": "source/paper_verification/literal002.lean",
+      "line": 326
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.oddNatVertexWeight",
+      "source_path": "source/paper_verification/literal002.lean",
+      "line": 491
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.pluckerVertexWeight",
+      "source_path": "source/paper_verification/literal002.lean",
+      "line": 551
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.oddIntervalLower",
+      "source_path": "source/paper_verification/literal003.lean",
+      "line": 6849
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.oddIntervalUpper",
+      "source_path": "source/paper_verification/literal003.lean",
+      "line": 6852
+    },
+    {
+      "name": "TauCeti.ExteriorAlgebra.contractLeft_mem_exteriorPower",
+      "source_path": "source/paper_verification/literal003.lean",
+      "line": 10065
+    },
+    {
+      "name": "PaperVerification.WeightedInitialFiber.ParameterFiber",
+      "source_path": "source/paper_verification/literal004.lean",
+      "line": 1043
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.Hibi.IntervalIndex",
+      "source_path": "source/paper_verification/literal004.lean",
+      "line": 1193
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.Hibi.meet",
+      "source_path": "source/paper_verification/literal004.lean",
+      "line": 1203
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.Hibi.join",
+      "source_path": "source/paper_verification/literal004.lean",
+      "line": 1212
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.Hibi.incomparable",
+      "source_path": "source/paper_verification/literal004.lean",
+      "line": 1357
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.Hibi.relation",
+      "source_path": "source/paper_verification/literal004.lean",
+      "line": 1359
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.Hibi.relationIdeal",
+      "source_path": "source/paper_verification/literal004.lean",
+      "line": 1362
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.Hibi.goodBandMap",
+      "source_path": "source/paper_verification/literal004.lean",
+      "line": 1601
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.Hibi.goodBandIdeal",
+      "source_path": "source/paper_verification/literal004.lean",
+      "line": 1605
+    },
+    {
+      "name": "PaperVerification.WeightedSagbi.inducedWeight",
+      "source_path": "source/paper_verification/literal004.lean",
+      "line": 1928
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.Hibi.diagonalEntryWeight",
+      "source_path": "source/paper_verification/literal004.lean",
+      "line": 2062
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.Hibi.diagonalExponent",
+      "source_path": "source/paper_verification/literal004.lean",
+      "line": 2064
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.Hibi.diagonalWeight",
+      "source_path": "source/paper_verification/literal004.lean",
+      "line": 2067
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.oddGoodMap",
+      "source_path": "source/paper_verification/literal004.lean",
+      "line": 4485
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.oddGoodIdeal",
+      "source_path": "source/paper_verification/literal004.lean",
+      "line": 4489
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.onePlaneIndex",
+      "source_path": "source/paper_verification/literal004.lean",
+      "line": 10496
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.onePlaneIndex_eta",
+      "source_path": "source/paper_verification/literal004.lean",
+      "line": 10506
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.onePlane_matrixPluckerIdeal",
+      "source_path": "source/paper_verification/literal004.lean",
+      "line": 10546
+    },
+    {
+      "name": "TauCeti.koszulDifferential",
+      "source_path": "source/paper_verification/literal004.lean",
+      "line": 11405
+    },
+    {
+      "name": "TauCeti.koszulDifferential_comp_koszulDifferential",
+      "source_path": "source/paper_verification/literal004.lean",
+      "line": 11428
+    },
+    {
+      "name": "TauCeti.koszulComplex",
+      "source_path": "source/paper_verification/literal004.lean",
+      "line": 11528
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.Ring",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 341
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.indexEquiv",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 343
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.polynomialEquiv",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 349
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.generator",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 353
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.functional",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 388
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.complex",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 391
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.complex_exactAt_succ",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 394
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.augmentationIdeal",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 398
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.Residue",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 400
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.augmentation",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 402
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.d_augmentation",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 431
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.augmentation_exact",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 435
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.resolution",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 446
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.torIso",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 464
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.residueTensorComplex",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 519
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.residueTensorComplex_d",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 565
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.residueTensorHomologyIso",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 574
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.residueTorIso",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 580
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.BasisDegree.piece",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 724
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.BasisDegree.piece_iSupIndep",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 737
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.BasisDegree.piece_iSup",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 758
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.BasisDegree.grading",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 765
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.freeTermOverK",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 1048
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.tensorTermOverK",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 1051
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.freeBasis",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 1057
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.coordinateBasis",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 1076
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.freeMonomialBasis",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 1084
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.freeGrading",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 1093
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.specializeFree",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 1096
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.tensorDegreePiece",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 1145
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.tensorDegreePiece_eq_bot",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 1148
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.tensorDegreePieces_iSup",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 1187
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.tensorGrading",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 1212
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.TorOverK",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 1232
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.torTermIsoOverK",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 1236
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.torGrading",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 1239
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.OnePlaneKoszul.actual_onePlane_Tor_degree",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 1244
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.WeightedFlatDegeneration",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 2886
+    },
+    {
+      "name": "PaperVerification.AlternatingForms.HasQuadraticGroebnerBasis",
+      "source_path": "source/paper_verification/literal005.lean",
+      "line": 2895
+    }
+  ],
+  "canonical_namespace_qualification_rewrites": [
+    {
+      "source_declaration": "TauCeti.koszulDifferential",
+      "before": "open CategoryTheory CliffordAlgebra",
+      "after": "open _root_.CategoryTheory CliffordAlgebra"
+    },
+    {
+      "source_declaration": "TauCeti.koszulDifferential_comp_koszulDifferential",
+      "before": "open CategoryTheory CliffordAlgebra",
+      "after": "open _root_.CategoryTheory CliffordAlgebra"
+    },
+    {
+      "source_declaration": "TauCeti.koszulComplex",
+      "before": "open CategoryTheory CliffordAlgebra",
+      "after": "open _root_.CategoryTheory CliffordAlgebra"
+    },
+    {
+      "source_declaration": "PaperVerification.AlternatingForms.OnePlaneKoszul.residueTensorComplex",
+      "before": "open scoped BigOperators TensorProduct",
+      "after": "open scoped BigOperators _root_.TensorProduct"
+    },
+    {
+      "source_declaration": "PaperVerification.AlternatingForms.OnePlaneKoszul.residueTensorComplex_d",
+      "before": "open scoped BigOperators TensorProduct",
+      "after": "open scoped BigOperators _root_.TensorProduct"
+    },
+    {
+      "source_declaration": "PaperVerification.AlternatingForms.OnePlaneKoszul.residueTensorHomologyIso",
+      "before": "open scoped BigOperators TensorProduct",
+      "after": "open scoped BigOperators _root_.TensorProduct"
+    },
+    {
+      "source_declaration": "PaperVerification.AlternatingForms.OnePlaneKoszul.residueTorIso",
+      "before": "open scoped BigOperators TensorProduct",
+      "after": "open scoped BigOperators _root_.TensorProduct"
+    },
+    {
+      "source_declaration": "PaperVerification.AlternatingForms.OnePlaneKoszul.freeTermOverK",
+      "before": "open scoped Classical BigOperators TensorProduct",
+      "after": "open scoped Classical BigOperators _root_.TensorProduct"
+    },
+    {
+      "source_declaration": "PaperVerification.AlternatingForms.OnePlaneKoszul.tensorTermOverK",
+      "before": "open scoped Classical BigOperators TensorProduct",
+      "after": "open scoped Classical BigOperators _root_.TensorProduct"
+    },
+    {
+      "source_declaration": "PaperVerification.AlternatingForms.OnePlaneKoszul.freeBasis",
+      "before": "open scoped Classical BigOperators TensorProduct",
+      "after": "open scoped Classical BigOperators _root_.TensorProduct"
+    },
+    {
+      "source_declaration": "PaperVerification.AlternatingForms.OnePlaneKoszul.coordinateBasis",
+      "before": "open scoped Classical BigOperators TensorProduct",
+      "after": "open scoped Classical BigOperators _root_.TensorProduct"
+    },
+    {
+      "source_declaration": "PaperVerification.AlternatingForms.OnePlaneKoszul.freeMonomialBasis",
+      "before": "open scoped Classical BigOperators TensorProduct",
+      "after": "open scoped Classical BigOperators _root_.TensorProduct"
+    },
+    {
+      "source_declaration": "PaperVerification.AlternatingForms.OnePlaneKoszul.freeGrading",
+      "before": "open scoped Classical BigOperators TensorProduct",
+      "after": "open scoped Classical BigOperators _root_.TensorProduct"
+    },
+    {
+      "source_declaration": "PaperVerification.AlternatingForms.OnePlaneKoszul.specializeFree",
+      "before": "open scoped Classical BigOperators TensorProduct",
+      "after": "open scoped Classical BigOperators _root_.TensorProduct"
+    },
+    {
+      "source_declaration": "PaperVerification.AlternatingForms.OnePlaneKoszul.tensorDegreePiece",
+      "before": "open scoped Classical BigOperators TensorProduct",
+      "after": "open scoped Classical BigOperators _root_.TensorProduct"
+    },
+    {
+      "source_declaration": "PaperVerification.AlternatingForms.OnePlaneKoszul.tensorDegreePiece_eq_bot",
+      "before": "open scoped Classical BigOperators TensorProduct",
+      "after": "open scoped Classical BigOperators _root_.TensorProduct"
+    },
+    {
+      "source_declaration": "PaperVerification.AlternatingForms.OnePlaneKoszul.tensorDegreePieces_iSup",
+      "before": "open scoped Classical BigOperators TensorProduct",
+      "after": "open scoped Classical BigOperators _root_.TensorProduct"
+    },
+    {
+      "source_declaration": "PaperVerification.AlternatingForms.OnePlaneKoszul.tensorGrading",
+      "before": "open scoped Classical BigOperators TensorProduct",
+      "after": "open scoped Classical BigOperators _root_.TensorProduct"
+    },
+    {
+      "source_declaration": "PaperVerification.AlternatingForms.OnePlaneKoszul.TorOverK",
+      "before": "open scoped Classical BigOperators TensorProduct",
+      "after": "open scoped Classical BigOperators _root_.TensorProduct"
+    },
+    {
+      "source_declaration": "PaperVerification.AlternatingForms.OnePlaneKoszul.torTermIsoOverK",
+      "before": "open scoped Classical BigOperators TensorProduct",
+      "after": "open scoped Classical BigOperators _root_.TensorProduct"
+    },
+    {
+      "source_declaration": "PaperVerification.AlternatingForms.OnePlaneKoszul.torGrading",
+      "before": "open scoped Classical BigOperators TensorProduct",
+      "after": "open scoped Classical BigOperators _root_.TensorProduct"
+    },
+    {
+      "source_declaration": "PaperVerification.AlternatingForms.OnePlaneKoszul.actual_onePlane_Tor_degree",
+      "before": "open scoped Classical BigOperators TensorProduct",
+      "after": "open scoped Classical BigOperators _root_.TensorProduct"
+    }
+  ],
+  "uncovered_main_results_and_substantive_corollaries": [
+    {
+      "paper_result": "Theorem 1.2",
+      "status": "README-explicit incomplete general geometric theorem; not claimed"
+    },
+    {
+      "paper_result": "Theorem 4.1",
+      "status": "README-explicit incomplete parts; not claimed"
+    },
+    {
+      "paper_result": "Theorem 1.3 projective scheme/section-ring reformulations",
+      "status": "Retained original source; not selected by this algebraic configuration"
+    },
+    {
+      "paper_result": "Theorem 1.1, exterior basis part of Theorem 1.3, Corollary 5.2",
+      "status": "Selected in companion alternating_forms configuration, parent full pass f99b"
+    }
+  ],
+  "blockers": [],
+  "canonical_check": {
+    "run": 44487738971,
+    "challenge_sha256": "ab9ffc9ba6984e19a924d75565286be3df8e4e578e32d4ee3fad67e55b6276b2",
+    "status": "pass",
+    "scope": "Canonical Challenge elaboration only"
+  },
+  "source_bridges": {
+    "paper13_weight_families": [
+      "onePlaneOddRichardsonGradedFlatDegeneration",
+      "oddRichardsonGradedFlatDegeneration",
+      "Hibi.hibiGradedFlatDegeneration"
+    ],
+    "paper13_oneplane_quadratic": [
+      "odd_onePlane_conclusions.quadratic"
+    ],
+    "paper13_quadratic": [
+      "odd_higherPlane_conclusions.good_coordinates",
+      "odd_higherPlane_conclusions.quadratic"
+    ],
+    "paper13_higher_koszul": [
+      "oddAugmentedBasis",
+      "oddAugmentation",
+      "oddPositiveDegree",
+      "oddAugmentedBasis_none",
+      "oddAugmentation_positive",
+      "oddAugmentedBasis_homogeneous",
+      "oddPositiveDegree_pos",
+      "isotropicAugmentation_X",
+      "odd_normalized_bar_off_diagonal",
+      "oddInternalDegree_zero_eq_zero",
+      "oddNormalizedBarTorIso"
+    ],
+    "oneplane_koszul": [
+      "OnePlaneKoszul.actual_onePlane_Tor_degree"
+    ]
+  },
+  "visibility_patch_record": "packaging/main13-visibility-patches.json"
+}

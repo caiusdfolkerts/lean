@@ -1,0 +1,23 @@
+{
+  "status": "verified_complete_reachable_union_with_explicit_bounded_expression_leaves",
+  "source_commit": "997fb959af5c2ea59b47c2382155284429c11e12",
+  "diagnostic_commit": "e0a02e5a2e07535c055c9bf787fe0bb2e94bb101",
+  "run": 44460494772,
+  "artifact_digest_verified": true,
+  "helper_gate_verified": true,
+  "protected_config_verified": true,
+  "visited": 18933,
+  "findings": 25,
+  "value_leaves": 6,
+  "type_leaves": 8,
+  "log_bytes": 17955,
+  "log_sha256": "5e5e27f979a85631bdd5580ddff46ec917979669157f3a1e04edb49e6f9b831b",
+  "log_omitted": false,
+  "observed_families": [
+    "abIndex omega proof auxiliaries",
+    "oddPathFirstLeft/Middle/SecondRight omega private auxiliaries",
+    "symFinTwoEquiv simp proof auxiliary"
+  ],
+  "mathematical_meaning_changed": false,
+  "not_a_full_preflight_pass": true
+}

@@ -1,0 +1,57 @@
+{
+  "status": "source_mapped_not_elaborated",
+  "rewrites": [
+    {
+      "original_text": "_root_.Module.Basis.symmetricPower",
+      "fresh_text": "_root_.PalomarAlternatingLiteral.Module.Basis.symmetricPower",
+      "original_occurrences": 1,
+      "fresh_occurrences": 1,
+      "semantics": "Same custom operation and exact original arguments; only declaration namespace qualification changes.",
+      "source_application": "Same rewrite appears in PalomarLiteralInterface.lean data body."
+    },
+    {
+      "original_text": "(stdRep k n).symmetricPower d",
+      "fresh_text": "PalomarAlternatingLiteral.Representation.symmetricPower (stdRep k n) d",
+      "original_occurrences": 1,
+      "fresh_occurrences": 1,
+      "semantics": "Same custom operation and exact original arguments; only declaration namespace qualification changes.",
+      "source_application": "Same rewrite appears in PalomarLiteralInterface.lean data body."
+    },
+    {
+      "original_text": "ρ.exteriorPower d g",
+      "fresh_text": "PalomarAlternatingLiteral.Representation.exteriorPower ρ d g",
+      "original_occurrences": 1,
+      "fresh_occurrences": 1,
+      "semantics": "Same custom operation and exact original arguments; only declaration namespace qualification changes.",
+      "source_application": "Same rewrite appears in PalomarLiteralInterface.lean data body."
+    },
+    {
+      "original_text": "((Pi.basisFun K (Fin 2)).symmetricPower d)",
+      "fresh_text": "(PalomarAlternatingLiteral.Module.Basis.symmetricPower (Pi.basisFun K (Fin 2)) d)",
+      "original_occurrences": 1,
+      "fresh_occurrences": 1,
+      "semantics": "Same custom operation and exact original arguments; only declaration namespace qualification changes.",
+      "source_application": "Same rewrite appears in PalomarLiteralInterface.lean data body."
+    },
+    {
+      "original_text": "((coordinateRepresentation K t).exteriorPower s)",
+      "fresh_text": "(PalomarAlternatingLiteral.Representation.exteriorPower (coordinateRepresentation K t) s)",
+      "original_occurrences": 1,
+      "fresh_occurrences": 1,
+      "semantics": "Same custom operation and exact original arguments; only declaration namespace qualification changes.",
+      "source_application": "Same rewrite appears in PalomarLiteralInterface.lean data body."
+    },
+    {
+      "original_text": "(TauCeti.symPowerRep K 2 q).symmetricPower (2*p+1)",
+      "fresh_text": "PalomarAlternatingLiteral.Representation.symmetricPower (TauCeti.symPowerRep K 2 q) (2*p+1)",
+      "original_occurrences": 1,
+      "fresh_occurrences": 1,
+      "semantics": "Same custom operation and exact original arguments; only declaration namespace qualification changes.",
+      "source_application": "Same rewrite appears in PalomarLiteralInterface.lean data body."
+    }
+  ],
+  "all_original_arguments_retained": true,
+  "canonical_type_names_unchanged": true,
+  "additional_measured_repairs": "namespace-repair.json",
+  "validation": "Source mapped only; existing six custom qualifications retain the exact arguments. Canonical namespace repairs and named-argument correction remain unelaborated."
+}

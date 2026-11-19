@@ -1,0 +1,13 @@
+{
+  "status": "frozen_pending_corrected_challenge_diagnostic",
+  "challenge_sha256": "9ed707cacfd8055d3f309d14b42e916b0950ced5493141a6ade465f992abebae",
+  "lines": 741,
+  "bytes": 35151,
+  "prior_failure_run": "44343651132",
+  "repair": "Remove three irrelevant declarations falsely selected from the generic identifier tokens Algebra and eval. Selected result types use canonical Algebra and MvPolynomial.eval, not the unrelated two-step Lie quotient or affine-complex-point evaluator. All selected theorem and substantive data definitions unchanged.",
+  "removed_unrelated_namespaces": [
+    "PaperVerification.QuadraticCommutatorQuotient",
+    "OAI.AlgebraicGeometry.Foundations.Scheme.AffineComplexPoints",
+    "OAI.AlgebraicGeometry"
+  ]
+}

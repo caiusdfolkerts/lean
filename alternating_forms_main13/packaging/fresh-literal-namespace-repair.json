@@ -1,0 +1,45 @@
+{
+  "status": "measured_namespace_and_argument_order_repair_not_elaborated",
+  "failed_run": "44372929933",
+  "failed_case": "alternating_forms_fresh_literal",
+  "causes": "A fresh namespace does not inherit the old namespace search for canonical Rel/mk/range_mk/tprod, and the old symmetricPower dot call supplies the basis at its named b parameter rather than the first explicit parameter n.",
+  "repair": "Qualify only those measured canonical missing operations and use explicit named b/n arguments for the same fresh basis operation. All operations, models, hypotheses and17 original theorem mappings remain unchanged.",
+  "replacements": {
+    "Rel R ι M": "_root_.SymmetricPower.Rel R ι M",
+    "mk R ι N": "_root_.SymmetricPower.mk R ι N",
+    "range_mk R (Fin n) M": "_root_.SymmetricPower.range_mk R (Fin n) M",
+    "mk R (Fin n) M": "_root_.SymmetricPower.mk R (Fin n) M",
+    "rw [tprod, LinearMap.compMultilinearMap_apply]": "rw [_root_.SymmetricPower.tprod, LinearMap.compMultilinearMap_apply]",
+    "PalomarAlternatingLiteral.Module.Basis.symmetricPower (Pi.basisFun K (Fin 2)) d": "PalomarAlternatingLiteral.Module.Basis.symmetricPower (b := Pi.basisFun K (Fin 2)) (n := d)"
+  },
+  "changes": [
+    {
+      "path": "Challenge.lean",
+      "before_sha256": "8e74531f5f06e7c37ec02fb2efcf6c9dcd491321b33b1f13c10cefdeadd66455",
+      "after_sha256": "1a8200eb1e626093772ae90317803a0459e2ce7f47b1382713bf2d82693cf4a6",
+      "replacement_counts": {
+        "PalomarAlternatingLiteral.Module.Basis.symmetricPower (Pi.basisFun K (Fin 2)) d": 1,
+        "rw [tprod, LinearMap.compMultilinearMap_apply]": 1,
+        "range_mk R (Fin n) M": 1,
+        "mk R (Fin n) M": 2,
+        "Rel R ι M": 4,
+        "mk R ι N": 3
+      }
+    },
+    {
+      "path": "PalomarLiteralInterface.lean",
+      "before_sha256": "cd43e86f322025eae93943083f4b3f4639cd1b329a843d480dc123267f1e2e80",
+      "after_sha256": "28b71f41749715b2e3198223057bc92972769c6b67c01de70f6dcfa0d592629f",
+      "replacement_counts": {
+        "PalomarAlternatingLiteral.Module.Basis.symmetricPower (Pi.basisFun K (Fin 2)) d": 1,
+        "rw [tprod, LinearMap.compMultilinearMap_apply]": 1,
+        "range_mk R (Fin n) M": 1,
+        "mk R (Fin n) M": 2,
+        "Rel R ι M": 4,
+        "mk R ι N": 3
+      }
+    }
+  ],
+  "original_audited_source_untouched": true,
+  "no_local_compilation": true
+}

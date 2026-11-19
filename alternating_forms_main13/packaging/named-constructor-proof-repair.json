@@ -1,0 +1,37 @@
+{
+  "status": "exact_constructor_support_proofs_canonical_passed_full_source_solution_comparator_pending",
+  "basis": "Exact997 whole reachable audit44460494772, all25 findings concern the constructors normalized here.",
+  "preserved_principal_support_targets": 17,
+  "new_exact_support_theorems": [
+    "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.oddPathFirstLeftBound",
+    "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.oddPathMiddleBound",
+    "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.oddPathSecondRightBound",
+    "PalomarAlternatingLiteral.TauCeti.symFinTwoPredicate",
+    "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopInterlacing.abEvenBound",
+    "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopInterlacing.abEvenHalfBound",
+    "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopInterlacing.abOddHalfBound",
+    "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopInterlacing.abLeftInverse",
+    "PalomarAlternatingLiteral.PaperVerification.AlternatingForms.TopInterlacing.abRightInverse"
+  ],
+  "no_original_source_definitions_or_proofs_changed": true,
+  "description": "All Fin bounds, parity inverse laws and finTwo subtype predicate are exact named propositions. Computational odd/even index and symmetric-multiset maps are preserved; original theorem applications remain unchanged.",
+  "files": [
+    {
+      "path": "source/Challenge.lean",
+      "before_sha256": "1a8200eb1e626093772ae90317803a0459e2ce7f47b1382713bf2d82693cf4a6",
+      "after_sha256": "dde7c0f15ade56d55dd13bbd693743eb522ca971bd48f9c48699219053a11074"
+    },
+    {
+      "path": "source/PalomarLiteralInterface.lean",
+      "before_sha256": "dbd77ca1a4de19bff13e4e604bdc12f8e75dd2c89312b25630957bc4f7c8cde2",
+      "after_sha256": "1406223ac80d04d1a87cd8887176f040966f88959f848756dfe6e9cf96acc0b6"
+    },
+    {
+      "path": "comparator.json",
+      "before_sha256": "51b5717d26e60a4dce4d34598b9458e59aa3f3ee063d37e7b1622456c551b65e",
+      "after_sha256": "7e78b3051e4db60403a65d9e62b4d9a8243b7800f2aba6a5088308be35beebaf"
+    }
+  ],
+  "canonical_run": 44464500349,
+  "proof_only_followup": "Measured first smoke had two unreduced Fin projections in inverse proof; dsimp only now precedes identical simp step. Both inverse laws pass actual corrected canonical smoke."
+}

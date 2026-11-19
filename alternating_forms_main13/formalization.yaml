@@ -1,0 +1,64 @@
+version: v0.4
+project:
+  name: Graded coordinate degenerations and Koszulness for the canonical odd pencil
+  description: In characteristic zero, every positive plane dimension in the canonical odd pencil has
+    actual coordinate-graded flat Rees families to the specified Richardson ring, followed by the Hibi
+    family, with algebra isomorphisms on all zero and nonzero fibers preserving every ordinary degree.
+    Good Plücker coordinates have a finite quadratic Gröbner basis. The actual quotient rings are Koszul,
+    using ordinary categorical Tor for one-plane rings and the explicit normalized bar cycle/boundary
+    criterion for higher planes.
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.AC
+  - math.AG
+  msc2020:
+  - 15A75
+  - 13D40
+sources:
+- type: paper
+  title: Hilbert series of exterior algebras modulo two quadrics
+  authors:
+  - Caius Folkerts
+  relationship: formalizes
+  author_endorsement: participated
+  url: https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf
+  note: 'Exact included paper SHA-256: 8b5fdb74a6c9c61ebf2ee4d89f71b6c07831524412731ff3f646074b6d416161.
+    Scope and declaration locations are recorded in map.json; novelty is not independently established.'
+automation:
+  methods:
+  - method: agent
+    tool_setup: OpenAI Codex
+    notes: 'Preparation 2026-11-19T09:03:50.446978+00:00: Agent-assisted literal extraction from the retained
+      substantive source, declaration-local visibility for original data bodies, and genuine bridges preserving
+      the original fibers, coordinate grading and normalized bar differential. Canonical Challenge671
+      passed run44487738971. Full current Source/Solution/Comparator verification is determined by subsequent
+      exact-commit workflow reports.'
+  - method: other
+    tool_setup: Historical AI assistance reported in the included paper
+    notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing its proofs.
+      The exact model roles and extent of historical Lean automation have not been reconstructed from
+      the snapshot.
+review:
+  status: unchecked
+  notes: 'Preparation 2026-11-19T09:03:50.446978+00:00: no independent human review is claimed. Subsequent
+    exact-commit workflow and editorial reports determine their respective verification/review outcomes.'
+scope:
+  current_selection: Theorem 1.3 algebraic degeneration, graded fiber comparison, good-coordinate quadratic
+    Gröbner and Koszul clauses, for every allowed positive plane dimension; the one-plane boundary is
+    included.
+  known_gaps:
+  - The companion alternating_forms configuration selects the exterior basis, Theorem 1.1 and Corollary
+    5.2; these are not selected again here.
+  - Scheme-valued Proj and section-sheaf reformulations are retained in the substantive source but are
+    not selected in this algebraic configuration.
+  - The original README explicitly reports incomplete general geometric Theorem 1.2 and parts of Theorem
+    4.1; this entry does not claim those results.
+  notes: This project retains the complete substantive historical development and all licensing from the
+    parent snapshot; it is not an external thin wrapper. The newly introduced literal interface and original-proof
+    bridges are documented in map.json. Preparation notes are dated; exact-commit workflow reports supply
+    later verification evidence.

@@ -1,0 +1,625 @@
+{
+  "project": "alternating_forms",
+  "baseline_repository": "caiusdfolkerts/research",
+  "baseline_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
+  "paper_sha256": "8b5fdb74a6c9c61ebf2ee4d89f71b6c07831524412731ff3f646074b6d416161",
+  "one_entry_per_paper": true,
+  "status": "expanded_literal_context_entry_pending_elaboration",
+  "source_selection": [
+    "paper.pdf",
+    "README.md",
+    "source/**/*.lean"
+  ],
+  "coverage": [
+    {
+      "paper_result": "Theorem 1.1, pp. 1\u20132",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        1,
+        7
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.AlternatingForms.paper_theorem_1_1",
+          "locations": [
+            {
+              "name": "PaperVerification.AlternatingForms.paper_theorem_1_1",
+              "declaration_kind": "theorem",
+              "source_path": "source/paper_verification/literal004.lean",
+              "source_line": 642,
+              "source_sha256": "8b48e00913bb754dc3e6d551ef2fd1ea56eba899c4c0948ba1a059ca79676e85",
+              "source_spelling": "paper_theorem_1_1"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.AlternatingForms.paper_theorem_1_1_hilbertSeries",
+          "locations": [
+            {
+              "name": "PaperVerification.AlternatingForms.paper_theorem_1_1_hilbertSeries",
+              "declaration_kind": "theorem",
+              "source_path": "source/paper_verification/literal004.lean",
+              "source_line": 794,
+              "source_sha256": "8b48e00913bb754dc3e6d551ef2fd1ea56eba899c4c0948ba1a059ca79676e85",
+              "source_spelling": "paper_theorem_1_1_hilbertSeries"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf#page=1"
+    },
+    {
+      "paper_result": "Theorem 1.1, combined reader-facing form",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        1,
+        7
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.MainStatements.genericHilbertSeriesAndVanishing",
+          "locations": [
+            {
+              "name": "PaperVerification.MainStatements.genericHilbertSeriesAndVanishing",
+              "declaration_kind": "theorem",
+              "source_path": "source/paper_verification/main_statements1.lean",
+              "source_line": 36,
+              "source_sha256": "13e1195a88c6108e65a5c56a4bc1b2e959c6d78d7306aed30e749b3100083331",
+              "source_spelling": "genericHilbertSeriesAndVanishing"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "selected_pending_current_elaboration"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf#page=1"
+    },
+    {
+      "paper_result": "Theorem 1.3, combined statement",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        3
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.AlternatingForms.paper_theorem_1_3_fully_graded",
+          "locations": [
+            {
+              "name": "PaperVerification.AlternatingForms.paper_theorem_1_3_fully_graded",
+              "declaration_kind": "theorem",
+              "source_path": "source/paper_verification/final_theorem_one_three1.lean",
+              "source_line": 47,
+              "source_sha256": "138af24f3b9921d9d6dccc8288b74105ab00cf834756e90932a91c87a4d1f168",
+              "source_spelling": "paper_theorem_1_3_fully_graded"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf#page=3"
+    },
+    {
+      "paper_result": "Theorem 1.3, exterior basis, p. 3",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        3
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.AlternatingForms.paper_theorem_1_3_exterior_basis",
+          "locations": [
+            {
+              "name": "PaperVerification.AlternatingForms.paper_theorem_1_3_exterior_basis",
+              "declaration_kind": "theorem",
+              "source_path": "source/paper_verification/literal003.lean",
+              "source_line": 10947,
+              "source_sha256": "376bc36e3ab3cb0bc7271745c9ff6c7c45b9c926f9bfa7dff34804fc2912aa40",
+              "source_spelling": "paper_theorem_1_3_exterior_basis"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "selected_pending_current_elaboration"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf#page=3"
+    },
+    {
+      "paper_result": "Theorem 1.3, algebraic and section-ring clauses",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        3
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.AlternatingForms.paper_theorem_1_3",
+          "locations": [
+            {
+              "name": "PaperVerification.AlternatingForms.paper_theorem_1_3",
+              "declaration_kind": "theorem",
+              "source_path": "source/paper_verification/literal005.lean",
+              "source_line": 3121,
+              "source_sha256": "0172731a26f0512142d9ce09aa8771e4abdc3a71ba70171a84aa3b08665034e1",
+              "source_spelling": "paper_theorem_1_3"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.AlternatingForms.paper_theorem_1_3_complete_section_ring",
+          "locations": [
+            {
+              "name": "PaperVerification.AlternatingForms.paper_theorem_1_3_complete_section_ring",
+              "declaration_kind": "theorem",
+              "source_path": "source/paper_verification/literal005.lean",
+              "source_line": 9232,
+              "source_sha256": "0172731a26f0512142d9ce09aa8771e4abdc3a71ba70171a84aa3b08665034e1",
+              "source_spelling": "paper_theorem_1_3_complete_section_ring"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf#page=3"
+    },
+    {
+      "paper_result": "Proposition 5.1, p. 16",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        16
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.AlternatingForms.paper_proposition_5_1",
+          "locations": [
+            {
+              "name": "PaperVerification.AlternatingForms.paper_proposition_5_1",
+              "declaration_kind": "theorem",
+              "source_path": "source/paper_verification/literal011.lean",
+              "source_line": 2747,
+              "source_sha256": "a28b723bf545c2de264e21c4860a2177089e364b7357fb2644050f6c6aad18d1",
+              "source_spelling": "paper_proposition_5_1"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf#page=16"
+    },
+    {
+      "paper_result": "Corollary 5.2, p. 16",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        16
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.AlternatingForms.TopRepresentation.paper_corollary_5_2",
+          "locations": [
+            {
+              "name": "PaperVerification.AlternatingForms.TopRepresentation.paper_corollary_5_2",
+              "declaration_kind": "theorem",
+              "source_path": "source/paper_verification/literal007.lean",
+              "source_line": 7354,
+              "source_sha256": "38f2157647a10947abce6ffb14a43a918f6ce888cb9afce62292a662925673d1",
+              "source_spelling": "paper_corollary_5_2"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "selected_pending_current_elaboration"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf#page=16"
+    },
+    {
+      "paper_result": "Proposition 5.3, p. 17",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        17
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.AlternatingForms.paper_proposition_5_3_koszul_classification",
+          "locations": [
+            {
+              "name": "PaperVerification.AlternatingForms.paper_proposition_5_3_koszul_classification",
+              "declaration_kind": "theorem",
+              "source_path": "source/paper_verification/literal010.lean",
+              "source_line": 3176,
+              "source_sha256": "6e4b0a7680384667b24a8a94464cfc9f4752411cc2c69d03fe1e0e73a482672a",
+              "source_spelling": "paper_proposition_5_3_koszul_classification"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf#page=17"
+    },
+    {
+      "paper_result": "Proposition 5.3, quadratic dual",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        17
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.AlternatingForms.paper_proposition_5_3_dual_clause",
+          "locations": [
+            {
+              "name": "PaperVerification.AlternatingForms.paper_proposition_5_3_dual_clause",
+              "declaration_kind": "theorem",
+              "source_path": "source/paper_verification/literal008.lean",
+              "source_line": 1010,
+              "source_sha256": "ab47c580ea2f676c50a4586b9aa799189021199e5feb5082a6576e50d94a0818",
+              "source_spelling": "paper_proposition_5_3_dual_clause"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf#page=17"
+    },
+    {
+      "paper_result": "Proposition 5.4, pp. 17\u201318",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        18
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.AlternatingForms.paper_proposition_5_4",
+          "locations": [
+            {
+              "name": "PaperVerification.AlternatingForms.paper_proposition_5_4",
+              "declaration_kind": "theorem",
+              "source_path": "source/paper_verification/literal012.lean",
+              "source_line": 787,
+              "source_sha256": "49a5c4ba11499615113dd3ab39b62e17ce03f8b527904693338428866345b446",
+              "source_spelling": "paper_proposition_5_4"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.AlternatingForms.paper_proposition_5_4_origin",
+          "locations": [
+            {
+              "name": "PaperVerification.AlternatingForms.paper_proposition_5_4_origin",
+              "declaration_kind": "theorem",
+              "source_path": "source/paper_verification/literal012.lean",
+              "source_line": 1192,
+              "source_sha256": "49a5c4ba11499615113dd3ab39b62e17ce03f8b527904693338428866345b446",
+              "source_spelling": "paper_proposition_5_4_origin"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.AlternatingForms.exteriorOriginBettiPolynomial_is_ordinary",
+          "locations": [
+            {
+              "name": "PaperVerification.AlternatingForms.exteriorOriginBettiPolynomial_is_ordinary",
+              "declaration_kind": "theorem",
+              "source_path": "source/paper_verification/literal012.lean",
+              "source_line": 1214,
+              "source_sha256": "49a5c4ba11499615113dd3ab39b62e17ce03f8b527904693338428866345b446",
+              "source_spelling": "exteriorOriginBettiPolynomial_is_ordinary"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf#page=18"
+    },
+    {
+      "paper_result": "Lie-cohomology formulas after Proposition 5.4, p. 18",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        18
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.TwoStepOriginalLieCohomology.paper_lie_cohomology_poincare",
+          "locations": [
+            {
+              "name": "PaperVerification.TwoStepOriginalLieCohomology.paper_lie_cohomology_poincare",
+              "declaration_kind": "theorem",
+              "source_path": "source/paper_verification/ce_integrated1.lean",
+              "source_line": 3184,
+              "source_sha256": "1b0bbbc084eeb359e5f4bbffb3c89159c7e7ce2e3988e414c26f56a24081a51e",
+              "source_spelling": "paper_lie_cohomology_poincare"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.TwoStepOriginalLieCohomology.paper_lie_cohomology_degree",
+          "locations": [
+            {
+              "name": "PaperVerification.TwoStepOriginalLieCohomology.paper_lie_cohomology_degree",
+              "declaration_kind": "theorem",
+              "source_path": "source/paper_verification/ce_integrated1.lean",
+              "source_line": 3192,
+              "source_sha256": "1b0bbbc084eeb359e5f4bbffb3c89159c7e7ce2e3988e414c26f56a24081a51e",
+              "source_spelling": "paper_lie_cohomology_degree"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.TwoStepOriginalLieCohomology.total_dimension_four",
+          "locations": [
+            {
+              "name": "PaperVerification.TwoStepOriginalLieCohomology.total_dimension_four",
+              "declaration_kind": "theorem",
+              "source_path": "source/paper_verification/ce_integrated1.lean",
+              "source_line": 3225,
+              "source_sha256": "1b0bbbc084eeb359e5f4bbffb3c89159c7e7ce2e3988e414c26f56a24081a51e",
+              "source_spelling": "total_dimension_four"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf#page=18"
+    },
+    {
+      "paper_result": "Theorem 7.1, p. 20",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        20
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.AlternatingForms.paper_theorem_7_1_exterior_basis",
+          "locations": [
+            {
+              "name": "PaperVerification.AlternatingForms.paper_theorem_7_1_exterior_basis",
+              "declaration_kind": "theorem",
+              "source_path": "source/paper_verification/literal011.lean",
+              "source_line": 192,
+              "source_sha256": "a28b723bf545c2de264e21c4860a2177089e364b7357fb2644050f6c6aad18d1",
+              "source_spelling": "paper_theorem_7_1_exterior_basis"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.AlternatingForms.paper_theorem_7_1_initial_ideal",
+          "locations": [
+            {
+              "name": "PaperVerification.AlternatingForms.paper_theorem_7_1_initial_ideal",
+              "declaration_kind": "theorem",
+              "source_path": "source/paper_verification/literal010.lean",
+              "source_line": 3957,
+              "source_sha256": "6e4b0a7680384667b24a8a94464cfc9f4752411cc2c69d03fe1e0e73a482672a",
+              "source_spelling": "paper_theorem_7_1_initial_ideal"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.AlternatingForms.paper_theorem_7_1_initial_ideal_one_plane",
+          "locations": [
+            {
+              "name": "PaperVerification.AlternatingForms.paper_theorem_7_1_initial_ideal_one_plane",
+              "declaration_kind": "theorem",
+              "source_path": "source/paper_verification/literal011.lean",
+              "source_line": 1438,
+              "source_sha256": "a28b723bf545c2de264e21c4860a2177089e364b7357fb2644050f6c6aad18d1",
+              "source_spelling": "paper_theorem_7_1_initial_ideal_one_plane"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.AlternatingForms.paper_theorem_7_1_full_hilbert",
+          "locations": [
+            {
+              "name": "PaperVerification.AlternatingForms.paper_theorem_7_1_full_hilbert",
+              "declaration_kind": "theorem",
+              "source_path": "source/paper_verification/literal011.lean",
+              "source_line": 544,
+              "source_sha256": "a28b723bf545c2de264e21c4860a2177089e364b7357fb2644050f6c6aad18d1",
+              "source_spelling": "paper_theorem_7_1_full_hilbert"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf#page=20"
+    },
+    {
+      "paper_result": "Integral extension after Theorem 7.1, p. 20",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        20
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.AlternatingForms.IntegralOdd.paper_theorem_7_1_integral_full_basis",
+          "locations": [
+            {
+              "name": "PaperVerification.AlternatingForms.IntegralOdd.paper_theorem_7_1_integral_full_basis",
+              "declaration_kind": "def",
+              "source_path": "source/paper_verification/literal011.lean",
+              "source_line": 1275,
+              "source_sha256": "a28b723bf545c2de264e21c4860a2177089e364b7357fb2644050f6c6aad18d1",
+              "source_spelling": "paper_theorem_7_1_integral_full_basis"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.AlternatingForms.IntegralOdd.paper_theorem_7_1_integral_arbitrary_base_change",
+          "locations": [
+            {
+              "name": "PaperVerification.AlternatingForms.IntegralOdd.paper_theorem_7_1_integral_arbitrary_base_change",
+              "declaration_kind": "def",
+              "source_path": "source/paper_verification/literal011.lean",
+              "source_line": 1355,
+              "source_sha256": "a28b723bf545c2de264e21c4860a2177089e364b7357fb2644050f6c6aad18d1",
+              "source_spelling": "paper_theorem_7_1_integral_arbitrary_base_change"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        },
+        {
+          "name": "PaperVerification.AlternatingForms.IntegralOdd.paper_theorem_7_1_integral_arbitrary_base_change_apply",
+          "locations": [
+            {
+              "name": "PaperVerification.AlternatingForms.IntegralOdd.paper_theorem_7_1_integral_arbitrary_base_change_apply",
+              "declaration_kind": "theorem",
+              "source_path": "source/paper_verification/literal011.lean",
+              "source_line": 1371,
+              "source_sha256": "a28b723bf545c2de264e21c4860a2177089e364b7357fb2644050f6c6aad18d1",
+              "source_spelling": "paper_theorem_7_1_integral_arbitrary_base_change_apply"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf#page=20"
+    },
+    {
+      "paper_result": "Theorem 7.2, pp. 20\u201321",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        21
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.AlternatingForms.paper_theorem_7_2",
+          "locations": [
+            {
+              "name": "PaperVerification.AlternatingForms.paper_theorem_7_2",
+              "declaration_kind": "theorem",
+              "source_path": "source/paper_verification/literal012.lean",
+              "source_line": 2117,
+              "source_sha256": "49a5c4ba11499615113dd3ab39b62e17ce03f8b527904693338428866345b446",
+              "source_spelling": "paper_theorem_7_2"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf#page=21"
+    },
+    {
+      "paper_result": "Theorem 1.1: exact binomial determinant coefficients",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        1
+      ],
+      "declarations": [
+        {
+          "name": "PaperVerification.AlternatingForms.PathDeterminant.paperWalkCount_determinant",
+          "locations": [
+            {
+              "name": "PaperVerification.AlternatingForms.PathDeterminant.paperWalkCount_determinant",
+              "declaration_kind": "theorem",
+              "source_path": "source/paper_verification/literal004.lean",
+              "source_line": 420,
+              "source_sha256": "8b48e00913bb754dc3e6d551ef2fd1ea56eba899c4c0948ba1a059ca79676e85",
+              "source_spelling": "paperWalkCount_determinant"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "selected_pending_current_elaboration"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/alternating_forms/paper.pdf#page=1"
+    }
+  ],
+  "known_gaps": [
+    "Remaining algebraic, degeneration and Koszul clauses of Theorem 1.3 and other substantive corollaries still require independent statement extraction.",
+    "README explicitly excludes the general geometric statement of Theorem 1.2 and parts of Theorem 4.1.",
+    "Source migration and the private-name inventory normalization require a complete fresh Solution/default-target build."
+  ],
+  "checks": {
+    "source_copy": "complete including retained reading files and licenses",
+    "build": "not_run_for_current_hash",
+    "comparator": "not_run_for_current_hash",
+    "nanoda": "not_run_for_current_hash",
+    "editorial_review": "not_run_for_current_hash",
+    "challenge_elaboration": "not_run_for_current_hash"
+  },
+  "current_selection": "Theorem 1.1 generic Hilbert series and vanishing, exact strip-walk determinant coefficients, Theorem 1.3 prescribed exterior basis in every degree, and full Corollary 5.2 actual SL2 representation isomorphism and dimension on every top bidegree piece.",
+  "selected_wrapper_provenance": [],
+  "comparator": {
+    "challenge_module": "Challenge",
+    "solution_module": "Solution",
+    "theorem_names": [
+      "PaperVerification.AlternatingForms.paper_theorem_1_3_exterior_basis",
+      "PaperVerification.AlternatingForms.PathDeterminant.paperWalkCount_determinant",
+      "TauCeti.Sym.ofFn_surjective",
+      "SymmetricPower.ext",
+      "SymmetricPower.map_rel",
+      "SymmetricPower.lift_rel",
+      "SymmetricPower.map_id",
+      "SymmetricPower.map_comp",
+      "SymmetricPower.ofFn_orderOfSym",
+      "SymmetricPower.tprodOfSym_ofFn",
+      "SymmetricPower.toFinsuppMultilinear_domDomCongr",
+      "SymmetricPower.toFinsupp_tprod_basis",
+      "Representation.exteriorPower_apply",
+      "PaperVerification.AlternatingForms.SymmetricPencil.original_relations_invariant",
+      "PaperVerification.AlternatingForms.SymmetricPencil.bigradedPiece_invariant",
+      "PaperVerification.AlternatingForms.TopRepresentation.paper_corollary_5_2",
+      "PaperVerification.MainStatements.genericHilbertSeriesAndVanishing"
+    ],
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ]
+  },
+  "challenge": {
+    "path": "source/Challenge.lean",
+    "sha256": "9ed707cacfd8055d3f309d14b42e916b0950ced5493141a6ade465f992abebae",
+    "physical_lines": 741,
+    "bytes": 35151,
+    "local_elaboration": "not_run_for_current_hash",
+    "solution_build": "not_run_for_current_hash",
+    "comparator": "not_run_for_current_hash"
+  },
+  "packaging_changes": [
+    {
+      "kind": "symmetric_power_basis_helper_visibility",
+      "description": "Ten existing private helper declarations are exposed under their existing user names so independent Challenge data can use module-independent names. All values and proof bodies retained. The untouched expected declaration inventory is checked through an exact injective public-to-original-private name translation.",
+      "evidence": "packaging/symmetric-basis-exposure.json"
+    },
+    {
+      "kind": "literal_interface_repair",
+      "evidence": "packaging/targeted-check-repair.json",
+      "description": "Exact current source/context correction and hash-bound pending validation receipt."
+    },
+    {
+      "kind": "literal_context_or_instance_repair",
+      "evidence": "packaging/targeted-check-repair-r4.json"
+    }
+  ]
+}

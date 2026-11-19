@@ -1,0 +1,31 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "PalomarAlternatingDegeneration.TauCeti.InternalGrading.mapInternal",
+    "PalomarAlternatingDegeneration.PaperVerification.WeightedInitialFiber.reesMultiplicationCommutes",
+    "PalomarAlternatingDegeneration.TauCeti.ExteriorAlgebra.contractLeft_mem_exteriorPower",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.onePlaneIndex_eta",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.onePlane_matrixPluckerIdeal",
+    "PalomarAlternatingDegeneration.TauCeti.koszulDifferential_comp_koszulDifferential",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.OnePlaneKoszul.complex_exactAt_succ",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.OnePlaneKoszul.d_augmentation",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.OnePlaneKoszul.augmentation_exact",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.OnePlaneKoszul.augmentationEpi",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.OnePlaneKoszul.residueTensorComplex_d",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.BasisDegree.piece_iSupIndep",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.BasisDegree.piece_iSup",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.OnePlaneKoszul.tensorDegreePiece_eq_bot",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.OnePlaneKoszul.tensorDegreePieces_iSup",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.OnePlaneKoszul.actual_onePlane_Tor_degree",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.paper13_weight_families",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.paper13_oneplane_quadratic",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.paper13_quadratic",
+    "PalomarAlternatingDegeneration.PaperVerification.AlternatingForms.paper13_higher_koszul"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}
