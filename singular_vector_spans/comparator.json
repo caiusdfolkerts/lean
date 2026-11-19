@@ -52,11 +52,16 @@
     "TauCeti.SymmetricAlgebra.projToSpec_def",
     "TauCeti.SymmetricAlgebra.isIso_scalarSpecMap",
     "TauCeti.SymmetricAlgebra.iSup_basicOpen_\u03b9_eq_top",
-    "AlgebraicGeometry.Proj.isInvertible_twistingSheaf_of_iSup_eq_top"
+    "AlgebraicGeometry.Proj.isInvertible_twistingSheaf_of_iSup_eq_top",
+    "TauCeti.SymmetricAlgebra.gradedAlgebra_decompose"
   ],
   "permitted_axioms": [
     "propext",
     "Quot.sound",
     "Classical.choice"
+  ],
+  "definition_names": [
+    "TauCeti.SymmetricAlgebra.gradedAlgebra",
+    "TauCeti.SymmetricAlgebra.GradedAlgebra.\u03b9"
   ]
 }
