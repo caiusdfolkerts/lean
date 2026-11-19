@@ -94,6 +94,17 @@ review:
     laws for the same strict-support coefficients. All33 statements,
     mathematical data, original sources, pins and heartbeat limits remain
     unchanged. Actual current full verification remains pending.
+    Full33 run44504013959 at468937f1 subsequently had exactly one
+    wrapper compiler error with no omissions: the kernel-membership goal
+    needed the explicit canonical membership-to-zero equation law. The
+    support-sum errors were cleared and the original sources compiled.
+    This 2026-11-19 proof-only repair adds LinearMap.mem_ker to that same
+    simplification. The exact generic kernel-element construction and
+    value law passed canonical run44508482889 with input, whole manifest,
+    raw bounded-log hashes and printed standard axiom lists verified.
+    All33 statements, mathematical data, original sources, canonical pins
+    and heartbeat limits are unchanged. Subsequent exact-snapshot full
+    reports determine current verification; no pass is inferred here.
 fidelity:
   divergences: >-
     Actual polynomial Koszul homology is used as the independent interface for

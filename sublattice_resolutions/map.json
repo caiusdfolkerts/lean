@@ -2,7 +2,7 @@
   "baseline_project": "sublattice_resolutions",
   "baseline_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
   "paper_pdf_sha256": "dc8fd0239670c107968b689c21c60f9447529fefd5fafefb2800dc5c6f927d33",
-  "status": "2026-11-19 complete33 measured three-error proof-only repair prepared; full preflight pending",
+  "status": "2026-11-19 exact sole kernel-membership proof repair and API control passed; complete33 full verification pending",
   "scope": "Theorems1.1,1.2 (both conjuncts),4.3 (all four clauses), Proposition2.2 and complete Corollaries5.1,5.2: twelve substantive endpoints and twenty-one genuine supporting propositions. All33 statements are selected; full verification is pending. Thirteen further paper groups remain outside this selection; whole-paper completion is not claimed.",
   "selected_results": [
     {
@@ -338,12 +338,12 @@
   },
   "latest_measured_full_repair": {
     "preparation_date": "2026-11-19",
+    "single_proof_token_added": "LinearMap.mem_ker",
     "all33_header_bytes_unchanged": true,
-    "explicit_source_kernel_constructor": true,
-    "same_differential_and_square_zero_proof": true,
-    "support_equivalence_value_and_inverse_laws": true,
     "no_heartbeat_increase": true,
-    "source_Solution_sha256": "cab5d495d303a8aeb8e70dfcbf98d7b9546bc87709ec7e64a0e910d0e13229cd"
+    "source_Solution_sha256": "bf481c944f9e6a197cf2ffd13845ac10611a3c65eda3f80e7fe229c551fa2a25",
+    "canonical_exact_generic_proof_control": "reports/sublattice_resolutions/ordinary-kernel-membership-control/run-44508482889/collection-verification.json",
+    "canonical_exact_generic_proof_control_run": 44508482889
   },
   "selection_count": 33,
   "substantive_count": 12,
@@ -438,10 +438,10 @@
     }
   ],
   "latest_full_failure": {
-    "commit": "f7ea617489d715c3d6819f776c9fd5bebb21e266",
-    "run": 44498091720,
-    "error_count": 3,
+    "commit": "468937f193f28b58aa489a4efd9e742c529f7fb4",
+    "run": 44504013959,
+    "error_count": 1,
     "omitted_error_count": 0,
-    "report_sha256": "c3ba4b9e14a79f32ecf2c8409de36c8560b801ba75d0379bb1bcb92d9cfca031"
+    "report_sha256": "b13c8ebc62bf1f679f9da2cc77cc32b6573b9c808c4694bda992de035b0531b2"
   }
 }

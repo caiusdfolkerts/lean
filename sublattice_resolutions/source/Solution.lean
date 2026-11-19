@@ -2661,7 +2661,7 @@ private def ordinaryHomologyEquiv (B : Family V) (q : ℤ) (p : ℕ) :
     · rintro y ⟨z,rfl⟩
       let b : LinearMap.ker (integerOrdinaryQuotientPrevious (k := k) B q p) :=
         ⟨integerOrdinaryQuotientDifferential (k := k) B q p z, by
-          simpa only [LinearMap.comp_apply, LinearMap.zero_apply] using
+          simpa only [LinearMap.mem_ker, LinearMap.comp_apply, LinearMap.zero_apply] using
             LinearMap.congr_fun
               (integerOrdinaryQuotientDifferential_comp (k := k) B q p) z⟩
       refine ⟨(ordinaryCyclesEquiv B q p).symm b,?_,
