@@ -8,16 +8,16 @@
       "module": "Challenge",
       "case_dir": "cases/wishart_full20_canonical",
       "original_package": "reports/wishart/full20-canonical",
-      "original_challenge": "reports/wishart/full20-canonical/gauge-instance-repair/Challenge.lean",
+      "original_challenge": "reports/wishart/full20-canonical/complex-hierarchy-repair/Challenge.lean",
       "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
       "hashes": {
-        "Challenge.lean": "c366b1ae7ceeb1ec6eec1dc4656e2a3dad753428d2365f1466367834d8edce7c",
+        "Challenge.lean": "30dc4a1d10287b62acb96c6fda61945722f665239475793ba324a86b47858d68",
         "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
         "lake-manifest.json": "5619bb28ae7f2972522467eccf712e99876805a4fb0b7298a3c8de5918224147",
         "original-lakefile.toml": "e429ab885c0b86124ac6b748b01715efdede7f476661ead3634e0c69b6521ccb"
       },
-      "challenge_lines": 1000,
-      "challenge_bytes": 97942,
+      "challenge_lines": 1002,
+      "challenge_bytes": 98074,
       "dependency_pins": [
         {
           "name": "mathlib",
@@ -65,7 +65,7 @@
           "rev": "34d2efffcb6dc8d5f3537cf6a7f88bfaa999ec49"
         }
       ],
-      "diagnostic_class": "canonical-only-full20-complete-literal-interface",
+      "diagnostic_class": "measured complex superclass and gauge context repair canonical Challenge; original principal scope unchanged",
       "remote_memory_mib": 8192
     }
   ],

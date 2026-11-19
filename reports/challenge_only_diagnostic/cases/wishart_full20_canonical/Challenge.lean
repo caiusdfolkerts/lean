@@ -198,6 +198,8 @@ def inverseWishartMeasure {p : ℕ} (n : ℝ) (S : Matrix (Fin p) (Fin p) ℝ) :
     Measure (SymmetricMatrix p) :=
   (nonsingularWishartMeasure n S⁻¹).map symmetricInv
 end WishartLiteralLaws
+-- Match the source complex NormedField superclass path after literal primitives.
+attribute [-instance] instCommCStarAlgebraComplex
 end
 end
 end
