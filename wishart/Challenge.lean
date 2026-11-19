@@ -434,7 +434,7 @@ namespace WishartVerification section open scoped Classical ENNReal variable {ι
 def orderedChamber (s:Set ℝ):Set (ι → ℝ):={x | StrictMono x ∧ ∀ i,x i ∈ s}
 end end WishartVerification
 namespace WishartVerification section open scoped Classical ENNReal variable {ι:Type*} [Fintype ι] [LinearOrder ι] variable {Ω:Type*} [MeasurableSpace Ω]
-noncomputable def normalizedWeight (μ:Measure Ω) (w:Ω → ℝ):Measure Ω:=(∫⁻ x,ENNReal.ofReal (w x) ∂μ)⁻¹ • μ.withDensity (fun x ↦ ENNReal.ofReal (w x))
+noncomputable def normalizedWeight (μ:Measure Ω) (w:Ω → ℝ):Measure Ω:=WishartLiteralOperations.scaleMeasure (∫⁻ x,ENNReal.ofReal (w x) ∂μ)⁻¹ (μ.withDensity (fun x ↦ ENNReal.ofReal (w x)))
 end end WishartVerification
 namespace WishartVerification section open scoped Classical variable {p d:ℕ}
 def principalSetCoordinates (I:Finset (Fin p)):Fin (Fintype.card I) → Fin p:=fun a ↦ ((Fintype.equivFin I).symm a:Fin p)

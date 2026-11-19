@@ -1986,14 +1986,14 @@ variable {Ω : Type*} [MeasurableSpace Ω]
 
 /-- Normalizing a nonnegative real density by its nonnegative integral. -/
 noncomputable def normalizedWeight (μ : Measure Ω) (w : Ω → ℝ) : Measure Ω :=
-  (∫⁻ x, ENNReal.ofReal (w x) ∂μ)⁻¹ • μ.withDensity (fun x ↦ ENNReal.ofReal (w x))
+  WishartLiteralOperations.scaleMeasure (∫⁻ x, ENNReal.ofReal (w x) ∂μ)⁻¹ (μ.withDensity (fun x ↦ ENNReal.ofReal (w x)))
 
 theorem normalizedWeight_probability (μ : Measure Ω) (w : Ω → ℝ)
     (hZ0 : (∫⁻ x, ENNReal.ofReal (w x) ∂μ) ≠ 0)
     (hZtop : (∫⁻ x, ENNReal.ofReal (w x) ∂μ) ≠ ∞) :
     IsProbabilityMeasure (normalizedWeight μ w) := by
   constructor
-  simp only [normalizedWeight, Measure.smul_apply, withDensity_apply _ MeasurableSet.univ,
+  simp only [normalizedWeight, WishartLiteralOperations.scaleMeasure, Measure.smul_apply, withDensity_apply _ MeasurableSet.univ,
     Measure.restrict_univ, smul_eq_mul]
   exact ENNReal.inv_mul_cancel hZ0 hZtop
 
@@ -2002,7 +2002,7 @@ theorem normalizedWeight_lintegral (μ : Measure Ω) (w f : Ω → ℝ)
     (∫⁻ x, ENNReal.ofReal (f x) ∂normalizedWeight μ w) =
       (∫⁻ x, ENNReal.ofReal (w x) ∂μ)⁻¹ *
         ∫⁻ x, ENNReal.ofReal (w x * f x) ∂μ := by
-  rw [normalizedWeight, lintegral_smul_measure,
+  rw [normalizedWeight, WishartLiteralOperations.scaleMeasure, lintegral_smul_measure,
     lintegral_withDensity_eq_lintegral_mul _ hwm.ennreal_ofReal hfm.ennreal_ofReal]
   simp only [smul_eq_mul, Pi.mul_apply, ENNReal.ofReal_mul (hw0 _)]
 
@@ -3339,7 +3339,7 @@ theorem integrable_withDensity_ofReal_iff (μ : Measure Ω) (w f : Ω → ℝ)
 theorem normalizedWeight_integral (μ : Measure Ω) (w f : Ω → ℝ)
     (hwm : Measurable w) (hw0 : ∀ x, 0 ≤ w x) (hwi : Integrable w μ) :
     (∫ x, f x ∂normalizedWeight μ w) = (∫ x, w x * f x ∂μ) / (∫ x, w x ∂μ) := by
-  rw [normalizedWeight, integral_smul_measure,
+  rw [normalizedWeight, WishartLiteralOperations.scaleMeasure, integral_smul_measure,
     integral_withDensity_ofReal μ w f hwm hw0,
     ENNReal.toReal_inv, ← ofReal_integral_eq_lintegral_ofReal hwi (ae_of_all _ hw0),
     ENNReal.toReal_ofReal (integral_nonneg hw0)]
