@@ -131,7 +131,6 @@ theorem untruncated_graded_character_rational
     fun part => (StandardYoungTableau.rowSuperstandard _).toTableau
   refine ⟨T, inferInstance, ?_⟩
   intro g
-  dsimp only
   let m := n - lam.card
   let χ : n.Partition → ℂ := fun part =>
     (paperYoungIdealRepresentation part (T part)).character g
