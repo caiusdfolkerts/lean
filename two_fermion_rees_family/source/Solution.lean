@@ -8,8 +8,7 @@ open scoped Classical BigOperators TensorProduct DirectSum
   PaperVerification.Fermion.WeightRees
 open MvPolynomial Exterior
 variable {F : Type*} [Field F] [CharZero F] {n : ℕ}
-local instance theoremEightOneOrder : LinearOrder (OddIndex n) :=
-  LinearOrder.lift' modeRank modeRank_injective
+attribute [local instance] theoremEightOneOrder
 -- PALOMAR_CONTEXT_ORIGIN 55724
 theorem palomarColorFamily (hn : 0<n) :
     (∀ r : ℕ,
