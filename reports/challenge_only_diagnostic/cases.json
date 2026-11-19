@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "kind": "Canonical selective-import diagnostic; NOT full preflight",
+  "pipeline_commit": "14aa8d6b3c2f14a8540605e37144560b9a00e7e7",
+  "cases": [
+    {
+      "id": "singular_measured_proof_parents",
+      "module": "Challenge",
+      "case_dir": "cases/singular_measured_proof_parents",
+      "original_package": "reports/singular_vector_spans/measured-proof-parent-probe",
+      "original_challenge": "reports/singular_vector_spans/measured-proof-parent-probe/Challenge.lean",
+      "lean_toolchain": "leanprover/lean4:v4.36.0-rc2",
+      "hashes": {
+        "Challenge.lean": "53f1a64e58e571cc57248e22372b767e54bb7fd16f5873ac234e582f9f582967",
+        "lean-toolchain": "11c697aebe5b539d74f5069e497a588e7dfab1c4eeb74313f28357e351c55ca3",
+        "lake-manifest.json": "ab9561ee789bc5c912fbb857637499d2582ff28ff7c5eaaffa7ef6c4e598798a",
+        "original-lakefile.lean": "383d87d3debcf6c628a851934ca6c3ab9bb41c1b0995af46343cdb641fd0e051"
+      },
+      "challenge_lines": 929,
+      "challenge_bytes": 102324,
+      "dependency_pins": [
+        {
+          "name": "mathlib",
+          "url": "https://github.com/leanprover-community/mathlib4",
+          "rev": "1626233321dc564d20355d8f9d4f22e114d68600"
+        },
+        {
+          "name": "plausible",
+          "url": "https://github.com/leanprover-community/plausible",
+          "rev": "129d1ba9a16bc0660f46c79e9fb041ef5d5d80de"
+        },
+        {
+          "name": "LeanSearchClient",
+          "url": "https://github.com/leanprover-community/LeanSearchClient",
+          "rev": "c61286b7b63cbfd563b28e11e81d0a18233a044a"
+        },
+        {
+          "name": "importGraph",
+          "url": "https://github.com/leanprover-community/import-graph",
+          "rev": "b8cc5dd0a36233b88a6ed5a7dbf1207d09338c60"
+        },
+        {
+          "name": "proofwidgets",
+          "url": "https://github.com/leanprover-community/ProofWidgets4",
+          "rev": "16259c0d07d61ee37d999d05b5cf96338b8daa11"
+        },
+        {
+          "name": "aesop",
+          "url": "https://github.com/leanprover-community/aesop",
+          "rev": "7d11bfa88558f8d3d90afdf6bd877ed70001498d"
+        },
+        {
+          "name": "Qq",
+          "url": "https://github.com/leanprover-community/quote4",
+          "rev": "b0256621cb88178e9ad932a53633077b3029e621"
+        },
+        {
+          "name": "batteries",
+          "url": "https://github.com/leanprover-community/batteries",
+          "rev": "6d971e7e6b3f7d0a501c5418815aa9022edd3499"
+        },
+        {
+          "name": "Cli",
+          "url": "https://github.com/leanprover/lean4-cli",
+          "rev": "c09cb1e4f1e6e1c231a1175a12b681b075054a1b"
+        }
+      ],
+      "diagnostic_class": "canonical-only-measured-constructor-supports",
+      "remote_memory_mib": 8192,
+      "proof_holes": true,
+      "source_project_import": false,
+      "proof_scope": "Original theorem statement placeholders; no proof claim"
+    }
+  ],
+  "default_case_ids": [
+    "singular_measured_proof_parents"
+  ],
+  "revision": "isolated-barycentric-constructors",
+  "operator_resource_policy": {
+    "memory_mib": 8192,
+    "runner_memory_gib": 16,
+    "compiler_processes_per_job": 1,
+    "matrix_max_parallel": 1,
+    "compile_timeout_seconds": 2400
+  }
+}
