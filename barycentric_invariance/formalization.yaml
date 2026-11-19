@@ -50,7 +50,9 @@ review:
   notes: The original basis-degree carrier uses explicit coefficient-map proof
     arguments. Proof-local change commands restore the original coefficient
     expressions for rewriting; the canonical membership and hypothesis controls
-    passed in run44482293890. No statement, selected claim, or data construction
+    passed in run44482293890. The next full run passed the first repaired module;
+    its five equivalent downstream rewrite failures received the same proof-local
+    normalization. No statement, selected claim, or data construction
     changed in this proof repair. Full source, Solution, Comparator and independent
     kernel verification of this exact snapshot remain pending.
 scope:
