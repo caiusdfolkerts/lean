@@ -1,0 +1,57 @@
+{
+  "project": "higher_specht_bases_graded_characters",
+  "baseline_project": "higher_specht_bases",
+  "paper_sha256": "931c0ee33b94c7a77d373c4040abb40151a8f1cd049b977006df188e31013a0c",
+  "companion_to": {
+    "entry": "higher_specht_bases_status",
+    "commit": "fb5ab9354a764e61ae08d5e8f631614d1920f776"
+  },
+  "status": "graded_characters_candidate_awaiting_full_preflight",
+  "selected_results": [
+    "Corollary 5.3: graded character-valued Frobenius formula for finite Griffin ideal expressions",
+    "Corollary 6.7: graded character-valued Frobenius formula for untruncated Griffin ideal expressions",
+    "Corollary 5.6: graded character-valued Frobenius formula of the actual Springer intersection"
+  ],
+  "coverage": [
+    {
+      "paper_result": "Corollary 5.3",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        18
+      ],
+      "declarations": [
+        {
+          "name": "HigherSpecht.griffin_graded_specht_character",
+          "source_path": "source/Solution.lean"
+        }
+      ]
+    },
+    {
+      "paper_result": "Corollary 6.7",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        27
+      ],
+      "declarations": [
+        {
+          "name": "HigherSpecht.untruncated_graded_specht_character",
+          "source_path": "source/Solution.lean"
+        }
+      ]
+    },
+    {
+      "paper_result": "Corollary 5.6",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        20
+      ],
+      "declarations": [
+        {
+          "name": "HigherSpecht.springer_intersection_graded_specht_character",
+          "source_path": "source/Solution.lean"
+        }
+      ]
+    }
+  ],
+  "coverage_status": "partial_principal_selection_not_whole_paper"
+}

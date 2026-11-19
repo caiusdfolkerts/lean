@@ -1,0 +1,47 @@
+version: v0.4
+project:
+  name: Higher Specht bases for Springer and Δ-Springer rings
+  description: >
+    For each grade and each permutation, the actual quotient action has
+    the sum of the characters of the ordinary Specht modules indexed by
+    the eligible left tableaux and their multipliers. This is the
+    character-valued form of the graded Frobenius formulas.
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.CO
+  - math.RT
+  msc2020:
+  - 05E10
+  - 20C30
+sources:
+- type: paper
+  title: Higher Specht bases for Springer and Δ-Springer rings
+  authors:
+  - Caius Folkerts
+  relationship: formalizes
+  author_endorsement: participated
+  url: https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/higher_specht_bases/paper.pdf
+  note: 'Exact included paper SHA-256: 931c0ee33b94c7a77d373c4040abb40151a8f1cd049b977006df188e31013a0c.
+    Scope and declaration locations are recorded in map.json; novelty is not independently established.'
+automation:
+  methods:
+  - method: agent
+    tool_setup: OpenAI Codex
+    notes: Codex extracted independent definitions of the ideal expressions and
+      prescribed families, retaining the original proofs.
+  - method: other
+    tool_setup: Historical AI assistance reported in the included paper
+    notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing its proofs.
+      The exact model roles and extent of historical Lean automation have not been reconstructed from
+      the snapshot.
+review:
+  status: unchecked
+  notes: The graded character selection requires its own full preflight.
+scope:
+  current_selection: The graded Frobenius clauses of Corollaries 5.3, 5.6 and 6.7 in their character-valued form.
+  notes: The equalities specify every permutation trace in every grade, with each right-hand summand an independently defined Young symmetrizer Specht representation. Under the Frobenius characteristic map, the Specht character of a partition maps to its Schur function.
