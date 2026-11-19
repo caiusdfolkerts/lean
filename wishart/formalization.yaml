@@ -51,6 +51,13 @@ review:
     translation measurability locally; its exact generic proof passed
     run 44496902908 with zero placeholders. Measures, all 20 original targets,
     independent Challenge and Comparator configuration are unchanged.
+    Full snapshot 4a25cb7fe298120e9b6e1639445bcd7cb41522f0 then failed
+    at three generic coordinate-frame matrix rewrite proofs, with no omitted
+    errors. This revision proves the same finite-sum compression identities
+    entrywise and transports their exact equality in spectral attainment.
+    All three source signatures and matrix definitions are unchanged.
+    The genuine 190-line generic canonical proof model passed run 44503460697;
+    no placeholders or new hypotheses are used.
     Later immutable workflow reports for this exact source snapshot determine
     the subsequent verification outcome; this dated note does not assert it.
     The preceding canonical full snapshot 141c03dd3526da7106331c9a20456f11e53b26e2
@@ -105,6 +112,9 @@ fidelity:
     The product-Haar support instance now gives a proved local product
     translation-measurability record. All three component measures and the
     exact nested product formula are unchanged.
+    Three coordinate-frame support proofs now use explicit scalar finite sums
+    and the same compression equality. Their original signatures, mathematical
+    operations and all principal results are unchanged.
     Source snapshot is caiusdfolkerts/research at
     e0696fddcd3d10b5d6461e62e9b2f02c4195be37.
 

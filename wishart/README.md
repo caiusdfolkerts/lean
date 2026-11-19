@@ -80,6 +80,13 @@ The missing product translation-measurability proof is now explicit and passed
 the generic canonical test 44496902908 with no placeholders. All component
 measures, the exact product formula, Challenge and theorem selection are unchanged.
 
+The subsequent 4a25cb7f full run passed that Haar instance but failed three
+generic coordinate-frame rewrite proofs. This revision proves the same
+compression identities entrywise and uses an explicit compression equality
+in the spectral-attainment argument. All three original statements and
+matrix operations are unchanged. The genuine 190-line proof model passed
+run 44503460697; the revised full package still requires its own full workflow.
+
 The earlier full snapshot built the paper proofs and Solution successfully,
 then failed strict Comparator. The repair retains every original principal
 result and its complete input model. It names only the measured proposition
