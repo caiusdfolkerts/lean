@@ -1,0 +1,1623 @@
+{
+  "groups": [
+    {
+      "family": "RootedSubsumedForest",
+      "before": [
+        "RootedSubsumedForest0699Proof000",
+        "RootedSubsumedForest0699Proof001",
+        "RootedSubsumedForest0699Proof002",
+        "RootedSubsumedForest0699Proof003",
+        "RootedSubsumedForest0699Proof004"
+      ],
+      "after": [
+        "RootedSubsumedForest0699Proof000",
+        "RootedSubsumedForest0699Proof001",
+        "RootedSubsumedForest0699Proof002",
+        "RootedSubsumedForest0699Proof003",
+        "RootedSubsumedForest0699Proof004"
+      ],
+      "declarations": 198,
+      "dependencies": 96,
+      "group_lines": 628
+    }
+  ],
+  "common_dependency_count": 205,
+  "common_targets": [
+    "CertificateNumbers",
+    "LowerSchemas.FiniteRootedSixBase",
+    "LowerSchemas.FiniteRootedSixBase.Part0",
+    "LowerSchemas.FiniteRootedSubsumedForest",
+    "LowerSchemas.FiniteRootedSubsumedForest.Part0",
+    "RootedSixBase03GrowthCacheRidgeSupport448Data",
+    "RootedSubsumedForest0699Data",
+    "CompactDecisionProof"
+  ],
+  "mathlib_imports": [],
+  "shared_reader": "grouped reader uses its original default on every before source",
+  "sha256": {
+    "LICENSE": "cacb9b966903a68a7b55e83ee5c5004d9178206d7f6ac5ab61b8b5f15244147f",
+    "NOTICE": "e2af102b9599056f984ea036280b13207b8e6098d8fdef57256840d7b82b5a90",
+    "benchmark_remote.py": "6d736c471b42f35791917c606f23064dce186e5ceabe801727a2f8614c8fc9c2",
+    "common/RootedSixBase03GrowthCachebadMasksData073.lean": "6cbad16607555b3251a962aa77b490b230b25680ea4778631ffc6bb73e2e8721",
+    "common/RootedSixBase03GrowthCachebadMasksData066.natpack": "291cf606b8d49e66efb8701e89426e07af1139c0e4e3a7339d4cfd3b8d2143a3",
+    "common/RootedSixBase03GrowthCachebadMasksData076.natpack": "9eb43b2fe4cf4d5de550667a5ccb44cd223f8f3511b60eb48aa126a0d507f867",
+    "common/RootedSixBase03GrowthCachebadMasksData024.lean": "3e648bb6006a39d1a495a482720a641662f7102811e24c8e478b08294c6221dc",
+    "common/RootedSixBase04GrowthCachecandidateMasksData001.natpack": "0a5fdd08b5a7c50049a2622800ae13200b5b1870adf19bf7564ca6ca6470c8ae",
+    "common/RootedSixBase04GrowthCachesignatureMasksData001.lean": "6205041188767e8f4635cbabc8196716d1a549896914896a79c6b4d3e067e6cd",
+    "common/RootedSixBase03GrowthCachebadMasksData032.lean": "5470e0bb19eeabfb8130f65a9da7685892897c517ee311cc66da375c89bb1199",
+    "common/RootedSixBase03GrowthCachebadMasksData065.lean": "2b323ba95e9402c3b089e6321df01f7149131e4bd8c78fdddd99e4a46e2b1099",
+    "common/RootedSixBase03GrowthCachesignatureMasksData001.lean": "128df544b5c4de97e5ecebfd3b8f5d7e7e0d3d9ba58c65e95df375ce59d75264",
+    "common/RootedSixBase03GrowthCachebadMasksData004.natpack": "402cb5a5f960451e36de1eb746a4713e143d2b483b075ed934d2c7beb1d0191a",
+    "common/RootedSixBase03GrowthCachebadMasksData014.natpack": "ef39b8729a41f0effbfc3f683568819b0568bf083dabc931b088c815ad7626e1",
+    "common/RootedSixBase04GrowthCachebadMasksData014.lean": "51a22e66ef3fa2601e028ca1ee45d909feae41f4727af2c8d1c69b40da95ce4a",
+    "common/RootedSixBase03GrowthCachebadMasksData049.lean": "313d22ff650e066d1a78b985f751628ede4be8e09a41db282836b60a20be9651",
+    "common/RootedSixBase03GrowthCachebadMasksData059.natpack": "b51ab98c585d1d303feb707d8a28ea11dad7b21afe597eaf66a8bbcdd24f8d76",
+    "common/RootedSixBase03GrowthCachebadMasksData049.natpack": "0bf05912192195a8a5336898e0378f44845bf39957948fdd18ed9676962832a9",
+    "common/RootedSixBase04FastGeneratorsCheck00.lean": "c6d4120fc28a7e00ae3948858c323210b6bce5822819b22e32dcb256a34e40f4",
+    "common/RootedSixBase03GrowthCachecandidateMasksData002.natpack": "2ddf5c3d26fd756baec3be88cc1628a1bd7ca1eae35cedb76f6b2dbeb9334b2a",
+    "common/RootedSixBase03GrowthCachebadMasksData008.lean": "a80c2fa0e97b6a7363b5c7c6b68a78b4cdf7889709b6f2d96ef5fb078cbe6d5c",
+    "common/RootedSixBase04GrowthCachebadMasksData002.lean": "3d47786e0ce62957c49bfbb85e5180186fe98cdff524990bcc1a6ffb73636c53",
+    "common/StreamingRawGrowth.lean": "7a1227c038d3fdd7c815bf2b856994d3d512f42162ffe0476516e655a84d6464",
+    "common/RootedSixBase04Data004.lean": "b6b26e1d62d29587066a875c55a031346815f8b7b436284d37be53e455b5e0ad",
+    "common/RootedSixBase03GrowthCachebadMasksData028.lean": "c69b7bfcec5522724c8205c81632a87f8dda97807857198bcf659ff2e22b7e0d",
+    "common/RootedSixBase03Data007.lean": "0cf6f453922423ef101d8928c329a0a4a65d28d64d92faabba434a90ef07a27a",
+    "common/GrowthDAG.lean": "ee193ba523160c4bf02356c5769a63cf413ca076e36b7c29a7f20ba596da37fe",
+    "common/FastRawCacheCertificate.lean": "3598b2b950936c2f9ad6e80c0870ef91d31191f52e6ccf705678a898fa1dadd0",
+    "common/RawNatGrowthCheck.lean": "c4fc4f312223b6031b3cff3b70f7e3f3d0e96d4a37d0477eb1141dd011339118",
+    "common/PrimitiveBitsetGrowth.lean": "1dab7b97743105f51e6b4cf239b07b23184cbc60620dfe3133438ee97a164e62",
+    "common/RootedSixBase03GrowthCachecandidateMasksData005.lean": "0a88a188ae2bf5754b308b700d9fce8b19e029a3b6ce7ddf35a970e84662ca74",
+    "common/RootedSixBase03GrowthCachebadMasksData069.lean": "c9b08e7200c43bedad46adb7d585096dd823cf66cb51a3e46aa8b22ce041119f",
+    "common/RootedSixBase03GrowthCachebadMasksData022.natpack": "068258a5f8eff025749aaac178e0f36f1b3918b53dc7dddd2cc47a25f29dcea7",
+    "common/RootedSixBase03GrowthCachebadMasksData032.natpack": "9032c91985d3f2db748519e90081e1e32b6a15ca1f0ad026d05721b57ee7526a",
+    "common/RootedSixBase04GrowthCachebadMasksData012.natpack": "1af3ac3010855c16186dbbc920807a98edd5c32747a3b61aa815203fac1f3588",
+    "common/RootedSixBase04GrowthCachebadMasksData002.natpack": "120d861eb0f17858fcd6451f7155484cbb6df10d0bb36311e3c08cc376f272fc",
+    "common/RootedSixBase03GrowthCachebadMasksData012.lean": "560ad34db0304b18d184378eb912c6ced0689e32feb2964a6f2defd54c6a1ce3",
+    "common/RootedSixBase04FastGeneratorsData.lean": "b12f9a1b366670a60b045db1ab170730aebfdb9d56bd121dcb73e0bb2773b7af",
+    "common/RootedSixBase03GrowthCachebadMasksData045.lean": "2a000b439dbc7ac4048d722c9882f0e0cca853b1beca4d17665da47c97bff570",
+    "common/FastGeneratorWords.lean": "a92bbb7d51df5803f8db962879fe064abc92a740bf2c0ab5732c73a76cfe27ce",
+    "common/RootedSixBase03GrowthCachebadMasksData053.lean": "a91da97f1a147756ecbbbafb84bff67a47e01f6cec58416dacc48038b64eb29c",
+    "common/FiniteChecks.lean": "56938fc648ddd818ef6e5355b9fc34c61c7921a68c15d1219ca63b523d89233c",
+    "common/CounterGrowthReplay.lean": "16584b078f3cf111591ce699be3097e8befaa94cc496cd905537d090df7fb153",
+    "common/RootedSixBase03GrowthCachebadMasksData040.natpack": "31d6f3039f6ef44844ebfd0c3aa999fbd5f6691b883a19be387eab5cfe9cf63b",
+    "common/RootedSixBase03GrowthCachebadMasksData004.lean": "697595a7622d202e24c03ee653fb6c647743f2a0f86fcfea337b3dc91ef5611a",
+    "common/RootedSixBase04GeneratorsData.lean": "0fcfe14989f8108550e33d1fdc3bd93b2d1ec08004b7c42694d73235a6b1478c",
+    "common/RootedSixBase03GrowthCachebadMasksData050.natpack": "12151381962850222edb71fe92603604c15f043b4458479ce26a51c58c096b67",
+    "common/RootedSixBase03GrowthCachebadMasksData005.lean": "615185e40c571934d0e12c0ba8343fff7e6468c0d6f02b3f6f168918fbcdeed3",
+    "common/RootedSubsumedForest0699Data.natpack": "bcac2d8278813b6926e4d52af5816606bc1e9198c67ab26b984ca44f52338732",
+    "common/BatchedOrbitGrowth.lean": "4bc9c541def34f03104b090a1674b7dbdef0d568c78bce2df1bfa68a08c7c7b4",
+    "common/FastGraphConditionedGrowth.lean": "08c3d80e237e842806fa783a5a660949d07fbb8ec3b5270c306c33912aa2cd7d",
+    "common/RootedSixBase03GrowthCachebadMasksData052.lean": "702be53b566184abc72fcc42ab46ca0ae6842d0c44b94ac4ed33a19ce57712e4",
+    "common/RootedSixBase03GrowthCachebadMasksData044.lean": "8156693f39a28ca26a832843d1c64106971cb9fc08ac5987319a4039922d1efb",
+    "common/RootedSixBase03GrowthCachebadMasksData013.lean": "30c55742e961955db98fa155ae362df98569ea4f3f58f16d221407e152675010",
+    "common/RootedSixBase03GrowthCachecandidateMasksData004.lean": "50deb28a5a0288741c19ca076b211a22f074f81c4aeb10ab66a064689f70ace8",
+    "common/RootedSixBase03GrowthCachebadMasksData068.lean": "e29b40a7d85a6d6bc39f37f2bcaca7fcf51558edde1f8f04af0b17192facd761",
+    "common/RootedSixBase03GrowthCacheRidgeSupport448Data.natpack": "3487e783510d88ea493560670d771aecb02b4b9252138fe88c81d6b775e4f7d3",
+    "common/RootedSixBase03GrowthCachebadMasksData033.natpack": "35134c9d632484166de809ff38621509af38d8c103a482053b55b57b3d9df619",
+    "common/RootedSixBase03Data010.lean": "400997bfa6110c038971a2c65f7d886e82d1bf65b35f7b6ff58ef08208a6dcc2",
+    "common/RawGrowthCacheCertificate.lean": "efb320315b4e0e6ae2d9f19cdfaff42a169add9379b908f2ba0396ed3cff704e",
+    "common/RootedSixBase03GrowthCachebadMasksData023.natpack": "f0fa70f76862e6c62a1290bd615956bc1d49a37b77f056f130ea16b86ab97478",
+    "common/RootedSixBase04GrowthCachebadMasksData003.natpack": "06ba5edd3788d217d04626c08d965ea833490405437e10ee3b89301ebb4923a8",
+    "common/RootedSixBase04GrowthCachebadMasksData013.natpack": "725b0bb8bf3f0800492f8de1f6763415210a78a6df5a78c9fae861c3dffb86e3",
+    "common/RootedSixBase03GrowthCachebadMasksData029.lean": "a2aa5b6a364b381d14d89e58f7496c4a87c7ffb99fe5c4f312cc528ad3c2b0f4",
+    "common/RootedSixBase03Data006.lean": "cca075dd7f5baacc4b845c57368232ad4b2f691c531234cce140800a4761d026",
+    "common/RootedSixBase03GrowthCachebadMasksData051.natpack": "d43c6232f743375bb1fa7344ffbe7b1fa38f6bf0c3c7eb65f039e9f54cf06b0e",
+    "common/RootedSixBase04Data005.lean": "c14ad009e03ec6490cd81def2bd248aab0b3c224c535383847e1afdc2285396d",
+    "common/RootedSixBase03GrowthCachebadMasksData041.natpack": "c3666073d17c1d90764c6d847ad48862ccb929f2e5644ae06e55dda3ad744ae9",
+    "common/RawGraphGrowthFrames.lean": "f5e175634562dcf3e9a7c159ccbda0b3fe90fabe6a19d2b56ba5dbdf5ab25f50",
+    "common/RootedSixBase04GrowthCachebadMasksData003.lean": "ab30706dad39bb09a48304b807cd3fd3451abff9c784194bb3f2bf3c765bfaae",
+    "common/RootedSixBase04GrowthCachecandidateMasksData000.natpack": "123cc75dbca3571ccc172a5c0117b7aafebbde30ad5f3b1498c8eb58cf1432d8",
+    "common/IdentityGrowthRenaming.lean": "af732fc70e7ca2053753f999187984313c517eece3f1af2ed3a49d7a39dab2a1",
+    "common/SubsumedClassification.lean": "7edc99f002837cdd517d46fa181abb815faacd5b6e02efd9f0ae11a6ff5349db",
+    "common/RootedSixBase03GrowthCachebadMasksData009.lean": "29ff4e32e92b0300028486bc5629cde32e4528713be6343a78a0bc371f2126d6",
+    "common/RootedSixBase03GrowthCachebadMasksData077.natpack": "2545a2375b2d72891119392779772238a3b6deec47ea8fc828a16458ab3a3231",
+    "common/RootedSixBase03GrowthCachebadMasksData067.natpack": "72f992967f53a1c4decc0951415f3c1ffe658938978750cf9397ec4c6053e208",
+    "common/RootedSixBase04FastGeneratorsCheck01.lean": "599ddf55ae23ecba682203b9c84bd4ff325275e696ce7d1621fc934345f613b1",
+    "common/RootedSixBase03GrowthCachebadMasksData015.natpack": "2a42589e2a66ef8e532820dc71fdf62bf024f92d79b5f93a47cdf8b778aa7e57",
+    "common/RootedSixBase03GrowthCachebadMasksData005.natpack": "416b5b18cf5700e20731aae7c49348071b98cdfa87f63c9a9ed7dfe0f2d979d8",
+    "common/RootedSixBase03GrowthCachebadMasksData048.lean": "4be2f0ac78dbd12e444c1d88ec9a48ea1c02cf365a446e8bf9b11639f88d41c8",
+    "common/RootedSixBase03GrowthCachebadMasksData064.lean": "5e5add521883098cdb9c1c2a47555d402cb22d0aa543c4ed192f8f993c6ad7bd",
+    "common/RootedSixBase03GrowthCachebadMasksData048.natpack": "9636c490cd26c987d84b06f55e3a000824b4743a0c87412b8711d635a7d35ad7",
+    "common/RootedSixBase03GrowthCachesignatureMasksData000.lean": "d2109f54d4b0ea1930ba1be5411c59f8251a203dc077001f001d0b35ebafddf8",
+    "common/RootedSixBase03GrowthCachebadMasksData058.natpack": "a5a56bd69c37147b001f92bef083e612fcaf1f377958b80985a9d37f1b759f29",
+    "common/RootedSixBase03GrowthCachebadMasksData033.lean": "c344bfcb0ce061398db5f6daee53422b4bd3c6d84f2f401f41d212bd240dc1ea",
+    "common/FastGrowthCompatibility.lean": "6b1049703edf75d22d1139bcc299517dcfc92fd3970e4452bd79c1a41782e632",
+    "common/RootedSixBase04GrowthCachesignatureMasksData000.lean": "9fbbeff10491ddc1e550765e367ab9de626232575d787deac8523e8041e2f9a2",
+    "common/RootedSixBase03GrowthCachebadMasksData025.lean": "de74768d0141de3b192b6b9d12f965261a173cdc731247d03c611930f8c4d74d",
+    "common/RootedSixBase03GrowthCachecandidateMasksData003.natpack": "a7ec6e13ab1aa077c7550d8e9d238259efc12967bd7c24540199953ff3277b69",
+    "common/RootedSixBase03GrowthCachebadMasksData072.lean": "eb7d486fab7272e4ff194c5abbc421ce51905ce903e0d20fab4278d2076f0484",
+    "common/PackedListAppend.lean": "fc67023f8545369ad37118dbf8c3a54da160acb9e4aa6010f87626db763dbfd4",
+    "common/RootedSixBase03GrowthCachebadMasksData079.lean": "a15d848d6cff8549306206d096fb904df15ccb722eb175e8d457736e3e12e23b",
+    "common/RawClosedGrowthClassification.lean": "1fb7bf6c6d11530853e40957d3073962c242dc9bb27b2d3f59b186b1af12548b",
+    "common/RootedSixBase04Data002.lean": "9c379428716fbe402ff70dc9271ebdedd71ffec0c5db2667999dfff3a3367415",
+    "common/RootedSixBase04GrowthCachecandidateMasksData003.lean": "f5f402bf968d8760321f12d63adc73287692f60d4052c6195052c9125abc961b",
+    "common/RawGraphConditionedGrowth.lean": "369f702bce7b35b1f983d91d3b38fad5b99819b5c3232c332c9862f324f24aff",
+    "common/RootedSixBase03Data001.lean": "a08c345e53e1044694a80a84e1147849e16ab915b17a7f22780a1d8dcbe3f1a6",
+    "common/RootedSixBase03GrowthCachebadMasksData038.lean": "bf7eba1ba67d4b87e55988e987378be0e8a697779c5b0a84d9c96c732e953d78",
+    "common/RawNatGrowthSoundness.lean": "e3aa6b47dbdbae7f607ce79bf9645b178e4bc051def0787363a8e8c1e659c288",
+    "common/RootedSixBase03GrowthCachecandidateMasksData003.lean": "32298bc334c7046f716b4814e648318affd591f18108153f5a27ac1a30d4250c",
+    "common/RootedSixBase04FastWordsData.natpack": "c18f1cd30e24fa543f3b989a6381c285c02766e2b032f5ac6b4e8a1da5935ee5",
+    "common/RootedSixBase03GrowthCachebadMasksData080.lean": "39dc2a2f8875b877a605e06e6647f31d8e826056cd788fe0825fe4dad9eacc31",
+    "common/RootedSixBase03GrowthCachebadMasksData043.natpack": "ea34e15f2d97cb745bf6a5bf6a9dcdde1c4bbac729eff099a3196063383427ca",
+    "common/RootedSixBase03GrowthCachebadMasksData053.natpack": "5c8d7c283a5b0fd9cf830a614993882011e181dae7c933facab0f97934da1444",
+    "common/RootedSixBase03GrowthCachebadMasksData014.lean": "2fd88c4b060a02b998188db761305c0e297c8b7a506a49977e69e2e879ad0e97",
+    "common/FastBatchedGrowth.lean": "5bdbaf9a42b100c1a4e58c1144dee169dc09ade3e7c4debdbbbb075258512a25",
+    "common/WitnessGrowthDAG.lean": "6ab2ec605af5f2bf65d272ab36ef8a4028fe2c04141424a7e3ecc96c162f89aa",
+    "common/FastGraphRuleCheck.lean": "1c13b0ba691f71ca4e5e9b03b4411ae94245c2e9afe9785afa1284f7653d7c1f",
+    "common/RootedSixBase03GrowthCachebadMasksData043.lean": "c2de0af721be41c1f355f849a352553879dc65143e836e9c5f985db114943fc0",
+    "common/RootedSixBase03GrowthCachebadMasksData055.lean": "6c2851836abdc291b749132df39ddc7c7b4cefd5f67120616906b195bc94d07c",
+    "common/RootedSixBase04GrowthCachebadMasksData011.natpack": "9d672bd65f27ea14c84d3cab98c148b3fe491bb21c63c0801c7805272c5f7f1f",
+    "common/RootedSixBase04GrowthCachebadMasksData001.natpack": "6ef5c98e4e37740e52c07fd3d3a9ce2f921e375921b4bc2ddfedd2ce78f2e3eb",
+    "common/RootedSixBase04GrowthCachebadMasksData008.lean": "1393373f290be7cb5224df0df8cfdb52f0ec395724fd81aae3a1eac1c0fa423f",
+    "common/RootedSixBase03GrowthCachebadMasksData021.natpack": "c71299ca61a3444cadb13788ec2bb11a81cae50dfe0f2759b24091c133d7b2ab",
+    "common/RootedSixBase03GrowthCachebadMasksData031.natpack": "c81bc6e87293f13a62dbc640baa163267f02e63970fa55867067b7b5a80f63fe",
+    "common/RootedSixBase03GrowthCachebadMasksData002.lean": "740644ee319e504baea635d3475637f7f9bb2e0c8f76557c6bf0c359b6ab90dd",
+    "common/RootedSixBase03GrowthCachebadMasksData075.lean": "cbdf4973fa75f8d8d511af5f58fe066c361980570683c522021fa8ed6fe400c4",
+    "common/RootedSixBase03GrowthCachebadMasksData007.natpack": "9ebf33d0ed79cc2ea8e9f579da9aa54c048705ad0c6c2f48e66b9b04d6071f8f",
+    "common/RootedSixBase03GrowthCachebadMasksData017.natpack": "c1696751944967759fedfaa05c0b62b3f3168ccc5d1f4f0110f920ace3859f98",
+    "common/RootedSixBase03GrowthCachebadMasksData022.lean": "42ec9a8dd0e65c36b4489fa118db50ed54816e21621045cee51f2b28a7a2c028",
+    "common/RootedSixBase03GrowthCachesignatureMasksData004.natpack": "def0652a3efb25fad64596ffefc924b29db8c434c7108b43fdda39a1f19d7961",
+    "common/RootedSixBase03GrowthCachebadMasksData034.lean": "cb09f010034d12c695a75e3ec94d0491029beb971d70a924d631d32264553259",
+    "common/RootedSixBase04GrowthCachecandidateMasksData002.natpack": "30a7bd75f87130ccfcf2168b333e5d8e622acc714a05ade81fe08b895a46b28c",
+    "common/CertificateNumbers.lean": "0a9501e360e74d459b0480d55dbba818af479c0af68c40548bdcfab800369f61",
+    "common/RootedSixBase03GrowthCachebadMasksData063.lean": "a5d496eec789ce9b9e48e7cac26263e989a721f7e4f5c1a3eafd731458155592",
+    "common/RootedSixBase03GrowthCachebadMasksData065.natpack": "e48a55686544e6e01d77b187c445cbe88a98d333619153729f0e8665b101d750",
+    "common/RootedSixBase03GrowthCachebadMasksData075.natpack": "79666f957ba831678f52eed7c0730a31bcf2ab10a79c6c951ff99e56380d2760",
+    "common/SixFacetCells.gpool": "7e2bcd680f58c06e2220c0900556646aa78df1f416afe962049a45378131a1b7",
+    "common/RootedSixBase03GrowthCachebadMasksData018.lean": "b23782c835c1f4289e22033a1d62b21e69b30cccaca2be27d3997d917efac2b2",
+    "common/RootedSixBase04GrowthCachebadMasksData012.lean": "9ab88cf28316f0c81c8ef26aea3c3b39a2f8f26457ed68935c4a17b0735414f3",
+    "common/RootedSixBase04GrowthCachebadMasksData008.natpack": "01e9fe22fa37efc6bf6b38f0d65955ed333dae959860931bc45b8b870decc667",
+    "common/RootedSixBase03GrowthCachebadMasksData038.natpack": "3192b546972f43a02995414558ce18fb5522d57c87cd8328568038805951ef70",
+    "common/RootedSixBase03GrowthCachebadMasksData028.natpack": "f60215e5813ae0f68ede223b799bc7905473fc923a60da86cb386416815ec05c",
+    "common/RootedSixBase03GrowthCachecandidateMasksData001.natpack": "95341699b6f0e682bf7012c8bac78cc45c0e41db86ee4377f083ff3a4ce50416",
+    "common/RootedSixBase03GrowthCachebadMasksData059.lean": "4ca5aa1fc98014613678a22dbd064ce2a04935ab7628fc9d74aea8fb6508f11d",
+    "common/RootedSixBase04GrowthCachebadMasksData004.lean": "0d9c39d8b655888f208456cb7614fcae67effa1a28715889a02c68d86ecde75b",
+    "common/RootedSixBase04GrowthCachebadMasksData005.lean": "d4a0e0e21edf90e92ea813d5938f3cd9880195cd1cff7210d54b7a2d77e27037",
+    "common/lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+    "common/RootedSixBase03GrowthCachebadMasksData016.natpack": "86cdac89f2dfed38fbcfc64bed60691b766bfbf01647631ca05eae84909d356e",
+    "common/RootedSixBase03GrowthCachebadMasksData006.natpack": "14cd87696a791b02ba1c69b2cdaacc20c517e12c7abc8fd95befb9e57fc39a95",
+    "common/RootedSixBase03GrowthCachebadMasksData058.lean": "e6ea7859e45f3b1201c966a7fa799722b66bb3746b7231096302fcb55dd09e00",
+    "common/GraphGrowthConstraints.lean": "65082b64612cfbfc61c8b6ef2b4ea6eb4ceb79d0a84e2830750c0f5b2c61292a",
+    "common/RootedSixBase03GrowthCachebadMasksData074.natpack": "53a45787f840d6b22a3187b2f53fecd276b720bee96c285fd309be66fca18039",
+    "common/RootedSixBase03GrowthCachebadMasksData064.natpack": "ba1c730901181d4ea24ffccba830ae14d434ffbc940c5d38bb395aad495ba7a2",
+    "common/RootedSixBase04GrowthCachecandidateMasksData003.natpack": "3d04cbdee681b580cbe1d04b3d09f9841ed1c4d7f11f6c48ad46c47c4da8063f",
+    "common/RootedSixBase04GrowthCachebadMasksData013.lean": "3d69924078eb62c9bb63671f2a8fe75ac7f3977631f2cec3d2dfb4e7f2c6e09e",
+    "common/RootedSixBase03GrowthCachebadMasksData019.lean": "cac8b0482ff046c9e67bfdfdd840325771fe723bea5ce00b0d2ffea8add224b4",
+    "common/GraphGrowthRuleSoundness.lean": "02f3992fad0a8f2784f61cad8cd233efe6ab8ebae3cb85c4422ee147783fe6e9",
+    "common/RootedSixBase04GrowthCachebadMasksData009.natpack": "b061ea52986d980b102214338d8ebda21c9dfbefe03c51fce668e020881bf967",
+    "common/RootedSixBase03GrowthCachebadMasksData062.lean": "48d512e9fa5b9f191963a074650f31819f6ede22dbc0a70f9dc393f7eb108b9c",
+    "common/RootedSixBase03GrowthCachecandidateMasksData000.natpack": "78750392e396df471a8aaf9473f2e76326082ef269f67a8d0eae8c4e9b05f53f",
+    "common/RootedSixBase03GrowthCachebadMasksData029.natpack": "7745a5f11304730d382b0656a98ccb7ff54b43be0304d953ec47c80409666180",
+    "common/RootedSixBase03GrowthCachebadMasksData039.natpack": "86e833c5dcf02d839829cd97796d051fb6387c341017644e2068a0802fd403fa",
+    "common/RootedSixBase03GrowthCachebadMasksData080.natpack": "a193b2db2ffbfa7e69ddda3b45ad7bceb31307d691ccaefb2247fee4d7baf4fe",
+    "common/RootedSixBase03GrowthCachebadMasksData035.lean": "d4ed49426610d5aa0d6c2fedb8dc59657d95207388f0785cea6bc24e0770ca82",
+    "common/GraphCatalogueCore.lean": "dde1a33e2e9d308aeaed5ec6e386f1da4198a8df32fdf675205ce4d018a7b4ca",
+    "common/PackedGrowthData.lean": "1825b917d6cba0daa6f1f66424b0a68be161678a0c58c837721885c610a8c9b0",
+    "common/RootedSixBase03GrowthCachebadMasksData023.lean": "ebe105b3c92b59afad4449c697719c084373bc37cc0f972d98c7efdb20819e19",
+    "common/RootedSixBase03GrowthCachebadMasksData074.lean": "a25e8f0e9c14edb48a87a26e71c1de0570995d317191e48ccc5eb45fd934cd50",
+    "common/NoCarryKindDigits.lean": "10db73aa7cc47a861d75fabcc3a9d6938cd74bd438df314df54c3d8482a5cdc0",
+    "common/RootedSixBase03GrowthCachebadMasksData003.lean": "5285285d33b450d33f21f577bce83b7e844fb21bb65f76d2a535faa4f9e5a094",
+    "common/RootedSixBase04GrowthCachebadMasksData009.lean": "e0f1f4815ee743328d1a76cdecb585024dd0fa470fbeee23b9a7ae970ba66bf1",
+    "common/SparseGrowthDAG.lean": "8bf50794fbd3cbb14c136370a754adf534089ae7f6ba4091d18bac470c9f1d32",
+    "common/RootedSixBase03GrowthCachebadMasksData054.lean": "ea9e56694bd1ec870f87a8c30249785ff76588c7123bde5311733cb4e4119eff",
+    "common/GrowthRenaming.lean": "084d04866eadfcc73cff730b3e095a74aaec907c12c944a3a6fad6e15298bb8d",
+    "common/RootedSixBase03GrowthCachebadMasksData042.lean": "12d767cf6e8e9b7af228e1a03acdc518e404b5156fad732c94d3c555b529a568",
+    "common/RawBatchGrowth.lean": "68b7d099eed590ab720bc5a73bf182add19839783d3f84575a68ddf3e3764e45",
+    "common/RootedSixBase03GrowthCachebadMasksData015.lean": "ff994d52b69d862c74090185d86752c7bc358ba012361c95009c542b99faf859",
+    "common/RootedSixBase03GrowthCachecandidateMasksData002.lean": "763b953752c7589c7e247b8fd97e8e1fc3a4a04961afcb1e0bfd1eda24206878",
+    "common/NumericProofSchema.lean": "7d357d60f06e0b45b7219e6fa8ee7ad7a34edfa5b62185f93a922537d55950df",
+    "common/RootedSixBase04FastGeneratorsData.natpack": "82d08cdc6e7ff6082ca40d761c102441b9afdc98164c67fa82ca79690582cca9",
+    "common/RootedSixBase03GrowthCachebadMasksData052.natpack": "675098d6ae992af71079361d345b692c366a3b4f4e642fc4100963fd26406fec",
+    "common/RootedSixBase03GrowthCachebadMasksData039.lean": "288c554b84358ea93c3099f11e580241f9be7e1fd5f9732b6548500fd5898edd",
+    "common/RootedSixBase03GrowthCachebadMasksData042.natpack": "a322e286707ed40abed25ad72aeb5da293370a528f0372f98efcf0013005c6f4",
+    "common/RootedSixBase03Data000.lean": "b9cabc72107bf7c647974291a846100ebf167d1d4b8a2412ecf752be7bee215a",
+    "common/RootedSixBase04GrowthCachebadMasksData000.natpack": "1953588632e0691dceb75ba323ab25f6a5c485fcac802e41c16e4113f219723e",
+    "common/RootedSixBase04GrowthCachebadMasksData010.natpack": "2570d14b7973e139ea0bf9b80328483c5129eb67ad13f9437549c2697ab0a058",
+    "common/RootedSixBase04Data003.lean": "8aa1cd12ab5c8b249b1fec63e02592aacf469ef598c5a749f97e0eef6364fbbf",
+    "common/RootedSixBase04GrowthCachecandidateMasksData002.lean": "df57946cb2508451667ccc7100a6be37664c37e68c8d01dfcb631064b52629b9",
+    "common/RootedSixBase03GrowthCachebadMasksData030.natpack": "3e6eaf360a96cf568c4144a13b6b956520f3e5285b44cc36d78fe5fa27ad8aef",
+    "common/RootedSixBase03GrowthCachebadMasksData020.natpack": "94d1c59fbdc065fd43836142c1b8a8396319110e4ca5d6a5bb3906494513e4fd",
+    "common/RootedSixBase03GrowthCachebadMasksData078.lean": "b20be3fd0c1c09ea5fcdf194777883d40f21111c5e8c03a183bb04c1557e96c8",
+    "common/RootedSixBase03GrowthCachebadMasksData000.lean": "156acd77412176bece080ab0ce6e75c58ddd0c3fdc30964a43cc1025cb1f677e",
+    "common/RootedSixBase03GrowthCachebadMasksData057.lean": "0ce430b0d74835003532299639c25f7ab7f8f0dfbd75d07ff9e5334ea5a516cc",
+    "common/RootedSixBase03GrowthCachebadMasksData047.natpack": "129996c793e35a14057f1f12019ff573f401c0b0d817a3d0995a0bbeca49733b",
+    "common/RootedSixBase03GrowthCachebadMasksData057.natpack": "bd97db3cede2a21470478a02749e1d014e975cc406fc0465fb434beeb9b50953",
+    "common/RootedSixBase03GrowthCachebadMasksData041.lean": "7edfeab7f00b530562b0d48894636ae901171f72fb57aa5f8b53b3f4223b9b24",
+    "common/RootedSixBase03GrowthCachebadMasksData025.natpack": "890f571253f0a630421073a2ac2f92aca4c31efd00c6f665efa9d978a37d8e46",
+    "common/RootedSixBase03GrowthCachebadMasksData035.natpack": "3d955201cf2d165493eea5a9b55ac9bfaf067706518c0fccf8400061a6fb737d",
+    "common/UnsupportedRidgePruning.lean": "d69d4aabf9c95ef03f126f7ceaba7c38f4d85deab71167c212c35d61379498b9",
+    "common/RootedSixBase04GrowthCachebadMasksData005.natpack": "0dd09e292b023423f717d6c9614b2fd32157cd967969ac00757351025b782064",
+    "common/RootedSixBase03GrowthCachebadMasksData016.lean": "a92cd0aff5502bdd8d1cfa3159b0faf9343b7d9c9a52f4cdddc4499a2baee3c1",
+    "common/RootedSixBase03GrowthCachebadMasksData078.natpack": "26e054bd3aaefac7849c12c3536041a4e79ee084a3e18550b4481077d2d06409",
+    "common/RootedSixBase03GrowthCachebadMasksData068.natpack": "ebb8c9d918ae029fb7d27acdf95bab7c5a501bf62d18cb858e4c53b99f4b5e4d",
+    "common/RootedSixBase03GrowthCachecandidateMasksData001.lean": "a7da19c4948a31cbc52fecc3c5771704eedf7a78f22f46d4c1196a23abd1e24a",
+    "common/FiniteMaskSets.lean": "b53b4e957fc0a031383e544444acfdae7f591caa6256ae69aee7b1fdb9a1cda8",
+    "common/TenGraphEdges.lean": "b3107775c68ee6569a80b31fc37c8cf4603812d0b4b50ea10bc9f80441deae74",
+    "common/CompactDecisionProof.lean": "1261e682c939243d14a5d4cfa5e6fcb6d38e731c2ae1753ad07e30730b66a510",
+    "common/HexNatLiteral.lean": "ab82ca5b8ae67ae4f9c36fe0273a18b74180f780bf74a3247972fe8620fec82f",
+    "common/RootedSixBase03Data003.lean": "f1ac5b91c7b6b94c25d53198565a64b7c0d85ffd7d95cdbe0a1a65a4715b89ae",
+    "common/RootedSixBase04GrowthCachecandidateMasksData001.lean": "623984f8a1f5f0dfff65f53fd0acb4df74fb794d025237f4d61af9de318ea894",
+    "common/RootedSixBase04Data000.lean": "0f5fae925e5e8a308c49eaecd8916e394016e6695447a632f50b1661e29cbdb4",
+    "common/lake-manifest.json": "f0bf992666a450775481275b2f108bae85323de1fc01c096081fd35c59ca05c5",
+    "common/RootedSixBase03GrowthCachecandidateMasksData005.natpack": "cbd3b61a72107b7dfdce472ea0dbd368092757de7fc8a6fd87df86da095864ac",
+    "common/RootedSixBase04GrowthCachebadMasksData006.lean": "c9c453b40ec15c39d198bc52028e4c39386a3b288b3ff104ca99caf1a7173b3b",
+    "common/BatchedSearchLeaves.lean": "e079d8ef616bd40928b33d9673b224d8574647c23ae99e364782aca116e18098",
+    "common/RootedSixBase04FastGeneratorsCheck04.lean": "e453781af78f7bdc2d8033f21df5d5efba2041d1e0f39f153f7ac00291b17886",
+    "common/RootedSixBase04GrowthCachebadMasksData010.lean": "81aa513f76452a8709b8ceb52bf70c1c268f8b248df8e7887e917cf6beed2deb",
+    "common/RootedSixBase03GrowthCachesignatureMasksData000.natpack": "ed021f23908922ca6ea177631dfc349af11ac67043612416ce28aefd447139cc",
+    "common/GraphNumerals.lean": "c3ca65b9f512843e5a9ff832d8dc5e59f6e9fc6dcd16ab8a6248e67a1a69c83e",
+    "common/RootedSixBase03GrowthCachebadMasksData061.lean": "561bd14d0aea30ceb06703e0c90e4981a5807f2e08e1430bdea7827c1d96a6a0",
+    "common/RootedSixBase03.lean": "e83a1c5e2f0d7cf51b4fbc6017c3840ddd92fe8ab880ba61a647b2075f36e7ce",
+    "common/RootedSixBase03GrowthCachebadMasksData003.natpack": "334bfdde434a1450c250254405a6159f0499fe2eaa3b138a5bb9c64392b37b2d",
+    "common/RootedSixBase03GrowthCachebadMasksData013.natpack": "b5217d87494931859363f3d300e3b45eadb47148e29964ce1452c45b1ecdb3c2",
+    "common/GraphConditionedGrowth.lean": "b0aac0c70f0211bc21fa81169b8b50b5ecf5235b0e626a90ceffe6c06de621bd",
+    "common/RootedSixBase03GrowthCachebadMasksData036.lean": "8af988e7c459babe0cbb0a8263c40ad4c0604a585d5bf371e9c8d9c77d5efa5e",
+    "common/RootedSixBase03GrowthCachebadMasksData061.natpack": "55e73d3ce8d8b9bdf40d87867e837663d81711345f796214f5f9d31f881c7469",
+    "common/RootedSixBase03GrowthCachebadMasksData071.natpack": "f902fb5b8efbffe183abd684b6e25df3ccc53d95414fefbcfbd906e125d782e4",
+    "common/BatchedGrowthPruning.lean": "90017809631d00b6e3114f6ac20b145106fd4a159876cb02653718e7b55c42f3",
+    "common/RootedSixBase03GrowthCachebadMasksData020.lean": "aacf0bebbf250fa843b0d20a5f88e93bff07f6c330b3671a8a84a6554df0dfb2",
+    "common/RawGeneratorWords.lean": "93e2165d00004dc917bc581dc9f844777996ad8f84e13ad07a235be39167d32e",
+    "common/RootedSixBase03GrowthCachebadMasksData077.lean": "cc9295232104025dc623c703c0e56674140de2fdfc687e878c40e11d0f03a7ff",
+    "common/RootedSixBase03GrowthCachebadMasksData076.lean": "ff8fafd3cff0437454908e65d71334e409e6dfb2f528aaa00e36dd6ade494370",
+    "common/RootedSixBase03GrowthCachebadMasksData021.lean": "f51aa7f7ddfd039800cf9b0cbc1a1cac738f9fd280350290e24aabd0f2fac463",
+    "common/RootedSixBase03GrowthCachecandidateMasksData004.natpack": "0b323df65991f0a006e3d5826774cc1facc7888b02a0d72561f77c47ce3844d4",
+    "common/RootedSixBase03GrowthCachebadMasksData037.lean": "9258dd64356214779da58421f67bd34bc19aa44eff84d35d925aa898b91c5b27",
+    "common/RootedSixBase03GrowthCachebadMasksData060.lean": "6f59436eb4016a69f85c558a78e1830a93d15dde660c3511208657aa9d2cf1d6",
+    "common/RootedSixBase03GrowthCachesignatureMasksData004.lean": "25e5c22451094d801aa362c4324b0bbc4f82bbefd058fd70aa91b59a45c914b0",
+    "common/RootedSixBase03GrowthCachebadMasksData012.natpack": "90d154754154bfa31a4b28036ca194be429239b72d5d0809d0e48fc14857f513",
+    "common/SubsumedStreaming.lean": "f0d1baba30cb29b2d97028acc756d4a95f4f91a42305ee1a1d70975af969de54",
+    "common/RootedSixBase04GrowthCachebadMasksData011.lean": "5898a1b568ebf3f07d3161bb7e155854fb717a6b1bcd309ef814adbbf186a8cf",
+    "common/RootedSixBase03GrowthCachebadMasksData002.natpack": "c1a007749ec1f966c9d07ebe79ec6c2ce0e775c58fd304e11f5cba313b7bda91",
+    "common/RootedSixBase03GrowthCacheData.natpack": "919f33623d0bd3e542d50eefdff85a5e54f263b8543b9503b57a49e0701e75ae",
+    "common/RootedSixBase03GrowthCachesignatureMasksData001.natpack": "b0196de140fc32f596241d922599424612ea0c6b4f89f5be0120ac322289738e",
+    "common/OrbitGrowthDAG.lean": "cfd77df1cabe25de59b5e71f2076b50159e12b50b4eec33342f4635452a29eac",
+    "common/RootedSixBase03GrowthCachebadMasksData070.natpack": "da3aad239d394eb5398b8f5abb251fd7cccb68b6d661980ebfce142c716285d5",
+    "common/RootedSixBase03GrowthCachebadMasksData060.natpack": "f2cde8f6c02cff53047e8ab4c13e5704142531bbe2ac94df22eff90cd8f0b32c",
+    "common/RootedSixBase04GrowthCachebadMasksData007.lean": "0c6ed0de8d7e6a8a5d1764a7ed9d0f465208c685c3244a63431688b2bce43aec",
+    "common/RootedSixBase03GrowthCachebadMasksData056.natpack": "33bac5a66a332ddd68fb175ed61085c13f4c2a69ed60f9012534b00cf1c7a6d2",
+    "common/RootedSixBase03GrowthCachebadMasksData046.natpack": "fb5ecb3a4aa35767d315bf61e95d3dc74237524955f10b7d05c1880ea1bb185b",
+    "common/RootedSixBase04GrowthCachecandidateMasksData000.lean": "fd166d60f2d9dc32a0aa9b085dd8aaad31e440fb54f75cc412058159f56b7c8c",
+    "common/RootedSixBase04Data001.lean": "30ac5c5d6f42e42dafea524d2936d4c997957cdaf1dcbc6d9a6fa563a086aa78",
+    "common/RootedSixBase03Data002.lean": "c0f5001e1071fc9537f15d461aae4fbd08e58e93ce1b1c80cf853f3d74dd268a",
+    "common/RootedSixBase03GrowthCachebadMasksData034.natpack": "4a65b618d235783de9a9c70bba9fe2f89edc4f55c702e1a5b415450523a47b04",
+    "common/RootedSixBase03GrowthCachebadMasksData024.natpack": "5024bb9a8c3ed4ed4c46452ef37db10f3510d3a741dc59836353075f776aad14",
+    "common/RootedSixBase04GrowthCachebadMasksData004.natpack": "535d136c59f95c76e7c1d4807a73ce02c321e6c4f1c28b72a9993477d4dccf64",
+    "common/RootedSixBase04GrowthCachebadMasksData014.natpack": "4aa16deab0d1619383dfdd2bb0702b10b36c9b9874221a914a361983584b896f",
+    "common/RootedSixBase03GrowthCachecandidateMasksData000.lean": "9b89e6b4a705c2f3457a1cf90008daa86853b45dba5fb8ad69d9fff1c94aa1a4",
+    "common/RootedSixBase03GrowthCachebadMasksData017.lean": "33f3d8919b9353c54d680ec109611ecb5e4760c75df56a7220b6ac60a79da870",
+    "common/RootedSixBase04GrowthCacheData.natpack": "7e478f3a66d1314dc3989a394decd5ceddb0602eb65a51df76eb024fdca5f02a",
+    "common/RootedSixBase03GrowthCachebadMasksData069.natpack": "8e43e3f7859e97854d6ab199f8c6ddd83e2df4da2fc60c61e29bbd88222c64c3",
+    "common/RootedSixBase03GrowthCachebadMasksData079.natpack": "c56273e76555b32f94afdd64de622dc8b4b8b6c30e95ffc44f67f513d35a78ff",
+    "common/RootedSixBase03GrowthCachebadMasksData040.lean": "c68e0d8ae43388fd88a5beb868a60cabb9771875123c9bc37d9ad06055b0af86",
+    "common/lakefile.lean": "13001860329cc5a41ae668a2c16405e1f6bb7e6e09254d9681b3c52ce242c310",
+    "common/RootedSixBase03GrowthCachebadMasksData056.lean": "135e0ee1cc2655c1ab93bf6f5a4269b2637c5db298a8dc4174efa82a1f3f7ed1",
+    "common/RootedSixBase03GrowthCachebadMasksData001.lean": "aeb83d82226d0f575f67c89a802b8238c108b9d24d4a335279f796292007ce7f",
+    "common/SubsumptionSearch.lean": "8bd7aab430b13de998ec70ea1d68de5a7dcf9f0eb78d25edc6ea07d0c6eb7877",
+    "common/RootedSixBase04GrowthCachesignatureMasksData000.natpack": "4a8f63c0f7f514b682843712424d8311199a90b24fcc430a9b1230e7678df13d",
+    "common/RootedSixBase04GrowthCachebadMasksData000.lean": "029477fde13b6b6e0e16a235f818ffcfe2610a9bfd3f637d4af35531cee72307",
+    "common/RootedSixBase04FastGeneratorsCheck02.lean": "ba4bef3f1fa72ea2dc3e73dc8f20ed1373c3fff5c211d6fb3521f15ecc610e40",
+    "common/ConcreteGrowth.lean": "de893e4200cd38515846e85ee7c40f74e7c441faabef730a7cdc8e9e008254bc",
+    "common/RootedSixBase04GrowthCacheData.lean": "6ff667fddcda51537707fe30de0a5084326bd14f96f83023065a54c2108198d6",
+    "common/SignatureCompatibility.lean": "66d0c5ca25b3b26f0ac2ce16432b328f1a99d9ed183bb1ea68f474910666ffed",
+    "common/RootedSixBase03GrowthCachecandidateMasksData006.natpack": "a0c342c45ed8a8e357bedefbb31fbb1631a1c352cb959457b5408c66e855f7c6",
+    "common/PackedFacetCells.lean": "3ba71c498775c778649333a4e700721bffc66df13a871a7cde32e4e4ad8b6955",
+    "common/RootedSixBase03GrowthCachesignatureMasksData003.lean": "e0fba676b9ef091f778080728be71b4bc3b6601b4ade2eedc3c1aa084bbe4ff9",
+    "common/RootedSixBase03GrowthCachebadMasksData067.lean": "bdbca6b6608e20e23314ccfd61bea98e629ce1c3c7cc8eaf11a63b18011be2be",
+    "common/SmallFacetCells.gpool": "fa3f9bbceefd61f259fc3dd9ef544523926c272fac22449e2998fab54d10c128",
+    "common/RootedSixBase03GrowthCachebadMasksData062.natpack": "cc5e34c6766ddbad1402a113d6f233a6216d8717fe6e208c329d7e01da621cf7",
+    "common/RootedSixBase03GrowthCachebadMasksData072.natpack": "7aac14b40159611c2703dfd61da583cac556c7b3482725788abdd1d5dc4bee37",
+    "common/RootedSixBase03GrowthCachebadMasksData030.lean": "74b007dc0845494dbcebbc7cdf6b9361c1ef35f66818d377cbcdd78eb12e5914",
+    "common/RootedSixBase03GrowthCachebadMasksData000.natpack": "cd9a7e2913bfe58c05db2e7da1f8ecc97f9e8d1cbdf9657983022c5b8624274b",
+    "common/RootedSixBase03GrowthCachebadMasksData010.natpack": "3b5271256fb8ca6f7f7ba0d2f31ccaa596710946a2de141f97b8ce7225cf7909",
+    "common/RootedSixBase03Data009.lean": "bd4e0882ab7bf4cb5f731eb1ad544e32b7a2020cc4fc2a2635530da1824e9885",
+    "common/RootedSixBase03GrowthCachebadMasksData026.lean": "3409aca5b6b96d04e7e768d1b0fae8de06721add1b175634b47ebe16d2fd4a93",
+    "common/RawBoundaryMatch.lean": "761491d9e7da12e8887b1be3cb59e040c630c6dbd4439beb8338ec457315b7e5",
+    "common/RootedSixBase03GrowthCachesignatureMasksData003.natpack": "a340190a9b87825da768ff72445288e51c4e90670ea680bb80cde54af6113091",
+    "common/RootedSixBase03GrowthCachebadMasksData071.lean": "1fe06059ebc6da95adc2e1e95d93123d764a2f49582dad6a39342dd062a311eb",
+    "common/RootedSixBase03GrowthCacheRidgeSupport448Data.lean": "422ea6160825627debab1de58560ab7e0451c127950d483d5f95791a09339068",
+    "common/RootedSixBase03GrowthCachebadMasksData006.lean": "d2ea0c926ed6c68b26fa6dddb909b95979ac330b8e2bd36f557805d68acfb5e8",
+    "common/RootedSixBase03GrowthCachebadMasksData051.lean": "1e6c96c620f86fbf2838ce7440eeb16b0ea56cbcb88074ee24fe77378bdf9707",
+    "common/RootedSixBase04GrowthCachebadMasksData006.natpack": "c913326079110172bdc84d8348f25def8654e85fce1b798bdb59005b3b6a29b1",
+    "common/RootedSixBase03GrowthCachebadMasksData026.natpack": "b1ed5167e00d47b531ce183e8692b10bf73989394e3b970862f78580e79ec1b1",
+    "common/RootedSixBase03GrowthCachebadMasksData036.natpack": "3e60640061c7df7e64d6d5dda70c7441f08fb79fa7883ea1609cdc558cd13fe2",
+    "common/RootedSixBase03GrowthCachebadMasksData044.natpack": "447f9f37dec0f4ce831e4cd0129bb04e39eb211fa37189b8ae3c71d576963555",
+    "common/RootedSixBase03GrowthCachebadMasksData047.lean": "617492aedb0907ddd8b355ed3b908f5ea05659173b247b7155c8ba4bddef7db5",
+    "common/RootedSixBase03GrowthCachebadMasksData054.natpack": "fc739e589cc5d0557d9d800c6bb8e77ecd214469ebab4893da8b966fb93031ef",
+    "common/RawNatGrowthCompleteness.lean": "2b8d895d0bd57625e41b460dff7610da662b4f1e1c7e40686df2507f78422704",
+    "common/GrowthBitsets.lean": "3ecb0da03f95b20e4bc4e38b19323ae8a44053e4a2cfcb950510ad17bd7feab1",
+    "common/RootedSixBase03GrowthCachebadMasksData010.lean": "bf7a5db06ba38e3557f353176b521ebcaf574840afa17043cf1a62b7e1d8c552",
+    "common/RootedSixBase03GrowthCachecandidateMasksData007.lean": "844b50131c6707cfe27094d5179e25c2ddec9b06ce8e1903a371f0155d46dd0e",
+    "common/RootedSixBase03GrowthCachebadMasksData019.natpack": "bb28030c172804f557412b8ba6c55e48b985ae3fad5a4bdcbd8a5f92f17e8658",
+    "common/RootedSixBase03GrowthCachebadMasksData009.natpack": "3001014873b0a8fb656e57f6bb9b612fd1fe4df7c9fdba286dad2d766eef2e86",
+    "common/RootedSixBase03Data005.lean": "44479dffb6026ce39235db95d50f2667b747b890bb566f22b9990b54449bd834",
+    "common/RootedSixBase04GrowthCachebadMasksData007.natpack": "80a54a2dc1e66ada1f02f0e8f7c87fb6815d55fc4d96c979cc9de6423e2c0201",
+    "common/RootedSixBase03GrowthCachebadMasksData037.natpack": "8f2c3c6b94f74edd932fca8f04748fd901a0f2bb12fd1775131d719b3e91dd3c",
+    "common/RootedSixBase03GrowthCachebadMasksData027.natpack": "a8c56f7b9ad0aeb0f3260c914c7d7b4f7e1fc33a54ed45866dd5b9324232e7b1",
+    "common/RootedSixBase03Data004.lean": "db6495ea1bbdab2f3fd9204929e44403272a48fb59635e50603e9f641f88bad3",
+    "common/RootedSixBase03GrowthCachebadMasksData055.natpack": "600d8fc77a0c1be7cdcf3bc3978adcab44893f87cadb1a22029d852259244609",
+    "common/RootedSixBase03GrowthCachebadMasksData045.natpack": "489c2bf1ba657ce7d04142962b27aa38a0f66c606691a403da58c01019f73dfb",
+    "common/modules.txt": "815475ea5dfe4bc2175e7f0fc5631842a9abe7851f0adb51298ad4202767bacc",
+    "common/RootedSixBase03GrowthCachecandidateMasksData006.lean": "efa31eeb3b594dc174aa635d2cd08baa8b7488287a49d45cee1e0ab6b152e436",
+    "common/RootedSixBase03GrowthCachebadMasksData011.lean": "a3a9fbe615ae2916de48c5a544a466a935423cb21ee8e8859e8f479e23e266e3",
+    "common/RootedSixBase03GrowthCachebadMasksData008.natpack": "f04f42fa44557a3995146f297620cbee505d04f95a7a4c4f279388f49fba3f92",
+    "common/RootedSixBase03GrowthCachebadMasksData018.natpack": "76c824b3b35b5963eef20bbf59e0dc7cd653334fef2cd7403f2a8445fe17daa4",
+    "common/RootedSixBase03GrowthCachebadMasksData046.lean": "ffdd879824f929c2775d842e9b7bdc54fab043b081431e797ed22e6a601f8938",
+    "common/RawFacetEmbedding.lean": "97f0ac10e1320a8aa8f8fad410211de5c01b853fdad804447f86e6c3ddbccf4c",
+    "common/RootedSixBase03GrowthCachebadMasksData050.lean": "7ebf6e8a810f5a615e3aa63b0753f5016876857019758eac27deed573e26306e",
+    "common/RootedSixBase03GrowthCachebadMasksData007.lean": "16de7930388ce631a8d28a218dcafd4d7b0b0f344ef99553b20388890f611407",
+    "common/RootedSixBase03GrowthCachebadMasksData070.lean": "88e3368ce5e42288b6210075d59ca64de4f8d5ccf2d29612b10b16388492545b",
+    "common/RootedSubsumedForest0699Data.lean": "828d057c8858f0be785e03a99240a1b6dd9fd3f5e619d7922dbf40ef02529b5e",
+    "common/RootedSixBase03Data008.lean": "1b7104cd9cdb8c1091a9920e02eded08670d6c7295b4c54c54a6378fcbb3e535",
+    "common/RootedSixBase04GrowthCachesignatureMasksData001.natpack": "6f5d88cf4fea621449bb28ebc2913a9c3aec628bc43e67a110332c1fde03faf0",
+    "common/RootedSixBase03GrowthCachebadMasksData027.lean": "9c8ed4f985d80bc1b6310a4cefb27c1691c756c718d5ac084bafa72fbb97f481",
+    "common/RootedSixBase03GrowthCacheData.lean": "75ef6fb8f13e270ce58546bb5f21e0c86de1d3c7ca2cb57e6e1a47a074ab560d",
+    "common/RootedSixBase03GrowthCachebadMasksData031.lean": "9b23bd47e1892d4eb0fdb175b45da16e1725ca7f74c88590179b482dd404a840",
+    "common/RootedSixBase04.lean": "c2be3218d5733bff085ac7c7c84531b4b5706689d945f7397e5adf0f6805dce3",
+    "common/RootedSixBase03GrowthCachecandidateMasksData007.natpack": "75753332961aa9f3cf0215b4a61efd42193a89303b2e819acbdeecd7f6239701",
+    "common/RootedSixBase03GrowthCachesignatureMasksData002.lean": "80853ef57d0c22fe6649e7a0fa040a7033273aafbfb8649a0a5588ec2b65352f",
+    "common/RootedSixBase03GrowthCachebadMasksData066.lean": "6ff767e77c2dbb0f9889a102415e6ecdcec0cea81ec7979b8a1c748168e9270e",
+    "common/RootedSixBase04FastWordsData.lean": "dd690905f81ab5903d4df0286fe1a4883d9205168b68ccd8c7ae4178b69c5cd4",
+    "common/SubsumedGrowth.lean": "26e7916a7b4c3f97e42e605b03c6e373af9b041ddb350a1d6d5ffe55af82bd49",
+    "common/RootedSixBase03GrowthCachebadMasksData073.natpack": "9235aafae151e279c2e65e802f61a0fc012e9c9dba80123ed87082d1517c2323",
+    "common/RootedSixBase03GrowthCachebadMasksData063.natpack": "66edfd095a6a239083d86a156cf7c8899653e7a49b80757e7117f2f2211c9d54",
+    "common/RootedSixBase04FastGenerators.lean": "293405a179d480d138b4107459048bbbea60eccfc3426dffcc3cf70e2f4e0151",
+    "common/PackedRawNatGrowth.lean": "fe9d92d06205e66cdc6d9d1325570d7f9dce13825c5c7de22d706f4edc07c4fe",
+    "common/RootedSixBase04FastGeneratorsCheck03.lean": "48bb3a1a8c04b512b2936e2c9daf68f1929f4b705393e6afe26dfa27f9bf9262",
+    "common/RootedSixBase03GrowthCachesignatureMasksData002.natpack": "5436b3099ab8e45bcdf0ca4d18069ca97fb45a95721d827036f6b82d0480fdaa",
+    "common/RootedSixBase03GrowthCachebadMasksData011.natpack": "9304a9e6aafefdd92d05ea681318881d6acf25e8c52bc1f93a064562547ed8d9",
+    "common/RootedSixBase03GrowthCachebadMasksData001.natpack": "96351ddcee23cf820f89767a7810bc25997512c3afe09a45b02d69ee2e8cff29",
+    "common/GrowthPruning.lean": "b42c3a7851a0eebffa3b37998f784bda5d08b9a517f56fe45b0de8b0229d9cad",
+    "common/RootedSixBase04GrowthCachebadMasksData001.lean": "c88934068b02878cfeda83e251b51656ba413093bc69521a99a7558d37d9c89c",
+    "samples/RootedSubsumedForest/before/RootedSubsumedForest0699Proof003.lean": "39d157da79a18400353b3d05de2e368ccd4566663e3aa19622e6daecb8d76bab",
+    "samples/RootedSubsumedForest/before/RootedSubsumedForest0699Proof002.lean": "bb0fbebd1032cbc03bcf8c8ee306f8fb2c7b4cc5107cea29023a5288ac94eab6",
+    "samples/RootedSubsumedForest/before/RootedSubsumedForest0699Proof004.lean": "8e479c75a596a3652ae253cf74b7109fae8602730b961c2e4d36144a602491c6",
+    "samples/RootedSubsumedForest/before/Audit.lean": "6a58742595c8d8dc17a4188b74d9097b03604bb3a158ae777656cabc17c622f5",
+    "samples/RootedSubsumedForest/before/RootedSubsumedForest0699Proof001.lean": "d882545e931ed48766dbbcbf53147cf9761005916bb43d551b060f755d085120",
+    "samples/RootedSubsumedForest/before/RootedSubsumedForest0699Proof000.lean": "39b3b1c9db6ae362b1eaa7632a351da7c339fd55e30f90f4229c32abedcce7c2",
+    "samples/RootedSubsumedForest/after/RootedSubsumedForest0699Proof003.lean": "3c7231fe62c787668a6a856897bfe1953d747c74c23a8d640ef138de2da6dd6f",
+    "samples/RootedSubsumedForest/after/RootedSubsumedForest0699Proof002.lean": "637ca939fe7a8d58572f2598c5a643799012e90af217cf026f4c769df5b83877",
+    "samples/RootedSubsumedForest/after/RootedSubsumedForest0699Proof004.lean": "08a2f403e002763c5d63d81d2bd1460bfb7bad93f5c5c8a822e0cf3e21e0b07e",
+    "samples/RootedSubsumedForest/after/Audit.lean": "6a58742595c8d8dc17a4188b74d9097b03604bb3a158ae777656cabc17c622f5",
+    "samples/RootedSubsumedForest/after/RootedSubsumedForest0699Proof001.lean": "1a84d39f9b1fc855001cbdd12e70fab9e28ec2e5fc7ced553ffc6fe88fbe342f",
+    "samples/RootedSubsumedForest/after/RootedSubsumedForest0699Proof000.lean": "e845e78cd1fc74ee76b2932bc49260029742ddeb731cc61f37c9b27a2481b589",
+    "samples/RootedSixBase/before/RootedSixBase03GrowthCacheRidgeSupport448Part003.lean": "dfec4c6bc2e5224dd35733cd451a88940456c5297209e65eeb6fb43bca740024",
+    "samples/RootedSixBase/before/RootedSixBase03GrowthCacheRidgeSupport448Part000.natpack": "dd4e6e4968f137b5b6b3f4a49538b01d780d7ee7a5cb56f42fc00d068a9163b2",
+    "samples/RootedSixBase/before/RootedSixBase03GrowthCacheRidgeSupport448Part001.natpack": "6cf179e17c8205c785b12888b1695e7ec0fe829182eff73aa348c88f1bd723ec",
+    "samples/RootedSixBase/before/RootedSixBase03GrowthCacheRidgeSupport448Part002.lean": "b977dcbcd9717299e9dadd093747867cf144320dd4dc7749141010ccf8650817",
+    "samples/RootedSixBase/before/RootedSixBase03GrowthCacheRidgeSupport448Part003.natpack": "907cb0db2b0119be6cf9006f40acc50c8ea44fd84cfb22ef8d4a069f3a14ac5d",
+    "samples/RootedSixBase/before/RootedSixBase03GrowthCacheRidgeSupport448Part002.natpack": "2ccfaa3cc4c37afe4530e4219eae504e863276120f605ca0546cd5133f856163",
+    "samples/RootedSixBase/before/RootedSixBase03GrowthCacheRidgeSupport448Part004.lean": "0b63fcd1ecdb07d274c0346cfa77a4909831df714a759da5ffb62df7babe2293",
+    "samples/RootedSixBase/before/Audit.lean": "5854ec36f2496c53aff24bf2aeb57d3a755b115ea24ece0584cfc80d80203eec",
+    "samples/RootedSixBase/before/RootedSixBase03GrowthCacheRidgeSupport448Part001.lean": "ce078ca8756b8449c370ea5cd23677ed228517d10792d7b0ca988636f1accb17",
+    "samples/RootedSixBase/before/RootedSixBase03GrowthCacheRidgeSupport448Part004.natpack": "5ba0c81ebebc3cc27afa0b6ee78bd675dcb112a6dd181be2a8f139c92da581f6",
+    "samples/RootedSixBase/before/RootedSixBase03GrowthCacheRidgeSupport448Part000.lean": "2ec63352b76bba5cc01d6f4239272c5a70c1f027e62d1c474ee3647092c3c98d",
+    "samples/RootedSixBase/after/RootedSixBase03GrowthCacheRidgeSupport448PartGrouped000.lean": "0531d03dab585742773ae41e2405c6f67f1d9009ee91f6a103006611b5f2370a",
+    "samples/RootedSixBase/after/RootedSixBase03GrowthCacheRidgeSupport448Part000.natpack": "dd4e6e4968f137b5b6b3f4a49538b01d780d7ee7a5cb56f42fc00d068a9163b2",
+    "samples/RootedSixBase/after/RootedSixBase03GrowthCacheRidgeSupport448Part001.natpack": "6cf179e17c8205c785b12888b1695e7ec0fe829182eff73aa348c88f1bd723ec",
+    "samples/RootedSixBase/after/RootedSixBase03GrowthCacheRidgeSupport448Part003.natpack": "907cb0db2b0119be6cf9006f40acc50c8ea44fd84cfb22ef8d4a069f3a14ac5d",
+    "samples/RootedSixBase/after/RootedSixBase03GrowthCacheRidgeSupport448Part002.natpack": "2ccfaa3cc4c37afe4530e4219eae504e863276120f605ca0546cd5133f856163",
+    "samples/RootedSixBase/after/Audit.lean": "762529c9eaa9124df350ee92696863c220c6aa2b2a4b4014898767430e33cdd2",
+    "samples/RootedSixBase/after/RootedSixBase03GrowthCacheRidgeSupport448Part004.natpack": "5ba0c81ebebc3cc27afa0b6ee78bd675dcb112a6dd181be2a8f139c92da581f6",
+    "common/LowerSchemas/FiniteRootedSubsumedForest.lean": "84fbc5f57f439eec58c9d715668550fb495ca7d18251d0f6b41dcb4e72f93bbc",
+    "common/LowerSchemas/FiniteRootedSixBase.lean": "807a868581659d0532a98fe23c61945426e4e4dc79807407cadbd2bfca1e1cf6",
+    "common/LowerSchemas/FiniteRootedSixBase/Part0.lean": "0a5a2f02e544c1577fdb08c4222b3585ff786667ace52f70e63ec00319e20eab",
+    "common/LowerSchemas/FiniteRootedSubsumedForest/Part0.lean": "4a81ad8ec22216dac888614fa3c1c9e463f37772b896f462fdc19b2f806534cc",
+    ".github/workflows/check.yml": "ee180097f3a830a30aeb41b7531756edc30bc248e37a79dca9f7cff80d7dd176"
+  },
+  "forwarder_comparison": {
+    "LowerSchemas.FiniteRootedSubsumedForest": "LowerSchemas.FiniteRootedSubsumedForest.Part0",
+    "LowerSchemas.FiniteRootedSixBase": "LowerSchemas.FiniteRootedSixBase.Part0"
+  },
+  "common_imports": {
+    "BatchedGrowthPruning": [
+      "GrowthBitsets",
+      "GrowthRenaming"
+    ],
+    "BatchedOrbitGrowth": [
+      "BatchedGrowthPruning",
+      "OrbitGrowthDAG"
+    ],
+    "BatchedSearchLeaves": [
+      "FastBatchedGrowth"
+    ],
+    "CertificateNumbers": [
+      "GraphNumerals"
+    ],
+    "ConcreteGrowth": [
+      "WitnessGrowthDAG",
+      "Init.Data.Nat.Bitwise.Basic"
+    ],
+    "CounterGrowthReplay": [
+      "StreamingRawGrowth",
+      "NoCarryKindDigits",
+      "Init.Data.Nat.Bitwise.Lemmas"
+    ],
+    "FastBatchedGrowth": [
+      "BatchedOrbitGrowth"
+    ],
+    "FastGeneratorWords": [
+      "RawGeneratorWords",
+      "RawNatGrowthSoundness",
+      "FiniteChecks"
+    ],
+    "FastGraphConditionedGrowth": [
+      "RawGraphConditionedGrowth",
+      "FastGraphRuleCheck"
+    ],
+    "FastGraphRuleCheck": [
+      "GraphGrowthRuleSoundness"
+    ],
+    "FastGrowthCompatibility": [
+      "FiniteChecks"
+    ],
+    "FastRawCacheCertificate": [
+      "RawGrowthCacheCertificate"
+    ],
+    "FiniteChecks": [
+      "PackedGrowthData",
+      "Init.Data.List.Nat.Range",
+      "Init.Data.Fin.Lemmas"
+    ],
+    "FiniteMaskSets": [
+      "GrowthBitsets",
+      "GrowthRenaming",
+      "Init.Data.List.Nat.Pairwise",
+      "Init.Data.List.Perm"
+    ],
+    "GraphCatalogueCore": [
+      "FastBatchedGrowth",
+      "IdentityGrowthRenaming",
+      "Init.Data.List.Nat.Pairwise"
+    ],
+    "GraphConditionedGrowth": [
+      "GraphGrowthRuleSoundness",
+      "SubsumptionSearch"
+    ],
+    "GraphGrowthConstraints": [
+      "FiniteMaskSets",
+      "UnsupportedRidgePruning",
+      "PrimitiveBitsetGrowth"
+    ],
+    "GraphGrowthRuleSoundness": [
+      "GraphGrowthConstraints"
+    ],
+    "GraphNumerals": [
+      "Lean.Elab.Term"
+    ],
+    "GrowthBitsets": [
+      "FastGrowthCompatibility",
+      "Init.Data.Nat.Bitwise.Lemmas"
+    ],
+    "GrowthDAG": [
+      "Init.Data.Nat.Lemmas",
+      "Init.Data.List.Lemmas",
+      "Init.WF",
+      "Init.ByCases",
+      "Init.Omega"
+    ],
+    "GrowthPruning": [
+      "SparseGrowthDAG",
+      "Init.Data.List.Perm",
+      "Init.Data.List.Pairwise"
+    ],
+    "GrowthRenaming": [
+      "WitnessGrowthDAG"
+    ],
+    "HexNatLiteral": [
+      "Lean.Elab.Term"
+    ],
+    "IdentityGrowthRenaming": [
+      "OrbitGrowthDAG"
+    ],
+    "LowerSchemas.FiniteRootedSixBase": [
+      "LowerSchemas.FiniteRootedSixBase.Part0"
+    ],
+    "LowerSchemas.FiniteRootedSixBase.Part0": [
+      "NumericProofSchema"
+    ],
+    "LowerSchemas.FiniteRootedSubsumedForest": [
+      "LowerSchemas.FiniteRootedSubsumedForest.Part0"
+    ],
+    "LowerSchemas.FiniteRootedSubsumedForest.Part0": [
+      "NumericProofSchema"
+    ],
+    "NoCarryKindDigits": [
+      "Init.Data.Bool",
+      "Init.Data.List.Lemmas",
+      "Init.Data.List.Nat.Sum",
+      "Init.Data.Nat.Lemmas",
+      "Init.Data.Nat.Div.Lemmas",
+      "Init.Omega"
+    ],
+    "NumericProofSchema": [
+      "Lean.Elab.Command"
+    ],
+    "OrbitGrowthDAG": [
+      "GrowthRenaming"
+    ],
+    "PackedFacetCells": [
+      "ConcreteGrowth"
+    ],
+    "PackedGrowthData": [
+      "ConcreteGrowth"
+    ],
+    "PackedListAppend": [
+      "PackedRawNatGrowth"
+    ],
+    "PackedRawNatGrowth": [
+      "RawNatGrowthCheck",
+      "ConcreteGrowth"
+    ],
+    "PrimitiveBitsetGrowth": [
+      "BatchedSearchLeaves"
+    ],
+    "RawBatchGrowth": [
+      "FastBatchedGrowth",
+      "ConcreteGrowth"
+    ],
+    "RawBoundaryMatch": [
+      "TenGraphEdges",
+      "PrimitiveBitsetGrowth"
+    ],
+    "RawClosedGrowthClassification": [
+      "RawNatGrowthCompleteness"
+    ],
+    "RawFacetEmbedding": [
+      "FiniteChecks",
+      "GrowthBitsets"
+    ],
+    "RawGeneratorWords": [
+      "Init.Data.List.Basic"
+    ],
+    "RawGraphConditionedGrowth": [
+      "GraphConditionedGrowth"
+    ],
+    "RawGraphGrowthFrames": [
+      "RawBoundaryMatch"
+    ],
+    "RawGrowthCacheCertificate": [
+      "RawNatGrowthSoundness"
+    ],
+    "RawNatGrowthCheck": [
+      "RawBatchGrowth"
+    ],
+    "RawNatGrowthCompleteness": [
+      "RawNatGrowthSoundness"
+    ],
+    "RawNatGrowthSoundness": [
+      "RawNatGrowthCheck",
+      "PrimitiveBitsetGrowth",
+      "FastGraphConditionedGrowth"
+    ],
+    "RootedSixBase03": [
+      "RootedSixBase03Data000",
+      "RootedSixBase03Data001",
+      "RootedSixBase03Data002",
+      "RootedSixBase03Data003",
+      "RootedSixBase03Data004",
+      "RootedSixBase03Data005",
+      "RootedSixBase03Data006",
+      "RootedSixBase03Data007",
+      "RootedSixBase03Data008",
+      "RootedSixBase03Data009",
+      "RootedSixBase03Data010"
+    ],
+    "RootedSixBase03Data000": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase03Data001": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase03Data002": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase03Data003": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase03Data004": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase03Data005": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase03Data006": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase03Data007": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase03Data008": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase03Data009": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase03Data010": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase03GrowthCacheData": [
+      "CertificateNumbers",
+      "RootedSixBase03",
+      "SignatureCompatibility",
+      "PackedRawNatGrowth",
+      "FiniteChecks",
+      "RawFacetEmbedding",
+      "RootedSixBase03GrowthCachecandidateMasksData000",
+      "RootedSixBase03GrowthCachecandidateMasksData001",
+      "RootedSixBase03GrowthCachecandidateMasksData002",
+      "RootedSixBase03GrowthCachecandidateMasksData003",
+      "RootedSixBase03GrowthCachecandidateMasksData004",
+      "RootedSixBase03GrowthCachecandidateMasksData005",
+      "RootedSixBase03GrowthCachecandidateMasksData006",
+      "RootedSixBase03GrowthCachecandidateMasksData007",
+      "RootedSixBase03GrowthCachebadMasksData000",
+      "RootedSixBase03GrowthCachebadMasksData001",
+      "RootedSixBase03GrowthCachebadMasksData002",
+      "RootedSixBase03GrowthCachebadMasksData003",
+      "RootedSixBase03GrowthCachebadMasksData004",
+      "RootedSixBase03GrowthCachebadMasksData005",
+      "RootedSixBase03GrowthCachebadMasksData006",
+      "RootedSixBase03GrowthCachebadMasksData007",
+      "RootedSixBase03GrowthCachebadMasksData008",
+      "RootedSixBase03GrowthCachebadMasksData009",
+      "RootedSixBase03GrowthCachebadMasksData010",
+      "RootedSixBase03GrowthCachebadMasksData011",
+      "RootedSixBase03GrowthCachebadMasksData012",
+      "RootedSixBase03GrowthCachebadMasksData013",
+      "RootedSixBase03GrowthCachebadMasksData014",
+      "RootedSixBase03GrowthCachebadMasksData015",
+      "RootedSixBase03GrowthCachebadMasksData016",
+      "RootedSixBase03GrowthCachebadMasksData017",
+      "RootedSixBase03GrowthCachebadMasksData018",
+      "RootedSixBase03GrowthCachebadMasksData019",
+      "RootedSixBase03GrowthCachebadMasksData020",
+      "RootedSixBase03GrowthCachebadMasksData021",
+      "RootedSixBase03GrowthCachebadMasksData022",
+      "RootedSixBase03GrowthCachebadMasksData023",
+      "RootedSixBase03GrowthCachebadMasksData024",
+      "RootedSixBase03GrowthCachebadMasksData025",
+      "RootedSixBase03GrowthCachebadMasksData026",
+      "RootedSixBase03GrowthCachebadMasksData027",
+      "RootedSixBase03GrowthCachebadMasksData028",
+      "RootedSixBase03GrowthCachebadMasksData029",
+      "RootedSixBase03GrowthCachebadMasksData030",
+      "RootedSixBase03GrowthCachebadMasksData031",
+      "RootedSixBase03GrowthCachebadMasksData032",
+      "RootedSixBase03GrowthCachebadMasksData033",
+      "RootedSixBase03GrowthCachebadMasksData034",
+      "RootedSixBase03GrowthCachebadMasksData035",
+      "RootedSixBase03GrowthCachebadMasksData036",
+      "RootedSixBase03GrowthCachebadMasksData037",
+      "RootedSixBase03GrowthCachebadMasksData038",
+      "RootedSixBase03GrowthCachebadMasksData039",
+      "RootedSixBase03GrowthCachebadMasksData040",
+      "RootedSixBase03GrowthCachebadMasksData041",
+      "RootedSixBase03GrowthCachebadMasksData042",
+      "RootedSixBase03GrowthCachebadMasksData043",
+      "RootedSixBase03GrowthCachebadMasksData044",
+      "RootedSixBase03GrowthCachebadMasksData045",
+      "RootedSixBase03GrowthCachebadMasksData046",
+      "RootedSixBase03GrowthCachebadMasksData047",
+      "RootedSixBase03GrowthCachebadMasksData048",
+      "RootedSixBase03GrowthCachebadMasksData049",
+      "RootedSixBase03GrowthCachebadMasksData050",
+      "RootedSixBase03GrowthCachebadMasksData051",
+      "RootedSixBase03GrowthCachebadMasksData052",
+      "RootedSixBase03GrowthCachebadMasksData053",
+      "RootedSixBase03GrowthCachebadMasksData054",
+      "RootedSixBase03GrowthCachebadMasksData055",
+      "RootedSixBase03GrowthCachebadMasksData056",
+      "RootedSixBase03GrowthCachebadMasksData057",
+      "RootedSixBase03GrowthCachebadMasksData058",
+      "RootedSixBase03GrowthCachebadMasksData059",
+      "RootedSixBase03GrowthCachebadMasksData060",
+      "RootedSixBase03GrowthCachebadMasksData061",
+      "RootedSixBase03GrowthCachebadMasksData062",
+      "RootedSixBase03GrowthCachebadMasksData063",
+      "RootedSixBase03GrowthCachebadMasksData064",
+      "RootedSixBase03GrowthCachebadMasksData065",
+      "RootedSixBase03GrowthCachebadMasksData066",
+      "RootedSixBase03GrowthCachebadMasksData067",
+      "RootedSixBase03GrowthCachebadMasksData068",
+      "RootedSixBase03GrowthCachebadMasksData069",
+      "RootedSixBase03GrowthCachebadMasksData070",
+      "RootedSixBase03GrowthCachebadMasksData071",
+      "RootedSixBase03GrowthCachebadMasksData072",
+      "RootedSixBase03GrowthCachebadMasksData073",
+      "RootedSixBase03GrowthCachebadMasksData074",
+      "RootedSixBase03GrowthCachebadMasksData075",
+      "RootedSixBase03GrowthCachebadMasksData076",
+      "RootedSixBase03GrowthCachebadMasksData077",
+      "RootedSixBase03GrowthCachebadMasksData078",
+      "RootedSixBase03GrowthCachebadMasksData079",
+      "RootedSixBase03GrowthCachebadMasksData080",
+      "RootedSixBase03GrowthCachesignatureMasksData000",
+      "RootedSixBase03GrowthCachesignatureMasksData001",
+      "RootedSixBase03GrowthCachesignatureMasksData002",
+      "RootedSixBase03GrowthCachesignatureMasksData003",
+      "RootedSixBase03GrowthCachesignatureMasksData004"
+    ],
+    "RootedSixBase03GrowthCacheRidgeSupport448Data": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "RootedSixBase03GrowthCacheData",
+      "PackedListAppend"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData000": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData001": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData002": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData003": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData004": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData005": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData006": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData007": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData008": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData009": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData010": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData011": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData012": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData013": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData014": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData015": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData016": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData017": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData018": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData019": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData020": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData021": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData022": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData023": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData024": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData025": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData026": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData027": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData028": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData029": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData030": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData031": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData032": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData033": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData034": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData035": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData036": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData037": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData038": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData039": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData040": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData041": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData042": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData043": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData044": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData045": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData046": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData047": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData048": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData049": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData050": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData051": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData052": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData053": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData054": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData055": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData056": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData057": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData058": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData059": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData060": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData061": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData062": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData063": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData064": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData065": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData066": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData067": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData068": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData069": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData070": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData071": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData072": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData073": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData074": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData075": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData076": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData077": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData078": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData079": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachebadMasksData080": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachecandidateMasksData000": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachecandidateMasksData001": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachecandidateMasksData002": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachecandidateMasksData003": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachecandidateMasksData004": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachecandidateMasksData005": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachecandidateMasksData006": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachecandidateMasksData007": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachesignatureMasksData000": [
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachesignatureMasksData001": [
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachesignatureMasksData002": [
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachesignatureMasksData003": [
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase03GrowthCachesignatureMasksData004": [
+      "CertificateNumbers",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04": [
+      "RootedSixBase04Data000",
+      "RootedSixBase04Data001",
+      "RootedSixBase04Data002",
+      "RootedSixBase04Data003",
+      "RootedSixBase04Data004",
+      "RootedSixBase04Data005"
+    ],
+    "RootedSixBase04Data000": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase04Data001": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase04Data002": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase04Data003": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase04Data004": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase04Data005": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "PackedFacetCells"
+    ],
+    "RootedSixBase04FastGenerators": [
+      "RootedSixBase04FastGeneratorsCheck00",
+      "RootedSixBase04FastGeneratorsCheck01",
+      "RootedSixBase04FastGeneratorsCheck02",
+      "RootedSixBase04FastGeneratorsCheck03",
+      "RootedSixBase04FastGeneratorsCheck04",
+      "FastGeneratorWords"
+    ],
+    "RootedSixBase04FastGeneratorsCheck00": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "RootedSixBase04FastGeneratorsData",
+      "FastGeneratorWords"
+    ],
+    "RootedSixBase04FastGeneratorsCheck01": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "RootedSixBase04FastGeneratorsData",
+      "FastGeneratorWords"
+    ],
+    "RootedSixBase04FastGeneratorsCheck02": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "RootedSixBase04FastGeneratorsData",
+      "FastGeneratorWords"
+    ],
+    "RootedSixBase04FastGeneratorsCheck03": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "RootedSixBase04FastGeneratorsData",
+      "FastGeneratorWords"
+    ],
+    "RootedSixBase04FastGeneratorsCheck04": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "RootedSixBase04FastGeneratorsData",
+      "FastGeneratorWords"
+    ],
+    "RootedSixBase04FastGeneratorsData": [
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "RootedSixBase04GeneratorsData",
+      "FastGeneratorWords"
+    ],
+    "RootedSixBase04FastWordsData": [
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "RootedSixBase04FastGenerators"
+    ],
+    "RootedSixBase04GeneratorsData": [
+      "RootedSixBase04",
+      "RawGraphGrowthFrames",
+      "RawGeneratorWords",
+      "PackedRawNatGrowth",
+      "RawNatGrowthSoundness",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCacheData": [
+      "CertificateNumbers",
+      "RootedSixBase04",
+      "SignatureCompatibility",
+      "PackedRawNatGrowth",
+      "FiniteChecks",
+      "RawFacetEmbedding",
+      "RootedSixBase04GrowthCachecandidateMasksData000",
+      "RootedSixBase04GrowthCachecandidateMasksData001",
+      "RootedSixBase04GrowthCachecandidateMasksData002",
+      "RootedSixBase04GrowthCachecandidateMasksData003",
+      "RootedSixBase04GrowthCachebadMasksData000",
+      "RootedSixBase04GrowthCachebadMasksData001",
+      "RootedSixBase04GrowthCachebadMasksData002",
+      "RootedSixBase04GrowthCachebadMasksData003",
+      "RootedSixBase04GrowthCachebadMasksData004",
+      "RootedSixBase04GrowthCachebadMasksData005",
+      "RootedSixBase04GrowthCachebadMasksData006",
+      "RootedSixBase04GrowthCachebadMasksData007",
+      "RootedSixBase04GrowthCachebadMasksData008",
+      "RootedSixBase04GrowthCachebadMasksData009",
+      "RootedSixBase04GrowthCachebadMasksData010",
+      "RootedSixBase04GrowthCachebadMasksData011",
+      "RootedSixBase04GrowthCachebadMasksData012",
+      "RootedSixBase04GrowthCachebadMasksData013",
+      "RootedSixBase04GrowthCachebadMasksData014",
+      "RootedSixBase04GrowthCachesignatureMasksData000",
+      "RootedSixBase04GrowthCachesignatureMasksData001"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData000": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData001": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData002": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData003": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData004": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData005": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData006": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData007": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData008": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData009": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData010": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData011": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData012": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData013": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachebadMasksData014": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachecandidateMasksData000": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachecandidateMasksData001": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachecandidateMasksData002": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachecandidateMasksData003": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachesignatureMasksData000": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSixBase04GrowthCachesignatureMasksData001": [
+      "LowerSchemas.FiniteRootedSixBase",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "SignatureCompatibility",
+      "FiniteChecks"
+    ],
+    "RootedSubsumedForest0699Data": [
+      "LowerSchemas.FiniteRootedSubsumedForest",
+      "CertificateNumbers",
+      "HexNatLiteral",
+      "RootedSixBase04GrowthCacheData",
+      "RootedSixBase04FastWordsData",
+      "CounterGrowthReplay",
+      "RawNatGrowthCompleteness",
+      "FiniteChecks",
+      "SubsumedClassification"
+    ],
+    "SignatureCompatibility": [
+      "FastRawCacheCertificate"
+    ],
+    "SparseGrowthDAG": [
+      "GrowthDAG",
+      "Init.Data.Bool"
+    ],
+    "StreamingRawGrowth": [
+      "PackedRawNatGrowth",
+      "RawNatGrowthSoundness"
+    ],
+    "SubsumedClassification": [
+      "SubsumedStreaming",
+      "RawClosedGrowthClassification"
+    ],
+    "SubsumedGrowth": [
+      "RawNatGrowthCompleteness",
+      "CounterGrowthReplay"
+    ],
+    "SubsumedStreaming": [
+      "SubsumedGrowth"
+    ],
+    "SubsumptionSearch": [
+      "UnsupportedRidgePruning"
+    ],
+    "TenGraphEdges": [
+      "GraphCatalogueCore"
+    ],
+    "UnsupportedRidgePruning": [
+      "BatchedGrowthPruning",
+      "PrimitiveBitsetGrowth"
+    ],
+    "WitnessGrowthDAG": [
+      "GrowthPruning"
+    ],
+    "CompactDecisionProof": []
+  }
+}
