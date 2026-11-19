@@ -33,7 +33,22 @@
     "PaperVerification.Fermion.TypeA.colorFiltration_eq_basisTail",
     "PaperVerification.Fermion.WeightRees.unitFiberBasis_one",
     "PaperVerification.Fermion.WeightRees.unitFiberBasis_mul",
-    "PaperVerification.Fermion.TypeA.palomarColorNonzero_fibers"
+    "PaperVerification.Fermion.TypeA.palomarColorNonzero_fibers",
+    "PalomarFermion.coefficientIdentityInvPair",
+    "PalomarFermion.coefficientCommutativeIdentityInvPair",
+    "PalomarFermion.coefficientIdentitySurjective",
+    "PalomarFermion.coefficientCommutativeIdentitySurjective",
+    "PalomarFermion.finiteCoordinates",
+    "PalomarFermion.finiteOddCoordinates",
+    "PalomarFermion.coordinates_apply",
+    "PaperVerification.Fermion.polynomialSelfCommute",
+    "PaperVerification.Fermion.polynomialSelfTower",
+    "PaperVerification.Fermion.exteriorSelfCommute",
+    "PaperVerification.Fermion.exteriorSelfTower",
+    "PaperVerification.Fermion.Newton.rectangleForwardBounds",
+    "PaperVerification.Fermion.Newton.rectangleBackwardBounds",
+    "PaperVerification.Fermion.Newton.rectangleLeftInverse",
+    "PaperVerification.Fermion.Newton.rectangleRightInverse"
   ],
   "permitted_axioms": [
     "propext",
