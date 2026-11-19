@@ -990,6 +990,7 @@ theorem basisOrdinaryDegreePiece_map (b : Module.Basis I K M) (c : Module.Basis 
     (n : ℕ) (x : M) (hx : x ∈ basisOrdinaryDegreePiece b degree n) :
     f x ∈ basisOrdinaryDegreePiece c degree n := by
   intro j hj
+  change c.repr (f x) j = 0
   rw [basis_repr_linear_map]
   apply Finset.sum_eq_zero
   intro i hi
@@ -3923,6 +3924,7 @@ theorem generator_mem_piece (i : I) :
 
 theorem coefficient_mem_piece (j : J) : s.coefficientBasis j ∈ s.piece (s.degree j) := by
   intro k hk
+  change s.coefficientBasis.repr (s.coefficientBasis j) k = 0
   rw [Module.Basis.repr_self]
   have hne : j ≠ k := by
     intro h
@@ -3944,6 +3946,7 @@ def projection (n : ℕ) : M →ₗ[K] s.piece n :=
   LinearMap.codRestrict (s.piece n)
     (basisDegreeProjection s.coefficientBasis s.degree n) (by
       intro x j hj
+      change s.coefficientBasis.repr (basisDegreeProjection s.coefficientBasis s.degree n x) j = 0
       simp only [basisDegreeProjection_repr, if_neg hj])
 
 @[simp] theorem projection_coefficient (n : ℕ) (j : J) (hj : s.degree j = n) :
@@ -4508,6 +4511,7 @@ theorem basisDegreeProjection_eq_self_iff_mem
     rw [basisDegreeProjection_repr, if_neg hi] at h
     exact h.symm
   · intro hx
+    change ∀ i, degree i ≠ n → b.repr x i = 0 at hx
     apply b.repr.injective
     ext i
     rw [basisDegreeProjection_repr]
@@ -6944,6 +6948,8 @@ theorem booleanTop_predecessor_degree (m : ℕ) (x : BooleanBarycentricRing V K)
     rw [chainOrdinaryDegree_add_top]
     exact fun he => ha (Nat.add_right_cancel he)
   have hh := hx b hb
+  change booleanChainBasis.repr (booleanTop * x) b = 0 at hh
+  change booleanChainBasis.repr x a = 0
   rwa [booleanTop_mul_shift_coefficient] at hh
 
 theorem booleanTop_homogeneous_zero_below (n : ℕ) (hn : n < Fintype.card V)
@@ -6958,6 +6964,7 @@ theorem booleanTop_homogeneous_zero_below (n : ℕ) (hn : n < Fintype.card V)
     rw [chainOrdinaryDegree_add_top]
     omega
   have hh := hx b hb
+  change booleanChainBasis.repr (booleanTop * x) b = 0 at hh
   rw [booleanTop_mul_shift_coefficient] at hh
   exact hh
 
@@ -7082,15 +7089,17 @@ variable {K M N I J : Type*} [CommRing K]
 theorem ordinaryBasis_mem_piece (b : Module.Basis I K M) (w : I → ℕ) (i : I) :
     b i ∈ basisOrdinaryDegreePiece b w (w i) := by
   intro j hj
+  change b.repr (b i) j = 0
   by_cases h : i = j
   · subst j
     exact (hj rfl).elim
-  · simp only [Module.Basis.repr_self, Finsupp.single_apply, if_neg h]
+  · simp [Module.Basis.repr_self, Finsupp.single_apply, h]
 
 theorem ordinaryProjection_mem_piece (b : Module.Basis I K M) (w : I → ℕ)
     (n : ℕ) (x : M) :
     basisDegreeProjection b w n x ∈ basisOrdinaryDegreePiece b w n := by
   intro i hi
+  change b.repr (basisDegreeProjection b w n x) i = 0
   rw [basisDegreeProjection_repr, if_neg hi]
 
 theorem ordinaryProjection_natural (b : Module.Basis I K M) (c : Module.Basis J K N)

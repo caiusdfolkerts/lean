@@ -47,11 +47,12 @@ automation:
       not been reconstructed from the snapshot.
 review:
   status: unchecked
-  notes: The explicit basis projection passed pinned canonical elaboration in
-    run44478456497. It supplies the existing genuine inverse-pair laws directly
-    to the underlying linear-map projection; the original carrier predicate
-    and all selected conclusions are unchanged. Full comparison and independent
-    kernel verification of this snapshot remain pending.
+  notes: The original basis-degree carrier uses explicit coefficient-map proof
+    arguments. Proof-local change commands restore the original coefficient
+    expressions for rewriting; the canonical membership and hypothesis controls
+    passed in run44482293890. No statement, selected claim, or data construction
+    changed in this proof repair. Full source, Solution, Comparator and independent
+    kernel verification of this exact snapshot remain pending.
 scope:
   known_gaps:
   - The canonical chain-monomial associated-grade identification of Theorem 1.1 has
