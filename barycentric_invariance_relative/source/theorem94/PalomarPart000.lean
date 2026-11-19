@@ -111,7 +111,11 @@ theorem coefficientIdentityInvPair {K : Type uScalarK} [CommRing K] :
 /-- The measured polynomial self-action tower used by the literal comparison families. -/
 theorem polynomialSelfTower {K : Type uScalarK} {V : Type uScalarV} [CommRing K] :
     IsScalarTower K (MvPolynomial V K) (MvPolynomial V K) := by infer_instance
-attribute [instance 2000] coefficientIdentityCompTriple coefficientIdentityInvPair polynomialSelfTower
+/-- The coefficient action on the actual polynomial quotient factors through its polynomial ring. -/
+theorem polynomialQuotientTower {K : Type uScalarK} {V : Type uScalarV} [CommRing K]
+    (I : Ideal (MvPolynomial V K)) : IsScalarTower K (MvPolynomial V K) ((MvPolynomial V K) ⧸ I) := by
+  infer_instance
+attribute [instance 2000] coefficientIdentityCompTriple coefficientIdentityInvPair polynomialSelfTower polynomialQuotientTower
 end PalomarBarycentricRelative
 end
 

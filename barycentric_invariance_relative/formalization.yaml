@@ -44,16 +44,15 @@ automation:
       not been reconstructed from the snapshot.
 review:
   status: unchecked
-  notes: Original691-line Challenge and exact39e0625 source/Solution built. Raw compiled-type
-    diagnostics measured common ScalarFamilies proof-class aliases and connecting-cocycle
-    proof sharing. Current693-line revision moves only the original explicit cocycle
-    calculations to selected named support facts and has not been elaborated. The
-    exact implicit classes await the canonical smoke. Comparator/replay remain pending.
+  notes: The current independent Challenge, including the genuine polynomial
+    quotient scalar-tower support, passed canonical elaboration in run44470860320.
+    The original mathematical selection is unchanged. Full source, Solution,
+    Comparator and independent kernel verification of this exact repair are pending.
 scope:
   known_gaps:
   - Other theorem groups from the same paper have separate configurations because
     independently concatenated proof bundles redeclare their common core.
-  - Current Challenge and Solution are not yet elaborated or compared.
+  - Current Challenge elaboration passed; full comparison and kernel replay of this snapshot remain pending.
   notes: The submitted project contains the substantive historical proof development
     copied from the pinned source snapshot; this is not a thin wrapper. Historical
     upstream dependencies and license notices are retained. See map.json for exact
