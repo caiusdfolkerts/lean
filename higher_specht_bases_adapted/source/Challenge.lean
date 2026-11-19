@@ -469,7 +469,8 @@ structure FixedGriffinIndex (μ lam : YoungDiagram) (hk : lam.card ≤ μ.card) 
   multiplier_length : multiplier.colLen 0 ≤ μ.card - lam.card
   multiplier_width : multiplier.rowLen 0 ≤ s - descentNumber left - 1
 
-variable {R : Type*} [CommRing R] {μ lam : YoungDiagram} {hk : lam.card ≤ μ.card} {s : ℕ}
+variable {μ lam : YoungDiagram} {hk : lam.card ≤ μ.card} {s : ℕ}
+variable {R : Type*} [CommRing R]
 
 def fixedGriffinPolynomial (T : StandardYoungTableau μ) (i : FixedGriffinIndex μ lam hk s) :
     PolynomialRing μ.card R :=
