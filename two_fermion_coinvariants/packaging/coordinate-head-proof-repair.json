@@ -1,0 +1,44 @@
+{
+  "source_commit": "5ad6294de4d983f089d8f330d31fc34f97cfd2fc",
+  "failed_run": 44491548442,
+  "complete_error_count": 1,
+  "patches": [
+    {
+      "path": "source/two_fermion/PalomarPart004.lean",
+      "before_sha256": "5ee0d8927177730b07e05d3feb18ce879bfdd70a41f15a23a40c73353a08ab79",
+      "after_sha256": "9e66a5c0708cff1d28e4e9bbcc0c59e36e95d8c967ccddc5e43a74165875b056",
+      "proof_only": true,
+      "reason": "Make exact pointwise coordinate equality explicit before original repr rewrites/iff simplification."
+    },
+    {
+      "path": "source/two_fermion/PalomarPart009.lean",
+      "before_sha256": "70f7437f44ea6ddcbe537fed66f4cbf09781451b3d5e89042d0ed315b8f1ce62",
+      "after_sha256": "f6f1e73e8010942479d68abfd708a50fe4cdc80e7c34f807ca7e7bca80fe79b5",
+      "proof_only": true,
+      "reason": "Make exact pointwise coordinate equality explicit before original repr rewrites/iff simplification."
+    },
+    {
+      "path": "source/two_fermion/PalomarPart010.lean",
+      "before_sha256": "183bcb05b0105763a571af6a7df313a8368034aef3e3796a2f29ba0a0ea1913d",
+      "after_sha256": "227c30638cf3c99ce9440faea345540def5bc82cd420a796aa04a979ac9bcad2",
+      "proof_only": true,
+      "reason": "Make exact pointwise coordinate equality explicit before original repr rewrites/iff simplification."
+    }
+  ],
+  "original_65_target_types_unchanged": true,
+  "canonical_control_lines": 942,
+  "canonical_control_sha256": "de45f32e9ccc8259f626d77032ea4897f10da6741795c30524ebbe7638d4f74e",
+  "coverage_audit": "All explicit BasisFiltered Bound/Homogeneous uses scanned; downstream four iff proofs now normalize coordinates_apply before their original rational-weight identity. Other uses pass predicates to existing theorems by definitional equality and retain their bodies.",
+  "installed_at": "2026-11-19T09:13:22.715856+00:00",
+  "canonical_control_run": 44493560478,
+  "canonical_control_receipt_sha256": "a9377fe358de3924dd8c21a05002d0ec1d8ef2605d1750eb5539fc5b0af9aefc",
+  "canonical_control_exit_code": 0,
+  "all_declaration_types_and_data_bodies_preserved": true,
+  "changed_proofs": [
+    "PaperVerification.Fermion.hasTop_tmul_word",
+    "PaperVerification.Fermion.strict_bound_iff_rational",
+    "PaperVerification.Fermion.strict_homogeneous_iff_rational",
+    "PaperVerification.Fermion.paired_bound_iff_rational",
+    "PaperVerification.Fermion.paired_homogeneous_iff_rational"
+  ]
+}

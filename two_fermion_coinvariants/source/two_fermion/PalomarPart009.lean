@@ -7079,14 +7079,14 @@ theorem strict_bound_iff_rational (d : StrictData (K := R) (n := n))
     BasisFiltered.Bound (superMonomialBasis (K := R)) (strictSuperWeight d) k x ↔
       ∀ z,(superMonomialBasis (K := R)).repr x z≠0 →
         monomialWeight d.r z.1≤(k : ℚ)/(∏ i,d.r i : ℕ) := by
-  simp only [BasisFiltered.Bound,strictSuperWeight_le_iff]
+  simp only [BasisFiltered.Bound,PalomarFermion.coordinates_apply,strictSuperWeight_le_iff]
 
 theorem strict_homogeneous_iff_rational (d : StrictData (K := R) (n := n))
     (k : ℕ) (x : SuperRing R n) :
     BasisFiltered.Homogeneous (superMonomialBasis (K := R)) (strictSuperWeight d) k x ↔
       ∀ z,(superMonomialBasis (K := R)).repr x z≠0 →
         monomialWeight d.r z.1=(k : ℚ)/(∏ i,d.r i : ℕ) := by
-  simp only [BasisFiltered.Homogeneous,strictSuperWeight_eq_iff]
+  simp only [BasisFiltered.Homogeneous,PalomarFermion.coordinates_apply,strictSuperWeight_eq_iff]
 
 end PaperVerification.Fermion
 end

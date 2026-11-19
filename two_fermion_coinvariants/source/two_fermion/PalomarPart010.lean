@@ -2108,14 +2108,14 @@ theorem paired_bound_iff_rational (d : PairedData (K := R) (n := n))
     BasisFiltered.Bound (superMonomialBasis (K := R)) (pairedSuperWeight d) k x ↔
       ∀ z,(superMonomialBasis (K := R)).repr x z ≠ 0 →
         pairedRationalSuperWeight d z ≤ (k : ℚ)/(∏ i,d.r i : ℕ) := by
-  simp only [BasisFiltered.Bound,pairedSuperWeight_le_iff]
+  simp only [BasisFiltered.Bound,PalomarFermion.coordinates_apply,pairedSuperWeight_le_iff]
 
 theorem paired_homogeneous_iff_rational (d : PairedData (K := R) (n := n))
     (k : ℕ) (x : SuperRing R n) :
     BasisFiltered.Homogeneous (superMonomialBasis (K := R)) (pairedSuperWeight d) k x ↔
       ∀ z,(superMonomialBasis (K := R)).repr x z ≠ 0 →
         pairedRationalSuperWeight d z=(k : ℚ)/(∏ i,d.r i : ℕ) := by
-  simp only [BasisFiltered.Homogeneous,pairedSuperWeight_eq_iff]
+  simp only [BasisFiltered.Homogeneous,PalomarFermion.coordinates_apply,pairedSuperWeight_eq_iff]
 
 end PaperVerification.Fermion
 end

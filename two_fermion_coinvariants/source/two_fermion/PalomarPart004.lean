@@ -7021,6 +7021,8 @@ theorem hasTop_tmul_word (w : Fin n → ℕ) (ν : OddIndex n → ℕ)
   classical
   constructor
   · intro z hz
+    change (superMonomialBasis (K := K)).repr
+      (p ⊗ₜ[K] (Pi.basisFun K (OddIndex n)).ExteriorAlgebra T) z ≠ 0 at hz
     rw [superMonomialBasis_repr_tmul] at hz
     split_ifs at hz with hT
     · unfold superMonomialWeight
