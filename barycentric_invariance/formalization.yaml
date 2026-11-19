@@ -35,10 +35,11 @@ automation:
   methods:
   - method: agent
     tool_setup: OpenAI Codex
-    notes: Packaging and statement extraction are agent-assisted. The965-line measured
-      main repair passed canonical-only Challenge elaboration in run44383410137. Actual
-      source proof-field calculations and original data predicates are preserved.
-      Full source/Solution/Comparator replay of the measured repair remains unverified.
+    notes: Packaging and statement extraction are agent-assisted. The 983-line
+      independent Challenge passed canonical elaboration in run44468741668.
+      Named original closure proofs and explicit face-ideal two-sided proofs
+      preserve the original predicates. Full verification of this exact repair
+      remains pending.
   - method: other
     tool_setup: Historical AI assistance reported in the included paper
     notes: The paper credits GPT-6 Astra, GPT-5.6 Sol and Kimi K3 for assistance developing
@@ -46,11 +47,9 @@ automation:
       not been reconstructed from the snapshot.
 review:
   status: unchecked
-  notes: Original915 Challenge and exactf314 source/Solution passed their respective
-    builds; current957 interface includes measured Ring dependency/order and canonical
-    proposition repairs plus semantic explicit-field supports, and has not yet been
-    elaborated. Comparator/replay are unverified; required uncovered clauses remain
-    explicit.
+  notes: The current independent Challenge passed canonical elaboration. Full
+    source, Solution, Comparator and independent kernel verification of this
+    exact snapshot remain pending; uncovered principal clauses remain explicit.
 scope:
   known_gaps:
   - The canonical chain-monomial associated-grade identification of Theorem 1.1 has
@@ -62,7 +61,7 @@ scope:
   - Three oversized proof bundles were split at original source-module boundaries
     with anonymous scopes/options restored and all shards added to explicit Lake roots;
     fresh full elaboration remains required.
-  - Current957-line revised independent Challenge, rebuilt Solution, full Comparator
+  - Current983-line revised independent Challenge, rebuilt Solution, full Comparator
     and independent replay have not passed. Earlier passes apply only to their exact
     snapshots.
   notes: The submitted project contains the substantive historical proof development

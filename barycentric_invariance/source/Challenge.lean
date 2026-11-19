@@ -192,6 +192,11 @@ def faceRelations (hs : IsSimplicialPoset P) : Set (FacePolynomial (P := P) K) :
 /-- Literal retained-source def; original position theorem13.lean:717. -/
 def faceIdeal (hs : IsSimplicialPoset P) : Ideal (FacePolynomial (P := P) K) :=
   Ideal.span (faceRelations K hs)
+
+/-- Two-sidedness of the actual face ideal, specialized to its literal coefficient algebra. -/
+theorem palomarFaceIdealTwoSided (hs : IsSimplicialPoset P) :
+    (faceIdeal K hs).IsTwoSided := by infer_instance
+
 /-- The actual face ring, with the straightening relations and the empty face identified with one. -/
 abbrev FaceRing (hs : IsSimplicialPoset P) :=
   FacePolynomial (P := P) K ⧸ faceIdeal K hs
@@ -596,6 +601,8 @@ theorem map_faceRelation {f : FacePolynomial (P := P) K} (hf : f ∈ faceRelatio
     MvPolynomial.map h f ∈ faceRelations L hs := by sorry
 /-- Literal retained-source def; original position theorem13.lean:9184. -/
 def originalFaceCoefficientChange : FaceRing K hs →+* FaceRing L hs :=
+  letI : (faceIdeal K hs).IsTwoSided := palomarFaceIdealTwoSided K hs
+  letI : (faceIdeal L hs).IsTwoSided := palomarFaceIdealTwoSided L hs
   Ideal.quotientMap (faceIdeal L hs) (MvPolynomial.map h) (by
     apply Ideal.span_le.mpr
     intro f hf
@@ -614,6 +621,17 @@ open Classical Finset MvPolynomial
 variable {I V K M N : Type*} [CommRing K]
   [AddCommGroup M] [Module K M] [AddCommGroup N] [Module K N]
 
+/-- Zero satisfies the original degree-support predicate. -/
+theorem palomarBasisOrdinaryDegreePiece_zero (b : Module.Basis I K M)
+    (degree : I → ℕ) (n : ℕ) : ∀ i, degree i ≠ n → b.repr (0 : M) i = 0 := by
+  intro i hi; simp
+/-- Addition preserves the original degree-support predicate. -/
+theorem palomarBasisOrdinaryDegreePiece_add (b : Module.Basis I K M)
+    (degree : I → ℕ) (n : ℕ) :
+    ∀ (x y : M), (∀ i, degree i ≠ n → b.repr x i = 0) →
+      (∀ i, degree i ≠ n → b.repr y i = 0) → ∀ i, degree i ≠ n → b.repr (x + y) i = 0 := by
+  intro x y hx hy i hi; simp only [map_add, Finsupp.add_apply, hx i hi, hy i hi, add_zero]
+
 /-- The original scalar-closure proof for the unchanged coefficient predicate. -/
 theorem palomarBasisOrdinaryDegreePiece_smul (b : Module.Basis I K M)
     (degree : I → ℕ) (n : ℕ) :
@@ -623,8 +641,8 @@ theorem palomarBasisOrdinaryDegreePiece_smul (b : Module.Basis I K M)
 /-- Literal retained-source def; original position theorem13.lean:9287. -/
 def basisOrdinaryDegreePiece (b : Module.Basis I K M) (degree : I → ℕ) (n : ℕ) : Submodule K M where
   carrier := {x | ∀ i, degree i ≠ n → b.repr x i = 0}
-  zero_mem' := by intro i hi; simp
-  add_mem' := by intro x y hx hy i hi; simp only [map_add, Finsupp.add_apply, hx i hi, hy i hi, add_zero]
+  zero_mem' := palomarBasisOrdinaryDegreePiece_zero b degree n
+  add_mem' := fun {x y} => palomarBasisOrdinaryDegreePiece_add b degree n x y
   smul_mem' := palomarBasisOrdinaryDegreePiece_smul b degree n
 end
 end FourPapers.Universal

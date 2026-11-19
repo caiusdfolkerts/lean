@@ -836,6 +836,8 @@ theorem map_faceRelation {f : FacePolynomial (P := P) K} (hf : f ∈ faceRelatio
     simp only [map_mul, map_faceSymbol]
 
 def originalFaceCoefficientChange : FaceRing K hs →+* FaceRing L hs :=
+  letI : (faceIdeal K hs).IsTwoSided := palomarFaceIdealTwoSided K hs
+  letI : (faceIdeal L hs).IsTwoSided := palomarFaceIdealTwoSided L hs
   Ideal.quotientMap (faceIdeal L hs) (MvPolynomial.map h) (by
     apply Ideal.span_le.mpr
     intro f hf

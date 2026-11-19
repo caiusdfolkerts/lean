@@ -39,7 +39,10 @@
     "FourPapers.Universal.palomarBarycentricDiagram_res_refl",
     "FourPapers.Universal.palomarBarycentricDiagram_res_comp",
     "PalomarBarycentric.coefficientIdentityInvPair",
-    "PalomarBarycentric.coefficientIdealTwoSided"
+    "PalomarBarycentric.coefficientIdealTwoSided",
+    "FourPapers.Universal.palomarFaceIdealTwoSided",
+    "FourPapers.Universal.palomarBasisOrdinaryDegreePiece_zero",
+    "FourPapers.Universal.palomarBasisOrdinaryDegreePiece_add"
   ],
   "permitted_axioms": [
     "propext",
