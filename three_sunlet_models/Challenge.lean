@@ -1,5 +1,151 @@
 module
-public import Mathlib
+public import Lean.Elab.BuiltinEvalCommand
+public import Lean.Util.CollectAxioms
+public import Lean.Util.FoldConsts
+public import Mathlib.Data.Finset.Max
+public import Mathlib.Algebra.BigOperators.Field
+public import Mathlib.GroupTheory.Perm.Basic
+public import Mathlib.Tactic.Linarith
+public import Mathlib.Tactic.Ring
+public import Mathlib.Tactic.NormNum
+public import Mathlib.Logic.Relation
+public import Mathlib.Data.Fintype.Card
+public import Mathlib.Data.Finset.Card
+public import Lean.Elab.Tactic.Omega
+public import Mathlib.GroupTheory.FreeAbelianGroup
+public import Mathlib.GroupTheory.QuotientGroup.Basic
+public import Mathlib.Algebra.Group.Subgroup.Lattice
+public import Mathlib.Data.Fintype.Prod
+public import Mathlib.Data.Nat.Prime.Defs
+public import Mathlib.GroupTheory.FiniteAbelian.Duality
+public import Mathlib.RingTheory.RootsOfUnity.AlgebraicallyClosed
+public import Mathlib.Tactic.Group
+public import Mathlib.Data.Fintype.BigOperators
+public import Mathlib.Logic.Equiv.Sum
+public import Mathlib.Tactic.Push
+public import Mathlib.Tactic.Choose
+public import Mathlib.Data.Fintype.Quotient
+public import Mathlib.LinearAlgebra.Dual.Lemmas
+public import Mathlib.Tactic.FieldSimp
+public import Mathlib.Algebra.Order.BigOperators.Group.Finset
+public import Mathlib.Algebra.Module.ZMod
+public import Mathlib.FieldTheory.Finiteness
+public import Mathlib.LinearAlgebra.Dimension.Free
+public import Mathlib.Algebra.Group.MinimalAxioms
+public import Mathlib.Tactic.Module
+public import Mathlib.Algebra.Algebra.Rat
+public import Mathlib.Tactic.LinearCombination
+public import Mathlib.RingTheory.Derivation.Basic
+public import Mathlib.LinearAlgebra.Matrix.ToLin
+public import Mathlib.LinearAlgebra.Matrix.Nondegenerate
+public import Mathlib.LinearAlgebra.Basis.VectorSpace
+public import Mathlib.RingTheory.Etale.Kaehler
+public import Mathlib.RingTheory.Etale.Field
+public import Mathlib.Algebra.MvPolynomial.Derivation
+public import Mathlib.RingTheory.Localization.FractionRing
+public import Mathlib.Algebra.BigOperators.Ring.Finset
+public import Mathlib.RingTheory.Localization.Away.Basic
+public import Mathlib.Data.Matrix.Mul
+public import Mathlib.LinearAlgebra.FiniteDimensional.Lemmas
+public import Mathlib.LinearAlgebra.Dimension.Constructions
+public import Mathlib.LinearAlgebra.Matrix.Notation
+public import Mathlib.Logic.Equiv.Fin.Basic
+public import Mathlib.Tactic.FinCases
+public import Mathlib.RingTheory.Unramified.Field
+public import Mathlib.FieldTheory.IntermediateField.Adjoin.Basic
+public import Mathlib.Algebra.MvPolynomial.Rename
+public import Mathlib.Algebra.BigOperators.Finprod
+public import Mathlib.LinearAlgebra.Basis.Basic
+public import Mathlib.LinearAlgebra.Prod
+public import Mathlib.LinearAlgebra.StdBasis
+public import Mathlib.Tactic.Abel
+public import Mathlib.LinearAlgebra.Pi
+public import Mathlib.Data.List.OfFn
+public import Mathlib.Data.Fintype.Pi
+public import Mathlib.Data.Fintype.Perm
+public import Mathlib.Data.ZMod.Basic
+public import Mathlib.Data.Fintype.EquivFin
+public import Mathlib.Algebra.Group.Subgroup.Defs
+public import Mathlib.LinearAlgebra.Dimension.Finrank
+public import Mathlib.LinearAlgebra.Dimension.FreeAndStrongRankCondition
+public import Mathlib.GroupTheory.Index
+public import Mathlib.Order.CompleteLattice.Basic
+public import Mathlib.Algebra.MvPolynomial.Eval
+public import Mathlib.Tactic.DeriveFintype
+public import Mathlib.Algebra.MvPolynomial.Funext
+public import Mathlib.RingTheory.Nullstellensatz
+public import Mathlib.RingTheory.Ideal.Quotient.Operations
+public import Mathlib.Data.Fin.VecNotation
+public import Mathlib.Algebra.GroupWithZero.Units.Basic
+public import Mathlib.Algebra.BigOperators.Group.Finset.Piecewise
+public import Mathlib.RingTheory.KrullDimension.Polynomial
+public import Mathlib.RingTheory.KrullDimension.Field
+public import Mathlib.RingTheory.NoetherNormalization
+public import Mathlib.RingTheory.Spectrum.Prime.Topology
+public import Mathlib.RingTheory.AlgebraicIndependent.TranscendenceBasis
+public import Mathlib.RingTheory.Algebraic.Integral
+public import Mathlib.Data.Finsupp.Basic
+public import Mathlib.Algebra.BigOperators.Finsupp.Basic
+public import Mathlib.RingTheory.MvPolynomial.MonomialOrder
+public import Mathlib.RingTheory.AlgebraicIndependent.Defs
+public import Mathlib.LinearAlgebra.LinearIndependent.Defs
+public import Mathlib.LinearAlgebra.Finsupp.LinearCombination
+public import Mathlib.Order.WithBot
+public import Mathlib.Data.Finset.Sort
+public import Mathlib.LinearAlgebra.Matrix.Rank
+public import Mathlib.LinearAlgebra.LinearIndependent.Lemmas
+public import Mathlib.Order.Prod.Lex.Basic
+public import Mathlib.RingTheory.KrullDimension.NonZeroDivisors
+public import Mathlib.Algebra.Group.Action.End
+public import Mathlib.Data.ZMod.Aut
+public import Mathlib.Algebra.Field.ZMod
+public import Mathlib.FieldTheory.IsAlgClosed.AlgebraicClosure
+public import Mathlib.FieldTheory.Perfect
+public import Mathlib.FieldTheory.IntermediateField.Adjoin.Algebra
+public import Mathlib.Algebra.Algebra.Equiv
+public import Mathlib.GroupTheory.SemidirectProduct
+public import Mathlib.Analysis.Complex.Polynomial.Basic
+public import Mathlib.Algebra.CharZero.Infinite
+public import Mathlib.FieldTheory.AlgebraicClosure
+public import Mathlib.FieldTheory.Galois.Basic
+public import Mathlib.FieldTheory.Galois.Infinite
+public import Mathlib.FieldTheory.IsAlgClosed.Basic
+public import Mathlib.FieldTheory.Minpoly.Field
+public import Mathlib.FieldTheory.PrimitiveElement
+public import Mathlib.RingTheory.AdjoinRoot
+public import Mathlib.Algebra.CharP.Algebra
+public import Mathlib.RingTheory.AlgebraicIndependent.Adjoin
+public import Mathlib.RingTheory.AlgebraicIndependent.Transcendental
+public import Mathlib.Algebra.MvPolynomial.CommRing
+public import Mathlib.Algebra.MvPolynomial.Equiv
+public import Mathlib.Algebra.GroupWithZero.Units.Lemmas
+public import Mathlib.Algebra.Category.Grp.Injective
+public import Mathlib.Algebra.MonoidAlgebra.Basic
+public import Mathlib.LinearAlgebra.Finsupp.Defs
+public import Mathlib.LinearAlgebra.FreeModule.PID
+public import Mathlib.Algebra.BigOperators.Fin
+public import Mathlib.Logic.Equiv.Option
+public import Mathlib.Algebra.Group.Equiv.Basic
+public import Mathlib.Algebra.MvPolynomial.PDeriv
+public import Mathlib.Data.Fintype.Option
+public import Mathlib.Data.Fintype.Sum
+public import Mathlib.LinearAlgebra.Finsupp.Pi
+public import Mathlib.LinearAlgebra.Span.Basic
+public import Mathlib.RingTheory.Kaehler.Polynomial
+public import Mathlib.RingTheory.Smooth.Field
+public import Mathlib.RingTheory.TensorProduct.Free
+public import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+public import Mathlib.Combinatorics.SimpleGraph.Acyclic
+public import Mathlib.Combinatorics.SimpleGraph.Connectivity.Connected
+public import Mathlib.Combinatorics.SimpleGraph.Connectivity.Subgraph
+public import Mathlib.Combinatorics.SimpleGraph.Dart
+public import Mathlib.Combinatorics.SimpleGraph.DegreeSum
+public import Mathlib.Combinatorics.SimpleGraph.Finite
+public import Mathlib.Data.Fintype.Powerset
+public import Mathlib.RingTheory.Ideal.Maps
+public import Mathlib.RingTheory.Algebraic.Basic
+public import Mathlib.RingTheory.Localization.BaseChange
+public import Mathlib.RingTheory.TotallySplit
 @[expose] public section
 /-!
 # Dimension and identifiability of three-sunlet models
@@ -374,6 +520,8 @@ def orbitSetoid (B : AddSubgroup (AddAut G)) : Setoid G where
       rw [hφ,hψ]
 /-- Exact source definition of Class. -/
 abbrev Class (B : AddSubgroup (AddAut G)) := Quotient (Sunlet.OrbitClasses.orbitSetoid B)
+instance instFintypeClass [Fintype G] (B : AddSubgroup (AddAut G)) : Fintype (Class B) :=
+  Fintype.ofFinite _
 /-- Exact source definition of classOf. -/
 def classOf (B : AddSubgroup (AddAut G)) (a : G) : Class B := Quotient.mk (Sunlet.OrbitClasses.orbitSetoid B) a
 end end Sunlet.OrbitClasses
@@ -434,6 +582,8 @@ namespace Sunlet.NormalizedLatinSystem section set_option Elab.async false open 
 abbrev OffDiagonalField := Sunlet.ToricPairAlgebra.FunctionField (k := k) (ι := L.NonidentityColor) o
 /-- Exact source definition of NormalizedSourceField. -/
 abbrev NormalizedSourceField := RationalBaseChange.ExtendedField (E := L.OffDiagonalField (k := k) o) (J := Ω)
+instance normalizedSourceField_charZero : CharZero (L.NormalizedSourceField (k := k) o) :=
+  charZero_of_injective_algebraMap (algebraMap k (L.NormalizedSourceField (k := k) o)).injective
 /-- Exact source definition of normalizedSourceEmbedding. -/
 def normalizedSourceEmbedding : L.OffDiagonalField (k := k) o →ₐ[k] L.NormalizedSourceField (k := k) o := IsScalarTower.toAlgHom k _ _
 /-- Exact source definition of genericNormalizedParameters. -/
@@ -605,6 +755,10 @@ end end Sunlet.NetworkGraphDecomposition
 namespace Sunlet.NetworkGraphDecomposition section set_option backward.isDefEq.respectTransparency.types false open SimpleGraph variable {V : Type*} (G : SimpleGraph V) variable [DecidableEq V]
 /-- A cycle is an actual simple closed walk, identified by its edge set. -/
 abbrev Cycle := {S : Finset (Sym2 V) // ∃ v : V, ∃ p : G.Walk v v, p.IsCycle ∧ p.edges.toFinset = S}
+instance cycleFinite [Finite V] : Finite (Cycle G) := by
+  classical
+  letI : Fintype V := Fintype.ofFinite V
+  infer_instance
 /-- Exact source definition of cycleVertices. -/
 def cycleVertices (c : Cycle G) : Finset V := c.val.biUnion Sym2.toFinset
 /-- Exact source definition of cycleCount. -/

@@ -41,11 +41,12 @@ automation:
 review:
   status: unchecked
   notes: >-
-    The independent Challenge passed pinned remote elaboration at diagnostic
-    commit 61cecd364f2d5d41817bc7e362421de6015daf51, run 44351576861. This is a
-    statement-interface check with intentional placeholders, not a proof build
-    or Comparator result. Full Solution compilation, strict dependency comparison
-    and independent kernel verification remain pending.
+    The 896-line independent Challenge with the canonical import closure and
+    original missing source instances passed pinned remote elaboration at
+    commit 3e0f1552a9f039d107ab020c8aad1ab3626a6f7f, run 44470592928.
+    This is a statement-interface check, not a proof or comparison pass.
+    Full verification of this exact repair remains pending. All selected
+    main results and corollaries, hypotheses, and literal maps are retained.
 fidelity:
   notes: >-
     The dimension statements retain every characteristic, literal affine image
