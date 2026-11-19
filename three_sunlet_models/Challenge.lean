@@ -322,17 +322,21 @@ theorem paper_theorem_1_1 [IsAlgClosed K] (L : NormalizedLatinSystem ι Ω) (hm 
 end end Sunlet
 namespace Sunlet.GroupCoordinates section variable {K G : Type*} [Field K] [IsAlgClosed K] [AddCommGroup G] [Fintype G]
 /-- Group translations form the normalized Latin system in the paper. -/
+theorem palomarTranslationNormalized : addTranslationPerm (0 : G) = Equiv.refl G := by
+  ext b
+  simp
+theorem palomarTranslationColumnBijective (b : G) : Function.Bijective (fun a : G => addTranslationPerm a b) := by
+  constructor
+  · intro a c h
+    exact add_right_cancel h
+  · intro y
+    refine ⟨y - b, ?_⟩
+    simp
 def translationLatinSystem : NormalizedLatinSystem G G where
   perm := addTranslationPerm
   identity := 0
-  normalized := by ext b; simp
-  column_bijective b := by
-    constructor
-    · intro a c h
-      exact add_right_cancel h
-    · intro y
-      refine ⟨y - b, ?_⟩
-      simp
+  normalized := palomarTranslationNormalized
+  column_bijective := palomarTranslationColumnBijective
 /-- The original six-family, constrained-triple-coordinate statement of Theorem 1.1. -/
 theorem paper_theorem_1_1_original_coordinates (hm : 5 ≤ Fintype.card G) : ringKrullDim (MvPolynomial (Sunlet.GroupCoordinates.FlowIndex G) K ⧸ MvPolynomial.vanishingIdeal K (Sunlet.GroupCoordinates.tripleImageClosure (K := K) (G := G))) = (5 * Fintype.card G - 4 : ℕ) := by sorry
 end end Sunlet.GroupCoordinates

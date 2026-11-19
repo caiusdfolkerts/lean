@@ -130,17 +130,21 @@ namespace Sunlet.GroupCoordinates
 variable {K G : Type*} [Field K] [IsAlgClosed K] [AddCommGroup G] [Fintype G]
 
 /-- Group translations form the normalized Latin system in the paper. -/
+theorem palomarTranslationNormalized : addTranslationPerm (0 : G) = Equiv.refl G := by
+  ext b
+  simp
+theorem palomarTranslationColumnBijective (b : G) : Function.Bijective (fun a : G => addTranslationPerm a b) := by
+  constructor
+  · intro a c h
+    exact add_right_cancel h
+  · intro y
+    refine ⟨y - b, ?_⟩
+    simp
 def translationLatinSystem : NormalizedLatinSystem G G where
   perm := addTranslationPerm
   identity := 0
-  normalized := by ext b; simp
-  column_bijective b := by
-    constructor
-    · intro a c h
-      exact add_right_cancel h
-    · intro y
-      refine ⟨y - b, ?_⟩
-      simp
+  normalized := palomarTranslationNormalized
+  column_bijective := palomarTranslationColumnBijective
 
 /-- The group case in the five-family coordinates, over every algebraically closed field. -/
 theorem paper_theorem_1_1_group (hm : 5 ≤ Fintype.card G) :

@@ -31,7 +31,9 @@
     "Sunlet.palomarTranslationLeft",
     "Sunlet.palomarTranslationRight",
     "Sunlet.ToricPairAlgebra.palomarPolynomialIsDomain",
-    "Sunlet.CyclicSelectedField.palomarNormalizedEquation"
+    "Sunlet.CyclicSelectedField.palomarNormalizedEquation",
+    "Sunlet.GroupCoordinates.palomarTranslationNormalized",
+    "Sunlet.GroupCoordinates.palomarTranslationColumnBijective"
   ],
   "definition_names": [
     "Sunlet.ComplexPaper.normalizedGaloisEquiv"
