@@ -335,7 +335,7 @@ variable (k : Type*) [Semiring k] [Algebra ℚ k]
 
 The `ℚ`-algebra hypothesis comes from `youngSymmetrizer` being defined over `ℚ` here, not from
 `c_t`, whose coefficients are integral. -/
-noncomputable def youngSymmetrizerOver (t : YoungTableau μ) :
+@[expose] noncomputable def youngSymmetrizerOver (t : YoungTableau μ) :
     MonoidAlgebra k (Equiv.Perm (Fin μ.card)) :=
   MonoidAlgebra.mapAlgHom _ (Algebra.ofId ℚ k) (youngSymmetrizer t)
 
@@ -517,7 +517,7 @@ symmetrizer `c_t = a_t b_t` of the row-superstandard tableau `t` of the diagram 
 to `k` and with the labels of the diagram identified with `Fin d` along
 `YoungDiagram.card_ofPartition`. This is the identification along which `TauCeti.spechtModule μ`
 is a representation of `S_d`. -/
-noncomputable def youngSymmetrizer : MonoidAlgebra k (Equiv.Perm (Fin d)) :=
+@[expose] noncomputable def youngSymmetrizer : MonoidAlgebra k (Equiv.Perm (Fin d)) :=
   MonoidAlgebra.domCongr k k (finCongr (YoungDiagram.card_ofPartition μ)).permCongrHom
     (YoungTableau.youngSymmetrizerOver k
       (StandardYoungTableau.rowSuperstandard (YoungDiagram.ofPartition μ)).toTableau)
