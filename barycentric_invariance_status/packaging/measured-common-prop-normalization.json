@@ -1,0 +1,31 @@
+{
+  "status": "measured_common_prop_normalization_prepared_not_elaborated",
+  "canonical_probe_run": "44364682276",
+  "measured_heads": {
+    "CoherentEquiv.trans._proof_3": "RingHomInvPair (RingHom.id K) (RingHom.id K), complete2516-character actual type",
+    "faceRingGenerator._proof_1": "Ideal.IsTwoSided of actual faceIdeal; full8394-character AST explicitly truncated at8000; no full equality claim"
+  },
+  "repair": "Use named canonical identity inverse-pair and commutative-ideal two-sided propositions as higher-priority proof instances in both environments. Their exact theorem types are selected, Source proves them by canonical inference. The generalized two-sided theorem applies to the same actual face ideal; no quotient or action is changed.",
+  "ring_dependency_fix": "Move the restored original Ring-context block after its actual allowed definition; the initial reordering had preceded this dependency and caused R14 invalidField at670 plus colorRename cascades.",
+  "new_support_theorems": [
+    "PalomarBarycentric.coefficientIdentityInvPair",
+    "PalomarBarycentric.coefficientIdealTwoSided"
+  ],
+  "changes": [
+    {
+      "path": "source/Challenge.lean",
+      "before_sha256": "38f4042720b1144787e6543155f17a5e7c72923d78d30f6cbd642829c251beea",
+      "after_sha256": "1d1749cc805b043eb86a0531c7fe908c6b93e2c8c53503a5cddb28474b1a9a81"
+    },
+    {
+      "path": "source/theorem13/PalomarPart000.lean",
+      "before_sha256": "152c2421bcd7621e9d3a59131486afc81da5c24b024cfed415c1cc45499a7370",
+      "after_sha256": "6f5b3cbaa60344287a24936e4a4d444bc709a74cad82f28dc4a82ad0864f292e"
+    }
+  ],
+  "challenge_lines": 957,
+  "challenge_bytes": 51167,
+  "challenge_sha256": "1d1749cc805b043eb86a0531c7fe908c6b93e2c8c53503a5cddb28474b1a9a81",
+  "remaining": "Current explicit field support normalizations plus these two measured canonical propositions await actual remote elaboration and full comparison.",
+  "no_local_compilation": true
+}

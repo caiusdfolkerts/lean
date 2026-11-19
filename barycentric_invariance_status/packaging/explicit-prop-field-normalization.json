@@ -1,0 +1,27 @@
+{
+  "status": "partial_measured_normalization_applied_not_frozen",
+  "raw_evidence_run": "44351424654",
+  "new_support_theorems": [
+    "FourPapers.Universal.BooleanFace.palomarColorBound",
+    "FourPapers.Universal.palomarBooleanFaceInclusion_nonzero",
+    "FourPapers.Universal.palomarBooleanFaceInclusionValue_injective"
+  ],
+  "changes": [
+    {
+      "path": "source/Challenge.lean",
+      "before_sha256": "ef6d15d2ef490e52df90b9d63796b715bfbe2d9b4f1af1c418b556dd57d7c5de",
+      "after_sha256": "e0a7d12772e9d9fe71bd1c75bef1d2f9a209534675fc9c6d712ac3b2620ed825",
+      "lines": 940
+    },
+    {
+      "path": "source/theorem13/PalomarPart000.lean",
+      "before_sha256": "a6ed0b9cdcd5148833b01135bfec363bfeb84306f3e094cc7374ed20a3c0da77",
+      "after_sha256": "a5d5c01e1f16ccc682269a09d8f8b48bdde8641dda16ba1352a892733a2b4aef",
+      "lines": 8490
+    }
+  ],
+  "challenge_sha256": "867010c3602279995a1538d49a3ac992c98f0fb62d430c2c9958f0f1a4fc25df",
+  "challenge_lines": 927,
+  "semantics": "Color remains cardinality minus one. Face inclusion remains the same chosen subface. Existing cardinality/nonzero/injectivity proof bodies are moved into named semantic support theorems; Source proves them, Challenge compares their exact types. No rank/support surrogate, additional hypothesis or data definition hole.",
+  "remaining": "Common implicit generated proof-class obligations and remaining measured diagram fields are still under normalization; not ready for retry."
+}

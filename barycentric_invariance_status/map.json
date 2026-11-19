@@ -1,0 +1,555 @@
+{
+  "project": "barycentric_invariance",
+  "baseline_repository": "caiusdfolkerts/research",
+  "baseline_commit": "e0696fddcd3d10b5d6461e62e9b2f02c4195be37",
+  "paper_sha256": "44902437462f2861ab65c112f77ec1f19e594753d3c9b277d9adcb63c6e523e4",
+  "one_entry_per_paper": true,
+  "status": "measured_main_repair_challenge_passed_full_source_comparator_unverified",
+  "source_selection": [
+    "paper.pdf",
+    "README.md",
+    "source/**/*.lean"
+  ],
+  "coverage": [
+    {
+      "paper_result": "Theorem 1.1",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        2,
+        6,
+        16,
+        32
+      ],
+      "declarations": [
+        {
+          "name": "FourPapers.Universal.theorem_1_1",
+          "locations": [
+            {
+              "name": "FourPapers.Universal.theorem_1_1",
+              "declaration_kind": "theorem",
+              "source_path": "source/theorem13.lean",
+              "source_line": 10477,
+              "source_sha256": "ff124d42f3fa52834c9de113d444325f7345d1daaf00e44adef3242f367049b7",
+              "source_spelling": "theorem_1_1"
+            },
+            {
+              "name": "FourPapers.Universal.theorem_1_1",
+              "declaration_kind": "theorem",
+              "source_path": "source/theorem12.lean",
+              "source_line": 16253,
+              "source_sha256": "30853d8bf06ee8b922e9bdfe4c8000ec5e853f2c4f01944ffa431cf796757cba",
+              "source_spelling": "theorem_1_1"
+            },
+            {
+              "name": "FourPapers.Universal.theorem_1_1",
+              "declaration_kind": "theorem",
+              "source_path": "source/theorem94.lean",
+              "source_line": 10491,
+              "source_sha256": "9d8d8f8cd0e4fde586d338b5cfac688d3e341754bce2c80ed5f33f4ef49f983b",
+              "source_spelling": "theorem_1_1"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "separate_configuration_or_not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/barycentric_invariance/paper.pdf#page=2"
+    },
+    {
+      "paper_result": "Theorem 1.2",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        3,
+        9
+      ],
+      "declarations": [
+        {
+          "name": "FourPapers.Universal.theorem_1_2",
+          "locations": [
+            {
+              "name": "FourPapers.Universal.theorem_1_2",
+              "declaration_kind": "def",
+              "source_path": "source/theorem12.lean",
+              "source_line": 34204,
+              "source_sha256": "30853d8bf06ee8b922e9bdfe4c8000ec5e853f2c4f01944ffa431cf796757cba",
+              "source_spelling": "theorem_1_2"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "separate_configuration_or_not_extracted"
+        },
+        {
+          "name": "FourPapers.Universal.theorem_1_2_equivariant",
+          "locations": [
+            {
+              "name": "FourPapers.Universal.theorem_1_2_equivariant",
+              "declaration_kind": "theorem",
+              "source_path": "source/theorem12.lean",
+              "source_line": 34214,
+              "source_sha256": "30853d8bf06ee8b922e9bdfe4c8000ec5e853f2c4f01944ffa431cf796757cba",
+              "source_spelling": "theorem_1_2_equivariant"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "separate_configuration_or_not_extracted"
+        },
+        {
+          "name": "FourPapers.Universal.theorem_1_2_finite_stable",
+          "locations": [
+            {
+              "name": "FourPapers.Universal.theorem_1_2_finite_stable",
+              "declaration_kind": "theorem",
+              "source_path": "source/theorem12.lean",
+              "source_line": 34230,
+              "source_sha256": "30853d8bf06ee8b922e9bdfe4c8000ec5e853f2c4f01944ffa431cf796757cba",
+              "source_spelling": "theorem_1_2_finite_stable"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "separate_configuration_or_not_extracted"
+        },
+        {
+          "name": "FourPapers.Universal.theorem_1_2_grothendieck",
+          "locations": [
+            {
+              "name": "FourPapers.Universal.theorem_1_2_grothendieck",
+              "declaration_kind": "theorem",
+              "source_path": "source/theorem12.lean",
+              "source_line": 34266,
+              "source_sha256": "30853d8bf06ee8b922e9bdfe4c8000ec5e853f2c4f01944ffa431cf796757cba",
+              "source_spelling": "theorem_1_2_grothendieck"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "separate_configuration_or_not_extracted"
+        },
+        {
+          "name": "FourPapers.Universal.theorem_1_2_multiplicative",
+          "locations": [
+            {
+              "name": "FourPapers.Universal.theorem_1_2_multiplicative",
+              "declaration_kind": "theorem",
+              "source_path": "source/theorem12.lean",
+              "source_line": 35345,
+              "source_sha256": "30853d8bf06ee8b922e9bdfe4c8000ec5e853f2c4f01944ffa431cf796757cba",
+              "source_spelling": "theorem_1_2_multiplicative"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "separate_configuration_or_not_extracted"
+        },
+        {
+          "name": "FourPapers.Universal.theorem_1_2_relative",
+          "locations": [
+            {
+              "name": "FourPapers.Universal.theorem_1_2_relative",
+              "declaration_kind": "def",
+              "source_path": "source/theorem12.lean",
+              "source_line": 33574,
+              "source_sha256": "30853d8bf06ee8b922e9bdfe4c8000ec5e853f2c4f01944ffa431cf796757cba",
+              "source_spelling": "theorem_1_2_relative"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "separate_configuration_or_not_extracted"
+        },
+        {
+          "name": "FourPapers.Universal.theorem_1_2_relative_multiplicative",
+          "locations": [
+            {
+              "name": "FourPapers.Universal.theorem_1_2_relative_multiplicative",
+              "declaration_kind": "theorem",
+              "source_path": "source/theorem12.lean",
+              "source_line": 37736,
+              "source_sha256": "30853d8bf06ee8b922e9bdfe4c8000ec5e853f2c4f01944ffa431cf796757cba",
+              "source_spelling": "theorem_1_2_relative_multiplicative"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "separate_configuration_or_not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/barycentric_invariance/paper.pdf#page=3"
+    },
+    {
+      "paper_result": "Theorem 1.3",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        3,
+        32
+      ],
+      "declarations": [
+        {
+          "name": "FourPapers.Universal.theorem_1_3_positive",
+          "locations": [
+            {
+              "name": "FourPapers.Universal.theorem_1_3_positive",
+              "declaration_kind": "theorem",
+              "source_path": "source/theorem13.lean",
+              "source_line": 20830,
+              "source_sha256": "ff124d42f3fa52834c9de113d444325f7345d1daaf00e44adef3242f367049b7",
+              "source_spelling": "theorem_1_3_positive"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "separate_configuration_or_not_extracted"
+        },
+        {
+          "name": "FourPapers.Universal.theorem_1_3_positive_original",
+          "locations": [
+            {
+              "name": "FourPapers.Universal.theorem_1_3_positive_original",
+              "declaration_kind": "theorem",
+              "source_path": "source/theorem13.lean",
+              "source_line": 20850,
+              "source_sha256": "ff124d42f3fa52834c9de113d444325f7345d1daaf00e44adef3242f367049b7",
+              "source_spelling": "theorem_1_3_positive_original"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "separate_configuration_or_not_extracted"
+        },
+        {
+          "name": "FourPapers.Universal.theorem_1_3_uniform_iff",
+          "locations": [
+            {
+              "name": "FourPapers.Universal.theorem_1_3_uniform_iff",
+              "declaration_kind": "theorem",
+              "source_path": "source/theorem13.lean",
+              "source_line": 22340,
+              "source_sha256": "ff124d42f3fa52834c9de113d444325f7345d1daaf00e44adef3242f367049b7",
+              "source_spelling": "theorem_1_3_uniform_iff"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "selected_challenge_only_passed"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/barycentric_invariance/paper.pdf#page=3"
+    },
+    {
+      "paper_result": "Theorem 9.4",
+      "paper_file": "paper.pdf",
+      "paper_pdf_pages": [
+        30
+      ],
+      "declarations": [
+        {
+          "name": "FourPapers.Universal.ScalarFamilies.theorem_9_4_scalarIdeal",
+          "locations": [
+            {
+              "name": "FourPapers.Universal.ScalarFamilies.theorem_9_4_scalarIdeal",
+              "declaration_kind": "theorem",
+              "source_path": "source/theorem94.lean",
+              "source_line": 28984,
+              "source_sha256": "9d8d8f8cd0e4fde586d338b5cfac688d3e341754bce2c80ed5f33f4ef49f983b",
+              "source_spelling": "theorem_9_4_scalarIdeal"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "separate_configuration_or_not_extracted"
+        },
+        {
+          "name": "FourPapers.Universal.ScalarFamilies.theorem_9_4_obstructionModule",
+          "locations": [
+            {
+              "name": "FourPapers.Universal.ScalarFamilies.theorem_9_4_obstructionModule",
+              "declaration_kind": "def",
+              "source_path": "source/theorem94.lean",
+              "source_line": 28994,
+              "source_sha256": "9d8d8f8cd0e4fde586d338b5cfac688d3e341754bce2c80ed5f33f4ef49f983b",
+              "source_spelling": "theorem_9_4_obstructionModule"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "separate_configuration_or_not_extracted"
+        },
+        {
+          "name": "FourPapers.Universal.ScalarFamilies.theorem_9_4_universalAnnihilator",
+          "locations": [
+            {
+              "name": "FourPapers.Universal.ScalarFamilies.theorem_9_4_universalAnnihilator",
+              "declaration_kind": "theorem",
+              "source_path": "source/theorem94.lean",
+              "source_line": 29013,
+              "source_sha256": "9d8d8f8cd0e4fde586d338b5cfac688d3e341754bce2c80ed5f33f4ef49f983b",
+              "source_spelling": "theorem_9_4_universalAnnihilator"
+            }
+          ],
+          "resolution": "found",
+          "challenge_status": "separate_configuration_or_not_extracted"
+        }
+      ],
+      "paper_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/barycentric_invariance/paper.pdf#page=30"
+    }
+  ],
+  "known_gaps": [
+    "The canonical chain-monomial associated-grade identification of Theorem 1.1 has not yet been independently extracted.",
+    "Actual-Tor, rank-selected cohomology, equivariance and product clauses of Theorem 1.2, and scalar/H1 obstruction Theorem 9.4, belong to independently concatenated proof bundles and are being prepared as separate honest configurations. Importing all bundles into one Solution would redeclare shared core constants.",
+    "Three oversized proof bundles were split at original source-module boundaries with anonymous scopes/options restored and all shards added to explicit Lake roots; fresh full elaboration remains required.",
+    "Independent Challenge elaboration passed; Solution, Comparator and independent replay remain pending."
+  ],
+  "checks": {
+    "source_copy": "complete including retained reading files and licenses",
+    "build": "not_run",
+    "comparator": "not_run",
+    "nanoda": "not_run",
+    "editorial_review": "not_run",
+    "challenge_elaboration": "previous_draft_or_scope_only_current_candidate_pending"
+  },
+  "current_selection": "Theorem 1.1 coherent integral construction with graded/filtered parameter-module equivalences, actual face evaluations and every relative restriction kernel; full coherent uniform factorial-unit criterion of Theorem 1.3; unrestricted negative Boolean-simplex obstruction.",
+  "selected_wrapper_provenance": [
+    {
+      "name": "PalomarBarycentric.parameterModuleComparison",
+      "source": "FourPapers.Universal.theorem_1_1",
+      "change": "Explicit coefficient-linear equivalence commuting with every polynomial parameter; actual usual grading and filtration."
+    },
+    {
+      "name": "PalomarBarycentric.integralCoherentComparison",
+      "sources": [
+        "FourPapers.Universal.theorem_1_1",
+        "FourPapers.Universal.universalOriginalParameterComparison_baseChange"
+      ],
+      "change": "Makes the integral equivalence and every scalar extension existential and explicit; coherence/evaluation squares identify all relative kernels."
+    }
+  ],
+  "baseline_project": "barycentric_invariance",
+  "comparator": {
+    "challenge_module": "Challenge",
+    "solution_module": "Solution",
+    "theorem_names": [
+      "FourPapers.Universal.faceVertices_mono",
+      "FourPapers.Universal.existsUnique_subface",
+      "FourPapers.Universal.polynomialRestriction_refl",
+      "FourPapers.Universal.polynomialRestriction_comp",
+      "FourPapers.Universal.stalkVertexSet_bot",
+      "FourPapers.Universal.faceEvaluation_relation",
+      "FourPapers.Universal.standardCoefficients_surjective",
+      "FourPapers.Universal.standardCoefficients_ker",
+      "FourPapers.Universal.BooleanFace.card_eq_of_color_eq",
+      "FourPapers.Universal.isChainExponent_divisorClosed",
+      "FourPapers.Universal.stalkVertexSet_subfaceOfVertexSet",
+      "FourPapers.Universal.barycentricAllowed_divisorClosed",
+      "FourPapers.Universal.barycentricIdeal_eq_forbiddenIdeal",
+      "FourPapers.Universal.standardExponent_map_booleanFaceInclusion",
+      "FourPapers.Universal.killCompl_mem_forbiddenIdeal",
+      "FourPapers.Universal.isChainExponent_map_booleanFaceEmbedding",
+      "FourPapers.Universal.booleanRestriction_refl",
+      "FourPapers.Universal.booleanRestriction_comp",
+      "FourPapers.Universal.faceVertexInclusion_refl",
+      "FourPapers.Universal.faceVertexInclusion_trans",
+      "FourPapers.Universal.monomialCoefficientMap_mk",
+      "FourPapers.Universal.map_faceRelation",
+      "FourPapers.Universal.booleanFacePermutation_face",
+      "FourPapers.Universal.factorial_nonunit_no_simplex_comparison",
+      "FourPapers.Universal.theorem_1_3_uniform_iff",
+      "PalomarBarycentric.parameterModuleComparison",
+      "PalomarBarycentric.integralCoherentComparison"
+    ],
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ]
+  },
+  "challenge": {
+    "path": "source/Challenge.lean",
+    "sha256": "f516df0e2a21d8a6e19d12cfd1cee2d8e0f62733a267051010a4e2497ac2e589",
+    "physical_lines": 986,
+    "bytes": 48439,
+    "local_elaboration": "pending_after_literal_context_repair",
+    "solution_build": "pending_after_stable_instance_headers",
+    "comparator": "pending_after_literal_context_repair"
+  },
+  "packaging_changes": [
+    {
+      "kind": "literal_context_correction",
+      "description": "All independent definition values and source variable/universe contexts restored. Exact theorem statements replace proof terms only. Original local/Fintype instances receive explicit stable names in both environments; all instance values and substantive proof bodies are retained. Fresh wrapper headers are literal in Challenge and Solution.",
+      "evidence": "packaging/literal-correction-applied.json"
+    }
+  ],
+  "coverage_status": "partial_principal_selection_not_whole_paper",
+  "current_independent_challenge": {
+    "path": "packages/barycentric_invariance/source/Challenge.lean",
+    "sha256": "d4b9fd01951ec93af6bbd2e89bdd61108afa4aa079c1b53be7fb1e1ad2c48e8f"
+  },
+  "uncovered_main_results_and_corollaries": [
+    {
+      "paper_result": "Theorem 1.1 canonical associated grade",
+      "uncovered_scope": "Canonical chain-monomial/multiplicative associated-graded identification beyond the selected ordinary-graded, rank-filtered parameter-module comparison.",
+      "blocker_or_preparation": "Source exists; explicit independent canonical graded-algebra interface still required.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Theorem 1.2 group/product clauses",
+      "uncovered_scope": "The actual stable Tor filtration, equivariant associated-graded identification, induced resolution product and multiplicativity.",
+      "blocker_or_preparation": "Scalar homogeneous-Tor version is prepared in separate barycentric_invariance_tor; full group/product structure not independently selected.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Theorem 1.2 relative clauses",
+      "uncovered_scope": "Full relative pair Tor and rank-selected reduced relative cohomology, with equivariance.",
+      "blocker_or_preparation": "Source exists in incompatible theorem12 bundle; scalar/H1 obstruction entry does not cover relative Tor.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Theorem 1.2 Grothendieck consequences",
+      "uncovered_scope": "Absolute and relative representation-ring identities over every field, including modular characteristic.",
+      "blocker_or_preparation": "Source exists (theorem_1_2_grothendieck and theorem_1_2_relative_grothendieck); independent actual representations/classes not extracted.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    },
+    {
+      "paper_result": "Theorem 9.4 scalar/H1 obstruction",
+      "uncovered_scope": "Actual scalar ideal, cyclic H1 obstruction module and universal annihilator.",
+      "blocker_or_preparation": "Prepared in separate barycentric_invariance_relative; full Comparator verification pending. No coverage credit from Challenge-only pass.",
+      "goal_status": "required_not_optional",
+      "validated_covered": false
+    }
+  ],
+  "coverage_note": "A source theorem, a prepared candidate, a Challenge elaboration pass, and a full Comparator/replay pass are separate states. No partial entry is counted as whole-paper coverage.",
+  "current_interface_status": "current957_source_prepared_not_elaborated",
+  "current_challenge_sha256": "ccadfca2e84cdd49a39bc1d307a6f119e3c56931bbc4c751058a6738f5f00ae0",
+  "measured_packaging_repairs": [
+    {
+      "receipt": "packaging/measured-ring-binder-repair.json",
+      "sha256": "6edbe61b50f60a80e34a277d19a0ac57c8038ffcb63f713776d484ba249053c8"
+    },
+    {
+      "receipt": "packaging/explicit-prop-field-normalization.json",
+      "sha256": "3ee5d2f6090652ac215cf18955eb6ae25771a312501679db7c2379bbf54d9d68"
+    },
+    {
+      "receipt": "packaging/scalar-closure-proof-normalization.json",
+      "sha256": "a60a570003e28c42f0ac5a0df823a0b8dac1f0879f59d7e9d1520a52979b9535"
+    },
+    {
+      "receipt": "packaging/diagram-proof-field-normalization.json",
+      "sha256": "9ef2c2a6b544cb7240dcdb853690a12142e4b15513aa336a80557dc244110e18"
+    },
+    {
+      "receipt": "packaging/measured-common-prop-normalization.json",
+      "sha256": "c7e2e2447b640af0707568b6cd069f9eb8602e9155d27dac33d96144c2f241a3"
+    }
+  ],
+  "validation_scope_note": "Original915 Challenge and exactf314 source/Solution passed their respective builds; current957 interface includes measured Ring dependency/order and canonical proposition repairs plus semantic explicit-field supports, and has not yet been elaborated.",
+  "packaging_support_declarations": [
+    {
+      "name": "FourPapers.Universal.BooleanFace.palomarColorBound",
+      "origin_kind": "fresh_name_for_original_semantic_proof_field",
+      "original_declaration": "FourPapers.Universal.BooleanFace.color",
+      "original_source_path": "source/theorem13.lean",
+      "original_source_line": 1600,
+      "original_source_sha256": "ff124d42f3fa52834c9de113d444325f7345d1daaf00e44adef3242f367049b7",
+      "original_source_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/barycentric_invariance/source/theorem13.lean#L1600",
+      "original_proof_field": "cardinality bound",
+      "source_proof_body": "Original field calculation moved verbatim; independently selected exact theorem type.",
+      "paper_scope": "Support only; no additional principal-result coverage claim."
+    },
+    {
+      "name": "FourPapers.Universal.palomarBooleanFaceInclusion_nonzero",
+      "origin_kind": "fresh_name_for_original_semantic_proof_field",
+      "original_declaration": "FourPapers.Universal.booleanFaceInclusion",
+      "original_source_path": "source/theorem13.lean",
+      "original_source_line": 1998,
+      "original_source_sha256": "ff124d42f3fa52834c9de113d444325f7345d1daaf00e44adef3242f367049b7",
+      "original_source_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/barycentric_invariance/source/theorem13.lean#L1998",
+      "original_proof_field": "subtype nonzero field",
+      "source_proof_body": "Original field calculation moved verbatim; independently selected exact theorem type.",
+      "paper_scope": "Support only; no additional principal-result coverage claim."
+    },
+    {
+      "name": "FourPapers.Universal.palomarBooleanFaceInclusionValue_injective",
+      "origin_kind": "fresh_name_for_original_semantic_proof_field",
+      "original_declaration": "FourPapers.Universal.booleanFaceInclusion",
+      "original_source_path": "source/theorem13.lean",
+      "original_source_line": 1998,
+      "original_source_sha256": "ff124d42f3fa52834c9de113d444325f7345d1daaf00e44adef3242f367049b7",
+      "original_source_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/barycentric_invariance/source/theorem13.lean#L1998",
+      "original_proof_field": "embedding injectivity field",
+      "source_proof_body": "Original field calculation moved verbatim; independently selected exact theorem type.",
+      "paper_scope": "Support only; no additional principal-result coverage claim."
+    },
+    {
+      "name": "FourPapers.Universal.palomarPolynomialDegreePiece_smul",
+      "origin_kind": "fresh_name_for_original_semantic_proof_field",
+      "original_declaration": "FourPapers.Universal.polynomialDegreePiece",
+      "original_source_path": "source/theorem13.lean",
+      "original_source_line": 7499,
+      "original_source_sha256": "ff124d42f3fa52834c9de113d444325f7345d1daaf00e44adef3242f367049b7",
+      "original_source_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/barycentric_invariance/source/theorem13.lean#L7499",
+      "original_proof_field": "scalar closure field",
+      "source_proof_body": "Original field calculation moved verbatim; independently selected exact theorem type.",
+      "paper_scope": "Support only; no additional principal-result coverage claim."
+    },
+    {
+      "name": "FourPapers.Universal.palomarBasisOrdinaryDegreePiece_smul",
+      "origin_kind": "fresh_name_for_original_semantic_proof_field",
+      "original_declaration": "FourPapers.Universal.basisOrdinaryDegreePiece",
+      "original_source_path": "source/theorem13.lean",
+      "original_source_line": 9287,
+      "original_source_sha256": "ff124d42f3fa52834c9de113d444325f7345d1daaf00e44adef3242f367049b7",
+      "original_source_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/barycentric_invariance/source/theorem13.lean#L9287",
+      "original_proof_field": "scalar closure field",
+      "source_proof_body": "Original field calculation moved verbatim; independently selected exact theorem type.",
+      "paper_scope": "Support only; no additional principal-result coverage claim."
+    },
+    {
+      "name": "FourPapers.Universal.palomarPresentationWeightLevel_smul",
+      "origin_kind": "fresh_name_for_original_semantic_proof_field",
+      "original_declaration": "FourPapers.Universal.presentationWeightLevel",
+      "original_source_path": "source/theorem13.lean",
+      "original_source_line": 9660,
+      "original_source_sha256": "ff124d42f3fa52834c9de113d444325f7345d1daaf00e44adef3242f367049b7",
+      "original_source_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/barycentric_invariance/source/theorem13.lean#L9660",
+      "original_proof_field": "scalar closure field",
+      "source_proof_body": "Original field calculation moved verbatim; independently selected exact theorem type.",
+      "paper_scope": "Support only; no additional principal-result coverage claim."
+    },
+    {
+      "name": "FourPapers.Universal.palomarBarycentricDiagram_res_refl",
+      "origin_kind": "fresh_name_for_original_semantic_proof_field",
+      "original_declaration": "FourPapers.Universal.barycentricDiagram",
+      "original_source_path": "source/theorem13.lean",
+      "original_source_line": 2705,
+      "original_source_sha256": "ff124d42f3fa52834c9de113d444325f7345d1daaf00e44adef3242f367049b7",
+      "original_source_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/barycentric_invariance/source/theorem13.lean#L2705",
+      "original_proof_field": "restriction identity field",
+      "source_proof_body": "Original field calculation moved verbatim; independently selected exact theorem type.",
+      "paper_scope": "Support only; no additional principal-result coverage claim."
+    },
+    {
+      "name": "FourPapers.Universal.palomarBarycentricDiagram_res_comp",
+      "origin_kind": "fresh_name_for_original_semantic_proof_field",
+      "original_declaration": "FourPapers.Universal.barycentricDiagram",
+      "original_source_path": "source/theorem13.lean",
+      "original_source_line": 2705,
+      "original_source_sha256": "ff124d42f3fa52834c9de113d444325f7345d1daaf00e44adef3242f367049b7",
+      "original_source_url": "https://github.com/caiusdfolkerts/research/blob/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/barycentric_invariance/source/theorem13.lean#L2705",
+      "original_proof_field": "restriction composition field",
+      "source_proof_body": "Original field calculation moved verbatim; independently selected exact theorem type.",
+      "paper_scope": "Support only; no additional principal-result coverage claim."
+    }
+  ],
+  "measured_canonical_support_propositions": [
+    {
+      "name": "PalomarBarycentric.coefficientIdentityInvPair",
+      "meaning": "Canonical RingHomInvPair for the identity coefficient homomorphism; actual complete type measured by R14."
+    },
+    {
+      "name": "PalomarBarycentric.coefficientIdealTwoSided",
+      "meaning": "Canonical two-sidedness of every ideal in a commutative ring, applied to the actual measured faceIdeal."
+    }
+  ],
+  "canonical_challenge_receipt": "reports/barycentric_invariance/challenge-diagnostic/run-44383410137/barycentric_main_repair_smoke_r2/receipt.json",
+  "proof_field_repairs": [
+    "Preserve literal coefficient identity inverse pair and quotient ideal two-sided instance under named selected support statements.",
+    "Preserve actual face/color/inclusion/barycentric diagram data, moving original proof fields to exact named support statements.",
+    "Preserve literal graded coefficient submodules with original scalar-closure calculations in named supports.",
+    "Restore actual Ring binder ordering; polynomial scalar helper has no unintended order hypothesis."
+  ],
+  "whole_paper_coverage": false
+}
