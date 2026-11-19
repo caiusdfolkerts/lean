@@ -1,5 +1,3 @@
-# Palomar submission: two_fermion_coinvariants
+Canonical genuine tensor quotient module reproduction, explicit public-name lookup controls and bounded instance dictionary heads. No new claims or Source changes.
 
-Substantive source snapshot of [caiusdfolkerts/research](https://github.com/caiusdfolkerts/research/tree/e0696fddcd3d10b5d6461e62e9b2f02c4195be37/two_fermion_coinvariants), revision `e0696fddcd3d10b5d6461e62e9b2f02c4195be37`.
-
-The complete selected development, paper, metadata, and Comparator configuration are in `two_fermion_coinvariants/`. This branch prepares a registry submission; it does not claim registry acceptance. See `two_fermion_coinvariants/formalization.yaml` for exact scope and provenance.
+Canonical-only exact frozen inputs; no Source build, Comparator or independent-kernel claim.
