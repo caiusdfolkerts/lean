@@ -10,6 +10,41 @@ open TauCeti MvPolynomial
 open scoped BigOperators Classical
 
 namespace HigherSpecht
+open TauCeti.YoungTableau Finset Module
+open scoped BigOperators Classical
+
+abbrev canonicalTabloidRepresentationOver (R : Type*) [CommRing R] (mu : YoungDiagram) :
+    Representation R (Equiv.Perm (Fin mu.card)) (TabloidSpaceOver R mu) where
+  toFun g :=
+    { toFun f := fun q => f (g⁻¹ • q)
+      map_add' _ _ := rfl
+      map_smul' _ _ := rfl }
+  map_one' := by ext f q; simp
+  map_mul' g h := by ext f q; simp [mul_smul]
+
+abbrev canonicalPolytabloidOver (R : Type*) [CommRing R] {mu : YoungDiagram}
+    (T : YoungTableau mu) : TabloidSpaceOver R mu :=
+  ∑ g : colSubgroup T, ((Equiv.Perm.sign g.val : ℤ) : R) •
+    Pi.single (g.val • tabloid T) 1
+
+theorem canonicalPolytabloidSpan_stable (R : Type*) [CommRing R] (mu : YoungDiagram)
+    (g : Equiv.Perm (Fin mu.card)) (v : TabloidSpaceOver R mu)
+    (hv : v ∈ Submodule.span R (Set.range (canonicalPolytabloidOver R (mu := mu)))) :
+    canonicalTabloidRepresentationOver R mu g v ∈
+      Submodule.span R (Set.range (canonicalPolytabloidOver R (mu := mu))) := by
+  exact polytabloidSpan_stable R mu g v hv
+
+abbrev canonicalSpechtSubrepresentationOver (R : Type*) [CommRing R] (mu : YoungDiagram) :
+    Subrepresentation (canonicalTabloidRepresentationOver R mu) where
+  toSubmodule := Submodule.span R (Set.range (canonicalPolytabloidOver R (mu := mu)))
+  apply_mem_toSubmodule := canonicalPolytabloidSpan_stable R mu
+
+abbrev canonicalPartitionSpechtRepresentation (R : Type palomarRepU) [CommRing R] {n : ℕ}
+    (part : n.Partition) :=
+  (canonicalSpechtSubrepresentationOver R (YoungDiagram.ofPartition part)).toRepresentation.comp
+    (finCongr (YoungDiagram.card_ofPartition part).symm).permCongrHom.toMonoidHom
+
+
 
 theorem finiteHarmonic_master_eligible {n s : ℕ} (i : FiniteHarmonicIndex n s) :
     CatDominates (prefixTableau i.left (⊥ : YoungDiagram).card
@@ -51,7 +86,7 @@ theorem adapted_specht_lattices_and_specialization (n s : ℕ) (hs : 0 < s) :
         ∃ W : Subrepresentation (griffinRepresentation R n lam s),
           W.toSubmodule = Submodule.span R (Set.range
             (fun T => Ideal.Quotient.mk (griffinIdeal R n lam s) (MvPolynomial.map f (P i.val T)))) ∧
-          Nonempty (Representation.Equiv (partitionSpechtRepresentationOver R i.val.part)
+          Nonempty (Representation.Equiv (canonicalPartitionSpechtRepresentation R i.val.part)
             W.toRepresentation)) ∧
       ∀ (K : Type palomarRepU) [Field K], ringChar K = 0 ∨ n < ringChar K →
         ∃ f : FactorialLocalization n →+* K,
@@ -61,7 +96,7 @@ theorem adapted_specht_lattices_and_specialization (n s : ℕ) (hs : 0 < s) :
           W.toSubmodule = Submodule.span K (Set.range
             (fun T => Ideal.Quotient.mk (griffinIdeal K n lam s) (MvPolynomial.map f (P i.val T)))) ∧
           W.toRepresentation.IsIrreducible ∧
-          Nonempty (Representation.Equiv (partitionSpechtRepresentationOver K i.val.part)
+          Nonempty (Representation.Equiv (canonicalPartitionSpechtRepresentation K i.val.part)
             W.toRepresentation) := by
   classical
   let A := FactorialLocalization n

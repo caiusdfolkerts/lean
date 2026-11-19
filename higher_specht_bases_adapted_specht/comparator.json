@@ -20,7 +20,7 @@
     "HigherSpecht.permutationStable_untruncatedIdeal",
     "HigherSpecht.permutationStable_griffinIdeal",
     "TauCeti.shapePartition_parts_youngSort",
-    "HigherSpecht.polytabloidSpan_stable",
+    "HigherSpecht.canonicalPolytabloidSpan_stable",
     "TauCeti.youngSortOrder_isTrans",
     "HigherSpecht.polynomialRename_one",
     "HigherSpecht.polynomialRename_mul",
