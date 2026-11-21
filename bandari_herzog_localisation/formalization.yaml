@@ -1,0 +1,54 @@
+version: v0.4
+project:
+  name: The Bandari–Herzog localisation conjecture
+  description: A nonzero monomial ideal is polymatroidal exactly when all its monomial
+    localisations have linear resolutions, including at the graded maximal ideal.
+    Local equigeneration suffices for ideals of intersection type. The minimum local
+    generator degree is supermodular under local equigeneration, and the final criterion
+    characterises polymatroidality by local equigeneration and the degrees of quotient
+    socles.
+  authors:
+  - Caius Folkerts
+  responsible_maintainers:
+  - Caius Folkerts
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.AC
+  - math.CO
+  msc2020:
+  - 13D02
+  - 13F20
+  - 05B35
+sources:
+- title: The Bandari–Herzog localisation conjecture
+  authors:
+  - Caius Folkerts
+  type: paper
+  relationship: formalizes
+  location: paper.pdf
+  note: Theorems 1.1 and 1.2, Lemma 2.1, and the final unnumbered socle criterion.
+related_formalizations:
+- title: Characterizations of polymatroidal ideals
+  relationship: other
+  id: https://palomar-registry.org/entry.html?id=PALOMAR-2026-11-19-000014&version=1
+  note: Earlier broader entry containing the localisation and socle theorems.
+- title: Prime-power intersections, regularity and sharp local obstructions for polymatroidal
+    ideals
+  relationship: other
+  id: https://palomar-registry.org/entry.html?id=PALOMAR-2026-11-19-000023&version=1
+  note: Earlier supplement containing the intersection-type characterisation.
+automation:
+  methods:
+  - method: agent
+    tool_setup: The manuscript acknowledges GPT-5.6 Sol and GPT-6 Astra assistance
+      with proofs and manuscript preparation. OpenAI Codex adapted the Lean statements
+      and linked them to the existing proofs for this submission.
+review:
+  status: unchecked
+  notes: Existing proofs reused from the registered development. The comparison targets
+    follow the supplied standalone manuscript.
+fidelity:
+  divergences: Nonzero ideals in Theorem 1.2 and the socle criterion are represented
+    by their nonempty antichains of minimal monomial generators. An omitted coordinate
+    prime has exponent zero. Theorem 1.1 explicitly assumes the ideal is nonzero.

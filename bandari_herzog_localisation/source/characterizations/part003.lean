@@ -1,0 +1,8464 @@
+module
+public import characterizations.part002
+section LeanWebUnit0
+@[expose] public section
+set_option Elab.async false
+set_option maxRecDepth 10000
+set_option maxHeartbeats 0
+set_option linter.unusedSectionVars false
+set_option linter.unusedSimpArgs false
+
+
+/-! ## Source: CommAlg.KoszulComplex.InternalGrading -/
+section CheckedSource112
+
+/-! # The multigraded pieces form an actual internal direct sum of derived Tor -/
+
+noncomputable section
+set_option maxHeartbeats 200000
+set_option maxRecDepth 2500
+namespace CommAlg.Koszul
+open Classical CommAlg.Polymatroid CategoryTheory CategoryTheory.Limits
+universe u
+variable {V k : Type u} [Fintype V] [LinearOrder V] [CommRing k] [Nontrivial k]
+
+/-- The canonical projection from derived Tor onto a homogeneous homology group. -/
+def fromDerivedTor (B : Family V) (a : Exponent V) (i : ℕ) :
+    (ModuleCat.restrictScalars (algebraMap k (MvPolynomial V k))).obj
+      (finitePolynomialTor i (ModuleCat.of (MvPolynomial V k) (monomialIdeal k B))) ⟶
+      (homogeneousComplex (k := k) B a).homology i :=
+  (coefficientTorIso (k := k) B i).hom ≫
+    HomologicalComplex.homologyMap (homogeneousRetraction (k := k) B a) i
+
+lemma toDerivedTor_from_same (B : Family V) (a : Exponent V) (i : ℕ) :
+    toDerivedTor (k := k) B a i ≫ fromDerivedTor (k := k) B a i = 𝟙 _ := by
+  simp only [toDerivedTor, fromDerivedTor, Category.assoc, Iso.inv_hom_id_assoc]
+  rw [← HomologicalComplex.homologyMap_comp, homogeneousInclusion_retraction,
+    HomologicalComplex.homologyMap_id]
+
+lemma toDerivedTor_from_ne (B : Family V) (a b : Exponent V) (i : ℕ) (hab : a ≠ b) :
+    toDerivedTor (k := k) B a i ≫ fromDerivedTor (k := k) B b i = 0 := by
+  simp only [toDerivedTor, fromDerivedTor, Category.assoc, Iso.inv_hom_id_assoc]
+  rw [← HomologicalComplex.homologyMap_comp,
+    homogeneousInclusion_retraction_ne B a b hab, HomologicalComplex.homologyMap_zero]
+
+/-- The genuine degree projection, as an endomorphism of actual derived Tor. -/
+def derivedProjection (B : Family V) (a : Exponent V) (i : ℕ) :=
+  (fromDerivedTor (k := k) B a i ≫ toDerivedTor (k := k) B a i).hom
+
+lemma derivedProjection_self (B : Family V) (a : Exponent V) (i : ℕ)
+    {x} (hx : x ∈ gradedTor (k := k) B a i) : derivedProjection (k := k) B a i x = x := by
+  obtain ⟨y, rfl⟩ := hx
+  change (fromDerivedTor (k := k) B a i ≫ toDerivedTor (k := k) B a i)
+    (toDerivedTor (k := k) B a i y) = toDerivedTor (k := k) B a i y
+  rw [← ModuleCat.comp_apply, ← Category.assoc, toDerivedTor_from_same, Category.id_comp]
+
+lemma derivedProjection_other (B : Family V) (a b : Exponent V) (i : ℕ)
+    (hab : a ≠ b) {x} (hx : x ∈ gradedTor (k := k) B b i) :
+    derivedProjection (k := k) B a i x = 0 := by
+  obtain ⟨y, rfl⟩ := hx
+  change (fromDerivedTor (k := k) B a i ≫ toDerivedTor (k := k) B a i)
+    (toDerivedTor (k := k) B b i y) = 0
+  rw [← ModuleCat.comp_apply, ← Category.assoc,
+    toDerivedTor_from_ne B b a i (Ne.symm hab), zero_comp]
+  rfl
+
+lemma gradedTor_independent (B : Family V) (i : ℕ) :
+    iSupIndep (fun a : Exponent V => gradedTor (k := k) B a i) := by
+  rw [iSupIndep_iff_finsetSum_eq_zero_imp_eq_zero]
+  intro s v hv hs a ha
+  have h := congrArg (derivedProjection (k := k) B a i) hs
+  rw [map_sum, map_zero] at h
+  rw [Finset.sum_eq_single a] at h
+  · rwa [derivedProjection_self B a i (hv a ha)] at h
+  · intro b hb hba
+    exact derivedProjection_other B a b i (Ne.symm hba) (hv b hb)
+  · exact fun hnot => (hnot ha).elim
+
+/-- The degree pieces used to define Betti support are a genuine internal direct sum of derived Tor. -/
+theorem gradedTor_isInternal (B : Family V) (i : ℕ) :
+    DirectSum.IsInternal (fun a : Exponent V => gradedTor (k := k) B a i) :=
+  DirectSum.isInternal_submodule_of_iSupIndep_of_iSup_eq_top
+    (gradedTor_independent B i) (iSup_gradedTor B i)
+
+end CommAlg.Koszul
+
+end
+end CheckedSource112
+
+
+/-! ## Source: CommAlg.KoszulComplex.ResidueCoefficients -/
+section CheckedSource113
+
+/-! # The residue quotient is the coefficient field with its intended polynomial action -/
+
+noncomputable section
+namespace CommAlg.Koszul
+open CategoryTheory MvPolynomial
+universe u
+variable {V k : Type u} [CommRing k]
+
+/-- The coefficient ring, with polynomial action by evaluation at zero. -/
+def residueCoefficientModule : ModuleCat.{u} (MvPolynomial V k) :=
+  (ModuleCat.restrictScalars (constantCoeff : MvPolynomial V k →+* k)).obj (ModuleCat.of k k)
+
+/-- The quotient by all variables agrees as a polynomial module with the coefficient ring. -/
+def residueCoefficientEquiv :
+    FiniteResidue V k ≃ₗ[MvPolynomial V k] residueCoefficientModule (V := V) (k := k) where
+  toFun := (residueRingEquiv (V := V) (k := k))
+  invFun := (residueRingEquiv (V := V) (k := k)).symm
+  left_inv := (residueRingEquiv (V := V) (k := k)).left_inv
+  right_inv := (residueRingEquiv (V := V) (k := k)).right_inv
+  map_add' := (residueRingEquiv (V := V) (k := k)).map_add
+  map_smul' f q := by
+    change (residueRingEquiv (V := V) (k := k)) (f • q) = constantCoeff f * (residueRingEquiv (V := V) (k := k)) q
+    refine Quotient.inductionOn' q ?_
+    intro p
+    change (residueRingEquiv (V := V) (k := k))
+      (Ideal.Quotient.mk (idealOfVars V k) (f * p)) =
+      constantCoeff f * (residueRingEquiv (V := V) (k := k))
+        (Ideal.Quotient.mk (idealOfVars V k) p)
+    simp only [residueRingEquiv_mk, map_mul]
+
+/-- Canonical polynomial-module isomorphism to the actual coefficient ring. -/
+def residueCoefficientIso :
+    ModuleCat.of (MvPolynomial V k) (FiniteResidue V k) ≅
+      residueCoefficientModule (V := V) (k := k) :=
+  residueCoefficientEquiv.toModuleIso
+
+variable [Fintype V] [LinearOrder V]
+
+/-- The derived Tor groups used throughout are isomorphic to derived Tor with the coefficient ring
+itself, carrying precisely its standard evaluation-at-zero polynomial action. -/
+def finitePolynomialTorCoefficientIso (i : ℕ) (M : ModuleCat.{u} (MvPolynomial V k)) :
+    finitePolynomialTor i M ≅
+      ((Tor' (ModuleCat (MvPolynomial V k)) i).obj
+        (residueCoefficientModule (V := V) (k := k))).obj M :=
+  ((Functor.flip (Tor' (ModuleCat (MvPolynomial V k)) i)).obj M).mapIso residueCoefficientIso
+
+end CommAlg.Koszul
+
+end
+end CheckedSource113
+
+
+/-! ## Source: CommAlg -/
+section CheckedSource114
+
+/-! Complete principal theorem library for Rank formulas for homological shifts of polymatroidal ideals. -/
+
+end CheckedSource114
+
+
+/-! ## Source: FourPapers.Homological.Main -/
+section CheckedSource115
+
+/-!
+# Principal results of the attached homological-shifts manuscript
+
+This public entry point specializes the more general verified library to fields,
+as in the manuscript. The underlying homological shifts use genuine multigraded
+pieces of Mathlib's derived tensor functor. No expected rank formula occurs in
+their definition.
+
+Manuscript: `14_homological_shifts(9).pdf`, SHA-256
+`de8e82538734073169d46a02e8a142dc9f898f90863425ecdfc1a82e39f15341`.
+-/
+
+set_option autoImplicit false
+
+noncomputable section
+
+namespace FourPapers.Homological
+
+open Classical Finset CommAlg CommAlg.Polymatroid
+
+universe u
+variable {V k : Type u} [Fintype V] [LinearOrder V] [Field k]
+
+/-- Theorem 1.1: stabilization for every ideal and every `s ≥ i > 0`. -/
+theorem theorem_1_1 (I : Ideal (MvPolynomial V k)) (hI : IsPolymatroidalIdeal I)
+    (i s : ℕ) (_hi : 0 < i) (hs : i ≤ s) :
+    homologicalShiftIdeal (I ^ (s + 1)) (hI.pow (s + 1)) i =
+      I * homologicalShiftIdeal (I ^ s) (hI.pow s) i :=
+  homologicalShift_powers I hI i s hs
+
+/-- The fixed-polymatroidal-twist clause of Theorem 1.1. -/
+theorem theorem_1_1_twisted (I J : Ideal (MvPolynomial V k))
+    (hI : IsPolymatroidalIdeal I) (hJ : IsPolymatroidalIdeal J)
+    (i s : ℕ) (_hi : 0 < i) (hs : i ≤ s) :
+    homologicalShiftIdeal (J * I ^ (s + 1)) (hJ.mul (hI.pow (s + 1))) i =
+      I * homologicalShiftIdeal (J * I ^ s) (hJ.mul (hI.pow s)) i :=
+  homologicalShift_twistedPowers I J hI hJ i s hs
+
+/-- The actual ordinary Rees-module generation assertion of Theorem 1.1. -/
+theorem theorem_1_1_generation (I : Ideal (MvPolynomial V k))
+    (hI : IsPolymatroidalIdeal I) (i : ℕ) (hi : 0 < i) :
+    homologicalPowerIdeal I hI i = Ideal.span (homologicalPowerBoxGenerators I hI i) :=
+  homologicalPowerIdeal_generated_le I hI i hi
+
+/-- Theorem 1.2: the exact partition formula on the active ground set.
+The right-hand side rank is a proved `RankFunction`, hence includes all
+normalization, monotonicity, integrality, and submodularity assertions. -/
+theorem theorem_1_2 (g : RankFunction V) (hg : g.Active) (i : ℕ) :
+    homologicalShiftIdeal (rankIdeal k g) (isPolymatroidalIdeal_rankIdeal g) i =
+      if homologicalRank g hg i univ = g univ + i then
+        rankIdeal k (homologicalRank g hg i) else ⊥ :=
+  homologicalShiftIdeal_partitionFormula _ _ g rfl hg i
+
+/-- The canonicality clause of Theorem 1.2; the left side takes the maximum
+over the actual minimal monomial generator exponents. -/
+theorem theorem_1_2_canonical (g : RankFunction V) (hg : g.Active) (i : ℕ)
+    (hne : homologicalShiftIdeal (rankIdeal k g)
+      (isPolymatroidalIdeal_rankIdeal g) i ≠ ⊥) (A : Finset V) :
+    upperRank (idealGenerators
+      (homologicalShiftIdeal (rankIdeal k g) (isPolymatroidalIdeal_rankIdeal g) i)
+      (homologicalShiftIdeal_polymatroidal _ _ i)) A = homologicalRank g hg i A := by
+  rw [homologicalShiftIdeal_canonicalRank _ _ g rfl i hne]
+  exact universalHomologicalRank_eq_active g hg i A
+
+/-- Proposition 4.2: the universal sharpness family in all positive degrees. -/
+theorem proposition_4_2 (i : ℕ) (hi : 1 ≤ i) (hcard : Fintype.card V = i + 1) :
+    (∀ s : ℕ, 1 ≤ s → s < i →
+      homologicalShiftIdeal (squarefreeVeroneseIdeal k V i ^ s)
+        ((squarefreeVeronese_polymatroidal i).pow s) i = ⊥) ∧
+    homologicalShiftIdeal (squarefreeVeroneseIdeal k V i ^ i)
+      ((squarefreeVeronese_polymatroidal i).pow i) i =
+        Ideal.span {(∏ j : V, (MvPolynomial.X j : MvPolynomial V k)) ^ i} ∧
+    homologicalShiftIdeal (squarefreeVeroneseIdeal k V i ^ i)
+      ((squarefreeVeronese_polymatroidal i).pow i) i ≠ ⊥ :=
+  ⟨fun _ hs hsi => squarefreeVeronese_shift_below hi hs hsi hcard,
+    squarefreeVeronese_shift_at_threshold hi hcard,
+    squarefreeVeronese_shift_at_threshold_ne_bot hi hcard⟩
+
+/-- Corollary 4.3: actual categorical projective dimension, with the minimum
+ranging over every partition of the entire active ground set. -/
+theorem corollary_4_3 (ρ : RankFunction V) (hρ : ρ.Active) (s : ℕ) (hs : 1 ≤ s) :
+    CategoryTheory.projectiveDimension
+        (ModuleCat.of (MvPolynomial V k) ↥((rankIdeal k ρ) ^ s)) =
+      (finiteMinimum (fun P : Finpartition (univ : Finset V) =>
+        s * partitionDefect ρ P + partitionSlack P) : WithBot ℕ∞) :=
+  CommAlg.ProjectiveDimension.rankIdeal_power_projectiveDimension ρ hρ s hs
+
+/-- The eventual projective-dimension assertion in Corollary 4.3. -/
+theorem corollary_4_3_eventual (ρ : RankFunction V) (hρ : ρ.Active)
+    (s : ℕ) (hs : max 1 (eventualOffset ρ univ) ≤ s) :
+    CategoryTheory.projectiveDimension
+        (ModuleCat.of (MvPolynomial V k) ↥((rankIdeal k ρ) ^ s)) =
+      (eventualOffset ρ univ : WithBot ℕ∞) :=
+  CommAlg.ProjectiveDimension.rankIdeal_power_projectiveDimension_eventual ρ hρ s hs
+
+/-- The zero-module case of Theorem 4.4. -/
+theorem theorem_4_4_zero (ρ : RankFunction V) (hρ : ρ.Active)
+    (i : ℕ) (hi : eventualOffset ρ univ < i) :
+    homologicalPowerIdeal (rankIdeal k ρ) (isPolymatroidalIdeal_rankIdeal ρ) i = ⊥ :=
+  homologicalPowerIdeal_eq_bot_of_above _ _ ρ rfl hρ i hi
+
+/-- Theorem 4.4: the exact interval of actual minimal monomial Rees-module
+generators, its endpoints, first nonzero piece, and exact least generation bound. -/
+theorem theorem_4_4 (ρ : RankFunction V) (hρ : ρ.Active)
+    (i : ℕ) (hi0 : 0 < i) (hi : i ≤ eventualOffset ρ univ) :
+    (1 ≤ powerThreshold ρ i univ ∧
+      powerThreshold ρ i univ ≤ globalPowerThreshold ρ i ∧
+      globalPowerThreshold ρ i ≤ i) ∧
+    (∀ s : ℕ, 1 ≤ s →
+      (homologicalShiftIdeal (rankIdeal k ρ ^ s)
+        ((isPolymatroidalIdeal_rankIdeal ρ).pow s) i ≠ ⊥ ↔
+          powerThreshold ρ i univ ≤ s)) ∧
+    (∀ s : ℕ,
+      (∃ a, IsMinimalHomologicalPowerMonomial (rankIdeal k ρ)
+        (isPolymatroidalIdeal_rankIdeal ρ) i s a) ↔
+          powerThreshold ρ i univ ≤ s ∧ s ≤ globalPowerThreshold ρ i) ∧
+    (∀ q : ℕ,
+      homologicalPowerIdeal (rankIdeal k ρ) (isPolymatroidalIdeal_rankIdeal ρ) i =
+        Ideal.span (boundedHomologicalPowerMonomials (rankIdeal k ρ)
+          (isPolymatroidalIdeal_rankIdeal ρ) i q) ↔
+            globalPowerThreshold ρ i ≤ q) :=
+  ⟨powerShift_generator_endpoints ρ i hi0 hi,
+    fun s hs => homologicalShift_power_nonzero_iff (rankIdeal k ρ) (isPolymatroidalIdeal_rankIdeal ρ) ρ rfl hρ i hi s hs,
+    fun s => homologicalPower_minimal_degree_iff _ _ ρ rfl hρ i hi0 hi s,
+    fun q => homologicalPower_generation_bound_iff _ _ ρ rfl hρ i hi0 hi q⟩
+
+/-- The threshold used in Theorem 4.4 is exactly the paper's signed rational
+ceiling formula, including negative numerators and empty index collections. -/
+theorem theorem_4_4_threshold_formula (ρ : RankFunction V) (i : ℕ) (A : Finset V) :
+    powerThreshold ρ i A = Finset.univ.sup (fun P : Finpartition A =>
+      if 0 < partitionDefect ρ P then
+        (Int.ceil ((((eventualCorrection ρ i A : ℕ) : ℚ) - partitionSlack P) /
+          (partitionDefect ρ P : ℚ))).toNat else 0) :=
+  powerThreshold_eq_rationalCeiling ρ i A
+
+local instance : LinearOrder (Option V) := (inferInstance : LinearOrder (WithBot V))
+
+/-- Theorem 5.1: the total-support ideal, its genuine projective dimension,
+degree, canonical rank, and exact actual-Tor description of every generator. -/
+theorem theorem_5_1 (I : Ideal (MvPolynomial V k)) (hI : IsPolymatroidalIdeal I)
+    (g : RankFunction V) (he : I = rankIdeal k g) :
+    ∃ p : ℕ,
+      p = shiftLength g ∧
+      CategoryTheory.projectiveDimension (ModuleCat.of (MvPolynomial V k) I) =
+        (p : WithBot ℕ∞) ∧
+      ∃ hH : IsPolymatroidalIdeal (homogenizedHomologicalIdeal I hI p),
+        Equigenerated (idealGenerators (homogenizedHomologicalIdeal I hI p) hH)
+          (g univ + p) ∧
+        (∀ A : Finset (Option V),
+          upperRank (idealGenerators (homogenizedHomologicalIdeal I hI p) hH) A =
+            homogenizedShiftRank g A) ∧
+        (∀ e : Exponent (Option V),
+          e ∈ idealGenerators (homogenizedHomologicalIdeal I hI p) hH ↔
+            ∃ i ≤ p, ∃ a : Exponent V,
+              Koszul.GradedBettiNonzero (k := k) (idealGenerators I hI) a i ∧
+                e = a.optionElim (p - i)) :=
+  homological_homogenization I hI g he
+
+/-- The two displayed formulas for the canonical rank in Theorem 5.1. -/
+theorem theorem_5_1_rank (g : RankFunction V) (hg : g.Active) (A : Finset V) :
+    homogenizedShiftRank g (A.image some) = A.card + partitionRank g A ∧
+      homogenizedShiftRank g A.insertNone = shiftLength g + g A :=
+  ⟨homogenizedShiftRank_active_original g hg A,
+    homogenizedShiftRank_with_new_variable g A⟩
+
+/-- The final field-independence assertion in Theorem 5.1, on the exact
+nonzero multigraded pieces of genuine derived Tor. -/
+theorem theorem_5_1_field_independent {l : Type u} [Field l]
+    (g : RankFunction V) (a : Exponent V) (i : ℕ) :
+    Koszul.GradedBettiNonzero (k := k) (rankBases g) a i ↔
+      Koszul.GradedBettiNonzero (k := l) (rankBases g) a i :=
+  gradedBettiNonzero_rankBases_field_independent g a i
+
+/-- Theorem 6.1: integral closure inside the actual ordinary Rees algebra. -/
+theorem theorem_6_1 (I : Ideal (MvPolynomial V k)) (hI : IsPolymatroidalIdeal I)
+    (i : ℕ) (hi : 0 < i) :
+    IsIntegrallyClosedIdeal (homologicalPowerIdeal I hI i) :=
+  homologicalPowerIdeal_integrallyClosed I hI i hi
+
+section SeveralColors
+
+variable {C : Type*} [Fintype C] [DecidableEq C]
+
+/-- Corollary 4.1: the full coordinatewise stabilization equality. -/
+theorem corollary_4_1 (I : C → Ideal (MvPolynomial V k))
+    (J : Ideal (MvPolynomial V k)) (hI : ∀ c, IsPolymatroidalIdeal (I c))
+    (hJ : IsPolymatroidalIdeal J) (s : C →₀ ℕ) (i : ℕ)
+    (c : C) (_hi : 0 < i) (hs : i ≤ s c) :
+    homologicalShiftIdeal (J * powerProduct I (s + Finsupp.single c 1))
+        (hJ.mul (IsPolymatroidalIdeal.powerProduct I hI _)) i =
+      I c * homologicalShiftIdeal (J * powerProduct I s)
+        (hJ.mul (IsPolymatroidalIdeal.powerProduct I hI _)) i :=
+  homologicalShift_severalColors I J hI hJ s i c hs
+
+/-- The full multigraded module-generation clause of Corollary 4.1. -/
+theorem corollary_4_1_generation (I : C → Ideal (MvPolynomial V k))
+    (J : Ideal (MvPolynomial V k)) (hI : ∀ c, IsPolymatroidalIdeal (I c))
+    (hJ : IsPolymatroidalIdeal J) (i : ℕ) :
+    homologicalMultiIdeal J I hJ hI i =
+      Ideal.span (reesBoxGenerators I (homologicalMultiPiece J I hJ hI i) i) :=
+  homologicalMultiIdeal_generated_in_box J I hJ hI i
+
+/-- Corollary 6.2: arbitrary finite colors, fixed twists, and zero coordinates. -/
+theorem corollary_6_2 (I : C → Ideal (MvPolynomial V k))
+    (J : Ideal (MvPolynomial V k)) (hI : ∀ c, IsPolymatroidalIdeal (I c))
+    (hJ : IsPolymatroidalIdeal J) (hIne : ∀ c, I c ≠ ⊥) (i : ℕ) :
+    IsIntegrallyClosedIdeal (homologicalMultiIdeal J I hJ hI i) :=
+  homologicalMultiIdeal_integrallyClosed J I hJ hI hIne i
+
+end SeveralColors
+
+end FourPapers.Homological
+
+end
+end CheckedSource115
+
+
+/-! ## Source: CommAlg.AuditSupport -/
+section CheckedSource116
+
+/-! # Reproducible transitive proof audits
+
+These elaborator commands inspect the checked Lean environment. They do
+not introduce mathematical declarations or axioms. The axiom guard fails
+if any audited result uses anything beyond Lean's three standard axioms.
+-/
+
+open Lean Elab Command
+
+elab "audit_standard_axioms " n:ident : command => do
+  let name ← liftCoreM <| realizeGlobalConstNoOverloadWithInfo n
+  let axs ← Lean.collectAxioms name
+  let allowed := #[``propext, ``Classical.choice, ``Quot.sound]
+  for ax in axs do
+    unless allowed.contains ax do
+      throwError "Unapproved transitive axiom {ax} in {name}"
+  logInfo m!"AXIOM AUDIT PASSED: {name}: {axs}"
+
+meta def dependencyModule (env : Environment) (name : Name) : Name :=
+  match env.getModuleIdxFor? name with
+  | some idx => env.header.moduleNames[idx.toNat]!
+  | none => env.mainModule
+
+meta def isProjectModule (name : Name) : Bool :=
+  let s := name.toString
+  s.startsWith "CommAlg." || s == "CommAlg" || s.startsWith "TauCeti." ||
+    s.startsWith "FourPapers." || s == "FourPapers"
+
+/-- Export the exact transitive declaration graph through every locally
+proved module, stopping only at the pinned Lean/Mathlib library boundary. -/
+elab "export_proof_dependencies " path:str "[" ns:ident,* "]" : command => do
+  let roots ← ns.getElems.mapM fun n => liftCoreM <| realizeGlobalConstNoOverloadWithInfo n
+  let env := (← getEnv).setExporting false
+  let mut todo := roots
+  let mut cursor := 0
+  let mut seen : NameSet := {}
+  let mut nodes : Array Json := #[]
+  let mut rootInfo : Array Json := #[]
+  for name in roots do
+    let axs ← Lean.collectAxioms name
+    let some info := env.checked.get.find? name | throwError "Missing checked root {name}"
+    let ty ← liftTermElabM <| Meta.ppExpr info.type
+    rootInfo := rootInfo.push <| Json.mkObj
+      [("name", toJson name.toString), ("type", toJson ty.pretty),
+       ("axioms", toJson (axs.map Name.toString))]
+  while cursor < todo.size do
+    let name := todo[cursor]!
+    cursor := cursor + 1
+    if seen.contains name then continue
+    seen := seen.insert name
+    let modName := dependencyModule env name
+    let boundary := !isProjectModule modName
+    let some info := env.checked.get.find? name | throwError "Missing checked dependency {name}"
+    let deps := if boundary then #[] else info.getUsedConstantsAsSet.toArray.qsort Name.lt
+    todo := todo ++ deps
+    nodes := nodes.push <| Json.mkObj
+      [("name", toJson name.toString), ("module", toJson modName.toString),
+       ("library_boundary", toJson boundary), ("dependencies", toJson (deps.map Name.toString))]
+  let document := Json.mkObj
+    [("format", toJson "Lean checked-environment dependency graph, version 1"),
+     ("boundary", toJson "All FourPapers, CommAlg, and vendored TauCeti declarations are expanded; pinned Lean/Mathlib declarations are leaves."),
+     ("roots", Json.arr rootInfo), ("nodes", Json.arr nodes)]
+  let target : System.FilePath := path.getString
+  if let some parent := target.parent then liftIO <| tryCatch (IO.FS.createDirAll parent) (fun _ => pure ())
+  liftIO <| tryCatch (IO.FS.writeFile target (document.pretty ++ "\n")) (fun _ => pure ())
+  logInfo m!"DEPENDENCY GRAPH: {nodes.size} checked declarations written to {path.getString}"
+
+end CheckedSource116
+
+
+/-! ## Source: CommAlg.AuditCore -/
+section CheckedSource117
+
+/-! Kernel-environment audits of the main rank, stabilization, sharpness, homogenization, and normalization theorems. -/
+
+set_option maxHeartbeats 0
+set_option maxRecDepth 10000
+
+audit_standard_axioms CommAlg.Polymatroid.homologicalShiftIdeal_partitionFormula
+audit_standard_axioms CommAlg.Polymatroid.homologicalShiftIdeal_canonicalRank
+audit_standard_axioms CommAlg.Polymatroid.bettiNumber_ideal_pos_iff
+audit_standard_axioms CommAlg.Polymatroid.homologicalShift_powers
+audit_standard_axioms CommAlg.Polymatroid.homologicalShift_twistedPowers
+audit_standard_axioms CommAlg.Polymatroid.homologicalShift_severalColors
+audit_standard_axioms CommAlg.Polymatroid.homologicalShiftIdeal_mul_le
+audit_standard_axioms CommAlg.Polymatroid.squarefreeVeronese_shift_below
+audit_standard_axioms CommAlg.Polymatroid.squarefreeVeronese_shift_at_threshold
+audit_standard_axioms CommAlg.Polymatroid.squarefreeVeronese_shift_at_threshold_ne_bot
+audit_standard_axioms CommAlg.Polymatroid.homogenizedHomologicalIdeal_eq_rankIdeal
+audit_standard_axioms CommAlg.Polymatroid.homogenized_rankBase_iff_actualBetti
+audit_standard_axioms CommAlg.Polymatroid.homogenizedHomologicalIdeal_polymatroidal
+audit_standard_axioms CommAlg.Polymatroid.homogenizedHomologicalIdeal_degree
+audit_standard_axioms CommAlg.Polymatroid.homogenizedHomologicalIdeal_canonicalRank
+audit_standard_axioms CommAlg.Polymatroid.homogenizedShiftRank_on_original
+audit_standard_axioms CommAlg.Polymatroid.homogenizedShiftRank_with_new_variable
+audit_standard_axioms CommAlg.Polymatroid.gradedBettiNonzero_rankBases_field_independent
+audit_standard_axioms CommAlg.homologicalPowerIdeal_integrallyClosed
+audit_standard_axioms CommAlg.homologicalMultiIdeal_integrallyClosed
+
+
+end CheckedSource117
+
+
+/-! ## Source: CommAlg.AuditConsequences -/
+section CheckedSource118
+
+/-! Complete audits of actual projective dimensions, module generation, exact intervals, total support, and Tor foundations. -/
+
+set_option maxHeartbeats 0
+set_option maxRecDepth 10000
+
+audit_standard_axioms CommAlg.ProjectiveDimension.rankIdeal_projectiveDimension
+audit_standard_axioms CommAlg.ProjectiveDimension.polymatroidal_power_projectiveDimension
+audit_standard_axioms CommAlg.ProjectiveDimension.polymatroidal_power_projectiveDimension_eventual
+audit_standard_axioms CommAlg.homologicalPowerIdeal_generated_le
+audit_standard_axioms CommAlg.homologicalMultiIdeal_generated_in_box
+audit_standard_axioms CommAlg.homologicalPowerIdeal_eq_bot_of_above
+audit_standard_axioms CommAlg.homologicalShift_power_nonzero_iff
+audit_standard_axioms CommAlg.homologicalPower_minimal_degree_iff
+audit_standard_axioms CommAlg.homologicalPower_generation_bound_iff
+audit_standard_axioms CommAlg.homologicalPowerIdeal_eq_span_minimal
+audit_standard_axioms CommAlg.homologicalPower_minimal_iff_rank_violation
+audit_standard_axioms CommAlg.Polymatroid.powerShift_generator_endpoints
+audit_standard_axioms CommAlg.Polymatroid.powerThreshold_eq_rationalCeiling
+audit_standard_axioms CommAlg.Polymatroid.homological_homogenization
+audit_standard_axioms CommAlg.Polymatroid.homological_homogenization_exists_rank
+audit_standard_axioms CommAlg.Koszul.gradedTor_isInternal
+audit_standard_axioms CommAlg.Koszul.derivedTor_nonzero_iff
+audit_standard_axioms CommAlg.Koszul.finitePolynomialTorCoefficientIso
+audit_standard_axioms CommAlg.Koszul.bettiNumber_pos_iff
+audit_standard_axioms CommAlg.Koszul.finitePolynomialTor_nonzero_le_projectiveDimension
+
+
+end CheckedSource118
+
+
+/-! ## Source: CommAlg.Audit -/
+section CheckedSource119
+
+/-! All principal theorems are guarded against unapproved transitive axioms. -/
+
+end CheckedSource119
+
+
+/-! ## Source: FourPapers.Homological.Audit -/
+section CheckedSource120
+
+set_option autoImplicit false
+
+/-! The public paper-numbered results and their semantic bridges are checked
+against precisely Lean's standard logical axioms. -/
+
+set_option maxHeartbeats 0
+set_option maxRecDepth 10000
+
+audit_standard_axioms FourPapers.Homological.theorem_1_1
+audit_standard_axioms FourPapers.Homological.theorem_1_1_twisted
+audit_standard_axioms FourPapers.Homological.theorem_1_1_generation
+audit_standard_axioms FourPapers.Homological.theorem_1_2
+audit_standard_axioms FourPapers.Homological.theorem_1_2_canonical
+audit_standard_axioms FourPapers.Homological.corollary_4_1
+audit_standard_axioms FourPapers.Homological.corollary_4_1_generation
+audit_standard_axioms FourPapers.Homological.proposition_4_2
+audit_standard_axioms FourPapers.Homological.corollary_4_3
+audit_standard_axioms FourPapers.Homological.corollary_4_3_eventual
+audit_standard_axioms FourPapers.Homological.theorem_4_4_zero
+audit_standard_axioms FourPapers.Homological.theorem_4_4
+audit_standard_axioms FourPapers.Homological.theorem_4_4_threshold_formula
+audit_standard_axioms FourPapers.Homological.theorem_5_1
+audit_standard_axioms FourPapers.Homological.theorem_5_1_rank
+audit_standard_axioms FourPapers.Homological.theorem_5_1_field_independent
+audit_standard_axioms FourPapers.Homological.theorem_6_1
+audit_standard_axioms FourPapers.Homological.corollary_6_2
+
+audit_standard_axioms CommAlg.Koszul.finitePolynomialResolution
+audit_standard_axioms CommAlg.Koszul.finitePolynomialTorIso
+audit_standard_axioms CommAlg.Koszul.finitePolynomialTorCoefficientIso
+audit_standard_axioms CommAlg.Koszul.coefficientTorIso
+audit_standard_axioms CommAlg.Koszul.homogeneousFacesIso
+audit_standard_axioms CommAlg.Koszul.gradedTor_isInternal
+audit_standard_axioms CommAlg.Koszul.bettiNumber_pos_iff
+audit_standard_axioms CommAlg.Matroid.independence_nonzeroHomology_iff
+audit_standard_axioms CommAlg.Polymatroid.rankBases_canonical
+audit_standard_axioms CommAlg.Polymatroid.rank_base_minkowski
+audit_standard_axioms CommAlg.Polymatroid.powerThreshold_eq_rationalCeiling
+audit_standard_axioms CommAlg.Weight.integrallyClosed_of_weight_bounds
+
+
+end CheckedSource120
+
+end
+end LeanWebUnit0
+
+/-! ## Original unit: Characterizations.Complete -/
+section LeanWebUnit1
+
+/-! Deterministically consolidated Characterizations proof sources.
+The exact source-block correspondence is audit/mathematical_assembly.json.
+Generation alone is not a successful Lean check. -/
+
+@[expose] public section
+set_option Elab.async false
+set_option maxRecDepth 10000
+set_option maxHeartbeats 0
+set_option linter.unusedSectionVars false
+set_option linter.unusedSimpArgs false
+
+/-! ## Source: Characterizations.ExchangeGraph -/
+section CheckedCharacterizationsSource0
+
+/-! # Unit-exchange paths in coordinate boxes
+
+All vertices are actual nonnegative integer exponent vectors. A box path is
+the ordinary finite reflexive-transitive closure of unit exchanges inside the
+specified family and coordinate box.
+-/
+
+noncomputable section
+
+namespace Characterizations
+
+open Classical Finset CommAlg.Polymatroid
+
+variable {V : Type*} [Fintype V] [DecidableEq V]
+
+def UnitStep (a b : Exponent V) : Prop :=
+  ∃ i j, i ≠ j ∧ 0 < a i ∧ b = exchange a i j
+
+theorem UnitStep.symm {a b : Exponent V} (h : UnitStep a b) : UnitStep b a := by
+  obtain ⟨i, j, hij, hi, rfl⟩ := h
+  refine ⟨j, i, hij.symm, ?_, (exchange_inverse hij hi).symm⟩
+  simp only [exchange_apply, if_neg hij.symm, ite_true]
+  omega
+
+def BoxStep (B : Family V) (C a b : Exponent V) : Prop :=
+  a ∈ B ∧ b ∈ B ∧ a ≤ C ∧ b ≤ C ∧ UnitStep a b
+
+def BoxConnected (B : Family V) : Prop :=
+  ∀ C a, a ∈ B → a ≤ C → ∀ b, b ∈ B → b ≤ C →
+    Relation.ReflTransGen (BoxStep B C) a b
+
+def l1Distance (a b : Exponent V) : ℕ := (a - b).degree + (b - a).degree
+
+def DonorGood (B : Family V) (C : Exponent V) (j : V) (a : Exponent V) : Prop :=
+  ∃ i, i ≠ j ∧ 0 < a j ∧ exchange a j i ∈ B ∧ exchange a j i ≤ C
+
+theorem step_preserves_top_coordinate {B : Family V} {C a b : Exponent V} {j : V}
+    (hab : BoxStep B C a b) (haj : a j = C j) (hbad : ¬ DonorGood B C j a) :
+    b j = C j := by
+  obtain ⟨ha, hb, haC, hbC, p, q, hpq, hp, rfl⟩ := hab
+  have hpj : p ≠ j := by
+    intro he
+    subst p
+    exact hbad ⟨q, hpq.symm, hp, hb, hbC⟩
+  have hqj : q ≠ j := by
+    intro he
+    subst q
+    have hh := hbC j
+    simp only [exchange_apply, if_neg hpj.symm, ite_true] at hh
+    omega
+  simpa only [exchange_apply, if_neg hpj.symm, if_neg hqj.symm, Nat.sub_zero,
+    Nat.add_zero] using haj
+
+theorem first_good_boundary {B : Family V} {C a b : Exponent V} {j : V}
+    (hpath : Relation.ReflTransGen (BoxStep B C) a b)
+    (haj : a j = C j) (hbad : ¬ DonorGood B C j a) (hbj : b j < C j) :
+    ∃ c c', BoxStep B C c c' ∧ c j = C j ∧
+      ¬ DonorGood B C j c ∧ DonorGood B C j c' := by
+  induction hpath using Relation.ReflTransGen.head_induction_on with
+  | refl => omega
+  | @head a c hac hcb ih =>
+    by_cases hc : DonorGood B C j c
+    · exact ⟨a, c, hac, haj, hbad, hc⟩
+    · exact ih (step_preserves_top_coordinate hac haj hbad) hc
+
+theorem two_exchanges_cancel (c : Exponent V) {p q j : V}
+    (hpq : p ≠ q) (hpj : p ≠ j) (hqj : q ≠ j) (hp : 0 < c p) :
+    exchange (exchange c p q) j p = exchange c j q := by
+  ext x
+  simp only [exchange_apply]
+  by_cases hxp : x = p <;> by_cases hxq : x = q <;> by_cases hxj : x = j <;>
+    simp_all <;> omega
+
+theorem two_exchanges_distance (c : Exponent V) {p q i j : V}
+    (hpq : p ≠ q) (hpj : p ≠ j) (hqj : q ≠ j)
+    (hip : i ≠ p) (hij : i ≠ j) (hp : 0 < c p) (hj : 0 < c j) :
+    l1Distance c (exchange (exchange c p q) j i) = 4 := by
+  have hsub : c - exchange (exchange c p q) j i =
+      Finsupp.single p 1 + Finsupp.single j 1 := by
+    ext x
+    simp only [Finsupp.tsub_apply, exchange_apply, Finsupp.add_apply, Finsupp.single_apply]
+    by_cases hxp : x = p <;> by_cases hxq : x = q <;>
+      by_cases hxi : x = i <;> by_cases hxj : x = j <;> simp_all [eq_comm] <;> omega
+  have hsub' : exchange (exchange c p q) j i - c =
+      Finsupp.single q 1 + Finsupp.single i 1 := by
+    ext x
+    simp only [Finsupp.tsub_apply, exchange_apply, Finsupp.add_apply, Finsupp.single_apply]
+    by_cases hxp : x = p <;> by_cases hxq : x = q <;>
+      by_cases hxi : x = i <;> by_cases hxj : x = j <;> simp_all [eq_comm] <;> omega
+  simp [l1Distance, hsub, hsub']
+
+theorem exchange_le_of_two_exchanges {C c : Exponent V} {p q i j : V}
+    (hc : c ≤ C) (hu : exchange (exchange c p q) j i ≤ C)
+    (hpq : p ≠ q) (hpj : p ≠ j) (hqj : q ≠ j)
+    (hip : i ≠ p) (hij : i ≠ j) :
+    exchange c j i ≤ C ∧ exchange c j q ≤ C := by
+  constructor <;> intro x
+  all_goals
+    have hcx := hc x
+    have hux := hu x
+    simp only [exchange_apply] at hux ⊢
+    by_cases hxp : x = p <;> by_cases hxq : x = q <;>
+      by_cases hxi : x = i <;> by_cases hxj : x = j <;> simp_all [eq_comm] <;> omega
+
+/-- The exact configuration found at the first vertex where the prescribed
+donor can be decreased. The two receiving coordinates may initially coincide. -/
+theorem failed_exchange_configuration {B : Family V} (hconn : BoxConnected B)
+    (hfail : ¬ ExchangeAxiom B) :
+    ∃ c u : Exponent V, c ∈ B ∧ u ∈ B ∧
+      ∃ p q i j : V, p ≠ q ∧ p ≠ j ∧ q ≠ j ∧ i ≠ p ∧ i ≠ j ∧
+        0 < c p ∧ 0 < c j ∧ u = exchange (exchange c p q) j i ∧
+        exchange c j i ∉ B ∧ exchange c j q ∉ B := by
+  classical
+  simp only [ExchangeAxiom, not_forall] at hfail
+  obtain ⟨b, hb, a, ha, j, haj, hnone⟩ := hfail
+  simp only [not_exists, not_and] at hnone
+  let C := a ⊔ b
+  have hbj : b j = C j := by simp only [C, Finsupp.sup_apply]; omega
+  have hajC : a j < C j := by rw [← hbj]; exact haj
+  have hbad : ¬ DonorGood B C j b := by
+    rintro ⟨i, hij, hj, hex, heC⟩
+    have hi := heC i
+    simp only [exchange_apply, if_neg hij, ite_true, C, Finsupp.sup_apply] at hi
+    exact hnone i (by omega) hex
+  obtain ⟨c, c', hstep, hcj, hbadc, hgood⟩ :=
+    first_good_boundary (hconn C b hb le_sup_right a ha le_sup_left) hbj hbad hajC
+  obtain ⟨hc, hc', hcC, hc'C, p, q, hpq, hp, he⟩ := hstep
+  subst c'
+  have hpj : p ≠ j := by
+    intro he
+    subst p
+    exact hbadc ⟨q, hpq.symm, hp, hc', hc'C⟩
+  have hqj : q ≠ j := by
+    intro he
+    subst q
+    have hh := hc'C j
+    simp only [exchange_apply, if_neg hpj.symm, ite_true] at hh
+    omega
+  obtain ⟨i, hij, hj', hu, huC⟩ := hgood
+  have hj : 0 < c j := by
+    simpa only [exchange_apply, if_neg hpj.symm, if_neg hqj.symm,
+      Nat.sub_zero, Nat.add_zero] using hj'
+  have hip : i ≠ p := by
+    intro he
+    subst i
+    rw [two_exchanges_cancel c hpq hpj hqj hp] at hu huC
+    exact hbadc ⟨q, hqj, hj, hu, huC⟩
+  obtain ⟨hiC, hqC⟩ := exchange_le_of_two_exchanges hcC huC hpq hpj hqj hip hij
+  exact ⟨c, exchange (exchange c p q) j i, hc, hu, p, q, i, j,
+    hpq, hpj, hqj, hip, hij, hp, hj, rfl,
+    fun h => hbadc ⟨i, hij, hj, h, hiC⟩,
+    fun h => hbadc ⟨q, hqj, hj, h, hqC⟩⟩
+
+/-- Lemma 3.2: failure of exchange is witnessed at ℓ₁-distance exactly four. -/
+theorem failed_exchange_distance_four {B : Family V} (hconn : BoxConnected B)
+    (hfail : ¬ ExchangeAxiom B) :
+    ∃ c u : Exponent V, c ∈ B ∧ u ∈ B ∧ l1Distance c u = 4 ∧
+      ∃ j, u j < c j ∧ ∀ i, c i < u i → exchange c j i ∉ B := by
+  obtain ⟨c, u, hc, hu, p, q, i, j, hpq, hpj, hqj, hip, hij,
+    hp, hj, rfl, hni, hnq⟩ := failed_exchange_configuration hconn hfail
+  refine ⟨c, _, hc, hu, two_exchanges_distance c hpq hpj hqj hip hij hp hj, j, ?_, ?_⟩
+  · simp only [exchange_apply, if_neg hpj.symm, if_neg hqj.symm,
+      if_neg hij.symm, ite_true, Nat.sub_zero, Nat.add_zero]
+    omega
+  · intro x hx
+    by_cases hxi : x = i
+    · simpa [hxi] using hni
+    by_cases hxq : x = q
+    · simpa [hxq] using hnq
+    simp only [exchange_apply, if_neg hxi, if_neg hxq, Nat.add_zero] at hx
+    split_ifs at hx <;> omega
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource0
+
+/-! ## Source: Characterizations.Quotients -/
+section CheckedCharacterizationsSource1
+
+/-! # Literal colon ideals and the combinatorial variable-witness condition -/
+
+noncomputable section
+
+namespace Characterizations
+
+open Classical Finset CommAlg.Polymatroid
+
+variable {V : Type*} [Fintype V] [DecidableEq V]
+
+abbrev GeneratorOrder (V : Type*) := Exponent V → Exponent V → Prop
+
+def preceding (B : Family V) (r : GeneratorOrder V) (b : Exponent V) : Family V :=
+  B.filter (fun a => r a b)
+
+@[simp] theorem mem_preceding (B : Family V) (r : GeneratorOrder V) (a b : Exponent V) :
+    a ∈ preceding B r b ↔ a ∈ B ∧ r a b := by simp [preceding]
+
+def QuotientWitness (B : Family V) (r : GeneratorOrder V) : Prop :=
+  ∀ a ∈ B, ∀ b ∈ B, r a b →
+    ∃ w ∈ B, r w b ∧ ∃ i, w - b = Finsupp.single i 1 ∧ b i < a i
+
+def HasLinearQuotients (k : Type*) [CommSemiring k]
+    (B : Family V) (r : GeneratorOrder V) : Prop :=
+  ∀ b ∈ B, ∃ D : Finset V,
+    (monomialIdeal k (preceding B r b)).colon {MvPolynomial.monomial b (1 : k)} =
+      variableIdeal (k := k) D
+
+theorem sub_single_le_add {w b : Exponent V} {i : V}
+    (h : w - b = Finsupp.single i 1) : w ≤ b + Finsupp.single i 1 := by
+  intro x
+  have hx := congrArg (fun a : Exponent V => a x) h
+  simp only [Finsupp.tsub_apply, Finsupp.add_apply] at hx ⊢
+  omega
+
+theorem sub_single_receiver {w b : Exponent V} {i : V}
+    (h : w - b = Finsupp.single i 1) : w i = b i + 1 := by
+  have hx := congrArg (fun a : Exponent V => a i) h
+  simp only [Finsupp.tsub_apply, Finsupp.single_eq_same] at hx
+  omega
+
+theorem sub_single_of_le_add {w b : Exponent V} {i : V}
+    (hle : w ≤ b + Finsupp.single i 1) (hn : ¬ w ≤ b) :
+    w - b = Finsupp.single i 1 := by
+  have hi : b i < w i := by
+    by_contra hi
+    apply hn
+    intro x
+    by_cases hx : x = i
+    · subst x; omega
+    · have hh := hle x
+      simpa [Finsupp.single_apply, hx, Ne.symm hx] using hh
+  ext x
+  have hh := hle x
+  by_cases hx : x = i
+  · subst x
+    simp only [Finsupp.tsub_apply, Finsupp.single_eq_same, Finsupp.add_apply] at hh ⊢
+    omega
+  · simp only [Finsupp.tsub_apply, Finsupp.add_apply, Finsupp.single_apply,
+      if_neg hx, if_neg (Ne.symm hx), Nat.add_zero] at hh ⊢
+    omega
+
+theorem witness_of_linearQuotients {k : Type*} [CommSemiring k] [Nontrivial k]
+    {B : Family V} (hB : Antichain B) {r : GeneratorOrder V}
+    (hirr : ∀ a, ¬ r a a) (hL : HasLinearQuotients k B r) : QuotientWitness B r := by
+  letI : LinearOrder V := LinearOrder.lift' (Fintype.equivFin V) (Fintype.equivFin V).injective
+  intro a ha b hb hab
+  obtain ⟨D, hD⟩ := hL b hb
+  have hratio : MvPolynomial.monomial (a - b) (1 : k) ∈
+      (monomialIdeal k (preceding B r b)).colon {MvPolynomial.monomial b 1} := by
+    rw [mem_monomialIdeal_colon_iff]
+    intro x hx
+    have he : x = a - b := by simpa [eq_comm] using hx
+    subst x
+    exact ⟨a, (mem_preceding _ _ _ _).mpr ⟨ha, hab⟩, by
+      intro i
+      simp only [Finsupp.tsub_apply, Finsupp.add_apply]
+      omega⟩
+  rw [hD, mem_variableIdeal_iff] at hratio
+  obtain ⟨i, hiD, hi⟩ := hratio (a - b) (by simp)
+  have hvar : MvPolynomial.X i ∈ variableIdeal (k := k) D :=
+    Ideal.subset_span ⟨i, hiD, rfl⟩
+  rw [← hD, mem_monomialIdeal_colon_iff] at hvar
+  obtain ⟨w, hw, hwb⟩ := hvar (Finsupp.single i 1) (by simp [MvPolynomial.X])
+  obtain ⟨hwB, hwr⟩ := (mem_preceding _ _ _ _).mp hw
+  have hnot : ¬ w ≤ b := by
+    intro hle
+    have he := hB w hwB b hb hle
+    exact hirr b (he ▸ hwr)
+  refine ⟨w, hwB, hwr, i, sub_single_of_le_add (by simpa [add_comm] using hwb) hnot, ?_⟩
+  simp only [Finsupp.tsub_apply] at hi
+  omega
+
+def witnessVariables (B : Family V) (r : GeneratorOrder V) (b : Exponent V) : Finset V :=
+  univ.filter (fun i => ∃ w ∈ B, r w b ∧ w - b = Finsupp.single i 1)
+
+theorem linearQuotients_of_witness {k : Type*} [CommSemiring k]
+    {B : Family V} {r : GeneratorOrder V} (hW : QuotientWitness B r) :
+    HasLinearQuotients k B r := by
+  letI : LinearOrder V := LinearOrder.lift' (Fintype.equivFin V) (Fintype.equivFin V).injective
+  intro b hb
+  refine ⟨witnessVariables B r b, ?_⟩
+  ext f
+  rw [mem_monomialIdeal_colon_iff, mem_variableIdeal_iff]
+  have he (a : Exponent V) : Contains (preceding B r b) (a + b) ↔
+      ∃ i ∈ witnessVariables B r b, 0 < a i := by
+    constructor
+    · rintro ⟨c, hc, hca⟩
+      obtain ⟨hcB, hcr⟩ := (mem_preceding _ _ _ _).mp hc
+      obtain ⟨w, hw, hwr, i, hwb, hi⟩ := hW c hcB b hb hcr
+      refine ⟨i, mem_filter.mpr ⟨mem_univ _, w, hw, hwr, hwb⟩, ?_⟩
+      have hh := hca i
+      simp only [Finsupp.add_apply] at hh
+      omega
+    · rintro ⟨i, hi, hai⟩
+      obtain ⟨w, hw, hwr, hwb⟩ := (mem_filter.mp hi).2
+      refine ⟨w, (mem_preceding _ _ _ _).mpr ⟨hw, hwr⟩, ?_⟩
+      have hle := sub_single_le_add hwb
+      intro x
+      have hh := hle x
+      by_cases hx : x = i
+      · subst x
+        simp only [Finsupp.add_apply, Finsupp.single_eq_same] at hh ⊢
+        omega
+      · simp [Finsupp.single_apply, hx, Ne.symm hx] at hh
+        simp only [Finsupp.add_apply]
+        omega
+  simp_rw [he]
+
+theorem linearQuotients_iff_witness {k : Type*} [CommSemiring k] [Nontrivial k]
+    {B : Family V} (hB : Antichain B) {r : GeneratorOrder V} (hirr : ∀ a, ¬ r a a) :
+    HasLinearQuotients k B r ↔ QuotientWitness B r :=
+  ⟨witness_of_linearQuotients hB hirr, linearQuotients_of_witness⟩
+
+theorem witness_is_exchange {B : Family V} {d : ℕ} (hB : Equigenerated B d)
+    {w b : Exponent V} (hw : w ∈ B) (hb : b ∈ B) {i : V}
+    (h : w - b = Finsupp.single i 1) :
+    ∃ j, i ≠ j ∧ 0 < b j ∧ w = exchange b j i := by
+  have hi := sub_single_receiver h
+  obtain ⟨j, hj⟩ := exists_surplus ((hB w hw).trans (hB b hb).symm) (show b i < w i by omega)
+  have hij : i ≠ j := by intro he; subst j; omega
+  have hle : w ≤ exchange b j i := by
+    have hwb := sub_single_le_add h
+    intro x
+    have hh := hwb x
+    by_cases hxi : x = i
+    · subst x
+      simp only [exchange_apply, if_neg hij, ite_true, Nat.sub_zero]
+      omega
+    by_cases hxj : x = j
+    · subst x
+      simp only [exchange_apply, ite_true, if_neg hij.symm, Nat.add_zero]
+      omega
+    · simpa [exchange_apply, hxi, hxj, Finsupp.single_apply,
+        Ne.symm hxi] using hh
+  exact ⟨j, hij, by omega, eq_of_le_of_degree_eq hle
+    ((hB w hw).trans ((exchange_degree b j i (by omega)).trans (hB b hb)).symm)⟩
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource1
+
+/-! ## Source: Characterizations.WitnessPaths -/
+section CheckedCharacterizationsSource2
+
+/-! # Linear-quotient witnesses connect every coordinate box -/
+
+noncomputable section
+
+namespace Characterizations
+
+open Classical Finset CommAlg.Polymatroid
+
+variable {V : Type*} [Fintype V] [DecidableEq V]
+
+theorem preceding_card_lt {B : Family V} {r : GeneratorOrder V}
+    (hirr : ∀ a, ¬ r a a) (htrans : ∀ {a b c}, r a b → r b c → r a c)
+    {a b : Exponent V} (ha : a ∈ B) (hab : r a b) :
+    (preceding B r a).card < (preceding B r b).card := by
+  apply Finset.card_lt_card
+  apply Finset.ssubset_iff_subset_ne.mpr
+  refine ⟨?_, ?_⟩
+  · intro x hx
+    obtain ⟨hxB, hxa⟩ := (mem_preceding _ _ _ _).mp hx
+    exact (mem_preceding _ _ _ _).mpr ⟨hxB, htrans hxa hab⟩
+  · intro he
+    have haa : a ∈ preceding B r a := he ▸ (mem_preceding _ _ _ _).mpr ⟨ha, hab⟩
+    exact hirr a ((mem_preceding _ _ _ _).mp haa).2
+
+theorem witness_le_sup {a b w : Exponent V} {i : V}
+    (hwb : w - b = Finsupp.single i 1) (hai : b i < a i) : w ≤ a ⊔ b := by
+  have hh := sub_single_le_add hwb
+  intro x
+  have hx := hh x
+  by_cases hxi : x = i
+  · subst x
+    simp only [Finsupp.add_apply, Finsupp.single_eq_same, Finsupp.sup_apply] at hx ⊢
+    omega
+  · simp only [Finsupp.add_apply, Finsupp.single_apply, if_neg hxi,
+      if_neg (Ne.symm hxi), Nat.add_zero, Finsupp.sup_apply] at hx ⊢
+    omega
+
+/-- A direct finite descent proof. It uses the literal colon witness and so
+works without assuming the desired exchange axiom. -/
+theorem boxConnected_of_witness {B : Family V} {d : ℕ} (hB : Equigenerated B d)
+    {r : GeneratorOrder V} (hirr : ∀ a, ¬ r a a)
+    (htrans : ∀ {a b c}, r a b → r b c → r a c)
+    (htotal : ∀ a b, a ≠ b → r a b ∨ r b a)
+    (hW : QuotientWitness B r) : BoxConnected B := by
+  intro C a ha haC b hb hbC
+  generalize hm : (preceding B r a).card + (preceding B r b).card = m
+  induction m using Nat.strong_induction_on generalizing a b with
+  | h m ih =>
+    by_cases he : a = b
+    · subst b
+      exact Relation.ReflTransGen.refl
+    rcases htotal a b he with hab | hba
+    · obtain ⟨w, hw, hwb, i, hwi, hai⟩ := hW a ha b hb hab
+      have hwC : w ≤ C := (witness_le_sup hwi hai).trans (sup_le haC hbC)
+      obtain ⟨j, hij, hbj, hew⟩ := witness_is_exchange hB hw hb hwi
+      have hlt := preceding_card_lt hirr htrans hw hwb
+      have hpath := ih ((preceding B r a).card + (preceding B r w).card)
+        (by omega) a ha haC w hw hwC rfl
+      exact hpath.tail ⟨hw, hb, hwC, hbC, (show UnitStep b w from
+        ⟨j, i, hij.symm, hbj, hew⟩).symm⟩
+    · obtain ⟨w, hw, hwa, i, hwi, hbi⟩ := hW b hb a ha hba
+      have hwC : w ≤ C := (witness_le_sup hwi hbi).trans (sup_le hbC haC)
+      obtain ⟨j, hij, haj, hew⟩ := witness_is_exchange hB hw ha hwi
+      have hlt := preceding_card_lt hirr htrans hw hwa
+      have hpath := ih ((preceding B r w).card + (preceding B r b).card)
+        (by omega) w hw hwC b hb hbC rfl
+      exact hpath.head ⟨ha, hw, haC, hwC, j, i, hij.symm, haj, hew⟩
+
+theorem boxConnected_of_linearQuotients {k : Type*} [CommSemiring k] [Nontrivial k]
+    {B : Family V} {d : ℕ} (hB : Equigenerated B d) {r : GeneratorOrder V}
+    (hirr : ∀ a, ¬ r a a) (htrans : ∀ {a b c}, r a b → r b c → r a c)
+    (htotal : ∀ a b, a ≠ b → r a b ∨ r b a) (hL : HasLinearQuotients k B r) :
+    BoxConnected B :=
+  boxConnected_of_witness hB hirr htrans htotal
+    (witness_of_linearQuotients hB.antichain hirr hL)
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource2
+
+/-! ## Source: Characterizations.FourObstruction -/
+section CheckedCharacterizationsSource3
+
+/-! # The four-coordinate exchange obstruction -/
+
+noncomputable section
+
+namespace Characterizations
+
+open Classical Finset CommAlg.Polymatroid
+
+variable {V : Type*} [Fintype V] [DecidableEq V]
+
+def SingletonExchange (B : Family V) : Prop :=
+  ∀ a ∈ B, ∀ b ∈ B, ∀ i,
+    (∀ h, b h < a h ↔ h = i) → ∀ j, a j < b j → exchange b j i ∈ B
+
+theorem exchange_mem_donor_pos {B : Family V} {d : ℕ} (hB : Equigenerated B d)
+    {c : Exponent V} (hc : c ∈ B) {i j : V} (hex : exchange c i j ∈ B) : 0 < c i := by
+  by_contra hi
+  have hz : c i = 0 := by omega
+  have hsub : c - Finsupp.single i 1 = c := by
+    ext x
+    by_cases hx : x = i
+    · subst x; simp [hz]
+    · simp [Finsupp.single_apply, hx, Ne.symm hx]
+  have hd := hB (exchange c i j) hex
+  simp only [exchange, hsub, map_add, Finsupp.degree_single, hB c hc] at hd
+  omega
+
+theorem two_exchanges_unique_receiver (c : Exponent V) {p i j : V}
+    (hpi : p ≠ i) (hpj : p ≠ j) (hij : i ≠ j) (h : V) :
+    c h < exchange (exchange c p i) j i h ↔ h = i := by
+  simp only [exchange_apply]
+  by_cases hhp : h = p <;> by_cases hhi : h = i <;> by_cases hhj : h = j <;>
+    simp_all [eq_comm] <;> omega
+
+theorem two_exchanges_against_receiver_swap (c : Exponent V) {p q i j : V}
+    (hpq : p ≠ q) (hpj : p ≠ j) (hqj : q ≠ j)
+    (hip : i ≠ p) (hij : i ≠ j) (hiq : i ≠ q) (hq : 0 < c q) (h : V) :
+    exchange c q i h < exchange (exchange c p q) j i h ↔ h = q := by
+  simp only [exchange_apply]
+  by_cases hhp : h = p <;> by_cases hhq : h = q <;>
+    by_cases hhi : h = i <;> by_cases hhj : h = j <;> simp_all [eq_comm] <;> omega
+
+theorem two_exchanges_commute (c : Exponent V) {p q i j : V}
+    (hpq : p ≠ q) (hpj : p ≠ j) (hqj : q ≠ j)
+    (hip : i ≠ p) (hij : i ≠ j) :
+    exchange (exchange c p q) j i = exchange (exchange c p i) j q := by
+  ext h
+  simp only [exchange_apply]
+  by_cases hhp : h = p <;> by_cases hhq : h = q <;>
+    by_cases hhi : h = i <;> by_cases hhj : h = j <;> simp_all [eq_comm] <;> omega
+
+/-- Lemma 3.5, with all nonnegativity obligations explicit and discharged.
+The two additional missing swaps are actual exponent-vector nonmembership. -/
+theorem four_coordinate_obstruction {B : Family V} {d : ℕ}
+    (hB : Equigenerated B d) (hconn : BoxConnected B) (hsingle : SingletonExchange B)
+    (hfail : ¬ ExchangeAxiom B) :
+    ∃ c u : Exponent V, c ∈ B ∧ u ∈ B ∧
+      ∃ p q i j : V, p ≠ q ∧ p ≠ j ∧ q ≠ j ∧ i ≠ p ∧ i ≠ j ∧ i ≠ q ∧
+        0 < c p ∧ 0 < c j ∧ u = exchange (exchange c p q) j i ∧
+        exchange c j i ∉ B ∧ exchange c j q ∉ B ∧
+        exchange c q i ∉ B ∧ exchange c i q ∉ B := by
+  obtain ⟨c, u, hc, hu, p, q, i, j, hpq, hpj, hqj, hip, hij, hp, hj, he, hni, hnq⟩ :=
+    failed_exchange_configuration hconn hfail
+  subst u
+  have hjdrop : exchange (exchange c p q) j i j < c j := by
+    simp only [exchange_apply, if_neg hpj.symm, if_neg hqj.symm, if_neg hij.symm,
+      ite_true, Nat.sub_zero, Nat.add_zero]
+    omega
+  have hiq : i ≠ q := by
+    intro he
+    subst q
+    exact hni (hsingle _ hu c hc i (two_exchanges_unique_receiver c hpq hpj hij) j hjdrop)
+  have hnoSwap (p q i j : V) (hpq : p ≠ q) (hpj : p ≠ j) (hqj : q ≠ j)
+      (hip : i ≠ p) (hij : i ≠ j) (hiq : i ≠ q) (hj : 0 < c j)
+      (hu : exchange (exchange c p q) j i ∈ B)
+      (hni : exchange c j i ∉ B) : exchange c q i ∉ B := by
+    intro hv
+    have hq := exchange_mem_donor_pos hB hc hv
+    have hdrop : exchange (exchange c p q) j i j < exchange c q i j := by
+      simp only [exchange_apply, if_neg hpj.symm, if_neg hqj.symm, if_neg hij.symm,
+        ite_true, Nat.sub_zero, Nat.add_zero]
+      omega
+    have hh := hsingle _ hu _ hv q
+      (two_exchanges_against_receiver_swap c hpq hpj hqj hip hij hiq hq) j hdrop
+    rw [two_exchanges_cancel c hiq.symm hqj hij hq] at hh
+    exact hni hh
+  have hqi := hnoSwap p q i j hpq hpj hqj hip hij hiq hj hu hni
+  have hiq' := hnoSwap p i q j hip.symm hpj hij hpq.symm hqj hiq.symm hj
+    (by rwa [← two_exchanges_commute c hpq hpj hqj hip hij]) hnq
+  exact ⟨c, _, hc, hu, p, q, i, j, hpq, hpj, hqj, hip, hij, hiq,
+    hp, hj, rfl, hni, hnq, hqi, hiq'⟩
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource3
+
+/-! ## Source: Characterizations.VariableOrders -/
+section CheckedCharacterizationsSource4
+
+/-! # Variable permutations and pure reverse lexicographic tests -/
+
+noncomputable section
+
+namespace Characterizations
+
+open Classical Finset CommAlg.Polymatroid
+
+variable {V : Type*} [Fintype V] [DecidableEq V]
+
+abbrev VariableOrder (V : Type*) [Fintype V] := V ≃ Fin (Fintype.card V)
+
+def variableLinearOrder (o : VariableOrder V) : LinearOrder V :=
+  LinearOrder.lift' o o.injective
+
+def variableRevlex (o : VariableOrder V) (a b : Exponent V) : Prop :=
+  ∃ i, a i < b i ∧ ∀ j, o i < o j → a j = b j
+
+theorem variableRevlex_irrefl (o : VariableOrder V) (a : Exponent V) :
+    ¬ variableRevlex o a a := by rintro ⟨i, hi, _⟩; exact (lt_irrefl _ hi)
+
+theorem variableRevlex_trans (o : VariableOrder V) {a b c : Exponent V}
+    (hab : variableRevlex o a b) (hbc : variableRevlex o b c) : variableRevlex o a c := by
+  letI := variableLinearOrder o
+  exact revlexBefore_trans hab hbc
+
+theorem variableRevlex_total (o : VariableOrder V) (a b : Exponent V) (hab : a ≠ b) :
+    variableRevlex o a b ∨ variableRevlex o b a := by
+  letI := variableLinearOrder o
+  exact revlexBefore_total hab
+
+theorem variableRevlex_exchange (o : VariableOrder V) (b : Exponent V) {i j : V}
+    (hji : o j < o i) (hi : 0 < b i) : variableRevlex o (exchange b i j) b := by
+  letI := variableLinearOrder o
+  exact exchange_revlexBefore b hji hi
+
+theorem variableRevlex_exchange_iff (o : VariableOrder V) (b : Exponent V) {i j : V}
+    (hij : i ≠ j) (hi : 0 < b i) :
+    variableRevlex o (exchange b i j) b ↔ o j < o i := by
+  refine ⟨?_, fun h => variableRevlex_exchange o b h hi⟩
+  rintro ⟨x, hx, he⟩
+  have hxi : x = i := by
+    by_contra hxi
+    simp only [exchange_apply, if_neg hxi, Nat.sub_zero] at hx
+    split_ifs at hx <;> omega
+  subst x
+  by_contra hji
+  have hlt : o i < o j := lt_of_le_of_ne (le_of_not_gt hji) (fun h => hij (o.injective h))
+  have hh := he j hlt
+  simp only [exchange_apply, if_neg hij.symm, ite_true, Nat.sub_zero] at hh
+  omega
+
+theorem polymatroidal_variable_linearQuotients {k : Type*} [CommSemiring k]
+    {B : Family V} (hB : ExchangeAxiom B) (o : VariableOrder V) :
+    HasLinearQuotients k B (variableRevlex o) := by
+  letI := variableLinearOrder o
+  intro b hb
+  exact ⟨revlexColonVariables B b, revlex_colon_eq_variableIdeal hB hb⟩
+
+def FinalPair (o : VariableOrder V) (i j : V) : Prop :=
+  o i < o j ∧ ∀ h, h ≠ i → h ≠ j → o h < o i
+
+def FinalTriple (o : VariableOrder V) (i q j : V) : Prop :=
+  o i < o j ∧ o q < o j ∧
+    ∀ h, h ≠ i → h ≠ q → h ≠ j → o h < o i ∧ o h < o q
+
+def CoversFinalPairs (F : Set (VariableOrder V)) : Prop :=
+  ∀ i j, i ≠ j → ∃ o ∈ F, FinalPair o i j
+
+def CoversFinalTriples (F : Set (VariableOrder V)) : Prop :=
+  ∀ i q j, i ≠ q → i ≠ j → q ≠ j → ∃ o ∈ F, FinalTriple o i q j
+
+theorem FinalPair.no_after {o : VariableOrder V} {i j : V} (hF : FinalPair o i j) (h : V) :
+    ¬ o j < o h := by
+  intro hlt
+  by_cases hhi : h = i
+  · subst h; exact (not_lt_of_gt hF.1) hlt
+  by_cases hhj : h = j
+  · subst h; exact (lt_irrefl _ hlt)
+  exact (lt_irrefl _ (hlt.trans ((hF.2 h hhi hhj).trans hF.1)))
+
+theorem FinalTriple.no_after {o : VariableOrder V} {i q j : V}
+    (hF : FinalTriple o i q j) (h : V) : ¬ o j < o h := by
+  intro hlt
+  by_cases hhi : h = i
+  · subst h; exact (not_lt_of_gt hF.1) hlt
+  by_cases hhq : h = q
+  · subst h; exact (not_lt_of_gt hF.2.1) hlt
+  by_cases hhj : h = j
+  · subst h; exact (lt_irrefl _ hlt)
+  exact (lt_irrefl _ (hlt.trans (((hF.2.2 h hhi hhq hhj).1).trans hF.1)))
+
+/-- Lemma 3.4: final-pair orders force every prescribed single-receiver exchange. -/
+theorem singletonExchange_of_finalPairs {k : Type*} [CommSemiring k] [Nontrivial k]
+    {B : Family V} {d : ℕ} (hB : Equigenerated B d) (F : Set (VariableOrder V))
+    (hF : CoversFinalPairs F)
+    (hL : ∀ o ∈ F, HasLinearQuotients k B (variableRevlex o)) : SingletonExchange B := by
+  intro a ha b hb i hi j hj
+  have hij : i ≠ j := by
+    intro he
+    subst j
+    have hh := (hi i).mpr rfl
+    omega
+  obtain ⟨o, ho, hp⟩ := hF i j hij
+  have hab : variableRevlex o a b :=
+    ⟨j, hj, fun x hx => False.elim (hp.no_after x hx)⟩
+  obtain ⟨w, hw, hwb, z, hwz, haz⟩ :=
+    witness_of_linearQuotients hB.antichain (variableRevlex_irrefl o) (hL o ho) a ha b hb hab
+  have hzi : z = i := (hi z).mp haz
+  subst z
+  obtain ⟨t, hit, ht, hew⟩ := witness_is_exchange hB hw hb hwz
+  have horder : o i < o t :=
+    (variableRevlex_exchange_iff o b hit.symm ht).mp (hew ▸ hwb)
+  have htj : t = j := by
+    by_contra htj
+    exact (not_lt_of_gt (hp.2 t hit.symm htj)) horder
+  simpa [hew, htj] using hw
+
+/-- Theorem 3.6: the exact final-pair and final-triple patterns suffice. -/
+theorem exchange_of_order_coverage {k : Type*} [CommSemiring k] [Nontrivial k]
+    {B : Family V} {d : ℕ} (hB : Equigenerated B d) (F : Set (VariableOrder V))
+    (hne : F.Nonempty) (hpairs : CoversFinalPairs F) (htriples : CoversFinalTriples F)
+    (hL : ∀ o ∈ F, HasLinearQuotients k B (variableRevlex o)) : ExchangeAxiom B := by
+  obtain ⟨o₀, ho₀⟩ := hne
+  have hconn := boxConnected_of_linearQuotients hB (variableRevlex_irrefl o₀)
+    (fun {_ _ _} => variableRevlex_trans o₀) (variableRevlex_total o₀) (hL o₀ ho₀)
+  have hsingle := singletonExchange_of_finalPairs hB F hpairs hL
+  by_contra hfail
+  obtain ⟨c, u, hc, hu, p, q, i, j, hpq, hpj, hqj, hip, hij, hiq,
+    hp, hj, he, hni, hnq, hnqi, hniq⟩ := four_coordinate_obstruction hB hconn hsingle hfail
+  subst u
+  obtain ⟨o, ho, hfinal⟩ := htriples i q j hiq hij hqj
+  have huc : variableRevlex o (exchange (exchange c p q) j i) c := by
+    refine ⟨j, ?_, fun x hx => False.elim (hfinal.no_after x hx)⟩
+    simp only [exchange_apply, if_neg hpj.symm, if_neg hqj.symm, if_neg hij.symm,
+      ite_true, Nat.sub_zero, Nat.add_zero]
+    omega
+  obtain ⟨w, hw, hwc, z, hwz, hcz⟩ := witness_of_linearQuotients hB.antichain
+    (variableRevlex_irrefl o) (hL o ho) _ hu c hc huc
+  have hziq : z = i ∨ z = q := by
+    by_contra hz
+    push_neg at hz
+    simp only [exchange_apply, if_neg hz.1, if_neg hz.2, Nat.add_zero] at hcz
+    split_ifs at hcz <;> omega
+  obtain ⟨t, hzt, ht, hew⟩ := witness_is_exchange hB hw hc hwz
+  have horder : o z < o t :=
+    (variableRevlex_exchange_iff o c hzt.symm ht).mp (hew ▸ hwc)
+  rcases hziq with rfl | rfl
+  · by_cases htj : t = j
+    · exact hni (by simpa [hew, htj] using hw)
+    by_cases htq : t = q
+    · exact hnqi (by simpa [hew, htq] using hw)
+    exact (not_lt_of_gt (hfinal.2.2 t hzt.symm htq htj).1) horder
+  · by_cases htj : t = j
+    · exact hnq (by simpa [hew, htj] using hw)
+    by_cases hti : t = i
+    · exact hniq (by simpa [hew, hti] using hw)
+    exact (not_lt_of_gt (hfinal.2.2 t hti hzt.symm htj).2) horder
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource4
+
+/-! ## Source: Characterizations.OrderExistence -/
+section CheckedCharacterizationsSource5
+
+/-! # Actual variable permutations with specified final patterns -/
+
+noncomputable section
+
+namespace Characterizations
+
+open Classical Finset CommAlg.Polymatroid
+
+variable {V : Type*} [Fintype V] [DecidableEq V]
+
+theorem exists_order_refining (f : V → ℕ) :
+    ∃ o : VariableOrder V, ∀ a b, f a < f b → o a < o b := by
+  let e := Fintype.equivFin V
+  let key : V → Lex (ℕ × Fin (Fintype.card V)) := fun a => toLex (f a, e a)
+  have hk : Function.Injective key := by
+    intro a b h
+    exact e.injective (congrArg (fun z => (ofLex z).2) h)
+  letI : LinearOrder V := LinearOrder.lift' key hk
+  let o : V ≃o Fin (Fintype.card V) := (Fintype.orderIsoFinOfCardEq V rfl).symm
+  refine ⟨o.toEquiv, ?_⟩
+  intro a b hab
+  apply o.strictMono
+  change key a < key b
+  exact Prod.Lex.toLex_lt_toLex.mpr (Or.inl hab)
+
+theorem exists_finalPair (i j : V) (hij : i ≠ j) :
+    ∃ o : VariableOrder V, FinalPair o i j := by
+  let f : V → ℕ := fun h => if h = j then 2 else if h = i then 1 else 0
+  obtain ⟨o, ho⟩ := exists_order_refining f
+  refine ⟨o, ho i j (by simp [f, hij]), ?_⟩
+  intro h hhi hhj
+  apply ho
+  simp [f, hhi, hhj, hij]
+
+theorem exists_finalTriple (i q j : V) (hiq : i ≠ q) (hij : i ≠ j) (hqj : q ≠ j) :
+    ∃ o : VariableOrder V, FinalTriple o i q j := by
+  let f : V → ℕ := fun h => if h = j then 2 else if h = i ∨ h = q then 1 else 0
+  obtain ⟨o, ho⟩ := exists_order_refining f
+  refine ⟨o, ho i j (by simp [f, hij]), ho q j (by simp [f, hqj]), ?_⟩
+  intro h hhi hhq hhj
+  constructor <;> apply ho <;> simp [f, hhi, hhq, hhj, hij, hqj]
+
+/-- The complete universal reverse-lexicographic characterization, stated
+with actual polynomial colon ideals over every nontrivial coefficient semiring. -/
+theorem polymatroidal_iff_universal_revlex {k : Type*} [CommSemiring k] [Nontrivial k]
+    {B : Family V} {d : ℕ} (hB : Equigenerated B d) :
+    IsPolymatroidal B ↔ ∀ o : VariableOrder V, HasLinearQuotients k B (variableRevlex o) := by
+  constructor
+  · intro h o
+    exact polymatroidal_variable_linearQuotients h.2 o
+  · intro h
+    refine ⟨⟨d, hB⟩, ?_⟩
+    apply exchange_of_order_coverage (k := k) hB Set.univ
+      ⟨Fintype.equivFin V, Set.mem_univ _⟩
+    · intro i j hij
+      obtain ⟨o, ho⟩ := exists_finalPair i j hij
+      exact ⟨o, Set.mem_univ _, ho⟩
+    · intro i q j hiq hij hqj
+      obtain ⟨o, ho⟩ := exists_finalTriple i q j hiq hij hqj
+      exact ⟨o, Set.mem_univ _, ho⟩
+    · intro o ho
+      exact h o
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource5
+
+/-! ## Source: Characterizations.PureDegree -/
+section CheckedCharacterizationsSource6
+
+/-! # Universal pure reverse lexicographic quotients force one degree -/
+
+noncomputable section
+
+namespace Characterizations
+
+open Classical Finset CommAlg.Polymatroid
+
+variable {V : Type*} [Fintype V] [DecidableEq V]
+
+def boxFamily (B : Family V) (C : Exponent V) : Family V := B.filter (· ≤ C)
+
+@[simp] theorem mem_boxFamily (B : Family V) (C a : Exponent V) :
+    a ∈ boxFamily B C ↔ a ∈ B ∧ a ≤ C := by simp [boxFamily]
+
+theorem antichain_boxFamily {B : Family V} (hB : Antichain B) (C : Exponent V) :
+    Antichain (boxFamily B C) := fun a ha b hb hab =>
+  hB a ((mem_boxFamily _ _ _).mp ha).1 b ((mem_boxFamily _ _ _).mp hb).1 hab
+
+theorem witness_boxFamily {B : Family V} {r : GeneratorOrder V}
+    (hW : QuotientWitness B r) (C : Exponent V) : QuotientWitness (boxFamily B C) r := by
+  intro a ha b hb hab
+  obtain ⟨haB, haC⟩ := (mem_boxFamily _ _ _).mp ha
+  obtain ⟨hbB, hbC⟩ := (mem_boxFamily _ _ _).mp hb
+  obtain ⟨w, hw, hwr, i, hwi, hai⟩ := hW a haB b hbB hab
+  exact ⟨w, (mem_boxFamily _ _ _).mpr ⟨hw, (witness_le_sup hwi hai).trans
+    (sup_le haC hbC)⟩, hwr, i, hwi, hai⟩
+
+/-- Lemma 3.8, expressed with ordinary polynomial colon ideals. -/
+theorem linearQuotients_boxFamily {k : Type*} [CommSemiring k] [Nontrivial k]
+    {B : Family V} (hB : Antichain B) {r : GeneratorOrder V} (hirr : ∀ a, ¬ r a a)
+    (hL : HasLinearQuotients k B r) (C : Exponent V) :
+    HasLinearQuotients k (boxFamily B C) r :=
+  linearQuotients_of_witness (witness_boxFamily (witness_of_linearQuotients hB hirr hL) C)
+
+theorem witness_degree_le {B : Family V} (hB : Antichain B)
+    {w b : Exponent V} (hw : w ∈ B) (hb : b ∈ B) {i : V}
+    (h : w - b = Finsupp.single i 1) : w.degree ≤ b.degree := by
+  have hle := sub_single_le_add h
+  have hd := degree_mono hle
+  simp only [map_add, Finsupp.degree_single] at hd
+  by_contra hbad
+  have heq : w.degree = (b + Finsupp.single i 1).degree := by
+    simp only [map_add, Finsupp.degree_single]
+    omega
+  have hwEq := eq_of_le_of_degree_eq hle heq
+  have hbEq := hB b hb w hw (hwEq ▸ le_add_right le_rfl)
+  have hwi := sub_single_receiver h
+  rw [hbEq] at hwi
+  omega
+
+/-- Lemma 3.7: the first generator has the least total degree. -/
+theorem first_generator_minimum_degree {B : Family V} (hB : Antichain B)
+    {r : GeneratorOrder V} (hirr : ∀ a, ¬ r a a)
+    (htrans : ∀ {a b c}, r a b → r b c → r a c)
+    (htotal : ∀ a b, a ≠ b → r a b ∨ r b a) (hW : QuotientWitness B r)
+    (a : Exponent V) (ha : a ∈ B) (hfirst : ∀ b ∈ B, ¬ r b a) :
+    ∀ b ∈ B, a.degree ≤ b.degree := by
+  intro b hb
+  generalize hm : (preceding B r b).card = m
+  induction m using Nat.strong_induction_on generalizing b with
+  | h m ih =>
+    by_cases he : a = b
+    · subst b; exact le_rfl
+    have hab : r a b := (htotal a b he).resolve_right (hfirst b hb)
+    obtain ⟨w, hw, hwr, i, hwi, _⟩ := hW a ha b hb hab
+    have hlt := preceding_card_lt hirr htrans hw hwr
+    exact (ih _ (by omega) w hw rfl).trans (witness_degree_le hB hw hb hwi)
+
+theorem exists_first_generator {B : Family V} (hne : B.Nonempty)
+    {r : GeneratorOrder V} (hirr : ∀ a, ¬ r a a)
+    (htrans : ∀ {a b c}, r a b → r b c → r a c) :
+    ∃ a ∈ B, ∀ b ∈ B, ¬ r b a := by
+  obtain ⟨a, ha, hmin⟩ := B.exists_min_image (fun b => (preceding B r b).card) hne
+  refine ⟨a, ha, ?_⟩
+  intro b hb hba
+  exact (not_lt_of_ge (hmin b hb)) (preceding_card_lt hirr htrans hb hba)
+
+def LastVariable (o : VariableOrder V) (i : V) : Prop := ∀ j, j ≠ i → o j < o i
+
+theorem exists_lastVariable (i : V) : ∃ o : VariableOrder V, LastVariable o i := by
+  obtain ⟨o, ho⟩ := exists_order_refining (fun j : V => if j = i then 1 else 0)
+  exact ⟨o, fun j hji => ho j i (by simp [hji])⟩
+
+/-- Lemma 3.9. The selected last-variable orders need not be the same orders
+for different variables, and no degree hypothesis is assumed. -/
+theorem equigenerated_of_lastVariable_tests {k : Type*} [CommSemiring k] [Nontrivial k]
+    {B : Family V} (hne : B.Nonempty) (hB : Antichain B)
+    (hL : ∀ i : V, ∃ o : VariableOrder V, LastVariable o i ∧
+      HasLinearQuotients k B (variableRevlex o)) : ∃ d, Equigenerated B d := by
+  obtain ⟨a₀, ha₀, hmin⟩ := B.exists_min_image Finsupp.degree hne
+  let d := a₀.degree
+  refine ⟨d, ?_⟩
+  intro b hb
+  have hdb : d ≤ b.degree := hmin b hb
+  by_contra hbd
+  have hbd' : d < b.degree := by omega
+  let D := B.filter (fun a => a.degree = d)
+  have hD : D.Nonempty := ⟨a₀, mem_filter.mpr ⟨ha₀, rfl⟩⟩
+  obtain ⟨a, haD, hdelta⟩ := D.exists_min_image (fun a => (a - b).degree) hD
+  obtain ⟨ha, had⟩ := mem_filter.mp haD
+  have hnot : ¬ a ≤ b := by
+    intro hab
+    have he := hB a ha b hb hab
+    have hh := congrArg Finsupp.degree he
+    omega
+  obtain ⟨i, hi⟩ : ∃ i, b i < a i := by
+    change ¬ ∀ i, a i ≤ b i at hnot
+    simpa only [not_forall, not_le] using hnot
+  let C := a ⊔ b
+  have haC : a ∈ boxFamily B C := (mem_boxFamily _ _ _).mpr ⟨ha, le_sup_left⟩
+  have hbC : b ∈ boxFamily B C := (mem_boxFamily _ _ _).mpr ⟨hb, le_sup_right⟩
+  have hfix {a' : Exponent V} (ha' : a' ∈ boxFamily B C) (hd' : a'.degree = d) : a' i = a i := by
+    obtain ⟨ha'B, ha'C⟩ := (mem_boxFamily _ _ _).mp ha'
+    have hle : a' - b ≤ a - b := by
+      intro x
+      have hh := ha'C x
+      simp only [C, Finsupp.sup_apply, Finsupp.tsub_apply] at hh ⊢
+      omega
+    have hdeg : (a' - b).degree = (a - b).degree :=
+      le_antisymm (degree_mono hle) (hdelta a' (mem_filter.mpr ⟨ha'B, hd'⟩))
+    have he := congrArg (fun c : Exponent V => c i) (eq_of_le_of_degree_eq hle hdeg)
+    simp only [Finsupp.tsub_apply] at he
+    omega
+  obtain ⟨o, holast, hoL⟩ := hL i
+  have hW := witness_boxFamily (witness_of_linearQuotients hB (variableRevlex_irrefl o) hoL) C
+  obtain ⟨w, hw, hfirst⟩ := exists_first_generator ⟨a, haC⟩ (variableRevlex_irrefl o)
+    (fun {_ _ _} => variableRevlex_trans o)
+  have hwd : w.degree = d := by
+    have hlo := hmin w ((mem_boxFamily _ _ _).mp hw).1
+    have hhi := first_generator_minimum_degree (antichain_boxFamily hB C)
+      (variableRevlex_irrefl o) (fun {_ _ _} => variableRevlex_trans o)
+      (variableRevlex_total o) hW w hw hfirst a haC
+    omega
+  apply hfirst b hbC
+  refine ⟨i, ?_, ?_⟩
+  · rw [hfix hw hwd]
+    exact hi
+  · intro j hij
+    by_cases hji : j = i
+    · subst j; exact (lt_irrefl _ hij).elim
+    · exact (not_lt_of_gt (holast j hji) hij).elim
+
+/-- Corollary 3.10: universal pure reverse-lexicographic quotients characterize
+polymatroidality without any equigeneration assumption. -/
+theorem polymatroidal_iff_universal_pure_revlex {k : Type*} [CommSemiring k] [Nontrivial k]
+    {B : Family V} (hB : Antichain B) :
+    IsPolymatroidal B ↔ ∀ o : VariableOrder V, HasLinearQuotients k B (variableRevlex o) := by
+  constructor
+  · intro h o
+    exact polymatroidal_variable_linearQuotients h.2 o
+  · intro h
+    by_cases hne : B.Nonempty
+    · obtain ⟨d, hd⟩ := equigenerated_of_lastVariable_tests (k := k) hne hB (fun i => by
+        obtain ⟨o, ho⟩ := exists_lastVariable i
+        exact ⟨o, ho, h o⟩)
+      exact (polymatroidal_iff_universal_revlex hd).mpr h
+    · have hzero : B = ∅ := Finset.not_nonempty_iff_eq_empty.mp hne
+      subst B
+      exact ⟨⟨0, by simp [Equigenerated]⟩, by simp [ExchangeAxiom]⟩
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource6
+
+/-! ## Source: Characterizations.BoundedFamilies -/
+section CheckedCharacterizationsSource7
+
+/-! # Capped Veronese families and deletion of one generator -/
+
+noncomputable section
+
+namespace Characterizations
+
+open Classical Finset CommAlg.Polymatroid
+
+variable {V : Type*} [Fintype V] [DecidableEq V]
+
+def boundedFamily (d : ℕ) (W : Finset V) : Family V :=
+  (Finsupp.finite_of_degree_eq (σ := V) d).toFinset.filter (fun a => ∀ i ∈ W, a i ≤ 1)
+
+@[simp] theorem mem_boundedFamily (d : ℕ) (W : Finset V) (a : Exponent V) :
+    a ∈ boundedFamily d W ↔ a.degree = d ∧ ∀ i ∈ W, a i ≤ 1 := by
+  simp [boundedFamily]
+
+def deletedBounded (d : ℕ) (W : Finset V) (h : Exponent V) : Family V :=
+  (boundedFamily d W).erase h
+
+@[simp] theorem mem_deletedBounded (d : ℕ) (W : Finset V) (h a : Exponent V) :
+    a ∈ deletedBounded d W h ↔ a ≠ h ∧ a.degree = d ∧ ∀ i ∈ W, a i ≤ 1 := by
+  simp [deletedBounded]
+
+theorem boundedFamily_equigenerated (d : ℕ) (W : Finset V) :
+    Equigenerated (boundedFamily d W) d := fun a ha => ((mem_boundedFamily _ _ _).mp ha).1
+
+theorem deletedBounded_equigenerated (d : ℕ) (W : Finset V) (h : Exponent V) :
+    Equigenerated (deletedBounded d W h) d := fun a ha => ((mem_deletedBounded _ _ _ _).mp ha).2.1
+
+theorem boundedFamily_exchange {d : ℕ} {W : Finset V} {a b : Exponent V}
+    (ha : a ∈ boundedFamily d W) (hb : b ∈ boundedFamily d W)
+    {p q : V} (hp : a p < b p) (hq : b q < a q) :
+    exchange b p q ∈ boundedFamily d W := by
+  obtain ⟨had, hac⟩ := (mem_boundedFamily _ _ _).mp ha
+  obtain ⟨hbd, hbc⟩ := (mem_boundedFamily _ _ _).mp hb
+  have hpq : p ≠ q := by intro h; subst q; omega
+  apply (mem_boundedFamily _ _ _).mpr
+  refine ⟨(exchange_degree b p q (by omega)).trans hbd, ?_⟩
+  intro x hx
+  have hbx := hbc x hx
+  by_cases hxq : x = q
+  · subst x
+    have haq := hac q hx
+    simp only [exchange_apply, if_neg hpq.symm, ite_true, Nat.sub_zero]
+    omega
+  · simp only [exchange_apply, if_neg hxq, Nat.add_zero]
+    split_ifs <;> omega
+
+theorem exchange_sub_self (b : Exponent V) {p q : V} (hpq : p ≠ q) :
+    exchange b p q - b = Finsupp.single q 1 := by
+  ext x
+  simp only [Finsupp.tsub_apply, exchange_apply, Finsupp.single_apply]
+  by_cases hxp : x = p <;> by_cases hxq : x = q <;> simp_all [eq_comm] <;> omega
+
+theorem exchange_receiver_injective (b : Exponent V) (p : V) :
+    Function.Injective (exchange b p) := by
+  intro i j he
+  by_contra hij
+  have hh := congrArg (fun a : Exponent V => a i) he
+  simp only [exchange_apply, ite_true, if_neg hij] at hh
+  omega
+
+theorem exchange_eq_of_unique_receiver {a b : Exponent V} {p q : V}
+    (hdeg : a.degree = b.degree) (hp : a p < b p)
+    (hq : a q = b q + 1) (hunique : ∀ i, b i < a i → i = q) :
+    a = exchange b p q := by
+  have hpq : p ≠ q := by intro he; subst q; omega
+  apply eq_of_le_of_degree_eq
+  · intro x
+    by_cases hxp : x = p
+    · subst x
+      simp only [exchange_apply, ite_true, if_neg hpq, Nat.add_zero]
+      omega
+    by_cases hxq : x = q
+    · subst x
+      simp only [exchange_apply, if_neg hpq.symm, ite_true, Nat.sub_zero]
+      exact hq.le
+    have hx : a x ≤ b x := by
+      by_contra hx
+      exact hxq (hunique x (by omega))
+    simpa [exchange_apply, hxp, hxq] using hx
+  · exact hdeg.trans (exchange_degree b p q (by omega)).symm
+
+/-- Any failed prescribed exchange after one deletion has one receiving
+coordinate, and both donor and receiver lie outside the saturated caps. -/
+theorem deletedBounded_failed_exchange {d : ℕ} {W : Finset V} {h a b : Exponent V}
+    (hsat : ∀ i ∈ W, h i = 1)
+    (ha : a ∈ deletedBounded d W h) (hb : b ∈ deletedBounded d W h)
+    {p : V} (hp : a p < b p)
+    (hbad : ∀ q, b q < a q → exchange b p q ∉ deletedBounded d W h) :
+    ∃ q, (∀ i, b i < a i ↔ i = q) ∧ p ≠ q ∧ p ∉ W ∧ q ∉ W ∧
+      0 < h q ∧ exchange b p q = h ∧ b = exchange h q p := by
+  obtain ⟨han, had, hac⟩ := (mem_deletedBounded _ _ _ _).mp ha
+  obtain ⟨hbn, hbd, hbc⟩ := (mem_deletedBounded _ _ _ _).mp hb
+  obtain ⟨q, hq⟩ := exists_surplus (hbd.trans had.symm) hp
+  have hpq : p ≠ q := by intro he; subst q; omega
+  have heq (i : V) (hi : b i < a i) : exchange b p i = h := by
+    have hfull := boundedFamily_exchange ((mem_boundedFamily _ _ _).mpr ⟨had, hac⟩)
+      ((mem_boundedFamily _ _ _).mpr ⟨hbd, hbc⟩) hp hi
+    by_contra he
+    exact hbad i hi (mem_erase.mpr ⟨he, hfull⟩)
+  have huniq (i : V) (hi : b i < a i) : i = q :=
+    exchange_receiver_injective b p ((heq i hi).trans (heq q hq).symm)
+  have hpW : p ∉ W := by
+    intro hpW
+    have hh := congrArg (fun a : Exponent V => a p) (heq q hq)
+    have hbp := hbc p hpW
+    simp only [exchange_apply, ite_true, if_neg hpq, Nat.add_zero, hsat p hpW] at hh
+    omega
+  have hhq : h q = b q + 1 := by
+    have hh := congrArg (fun a : Exponent V => a q) (heq q hq)
+    simpa only [exchange_apply, if_neg hpq.symm, ite_true, Nat.sub_zero] using hh.symm
+  have hqW : q ∉ W := by
+    intro hqW
+    have haq := hac q hqW
+    have he : a q = b q + 1 := by omega
+    exact han ((exchange_eq_of_unique_receiver (had.trans hbd.symm) hp he huniq).trans (heq q hq))
+  refine ⟨q, fun i => ⟨huniq i, fun he => he ▸ hq⟩, hpq, hpW, hqW,
+    by omega, heq q hq, ?_⟩
+  rw [← heq q hq, exchange_inverse hpq (by omega)]
+
+/-- Lemma 4.6 in a slightly stronger form: the removed exponent can be
+arbitrary off the capped coordinates. -/
+theorem deletedBounded_linearQuotients_last {k : Type*} [CommSemiring k]
+    (d : ℕ) (W : Finset V) (h : Exponent V) (hsat : ∀ i ∈ W, h i = 1)
+    (o : VariableOrder V) (w : V) (hw : w ∈ W) (hlast : LastVariable o w) :
+    HasLinearQuotients k (deletedBounded d W h) (variableRevlex o) := by
+  apply linearQuotients_of_witness
+  intro a ha b hb hab
+  obtain ⟨han, had, hac⟩ := (mem_deletedBounded _ _ _ _).mp ha
+  obtain ⟨hbn, hbd, hbc⟩ := (mem_deletedBounded _ _ _ _).mp hb
+  obtain ⟨p, hp, hafter⟩ := hab
+  obtain ⟨q, hq⟩ := exists_surplus (hbd.trans had.symm) hp
+  have hpq : p ≠ q := by intro he; subst q; omega
+  have hqp : o q < o p := by
+    rcases lt_trichotomy (o q) (o p) with h | h | h
+    · exact h
+    · exact (hpq (o.injective h).symm).elim
+    · have hh := hafter q h
+      omega
+  have hfull := boundedFamily_exchange ((mem_boundedFamily _ _ _).mpr ⟨had, hac⟩)
+    ((mem_boundedFamily _ _ _).mpr ⟨hbd, hbc⟩) hp hq
+  by_cases he : exchange b p q = h
+  · have hpw : p ≠ w := by
+      intro hpw
+      subst p
+      have hh := congrArg (fun a : Exponent V => a w) he
+      have hbw := hbc w hw
+      simp only [exchange_apply, ite_true, if_neg hpq, Nat.add_zero, hsat w hw] at hh
+      omega
+    have hqw : q ≠ w := by
+      intro hqw
+      subst q
+      exact (not_lt_of_gt (hlast p hpw)) hqp
+    have hbw : b w = 1 := by
+      have hh := congrArg (fun a : Exponent V => a w) he
+      simpa only [exchange_apply, if_neg hpw.symm, if_neg hqw.symm,
+        Nat.sub_zero, Nat.add_zero, hsat w hw] using hh
+    have hnew : exchange b w q ∈ boundedFamily d W := by
+      apply (mem_boundedFamily _ _ _).mpr
+      refine ⟨(exchange_degree b w q (by omega)).trans hbd, ?_⟩
+      intro x hx
+      have hbx := hbc x hx
+      by_cases hxq : x = q
+      · subst x
+        have haq := hac q hx
+        simp only [exchange_apply, if_neg hqw, ite_true, Nat.sub_zero]
+        omega
+      · simp only [exchange_apply, if_neg hxq, Nat.add_zero]
+        split_ifs <;> omega
+    have hne : exchange b w q ≠ h := by
+      intro hew
+      have hh := congrArg (fun a : Exponent V => a w) hew
+      simp [hbw, hqw.symm, hsat w hw] at hh
+    exact ⟨exchange b w q, mem_erase.mpr ⟨hne, hnew⟩,
+      variableRevlex_exchange o b (hlast q hqw) (by omega), q,
+      exchange_sub_self b hqw.symm, hq⟩
+  · exact ⟨exchange b p q, mem_erase.mpr ⟨he, hfull⟩,
+      variableRevlex_exchange o b hqp (by omega), q, exchange_sub_self b hpq, hq⟩
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource7
+
+/-! ## Source: Characterizations.Localization -/
+section CheckedCharacterizationsSource8
+
+/-! # Literal monomial localization in the retained-variable polynomial ring -/
+
+noncomputable section
+
+namespace Characterizations
+
+open CommAlg.Polymatroid
+open scoped BigOperators
+
+variable {V : Type*} [Fintype V] [DecidableEq V]
+
+def restrictExponent (U : Finset V) (a : Exponent V) : Exponent U :=
+  a.subtypeDomain (· ∈ U)
+
+@[simp] theorem restrictExponent_apply (U : Finset V) (a : Exponent V) (i : U) :
+    restrictExponent U a i = a i := rfl
+
+def extendExponent (U : Finset V) (a : Exponent U) : Exponent V := a.extendDomain
+
+@[simp] theorem extendExponent_apply (U : Finset V) (a : Exponent U) (i : V) :
+    extendExponent U a i = if hi : i ∈ U then a ⟨i, hi⟩ else 0 := by
+  simp [extendExponent, Finsupp.extendDomain_apply]
+
+@[simp] theorem restrict_extend (U : Finset V) (a : Exponent U) :
+    restrictExponent U (extendExponent U a) = a := by
+  ext i
+  simp
+
+@[simp] theorem extend_restrict (U : Finset V) (a : Exponent V) :
+    extendExponent U (restrictExponent U a) = project U a := by
+  ext i
+  by_cases hi : i ∈ U <;> simp [hi]
+
+theorem extendExponent_le_iff (U : Finset V) (a b : Exponent U) :
+    extendExponent U a ≤ extendExponent U b ↔ a ≤ b := by
+  constructor
+  · intro h i
+    simpa using h i
+  · intro h i
+    by_cases hi : i ∈ U
+    · simpa [hi] using h ⟨i, hi⟩
+    · simp [hi]
+
+def extendExponentEmbedding (U : Finset V) : Exponent U ↪o Exponent V :=
+  OrderEmbedding.ofMapLEIff (extendExponent U) (extendExponent_le_iff U)
+
+theorem restrictExponent_degree (U : Finset V) (a : Exponent V) :
+    (restrictExponent U a).degree = subsetSum a U := by
+  rw [Finsupp.degree_eq_sum]
+  exact Finset.sum_coe_sort U (fun i => a i)
+
+theorem extendExponent_degree (U : Finset V) (a : Exponent U) :
+    (extendExponent U a).degree = a.degree := by
+  rw [Finsupp.degree_eq_sum, Finsupp.degree_eq_sum]
+  simp only [extendExponent_apply]
+  rw [← Finset.sum_attach_eq_sum_dite U (fun i => a i)]
+  rfl
+
+def localFamily (B : Family V) (U : Finset V) : Family U :=
+  minimalFamily (B.image (restrictExponent U))
+
+theorem localFamily_antichain (B : Family V) (U : Finset V) : Antichain (localFamily B U) :=
+  minimalFamily_antichain _
+
+theorem localFamily_nonempty {B : Family V} (hB : B.Nonempty) (U : Finset V) :
+    (localFamily B U).Nonempty := minimalFamily_nonempty (hB.image _)
+
+theorem contains_localFamily (B : Family V) (U : Finset V) (a : Exponent U) :
+    Contains (localFamily B U) a ↔ ∃ b ∈ B, restrictExponent U b ≤ a := by
+  rw [localFamily, contains_minimalFamily]
+  simp [Contains]
+
+theorem contains_localize_iff (B : Family V) (U : Finset V) (a : Exponent V) :
+    Contains (localize B U) a ↔ Contains (localFamily B U) (restrictExponent U a) := by
+  rw [contains_localize, contains_localFamily]
+  constructor
+  · rintro ⟨b, hb, hba⟩
+    refine ⟨b, hb, ?_⟩
+    intro i
+    simpa using hba i
+  · rintro ⟨b, hb, hba⟩
+    refine ⟨b, hb, ?_⟩
+    intro i
+    by_cases hi : i ∈ U
+    · simpa [hi] using hba ⟨i, hi⟩
+    · simp [hi]
+
+theorem minimalFamily_image_orderEmbedding {W : Type*} [Fintype W] [DecidableEq W]
+    (f : Exponent V ↪o Exponent W) (B : Family V) :
+    minimalFamily (B.image f) = (minimalFamily B).image f := by
+  ext a
+  simp only [mem_minimalFamily, Finset.mem_image]
+  constructor
+  · rintro ⟨⟨b, hb, rfl⟩, hmin⟩
+    refine ⟨b, ⟨hb, ?_⟩, rfl⟩
+    intro c hc hcb
+    exact f.injective (hmin (f c) ⟨c, hc, rfl⟩ (f.monotone hcb))
+  · rintro ⟨b, ⟨hb, hmin⟩, rfl⟩
+    refine ⟨⟨b, hb, rfl⟩, ?_⟩
+    rintro _ ⟨c, hc, rfl⟩ hcb
+    exact congrArg f (hmin c hc (f.le_iff_le.mp hcb))
+
+theorem localize_eq_extend_localFamily (B : Family V) (U : Finset V) :
+    localize B U = (localFamily B U).image (extendExponent U) := by
+  have h := minimalFamily_image_orderEmbedding (extendExponentEmbedding U)
+    (B.image (restrictExponent U))
+  simpa only [Finset.image_image, Function.comp_def, extendExponentEmbedding,
+    OrderEmbedding.coe_ofMapLEIff, extend_restrict, localize, localFamily] using h
+
+theorem locallyEquigenerated_iff (B : Family V) :
+    LocallyEquigenerated B ↔ ∀ U, ∃ d, Equigenerated (localFamily B U) d := by
+  constructor
+  · intro h U
+    obtain ⟨d, hd⟩ := h U
+    refine ⟨d, ?_⟩
+    intro a ha
+    have he : extendExponent U a ∈ localize B U := by
+      rw [localize_eq_extend_localFamily]
+      exact Finset.mem_image.mpr ⟨a, ha, rfl⟩
+    simpa [extendExponent_degree] using hd _ he
+  · intro h U
+    obtain ⟨d, hd⟩ := h U
+    refine ⟨d, ?_⟩
+    intro a ha
+    rw [localize_eq_extend_localFamily] at ha
+    obtain ⟨b, hb, rfl⟩ := Finset.mem_image.mp ha
+    simpa [extendExponent_degree] using hd _ hb
+
+variable (k : Type*) [CommSemiring k]
+
+def localizationMap (U : Finset V) : MvPolynomial V k →ₐ[k] MvPolynomial U k :=
+  MvPolynomial.aeval (fun i => if hi : i ∈ U then MvPolynomial.X ⟨i, hi⟩ else 1)
+
+@[simp] theorem localizationMap_X (U : Finset V) (i : V) :
+    localizationMap k U (MvPolynomial.X i) =
+      if hi : i ∈ U then MvPolynomial.X ⟨i, hi⟩ else 1 := by simp [localizationMap]
+
+theorem localizationMap_monomial (U : Finset V) (a : Exponent V) (c : k) :
+    localizationMap k U (MvPolynomial.monomial a c) =
+      MvPolynomial.monomial (restrictExponent U a) c := by
+  classical
+  rw [localizationMap, MvPolynomial.aeval_monomial, MvPolynomial.monomial_eq]
+  congr 1
+  rw [Finsupp.prod_fintype _ _ (fun _ => pow_zero _),
+    Finsupp.prod_fintype _ _ (fun _ => pow_zero _)]
+  simp only [restrictExponent_apply]
+  have he : (fun i : V => (if hi : i ∈ U then (MvPolynomial.X ⟨i, hi⟩ : MvPolynomial U k)
+      else 1) ^ a i) = (fun i => if hi : i ∈ U then MvPolynomial.X ⟨i, hi⟩ ^ a i else 1) := by
+    funext i
+    by_cases hi : i ∈ U <;> simp [hi]
+  rw [he, ← Finset.prod_attach_eq_prod_dite U (fun i => MvPolynomial.X i ^ a i)]
+  rfl
+
+def monomialLocalization (I : Ideal (MvPolynomial V k)) (U : Finset V) :
+    Ideal (MvPolynomial U k) := Ideal.map (localizationMap k U).toRingHom I
+
+theorem monomialLocalization_eq (B : Family V) (U : Finset V) :
+    monomialLocalization k (monomialIdeal k B) U = monomialIdeal k (localFamily B U) := by
+  rw [monomialLocalization, localFamily, monomialIdeal_minimalFamily]
+  simp only [monomialIdeal, Ideal.map_span, Set.image_image, Finset.coe_image]
+  congr 1
+  ext p
+  simp only [Set.mem_image, Function.comp_apply, AlgHom.toRingHom_eq_coe,
+    RingHom.coe_coe, localizationMap_monomial]
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource8
+
+/-! ## Source: Characterizations.Resolution.HomogeneousFree -/
+section CheckedCharacterizationsSource9
+
+/-! # Homogeneous maps and lifts between genuine finite free polynomial modules -/
+
+noncomputable section
+local instance (priority := 2000) classicalBasisDecidableEqHomogeneousFree (α : Type*) [Fintype α] : DecidableEq α := Classical.decEq α
+namespace Characterizations.Resolution
+open Classical Finset MvPolynomial
+universe u v w
+variable {V k : Type u} {J : Type v} {L : Type w} [CommRing k] [Fintype J] [Fintype L]
+
+abbrev Polynomial := MvPolynomial V k
+abbrev Free (J : Type v) := J → Polynomial (V := V) (k := k)
+
+def IsHomogeneousVector (x : Free (V := V) (k := k) J) (d : ℕ) : Prop :=
+  ∀ j, (x j).IsHomogeneous d
+
+def component (d : ℕ) (x : Free (V := V) (k := k) J) : Free (V := V) (k := k) J :=
+  fun j => homogeneousComponent d (x j)
+
+lemma component_homogeneous (d : ℕ) (x : Free (V := V) (k := k) J) :
+    IsHomogeneousVector (component d x) d :=
+  fun j => homogeneousComponent_isHomogeneous d (x j)
+
+lemma component_eq_self {x : Free (V := V) (k := k) J} {d : ℕ}
+    (hx : IsHomogeneousVector x d) : component d x = x := by
+  funext j
+  exact homogeneousComponent_eq_self (hx j)
+
+lemma component_mul_of_homogeneous {a : Polynomial (V := V) (k := k)} {r : ℕ}
+    (ha : a.IsHomogeneous r) (b : Polynomial (V := V) (k := k)) (t : ℕ) :
+    homogeneousComponent (r + t) (a * b) = a * homogeneousComponent t b := by
+  induction b using MvPolynomial.induction_on' with
+  | monomial e c =>
+    have hb : (monomial e c : Polynomial (V := V) (k := k)).IsHomogeneous e.degree :=
+      isHomogeneous_monomial c rfl
+    rw [homogeneousComponent_of_mem (ha.mul hb), homogeneousComponent_of_mem hb]
+    by_cases he : t = e.degree <;> simp [he]
+  | add p q hp hq => simp [mul_add, map_add, hp, hq]
+
+/-- All entries of the matrix of the actual polynomial-linear map have degree `r`. -/
+def IsHomogeneousMap (f : Free (V := V) (k := k) J →ₗ[Polynomial (V := V) (k := k)]
+    Free (V := V) (k := k) L) (r : ℕ) : Prop :=
+  ∀ a b, (f (Pi.single b 1) a).IsHomogeneous r
+
+lemma linearMap_apply_eq_sum (f : Free (V := V) (k := k) J →ₗ[Polynomial (V := V) (k := k)]
+    Free (V := V) (k := k) L) (x : Free (V := V) (k := k) J) (a : L) :
+    f x a = ∑ b, x b * f (Pi.single b 1) a := by
+  have hx : x = ∑ b, x b • Pi.single b (1 : Polynomial (V := V) (k := k)) := by
+    funext b
+    simp [Pi.single_apply]
+  conv_lhs => rw [hx]
+  simp
+
+lemma homogeneousMap_component (f : Free (V := V) (k := k) J →ₗ[Polynomial (V := V) (k := k)]
+    Free (V := V) (k := k) L) {r : ℕ} (hf : IsHomogeneousMap f r)
+    (x : Free (V := V) (k := k) J) (t : ℕ) :
+    component (r + t) (f x) = f (component t x) := by
+  funext a
+  rw [component, linearMap_apply_eq_sum, map_sum, linearMap_apply_eq_sum]
+  apply Finset.sum_congr rfl
+  intro b hb
+  rw [mul_comm (x b), component_mul_of_homogeneous (hf a b), mul_comm]
+  rfl
+
+lemma homogeneousMap_apply (f : Free (V := V) (k := k) J →ₗ[Polynomial (V := V) (k := k)]
+    Free (V := V) (k := k) L) {r t : ℕ} (hf : IsHomogeneousMap f r)
+    {x : Free (V := V) (k := k) J} (hx : IsHomogeneousVector x t) :
+    IsHomogeneousVector (f x) (r + t) := by
+  have he : component (r + t) (f x) = f x := by
+    rw [homogeneousMap_component f hf, component_eq_self hx]
+  rw [← he]
+  exact component_homogeneous _ _
+
+/-- Exactness supplies a homogeneous preimage of the required degree, with no
+assumption that a chosen ungraded lift happened to preserve degrees. -/
+lemma exists_homogeneous_lift
+    (f : Free (V := V) (k := k) J →ₗ[Polynomial (V := V) (k := k)] Free (V := V) (k := k) L)
+    {r t : ℕ} (hf : IsHomogeneousMap f r)
+    {y : Free (V := V) (k := k) L} (hy : IsHomogeneousVector y (r + t))
+    (hmem : y ∈ LinearMap.range f) :
+    ∃ x, IsHomogeneousVector x t ∧ f x = y := by
+  obtain ⟨x, rfl⟩ := hmem
+  refine ⟨component t x, component_homogeneous _ _, ?_⟩
+  rw [← homogeneousMap_component f hf, component_eq_self hy]
+
+end Characterizations.Resolution
+
+end
+end CheckedCharacterizationsSource9
+
+/-! ## Source: Characterizations.Resolution.Basic -/
+section CheckedCharacterizationsSource10
+
+/-! # Actual linear free resolutions
+
+The definition records a genuine exact augmented complex of finite free polynomial
+modules. The grading condition is that every matrix entry of a differential is a
+linear form, while the augmentation has degree `d`. It contains no homology or
+Betti-vanishing assertion.
+-/
+
+noncomputable section
+local instance (priority := 2000) classicalBasisDecidableEqBasic (α : Type*) [Fintype α] : DecidableEq α := Classical.decEq α
+set_option backward.isDefEq.respectTransparency false
+namespace Characterizations
+open Classical CategoryTheory CategoryTheory.Limits HomologicalComplex
+open Resolution
+universe u
+variable {V k : Type u} [CommRing k]
+
+structure LinearResolution (I : Ideal (MvPolynomial V k)) (d : ℕ) where
+  Index : ℕ → Type
+  finite : ∀ n, Fintype (Index n)
+  differential : ∀ n, (Index (n + 1) → MvPolynomial V k) →ₗ[MvPolynomial V k]
+    (Index n → MvPolynomial V k)
+  augmentation : (Index 0 → MvPolynomial V k) →ₗ[MvPolynomial V k] MvPolynomial V k
+  augmentation_range : LinearMap.range augmentation = I
+  exact_zero : LinearMap.range (differential 0) = LinearMap.ker augmentation
+  exact_succ : ∀ n, LinearMap.range (differential (n + 1)) = LinearMap.ker (differential n)
+  linear : ∀ n, letI := finite n; letI := finite (n + 1)
+    IsHomogeneousMap (differential n) 1
+  augmentation_homogeneous : ∀ b, (augmentation (Pi.single b 1)).IsHomogeneous d
+
+attribute [instance] LinearResolution.finite
+
+namespace LinearResolution
+variable {I : Ideal (MvPolynomial V k)} {d : ℕ} (P : LinearResolution I d)
+
+lemma differential_comp (n : ℕ) :
+    P.differential n ∘ₗ P.differential (n + 1) = 0 := by
+  apply LinearMap.ext
+  intro x
+  change P.differential n (P.differential (n + 1) x) = 0
+  apply LinearMap.mem_ker.mp
+  rw [← P.exact_succ n]
+  exact LinearMap.mem_range_self _ x
+
+lemma augmentation_comp : P.augmentation ∘ₗ P.differential 0 = 0 := by
+  apply LinearMap.ext
+  intro x
+  change P.augmentation (P.differential 0 x) = 0
+  apply LinearMap.mem_ker.mp
+  rw [← P.exact_zero]
+  exact LinearMap.mem_range_self _ x
+
+/-- The actual complex of finite free polynomial modules. -/
+def complex : ChainComplex (ModuleCat.{u} (MvPolynomial V k)) ℕ :=
+  ChainComplex.of (fun n => ModuleCat.of _ (P.Index n → MvPolynomial V k))
+    (fun n => ModuleCat.ofHom (P.differential n))
+    (fun n => ModuleCat.hom_ext (P.differential_comp n))
+
+@[simp] lemma complex_d (n : ℕ) : P.complex.d (n + 1) n = ModuleCat.ofHom (P.differential n) := by
+  exact ChainComplex.of_d (fun j => ModuleCat.of (MvPolynomial V k) (P.Index j → MvPolynomial V k))
+    (fun j => ModuleCat.ofHom (P.differential j)) n
+
+/-- The augmentation takes values in the original ideal itself. -/
+def augmentationToIdeal : (P.Index 0 → MvPolynomial V k) →ₗ[MvPolynomial V k] I :=
+  P.augmentation.codRestrict I (fun x => by
+    exact Eq.mp (congrArg (fun J : Submodule (MvPolynomial V k) (MvPolynomial V k) =>
+      P.augmentation x ∈ J) P.augmentation_range) (LinearMap.mem_range_self _ x))
+
+lemma augmentationToIdeal_surjective : Function.Surjective P.augmentationToIdeal := by
+  intro y
+  have hy : y.val ∈ LinearMap.range P.augmentation := by
+    rw [P.augmentation_range]
+    exact y.property
+  obtain ⟨x, hx⟩ := hy
+  exact ⟨x, Subtype.ext hx⟩
+
+lemma augmentationToIdeal_ker : LinearMap.ker P.augmentationToIdeal = LinearMap.ker P.augmentation := by
+  ext x
+  simp [augmentationToIdeal, LinearMap.mem_ker, Subtype.ext_iff]
+
+lemma complex_exactAt_succ (n : ℕ) : P.complex.ExactAt (n + 1) := by
+  rw [HomologicalComplex.exactAt_iff' _ (n + 2) (n + 1) n (by simp) (by simp)]
+  rw [ShortComplex.moduleCat_exact_iff_range_eq_ker]
+  change LinearMap.range (ModuleCat.Hom.hom (P.complex.d ((n + 1) + 1) (n + 1))) =
+    LinearMap.ker (ModuleCat.Hom.hom (P.complex.d (n + 1) n))
+  rw [P.complex_d, P.complex_d]
+  exact P.exact_succ n
+
+/-- The conventional categorical projective resolution obtained from the concrete data. -/
+def toProjectiveResolution : ProjectiveResolution (ModuleCat.of (MvPolynomial V k) I) where
+  complex := P.complex
+  projective n := by
+    change Projective (ModuleCat.of (MvPolynomial V k) (P.Index n → MvPolynomial V k))
+    infer_instance
+  π := (ChainComplex.toSingle₀Equiv P.complex _).symm
+    ⟨ModuleCat.ofHom P.augmentationToIdeal, by
+      apply ModuleCat.hom_ext
+      apply LinearMap.ext
+      intro x
+      apply Subtype.ext
+      exact LinearMap.congr_fun P.augmentation_comp x⟩
+  quasiIso := ⟨fun n => by
+    cases n with
+    | zero =>
+      rw [ChainComplex.quasiIsoAt₀_iff, ShortComplex.quasiIso_iff_of_zeros']
+      · dsimp
+        simp only [ChainComplex.toSingle₀Equiv_symm_apply_f_zero]
+        refine ⟨?_, ?_⟩
+        · rw [ShortComplex.moduleCat_exact_iff_range_eq_ker]
+          change LinearMap.range (ModuleCat.Hom.hom (P.complex.d 1 0)) = LinearMap.ker P.augmentationToIdeal
+          rw [P.augmentationToIdeal_ker]
+          rw [P.complex_d]
+          exact P.exact_zero
+        · exact (ModuleCat.epi_iff_surjective _).mpr P.augmentationToIdeal_surjective
+      · exact P.complex.shape 0 0 (by simp)
+      all_goals rfl
+    | succ n =>
+      rw [quasiIsoAt_iff_exactAt']
+      · exact P.complex_exactAt_succ n
+      · exact ChainComplex.exactAt_succ_single_obj _ _⟩
+
+end LinearResolution
+
+/-- Existence of an exact finite-free resolution with shifts `d + i`. -/
+def HasLinearResolution (I : Ideal (MvPolynomial V k)) : Prop :=
+  ∃ d, Nonempty (LinearResolution I d)
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource10
+
+/-! ## Source: Characterizations.Resolution.Lift -/
+section CheckedCharacterizationsSource11
+
+/-! # Homogeneous comparison maps for free resolutions -/
+
+noncomputable section
+local instance (priority := 2000) classicalBasisDecidableEqLift (α : Type*) [Fintype α] : DecidableEq α := Classical.decEq α
+set_option backward.isDefEq.respectTransparency false
+namespace Characterizations
+open Classical Resolution MvPolynomial
+universe u
+variable {V k : Type u} [CommRing k]
+variable {I J : Ideal (MvPolynomial V k)} {d : ℕ}
+
+namespace LinearResolution
+
+lemma augmentation_component (P : LinearResolution I d)
+    (x : P.Index 0 → MvPolynomial V k) (t : ℕ) :
+    homogeneousComponent (d + t) (P.augmentation x) = P.augmentation (component t x) := by
+  let f : (P.Index 0 → MvPolynomial V k) →ₗ[MvPolynomial V k]
+      (Unit → MvPolynomial V k) := LinearMap.pi (fun _ => P.augmentation)
+  have hf : IsHomogeneousMap f d := fun _ b => P.augmentation_homogeneous b
+  exact congrFun (homogeneousMap_component f hf x t) ()
+
+lemma homogeneous_augmentation_lift (P : LinearResolution I d)
+    {y : MvPolynomial V k} (hy : y.IsHomogeneous (d + 1)) (hI : y ∈ I) :
+    ∃ x, IsHomogeneousVector x 1 ∧ P.augmentation x = y := by
+  have hmem : y ∈ LinearMap.range P.augmentation := by simpa only [P.augmentation_range] using hI
+  obtain ⟨x, rfl⟩ := hmem
+  refine ⟨component 1 x, component_homogeneous _ _, ?_⟩
+  rw [← P.augmentation_component, homogeneousComponent_eq_self hy]
+
+variable (Q : LinearResolution J 1) (P : LinearResolution I d)
+    (g : MvPolynomial V k) (hg : g.IsHomogeneous d)
+    (hmul : ∀ z ∈ J, g * z ∈ I)
+
+def liftZeroImage (b : Q.Index 0) : P.Index 0 → MvPolynomial V k :=
+  Classical.choose (P.homogeneous_augmentation_lift
+    (hg.mul (Q.augmentation_homogeneous b))
+    (hmul _ (by simpa only [← Q.augmentation_range] using
+      LinearMap.mem_range_self Q.augmentation (Pi.single b 1))))
+
+lemma liftZeroImage_spec (b : Q.Index 0) :
+    IsHomogeneousVector (liftZeroImage Q P g hg hmul b) 1 ∧
+      P.augmentation (liftZeroImage Q P g hg hmul b) = g * Q.augmentation (Pi.single b 1) :=
+  by
+    exact Classical.choose_spec (P.homogeneous_augmentation_lift
+    (hg.mul (Q.augmentation_homogeneous b))
+    (hmul _ (by simpa only [← Q.augmentation_range] using
+      LinearMap.mem_range_self Q.augmentation (Pi.single b 1))))
+
+def liftZero : (Q.Index 0 → MvPolynomial V k) →ₗ[MvPolynomial V k]
+    (P.Index 0 → MvPolynomial V k) :=
+  (Pi.basisFun (MvPolynomial V k) (Q.Index 0)).constr (MvPolynomial V k)
+    (liftZeroImage Q P g hg hmul)
+
+lemma liftZero_apply_single (b : Q.Index 0) :
+    liftZero Q P g hg hmul (Pi.single b 1) = liftZeroImage Q P g hg hmul b := by
+  exact Module.Basis.constr_basis _ _ _ b
+
+lemma liftZero_homogeneous : IsHomogeneousMap (liftZero Q P g hg hmul) 1 := by
+  intro a b
+  rw [liftZero_apply_single]
+  exact (liftZeroImage_spec Q P g hg hmul b).1 a
+
+lemma liftZero_aug (x : Q.Index 0 → MvPolynomial V k) :
+    P.augmentation (liftZero Q P g hg hmul x) = g * Q.augmentation x := by
+  have h : P.augmentation ∘ₗ liftZero Q P g hg hmul =
+      (LinearMap.mulLeft (MvPolynomial V k) g) ∘ₗ Q.augmentation := by
+    apply (Pi.basisFun (MvPolynomial V k) (Q.Index 0)).ext
+    intro b
+    change P.augmentation (liftZero Q P g hg hmul (Pi.single b 1)) =
+      g * Q.augmentation (Pi.single b 1)
+    rw [liftZero_apply_single]
+    exact (liftZeroImage_spec Q P g hg hmul b).2
+  exact LinearMap.congr_fun h x
+
+/-- One adjacent pair of genuine homogeneous comparison maps. -/
+structure LiftPair (n : ℕ) where
+  low : (Q.Index n → MvPolynomial V k) →ₗ[MvPolynomial V k] (P.Index n → MvPolynomial V k)
+  high : (Q.Index (n + 1) → MvPolynomial V k) →ₗ[MvPolynomial V k]
+    (P.Index (n + 1) → MvPolynomial V k)
+  low_homogeneous : IsHomogeneousMap low 1
+  high_homogeneous : IsHomogeneousMap high 1
+  comm : P.differential n ∘ₗ high = low ∘ₗ Q.differential n
+
+def liftOneImage (b : Q.Index 1) : P.Index 1 → MvPolynomial V k :=
+  Classical.choose (exists_homogeneous_lift (P.differential 0) (P.linear 0)
+    (homogeneousMap_apply (liftZero Q P g hg hmul) (liftZero_homogeneous Q P g hg hmul)
+      (Q.linear 0 · b)) (by
+        rw [P.exact_zero]
+        apply LinearMap.mem_ker.mpr
+        rw [liftZero_aug]
+        have hz := LinearMap.congr_fun Q.augmentation_comp (Pi.single b 1)
+        change Q.augmentation (Q.differential 0 (Pi.single b 1)) = 0 at hz
+        rw [hz, mul_zero]))
+
+lemma liftOneImage_spec (b : Q.Index 1) :
+    IsHomogeneousVector (liftOneImage Q P g hg hmul b) 1 ∧
+      P.differential 0 (liftOneImage Q P g hg hmul b) =
+        liftZero Q P g hg hmul (Q.differential 0 (Pi.single b 1)) := by
+  exact Classical.choose_spec (exists_homogeneous_lift (P.differential 0) (P.linear 0)
+    (homogeneousMap_apply (liftZero Q P g hg hmul) (liftZero_homogeneous Q P g hg hmul)
+      (Q.linear 0 · b)) (by
+        rw [P.exact_zero]
+        apply LinearMap.mem_ker.mpr
+        rw [liftZero_aug]
+        have hz := LinearMap.congr_fun Q.augmentation_comp (Pi.single b 1)
+        change Q.augmentation (Q.differential 0 (Pi.single b 1)) = 0 at hz
+        rw [hz, mul_zero]))
+
+def initialLiftPair : LiftPair Q P 0 where
+  low := liftZero Q P g hg hmul
+  high := (Pi.basisFun (MvPolynomial V k) (Q.Index 1)).constr (MvPolynomial V k)
+    (liftOneImage Q P g hg hmul)
+  low_homogeneous := liftZero_homogeneous Q P g hg hmul
+  high_homogeneous := by
+    intro a b
+    change (((Pi.basisFun (MvPolynomial V k) (Q.Index 1)).constr (MvPolynomial V k)
+      (liftOneImage Q P g hg hmul)) ((Pi.basisFun _ _) b) a).IsHomogeneous 1
+    rw [Module.Basis.constr_basis]
+    exact (liftOneImage_spec Q P g hg hmul b).1 a
+  comm := by
+    apply (Pi.basisFun (MvPolynomial V k) (Q.Index 1)).ext
+    intro b
+    simp only [LinearMap.comp_apply, Module.Basis.constr_basis]
+    exact (liftOneImage_spec Q P g hg hmul b).2
+
+def nextLiftImage {n : ℕ} (A : LiftPair Q P n) (b : Q.Index (n + 2)) :
+    P.Index (n + 2) → MvPolynomial V k :=
+  Classical.choose (exists_homogeneous_lift (P.differential (n + 1)) (P.linear (n + 1))
+    (homogeneousMap_apply A.high A.high_homogeneous (Q.linear (n + 1) · b)) (by
+      rw [P.exact_succ n]
+      apply LinearMap.mem_ker.mpr
+      change (P.differential n ∘ₗ A.high) (Q.differential (n + 1) (Pi.single b 1)) = 0
+      rw [A.comm]
+      change A.low ((Q.differential n ∘ₗ Q.differential (n + 1)) (Pi.single b 1)) = 0
+      rw [Q.differential_comp]
+      simp))
+
+lemma nextLiftImage_spec {n : ℕ} (A : LiftPair Q P n) (b : Q.Index (n + 2)) :
+    IsHomogeneousVector (nextLiftImage Q P A b) 1 ∧
+      P.differential (n + 1) (nextLiftImage Q P A b) =
+        A.high (Q.differential (n + 1) (Pi.single b 1)) := by
+  exact Classical.choose_spec (exists_homogeneous_lift (P.differential (n + 1)) (P.linear (n + 1))
+    (homogeneousMap_apply A.high A.high_homogeneous (Q.linear (n + 1) · b)) (by
+      rw [P.exact_succ n]
+      apply LinearMap.mem_ker.mpr
+      change (P.differential n ∘ₗ A.high) (Q.differential (n + 1) (Pi.single b 1)) = 0
+      rw [A.comm]
+      change A.low ((Q.differential n ∘ₗ Q.differential (n + 1)) (Pi.single b 1)) = 0
+      rw [Q.differential_comp]
+      simp))
+
+def nextLiftPair {n : ℕ} (A : LiftPair Q P n) : LiftPair Q P (n + 1) where
+  low := A.high
+  high := (Pi.basisFun (MvPolynomial V k) (Q.Index (n + 2))).constr (MvPolynomial V k)
+    (nextLiftImage Q P A)
+  low_homogeneous := A.high_homogeneous
+  high_homogeneous := by
+    intro a b
+    change (((Pi.basisFun (MvPolynomial V k) (Q.Index (n + 2))).constr (MvPolynomial V k)
+      (nextLiftImage Q P A)) ((Pi.basisFun _ _) b) a).IsHomogeneous 1
+    rw [Module.Basis.constr_basis]
+    exact (nextLiftImage_spec Q P A b).1 a
+  comm := by
+    apply (Pi.basisFun (MvPolynomial V k) (Q.Index (n + 2))).ext
+    intro b
+    simp only [LinearMap.comp_apply, Module.Basis.constr_basis]
+    exact (nextLiftImage_spec Q P A b).2
+
+def liftPairs : ∀ n, LiftPair Q P n
+  | 0 => initialLiftPair Q P g hg hmul
+  | n + 1 => nextLiftPair Q P (liftPairs n)
+
+/-- A homogeneous lift of multiplication by `g`, obtained from actual exactness. -/
+def multiplicationLift (n : ℕ) :
+    (Q.Index n → MvPolynomial V k) →ₗ[MvPolynomial V k] (P.Index n → MvPolynomial V k) :=
+  (liftPairs Q P g hg hmul n).low
+
+lemma multiplicationLift_homogeneous (n : ℕ) :
+    IsHomogeneousMap (multiplicationLift Q P g hg hmul n) 1 :=
+  (liftPairs Q P g hg hmul n).low_homogeneous
+
+lemma multiplicationLift_comm (n : ℕ) :
+    P.differential n ∘ₗ multiplicationLift Q P g hg hmul (n + 1) =
+      multiplicationLift Q P g hg hmul n ∘ₗ Q.differential n :=
+  (liftPairs Q P g hg hmul n).comm
+
+lemma multiplicationLift_aug (x : Q.Index 0 → MvPolynomial V k) :
+    P.augmentation (multiplicationLift Q P g hg hmul 0 x) = g * Q.augmentation x :=
+  liftZero_aug Q P g hg hmul x
+
+end LinearResolution
+end Characterizations
+
+end
+end CheckedCharacterizationsSource11
+
+/-! ## Source: Characterizations.Resolution.Cone -/
+section CheckedCharacterizationsSource12
+
+/-! # The actual graded mapping cone for adjoining one generator -/
+
+noncomputable section
+@[reducible] local instance (priority := 2000) classicalBasisDecidableEqCone (α : Type*) [Fintype α] : DecidableEq α := Classical.decEq α
+set_option backward.isDefEq.respectTransparency false
+set_option maxHeartbeats 400000
+namespace Characterizations
+open Classical Resolution MvPolynomial
+universe u
+variable {V k : Type u} [CommRing k]
+variable {I C : Ideal (MvPolynomial V k)} {d : ℕ}
+namespace LinearResolution
+
+abbrev leftProjection (A B : Type*) : (A ⊕ B → MvPolynomial V k) →ₗ[MvPolynomial V k]
+    (A → MvPolynomial V k) := LinearMap.pi (fun a => LinearMap.proj (Sum.inl a))
+abbrev rightProjection (A B : Type*) : (A ⊕ B → MvPolynomial V k) →ₗ[MvPolynomial V k]
+    (B → MvPolynomial V k) := LinearMap.pi (fun b => LinearMap.proj (Sum.inr b))
+
+@[simp] lemma leftProjection_apply (A B : Type*) (x : A ⊕ B → MvPolynomial V k) :
+    leftProjection A B x = (fun a => x (Sum.inl a)) := rfl
+@[simp] lemma rightProjection_apply (A B : Type*) (x : A ⊕ B → MvPolynomial V k) :
+    rightProjection A B x = (fun b => x (Sum.inr b)) := rfl
+
+abbrev joinMaps {A B L : Type*}
+    (f : (L → MvPolynomial V k) →ₗ[MvPolynomial V k] (A → MvPolynomial V k))
+    (g : (L → MvPolynomial V k) →ₗ[MvPolynomial V k] (B → MvPolynomial V k)) :
+    (L → MvPolynomial V k) →ₗ[MvPolynomial V k] (A ⊕ B → MvPolynomial V k) :=
+  LinearMap.pi (Sum.elim (fun a => (LinearMap.proj a).comp f) (fun b => (LinearMap.proj b).comp g))
+
+@[simp] lemma left_single_inl {A B : Type*} [Fintype A] [Fintype B] (a : A) :
+    (fun i : A => (Pi.single (Sum.inl a) (1 : MvPolynomial V k) : A ⊕ B → _) (Sum.inl i)) = Pi.single a 1 := by
+  funext i
+  simp [Pi.single_apply]
+@[simp] lemma left_single_inr {A B : Type*} [Fintype A] [Fintype B] (b : B) :
+    (fun i : A => (Pi.single (Sum.inr b) (1 : MvPolynomial V k) : A ⊕ B → _) (Sum.inl i)) = 0 := by
+  funext i
+  simp [Pi.single_apply]
+@[simp] lemma right_single_inl {A B : Type*} [Fintype A] [Fintype B] (a : A) :
+    (fun i : B => (Pi.single (Sum.inl a) (1 : MvPolynomial V k) : A ⊕ B → _) (Sum.inr i)) = 0 := by
+  funext i
+  simp [Pi.single_apply]
+@[simp] lemma right_single_inr {A B : Type*} [Fintype A] [Fintype B] (b : B) :
+    (fun i : B => (Pi.single (Sum.inr b) (1 : MvPolynomial V k) : A ⊕ B → _) (Sum.inr i)) = Pi.single b 1 := by
+  funext i
+  simp [Pi.single_apply]
+
+variable (P : LinearResolution I d) (Q : LinearResolution C 1)
+    (g : MvPolynomial V k) (hg : g.IsHomogeneous d)
+    (hcolon : C = I.colon {g})
+
+include hcolon in
+lemma mul_mem (z : MvPolynomial V k) (hz : z ∈ C) : g * z ∈ I := by
+  rw [hcolon, Submodule.mem_colon_singleton] at hz
+  simpa [smul_eq_mul, mul_comm] using hz
+
+def theta (n : ℕ) := Q.multiplicationLift P g hg (mul_mem g hcolon) n
+
+lemma theta_comm (n : ℕ) (x : Q.Index (n + 1) → MvPolynomial V k) :
+    P.differential n (theta P Q g hg hcolon (n + 1) x) =
+      theta P Q g hg hcolon n (Q.differential n x) :=
+  LinearMap.congr_fun (Q.multiplicationLift_comm P g hg (mul_mem g hcolon) n) x
+
+lemma theta_aug (x : Q.Index 0 → MvPolynomial V k) :
+    P.augmentation (theta P Q g hg hcolon 0 x) = g * Q.augmentation x :=
+  Q.multiplicationLift_aug P g hg (mul_mem g hcolon) x
+
+abbrev coneRight : ℕ → Type
+  | 0 => PUnit
+  | n + 1 => Q.Index n
+
+abbrev coneIndex (n : ℕ) : Type := P.Index n ⊕ coneRight Q n
+
+instance coneIndex_fintype (n : ℕ) : Fintype (coneIndex P Q n) := by
+  cases n <;> dsimp [coneIndex, coneRight] <;> infer_instance
+
+def coneAugmentation : (coneIndex P Q 0 → MvPolynomial V k) →ₗ[MvPolynomial V k]
+    MvPolynomial V k :=
+  P.augmentation.comp (leftProjection _ _) +
+    (LinearMap.mulLeft (MvPolynomial V k) g).comp (LinearMap.proj (Sum.inr PUnit.unit))
+
+def coneDifferential : ∀ n,
+    (coneIndex P Q (n + 1) → MvPolynomial V k) →ₗ[MvPolynomial V k]
+      (coneIndex P Q n → MvPolynomial V k)
+  | 0 => joinMaps
+      ((P.differential 0).comp (leftProjection _ _) +
+        (theta P Q g hg hcolon 0).comp (rightProjection _ _))
+      (LinearMap.pi (fun _ : PUnit => -(Q.augmentation.comp (rightProjection _ _))))
+  | n + 1 => joinMaps
+      ((P.differential (n + 1)).comp (leftProjection _ _) +
+        (theta P Q g hg hcolon (n + 1)).comp (rightProjection _ _))
+      (-((Q.differential n).comp (rightProjection _ _)))
+
+lemma coneDifferential_left (n : ℕ)
+    (x : coneIndex P Q (n + 1) → MvPolynomial V k) (a : P.Index n) :
+    coneDifferential P Q g hg hcolon n x (Sum.inl a) =
+      P.differential n (fun a => x (Sum.inl a)) a +
+        theta P Q g hg hcolon n (fun b => x (Sum.inr b)) a := by
+  cases n <;> rfl
+
+lemma coneDifferential_right_zero
+    (x : coneIndex P Q 1 → MvPolynomial V k) :
+    coneDifferential P Q g hg hcolon 0 x (Sum.inr PUnit.unit) =
+      -Q.augmentation (fun b => x (Sum.inr b)) := rfl
+
+lemma coneDifferential_right_succ (n : ℕ)
+    (x : coneIndex P Q (n + 2) → MvPolynomial V k) (b : Q.Index n) :
+    coneDifferential P Q g hg hcolon (n + 1) x (Sum.inr b) =
+      -Q.differential n (fun b => x (Sum.inr b)) b := rfl
+
+lemma coneAugmentation_apply (x : coneIndex P Q 0 → MvPolynomial V k) :
+    coneAugmentation P Q g x = P.augmentation (fun a => x (Sum.inl a)) + g * x (Sum.inr PUnit.unit) := rfl
+
+lemma coneAugmentation_range : LinearMap.range (coneAugmentation P Q g) = I ⊔ Ideal.span {g} := by
+  ext y
+  constructor
+  · rintro ⟨x, rfl⟩
+    rw [coneAugmentation_apply]
+    apply add_mem
+    · exact (show I ≤ I ⊔ Ideal.span {g} from le_sup_left) (show P.augmentation _ ∈ I by
+        simpa only [P.augmentation_range] using LinearMap.mem_range_self P.augmentation (fun a => x (Sum.inl a)))
+    · exact (show Ideal.span {g} ≤ I ⊔ Ideal.span {g} from le_sup_right) (Ideal.mem_span_singleton'.mpr ⟨x (Sum.inr PUnit.unit), mul_comm _ _⟩)
+  · intro hy
+    obtain ⟨a, ha, b, hb, rfl⟩ := Submodule.mem_sup.mp hy
+    have ha' : a ∈ LinearMap.range P.augmentation := by simpa only [P.augmentation_range] using ha
+    obtain ⟨x, rfl⟩ := ha'
+    obtain ⟨c, rfl⟩ := Ideal.mem_span_singleton'.mp hb
+    refine ⟨Sum.elim x (fun _ => c), ?_⟩
+    change P.augmentation x + g * c = P.augmentation x + c * g
+    ring
+
+lemma coneExact_zero : LinearMap.range (coneDifferential P Q g hg hcolon 0) =
+    LinearMap.ker (coneAugmentation P Q g) := by
+  ext x
+  constructor
+  · rintro ⟨y, rfl⟩
+    apply LinearMap.mem_ker.mpr
+    rw [coneAugmentation_apply]
+    change P.augmentation (P.differential 0 _ + theta P Q g hg hcolon 0 _) + _ = 0
+    rw [map_add, theta_aug]
+    have hz := LinearMap.congr_fun P.augmentation_comp (fun a => y (Sum.inl a))
+    change P.augmentation (P.differential 0 _) = 0 at hz
+    simp only [leftProjection_apply, rightProjection_apply]
+    rw [hz, coneDifferential_right_zero]
+    ring
+  · intro hx
+    have he := LinearMap.mem_ker.mp hx
+    rw [coneAugmentation_apply] at he
+    let a : P.Index 0 → MvPolynomial V k := fun i => x (Sum.inl i)
+    let c := x (Sum.inr PUnit.unit)
+    have hgc : g * c ∈ I := by
+      have hp : P.augmentation a ∈ I := by
+        simpa only [P.augmentation_range] using LinearMap.mem_range_self P.augmentation a
+      have hneg : g * c = -P.augmentation a := by change P.augmentation a + g * c = 0 at he; linear_combination he
+      rw [hneg]
+      exact I.neg_mem hp
+    have hc : c ∈ C := by
+      rw [hcolon, Submodule.mem_colon_singleton]
+      simpa [smul_eq_mul, mul_comm] using hgc
+    have hc' : c ∈ LinearMap.range Q.augmentation := by simpa only [Q.augmentation_range] using hc
+    obtain ⟨q, hq⟩ := hc'
+    have hp : a + theta P Q g hg hcolon 0 q ∈ LinearMap.ker P.augmentation := by
+      apply LinearMap.mem_ker.mpr
+      rw [map_add, theta_aug, hq]
+      exact he
+    rw [← P.exact_zero] at hp
+    obtain ⟨p, hp⟩ := hp
+    refine ⟨Sum.elim p (-q), ?_⟩
+    funext i
+    cases i with
+    | inl i =>
+      rw [coneDifferential_left]
+      change (P.differential 0 p + theta P Q g hg hcolon 0 (-q)) i = a i
+      rw [hp, map_neg]
+      simp
+    | inr i =>
+      cases i
+      rw [coneDifferential_right_zero]
+      change -Q.augmentation (-q) = c
+      rw [map_neg, neg_neg, hq]
+
+lemma coneDifferential_comp (n : ℕ) :
+    coneDifferential P Q g hg hcolon n ∘ₗ coneDifferential P Q g hg hcolon (n + 1) = 0 := by
+  apply LinearMap.ext
+  intro x
+  funext i
+  cases n with
+  | zero =>
+    cases i with
+    | inl i =>
+      simp only [LinearMap.comp_apply, coneDifferential_left, coneDifferential_right_succ]
+      change (P.differential 0 (P.differential 1 _ + theta P Q g hg hcolon 1 _) +
+        theta P Q g hg hcolon 0 (-Q.differential 0 _)) i = 0
+      rw [map_add, theta_comm, map_neg]
+      have hz := LinearMap.congr_fun (P.differential_comp 0) (fun a => x (Sum.inl a))
+      change P.differential 0 (P.differential 1 _) = 0 at hz
+      simp only [leftProjection_apply, rightProjection_apply]
+      rw [hz]
+      simp
+    | inr i =>
+      cases i
+      rw [LinearMap.comp_apply, coneDifferential_right_zero]
+      change -Q.augmentation (-Q.differential 0 _) = 0
+      rw [map_neg, neg_neg]
+      exact LinearMap.congr_fun Q.augmentation_comp _
+  | succ n =>
+    cases i with
+    | inl i =>
+      simp only [LinearMap.comp_apply, coneDifferential_left, coneDifferential_right_succ]
+      change (P.differential (n + 1) (P.differential (n + 2) _ + theta P Q g hg hcolon (n + 2) _) +
+        theta P Q g hg hcolon (n + 1) (-Q.differential (n + 1) _)) i = 0
+      rw [map_add, theta_comm, map_neg]
+      have hz := LinearMap.congr_fun (P.differential_comp (n + 1)) (fun a => x (Sum.inl a))
+      change P.differential (n + 1) (P.differential (n + 2) _) = 0 at hz
+      simp only [leftProjection_apply, rightProjection_apply]
+      rw [hz]
+      simp
+    | inr i =>
+      rw [LinearMap.comp_apply, coneDifferential_right_succ]
+      change -Q.differential n (-Q.differential (n + 1) _) i = 0
+      rw [map_neg]
+      have hz := LinearMap.congr_fun (Q.differential_comp n) (fun b => x (Sum.inr b))
+      change Q.differential n (Q.differential (n + 1) _) = 0 at hz
+      simp only [leftProjection_apply, rightProjection_apply]
+      rw [hz]
+      simp
+
+lemma coneExact_succ (n : ℕ) :
+    LinearMap.range (coneDifferential P Q g hg hcolon (n + 1)) =
+      LinearMap.ker (coneDifferential P Q g hg hcolon n) := by
+  apply le_antisymm
+  · exact LinearMap.range_le_ker_iff.mpr (coneDifferential_comp P Q g hg hcolon n)
+  · intro x hx
+    let a : P.Index (n + 1) → MvPolynomial V k := fun i => x (Sum.inl i)
+    let b : Q.Index n → MvPolynomial V k := fun j => x (Sum.inr j)
+    have hx0 := LinearMap.mem_ker.mp hx
+    have hleft : P.differential n a + theta P Q g hg hcolon n b = 0 := by
+      funext i
+      have h := congrFun hx0 (Sum.inl i)
+      rw [coneDifferential_left P Q g hg hcolon n] at h
+      change P.differential n a i + theta P Q g hg hcolon n b i = 0 at h
+      exact h
+    have hb : b ∈ LinearMap.range (Q.differential n) := by
+      cases n with
+      | zero =>
+        rw [Q.exact_zero]
+        apply LinearMap.mem_ker.mpr
+        have h := congrFun hx0 (Sum.inr PUnit.unit)
+        change -Q.augmentation b = 0 at h
+        exact neg_eq_zero.mp h
+      | succ n =>
+        rw [Q.exact_succ n]
+        apply LinearMap.mem_ker.mpr
+        funext j
+        have h := congrFun hx0 (Sum.inr j)
+        change -Q.differential n b j = 0 at h
+        exact neg_eq_zero.mp h
+    obtain ⟨q, hq⟩ := hb
+    have hp : a + theta P Q g hg hcolon (n + 1) q ∈ LinearMap.range (P.differential (n + 1)) := by
+      rw [P.exact_succ n]
+      apply LinearMap.mem_ker.mpr
+      rw [map_add, theta_comm, hq]
+      exact hleft
+    obtain ⟨p, hp⟩ := hp
+    refine ⟨Sum.elim p (-q), ?_⟩
+    funext i
+    cases i with
+    | inl i =>
+      rw [coneDifferential_left]
+      change (P.differential (n + 1) p + theta P Q g hg hcolon (n + 1) (-q)) i = a i
+      rw [hp, map_neg]
+      simp
+    | inr i =>
+      rw [coneDifferential_right_succ]
+      change -Q.differential n (-q) i = b i
+      rw [map_neg, hq]
+      simp
+
+/-- Adjoining one degree-`d` generator with a linearly resolved colon ideal
+produces a genuine `d`-linear free resolution of the enlarged ideal. -/
+def adjoin : LinearResolution (I ⊔ Ideal.span {g}) d where
+  Index := coneIndex P Q
+  finite := coneIndex_fintype P Q
+  differential := coneDifferential P Q g hg hcolon
+  augmentation := coneAugmentation P Q g
+  augmentation_range := coneAugmentation_range P Q g
+  exact_zero := coneExact_zero P Q g hg hcolon
+  exact_succ := coneExact_succ P Q g hg hcolon
+  linear := by
+    intro n
+    intro a b
+    cases n with
+    | zero =>
+      cases a with
+      | inl a =>
+        rw [coneDifferential_left]
+        cases b with
+        | inl b => simpa only [left_single_inl, right_single_inl, left_single_inr, right_single_inr, map_zero, Pi.zero_apply, zero_add, add_zero, mul_zero, mul_one, theta] using P.linear 0 a b
+        | inr b => simpa only [left_single_inl, right_single_inl, left_single_inr, right_single_inr, map_zero, Pi.zero_apply, zero_add, add_zero, mul_zero, mul_one, theta] using Q.multiplicationLift_homogeneous P g hg (mul_mem g hcolon) 0 a b
+      | inr a =>
+        cases a
+        rw [coneDifferential_right_zero]
+        cases b with
+        | inl b => simp only [left_single_inr, right_single_inl, map_zero, Pi.zero_apply, neg_zero]; exact isHomogeneous_zero _ _ _
+        | inr b => simpa only [left_single_inl, right_single_inl, left_single_inr, right_single_inr, map_zero, Pi.zero_apply, zero_add, add_zero, mul_zero, mul_one, theta] using (Q.augmentation_homogeneous b).neg
+    | succ n =>
+      cases a with
+      | inl a =>
+        rw [coneDifferential_left]
+        cases b with
+        | inl b => simpa only [left_single_inl, right_single_inl, left_single_inr, right_single_inr, map_zero, Pi.zero_apply, zero_add, add_zero, mul_zero, mul_one, theta] using P.linear (n + 1) a b
+        | inr b => simpa only [left_single_inl, right_single_inl, left_single_inr, right_single_inr, map_zero, Pi.zero_apply, zero_add, add_zero, mul_zero, mul_one, theta] using Q.multiplicationLift_homogeneous P g hg (mul_mem g hcolon) (n + 1) a b
+      | inr a =>
+        rw [coneDifferential_right_succ]
+        cases b with
+        | inl b => simp only [left_single_inr, right_single_inl, map_zero, Pi.zero_apply, neg_zero]; exact isHomogeneous_zero _ _ _
+        | inr b => simpa only [left_single_inl, right_single_inl, left_single_inr, right_single_inr, map_zero, Pi.zero_apply, zero_add, add_zero, mul_zero, mul_one, theta] using (Q.linear n a b).neg
+  augmentation_homogeneous := by
+    intro b
+    rw [coneAugmentation_apply]
+    cases b with
+    | inl b =>
+      rw [left_single_inl]
+      simpa only [Pi.single_apply, Sum.inr_ne_inl, ite_false, mul_zero, add_zero] using
+        P.augmentation_homogeneous b
+    | inr b =>
+      rw [left_single_inr, map_zero, zero_add]
+      cases b
+      simpa only [Pi.single_eq_same, mul_one] using hg
+
+end LinearResolution
+end Characterizations
+
+end
+end CheckedCharacterizationsSource12
+
+/-! ## Source: Characterizations.Resolution.VariableIdeal -/
+section CheckedCharacterizationsSource13
+
+/-! # A genuine linear free resolution of an ideal generated by variables -/
+
+noncomputable section
+local instance (priority := 2000) classicalBasisDecidableEqVariableIdeal (α : Type*) [Fintype α] : DecidableEq α := Classical.decEq α
+set_option backward.isDefEq.respectTransparency false
+set_option maxHeartbeats 300000
+namespace Characterizations
+open Classical Resolution CategoryTheory CommAlg.Koszul MvPolynomial
+universe u
+variable {V k : Type u} [CommRing k]
+
+lemma exact_transport {M₀ M₁ M₂ N₀ N₁ N₂ : Type u}
+    [AddCommGroup M₀] [Module (MvPolynomial V k) M₀]
+    [AddCommGroup M₁] [Module (MvPolynomial V k) M₁]
+    [AddCommGroup M₂] [Module (MvPolynomial V k) M₂]
+    [AddCommGroup N₀] [Module (MvPolynomial V k) N₀]
+    [AddCommGroup N₁] [Module (MvPolynomial V k) N₁]
+    [AddCommGroup N₂] [Module (MvPolynomial V k) N₂]
+    (f : M₂ →ₗ[MvPolynomial V k] M₁) (g : M₁ →ₗ[MvPolynomial V k] M₀)
+    (h : LinearMap.range f = LinearMap.ker g)
+    (e₀ : M₀ ≃ₗ[MvPolynomial V k] N₀) (e₁ : M₁ ≃ₗ[MvPolynomial V k] N₁)
+    (e₂ : M₂ ≃ₗ[MvPolynomial V k] N₂) :
+    LinearMap.range (e₁.toLinearMap ∘ₗ f ∘ₗ e₂.symm.toLinearMap) =
+      LinearMap.ker (e₀.toLinearMap ∘ₗ g ∘ₗ e₁.symm.toLinearMap) := by
+  ext y
+  constructor
+  · rintro ⟨x, rfl⟩
+    apply LinearMap.mem_ker.mpr
+    simp only [LinearMap.comp_apply, LinearEquiv.coe_coe, LinearEquiv.symm_apply_apply]
+    have hm : f (e₂.symm x) ∈ LinearMap.ker g := h ▸ LinearMap.mem_range_self _ _
+    rw [LinearMap.mem_ker.mp hm, map_zero]
+  · intro hy
+    have hh : e₁.symm y ∈ LinearMap.ker g := by
+      apply LinearMap.mem_ker.mpr
+      apply e₀.injective
+      simpa using LinearMap.mem_ker.mp hy
+    rw [← h] at hh
+    obtain ⟨x, hx⟩ := hh
+    refine ⟨e₂ x, ?_⟩
+    simp [hx]
+
+namespace VariableResolution
+variable (l : List (MvPolynomial V k))
+
+abbrev Index (i : ℕ) := Set.powersetCard (Fin l.length) i
+
+def coordinates (i : ℕ) : (⋀[MvPolynomial V k]^i (Fin l.length → MvPolynomial V k)) ≃ₗ[MvPolynomial V k]
+    (Index l i → MvPolynomial V k) :=
+  ((Pi.basisFun (MvPolynomial V k) (Fin l.length)).exteriorPower i).equivFun
+
+lemma coordinates_symm_single (i : ℕ) (b : Index l i) :
+    (coordinates l i).symm (Pi.single b 1) =
+      ((Pi.basisFun (MvPolynomial V k) (Fin l.length)).exteriorPower i) b := by
+  apply (coordinates l i).injective
+  ext a
+  simp [coordinates, Pi.single_apply, eq_comm]
+
+def differential (i : ℕ) :
+    (Index l (i + 1) → MvPolynomial V k) →ₗ[MvPolynomial V k] (Index l i → MvPolynomial V k) :=
+  (coordinates l i).toLinearMap ∘ₗ
+    koszulComplex.d (Fintype.linearCombination (MvPolynomial V k) l.get) i ∘ₗ
+      (coordinates l (i + 1)).symm.toLinearMap
+
+def augmentation : (Index l 1 → MvPolynomial V k) →ₗ[MvPolynomial V k] MvPolynomial V k :=
+  (exteriorPower.zeroEquiv (MvPolynomial V k) (Fin l.length → MvPolynomial V k)).toLinearMap ∘ₗ
+    koszulComplex.d (Fintype.linearCombination (MvPolynomial V k) l.get) 0 ∘ₗ
+      (coordinates l 1).symm.toLinearMap
+
+lemma augmentation_range : LinearMap.range (augmentation l) = Ideal.ofList l := by
+  rw [augmentation, ← LinearMap.comp_assoc,
+    LinearMap.range_comp_of_range_eq_top _ (LinearEquiv.range _),
+    koszulComplex.equiv_comp_koszulComplex.d_zero_eq,
+    LinearMap.range_comp_of_range_eq_top _ (LinearEquiv.range _)]
+  simpa using Fintype.range_linearCombination (MvPolynomial V k) l.get
+
+lemma exact_d (hreg : RingTheory.Sequence.IsRegular (MvPolynomial V k) l) (i : ℕ) :
+    LinearMap.range (koszulComplex.d (Fintype.linearCombination (MvPolynomial V k) l.get) (i + 1)) =
+      LinearMap.ker (koszulComplex.d (Fintype.linearCombination (MvPolynomial V k) l.get) i) := by
+  have h := koszulComplex.exactAt_of_isRegular l hreg (i + 1) (Nat.succ_ne_zero i)
+  rw [HomologicalComplex.exactAt_iff' _ (i + 2) (i + 1) i (by simp) (by simp),
+    ShortComplex.moduleCat_exact_iff_range_eq_ker] at h
+  simpa [koszulComplex.ofList, koszulComplex.d_eq_d, Nat.add_assoc] using h
+
+lemma phi_basis (j : Fin l.length) :
+    Fintype.linearCombination (MvPolynomial V k) l.get
+      ((Pi.basisFun (MvPolynomial V k) (Fin l.length)) j) = l.get j := by
+  simp [Fintype.linearCombination_apply, Pi.basisFun_apply, Pi.single_apply]
+
+lemma differential_homogeneous
+    (hl : ∀ x ∈ l, (x : MvPolynomial V k).IsHomogeneous 1) (i : ℕ) :
+    IsHomogeneousMap (differential l i) 1 := by
+  intro a b
+  simp only [differential, LinearMap.comp_apply, LinearEquiv.coe_coe]
+  rw [coordinates_symm_single, differential_eq_contraction,
+    Module.Basis.koszulDifferential_eq_sum (Pi.basisFun (MvPolynomial V k) (Fin l.length))]
+  simp only [phi_basis, map_sum, map_smul, Finset.sum_apply, Pi.smul_apply]
+  apply (homogeneousSubmodule V k 1).sum_mem
+  intro j hj
+  by_cases hjb : j ∈ b.val
+  · rw [Module.Basis.koszulDifferential_coord_exteriorPower_basis_of_mem _ hjb,
+      map_zsmul_unit]
+    change (l.get j * (TauCeti.ExteriorAlgebra.basisEraseSign j b.val •
+      (coordinates l i) ((Pi.basisFun (MvPolynomial V k) (Fin l.length)).exteriorPower i _) a)).IsHomogeneous 1
+    rw [show ∀ t, (coordinates l i)
+      ((Pi.basisFun (MvPolynomial V k) (Fin l.length)).exteriorPower i t) a =
+      if t = a then 1 else 0 from fun t => Module.Basis.equivFun_self _ _ _]
+    split_ifs
+    · have hh := (homogeneousSubmodule V k 1).toAddSubgroup.zsmul_mem (hl (l.get j) (List.get_mem l j))
+        (TauCeti.ExteriorAlgebra.basisEraseSign j b.val : ℤ)
+      simpa only [Submodule.mem_toAddSubgroup, mem_homogeneousSubmodule, Units.smul_def, zsmul_eq_mul, mul_comm, mul_one, one_mul] using hh
+    · simp [isHomogeneous_zero]
+  · rw [Module.Basis.koszulDifferential_coord_exteriorPower_basis_of_notMem _ hjb]
+    simp [isHomogeneous_zero]
+
+lemma augmentation_homogeneous
+    (hl : ∀ x ∈ l, (x : MvPolynomial V k).IsHomogeneous 1) (b : Index l 1) :
+    (augmentation l (Pi.single b 1)).IsHomogeneous 1 := by
+  simp only [augmentation, LinearMap.comp_apply, LinearEquiv.coe_coe]
+  rw [coordinates_symm_single, differential_eq_contraction,
+    Module.Basis.koszulDifferential_eq_sum (Pi.basisFun (MvPolynomial V k) (Fin l.length))]
+  simp only [phi_basis, map_sum, map_smul]
+  apply (homogeneousSubmodule V k 1).sum_mem
+  intro j hj
+  by_cases hjb : j ∈ b.val
+  · rw [Module.Basis.koszulDifferential_coord_exteriorPower_basis_of_mem _ hjb,
+      map_zsmul_unit]
+    have he : ∀ t, exteriorPower.zeroEquiv (MvPolynomial V k) (Fin l.length → MvPolynomial V k)
+        ((Pi.basisFun (MvPolynomial V k) (Fin l.length)).exteriorPower 0 t) = 1 := by
+      intro t
+      rw [exteriorPower.basis_apply, exteriorPower.ιMulti_family, exteriorPower.zeroEquiv_ιMulti]
+    rw [he]
+    have hh := (homogeneousSubmodule V k 1).toAddSubgroup.zsmul_mem (hl (l.get j) (List.get_mem l j))
+      (TauCeti.ExteriorAlgebra.basisEraseSign j b.val : ℤ)
+    simpa only [Submodule.mem_toAddSubgroup, mem_homogeneousSubmodule, Units.smul_def, smul_eq_mul, zsmul_eq_mul, mul_comm, mul_one, one_mul] using hh
+  · rw [Module.Basis.koszulDifferential_coord_exteriorPower_basis_of_notMem _ hjb]
+    simp [isHomogeneous_zero]
+
+/-- The positive truncation of the genuine Koszul complex, in its finite exterior basis. -/
+def ofRegularLinearForms (hreg : RingTheory.Sequence.IsRegular (MvPolynomial V k) l)
+    (hl : ∀ x ∈ l, (x : MvPolynomial V k).IsHomogeneous 1) :
+    LinearResolution (Ideal.ofList l) 1 where
+  Index n := Index l (n + 1)
+  finite n := inferInstance
+  differential n := differential l (n + 1)
+  augmentation := augmentation l
+  augmentation_range := augmentation_range l
+  exact_zero := exact_transport _ _ (exact_d l hreg 0)
+    (exteriorPower.zeroEquiv _ _) (coordinates l 1) (coordinates l 2)
+  exact_succ n := exact_transport _ _ (exact_d l hreg (n + 1))
+    (coordinates l (n + 1)) (coordinates l (n + 2)) (coordinates l (n + 3))
+  linear n := differential_homogeneous l hl (n + 1)
+  augmentation_homogeneous := augmentation_homogeneous l hl
+
+end VariableResolution
+
+variable [Nontrivial k]
+
+/-- Every actual ideal generated by a subset of the polynomial variables has a
+one-linear finite-free resolution, supplied by its regular Koszul complex. -/
+def variableIdealLinearResolution (A : Finset V) :
+    LinearResolution (CommAlg.Polymatroid.variableIdeal (k := k) A) 1 := by
+  let l := A.toList.map (MvPolynomial.X : V → MvPolynomial V k)
+  have hreg := CommAlg.Koszul.variables_regular (k := k) A.toList A.nodup_toList
+  have he : Ideal.ofList l = CommAlg.Polymatroid.variableIdeal (k := k) A := by
+    apply congrArg Ideal.span
+    ext x
+    simp [l, CommAlg.Polymatroid.variableIdeal]
+  rw [← he]
+  apply VariableResolution.ofRegularLinearForms l hreg
+  intro x hx
+  obtain ⟨j, hj, rfl⟩ := List.mem_map.mp hx
+  exact isHomogeneous_X _ _
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource13
+
+/-! ## Source: Characterizations.Resolution.LinearQuotients -/
+section CheckedCharacterizationsSource14
+
+/-! # Linear quotients construct actual linear free resolutions -/
+
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+namespace Characterizations
+open Classical Finset CommAlg.Polymatroid
+universe u
+variable {V k : Type u} [Fintype V] [DecidableEq V] [CommRing k] [Nontrivial k]
+
+/-- The zero module is resolved by the zero complex, for every proposed shift. -/
+def zeroLinearResolution (d : ℕ) : LinearResolution (⊥ : Ideal (MvPolynomial V k)) d where
+  Index _ := Empty
+  finite _ := inferInstance
+  differential _ := 0
+  augmentation := 0
+  augmentation_range := LinearMap.range_zero
+  exact_zero := by simp only [LinearMap.range_zero, LinearMap.ker_zero]; exact Subsingleton.elim _ _
+  exact_succ _ := by simp only [LinearMap.range_zero, LinearMap.ker_zero]; exact Subsingleton.elim _ _
+  linear _ a := Empty.elim a
+  augmentation_homogeneous b := Empty.elim b
+
+private theorem exists_greatest (r : GeneratorOrder V)
+    (htrans : ∀ {a b c}, r a b → r b c → r a c)
+    (htotal : ∀ a b, a ≠ b → r a b ∨ r b a)
+    (C : Family V) (hC : C.Nonempty) :
+    ∃ b ∈ C, ∀ a ∈ C, a = b ∨ r a b := by
+  induction C using Finset.induction_on with
+  | empty => simp at hC
+  | @insert b C hb ih =>
+    by_cases hne : C.Nonempty
+    · obtain ⟨c, hc, hmax⟩ := ih hne
+      by_cases hbc : b = c
+      · refine ⟨c, mem_insert_of_mem hc, ?_⟩
+        intro a ha
+        rcases mem_insert.mp ha with rfl | ha
+        · exact Or.inl hbc
+        · exact hmax a ha
+      rcases htotal b c hbc with hbc | hcb
+      · refine ⟨c, mem_insert_of_mem hc, ?_⟩
+        intro a ha
+        rcases mem_insert.mp ha with rfl | ha
+        · exact Or.inr hbc
+        · exact hmax a ha
+      · refine ⟨b, mem_insert_self _ _, ?_⟩
+        intro a ha
+        rcases mem_insert.mp ha with rfl | ha
+        · exact Or.inl rfl
+        · rcases hmax a ha with rfl | hac
+          · exact Or.inr hcb
+          · exact Or.inr (htrans hac hcb)
+    · have he := not_nonempty_iff_eq_empty.mp hne
+      subst C
+      exact ⟨b, by simp, fun a ha => Or.inl (by simpa using ha)⟩
+
+private theorem initialSegment_linearResolution (B : Family V) (d : ℕ)
+    (hB : Equigenerated B d) (r : GeneratorOrder V)
+    (hirr : ∀ a, ¬ r a a) (htrans : ∀ {a b c}, r a b → r b c → r a c)
+    (htotal : ∀ a b, a ≠ b → r a b ∨ r b a)
+    (hL : HasLinearQuotients k B r) (C : Family V) (hCB : C ⊆ B)
+    (hdown : ∀ a ∈ C, ∀ b ∈ B, r b a → b ∈ C) :
+    Nonempty (LinearResolution (monomialIdeal k C) d) := by
+  induction C using Finset.strongInductionOn with
+  | _ C ih =>
+    by_cases hne : C.Nonempty
+    · obtain ⟨b, hb, hmax⟩ := exists_greatest r htrans htotal C hne
+      let D := C.erase b
+      have hDB : D ⊆ B := (erase_subset _ _).trans hCB
+      have hDdown : ∀ a ∈ D, ∀ c ∈ B, r c a → c ∈ D := by
+        intro a ha c hc hca
+        obtain ⟨hab, haC⟩ := mem_erase.mp ha
+        apply mem_erase.mpr
+        refine ⟨?_, hdown a haC c hc hca⟩
+        intro hcb
+        subst c
+        rcases hmax a haC with he | habefore
+        · exact hab he
+        · exact hirr a (htrans habefore hca)
+      obtain ⟨P⟩ := ih D (erase_ssubset hb) hDB hDdown
+      have hDeq : D = preceding B r b := by
+        ext a
+        constructor
+        · intro ha
+          obtain ⟨hab, haC⟩ := mem_erase.mp ha
+          exact (mem_preceding _ _ _ _).mpr ⟨hCB haC, (hmax a haC).resolve_left hab⟩
+        · intro ha
+          obtain ⟨haB, hab⟩ := (mem_preceding _ _ _ _).mp ha
+          exact mem_erase.mpr ⟨fun he => hirr b (he ▸ hab), hdown b hb a haB hab⟩
+      obtain ⟨A, hcolon⟩ := hL b (hCB hb)
+      have hcol : variableIdeal (k := k) A =
+          (monomialIdeal k D).colon {MvPolynomial.monomial b 1} := by
+        rw [hDeq]
+        exact hcolon.symm
+      have hg : (MvPolynomial.monomial b (1 : k)).IsHomogeneous d :=
+        MvPolynomial.isHomogeneous_monomial _ (hB b (hCB hb))
+      have he : monomialIdeal k C = monomialIdeal k D ⊔ Ideal.span {MvPolynomial.monomial b (1 : k)} := by
+        rw [← insert_erase hb]
+        simp only [monomialIdeal, Finset.coe_insert, Set.image_insert_eq, Ideal.span_insert]
+        exact sup_comm _ _
+      rw [he]
+      exact ⟨P.adjoin (variableIdealLinearResolution (k := k) A)
+        (MvPolynomial.monomial b 1) hg hcol⟩
+    · have he : C = ∅ := not_nonempty_iff_eq_empty.mp hne
+      subst C
+      have he0 : monomialIdeal k (∅ : Family V) = ⊥ := by simp [monomialIdeal]
+      rw [he0]
+      exact ⟨zeroLinearResolution d⟩
+
+/-- Lemma 2.1 with its conventional conclusion: an actual exact complex of finite
+free modules, generated in degrees `d+i`, resolves the given ideal. -/
+theorem linearResolution_of_linearQuotients (B : Family V) (d : ℕ)
+    (hB : Equigenerated B d) (r : GeneratorOrder V)
+    (hirr : ∀ a, ¬ r a a) (htrans : ∀ {a b c}, r a b → r b c → r a c)
+    (htotal : ∀ a b, a ≠ b → r a b ∨ r b a)
+    (hL : HasLinearQuotients k B r) :
+    Nonempty (LinearResolution (monomialIdeal k B) d) :=
+  initialSegment_linearResolution B d hB r hirr htrans htotal hL B le_rfl
+    (fun _ _ _ hb _ => hb)
+
+theorem linearResolution_of_polymatroidal {B : Family V} (hB : IsPolymatroidal B) :
+    HasLinearResolution (monomialIdeal k B) := by
+  obtain ⟨d, hd⟩ := hB.1
+  let o : VariableOrder V := Fintype.equivFin V
+  refine ⟨d, linearResolution_of_linearQuotients B d hd (variableRevlex o)
+    (variableRevlex_irrefl o) (fun h₁ h₂ => variableRevlex_trans o h₁ h₂)
+    (variableRevlex_total o) ?_⟩
+  exact polymatroidal_variable_linearQuotients hB.2 o
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource14
+
+/-! ## Source: Characterizations.Isolators.Projection -/
+section CheckedCharacterizationsSource15
+
+/-! # Exact minimal generators in localized deleted bounded families -/
+noncomputable section
+set_option maxHeartbeats 500000
+set_option backward.isDefEq.respectTransparency false
+namespace Characterizations.Isolators
+open Classical Finset CommAlg.Polymatroid
+variable {V : Type*} [Fintype V] [DecidableEq V]
+
+def indicatorExponent (T : Finset V) : Exponent V := ∑ i ∈ T, Finsupp.single i 1
+@[simp] lemma indicatorExponent_apply (T : Finset V) (i : V) :
+    indicatorExponent T i = if i ∈ T then 1 else 0 := by
+  simp [indicatorExponent, Finsupp.single_apply]
+@[simp] lemma indicatorExponent_degree (T : Finset V) : (indicatorExponent T).degree = T.card := by
+  simp [indicatorExponent, map_sum]
+
+def retainedCaps (T R : Finset V) : Finset R := univ.filter (fun i => i.val ∈ T)
+@[simp] lemma mem_retainedCaps (T R : Finset V) (i : R) : i ∈ retainedCaps T R ↔ i.val ∈ T := by
+  simp [retainedCaps]
+
+lemma degree_split (R : Finset V) (a : Exponent V) :
+    (restrictExponent R a).degree + subsetSum a Rᶜ = a.degree := by
+  rw [restrictExponent_degree]
+  have h := subsetSum_union_inter a R Rᶜ
+  simpa using h
+
+lemma degree_split_saturated (T R : Finset V) (h : Exponent V)
+    (hsat : ∀ i ∈ T, h i = 1) (hcover : Rᶜ ⊆ T) :
+    (restrictExponent R h).degree + Rᶜ.card = h.degree := by
+  have he : subsetSum h Rᶜ = Rᶜ.card := by
+    unfold subsetSum
+    calc
+      _ = ∑ i ∈ Rᶜ, (1 : ℕ) := sum_congr rfl (fun i hi => hsat i (hcover hi))
+      _ = _ := by simp
+  rw [← he]
+  exact degree_split R h
+
+lemma minimalFamily_eq_of_divisors {W : Type*} [Fintype W] [DecidableEq W]
+    (A D : Family W) (hD : Antichain D) (hDA : D ⊆ A)
+    (hdiv : ∀ a ∈ A, ∃ b ∈ D, b ≤ a) : minimalFamily A = D := by
+  ext a
+  constructor
+  · intro ha
+    obtain ⟨b, hb, hba⟩ := hdiv a (minimalFamily_subset A ha)
+    have he := (mem_minimalFamily.mp ha).2 b (hDA hb) hba
+    exact he ▸ hb
+  · intro ha
+    apply mem_minimalFamily.mpr
+    refine ⟨hDA ha, ?_⟩
+    intro b hb hba
+    obtain ⟨c, hc, hcb⟩ := hdiv b hb
+    have he := hD c hc a ha (hcb.trans hba)
+    exact le_antisymm hba (he ▸ hcb)
+
+/-- An extra exponent cannot leave the removed monomial as the only divisor:
+its support supplies a different donor, and saturation excludes capped receivers. -/
+lemma deletedBounded_below (T : Finset V) (h x : Exponent V)
+    (hsat : ∀ i ∈ T, h i = 1) (hsupp : 2 ≤ h.support.card)
+    (hdeg : h.degree ≤ x.degree) (hcap : ∀ i ∈ T, x i ≤ 1) (hne : x ≠ h) :
+    Contains (deletedBounded h.degree T h) x := by
+  obtain ⟨b, hbx, hbd⟩ := Finsupp.exists_le_degree_eq x h.degree hdeg
+  by_cases hbh : b = h
+  · subst b
+    have hex : ∃ j, h j < x j := by
+      by_contra hn
+      push_neg at hn
+      exact hne (le_antisymm hn hbx)
+    obtain ⟨j, hj⟩ := hex
+    obtain ⟨i, hi, hij⟩ := Finset.exists_mem_ne (show 1 < h.support.card by omega) j
+    have hip : 0 < h i := Nat.pos_of_ne_zero (Finsupp.mem_support_iff.mp hi)
+    have hjT : j ∉ T := by
+      intro hjT
+      have hc := hcap j hjT
+      rw [hsat j hjT] at hj
+      omega
+    refine ⟨exchange h i j, (mem_deletedBounded _ _ _ _).mpr
+      ⟨exchange_ne hij hip, exchange_degree h i j hip, ?_⟩, ?_⟩
+    · intro v hv
+      have hvj : v ≠ j := fun he => hjT (he ▸ hv)
+      simp only [exchange_apply, if_neg hvj, Nat.add_zero, hsat v hv]
+      omega
+    · intro v
+      have hv := hbx v
+      by_cases hvj : v = j
+      · subst v
+        simp only [exchange_apply, if_neg hij.symm, ite_true, Nat.sub_zero]
+        omega
+      · simp only [exchange_apply, if_neg hvj, Nat.add_zero]
+        split_ifs <;> omega
+  · exact ⟨b, (mem_deletedBounded _ _ _ _).mpr
+      ⟨hbh, hbd, fun i hi => (hbx i).trans (hcap i hi)⟩, hbx⟩
+
+lemma restrict_lift (R : Finset V) (b : Exponent R) :
+    restrictExponent R (extendExponent R b + indicatorExponent Rᶜ) = b := by
+  ext i
+  simp [extendExponent_apply, i.property]
+
+/-- Exact minimal projected generators. The only hypotheses are saturated caps,
+all omitted coordinates capped, and at least two retained support coordinates. -/
+theorem localFamily_deletedBounded (T R : Finset V) (h : Exponent V)
+    (hsat : ∀ i ∈ T, h i = 1) (hcover : Rᶜ ⊆ T)
+    (hsupp : 2 ≤ (restrictExponent R h).support.card) :
+    localFamily (deletedBounded h.degree T h) R =
+      deletedBounded (restrictExponent R h).degree (retainedCaps T R) (restrictExponent R h) := by
+  let D := deletedBounded (restrictExponent R h).degree (retainedCaps T R) (restrictExponent R h)
+  have hsatR : ∀ i ∈ retainedCaps T R, restrictExponent R h i = 1 := by
+    intro i hi
+    exact hsat i.val ((mem_retainedCaps _ _ _).mp hi)
+  have hdegree := degree_split_saturated T R h hsat hcover
+  apply minimalFamily_eq_of_divisors _ D (deletedBounded_equigenerated _ _ _).antichain
+  · intro b hb
+    obtain ⟨hbne, hbdeg, hbcap⟩ := (mem_deletedBounded _ _ _ _).mp hb
+    let x := extendExponent R b + indicatorExponent Rᶜ
+    have hxres : restrictExponent R x = b := restrict_lift R b
+    refine mem_image.mpr ⟨x, (mem_deletedBounded _ _ _ _).mpr ⟨?_, ?_, ?_⟩, hxres⟩
+    · intro he
+      exact hbne (hxres.symm.trans (congrArg (restrictExponent R) he))
+    · rw [show x.degree = b.degree + Rᶜ.card by simp [x, map_add, extendExponent_degree]]
+      rw [hbdeg, hdegree]
+    · intro i hi
+      by_cases hiR : i ∈ R
+      · have hc := hbcap ⟨i, hiR⟩ (by simp [hi])
+        simpa [x, extendExponent_apply, hiR] using hc
+      · simp [x, extendExponent_apply, hiR]
+  · intro y hy
+    obtain ⟨x, hx, rfl⟩ := mem_image.mp hy
+    obtain ⟨hxne, hxdeg, hxcap⟩ := (mem_deletedBounded _ _ _ _).mp hx
+    apply deletedBounded_below (retainedCaps T R) (restrictExponent R h) (restrictExponent R x) hsatR hsupp
+    · have hsplit := degree_split R x
+      have hsum : subsetSum x Rᶜ ≤ Rᶜ.card := by
+        calc
+          _ ≤ ∑ i ∈ Rᶜ, 1 := sum_le_sum (fun i hi => hxcap i (hcover hi))
+          _ = _ := by simp
+      omega
+    · intro i hi
+      exact hxcap i.val ((mem_retainedCaps _ _ _).mp hi)
+    · intro he
+      apply hxne
+      apply eq_of_le_of_degree_eq ?_ hxdeg
+      intro i
+      by_cases hiR : i ∈ R
+      · exact le_of_eq (congrArg (fun a : Exponent R => a ⟨i, hiR⟩) he)
+      · have hiT := hcover (mem_compl.mpr hiR)
+        rw [hsat i hiT]
+        exact hxcap i hiT
+
+end Characterizations.Isolators
+
+end
+end CheckedCharacterizationsSource15
+
+/-! ## Source: Characterizations.Strands.DeletedGenerators -/
+section CheckedCharacterizationsSource16
+
+/-! # The actual ideal obtained by deleting one Veronese generator -/
+
+noncomputable section
+namespace Characterizations
+open Classical Finset CommAlg.Polymatroid
+variable {V : Type*} [Fintype V] [DecidableEq V]
+
+def deletedVeronese (a : Exponent V) : Family V := deletedBounded a.degree ∅ a
+
+@[simp] theorem mem_deletedVeronese (a b : Exponent V) :
+    b ∈ deletedVeronese a ↔ b ≠ a ∧ b.degree = a.degree := by
+  simp [deletedVeronese]
+
+theorem deletedVeronese_equigenerated (a : Exponent V) :
+    Equigenerated (deletedVeronese a) a.degree :=
+  fun b hb => (mem_deletedVeronese a b).mp hb |>.2
+
+theorem deletedVeronese_contains (a b : Exponent V) (ha : 2 ≤ a.support.card) :
+    Contains (deletedVeronese a) b ↔ a.degree ≤ b.degree ∧ b ≠ a := by
+  constructor
+  · rintro ⟨c, hc, hcb⟩
+    obtain ⟨hca, hcd⟩ := (mem_deletedVeronese a c).mp hc
+    refine ⟨hcd ▸ degree_mono hcb, ?_⟩
+    intro he
+    subst b
+    exact hca (eq_of_le_of_degree_eq hcb hcd)
+  · rintro ⟨hdeg, hba⟩
+    obtain ⟨c, hcb, hcd⟩ := Finsupp.exists_le_degree_eq b a.degree hdeg
+    by_cases hca : c = a
+    · subst c
+      have hex : ∃ j, a j < b j := by
+        by_contra h
+        push_neg at h
+        exact hba (le_antisymm h hcb)
+      obtain ⟨j, hj⟩ := hex
+      obtain ⟨i, hi, hij⟩ := Finset.exists_mem_ne (show 1 < a.support.card by omega) j
+      have hipos : 0 < a i := Nat.pos_of_ne_zero (Finsupp.mem_support_iff.mp hi)
+      refine ⟨exchange a i j, (mem_deletedVeronese a _).mpr
+        ⟨exchange_ne hij hipos, exchange_degree a i j hipos⟩, ?_⟩
+      intro x
+      have hx := hcb x
+      by_cases hxj : x = j
+      · subst x
+        simp only [exchange_apply, if_neg hij.symm, ite_true, Nat.sub_zero]
+        omega
+      · simp only [exchange_apply, if_neg hxj, Nat.add_zero]
+        split_ifs <;> omega
+    · exact ⟨c, (mem_deletedVeronese a c).mpr ⟨hca, hcd⟩, hcb⟩
+
+theorem deletedVeronese_degree_pos (a : Exponent V) (ha : 2 ≤ a.support.card) :
+    0 < a.degree := by
+  obtain ⟨i, hi⟩ := Finset.card_pos.mp (show 0 < a.support.card by omega)
+  have h := Finset.single_le_sum (f := fun i => a i) (fun i _ => Nat.zero_le _) (Finset.mem_univ i)
+  have hi' := Nat.pos_of_ne_zero (Finsupp.mem_support_iff.mp hi)
+  rw [Finsupp.degree_eq_sum]
+  omega
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource16
+
+/-! ## Source: Characterizations.Isolators.Pure -/
+section CheckedCharacterizationsSource17
+
+/-! # The exact family isolating one nonlinear localization -/
+noncomputable section
+set_option maxHeartbeats 500000
+set_option backward.isDefEq.respectTransparency false
+namespace Characterizations.Isolators
+open Classical Finset CommAlg.Polymatroid
+universe u
+variable {V : Type u} [Fintype V] [DecidableEq V]
+
+lemma singleton_polymatroidal (a : Exponent V) : IsPolymatroidal ({a} : Family V) := by
+  refine ⟨⟨a.degree, fun b hb => by simpa using congrArg Finsupp.degree (mem_singleton.mp hb)⟩, ?_⟩
+  intro b hb c hc i hi
+  have hb' := mem_singleton.mp hb
+  have hc' := mem_singleton.mp hc
+  subst b; subst c
+  exact False.elim (lt_irrefl _ hi)
+
+lemma purePower_mem (T : Finset V) (h : Exponent V) (hsupp : 2 ≤ h.support.card)
+    (i : V) (hi : i ∉ T) : Finsupp.single i h.degree ∈ deletedBounded h.degree T h := by
+  apply (mem_deletedBounded _ _ _ _).mpr
+  refine ⟨?_, Finsupp.degree_single _ _, ?_⟩
+  · obtain ⟨j, hj, hji⟩ := Finset.exists_mem_ne (show 1 < h.support.card by omega) i
+    intro he
+    have hh := congrArg (fun a : Exponent V => a j) he
+    have hjp : h j ≠ 0 := Finsupp.mem_support_iff.mp hj
+    simp [Finsupp.single_apply, hji, hji.symm] at hh
+    exact hjp hh.symm
+  · intro j hj
+    have hji : j ≠ i := fun he => hi (he ▸ hj)
+    simp [Finsupp.single_apply, hji, hji.symm]
+
+lemma localFamily_eq_zero_of_purePower (T R : Finset V) (h : Exponent V)
+    (hsupp : 2 ≤ h.support.card) (i : V) (hiT : i ∉ T) (hiR : i ∉ R) :
+    localFamily (deletedBounded h.degree T h) R = {0} := by
+  apply minimalFamily_eq_of_divisors _ {0}
+    (singleton_polymatroidal (0 : Exponent R)).1.choose_spec.antichain
+  · intro a ha
+    have he : a = 0 := mem_singleton.mp ha
+    subst a
+    refine mem_image.mpr ⟨Finsupp.single i h.degree, purePower_mem T h hsupp i hiT, ?_⟩
+    ext j
+    have hji : j.val ≠ i := fun he => hiR (he ▸ j.property)
+    simp [restrictExponent_apply, Finsupp.single_apply, hji, hji.symm]
+  · intro a ha
+    exact ⟨0, mem_singleton_self _, bot_le⟩
+
+lemma deletedBounded_linearResolution {k : Type u} [CommRing k] [Nontrivial k]
+    (d : ℕ) (T : Finset V) (h : Exponent V) (hsat : ∀ i ∈ T, h i = 1)
+    (hT : T.Nonempty) : Nonempty (LinearResolution (monomialIdeal k (deletedBounded d T h)) d) := by
+  obtain ⟨w, hw⟩ := hT
+  obtain ⟨o, ho⟩ := exists_lastVariable w
+  exact linearResolution_of_linearQuotients _ d (deletedBounded_equigenerated d T h)
+    (variableRevlex o) (variableRevlex_irrefl o) (fun {_ _ _} => variableRevlex_trans o)
+    (variableRevlex_total o) (deletedBounded_linearQuotients_last d T h hsat o w hw ho)
+
+def removedExponent (U : Finset V) (q : Exponent V) := q + indicatorExponent Uᶜ
+
+def pureIsolator (U : Finset V) (q : Exponent V) : Family V :=
+  deletedBounded (removedExponent U q).degree Uᶜ (removedExponent U q)
+
+lemma removedExponent_saturated (U : Finset V) (q : Exponent V) (hq : q.support ⊆ U) :
+    ∀ i ∈ Uᶜ, removedExponent U q i = 1 := by
+  intro i hi
+  have hqi : q i = 0 := Finsupp.notMem_support_iff.mp (fun h => (mem_compl.mp hi) (hq h))
+  simp [removedExponent, hqi, hi]
+
+lemma support_restrict_removed (U R : Finset V) (q : Exponent V)
+    (hq : q.support ⊆ U) (hUR : U ⊆ R) (hsupp : 2 ≤ q.support.card) :
+    2 ≤ (restrictExponent R (removedExponent U q)).support.card := by
+  obtain ⟨a, ha, b, hb, hab⟩ := Finset.one_lt_card.mp (show 1 < q.support.card by omega)
+  let a' : R := ⟨a, hUR (hq ha)⟩
+  let b' : R := ⟨b, hUR (hq hb)⟩
+  have ha' : a' ∈ (restrictExponent R (removedExponent U q)).support := by
+    apply Finsupp.mem_support_iff.mpr
+    have hp : 0 < q a := Nat.pos_of_ne_zero (Finsupp.mem_support_iff.mp ha)
+    simp only [restrictExponent_apply, removedExponent, Finsupp.add_apply, a']
+    omega
+  have hb' : b' ∈ (restrictExponent R (removedExponent U q)).support := by
+    apply Finsupp.mem_support_iff.mpr
+    have hp : 0 < q b := Nat.pos_of_ne_zero (Finsupp.mem_support_iff.mp hb)
+    simp only [restrictExponent_apply, removedExponent, Finsupp.add_apply, b']
+    omega
+  have hab' : a' ≠ b' := fun he => hab (congrArg Subtype.val he)
+  exact (Finset.one_lt_card.mpr ⟨a', ha', b', hb', hab'⟩)
+
+lemma removed_support (U : Finset V) (q : Exponent V) (hsupp : 2 ≤ q.support.card) :
+    2 ≤ (removedExponent U q).support.card := by
+  apply hsupp.trans
+  apply card_le_card
+  intro i hi
+  apply Finsupp.mem_support_iff.mpr
+  have hp : 0 < q i := Nat.pos_of_ne_zero (Finsupp.mem_support_iff.mp hi)
+  simp only [removedExponent, Finsupp.add_apply]
+  omega
+
+lemma pureIsolator_degree (U : Finset V) (q : Exponent V) :
+    Equigenerated (pureIsolator U q) (q.degree + Uᶜ.card) := by
+  simpa [pureIsolator, removedExponent, map_add] using
+    deletedBounded_equigenerated (removedExponent U q).degree Uᶜ (removedExponent U q)
+
+lemma pureIsolator_nonempty (U : Finset V) (q : Exponent V)
+    (hq : q.support ⊆ U) (hsupp : 2 ≤ q.support.card) : (pureIsolator U q).Nonempty := by
+  obtain ⟨i, hi⟩ := card_pos.mp (show 0 < q.support.card by omega)
+  exact ⟨_, purePower_mem Uᶜ _ (removed_support U q hsupp) i (by simpa using hq hi)⟩
+
+/-- Every localization omitting an uncapped variable is literally the unit family. -/
+theorem pureIsolator_local_omit (U R : Finset V) (q : Exponent V)
+    (hsupp : 2 ≤ q.support.card) (hUR : ¬ U ⊆ R) :
+    localFamily (pureIsolator U q) R = {0} := by
+  obtain ⟨i, hiU, hiR⟩ := not_subset.mp hUR
+  exact localFamily_eq_zero_of_purePower Uᶜ R _ (removed_support U q hsupp) i (by simpa using hiU) hiR
+
+/-- At every retained superset the displayed deleted capped family is exact. -/
+theorem pureIsolator_local_contain (U R : Finset V) (q : Exponent V)
+    (hq : q.support ⊆ U) (hsupp : 2 ≤ q.support.card) (hUR : U ⊆ R) :
+    localFamily (pureIsolator U q) R =
+      deletedBounded (restrictExponent R (removedExponent U q)).degree
+        (retainedCaps Uᶜ R) (restrictExponent R (removedExponent U q)) := by
+  apply localFamily_deletedBounded Uᶜ R _ (removedExponent_saturated U q hq)
+    (compl_subset_compl.mpr hUR) (support_restrict_removed U R q hq hUR hsupp)
+
+lemma pureIsolator_local_at (U : Finset V) (q : Exponent V)
+    (hq : q.support ⊆ U) (hsupp : 2 ≤ q.support.card) :
+    localFamily (pureIsolator U q) U = deletedVeronese (restrictExponent U q) := by
+  rw [pureIsolator_local_contain U U q hq hsupp le_rfl]
+  have he : restrictExponent U (removedExponent U q) = restrictExponent U q := by
+    ext i
+    simp [removedExponent, i.property]
+  have hc : retainedCaps Uᶜ U = ∅ := by ext i; simp [i.property]
+  rw [he, hc]
+  rfl
+
+/-- All localizations of the pure isolator have one generator degree. -/
+theorem pureIsolator_locallyEquigenerated (U : Finset V) (q : Exponent V)
+    (hq : q.support ⊆ U) (hsupp : 2 ≤ q.support.card) : LocallyEquigenerated (pureIsolator U q) := by
+  rw [locallyEquigenerated_iff]
+  intro R
+  by_cases hUR : U ⊆ R
+  · rw [pureIsolator_local_contain U R q hq hsupp hUR]
+    exact ⟨_, deletedBounded_equigenerated _ _ _⟩
+  · rw [pureIsolator_local_omit U R q hsupp hUR]
+    exact (singleton_polymatroidal (0 : Exponent R)).1
+
+/-- Every localization other than the designated one has an actual linear free resolution. -/
+theorem pureIsolator_local_linear {k : Type u} [CommRing k] [Nontrivial k]
+    (U R : Finset V) (q : Exponent V) (hq : q.support ⊆ U) (hsupp : 2 ≤ q.support.card)
+    (hRU : R ≠ U) : HasLinearResolution (monomialIdeal k (localFamily (pureIsolator U q) R)) := by
+  by_cases hUR : U ⊆ R
+  · rw [pureIsolator_local_contain U R q hq hsupp hUR]
+    refine ⟨_, deletedBounded_linearResolution _ _ _ ?_ ?_⟩
+    · intro i hi
+      exact removedExponent_saturated U q hq i.val ((mem_retainedCaps _ _ _).mp hi)
+    · have hex : ∃ i ∈ R, i ∉ U := by
+        by_contra hn
+        push_neg at hn
+        exact hRU (le_antisymm hn hUR)
+      obtain ⟨i, hiR, hiU⟩ := hex
+      exact ⟨⟨i, hiR⟩, by simp [hiU]⟩
+  · rw [pureIsolator_local_omit U R q hsupp hUR]
+    exact linearResolution_of_polymatroidal (singleton_polymatroidal (0 : Exponent R))
+
+end Characterizations.Isolators
+
+end
+end CheckedCharacterizationsSource17
+
+/-! ## Source: Characterizations.Resolution.Degree -/
+section CheckedCharacterizationsSource18
+
+/-! The generator degree of an actual homogeneous free resolution. -/
+noncomputable section
+namespace Characterizations
+open Classical Resolution MvPolynomial CommAlg.Polymatroid
+open scoped BigOperators
+universe u
+variable {V k : Type u} [Fintype V] [DecidableEq V] [CommRing k]
+
+namespace Resolution
+lemma component_mul_below {a : MvPolynomial V k} {d e : ℕ}
+    (ha : a.IsHomogeneous d) (b : MvPolynomial V k) (he : e < d) :
+    homogeneousComponent e (a * b) = 0 := by
+  induction b using MvPolynomial.induction_on' with
+  | monomial f c =>
+      have hf : (monomial f c : MvPolynomial V k).IsHomogeneous f.degree :=
+        isHomogeneous_monomial c rfl
+      rw [homogeneousComponent_of_mem (ha.mul hf)]
+      simp only [show e ≠ d + f.degree by omega, ↓reduceIte]
+  | add b c hb hc => simp [mul_add, map_add, hb, hc]
+end Resolution
+
+namespace LinearResolution
+variable {I : Ideal (MvPolynomial V k)} {d : ℕ} (P : LinearResolution I d)
+include P
+
+lemma augmentation_component_below (x : P.Index 0 → MvPolynomial V k)
+    {e : ℕ} (he : e < d) : homogeneousComponent e (P.augmentation x) = 0 := by
+  have hx : x = ∑ j, x j • Pi.single j (1 : MvPolynomial V k) := by
+    funext j
+    simp [Pi.single_apply]
+  rw [hx, map_sum, map_sum]
+  apply Finset.sum_eq_zero
+  intro j hj
+  rw [map_smul, smul_eq_mul, mul_comm]
+  exact component_mul_below (P.augmentation_homogeneous j) (x j) he
+
+lemma degree_le_of_homogeneous_mem {y : MvPolynomial V k} {e : ℕ}
+    (hy : y.IsHomogeneous e) (hy0 : y ≠ 0) (hyI : y ∈ I) : d ≤ e := by
+  by_contra h
+  have he : e < d := by omega
+  have hr : y ∈ LinearMap.range P.augmentation := by rw [P.augmentation_range]; exact hyI
+  obtain ⟨x, hx⟩ := hr
+  have hh := P.augmentation_component_below x he
+  rw [hx, homogeneousComponent_eq_self hy] at hh
+  exact hy0 hh
+
+variable [Nontrivial k]
+
+omit P in
+lemma equigenerated_of_monomial (B : Family V) (hB : Antichain B)
+    (P : LinearResolution (monomialIdeal k B) d) : Equigenerated B d := by
+  have hlo : ∀ a ∈ B, d ≤ a.degree := by
+    intro a ha
+    apply P.degree_le_of_homogeneous_mem (isHomogeneous_monomial (1 : k) rfl)
+      (by simp) ((monomial_mem_iff B a).mpr ⟨a, ha, le_rfl⟩)
+  let C := B.filter (fun a => a.degree = d)
+  have hgen : ∀ j, P.augmentation (Pi.single j 1) ∈ monomialIdeal k C := by
+    intro j
+    apply (mem_monomialIdeal_iff C _).mpr
+    intro a ha
+    have hmem : P.augmentation (Pi.single j 1) ∈ monomialIdeal k B := by
+      simpa only [P.augmentation_range] using
+        LinearMap.mem_range_self P.augmentation (Pi.single j 1)
+    obtain ⟨b, hb, hba⟩ := (mem_monomialIdeal_iff B _).mp hmem a ha
+    have had : a.degree = d := by
+      simpa only [← Finsupp.degree_apply] using
+        ((P.augmentation_homogeneous j).degree_eq_sum_deg_support ha).symm
+    have hbd : b.degree = d := le_antisymm ((degree_mono hba).trans_eq had) (hlo b hb)
+    exact ⟨b, Finset.mem_filter.mpr ⟨hb, hbd⟩, hba⟩
+  have hsub : monomialIdeal k B ≤ monomialIdeal k C := by
+    rw [← P.augmentation_range]
+    rintro y ⟨x, rfl⟩
+    have hx : x = ∑ j, x j • Pi.single j (1 : MvPolynomial V k) := by
+      funext j
+      simp [Pi.single_apply]
+    rw [hx, map_sum]
+    exact (monomialIdeal k C).sum_mem (fun j _ => by
+      rw [map_smul]
+      exact (monomialIdeal k C).smul_mem _ (hgen j))
+  intro a ha
+  have ham : monomial a (1 : k) ∈ monomialIdeal k C :=
+    hsub ((monomial_mem_iff B a).mpr ⟨a, ha, le_rfl⟩)
+  obtain ⟨b, hb, hba⟩ := (monomial_mem_iff C a).mp ham
+  obtain ⟨hbB, hbd⟩ := Finset.mem_filter.mp hb
+  exact (hB b hbB a ha hba) ▸ hbd
+
+end LinearResolution
+end Characterizations
+
+end
+end CheckedCharacterizationsSource18
+
+/-! ## Source: Characterizations.Isolators.Mixed -/
+section CheckedCharacterizationsSource19
+
+/-! # The lower-degree isolator with exactly one mixed-degree localization -/
+noncomputable section
+set_option maxHeartbeats 600000
+set_option backward.isDefEq.respectTransparency false
+namespace Characterizations.Isolators
+open Classical Finset CommAlg.Polymatroid
+universe u
+variable {V : Type u} [Fintype V] [DecidableEq V]
+
+def mixedCore (a : V) : Family V :=
+  (univ.erase a).image (fun j => Finsupp.single j 1) ∪ {Finsupp.single a 2}
+
+@[simp] lemma mem_mixedCore (a : V) (b : Exponent V) :
+    b ∈ mixedCore a ↔ (∃ j, j ≠ a ∧ b = Finsupp.single j 1) ∨ b = Finsupp.single a 2 := by
+  simp [mixedCore, eq_comm, or_comm]
+
+lemma mixedCore_antichain (a : V) : Antichain (mixedCore a) := by
+  intro b hb c hc hbc
+  rcases (mem_mixedCore a b).mp hb with ⟨j, hja, rfl⟩ | rfl <;>
+    rcases (mem_mixedCore a c).mp hc with ⟨i, hia, rfl⟩ | rfl
+  · by_cases hji : j = i
+    · exact congrArg (fun j => Finsupp.single j 1) hji
+    · have hh := hbc j
+      simp [Finsupp.single_apply, hji, Ne.symm hji] at hh
+  · have hh := hbc j
+    simp [Finsupp.single_apply, hja, hja.symm] at hh
+  · have hh := hbc a
+    simp [Finsupp.single_apply, hia, hia.symm] at hh
+  · rfl
+
+lemma mixedCore_contains (a : V) (b : Exponent V) :
+    Contains (mixedCore a) b ↔ b ≠ 0 ∧ b ≠ Finsupp.single a 1 := by
+  constructor
+  · rintro ⟨c, hc, hcb⟩
+    rcases (mem_mixedCore a c).mp hc with ⟨j, hja, rfl⟩ | rfl
+    · constructor
+      · intro he; subst b; have hh := hcb j; simp at hh
+      · intro he; subst b; have hh := hcb j; simp [Finsupp.single_apply, hja, hja.symm] at hh
+    · constructor
+      · intro he; subst b; have hh := hcb a; simp at hh
+      · intro he; subst b; have hh := hcb a; simp at hh
+  · rintro ⟨hb0, hba⟩
+    by_cases hex : ∃ j, j ≠ a ∧ 0 < b j
+    · obtain ⟨j, hja, hj⟩ := hex
+      refine ⟨Finsupp.single j 1, (mem_mixedCore _ _).mpr (Or.inl ⟨j, hja, rfl⟩), ?_⟩
+      intro i
+      by_cases hij : i = j
+      · subst i; simpa only [Finsupp.single_eq_same] using Nat.succ_le_of_lt hj
+      · simp [Finsupp.single_apply, hij, Ne.symm hij]
+    · have hz : ∀ j, j ≠ a → b j = 0 := by
+        intro j hj
+        by_contra hn
+        exact hex ⟨j, hj, Nat.pos_of_ne_zero hn⟩
+      have he : b = Finsupp.single a (b a) := by
+        ext j
+        by_cases hj : j = a
+        · subst j; simp
+        · rw [hz j hj, Finsupp.single_eq_of_ne hj]
+      have htwo : 2 ≤ b a := by
+        have h0 : b a ≠ 0 := by intro h; exact hb0 (by simpa [h] using he)
+        have h1 : b a ≠ 1 := by intro h; exact hba (by simpa [h] using he)
+        omega
+      refine ⟨Finsupp.single a 2, (mem_mixedCore _ _).mpr (Or.inr rfl), ?_⟩
+      rw [he]
+      exact Finsupp.single_le_single.mpr htwo
+
+lemma mixedCore_not_equigenerated (a b : V) (hab : a ≠ b) :
+    ¬ ∃ d, Equigenerated (mixedCore a) d := by
+  rintro ⟨d, hd⟩
+  have h1 := hd (Finsupp.single b 1) ((mem_mixedCore _ _).mpr (Or.inl ⟨b, hab.symm, rfl⟩))
+  have h2 := hd (Finsupp.single a 2) ((mem_mixedCore _ _).mpr (Or.inr rfl))
+  simp only [Finsupp.degree_single] at h1 h2
+  omega
+
+lemma support_card_two_of_coordinates (h : Exponent V) (a b : V)
+    (hab : a ≠ b) (ha : 0 < h a) (hb : 0 < h b) : 2 ≤ h.support.card := by
+  exact Finset.one_lt_card.mpr ⟨a, Finsupp.mem_support_iff.mpr (Nat.ne_of_gt ha),
+    b, Finsupp.mem_support_iff.mpr (Nat.ne_of_gt hb), hab⟩
+
+lemma mixed_removed_support (U : Finset V) (a : V) (ha : a ∈ U) (hT : Uᶜ.Nonempty) :
+    2 ≤ (removedExponent U (Finsupp.single a 1)).support.card := by
+  obtain ⟨v, hv⟩ := hT
+  have hav : a ≠ v := fun he => (mem_compl.mp hv) (he ▸ ha)
+  apply support_card_two_of_coordinates _ a v hav
+  · simp [removedExponent, ha]
+  · simp [removedExponent, Finsupp.single_apply, hav, hav.symm, hv]
+
+/-- The mixed core occurs literally in the retained-variable polynomial ring. -/
+theorem mixedIsolator_local_at (U : Finset V) (a : V) (ha : a ∈ U)
+    (hT : Uᶜ.Nonempty) :
+    localFamily (pureIsolator U (Finsupp.single a 1)) U = mixedCore (⟨a, ha⟩ : U) := by
+  let a' : U := ⟨a, ha⟩
+  let h := removedExponent U (Finsupp.single a 1)
+  have hsat : ∀ i ∈ Uᶜ, h i = 1 := removedExponent_saturated U (Finsupp.single a 1) (by simpa)
+  have hres : restrictExponent U h = Finsupp.single a' 1 := by
+    ext i
+    simp [h, removedExponent, a', Finsupp.single_apply, Subtype.ext_iff, i.property]
+  have hdeg : h.degree = 1 + Uᶜ.card := by simp [h, removedExponent, map_add]
+  change minimalFamily ((deletedBounded h.degree Uᶜ h).image (restrictExponent U)) = mixedCore a'
+  apply minimalFamily_eq_of_divisors _ _ (mixedCore_antichain a')
+  · intro b hb
+    rcases (mem_mixedCore a' b).mp hb with ⟨j, hja, rfl⟩ | rfl
+    · let x := extendExponent U (Finsupp.single j 1) + indicatorExponent Uᶜ
+      have hxres : restrictExponent U x = Finsupp.single j 1 := restrict_lift _ _
+      refine mem_image.mpr ⟨x, (mem_deletedBounded _ _ _ _).mpr ⟨?_, ?_, ?_⟩, hxres⟩
+      · intro he
+        have hh := hxres.symm.trans ((congrArg (restrictExponent U) he).trans hres)
+        exact hja (Finsupp.single_left_injective (by decide : (1 : ℕ) ≠ 0) hh)
+      · simp [x, map_add, extendExponent_degree, hdeg]
+      · intro i hi
+        have hiU : i ∉ U := mem_compl.mp hi
+        simp [x, extendExponent_apply, hiU, hi]
+    · obtain ⟨v, hv⟩ := hT
+      let x := extendExponent U (Finsupp.single a' 2) + indicatorExponent (Uᶜ.erase v)
+      have hxres : restrictExponent U x = Finsupp.single a' 2 := by
+        ext i
+        simp [x, extendExponent_apply, i.property]
+      refine mem_image.mpr ⟨x, (mem_deletedBounded _ _ _ _).mpr ⟨?_, ?_, ?_⟩, hxres⟩
+      · intro he
+        have hh := congrArg (fun z : Exponent U => z a') (hxres.symm.trans ((congrArg (restrictExponent U) he).trans hres))
+        simp at hh
+      · have hc : 0 < Uᶜ.card := card_pos.mpr ⟨v, hv⟩
+        simp only [x, map_add, extendExponent_degree, Finsupp.degree_single, indicatorExponent_degree,
+          card_erase_of_mem hv, hdeg]
+        omega
+      · intro i hi
+        have hiU : i ∉ U := mem_compl.mp hi
+        simp only [x, Finsupp.add_apply, extendExponent_apply, dif_neg hiU, zero_add,
+          indicatorExponent_apply]
+        split_ifs <;> omega
+  · intro b hb
+    obtain ⟨x, hx, rfl⟩ := mem_image.mp hb
+    obtain ⟨hxne, hxdeg, hxcap⟩ := (mem_deletedBounded _ _ _ _).mp hx
+    apply (mixedCore_contains _ _).mpr
+    have hsplit := degree_split U x
+    have hsum : subsetSum x Uᶜ ≤ Uᶜ.card := by
+      calc
+        _ ≤ ∑ i ∈ Uᶜ, 1 := sum_le_sum (fun i hi => hxcap i hi)
+        _ = _ := by simp
+    constructor
+    · intro he
+      have he' := congrArg Finsupp.degree he
+      simp only [map_zero] at he'
+      omega
+    · intro he
+      apply hxne
+      apply eq_of_le_of_degree_eq ?_ hxdeg
+      intro i
+      by_cases hiU : i ∈ U
+      · have hh := congrArg (fun z : Exponent U => z ⟨i, hiU⟩) (he.trans hres.symm)
+        exact hh.le
+      · rw [hsat i (mem_compl.mpr hiU)]
+        exact hxcap i (mem_compl.mpr hiU)
+
+lemma mixedIsolator_local_linear {k : Type u} [CommRing k] [Nontrivial k]
+    (U R : Finset V) (a : V) (ha : a ∈ U) (hT : Uᶜ.Nonempty) (hRU : R ≠ U) :
+    HasLinearResolution (monomialIdeal k (localFamily (pureIsolator U (Finsupp.single a 1)) R)) := by
+  let h := removedExponent U (Finsupp.single a 1)
+  by_cases hUR : U ⊆ R
+  · obtain ⟨v, hvR, hvU⟩ : ∃ v ∈ R, v ∉ U := by
+      by_contra hn
+      push_neg at hn
+      exact hRU (le_antisymm hn hUR)
+    let a' : R := ⟨a, hUR ha⟩
+    let v' : R := ⟨v, hvR⟩
+    have hav : a ≠ v := fun he => hvU (he ▸ ha)
+    have hsupp : 2 ≤ (restrictExponent R h).support.card := by
+      apply support_card_two_of_coordinates _ a' v' (fun he => hav (congrArg Subtype.val he))
+      · simp [h, removedExponent, a', ha]
+      · simp [h, removedExponent, v', Finsupp.single_apply, hav, hav.symm, hvU]
+    have hsat := removedExponent_saturated U (Finsupp.single a 1) (by simpa)
+    rw [show pureIsolator U (Finsupp.single a 1) = deletedBounded h.degree Uᶜ h from rfl,
+      localFamily_deletedBounded Uᶜ R h hsat (compl_subset_compl.mpr hUR) hsupp]
+    refine ⟨_, deletedBounded_linearResolution _ _ _ ?_ ⟨v', by simp [v', hvU]⟩⟩
+    intro i hi
+    exact hsat i.val ((mem_retainedCaps _ _ _).mp hi)
+  · obtain ⟨i, hiU, hiR⟩ := not_subset.mp hUR
+    rw [show localFamily (pureIsolator U (Finsupp.single a 1)) R = {0} from
+      localFamily_eq_zero_of_purePower Uᶜ R h (mixed_removed_support U a ha hT) i (by simpa using hiU) hiR]
+    exact linearResolution_of_polymatroidal (singleton_polymatroidal (0 : Exponent R))
+
+end Characterizations.Isolators
+
+end
+end CheckedCharacterizationsSource19
+
+/-! ## Source: Characterizations.PairIsolator -/
+section CheckedCharacterizationsSource20
+
+/-! # The exact final-pair obstruction (Lemma 5.1) -/
+
+noncomputable section
+
+namespace Characterizations
+
+open Classical Finset CommAlg.Polymatroid
+
+variable {V : Type*} [Fintype V] [DecidableEq V]
+
+def onesOn (S : Finset V) : Exponent V := ∑ i ∈ S, Finsupp.single i 1
+
+@[simp] theorem onesOn_apply (S : Finset V) (i : V) :
+    onesOn S i = if i ∈ S then 1 else 0 := by
+  simp [onesOn, Finsupp.finsetSum_apply, Finsupp.single_apply]
+
+@[simp] theorem onesOn_degree (S : Finset V) : (onesOn S).degree = S.card := by
+  simp [onesOn, map_sum]
+
+def pairCap (i j : V) : Finset V := univ \ {i, j}
+def pairHole (j : V) : Exponent V := onesOn (univ.erase j)
+def pairFamily (i j : V) : Family V :=
+  deletedBounded (Fintype.card V - 1) (pairCap i j) (pairHole j)
+
+@[simp] theorem mem_pairCap (i j x : V) : x ∈ pairCap i j ↔ x ≠ i ∧ x ≠ j := by
+  simp [pairCap, and_comm]
+
+@[simp] theorem pairHole_apply (j x : V) : pairHole j x = if x = j then 0 else 1 := by
+  simp [pairHole, eq_comm]
+
+@[simp] theorem pairHole_degree (j : V) : (pairHole j).degree = Fintype.card V - 1 := by
+  simp [pairHole]
+
+theorem pairFamily_equigenerated (i j : V) :
+    Equigenerated (pairFamily i j) (Fintype.card V - 1) :=
+  deletedBounded_equigenerated _ _ _
+
+theorem pairFamily_sat (i j : V) (x : V) (hx : x ∈ pairCap i j) : pairHole j x = 1 := by
+  simp [((mem_pairCap _ _ _).mp hx).2]
+
+theorem pairFamily_last_failure {i j : V} (hij : i ≠ j) {a b : Exponent V}
+    (ha : a ∈ pairFamily i j) (hb : b ∈ pairFamily i j) {p : V} (hp : a p < b p)
+    (hbad : ∀ q, b q < a q → exchange b p q ∉ pairFamily i j) :
+    p = j ∧ (∀ x, b x < a x ↔ x = i) ∧ b = pairHole i := by
+  obtain ⟨q, huniq, hpq, hpW, hqW, hhq, he, hbEq⟩ :=
+    deletedBounded_failed_exchange (pairFamily_sat i j) ha hb hp hbad
+  have hqij : q = i ∨ q = j := by
+    by_contra hn
+    exact hqW ((mem_pairCap _ _ _).mpr ⟨fun h => hn (Or.inl h), fun h => hn (Or.inr h)⟩)
+  have hqj : q ≠ j := by intro he; subst q; simp at hhq
+  have hqi : q = i := hqij.resolve_right hqj
+  subst q
+  have hpij : p = i ∨ p = j := by
+    by_contra hn
+    exact hpW ((mem_pairCap _ _ _).mpr ⟨fun h => hn (Or.inl h), fun h => hn (Or.inr h)⟩)
+  have hpj : p = j := hpij.resolve_left hpq
+  subst p
+  refine ⟨rfl, huniq, hbEq.trans ?_⟩
+  ext x
+  simp only [exchange_apply, pairHole_apply]
+  by_cases hxi : x = i <;> by_cases hxj : x = j <;> simp [hxi, hxj, hij] <;> omega
+
+theorem pairFamily_linearQuotients_of_not_final {k : Type*} [CommSemiring k]
+    {i j : V} (hij : i ≠ j) (o : VariableOrder V) (hnot : ¬ FinalPair o i j) :
+    HasLinearQuotients k (pairFamily i j) (variableRevlex o) := by
+  apply linearQuotients_of_witness
+  intro a ha b hb hab
+  obtain ⟨p, hp, he⟩ := hab
+  by_cases hex : ∃ q, b q < a q ∧ exchange b p q ∈ pairFamily i j
+  · obtain ⟨q, hq, hmem⟩ := hex
+    have hpq : p ≠ q := by intro h; subst q; omega
+    have hqp : o q < o p := by
+      rcases lt_trichotomy (o q) (o p) with h | h | h
+      · exact h
+      · exact (hpq (o.injective h).symm).elim
+      · have hh := he q h; omega
+    exact ⟨_, hmem, variableRevlex_exchange o b hqp (by omega), q,
+      exchange_sub_self b hpq, hq⟩
+  · have hbad : ∀ q, b q < a q → exchange b p q ∉ pairFamily i j := by
+      simpa only [not_exists, not_and] using hex
+    obtain ⟨hpj, huniq, hbEq⟩ := pairFamily_last_failure hij ha hb hp hbad
+    subst p
+    have hai : b i < a i := (huniq i).mpr rfl
+    have hijOrder : o i < o j := by
+      rcases lt_trichotomy (o i) (o j) with h | h | h
+      · exact h
+      · exact (hij (o.injective h)).elim
+      · have hh := he i h; omega
+    have ht : ∃ t, t ≠ i ∧ t ≠ j ∧ o i < o t := by
+      by_contra ht
+      apply hnot
+      refine ⟨hijOrder, ?_⟩
+      intro t hti htj
+      have hn : ¬ o i < o t := fun h => ht ⟨t, hti, htj, h⟩
+      exact lt_of_le_of_ne (le_of_not_gt hn) (fun h => hti (o.injective h))
+    obtain ⟨t, hti, htj, hit⟩ := ht
+    have hbt : b t = 1 := by simp [hbEq, hti]
+    have hmem : exchange b t i ∈ pairFamily i j := by
+      apply (mem_deletedBounded _ _ _ _).mpr
+      refine ⟨?_, (exchange_degree b t i (by omega)).trans
+        (pairFamily_equigenerated i j b hb), ?_⟩
+      · intro hh
+        have hhj := congrArg (fun a : Exponent V => a j) hh
+        simp [exchange_apply, hbEq, htj.symm, hij.symm] at hhj
+      · intro x hx
+        obtain ⟨hxi, hxj⟩ := (mem_pairCap _ _ _).mp hx
+        simp only [exchange_apply, if_neg hxi, Nat.add_zero]
+        have hbx : b x = 1 := by simp [hbEq, hxi]
+        rw [hbx]
+        split_ifs <;> omega
+    exact ⟨_, hmem, variableRevlex_exchange o b hit (by omega), i,
+      exchange_sub_self b hti, hai⟩
+
+theorem pairFamily_counter_generators {i j v : V} (hij : i ≠ j)
+    (hv : v ∈ pairCap i j) :
+    pairHole i ∈ pairFamily i j ∧ exchange (pairHole j) v i ∈ pairFamily i j := by
+  obtain ⟨hvi, hvj⟩ := (mem_pairCap _ _ _).mp hv
+  constructor
+  · apply (mem_deletedBounded _ _ _ _).mpr
+    refine ⟨?_, pairHole_degree i, ?_⟩
+    · intro he
+      have hi := congrArg (fun a : Exponent V => a i) he
+      simp [hij] at hi
+    · intro x hx
+      simp only [pairHole_apply]
+      split_ifs <;> omega
+  · apply (mem_deletedBounded _ _ _ _).mpr
+    refine ⟨exchange_ne hvi (by simp [hvj]),
+      (exchange_degree _ v i (by simp [hvj])).trans (pairHole_degree j), ?_⟩
+    intro x hx
+    obtain ⟨hxi, hxj⟩ := (mem_pairCap _ _ _).mp hx
+    simp only [exchange_apply, if_neg hxi, Nat.add_zero, pairHole_apply, if_neg hxj]
+    split_ifs <;> omega
+
+theorem pairFamily_not_linearQuotients_final {k : Type*} [CommSemiring k] [Nontrivial k]
+    {i j : V} (hij : i ≠ j) (hcard : 3 ≤ Fintype.card V)
+    (o : VariableOrder V) (hfinal : FinalPair o i j) :
+    ¬ HasLinearQuotients k (pairFamily i j) (variableRevlex o) := by
+  intro hL
+  have hWcard : (pairCap i j).card = Fintype.card V - 2 := by
+    rw [pairCap, card_sdiff_of_subset (subset_univ _)]
+    simp [hij]
+  obtain ⟨v, hv⟩ : (pairCap i j).Nonempty := Finset.card_pos.mp (by omega)
+  obtain ⟨hvi, hvj⟩ := (mem_pairCap _ _ _).mp hv
+  obtain ⟨hb, ha⟩ := pairFamily_counter_generators hij hv
+  let a := exchange (pairHole j) v i
+  let b := pairHole i
+  have hdef (x : V) : b x < a x ↔ x = i := by
+    simp only [a, b, exchange_apply, pairHole_apply]
+    by_cases hxi : x = i <;> by_cases hxj : x = j <;> by_cases hxv : x = v <;>
+      simp_all [eq_comm] <;> omega
+  have hab : variableRevlex o a b := by
+    refine ⟨j, ?_, fun x hx => (hfinal.no_after x hx).elim⟩
+    simp [a, b, exchange_apply, hvj.symm, hij.symm]
+  obtain ⟨w, hw, hwb, z, hwz, haz⟩ := witness_of_linearQuotients
+    (pairFamily_equigenerated i j).antichain (variableRevlex_irrefl o) hL a ha b hb hab
+  have hzi : z = i := (hdef z).mp haz
+  subst z
+  obtain ⟨t, hit, ht, hew⟩ := witness_is_exchange (pairFamily_equigenerated i j) hw hb hwz
+  have horder := (variableRevlex_exchange_iff o b hit.symm ht).mp (hew ▸ hwb)
+  have htj : t = j := by
+    by_contra htj
+    exact (not_lt_of_gt (hfinal.2 t hit.symm htj)) horder
+  have hwh : w = pairHole j := by
+    rw [hew, htj]
+    ext x
+    simp only [b, exchange_apply, pairHole_apply]
+    by_cases hxi : x = i <;> by_cases hxj : x = j <;> simp_all [eq_comm]
+  exact ((mem_deletedBounded _ _ _ _).mp hw).1 hwh
+
+/-- Exact failure signature of Lemma 5.1. -/
+theorem pairFamily_linearQuotients_iff {k : Type*} [CommSemiring k] [Nontrivial k]
+    {i j : V} (hij : i ≠ j) (hcard : 3 ≤ Fintype.card V) (o : VariableOrder V) :
+    HasLinearQuotients k (pairFamily i j) (variableRevlex o) ↔ ¬ FinalPair o i j := by
+  exact ⟨fun h hf => pairFamily_not_linearQuotients_final hij hcard o hf h,
+    pairFamily_linearQuotients_of_not_final hij o⟩
+
+theorem pairFamily_not_polymatroidal {i j : V} (hij : i ≠ j)
+    (hcard : 3 ≤ Fintype.card V) : ¬ IsPolymatroidal (pairFamily i j) := by
+  intro h
+  obtain ⟨o, ho⟩ := exists_finalPair i j hij
+  exact pairFamily_not_linearQuotients_final (k := ℚ) hij hcard o ho
+    (polymatroidal_variable_linearQuotients h.2 o)
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource20
+
+/-! ## Source: Characterizations.TripleIsolator -/
+section CheckedCharacterizationsSource21
+
+/-! # The exact pointed-triple obstruction (Lemma 5.2) -/
+
+noncomputable section
+namespace Characterizations
+open Classical Finset CommAlg.Polymatroid
+variable {V : Type*} [Fintype V] [DecidableEq V]
+
+def tripleCap (i q z : V) : Finset V := univ \ {i, q, z}
+def tripleCondition (i q z : V) (a : Exponent V) : Prop :=
+  0 < a z ∨ (0 < a i ∧ 0 < a q)
+def tripleFamily (i q z : V) : Family V :=
+  (boundedFamily (Fintype.card V - 2) (tripleCap i q z)).filter (tripleCondition i q z)
+def tripleBase (i q : V) : Exponent V := onesOn (univ \ {i, q})
+
+@[simp] theorem mem_tripleCap (i q z x : V) :
+    x ∈ tripleCap i q z ↔ x ≠ i ∧ x ≠ q ∧ x ≠ z := by simp [tripleCap]
+@[simp] theorem mem_tripleFamily (i q z : V) (a : Exponent V) :
+    a ∈ tripleFamily i q z ↔ a ∈ boundedFamily (Fintype.card V - 2) (tripleCap i q z) ∧
+      tripleCondition i q z a := by simp [tripleFamily]
+@[simp] theorem tripleBase_apply (i q x : V) :
+    tripleBase i q x = if x = i ∨ x = q then 0 else 1 := by
+  by_cases hxi : x = i <;> by_cases hxq : x = q <;> simp [tripleBase, hxi, hxq]
+@[simp] theorem tripleBase_degree {i q : V} (hiq : i ≠ q) :
+    (tripleBase i q).degree = Fintype.card V - 2 := by
+  rw [tripleBase, onesOn_degree, card_sdiff_of_subset (subset_univ _)]
+  simp [hiq]
+
+theorem tripleFamily_equigenerated (i q z : V) :
+    Equigenerated (tripleFamily i q z) (Fintype.card V - 2) :=
+  fun _ ha => ((mem_boundedFamily _ _ _).mp ((mem_tripleFamily _ _ _ _).mp ha).1).1
+
+theorem condition_receive_z (i q z p : V) (b : Exponent V) :
+    tripleCondition i q z (exchange b p z) := by
+  left
+  simp only [exchange_apply, ite_true]
+  omega
+
+theorem condition_keep_z {i q z p r : V} {b : Exponent V}
+    (hz : 0 < b z) (hpz : p ≠ z) : tripleCondition i q z (exchange b p r) := by
+  left
+  simp only [exchange_apply, if_neg hpz.symm, Nat.sub_zero]
+  omega
+
+theorem condition_large_z {i q z p r : V} {b : Exponent V}
+    (hz : 2 ≤ b z) : tripleCondition i q z (exchange b p r) := by
+  left
+  simp only [exchange_apply]
+  split_ifs <;> omega
+
+theorem condition_keep_both {i q z p r : V} {b : Exponent V}
+    (hi : 0 < b i) (hq : 0 < b q)
+    (hpi : p ≠ i ∨ 2 ≤ b i) (hpq : p ≠ q ∨ 2 ≤ b q) :
+    tripleCondition i q z (exchange b p r) := by
+  right
+  simp only [exchange_apply]
+  constructor
+  · rcases hpi with h | h
+    · rw [if_neg h.symm]; omega
+    · split_ifs <;> omega
+  · rcases hpq with h | h
+    · rw [if_neg h.symm]; omega
+    · split_ifs <;> omega
+
+/-- The non-convex condition has only one type of prescribed-exchange failure. -/
+theorem condition_failed_exchange {i q z : V} (hiq : i ≠ q) (hiz : i ≠ z) (hqz : q ≠ z)
+    {a b : Exponent V} (ha : tripleCondition i q z a) (hb : tripleCondition i q z b)
+    {p : V} (hp : a p < b p) (hr : ∃ r, b r < a r)
+    (hbad : ∀ r, b r < a r → ¬ tripleCondition i q z (exchange b p r)) :
+    p = z ∧ b z = 1 ∧ b i = 0 ∧ b q = 0 ∧ 0 < a i ∧ 0 < a q := by
+  obtain ⟨r, hr⟩ := hr
+  have hbz : 0 < b z := by
+    by_contra hn
+    have hbz : b z = 0 := by omega
+    obtain ⟨hbi, hbq⟩ : 0 < b i ∧ 0 < b q := by simpa [tripleCondition, hbz] using hb
+    have hpiq : p = i ∨ p = q := by
+      by_contra hn
+      have hpi : p ≠ i := fun h => hn (Or.inl h)
+      have hpq : p ≠ q := fun h => hn (Or.inr h)
+      exact hbad r hr (condition_keep_both hbi hbq (Or.inl hpi) (Or.inl hpq))
+    rcases hpiq with hpi | hpq
+    · subst p
+      have hbi1 : b i = 1 := by
+        by_contra hn
+        exact hbad r hr (condition_keep_both hbi hbq (Or.inr (by omega)) (Or.inl hiq))
+      have hai : a i = 0 := by omega
+      have haz : 0 < a z := by simpa [tripleCondition, hai] using ha
+      exact hbad z (by omega) (condition_receive_z i q z i b)
+    · subst p
+      have hbq1 : b q = 1 := by
+        by_contra hn
+        exact hbad r hr (condition_keep_both hbi hbq (Or.inl hiq.symm) (Or.inr (by omega)))
+      have haq : a q = 0 := by omega
+      have haz : 0 < a z := by simpa [tripleCondition, haq] using ha
+      exact hbad z (by omega) (condition_receive_z i q z q b)
+  have hpz : p = z := by
+    by_contra hn
+    exact hbad r hr (condition_keep_z hbz hn)
+  subst p
+  have hbz1 : b z = 1 := by
+    by_contra hn
+    exact hbad r hr (condition_large_z (by omega))
+  have haz : a z = 0 := by omega
+  obtain ⟨hai, haq⟩ : 0 < a i ∧ 0 < a q := by simpa [tripleCondition, haz] using ha
+  have hbi : b i = 0 := by
+    by_contra hn
+    by_cases hq : 0 < b q
+    · exact hbad r hr (condition_keep_both (by omega) hq (Or.inl hiz.symm) (Or.inl hqz.symm))
+    · apply hbad q (by omega)
+      right
+      constructor
+      · simp [exchange_apply, hiz, hiq] <;> omega
+      · simp [exchange_apply, hqz] <;> omega
+  have hbq : b q = 0 := by
+    by_contra hn
+    apply hbad i (by omega)
+    right
+    constructor
+    · simp [exchange_apply, hiz] <;> omega
+    · simp [exchange_apply, hqz, hiq.symm] <;> omega
+  exact ⟨rfl, hbz1, hbi, hbq, hai, haq⟩
+
+theorem tripleFamily_failed_exchange {i q z : V} (hiq : i ≠ q) (hiz : i ≠ z) (hqz : q ≠ z)
+    {a b : Exponent V} (ha : a ∈ tripleFamily i q z) (hb : b ∈ tripleFamily i q z)
+    {p : V} (hp : a p < b p)
+    (hbad : ∀ r, b r < a r → exchange b p r ∉ tripleFamily i q z) :
+    p = z ∧ b = tripleBase i q ∧ (∀ x, b x < a x ↔ x = i ∨ x = q) := by
+  obtain ⟨hab, hac⟩ := (mem_tripleFamily _ _ _ _).mp ha
+  obtain ⟨hbb, hbc⟩ := (mem_tripleFamily _ _ _ _).mp hb
+  obtain ⟨had, hacap⟩ := (mem_boundedFamily _ _ _).mp hab
+  obtain ⟨hbd, hbcap⟩ := (mem_boundedFamily _ _ _).mp hbb
+  have hbadc r (hr : b r < a r) : ¬ tripleCondition i q z (exchange b p r) := by
+    intro hc
+    exact hbad r hr ((mem_tripleFamily _ _ _ _).mpr ⟨boundedFamily_exchange hab hbb hp hr, hc⟩)
+  obtain ⟨hpz, hbz, hbi, hbq, hai, haq⟩ := condition_failed_exchange hiq hiz hqz hac hbc hp
+    (exists_surplus (hbd.trans had.symm) hp) hbadc
+  have hbeq : b = tripleBase i q := by
+    apply eq_of_le_of_degree_eq
+    · intro x
+      by_cases hxi : x = i
+      · subst x; simp [hbi]
+      by_cases hxq : x = q
+      · subst x; simp [hbq]
+      by_cases hxz : x = z
+      · subst x; simp [tripleBase_apply, hiz.symm, hqz.symm, hbz]
+      · simpa [tripleBase_apply, hxi, hxq] using hbcap x ((mem_tripleCap _ _ _ _).mpr ⟨hxi, hxq, hxz⟩)
+    · exact hbd.trans (tripleBase_degree hiq).symm
+  refine ⟨hpz, hbeq, fun x => ?_⟩
+  constructor
+  · intro hx
+    by_contra hn
+    have hxi : x ≠ i := fun h => hn (Or.inl h)
+    have hxq : x ≠ q := fun h => hn (Or.inr h)
+    by_cases hxz : x = z
+    · subst x; subst p; omega
+    · have hh := hacap x ((mem_tripleCap _ _ _ _).mpr ⟨hxi, hxq, hxz⟩)
+      have hbxx : b x = 1 := by simp [hbeq, hxi, hxq]
+      omega
+  · rintro (rfl | rfl) <;> omega
+
+
+theorem tripleBase_mem {i q z : V} (hiq : i ≠ q) (hiz : i ≠ z) (hqz : q ≠ z) :
+    tripleBase i q ∈ tripleFamily i q z := by
+  apply (mem_tripleFamily _ _ _ _).mpr
+  refine ⟨(mem_boundedFamily _ _ _).mpr ⟨tripleBase_degree hiq, ?_⟩, Or.inl ?_⟩
+  · intro x hx
+    simp only [tripleBase_apply]
+    split_ifs <;> omega
+  · simp [hiz.symm, hqz.symm]
+
+theorem tripleBase_exchange_cap {i q z t r : V} (hiq : i ≠ q) (hiz : i ≠ z) (hqz : q ≠ z)
+    (ht : t ∈ tripleCap i q z) (hr : r = i ∨ r = q) :
+    exchange (tripleBase i q) t r ∈ tripleFamily i q z := by
+  obtain ⟨hti, htq, htz⟩ := (mem_tripleCap _ _ _ _).mp ht
+  have hbt : tripleBase i q t = 1 := by simp [hti, htq]
+  apply (mem_tripleFamily _ _ _ _).mpr
+  refine ⟨(mem_boundedFamily _ _ _).mpr ⟨(exchange_degree _ _ _ (by omega)).trans
+    (tripleBase_degree hiq), ?_⟩, ?_⟩
+  · intro x hx
+    obtain ⟨hxi, hxq, hxz⟩ := (mem_tripleCap _ _ _ _).mp hx
+    have hxr : x ≠ r := by rcases hr with rfl | rfl <;> assumption
+    simp only [exchange_apply, if_neg hxr, Nat.add_zero]
+    have hbx : tripleBase i q x = 1 := by simp [hxi, hxq]
+    rw [hbx]
+    split_ifs <;> omega
+  · exact condition_keep_z (by simp [hiz.symm, hqz.symm]) htz
+
+theorem tripleFamily_linearQuotients_of_not_final {k : Type*} [CommSemiring k]
+    {i q z : V} (hiq : i ≠ q) (hiz : i ≠ z) (hqz : q ≠ z)
+    (o : VariableOrder V) (hnot : ¬ FinalTriple o i q z) :
+    HasLinearQuotients k (tripleFamily i q z) (variableRevlex o) := by
+  apply linearQuotients_of_witness
+  intro a ha b hb hab
+  obtain ⟨p, hp, hafter⟩ := hab
+  by_cases hex : ∃ r, b r < a r ∧ exchange b p r ∈ tripleFamily i q z
+  · obtain ⟨r, hr, hm⟩ := hex
+    have hpr : p ≠ r := by intro h; subst r; omega
+    have hrp : o r < o p := by
+      rcases lt_trichotomy (o r) (o p) with h | h | h
+      · exact h
+      · exact (hpr (o.injective h).symm).elim
+      · have hh := hafter r h; omega
+    exact ⟨_, hm, variableRevlex_exchange o b hrp (by omega), r, exchange_sub_self b hpr, hr⟩
+  · have hbad : ∀ r, b r < a r → exchange b p r ∉ tripleFamily i q z := by
+      simpa only [not_exists, not_and] using hex
+    obtain ⟨hpz, hbeq, hdef⟩ := tripleFamily_failed_exchange hiq hiz hqz ha hb hp hbad
+    subst p
+    have hir : b i < a i := (hdef i).mpr (Or.inl rfl)
+    have hqr : b q < a q := (hdef q).mpr (Or.inr rfl)
+    have hizord : o i < o z := by
+      rcases lt_trichotomy (o i) (o z) with h | h | h
+      · exact h
+      · exact (hiz (o.injective h)).elim
+      · have hh := hafter i h; omega
+    have hqzord : o q < o z := by
+      rcases lt_trichotomy (o q) (o z) with h | h | h
+      · exact h
+      · exact (hqz (o.injective h)).elim
+      · have hh := hafter q h; omega
+    have ht : ∃ t ∈ tripleCap i q z, o i < o t ∨ o q < o t := by
+      by_contra hn
+      apply hnot
+      refine ⟨hizord, hqzord, ?_⟩
+      intro t hti htq htz
+      have htC : t ∈ tripleCap i q z := (mem_tripleCap _ _ _ _).mpr ⟨hti, htq, htz⟩
+      constructor
+      · exact lt_of_le_of_ne (le_of_not_gt (fun h => hn ⟨t, htC, Or.inl h⟩))
+          (fun h => hti (o.injective h))
+      · exact lt_of_le_of_ne (le_of_not_gt (fun h => hn ⟨t, htC, Or.inr h⟩))
+          (fun h => htq (o.injective h))
+    obtain ⟨t, ht, htr⟩ := ht
+    obtain ⟨hti, htq, htz⟩ := (mem_tripleCap _ _ _ _).mp ht
+    have hbt : b t = 1 := by simp [hbeq, hti, htq]
+    rcases htr with hit | hqt
+    · exact ⟨_, hbeq ▸ tripleBase_exchange_cap hiq hiz hqz ht (Or.inl rfl),
+        variableRevlex_exchange o b hit (by omega), i, exchange_sub_self b hti, hir⟩
+    · exact ⟨_, hbeq ▸ tripleBase_exchange_cap hiq hiz hqz ht (Or.inr rfl),
+        variableRevlex_exchange o b hqt (by omega), q, exchange_sub_self b htq, hqr⟩
+
+theorem tripleFamily_counter_target {i q z v : V} (hiq : i ≠ q) (hiz : i ≠ z) (hqz : q ≠ z)
+    (hv : v ∈ tripleCap i q z) : tripleBase z v ∈ tripleFamily i q z := by
+  obtain ⟨hvi, hvq, hvz⟩ := (mem_tripleCap _ _ _ _).mp hv
+  apply (mem_tripleFamily _ _ _ _).mpr
+  refine ⟨(mem_boundedFamily _ _ _).mpr ⟨tripleBase_degree hvz.symm, ?_⟩, Or.inr ?_⟩
+  · intro x hx
+    simp only [tripleBase_apply]
+    split_ifs <;> omega
+  · simp [hiz, hqz, hvi.symm, hvq.symm]
+
+theorem tripleFamily_not_linearQuotients_final {k : Type*} [CommSemiring k] [Nontrivial k]
+    {i q z : V} (hiq : i ≠ q) (hiz : i ≠ z) (hqz : q ≠ z)
+    (hcard : 4 ≤ Fintype.card V) (o : VariableOrder V) (hfinal : FinalTriple o i q z) :
+    ¬ HasLinearQuotients k (tripleFamily i q z) (variableRevlex o) := by
+  intro hL
+  have hCcard : (tripleCap i q z).card = Fintype.card V - 3 := by
+    rw [tripleCap, card_sdiff_of_subset (subset_univ _)]
+    simp [hiq, hiz, hqz]
+  obtain ⟨v, hv⟩ : (tripleCap i q z).Nonempty := card_pos.mp (by omega)
+  obtain ⟨hvi, hvq, hvz⟩ := (mem_tripleCap _ _ _ _).mp hv
+  let a := tripleBase z v
+  let b := tripleBase i q
+  have ha : a ∈ tripleFamily i q z := tripleFamily_counter_target hiq hiz hqz hv
+  have hb : b ∈ tripleFamily i q z := tripleBase_mem hiq hiz hqz
+  have hdef (x : V) : b x < a x ↔ x = i ∨ x = q := by
+    simp only [a, b, tripleBase_apply]
+    by_cases hxi : x = i <;> by_cases hxq : x = q <;>
+      by_cases hxz : x = z <;> by_cases hxv : x = v <;> simp_all [eq_comm]
+  have hab : variableRevlex o a b := by
+    refine ⟨z, ?_, fun x hx => (hfinal.no_after x hx).elim⟩
+    simp [a, b, hiz.symm, hqz.symm]
+  obtain ⟨w, hw, hwb, r, hwr, har⟩ := witness_of_linearQuotients
+    (tripleFamily_equigenerated i q z).antichain (variableRevlex_irrefl o) hL a ha b hb hab
+  obtain ⟨t, hrt, ht, hew⟩ := witness_is_exchange (tripleFamily_equigenerated i q z) hw hb hwr
+  have hr : r = i ∨ r = q := (hdef r).mp har
+  have horder := (variableRevlex_exchange_iff o b hrt.symm ht).mp (hew ▸ hwb)
+  have hti : t ≠ i := by intro he; subst t; simp [b] at ht
+  have htq : t ≠ q := by intro he; subst t; simp [b] at ht
+  have htz : t = z := by
+    by_contra hn
+    have hbefore := hfinal.2.2 t hti htq hn
+    rcases hr with rfl | rfl
+    · exact (not_lt_of_gt hbefore.1) horder
+    · exact (not_lt_of_gt hbefore.2) horder
+  have hc := ((mem_tripleFamily _ _ _ _).mp hw).2
+  rw [hew, htz] at hc
+  rcases hr with rfl | rfl
+  · simpa [tripleCondition, b, exchange_apply, hiz, hqz, hiq, hiq.symm,
+      hiz.symm, hqz.symm] using hc
+  · simpa [tripleCondition, b, exchange_apply, hiz, hqz, hiq, hiq.symm,
+      hiz.symm, hqz.symm] using hc
+
+/-- Exact failure signature of Lemma 5.2. -/
+theorem tripleFamily_linearQuotients_iff {k : Type*} [CommSemiring k] [Nontrivial k]
+    {i q z : V} (hiq : i ≠ q) (hiz : i ≠ z) (hqz : q ≠ z)
+    (hcard : 4 ≤ Fintype.card V) (o : VariableOrder V) :
+    HasLinearQuotients k (tripleFamily i q z) (variableRevlex o) ↔ ¬ FinalTriple o i q z :=
+  ⟨fun h hf => tripleFamily_not_linearQuotients_final hiq hiz hqz hcard o hf h,
+    tripleFamily_linearQuotients_of_not_final hiq hiz hqz o⟩
+
+theorem tripleFamily_not_polymatroidal {i q z : V} (hiq : i ≠ q) (hiz : i ≠ z) (hqz : q ≠ z)
+    (hcard : 4 ≤ Fintype.card V) : ¬ IsPolymatroidal (tripleFamily i q z) := by
+  intro h
+  obtain ⟨o, ho⟩ := exists_finalTriple i q z hiq hiz hqz
+  exact tripleFamily_not_linearQuotients_final (k := ℚ) hiq hiz hqz hcard o ho
+    (polymatroidal_variable_linearQuotients h.2 o)
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource21
+
+/-! ## Source: Characterizations.ExactCoverage -/
+section CheckedCharacterizationsSource22
+
+/-! # The exact universal coverage characterization in Theorem 5.3 -/
+
+noncomputable section
+namespace Characterizations
+open Classical Finset CommAlg.Polymatroid
+variable {V : Type*} [Fintype V] [DecidableEq V]
+
+def UniversalOrderTests (k : Type*) [CommSemiring k] (F : Set (VariableOrder V)) : Prop :=
+  ∀ (B : Family V) (d : ℕ), Equigenerated B d →
+    (∀ o ∈ F, HasLinearQuotients k B (variableRevlex o)) → IsPolymatroidal B
+
+theorem exists_distinct_of_card_two (hcard : 2 ≤ Fintype.card V) : ∃ i j : V, i ≠ j := by
+  let e := (Fintype.equivFin V).symm
+  refine ⟨e ⟨0, by omega⟩, e ⟨1, by omega⟩, ?_⟩
+  intro h
+  have he := e.injective h
+  exact (by decide : (0 : ℕ) ≠ 1) (congrArg Fin.val he)
+
+/-- Both final-pattern conditions are necessary and sufficient, with the
+quantification over every generator degree in the definition. -/
+theorem universalOrderTests_iff_coverage {k : Type*} [CommSemiring k] [Nontrivial k]
+    (hcard : 4 ≤ Fintype.card V) (F : Set (VariableOrder V)) :
+    UniversalOrderTests k F ↔ CoversFinalPairs F ∧ CoversFinalTriples F := by
+  constructor
+  · intro htest
+    constructor
+    · intro i j hij
+      by_contra hn
+      apply pairFamily_not_polymatroidal hij (by omega)
+      apply htest _ _ (pairFamily_equigenerated i j)
+      intro o ho
+      exact pairFamily_linearQuotients_of_not_final hij o (fun hf => hn ⟨o, ho, hf⟩)
+    · intro i q j hiq hij hqj
+      by_contra hn
+      apply tripleFamily_not_polymatroidal hiq hij hqj hcard
+      apply htest _ _ (tripleFamily_equigenerated i q j)
+      intro o ho
+      exact tripleFamily_linearQuotients_of_not_final hiq hij hqj o (fun hf => hn ⟨o, ho, hf⟩)
+  · rintro ⟨hpairs, htriples⟩ B d hB hL
+    obtain ⟨i, j, hij⟩ := exists_distinct_of_card_two (V := V) (by omega)
+    obtain ⟨o, ho, _⟩ := hpairs i j hij
+    exact ⟨⟨d, hB⟩, exchange_of_order_coverage (k := k) hB F ⟨o, ho⟩ hpairs htriples hL⟩
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource22
+
+/-! ## Source: Characterizations.DegreeCoverage -/
+section CheckedCharacterizationsSource23
+
+/-! # The full degree-sensitive sufficient coverage theorem -/
+
+noncomputable section
+namespace Characterizations
+open Classical Finset CommAlg.Polymatroid
+variable {V : Type*} [Fintype V] [DecidableEq V]
+
+def OrderPattern (o : VariableOrder V) (C : Finset V) (i q j : V) : Prop :=
+  o i < o j ∧ o q < o j ∧ ∀ t ∈ C, o t < o i ∧ o t < o q
+
+def CoversPatterns (s : ℕ) (F : Set (VariableOrder V)) : Prop :=
+  ∀ i q j, i ≠ q → i ≠ j → q ≠ j → ∀ C : Finset V,
+    C ⊆ tripleCap i q j → C.card = s → ∃ o ∈ F, OrderPattern o C i q j
+
+theorem card_positive_except_le_degree {a : Exponent V} {S : Finset V} {j : V}
+    (hjS : j ∉ S) (hj : 0 < a j) (hS : ∀ x ∈ S, 0 < a x) : S.card + 1 ≤ a.degree := by
+  have hones : onesOn (insert j S) ≤ a := by
+    intro x
+    by_cases hx : x ∈ insert j S
+    · have hh : 0 < a x := by
+        rcases mem_insert.mp hx with rfl | hx
+        · exact hj
+        · exact hS x hx
+      simpa [hx] using (show 1 ≤ a x by omega)
+    · simp [hx]
+  have hh := degree_mono hones
+  simpa [hjS] using hh
+
+theorem singletonExchange_of_degree_patterns {k : Type*} [CommSemiring k] [Nontrivial k]
+    {B : Family V} {d : ℕ} (hB : Equigenerated B d)
+    (hd : d ≤ Fintype.card V - 2) (F : Set (VariableOrder V))
+    (hF : CoversPatterns (d - 1) F)
+    (hL : ∀ o ∈ F, HasLinearQuotients k B (variableRevlex o)) : SingletonExchange B := by
+  intro a ha b hb i huniq j hj
+  have hi : b i < a i := (huniq i).mpr rfl
+  have hij : i ≠ j := by intro he; subst j; omega
+  let C₀ := (pairCap i j).filter (fun x => 0 < b x)
+  have hC₀pair : C₀ ⊆ pairCap i j := filter_subset _ _
+  have hC₀card : C₀.card ≤ d - 1 := by
+    have hh := card_positive_except_le_degree (a := b) (S := C₀) (j := j)
+      (by simp [C₀]) (by omega) (fun x hx => (mem_filter.mp hx).2)
+    rw [hB b hb] at hh
+    omega
+  have hpaircard : (pairCap i j).card = Fintype.card V - 2 := by
+    rw [pairCap, card_sdiff_of_subset (subset_univ _)]
+    simp [hij]
+  obtain ⟨C, hC₀C, hCpair, hCcard⟩ := exists_subsuperset_card_eq hC₀pair hC₀card
+    (show d - 1 ≤ (pairCap i j).card by omega)
+  have hCproper : C.card < (pairCap i j).card := by
+    have hdpos : 0 < d := by
+      have hh := card_positive_except_le_degree (a := b) (S := ∅) (j := j)
+        (by simp) (by omega) (by simp)
+      rw [hB b hb] at hh
+      simp only [card_empty, zero_add] at hh
+      omega
+    omega
+  obtain ⟨q, hqpair, hqC⟩ := exists_mem_notMem_of_card_lt_card hCproper
+  obtain ⟨hqi, hqj⟩ := (mem_pairCap _ _ _).mp hqpair
+  have hCcap : C ⊆ tripleCap i q j := by
+    intro x hx
+    obtain ⟨hxi, hxj⟩ := (mem_pairCap _ _ _).mp (hCpair hx)
+    exact (mem_tripleCap _ _ _ _).mpr ⟨hxi, fun he => hqC (he ▸ hx), hxj⟩
+  obtain ⟨o, ho, hpattern⟩ := hF i q j hqi.symm hij hqj C hCcap hCcard
+  have hbzero (x : V) (hxi : x ≠ i) (hxj : x ≠ j) (hxC : x ∉ C) : b x = 0 := by
+    by_contra hn
+    apply hxC
+    apply hC₀C
+    exact mem_filter.mpr ⟨(mem_pairCap _ _ _).mpr ⟨hxi, hxj⟩, by omega⟩
+  have hab : variableRevlex o a b := by
+    refine ⟨j, hj, ?_⟩
+    intro x hx
+    have hxi : x ≠ i := by intro he; subst x; exact (not_lt_of_gt hpattern.1) hx
+    have hxj : x ≠ j := by intro he; subst x; exact (lt_irrefl _ hx)
+    have hxC : x ∉ C := by
+      intro hxC
+      exact (lt_irrefl _ (hx.trans ((hpattern.2.2 x hxC).1.trans hpattern.1)))
+    have hbx := hbzero x hxi hxj hxC
+    have hax : a x ≤ b x := by
+      by_contra hn
+      exact hxi ((huniq x).mp (by omega))
+    omega
+  obtain ⟨w, hw, hwb, z, hwz, haz⟩ := witness_of_linearQuotients hB.antichain
+    (variableRevlex_irrefl o) (hL o ho) a ha b hb hab
+  have hzi : z = i := (huniq z).mp haz
+  subst z
+  obtain ⟨t, hit, ht, hew⟩ := witness_is_exchange hB hw hb hwz
+  have horder := (variableRevlex_exchange_iff o b hit.symm ht).mp (hew ▸ hwb)
+  have htj : t = j := by
+    by_contra htj
+    have htC : t ∈ C := hC₀C (mem_filter.mpr ⟨(mem_pairCap _ _ _).mpr ⟨hit.symm, htj⟩, ht⟩)
+    exact (not_lt_of_gt (hpattern.2.2 t htC).1) horder
+  simpa [hew, htj] using hw
+
+
+theorem exists_three_distinct (hcard : 3 ≤ Fintype.card V) :
+    ∃ i q j : V, i ≠ q ∧ i ≠ j ∧ q ≠ j := by
+  let e := (Fintype.equivFin V).symm
+  refine ⟨e ⟨0, by omega⟩, e ⟨1, by omega⟩, e ⟨2, by omega⟩, ?_, ?_, ?_⟩ <;>
+    intro h <;> have he := congrArg Fin.val (e.injective h) <;> simp at he
+
+theorem CoversPatterns.nonempty {s : ℕ} {F : Set (VariableOrder V)}
+    (hF : CoversPatterns s F) (hcard : 3 ≤ Fintype.card V) (hs : s ≤ Fintype.card V - 3) :
+    F.Nonempty := by
+  obtain ⟨i, q, j, hiq, hij, hqj⟩ := exists_three_distinct hcard
+  have hcapcard : (tripleCap i q j).card = Fintype.card V - 3 := by
+    rw [tripleCap, card_sdiff_of_subset (subset_univ _)]
+    simp [hiq, hij, hqj]
+  obtain ⟨C, hC, hc⟩ := exists_subset_card_eq (show s ≤ (tripleCap i q j).card by omega)
+  obtain ⟨o, ho, _⟩ := hF i q j hiq hij hqj C hC hc
+  exact ⟨o, ho⟩
+
+/-- Theorem 5.4, the full sufficient direction for all degrees and variable
+numbers in its main range. No condition is imposed on unused variables. -/
+theorem exchange_of_degree_coverage {k : Type*} [CommSemiring k] [Nontrivial k]
+    {B : Family V} {d : ℕ} (hB : Equigenerated B d) (hcard : 4 ≤ Fintype.card V)
+    (F : Set (VariableOrder V)) (hpatterns : CoversPatterns (min (d - 1) (Fintype.card V - 3)) F)
+    (hpairs : Fintype.card V - 1 ≤ d → CoversFinalPairs F)
+    (hL : ∀ o ∈ F, HasLinearQuotients k B (variableRevlex o)) : ExchangeAxiom B := by
+  obtain ⟨o₀, ho₀⟩ := hpatterns.nonempty (by omega) (Nat.min_le_right _ _)
+  have hconn := boxConnected_of_linearQuotients hB (variableRevlex_irrefl o₀)
+    (fun {_ _ _} => variableRevlex_trans o₀) (variableRevlex_total o₀) (hL o₀ ho₀)
+  have hsingle : SingletonExchange B := by
+    by_cases hd : Fintype.card V - 1 ≤ d
+    · exact singletonExchange_of_finalPairs hB F (hpairs hd) hL
+    · have hd' : d ≤ Fintype.card V - 2 := by omega
+      have hmin : min (d - 1) (Fintype.card V - 3) = d - 1 := by omega
+      exact singletonExchange_of_degree_patterns hB hd' F (hmin ▸ hpatterns) hL
+  by_contra hfail
+  obtain ⟨c, u, hc, hu, p, q, i, j, hpq, hpj, hqj, hip, hij, hiq,
+    hp, hj, he, hni, hnq, hnqi, hniq⟩ := four_coordinate_obstruction hB hconn hsingle hfail
+  let C₀ := (tripleCap i q j).filter (fun x => 0 < c x)
+  have hC₀cap : C₀ ⊆ tripleCap i q j := filter_subset _ _
+  have hcapcard : (tripleCap i q j).card = Fintype.card V - 3 := by
+    rw [tripleCap, card_sdiff_of_subset (subset_univ _)]
+    simp [hiq, hij, hqj]
+  have hC₀d : C₀.card ≤ d - 1 := by
+    have hh := card_positive_except_le_degree (a := c) (S := C₀) (j := j)
+      (by simp [C₀]) hj (fun x hx => (mem_filter.mp hx).2)
+    rw [hB c hc] at hh
+    omega
+  have hC₀card : C₀.card ≤ min (d - 1) (Fintype.card V - 3) :=
+    le_min hC₀d (by have hh := card_le_card hC₀cap; omega)
+  obtain ⟨C, hC₀C, hCcap, hCcard⟩ := exists_subsuperset_card_eq hC₀cap hC₀card
+    (show min (d - 1) (Fintype.card V - 3) ≤ (tripleCap i q j).card by omega)
+  obtain ⟨o, ho, hpattern⟩ := hpatterns i q j hiq hij hqj C hCcap hCcard
+  have hpC : p ∈ C := hC₀C (mem_filter.mpr
+    ⟨(mem_tripleCap _ _ _ _).mpr ⟨hip.symm, hpq, hpj⟩, hp⟩)
+  have hpord : o p < o j := (hpattern.2.2 p hpC).1.trans hpattern.1
+  subst u
+  have huc : variableRevlex o (exchange (exchange c p q) j i) c := by
+    refine ⟨j, ?_, ?_⟩
+    · simp only [exchange_apply, if_neg hpj.symm, if_neg hqj.symm, if_neg hij.symm,
+        ite_true, Nat.sub_zero, Nat.add_zero]
+      omega
+    · intro x hx
+      have hxp : x ≠ p := by intro he; subst x; exact (not_lt_of_gt hpord) hx
+      have hxq : x ≠ q := by intro he; subst x; exact (not_lt_of_gt hpattern.2.1) hx
+      have hxi : x ≠ i := by intro he; subst x; exact (not_lt_of_gt hpattern.1) hx
+      have hxj : x ≠ j := by intro he; subst x; exact (lt_irrefl _ hx)
+      simp [hxp, hxq, hxi, hxj]
+  obtain ⟨w, hw, hwc, z, hwz, hcz⟩ := witness_of_linearQuotients hB.antichain
+    (variableRevlex_irrefl o) (hL o ho) _ hu c hc huc
+  have hziq : z = i ∨ z = q := by
+    by_contra hz
+    push_neg at hz
+    simp only [exchange_apply, if_neg hz.1, if_neg hz.2, Nat.add_zero] at hcz
+    split_ifs at hcz <;> omega
+  obtain ⟨t, hzt, ht, hew⟩ := witness_is_exchange hB hw hc hwz
+  have horder : o z < o t :=
+    (variableRevlex_exchange_iff o c hzt.symm ht).mp (hew ▸ hwc)
+  rcases hziq with rfl | rfl
+  · by_cases htj : t = j
+    · exact hni (by simpa [hew, htj] using hw)
+    by_cases htq : t = q
+    · exact hnqi (by simpa [hew, htq] using hw)
+    have htC : t ∈ C := hC₀C (mem_filter.mpr
+      ⟨(mem_tripleCap _ _ _ _).mpr ⟨hzt.symm, htq, htj⟩, ht⟩)
+    exact (not_lt_of_gt (hpattern.2.2 t htC).1) horder
+  · by_cases htj : t = j
+    · exact hnq (by simpa [hew, htj] using hw)
+    by_cases hti : t = i
+    · exact hniq (by simpa [hew, hti] using hw)
+    have htC : t ∈ C := hC₀C (mem_filter.mpr
+      ⟨(mem_tripleCap _ _ _ _).mpr ⟨hti, hzt.symm, htj⟩, ht⟩)
+    exact (not_lt_of_gt (hpattern.2.2 t htC).2) horder
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource23
+
+/-! ## Source: Characterizations.Transport -/
+section CheckedCharacterizationsSource24
+
+/-! # Common monomial factors and unused variables preserve quotient tests -/
+
+noncomputable section
+namespace Characterizations
+open Classical Finset CommAlg.Polymatroid
+variable {V W : Type*} [Fintype V] [Fintype W] [DecidableEq V] [DecidableEq W]
+
+def translatedFamily (c : Exponent V) (B : Family V) : Family V := B.image (fun a => a + c)
+def embeddedFamily (e : W ↪ V) (B : Family W) : Family V := B.image (Finsupp.embDomain e)
+
+theorem translatedFamily_equigenerated {B : Family V} {d : ℕ} (hB : Equigenerated B d)
+    (c : Exponent V) : Equigenerated (translatedFamily c B) (d + c.degree) := by
+  rintro a ha
+  obtain ⟨b, hb, rfl⟩ := mem_image.mp ha
+  simp [hB b hb]
+
+theorem variableRevlex_add_iff (o : VariableOrder V) (a b c : Exponent V) :
+    variableRevlex o (a + c) (b + c) ↔ variableRevlex o a b := by
+  simp [variableRevlex, Finsupp.add_apply]
+
+theorem translatedFamily_linearQuotients_iff {k : Type*} [CommSemiring k] [Nontrivial k]
+    {B : Family V} {d : ℕ} (hB : Equigenerated B d) (c : Exponent V) (o : VariableOrder V) :
+    HasLinearQuotients k (translatedFamily c B) (variableRevlex o) ↔
+      HasLinearQuotients k B (variableRevlex o) := by
+  rw [linearQuotients_iff_witness (translatedFamily_equigenerated hB c).antichain (variableRevlex_irrefl o),
+    linearQuotients_iff_witness hB.antichain (variableRevlex_irrefl o)]
+  constructor
+  · intro h a ha b hb hab
+    obtain ⟨w, hw, hwb, i, hwi, hai⟩ := h (a+c) (mem_image.mpr ⟨a, ha, rfl⟩)
+      (b+c) (mem_image.mpr ⟨b, hb, rfl⟩) ((variableRevlex_add_iff o a b c).mpr hab)
+    obtain ⟨w, hw₀, rfl⟩ := (Finset.mem_image (s := B) (f := fun a => a+c)).mp hw
+    refine ⟨w, hw₀, (variableRevlex_add_iff o w b c).mp hwb, i, ?_, ?_⟩
+    · simpa only [add_tsub_add_eq_tsub_right] using hwi
+    · simpa using hai
+  · intro h a ha b hb hab
+    obtain ⟨a, ha₀, rfl⟩ := (Finset.mem_image (s := B) (f := fun a => a+c)).mp ha
+    obtain ⟨b, hb₀, rfl⟩ := (Finset.mem_image (s := B) (f := fun a => a+c)).mp hb
+    obtain ⟨w, hw, hwb, i, hwi, hai⟩ := h a ha₀ b hb₀ ((variableRevlex_add_iff o a b c).mp hab)
+    refine ⟨w+c, mem_image.mpr ⟨w, hw, rfl⟩, (variableRevlex_add_iff o w b c).mpr hwb,
+      i, ?_, ?_⟩
+    · simpa only [add_tsub_add_eq_tsub_right] using hwi
+    · simpa using hai
+
+theorem translatedFamily_polymatroidal_iff {B : Family V} {d : ℕ}
+    (hB : Equigenerated B d) (c : Exponent V) :
+    IsPolymatroidal (translatedFamily c B) ↔ IsPolymatroidal B := by
+  rw [polymatroidal_iff_universal_revlex (k := ℚ) (translatedFamily_equigenerated hB c),
+    polymatroidal_iff_universal_revlex (k := ℚ) hB]
+  simp only [translatedFamily_linearQuotients_iff hB c]
+
+theorem embeddedFamily_equigenerated {B : Family W} {d : ℕ} (hB : Equigenerated B d)
+    (e : W ↪ V) : Equigenerated (embeddedFamily e B) d := by
+  rintro a ha
+  obtain ⟨b, hb, rfl⟩ := mem_image.mp ha
+  simpa [Finsupp.embDomain_eq_mapDomain] using hB b hb
+
+theorem embDomain_exchange (e : W ↪ V) (a : Exponent W) (i j : W) :
+    Finsupp.embDomain e (exchange a i j) = exchange (Finsupp.embDomain e a) (e i) (e j) := by
+  simp [exchange, Finsupp.embDomain_add, Finsupp.embDomain_tsub, Finsupp.embDomain_single]
+
+theorem embDomain_positive_range (e : W ↪ V) (a : Exponent W) {j : V}
+    (hj : 0 < Finsupp.embDomain e a j) : ∃ x, e x = j := by
+  by_contra hn
+  simp [Finsupp.embDomain_apply, hn] at hj
+
+theorem embeddedFamily_polymatroidal_implies {B : Family W} {d : ℕ}
+    (hB : Equigenerated B d) (e : W ↪ V) (h : IsPolymatroidal (embeddedFamily e B)) :
+    IsPolymatroidal B := by
+  refine ⟨⟨d, hB⟩, ?_⟩
+  intro a ha b hb i hi
+  obtain ⟨j, hj, hw⟩ := h.2 (Finsupp.embDomain e a) (mem_image.mpr ⟨a, ha, rfl⟩)
+    (Finsupp.embDomain e b) (mem_image.mpr ⟨b, hb, rfl⟩) (e i) (by simpa using hi)
+  obtain ⟨j, rfl⟩ := embDomain_positive_range e b (lt_of_le_of_lt (Nat.zero_le _) hj)
+  obtain ⟨w, hw, he⟩ := mem_image.mp hw
+  have hew : w = exchange a i j := Finsupp.embDomain_injective e
+    (he.trans (embDomain_exchange e a i j).symm)
+  exact ⟨j, by simpa using hj, hew ▸ hw⟩
+
+/-- Restriction of a variable permutation to the active variables, retaining
+exactly their relative order. -/
+def restrictedOrder (o : VariableOrder V) (e : W ↪ V) : VariableOrder W := by
+  letI : LinearOrder W := LinearOrder.lift' (o ∘ e) (o.injective.comp e.injective)
+  exact (Fintype.orderIsoFinOfCardEq W rfl).symm.toEquiv
+
+theorem restrictedOrder_lt_iff (o : VariableOrder V) (e : W ↪ V) (a b : W) :
+    restrictedOrder o e a < restrictedOrder o e b ↔ o (e a) < o (e b) := by
+  letI : LinearOrder W := LinearOrder.lift' (o ∘ e) (o.injective.comp e.injective)
+  exact (Fintype.orderIsoFinOfCardEq W rfl).symm.lt_iff_lt
+
+theorem embedded_revlex_iff (o : VariableOrder V) (e : W ↪ V) (a b : Exponent W) :
+    variableRevlex o (Finsupp.embDomain e a) (Finsupp.embDomain e b) ↔
+      variableRevlex (restrictedOrder o e) a b := by
+  constructor
+  · rintro ⟨i, hi, hafter⟩
+    obtain ⟨i, rfl⟩ := embDomain_positive_range e b (lt_of_le_of_lt (Nat.zero_le _) hi)
+    refine ⟨i, by simpa using hi, ?_⟩
+    intro j hij
+    simpa using hafter (e j) ((restrictedOrder_lt_iff o e i j).mp hij)
+  · rintro ⟨i, hi, hafter⟩
+    refine ⟨e i, by simpa using hi, ?_⟩
+    intro j hij
+    by_cases hj : ∃ x, e x = j
+    · obtain ⟨j, rfl⟩ := hj
+      simpa using hafter j ((restrictedOrder_lt_iff o e i j).mpr hij)
+    · simp [Finsupp.embDomain_apply, hj]
+
+theorem embeddedFamily_linearQuotients_iff {k : Type*} [CommSemiring k] [Nontrivial k]
+    {B : Family W} {d : ℕ} (hB : Equigenerated B d) (e : W ↪ V) (o : VariableOrder V) :
+    HasLinearQuotients k (embeddedFamily e B) (variableRevlex o) ↔
+      HasLinearQuotients k B (variableRevlex (restrictedOrder o e)) := by
+  rw [linearQuotients_iff_witness (embeddedFamily_equigenerated hB e).antichain (variableRevlex_irrefl o),
+    linearQuotients_iff_witness hB.antichain (variableRevlex_irrefl _)]
+  constructor
+  · intro h a ha b hb hab
+    obtain ⟨w, hw, hwb, i, hwi, hai⟩ := h (Finsupp.embDomain e a) (mem_image.mpr ⟨a, ha, rfl⟩)
+      (Finsupp.embDomain e b) (mem_image.mpr ⟨b, hb, rfl⟩) ((embedded_revlex_iff o e a b).mpr hab)
+    obtain ⟨w, hw₀, rfl⟩ := (Finset.mem_image (s := B) (f := Finsupp.embDomain e)).mp hw
+    obtain ⟨i, rfl⟩ := embDomain_positive_range e a (lt_of_le_of_lt (Nat.zero_le _) hai)
+    refine ⟨w, hw₀, (embedded_revlex_iff o e w b).mp hwb, i, ?_, by simpa using hai⟩
+    apply Finsupp.embDomain_injective e
+    simpa only [Finsupp.embDomain_tsub, Finsupp.embDomain_single] using hwi
+  · intro h a ha b hb hab
+    obtain ⟨a, ha₀, rfl⟩ := (Finset.mem_image (s := B) (f := Finsupp.embDomain e)).mp ha
+    obtain ⟨b, hb₀, rfl⟩ := (Finset.mem_image (s := B) (f := Finsupp.embDomain e)).mp hb
+    obtain ⟨w, hw, hwb, i, hwi, hai⟩ := h a ha₀ b hb₀ ((embedded_revlex_iff o e a b).mp hab)
+    refine ⟨Finsupp.embDomain e w, mem_image.mpr ⟨w, hw, rfl⟩,
+      (embedded_revlex_iff o e w b).mpr hwb, e i, ?_, by simpa using hai⟩
+    simpa only [Finsupp.embDomain_tsub, Finsupp.embDomain_single] using
+      congrArg (Finsupp.embDomain e) hwi
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource24
+
+/-! ## Source: Characterizations.Strands.SimplexHomology -/
+section CheckedCharacterizationsSource25
+
+/-! # Explicit contraction and the one-dimensional boundary-simplex class -/
+noncomputable section
+set_option maxHeartbeats 800000
+namespace Characterizations.Strands
+open Classical Finset CommAlg.Simplicial CategoryTheory CategoryTheory.Limits
+universe u
+variable {V k : Type u} [Fintype V] [LinearOrder V]
+
+section Ring
+variable [CommRing k]
+
+lemma creation_mem_degree {K : Finset V → Prop} (e : V) (i : ℕ)
+    (h : ∀ s, K s → s.card = i → e ∉ s → K (insert e s))
+    {z : Ambient V k} (hz : z ∈ Chains K i) : creation e z ∈ Chains K (i+1) := by
+  induction hz using Submodule.span_induction with
+  | mem a ha =>
+    obtain ⟨s, ⟨hs, hc⟩, rfl⟩ := ha
+    rw [creation_basis]
+    split_ifs with he
+    · exact Submodule.zero_mem _
+    · exact Submodule.smul_mem _ _ (basis_mem (h s hs hc he) (by simp [he, hc]))
+  | zero => simpa using (Submodule.zero_mem (Chains (k := k) K (i+1)))
+  | add a b ha hb iha ihb => simpa [mul_add] using Submodule.add_mem _ iha ihb
+  | smul r a ha ih => simpa using Submodule.smul_mem _ r ih
+
+lemma exactIn_of_degree_extension {K : Finset V → Prop} (e : V) (i : ℕ)
+    (h : ∀ s, K s → s.card = i → e ∉ s → K (insert e s)) :
+    ExactIn (k := k) K i := by
+  intro z hz hc
+  exact ⟨creation e z, creation_mem_degree e i h hz, by
+    simp only [boundary_creation, hc, map_zero, sub_zero]⟩
+
+def simplexBoundary (T : Finset V) (s : Finset V) : Prop := s ⊂ T
+
+lemma simplexBoundary_downward (T : Finset V) : Downward (simplexBoundary T) := by
+  intro s t hts hs
+  exact Finset.ssubset_of_subset_of_ssubset hts hs
+
+lemma boundary_basis_mem (T : Finset V) (i : ℕ) (hcard : T.card = i+1) :
+    boundary (basis (k := k) T) ∈ Chains (simplexBoundary T) i := by
+  rw [boundary_eq_sum]
+  apply Submodule.sum_mem
+  intro e he
+  rw [contraction_basis]
+  split_ifs with heT
+  · apply Submodule.smul_mem
+    exact basis_mem (Finset.erase_ssubset heT)
+      (by simpa [hcard] using Finset.card_erase_of_mem heT)
+  · exact Submodule.zero_mem _
+
+lemma boundary_basis_ne_zero [Nontrivial k] {T : Finset V} (hT : T.Nonempty) :
+    boundary (basis (k := k) T) ≠ 0 := by
+  obtain ⟨e, he⟩ := hT
+  intro hzero
+  have h := boundary_creation e (basis (k := k) T)
+  rw [creation_basis, if_pos he, map_zero, hzero, map_zero, sub_zero] at h
+  exact Module.Basis.ne_zero basis T h.symm
+
+lemma simplexBoundary_nonzero [Nontrivial k] (T : Finset V) (i : ℕ)
+    (hcard : T.card = i+1) : NonzeroHomology (k := k) (simplexBoundary T) i := by
+  refine ⟨boundary (basis T), boundary_basis_mem T i hcard, boundary_boundary _, ?_⟩
+  intro y hy he
+  have hbot : Chains (k := k) (simplexBoundary T) (i+1) = ⊥ :=
+    chains_eq_bot_of_no_face (fun s hs hc => by
+      have hlt := Finset.card_lt_card hs
+      omega)
+  rw [hbot, Submodule.mem_bot] at hy
+  subst y
+  exact boundary_basis_ne_zero (k := k) (T := T)
+    (Finset.card_pos.mp (by omega)) (by simpa using he.symm)
+
+lemma simplex_top_chains (T : Finset V) :
+    Chains (k := k) (fun s => s ⊆ T) T.card = Submodule.span k {basis T} := by
+  apply le_antisymm
+  · rw [Chains, Submodule.span_le]
+    rintro z ⟨s, ⟨hs, hc⟩, rfl⟩
+    have he : s = T := Finset.eq_of_subset_of_card_le hs hc.ge
+    subst s
+    exact Submodule.subset_span (Set.mem_singleton _)
+  · rw [Submodule.span_singleton_le_iff_mem]
+    exact basis_mem (Finset.Subset.refl T) rfl
+
+lemma simplexBoundary_cycle_span (T : Finset V) (i : ℕ) (hcard : T.card = i+1)
+    {z : Ambient V k} (hz : z ∈ Chains (simplexBoundary T) i) (hc : boundary z = 0) :
+    z ∈ Submodule.span k {boundary (basis T)} := by
+  obtain ⟨e, he⟩ := Finset.card_pos.mp (show 0 < T.card by omega)
+  have hz' : z ∈ Chains (fun s => s ⊆ T) i :=
+    chains_mono (fun s hs => hs.subset) _ hz
+  have hy := creation_mem_of_cone (k := k) e
+    (K := fun s => s ⊆ T) (fun s hs => Finset.insert_subset he hs) hz'
+  rw [← hcard, simplex_top_chains] at hy
+  obtain ⟨c, hcy⟩ := Submodule.mem_span_singleton.mp hy
+  apply Submodule.mem_span_singleton.mpr
+  refine ⟨c, ?_⟩
+  have hh := congrArg boundary hcy
+  simpa only [map_smul, boundary_creation, hc, map_zero, sub_zero] using hh
+
+end Ring
+
+lemma homology_finrank_eq_one [Field k] {K : Finset V → Prop} (hK : Downward K)
+    (i : ℕ) (v : Ambient V k) (hv : v ≠ 0)
+    (hspan : ∀ z : Ambient V k, z ∈ Chains K i → boundary z = 0 →
+      z ∈ Submodule.span k {v}) (hnonzero : NonzeroHomology (k := k) K i) :
+    Module.finrank k ((chainComplex (k := k) hK).homology i) = 1 := by
+  let C := chainComplex (k := k) hK
+  let f₀ : C.cycles i →ₗ[k] Ambient V k :=
+    (Chains (k := k) K i).subtype.comp (C.iCycles i).hom
+  have hfmem (z : C.cycles i) : f₀ z ∈ Submodule.span k {v} := by
+    apply hspan _ ((C.iCycles i z).property)
+    cases i with
+    | zero => exact boundary_zero_degree_zero (C.iCycles 0 z).property
+    | succ j =>
+      have h : (C.d (j+1) j).hom ((C.iCycles (j+1)).hom z) = 0 :=
+        DFunLike.congr_fun (congrArg ModuleCat.Hom.hom (C.iCycles_d (j+1) j)) z
+      rw [show C.d (j+1) j = ModuleCat.ofHom (chainDifferential hK j) from
+        chainComplex_d hK j] at h
+      change (chainDifferential hK j) ((C.iCycles (j+1)).hom z) = 0 at h
+      exact congrArg (fun q : Chains (k := k) K j => q.val) h
+  let f : C.cycles i →ₗ[k] Submodule.span k {v} := f₀.codRestrict _ hfmem
+  have hfi : Function.Injective f := by
+    intro x y he
+    apply (ModuleCat.mono_iff_injective (C.iCycles i)).mp inferInstance
+    have he' : f₀ x = f₀ y := congrArg (fun z : Submodule.span k {v} => z.val) he
+    exact Subtype.ext he'
+  letI : FiniteDimensional k (C.cycles i) := FiniteDimensional.of_injective f hfi
+  have hs : Function.Surjective (C.homologyπ i).hom :=
+    (ModuleCat.epi_iff_surjective (C.homologyπ i)).mp inferInstance
+  letI : FiniteDimensional k (C.homology i) :=
+    FiniteDimensional.of_surjective (C.homologyπ i).hom hs
+  have hle : Module.finrank k (C.homology i) ≤ 1 := by
+    calc
+      _ ≤ Module.finrank k (C.cycles i) := LinearMap.finrank_le_finrank_of_surjective hs
+      _ ≤ Module.finrank k (Submodule.span k {v}) := LinearMap.finrank_le_finrank_of_injective hfi
+      _ = 1 := finrank_span_singleton hv
+  have hn : ¬ Subsingleton (C.homology i) := by
+    intro hn
+    have hz := (ModuleCat.isZero_iff_subsingleton (M := C.homology i)).mpr hn
+    exact ((homology_nonzero_iff hK i).mpr hnonzero) hz
+  have hne : Module.finrank k (C.homology i) ≠ 0 :=
+    fun h => hn ((Module.finrank_zero_iff (R := k) (M := C.homology i)).mp h)
+  change Module.finrank k (C.homology i) = 1
+  omega
+
+lemma simplexBoundary_homology_finrank [Field k] (T : Finset V) (i : ℕ)
+    (hcard : T.card = i+1) :
+    Module.finrank k ((chainComplex (k := k) (simplexBoundary_downward T)).homology i) = 1 :=
+  homology_finrank_eq_one (simplexBoundary_downward T) i (boundary (basis T))
+    (boundary_basis_ne_zero (k := k) (T := T) (Finset.card_pos.mp (by omega)))
+    (fun _ hz hc => simplexBoundary_cycle_span T i hcard hz hc)
+    (simplexBoundary_nonzero T i hcard)
+
+end Characterizations.Strands
+
+end
+end CheckedCharacterizationsSource25
+
+/-! ## Source: Characterizations.Strands.BettiTransport -/
+section CheckedCharacterizationsSource26
+
+/-! # Numerical transport to the genuine derived-Tor components -/
+noncomputable section
+namespace Characterizations.Strands
+open Classical Finset CommAlg.Polymatroid CommAlg.Koszul CommAlg.Simplicial
+open CategoryTheory CategoryTheory.Limits
+universe u
+variable {V k : Type u} [Fintype V] [LinearOrder V] [Field k]
+
+lemma chainComplex_congr {K L : Finset V → Prop} (hK : Downward K) (hL : Downward L)
+    (h : K = L) : chainComplex (k := k) hK = chainComplex hL := by
+  subst L
+  rfl
+
+lemma bettiNumber_eq_face_homology_finrank (B : Family V) (a : Exponent V) (i : ℕ) :
+    bettiNumber (k := k) B a i =
+      Module.finrank k ((chainComplex (k := k) (koszulFaces_downward B a)).homology i) := by
+  let e := (HomologicalComplex.homologyFunctor (ModuleCat k) (ComplexShape.down ℕ) i).mapIso
+    (homogeneousFacesIso (k := k) B a)
+  exact (e ≪≫ gradedTorIso (k := k) B a i).toLinearEquiv.finrank_eq.symm
+
+lemma bettiNumber_eq_one_of_boundary (B : Family V) (a : Exponent V)
+    (T : Finset V) (i : ℕ) (hcard : T.card = i+1)
+    (hfaces : koszulFaces B a = simplexBoundary T) :
+    bettiNumber (k := k) B a i = 1 := by
+  rw [bettiNumber_eq_face_homology_finrank]
+  rw [chainComplex_congr (koszulFaces_downward B a) (simplexBoundary_downward T) hfaces]
+  exact simplexBoundary_homology_finrank T i hcard
+
+lemma bettiNumber_eq_zero_of_exact (B : Family V) (a : Exponent V) (i : ℕ)
+    (h : ExactIn (k := k) (koszulFaces B a) i) : bettiNumber (k := k) B a i = 0 := by
+  apply Nat.eq_zero_of_not_pos
+  rw [bettiNumber_pos_iff_faces, nonzeroHomology_iff_not_exactIn]
+  exact not_not.mpr h
+
+lemma bettiNumber_congr_faces (B C : Family V) (a b : Exponent V) (i : ℕ)
+    (h : koszulFaces B a = koszulFaces C b) :
+    bettiNumber (k := k) B a i = bettiNumber (k := k) C b i := by
+  rw [bettiNumber_eq_face_homology_finrank, bettiNumber_eq_face_homology_finrank,
+    chainComplex_congr (koszulFaces_downward B a) (koszulFaces_downward C b) h]
+
+lemma bettiNumber_congr_contains (B C : Family V) (a : Exponent V) (i : ℕ)
+    (h : ∀ b, Contains B b ↔ Contains C b) :
+    bettiNumber (k := k) B a i = bettiNumber (k := k) C a i := by
+  apply bettiNumber_congr_faces
+  funext s
+  exact propext (and_congr_right (fun _ => h _))
+
+end Characterizations.Strands
+
+end
+end CheckedCharacterizationsSource26
+
+/-! ## Source: Characterizations.Isolators.Shift -/
+section CheckedCharacterizationsSource27
+
+/-! # Common monomial factors: actual ideals, localization, and derived Betti numbers -/
+noncomputable section
+set_option maxHeartbeats 600000
+namespace Characterizations.Isolators
+open Classical Finset CommAlg.Polymatroid CommAlg.Koszul CommAlg.Simplicial
+universe u
+variable {V : Type u} [Fintype V] [DecidableEq V]
+
+lemma translatedFamily_antichain {B : Family V} (hB : Antichain B) (c : Exponent V) :
+    Antichain (translatedFamily c B) := by
+  rintro a ha b hb hab
+  obtain ⟨a, ha₀, rfl⟩ := (Finset.mem_image (s := B) (f := fun a => a+c)).mp ha
+  obtain ⟨b, hb₀, rfl⟩ := (Finset.mem_image (s := B) (f := fun b => b+c)).mp hb
+  exact congrArg (· + c) (hB a ha₀ b hb₀ (add_le_add_iff_right c |>.mp hab))
+
+lemma translatedFamily_nonempty {B : Family V} (hB : B.Nonempty) (c : Exponent V) :
+    (translatedFamily c B).Nonempty := hB.image _
+
+lemma localFamily_translated (B : Family V) (c : Exponent V) (R : Finset V) :
+    localFamily (translatedFamily c B) R =
+      translatedFamily (restrictExponent R c) (localFamily B R) := by
+  let f : Exponent R ↪o Exponent R := OrderEmbedding.ofMapLEIff
+    (fun b => b + restrictExponent R c) (fun _ _ => add_le_add_iff_right _)
+  have hh := minimalFamily_image_orderEmbedding f (B.image (restrictExponent R))
+  have hadd : ∀ b, restrictExponent R (b+c) = restrictExponent R b + restrictExponent R c := by
+    intro b; ext i; rfl
+  simpa only [localFamily, translatedFamily, Finset.image_image, Function.comp_def,
+    hadd, f, OrderEmbedding.coe_ofMapLEIff] using hh
+
+lemma monomialIdeal_translated (k : Type*) [CommSemiring k] (B : Family V) (c : Exponent V) :
+    monomialIdeal k (translatedFamily c B) =
+      monomialIdeal k B * Ideal.span {MvPolynomial.monomial c (1 : k)} := by
+  have hs : monomialIdeal k ({c} : Family V) = Ideal.span {MvPolynomial.monomial c (1 : k)} := by
+    unfold monomialIdeal
+    congr 1
+    ext p
+    simp
+  rw [← hs, monomialIdeal_mul]
+  congr 1
+  ext a
+  simp [translatedFamily]
+
+lemma translatedFamily_locallyEquigenerated {B : Family V}
+    (hB : LocallyEquigenerated B) (c : Exponent V) :
+    LocallyEquigenerated (translatedFamily c B) := by
+  apply (locallyEquigenerated_iff _).mpr
+  intro R
+  obtain ⟨d, hd⟩ := (locallyEquigenerated_iff _).mp hB R
+  rw [localFamily_translated]
+  exact ⟨_, translatedFamily_equigenerated hd _⟩
+
+lemma translated_deletedBounded_linearResolution {k : Type u} [CommRing k] [Nontrivial k]
+    (d : ℕ) (T : Finset V) (h c : Exponent V)
+    (hsat : ∀ i ∈ T, h i = 1) (hT : T.Nonempty) :
+    Nonempty (LinearResolution
+      (monomialIdeal k (translatedFamily c (deletedBounded d T h))) (d+c.degree)) := by
+  obtain ⟨w, hw⟩ := hT
+  obtain ⟨o, ho⟩ := exists_lastVariable w
+  apply linearResolution_of_linearQuotients _ _
+    (translatedFamily_equigenerated (deletedBounded_equigenerated d T h) c)
+    (variableRevlex o) (variableRevlex_irrefl o) (fun hab hbc => variableRevlex_trans o hab hbc)
+    (variableRevlex_total o)
+  exact (translatedFamily_linearQuotients_iff (deletedBounded_equigenerated d T h) c o).mpr
+    (deletedBounded_linearQuotients_last d T h hsat o w hw ho)
+
+section Betti
+variable [LinearOrder V]
+variable {k : Type u} [Field k]
+
+lemma koszulFaces_translated (B : Family V) (a c : Exponent V) :
+    koszulFaces (translatedFamily c B) (a+c) = koszulFaces B a := by
+  funext s
+  apply propext
+  constructor
+  · rintro ⟨hf, b, hb, hba⟩
+    obtain ⟨b, hb₀, rfl⟩ := (Finset.mem_image (s := B) (f := fun b => b+c)).mp hb
+    have hf' : faceExponent s ≤ a := by
+      intro i
+      have h1 := hf i
+      have h2 := hba i
+      simp only [Finsupp.add_apply, Finsupp.tsub_apply] at h1 h2
+      omega
+    refine ⟨hf', b, hb₀, ?_⟩
+    intro i
+    have h1 := hf' i
+    have h2 := hba i
+    simp only [Finsupp.add_apply, Finsupp.tsub_apply] at h2 ⊢
+    omega
+  · rintro ⟨hf, b, hb, hba⟩
+    refine ⟨hf.trans (by intro j; exact Nat.le_add_right _ _), b+c, mem_image.mpr ⟨b, hb, rfl⟩, ?_⟩
+    intro i
+    have h1 := hf i
+    have h2 := hba i
+    simp only [Finsupp.add_apply, Finsupp.tsub_apply] at h2 ⊢
+    omega
+
+lemma koszulFaces_translated_outside (B : Family V) (a c : Exponent V) (hc : ¬ c ≤ a) :
+    koszulFaces (translatedFamily c B) a = fun _ => False := by
+  funext s
+  apply propext
+  constructor
+  · rintro ⟨hf, b, hb, hba⟩
+    obtain ⟨b, hb₀, rfl⟩ := (Finset.mem_image (s := B) (f := fun b => b+c)).mp hb
+    apply hc
+    intro i
+    have hh := hba i
+    simp only [Finsupp.add_apply, Finsupp.tsub_apply] at hh
+    omega
+  · exact False.elim
+
+lemma gradedBetti_translated (B : Family V) (a c : Exponent V) (i : ℕ) :
+    GradedBettiNonzero (k := k) (translatedFamily c B) (a+c) i ↔
+      GradedBettiNonzero (k := k) B a i := by
+  rw [gradedBettiNonzero_iff_faces, gradedBettiNonzero_iff_faces, koszulFaces_translated]
+
+lemma bettiNumber_translated (B : Family V) (a c : Exponent V) (i : ℕ) :
+    bettiNumber (k := k) (translatedFamily c B) (a+c) i = bettiNumber (k := k) B a i := by
+  rw [Strands.bettiNumber_eq_face_homology_finrank, Strands.bettiNumber_eq_face_homology_finrank]
+  rw [Strands.chainComplex_congr _ _ (koszulFaces_translated B a c)]
+
+lemma bettiNumber_translated_outside (B : Family V) (a c : Exponent V) (i : ℕ)
+    (hc : ¬ c ≤ a) : bettiNumber (k := k) (translatedFamily c B) a i = 0 := by
+  apply Strands.bettiNumber_eq_zero_of_exact
+  apply exactIn_of_no_face
+  intro s hs
+  rw [koszulFaces_translated_outside B a c hc] at hs
+  exact hs.elim
+
+end Betti
+end Characterizations.Isolators
+
+end
+end CheckedCharacterizationsSource27
+
+/-! ## Source: Characterizations.Resolution.KoszulRows -/
+section CheckedCharacterizationsSource28
+
+/-! Genuine coefficient Koszul rows, their naturality and exactness on free coefficients. -/
+noncomputable section
+set_option maxHeartbeats 400000
+set_option maxRecDepth 2500
+namespace Characterizations.Resolution
+open Classical CategoryTheory CategoryTheory.Limits MvPolynomial CommAlg.Koszul
+open scoped BigOperators
+universe u
+variable {V k : Type u} [Fintype V] [LinearOrder V] [CommRing k]
+
+abbrev KoszulRows (M : Type u) [Zero M] (i : ℕ) :=
+  Set.powersetCard V i →₀ M
+
+abbrev rowDifferential (M : Type u) [AddCommGroup M] [Module (MvPolynomial V k) M] (i : ℕ) :
+    KoszulRows (V := V) M (i + 1) →ₗ[MvPolynomial V k] KoszulRows (V := V) M i :=
+  coordinateDifferential (X : V → MvPolynomial V k) (ModuleCat.of (MvPolynomial V k) M) i
+
+abbrev mapRows {M N : Type u} [AddCommGroup M] [Module (MvPolynomial V k) M]
+    [AddCommGroup N] [Module (MvPolynomial V k) N]
+    (f : M →ₗ[MvPolynomial V k] N) (i : ℕ) :
+    KoszulRows (V := V) M i →ₗ[MvPolynomial V k] KoszulRows (V := V) N i :=
+  Finsupp.mapRange.linearMap f
+
+@[simp] lemma mapRows_apply {M N : Type u} [AddCommGroup M] [Module (MvPolynomial V k) M]
+    [AddCommGroup N] [Module (MvPolynomial V k) N]
+    (f : M →ₗ[MvPolynomial V k] N) (i : ℕ) (z : KoszulRows (V := V) M i) (s) :
+    mapRows f i z s = f (z s) := rfl
+
+@[simp] lemma mapRows_single {M N : Type u} [AddCommGroup M] [Module (MvPolynomial V k) M]
+    [AddCommGroup N] [Module (MvPolynomial V k) N]
+    (f : M →ₗ[MvPolynomial V k] N) (i : ℕ) (s : Set.powersetCard V i) (m : M) :
+    mapRows f i (Finsupp.single s m) = Finsupp.single s (f m) := by
+  exact Finsupp.mapRange_single (hf := f.map_zero)
+
+lemma rowDifferential_natural {M N : Type u} [AddCommGroup M] [Module (MvPolynomial V k) M]
+    [AddCommGroup N] [Module (MvPolynomial V k) N]
+    (f : M →ₗ[MvPolynomial V k] N) (i : ℕ) (z : KoszulRows (V := V) M (i + 1)) :
+    rowDifferential (V := V) (k := k) N i (mapRows f (i + 1) z) = mapRows f i (rowDifferential (V := V) (k := k) M i z) := by
+  induction z using Finsupp.induction_linear with
+  | zero => simp
+  | add z w hz hw => simp only [map_add, hz, hw]
+  | single s m =>
+      rw [mapRows_single, coordinateDifferential_single, coordinateDifferential_single, map_sum]
+      apply Finset.sum_congr rfl
+      intro j hj
+      rw [mapRows_single]
+      congr 1
+      simp only [map_smul, map_zsmul_unit]
+
+lemma rowDifferential_square {M : Type u} [AddCommGroup M] [Module (MvPolynomial V k) M]
+    (i : ℕ) (z : KoszulRows (V := V) M (i + 2)) :
+    rowDifferential (V := V) (k := k) M i (rowDifferential (V := V) (k := k) M (i + 1) z) = 0 :=
+  LinearMap.congr_fun (coordinateDifferential_comp X (ModuleCat.of (MvPolynomial V k) M) i) z
+
+variable {J : Type}
+
+def HomogeneousRows (i t : ℕ) (z : KoszulRows (V := V) (J → MvPolynomial V k) i) : Prop :=
+  ∀ s j, (z s j).IsHomogeneous t
+
+lemma homogeneousRows_zero (i t : ℕ) :
+    HomogeneousRows (V := V) (k := k) (J := J) i t 0 := fun _ _ => (homogeneousSubmodule V k t).zero_mem
+
+lemma homogeneousRows_differential {i t : ℕ}
+    {z : KoszulRows (V := V) (J → MvPolynomial V k) (i + 1)}
+    (hz : HomogeneousRows (i + 1) t z) :
+    HomogeneousRows i (t + 1) (rowDifferential (V := V) (k := k) (J → MvPolynomial V k) i z) := by
+  intro a b
+  have hre : z = ∑ s ∈ z.support, Finsupp.single s (z s) := by
+    exact (Finsupp.sum_single z).symm
+  rw [hre, map_sum]
+  simp only [Finsupp.finsetSum_apply, Finset.sum_apply]
+  apply IsHomogeneous.sum
+  intro s hs
+  rw [coordinateDifferential_single]
+  simp only [Finsupp.finsetSum_apply, Finset.sum_apply]
+  apply IsHomogeneous.sum
+  intro j hj
+  by_cases he : eraseIndex s j = a
+  · simp only [Finsupp.single_apply, he, ↓reduceIte, Pi.smul_apply, smul_eq_mul]
+    have hsign : ((TauCeti.ExteriorAlgebra.basisEraseSign j.val s.val) • z s b).IsHomogeneous t := by
+      rcases Int.units_eq_one_or (TauCeti.ExteriorAlgebra.basisEraseSign j.val s.val) with h | h
+      · rw [h]
+        simpa only [one_smul] using hz s b
+      · rw [h]
+        simpa only [Units.smul_def, Units.val_neg, Units.val_one, neg_one_zsmul] using (hz s b).neg
+    simpa [Nat.add_comm] using (isHomogeneous_X (R := k) j.val).mul hsign
+  · simp only [Finsupp.single_apply, he, ↓reduceIte, Pi.zero_apply]
+    exact (homogeneousSubmodule V k _).zero_mem
+
+variable [Nontrivial k] [Fintype J]
+
+/-- Exactness here is transported from the actual regular Koszul complex tensored
+with the actual finite free coefficient module. -/
+lemma freeRows_exact (i : ℕ)
+    (z : KoszulRows (V := V) (J → MvPolynomial V k) (i + 1))
+    (hz : rowDifferential (V := V) (k := k) (J → MvPolynomial V k) i z = 0) :
+    ∃ w, rowDifferential (V := V) (k := k) (J → MvPolynomial V k) (i + 1) w = z := by
+  let M := ModuleCat.of (MvPolynomial V k) (J → MvPolynomial V k)
+  have hK : (koszulComplex (Fintype.linearCombination (MvPolynomial V k) X)).ExactAt (i + 1) :=
+    (koszulComplex.exactAt_of_isRegular (finiteVariableList (V := V) (k := k))
+      finite_variables_regular (i + 1) (by omega)).of_iso finiteVariableKoszulIso
+  have hF : (familyCoefficientComplex (X : V → MvPolynomial V k) M).ExactAt (i + 1) := by
+    change ((koszulComplex (Fintype.linearCombination (MvPolynomial V k) X)).sc (i + 1)).map
+      (CategoryTheory.MonoidalCategory.tensorRight M) |>.Exact
+    exact Module.Flat.rTensor_shortComplex_exact M _ hK
+  have hC := hF.of_iso (coordinateComplexIso X M)
+  rw [HomologicalComplex.exactAt_iff' _ (i + 2) (i + 1) i (by simp) (by simp),
+    ShortComplex.moduleCat_exact_iff_range_eq_ker] at hC
+  change LinearMap.range (ModuleCat.Hom.hom ((coordinateComplex X M).d (i + 2) (i + 1))) =
+    LinearMap.ker (ModuleCat.Hom.hom ((coordinateComplex X M).d (i + 1) i)) at hC
+  rw [coordinateComplex_d, coordinateComplex_d] at hC
+  change LinearMap.range (rowDifferential (V := V) (k := k) (J → MvPolynomial V k) (i + 1)) =
+    LinearMap.ker (rowDifferential (V := V) (k := k) (J → MvPolynomial V k) i) at hC
+  have hm : z ∈ LinearMap.range (rowDifferential (V := V) (k := k) (J → MvPolynomial V k) (i + 1)) := by
+    rw [hC]
+    exact hz
+  exact hm
+
+lemma homogeneous_mem_variables {f : MvPolynomial V k} {t : ℕ}
+    (hf : f.IsHomogeneous t) (ht : 0 < t) : f ∈ idealOfVars V k := by
+  rw [idealOfVars_eq_restrictSupportIdeal]
+  intro a ha
+  have he : a.degree = t := by
+    simpa only [← Finsupp.degree_apply] using (hf.degree_eq_sum_deg_support ha).symm
+  change 1 ≤ a.degree
+  omega
+
+lemma rowDifferential_singleton (i : V) (m : J → MvPolynomial V k) :
+    rowDifferential (V := V) (k := k) (J → MvPolynomial V k) 0
+      (Finsupp.single (⟨{i}, by simp⟩ : Set.powersetCard V 1) m) =
+      Finsupp.single (⟨∅, by simp⟩ : Set.powersetCard V 0) ((X i : MvPolynomial V k) • m) := by
+  rw [coordinateDifferential_single]
+  have hsub : ∀ j : {j // j ∈ ({i} : Finset V)}, j.val = i := fun j => Finset.mem_singleton.mp j.property
+  have he : ∀ j : {j // j ∈ ({i} : Finset V)},
+      eraseIndex (⟨{i}, by simp⟩ : Set.powersetCard V 1) j = ⟨∅, by simp⟩ := by
+    intro j
+    apply Subtype.ext
+    simp [eraseIndex, hsub j]
+  simp only [he, hsub]
+  rw [TauCeti.ExteriorAlgebra.basisEraseSign_eq_neg_one_pow_card_filter_lt]
+  have hf : ({i} : Finset V).filter (fun j => j < i) = ∅ := by
+    apply Finset.eq_empty_iff_forall_notMem.mpr
+    intro j hj
+    obtain ⟨hj, hlt⟩ := Finset.mem_filter.mp hj
+    have he := Finset.mem_singleton.mp hj
+    exact (lt_irrefl i) (he ▸ hlt)
+  simp only [hf, Finset.card_empty, pow_zero, one_smul]
+  simp
+
+/-- Positive homogeneous polynomial coefficients vanish in zeroth free Koszul homology. -/
+lemma freeRows_zero_boundary {t : ℕ} (ht : 0 < t)
+    (z : KoszulRows (V := V) (J → MvPolynomial V k) 0)
+    (hz : HomogeneousRows 0 t z) :
+    ∃ w, rowDifferential (V := V) (k := k) (J → MvPolynomial V k) 0 w = z := by
+  let e : Set.powersetCard V 0 := ⟨∅, by simp⟩
+  have hex : ∀ j : J, ∃ c : V → MvPolynomial V k, ∑ v, c v * X v = z e j := by
+    intro j
+    exact Ideal.mem_span_range_iff_exists_fun.mp (homogeneous_mem_variables (hz e j) ht)
+  choose c hc using hex
+  refine ⟨∑ v : V, Finsupp.single (⟨{v}, by simp⟩ : Set.powersetCard V 1) (fun j => c j v), ?_⟩
+  rw [map_sum]
+  simp_rw [rowDifferential_singleton]
+  apply Finsupp.ext
+  intro s
+  funext j
+  have hs : s = e := Subtype.ext (Finset.card_eq_zero.mp s.property)
+  subst s
+  simp only [e, Finsupp.finsetSum_apply, Finsupp.single_eq_same, Finset.sum_apply,
+    Pi.smul_apply, smul_eq_mul]
+  simpa only [mul_comm] using hc j
+
+end Characterizations.Resolution
+
+end
+end CheckedCharacterizationsSource28
+
+/-! ## Source: Characterizations.Resolution.KoszulStaircase -/
+section CheckedCharacterizationsSource29
+
+/-! A graded double-complex staircase, proved by actual element lifting. -/
+noncomputable section
+set_option maxHeartbeats 500000
+set_option maxRecDepth 2500
+set_option backward.isDefEq.respectTransparency false
+namespace Characterizations
+open Classical Resolution MvPolynomial
+open scoped BigOperators
+universe u
+variable {V k : Type u} [Fintype V] [LinearOrder V] [CommRing k] [Nontrivial k]
+
+namespace Resolution
+
+lemma mapRows_comp {M N Q : Type u} [AddCommGroup M] [Module (MvPolynomial V k) M]
+    [AddCommGroup N] [Module (MvPolynomial V k) N]
+    [AddCommGroup Q] [Module (MvPolynomial V k) Q]
+    (f : M →ₗ[MvPolynomial V k] N) (g : N →ₗ[MvPolynomial V k] Q)
+    (i : ℕ) (z : KoszulRows (V := V) M i) :
+    mapRows g i (mapRows f i z) = mapRows (g ∘ₗ f) i z := by
+  apply Finsupp.ext
+  intro s
+  rfl
+
+lemma homogeneousRows_lift {J L : Type} [Fintype J] [Fintype L]
+    (f : (J → MvPolynomial V k) →ₗ[MvPolynomial V k] (L → MvPolynomial V k))
+    (hf : IsHomogeneousMap f 1) {i t : ℕ}
+    (z : KoszulRows (V := V) (L → MvPolynomial V k) i)
+    (hz : HomogeneousRows i (t + 1) z)
+    (hmem : ∀ s, z s ∈ LinearMap.range f) :
+    ∃ w : KoszulRows (V := V) (J → MvPolynomial V k) i,
+      HomogeneousRows i t w ∧ mapRows f i w = z := by
+  have hh : ∀ s, ∃ x, IsHomogeneousVector x t ∧ f x = z s := by
+    intro s
+    apply exists_homogeneous_lift f hf ?_ (hmem s)
+    intro j
+    simpa only [Nat.add_comm] using hz s j
+  choose w hw he using hh
+  refine ⟨Finsupp.equivFunOnFinite.symm w, ?_, ?_⟩
+  · intro s j
+    exact hw s j
+  · apply Finsupp.ext
+    intro s
+    exact he s
+
+end Resolution
+
+namespace LinearResolution
+variable {I : Ideal (MvPolynomial V k)} {d : ℕ} (P : LinearResolution I d)
+include P
+
+lemma row_differential_comp (n i : ℕ)
+    (z : KoszulRows (V := V) (P.Index (n + 2) → MvPolynomial V k) i) :
+    mapRows (P.differential n) i (mapRows (P.differential (n + 1)) i z) = 0 := by
+  rw [mapRows_comp, P.differential_comp]
+  ext s
+  rfl
+
+/-- The diagonal chase uses homogeneous lifts of the exact vertical complex and
+actual positive-degree Koszul exactness in the horizontal direction. -/
+lemma koszul_staircase (t : ℕ) (ht : 0 < t) : ∀ (i n : ℕ)
+    (z : KoszulRows (V := V) (P.Index n → MvPolynomial V k) (i + 1)),
+    HomogeneousRows (i + 1) t z →
+    (∃ y : KoszulRows (V := V) (P.Index (n + 1) → MvPolynomial V k) i,
+      HomogeneousRows i t y ∧ mapRows (P.differential n) i y =
+        rowDifferential (V := V) (k := k) (P.Index n → MvPolynomial V k) i z) →
+    ∃ (u : KoszulRows (V := V) (P.Index n → MvPolynomial V k) (i + 2))
+      (v : KoszulRows (V := V) (P.Index (n + 1) → MvPolynomial V k) (i + 1)),
+      z = rowDifferential (V := V) (k := k) (P.Index n → MvPolynomial V k) (i + 1) u +
+        mapRows (P.differential n) (i + 1) v := by
+  intro i
+  induction i with
+  | zero =>
+      intro n z hz hLift
+      obtain ⟨y, hy, he⟩ := hLift
+      obtain ⟨v, hv⟩ := freeRows_zero_boundary ht y hy
+      have hcycle : rowDifferential (V := V) (k := k) (P.Index n → MvPolynomial V k) 0
+          (z - mapRows (P.differential n) 1 v) = 0 := by
+        rw [map_sub, rowDifferential_natural, hv, he, sub_self]
+      obtain ⟨u, hu⟩ := freeRows_exact 0 _ hcycle
+      refine ⟨u, v, ?_⟩
+      rw [hu]
+      exact (sub_add_cancel _ _).symm
+  | succ i ih =>
+      intro n z hz hLift
+      obtain ⟨y, hy, he⟩ := hLift
+      have hcycle : mapRows (P.differential n) i
+          (rowDifferential (V := V) (k := k) (P.Index (n + 1) → MvPolynomial V k) i y) = 0 := by
+        rw [← rowDifferential_natural, he, rowDifferential_square]
+      have hmem : ∀ s, (rowDifferential (V := V) (k := k) (P.Index (n + 1) → MvPolynomial V k) i y) s ∈
+          LinearMap.range (P.differential (n + 1)) := by
+        intro s
+        rw [P.exact_succ n]
+        exact congrArg (fun z => z s) hcycle
+      obtain ⟨w, hw, hwe⟩ := homogeneousRows_lift (P.differential (n + 1))
+        (P.linear (n + 1)) _ (homogeneousRows_differential hy) hmem
+      obtain ⟨u, v, huv⟩ := ih (n + 1) y hy ⟨w, hw, hwe⟩
+      have hd : rowDifferential (V := V) (k := k) (P.Index n → MvPolynomial V k) (i + 1) z =
+          rowDifferential (V := V) (k := k) (P.Index n → MvPolynomial V k) (i + 1)
+            (mapRows (P.differential n) (i + 2) u) := by
+        rw [← he, huv, map_add, P.row_differential_comp, add_zero, rowDifferential_natural]
+      have hcycle' : rowDifferential (V := V) (k := k) (P.Index n → MvPolynomial V k) (i + 1)
+          (z - mapRows (P.differential n) (i + 2) u) = 0 := by rw [map_sub, hd, sub_self]
+      obtain ⟨w', hw'⟩ := freeRows_exact (i + 1) _ hcycle'
+      refine ⟨w', u, ?_⟩
+      rw [hw']
+      exact (sub_add_cancel _ _).symm
+
+lemma augmentation_rows_lift (i t : ℕ)
+    (z : KoszulRows (V := V) (MvPolynomial V k) i)
+    (hz : ∀ s, (z s).IsHomogeneous (d + t)) (hmem : ∀ s, z s ∈ I) :
+    ∃ w : KoszulRows (V := V) (P.Index 0 → MvPolynomial V k) i,
+      HomogeneousRows i t w ∧ mapRows P.augmentation i w = z := by
+  have hh : ∀ s, ∃ x, IsHomogeneousVector x t ∧ P.augmentation x = z s := by
+    intro s
+    have hs : z s ∈ LinearMap.range P.augmentation := by rw [P.augmentation_range]; exact hmem s
+    obtain ⟨x, hx⟩ := hs
+    refine ⟨component t x, component_homogeneous _ _, ?_⟩
+    rw [← P.augmentation_component, hx, homogeneousComponent_eq_self (hz s)]
+  choose w hw he using hh
+  refine ⟨Finsupp.equivFunOnFinite.symm w, ?_, ?_⟩
+  · intro s j
+    exact hw s j
+  · apply Finsupp.ext
+    intro s
+    exact he s
+
+lemma augmentationToIdeal_rows_comp (i : ℕ)
+    (z : KoszulRows (V := V) (P.Index 1 → MvPolynomial V k) i) :
+    mapRows P.augmentationToIdeal i (mapRows (P.differential 0) i z) = 0 := by
+  apply Finsupp.ext
+  intro s
+  apply Subtype.ext
+  exact LinearMap.congr_fun P.augmentation_comp (z s)
+
+/-- Genuine coefficient Koszul cycles with coefficient degree strictly above the
+linear generator degree are actual boundaries. -/
+lemma idealRows_boundary_above (t : ℕ) (ht : 0 < t) (i : ℕ)
+    (z : KoszulRows (V := V) I i) (hz : ∀ s, (z s).val.IsHomogeneous (d + t))
+    (hcycle : ∀ j (he : i = j + 1), rowDifferential (V := V) (k := k) I j (he ▸ z) = 0) :
+    ∃ w : KoszulRows (V := V) I (i + 1), rowDifferential (V := V) (k := k) I i w = z := by
+  let incl : I →ₗ[MvPolynomial V k] MvPolynomial V k := I.subtype
+  let zs := mapRows incl i z
+  obtain ⟨x, hx, hxe⟩ := P.augmentation_rows_lift i t zs hz (fun s => (z s).property)
+  have haug : mapRows P.augmentationToIdeal i x = z := by
+    apply Finsupp.ext
+    intro s
+    apply Subtype.ext
+    exact congrArg (fun w => w s) hxe
+  cases i with
+  | zero =>
+      obtain ⟨u, hu⟩ := freeRows_zero_boundary ht x hx
+      refine ⟨mapRows P.augmentationToIdeal 1 u, ?_⟩
+      rw [rowDifferential_natural, hu, haug]
+  | succ i =>
+      have hz0 : rowDifferential (V := V) (k := k) I i z = 0 := hcycle i rfl
+      have hcyclex : mapRows P.augmentation i
+          (rowDifferential (V := V) (k := k) (P.Index 0 → MvPolynomial V k) i x) = 0 := by
+        rw [← rowDifferential_natural, hxe]
+        change rowDifferential (V := V) (k := k) (MvPolynomial V k) i (mapRows incl (i + 1) z) = 0
+        rw [rowDifferential_natural, hz0, map_zero]
+      have hmem : ∀ s, (rowDifferential (V := V) (k := k) (P.Index 0 → MvPolynomial V k) i x) s ∈
+          LinearMap.range (P.differential 0) := by
+        intro s
+        rw [P.exact_zero]
+        exact congrArg (fun w => w s) hcyclex
+      obtain ⟨y, hy, hye⟩ := homogeneousRows_lift (P.differential 0) (P.linear 0) _
+        (homogeneousRows_differential hx) hmem
+      obtain ⟨u, v, huv⟩ := P.koszul_staircase t ht i 0 x hx ⟨y, hy, hye⟩
+      refine ⟨mapRows P.augmentationToIdeal (i + 2) u, ?_⟩
+      rw [rowDifferential_natural, ← haug, huv, map_add, P.augmentationToIdeal_rows_comp, add_zero]
+
+end LinearResolution
+end Characterizations
+
+end
+end CheckedCharacterizationsSource29
+
+/-! ## Source: Characterizations.Strands.DeletedFaces -/
+section CheckedCharacterizationsSource30
+
+/-! # Complete multigraded face calculation for a deleted Veronese generator -/
+noncomputable section
+set_option maxHeartbeats 700000
+namespace Characterizations.Strands
+open Classical Finset CommAlg.Polymatroid CommAlg.Koszul CommAlg.Simplicial
+universe u
+variable {V k : Type u} [Fintype V] [LinearOrder V]
+
+lemma degree_sub_faceExponent {a : Exponent V} {s : Finset V} (hs : faceExponent s ≤ a) :
+    (a - faceExponent s).degree + s.card = a.degree := by
+  simpa only [subsetSum_univ, Finset.inter_univ] using subsetSum_sub_faceExponent hs Finset.univ
+
+lemma deleted_faces_iff (a b : Exponent V) (ha : 2 ≤ a.support.card) (s : Finset V) :
+    koszulFaces (deletedVeronese a) b s ↔
+      s ⊆ b.support ∧ a.degree + s.card ≤ b.degree ∧ b - faceExponent s ≠ a := by
+  rw [koszulFaces, deletedVeronese_contains a _ ha]
+  constructor
+  · rintro ⟨hdiv, hdeg, hne⟩
+    exact ⟨(faceExponent_le_iff_subset_support s b).mp hdiv,
+      by have h := degree_sub_faceExponent hdiv; omega, hne⟩
+  · rintro ⟨hs, hdeg, hne⟩
+    have hdiv := (faceExponent_le_iff_subset_support s b).mpr hs
+    exact ⟨hdiv, by have h := degree_sub_faceExponent hdiv; omega, hne⟩
+
+lemma deleted_faces_extension_low (a b : Exponent V) (ha : 2 ≤ a.support.card)
+    (e : V) (he : e ∈ b.support) (i : ℕ) (hdeg : a.degree + i + 1 < b.degree) :
+    ∀ s, koszulFaces (deletedVeronese a) b s → s.card = i → e ∉ s →
+      koszulFaces (deletedVeronese a) b (insert e s) := by
+  intro s hs hc hes
+  obtain ⟨hsub, hbound, hne⟩ := (deleted_faces_iff a b ha s).mp hs
+  apply (deleted_faces_iff a b ha _).mpr
+  have hsub' := Finset.insert_subset he hsub
+  have hcard : (insert e s).card = i+1 := by simp [hes, hc]
+  refine ⟨hsub', by omega, ?_⟩
+  intro hbad
+  have hh := degree_sub_faceExponent ((faceExponent_le_iff_subset_support _ b).mpr hsub')
+  rw [hbad, hcard] at hh
+  omega
+
+lemma deleted_faces_eq_boundary (a : Exponent V) (ha : 2 ≤ a.support.card)
+    (T : Finset V) (hT : a.support ⊆ T) :
+    koszulFaces (deletedVeronese a) (a + faceExponent T) = simplexBoundary T := by
+  have hsupp : (a + faceExponent T).support = T := by
+    ext j
+    simp only [Finsupp.mem_support_iff, Finsupp.add_apply, faceExponent_apply]
+    by_cases hj : j ∈ T
+    · simp [hj]
+    · have ha0 : a j = 0 := Finsupp.notMem_support_iff.mp (fun hh => hj (hT hh))
+      simp [hj, ha0]
+  have hdeg : (a + faceExponent T).degree = a.degree + T.card := by
+    rw [map_add]
+    have hd := degree_sub_faceExponent (a := faceExponent T) (le_refl _)
+    simpa using hd.symm
+  funext s
+  apply propext
+  rw [deleted_faces_iff a _ ha s, hsupp, hdeg]
+  constructor
+  · rintro ⟨hs, hc, hne⟩
+    exact ⟨hs, fun hTs => hne (by rw [Finset.Subset.antisymm hs hTs]; simp)⟩
+  · intro hs
+    refine ⟨hs.subset, by have h := Finset.card_le_card hs.subset; omega, ?_⟩
+    intro he
+    have hdiv : faceExponent s ≤ a + faceExponent T :=
+      (faceExponent_mono hs.subset).trans (le_add_of_nonneg_left (show (0 : Exponent V) ≤ a from zero_le))
+    have hh := degree_sub_faceExponent hdiv
+    rw [he, hdeg] at hh
+    have hlt := Finset.card_lt_card hs
+    omega
+
+section Ring
+variable [CommRing k]
+
+lemma faceExponent_injective : Function.Injective (faceExponent (V := V)) := by
+  intro s t he
+  ext j
+  have h := congrArg (fun a : Exponent V => a j) he
+  simp only [faceExponent_apply] at h
+  by_cases hs : j ∈ s <;> by_cases ht : j ∈ t <;> simp_all
+
+lemma deleted_faces_exact_critical (a b : Exponent V) (ha : 2 ≤ a.support.card)
+    (i : ℕ) (hdeg : b.degree = a.degree + i + 1)
+    (hn : ¬ ∃ T : Finset V, a.support ⊆ T ∧ T.card = i+1 ∧ b = a + faceExponent T) :
+    ExactIn (k := k) (koszulFaces (deletedVeronese a) b) i := by
+  have hb : b.support.Nonempty := by
+    by_contra hb
+    have he : b = 0 := Finsupp.support_eq_empty.mp (Finset.not_nonempty_iff_eq_empty.mp hb)
+    subst b
+    simp at hdeg
+  have hex : ∃ e ∈ b.support, ∀ T : Finset V, b = a + faceExponent T → e ∉ T := by
+    by_cases hT : ∃ T : Finset V, b = a + faceExponent T
+    · obtain ⟨T, hT⟩ := hT
+      have hcard : T.card = i+1 := by
+        have hh := degree_sub_faceExponent (a := faceExponent T) (le_refl _)
+        have he := congrArg Finsupp.degree hT
+        simp only [map_add, tsub_self, map_zero, zero_add] at hh he
+        omega
+      have hsub : ¬a.support ⊆ T := fun h => hn ⟨T, h, hcard, hT⟩
+      obtain ⟨e, hea, heT⟩ := Finset.not_subset.mp hsub
+      have heb : e ∈ b.support := by
+        rw [hT, Finsupp.mem_support_iff, Finsupp.add_apply]
+        have hepos := Nat.pos_of_ne_zero (Finsupp.mem_support_iff.mp hea)
+        omega
+      refine ⟨e, heb, ?_⟩
+      intro T' hT'
+      have heq := faceExponent_injective (add_left_cancel (hT.symm.trans hT'))
+      simpa only [← heq] using heT
+    · obtain ⟨e, he⟩ := hb
+      exact ⟨e, he, fun T heq => (hT ⟨T, heq⟩).elim⟩
+  obtain ⟨e, he, heT⟩ := hex
+  apply exactIn_of_degree_extension e i
+  intro s hs hc hes
+  obtain ⟨hsub, hbound, hne⟩ := (deleted_faces_iff a b ha s).mp hs
+  apply (deleted_faces_iff a b ha _).mpr
+  have hsub' := Finset.insert_subset he hsub
+  have hcard : (insert e s).card = i+1 := by simp [hes, hc]
+  refine ⟨hsub', by omega, ?_⟩
+  intro heq
+  have hdiv := (faceExponent_le_iff_subset_support _ b).mpr hsub'
+  have hb' : b = a + faceExponent (insert e s) := by
+    rw [← heq]
+    exact (tsub_add_cancel_of_le hdiv).symm
+  exact heT (insert e s) hb' (Finset.mem_insert_self e s)
+
+lemma deleted_faces_exact_of_large_degree (a b : Exponent V) (ha : 2 ≤ a.support.card)
+    (i : ℕ) (hdeg : a.degree + i + 1 < b.degree) :
+    ExactIn (k := k) (koszulFaces (deletedVeronese a) b) i := by
+  have hb : b.support.Nonempty := by
+    by_contra hb
+    have he : b = 0 := Finsupp.support_eq_empty.mp (Finset.not_nonempty_iff_eq_empty.mp hb)
+    subst b
+    simp at hdeg
+  obtain ⟨e, he⟩ := hb
+  exact exactIn_of_degree_extension e i (deleted_faces_extension_low a b ha e he i hdeg)
+
+lemma deleted_faces_exact_of_small_degree (a b : Exponent V) (ha : 2 ≤ a.support.card)
+    (i : ℕ) (hdeg : b.degree < a.degree + i) :
+    ExactIn (k := k) (koszulFaces (deletedVeronese a) b) i := by
+  apply exactIn_of_no_face
+  intro s hs hc
+  have hh := ((deleted_faces_iff a b ha s).mp hs).2.1
+  omega
+
+lemma deleted_faces_nonzero_iff_off_linear [Nontrivial k] (a b : Exponent V)
+    (ha : 2 ≤ a.support.card) (i : ℕ) (hoff : b.degree ≠ a.degree+i) :
+    NonzeroHomology (k := k) (koszulFaces (deletedVeronese a) b) i ↔
+      ∃ T : Finset V, a.support ⊆ T ∧ T.card = i+1 ∧ b = a + faceExponent T := by
+  constructor
+  · intro h
+    by_contra hn
+    have hnot := (nonzeroHomology_iff_not_exactIn _ _).mp h
+    by_cases hsmall : b.degree < a.degree+i
+    · exact hnot (deleted_faces_exact_of_small_degree a b ha i hsmall)
+    by_cases hlarge : a.degree+i+1 < b.degree
+    · exact hnot (deleted_faces_exact_of_large_degree a b ha i hlarge)
+    exact hnot (deleted_faces_exact_critical a b ha i (by omega) hn)
+  · rintro ⟨T, hT, hc, rfl⟩
+    rw [deleted_faces_eq_boundary a ha T hT]
+    exact simplexBoundary_nonzero T i hc
+
+end Ring
+end Characterizations.Strands
+
+end
+end CheckedCharacterizationsSource30
+
+/-! ## Source: Characterizations.Strands.DeletedBetti -/
+section CheckedCharacterizationsSource31
+
+/-! # Proposition 4.3: all nonlinear multigraded and total Betti numbers -/
+noncomputable section
+set_option maxHeartbeats 700000
+namespace Characterizations.Strands
+open Classical Finset CommAlg.Polymatroid CommAlg.Koszul CommAlg.Simplicial
+universe u
+variable {V k : Type u} [Fintype V] [LinearOrder V] [Field k]
+
+def exceptionalFaces (a : Exponent V) (i : ℕ) : Finset (Finset V) :=
+  ((Finset.univ : Finset V).powersetCard (i+1)).filter (a.support ⊆ ·)
+
+def exceptionalDegrees (a : Exponent V) (i : ℕ) : Finset (Exponent V) :=
+  (exceptionalFaces a i).image (fun T => a + faceExponent T)
+
+@[simp] lemma mem_exceptionalFaces (a : Exponent V) (i : ℕ) (T : Finset V) :
+    T ∈ exceptionalFaces a i ↔ a.support ⊆ T ∧ T.card = i+1 := by
+  simp [exceptionalFaces, and_comm]
+
+@[simp] lemma mem_exceptionalDegrees (a b : Exponent V) (i : ℕ) :
+    b ∈ exceptionalDegrees a i ↔
+      ∃ T : Finset V, a.support ⊆ T ∧ T.card = i+1 ∧ b = a + faceExponent T := by
+  simp only [exceptionalDegrees, Finset.mem_image, mem_exceptionalFaces]
+  constructor
+  · rintro ⟨T, ⟨hT, hc⟩, he⟩; exact ⟨T, hT, hc, he.symm⟩
+  · rintro ⟨T, hT, hc, he⟩; exact ⟨T, ⟨hT, hc⟩, he.symm⟩
+
+lemma degree_faceExponent (T : Finset V) : (faceExponent T).degree = T.card := by
+  have h := degree_sub_faceExponent (a := faceExponent T) (s := T) (le_refl _)
+  simpa using h.symm
+
+lemma exceptionalDegrees_degree {a b : Exponent V} {i : ℕ}
+    (h : b ∈ exceptionalDegrees a i) : b.degree = a.degree+i+1 := by
+  obtain ⟨T, hT, hc, rfl⟩ := (mem_exceptionalDegrees a b i).mp h
+  rw [map_add, degree_faceExponent, hc]
+  omega
+
+lemma deletedVeronese_betti_off_linear (a b : Exponent V) (ha : 2 ≤ a.support.card)
+    (i : ℕ) (hoff : b.degree ≠ a.degree+i) :
+    bettiNumber (k := k) (deletedVeronese a) b i =
+      if b ∈ exceptionalDegrees a i then 1 else 0 := by
+  split_ifs with hb
+  · obtain ⟨T, hT, hc, rfl⟩ := (mem_exceptionalDegrees a b i).mp hb
+    exact bettiNumber_eq_one_of_boundary _ _ T i hc (deleted_faces_eq_boundary a ha T hT)
+  · apply Nat.eq_zero_of_not_pos
+    rw [bettiNumber_pos_iff_faces, deleted_faces_nonzero_iff_off_linear a b ha i hoff,
+      ← mem_exceptionalDegrees]
+    exact hb
+
+lemma deletedVeronese_first_nonlinear (a : Exponent V) (ha : 2 ≤ a.support.card) :
+    (∀ i < a.support.card - 1, ∀ b, b.degree ≠ a.degree+i →
+      bettiNumber (k := k) (deletedVeronese a) b i = 0) ∧
+    bettiNumber (k := k) (deletedVeronese a) (a + faceExponent a.support)
+      (a.support.card - 1) = 1 := by
+  constructor
+  · intro i hi b hoff
+    rw [deletedVeronese_betti_off_linear a b ha i hoff, if_neg]
+    intro hb
+    obtain ⟨T, hT, hc, _⟩ := (mem_exceptionalDegrees a b i).mp hb
+    have hh := Finset.card_le_card hT
+    omega
+  · exact bettiNumber_eq_one_of_boundary _ _ a.support _ (by omega)
+      (deleted_faces_eq_boundary a ha a.support (Finset.Subset.refl _))
+
+/-- Total-degree Betti number, the sum of the genuine finite multigraded dimensions. -/
+def totalBettiNumber (B : Family V) (i j : ℕ) : ℕ :=
+  ∑ b ∈ (Finsupp.finite_of_degree_eq (σ := V) j).toFinset, bettiNumber (k := k) B b i
+
+lemma exceptionalDegrees_card (a : Exponent V) (i : ℕ) :
+    (exceptionalDegrees a i).card =
+      if a.support.card ≤ i+1 then
+        Nat.choose (Fintype.card V - a.support.card) (i+1-a.support.card) else 0 := by
+  rw [exceptionalDegrees, Finset.card_image_of_injective]
+  · by_cases h : a.support.card ≤ i+1
+    · rw [if_pos h]
+      exact (Finset.card_filter_powersetCard_subset a.support Finset.univ (i+1)
+        (Finset.subset_univ _) h).trans (by simp)
+    · rw [if_neg h]
+      apply Finset.card_eq_zero.mpr
+      apply Finset.eq_empty_iff_forall_notMem.mpr
+      intro T hT
+      obtain ⟨hs, hc⟩ := (mem_exceptionalFaces a i T).mp hT
+      exact h (hc ▸ Finset.card_le_card hs)
+  · intro T U he
+    exact faceExponent_injective (add_left_cancel he)
+
+lemma deletedVeronese_total_nonlinear (a : Exponent V) (ha : 2 ≤ a.support.card) (i : ℕ) :
+    totalBettiNumber (k := k) (deletedVeronese a) i (a.degree+i+1) =
+      if a.support.card ≤ i+1 then
+        Nat.choose (Fintype.card V - a.support.card) (i+1-a.support.card) else 0 := by
+  rw [totalBettiNumber]
+  trans (exceptionalDegrees a i).card
+  · have he : ∀ b ∈ (Finsupp.finite_of_degree_eq (σ := V) (a.degree+i+1)).toFinset,
+        bettiNumber (k := k) (deletedVeronese a) b i =
+          if b ∈ exceptionalDegrees a i then 1 else 0 := by
+      intro b hb
+      have hd : b.degree = a.degree+i+1 := by simpa using hb
+      exact deletedVeronese_betti_off_linear a b ha i (by omega)
+    rw [Finset.sum_congr rfl he, Finset.sum_boole]
+    simp only [Nat.cast_id]
+    apply congrArg Finset.card
+    ext b
+    simp only [Finset.mem_filter]
+    exact ⟨fun h => h.2, fun h => ⟨by simpa using exceptionalDegrees_degree h, h⟩⟩
+  · exact exceptionalDegrees_card a i
+
+lemma deletedVeronese_total_other (a : Exponent V) (ha : 2 ≤ a.support.card) (i j : ℕ)
+    (hlin : j ≠ a.degree+i) (hnonlin : j ≠ a.degree+i+1) :
+    totalBettiNumber (k := k) (deletedVeronese a) i j = 0 := by
+  apply Finset.sum_eq_zero
+  intro b hb
+  have hd : b.degree = j := by simpa using hb
+  rw [deletedVeronese_betti_off_linear a b ha i (hd ▸ hlin), if_neg]
+  intro he
+  exact hnonlin (hd.symm.trans (exceptionalDegrees_degree he))
+
+end Characterizations.Strands
+
+end
+end CheckedCharacterizationsSource31
+
+/-! ## Source: Characterizations.Resolution.Betti -/
+section CheckedCharacterizationsSource32
+
+/-! # An actual linear free resolution forces genuine graded Tor concentration -/
+noncomputable section
+set_option maxHeartbeats 900000
+set_option maxRecDepth 2500
+set_option backward.isDefEq.respectTransparency false
+namespace Characterizations
+open Classical Resolution MvPolynomial CommAlg.Polymatroid CommAlg.Koszul
+open CategoryTheory CategoryTheory.Limits
+universe u
+variable {V k : Type u} [Fintype V] [LinearOrder V] [Field k]
+
+namespace Resolution
+lemma homogeneousPiece_coeff_homogeneous (B : Family V) (a : Exponent V) (i e : ℕ)
+    (hdegree : a.degree = e+i) {z : KoszulRows (V := V) (monomialIdeal k B) i}
+    (hz : z ∈ homogeneousPiece (k := k) B a i) :
+    ∀ s, (z s).val.IsHomogeneous e := by
+  change z ∈ Submodule.span k (monomialCoefficientBasis (k := k) B i ''
+    {t | monomialDegree t = a}) at hz
+  induction hz using Submodule.span_induction with
+  | mem x hx =>
+    obtain ⟨⟨s, b⟩, hb, rfl⟩ := hx
+    have hbd : b.val.degree = e := by
+      have hd := congrArg Finsupp.degree hb
+      change (b.val + faceExponent s.val).degree = a.degree at hd
+      rw [map_add, Strands.degree_faceExponent, s.property, hdegree] at hd
+      omega
+    intro q
+    rw [monomialCoefficientBasis_apply]
+    by_cases hqs : s = q
+    · subst q
+      simp only [Finsupp.single_eq_same, monomialBasis_val]
+      exact isHomogeneous_monomial (1 : k) hbd
+    · simp only [Finsupp.single_eq_of_ne (Ne.symm hqs), ZeroMemClass.coe_zero]
+      exact (homogeneousSubmodule V k e).zero_mem
+  | zero => intro s; exact (homogeneousSubmodule V k e).zero_mem
+  | add x y hx hy ihx ihy => intro s; exact (ihx s).add (ihy s)
+  | smul c x hx ih => intro s; exact (homogeneousSubmodule V k e).smul_mem c (ih s)
+end Resolution
+
+namespace LinearResolution
+
+lemma homogeneous_exact_above (B : Family V) {d : ℕ}
+    (P : LinearResolution (monomialIdeal k B) d) (a : Exponent V) (i t : ℕ)
+    (ht : 0 < t) (hdegree : a.degree = d+t+i) :
+    (homogeneousComplex (k := k) B a).ExactAt i := by
+  have hfill (z : homogeneousPiece (k := k) B a i)
+      (hz : ∀ j (he : i = j+1), homogeneousDifferential (k := k) B a j (he ▸ z) = 0) :
+      ∃ w : homogeneousPiece (k := k) B a (i+1), homogeneousDifferential B a i w = z := by
+    have hh := Resolution.homogeneousPiece_coeff_homogeneous B a i (d+t) hdegree z.property
+    have hcycle : ∀ j (he : i = j+1),
+        rowDifferential (V := V) (k := k) (monomialIdeal k B) j (he ▸ z.val) = 0 := by
+      intro j he
+      subst i
+      exact congrArg Subtype.val (hz j rfl)
+    obtain ⟨w, hw⟩ := P.idealRows_boundary_above t ht i z.val hh hcycle
+    refine ⟨⟨homogeneousProjection B a (i+1) w, homogeneousProjection_mem B a (i+1) w⟩, ?_⟩
+    apply Subtype.ext
+    change monomialDifferential (k := k) B i (homogeneousProjection B a (i+1) w) = z.val
+    have hp := LinearMap.congr_fun (homogeneousProjection_differential B a i) w
+    simp only [LinearMap.comp_apply] at hp
+    rw [← hp]
+    change homogeneousProjection B a i
+      (rowDifferential (V := V) (k := k) (monomialIdeal k B) i w) = z.val
+    rw [hw]
+    exact CommAlg.Grading.projection_eq_self z.property
+  cases i with
+  | zero =>
+    rw [HomologicalComplex.exactAt_iff' _ 1 0 0 (by simp) (by simp),
+      ShortComplex.moduleCat_exact_iff]
+    dsimp only [HomologicalComplex.sc', HomologicalComplex.shortComplexFunctor']
+    rw [homogeneousComplex_d, (homogeneousComplex (k := k) B a).shape 0 0 (by simp)]
+    change ∀ z : homogeneousPiece (k := k) B a 0, (0 : homogeneousPiece (k := k) B a 0) = 0 →
+      ∃ w : homogeneousPiece (k := k) B a 1, homogeneousDifferential B a 0 w = z
+    intro z _
+    exact hfill z (fun j he => by omega)
+  | succ j =>
+    rw [HomologicalComplex.exactAt_iff' _ (j+2) (j+1) j (by simp) (by simp),
+      ShortComplex.moduleCat_exact_iff]
+    dsimp only [HomologicalComplex.sc', HomologicalComplex.shortComplexFunctor']
+    simp only [homogeneousComplex_d]
+    change ∀ z : homogeneousPiece (k := k) B a (j+1), homogeneousDifferential B a j z = 0 →
+      ∃ w : homogeneousPiece (k := k) B a (j+2), homogeneousDifferential B a (j+1) w = z
+    intro z hz
+    apply hfill z
+    intro l he
+    have heq : l = j := by omega
+    subst l
+    exact hz
+
+lemma gradedBetti_degree (B : Family V) (hanti : Antichain B) {d : ℕ}
+    (P : LinearResolution (monomialIdeal k B) d) (a : Exponent V) (i : ℕ)
+    (h : GradedBettiNonzero (k := k) B a i) : a.degree = d+i := by
+  have hdeg := LinearResolution.equigenerated_of_monomial B hanti P
+  have hlow : d+i ≤ a.degree := by
+    by_contra hlow
+    have hn := (gradedBettiNonzero_iff_faces B a i).mp h
+    apply ((CommAlg.Simplicial.nonzeroHomology_iff_not_exactIn _ _).mp hn)
+    apply CommAlg.Simplicial.exactIn_of_no_face
+    intro s hs hcard
+    obtain ⟨b, hb, hba⟩ := hs.2
+    have hd := Strands.degree_sub_faceExponent hs.1
+    have hbd := degree_mono hba
+    rw [hdeg b hb] at hbd
+    omega
+  by_contra heq
+  let t := a.degree-(d+i)
+  have ht : 0 < t := by dsimp [t]; omega
+  have hsum : a.degree = d+t+i := by dsimp [t]; omega
+  have hx := homogeneous_exact_above B P a i t ht hsum
+  have hz := (HomologicalComplex.exactAt_iff_isZero_homology _ _).mp hx
+  apply h
+  exact (gradedTorIso (k := k) B a i).isZero_iff.mp hz
+
+lemma bettiNumber_eq_zero_off_linear (B : Family V) (hanti : Antichain B) {d : ℕ}
+    (P : LinearResolution (monomialIdeal k B) d) (a : Exponent V) (i : ℕ)
+    (hoff : a.degree ≠ d+i) : bettiNumber (k := k) B a i = 0 := by
+  apply Nat.eq_zero_of_not_pos
+  intro hp
+  exact hoff (gradedBetti_degree B hanti P a i ((bettiNumber_pos_iff B a i).mp hp))
+
+end LinearResolution
+end Characterizations
+
+end
+end CheckedCharacterizationsSource32
+
+/-! ## Source: Characterizations.Isolators.Sharp -/
+section CheckedCharacterizationsSource33
+
+/-! # Exact sharpness: a prescribed first nonlinear derived-Tor position -/
+noncomputable section
+set_option maxHeartbeats 700000
+set_option backward.isDefEq.respectTransparency false
+namespace Characterizations.Isolators
+open Classical Finset CommAlg.Polymatroid CommAlg.Koszul CommAlg.Simplicial
+universe u
+variable {V k : Type u} [Fintype V] [LinearOrder V] [Field k]
+
+/-- All earlier homological positions are linear, and the displayed position has
+an actual nonzero derived-Tor component in a strictly larger total degree. -/
+def FirstNonlinear (B : Family V) (d r : ℕ) : Prop :=
+  (∀ i < r, ∀ b, b.degree ≠ d+i → bettiNumber (k := k) B b i = 0) ∧
+  ∃ b, d+r < b.degree ∧ 0 < bettiNumber (k := k) B b r
+
+lemma firstNonlinear_not_linear {B : Family V} {d r : ℕ}
+    (hBne : B.Nonempty) (hdeg : Equigenerated B d) (hfirst : FirstNonlinear (k := k) B d r) :
+    ¬ HasLinearResolution (monomialIdeal k B) := by
+  rintro ⟨e, ⟨P⟩⟩
+  have he := LinearResolution.equigenerated_of_monomial B hdeg.antichain P
+  obtain ⟨b, hb⟩ := hBne
+  have hed : e = d := (he b hb).symm.trans (hdeg b hb)
+  subst e
+  obtain ⟨a, ha, hp⟩ := hfirst.2
+  have hz := LinearResolution.bettiNumber_eq_zero_off_linear B hdeg.antichain P a r (Nat.ne_of_gt ha)
+  omega
+
+lemma deletedVeronese_shift_first (a c : Exponent V) (ha : 2 ≤ a.support.card) :
+    FirstNonlinear (k := k) (translatedFamily c (deletedVeronese a))
+      (a.degree+c.degree) (a.support.card-1) := by
+  obtain ⟨hzero, hone⟩ := Strands.deletedVeronese_first_nonlinear (k := k) a ha
+  constructor
+  · intro i hi b hoff
+    by_cases hc : c ≤ b
+    · have he : b = (b-c)+c := (tsub_add_cancel_of_le hc).symm
+      rw [he, bettiNumber_translated]
+      apply hzero i hi (b-c)
+      intro hd
+      apply hoff
+      rw [he, map_add, hd]
+      omega
+    · exact bettiNumber_translated_outside _ _ _ _ hc
+  · refine ⟨(a+faceExponent a.support)+c, ?_, ?_⟩
+    · rw [map_add, map_add, Strands.degree_faceExponent]
+      omega
+    · rw [bettiNumber_translated, hone]
+      exact Nat.zero_lt_one
+
+lemma restrict_support_card (U : Finset V) (q : Exponent V) (hq : q.support ⊆ U) :
+    (restrictExponent U q).support.card = q.support.card := by
+  rw [restrictExponent, Finsupp.support_subtypeDomain, Finset.card_subtype]
+  rw [Finset.filter_eq_self.mpr hq]
+
+lemma restrict_degree_eq (U : Finset V) (q : Exponent V) (hq : q.support ⊆ U) :
+    (restrictExponent U q).degree = q.degree := by
+  rw [restrictExponent_degree, Finsupp.degree_eq_sum]
+  apply Finset.sum_subset (Finset.subset_univ _)
+  intro i hi hiU
+  exact Finsupp.notMem_support_iff.mp (fun h => hiU (hq h))
+
+lemma shiftedPure_local_linear (U R : Finset V) (q c : Exponent V)
+    (hq : q.support ⊆ U) (hsupp : 2 ≤ q.support.card) (hRU : R ≠ U) :
+    HasLinearResolution (monomialIdeal k (localFamily (translatedFamily c (pureIsolator U q)) R)) := by
+  rw [localFamily_translated]
+  by_cases hUR : U ⊆ R
+  · rw [pureIsolator_local_contain U R q hq hsupp hUR]
+    refine ⟨_, translated_deletedBounded_linearResolution _ _ _ _ ?_ ?_⟩
+    · intro i hi
+      exact removedExponent_saturated U q hq i.val ((mem_retainedCaps _ _ _).mp hi)
+    · have hex : ∃ i ∈ R, i ∉ U := by
+        by_contra hn
+        push_neg at hn
+        exact hRU (le_antisymm hn hUR)
+      obtain ⟨i, hiR, hiU⟩ := hex
+      exact ⟨⟨i, hiR⟩, by simp [hiU]⟩
+  · rw [pureIsolator_local_omit U R q hsupp hUR]
+    have he : translatedFamily (restrictExponent R c) ({0} : Family R) = {restrictExponent R c} := by
+      simp [translatedFamily]
+    rw [he]
+    exact linearResolution_of_polymatroidal (singleton_polymatroidal _)
+
+lemma shiftedPure_first (U : Finset V) (q c : Exponent V)
+    (hq : q.support ⊆ U) (hsupp : 2 ≤ q.support.card) :
+    FirstNonlinear (k := k) (localFamily (translatedFamily c (pureIsolator U q)) U)
+      (q.degree+(restrictExponent U c).degree) (q.support.card-1) := by
+  rw [localFamily_translated, pureIsolator_local_at U q hq hsupp]
+  have hcard := restrict_support_card U q hq
+  have hd := restrict_degree_eq U q hq
+  have H := deletedVeronese_shift_first (k := k)
+    (restrictExponent U q) (restrictExponent U c) (by omega)
+  rw [hcard, hd] at H
+  convert H using 1
+  congr <;> exact Subsingleton.elim _ _
+
+lemma shiftedPure_local_at_degree (U : Finset V) (q c : Exponent V)
+    (hq : q.support ⊆ U) (hsupp : 2 ≤ q.support.card) :
+    Equigenerated (localFamily (translatedFamily c (pureIsolator U q)) U)
+      (q.degree+(restrictExponent U c).degree) := by
+  rw [localFamily_translated, pureIsolator_local_at U q hq hsupp]
+  simpa only [restrict_degree_eq U q hq] using translatedFamily_equigenerated
+    (deletedVeronese_equigenerated (restrictExponent U q)) (restrictExponent U c)
+
+lemma shiftedPure_unique_bad (U : Finset V) (q c : Exponent V)
+    (hq : q.support ⊆ U) (hsupp : 2 ≤ q.support.card) (R : Finset V) :
+    HasLinearResolution (monomialIdeal k (localFamily (translatedFamily c (pureIsolator U q)) R))
+      ↔ R ≠ U := by
+  constructor
+  · intro h he
+    subst R
+    exact firstNonlinear_not_linear
+      (localFamily_nonempty (translatedFamily_nonempty (pureIsolator_nonempty U q hq hsupp) c) U)
+      (shiftedPure_local_at_degree U q c hq hsupp) (shiftedPure_first U q c hq hsupp) h
+  · exact shiftedPure_local_linear U R q c hq hsupp
+
+lemma mixedIsolator_unique_bad (U : Finset V) (a b : V) (ha : a ∈ U) (hb : b ∈ U)
+    (hab : a ≠ b) (hT : Uᶜ.Nonempty) (R : Finset V) :
+    HasLinearResolution (monomialIdeal k (localFamily (pureIsolator U (Finsupp.single a 1)) R))
+      ↔ R ≠ U := by
+  constructor
+  · rintro ⟨d, ⟨P⟩⟩ he
+    subst R
+    rw [mixedIsolator_local_at U a ha hT] at P
+    exact mixedCore_not_equigenerated (⟨a, ha⟩ : U) ⟨b, hb⟩
+      (fun he => hab (congrArg Subtype.val he))
+      ⟨d, LinearResolution.equigenerated_of_monomial _ (mixedCore_antichain _) P⟩
+  · exact mixedIsolator_local_linear U R a ha hT
+
+end Characterizations.Isolators
+
+end
+end CheckedCharacterizationsSource33
+
+/-! ## Source: Characterizations.Isolators.Main -/
+section CheckedCharacterizationsSource34
+
+/-! # Propositions 4.7 and 4.10 in the actual localized polynomial rings -/
+noncomputable section
+set_option maxHeartbeats 700000
+namespace Characterizations.Isolators
+open Classical Finset CommAlg.Polymatroid CommAlg.Koszul
+universe u
+variable {V k : Type u} [Fintype V] [LinearOrder V] [Field k]
+
+@[simp] lemma indicatorExponent_support (A : Finset V) : (indicatorExponent A).support = A := by
+  ext i
+  simp [Finsupp.mem_support_iff, indicatorExponent_apply]
+
+/-- Proposition 4.10: exact degree, all local generation tests, the unique bad
+localization, and the sharp first nonlinear position in genuine derived Tor. -/
+theorem exists_sharp_isolator (U : Finset V) (hm : 2 ≤ U.card) (d : ℕ) (hd : 2 ≤ d)
+    (hk : Uᶜ.card ≤ d-2) :
+    ∃ B : Family V, B.Nonempty ∧ Equigenerated B d ∧ LocallyEquigenerated B ∧
+      (∀ R, HasLinearResolution (monomialLocalization k (monomialIdeal k B) R) ↔ R ≠ U) ∧
+      Equigenerated (localFamily B U) (d-Uᶜ.card) ∧
+      FirstNonlinear (k := k) (localFamily B U) (d-Uᶜ.card)
+        (min (d-1-Uᶜ.card) (U.card-1)) := by
+  let e := min (d-Uᶜ.card) U.card
+  have he2 : 2 ≤ e := le_min (by omega) hm
+  have heU : e ≤ U.card := min_le_right _ _
+  have hed : e+Uᶜ.card ≤ d := by have := min_le_left (d-Uᶜ.card) U.card; dsimp [e]; omega
+  obtain ⟨A, hAU, hAe⟩ := Finset.exists_subset_card_eq heU
+  obtain ⟨a, ha⟩ := Finset.card_pos.mp (show 0 < U.card by omega)
+  let q := indicatorExponent A
+  let c : Exponent V := Finsupp.single a (d-(e+Uᶜ.card))
+  let B := translatedFamily c (pureIsolator U q)
+  have hq : q.support ⊆ U := by simpa [q] using hAU
+  have hqs : q.support.card = e := by simpa [q] using hAe
+  have hqd : q.degree = e := by simpa [q] using hAe
+  have hcd : c.degree = d-(e+Uᶜ.card) := Finsupp.degree_single _ _
+  have hcU : c.support ⊆ U := by
+    intro i hi
+    have hai : a = i := by
+      by_contra hn
+      have hz : c i = 0 := by simp [c, Finsupp.single_apply, hn, Ne.symm hn]
+      exact Finsupp.mem_support_iff.mp hi hz
+    simpa [← hai] using ha
+  have hlocaldeg : q.degree+(restrictExponent U c).degree = d-Uᶜ.card := by
+    rw [hqd, restrict_degree_eq U c hcU, hcd]
+    omega
+  have hposition : q.support.card-1 = min (d-1-Uᶜ.card) (U.card-1) := by
+    rw [hqs]
+    dsimp [e]
+    by_cases h : d-Uᶜ.card ≤ U.card
+    · rw [min_eq_left h, min_eq_left (by omega)]
+      omega
+    · rw [min_eq_right (by omega), min_eq_right (by omega)]
+  refine ⟨B, translatedFamily_nonempty (pureIsolator_nonempty U q hq (by omega)) c,
+    ?_, translatedFamily_locallyEquigenerated (pureIsolator_locallyEquigenerated U q hq (by omega)) c,
+    ?_, ?_, ?_⟩
+  · have hh := translatedFamily_equigenerated (pureIsolator_degree U q) c
+    have heq : q.degree+Uᶜ.card+c.degree = d := by rw [hqd, hcd]; omega
+    simpa only [heq] using hh
+  · intro R
+    rw [monomialLocalization_eq]
+    exact shiftedPure_unique_bad U q c hq (by omega) R
+  · simpa only [hlocaldeg] using shiftedPure_local_at_degree U q c hq (by omega)
+  · simpa only [hlocaldeg, hposition] using shiftedPure_first (k := k) U q c hq (by omega)
+
+/-- Proposition 4.7(i), including U=E: the smallest exhibited pure degree is k+2. -/
+theorem exists_pure_isolator (U : Finset V) (hm : 2 ≤ U.card) :
+    ∃ B : Family V, B.Nonempty ∧ Equigenerated B (Uᶜ.card+2) ∧ LocallyEquigenerated B ∧
+      (∀ R, HasLinearResolution (monomialLocalization k (monomialIdeal k B) R) ↔ R ≠ U) := by
+  obtain ⟨B, hB, hd, hl, hu, _⟩ := exists_sharp_isolator (k := k) U hm (Uᶜ.card+2) (by omega) (by omega)
+  exact ⟨B, hB, hd, hl, hu⟩
+
+/-- Proposition 4.7(ii): one mixed-degree localization, all other localizations
+having actual linear free resolutions, at the smaller degree k+1. -/
+theorem exists_mixed_isolator (U : Finset V) (hm : 2 ≤ U.card) (hk : 1 ≤ Uᶜ.card) :
+    ∃ B : Family V, B.Nonempty ∧ Equigenerated B (Uᶜ.card+1) ∧
+      (¬ ∃ e, Equigenerated (localFamily B U) e) ∧
+      (∀ R, HasLinearResolution (monomialLocalization k (monomialIdeal k B) R) ↔ R ≠ U) := by
+  obtain ⟨a, ha, b, hb, hab⟩ := Finset.one_lt_card.mp (show 1 < U.card by omega)
+  have hT : Uᶜ.Nonempty := Finset.card_pos.mp (by omega)
+  let B := pureIsolator U (Finsupp.single a 1)
+  have hne : B.Nonempty := by
+    exact ⟨_, purePower_mem Uᶜ _ (mixed_removed_support U a ha hT) a (by simpa using ha)⟩
+  refine ⟨B, hne, ?_, ?_, ?_⟩
+  · simpa [Nat.add_comm] using pureIsolator_degree U (Finsupp.single a 1)
+  · rw [show localFamily B U = mixedCore (⟨a, ha⟩ : U) from mixedIsolator_local_at U a ha hT]
+    exact mixedCore_not_equigenerated (⟨a, ha⟩ : U) ⟨b, hb⟩
+      (fun he => hab (congrArg Subtype.val he))
+  · intro R
+    rw [monomialLocalization_eq]
+    exact mixedIsolator_unique_bad U a b ha hb hab hT R
+
+/-- The outer-band generation test of Proposition 4.10 is individually necessary. -/
+theorem exists_outer_band_isolator (U : Finset V) (hm : 2 ≤ U.card) (d : ℕ)
+    (hd : 2 ≤ d) (hk : Uᶜ.card = d-1) :
+    ∃ B : Family V, B.Nonempty ∧ Equigenerated B d ∧
+      (¬ ∃ e, Equigenerated (localFamily B U) e) ∧
+      (∀ R, HasLinearResolution (monomialLocalization k (monomialIdeal k B) R) ↔ R ≠ U) := by
+  have hpos : 1 ≤ Uᶜ.card := by omega
+  obtain ⟨B, hB, he, hbad, hgood⟩ := exists_mixed_isolator (k := k) U hm hpos
+  have hdeg : Uᶜ.card+1 = d := by omega
+  exact ⟨B, hB, hdeg ▸ he, hbad, hgood⟩
+
+end Characterizations.Isolators
+
+end
+end CheckedCharacterizationsSource34
+
+/-! ## Source: Characterizations.Projection -/
+section CheckedCharacterizationsSource35
+
+/-! # Monomial localization preserves the full exchange axiom
+
+The minimal projected generators are precisely the projections of the bases
+minimizing the total exponent on the retained coordinates. This proves the
+localization theorem simultaneously for every retained subset.
+-/
+
+noncomputable section
+namespace Characterizations
+open CommAlg.Polymatroid
+open scoped BigOperators
+variable {V : Type*} [Fintype V] [DecidableEq V]
+
+theorem minimum_layer_dominates {B : Family V} (hB : IsPolymatroidal B)
+    (U : Finset V) {a : Exponent V} (ha : a ∈ B) :
+    ∃ b ∈ B, subsetSum b U = lowerRank B U ∧ restrictExponent U b ≤ restrictExponent U a := by
+  classical
+  let L := B.filter (fun b => subsetSum b U = lowerRank B U)
+  have hL : L.Nonempty := by
+    obtain ⟨b, hb, he⟩ := lowerRank_attained ⟨a, ha⟩ U
+    exact ⟨b, Finset.mem_filter.mpr ⟨hb, he⟩⟩
+  obtain ⟨b, hbL, hmin⟩ := L.exists_min_image (fun b => ∑ i ∈ U, (b i - a i)) hL
+  obtain ⟨hb, hbmin⟩ := Finset.mem_filter.mp hbL
+  refine ⟨b, hb, hbmin, ?_⟩
+  intro i
+  by_contra hn
+  have hi : a i < b i := Nat.lt_of_not_ge hn
+  obtain ⟨j, hj, hc⟩ := hB.2 b hb a ha i hi
+  have hij : i.val ≠ j := by intro h; subst j; omega
+  have hsum := subsetSum_exchange b i j (by omega) U
+  have hlo := lowerRank_le hc U
+  have hjU : j ∈ U := by
+    by_contra hjU
+    simp only [i.property, hjU, ↓reduceIte] at hsum
+    omega
+  have hcmin : subsetSum (exchange b i j) U = lowerRank B U := by
+    simp only [i.property, hjU, ↓reduceIte] at hsum
+    omega
+  have hbetter : (∑ q ∈ U, (exchange b i j q - a q)) < ∑ q ∈ U, (b q - a q) := by
+    apply Finset.sum_lt_sum
+    · intro q hq
+      by_cases hqi : q = i.val
+      · subst q
+        simp only [exchange_apply, ↓reduceIte, hij]
+        omega
+      · by_cases hqj : q = j
+        · subst q
+          simp only [exchange_apply, hqi, ↓reduceIte]
+          omega
+        · simp [hqi, hqj]
+    · refine ⟨i.val, i.property, ?_⟩
+      simp only [exchange_apply, ↓reduceIte, hij]
+      omega
+  have hbad := hmin (exchange b i j) (Finset.mem_filter.mpr ⟨hc, hcmin⟩)
+  omega
+
+theorem localFamily_eq_minimum_layer {B : Family V} (hB : IsPolymatroidal B)
+    (U : Finset V) :
+    localFamily B U = (B.filter (fun a => subsetSum a U = lowerRank B U)).image
+      (restrictExponent U) := by
+  classical
+  ext a
+  constructor
+  · intro ha
+    obtain ⟨ha, hminimal⟩ :=
+      (mem_minimalFamily.mp ha : a ∈ B.image (restrictExponent U) ∧ _)
+    obtain ⟨b, hb, rfl⟩ := Finset.mem_image.mp ha
+    obtain ⟨c, hc, hcmin, hcb⟩ := minimum_layer_dominates hB U hb
+    have he := hminimal (restrictExponent U c) (Finset.mem_image.mpr ⟨c, hc, rfl⟩) hcb
+    exact Finset.mem_image.mpr ⟨c, Finset.mem_filter.mpr ⟨hc, hcmin⟩, he⟩
+  · rintro ha
+    obtain ⟨b, hb, rfl⟩ := Finset.mem_image.mp ha
+    obtain ⟨hb, hbmin⟩ := Finset.mem_filter.mp hb
+    apply mem_minimalFamily.mpr
+    refine ⟨Finset.mem_image.mpr ⟨b, hb, rfl⟩, ?_⟩
+    intro c hc hcb
+    obtain ⟨z, hz, rfl⟩ := Finset.mem_image.mp hc
+    apply eq_of_le_of_degree_eq hcb
+    apply Nat.le_antisymm (degree_mono hcb)
+    rw [restrictExponent_degree, restrictExponent_degree, hbmin]
+    exact lowerRank_le hz U
+
+theorem localFamily_equigenerated {B : Family V} (hB : IsPolymatroidal B)
+    (U : Finset V) : Equigenerated (localFamily B U) (lowerRank B U) := by
+  intro a ha
+  rw [localFamily_eq_minimum_layer hB] at ha
+  obtain ⟨b, hb, rfl⟩ := Finset.mem_image.mp ha
+  rw [restrictExponent_degree]
+  exact (Finset.mem_filter.mp hb).2
+
+theorem restrict_exchange (U : Finset V) (a : Exponent V) (i j : U) :
+    restrictExponent U (exchange a i j) = exchange (restrictExponent U a) i j := by
+  ext q
+  simp only [restrictExponent_apply, exchange_apply]
+  have hqi : q.val = i.val ↔ q = i := Subtype.ext_iff.symm
+  have hqj : q.val = j.val ↔ q = j := Subtype.ext_iff.symm
+  simp only [hqi, hqj]
+
+/-- Proposition 2.8, with actual minimal generators in the retained-variable ring. -/
+theorem localFamily_polymatroidal {B : Family V} (hB : IsPolymatroidal B)
+    (U : Finset V) : IsPolymatroidal (localFamily B U) := by
+  classical
+  refine ⟨⟨lowerRank B U, localFamily_equigenerated hB U⟩, ?_⟩
+  intro a ha b hb i hi
+  rw [localFamily_eq_minimum_layer hB] at ha hb
+  obtain ⟨x, hx, rfl⟩ := Finset.mem_image.mp ha
+  obtain ⟨y, hy, rfl⟩ := Finset.mem_image.mp hb
+  obtain ⟨hx, hxmin⟩ := Finset.mem_filter.mp hx
+  obtain ⟨hy, hymin⟩ := Finset.mem_filter.mp hy
+  obtain ⟨j, hj, hz⟩ := hB.2 x hx y hy i hi
+  have hsum := subsetSum_exchange x i j (by exact Nat.zero_lt_of_lt hi) U
+  have hlo := lowerRank_le hz U
+  have hjU : j ∈ U := by
+    by_contra hjU
+    simp only [i.property, hjU, ↓reduceIte] at hsum
+    omega
+  have hzmin : subsetSum (exchange x i j) U = lowerRank B U := by
+    simp only [i.property, hjU, ↓reduceIte] at hsum
+    omega
+  refine ⟨⟨j, hjU⟩, hj, ?_⟩
+  rw [← restrict_exchange, localFamily_eq_minimum_layer hB]
+  exact Finset.mem_image.mpr ⟨exchange x i j, Finset.mem_filter.mpr ⟨hz, hzmin⟩, rfl⟩
+
+theorem polymatroidal_locallyEquigenerated {B : Family V} (hB : IsPolymatroidal B) :
+    LocallyEquigenerated B :=
+  (locallyEquigenerated_iff B).mpr (fun U => ⟨lowerRank B U, localFamily_equigenerated hB U⟩)
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource35
+
+/-! ## Source: Characterizations.Resolution.Localizations -/
+section CheckedCharacterizationsSource36
+
+/-! # Actual linear resolutions after monomial localization -/
+
+noncomputable section
+namespace Characterizations
+open CommAlg.Polymatroid
+universe u
+variable {V k : Type u} [Fintype V] [DecidableEq V] [CommRing k] [Nontrivial k]
+
+/-- The forward implication in Theorem 1.1(A), in the actual polynomial ring on
+exactly the retained variables. The conclusion is an exact finite-free complex,
+with linear differential matrices, resolving the literal localized ideal. -/
+theorem polymatroidal_local_linearResolutions {B : Family V}
+    (hB : IsPolymatroidal B) (U : Finset V) :
+    HasLinearResolution (monomialLocalization k (monomialIdeal k B) U) := by
+  rw [monomialLocalization_eq]
+  exact linearResolution_of_polymatroidal (localFamily_polymatroidal hB U)
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource36
+
+/-! ## Source: Characterizations.Resolution.KoszulSocleCycle -/
+section CheckedCharacterizationsSource37
+
+/-! The actual top Koszul socle cycle and its non-boundary property. -/
+noncomputable section
+set_option maxHeartbeats 400000
+set_option maxRecDepth 2000
+namespace Characterizations.Resolution
+open Classical MvPolynomial CommAlg.Koszul
+open scoped BigOperators
+universe u
+variable {V k : Type u} [Fintype V] [LinearOrder V] [CommRing k] [Nontrivial k]
+
+lemma mapRows_injective {M N : Type u} [AddCommGroup M] [Module (MvPolynomial V k) M]
+    [AddCommGroup N] [Module (MvPolynomial V k) N]
+    (f : M →ₗ[MvPolynomial V k] N) (hf : Function.Injective f) (i : ℕ) :
+    Function.Injective (mapRows f i) := by
+  intro z w he
+  apply Finsupp.ext
+  intro s
+  exact hf (congrArg (fun z => z s) he)
+
+lemma polynomialRows_homogeneous_differential {i t : ℕ}
+    (z : KoszulRows (V := V) (MvPolynomial V k) (i + 1))
+    (hz : ∀ s, (z s).IsHomogeneous t) :
+    ∀ s, (rowDifferential (V := V) (k := k) (MvPolynomial V k) i z s).IsHomogeneous (t + 1) := by
+  let f : MvPolynomial V k →ₗ[MvPolynomial V k] (Unit → MvPolynomial V k) :=
+    LinearMap.pi (fun _ => LinearMap.id)
+  have hh : HomogeneousRows (i + 1) t (mapRows f (i + 1) z) := fun s _ => hz s
+  have h := homogeneousRows_differential hh
+  rw [rowDifferential_natural] at h
+  exact fun s => h s ()
+
+lemma polynomialRows_exact (i : ℕ)
+    (z : KoszulRows (V := V) (MvPolynomial V k) (i + 1))
+    (hz : rowDifferential (V := V) (k := k) (MvPolynomial V k) i z = 0) :
+    ∃ w, rowDifferential (V := V) (k := k) (MvPolynomial V k) (i + 1) w = z := by
+  let f : MvPolynomial V k →ₗ[MvPolynomial V k] (Unit → MvPolynomial V k) :=
+    LinearMap.pi (fun _ => LinearMap.id)
+  let g : (Unit → MvPolynomial V k) →ₗ[MvPolynomial V k] MvPolynomial V k :=
+    LinearMap.proj ()
+  have hcycle : rowDifferential (V := V) (k := k) (Unit → MvPolynomial V k) i
+      (mapRows f (i + 1) z) = 0 := by rw [rowDifferential_natural, hz, map_zero]
+  obtain ⟨w, hw⟩ := freeRows_exact i _ hcycle
+  refine ⟨mapRows g (i + 2) w, ?_⟩
+  rw [rowDifferential_natural, hw]
+  apply Finsupp.ext
+  intro s
+  rfl
+
+lemma polynomialRows_top_injective (m : ℕ) (hcard : Fintype.card V = m + 1)
+    (z : KoszulRows (V := V) (MvPolynomial V k) (m + 1))
+    (hz : rowDifferential (V := V) (k := k) (MvPolynomial V k) m z = 0) : z = 0 := by
+  obtain ⟨w, hw⟩ := polynomialRows_exact m z hz
+  haveI : IsEmpty (Set.powersetCard V (m + 2)) := ⟨fun s => by
+    have hs := Finset.card_le_univ s.val
+    rw [s.property, hcard] at hs
+    omega⟩
+  have hw0 : w = 0 := Subsingleton.elim _ _
+  simpa only [hw0, map_zero] using hw.symm
+
+variable (I : Ideal (MvPolynomial V k))
+
+def socleBoundary {i : ℕ} (s : Set.powersetCard V (i + 1)) (y : MvPolynomial V k)
+    (hy : ∀ j : s.val, X j.val * y ∈ I) : KoszulRows (V := V) I i :=
+  ∑ j : s.val, Finsupp.single (eraseIndex s j)
+    (TauCeti.ExteriorAlgebra.basisEraseSign j.val s.val • ⟨X j.val * y, hy j⟩)
+
+lemma socleBoundary_inclusion {i : ℕ} (s : Set.powersetCard V (i + 1)) (y : MvPolynomial V k)
+    (hy : ∀ j : s.val, X j.val * y ∈ I) :
+    mapRows I.subtype i (socleBoundary I s y hy) =
+      rowDifferential (V := V) (k := k) (MvPolynomial V k) i (Finsupp.single s y) := by
+  rw [socleBoundary, map_sum, coordinateDifferential_single]
+  apply Finset.sum_congr rfl
+  intro j hj
+  rw [mapRows_single]
+  congr 1
+  change TauCeti.ExteriorAlgebra.basisEraseSign j.val s.val • ((X j.val : MvPolynomial V k) • y) =
+    (X j.val : MvPolynomial V k) • (TauCeti.ExteriorAlgebra.basisEraseSign j.val s.val • y)
+  exact smul_comm _ _ _
+
+lemma socleBoundary_homogeneous {i e : ℕ} (s : Set.powersetCard V (i + 1))
+    (y : MvPolynomial V k) (hy : ∀ j : s.val, X j.val * y ∈ I)
+    (hdegree : y.IsHomogeneous e) : ∀ a, ((socleBoundary I s y hy) a).val.IsHomogeneous (e + 1) := by
+  have hz : ∀ a, (Finsupp.single s y a).IsHomogeneous e := by
+    intro a
+    by_cases he : s = a
+    · simpa only [Finsupp.single_apply, he, ↓reduceIte] using hdegree
+    · simp only [Finsupp.single_apply, he, ↓reduceIte]
+      exact (homogeneousSubmodule V k e).zero_mem
+  have hh := polynomialRows_homogeneous_differential (Finsupp.single s y) hz
+  rw [← socleBoundary_inclusion I s y hy] at hh
+  exact hh
+
+lemma socleBoundary_cycle {i : ℕ} (s : Set.powersetCard V (i + 1))
+    (y : MvPolynomial V k) (hy : ∀ j : s.val, X j.val * y ∈ I) :
+    ∀ j (he : i = j + 1), rowDifferential (V := V) (k := k) I j
+      (he ▸ socleBoundary I s y hy) = 0 := by
+  intro j he
+  subst i
+  apply mapRows_injective I.subtype Subtype.val_injective j
+  rw [map_zero, ← rowDifferential_natural, socleBoundary_inclusion, rowDifferential_square]
+
+/-- The top socle boundary cannot be a boundary inside the ideal: an incoming
+chain would have to have the missing socle element as its top coefficient. -/
+lemma socleBoundary_not_boundary (m : ℕ) (hcard : Fintype.card V = m + 1)
+    (y : MvPolynomial V k) (hy : ∀ j : V, X j * y ∈ I) (hout : y ∉ I) :
+    ¬ ∃ w : KoszulRows (V := V) I (m + 1),
+      rowDifferential (V := V) (k := k) I m w =
+        socleBoundary I (⟨Finset.univ, hcard⟩ : Set.powersetCard V (m + 1)) y
+          (fun j => hy j.val) := by
+  rintro ⟨w, hw⟩
+  let s : Set.powersetCard V (m + 1) := ⟨Finset.univ, hcard⟩
+  have hz : rowDifferential (V := V) (k := k) (MvPolynomial V k) m
+      (mapRows I.subtype (m + 1) w - Finsupp.single s y) = 0 := by
+    rw [map_sub, rowDifferential_natural, hw, socleBoundary_inclusion, sub_self]
+  have he := polynomialRows_top_injective m hcard _ hz
+  have hrow : mapRows I.subtype (m + 1) w = Finsupp.single s y := sub_eq_zero.mp he
+  have hs := congrArg (fun z => z s) hrow
+  simp only [mapRows_apply, Submodule.subtype_apply, Finsupp.single_eq_same] at hs
+  exact hout (hs ▸ (w s).property)
+
+end Characterizations.Resolution
+
+end
+end CheckedCharacterizationsSource37
+
+/-! ## Source: Characterizations.Socles -/
+section CheckedCharacterizationsSource38
+
+/-! # Actual quotient socles and the local-socle characterization
+
+The socle is the subspace of the actual quotient ring annihilated by every
+variable. Concentration means that every such class has a homogeneous
+representative of the specified degree. The equivalence with the monomial
+test is proved, rather than used as a definition of the socle.
+-/
+
+noncomputable section
+namespace Characterizations
+open CommAlg.Polymatroid MvPolynomial
+open scoped BigOperators
+variable {V : Type*} [Fintype V] [DecidableEq V]
+variable {k : Type*} [CommRing k] [Nontrivial k]
+
+def quotientSocle (I : Ideal (MvPolynomial V k)) : Set (MvPolynomial V k ⧸ I) :=
+  {q | ∀ i : V, Ideal.Quotient.mk I (X i) * q = 0}
+
+def SocleConcentrated (I : Ideal (MvPolynomial V k)) (d : ℕ) : Prop :=
+  ∀ q ∈ quotientSocle I, ∃ f : MvPolynomial V k,
+    f.IsHomogeneous d ∧ Ideal.Quotient.mk I f = q
+
+theorem monomial_quotientSocle_iff (B : Family V) (a : Exponent V) :
+    Ideal.Quotient.mk (monomialIdeal k B) (monomial a (1 : k)) ∈
+      quotientSocle (monomialIdeal k B) ↔
+      ∀ i : V, Contains B (a + Finsupp.single i 1) := by
+  simp only [quotientSocle, Set.mem_setOf_eq, ← map_mul,
+    Ideal.Quotient.eq_zero_iff_mem]
+  have he : ∀ i : V, (X i : MvPolynomial V k) * monomial a 1 =
+      monomial (a + Finsupp.single i 1) 1 := by
+    intro i
+    rw [X, monomial_mul]
+    simp [add_comm]
+  simp only [he, monomial_mem_iff]
+
+/-- A complete bridge from the actual quotient socle to monomial degrees. -/
+theorem socleConcentrated_iff (B : Family V) (d : ℕ) :
+    SocleConcentrated (monomialIdeal k B) d ↔
+      ∀ a : Exponent V, ¬ Contains B a →
+        (∀ i : V, Contains B (a + Finsupp.single i 1)) → a.degree = d := by
+  classical
+  constructor
+  · intro h a ha hsoc
+    obtain ⟨f, hf, heq⟩ := h _ ((monomial_quotientSocle_iff B a).mpr hsoc)
+    have hmem := Ideal.Quotient.eq.mp heq
+    have ha0 : (f - monomial a 1).coeff a = 0 := by
+      by_contra hn
+      exact ha ((mem_monomialIdeal_iff B _).mp hmem a (mem_support_iff.mpr hn))
+    have hfa : f.coeff a ≠ 0 := by
+      simp only [coeff_sub, coeff_monomial, ↓reduceIte] at ha0
+      intro hz
+      rw [hz] at ha0
+      simpa using ha0
+    simpa only [← Finsupp.degree_apply] using
+      (hf.degree_eq_sum_deg_support (mem_support_iff.mpr hfa)).symm
+  · intro h q hq
+    obtain ⟨f, rfl⟩ := Ideal.Quotient.mk_surjective q
+    have hvar : ∀ i : V, X i * f ∈ monomialIdeal k B := by
+      intro i
+      exact Ideal.Quotient.eq_zero_iff_mem.mp (by
+        rw [map_mul]
+        exact hq i)
+    have hdegree : ∀ a ∈ f.support, ¬ Contains B a → a.degree = d := by
+      intro a ha hout
+      apply h a hout
+      intro i
+      apply (mem_monomialIdeal_iff B _).mp (hvar i)
+      rw [add_comm a]
+      exact mem_support_iff.mpr (by simpa using mem_support_iff.mp ha)
+    refine ⟨homogeneousComponent d f, homogeneousComponent_isHomogeneous d f, ?_⟩
+    apply Ideal.Quotient.eq.mpr
+    apply (mem_monomialIdeal_iff B _).mpr
+    intro a ha
+    by_contra hout
+    have hn := mem_support_iff.mp ha
+    have hfa : f.coeff a ≠ 0 := by
+      intro hz
+      simp [coeff_sub, coeff_homogeneousComponent, hz] at hn
+    have hd := hdegree a (mem_support_iff.mpr hfa) hout
+    simp [coeff_sub, coeff_homogeneousComponent, hd] at hn
+
+theorem polymatroidal_monomial_socle_degree {B : Family V} (hBne : B.Nonempty)
+    (hB : IsPolymatroidal B) {d : ℕ} (hdeg : Equigenerated B d)
+    {a : Exponent V} (hout : ¬ Contains B a)
+    (hsoc : ∀ i : V, Contains B (a + Finsupp.single i 1)) : a.degree + 1 = d := by
+  classical
+  have hrep := contains_iff_canonical_lower B hBne d hdeg hB
+  have hbad : ¬ LowerFeasible (lowerRank B) a := fun h => hout ((hrep a).mpr h)
+  simp only [LowerFeasible, not_forall, not_le] at hbad
+  obtain ⟨U, hU⟩ := hbad
+  have hUtop : U = Finset.univ := by
+    apply Finset.eq_univ_of_forall
+    intro i
+    by_contra hi
+    have h := (hrep _).mp (hsoc i) U
+    have he : subsetSum (a + Finsupp.single i 1) U = subsetSum a U := by
+      simp [subsetSum, Finset.sum_add_distrib, Finsupp.single_apply, hi]
+    rw [he] at h
+    omega
+  have htop : lowerRank B Finset.univ = d := by
+    obtain ⟨b, hb, he⟩ := lowerRank_attained hBne Finset.univ
+    simpa only [subsetSum_univ, hdeg b hb] using he.symm
+  rw [hUtop, subsetSum_univ, htop] at hU
+  have hne : Nonempty V := by
+    by_contra hn
+    haveI : IsEmpty V := not_nonempty_iff.mp hn
+    have he : (Finset.univ : Finset V) = ∅ := Finset.univ_eq_empty
+    rw [he, lowerRank_empty] at htop
+    omega
+  let i : V := Classical.choice hne
+  obtain ⟨b, hb, hba⟩ := hsoc i
+  have hlo := degree_mono hba
+  simp only [map_add, Finsupp.degree_single, hdeg b hb] at hlo
+  omega
+
+theorem polymatroidal_socleConcentrated {B : Family V} (hBne : B.Nonempty)
+    (hB : IsPolymatroidal B) {d : ℕ} (hdeg : Equigenerated B d) :
+    SocleConcentrated (monomialIdeal k B) (d - 1) := by
+  rw [socleConcentrated_iff]
+  intro a ha hs
+  have h := polymatroidal_monomial_socle_degree hBne hB hdeg ha hs
+  omega
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource38
+
+/-! ## Source: Characterizations.Resolution.Socle -/
+section CheckedCharacterizationsSource39
+
+/-! The socle-degree theorem derived from a genuine exact linear free resolution. -/
+noncomputable section
+set_option maxHeartbeats 400000
+namespace Characterizations
+open Classical Resolution MvPolynomial CommAlg.Polymatroid
+universe u
+variable {V k : Type u} [Fintype V] [LinearOrder V] [CommRing k] [Nontrivial k]
+namespace LinearResolution
+variable {I : Ideal (MvPolynomial V k)} {d : ℕ} (P : LinearResolution I d)
+include P
+
+/-- Lemma2.2 in its full homogeneous form. The cycle is the actual top Koszul
+boundary inside the ideal, and the staircase proves that its degree is forced. -/
+theorem homogeneous_socle_degree [Nonempty V] {y : MvPolynomial V k} {e : ℕ}
+    (hy : y.IsHomogeneous e) (hout : y ∉ I)
+    (hmul : ∀ i : V, X i * y ∈ I) : e + 1 = d := by
+  have hy0 : y ≠ 0 := fun h => hout (h ▸ I.zero_mem)
+  let i₀ : V := Classical.choice inferInstance
+  have hx0 : X i₀ * y ≠ 0 := by
+    intro hz
+    apply hy0
+    apply (MvPolynomial.X_mul_cancel_left_iff (i := i₀)).mp
+    simpa only [mul_zero] using hz
+  have hlo : d ≤ e + 1 := P.degree_le_of_homogeneous_mem
+    (by simpa only [Nat.add_comm] using (isHomogeneous_X (R := k) i₀).mul hy) hx0 (hmul i₀)
+  by_contra hne
+  have hlt : d < e + 1 := lt_of_le_of_ne hlo (Ne.symm hne)
+  let t := e + 1 - d
+  have ht : 0 < t := Nat.sub_pos_of_lt hlt
+  have hdegree : d + t = e + 1 := Nat.add_sub_of_le hlo
+  have hcardpos : 0 < Fintype.card V := Fintype.card_pos_iff.mpr inferInstance
+  obtain ⟨m, hm⟩ := Nat.exists_eq_succ_of_ne_zero (Nat.ne_of_gt hcardpos)
+  let s : Set.powersetCard V (m + 1) := ⟨Finset.univ, hm⟩
+  let z := socleBoundary I s y (fun j => hmul j.val)
+  have hz : ∀ a, (z a).val.IsHomogeneous (d + t) := by
+    rw [hdegree]
+    exact socleBoundary_homogeneous I s y (fun j => hmul j.val) hy
+  have hc := socleBoundary_cycle I s y (fun j => hmul j.val)
+  have hb := P.idealRows_boundary_above t ht m z hz hc
+  exact socleBoundary_not_boundary I m hm y hmul hout hb
+
+omit P in
+theorem monomial_socle_degree [Nonempty V] (B : Family V)
+    (P : LinearResolution (monomialIdeal k B) d) (a : Exponent V)
+    (hout : ¬ Contains B a) (hmul : ∀ i : V, Contains B (a + Finsupp.single i 1)) :
+    a.degree + 1 = d := by
+  apply P.homogeneous_socle_degree (isHomogeneous_monomial (1 : k) rfl)
+  · exact fun h => hout ((monomial_mem_iff B a).mp h)
+  · intro i
+    have he : (X i : MvPolynomial V k) * monomial a 1 = monomial (a + Finsupp.single i 1) 1 := by
+      rw [X, monomial_mul]
+      simp [add_comm]
+    rw [he]
+    exact (monomial_mem_iff B _).mpr (hmul i)
+
+omit P in
+/-- Every actual quotient-socle class has a homogeneous representative of degree d−1.
+The zero-variable case is included for every nonzero monomial ideal. -/
+theorem socleConcentrated (B : Family V) (hB : B.Nonempty)
+    (P : LinearResolution (monomialIdeal k B) d) :
+    SocleConcentrated (monomialIdeal k B) (d - 1) := by
+  rw [socleConcentrated_iff]
+  intro a ha hs
+  cases isEmpty_or_nonempty V with
+  | inl h =>
+      letI := h
+      obtain ⟨b, hb⟩ := hB
+      have he : b = a := Subsingleton.elim _ _
+      exact False.elim (ha ⟨b, hb, he.le⟩)
+  | inr h =>
+      letI := h
+      have he := P.monomial_socle_degree B a ha hs
+      omega
+
+end LinearResolution
+end Characterizations
+
+end
+end CheckedCharacterizationsSource39
+
+/-! ## Source: Characterizations.SocleCharacterization -/
+section CheckedCharacterizationsSource40
+
+/-! The full local-socle characterization, in the actual retained-variable quotient rings. -/
+noncomputable section
+namespace Characterizations
+open CommAlg.Polymatroid MvPolynomial
+variable {V : Type*} [Fintype V] [DecidableEq V]
+
+theorem localFamily_degree_of_locallyEquigenerated {B : Family V} (hB : B.Nonempty)
+    (hl : LocallyEquigenerated B) (U : Finset V) :
+    Equigenerated (localFamily B U) (lowerRank B U) := by
+  intro a ha
+  have he : extendExponent U a ∈ localize B U := by
+    rw [localize_eq_extend_localFamily]
+    exact Finset.mem_image.mpr ⟨a, ha, rfl⟩
+  simpa only [extendExponent_degree] using localize_degree hB hl he
+
+theorem restrict_add_single (U : Finset V) (a : Exponent V) (i : U) :
+    restrictExponent U (a + Finsupp.single i.val 1) =
+      restrictExponent U a + Finsupp.single i 1 := by
+  ext j
+  simp only [restrictExponent_apply, Finsupp.add_apply, Finsupp.single_apply]
+  have he : i.val = j.val ↔ i = j := Subtype.ext_iff.symm
+  simp only [he]
+
+theorem restrict_degree_of_supported {U : Finset V} {a : Exponent V}
+    (ha : project U a = a) : (restrictExponent U a).degree = a.degree := by
+  rw [← extendExponent_degree U, extend_restrict, ha]
+
+variable (k : Type*) [CommRing k] [Nontrivial k]
+
+/-- Corollary 2.7, with ordinary polynomial quotient socles, including zero
+socles and every nonzero monomial ideal. The field hypothesis can be weakened
+to an arbitrary nontrivial commutative coefficient ring. -/
+theorem polymatroidal_iff_local_socles {B : Family V} (hB : B.Nonempty)
+    (hanti : Antichain B) :
+    IsPolymatroidal B ↔ LocallyEquigenerated B ∧
+      ∀ U : Finset V, monomialIdeal k (localFamily B U) ≠ ⊤ →
+        SocleConcentrated (monomialIdeal k (localFamily B U)) (lowerRank B U - 1) := by
+  constructor
+  · intro hp
+    refine ⟨polymatroidal_locallyEquigenerated hp, ?_⟩
+    intro U _
+    exact polymatroidal_socleConcentrated (localFamily_nonempty hB U)
+      (localFamily_polymatroidal hp U) (localFamily_equigenerated hp U)
+  · rintro ⟨hl, hsoc⟩
+    apply polymatroidal_of_local_socles hB hanti hl
+    intro U a ha hout hmul
+    have hout' : ¬ Contains (localFamily B U) (restrictExponent U a) :=
+      fun h => hout ((contains_localize_iff B U a).mpr h)
+    have hmul' : ∀ i : U, Contains (localFamily B U)
+        (restrictExponent U a + Finsupp.single i 1) := by
+      intro i
+      rw [← restrict_add_single]
+      exact (contains_localize_iff B U _).mp (hmul i i.property)
+    have hproper : monomialIdeal k (localFamily B U) ≠ ⊤ := by
+      intro he
+      apply hout'
+      apply (monomial_mem_iff (k := k) _ _).mp
+      rw [he]
+      trivial
+    have hd := (socleConcentrated_iff (localFamily B U) (lowerRank B U - 1)).mp
+      (hsoc U hproper) _ hout' hmul'
+    have hpos : 0 < lowerRank B U := by
+      by_contra hn
+      have hr : lowerRank B U = 0 := Nat.eq_zero_of_not_pos hn
+      obtain ⟨b, hb⟩ := localFamily_nonempty hB U
+      have hb0 : b = 0 := (Finsupp.degree_eq_zero_iff b).mp
+        ((localFamily_degree_of_locallyEquigenerated hB hl U b hb).trans hr)
+      exact hout' ⟨b, hb, by simp [hb0]⟩
+    rw [restrict_degree_of_supported ha] at hd
+    omega
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource40
+
+/-! ## Source: Characterizations.MainLocalization -/
+section CheckedCharacterizationsSource41
+
+/-! # Theorem 1.1(A): actual local linear resolutions characterize polymatroids -/
+noncomputable section
+namespace Characterizations
+open CommAlg.Polymatroid
+universe u
+variable {V k : Type u} [Fintype V] [DecidableEq V] [Field k]
+
+theorem polymatroidal_iff_local_linearResolutions {B : Family V}
+    (hB : B.Nonempty) (hanti : Antichain B) :
+    IsPolymatroidal B ↔ ∀ U : Finset V,
+      HasLinearResolution (monomialLocalization k (monomialIdeal k B) U) := by
+  constructor
+  · exact fun hp U => polymatroidal_local_linearResolutions hp U
+  · intro h
+    classical
+    have hres : ∀ U, HasLinearResolution (monomialIdeal k (localFamily B U)) := by
+      intro U
+      simpa only [monomialLocalization_eq] using h U
+    have hl : LocallyEquigenerated B := by
+      rw [locallyEquigenerated_iff]
+      intro U
+      obtain ⟨d, ⟨P⟩⟩ := hres U
+      exact ⟨d, P.equigenerated_of_monomial (localFamily B U) (localFamily_antichain B U)⟩
+    apply (polymatroidal_iff_local_socles k hB hanti).mpr
+    refine ⟨hl, ?_⟩
+    intro U _
+    letI : LinearOrder U := LinearOrder.lift' (Fintype.equivFin U) (Fintype.equivFin U).injective
+    obtain ⟨d, ⟨P⟩⟩ := hres U
+    obtain ⟨a, ha⟩ := localFamily_nonempty hB U
+    have hd : d = lowerRank B U :=
+      (P.equigenerated_of_monomial (localFamily B U) (localFamily_antichain B U) a ha).symm.trans
+        (localFamily_degree_of_locallyEquigenerated hB hl U a ha)
+    simpa only [hd] using P.socleConcentrated (localFamily B U) (localFamily_nonempty hB U)
+
+theorem local_linearResolutions_field_independent {k' : Type u} [Field k']
+    {B : Family V} (hB : B.Nonempty) (hanti : Antichain B) :
+    (∀ U : Finset V, HasLinearResolution (monomialLocalization k (monomialIdeal k B) U)) ↔
+    (∀ U : Finset V, HasLinearResolution (monomialLocalization k' (monomialIdeal k' B) U)) :=
+  (polymatroidal_iff_local_linearResolutions (k := k) hB hanti).symm.trans
+    (polymatroidal_iff_local_linearResolutions (k := k') hB hanti)
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource41
+
+/-! ## Source: Characterizations.Isolators.Coverage -/
+section CheckedCharacterizationsSource42
+
+/-! # Necessary localization tests and their exact cardinalities -/
+noncomputable section
+set_option maxHeartbeats 700000
+namespace Characterizations.Isolators
+open Classical Finset CommAlg.Polymatroid
+universe u
+variable {V k : Type u} [Fintype V] [LinearOrder V] [Field k]
+
+/-- A fixed family of actual localization tests is sufficient in degree d. -/
+def LocalizationTestSufficient (Γ : Finset (Finset V)) (d : ℕ) : Prop :=
+  ∀ B : Family V, B.Nonempty → Equigenerated B d →
+    (∀ U ∈ Γ, HasLinearResolution (monomialLocalization k (monomialIdeal k B) U)) →
+      IsPolymatroidal B
+
+/-- The same test with prior equigeneration at every localization. -/
+def PureLocalizationTestSufficient (Γ : Finset (Finset V)) (d : ℕ) : Prop :=
+  ∀ B : Family V, B.Nonempty → Equigenerated B d → LocallyEquigenerated B →
+    (∀ U ∈ Γ, HasLinearResolution (monomialLocalization k (monomialIdeal k B) U)) →
+      IsPolymatroidal B
+
+/-- A fixed localization test with no a priori bound on the generator degrees. -/
+def UnboundedLocalizationTestSufficient (Γ : Finset (Finset V)) : Prop :=
+  ∀ B : Family V, B.Nonempty → Antichain B →
+    (∀ U ∈ Γ, HasLinearResolution (monomialLocalization k (monomialIdeal k B) U)) →
+      IsPolymatroidal B
+
+def localizationBand (t : ℕ) : Finset (Finset V) :=
+  Finset.univ.filter (fun U => 2 ≤ U.card ∧ Uᶜ.card ≤ t)
+
+@[simp] lemma mem_localizationBand (t : ℕ) (U : Finset V) :
+    U ∈ localizationBand (V := V) t ↔ 2 ≤ U.card ∧ Uᶜ.card ≤ t := by
+  simp [localizationBand]
+
+/-- Every test in the ordinary band is individually necessary (Theorem 4.5). -/
+theorem localizationTestSufficient_necessary (Γ : Finset (Finset V)) (d : ℕ) (hd : 2 ≤ d)
+    (hΓ : LocalizationTestSufficient (k := k) Γ d) : localizationBand (V := V) (d-1) ⊆ Γ := by
+  intro U hU
+  obtain ⟨hm, hk⟩ := (mem_localizationBand _ _).mp hU
+  by_contra hnot
+  have hex : ∃ B : Family V, B.Nonempty ∧ Equigenerated B d ∧
+      (∀ R, HasLinearResolution (monomialLocalization k (monomialIdeal k B) R) ↔ R ≠ U) := by
+    by_cases hk' : Uᶜ.card ≤ d-2
+    · obtain ⟨B, hB, he, _, hres, _⟩ := exists_sharp_isolator (k := k) U hm d hd hk'
+      exact ⟨B, hB, he, hres⟩
+    · have he : Uᶜ.card = d-1 := by omega
+      obtain ⟨B, hB, hdeg, _, hres⟩ := exists_outer_band_isolator (k := k) U hm d hd he
+      exact ⟨B, hB, hdeg, hres⟩
+  obtain ⟨B, hB, hdeg, hres⟩ := hex
+  have hp := hΓ B hB hdeg (fun R hR => (hres R).mpr (fun he => hnot (he ▸ hR)))
+  exact (hres U).mp (polymatroidal_local_linearResolutions hp U) rfl
+
+/-- Every test in the narrower pure band is individually necessary (Theorem 4.5). -/
+theorem pureLocalizationTestSufficient_necessary (Γ : Finset (Finset V)) (d : ℕ) (hd : 2 ≤ d)
+    (hΓ : PureLocalizationTestSufficient (k := k) Γ d) : localizationBand (V := V) (d-2) ⊆ Γ := by
+  intro U hU
+  obtain ⟨hm, hk⟩ := (mem_localizationBand _ _).mp hU
+  by_contra hnot
+  obtain ⟨B, hB, hdeg, hl, hres, _⟩ := exists_sharp_isolator (k := k) U hm d hd hk
+  have hp := hΓ B hB hdeg hl (fun R hR => (hres R).mpr (fun he => hnot (he ▸ hR)))
+  exact (hres U).mp (polymatroidal_local_linearResolutions hp U) rfl
+
+/-- Corollary 4.8: every coordinate prime on at least two variables is necessary. -/
+theorem unboundedLocalizationTestSufficient_necessary (Γ : Finset (Finset V))
+    (hΓ : UnboundedLocalizationTestSufficient (k := k) Γ) :
+    ∀ U : Finset V, 2 ≤ U.card → U ∈ Γ := by
+  intro U hm
+  by_contra hnot
+  obtain ⟨B, hB, hdeg, _, hres⟩ := exists_pure_isolator (k := k) U hm
+  have hp := hΓ B hB hdeg.antichain (fun R hR => (hres R).mpr (fun he => hnot (he ▸ hR)))
+  exact (hres U).mp (polymatroidal_local_linearResolutions hp U) rfl
+
+/-- A monomial ideal on at most one retained variable is principal, hence linear. -/
+lemma local_linearResolution_of_card_le_one {B : Family V} (hB : B.Nonempty)
+    (U : Finset V) (hcard : U.card ≤ 1) :
+    HasLinearResolution (monomialLocalization k (monomialIdeal k B) U) := by
+  letI : Subsingleton U := Finset.card_le_one_iff_subsingleton_coe.mp hcard
+  obtain ⟨a, ha⟩ := localFamily_nonempty hB U
+  have he : localFamily B U = {a} := by
+    apply Finset.eq_singleton_iff_unique_mem.mpr
+    refine ⟨ha, ?_⟩
+    intro b hb
+    by_cases hba : b ≤ a
+    · exact localFamily_antichain B U b hb a ha hba
+    · have hab : a ≤ b := by
+        have hn : ∃ i, ¬ b i ≤ a i := not_forall.mp hba
+        obtain ⟨i, hi⟩ := hn
+        intro j
+        have hji : j = i := Subsingleton.elim _ _
+        subst j
+        omega
+      exact (localFamily_antichain B U a ha b hb hab).symm
+  rw [monomialLocalization_eq, he]
+  exact linearResolution_of_polymatroidal (singleton_polymatroidal a)
+
+/-- Complete form of Corollary 4.8: the fixed tests work in every degree exactly
+when they contain all coordinate primes generated by at least two variables. -/
+theorem unboundedLocalizationTestSufficient_iff (Γ : Finset (Finset V)) :
+    UnboundedLocalizationTestSufficient (k := k) Γ ↔
+      ∀ U : Finset V, 2 ≤ U.card → U ∈ Γ := by
+  constructor
+  · exact unboundedLocalizationTestSufficient_necessary Γ
+  · intro hΓ B hB hanti hres
+    apply (polymatroidal_iff_local_linearResolutions (k := k) hB hanti).mpr
+    intro U
+    by_cases hU : 2 ≤ U.card
+    · exact hres U (hΓ U hU)
+    · exact local_linearResolution_of_card_le_one hB U (by omega)
+
+/-- Exact count of the codimension band in Theorem 4.5. -/
+theorem localizationBand_card (t : ℕ) (hn : 2 ≤ Fintype.card V) :
+    (localizationBand (V := V) t).card =
+      ∑ j ∈ Finset.range (min t (Fintype.card V-2)+1), Nat.choose (Fintype.card V) j := by
+  let r := min t (Fintype.card V-2)
+  let C := (Finset.univ : Finset V).powerset.filter (fun A => A.card ≤ r)
+  have himage : (localizationBand (V := V) t).image (fun U => Uᶜ) = C := by
+    ext A
+    simp only [Finset.mem_image, mem_localizationBand, C, mem_filter, mem_powerset]
+    constructor
+    · rintro ⟨U, ⟨hm, ht⟩, rfl⟩
+      refine ⟨subset_univ _, le_min ht ?_⟩
+      have hc := Finset.card_add_card_compl U
+      try simp only [card_univ] at hc
+      omega
+    · rintro ⟨_, hA⟩
+      have ht : A.card ≤ t := hA.trans (min_le_left _ _)
+      have hn' : A.card ≤ Fintype.card V-2 := hA.trans (min_le_right _ _)
+      have hc := Finset.card_add_card_compl A
+      try simp only [card_univ] at hc
+      refine ⟨Aᶜ, ⟨by omega, by simpa using ht⟩, compl_compl A⟩
+  have hcard : (localizationBand (V := V) t).card = C.card := by
+    rw [← himage, Finset.card_image_of_injective]
+    exact fun U W h => compl_injective h
+  rw [hcard]
+  have hf : C.card = ∑ j ∈ Finset.range (r+1), (C.filter (fun A => A.card = j)).card :=
+    Finset.card_eq_sum_card_fiberwise (fun A hA => mem_range.mpr (by
+      have hh := (mem_filter.mp hA).2; omega))
+  rw [hf]
+  apply sum_congr rfl
+  intro j hj
+  have hjr : j ≤ r := by simpa using (Nat.lt_succ_iff.mp (mem_range.mp hj))
+  have he : C.filter (fun A => A.card = j) = (Finset.univ : Finset V).powersetCard j := by
+    ext A
+    simp only [C, mem_filter, mem_powerset, mem_powersetCard]
+    constructor
+    · rintro ⟨⟨hA, _⟩, he⟩; exact ⟨hA, he⟩
+    · rintro ⟨hA, he⟩; exact ⟨⟨hA, he ▸ hjr⟩, he⟩
+  rw [he, card_powersetCard, card_univ]
+
+/-- The exact unbounded number of nontrivial coordinate primes. -/
+theorem allLocalizationTests_card :
+    (Finset.univ.filter (fun U : Finset V => 2 ≤ U.card)).card =
+      2 ^ Fintype.card V - Fintype.card V - 1 := by
+  let S : Finset (Finset V) := insert ∅ ((Finset.univ : Finset V).image (fun i => {i}))
+  have hS : S.card = Fintype.card V+1 := by
+    dsimp only [S]
+    rw [card_insert_of_notMem, card_image_of_injective]
+    · simp
+    · intro i j he; exact singleton_injective he
+    · simp
+  have he : Finset.univ.filter (fun U : Finset V => 2 ≤ U.card) = Sᶜ := by
+    ext U
+    simp only [mem_filter, mem_univ, true_and, mem_compl, S, mem_insert, mem_image]
+    constructor
+    · intro hu hsmall
+      rcases hsmall with rfl | ⟨i, _, rfl⟩ <;> simp at hu
+    · intro hu
+      by_contra hn
+      have hc : U.card ≤ 1 := by omega
+      by_cases hzero : U = ∅
+      · exact hu (Or.inl hzero)
+      · obtain ⟨i, hi⟩ := Finset.nonempty_iff_ne_empty.mpr hzero
+        have he : U = {i} := Finset.eq_singleton_iff_unique_mem.mpr
+          ⟨hi, fun j hj => (Finset.card_le_one.mp hc) j hj i hi⟩
+        exact hu (Or.inr ⟨i, he.symm⟩)
+  rw [he, Finset.card_compl, hS]
+  simp only [Fintype.card_finset, Nat.sub_add_eq]
+
+/-- The exact minimum in Corollary 4.8 is attained and is a lower bound for every
+fixed localization-testing family. -/
+theorem unboundedLocalization_minimum :
+    (∃ Γ : Finset (Finset V), UnboundedLocalizationTestSufficient (k := k) Γ ∧
+      Γ.card = 2 ^ Fintype.card V - Fintype.card V - 1) ∧
+    (∀ Γ : Finset (Finset V), UnboundedLocalizationTestSufficient (k := k) Γ →
+      2 ^ Fintype.card V - Fintype.card V - 1 ≤ Γ.card) := by
+  constructor
+  · refine ⟨Finset.univ.filter (fun U : Finset V => 2 ≤ U.card), ?_, allLocalizationTests_card⟩
+    apply (unboundedLocalizationTestSufficient_iff _).mpr
+    intro U hU
+    simpa using hU
+  · intro Γ hΓ
+    rw [← allLocalizationTests_card (V := V)]
+    apply Finset.card_le_card
+    intro U hU
+    exact (unboundedLocalizationTestSufficient_iff Γ).mp hΓ U (by simpa using hU)
+
+end Characterizations.Isolators
+
+end
+end CheckedCharacterizationsSource42
+
+/-! ## Source: Characterizations.GreedyChain -/
+section CheckedCharacterizationsSource43
+
+/-! # Actual generators attaining every minimum along a nested chain -/
+
+noncomputable section
+namespace Characterizations
+open CommAlg.Polymatroid
+variable {V : Type*} [Fintype V] [DecidableEq V]
+
+/-- Every minimal projected generator lifts to a minimal generator at every
+larger retained set. This statement does not assume exchange. -/
+theorem localize_nested_lift (B : Family V) {U W : Finset V} (hWU : W ⊆ U)
+    {b : Exponent V} (hb : b ∈ localize B W) :
+    ∃ c ∈ localize B U, project W c = b := by
+  obtain ⟨a, ha, hab⟩ := localize_member hb
+  obtain ⟨c, hc, hca⟩ := localize_below (U := U) ha
+  refine ⟨c, hc, ?_⟩
+  have hcb : project W c ≤ b := by
+    have h := project_mono W hca
+    rwa [project_project hWU, hab] at h
+  have hcW : project W c ∈ B.image (project W) := by
+    obtain ⟨z, hz, rfl⟩ := localize_member hc
+    exact Finset.mem_image.mpr ⟨z, hz, (project_project hWU z).symm⟩
+  exact (mem_minimalFamily.mp hb).2 _ hcW hcb
+
+theorem localize_univ_of_antichain {B : Family V} (hB : Antichain B) :
+    localize B Finset.univ = B := by
+  have he : project (Finset.univ : Finset V) = id := funext project_univ
+  simpa [localize, he] using minimalFamily_eq hB
+
+/-- Simultaneous attainment along an arbitrary increasing chain, by a literal
+minimal generator of the localization at its last term. -/
+theorem localize_chain_minimum {B : Family V} (hB : B.Nonempty)
+    (hl : LocallyEquigenerated B) (U : ℕ → Finset V) (hU : Monotone U) (n : ℕ) :
+    ∃ b ∈ localize B (U n), ∀ j ≤ n, subsetSum b (U j) = lowerRank B (U j) := by
+  induction n with
+  | zero =>
+    obtain ⟨b, hb⟩ := localize_nonempty hB (U 0)
+    refine ⟨b, hb, ?_⟩
+    intro j hj
+    have he : j = 0 := by omega
+    subst j
+    rw [← degree_project, localize_supported hb]
+    exact localize_degree hB hl hb
+  | succ n ih =>
+    obtain ⟨b, hb, hmin⟩ := ih
+    obtain ⟨c, hc, he⟩ := localize_nested_lift B (hU (Nat.le_succ n)) hb
+    refine ⟨c, hc, ?_⟩
+    intro j hj
+    by_cases hlast : j = n + 1
+    · subst j
+      rw [← degree_project, localize_supported hc]
+      exact localize_degree hB hl hc
+    · have hjn : j ≤ n := by omega
+      rw [← subsetSum_project (hU hjn) c, he]
+      exact hmin j hjn
+
+/-- The greedy-chain assertion in the proof of Theorem 2.11. -/
+theorem generator_chain_minimum {B : Family V} (hB : B.Nonempty) (ha : Antichain B)
+    (hl : LocallyEquigenerated B) (U : ℕ → Finset V) (hU : Monotone U)
+    (n : ℕ) (hn : U n = Finset.univ) :
+    ∃ b ∈ B, ∀ j ≤ n, subsetSum b (U j) = lowerRank B (U j) := by
+  obtain ⟨b, hb, hmin⟩ := localize_chain_minimum hB hl U hU n
+  rw [hn, localize_univ_of_antichain ha] at hb
+  exact ⟨b, hb, hmin⟩
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource43
+
+/-! ## Source: Characterizations.RealHull -/
+section CheckedCharacterizationsSource44
+
+/-! # The exact real convex hull forced by local equigeneration -/
+
+noncomputable section
+namespace Characterizations
+open CommAlg.Polymatroid Finset
+open scoped BigOperators
+variable {V : Type*} [Fintype V] [DecidableEq V]
+
+def realExponent (a : Exponent V) : V → ℝ := fun i => a i
+
+def realSubsetSum (x : V → ℝ) (U : Finset V) : ℝ := ∑ i ∈ U, x i
+
+@[simp] theorem realSubsetSum_exponent (a : Exponent V) (U : Finset V) :
+    realSubsetSum (realExponent a) U = (subsetSum a U : ℝ) := by
+  simp [realSubsetSum, realExponent, subsetSum]
+
+def lowerRankPolytope (B : Family V) (d : ℕ) : Set (V → ℝ) :=
+  {x | (∀ i, 0 ≤ x i) ∧ realSubsetSum x univ = d ∧
+    ∀ U, (lowerRank B U : ℝ) ≤ realSubsetSum x U}
+
+theorem lowerRankPolytope_convex (B : Family V) (d : ℕ) :
+    Convex ℝ (lowerRankPolytope B d) := by
+  intro x hx y hy a b ha hb hab
+  refine ⟨?_, ?_, ?_⟩
+  · intro i
+    exact add_nonneg (mul_nonneg ha (hx.1 i)) (mul_nonneg hb (hy.1 i))
+  · change ∑ i, (a * x i + b * y i) = (d : ℝ)
+    rw [sum_add_distrib, ← mul_sum, ← mul_sum]
+    change a * realSubsetSum x univ + b * realSubsetSum y univ = _
+    rw [hx.2.1, hy.2.1, ← add_mul, hab, one_mul]
+  · intro U
+    change (lowerRank B U : ℝ) ≤ ∑ i ∈ U, (a * x i + b * y i)
+    rw [sum_add_distrib, ← mul_sum, ← mul_sum]
+    have h1 := mul_le_mul_of_nonneg_left (hx.2.2 U) ha
+    have h2 := mul_le_mul_of_nonneg_left (hy.2.2 U) hb
+    have he : a * (lowerRank B U : ℝ) + b * (lowerRank B U : ℝ) = lowerRank B U := by
+      rw [← add_mul, hab, one_mul]
+    exact he ▸ add_le_add h1 h2
+
+theorem exponent_mem_lowerRankPolytope {B : Family V} {d : ℕ}
+    (hd : Equigenerated B d) {a : Exponent V} (ha : a ∈ B) :
+    realExponent a ∈ lowerRankPolytope B d := by
+  refine ⟨fun i => Nat.cast_nonneg _, ?_, ?_⟩
+  · rw [realSubsetSum_exponent, subsetSum_univ, hd a ha]
+  · intro U
+    rw [realSubsetSum_exponent]
+    exact_mod_cast lowerRank_le ha U
+
+def orderPrefix {n : ℕ} (e : Fin n ≃ V) (j : ℕ) : Finset V :=
+  univ.filter (fun v => (e.symm v).val < j)
+
+theorem orderPrefix_mono {n : ℕ} (e : Fin n ≃ V) : Monotone (orderPrefix e) := by
+  intro j k hjk v hv
+  exact mem_filter.mpr ⟨mem_univ _, lt_of_lt_of_le (mem_filter.mp hv).2 hjk⟩
+
+@[simp] theorem orderPrefix_full {n : ℕ} (e : Fin n ≃ V) : orderPrefix e n = univ := by
+  ext v
+  simp [orderPrefix, (e.symm v).isLt]
+
+def orderedSequence {n : ℕ} (e : Fin n ≃ V) (x : V → ℝ) (j : ℕ) : ℝ :=
+  if h : j < n then x (e ⟨j, h⟩) else 0
+
+theorem sum_orderPrefix {n : ℕ} (e : Fin n ≃ V) (x : V → ℝ) (j : ℕ) (hj : j ≤ n) :
+    realSubsetSum x (orderPrefix e j) = ∑ i ∈ range j, orderedSequence e x i := by
+  classical
+  apply sum_bij (fun v _ => (e.symm v).val)
+  · intro v hv
+    exact mem_range.mpr (mem_filter.mp hv).2
+  · intro v hv w hw he
+    exact e.symm.injective (Fin.ext he)
+  · intro i hi
+    have hin : i < n := (mem_range.mp hi).trans_le hj
+    refine ⟨e ⟨i, hin⟩, ?_, ?_⟩
+    · simp [orderPrefix, mem_range.mp hi]
+    · simp
+  · intro v hv
+    simp [orderedSequence, (e.symm v).isLt]
+
+theorem sum_ordered_product {n : ℕ} (e : Fin n ≃ V) (x w : V → ℝ) :
+    (∑ i ∈ range n, orderedSequence e x i * orderedSequence e w i) =
+      ∑ v, x v * w v := by
+  have he : ∀ i, orderedSequence e x i * orderedSequence e w i =
+      orderedSequence e (fun v => x v * w v) i := by
+    intro i
+    by_cases hi : i < n <;> simp [orderedSequence, hi]
+  simp_rw [he]
+  rw [← sum_orderPrefix e _ n le_rfl, orderPrefix_full]
+  rfl
+
+theorem weighted_le_of_prefix {n : ℕ} (e : Fin n ≃ V) (x y w : V → ℝ)
+    (hw : Antitone (fun i => w (e i)))
+    (hp : ∀ j ≤ n, realSubsetSum x (orderPrefix e j) ≤ realSubsetSum y (orderPrefix e j))
+    (ht : realSubsetSum x univ = realSubsetSum y univ) :
+    (∑ v, x v * w v) ≤ ∑ v, y v * w v := by
+  let f : ℕ → ℝ := fun i => orderedSequence e y i - orderedSequence e x i
+  let g : ℕ → ℝ := orderedSequence e w
+  have hsum : ∀ j ≤ n, 0 ≤ ∑ i ∈ range j, f i := by
+    intro j hj
+    have h := hp j hj
+    rw [sum_orderPrefix e x j hj, sum_orderPrefix e y j hj] at h
+    simpa only [f, sum_sub_distrib, sub_nonneg] using h
+  have htotal : ∑ i ∈ range n, f i = 0 := by
+    rw [show f = (fun i => orderedSequence e y i - orderedSequence e x i) from rfl,
+      sum_sub_distrib, ← sum_orderPrefix e y n le_rfl,
+      ← sum_orderPrefix e x n le_rfl, orderPrefix_full, ht, sub_self]
+  have hnonneg : 0 ≤ ∑ i ∈ range n, f i * g i := by
+    simp_rw [← smul_eq_mul]
+    rw [sum_range_by_parts', smul_eq_mul, htotal, zero_mul, zero_sub]
+    apply neg_nonneg.mpr
+    apply sum_nonpos
+    intro i hi
+    have hin : i < n - 1 := mem_range.mp hi
+    have h1 := hsum (i + 1) (by omega)
+    have h2 : g (i + 1) - g i ≤ 0 := by
+      have hi0 : i < n := by omega
+      have hi1 : i + 1 < n := by omega
+      have hw' := hw (show (⟨i, hi0⟩ : Fin n) ≤ ⟨i+1, hi1⟩ by
+        change i ≤ i + 1
+        omega)
+      simpa [g, orderedSequence, hi0, hi1, sub_nonpos] using hw'
+    simpa only [smul_eq_mul] using mul_nonpos_of_nonneg_of_nonpos h1 h2
+  simp only [f, g, sub_mul, sum_sub_distrib, sub_nonneg] at hnonneg
+  rwa [sum_ordered_product, sum_ordered_product] at hnonneg
+
+theorem exists_antitone_enumeration (w : V → ℝ) :
+    ∃ e : Fin (Fintype.card V) ≃ V, Antitone (fun i => w (e i)) := by
+  let f : Fin (Fintype.card V) → OrderDual ℝ := fun i => w ((Fintype.equivFin V).symm i)
+  let e := (Tuple.sort f).trans (Fintype.equivFin V).symm
+  exact ⟨e, Tuple.monotone_sort f⟩
+
+theorem generator_minimizes_every_functional {B : Family V} (hB : B.Nonempty)
+    (hanti : Antichain B) (hl : LocallyEquigenerated B) {d : ℕ} (hd : Equigenerated B d)
+    (w : V → ℝ) :
+    ∃ b ∈ B, ∀ x ∈ lowerRankPolytope B d,
+      (∑ v, realExponent b v * w v) ≤ ∑ v, x v * w v := by
+  obtain ⟨e, he⟩ := exists_antitone_enumeration w
+  obtain ⟨b, hb, hmin⟩ := generator_chain_minimum hB hanti hl
+    (orderPrefix e) (orderPrefix_mono e) (Fintype.card V) (orderPrefix_full e)
+  refine ⟨b, hb, ?_⟩
+  intro x hx
+  apply weighted_le_of_prefix e (realExponent b) x w he
+  · intro j hj
+    rw [realSubsetSum_exponent, hmin j hj]
+    exact hx.2.2 _
+  · rw [realSubsetSum_exponent, subsetSum_univ, hd b hb, hx.2.1]
+
+theorem linearFunctional_eq_weighted_sum (f : (V → ℝ) →L[ℝ] ℝ) (x : V → ℝ) :
+    f x = ∑ v, x v * f (Pi.single v 1) := by
+  classical
+  have he : x = ∑ v, x v • Pi.single v (1 : ℝ) := by
+    funext v
+    simp [Pi.single_apply]
+  conv_lhs => rw [he]
+  simp
+
+/-- Equation (2.3) of Theorem 2.11: equality of actual real convex sets. -/
+theorem convexHull_generators_eq_lowerRankPolytope {B : Family V} (hB : B.Nonempty)
+    (hanti : Antichain B) (hl : LocallyEquigenerated B) {d : ℕ} (hd : Equigenerated B d) :
+    convexHull ℝ (realExponent '' (B : Set (Exponent V))) = lowerRankPolytope B d := by
+  apply Set.Subset.antisymm
+  · apply convexHull_min ?_ (lowerRankPolytope_convex B d)
+    rintro x ⟨a, ha, rfl⟩
+    exact exponent_mem_lowerRankPolytope hd ha
+  · intro x hx
+    by_contra hout
+    have hfin : (realExponent '' (B : Set (Exponent V))).Finite := B.finite_toSet.image _
+    obtain ⟨f, c, hxc, hcf⟩ := geometric_hahn_banach_point_closed
+      (convex_convexHull ℝ _) (hfin.isClosed_convexHull ℝ) hout
+    obtain ⟨b, hb, hmin⟩ := generator_minimizes_every_functional hB hanti hl hd
+      (fun v => f (Pi.single v 1))
+    have hm := hmin x hx
+    rw [← linearFunctional_eq_weighted_sum, ← linearFunctional_eq_weighted_sum] at hm
+    have hc := hcf (realExponent b) (subset_convexHull ℝ _ ⟨b, hb, rfl⟩)
+    linarith
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource44
+
+/-! ## Source: Characterizations.LowerBases -/
+section CheckedCharacterizationsSource45
+
+/-! # The full integer base family of a locally equigenerated monomial ideal -/
+noncomputable section
+namespace Characterizations
+open Classical CommAlg.Polymatroid Finset
+variable {V : Type*} [Fintype V] [DecidableEq V]
+
+def lowerBaseFamily (r : Finset V → ℕ) (d : ℕ) : Family V :=
+  (Finset.Iic (constExponent d)).filter (fun a => a.degree = d ∧ LowerFeasible r a)
+
+@[simp] theorem mem_lowerBaseFamily (r : Finset V → ℕ) (d : ℕ) (a : Exponent V) :
+    a ∈ lowerBaseFamily r d ↔ a.degree = d ∧ LowerFeasible r a := by
+  classical
+  simp only [lowerBaseFamily, Finset.mem_filter, Finset.mem_Iic]
+  exact ⟨And.right, fun h => ⟨fun i => (coordinate_le_degree a i).trans h.1.le, h⟩⟩
+
+theorem lowerBaseFamily_equigenerated (r : Finset V → ℕ) (d : ℕ) :
+    Equigenerated (lowerBaseFamily r d) d := fun a ha => ((mem_lowerBaseFamily r d a).mp ha).1
+
+theorem contains_lowerBaseFamily_iff {r : Finset V → ℕ} (hr : Supermodular r)
+    (hr0 : r ∅ = 0) {d : ℕ} (hrd : r Finset.univ = d) (hrle : ∀ U, r U ≤ d)
+    (a : Exponent V) : Contains (lowerBaseFamily r d) a ↔ LowerFeasible r a := by
+  constructor
+  · rintro ⟨b, hb, hba⟩ U
+    exact (((mem_lowerBaseFamily r d b).mp hb).2 U).trans
+      (Finset.sum_le_sum (fun i _ => hba i))
+  · intro ha
+    obtain ⟨b, hba, hd, hb⟩ := exists_lower_base_below hr hr0 hrd hrle ha
+    exact ⟨b, (mem_lowerBaseFamily r d b).mpr ⟨hd, hb⟩, hba⟩
+
+theorem lowerBaseFamily_polymatroidal {r : Finset V → ℕ} (hr : Supermodular r)
+    (hr0 : r ∅ = 0) {d : ℕ} (hrd : r Finset.univ = d) (hrle : ∀ U, r U ≤ d) :
+    IsPolymatroidal (lowerBaseFamily r d) :=
+  polymatroidal_of_lower_inequalities (lowerBaseFamily_equigenerated r d) hr
+    (contains_lowerBaseFamily_iff hr hr0 hrd hrle)
+
+theorem lowerRank_univ_of_equigenerated {B : Family V} (hB : B.Nonempty)
+    {d : ℕ} (hd : Equigenerated B d) : lowerRank B Finset.univ = d := by
+  obtain ⟨a, ha, he⟩ := lowerRank_attained hB Finset.univ
+  simpa only [subsetSum_univ, hd a ha] using he.symm
+
+theorem lowerRank_le_degree {B : Family V} (hB : B.Nonempty)
+    {d : ℕ} (hd : Equigenerated B d) (U : Finset V) : lowerRank B U ≤ d := by
+  rw [← lowerRank_univ_of_equigenerated hB hd]
+  exact lowerRank_mono hB (Finset.subset_univ U)
+
+theorem subset_lowerBaseFamily {B : Family V} {d : ℕ} (hd : Equigenerated B d) :
+    B ⊆ lowerBaseFamily (lowerRank B) d := by
+  intro a ha
+  exact (mem_lowerBaseFamily _ _ _).mpr ⟨hd a ha, fun U => lowerRank_le ha U⟩
+
+theorem canonicalLowerBases_polymatroidal {B : Family V} (hB : B.Nonempty)
+    (hl : LocallyEquigenerated B) {d : ℕ} (hd : Equigenerated B d) :
+    IsPolymatroidal (lowerBaseFamily (lowerRank B) d) :=
+  lowerBaseFamily_polymatroidal (lowerRank_supermodular hB hl) (lowerRank_empty B)
+    (lowerRank_univ_of_equigenerated hB hd) (lowerRank_le_degree hB hd)
+
+theorem contains_canonicalLowerBases_iff {B : Family V} (hB : B.Nonempty)
+    (hl : LocallyEquigenerated B) {d : ℕ} (hd : Equigenerated B d) (a : Exponent V) :
+    Contains (lowerBaseFamily (lowerRank B) d) a ↔ LowerFeasible (lowerRank B) a :=
+  contains_lowerBaseFamily_iff (lowerRank_supermodular hB hl) (lowerRank_empty B)
+    (lowerRank_univ_of_equigenerated hB hd) (lowerRank_le_degree hB hd) a
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource45
+
+/-! ## Source: Characterizations.RankIncrements -/
+section CheckedCharacterizationsSource46
+
+/-! # Rank increments on intervals of coordinate localizations -/
+noncomputable section
+namespace Characterizations
+open Classical CommAlg.Polymatroid Finset
+variable {V : Type*} [Fintype V] [DecidableEq V]
+
+theorem equigenerated_localize_degree {B : Family V} (hB : B.Nonempty)
+    {U : Finset V} {d : ℕ} (hd : Equigenerated (localize B U) d)
+    {b : Exponent V} (hb : b ∈ localize B U) : b.degree = lowerRank B U := by
+  obtain ⟨a, ha, hmin⟩ := lowerRank_attained (localize_nonempty hB U) U
+  rw [lowerRank_localize hB le_rfl] at hmin
+  have haD : a.degree = subsetSum a U := by rw [← degree_project, localize_supported ha]
+  exact (hd b hb).trans ((hd a ha).symm.trans (haD.trans hmin))
+
+theorem lowerRank_supermodular_at_union {B : Family V} (hB : B.Nonempty)
+    (A C : Finset V) (he : ∃ d, Equigenerated (localize B (A ∪ C)) d) :
+    lowerRank B A + lowerRank B C ≤ lowerRank B (A ∪ C) + lowerRank B (A ∩ C) := by
+  obtain ⟨d, hd⟩ := he
+  obtain ⟨b, hb, hmin⟩ := lowerRank_attained (localize_nonempty hB (A ∪ C)) (A ∩ C)
+  rw [lowerRank_localize hB (Finset.inter_subset_left.trans Finset.subset_union_left)] at hmin
+  have hsum : subsetSum b (A ∪ C) = lowerRank B (A ∪ C) := by
+    rw [← degree_project, localize_supported hb]
+    exact equigenerated_localize_degree hB hd hb
+  calc
+    lowerRank B A + lowerRank B C ≤ subsetSum b A + subsetSum b C :=
+      Nat.add_le_add (localize_sum_ge Finset.subset_union_left hb)
+        (localize_sum_ge Finset.subset_union_right hb)
+    _ = subsetSum b (A ∪ C) + subsetSum b (A ∩ C) := subsetSum_union_inter b A C
+    _ = _ := by rw [hsum, hmin]
+
+def SupermodularAbove (r : Finset V → ℕ) (U : Finset V) : Prop :=
+  ∀ A C, U ⊆ A → U ⊆ C → r A + r C ≤ r (A ∪ C) + r (A ∩ C)
+
+theorem lowerRank_supermodular_above {B : Family V} (hB : B.Nonempty) (U : Finset V)
+    (he : ∀ W, U ⊂ W → ∃ d, Equigenerated (localize B W) d) :
+    SupermodularAbove (lowerRank B) U := by
+  intro A C hUA hUC
+  by_cases h : A ∪ C = U
+  · have hA : A = U := Finset.Subset.antisymm (h ▸ Finset.subset_union_left) hUA
+    have hC : C = U := Finset.Subset.antisymm (h ▸ Finset.subset_union_right) hUC
+    simp [hA, hC]
+  · exact lowerRank_supermodular_at_union hB A C
+      (he _ ((hUA.trans Finset.subset_union_left).ssubset_of_ne (Ne.symm h)))
+
+theorem supermodular_rank_increments {r : Finset V → ℕ} {U : Finset V}
+    (hr : SupermodularAbove r U) (hinc : ∀ i ∉ U, r U + 1 ≤ r (insert i U))
+    (C : Finset V) (hC : Disjoint U C) : r U + C.card ≤ r (U ∪ C) := by
+  induction C using Finset.induction_on with
+  | empty => simp
+  | @insert i C hi ih =>
+    have hdis : Disjoint U C := hC.mono_right (Finset.subset_insert _ _)
+    have hiU : i ∉ U := fun h => (Finset.disjoint_left.mp hC) h (Finset.mem_insert_self _ _)
+    have hih := ih hdis
+    have hs := hr (U ∪ C) (insert i U) Finset.subset_union_left (Finset.subset_insert _ _)
+    have hun : (U ∪ C) ∪ insert i U = insert i (U ∪ C) := by ext x; simp; tauto
+    have hin : (U ∪ C) ∩ insert i U = U := by
+      ext x
+      simp only [Finset.mem_inter, Finset.mem_union, Finset.mem_insert]
+      constructor
+      · rintro ⟨hxU | hxC, hxi | hxU'⟩
+        · exact hxU
+        · exact hxU
+        · subst x; exact (hi hxC).elim
+        · exact hxU'
+      · intro hx; exact ⟨Or.inl hx, Or.inr hx⟩
+    rw [hun, hin] at hs
+    have hs1 := hinc i hiU
+    rw [Finset.card_insert_of_notMem hi, Finset.union_insert]
+    omega
+
+theorem supermodular_rank_codimension_bound {r : Finset V → ℕ} {U : Finset V}
+    (hr : SupermodularAbove r U) (hinc : ∀ i ∉ U, r U + 1 ≤ r (insert i U)) :
+    r U + (Fintype.card V - U.card) ≤ r Finset.univ := by
+  simpa only [Finset.card_compl, Finset.card_univ, Finset.union_compl] using
+    supermodular_rank_increments hr hinc Uᶜ disjoint_compl_right
+
+/-- A zero rank increment at an equigenerated larger localization forces the
+whole ambient exponent family to be unchanged; the added variables do not occur. -/
+theorem localize_eq_of_rank_eq {B : Family V} (hB : B.Nonempty)
+    {U W : Finset V} (hUW : U ⊆ W)
+    (he : ∃ d, Equigenerated (localize B W) d) (hr : lowerRank B U = lowerRank B W) :
+    localize B W = localize B U := by
+  obtain ⟨d, hd⟩ := he
+  have hsupp : ∀ b ∈ localize B W, project U b = b := by
+    intro b hb
+    apply eq_of_le_of_degree_eq (project_le U b)
+    rw [degree_project]
+    apply le_antisymm
+    · simpa only [degree_project] using degree_mono (project_le U b)
+    · rw [equigenerated_localize_degree hB hd hb, ← hr]
+      exact localize_sum_ge hUW hb
+  apply family_eq_of_contains_iff (localize_antichain B W) (localize_antichain B U)
+  intro a
+  constructor
+  · rintro ⟨b, hb, hba⟩
+    obtain ⟨c, hc, hcb⟩ := localize_member hb
+    apply (contains_localize B U a).mpr
+    refine ⟨c, hc, ?_⟩
+    have hproj : project U c = b := by
+      rw [← project_project hUW c, hcb, hsupp b hb]
+    rwa [hproj]
+  · intro ha
+    obtain ⟨c, hc, hca⟩ := (contains_localize B U a).mp ha
+    obtain ⟨b, hb, hbc⟩ := localize_below (U := W) hc
+    refine ⟨b, hb, ?_⟩
+    have hp := project_mono U hbc
+    rw [hsupp b hb, project_project hUW] at hp
+    exact hp.trans hca
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource46
+
+/-! ## Source: Characterizations.AmbientLocalization -/
+section CheckedCharacterizationsSource47
+
+/-! # Retained-variable and ambient descriptions of monomial localization agree -/
+noncomputable section
+namespace Characterizations
+open Classical CommAlg.Polymatroid Finset
+variable {V W : Type*} [Fintype V] [Fintype W] [DecidableEq V] [DecidableEq W]
+
+theorem embeddedFamily_polymatroidal {B : Family W} (hp : IsPolymatroidal B) (e : W ↪ V) :
+    IsPolymatroidal (embeddedFamily e B) := by
+  obtain ⟨d, hd⟩ := hp.1
+  apply (polymatroidal_iff_universal_revlex (k := ℚ) (embeddedFamily_equigenerated hd e)).mpr
+  intro o
+  exact (embeddedFamily_linearQuotients_iff hd e o).mpr
+    (polymatroidal_variable_linearQuotients hp.2 (restrictedOrder o e))
+
+theorem localize_eq_embeddedFamily (B : Family V) (U : Finset V) :
+    localize B U = embeddedFamily (Function.Embedding.subtype (· ∈ U)) (localFamily B U) := by
+  rw [localize_eq_extend_localFamily]
+  unfold embeddedFamily
+  congr 1
+  funext a
+  exact Finsupp.extendDomain_eq_embDomain_subtype a
+
+theorem localize_polymatroidal_of_localFamily {B : Family V} (U : Finset V)
+    (h : IsPolymatroidal (localFamily B U)) : IsPolymatroidal (localize B U) := by
+  rw [localize_eq_embeddedFamily]
+  exact embeddedFamily_polymatroidal h _
+
+theorem localize_polymatroidal {B : Family V} (hp : IsPolymatroidal B) (U : Finset V) :
+    IsPolymatroidal (localize B U) :=
+  localize_polymatroidal_of_localFamily U (localFamily_polymatroidal hp U)
+
+theorem localFamily_polymatroidal_iff (B : Family V) (U : Finset V) :
+    IsPolymatroidal (localFamily B U) ↔ IsPolymatroidal (localize B U) := by
+  refine ⟨localize_polymatroidal_of_localFamily U, ?_⟩
+  intro h
+  obtain ⟨d, hd⟩ := h.1
+  have heq : Equigenerated (localFamily B U) d := by
+    intro a ha
+    have hh : extendExponent U a ∈ localize B U := by
+      rw [localize_eq_extend_localFamily]
+      exact mem_image.mpr ⟨a, ha, rfl⟩
+    simpa only [extendExponent_degree] using hd _ hh
+  rw [localize_eq_embeddedFamily] at h
+  exact embeddedFamily_polymatroidal_implies heq _ h
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource47
+
+/-! ## Source: Characterizations.GenerationCoverage -/
+section CheckedCharacterizationsSource48
+
+/-! # The sharp codimension range needed to force local equigeneration -/
+noncomputable section
+namespace Characterizations
+open Classical CommAlg.Polymatroid Finset
+variable {V : Type*} [Fintype V] [DecidableEq V]
+
+theorem localize_equigenerated_of_rank_zero {B : Family V} (hB : B.Nonempty)
+    (U : Finset V) (hr : lowerRank B U = 0) : Equigenerated (localize B U) 0 := by
+  obtain ⟨a,ha,hmin⟩ := lowerRank_attained hB U
+  have hpa : project U a = 0 := (Finsupp.degree_eq_zero_iff _).mp
+    ((degree_project U a).trans (hmin.trans hr))
+  obtain ⟨b,hb,hba⟩ := localize_below (U := U) ha
+  have hb0 : b = 0 := le_antisymm (hpa ▸ hba) zero_le
+  intro c hc
+  have hbc := localize_antichain B U b hb c hc (by rw [hb0]; exact zero_le)
+  rw [← hbc, hb0]
+  simp
+
+theorem localize_equigenerated_of_card_le_one {B : Family V} (hB : B.Nonempty)
+    (U : Finset V) (hcard : U.card ≤ 1) : ∃ d, Equigenerated (localize B U) d := by
+  obtain ⟨a,ha⟩ := localize_nonempty hB U
+  refine ⟨a.degree,?_⟩
+  intro b hb
+  have hsame : a = b := by
+    by_cases hU : U.Nonempty
+    · obtain ⟨i,hi⟩ := hU
+      have hsingle : U = {i} := Finset.eq_singleton_iff_unique_mem.mpr ⟨hi,fun j hj => by
+        by_contra hji
+        have htwo : ({i,j} : Finset V) ⊆ U :=
+          Finset.insert_subset_iff.mpr ⟨hi,Finset.singleton_subset_iff.mpr hj⟩
+        have hc := Finset.card_le_card htwo
+        simp [Ne.symm hji] at hc
+        omega⟩
+      have hcomp (c e : Exponent V) (hc : c ∈ localize B U) (he : e ∈ localize B U)
+          (hce : c i ≤ e i) : c ≤ e := by
+        intro j
+        by_cases hji : j = i
+        · simpa [hji] using hce
+        · have hcj := congrArg (fun f : Exponent V => f j) (localize_supported hc)
+          have hjU : j ∉ U := by simpa [hsingle] using hji
+          simp only [project_apply, if_neg hjU] at hcj
+          rw [← hcj]
+          exact Nat.zero_le _
+      rcases le_total (a i) (b i) with h | h
+      · exact localize_antichain B U a ha b hb (hcomp a b ha hb h)
+      · exact (localize_antichain B U b hb a ha (hcomp b a hb ha h)).symm
+    · have hU0 := Finset.not_nonempty_iff_eq_empty.mp hU
+      have ha0 := localize_supported ha
+      have hb0 := localize_supported hb
+      simp only [hU0, project_empty] at ha0 hb0
+      exact ha0.symm.trans hb0
+  exact congrArg Finsupp.degree hsame.symm
+
+theorem maximal_nonequigenerated_rank_cost {B : Family V} (hB : B.Nonempty)
+    {d : ℕ} (hd : Equigenerated B d) (U : Finset V)
+    (hbad : ¬ ∃ e, Equigenerated (localize B U) e)
+    (hmax : ∀ W, U ⊂ W → ∃ e, Equigenerated (localize B W) e) :
+    2 ≤ U.card ∧ 1 ≤ lowerRank B U ∧
+      lowerRank B U + (Fintype.card V-U.card) ≤ d := by
+  have hcard : 2 ≤ U.card := by
+    by_contra h
+    exact hbad (localize_equigenerated_of_card_le_one hB U (by omega))
+  have hpos : 1 ≤ lowerRank B U := by
+    by_contra h
+    exact hbad ⟨0,localize_equigenerated_of_rank_zero hB U (by omega)⟩
+  have hinc : ∀ i ∉ U, lowerRank B U+1 ≤ lowerRank B (insert i U) := by
+    intro i hi
+    have hsub : U ⊂ insert i U := Finset.ssubset_insert hi
+    have he := hmax _ hsub
+    have hm := lowerRank_mono hB (Finset.subset_insert i U)
+    by_contra h
+    have hr : lowerRank B U = lowerRank B (insert i U) := by omega
+    have hf := localize_eq_of_rank_eq hB (Finset.subset_insert i U) he hr
+    rw [hf] at he
+    exact hbad he
+  have hbound := supermodular_rank_codimension_bound (lowerRank_supermodular_above hB U hmax) hinc
+  rw [lowerRank_univ_of_equigenerated hB hd] at hbound
+  exact ⟨hcard,hpos,hbound⟩
+
+theorem locallyEquigenerated_of_band_tests {B : Family V} (hB : B.Nonempty)
+    {d : ℕ} (hd : Equigenerated B d)
+    (htest : ∀ U : Finset V, 2 ≤ U.card → Fintype.card V-U.card ≤ d-1 →
+      ∃ e, Equigenerated (localize B U) e) : LocallyEquigenerated B := by
+  by_contra hn
+  unfold LocallyEquigenerated at hn
+  obtain ⟨U,hU⟩ := not_forall.mp hn
+  let bad : Finset (Finset V) := Finset.univ.filter
+    (fun W => ¬∃ e, Equigenerated (localize B W) e)
+  have hb : bad.Nonempty := ⟨U,Finset.mem_filter.mpr ⟨Finset.mem_univ _,hU⟩⟩
+  obtain ⟨W,hW,hmax⟩ := bad.exists_maximal hb
+  have hbad := (Finset.mem_filter.mp hW).2
+  have hs : ∀ T, W ⊂ T → ∃ e, Equigenerated (localize B T) e := by
+    intro T hWT
+    by_contra hT
+    have hTW := hmax (Finset.mem_filter.mpr ⟨Finset.mem_univ _,hT⟩) hWT.subset
+    exact hWT.not_superset hTW
+  obtain ⟨hc,hp,hcost⟩ := maximal_nonequigenerated_rank_cost hB hd W hbad hs
+  exact hbad (htest W hc (by omega))
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource48
+
+/-! ## Source: Characterizations.Strands.OrderEmbedding -/
+section CheckedCharacterizationsSource49
+
+/-! # Signed simplicial chain transport along an order embedding -/
+noncomputable section
+set_option maxHeartbeats 900000
+set_option maxRecDepth 2500
+set_option backward.isDefEq.respectTransparency false
+namespace Characterizations.Strands
+open Classical Finset CommAlg.Simplicial CommAlg.Koszul CategoryTheory
+universe u
+variable {W V k : Type u} [Fintype W] [LinearOrder W] [Fintype V] [LinearOrder V] [Field k]
+
+def ambientMap (f : W ↪o V) : Ambient W k →ₗ[k] Ambient V k :=
+  basis.constr k (fun s => basis (s.map f.toEmbedding))
+
+@[simp] lemma ambientMap_basis (f : W ↪o V) (s : Finset W) :
+    ambientMap (k := k) f (basis s) = basis (s.map f.toEmbedding) :=
+  Module.Basis.constr_basis _ _ _ _
+
+lemma eraseSign_map (f : W ↪o V) (s : Finset W) (e : W) :
+    TauCeti.ExteriorAlgebra.basisEraseSign (f e) (s.map f.toEmbedding) =
+      TauCeti.ExteriorAlgebra.basisEraseSign e s := by
+  rw [TauCeti.ExteriorAlgebra.basisEraseSign_eq_neg_one_pow_card_filter_lt,
+    TauCeti.ExteriorAlgebra.basisEraseSign_eq_neg_one_pow_card_filter_lt,
+    Finset.filter_map]
+  simp only [Finset.card_map]
+  change (-1 : ℤˣ) ^ (s.filter (fun j => f j < f e)).card = _
+  simp only [f.lt_iff_lt]
+
+lemma boundary_basis_finset (s : Finset V) :
+    boundary (basis (k := k) s) =
+      ∑ e ∈ s, TauCeti.ExteriorAlgebra.basisEraseSign e s • basis (s.erase e) := by
+  rw [boundary_eq_sum]
+  trans ∑ e ∈ s, contraction (k := k) e (basis s)
+  · symm
+    apply Finset.sum_subset (Finset.subset_univ _)
+    intro e he hnot
+    simp [contraction_basis, hnot]
+  · apply Finset.sum_congr rfl
+    intro e he
+    simp only [contraction_basis, if_pos he]
+
+lemma ambientMap_boundary (f : W ↪o V) :
+    ambientMap (k := k) f ∘ₗ boundary = boundary ∘ₗ ambientMap f := by
+  apply basis.ext
+  intro s
+  simp only [LinearMap.comp_apply, boundary_basis_finset, map_sum, map_zsmul_unit,
+    ambientMap_basis, Finset.sum_map]
+  apply Finset.sum_congr rfl
+  intro e he
+  change TauCeti.ExteriorAlgebra.basisEraseSign e s • basis (map f.toEmbedding (s.erase e)) =
+    TauCeti.ExteriorAlgebra.basisEraseSign (f e) (map f.toEmbedding s) •
+      basis ((map f.toEmbedding s).erase (f e))
+  rw [eraseSign_map]
+  exact congrArg (fun t : Finset V =>
+    TauCeti.ExteriorAlgebra.basisEraseSign e s • basis (k := k) t)
+    (Finset.map_erase f.toEmbedding s e)
+
+abbrev ChainIndex (K : Finset W → Prop) (i : ℕ) := {s : Finset W // K s ∧ s.card=i}
+
+def chainBasis (K : Finset W → Prop) (i : ℕ) :
+    Module.Basis (ChainIndex K i) k (Chains (k := k) K i) :=
+  CommAlg.Grading.restrictedBasis basis (fun s => K s ∧ s.card=i)
+
+@[simp] lemma chainBasis_val (K : Finset W → Prop) (i : ℕ) (s : ChainIndex K i) :
+    (chainBasis (k := k) K i s).val = basis s.val :=
+  CommAlg.Grading.restrictedBasis_val _ _ _
+
+def faceIndexMap (f : W ↪o V) (K : Finset W → Prop) (L : Finset V → Prop)
+    (h : ∀ s, L s ↔ ∃ t, K t ∧ s=t.map f.toEmbedding) (i : ℕ) :
+    ChainIndex K i → ChainIndex L i := fun s =>
+  ⟨s.val.map f.toEmbedding, (h _).mpr ⟨s.val, s.property.1, rfl⟩,
+    (Finset.card_map _).trans s.property.2⟩
+
+def faceIndexEquiv (f : W ↪o V) (K : Finset W → Prop) (L : Finset V → Prop)
+    (h : ∀ s, L s ↔ ∃ t, K t ∧ s=t.map f.toEmbedding) (i : ℕ) :
+    ChainIndex K i ≃ ChainIndex L i := Equiv.ofBijective (faceIndexMap f K L h i) (by
+  constructor
+  · intro s t he
+    apply Subtype.ext
+    exact Finset.map_injective f.toEmbedding (congrArg Subtype.val he)
+  · intro s
+    obtain ⟨t, ht, he⟩ := (h s.val).mp s.property.1
+    refine ⟨⟨t, ht, ?_⟩, Subtype.ext he.symm⟩
+    simpa only [he, Finset.card_map] using s.property.2)
+
+def chainEquiv (f : W ↪o V) (K : Finset W → Prop) (L : Finset V → Prop)
+    (h : ∀ s, L s ↔ ∃ t, K t ∧ s=t.map f.toEmbedding) (i : ℕ) :
+    Chains (k := k) K i ≃ₗ[k] Chains (k := k) L i :=
+  (chainBasis K i).equiv (chainBasis L i) (faceIndexEquiv f K L h i)
+
+lemma chainEquiv_val (f : W ↪o V) (K : Finset W → Prop) (L : Finset V → Prop)
+    (h : ∀ s, L s ↔ ∃ t, K t ∧ s=t.map f.toEmbedding) (i : ℕ)
+    (z : Chains (k := k) K i) : (chainEquiv f K L h i z).val = ambientMap f z.val := by
+  have he : (Chains (k := k) L i).subtype ∘ₗ (chainEquiv f K L h i).toLinearMap =
+      ambientMap f ∘ₗ (Chains (k := k) K i).subtype := by
+    apply (chainBasis (k := k) K i).ext
+    intro s
+    simp only [LinearMap.comp_apply, LinearEquiv.coe_coe, chainEquiv,
+      Module.Basis.equiv_apply]
+    change ((chainBasis (k := k) L i) (faceIndexEquiv f K L h i s)).val =
+      ambientMap f ((chainBasis (k := k) K i) s).val
+    rw [chainBasis_val, chainBasis_val, ambientMap_basis]
+    rfl
+  exact LinearMap.congr_fun he z
+
+def embeddedChainIso (f : W ↪o V) {K : Finset W → Prop} {L : Finset V → Prop}
+    (hK : Downward K) (hL : Downward L)
+    (h : ∀ s, L s ↔ ∃ t, K t ∧ s=t.map f.toEmbedding) :
+    chainComplex (k := k) hK ≅ chainComplex hL :=
+  HomologicalComplex.Hom.isoOfComponents
+    (fun i => (chainEquiv f K L h i).toModuleIso) (by
+      intro i j hij
+      obtain rfl : i = j+1 := hij.symm
+      rw [chainComplex_d, chainComplex_d]
+      apply ModuleCat.hom_ext
+      apply LinearMap.ext
+      intro z
+      change Chains (k := k) K (j+1) at z
+      apply Subtype.ext
+      change (chainDifferential hL j (chainEquiv f K L h (j+1) z)).val =
+        (chainEquiv f K L h j (chainDifferential hK j z)).val
+      simp only [chainEquiv_val, chainDifferential_val]
+      exact (LinearMap.congr_fun (ambientMap_boundary f) z.val).symm)
+
+lemma embedded_homology_finrank (f : W ↪o V) {K : Finset W → Prop} {L : Finset V → Prop}
+    (hK : Downward K) (hL : Downward L)
+    (h : ∀ s, L s ↔ ∃ t, K t ∧ s=t.map f.toEmbedding) (i : ℕ) :
+    Module.finrank k ((chainComplex (k := k) hK).homology i) =
+      Module.finrank k ((chainComplex (k := k) hL).homology i) :=
+  ((HomologicalComplex.homologyFunctor (ModuleCat k) (ComplexShape.down ℕ) i).mapIso
+    (embeddedChainIso f hK hL h)).toLinearEquiv.finrank_eq
+
+end Characterizations.Strands
+
+end
+end CheckedCharacterizationsSource49
+
+/-! ## Source: Characterizations.Strands.Restriction -/
+section CheckedCharacterizationsSource50
+
+/-! # Exact fine Betti transport under deletion of unused coordinates -/
+noncomputable section
+set_option maxHeartbeats 900000
+set_option backward.isDefEq.respectTransparency false
+namespace Characterizations.Strands
+open Classical Finset CommAlg.Polymatroid CommAlg.Koszul CommAlg.Simplicial
+universe u
+variable {V k : Type u} [Fintype V] [LinearOrder V] [Field k]
+
+def subsetOrderEmbedding (U : Finset V) : U ↪o V :=
+  OrderEmbedding.ofMapLEIff Subtype.val (by intros; rfl)
+
+lemma extend_faceExponent (U : Finset V) (s : Finset U) :
+    extendExponent U (faceExponent s) = faceExponent (s.map (subsetOrderEmbedding U).toEmbedding) := by
+  ext j
+  by_cases hj : j ∈ U
+  · simp only [extendExponent_apply, dif_pos hj, faceExponent_apply, Finset.mem_map]
+    have he : (∃ a, a ∈ s ∧ (subsetOrderEmbedding U).toEmbedding a = j) ↔
+        (⟨j, hj⟩ : U) ∈ s := by
+      constructor
+      · rintro ⟨a, ha, he⟩
+        have he' : a = ⟨j, hj⟩ := Subtype.ext he
+        simpa only [he'] using ha
+      · intro h; exact ⟨⟨j, hj⟩, h, rfl⟩
+    simp only [he]
+    split_ifs <;> first | rfl | contradiction
+  · simp only [extendExponent_apply, dif_neg hj, faceExponent_apply]
+    rw [if_neg]
+    intro hm
+    obtain ⟨a, ha, he⟩ := Finset.mem_map.mp hm
+    exact hj (he ▸ a.property)
+
+lemma extend_sub (U : Finset V) (a b : Exponent U) :
+    extendExponent U (a-b) = extendExponent U a - extendExponent U b := by
+  ext j
+  by_cases hj : j ∈ U <;> simp [extendExponent_apply, hj]
+
+lemma extend_support_subset (U : Finset V) (a : Exponent U) :
+    (extendExponent U a).support ⊆ U := by
+  intro j hj
+  by_contra hjU
+  have h := Finsupp.mem_support_iff.mp hj
+  exact h (by simp [hjU])
+
+lemma koszulFaces_extend_image (U : Finset V) (B : Family V) (C : Family U)
+    (hcontains : ∀ a, Contains B (extendExponent U a) ↔ Contains C a) (a : Exponent U) :
+    ∀ s, koszulFaces B (extendExponent U a) s ↔
+      ∃ t, koszulFaces C a t ∧ s=t.map (subsetOrderEmbedding U).toEmbedding := by
+  have mapped (t : Finset U) :
+      koszulFaces B (extendExponent U a) (t.map (subsetOrderEmbedding U).toEmbedding) ↔
+        koszulFaces C a t := by
+    unfold koszulFaces
+    rw [← extend_faceExponent, extendExponent_le_iff, ← extend_sub, hcontains]
+  intro s
+  constructor
+  · intro hs
+    have hsub : s ⊆ U := ((faceExponent_le_iff_subset_support s _).mp hs.1).trans
+      (extend_support_subset U a)
+    let t := s.subtype (· ∈ U)
+    have he : t.map (subsetOrderEmbedding U).toEmbedding = s :=
+      Finset.subtype_map_of_mem (fun j hj => hsub hj)
+    refine ⟨t, (mapped t).mp (by simpa only [he] using hs), he.symm⟩
+  · rintro ⟨t, ht, rfl⟩
+    exact (mapped t).mpr ht
+
+theorem betti_restriction_transport (U : Finset V) (B : Family V) (C : Family U)
+    (hcontains : ∀ a, Contains B (extendExponent U a) ↔ Contains C a) (a : Exponent U) (i : ℕ) :
+    bettiNumber (k := k) B (extendExponent U a) i = bettiNumber (k := k) C a i := by
+  rw [bettiNumber_eq_face_homology_finrank, bettiNumber_eq_face_homology_finrank]
+  exact (embedded_homology_finrank (subsetOrderEmbedding U) (koszulFaces_downward C a)
+    (koszulFaces_downward B _) (koszulFaces_extend_image U B C hcontains a) i).symm
+
+/-- Set the omitted variables to zero; generators involving them disappear. -/
+def restrictionFamily (B : Family V) (U : Finset V) : Family U :=
+  (B.filter (fun b => b.support ⊆ U)).image (restrictExponent U)
+
+lemma contains_restrictionFamily (B : Family V) (U : Finset V) (a : Exponent U) :
+    Contains B (extendExponent U a) ↔ Contains (restrictionFamily B U) a := by
+  constructor
+  · rintro ⟨b, hb, hba⟩
+    have hs : b.support ⊆ U := by
+      intro j hj
+      by_contra hjU
+      have h := hba j
+      have hp := Nat.pos_of_ne_zero (Finsupp.mem_support_iff.mp hj)
+      simp only [extendExponent_apply, dif_neg hjU] at h
+      omega
+    refine ⟨restrictExponent U b, Finset.mem_image.mpr ⟨b, Finset.mem_filter.mpr ⟨hb, hs⟩, rfl⟩, ?_⟩
+    intro j
+    simpa using hba j
+  · rintro ⟨b, hb, hba⟩
+    obtain ⟨c, hc, rfl⟩ := Finset.mem_image.mp hb
+    obtain ⟨hcB, hcU⟩ := Finset.mem_filter.mp hc
+    refine ⟨c, hcB, ?_⟩
+    intro j
+    by_cases hj : j ∈ U
+    · simpa [hj] using hba ⟨j, hj⟩
+    · have hz : c j = 0 := Finsupp.notMem_support_iff.mp (fun h => hj (hcU h))
+      simp [hj, hz]
+
+theorem betti_restriction (B : Family V) (U : Finset V) (a : Exponent U) (i : ℕ) :
+    bettiNumber (k := k) B (extendExponent U a) i =
+      bettiNumber (k := k) (restrictionFamily B U) a i :=
+  betti_restriction_transport U B _ (contains_restrictionFamily B U) a i
+
+lemma contains_extendedFamily (U : Finset V) (B : Family U) (a : Exponent U) :
+    Contains (B.image (extendExponent U)) (extendExponent U a) ↔ Contains B a := by
+  constructor
+  · rintro ⟨b, hb, hba⟩
+    obtain ⟨c, hc, rfl⟩ := Finset.mem_image.mp hb
+    exact ⟨c, hc, (extendExponent_le_iff U c a).mp hba⟩
+  · rintro ⟨b, hb, hba⟩
+    exact ⟨extendExponent U b, Finset.mem_image.mpr ⟨b, hb, rfl⟩,
+      (extendExponent_le_iff U b a).mpr hba⟩
+
+theorem betti_extension (U : Finset V) (B : Family U) (a : Exponent U) (i : ℕ) :
+    bettiNumber (k := k) (B.image (extendExponent U)) (extendExponent U a) i =
+      bettiNumber (k := k) B a i :=
+  betti_restriction_transport U _ B (contains_extendedFamily U B) a i
+
+lemma ambient_restriction_faces (B : Family V) (U : Finset V) (a : Exponent V)
+    (ha : a.support ⊆ U) :
+    koszulFaces (B.filter (fun b => b.support ⊆ U)) a = koszulFaces B a := by
+  funext s
+  apply propext
+  constructor
+  · rintro ⟨hdiv, b, hb, hba⟩
+    exact ⟨hdiv, b, (Finset.mem_filter.mp hb).1, hba⟩
+  · rintro ⟨hdiv, b, hb, hba⟩
+    refine ⟨hdiv, b, Finset.mem_filter.mpr ⟨hb, ?_⟩, hba⟩
+    intro j hj
+    apply ha
+    have hpos := Nat.pos_of_ne_zero (Finsupp.mem_support_iff.mp hj)
+    have hbj : b j ≤ a j := (hba.trans tsub_le_self) j
+    exact Finsupp.mem_support_iff.mpr (by omega)
+
+theorem betti_ambient_restriction (B : Family V) (U : Finset V) (a : Exponent V)
+    (ha : a.support ⊆ U) (i : ℕ) :
+    bettiNumber (k := k) (B.filter (fun b => b.support ⊆ U)) a i =
+      bettiNumber (k := k) B a i :=
+  bettiNumber_congr_faces _ _ _ _ _ (ambient_restriction_faces B U a ha)
+
+end Characterizations.Strands
+
+end
+end CheckedCharacterizationsSource50
+
+/-! ## Source: Characterizations.TriangleCore -/
+section CheckedCharacterizationsSource51
+
+/-! # Rank-maximal nonlinear localizations and the triangular range
+
+Every Betti number used here is a component of the genuine derived Tor module.
+Supported ambient degrees are identified with degrees over the polynomial ring
+on the retained variables by the checked Koszul chain isomorphism.
+-/
+
+noncomputable section
+set_option maxHeartbeats 900000
+namespace Characterizations
+open Classical CommAlg.Polymatroid CommAlg.Koszul Finset
+universe u
+variable {V k : Type u} [Fintype V] [LinearOrder V] [Field k]
+
+theorem localFamily_equigenerated_iff {B : Family V} {U : Finset V} {e : ℕ} :
+    Equigenerated (localFamily B U) e ↔ Equigenerated (localize B U) e := by
+  rw [localize_eq_extend_localFamily]
+  constructor
+  · intro h a ha
+    obtain ⟨b,hb,rfl⟩ := mem_image.mp ha
+    simpa only [extendExponent_degree] using h b hb
+  · intro h a ha
+    have hh := h (extendExponent U a) (mem_image.mpr ⟨a,ha,rfl⟩)
+    simpa only [extendExponent_degree] using hh
+
+theorem betti_localize_supported (B : Family V) (U : Finset V)
+    (a : Exponent V) (ha : a.support ⊆ U) (i : ℕ) :
+    bettiNumber (k := k) (localize B U) a i =
+      bettiNumber (k := k) (localFamily B U) (restrictExponent U a) i := by
+  have he : extendExponent U (restrictExponent U a) = a := by
+    rw [extend_restrict]
+    ext j
+    by_cases hj : j ∈ U
+    · simp [hj]
+    · have hz : a j = 0 := Finsupp.notMem_support_iff.mp (fun h => hj (ha h))
+      simp [hj,hz]
+  rw [← he,localize_eq_extend_localFamily,Strands.betti_extension,restrict_extend]
+
+theorem restrictExponent_degree_supported (U : Finset V) (a : Exponent V)
+    (ha : a.support ⊆ U) : (restrictExponent U a).degree = a.degree := by
+  rw [restrictExponent_degree,← degree_project]
+  congr 1
+  ext j
+  by_cases hj : j ∈ U
+  · simp [hj]
+  · have hz : a j = 0 := Finsupp.notMem_support_iff.mp (fun h => hj (ha h))
+    simp [hj,hz]
+
+/-- Linearity through a homological position, expressed using actual Tor
+components in the naturally identified supported ambient multidegrees. -/
+def LocalLinearThrough (B : Family V) (U : Finset V) (e t : ℕ) : Prop :=
+  ∀ a : Exponent V, a.support ⊆ U → ∀ i : ℕ, i ≤ t →
+    a.degree ≠ e+i → bettiNumber (k := k) (localize B U) a i = 0
+
+def TriangularTests (B : Family V) (d : ℕ) : Prop :=
+  ∀ U : Finset V, 2 ≤ U.card → Fintype.card V-U.card ≤ d-1 →
+    ∃ e, Equigenerated (localize B U) e ∧
+      (0 < e → LocalLinearThrough (k := k) B U e
+        (min (e-1) (min (d-1-(Fintype.card V-U.card)) (U.card-1))))
+
+theorem localLinearThrough_of_linearResolution {B : Family V} (hB : B.Nonempty)
+    (U : Finset V) {e : ℕ} (he : Equigenerated (localize B U) e)
+    (hL : HasLinearResolution (monomialLocalization k (monomialIdeal k B) U))
+    (t : ℕ) : LocalLinearThrough (k := k) B U e t := by
+  rw [monomialLocalization_eq] at hL
+  obtain ⟨f,⟨P⟩⟩ := hL
+  have hf := P.equigenerated_of_monomial (localFamily B U) (localFamily_antichain B U)
+  have he' := localFamily_equigenerated_iff.mpr he
+  obtain ⟨b,hb⟩ := localFamily_nonempty hB U
+  have hef : e = f := (he' b hb).symm.trans (hf b hb)
+  subst f
+  intro a ha i hi hoff
+  rw [betti_localize_supported B U a ha i]
+  exact P.bettiNumber_eq_zero_off_linear (localFamily B U) (localFamily_antichain B U)
+    (restrictExponent U a) i (by rwa [restrictExponent_degree_supported U a ha])
+
+theorem triangularTests_of_polymatroidal {B : Family V} (hB : IsPolymatroidal B)
+    (d : ℕ) : TriangularTests (k := k) B d := by
+  intro U _ _
+  have hp := localize_polymatroidal hB U
+  obtain ⟨e,⟨P⟩⟩ := linearResolution_of_polymatroidal (k := k) hp
+  have he := P.equigenerated_of_monomial (localize B U) (localize_antichain B U)
+  refine ⟨e,he,?_⟩
+  intro _ a _ i _ hoff
+  exact P.bettiNumber_eq_zero_off_linear (localize B U) (localize_antichain B U) a i hoff
+
+theorem locallyEquigenerated_of_triangularTests {B : Family V} (hB : B.Nonempty)
+    {d : ℕ} (hd : Equigenerated B d) (ht : TriangularTests (k := k) B d) :
+    LocallyEquigenerated B :=
+  locallyEquigenerated_of_band_tests hB hd (fun U hc hk =>
+    let ⟨e,he,_⟩ := ht U hc hk
+    ⟨e,he⟩)
+
+/-- Enlarge a nonlinear localization without changing its generators or its
+Tor component until every restored variable costs one unit of generator degree. -/
+theorem maximize_low_nonlinear_localization {B : Family V} (hB : B.Nonempty)
+    {d : ℕ} (hd : Equigenerated B d) (hl : LocallyEquigenerated B)
+    (U : Finset V) (e i : ℕ) (a : Exponent V)
+    (he : Equigenerated (localize B U) e) (hr : lowerRank B U = e)
+    (hc : 2 ≤ U.card) (hi : 1 ≤ i) (hie : i ≤ e-1) (hic : i ≤ U.card-1)
+    (ha : a.support ⊆ U) (hdeg : e+i < a.degree)
+    (hbetti : bettiNumber (k := k) (localize B U) a i ≠ 0) :
+    ∃ W : Finset V, U ⊆ W ∧ lowerRank B W = e ∧
+      Equigenerated (localize B W) e ∧ 2 ≤ W.card ∧ 2 ≤ e ∧
+      e+(Fintype.card V-W.card) ≤ d ∧
+      i ≤ min (e-1) (min (d-1-(Fintype.card V-W.card)) (W.card-1)) ∧
+      a.support ⊆ W ∧ bettiNumber (k := k) (localize B W) a i ≠ 0 := by
+  let candidates : Finset (Finset V) := univ.filter (fun W => U ⊆ W ∧ lowerRank B W = e)
+  have hne : candidates.Nonempty := ⟨U,mem_filter.mpr ⟨mem_univ _,le_rfl,hr⟩⟩
+  obtain ⟨W,hW,hmax⟩ := candidates.exists_maximal hne
+  obtain ⟨hUW,hrW⟩ := (mem_filter.mp hW).2
+  have hsame : localize B W = localize B U :=
+    localize_eq_of_rank_eq hB hUW (hl W) (hr.trans hrW.symm)
+  have hinc : ∀ j ∉ W, lowerRank B W+1 ≤ lowerRank B (insert j W) := by
+    intro j hj
+    have hmono := lowerRank_mono hB (subset_insert j W)
+    by_contra hn
+    have hreq : lowerRank B (insert j W) = e := by omega
+    have hmem : insert j W ∈ candidates :=
+      mem_filter.mpr ⟨mem_univ _,hUW.trans (subset_insert j W),hreq⟩
+    have hsub := hmax hmem (subset_insert j W)
+    exact hj (hsub (mem_insert_self j W))
+  have hsm : SupermodularAbove (lowerRank B) W :=
+    fun A C _ _ => lowerRank_supermodular hB hl A C
+  have hcost := supermodular_rank_codimension_bound hsm hinc
+  rw [hrW,lowerRank_univ_of_equigenerated hB hd] at hcost
+  have hcards := card_le_card hUW
+  refine ⟨W,hUW,hrW,hsame ▸ he,by omega,by omega,hcost,?_,ha.trans hUW,?_⟩
+  · exact le_min hie (le_min (by omega) (by omega))
+  · rwa [hsame]
+
+theorem triangularTests_exclude_low_nonlinear {B : Family V} (hB : B.Nonempty)
+    {d : ℕ} (hd : Equigenerated B d) (ht : TriangularTests (k := k) B d)
+    (U : Finset V) (e i : ℕ) (a : Exponent V)
+    (he : Equigenerated (localize B U) e) (hr : lowerRank B U = e)
+    (hc : 2 ≤ U.card) (hi : 1 ≤ i) (hie : i ≤ e-1) (hic : i ≤ U.card-1)
+    (ha : a.support ⊆ U) (hdeg : e+i < a.degree)
+    (hbetti : bettiNumber (k := k) (localize B U) a i ≠ 0) : False := by
+  have hl := locallyEquigenerated_of_triangularTests hB hd ht
+  obtain ⟨W,hUW,hrW,heW,hcW,he2,hcost,hiW,haW,hbettiW⟩ :=
+    maximize_low_nonlinear_localization hB hd hl U e i a he hr hc hi hie hic ha hdeg hbetti
+  obtain ⟨f,hf,hlinear⟩ := ht W hcW (by omega)
+  obtain ⟨b,hb⟩ := localize_nonempty hB W
+  have hef : e = f := (heW b hb).symm.trans (hf b hb)
+  subst f
+  exact hbettiW (hlinear (by omega) a haW i hiW (by omega))
+
+theorem linearBand_excludes_low_nonlinear {B : Family V} (hB : B.Nonempty)
+    {d : ℕ} (hd : Equigenerated B d) (hl : LocallyEquigenerated B)
+    (ht : ∀ W : Finset V, 2 ≤ W.card → Fintype.card V-W.card ≤ d-2 →
+      HasLinearResolution (monomialLocalization k (monomialIdeal k B) W))
+    (U : Finset V) (e i : ℕ) (a : Exponent V)
+    (he : Equigenerated (localize B U) e) (hr : lowerRank B U = e)
+    (hc : 2 ≤ U.card) (hi : 1 ≤ i) (hie : i ≤ e-1) (hic : i ≤ U.card-1)
+    (ha : a.support ⊆ U) (hdeg : e+i < a.degree)
+    (hbetti : bettiNumber (k := k) (localize B U) a i ≠ 0) : False := by
+  obtain ⟨W,hUW,hrW,heW,hcW,he2,hcost,hiW,haW,hbettiW⟩ :=
+    maximize_low_nonlinear_localization hB hd hl U e i a he hr hc hi hie hic ha hdeg hbetti
+  have hL := ht W hcW (by omega)
+  exact hbettiW (localLinearThrough_of_linearResolution hB W heW hL i a haW i le_rfl (by omega))
+
+theorem locallyEquigenerated_of_linearBand {B : Family V} (hB : B.Nonempty)
+    {d : ℕ} (hd : Equigenerated B d)
+    (ht : ∀ U : Finset V, 2 ≤ U.card → Fintype.card V-U.card ≤ d-1 →
+      HasLinearResolution (monomialLocalization k (monomialIdeal k B) U)) :
+    LocallyEquigenerated B := by
+  apply locallyEquigenerated_of_band_tests hB hd
+  intro U hc hk
+  have hL := ht U hc hk
+  rw [monomialLocalization_eq] at hL
+  obtain ⟨e,⟨P⟩⟩ := hL
+  exact ⟨e,localFamily_equigenerated_iff.mp
+    (P.equigenerated_of_monomial (localFamily B U) (localFamily_antichain B U))⟩
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource51
+
+/-! ## Source: Characterizations.MixedMinors -/
+section CheckedCharacterizationsSource52
+
+/-! # Coordinate restrictions and mixed monomial minors
+
+Restriction retains exactly those minimal exponent vectors supported on the
+retained coordinates.  Localization then sets the other variables equal to
+one and removes divisibility redundancies.  The identities below are proved
+for these literal operations on generators.
+-/
+
+noncomputable section
+namespace Characterizations
+open Classical CommAlg.Polymatroid Finset
+variable {V : Type*} [Fintype V] [DecidableEq V]
+
+def restriction (B : Family V) (A : Finset V) : Family V :=
+  B.filter (fun a => project A a = a)
+
+@[simp] theorem mem_restriction {B : Family V} {A : Finset V} {a : Exponent V} :
+    a ∈ restriction B A ↔ a ∈ B ∧ project A a = a := by
+  simp [restriction]
+
+theorem restriction_subset (B : Family V) (A : Finset V) : restriction B A ⊆ B :=
+  fun _ h => (mem_restriction.mp h).1
+
+theorem restriction_antichain {B : Family V} (hB : Antichain B) (A : Finset V) :
+    Antichain (restriction B A) := by
+  intro a ha b hb hab
+  exact hB a (restriction_subset B A ha) b (restriction_subset B A hb) hab
+
+theorem restriction_equigenerated {B : Family V} {d : ℕ} (hB : Equigenerated B d)
+    (A : Finset V) : Equigenerated (restriction B A) d :=
+  fun a ha => hB a (restriction_subset B A ha)
+
+theorem project_inter (A U : Finset V) (a : Exponent V) :
+    project U (project A a) = project (A ∩ U) a := by
+  ext i
+  by_cases hiA : i ∈ A <;> by_cases hiU : i ∈ U <;> simp [hiA,hiU]
+
+theorem supported_of_le {A : Finset V} {a b : Exponent V}
+    (hb : project A b = b) (hab : a ≤ b) : project A a = a := by
+  ext i
+  by_cases hi : i ∈ A
+  · simp [hi]
+  · have hbi := congrArg (fun c : Exponent V => c i) hb
+    have habi := hab i
+    simp only [project_apply,if_neg hi] at hbi ⊢
+    omega
+
+theorem contains_restriction (B : Family V) (A : Finset V) (a : Exponent V) :
+    Contains (restriction B A) a ↔ Contains B (project A a) := by
+  constructor
+  · rintro ⟨b,hb,hba⟩
+    obtain ⟨hb,hbs⟩ := mem_restriction.mp hb
+    refine ⟨b,hb,?_⟩
+    have hh := project_mono A hba
+    simpa only [hbs] using hh
+  · rintro ⟨b,hb,hba⟩
+    exact ⟨b,mem_restriction.mpr ⟨hb,supported_of_le (project_project le_rfl a) hba⟩,
+      hba.trans (project_le A a)⟩
+
+theorem antichain_eq_of_contains_iff {B C : Family V} (hB : Antichain B)
+    (hC : Antichain C) (h : ∀ a, Contains B a ↔ Contains C a) : B = C := by
+  have hsub {D E : Family V} (hD : Antichain D)
+      (hh : ∀ a, Contains D a ↔ Contains E a) : D ⊆ E := by
+    intro a ha
+    obtain ⟨b,hb,hba⟩ := (hh a).mp ⟨a,ha,le_rfl⟩
+    obtain ⟨c,hc,hcb⟩ := (hh b).mpr ⟨b,hb,le_rfl⟩
+    have hca : c = a := hD c hc a ha (hcb.trans hba)
+    have hbe : b = a := le_antisymm hba (hca ▸ hcb)
+    exact hbe ▸ hb
+  exact subset_antisymm (hsub hB h) (hsub hC (fun a => (h a).symm))
+
+theorem localize_localize (B : Family V) (A U : Finset V) :
+    localize (localize B A) U = localize B (A ∩ U) := by
+  apply antichain_eq_of_contains_iff (localize_antichain _ _) (localize_antichain _ _)
+  intro a
+  simp only [contains_localize]
+  constructor
+  · rintro ⟨b,hb,hba⟩
+    obtain ⟨c,hc,rfl⟩ := localize_member hb
+    exact ⟨c,hc,by simpa only [project_inter] using hba⟩
+  · rintro ⟨c,hc,hca⟩
+    obtain ⟨b,hb,hbc⟩ := localize_below (U := A) hc
+    refine ⟨b,hb,?_⟩
+    exact (project_mono U hbc).trans (by simpa only [project_inter] using hca)
+
+theorem restriction_restriction (B : Family V) (A U : Finset V) :
+    restriction (restriction B A) U = restriction B (A ∩ U) := by
+  ext a
+  simp only [mem_restriction]
+  constructor
+  · rintro ⟨⟨ha,hA⟩,hU⟩
+    exact ⟨ha,by rw [← project_inter,hA,hU]⟩
+  · rintro ⟨ha,hAU⟩
+    have hA : project A a = a := by
+      rw [← hAU,project_inter,inter_eq_left.mpr inter_subset_left]
+    have hU : project U a = a := by
+      rw [← hAU,project_inter,inter_eq_left.mpr inter_subset_right]
+    exact ⟨⟨ha,hA⟩,hU⟩
+
+/-- The mixed-minor identity (4.2), including removal of redundant projected
+monomials on both sides. -/
+theorem localize_restriction (B : Family V) {A U : Finset V} (hUA : U ⊆ A) :
+    localize (restriction B A) U = restriction (localize B (U ∪ Aᶜ)) U := by
+  apply antichain_eq_of_contains_iff (localize_antichain _ _)
+    (restriction_antichain (localize_antichain _ _) _)
+  intro a
+  rw [contains_localize,contains_restriction,contains_localize]
+  constructor
+  · rintro ⟨b,hb,hba⟩
+    obtain ⟨hb,hbs⟩ := mem_restriction.mp hb
+    refine ⟨b,hb,?_⟩
+    intro i
+    have hbi := congrArg (fun c : Exponent V => c i) hbs
+    have hi := hba i
+    by_cases hiU : i ∈ U
+    · simpa [hiU] using hi
+    · by_cases hiA : i ∈ A
+      · simp [hiU,hiA]
+      · have hz : b i = 0 := by simpa only [project_apply,if_neg hiA] using hbi.symm
+        simp [hiU,hiA,hz]
+  · rintro ⟨b,hb,hba⟩
+    have hbs : project A b = b := by
+      ext i
+      by_cases hiA : i ∈ A
+      · simp [hiA]
+      · have hiU : i ∉ U := fun h => hiA (hUA h)
+        have hi := hba i
+        simp only [project_apply,mem_union,mem_compl,hiU,hiA,
+          not_false_eq_true,or_true,if_true,if_false] at hi
+        simp only [project_apply,if_neg hiA]
+        omega
+    refine ⟨b,mem_restriction.mpr ⟨hb,hbs⟩,?_⟩
+    intro i
+    by_cases hiU : i ∈ U
+    · have hi := hba i
+      simpa only [project_apply,if_pos hiU,mem_union,hiU,true_or,if_true] using hi
+    · simp [hiU]
+
+def mixedMinor (B : Family V) (A U : Finset V) : Family V :=
+  localize (restriction B A) U
+
+theorem localize_restriction_inter (B : Family V) (A U : Finset V) :
+    localize (restriction B A) U = localize (restriction B A) (A ∩ U) := by
+  apply antichain_eq_of_contains_iff (localize_antichain _ _) (localize_antichain _ _)
+  intro a
+  simp only [contains_localize]
+  apply exists_congr
+  intro b
+  apply and_congr_right
+  intro hb
+  have hbs := (mem_restriction.mp hb).2
+  have he : project U b = project (A ∩ U) b := by rw [← project_inter,hbs]
+  rw [he]
+
+theorem restriction_locallyEquigenerated {B : Family V} (hl : LocallyEquigenerated B)
+    (A : Finset V) : LocallyEquigenerated (restriction B A) := by
+  intro U
+  rw [localize_restriction_inter,localize_restriction B inter_subset_left]
+  obtain ⟨d,hd⟩ := hl ((A ∩ U) ∪ Aᶜ)
+  exact ⟨d,restriction_equigenerated hd _⟩
+
+theorem localize_locallyEquigenerated {B : Family V} (hl : LocallyEquigenerated B)
+    (A : Finset V) : LocallyEquigenerated (localize B A) := by
+  intro U
+  rw [localize_localize]
+  exact hl (A ∩ U)
+
+theorem mixedMinor_locallyEquigenerated {B : Family V} (hl : LocallyEquigenerated B)
+    (A U : Finset V) : LocallyEquigenerated (mixedMinor B A U) :=
+  localize_locallyEquigenerated (restriction_locallyEquigenerated hl A) U
+
+theorem restriction_lowerRank {B : Family V} (hl : LocallyEquigenerated B)
+    {A W : Finset V} (hK : (restriction B A).Nonempty) (hWA : W ⊆ A) :
+    lowerRank (restriction B A) W = lowerRank B (W ∪ Aᶜ) := by
+  have hB : B.Nonempty := hK.mono (restriction_subset B A)
+  obtain ⟨b,hb⟩ := localize_nonempty hK W
+  have hleft := localize_degree hK (restriction_locallyEquigenerated hl A) hb
+  have hrightmem : b ∈ localize B (W ∪ Aᶜ) := by
+    rw [localize_restriction B hWA] at hb
+    exact restriction_subset _ _ hb
+  exact hleft.symm.trans (localize_degree hB hl hrightmem)
+
+theorem localize_nonempty_iff (B : Family V) (U : Finset V) :
+    (localize B U).Nonempty ↔ B.Nonempty := by
+  refine ⟨?_,fun h => localize_nonempty h U⟩
+  rintro ⟨b,hb⟩
+  obtain ⟨a,ha,_⟩ := localize_member hb
+  exact ⟨a,ha⟩
+
+theorem mixedMinor_lowerRank {B : Family V} (hl : LocallyEquigenerated B)
+    {A U W : Finset V} (hM : (mixedMinor B A U).Nonempty)
+    (hUA : U ⊆ A) (hWU : W ⊆ U) :
+    lowerRank (mixedMinor B A U) W = lowerRank B (W ∪ Aᶜ) := by
+  have hK : (restriction B A).Nonempty := (localize_nonempty_iff _ _).mp hM
+  rw [mixedMinor,lowerRank_localize hK hWU]
+  exact restriction_lowerRank hl hK (hWU.trans hUA)
+
+theorem localize_mixedMinor (B : Family V) (A U W : Finset V) :
+    localize (mixedMinor B A U) W = mixedMinor B A (U ∩ W) := by
+  exact localize_localize _ _ _
+
+/-- A further coordinate restriction of a mixed minor is again a mixed
+minor of the original family.  The newly discarded coordinates are exactly
+those in `U \ W`; the previously localized coordinates remain localized. -/
+theorem restriction_mixedMinor (B : Family V) {A U W : Finset V}
+    (hUA : U ⊆ A) (hWU : W ⊆ U) :
+    restriction (mixedMinor B A U) W = mixedMinor B (A ∩ (W ∪ Uᶜ)) W := by
+  have hWsub : W ⊆ A ∩ (W ∪ Uᶜ) := by
+    intro i hi
+    exact mem_inter.mpr ⟨hUA (hWU hi),mem_union_left _ hi⟩
+  have he : W ∪ (A ∩ (W ∪ Uᶜ))ᶜ = U ∪ Aᶜ := by
+    ext i
+    have h1 := @hUA i
+    have h2 := @hWU i
+    simp only [mem_union,mem_inter,mem_compl]
+    tauto
+  rw [mixedMinor,localize_restriction B hUA,restriction_restriction,
+    inter_eq_right.mpr hWU,mixedMinor,localize_restriction B hWsub,he]
+
+theorem restriction_polymatroidal {B : Family V} (hB : IsPolymatroidal B)
+    (A : Finset V) : IsPolymatroidal (restriction B A) := by
+  obtain ⟨d,hd⟩ := hB.1
+  refine ⟨⟨d,restriction_equigenerated hd A⟩,?_⟩
+  intro a ha b hb i hi
+  obtain ⟨ha,haA⟩ := mem_restriction.mp ha
+  obtain ⟨hb,hbA⟩ := mem_restriction.mp hb
+  obtain ⟨j,hj,he⟩ := hB.2 a ha b hb i hi
+  refine ⟨j,hj,mem_restriction.mpr ⟨he,?_⟩⟩
+  ext x
+  by_cases hx : x ∈ A
+  · simp [hx]
+  · have hax := congrArg (fun c : Exponent V => c x) haA
+    have hbx := congrArg (fun c : Exponent V => c x) hbA
+    have hxi : x ≠ i := by
+      intro hh
+      subst x
+      simp only [project_apply,if_neg hx] at hax hbx
+      omega
+    have hxj : x ≠ j := by
+      intro hh
+      subst x
+      simp only [project_apply,if_neg hx] at hax hbx
+      omega
+    simp only [project_apply,if_neg hx,exchange_apply,
+      Finsupp.single_apply,if_neg hxi,if_neg hxj]
+    simp only [project_apply,if_neg hx] at hax
+    omega
+
+theorem mixedMinor_polymatroidal {B : Family V} (hB : IsPolymatroidal B)
+    (A U : Finset V) : IsPolymatroidal (mixedMinor B A U) :=
+  localize_polymatroidal (restriction_polymatroidal hB A) U
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource52
+
+/-! ## Source: Characterizations.RationalConvex -/
+section CheckedCharacterizationsSource53
+
+/-! # Rational coefficients for rational points in finite real convex hulls -/
+
+noncomputable section
+namespace Characterizations
+universe u
+open CommAlg.Polymatroid Finset Matrix
+open scoped BigOperators
+
+theorem rational_solution_of_injective_matrix
+    {I J : Type*} [Fintype I] [Fintype J] [DecidableEq I] [DecidableEq J]
+    (A : Matrix J I ℚ) (hinj : Function.Injective A.mulVec)
+    (b : J → ℚ) (y : I → ℝ)
+    (hy : A.map (Rat.castHom ℝ) *ᵥ y = fun j => (b j : ℝ)) :
+    ∃ x : I → ℚ, ∀ i, (x i : ℝ) = y i := by
+  have hker : LinearMap.ker A.toLin' = ⊥ := LinearMap.ker_eq_bot.mpr hinj
+  obtain ⟨L, hL⟩ := A.toLin'.exists_leftInverse_of_injective hker
+  let M := LinearMap.toMatrix' L
+  have hMA : M * A = 1 := by
+    have h := congrArg LinearMap.toMatrix' hL
+    simpa only [LinearMap.toMatrix'_comp, LinearMap.toMatrix'_toLin',
+      LinearMap.toMatrix'_id, M] using h
+  have hreal : M.map (Rat.castHom ℝ) * A.map (Rat.castHom ℝ) = 1 := by
+    rw [← Matrix.map_mul, hMA]
+    exact Matrix.map_one _ (by simp) (by simp)
+  refine ⟨M *ᵥ b, ?_⟩
+  intro i
+  change (Rat.castHom ℝ) ((M *ᵥ b) i) = y i
+  rw [RingHom.map_mulVec (Rat.castHom ℝ)]
+  change (M.map (Rat.castHom ℝ) *ᵥ (fun j => (b j : ℝ))) i = y i
+  rw [← hy, Matrix.mulVec_mulVec, hreal, Matrix.one_mulVec]
+
+variable {V : Type u} {I : Type*} [Fintype V] [Fintype I] [DecidableEq V] [DecidableEq I]
+
+def affineMatrix (p : I → V → ℚ) : Matrix (Option V) I ℚ :=
+  fun j i => j.elim 1 (p i)
+
+theorem affineMatrix_injective (p : I → V → ℚ)
+    (hp : AffineIndependent ℝ (fun i v => (p i v : ℝ))) :
+    Function.Injective (affineMatrix p).mulVec := by
+  intro x y hxy
+  let w : I → ℝ := fun i => (x i : ℝ) - y i
+  have hs : ∑ i, w i = 0 := by
+    have h := congrFun hxy none
+    simp only [Matrix.mulVec, dotProduct, affineMatrix, Option.elim_none, one_mul] at h
+    have hr : (∑ i, (x i : ℝ)) = ∑ i, (y i : ℝ) := by exact_mod_cast h
+    simpa only [w, sum_sub_distrib, sub_eq_zero] using hr
+  have hv : ∑ i, w i • (fun v => (p i v : ℝ)) = (0 : V → ℝ) := by
+    funext v
+    have h := congrFun hxy (some v)
+    simp only [Matrix.mulVec, dotProduct, affineMatrix, Option.elim_some] at h
+    have hr : (∑ i, (p i v : ℝ) * x i) = ∑ i, (p i v : ℝ) * y i := by exact_mod_cast h
+    simp only [Finset.sum_apply, Pi.smul_apply, smul_eq_mul, Pi.zero_apply,
+      w, sub_mul, sum_sub_distrib, sub_eq_zero]
+    simpa only [mul_comm] using hr
+  have hzero := (affineIndependent_iff_of_fintype ℝ _).mp hp w hs (by
+    rw [Finset.weightedVSub_eq_weightedVSubOfPoint_of_sum_eq_zero _ w _ hs 0,
+      Finset.weightedVSubOfPoint_apply]
+    simpa only [vsub_eq_sub, sub_zero] using hv)
+  funext i
+  have h := hzero i
+  change (x i : ℝ) - y i = 0 at h
+  exact_mod_cast sub_eq_zero.mp h
+
+/-- Real barycentric coordinates on a rational affine-independent family are
+rational whenever the represented point is rational. -/
+theorem rational_barycentric_weights (p : I → V → ℚ) (b : V → ℚ)
+    (hp : AffineIndependent ℝ (fun i v => (p i v : ℝ))) (w : I → ℝ)
+    (hs : ∑ i, w i = 1) (hb : ∀ v, ∑ i, w i * (p i v : ℝ) = b v) :
+    ∃ q : I → ℚ, ∀ i, (q i : ℝ) = w i := by
+  apply rational_solution_of_injective_matrix (affineMatrix p) (affineMatrix_injective p hp)
+    (fun j : Option V => j.elim 1 b) w
+  funext j
+  cases j with
+  | none => simpa [Matrix.mulVec, dotProduct, affineMatrix] using hs
+  | some v => simpa [Matrix.mulVec, dotProduct, affineMatrix, mul_comm] using hb v
+
+/-- Every integral point in the real convex hull of a finite integral family
+has a finite rational convex combination of actual members of that family. -/
+theorem rational_combination_of_mem_convexHull (B : Family V) (a : Exponent V)
+    (ha : realExponent a ∈ convexHull ℝ (realExponent '' (B : Set (Exponent V)))) :
+    ∃ (J : Type u) (_ : Fintype J) (p : J → Exponent V) (q : J → ℚ),
+      (∀ j, p j ∈ B) ∧ (∀ j, 0 ≤ q j) ∧ (∑ j, q j = 1) ∧
+        ∀ v, ∑ j, q j * (p j v : ℚ) = a v := by
+  classical
+  let T := Caratheodory.minCardFinsetOfMemConvexHull ha
+  have hTsub := Caratheodory.minCardFinsetOfMemConvexHull_subseteq ha
+  have hTI := Caratheodory.affineIndependent_minCardFinsetOfMemConvexHull ha
+  have hTa := Caratheodory.mem_minCardFinsetOfMemConvexHull ha
+  change AffineIndependent ℝ (fun j : T => j.val) at hTI
+  change realExponent a ∈ convexHull ℝ (T : Set (V → ℝ)) at hTa
+  have hpre : ∀ j : T, ∃ b ∈ B, realExponent b = j.val := by
+    intro j
+    exact hTsub j.property
+  choose p hp hpeq using hpre
+  rw [Finset.convexHull_eq] at hTa
+  obtain ⟨w, hw, hsum, hcomb⟩ := hTa
+  let α : T → ℝ := fun j => w j.val
+  have hsum' : ∑ j : T, α j = 1 := by
+    simpa only [α, Finset.sum_coe_sort] using hsum
+  have hpI : AffineIndependent ℝ (fun j : T => fun v => ((p j v : ℚ) : ℝ)) := by
+    have he : (fun j : T => fun v => ((p j v : ℚ) : ℝ)) = fun j : T => j.val := by
+      funext j v
+      simpa [realExponent] using congrFun (hpeq j) v
+    rw [he]
+    exact hTI
+  have hcomb' : ∀ v, ∑ j : T, α j * ((p j v : ℚ) : ℝ) = ((a v : ℚ) : ℝ) := by
+    intro v
+    have hh := congrFun hcomb v
+    rw [Finset.centerMass_eq_of_sum_1 _ _ hsum] at hh
+    simp only [Finset.sum_apply, Pi.smul_apply, smul_eq_mul, id_eq, realExponent] at hh
+    have he : (∑ j : T, α j * ((p j v : ℚ) : ℝ)) = ∑ z ∈ T, w z * z v := by
+      calc
+        _ = ∑ j : T, w j.val * j.val v := by
+          apply Finset.sum_congr rfl
+          intro j _
+          have hj := congrFun (hpeq j) v
+          simp only [realExponent] at hj
+          simpa [α] using congrArg (fun r : ℝ => w j.val * r) hj
+        _ = _ := Finset.sum_coe_sort T (fun z => w z * z v)
+    rw [he]
+    simpa using hh
+  obtain ⟨q, hq⟩ := rational_barycentric_weights
+    (fun j : T => fun v => (p j v : ℚ)) (fun v => (a v : ℚ)) hpI α hsum' hcomb'
+  refine ⟨↥T, inferInstance, p, q, hp, ?_, ?_, ?_⟩
+  · intro j
+    have h : 0 ≤ (q j : ℝ) := by rw [hq]; exact hw j.val j.property
+    exact_mod_cast h
+  · have h : (∑ j, (q j : ℝ)) = 1 := by simpa only [hq] using hsum'
+    exact_mod_cast h
+  · intro v
+    have h : (∑ j, (q j : ℝ) * ((p j v : ℚ) : ℝ)) = ((a v : ℚ) : ℝ) := by
+      simpa only [hq] using hcomb' v
+    exact_mod_cast h
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource53
+
+/-! ## Source: Characterizations.ClearDenominators -/
+section CheckedCharacterizationsSource54
+
+/-! # Exact denominator clearing for nonnegative rational convex combinations -/
+
+noncomputable section
+namespace Characterizations
+universe u
+open CommAlg.Polymatroid Finset
+open scoped BigOperators
+
+theorem nonnegative_rational_common_denominator {I : Type*} [Fintype I]
+    (q : I → ℚ) (hq : ∀ i, 0 ≤ q i) :
+    ∃ N : ℕ, 0 < N ∧ ∃ m : I → ℕ, ∀ i, (m i : ℚ) = (N : ℚ) * q i := by
+  classical
+  let N : ℕ := ∏ i, (q i).den
+  have hN : 0 < N := Finset.prod_pos (fun i _ => (q i).den_pos)
+  let m : I → ℕ := fun i => (q i).num.toNat * (N / (q i).den)
+  refine ⟨N, hN, m, ?_⟩
+  intro i
+  have hdiv : (q i).den ∣ N := Finset.dvd_prod_of_mem _ (Finset.mem_univ i)
+  have he : (q i).den * (N / (q i).den) = N := Nat.mul_div_cancel' hdiv
+  have hnum : ((q i).num.toNat : ℚ) = ((q i).num : ℚ) := by
+    exact_mod_cast Int.toNat_of_nonneg (Rat.num_nonneg.mpr (hq i))
+  have hval : ((q i).num : ℚ) = q i * ((q i).den : ℚ) :=
+    (div_eq_iff (show ((q i).den : ℚ) ≠ 0 by exact_mod_cast (q i).den_ne_zero)).mp
+      (q i).num_div_den
+  have he' : ((q i).den : ℚ) * (N / (q i).den : ℕ) = N := by exact_mod_cast he
+  change ((q i).num.toNat * (N / (q i).den) : ℕ) = (N : ℚ) * q i
+  rw [Nat.cast_mul, hnum, hval, mul_assoc, he', mul_comm]
+
+variable {V : Type u} [Fintype V] [DecidableEq V]
+
+theorem scaled_sum_of_mem_convexHull (B : Family V) (a : Exponent V)
+    (ha : realExponent a ∈ convexHull ℝ (realExponent '' (B : Set (Exponent V)))) :
+    ∃ (N : ℕ) (_ : 0 < N) (J : Type u) (_ : Fintype J)
+      (p : J → Exponent V) (m : J → ℕ),
+      (∀ j, p j ∈ B) ∧ (∑ j, m j = N) ∧ N • a = ∑ j, m j • p j := by
+  classical
+  obtain ⟨J, hJ, p, q, hp, hq, hsum, hcomb⟩ := rational_combination_of_mem_convexHull B a ha
+  letI : Fintype J := hJ
+  obtain ⟨N, hN, m, hm⟩ := nonnegative_rational_common_denominator q hq
+  have hsum' : ∑ j, m j = N := by
+    have h : (∑ j, (m j : ℚ)) = N := by
+      simp_rw [hm]
+      rw [← Finset.mul_sum, hsum, mul_one]
+    exact_mod_cast h
+  refine ⟨N, hN, J, hJ, p, m, hp, hsum', ?_⟩
+  ext v
+  have h : (N : ℚ) * (a v : ℚ) = ∑ j, (m j : ℚ) * (p j v : ℚ) := by
+    simp_rw [hm, mul_assoc]
+    rw [← Finset.mul_sum, hcomb]
+  have hn : N * a v = ∑ j, m j * p j v := by exact_mod_cast h
+  simpa only [Finsupp.smul_apply, Finsupp.finsetSum_apply, smul_eq_mul] using hn
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource54
+
+/-! ## Source: Characterizations.IntegralBridge -/
+section CheckedCharacterizationsSource55
+
+/-! # From actual Rees-algebra integrality to ideal integrality
+
+This supplies addition and multiplication closure for the monomials proved
+integral by a power-membership witness. The final conclusion is the ordinary
+monic ideal-integrality equation, not a substitute definition.
+-/
+
+noncomputable section
+namespace Characterizations
+open Polynomial CommAlg
+open scoped BigOperators
+variable {R : Type*} [CommRing R]
+
+def reesIntegralIdeal (I : Ideal R) : Ideal R where
+  carrier := {x | IsIntegral (reesAlgebra I) (C x * X : R[X])}
+  zero_mem' := by simpa using (isIntegral_zero : IsIntegral (reesAlgebra I) (0 : R[X]))
+  add_mem' hx hy := by simpa [map_add, add_mul] using hx.add hy
+  smul_mem' r x hx := by
+    have hr : IsIntegral (reesAlgebra I) (C r : R[X]) := by
+      exact isIntegral_algebraMap (R := reesAlgebra I) (A := R[X])
+        (x := algebraMap R (reesAlgebra I) r)
+    simpa [smul_eq_mul, map_mul, mul_assoc] using hr.mul hx
+
+theorem mem_reesIntegralIdeal_of_pow_mem {I : Ideal R} {x : R} {n : ℕ}
+    (hn : 0 < n) (hx : x ^ n ∈ I ^ n) : x ∈ reesIntegralIdeal I := by
+  have hmem : (C x * X : R[X]) ^ n ∈ reesAlgebra I := by
+    simpa [← Polynomial.C_mul_X_pow_eq_monomial, mul_pow] using
+      (reesAlgebra.monomial_mem.mpr hx : Polynomial.monomial n (x ^ n) ∈ reesAlgebra I)
+  have hi : IsIntegral (reesAlgebra I) ((C x * X : R[X]) ^ n) :=
+    isIntegral_algebraMap (R := reesAlgebra I) (A := R[X]) (x := ⟨_, hmem⟩)
+  exact IsIntegral.of_pow hn hi
+
+theorem adjoin_C_mul_X_eq_rees (I : Ideal R) :
+    Algebra.adjoin R {C r * X | r ∈ I} = reesAlgebra I := by
+  rw [← adjoin_monomial_eq_reesAlgebra I]
+  congr 1
+  ext p
+  simp only [Submodule.mem_map, Set.mem_setOf_eq]
+  constructor
+  · rintro ⟨r, hr, rfl⟩
+    exact ⟨r, hr, by simp [← Polynomial.C_mul_X_pow_eq_monomial]⟩
+  · rintro ⟨r, hr, rfl⟩
+    exact ⟨r, hr, by simp [← Polynomial.C_mul_X_pow_eq_monomial]⟩
+
+theorem integralOverIdeal_of_mem_reesIntegralIdeal [Nontrivial R] {I : Ideal R} {x : R}
+    (hx : x ∈ reesIntegralIdeal I) : IntegralOverIdeal I x := by
+  have hi : IsIntegral (Algebra.adjoin R {C r * X | r ∈ I}) (C x * X : R[X]) := by
+    rw [adjoin_C_mul_X_eq_rees]
+    exact hx
+  have hAlg : Polynomial.algebra R R = Algebra.id R[X] := by
+    apply Algebra.algebra_ext
+    intro p
+    simp [Polynomial.algebra]
+  have ht := Polynomial.exists_monic_aeval_eq_zero_forall_mem_pow_of_isIntegral
+    (R := R) (S := R) (I := I) (x := x)
+  rw [hAlg] at ht
+  obtain ⟨p, hp, he, hc⟩ := ht hi
+  refine ⟨p.natDegree, Polynomial.natDegree_pos_of_monic_of_aeval_eq_zero hp he,
+    fun i => p.coeff i, fun i _ => hc i, ?_⟩
+  rw [Polynomial.aeval_eq_sum_range, Finset.sum_range_succ] at he
+  simpa only [smul_eq_mul, hp.coeff_natDegree, one_mul, add_comm] using he
+
+theorem integralOverIdeal_of_pow_mem [Nontrivial R] {I : Ideal R} {x : R} {n : ℕ}
+    (hn : 0 < n) (hx : x ^ n ∈ I ^ n) : IntegralOverIdeal I x :=
+  integralOverIdeal_of_mem_reesIntegralIdeal (mem_reesIntegralIdeal_of_pow_mem hn hx)
+
+/-- Ideal-span induction transfers finitely many monomial power witnesses to
+every polynomial in the generated ideal, with a genuine integral equation. -/
+theorem integralOverIdeal_of_span_generators [Nontrivial R] {I : Ideal R} (S : Set R)
+    (hS : ∀ x ∈ S, ∃ n : ℕ, 0 < n ∧ x ^ n ∈ I ^ n)
+    {x : R} (hx : x ∈ Ideal.span S) : IntegralOverIdeal I x := by
+  apply integralOverIdeal_of_mem_reesIntegralIdeal
+  apply (Ideal.span_le.mpr (fun y hy => ?_) : Ideal.span S ≤ reesIntegralIdeal I) hx
+  obtain ⟨n, hn, hp⟩ := hS y hy
+  exact mem_reesIntegralIdeal_of_pow_mem hn hp
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource55
+
+/-! ## Source: Characterizations.MonomialIntegrality -/
+section CheckedCharacterizationsSource56
+
+/-! # Integral equations for every lattice point of a monomial Newton polytope -/
+
+noncomputable section
+namespace Characterizations
+universe u
+open CommAlg.Polymatroid Finset MvPolynomial
+open scoped BigOperators
+variable {V : Type u} [Fintype V] [DecidableEq V]
+variable (k : Type*) [CommRing k]
+
+theorem monomial_power_mem_of_convexHull (B : Family V) (a : Exponent V)
+    (ha : realExponent a ∈ convexHull ℝ (realExponent '' (B : Set (Exponent V)))) :
+    ∃ N : ℕ, 0 < N ∧ (monomial a (1 : k)) ^ N ∈ (monomialIdeal k B) ^ N := by
+  classical
+  obtain ⟨N, hN, J, hJ, p, m, hp, hsum, he⟩ := scaled_sum_of_mem_convexHull B a ha
+  letI : Fintype J := hJ
+  refine ⟨N, hN, ?_⟩
+  have hprod : (∏ j, (monomial (p j) (1 : k)) ^ m j) ∈
+      ∏ j, (monomialIdeal k B) ^ m j := by
+    apply Ideal.prod_mem_prod
+    intro j _
+    apply Ideal.pow_mem_pow
+    exact Ideal.subset_span (Set.mem_image_of_mem _ (hp j))
+  have hpow : (∏ j, (monomialIdeal k B) ^ m j) = (monomialIdeal k B) ^ N := by
+    rw [Finset.prod_pow_eq_pow_sum, hsum]
+  rw [hpow] at hprod
+  have hmon : (monomial a (1 : k)) ^ N = ∏ j, (monomial (p j) (1 : k)) ^ m j := by
+    simp only [MvPolynomial.monomial_pow, one_pow]
+    rw [he]
+    simpa using (MvPolynomial.monomial_sum_one (s := Finset.univ)
+      (f := fun j => m j • p j) (R := k))
+  rw [hmon]
+  exact hprod
+
+theorem monomial_integral_of_convexHull [Nontrivial k] (B : Family V) (a : Exponent V)
+    (ha : realExponent a ∈ convexHull ℝ (realExponent '' (B : Set (Exponent V)))) :
+    CommAlg.IntegralOverIdeal (monomialIdeal k B) (monomial a (1 : k)) := by
+  obtain ⟨N, hN, h⟩ := monomial_power_mem_of_convexHull k B a ha
+  exact integralOverIdeal_of_pow_mem hN h
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource56
+
+/-! ## Source: Characterizations.SubsetWeights -/
+section CheckedCharacterizationsSource57
+
+/-! # Literal subset-degree valuations and integral closure -/
+noncomputable section
+namespace Characterizations
+open Classical CommAlg CommAlg.Polymatroid Finset MvPolynomial
+variable {V : Type*} [Fintype V] [DecidableEq V]
+
+def subsetWeight (U : Finset V) : V → ℤ := fun v => if v ∈ U then 1 else 0
+
+theorem weight_subsetWeight (U : Finset V) (a : Exponent V) :
+    Finsupp.weight (subsetWeight U) a = (subsetSum a U : ℤ) := by
+  rw [Finsupp.weight_eq_sum]
+  simp only [subsetWeight, nsmul_eq_mul, mul_ite, mul_one, mul_zero]
+  rw [Finset.sum_ite_mem]
+  simp [subsetSum]
+
+variable {k : Type*} [CommRing k]
+
+theorem subsetWeight_nonnegative (U : Finset V) (f : MvPolynomial V k) :
+    Weight.Bound (subsetWeight U) 0 f := by
+  intro a _
+  rw [weight_subsetWeight]
+  positivity
+
+theorem subsetWeight_bound_of_mem (B : Family V) {f : MvPolynomial V k}
+    (hf : f ∈ monomialIdeal k B) (U : Finset V) :
+    Weight.Bound (subsetWeight U) (lowerRank B U : ℤ) f := by
+  intro a ha
+  obtain ⟨b, hb, hba⟩ := (mem_monomialIdeal_iff B f).mp hf a (Finsupp.mem_support_iff.mpr ha)
+  rw [weight_subsetWeight]
+  exact_mod_cast (lowerRank_le hb U).trans (Finset.sum_le_sum (fun i _ => hba i))
+
+theorem subsetWeight_bound_of_integral [IsDomain k] (B : Family V) {f : MvPolynomial V k}
+    (hf : IntegralOverIdeal (monomialIdeal k B) f) (U : Finset V) :
+    Weight.Bound (subsetWeight U) (lowerRank B U : ℤ) f :=
+  Weight.bound_of_integral (RingHom.id _) (subsetWeight U) (subsetWeight_nonnegative U)
+    (monomialIdeal k B) (lowerRank B U : ℤ)
+    (fun _ h => subsetWeight_bound_of_mem B h U) hf
+
+theorem integral_mem_canonicalLowerBases [IsDomain k] {B : Family V} (hB : B.Nonempty)
+    (hl : LocallyEquigenerated B) {d : ℕ} (hd : Equigenerated B d) {f : MvPolynomial V k}
+    (hf : IntegralOverIdeal (monomialIdeal k B) f) :
+    f ∈ monomialIdeal k (lowerBaseFamily (lowerRank B) d) := by
+  apply (mem_monomialIdeal_iff _ f).mpr
+  intro a ha
+  apply (contains_canonicalLowerBases_iff hB hl hd a).mpr
+  intro U
+  have h := subsetWeight_bound_of_integral B hf U a (Finsupp.mem_support_iff.mp ha)
+  rw [weight_subsetWeight] at h
+  exact_mod_cast h
+
+theorem polymatroidal_integrallyClosed [IsDomain k] {B : Family V} (hB : B.Nonempty)
+    (hp : IsPolymatroidal B) : IsIntegrallyClosedIdeal (monomialIdeal k B) := by
+  obtain ⟨d, hd⟩ := hp.1
+  intro f hf
+  apply (mem_monomialIdeal_iff _ f).mpr
+  intro a ha
+  apply (contains_iff_canonical_lower B hB d hd hp a).mpr
+  intro U
+  have h := subsetWeight_bound_of_integral B hf U a (Finsupp.mem_support_iff.mp ha)
+  rw [weight_subsetWeight] at h
+  exact_mod_cast h
+
+end Characterizations
+
+end
+end CheckedCharacterizationsSource57
+end
+end LeanWebUnit1

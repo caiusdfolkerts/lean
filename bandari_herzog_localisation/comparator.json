@@ -1,0 +1,15 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "BandariHerzog.localisation_conjecture",
+    "BandariHerzog.intersection_type",
+    "BandariHerzog.lower_rank_supermodular",
+    "BandariHerzog.local_socle_criterion"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}
